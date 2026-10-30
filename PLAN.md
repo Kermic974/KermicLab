@@ -9,21 +9,23 @@ Ce plan découpe la suite de la feuille de route (`SPEC.md`) en **lots**. Chaque
 
 Cochez les cases au fil de l'eau, dans la PR du lot.
 
+**Suivi sur GitHub** : l'issue #2 regroupe les lots, et chaque lot a sa sous-issue (#3 à #9). La description de chaque PR contient « Closes #N » pour fermer l'issue du lot à la fusion.
+
 **Objectif final**
 - **v1.3** : méthode algébrique, et sélecteur de méthode dans le panneau d'explication.
 - **v1.4** : méthode tabulaire, et mode Comparer (deux méthodes côte à côte, avec un résultat commun vérifié).
 
 ## Vue d'ensemble
 
-| Lot | Agent | Branche | Dépend de | Contrat `api.js` | Exigences |
-|---|---|---|---|---|---|
-| L0 | commun | `agent/commun-ci-navigateur` | PR #1 fusionnée | — | Q-01, Q-02 |
-| L1 | Moteur | `agent/moteur-methode-algebrique` | PR #1 | — | S-01, S-02, **S-04**, S-07 |
-| L2 | Interface | `agent/interface-selecteur-methode` | PR #1 | — | **A-04**, X-01, X-02 |
-| L3 | Moteur | `agent/moteur-methode-tabulaire` | L1 | modifié (statut `unsupported`) | **S-05**, **S-06** |
-| L4 | Moteur | `agent/moteur-comparaison` | L1 | ajout `compareResults`, `resultNumber` | **S-08** |
-| L5 | Interface | `agent/interface-mode-comparer` | L2, L3, L4 | — | **D-06**, X-03 |
-| L6 | commun | `agent/commun-publication` | L1 à L5 | — | — |
+| Lot | Issue | Agent | Branche | Dépend de | Contrat `api.js` | Exigences |
+|---|---|---|---|---|---|---|
+| L0 | #3 | commun | `agent/commun-ci-navigateur` | PR #1 fusionnée | — | Q-01, Q-02 |
+| L1 | #4 | Moteur | `agent/moteur-methode-algebrique` | PR #1 | — | S-01, S-02, **S-04**, S-07 |
+| L2 | #5 | Interface | `agent/interface-selecteur-methode` | PR #1 | — | **A-04**, X-01, X-02 |
+| L3 | #6 | Moteur | `agent/moteur-methode-tabulaire` | L1 | modifié (statut `unsupported`) | **S-05**, **S-06** |
+| L4 | #7 | Moteur | `agent/moteur-comparaison` | L1 | ajout `compareResults`, `resultNumber` | **S-08** |
+| L5 | #8 | Interface | `agent/interface-mode-comparer` | L2, L3, L4 | — | **D-06**, X-03 |
+| L6 | #9 | commun | `agent/commun-publication` | L1 à L5 | — | — |
 
 Les exigences en **gras** n'existent pas encore. Leur texte est donné dans le lot qui les crée, et ce lot doit les ajouter à `SPEC.md`.
 
