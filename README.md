@@ -34,9 +34,22 @@ L'application est un cercle trigonométrique interactif autonome (un seul fichie
 
 Ouvrir `index.html` dans un navigateur moderne.
 
-## Développement dans VS Code
+## Développement
 
-Ouvrir `trigoLab.code-workspace`, puis exécuter la tâche `Serveur local` ou la configuration de débogage Edge.
+Le code source est dans `src/`, découpé en modules. `index.html` est **généré** à partir de ces modules : ne le modifiez pas à la main.
+
+```bash
+python3 scripts/build-standalone.py     # reconstruit index.html
+npm run check                           # tout vérifier avant une PR (aucune installation requise)
+```
+
+Le dépôt est organisé pour deux agents aux rôles distincts, **Moteur** (calculs, pédagogie, méthodes) et **Interface** (page, rendu, interactions). Ils suivent un seul jeu d'instructions :
+
+- `AGENTS.md` : règles, rôles, zones, contrat, méthode de travail (chargé par Claude Code via `CLAUDE.md`) ;
+- `SPEC.md` : exigences fonctionnelles numérotées ;
+- `ARCHITECTURE.md` : organisation du code, contrat des méthodes de résolution, construction et tests.
+
+Dans VS Code : ouvrir `trigoLab.code-workspace`, puis lancer les tâches « Construire », « Tout vérifier » ou « Serveur local ».
 
 ## Test de référence
 
@@ -50,7 +63,7 @@ Ouvrir `trigoLab.code-workspace`, puis exécuter la tâche `Serveur local` ou la
 
 ## GitHub Pages
 
-Le workflow dans `.github/workflows/pages.yml` publie la racine du dépôt après validation de la structure HTML.
+Le workflow `.github/workflows/pages.yml` valide chaque PR : livrable à jour, frontières entre agents, tests, structure HTML. Après une fusion dans `main`, il publie la racine du dépôt.
 
 ## Licence
 

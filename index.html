@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Fichier généré par scripts/build-standalone.py depuis src/ : ne pas modifier à la main. -->
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -154,7 +155,7 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
 <main class="app">
   <header>
     <div>
-      <span class="kicker">TRIGOLAB · V1.1</span>
+      <span class="kicker">TRIGOLAB · V1.2</span>
       <h1>Cercle trigonométrique interactif</h1>
       <p>Explore librement, apprends pas à pas, puis relève les défis.</p>
     </div>
@@ -304,815 +305,1287 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     </aside>
   </div>
 
-  <footer>trigoLab v1.1 · application autonome, aucune dépendance externe · licence MIT</footer>
+  <footer>trigoLab v1.2 · application autonome, aucune dépendance externe · licence MIT</footer>
   <div id="live" class="live" aria-live="polite"></div>
 </main>
 <script>
 (function () {
-  'use strict';
+'use strict';
 
-  var VERSION = '1.1.0';
-  var C = 380;            // centre du cercle (unités SVG)
-  var R = 260;            // rayon du cercle
-  var EPS = 1e-10;
-  var SNAP = 3;           // tolérance d'aimantation en degrés
-  var DEAD_ZONE = 24;     // rayon central ignoré (angle indéfini)
-  var NS = 'http://www.w3.org/2000/svg';
+// ===== src/ui/dom.js =====
+// Petits utilitaires DOM partagés par l'Interface.
 
-  // mode : explore | learn | play ; locked : le point ne peut pas être déplacé (quiz).
-  var state = { angle: 45, snap: true, mode: 'explore', locked: false };
+const NS = 'http://www.w3.org/2000/svg';
 
-  // Angles remarquables : [radians, cos, sin, tan] sous forme exacte.
-  var NOTABLE = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330];
-  var EXACT = {
-    0: ['0', '1', '0', '0'],
-    30: ['π/6', '√3/2', '1/2', '√3/3'],
-    45: ['π/4', '√2/2', '√2/2', '1'],
-    60: ['π/3', '1/2', '√3/2', '√3'],
-    90: ['π/2', '0', '1', 'non définie'],
-    120: ['2π/3', '−1/2', '√3/2', '−√3'],
-    135: ['3π/4', '−√2/2', '√2/2', '−1'],
-    150: ['5π/6', '−√3/2', '1/2', '−√3/3'],
-    180: ['π', '−1', '0', '0'],
-    210: ['7π/6', '−√3/2', '−1/2', '√3/3'],
-    225: ['5π/4', '−√2/2', '−√2/2', '1'],
-    240: ['4π/3', '−1/2', '−√3/2', '√3'],
-    270: ['3π/2', '0', '−1', 'non définie'],
-    300: ['5π/3', '1/2', '−√3/2', '−√3'],
-    315: ['7π/4', '√2/2', '−√2/2', '−1'],
-    330: ['11π/6', '√3/2', '−1/2', '−√3/3'],
-    360: ['2π', '1', '0', '0']
+function $(id) { return document.getElementById(id); }
+function attrs(el, map) { for (var k in map) el.setAttribute(k, map[k]); }
+function each(selector, fn) { Array.prototype.forEach.call(document.querySelectorAll(selector), fn); }
+
+// ===== src/core/angle.js =====
+// Angles : normalisation, lecture de saisie, repérage sur le cercle. Aucun accès au DOM.
+
+const EPS = 1e-10;
+
+// Sans « + 360 » systématique, qui ajoutait du bruit flottant (12.3 → 12.300000000000011).
+function norm(v) { var r = v % 360; return r < 0 ? r + 360 : r + 0; }
+
+function clean(v) {
+  if (Math.abs(v) < EPS) return 0;
+  if (Math.abs(v - 1) < EPS) return 1;
+  if (Math.abs(v + 1) < EPS) return -1;
+  return v;
+}
+
+// Arrondit les erreurs flottantes (ex. 59.99999999 → 60).
+function tidy(v) {
+  var r = Math.round(v * 1e6) / 1e6;
+  return Math.abs(v - r) < 1e-9 ? r : v;
+}
+
+function dist(a, b) {
+  var d = Math.abs(norm(a) - norm(b));
+  return Math.min(d, 360 - d);
+}
+
+function quadrant(a) {
+  var n = norm(a);
+  if (n === 0) return 'Axe des abscisses (+x)';
+  if (n === 90) return 'Axe des ordonnées (+y)';
+  if (n === 180) return 'Axe des abscisses (−x)';
+  if (n === 270) return 'Axe des ordonnées (−y)';
+  return 'Quadrant ' + (n < 90 ? 'I' : n < 180 ? 'II' : n < 270 ? 'III' : 'IV');
+}
+
+// Angle aigu entre le rayon et l'axe des abscisses.
+function refAngle(a) {
+  var n = norm(a);
+  if (n <= 90) return n;
+  if (n <= 180) return 180 - n;
+  if (n <= 270) return n - 180;
+  return 360 - n;
+}
+
+// Lit "45", "22,5", "-30°", "π/4", "2pi/3", "-π"… et renvoie des degrés (NaN si invalide).
+function parseAngle(raw) {
+  var s = String(raw).trim().replace(/\s+/g, '').replace(/,/g, '.')
+    .replace(/[−–]/g, '-').replace(/pi/gi, 'π').replace(/°$/, '');
+  if (!s) return NaN;
+  if (s.indexOf('π') >= 0) {
+    var m = /^([+-]?)(\d*\.?\d*)\*?π(?:\/(\d*\.?\d+))?$/.exec(s);
+    if (!m) return NaN;
+    var k = m[2] === '' ? 1 : Number(m[2]);
+    var den = m[3] ? Number(m[3]) : 1;
+    if (!Number.isFinite(k) || !Number.isFinite(den) || den === 0) return NaN;
+    return tidy((m[1] === '-' ? -1 : 1) * k * 180 / den);
+  }
+  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
+  return Number(s);
+}
+
+function sign(v) { return v === null ? '∅' : v < 0 ? '−' : v > 0 ? '+' : '0'; }
+
+// ===== src/core/exact-values.js =====
+// Angles remarquables et valeurs exactes : [radians, cos, sin, tan].
+
+
+const NOTABLE = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330];
+const OFF_AXIS = NOTABLE.filter(function (d) { return d % 90 !== 0; });
+
+const EXACT = {
+  0: ['0', '1', '0', '0'],
+  30: ['π/6', '√3/2', '1/2', '√3/3'],
+  45: ['π/4', '√2/2', '√2/2', '1'],
+  60: ['π/3', '1/2', '√3/2', '√3'],
+  90: ['π/2', '0', '1', 'non définie'],
+  120: ['2π/3', '−1/2', '√3/2', '−√3'],
+  135: ['3π/4', '−√2/2', '√2/2', '−1'],
+  150: ['5π/6', '−√3/2', '1/2', '−√3/3'],
+  180: ['π', '−1', '0', '0'],
+  210: ['7π/6', '−√3/2', '−1/2', '√3/3'],
+  225: ['5π/4', '−√2/2', '−√2/2', '1'],
+  240: ['4π/3', '−1/2', '−√3/2', '√3'],
+  270: ['3π/2', '0', '−1', 'non définie'],
+  300: ['5π/3', '1/2', '−√3/2', '−√3'],
+  315: ['7π/4', '√2/2', '−√2/2', '−1'],
+  330: ['11π/6', '√3/2', '−1/2', '−√3/3'],
+  360: ['2π', '1', '0', '0']
+};
+
+function exact(a) { return a === 360 ? EXACT[360] : (EXACT[norm(a)] || null); }
+
+// Valeur numérique d'une forme exacte ('−√3/2' → −0,866…) ; null si non définie, undefined si inconnue.
+function exactNum(s) {
+  if (s === 'non définie') return null;
+  var neg = s.charAt(0) === '−', k = neg ? s.slice(1) : s;
+  var v = { '0': 0, '1': 1, '1/2': .5, '√2/2': Math.SQRT2 / 2, '√3/2': Math.sqrt(3) / 2, '√3': Math.sqrt(3), '√3/3': Math.sqrt(3) / 3 }[k];
+  if (v === undefined) return undefined;
+  return neg ? -v : v;
+}
+
+// ===== src/core/format.js =====
+// Affichage des nombres à la française : virgule décimale, signe moins typographique.
+
+
+function fmt(v, digits) {
+  if (v === null) return 'non définie';
+  var s = clean(v).toFixed(digits === undefined ? 6 : digits);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  if (s === '-0') s = '0';
+  return s.replace('.', ',').replace('-', '−');
+}
+
+// Inverse de fmt pour une valeur approchée ('−0,5' → −0.5) ; NaN si illisible.
+function unfmt(s) {
+  var t = String(s).replace(',', '.').replace('−', '-');
+  return /^-?\d+(\.\d+)?$/.test(t) ? Number(t) : NaN;
+}
+
+// ===== src/core/engine.js =====
+// Moteur mathématique partagé : seule source des valeurs trigonométriques.
+
+
+function calc(a) {
+  var n = norm(a), r = n * Math.PI / 180;
+  var x = clean(Math.cos(r)), y = clean(Math.sin(r));
+  return { n: n, r: r, x: x, y: y, t: Math.abs(x) < EPS ? null : clean(y / x) };
+}
+
+// Tout ce qu'une vue ou une solution peut afficher pour un angle donné.
+function compute(a) {
+  var c = calc(a);
+  return {
+    angle: a, n: c.n, r: c.r, x: c.x, y: c.y, t: c.t,
+    exact: exact(a), quadrant: quadrant(a), ref: refAngle(a)
   };
+}
 
-  function $(id) { return document.getElementById(id); }
-  function attrs(el, map) { for (var k in map) el.setAttribute(k, map[k]); }
+// Transforme une saisie (nombre ou texte) en angle d'état dans [0 ; 360], ou null si invalide.
+// keep360 : conserver 360 au lieu de 0 quand l'utilisateur le demande explicitement.
+function resolveAngle(raw, keep360) {
+  var num = typeof raw === 'number' ? raw : parseAngle(raw);
+  if (!Number.isFinite(num)) return null;
+  num = tidy(num);
+  var a = norm(num);
+  if (keep360 && num !== 0 && a === 0) a = 360;
+  return a;
+}
 
-  // ---------- Mathématiques ----------
+// ===== src/core/store.js =====
+// État central : uniquement des valeurs sources, jamais de valeurs calculées.
+// Toute interaction passe par setAngle(), qui notifie les abonnés (le rendu).
 
-  // Sans « + 360 » systématique, qui ajoutait du bruit flottant (12.3 → 12.300000000000011).
-  function norm(v) { var r = v % 360; return r < 0 ? r + 360 : r + 0; }
 
-  function clean(v) {
-    if (Math.abs(v) < EPS) return 0;
-    if (Math.abs(v - 1) < EPS) return 1;
-    if (Math.abs(v + 1) < EPS) return -1;
-    return v;
+function createStore(initial) {
+  var state = Object.assign({}, initial), subscribers = [];
+
+  function get() { return Object.freeze(Object.assign({}, state)); }
+  function notify(meta) {
+    var snapshot = get();
+    subscribers.forEach(function (fn) { fn(snapshot, meta || {}); });
   }
 
-  // Arrondit les erreurs flottantes (ex. 59.99999999 → 60).
-  function tidy(v) {
-    var r = Math.round(v * 1e6) / 1e6;
-    return Math.abs(v - r) < 1e-9 ? r : v;
+  return {
+    get: get,
+    // opts : { keep360, announce }. Renvoie false si la saisie est invalide (état inchangé).
+    setAngle: function (raw, opts) {
+      var a = resolveAngle(raw, opts && opts.keep360);
+      if (a === null) return false;
+      state.angle = a;
+      notify(opts);
+      return true;
+    },
+    // Préférences et navigation : pas de rendu déclenché.
+    patch: function (values) {
+      for (var k in values) {
+        if (!(k in state)) throw new Error('Clé d\'état inconnue : ' + k);
+        state[k] = values[k];
+      }
+    },
+    refresh: function (meta) { notify(meta); },
+    subscribe: function (fn) { subscribers.push(fn); }
+  };
+}
+
+// ===== src/pedagogy/lessons.js =====
+// Parcours « Apprendre » : contenu des 8 étapes et consignes vérifiables.
+// check(v) reçoit le résultat de compute() pour l'angle courant.
+
+
+const LESSONS = [
+  {
+    title: 'Le cercle unité',
+    text: 'Le cercle trigonométrique a pour centre O et pour rayon 1. Un angle θ se mesure depuis l\'axe des x, ' +
+      'dans le sens inverse des aiguilles d\'une montre : il place un point P sur le cercle.',
+    start: 45, task: 'Fais tourner P jusqu\'à 90° (un quart de tour).',
+    check: function (c) { return dist(c.n, 90) < .5; }
+  },
+  {
+    title: 'Le cosinus, c\'est l\'abscisse',
+    text: 'Projette P sur l\'axe horizontal : le segment bleu mesure cos θ. ' +
+      'À droite de O, cos θ > 0 ; à gauche, cos θ < 0.',
+    start: 60, task: 'Rends cos θ négatif.',
+    check: function (c) { return c.x < -1e-9; }
+  },
+  {
+    title: 'Le sinus, c\'est l\'ordonnée',
+    text: 'Projette P sur l\'axe vertical : le segment orange mesure sin θ. Au-dessus de O, sin θ > 0 ; en dessous, ' +
+      'sin θ < 0. Comme le rayon vaut 1, sin θ reste toujours entre −1 et 1.',
+    start: 60, task: 'Amène sin θ à sa valeur minimale : −1.',
+    check: function (c) { return c.y < -1 + 1e-9; }
+  },
+  {
+    title: 'cos² θ + sin² θ = 1',
+    text: 'Le segment bleu, le segment orange et le rayon forment un triangle rectangle d\'hypoténuse 1. ' +
+      'Le théorème de Pythagore donne la relation fondamentale : cos² θ + sin² θ = 1.',
+    start: 30, task: 'Trouve un angle où cos θ = sin θ.',
+    check: function (c) { return Math.abs(c.x - c.y) < 5e-3; }
+  },
+  {
+    title: 'Quadrants et signes',
+    text: 'Les axes découpent le cercle en 4 quadrants. I : cos +, sin + · II : cos −, sin + · ' +
+      'III : cos −, sin − · IV : cos +, sin −. Observe la carte « Signes » en changeant de quadrant.',
+    start: 45, task: 'Place P dans le quadrant où cos θ < 0 et sin θ > 0.',
+    check: function (c) { return c.x < -1e-9 && c.y > 1e-9; }
+  },
+  {
+    title: 'Symétries et angle de référence',
+    text: '30°, 150°, 210° et 330° sont symétriques par rapport aux axes : leurs cosinus et sinus sont égaux au signe près. ' +
+      'L\'angle aigu commun (ici 30°) s\'appelle l\'angle de référence.',
+    start: 30, task: 'Trouve l\'autre angle entre 0° et 360° tel que sin θ = 1/2.',
+    check: function (c) { return Math.abs(c.y - .5) < 2e-3 && c.x < 0; }
+  },
+  {
+    title: 'La tangente',
+    text: 'tan θ = sin θ / cos θ. Prolonge le rayon jusqu\'à la droite rose x = 1 : l\'ordonnée du point T vaut tan θ. ' +
+      'Quand cos θ = 0, le rayon est parallèle à cette droite : la tangente n\'est pas définie.',
+    start: 45, opts: { showTan: true }, task: 'Trouve un angle où tan θ n\'est pas définie.',
+    check: function (c) { return c.t === null; }
+  },
+  {
+    title: 'Les radians',
+    text: 'Un tour complet mesure 360°, soit 2π radians : 180° = π. Pour convertir, radians = degrés × π / 180. ' +
+      'Les repères du cercle sont maintenant affichés en radians.',
+    start: 90, opts: { radLabels: true }, task: 'Place P à 3π/4.',
+    check: function (c) { return dist(c.n, 135) < .5; }
   }
+];
 
-  function fmt(v, digits) {
-    if (v === null) return 'non définie';
-    var s = clean(v).toFixed(digits === undefined ? 6 : digits);
-    if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
-    if (s === '-0') s = '0';
-    return s.replace('.', ',').replace('-', '−');
+// ===== src/pedagogy/challenges.js =====
+// Mode « Jouer » : génération des énoncés, propositions du quiz et barème. Logique pure.
+// rng : générateur aléatoire injectable (Math.random par défaut) pour des tests reproductibles.
+// used : angles déjà tirés dans la partie, complété à chaque tirage.
+
+
+const ROUND = 8;
+const VALUES = ['0', '1', '−1', '1/2', '−1/2', '√2/2', '−√2/2', '√3/2', '−√3/2'];
+const POOL = { cos: VALUES, sin: VALUES, tan: ['0', '1', '−1', '√3', '−√3', '√3/3', '−√3/3', 'non définie'] };
+const COL = { cos: 1, sin: 2, tan: 3 };
+const INVERSE = { '√3': '√3/3', '√3/3': '√3', '−√3': '−√3/3', '−√3/3': '−√3' };
+
+function rnd(n, rng) { return Math.floor((rng || Math.random)() * n); }
+function pick(list, rng) { return list[rnd(list.length, rng)]; }
+function shuffle(list, rng) {
+  for (var i = list.length - 1; i > 0; i--) { var j = rnd(i + 1, rng), t = list[i]; list[i] = list[j]; list[j] = t; }
+  return list;
+}
+function opposite(s) {
+  if (s === '0' || s === 'non définie') return null;
+  return s.charAt(0) === '−' ? s.slice(1) : '−' + s;
+}
+function freshAngle(list, used, rng) {
+  var left = list.filter(function (d) { return used.indexOf(d) < 0; });
+  var a = pick(left.length ? left : list, rng);
+  used.push(a);
+  return a;
+}
+function angleName(a, rad) { return rad ? EXACT[a][0] : a + '°'; }
+
+// Énoncé « place le point » : chaque condition désigne un seul angle (vérifié par les autotests).
+function placeQuestion(i, used, rng) {
+  var a, c, prompt;
+  if (i < 3) {
+    a = freshAngle(NOTABLE, used, rng);
+    prompt = 'θ = ' + EXACT[a][0] + (a === 0 ? '' : ' rad');
+  } else if (i < 6) {
+    a = freshAngle(OFF_AXIS, used, rng); c = calc(a);
+    prompt = (rng || Math.random)() < .5
+      ? 'cos θ = ' + EXACT[a][1] + ' et sin θ ' + (c.y > 0 ? '> 0' : '< 0')
+      : 'sin θ = ' + EXACT[a][2] + ' et cos θ ' + (c.x > 0 ? '> 0' : '< 0');
+  } else {
+    a = freshAngle(OFF_AXIS, used, rng); c = calc(a);
+    prompt = 'tan θ = ' + EXACT[a][3] + ' et cos θ ' + (c.x > 0 ? '> 0' : '< 0');
   }
+  return { target: a, prompt: prompt };
+}
 
-  function calc(a) {
-    var n = norm(a), r = n * Math.PI / 180;
-    var x = clean(Math.cos(r)), y = clean(Math.sin(r));
-    return { n: n, r: r, x: x, y: y, t: Math.abs(x) < EPS ? null : clean(y / x) };
-  }
+// Quatre propositions : la bonne, son opposée, la valeur « échangée », puis du hasard.
+function quizOptions(a, fn, rng) {
+  var correct = EXACT[a][COL[fn]], opts = [correct], cand = [];
+  var o = opposite(correct);
+  if (o) cand.push(o);
+  if (fn === 'tan') { if (INVERSE[correct]) cand.push(INVERSE[correct]); }
+  else cand.push(EXACT[a][fn === 'cos' ? 2 : 1]);
+  cand = cand.concat(shuffle(POOL[fn].slice(), rng));
+  cand.forEach(function (v) { if (opts.length < 4 && opts.indexOf(v) < 0) opts.push(v); });
+  return { correct: correct, options: shuffle(opts, rng) };
+}
 
-  function polar(a, r) {
-    var q = a * Math.PI / 180, rr = r === undefined ? R : r;
-    return { x: C + rr * Math.cos(q), y: C - rr * Math.sin(q) };
-  }
+function quizQuestion(i, used, rng) {
+  var a = freshAngle(NOTABLE, used, rng), fn = pick(['cos', 'sin', 'tan'], rng), q = quizOptions(a, fn, rng);
+  q.target = a;
+  q.fn = fn;
+  q.label = fn + ' ' + angleName(a, i >= 4);
+  q.prompt = q.label + ' = ?';
+  return q;
+}
 
-  function dist(a, b) {
-    var d = Math.abs(norm(a) - norm(b));
-    return Math.min(d, 360 - d);
-  }
+// Barème « place le point » selon l'écart en degrés.
+function scorePlacement(err) {
+  return { points: err <= 1.5 ? 100 : err <= 5 ? 70 : err <= 10 ? 30 : 0, good: err <= 5 };
+}
 
-  function quadrant(a) {
-    var n = norm(a);
-    if (n === 0) return 'Axe des abscisses (+x)';
-    if (n === 90) return 'Axe des ordonnées (+y)';
-    if (n === 180) return 'Axe des abscisses (−x)';
-    if (n === 270) return 'Axe des ordonnées (−y)';
-    return 'Quadrant ' + (n < 90 ? 'I' : n < 180 ? 'II' : n < 270 ? 'III' : 'IV');
-  }
+function quizExplanation(q) {
+  return q.fn === 'tan' && calc(q.target).t === null
+    ? 'cos θ = 0, donc la tangente n\'est pas définie.'
+    : quadrant(q.target) + ', angle de référence ' + fmt(refAngle(q.target), 1) + '°.';
+}
 
-  // Angle aigu entre le rayon et l'axe des abscisses.
-  function refAngle(a) {
-    var n = norm(a);
-    if (n <= 90) return n;
-    if (n <= 180) return 180 - n;
-    if (n <= 270) return n - 180;
-    return 360 - n;
-  }
+// Seuils en pourcentage entier : .55 * 800 vaut 440.00000000000006 en flottant et privait 440 points de la 2e étoile.
+function starsFor(score, max) {
+  var pct = score * 100;
+  return pct >= 85 * max ? 3 : pct >= 55 * max ? 2 : pct >= 25 * max ? 1 : 0;
+}
 
-  function exact(a) { return a === 360 ? EXACT[360] : (EXACT[norm(a)] || null); }
+// ===== src/solutions/registry.js =====
+// Registre des méthodes de résolution et contrat commun (voir ARCHITECTURE.md § Contrat de solution).
 
-  // Lit "45", "22,5", "-30°", "π/4", "2pi/3", "-π"… et renvoie des degrés (NaN si invalide).
-  function parseAngle(raw) {
-    var s = String(raw).trim().replace(/\s+/g, '').replace(/,/g, '.')
-      .replace(/[−–]/g, '-').replace(/pi/gi, 'π').replace(/°$/, '');
-    if (!s) return NaN;
-    if (s.indexOf('π') >= 0) {
-      var m = /^([+-]?)(\d*\.?\d*)\*?π(?:\/(\d*\.?\d+))?$/.exec(s);
-      if (!m) return NaN;
-      var k = m[2] === '' ? 1 : Number(m[2]);
-      var den = m[3] ? Number(m[3]) : 1;
-      if (!Number.isFinite(k) || !Number.isFinite(den) || den === 0) return NaN;
-      return tidy((m[1] === '-' ? -1 : 1) * k * 180 / den);
+const STATUSES = ['success', 'partial', 'unsupported', 'invalid', 'error'];
+const CONFIDENCES = ['exact', 'approx'];
+
+function createRegistry() {
+  var solutions = [];
+  return {
+    register: function (s) {
+      if (!s || typeof s.id !== 'string' || typeof s.label !== 'string' ||
+        typeof s.solve !== 'function' || typeof s.supports !== 'function') {
+        throw new Error('Solution invalide : id, label, supports() et solve() sont obligatoires.');
+      }
+      if (this.get(s.id)) throw new Error('Solution déjà enregistrée : ' + s.id);
+      solutions.push(s);
+    },
+    get: function (id) {
+      for (var i = 0; i < solutions.length; i++) if (solutions[i].id === id) return solutions[i];
+      return null;
+    },
+    list: function (context) {
+      return solutions.filter(function (s) { return !context || s.supports(context); });
     }
-    if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
-    return Number(s);
-  }
+  };
+}
 
-  function arcPath(a, r, close) {
-    var start = (close ? 'M ' + C + ' ' + C + ' L ' : 'M ') + (C + r) + ' ' + C;
-    if (a <= 0) return '';
-    if (a >= 359.999) {
-      return start + ' A ' + r + ' ' + r + ' 0 1 0 ' + (C - r) + ' ' + C +
-        ' A ' + r + ' ' + r + ' 0 1 0 ' + (C + r) + ' ' + C + (close ? ' Z' : '');
+// Gèle un objet en profondeur : une solution qui tente de modifier son contexte lève une erreur.
+function deepFreeze(o) {
+  if (o && typeof o === 'object' && !Object.isFrozen(o)) {
+    Object.freeze(o);
+    Object.keys(o).forEach(function (k) { deepFreeze(o[k]); });
+  }
+  return o;
+}
+
+// Contexte transmis à solve() : l'angle d'état et les valeurs du moteur, en lecture seule.
+function solutionContext(values) {
+  return deepFreeze({ angle: values.angle, values: values });
+}
+
+// Liste les écarts d'un résultat au contrat (tableau vide si conforme).
+function checkSolutionResult(res, solutionId) {
+  var p = [];
+  function str(v) { return typeof v === 'string' && v.length > 0; }
+  if (!res || typeof res !== 'object') return ['résultat absent'];
+  if (res.solutionId !== solutionId) p.push('solutionId attendu : ' + solutionId);
+  if (STATUSES.indexOf(res.status) < 0) p.push('status inconnu : ' + res.status);
+  if (CONFIDENCES.indexOf(res.confidence) < 0) p.push('confidence inconnue : ' + res.confidence);
+  if (!str(res.title)) p.push('title manquant');
+  if (!str(res.explanation)) p.push('explanation manquante');
+  if (!Array.isArray(res.steps) || !res.steps.length) p.push('steps vide');
+  else res.steps.forEach(function (s, i) {
+    if (!s || !str(s.id) || !str(s.title) || !str(s.text)) p.push('étape ' + i + ' incomplète');
+  });
+  if (!Array.isArray(res.warnings)) p.push('warnings absent');
+  else res.warnings.forEach(function (w, i) {
+    if (!w || !str(w.code) || !str(w.message)) p.push('avertissement ' + i + ' incomplet');
+  });
+  var r = res.result;
+  if (!r || !str(r.angle) || !str(r.cos) || !str(r.sin)) p.push('result incomplet');
+  else if (r.tan === null) {
+    if (!(res.warnings || []).some(function (w) { return w && w.code === 'TANGENT_UNDEFINED'; })) {
+      p.push('tan null sans avertissement TANGENT_UNDEFINED');
     }
-    var p = polar(a, r);
-    return start + ' A ' + r + ' ' + r + ' 0 ' + (a > 180 ? 1 : 0) + ' 0 ' + p.x + ' ' + p.y + (close ? ' Z' : '');
-  }
+  } else if (!str(r.tan)) p.push('result.tan invalide');
+  return p;
+}
 
-  function sign(v) { return v === null ? '∅' : v < 0 ? '−' : v > 0 ? '+' : '0'; }
+// ===== src/solutions/geometric.js =====
+// Méthode géométrique : lecture sur le cercle (projections, quadrant, angle de référence).
+// Elle lit les valeurs du moteur dans le contexte et ne recalcule rien.
 
-  function explain(a, c) {
-    var n = c.n, ref = refAngle(n);
-    var txt = quadrant(a) + '. P = (cos θ ; sin θ) : la projection sur l\'axe horizontal donne le cosinus (' +
-      fmt(c.x) + '), la projection sur l\'axe vertical donne le sinus (' + fmt(c.y) + ').';
-    if (n % 90 !== 0) {
-      txt += ' Angle de référence ' + fmt(ref, 1) + '° : cos θ = ' + (c.x < 0 ? '−' : '') + 'cos ' + fmt(ref, 1) +
-        '° et sin θ = ' + (c.y < 0 ? '−' : '') + 'sin ' + fmt(ref, 1) + '°.';
+
+const geometricSolution = {
+  id: 'geometric',
+  label: 'Méthode géométrique',
+  supportedModes: ['explore', 'learn', 'compare'],
+  supports: function () { return true; },
+  solve: function (ctx) {
+    var v = ctx.values, e = v.exact, refTxt = fmt(v.ref, 1) + '°', axis = v.n % 90 === 0;
+    var steps = [
+      { id: 'place', title: 'Placer le point', text: v.quadrant + ' : P est le point du cercle d\'angle ' + fmt(v.angle, 3) + '°.' },
+      { id: 'project', title: 'Projeter sur les axes', text: 'cos θ = abscisse de P = ' + fmt(v.x) + ' ; sin θ = ordonnée de P = ' + fmt(v.y) + '.' }
+    ];
+    var explanation = v.quadrant + '. P = (cos θ ; sin θ) : la projection sur l\'axe horizontal donne le cosinus (' +
+      fmt(v.x) + '), la projection sur l\'axe vertical donne le sinus (' + fmt(v.y) + ').';
+    if (!axis) {
+      var rel = 'cos θ = ' + (v.x < 0 ? '−' : '') + 'cos ' + refTxt + ' et sin θ = ' + (v.y < 0 ? '−' : '') + 'sin ' + refTxt;
+      steps.push({ id: 'reference', title: 'Angle de référence', text: 'Angle de référence ' + refTxt + ' : ' + rel + '.' });
+      explanation += ' Angle de référence ' + refTxt + ' : ' + rel + '.';
     }
-    txt += c.t === null
-      ? ' Ici cos θ = 0 : la tangente n\'est pas définie.'
-      : ' La tangente vaut sin θ / cos θ = ' + fmt(c.t) + '.';
-    return txt;
-  }
-
-  // ---------- Rendu (source d'état unique) ----------
-
-  // keep360 : conserver 360 au lieu de 0 quand l'utilisateur le demande explicitement.
-  function setAngle(raw, keep360, announce) {
-    var num = typeof raw === 'number' ? raw : parseAngle(raw);
-    if (!Number.isFinite(num)) return false;
-    num = tidy(num);
-    var a = norm(num);
-    if (keep360 && num !== 0 && a === 0) a = 360;
-    state.angle = a;
-    render(announce);
-    return true;
-  }
-
-  function render(announce) {
-    var a = state.angle, c = calc(a), p = polar(c.n), e = exact(a);
-
-    attrs($('point'), { cx: p.x, cy: p.y });
-    attrs($('halo'), { cx: p.x, cy: p.y });
-    attrs($('ray'), { x2: p.x, y2: p.y });
-    attrs($('px'), { x1: p.x, y1: p.y, x2: p.x, y2: C });
-    attrs($('py'), { x1: p.x, y1: p.y, x2: C, y2: p.y });
-    attrs($('segx'), { x2: p.x });
-    attrs($('segy'), { y2: p.y });
-    $('arc').setAttribute('d', arcPath(a, 88, false));
-    $('sector').setAttribute('d', arcPath(a, 88, true));
-
-    if (c.t === null) {
-      $('tanRay').setAttribute('visibility', 'hidden');
-      $('tanPt').setAttribute('visibility', 'hidden');
+    var warnings = [];
+    if (v.t === null) {
+      warnings.push({ code: 'TANGENT_UNDEFINED', message: 'La tangente n\'est pas définie lorsque cos θ = 0.' });
+      steps.push({ id: 'tangent', title: 'Tangente', text: 'cos θ = 0 : la tangente n\'est pas définie.' });
+      explanation += ' Ici cos θ = 0 : la tangente n\'est pas définie.';
     } else {
-      var ty = C - R * c.t;
-      $('tanRay').setAttribute('visibility', 'visible');
-      $('tanPt').setAttribute('visibility', 'visible');
-      attrs($('tanRay'), { x2: C + R, y2: ty });
-      attrs($('tanPt'), { cx: C + R, cy: ty });
+      steps.push({ id: 'tangent', title: 'Tangente', text: 'tan θ = sin θ / cos θ = ' + fmt(v.t) + '.' });
+      explanation += ' La tangente vaut sin θ / cos θ = ' + fmt(v.t) + '.';
     }
+    return {
+      solutionId: 'geometric',
+      status: 'success',
+      title: 'Lecture sur le cercle trigonométrique',
+      confidence: e ? 'exact' : 'approx',
+      result: {
+        angle: e ? e[0] : fmt(v.angle, 3) + '°',
+        cos: e ? e[1] : fmt(v.x),
+        sin: e ? e[2] : fmt(v.y),
+        tan: v.t === null ? null : e ? e[3] : fmt(v.t)
+      },
+      steps: steps,
+      explanation: explanation,
+      warnings: warnings
+    };
+  }
+};
 
-    var tp = polar(a === 360 ? 30 : Math.max(18, a / 2), 120);
-    attrs($('angleText'), { x: tp.x, y: tp.y + 7 });
-    $('angleText').textContent = fmt(a, 1) + '°';
+// ===== src/solutions/catalog.js =====
+// Catalogue des méthodes disponibles. Ajouter une méthode = un fichier + une ligne ici.
 
-    $('deg').textContent = fmt(a, 3) + '°';
-    $('quad').textContent = quadrant(a);
-    $('rad').textContent = fmt(a * Math.PI / 180);
-    $('radx').textContent = e ? e[0] : '≈ ' + fmt(a / 180, 4).replace(/^1$/, '') + 'π';
-    $('cos').textContent = fmt(c.x);
-    $('cosx').textContent = e ? 'exact : ' + e[1] : 'valeur approchée';
-    $('sin').textContent = fmt(c.y);
-    $('sinx').textContent = e ? 'exact : ' + e[2] : 'valeur approchée';
-    $('tan').textContent = fmt(c.t);
-    $('tanx').textContent = e ? (c.t === null ? 'cos θ = 0' : 'exact : ' + e[3]) : (c.t === null ? 'cos θ = 0' : 'valeur approchée');
-    $('coords').textContent = '(' + fmt(c.x) + ' ; ' + fmt(c.y) + ')';
-    $('coordsx').textContent = e ? 'exact : (' + e[1] + ' ; ' + e[2] + ')' : 'coordonnées approchées';
-    $('signs').textContent = 'cos ' + sign(c.x) + ' · sin ' + sign(c.y) + ' · tan ' + sign(c.t);
-    $('ref').textContent = 'Angle de référence : ' + fmt(refAngle(a), 1) + '°';
-    $('explain').textContent = explain(a, c);
 
-    $('range').value = a;
-    if (document.activeElement !== $('input')) $('input').value = fmt(a, 3);
-    $('input').removeAttribute('aria-invalid');
-    $('hint').classList.remove('err');
-    $('hint').textContent = 'Degrés (45 ; 22,5 ; −30) ou multiple de π (π/4 ; 2pi/3).';
+const solutions = createRegistry();
+solutions.register(geometricSolution);
 
-    var svg = $('svg');
-    svg.setAttribute('aria-valuenow', a);
-    svg.setAttribute('aria-valuetext', fmt(a, 1) + ' degrés, cosinus ' + fmt(c.x, 3) + ', sinus ' + fmt(c.y, 3));
+// ===== src/selfcheck.js =====
+// Autotests du Moteur : exécutés par `node --test` et par le diagnostic de la page.
+// Renvoie { count, fail } ; chaque échec est une ligne lisible.
 
-    Array.prototype.forEach.call($('quick').children, function (b) {
-      b.classList.toggle('on', dist(c.n, Number(b.dataset.a)) < 1e-7);
-      b.setAttribute('aria-pressed', b.classList.contains('on'));
+
+// Angles de référence partagés par toutes les méthodes (ARCHITECTURE.md § Tests comparatifs).
+const REFERENCE_INPUTS = ['0', '30', '45', '60', '90', '120', '135', '150', '180', '270', '360', '-30', '390', 'π/3', '2π/3', '22,5', '137,5'];
+
+// Valeur numérique d'une chaîne de résultat (forme exacte ou approchée).
+function resultNumber(s) {
+  var e = exactNum(s);
+  return e === undefined ? unfmt(s) : e;
+}
+
+function runCoreChecks() {
+  var fail = [], count = 0;
+  function ok(name, v) { count++; if (!v) fail.push(name); }
+  function near(a, b, tol) { return Math.abs(a - b) < (tol || 1e-9); }
+
+  for (var d = 0; d < 360; d++) {
+    var c = calc(d);
+    ok('cos²+sin² ' + d, near(c.x * c.x + c.y * c.y, 1));
+  }
+  var c60 = calc(60);
+  ok('60 cos', near(c60.x, .5));
+  ok('60 sin', near(c60.y, Math.sqrt(3) / 2));
+  ok('60 tan', near(c60.t, Math.sqrt(3)));
+  ok('90 tan', calc(90).t === null);
+  ok('270 tan', calc(270).t === null);
+  ok('ref 120', refAngle(120) === 60);
+  ok('ref 210', refAngle(210) === 30);
+  ok('ref 300', refAngle(300) === 60);
+  ok('norm sans bruit', norm(12.3) === 12.3 && norm(-30) === 330 && norm(390) === 30);
+  ok('parse 45', parseAngle('45') === 45);
+  ok('parse 22,5', parseAngle('22,5') === 22.5);
+  ok('parse −30°', parseAngle('−30°') === -30);
+  ok('parse π/3', parseAngle('π/3') === 60);
+  ok('parse 2pi/3', parseAngle('2pi/3') === 120);
+  ok('parse -π', parseAngle('-π') === -180);
+  ok('parse vide', isNaN(parseAngle('')));
+  ok('parse abc', isNaN(parseAngle('abc')));
+  ok('parse π/0', isNaN(parseAngle('π/0')));
+  ok('fmt négatif', fmt(-0.5) === '−0,5');
+
+  // Table exacte cohérente avec les calculs.
+  NOTABLE.forEach(function (d) {
+    var c = calc(d), e = EXACT[d], t = exactNum(e[3]);
+    ok('table cos ' + d, near(exactNum(e[1]), c.x));
+    ok('table sin ' + d, near(exactNum(e[2]), c.y));
+    ok('table tan ' + d, t === null ? c.t === null : near(t, c.t));
+    ok('table rad ' + d, near(parseAngle(e[0]), d));
+  });
+  // Énoncés « place le point » : une seule solution entre 0° et 359°.
+  function unique(a, pred) {
+    var hits = [];
+    for (var k = 0; k < 360; k++) if (pred(calc(k))) hits.push(k);
+    return hits.length === 1 && hits[0] === a;
+  }
+  OFF_AXIS.forEach(function (a) {
+    var c = calc(a), e = EXACT[a];
+    ok('énoncé cos ' + a, unique(a, function (k) { return near(k.x, exactNum(e[1])) && k.y * c.y > 0; }));
+    ok('énoncé sin ' + a, unique(a, function (k) { return near(k.y, exactNum(e[2])) && k.x * c.x > 0; }));
+    ok('énoncé tan ' + a, unique(a, function (k) { return k.t !== null && near(k.t, exactNum(e[3])) && k.x * c.x > 0; }));
+  });
+  // Quiz : 4 propositions distinctes dont la bonne.
+  NOTABLE.forEach(function (a) {
+    ['cos', 'sin', 'tan'].forEach(function (fn) {
+      var q = quizOptions(a, fn), set = {};
+      q.options.forEach(function (v) { set[v] = 1; });
+      ok('quiz ' + fn + ' ' + a, q.options.length === 4 && Object.keys(set).length === 4 && q.options.indexOf(q.correct) >= 0);
     });
+  });
+  // Leçons : la consigne n'est pas déjà remplie au départ et reste réalisable.
+  LESSONS.forEach(function (L, i) {
+    var solvable = false;
+    for (var k = 0; k < 360 && !solvable; k++) solvable = L.check(calc(k));
+    ok('leçon ' + (i + 1), !L.check(calc(L.start)) && solvable);
+  });
+  // Contrat et cohérence de chaque méthode enregistrée avec le moteur.
+  solutions.list().forEach(function (s) {
+    REFERENCE_INPUTS.forEach(function (input) {
+      var v = compute(resolveAngle(input, true));
+      var res;
+      try { res = s.solve(solutionContext(v)); } catch (err) { ok(s.id + ' ' + input + ' : ' + err.message, false); return; }
+      var problems = checkSolutionResult(res, s.id);
+      ok(s.id + ' contrat ' + input + (problems.length ? ' (' + problems.join(', ') + ')' : ''), !problems.length);
+      if (problems.length) return;
+      var tol = res.confidence === 'exact' ? 1e-9 : 1e-6;
+      ok(s.id + ' cos ' + input, near(resultNumber(res.result.cos), v.x, tol));
+      ok(s.id + ' sin ' + input, near(resultNumber(res.result.sin), v.y, tol));
+      ok(s.id + ' tan ' + input, res.result.tan === null ? v.t === null : near(resultNumber(res.result.tan), v.t, tol));
+    });
+  });
+  // Cas de référence 60° (SPEC.md).
+  var r60 = solutions.get('geometric').solve(solutionContext(compute(60))).result;
+  ok('référence 60°', r60.angle === 'π/3' && r60.cos === '1/2' && r60.sin === '√3/2' && r60.tan === '√3');
+  ok('distance circulaire', dist(350, 10) === 20);
 
-    if (announce && state.mode !== 'play') {
-      $('live').textContent = 'Angle ' + fmt(a, 1) + ' degrés, cosinus ' + fmt(c.x, 4) + ', sinus ' + fmt(c.y, 4) +
-        ', tangente ' + fmt(c.t, 4) + '.';
-    }
-    if (state.mode === 'learn') checkTask(c);
+  return { count: count, fail: fail };
+}
+
+// ===== src/api.js =====
+// Contrat Moteur → Interface : seul module que src/ui/ a le droit d'importer.
+// Ajouter un export est sans risque ; en retirer ou en renommer un est un changement de contrat
+// (voir AGENTS.md § Contrat entre agents). Une ligne par module source.
+
+// ===== src/ui/state.js =====
+// Instance unique de l'état central pour l'Interface.
+// mode : explore | learn | play ; locked : le point ne peut pas être déplacé (quiz).
+
+
+const store = createStore({ angle: 45, snap: true, mode: 'explore', locked: false });
+
+function setAngle(raw, keep360, announce) {
+  return store.setAngle(raw, { keep360: !!keep360, announce: !!announce });
+}
+
+// ===== src/ui/geometry.js =====
+// Géométrie de la vue : passage angle ↔ coordonnées SVG (viewBox 760 × 760).
+
+
+const C = 380;          // centre du cercle (unités SVG)
+const R = 260;          // rayon du cercle
+const SNAP = 3;         // tolérance d'aimantation en degrés
+const DEAD_ZONE = 24;   // rayon central ignoré (angle indéfini)
+
+function polar(a, r) {
+  var q = a * Math.PI / 180, rr = r === undefined ? R : r;
+  return { x: C + rr * Math.cos(q), y: C - rr * Math.sin(q) };
+}
+
+function arcPath(a, r, close) {
+  var start = (close ? 'M ' + C + ' ' + C + ' L ' : 'M ') + (C + r) + ' ' + C;
+  if (a <= 0) return '';
+  if (a >= 359.999) {
+    return start + ' A ' + r + ' ' + r + ' 0 1 0 ' + (C - r) + ' ' + C +
+      ' A ' + r + ' ' + r + ' 0 1 0 ' + (C + r) + ' ' + C + (close ? ' Z' : '');
+  }
+  var p = polar(a, r);
+  return start + ' A ' + r + ' ' + r + ' 0 ' + (a > 180 ? 1 : 0) + ' 0 ' + p.x + ' ' + p.y + (close ? ' Z' : '');
+}
+
+function svgPoint(ev) {
+  var r = $('svg').getBoundingClientRect();
+  return { x: (ev.clientX - r.left) * 760 / r.width, y: (ev.clientY - r.top) * 760 / r.height };
+}
+
+function angleAt(pt, snap) {
+  var a = norm(Math.atan2(C - pt.y, pt.x - C) * 180 / Math.PI);
+  if (snap) {
+    var best = a, bd = Infinity;
+    NOTABLE.forEach(function (v) { var z = dist(a, v); if (z < bd) { bd = z; best = v; } });
+    if (bd <= SNAP) a = best;
+  }
+  return a;
+}
+
+function nearCenter(pt) { return Math.hypot(pt.x - C, pt.y - C) < DEAD_ZONE; }
+
+// ===== src/ui/circle.js =====
+// Construction des éléments statiques : graduations, repères, boutons d'angles remarquables.
+
+
+function buildLabels() {
+  var g = $('labels'), rad = $('radLabels').checked;
+  g.textContent = '';
+  NOTABLE.forEach(function (d) {
+    var p = polar(d, 303), cx = Math.cos(d * Math.PI / 180), t = document.createElementNS(NS, 'text');
+    attrs(t, { 'class': 'lab', x: p.x, y: p.y + 5, 'text-anchor': cx > .2 ? 'start' : cx < -.2 ? 'end' : 'middle' });
+    t.textContent = rad ? (d === 0 ? '0 / 2π' : EXACT[d][0]) : (d === 0 ? '0° / 360°' : d + '°');
+    g.appendChild(t);
+  });
+}
+
+function buildCircle() {
+  for (var d = 0; d < 360; d += 15) {
+    var major = NOTABLE.indexOf(d) >= 0, p1 = polar(d, R + 3), p2 = polar(d, R + (major ? 18 : 10));
+    var l = document.createElementNS(NS, 'line');
+    attrs(l, { 'class': 'tick', x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+    $('ticks').appendChild(l);
+  }
+  buildLabels();
+  NOTABLE.forEach(function (d) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.dataset.a = d;
+    b.innerHTML = d + '°<small>' + EXACT[d][0] + '</small>';
+    b.setAttribute('aria-label', d + ' degrés, ' + EXACT[d][0] + ' radians');
+    b.addEventListener('click', function () { setAngle(d, false, true); });
+    $('quick').appendChild(b);
+  });
+}
+
+// ===== src/ui/render.js =====
+// Rendu synchronisé : abonné à l'état, il met à jour le cercle, les valeurs et les contrôles.
+
+
+const HINT = 'Degrés (45 ; 22,5 ; −30) ou multiple de π (π/4 ; 2pi/3).';
+
+function render(s, meta) {
+  var a = s.angle, c = compute(a), p = polar(c.n), e = c.exact;
+
+  attrs($('point'), { cx: p.x, cy: p.y });
+  attrs($('halo'), { cx: p.x, cy: p.y });
+  attrs($('ray'), { x2: p.x, y2: p.y });
+  attrs($('px'), { x1: p.x, y1: p.y, x2: p.x, y2: C });
+  attrs($('py'), { x1: p.x, y1: p.y, x2: C, y2: p.y });
+  attrs($('segx'), { x2: p.x });
+  attrs($('segy'), { y2: p.y });
+  $('arc').setAttribute('d', arcPath(a, 88, false));
+  $('sector').setAttribute('d', arcPath(a, 88, true));
+
+  if (c.t === null) {
+    $('tanRay').setAttribute('visibility', 'hidden');
+    $('tanPt').setAttribute('visibility', 'hidden');
+  } else {
+    var ty = C - R * c.t;
+    $('tanRay').setAttribute('visibility', 'visible');
+    $('tanPt').setAttribute('visibility', 'visible');
+    attrs($('tanRay'), { x2: C + R, y2: ty });
+    attrs($('tanPt'), { cx: C + R, cy: ty });
   }
 
-  // ---------- Construction ----------
+  var tp = polar(a === 360 ? 30 : Math.max(18, a / 2), 120);
+  attrs($('angleText'), { x: tp.x, y: tp.y + 7 });
+  $('angleText').textContent = fmt(a, 1) + '°';
 
-  function buildLabels() {
-    var g = $('labels'), rad = $('radLabels').checked;
-    g.textContent = '';
-    NOTABLE.forEach(function (d) {
-      var p = polar(d, 303), cx = Math.cos(d * Math.PI / 180), t = document.createElementNS(NS, 'text');
-      attrs(t, { 'class': 'lab', x: p.x, y: p.y + 5, 'text-anchor': cx > .2 ? 'start' : cx < -.2 ? 'end' : 'middle' });
-      t.textContent = rad ? (d === 0 ? '0 / 2π' : EXACT[d][0]) : (d === 0 ? '0° / 360°' : d + '°');
-      g.appendChild(t);
-    });
+  $('deg').textContent = fmt(a, 3) + '°';
+  $('quad').textContent = c.quadrant;
+  $('rad').textContent = fmt(a * Math.PI / 180);
+  $('radx').textContent = e ? e[0] : '≈ ' + fmt(a / 180, 4).replace(/^1$/, '') + 'π';
+  $('cos').textContent = fmt(c.x);
+  $('cosx').textContent = e ? 'exact : ' + e[1] : 'valeur approchée';
+  $('sin').textContent = fmt(c.y);
+  $('sinx').textContent = e ? 'exact : ' + e[2] : 'valeur approchée';
+  $('tan').textContent = fmt(c.t);
+  $('tanx').textContent = e ? (c.t === null ? 'cos θ = 0' : 'exact : ' + e[3]) : (c.t === null ? 'cos θ = 0' : 'valeur approchée');
+  $('coords').textContent = '(' + fmt(c.x) + ' ; ' + fmt(c.y) + ')';
+  $('coordsx').textContent = e ? 'exact : (' + e[1] + ' ; ' + e[2] + ')' : 'coordonnées approchées';
+  $('signs').textContent = 'cos ' + sign(c.x) + ' · sin ' + sign(c.y) + ' · tan ' + sign(c.t);
+  $('ref').textContent = 'Angle de référence : ' + fmt(c.ref, 1) + '°';
+  $('explain').textContent = solutions.get('geometric').solve(solutionContext(c)).explanation;
+
+  $('range').value = a;
+  if (document.activeElement !== $('input')) $('input').value = fmt(a, 3);
+  $('input').removeAttribute('aria-invalid');
+  $('hint').classList.remove('err');
+  $('hint').textContent = HINT;
+
+  var svg = $('svg');
+  svg.setAttribute('aria-valuenow', a);
+  svg.setAttribute('aria-valuetext', fmt(a, 1) + ' degrés, cosinus ' + fmt(c.x, 3) + ', sinus ' + fmt(c.y, 3));
+
+  Array.prototype.forEach.call($('quick').children, function (b) {
+    b.classList.toggle('on', dist(c.n, Number(b.dataset.a)) < 1e-7);
+    b.setAttribute('aria-pressed', b.classList.contains('on'));
+  });
+
+  if (meta.announce && s.mode !== 'play') {
+    $('live').textContent = 'Angle ' + fmt(a, 1) + ' degrés, cosinus ' + fmt(c.x, 4) + ', sinus ' + fmt(c.y, 4) +
+      ', tangente ' + fmt(c.t, 4) + '.';
   }
+}
 
-  function build() {
-    for (var d = 0; d < 360; d += 15) {
-      var major = NOTABLE.indexOf(d) >= 0, p1 = polar(d, R + 3), p2 = polar(d, R + (major ? 18 : 10));
-      var l = document.createElementNS(NS, 'line');
-      attrs(l, { 'class': 'tick', x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
-      $('ticks').appendChild(l);
-    }
-    buildLabels();
-    NOTABLE.forEach(function (d) {
+// ===== src/ui/options.js =====
+// Options d'affichage (cases à cocher) : projections, repères, radians, axe des tangentes.
+
+
+function syncOptions() {
+  $('projs').classList.toggle('hidden', !$('showProj').checked);
+  $('labels').classList.toggle('hidden', !$('showLabels').checked);
+  $('tanGroup').classList.toggle('hidden', !$('showTan').checked);
+  buildLabels();
+}
+
+function setOptions(o) {
+  for (var id in o) $(id).checked = o[id];
+  syncOptions();
+}
+
+function getOptions() {
+  return {
+    showProj: $('showProj').checked, showLabels: $('showLabels').checked,
+    radLabels: $('radLabels').checked, showTan: $('showTan').checked
+  };
+}
+
+// ===== src/ui/learn.js =====
+// Mode « Apprendre » : affichage du parcours guidé et validation des consignes.
+
+
+const lesson = { i: 0, done: false };
+
+function showLesson(i) {
+  lesson.i = Math.max(0, Math.min(LESSONS.length - 1, i));
+  lesson.done = false;
+  var L = LESSONS[lesson.i], last = lesson.i === LESSONS.length - 1, o = L.opts || {};
+  setOptions({ showProj: true, showLabels: true, showTan: !!o.showTan, radLabels: !!o.radLabels });
+  $('lstep').textContent = 'Étape ' + (lesson.i + 1) + ' / ' + LESSONS.length;
+  $('lbar').style.width = (100 * lesson.i / LESSONS.length) + '%';
+  $('ltitle').textContent = L.title;
+  $('ltext').textContent = L.text;
+  $('ltaskText').textContent = L.task;
+  $('ltaskOk').textContent = '';
+  $('ltask').classList.remove('done');
+  $('lprev').disabled = lesson.i === 0;
+  $('lnext').textContent = last ? 'Relever les défis 🎮' : 'Suivant →';
+  setAngle(L.start);
+}
+
+function checkTask(c) {
+  if (lesson.done || !LESSONS[lesson.i].check(c)) return;
+  lesson.done = true;
+  $('ltask').classList.add('done');
+  $('ltaskOk').textContent = '✓ Réussi !';
+  $('lbar').style.width = (100 * (lesson.i + 1) / LESSONS.length) + '%';
+}
+
+// ===== src/ui/play.js =====
+// Mode « Jouer » : déroulement des parties, score, record. La logique des énoncés vient du Moteur.
+
+
+const game = { kind: null, last: 'place', i: 0, score: 0, streak: 0, bestStreak: 0, q: null, answered: false, used: [] };
+
+function loadBest(kind) {
+  try { return Number(localStorage.getItem('trigolab.best.' + kind)) || 0; } catch (_) { return 0; }
+}
+function saveBest(kind, v) {
+  try { localStorage.setItem('trigolab.best.' + kind, String(v)); } catch (_) { /* stockage indisponible */ }
+}
+
+function setLocked(v) {
+  store.patch({ locked: v });
+  $('svg').classList.toggle('locked', v);
+  $('svg').setAttribute('aria-disabled', v);
+}
+
+function showPanel(id) {
+  ['gMenu', 'gPlay', 'gEnd'].forEach(function (p) { $(p).classList.toggle('hidden', p !== id); });
+}
+
+function stopGame() {
+  game.kind = null;
+  setLocked(false);
+  $('target').classList.add('hidden');
+}
+
+function showMenu() {
+  stopGame();
+  showPanel('gMenu');
+  [['place', 'bestPlace'], ['quiz', 'bestQuiz']].forEach(function (g) {
+    var b = loadBest(g[0]);
+    $(g[1]).textContent = b ? '🏆 Record : ' + b + ' / ' + ROUND * 100 : 'Pas encore de record';
+  });
+}
+
+function startGame(kind) {
+  game.kind = game.last = kind;
+  game.i = 0; game.score = 0; game.streak = 0; game.bestStreak = 0; game.used = [];
+  setOptions({ showProj: true, showLabels: true, showTan: false, radLabels: false });
+  showPanel('gPlay');
+  nextQuestion();
+}
+
+function updateHud() {
+  $('gQ').textContent = 'Question ' + (game.i + 1) + ' / ' + ROUND;
+  $('gScore').textContent = '⭐ ' + game.score + ' pts';
+  $('gStreak').textContent = '🔥 Série : ' + game.streak;
+}
+
+function nextQuestion() {
+  if (game.i >= ROUND) { endGame(); return; }
+  game.answered = false;
+  $('target').classList.add('hidden');
+  $('gFeedback').textContent = '';
+  $('gFeedback').className = 'feedback';
+  $('gOptions').textContent = '';
+  updateHud();
+  if (game.kind === 'place') {
+    game.q = placeQuestion(game.i, game.used);
+    setLocked(false);
+    setAngle(norm(game.q.target + 60 + rnd(240)));
+    $('gHelp').textContent = 'Déplace P (glisser, toucher ou flèches du clavier), puis valide.';
+    $('gGo').textContent = 'Valider';
+    $('gGo').classList.remove('hidden');
+  } else {
+    game.q = quizQuestion(game.i, game.used);
+    setLocked(true);
+    setAngle(game.q.target);
+    $('gHelp').textContent = 'Choisis la valeur exacte.';
+    $('gGo').classList.add('hidden');
+    game.q.options.forEach(function (v) {
       var b = document.createElement('button');
       b.type = 'button';
-      b.dataset.a = d;
-      b.innerHTML = d + '°<small>' + EXACT[d][0] + '</small>';
-      b.setAttribute('aria-label', d + ' degrés, ' + EXACT[d][0] + ' radians');
-      b.addEventListener('click', function () { setAngle(d, false, true); });
-      $('quick').appendChild(b);
+      b.textContent = v;
+      b.addEventListener('click', function () { answerQuiz(b, v); });
+      $('gOptions').appendChild(b);
     });
   }
+  $('gPrompt').textContent = game.q.prompt;
+}
 
-  // ---------- Interactions ----------
+function award(points, good, message) {
+  game.answered = true;
+  game.score += points;
+  game.streak = good ? game.streak + 1 : 0;
+  game.bestStreak = Math.max(game.bestStreak, game.streak);
+  if (good && game.streak >= 3) message += ' 🔥 ' + game.streak + ' d\'affilée !';
+  $('gFeedback').textContent = message;
+  $('gFeedback').className = 'feedback ' + (good ? 'good' : 'bad');
+  $('gGo').textContent = game.i === ROUND - 1 ? 'Voir le résultat' : 'Suivant →';
+  $('gGo').classList.remove('hidden');
+  setLocked(true);
+  updateHud();
+}
 
-  function svgPoint(ev) {
-    var r = $('svg').getBoundingClientRect();
-    return { x: (ev.clientX - r.left) * 760 / r.width, y: (ev.clientY - r.top) * 760 / r.height };
+function validatePlace() {
+  var t = game.q.target, err = dist(store.get().angle, t), p = polar(t), sc = scorePlacement(err);
+  attrs($('target'), { cx: p.x, cy: p.y });
+  $('target').classList.remove('hidden');
+  var answer = t + '° (' + EXACT[t][0] + ')';
+  award(sc.points, sc.good, sc.good
+    ? pick(['Bravo !', 'Dans le mille !', 'Excellent !']) + ' ' + answer + ' · +' + sc.points + ' pts'
+    : (sc.points ? 'Presque ! ' : 'Raté ! ') + 'La cible était ' + answer + ', écart ' + fmt(err, 1) + '°.' +
+      (sc.points ? ' +' + sc.points + ' pts' : ''));
+}
+
+function answerQuiz(btn, v) {
+  if (game.answered) return;
+  var q = game.q, good = v === q.correct;
+  Array.prototype.forEach.call($('gOptions').children, function (b) {
+    b.disabled = true;
+    if (b.textContent === q.correct) b.classList.add('good');
+  });
+  if (!good) btn.classList.add('bad');
+  award(good ? 100 : 0, good, (good ? 'Exact ! ' : 'Non : ') + q.label + ' = ' + q.correct + '. ' + quizExplanation(q));
+}
+
+function advanceGame() {
+  if (!game.kind) return;
+  if (game.answered) { game.i++; nextQuestion(); }
+  else if (game.kind === 'place') validatePlace();
+}
+
+function endGame() {
+  var kind = game.kind, max = ROUND * 100, best = loadBest(kind), record = game.score > best;
+  var stars = starsFor(game.score, max);
+  if (record) saveBest(kind, game.score);
+  stopGame();
+  showPanel('gEnd');
+  $('gStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
+  $('gStars').setAttribute('aria-label', stars + ' étoile(s) sur 3');
+  $('gSummary').textContent = ['Passe par le mode Apprendre, puis retente ta chance !',
+    'Bon début, rejoue pour progresser !', 'Très bien joué !', 'Maître du cercle ! 🏆'][stars] +
+    ' Score : ' + game.score + ' / ' + max + ' · meilleure série : ' + game.bestStreak +
+    (record ? ' · 🎉 Nouveau record !' : best ? ' · record : ' + best : '');
+}
+
+// ===== src/ui/modes.js =====
+// Navigation entre les modes Explorer / Apprendre / Jouer.
+
+
+function setMode(m) {
+  store.patch({ mode: m });
+  each('[data-tab]', function (b) { b.setAttribute('aria-selected', b.dataset.tab === m); });
+  each('[data-mode]', function (s) { s.classList.toggle('hidden', s.dataset.mode.split(' ').indexOf(m) < 0); });
+  if (m === 'play') showMenu(); else stopGame();
+  if (m === 'learn') showLesson(lesson.i);
+}
+
+// ===== src/ui/input.js =====
+// Entrées : pointeur (souris, tactile, stylet), saisie, curseur, incréments, clavier, onglets, boutons.
+// Toutes passent par setAngle() ou store.refresh() : jamais de rendu direct.
+
+
+function bindPointer() {
+  var hit = $('hit'), svg = $('svg'), pid = null, pending = null, raf = 0;
+
+  function flush() { raf = 0; if (pending !== null) { setAngle(pending); pending = null; } }
+  function queue(a) { pending = a; if (!raf) raf = requestAnimationFrame(flush); }
+  function stop() {
+    pid = null;
+    svg.classList.remove('dragging');
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    if (pending !== null) { setAngle(pending); pending = null; }
   }
 
-  function angleAt(pt) {
-    var a = norm(Math.atan2(C - pt.y, pt.x - C) * 180 / Math.PI);
-    if (state.snap) {
-      var best = a, bd = Infinity;
-      NOTABLE.forEach(function (v) { var z = dist(a, v); if (z < bd) { bd = z; best = v; } });
-      if (bd <= SNAP) a = best;
-    }
-    return a;
-  }
+  hit.addEventListener('pointerdown', function (e) {
+    if (store.get().locked || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    var pt = svgPoint(e);
+    if (nearCenter(pt)) return;
+    e.preventDefault();
+    svg.focus({ preventScroll: true });
+    pid = e.pointerId;
+    svg.classList.add('dragging');
+    try { hit.setPointerCapture(pid); } catch (_) { /* pointeur synthétique ou navigateur ancien */ }
+    setAngle(angleAt(pt, store.get().snap));
+  });
+  hit.addEventListener('pointermove', function (e) {
+    if (e.pointerId !== pid) return;
+    e.preventDefault();
+    var pt = svgPoint(e);
+    if (!nearCenter(pt)) queue(angleAt(pt, store.get().snap));
+  });
+  hit.addEventListener('pointerup', function (e) {
+    if (e.pointerId !== pid) return;
+    e.preventDefault();
+    var pt = svgPoint(e);
+    if (!nearCenter(pt)) pending = angleAt(pt, store.get().snap);
+    stop();
+    store.refresh({ announce: true });
+  });
+  hit.addEventListener('pointercancel', function (e) { if (e.pointerId === pid) stop(); });
+  hit.addEventListener('lostpointercapture', function (e) { if (e.pointerId === pid) stop(); });
+}
 
-  function nearCenter(pt) { return Math.hypot(pt.x - C, pt.y - C) < DEAD_ZONE; }
-
-  function bind() {
-    var hit = $('hit'), svg = $('svg'), pid = null, pending = null, raf = 0;
-
-    function flush() { raf = 0; if (pending !== null) { setAngle(pending); pending = null; } }
-    function queue(a) { pending = a; if (!raf) raf = requestAnimationFrame(flush); }
-    function stop() {
-      pid = null;
-      svg.classList.remove('dragging');
-      if (raf) { cancelAnimationFrame(raf); raf = 0; }
-      if (pending !== null) { setAngle(pending); pending = null; }
-    }
-
-    hit.addEventListener('pointerdown', function (e) {
-      if (state.locked || (e.pointerType === 'mouse' && e.button !== 0)) return;
-      var pt = svgPoint(e);
-      if (nearCenter(pt)) return;
-      e.preventDefault();
-      svg.focus({ preventScroll: true });
-      pid = e.pointerId;
-      svg.classList.add('dragging');
-      try { hit.setPointerCapture(pid); } catch (_) { /* navigateurs anciens */ }
-      setAngle(angleAt(pt));
-    });
-    hit.addEventListener('pointermove', function (e) {
-      if (e.pointerId !== pid) return;
-      e.preventDefault();
-      var pt = svgPoint(e);
-      if (!nearCenter(pt)) queue(angleAt(pt));
-    });
-    hit.addEventListener('pointerup', function (e) {
-      if (e.pointerId !== pid) return;
-      e.preventDefault();
-      var pt = svgPoint(e);
-      if (!nearCenter(pt)) pending = angleAt(pt);
-      stop();
-      render(true);
-    });
-    hit.addEventListener('pointercancel', function (e) { if (e.pointerId === pid) stop(); });
-    hit.addEventListener('lostpointercapture', function (e) { if (e.pointerId === pid) stop(); });
-
-    function applyInput() {
-      var input = $('input');
-      if (setAngle(input.value, true, true)) {
-        input.value = fmt(state.angle, 3);
-      } else {
-        input.setAttribute('aria-invalid', 'true');
-        $('hint').classList.add('err');
-        $('hint').textContent = 'Valeur non reconnue. Exemples : 60 ; −45 ; 22,5 ; π/3 ; 3pi/4.';
-      }
-    }
-    $('apply').addEventListener('click', applyInput);
-    $('input').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); applyInput(); } });
-
-    $('range').addEventListener('input', function () { setAngle(Number(this.value), Number(this.value) === 360); });
-    $('range').addEventListener('change', function () { render(true); });
-
-    Array.prototype.forEach.call(document.querySelectorAll('[data-step]'), function (b) {
-      b.addEventListener('click', function () { setAngle(state.angle + Number(b.dataset.step), false, true); });
-    });
-
-    $('snap').addEventListener('change', function () { state.snap = this.checked; });
-    ['showProj', 'showLabels', 'radLabels', 'showTan'].forEach(function (id) {
-      $(id).addEventListener('change', syncOptions);
-    });
-
-    Array.prototype.forEach.call(document.querySelectorAll('[data-tab]'), function (b) {
-      b.addEventListener('click', function () { setMode(b.dataset.tab); });
-    });
-    $('lprev').addEventListener('click', function () { showLesson(lesson.i - 1); });
-    $('lnext').addEventListener('click', function () {
-      if (lesson.i < LESSONS.length - 1) showLesson(lesson.i + 1);
-      else setMode('play');
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-game]'), function (b) {
-      b.addEventListener('click', function () { startGame(b.dataset.game); });
-    });
-    $('gGo').addEventListener('click', advanceGame);
-    $('gQuit').addEventListener('click', showMenu);
-    $('gMenuBtn').addEventListener('click', showMenu);
-    $('gAgain').addEventListener('click', function () { startGame(game.last); });
-
-    svg.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && state.mode === 'play' && game.kind) { e.preventDefault(); advanceGame(); return; }
-      if (state.locked) return;
-      var a = null, s = e.shiftKey ? 5 : 1;
-      switch (e.key) {
-        case 'ArrowLeft': case 'ArrowDown': a = state.angle - s; break;
-        case 'ArrowRight': case 'ArrowUp': a = state.angle + s; break;
-        case 'PageDown': a = state.angle - 15; break;
-        case 'PageUp': a = state.angle + 15; break;
-        case 'Home': a = 0; break;
-        case 'End': a = 360; break;
-      }
-      if (a !== null) { e.preventDefault(); setAngle(a, a === 360, true); }
-    });
-  }
-
-  // ---------- Options d'affichage ----------
-
-  function syncOptions() {
-    $('projs').classList.toggle('hidden', !$('showProj').checked);
-    $('labels').classList.toggle('hidden', !$('showLabels').checked);
-    $('tanGroup').classList.toggle('hidden', !$('showTan').checked);
-    buildLabels();
-  }
-
-  function setOptions(o) {
-    for (var id in o) $(id).checked = o[id];
-    syncOptions();
-  }
-
-  // ---------- Modes ----------
-
-  function setMode(m) {
-    state.mode = m;
-    Array.prototype.forEach.call(document.querySelectorAll('[data-tab]'), function (b) {
-      b.setAttribute('aria-selected', b.dataset.tab === m);
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function (s) {
-      s.classList.toggle('hidden', s.dataset.mode.split(' ').indexOf(m) < 0);
-    });
-    if (m === 'play') showMenu(); else stopGame();
-    if (m === 'learn') showLesson(lesson.i);
-  }
-
-  // ---------- Mode Apprendre : parcours guidé ----------
-
-  var LESSONS = [
-    {
-      title: 'Le cercle unité',
-      text: 'Le cercle trigonométrique a pour centre O et pour rayon 1. Un angle θ se mesure depuis l\'axe des x, ' +
-        'dans le sens inverse des aiguilles d\'une montre : il place un point P sur le cercle.',
-      start: 45, task: 'Fais tourner P jusqu\'à 90° (un quart de tour).',
-      check: function (c) { return dist(c.n, 90) < .5; }
-    },
-    {
-      title: 'Le cosinus, c\'est l\'abscisse',
-      text: 'Projette P sur l\'axe horizontal : le segment bleu mesure cos θ. ' +
-        'À droite de O, cos θ > 0 ; à gauche, cos θ < 0.',
-      start: 60, task: 'Rends cos θ négatif.',
-      check: function (c) { return c.x < -1e-9; }
-    },
-    {
-      title: 'Le sinus, c\'est l\'ordonnée',
-      text: 'Projette P sur l\'axe vertical : le segment orange mesure sin θ. Au-dessus de O, sin θ > 0 ; en dessous, ' +
-        'sin θ < 0. Comme le rayon vaut 1, sin θ reste toujours entre −1 et 1.',
-      start: 60, task: 'Amène sin θ à sa valeur minimale : −1.',
-      check: function (c) { return c.y < -1 + 1e-9; }
-    },
-    {
-      title: 'cos² θ + sin² θ = 1',
-      text: 'Le segment bleu, le segment orange et le rayon forment un triangle rectangle d\'hypoténuse 1. ' +
-        'Le théorème de Pythagore donne la relation fondamentale : cos² θ + sin² θ = 1.',
-      start: 30, task: 'Trouve un angle où cos θ = sin θ.',
-      check: function (c) { return Math.abs(c.x - c.y) < 5e-3; }
-    },
-    {
-      title: 'Quadrants et signes',
-      text: 'Les axes découpent le cercle en 4 quadrants. I : cos +, sin + · II : cos −, sin + · ' +
-        'III : cos −, sin − · IV : cos +, sin −. Observe la carte « Signes » en changeant de quadrant.',
-      start: 45, task: 'Place P dans le quadrant où cos θ < 0 et sin θ > 0.',
-      check: function (c) { return c.x < -1e-9 && c.y > 1e-9; }
-    },
-    {
-      title: 'Symétries et angle de référence',
-      text: '30°, 150°, 210° et 330° sont symétriques par rapport aux axes : leurs cosinus et sinus sont égaux au signe près. ' +
-        'L\'angle aigu commun (ici 30°) s\'appelle l\'angle de référence.',
-      start: 30, task: 'Trouve l\'autre angle entre 0° et 360° tel que sin θ = 1/2.',
-      check: function (c) { return Math.abs(c.y - .5) < 2e-3 && c.x < 0; }
-    },
-    {
-      title: 'La tangente',
-      text: 'tan θ = sin θ / cos θ. Prolonge le rayon jusqu\'à la droite rose x = 1 : l\'ordonnée du point T vaut tan θ. ' +
-        'Quand cos θ = 0, le rayon est parallèle à cette droite : la tangente n\'est pas définie.',
-      start: 45, opts: { showTan: true }, task: 'Trouve un angle où tan θ n\'est pas définie.',
-      check: function (c) { return c.t === null; }
-    },
-    {
-      title: 'Les radians',
-      text: 'Un tour complet mesure 360°, soit 2π radians : 180° = π. Pour convertir, radians = degrés × π / 180. ' +
-        'Les repères du cercle sont maintenant affichés en radians.',
-      start: 90, opts: { radLabels: true }, task: 'Place P à 3π/4.',
-      check: function (c) { return dist(c.n, 135) < .5; }
-    }
-  ];
-
-  var lesson = { i: 0, done: false };
-
-  function showLesson(i) {
-    lesson.i = Math.max(0, Math.min(LESSONS.length - 1, i));
-    lesson.done = false;
-    var L = LESSONS[lesson.i], last = lesson.i === LESSONS.length - 1, o = L.opts || {};
-    setOptions({ showProj: true, showLabels: true, showTan: !!o.showTan, radLabels: !!o.radLabels });
-    $('lstep').textContent = 'Étape ' + (lesson.i + 1) + ' / ' + LESSONS.length;
-    $('lbar').style.width = (100 * lesson.i / LESSONS.length) + '%';
-    $('ltitle').textContent = L.title;
-    $('ltext').textContent = L.text;
-    $('ltaskText').textContent = L.task;
-    $('ltaskOk').textContent = '';
-    $('ltask').classList.remove('done');
-    $('lprev').disabled = lesson.i === 0;
-    $('lnext').textContent = last ? 'Relever les défis 🎮' : 'Suivant →';
-    setAngle(L.start);
-  }
-
-  function checkTask(c) {
-    if (lesson.done || !LESSONS[lesson.i].check(c)) return;
-    lesson.done = true;
-    $('ltask').classList.add('done');
-    $('ltaskOk').textContent = '✓ Réussi !';
-    $('lbar').style.width = (100 * (lesson.i + 1) / LESSONS.length) + '%';
-  }
-
-  // ---------- Mode Jouer : défis ----------
-
-  var ROUND = 8;
-  var OFF_AXIS = NOTABLE.filter(function (d) { return d % 90 !== 0; });
-  var VALUES = ['0', '1', '−1', '1/2', '−1/2', '√2/2', '−√2/2', '√3/2', '−√3/2'];
-  var POOL = { cos: VALUES, sin: VALUES, tan: ['0', '1', '−1', '√3', '−√3', '√3/3', '−√3/3', 'non définie'] };
-  var COL = { cos: 1, sin: 2, tan: 3 };
-  var INVERSE = { '√3': '√3/3', '√3/3': '√3', '−√3': '−√3/3', '−√3/3': '−√3' };
-  var game = { kind: null, last: 'place', i: 0, score: 0, streak: 0, bestStreak: 0, q: null, answered: false, used: [] };
-
-  function rnd(n) { return Math.floor(Math.random() * n); }
-  function pick(list) { return list[rnd(list.length)]; }
-  function shuffle(list) {
-    for (var i = list.length - 1; i > 0; i--) { var j = rnd(i + 1), t = list[i]; list[i] = list[j]; list[j] = t; }
-    return list;
-  }
-  function opposite(s) {
-    if (s === '0' || s === 'non définie') return null;
-    return s.charAt(0) === '−' ? s.slice(1) : '−' + s;
-  }
-  function freshAngle(list) {
-    var left = list.filter(function (d) { return game.used.indexOf(d) < 0; });
-    var a = pick(left.length ? left : list);
-    game.used.push(a);
-    return a;
-  }
-  function angleName(a, rad) { return rad ? EXACT[a][0] : a + '°'; }
-
-  // Énoncé « place le point » : chaque condition désigne un seul angle.
-  function placeQuestion(i) {
-    var a, c, prompt;
-    if (i < 3) {
-      a = freshAngle(NOTABLE);
-      prompt = 'θ = ' + EXACT[a][0] + (a === 0 ? '' : ' rad');
-    } else if (i < 6) {
-      a = freshAngle(OFF_AXIS); c = calc(a);
-      prompt = Math.random() < .5
-        ? 'cos θ = ' + EXACT[a][1] + ' et sin θ ' + (c.y > 0 ? '> 0' : '< 0')
-        : 'sin θ = ' + EXACT[a][2] + ' et cos θ ' + (c.x > 0 ? '> 0' : '< 0');
+function bindControls() {
+  function applyInput() {
+    var input = $('input');
+    if (setAngle(input.value, true, true)) {
+      input.value = fmt(store.get().angle, 3);
     } else {
-      a = freshAngle(OFF_AXIS); c = calc(a);
-      prompt = 'tan θ = ' + EXACT[a][3] + ' et cos θ ' + (c.x > 0 ? '> 0' : '< 0');
+      input.setAttribute('aria-invalid', 'true');
+      $('hint').classList.add('err');
+      $('hint').textContent = 'Valeur non reconnue. Exemples : 60 ; −45 ; 22,5 ; π/3 ; 3pi/4.';
     }
-    return { target: a, prompt: prompt };
   }
+  $('hint').textContent = HINT;
+  $('apply').addEventListener('click', applyInput);
+  $('input').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); applyInput(); } });
 
-  // Quatre propositions : la bonne, son opposée, la valeur « échangée », puis du hasard.
-  function quizOptions(a, fn) {
-    var correct = EXACT[a][COL[fn]], opts = [correct], cand = [];
-    var o = opposite(correct);
-    if (o) cand.push(o);
-    if (fn === 'tan') { if (INVERSE[correct]) cand.push(INVERSE[correct]); }
-    else cand.push(EXACT[a][fn === 'cos' ? 2 : 1]);
-    cand = cand.concat(shuffle(POOL[fn].slice()));
-    cand.forEach(function (v) { if (opts.length < 4 && opts.indexOf(v) < 0) opts.push(v); });
-    return { correct: correct, options: shuffle(opts) };
-  }
+  $('range').addEventListener('input', function () { setAngle(Number(this.value), Number(this.value) === 360); });
+  $('range').addEventListener('change', function () { store.refresh({ announce: true }); });
 
-  function quizQuestion(i) {
-    var a = freshAngle(NOTABLE), fn = pick(['cos', 'sin', 'tan']), q = quizOptions(a, fn);
-    q.target = a;
-    q.fn = fn;
-    q.label = fn + ' ' + angleName(a, i >= 4);
-    q.prompt = q.label + ' = ?';
-    return q;
-  }
+  each('[data-step]', function (b) {
+    b.addEventListener('click', function () { setAngle(store.get().angle + Number(b.dataset.step), false, true); });
+  });
 
-  function loadBest(kind) {
-    try { return Number(localStorage.getItem('trigolab.best.' + kind)) || 0; } catch (_) { return 0; }
-  }
-  function saveBest(kind, v) {
-    try { localStorage.setItem('trigolab.best.' + kind, String(v)); } catch (_) { /* stockage indisponible */ }
-  }
+  $('snap').addEventListener('change', function () { store.patch({ snap: this.checked }); });
+  ['showProj', 'showLabels', 'radLabels', 'showTan'].forEach(function (id) {
+    $(id).addEventListener('change', syncOptions);
+  });
+}
 
-  function setLocked(v) {
-    state.locked = v;
-    $('svg').classList.toggle('locked', v);
-    $('svg').setAttribute('aria-disabled', v);
-  }
+function bindModes() {
+  each('[data-tab]', function (b) {
+    b.addEventListener('click', function () { setMode(b.dataset.tab); });
+  });
+  $('lprev').addEventListener('click', function () { showLesson(lesson.i - 1); });
+  $('lnext').addEventListener('click', function () {
+    if (lesson.i < LESSONS.length - 1) showLesson(lesson.i + 1);
+    else setMode('play');
+  });
+  each('[data-game]', function (b) {
+    b.addEventListener('click', function () { startGame(b.dataset.game); });
+  });
+  $('gGo').addEventListener('click', advanceGame);
+  $('gQuit').addEventListener('click', showMenu);
+  $('gMenuBtn').addEventListener('click', showMenu);
+  $('gAgain').addEventListener('click', function () { startGame(game.last); });
+}
 
-  function showPanel(id) {
-    ['gMenu', 'gPlay', 'gEnd'].forEach(function (p) { $(p).classList.toggle('hidden', p !== id); });
-  }
-
-  function stopGame() {
-    game.kind = null;
-    setLocked(false);
-    $('target').classList.add('hidden');
-  }
-
-  function showMenu() {
-    stopGame();
-    showPanel('gMenu');
-    [['place', 'bestPlace'], ['quiz', 'bestQuiz']].forEach(function (g) {
-      var b = loadBest(g[0]);
-      $(g[1]).textContent = b ? '🏆 Record : ' + b + ' / ' + ROUND * 100 : 'Pas encore de record';
-    });
-  }
-
-  function startGame(kind) {
-    game.kind = game.last = kind;
-    game.i = 0; game.score = 0; game.streak = 0; game.bestStreak = 0; game.used = [];
-    setOptions({ showProj: true, showLabels: true, showTan: false, radLabels: false });
-    showPanel('gPlay');
-    nextQuestion();
-  }
-
-  function updateHud() {
-    $('gQ').textContent = 'Question ' + (game.i + 1) + ' / ' + ROUND;
-    $('gScore').textContent = '⭐ ' + game.score + ' pts';
-    $('gStreak').textContent = '🔥 Série : ' + game.streak;
-  }
-
-  function nextQuestion() {
-    if (game.i >= ROUND) { endGame(); return; }
-    game.answered = false;
-    $('target').classList.add('hidden');
-    $('gFeedback').textContent = '';
-    $('gFeedback').className = 'feedback';
-    $('gOptions').textContent = '';
-    updateHud();
-    if (game.kind === 'place') {
-      game.q = placeQuestion(game.i);
-      setLocked(false);
-      setAngle(norm(game.q.target + 60 + rnd(240)));
-      $('gHelp').textContent = 'Déplace P (glisser, toucher ou flèches du clavier), puis valide.';
-      $('gGo').textContent = 'Valider';
-      $('gGo').classList.remove('hidden');
-    } else {
-      game.q = quizQuestion(game.i);
-      setLocked(true);
-      setAngle(game.q.target);
-      $('gHelp').textContent = 'Choisis la valeur exacte.';
-      $('gGo').classList.add('hidden');
-      game.q.options.forEach(function (v) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.textContent = v;
-        b.addEventListener('click', function () { answerQuiz(b, v); });
-        $('gOptions').appendChild(b);
-      });
+function bindKeyboard() {
+  $('svg').addEventListener('keydown', function (e) {
+    var s = store.get();
+    if (e.key === 'Enter' && s.mode === 'play' && game.kind) { e.preventDefault(); advanceGame(); return; }
+    if (s.locked) return;
+    var a = null, step = e.shiftKey ? 5 : 1;
+    switch (e.key) {
+      case 'ArrowLeft': case 'ArrowDown': a = s.angle - step; break;
+      case 'ArrowRight': case 'ArrowUp': a = s.angle + step; break;
+      case 'PageDown': a = s.angle - 15; break;
+      case 'PageUp': a = s.angle + 15; break;
+      case 'Home': a = 0; break;
+      case 'End': a = 360; break;
     }
-    $('gPrompt').textContent = game.q.prompt;
+    if (a !== null) { e.preventDefault(); setAngle(a, a === 360, true); }
+  });
+}
+
+function bind() {
+  bindPointer();
+  bindControls();
+  bindModes();
+  bindKeyboard();
+}
+
+// ===== src/ui/selftest.js =====
+// Autotests de l'Interface : géométrie de la vue et tests DOM étendus sur la vraie page.
+// Ils pilotent la page (clics, saisie, clavier, pointeur, onglets) puis restaurent l'état initial.
+
+
+function runUiChecks() {
+  var fail = [], count = 0, skipped = [];
+  function ok(name, v) { count++; if (!v) fail.push('UI · ' + name); }
+  function near(a, b, t) { return Math.abs(a - b) < (t || 1e-6); }
+  function num(id, at) { return Number($(id).getAttribute(at)); }
+  function angle() { return store.get().angle; }
+  function key(el, k, shift) {
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: k, shiftKey: !!shift, bubbles: true, cancelable: true }));
+  }
+  function typeApply(v) { $('input').value = v; $('apply').click(); }
+  function slide(v) { $('range').value = v; $('range').dispatchEvent(new Event('input', { bubbles: true })); }
+  function step(s) { document.querySelector('[data-step="' + s + '"]').click(); }
+  function toggle(id) { var el = $(id); el.checked = !el.checked; el.dispatchEvent(new Event('change', { bubbles: true })); }
+  function visible(id) { return !$(id).closest('section').classList.contains('hidden'); }
+
+  var saved = { angle: angle(), snap: store.get().snap, options: getOptions() };
+
+  // Géométrie de la vue : aller-retour angle ↔ point SVG.
+  for (var d = 0; d < 360; d++) {
+    var p = polar(d), back = norm(Math.atan2(C - p.y, p.x - C) * 180 / Math.PI);
+    ok('angle ' + d, dist(d, back) < 1e-8);
+    ok('rayon ' + d, Math.abs(Math.hypot(p.x - C, p.y - C) - R) < 1e-8);
   }
 
-  function award(points, good, message) {
-    game.answered = true;
-    game.score += points;
-    game.streak = good ? game.streak + 1 : 0;
-    game.bestStreak = Math.max(game.bestStreak, game.streak);
-    if (good && game.streak >= 3) message += ' 🔥 ' + game.streak + ' d\'affilée !';
-    $('gFeedback').textContent = message;
-    $('gFeedback').className = 'feedback ' + (good ? 'good' : 'bad');
-    $('gGo').textContent = game.i === ROUND - 1 ? 'Voir le résultat' : 'Suivant →';
-    $('gGo').classList.remove('hidden');
-    setLocked(true);
-    updateHud();
+  // Scénario de référence 60° et saisies
+  setAngle(60);
+  ok('UI 60', $('deg').textContent === '60°' && $('range').value === '60' && $('radx').textContent === 'π/3');
+  ok('UI 60 coordonnées', $('coords').textContent === '(0,5 ; 0,866025)');
+  typeApply('120');
+  ok('saisie 120', $('deg').textContent === '120°' && $('quad').textContent === 'Quadrant II' &&
+    $('ref').textContent === 'Angle de référence : 60°' && $('radx').textContent === '2π/3');
+  typeApply('22,5');
+  ok('virgule décimale', angle() === 22.5 && $('deg').textContent === '22,5°' && $('input').value === '22,5');
+  typeApply('');
+  ok('saisie vide ignorée', angle() === 22.5 && $('input').getAttribute('aria-invalid') === 'true' && $('hint').classList.contains('err'));
+  typeApply('abc');
+  ok('saisie invalide ignorée', angle() === 22.5);
+  typeApply('-30');
+  ok('angle négatif', angle() === 330 && !$('input').hasAttribute('aria-invalid'));
+  typeApply('720');
+  ok('720° conservé à 360°', angle() === 360 && $('deg').textContent === '360°' && $('radx').textContent === '2π');
+  typeApply('2pi/3');
+  ok('saisie en radians', angle() === 120);
+  $('input').value = '60';
+  key($('input'), 'Enter');
+  ok('touche Entrée', angle() === 60);
+
+  // Curseur
+  slide('360');
+  ok('curseur 360', $('deg').textContent === '360°');
+  slide('90');
+  ok('curseur 90', $('tan').textContent === 'non définie' && $('signs').textContent === 'cos 0 · sin + · tan ∅');
+  slide('12.3');
+  ok('curseur décimal', angle() === 12.3 && $('radx').textContent.indexOf('≈') === 0);
+
+  // Incréments
+  setAngle(0);
+  step(-15); ok('−15° depuis 0', angle() === 345);
+  step(15); ok('+15° revient à 0', angle() === 0 && $('deg').textContent === '0°');
+  step(1); step(1); step(1); ok('+1° ×3', angle() === 3);
+  step(-5); ok('−5° franchit 0', angle() === 358);
+
+  // Angles remarquables : chaque bouton synchronise toutes les valeurs exactes
+  Array.prototype.forEach.call($('quick').children, function (b) {
+    b.click();
+    var d = Number(b.dataset.a), e = EXACT[d], on = $('quick').querySelectorAll('.on');
+    ok('remarquable ' + d, angle() === d && $('radx').textContent === e[0] && $('cosx').textContent === 'exact : ' + e[1] &&
+      $('sinx').textContent === 'exact : ' + e[2] &&
+      $('tanx').textContent === (e[3] === 'non définie' ? 'cos θ = 0' : 'exact : ' + e[3]) &&
+      $('coordsx').textContent === 'exact : (' + e[1] + ' ; ' + e[2] + ')' && on.length === 1 && on[0] === b &&
+      b.getAttribute('aria-pressed') === 'true');
+  });
+  ok('16 angles remarquables', $('quick').children.length === NOTABLE.length);
+
+  // Clavier sur le cercle
+  var svg = $('svg');
+  setAngle(10);
+  key(svg, 'ArrowRight'); ok('flèche droite', angle() === 11);
+  key(svg, 'ArrowUp', true); ok('Maj + flèche haut', angle() === 16);
+  key(svg, 'ArrowLeft'); ok('flèche gauche', angle() === 15);
+  key(svg, 'PageUp'); ok('Page précédente', angle() === 30);
+  key(svg, 'PageDown'); ok('Page suivante', angle() === 15);
+  key(svg, 'Home'); ok('Début', angle() === 0);
+  key(svg, 'ArrowDown'); ok('flèche bas franchit 0', angle() === 359);
+  key(svg, 'End'); ok('Fin', angle() === 360 && $('deg').textContent === '360°');
+  key(svg, 'a'); ok('touche sans effet', angle() === 360);
+
+  // Géométrie SVG synchronisée
+  [0, 45, 137.5, 270].forEach(function (d) {
+    setAngle(d);
+    var p = polar(d);
+    ok('géométrie ' + d, near(num('point', 'cx'), p.x) && near(num('point', 'cy'), p.y) &&
+      near(num('halo', 'cx'), p.x) && near(num('ray', 'x2'), p.x) && near(num('ray', 'y2'), p.y) &&
+      near(num('px', 'x2'), p.x) && near(num('px', 'y2'), C) && near(num('py', 'x2'), C) && near(num('py', 'y2'), p.y) &&
+      near(num('segx', 'x2'), p.x) && near(num('segy', 'y2'), p.y) &&
+      num('svg', 'aria-valuenow') === d && Number($('range').value) === d);
+  });
+  setAngle(90);
+  ok('tangente masquée à 90°', $('tanPt').getAttribute('visibility') === 'hidden');
+  setAngle(45);
+  ok('point T à 45°', $('tanPt').getAttribute('visibility') === 'visible' && near(num('tanPt', 'cy'), C - R));
+
+  // Signes par quadrant
+  [[45, 'cos + · sin + · tan +'], [135, 'cos − · sin + · tan −'], [225, 'cos − · sin − · tan +'], [315, 'cos + · sin − · tan −']]
+    .forEach(function (s) { setAngle(s[0]); ok('signes ' + s[0], $('signs').textContent === s[1]); });
+
+  // Options d'affichage
+  setOptions({ showProj: true, showLabels: true, radLabels: false, showTan: false });
+  toggle('showProj'); ok('masquer projections', $('projs').classList.contains('hidden'));
+  toggle('showProj'); ok('afficher projections', !$('projs').classList.contains('hidden'));
+  toggle('showLabels'); ok('masquer repères', $('labels').classList.contains('hidden'));
+  toggle('showLabels'); ok('afficher repères', !$('labels').classList.contains('hidden'));
+  toggle('radLabels'); ok('repères en radians', $('labels').textContent.indexOf('π/6') >= 0);
+  toggle('radLabels'); ok('repères en degrés', $('labels').textContent.indexOf('30°') >= 0);
+  toggle('showTan'); ok('axe des tangentes', !$('tanGroup').classList.contains('hidden'));
+  toggle('showTan');
+  toggle('snap'); ok('aimantation basculée', store.get().snap === !saved.snap);
+  toggle('snap'); ok('aimantation rétablie', store.get().snap === saved.snap);
+
+  // Annonce aux lecteurs d'écran et explication de la méthode géométrique
+  $('live').textContent = '';
+  typeApply('30');
+  ok('annonce aria-live', $('live').textContent.indexOf('Angle 30 degrés') === 0);
+  ok('explication', $('explain').textContent.indexOf('Quadrant I.') === 0);
+
+  // Pointeur (souris, tactile, stylet)
+  var r = svg.getBoundingClientRect();
+  if (r.width > 0 && typeof PointerEvent === 'function') {
+    var ptr = function (type, d, rad, extra) {
+      var p = polar(d, rad), init = {
+        clientX: r.left + p.x * r.width / 760, clientY: r.top + p.y * r.height / 760,
+        pointerId: 7, pointerType: 'mouse', button: 0, bubbles: true, cancelable: true
+      };
+      for (var k in extra || {}) init[k] = extra[k];
+      $('hit').dispatchEvent(new PointerEvent(type, init));
+    };
+    store.patch({ snap: true });
+    setAngle(100);
+    ptr('pointerdown', 32); ok('appui aimanté (32° → 30°)', angle() === 30);
+    ptr('pointermove', 200); ptr('pointerup', 200); ok('glisser puis relâcher', near(angle(), 200, .5));
+    ok('relâcher annonce', $('live').textContent.indexOf('Angle 200') === 0);
+    store.patch({ snap: false });
+    ptr('pointerdown', 32); ptr('pointerup', 32); ok('appui libre (32°)', near(angle(), 32, .5));
+    ptr('pointerdown', 50, 150, { pointerType: 'touch' }); ptr('pointerup', 50, 150, { pointerType: 'touch' });
+    ok('toucher à l\'intérieur du cercle', near(angle(), 50, .5));
+    setAngle(100);
+    ptr('pointerdown', 0, 0); ok('centre ignoré', angle() === 100);
+    ptr('pointerdown', 200, R, { button: 2 }); ok('clic droit ignoré', angle() === 100);
+    ptr('pointermove', 200); ok('survol sans appui ignoré', angle() === 100);
+    store.patch({ locked: true });
+    ptr('pointerdown', 200); ok('point verrouillé', angle() === 100);
+    store.patch({ locked: false, snap: saved.snap });
+  } else {
+    skipped.push('pointeur (page non affichée)');
   }
 
-  function validatePlace() {
-    var t = game.q.target, err = dist(state.angle, t), p = polar(t);
-    var points = err <= 1.5 ? 100 : err <= 5 ? 70 : err <= 10 ? 30 : 0;
-    attrs($('target'), { cx: p.x, cy: p.y });
-    $('target').classList.remove('hidden');
-    var answer = t + '° (' + EXACT[t][0] + ')';
-    award(points, err <= 5, err <= 5
-      ? pick(['Bravo !', 'Dans le mille !', 'Excellent !']) + ' ' + answer + ' · +' + points + ' pts'
-      : (points ? 'Presque ! ' : 'Raté ! ') + 'La cible était ' + answer + ', écart ' + fmt(err, 1) + '°.' +
-        (points ? ' +' + points + ' pts' : ''));
-  }
+  // Modes
+  document.querySelector('[data-tab=learn]').click();
+  ok('onglet Apprendre', visible('ltitle') && visible('deg') && !visible('quick') && $('ltitle').textContent === LESSONS[0].title);
+  setAngle(90);
+  ok('consigne validée', $('ltaskOk').textContent === '✓ Réussi !');
+  document.querySelector('[data-tab=play]').click();
+  ok('onglet Jouer', !$('gMenu').classList.contains('hidden') && !visible('deg'));
+  document.querySelector('[data-game=quiz]').click();
+  ok('quiz : point verrouillé', store.get().locked && svg.classList.contains('locked') && $('gOptions').children.length === 4);
+  $('gQuit').click();
+  ok('quitter déverrouille', !store.get().locked && !$('gMenu').classList.contains('hidden'));
+  setMode('explore');
+  ok('retour Explorer', visible('quick') && store.get().mode === 'explore');
 
-  function answerQuiz(btn, v) {
-    if (game.answered) return;
-    var q = game.q, good = v === q.correct, c = calc(q.target);
-    Array.prototype.forEach.call($('gOptions').children, function (b) {
-      b.disabled = true;
-      if (b.textContent === q.correct) b.classList.add('good');
-    });
-    if (!good) btn.classList.add('bad');
-    var why = q.fn === 'tan' && c.t === null
-      ? 'cos θ = 0, donc la tangente n\'est pas définie.'
-      : quadrant(q.target) + ', angle de référence ' + fmt(refAngle(q.target), 1) + '°.';
-    award(good ? 100 : 0, good, (good ? 'Exact ! ' : 'Non : ') + q.label + ' = ' + q.correct + '. ' + why);
-  }
+  // Restauration
+  setOptions(saved.options);
+  store.patch({ snap: saved.snap });
+  $('snap').checked = saved.snap;
+  setAngle(saved.angle);
+  $('live').textContent = '';
+  return { count: count, fail: fail, skipped: skipped };
+}
 
-  function advanceGame() {
-    if (!game.kind) return;
-    if (game.answered) { game.i++; nextQuestion(); }
-    else if (game.kind === 'place') validatePlace();
-  }
+// ===== src/ui/main.js =====
+// Point d'entrée de l'Interface : construction, abonnement du rendu à l'état, autotests.
 
-  function endGame() {
-    var kind = game.kind, max = ROUND * 100, best = loadBest(kind), record = game.score > best;
-    var stars = game.score >= .85 * max ? 3 : game.score >= .55 * max ? 2 : game.score >= .25 * max ? 1 : 0;
-    if (record) saveBest(kind, game.score);
-    stopGame();
-    showPanel('gEnd');
-    $('gStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
-    $('gStars').setAttribute('aria-label', stars + ' étoile(s) sur 3');
-    $('gSummary').textContent = ['Passe par le mode Apprendre, puis retente ta chance !',
-      'Bon début, rejoue pour progresser !', 'Très bien joué !', 'Maître du cercle ! 🏆'][stars] +
-      ' Score : ' + game.score + ' / ' + max + ' · meilleure série : ' + game.bestStreak +
-      (record ? ' · 🎉 Nouveau record !' : best ? ' · record : ' + best : '');
-  }
 
-  // ---------- Autotests ----------
+const VERSION = '1.2.0';
 
-  // Valeur numérique d'une forme exacte ('−√3/2' → −0,866…).
-  function exactNum(s) {
-    if (s === 'non définie') return null;
-    var neg = s.charAt(0) === '−', k = neg ? s.slice(1) : s;
-    var v = { '0': 0, '1': 1, '1/2': .5, '√2/2': Math.SQRT2 / 2, '√3/2': Math.sqrt(3) / 2, '√3': Math.sqrt(3), '√3/3': Math.sqrt(3) / 3 }[k];
-    return neg ? -v : v;
-  }
+store.subscribe(function (s, meta) {
+  render(s, meta);
+  if (s.mode === 'learn') checkTask(compute(s.angle));
+});
 
-  function tests() {
-    var fail = [], count = 0;
-    function ok(name, v) { count++; if (!v) fail.push(name); }
-    function near(a, b) { return Math.abs(a - b) < 1e-9; }
+function start() {
+  buildCircle();
+  bind();
+  setMode('explore');
+  setAngle(45);
+  var core = runCoreChecks(), ui = runUiChecks();
+  var fails = core.fail.concat(ui.fail), total = core.count + ui.count, status = $('status');
+  status.textContent = fails.length ? fails.length + ' test(s) en échec' : 'Prêt · ' + total + ' tests OK';
+  status.classList.toggle('warn', fails.length > 0);
+  $('diag').textContent = (fails.length ? 'Échecs :\n' + fails.join('\n') : 'Tous les autotests sont réussis (' + total + ').') +
+    '\nMoteur : ' + core.count + ' · Interface : ' + ui.count +
+    (ui.skipped.length ? '\nNon exécutés : ' + ui.skipped.join(', ') : '') +
+    '\nScénario 60° synchronisé.\nVersion : ' + VERSION + '\nPointer Events : ' + ('PointerEvent' in window ? 'oui' : 'non');
+}
 
-    for (var d = 0; d < 360; d++) {
-      var p = polar(d), back = norm(Math.atan2(C - p.y, p.x - C) * 180 / Math.PI);
-      ok('angle ' + d, dist(d, back) < 1e-8);
-      ok('rayon ' + d, Math.abs(Math.hypot(p.x - C, p.y - C) - R) < 1e-8);
-      var c = calc(d);
-      ok('cos²+sin² ' + d, near(c.x * c.x + c.y * c.y, 1));
-    }
-    NOTABLE.forEach(function (d) {
-      ok('exact ' + d, EXACT[d].length === 4);
-    });
-    var c60 = calc(60);
-    ok('60 cos', near(c60.x, .5));
-    ok('60 sin', near(c60.y, Math.sqrt(3) / 2));
-    ok('60 tan', near(c60.t, Math.sqrt(3)));
-    ok('90 tan', calc(90).t === null);
-    ok('270 tan', calc(270).t === null);
-    ok('ref 120', refAngle(120) === 60);
-    ok('ref 210', refAngle(210) === 30);
-    ok('ref 300', refAngle(300) === 60);
-    ok('parse 45', parseAngle('45') === 45);
-    ok('parse 22,5', parseAngle('22,5') === 22.5);
-    ok('parse −30°', parseAngle('−30°') === -30);
-    ok('parse π/3', parseAngle('π/3') === 60);
-    ok('parse 2pi/3', parseAngle('2pi/3') === 120);
-    ok('parse -π', parseAngle('-π') === -180);
-    ok('parse vide', isNaN(parseAngle('')));
-    ok('parse abc', isNaN(parseAngle('abc')));
-    ok('parse π/0', isNaN(parseAngle('π/0')));
-    ok('fmt négatif', fmt(-0.5) === '−0,5');
-
-    // Table exacte cohérente avec les calculs.
-    NOTABLE.forEach(function (d) {
-      var c = calc(d), e = EXACT[d], t = exactNum(e[3]);
-      ok('table cos ' + d, near(exactNum(e[1]), c.x));
-      ok('table sin ' + d, near(exactNum(e[2]), c.y));
-      ok('table tan ' + d, t === null ? c.t === null : near(t, c.t));
-      ok('table rad ' + d, near(parseAngle(e[0]), d));
-    });
-    // Énoncés « place le point » : une seule solution entre 0° et 359°.
-    function unique(a, pred) {
-      var hits = [];
-      for (var k = 0; k < 360; k++) if (pred(calc(k))) hits.push(k);
-      return hits.length === 1 && hits[0] === a;
-    }
-    OFF_AXIS.forEach(function (a) {
-      var c = calc(a), e = EXACT[a];
-      ok('énoncé cos ' + a, unique(a, function (k) { return near(k.x, exactNum(e[1])) && k.y * c.y > 0; }));
-      ok('énoncé sin ' + a, unique(a, function (k) { return near(k.y, exactNum(e[2])) && k.x * c.x > 0; }));
-      ok('énoncé tan ' + a, unique(a, function (k) { return k.t !== null && near(k.t, exactNum(e[3])) && k.x * c.x > 0; }));
-    });
-    // Quiz : 4 propositions distinctes dont la bonne.
-    NOTABLE.forEach(function (a) {
-      ['cos', 'sin', 'tan'].forEach(function (fn) {
-        var q = quizOptions(a, fn), set = {};
-        q.options.forEach(function (v) { set[v] = 1; });
-        ok('quiz ' + fn + ' ' + a, q.options.length === 4 && Object.keys(set).length === 4 && q.options.indexOf(q.correct) >= 0);
-      });
-    });
-    // Leçons : la consigne n'est pas déjà remplie au départ et reste réalisable.
-    LESSONS.forEach(function (L, i) {
-      var solvable = false;
-      for (var k = 0; k < 360 && !solvable; k++) solvable = L.check(calc(k));
-      ok('leçon ' + (i + 1), !L.check(calc(L.start)) && solvable);
-    });
-
-    var saved = state.angle;
-    setAngle(60);
-    ok('UI 60', $('deg').textContent === '60°' && $('range').value === '60' && $('radx').textContent === 'π/3');
-    ok('UI 60 coords', $('coords').textContent === '(0,5 ; 0,866025)');
-    ok('vide ignoré', setAngle('', true) === false && state.angle === 60);
-    setAngle(360, true);
-    ok('UI 360', $('deg').textContent === '360°' && $('radx').textContent === '2π');
-    setAngle(saved);
-    return { count: count, fail: fail };
-  }
-
-  // ---------- Démarrage ----------
-
-  try {
-    build();
-    bind();
-    setMode('explore');
-    setAngle(45);
-    var t = tests();
-    var status = $('status');
-    status.textContent = t.fail.length ? t.fail.length + ' test(s) en échec' : 'Prêt · ' + t.count + ' tests OK';
-    status.classList.toggle('warn', t.fail.length > 0);
-    $('diag').textContent = (t.fail.length
-      ? 'Échecs :\n' + t.fail.join('\n')
-      : 'Tous les autotests sont réussis (' + t.count + ').\nScénario 60° synchronisé.') +
-      '\nVersion : ' + VERSION + '\nPointer Events : ' + ('PointerEvent' in window ? 'oui' : 'non');
-  } catch (err) {
-    $('status').textContent = 'Erreur de démarrage';
-    $('status').classList.add('warn');
-    $('diag').textContent = String(err && err.stack || err);
-  }
+try {
+  start();
+} catch (err) {
+  $('status').textContent = 'Erreur de démarrage';
+  $('status').classList.add('warn');
+  $('diag').textContent = String(err && err.stack || err);
+}
 })();
 </script>
 </body>

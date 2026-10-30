@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.2.0
+
+Restructuration pour deux agents distincts sur un seul jeu d'instructions. Aucun changement fonctionnel visible, en dehors de deux corrections.
+
+- **Sources modulaires** dans `src/`. `index.html` est désormais généré par `scripts/build-standalone.py` (vérification des imports, des noms et des cycles) et reste un fichier unique sans dépendance. Une version de développement par modules ES est disponible (`--dev`).
+- **Deux agents** : Moteur (`src/core`, `src/pedagogy`, `src/solutions`) et Interface (`src/ui`, `src/styles`). Le contrat entre eux est `src/api.js`. `scripts/check_boundaries.py` fait respecter les zones (DOM interdit dans le Moteur, Interface limitée à `api.js`, contrôle par branche `agent/…`).
+- **Un seul jeu d'instructions** : `AGENTS.md` (chargé par `CLAUDE.md`), `SPEC.md` réécrit en exigences numérotées, nouveau `ARCHITECTURE.md`.
+- **État central** (`createStore`) limité aux valeurs sources ; moteur `compute()` seule source des valeurs.
+- **Registre de méthodes de résolution** avec contrat commun ; première méthode : géométrique (elle fournit l'explication affichée).
+- **Tests** : 30 tests `node --test` (moteur, pédagogie avec hasard reproductible, contrat des méthodes, page réelle, outillage). Dans la page : 1 404 autotests, dont les tests DOM étendus de la v0.1 portés sur l'interface actuelle (pointeur, clavier, modes).
+- **CI** sur chaque PR : livrable à jour, frontières, tests, structure HTML ; déploiement Pages uniquement depuis `main`.
+- Corrections :
+  - un score de 440/800 (exactement 55 %) n'obtenait qu'une étoile au lieu de deux, à cause d'une erreur d'arrondi ;
+  - `exactNum` renvoyait NaN au lieu de signaler une forme inconnue.
+
 ## v1.1.0
 
 Orientation éducative et récréative : trois modes accessibles par onglets.

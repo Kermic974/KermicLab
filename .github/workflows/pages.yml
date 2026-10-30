@@ -1,25 +1,36 @@
-name: Validate and deploy Pages
+name: CI et déploiement Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
   pages: write
   id-token: write
 concurrency:
-  group: pages
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: python3 scripts/check_html.py
+      - name: index.html à jour avec src/
+        run: python3 scripts/build-standalone.py --check
+      - name: Frontières entre agents
+        run: python3 scripts/check_boundaries.py --agent auto --base origin/${{ github.base_ref || 'main' }}
+      - name: Tests
+        run: node --test "tests/**/*.test.js"
+      - name: Structure du livrable
+        run: python3 scripts/check_html.py
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: validate
     environment:
       name: github-pages

@@ -9,6 +9,32 @@
       "problemMatcher": []
     },
     {
+      "label": "Construire",
+      "type": "shell",
+      "command": "python3 scripts/build-standalone.py",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Construire (développement)",
+      "type": "shell",
+      "command": "python3 scripts/build-standalone.py --dev",
+      "problemMatcher": []
+    },
+    {
+      "label": "Tout vérifier",
+      "type": "shell",
+      "command": "npm run check",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Vérifier HTML",
       "type": "shell",
       "command": "python3 scripts/check_html.py",

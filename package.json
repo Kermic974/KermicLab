@@ -1,0 +1,11 @@
+{
+  "name": "trigolab",
+  "private": true,
+  "type": "module",
+  "description": "Aucune dépendance : ce fichier sert seulement à déclarer les modules ES et les commandes.",
+  "scripts": {
+    "build": "python3 scripts/build-standalone.py",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "check": "python3 scripts/build-standalone.py --check && python3 scripts/check_boundaries.py && node --test \"tests/**/*.test.js\" && python3 scripts/check_html.py"
+  }
+}
