@@ -2,9 +2,9 @@
 
 Laboratoire pédagogique web consacré à la trigonométrie.
 
-## Version initiale
+## Version 1.0
 
-L'application actuelle est un cercle trigonométrique interactif autonome, pensé pour mobile et desktop.
+L'application est un cercle trigonométrique interactif autonome (un seul fichier `index.html`), pensée pour mobile et desktop. Les versions archivées sont dans `versions/`.
 
 ### Fonctions
 
@@ -15,6 +15,10 @@ L'application actuelle est un cercle trigonométrique interactif autonome, pens�
 - projections x/y et secteur angulaire ;
 - aimantation optionnelle ;
 - contrôles ±1°, ±5° et ±15° ;
+- saisie en degrés (virgule acceptée) ou en radians (`π/3`, `2pi/3`) ;
+- axe des tangentes optionnel ;
+- repères en degrés ou en radians ;
+- angle de référence et explication contextuelle ;
 - diagnostic et autotests intégrés ;
 - aucune dépendance externe obligatoire.
 
