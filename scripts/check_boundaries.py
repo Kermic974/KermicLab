@@ -21,7 +21,7 @@ ZONES = {
 # Contrat entre agents : modifiable par l'un ou l'autre, mais toujours signalé pour coordination.
 CONTRACT = ["src/api.js", "AGENTS.md", "SPEC.md", "ARCHITECTURE.md"]
 # Fichiers communs : outillage, documentation, livrable généré.
-COMMON = ["index.html", "CHANGELOG.md", "README.md", "CLAUDE.md", "package.json", "LICENSE", ".gitignore",
+COMMON = ["index.html", "CHANGELOG.md", "PLAN.md", "README.md", "CLAUDE.md", "package.json", "LICENSE", ".gitignore",
           "scripts/", "tests/build/", ".github/", ".vscode/", "versions/", "trigoLab.code-workspace"]
 IGNORED = ["src/dev.html"]
 

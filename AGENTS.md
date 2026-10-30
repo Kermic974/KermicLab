@@ -5,6 +5,7 @@ Ce fichier est **le seul jeu d'instructions** du dépôt. Il s'applique à tout 
 - **Quoi construire** : `SPEC.md`, exigences numérotées (F-, M-, E-, A-, D-, S-, X-, Q-).
 - **Comment c'est organisé** : `ARCHITECTURE.md`.
 - **Qui fait quoi** : ce fichier, § Les deux agents.
+- **Quoi faire ensuite** : `PLAN.md`, lots numérotés avec branche, fichiers, tests, critères d'acceptation et prompt de lancement.
 
 La langue du produit, des messages de commit et de la documentation est le français.
 
@@ -54,7 +55,7 @@ Le dépôt est partagé entre deux agents aux périmètres disjoints. La liste e
 ### Zones communes
 
 - **Contrat** (`src/api.js`, `SPEC.md`, `ARCHITECTURE.md`, `AGENTS.md`) : modifiable par les deux, toujours signalé par la CI.
-- **Outillage et documentation** (`scripts/`, `tests/build/`, `.github/`, `README.md`, `CHANGELOG.md`, `versions/`, `index.html` généré) : modifiables par les deux.
+- **Outillage et documentation** (`scripts/`, `tests/build/`, `.github/`, `README.md`, `CHANGELOG.md`, `PLAN.md`, `versions/`, `index.html` généré) : modifiables par les deux.
 
 ## Contrat entre agents
 
