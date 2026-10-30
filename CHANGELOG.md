@@ -10,6 +10,7 @@ Orientation éducative et récréative : trois modes accessibles par onglets.
   - 🎯 *Place le point* : placer P à partir d'une valeur exacte (`θ = 5π/6`, `cos θ = −1/2 et sin θ > 0`, `tan θ = −√3 et cos θ < 0`), avec une difficulté croissante et des points selon la précision.
   - 🧠 *Quiz des valeurs* : retrouver le cos, sin ou tan exact parmi 4 propositions (les pièges sont l'opposé et la valeur échangée), avec une explication à chaque réponse.
   - Score, série 🔥, étoiles de fin de partie et record conservé dans le navigateur.
+- Correction : `norm()` ajoutait du bruit flottant (même correctif que la v0.1).
 - 1 274 autotests, qui vérifient aussi la table des valeurs exactes, l'unicité de la solution de chaque énoncé, les propositions du quiz et la faisabilité des consignes.
 
 ## v1.0.0
@@ -33,6 +34,35 @@ Version finale du draft « Studio V5 ».
 - Clavier : PageUp/PageDown (±15°) ; `aria-valuetext` et boutons `aria-pressed`.
 - Glissement fluide via `requestAnimationFrame` ; cercle fixe à l'écran sur desktop.
 - Code source lisible et commenté ; 1 118 autotests intégrés.
+
+## v0.1.0
+
+Stabilisation et tests DOM étendus (sur la base de la v0.0, sans les fonctionnalités de la v1.0). Fichier : `versions/v0.1/standalone.html`.
+
+### Stabilisation
+
+- Angle de référence corrigé dans les quadrants II, III et IV.
+- Saisie vide ou invalide ignorée (elle ramenait l'angle à 0°), signalée par `aria-invalid`.
+- Virgule décimale acceptée (`22,5`) ; champ texte à clavier décimal.
+- Zone morte au centre du cercle (plus de saut à 0°).
+- `norm()` sans bruit flottant (12,3° devenait 12,300000000000011°), trouvé par les nouveaux tests.
+- Fin de glissement fiabilisée (`lostpointercapture`) ; clic droit ignoré.
+- Boutons d'incrément sur une seule ligne.
+
+### Tests DOM étendus
+
+60 tests qui pilotent la vraie page puis restaurent son état :
+
+- saisie et bouton Appliquer (entier, virgule, vide, invalide, négatif, 720°, touche Entrée) ;
+- curseur (360°, 90°, valeur décimale) ;
+- incréments ±1°, ±5°, ±15° avec passage par 0° ;
+- les 16 angles remarquables (valeurs exactes et bouton actif) ;
+- clavier sur le cercle (flèches, Maj, Début, Fin) ;
+- géométrie SVG (point, rayon, projections, `aria-valuenow`, curseur) ;
+- signes par quadrant, options d'affichage, annonce `aria-live` ;
+- pointeur : appui aimanté, glisser, appui libre, toucher, centre, clic droit et survol ignorés.
+
+Les tests de pointeur sont signalés « non exécutés » quand la page n'est pas affichée. Au total : 792 autotests (732 logiques et 60 DOM).
 
 ## v0.0.0
 

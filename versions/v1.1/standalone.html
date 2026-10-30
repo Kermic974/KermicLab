@@ -349,7 +349,8 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
 
   // ---------- Mathématiques ----------
 
-  function norm(v) { return ((v % 360) + 360) % 360; }
+  // Sans « + 360 » systématique, qui ajoutait du bruit flottant (12.3 → 12.300000000000011).
+  function norm(v) { var r = v % 360; return r < 0 ? r + 360 : r + 0; }
 
   function clean(v) {
     if (Math.abs(v) < EPS) return 0;

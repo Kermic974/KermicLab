@@ -57,7 +57,7 @@ P = (0,5 ; 0,866025)
 ## Roadmap
 
 - v0.0 : socle interactif autonome ;
-- v0.1 : stabilisation et tests DOM étendus ;
+- v0.1 : stabilisation et tests DOM étendus — livrée (`versions/v0.1`) ;
 - v0.2 : mode pédagogique enrichi ;
 - v0.3 : PWA et fonctionnement hors ligne ;
 - v1.1 : orientation éducative et récréative (modes Explorer, Apprendre et Jouer) — livrée ;
