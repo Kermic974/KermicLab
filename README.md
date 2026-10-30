@@ -2,6 +2,8 @@
 
 Laboratoire pédagogique web consacré à la trigonométrie.
 
+Dépôt : https://github.com/Kermic974/trigoLab
+
 ## Version 1.1
 
 Trois modes :
