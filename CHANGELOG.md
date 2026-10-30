@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.0
+
+Orientation éducative et récréative : trois modes accessibles par onglets.
+
+- **Explorer** : le cercle libre de la v1.0, inchangé.
+- **Apprendre** : parcours guidé en 8 étapes (cercle unité, cosinus, sinus, cos² + sin² = 1, quadrants et signes, symétries et angle de référence, tangente, radians). Chaque étape règle l'affichage et propose une consigne « À toi » vérifiée automatiquement, avec une barre de progression.
+- **Jouer** : deux défis de 8 questions.
+  - 🎯 *Place le point* : placer P à partir d'une valeur exacte (`θ = 5π/6`, `cos θ = −1/2 et sin θ > 0`, `tan θ = −√3 et cos θ < 0`), avec une difficulté croissante et des points selon la précision.
+  - 🧠 *Quiz des valeurs* : retrouver le cos, sin ou tan exact parmi 4 propositions (les pièges sont l'opposé et la valeur échangée), avec une explication à chaque réponse.
+  - Score, série 🔥, étoiles de fin de partie et record conservé dans le navigateur.
+- 1 274 autotests, qui vérifient aussi la table des valeurs exactes, l'unicité de la solution de chaque énoncé, les propositions du quiz et la faisabilité des consignes.
+
 ## v1.0.0
 
 Version finale du draft « Studio V5 ».

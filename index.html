@@ -75,6 +75,34 @@ input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--cyan); }
 summary { cursor: pointer; font-weight: 700; margin-top: 8px; }
 .diag { white-space: pre-wrap; color: #a9bdd1; background: #06121e; padding: 10px; border-radius: 10px; font-size: .85rem; }
 footer { margin-top: 16px; text-align: center; font-size: .85rem; color: var(--muted); }
+/* Modes */
+.tabs { display: flex; gap: 8px; margin: 0 0 14px; }
+.tabs button { flex: 1 1 0; min-width: 0; border-radius: 999px; background: #0b1f33; }
+.tabs button[aria-selected=true] { background: var(--cyan); color: #03202a; border-color: var(--cyan); }
+.pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #12314f; border: 1px solid #2b4d6d; font-size: .85rem; font-weight: 700; white-space: nowrap; }
+.lhead, .ghead { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.bar { flex: 1; min-width: 80px; height: 8px; background: #0a1b2c; border-radius: 9px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--green); transition: width .3s; }
+.task { background: #071522; border: 1px dashed #2f5574; border-radius: 12px; padding: 10px; margin: 10px 0; }
+.task.done { border-style: solid; border-color: var(--green); }
+.ok { color: var(--green); font-weight: 800; }
+.nav2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.games { display: grid; gap: 10px; }
+.gcard { display: grid; gap: 4px; padding: 14px; text-align: left; background: #0b2238; }
+.gcard b { font-size: 1.1rem; }
+.gcard span { font-weight: 400; color: var(--muted); }
+.gcard small { color: var(--green); font-weight: 600; }
+#gPrompt { font-size: 1.45rem; color: #fff; margin: 4px 0; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.opts button { font-size: 1.15rem; }
+.opts button.good { background: #14573c; border-color: var(--green); }
+.opts button.bad { background: #5a1f26; border-color: var(--danger); }
+.feedback { min-height: 1.5em; font-weight: 700; color: var(--txt); }
+.feedback.good { color: var(--green); animation: pop .35s ease-out; }
+.feedback.bad { color: var(--danger); }
+@keyframes pop { 0% { transform: scale(.92); } 60% { transform: scale(1.05); } 100% { transform: scale(1); } }
+.stars { font-size: 2.4rem; letter-spacing: .2em; color: #ffd166; margin: .2rem 0; }
+.locked .hit { cursor: default; }
 /* SVG */
 .axis { stroke: #7890aa; stroke-width: 2; }
 .ring { fill: #071725; stroke: var(--cyan); stroke-width: 3; }
@@ -96,6 +124,7 @@ footer { margin-top: 16px; text-align: center; font-size: .85rem; color: var(--m
 .lab { fill: #d9e5f0; font-size: 13px; font-weight: 700; paint-order: stroke; stroke: #071522; stroke-width: 5px; }
 .axlab { fill: #9fb3c8; font-size: 15px; font-weight: 700; }
 .ang { fill: #fff; font-size: 22px; font-weight: 900; paint-order: stroke; stroke: #071522; stroke-width: 6px; }
+.target { fill: none; stroke: var(--green); stroke-width: 4; stroke-dasharray: 6 5; }
 .hit { fill: transparent; pointer-events: all; cursor: grab; }
 .dragging .hit { cursor: grabbing; }
 .hidden { display: none; }
@@ -113,9 +142,11 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
   .lab { font-size: 11px; }
   .steps { grid-template-columns: repeat(3, 1fr); }
   .checks { grid-template-columns: 1fr; }
+  .tabs { gap: 6px; }
+  .tabs button { font-size: .88rem; padding: 8px 4px; white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
-  * { scroll-behavior: auto !important; transition: none !important; }
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
 </style>
 </head>
@@ -123,12 +154,18 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
 <main class="app">
   <header>
     <div>
-      <span class="kicker">TRIGOLAB · V1.0</span>
+      <span class="kicker">TRIGOLAB · V1.1</span>
       <h1>Cercle trigonométrique interactif</h1>
-      <p>Déplacez le point, touchez le cercle ou saisissez un angle en degrés ou en radians (ex. <code>2π/3</code>).</p>
+      <p>Explore librement, apprends pas à pas, puis relève les défis.</p>
     </div>
     <span class="badge" id="status" role="status">Initialisation…</span>
   </header>
+
+  <nav class="tabs" role="tablist" aria-label="Mode">
+    <button type="button" role="tab" data-tab="explore" aria-selected="true">🔭 Explorer</button>
+    <button type="button" role="tab" data-tab="learn" aria-selected="false">🎓 Apprendre</button>
+    <button type="button" role="tab" data-tab="play" aria-selected="false">🎮 Jouer</button>
+  </nav>
 
   <div class="grid">
     <section class="card stage" aria-label="Cercle trigonométrique">
@@ -160,6 +197,7 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
           <circle cx="380" cy="380" r="5" fill="#ffb55f"/>
           <g id="labels"></g>
           <text id="angleText" class="ang" text-anchor="middle"/>
+          <circle id="target" class="target hidden" r="18"/>
           <circle id="halo" class="halo" r="28"/>
           <circle id="point" class="point" r="12"/>
         </g>
@@ -168,7 +206,49 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     </section>
 
     <aside class="side">
-      <section class="card panel">
+      <section class="card panel hidden" data-mode="learn" aria-labelledby="ltitle">
+        <div class="lhead"><span id="lstep" class="pill"></span><div class="bar"><i id="lbar"></i></div></div>
+        <h2 id="ltitle"></h2>
+        <p id="ltext"></p>
+        <div id="ltask" class="task"><b>À toi :</b> <span id="ltaskText"></span> <span id="ltaskOk" class="ok" aria-live="polite"></span></div>
+        <div class="nav2">
+          <button type="button" id="lprev">← Précédent</button>
+          <button type="button" id="lnext" class="primary">Suivant →</button>
+        </div>
+      </section>
+
+      <section class="card panel hidden" data-mode="play" id="game">
+        <div id="gMenu">
+          <h2>Choisis un défi</h2>
+          <div class="games">
+            <button type="button" class="gcard" data-game="place"><b>🎯 Place le point</b><span>Une valeur exacte est donnée : place P au bon endroit du cercle.</span><small id="bestPlace"></small></button>
+            <button type="button" class="gcard" data-game="quiz"><b>🧠 Quiz des valeurs</b><span>Le point est placé : retrouve le cosinus, le sinus ou la tangente exacts.</span><small id="bestQuiz"></small></button>
+          </div>
+          <p class="hint">8 questions par partie · jusqu'à 100 points par question · vise les 3 étoiles !</p>
+        </div>
+        <div id="gPlay" class="hidden">
+          <div class="ghead"><span id="gQ" class="pill"></span><span id="gScore" class="pill"></span><span id="gStreak" class="pill"></span></div>
+          <p id="gPrompt"></p>
+          <p id="gHelp" class="hint"></p>
+          <div id="gOptions" class="opts"></div>
+          <p id="gFeedback" class="feedback" aria-live="polite"></p>
+          <div class="nav2">
+            <button type="button" id="gQuit">Quitter</button>
+            <button type="button" id="gGo" class="primary">Valider</button>
+          </div>
+        </div>
+        <div id="gEnd" class="hidden">
+          <h2>Partie terminée</h2>
+          <p id="gStars" class="stars"></p>
+          <p id="gSummary"></p>
+          <div class="nav2">
+            <button type="button" id="gMenuBtn">Autres défis</button>
+            <button type="button" id="gAgain" class="primary">Rejouer</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel" data-mode="explore learn">
         <h2>Valeurs</h2>
         <div class="vals">
           <div class="val"><span>Angle θ</span><b id="deg"></b><small id="quad"></small></div>
@@ -181,7 +261,7 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
         </div>
       </section>
 
-      <section class="card panel">
+      <section class="card panel" data-mode="explore learn">
         <h2>Contrôles</h2>
         <div class="controls">
           <input id="range" type="range" min="0" max="360" step="0.1" value="45" aria-label="Angle en degrés (curseur)">
@@ -208,12 +288,12 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
         </div>
       </section>
 
-      <section class="card panel">
+      <section class="card panel" data-mode="explore">
         <h2>Angles remarquables</h2>
         <div id="quick" class="quick"></div>
       </section>
 
-      <section class="card panel">
+      <section class="card panel" data-mode="explore">
         <h2>Ce que montre cet angle</h2>
         <p id="explain"></p>
         <details>
@@ -224,14 +304,14 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     </aside>
   </div>
 
-  <footer>trigoLab v1.0 · application autonome, aucune dépendance externe · licence MIT</footer>
+  <footer>trigoLab v1.1 · application autonome, aucune dépendance externe · licence MIT</footer>
   <div id="live" class="live" aria-live="polite"></div>
 </main>
 <script>
 (function () {
   'use strict';
 
-  var VERSION = '1.0.0';
+  var VERSION = '1.1.0';
   var C = 380;            // centre du cercle (unités SVG)
   var R = 260;            // rayon du cercle
   var EPS = 1e-10;
@@ -239,7 +319,8 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
   var DEAD_ZONE = 24;     // rayon central ignoré (angle indéfini)
   var NS = 'http://www.w3.org/2000/svg';
 
-  var state = { angle: 45, snap: true };
+  // mode : explore | learn | play ; locked : le point ne peut pas être déplacé (quiz).
+  var state = { angle: 45, snap: true, mode: 'explore', locked: false };
 
   // Angles remarquables : [radians, cos, sin, tan] sous forme exacte.
   var NOTABLE = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330];
@@ -444,10 +525,11 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
       b.setAttribute('aria-pressed', b.classList.contains('on'));
     });
 
-    if (announce) {
+    if (announce && state.mode !== 'play') {
       $('live').textContent = 'Angle ' + fmt(a, 1) + ' degrés, cosinus ' + fmt(c.x, 4) + ', sinus ' + fmt(c.y, 4) +
         ', tangente ' + fmt(c.t, 4) + '.';
     }
+    if (state.mode === 'learn') checkTask(c);
   }
 
   // ---------- Construction ----------
@@ -514,7 +596,7 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     }
 
     hit.addEventListener('pointerdown', function (e) {
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (state.locked || (e.pointerType === 'mouse' && e.button !== 0)) return;
       var pt = svgPoint(e);
       if (nearCenter(pt)) return;
       e.preventDefault();
@@ -562,12 +644,29 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     });
 
     $('snap').addEventListener('change', function () { state.snap = this.checked; });
-    $('showProj').addEventListener('change', function () { $('projs').classList.toggle('hidden', !this.checked); });
-    $('showLabels').addEventListener('change', function () { $('labels').classList.toggle('hidden', !this.checked); });
-    $('radLabels').addEventListener('change', buildLabels);
-    $('showTan').addEventListener('change', function () { $('tanGroup').classList.toggle('hidden', !this.checked); });
+    ['showProj', 'showLabels', 'radLabels', 'showTan'].forEach(function (id) {
+      $(id).addEventListener('change', syncOptions);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-tab]'), function (b) {
+      b.addEventListener('click', function () { setMode(b.dataset.tab); });
+    });
+    $('lprev').addEventListener('click', function () { showLesson(lesson.i - 1); });
+    $('lnext').addEventListener('click', function () {
+      if (lesson.i < LESSONS.length - 1) showLesson(lesson.i + 1);
+      else setMode('play');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-game]'), function (b) {
+      b.addEventListener('click', function () { startGame(b.dataset.game); });
+    });
+    $('gGo').addEventListener('click', advanceGame);
+    $('gQuit').addEventListener('click', showMenu);
+    $('gMenuBtn').addEventListener('click', showMenu);
+    $('gAgain').addEventListener('click', function () { startGame(game.last); });
 
     svg.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && state.mode === 'play' && game.kind) { e.preventDefault(); advanceGame(); return; }
+      if (state.locked) return;
       var a = null, s = e.shiftKey ? 5 : 1;
       switch (e.key) {
         case 'ArrowLeft': case 'ArrowDown': a = state.angle - s; break;
@@ -581,7 +680,336 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     });
   }
 
+  // ---------- Options d'affichage ----------
+
+  function syncOptions() {
+    $('projs').classList.toggle('hidden', !$('showProj').checked);
+    $('labels').classList.toggle('hidden', !$('showLabels').checked);
+    $('tanGroup').classList.toggle('hidden', !$('showTan').checked);
+    buildLabels();
+  }
+
+  function setOptions(o) {
+    for (var id in o) $(id).checked = o[id];
+    syncOptions();
+  }
+
+  // ---------- Modes ----------
+
+  function setMode(m) {
+    state.mode = m;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-tab]'), function (b) {
+      b.setAttribute('aria-selected', b.dataset.tab === m);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function (s) {
+      s.classList.toggle('hidden', s.dataset.mode.split(' ').indexOf(m) < 0);
+    });
+    if (m === 'play') showMenu(); else stopGame();
+    if (m === 'learn') showLesson(lesson.i);
+  }
+
+  // ---------- Mode Apprendre : parcours guidé ----------
+
+  var LESSONS = [
+    {
+      title: 'Le cercle unité',
+      text: 'Le cercle trigonométrique a pour centre O et pour rayon 1. Un angle θ se mesure depuis l\'axe des x, ' +
+        'dans le sens inverse des aiguilles d\'une montre : il place un point P sur le cercle.',
+      start: 45, task: 'Fais tourner P jusqu\'à 90° (un quart de tour).',
+      check: function (c) { return dist(c.n, 90) < .5; }
+    },
+    {
+      title: 'Le cosinus, c\'est l\'abscisse',
+      text: 'Projette P sur l\'axe horizontal : le segment bleu mesure cos θ. ' +
+        'À droite de O, cos θ > 0 ; à gauche, cos θ < 0.',
+      start: 60, task: 'Rends cos θ négatif.',
+      check: function (c) { return c.x < -1e-9; }
+    },
+    {
+      title: 'Le sinus, c\'est l\'ordonnée',
+      text: 'Projette P sur l\'axe vertical : le segment orange mesure sin θ. Au-dessus de O, sin θ > 0 ; en dessous, ' +
+        'sin θ < 0. Comme le rayon vaut 1, sin θ reste toujours entre −1 et 1.',
+      start: 60, task: 'Amène sin θ à sa valeur minimale : −1.',
+      check: function (c) { return c.y < -1 + 1e-9; }
+    },
+    {
+      title: 'cos² θ + sin² θ = 1',
+      text: 'Le segment bleu, le segment orange et le rayon forment un triangle rectangle d\'hypoténuse 1. ' +
+        'Le théorème de Pythagore donne la relation fondamentale : cos² θ + sin² θ = 1.',
+      start: 30, task: 'Trouve un angle où cos θ = sin θ.',
+      check: function (c) { return Math.abs(c.x - c.y) < 5e-3; }
+    },
+    {
+      title: 'Quadrants et signes',
+      text: 'Les axes découpent le cercle en 4 quadrants. I : cos +, sin + · II : cos −, sin + · ' +
+        'III : cos −, sin − · IV : cos +, sin −. Observe la carte « Signes » en changeant de quadrant.',
+      start: 45, task: 'Place P dans le quadrant où cos θ < 0 et sin θ > 0.',
+      check: function (c) { return c.x < -1e-9 && c.y > 1e-9; }
+    },
+    {
+      title: 'Symétries et angle de référence',
+      text: '30°, 150°, 210° et 330° sont symétriques par rapport aux axes : leurs cosinus et sinus sont égaux au signe près. ' +
+        'L\'angle aigu commun (ici 30°) s\'appelle l\'angle de référence.',
+      start: 30, task: 'Trouve l\'autre angle entre 0° et 360° tel que sin θ = 1/2.',
+      check: function (c) { return Math.abs(c.y - .5) < 2e-3 && c.x < 0; }
+    },
+    {
+      title: 'La tangente',
+      text: 'tan θ = sin θ / cos θ. Prolonge le rayon jusqu\'à la droite rose x = 1 : l\'ordonnée du point T vaut tan θ. ' +
+        'Quand cos θ = 0, le rayon est parallèle à cette droite : la tangente n\'est pas définie.',
+      start: 45, opts: { showTan: true }, task: 'Trouve un angle où tan θ n\'est pas définie.',
+      check: function (c) { return c.t === null; }
+    },
+    {
+      title: 'Les radians',
+      text: 'Un tour complet mesure 360°, soit 2π radians : 180° = π. Pour convertir, radians = degrés × π / 180. ' +
+        'Les repères du cercle sont maintenant affichés en radians.',
+      start: 90, opts: { radLabels: true }, task: 'Place P à 3π/4.',
+      check: function (c) { return dist(c.n, 135) < .5; }
+    }
+  ];
+
+  var lesson = { i: 0, done: false };
+
+  function showLesson(i) {
+    lesson.i = Math.max(0, Math.min(LESSONS.length - 1, i));
+    lesson.done = false;
+    var L = LESSONS[lesson.i], last = lesson.i === LESSONS.length - 1, o = L.opts || {};
+    setOptions({ showProj: true, showLabels: true, showTan: !!o.showTan, radLabels: !!o.radLabels });
+    $('lstep').textContent = 'Étape ' + (lesson.i + 1) + ' / ' + LESSONS.length;
+    $('lbar').style.width = (100 * lesson.i / LESSONS.length) + '%';
+    $('ltitle').textContent = L.title;
+    $('ltext').textContent = L.text;
+    $('ltaskText').textContent = L.task;
+    $('ltaskOk').textContent = '';
+    $('ltask').classList.remove('done');
+    $('lprev').disabled = lesson.i === 0;
+    $('lnext').textContent = last ? 'Relever les défis 🎮' : 'Suivant →';
+    setAngle(L.start);
+  }
+
+  function checkTask(c) {
+    if (lesson.done || !LESSONS[lesson.i].check(c)) return;
+    lesson.done = true;
+    $('ltask').classList.add('done');
+    $('ltaskOk').textContent = '✓ Réussi !';
+    $('lbar').style.width = (100 * (lesson.i + 1) / LESSONS.length) + '%';
+  }
+
+  // ---------- Mode Jouer : défis ----------
+
+  var ROUND = 8;
+  var OFF_AXIS = NOTABLE.filter(function (d) { return d % 90 !== 0; });
+  var VALUES = ['0', '1', '−1', '1/2', '−1/2', '√2/2', '−√2/2', '√3/2', '−√3/2'];
+  var POOL = { cos: VALUES, sin: VALUES, tan: ['0', '1', '−1', '√3', '−√3', '√3/3', '−√3/3', 'non définie'] };
+  var COL = { cos: 1, sin: 2, tan: 3 };
+  var INVERSE = { '√3': '√3/3', '√3/3': '√3', '−√3': '−√3/3', '−√3/3': '−√3' };
+  var game = { kind: null, last: 'place', i: 0, score: 0, streak: 0, bestStreak: 0, q: null, answered: false, used: [] };
+
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function pick(list) { return list[rnd(list.length)]; }
+  function shuffle(list) {
+    for (var i = list.length - 1; i > 0; i--) { var j = rnd(i + 1), t = list[i]; list[i] = list[j]; list[j] = t; }
+    return list;
+  }
+  function opposite(s) {
+    if (s === '0' || s === 'non définie') return null;
+    return s.charAt(0) === '−' ? s.slice(1) : '−' + s;
+  }
+  function freshAngle(list) {
+    var left = list.filter(function (d) { return game.used.indexOf(d) < 0; });
+    var a = pick(left.length ? left : list);
+    game.used.push(a);
+    return a;
+  }
+  function angleName(a, rad) { return rad ? EXACT[a][0] : a + '°'; }
+
+  // Énoncé « place le point » : chaque condition désigne un seul angle.
+  function placeQuestion(i) {
+    var a, c, prompt;
+    if (i < 3) {
+      a = freshAngle(NOTABLE);
+      prompt = 'θ = ' + EXACT[a][0] + (a === 0 ? '' : ' rad');
+    } else if (i < 6) {
+      a = freshAngle(OFF_AXIS); c = calc(a);
+      prompt = Math.random() < .5
+        ? 'cos θ = ' + EXACT[a][1] + ' et sin θ ' + (c.y > 0 ? '> 0' : '< 0')
+        : 'sin θ = ' + EXACT[a][2] + ' et cos θ ' + (c.x > 0 ? '> 0' : '< 0');
+    } else {
+      a = freshAngle(OFF_AXIS); c = calc(a);
+      prompt = 'tan θ = ' + EXACT[a][3] + ' et cos θ ' + (c.x > 0 ? '> 0' : '< 0');
+    }
+    return { target: a, prompt: prompt };
+  }
+
+  // Quatre propositions : la bonne, son opposée, la valeur « échangée », puis du hasard.
+  function quizOptions(a, fn) {
+    var correct = EXACT[a][COL[fn]], opts = [correct], cand = [];
+    var o = opposite(correct);
+    if (o) cand.push(o);
+    if (fn === 'tan') { if (INVERSE[correct]) cand.push(INVERSE[correct]); }
+    else cand.push(EXACT[a][fn === 'cos' ? 2 : 1]);
+    cand = cand.concat(shuffle(POOL[fn].slice()));
+    cand.forEach(function (v) { if (opts.length < 4 && opts.indexOf(v) < 0) opts.push(v); });
+    return { correct: correct, options: shuffle(opts) };
+  }
+
+  function quizQuestion(i) {
+    var a = freshAngle(NOTABLE), fn = pick(['cos', 'sin', 'tan']), q = quizOptions(a, fn);
+    q.target = a;
+    q.fn = fn;
+    q.label = fn + ' ' + angleName(a, i >= 4);
+    q.prompt = q.label + ' = ?';
+    return q;
+  }
+
+  function loadBest(kind) {
+    try { return Number(localStorage.getItem('trigolab.best.' + kind)) || 0; } catch (_) { return 0; }
+  }
+  function saveBest(kind, v) {
+    try { localStorage.setItem('trigolab.best.' + kind, String(v)); } catch (_) { /* stockage indisponible */ }
+  }
+
+  function setLocked(v) {
+    state.locked = v;
+    $('svg').classList.toggle('locked', v);
+    $('svg').setAttribute('aria-disabled', v);
+  }
+
+  function showPanel(id) {
+    ['gMenu', 'gPlay', 'gEnd'].forEach(function (p) { $(p).classList.toggle('hidden', p !== id); });
+  }
+
+  function stopGame() {
+    game.kind = null;
+    setLocked(false);
+    $('target').classList.add('hidden');
+  }
+
+  function showMenu() {
+    stopGame();
+    showPanel('gMenu');
+    [['place', 'bestPlace'], ['quiz', 'bestQuiz']].forEach(function (g) {
+      var b = loadBest(g[0]);
+      $(g[1]).textContent = b ? '🏆 Record : ' + b + ' / ' + ROUND * 100 : 'Pas encore de record';
+    });
+  }
+
+  function startGame(kind) {
+    game.kind = game.last = kind;
+    game.i = 0; game.score = 0; game.streak = 0; game.bestStreak = 0; game.used = [];
+    setOptions({ showProj: true, showLabels: true, showTan: false, radLabels: false });
+    showPanel('gPlay');
+    nextQuestion();
+  }
+
+  function updateHud() {
+    $('gQ').textContent = 'Question ' + (game.i + 1) + ' / ' + ROUND;
+    $('gScore').textContent = '⭐ ' + game.score + ' pts';
+    $('gStreak').textContent = '🔥 Série : ' + game.streak;
+  }
+
+  function nextQuestion() {
+    if (game.i >= ROUND) { endGame(); return; }
+    game.answered = false;
+    $('target').classList.add('hidden');
+    $('gFeedback').textContent = '';
+    $('gFeedback').className = 'feedback';
+    $('gOptions').textContent = '';
+    updateHud();
+    if (game.kind === 'place') {
+      game.q = placeQuestion(game.i);
+      setLocked(false);
+      setAngle(norm(game.q.target + 60 + rnd(240)));
+      $('gHelp').textContent = 'Déplace P (glisser, toucher ou flèches du clavier), puis valide.';
+      $('gGo').textContent = 'Valider';
+      $('gGo').classList.remove('hidden');
+    } else {
+      game.q = quizQuestion(game.i);
+      setLocked(true);
+      setAngle(game.q.target);
+      $('gHelp').textContent = 'Choisis la valeur exacte.';
+      $('gGo').classList.add('hidden');
+      game.q.options.forEach(function (v) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = v;
+        b.addEventListener('click', function () { answerQuiz(b, v); });
+        $('gOptions').appendChild(b);
+      });
+    }
+    $('gPrompt').textContent = game.q.prompt;
+  }
+
+  function award(points, good, message) {
+    game.answered = true;
+    game.score += points;
+    game.streak = good ? game.streak + 1 : 0;
+    game.bestStreak = Math.max(game.bestStreak, game.streak);
+    if (good && game.streak >= 3) message += ' 🔥 ' + game.streak + ' d\'affilée !';
+    $('gFeedback').textContent = message;
+    $('gFeedback').className = 'feedback ' + (good ? 'good' : 'bad');
+    $('gGo').textContent = game.i === ROUND - 1 ? 'Voir le résultat' : 'Suivant →';
+    $('gGo').classList.remove('hidden');
+    setLocked(true);
+    updateHud();
+  }
+
+  function validatePlace() {
+    var t = game.q.target, err = dist(state.angle, t), p = polar(t);
+    var points = err <= 1.5 ? 100 : err <= 5 ? 70 : err <= 10 ? 30 : 0;
+    attrs($('target'), { cx: p.x, cy: p.y });
+    $('target').classList.remove('hidden');
+    var answer = t + '° (' + EXACT[t][0] + ')';
+    award(points, err <= 5, err <= 5
+      ? pick(['Bravo !', 'Dans le mille !', 'Excellent !']) + ' ' + answer + ' · +' + points + ' pts'
+      : (points ? 'Presque ! ' : 'Raté ! ') + 'La cible était ' + answer + ', écart ' + fmt(err, 1) + '°.' +
+        (points ? ' +' + points + ' pts' : ''));
+  }
+
+  function answerQuiz(btn, v) {
+    if (game.answered) return;
+    var q = game.q, good = v === q.correct, c = calc(q.target);
+    Array.prototype.forEach.call($('gOptions').children, function (b) {
+      b.disabled = true;
+      if (b.textContent === q.correct) b.classList.add('good');
+    });
+    if (!good) btn.classList.add('bad');
+    var why = q.fn === 'tan' && c.t === null
+      ? 'cos θ = 0, donc la tangente n\'est pas définie.'
+      : quadrant(q.target) + ', angle de référence ' + fmt(refAngle(q.target), 1) + '°.';
+    award(good ? 100 : 0, good, (good ? 'Exact ! ' : 'Non : ') + q.label + ' = ' + q.correct + '. ' + why);
+  }
+
+  function advanceGame() {
+    if (!game.kind) return;
+    if (game.answered) { game.i++; nextQuestion(); }
+    else if (game.kind === 'place') validatePlace();
+  }
+
+  function endGame() {
+    var kind = game.kind, max = ROUND * 100, best = loadBest(kind), record = game.score > best;
+    var stars = game.score >= .85 * max ? 3 : game.score >= .55 * max ? 2 : game.score >= .25 * max ? 1 : 0;
+    if (record) saveBest(kind, game.score);
+    stopGame();
+    showPanel('gEnd');
+    $('gStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
+    $('gStars').setAttribute('aria-label', stars + ' étoile(s) sur 3');
+    $('gSummary').textContent = ['Passe par le mode Apprendre, puis retente ta chance !',
+      'Bon début, rejoue pour progresser !', 'Très bien joué !', 'Maître du cercle ! 🏆'][stars] +
+      ' Score : ' + game.score + ' / ' + max + ' · meilleure série : ' + game.bestStreak +
+      (record ? ' · 🎉 Nouveau record !' : best ? ' · record : ' + best : '');
+  }
+
   // ---------- Autotests ----------
+
+  // Valeur numérique d'une forme exacte ('−√3/2' → −0,866…).
+  function exactNum(s) {
+    if (s === 'non définie') return null;
+    var neg = s.charAt(0) === '−', k = neg ? s.slice(1) : s;
+    var v = { '0': 0, '1': 1, '1/2': .5, '√2/2': Math.SQRT2 / 2, '√3/2': Math.sqrt(3) / 2, '√3': Math.sqrt(3), '√3/3': Math.sqrt(3) / 3 }[k];
+    return neg ? -v : v;
+  }
 
   function tests() {
     var fail = [], count = 0;
@@ -618,6 +1046,41 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
     ok('parse π/0', isNaN(parseAngle('π/0')));
     ok('fmt négatif', fmt(-0.5) === '−0,5');
 
+    // Table exacte cohérente avec les calculs.
+    NOTABLE.forEach(function (d) {
+      var c = calc(d), e = EXACT[d], t = exactNum(e[3]);
+      ok('table cos ' + d, near(exactNum(e[1]), c.x));
+      ok('table sin ' + d, near(exactNum(e[2]), c.y));
+      ok('table tan ' + d, t === null ? c.t === null : near(t, c.t));
+      ok('table rad ' + d, near(parseAngle(e[0]), d));
+    });
+    // Énoncés « place le point » : une seule solution entre 0° et 359°.
+    function unique(a, pred) {
+      var hits = [];
+      for (var k = 0; k < 360; k++) if (pred(calc(k))) hits.push(k);
+      return hits.length === 1 && hits[0] === a;
+    }
+    OFF_AXIS.forEach(function (a) {
+      var c = calc(a), e = EXACT[a];
+      ok('énoncé cos ' + a, unique(a, function (k) { return near(k.x, exactNum(e[1])) && k.y * c.y > 0; }));
+      ok('énoncé sin ' + a, unique(a, function (k) { return near(k.y, exactNum(e[2])) && k.x * c.x > 0; }));
+      ok('énoncé tan ' + a, unique(a, function (k) { return k.t !== null && near(k.t, exactNum(e[3])) && k.x * c.x > 0; }));
+    });
+    // Quiz : 4 propositions distinctes dont la bonne.
+    NOTABLE.forEach(function (a) {
+      ['cos', 'sin', 'tan'].forEach(function (fn) {
+        var q = quizOptions(a, fn), set = {};
+        q.options.forEach(function (v) { set[v] = 1; });
+        ok('quiz ' + fn + ' ' + a, q.options.length === 4 && Object.keys(set).length === 4 && q.options.indexOf(q.correct) >= 0);
+      });
+    });
+    // Leçons : la consigne n'est pas déjà remplie au départ et reste réalisable.
+    LESSONS.forEach(function (L, i) {
+      var solvable = false;
+      for (var k = 0; k < 360 && !solvable; k++) solvable = L.check(calc(k));
+      ok('leçon ' + (i + 1), !L.check(calc(L.start)) && solvable);
+    });
+
     var saved = state.angle;
     setAngle(60);
     ok('UI 60', $('deg').textContent === '60°' && $('range').value === '60' && $('radx').textContent === 'π/3');
@@ -634,6 +1097,7 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
   try {
     build();
     bind();
+    setMode('explore');
     setAngle(45);
     var t = tests();
     var status = $('status');

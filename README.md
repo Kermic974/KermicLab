@@ -2,7 +2,13 @@
 
 Laboratoire pédagogique web consacré à la trigonométrie.
 
-## Version 1.0
+## Version 1.1
+
+Trois modes :
+
+- **Explorer** : manipulation libre du cercle ;
+- **Apprendre** : parcours guidé en 8 étapes avec consignes vérifiées automatiquement ;
+- **Jouer** : défis « Place le point » et « Quiz des valeurs » avec score, séries, étoiles et record.
 
 L'application est un cercle trigonométrique interactif autonome (un seul fichier `index.html`), pensée pour mobile et desktop. Les versions archivées sont dans `versions/`.
 

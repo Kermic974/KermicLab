@@ -60,4 +60,5 @@ P = (0,5 ; 0,866025)
 - v0.1 : stabilisation et tests DOM étendus ;
 - v0.2 : mode pédagogique enrichi ;
 - v0.3 : PWA et fonctionnement hors ligne ;
+- v1.1 : orientation éducative et récréative (modes Explorer, Apprendre et Jouer) — livrée ;
 - v1.0 : version stable — livrée (saisie en radians, axe des tangentes, repères en radians, corrections).
