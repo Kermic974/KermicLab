@@ -14,18 +14,19 @@ explication (de l'intuition au formel), application ludique, mise en situation.
 ## Architecture
 
 ```
-Navigateur ──▶ Cloudflare Worker « trigolab » (wrangler.toml)
-                                                            ├─ fichiers statiques du chat (dist/, construit depuis web/)
-                                                            ├─ routage par mots-clés (déterministe)
-                                                            ├─ routage Claude Haiku 5.5 (JSON structuré) sinon
-                                                            ├─ GET /maquettes/:id → HTML du catalogue tel quel
-                                                            ├─ Issues GitHub (maquette-manquante, traduction-manquante, support)
-                                                            └─ Cloudflare D1 (KPI anonymes)
+Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », construit dans dist/)
+            ├─ /         chat (web/)
+            └─ /cercle/  application autonome du cercle (index.html, hors ligne)
+        ──POST /api/chat──▶ Cloudflare Worker « kermiclab-api » (worker/wrangler.toml)
+                            ├─ routage par mots-clés (déterministe)
+                            ├─ routage Claude Haiku 5.5 (JSON structuré) sinon
+                            ├─ GET /maquettes/:id → HTML du catalogue tel quel
+                            ├─ GitHub Issues (maquette-manquante, traduction-manquante, support)
+                            ├─ Cloudflare D1 (KPI anonymes) + sauvegarde R2 quotidienne
 ```
 
-L’application autonome du cercle trigonométrique se trouve dans `index.html` à la racine.
-GitHub Pages ne publie que cette application, après la réussite des vérifications CI ; le chat et l’API
-restent servis par le Worker Cloudflare.
+L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
+`/cercle/`, à côté du chat (ADR 0008).
 
 Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
 jeton en lecture seule. Ce dépôt ne contient qu'une maquette d'exemple (`catalogue/trigo-cercle`).
@@ -37,9 +38,10 @@ Prérequis : Node.js 22+, un compte Cloudflare, une clé API Anthropic (facultat
 ```bash
 npm ci
 npm run ci                          # lint, build, contrôle des pages, tests unitaires et navigateur
-cp .env.example .dev.vars           # renseigner ANTHROPIC_API_KEY / GITHUB_TOKEN (facultatif)
-npx wrangler d1 execute kermiclab-kpi --local --file=worker/schema.sql
-npx wrangler dev                    # build, puis chat + API sur http://localhost:8787
+cp .env.example worker/.dev.vars    # renseigner ANTHROPIC_API_KEY / GITHUB_TOKEN (facultatif)
+cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev   # API sur :8787
+# dans un autre terminal
+KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev dist           # chat sur :8788
 ```
 
 Sans `ANTHROPIC_API_KEY`, le catalogue fonctionne ; les autres questions reçoivent une réponse de repli.
@@ -48,18 +50,11 @@ Sans `GITHUB_TOKEN`, aucune issue n'est créée.
 
 ## Déploiement
 
-Le Worker Cloudflare `trigolab` est relié à ce dépôt GitHub (**Workers Builds**) : chaque push sur `main` est
-vérifié (lint, build, sécurité des pages et tests unitaires et end-to-end) avant son déploiement par Cloudflare
-(`npx wrangler deploy` lance d'abord `npm run predeploy`). Aucun jeton de déploiement n'est stocké dans GitHub ;
-GitHub Actions ne déploie pas le Worker.
-
-Le même workflow GitHub Actions déploie aussi `index.html` sur GitHub Pages après les vérifications, sur `main`.
-Activer une fois **Settings → Pages → Build and deployment → GitHub Actions**. L’artefact Pages ne contient que
-l’application autonome, sans appel réseau ni ressource externe ; elle peut être enregistrée et utilisée hors ligne.
-
-Les secrets du Worker (`ANTHROPIC_API_KEY`, facultatif en mode zéro budget, et `GITHUB_TOKEN`) se renseignent dans
-Cloudflare → Workers → trigolab → Settings → Variables and Secrets. Détails dans le [README anglais](README.md#deploy)
-et [docs/actions-manuelles.md](docs/actions-manuelles.md).
+Chaque push sur `main` lance `.github/workflows/ci.yml` : le job `verifier` (lint, build, sécurité des pages, tests
+unitaires et navigateur) doit réussir avant que le job **Déploiement Cloudflare** applique le schéma D1, déploie le
+Worker `kermiclab-api`, lui transmette ses secrets s'ils existent et publie `dist/` sur le projet Cloudflare Pages
+`kermiclab` (`www.kermiclab.online`, `kermiclab.online`). Chaque PR reçoit une prévisualisation Cloudflare Pages.
+Secrets et variables : voir le [README anglais](README.md#deploy) et [docs/actions-manuelles.md](docs/actions-manuelles.md).
 
 ## Contribuer
 

@@ -5,11 +5,14 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
-- Ajout d’une application autonome du cercle trigonométrique, publiée sur GitHub Pages après les vérifications CI.
-- Mise en ligne via un seul Worker Cloudflare `trigolab` (chat + API + maquettes), déployé par Cloudflare Workers Builds à chaque push sur `main` ; plus de projet Pages pour le chat ni de jeton Cloudflare dans GitHub (ADR 0007).
+- `www.kermiclab.online` sert le chat à la racine et l’application autonome du cercle trigonométrique sous `/cercle/` (Cloudflare Pages, ADR 0008) ; le domaine nu n’est plus protégé par Cloudflare Access.
+- Un seul chemin de publication : GitHub Actions déploie le Worker `kermiclab-api` et Pages après les vérifications ; plus de Workers Builds (ADR 0009, abandonné) ni de publication GitHub Pages.
+- Le Worker accepte les origines `www.kermiclab.online` et `kermiclab.online`.
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Corrigé
+- CI : les tests navigateur du chat suivent l’URL d’API réellement construite (ils échouaient en CI avec `KERMICLAB_API_URL=http://localhost:8787`).
+- CI : `pages.yml` et `ci.yml` ne partagent plus le même groupe de concurrence (ils s’annulaient mutuellement).
 - Déploiement : le site publié pointe vers le Worker `https://kermiclab-api.kermic.workers.dev` même sans variable `KERMICLAB_API_URL` (il pointait vers `localhost`).
 - Déploiement : les secrets du Worker absents (mode zéro budget, pas de `ANTHROPIC_API_KEY`) sont ignorés au lieu de faire échouer `wrangler-action`.
 - CodeQL sur dépôt privé : analyse sans envoi à GitHub (GitHub Advanced Security requis), la CI échoue elle-même en cas d'alerte (`scripts/verifier-sarif.mjs`) ; envoi rétabli automatiquement en public.

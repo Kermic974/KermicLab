@@ -14,18 +14,19 @@ playful application, and an engaging challenge.
 ## Architecture
 
 ```
-Browser ──▶ Cloudflare Worker « trigolab » (wrangler.toml)
-                                                        ├─ static chat files (dist/, built from web/)
-                                                        ├─ keyword router (deterministic, catalogue index)
-                                                        ├─ Claude Haiku 5.5 router (structured JSON) if no match
-                                                        ├─ GET /maquettes/:id  → catalogue HTML served as-is
-                                                        ├─ GitHub Issues (maquette-manquante, traduction-manquante, support)
-                                                        └─ Cloudflare D1 (anonymous KPIs)
+Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built from dist/)
+            ├─ /         chat (web/)
+            └─ /cercle/  standalone unit-circle app (index.html, offline-capable)
+        ──POST /api/chat──▶ Cloudflare Worker « kermiclab-api » (worker/wrangler.toml)
+                            ├─ keyword router (deterministic, catalogue index)
+                            ├─ Claude Haiku 5.5 router (structured JSON) if no match
+                            ├─ GET /maquettes/:id → catalogue HTML served as-is
+                            ├─ GitHub Issues (maquette-manquante, traduction-manquante, support)
+                            ├─ Cloudflare D1 (anonymous KPIs) + daily R2 backup
 ```
 
-The standalone trigonometry-circle learning app is available at the repository root in `index.html`.
-GitHub Pages deploys only this offline-capable app after the existing CI checks pass; the chat and API
-remain on the Cloudflare Worker.
+The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
+`/cercle/`, next to the chat (ADR 0008).
 
 Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
 read-only token. This repository only ships a minimal example page (`catalogue/trigo-cercle`).
@@ -37,9 +38,10 @@ Requirements: Node.js 22+, a Cloudflare account, an Anthropic API key (optional 
 ```bash
 npm ci
 npm run ci                          # lint, build, page security checks, unit + browser tests
-cp .env.example .dev.vars           # fill in ANTHROPIC_API_KEY / GITHUB_TOKEN (optional)
-npx wrangler d1 execute kermiclab-kpi --local --file=worker/schema.sql
-npx wrangler dev                    # builds, then serves chat + API on http://localhost:8787
+cp .env.example worker/.dev.vars    # fill in ANTHROPIC_API_KEY / GITHUB_TOKEN (optional)
+cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev   # API on :8787
+# in another terminal
+KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev dist           # chat on :8788
 ```
 
 Without `ANTHROPIC_API_KEY` the catalogue still works; other questions get a fallback answer.
@@ -48,22 +50,19 @@ Without `GITHUB_TOKEN` no issue is created.
 
 ## Deploy
 
-The Cloudflare Worker `trigolab` is connected to this GitHub repository (**Workers Builds**): every push to `main`
-is checked (lint, build, page security, unit and end-to-end tests) before Cloudflare deploys it
-(`npx wrangler deploy` runs `npm run predeploy` first). No deploy token is stored in GitHub; GitHub Actions also checks the Worker build.
+Pushing to `main` runs `.github/workflows/ci.yml`: the `verifier` job (lint, build, page security, unit and browser
+tests) must pass before the **Déploiement Cloudflare** job applies the D1 schema, deploys the Worker `kermiclab-api`,
+sets its secrets when defined, and publishes `dist/` to the Cloudflare Pages project `kermiclab`
+(`www.kermiclab.online`, `kermiclab.online`). Pull requests get a Cloudflare Pages preview.
 
-The same GitHub Actions workflow deploys the standalone `index.html` to GitHub Pages after checks pass on `main`.
-Enable **Settings → Pages → Build and deployment → GitHub Actions** once. The Pages artifact contains only this app;
-it has no network calls or external assets and can be saved and opened offline.
-
-| Where | Name | Purpose |
+| Kind | Name | Purpose |
 |---|---|---|
-| Cloudflare → Workers → trigolab → Settings → Variables and Secrets | `ANTHROPIC_API_KEY` (secret) | Chat/router model (optional: zero-budget mode without it) |
-| same | `GITHUB_TOKEN` (secret) | Fine-grained token, Issues read/write on this repo only |
-| GitHub → Settings → Secrets → Actions | `ANTHROPIC_API_KEY` | AI security review on pull requests (optional) |
-| same | `CATALOGUE_TOKEN` | Read-only token on the private catalogue repo (optional) |
+| Secret | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | Deploy Worker, Pages, D1 |
+| Secret | `KERMICLAB_GITHUB_TOKEN` | Fine-grained token (Issues read/write on this repo), pushed to the Worker as `GITHUB_TOKEN` |
+| Secret | `ANTHROPIC_API_KEY` | Chat/router model, optional (zero-budget mode without it); also the AI security review |
+| Secret | `CATALOGUE_TOKEN` | Read-only token on the private catalogue repo (optional) |
+| Variable | `KERMICLAB_API_URL` | API URL baked into the chat (default `https://kermiclab-api.kermic.workers.dev`) |
 
-The D1 database `kermiclab-kpi` is declared in `wrangler.toml`; its schema is `worker/schema.sql`.
 See [docs/actions-manuelles.md](docs/actions-manuelles.md) for the full checklist.
 
 ## Contributing

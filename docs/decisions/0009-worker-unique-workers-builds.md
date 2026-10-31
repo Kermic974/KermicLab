@@ -1,6 +1,6 @@
-# ADR 0007 — Un seul Worker, déployé par Cloudflare Workers Builds
+# ADR 0009 — Un seul Worker, déployé par Cloudflare Workers Builds (abandonné)
 
-- Date : 2026-10-31 — Statut : accepté (le propriétaire a relié le dépôt au Worker `trigolab` dans Cloudflare)
+- Date : 2026-10-31 — Statut : **abandonné** le 2026-10-31 (renuméroté : ce fichier s'appelait 0007, comme l'ADR du stockage R2). Le Worker `trigolab` a été supprimé ; la production repose sur le Worker `kermiclab-api` (API, maquettes) et le projet Cloudflare Pages `kermiclab` (chat et application autonome), déployés par GitHub Actions après les vérifications (ADR 0008). Conservé pour l'historique.
 - Contexte : le MVP prévoyait un Worker d'API et un projet Pages séparés, déployés par GitHub Actions avec un jeton API Cloudflare stocké dans GitHub.
 - Décision :
   - Un seul Worker `trigolab` (`wrangler.toml` à la racine) sert l'API, les maquettes et les fichiers statiques du chat (`[assets]`, dossier `dist/`). `run_worker_first` limite l'exécution du Worker à `/api/*` et `/maquettes/*`.

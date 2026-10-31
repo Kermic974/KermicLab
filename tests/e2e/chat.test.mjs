@@ -3,26 +3,30 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine } from "./outils.mjs";
 
-let serveur, nav, htmlMaquette;
+let serveur, nav, htmlMaquette, api;
 before(async () => {
   serveur = await servir(`${racine}dist`);
   nav = await navigateur();
   htmlMaquette = await readFile(`${racine}catalogue/trigo-cercle/page.html`, "utf8");
+  // L'URL d'API est celle que le build a réellement écrite (Worker kermiclab-api, localhost en CI, ou même origine).
+  const { apiUrl } = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8"));
+  api = apiUrl || serveur.url;
 });
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
-/** Simule le Worker, qui sert l'API et les maquettes sur la même origine que le chat. */
+/** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
 async function simulerApi(page) {
   const requetes = [];
-  await page.route(`${serveur.url}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
-  await page.route(`${serveur.url}/api/**`, async (route) => {
+  await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
+  await page.route(`${api}/api/**`, async (route) => {
     const corps = route.request().postDataJSON();
     requetes.push(corps);
     const sinus = /sinus|sine/i.test(corps.message);
     return route.fulfill({
       contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
       body: JSON.stringify(sinus
-        ? { type: "maquette", texte: "Voici la page.", maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${serveur.url}/maquettes/trigo-cercle?lang=fr` } }
+        ? { type: "maquette", texte: "Voici la page.", maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${api}/maquettes/trigo-cercle?lang=fr` } }
         : { type: "reponse", texte: "Réponse simple." })
     });
   });

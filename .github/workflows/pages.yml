@@ -1,4 +1,4 @@
-name: CI et déploiement Pages
+name: Validation de l'application autonome
 on:
   push:
     branches: [main]
@@ -6,10 +6,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  pages: write
-  id-token: write
 concurrency:
-  group: ci-${{ github.ref }}
+  # Groupe distinct de ci.yml : partager « ci-<ref> » faisait s'annuler les deux workflows.
+  group: autonome-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   validate:
@@ -29,18 +28,3 @@ jobs:
         run: node --test "tests/**/*.test.js"
       - name: Structure du livrable
         run: python3 scripts/check_html.py
-  deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: validate
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - id: deployment
-        uses: actions/deploy-pages@v4
