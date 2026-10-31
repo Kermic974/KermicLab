@@ -1,0 +1,27 @@
+name: Demande de maquette
+description: Proposer une nouvelle page pédagogique / Request a new learning page
+labels: [maquette-manquante]
+title: "[maquette-manquante] matiere/notion"
+body:
+  - type: input
+    id: sujet
+    attributes:
+      label: Sujet (matiere/notion)
+      placeholder: mathematiques/theoreme-de-pythagore
+    validations:
+      required: true
+  - type: textarea
+    id: questions
+    attributes:
+      label: Questions d'exemple
+      description: Une par ligne ; elles serviront aux tests de routage.
+    validations:
+      required: true
+  - type: textarea
+    id: onglets
+    attributes:
+      label: Plan d'onglets proposé
+      value: |
+        - [ ] explication (niveaux : intuition → collège → lycée)
+        - [ ] application ludique
+        - [ ] mise en situation
