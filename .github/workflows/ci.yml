@@ -37,8 +37,6 @@ jobs:
           path: catalogue-prive
       - run: npm run lint
       - run: npm run build
-        env:
-          KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'http://localhost:8787' }}
       - run: npm run check:pages
       - name: Les hashes CSP des pages sont à jour
         run: git diff --exit-code -- catalogue/ index.html
