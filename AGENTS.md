@@ -23,11 +23,9 @@ Principes non négociables :
 
 | Chemin | Rôle |
 |---|---|
-| `wrangler.toml` | Configuration du Worker `trigolab` (déployé par Cloudflare Workers Builds à chaque push sur `main`) |
-| `worker/` | Code du Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1 ; sert aussi les fichiers statiques du chat |
-| `index.html` | Application autonome hors ligne du cercle trigonométrique, déployée sur GitHub Pages |
+| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
-| `web/` | Interface de chat (copiée dans `dist/`, servie par le Worker). Textes uniquement dans `web/i18n/<langue>.json` |
+| `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquette d'exemple minimale (`trigo-cercle`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
 | `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
 | `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
@@ -46,7 +44,8 @@ npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
 npm test              # tests unitaires (node:test)
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
 npm run ci            # tout ce qui précède
-npx wrangler dev                # build puis chat + API en local (http://localhost:8787)
+cd worker && npx wrangler dev   # Worker en local (http://localhost:8787)
+npx wrangler pages dev dist     # chat en local
 ```
 
 ## 4. Conventions
@@ -56,7 +55,7 @@ npx wrangler dev                # build puis chat + API en local (http://localho
 - Aucun texte d'interface en dur : clé dans `web/i18n/fr.json` **et** dans toutes les autres langues (le lint vérifie la parité). Ajouter une langue = ajouter un fichier.
 - Modèles : `claude-haiku-5-5` pour le chat et le routage (sortie JSON structurée) ; `claude-sonnet-5-5` uniquement pour préparer des maquettes candidates.
 - Zéro secret dans le code : variables d'environnement, Cloudflare Secrets, GitHub Secrets ; documenter toute variable dans `.env.example`.
-- Ne jamais stocker d'IP ni de texte de message dans D1.
+- Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
 
 ## 5. Contrat d'une page HTML autonome
 

@@ -1,0 +1,11 @@
+name: Évolution
+description: Proposer une amélioration
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Besoin
+    validations:
+      required: true
