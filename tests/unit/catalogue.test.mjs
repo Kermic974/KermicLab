@@ -9,5 +9,5 @@ test("scriptsEnLigne : insensible à la casse, ignore le JSON de métadonnées",
 
 test("appliquerCsp : hash de chaque script exécutable, y compris en majuscules", () => {
   const html = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'x'; style-src 'self'"><SCRIPT>a()</SCRIPT>`;
-  assert.match(appliquerCsp(html), new RegExp(`script-src ${hashScript("a()").replace(/[+/]/g, "\\$&")};`));
+  assert.ok(appliquerCsp(html).includes(`script-src ${hashScript("a()")};`));
 });
