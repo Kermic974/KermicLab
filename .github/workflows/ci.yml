@@ -39,8 +39,8 @@ jobs:
       # Le déploiement est fait par Cloudflare Workers Builds (dépôt relié au Worker « trigolab »).
       - run: npm run build
       - run: npm run check:pages
-      - name: Les sources du catalogue sont à jour (hashes CSP)
-        run: git diff --exit-code -- catalogue/
+      - name: Les sources sont à jour (hashes CSP)
+        run: git diff --exit-code -- catalogue/ index.html
       - run: npm test
       - name: Installer Chromium pour Playwright
         run: |

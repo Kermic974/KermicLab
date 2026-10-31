@@ -1,12 +1,16 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ servi par le même Worker.
-import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
-import { chargerCatalogue } from "./lib/catalogue.mjs";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { sources, ...catalogue } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 
 // Les pages sources restent lisibles hors ligne : on y réécrit les hashes CSP à jour.
 for (const s of sources) if (!s.aJour) { await writeFile(s.fichier, s.html); console.log(`CSP mise à jour : ${s.fichier}`); }
+const fichierIndex = `${racine}index.html`;
+const sourceIndex = await readFile(fichierIndex, "utf8");
+const index = appliquerCsp(sourceIndex, { styles: true });
+if (sourceIndex !== index) { await writeFile(fichierIndex, index); console.log(`CSP mise à jour : ${fichierIndex}`); }
 
 await mkdir(`${racine}worker/src/generated`, { recursive: true });
 await writeFile(
