@@ -5,6 +5,10 @@ main = "src/index.js"
 compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Sauvegarde quotidienne des KPI D1 dans R2 (02:17 UTC = 06:17 à La Réunion).
+[triggers]
+crons = ["17 2 * * *"]
+
 [vars]
 MODELE_CHAT = "claude-haiku-5-5"
 GITHUB_REPO = "kermic974/trigoLab"

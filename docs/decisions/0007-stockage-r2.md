@@ -9,4 +9,5 @@
   - Aucune IP, aucun texte de message, aucune donnée personnelle d'élève.
   - Un bucket supplémentaire n'est créé que si les règles d'accès ou de rétention diffèrent (ex. fichiers envoyés par des utilisateurs, à isoler) ; il reçoit son propre binding et une ligne dans cet ADR.
 - Conséquences : gratuit tant que l'usage reste dans l'offre gratuite R2 (10 Go). Le jeton `CLOUDFLARE_API_TOKEN` doit inclure la permission R2 (action 2).
-- Préfixes en usage : aucun pour l'instant.
+- Préfixes en usage :
+  - `sauvegardes/kpi/AAAA-MM-JJ.json` : copie quotidienne des événements KPI D1 de la veille (UTC), écrite par le cron du Worker (`worker/src/sauvegarde.js`). Rejouable : le même jour réécrit le même fichier.
