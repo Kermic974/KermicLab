@@ -16,9 +16,10 @@ for (const { fichier, aJour, html } of sources) {
     for (const d of ["default-src 'none'", "connect-src 'none'", "base-uri 'none'", "form-action 'none'"]) if (!csp.includes(d)) err(`CSP : « ${d} » requis`);
     if (/script-src[^;]*'unsafe-(inline|eval)'/.test(csp)) err("CSP : 'unsafe-inline'/'unsafe-eval' interdits dans script-src");
   }
-  if (/<script[^>]+src=/i.test(html)) err("script externe interdit");
+  if (/<script\b[^>]*\ssrc\s*=/i.test(html)) err("script externe interdit");
   if (/<(link|img|iframe|source|video|audio|embed|object)\b[^>]*\s(href|src|data)="(?!data:|#)/i.test(html)) err("ressource externe interdite");
-  if (/\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|importScripts)\s*\(/.test(html.replace(/<style[\s\S]*?<\/style>/g, ""))) err("appel réseau interdit");
+  // Recherche sur tout le document (scripts, attributs on*, styles) : plus strict qu'un filtrage partiel.
+  if (/\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|importScripts)\s*\(/.test(html)) err("appel réseau interdit");
   if (/\beval\s*\(|new Function\s*\(/.test(html)) err("eval/new Function interdits");
   if (!/<meta name="viewport"/.test(html)) err("meta viewport manquante (mobile)");
   try {

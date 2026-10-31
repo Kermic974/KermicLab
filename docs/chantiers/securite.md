@@ -11,3 +11,4 @@
 Prochaines étapes :
 - Niveau 1 : binding Cloudflare Rate Limiting (compteur global) et Turnstile en cas d'abus.
 - Niveau 2 : modération par un classifieur dédié ; tests d'injection de prompt automatisés.
+- Note : tant que le dépôt est privé, CodeQL tourne sans envoi à GitHub et `scripts/verifier-sarif.mjs` bloque la CI en cas d'alerte.
