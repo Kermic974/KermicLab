@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Cercle trigonométrique interactif : angle, radians, cosinus, sinus et tangente synchronisés, valeurs exactes aux angles remarquables.">
+<meta name="theme-color" content="#06111f">
+<title>trigoLab · Cercle trigonométrique</title>
+<!-- @STYLES -->
+</head>
+<body>
+<main class="app">
+  <header>
+    <div>
+      <span class="kicker">TRIGOLAB · V1.2</span>
+      <h1>Cercle trigonométrique interactif</h1>
+      <p>Explore librement, apprends pas à pas, puis relève les défis.</p>
+    </div>
+    <span class="badge" id="status" role="status">Initialisation…</span>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Mode">
+    <button type="button" role="tab" data-tab="explore" aria-selected="true">🔭 Explorer</button>
+    <button type="button" role="tab" data-tab="learn" aria-selected="false">🎓 Apprendre</button>
+    <button type="button" role="tab" data-tab="play" aria-selected="false">🎮 Jouer</button>
+  </nav>
+
+  <div class="grid">
+    <section class="card stage" aria-label="Cercle trigonométrique">
+      <svg id="svg" viewBox="0 0 760 760" tabindex="0" role="slider" aria-label="Angle sur le cercle trigonométrique" aria-valuemin="0" aria-valuemax="360" aria-valuenow="45">
+        <defs>
+          <clipPath id="clip"><rect x="0" y="0" width="760" height="760"/></clipPath>
+        </defs>
+        <g aria-hidden="true" clip-path="url(#clip)">
+          <line class="axis" x1="40" y1="380" x2="720" y2="380"/>
+          <line class="axis" x1="380" y1="720" x2="380" y2="40"/>
+          <text class="axlab" x="726" y="385">x</text>
+          <text class="axlab" x="374" y="32">y</text>
+          <circle class="ring" cx="380" cy="380" r="260"/>
+          <g id="ticks"></g>
+          <path id="sector" class="sector"/>
+          <path id="arc" class="arc"/>
+          <g id="tanGroup" class="hidden">
+            <line class="tanAxis" x1="640" y1="0" x2="640" y2="760"/>
+            <line id="tanRay" class="tanRay" x1="380" y1="380"/>
+            <circle id="tanPt" class="tanPt" r="7"/>
+          </g>
+          <g id="projs">
+            <line id="px" class="proj x"/>
+            <line id="py" class="proj y"/>
+            <line id="segx" class="seg x" x1="380" y1="380" y2="380"/>
+            <line id="segy" class="seg y" x1="380" y1="380" x2="380"/>
+          </g>
+          <line id="ray" class="radius" x1="380" y1="380"/>
+          <circle cx="380" cy="380" r="5" fill="#ffb55f"/>
+          <g id="labels"></g>
+          <text id="angleText" class="ang" text-anchor="middle"/>
+          <circle id="target" class="target hidden" r="18"/>
+          <circle id="halo" class="halo" r="28"/>
+          <circle id="point" class="point" r="12"/>
+        </g>
+        <rect id="hit" class="hit" x="0" y="0" width="760" height="760"/>
+      </svg>
+    </section>
+
+    <aside class="side">
+      <section class="card panel hidden" data-mode="learn" aria-labelledby="ltitle">
+        <div class="lhead"><span id="lstep" class="pill"></span><div class="bar"><i id="lbar"></i></div></div>
+        <h2 id="ltitle"></h2>
+        <p id="ltext"></p>
+        <div id="ltask" class="task"><b>À toi :</b> <span id="ltaskText"></span> <span id="ltaskOk" class="ok" aria-live="polite"></span></div>
+        <div class="nav2">
+          <button type="button" id="lprev">← Précédent</button>
+          <button type="button" id="lnext" class="primary">Suivant →</button>
+        </div>
+      </section>
+
+      <section class="card panel hidden" data-mode="play" id="game">
+        <div id="gMenu">
+          <h2>Choisis un défi</h2>
+          <div class="games">
+            <button type="button" class="gcard" data-game="place"><b>🎯 Place le point</b><span>Une valeur exacte est donnée : place P au bon endroit du cercle.</span><small id="bestPlace"></small></button>
+            <button type="button" class="gcard" data-game="quiz"><b>🧠 Quiz des valeurs</b><span>Le point est placé : retrouve le cosinus, le sinus ou la tangente exacts.</span><small id="bestQuiz"></small></button>
+          </div>
+          <p class="hint">8 questions par partie · jusqu'à 100 points par question · vise les 3 étoiles !</p>
+        </div>
+        <div id="gPlay" class="hidden">
+          <div class="ghead"><span id="gQ" class="pill"></span><span id="gScore" class="pill"></span><span id="gStreak" class="pill"></span></div>
+          <p id="gPrompt"></p>
+          <p id="gHelp" class="hint"></p>
+          <div id="gOptions" class="opts"></div>
+          <p id="gFeedback" class="feedback" aria-live="polite"></p>
+          <div class="nav2">
+            <button type="button" id="gQuit">Quitter</button>
+            <button type="button" id="gGo" class="primary">Valider</button>
+          </div>
+        </div>
+        <div id="gEnd" class="hidden">
+          <h2>Partie terminée</h2>
+          <p id="gStars" class="stars"></p>
+          <p id="gSummary"></p>
+          <div class="nav2">
+            <button type="button" id="gMenuBtn">Autres défis</button>
+            <button type="button" id="gAgain" class="primary">Rejouer</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel" data-mode="explore learn">
+        <h2>Valeurs</h2>
+        <div class="vals">
+          <div class="val"><span>Angle θ</span><b id="deg"></b><small id="quad"></small></div>
+          <div class="val"><span>Radians</span><b id="rad"></b><small id="radx"></small></div>
+          <div class="val c"><span>cos θ = x</span><b id="cos"></b><small id="cosx"></small></div>
+          <div class="val s"><span>sin θ = y</span><b id="sin"></b><small id="sinx"></small></div>
+          <div class="val t"><span>tan θ = sin θ / cos θ</span><b id="tan"></b><small id="tanx"></small></div>
+          <div class="val"><span>Signes</span><b id="signs"></b><small id="ref"></small></div>
+          <div class="val wide"><span>Coordonnées P = (cos θ ; sin θ)</span><b id="coords"></b><small id="coordsx"></small></div>
+        </div>
+      </section>
+
+      <section class="card panel" data-mode="explore learn">
+        <h2>Contrôles</h2>
+        <div class="controls">
+          <input id="range" type="range" min="0" max="360" step="0.1" value="45" aria-label="Angle en degrés (curseur)">
+          <div class="entry">
+            <input id="input" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="45" aria-label="Angle en degrés ou en radians" aria-describedby="hint" placeholder="45 ou π/4">
+            <button id="apply" class="primary" type="button">Appliquer</button>
+          </div>
+          <p id="hint" class="hint">Degrés (45 ; 22,5 ; −30) ou multiple de π (π/4 ; 2pi/3).</p>
+          <div class="steps">
+            <button type="button" data-step="-15">−15°</button>
+            <button type="button" data-step="-5">−5°</button>
+            <button type="button" data-step="-1">−1°</button>
+            <button type="button" data-step="1">+1°</button>
+            <button type="button" data-step="5">+5°</button>
+            <button type="button" data-step="15">+15°</button>
+          </div>
+          <div class="checks">
+            <label><input id="snap" type="checkbox" checked> Aimantation ±3°</label>
+            <label><input id="showProj" type="checkbox" checked> Projections x/y</label>
+            <label><input id="showLabels" type="checkbox" checked> Repères remarquables</label>
+            <label><input id="radLabels" type="checkbox"> Repères en radians</label>
+            <label><input id="showTan" type="checkbox"> Axe des tangentes</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel" data-mode="explore">
+        <h2>Angles remarquables</h2>
+        <div id="quick" class="quick"></div>
+      </section>
+
+      <section class="card panel" data-mode="explore">
+        <h2>Ce que montre cet angle</h2>
+        <p id="explain"></p>
+        <details>
+          <summary>Diagnostic</summary>
+          <pre id="diag" class="diag"></pre>
+        </details>
+      </section>
+    </aside>
+  </div>
+
+  <footer>trigoLab v1.2 · application autonome, aucune dépendance externe · licence MIT</footer>
+  <div id="live" class="live" aria-live="polite"></div>
+</main>
+<!-- @SCRIPT -->
+</body>
+</html>

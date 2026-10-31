@@ -29,8 +29,9 @@ export function lireMetaHtml(html) {
 
 /** Scripts exécutables en ligne (hors JSON de métadonnées). */
 export function scriptsEnLigne(html) {
-  return [...html.matchAll(/<script(\s[^>]*)?>([\s\S]*?)<\/script>/g)]
-    .filter((s) => !/type="application\/json"/.test(s[1] ?? ""))
+  // Insensible à la casse et tolérant aux variantes de balise fermante (`</SCRIPT >`).
+  return [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\b[^>]*>/gi)]
+    .filter((s) => !/type\s*=\s*["']?application\/json/i.test(s[1] ?? ""))
     .map((s) => ({ attributs: s[1] ?? "", contenu: s[2] }));
 }
 

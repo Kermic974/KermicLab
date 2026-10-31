@@ -1,0 +1,381 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>trigoLab v0.1 · Cercle trigonométrique</title><style>
+:root{--bg:#06111f;--panel:#0d2035;--line:#294866;--txt:#f4f8ff;--muted:#a8bad0;--cyan:#47ddff;--orange:#ffb55f;--green:#6de8af}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#0d2942,var(--bg) 45%);color:var(--txt);font:16px system-ui,-apple-system,Segoe UI,sans-serif}.app{max-width:1400px;margin:auto;padding:14px}header{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:14px}h1{font-size:clamp(1.5rem,4vw,2.5rem);margin:.2rem 0}p{color:var(--muted)}.badge{padding:9px 13px;border:1px solid #39715d;border-radius:999px;color:#bbf8db;background:#103529;white-space:nowrap}.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr);gap:14px}.card{background:linear-gradient(145deg,#0e2238,#081725);border:1px solid #23405c;border-radius:20px;box-shadow:0 18px 45px #0007}.stage{padding:8px}svg{width:100%;height:auto;display:block;touch-action:none;user-select:none}.side{display:grid;gap:12px}.panel{padding:16px}.vals{display:grid;grid-template-columns:1fr 1fr;gap:8px}.val{background:#071522;border:1px solid #223d56;border-radius:13px;padding:10px;min-width:0}.val b{display:block;font-size:1.15rem;overflow-wrap:anywhere}.val small{color:var(--orange)}.wide{grid-column:1/-1}.controls{display:grid;gap:10px}.entry{display:grid;grid-template-columns:1fr 110px;gap:8px}input,button{font:inherit}input[type=text]{height:48px;background:#061522;color:var(--txt);border:1px solid #42617f;border-radius:11px;padding:0 12px}input[type=range]{width:100%;height:44px;accent-color:var(--cyan)}button{min-height:44px;border:1px solid #42617f;border-radius:11px;background:#12314f;color:var(--txt);font-weight:750;padding:8px;cursor:pointer}.primary{background:#0785ad;border-color:var(--cyan)}.steps,.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.steps{grid-template-columns:repeat(6,1fr)}.quick button{font-size:.8rem;padding:5px}.quick button.on{background:var(--cyan);color:#03202a}.checks{display:grid;gap:8px;color:var(--muted)}label{display:flex;align-items:center;gap:8px}summary{cursor:pointer;font-weight:700}.diag{white-space:pre-wrap;color:#a9bdd1;background:#06121e;padding:10px;border-radius:10px}.axis{stroke:#7890aa;stroke-width:2}.ring{fill:#071725;stroke:var(--cyan);stroke-width:3}.tick{stroke:#7390aa}.radius{stroke:white;stroke-width:3}.proj{stroke:var(--orange);stroke-width:2;stroke-dasharray:8 6}.sector{fill:#47ddff22}.arc{fill:none;stroke:#a8efff;stroke-width:4}.point{fill:#fff;stroke:var(--cyan);stroke-width:5}.halo{fill:#47ddff33}.lab{fill:#d9e5f0;font-size:13px;font-weight:700;paint-order:stroke;stroke:#071522;stroke-width:5px}.ang{fill:white;font-size:22px;font-weight:900;paint-order:stroke;stroke:#071522;stroke-width:6px}.hit{fill:transparent;pointer-events:all}.hidden{opacity:0;visibility:hidden}input[aria-invalid=true]{border-color:#ff8a8a}.live{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}@media(max-width:900px){.grid{grid-template-columns:1fr}}@media(max-width:520px){.app{padding:8px}header{display:block}.badge{display:inline-block}.entry{grid-template-columns:1fr}.panel{padding:13px}.lab{font-size:11px}.steps{grid-template-columns:repeat(3,1fr)}}button:focus-visible,input:focus-visible,svg:focus-visible{outline:3px solid #ffe28b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><main class="app"><header><div><small>TRIGOLAB · V0.1</small><h1>Cercle trigonométrique interactif</h1><p>Déplacez le point, touchez le cercle ou saisissez un angle.</p></div><span class="badge" id="status">Initialisation…</span></header><div class="grid"><section class="card stage"><svg id="svg" viewBox="0 0 760 760" tabindex="0" role="slider" aria-label="Angle sur le cercle" aria-valuemin="0" aria-valuemax="360"><g aria-hidden="true"><line class="axis" x1="60" y1="380" x2="700" y2="380"/><line class="axis" x1="380" y1="700" x2="380" y2="60"/><circle class="ring" cx="380" cy="380" r="260"/><g id="ticks"></g><g id="labels"></g><path id="sector" class="sector"/><path id="arc" class="arc"/><g id="projs"><line id="px" class="proj"/><line id="py" class="proj"/></g><line id="ray" class="radius" x1="380" y1="380"/><circle cx="380" cy="380" r="5" fill="#ffb55f"/><text id="angleText" class="ang" text-anchor="middle"/><circle id="halo" class="halo" r="28"/><circle id="point" class="point" r="12"/></g><rect id="hit" class="hit" x="0" y="0" width="760" height="760"/></svg></section><aside class="side"><section class="card panel"><h2>Valeurs</h2><div class="vals"><div class="val"><span>Angle</span><b id="deg"></b><small id="quad"></small></div><div class="val"><span>Radians</span><b id="rad"></b><small id="radx"></small></div><div class="val"><span>cos θ = x</span><b id="cos"></b><small id="cosx"></small></div><div class="val"><span>sin θ = y</span><b id="sin"></b><small id="sinx"></small></div><div class="val"><span>tan θ</span><b id="tan"></b><small id="tanx"></small></div><div class="val"><span>Signes</span><b id="signs"></b><small id="ref"></small></div><div class="val wide"><span>Coordonnées P = (cos θ, sin θ)</span><b id="coords"></b><small id="coordsx"></small></div></div></section><section class="card panel"><h2>Contrôles</h2><div class="controls"><input id="range" type="range" min="0" max="360" step="0.1" value="45"><div class="entry"><input id="input" type="text" inputmode="decimal" autocomplete="off" value="45" aria-label="Angle en degrés"><button id="apply" class="primary">Appliquer</button></div><div class="steps"><button data-step="-15">−15°</button><button data-step="-5">−5°</button><button data-step="-1">−1°</button><button data-step="1">+1°</button><button data-step="5">+5°</button><button data-step="15">+15°</button></div><div class="checks"><label><input id="snap" type="checkbox" checked> Aimantation ±3°</label><label><input id="showProj" type="checkbox" checked> Projections x/y</label><label><input id="showLabels" type="checkbox" checked> Repères remarquables</label></div></div></section><section class="card panel"><h2>Angles remarquables</h2><div id="quick" class="quick"></div></section><section class="card panel"><h2>Ce que montre cet angle</h2><p id="explain"></p><details><summary>Diagnostic</summary><pre id="diag" class="diag"></pre></details></section></aside></div><div id="live" class="live" aria-live="polite"></div></main><script>
+(function () {
+  'use strict';
+
+  var VERSION = '0.1.0';
+  var C = 380, R = 260, EPS = 1e-10;
+  var SNAP = 3;        // tolérance d'aimantation en degrés
+  var DEAD_ZONE = 24;  // rayon central ignoré (angle indéfini)
+  var state = { angle: 45, snap: true };
+
+  var A = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330];
+  var X = {
+    0: ['0', '1', '0', '0'], 30: ['π/6', '√3/2', '1/2', '√3/3'], 45: ['π/4', '√2/2', '√2/2', '1'],
+    60: ['π/3', '1/2', '√3/2', '√3'], 90: ['π/2', '0', '1', 'non définie'], 120: ['2π/3', '−1/2', '√3/2', '−√3'],
+    135: ['3π/4', '−√2/2', '√2/2', '−1'], 150: ['5π/6', '−√3/2', '1/2', '−√3/3'], 180: ['π', '−1', '0', '0'],
+    210: ['7π/6', '−√3/2', '−1/2', '√3/3'], 225: ['5π/4', '−√2/2', '−√2/2', '1'], 240: ['4π/3', '−1/2', '−√3/2', '√3'],
+    270: ['3π/2', '0', '−1', 'non définie'], 300: ['5π/3', '1/2', '−√3/2', '−√3'], 315: ['7π/4', '√2/2', '−√2/2', '−1'],
+    330: ['11π/6', '√3/2', '−1/2', '−√3/3'], 360: ['2π', '1', '0', '0']
+  };
+
+  function $(x) { return document.getElementById(x); }
+
+  // Saisie en degrés : "45", "22,5", "−30". Renvoie NaN si invalide (y compris vide).
+  function parseDeg(raw) {
+    var s = String(raw).trim().replace(',', '.').replace(/[−–]/, '-').replace(/°$/, '');
+    return /^[+-]?(\d+\.?\d*|\.\d+)$/.test(s) ? Number(s) : NaN;
+  }
+  // Sans « + 360 » systématique, qui ajoutait du bruit flottant (12.3 → 12.300000000000011).
+  function norm(v) { var r = v % 360; return r < 0 ? r + 360 : r + 0; }
+  function clean(v) {
+    if (Math.abs(v) < EPS) return 0;
+    if (Math.abs(v - 1) < EPS) return 1;
+    if (Math.abs(v + 1) < EPS) return -1;
+    return v;
+  }
+  function fmt(v, n) {
+    if (v === null) return 'non définie';
+    var s = clean(v).toFixed(n || 6).replace(/0+$/, '').replace(/\.$/, '');
+    return (s === '-0' ? '0' : s).replace('.', ',');
+  }
+  function calc(a) {
+    var n = norm(a), r = n * Math.PI / 180, x = clean(Math.cos(r)), y = clean(Math.sin(r));
+    return { n: n, r: r, x: x, y: y, t: Math.abs(x) < EPS ? null : clean(y / x) };
+  }
+  function polar(a, r) {
+    var q = a * Math.PI / 180, rr = r === undefined ? R : r;
+    return { x: C + rr * Math.cos(q), y: C - rr * Math.sin(q) };
+  }
+  function dist(a, b) { var d = Math.abs(norm(a) - norm(b)); return Math.min(d, 360 - d); }
+  function quadrant(a) {
+    a = norm(a);
+    if (a === 0) return 'Axe +x';
+    if (a === 90) return 'Axe +y';
+    if (a === 180) return 'Axe −x';
+    if (a === 270) return 'Axe −y';
+    return 'Quadrant ' + (a < 90 ? 'I' : a < 180 ? 'II' : a < 270 ? 'III' : 'IV');
+  }
+  // Angle aigu entre le rayon et l'axe des abscisses (corrigé en v0.1).
+  function refAngle(a) {
+    var n = norm(a);
+    return n <= 90 ? n : n <= 180 ? 180 - n : n <= 270 ? n - 180 : 360 - n;
+  }
+  function path(a, r, close) {
+    r = r || 88;
+    if (a >= 359.999) {
+      return (close ? 'M 380 380 L ' : 'M ') + (C + r) + ' 380 A ' + r + ' ' + r + ' 0 1 0 ' + (C - r) + ' 380 A ' +
+        r + ' ' + r + ' 0 1 0 ' + (C + r) + ' 380' + (close ? ' Z' : '');
+    }
+    var p = polar(a, r);
+    return (close ? 'M 380 380 L ' : 'M ') + (C + r) + ' 380 A ' + r + ' ' + r + ' 0 ' + (a > 180 ? 1 : 0) + ' 0 ' +
+      p.x + ' ' + p.y + (close ? ' Z' : '');
+  }
+  function exact(a) { return a === 360 ? X[360] : (X[norm(a)] || null); }
+
+  function setAngle(raw, keep, announce) {
+    var num = typeof raw === 'number' ? raw : parseDeg(raw);
+    if (!Number.isFinite(num)) return false;
+    var c = calc(num), a = keep && num !== 0 && c.n === 0 ? 360 : c.n;
+    state.angle = a;
+    c = calc(a);
+    var p = polar(c.n), e = exact(a);
+    $('point').setAttribute('cx', p.x); $('point').setAttribute('cy', p.y);
+    $('halo').setAttribute('cx', p.x); $('halo').setAttribute('cy', p.y);
+    $('ray').setAttribute('x2', p.x); $('ray').setAttribute('y2', p.y);
+    $('px').setAttribute('x1', p.x); $('px').setAttribute('y1', p.y); $('px').setAttribute('x2', p.x); $('px').setAttribute('y2', C);
+    $('py').setAttribute('x1', p.x); $('py').setAttribute('y1', p.y); $('py').setAttribute('x2', C); $('py').setAttribute('y2', p.y);
+    $('arc').setAttribute('d', path(a));
+    $('sector').setAttribute('d', path(a, 88, true));
+    var tp = polar(a === 360 ? 30 : Math.max(18, a / 2), 112);
+    $('angleText').setAttribute('x', tp.x);
+    $('angleText').setAttribute('y', tp.y + 7);
+    $('angleText').textContent = fmt(a, 1) + '°';
+    $('deg').textContent = fmt(a, 3) + '°';
+    $('quad').textContent = quadrant(a);
+    $('rad').textContent = fmt(a * Math.PI / 180);
+    $('radx').textContent = e ? e[0] : 'valeur approchée';
+    $('cos').textContent = fmt(c.x);
+    $('cosx').textContent = e ? e[1] : 'valeur approchée';
+    $('sin').textContent = fmt(c.y);
+    $('sinx').textContent = e ? e[2] : 'valeur approchée';
+    $('tan').textContent = fmt(c.t);
+    $('tanx').textContent = e ? e[3] : (c.t === null ? 'cos θ = 0' : 'valeur approchée');
+    $('coords').textContent = '(' + fmt(c.x) + ' ; ' + fmt(c.y) + ')';
+    $('coordsx').textContent = e ? '(' + e[1] + ' ; ' + e[2] + ')' : 'coordonnées approchées';
+    $('signs').textContent = 'cos ' + (c.x < 0 ? '−' : c.x > 0 ? '+' : '0') + ' · sin ' + (c.y < 0 ? '−' : c.y > 0 ? '+' : '0') +
+      ' · tan ' + (c.t === null ? '∅' : c.t < 0 ? '−' : c.t > 0 ? '+' : '0');
+    $('ref').textContent = 'Angle de référence : ' + fmt(refAngle(a), 1) + '°';
+    $('range').value = a;
+    $('input').value = fmt(a, 3);
+    $('input').removeAttribute('aria-invalid');
+    $('svg').setAttribute('aria-valuenow', a);
+    $('svg').setAttribute('aria-valuetext', fmt(a, 1) + ' degrés');
+    $('explain').textContent = quadrant(a) + ' : P = (cos θ, sin θ). La projection horizontale donne le cosinus et la projection verticale donne le sinus.';
+    Array.prototype.forEach.call($('quick').children, function (b) { b.classList.toggle('on', dist(c.n, Number(b.dataset.a)) < 1e-7); });
+    if (announce) $('live').textContent = 'Angle ' + fmt(a, 1) + ' degrés, cosinus ' + fmt(c.x) + ', sinus ' + fmt(c.y) + '.';
+    return true;
+  }
+
+  function build() {
+    var ns = 'http://www.w3.org/2000/svg';
+    for (var d = 0; d < 360; d += 15) {
+      var p1 = polar(d, R + 3), p2 = polar(d, R + (A.indexOf(d) >= 0 ? 18 : 10)), l = document.createElementNS(ns, 'line');
+      l.setAttribute('class', 'tick');
+      l.setAttribute('x1', p1.x); l.setAttribute('y1', p1.y); l.setAttribute('x2', p2.x); l.setAttribute('y2', p2.y);
+      $('ticks').appendChild(l);
+    }
+    A.forEach(function (d) {
+      var p = polar(d, 303), t = document.createElementNS(ns, 'text'), cx = Math.cos(d * Math.PI / 180);
+      t.setAttribute('class', 'lab');
+      t.setAttribute('x', p.x); t.setAttribute('y', p.y);
+      t.setAttribute('text-anchor', cx > .2 ? 'start' : cx < -.2 ? 'end' : 'middle');
+      t.textContent = d === 0 ? '0° / 360°' : d + '°';
+      $('labels').appendChild(t);
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = d + '°';
+      b.dataset.a = d;
+      b.onclick = function () { setAngle(d, false, true); };
+      $('quick').appendChild(b);
+    });
+  }
+
+  // Angle visé par le pointeur, ou null au centre du cercle (angle indéfini).
+  function angleFrom(ev) {
+    var r = $('svg').getBoundingClientRect(), x = (ev.clientX - r.left) * 760 / r.width, y = (ev.clientY - r.top) * 760 / r.height;
+    if (Math.hypot(x - C, y - C) < DEAD_ZONE) return null;
+    var a = norm(Math.atan2(C - y, x - C) * 180 / Math.PI);
+    if (state.snap) {
+      var best = a, bd = 99;
+      A.forEach(function (v) { var z = dist(a, v); if (z < bd) { bd = z; best = v; } });
+      if (bd <= SNAP) a = best;
+    }
+    return a;
+  }
+
+  function bind() {
+    var hit = $('hit'), drag = false, pid = null;
+    function stop() { drag = false; pid = null; }
+    hit.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      var a = angleFrom(e);
+      if (a === null) return;
+      e.preventDefault();
+      drag = true;
+      pid = e.pointerId;
+      try { hit.setPointerCapture(pid); } catch (_) { /* pointeur synthétique ou navigateur ancien */ }
+      setAngle(a);
+    });
+    hit.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== pid) return;
+      e.preventDefault();
+      var a = angleFrom(e);
+      if (a !== null) setAngle(a);
+    });
+    hit.addEventListener('pointerup', function (e) {
+      if (!drag || e.pointerId !== pid) return;
+      e.preventDefault();
+      var a = angleFrom(e);
+      setAngle(a === null ? state.angle : a, state.angle === 360, true);
+      stop();
+    });
+    hit.addEventListener('pointercancel', stop);
+    hit.addEventListener('lostpointercapture', stop);
+    function apply() { if (!setAngle($('input').value, true, true)) $('input').setAttribute('aria-invalid', 'true'); }
+    $('apply').onclick = apply;
+    $('input').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); apply(); } });
+    $('range').oninput = function () { setAngle(Number(this.value), Number(this.value) === 360); };
+    Array.prototype.forEach.call(document.querySelectorAll('[data-step]'), function (b) {
+      b.onclick = function () { setAngle(state.angle + Number(b.dataset.step), false, true); };
+    });
+    $('snap').onchange = function () { state.snap = this.checked; };
+    $('showProj').onchange = function () { $('projs').classList.toggle('hidden', !this.checked); };
+    $('showLabels').onchange = function () { $('labels').classList.toggle('hidden', !this.checked); };
+    $('svg').addEventListener('keydown', function (e) {
+      var a = null, s = e.shiftKey ? 5 : 1;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') a = state.angle - s;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') a = state.angle + s;
+      if (e.key === 'Home') a = 0;
+      if (e.key === 'End') a = 360;
+      if (a !== null) { e.preventDefault(); setAngle(a, a === 360, true); }
+    });
+  }
+
+  // ---------- Tests logiques ----------
+
+  function tests() {
+    var fail = [], count = 0;
+    function ok(n, v) { count++; if (!v) fail.push(n); }
+    for (var d = 0; d < 360; d++) {
+      var p = polar(d), rec = norm(Math.atan2(C - p.y, p.x - C) * 180 / Math.PI);
+      ok('angle ' + d, dist(d, rec) < 1e-8);
+      ok('rayon ' + d, Math.abs(Math.hypot(p.x - C, p.y - C) - R) < 1e-8);
+    }
+    var c = calc(60);
+    ok('60 cos', Math.abs(c.x - .5) < 1e-10);
+    ok('60 sin', Math.abs(c.y - Math.sqrt(3) / 2) < 1e-10);
+    ok('60 tan', Math.abs(c.t - Math.sqrt(3)) < 1e-10);
+    ok('90 tan', calc(90).t === null);
+    ok('270 tan', calc(270).t === null);
+    ok('réf 120', refAngle(120) === 60);
+    ok('réf 210', refAngle(210) === 30);
+    ok('réf 300', refAngle(300) === 60);
+    ok('lecture 22,5', parseDeg('22,5') === 22.5);
+    ok('lecture −30°', parseDeg('−30°') === -30);
+    ok('lecture vide', isNaN(parseDeg('')));
+    ok('lecture abc', isNaN(parseDeg('abc')));
+    return { count: count, fail: fail };
+  }
+
+  // ---------- Tests DOM étendus ----------
+  // Ils pilotent la vraie page (clics, saisie, clavier, pointeur) puis restaurent l'état initial.
+
+  function domTests() {
+    var fail = [], count = 0, skipped = [];
+    function ok(n, v) { count++; if (!v) fail.push('DOM · ' + n); }
+    function near(a, b, t) { return Math.abs(a - b) < (t || 1e-6); }
+    function num(id, at) { return Number($(id).getAttribute(at)); }
+    function key(el, k, shift) {
+      el.dispatchEvent(new KeyboardEvent('keydown', { key: k, shiftKey: !!shift, bubbles: true, cancelable: true }));
+    }
+    function typeApply(v) { $('input').value = v; $('apply').click(); }
+    function slide(v) { $('range').value = v; $('range').dispatchEvent(new Event('input', { bubbles: true })); }
+    function step(s) { document.querySelector('[data-step="' + s + '"]').click(); }
+    function toggle(id) { var el = $(id); el.checked = !el.checked; el.dispatchEvent(new Event('change', { bubbles: true })); }
+
+    var saved = { angle: state.angle, snap: $('snap').checked, proj: $('showProj').checked, labels: $('showLabels').checked };
+
+    // Saisie et bouton Appliquer
+    typeApply('120');
+    ok('saisie 120', $('deg').textContent === '120°' && $('quad').textContent === 'Quadrant II' &&
+      $('ref').textContent === 'Angle de référence : 60°' && $('radx').textContent === '2π/3');
+    typeApply('22,5');
+    ok('virgule décimale', state.angle === 22.5 && $('deg').textContent === '22,5°' && $('input').value === '22,5');
+    typeApply('');
+    ok('saisie vide ignorée', state.angle === 22.5 && $('input').getAttribute('aria-invalid') === 'true');
+    typeApply('abc');
+    ok('saisie invalide ignorée', state.angle === 22.5);
+    typeApply('-30');
+    ok('angle négatif', state.angle === 330 && !$('input').hasAttribute('aria-invalid'));
+    typeApply('720');
+    ok('720° conservé à 360°', state.angle === 360 && $('deg').textContent === '360°');
+    $('input').value = '60';
+    key($('input'), 'Enter');
+    ok('touche Entrée', state.angle === 60 && $('radx').textContent === 'π/3' && $('coords').textContent === '(0,5 ; 0,866025)');
+
+    // Curseur
+    slide('360');
+    ok('curseur 360', $('deg').textContent === '360°' && $('radx').textContent === '2π');
+    slide('90');
+    ok('curseur 90', $('tan').textContent === 'non définie' && $('signs').textContent === 'cos 0 · sin + · tan ∅');
+    slide('12.3');
+    ok('curseur décimal', state.angle === 12.3 && $('radx').textContent === 'valeur approchée');
+
+    // Incréments
+    setAngle(0);
+    step(-15); ok('−15° depuis 0', state.angle === 345);
+    step(15); ok('+15° revient à 0', state.angle === 0 && $('deg').textContent === '0°');
+    step(1); step(1); step(1); ok('+1° ×3', state.angle === 3);
+    step(-5); ok('−5° franchit 0', state.angle === 358);
+
+    // Angles remarquables : chaque bouton synchronise toutes les valeurs exactes
+    Array.prototype.forEach.call($('quick').children, function (b) {
+      b.click();
+      var d = Number(b.dataset.a), e = X[d], on = $('quick').querySelectorAll('.on');
+      ok('remarquable ' + d, state.angle === d && $('radx').textContent === e[0] && $('cosx').textContent === e[1] &&
+        $('sinx').textContent === e[2] && $('tanx').textContent === e[3] &&
+        $('coordsx').textContent === '(' + e[1] + ' ; ' + e[2] + ')' && on.length === 1 && on[0] === b);
+    });
+
+    // Clavier sur le cercle
+    var svg = $('svg');
+    setAngle(10);
+    key(svg, 'ArrowRight'); ok('flèche droite', state.angle === 11);
+    key(svg, 'ArrowUp', true); ok('Maj + flèche haut', state.angle === 16);
+    key(svg, 'ArrowLeft'); ok('flèche gauche', state.angle === 15);
+    key(svg, 'Home'); ok('Début', state.angle === 0);
+    key(svg, 'ArrowDown'); ok('flèche bas franchit 0', state.angle === 359);
+    key(svg, 'End'); ok('Fin', state.angle === 360 && $('deg').textContent === '360°');
+    key(svg, 'a'); ok('touche sans effet', state.angle === 360);
+
+    // Géométrie SVG synchronisée
+    [0, 45, 137.5, 270].forEach(function (d) {
+      setAngle(d);
+      var p = polar(d);
+      ok('géométrie ' + d, near(num('point', 'cx'), p.x) && near(num('point', 'cy'), p.y) &&
+        near(num('halo', 'cx'), p.x) && near(num('ray', 'x2'), p.x) && near(num('ray', 'y2'), p.y) &&
+        near(num('px', 'x2'), p.x) && near(num('px', 'y2'), C) && near(num('py', 'x2'), C) && near(num('py', 'y2'), p.y) &&
+        num('svg', 'aria-valuenow') === d && Number($('range').value) === d);
+    });
+
+    // Signes par quadrant
+    [[45, 'cos + · sin + · tan +'], [135, 'cos − · sin + · tan −'], [225, 'cos − · sin − · tan +'], [315, 'cos + · sin − · tan −']]
+      .forEach(function (s) { setAngle(s[0]); ok('signes ' + s[0], $('signs').textContent === s[1]); });
+
+    // Options d'affichage
+    toggle('showProj'); ok('masquer projections', $('projs').classList.contains('hidden') === saved.proj);
+    toggle('showProj'); ok('afficher projections', $('projs').classList.contains('hidden') === !saved.proj);
+    toggle('showLabels'); ok('masquer repères', $('labels').classList.contains('hidden') === saved.labels);
+    toggle('showLabels'); ok('afficher repères', $('labels').classList.contains('hidden') === !saved.labels);
+    toggle('snap'); ok('aimantation basculée', state.snap === !saved.snap);
+    toggle('snap'); ok('aimantation rétablie', state.snap === saved.snap);
+
+    // Annonce aux lecteurs d'écran
+    $('live').textContent = '';
+    typeApply('30');
+    ok('annonce aria-live', $('live').textContent.indexOf('Angle 30 degrés') === 0);
+
+    // Pointeur (souris, tactile, stylet)
+    var r = svg.getBoundingClientRect();
+    if (r.width > 0 && typeof PointerEvent === 'function') {
+      var ptr = function (type, d, rad, extra) {
+        var p = polar(d, rad), init = {
+          clientX: r.left + p.x * r.width / 760, clientY: r.top + p.y * r.height / 760,
+          pointerId: 7, pointerType: 'mouse', button: 0, bubbles: true, cancelable: true
+        };
+        for (var k in extra || {}) init[k] = extra[k];
+        $('hit').dispatchEvent(new PointerEvent(type, init));
+      };
+      state.snap = true;
+      setAngle(100);
+      ptr('pointerdown', 32); ok('appui aimanté (32° → 30°)', state.angle === 30);
+      ptr('pointermove', 200); ok('glisser', near(state.angle, 200, .5));
+      ptr('pointerup', 200); ok('relâcher annonce', $('live').textContent.indexOf('Angle 200') === 0);
+      state.snap = false;
+      ptr('pointerdown', 32); ptr('pointerup', 32); ok('appui libre (32°)', near(state.angle, 32, .5));
+      ptr('pointerdown', 50, 150, { pointerType: 'touch' }); ptr('pointerup', 50, 150, { pointerType: 'touch' });
+      ok('toucher à l\'intérieur du cercle', near(state.angle, 50, .5));
+      setAngle(100);
+      ptr('pointerdown', 0, 0); ok('centre ignoré', state.angle === 100);
+      ptr('pointerdown', 200, R, { button: 2 }); ok('clic droit ignoré', state.angle === 100);
+      ptr('pointermove', 200); ok('survol sans appui ignoré', state.angle === 100);
+      state.snap = saved.snap;
+    } else {
+      skipped.push('pointeur (page non affichée)');
+    }
+
+    // Restauration
+    $('snap').checked = state.snap = saved.snap;
+    setAngle(saved.angle);
+    $('live').textContent = '';
+    return { count: count, fail: fail, skipped: skipped };
+  }
+
+  try {
+    build();
+    bind();
+    setAngle(45);
+    var t = tests(), dom = domTests(), fails = t.fail.concat(dom.fail), total = t.count + dom.count;
+    $('status').textContent = fails.length ? fails.length + ' test(s) à vérifier' : 'Application prête · ' + total + ' tests OK';
+    $('diag').textContent = (fails.length ? 'Échecs :\n' + fails.join('\n') : 'Tous les autotests sont réussis.') +
+      '\nTests logiques : ' + t.count + '\nTests DOM : ' + dom.count +
+      (dom.skipped.length ? '\nNon exécutés : ' + dom.skipped.join(', ') : '') +
+      '\nScénario 60° synchronisé.\nVersion : ' + VERSION + '\nPointer Events : ' + ('PointerEvent' in window ? 'oui' : 'non');
+  } catch (e) {
+    $('status').textContent = 'Erreur de démarrage';
+    $('diag').textContent = String(e.stack || e);
+  }
+})();
+</script></body></html>

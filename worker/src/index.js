@@ -4,6 +4,7 @@ import { analyser } from "./moderation.js";
 import { messages, LANGUES } from "./messages.js";
 import { creerLimiteur } from "./limiteur.js";
 import { journaliser } from "./kpi.js";
+import { sauvegarderKpi, jourPrecedent } from "./sauvegarde.js";
 import { routerAvecClaude } from "./llm.js";
 import { creerOuCommenterIssue, corpsMaquetteManquante, commentaireDemande } from "./github.js";
 
@@ -204,6 +205,13 @@ export default {
       }
     }
     return json({ erreur: "introuvable" }, 404, cors);
+  },
+
+  /** Cron quotidien (wrangler.toml) : sauvegarde des KPI de la veille dans R2. */
+  async scheduled(evenement, env, ctx) {
+    ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
+      .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
+      .catch((e) => console.error("sauvegarde kpi", e?.message)));
   }
 };
 

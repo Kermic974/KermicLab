@@ -1,0 +1,50 @@
+name: Publication
+
+# Crée automatiquement le tag vX.Y.Z et la release GitHub quand package.json porte une version qui n'a pas
+# encore de tag. Les notes viennent de la section correspondante de CHANGELOG.md ; le tag est posé sur le
+# premier commit de main qui porte cette version. Les versions 0.x sont publiées en pré-version.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publication
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Version à publier
+        id: version
+        run: |
+          version=$(node -p "require('./package.json').version")
+          tag="v$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null; then
+            echo "Le tag $tag existe déjà : rien à publier."
+            echo "publier=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publier=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Créer le tag et la release
+        if: steps.version.outputs.publier == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          cible=$(node scripts/version.mjs cible "$VERSION")
+          node scripts/version.mjs notes "$VERSION" > notes.md
+          options=()
+          case "$VERSION" in 0.*) options+=(--prerelease) ;; esac
+          gh release create "$TAG" --target "$cible" --title "$TAG" --notes-file notes.md "${options[@]}"
+          echo "Publié : $TAG sur $cible"
