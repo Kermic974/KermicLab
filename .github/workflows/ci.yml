@@ -95,7 +95,8 @@ jobs:
       - if: steps.secrets.outputs.ok == 'true'
         run: npm run build
         env:
-          KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL }}
+          # URL publique du Worker (sous-domaine workers.dev du compte) ; surchargeable par la variable GitHub.
+          KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'https://kermiclab-api.kermic.workers.dev' }}
       - name: Schéma D1 (idempotent)
         if: steps.secrets.outputs.ok == 'true'
         uses: cloudflare/wrangler-action@v3
@@ -112,12 +113,22 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: worker
           command: deploy
-          secrets: |
-            ANTHROPIC_API_KEY
-            GITHUB_TOKEN
+      # Secrets du Worker : seuls ceux qui sont définis sont envoyés. En mode zéro budget,
+      # ANTHROPIC_API_KEY est absent et wrangler-action échouerait sur une valeur vide.
+      - name: Secrets du Worker (si définis)
+        if: steps.secrets.outputs.ok == 'true'
+        working-directory: worker
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.KERMICLAB_GITHUB_TOKEN }}
+        run: |
+          for nom in ANTHROPIC_API_KEY GITHUB_TOKEN; do
+            if [ -n "${!nom}" ]; then
+              printf '%s' "${!nom}" | npx --yes wrangler@4 secret put "$nom"
+            else
+              echo "::notice::$nom absent : secret ignoré (voir docs/actions-manuelles.md)."
+            fi
+          done
       - name: Pages
         if: steps.secrets.outputs.ok == 'true'
         uses: cloudflare/wrangler-action@v3
