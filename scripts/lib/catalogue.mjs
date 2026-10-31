@@ -35,14 +35,24 @@ export function scriptsEnLigne(html) {
     .map((s) => ({ attributs: s[1] ?? "", contenu: s[2] }));
 }
 
-export function hashScript(contenu) {
+function hashContenu(contenu) {
   return `'sha256-${createHash("sha256").update(contenu, "utf8").digest("base64")}'`;
 }
 
-/** Recalcule les hashes de script-src dans la CSP de la page. */
-export function appliquerCsp(html) {
-  const hashes = scriptsEnLigne(html).map((s) => hashScript(s.contenu)).join(" ");
-  return html.replace(/(<meta http-equiv="Content-Security-Policy" content="[^"]*script-src )[^;"]*/, `$1${hashes}`);
+export function hashScript(contenu) {
+  return hashContenu(contenu);
+}
+
+/** Recalcule les hashes CSP des scripts et, sur demande, des styles en ligne. */
+export function appliquerCsp(html, { styles = false } = {}) {
+  const hashes = scriptsEnLigne(html).map((s) => hashContenu(s.contenu)).join(" ");
+  let page = html.replace(/(<meta http-equiv="Content-Security-Policy" content="[^"]*script-src )[^;"]*/, `$1${hashes}`);
+  if (styles) {
+    const hashesStyles = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style\b[^>]*>/gi)]
+      .map((s) => hashContenu(s[1])).join(" ");
+    page = page.replace(/(<meta http-equiv="Content-Security-Policy" content="[^"]*style-src )[^;"]*/, `$1${hashesStyles}`);
+  }
+  return page;
 }
 
 async function existe(p) { try { await stat(p); return true; } catch { return false; } }
