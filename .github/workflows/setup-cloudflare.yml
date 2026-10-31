@@ -1,0 +1,59 @@
+name: Vérifier la configuration Cloudflare
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    name: Vérifier les identifiants Cloudflare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier la présence et la validité des secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          erreurs=0
+
+          if [[ -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "::error::Le secret CLOUDFLARE_API_TOKEN est absent."
+            erreurs=1
+          fi
+
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "::error::Le secret CLOUDFLARE_ACCOUNT_ID est absent."
+            erreurs=1
+          elif [[ ! "$CLOUDFLARE_ACCOUNT_ID" =~ ^[[:xdigit:]]{32}$ ]]; then
+            echo "::error::CLOUDFLARE_ACCOUNT_ID doit contenir 32 caractères hexadécimaux."
+            erreurs=1
+          fi
+
+          if [[ -n "$CLOUDFLARE_API_TOKEN" ]]; then
+            if reponse="$(curl --silent --show-error --fail \
+              --header "Authorization: ******" \
+              https://api.cloudflare.com/client/v4/user/tokens/verify)" \
+              && jq --exit-status '.success == true and .result.status == "active"' \
+                <<< "$reponse" >/dev/null; then
+              echo "Le jeton Cloudflare est actif."
+            else
+              echo "::error::Le jeton Cloudflare est invalide, inactif ou impossible à vérifier."
+              erreurs=1
+            fi
+          fi
+
+          if [[ "$erreurs" -ne 0 ]]; then
+            {
+              echo "## Configuration Cloudflare"
+              echo "Vérification en échec. Consultez [le guide de configuration](https://github.com/kermic974/trigoLab/blob/main/docs/setup-cloudflare.md)."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+          {
+            echo "## Configuration Cloudflare"
+            echo "Les secrets Cloudflare requis sont présents et le jeton est actif. Aucune valeur secrète n'a été affichée."
+          } >> "$GITHUB_STEP_SUMMARY"
