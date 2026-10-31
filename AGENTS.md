@@ -77,6 +77,14 @@ npx wrangler pages dev dist     # chat en local
 
 Une traduction manquante crée une issue `traduction-manquante` ; la version française est servie en attendant.
 
+## 6 bis. Publier une version
+
+1. Dans la PR : passer `version` de `package.json` à la nouvelle valeur (SemVer) et renommer la section
+   `## [Non publié]` de `CHANGELOG.md` en `## [X.Y.Z] — AAAA-MM-JJ`.
+2. Après la fusion sur `main`, le workflow `Publication` crée automatiquement le tag `vX.Y.Z` (sur le premier
+   commit de `main` portant cette version) et la release GitHub, avec les notes du changelog. Les versions `0.x`
+   sont publiées en pré-version. Aucun tag n'est créé à la main.
+
 ## 7. Définition du « terminé »
 
 Une tâche est terminée quand : `npm run ci` passe, la documentation concernée (chantier, ADR, README) est à jour,
