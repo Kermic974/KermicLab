@@ -1,13 +1,14 @@
 # Chantier : CI/CD
 
-**Niveau actuel : 0 (vérifications GitHub + déploiements Cloudflare et GitHub Pages)**
+**Niveau actuel : 0 (vérifications GitHub + déploiement Cloudflare après vérifications)**
 
-- `ci.yml` : lint → build (index + CSP) → contrôle des pages → tests unitaires → tests Playwright.
-- Déploiement : Cloudflare Workers Builds (Worker `trigolab` relié au dépôt) à chaque push sur `main`, après toutes les vérifications de `npm run ci` via `npm run predeploy`, sans jeton dans GitHub (ADR 0007).
-- Déploiement GitHub Pages de l’application autonome `index.html`, après la réussite du job `verifier` et uniquement sur `main`.
-- Le site Pages ne publie que l’application autonome ; le chat et l’API restent servis par le Worker.
+- `ci.yml`, job `verifier` : lint → build (index + CSP) → contrôle des pages → tests unitaires → tests Playwright.
+- `ci.yml`, job « Déploiement Cloudflare » (sur `main`, après `verifier`) : schéma D1, Worker `kermiclab-api`, secrets du Worker s'ils sont définis, puis `wrangler pages deploy dist` vers le projet Pages `kermiclab` (chat à la racine, application autonome sous `/cercle/`). ADR 0008.
+- `pages.yml` : validation de l'application autonome (`index.html` à jour avec `src/`, frontières entre agents, tests, structure).
+- `publication.yml` : tag et release à chaque nouvelle version.
 - Catalogue privé récupéré si `CATALOGUE_TOKEN` existe.
+- Prévisualisation de chaque PR par l'intégration Git Cloudflare Pages (les déploiements de production automatiques sont désactivés).
 
 Prochaines étapes :
-- Niveau 1 : versions de prévisualisation par branche (Workers Builds « non-production branch builds »), migrations D1 automatisées.
+- Niveau 1 : migrations D1 versionnées, prévisualisations construites avec `npm run build`.
 - Niveau 2 : tests de fumée après déploiement (`/api/sante`, question « sinus »), retour arrière automatique.

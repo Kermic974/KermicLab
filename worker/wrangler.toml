@@ -12,7 +12,7 @@ crons = ["17 2 * * *"]
 [vars]
 MODELE_CHAT = "claude-haiku-5-5"
 GITHUB_REPO = "kermic974/trigoLab"
-ORIGINES_AUTORISEES = "https://kermiclab.pages.dev,http://localhost:8788"
+ORIGINES_AUTORISEES = "https://www.kermiclab.online,https://kermiclab.online,https://kermiclab.pages.dev,http://localhost:8788"
 TAILLE_MAX_MESSAGE = "500"
 LIMITE_PAR_MINUTE = "20"
 

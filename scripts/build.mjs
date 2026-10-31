@@ -1,4 +1,5 @@
-// Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ servi par le même Worker.
+// Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
+//    le chat à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
 
@@ -21,8 +22,12 @@ await writeFile(`${racine}worker/src/generated/catalogue-index.json`, `${JSON.st
 
 await rm(`${racine}dist`, { recursive: true, force: true });
 await cp(`${racine}web`, `${racine}dist`, { recursive: true });
-// Vide = même origine (le Worker sert le chat et l'API). KERMICLAB_API_URL seulement pour une API séparée.
-const apiUrl = (process.env.KERMICLAB_API_URL || "").replace(/\/$/, "");
+// Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).
+const API_PAR_DEFAUT = "https://kermiclab-api.kermic.workers.dev";
+const apiUrl = (process.env.KERMICLAB_API_URL ?? API_PAR_DEFAUT).replace(/\/$/, "");
+// Application autonome (index.html racine, générée depuis src/) servie sous /cercle/.
+await mkdir(`${racine}dist/cercle`, { recursive: true });
+await writeFile(`${racine}dist/cercle/index.html`, index);
 const langues = (await readdir(`${racine}web/i18n`)).filter((f) => f.endsWith(".json")).map((f) => f.replace(".json", "")).sort();
 await writeFile(`${racine}dist/config.json`, `${JSON.stringify({ apiUrl, langues, connexionActive: false }, null, 2)}\n`);
 const apiOrigine = apiUrl ? ` ${new URL(apiUrl).origin}` : "";
@@ -31,7 +36,12 @@ await writeFile(`${racine}dist/_headers`, `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/cercle/*
+  ! Content-Security-Policy
 `);
+// L'application autonome porte sa propre CSP (meta, hashes des scripts et styles en ligne) : celle du chat,
+// sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
-console.log(`Site statique : dist/ (API ${apiUrl || "même origine"})`);
+console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
