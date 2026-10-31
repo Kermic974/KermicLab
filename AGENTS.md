@@ -23,7 +23,7 @@ Principes non négociables :
 
 | Chemin | Rôle |
 |---|---|
-| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1 |
+| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
 | `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquette d'exemple minimale (`trigo-cercle`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
@@ -55,7 +55,7 @@ npx wrangler pages dev dist     # chat en local
 - Aucun texte d'interface en dur : clé dans `web/i18n/fr.json` **et** dans toutes les autres langues (le lint vérifie la parité). Ajouter une langue = ajouter un fichier.
 - Modèles : `claude-haiku-5-5` pour le chat et le routage (sortie JSON structurée) ; `claude-sonnet-5-5` uniquement pour préparer des maquettes candidates.
 - Zéro secret dans le code : variables d'environnement, Cloudflare Secrets, GitHub Secrets ; documenter toute variable dans `.env.example`.
-- Ne jamais stocker d'IP ni de texte de message dans D1.
+- Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
 
 ## 5. Contrat d'une page HTML autonome
 

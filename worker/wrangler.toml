@@ -5,6 +5,10 @@ main = "src/index.js"
 compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Sauvegarde quotidienne des KPI D1 dans R2 (02:17 UTC = 06:17 à La Réunion).
+[triggers]
+crons = ["17 2 * * *"]
+
 [vars]
 MODELE_CHAT = "claude-haiku-5-5"
 GITHUB_REPO = "kermic974/trigoLab"
@@ -15,5 +19,9 @@ LIMITE_PAR_MINUTE = "20"
 [[d1_databases]]
 binding = "DB"
 database_name = "kermiclab-kpi"
-# À remplacer après `wrangler d1 create kermiclab-kpi` (voir docs/actions-manuelles.md).
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "4b383c6e-8a00-4950-baf3-7951ac60c375"
+
+# Stockage de fichiers (Cloudflare R2, privé). Organisation et règles : docs/decisions/0007-stockage-r2.md.
+[[r2_buckets]]
+binding = "DONNEES"
+bucket_name = "kermiclab-bucket"

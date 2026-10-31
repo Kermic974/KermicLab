@@ -9,6 +9,7 @@ Le MVP est mis en ligne **sans aucune dépense** (décision : `docs/decisions/00
 | Service | Coût | Statut |
 |---|---|---|
 | Cloudflare Workers, Pages, D1, Web Analytics (plan Free) | 0 € | utilisé |
+| Cloudflare R2 (offre gratuite : 10 Go, opérations incluses) | 0 € | utilisé |
 | GitHub (dépôt, Actions, issues) | 0 € | utilisé |
 | Adresse `https://kermiclab.pages.dev` | 0 € | utilisée à la place d'un domaine |
 | Clé API Anthropic (crédits prépayés) | payant | **reporté** |
@@ -29,8 +30,8 @@ acheter le domaine quand le budget le permet (action 15).
 | # | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|---|
 | 1 | Confirmer le compte GitHub et autoriser le dépôt `trigoLab` | github.com | Source unique de vérité | Le dépôt est accessible à l'agent | fait |
-| 2 | Créer un compte Cloudflare, puis un jeton API (Workers Scripts : Edit, Pages : Edit, D1 : Edit) | https://dash.cloudflare.com/profile/api-tokens | Déploiement par la CI | Secrets `CLOUDFLARE_API_TOKEN` et `CLOUDFLARE_ACCOUNT_ID` présents dans GitHub (plan Free, gratuit) | à faire |
-| 3 | Créer la base D1 : `cd worker && npx wrangler d1 create kermiclab-kpi`, reporter `database_id` dans `worker/wrangler.toml` | Terminal + PR | KPI | `wrangler d1 list` montre la base ; PR fusionnée | à faire |
+| 2 | Créer un compte Cloudflare, puis un jeton API (Workers Scripts : Edit, Pages : Edit, D1 : Edit, Workers R2 Storage : Edit) | https://dash.cloudflare.com/profile/api-tokens | Déploiement par la CI | Secrets `CLOUDFLARE_API_TOKEN` et `CLOUDFLARE_ACCOUNT_ID` présents dans GitHub (plan Free, gratuit) | à faire |
+| 3 | Créer la base D1 : `cd worker && npx wrangler d1 create kermiclab-kpi`, reporter `database_id` dans `worker/wrangler.toml` | Terminal + PR | KPI | `wrangler d1 list` montre la base ; PR fusionnée | fait |
 | 4 | Créer le projet Pages `kermiclab` (`npx wrangler pages project create kermiclab --production-branch main`) et activer Web Analytics | Cloudflare → Workers & Pages | Hébergement du chat | URL `https://kermiclab.pages.dev` accessible | à faire |
 | 5 | Créer une clé API Anthropic **et définir un plafond de dépense mensuel** | https://console.anthropic.com/settings/keys et /settings/limits | Chat et routage | Secret `ANTHROPIC_API_KEY` dans GitHub ; plafond visible dans la console | reporté (mode zéro budget) |
 | 6 | Créer un jeton GitHub fine-grained : dépôt `trigoLab` uniquement, permission Issues lecture/écriture | https://github.com/settings/personal-access-tokens/new | Création des issues par le Worker | Secret `KERMICLAB_GITHUB_TOKEN` dans GitHub | à faire |
@@ -44,4 +45,6 @@ acheter le domaine quand le budget le permet (action 15).
 | 14 | Valider juridiquement le consentement parental (< 15 ans) avant « Mon compte » | Conseil juridique | Majorité numérique en France | ADR signé | à faire (phase 3) |
 | 15 | Optionnel : acheter le domaine `kermiclab.ai` et le relier à Pages | Registrar / Cloudflare | Lien public lisible | Le domaine sert le chat | reporté (budget ≈ 160 €) |
 | 16 | Valider chaque pull request de maquette | GitHub | Contrôle humain | Revue CODEOWNER | permanent |
+| 18 | Activer R2 et créer le bucket `kermiclab-bucket` | Cloudflare → R2 | Stockage des données (ADR 0007) | `wrangler r2 bucket list` montre le bucket | fait |
+| 19 | Déconnecter la build Git Cloudflare du Worker `trigolab-dev`, puis supprimer ce Worker | Cloudflare → Workers & Pages → trigolab-dev → Settings → Build → Disconnect ; puis Settings → Delete | Le déploiement passe uniquement par GitHub Actions (Worker `kermiclab-api`) ; deux chemins de déploiement se contredisent | `trigolab-dev` n'apparaît plus dans Workers & Pages | à faire |
 | 17 | Décider du passage du dépôt en public | Settings → General | Open source | Visibilité changée par le propriétaire | à faire (plus tard) |
