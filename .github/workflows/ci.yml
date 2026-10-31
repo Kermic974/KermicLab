@@ -99,7 +99,7 @@ jobs:
           KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'https://kermiclab-api.kermic.workers.dev' }}
       - name: Schéma D1 (idempotent)
         if: steps.secrets.outputs.ok == 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -107,7 +107,7 @@ jobs:
           command: d1 execute kermiclab-kpi --remote --file=schema.sql
       - name: Worker
         if: steps.secrets.outputs.ok == 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -131,7 +131,7 @@ jobs:
           done
       - name: Pages
         if: steps.secrets.outputs.ok == 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
