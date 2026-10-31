@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kermiclab</title>
+<meta name="description" content="Kermiclab — pages pédagogiques interactives / interactive learning pages">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header class="entete">
+  <div>
+    <h1 data-i18n="titre"></h1>
+    <p class="sous-titre" data-i18n="sousTitre"></p>
+  </div>
+  <div class="actions">
+    <label class="langue"><span data-i18n="langue"></span>
+      <select id="langue"></select>
+    </label>
+    <button id="se-connecter" type="button" class="secondaire" data-i18n="seConnecter" hidden></button>
+    <a id="mon-compte" href="#compte" data-i18n="monCompte" hidden></a>
+  </div>
+</header>
+<main>
+  <p class="avertissement" role="note" data-i18n="avertissement"></p>
+  <ol id="fil" aria-live="polite"></ol>
+  <form id="formulaire" autocomplete="off">
+    <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
+    <textarea id="question" rows="2" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
+    <button type="submit" data-i18n="envoyer"></button>
+  </form>
+</main>
+<footer>
+  <a href="confidentialite.html" data-i18n="confidentialite"></a>
+  <a href="mentions-legales.html" data-i18n="mentionsLegales"></a>
+  <button type="button" id="ouvrir-signalement" class="lien" data-i18n="signaler"></button>
+</footer>
+<dialog id="signalement">
+  <form id="formulaire-signalement" method="dialog">
+    <h2 data-i18n="signalerTitre"></h2>
+    <label for="texte-signalement" data-i18n="signalerAide"></label>
+    <textarea id="texte-signalement" rows="4" maxlength="2000" required></textarea>
+    <p id="retour-signalement" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="fermer-signalement" data-i18n="fermer"></button>
+      <button type="submit" data-i18n="signalerEnvoyer"></button>
+    </div>
+  </form>
+</dialog>
+</body>
+</html>

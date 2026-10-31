@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-PGtEPukdhOgMm31vesLlDxww3UdiuZ8DyAA/fX70NVo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Le cercle trigonométrique – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "trigo-cercle",
+  "titre": "Le cercle trigonométrique",
+  "sujet": "mathematiques/trigonometrie",
+  "version": "1.0.0",
+  "date": "2026-10-31",
+  "langue": "fr",
+  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+  :root {
+    --fond: #fbfaf7; --surface: #ffffff; --texte: #1d2330; --doux: #5a6272;
+    --accent: #1f5fbf; --accent-texte: #ffffff; --cos: #c2410c; --sin: #15803d; --bord: #d9dce3;
+    --succes: #15803d; --alerte: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #14171d; --surface: #1d2129; --texte: #e8eaef; --doux: #a3aab8;
+      --accent: #7fb0ff; --accent-texte: #0b1220; --cos: #fb923c; --sin: #4ade80; --bord: #343a46;
+      --succes: #4ade80; --alerte: #f87171;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--fond); color: var(--texte); }
+  header { padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 760px; margin: 0 auto; }
+  header h1 { font-size: 1.25rem; margin: 0; }
+  .meta { color: var(--doux); font-size: .8rem; }
+  #connexion[hidden] { display: none; }
+  [role="tablist"] { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; max-width: 760px; margin: 0 auto; border-bottom: 1px solid var(--bord); }
+  [role="tab"] { flex: 0 0 auto; padding: 10px 14px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+  [role="tab"][aria-selected="true"] { color: var(--texte); border-bottom-color: var(--accent); font-weight: 600; }
+  [role="tab"]:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  [role="tabpanel"][hidden] { display: none; }
+  details { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .niveau { color: var(--doux); font-weight: 400; font-size: .85rem; }
+  svg { width: 100%; max-width: 360px; height: auto; display: block; margin: 0 auto; touch-action: none; }
+  .valeurs { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin: 12px 0; }
+  .valeurs div { background: var(--surface); border: 1px solid var(--bord); border-radius: 8px; padding: 8px; text-align: center; }
+  .valeurs b { display: block; font-size: 1.15rem; }
+  label { display: block; margin: 8px 0; }
+  input[type="range"] { width: 100%; }
+  button.action { background: var(--accent); color: var(--accent-texte); border: 0; border-radius: 8px; padding: 10px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+  .score { display: flex; gap: 16px; flex-wrap: wrap; font-weight: 600; }
+  .retour { min-height: 1.6em; font-weight: 600; }
+  .retour.ok { color: var(--succes); } .retour.ko { color: var(--alerte); }
+  footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); font-size: .8rem; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Le cercle trigonométrique</h1>
+    <div class="meta">trigo-cercle · v1.0.0</div>
+  </div>
+  <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+</header>
+<nav role="tablist" aria-label="Onglets de la page" id="onglets"></nav>
+<main id="panneaux"></main>
+<footer>Kermiclab · page autonome, lisible hors ligne. Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</footer>
+
+<template id="tpl-explication">
+  <p>Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, selon ta curiosité.</p>
+  <details open>
+    <summary>Intuition <span class="niveau">– pour démarrer</span></summary>
+    <p>Imagine une grande roue de rayon 1. Une nacelle part tout à droite et tourne dans le sens inverse des aiguilles d'une montre. À chaque instant, on se demande : <em>de combien la nacelle est-elle à droite du centre ?</em> C'est le <strong style="color:var(--cos)">cosinus</strong>. <em>De combien est-elle au-dessus du centre ?</em> C'est le <strong style="color:var(--sin)">sinus</strong>.</p>
+  </details>
+  <details>
+    <summary>Dans le triangle rectangle <span class="niveau">– collège</span></summary>
+    <p>Dans un triangle rectangle, pour un angle aigu θ : cos θ = côté adjacent ÷ hypoténuse, sin θ = côté opposé ÷ hypoténuse, tan θ = opposé ÷ adjacent. Moyen mnémotechnique : <strong>SOH CAH TOA</strong>.</p>
+  </details>
+  <details>
+    <summary>Sur le cercle unité <span class="niveau">– seconde</span></summary>
+    <p>Sur un cercle de centre O et de rayon 1, le point M associé à l'angle θ a pour coordonnées <strong>(cos θ ; sin θ)</strong>. Comme M est sur le cercle, on a toujours <strong>cos² θ + sin² θ = 1</strong>, et les deux valeurs restent entre −1 et 1.</p>
+    <p>Angles remarquables : sin 30° = 1/2, cos 60° = 1/2, sin 45° = cos 45° = √2/2, cos 30° = sin 60° = √3/2.</p>
+  </details>
+  <details>
+    <summary>Radians et longueur d'arc <span class="niveau">– première / terminale</span></summary>
+    <p>Sur un cercle de rayon r, un angle θ (en radians) intercepte un arc de longueur <strong>s = r θ</strong>. Sur le cercle unité, l'angle en radians <em>est</em> la longueur de l'arc parcouru. Un tour complet vaut 2π rad = 360°, donc 180° = π rad.</p>
+    <p>Pour tout réel x : cos(x + 2π) = cos x, sin(−x) = −sin x, cos(π − x) = −cos x.</p>
+  </details>
+</template>
+
+<template id="tpl-application">
+  <p>Fais glisser le point sur le cercle (ou utilise le curseur) et observe le cosinus et le sinus.</p>
+  <svg viewBox="-1.35 -1.35 2.7 2.7" role="img" aria-label="Cercle trigonométrique interactif" data-cercle="application"></svg>
+  <label>Angle : <span data-sortie="deg"></span>
+    <input type="range" min="0" max="360" step="1" value="30" data-entree="angle">
+  </label>
+  <div class="valeurs">
+    <div>θ en radians<b data-sortie="rad"></b></div>
+    <div style="color:var(--cos)">cos θ<b data-sortie="cos"></b></div>
+    <div style="color:var(--sin)">sin θ<b data-sortie="sin"></b></div>
+    <div>tan θ<b data-sortie="tan"></b></div>
+  </div>
+</template>
+
+<template id="tpl-mise-en-situation">
+  <p><strong>Défi de la grande roue.</strong> Place la nacelle à l'angle demandé en touchant le cercle. Plus tu es précis, plus tu gagnes de points !</p>
+  <p class="score"><span>Défi : <span data-sortie="cible"></span></span><span>Points : <span data-sortie="points">0</span></span><span>Série : <span data-sortie="serie">0</span></span><span>Record : <span data-sortie="record">0</span></span></p>
+  <svg viewBox="-1.35 -1.35 2.7 2.7" role="img" aria-label="Cercle du défi : touche le cercle pour placer la nacelle" data-cercle="defi"></svg>
+  <p class="retour" data-sortie="retour" aria-live="polite"></p>
+  <button class="action" type="button" data-action="nouveau-defi">Nouveau défi</button>
+</template>
+
+<script>
+(() => {
+  "use strict";
+  const META = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const CONFIG = { connexionActive: false, stockage: "local" };
+
+  /* ---------- Stockage abstrait : local (actif) / distant (stub) ---------- */
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:${META.id}:${cle}`)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(`kermiclab:${META.id}:${cle}`, JSON.stringify(valeur)); } catch { /* stockage indisponible */ } }
+    },
+    distant: {
+      // Phase 4 : appellera le service web avec META.id et l'identifiant utilisateur.
+      lire() { return null; },
+      ecrire() { /* non activé dans le MVP */ }
+    }
+  };
+  const stockage = Stockage[CONFIG.stockage];
+
+  /* ---------- Registre des onglets ---------- */
+  const registre = [];
+  function enregistrerOnglet(def) { registre.push({ actif: true, ...def }); }
+
+  /* ---------- Outils du cercle ---------- */
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (nom, attrs, parent) => { const n = document.createElementNS(NS, nom); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; };
+  const arrondi = (x) => (Math.abs(x) < 5e-4 ? 0 : x).toFixed(3).replace(".", ",");
+  function dessinerCercle(svg) {
+    el("line", { x1: -1.3, y1: 0, x2: 1.3, y2: 0, stroke: "currentColor", "stroke-width": 0.01, opacity: 0.4 }, svg);
+    el("line", { x1: 0, y1: -1.3, x2: 0, y2: 1.3, stroke: "currentColor", "stroke-width": 0.01, opacity: 0.4 }, svg);
+    el("circle", { cx: 0, cy: 0, r: 1, fill: "none", stroke: "currentColor", "stroke-width": 0.015 }, svg);
+    const cos = el("line", { stroke: "var(--cos)", "stroke-width": 0.03 }, svg);
+    const sin = el("line", { stroke: "var(--sin)", "stroke-width": 0.03 }, svg);
+    const rayon = el("line", { x1: 0, y1: 0, stroke: "currentColor", "stroke-width": 0.015 }, svg);
+    const point = el("circle", { r: 0.06, fill: "var(--accent)" }, svg);
+    return (theta) => {
+      const x = Math.cos(theta), y = -Math.sin(theta);
+      cos.setAttribute("x1", 0); cos.setAttribute("y1", 0); cos.setAttribute("x2", x); cos.setAttribute("y2", 0);
+      sin.setAttribute("x1", x); sin.setAttribute("y1", 0); sin.setAttribute("x2", x); sin.setAttribute("y2", y);
+      rayon.setAttribute("x2", x); rayon.setAttribute("y2", y);
+      point.setAttribute("cx", x); point.setAttribute("cy", y);
+    };
+  }
+  function angleDepuisEvenement(svg, ev) {
+    const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    let a = Math.atan2(-p.y, p.x); if (a < 0) a += 2 * Math.PI; return a;
+  }
+
+  /* ---------- Onglet explication ---------- */
+  enregistrerOnglet({ id: "explication", type: "explication", titre: "Explication",
+    rendu(panneau) { panneau.appendChild(document.getElementById("tpl-explication").content.cloneNode(true)); } });
+
+  /* ---------- Onglet application ---------- */
+  enregistrerOnglet({ id: "application", type: "application", titre: "Application",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-application").content.cloneNode(true));
+      const svg = panneau.querySelector("svg"), curseur = panneau.querySelector("[data-entree=angle]");
+      const sortie = (n) => panneau.querySelector(`[data-sortie=${n}]`);
+      const maj = dessinerCercle(svg);
+      const afficher = (deg) => {
+        const t = deg * Math.PI / 180; maj(t); curseur.value = deg;
+        sortie("deg").textContent = `${deg}°`; sortie("rad").textContent = arrondi(t);
+        sortie("cos").textContent = arrondi(Math.cos(t)); sortie("sin").textContent = arrondi(Math.sin(t));
+        sortie("tan").textContent = Math.abs(Math.cos(t)) < 1e-9 ? "non définie" : arrondi(Math.tan(t));
+      };
+      curseur.addEventListener("input", () => afficher(Number(curseur.value)));
+      let glisse = false;
+      svg.addEventListener("pointerdown", (e) => { glisse = true; svg.setPointerCapture(e.pointerId); afficher(Math.round(angleDepuisEvenement(svg, e) * 180 / Math.PI) % 360); });
+      svg.addEventListener("pointermove", (e) => { if (glisse) afficher(Math.round(angleDepuisEvenement(svg, e) * 180 / Math.PI) % 360); });
+      svg.addEventListener("pointerup", () => { glisse = false; });
+      afficher(30);
+    } });
+
+  /* ---------- Onglet mise en situation (gamification instantanée) ---------- */
+  const DEFIS = [
+    { libelle: "30°", rad: Math.PI / 6 }, { libelle: "45°", rad: Math.PI / 4 }, { libelle: "60°", rad: Math.PI / 3 },
+    { libelle: "90°", rad: Math.PI / 2 }, { libelle: "120°", rad: 2 * Math.PI / 3 }, { libelle: "π rad", rad: Math.PI },
+    { libelle: "3π/2 rad", rad: 3 * Math.PI / 2 }, { libelle: "5π/6 rad", rad: 5 * Math.PI / 6 },
+    { libelle: "cos θ = 0,5 et sin θ > 0", rad: Math.PI / 3 }, { libelle: "sin θ = −1", rad: 3 * Math.PI / 2 }
+  ];
+  enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: "Défi",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-mise-en-situation").content.cloneNode(true));
+      const svg = panneau.querySelector("svg"), sortie = (n) => panneau.querySelector(`[data-sortie=${n}]`);
+      const maj = dessinerCercle(svg);
+      let points = 0, serie = 0, indice = 0, joue = false;
+      let record = Number(stockage.lire("record")) || 0;
+      sortie("record").textContent = record;
+      const nouveau = () => { indice = (indice + 1 + Math.floor(Math.random() * (DEFIS.length - 1))) % DEFIS.length; joue = false; sortie("cible").textContent = DEFIS[indice].libelle; sortie("retour").textContent = ""; sortie("retour").className = "retour"; maj(0); };
+      svg.addEventListener("pointerdown", (e) => {
+        if (joue) return;
+        const a = angleDepuisEvenement(svg, e); maj(a); joue = true;
+        let ecart = Math.abs(a - DEFIS[indice].rad); ecart = Math.min(ecart, 2 * Math.PI - ecart);
+        const ecartDeg = Math.round(ecart * 180 / Math.PI);
+        const gain = ecartDeg <= 5 ? 10 : ecartDeg <= 15 ? 5 : 0;
+        serie = gain ? serie + 1 : 0; points += gain + (gain && serie >= 3 ? 5 : 0);
+        sortie("points").textContent = points; sortie("serie").textContent = serie;
+        sortie("retour").textContent = gain ? `Bravo ! Écart de ${ecartDeg}° : +${gain} points${serie >= 3 ? " (+5 bonus de série)" : ""}.` : `Écart de ${ecartDeg}°. Indice : 0° est à droite, on tourne dans le sens inverse des aiguilles d'une montre.`;
+        sortie("retour").className = gain ? "retour ok" : "retour ko";
+        if (points > record) { record = points; stockage.ecrire("record", record); sortie("record").textContent = record; }
+      });
+      panneau.querySelector("[data-action=nouveau-defi]").addEventListener("click", nouveau);
+      indice = -1; nouveau();
+    } });
+
+  /* ---------- Onglet self-test (prévu phase 2, désactivé) ---------- */
+  enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false,
+    questions: [], rendu() {} });
+
+  /* ---------- Socle : construction des onglets ---------- */
+  const liste = document.getElementById("onglets"), panneaux = document.getElementById("panneaux");
+  const actifs = registre.filter((o) => o.actif);
+  const boutons = actifs.map((o, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.id = `onglet-${o.id}`; b.textContent = o.titre;
+    b.setAttribute("aria-controls", `panneau-${o.id}`); b.dataset.onglet = o.id;
+    const p = document.createElement("section");
+    p.setAttribute("role", "tabpanel"); p.id = `panneau-${o.id}`; p.setAttribute("aria-labelledby", b.id); p.tabIndex = 0;
+    o.rendu(p); panneaux.appendChild(p); liste.appendChild(b);
+    b.addEventListener("click", () => choisir(i));
+    return b;
+  });
+  function choisir(i) {
+    boutons.forEach((b, j) => {
+      const sel = i === j; b.setAttribute("aria-selected", String(sel)); b.tabIndex = sel ? 0 : -1;
+      document.getElementById(b.getAttribute("aria-controls")).hidden = !sel;
+    });
+    stockage.ecrire("onglet", actifs[i].id);
+  }
+  liste.addEventListener("keydown", (e) => {
+    const i = boutons.indexOf(document.activeElement); if (i < 0) return;
+    const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
+    if (n >= 0) { choisir(n); boutons[n].focus(); e.preventDefault(); }
+  });
+  const memo = actifs.findIndex((o) => o.id === stockage.lire("onglet"));
+  choisir(memo >= 0 ? memo : 0);
+
+  document.getElementById("connexion").hidden = !CONFIG.connexionActive;
+  window.kermiclab = { META, registre, CONFIG };
+})();
+</script>
+</body>
+</html>
