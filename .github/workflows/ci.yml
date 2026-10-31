@@ -20,7 +20,7 @@ jobs:
     env:
       CATALOGUE_TOKEN: ${{ secrets.CATALOGUE_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -30,7 +30,7 @@ jobs:
       # Les PR de forks n'ont pas accès aux secrets : le build se fait alors avec la maquette d'exemple.
       - name: Récupérer le catalogue privé
         if: ${{ env.CATALOGUE_TOKEN != '' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ vars.CATALOGUE_REPO || 'kermic974/maquettes-catalogue' }}
           token: ${{ secrets.CATALOGUE_TOKEN }}
@@ -76,7 +76,7 @@ jobs:
           else
             echo "ok=true" >> "$GITHUB_OUTPUT"
           fi
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: steps.secrets.outputs.ok == 'true'
       - uses: actions/setup-node@v4
         if: steps.secrets.outputs.ok == 'true'
@@ -87,7 +87,7 @@ jobs:
         run: npm ci
       - name: Récupérer le catalogue privé
         if: ${{ steps.secrets.outputs.ok == 'true' && env.CATALOGUE_TOKEN != '' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ vars.CATALOGUE_REPO || 'kermic974/maquettes-catalogue' }}
           token: ${{ secrets.CATALOGUE_TOKEN }}
