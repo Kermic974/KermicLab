@@ -39,6 +39,7 @@ npm run build && npx wrangler pages dev dist
 ```
 
 Sans `ANTHROPIC_API_KEY`, le catalogue fonctionne ; les autres questions reçoivent une réponse de repli.
+C'est le **mode zéro budget** actuel (offres gratuites Cloudflare et GitHub uniquement), voir [l'ADR 0006](docs/decisions/0006-mode-zero-budget.md).
 Sans `GITHUB_TOKEN`, aucune issue n'est créée.
 
 ## Déploiement
