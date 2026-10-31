@@ -10,7 +10,7 @@ compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
 
 [build]
-command = "npm run lint && npm run build && npm run check:pages && npm test"
+command = "npm install --no-save playwright@1.63.0 && npx playwright install --with-deps chromium && npm run ci"
 
 [assets]
 directory = "./dist"
