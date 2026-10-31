@@ -40,7 +40,7 @@ jobs:
         env:
           KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'http://localhost:8787' }}
       - run: npm run check:pages
-      - name: Les sources sont à jour (hashes CSP)
+      - name: Les hashes CSP des pages sont à jour
         run: git diff --exit-code -- catalogue/ index.html
       - run: npm test
       - name: Installer Chromium pour Playwright

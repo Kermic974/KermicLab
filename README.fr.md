@@ -49,8 +49,9 @@ Sans `GITHUB_TOKEN`, aucune issue n'est créée.
 ## Déploiement
 
 Le Worker Cloudflare `trigolab` est relié à ce dépôt GitHub (**Workers Builds**) : chaque push sur `main` est
-construit et déployé par Cloudflare (`npx wrangler deploy`, qui lance d'abord `npm run build`). Aucun jeton de
-déploiement n'est stocké dans GitHub ; GitHub Actions ne déploie pas le Worker.
+vérifié (lint, build, sécurité des pages et tests unitaires et end-to-end) avant son déploiement par Cloudflare
+(`npx wrangler deploy` lance d'abord `npm run predeploy`). Aucun jeton de déploiement n'est stocké dans GitHub ;
+GitHub Actions ne déploie pas le Worker.
 
 Le même workflow GitHub Actions déploie aussi `index.html` sur GitHub Pages après les vérifications, sur `main`.
 Activer une fois **Settings → Pages → Build and deployment → GitHub Actions**. L’artefact Pages ne contient que

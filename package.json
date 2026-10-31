@@ -6,10 +6,11 @@
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
+    "predeploy": "npm install --no-save playwright@1.63.0 && npx playwright install --with-deps chromium && npm run ci",
     "lint": "node scripts/lint.mjs",
     "check:pages": "node scripts/check-pages.mjs",
     "test": "node --test \"tests/unit/*.test.mjs\"",

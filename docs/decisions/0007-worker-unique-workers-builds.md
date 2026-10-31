@@ -4,7 +4,7 @@
 - Contexte : le MVP prévoyait un Worker d'API et un projet Pages séparés, déployés par GitHub Actions avec un jeton API Cloudflare stocké dans GitHub.
 - Décision :
   - Un seul Worker `trigolab` (`wrangler.toml` à la racine) sert l'API, les maquettes et les fichiers statiques du chat (`[assets]`, dossier `dist/`). `run_worker_first` limite l'exécution du Worker à `/api/*` et `/maquettes/*`.
-  - Déploiement par **Cloudflare Workers Builds** à chaque push sur `main` : `npx wrangler deploy` installe Chromium, puis lance `npm run ci` avant le déploiement. GitHub Actions ne déploie plus.
+  - Déploiement par **Cloudflare Workers Builds** à chaque push sur `main` : `npx wrangler deploy` lance `npm run predeploy`, qui installe Chromium et exécute `npm run ci` avant le déploiement. GitHub Actions ne déploie plus.
   - Chat et API sur la même origine : plus de CORS, `KERMICLAB_API_URL` vide par défaut, CSP `connect-src 'self'`.
   - L'aperçu de maquette dans le chat est un iframe `sandbox="allow-scripts"` (sans `allow-same-origin`, puisque la maquette est servie par la même origine) ; les scores sont conservés en plein écran.
   - `wrangler` est épinglé en dépendance de développement.
