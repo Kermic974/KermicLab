@@ -4,6 +4,10 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+### Modifié
+- Mise en ligne via un seul Worker Cloudflare `trigolab` (chat + API + maquettes), déployé par Cloudflare Workers Builds à chaque push sur `main` ; plus de projet Pages ni de jeton Cloudflare dans GitHub (ADR 0007).
+- Base D1 `kermiclab-kpi` créée et reliée au Worker.
+
 ### Corrigé
 - CodeQL sur dépôt privé : analyse sans envoi à GitHub (GitHub Advanced Security requis), la CI échoue elle-même en cas d'alerte (`scripts/verifier-sarif.mjs`) ; envoi rétabli automatiquement en public.
 

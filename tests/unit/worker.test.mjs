@@ -184,3 +184,11 @@ test("HEAD /maquettes/:id répond 200", async () => {
   const r = await worker.fetch(new Request("https://api.kermiclab.test/maquettes/trigo-cercle", { method: "HEAD" }), env, ctx);
   assert.equal(r.status, 200);
 });
+
+test("hors API : les fichiers statiques sont servis par le binding ASSETS", async () => {
+  env.ASSETS = { fetch: async (req) => new Response(`statique ${new URL(req.url).pathname}`) };
+  const r = await worker.fetch(new Request("https://trigolab.test/index.html"), env, ctx);
+  assert.equal(await r.text(), "statique /index.html");
+  const api = await worker.fetch(new Request("https://trigolab.test/api/inconnue"), env, ctx);
+  assert.equal(api.status, 404);
+});

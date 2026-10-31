@@ -14,7 +14,8 @@ explication (de l'intuition au formel), application ludique, mise en situation.
 ## Architecture
 
 ```
-Navigateur (Cloudflare Pages : web/)  ──POST /api/chat──▶  Cloudflare Worker (worker/)
+Navigateur ──▶ Cloudflare Worker « trigolab » (wrangler.toml)
+                                                            ├─ fichiers statiques du chat (dist/, construit depuis web/)
                                                             ├─ routage par mots-clés (déterministe)
                                                             ├─ routage Claude Haiku 5.5 (JSON structuré) sinon
                                                             ├─ GET /maquettes/:id → HTML du catalogue tel quel
@@ -32,10 +33,9 @@ Prérequis : Node.js 22+, un compte Cloudflare, une clé API Anthropic (facultat
 ```bash
 npm ci
 npm run ci                          # lint, build, contrôle des pages, tests unitaires et navigateur
-cp .env.example worker/.dev.vars    # renseigner ANTHROPIC_API_KEY / GITHUB_TOKEN (facultatif)
-cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev
-# dans un autre terminal
-npm run build && npx wrangler pages dev dist
+cp .env.example .dev.vars           # renseigner ANTHROPIC_API_KEY / GITHUB_TOKEN (facultatif)
+npx wrangler d1 execute kermiclab-kpi --local --file=worker/schema.sql
+npx wrangler dev                    # build, puis chat + API sur http://localhost:8787
 ```
 
 Sans `ANTHROPIC_API_KEY`, le catalogue fonctionne ; les autres questions reçoivent une réponse de repli.
@@ -44,9 +44,13 @@ Sans `GITHUB_TOKEN`, aucune issue n'est créée.
 
 ## Déploiement
 
-Chaque push sur `main` lance la CI/CD (`.github/workflows/ci.yml`) : tests, schéma D1, Worker, Pages.
-Les secrets et variables nécessaires sont listés dans le [README anglais](README.md#deploy) et dans
-[docs/actions-manuelles.md](docs/actions-manuelles.md).
+Le Worker Cloudflare `trigolab` est relié à ce dépôt GitHub (**Workers Builds**) : chaque push sur `main` est
+construit et déployé par Cloudflare (`npx wrangler deploy`, qui lance d'abord `npm run build`). Aucun jeton de
+déploiement n'est stocké dans GitHub ; GitHub Actions ne fait que les vérifications.
+
+Les secrets du Worker (`ANTHROPIC_API_KEY`, facultatif en mode zéro budget, et `GITHUB_TOKEN`) se renseignent dans
+Cloudflare → Workers → trigolab → Settings → Variables and Secrets. Détails dans le [README anglais](README.md#deploy)
+et [docs/actions-manuelles.md](docs/actions-manuelles.md).
 
 ## Contribuer
 

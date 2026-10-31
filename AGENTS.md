@@ -23,9 +23,10 @@ Principes non négociables :
 
 | Chemin | Rôle |
 |---|---|
-| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1 |
+| `wrangler.toml` | Configuration du Worker `trigolab` (déployé par Cloudflare Workers Builds à chaque push sur `main`) |
+| `worker/` | Code du Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1 ; sert aussi les fichiers statiques du chat |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
-| `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
+| `web/` | Interface de chat (copiée dans `dist/`, servie par le Worker). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquette d'exemple minimale (`trigo-cercle`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
 | `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
 | `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
@@ -44,8 +45,7 @@ npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
 npm test              # tests unitaires (node:test)
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
 npm run ci            # tout ce qui précède
-cd worker && npx wrangler dev   # Worker en local (http://localhost:8787)
-npx wrangler pages dev dist     # chat en local
+npx wrangler dev                # build puis chat + API en local (http://localhost:8787)
 ```
 
 ## 4. Conventions

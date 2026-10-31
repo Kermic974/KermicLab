@@ -1,0 +1,11 @@
+# ADR 0007 — Un seul Worker, déployé par Cloudflare Workers Builds
+
+- Date : 2026-10-31 — Statut : accepté (le propriétaire a relié le dépôt au Worker `trigolab` dans Cloudflare)
+- Contexte : le MVP prévoyait un Worker d'API et un projet Pages séparés, déployés par GitHub Actions avec un jeton API Cloudflare stocké dans GitHub.
+- Décision :
+  - Un seul Worker `trigolab` (`wrangler.toml` à la racine) sert l'API, les maquettes et les fichiers statiques du chat (`[assets]`, dossier `dist/`). `run_worker_first` limite l'exécution du Worker à `/api/*` et `/maquettes/*`.
+  - Déploiement par **Cloudflare Workers Builds** à chaque push sur `main` : `npx wrangler deploy` lance `[build] command = "npm run build"`. GitHub Actions ne déploie plus (vérifications seulement).
+  - Chat et API sur la même origine : plus de CORS, `KERMICLAB_API_URL` vide par défaut, CSP `connect-src 'self'`.
+  - L'aperçu de maquette dans le chat est un iframe `sandbox="allow-scripts"` (sans `allow-same-origin`, puisque la maquette est servie par la même origine) ; les scores sont conservés en plein écran.
+  - `wrangler` est épinglé en dépendance de développement.
+- Conséquences : aucun jeton Cloudflare dans GitHub (moins de secrets à gérer, mieux pour un futur dépôt public). Les secrets du Worker (`ANTHROPIC_API_KEY`, `GITHUB_TOKEN`) se gèrent dans Cloudflare. Le catalogue privé n'est pas encore récupéré par Workers Builds (à traiter avec l'action 10). Les migrations D1 restent manuelles (schéma idempotent `worker/schema.sql`).

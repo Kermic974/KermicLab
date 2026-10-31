@@ -203,6 +203,8 @@ export default {
         return json({ type: "erreur", texte: messages("fr").erreur }, 500, cors);
       }
     }
+    // Hors API : fichiers statiques du chat (binding ASSETS), sinon 404.
+    if (env.ASSETS && !url.pathname.startsWith("/api/")) return env.ASSETS.fetch(requete);
     return json({ erreur: "introuvable" }, 404, cors);
   }
 };

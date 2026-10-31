@@ -14,7 +14,8 @@ playful application, and an engaging challenge.
 ## Architecture
 
 ```
-Browser (Cloudflare Pages: web/)  ──POST /api/chat──▶  Cloudflare Worker (worker/)
+Browser ──▶ Cloudflare Worker « trigolab » (wrangler.toml)
+                                                        ├─ static chat files (dist/, built from web/)
                                                         ├─ keyword router (deterministic, catalogue index)
                                                         ├─ Claude Haiku 5.5 router (structured JSON) if no match
                                                         ├─ GET /maquettes/:id  → catalogue HTML served as-is
@@ -32,10 +33,9 @@ Requirements: Node.js 22+, a Cloudflare account, an Anthropic API key (optional 
 ```bash
 npm ci
 npm run ci                          # lint, build, page security checks, unit + browser tests
-cp .env.example worker/.dev.vars    # fill in ANTHROPIC_API_KEY / GITHUB_TOKEN (optional)
-cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev
-# in another terminal
-npm run build && npx wrangler pages dev dist
+cp .env.example .dev.vars           # fill in ANTHROPIC_API_KEY / GITHUB_TOKEN (optional)
+npx wrangler d1 execute kermiclab-kpi --local --file=worker/schema.sql
+npx wrangler dev                    # builds, then serves chat + API on http://localhost:8787
 ```
 
 Without `ANTHROPIC_API_KEY` the catalogue still works; other questions get a fallback answer.
@@ -44,18 +44,18 @@ Without `GITHUB_TOKEN` no issue is created.
 
 ## Deploy
 
-Pushing to `main` runs the CI/CD pipeline (`.github/workflows/ci.yml`): tests, D1 schema, Worker, Pages.
+The Cloudflare Worker `trigolab` is connected to this GitHub repository (**Workers Builds**): every push to `main`
+is built and deployed by Cloudflare (`npx wrangler deploy`, which first runs `npm run build`). No deploy token is
+stored in GitHub; GitHub Actions only runs the checks.
 
-| Kind | Name | Purpose |
+| Where | Name | Purpose |
 |---|---|---|
-| Secret | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | Deploy Worker, Pages, D1 |
-| Secret | `ANTHROPIC_API_KEY` | Chat/router model (also used by AI security review) |
-| Secret | `KERMICLAB_GITHUB_TOKEN` | Fine-grained token, Issues read/write on this repo only |
-| Secret | `CATALOGUE_TOKEN` | Read-only token on the private catalogue repo (optional) |
-| Variable | `KERMICLAB_API_URL` | Public Worker URL used by the chat |
-| Variable | `CATALOGUE_REPO`, `CLOUDFLARE_PAGES_PROJECT` | Optional overrides |
+| Cloudflare → Workers → trigolab → Settings → Variables and Secrets | `ANTHROPIC_API_KEY` (secret) | Chat/router model (optional: zero-budget mode without it) |
+| same | `GITHUB_TOKEN` (secret) | Fine-grained token, Issues read/write on this repo only |
+| GitHub → Settings → Secrets → Actions | `ANTHROPIC_API_KEY` | AI security review on pull requests (optional) |
+| same | `CATALOGUE_TOKEN` | Read-only token on the private catalogue repo (optional) |
 
-Then set the D1 `database_id` and `ORIGINES_AUTORISEES` in `worker/wrangler.toml`.
+The D1 database `kermiclab-kpi` is declared in `wrangler.toml`; its schema is `worker/schema.sql`.
 See [docs/actions-manuelles.md](docs/actions-manuelles.md) for the full checklist.
 
 ## Contributing

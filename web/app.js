@@ -49,7 +49,9 @@ function ajouterMessage({ auteur, texte, classe, maquette }) {
     lien.textContent = `${etat.textes.ouvrirPage} — ${maquette.titre} (v${maquette.version})`;
     const cadre = document.createElement("iframe");
     cadre.src = maquette.url; cadre.title = maquette.titre; cadre.loading = "lazy";
-    cadre.setAttribute("sandbox", "allow-scripts allow-same-origin");
+    // Même origine que le chat : pas d'allow-same-origin, pour que la maquette reste isolée de la page.
+    // Les scores sont conservés en ouvrant la page en plein écran.
+    cadre.setAttribute("sandbox", "allow-scripts");
     li.append(document.createElement("br"), lien, cadre);
   }
   $("#fil").append(li);
