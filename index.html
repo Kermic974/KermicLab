@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore le cercle trigonométrique, les angles et les valeurs du sinus et du cosinus.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-4llP4aEsRne88geo8pfpN6Nuw4BSTGPbLdV+3yjGx9M='; style-src 'sha256-orVUnWbNn7yB9lW8ftUQfbJeMSxDXFJAfXNGZ206gT0='; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-esdpeAgwWTu7SAzFzDvFZ7cSjlN0OFlV2e/8DM+HFrs='; style-src 'sha256-gcweWTQKsM5FtI8DynKvtiCyqWzzVGZVsTGu3D7vDQ0='; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <script type="application/json" id="kermiclab-meta">{"id":"trigolab-cercle","titre":"Le cercle trigonométrique","sujet":"sinus, cosinus et angles","version":"1.0.0","date":"2026-10-31","langue":"fr","onglets":["explorer","défi","comprendre"]}</script>
   <title>Le cercle trigonométrique — TrigoLab</title>
   <style>
@@ -188,7 +188,7 @@
       <h2>Le dessin raconte les formules</h2>
       <p>Imagine un cercle de rayon 1 centré au point (0, 0). En tournant depuis l’axe horizontal, le point atteint les coordonnées (cosinus de l’angle, sinus de l’angle).</p>
       <p>Le cosinus est donc la position horizontale du point ; le sinus, sa position verticale. Ils restent toujours entre −1 et 1. La tangente est le sinus divisé par le cosinus : elle n’existe pas quand le cosinus vaut zéro.</p>
-      <p>Un tour complet fait 360°. Les angles au-delà d’un tour reviennent au même endroit sur le cercle.</p>
+      <p>Un tour complet fait 360° : l’angle 0° et l’angle 360° désignent le même point.</p>
     </section>
   </main>
   <footer>
@@ -201,7 +201,7 @@
     const nombrePropre = (valeur) => Math.abs(valeur) < 0.0005 ? 0 : valeur;
 
     function afficherAngle(valeur) {
-      const degres = Number(valeur);
+      const degres = Math.max(0, Math.min(360, Math.round(Number(valeur))));
       if (!Number.isFinite(degres)) return;
       const radians = degres * Math.PI / 180;
       const x = 180 + 130 * Math.cos(radians);

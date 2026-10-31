@@ -6,7 +6,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ### Modifié
 - Ajout d’une application autonome du cercle trigonométrique, publiée sur GitHub Pages après les vérifications CI.
-- Mise en ligne via un seul Worker Cloudflare `trigolab` (chat + API + maquettes), déployé par Cloudflare Workers Builds à chaque push sur `main` ; plus de projet Pages ni de jeton Cloudflare dans GitHub (ADR 0007).
+- Mise en ligne via un seul Worker Cloudflare `trigolab` (chat + API + maquettes), déployé par Cloudflare Workers Builds à chaque push sur `main` ; plus de projet Pages pour le chat ni de jeton Cloudflare dans GitHub (ADR 0007).
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Corrigé

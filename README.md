@@ -50,7 +50,7 @@ Without `GITHUB_TOKEN` no issue is created.
 
 The Cloudflare Worker `trigolab` is connected to this GitHub repository (**Workers Builds**): every push to `main`
 is built and deployed by Cloudflare (`npx wrangler deploy`, which first runs `npm run build`). No deploy token is
-stored in GitHub; GitHub Actions only runs the checks.
+stored in GitHub; GitHub Actions only checks the Worker build.
 
 The same GitHub Actions workflow deploys the standalone `index.html` to GitHub Pages after checks pass on `main`.
 Enable **Settings → Pages → Build and deployment → GitHub Actions** once. The Pages artifact contains only this app;
