@@ -8,6 +8,7 @@ on:
     - cron: "23 4 * * 1"
 
 permissions:
+  actions: read # requis par CodeQL sur un dépôt privé (lecture du run courant)
   contents: read
   security-events: write
 
