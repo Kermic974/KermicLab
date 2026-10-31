@@ -1,0 +1,12 @@
+# Configuration Gitleaks (scan des secrets, .github/workflows/securite-pr.yml).
+# Les règles par défaut restent toutes actives ; seule une valeur publique connue est autorisée.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Valeurs publiques, non secrètes"
+regexTarget = "match"
+regexes = [
+  # Jeton du site Cloudflare Web Analytics (web/index.html) : public par conception, présent dans toute page mesurée.
+  '''6cfdbc8f1c9b4998bdfe36686babe04d''',
+]
