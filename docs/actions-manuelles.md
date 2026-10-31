@@ -45,3 +45,4 @@ acheter le domaine quand le budget le permet (action 15).
 | 15 | Optionnel : acheter le domaine `kermiclab.ai` et le relier au Worker (Custom Domain) | Registrar / Cloudflare | Lien public lisible | Le domaine sert le chat | reporté (budget ≈ 160 €) |
 | 16 | Valider chaque pull request de maquette | GitHub | Contrôle humain | Revue CODEOWNER | permanent |
 | 17 | Décider du passage du dépôt en public | Settings → General | Open source | Visibilité changée par le propriétaire | à faire (plus tard) |
+| 20 | Activer GitHub Pages avec la source « GitHub Actions » | GitHub → Settings → Pages → Build and deployment | Publier l’application autonome sans modifier le déploiement du Worker | Après un push sur `main`, l’environnement `github-pages` affiche l’URL du site | à faire |

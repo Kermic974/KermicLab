@@ -23,6 +23,10 @@ Navigateur ──▶ Cloudflare Worker « trigolab » (wrangler.toml)
                                                             └─ Cloudflare D1 (KPI anonymes)
 ```
 
+L’application autonome du cercle trigonométrique se trouve dans `index.html` à la racine.
+GitHub Pages ne publie que cette application, après la réussite des vérifications CI ; le chat et l’API
+restent servis par le Worker Cloudflare.
+
 Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
 jeton en lecture seule. Ce dépôt ne contient qu'une maquette d'exemple (`catalogue/trigo-cercle`).
 
@@ -47,6 +51,10 @@ Sans `GITHUB_TOKEN`, aucune issue n'est créée.
 Le Worker Cloudflare `trigolab` est relié à ce dépôt GitHub (**Workers Builds**) : chaque push sur `main` est
 construit et déployé par Cloudflare (`npx wrangler deploy`, qui lance d'abord `npm run build`). Aucun jeton de
 déploiement n'est stocké dans GitHub ; GitHub Actions ne fait que les vérifications.
+
+Le même workflow GitHub Actions déploie aussi `index.html` sur GitHub Pages après les vérifications, sur `main`.
+Activer une fois **Settings → Pages → Build and deployment → GitHub Actions**. L’artefact Pages ne contient que
+l’application autonome, sans appel réseau ni ressource externe ; elle peut être enregistrée et utilisée hors ligne.
 
 Les secrets du Worker (`ANTHROPIC_API_KEY`, facultatif en mode zéro budget, et `GITHUB_TOKEN`) se renseignent dans
 Cloudflare → Workers → trigolab → Settings → Variables and Secrets. Détails dans le [README anglais](README.md#deploy)

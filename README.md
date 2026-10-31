@@ -23,6 +23,10 @@ Browser ──▶ Cloudflare Worker « trigolab » (wrangler.toml)
                                                         └─ Cloudflare D1 (anonymous KPIs)
 ```
 
+The standalone trigonometry-circle learning app is available at the repository root in `index.html`.
+GitHub Pages deploys only this offline-capable app after the existing CI checks pass; the chat and API
+remain on the Cloudflare Worker.
+
 Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
 read-only token. This repository only ships a minimal example page (`catalogue/trigo-cercle`).
 
@@ -47,6 +51,10 @@ Without `GITHUB_TOKEN` no issue is created.
 The Cloudflare Worker `trigolab` is connected to this GitHub repository (**Workers Builds**): every push to `main`
 is built and deployed by Cloudflare (`npx wrangler deploy`, which first runs `npm run build`). No deploy token is
 stored in GitHub; GitHub Actions only runs the checks.
+
+The same GitHub Actions workflow deploys the standalone `index.html` to GitHub Pages after checks pass on `main`.
+Enable **Settings → Pages → Build and deployment → GitHub Actions** once. The Pages artifact contains only this app;
+it has no network calls or external assets and can be saved and opened offline.
 
 | Where | Name | Purpose |
 |---|---|---|
