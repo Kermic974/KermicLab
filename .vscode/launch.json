@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Lancer trigoLab",
+      "url": "http://localhost:8000/index.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Serveur local"
+    }
+  ]
+}
