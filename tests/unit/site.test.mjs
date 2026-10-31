@@ -26,3 +26,12 @@ test("le chat propose un lien vers l'application, traduit dans chaque langue", a
     assert.ok(textes.application, `clé « application » absente de ${l}.json`);
   }
 });
+
+test("mesure d'audience : présente sur le chat, absente de l'application autonome", async () => {
+  const [chat, autonome] = await Promise.all([
+    readFile(`${racine}web/index.html`, "utf8"),
+    readFile(`${racine}index.html`, "utf8")
+  ]);
+  assert.match(chat, /<script type="module" src="https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js" data-cf-beacon=/);
+  assert.doesNotMatch(autonome, /cloudflareinsights/);
+});

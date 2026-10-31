@@ -10,6 +10,9 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Le Worker accepte les origines `www.kermiclab.online` et `kermiclab.online`.
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
+### Ajouté
+- Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
+
 ### Corrigé
 - CI : les tests navigateur du chat suivent l’URL d’API réellement construite (ils échouaient en CI avec `KERMICLAB_API_URL=http://localhost:8787`).
 - CI : `pages.yml` et `ci.yml` ne partagent plus le même groupe de concurrence (ils s’annulaient mutuellement).
