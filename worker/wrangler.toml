@@ -17,3 +17,8 @@ binding = "DB"
 database_name = "kermiclab-kpi"
 # À remplacer après `wrangler d1 create kermiclab-kpi` (voir docs/actions-manuelles.md).
 database_id = "00000000-0000-0000-0000-000000000000"
+
+# Stockage de fichiers (Cloudflare R2, privé). Organisation et règles : docs/decisions/0007-stockage-r2.md.
+[[r2_buckets]]
+binding = "DONNEES"
+bucket_name = "kermiclab-bucket"
