@@ -39,7 +39,7 @@ Principes non négociables :
 ```bash
 npm ci                # dépendances
 npm run lint          # syntaxe JS, JSON, parité i18n, secrets évidents
-npm run build         # index du catalogue + hashes CSP + site statique dist/
+npm run build         # index du catalogue + hashes CSP des pages + site statique dist/
 npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
 npm test              # tests unitaires (node:test)
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
