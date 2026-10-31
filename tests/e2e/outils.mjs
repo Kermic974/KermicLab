@@ -30,6 +30,8 @@ export async function navigateur() {
 export async function ouvrir(nav, url, options = {}) {
   const contexte = await nav.newContext(options);
   const page = await contexte.newPage();
+  // Mesure d'audience Cloudflare : neutralisée dans les tests (pas de réseau, pas de comptage).
+  await page.route("https://static.cloudflareinsights.com/**", (r) => r.fulfill({ contentType: "text/javascript", body: "" }));
   const erreurs = [];
   page.on("console", (m) => { if (m.type() === "error") erreurs.push(m.text()); });
   page.on("pageerror", (e) => erreurs.push(e.message));
