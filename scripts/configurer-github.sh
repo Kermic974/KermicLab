@@ -5,16 +5,7 @@
 set -euo pipefail
 REPO="${1:-kermic974/trigoLab}"
 
-echo "== Labels"
-creer_label() { gh label create "$1" --repo "$REPO" --color "$2" --description "$3" --force; }
-creer_label "maquette-manquante" "1f5fbf" "Une maquette serait pertinente mais n'existe pas"
-creer_label "traduction-manquante" "5319e7" "Une maquette n'existe pas dans une langue demandée"
-creer_label "support" "0e8a16" "Signalement d'un utilisateur"
-creer_label "bug" "d73a4a" "Quelque chose ne fonctionne pas"
-creer_label "good first issue" "7057ff" "Bon point de départ pour contribuer"
-creer_label "help wanted" "008672" "Aide bienvenue"
-creer_label "sécurité" "b60205" "Sujet de sécurité"
-creer_label "dependencies" "0366d6" "Mise à jour de dépendances"
+echo "== Labels : gérés par .github/labels.json et le workflow « Labels » (création automatique sur main)"
 
 echo "== Sécurité"
 gh api -X PUT "repos/$REPO/vulnerability-alerts"
