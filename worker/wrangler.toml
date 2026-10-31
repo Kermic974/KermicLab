@@ -15,5 +15,5 @@ LIMITE_PAR_MINUTE = "20"
 [[d1_databases]]
 binding = "DB"
 database_name = "kermiclab-kpi"
-# À remplacer après `wrangler d1 create kermiclab-kpi` (voir docs/actions-manuelles.md).
-database_id = "00000000-0000-0000-0000-000000000000"
+# Base créée le 2026-10-31 (région WEUR), schéma worker/schema.sql appliqué.
+database_id = "4b383c6e-8a00-4950-baf3-7951ac60c375"
