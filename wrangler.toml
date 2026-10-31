@@ -1,0 +1,33 @@
+# Worker Kermiclab « trigolab » : sert le chat (fichiers statiques de dist/), l'API et les maquettes.
+# Déployé par Cloudflare Workers Builds à chaque push sur main (dépôt relié dans le tableau de bord
+# Cloudflare) : `npx wrangler deploy` lance d'abord la commande [build] ci-dessous.
+# Le nom doit rester identique à celui du Worker dans Cloudflare.
+# Secrets (ANTHROPIC_API_KEY, GITHUB_TOKEN) : Cloudflare → Workers → trigolab → Settings → Variables and Secrets,
+# ou `npx wrangler secret put <NOM>` — jamais ici.
+name = "trigolab"
+main = "worker/src/index.js"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run predeploy"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+# Le Worker ne traite que l'API et les maquettes ; le reste est servi directement depuis dist/.
+run_worker_first = ["/api/*", "/maquettes/*"]
+
+[vars]
+MODELE_CHAT = "claude-haiku-5-5"
+GITHUB_REPO = "kermic974/trigoLab"
+# Le chat est servi par le même Worker (même origine) : aucune origine externe à autoriser.
+ORIGINES_AUTORISEES = ""
+TAILLE_MAX_MESSAGE = "500"
+LIMITE_PAR_MINUTE = "20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kermiclab-kpi"
+# Base créée le 2026-10-31 (région WEUR), schéma worker/schema.sql appliqué.
+database_id = "4b383c6e-8a00-4950-baf3-7951ac60c375"

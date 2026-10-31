@@ -4,7 +4,14 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+### Modifié
+- Ajout d’une application autonome du cercle trigonométrique, publiée sur GitHub Pages après les vérifications CI.
+- Mise en ligne via un seul Worker Cloudflare `trigolab` (chat + API + maquettes), déployé par Cloudflare Workers Builds à chaque push sur `main` ; plus de projet Pages pour le chat ni de jeton Cloudflare dans GitHub (ADR 0007).
+- Base D1 `kermiclab-kpi` créée et reliée au Worker.
+
 ### Corrigé
+- Déploiement : le site publié pointe vers le Worker `https://kermiclab-api.kermic.workers.dev` même sans variable `KERMICLAB_API_URL` (il pointait vers `localhost`).
+- Déploiement : les secrets du Worker absents (mode zéro budget, pas de `ANTHROPIC_API_KEY`) sont ignorés au lieu de faire échouer `wrangler-action`.
 - CodeQL sur dépôt privé : analyse sans envoi à GitHub (GitHub Advanced Security requis), la CI échoue elle-même en cas d'alerte (`scripts/verifier-sarif.mjs`) ; envoi rétabli automatiquement en public.
 
 ## [0.0.1] — 2026-10-31

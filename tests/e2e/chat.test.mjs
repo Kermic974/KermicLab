@@ -11,20 +11,18 @@ before(async () => {
 });
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
-/** Simule le Worker (http://localhost:8787 dans dist/config.json). */
+/** Simule le Worker, qui sert l'API et les maquettes sur la même origine que le chat. */
 async function simulerApi(page) {
   const requetes = [];
-  await page.route("http://localhost:8787/**", async (route) => {
-    const u = new URL(route.request().url());
-    if (u.pathname.startsWith("/maquettes/")) return route.fulfill({ contentType: "text/html", body: htmlMaquette });
+  await page.route(`${serveur.url}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
+  await page.route(`${serveur.url}/api/**`, async (route) => {
     const corps = route.request().postDataJSON();
     requetes.push(corps);
     const sinus = /sinus|sine/i.test(corps.message);
     return route.fulfill({
       contentType: "application/json",
-      headers: { "access-control-allow-origin": "*" },
       body: JSON.stringify(sinus
-        ? { type: "maquette", texte: "Voici la page.", maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: "http://localhost:8787/maquettes/trigo-cercle?lang=fr" } }
+        ? { type: "maquette", texte: "Voici la page.", maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${serveur.url}/maquettes/trigo-cercle?lang=fr` } }
         : { type: "reponse", texte: "Réponse simple." })
     });
   });

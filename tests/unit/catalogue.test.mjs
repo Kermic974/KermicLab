@@ -11,3 +11,8 @@ test("appliquerCsp : hash de chaque script exécutable, y compris en majuscules"
   const html = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'x'; style-src 'self'"><SCRIPT>a()</SCRIPT>`;
   assert.ok(appliquerCsp(html).includes(`script-src ${hashScript("a()")};`));
 });
+
+test("appliquerCsp : calcule aussi les hashes des styles quand demandé", () => {
+  const html = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'x'; style-src 'self'"><script>a()</script><style>b{color:red}</style>`;
+  assert.ok(appliquerCsp(html, { styles: true }).includes(`style-src ${hashScript("b{color:red}")}`));
+});
