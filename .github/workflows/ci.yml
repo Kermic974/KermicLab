@@ -54,3 +54,28 @@ jobs:
             dist/
             worker/src/generated/
           retention-days: 7
+
+  deploy-pages:
+    name: Déployer l’application autonome
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: verifier
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Préparer le site autonome
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

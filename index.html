@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore le cercle trigonométrique, les angles et les valeurs du sinus et du cosinus.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-REMPLACER_SCRIPT'; style-src 'sha256-REMPLACER_STYLE'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <script type="application/json" id="kermiclab-meta">{"id":"trigolab-cercle","titre":"Le cercle trigonométrique","sujet":"sinus, cosinus et angles","version":"1.0.0","date":"2026-10-31","langue":"fr","onglets":["explorer","défi","comprendre"]}</script>
+  <title>Le cercle trigonométrique — TrigoLab</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui, sans-serif;
+      color: #17243b;
+      background: #f3f6fb;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      max-width: 62rem;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    header, main, footer {
+      background: #fff;
+      border: 1px solid #dce4ef;
+      border-radius: 1rem;
+      padding: clamp(1rem, 4vw, 2rem);
+      margin-block: 1rem;
+    }
+
+    h1, h2 { line-height: 1.2; }
+    h1 { margin-top: 0; font-size: clamp(1.7rem, 5vw, 2.5rem); }
+    p { line-height: 1.6; }
+    .intro { max-width: 48rem; color: #40516b; }
+
+    .onglets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      border-bottom: 1px solid #dce4ef;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      border: 2px solid #3157a4;
+      border-radius: .6rem;
+      padding: .6rem .9rem;
+      color: #18366f;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    button[aria-selected="true"], button[type="submit"] {
+      color: #fff;
+      background: #244b97;
+    }
+
+    button:focus-visible, input:focus-visible {
+      outline: 3px solid #f2a900;
+      outline-offset: 3px;
+    }
+
+    section[hidden] { display: none; }
+
+    .explorateur {
+      display: grid;
+      grid-template-columns: minmax(15rem, 1fr) minmax(15rem, .9fr);
+      align-items: center;
+      gap: 1rem 2rem;
+    }
+
+    svg {
+      display: block;
+      width: min(100%, 22rem);
+      height: auto;
+      margin: 0 auto;
+      color: #253d63;
+    }
+
+    .axe { stroke: #91a0b7; stroke-width: 1.5; }
+    .cercle { fill: #f4f7fc; stroke: #304d7d; stroke-width: 2.5; }
+    .rayon { stroke: #df6a28; stroke-width: 3; }
+    .projection { stroke: #7184a2; stroke-width: 1.5; stroke-dasharray: 5 5; }
+    .point { fill: #df6a28; stroke: #fff; stroke-width: 2; }
+    .etiquette { font-size: 13px; font-weight: 650; }
+
+    .commandes { display: grid; gap: .8rem; }
+    .champ-angle { display: grid; grid-template-columns: 1fr 7rem; gap: .75rem; align-items: center; }
+    .champ-angle label { grid-column: 1 / -1; font-weight: 650; }
+    input[type="range"] { width: 100%; accent-color: #244b97; }
+    input[type="number"] { width: 100%; padding: .5rem; border: 1px solid #7789a5; border-radius: .4rem; }
+
+    .valeurs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .5rem;
+      margin: .25rem 0;
+    }
+
+    .valeurs div {
+      min-width: 0;
+      padding: .7rem;
+      border-radius: .6rem;
+      background: #edf2fb;
+    }
+
+    .valeurs dt { font-weight: 700; }
+    .valeurs dd { margin: .25rem 0 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .aide, .feedback { min-height: 1.5em; color: #40516b; }
+    .reponse { max-width: 12rem; }
+    .mention { font-size: .9rem; color: #52627a; }
+
+    @media (max-width: 42rem) {
+      body { padding: .5rem; }
+      .explorateur { grid-template-columns: 1fr; }
+      .valeurs { gap: .35rem; }
+      .valeurs div { padding: .5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Le cercle trigonométrique</h1>
+    <p class="intro">Fais tourner un point sur un cercle et observe comment son horizontalité donne le cosinus, tandis que sa hauteur donne le sinus. Cette petite application fonctionne aussi hors ligne.</p>
+  </header>
+  <main>
+    <nav class="onglets" role="tablist" aria-label="Activités">
+      <button id="onglet-explorer" type="button" role="tab" aria-controls="panneau-explorer" aria-selected="true" tabindex="0">Explorer</button>
+      <button id="onglet-defi" type="button" role="tab" aria-controls="panneau-defi" aria-selected="false" tabindex="-1">Défi</button>
+      <button id="onglet-comprendre" type="button" role="tab" aria-controls="panneau-comprendre" aria-selected="false" tabindex="-1">Comprendre</button>
+    </nav>
+
+    <section id="panneau-explorer" role="tabpanel" aria-labelledby="onglet-explorer">
+      <div class="explorateur">
+        <svg viewBox="0 0 360 360" role="img" aria-labelledby="titre-cercle description-cercle">
+          <title id="titre-cercle">Cercle trigonométrique interactif</title>
+          <desc id="description-cercle">Le point orange tourne sur le cercle. Ses projections sur les axes représentent le cosinus et le sinus de l’angle choisi.</desc>
+          <line class="axe" x1="20" y1="180" x2="340" y2="180"></line>
+          <line class="axe" x1="180" y1="20" x2="180" y2="340"></line>
+          <circle class="cercle" cx="180" cy="180" r="130"></circle>
+          <line id="projection-x" class="projection" x1="180" y1="180" x2="310" y2="180"></line>
+          <line id="projection-y" class="projection" x1="310" y1="180" x2="310" y2="180"></line>
+          <line id="rayon" class="rayon" x1="180" y1="180" x2="310" y2="180"></line>
+          <circle id="point" class="point" cx="310" cy="180" r="7"></circle>
+          <text class="etiquette" x="318" y="174">cos</text>
+          <text class="etiquette" x="188" y="35">sin</text>
+          <text class="etiquette" x="186" y="198">0</text>
+        </svg>
+        <div class="commandes">
+          <div class="champ-angle">
+            <label for="angle">Angle en degrés</label>
+            <input id="angle" type="range" min="0" max="360" step="1" value="45">
+            <input id="angle-nombre" type="number" min="0" max="360" step="1" value="45" aria-label="Angle en degrés, nombre">
+          </div>
+          <p id="lecture-angle" class="aide" aria-live="polite"></p>
+          <dl class="valeurs">
+            <div><dt>cosinus</dt><dd id="valeur-cos"></dd></div>
+            <div><dt>sinus</dt><dd id="valeur-sin"></dd></div>
+            <div><dt>tangente</dt><dd id="valeur-tan"></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="panneau-defi" role="tabpanel" aria-labelledby="onglet-defi" hidden>
+      <h2>À toi de jouer</h2>
+      <p id="question-defi"></p>
+      <form id="formulaire-defi">
+        <label for="reponse">Ta réponse, arrondie au centième :</label>
+        <p><input id="reponse" class="reponse" type="number" step="0.01" inputmode="decimal" required></p>
+        <button type="submit">Vérifier</button>
+        <button id="nouveau-defi" type="button">Nouveau défi</button>
+      </form>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="panneau-comprendre" role="tabpanel" aria-labelledby="onglet-comprendre" hidden>
+      <h2>Le dessin raconte les formules</h2>
+      <p>Imagine un cercle de rayon 1 centré au point (0, 0). En tournant depuis l’axe horizontal, le point atteint les coordonnées (cosinus de l’angle, sinus de l’angle).</p>
+      <p>Le cosinus est donc la position horizontale du point ; le sinus, sa position verticale. Ils restent toujours entre −1 et 1. La tangente est le sinus divisé par le cosinus : elle n’existe pas quand le cosinus vaut zéro.</p>
+      <p>Un tour complet fait 360°. Les angles au-delà d’un tour reviennent au même endroit sur le cercle.</p>
+    </section>
+  </main>
+  <footer>
+    <p class="mention">Application autonome : aucun compte, aucune donnée enregistrée, aucun appel réseau.</p>
+  </footer>
+  <script>
+    const $ = (selecteur) => document.querySelector(selecteur);
+    const angleSlider = $("#angle");
+    const angleNombre = $("#angle-nombre");
+    const nombrePropre = (valeur) => Math.abs(valeur) < 0.0005 ? 0 : valeur;
+
+    function afficherAngle(valeur) {
+      const degres = Number(valeur);
+      if (!Number.isFinite(degres)) return;
+      const radians = degres * Math.PI / 180;
+      const x = 180 + 130 * Math.cos(radians);
+      const y = 180 - 130 * Math.sin(radians);
+      const cosinus = nombrePropre(Math.cos(radians));
+      const sinus = nombrePropre(Math.sin(radians));
+      const tangente = Math.abs(cosinus) < 0.0005 ? null : nombrePropre(sinus / cosinus);
+
+      angleSlider.value = String(degres);
+      angleNombre.value = String(degres);
+      $("#lecture-angle").textContent = `${degres}° — coordonnées (${cosinus.toFixed(3)} ; ${sinus.toFixed(3)})`;
+      $("#valeur-cos").textContent = cosinus.toFixed(3);
+      $("#valeur-sin").textContent = sinus.toFixed(3);
+      $("#valeur-tan").textContent = tangente === null ? "non définie" : tangente.toFixed(3);
+      $("#rayon").setAttribute("x2", String(x));
+      $("#rayon").setAttribute("y2", String(y));
+      $("#point").setAttribute("cx", String(x));
+      $("#point").setAttribute("cy", String(y));
+      $("#projection-x").setAttribute("x2", String(x));
+      $("#projection-x").setAttribute("y2", String(y));
+      $("#projection-y").setAttribute("x1", String(x));
+      $("#projection-y").setAttribute("y1", String(y));
+      $("#projection-y").setAttribute("x2", String(x));
+      $("#projection-y").setAttribute("y2", "180");
+      $("#description-cercle").textContent = `À ${degres} degrés, le point est aux coordonnées (${cosinus.toFixed(3)} ; ${sinus.toFixed(3)}).`;
+    }
+
+    angleSlider.addEventListener("input", () => afficherAngle(angleSlider.value));
+    angleNombre.addEventListener("change", () => {
+      const angle = Math.max(0, Math.min(360, Number(angleNombre.value)));
+      if (Number.isFinite(angle)) afficherAngle(angle);
+    });
+
+    const onglets = [...document.querySelectorAll('[role="tab"]')];
+    function activerOnglet(onglet) {
+      onglets.forEach((element) => {
+        const actif = element === onglet;
+        element.setAttribute("aria-selected", String(actif));
+        element.tabIndex = actif ? 0 : -1;
+        $(`#${element.getAttribute("aria-controls")}`).hidden = !actif;
+      });
+      onglet.focus();
+    }
+    onglets.forEach((onglet, index) => {
+      onglet.addEventListener("click", () => activerOnglet(onglet));
+      onglet.addEventListener("keydown", (evenement) => {
+        if (evenement.key !== "ArrowRight" && evenement.key !== "ArrowLeft") return;
+        evenement.preventDefault();
+        const increment = evenement.key === "ArrowRight" ? 1 : -1;
+        activerOnglet(onglets[(index + increment + onglets.length) % onglets.length]);
+      });
+    });
+
+    const angles = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360];
+    let defi;
+    function nouveauDefi() {
+      const degres = angles[Math.floor(Math.random() * angles.length)];
+      const fonction = Math.random() < 0.5 ? "sin" : "cos";
+      const valeur = fonction === "sin"
+        ? Math.sin(degres * Math.PI / 180)
+        : Math.cos(degres * Math.PI / 180);
+      defi = { degres, fonction, valeur: nombrePropre(valeur) };
+      $("#question-defi").textContent = `Quelle est la valeur de ${fonction}(${degres}°) ?`;
+      $("#reponse").value = "";
+      $("#feedback").textContent = "";
+    }
+    $("#nouveau-defi").addEventListener("click", nouveauDefi);
+    $("#formulaire-defi").addEventListener("submit", (evenement) => {
+      evenement.preventDefault();
+      const reponse = Number($("#reponse").value);
+      const juste = Math.round(reponse * 100) === Math.round(defi.valeur * 100);
+      $("#feedback").textContent = juste
+        ? "Bien joué ! Tu as trouvé."
+        : `Pas encore : à deux décimales, la réponse est ${defi.valeur.toFixed(2)}.`;
+    });
+
+    afficherAngle(angleSlider.value);
+    nouveauDefi();
+  </script>
+</body>
+</html>

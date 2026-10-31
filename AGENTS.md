@@ -25,6 +25,7 @@ Principes non négociables :
 |---|---|
 | `wrangler.toml` | Configuration du Worker `trigolab` (déployé par Cloudflare Workers Builds à chaque push sur `main`) |
 | `worker/` | Code du Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1 ; sert aussi les fichiers statiques du chat |
+| `index.html` | Application autonome hors ligne du cercle trigonométrique, déployée sur GitHub Pages |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
 | `web/` | Interface de chat (copiée dans `dist/`, servie par le Worker). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquette d'exemple minimale (`trigo-cercle`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |

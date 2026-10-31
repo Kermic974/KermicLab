@@ -1,9 +1,11 @@
 # Chantier : CI/CD
 
-**Niveau actuel : 0 (vérifications GitHub + déploiement Cloudflare Workers Builds)**
+**Niveau actuel : 0 (vérifications GitHub + déploiements Cloudflare et GitHub Pages)**
 
 - `ci.yml` : lint → build (index + CSP) → contrôle des pages → tests unitaires → tests Playwright.
 - Déploiement : Cloudflare Workers Builds (Worker `trigolab` relié au dépôt) à chaque push sur `main`, sans jeton dans GitHub (ADR 0007).
+- Déploiement GitHub Pages de l’application autonome `index.html`, après la réussite du job `verifier` et uniquement sur `main`.
+- Le site Pages ne publie que l’application autonome ; le chat et l’API restent servis par le Worker.
 - Catalogue privé récupéré si `CATALOGUE_TOKEN` existe.
 
 Prochaines étapes :
