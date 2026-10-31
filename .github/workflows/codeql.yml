@@ -39,7 +39,7 @@ jobs:
         run: node scripts/verifier-sarif.mjs resultats-codeql
       - name: Conserver les résultats
         if: always() && steps.visibilite.outputs.prive == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: resultats-codeql
           path: resultats-codeql/
