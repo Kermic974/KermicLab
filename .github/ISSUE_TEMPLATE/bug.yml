@@ -1,16 +1,24 @@
 name: Bug
-description: Signaler une anomalie
-title: "[Bug] "
+description: Quelque chose ne fonctionne pas / Something is broken
 labels: [bug]
 body:
   - type: textarea
     id: description
     attributes:
       label: Description
+      description: Ce qui se passe et ce qui était attendu. Aucune donnée personnelle.
     validations:
       required: true
-  - type: input
-    id: environment
+  - type: textarea
+    id: reproduction
     attributes:
-      label: Appareil et navigateur
-      placeholder: "Ex. iPhone / Safari"
+      label: Étapes pour reproduire / Steps to reproduce
+  - type: input
+    id: page
+    attributes:
+      label: ID et version de la page (si concerné)
+      placeholder: trigo-cercle@1.0.0
+  - type: input
+    id: appareil
+    attributes:
+      label: Navigateur et appareil / Browser and device

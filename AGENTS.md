@@ -1,94 +1,116 @@
-# Instructions pour les agents trigoLab
+# AGENTS.md — instructions communes à tous les agents
 
-Ce fichier est **le seul jeu d'instructions** du dépôt. Il s'applique à tout agent : Claude Code le charge via `CLAUDE.md`, les autres agents (Codex, Copilot, Cursor…) le lisent directement. Ne créez pas d'instructions parallèles : complétez ce fichier.
+Ce fichier est le **cœur d'instructions unique** du projet Kermiclab (dépôt `trigoLab`).
+Il s'applique à Claude Code, GitHub Copilot, Codex et tout autre agent. `CLAUDE.md` et
+`.github/copilot-instructions.md` ne font que renvoyer ici.
 
-- **Quoi construire** : `SPEC.md`, exigences numérotées (F-, M-, E-, A-, D-, S-, X-, Q-).
-- **Comment c'est organisé** : `ARCHITECTURE.md`.
-- **Qui fait quoi** : ce fichier, § Les deux agents.
-- **Quoi faire ensuite** : `PLAN.md`, lots numérotés avec branche, fichiers, tests, critères d'acceptation et prompt de lancement.
+## 1. Vision
 
-La langue du produit, des messages de commit et de la documentation est le français.
+Un agent web répond aux questions d'utilisateurs de 7 à 77 ans (« c'est quoi le sinus ? ») et
+leur sert une **page HTML autonome**, identifiée et versionnée, navigable par onglets :
+explication, application ludique, mise en situation.
 
-## Invariants non négociables
+Principes non négociables :
 
-1. `interaction → setAngle() → moteur → rendu`. Une seule valeur d'angle dans l'état central (`createStore`). Aucune vue ni méthode ne recalcule cos, sin ou tan (F-01, F-02).
-2. `src/` est la source de vérité. `index.html` est **généré** par `scripts/build-standalone.py` : ne le modifiez jamais à la main, reconstruisez-le et commitez-le avec le changement de `src/`.
-3. Le livrable reste un fichier unique, sans dépendance externe ni réseau (F-03). `package.json` ne déclare aucune dépendance.
-4. Ne désactivez, ne supprimez et n'affaiblissez jamais un test pour obtenir du vert. Un test faux se corrige dans une PR qui explique pourquoi.
-5. Accessibilité exigée par `SPEC.md` § Accessibilité : clavier, tactile, `aria-live`, focus visible, `prefers-reduced-motion`.
+- **Déterminisme** : une demande couverte par le catalogue produit toujours la même page (fichier servi tel quel, zéro token).
+- **Apprentissage par backlog** : une demande non couverte crée (ou commente) une issue `maquette-manquante` ; après validation humaine et ajout au catalogue, la même demande produit la page.
+- **Agnostique de l'agent** : tout le pilotage est en Markdown dans ce dépôt.
+- **Maintenance par IA, contrôle humain** : les agents préparent ; le propriétaire valide aux points de contrôle.
+- **CI/CD obligatoire** : rien n'est fusionné sans CI verte.
+- **Public mineur** : aucune donnée personnelle collectée, modération des entrées et des sorties.
 
-## Commandes
+## 2. Carte du dépôt
 
-| But | Commande |
+| Chemin | Rôle |
 |---|---|
-| Construire `index.html` | `python3 scripts/build-standalone.py` |
-| Vérifier que `index.html` est à jour | `python3 scripts/build-standalone.py --check` |
-| Frontières entre agents | `python3 scripts/check_boundaries.py --agent auto` |
-| Tests (Node 22, sans installation) | `node --test "tests/**/*.test.js"` |
-| Structure HTML et syntaxe JS du livrable | `python3 scripts/check_html.py` |
-| **Tout vérifier** (exigé avant une PR) | `npm run check` |
-| Version de développement par modules | `python3 scripts/build-standalone.py --dev`, puis `python3 -m http.server 8000` et ouvrir `http://localhost:8000/src/dev.html` |
-| Archiver une version publiée | `python3 scripts/build-standalone.py --out versions/vX.Y/standalone.html` |
+| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
+| `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
+| `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
+| `catalogue/` | Maquette d'exemple minimale (`trigo-cercle`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
+| `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
+| `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
+| `tests/e2e/` | Playwright : onglets, rendu mobile, chat |
+| `docs/chantiers/` | Une fiche par chantier transverse (niveau de maturité, prochaines étapes) |
+| `docs/decisions/` | Journal des décisions (ADR courts) |
+| `docs/actions-manuelles.md` | Actions humaines requises et leur statut |
 
-`tests/dom/` utilise Playwright s'il est installé et s'ignore proprement sinon. Les mêmes autotests tournent aussi dans la page (badge « Prêt · N tests OK »).
+## 3. Commandes
 
-## Les deux agents
+```bash
+npm ci                # dépendances
+npm run lint          # syntaxe JS, JSON, parité i18n, secrets évidents
+npm run build         # index du catalogue + hashes CSP + site statique dist/
+npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
+npm test              # tests unitaires (node:test)
+npm run test:e2e      # tests navigateur (Playwright + Chromium)
+npm run ci            # tout ce qui précède
+cd worker && npx wrangler dev   # Worker en local (http://localhost:8787)
+npx wrangler pages dev dist     # chat en local
+```
 
-Le dépôt est partagé entre deux agents aux périmètres disjoints. La liste exacte des zones fait foi dans `scripts/check_boundaries.py`. La CI refuse une PR d'un agent qui touche la zone de l'autre.
+## 4. Conventions
 
-### Agent Moteur
+- Code et identifiants en **français** (le projet est francophone) ; documentation publique en anglais avec version française.
+- JavaScript ES modules, sans framework ni étape de compilation. Dépendances minimales : chaque ajout doit être justifié dans un ADR.
+- Aucun texte d'interface en dur : clé dans `web/i18n/fr.json` **et** dans toutes les autres langues (le lint vérifie la parité). Ajouter une langue = ajouter un fichier.
+- Modèles : `claude-haiku-5-5` pour le chat et le routage (sortie JSON structurée) ; `claude-sonnet-5-5` uniquement pour préparer des maquettes candidates.
+- Zéro secret dans le code : variables d'environnement, Cloudflare Secrets, GitHub Secrets ; documenter toute variable dans `.env.example`.
+- Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
 
-- **Rôle** : mathématiques, état central, contenu pédagogique, méthodes de résolution. Code pur, testable dans Node.
-- **Zone** : `src/core/`, `src/pedagogy/`, `src/solutions/`, `src/selfcheck.js`, `tests/core/`, `tests/solutions/`.
-- **Interdits** : DOM et API du navigateur (`document`, `window`, `localStorage`, timers…), import de `src/ui/`.
-- **Livre** : des fonctions exportées, documentées par leurs tests, et exposées via `src/api.js`.
-- **Exigences principales** : M-*, E-01, D-02 à D-05 (logique), S-*.
+## 5. Contrat d'une page HTML autonome
 
-### Agent Interface
+- Un seul fichier, sans dépendance externe, lisible hors ligne, pensé mobile, accessible au clavier.
+- En tête : `<script type="application/json" id="kermiclab-meta">` avec `id`, `titre`, `sujet`, `version`, `date`, `langue`, `onglets`.
+- CSP en `<meta>` : `default-src 'none'`, `connect-src 'none'`, `script-src` avec **hashes** (recalculés par `npm run build`, à committer).
+- Onglets déclarés dans un **registre** (`enregistrerOnglet({ id, type, titre, rendu, actif })`) ; onglets de base `explication`, `application`, `mise-en-situation` ; `self-test` prévu (inactif). Ajouter un onglet ne modifie pas le socle.
+- Stockage abstrait : `local` (localStorage, actif) et `distant` (stub, phase 4).
+- Bouton « Se connecter » présent mais masqué (`CONFIG.connexionActive = false`).
+- Une notion = une page couvrant collège → lycée, en niveaux dépliables, du plus intuitif au plus formel. Approche par le jeu dans chaque onglet. Contenus adaptés à tous les âges.
 
-- **Rôle** : page, rendu SVG, panneaux, entrées (pointeur, clavier, saisie), modes, accessibilité, style.
-- **Zone** : `src/ui/`, `src/styles/`, `src/index.template.html`, `tests/dom/`.
-- **Interdits** : importer le Moteur autrement que par `src/api.js` ; recalculer une valeur trigonométrique ; dupliquer une logique pédagogique (énoncés, barème, consignes).
-- **Livre** : une interface qui consomme `src/api.js` et l'état central, avec ses autotests DOM dans `src/ui/selftest.js`.
-- **Exigences principales** : E-02 à E-07, A-*, D-01, X-*.
+## 6. Ajouter une maquette (processus)
 
-### Zones communes
+1. Partir d'une issue `maquette-manquante`.
+2. Créer une branche `maquette/<id>`.
+3. Dans le dépôt privé `maquettes-catalogue` (ou `catalogue/` pour un exemple public) : dossier `<id>/` avec `fiche.md` (front matter : `id`, `titre`, `sujet`, `version`, `date`, `langues`, `onglets`, `mots-cles`, `questions`) et `page.html` (+ `page.<langue>.html` pour les traductions).
+4. `npm run ci` : les questions d'exemple doivent être routées vers l'ID (non-régression), la page doit passer `check:pages`.
+5. Pull request → revue IA de sécurité → **validation humaine du CODEOWNER** → fusion → déploiement automatique.
 
-- **Contrat** (`src/api.js`, `SPEC.md`, `ARCHITECTURE.md`, `AGENTS.md`) : modifiable par les deux, toujours signalé par la CI.
-- **Outillage et documentation** (`scripts/`, `tests/build/`, `.github/`, `README.md`, `CHANGELOG.md`, `PLAN.md`, `versions/`, `index.html` généré) : modifiables par les deux.
+Une traduction manquante crée une issue `traduction-manquante` ; la version française est servie en attendant.
 
-## Contrat entre agents
+## 6 bis. Publier une version
 
-`src/api.js` ne contient que des réexportations du Moteur. C'est la seule porte d'entrée de l'Interface.
+1. Dans la PR : passer `version` de `package.json` à la nouvelle valeur (SemVer) et renommer la section
+   `## [Non publié]` de `CHANGELOG.md` en `## [X.Y.Z] — AAAA-MM-JJ`.
+2. Après la fusion sur `main`, le workflow `Publication` crée automatiquement le tag `vX.Y.Z` (sur le premier
+   commit de `main` portant cette version) et la release GitHub, avec les notes du changelog. Les versions `0.x`
+   sont publiées en pré-version. Aucun tag n'est créé à la main.
 
-- **Ajout** d'un export : le Moteur l'ajoute avec ses tests, dans sa propre PR. L'Interface peut l'utiliser ensuite.
-- **Retrait ou changement de signature** : changement de contrat. Le Moteur ajoute d'abord la nouvelle forme à côté de l'ancienne. L'Interface migre. Une troisième PR retire l'ancienne forme. `ARCHITECTURE.md` est mis à jour dans la même PR que le contrat.
-- **Besoin de l'Interface non couvert** : l'agent Interface ne code pas la logique lui-même. Il ouvre une issue « [contrat] … » décrivant l'export attendu (nom, entrée, sortie, exigence SPEC), puis attend la PR du Moteur.
-- **Nouvelle méthode de résolution** : un fichier dans `src/solutions/` et une ligne dans `src/solutions/catalog.js`. Les tests de contrat s'appliquent automatiquement.
+## 7. Définition du « terminé »
 
-## Conventions de code
+Une tâche est terminée quand : `npm run ci` passe, la documentation concernée (chantier, ADR, README) est à jour,
+`docs/actions-manuelles.md` liste toute action humaine restante, et la PR est prête pour la revue du CODEOWNER.
 
-Le script de construction assemble les modules par simple concaténation. Il impose :
+## 8. Protocole des actions manuelles
 
-- `import { a, b } from './x.js';` : imports nommés, chemins relatifs, pas d'alias, pas d'`import *` ;
-- `export function`, `export const` : exports nommés uniquement, pas d'`export default` ;
-- déclarations de niveau module en colonne 0, **noms uniques dans tout `src/`** (le build échoue sinon) ;
-- aucune dépendance circulaire.
+Quand une étape nécessite une action humaine (compte, credentials, paiement, validation légale) :
 
-Style : JavaScript sans dépendance, compatible navigateurs récents. Le style existant (fonctions, `var` dans les fonctions, guillemets simples, commentaires en français) est à suivre. Textes affichés en français, nombres via `fmt()`.
+1. S'arrêter sur cette étape **sans bloquer** le reste du travail possible.
+2. Afficher dans le chat un bloc :
+   ```
+   ACTION MANUELLE REQUISE
+   Quoi : …
+   Où : <lien>
+   Pourquoi : …
+   Comment confirmer : …
+   ```
+3. Consigner l'action dans `docs/actions-manuelles.md` (statut `à faire` / `fait`).
+4. Reprendre automatiquement après confirmation du propriétaire.
 
-## Méthode de travail
+## 9. Sécurité (à vérifier sur chaque contribution)
 
-1. **Branche** : `agent/moteur-<sujet>` ou `agent/interface-<sujet>`, créée depuis `main` à jour. Une PR = un agent = un sujet.
-2. **Commits** : préfixe `[moteur]` ou `[interface]`, puis le résumé, avec l'exigence citée (`[moteur] Méthode algébrique (S-03)`).
-3. **Avant de pousser** : `npm run check`. Si `src/` a changé, commitez aussi `index.html` reconstruit.
-4. **PR** : remplir le modèle (agent, exigences, vérifications). `CHANGELOG.md` est mis à jour pour tout changement visible.
-5. **Conflit sur `index.html`** : ne le fusionnez pas à la main. Prenez l'une ou l'autre version, puis reconstruisez.
-6. **Fin de travail** : la PR est prête quand la CI est verte. La fusion reste une décision humaine.
-
-## Définition de « terminé »
-
-- l'exigence SPEC visée est couverte par au moins un test (Node pour le Moteur, `selftest.js` pour l'Interface) ;
-- `npm run check` passe et le badge de la page affiche « Prêt · N tests OK » ;
-- l'application est vérifiée à 390 px et à 1 280 px pour tout changement d'Interface ;
-- la documentation (SPEC, ARCHITECTURE, CHANGELOG) est à jour.
+- Aucun secret, aucune donnée personnelle, aucun journal contenant un message utilisateur.
+- Pages HTML : pas de script externe, pas de ressource externe, pas d'appel réseau, pas d'`eval`.
+- Entrées utilisateur : taille bornée, modération, limitation de débit.
+- Dépendances : pas de vulnérabilité élevée ou critique.
+- Workflows : `pull_request` uniquement (jamais `pull_request_target` avec du code de fork).
+- Ne jamais modifier la visibilité du dépôt ; ne jamais fusionner sans validation humaine.

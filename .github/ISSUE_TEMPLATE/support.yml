@@ -1,0 +1,11 @@
+name: Support
+description: Une question ou un problème d'utilisation / A usage question or problem
+labels: [support]
+body:
+  - type: textarea
+    id: message
+    attributes:
+      label: Message
+      description: Aucune donnée personnelle (nom, adresse, école, photo).
+    validations:
+      required: true

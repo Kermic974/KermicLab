@@ -1,6 +1,12 @@
-.DS_Store
-Thumbs.db
-.vscode/*.log
-node_modules/
 *.log
+.DS_Store
+.dev.vars
+.env
+.vscode/*.log
+.wrangler/
+Thumbs.db
+catalogue-prive/
+dist/
+node_modules/
 src/dev.html
+worker/src/generated/

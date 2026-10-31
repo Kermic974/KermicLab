@@ -1,0 +1,127 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verifier:
+    name: Lint, build, tests
+    runs-on: ubuntu-latest
+    env:
+      CATALOGUE_TOKEN: ${{ secrets.CATALOGUE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Catalogue privé (dépôt maquettes-catalogue) : uniquement si le jeton en lecture seule est configuré.
+      # Les PR de forks n'ont pas accès aux secrets : le build se fait alors avec la maquette d'exemple.
+      - name: Récupérer le catalogue privé
+        if: ${{ env.CATALOGUE_TOKEN != '' }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.CATALOGUE_REPO || 'kermic974/maquettes-catalogue' }}
+          token: ${{ secrets.CATALOGUE_TOKEN }}
+          path: catalogue-prive
+      - run: npm run lint
+      - run: npm run build
+        env:
+          KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'http://localhost:8787' }}
+      - run: npm run check:pages
+      - name: Les sources du catalogue sont à jour (hashes CSP)
+        run: git diff --exit-code -- catalogue/
+      - run: npm test
+      - name: Installer Chromium pour Playwright
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: |
+            dist/
+            worker/src/generated/
+          retention-days: 7
+
+  deployer:
+    name: Déploiement Cloudflare
+    needs: verifier
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CATALOGUE_TOKEN: ${{ secrets.CATALOGUE_TOKEN }}
+    steps:
+      - name: Secrets Cloudflare présents ?
+        id: secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID absents : déploiement ignoré (voir docs/actions-manuelles.md)."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.secrets.outputs.ok == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.ok == 'true'
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.secrets.outputs.ok == 'true'
+        run: npm ci
+      - name: Récupérer le catalogue privé
+        if: ${{ steps.secrets.outputs.ok == 'true' && env.CATALOGUE_TOKEN != '' }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.CATALOGUE_REPO || 'kermic974/maquettes-catalogue' }}
+          token: ${{ secrets.CATALOGUE_TOKEN }}
+          path: catalogue-prive
+      - if: steps.secrets.outputs.ok == 'true'
+        run: npm run build
+        env:
+          KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL }}
+      - name: Schéma D1 (idempotent)
+        if: steps.secrets.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          command: d1 execute kermiclab-kpi --remote --file=schema.sql
+      - name: Worker
+        if: steps.secrets.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          command: deploy
+          secrets: |
+            ANTHROPIC_API_KEY
+            GITHUB_TOKEN
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.KERMICLAB_GITHUB_TOKEN }}
+      - name: Pages
+        if: steps.secrets.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT || 'kermiclab' }} --branch=main

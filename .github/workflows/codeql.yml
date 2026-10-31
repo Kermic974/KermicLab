@@ -1,0 +1,46 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "23 4 * * 1"
+
+permissions:
+  actions: read # requis par CodeQL sur un dépôt privé (lecture du run courant)
+  contents: read
+  security-events: write
+
+jobs:
+  analyser:
+    runs-on: ubuntu-latest
+    steps:
+      # Dépôt privé sans GitHub Advanced Security : GitHub refuse l'envoi des résultats (« Code scanning is not
+      # enabled »). On garde l'analyse, sans envoi, et la CI échoue elle-même s'il y a des alertes.
+      # L'envoi reprend automatiquement quand le dépôt devient public.
+      # (La visibilité est lue par l'API : la charge utile des événements `schedule` ne la contient pas.)
+      - name: Visibilité du dépôt
+        id: visibilite
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: echo "prive=$(gh api "repos/${{ github.repository }}" --jq .private)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+      - uses: github/codeql-action/analyze@v3
+        with:
+          upload: ${{ steps.visibilite.outputs.prive == 'true' && 'never' || 'always' }}
+          output: resultats-codeql
+      - name: Bloquer en cas d'alerte (dépôt privé)
+        if: steps.visibilite.outputs.prive == 'true'
+        run: node scripts/verifier-sarif.mjs resultats-codeql
+      - name: Conserver les résultats
+        if: always() && steps.visibilite.outputs.prive == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultats-codeql
+          path: resultats-codeql/
+          retention-days: 14

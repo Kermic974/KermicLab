@@ -1,21 +1,21 @@
-## Objectif
+## Résumé / Summary
 
-Décrire la modification.
+<!-- Ce que change cette PR et pourquoi. / What this PR changes and why. -->
 
-## Agent
+## Type
 
-- [ ] Moteur (`src/core`, `src/pedagogy`, `src/solutions`, `src/selfcheck.js`)
-- [ ] Interface (`src/ui`, `src/styles`, `src/index.template.html`)
-- [ ] Commun (outillage, documentation)
-
-Exigences `SPEC.md` concernées : 
-
-Contrat `src/api.js` modifié : non / oui (décrire et prévenir l'autre agent)
+- [ ] Maquette (catalogue) — issue `maquette-manquante` liée : #
+- [ ] Moteur (Worker, chat, gabarit, CI)
+- [ ] Documentation / chantier / décision
 
 ## Vérifications
 
-- [ ] `npm run check` passe (build à jour, frontières, tests Node, structure HTML)
-- [ ] badge de la page : « Prêt · N tests OK »
-- [ ] scénario 60° vérifié
-- [ ] mobile (390 px) et desktop (1 280 px) vérifiés si l'Interface change
-- [ ] SPEC, ARCHITECTURE et CHANGELOG à jour si nécessaire
+- [ ] `npm run ci` passe en local
+- [ ] Aucune donnée personnelle collectée, aucun secret dans le code
+- [ ] Pages HTML : aucun script ni ressource externe, CSP à jour (`npm run build`)
+- [ ] Textes d'interface dans `web/i18n/*.json` (aucun texte en dur)
+- [ ] `docs/actions-manuelles.md` mis à jour si une action humaine est nécessaire
+
+## Contrôle humain
+
+Validation du CODEOWNER requise avant fusion.

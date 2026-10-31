@@ -1,0 +1,44 @@
+name: Sécurité des contributions
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  revue-dependances:
+    name: Revue des dépendances
+    # dependency-review-action exige le graphe de dépendances + GitHub Advanced Security, indisponibles sur un
+    # dépôt privé sans licence GHAS. Tant que le dépôt est privé, l'audit npm ci-dessous et Dependabot
+    # couvrent les vulnérabilités ; ce job s'active automatiquement au passage en public.
+    if: github.event_name == 'pull_request' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+
+  audit:
+    name: Audit npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm audit --audit-level=high --omit=dev
+
+  secrets:
+    name: Scan des secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Gitleaks
+        run: |
+          docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.24.0 git /repo --redact --verbose
