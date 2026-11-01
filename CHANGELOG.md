@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Physique-chimie, vague 2 (seconde et première) : quantité de matière, atome et tableau périodique, réfraction et lentilles, oxydoréduction, travail et énergie mécanique, ondes mécaniques, absorbance et dosages.
 - Catalogue de **physique-chimie**, vague 1 (collège) : états de la matière, masse volumique et mélanges, atomes et transformations chimiques, acides et bases, mouvements, forces et poids, circuits électriques et loi d'Ohm, énergie, signaux sonores et lumineux. Feuille de route : `docs/chantiers/catalogue-physique-chimie.md`.
 - Chat : onglets par matière (Maths | Physique-chimie) dans la barre de navigation ; une recherche porte sur toutes les matières. `GET /api/catalogue` renvoie la matière de chaque notion.
 - Chat : **barre de navigation du catalogue** — fixe à gauche sur grand écran, tiroir sur mobile (bouton « Catalogue », Échap pour fermer). Notions groupées par niveau (collège, seconde, première, terminale), recherche sans accents, coche ✓ et compteur des notions explorées ; un clic ouvre la page directement dans le fil (sans appel au chat) et compte comme notion découverte.

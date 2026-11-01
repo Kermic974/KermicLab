@@ -1,6 +1,6 @@
 # Chantier : catalogue de physique-chimie (programme complet)
 
-**Niveau actuel : vague 1 (collège) en PR**
+**Niveau actuel : vagues 1 (collège) et 2 (seconde, première) en PR**
 
 Objectif : couvrir le programme de physique-chimie du collège (cycle 4) à la terminale (spécialité), une notion par page, du plus
 intuitif au plus formel. Même méthode que les mathématiques (`docs/chantiers/catalogue-maths.md`) : gabarit commun (ADR 0011),
@@ -26,13 +26,13 @@ de navigation du chat affiche un onglet par matière. Statuts : `en ligne` / `PR
 
 | Notion | Statut |
 |---|---|
-| `quantite-de-matiere` (mole, concentration, dilution) | à faire |
-| `tableau-periodique` (structure électronique, ions, liaisons) | à faire |
-| `refraction-et-lentilles` | à faire |
-| `oxydoreduction` | à faire |
-| `energie-mecanique` (travail, énergies potentielle et mécanique) | à faire |
-| `ondes` (ondes mécaniques, célérité, longueur d'onde) | à faire |
-| `absorbance-et-dosages` (loi de Beer-Lambert, titrages) | à faire |
+| `quantite-de-matiere` (mole, concentration, dilution) | PR ouverte |
+| `tableau-periodique` (structure électronique, ions, liaisons) | PR ouverte |
+| `refraction-et-lentilles` | PR ouverte |
+| `oxydoreduction` | PR ouverte |
+| `energie-mecanique` (travail, énergies potentielle et mécanique) | PR ouverte |
+| `ondes` (ondes mécaniques, célérité, longueur d'onde) | PR ouverte |
+| `absorbance-et-dosages` (loi de Beer-Lambert, titrages) | PR ouverte |
 
 ## Vague 3 — terminale (spécialité)
 

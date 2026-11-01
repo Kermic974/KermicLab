@@ -1,0 +1,159 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : altitude contre vitesse",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Sur des montagnes russes, le wagon ralentit en montant et accélère en descendant : il échange sans cesse de la **hauteur** contre de la **vitesse**.",
+        "Ces deux réservoirs d'énergie sont l'énergie **potentielle** (liée à la hauteur) et l'énergie **cinétique** (liée à la vitesse)."
+      ]
+    },
+    {
+      "titre": "Les énergies",
+      "niveau": "première",
+      "paragraphes": [
+        "Énergie cinétique : **Ec = ½ m v²**. Énergie potentielle de pesanteur : **Epp = m g z** (z : altitude par rapport à une référence choisie).",
+        "Énergie mécanique : **Em = Ec + Epp**. Toutes s'expriment en joules (J)."
+      ]
+    },
+    {
+      "titre": "Le travail d'une force",
+      "niveau": "première",
+      "paragraphes": [
+        "Une force constante F dont le point d'application se déplace de A à B effectue un **travail W = F × AB × cos α** (α : angle entre la force et le déplacement).",
+        "Le travail est **moteur** (positif) si la force aide le mouvement, **résistant** (négatif) si elle s'y oppose, nul si elle est perpendiculaire au déplacement. Travail du poids : **W = m g (z_A − z_B)**."
+      ]
+    },
+    {
+      "titre": "Le théorème de l'énergie cinétique",
+      "niveau": "première",
+      "paragraphes": [
+        "La variation d'énergie cinétique d'un objet est égale à la somme des travaux des forces qui s'exercent sur lui : **ΔEc = Ec(B) − Ec(A) = ΣW**.",
+        "C'est l'outil idéal pour trouver une vitesse sans connaître la durée du mouvement."
+      ]
+    },
+    {
+      "titre": "Conservation et frottements",
+      "niveau": "première",
+      "paragraphes": [
+        "Sans frottement, l'**énergie mécanique se conserve** : ce qui est perdu en Epp est gagné en Ec. Un objet lâché sans vitesse d'une hauteur h arrive en bas avec **v = √(2 g h)**, quelle que soit sa masse.",
+        "Avec des frottements, l'énergie mécanique **diminue** : elle est convertie en énergie thermique (les freins chauffent)."
+      ],
+      "aRetenir": "Em constante sans frottement ; Em qui diminue avec frottements."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : g = 9,8 N/kg.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Énergie potentielle",
+        "question": "Calcule l'énergie potentielle de pesanteur d'un objet de 2 kg à 10 m de hauteur (g = 9,8 N/kg).",
+        "reponse": 196,
+        "unite": "J",
+        "indices": [
+          "Epp = m g z."
+        ],
+        "solution": "2 × 9,8 × 10 = 196 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "Énergie cinétique",
+        "question": "Calcule l'énergie cinétique d'un objet de 2 kg se déplaçant à 3 m/s.",
+        "reponse": 9,
+        "unite": "J",
+        "indices": [
+          "Ec = ½ m v²."
+        ],
+        "solution": "0,5 × 2 × 3² = 9 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "Travail",
+        "question": "Une force de 50 N, parallèle au déplacement et dans le même sens, déplace un objet sur 10 m. Quel est son travail ?",
+        "reponse": 500,
+        "unite": "J",
+        "indices": [
+          "W = F × AB × cos 0°, et cos 0° = 1."
+        ],
+        "solution": "50 × 10 × 1 = 500 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "Chute",
+        "question": "Un objet est lâché sans vitesse d'une hauteur de 5 m, sans frottement. À quelle vitesse arrive-t-il au sol (arrondie au dixième) ?",
+        "reponse": 9.9,
+        "tolerance": 0.05,
+        "unite": "m/s",
+        "indices": [
+          "Conservation de l'énergie : v = √(2 g h).",
+          "√(2 × 9,8 × 5) = √98."
+        ],
+        "solution": "√98 ≈ 9,9 m/s."
+      },
+      {
+        "type": "qcm",
+        "titre": "Frottements",
+        "question": "En présence de frottements, l'énergie mécanique d'un objet…",
+        "choix": [
+          "reste constante",
+          "diminue",
+          "augmente"
+        ],
+        "bonne": 1,
+        "explication": "Une partie de l'énergie mécanique est convertie en énergie thermique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le grand huit",
+    "histoire": [
+      "Un wagon de **500 kg** est immobile au sommet d'une montagne russe, à **30 m** de hauteur. On néglige les frottements (g = 9,8 N/kg).",
+      "Il descend jusqu'au point le plus bas (altitude 0)."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Au sommet",
+        "question": "Quelle est son énergie potentielle de pesanteur au sommet ?",
+        "reponse": 147000,
+        "unite": "J",
+        "indices": [
+          "Epp = m g z = 500 × 9,8 × 30."
+        ],
+        "solution": "500 × 9,8 × 30 = 147 000 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "En bas",
+        "question": "Quelle est son énergie cinétique au point le plus bas ?",
+        "reponse": 147000,
+        "unite": "J",
+        "indices": [
+          "Sans frottement, l'énergie mécanique se conserve.",
+          "En bas, Epp = 0."
+        ],
+        "solution": "Toute l'énergie potentielle s'est convertie : Ec = 147 000 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "Sa vitesse",
+        "question": "Quelle est sa vitesse au point le plus bas, arrondie au m/s ?",
+        "reponse": 24,
+        "tolerance": 0.5,
+        "unite": "m/s",
+        "indices": [
+          "v = √(2 g h) = √(2 × 9,8 × 30)."
+        ],
+        "solution": "√588 ≈ 24 m/s, soit environ 87 km/h."
+      }
+    ],
+    "conclusion": "Sensations garanties ! Les ingénieurs des parcs d'attractions utilisent exactement ces calculs (en ajoutant les frottements) pour dessiner les pistes."
+  }
+}
