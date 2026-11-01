@@ -1,0 +1,92 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Le temps d'un verbe situe une action et aide à comprendre comment elle se déroule.",
+  "niveaux": [
+    {
+      "titre": "Situer une action",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **présent** sert à parler de maintenant, d'une habitude ou d'un fait général : « Je lis chaque soir ».",
+        "Le **futur** situe une action après le moment où l'on parle : « Demain, je lirai ».",
+        "Dans un récit au passé, l'**imparfait** présente souvent un décor, une durée ou une habitude ; le **passé composé** raconte souvent une action achevée."
+      ],
+      "exemple": {
+        "titre": "Une habitude et un événement",
+        "etapes": [
+          "« Chaque été, nous visitions le phare » : l'imparfait présente une habitude.",
+          "« Un jour, nous avons trouvé un vieux carnet » : le passé composé raconte un événement achevé."
+        ]
+      }
+    },
+    {
+      "titre": "Former les temps usuels",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "À l'imparfait, on prend souvent la forme de « nous » au présent, on enlève « -ons », puis on ajoute -ais, -ais, -ait, -ions, -iez, -aient. Le verbe être est une exception : « j'étais ».",
+        "Au futur simple, on ajoute les terminaisons -ai, -as, -a, -ons, -ez, -ont à l'infinitif ou à un radical particulier : « je finirai », « j'irai ».",
+        "Le passé composé se forme avec avoir ou être au présent et un participe passé : « j'ai fini », « elles sont venues »."
+      ],
+      "exemple": {
+        "titre": "Conjuguer « choisir »",
+        "etapes": [
+          "Au présent : « je choisis » ; à l'imparfait : « je choisissais ».",
+          "Au passé composé : « j'ai choisi » ; au futur simple : « je choisirai »."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Choisis le temps qui convient à l'indice de temps et au sens de la phrase.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Une habitude passée",
+        "question": "Complète : « Quand j'étais petit, je ___ au parc tous les mercredis. »",
+        "choix": ["jouerai", "jouais", "ai joué"],
+        "bonne": 1,
+        "explication": "« Tous les mercredis » indique une habitude passée : l'imparfait convient."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un événement achevé",
+        "question": "Complète : « Hier, nous ___ un film. »",
+        "choix": ["regardons", "regarderons", "avons regardé"],
+        "bonne": 2,
+        "explication": "« Hier » situe l'action dans le passé ; le passé composé exprime ici l'événement achevé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le futur",
+        "question": "Quelle forme complète « Demain, tu ___ ton amie » avec le verbe « voir » ?",
+        "choix": ["voyais", "verras", "as vu"],
+        "bonne": 1,
+        "explication": "« Demain » annonce une action future ; « tu verras » est au futur simple."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le journal de la journée",
+    "histoire": [
+      "Tu écris quelques lignes pour raconter ta journée et annoncer ce que tu feras demain."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Décrire le décor",
+        "question": "Tu décris le temps qu'il faisait pendant une sortie passée. Quelle phrase convient ?",
+        "choix": ["Le ciel était gris.", "Le ciel sera gris.", "Le ciel a été gris demain."],
+        "bonne": 0,
+        "explication": "L'imparfait « était » convient pour décrire le décor dans un récit au passé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Annoncer le programme",
+        "question": "Tu écris une phrase sur ton programme de demain. Quelle forme convient ?",
+        "choix": ["Demain, je préparerai mon sac.", "Hier, je prépare mon sac.", "Demain, je préparais mon sac."],
+        "bonne": 0,
+        "explication": "Le futur simple « préparerai » situe l'action après le moment présent."
+      }
+    ],
+    "conclusion": "Tu peux maintenant situer tes actions avec un temps cohérent et aider ton lecteur à suivre le récit."
+  }
+}

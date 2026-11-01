@@ -1,0 +1,93 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une phrase complexe assemble plusieurs propositions : apprends à voir comment elles s'articulent.",
+  "niveaux": [
+    {
+      "titre": "Une phrase, plusieurs verbes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une phrase simple contient généralement une seule proposition, organisée autour d'un verbe conjugué. Une phrase complexe en contient plusieurs : repérer les verbes conjugués aide à les compter.",
+        "Chaque proposition apporte une partie du message. Les mots et les signes de ponctuation montrent parfois comment elles sont reliées."
+      ],
+      "exemple": {
+        "titre": "Compter les propositions",
+        "etapes": [
+          "Dans « Le bus arrive », il y a un verbe conjugué : une proposition.",
+          "Dans « Le bus arrive et les élèves montent », il y a deux verbes conjugués : deux propositions."
+        ]
+      }
+    },
+    {
+      "titre": "Trois façons de relier les propositions",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Deux propositions indépendantes peuvent être **juxtaposées** : une virgule, un point-virgule ou deux-points les sépare (« Le bus arrive, les élèves montent »).",
+        "Elles peuvent aussi être **coordonnées** par une conjonction comme mais, ou, et, donc, or, ni, car (« Le bus arrive et les élèves montent »).",
+        "Une **subordonnée** dépend d'une autre proposition et commence souvent par que, quand, parce que, si ou un pronom relatif comme qui (« Je sais que le bus arrive »)."
+      ],
+      "exemple": {
+        "titre": "Distinguer les liens",
+        "etapes": [
+          "« Il pleut, je prends mon parapluie » : les propositions sont juxtaposées.",
+          "« Il pleut donc je prends mon parapluie » : elles sont coordonnées par « donc ».",
+          "« Je prends mon parapluie parce qu'il pleut » : « parce qu'il pleut » est subordonnée."
+        ]
+      },
+      "aRetenir": "Ne compte pas les verbes à l'infinitif comme des verbes conjugués : « Je veux sortir » contient deux verbes, mais une seule proposition."
+    }
+  ],
+  "application": {
+    "intro": "Lis chaque phrase et repère les verbes conjugués et les mots qui relient les propositions.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Phrase simple ou complexe",
+        "question": "Combien de propositions dans « Lina ouvre la fenêtre et son frère regarde la pluie » ?",
+        "choix": ["Une", "Deux", "Trois"],
+        "bonne": 1,
+        "explication": "« ouvre » et « regarde » sont deux verbes conjugués : la phrase contient deux propositions."
+      },
+      {
+        "type": "qcm",
+        "titre": "Juxtaposition",
+        "question": "Dans « Le vent se lève, les volets claquent », comment les propositions sont-elles reliées ?",
+        "choix": ["Par juxtaposition", "Par coordination avec « et »", "Par subordination"],
+        "bonne": 0,
+        "explication": "La virgule juxtapose les deux propositions indépendantes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Subordination",
+        "question": "Quelle partie est subordonnée dans « Je ferme la porte parce que le chien aboie » ?",
+        "choix": ["Je ferme la porte", "parce que le chien aboie", "Aucune partie"],
+        "bonne": 1,
+        "explication": "Introduite par « parce que », cette proposition dépend de « Je ferme la porte »."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un message plus clair",
+    "histoire": [
+      "Tu relis un message avant de l'envoyer. Une phrase courte peut devenir plus précise si tu relies correctement ses idées."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Relier deux idées",
+        "question": "Tu veux montrer que tu sors parce que la pluie s'est arrêtée. Quelle phrase exprime clairement la cause ?",
+        "choix": ["Je sors, la pluie s'est arrêtée.", "Je sors parce que la pluie s'est arrêtée.", "Je sors mais la pluie s'est arrêtée."],
+        "bonne": 1,
+        "explication": "« Parce que » introduit la cause de la sortie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Varier la ponctuation",
+        "question": "Tu veux relier deux propositions indépendantes sans mot de liaison. Quel choix convient ?",
+        "choix": ["Le train arrive, nous montons.", "Le train arrive parce que nous montons.", "Le train arriver nous montons."],
+        "bonne": 0,
+        "explication": "La virgule juxtapose deux propositions indépendantes ; chacune conserve son verbe conjugué."
+      }
+    ],
+    "conclusion": "Tu sais repérer les propositions et choisir un lien qui rend le message plus précis."
+  }
+}
