@@ -134,3 +134,36 @@ test("géographie : les distinctions fondamentales sont explicitement enseignée
   assert.match(await texte("france-territoires"), /Guyane.*continent/i);
   assert.match(await texte("france-territoires"), /statuts.*pas tous identiques/i);
 });
+
+test("géographie : les formulations proches distinguent croissance, fonctions et déplacements", () => {
+  const paires = [
+    [
+      ["Pourquoi l'urbanisation transforme les villes ?", "urbanisation"],
+      ["Pourquoi la métropolisation transforme les villes ?", "metropolisation"]
+    ],
+    [
+      ["Comment l'étalement urbain diffère-t-il de la métropolisation ?", "urbanisation"],
+      ["Pourquoi les fonctions métropolitaines ne se résument-elles pas à l'urbanisation ?", "metropolisation"]
+    ],
+    [
+      ["Comment les mobilités transforment les territoires ?", "mobilites"],
+      ["Comment les migrations transforment les territoires ?", "migrations"]
+    ],
+    [
+      ["Comment les déplacements quotidiens et l'intermodalité se distinguent-ils des migrations ?", "mobilites"],
+      ["Comment une migration interne se distingue-t-elle des mobilités ?", "migrations"]
+    ]
+  ];
+  for (const paire of paires) {
+    assert.notEqual(paire[0][1], paire[1][1]);
+    for (const [question, attendu] of paire) {
+      for (const variante of [
+        question,
+        question.toUpperCase(),
+        question.normalize("NFD").replace(/\p{M}/gu, "")
+      ]) {
+        assert.equal(routerLocal(variante, CATALOGUE.index), attendu, variante);
+      }
+    }
+  }
+});
