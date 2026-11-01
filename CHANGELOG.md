@@ -11,6 +11,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Chat : nouvelle interface plus engageante — écran d'accueil avec suggestions cliquables, relances après chaque réponse (« plus simple », « un exemple », « un défi »), indicateur de saisie animé, bouton « Réessayer » en cas d'erreur, carte repliable pour les pages interactives, zone de saisie flottante et en-tête compact (mobile et mode sombre soignés, animations désactivées si « réduire les animations » est demandé).
+- Chat : progression locale sans compte (`web/progression.js`) — série de jours, XP, niveaux et 7 badges, avec notifications et fenêtre « Mes progrès ». Stockée uniquement dans le navigateur, prête à être synchronisée vers la table `progres` de l'ADR 0010.
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé

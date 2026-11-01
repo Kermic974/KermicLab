@@ -1,6 +1,13 @@
 // Interface de chat Kermiclab : aucun texte en dur, tout vient de i18n/<langue>.json.
+import * as progression from "./progression.js";
+
 const $ = (s) => document.querySelector(s);
-const etat = { config: null, langue: "fr", textes: {}, historique: [] };
+const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null };
+const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+function stockage() {
+  try { return window.localStorage; } catch { return null; }
+}
 
 async function chargerJson(url) {
   const r = await fetch(url, { cache: "no-cache" });
@@ -8,11 +15,17 @@ async function chargerJson(url) {
   return r.json();
 }
 
+/** Texte traduit, avec remplacement des variables {n}, {m}, {nom}… */
+function t(cle, variables = {}) {
+  const brut = etat.textes[cle] ?? cle;
+  return brut.replace(/\{(\w+)\}/g, (tout, nom) => (nom in variables ? String(variables[nom]) : tout));
+}
+
 function lirePreference() {
-  try { return localStorage.getItem("kermiclab:langue"); } catch { return null; }
+  try { return stockage()?.getItem("kermiclab:langue") ?? null; } catch { return null; }
 }
 function ecrirePreference(l) {
-  try { localStorage.setItem("kermiclab:langue", l); } catch { /* stockage indisponible */ }
+  try { stockage()?.setItem("kermiclab:langue", l); } catch { /* stockage indisponible */ }
 }
 
 function langueInitiale(langues) {
@@ -31,37 +44,230 @@ async function appliquerLangue(langue) {
   document.documentElement.lang = langue;
   document.querySelectorAll("[data-i18n]").forEach((n) => { n.textContent = etat.textes[n.dataset.i18n] ?? n.dataset.i18n; });
   document.querySelectorAll("[data-i18n-placeholder]").forEach((n) => { n.placeholder = etat.textes[n.dataset.i18nPlaceholder] ?? ""; });
+  document.querySelectorAll("[data-i18n-title]").forEach((n) => { n.title = etat.textes[n.dataset.i18nTitle] ?? ""; });
   document.title = etat.textes.titre;
+  rafraichirBienvenue();
+  rafraichirPastille();
 }
 
-function ajouterMessage({ auteur, texte, classe, maquette }) {
-  const li = document.createElement("li");
-  if (classe) li.className = classe;
-  const a = document.createElement("span");
-  a.className = "auteur";
-  a.textContent = auteur;
-  li.append(a, document.createTextNode(texte));
-  if (maquette) {
-    li.classList.add("maquette");
-    li.dataset.maquette = maquette.id;
-    const lien = document.createElement("a");
-    lien.href = maquette.url; lien.target = "_blank"; lien.rel = "noopener";
-    lien.textContent = `${etat.textes.ouvrirPage} — ${maquette.titre} (v${maquette.version})`;
-    const cadre = document.createElement("iframe");
-    cadre.src = maquette.url; cadre.title = maquette.titre; cadre.loading = "lazy";
-    // Même origine que le chat : pas d'allow-same-origin, pour que la maquette reste isolée de la page.
-    // Les scores sont conservés en ouvrant la page en plein écran.
-    cadre.setAttribute("sandbox", "allow-scripts");
-    li.append(document.createElement("br"), lien, cadre);
-  }
+/* ---------- Construction du fil ---------- */
+
+function element(balise, { classe, texte, cle, attributs } = {}) {
+  const n = document.createElement(balise);
+  if (classe) n.className = classe;
+  if (cle) { n.dataset.i18n = cle; n.textContent = t(cle); } else if (texte !== undefined) n.textContent = texte;
+  for (const [k, v] of Object.entries(attributs ?? {})) n.setAttribute(k, v);
+  return n;
+}
+
+function defiler(li, bloc = "end") {
+  li.scrollIntoView({ behavior: mouvementReduit() ? "auto" : "smooth", block: bloc });
+}
+
+/** Crée une bulle du fil. `cleAuteur` reste lié à i18n pour suivre un changement de langue. */
+function creerMessage({ moi = false } = {}) {
+  const li = element("li", { classe: `message ${moi ? "moi" : "assistant"}` });
+  if (!moi) li.append(element("span", { classe: "avatar", texte: "K", attributs: { "aria-hidden": "true" } }));
+  const bulle = element("div", { classe: "bulle" });
+  bulle.append(element("span", { classe: "auteur", cle: moi ? "vous" : "assistant" }));
+  li.append(bulle);
   $("#fil").append(li);
-  li.scrollIntoView({ behavior: "smooth", block: "start" });
+  return { li, bulle };
+}
+
+function puce(texte, { cle, classe = "puce" } = {}) {
+  const b = element("button", { classe, cle, texte, attributs: { type: "button" } });
+  b.addEventListener("click", () => { if (!etat.envoiEnCours) envoyer(cle ? t(cle) : texte); });
+  return b;
+}
+
+function ajouterBienvenue() {
+  const { li, bulle } = creerMessage();
+  li.classList.add("bienvenue");
+  bulle.append(
+    element("h2", { classe: "bienvenue-titre", cle: "bienvenueTitre" }),
+    element("p", { classe: "texte", attributs: { id: "texte-bienvenue" } }),
+    element("p", { classe: "puces-titre", cle: "suggestionsTitre" })
+  );
+  const puces = element("div", { classe: "puces" });
+  for (const cle of ["suggestion1", "suggestion2", "suggestion3", "suggestion4"]) puces.append(puce(undefined, { cle }));
+  bulle.append(puces);
+  rafraichirBienvenue();
+}
+
+function rafraichirBienvenue() {
+  const n = $("#texte-bienvenue");
+  if (!n || !etat.progres) return;
+  const serie = progression.serieCourante(etat.progres);
+  n.textContent = etat.progres.questions > 0 && serie > 0 ? t("bienvenueRetour", { n: serie }) : t("bienvenue");
+}
+
+function ajouterQuestion(question) {
+  const { li, bulle } = creerMessage({ moi: true });
+  bulle.append(element("p", { classe: "texte", texte: question }));
+  defiler(li);
+}
+
+function ajouterAttente() {
+  const { li, bulle } = creerMessage();
+  li.classList.add("attente");
+  const points = element("span", { classe: "points", attributs: { "aria-hidden": "true" } });
+  points.append(element("span"), element("span"), element("span"));
+  bulle.append(points, element("span", { classe: "visuellement-cache", cle: "chargement" }));
+  defiler(li);
   return li;
 }
 
-async function envoyer(question) {
-  ajouterMessage({ auteur: etat.textes.vous, texte: question, classe: "moi" });
-  const attente = ajouterMessage({ auteur: etat.textes.assistant, texte: etat.textes.chargement });
+function carteMaquette(maquette) {
+  const carte = element("div", { classe: "carte-maquette" });
+  const entete = element("div", { classe: "carte-entete" });
+  const titre = element("div", { classe: "carte-titre" });
+  titre.append(element("strong", { texte: maquette.titre }), element("span", { classe: "etiquette", texte: t("version", { n: maquette.version }) }));
+  const actions = element("div", { classe: "carte-actions" });
+  const lien = element("a", { classe: "bouton-lien plein-ecran", attributs: { href: maquette.url, target: "_blank", rel: "noopener" } });
+  lien.append(element("span", { cle: "pleinEcran" }));
+  lien.title = t("ouvrirPage");
+  lien.dataset.i18nTitle = "ouvrirPage";
+  const bascule = element("button", { classe: "secondaire petit-bouton", cle: "reduire", attributs: { type: "button", "aria-expanded": "true" } });
+  actions.append(bascule, lien);
+  entete.append(titre, actions);
+
+  const cadre = element("iframe", { attributs: { src: maquette.url, title: maquette.titre, loading: "lazy" } });
+  // Même origine que le chat : pas d'allow-same-origin, pour que la maquette reste isolée de la page.
+  // Les scores sont conservés en ouvrant la page en plein écran.
+  cadre.setAttribute("sandbox", "allow-scripts");
+  bascule.addEventListener("click", () => {
+    const ouvert = bascule.getAttribute("aria-expanded") === "true";
+    bascule.setAttribute("aria-expanded", String(!ouvert));
+    bascule.dataset.i18n = ouvert ? "afficher" : "reduire";
+    bascule.textContent = t(bascule.dataset.i18n);
+    cadre.hidden = ouvert;
+  });
+  carte.append(entete, cadre);
+  return carte;
+}
+
+function ajouterRelances(bulle) {
+  document.querySelectorAll("#fil .relances").forEach((n) => n.remove());
+  const bloc = element("div", { classe: "relances" });
+  bloc.append(element("p", { classe: "puces-titre", cle: "relancesTitre" }));
+  const puces = element("div", { classe: "puces" });
+  for (const cle of ["relanceSimple", "relanceExemple", "relanceDefi"]) puces.append(puce(undefined, { cle }));
+  bloc.append(puces);
+  bulle.append(bloc);
+}
+
+function ajouterReponse({ texte, maquette, relances }) {
+  const { li, bulle } = creerMessage();
+  bulle.append(element("p", { classe: "texte", texte }));
+  if (maquette) {
+    li.classList.add("maquette");
+    li.dataset.maquette = maquette.id;
+    bulle.append(carteMaquette(maquette));
+  }
+  if (relances) ajouterRelances(bulle);
+  defiler(li, maquette ? "start" : "end");
+  return li;
+}
+
+function ajouterErreur(question) {
+  const { li, bulle } = creerMessage();
+  li.classList.add("erreur");
+  bulle.append(element("p", { classe: "texte", cle: "erreurReseau" }));
+  const bouton = element("button", { classe: "secondaire petit-bouton", cle: "reessayer", attributs: { type: "button" } });
+  bouton.addEventListener("click", () => { if (!etat.envoiEnCours) { li.remove(); envoyer(question, { dejaAffichee: true }); } });
+  bulle.append(bouton);
+  defiler(li);
+}
+
+/* ---------- Progression : pastille, notifications, tableau ---------- */
+
+function rafraichirPastille() {
+  if (!etat.progres) return;
+  const serie = progression.serieCourante(etat.progres);
+  const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(etat.progres);
+  $("#pastille-serie").textContent = String(serie);
+  $("#pastille-niveau").textContent = t("niveauCourt", { n: niveau });
+  const barre = $("#pastille-xp");
+  barre.max = xpParNiveau; barre.value = xpDansNiveau;
+  $("#ouvrir-progres").classList.toggle("serie-active", serie > 0);
+  $("#ouvrir-progres").title = `${t("monProgres")} — ${t("niveauLong", { n: niveau })}`;
+}
+
+// Les notifications s'enchaînent une à une : plusieurs succès simultanés restent lisibles.
+const fileToasts = [];
+let toastEnCours = false;
+
+function notifier(texte, icone = "✨") {
+  fileToasts.push({ texte, icone });
+  if (!toastEnCours) afficherToastSuivant();
+}
+
+function afficherToastSuivant() {
+  const suivant = fileToasts.shift();
+  if (!suivant) { toastEnCours = false; return; }
+  toastEnCours = true;
+  const n = element("div", { classe: "toast" });
+  n.append(element("span", { classe: "toast-icone", texte: suivant.icone, attributs: { "aria-hidden": "true" } }), element("span", { texte: suivant.texte }));
+  $("#toasts").append(n);
+  const duree = fileToasts.length ? 1800 : 2800;
+  setTimeout(() => n.classList.add("sortie"), duree);
+  setTimeout(() => { n.remove(); afficherToastSuivant(); }, duree + 400);
+}
+
+function animerGain(xp) {
+  const pastille = $("#ouvrir-progres");
+  const gain = element("span", { classe: "gain", texte: t("xpGagne", { n: xp }), attributs: { "aria-hidden": "true" } });
+  pastille.append(gain);
+  pastille.classList.remove("pulse");
+  void pastille.offsetWidth; // relance l'animation
+  pastille.classList.add("pulse");
+  setTimeout(() => gain.remove(), 1300);
+}
+
+function appliquerResultat(resultat) {
+  etat.progres = resultat.p;
+  progression.sauver(stockage(), etat.progres);
+  rafraichirPastille();
+  if (resultat.xpGagne) animerGain(resultat.xpGagne);
+  if (resultat.nouvelleNotion) notifier(t("nouvelleNotion"), "🧩");
+  for (const b of resultat.nouveaux) notifier(t("badgeDebloque", { nom: t(`badge_${b.id}`) }), b.icone);
+  if (resultat.niveauGagne) notifier(t("niveauGagne", { n: progression.niveau(etat.progres).niveau }), "⭐");
+}
+
+function remplirProgres() {
+  const p = etat.progres;
+  const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
+  $("#progres-niveau-num").textContent = String(niveau);
+  $("#progres-niveau").textContent = t("niveauLong", { n: niveau });
+  $("#progres-xp").max = xpParNiveau; $("#progres-xp").value = xpDansNiveau;
+  $("#progres-xp-texte").textContent = t("xpAvantNiveau", { n: xpParNiveau - xpDansNiveau, m: niveau + 1 });
+  $("#stat-questions").textContent = String(p.questions);
+  $("#stat-notions").textContent = String(p.notions.length);
+  $("#stat-serie").textContent = String(progression.serieCourante(p));
+  $("#stat-serie-max").textContent = t("statSerieMax", { n: p.serieMax });
+  const liste = $("#liste-badges");
+  liste.replaceChildren();
+  for (const b of progression.BADGES) {
+    const obtenu = p.badges.includes(b.id);
+    const li = element("li", { classe: `badge ${obtenu ? "obtenu" : "verrouille"}` });
+    li.append(
+      element("span", { classe: "badge-icone", texte: obtenu ? b.icone : "🔒", attributs: { "aria-hidden": "true" } }),
+      element("strong", { texte: t(`badge_${b.id}`) }),
+      element("span", { classe: "doux petit", texte: obtenu ? t(`badge_${b.id}_desc`) : `${t("badgeVerrouille")} · ${t(`badge_${b.id}_desc`)}` })
+    );
+    liste.append(li);
+  }
+}
+
+/* ---------- Échanges avec l'API ---------- */
+
+async function envoyer(question, { dejaAffichee = false } = {}) {
+  if (etat.envoiEnCours) return;
+  etat.envoiEnCours = true;
+  document.body.classList.add("occupe");
+  if (!dejaAffichee) ajouterQuestion(question);
+  const attente = ajouterAttente();
   const bouton = $("#formulaire button");
   bouton.disabled = true;
   try {
@@ -72,20 +278,34 @@ async function envoyer(question) {
     });
     const donnees = await r.json();
     attente.remove();
-    ajouterMessage({ auteur: etat.textes.assistant, texte: donnees.texte ?? etat.textes.erreurReseau, maquette: donnees.maquette });
-    if (donnees.type === "reponse" || donnees.type === "maquette") {
+    const reussie = donnees.type === "reponse" || donnees.type === "maquette";
+    ajouterReponse({ texte: donnees.texte ?? t("erreurReseau"), maquette: donnees.maquette, relances: reussie });
+    if (reussie) {
       etat.historique.push({ role: "user", content: question }, { role: "assistant", content: donnees.texte });
+      appliquerResultat(progression.enregistrerQuestion(etat.progres));
+      if (donnees.maquette?.id) appliquerResultat(progression.enregistrerNotion(etat.progres, donnees.maquette.id));
     }
   } catch {
     attente.remove();
-    ajouterMessage({ auteur: etat.textes.assistant, texte: etat.textes.erreurReseau });
+    ajouterErreur(question);
   } finally {
     bouton.disabled = false;
+    etat.envoiEnCours = false;
+    document.body.classList.remove("occupe");
   }
+}
+
+/* ---------- Démarrage ---------- */
+
+function brancherDialogue(dialogue, boutonFermer) {
+  boutonFermer.addEventListener("click", () => dialogue.close());
+  // Un clic sur le fond (hors du contenu) ferme la fenêtre.
+  dialogue.addEventListener("click", (e) => { if (e.target === dialogue) dialogue.close(); });
 }
 
 async function demarrer() {
   etat.config = await chargerJson("config.json");
+  etat.progres = progression.charger(stockage());
   const select = $("#langue");
   for (const l of etat.config.langues) {
     const o = document.createElement("option");
@@ -96,27 +316,34 @@ async function demarrer() {
   await appliquerLangue(select.value);
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
-  // Emplacements préparés, masqués tant que l'authentification n'est pas activée.
+  // Emplacements préparés, masqués tant que l'authentification n'est pas activée (ADR 0010, phase C).
   $("#se-connecter").hidden = !etat.config.connexionActive;
   $("#mon-compte").hidden = !etat.config.connexionActive;
 
-  ajouterMessage({ auteur: etat.textes.assistant, texte: etat.textes.bienvenue });
+  ajouterBienvenue();
 
   const champ = $("#question");
+  const ajusterHauteur = () => { champ.style.height = "auto"; champ.style.height = `${Math.min(champ.scrollHeight, 160)}px`; };
+  champ.addEventListener("input", ajusterHauteur);
   $("#formulaire").addEventListener("submit", (e) => {
     e.preventDefault();
     const q = champ.value.trim();
-    if (!q) return;
+    if (!q || etat.envoiEnCours) return;
     champ.value = "";
+    ajusterHauteur();
     envoyer(q);
   });
   champ.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("#formulaire").requestSubmit(); }
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#formulaire").requestSubmit(); }
   });
+
+  const dialogueProgres = $("#progres");
+  $("#ouvrir-progres").addEventListener("click", () => { remplirProgres(); dialogueProgres.showModal(); });
+  brancherDialogue(dialogueProgres, $("#fermer-progres"));
 
   const dialogue = $("#signalement");
   $("#ouvrir-signalement").addEventListener("click", () => { $("#retour-signalement").textContent = ""; dialogue.showModal(); });
-  $("#fermer-signalement").addEventListener("click", () => dialogue.close());
+  brancherDialogue(dialogue, $("#fermer-signalement"));
   $("#formulaire-signalement").addEventListener("submit", async (e) => {
     e.preventDefault();
     const message = $("#texte-signalement").value.trim();
@@ -130,7 +357,7 @@ async function demarrer() {
       $("#retour-signalement").textContent = d.texte ?? "";
       if (d.ok) $("#texte-signalement").value = "";
     } catch {
-      $("#retour-signalement").textContent = etat.textes.erreurReseau;
+      $("#retour-signalement").textContent = t("erreurReseau");
     }
   });
 }
