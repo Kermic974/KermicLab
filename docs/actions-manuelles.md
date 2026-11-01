@@ -2,6 +2,24 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Validation du catalogue d'histoire contemporaine
+
+- **À faire** : relire et valider les huit notions `premiere-guerre-mondiale`, `totalitarismes`,
+  `seconde-guerre-mondiale`, `guerre-froide`, `decolonisation`, `construction-europeenne`,
+  `ve-republique` et `monde-depuis-1990`, notamment les réponses corrigées, les violences historiques,
+  les mémoires et les liens avec l'actualité.
+- **Où** : [PR #69](https://github.com/Kermic974/trigoLab/pull/69), dossiers
+  `catalogue/<id>/` (`fiche.md`, `contenu.json` et `page.html` générée).
+- **Pourquoi** : exactitude historique et adaptation au public mineur ; validation humaine du CODEOWNER
+  requise avant toute fusion.
+- **Comment confirmer** : revue approuvée par le CODEOWNER après lecture des contenus et réalisation
+  des exercices ; CI verte avant fusion.
+- **À faire** : autoriser les workflows de la PR #69, actuellement en attente d'autorisation
+  (`action_required`), puis vérifier leurs résultats. La CI locale passe lint, build, contrôle des pages
+  et les 63 tests unitaires ; la suite e2e attend le Chromium géré par Playwright, absent de cet
+  environnement. Les 56 exercices des nouvelles pages ont été vérifiés avec Chromium système,
+  ainsi que les indices, les défis complets, le rendu mobile et l'absence d'erreurs CSP.
+
 ## Mode zéro budget (actif)
 
 Le MVP est mis en ligne **sans aucune dépense** (décision : `docs/decisions/0006-mode-zero-budget.md`).
