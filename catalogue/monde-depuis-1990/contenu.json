@@ -1,0 +1,123 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi actualité" },
+  "intro": "Analyse les transformations du monde depuis la fin de la guerre froide à partir de repères établis. L'actualité évolue : vérifie toujours la date et la source d'une information.",
+  "niveaux": [
+    {
+      "titre": "Découverte : un monde connecté, mais pas sans conflits",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La dissolution de l'URSS en **1991** met fin à la division du monde dominée par deux superpuissances. Les États-Unis occupent d'abord une place prépondérante. Cela ne signifie pas la fin des guerres ni des inégalités.",
+        "La **mondialisation** intensifie les échanges de marchandises, de capitaux, d'informations et les mobilités. Internet relie de nombreuses personnes, sans donner à toutes le même accès ni les mêmes possibilités.",
+        "Jeu de repères : **1991** pour la dissolution de l'URSS, **2001** pour les attentats du 11 septembre aux États-Unis, **2015** pour l'accord de Paris sur le climat. Ces événements concernent des transformations politiques, sécuritaires et environnementales différentes."
+      ],
+      "aRetenir": "Être davantage connecté ne veut pas dire vivre dans un monde uniforme ou pacifié."
+    },
+    {
+      "titre": "Comprendre : puissances, conflits et acteurs",
+      "niveau": "3e",
+      "paragraphes": [
+        "Dans les années 1990, la puissance américaine est dominante, mais l'ONU, les États et les organisations régionales restent des acteurs. La montée de la Chine et d'autres puissances contribue ensuite à un monde plus **multipolaire**, où plusieurs centres d'influence coexistent sans être égaux.",
+        "Les guerres dans l'ex-Yougoslavie dans les années 1990 montrent que la fin des blocs ne supprime pas les conflits. Au Rwanda, le **génocide des Tutsi en 1994** est organisé par des autorités et des extrémistes hutu ; des Hutu opposés au génocide sont aussi assassinés. Il ne s'agit pas d'une violence spontanée ou inévitable entre populations.",
+        "Les attentats du **11 septembre 2001**, commis par Al-Qaïda, conduisent les États-Unis à lancer une « guerre contre le terrorisme », notamment en Afghanistan. L'invasion de l'Irak en 2003 est une décision distincte de la coalition menée par les États-Unis, sans nouvelle autorisation explicite du Conseil de sécurité. Il faut distinguer les faits, les justifications invoquées et leurs conséquences.",
+        "La Russie annexe la Crimée en **2014**, une annexion largement condamnée internationalement, et la guerre commence dans l'est de l'Ukraine. Le **24 février 2022**, elle lance une invasion à grande échelle de l'Ukraine. La présenter comme le début de toute la guerre effacerait les événements de 2014."
+      ],
+      "exemple": {
+        "titre": "Identifier des acteurs à plusieurs échelles",
+        "etapes": [
+          "Un État prend des décisions diplomatiques et militaires.",
+          "Une organisation internationale organise la coopération selon les pouvoirs que ses membres lui donnent.",
+          "Des entreprises, associations et citoyens influencent aussi les échanges et les débats, sans avoir les mêmes moyens."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : interdépendances et défis communs",
+      "niveau": "terminale / lycée",
+      "paragraphes": [
+        "La crise financière de **2008** montre comment les interdépendances peuvent diffuser les difficultés économiques. Les chaînes de production relient des territoires, mais les bénéfices, les risques et les coûts environnementaux sont inégalement répartis.",
+        "L'**accord de Paris de 2015** organise une coopération face au changement climatique ; il vise à contenir le réchauffement bien en dessous de 2 °C et à poursuivre les efforts vers 1,5 °C par rapport aux niveaux préindustriels. Un accord ne garantit pas à lui seul la réalisation de ses objectifs. La pandémie de **Covid-19**, qualifiée de pandémie par l'OMS en mars 2020, révèle aussi les liens entre santé, économie et inégalités.",
+        "Les migrations ont des causes multiples : travail, études, liens familiaux, conflits ou contraintes environnementales. Réduire toutes les personnes migrantes à une seule cause ou à un danger est trompeur. La sécurité, les droits humains et le développement font l'objet de débats qui exigent des données contextualisées.",
+        "Étudier le présent demande de distinguer un fait vérifié, une interprétation et une prévision. Les chiffres doivent être datés et définis ; une image peut être ancienne ou sortie de son contexte. Les repères ici ne prédisent pas l'issue des conflits et ne remplacent pas une vérification de l'actualité."
+      ],
+      "aRetenir": "Pour chaque information : qui la produit, quand, avec quelles preuves et quelles limites ?"
+    }
+  ],
+  "application": {
+    "intro": "Résous quatre enquêtes sur les transformations, les acteurs et les conséquences depuis 1990.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Transformation",
+        "question": "Quelle conséquence suit la disparition de l'URSS en 1991 ?",
+        "choix": ["La disparition de toutes les guerres", "La fin de la bipolarité États-Unis–URSS", "La fin de tous les échanges internationaux"],
+        "bonne": 1,
+        "indice": "Un ordre international change, mais les conflits ne disparaissent pas.",
+        "explication": "La dissolution de l'URSS met fin à la bipolarité dominée par ces deux superpuissances. Les États-Unis restent d'abord prépondérants, sans garantir la paix partout."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Que signifie un monde plus multipolaire ?",
+        "choix": ["Plusieurs centres de puissance et d'influence coexistent", "Tous les États ont exactement les mêmes moyens", "Une seule puissance décide de tout sans opposition"],
+        "bonne": 0,
+        "indice": "Plusieurs pôles ne sont pas nécessairement de taille égale.",
+        "explication": "La multipolarité désigne plusieurs centres de puissance. Leurs capacités et leurs domaines d'influence restent inégaux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Causes et conséquences",
+        "question": "Que montre la diffusion mondiale de la crise financière de 2008 ?",
+        "choix": ["Que les économies ne sont jamais liées", "Que les échanges empêchent toutes les crises", "Que les interdépendances peuvent transmettre des difficultés"],
+        "bonne": 2,
+        "indice": "Les liens économiques transmettent aussi des risques.",
+        "explication": "Les relations financières et économiques propagent la crise entre territoires. L'interdépendance peut créer des possibilités, mais aussi des vulnérabilités."
+      },
+      {
+        "type": "qcm",
+        "titre": "Coopération",
+        "question": "Quel est un objectif de l'accord de Paris de 2015 ?",
+        "choix": ["Limiter le réchauffement par la coopération internationale", "Mettre fin automatiquement à tous les conflits", "Interdire toute recherche climatique"],
+        "bonne": 0,
+        "indice": "Cet accord concerne le climat.",
+        "explication": "L'accord vise un réchauffement bien en dessous de 2 °C et des efforts vers 1,5 °C. Sa mise en œuvre exige des actions ; sa signature ne garantit pas le résultat."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Construire une brève d'actualité fiable",
+    "histoire": [
+      "Le journal scolaire reçoit une image sans date, une affirmation sur l'Ukraine et un message annonçant que tous les problèmes climatiques sont résolus.",
+      "Tu dois vérifier ces éléments, distinguer faits et prévisions et citer des sources datées, sans collecter d'informations personnelles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Vérifier une image",
+        "question": "Que faire avant de présenter une image comme celle d'un événement récent ?",
+        "choix": ["La publier parce qu'elle est très partagée", "Vérifier son origine, sa date et son contexte avec d'autres sources", "Supposer que toute image est forcément fausse"],
+        "bonne": 1,
+        "indice": "Une image réelle peut illustrer un autre lieu ou une autre date.",
+        "explication": "La provenance, la date et le contexte doivent être vérifiés. Plusieurs sources fiables aident à éviter une attribution trompeuse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Restituer la chronologie",
+        "question": "Quelle formulation est précise sur la guerre en Ukraine ?",
+        "choix": ["Elle n'a aucun antécédent avant 2022", "Elle commence avec l'accord de Paris", "Le conflit commence en 2014 ; la Russie lance une invasion à grande échelle en février 2022"],
+        "bonne": 2,
+        "indice": "Distingue le début du conflit d'une nouvelle phase.",
+        "explication": "L'annexion de la Crimée et la guerre dans l'est de l'Ukraine datent de 2014. L'invasion russe à grande échelle commence le 24 février 2022."
+      },
+      {
+        "type": "qcm",
+        "titre": "Distinguer objectif et résultat",
+        "question": "Comment vérifier « L'accord de Paris a déjà résolu le changement climatique » ?",
+        "choix": ["Distinguer les objectifs de l'accord des résultats mesurés dans des études datées", "Confondre une promesse et un résultat", "Ne consulter que le titre du message"],
+        "bonne": 0,
+        "indice": "Un engagement doit être comparé à sa mise en œuvre.",
+        "explication": "Un accord fixe des objectifs et un cadre de coopération. Les résultats s'évaluent avec des mesures et des travaux scientifiques actualisés."
+      }
+    ],
+    "conclusion": "Mission accomplie : ta brève distingue faits établis, contexte et objectifs, sans inventer l'issue d'une actualité en cours."
+  }
+}

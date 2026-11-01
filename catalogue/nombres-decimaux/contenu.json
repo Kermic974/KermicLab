@@ -11,24 +11,53 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Un croissant coûte **1,35 €** : 1 euro et 35 centimes. La **virgule** sépare la partie entière (les euros) des parties plus petites qu'une unité (les centimes).",
-        "Les nombres à virgule servent dès qu'on mesure : 1,52 m, 37,8 °C, 0,5 L… Ce sont les **nombres décimaux**."
-      ]
+        "Les nombres à virgule servent dès qu'on mesure : 1,52 m, 37,8 °C, 0,5 L… Ce sont les **nombres décimaux**. Ton chrono au sprint (12,4 s), ton poids sur la balance ou le prix de l'essence en sont d'autres exemples.",
+        "Une pièce de 10 centimes, c'est 0,10 € : un dixième d'euro. Une pièce de 1 centime, c'est 0,01 € : un centième d'euro."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire un prix",
+        "etapes": [
+          "1,35 € se lit « un euro trente-cinq ».",
+          "Cela fait 1 euro et 35 centimes.",
+          "En centimes : 1,35 × 100 = 135 centimes."
+        ]
+      },
+      "aRetenir": "La virgule sépare les unités entières de ce qui est plus petit qu'une unité."
     },
     {
       "titre": "La valeur de chaque chiffre",
       "niveau": "6e",
       "paragraphes": [
         "Après la virgule viennent les **dixièmes**, puis les **centièmes**, puis les **millièmes** : dans 4,375, le 3 vaut 3 dixièmes, le 7 vaut 7 centièmes et le 5 vaut 5 millièmes.",
-        "4,375 = 4 + 3/10 + 7/100 + 5/1 000 = 4 375/1 000. On peut aussi écrire 0,7 = 7/10 : c'est une **fraction décimale**."
-      ]
+        "4,375 = 4 + 3/10 + 7/100 + 5/1 000 = 4 375/1 000. On peut aussi écrire 0,7 = 7/10 : c'est une **fraction décimale**.",
+        "Comme pour l'argent : dans 4,375 €, le 3 est le nombre de pièces de 10 centimes, le 7 celui des pièces de 1 centime. Chaque rang vaut dix fois moins que celui de gauche."
+      ],
+      "exemple": {
+        "titre": "Exemple : décomposer 6,382",
+        "etapes": [
+          "6 unités.",
+          "3 dixièmes = 3/10 ; 8 centièmes = 8/100 ; 2 millièmes = 2/1 000.",
+          "6,382 = 6 + 3/10 + 8/100 + 2/1 000 = 6 382/1 000."
+        ]
+      },
+      "aRetenir": "Chaque rang à droite de la virgule vaut 10 fois moins que le précédent : dixièmes, centièmes, millièmes."
     },
     {
       "titre": "Comparer",
       "niveau": "6e",
       "paragraphes": [
         "On compare d'abord les parties entières, puis les chiffres des dixièmes, puis des centièmes…",
-        "Piège : 2,8 est plus grand que 2,75, même s'il a moins de chiffres ! En effet 2,8 = 2,80, et 80 centièmes est plus que 75 centièmes. Les zéros à la fin de la partie décimale ne changent rien : 2,80 = 2,8."
+        "Piège : 2,8 est plus grand que 2,75, même s'il a moins de chiffres ! En effet 2,8 = 2,80, et 80 centièmes est plus que 75 centièmes. Les zéros à la fin de la partie décimale ne changent rien : 2,80 = 2,8.",
+        "Pense aux chronos : un coureur qui fait 9,8 s est plus rapide qu'un autre qui fait 9,75 s ? Non : 9,80 est plus grand que 9,75, donc 9,75 s est le meilleur temps."
       ],
+      "exemple": {
+        "titre": "Exemple : ranger 0,5 ; 0,45 ; 0,509",
+        "etapes": [
+          "On écrit tout avec 3 chiffres après la virgule : 0,500 ; 0,450 ; 0,509.",
+          "On compare 500, 450 et 509 (millièmes).",
+          "Du plus petit au plus grand : 0,45 < 0,5 < 0,509."
+        ]
+      },
       "aRetenir": "Pour comparer, écris les deux nombres avec le même nombre de chiffres après la virgule."
     },
     {
@@ -36,15 +65,26 @@
       "niveau": "6e / 5e",
       "paragraphes": [
         "Pour **arrondir au dixième**, on regarde le chiffre des centièmes : s'il vaut 0, 1, 2, 3 ou 4, on garde le dixième ; s'il vaut 5, 6, 7, 8 ou 9, on ajoute 1 au dixième.",
-        "3,44 ≈ 3,4 et 3,47 ≈ 3,5. La **troncature** coupe simplement : la troncature au dixième de 3,47 est 3,4."
-      ]
+        "3,44 ≈ 3,4 et 3,47 ≈ 3,5. La **troncature** coupe simplement : la troncature au dixième de 3,47 est 3,4.",
+        "On arrondit sans cesse dans la vie : « environ 5 € » pour 4,89 €, « 1,5 m » pour 1,52 m. Pour estimer le total des courses avant la caisse, on arrondit chaque prix à l'euro."
+      ],
+      "exemple": {
+        "titre": "Exemple : arrondir 7,962",
+        "etapes": [
+          "Au dixième : le chiffre des centièmes est 6, donc 7,962 ≈ 8,0.",
+          "Au centième : le chiffre des millièmes est 2, donc 7,962 ≈ 7,96.",
+          "À l'unité : le chiffre des dixièmes est 9, donc 7,962 ≈ 8."
+        ]
+      },
+      "aRetenir": "On regarde le chiffre juste après le rang demandé : 0 à 4, on garde ; 5 à 9, on ajoute 1."
     },
     {
       "titre": "Calculer avec des décimaux",
       "niveau": "6e / 5e",
       "paragraphes": [
         "**Additionner et soustraire** : on aligne les virgules (et on complète par des zéros si besoin).",
-        "**Multiplier par 10, 100, 1 000** décale la virgule de 1, 2, 3 rangs vers la droite ; **multiplier par 0,1** ou diviser par 10 la décale vers la gauche."
+        "**Multiplier par 10, 100, 1 000** décale la virgule de 1, 2, 3 rangs vers la droite ; **multiplier par 0,1** ou diviser par 10 la décale vers la gauche.",
+        "Convertir des mètres en centimètres, c'est multiplier par 100 : 1,52 m = 152 cm. Et en caisse, tu additionnes des prix en alignant les centimes sous les centimes."
       ],
       "exemple": {
         "titre": "Exemple : 2,5 × 1,2",
@@ -53,15 +93,26 @@
           "Il y a 1 chiffre après la virgule dans 2,5 et 1 dans 1,2 : 2 en tout.",
           "On place la virgule : 3,00, c'est-à-dire 3."
         ]
-      }
+      },
+      "aRetenir": "Addition et soustraction : virgules alignées. Multiplication : on compte les chiffres après la virgule."
     },
     {
       "titre": "Plus loin : décimaux et rationnels",
       "niveau": "seconde",
       "paragraphes": [
         "Un nombre est **décimal** s'il peut s'écrire a/10ⁿ (a entier) : il a un nombre fini de chiffres après la virgule. L'ensemble des décimaux se note 𝔻.",
-        "1/3 = 0,333… n'est pas décimal (une infinité de chiffres) : c'est un rationnel non décimal. Tous les décimaux sont rationnels, mais pas l'inverse."
-      ]
+        "1/3 = 0,333… n'est pas décimal (une infinité de chiffres) : c'est un rationnel non décimal. Tous les décimaux sont rationnels, mais pas l'inverse.",
+        "C'est pour cela qu'on ne peut pas payer exactement un tiers d'euro : 0,33 € n'est qu'une approximation, alors qu'un quart d'euro, 0,25 €, est exact."
+      ],
+      "exemple": {
+        "titre": "Exemple : 3/8 est-il décimal ?",
+        "etapes": [
+          "3/8 = 3 × 125 / (8 × 125) = 375/1 000.",
+          "Donc 3/8 = 0,375 : il a 3 chiffres après la virgule.",
+          "3/8 est un nombre décimal."
+        ]
+      },
+      "aRetenir": "Décimal : fraction de dénominateur 10, 100, 1 000… Les fractions comme 1/3 ou 1/7 ne le sont pas."
     }
   ],
   "application": {
@@ -133,14 +184,59 @@
           "Il faut 2 chiffres après la virgule en tout."
         ],
         "solution": "25 × 12 = 300, donc 2,5 × 1,2 = 3,00 = 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Écritures égales",
+        "question": "Quelle écriture est égale à 3,5 ?",
+        "choix": [
+          "3,50",
+          "3,05",
+          "35,0"
+        ],
+        "bonne": 0,
+        "explication": "Ajouter un zéro à la fin de la partie décimale ne change pas la valeur : 3,5 = 3,50. En revanche 3,05 est plus petit et 35,0 est dix fois plus grand.",
+        "indice": "Un zéro à la fin de la partie décimale change-t-il la valeur ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Soustraction",
+        "question": "Calcule 25,4 − 8,75.",
+        "reponse": 16.65,
+        "indices": [
+          "Aligne les virgules : 25,40 − 8,75."
+        ],
+        "solution": "25,40 − 8,75 = 16,65."
+      },
+      {
+        "type": "nombre",
+        "titre": "Arrondir au centième",
+        "question": "Arrondis 7,962 au centième.",
+        "reponse": 7.96,
+        "indices": [
+          "Regarde le chiffre des millièmes : 2."
+        ],
+        "solution": "Le chiffre des millièmes (2) est inférieur à 5 : 7,962 ≈ 7,96."
+      },
+      {
+        "type": "nombre",
+        "titre": "Produit de deux décimaux",
+        "question": "Calcule 0,6 × 0,3.",
+        "reponse": 0.18,
+        "indices": [
+          "Calcule 6 × 3, puis place la virgule.",
+          "Il y a 1 chiffre après la virgule dans chaque facteur : 2 en tout."
+        ],
+        "solution": "6 × 3 = 18, avec 2 chiffres après la virgule : 0,6 × 0,3 = 0,18."
       }
     ]
   },
   "situation": {
     "titre": "Les courses",
     "histoire": [
-      "Tu fais les courses pour le goûter avec un billet de **10 €**.",
-      "Dans ton panier : une baguette à **1,35 €**, une bouteille de lait à **0,89 €** et un fromage à **3,20 €**."
+      "Tu fais les courses pour le goûter avec un billet de **10 €**. Tes amis viennent à 16 h et tu veux tout acheter sans dépasser ton budget.",
+      "Dans ton panier : une baguette à **1,35 €**, une bouteille de lait à **0,89 €** et un fromage à **3,20 €**.",
+      "À la caisse, tu dois être sûr de tes calculs : additionner, rendre la monnaie, et même estimer d'avance avec des arrondis."
     ],
     "etapes": [
       {
@@ -186,8 +282,20 @@
           "Regarde le chiffre des dixièmes : 4."
         ],
         "solution": "Le chiffre des dixièmes (4) est inférieur à 5 : 5,44 € ≈ 5 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Pour la fête",
+        "question": "Pour une grande fête, tu prends 2,5 fois plus de fromage : au lieu de 3,20 €, quel sera son prix ?",
+        "reponse": 8,
+        "unite": "€",
+        "indices": [
+          "Calcule 3,20 × 2,5.",
+          "32 × 25 = 800, puis place la virgule (3 chiffres après la virgule en tout)."
+        ],
+        "solution": "3,20 × 2,5 = 8,000 = 8 €."
       }
     ],
-    "conclusion": "Bravo ! Additionner, soustraire, multiplier et arrondir des décimaux, c'est exactement ce qu'on fait à chaque passage en caisse."
+    "conclusion": "Bravo ! Additionner, soustraire, multiplier et arrondir des décimaux, c'est exactement ce qu'on fait à chaque passage en caisse. Désormais, tu sais lire un prix, vérifier un ticket et estimer ta note avant même d'arriver à la caisse."
   }
 }

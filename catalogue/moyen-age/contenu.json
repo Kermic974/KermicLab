@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Pars des traces d'un village et d'une ville pour découvrir mille ans de transformations, loin des clichés.",
+  "niveaux": [
+    {
+      "titre": "Intuition : bien plus que des châteaux",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **Moyen Âge** est une période d'environ mille ans. Pour l'Europe occidentale, on utilise souvent **476** et **1492** comme bornes ; **1453** est un autre repère de fin possible. Ce découpage ne convient pas de la même manière à toutes les régions du monde.",
+        "La plupart des habitants de l'Occident médiéval vivent à la campagne et cultivent la terre. Mais il existe aussi des villes, des artisans, des marchands, des écoles et des universités.",
+        "Joue au détective : un moulin raconte le travail, un marché les échanges, une cathédrale la religion. Un château ne suffit donc pas à expliquer toute la vie médiévale."
+      ],
+      "exemple": { "titre": "Une journée imaginée", "etapes": ["Un paysan fait moudre son grain au moulin.", "Un artisan vend du tissu au marché.", "Ces activités sont liées : la ville a besoin de nourriture et la campagne utilise des produits fabriqués."] },
+      "aRetenir": "Le Moyen Âge n'est ni immobile ni uniquement européen. Ne confonds pas une image de chevalier avec la vie de tous les habitants."
+    },
+    {
+      "titre": "Collège : organiser les terres et les pouvoirs",
+      "niveau": "5e",
+      "paragraphes": [
+        "**Charlemagne**, roi des Francs, est couronné empereur à Rome le **25 décembre 800**. Son empire ne dure pas sous la même forme : le traité de Verdun le partage entre trois de ses petits-fils en **843**.",
+        "Dans une **seigneurie**, le seigneur exerce des droits sur un territoire. Les paysans doivent des redevances et parfois des corvées. Certains sont serfs, d'autres libres ; tous ne vivent pas dans les mêmes conditions. La **féodalité** désigne notamment les liens de fidélité entre seigneurs et vassaux.",
+        "L'Église tient une place majeure dans l'Occident chrétien : calendrier, croyances, enseignement, assistance et possessions de terres. À partir du XIe siècle, la croissance des échanges favorise les villes et les foires ; les rois renforcent progressivement leur pouvoir."
+      ],
+      "exemple": { "titre": "Lire une obligation", "etapes": ["Un paysan doit une part de sa récolte au seigneur : c'est une redevance.", "Il doit aussi certains jours de travail : c'est une corvée.", "Ces obligations ne sont pas un salaire reçu par le paysan."] },
+      "aRetenir": "Repères : couronnement en 800, partage en 843. Distingue les obligations des paysans et les liens entre seigneurs."
+    },
+    {
+      "titre": "Lycée : une Méditerranée de contacts",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Autour de la Méditerranée coexistent l'Occident chrétien, l'**Empire byzantin**, héritier de Rome en Orient, et des **pouvoirs musulmans** divers. L'islam apparaît au VIIe siècle ; l'Hégire, départ de Muhammad de La Mecque vers Médine en **622**, est un repère de son histoire.",
+        "Ces mondes connaissent des conflits, comme les croisades, mais aussi du commerce et des circulations de savoirs. Des textes grecs sont traduits et étudiés en arabe, puis certains passent en latin. Des savants produisent aussi de nouvelles connaissances.",
+        "Le XIVe siècle connaît des crises : famines, guerres et **peste noire**, qui atteint une grande partie de l'Europe entre **1347 et 1352**. Ces chocs ne rendent pas toute la période identique : compare lieux, dates et sources."
+      ],
+      "exemple": { "titre": "Une carte plutôt qu'un cliché", "etapes": ["Trace une route commerciale imaginaire entre deux ports méditerranéens.", "Elle peut transporter tissus, épices et idées malgré des conflits.", "Une carte des échanges et une carte des guerres donnent donc deux éclairages complémentaires."] },
+      "aRetenir": "Échanges et conflits peuvent coexister. Le terme « âge sombre » masque des transformations et des savoirs bien réels."
+    }
+  ],
+  "application": {
+    "intro": "Vérifie les repères et cherche les liens entre travail, échanges et pouvoirs.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "En quelle année Charlemagne est-il couronné empereur ?", "choix": ["1789", "800", "1492"], "bonne": 1, "explication": "Charlemagne est couronné à Rome le 25 décembre 800." },
+      { "type": "qcm", "titre": "Personnage", "question": "Qui est Charlemagne ?", "choix": ["Un imprimeur de la Renaissance", "Un empereur romain du Ier siècle", "Un roi des Francs devenu empereur"], "bonne": 2, "explication": "Charlemagne règne sur les Francs avant son couronnement impérial en 800." },
+      { "type": "qcm", "titre": "Vie quotidienne", "question": "Qu'est-ce qu'une corvée dans une seigneurie ?", "choix": ["Un travail dû au seigneur", "Un vote au Parlement", "Une pièce de monnaie romaine"], "bonne": 0, "explication": "La corvée est une obligation de travail, distincte des redevances versées en produits ou en argent." },
+      { "type": "qcm", "titre": "Cause et conséquence", "question": "Quel changement favorise la croissance des villes à partir du XIe siècle ?", "choix": ["La fin de tout commerce", "Le développement des échanges et des foires", "L'arrivée des trains"], "bonne": 1, "explication": "Les échanges favorisent les activités marchandes et artisanales des villes ; les trains apparaissent bien plus tard." },
+      { "type": "qcm", "titre": "Nuance", "question": "Quelle affirmation sur la Méditerranée médiévale est exacte ?", "choix": ["Aucun savoir ne circule", "Tous les habitants ont une seule religion", "Des échanges existent en même temps que des conflits"], "bonne": 2, "explication": "Les guerres n'empêchent pas toutes les circulations de marchandises, de textes et de connaissances." }
+    ]
+  },
+  "situation": {
+    "titre": "Les traces d'un quartier imaginaire",
+    "histoire": ["Dessine un plan avec une rue du Moulin, une place du Marché et une église. Ces noms sont des indices à examiner, pas des preuves automatiques de l'âge des bâtiments.", "Ton défi : proposer des hypothèses, puis choisir ce qui permettrait de les vérifier, sans rechercher l'adresse de quelqu'un."],
+    "etapes": [
+      { "type": "qcm", "titre": "Une fonction", "question": "À quoi peut servir un moulin médiéval ?", "choix": ["À faire circuler des trains", "À élire un empereur", "À moudre le grain"], "bonne": 2, "explication": "Le moulin transforme notamment le grain en farine : il relie techniques et alimentation." },
+      { "type": "qcm", "titre": "Un lien", "question": "Quel lien plausible existe entre campagne et marché urbain ?", "choix": ["Des récoltes sont vendues et des produits artisanaux achetés", "Les villes n'ont jamais besoin de nourriture", "Tous les paysans deviennent des chevaliers"], "bonne": 0, "explication": "Campagnes et villes échangent des produits ; leurs activités sont complémentaires." },
+      { "type": "qcm", "titre": "Vérifier une hypothèse", "question": "Le nom « rue du Moulin » prouve-t-il qu'un moulin médiéval subsiste ?", "choix": ["Oui, le nom suffit toujours", "Non, il faut comparer plans anciens, archives et traces matérielles", "Non, aucun moulin n'a existé au Moyen Âge"], "bonne": 1, "explication": "Un nom peut conserver une mémoire, mais la datation exige d'autres sources." }
+    ],
+    "conclusion": "Tu as distingué indice et preuve. Pour mémoriser 800, dessine une couronne sur ta frise et raconte pourquoi elle y figure."
+  }
+}

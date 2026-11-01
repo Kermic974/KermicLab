@@ -2,6 +2,24 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Validation du catalogue d'histoire contemporaine
+
+- **À faire** : relire et valider les huit notions `premiere-guerre-mondiale`, `totalitarismes`,
+  `seconde-guerre-mondiale`, `guerre-froide`, `decolonisation`, `construction-europeenne`,
+  `ve-republique` et `monde-depuis-1990`, notamment les réponses corrigées, les violences historiques,
+  les mémoires et les liens avec l'actualité.
+- **Où** : [PR #69](https://github.com/Kermic974/trigoLab/pull/69), dossiers
+  `catalogue/<id>/` (`fiche.md`, `contenu.json` et `page.html` générée).
+- **Pourquoi** : exactitude historique et adaptation au public mineur ; validation humaine du CODEOWNER
+  requise avant toute fusion.
+- **Comment confirmer** : revue approuvée par le CODEOWNER après lecture des contenus et réalisation
+  des exercices ; CI verte avant fusion.
+- **À faire** : autoriser les workflows de la PR #69, actuellement en attente d'autorisation
+  (`action_required`), puis vérifier leurs résultats. La CI locale passe lint, build, contrôle des pages
+  et les 63 tests unitaires ; la suite e2e attend le Chromium géré par Playwright, absent de cet
+  environnement. Les 56 exercices des nouvelles pages ont été vérifiés avec Chromium système,
+  ainsi que les indices, les défis complets, le rendu mobile et l'absence d'erreurs CSP.
+
 ## Mode zéro budget (actif)
 
 Le MVP est mis en ligne **sans aucune dépense** (décision : `docs/decisions/0006-mode-zero-budget.md`).
@@ -45,6 +63,9 @@ acheter le domaine quand le budget le permet (action 15).
 | 14 | Valider juridiquement le consentement parental (< 15 ans) avant « Mon compte » | Conseil juridique | Majorité numérique en France | ADR signé | à faire (phase 3) |
 | 15 | Nom de domaine relié au projet Pages | Cloudflare → Domains | Lien public lisible | `https://www.kermiclab.online` sert le chat | fait : `kermiclab.online` acheté (2026-10-31), `www` et domaine nu reliés à Pages ; `kermiclab.ai` abandonné |
 | 16 | Valider chaque pull request de maquette | GitHub | Contrôle humain | Revue CODEOWNER | permanent |
+| 22 | Autoriser la CI, relire et valider les huit notions de philosophie « existence humaine et culture » | [PR #66](https://github.com/Kermic974/trigoLab/pull/66) ; [catalogue](../catalogue/) | Workflows en attente d'autorisation (`action_required`) ; public mineur : exactitude pédagogique, neutralité religieuse et absence de diagnostic sur l'inconscient | Workflows autorisés, CI verte et revue CODEOWNER approuvée, notamment des réponses aux QCM et des présentations des auteurs | à faire |
+| 23 | Relire et valider les huit notions d'histoire (Antiquité, Moyen Âge, Renaissance, Temps modernes, Lumières, Révolution française, Napoléon, révolution industrielle) | [PR #68](https://github.com/Kermic974/trigoLab/pull/68) ; `catalogue/<id>/fiche.md` et `contenu.json` | Public mineur : vérifier repères, causes-conséquences, corrections QCM et nuances sur les droits et la colonisation | Revue CODEOWNER approuvée et CI verte avant fusion | à faire |
+| 24 | Autoriser les workflows de la PR des notions d'histoire | [Actions de la PR #68](https://github.com/Kermic974/trigoLab/pull/68/checks) | Les workflows indiquent `action_required`, sans job exécuté ; les e2e locaux sont bloqués par le headless shell Playwright absent, malgré la vérification hors ligne des huit pages dans Chromium système | Workflows autorisés puis CI verte | à faire |
 | 18 | Activer R2 et créer le bucket `kermiclab-bucket` | Cloudflare → R2 | Stockage des données (ADR 0007) | `wrangler r2 bucket list` montre le bucket | fait |
 | 19 | Déconnecter la build Git Cloudflare du Worker `trigolab-dev`, puis supprimer ce Worker | Cloudflare → Workers & Pages → trigolab-dev → Settings → Build → Disconnect ; puis Settings → Delete | Le déploiement passe uniquement par GitHub Actions (Worker `kermiclab-api`) ; deux chemins de déploiement se contredisent | `trigolab-dev` n'apparaît plus dans Workers & Pages | fait (les Workers `trigolab` et `trigolab-dev` n'existent plus au 2026-10-31) |
 | 20 | Retirer Cloudflare Access du domaine nu `kermiclab.online` | Cloudflare → Zero Trust → Access → Applications | Site public pour les élèves | `https://kermiclab.online` répond sans page de connexion | fait (2026-10-31, application « trigolab-poc » supprimée) |
@@ -53,3 +74,10 @@ acheter le domaine quand le budget le permet (action 15).
 | 22 | Autoriser les workflows de la PR EMC et relire les douze notions avant fusion | [PR #74](https://github.com/Kermic974/trigoLab/pull/74) | GitHub attend une autorisation pour exécuter les workflows ; validation pédagogique du CODEOWNER requise pour le public mineur | Workflows CI/CD et sécurité verts, puis revue CODEOWNER approuvée | à faire |
 
 Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, vérifier que `CLOUDFLARE_API_TOKEN` dispose bien de la permission `D1: Edit` sur le compte correspondant à `CLOUDFLARE_ACCOUNT_ID`, puis relancer le workflow.
+
+## Catalogue de philosophie
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire les neuf notions (devoir, État, justice, liberté, langage, raison, science, technique, vérité), leurs auteurs et leurs corrigés | [PR #67](https://github.com/Kermic974/trigoLab/pull/67) ; `catalogue/<id>/contenu.json` et `page.html` | Exactitude philosophique, accessibilité aux mineurs et contrôle humain des maquettes (action 16) | Revue CODEOWNER approuvée et CI verte avant fusion | à faire |
+| Autoriser les workflows de la PR de philosophie | [Actions de la PR #67](https://github.com/Kermic974/trigoLab/pull/67/checks) | L'exécution initiale est en statut `action_required`. Localement, lint, build, contrôle des pages et 64 tests unitaires passent ; l'e2e est bloqué par Chromium absent du cache Playwright, mais les 54 QCM et le rendu mobile des neuf pages ont été vérifiés via le navigateur disponible | Autoriser l'exécution GitHub Actions et vérifier que tous les contrôles passent, dont les tests e2e avec Chromium installé par la CI | à faire |

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Moyens et fins", "mise-en-situation": "Arrosage réfléchi" },
+  "intro": "Un outil plus puissant est-il toujours un progrès ? Explore les savoir-faire, leurs effets et les choix qu'ils demandent.",
+  "niveaux": [
+    {
+      "titre": "Intuition : savoir faire quelque chose",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "La **technique** rassemble des procédés et des savoir-faire pour produire un résultat. Elle comprend des gestes, des méthodes et des outils : savoir nouer un lacet est déjà une technique.",
+        "L'**efficacité** concerne la réussite du moyen par rapport à une fin. Elle ne dit pas, à elle seule, si cette fin est bonne. Un procédé efficace pour gaspiller une ressource n'est pas pour autant souhaitable."
+      ],
+      "exemple": {
+        "titre": "Le défi du nœud",
+        "etapes": [
+          "Posséder un lacet ne suffit pas à savoir faire un nœud.",
+          "Un geste appris, essayé et corrigé transforme l'objet en moyen utile.",
+          "La technique n'est donc pas seulement une collection de machines."
+        ]
+      },
+      "aRetenir": "Distingue le moyen, le savoir-faire, le résultat recherché et la valeur de ce résultat."
+    },
+    {
+      "titre": "Distinguer : technique, science et action",
+      "niveau": "lycée — avec Aristote",
+      "paragraphes": [
+        "Dans l'*Éthique à Nicomaque*, **Aristote** distingue la **production** (*poiesis*), orientée vers une œuvre ou un résultat, et l'**action** (*praxis*), dont la fin réside dans l'agir lui-même. La **technè** est un savoir-faire raisonné relatif à la production ; elle ne se confond pas avec la prudence qui guide l'action.",
+        "La science vise principalement à connaître et expliquer ; la technique vise à faire ou produire. Elles interagissent : des instruments rendent une recherche possible, et des connaissances permettent de nouveaux procédés. Des techniques existaient cependant bien avant les sciences modernes.",
+        "Repère **moyen/fin** : choisir le moyen le plus efficace ne dispense pas de discuter le but. Même à but identique, il faut comparer les effets, les ressources utilisées et les contraintes imposées aux personnes."
+      ],
+      "exemple": {
+        "titre": "Deux questions sur un pont",
+        "etapes": [
+          "Comment construire un pont solide ? La question mobilise des savoir-faire et des connaissances.",
+          "Où et pourquoi le construire ? La question demande aussi des choix collectifs.",
+          "La faisabilité ne décide pas seule de l'opportunité."
+        ]
+      },
+      "aRetenir": "Ce que nous pouvons produire ne détermine pas automatiquement ce que nous devons choisir."
+    },
+    {
+      "titre": "Formaliser : puissance et responsabilité",
+      "niveau": "terminale — avec Heidegger et Jonas",
+      "paragraphes": [
+        "Dans *La Question de la technique*, **Heidegger** ne réduit pas la technique moderne à des outils neutres. Il interroge une manière de dévoiler le monde comme un stock de ressources disponibles : c'est l'**arraisonnement**. Ce diagnostic porte sur notre rapport au réel, pas seulement sur une machine particulière.",
+        "Dans *Le Principe responsabilité*, **Hans Jonas** souligne que la puissance technique peut affecter durablement les humains et le vivant, y compris les générations futures. Il demande de prendre au sérieux les conséquences lointaines et les risques de dommages irréversibles.",
+        "La responsabilité ne signifie ni refuser toute innovation ni croire que toute nouveauté est un progrès. Une décision argumentée examine bénéfices, risques, alternatives et répartition des effets. L'incertitude appelle une prudence informée, pas une certitude inventée."
+      ],
+      "exemple": {
+        "titre": "Le jeu des effets invisibles",
+        "etapes": [
+          "Un appareil fait gagner du temps aujourd'hui.",
+          "Sa fabrication consomme des ressources et son remplacement produit des déchets.",
+          "Compare l'ensemble des effets, et pas seulement l'avantage immédiatement visible."
+        ]
+      },
+      "aRetenir": "Évaluer une technique demande d'examiner les fins et les effets sur autrui, l'environnement et l'avenir."
+    }
+  ],
+  "application": {
+    "intro": "Choisis les distinctions correctement formulées. Une décision réelle peut admettre plusieurs solutions justifiées.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "La technique comprend…",
+        "choix": ["uniquement les appareils électroniques.", "des procédés et des savoir-faire, avec ou sans machine.", "seulement des théories sans aucun geste."],
+        "bonne": 1,
+        "indice": "Nouer, tisser ou cuisiner mobilisent aussi des techniques.",
+        "explication": "La technique ne se réduit pas à la technologie récente : les méthodes et les gestes appris en font partie."
+      },
+      {
+        "type": "qcm",
+        "question": "Un moyen très efficace rend-il nécessairement sa fin souhaitable ?",
+        "choix": ["Oui : réussir suffit à être juste.", "Oui : aucune fin ne doit être discutée.", "Non : efficacité et valeur de la fin sont distinctes."],
+        "bonne": 2,
+        "indice": "Demande à quoi sert le moyen.",
+        "explication": "L'efficacité est relative à un but. La justification du but et des effets exige un autre examen."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle préoccupation est centrale chez Jonas ?",
+        "choix": ["Les effets durables de notre puissance sur le vivant et les générations futures.", "Le seul plaisir de posséder l'appareil le plus récent.", "L'interdiction de tout outil, sans exception."],
+        "bonne": 0,
+        "indice": "Élargis l'horizon au-delà de l'utilisateur présent.",
+        "explication": "Jonas demande une responsabilité adaptée aux effets étendus de la puissance technique, notamment quand les dommages peuvent être irréversibles."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : arroser un jardin partagé",
+    "histoire": [
+      "Un jardin fictif hésite entre un arrosoir réutilisable et un dispositif automatique. Le groupe souhaite économiser de l'eau tout en gardant les plantes en bonne santé.",
+      "Ta mission : comparer des solutions sans installer de matériel ni manipuler d'électricité."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Quelle formulation précise la fin plutôt qu'un moyen ?",
+        "choix": ["Acheter obligatoirement l'appareil le plus récent.", "Garder les plantes en bonne santé en limitant l'eau consommée.", "Ajouter le plus possible de boutons."],
+        "bonne": 1,
+        "indice": "La fin est ce que le groupe veut obtenir.",
+        "explication": "La santé des plantes et la limitation de l'eau sont les objectifs. Arrosoir et automatisation sont des moyens à comparer."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle comparaison examine réellement les solutions ?",
+        "choix": ["Mesurer l'eau utilisée et comparer entretien, durée de vie et adaptation aux besoins.", "Supposer que le plus cher est nécessairement meilleur.", "Ignorer le risque de panne."],
+        "bonne": 0,
+        "indice": "Un avantage isolé ne résume pas tous les effets.",
+        "explication": "Des critères explicites permettent de comparer les moyens. Ils peuvent conduire à préférer des solutions différentes selon les conditions."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle question prolonge l'examen dans l'esprit de Jonas ?",
+        "choix": ["L'appareil impressionne-t-il les voisins ?", "Peut-on oublier les déchets futurs ?", "Quels effets les ressources consommées et les déchets auront-ils à long terme ?"],
+        "bonne": 2,
+        "indice": "Prends en compte ceux qui supporteront les effets plus tard.",
+        "explication": "La responsabilité inclut les effets lointains et ne se limite pas à l'avantage immédiat du groupe."
+      }
+    ],
+    "conclusion": "Mission accomplie ! À l'oral, propose une solution provisoire avec ses critères et ses limites. Un progrès technique doit aussi être évalué comme choix humain."
+  }
+}

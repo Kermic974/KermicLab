@@ -2,7 +2,7 @@
 id: arithmetique
 titre: Diviseurs, multiples et nombres premiers
 sujet: mathematiques/arithmetique
-version: 1.0.0
+version: 1.1.0
 date: 2026-11-01
 niveau: college
 langues: fr
@@ -36,5 +36,5 @@ questions:
 Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
 
 - **Explication** : des boîtes d'œufs aux nombres premiers, au PGCD et aux preuves.
-- **S'entraîner** : 6 exercices corrigés.
-- **Défi** : les sachets de bonbons, en 4 étapes.
+- **S'entraîner** : 10 exercices corrigés.
+- **Défi** : les sachets de bonbons, en 5 étapes.

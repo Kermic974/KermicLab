@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Comprendre la conscience", "application": "Repérer les distinctions", "mise-en-situation": "L'objet retrouvé" },
+  "intro": "Voir, penser, savoir que l'on pense : que change la conscience ? Explore la perspective « existence humaine et culture », sans raconter d'expérience personnelle.",
+  "niveaux": [
+    {
+      "titre": "Intuition : être présent à ce qui arrive",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **conscience** est la présence vécue à quelque chose : une couleur, un son, une pensée. Quand tu remarques une mélodie, tu ne fais pas que recevoir un signal : tu en fais l'expérience.",
+        "Jeu d'attention : imagine un personnage absorbé par un livre qui remarque soudain une cloche. Il peut aussi remarquer qu'il était distrait : c'est un retour sur lui-même."
+      ],
+      "exemple": { "titre": "Deux remarques", "etapes": ["Le personnage entend un son.", "Il pense : je suis en train d'écouter.", "La deuxième remarque porte sur sa propre expérience."] },
+      "aRetenir": "Avoir conscience de quelque chose et réfléchir sur soi sont liés, mais distincts."
+    },
+    {
+      "titre": "Collège : se connaître et juger ses actes",
+      "niveau": "college",
+      "paragraphes": [
+        "La **conscience réfléchie** prend nos pensées et nos actions pour objets : je peux examiner ce que je crois et pourquoi. Elle ne rend pas notre connaissance de nous-mêmes parfaite.",
+        "La **conscience morale** concerne le bien et le mal, le juste et l'injuste. Remarquer que l'on a pris un objet et se demander s'il faut le rendre sont deux questions différentes.",
+        "Petit classement : « je sais que je parle » décrit une réflexion sur soi ; « ai-je été juste ? » pose une question morale. Réfléchir ne garantit pas que l'on ait raison."
+      ],
+      "exemple": { "titre": "Une erreur de souvenir", "etapes": ["Un personnage est certain d'avoir fermé une fenêtre.", "Un autre lui montre qu'elle est restée ouverte.", "La sincérité et la certitude ne suffisent pas à rendre un souvenir exact."] },
+      "aRetenir": "La conscience permet d'examiner ses actes ; elle n'est pas une garantie d'infaillibilité."
+    },
+    {
+      "titre": "Lycée : le moi est-il transparent à lui-même ?",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Descartes** met en doute ses croyances pour chercher une certitude. Même s'il se trompe, il faut qu'il existe pour penser : c'est le **cogito**, « je pense, donc je suis ». Il ne prouve pas ainsi que toutes ses pensées sont vraies.",
+        "**Locke** relie l'identité personnelle à la continuité de la conscience, qui peut s'étendre aux actions passées. Les limites de la mémoire soulèvent alors des difficultés.",
+        "Pour **Sartre**, la conscience est dirigée vers quelque chose : elle n'est pas une boîte d'objets intérieurs. Elle peut prendre une distance à l'égard de ce qui est donné.",
+        "Problème : être conscient suffit-il à se connaître ? Compare la certitude d'exister comme sujet pensant avec la possibilité de mal comprendre ses motifs."
+      ],
+      "exemple": { "titre": "Le doute", "etapes": ["Je peux douter d'une image vue en rêve.", "Mais ce doute est encore une pensée.", "Chez Descartes, l'acte de penser assure l'existence du sujet qui pense, non la vérité de l'image."] },
+      "aRetenir": "La certitude du cogito est limitée : existence du sujet pensant ne signifie pas connaissance totale de soi."
+    }
+  ],
+  "application": {
+    "intro": "Choisis ce que chaque exemple permet d'affirmer. Pas de diagnostic ni de jugement sur une personne.",
+    "exercices": [
+      { "type": "qcm", "titre": "Une expérience", "question": "Quel exemple décrit une conscience de quelque chose ?", "choix": ["Une horloge tourne", "Un personnage entend une mélodie", "Une pierre tombe sans expérience vécue"], "bonne": 1, "explication": "Le personnage fait l'expérience du son : la conscience n'est pas simplement un mouvement physique." },
+      { "type": "qcm", "titre": "Retour sur soi", "question": "Quel énoncé décrit une conscience réfléchie ?", "choix": ["Je remarque que je suis distrait", "La lampe éclaire", "Il est midi"], "bonne": 0, "explication": "Le sujet prend son propre état pour objet de réflexion." },
+      { "type": "qcm", "titre": "Morale", "question": "Quelle question relève de la conscience morale ?", "choix": ["Quelle est cette couleur ?", "Combien mesure la table ?", "Ai-je agi justement ?"], "bonne": 2, "explication": "La conscience morale interroge la valeur de l'action, notamment le juste et l'injuste." },
+      { "type": "qcm", "titre": "Cogito", "question": "Quelle certitude Descartes trouve-t-il dans l'acte de penser ?", "choix": ["Tout ce que j'imagine existe", "J'existe comme sujet qui pense", "Mes souvenirs sont tous exacts"], "bonne": 1, "explication": "Même le doute suppose un sujet pensant. Le cogito ne valide pas toutes ses croyances." },
+      { "type": "qcm", "titre": "Limites", "question": "Être certain d'un souvenir prouve-t-il qu'il est exact ?", "choix": ["Oui, toujours", "Oui, si l'on est sincère", "Non, il faut pouvoir le vérifier"], "bonne": 2, "explication": "Une conviction consciente peut être erronée : conscience et infaillibilité sont distinctes." }
+    ]
+  },
+  "situation": {
+    "titre": "Un objet retrouvé à la bibliothèque",
+    "histoire": ["Camille trouve une trousse sous une table et remarque qu'elle n'est pas la sienne.", "Camille se souvient ensuite l'avoir déplacée plus tôt, puis hésite entre la garder et la confier à l'accueil."],
+    "etapes": [
+      { "type": "qcm", "titre": "Remarquer", "question": "« Je remarque que cette trousse est là » décrit d'abord…", "choix": ["une preuve que la trousse m'appartient", "une règle morale universelle", "une conscience de l'objet"], "bonne": 2, "explication": "Percevoir un objet ne suffit pas à décider à qui il appartient ni ce qu'il faut faire." },
+      { "type": "qcm", "titre": "Se souvenir", "question": "Comment traiter le souvenir de Camille ?", "choix": ["Comme un souvenir à confronter aux indices disponibles", "Comme une preuve infaillible", "Comme quelque chose de nécessairement faux"], "bonne": 0, "explication": "La mémoire contribue à la connaissance de soi, mais elle peut se tromper." },
+      { "type": "qcm", "titre": "Décider", "question": "« Est-il juste de la garder ? » mobilise surtout…", "choix": ["la mesure de la trousse", "la conscience morale", "la couleur de la table"], "bonne": 1, "explication": "La question porte sur la valeur de l'action et la responsabilité envers autrui." }
+    ],
+    "conclusion": "Mission accomplie ! Distingue maintenant percevoir, se souvenir et juger : ces trois gestes éclairent une décision sans rendre le sujet omniscient."
+  }
+}

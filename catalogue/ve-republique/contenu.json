@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi citoyen" },
+  "intro": "Découvre les institutions françaises à partir de leur histoire : comprends les fonctions et leurs évolutions, sans confondre un rôle institutionnel avec un avis partisan.",
+  "niveaux": [
+    {
+      "titre": "Découverte : une Constitution organise les pouvoirs",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Ve République** commence en **1958**. Sa Constitution fixe l'organisation des pouvoirs et les règles de leur exercice. Le président, le gouvernement, le Parlement et les juridictions ont des fonctions différentes : une démocratie ne se résume pas à une seule personne.",
+        "Jeu de repères : **1958**, **1962**, **2000**. Associe-les à nouvelle Constitution, réforme de l'élection présidentielle, quinquennat. Réponse : dans cet ordre. Le texte constitutionnel peut être révisé selon des procédures prévues."
+      ],
+      "aRetenir": "Une Constitution définit des pouvoirs, mais aussi leurs limites et leurs relations."
+    },
+    {
+      "titre": "Comprendre : naissance et fonctionnement",
+      "niveau": "3e",
+      "paragraphes": [
+        "La IVe République connaît une instabilité gouvernementale et la crise de la guerre d'Algérie. En mai 1958, une crise à Alger accélère le retour de **Charles de Gaulle** au pouvoir. Un nouveau texte, préparé notamment sous l'impulsion de **Michel Debré**, est approuvé par référendum le 28 septembre et promulgué le **4 octobre 1958**.",
+        "La Constitution renforce l'exécutif. Le président nomme le Premier ministre ; le gouvernement détermine et conduit la politique de la nation et reste responsable devant l'Assemblée nationale. Le Parlement, composé de l'Assemblée nationale et du Sénat, vote la loi et contrôle l'action du gouvernement.",
+        "En **1962**, un référendum approuve l'élection du président au **suffrage universel direct**. La première élection selon cette règle a lieu en **1965**. Auparavant, le président était élu par un collège électoral. La réforme renforce sa légitimité politique, sans supprimer les autres institutions.",
+        "Quand le président et la majorité de l'Assemblée nationale appartiennent à des camps politiques opposés, une **cohabitation** peut se former. Le Premier ministre et le gouvernement issus de cette majorité jouent alors un rôle central dans la politique intérieure. La France connaît trois cohabitations : 1986-1988, 1993-1995 et 1997-2002."
+      ],
+      "exemple": {
+        "titre": "Associer une fonction à une institution",
+        "etapes": [
+          "Voter les lois : le Parlement.",
+          "Déterminer et conduire la politique de la nation : le gouvernement.",
+          "Contrôler la constitutionnalité des lois selon les procédures prévues : le Conseil constitutionnel."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : pratiques, réformes et participation",
+      "niveau": "terminale / lycée",
+      "paragraphes": [
+        "La pratique institutionnelle dépend aussi des élections et des majorités. En période de majorité présidentielle, le chef de l'État joue souvent un rôle politique prépondérant ; en cohabitation, l'équilibre change. Il faut distinguer le texte constitutionnel de la manière dont les acteurs l'utilisent.",
+        "La réforme de **2000** réduit le mandat présidentiel de sept à cinq ans : c'est le **quinquennat**. À partir de 2002, les législatives suivent l'élection présidentielle, ce qui favorise une majorité concordante sans la garantir. Les alternances politiques, les mouvements sociaux et les réformes transforment la vie démocratique.",
+        "Le Conseil constitutionnel et les juridictions contribuent à la protection des droits dans leurs compétences respectives. Les citoyens participent par le vote, les associations, les débats et d'autres formes d'engagement légal. Pour lire l'actualité, vérifie la version du texte, la procédure invoquée et les sources ; une annonce n'est pas forcément une décision entrée en vigueur."
+      ],
+      "aRetenir": "Étudie à la fois les règles, les pratiques et les contre-pouvoirs ; aucun calendrier électoral ne garantit le résultat d'un vote."
+    }
+  ],
+  "application": {
+    "intro": "Résous quatre enquêtes sur les causes de 1958, les acteurs et les réformes institutionnelles.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Causes",
+        "question": "Quel contexte contribue à la naissance de la Ve République ?",
+        "choix": ["La crise de la guerre d'Algérie et l'instabilité de la IVe République", "La chute du mur de Berlin", "Le passage à l'euro en 2002"],
+        "bonne": 0,
+        "indice": "La nouvelle Constitution date de 1958.",
+        "explication": "L'instabilité gouvernementale et la crise algérienne contribuent au retour de de Gaulle et à l'adoption d'une nouvelle Constitution en 1958."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Quelle institution vote les lois et contrôle l'action du gouvernement ?",
+        "choix": ["Le président seul", "Le Parlement", "Le Conseil européen"],
+        "bonne": 1,
+        "indice": "Elle réunit l'Assemblée nationale et le Sénat.",
+        "explication": "Le Parlement vote les lois et contrôle le gouvernement. Le président et les autres institutions exercent des fonctions distinctes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences de 1962",
+        "question": "Que change la réforme adoptée en 1962 ?",
+        "choix": ["Elle supprime l'Assemblée nationale", "Elle instaure immédiatement un mandat de cinq ans", "Elle prévoit l'élection du président au suffrage universel direct"],
+        "bonne": 2,
+        "indice": "La première élection selon cette règle a lieu en 1965.",
+        "explication": "La réforme de 1962 prévoit l'élection présidentielle au suffrage universel direct, appliquée pour la première fois en 1965. Le quinquennat est adopté en 2000."
+      },
+      {
+        "type": "qcm",
+        "titre": "Équilibre des pouvoirs",
+        "question": "Que désigne une cohabitation ?",
+        "choix": ["Un président et une majorité de l'Assemblée nationale de camps opposés", "L'absence de tout gouvernement", "L'élection du président par les seuls sénateurs"],
+        "bonne": 0,
+        "indice": "Elle modifie l'équilibre politique entre le président et le gouvernement.",
+        "explication": "En cohabitation, le gouvernement s'appuie sur une majorité parlementaire opposée au président. Le Premier ministre joue un rôle central dans la conduite de la politique intérieure."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Vérifier une fiche citoyenne",
+    "histoire": [
+      "Un journal scolaire prépare une fiche sur les institutions. Il doit distinguer les règles constitutionnelles, les pratiques politiques et les opinions.",
+      "Tu vérifies ses affirmations sans demander aux lecteurs leurs préférences politiques ni leurs données personnelles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Lire les dates",
+        "question": "Quelle phrase est exacte ?",
+        "choix": ["Le suffrage universel direct présidentiel existe depuis 1958", "La réforme est adoptée en 1962 et appliquée pour la première fois en 1965", "Le quinquennat commence en 1962"],
+        "bonne": 1,
+        "indice": "Distingue adoption d'une règle et première application.",
+        "explication": "Le référendum de 1962 change le mode d'élection ; l'élection de 1965 est la première à l'appliquer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Distinguer règle et pratique",
+        "question": "Le quinquennat garantit-il au président une majorité à l'Assemblée ?",
+        "choix": ["Oui, les électeurs n'ont plus de choix", "Oui, la Constitution interdit toute opposition", "Non, les élections législatives restent un scrutin distinct"],
+        "bonne": 2,
+        "indice": "Un calendrier peut favoriser une situation, pas imposer le résultat.",
+        "explication": "Depuis 2002, le calendrier favorise souvent une majorité présidentielle, mais les électeurs choisissent séparément les députés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Vérifier l'actualité",
+        "question": "Comment contrôler une affirmation sur les pouvoirs d'une institution ?",
+        "choix": ["Consulter le texte en vigueur et des explications institutionnelles datées", "Croire uniquement un slogan partisan", "Supposer que toute annonce modifie la Constitution"],
+        "bonne": 0,
+        "indice": "Cherche la règle applicable et sa procédure.",
+        "explication": "Le texte constitutionnel en vigueur et les sources institutionnelles permettent de distinguer règle, proposition et pratique politique."
+      }
+    ],
+    "conclusion": "Mission accomplie : ta fiche explique les institutions et leurs évolutions sans imposer une opinion politique."
+  }
+}

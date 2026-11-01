@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Comprendre le temps", "application": "Horloge et expérience", "mise-en-situation": "Avant le spectacle" },
+  "intro": "Dix minutes d'attente et dix minutes de jeu ont la même mesure, mais pas toujours la même saveur. Explore la perspective « existence humaine et culture ».",
+  "niveaux": [
+    {
+      "titre": "Intuition : avant, maintenant, après",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **temps** permet de penser la succession et la durée : ce qui arrive avant, pendant et après. Une horloge mesure une durée ; notre manière de la vivre peut varier.",
+        "Jeu : imagine cinq minutes dans une file d'attente puis cinq minutes d'un jeu passionnant. L'impression peut changer sans que l'horloge ait accéléré."
+      ],
+      "exemple": { "titre": "La même durée", "etapes": ["L'horloge indique cinq minutes dans les deux cas.", "L'attente peut paraître longue et le jeu court.", "On distingue mesure commune et expérience vécue."] },
+      "aRetenir": "Une durée mesurée identique peut être vécue différemment."
+    },
+    {
+      "titre": "Collège : passé, présent et futur",
+      "niveau": "college",
+      "paragraphes": [
+        "Le **passé** n'est plus présent, mais nous en gardons des souvenirs et des traces. Le **futur** n'est pas encore là, mais nous l'anticipons. Le présent est le moment vécu à partir duquel nous nous souvenons et projetons.",
+        "**Augustin**, dans les *Confessions*, interroge cette difficulté : nous parlons du temps, mais il est difficile de le définir. Il distingue notamment mémoire du passé, attention au présent et attente du futur.",
+        "Petit classement : un ticket conservé est une trace, se rappeler une visite est un souvenir, préparer la prochaine est un projet. Aucun projet ne garantit à lui seul ce qui arrivera."
+      ],
+      "exemple": { "titre": "Une sortie à préparer", "etapes": ["Une ancienne photo renseigne sur une sortie passée.", "Le groupe regarde maintenant le calendrier.", "Il prévoit une sortie future, encore incertaine."] },
+      "aRetenir": "Nous avons accès au passé et au futur depuis le présent, par des traces, des souvenirs et des attentes."
+    },
+    {
+      "titre": "Lycée : durée et existence",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Bergson** distingue le temps homogène que l'on découpe et mesure et la **durée vécue**, continuité qualitative où nos états se mêlent. Une mélodie n'est pas seulement une collection de notes séparées : les précédentes nourrissent l'écoute des suivantes.",
+        "Cette distinction ne rend pas les horloges inutiles ou fausses. Elle montre que la mesure n'épuise pas ce que signifie vivre une durée.",
+        "**Heidegger** relie la temporalité à notre existence : nous comprenons notre vie à partir de possibilités et de projets, dans une existence finie. La finitude invite à réfléchir à nos choix, sans faire de chaque minute une obligation de performance.",
+        "Problème : maîtriser son emploi du temps, est-ce maîtriser le temps ? On peut organiser des activités, mais ni annuler tout changement ni récupérer exactement le passé."
+      ],
+      "exemple": { "titre": "Écouter une mélodie", "etapes": ["Un appareil mesure la longueur de chaque note.", "L'auditeur entend une phrase musicale continue.", "La mesure décrit une dimension ; elle ne remplace pas l'expérience d'écoute."] },
+      "aRetenir": "Temps mesuré et durée vécue sont deux approches à distinguer, non deux horloges rivales."
+    }
+  ],
+  "application": {
+    "intro": "Retrouve les distinctions entre mesurer, se souvenir, attendre et vivre une durée.",
+    "exercices": [
+      { "type": "qcm", "titre": "Une impression", "question": "Une attente paraît plus longue qu'un jeu de même durée. Que peut-on conclure ?", "choix": ["L'horloge a forcément ralenti", "L'impression change, pas nécessairement la durée mesurée", "Le jeu n'a aucune durée"], "bonne": 1, "explication": "L'expérience du temps peut varier avec l'attention, les émotions et l'activité." },
+      { "type": "qcm", "titre": "Augustin", "question": "Quel rapport au passé Augustin met-il notamment en avant ?", "choix": ["La mémoire", "La prévision certaine", "La suppression du présent"], "bonne": 0, "explication": "La mémoire rend le passé présent à l'esprit, sans le faire revenir comme événement." },
+      { "type": "qcm", "titre": "Un projet", "question": "Préparer un événement futur signifie…", "choix": ["qu'il s'est déjà produit", "qu'il est garanti", "l'anticiper depuis le présent"], "bonne": 2, "explication": "Un projet ouvre une possibilité future ; il n'est pas une certitude sur l'avenir." },
+      { "type": "qcm", "titre": "Bergson", "question": "La durée vécue désigne chez Bergson…", "choix": ["uniquement des secondes identiques", "une continuité qualitative de l'expérience", "une horloge qui fonctionne mal"], "bonne": 1, "explication": "Nos états vécus se prolongent et se mêlent ; leur qualité ne se réduit pas à des unités juxtaposées." },
+      { "type": "qcm", "titre": "Organiser", "question": "Un planning très précis permet-il de maîtriser tout événement ?", "choix": ["Non, organiser ne supprime pas les imprévus", "Oui, le futur devient certain", "Oui, on peut recommencer exactement le passé"], "bonne": 0, "explication": "L'organisation soutient nos projets, mais ne donne pas un contrôle total sur le temps et les événements." }
+    ]
+  },
+  "situation": {
+    "titre": "L'attente avant un petit spectacle",
+    "histoire": ["Un groupe répète à la bibliothèque. Le spectacle commence dans vingt minutes.", "Pour une personne qui attend, ces minutes paraissent longues ; pour une autre qui répète, elles passent très vite."],
+    "etapes": [
+      { "type": "qcm", "titre": "Comparer", "question": "Les deux personnes vivent-elles forcément deux durées mesurées différentes ?", "choix": ["Oui, leurs montres doivent diverger", "Oui, l'attente ajoute des minutes", "Non, leur expérience peut différer pour une même mesure"], "bonne": 2, "explication": "On distingue la durée commune de vingt minutes et la manière dont chacun la vit." },
+      { "type": "qcm", "titre": "La répétition", "question": "Quelle description rejoint l'idée de durée chez Bergson ?", "choix": ["Les phrases précédentes restent présentes dans l'écoute de la suivante", "Chaque note efface toute expérience précédente", "La musique n'est que le chiffre du chronomètre"], "bonne": 0, "explication": "La continuité vécue d'une mélodie intègre ce qui précède au moment qui suit." },
+      { "type": "qcm", "titre": "Le programme", "question": "Que permet un horaire de répétition raisonnable ?", "choix": ["Garantir qu'aucun imprévu n'arrive", "Coordonner le groupe en gardant une marge", "Supprimer le besoin de repos"], "bonne": 1, "explication": "Mesurer et planifier sont utiles pour agir ensemble, sans promettre un contrôle absolu." }
+    ],
+    "conclusion": "Mission accomplie ! Imagine une pause dans ce programme : bien vivre le temps ne signifie pas remplir chaque instant."
+  }
+}
