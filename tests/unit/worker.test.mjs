@@ -170,18 +170,17 @@ test("sans clé API : réponse hors catalogue qui propose des questions routées
 
 test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async () => {
   const lire = async (lang) => (await (await worker.fetch(new Request(`https://api.kermiclab.test/api/suggestions?lang=${lang}`), env, ctx)).json()).suggestions;
+  const anglais = (q) => /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i.test(q);
   const fr = await lire("fr");
   const en = await lire("en");
   assert.ok(fr.length >= 1 && fr.length <= 4);
-  assert.ok(en.length >= 1 && en.length <= 4);
+  assert.ok(fr.every((q) => !anglais(q)));
+  assert.ok(en.length >= 1 && en.every(anglais));
   // La rotation quotidienne change les notions tirées : on vérifie toutes les rotations, sans dépendre de la date.
   const { CATALOGUE } = await import("../../worker/src/generated/catalogue.js");
-  const anglais = (q) => /\b(what|how|why|which|explain|is|are|does|do|can)\b/i.test(q);
-  const sansAnglais = new Set(CATALOGUE.index.maquettes.filter((m) => !m.questions.some(anglais)).map((m) => m.questions.map((q) => q.charAt(0).toUpperCase() + q.slice(1))).flat());
   for (let decalage = 0; decalage < CATALOGUE.index.maquettes.length; decalage++) {
     for (const q of suggestionsCatalogue(CATALOGUE.index, "fr", { decalage })) assert.ok(!anglais(q), `suggestion anglaise en français : ${q}`);
-    // Repli prévu : une notion sans question anglaise propose sa question française.
-    for (const q of suggestionsCatalogue(CATALOGUE.index, "en", { decalage })) assert.ok(anglais(q) || sansAnglais.has(q), `suggestion non anglaise : ${q}`);
+    for (const q of suggestionsCatalogue(CATALOGUE.index, "en", { decalage })) assert.ok(anglais(q), `suggestion non anglaise : ${q}`);
   }
 });
 
