@@ -11,10 +11,6 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
-- Vérification de concordance des méthodes : `compareResults` et `resultNumber` (`src/solutions/compare.js`, exposés par `src/api.js`), exigence S-08.
-- Application du cercle : sélecteur de méthode dans le panneau « Ce que montre cet angle », avec étapes numérotées, avertissements et prise en charge du statut `unsupported` (SPEC A-04).
-- Méthode algébrique (conversion en radians, réduction au premier quadrant, formules de réduction) et filtrage des méthodes par mode (`solutions.list({ mode })`), exigences S-04 et S-07.
-- Méthode tabulaire pour les angles remarquables et statut `unsupported` avec justification pour les angles hors table, exigences S-05 et S-06.
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé
@@ -23,6 +19,20 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Déploiement : le site publié pointe vers le Worker `https://kermiclab-api.kermic.workers.dev` même sans variable `KERMICLAB_API_URL` (il pointait vers `localhost`).
 - Déploiement : les secrets du Worker absents (mode zéro budget, pas de `ANTHROPIC_API_KEY`) sont ignorés au lieu de faire échouer `wrangler-action`.
 - CodeQL sur dépôt privé : analyse sans envoi à GitHub (GitHub Advanced Security requis), la CI échoue elle-même en cas d'alerte (`scripts/verifier-sarif.mjs`) ; envoi rétabli automatiquement en public.
+
+## [1.4.0] — 2026-11-01
+
+### Ajouté
+- Vérification de concordance des méthodes : `compareResults` et `resultNumber` (`src/solutions/compare.js`, exposés par `src/api.js`), exigence S-08.
+- Méthode tabulaire pour les angles remarquables et statut `unsupported` avec justification pour les angles hors table, exigences S-05 et S-06.
+- Le mode Comparer (deux méthodes côte à côte) n'est pas encore livré : prévu pour une version ultérieure.
+
+## [1.3.0] — 2026-11-01
+
+### Ajouté
+- Application du cercle : sélecteur de méthode dans le panneau « Ce que montre cet angle », avec étapes numérotées, avertissements et prise en charge du statut `unsupported` (SPEC A-04).
+- Méthode algébrique (conversion en radians, réduction au premier quadrant, formules de réduction) et filtrage des méthodes par mode (`solutions.list({ mode })`), exigences S-04 et S-07.
+- Les autotests de la page (`tests/dom/`) sont exécutés en CI.
 
 ## [0.0.1] — 2026-10-31
 
