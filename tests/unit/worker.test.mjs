@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "francais/passe-compose", plan_onglets: ["explication", "les auxiliaires", "mise en situation"],
-    reponse: "Le passé composé se forme avec un auxiliaire et un participe passé."
+    sujet: "francais/sonnet", plan_onglets: ["explication", "atelier de rimes", "mise en situation"],
+    reponse: "Un sonnet est un poème de quatorze vers : deux quatrains puis deux tercets."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "comment conjuguer au passé composé ?", langue: "fr" });
-  await chat({ message: "explique-moi le passé composé", langue: "fr" });
+  const a = await chat({ message: "c'est quoi un sonnet ?", langue: "fr" });
+  await chat({ message: "explique-moi le sonnet", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] francais/passe-compose");
-  assert.match(issues[0].body, /les auxiliaires/);
+  assert.equal(issues[0].title, "[maquette-manquante] francais/sonnet");
+  assert.match(issues[0].body, /atelier de rimes/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -158,7 +158,7 @@ test("limitation de débit par IP", async () => {
 
 test("sans clé API : réponse hors catalogue qui propose des questions routées vers une page", async () => {
   delete env.ANTHROPIC_API_KEY;
-  const r = await chat({ message: "comment conjuguer au passé composé ?", langue: "fr" });
+  const r = await chat({ message: "parle-moi du passé simple", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
   assert.match(r.donnees.texte, /\d+ notions, par exemple/);
   assert.ok(r.donnees.suggestions.length > 0);
@@ -168,8 +168,7 @@ test("sans clé API : réponse hors catalogue qui propose des questions routées
   }
 });
 
-test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async (t) => {
-  t.mock.timers.enable({ apis: ["Date"], now: 0 });
+test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async () => {
   const lire = async (lang) => (await (await worker.fetch(new Request(`https://api.kermiclab.test/api/suggestions?lang=${lang}`), env, ctx)).json()).suggestions;
   const fr = await lire("fr");
   const en = await lire("en");

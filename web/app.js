@@ -4,7 +4,7 @@ import * as progression from "./progression.js";
 const $ = (s) => document.querySelector(s);
 const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [], notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "philosophie"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "philosophie"];
 const CLE_MATIERE = "kermiclab:matiere";
 const MAX_PUCES = 4;
 const TAILLE_MAX_PUCE = 120;

@@ -17,7 +17,7 @@ test("déterminisme : même question, même résultat", () => {
 });
 
 test("questions non couvertes → aucune maquette", () => {
-  for (const q of ["comment conjuguer au passé composé ?", "bonjour", "j'ai une sinusite", "explique-moi le passé simple"]) {
+  for (const q of ["c'est quoi un sonnet ?", "bonjour", "j'ai une sinusite", "explique-moi le passé simple"]) {
     assert.equal(routerLocal(q, index), null, q);
   }
 });
