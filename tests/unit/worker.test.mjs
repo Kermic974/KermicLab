@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "histoire/napoleon", plan_onglets: ["explication", "la carte des campagnes", "mise en situation"],
-    reponse: "Napoléon Bonaparte fut empereur des Français de 1804 à 1815."
+    sujet: "francais/passe-compose", plan_onglets: ["explication", "les auxiliaires", "mise en situation"],
+    reponse: "Le passé composé se forme avec un auxiliaire et un participe passé."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "qui était Napoléon ?", langue: "fr" });
-  await chat({ message: "raconte-moi Napoléon", langue: "fr" });
+  const a = await chat({ message: "comment conjuguer au passé composé ?", langue: "fr" });
+  await chat({ message: "explique-moi le passé composé", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] histoire/napoleon");
-  assert.match(issues[0].body, /la carte des campagnes/);
+  assert.equal(issues[0].title, "[maquette-manquante] francais/passe-compose");
+  assert.match(issues[0].body, /les auxiliaires/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -158,7 +158,7 @@ test("limitation de débit par IP", async () => {
 
 test("sans clé API : réponse hors catalogue qui propose des questions routées vers une page", async () => {
   delete env.ANTHROPIC_API_KEY;
-  const r = await chat({ message: "parle-moi de Napoléon", langue: "fr" });
+  const r = await chat({ message: "comment conjuguer au passé composé ?", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
   assert.match(r.donnees.texte, /\d+ notions, par exemple/);
   assert.ok(r.donnees.suggestions.length > 0);
@@ -168,7 +168,8 @@ test("sans clé API : réponse hors catalogue qui propose des questions routées
   }
 });
 
-test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async () => {
+test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async (t) => {
+  t.mock.timers.enable({ apis: ["Date"], now: 0 });
   const lire = async (lang) => (await (await worker.fetch(new Request(`https://api.kermiclab.test/api/suggestions?lang=${lang}`), env, ctx)).json()).suggestions;
   const fr = await lire("fr");
   const en = await lire("en");
@@ -230,6 +231,10 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   assert.equal(matieres[0], "mathematiques");
   assert.ok(matieres.includes("physique-chimie"));
   assert.ok(matieres.includes("svt"));
+  assert.ok(matieres.includes("philosophie"));
+  for (const id of ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"]) {
+    assert.ok(notions.some((n) => n.id === id && n.matiere === "philosophie" && n.niveau === "terminale"), id);
+  }
   for (let i = 1; i < notions.length; i++) {
     const [a, b] = [notions[i - 1], notions[i]];
     if (a.matiere !== b.matiere) { assert.ok(matieres.indexOf(a.matiere) < matieres.indexOf(b.matiere)); continue; }

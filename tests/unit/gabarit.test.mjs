@@ -23,6 +23,25 @@ test("gabarit : les notions pilotes ont un contenu valide", async () => {
   for (const { nom, contenu } of liste) assert.doesNotThrow(() => validerContenu(contenu, nom), nom);
 });
 
+test("vague 4 : chaque notion propose un exemple, un mémo et des exercices variés", async () => {
+  const attendues = [
+    "limites-et-continuite", "logarithme", "integrales", "recurrence", "denombrement", "loi-binomiale",
+    "geometrie-dans-l-espace", "lois-de-newton", "gravitation-et-satellites", "cinetique-chimique",
+    "radioactivite", "thermodynamique", "condensateur-et-circuit-rc", "diffraction-et-interferences"
+  ];
+  const catalogue = new Map((await notions()).map(({ nom, contenu }) => [nom, contenu]));
+  for (const nom of attendues) {
+    const contenu = catalogue.get(nom);
+    assert.ok(contenu, `${nom} : contenu présent`);
+    assert.ok(contenu.niveaux.some((niveau) => niveau.exemple?.etapes?.length), `${nom} : exemple guidé`);
+    assert.ok(contenu.niveaux.some((niveau) => niveau.aRetenir?.trim()), `${nom} : mémo`);
+    const types = new Set(contenu.application.exercices.map((exercice) => exercice.type));
+    assert.ok(types.has("nombre") && types.has("qcm"), `${nom} : exercices numériques et QCM`);
+    assert.ok(contenu.application.exercices.every((exercice) => exercice.type !== "nombre" || exercice.solution?.trim()), `${nom} : solutions des exercices numériques`);
+    assert.ok(contenu.situation.etapes.length >= 2, `${nom} : situation progressive`);
+  }
+});
+
 test("gabarit : chaque réponse attendue est cohérente avec son type", async () => {
   for (const { nom, contenu } of await notions()) {
     for (const ex of [...contenu.application.exercices, ...contenu.situation.etapes]) {
@@ -31,6 +50,30 @@ test("gabarit : chaque réponse attendue est cohérente avec son type", async ()
         assert.ok([...Array(100).keys()].some((d) => Number.isInteger(+(ex.reponse * (d + 1)).toFixed(9))), `${nom} : ${ex.question}`);
       }
     }
+  }
+});
+
+test("philosophie : huit notions progressives avec exercices et défi narratif", async () => {
+  const ids = ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"];
+  for (const id of ids) {
+    const dossier = `${racine}catalogue/${id}`;
+    const fiche = lireFrontMatter(await readFile(`${dossier}/fiche.md`, "utf8"));
+    assert.equal(fiche.id, id);
+    assert.equal(fiche.sujet, `philosophie/${id}`);
+    assert.equal(fiche.niveau, "terminale");
+    assert.equal(fiche.langues, "fr");
+    const contenu = await lireJson(`${dossier}/contenu.json`);
+    assert.doesNotThrow(() => validerContenu(contenu, id));
+    assert.deepEqual(Object.keys(contenu.titresOnglets).sort(), ["application", "explication", "mise-en-situation"]);
+    assert.ok(contenu.intro.trim(), id);
+    assert.deepEqual(contenu.niveaux.map((n) => n.niveau), ["pour démarrer", "college", "terminale"]);
+    for (const niveau of contenu.niveaux) {
+      assert.ok(niveau.exemple.titre.trim(), id);
+      assert.ok(niveau.exemple.etapes.length >= 2, id);
+      assert.ok(niveau.aRetenir.trim(), id);
+    }
+    assert.ok(contenu.application.exercices.length >= 4 && contenu.application.exercices.length <= 6, id);
+    assert.ok(contenu.situation.histoire.every((p) => p.trim()), id);
   }
 });
 
@@ -58,7 +101,10 @@ test("gabarit : la page générée respecte le contrat et neutralise le HTML du 
   const html = await genererPage({ fiche, contenu });
   const meta = lireMetaHtml(html);
   assert.equal(meta.id, "pythagore");
-  assert.deepEqual(meta.onglets, ["explication", "application", "mise-en-situation", "self-test"]);
+  assert.deepEqual(meta.onglets, ["explication", "memo", "application", "mise-en-situation", "self-test"]);
+  const { memo, ...sansMemo } = contenu;
+  assert.deepEqual(lireMetaHtml(await genererPage({ fiche, contenu: sansMemo })).onglets, ["explication", "application", "mise-en-situation", "self-test"]);
+  await assert.rejects(genererPage({ fiche, contenu: { ...contenu, memo: {} } }), /memo/);
   assert.equal(scriptsEnLigne(html).length, 1, "un seul script exécutable : le moteur");
   assert.ok(!html.includes("</script><script>alert"), "le contenu ne peut pas fermer la balise de données");
   const donnees = html.match(/<script type="application\/json" id="kermiclab-contenu">([\s\S]*?)<\/script>/)[1];

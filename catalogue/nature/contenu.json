@@ -1,0 +1,60 @@
+{
+  "titresOnglets": { "explication": "Comprendre la nature", "application": "Nature ou culture ?", "mise-en-situation": "Le jardin partagé" },
+  "intro": "Un arbre pousse, mais un jardin se cultive : où passe la frontière ? Explore la perspective « existence humaine et culture » et les différents sens de nature.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ce qui pousse et ce que l'on façonne",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **nature** peut désigner le monde et ses processus, notamment ce qui ne résulte pas d'une fabrication humaine. La **culture** désigne ici les savoirs, pratiques et façons de vivre appris et transmis.",
+        "Jeu : compare un arbre et une table en bois. La table dépend d'un matériau naturel et d'un savoir-faire. Beaucoup d'objets mêlent ainsi nature et culture."
+      ],
+      "exemple": { "titre": "La pomme du jardin", "etapes": ["Le pommier grandit grâce à des processus vivants.", "Une personne le plante, le taille et choisit une variété.", "Le fruit cultivé associe processus naturels et interventions humaines."] },
+      "aRetenir": "Nature et culture ne sont pas toujours deux mondes séparés."
+    },
+    {
+      "titre": "Collège : plusieurs sens du mot nature",
+      "niveau": "college",
+      "paragraphes": [
+        "La nature peut être l'ensemble du monde physique, mais aussi la **nature d'une chose**, c'est-à-dire ce qui la caractérise. Dire « la nature d'un triangle » ne désigne pas une forêt.",
+        "Chez **Aristote**, un être naturel possède en lui-même un principe de mouvement ou de repos : une plante grandit. Un objet fabriqué dépend d'une production extérieure pour sa forme d'objet.",
+        "Attention : **naturel** ne veut pas automatiquement dire bon, et artificiel ne veut pas dire mauvais. Une plante toxique est naturelle ; des lunettes fabriquées peuvent aider à voir.",
+        "Petit défi : sépare une description (« cela existe dans la nature ») et une évaluation (« cela est souhaitable »). Il faut une raison supplémentaire pour passer de l'une à l'autre."
+      ],
+      "exemple": { "titre": "Une règle de vie", "etapes": ["Un comportement existe dans le monde vivant.", "On demande s'il est juste pour les humains.", "Le simple fait qu'il existe ne décide pas de sa valeur morale."] },
+      "aRetenir": "Décrire la nature ne suffit pas à établir ce que nous devons faire."
+    },
+    {
+      "titre": "Lycée : transformer, comprendre, préserver",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Descartes** espère que la connaissance des forces naturelles rende les humains « comme maîtres et possesseurs de la nature », notamment pour améliorer la vie et la santé. Cette ambition technique ouvre une question sur ses limites.",
+        "Chez **Rousseau**, l'**état de nature** est une reconstruction hypothétique permettant de penser ce que la société transforme chez l'humain. Ce n'est pas le récit vérifié d'une époque historique ni un simple programme de retour à la forêt.",
+        "Problème : faut-il opposer l'humain à la nature alors qu'il en fait partie ? Nos techniques dépendent de ressources et modifient des milieux dont d'autres vivants dépendent.",
+        "Compare deux principes : répondre aux besoins humains et préserver les conditions de vie. Une décision demande de considérer effets, incertitudes et responsabilités, pas seulement le mot « naturel »."
+      ],
+      "exemple": { "titre": "Une cour végétalisée", "etapes": ["Planter peut offrir de l'ombre et accueillir des vivants.", "Il faut choisir les espèces et prévoir l'eau nécessaire.", "Une intervention humaine peut protéger un milieu ; tout dépend de ses effets."] },
+      "aRetenir": "L'état de nature est un outil de réflexion ; préserver la nature exige des choix argumentés."
+    }
+  ],
+  "application": {
+    "intro": "Distingue les sens des mots et les raisons d'agir. Les cas peuvent mêler nature et culture.",
+    "exercices": [
+      { "type": "qcm", "titre": "Un objet", "question": "Une table en bois associe…", "choix": ["uniquement de la culture, sans matériau", "un matériau naturel et un savoir-faire culturel", "uniquement un processus sans intervention"], "bonne": 1, "explication": "Le bois vient du vivant ; la forme de table résulte d'un travail humain." },
+      { "type": "qcm", "titre": "Un autre sens", "question": "« La nature d'un triangle » désigne ici…", "choix": ["ses caractéristiques essentielles", "son jardin", "son origine végétale"], "bonne": 0, "explication": "La nature d'une chose peut désigner ce qui la définit, et non le milieu naturel." },
+      { "type": "qcm", "titre": "Aristote", "question": "Pour Aristote, quel exemple possède un principe interne de croissance ?", "choix": ["Une chaise en tant que chaise", "Une statue en tant que statue", "Une plante"], "bonne": 2, "explication": "La plante grandit par un principe qui lui est propre ; la forme d'un objet fabriqué vient de sa fabrication." },
+      { "type": "qcm", "titre": "Une valeur", "question": "Une substance est naturelle. Que peut-on en conclure sur son innocuité ?", "choix": ["Qu'elle est forcément sans danger", "Rien sans examiner ses propriétés et son usage", "Qu'elle est toujours dangereuse"], "bonne": 1, "explication": "L'origine naturelle n'est pas une preuve de sécurité ou de bonté." },
+      { "type": "qcm", "titre": "Rousseau", "question": "Comment lire l'état de nature chez Rousseau ?", "choix": ["Comme une hypothèse pour penser les transformations sociales", "Comme un reportage historique vérifié", "Comme une consigne de vivre tous dans une forêt"], "bonne": 0, "explication": "Cette reconstruction théorique sert à interroger l'humain et la société." }
+    ]
+  },
+  "situation": {
+    "titre": "Une cour devient un jardin partagé",
+    "histoire": ["Les habitants veulent remplacer une partie du sol bétonné par un jardin où lire et se retrouver.", "Ils discutent des plantes, de l'eau disponible et de l'accueil des insectes."],
+    "etapes": [
+      { "type": "qcm", "titre": "La frontière", "question": "Ce jardin sera-t-il seulement naturel ou seulement culturel ?", "choix": ["Seulement naturel, car rien n'est choisi", "Seulement culturel, sans processus vivant", "Il associera processus naturels et choix humains"], "bonne": 2, "explication": "Cultiver un jardin articule croissance des plantes, savoir-faire et organisation collective." },
+      { "type": "qcm", "titre": "Choisir les plantes", "question": "Quel argument suffit le moins à choisir une plante ?", "choix": ["Elle est naturelle, donc elle convient forcément", "Elle est adaptée au climat local", "Ses besoins en eau correspondent au lieu"], "bonne": 0, "explication": "Le mot naturel ne remplace pas l'examen des effets et des conditions du milieu." },
+      { "type": "qcm", "titre": "Responsabilité", "question": "Quelle question complète le projet ?", "choix": ["Comment ignorer tout effet futur ?", "Quels effets aura-t-il sur les habitants et les autres vivants ?", "Comment supprimer toute intervention humaine ?"], "bonne": 1, "explication": "Transformer un milieu engage une responsabilité envers les personnes et les conditions de vie." }
+    ],
+    "conclusion": "Mission accomplie ! Imagine une règle pour le jardin et justifie-la par ses effets, pas seulement par ce qui serait « naturel »."
+  }
+}
