@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "À toi de juger", "mise-en-situation": "Objet trouvé" },
+  "intro": "Tenir une promesse quand personne ne regarde : pourquoi le faire ? Explore le devoir, sans confondre une règle morale avec une simple consigne.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ce que je dois faire",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "Un **devoir moral** est une action que l'on estime devoir accomplir parce qu'elle est juste, même si elle ne nous plaît pas. Rendre un objet prêté n'est pas seulement satisfaire une envie.",
+        "Une **contrainte** me force : une porte verrouillée m'empêche de sortir. Une **obligation** s'adresse à ma volonté : je peux manquer à ma promesse, mais je dois pouvoir répondre de mon choix. Une obligation peut aussi être juridique, comme respecter une loi ; cela ne suffit pas à la rendre moralement juste."
+      ],
+      "exemple": {
+        "titre": "Le jeu des deux motivations",
+        "etapes": [
+          "Tu rends un livre pour éviter une punition.",
+          "Tu rends le même livre parce qu'il appartient à ton ami.",
+          "L'action visible est identique : sa motivation est-elle la même ?"
+        ]
+      },
+      "aRetenir": "Le devoir pose la question « que dois-je faire ? », pas seulement « de quoi ai-je envie ? »."
+    },
+    {
+      "titre": "Distinguer : agir conformément au devoir ou par devoir",
+      "niveau": "lycée — construire une distinction",
+      "paragraphes": [
+        "Dans les *Fondements de la métaphysique des mœurs*, **Kant** distingue l'action **conforme au devoir** de l'action faite **par devoir**. Un commerçant honnête pour conserver ses clients agit conformément au devoir ; s'il agit par respect pour la règle morale, il agit par devoir.",
+        "Pour Kant, la valeur morale ne repose donc pas seulement sur le résultat obtenu. Cela ne signifie pas qu'une action agréable est mauvaise : l'enjeu est de savoir si le respect du devoir détermine la volonté, plutôt que le seul intérêt."
+      ],
+      "exemple": {
+        "titre": "Détective des intentions",
+        "etapes": [
+          "Deux joueurs refusent de tricher.",
+          "Le premier craint le surveillant ; le second estime que tricher est injuste, même sans surveillant.",
+          "Dans l'analyse de Kant, seule la seconde motivation décrite est une action par devoir."
+        ]
+      },
+      "aRetenir": "Conforme au devoir décrit l'action ; par devoir décrit ce qui motive la volonté."
+    },
+    {
+      "titre": "Formaliser : quelle règle peut valoir pour tous ?",
+      "niveau": "terminale — confronter des critères",
+      "paragraphes": [
+        "L'**impératif catégorique** de Kant commande sans condition d'intérêt personnel. Une de ses formulations demande de n'agir que selon une maxime que l'on puisse vouloir comme loi universelle. Une maxime est la règle que je donne à mon action.",
+        "Faire une fausse promesse pour obtenir un avantage échoue à ce test : si cette pratique devenait universelle, la confiance qui rend la promesse possible serait détruite. Kant demande aussi de traiter l'humanité toujours comme une fin, jamais simplement comme un moyen.",
+        "**John Stuart Mill**, dans *L'Utilitarisme*, évalue au contraire les actions selon leur contribution au bonheur général des personnes concernées. Il ne s'agit pas de mon seul plaisir. Ces approches peuvent se rejoindre sur une action tout en divergeant sur sa justification : le débat moral ne se réduit pas à un corrigé unique."
+      ],
+      "exemple": {
+        "titre": "Deux lunettes philosophiques",
+        "etapes": [
+          "Pour examiner une promesse, Kant interroge la règle universalisable et le respect des personnes.",
+          "Mill interroge les conséquences pour le bonheur général.",
+          "Compare les critères avant de prendre position et réponds à une objection."
+        ]
+      },
+      "aRetenir": "Une analyse morale explicite sa règle, ses raisons et ses objections. Les QCM vérifient les distinctions, pas toute la moralité d'une personne."
+    }
+  ],
+  "application": {
+    "intro": "Choisis la distinction ou la thèse correctement formulée. Chaque réponse est expliquée.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Une promesse m'oblige, mais je peux la rompre. Qu'est-ce qui la distingue d'une contrainte physique ?",
+        "choix": ["Elle rend physiquement impossible tout autre choix.", "Elle demande un choix dont je peux répondre.", "Elle n'a aucun rapport avec ma volonté."],
+        "bonne": 1,
+        "indice": "Être obligé ne signifie pas être matériellement empêché.",
+        "explication": "L'obligation s'adresse à la volonté ; la contrainte physique empêche ou impose matériellement une action."
+      },
+      {
+        "type": "qcm",
+        "question": "Selon Kant, rendre un objet seulement pour recevoir une récompense est…",
+        "choix": ["nécessairement une action par devoir.", "toujours une action interdite.", "une action conforme au devoir, mais non faite par devoir dans ce cas."],
+        "bonne": 2,
+        "indice": "Distingue ce qui est fait de la raison pour laquelle on le fait.",
+        "explication": "Rendre l'objet est conforme au devoir. La motivation décrite est ici l'intérêt, non le respect de la règle morale."
+      },
+      {
+        "type": "qcm",
+        "question": "Quel critère correspond à l'utilitarisme de Mill ?",
+        "choix": ["La contribution au bonheur général des personnes concernées.", "Mon seul avantage immédiat.", "L'obéissance aveugle à toute consigne."],
+        "bonne": 0,
+        "indice": "L'utilitarisme ne se réduit pas à l'égoïsme.",
+        "explication": "Mill prend en compte le bonheur général, et pas seulement celui de l'agent. Kant donne une autre justification, fondée sur le devoir."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : une trousse oubliée",
+    "histoire": [
+      "Tu trouves une trousse dans la salle commune. Personne ne te voit. Tu pourrais la garder ou la remettre à l'accueil, sans fouiller son contenu.",
+      "Ta mission : distinguer les motivations et justifier une règle respectueuse des personnes."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Laquelle de ces motivations relève du devoir dans l'analyse de Kant ?",
+        "choix": ["Espérer une récompense.", "Respecter ce qui appartient à autrui.", "Éviter uniquement une caméra."],
+        "bonne": 1,
+        "indice": "Cherche une raison qui ne dépend pas d'un avantage.",
+        "explication": "Respecter autrui peut déterminer la volonté par devoir ; récompense et surveillance décrivent des intérêts."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle formulation permet d'examiner la règle de l'action ?",
+        "choix": ["Puis-je vouloir que chacun garde les objets trouvés dès que cela l'arrange ?", "Quelle couleur de trousse me plaît ?", "Combien de personnes me regardent ?"],
+        "bonne": 0,
+        "indice": "Passe de ton cas particulier à une règle pour tous.",
+        "explication": "Cette question met à l'épreuve une maxime. Elle demande une justification universelle, non une préférence personnelle."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle analyse des conséquences adopte le point de vue de Mill ?",
+        "choix": ["Ne considérer que mon plaisir de garder la trousse.", "Ignorer la personne qui l'a perdue.", "Considérer la perte évitée et la confiance favorisée par la restitution."],
+        "bonne": 2,
+        "indice": "Pense aux effets sur toutes les personnes concernées.",
+        "explication": "Restituer l'objet peut favoriser le bien-être et la confiance collective. La même action peut recevoir des justifications philosophiques différentes."
+      }
+    ],
+    "conclusion": "Mission accomplie ! À l'oral, défends la restitution avec un critère, puis examine une objection. Tu as appris à justifier, pas seulement à obéir."
+  }
+}

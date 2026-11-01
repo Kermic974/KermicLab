@@ -19,9 +19,11 @@ for (const id of NOTIONS) {
   test(`${id} : onglets, figure, aucune erreur ni violation CSP, pas de débordement mobile`, async () => {
     const { page, contexte, erreurs } = await ouvrir(nav, url(id), { viewport: { width: 360, height: 740 }, isMobile: true });
     await page.goto(url(id));
-    assert.deepEqual(await page.locator("[role=tab]").evaluateAll((n) => n.map((b) => b.dataset.onglet)), ["explication", "application", "mise-en-situation"]);
+    const onglets = await page.locator("[role=tab]").evaluateAll((n) => n.map((b) => b.dataset.onglet));
+    const ongletsAttendus = ["explication", ...(onglets.includes("memo") ? ["memo"] : []), "application", "mise-en-situation"];
+    assert.deepEqual(onglets, ongletsAttendus);
     assert.deepEqual((await page.evaluate(() => window.kermiclab.registre.map((o) => [o.id, o.actif]))).at(-1), ["self-test", false]);
-    for (const o of ["explication", "application", "mise-en-situation"]) {
+    for (const o of ongletsAttendus) {
       await page.click(`#onglet-${o}`);
       const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       assert.ok(debord <= 0, `${o} déborde de ${debord}px`);
@@ -57,6 +59,26 @@ test("exercices : QCM, indices progressifs, étoiles mémorisées", async () => 
   await page.reload();
   assert.match(await page.locator("#etoiles").textContent(), /★ 2 \/ 10/);
   await contexte.close();
+});
+
+test("histoire contemporaine : une erreur donne un indice sans étoile, puis la correction explique la réponse", async () => {
+  const { readFile } = await import("node:fs/promises");
+  for (const id of ["premiere-guerre-mondiale", "totalitarismes", "seconde-guerre-mondiale", "guerre-froide", "decolonisation", "construction-europeenne", "ve-republique", "monde-depuis-1990"]) {
+    const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+    const { page, contexte, erreurs } = await ouvrir(nav, url(id));
+    await page.goto(url(id));
+    await page.click("#onglet-application");
+    const ex = contenu.application.exercices[0];
+    const carte = page.locator("[data-exercice=app-1]");
+    await carte.locator(".choix-bouton").nth((ex.bonne + 1) % ex.choix.length).click();
+    assert.ok((await carte.locator(".retour").textContent()).includes(ex.indice), id);
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), "★ 0 / 7", id);
+    await carte.locator(".choix-bouton").nth(ex.bonne).click();
+    assert.ok((await carte.locator(".retour").textContent()).includes(ex.explication), id);
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), "★ 1 / 7", id);
+    assert.deepEqual(erreurs, [], id);
+    await contexte.close();
+  }
 });
 
 test("fractions : une fraction non simplifiée est refusée, « 3/4 » et les virgules sont comprises", async () => {

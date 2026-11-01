@@ -52,12 +52,15 @@ function langueQuestion(q) {
  */
 export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS, decalage = 0 } = {}) {
   const triees = [...index.maquettes].sort((a, b) => a.id.localeCompare(b.id)).filter((m) => m.id !== exclure);
+  const questionsPourLangue = (maquette) => (maquette.questions ?? []).filter((q) => langueQuestion(q) === langue);
+  const aQuestionsDansLaLangue = triees.some((m) => questionsPourLangue(m).length > 0);
   // Rotation (par exemple selon le jour) : toutes les notions finissent par être proposées.
   const debut = triees.length ? ((decalage % triees.length) + triees.length) % triees.length : 0;
   const parPage = [...triees.slice(debut), ...triees.slice(0, debut)]
     .map((m) => {
-      const questions = (m.questions ?? []).filter((q) => langueQuestion(q) === langue);
-      return (questions.length ? questions : m.questions ?? []).map((q) => q.charAt(0).toUpperCase() + q.slice(1));
+      const questions = questionsPourLangue(m);
+      return (questions.length || aQuestionsDansLaLangue ? questions : m.questions ?? [])
+        .map((q) => q.charAt(0).toUpperCase() + q.slice(1));
     });
   const sortie = [];
   for (let rang = 0; sortie.length < max && parPage.some((l) => l.length > rang); rang += 1) {
@@ -67,7 +70,7 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
 }
 
 const ORDRE_NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const ORDRE_MATIERES = ["mathematiques", "physique-chimie"];
+const ORDRE_MATIERES = ["mathematiques", "physique-chimie", "philosophie"];
 /** Matière d'une notion : début de son sujet (« physique-chimie/etats-de-la-matiere » → « physique-chimie »). */
 const matiereDe = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
 

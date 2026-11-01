@@ -129,6 +129,16 @@
         ],
         "bonne": 1,
         "explication": "Entre les racines 2 et 3, le trinôme est du signe contraire de a = 1 : négatif. Exemple : x = 2,5 donne −0,25."
+      },
+      {
+        "type": "nombre",
+        "titre": "Sommet",
+        "question": "Quelle est l'abscisse du sommet de la parabole d'équation f(x) = x² − 6x + 5 ?",
+        "reponse": 3,
+        "indices": [
+          "Pour ax² + bx + c, l'abscisse du sommet est −b/(2a)."
+        ],
+        "solution": "−(−6)/(2 × 1) = 6/2 = 3."
       }
     ]
   },

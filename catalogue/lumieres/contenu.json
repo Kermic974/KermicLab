@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Les Lumières ne sont pas une leçon d'électricité : joue à questionner une idée, à chercher des preuves et à comprendre le XVIIIe siècle.",
+  "niveaux": [
+    {
+      "titre": "Intuition : oser poser des questions",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les **Lumières** sont un mouvement intellectuel européen du **XVIIIe siècle**. Le mot évoque la volonté d'éclairer les connaissances grâce à la **raison** : observer, argumenter et discuter plutôt que croire uniquement parce qu'une autorité l'affirme.",
+        "Les penseurs critiquent des injustices, l'intolérance et certains pouvoirs. Ils ne pensent pas tous la même chose. **Voltaire**, par exemple, défend la tolérance et combat des erreurs judiciaires.",
+        "Joue au détective d'idées : si quelqu'un dit « c'est vrai parce que je le dis », demande quelle preuve et quel raisonnement soutiennent cette affirmation."
+      ],
+      "exemple": { "titre": "Une affirmation à tester", "etapes": ["Deux personnes donnent des explications différentes d'un phénomène.", "Cherche ce qu'on peut observer et comparer.", "Une affirmation doit pouvoir être discutée ; répéter très fort ne la rend pas vraie."] },
+      "aRetenir": "Raison et esprit critique : examiner une affirmation avec des arguments. Cela n'autorise pas à humilier ceux qui ne sont pas d'accord."
+    },
+    {
+      "titre": "Collège : des idées qui circulent",
+      "niveau": "4e",
+      "paragraphes": [
+        "L'**Encyclopédie**, dirigée par **Diderot et d'Alembert**, commence à paraître en **1751**. Elle rassemble des savoirs, des techniques et des articles critiques. Les planches montrent aussi le travail des artisans.",
+        "**Montesquieu**, dans *De l'esprit des lois* en **1748**, réfléchit à la limitation du pouvoir : distinguer les fonctions législative, exécutive et judiciaire aide à éviter leur concentration. **Rousseau**, dans *Du contrat social* en **1762**, fait de la souveraineté du peuple une question centrale.",
+        "Livres, correspondances, salons, cafés et académies font circuler les idées. La **censure** peut freiner les publications ; ces réseaux touchent surtout les personnes qui ont accès à l'éducation et aux livres."
+      ],
+      "exemple": { "titre": "Trois rôles dans un club", "etapes": ["Une équipe propose les règles, une autre les applique, une troisième examine les contestations.", "Si une seule personne contrôle tout, contester une décision devient difficile.", "Ce jeu aide à comprendre la limitation du pouvoir ; ce n'est pas une copie exacte des institutions du XVIIIe siècle."] },
+      "aRetenir": "1751 : début de l'Encyclopédie. Montesquieu : limiter la concentration des pouvoirs ; Rousseau : réfléchir à la souveraineté du peuple."
+    },
+    {
+      "titre": "Lycée : des idéaux, des contradictions",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La critique de l'absolutisme ne signifie pas que chaque penseur veut la même démocratie. Certains espèrent des réformes par un souverain éclairé ; d'autres mettent davantage l'accent sur la participation des citoyens.",
+        "Les droits, la liberté et l'égalité sont discutés dans des sociétés où existent l'**esclavage**, la domination coloniale et de fortes inégalités entre femmes et hommes. Des critiques de l'esclavage se développent, mais tous les auteurs ne rejettent pas ces dominations et les pratiques ne suivent pas automatiquement les principes.",
+        "Les Lumières contribuent à un langage politique utilisé lors des révolutions américaine et française, sans en être la seule cause. En **1791**, **Olympe de Gouges** réclame l'égalité politique des femmes dans sa *Déclaration des droits de la femme et de la citoyenne* : c'est un prolongement critique des débats sur les droits."
+      ],
+      "exemple": { "titre": "Comparer principe et réalité", "etapes": ["Un texte affirme que les êtres humains ont des droits.", "Demande qui peut réellement voter, apprendre et vivre librement à cette époque.", "Un écart entre principe et pratique devient un sujet d'enquête, pas une raison d'ignorer le texte."] },
+      "aRetenir": "Un mouvement d'idées est divers. Distingue ce que les auteurs proposent, ce que les institutions permettent et ce que vivent les habitants."
+    }
+  ],
+  "application": {
+    "intro": "Associe chaque idée à son auteur ou à un repère, puis cherche ses effets et ses limites.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "Quand commence la publication de l'Encyclopédie de Diderot et d'Alembert ?", "choix": ["En 800", "En 1751", "En 1914"], "bonne": 1, "explication": "Le premier volume de l'Encyclopédie paraît en 1751, au XVIIIe siècle." },
+      { "type": "qcm", "titre": "Personnage", "question": "Quel penseur est associé à la limitation de la concentration des pouvoirs ?", "choix": ["Auguste", "Louis XIV", "Montesquieu"], "bonne": 2, "explication": "Montesquieu analyse les pouvoirs et les moyens de les limiter dans De l'esprit des lois." },
+      { "type": "qcm", "titre": "Cause et conséquence", "question": "Quel effet peut avoir la circulation des livres et des idées critiques ?", "choix": ["Favoriser les débats et la remise en question d'autorités", "Supprimer immédiatement toutes les inégalités", "Rendre tout débat inutile"], "bonne": 0, "explication": "La diffusion des idées ouvre des débats, mais leur application rencontre des obstacles et des oppositions." },
+      { "type": "qcm", "titre": "Tolérance", "question": "Quelle attitude correspond à la tolérance défendue par Voltaire ?", "choix": ["Persécuter ceux qui ont d'autres croyances", "Combattre la persécution liée aux croyances", "Interdire toute discussion"], "bonne": 1, "explication": "Voltaire combat l'intolérance religieuse et intervient contre certaines injustices judiciaires." },
+      { "type": "qcm", "titre": "Limites", "question": "Quelle affirmation sur les Lumières est exacte ?", "choix": ["Tous les auteurs ont le même programme politique", "Les droits proclamés abolissent aussitôt l'esclavage partout", "Les idées sont diverses et leur application reste inégale"], "bonne": 2, "explication": "Les Lumières ne constituent pas un parti unique ; les sociétés conservent de profondes contradictions." }
+    ]
+  },
+  "situation": {
+    "titre": "Le club des idées vérifiées",
+    "histoire": ["Imagine un club où l'on invente des règles de jeu. Une affiche affirme : « La personne qui parle le plus fort a toujours raison ! »", "Tu dois corriger cette règle, répartir les responsabilités et vérifier que personne n'est exclu sans raison. Aucun nom réel n'est nécessaire."],
+    "etapes": [
+      { "type": "qcm", "titre": "Examiner", "question": "Comment tester l'affirmation de l'affiche ?", "choix": ["Compter uniquement le volume de la voix", "Chercher des arguments et des preuves discutables par tous", "Ne jamais poser de question"], "bonne": 1, "explication": "L'esprit critique évalue les arguments, pas la force de la voix ni le prestige de la personne." },
+      { "type": "qcm", "titre": "Répartir", "question": "Quelle règle limite la concentration du pouvoir dans ce club ?", "choix": ["Une personne fait les règles, les applique et juge seule ses décisions", "Personne ne peut contester", "Des rôles distincts et une possibilité de contester les décisions"], "bonne": 2, "explication": "Séparer les responsabilités et permettre des recours aide à limiter les abus." },
+      { "type": "qcm", "titre": "Comparer aux pratiques", "question": "Le club annonce « égalité », mais interdit aux filles de participer. Que remarques-tu ?", "choix": ["Une contradiction entre le principe annoncé et la règle", "Une preuve que tous participent", "Un problème résolu par le seul mot égalité"], "bonne": 0, "explication": "Un principe doit être confronté aux règles réelles : écrire égalité ne suffit pas à l'appliquer." }
+    ],
+    "conclusion": "Tu as utilisé trois outils : preuve, limitation du pouvoir et comparaison entre principe et réalité. Relie-les de mémoire aux débats des Lumières."
+  }
+}

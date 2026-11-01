@@ -30,11 +30,14 @@ The standalone trigonometry-circle learning app (`index.html`, generated from `s
 `/cercle/`, next to the chat (ADR 0008).
 
 Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository also ships public examples in `catalogue/`, including eight geography
-topics: `mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
-`espaces-productifs`, `tourisme` and `afrique-australe` (Maputo corridor case study).
-Each geography topic has progressive middle-to-high-school levels, five self-marking practice exercises
-and a four-step challenge. Numerical scenario data are fictional; review references are in each `fiche.md`.
+read-only token. This repository also ships public examples in `catalogue/`: mathematics, physics and
+chemistry; eight geography topics (`mondialisation`, `mers-oceans`, `union-europeenne`,
+`dynamiques-territoriales`, `france-regions`, `espaces-productifs`, `tourisme` and `afrique-australe`);
+and nine philosophy pages: duty, the state, justice, freedom, language, reason, science, technology and
+truth. The geography topics have progressive middle-to-high-school levels, five self-marking practice
+exercises and a four-step challenge. Numerical scenario data are fictional; review references are in
+each `fiche.md`. Philosophy pages use the common template, with progressive explanations, authors,
+self-correcting quizzes and everyday challenges.
 
 ## Quick start
 

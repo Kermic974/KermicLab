@@ -29,11 +29,14 @@ L’application autonome du cercle trigonométrique (`index.html`, générée de
 `/cercle/`, à côté du chat (ADR 0008).
 
 Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
-jeton en lecture seule. Ce dépôt contient aussi des exemples publics dans `catalogue/`, dont huit notions
-de géographie : `mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
-`espaces-productifs`, `tourisme` et `afrique-australe` (étude du corridor de Maputo).
-Chaque notion propose des niveaux du collège au lycée, cinq exercices auto-corrigés et un défi en quatre étapes.
-Les données chiffrées des scénarios sont fictives ; les références de relecture figurent dans chaque `fiche.md`.
+jeton en lecture seule. Ce dépôt contient aussi des exemples publics dans `catalogue/` : mathématiques,
+physique-chimie, huit notions de géographie (`mondialisation`, `mers-oceans`, `union-europeenne`,
+`dynamiques-territoriales`, `france-regions`, `espaces-productifs`, `tourisme` et `afrique-australe`) et
+neuf pages de philosophie : devoir, État, justice, liberté, langage, raison, science, technique et vérité.
+Chaque notion de géographie propose des niveaux du collège au lycée, cinq exercices auto-corrigés et un
+défi en quatre étapes. Les données chiffrées des scénarios sont fictives ; les références de relecture
+figurent dans chaque `fiche.md`. Les pages de philosophie utilisent le gabarit commun : explications
+progressives, auteurs, QCM auto-corrigés et défis de la vie quotidienne.
 
 ## Démarrage rapide
 

@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Observe, compare, questionne : découvre comment artistes et savants renouvellent leurs façons de travailler.",
+  "niveaux": [
+    {
+      "titre": "Intuition : regarder autrement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Renaissance** est un mouvement culturel qui se développe d'abord dans des villes italiennes à partir du XIVe siècle, puis se diffuse en Europe aux XVe et XVIe siècles. Les artistes et savants s'intéressent aux œuvres de l'Antiquité et les transforment.",
+        "Des peintres utilisent la **perspective** pour donner une impression de profondeur. **Léonard de Vinci** peint, observe le corps humain et dessine des projets techniques. Tous ses projets ne deviennent pas des machines réalisées.",
+        "« Renaissance » ne signifie pas que personne ne créait au Moyen Âge. Il existe des continuités : des techniques, des livres et des savoirs circulaient déjà."
+      ],
+      "exemple": { "titre": "Jeu du regard", "etapes": ["Dessine une route dont les bords semblent se rejoindre au loin.", "Les objets proches paraissent plus grands que les objets lointains.", "Tu joues avec la profondeur, un enjeu important pour les artistes de la Renaissance."] },
+      "aRetenir": "La Renaissance renouvelle des pratiques existantes. Elle ne commence pas partout le même jour."
+    },
+    {
+      "titre": "Collège : livres, humanistes et mécènes",
+      "niveau": "5e",
+      "paragraphes": [
+        "Vers **1450**, **Gutenberg** met au point à Mayence un système d'imprimerie à caractères métalliques mobiles. L'imprimerie existait déjà en Asie sous d'autres formes. En Europe, cette technique facilite la fabrication de nombreux exemplaires d'un texte.",
+        "Les **humanistes**, comme **Érasme**, étudient les textes anciens, comparent leurs versions et accordent une grande importance à l'éducation. Ils ne rejettent pas tous la religion : beaucoup sont chrétiens et souhaitent réformer les pratiques.",
+        "Des **mécènes**, princes, riches familles ou autorités religieuses, financent les artistes. Les œuvres peuvent exprimer leur prestige et leurs croyances. En France, François Ier protège des artistes, dont Léonard de Vinci."
+      ],
+      "exemple": { "titre": "Copier ou imprimer ?", "etapes": ["Copier un livre à la main exige de réécrire chaque exemplaire.", "Avec des caractères mobiles, on compose une page puis on peut en imprimer plusieurs exemplaires.", "Cela favorise la diffusion des textes, sans rendre immédiatement tous les livres accessibles à tous."] },
+      "aRetenir": "Vers 1450 : imprimerie de Gutenberg en Europe. Humanisme : étudier, comparer et éduquer ; mécénat : financer la création."
+    },
+    {
+      "titre": "Lycée : diffusion et tensions religieuses",
+      "niveau": "seconde",
+      "paragraphes": [
+        "L'imprimerie accélère la diffusion de textes scientifiques, religieux et politiques. Mais une technique ne produit pas une seule conséquence : elle diffuse aussi des polémiques, et les autorités peuvent pratiquer la **censure**.",
+        "En **1517**, **Martin Luther** conteste notamment les indulgences, liées dans certaines pratiques au versement d'argent pour la remise de peines dues aux péchés. Les **Réformes protestantes** divisent la chrétienté occidentale. L'Église catholique se réforme également, notamment au concile de Trente, de **1545 à 1563**.",
+        "Pour expliquer ces transformations, relie les idées, les techniques et les intérêts politiques. Tous les Européens ne savent pas lire ; les inégalités et les conflits demeurent malgré l'essor des savoirs."
+      ],
+      "exemple": { "titre": "Lire une image financée", "etapes": ["Un prince commande son portrait à un artiste.", "Observe la posture, les vêtements et les objets représentés.", "Demande-toi comment l'œuvre montre son prestige : beauté artistique et message politique peuvent coexister."] },
+      "aRetenir": "1517 est un repère des Réformes. Ne confonds pas Renaissance artistique, humanisme et protestantisme, même si ces mouvements se croisent."
+    }
+  ],
+  "application": {
+    "intro": "Joue à relier une innovation, un acteur et ses effets. Les explications t'aident à éviter les raccourcis.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "Quand Gutenberg développe-t-il son système d'imprimerie en Europe ?", "choix": ["Vers 1450", "En 800", "En 1815"], "bonne": 0, "explication": "Vers 1450, Gutenberg développe l'impression à caractères métalliques mobiles à Mayence." },
+      { "type": "qcm", "titre": "Personnage", "question": "Quel artiste associe peinture, observation et projets techniques ?", "choix": ["Louis XIV", "Léonard de Vinci", "Robespierre"], "bonne": 1, "explication": "Léonard de Vinci est notamment peintre et dessinateur ; ses carnets témoignent de multiples recherches." },
+      { "type": "qcm", "titre": "Cause et conséquence", "question": "Quel effet l'imprimerie favorise-t-elle ?", "choix": ["Tous les habitants apprennent instantanément à lire", "Tous les conflits disparaissent", "Les textes peuvent circuler en davantage d'exemplaires"], "bonne": 2, "explication": "L'impression multiplie les exemplaires et facilite la diffusion, sans supprimer l'analphabétisme ni les tensions." },
+      { "type": "qcm", "titre": "Idées", "question": "Quelle activité correspond à l'humanisme ?", "choix": ["Comparer des textes anciens pour mieux les comprendre", "Interdire toute éducation", "Refuser toute étude du passé"], "bonne": 0, "explication": "Les humanistes étudient les langues et les textes, exercent leur jugement et valorisent l'éducation." },
+      { "type": "qcm", "titre": "Repère religieux", "question": "À quoi le repère 1517 est-il associé ?", "choix": ["Au couronnement de Charlemagne", "À la contestation de Luther et aux débuts de la Réforme protestante", "À la défaite de Waterloo"], "bonne": 1, "explication": "1517 est le repère des 95 thèses de Luther, liées notamment à la critique des indulgences." }
+    ]
+  },
+  "situation": {
+    "titre": "Ton exposition sur papier",
+    "histoire": ["Imagine une exposition avec un dessin en perspective, une page imprimée et le portrait d'un prince. Écris les notices sur papier, sans chercher à fabriquer une machine.", "Chaque notice doit dire ce qu'on voit, comment l'objet est produit et ce qu'il permet de comprendre."],
+    "etapes": [
+      { "type": "qcm", "titre": "Décrire", "question": "Dans ton dessin, que suggèrent des objets plus petits au loin ?", "choix": ["Une interdiction de dessiner", "Une impression de profondeur", "Une date exacte de fabrication"], "bonne": 1, "explication": "La taille apparente des objets contribue à l'effet de profondeur ; elle ne donne pas la date du dessin." },
+      { "type": "qcm", "titre": "Expliquer", "question": "Quelle notice est exacte pour ta page imprimée ?", "choix": ["Gutenberg invente toute forme d'impression dans le monde", "L'impression rend automatiquement chaque livre vrai", "L'imprimerie de Gutenberg facilite la multiplication des exemplaires en Europe"], "bonne": 2, "explication": "Il existe des traditions d'impression plus anciennes en Asie ; multiplier un texte ne garantit pas son exactitude." },
+      { "type": "qcm", "titre": "Questionner", "question": "Quelle question aide à comprendre le portrait d'un prince ?", "choix": ["Qui le finance et quelle image du pouvoir veut-il montrer ?", "Combien de téléphones possède le prince ?", "Pourquoi aucune œuvre n'existait avant lui ?"], "bonne": 0, "explication": "Identifier le commanditaire et son objectif permet d'interpréter l'œuvre sans nier sa valeur artistique." }
+    ],
+    "conclusion": "Tu as fait travailler ton regard et ton jugement. Associe de mémoire une presse à « vers 1450 » et un texte de Luther à « 1517 »."
+  }
+}

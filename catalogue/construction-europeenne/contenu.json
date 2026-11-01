@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi actualité" },
+  "intro": "Suis un projet de coopération qui se construit par étapes : l'Europe géographique, l'Union européenne et la zone euro ne sont pas la même chose.",
+  "niveaux": [
+    {
+      "titre": "Découverte : coopérer après les guerres",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Après la Seconde Guerre mondiale, des dirigeants européens cherchent à consolider la paix et à reconstruire l'économie en organisant une coopération durable. L'idée est de rendre certains intérêts communs plutôt que de préparer de nouvelles rivalités.",
+        "Jeu d'association : **1957** correspond aux traités de Rome ; **1992** à la signature du traité de Maastricht ; **2002** à l'arrivée des billets et pièces en euros. La construction se fait progressivement, avec des débats et des choix politiques."
+      ],
+      "aRetenir": "L'Union européenne est une organisation d'États, pas l'ensemble du continent européen."
+    },
+    {
+      "titre": "Comprendre : des six fondateurs à l'Union",
+      "niveau": "3e",
+      "paragraphes": [
+        "Le **9 mai 1950**, Robert Schuman propose une mise en commun du charbon et de l'acier, avec le rôle moteur de Jean Monnet. Le traité de Paris signé en **1951** crée la **CECA**, entrée en vigueur en 1952. Ses six membres sont la France, la République fédérale d'Allemagne, l'Italie, la Belgique, les Pays-Bas et le Luxembourg.",
+        "Les **traités de Rome de 1957**, entrés en vigueur en 1958, créent la Communauté économique européenne (**CEE**) et Euratom. La CEE développe un marché commun. La coopération économique s'élargit progressivement à d'autres domaines et à de nouveaux États.",
+        "Le **traité de Maastricht**, signé en 1992 et entré en vigueur en **1993**, institue l'Union européenne, une citoyenneté européenne et les bases de l'union économique et monétaire. L'euro est lancé en **1999** pour les transactions et la comptabilité ; les billets et pièces arrivent en **2002**.",
+        "Les élargissements, notamment celui de 2004 vers des pays d'Europe centrale et orientale, transforment l'Union. Le Royaume-Uni la quitte le **31 janvier 2020**, après le référendum de 2016 : c'est le Brexit. L'intégration n'est donc ni automatique ni irréversible."
+      ],
+      "exemple": {
+        "titre": "Trois ensembles à ne pas confondre",
+        "etapes": [
+          "L'Europe géographique comprend aussi des pays qui ne sont pas membres de l'Union.",
+          "La zone euro regroupe les pays de l'Union qui ont adopté l'euro.",
+          "L'espace Schengen concerne la circulation sans contrôles systématiques aux frontières intérieures ; sa composition diffère de celle de l'Union."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : institutions, souveraineté et défis",
+      "niveau": "terminale / lycée",
+      "paragraphes": [
+        "Le **Parlement européen** est élu directement par les citoyens depuis 1979. Le **Conseil de l'Union européenne** réunit les ministres des États membres ; avec le Parlement, il adopte la plupart des lois européennes. La **Commission européenne** propose notamment des textes et veille à l'application des traités.",
+        "Le **Conseil européen**, composé des chefs d'État ou de gouvernement, fixe les grandes orientations. Le **Conseil de l'Europe** est une autre organisation, distincte de l'Union. Les États ont confié certaines compétences à l'Union par des traités ; toutes les décisions ne relèvent pas du même niveau.",
+        "La construction européenne associe coopération et débats sur la souveraineté, les inégalités, les migrations, le climat et la sécurité. Pour analyser une actualité, identifie l'institution compétente et la date de la source. Une proposition n'est pas encore une loi ; les règles et la composition des ensembles peuvent évoluer."
+      ],
+      "aRetenir": "Vérifie qui propose, qui décide et à quel niveau : national ou européen."
+    }
+  ],
+  "application": {
+    "intro": "Reconstitue les objectifs, les acteurs et les transformations de la coopération européenne.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Causes",
+        "question": "Quel objectif motive les débuts de la construction européenne après 1945 ?",
+        "choix": ["Supprimer immédiatement tous les États", "Consolider la paix et reconstruire par la coopération", "Organiser une nouvelle guerre entre la France et l'Allemagne"],
+        "bonne": 1,
+        "indice": "Le projet cherche à remplacer les rivalités par des intérêts communs.",
+        "explication": "La coopération économique, notamment sur le charbon et l'acier, vise à soutenir la reconstruction et à rendre une nouvelle guerre moins probable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Quel ensemble comprend uniquement des membres fondateurs de la CECA ?",
+        "choix": ["France, Italie, Belgique", "Royaume-Uni, Espagne, Pologne", "Norvège, Suisse, Islande"],
+        "bonne": 0,
+        "indice": "Les six fondateurs se trouvent en Europe occidentale continentale.",
+        "explication": "La France, l'Italie et la Belgique sont trois des six fondateurs, avec la RFA, les Pays-Bas et le Luxembourg."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences institutionnelles",
+        "question": "Que fait le traité de Maastricht entré en vigueur en 1993 ?",
+        "choix": ["Il crée la CECA pour la première fois", "Il fait sortir le Royaume-Uni de l'Union", "Il institue l'Union européenne et une citoyenneté européenne"],
+        "bonne": 2,
+        "indice": "Distingue les étapes de 1951, 1993 et 2020.",
+        "explication": "Maastricht institue l'Union européenne et la citoyenneté européenne ; il pose aussi les bases de l'union économique et monétaire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences monétaires",
+        "question": "Quelle distinction est correcte pour l'euro ?",
+        "choix": ["Lancement en 1999, billets et pièces en 2002", "Billets en 1957, lancement en 2020", "Tous les pays d'Europe l'utilisent depuis 1951"],
+        "bonne": 0,
+        "indice": "La monnaie est utilisée dans les comptes avant d'arriver dans les portefeuilles.",
+        "explication": "L'euro débute en 1999 pour les transactions et la comptabilité. Les billets et pièces sont mis en circulation en 2002 dans les pays participants."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Vérifier trois titres d'actualité européenne",
+    "histoire": [
+      "Un journal scolaire prépare une rubrique sur l'Europe. Il reçoit trois phrases qui mélangent institutions, monnaie et appartenance à l'Union.",
+      "Tu dois les vérifier avec des documents institutionnels datés, sans présenter une règle susceptible d'évoluer comme éternelle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Distinguer les ensembles",
+        "question": "Comment corriger « Tous les pays européens utilisent l'euro » ?",
+        "choix": ["L'Europe, l'Union et la zone euro sont identiques", "La zone euro ne comprend qu'une partie des pays européens", "Aucun pays n'utilise l'euro"],
+        "bonne": 1,
+        "indice": "Un continent et une union monétaire sont deux ensembles différents.",
+        "explication": "La zone euro est un sous-ensemble de l'Union européenne, elle-même distincte du continent européen. Il faut vérifier la liste des membres à la date étudiée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Identifier l'institution",
+        "question": "Quelle institution réunit les ministres des États membres pour participer à l'adoption des lois européennes ?",
+        "choix": ["Le Conseil de l'Europe", "Le Conseil européen des chefs d'État ou de gouvernement", "Le Conseil de l'Union européenne"],
+        "bonne": 2,
+        "indice": "Trois noms proches désignent des organisations ou fonctions différentes.",
+        "explication": "Le Conseil de l'Union réunit les ministres et légifère généralement avec le Parlement. Le Conseil européen donne les orientations ; le Conseil de l'Europe est distinct de l'Union."
+      },
+      {
+        "type": "qcm",
+        "titre": "Contextualiser une évolution",
+        "question": "Que montre le Brexit ?",
+        "choix": ["Qu'un État peut quitter l'Union, comme le Royaume-Uni en 2020", "Que le Royaume-Uni quitte le continent européen", "Que l'Union disparaît en 2016"],
+        "bonne": 0,
+        "indice": "Une appartenance politique n'est pas une position géographique.",
+        "explication": "Le Royaume-Uni quitte l'Union le 31 janvier 2020 après le référendum de 2016. Il reste géographiquement en Europe."
+      }
+    ],
+    "conclusion": "Mission accomplie : tes titres distinguent les dates, les ensembles et les institutions, et invitent à vérifier les sources actuelles."
+  }
+}

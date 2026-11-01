@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Voyage avec une carte et des objets du quotidien pour comprendre les transformations entre le XVe et le XVIIIe siècle.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une période, pas notre actualité",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans le découpage scolaire français, les **Temps modernes** vont souvent de **1492 à 1789**. Le mot « modernes » ne désigne donc pas nos téléphones ! La Renaissance et les Lumières appartiennent à cette période et ont aussi leurs propres pages.",
+        "En **1492**, **Christophe Colomb** atteint les Caraïbes en cherchant une route maritime vers l'Asie pour les souverains espagnols. Les Amériques sont déjà peuplées depuis des millénaires : ce n'est pas la découverte d'un continent vide.",
+        "Les voyages européens intensifient les contacts entre continents. Des aliments, comme le cacao originaire des Amériques, circulent ; mais ces contacts s'accompagnent aussi de conquêtes et de violences."
+      ],
+      "exemple": { "titre": "Jeu des mots", "etapes": ["Imagine une carte européenne avant le voyage de Colomb, puis une carte après.", "Des terres sont nouvelles pour ces cartographes, pas pour leurs habitants.", "Remplace « monde vide découvert » par « rencontre suivie de conquêtes et de colonisation »."] },
+      "aRetenir": "1492 et 1789 sont des repères conventionnels. Une même période peut contenir plusieurs mouvements et des expériences très différentes."
+    },
+    {
+      "titre": "Collège : conquêtes et monarchies",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Les puissances européennes constituent des **empires coloniaux**. Dans les Amériques, les populations autochtones subissent les guerres, le travail forcé et des maladies venues d'Europe. L'effondrement démographique a plusieurs causes, pas une seule.",
+        "La **traite atlantique** déporte des millions d'Africains réduits en esclavage vers les colonies. Le commerce dit triangulaire relie certains ports d'Europe, d'Afrique et des Amériques, mais toutes les routes ne forment pas un triangle. Des personnes asservies résistent à cette domination.",
+        "En France, **Henri IV** promulgue l'**édit de Nantes en 1598**, qui accorde des droits limités aux protestants. **Louis XIV** le révoque en **1685**, renforçant les persécutions et provoquant des départs. En **1682**, il installe durablement la cour et le gouvernement à Versailles."
+      ],
+      "exemple": { "titre": "Deux décisions à comparer", "etapes": ["1598 : un compromis permet sous conditions l'exercice du culte protestant.", "1685 : ce compromis est supprimé.", "Compare les conséquences pour les protestants : un changement de loi peut bouleverser une vie."] },
+      "aRetenir": "Repères : 1492, édit de Nantes en 1598, cour à Versailles en 1682, révocation en 1685. Les échanges coloniaux reposent aussi sur la contrainte."
+    },
+    {
+      "titre": "Lycée : comprendre l'absolutisme et ses limites",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La **monarchie absolue** affirme que le roi détient l'autorité souveraine et ne la partage pas avec une assemblée élue. En France, la justification du droit divin présente son pouvoir comme venant de Dieu. Versailles met ce pouvoir en scène et permet de surveiller la noblesse de cour.",
+        "« Absolu » ne veut pas dire que le roi peut tout réaliser sans obstacle : privilèges, coutumes, finances, résistances et distances limitent son action. L'État renforce son administration et son armée, tout en négociant et en affrontant des oppositions.",
+        "Tous les États européens ne suivent pas le même modèle. En Angleterre, les conflits du XVIIe siècle puis la **Glorieuse Révolution de 1688-1689** et le **Bill of Rights de 1689** renforcent le Parlement face au souverain. Ce régime n'est pas encore une démocratie pour tous."
+      ],
+      "exemple": { "titre": "Lire un plan de palais", "etapes": ["La taille du palais, les jardins et les cérémonies donnent une image de grandeur.", "Ils montrent une volonté de prestige, pas la disparition des difficultés financières.", "Compare une image officielle du pouvoir et un récit de ses résistances."] },
+      "aRetenir": "Explique un pouvoir par ses institutions, ses justifications et ses limites. Échanges mondiaux ne signifie pas échanges égaux."
+    }
+  ],
+  "application": {
+    "intro": "Cherche les repères et les conséquences pour les habitants, pas seulement pour les souverains.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "Quel événement est associé à 1492 ?", "choix": ["Le sacre de Napoléon", "L'arrivée de Christophe Colomb dans les Caraïbes", "Le début du chemin de fer"], "bonne": 1, "explication": "Colomb atteint les Caraïbes en 1492 ; les Amériques ont déjà des habitants et des sociétés." },
+      { "type": "qcm", "titre": "Personnage", "question": "Quel roi installe durablement sa cour à Versailles en 1682 ?", "choix": ["Charlemagne", "Auguste", "Louis XIV"], "bonne": 2, "explication": "Versailles devient le principal lieu de la cour et du gouvernement de Louis XIV en 1682." },
+      { "type": "qcm", "titre": "Cause et conséquence", "question": "Quelle conséquence suit la révocation de l'édit de Nantes ?", "choix": ["Des persécutions renforcées et l'exil de nombreux protestants", "La création du suffrage universel", "La fin de toutes les religions"], "bonne": 0, "explication": "La révocation en 1685 supprime les droits accordés par l'édit et pousse de nombreux protestants à partir." },
+      { "type": "qcm", "titre": "Colonisation", "question": "Pourquoi les populations autochtones des Amériques diminuent-elles fortement après les conquêtes ?", "choix": ["Parce que le continent était vide", "À cause notamment des épidémies, des violences et du travail forcé", "Parce que tous leurs habitants partent volontairement en Europe"], "bonne": 1, "explication": "L'effondrement démographique résulte de causes multiples, dont les maladies introduites, les guerres et l'exploitation." },
+      { "type": "qcm", "titre": "Pouvoir", "question": "Quelle définition de la monarchie absolue est la plus juste ?", "choix": ["Chaque habitant décide de chaque loi", "Le roi ne rencontre jamais de résistance", "Le roi revendique l'autorité souveraine, mais son action a des limites"], "bonne": 2, "explication": "L'absolutisme est une conception de la souveraineté ; il n'efface pas les contraintes et les oppositions." }
+    ]
+  },
+  "situation": {
+    "titre": "Une tasse et un palais pour mémoriser",
+    "histoire": ["Dessine une tasse de chocolat et un palais. Ces deux images seront tes aides-mémoire pour raconter les échanges atlantiques et le pouvoir royal.", "Aucun achat n'est nécessaire : le défi consiste à écrire des légendes qui n'oublient pas les personnes derrière les objets."],
+    "etapes": [
+      { "type": "qcm", "titre": "L'origine d'un produit", "question": "Quelle légende convient au cacao ?", "choix": ["Une plante inventée à Versailles", "Un produit originaire des Amériques, connu avant l'arrivée des Européens", "Un produit apparu avec les trains"], "bonne": 1, "explication": "Les sociétés des Amériques utilisent le cacao avant la colonisation européenne." },
+      { "type": "qcm", "titre": "Ne pas effacer les personnes", "question": "Que faut-il ajouter à une carte du commerce colonial du sucre ?", "choix": ["Seulement des flèches de marchandises", "L'idée que tous travaillent librement", "Le rôle du travail forcé et de l'esclavage dans les plantations"], "bonne": 2, "explication": "La production coloniale de sucre repose largement sur le travail de personnes réduites en esclavage." },
+      { "type": "qcm", "titre": "L'image du pouvoir", "question": "Que peut symboliser ton dessin de Versailles ?", "choix": ["La mise en scène du pouvoir de Louis XIV", "Une démocratie où chacun vote les lois", "La preuve que le roi n'a aucune limite"], "bonne": 0, "explication": "Versailles montre le prestige royal sans prouver une puissance sans contraintes." }
+    ],
+    "conclusion": "Associe la tasse aux contacts et à leurs inégalités, le palais à Louis XIV. Refais tes légendes de mémoire en citant 1492 et 1682."
+  }
+}

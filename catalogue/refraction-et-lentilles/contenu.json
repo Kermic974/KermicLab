@@ -128,6 +128,17 @@
           "1/10 − 1/30 = 2/30 = 1/15."
         ],
         "solution": "1/OA' = 1/15, donc OA' = 15 cm."
+      },
+      {
+        "type": "qcm",
+        "titre": "Lentille convergente",
+        "question": "Un objet réel est placé au-delà du foyer d'une lentille convergente. L'image formée sur un écran est…",
+        "choix": [
+          "réelle",
+          "virtuelle"
+        ],
+        "bonne": 0,
+        "explication": "Au-delà du foyer, les rayons émergents convergent réellement : on peut recueillir l'image sur un écran."
       }
     ]
   },
