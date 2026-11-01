@@ -14,6 +14,7 @@ mots-cles:
   - richesse specifique
   - espece menacee
   - conservation biodiversite
+  - pollinisateurs
 questions:
   - c'est quoi la biodiversité ?
   - comment mesure-t-on la diversité du vivant ?

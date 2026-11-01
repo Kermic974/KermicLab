@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La reproduction humaine implique des cellules reproductrices et des étapes biologiques. Les changements de la puberté et les cycles varient d'une personne à l'autre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : grandir et se reproduire",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "À la puberté, le corps évolue sous l'action de changements hormonaux. Le moment et le rythme de ces changements varient beaucoup d'une personne à l'autre.",
+        "La reproduction humaine commence lorsqu'un spermatozoïde féconde un ovocyte. Une grossesse peut ensuite se développer si l'embryon s'implante dans l'utérus."
+      ],
+      "exemple": { "titre": "Des changements différents", "etapes": ["Certaines personnes grandissent ou voient leur voix changer plus tôt que d'autres.", "Cette variation est habituelle : la puberté n'arrive pas au même âge ni au même rythme pour tout le monde."] },
+      "aRetenir": "La puberté est une période de changements ; il existe une grande diversité de rythmes normaux."
+    },
+    {
+      "titre": "Gamètes et fécondation",
+      "niveau": "collège",
+      "paragraphes": [
+        "Les **gamètes** sont les cellules reproductrices : les spermatozoïdes sont produits dans les testicules et les ovocytes mûrissent dans les ovaires. Les ovaires libèrent généralement un ovocyte au cours d'un cycle, mais les cycles peuvent varier.",
+        "Si un spermatozoïde fusionne avec un ovocyte, la fécondation forme une cellule-œuf. Après des divisions cellulaires, l'embryon peut s'implanter dans la paroi de l'utérus et poursuivre son développement."
+      ],
+      "exemple": { "titre": "De la fécondation à l'implantation", "etapes": ["La fécondation a généralement lieu dans une trompe utérine.", "L'embryon se divise en se déplaçant vers l'utérus ; une implantation peut ensuite avoir lieu dans sa paroi."] },
+      "aRetenir": "La fécondation et l'implantation sont deux étapes différentes ; une fécondation ne garantit pas à elle seule une grossesse qui se poursuivra."
+    },
+    {
+      "titre": "Cycles et prévention de santé",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Le cycle menstruel correspond à des changements hormonaux et physiologiques qui préparent notamment l'utérus à une éventuelle grossesse. La durée et les symptômes varient ; un cycle n'est pas toujours identique d'un mois à l'autre.",
+        "Il existe des moyens de contraception et des moyens de réduire le risque d'infections sexuellement transmissibles. Leur efficacité et leur usage diffèrent ; le préservatif contribue à réduire le risque d'IST et de grossesse, sans supprimer tout risque. Les choix de santé se discutent avec un professionnel."
+      ],
+      "exemple": { "titre": "Une information plutôt qu'un mythe", "etapes": ["La date de l'ovulation peut varier, même quand les cycles semblent réguliers.", "Le calendrier seul n'est donc pas une méthode fiable pour éviter une grossesse ; un professionnel ou un centre de santé peut présenter les options adaptées."] },
+      "aRetenir": "Les cycles varient et une information générale ne remplace pas un conseil confidentiel de santé adapté à la personne."
+    }
+  ],
+  "application": {
+    "intro": "Vérifie les étapes de la reproduction et distingue les faits des idées trop simplifiées.",
+    "exercices": [
+      { "type": "qcm", "titre": "Gamètes", "question": "Quelles cellules sont les gamètes humains ?", "choix": ["Les spermatozoïdes et les ovocytes", "Les globules rouges et les neurones", "Les cellules de peau uniquement"], "bonne": 0, "explication": "Les spermatozoïdes et les ovocytes sont les cellules reproductrices." },
+      { "type": "qcm", "titre": "Fécondation", "question": "Que forme la fusion d'un spermatozoïde et d'un ovocyte ?", "choix": ["Une cellule-œuf", "Un organe complet immédiatement", "Un placenta avant toute division"], "bonne": 0, "explication": "La fécondation forme une cellule-œuf qui commence ensuite à se diviser." },
+      { "type": "qcm", "titre": "Cycle menstruel", "question": "Quelle affirmation sur la durée du cycle est correcte ?", "choix": ["Elle peut varier d'une personne à l'autre et d'un cycle à l'autre", "Elle est exactement identique pour tout le monde", "Elle ne dépend d'aucun changement hormonal"], "bonne": 0, "explication": "Les cycles varient ; une valeur moyenne ne décrit pas toutes les personnes ni tous les mois." }
+    ]
+  },
+  "situation": {
+    "titre": "Vérifier une information de santé",
+    "histoire": ["Dans une discussion, quelqu'un affirme que le calendrier des règles permet toujours d'éviter une grossesse. La classe cherche une réponse fiable et respectueuse."],
+    "etapes": [
+      { "type": "qcm", "titre": "Évaluer l'affirmation", "question": "Pourquoi le calendrier seul ne permet-il pas de prévoir avec certitude une période sans risque de grossesse ?", "choix": ["L'ovulation et la durée des cycles peuvent varier", "Les cycles sont toujours exactement de 28 jours", "La fécondation peut arriver sans gamète"], "bonne": 0, "explication": "Le moment de l'ovulation peut changer ; le calendrier seul n'est pas une méthode fiable de contraception." },
+      { "type": "qcm", "titre": "Trouver de l'aide", "question": "Où obtenir des informations fiables et adaptées sur la contraception ou la santé sexuelle ?", "choix": ["Auprès d'un professionnel de santé ou d'un centre de santé", "Dans une rumeur anonyme", "En partageant des informations personnelles en ligne"], "bonne": 0, "explication": "Les professionnels et les centres de santé peuvent donner des informations adaptées et confidentielles." }
+    ],
+    "conclusion": "La reproduction est un sujet de science et de santé. Les personnes méritent des informations exactes, respectueuses et adaptées, sans pression ni jugement."
+  }
+}

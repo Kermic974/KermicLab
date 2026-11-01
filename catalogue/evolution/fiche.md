@@ -14,6 +14,8 @@ mots-cles:
   - ancetre commun
   - mutation population
   - derive genetique
+  - animal evolue
+  - bacteries deviennent elles resistantes aux antibiotiques
 questions:
   - comment fonctionne l'évolution des espèces ?
   - est-ce qu'un animal évolue parce qu'il en a besoin ?

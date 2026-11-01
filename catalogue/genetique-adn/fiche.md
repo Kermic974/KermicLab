@@ -16,6 +16,7 @@ mots-cles:
   - allèle
   - heredite genetique
   - information genetique
+  - caracteres se transmettent
 questions:
   - c'est quoi l'ADN ?
   - quelle est la différence entre un gène et un chromosome ?

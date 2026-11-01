@@ -15,6 +15,7 @@ mots-cles:
   - chaine alimentaire
   - reseau trophique
   - milieu de vie
+  - decomposeurs
 questions:
   - c'est quoi un écosystème ?
   - quelle est la différence entre un milieu et un écosystème ?

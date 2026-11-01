@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Les volcans évacuent du magma et des gaz depuis l'intérieur de la Terre. Le style d'une éruption dépend notamment des propriétés du magma.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la roche en fusion",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Sous la surface, des roches peuvent fondre partiellement et former du **magma**, qui contient aussi des gaz et parfois des cristaux.",
+        "Quand ce magma arrive à la surface, on l'appelle **lave**. En refroidissant, elle forme des roches volcaniques."
+      ],
+      "exemple": { "titre": "Une coulée refroidie", "etapes": ["Une lave s'écoule puis perd de la chaleur au contact de l'air ou de l'eau.", "Elle se solidifie et forme une roche, par exemple un basalte pour certaines laves."] },
+      "aRetenir": "Le magma est sous la surface ; la lave est le magma arrivé à la surface."
+    },
+    {
+      "titre": "Éruptions effusives et explosives",
+      "niveau": "collège",
+      "paragraphes": [
+        "Un magma fluide laisse plus facilement les gaz s'échapper : l'éruption peut produire des coulées de lave, dite **effusive**. Un magma plus visqueux peut retenir les gaz et favoriser une éruption **explosive**.",
+        "Les éruptions explosives peuvent produire des cendres, des blocs et des nuées ardentes, très dangereuses. Les styles réels varient et un volcan peut connaître différentes phases."
+      ],
+      "exemple": { "titre": "Deux comportements", "etapes": ["Une lave basaltique fluide peut former une coulée qui avance sur les pentes.", "Un magma riche en gaz et visqueux peut se fragmenter violemment et projeter des matériaux."] },
+      "aRetenir": "La viscosité, la composition et la quantité de gaz influencent le style éruptif ; aucun volcan n'est sans risque."
+    },
+    {
+      "titre": "Origine des magmas et surveillance",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Les magmas se forment principalement par fusion partielle de roches du manteau ou de la croûte. La décompression, l'apport d'eau et les transferts de chaleur peuvent favoriser cette fusion, notamment aux dorsales, en subduction ou dans certains points chauds.",
+        "Les observatoires suivent plusieurs indicateurs : séismes, déformation du sol, gaz et température. Ces mesures contribuent à évaluer une situation, mais la prévision d'une éruption reste incertaine."
+      ],
+      "exemple": { "titre": "Surveillance d'un volcan", "etapes": ["Des capteurs enregistrent une hausse de petits séismes et une déformation du sol.", "Les scientifiques confrontent plusieurs indices et informent les autorités ; un indicateur seul ne permet pas de dater sûrement une éruption."] },
+      "aRetenir": "La surveillance aide à évaluer un risque, mais les habitants doivent suivre les autorités plutôt que tenter de prévoir eux-mêmes une éruption."
+    }
+  ],
+  "application": {
+    "intro": "Utilise les mots justes et relie les propriétés du magma au comportement éruptif.",
+    "exercices": [
+      { "type": "qcm", "titre": "Magma ou lave", "question": "Comment appelle-t-on le magma lorsqu'il atteint la surface ?", "choix": ["La lave", "Le granite", "La cendre uniquement"], "bonne": 0, "explication": "Le magma arrivé à la surface est appelé lave." },
+      { "type": "qcm", "titre": "Gaz et viscosité", "question": "Quel magma peut favoriser une éruption explosive ?", "choix": ["Un magma visqueux qui retient davantage les gaz", "Un magma sans gaz dans tous les cas", "Une roche déjà complètement refroidie"], "bonne": 0, "explication": "Un magma visqueux peut emprisonner les gaz, ce qui favorise une fragmentation explosive." },
+      { "type": "qcm", "titre": "Surveillance", "question": "Quel ensemble d'observations peut aider à surveiller un volcan ?", "choix": ["Séismes, déformation du sol et émissions de gaz", "La couleur du ciel seule", "Le calendrier seul"], "bonne": 0, "explication": "Les observatoires croisent plusieurs mesures pour évaluer l'activité volcanique." }
+    ]
+  },
+  "situation": {
+    "titre": "Se préparer à une alerte volcanique",
+    "histoire": ["Un volcan de la région est placé sous surveillance renforcée. Les autorités communiquent des consignes et les habitants préparent un plan familial."],
+    "etapes": [
+      { "type": "qcm", "titre": "S'informer", "question": "Quelle information faut-il privilégier en cas d'alerte ?", "choix": ["Les bulletins des autorités et de l'observatoire volcanologique", "Les messages anonymes non vérifiés", "Une prédiction personnelle fondée sur la forme des nuages"], "bonne": 0, "explication": "Les autorités et les observatoires publient les informations adaptées au niveau de risque local." },
+      { "type": "qcm", "titre": "Évacuer", "question": "Si une évacuation est ordonnée, que faut-il faire ?", "choix": ["Suivre l'itinéraire et les consignes officielles", "Se rapprocher du cratère pour observer", "Attendre une certitude personnelle avant d'agir"], "bonne": 0, "explication": "Une évacuation doit suivre les consignes officielles et les itinéraires prévus." }
+    ],
+    "conclusion": "Connaître les phénomènes aide à comprendre le risque, mais les décisions de sécurité reposent sur les consignes officielles locales."
+  }
+}
