@@ -1,0 +1,173 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : l'effet domino",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une rangée infinie de dominos tombera entièrement si deux conditions sont réunies : **le premier tombe**, et **chaque domino qui tombe fait tomber le suivant**.",
+        "Le raisonnement par récurrence applique cette idée pour démontrer qu'une propriété est vraie **pour tous les entiers naturels** n à partir d'un certain rang."
+      ]
+    },
+    {
+      "titre": "Le principe",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour démontrer qu'une propriété P(n) est vraie pour tout n ≥ n₀ :",
+        "1. **Initialisation** : on vérifie que P(n₀) est vraie (le premier domino tombe).",
+        "2. **Hérédité** : on suppose P(n) vraie pour un entier n ≥ n₀ (hypothèse de récurrence) et on démontre P(n + 1) (chaque domino fait tomber le suivant).",
+        "3. **Conclusion** : P(n) est vraie pour tout n ≥ n₀."
+      ]
+    },
+    {
+      "titre": "Exemple : une somme",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Montrons que **1 + 2 + … + n = n(n + 1)/2** pour tout n ≥ 1."
+      ],
+      "exemple": {
+        "titre": "Démonstration",
+        "etapes": [
+          "Initialisation : pour n = 1, 1 = 1 × 2/2. Vrai.",
+          "Hérédité : supposons 1 + … + n = n(n + 1)/2. Alors 1 + … + n + (n + 1) = n(n + 1)/2 + (n + 1) = (n + 1)(n + 2)/2 : c'est P(n + 1).",
+          "Conclusion : la formule est vraie pour tout n ≥ 1."
+        ]
+      }
+    },
+    {
+      "titre": "Exemple : une divisibilité",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Montrons que **4ⁿ − 1 est divisible par 3** pour tout n ≥ 0.",
+        "Initialisation : 4⁰ − 1 = 0, divisible par 3. Hérédité : si 4ⁿ − 1 = 3k, alors 4ⁿ⁺¹ − 1 = 4 × 4ⁿ − 1 = 4(4ⁿ − 1) + 3 = 3(4k + 1), divisible par 3."
+      ]
+    },
+    {
+      "titre": "Les pièges",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Ne jamais oublier l'initialisation.** Pour « 4ⁿ + 1 est divisible par 3 », l'hérédité marche (4ⁿ⁺¹ + 1 = 4(4ⁿ + 1) − 3), mais la propriété est fausse : 4⁰ + 1 = 2 n'est pas divisible par 3. Aucun domino ne tombe !",
+        "Dans l'hérédité, il faut **utiliser** l'hypothèse de récurrence, sinon on n'a rien démontré par récurrence."
+      ],
+      "aRetenir": "Initialisation + hérédité : les deux sont indispensables."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les étapes de la récurrence.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Vocabulaire",
+        "question": "Comment s'appelle l'étape où l'on vérifie la propriété pour le premier entier ?",
+        "choix": [
+          "L'initialisation",
+          "L'hérédité",
+          "La conclusion"
+        ],
+        "bonne": 0,
+        "explication": "C'est l'initialisation : le premier domino tombe."
+      },
+      {
+        "type": "nombre",
+        "titre": "Somme",
+        "question": "Calcule 1 + 2 + … + 20 à l'aide de la formule démontrée par récurrence.",
+        "reponse": 210,
+        "indices": [
+          "n(n + 1)/2 avec n = 20."
+        ],
+        "solution": "20 × 21 ÷ 2 = 210."
+      },
+      {
+        "type": "nombre",
+        "titre": "Hérédité",
+        "question": "Dans l'hérédité, on écrit 4ⁿ⁺¹ − 1 = 4(4ⁿ − 1) + k. Combien vaut k ?",
+        "reponse": 3,
+        "indices": [
+          "Développe 4(4ⁿ − 1) = 4ⁿ⁺¹ − 4."
+        ],
+        "solution": "4ⁿ⁺¹ − 4 + k = 4ⁿ⁺¹ − 1, donc k = 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conjecturer",
+        "question": "u₀ = 1 et uₙ₊₁ = uₙ + 2n + 3. Calcule u₁, u₂, u₃. Quelle formule conjectures-tu ?",
+        "choix": [
+          "uₙ = 2n + 1",
+          "uₙ = (n + 1)²",
+          "uₙ = n² + 1"
+        ],
+        "bonne": 1,
+        "explication": "u₁ = 4, u₂ = 9, u₃ = 16 : uₙ = (n + 1)². Une récurrence le démontre, car (n + 1)² + 2n + 3 = (n + 2)².",
+        "indice": "u₁ = 1 + 3 = 4."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le piège",
+        "question": "On montre que si 4ⁿ + 1 est divisible par 3, alors 4ⁿ⁺¹ + 1 aussi. Peut-on conclure que 4ⁿ + 1 est toujours divisible par 3 ?",
+        "choix": [
+          "Oui",
+          "Non, l'initialisation est fausse"
+        ],
+        "bonne": 1,
+        "explication": "4⁰ + 1 = 2 et 4¹ + 1 = 5 ne sont pas divisibles par 3 : sans initialisation, l'hérédité seule ne prouve rien."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La somme des nombres impairs",
+    "histoire": [
+      "Une élève remarque que 1 = 1, 1 + 3 = 4, 1 + 3 + 5 = 9… Les sommes des premiers nombres impairs ressemblent à des carrés !",
+      "Vérifions, conjecturons, puis démontrons."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Vérifier",
+        "question": "Calcule 1 + 3 + 5 + 7 + 9.",
+        "reponse": 25,
+        "indices": [
+          "Additionne les 5 premiers nombres impairs."
+        ],
+        "solution": "1 + 3 + 5 + 7 + 9 = 25 = 5²."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conjecturer",
+        "question": "Que vaut la somme des n premiers nombres impairs, 1 + 3 + … + (2n − 1) ?",
+        "choix": [
+          "2n",
+          "n²",
+          "n² + 1"
+        ],
+        "bonne": 1,
+        "explication": "1, 4, 9, 16, 25 : ce sont les carrés n²."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'hérédité",
+        "question": "On suppose 1 + 3 + … + (2n − 1) = n². En ajoutant le nombre impair suivant, 2n + 1, on obtient n² + 2n + 1 = (n + k)². Combien vaut k ?",
+        "reponse": 1,
+        "indices": [
+          "Reconnais une identité remarquable."
+        ],
+        "solution": "n² + 2n + 1 = (n + 1)² : c'est bien la propriété au rang n + 1. Avec l'initialisation (1 = 1²), c'est démontré !"
+      },
+      {
+        "type": "nombre",
+        "titre": "Appliquer",
+        "question": "Combien vaut la somme des 50 premiers nombres impairs ?",
+        "reponse": 2500,
+        "indices": [
+          "C'est n² avec n = 50."
+        ],
+        "solution": "50² = 2 500."
+      }
+    ],
+    "conclusion": "Bravo ! Tu as suivi le chemin complet d'un mathématicien : observer, conjecturer, démontrer. La récurrence transforme une intuition en certitude pour une infinité de cas."
+  }
+}

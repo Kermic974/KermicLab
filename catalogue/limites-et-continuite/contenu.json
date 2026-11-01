@@ -1,0 +1,176 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : s'approcher sans jamais atteindre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Calcule 1/x pour x = 10, 100, 1 000, 1 000 000 : 0,1 ; 0,01 ; 0,001 ; 0,000 001. Plus x devient grand, plus 1/x s'approche de 0, sans jamais l'atteindre. On dit que **1/x tend vers 0 quand x tend vers +∞**.",
+        "La courbe se rapproche alors de plus en plus de la droite y = 0 : c'est une **asymptote**."
+      ]
+    },
+    {
+      "titre": "Limites en l'infini",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Limites de référence : x, x², x³, √x et eˣ tendent vers **+∞** en +∞ ; 1/x, 1/x² et e⁻ˣ tendent vers **0**.",
+        "Si f(x) tend vers un nombre L quand x tend vers ±∞, la droite **y = L** est une **asymptote horizontale** à la courbe. Exemple : f(x) = 5 − 1/x a pour asymptote y = 5."
+      ]
+    },
+    {
+      "titre": "Opérations et formes indéterminées",
+      "niveau": "terminale",
+      "paragraphes": [
+        "On combine les limites comme les nombres, sauf dans quatre cas d'**indétermination** : « ∞ − ∞ », « 0 × ∞ », « ∞/∞ » et « 0/0 ».",
+        "Pour lever une indétermination avec une fraction rationnelle en l'infini, on **factorise par le terme de plus haut degré**."
+      ],
+      "exemple": {
+        "titre": "Exemple : (3x² + 1)/(x² − 5) en +∞",
+        "etapes": [
+          "Forme « ∞/∞ » : on factorise par x² en haut et en bas.",
+          "(3x² + 1)/(x² − 5) = (3 + 1/x²)/(1 − 5/x²).",
+          "1/x² et 5/x² tendent vers 0 : la limite vaut 3/1 = 3."
+        ]
+      }
+    },
+    {
+      "titre": "Limite en un point et asymptote verticale",
+      "niveau": "terminale",
+      "paragraphes": [
+        "f(x) = 1/(x − 2) n'est pas définie en 2. Quand x s'approche de 2 par la droite (x > 2), x − 2 est un petit nombre positif : f(x) tend vers **+∞**. Par la gauche, vers **−∞**.",
+        "La droite **x = 2** est une **asymptote verticale**."
+      ]
+    },
+    {
+      "titre": "Continuité et valeurs intermédiaires",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Une fonction est **continue** sur un intervalle si on peut tracer sa courbe **sans lever le crayon**. Les fonctions usuelles (polynômes, exp, ln…) sont continues là où elles sont définies.",
+        "**Théorème des valeurs intermédiaires (TVI)** : si f est continue et strictement monotone sur [a ; b], alors pour tout k compris entre f(a) et f(b), l'équation f(x) = k a une **unique** solution sur [a ; b]."
+      ],
+      "aRetenir": "Exemple : x³ + x − 1 = 0 a une unique solution sur [0 ; 1] (f(0) = −1 < 0 < f(1) = 1, et f est croissante). La calculatrice donne environ 0,68."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à calculer des limites.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Forme ∞/∞",
+        "question": "Calcule la limite de (3x² + 1)/(x² − 5) quand x tend vers +∞.",
+        "reponse": 3,
+        "indices": [
+          "Factorise par x² au numérateur et au dénominateur."
+        ],
+        "solution": "(3 + 1/x²)/(1 − 5/x²) tend vers 3/1 = 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Limite de référence",
+        "question": "Quand x tend vers +∞, 1/x tend vers…",
+        "choix": [
+          "0",
+          "1",
+          "+∞"
+        ],
+        "bonne": 0,
+        "explication": "1/x devient aussi petit qu'on veut : la limite est 0."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une autre fraction",
+        "question": "Calcule la limite de (2x + 1)/(x − 3) quand x tend vers +∞.",
+        "reponse": 2,
+        "indices": [
+          "Factorise par x en haut et en bas."
+        ],
+        "solution": "(2 + 1/x)/(1 − 3/x) tend vers 2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Asymptote verticale",
+        "question": "Quand x tend vers 2 en restant plus grand que 2, 1/(x − 2) tend vers…",
+        "choix": [
+          "−∞",
+          "0",
+          "+∞"
+        ],
+        "bonne": 2,
+        "explication": "x − 2 est un petit nombre positif : son inverse devient très grand et positif.",
+        "indice": "Que vaut 1/(x − 2) pour x = 2,001 ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Asymptote horizontale",
+        "question": "f(x) = 5 − 1/x. La courbe de f a une asymptote horizontale d'équation y = c en +∞. Combien vaut c ?",
+        "reponse": 5,
+        "indices": [
+          "1/x tend vers 0."
+        ],
+        "solution": "5 − 1/x tend vers 5 : asymptote y = 5."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le café qui refroidit",
+    "histoire": [
+      "Un café est servi dans une pièce à 20 °C. Sa température (en °C) au bout de t minutes est **T(t) = 20 + 70 e^(−0,1t)**.",
+      "Étudions son refroidissement."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Au service",
+        "question": "Quelle est la température du café au moment où il est servi ?",
+        "reponse": 90,
+        "unite": "°C",
+        "indices": [
+          "T(0) = 20 + 70 × e⁰."
+        ],
+        "solution": "T(0) = 20 + 70 = 90 °C."
+      },
+      {
+        "type": "nombre",
+        "titre": "À très long terme",
+        "question": "Vers quelle température le café tend-il quand t tend vers +∞ ?",
+        "reponse": 20,
+        "unite": "°C",
+        "indices": [
+          "e^(−0,1t) tend vers 0 quand t tend vers +∞."
+        ],
+        "solution": "T(t) tend vers 20 + 0 = 20 °C : la température de la pièce (asymptote horizontale y = 20)."
+      },
+      {
+        "type": "qcm",
+        "titre": "50 °C, buvable !",
+        "question": "Le café passe-t-il forcément par la température de 50 °C ?",
+        "choix": [
+          "Oui, d'après le théorème des valeurs intermédiaires",
+          "Non, il peut sauter cette valeur",
+          "On ne peut pas savoir"
+        ],
+        "bonne": 0,
+        "explication": "T est continue et strictement décroissante, de 90 °C vers 20 °C : elle prend une fois et une seule la valeur 50 °C."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le moment exact",
+        "question": "Au bout de combien de minutes le café est-il à 50 °C ? (Arrondis au dixième.)",
+        "reponse": 8.5,
+        "tolerance": 0.05,
+        "unite": "min",
+        "indices": [
+          "Résous 70 e^(−0,1t) = 30, soit e^(−0,1t) = 3/7.",
+          "−0,1t = ln(3/7), donc t = 10 ln(7/3)."
+        ],
+        "solution": "t = 10 ln(7/3) ≈ 8,5 minutes."
+      }
+    ],
+    "conclusion": "Bon café ! Limite, asymptote, continuité : toute l'analyse sert à décrire des phénomènes réels, comme la loi de refroidissement de Newton."
+  }
+}

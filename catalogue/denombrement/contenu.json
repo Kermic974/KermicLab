@@ -1,0 +1,158 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : multiplier les choix",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Avec 3 t-shirts et 2 pantalons, on peut composer 3 × 2 = **6 tenues** : pour chaque t-shirt, 2 choix de pantalon. C'est le **principe multiplicatif**.",
+        "Dénombrer, c'est **compter sans tout écrire** : indispensable quand il y a des millions de possibilités."
+      ]
+    },
+    {
+      "titre": "Listes avec répétition",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Le nombre de listes ordonnées de k éléments pris dans un ensemble de n éléments, **avec répétition possible**, est **nᵏ**.",
+        "Un code de 4 chiffres : 10⁴ = 10 000 possibilités. Un mot de 3 lettres (même imprononçable) : 26³ = 17 576."
+      ]
+    },
+    {
+      "titre": "Permutations et arrangements",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Le nombre de façons de **ranger n objets** dans un ordre est **n! = n × (n − 1) × … × 2 × 1** (« factorielle n »). 5! = 120 ; par convention 0! = 1.",
+        "Choisir k objets parmi n **dans un ordre** (sans répétition) : **n × (n − 1) × … × (n − k + 1) = n!/(n − k)!**. Un podium de 3 parmi 10 coureurs : 10 × 9 × 8 = 720."
+      ]
+    },
+    {
+      "titre": "Les combinaisons",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Choisir k objets parmi n **sans tenir compte de l'ordre** : c'est le **coefficient binomial** « k parmi n », noté (n k) ou C(n, k) : **C(n, k) = n! / (k! (n − k)!)**.",
+        "Choisir 3 délégués parmi 10 élèves : C(10, 3) = 720/3! = 720/6 = 120 (on divise les podiums par les 6 ordres possibles)."
+      ],
+      "exemple": {
+        "titre": "Propriétés",
+        "etapes": [
+          "C(n, 0) = C(n, n) = 1 et C(n, 1) = n.",
+          "Symétrie : C(n, k) = C(n, n − k).",
+          "Relation de Pascal : C(n, k) + C(n, k + 1) = C(n + 1, k + 1), qui construit le triangle de Pascal."
+        ]
+      }
+    },
+    {
+      "titre": "Plus loin : les parties d'un ensemble",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un ensemble à n éléments possède **2ⁿ** parties (chaque élément est dedans ou non). En regroupant par taille : C(n, 0) + C(n, 1) + … + C(n, n) = 2ⁿ.",
+        "Les coefficients binomiaux interviennent aussi dans la **loi binomiale** et dans le développement de (a + b)ⁿ."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : l'ordre compte-t-il ? Y a-t-il répétition ?",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Principe multiplicatif",
+        "question": "Avec 4 t-shirts et 3 pantalons, combien de tenues différentes peut-on composer ?",
+        "reponse": 12,
+        "indices": [
+          "Pour chaque t-shirt, 3 choix de pantalon."
+        ],
+        "solution": "4 × 3 = 12 tenues."
+      },
+      {
+        "type": "nombre",
+        "titre": "Factorielle",
+        "question": "Calcule 5!.",
+        "reponse": 120,
+        "indices": [
+          "5! = 5 × 4 × 3 × 2 × 1."
+        ],
+        "solution": "5 × 4 × 3 × 2 × 1 = 120."
+      },
+      {
+        "type": "nombre",
+        "titre": "Combinaison",
+        "question": "Calcule C(5, 2), le nombre de façons de choisir 2 objets parmi 5.",
+        "reponse": 10,
+        "indices": [
+          "C(5, 2) = 5! / (2! × 3!).",
+          "Ou : (5 × 4) / 2."
+        ],
+        "solution": "(5 × 4) / 2 = 10."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec répétition",
+        "question": "Combien de « mots » de 3 lettres (avec répétition, sans se soucier du sens) peut-on écrire avec les 26 lettres de l'alphabet ?",
+        "reponse": 17576,
+        "indices": [
+          "26 choix pour chaque lettre."
+        ],
+        "solution": "26³ = 17 576."
+      },
+      {
+        "type": "nombre",
+        "titre": "Podium",
+        "question": "8 coureurs disputent une course. Combien de podiums (1er, 2e, 3e) différents sont possibles ?",
+        "reponse": 336,
+        "indices": [
+          "L'ordre compte : 8 choix pour le 1er, puis 7, puis 6."
+        ],
+        "solution": "8 × 7 × 6 = 336."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tournoi",
+    "histoire": [
+      "Six équipes participent au tournoi de handball du lycée.",
+      "L'organisatrice doit tout planifier."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Les matchs",
+        "question": "Chaque équipe rencontre chaque autre équipe une seule fois. Combien de matchs faut-il prévoir ?",
+        "reponse": 15,
+        "unite": "matchs",
+        "indices": [
+          "Un match = un choix de 2 équipes parmi 6, sans ordre.",
+          "C(6, 2) = (6 × 5)/2."
+        ],
+        "solution": "C(6, 2) = 15 matchs."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les classements",
+        "question": "Combien de classements complets (de la 1re à la 6e place) sont possibles ?",
+        "reponse": 720,
+        "unite": "classements",
+        "indices": [
+          "C'est le nombre de façons de ranger 6 équipes : 6!."
+        ],
+        "solution": "6! = 720 classements."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le podium",
+        "question": "Combien de podiums (1re, 2e et 3e places) différents sont possibles ?",
+        "reponse": 120,
+        "unite": "podiums",
+        "indices": [
+          "L'ordre compte : 6 × 5 × 4."
+        ],
+        "solution": "6 × 5 × 4 = 120 podiums."
+      }
+    ],
+    "conclusion": "Le tournoi est planifié ! Dénombrer, c'est la base des probabilités, de la cryptographie et de l'optimisation des emplois du temps."
+  }
+}

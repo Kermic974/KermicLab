@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Catalogue, vague 4 (terminale) : **limites et continuité**, **logarithme népérien**, **primitives et intégrales**, **raisonnement par récurrence**, **dénombrement**, **loi binomiale**, **géométrie dans l'espace**. Le programme de la 6e à la terminale est couvert (36 notions).
 - Catalogue, vague 3 (seconde et première) : **vecteurs**, **droites et systèmes d'équations**, **fonctions de référence**, **second degré**, **dérivation**, **suites numériques**, **fonction exponentielle**, **produit scalaire**, **probabilités conditionnelles**.
 - Gabarit : figure `parabole` (a, b, c réglables, discriminant, racines, sommet).
 - Catalogue, vague 2 (compléments du collège) : **nombres décimaux**, **priorités opératoires**, **diviseurs, multiples et nombres premiers**, **périmètres et aires**, **volumes**, **angles et triangles**, **transformations**, **vitesse et grandeurs composées**. Le collège est couvert (20 notions au catalogue).
