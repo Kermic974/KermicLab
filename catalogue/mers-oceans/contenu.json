@@ -1,0 +1,116 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Suis un conteneur et un message numérique : ils peuvent tous deux traverser les océans, mais pas de la même façon.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une route sur l'eau",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un navire peut transporter des vêtements, des céréales ou des machines entre deux ports. Les mers et les océans relient les continents : l'eau n'est pas seulement une séparation.",
+        "Jeu d'enquête : distingue le **navire**, qui transporte, le **port**, où l'on charge et décharge, et la **route maritime**, qui relie les lieux."
+      ]
+    },
+    {
+      "titre": "Routes, ports et passages stratégiques",
+      "niveau": "4e",
+      "paragraphes": [
+        "La **maritimisation** est l'importance croissante des mers et des océans dans l'économie et les échanges. Le transport maritime assure la majeure partie du commerce international de marchandises en volume, ce qui ne veut pas dire la même part en valeur.",
+        "Les flux sont concentrés sur certaines routes et dans de grands ports. Un **détroit** est un passage naturel étroit entre deux terres ; un **canal**, comme Suez, est aménagé par les humains. Une perturbation d'un passage peut imposer un détour."
+      ]
+    },
+    {
+      "titre": "Des ressources et des acteurs",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les océans fournissent des ressources halieutiques, c'est-à-dire liées à la pêche, et des ressources énergétiques. Des câbles sous-marins transportent aussi des informations numériques entre continents.",
+        "Armateurs, autorités portuaires, pêcheurs, États, scientifiques et associations interviennent dans ces espaces. Les retombées économiques sont inégales : un grand port ne garantit pas à tous les habitants un emploi ou un littoral sain."
+      ],
+      "aRetenir": "Un même espace peut être une route, une ressource, un milieu vivant et un lieu de rivalité."
+    },
+    {
+      "titre": "Droit maritime et défis environnementaux",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "La **zone économique exclusive**, ou ZEE, peut s'étendre jusqu'à 200 milles marins à partir des lignes de base. L'État côtier y dispose notamment de droits souverains sur les ressources ; ce n'est pas une souveraineté totale sur toutes les activités. Les autres États y conservent notamment la liberté de navigation, dans le cadre du droit international.",
+        "Quand des côtes se font face ou sont proches, la délimitation entre États ne se résume pas à tracer partout 200 milles : des accords ou décisions juridiques peuvent être nécessaires.",
+        "Surpêche, pollutions, réchauffement et rivalités menacent les milieux et les activités. La protection doit tenir compte des écosystèmes et des populations qui vivent de la mer, avec des règles suivies et contrôlées."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Repère les fonctions des espaces maritimes. Les données des calculs sont fictives.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Un flux invisible",
+        "question": "Quel équipement transporte directement des informations numériques entre continents ?",
+        "choix": ["Un câble sous-marin", "Un chalutier", "Un quai vide"],
+        "bonne": 0, "indice": "Cherche un réseau de communication.",
+        "explication": "Les câbles sous-marins transmettent des données numériques. Un conteneur transporte des marchandises."
+      },
+      {
+        "type": "qcm", "titre": "Détroit ou canal ?",
+        "question": "Le canal de Suez est…",
+        "choix": ["une frontière qui interdit tout commerce", "un passage maritime aménagé par les humains", "un passage naturel appelé détroit"],
+        "bonne": 1, "indice": "Le mot canal indique un aménagement.",
+        "explication": "Suez est un canal aménagé reliant la Méditerranée à la mer Rouge. Un détroit est un passage naturel."
+      },
+      {
+        "type": "nombre", "titre": "Mesurer une concentration",
+        "question": "Un réseau portuaire fictif traite 200 conteneurs, dont 150 dans le port A. Quelle part passe par A, en pourcentage ?",
+        "reponse": 75, "unite": "%", "indices": ["Calcule 150 ÷ 200 × 100."],
+        "solution": "150 ÷ 200 × 100 = 75 %. Le trafic de ce réseau est concentré dans A."
+      },
+      {
+        "type": "qcm", "titre": "Les droits dans une ZEE",
+        "question": "Quelle affirmation décrit correctement une ZEE ?",
+        "choix": ["Tous les navires étrangers y sont automatiquement interdits", "L'État côtier y possède toutes les libertés des autres États", "L'État côtier y a des droits sur les ressources, avec maintien notamment de la liberté de navigation"],
+        "bonne": 2, "indice": "Distingue ressources et navigation.",
+        "explication": "La ZEE donne des droits spécifiques à l'État côtier, sans être équivalente à une souveraineté totale sur l'espace."
+      },
+      {
+        "type": "qcm", "titre": "Port et inégalités",
+        "question": "Un nouveau terminal augmente le trafic, mais un quartier voisin subit davantage de bruit. Que montre cet exemple ?",
+        "choix": ["Les bénéfices et les nuisances peuvent être répartis inégalement", "Toute activité portuaire profite également à chacun", "Les ports n'ont aucun effet local"],
+        "bonne": 0, "indice": "Compare l'activité économique et la vie des riverains.",
+        "explication": "L'équipement crée des flux et peut soutenir des emplois, mais ses effets locaux doivent aussi être évalués avec les habitants."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Une livraison et un littoral à protéger",
+    "histoire": [
+      "Dans une simulation, un navire doit livrer du matériel à un port. Sa route habituelle mesure 4 000 km ; une fermeture temporaire impose une route de 5 200 km.",
+      "Le port prépare aussi un aménagement près d'une zone de pêche. Les distances sont fictives : ce n'est pas une carte de navigation."
+    ],
+    "etapes": [
+      {
+        "type": "nombre", "titre": "Le détour",
+        "question": "Combien de kilomètres supplémentaires le navire doit-il parcourir ?",
+        "reponse": 1200, "unite": "km", "indices": ["Soustrais la distance habituelle à la nouvelle distance."],
+        "solution": "5 200 − 4 000 = 1 200 km supplémentaires. Le délai et les émissions ne se déduisent pas exactement de cette seule distance."
+      },
+      {
+        "type": "qcm", "titre": "Qui transporte ?",
+        "question": "Quel acteur exploite le navire pour le transport maritime ?",
+        "choix": ["Un conteneur", "Un armateur", "Un détroit"],
+        "bonne": 1, "indice": "Deux choix sont des objets ou des lieux.",
+        "explication": "L'armateur exploite le navire. L'autorité portuaire gère des fonctions du port, pas la même activité."
+      },
+      {
+        "type": "qcm", "titre": "Écouter les usages",
+        "question": "Avant l'aménagement, quelle démarche aide à comprendre les effets sur la pêche et les riverains ?",
+        "choix": ["Consulter seulement le nombre de conteneurs", "Supposer que la mer est vide", "Étudier les milieux et consulter pêcheurs, habitants et acteurs du port"],
+        "bonne": 2, "indice": "Un littoral accueille plusieurs usages.",
+        "explication": "Une étude des impacts et des usages aide à comparer des solutions et à repérer les populations affectées."
+      },
+      {
+        "type": "qcm", "titre": "Protéger durablement",
+        "question": "Quelle mesure répond directement au défi de la surexploitation d'une ressource de pêche ?",
+        "choix": ["Des règles de prélèvement adaptées et contrôlées, fondées sur le suivi de la ressource", "Pêcher sans limite", "Augmenter seulement la taille des parkings"],
+        "bonne": 0, "indice": "Cherche une mesure qui agit sur les prélèvements.",
+        "explication": "Limiter et contrôler les prélèvements selon l'état de la ressource peut contribuer à sa préservation, avec prise en compte des pêcheurs."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Tu as relié routes mondiales et effets locaux, tout en distinguant transport, ressources et droit maritime."
+  }
+}
