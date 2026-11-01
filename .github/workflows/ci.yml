@@ -26,7 +26,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm install --prefix worker --no-package-lock
+      - run: npm ci --prefix worker
       # Catalogue privé (dépôt maquettes-catalogue) : uniquement si le jeton en lecture seule est configuré.
       # Les PR de forks n'ont pas accès aux secrets : le build se fait alors avec la maquette d'exemple.
       - name: Récupérer le catalogue privé
