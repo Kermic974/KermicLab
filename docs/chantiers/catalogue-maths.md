@@ -1,6 +1,6 @@
 # Chantier : catalogue de mathématiques (programme complet)
 
-**Niveau actuel : vagues 1 et 2 — collège complet (19 notions générées + `trigo-cercle`)**
+**Niveau actuel : collège en ligne (20 notions) ; vague 3 (seconde, première) en PR**
 
 Objectif : couvrir le programme de mathématiques de la 6e à la terminale (spécialité), une notion par page, du plus intuitif au plus formel.
 Méthode : gabarit commun (ADR 0011, guide `docs/gabarit.md`), **une PR par vague** de 8 notions environ, pour que la relecture humaine
@@ -30,28 +30,28 @@ et un test navigateur qui résout **tous** les exercices avec la réponse attend
 
 | Notion | Niveaux | Figure envisagée | Statut |
 |---|---|---|---|
-| `nombres-decimaux` | 6e | — | PR ouverte |
-| `priorites-operatoires` | 5e | — | PR ouverte |
-| `arithmetique` (diviseurs, nombres premiers, PGCD) | 5e → 3e | — | PR ouverte |
-| `perimetres-aires` | 6e → 4e | — | PR ouverte |
-| `volumes` | 6e → 3e | — | PR ouverte |
-| `angles` (et triangles, parallèles) | 6e → 5e | — | PR ouverte |
-| `transformations` (symétries, translation, rotation, homothétie) | 6e → 3e | — | PR ouverte |
-| `vitesse` (grandeurs composées, conversions) | 4e → 3e | — | PR ouverte |
+| `nombres-decimaux` | 6e | — | en ligne |
+| `priorites-operatoires` | 5e | — | en ligne |
+| `arithmetique` (diviseurs, nombres premiers, PGCD) | 5e → 3e | — | en ligne |
+| `perimetres-aires` | 6e → 4e | — | en ligne |
+| `volumes` | 6e → 3e | — | en ligne |
+| `angles` (et triangles, parallèles) | 6e → 5e | — | en ligne |
+| `transformations` (symétries, translation, rotation, homothétie) | 6e → 3e | — | en ligne |
+| `vitesse` (grandeurs composées, conversions) | 4e → 3e | — | en ligne |
 
 ## Vague 3 — seconde et première
 
 | Notion | Niveaux | Statut |
 |---|---|---|
-| `vecteurs` | seconde | à faire |
-| `droites-et-systemes` (équations de droites, systèmes) | seconde | à faire |
-| `fonctions-de-reference` (carré, inverse, racine) | seconde | à faire |
-| `second-degre` | première | à faire |
-| `derivation` | première | à faire |
-| `suites` | première | à faire |
-| `exponentielle` | première | à faire |
-| `produit-scalaire` | première | à faire |
-| `probabilites-conditionnelles` | première | à faire |
+| `vecteurs` | seconde | PR ouverte |
+| `droites-et-systemes` (équations de droites, systèmes) | seconde | PR ouverte |
+| `fonctions-de-reference` (carré, inverse, racine) | seconde | PR ouverte |
+| `second-degre` | première | PR ouverte |
+| `derivation` | première | PR ouverte |
+| `suites` | première | PR ouverte |
+| `exponentielle` | première | PR ouverte |
+| `produit-scalaire` | première | PR ouverte |
+| `probabilites-conditionnelles` | première | PR ouverte |
 
 ## Vague 4 — terminale (spécialité)
 

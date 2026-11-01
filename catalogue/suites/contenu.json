@@ -1,0 +1,165 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des nombres numérotés",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "2, 5, 8, 11, 14… : on ajoute 3 à chaque fois. 3, 6, 12, 24, 48… : on multiplie par 2 à chaque fois.",
+        "Une **suite** est une liste de nombres numérotés : u₀, u₁, u₂… Le nombre uₙ est le **terme de rang n**."
+      ]
+    },
+    {
+      "titre": "Deux façons de définir une suite",
+      "niveau": "première",
+      "paragraphes": [
+        "**Formule explicite** : uₙ = f(n), on calcule directement n'importe quel terme. Exemple : uₙ = n², donc u₁₀ = 100.",
+        "**Relation de récurrence** : on donne le premier terme et le passage d'un terme au suivant. Exemple : u₀ = 2 et uₙ₊₁ = uₙ + 3. Pour u₁₀, il faut calculer tous les termes précédents… sauf si on trouve la formule explicite !"
+      ]
+    },
+    {
+      "titre": "Les suites arithmétiques",
+      "niveau": "première",
+      "paragraphes": [
+        "On **ajoute** toujours le même nombre r, la **raison** : uₙ₊₁ = uₙ + r. Alors **uₙ = u₀ + n × r**.",
+        "Somme des premiers entiers : **1 + 2 + … + n = n(n + 1)/2**. Par exemple 1 + 2 + … + 100 = 5 050 (l'astuce du jeune Gauss)."
+      ]
+    },
+    {
+      "titre": "Les suites géométriques",
+      "niveau": "première",
+      "paragraphes": [
+        "On **multiplie** toujours par le même nombre q, la **raison** : uₙ₊₁ = q × uₙ. Alors **uₙ = u₀ × qⁿ**.",
+        "Somme : **1 + q + q² + … + qⁿ = (1 − qⁿ⁺¹)/(1 − q)** pour q ≠ 1.",
+        "Une augmentation de 10 % chaque mois correspond à une suite géométrique de raison q = 1,1."
+      ],
+      "aRetenir": "Arithmétique : on ajoute (croissance linéaire). Géométrique : on multiplie (croissance exponentielle). À long terme, la géométrique (q > 1) finit toujours par gagner."
+    },
+    {
+      "titre": "Plus loin : sens de variation et limite",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Une suite arithmétique est croissante si r > 0. Une suite géométrique de premier terme positif est croissante si q > 1, décroissante si 0 < q < 1.",
+        "En terminale : si −1 < q < 1, qⁿ **tend vers 0** ; si q > 1, qⁿ **tend vers +∞**."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : arithmétique, on ajoute ; géométrique, on multiplie.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Arithmétique",
+        "question": "(uₙ) est arithmétique, de premier terme u₀ = 5 et de raison 3. Calcule u₁₀.",
+        "reponse": 35,
+        "indices": [
+          "uₙ = u₀ + n × r."
+        ],
+        "solution": "u₁₀ = 5 + 10 × 3 = 35."
+      },
+      {
+        "type": "nombre",
+        "titre": "Géométrique",
+        "question": "(vₙ) est géométrique, de premier terme v₀ = 2 et de raison 3. Calcule v₄.",
+        "reponse": 162,
+        "indices": [
+          "vₙ = v₀ × qⁿ = 2 × 3⁴."
+        ],
+        "solution": "v₄ = 2 × 81 = 162."
+      },
+      {
+        "type": "nombre",
+        "titre": "Somme de Gauss",
+        "question": "Calcule 1 + 2 + 3 + … + 100.",
+        "reponse": 5050,
+        "indices": [
+          "Utilise n(n + 1)/2 avec n = 100."
+        ],
+        "solution": "100 × 101 ÷ 2 = 5 050."
+      },
+      {
+        "type": "qcm",
+        "titre": "Reconnaître",
+        "question": "La suite 4 ; 12 ; 36 ; 108… est…",
+        "choix": [
+          "arithmétique de raison 8",
+          "géométrique de raison 3",
+          "ni l'une ni l'autre"
+        ],
+        "bonne": 1,
+        "explication": "On multiplie par 3 à chaque fois : géométrique de raison 3.",
+        "indice": "Calcule les écarts, puis les quotients."
+      },
+      {
+        "type": "nombre",
+        "titre": "Récurrence",
+        "question": "u₀ = 3 et uₙ₊₁ = 2uₙ − 1. Calcule u₂.",
+        "reponse": 9,
+        "indices": [
+          "u₁ = 2 × 3 − 1 = 5."
+        ],
+        "solution": "u₁ = 5, puis u₂ = 2 × 5 − 1 = 9."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'épargne de Zoé",
+    "histoire": [
+      "Zoé a **100 €** et hésite entre deux façons d'épargner chaque mois.",
+      "**Option A** : ajouter 20 € par mois. **Option B** : un placement (imaginaire !) qui augmente de 10 % chaque mois."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Option A sur un an",
+        "question": "Avec l'option A, combien Zoé aura-t-elle au bout de 12 mois ?",
+        "reponse": 340,
+        "unite": "€",
+        "indices": [
+          "Suite arithmétique : u₁₂ = 100 + 12 × 20."
+        ],
+        "solution": "100 + 12 × 20 = 340 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Option B sur 3 mois",
+        "question": "Avec l'option B, combien aura-t-elle au bout de 3 mois ?",
+        "reponse": 133.1,
+        "unite": "€",
+        "indices": [
+          "Suite géométrique de raison 1,1 : 100 × 1,1³."
+        ],
+        "solution": "100 × 1,1³ = 100 × 1,331 = 133,10 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Option B sur un an",
+        "question": "Et au bout de 12 mois, arrondi à l'euro ?",
+        "reponse": 314,
+        "tolerance": 0.5,
+        "unite": "€",
+        "indices": [
+          "Calcule 100 × 1,1¹² à la calculatrice."
+        ],
+        "solution": "100 × 1,1¹² ≈ 313,84, soit environ 314 € : l'option A est encore devant."
+      },
+      {
+        "type": "qcm",
+        "titre": "Sur deux ans",
+        "question": "Au bout de 24 mois, quelle option rapporte le plus ?",
+        "choix": [
+          "L'option A",
+          "L'option B"
+        ],
+        "bonne": 1,
+        "explication": "A : 100 + 24 × 20 = 580 €. B : 100 × 1,1²⁴ ≈ 985 €. La croissance géométrique a dépassé la croissance arithmétique !"
+      }
+    ],
+    "conclusion": "Bravo ! Ajouter ou multiplier : à court terme la différence est faible, à long terme elle est énorme. C'est le secret des intérêts composés."
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la part utile d'une force",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand on tire une luge avec une corde inclinée, seule la partie de la force **dans la direction du déplacement** fait avancer la luge. Le **produit scalaire** mesure cette « part utile ».",
+        "Il prend deux vecteurs et donne un **nombre** (un scalaire), d'où son nom."
+      ]
+    },
+    {
+      "titre": "Définitions",
+      "niveau": "première",
+      "paragraphes": [
+        "**→u · →v = ‖→u‖ × ‖→v‖ × cos(→u, →v)**, où (→u, →v) est l'angle entre les deux vecteurs.",
+        "Si les vecteurs vont dans le même sens, le produit scalaire vaut le produit des normes ; s'ils sont **perpendiculaires**, cos 90° = 0 et le produit scalaire est **nul**."
+      ],
+      "aRetenir": "→u · →v = 0 si et seulement si →u et →v sont orthogonaux (perpendiculaires)."
+    },
+    {
+      "titre": "Avec les coordonnées",
+      "niveau": "première",
+      "paragraphes": [
+        "Dans un repère orthonormé, si →u(x ; y) et →v(x' ; y') : **→u · →v = xx' + yy'**.",
+        "C'est la façon la plus rapide de prouver que deux droites sont perpendiculaires."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "→u(2 ; 3) et →v(4 ; −1).",
+          "→u · →v = 2 × 4 + 3 × (−1) = 8 − 3 = 5.",
+          "Le produit scalaire n'est pas nul : les vecteurs ne sont pas orthogonaux."
+        ]
+      }
+    },
+    {
+      "titre": "Propriétés et formule d'Al-Kashi",
+      "niveau": "première",
+      "paragraphes": [
+        "Le produit scalaire se développe comme un produit : ‖→u + →v‖² = ‖→u‖² + 2 →u · →v + ‖→v‖².",
+        "**Formule d'Al-Kashi** : dans tout triangle ABC, **BC² = AB² + AC² − 2 × AB × AC × cos Â**. Si Â = 90°, on retrouve Pythagore !"
+      ]
+    },
+    {
+      "titre": "Plus loin : vecteur normal et cercles",
+      "niveau": "première",
+      "paragraphes": [
+        "Un **vecteur normal** à une droite lui est orthogonal : la droite ax + by + c = 0 a pour vecteur normal →n(a ; b).",
+        "M est sur le cercle de diamètre [AB] si et seulement si →MA · →MB = 0 : l'angle inscrit dans un demi-cercle est droit."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : coordonnées, normes et angles.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Coordonnées",
+        "question": "Calcule →u · →v avec →u(2 ; 3) et →v(4 ; −1).",
+        "reponse": 5,
+        "indices": [
+          "xx' + yy'."
+        ],
+        "solution": "2 × 4 + 3 × (−1) = 8 − 3 = 5."
+      },
+      {
+        "type": "nombre",
+        "titre": "Orthogonaux ?",
+        "question": "Calcule →u · →v avec →u(3 ; −2) et →v(4 ; 6).",
+        "reponse": 0,
+        "indices": [
+          "3 × 4 + (−2) × 6."
+        ],
+        "solution": "12 − 12 = 0 : les vecteurs sont orthogonaux."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec l'angle",
+        "question": "‖→u‖ = 4, ‖→v‖ = 5 et l'angle entre les deux vecteurs mesure 60°. Calcule →u · →v.",
+        "reponse": 10,
+        "indices": [
+          "→u · →v = ‖→u‖ × ‖→v‖ × cos 60°, et cos 60° = 0,5."
+        ],
+        "solution": "4 × 5 × 0,5 = 10."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trouver k",
+        "question": "Pour quelle valeur de k les vecteurs →u(1 ; k) et →v(6 ; −2) sont-ils orthogonaux ?",
+        "reponse": 3,
+        "indices": [
+          "Le produit scalaire doit être nul : 1 × 6 + k × (−2) = 0."
+        ],
+        "solution": "6 − 2k = 0, donc k = 3."
+      },
+      {
+        "type": "nombre",
+        "titre": "Al-Kashi",
+        "question": "Dans un triangle ABC, AB = 5, AC = 8 et Â = 60°. Calcule BC.",
+        "reponse": 7,
+        "indices": [
+          "BC² = 5² + 8² − 2 × 5 × 8 × cos 60°.",
+          "25 + 64 − 40 = 49."
+        ],
+        "solution": "BC² = 89 − 40 = 49, donc BC = 7."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La péniche tirée",
+    "histoire": [
+      "Autrefois, des chevaux tiraient les péniches depuis le chemin de halage, le long du canal. La corde exerce une force de **500 N**, qui fait un angle de **30°** avec la direction du canal.",
+      "La péniche avance de **100 m**. Le **travail** de la force (en joules) est le produit scalaire de la force par le déplacement."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le travail",
+        "question": "Calcule le travail de la force, arrondi à la centaine de joules.",
+        "reponse": 43300,
+        "tolerance": 50,
+        "unite": "J",
+        "indices": [
+          "W = 500 × 100 × cos 30°.",
+          "cos 30° ≈ 0,866."
+        ],
+        "solution": "W = 50 000 × cos 30° ≈ 43 301 J, soit environ 43 300 J."
+      },
+      {
+        "type": "qcm",
+        "titre": "Corde perpendiculaire",
+        "question": "Si la corde était perpendiculaire au canal (angle de 90°), le travail serait…",
+        "choix": [
+          "nul",
+          "maximal",
+          "négatif"
+        ],
+        "bonne": 0,
+        "explication": "cos 90° = 0 : une force perpendiculaire au déplacement ne fait pas avancer la péniche."
+      },
+      {
+        "type": "nombre",
+        "titre": "Corde parallèle",
+        "question": "Et si la corde était parfaitement parallèle au canal (angle de 0°) ?",
+        "reponse": 50000,
+        "unite": "J",
+        "indices": [
+          "cos 0° = 1."
+        ],
+        "solution": "W = 500 × 100 × 1 = 50 000 J : c'est le maximum."
+      }
+    ],
+    "conclusion": "Bravo ! Le produit scalaire mesure exactement la part utile d'une force : c'est pour cela que les chemins de halage longeaient les canaux au plus près."
+  }
+}

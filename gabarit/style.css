@@ -66,6 +66,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .grille { stroke: var(--bord); stroke-width: 1; }
 .escalier { fill: none; stroke: var(--b); stroke-width: 2; stroke-dasharray: 5 3; }
 .barre { fill: var(--accent); fill-opacity: .7; }
+.courbe { fill: none; }
+.racine { fill: var(--c); }
 .barre.derniere { fill: var(--b); fill-opacity: .9; }
 .boutons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin-top: 10px; }
 .defile { overflow-x: auto; }
