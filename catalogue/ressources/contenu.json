@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue à partager une réserve fictive : disponible dans la nature ne signifie pas accessible à tous.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ce que les sociétés utilisent", "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **ressource** est un élément que les sociétés peuvent utiliser pour satisfaire des besoins : eau, sol, bois, minerais ou énergie. Son usage dépend des connaissances, des techniques et des choix sociaux. Une eau polluée n'est pas directement utilisable comme eau potable.",
+        "Une ressource **renouvelable** se reconstitue à une certaine vitesse, comme une forêt ou l'eau renouvelée par le cycle de l'eau. Elle n'est pas illimitée : un prélèvement trop rapide ou une pollution peut la dégrader. Le pétrole et les minerais ne se renouvellent pas à l'échelle de la vie humaine."
+      ],
+      "exemple": { "titre": "Carte mentale : une forêt", "etapes": [
+        "Branche besoins : bois pour certains objets et habitats.",
+        "Branche renouvellement : les arbres mettent du temps à pousser.",
+        "Branche limites : prélèvements, incendies et biodiversité ; le mot renouvelable n'autorise pas une coupe sans limite."
+      ] },
+      "aRetenir": "Renouvelable ne veut pas dire inépuisable ; il faut considérer vitesse de renouvellement, qualité et milieux."
+    },
+    {
+      "titre": "Collège : disponibilité et accès inégaux", "niveau": "collège",
+      "paragraphes": [
+        "La répartition des ressources est inégale, mais leur présence ne garantit pas leur accès. Réseaux, traitement, prix et institutions comptent. L'eau douce sert à boire, produire des aliments, faire fonctionner des activités et maintenir les milieux aquatiques : ces usages peuvent entrer en concurrence.",
+        "En métropole, une sécheresse peut limiter l'eau disponible dans un bassin. À Mayotte, les sécheresses et les contraintes des infrastructures peuvent rendre l'approvisionnement difficile. Habitants, agriculteurs, entreprises, collectivités et services de l'État ont des responsabilités différentes ; il ne faut pas attribuer une difficulté d'accès à un défaut des populations."
+      ],
+      "exemple": { "titre": "Carte mentale : comprendre l'eau à Mayotte", "etapes": [
+        "Branche disponibilité : pluies et réserves varient selon les périodes.",
+        "Branche accès : réseaux, stockage, traitement et organisation du service.",
+        "Branche usages : besoins essentiels et activités ; distingue quantité présente et eau effectivement accessible."
+      ] },
+      "aRetenir": "Disponibilité naturelle et accès aux ressources sont différents ; infrastructures et décisions publiques comptent."
+    },
+    {
+      "titre": "Lycée : sobriété et interdépendances", "niveau": "lycée",
+      "paragraphes": [
+        "Les ressources relient les territoires par les échanges : minerais pour les équipements, énergie pour produire, eau utilisée dans les aliments. Réduire la consommation, réparer et recycler peut limiter certains prélèvements. Le recyclage a des pertes et demande de l'énergie ; il ne remplace pas toute extraction.",
+        "La gestion durable combine préservation des milieux, besoins essentiels et viabilité économique. Les politiques publiques encadrent les prélèvements, les normes et les investissements à plusieurs échelles. Les énergies renouvelables réduisent la dépendance aux combustibles fossiles mais nécessitent sols, matériaux, réseaux et parfois stockage ; aucune solution n'est sans contraintes."
+      ],
+      "exemple": { "titre": "Carte mentale : un appareil à réparer", "etapes": [
+        "Échelle locale : prolonger sa durée d'usage grâce à une réparation possible.",
+        "Échelle mondiale : relier les métaux, la fabrication et les transports.",
+        "Branche politiques : conception réparable et collecte ; comparer sobriété, recyclage et coûts sans promettre un impact nul."
+      ] },
+      "aRetenir": "La gestion des ressources demande des choix collectifs ; renouvellement et recyclage ont des limites physiques."
+    }
+  ],
+  "application": {
+    "intro": "Compare ressource, accès et gouvernance.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Une nappe se recharge lentement mais on prélève très vite. Que peut-il arriver ?", "choix": ["La recharge augmente toujours au même rythme que les prélèvements", "Son niveau reste nécessairement stable parce que l'eau est renouvelable", "La réserve peut diminuer malgré son renouvellement"], "bonne": 2, "indice": "Compare la vitesse d'entrée et celle de sortie.", "explication": "Quand les prélèvements dépassent la recharge, la réserve peut diminuer : renouvelable ne signifie pas illimitée." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui doit participer à la gestion de l'eau d'un territoire ?", "choix": ["Les autorités compétentes et les usagers concernés", "Uniquement le plus gros consommateur", "Uniquement le gestionnaire technique, sans consulter les usagers"], "bonne": 0, "indice": "L'eau concerne besoins humains et milieux.", "explication": "Les institutions fixent un cadre et concertent les usagers ; les besoins essentiels et les milieux doivent être pris en compte." },
+      { "type": "qcm", "titre": "Échelles", "question": "Un appareil utilise des métaux extraits à l'étranger. Quelle lecture est pertinente ?", "choix": ["Seulement celle du magasin", "Une chaîne reliant des territoires à l'échelle mondiale", "Seulement celle de la commune où l'appareil est utilisé"], "bonne": 1, "indice": "Suis les matériaux jusqu'au produit.", "explication": "Extraction, fabrication, vente et recyclage relient des lieux différents ; l'usage local a des liens mondiaux." }
+    ]
+  },
+  "situation": {
+    "titre": "Partager l'eau à Sourceville",
+    "histoire": ["Sourceville est fictive : une période sèche réduit la réserve d'eau. Habitants, agriculture et milieux aquatiques ont besoin d'eau.", "Aide la collectivité sur papier à comparer des choix, sans mesurer une consommation personnelle ni manipuler de l'eau non potable."],
+    "etapes": [
+      { "type": "qcm", "titre": "Comprendre", "question": "La réserve reçoit moins d'eau qu'on en prélève. Quelle conclusion est raisonnable ?", "choix": ["Renouvelable signifie toujours abondante", "La réserve risque de diminuer", "Tous les usages peuvent augmenter sans limite"], "bonne": 1, "indice": "Compare entrées et sorties.", "explication": "Une recharge insuffisante face aux prélèvements menace la réserve, même si l'eau appartient à un cycle." },
+      { "type": "qcm", "titre": "Habiter", "question": "Quel projet réduit les pertes du réseau d'eau potable ?", "choix": ["Changer seulement son logo", "Augmenter les fuites", "Repérer et réparer les fuites avec le gestionnaire"], "bonne": 2, "indice": "Une partie de l'eau peut être perdue avant d'arriver aux usagers.", "explication": "Réduire les fuites améliore l'efficacité du réseau ; cela demande entretien et financement." },
+      { "type": "qcm", "titre": "Consommer et arbitrer", "question": "Comment organiser le partage pendant la période sèche ?", "choix": ["Respecter les règles, préserver les besoins essentiels et les milieux, concerter", "Donner toute l'eau au premier arrivé", "Ignorer les usages agricoles et les milieux"], "bonne": 0, "indice": "Un partage durable tient compte de plusieurs besoins.", "explication": "Les décisions publiques doivent concilier besoins essentiels, activités et fonctionnement des milieux, avec les contraintes de disponibilité." }
+    ],
+    "conclusion": "Mission accomplie ! Dessine une réserve fictive et joue à observer ses entrées, sorties et usages sur papier. Invente une économie collective possible, sans données personnelles ni expérience avec une eau inconnue."
+  }
+}
