@@ -58,7 +58,10 @@ test("gabarit : la page générée respecte le contrat et neutralise le HTML du 
   const html = await genererPage({ fiche, contenu });
   const meta = lireMetaHtml(html);
   assert.equal(meta.id, "pythagore");
-  assert.deepEqual(meta.onglets, ["explication", "application", "mise-en-situation", "self-test"]);
+  assert.deepEqual(meta.onglets, ["explication", "memo", "application", "mise-en-situation", "self-test"]);
+  const { memo, ...sansMemo } = contenu;
+  assert.deepEqual(lireMetaHtml(await genererPage({ fiche, contenu: sansMemo })).onglets, ["explication", "application", "mise-en-situation", "self-test"]);
+  await assert.rejects(genererPage({ fiche, contenu: { ...contenu, memo: {} } }), /memo/);
   assert.equal(scriptsEnLigne(html).length, 1, "un seul script exécutable : le moteur");
   assert.ok(!html.includes("</script><script>alert"), "le contenu ne peut pas fermer la balise de données");
   const donnees = html.match(/<script type="application\/json" id="kermiclab-contenu">([\s\S]*?)<\/script>/)[1];
