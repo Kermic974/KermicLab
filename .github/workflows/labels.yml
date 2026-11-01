@@ -1,0 +1,28 @@
+name: Labels
+
+# Crée ou met à jour les labels décrits dans .github/labels.json (création seulement : aucun label n'est supprimé).
+on:
+  push:
+    branches: [main]
+    paths: [".github/labels.json", ".github/workflows/labels.yml"]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  synchroniser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Créer ou mettre à jour les labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          jq -c '.[]' .github/labels.json | while read -r label; do
+            nom=$(jq -r '.name' <<<"$label")
+            gh label create "$nom" --repo "${{ github.repository }}" --force \
+              --color "$(jq -r '.color' <<<"$label")" \
+              --description "$(jq -r '.description' <<<"$label")"
+            echo "label à jour : $nom"
+          done

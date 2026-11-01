@@ -1,0 +1,10 @@
+[
+  { "name": "maquette-manquante", "color": "1f5fbf", "description": "Une maquette serait pertinente mais n'existe pas" },
+  { "name": "traduction-manquante", "color": "5319e7", "description": "Une maquette n'existe pas dans une langue demandée" },
+  { "name": "support", "color": "0e8a16", "description": "Signalement d'un utilisateur" },
+  { "name": "bug", "color": "d73a4a", "description": "Quelque chose ne fonctionne pas" },
+  { "name": "good first issue", "color": "7057ff", "description": "Bon point de départ pour contribuer" },
+  { "name": "help wanted", "color": "008672", "description": "Aide bienvenue" },
+  { "name": "sécurité", "color": "b60205", "description": "Sujet de sécurité" },
+  { "name": "dependencies", "color": "0366d6", "description": "Mise à jour de dépendances" }
+]
