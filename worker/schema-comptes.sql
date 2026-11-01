@@ -47,10 +47,11 @@ CREATE TABLE IF NOT EXISTS sessions (
 );
 CREATE INDEX IF NOT EXISTS idx_sessions_expires ON sessions (expires_at);
 
--- États OAuth temporaires (state + PKCE)
+-- États OAuth temporaires (state + PKCE + liaison navigateur anti-CSRF)
 CREATE TABLE IF NOT EXISTS oauth_states (
-  state       TEXT PRIMARY KEY,
-  provider    TEXT NOT NULL,
-  code_verifier TEXT NOT NULL,
-  expires_at  TEXT NOT NULL
+  state           TEXT PRIMARY KEY,
+  provider        TEXT NOT NULL,
+  code_verifier   TEXT NOT NULL,
+  browser_binding TEXT NOT NULL,
+  expires_at      TEXT NOT NULL
 );
