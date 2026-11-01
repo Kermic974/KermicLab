@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-P9jHtNYJMsJGaYKUtNQez5CNY/psU+Tbogf4OMy5L4k='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>La loi binomiale – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -571,7 +571,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         for (let i = 0; i <= xMax; i++) s("line", { x1: px(i), y1: 180, x2: px(i), y2: 184, class: "axe" }, svg);
         const texte = (x0, y0, contenu, ancre) => { s("text", { x: x0, y: y0, class: "legende", "text-anchor": ancre }, svg).textContent = contenu; };
         texte(26, 184, "0", "end");
-        texte(px(xMax), 197, `${nombreFr(xMax)} ${conf.libelleX.toLowerCase()}`, "end");
+        texte(px(xMax), 197, `${conf.libelleX} : de 0 à ${nombreFr(xMax)}`, "end");
         texte(36, 14, conf.libelleY, "start");
         s("line", { x1: px(0), y1: py(0), x2: px(xMax), y2: py(k * xMax), class: "droite" }, svg);
         s("line", { x1: px(x), y1: 180, x2: px(x), y2: py(k * x), class: "repere" }, svg);

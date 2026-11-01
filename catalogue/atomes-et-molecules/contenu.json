@@ -1,0 +1,185 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les briques de la matière",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Toute la matière est faite d'**atomes**, minuscules briques dont il existe 118 sortes : les **éléments chimiques** (hydrogène, carbone, oxygène…).",
+        "Comme des briques de construction, les atomes s'assemblent en **molécules** : deux atomes d'hydrogène et un atome d'oxygène forment une molécule d'eau."
+      ]
+    },
+    {
+      "titre": "Symboles et formules",
+      "niveau": "4e",
+      "paragraphes": [
+        "Chaque élément a un **symbole** : H (hydrogène), C (carbone), O (oxygène), N (azote).",
+        "Une **formule chimique** indique les atomes d'une molécule : **H₂O** (2 H et 1 O), **CO₂** (1 C et 2 O), **O₂** (2 O), **CH₄** (le méthane : 1 C et 4 H)."
+      ]
+    },
+    {
+      "titre": "Les transformations chimiques",
+      "niveau": "4e",
+      "paragraphes": [
+        "Lors d'une **transformation chimique**, des **réactifs** disparaissent et des **produits** apparaissent. Les atomes ne disparaissent pas : ils se **réarrangent**.",
+        "Donc **les atomes et la masse se conservent** (« Rien ne se perd, rien ne se crée, tout se transforme », Lavoisier)."
+      ],
+      "exemple": {
+        "titre": "Exemples d'équations de réaction",
+        "etapes": [
+          "Combustion du carbone : C + O₂ → CO₂.",
+          "Formation de l'eau : 2 H₂ + O₂ → 2 H₂O.",
+          "On vérifie : 4 atomes H et 2 atomes O de chaque côté."
+        ]
+      },
+      "aRetenir": "Pour équilibrer une équation, on ajoute des nombres devant les formules, jamais dans les formules."
+    },
+    {
+      "titre": "La structure de l'atome",
+      "niveau": "3e",
+      "paragraphes": [
+        "Un atome est formé d'un **noyau** (des **protons**, chargés +, et des **neutrons**, neutres) entouré d'**électrons** (chargés −).",
+        "Un atome est **électriquement neutre** : il a autant d'électrons que de protons. Il est très petit (environ 10⁻¹⁰ m) et son noyau est 100 000 fois plus petit encore : l'atome est surtout fait de vide !"
+      ]
+    },
+    {
+      "titre": "Plus loin : les ions",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Un **ion** est un atome (ou groupe d'atomes) qui a **gagné ou perdu des électrons**. Na⁺ a perdu un électron ; Cl⁻ en a gagné un.",
+        "Le sel de cuisine est formé d'ions sodium Na⁺ et chlorure Cl⁻. Les ions se repèrent par des **tests** (précipités colorés)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à lire les formules et à équilibrer les équations.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Compter les atomes",
+        "question": "Combien d'atomes contient une molécule de méthane CH₄ ?",
+        "reponse": 5,
+        "indices": [
+          "1 atome de carbone et 4 atomes d'hydrogène."
+        ],
+        "solution": "1 + 4 = 5 atomes."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'eau",
+        "question": "Combien d'atomes d'hydrogène contient une molécule d'eau H₂O ?",
+        "reponse": 2,
+        "indices": [
+          "Le petit chiffre 2 suit le H."
+        ],
+        "solution": "H₂O contient 2 atomes d'hydrogène (et 1 d'oxygène)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conservation",
+        "question": "Lors d'une transformation chimique, la masse totale…",
+        "choix": [
+          "se conserve",
+          "augmente",
+          "diminue"
+        ],
+        "bonne": 0,
+        "explication": "Les atomes se réarrangent sans disparaître : la masse totale se conserve."
+      },
+      {
+        "type": "nombre",
+        "titre": "Équilibrer",
+        "question": "Complète l'équation : 2 H₂ + O₂ → … H₂O. Quel nombre faut-il mettre devant H₂O ?",
+        "reponse": 2,
+        "indices": [
+          "À gauche, il y a 4 atomes H et 2 atomes O."
+        ],
+        "solution": "2 H₂O : 4 atomes H et 2 atomes O de chaque côté."
+      },
+      {
+        "type": "nombre",
+        "titre": "Électrons",
+        "question": "Un atome de carbone a 6 protons. Combien a-t-il d'électrons ?",
+        "reponse": 6,
+        "indices": [
+          "Un atome est électriquement neutre."
+        ],
+        "solution": "Autant d'électrons que de protons : 6."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un ion",
+        "question": "L'ion sodium Na⁺…",
+        "choix": [
+          "a perdu un électron",
+          "a gagné un électron",
+          "a gagné un proton"
+        ],
+        "bonne": 0,
+        "explication": "Il a une charge + en trop : il a perdu un électron (chargé −)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le barbecue",
+    "histoire": [
+      "Au barbecue, le charbon de bois (essentiellement du **carbone**) brûle dans l'air.",
+      "C'est une transformation chimique : la **combustion du carbone**, C + O₂ → CO₂."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Les réactifs",
+        "question": "Quels sont les réactifs de cette combustion ?",
+        "choix": [
+          "Le carbone et le dioxygène",
+          "Le dioxyde de carbone",
+          "L'eau et le carbone"
+        ],
+        "bonne": 0,
+        "explication": "Les réactifs sont à gauche de la flèche : C (carbone) et O₂ (dioxygène de l'air)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le produit",
+        "question": "Quel est le produit ?",
+        "choix": [
+          "Le dioxygène",
+          "Le dioxyde de carbone",
+          "Le méthane"
+        ],
+        "bonne": 1,
+        "explication": "CO₂, le dioxyde de carbone, à droite de la flèche."
+      },
+      {
+        "type": "nombre",
+        "titre": "Conservation de la masse",
+        "question": "12 g de carbone réagissent avec 32 g de dioxygène. Quelle masse de dioxyde de carbone se forme-t-il ?",
+        "reponse": 44,
+        "unite": "g",
+        "indices": [
+          "La masse se conserve."
+        ],
+        "solution": "12 + 32 = 44 g de CO₂."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le test",
+        "question": "Comment mettre en évidence le dioxyde de carbone formé ?",
+        "choix": [
+          "L'eau de chaux se trouble",
+          "Une allumette se rallume",
+          "Le sulfate de cuivre devient bleu"
+        ],
+        "bonne": 0,
+        "explication": "Le CO₂ trouble l'eau de chaux. (Le sulfate de cuivre anhydre bleuit en présence d'eau.)"
+      }
+    ],
+    "conclusion": "Bravo ! Une combustion n'est pas une « disparition » : les atomes du charbon partent dans l'air sous forme de CO₂, un gaz à effet de serre."
+  }
+}

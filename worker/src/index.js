@@ -66,16 +66,21 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
 }
 
 const ORDRE_NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
+const ORDRE_MATIERES = ["mathematiques", "physique-chimie"];
+/** Matière d'une notion : début de son sujet (« physique-chimie/etats-de-la-matiere » → « physique-chimie »). */
+const matiereDe = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
 
 /** Clé de tri d'un titre : sans l'article initial (« Le théorème… » se range à T, « Les fractions » à F). */
 export const cleDeTri = (titre) => String(titre).replace(/^(?:(?:les|le|la|the)\s+|l['’]\s*)/i, "");
 
 /** Liste du catalogue pour la barre de navigation : par niveau scolaire, puis par titre (sans article). */
 export function listeCatalogue(index) {
-  const rang = (n) => { const i = ORDRE_NIVEAUX.indexOf(n); return i < 0 ? ORDRE_NIVEAUX.length : i; };
+  const rang = (liste, v) => { const i = liste.indexOf(v); return i < 0 ? liste.length : i; };
   return index.maquettes
-    .map((m) => ({ id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres" }))
-    .sort((a, b) => rang(a.niveau) - rang(b.niveau) || cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }));
+    .map((m) => ({ id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres", matiere: matiereDe(m) }))
+    .sort((a, b) => rang(ORDRE_MATIERES, a.matiere) - rang(ORDRE_MATIERES, b.matiere) || a.matiere.localeCompare(b.matiere)
+      || rang(ORDRE_NIVEAUX, a.niveau) - rang(ORDRE_NIVEAUX, b.niveau)
+      || cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }));
 }
 
 /** Numéro du jour (UTC) : fait tourner les suggestions d'un jour à l'autre, identiques pour tous le même jour. */

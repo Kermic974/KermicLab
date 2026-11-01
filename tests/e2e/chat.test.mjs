@@ -28,8 +28,9 @@ async function simulerApi(page) {
       { id: "fractions", titre: "Les fractions", version: "1.0.0", niveau: "college" },
       { id: "pythagore", titre: "Le théorème de Pythagore", version: "1.0.0", niveau: "college" },
       { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", niveau: "seconde" },
-      { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" }
-    ] })
+      { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" },
+      { id: "electricite", titre: "Circuits électriques et loi d'Ohm", version: "1.0.0", niveau: "college", matiere: "physique-chimie" }
+    ].map((n) => ({ matiere: "mathematiques", ...n })) })
   }));
   await page.route(`${api}/api/chat`, async (route) => {
     const corps = route.request().postDataJSON();
@@ -136,8 +137,8 @@ test("catalogue : barre de navigation, recherche sans accents, ouverture directe
   const barre = page.locator("#catalogue");
   await barre.locator(".notion").first().waitFor();
   assert.equal(await barre.isVisible(), true, "visible en permanence sur grand écran");
-  assert.deepEqual(await barre.locator(".groupe-niveau summary span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
-  assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 4 notions explorées/);
+  assert.deepEqual(await barre.locator(".groupe-niveau summary > span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
+  assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 5 notions explorées/);
   await page.fill("#recherche-notion", "theoreme");
   assert.deepEqual(await barre.locator(".notion").allTextContents(), ["Le théorème de Pythagore"]);
   await page.fill("#recherche-notion", "volcan");
@@ -149,7 +150,14 @@ test("catalogue : barre de navigation, recherche sans accents, ouverture directe
   const bouton = barre.locator("[data-notion=trigo-cercle]");
   assert.equal(await bouton.getAttribute("aria-current"), "page");
   assert.match(await bouton.textContent(), /✓/);
-  assert.match(await page.locator("#catalogue-compteur").textContent(), /1 \/ 4/);
+  assert.match(await page.locator("#catalogue-compteur").textContent(), /1 \/ 5/);
+  // Onglets de matière : la physique-chimie a sa propre liste ; une recherche porte sur toutes les matières.
+  assert.deepEqual(await page.locator("#catalogue-matieres [role=tab]").allTextContents(), ["Maths", "Physique-chimie"]);
+  await page.click("[data-matiere=physique-chimie][role=tab]");
+  assert.deepEqual(await barre.locator(".notion").allTextContents(), ["Circuits électriques et loi d'Ohm"]);
+  await page.fill("#recherche-notion", "la");
+  assert.ok((await barre.locator(".groupe-niveau summary > span:first-child").allTextContents()).some((t) => t.startsWith("Maths · ")));
+  await page.fill("#recherche-notion", "");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

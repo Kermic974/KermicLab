@@ -226,11 +226,15 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   const { CATALOGUE } = await import("../../worker/src/generated/catalogue.js");
   assert.equal(notions.length, CATALOGUE.index.maquettes.length);
   const ordre = ["college", "seconde", "premiere", "terminale", "autres"];
+  const matieres = [...new Set(notions.map((n) => n.matiere))];
+  assert.equal(matieres[0], "mathematiques");
+  assert.ok(matieres.includes("physique-chimie"));
   for (let i = 1; i < notions.length; i++) {
     const [a, b] = [notions[i - 1], notions[i]];
+    if (a.matiere !== b.matiere) { assert.ok(matieres.indexOf(a.matiere) < matieres.indexOf(b.matiere)); continue; }
     assert.ok(ordre.indexOf(a.niveau) < ordre.indexOf(b.niveau) || (a.niveau === b.niveau && cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }) <= 0), `${a.id} puis ${b.id}`);
   }
-  assert.deepEqual(Object.keys(notions[0]).sort(), ["id", "niveau", "titre", "version"]);
+  assert.deepEqual(Object.keys(notions[0]).sort(), ["id", "matiere", "niveau", "titre", "version"]);
   assert.equal(cleDeTri("Le théorème de Pythagore"), "théorème de Pythagore");
   assert.equal(cleDeTri("L'exponentielle"), "exponentielle");
   assert.equal(cleDeTri("Les angles et les triangles"), "angles et les triangles");

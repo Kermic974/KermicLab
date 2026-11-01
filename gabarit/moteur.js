@@ -264,7 +264,7 @@
         for (let i = 0; i <= xMax; i++) s("line", { x1: px(i), y1: 180, x2: px(i), y2: 184, class: "axe" }, svg);
         const texte = (x0, y0, contenu, ancre) => { s("text", { x: x0, y: y0, class: "legende", "text-anchor": ancre }, svg).textContent = contenu; };
         texte(26, 184, "0", "end");
-        texte(px(xMax), 197, `${nombreFr(xMax)} ${conf.libelleX.toLowerCase()}`, "end");
+        texte(px(xMax), 197, `${conf.libelleX} : de 0 à ${nombreFr(xMax)}`, "end");
         texte(36, 14, conf.libelleY, "start");
         s("line", { x1: px(0), y1: py(0), x2: px(xMax), y2: py(k * xMax), class: "droite" }, svg);
         s("line", { x1: px(x), y1: 180, x2: px(x), y2: py(k * x), class: "repere" }, svg);

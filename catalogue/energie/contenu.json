@@ -1,0 +1,157 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ce qui permet d'agir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'**énergie** est ce qui permet de produire un effet : mettre en mouvement, chauffer, éclairer. On ne la voit pas, mais on voit ce qu'elle fait.",
+        "Elle ne se crée pas et ne disparaît pas : elle **se transforme**. Ta lampe transforme de l'énergie électrique en lumière… et en chaleur."
+      ]
+    },
+    {
+      "titre": "Formes et sources",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Formes d'énergie : **cinétique** (mouvement), **potentielle** (position en hauteur), **thermique**, **électrique**, **chimique** (aliments, carburants, piles), **lumineuse** (rayonnante), **nucléaire**.",
+        "Sources **renouvelables** (soleil, vent, eau, biomasse, géothermie) ou **non renouvelables** (pétrole, gaz, charbon, uranium)."
+      ]
+    },
+    {
+      "titre": "Conversions et rendement",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Une **chaîne énergétique** montre les conversions : un panneau solaire convertit l'énergie lumineuse en énergie électrique ; une éolienne, l'énergie cinétique du vent en énergie électrique.",
+        "Une partie de l'énergie est toujours « perdue » (souvent en chaleur). **Rendement = énergie utile ÷ énergie reçue** (inférieur à 1, ou 100 %)."
+      ],
+      "aRetenir": "Conservation : énergie reçue = énergie utile + énergie perdue."
+    },
+    {
+      "titre": "L'énergie cinétique",
+      "niveau": "3e",
+      "paragraphes": [
+        "Un objet de masse m (kg) qui se déplace à la vitesse v (m/s) possède une énergie cinétique **Ec = ½ × m × v²** (en joules).",
+        "La vitesse est au carré : **doubler la vitesse multiplie l'énergie cinétique par 4**. C'est pourquoi la distance de freinage augmente si vite avec la vitesse."
+      ]
+    },
+    {
+      "titre": "Puissance et unités",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Énergie et puissance sont liées par **E = P × t**. Un watt, c'est un joule par seconde.",
+        "**1 kWh = 1 000 W × 3 600 s = 3,6 × 10⁶ J.**"
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les conversions et l'énergie cinétique.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Panneau solaire",
+        "question": "Un panneau photovoltaïque convertit…",
+        "choix": [
+          "l'énergie lumineuse en énergie électrique",
+          "l'énergie électrique en énergie lumineuse",
+          "l'énergie chimique en énergie thermique"
+        ],
+        "bonne": 0,
+        "explication": "Il reçoit la lumière du Soleil et fournit du courant électrique."
+      },
+      {
+        "type": "nombre",
+        "titre": "Énergie cinétique",
+        "question": "Calcule l'énergie cinétique d'une voiture de 1 000 kg roulant à 20 m/s.",
+        "reponse": 200000,
+        "unite": "J",
+        "indices": [
+          "Ec = ½ × m × v² = 0,5 × 1 000 × 20²."
+        ],
+        "solution": "0,5 × 1 000 × 400 = 200 000 J."
+      },
+      {
+        "type": "qcm",
+        "titre": "Vitesse doublée",
+        "question": "Si la vitesse d'un véhicule double, son énergie cinétique est…",
+        "choix": [
+          "multipliée par 2",
+          "multipliée par 4",
+          "inchangée"
+        ],
+        "bonne": 1,
+        "explication": "Ec dépend de v² : (2v)² = 4v²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Rendement",
+        "question": "Une lampe reçoit 100 J d'énergie électrique et fournit 20 J d'énergie lumineuse. Quel est son rendement, en % ?",
+        "reponse": 20,
+        "unite": "%",
+        "indices": [
+          "Rendement = utile ÷ reçue."
+        ],
+        "solution": "20 ÷ 100 = 0,20 = 20 %."
+      },
+      {
+        "type": "nombre",
+        "titre": "Kilowattheure",
+        "question": "Combien de joules y a-t-il dans 1 kWh ?",
+        "reponse": 3600000,
+        "unite": "J",
+        "indices": [
+          "1 kWh = 1 000 W pendant 3 600 s."
+        ],
+        "solution": "1 000 × 3 600 = 3 600 000 J."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La voiture et le freinage",
+    "histoire": [
+      "Une voiture a une masse de **1 200 kg**. Pour s'arrêter, ses freins doivent transformer toute son énergie cinétique en chaleur.",
+      "Comparons deux vitesses."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "À 10 m/s",
+        "question": "Quelle est son énergie cinétique à 10 m/s (36 km/h) ?",
+        "reponse": 60000,
+        "unite": "J",
+        "indices": [
+          "Ec = 0,5 × 1 200 × 10²."
+        ],
+        "solution": "0,5 × 1 200 × 100 = 60 000 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "À 20 m/s",
+        "question": "Et à 20 m/s (72 km/h) ?",
+        "reponse": 240000,
+        "unite": "J",
+        "indices": [
+          "Ec = 0,5 × 1 200 × 20²."
+        ],
+        "solution": "0,5 × 1 200 × 400 = 240 000 J : 4 fois plus !"
+      },
+      {
+        "type": "qcm",
+        "titre": "Le freinage",
+        "question": "Avec la même force de freinage, la distance de freinage à 72 km/h est environ…",
+        "choix": [
+          "la même qu'à 36 km/h",
+          "2 fois plus longue",
+          "4 fois plus longue"
+        ],
+        "bonne": 2,
+        "explication": "Il faut dissiper 4 fois plus d'énergie : la distance de freinage est environ 4 fois plus longue."
+      }
+    ],
+    "conclusion": "Bravo ! Voilà pourquoi chaque km/h compte en ville : l'énergie à dissiper grandit comme le carré de la vitesse."
+  }
+}

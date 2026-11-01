@@ -1,0 +1,156 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : immobile… ou pas ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans un train qui roule, tu es **immobile** par rapport à ton siège, mais **en mouvement** par rapport au quai. Le mouvement dépend de **l'objet de référence** choisi.",
+        "Cet objet de référence s'appelle le **référentiel**. Sans lui, dire « ça bouge » n'a pas de sens !"
+      ]
+    },
+    {
+      "titre": "Trajectoire",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "La **trajectoire** est l'ensemble des positions successives d'un point. Elle peut être **rectiligne** (une droite), **circulaire** (un cercle) ou **curviligne** (une courbe).",
+        "Une **chronophotographie** montre les positions à intervalles de temps égaux : si les points sont de plus en plus espacés, le mouvement **accélère** ; s'ils sont régulièrement espacés, il est **uniforme**."
+      ]
+    },
+    {
+      "titre": "Vitesse",
+      "niveau": "4e",
+      "paragraphes": [
+        "La vitesse moyenne vaut **v = d / t**. Unités : m/s ou km/h, et **1 m/s = 3,6 km/h**.",
+        "Un mouvement **rectiligne uniforme** se fait en ligne droite à vitesse constante."
+      ]
+    },
+    {
+      "titre": "Référentiels et vecteur vitesse",
+      "niveau": "seconde",
+      "paragraphes": [
+        "On utilise souvent le référentiel **terrestre** (le sol), **géocentrique** (le centre de la Terre, pour la Lune et les satellites) ou **héliocentrique** (le Soleil, pour les planètes).",
+        "La vitesse est représentée par un **vecteur** : tangent à la trajectoire, dans le sens du mouvement, de longueur proportionnelle à la valeur de la vitesse."
+      ]
+    },
+    {
+      "titre": "Le principe d'inertie",
+      "niveau": "seconde",
+      "paragraphes": [
+        "**Principe d'inertie** : si les forces qui s'exercent sur un objet se compensent (ou s'il n'en subit aucune), il est **immobile** ou en **mouvement rectiligne uniforme**. Et réciproquement.",
+        "Un palet sur une glace parfaite (sans frottement) continuerait tout droit, à vitesse constante, indéfiniment."
+      ],
+      "aRetenir": "Pour changer la vitesse ou la direction d'un objet, il faut une force non compensée."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à décrire des mouvements.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Référentiel",
+        "question": "Un passager est assis dans un train qui roule. Par rapport au train, il est…",
+        "choix": [
+          "immobile",
+          "en mouvement"
+        ],
+        "bonne": 0,
+        "explication": "Il ne bouge pas par rapport à son siège ; il est en mouvement par rapport au quai."
+      },
+      {
+        "type": "qcm",
+        "titre": "Chronophotographie",
+        "question": "Sur une chronophotographie, les points sont alignés et régulièrement espacés. Le mouvement est…",
+        "choix": [
+          "rectiligne uniforme",
+          "rectiligne accéléré",
+          "circulaire"
+        ],
+        "bonne": 0,
+        "explication": "Alignés : rectiligne. Régulièrement espacés : uniforme."
+      },
+      {
+        "type": "nombre",
+        "titre": "Vitesse",
+        "question": "Un coureur parcourt 100 m en 10 s. Quelle est sa vitesse moyenne en m/s ?",
+        "reponse": 10,
+        "unite": "m/s",
+        "indices": [
+          "v = d / t."
+        ],
+        "solution": "100 ÷ 10 = 10 m/s."
+      },
+      {
+        "type": "nombre",
+        "titre": "Conversion",
+        "question": "Convertis 10 m/s en km/h.",
+        "reponse": 36,
+        "unite": "km/h",
+        "indices": [
+          "Multiplie par 3,6."
+        ],
+        "solution": "10 × 3,6 = 36 km/h."
+      },
+      {
+        "type": "qcm",
+        "titre": "Inertie",
+        "question": "Un palet glisse sur une glace parfaitement lisse (sans frottement). Que fait-il ?",
+        "choix": [
+          "Il ralentit puis s'arrête",
+          "Il continue en ligne droite à vitesse constante",
+          "Il accélère"
+        ],
+        "bonne": 1,
+        "explication": "Principe d'inertie : sans force non compensée, mouvement rectiligne uniforme."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le skate au parc",
+    "histoire": [
+      "Léna descend une longue allée en skateboard. Son ami Sam la filme depuis un banc.",
+      "Elle parcourt **60 m en 12 s** à vitesse à peu près constante."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Pour Léna",
+        "question": "Par rapport à son skateboard, Léna est…",
+        "choix": [
+          "immobile",
+          "en mouvement"
+        ],
+        "bonne": 0,
+        "explication": "Dans le référentiel du skateboard, elle ne bouge pas ; dans celui du banc, elle avance."
+      },
+      {
+        "type": "nombre",
+        "titre": "Sa vitesse",
+        "question": "Quelle est la vitesse moyenne de Léna en m/s ?",
+        "reponse": 5,
+        "unite": "m/s",
+        "indices": [
+          "v = d / t = 60 ÷ 12."
+        ],
+        "solution": "60 ÷ 12 = 5 m/s."
+      },
+      {
+        "type": "nombre",
+        "titre": "En km/h",
+        "question": "Et en km/h ?",
+        "reponse": 18,
+        "unite": "km/h",
+        "indices": [
+          "Multiplie par 3,6."
+        ],
+        "solution": "5 × 3,6 = 18 km/h."
+      }
+    ],
+    "conclusion": "Bravo ! Décrire un mouvement commence toujours par choisir un référentiel : c'est ce que font les GPS, les contrôleurs aériens… et Einstein."
+  }
+}
