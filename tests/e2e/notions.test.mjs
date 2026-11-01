@@ -1,5 +1,6 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
+import { readdir, stat } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine } from "./outils.mjs";
 
 // Pages générées depuis gabarit/ : même contrat que trigo-cercle, plus exercices, étoiles et défi progressif.
@@ -8,7 +9,13 @@ before(async () => { serveur = await servir(racine); nav = await navigateur(); }
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 const url = (id) => `${serveur.url}/catalogue/${id}/page.html`;
 
-for (const id of ["pythagore", "fractions", "proportionnalite"]) {
+// Toutes les notions décrites par un contenu.json (gabarit commun).
+const NOTIONS = [];
+for (const nom of (await readdir(`${racine}catalogue`)).sort()) {
+  try { await stat(`${racine}catalogue/${nom}/contenu.json`); NOTIONS.push(nom); } catch { /* page écrite à la main */ }
+}
+
+for (const id of NOTIONS) {
   test(`${id} : onglets, figure, aucune erreur ni violation CSP, pas de débordement mobile`, async () => {
     const { page, contexte, erreurs } = await ouvrir(nav, url(id), { viewport: { width: 360, height: 740 }, isMobile: true });
     await page.goto(url(id));
@@ -20,7 +27,9 @@ for (const id of ["pythagore", "fractions", "proportionnalite"]) {
       assert.ok(debord <= 0, `${o} déborde de ${debord}px`);
     }
     await page.click("#onglet-application");
-    assert.ok(await page.locator("#panneau-application .figure svg *").count() > 3, "la figure est dessinée");
+    if (await page.locator("#panneau-application .figure").count()) {
+      assert.ok(await page.locator("#panneau-application .figure svg *").count() > 3, "la figure est dessinée");
+    }
     assert.equal(await page.locator("#connexion").isVisible(), false);
     assert.deepEqual(erreurs, []);
     await contexte.close();
@@ -81,4 +90,64 @@ test("défi : les étapes se débloquent une à une jusqu'à « Mission accompli
   }
   assert.equal(await page.locator("#panneau-mise-en-situation .bravo").isVisible(), true);
   await contexte.close();
+});
+
+test("figures : la droite affine et le simulateur de dé réagissent", async () => {
+  const affine = await ouvrir(nav, url("fonctions-affines"));
+  await affine.page.goto(url("fonctions-affines"));
+  await affine.page.click("#onglet-application");
+  await affine.page.locator(".curseur input").first().fill("-1");
+  await affine.page.locator(".curseur input").nth(1).fill("0");
+  const tuiles = await affine.page.locator(".tuile b").allTextContents();
+  assert.equal(tuiles[0], "f(x) = −x");
+  assert.match(tuiles[1], /décroissante/);
+  assert.equal(tuiles[3], "linéaire (proportionnalité)");
+  await affine.contexte.close();
+
+  const des = await ouvrir(nav, url("probabilites"));
+  await des.page.goto(url("probabilites"));
+  await des.page.click("#onglet-application");
+  await des.page.getByRole("button", { name: "Lancer 1000 fois" }).click();
+  const [lancers, , frequence] = await des.page.locator(".tuile b").allTextContents();
+  assert.equal(lancers.replace(/\s/g, ""), "1000");
+  const f = Number(frequence.replace(",", "."));
+  assert.ok(f > 0.08 && f < 0.26, `fréquence du 6 plausible : ${f}`);
+  assert.deepEqual(des.erreurs, []);
+  await des.contexte.close();
+});
+
+/** Écriture qu'un élève taperait pour la réponse attendue : fraction (si exigée) ou nombre décimal à virgule. */
+function saisie(ex) {
+  if (!ex.fractionIrreductible) return String(ex.reponse).replace(".", ",");
+  for (let d = 1; d <= 1000; d++) {
+    const n = Math.round(ex.reponse * d);
+    if (Math.abs(n / d - ex.reponse) < 1e-9) return `${n}/${d}`;
+  }
+  throw new Error(`réponse non rationnelle : ${ex.reponse}`);
+}
+
+test("toutes les notions : chaque exercice accepte sa réponse attendue (application et défi complets)", async () => {
+  const { readFile } = await import("node:fs/promises");
+  for (const id of NOTIONS) {
+    const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+    const { page, contexte, erreurs } = await ouvrir(nav, url(id));
+    await page.goto(url(id));
+    for (const [onglet, prefixe, liste] of [["application", "app", contenu.application.exercices], ["mise-en-situation", "defi", contenu.situation.etapes]]) {
+      await page.click(`#onglet-${onglet}`);
+      for (const [i, ex] of liste.entries()) {
+        const carte = page.locator(`[data-exercice=${prefixe}-${i + 1}]`);
+        if (ex.type === "qcm") await carte.locator(".choix-bouton").nth(ex.bonne).click();
+        else {
+          await carte.locator("input").fill(saisie(ex));
+          await carte.getByRole("button", { name: "Valider" }).click();
+        }
+        assert.match(await carte.locator(".retour").textContent(), /Bravo|Exact/, `${id} ${prefixe}-${i + 1} : « ${ex.question} »`);
+      }
+    }
+    assert.equal(await page.locator("#panneau-mise-en-situation .bravo").isVisible(), true, `${id} : défi terminé`);
+    const total = contenu.application.exercices.length + contenu.situation.etapes.length;
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), `★ ${total} / ${total}`);
+    assert.deepEqual(erreurs, [], id);
+    await contexte.close();
+  }
 });

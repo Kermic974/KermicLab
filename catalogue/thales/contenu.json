@@ -1,0 +1,176 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les ombres au soleil",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Au même moment, les rayons du soleil sont **parallèles**. Un bâton de 1 m fait une ombre de 1,5 m. Un arbre voisin fait une ombre de 12 m : il est donc 8 fois plus haut que le bâton (12 ÷ 1,5 = 8), soit **8 m**.",
+        "C'est l'idée du théorème de Thalès : des droites parallèles créent des **longueurs proportionnelles**. La légende dit que Thalès de Milet a mesuré ainsi la hauteur d'une pyramide."
+      ]
+    },
+    {
+      "titre": "Le théorème",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Dans un triangle ABC, on place M sur le côté [AB] et N sur le côté [AC]. **Si les droites (MN) et (BC) sont parallèles**, alors : **AM/AB = AN/AC = MN/BC**.",
+        "Le petit triangle AMN est une **réduction** du grand triangle ABC."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "AM = 3 cm, AB = 5 cm, AC = 10 cm, BC = 8 cm et (MN) // (BC).",
+          "AM/AB = AN/AC donne 3/5 = AN/10, donc AN = 10 × 3 ÷ 5 = 6 cm.",
+          "AM/AB = MN/BC donne 3/5 = MN/8, donc MN = 8 × 3 ÷ 5 = 4,8 cm."
+        ]
+      },
+      "aRetenir": "Écris toujours les rapports dans le même ordre : petit triangle en haut, grand triangle en bas."
+    },
+    {
+      "titre": "La configuration « papillon »",
+      "niveau": "3e",
+      "paragraphes": [
+        "Le théorème marche aussi quand les deux droites se croisent en A et que M et N sont **de l'autre côté** de A (les deux triangles forment un papillon). Les mêmes égalités restent vraies si (MN) // (BC)."
+      ]
+    },
+    {
+      "titre": "La réciproque",
+      "niveau": "3e",
+      "paragraphes": [
+        "Pour **prouver** que deux droites sont parallèles : si les points A, M, B et A, N, C sont alignés dans le même ordre et si **AM/AB = AN/AC**, alors (MN) et (BC) sont parallèles.",
+        "Si les rapports sont différents, les droites ne sont pas parallèles."
+      ],
+      "exemple": {
+        "titre": "Deux cas",
+        "etapes": [
+          "AM = 2, AB = 5, AN = 3, AC = 7,5 : AM/AB = 0,4 et AN/AC = 0,4. Égaux : les droites sont parallèles.",
+          "AM = 2, AB = 5, AN = 3, AC = 7 : 0,4 et 3/7 ≈ 0,43. Différents : elles ne sont pas parallèles."
+        ]
+      }
+    },
+    {
+      "titre": "Plus loin : agrandissements et réductions",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Dans un agrandissement ou une réduction de rapport k, les **longueurs** sont multipliées par k, les **aires** par k² et les **volumes** par k³.",
+        "Si on double toutes les longueurs d'une maquette (k = 2), son aire est multipliée par 4 et son volume par 8. En seconde, cette transformation s'appelle une **homothétie**, et Thalès se traduit avec des vecteurs colinéaires."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à écrire les rapports de Thalès. Repère toujours les droites parallèles d'abord.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "La condition",
+        "question": "Pour appliquer le théorème de Thalès dans le triangle ABC (M sur [AB], N sur [AC]), il faut absolument que…",
+        "choix": [
+          "(MN) soit parallèle à (BC)",
+          "le triangle soit rectangle",
+          "AM soit égal à AN"
+        ],
+        "bonne": 0,
+        "explication": "Sans droites parallèles, pas de Thalès !"
+      },
+      {
+        "type": "nombre",
+        "titre": "Calculer MN",
+        "question": "M est sur [AB], N sur [AC], (MN) // (BC). AM = 4 cm, AB = 10 cm et BC = 15 cm. Combien mesure MN ?",
+        "reponse": 6,
+        "unite": "cm",
+        "indices": [
+          "AM/AB = MN/BC, donc 4/10 = MN/15.",
+          "MN = 15 × 4 ÷ 10."
+        ],
+        "solution": "MN = 15 × 4 ÷ 10 = 6 cm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Calculer AC",
+        "question": "Avec (MN) // (BC) : AM = 3 cm, AB = 9 cm et AN = 2 cm. Combien mesure AC ?",
+        "reponse": 6,
+        "unite": "cm",
+        "indices": [
+          "AM/AB = AN/AC, donc 3/9 = 2/AC.",
+          "3/9 = 1/3 : AN est le tiers de AC."
+        ],
+        "solution": "1/3 = 2/AC, donc AC = 6 cm."
+      },
+      {
+        "type": "qcm",
+        "titre": "La réciproque",
+        "question": "A, M, B et A, N, C sont alignés dans le même ordre. AM = 4, AB = 10, AN = 6 et AC = 15. Les droites (MN) et (BC) sont-elles parallèles ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 0,
+        "explication": "AM/AB = 4/10 = 0,4 et AN/AC = 6/15 = 0,4 : les rapports sont égaux, donc (MN) // (BC).",
+        "indice": "Calcule les deux rapports AM/AB et AN/AC."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aire et agrandissement",
+        "question": "Un triangle de 5 cm² est agrandi : toutes ses longueurs sont multipliées par 3. Quelle est son aire ?",
+        "reponse": 45,
+        "unite": "cm²",
+        "indices": [
+          "Les aires sont multipliées par k², ici 3² = 9."
+        ],
+        "solution": "5 × 3² = 5 × 9 = 45 cm²."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Mesurer un arbre sans grimper",
+    "histoire": [
+      "Tu veux connaître la hauteur du grand chêne de la cour. Impossible de grimper ! Par une journée ensoleillée, tu plantes un bâton de **2 m** bien droit.",
+      "Au même moment, l'ombre du bâton mesure **3 m** et celle de l'arbre **18 m**."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Pourquoi Thalès ?",
+        "question": "Pourquoi peut-on utiliser le théorème de Thalès ici ?",
+        "choix": [
+          "Les rayons du soleil sont parallèles",
+          "L'arbre est plus grand que le bâton",
+          "Le sol est plat"
+        ],
+        "bonne": 0,
+        "explication": "Les rayons du soleil arrivent parallèles : ils forment les droites parallèles du théorème (le bâton et l'arbre sont verticaux, sur un sol horizontal).",
+        "indice": "Quelles droites sont parallèles dans cette situation ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "La hauteur de l'arbre",
+        "question": "Quelle est la hauteur de l'arbre ?",
+        "reponse": 12,
+        "unite": "m",
+        "indices": [
+          "Hauteur de l'arbre / 2 = 18 / 3.",
+          "L'ombre de l'arbre est 6 fois plus longue que celle du bâton."
+        ],
+        "solution": "18 ÷ 3 = 6 : l'arbre est 6 fois plus haut que le bâton, soit 6 × 2 = 12 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "À midi",
+        "question": "À midi, l'ombre du bâton ne mesure plus que 1 m. Combien mesure alors l'ombre de l'arbre ?",
+        "reponse": 6,
+        "unite": "m",
+        "indices": [
+          "L'arbre est toujours 6 fois plus haut que le bâton.",
+          "Son ombre est donc 6 fois plus longue que celle du bâton."
+        ],
+        "solution": "L'ombre de l'arbre est 6 fois plus longue : 6 × 1 = 6 m."
+      }
+    ],
+    "conclusion": "Tu as mesuré un arbre avec un simple bâton, comme Thalès avec la pyramide de Khéops il y a plus de 2 500 ans !"
+  }
+}

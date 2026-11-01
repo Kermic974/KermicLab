@@ -1,0 +1,172 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partager équitablement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Trois amis ont 12, 15 et 9 billes. S'ils mettaient tout en commun pour partager équitablement, chacun aurait (12 + 15 + 9) ÷ 3 = 36 ÷ 3 = **12 billes** : c'est la **moyenne**.",
+        "Les statistiques servent à résumer une longue liste de nombres (notes, tailles, températures…) en quelques valeurs faciles à comparer."
+      ]
+    },
+    {
+      "titre": "Moyenne et étendue",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "**Moyenne** = somme des valeurs ÷ nombre de valeurs (l'**effectif total**).",
+        "Avec des coefficients, on calcule une **moyenne pondérée** : chaque valeur compte autant de fois que son coefficient.",
+        "**Étendue** = plus grande valeur − plus petite valeur. Elle mesure à quel point les valeurs sont **dispersées**."
+      ],
+      "exemple": {
+        "titre": "Exemple : les notes 8, 14, 11, 17 et 10",
+        "etapes": [
+          "Somme : 8 + 14 + 11 + 17 + 10 = 60. Effectif : 5.",
+          "Moyenne : 60 ÷ 5 = 12.",
+          "Étendue : 17 − 8 = 9."
+        ]
+      }
+    },
+    {
+      "titre": "La médiane",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "On **range les valeurs dans l'ordre croissant**. La **médiane** partage la série en deux groupes de même effectif : au moins la moitié des valeurs sont inférieures ou égales à la médiane, et au moins la moitié sont supérieures ou égales.",
+        "Effectif impair : c'est la valeur du milieu (3 ; 7 ; **8** ; 12 ; 20 → médiane 8). Effectif pair : on prend souvent la moyenne des deux valeurs du milieu (3 ; **7** ; **8** ; 12 → médiane 7,5)."
+      ],
+      "aRetenir": "La médiane résiste aux valeurs extrêmes. Pour des salaires de 1 500, 1 600, 1 700, 1 800 et 20 000 €, la moyenne vaut 5 320 € mais la médiane 1 700 € : elle représente mieux la plupart des personnes."
+    },
+    {
+      "titre": "Les fréquences",
+      "niveau": "4e",
+      "paragraphes": [
+        "La **fréquence** d'une valeur est son effectif divisé par l'effectif total. On l'écrit en fraction, en décimal ou en pourcentage.",
+        "Si 6 élèves sur 24 viennent à pied, la fréquence est 6/24 = 0,25 = **25 %**. La somme de toutes les fréquences vaut toujours 1 (100 %)."
+      ]
+    },
+    {
+      "titre": "Plus loin : quartiles et écart type",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Le **premier quartile Q1** est la plus petite valeur de la série telle qu'au moins 25 % des valeurs lui soient inférieures ou égales ; le **troisième quartile Q3**, la même chose avec 75 %. L'**écart interquartile** Q3 − Q1 mesure la dispersion de la moitié centrale des valeurs.",
+        "L'**écart type** mesure l'écart moyen des valeurs autour de la moyenne : plus il est grand, plus les valeurs sont dispersées. La calculatrice le donne directement."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à calculer les indicateurs. Astuce : pour la médiane, commence toujours par ranger les valeurs.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Moyenne",
+        "question": "Calcule la moyenne de 4, 9, 11 et 16.",
+        "reponse": 10,
+        "indices": [
+          "Additionne les 4 valeurs, puis divise par 4."
+        ],
+        "solution": "(4 + 9 + 11 + 16) ÷ 4 = 40 ÷ 4 = 10."
+      },
+      {
+        "type": "nombre",
+        "titre": "Étendue",
+        "question": "Calcule l'étendue de la série 13 ; 5 ; 21 ; 8.",
+        "reponse": 16,
+        "indices": [
+          "Étendue = plus grande valeur − plus petite valeur."
+        ],
+        "solution": "21 − 5 = 16."
+      },
+      {
+        "type": "nombre",
+        "titre": "Médiane (effectif impair)",
+        "question": "Trouve la médiane de 2 ; 9 ; 4 ; 7 ; 12.",
+        "reponse": 7,
+        "indices": [
+          "Range d'abord : 2 ; 4 ; 7 ; 9 ; 12."
+        ],
+        "solution": "Rangée : 2 ; 4 ; 7 ; 9 ; 12. La valeur du milieu (3e sur 5) est 7."
+      },
+      {
+        "type": "nombre",
+        "titre": "Médiane (effectif pair)",
+        "question": "Trouve la médiane de 5 ; 1 ; 8 ; 3.",
+        "reponse": 4,
+        "indices": [
+          "Range d'abord : 1 ; 3 ; 5 ; 8.",
+          "Fais la moyenne des deux valeurs du milieu."
+        ],
+        "solution": "Rangée : 1 ; 3 ; 5 ; 8. Médiane : (3 + 5) ÷ 2 = 4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Fréquence",
+        "question": "Dans une classe de 36 élèves, 9 viennent à vélo. Quelle est la fréquence, en pourcentage ?",
+        "reponse": 25,
+        "unite": "%",
+        "indices": [
+          "Fréquence = 9 ÷ 36.",
+          "9 ÷ 36 = 0,25."
+        ],
+        "solution": "9 ÷ 36 = 0,25 = 25 %."
+      },
+      {
+        "type": "qcm",
+        "titre": "Moyenne ou médiane ?",
+        "question": "Dans une petite entreprise, les salaires sont 1 500, 1 600, 1 700, 1 800 et 20 000 €. Quel indicateur décrit le mieux le salaire de la plupart des employés ?",
+        "choix": [
+          "La moyenne (5 320 €)",
+          "La médiane (1 700 €)"
+        ],
+        "bonne": 1,
+        "explication": "Le salaire de 20 000 € tire la moyenne vers le haut. La médiane, 1 700 €, n'est pas influencée par cette valeur extrême."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le carnet de notes",
+    "histoire": [
+      "Léo a eu **12, 8, 15 et 13** à ses quatre premiers contrôles de maths (tous de coefficient 1).",
+      "Il voudrait savoir où il en est, et ce qu'il lui faut pour progresser."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Sa moyenne",
+        "question": "Quelle est la moyenne actuelle de Léo ?",
+        "reponse": 12,
+        "indices": [
+          "Somme : 12 + 8 + 15 + 13."
+        ],
+        "solution": "(12 + 8 + 15 + 13) ÷ 4 = 48 ÷ 4 = 12."
+      },
+      {
+        "type": "nombre",
+        "titre": "Objectif 13",
+        "question": "Quelle note doit-il obtenir au 5e contrôle (coefficient 1) pour avoir exactement 13 de moyenne ?",
+        "reponse": 17,
+        "indices": [
+          "Pour 13 de moyenne sur 5 notes, la somme doit valoir 13 × 5 = 65.",
+          "Il a déjà 48 points."
+        ],
+        "solution": "Il faut une somme de 65 : 65 − 48 = 17. Courage, Léo !"
+      },
+      {
+        "type": "nombre",
+        "titre": "Un devoir coefficient 2",
+        "question": "Finalement, le 5e devoir compte coefficient 2 et Léo obtient 16. Quelle est sa nouvelle moyenne, arrondie au dixième ?",
+        "reponse": 13.3,
+        "tolerance": 0.05,
+        "indices": [
+          "Le 16 compte deux fois : somme = 48 + 2 × 16.",
+          "Le nombre total de coefficients est 4 + 2 = 6."
+        ],
+        "solution": "(48 + 2 × 16) ÷ 6 = 80 ÷ 6 ≈ 13,3."
+      }
+    ],
+    "conclusion": "Bien joué ! Tu sais maintenant calculer une moyenne, même pondérée, et prévoir la note qu'il te faut : très utile pour tes propres bulletins."
+  }
+}

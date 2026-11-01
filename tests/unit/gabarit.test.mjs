@@ -18,7 +18,8 @@ async function notions() {
 
 test("gabarit : les notions pilotes ont un contenu valide", async () => {
   const liste = await notions();
-  assert.deepEqual(liste.map((n) => n.nom), ["fractions", "proportionnalite", "pythagore"]);
+  assert.ok(liste.length >= 11, `${liste.length} notions générées`);
+  for (const attendu of ["fractions", "proportionnalite", "pythagore", "equations", "thales", "probabilites"]) assert.ok(liste.some((n) => n.nom === attendu), attendu);
   for (const { nom, contenu } of liste) assert.doesNotThrow(() => validerContenu(contenu, nom), nom);
 });
 

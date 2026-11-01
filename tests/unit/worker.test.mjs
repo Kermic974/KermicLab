@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "mathematiques/theoreme-de-thales", plan_onglets: ["explication", "puzzle des triangles", "mise en situation"],
-    reponse: "Deux droites parallèles coupées par deux sécantes créent des longueurs proportionnelles."
+    sujet: "sciences/photosynthese", plan_onglets: ["explication", "la feuille au microscope", "mise en situation"],
+    reponse: "Les plantes fabriquent leur nourriture avec la lumière, l'eau et le gaz carbonique."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "c'est quoi le théorème de Thalès ?", langue: "fr" });
-  await chat({ message: "explique Thalès", langue: "fr" });
+  const a = await chat({ message: "c'est quoi la photosynthèse ?", langue: "fr" });
+  await chat({ message: "explique la photosynthèse", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] mathematiques/theoreme-de-thales");
-  assert.match(issues[0].body, /puzzle des triangles/);
+  assert.equal(issues[0].title, "[maquette-manquante] sciences/photosynthese");
+  assert.match(issues[0].body, /la feuille au microscope/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -160,7 +160,7 @@ test("sans clé API : réponse hors catalogue qui propose des questions routées
   delete env.ANTHROPIC_API_KEY;
   const r = await chat({ message: "parle-moi des volcans", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
-  assert.match(r.donnees.texte, /Le cercle trigonométrique/);
+  assert.match(r.donnees.texte, /\d+ notions, par exemple/);
   assert.ok(r.donnees.suggestions.length > 0);
   for (const q of r.donnees.suggestions) {
     const suite = await chat({ message: q, langue: "fr" });
@@ -179,13 +179,13 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
 
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
   _reinitialiser({ client: creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "mathematiques/equations", plan_onglets: [],
-    reponse: "Une équation, c'est une balance en équilibre.",
-    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et avec deux inconnues ?", 4]
+    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "sciences/volcans", plan_onglets: [],
+    reponse: "Un volcan, c'est une ouverture par laquelle sort le magma.",
+    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les volcans en France ?", 4]
   }) });
-  const r = await chat({ message: "c'est quoi une équation ?", langue: "fr" });
+  const r = await chat({ message: "c'est quoi un volcan ?", langue: "fr" });
   assert.equal(r.donnees.type, "reponse");
-  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et avec deux inconnues ?"]);
+  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les volcans en France ?"]);
 });
 
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {
