@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Compare réformes et libertés pour comprendre Napoléon, sans confondre un portrait glorieux et une enquête historique.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un dirigeant, plusieurs facettes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Napoléon Bonaparte** est un militaire qui prend le pouvoir par le coup d'État du **18 Brumaire**, les **9 et 10 novembre 1799**. Il devient Premier consul, puis empereur sous le nom de **Napoléon Ier en 1804**.",
+        "Il organise des réformes durables, mais concentre le pouvoir et mène de nombreuses guerres. Pour comprendre son régime, il faut regarder à la fois les institutions, les libertés et la vie des populations.",
+        "Un tableau de sacre montre comment le pouvoir souhaite être vu. Il ne raconte pas à lui seul les expériences des soldats, des familles ou des habitants des territoires conquis."
+      ],
+      "exemple": { "titre": "Deux cartes à garder ensemble", "etapes": ["Sur une carte, écris « réformes » ; sur une autre, « pouvoir autoritaire ».", "Le même régime peut produire les deux.", "Ne choisis pas une seule carte pour résumer toute son histoire."] },
+      "aRetenir": "1799 : Consulat ; 1804 : Empire. Étudier un personnage n'oblige ni à le célébrer ni à ignorer ses réformes."
+    },
+    {
+      "titre": "Collège : réorganiser la France",
+      "niveau": "4e",
+      "paragraphes": [
+        "Sous le **Consulat**, Bonaparte renforce l'administration : les **préfets**, créés en **1800**, représentent l'État dans les départements. Les **lycées**, créés en **1802**, forment notamment de futurs cadres du régime. Le concordat de **1801** organise les relations avec l'Église catholique.",
+        "Le **Code civil de 1804** rassemble des règles sur la propriété, les contrats et la famille. Il confirme certains acquis révolutionnaires, comme l'égalité civile des hommes et la protection de la propriété. Mais il établit une forte autorité du mari et du père : les femmes mariées n'ont pas les mêmes droits que les hommes.",
+        "Napoléon est sacré empereur le **2 décembre 1804**. Le régime utilise des votes d'approbation, appelés **plébiscites**, mais contrôle la presse et limite l'opposition. Ce n'est pas une démocratie garantissant le libre débat politique."
+      ],
+      "exemple": { "titre": "Une règle commune, des droits inégaux", "etapes": ["Deux propriétaires concluent un contrat : un code commun fixe des règles.", "Mais les droits au sein de la famille ne sont pas égaux entre femmes et hommes.", "Une loi peut unifier des pratiques tout en maintenant des inégalités."] },
+      "aRetenir": "1804 est le repère du Code civil et du sacre. Égalité civile masculine ne signifie ni égalité entre tous ni liberté politique."
+    },
+    {
+      "titre": "Lycée : conquêtes, résistances et héritages",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les guerres étendent la domination française sur une partie de l'Europe. Des réformes sont diffusées, mais les occupations, les prélèvements et la conscription suscitent des résistances. La campagne de Russie en **1812** affaiblit fortement l'armée.",
+        "Napoléon abdique en **1814**, revient au pouvoir pendant les **Cent-Jours en 1815**, puis est vaincu à **Waterloo le 18 juin 1815**. Il abdique de nouveau et est exilé à Sainte-Hélène. Le congrès de Vienne réorganise l'Europe en **1814-1815**.",
+        "La politique coloniale contredit les principes de liberté. En **1802**, le régime maintient l'esclavage là où l'abolition de 1794 n'avait pas été appliquée et le rétablit dans d'autres colonies, notamment en Guadeloupe, par la force. À Saint-Domingue, la tentative de reprise en main échoue ; **Haïti devient indépendant en 1804**. À La Réunion, où l'abolition de 1794 n'avait pas été appliquée, l'esclavage persiste jusqu'à l'abolition effective du **20 décembre 1848**."
+      ],
+      "exemple": { "titre": "Comparer les territoires", "etapes": ["Place Guadeloupe, Saint-Domingue et La Réunion sur une carte imaginaire.", "Les décisions françaises n'y ont pas toutes les mêmes effets ni le même calendrier.", "L'histoire coloniale exige de suivre aussi les résistances des personnes asservies."] },
+      "aRetenir": "1815 : fin du Premier Empire. Les héritages administratifs ne doivent pas faire oublier autoritarisme, guerres et politique esclavagiste."
+    }
+  ],
+  "application": {
+    "intro": "Relie dates et institutions, puis compare les conséquences pour différentes populations.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "En quelle année Bonaparte prend-il le pouvoir lors du coup d'État de Brumaire ?", "choix": ["1751", "1799", "1848"], "bonne": 1, "explication": "Le coup d'État des 9 et 10 novembre 1799 met fin au Directoire et ouvre le Consulat." },
+      { "type": "qcm", "titre": "Personnage et fonction", "question": "Quel titre Napoléon Ier prend-il en 1804 ?", "choix": ["Roi des Francs", "Président élu de la République", "Empereur des Français"], "bonne": 2, "explication": "Napoléon devient empereur en 1804 ; son sacre a lieu le 2 décembre." },
+      { "type": "qcm", "titre": "Réforme et conséquence", "question": "Quel effet a le Code civil de 1804 ?", "choix": ["Il rassemble des règles civiles, sans donner des droits égaux aux femmes et aux hommes", "Il donne immédiatement le droit de vote à tous", "Il abolit l'esclavage dans toutes les colonies"], "bonne": 0, "explication": "Le Code civil unifie des règles de propriété, de contrat et de famille, mais conserve de fortes inégalités." },
+      { "type": "qcm", "titre": "Fin du régime", "question": "Quel repère correspond à la défaite de Waterloo ?", "choix": ["Le 14 juillet 1789", "Le 18 juin 1815", "Le 25 décembre 800"], "bonne": 1, "explication": "Waterloo a lieu le 18 juin 1815, pendant les Cent-Jours, avant la seconde abdication de Napoléon." },
+      { "type": "qcm", "titre": "Libertés", "question": "Quel élément montre le caractère autoritaire du régime ?", "choix": ["La garantie d'une presse totalement libre", "L'absence de pouvoir central", "Le contrôle de la presse et la limitation de l'opposition"], "bonne": 2, "explication": "La censure et le contrôle politique limitent le débat libre, malgré l'usage de plébiscites." }
+    ]
+  },
+  "situation": {
+    "titre": "Trois cartels pour un musée équilibré",
+    "histoire": ["Imagine trois vitrines : un portrait impérial, un Code civil et une carte des colonies. Tu dois rédiger leurs légendes sans transformer le musée en célébration des guerres.", "Commence par identifier le message du portrait, puis vérifie les droits et les différences de calendrier."],
+    "etapes": [
+      { "type": "qcm", "titre": "Le portrait", "question": "Quelle question aide à analyser un portrait officiel ?", "choix": ["Pourquoi montre-t-il forcément toute la vérité ?", "Quelle image du pouvoir cherche-t-il à construire ?", "Pourquoi aucun autre habitant n'existe-t-il ?"], "bonne": 1, "explication": "Un portrait officiel met en scène le dirigeant : il faut examiner son objectif et le comparer à d'autres sources." },
+      { "type": "qcm", "titre": "Le code", "question": "Quelle légende évite un raccourci sur le Code civil ?", "choix": ["En 1804, tout le monde possède les mêmes droits", "Le Code civil donne une presse libre", "Des règles communes, mais des inégalités notamment dans la famille"], "bonne": 2, "explication": "L'unification juridique ne supprime pas les inégalités de droits entre femmes et hommes." },
+      { "type": "qcm", "titre": "La mémoire à La Réunion", "question": "Quel repère associer à l'abolition effective de l'esclavage à La Réunion ?", "choix": ["Le 20 décembre 1848", "Le sacre de 1804", "Waterloo en 1815"], "bonne": 0, "explication": "L'abolition décidée en 1848 devient effective à La Réunion le 20 décembre ; elle n'y avait pas été appliquée en 1794." }
+    ],
+    "conclusion": "Ton musée relie pouvoir, droit et mémoire. Raconte de mémoire 1799, 1804 et 1815, puis explique pourquoi 1848 appartient à une autre étape."
+  }
+}

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Le dénombrement – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -78,7 +78,8 @@
       "paragraphes": [
         "Un ensemble à n éléments possède **2ⁿ** parties (chaque élément est dedans ou non). En regroupant par taille : C(n, 0) + C(n, 1) + … + C(n, n) = 2ⁿ.",
         "Les coefficients binomiaux interviennent aussi dans la **loi binomiale** et dans le développement de (a + b)ⁿ."
-      ]
+      ],
+      "aRetenir": "Avant de compter, demande-toi : l'ordre compte-t-il ? La répétition est-elle autorisée ? Un choix d'équipe utilise une combinaison ; un podium utilise un arrangement."
     }
   ],
   "application": {
@@ -134,6 +135,18 @@
           "L'ordre compte : 8 choix pour le 1er, puis 7, puis 6."
         ],
         "solution": "8 × 7 × 6 = 336."
+      },
+      {
+        "type": "qcm",
+        "titre": "Former une équipe",
+        "question": "Un club choisit 2 élèves parmi 5 pour former une équipe, sans rôle particulier. Combien d'équipes différentes peut-il former ?",
+        "choix": [
+          "10",
+          "20",
+          "25"
+        ],
+        "bonne": 0,
+        "explication": "L'ordre ne compte pas : C(5, 2) = (5 × 4) / 2 = 10 équipes."
       }
     ]
   },
@@ -726,6 +739,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */

@@ -2,6 +2,13 @@
 
 Décision : [ADR 0011](decisions/0011-gabarit-de-notion.md). Exemples complets : `catalogue/pythagore/`, `catalogue/fractions/`, `catalogue/proportionnalite/`.
 
+Le même gabarit couvre l'histoire avec `catalogue/antiquite/`, `catalogue/moyen-age/`,
+`catalogue/renaissance/`, `catalogue/temps-modernes/`, `catalogue/lumieres/`,
+`catalogue/revolution-francaise/`, `catalogue/napoleon/` et `catalogue/revolution-industrielle/` :
+trois niveaux (intuition, collège, seconde), exemples, encadrés à retenir, cinq QCM corrigés et un
+défi de mémoire ou du quotidien en trois étapes. Les sujets sont préfixés par `histoire/`.
+Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modernes, pas des périodes successives.
+
 ## 1. Créer le dossier
 
 `catalogue/<id>/` (ou `<id>/` dans le dépôt privé `maquettes-catalogue`) avec :
@@ -39,6 +46,15 @@ Décision : [ADR 0011](decisions/0011-gabarit-de-notion.md). Exemples complets :
 }
 ```
 
+- **Mémo (optionnel)** : ajoute `"memo"` dans `titresOnglets` (titre de l'onglet, défaut « Mémo ») et une section `memo` ; l'onglet apparaît après « Explication ». Sans section `memo`, aucun onglet n'est ajouté (les notions existantes sont inchangées). Pense à ajouter `memo` à `onglets` dans `fiche.md`. Exemple : `catalogue/pythagore/`.
+  ```json
+  "memo": {
+    "intro": "Optionnel : phrase d'accueil.",
+    "formules": [ { "titre": "Hypoténuse", "formule": "BC² = AB² + AC²", "explication": "Optionnel." } ],
+    "pointsCles": ["Point à retenir avec **gras**."]
+  }
+  ```
+  Au moins une formule ou un point clé est requis.
 - **Niveaux** : au moins 2, du plus intuitif au plus formel (collège → lycée), avec le niveau scolaire dans `niveau`. Le premier est ouvert par défaut.
 - **Exercice `qcm`** : `question`, `choix` (≥ 2), `bonne` (indice à partir de 0), `explication` (affichée après la bonne réponse), `indice` optionnel (affiché après une erreur).
 - **Exercice `nombre`** : `question`, `reponse` (nombre), `indices` (≥ 1, affichés un par erreur), `solution`, et en option `unite`, `tolerance` (ex. `0.05` pour un arrondi au dixième), `fractionIrreductible: true` (l'élève doit écrire une fraction simplifiée, ex. `3/4`). L'élève peut écrire `3,5`, `3.5` ou `7/2`.
@@ -55,6 +71,11 @@ npm run ci           # validation du contenu, routage des questions, contrôle d
 ```
 
 Ouvre `catalogue/<id>/page.html` dans un navigateur et fais tous les exercices. **Relis l'exactitude de chaque calcul** : c'est le point de contrôle humain (public mineur).
+
+Pour l'histoire, vérifie les dates, les personnages et les liens de causes-conséquences, ainsi que
+les limites des droits et les différences entre territoires. Les fiches indiquent des ressources de
+relecture ; les pages restent autonomes, sans ressource externe. Distingue repère conventionnel,
+évolution progressive et application effective d'une loi.
 
 ## 4. Ajouter un composant
 

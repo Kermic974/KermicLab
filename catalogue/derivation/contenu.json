@@ -120,6 +120,16 @@
         ],
         "bonne": 0,
         "explication": "2x − 4 < 0 pour x < 2 et > 0 pour x > 2 : f décroît puis croît, avec un minimum en x = 2."
+      },
+      {
+        "type": "nombre",
+        "titre": "Calculer un nombre dérivé",
+        "question": "Si f(x) = x² + 3x, combien vaut f'(2) ?",
+        "reponse": 7,
+        "indices": [
+          "f'(x) = 2x + 3."
+        ],
+        "solution": "f'(2) = 2 × 2 + 3 = 7."
       }
     ]
   },

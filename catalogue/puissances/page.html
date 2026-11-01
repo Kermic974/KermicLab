@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les puissances – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -37,8 +37,18 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Plie une feuille en deux : 2 épaisseurs. Replie : 4. Encore : 8, puis 16, puis 32… À chaque pli, on **multiplie par 2**.",
-        "Au lieu d'écrire 2 × 2 × 2 × 2 × 2, on écrit **2⁵** (« 2 puissance 5 ») : le petit nombre en haut, l'**exposant**, compte combien de fois on multiplie 2 par lui-même. 2⁵ = 32."
-      ]
+        "Au lieu d'écrire 2 × 2 × 2 × 2 × 2, on écrit **2⁵** (« 2 puissance 5 ») : le petit nombre en haut, l'**exposant**, compte combien de fois on multiplie 2 par lui-même. 2⁵ = 32.",
+        "Les puissances sont partout dans la vie courante : une rumeur que chaque personne répète à 2 amis touche 2, puis 4, puis 8, puis 16 personnes… Les téléphones, les jeux vidéo et les ordinateurs, qui comptent en 0 et en 1, utilisent sans cesse les puissances de 2."
+      ],
+      "exemple": {
+        "titre": "Exemple : une feuille pliée 10 fois (en théorie !)",
+        "etapes": [
+          "Chaque pli double le nombre d'épaisseurs : 2, 4, 8, 16, 32, 64, 128, 256, 512, 1 024.",
+          "Après 10 plis, il y a 2¹⁰ = 1 024 épaisseurs.",
+          "Si une feuille fait 0,1 mm d'épaisseur, la pile mesure 1 024 × 0,1 = 102,4 mm, soit environ 10 cm."
+        ]
+      },
+      "aRetenir": "aⁿ signifie « a multiplié par lui-même n fois ». L'exposant compte les multiplications : il ne se multiplie pas avec a."
     },
     {
       "titre": "Carrés, cubes et pièges",
@@ -46,8 +56,18 @@
       "paragraphes": [
         "a² se lit « a au carré » (aire d'un carré de côté a) et a³ « a au cube » (volume d'un cube d'arête a). Par convention, a¹ = a et a⁰ = 1 (pour a non nul).",
         "Piège n° 1 : 2³ = 2 × 2 × 2 = 8, et **pas** 2 × 3 = 6.",
-        "Piège n° 2 : (−2)² = (−2) × (−2) = 4, mais −2² = −(2 × 2) = −4. Les parenthèses changent tout !"
-      ]
+        "Piège n° 2 : (−2)² = (−2) × (−2) = 4, mais −2² = −(2 × 2) = −4. Les parenthèses changent tout !",
+        "Dans la vie courante : un carrelage carré de 5 m de côté couvre 5² = 25 m², et un dé de 3 cm d'arête a un volume de 3³ = 27 cm³."
+      ],
+      "exemple": {
+        "titre": "Exemple : (−2)³, −2⁴ et (−2)⁴",
+        "etapes": [
+          "(−2)³ = (−2) × (−2) × (−2) = 4 × (−2) = −8.",
+          "−2⁴ = −(2 × 2 × 2 × 2) = −16 : l'exposant ne s'applique qu'au 2.",
+          "(−2)⁴ = (−2) × (−2) × (−2) × (−2) = 16 : avec des parenthèses, le signe moins est multiplié aussi."
+        ]
+      },
+      "aRetenir": "Sans parenthèses, l'exposant ne s'applique qu'au nombre placé juste avant lui. Une puissance paire d'un nombre négatif est positive, une puissance impaire est négative."
     },
     {
       "titre": "Les puissances de 10",
@@ -55,15 +75,26 @@
       "paragraphes": [
         "10² = 100, 10³ = 1 000, 10⁶ = 1 000 000 (un million) : l'exposant donne le **nombre de zéros**.",
         "Avec un exposant négatif, on divise : 10⁻¹ = 0,1 ; 10⁻² = 0,01 ; 10⁻³ = 0,001 (l'exposant donne la position du 1 après la virgule).",
-        "Multiplier par 10³, c'est décaler la virgule de 3 rangs vers la droite : 4,7 × 10³ = 4 700."
-      ]
+        "Multiplier par 10³, c'est décaler la virgule de 3 rangs vers la droite : 4,7 × 10³ = 4 700.",
+        "Tu les croises tous les jours : 1 km = 10³ m (« kilo » veut dire mille), 1 mm = 10⁻³ m (« milli » veut dire millième) et 1 Go (gigaoctet) = 10⁹ octets. Les préfixes du système métrique sont des puissances de 10."
+      ],
+      "exemple": {
+        "titre": "Exemple : écrire 6,3 × 10⁻² en décimal",
+        "etapes": [
+          "10⁻² = 0,01, donc 6,3 × 10⁻² = 6,3 ÷ 100.",
+          "Diviser par 100, c'est décaler la virgule de 2 rangs vers la gauche.",
+          "6,3 × 10⁻² = 0,063."
+        ]
+      },
+      "aRetenir": "Un exposant négatif ne rend pas le nombre négatif : 10⁻³ = 0,001 est un très petit nombre positif."
     },
     {
       "titre": "La notation scientifique",
       "niveau": "4e / 3e",
       "paragraphes": [
         "Pour écrire les très grands et très petits nombres, on utilise **a × 10ⁿ**, avec a compris entre 1 (inclus) et 10 (exclu).",
-        "Distance Terre–Soleil ≈ 150 000 000 km = **1,5 × 10⁸ km**. Taille d'une bactérie ≈ 0,000 002 m = **2 × 10⁻⁶ m**."
+        "Distance Terre–Soleil ≈ 150 000 000 km = **1,5 × 10⁸ km**. Taille d'une bactérie ≈ 0,000 002 m = **2 × 10⁻⁶ m**.",
+        "Autres exemples : la lumière parcourt environ 300 000 km en une seconde, soit 3 × 10⁵ km/s, et un cheveu mesure environ 0,000 07 m de diamètre, soit 7 × 10⁻⁵ m. Les calculatrices affichent souvent ces nombres avec la lettre E : 1,5E8 veut dire 1,5 × 10⁸."
       ],
       "exemple": {
         "titre": "Exemple : écrire 45 000 en notation scientifique",
@@ -72,7 +103,8 @@
           "Pour revenir à 45 000, il faut décaler la virgule de 4 rangs vers la droite.",
           "45 000 = 4,5 × 10⁴."
         ]
-      }
+      },
+      "aRetenir": "Dans a × 10ⁿ : a est compris entre 1 et 10, et |n| compte le nombre de rangs dont on décale la virgule. n est positif pour un grand nombre et négatif pour un nombre très petit."
     },
     {
       "titre": "Règles de calcul",
@@ -81,7 +113,32 @@
         "Pour un même nombre a (non nul) : **aᵐ × aⁿ = aᵐ⁺ⁿ**, **aᵐ ÷ aⁿ = aᵐ⁻ⁿ**, **(aᵐ)ⁿ = aᵐˣⁿ** et **a⁻ⁿ = 1/aⁿ**.",
         "Exemple : 2³ × 2⁴ = (2 × 2 × 2) × (2 × 2 × 2 × 2) = 2⁷ = 128. On a bien additionné les exposants : 3 + 4 = 7."
       ],
-      "aRetenir": "Ces règles ne marchent qu'avec le même nombre en bas : 2³ × 3⁴ ne se simplifie pas ainsi."
+      "aRetenir": "Ces règles ne marchent qu'avec le même nombre en bas : 2³ × 3⁴ ne se simplifie pas ainsi.",
+      "exemple": {
+        "titre": "Exemple : trois calculs avec les règles",
+        "etapes": [
+          "2⁷ ÷ 2⁴ = 2⁷⁻⁴ = 2³ = 8.",
+          "(2³)² = 2³ˣ² = 2⁶ = 64.",
+          "2⁻³ = 1/2³ = 1/8 = 0,125."
+        ]
+      }
+    },
+    {
+      "titre": "Calculer en notation scientifique",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Pour multiplier deux nombres écrits en notation scientifique, on multiplie les nombres devant, et on additionne les exposants des puissances de 10.",
+        "Cela sert à calculer avec de très grands ou de très petits nombres sans compter les zéros : tailles d'atomes, distances entre étoiles, quantité de données sur internet…"
+      ],
+      "exemple": {
+        "titre": "Exemple : (3 × 10⁴) × (2 × 10³) et (4 × 10⁵) × (5 × 10²)",
+        "etapes": [
+          "Premier calcul : 3 × 2 = 6 et 10⁴ × 10³ = 10⁷, donc le résultat est 6 × 10⁷.",
+          "Deuxième calcul : 4 × 5 = 20 et 10⁵ × 10² = 10⁷, donc le résultat est 20 × 10⁷.",
+          "Mais 20 n'est pas compris entre 1 et 10 : 20 × 10⁷ = 2 × 10 × 10⁷ = 2 × 10⁸."
+        ]
+      },
+      "aRetenir": "Après le calcul, vérifie que le nombre devant la puissance de 10 est bien entre 1 et 10 ; sinon, ajuste l'exposant."
     }
   ],
   "application": {
@@ -152,14 +209,60 @@
           "Quand on multiplie des puissances du même nombre, on additionne les exposants."
         ],
         "solution": "2⁵ × 2³ = 2⁵⁺³ = 2⁸ (= 256), donc n = 8."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le piège du signe",
+        "question": "Que vaut −3² ?",
+        "choix": [
+          "−9",
+          "9",
+          "−6"
+        ],
+        "bonne": 0,
+        "explication": "Sans parenthèses, l'exposant ne s'applique qu'au 3 : −3² = −(3 × 3) = −9. C'est (−3)² qui vaut 9.",
+        "indice": "Compare −3² et (−3)² : où sont les parenthèses ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Quotient de puissances",
+        "question": "2⁷ ÷ 2⁴ = 2ⁿ. Combien vaut n ?",
+        "reponse": 3,
+        "indices": [
+          "Quand on divise des puissances du même nombre, on soustrait les exposants."
+        ],
+        "solution": "2⁷ ÷ 2⁴ = 2⁷⁻⁴ = 2³ (= 8), donc n = 3."
+      },
+      {
+        "type": "nombre",
+        "titre": "Écrire un petit nombre",
+        "question": "Écris 0,00045 sous la forme 4,5 × 10ⁿ. Combien vaut n ?",
+        "reponse": -4,
+        "indices": [
+          "Combien de rangs faut-il décaler la virgule vers la droite pour passer de 0,00045 à 4,5 ?",
+          "C'est 4 rangs : comme le nombre est très petit, l'exposant est négatif."
+        ],
+        "solution": "On décale la virgule de 4 rangs vers la droite : 0,00045 = 4,5 × 10⁻⁴, donc n = −4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un exposant négatif",
+        "question": "Calcule 5⁻² sous forme décimale.",
+        "reponse": 0.04,
+        "indices": [
+          "5⁻² = 1/5².",
+          "5² = 25, puis calcule 1 ÷ 25."
+        ],
+        "solution": "5⁻² = 1/5² = 1/25 = 0,04."
       }
     ]
   },
   "situation": {
     "titre": "Les bactéries qui doublent",
     "histoire": [
-      "Dans un laboratoire, une bactérie est placée dans une boîte. Toutes les **20 minutes**, chaque bactérie se divise en **deux**.",
-      "Le nombre de bactéries est donc multiplié par 2 toutes les 20 minutes. Combien seront-elles ?"
+      "Dans un laboratoire, une bactérie est placée dans une boîte de culture, au chaud, avec de quoi manger. Toutes les **20 minutes**, chaque bactérie se divise en **deux**.",
+      "Le nombre de bactéries est donc multiplié par 2 toutes les 20 minutes. Au début, cela paraît minuscule : 2, puis 4, puis 8… Mais les puissances réservent des surprises.",
+      "C'est ce qui rend certaines infections si rapides, et ce qui explique pourquoi on garde les aliments au frais. À toi de calculer : combien seront-elles après quelques heures ?"
     ],
     "etapes": [
       {
@@ -173,6 +276,18 @@
           "1 × 2 × 2 × 2 = 2³."
         ],
         "solution": "En une heure, 3 divisions : 2³ = 8 bactéries."
+      },
+      {
+        "type": "nombre",
+        "titre": "Au bout de 2 heures",
+        "question": "Et au bout de 2 heures ?",
+        "reponse": 64,
+        "unite": "bactéries",
+        "indices": [
+          "2 heures = 120 minutes = 6 périodes de 20 minutes.",
+          "Calcule 2⁶."
+        ],
+        "solution": "6 divisions : 2⁶ = 64 bactéries."
       },
       {
         "type": "nombre",
@@ -210,7 +325,7 @@
         "solution": "1 milliard = 1 000 000 000 = 10⁹."
       }
     ],
-    "conclusion": "Une croissance qui double à chaque étape s'emballe très vite : c'est la croissance exponentielle, que tu retrouveras au lycée."
+    "conclusion": "Bravo ! En 3 heures, on passe de 1 bactérie à 512, et en 10 heures à plus d'un milliard. Une croissance qui double à chaque étape s'emballe très vite : c'est la croissance exponentielle, que tu retrouveras au lycée. Les puissances de 10 et la notation scientifique permettent de noter ces nombres géants sans compter les zéros."
   }
 }
 </script>
@@ -757,6 +872,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */
