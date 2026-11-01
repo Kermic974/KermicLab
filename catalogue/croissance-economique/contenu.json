@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La croissance économique désigne une hausse durable de la production. Voyons comment la mesurer et ce qui peut la faire progresser.",
+  "niveaux": [
+    {
+      "titre": "Produire davantage",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une économie produit des biens et des services : repas, transports, soins ou logiciels. On parle de **croissance économique** lorsque la production augmente de façon durable.",
+        "La croissance peut permettre de produire et consommer davantage, mais elle ne signifie pas automatiquement que chaque personne voit son niveau de vie progresser de la même façon."
+      ],
+      "exemple": {
+        "titre": "Une boulangerie",
+        "etapes": [
+          "Une boulangerie vend 100 pains par jour, puis 110, à qualité comparable.",
+          "Sa production a augmenté ; pour savoir si l'activité économique a réellement crû, il faut aussi distinguer l'évolution des quantités de celle des prix."
+        ]
+      }
+    },
+    {
+      "titre": "Mesurer avec le PIB réel",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Le **produit intérieur brut (PIB)** mesure la valeur de la production réalisée sur un territoire pendant une période. Le taux de croissance correspond à la variation du PIB entre deux périodes.",
+        "Le PIB nominal est calculé aux prix courants. Le PIB réel corrige l'effet de la hausse des prix : il permet de mieux repérer l'évolution des quantités produites. Une hausse du PIB nominal peut donc venir des prix, des quantités, ou des deux."
+      ],
+      "aRetenir": "Le PIB est un indicateur de production, pas une mesure complète du bien-être, des inégalités ou des dommages environnementaux."
+    },
+    {
+      "titre": "Les sources et les limites",
+      "niveau": "première",
+      "paragraphes": [
+        "La production peut augmenter grâce à davantage de travail ou de capital, ainsi qu'à une meilleure **productivité** : produire plus avec une même quantité de facteurs. Le progrès technique, la formation et l'organisation peuvent contribuer à ces gains.",
+        "La croissance peut s'accompagner d'effets négatifs, comme des émissions polluantes, et les gains peuvent être répartis inégalement. Le PIB ne mesure pas directement le travail domestique non rémunéré ni la qualité de vie dans toutes ses dimensions."
+      ],
+      "exemple": {
+        "titre": "Un nouvel équipement",
+        "etapes": [
+          "Une entreprise installe une machine qui permet à son équipe de fabriquer davantage d'objets en une heure.",
+          "La production par heure travaillée augmente : c'est un gain de productivité, qui peut soutenir la croissance si la production vendue augmente."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Distingue la quantité produite, les prix et les sources possibles de croissance.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Définir la croissance",
+        "question": "Que désigne la croissance économique ?",
+        "choix": ["Une hausse durable de la production", "Une hausse obligatoire de tous les prix", "Une baisse de la population"],
+        "bonne": 0,
+        "explication": "La croissance économique correspond à une augmentation durable de la production."
+      },
+      {
+        "type": "qcm",
+        "titre": "Corriger les prix",
+        "question": "Pourquoi mesure-t-on le PIB réel ?",
+        "choix": ["Pour isoler autant que possible l'évolution des quantités de l'effet des prix", "Pour compter uniquement les exportations", "Pour mesurer directement le bonheur de chaque personne"],
+        "bonne": 0,
+        "explication": "Le PIB réel corrige la variation des prix afin de mieux suivre l'évolution de la production en volume."
+      },
+      {
+        "type": "qcm",
+        "titre": "Productivité",
+        "question": "Une équipe produit davantage par heure travaillée avec les mêmes effectifs. Quel indicateur progresse ?",
+        "choix": ["La productivité du travail", "Le taux d'inflation automatiquement", "Le nombre d'habitants"],
+        "bonne": 0,
+        "explication": "La productivité du travail rapporte la production à la quantité de travail utilisée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une limite du PIB",
+        "question": "Que ne mesure pas complètement le PIB ?",
+        "choix": ["Les inégalités de répartition et toutes les dimensions du bien-être", "La valeur de la production marchande qu'il comptabilise", "La production sur un territoire pendant une période"],
+        "bonne": 0,
+        "explication": "Le PIB mesure la production, mais ne décrit pas à lui seul sa répartition ni le bien-être dans son ensemble."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier de réparation",
+    "histoire": [
+      "Un atelier répare plus de vélos cette année grâce à un nouvel outil. Ses prix ont aussi augmenté. Observe pourquoi ces deux informations ne suffisent pas à elles seules pour mesurer la croissance réelle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Plus de réparations",
+        "question": "Si le nombre de réparations augmente, qu'est-ce qui a progressé directement ?",
+        "choix": ["La quantité de services produits par l'atelier", "Le PIB réel de tout le pays avec certitude", "Le niveau de vie de chaque habitant"],
+        "bonne": 0,
+        "explication": "On peut constater une hausse de la production de l'atelier ; cela ne suffit pas à conclure pour toute l'économie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Des tarifs plus élevés",
+        "question": "Pourquoi la hausse du chiffre d'affaires ne prouve-t-elle pas à elle seule une hausse équivalente de la production réelle ?",
+        "choix": ["Parce que les prix peuvent avoir augmenté sans hausse identique des quantités", "Parce que le chiffre d'affaires ne dépend jamais des prix", "Parce que le PIB ne concerne que les ateliers"],
+        "bonne": 0,
+        "explication": "Le chiffre d'affaires dépend des prix et des quantités ; le PIB réel corrige l'effet des prix."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un outil plus efficace",
+        "question": "Si le nouvel outil permet plus de réparations par heure, quel mécanisme peut contribuer à la croissance ?",
+        "choix": ["Un gain de productivité", "Une disparition de la production", "Une baisse obligatoire de la demande"],
+        "bonne": 0,
+        "explication": "L'atelier produit davantage pour une même durée de travail : sa productivité a progressé."
+      }
+    ],
+    "conclusion": "Pour parler de croissance, regarde la production en volume et son évolution dans le temps. Le PIB est utile, mais il ne résume ni le bien-être ni le partage des gains."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La justice sociale pose une question collective : comment répartir les ressources, les droits et les possibilités de façon jugée juste ?",
+  "niveaux": [
+    {
+      "titre": "Des conceptions de la justice",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **justice sociale** regroupe des principes et des politiques visant à organiser une société considérée comme plus juste. Les réponses varient selon les critères retenus : égalité des droits, des ressources, des chances ou prise en compte des besoins.",
+        "L'égalité consiste à traiter de la même manière selon une règle donnée. L'équité peut justifier un traitement différencié pour corriger un désavantage ou tenir compte de besoins différents. Le choix du principe dépend du contexte et fait l'objet de débats."
+      ],
+      "exemple": {
+        "titre": "Accéder à une activité",
+        "etapes": [
+          "Proposer le même tarif à tout le monde applique une règle identique.",
+          "Un tarif modulé selon les ressources peut chercher à rendre l'accès plus équitable, tout en soulevant des questions de financement et de critères."
+        ]
+      }
+    },
+    {
+      "titre": "Redistribution et protection sociale",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La **redistribution** modifie la répartition des revenus par les prélèvements obligatoires et les transferts. Les prestations peuvent être sous condition de ressources ou liées à des risques sociaux ; les services publics contribuent aussi à l'accès à certains biens collectifs.",
+        "La protection sociale couvre notamment des risques comme la maladie, la vieillesse ou le chômage. Elle repose sur des institutions et des financements collectifs ; ses règles poursuivent plusieurs objectifs qui peuvent être discutés."
+      ],
+      "aRetenir": "Les impôts, cotisations, prestations et services publics n'ont pas tous le même mode de financement ni le même objectif."
+    },
+    {
+      "titre": "Évaluer une politique",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Une politique peut chercher à réduire les écarts de revenus, garantir des droits, soutenir des personnes face aux risques ou améliorer l'égalité des chances. Son évaluation observe les effets obtenus, les personnes concernées, le coût et les éventuels effets inattendus.",
+        "Il n'existe pas une seule mesure de la justice sociale. Les arbitrages entre solidarité, liberté, efficacité et financement sont politiques : il faut expliciter les critères utilisés plutôt que présenter une préférence comme une vérité incontestable."
+      ],
+      "exemple": {
+        "titre": "Une aide au transport",
+        "etapes": [
+          "Une aide ciblée peut faciliter les déplacements des personnes aux ressources modestes.",
+          "Pour l'évaluer, on peut examiner le nombre de bénéficiaires, l'accès réel aux transports, le coût et les effets sur les inégalités."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Relie chaque instrument à son objectif et distingue les principes de justice.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Égalité et équité",
+        "question": "Quelle proposition distingue le mieux égalité et équité ?",
+        "choix": ["L'égalité applique une règle identique selon un critère, l'équité peut tenir compte de besoins ou désavantages différents", "L'équité signifie toujours que tout le monde reçoit la même chose", "Les deux notions interdisent toute règle collective"],
+        "bonne": 0,
+        "explication": "L'équité peut justifier une différenciation pour corriger un désavantage ; la définition dépend du principe retenu."
+      },
+      {
+        "type": "qcm",
+        "titre": "La redistribution",
+        "question": "Quel mécanisme relève de la redistribution ?",
+        "choix": ["Des prélèvements et des transferts qui modifient la répartition des revenus", "La fixation de tous les prix par les ménages", "La suppression de toute prestation"],
+        "bonne": 0,
+        "explication": "Les prélèvements et les transferts publics modifient la répartition des ressources."
+      },
+      {
+        "type": "qcm",
+        "titre": "Protection sociale",
+        "question": "Quel objectif poursuit notamment la protection sociale ?",
+        "choix": ["Couvrir des risques comme la maladie, la vieillesse ou le chômage", "Garantir qu'aucune personne ne changera jamais d'emploi", "Déterminer les opinions de la population"],
+        "bonne": 0,
+        "explication": "La protection sociale organise une couverture collective de différents risques sociaux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Évaluer une mesure",
+        "question": "Pour évaluer une aide ciblée, que faut-il examiner ?",
+        "choix": ["Ses effets, les personnes concernées, son coût et les éventuels effets inattendus", "Uniquement son nom", "Seulement le nombre de personnes qui en parlent"],
+        "bonne": 0,
+        "explication": "L'évaluation examine les résultats et les coûts au regard des objectifs poursuivis."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Rendre une activité accessible",
+    "histoire": [
+      "Une commune cherche à rendre ses activités culturelles accessibles. Elle compare un tarif identique pour tous, un tarif réduit sous conditions de ressources et une aide au transport. Chaque option mobilise des principes et des acteurs différents."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "La même règle",
+        "question": "Quel principe met en avant un tarif identique pour chaque personne ?",
+        "choix": ["Une règle d'égalité de traitement sur le prix", "Une adaptation automatique aux besoins de chacun", "Une mesure de mobilité sociale"],
+        "bonne": 0,
+        "explication": "Un tarif identique applique la même règle de prix à chaque personne."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un tarif modulé",
+        "question": "Quel est l'objectif possible d'un tarif réduit sous conditions de ressources ?",
+        "choix": ["Réduire le frein financier et favoriser un accès plus équitable", "Garantir que tous participeront", "Supprimer le besoin de financement"],
+        "bonne": 0,
+        "explication": "La modulation peut faciliter l'accès de personnes ayant moins de ressources, sans garantir à elle seule la participation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Comparer les options",
+        "question": "Quel élément les décideurs doivent-ils aussi prendre en compte ?",
+        "choix": ["Les effets sur l'accès, les critères, le coût et le financement", "Uniquement le nombre de couleurs sur l'affiche", "Le fait qu'une seule conception de la justice existe"],
+        "bonne": 0,
+        "explication": "Les politiques impliquent des choix de critères et de financement ; leurs effets doivent être évalués."
+      }
+    ],
+    "conclusion": "Les politiques de justice sociale traduisent des principes en règles concrètes. Les comparer demande de rendre visibles les objectifs, les bénéficiaires, le financement et les effets observés."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Un objet du quotidien peut mobiliser des ressources, des entreprises et des travailleurs de plusieurs pays. Pourquoi ces échanges se développent-ils ?",
+  "niveaux": [
+    {
+      "titre": "Des échanges au quotidien",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **mondialisation** désigne l'intensification des relations et des échanges entre les différentes parties du monde. Le commerce international porte sur les achats et ventes de biens et services entre pays.",
+        "Les entreprises, les consommateurs, les travailleurs et les pouvoirs publics participent à ces échanges. Un produit peut être conçu dans un pays, fabriqué dans plusieurs autres puis vendu ailleurs."
+      ],
+      "exemple": {
+        "titre": "Un vêtement",
+        "etapes": [
+          "Le coton peut être cultivé dans un pays, filé et tissé dans un autre, puis assemblé ailleurs.",
+          "Une entreprise coordonne ces étapes et organise le transport avant la vente."
+        ]
+      }
+    },
+    {
+      "titre": "Spécialisation et avantages comparatifs",
+      "niveau": "première",
+      "paragraphes": [
+        "Les pays et les entreprises se spécialisent dans certaines productions. Dans le raisonnement des **avantages comparatifs**, un acteur a intérêt à se spécialiser dans la production pour laquelle son coût d'opportunité est relativement plus faible, puis à échanger.",
+        "Les échanges peuvent accroître les possibilités de consommation et réduire certains coûts. Les gains ne sont pas automatiquement répartis également entre secteurs, entreprises, travailleurs et consommateurs."
+      ],
+      "aRetenir": "Un avantage comparatif est relatif : un pays peut avoir un avantage comparatif dans une activité même s'il est moins productif dans toutes les activités."
+    },
+    {
+      "titre": "Chaînes de valeur et débats",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Une **chaîne de valeur mondiale** répartit les étapes de conception, de production et de distribution dans plusieurs pays. Les entreprises choisissent leur organisation selon les compétences, les coûts, les infrastructures et l'accès aux marchés.",
+        "Le commerce peut créer des débouchés et des emplois, mais aussi fragiliser certaines activités exposées à la concurrence. Les transports ont des effets environnementaux et les dépendances peuvent devenir visibles lors de crises : les choix de politique commerciale font donc débat."
+      ],
+      "exemple": {
+        "titre": "Des effets différents",
+        "etapes": [
+          "Une entreprise exportatrice peut gagner des clients et développer son activité.",
+          "Un secteur concurrencé par des importations peut devoir se transformer ; les effets varient selon les qualifications, les régions et les politiques d'accompagnement."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Repère les acteurs, la spécialisation et les effets possibles sans supposer que les gains sont identiques pour tous.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Le commerce international",
+        "question": "Que désigne le commerce international ?",
+        "choix": ["Les échanges de biens et services entre pays", "Les achats effectués uniquement dans une même rue", "La circulation des seules monnaies"],
+        "bonne": 0,
+        "explication": "Il s'agit des achats et ventes de biens ou services entre pays."
+      },
+      {
+        "type": "qcm",
+        "titre": "Avantage comparatif",
+        "question": "Sur quoi repose un avantage comparatif dans le modèle économique ?",
+        "choix": ["Un coût d'opportunité relativement plus faible", "Une obligation d'être le meilleur dans toutes les productions", "L'absence de choix de production"],
+        "bonne": 0,
+        "explication": "L'avantage comparatif compare les coûts d'opportunité relatifs, et non seulement la productivité absolue."
+      },
+      {
+        "type": "qcm",
+        "titre": "Chaîne de valeur",
+        "question": "Qu'est-ce qu'une chaîne de valeur mondiale ?",
+        "choix": ["Des étapes de production réparties entre plusieurs pays", "Une monnaie commune à tous les pays", "Un produit fabriqué uniquement dans une maison"],
+        "bonne": 0,
+        "explication": "La conception, la fabrication de composants, l'assemblage et la distribution peuvent être localisés dans différents pays."
+      },
+      {
+        "type": "qcm",
+        "titre": "Répartition des gains",
+        "question": "Quel énoncé décrit le mieux les effets des échanges ?",
+        "choix": ["Ils peuvent créer des gains mais ceux-ci ne sont pas répartis de façon identique entre tous", "Tous les travailleurs gagnent nécessairement la même somme", "Ils n'ont aucun effet sur les entreprises"],
+        "bonne": 0,
+        "explication": "Les effets varient selon les acteurs, les secteurs et les territoires ; la répartition des gains est un enjeu économique et politique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le parcours d'un tee-shirt",
+    "histoire": [
+      "Une marque vend un tee-shirt conçu dans son pays d'origine. Le coton, le tissu, la couture et le transport mobilisent des acteurs situés dans plusieurs pays. Analyse cette organisation et ses effets possibles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Identifier la chaîne",
+        "question": "Pourquoi parle-t-on ici d'une chaîne de valeur mondiale ?",
+        "choix": ["Parce que plusieurs étapes sont réalisées dans différents pays", "Parce que le tee-shirt est vendu à un seul client", "Parce que chaque étape est nécessairement publique"],
+        "bonne": 0,
+        "explication": "La production et la distribution sont réparties entre des pays différents."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les acteurs",
+        "question": "Qui peut organiser cette production répartie ?",
+        "choix": ["Une entreprise qui coordonne fournisseurs, transporteurs et distributeurs", "Uniquement les consommateurs", "Aucun acteur économique"],
+        "bonne": 0,
+        "explication": "Les entreprises organisent souvent les étapes et les relations entre fournisseurs et distributeurs."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un effet à examiner",
+        "question": "Quel enjeu peut accompagner cette organisation internationale ?",
+        "choix": ["Des débouchés et des emplois, mais aussi des dépendances et des effets liés au transport", "Une disparition automatique de tout échange", "La certitude que chaque pays reçoit exactement le même gain"],
+        "bonne": 0,
+        "explication": "Les effets peuvent être multiples et inégalement répartis ; ils se discutent à partir des situations concrètes."
+      }
+    ],
+    "conclusion": "Un produit peut relier de nombreux acteurs au-delà des frontières. Comprendre la mondialisation consiste aussi à demander qui décide, qui bénéficie des échanges et quels coûts ils entraînent."
+  }
+}

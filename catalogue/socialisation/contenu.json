@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Nous apprenons des façons d'agir et de penser au contact des autres. Ces apprentissages contribuent à notre vie en société.",
+  "niveaux": [
+    {
+      "titre": "Apprendre à vivre avec les autres",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **socialisation** est le processus par lequel une personne apprend et intériorise des manières d'agir, de penser et de se comporter dans les groupes et la société.",
+        "Une **norme** est une règle ou une attente de comportement, explicite ou implicite. Une **valeur** est un idéal ou un principe jugé souhaitable, comme le respect ou la solidarité."
+      ],
+      "exemple": {
+        "titre": "À la bibliothèque",
+        "etapes": [
+          "Une règle demande de parler doucement : c'est une norme.",
+          "Le respect du travail et du calme des autres peut être la valeur qui aide à comprendre cette règle."
+        ]
+      }
+    },
+    {
+      "titre": "Des agents de socialisation",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La famille, l'école, les groupes de pairs, les associations, les médias et le monde professionnel peuvent être des **instances de socialisation**. Elles transmettent des apprentissages, parfois semblables, parfois différents.",
+        "La socialisation **primaire** se déroule surtout pendant l'enfance. La socialisation **secondaire** se poursuit ensuite, par exemple lors d'une formation, d'un emploi ou d'un nouvel engagement collectif."
+      ],
+      "aRetenir": "Les personnes ne reçoivent pas passivement les mêmes apprentissages : leurs expériences et leurs interactions comptent."
+    },
+    {
+      "titre": "Des socialisations plurielles",
+      "niveau": "première",
+      "paragraphes": [
+        "La socialisation est différenciée selon les groupes fréquentés et les conditions sociales. Elle peut contribuer à expliquer des goûts, des pratiques et des trajectoires différents, sans déterminer mécaniquement chaque choix individuel.",
+        "Les apprentissages peuvent se compléter ou entrer en tension. Une personne peut aussi acquérir de nouvelles habitudes en changeant de milieu ou en participant à un collectif."
+      ],
+      "exemple": {
+        "titre": "Une nouvelle activité",
+        "etapes": [
+          "Dans une équipe sportive, une personne apprend des règles communes et des façons de coopérer.",
+          "Ces apprentissages s'ajoutent à ceux reçus dans la famille et à l'école ; ils ne les effacent pas automatiquement."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Repère ce qui est appris, par quel agent, et distingue les règles des principes.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "La norme",
+        "question": "Dans une bibliothèque, « parler doucement » est principalement…",
+        "choix": ["Une norme, c'est-à-dire une attente de comportement", "Une valeur qui désigne un idéal abstrait", "Un agent de socialisation"],
+        "bonne": 0,
+        "explication": "La norme indique un comportement attendu dans une situation donnée."
+      },
+      {
+        "type": "qcm",
+        "titre": "La valeur",
+        "question": "Le principe de solidarité est plutôt…",
+        "choix": ["Une valeur", "Une sanction juridique nécessairement", "Un groupe de pairs"],
+        "bonne": 0,
+        "explication": "Une valeur est un principe ou un idéal jugé souhaitable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les agents",
+        "question": "Quel exemple peut être une instance de socialisation ?",
+        "choix": ["La famille, l'école ou un groupe de pairs", "Uniquement les règles écrites d'un pays", "Un objet sans interaction sociale"],
+        "bonne": 0,
+        "explication": "Plusieurs groupes et institutions transmettent des apprentissages sociaux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Apprendre à l'âge adulte",
+        "question": "Une personne apprend de nouvelles pratiques en rejoignant une association à l'âge adulte. Comment peut-on qualifier cet apprentissage ?",
+        "choix": ["Un processus de socialisation secondaire", "Une socialisation qui ne concerne que les enfants", "Une preuve que les apprentissages antérieurs disparaissent"],
+        "bonne": 0,
+        "explication": "La socialisation se poursuit après l'enfance, notamment dans de nouveaux groupes et rôles."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Préparer une activité collective",
+    "histoire": [
+      "Dans une association, de nouveaux membres apprennent à écouter chacun à tour de rôle, à ranger le matériel et à aider les autres. Plusieurs règles et principes guident l'activité."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Repérer la règle",
+        "question": "« Chacun attend son tour pour parler » est surtout…",
+        "choix": ["Une norme de comportement", "Une valeur abstraite uniquement", "Un taux statistique"],
+        "bonne": 0,
+        "explication": "Cette règle indique concrètement comment se comporter pendant l'échange."
+      },
+      {
+        "type": "qcm",
+        "titre": "Repérer le principe",
+        "question": "Le souhait d'écouter et de respecter les autres correspond davantage à…",
+        "choix": ["Une valeur", "Un agent de socialisation", "Une catégorie d'emploi"],
+        "bonne": 0,
+        "explication": "Le respect est un principe qui peut soutenir plusieurs normes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un nouvel apprentissage",
+        "question": "Quel mécanisme aide les nouveaux membres à apprendre ces façons de faire ?",
+        "choix": ["Les interactions et les règles transmises par l'association", "Une transformation biologique automatique", "L'absence de contact avec les autres"],
+        "bonne": 0,
+        "explication": "Les membres apprennent en participant, en observant et grâce aux règles du groupe."
+      }
+    ],
+    "conclusion": "Les groupes transmettent des normes et des valeurs par les interactions et les pratiques. Ces apprentissages s'ajoutent à d'autres expériences au cours de la vie."
+  }
+}
