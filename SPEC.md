@@ -87,6 +87,8 @@ Saisies de référence communes à toutes les méthodes : `0, 30, 45, 60, 90, 12
 | S-03 | Méthodes disponibles : géométrique, algébrique. Prévues : tabulaire, puis un mode Comparer. | M+I |
 | S-04 | La méthode algébrique convertit l'angle en radians, le réduit au premier quadrant par une formule de réduction, puis en déduit cos, sin et tan. Toutes les étapes sont écrites. Hors angles remarquables, les valeurs sont approchées (`confidence: 'approx'`) et aucune forme exacte n'est inventée. | M |
 | S-07 | `solutions.list({ mode })` ne renvoie que les méthodes dont `supportedModes` contient ce mode. | M |
+| S-05 | La méthode tabulaire lit la valeur de l'angle de référence dans la table des angles remarquables, applique la symétrie du quadrant, puis le tableau des signes, et rappelle la périodicité (θ + 360° k). | M |
+| S-06 | Une méthode qui ne s'applique pas à un angle renvoie `status: 'unsupported'`, `result: null`, au moins une étape `why` qui explique pourquoi, et un avertissement `NOT_APPLICABLE`. L'Interface l'affiche sans valeur. | M+I |
 
 ## Accessibilité
 

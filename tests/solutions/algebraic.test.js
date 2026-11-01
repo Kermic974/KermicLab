@@ -48,9 +48,9 @@ test('algébrique : même résultat que la méthode géométrique sur les saisie
 test('modes : list({ mode }) ne renvoie que les méthodes qui le prennent en charge', () => {
   assert.deepEqual(solutions.list({ mode: 'play' }).map(s => s.id), []);
   for (const mode of ['explore', 'learn', 'compare']) {
-    assert.deepEqual(solutions.list({ mode }).map(s => s.id), ['geometric', 'algebraic'], mode);
+    assert.deepEqual(solutions.list({ mode }).map(s => s.id), ['geometric', 'algebraic', 'tabular'], mode);
   }
-  assert.equal(solutions.list().length, 2);
+  assert.equal(solutions.list().length, 3);
 });
 
 test('formules de réduction vérifiées numériquement de 0° à 359°', () => {

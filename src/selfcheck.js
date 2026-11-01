@@ -92,10 +92,12 @@ export function runCoreChecks() {
       var problems = checkSolutionResult(res, s.id);
       ok(s.id + ' contrat ' + input + (problems.length ? ' (' + problems.join(', ') + ')' : ''), !problems.length);
       if (problems.length) return;
-      var tol = res.confidence === 'exact' ? 1e-9 : 1e-6;
-      ok(s.id + ' cos ' + input, near(resultNumber(res.result.cos), v.x, tol));
-      ok(s.id + ' sin ' + input, near(resultNumber(res.result.sin), v.y, tol));
-      ok(s.id + ' tan ' + input, res.result.tan === null ? v.t === null : near(resultNumber(res.result.tan), v.t, tol));
+      if (res.status === 'success') {
+        var tol = res.confidence === 'exact' ? 1e-9 : 1e-6;
+        ok(s.id + ' cos ' + input, near(resultNumber(res.result.cos), v.x, tol));
+        ok(s.id + ' sin ' + input, near(resultNumber(res.result.sin), v.y, tol));
+        ok(s.id + ' tan ' + input, res.result.tan === null ? v.t === null : near(resultNumber(res.result.tan), v.t, tol));
+      }
     });
   });
   // Cas de référence 60° (SPEC.md).

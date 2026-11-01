@@ -45,7 +45,8 @@ export function checkSolutionResult(res, solutionId) {
   if (!res || typeof res !== 'object') return ['résultat absent'];
   if (res.solutionId !== solutionId) p.push('solutionId attendu : ' + solutionId);
   if (STATUSES.indexOf(res.status) < 0) p.push('status inconnu : ' + res.status);
-  if (CONFIDENCES.indexOf(res.confidence) < 0) p.push('confidence inconnue : ' + res.confidence);
+  if (res.confidence !== undefined && CONFIDENCES.indexOf(res.confidence) < 0) p.push('confidence inconnue : ' + res.confidence);
+  if (res.status !== 'unsupported' && res.confidence === undefined) p.push('confidence manquante');
   if (!str(res.title)) p.push('title manquant');
   if (!str(res.explanation)) p.push('explanation manquante');
   if (!Array.isArray(res.steps) || !res.steps.length) p.push('steps vide');
@@ -57,9 +58,18 @@ export function checkSolutionResult(res, solutionId) {
     if (!w || !str(w.code) || !str(w.message)) p.push('avertissement ' + i + ' incomplet');
   });
   var r = res.result;
-  if (!r || !str(r.angle) || !str(r.cos) || !str(r.sin)) p.push('result incomplet');
+  if (res.status === 'unsupported') {
+    if (r !== null) p.push('result doit être null pour unsupported');
+    if (!Array.isArray(res.warnings) || !res.warnings.some(function (w) { return w && w.code === 'NOT_APPLICABLE'; })) {
+      p.push('unsupported sans avertissement NOT_APPLICABLE');
+    }
+    if (!Array.isArray(res.steps) || !res.steps.some(function (s) { return s && s.id === 'why'; })) {
+      p.push('étape why manquante pour unsupported');
+    }
+  } else if (r === null) p.push('result null réservé à unsupported');
+  else if (!r || !str(r.angle) || !str(r.cos) || !str(r.sin)) p.push('result incomplet');
   else if (r.tan === null) {
-    if (!(res.warnings || []).some(function (w) { return w && w.code === 'TANGENT_UNDEFINED'; })) {
+    if (!Array.isArray(res.warnings) || !res.warnings.some(function (w) { return w && w.code === 'TANGENT_UNDEFINED'; })) {
       p.push('tan null sans avertissement TANGENT_UNDEFINED');
     }
   } else if (!str(r.tan)) p.push('result.tan invalide');
