@@ -1,6 +1,6 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import worker, { _reinitialiser, cleDeTri } from "../../worker/src/index.js";
+import worker, { _reinitialiser, cleDeTri, suggestionsCatalogue } from "../../worker/src/index.js";
 
 // ---- Doubles de test : D1, GitHub, Claude ----
 function creerD1() {
@@ -177,13 +177,30 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
   assert.ok(en.length >= 1 && en.every((q) => /\b(what|how|explain)\b/i.test(q)));
 });
 
+test("suggestionsCatalogue : le repli vers une autre langue est global", () => {
+  const questionsMixtes = { maquettes: [
+    { id: "francais", questions: ["c'est quoi les fractions ?"] },
+    { id: "anglais", questions: ["what are fractions?"] }
+  ] };
+  assert.deepEqual(suggestionsCatalogue(questionsMixtes, "en"), ["What are fractions?"]);
+
+  const sansAnglais = { maquettes: [
+    { id: "a", questions: ["c'est quoi les fractions ?"] },
+    { id: "b", questions: ["comment calculer une fraction ?"] }
+  ] };
+  assert.deepEqual(suggestionsCatalogue(sansAnglais, "en"), [
+    "C'est quoi les fractions ?",
+    "Comment calculer une fraction ?"
+  ]);
+});
+
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
   _reinitialiser({ client: creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "sciences/volcans", plan_onglets: [],
+    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "sciences/gloubi-boulga", plan_onglets: [],
     reponse: "Un volcan, c'est une ouverture par laquelle sort le magma.",
     relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les volcans en France ?", 4]
   }) });
-  const r = await chat({ message: "c'est quoi un volcan ?", langue: "fr" });
+  const r = await chat({ message: "parle-moi du gloubi-boulga", langue: "fr" });
   assert.equal(r.donnees.type, "reponse");
   assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les volcans en France ?"]);
 });
