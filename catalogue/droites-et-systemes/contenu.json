@@ -119,6 +119,18 @@
           "Remplace dans la première : 2(y + 1) + y = 11."
         ],
         "solution": "3y + 2 = 11, donc y = 3 (et x = 4)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Droites parallèles",
+        "question": "Les droites d'équations y = 3x + 2 et y = 3x − 5 sont…",
+        "choix": [
+          "parallèles et distinctes",
+          "confondues",
+          "sécantes"
+        ],
+        "bonne": 0,
+        "explication": "Elles ont le même coefficient directeur 3, mais des ordonnées à l'origine différentes."
       }
     ]
   },

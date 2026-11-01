@@ -1,0 +1,61 @@
+{
+  "titresOnglets": { "explication": "Comprendre la religion", "application": "Distinguer les approches", "mise-en-situation": "Une visite culturelle" },
+  "intro": "Comment penser les religions sans demander à quelqu'un ce qu'il croit ? Explore la perspective « existence humaine et culture ». Croyants, agnostiques et athées peuvent étudier ces notions ensemble.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des croyances et des pratiques",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **religion** peut associer croyances, récits, rites, règles et communauté autour de ce qui est considéré comme sacré. Les traditions sont diverses ; elles ne parlent pas toutes d'un dieu unique et leurs membres n'ont pas tous les mêmes pratiques.",
+        "Jeu d'observation d'une histoire : des personnages se rassemblent, suivent un rite et racontent un récit. Décris ce qu'ils font sans conclure à leur place ce qu'ils pensent.",
+        "On peut croire, ne pas croire ou suspendre son jugement. Cette page ne demande aucune information sur tes convictions."
+      ],
+      "exemple": { "titre": "Un calendrier", "etapes": ["Un calendrier comporte une fête d'origine religieuse.", "Certaines personnes la pratiquent comme rite, d'autres comme coutume familiale.", "Une même activité ne révèle pas automatiquement la conviction d'une personne."] },
+      "aRetenir": "Étudier une religion n'est ni y adhérer ni la rejeter."
+    },
+    {
+      "titre": "Collège : sacré, profane, foi et savoir",
+      "niveau": "college",
+      "paragraphes": [
+        "Le **sacré** désigne ce qui est mis à part et traité avec un respect particulier dans une tradition. Le **profane** relève de la vie ordinaire ; il ne signifie pas forcément mauvais.",
+        "La **foi** engage une confiance ou une adhésion religieuse. Un **savoir** demande des justifications et des méthodes de vérification adaptées à son objet. Une conviction sincère n'est pas, à elle seule, une preuve partageable.",
+        "La liberté de conscience protège la possibilité de croire ou de ne pas croire. Le respect des personnes n'interdit pas l'examen critique des idées.",
+        "Petit tri : « ce bâtiment date du XIIe siècle » peut se vérifier historiquement ; « ce lieu est sacré pour cette communauté » décrit son statut dans une tradition."
+      ],
+      "exemple": { "titre": "Un lieu de visite", "etapes": ["Un guide décrit l'histoire d'un lieu religieux.", "Il explique les règles de visite et leur sens pour la communauté.", "Le visiteur peut les respecter sans adopter les croyances associées."] },
+      "aRetenir": "Distinguer foi, savoir et respect permet de discuter sans imposer une conviction."
+    },
+    {
+      "titre": "Lycée : raison, société et critique",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Pascal** distingue des voies de connaissance et souligne que la foi ne se réduit pas à une démonstration géométrique. **Spinoza** défend la liberté de philosopher et une lecture des textes attentive à leur contexte.",
+        "**Durkheim** étudie la religion comme fait social : un système de croyances et de pratiques relatives au sacré qui unit une communauté. Cette approche décrit un rôle collectif sans prouver ni réfuter les croyances.",
+        "**Marx** analyse la religion à la fois comme expression de la souffrance sociale et comme consolation ; sa critique vise aussi les conditions qui rendent cette consolation nécessaire. La réduire à une simple moquerie des croyants déforme son analyse.",
+        "Problème : foi et raison doivent-elles s'opposer ? Distingue enquête historique, discussion philosophique et engagement religieux. Les auteurs ne répondent pas tous de la même manière."
+      ],
+      "exemple": { "titre": "Trois questions", "etapes": ["L'historien demande comment une tradition s'est développée.", "Le sociologue examine ses pratiques et ses liens collectifs.", "Le philosophe interroge ses justifications et ses rapports à la raison."] },
+      "aRetenir": "Analyser les fonctions d'une religion ne tranche pas automatiquement la vérité de ses croyances."
+    }
+  ],
+  "application": {
+    "intro": "Les réponses portent sur des distinctions et des auteurs, jamais sur ce qu'une personne doit croire.",
+    "exercices": [
+      { "type": "qcm", "titre": "Diversité", "question": "Toutes les religions se définissent-elles par la croyance en un dieu unique ?", "choix": ["Oui, sans exception", "Oui, et par les mêmes rites", "Non, les traditions et leurs conceptions sont diverses"], "bonne": 2, "explication": "La diversité religieuse empêche de réduire toutes les traditions à un modèle unique." },
+      { "type": "qcm", "titre": "Profane", "question": "Que signifie profane dans la distinction étudiée ?", "choix": ["Ce qui relève de la vie ordinaire", "Ce qui est forcément mauvais", "Ce qui est interdit de pensée"], "bonne": 0, "explication": "Le profane se distingue du sacré ; cette distinction ne signifie pas bon contre mauvais." },
+      { "type": "qcm", "titre": "Justifier", "question": "Une conviction sincère suffit-elle à constituer une preuve partageable ?", "choix": ["Oui, toujours", "Non, il faut examiner les justifications", "Oui, si elle est ancienne"], "bonne": 1, "explication": "La sincérité d'une adhésion et les raisons permettant de la justifier sont distinctes." },
+      { "type": "qcm", "titre": "Durkheim", "question": "Quel aspect Durkheim étudie-t-il particulièrement ?", "choix": ["La composition chimique des bâtiments", "La preuve de toutes les croyances", "Les croyances, les rites et leur lien avec une communauté"], "bonne": 2, "explication": "Son approche sociologique examine la religion comme fait collectif relatif au sacré." },
+      { "type": "qcm", "titre": "Liberté", "question": "Respecter la liberté de conscience implique…", "choix": ["de permettre de croire ou de ne pas croire", "d'imposer une religion commune", "d'interdire toute critique d'une idée"], "bonne": 0, "explication": "Le respect des personnes et la discussion critique des idées peuvent aller ensemble." }
+    ]
+  },
+  "situation": {
+    "titre": "Préparer une visite du patrimoine",
+    "histoire": ["Une bibliothèque organise une visite d'un bâtiment religieux ouvert au public.", "Le groupe veut comprendre son histoire et ses usages sans demander aux visiteurs leurs convictions ni leur faire pratiquer un rite."],
+    "etapes": [
+      { "type": "qcm", "titre": "La présentation", "question": "Quelle formulation est descriptive et respectueuse ?", "choix": ["Tous les visiteurs doivent partager cette croyance", "Ce lieu est considéré comme sacré par cette communauté", "Toute personne qui entre croit la même chose"], "bonne": 1, "explication": "La formulation décrit le statut du lieu sans imposer ni attribuer une conviction." },
+      { "type": "qcm", "titre": "Une information", "question": "Comment vérifier la date de construction ?", "choix": ["Par la conviction des visiteurs", "En supposant que tout récit est identique", "En comparant des sources historiques"], "bonne": 2, "explication": "Une question historique appelle des sources et une méthode de vérification." },
+      { "type": "qcm", "titre": "La discussion", "question": "Quel cadre permet un échange libre ?", "choix": ["Discuter des idées sans exiger de révéler ses convictions", "Classer les visiteurs par religion", "Demander à chacun de participer à un rite"], "bonne": 0, "explication": "On peut apprendre ensemble en respectant la liberté et la vie privée de chacun." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as distingué décrire, vérifier et adhérer. La curiosité peut aller de pair avec le respect et la liberté de conscience."
+  }
+}

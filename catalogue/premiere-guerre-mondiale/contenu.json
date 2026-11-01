@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi mémoire" },
+  "intro": "Enquête sur une guerre qui transforme les sociétés : distingue les causes, les événements et leurs conséquences, sans confondre histoire et souvenir.",
+  "niveaux": [
+    {
+      "titre": "Découverte : placer les grands repères",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Première Guerre mondiale** dure de 1914 à 1918. Partie d'Europe, elle touche d'autres continents, notamment par la participation des empires coloniaux. Les soldats ne sont pas les seuls concernés : les familles, les travailleurs et les populations civiles vivent aussi la guerre.",
+        "Mini-jeu : remets dans l'ordre 1919, 1914 et 1918. Réponse : début de la guerre en 1914, armistice avec l'Allemagne le 11 novembre 1918, traité de Versailles en 1919. Un **armistice** arrête les combats ; un traité de paix règle ensuite les conditions de la paix."
+      ],
+      "aRetenir": "1914-1918 : la guerre ; 1919 : le traité de Versailles avec l'Allemagne."
+    },
+    {
+      "titre": "Comprendre : causes, acteurs et guerre totale",
+      "niveau": "3e",
+      "paragraphes": [
+        "L'assassinat de l'archiduc François-Ferdinand à Sarajevo le **28 juin 1914** est un déclencheur, pas l'unique cause. Rivalités entre puissances, nationalismes, course aux armements et alliances contribuent à transformer la crise en guerre. Les décisions des gouvernements restent déterminantes : la guerre n'était pas inévitable.",
+        "La France, le Royaume-Uni et la Russie combattent notamment l'Allemagne et l'Autriche-Hongrie. L'Empire ottoman rejoint les puissances centrales en 1914 ; l'Italie entre en guerre contre elles en 1915 et les États-Unis en 1917. Les alliances évoluent : la Russie sort du conflit en 1918 après les révolutions de 1917.",
+        "Sur le front occidental, la guerre de mouvement laisse largement place aux tranchées, avant de reprendre en 1918. **Verdun** et la Somme, en 1916, illustrent la violence des combats. La **guerre totale** mobilise les soldats, l'industrie, l'économie et la propagande ; les civils subissent pénuries, déplacements et violences.",
+        "Dans l'Empire ottoman, les autorités organisent le **génocide des Arméniens**, principalement en 1915-1916. Un génocide est une entreprise de destruction d'un groupe humain visé pour son identité. L'étudier exige des faits précis et le respect des victimes."
+      ],
+      "exemple": {
+        "titre": "Classer trois indices",
+        "etapes": [
+          "Les rivalités entre puissances : une cause de fond.",
+          "L'attentat de Sarajevo : le déclencheur de la crise.",
+          "Les femmes dans les usines de guerre : un exemple de mobilisation de la société."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : une paix et des mémoires difficiles",
+      "niveau": "première / lycée",
+      "paragraphes": [
+        "La guerre fait des millions de morts, laisse des blessés et des territoires dévastés. Les empires allemand, austro-hongrois, russe et ottoman disparaissent ou se transforment. De nouveaux États émergent, mais les frontières et les traités suscitent des tensions.",
+        "Le traité de Versailles impose à l'Allemagne des pertes territoriales, des limitations militaires et des réparations. La **Société des Nations** cherche à préserver la paix, sans disposer des moyens d'empêcher tous les conflits. La Seconde Guerre mondiale n'est pas une conséquence automatique de ce traité : d'autres crises et choix politiques interviennent.",
+        "Les monuments aux morts et les cérémonies transmettent des **mémoires**, c'est-à-dire des souvenirs portés par des personnes ou des groupes. L'**histoire** confronte ces souvenirs à des archives et à des recherches. Pour enquêter, demande qui a produit chaque document, quand et dans quel but."
+      ],
+      "aRetenir": "Un souvenir est une source à étudier, pas un récit complet de la guerre."
+    }
+  ],
+  "application": {
+    "intro": "Choisis une réponse par enquête. Une erreur donne un indice ; la bonne réponse explique le raisonnement.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Causes",
+        "question": "Comment expliquer le passage de la crise de Sarajevo à une guerre européenne ?",
+        "choix": ["Par le seul attentat, sans autre facteur", "Par les rivalités, les alliances et les décisions des gouvernements", "Par la création de l'Union européenne"],
+        "bonne": 1,
+        "indice": "Distingue un déclencheur des tensions accumulées avant lui.",
+        "explication": "L'attentat déclenche une crise dans un contexte de rivalités et d'alliances. Les décisions politiques de l'été 1914 élargissent le conflit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Quel pays entre en guerre aux côtés des Alliés en 1917 ?",
+        "choix": ["Les États-Unis", "L'Allemagne", "L'Empire ottoman"],
+        "bonne": 0,
+        "indice": "Ce pays se trouve en Amérique du Nord.",
+        "explication": "Les États-Unis entrent en guerre en avril 1917 aux côtés des Alliés ; l'Allemagne et l'Empire ottoman combattent dans le camp opposé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Mobilisation",
+        "question": "Quel exemple montre que le conflit est une guerre totale ?",
+        "choix": ["Les civils restent tous à l'écart", "Seuls les diplomates participent", "Les usines et la population sont mobilisées pour l'effort de guerre"],
+        "bonne": 2,
+        "indice": "Une guerre totale dépasse le champ de bataille.",
+        "explication": "La mobilisation de l'industrie, du travail et de la propagande associe toute la société à la guerre, tandis que les civils en subissent les effets."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences",
+        "question": "Que signifie l'armistice du 11 novembre 1918 avec l'Allemagne ?",
+        "choix": ["L'arrêt des combats, avant le traité de paix", "La signature du traité de Versailles le même jour", "La disparition immédiate de toutes les tensions"],
+        "bonne": 0,
+        "indice": "Armistice et traité de paix sont deux étapes différentes.",
+        "explication": "L'armistice suspend les combats avec l'Allemagne. Le traité de Versailles est signé le 28 juin 1919 ; les conséquences du conflit durent longtemps."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Préparer un panneau pour le 11 novembre",
+    "histoire": [
+      "Tu aides un musée à préparer un panneau de commémoration. Tu disposes d'une photographie de monument, d'une lettre de soldat et d'une étude historique.",
+      "Ta mission : honorer les personnes sans effacer la diversité des expériences ni confondre souvenir et explication."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Lire une source",
+        "question": "Que permet de connaître une lettre écrite par un soldat en 1916 ?",
+        "choix": ["Tout ce que pensent tous les soldats", "Une expérience située, à comparer à d'autres sources", "Les décisions prises en 1919"],
+        "bonne": 1,
+        "indice": "Un témoin parle depuis une situation particulière.",
+        "explication": "La lettre renseigne sur une expérience et un point de vue. Sa date, son destinataire et les autres sources aident à l'interpréter."
+      },
+      {
+        "type": "qcm",
+        "titre": "Inclure les acteurs",
+        "question": "Quel panneau présente le mieux la dimension mondiale du conflit ?",
+        "choix": ["Un panneau sur les seuls soldats d'une commune", "Un panneau affirmant que seuls des Européens participent", "Un panneau évoquant aussi soldats coloniaux et populations civiles"],
+        "bonne": 2,
+        "indice": "Les empires et les sociétés participent au-delà du front européen.",
+        "explication": "Évoquer les soldats coloniaux et les civils complète l'hommage local et rend visible la diversité des personnes touchées."
+      },
+      {
+        "type": "qcm",
+        "titre": "Histoire et mémoire",
+        "question": "Comment vérifier une affirmation lue sur un monument ?",
+        "choix": ["Étudier sa date et la confronter à des archives et travaux historiques", "La croire sans vérifier parce qu'elle est gravée", "Ignorer tous les témoignages"],
+        "bonne": 0,
+        "indice": "Commémorer et vérifier les faits sont compatibles.",
+        "explication": "Un monument témoigne d'une mémoire publique. Le contextualiser et croiser les sources permet de construire une explication historique."
+      }
+    ],
+    "conclusion": "Mission accomplie : ton panneau distingue les repères, les expériences et les mémoires, tout en respectant les victimes."
+  }
+}

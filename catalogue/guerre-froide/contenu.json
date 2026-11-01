@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi information" },
+  "intro": "Explore un affrontement mondial fait de rivalités, de crises et de négociations : « froide » ne veut pas dire sans victimes ni guerres.",
+  "niveaux": [
+    {
+      "titre": "Découverte : deux puissances rivales",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **guerre froide**, généralement située entre **1947 et 1991**, oppose les États-Unis et l'URSS et leurs alliés. Ils rivalisent pour l'influence mondiale sans se livrer une guerre directe généralisée. Des conflits meurtriers ont toutefois lieu dans d'autres pays.",
+        "Jeu de frise : 1961, 1989, 1991. Le mur de Berlin est construit en 1961, ses points de passage s'ouvrent le 9 novembre 1989 et l'URSS disparaît en 1991. Ces événements sont liés mais différents."
+      ],
+      "aRetenir": "Deux blocs dominent les relations internationales, mais tous les pays ne suivent pas leur camp de la même manière."
+    },
+    {
+      "titre": "Comprendre : blocs, crises et acteurs",
+      "niveau": "3e",
+      "paragraphes": [
+        "Après 1945, les tensions entre anciens Alliés portent sur la sécurité, l'influence et les modèles politiques. Les États-Unis défendent le capitalisme et la démocratie libérale, tout en soutenant aussi des dictatures alliées. L'URSS revendique le communisme et dirige un régime à parti unique. Les doctrines Truman et Jdanov, en 1947, expriment l'opposition des camps.",
+        "Les États-Unis proposent le plan Marshall pour reconstruire l'Europe et contenir l'influence communiste. L'**OTAN**, créée en 1949, et le **pacte de Varsovie**, créé en 1955, organisent des alliances militaires. En Allemagne divisée, Berlin devient un symbole : blocus soviétique en 1948-1949, puis mur construit par les autorités est-allemandes en 1961 pour empêcher les départs vers l'Ouest.",
+        "En **1962**, la crise des missiles de Cuba oppose notamment Kennedy et Khrouchtchev, avec Cuba dirigée par Castro. L'installation de missiles soviétiques près des États-Unis entraîne un risque de guerre nucléaire. Une négociation permet de retirer les missiles soviétiques ; les États-Unis s'engagent à ne pas envahir Cuba et acceptent secrètement de retirer leurs missiles de Turquie.",
+        "La guerre de Corée et la guerre du Vietnam montrent que la rivalité peut alimenter des guerres locales, sans que leurs acteurs soient de simples exécutants des grandes puissances. Des pays revendiquent le **non-alignement** et cherchent une autonomie entre les blocs."
+      ],
+      "exemple": {
+        "titre": "Classer les formes de rivalité",
+        "etapes": [
+          "La course à l'espace : rivalité scientifique et symbolique.",
+          "L'accumulation d'armes nucléaires : course aux armements et dissuasion.",
+          "Une négociation sur les armements : tentative de limiter les risques, sans supprimer la rivalité."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : détente et fin de la bipolarité",
+      "niveau": "terminale / lycée",
+      "paragraphes": [
+        "La **dissuasion nucléaire** repose sur la menace d'une riposte dévastatrice. Elle n'élimine ni les risques d'erreur ni les conflits. La détente des années 1960-1970 combine négociations et rivalités ; de nouvelles tensions apparaissent ensuite, notamment après l'intervention soviétique en Afghanistan en 1979.",
+        "À partir de 1985, Gorbatchev engage des réformes en URSS. Difficultés économiques, contestations et transformations politiques contribuent à la chute des régimes communistes d'Europe de l'Est en 1989 et à la dissolution de l'URSS en décembre 1991. La réunification allemande date de 1990.",
+        "Une carte des blocs simplifie le monde : désaccords internes, rupture sino-soviétique et non-alignement la compliquent. Pour analyser une crise actuelle, évite de plaquer automatiquement le modèle de la guerre froide : vérifie les acteurs, les alliances et le contexte."
+      ],
+      "aRetenir": "Une analogie historique peut aider à poser des questions ; elle ne remplace pas l'étude des faits."
+    }
+  ],
+  "application": {
+    "intro": "Résous quatre enquêtes sur les origines, les acteurs et les conséquences de la rivalité.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Causes",
+        "question": "Quelle tension contribue à la guerre froide après 1945 ?",
+        "choix": ["Un désaccord sur les zones d'influence et les modèles politiques", "La création du mur de Berlin avant 1914", "L'absence de toute arme dans les deux camps"],
+        "bonne": 0,
+        "indice": "Les anciens Alliés ont des intérêts et des modèles différents.",
+        "explication": "La rivalité porte sur la sécurité, les zones d'influence et les modèles politiques et économiques, dans un contexte de méfiance croissante."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Qui fait construire le mur de Berlin en 1961 ?",
+        "choix": ["L'ONU pour réunifier l'Allemagne", "Les États-Unis pour empêcher les départs vers l'Est", "Les autorités est-allemandes, soutenues par l'URSS"],
+        "bonne": 2,
+        "indice": "Le mur vise notamment à empêcher les habitants de quitter l'Allemagne de l'Est.",
+        "explication": "Les autorités de la RDA construisent le mur avec le soutien soviétique pour bloquer les départs vers Berlin-Ouest."
+      },
+      {
+        "type": "qcm",
+        "titre": "Crise",
+        "question": "Comment la crise des missiles de Cuba se termine-t-elle en 1962 ?",
+        "choix": ["Par une guerre nucléaire généralisée", "Par une négociation et des engagements des deux grandes puissances", "Par la disparition immédiate de l'URSS"],
+        "bonne": 1,
+        "indice": "Les dirigeants cherchent une sortie à une crise très dangereuse.",
+        "explication": "L'accord prévoit le retrait des missiles soviétiques de Cuba, une garantie américaine de non-invasion et un retrait secret des missiles américains de Turquie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences",
+        "question": "Quel événement marque la fin de l'URSS ?",
+        "choix": ["La construction du mur en 1961", "Le débarquement de 1944", "Sa dissolution en décembre 1991"],
+        "bonne": 2,
+        "indice": "La chute du mur précède cet événement de deux ans.",
+        "explication": "L'URSS disparaît en décembre 1991. L'ouverture du mur en 1989 et la réunification allemande en 1990 sont des étapes distinctes."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Vérifier un message sur Berlin",
+    "histoire": [
+      "Tu lis un message : « Le mur est tombé en 1989, donc toutes les rivalités et toutes les guerres ont disparu ce jour-là. »",
+      "À l'aide d'une frise, d'une carte et d'un travail historique, prépare une correction argumentée."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Rectifier la chronologie",
+        "question": "Quelle suite est correcte ?",
+        "choix": ["Dissolution de l'URSS, construction du mur, ouverture du mur", "Ouverture du mur en 1989, réunification allemande en 1990, dissolution de l'URSS en 1991", "Réunification allemande en 1961, ouverture du mur en 1991"],
+        "bonne": 1,
+        "indice": "Distingue les trois étapes de la fin de la division européenne.",
+        "explication": "Les changements s'échelonnent : 1989 pour l'ouverture du mur, 1990 pour la réunification allemande et 1991 pour la dissolution de l'URSS."
+      },
+      {
+        "type": "qcm",
+        "titre": "Lire une carte",
+        "question": "Pourquoi une carte limitée à deux blocs ne suffit-elle pas ?",
+        "choix": ["Elle oublie notamment les non-alignés et les désaccords à l'intérieur des camps", "Tous les pays sont toujours neutres", "Les alliances n'ont aucune importance"],
+        "bonne": 0,
+        "indice": "Un modèle utile peut rester une simplification.",
+        "explication": "Les non-alignés cherchent leur autonomie et les camps connaissent des désaccords. Les acteurs locaux ont aussi leurs propres objectifs."
+      },
+      {
+        "type": "qcm",
+        "titre": "Relier au présent",
+        "question": "Comment comparer une rivalité actuelle à la guerre froide ?",
+        "choix": ["Affirmer que les deux situations sont forcément identiques", "Se fier uniquement à un slogan", "Étudier les ressemblances et les différences à partir de sources datées"],
+        "bonne": 2,
+        "indice": "Comparer exige de connaître les deux contextes.",
+        "explication": "Une comparaison rigoureuse examine les acteurs, les objectifs et les alliances. La fin de la guerre froide n'a pas supprimé toutes les guerres."
+      }
+    ],
+    "conclusion": "Mission accomplie : tu utilises les repères historiques pour vérifier un message, sans réduire le monde à deux camps immuables."
+  }
+}

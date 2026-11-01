@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les volumes – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "volumes",
   "titre": "Les volumes",
   "sujet": "mathematiques/volumes",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -37,31 +37,62 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Le **volume** est la place qu'occupe un objet dans l'espace. Pour le mesurer, on compte combien de petits cubes de 1 cm d'arête (1 **cm³**) il faut pour le remplir.",
-        "Une boîte de 3 cm × 2 cm × 2 cm contient 3 × 2 = 6 cubes au fond, sur 2 étages : 12 cm³."
-      ]
+        "Une boîte de 3 cm × 2 cm × 2 cm contient 3 × 2 = 6 cubes au fond, sur 2 étages : 12 cm³.",
+        "Dans la vie : un dé a un volume de quelques cm³, une brique de lait contient 1 L, une piscine se compte en dizaines de m³. Le volume sert à savoir « combien ça contient »."
+      ],
+      "exemple": {
+        "titre": "Exemple : la boîte de 3 cm × 2 cm × 2 cm",
+        "etapes": [
+          "Au fond : 3 × 2 = 6 cubes.",
+          "Il y a 2 étages de 6 cubes.",
+          "Volume : 6 × 2 = 12 cm³."
+        ]
+      },
+      "aRetenir": "Le volume compte des cubes d'unité : cm³, dm³, m³."
     },
     {
       "titre": "Pavé droit et cube",
       "niveau": "6e / 5e",
       "paragraphes": [
         "**Pavé droit** (une boîte) : V = longueur × largeur × hauteur.",
-        "**Cube** d'arête a : V = a × a × a = a³ (d'où le nom « au cube » !)."
-      ]
+        "**Cube** d'arête a : V = a × a × a = a³ (d'où le nom « au cube » !).",
+        "Pour t'en souvenir : on calcule d'abord l'aire du fond (longueur × largeur), puis on **empile** autant d'étages que la hauteur : c'est comme empiler des feuilles de papier pour former une ramette."
+      ],
+      "exemple": {
+        "titre": "Exemple : une boîte à chaussures de 30 cm × 20 cm × 12 cm",
+        "etapes": [
+          "Aire du fond : 30 × 20 = 600 cm².",
+          "Volume : 600 × 12 = 7 200 cm³.",
+          "Soit 7,2 L."
+        ]
+      },
+      "aRetenir": "Pavé droit : V = L × l × h. Cube : V = a³."
     },
     {
       "titre": "Volumes et contenances",
       "niveau": "6e / 5e",
       "paragraphes": [
         "Pour les liquides, on parle de **contenance** en litres. **1 L = 1 dm³ = 1 000 cm³**, et 1 mL = 1 cm³.",
-        "Un cube de 1 m d'arête contient 10 × 10 × 10 = 1 000 cubes de 1 dm : **1 m³ = 1 000 L**. Pour les volumes, on multiplie par 1 000 à chaque changement d'unité."
-      ]
+        "Un cube de 1 m d'arête contient 10 × 10 × 10 = 1 000 cubes de 1 dm : **1 m³ = 1 000 L**. Pour les volumes, on multiplie par 1 000 à chaque changement d'unité.",
+        "Dans la vie : une bouteille de 1,5 L contient 1 500 cm³ d'eau ; une cuillère à café, environ 5 mL, soit 5 cm³ ; un camion-citerne se compte en m³."
+      ],
+      "exemple": {
+        "titre": "Exemple : 0,75 L en cm³",
+        "etapes": [
+          "1 L = 1 000 cm³.",
+          "0,75 × 1 000 = 750.",
+          "Une bouteille de 75 cL contient 750 cm³."
+        ]
+      },
+      "aRetenir": "1 L = 1 dm³ = 1 000 cm³ ; 1 m³ = 1 000 L."
     },
     {
       "titre": "Prisme et cylindre",
       "niveau": "5e / 4e",
       "paragraphes": [
         "Pour un **prisme droit** ou un **cylindre** : V = **aire de la base × hauteur** (on empile des bases).",
-        "Cylindre de rayon r et de hauteur h : V = π × r² × h."
+        "Cylindre de rayon r et de hauteur h : V = π × r² × h.",
+        "Analogie : un prisme ressemble à une pile de gâteaux identiques, un cylindre à une pile de pièces de monnaie. Dans les deux cas, on empile la même base autant de fois que la hauteur."
       ],
       "exemple": {
         "titre": "Exemple : une canette de rayon 3 cm et de hauteur 10 cm",
@@ -70,7 +101,8 @@
           "Volume : 9π × 10 = 90π ≈ 282,7 cm³.",
           "Soit environ 0,28 L."
         ]
-      }
+      },
+      "aRetenir": "Prisme droit ou cylindre : V = aire de la base × hauteur."
     },
     {
       "titre": "Pyramide, cône et boule",
@@ -78,8 +110,18 @@
       "paragraphes": [
         "**Pyramide** et **cône** : V = aire de la base × hauteur ÷ 3. Ils remplissent exactement le tiers du prisme ou du cylindre de même base et même hauteur.",
         "**Boule** de rayon r : V = (4/3) × π × r³.",
-        "Dans un agrandissement de rapport k, les volumes sont multipliés par **k³** : doubler les dimensions multiplie le volume par 8."
-      ]
+        "Dans un agrandissement de rapport k, les volumes sont multipliés par **k³** : doubler les dimensions multiplie le volume par 8.",
+        "Dans la vie : un cornet de glace est un cône, un ballon de football une boule. Verser trois cornets pleins d'eau dans un cylindre de même base et de même hauteur le remplit exactement."
+      ],
+      "exemple": {
+        "titre": "Exemple : une boule de rayon 3 cm",
+        "etapes": [
+          "V = (4/3) × π × 3³.",
+          "3³ = 27, donc V = (4/3) × 27 × π = 36π.",
+          "36π ≈ 113,1 cm³."
+        ]
+      },
+      "aRetenir": "Pyramide et cône : V = base × hauteur ÷ 3 ; boule : V = (4/3)πr³."
     }
   ],
   "application": {
@@ -155,6 +197,55 @@
         "bonne": 2,
         "explication": "Les volumes sont multipliés par k³ = 2³ = 8.",
         "indice": "Chacune des trois dimensions est doublée."
+      },
+      {
+        "type": "nombre",
+        "titre": "Boule",
+        "question": "Quel est le volume d'une boule de rayon 3 cm, arrondi au dixième ?",
+        "reponse": 113.1,
+        "tolerance": 0.05,
+        "unite": "cm³",
+        "indices": [
+          "V = (4/3) × π × r³, avec r³ = 27.",
+          "(4/3) × 27 = 36, donc V = 36π."
+        ],
+        "solution": "(4/3) × π × 3³ = 36π ≈ 113,1 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Cône",
+        "question": "Quel est le volume d'un cône de rayon 3 cm et de hauteur 4 cm, arrondi au dixième ?",
+        "reponse": 37.7,
+        "tolerance": 0.05,
+        "unite": "cm³",
+        "indices": [
+          "Aire de la base : π × 3² = 9π.",
+          "V = 9π × 4 ÷ 3 = 12π."
+        ],
+        "solution": "π × 3² × 4 ÷ 3 = 12π ≈ 37,7 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Mètres cubes et litres",
+        "question": "Une citerne contient 1,2 m³ d'eau. Combien cela fait-il de litres ?",
+        "reponse": 1200,
+        "unite": "L",
+        "indices": [
+          "1 m³ = 1 000 L."
+        ],
+        "solution": "1,2 × 1 000 = 1 200 L."
+      },
+      {
+        "type": "nombre",
+        "titre": "Prisme",
+        "question": "La base d'un prisme droit est un triangle de base 3 cm et de hauteur 4 cm. Le prisme mesure 8 cm de haut. Quel est son volume ?",
+        "reponse": 48,
+        "unite": "cm³",
+        "indices": [
+          "Aire du triangle : 3 × 4 ÷ 2 = 6 cm².",
+          "V = aire de la base × hauteur."
+        ],
+        "solution": "6 × 8 = 48 cm³."
       }
     ]
   },
@@ -162,7 +253,9 @@
     "titre": "L'aquarium",
     "histoire": [
       "Nina reçoit un aquarium en forme de pavé droit : **60 cm de long, 30 cm de large et 40 cm de haut**.",
-      "Avant d'installer ses poissons, elle doit savoir combien d'eau prévoir."
+      "Avant d'installer ses poissons, elle doit savoir combien d'eau prévoir.",
+      "Son voisin, qui a de l'expérience, lui conseille de ne jamais remplir un aquarium jusqu'au bord : l'eau doit pouvoir bouger quand les poissons nagent, et il faut garder de la place pour le filtre.",
+      "Nina prend sa calculatrice, un seau et un arrosoir de 6 litres. Elle va avoir besoin de passer des cm³ aux litres."
     ],
     "etapes": [
       {
@@ -208,9 +301,21 @@
           "Divise 54 par 6."
         ],
         "solution": "54 ÷ 6 = 9 arrosoirs."
+      },
+      {
+        "type": "nombre",
+        "titre": "La hauteur de l'eau",
+        "question": "Avec 54 L d'eau, jusqu'à quelle hauteur monte l'eau dans l'aquarium ?",
+        "reponse": 30,
+        "unite": "cm",
+        "indices": [
+          "54 L = 54 000 cm³. Le fond mesure 60 × 30 = 1 800 cm².",
+          "Hauteur = volume ÷ aire du fond."
+        ],
+        "solution": "54 000 ÷ 1 800 = 30 cm (c'est bien les 3/4 de 40 cm)."
       }
     ],
-    "conclusion": "Les poissons sont ravis ! Volumes et contenances, cm³ et litres : tu sais maintenant passer de l'un à l'autre."
+    "conclusion": "Les poissons sont ravis ! Volumes et contenances, cm³ et litres : tu sais maintenant passer de l'un à l'autre, et même retrouver la hauteur de l'eau à partir du volume. Cette méthode sert pour une piscine, une citerne ou même une baignoire : quand tu verras un récipient, tu pourras estimer ce qu'il contient."
   }
 }
 </script>
@@ -326,7 +431,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 <header>
   <div>
     <h1>Les volumes</h1>
-    <div class="meta">volumes · v1.0.0</div>
+    <div class="meta">volumes · v1.1.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
@@ -757,6 +862,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */

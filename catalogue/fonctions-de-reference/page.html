@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les fonctions de référence – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -70,8 +70,18 @@
       "niveau": "seconde / première",
       "paragraphes": [
         "Les courbes permettent de résoudre des inéquations : x² \u003c 4 équivaut à −2 \u003c x \u003c 2 ; 1/x > 2 équivaut à 0 \u003c x \u003c 1/2.",
-        "En première, ces fonctions sont dérivées : (x²)' = 2x, (1/x)' = −1/x², (√x)' = 1/(2√x)."
-      ]
+        "En première, ces fonctions sont dérivées : (x²)' = 2x, (1/x)' = −1/x², (√x)' = 1/(2√x).",
+        "Erreur fréquente : (−3)² = 9, mais −3² = −9 ; les parenthèses changent le signe du carré."
+      ],
+      "exemple": {
+        "titre": "Résoudre x² = 4",
+        "etapes": [
+          "Chercher les antécédents de 4 par la fonction carrée revient à résoudre x² = 4.",
+          "Les deux nombres dont le carré vaut 4 sont −2 et 2.",
+          "Les solutions sont donc x = −2 ou x = 2."
+        ]
+      },
+      "aRetenir": "La fonction carrée est définie sur ℝ et ne prend que des valeurs positives ou nulles. La racine carrée, elle, est définie seulement pour x ≥ 0."
     }
   ],
   "application": {
@@ -144,6 +154,18 @@
           "(−2) × (−2) × (−2)."
         ],
         "solution": "(−2) × (−2) = 4, puis 4 × (−2) = −8."
+      },
+      {
+        "type": "qcm",
+        "titre": "Fonction carrée",
+        "question": "Quelle est l'image de −3 par la fonction carrée ?",
+        "choix": [
+          "−9",
+          "6",
+          "9"
+        ],
+        "bonne": 2,
+        "explication": "(−3)² = (−3) × (−3) = 9 : le carré d'un nombre négatif est positif."
       }
     ]
   },
@@ -737,6 +759,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */

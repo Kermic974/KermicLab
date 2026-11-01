@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Arguments à tester", "mise-en-situation": "Publicité à examiner" },
+  "intro": "« J'ai raison » ne suffit pas : quelles raisons peux-tu donner ? Apprends à distinguer un argument, une preuve et une préférence.",
+  "niveaux": [
+    {
+      "titre": "Intuition : demander pourquoi",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "La **raison** est une capacité à former des concepts, à relier des idées et à juger à partir de raisons. Avoir une opinion et pouvoir la justifier sont deux choses différentes.",
+        "Un **argument** propose des raisons pour soutenir une conclusion. Une préférence, comme aimer une couleur, n'est pas à elle seule une preuve d'une affirmation sur le monde. Les émotions peuvent attirer notre attention sur un problème ; raisonner ne signifie pas être sans émotion."
+      ],
+      "exemple": {
+        "titre": "Le jeu du « parce que »",
+        "etapes": [
+          "« Ce chemin est plus court parce qu'il me plaît » ne justifie pas sa longueur.",
+          "Comparer les distances fournit une raison pertinente.",
+          "La bonne question : la raison donnée soutient-elle vraiment la conclusion ?"
+        ]
+      },
+      "aRetenir": "Une justification doit être pertinente pour ce qu'elle cherche à établir."
+    },
+    {
+      "titre": "Distinguer : validité logique et vérité des prémisses",
+      "niveau": "lycée — construire un raisonnement",
+      "paragraphes": [
+        "Une **déduction valide** est un raisonnement où, si les prémisses sont vraies, la conclusion ne peut être fausse. Une prémisse est un point de départ du raisonnement. La validité porte sur le lien logique, pas sur la vérité de chaque point de départ.",
+        "« Tous les chats sont des oiseaux ; Mina est un chat ; donc Mina est un oiseau » a une forme déductive valide, mais sa première prémisse est fausse. Une conclusion correctement déduite ne transforme pas une prémisse fausse en connaissance.",
+        "Dans le *Discours de la méthode*, **Descartes** propose notamment de diviser les difficultés et de progresser par ordre. Le **rationalisme** accorde à la raison un rôle fondamental dans la connaissance ; cela ne signifie pas que Descartes refuse toute observation."
+      ],
+      "exemple": {
+        "titre": "La machine à déduire",
+        "etapes": [
+          "Tous les carrés sont des rectangles.",
+          "Cette figure est un carré.",
+          "Donc cette figure est un rectangle : vérifie la forme et les prémisses."
+        ]
+      },
+      "aRetenir": "Un raisonnement déductif solide demande une forme valide et des prémisses vraies."
+    },
+    {
+      "titre": "Formaliser : raison, expérience et limites",
+      "niveau": "terminale — avec Hume et Kant",
+      "paragraphes": [
+        "L'**empirisme** accorde à l'expérience un rôle fondamental dans la connaissance. Dans l'*Enquête sur l'entendement humain*, **Hume** distingue les relations d'idées et les questions de fait. La répétition d'un événement ne démontre pas logiquement que le futur sera identique au passé : c'est le problème de l'induction.",
+        "Dans la *Critique de la raison pure*, **Kant** soutient que notre connaissance commence avec l'expérience, mais ne dérive pas tout entière d'elle : notre esprit organise aussi l'expérience. Nous ne connaissons pas les choses indépendamment de ces conditions comme si nous pouvions sortir de tout point de vue.",
+        "Repère **rationnel/raisonnable** : rationnel peut qualifier un raisonnement cohérent ou un calcul des moyens ; raisonnable qualifie souvent un jugement mesuré tenant compte de la situation et d'autrui. Un moyen efficace peut servir une fin injuste. La raison interroge donc aussi les fins et ses propres limites."
+      ],
+      "exemple": {
+        "titre": "Ne pas confondre prévoir et démontrer",
+        "etapes": [
+          "Un bus est arrivé à l'heure les cinq derniers jours.",
+          "Il est raisonnable d'en tenir compte pour prévoir, mais cela ne démontre pas qu'il sera toujours ponctuel.",
+          "Cherche d'autres informations et indique le degré de confiance."
+        ]
+      },
+      "aRetenir": "Démontrer, observer et prévoir ne sont pas le même acte. Une pensée rationnelle reconnaît aussi ce qu'elle n'a pas établi."
+    }
+  ],
+  "application": {
+    "intro": "Vérifie les arguments : leurs raisons sont-elles pertinentes, leur forme valide et leur portée limitée ?",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Un raisonnement valide avec une prémisse fausse garantit-il une conclusion vraie ?",
+        "choix": ["Non : la validité seule ne garantit pas la vérité de la conclusion.", "Oui : sa forme suffit.", "Oui : une prémisse fausse devient vraie par déduction."],
+        "bonne": 0,
+        "indice": "La garantie logique est conditionnelle à la vérité des prémisses.",
+        "explication": "La validité garantit que des prémisses vraies ne conduisent pas à une conclusion fausse. Elle ne garantit pas à elle seule la vérité des prémisses."
+      },
+      {
+        "type": "qcm",
+        "question": "Quel point Hume met-il en évidence à propos de l'induction ?",
+        "choix": ["L'expérience ne donne jamais aucune information.", "La répétition passée ne démontre pas logiquement une répétition future.", "Toutes les prévisions sont des déductions certaines."],
+        "bonne": 1,
+        "indice": "Prévoir à partir du passé n'est pas déduire une nécessité logique.",
+        "explication": "Hume interroge la justification de notre passage du passé au futur. Cette difficulté ne signifie pas que toute prévision se vaut."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle affirmation correspond à Kant ?",
+        "choix": ["Connaître, c'est seulement copier des sensations sans organisation.", "Nous connaissons tout sans expérience.", "L'expérience fournit une matière que notre esprit organise aussi."],
+        "bonne": 2,
+        "indice": "Kant ne choisit pas simplement entre tout par la raison et tout par les sensations.",
+        "explication": "Kant étudie les conditions de possibilité de l'expérience et de la connaissance : l'esprit n'est pas un récepteur purement passif."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : « tout le monde l'utilise, donc c'est le meilleur »",
+    "histoire": [
+      "Une publicité pour un cahier fictif affirme : « Tout le monde l'utilise, donc c'est le meilleur. » Tu veux examiner l'argument sans acheter quoi que ce soit.",
+      "Ta mission : séparer popularité, critères de qualité et justification."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Même si le cahier est très populaire, que manque-t-il au raisonnement ?",
+        "choix": ["Une couleur plus vive.", "Un lien justifié entre popularité et qualité.", "Une répétition plus forte du slogan."],
+        "bonne": 1,
+        "indice": "Être beaucoup choisi ne prouve pas être le meilleur.",
+        "explication": "La popularité peut avoir de nombreuses causes. Il faut un critère de qualité et des raisons qui le soutiennent."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle démarche fournit des raisons pertinentes ?",
+        "choix": ["Comparer solidité, lisibilité et prix à partir de critères annoncés.", "Compter seulement les applaudissements.", "Choisir sans expliquer puis appeler cela une preuve."],
+        "bonne": 0,
+        "indice": "Relie les observations à la qualité que tu veux évaluer.",
+        "explication": "Des critères explicites rendent la comparaison discutable et vérifiable. Le meilleur dépend aussi de l'usage recherché."
+      },
+      {
+        "type": "qcm",
+        "question": "Après quelques essais favorables, quelle conclusion est prudente ?",
+        "choix": ["Ce cahier sera parfait pour tous, toujours.", "Les autres cahiers sont nécessairement mauvais.", "Ces essais soutiennent une appréciation pour l'usage testé, sans tout démontrer."],
+        "bonne": 2,
+        "indice": "Adapte la portée de la conclusion à celle des raisons.",
+        "explication": "Une observation limitée peut soutenir une conclusion limitée. Elle ne suffit pas à une affirmation universelle."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Invente à l'oral un autre slogan fictif et cherche ce qui manque à sa justification. Raisonner, c'est rendre ses raisons examinables."
+  }
+}

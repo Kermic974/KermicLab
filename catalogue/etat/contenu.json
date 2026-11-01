@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Institutions en jeu", "mise-en-situation": "Règles du parc" },
+  "intro": "Qui peut fixer des règles communes, et pourquoi lui obéir ? Distingue l'État, ceux qui gouvernent et la société.",
+  "niveaux": [
+    {
+      "titre": "Intuition : organiser une vie commune",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "L'**État** est une organisation politique qui exerce une autorité sur une population et un territoire au moyen d'institutions : administration, tribunaux, pouvoirs publics. Il ne se confond pas avec un dirigeant.",
+        "Le **gouvernement** conduit la politique de l'État à un moment donné. La **société** comprend aussi les familles, associations et échanges. La **nation** renvoie à une communauté historique et politique : nation et État ne coïncident pas toujours."
+      ],
+      "exemple": {
+        "titre": "Trouve ce qui dure",
+        "etapes": [
+          "Un gouvernement change après une élection.",
+          "Les institutions publiques continuent à fonctionner.",
+          "L'État ne disparaît donc pas à chaque changement de gouvernement."
+        ]
+      },
+      "aRetenir": "État, gouvernement et société désignent des réalités différentes."
+    },
+    {
+      "titre": "Distinguer : pouvoir, droit et légitimité",
+      "niveau": "lycée — construire des repères",
+      "paragraphes": [
+        "La **souveraineté** désigne le pouvoir suprême dans un ordre politique. Elle ne signifie pas que les dirigeants auraient moralement raison en toute circonstance. Dans un État de droit, le pouvoir est encadré par des règles et des garanties.",
+        "**Légal** signifie conforme au droit en vigueur ; **légitime** signifie justifiable, par exemple au regard de la justice ou du consentement. Une mesure peut être légale et sa légitimité contestée ; sa popularité ne suffit pas non plus à la rendre juste.",
+        "**Max Weber**, dans *Le Savant et le Politique*, caractérise l'État moderne par sa revendication réussie du monopole de la violence physique légitime sur un territoire. C'est une définition sociologique : elle n'approuve pas moralement tous les usages de la force."
+      ],
+      "exemple": {
+        "titre": "Le jeu des deux questions",
+        "etapes": [
+          "Pour un règlement, demande d'abord : a-t-il été adopté selon le droit applicable ?",
+          "Demande ensuite : est-il justifiable et respecte-t-il les personnes ?",
+          "Ces deux enquêtes sont liées, mais non identiques."
+        ]
+      },
+      "aRetenir": "Décrire l'autorité d'un État n'est pas justifier automatiquement ses décisions."
+    },
+    {
+      "titre": "Formaliser : pourquoi instituer un pouvoir commun ?",
+      "niveau": "terminale — confronter Hobbes et Rousseau",
+      "paragraphes": [
+        "Dans le *Léviathan*, **Hobbes** décrit l'état de nature comme une situation sans pouvoir commun garantissant la sécurité. La défiance peut y conduire à la guerre de chacun contre chacun. Le contrat institue un souverain pour rendre la paix possible.",
+        "Dans *Du contrat social*, **Rousseau** cherche une association où chacun, uni aux autres, reste libre en obéissant à une loi dont le peuple est l'auteur. La souveraineté appartient au peuple ; la **volonté générale** vise l'intérêt commun et n'est pas simplement l'addition des intérêts privés.",
+        "Ces contrats sont des modèles de justification politique, pas le récit d'une signature historique par tous les habitants. Hobbes insiste sur la sécurité ; Rousseau sur l'autonomie politique. On peut alors discuter la tension entre protection, participation et limites du pouvoir."
+      ],
+      "exemple": {
+        "titre": "Deux questions pour une dissertation",
+        "etapes": [
+          "Hobbes : que devient la sécurité sans pouvoir commun ?",
+          "Rousseau : à quelles conditions obéir à la loi reste-t-il compatible avec la liberté ?",
+          "Construis une réponse qui distingue l'utilité du pouvoir de sa légitimité."
+        ]
+      },
+      "aRetenir": "Un pouvoir peut protéger sans être sans limites. Justifier l'État demande d'examiner aussi les droits et la participation."
+    }
+  ],
+  "application": {
+    "intro": "Classe les concepts et identifie les thèses, sans transformer une opinion politique en réponse obligatoire.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Après un changement de gouvernement, l'État…",
+        "choix": ["disparaît nécessairement.", "se réduit au nouveau dirigeant.", "peut conserver ses institutions."],
+        "bonne": 2,
+        "indice": "Distingue les institutions des personnes qui gouvernent.",
+        "explication": "Le gouvernement est temporaire ; l'État est l'organisation institutionnelle qui peut lui survivre."
+      },
+      {
+        "type": "qcm",
+        "question": "Une décision adoptée conformément au droit est-elle nécessairement légitime ?",
+        "choix": ["Non : sa justification peut encore être discutée.", "Oui : légal et légitime sont synonymes.", "Oui : aucune loi ne peut être injuste."],
+        "bonne": 0,
+        "indice": "La conformité au droit ne clôt pas la discussion sur la justice.",
+        "explication": "Légalité et légitimité sont distinctes. Il faut examiner des raisons, et non conclure à l'injustice ou à la justice sur le seul statut légal."
+      },
+      {
+        "type": "qcm",
+        "question": "Chez Rousseau, la volonté générale vise…",
+        "choix": ["le seul intérêt du gouvernant.", "l'intérêt commun.", "n'importe quelle préférence de la majorité, sans autre condition."],
+        "bonne": 1,
+        "indice": "Générale ne veut pas simplement dire la plus populaire.",
+        "explication": "La volonté générale vise l'intérêt commun. Un vote majoritaire n'est pas, à lui seul, la garantie que des intérêts particuliers ne dominent pas."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : un règlement pour le parc",
+    "histoire": [
+      "Dans une ville imaginaire, un règlement limite les horaires d'un parc pour réduire les nuisances. Des habitants demandent des horaires mieux adaptés.",
+      "Sans présumer du droit d'un pays réel, examine le rôle des institutions et les raisons de la règle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Quelle enquête porte d'abord sur la légalité du règlement ?",
+        "choix": ["Est-ce ma règle préférée ?", "A-t-il été adopté par l'autorité compétente selon les procédures prévues ?", "Tout le monde l'apprécie-t-il ?"],
+        "bonne": 1,
+        "indice": "Cherche une question sur le droit et la compétence.",
+        "explication": "La légalité se vérifie au regard des règles de droit applicables ; les préférences ne la déterminent pas."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle question permet de discuter sa légitimité ?",
+        "choix": ["Protège-t-il le repos sans limiter l'accès plus que nécessaire ?", "Le règlement est-il imprimé en grand ?", "Quelle est la couleur de la grille ?"],
+        "bonne": 0,
+        "indice": "Mets en balance la fin recherchée et les restrictions imposées.",
+        "explication": "Examiner les raisons, les effets et la proportion de la restriction contribue à discuter sa justification."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle démarche prend en compte l'intérêt commun plutôt qu'un seul intérêt privé ?",
+        "choix": ["N'écouter que celui qui parle le plus fort.", "Ignorer tous les riverains.", "Comparer les besoins des usagers et des riverains dans une discussion argumentée."],
+        "bonne": 2,
+        "indice": "Qui est concerné par la décision ?",
+        "explication": "Une discussion des besoins et des garanties aide à chercher une règle commune. Elle ne garantit pas automatiquement une décision parfaite."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Propose oralement un horaire et une raison, puis une objection. Tu peux distinguer autorité, légalité et légitimité sans les confondre."
+  }
+}
