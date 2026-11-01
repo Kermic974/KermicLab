@@ -1,6 +1,6 @@
 # Chantier : catalogue de mathématiques (programme complet)
 
-**Niveau actuel : collège en ligne (20 notions) ; vague 3 (seconde, première) en PR**
+**Niveau actuel : programme complet rédigé (36 notions) — collège en ligne, vagues 3 et 4 (lycée) en PR**
 
 Objectif : couvrir le programme de mathématiques de la 6e à la terminale (spécialité), une notion par page, du plus intuitif au plus formel.
 Méthode : gabarit commun (ADR 0011, guide `docs/gabarit.md`), **une PR par vague** de 8 notions environ, pour que la relecture humaine
@@ -57,13 +57,13 @@ et un test navigateur qui résout **tous** les exercices avec la réponse attend
 
 | Notion | Statut |
 |---|---|
-| `limites-et-continuite` | à faire |
-| `logarithme` | à faire |
-| `integrales` | à faire |
-| `recurrence` | à faire |
-| `denombrement` | à faire |
-| `loi-binomiale` | à faire |
-| `geometrie-dans-l-espace` | à faire |
+| `limites-et-continuite` | PR ouverte |
+| `logarithme` | PR ouverte |
+| `integrales` | PR ouverte |
+| `recurrence` | PR ouverte |
+| `denombrement` | PR ouverte |
+| `loi-binomiale` | PR ouverte |
+| `geometrie-dans-l-espace` | PR ouverte |
 
 ## Points d'attention
 
