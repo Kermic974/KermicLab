@@ -24,6 +24,12 @@ jobs:
         run: python3 scripts/build-standalone.py --check
       - name: Frontières entre agents
         run: python3 scripts/check_boundaries.py --agent auto --base origin/${{ github.base_ref || 'main' }}
+      - name: Navigateur pour les tests de page
+        run: |
+          npm install --no-save --no-package-lock playwright@1.48.2
+          npx playwright install --with-deps chromium
+      - name: package.json sans dépendance
+        run: git diff --exit-code package.json
       - name: Tests
         run: node --test "tests/**/*.test.js"
       - name: Structure du livrable
