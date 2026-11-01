@@ -1,0 +1,36 @@
+name: Ménage des tags et releases
+
+# Ménage ponctuel demandé par le propriétaire (étape 6 des actions manuelles) : supprime la release
+# « v0.0.1_on_publish » et les tags « Dev » et « v0.0.1_on_publish », créés par erreur sur le commit de v0.0.1.
+# Le tag v0.0.1 et sa release ne sont jamais touchés. Lancement manuel uniquement.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  menage:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Supprimer la release v0.0.1_on_publish (tag compris)
+        run: |
+          if gh release view v0.0.1_on_publish --repo "$REPO" >/dev/null 2>&1; then
+            gh release delete v0.0.1_on_publish --repo "$REPO" --yes --cleanup-tag
+          else
+            echo "release v0.0.1_on_publish déjà absente"
+          fi
+      - name: Supprimer les tags restants (Dev, v0.0.1_on_publish)
+        run: |
+          for tag in Dev v0.0.1_on_publish; do
+            if gh api "repos/$REPO/git/refs/tags/$tag" >/dev/null 2>&1; then
+              gh api -X DELETE "repos/$REPO/git/refs/tags/$tag" && echo "tag supprimé : $tag"
+            else
+              echo "tag déjà absent : $tag"
+            fi
+          done
+      - name: Vérifier que v0.0.1 est intact
+        run: gh api "repos/$REPO/git/refs/tags/v0.0.1" --jq '.object.sha'
