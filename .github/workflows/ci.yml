@@ -85,6 +85,8 @@ jobs:
           cache: npm
       - if: steps.secrets.outputs.ok == 'true'
         run: npm ci
+      - if: steps.secrets.outputs.ok == 'true'
+        run: npm install --prefix worker --no-package-lock
       - name: Récupérer le catalogue privé
         if: ${{ steps.secrets.outputs.ok == 'true' && env.CATALOGUE_TOKEN != '' }}
         uses: actions/checkout@v7

@@ -11,7 +11,7 @@
   "id": "perimetres-aires",
   "titre": "Périmètres et aires",
   "sujet": "mathematiques/perimetres-aires",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -37,8 +37,18 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Autour d'un jardin, la longueur de la clôture est le **périmètre** : on fait le tour. La place occupée par la pelouse est l'**aire** : on compte combien de carreaux de 1 m sur 1 m la recouvrent.",
-        "Deux formes peuvent avoir le même périmètre et des aires différentes : un rectangle de 5 m × 1 m et un carré de 3 m × 3 m ont tous deux un périmètre de 12 m, mais des aires de 5 m² et 9 m²."
-      ]
+        "Deux formes peuvent avoir le même périmètre et des aires différentes : un rectangle de 5 m × 1 m et un carré de 3 m × 3 m ont tous deux un périmètre de 12 m, mais des aires de 5 m² et 9 m².",
+        "Dans la vie : le périmètre, c'est la longueur de plinthe pour une chambre, de guirlande autour d'un sapin ou de ruban autour d'un cadeau ; l'aire, c'est la quantité de peinture, de moquette ou de gazon dont on a besoin."
+      ],
+      "exemple": {
+        "titre": "Exemple : le jardin de 5 m sur 1 m et celui de 3 m sur 3 m",
+        "etapes": [
+          "Rectangle 5 m × 1 m : périmètre 2 × (5 + 1) = 12 m ; aire 5 × 1 = 5 m².",
+          "Carré 3 m × 3 m : périmètre 4 × 3 = 12 m ; aire 3 × 3 = 9 m².",
+          "Même clôture, mais le carré offre plus de pelouse."
+        ]
+      },
+      "aRetenir": "Périmètre = le tour (une longueur). Aire = la surface (nombre de carreaux)."
     },
     {
       "titre": "Les formules des polygones",
@@ -46,16 +56,27 @@
       "paragraphes": [
         "**Carré** de côté c : périmètre 4 × c, aire c × c = c².",
         "**Rectangle** de longueur L et largeur l : périmètre 2 × (L + l), aire L × l.",
-        "**Triangle** : aire = base × hauteur ÷ 2 (la hauteur est perpendiculaire à la base). C'est la moitié d'un rectangle !"
+        "**Triangle** : aire = base × hauteur ÷ 2 (la hauteur est perpendiculaire à la base). C'est la moitié d'un rectangle !",
+        "Pourquoi le triangle vaut-il la moitié d'un rectangle ? Si on coupe un rectangle de 10 cm sur 6 cm le long de sa diagonale, on obtient deux triangles identiques : chacun a pour aire 10 × 6 ÷ 2 = 30 cm²."
       ],
-      "aRetenir": "Un périmètre s'exprime en m, cm… ; une aire en m², cm²… (des carrés !)."
+      "aRetenir": "Un périmètre s'exprime en m, cm… ; une aire en m², cm²… (des carrés !).",
+      "exemple": {
+        "titre": "Exemple : une chambre de 4 m sur 3 m",
+        "etapes": [
+          "Plinthes (périmètre) : 2 × (4 + 3) = 14 m.",
+          "Parquet (aire) : 4 × 3 = 12 m².",
+          "Il faut 14 m de plinthes et 12 m² de parquet : deux calculs, deux unités."
+        ]
+      }
     },
     {
       "titre": "Le cercle et le disque",
       "niveau": "6e / 5e",
       "paragraphes": [
         "Le **périmètre d'un cercle** de rayon r vaut **2 × π × r** (ou π × d, avec le diamètre d). Le nombre π vaut environ 3,14.",
-        "L'**aire d'un disque** vaut **π × r²**."
+        "L'**aire d'un disque** vaut **π × r²**.",
+        "Pour t'en souvenir : le tour d'une roue de vélo, c'est son périmètre ; le tour de roue d'un vélo de rayon 35 cm vaut environ 2 × 3,14 × 35 ≈ 220 cm, soit 2,2 m avancés à chaque tour de roue.",
+        "Attention à ne pas confondre : le périmètre du cercle utilise r **une fois**, l'aire utilise r **au carré**."
       ],
       "exemple": {
         "titre": "Exemple : rayon 3 cm",
@@ -64,23 +85,44 @@
           "Aire : π × 3² = 9π ≈ 28,27 cm².",
           "On garde la valeur exacte (6π, 9π) le plus longtemps possible, et on arrondit à la fin."
         ]
-      }
+      },
+      "aRetenir": "Périmètre du cercle : 2πr (en cm). Aire du disque : πr² (en cm²)."
     },
     {
       "titre": "Les unités d'aire",
       "niveau": "6e / 5e",
       "paragraphes": [
         "Un carré de 1 m de côté mesure aussi 100 cm de côté : 1 m² = 100 × 100 = **10 000 cm²**. Pour les aires, on multiplie par 100 à chaque changement d'unité : 1 m² = 100 dm² = 10 000 cm².",
-        "Pour les terrains : 1 are = 100 m² et 1 hectare = 10 000 m² (un carré de 100 m de côté)."
-      ]
+        "Pour les terrains : 1 are = 100 m² et 1 hectare = 10 000 m² (un carré de 100 m de côté).",
+        "Dans la vie : une feuille A4 fait environ 21 cm sur 29,7 cm, soit 623,7 cm². Un terrain de football peut faire plus d'un hectare, soit plus de 10 000 m²."
+      ],
+      "exemple": {
+        "titre": "Exemple : convertir 0,5 m² en cm²",
+        "etapes": [
+          "1 m² = 10 000 cm².",
+          "0,5 × 10 000 = 5 000.",
+          "Donc 0,5 m² = 5 000 cm²."
+        ]
+      },
+      "aRetenir": "Pour les aires, chaque changement d'unité multiplie ou divise par 100 (et non par 10 !)."
     },
     {
       "titre": "Plus loin : autres figures et agrandissements",
       "niveau": "4e / seconde",
       "paragraphes": [
         "**Parallélogramme** : base × hauteur. **Trapèze** : (grande base + petite base) × hauteur ÷ 2.",
-        "Si on multiplie toutes les longueurs par k, le périmètre est multiplié par k mais l'aire par **k²** : doubler le côté d'un carré multiplie son aire par 4."
-      ]
+        "Si on multiplie toutes les longueurs par k, le périmètre est multiplié par k mais l'aire par **k²** : doubler le côté d'un carré multiplie son aire par 4.",
+        "Analogie : l'écran d'un téléphone qui double sa largeur et sa hauteur n'a pas une aire doublée, mais **quatre fois** plus grande : il faut quatre fois plus de pixels."
+      ],
+      "exemple": {
+        "titre": "Exemple : un trapèze",
+        "etapes": [
+          "Bases de 8 cm et 4 cm, hauteur 5 cm.",
+          "(8 + 4) × 5 ÷ 2 = 12 × 5 ÷ 2 = 30.",
+          "L'aire est de 30 cm²."
+        ]
+      },
+      "aRetenir": "Longueurs × k, périmètre × k, aire × k²."
     }
   ],
   "application": {
@@ -154,14 +196,65 @@
         ],
         "bonne": 0,
         "explication": "Carré : 3 × 3 = 9 cm². Rectangle : 5 × 1 = 5 cm². Même périmètre ne veut pas dire même aire !"
+      },
+      {
+        "type": "nombre",
+        "titre": "Aire d'un trapèze",
+        "question": "Un trapèze a pour bases 8 cm et 4 cm et pour hauteur 5 cm. Quelle est son aire ?",
+        "reponse": 30,
+        "unite": "cm²",
+        "indices": [
+          "Aire = (grande base + petite base) × hauteur ÷ 2.",
+          "(8 + 4) = 12."
+        ],
+        "solution": "(8 + 4) × 5 ÷ 2 = 30 cm²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Périmètre d'un cercle",
+        "question": "Quel est le périmètre d'un cercle de diamètre 10 cm, arrondi au dixième ?",
+        "reponse": 31.4,
+        "tolerance": 0.05,
+        "unite": "cm",
+        "indices": [
+          "Périmètre = π × diamètre.",
+          "π × 10 ≈ 31,42."
+        ],
+        "solution": "π × 10 ≈ 31,4 cm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Hectares",
+        "question": "Un champ mesure 2,5 hectares. Quelle est son aire en m² ?",
+        "reponse": 25000,
+        "unite": "m²",
+        "indices": [
+          "1 hectare = 10 000 m²."
+        ],
+        "solution": "2,5 × 10 000 = 25 000 m²."
+      },
+      {
+        "type": "qcm",
+        "titre": "Agrandissement",
+        "question": "On double le côté d'un carré. Son aire est multipliée par…",
+        "choix": [
+          "2",
+          "4",
+          "8"
+        ],
+        "bonne": 1,
+        "explication": "Les aires sont multipliées par k² = 2² = 4 : un carré de 3 cm (aire 9 cm²) devient un carré de 6 cm (aire 36 cm²).",
+        "indice": "Calcule l'aire d'un carré de 3 cm, puis celle d'un carré de 6 cm."
       }
     ]
   },
   "situation": {
     "titre": "Le potager",
     "histoire": [
-      "La classe crée un potager rectangulaire de **8 m de long** et **5 m de large**.",
-      "Il faut l'entourer d'un grillage et acheter des graines."
+      "La classe crée un potager rectangulaire de **8 m de long** et **5 m de large**, derrière l'école.",
+      "Il faut l'entourer d'un grillage pour que les lapins du voisin ne viennent pas manger les salades, puis acheter les graines.",
+      "Le jardinier de la mairie a prêté ses outils, mais il faut préparer la liste des achats : grillage, graines, et un coin pour le compost.",
+      "Pour ne rien oublier, tu dois bien distinguer ce qui se mesure en mètres (le tour) de ce qui se mesure en mètres carrés (la surface)."
     ],
     "etapes": [
       {
@@ -207,9 +300,20 @@
           "Divise l'aire par 5."
         ],
         "solution": "40 ÷ 5 = 8 sachets."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le composteur",
+        "question": "Finalement, un composteur carré de 2 m de côté occupe un coin du potager. Quelle surface reste-t-il pour semer ?",
+        "reponse": 36,
+        "indices": [
+          "Calcule l'aire du composteur : 2 × 2.",
+          "Retire-la de l'aire totale (40 m²)."
+        ],
+        "solution": "Composteur : 2 × 2 = 4 m². Il reste 40 − 4 = 36 m²."
       }
     ],
-    "conclusion": "Le potager est prêt ! Périmètre pour la clôture, aire pour les graines : savoir lequel utiliser, c'est tout l'art du problème."
+    "conclusion": "Le potager est prêt ! Périmètre pour la clôture, aire pour les graines et le compost : savoir lequel utiliser, c'est tout l'art du problème. La prochaine fois que tu verras un jardin, un terrain de sport ou une pièce, tu sauras estimer le tour et la surface. Les salades peuvent pousser !"
   }
 }
 </script>
@@ -325,7 +429,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 <header>
   <div>
     <h1>Périmètres et aires</h1>
-    <div class="meta">perimetres-aires · v1.0.0</div>
+    <div class="meta">perimetres-aires · v1.1.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
