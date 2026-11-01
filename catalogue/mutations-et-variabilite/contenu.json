@@ -1,0 +1,156 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une faute de frappe",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "En recopiant un très long texte, on fait parfois une faute de frappe. La cellule aussi : en répliquant ses milliards de nucléotides, elle commet de rares erreurs. Une modification de la séquence de l'ADN s'appelle une **mutation**."
+      ]
+    },
+    {
+      "titre": "Origine des mutations",
+      "niveau": "première",
+      "paragraphes": [
+        "Les mutations sont **spontanées** (erreurs de réplication, rares grâce aux systèmes de réparation) ou favorisées par des **agents mutagènes** : rayons **UV**, rayons X, substances du **tabac**, certains produits chimiques.",
+        "On distingue la **substitution** (un nucléotide remplacé par un autre), la **délétion** (un nucléotide en moins) et l'**insertion** (un nucléotide en plus)."
+      ]
+    },
+    {
+      "titre": "Les conséquences",
+      "niveau": "première",
+      "paragraphes": [
+        "Grâce à la redondance du code génétique, une mutation peut être **silencieuse** (le codon modifié code le même acide aminé). Elle peut aussi changer un acide aminé, ou créer un codon stop prématuré.",
+        "Une délétion ou une insertion **décale la lecture** de tous les codons suivants : la protéine est en général très modifiée."
+      ],
+      "exemple": {
+        "titre": "Exemple : la drépanocytose",
+        "etapes": [
+          "Une substitution d'un seul nucléotide dans le gène de l'hémoglobine (le codon GAG devient GTG).",
+          "Un seul acide aminé change : l'acide glutamique est remplacé par la valine.",
+          "Les globules rouges se déforment en faucille : c'est une maladie héréditaire fréquente."
+        ]
+      }
+    },
+    {
+      "titre": "Mutations et diversité",
+      "niveau": "première",
+      "paragraphes": [
+        "Une mutation dans une cellule du corps (**somatique**, par exemple de la peau) n'est **pas transmise** aux enfants ; elle peut parfois contribuer à un cancer. Une mutation dans une cellule reproductrice (**germinale**) peut être transmise.",
+        "Les mutations créent de **nouveaux allèles** : elles sont la source de la **variabilité génétique**, sur laquelle agit l'évolution."
+      ],
+      "aRetenir": "Se protéger des UV et ne pas fumer réduit le risque de mutations à l'origine de cancers."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les types de mutations et leurs conséquences.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Agent mutagène",
+        "question": "Lequel de ces facteurs est un agent mutagène ?",
+        "choix": [
+          "Les rayons UV",
+          "L'eau",
+          "Le dioxygène"
+        ],
+        "bonne": 0,
+        "explication": "Les UV peuvent endommager l'ADN des cellules de la peau."
+      },
+      {
+        "type": "qcm",
+        "titre": "Silencieuse",
+        "question": "Une mutation est dite silencieuse quand…",
+        "choix": [
+          "le codon modifié code le même acide aminé",
+          "elle supprime tout le gène",
+          "elle se produit la nuit"
+        ],
+        "bonne": 0,
+        "explication": "Grâce à la redondance du code génétique, la protéine ne change pas."
+      },
+      {
+        "type": "qcm",
+        "titre": "Délétion",
+        "question": "Quelle mutation décale la lecture de tous les codons qui suivent ?",
+        "choix": [
+          "La délétion d'un nucléotide",
+          "Une substitution silencieuse"
+        ],
+        "bonne": 0,
+        "explication": "Retirer un nucléotide décale le découpage en codons."
+      },
+      {
+        "type": "nombre",
+        "titre": "Drépanocytose",
+        "question": "Combien d'acides aminés de l'hémoglobine sont modifiés par la mutation de la drépanocytose ?",
+        "reponse": 1,
+        "indices": [
+          "Une substitution d'un seul nucléotide change un seul codon."
+        ],
+        "solution": "Un seul acide aminé change, mais les conséquences sont importantes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Transmission",
+        "question": "Une mutation apparue dans une cellule de la peau à cause du soleil peut-elle être transmise aux enfants ?",
+        "choix": [
+          "Non, car ce n'est pas une cellule reproductrice",
+          "Oui, toujours"
+        ],
+        "bonne": 0,
+        "explication": "Seules les mutations des cellules germinales sont héréditaires."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Soleil et hérédité",
+    "histoire": [
+      "Deux situations : Lucas passe ses vacances au soleil sans protection ; ses voisins, tous deux porteurs sains d'un allèle de la drépanocytose (un allèle normal et un allèle muté, récessif), attendent un enfant.",
+      "Analysons les risques."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "La crème solaire",
+        "question": "Pourquoi conseille-t-on à Lucas une crème solaire et un t-shirt ?",
+        "choix": [
+          "Les UV peuvent provoquer des mutations dans les cellules de la peau",
+          "Le soleil détruit les globules rouges",
+          "Les UV donnent la drépanocytose"
+        ],
+        "bonne": 0,
+        "explication": "Ces mutations somatiques peuvent favoriser des cancers de la peau."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'enfant des voisins",
+        "question": "Quelle est la probabilité que l'enfant soit atteint de drépanocytose (deux allèles mutés) ?",
+        "reponse": 0.25,
+        "tolerance": 0.001,
+        "indices": [
+          "Chaque parent transmet l'allèle muté avec une probabilité de 1/2."
+        ],
+        "solution": "1/2 × 1/2 = 1/4 = 0,25."
+      },
+      {
+        "type": "qcm",
+        "titre": "Porteur sain",
+        "question": "Quelle est la probabilité que l'enfant soit porteur sain (un seul allèle muté) ?",
+        "choix": [
+          "1/4",
+          "1/2",
+          "3/4"
+        ],
+        "bonne": 1,
+        "explication": "Allèle muté du père et normal de la mère (1/4), ou l'inverse (1/4) : 1/2 au total."
+      }
+    ],
+    "conclusion": "Bravo ! Certaines mutations ne concernent que nous, d'autres se transmettent : la génétique aide à évaluer ces risques."
+  }
+}

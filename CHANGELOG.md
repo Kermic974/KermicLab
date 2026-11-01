@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- SVT, vague 2 (seconde et première) : métabolisme et enzymes, ADN et mitose, expression des gènes, mutations et variabilité, structure interne de la Terre, système nerveux et réflexes, agrosystèmes et sols.
 - Catalogue de **SVT**, vague 1 (collège) : la cellule, nutrition et digestion, respiration et circulation, photosynthèse, reproduction humaine, génétique et hérédité, microbes et système immunitaire, écosystèmes et biodiversité, séismes, volcans et tectonique des plaques. Feuille de route : `docs/chantiers/catalogue-svt.md`. Onglet « SVT » dans la barre de navigation.
 - Physique-chimie, vague 3 (terminale) : lois de Newton, gravitation et satellites, cinétique chimique, radioactivité, thermodynamique, condensateur et circuit RC, diffraction et interférences. Le programme de physique-chimie est couvert (23 notions ; 59 au catalogue).
 - Physique-chimie, vague 2 (seconde et première) : quantité de matière, atome et tableau périodique, réfraction et lentilles, oxydoréduction, travail et énergie mécanique, ondes mécaniques, absorbance et dosages.

@@ -1,0 +1,152 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un réseau de communication",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand tu touches une plaque chaude, ta main se retire avant même que tu ressentes la douleur. Des messages circulent très vite entre tes organes des sens, ta moelle épinière, ton cerveau et tes muscles : c'est le rôle du **système nerveux**."
+      ]
+    },
+    {
+      "titre": "Neurones et message nerveux",
+      "niveau": "première",
+      "paragraphes": [
+        "Le système nerveux est formé de cellules spécialisées, les **neurones** (environ 86 milliards dans le cerveau humain). Le long d'un neurone, le message est **électrique** : une succession de **potentiels d'action**.",
+        "L'intensité d'une stimulation est codée par la **fréquence** des potentiels d'action, pas par leur taille. Le message voyage à une vitesse de 1 à plus de 100 m/s."
+      ]
+    },
+    {
+      "titre": "La synapse",
+      "niveau": "première",
+      "paragraphes": [
+        "Entre deux neurones, ou entre un neurone et un muscle, se trouve une **synapse**. Le message électrique y devient **chimique** : le neurone libère un **neurotransmetteur** qui se fixe sur la cellule suivante et déclenche un nouveau message.",
+        "Certaines substances (alcool, drogues, certains médicaments) perturbent le fonctionnement des synapses : réflexes ralentis, jugement altéré."
+      ]
+    },
+    {
+      "titre": "Le réflexe myotatique",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Quand le médecin frappe sous ton genou, il étire un muscle de la cuisse. Des **récepteurs** du muscle (les fuseaux neuromusculaires) envoient un message par un **neurone sensitif** jusqu'à la **moelle épinière** (le centre nerveux), qui renvoie un message par un **neurone moteur** au muscle, qui se contracte : la jambe se lève.",
+        "C'est un **arc réflexe** : involontaire, rapide, sans passer par le cerveau."
+      ],
+      "aRetenir": "Récepteur → neurone sensitif → centre nerveux → neurone moteur → effecteur (muscle)."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les neurones et les réflexes.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Le centre du réflexe",
+        "question": "Quel est le centre nerveux du réflexe myotatique ?",
+        "choix": [
+          "La moelle épinière",
+          "Le cerveau",
+          "Le cœur"
+        ],
+        "bonne": 0,
+        "explication": "Le réflexe ne passe pas par le cerveau : c'est pour cela qu'il est si rapide."
+      },
+      {
+        "type": "nombre",
+        "titre": "Vitesse du message",
+        "question": "Un message nerveux se propage à 50 m/s. Combien de secondes met-il pour parcourir 1 m ?",
+        "reponse": 0.02,
+        "unite": "s",
+        "indices": [
+          "t = d / v."
+        ],
+        "solution": "1 ÷ 50 = 0,02 s, soit 20 millisecondes."
+      },
+      {
+        "type": "qcm",
+        "titre": "La synapse",
+        "question": "Comment le message passe-t-il d'un neurone à l'autre au niveau d'une synapse ?",
+        "choix": [
+          "Grâce à un neurotransmetteur chimique",
+          "Grâce au sang",
+          "Directement par contact électrique, toujours"
+        ],
+        "bonne": 0,
+        "explication": "Dans la plupart des synapses, le message devient chimique."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'intensité",
+        "question": "Comment le système nerveux code-t-il une stimulation plus intense ?",
+        "choix": [
+          "Par une plus grande fréquence de potentiels d'action",
+          "Par des potentiels d'action plus grands",
+          "Par un message plus lent"
+        ],
+        "bonne": 0,
+        "explication": "Les potentiels d'action ont toujours la même amplitude ; c'est leur fréquence qui varie."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les neurones",
+        "question": "Environ combien de milliards de neurones contient le cerveau humain ?",
+        "reponse": 86,
+        "tolerance": 0.5,
+        "unite": "milliards",
+        "indices": [
+          "Le chiffre est donné dans l'explication."
+        ],
+        "solution": "Environ 86 milliards."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le réflexe du genou",
+    "histoire": [
+      "Chez le médecin, un petit coup de marteau sous le genou déclenche un mouvement de la jambe.",
+      "Le message parcourt au total environ **1,5 m** (aller et retour entre la cuisse et la moelle épinière) à **60 m/s**."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Le récepteur",
+        "question": "Où se trouve le récepteur stimulé par le coup de marteau ?",
+        "choix": [
+          "Dans le muscle de la cuisse, étiré",
+          "Dans la peau du genou",
+          "Dans le cerveau"
+        ],
+        "bonne": 0,
+        "explication": "Les fuseaux neuromusculaires du muscle détectent son étirement."
+      },
+      {
+        "type": "nombre",
+        "titre": "La durée du trajet",
+        "question": "Combien de millisecondes le message met-il pour faire l'aller-retour ?",
+        "reponse": 25,
+        "unite": "ms",
+        "indices": [
+          "t = 1,5 / 60 en secondes.",
+          "1 s = 1 000 ms."
+        ],
+        "solution": "1,5 ÷ 60 = 0,025 s = 25 ms."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'alcool",
+        "question": "Pourquoi l'alcool est-il dangereux au volant ?",
+        "choix": [
+          "Il perturbe le fonctionnement des synapses et allonge le temps de réaction",
+          "Il accélère les réflexes",
+          "Il n'a aucun effet sur le système nerveux"
+        ],
+        "bonne": 0,
+        "explication": "Il ralentit la transmission du message nerveux et altère le jugement."
+      }
+    ],
+    "conclusion": "Bravo ! Les réflexes sont un test simple du bon fonctionnement du système nerveux : voilà pourquoi le médecin les vérifie."
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : copier avant de partager",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand une cellule se divise, chaque cellule fille doit recevoir **toute** l'information génétique. La cellule doit donc d'abord **copier** son ADN, puis le **partager** équitablement."
+      ]
+    },
+    {
+      "titre": "La molécule d'ADN",
+      "niveau": "première",
+      "paragraphes": [
+        "L'ADN est une **double hélice** formée de deux brins de **nucléotides**. Il existe quatre nucléotides, désignés par leur base : **A, T, C, G**.",
+        "Les deux brins sont **complémentaires** : A fait toujours face à T, et C à G. Donc dans un ADN, %A = %T et %C = %G."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un ADN contient 30 % de A.",
+          "Il contient donc 30 % de T, soit 60 % pour A + T.",
+          "Il reste 40 % à partager : 20 % de C et 20 % de G."
+        ]
+      }
+    },
+    {
+      "titre": "La réplication",
+      "niveau": "première",
+      "paragraphes": [
+        "Avant la division, la double hélice s'ouvre et chaque brin sert de **modèle** pour construire un brin complémentaire, grâce à l'ADN polymérase.",
+        "On obtient deux molécules identiques, chacune formée d'un brin ancien et d'un brin nouveau : la réplication est **semi-conservative**."
+      ]
+    },
+    {
+      "titre": "Le cycle cellulaire et la mitose",
+      "niveau": "première",
+      "paragraphes": [
+        "Le **cycle cellulaire** alterne une **interphase** (la cellule grandit et réplique son ADN) et une **mitose** (division).",
+        "Pendant la mitose, les chromosomes condensés (formés de deux chromatides identiques) se séparent : chaque cellule fille reçoit **le même nombre de chromosomes** que la cellule mère, avec la même information génétique. Une cellule humaine à 46 chromosomes donne deux cellules à 46 chromosomes."
+      ],
+      "aRetenir": "Mitose : une cellule → deux cellules génétiquement identiques."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec la complémentarité des bases et la mitose.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Complémentarité",
+        "question": "Un ADN contient 30 % de A. Quel pourcentage de G contient-il ?",
+        "reponse": 20,
+        "unite": "%",
+        "indices": [
+          "%A = %T = 30 %.",
+          "Il reste 40 % pour C et G, à parts égales."
+        ],
+        "solution": "100 − 2 × 30 = 40 %, partagés : 20 % de G."
+      },
+      {
+        "type": "qcm",
+        "titre": "Brin complémentaire",
+        "question": "Quel est le brin complémentaire de la séquence A-T-G-C ?",
+        "choix": [
+          "T-A-C-G",
+          "A-T-G-C",
+          "G-C-A-T"
+        ],
+        "bonne": 0,
+        "explication": "A face à T, T face à A, G face à C, C face à G."
+      },
+      {
+        "type": "qcm",
+        "titre": "Semi-conservative",
+        "question": "La réplication de l'ADN est dite semi-conservative car…",
+        "choix": [
+          "chaque nouvelle molécule garde un brin ancien",
+          "la moitié de l'ADN est détruite",
+          "seule la moitié des gènes est copiée"
+        ],
+        "bonne": 0,
+        "explication": "Chaque molécule fille = un brin parental + un brin nouveau."
+      },
+      {
+        "type": "nombre",
+        "titre": "Divisions successives",
+        "question": "À partir d'une cellule, combien de cellules obtient-on après 5 mitoses successives ?",
+        "reponse": 32,
+        "unite": "cellules",
+        "indices": [
+          "Chaque mitose double le nombre de cellules : 2⁵."
+        ],
+        "solution": "2⁵ = 32 cellules."
+      },
+      {
+        "type": "nombre",
+        "titre": "Après la mitose",
+        "question": "Une cellule humaine (46 chromosomes) se divise par mitose. Combien de chromosomes possède chaque cellule fille ?",
+        "reponse": 46,
+        "indices": [
+          "La mitose conserve le nombre de chromosomes."
+        ],
+        "solution": "46 chromosomes, comme la cellule mère."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La cicatrisation",
+    "histoire": [
+      "Tu t'es écorché le genou. Pour refermer la plaie, les cellules de la peau autour de la blessure se divisent par mitose.",
+      "Imaginons qu'une cellule se divise une fois par jour."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Au bout de 3 jours",
+        "question": "Combien de cellules provient d'une seule cellule au bout de 3 jours ?",
+        "reponse": 8,
+        "unite": "cellules",
+        "indices": [
+          "Le nombre double chaque jour : 2³."
+        ],
+        "solution": "2³ = 8 cellules."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les chromosomes",
+        "question": "Combien de chromosomes possède chacune de ces cellules ?",
+        "reponse": 46,
+        "indices": [
+          "La mitose conserve le nombre de chromosomes."
+        ],
+        "solution": "46, comme toutes les cellules du corps (hors gamètes)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Des copies identiques",
+        "question": "Les nouvelles cellules de la peau sont-elles génétiquement identiques à la cellule de départ ?",
+        "choix": [
+          "Oui, grâce à la réplication de l'ADN puis à la mitose",
+          "Non, chacune a un ADN différent"
+        ],
+        "bonne": 0,
+        "explication": "Réplication fidèle puis partage égal : les cellules filles sont des copies (aux rares mutations près)."
+      }
+    ],
+    "conclusion": "Bravo ! Croissance, cicatrisation, renouvellement de la peau : la mitose fonctionne sans relâche dans ton corps."
+  }
+}

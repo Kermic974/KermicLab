@@ -1,0 +1,147 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une échographie de la Terre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le forage le plus profond n'a atteint que 12 km, alors que le rayon de la Terre mesure environ **6 370 km**. Pour « voir » l'intérieur, les géologues écoutent les **ondes sismiques** qui la traversent, comme une échographie."
+      ]
+    },
+    {
+      "titre": "Les ondes sismiques",
+      "niveau": "première",
+      "paragraphes": [
+        "Les ondes **P** (les plus rapides) traversent solides et liquides ; les ondes **S** ne traversent **que les solides**. Leur vitesse change selon les matériaux : à chaque frontière entre deux couches, elles sont déviées ou réfléchies.",
+        "En 1909, Mohorovičić découvre ainsi la limite entre la croûte et le manteau : le **Moho**. Comme les ondes S ne traversent pas le **noyau externe**, on sait qu'il est **liquide**."
+      ]
+    },
+    {
+      "titre": "Les enveloppes de la Terre",
+      "niveau": "première",
+      "paragraphes": [
+        "**Croûte continentale** : surtout du **granite**, épaisse d'environ 30 km (bien plus sous les montagnes). **Croûte océanique** : **basalte** et gabbro, environ 7 km, plus dense.",
+        "**Manteau** : roche solide (la **péridotite**), jusqu'à environ 2 900 km de profondeur. **Noyau** : fer et nickel, liquide (externe) puis solide (graine)."
+      ]
+    },
+    {
+      "titre": "Lithosphère et asthénosphère",
+      "niveau": "première",
+      "paragraphes": [
+        "La **lithosphère** (croûte + partie supérieure du manteau, environ 100 km) est rigide : c'est elle qui forme les plaques tectoniques. Elle repose sur l'**asthénosphère**, partie du manteau plus chaude et ductile, sur laquelle elle peut glisser."
+      ],
+      "aRetenir": "Le manteau est solide, même s'il se déforme lentement sur des millions d'années."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les couches de la Terre et les ondes sismiques.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Les ondes S",
+        "question": "Pourquoi les ondes S ne traversent-elles pas le noyau externe ?",
+        "choix": [
+          "Parce qu'il est liquide",
+          "Parce qu'il est vide",
+          "Parce qu'il est trop froid"
+        ],
+        "bonne": 0,
+        "explication": "Les ondes S ne se propagent que dans les solides."
+      },
+      {
+        "type": "nombre",
+        "titre": "La limite manteau-noyau",
+        "question": "À quelle profondeur environ (en km) se trouve la limite entre le manteau et le noyau ?",
+        "reponse": 2900,
+        "unite": "km",
+        "indices": [
+          "Elle est indiquée dans l'explication."
+        ],
+        "solution": "Environ 2 900 km."
+      },
+      {
+        "type": "nombre",
+        "titre": "Croûte océanique",
+        "question": "Quelle est l'épaisseur moyenne de la croûte océanique, en km ?",
+        "reponse": 7,
+        "unite": "km",
+        "indices": [
+          "Elle est bien plus fine que la croûte continentale."
+        ],
+        "solution": "Environ 7 km."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le granite",
+        "question": "Quelle roche caractérise la croûte continentale ?",
+        "choix": [
+          "Le granite",
+          "Le basalte",
+          "La péridotite"
+        ],
+        "bonne": 0,
+        "explication": "Granite pour les continents, basalte pour les océans, péridotite pour le manteau."
+      },
+      {
+        "type": "nombre",
+        "titre": "Traverser la croûte",
+        "question": "Une onde P traverse la croûte à 6 km/s. Combien de secondes met-elle pour parcourir 30 km ?",
+        "reponse": 5,
+        "unite": "s",
+        "indices": [
+          "t = d / v."
+        ],
+        "solution": "30 ÷ 6 = 5 s."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Localiser un séisme",
+    "histoire": [
+      "Une station sismique enregistre l'arrivée des ondes P puis, **10 secondes** plus tard, celle des ondes S. Dans la croûte, les ondes P vont à **6 km/s** et les ondes S à **3,5 km/s**.",
+      "Plus le séisme est loin, plus l'écart entre les deux arrivées est grand."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le coefficient",
+        "question": "La distance vaut d = Δt × vP × vS / (vP − vS). Calcule vP × vS / (vP − vS), en km/s.",
+        "reponse": 8.4,
+        "unite": "km/s",
+        "indices": [
+          "6 × 3,5 = 21 et 6 − 3,5 = 2,5."
+        ],
+        "solution": "21 ÷ 2,5 = 8,4 km/s."
+      },
+      {
+        "type": "nombre",
+        "titre": "La distance",
+        "question": "À quelle distance de la station se trouve le foyer du séisme ?",
+        "reponse": 84,
+        "unite": "km",
+        "indices": [
+          "d = 10 × 8,4."
+        ],
+        "solution": "d = 84 km."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'épicentre",
+        "question": "Combien de stations faut-il au minimum pour localiser précisément l'épicentre ?",
+        "choix": [
+          "Une seule",
+          "Deux",
+          "Trois"
+        ],
+        "bonne": 2,
+        "explication": "Chaque station donne un cercle de distance ; trois cercles se croisent en un seul point : c'est la triangulation."
+      }
+    ],
+    "conclusion": "Bravo ! C'est exactement ainsi que les réseaux sismiques localisent chaque séisme quelques minutes après qu'il s'est produit."
+  }
+}

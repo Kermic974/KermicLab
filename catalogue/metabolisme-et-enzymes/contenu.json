@@ -1,0 +1,151 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une usine chimique",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Chaque cellule est une petite usine : elle fabrique des molécules, en détruit d'autres et en tire de l'énergie. L'ensemble de ces réactions chimiques forme le **métabolisme**.",
+        "Ces réactions seraient beaucoup trop lentes sans des aides indispensables : les **enzymes**."
+      ]
+    },
+    {
+      "titre": "Autotrophes et hétérotrophes",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les végétaux chlorophylliens sont **autotrophes** : ils fabriquent leur matière organique à partir de matière minérale (CO₂, eau, sels minéraux), grâce à la lumière.",
+        "Les animaux, les champignons et beaucoup de bactéries sont **hétérotrophes** : ils doivent prélever de la matière organique dans leur alimentation."
+      ]
+    },
+    {
+      "titre": "Les enzymes",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Une **enzyme** est une protéine qui **accélère** une réaction chimique sans être consommée : c'est un **catalyseur biologique**.",
+        "Elle est **spécifique** : elle ne reconnaît qu'un substrat (comme une clé et sa serrure), qui se fixe dans son **site actif**. Elle a une **température** et un **pH optimaux** : 37 °C pour la plupart des enzymes humaines, pH acide (≈ 2) pour la pepsine de l'estomac."
+      ],
+      "aRetenir": "Trop chauffée (au-delà de 50 à 60 °C), une enzyme humaine est dénaturée : elle perd définitivement sa forme et son activité."
+    },
+    {
+      "titre": "Respiration et fermentation",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Pour obtenir de l'énergie (sous forme d'**ATP**), les cellules dégradent le glucose. La **respiration** utilise le dioxygène et oxyde complètement le glucose en CO₂ et eau : elle produit environ **30 ATP** par glucose.",
+        "La **fermentation** se déroule sans dioxygène et ne dégrade le glucose que partiellement (en acide lactique ou en éthanol) : elle ne produit que **2 ATP** par glucose. Les levures (pain, bière) et les bactéries lactiques (yaourt) fermentent."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les enzymes et le métabolisme énergétique.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Spécificité",
+        "question": "Que signifie « une enzyme est spécifique » ?",
+        "choix": [
+          "Elle n'agit que sur un substrat particulier",
+          "Elle agit sur toutes les molécules",
+          "Elle est consommée par la réaction"
+        ],
+        "bonne": 0,
+        "explication": "Le substrat doit s'emboîter dans le site actif de l'enzyme."
+      },
+      {
+        "type": "nombre",
+        "titre": "Température optimale",
+        "question": "Quelle est, en °C, la température optimale de la plupart des enzymes humaines ?",
+        "reponse": 37,
+        "unite": "°C",
+        "indices": [
+          "C'est la température du corps."
+        ],
+        "solution": "Environ 37 °C."
+      },
+      {
+        "type": "qcm",
+        "titre": "La pepsine",
+        "question": "La pepsine, enzyme de l'estomac, fonctionne le mieux à un pH…",
+        "choix": [
+          "acide (environ 2)",
+          "neutre (7)",
+          "basique (10)"
+        ],
+        "bonne": 0,
+        "explication": "Le suc gastrique est très acide : la pepsine y est adaptée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le rendement",
+        "question": "Quel processus produit le plus d'ATP à partir d'une molécule de glucose ?",
+        "choix": [
+          "La respiration",
+          "La fermentation"
+        ],
+        "bonne": 0,
+        "explication": "Environ 30 ATP pour la respiration, contre 2 pour la fermentation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Autotrophe",
+        "question": "Lequel de ces êtres vivants est autotrophe ?",
+        "choix": [
+          "Un pommier",
+          "Un champignon",
+          "Un lapin"
+        ],
+        "bonne": 0,
+        "explication": "Le pommier fabrique sa matière organique par photosynthèse."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La fabrication du yaourt",
+    "histoire": [
+      "Pour faire un yaourt, on ajoute des **bactéries lactiques** au lait et on garde le mélange à environ 40 °C pendant quelques heures.",
+      "Les bactéries transforment le lactose (le sucre du lait) en **acide lactique** : le lait s'épaissit et devient acidulé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Le processus",
+        "question": "Quel processus utilisent les bactéries lactiques ?",
+        "choix": [
+          "Une fermentation",
+          "La photosynthèse",
+          "La digestion"
+        ],
+        "bonne": 0,
+        "explication": "C'est la fermentation lactique, qui se déroule sans dioxygène."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le pH",
+        "question": "Le pH du lait passe de 6,5 à 4,5 au cours de la fabrication. De combien a-t-il diminué ?",
+        "reponse": 2,
+        "unite": "unités de pH",
+        "indices": [
+          "6,5 − 4,5."
+        ],
+        "solution": "Il a diminué de 2 : l'acide lactique a acidifié le lait."
+      },
+      {
+        "type": "qcm",
+        "titre": "Au réfrigérateur",
+        "question": "Pourquoi conserve-t-on ensuite le yaourt au réfrigérateur ?",
+        "choix": [
+          "Le froid ralentit l'activité des enzymes des bactéries",
+          "Le froid tue toutes les bactéries",
+          "Le froid ajoute du sucre"
+        ],
+        "bonne": 0,
+        "explication": "À basse température, les enzymes sont peu actives : la fermentation ralentit beaucoup."
+      }
+    ],
+    "conclusion": "Bravo ! Pain, fromage, yaourt, chocolat : de nombreux aliments doivent leur goût au métabolisme des micro-organismes."
+  }
+}

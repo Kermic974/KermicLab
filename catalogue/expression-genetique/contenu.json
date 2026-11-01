@@ -1,0 +1,148 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une recette à recopier",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'ADN est comme un livre de recettes rangé dans une bibliothèque (le noyau) qu'on ne peut pas emporter. Pour cuisiner (fabriquer une protéine) dans la cuisine (le cytoplasme), on fait une **photocopie** de la recette : l'**ARN messager**."
+      ]
+    },
+    {
+      "titre": "La transcription",
+      "niveau": "première",
+      "paragraphes": [
+        "Dans le **noyau**, la séquence d'un gène est recopiée en une molécule d'**ARN messager** (ARNm) : c'est la **transcription**.",
+        "L'ARN ressemble à un brin d'ADN, mais avec le nucléotide **U** (uracile) à la place de T. L'ARNm sort ensuite du noyau vers le cytoplasme."
+      ]
+    },
+    {
+      "titre": "Le code génétique",
+      "niveau": "première",
+      "paragraphes": [
+        "L'ARNm se lit par groupes de **trois nucléotides**, les **codons**. Chaque codon correspond à un **acide aminé** (ou à un signal stop). Il existe 4³ = **64 codons** pour **20 acides aminés** : plusieurs codons peuvent coder le même acide aminé (le code est **redondant**).",
+        "Ce code est **universel** : il est le même chez presque tous les êtres vivants, des bactéries à l'être humain."
+      ]
+    },
+    {
+      "titre": "La traduction",
+      "niveau": "première",
+      "paragraphes": [
+        "Dans le cytoplasme, les **ribosomes** lisent l'ARNm codon après codon et assemblent les acides aminés correspondants en une chaîne : la **protéine**. C'est la **traduction**, qui s'arrête au codon stop.",
+        "Une séquence codante de 300 nucléotides (codon stop compris) contient 100 codons et donne une protéine de 99 acides aminés."
+      ],
+      "aRetenir": "ADN → (transcription, noyau) → ARNm → (traduction, ribosomes) → protéine."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec la transcription, le code génétique et la traduction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Les codons",
+        "question": "Combien de codons différents peut-on former avec 4 nucléotides, groupés par 3 ?",
+        "reponse": 64,
+        "indices": [
+          "4 choix pour chacune des 3 positions."
+        ],
+        "solution": "4³ = 64 codons."
+      },
+      {
+        "type": "nombre",
+        "titre": "Taille d'une protéine",
+        "question": "Une séquence codante d'ARNm compte 300 nucléotides, codon stop compris. Combien d'acides aminés contient la protéine ?",
+        "reponse": 99,
+        "unite": "acides aminés",
+        "indices": [
+          "300 ÷ 3 = 100 codons.",
+          "Le codon stop ne code pas d'acide aminé."
+        ],
+        "solution": "100 codons − 1 codon stop = 99 acides aminés."
+      },
+      {
+        "type": "qcm",
+        "titre": "La transcription",
+        "question": "Où a lieu la transcription chez une cellule humaine ?",
+        "choix": [
+          "Dans le noyau",
+          "Dans le cytoplasme, sur les ribosomes",
+          "Dans la membrane"
+        ],
+        "bonne": 0,
+        "explication": "L'ADN reste dans le noyau ; l'ARNm y est fabriqué puis en sort."
+      },
+      {
+        "type": "qcm",
+        "titre": "ARN et ADN",
+        "question": "Quel nucléotide l'ARN contient-il à la place de T ?",
+        "choix": [
+          "U (uracile)",
+          "A",
+          "G"
+        ],
+        "bonne": 0,
+        "explication": "Dans l'ARN, U remplace T."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les acides aminés",
+        "question": "Combien d'acides aminés différents entrent dans la composition des protéines humaines ?",
+        "reponse": 20,
+        "indices": [
+          "C'est le nombre d'acides aminés du code génétique."
+        ],
+        "solution": "20 acides aminés."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'insuline fabriquée par des bactéries",
+    "histoire": [
+      "Les personnes diabétiques ont besoin d'insuline. Depuis les années 1980, on fait fabriquer de l'insuline humaine par des bactéries, en leur insérant le gène humain de l'insuline.",
+      "Comment est-ce possible ?"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Pourquoi ça marche",
+        "question": "Pourquoi une bactérie peut-elle fabriquer une protéine humaine à partir d'un gène humain ?",
+        "choix": [
+          "Parce que le code génétique est universel",
+          "Parce que les bactéries sont des cellules humaines",
+          "Parce que l'insuline est un sucre"
+        ],
+        "bonne": 0,
+        "explication": "Bactéries et humains lisent les codons de la même façon."
+      },
+      {
+        "type": "nombre",
+        "titre": "La chaîne B",
+        "question": "La chaîne B de l'insuline compte 30 acides aminés. Combien de nucléotides codent ces acides aminés (sans le codon stop) ?",
+        "reponse": 90,
+        "unite": "nucléotides",
+        "indices": [
+          "3 nucléotides par acide aminé."
+        ],
+        "solution": "30 × 3 = 90 nucléotides."
+      },
+      {
+        "type": "qcm",
+        "titre": "La fabrication",
+        "question": "Quelles structures de la bactérie assemblent les acides aminés de l'insuline ?",
+        "choix": [
+          "Les ribosomes",
+          "Le noyau",
+          "La paroi"
+        ],
+        "bonne": 0,
+        "explication": "Les ribosomes réalisent la traduction (et les bactéries n'ont d'ailleurs pas de noyau)."
+      }
+    ],
+    "conclusion": "Bravo ! Les biotechnologies exploitent l'universalité du code génétique pour produire insuline, vaccins et enzymes."
+  }
+}
