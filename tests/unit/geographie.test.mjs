@@ -117,7 +117,7 @@ test("géographie : routage avec accents, pluriels et formulations naturelles", 
       assert.equal(routerLocal(sansAccents, CATALOGUE.index), id, sansAccents);
     }
   }
-  assert.equal(routerLocal("c'est quoi un volcan ?", CATALOGUE.index), null);
+  assert.equal(routerLocal("c'est quoi un geyser ?", CATALOGUE.index), null);
 });
 
 test("géographie : les distinctions fondamentales sont explicitement enseignées", async () => {

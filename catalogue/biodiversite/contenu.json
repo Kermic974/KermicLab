@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La biodiversité désigne la variété du vivant à plusieurs niveaux, pas seulement le nombre d'animaux observés.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la variété du vivant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La biodiversité est la diversité du vivant. Elle se remarque dans un jardin, une forêt, un récif ou même dans les organismes minuscules du sol.",
+        "Deux milieux différents peuvent accueillir des êtres vivants différents ; au sein d'une espèce, les individus présentent aussi des variations."
+      ],
+      "exemple": { "titre": "Un jardin varié", "etapes": ["Un jardin peut abriter des plantes, des insectes, des oiseaux et des champignons.", "Des zones fleuries et des abris diversifiés offrent des ressources à plusieurs espèces."] },
+      "aRetenir": "La biodiversité se trouve partout où le vivant est présent et se décrit à plusieurs échelles."
+    },
+    {
+      "titre": "Trois niveaux de biodiversité",
+      "niveau": "collège",
+      "paragraphes": [
+        "On distingue la diversité **des écosystèmes**, la diversité **des espèces** et la diversité **génétique** au sein des espèces.",
+        "La richesse spécifique correspond au nombre d'espèces recensées dans un espace donné. Pour comparer des milieux, on tient aussi compte de l'abondance des espèces et des méthodes d'observation."
+      ],
+      "exemple": { "titre": "Comparer deux prairies", "etapes": ["Une prairie où l'on observe 12 espèces a une richesse spécifique mesurée de 12 pour cet inventaire.", "Une autre prairie peut avoir autant d'espèces, mais une répartition différente des individus entre elles."] },
+      "aRetenir": "Un inventaire dépend de son lieu, de sa durée et de sa méthode ; il ne recense pas nécessairement tout le vivant."
+    },
+    {
+      "titre": "Interactions et conservation",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Les organismes interagissent entre eux et avec leur milieu. La pollinisation, la décomposition et les relations alimentaires contribuent au fonctionnement des écosystèmes.",
+        "La destruction ou la fragmentation des habitats, certaines pollutions, la surexploitation, les espèces exotiques envahissantes et le changement climatique peuvent menacer des populations. Les solutions se choisissent en fonction du lieu et des espèces concernées."
+      ],
+      "exemple": { "titre": "Des pollinisateurs au verger", "etapes": ["Des insectes pollinisent certaines fleurs en transportant du pollen ; cela contribue à la reproduction de nombreuses plantes.", "Un verger diversifié et des ressources florales réparties dans le temps peuvent soutenir plusieurs pollinisateurs."] },
+      "aRetenir": "Protéger la biodiversité implique de préserver les habitats et les interactions, avec des actions adaptées au contexte."
+    }
+  ],
+  "application": {
+    "intro": "Repère les échelles de biodiversité et réfléchis aux limites d'un inventaire.",
+    "exercices": [
+      { "type": "qcm", "titre": "Trois échelles", "question": "Laquelle est une échelle de biodiversité ?", "choix": ["La diversité génétique au sein d'une espèce", "La hauteur d'une montagne seule", "La météo d'une journée seule"], "bonne": 0, "explication": "La diversité génétique est l'un des trois niveaux : gènes, espèces et écosystèmes." },
+      { "type": "qcm", "titre": "Richesse spécifique", "question": "Un inventaire identifie 8 espèces de plantes. Sa richesse spécifique observée est…", "choix": ["8 espèces", "Le nombre total de feuilles", "La surface de chaque fleur"], "bonne": 0, "explication": "La richesse spécifique est le nombre d'espèces recensées dans le périmètre et avec la méthode choisis." },
+      { "type": "qcm", "titre": "Pollinisation", "question": "Pourquoi certains insectes pollinisateurs sont-ils utiles aux plantes ?", "choix": ["Ils peuvent transporter du pollen entre des fleurs", "Ils fabriquent toutes les graines sans fleurs", "Ils remplacent la lumière du soleil"], "bonne": 0, "explication": "Le transport du pollen permet la fécondation chez de nombreuses plantes à fleurs." }
+    ]
+  },
+  "situation": {
+    "titre": "Un coin de cour pour les pollinisateurs",
+    "histoire": ["La cour de l'école va être réaménagée. L'équipe souhaite aider les pollinisateurs locaux sans perturber les espèces sauvages."],
+    "etapes": [
+      { "type": "qcm", "titre": "Choisir un aménagement", "question": "Quel choix peut offrir des ressources aux pollinisateurs sur une plus longue période ?", "choix": ["Planter plusieurs espèces locales à floraisons échelonnées", "Ne garder qu'une seule variété très courte durée", "Éliminer tous les espaces non bétonnés"], "bonne": 0, "explication": "Des floraisons variées dans le temps peuvent fournir des ressources à différents pollinisateurs." },
+      { "type": "qcm", "titre": "Observer avant d'agir", "question": "Pourquoi observer les espèces présentes avant de planter ?", "choix": ["Pour choisir une action adaptée au milieu et éviter les plantes inappropriées", "Pour prouver qu'il n'y a aucun organisme", "Parce qu'un seul comptage donne une liste complète et définitive"], "bonne": 0, "explication": "Un inventaire local aide à adapter le projet, même s'il reste limité par sa durée et sa méthode." }
+    ],
+    "conclusion": "Un petit aménagement peut contribuer à un milieu plus accueillant. Les choix gagnent à s'appuyer sur des observations locales et des espèces adaptées."
+  }
+}
