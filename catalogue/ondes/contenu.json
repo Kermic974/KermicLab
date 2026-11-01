@@ -1,0 +1,155 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la ola du stade",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans une ola, chaque spectateur se lève puis se rassoit sur place, et pourtant la « vague » fait le tour du stade. Une **onde** transporte une perturbation et de l'**énergie**, **sans transporter de matière**.",
+        "Les vagues, le son et les secousses sismiques sont des ondes **mécaniques** : elles ont besoin d'un milieu pour se propager."
+      ]
+    },
+    {
+      "titre": "La célérité",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "La vitesse de propagation d'une onde s'appelle sa **célérité** : **v = d / Δt**. Un point du milieu reproduit la perturbation de la source avec un **retard** Δt = d / v.",
+        "Son dans l'air : environ 340 m/s ; dans l'eau : environ 1 500 m/s."
+      ]
+    },
+    {
+      "titre": "Les ondes périodiques",
+      "niveau": "première",
+      "paragraphes": [
+        "Si la perturbation se répète régulièrement, l'onde est **périodique**. Sa **période T** (en s) est la durée d'un motif ; sa **fréquence** vaut **f = 1 / T** (en Hz).",
+        "La **longueur d'onde λ** (en m) est la distance parcourue par l'onde pendant une période : **λ = v × T = v / f**. C'est aussi la distance entre deux crêtes successives."
+      ],
+      "exemple": {
+        "titre": "Exemple : le la du diapason",
+        "etapes": [
+          "f = 440 Hz et v = 340 m/s dans l'air.",
+          "λ = v / f = 340 / 440.",
+          "λ ≈ 0,77 m."
+        ]
+      },
+      "aRetenir": "La période est une durée (périodicité dans le temps) ; la longueur d'onde est une distance (périodicité dans l'espace)."
+    },
+    {
+      "titre": "Plus loin : effets ondulatoires",
+      "niveau": "terminale",
+      "paragraphes": [
+        "En terminale, on étudie la **diffraction** (une onde s'étale après une ouverture), les **interférences** et l'**effet Doppler** (la fréquence perçue change quand la source se déplace, comme la sirène d'une ambulance)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : v = d / Δt, f = 1 / T, λ = v × T.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Longueur d'onde",
+        "question": "Un son de 440 Hz se propage à 340 m/s. Quelle est sa longueur d'onde, arrondie au centième de mètre ?",
+        "reponse": 0.77,
+        "tolerance": 0.005,
+        "unite": "m",
+        "indices": [
+          "λ = v / f."
+        ],
+        "solution": "340 / 440 ≈ 0,77 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Fréquence",
+        "question": "Une onde a une période de 0,01 s. Quelle est sa fréquence ?",
+        "reponse": 100,
+        "unite": "Hz",
+        "indices": [
+          "f = 1 / T."
+        ],
+        "solution": "1 / 0,01 = 100 Hz."
+      },
+      {
+        "type": "nombre",
+        "titre": "Célérité",
+        "question": "Une onde parcourt 30 m en 0,5 s. Quelle est sa célérité ?",
+        "reponse": 60,
+        "unite": "m/s",
+        "indices": [
+          "v = d / Δt."
+        ],
+        "solution": "30 / 0,5 = 60 m/s."
+      },
+      {
+        "type": "qcm",
+        "titre": "Transport",
+        "question": "Une onde mécanique transporte…",
+        "choix": [
+          "de la matière",
+          "de l'énergie, sans transport de matière",
+          "de la matière et de l'énergie"
+        ],
+        "bonne": 1,
+        "explication": "Les points du milieu oscillent sur place : seule l'énergie (et l'information) se propage."
+      },
+      {
+        "type": "nombre",
+        "titre": "Célérité et λ",
+        "question": "Une onde a une longueur d'onde de 2 m et une fréquence de 5 Hz. Quelle est sa célérité ?",
+        "reponse": 10,
+        "unite": "m/s",
+        "indices": [
+          "v = λ × f."
+        ],
+        "solution": "2 × 5 = 10 m/s."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La houle",
+    "histoire": [
+      "Au large, une bouée monte et descend au passage de la houle. Une crête de vague passe sur la bouée **toutes les 8 secondes**, et deux crêtes successives sont distantes de **100 m**.",
+      "Caractérisons cette onde."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Période",
+        "question": "Quelle est la période de la houle ?",
+        "reponse": 8,
+        "unite": "s",
+        "indices": [
+          "Durée entre deux crêtes au même endroit."
+        ],
+        "solution": "T = 8 s."
+      },
+      {
+        "type": "nombre",
+        "titre": "Fréquence",
+        "question": "Quelle est sa fréquence ?",
+        "reponse": 0.125,
+        "unite": "Hz",
+        "indices": [
+          "f = 1 / T."
+        ],
+        "solution": "1 / 8 = 0,125 Hz."
+      },
+      {
+        "type": "nombre",
+        "titre": "Célérité",
+        "question": "Quelle est la célérité de la houle ?",
+        "reponse": 12.5,
+        "unite": "m/s",
+        "indices": [
+          "v = λ / T, avec λ = 100 m."
+        ],
+        "solution": "100 / 8 = 12,5 m/s, soit 45 km/h."
+      }
+    ],
+    "conclusion": "Bravo ! La bouée ne fait que monter et descendre : c'est l'énergie de la houle qui traverse l'océan, parfois sur des milliers de kilomètres."
+  }
+}

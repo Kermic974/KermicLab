@@ -1,0 +1,145 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : plus c'est concentré, plus c'est foncé",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un sirop de menthe pur est vert foncé ; dilué dans beaucoup d'eau, il devient vert pâle. La couleur d'une solution renseigne sur sa **concentration** : c'est le principe du **dosage par spectrophotométrie**."
+      ]
+    },
+    {
+      "titre": "Couleur et absorbance",
+      "niveau": "première",
+      "paragraphes": [
+        "Une solution colorée **absorbe** certaines couleurs de la lumière blanche ; on voit la **couleur complémentaire** de celle absorbée. Une solution qui absorbe le bleu apparaît orangée.",
+        "Un **spectrophotomètre** mesure l'**absorbance A** d'une solution (sans unité) pour une longueur d'onde donnée."
+      ]
+    },
+    {
+      "titre": "La loi de Beer-Lambert",
+      "niveau": "première",
+      "paragraphes": [
+        "Pour des solutions diluées, à une longueur d'onde fixée : **A = k × C** — l'absorbance est **proportionnelle** à la concentration.",
+        "Dosage par **étalonnage** : on mesure A pour des solutions de concentrations connues, on trace la droite A = f(C), puis on lit la concentration d'une solution inconnue à partir de son absorbance."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une solution à 3 mmol/L a une absorbance de 0,6 : k = 0,6 / 3 = 0,2 L/mmol.",
+          "Une solution inconnue a une absorbance de 0,4.",
+          "C = A / k = 0,4 / 0,2 = 2 mmol/L."
+        ]
+      }
+    },
+    {
+      "titre": "Le titrage",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Lors d'un **titrage**, on fait réagir l'espèce à doser avec un réactif de concentration connue, versé à la burette. À l'**équivalence**, les réactifs ont été introduits dans les **proportions stœchiométriques** : le réactif titré est entièrement consommé.",
+        "Pour une réaction 1 : 1, à l'équivalence **C_A × V_A = C_B × V_E** (V_E : volume versé à l'équivalence)."
+      ],
+      "aRetenir": "On repère l'équivalence par un changement de couleur, un saut de pH ou une rupture de pente en conductimétrie."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : A = k × C et l'équivalence.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Beer-Lambert",
+        "question": "Une solution à 3 mmol/L a une absorbance de 0,6. Une autre solution de la même espèce a une absorbance de 0,4. Quelle est sa concentration, en mmol/L ?",
+        "reponse": 2,
+        "unite": "mmol/L",
+        "indices": [
+          "A est proportionnelle à C : k = 0,6 / 3."
+        ],
+        "solution": "k = 0,2, donc C = 0,4 / 0,2 = 2 mmol/L."
+      },
+      {
+        "type": "qcm",
+        "titre": "Couleur",
+        "question": "Une solution absorbe surtout le bleu. Quelle couleur voit-on ?",
+        "choix": [
+          "Bleue",
+          "Orangée",
+          "Verte"
+        ],
+        "bonne": 1,
+        "explication": "On voit la couleur complémentaire de la couleur absorbée : l'orangé est complémentaire du bleu."
+      },
+      {
+        "type": "nombre",
+        "titre": "Titrage",
+        "question": "On titre 20 mL d'une solution A par une solution B à 0,1 mol/L (réaction 1 : 1). L'équivalence est obtenue pour 15 mL versés. Quelle est la concentration de A, en mol/L ?",
+        "reponse": 0.075,
+        "unite": "mol/L",
+        "indices": [
+          "C_A × V_A = C_B × V_E.",
+          "C_A × 20 = 0,1 × 15."
+        ],
+        "solution": "C_A = 0,1 × 15 / 20 = 0,075 mol/L."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'équivalence",
+        "question": "À l'équivalence d'un titrage…",
+        "choix": [
+          "les réactifs ont été introduits dans les proportions stœchiométriques",
+          "la solution est forcément neutre",
+          "il ne reste plus d'eau"
+        ],
+        "bonne": 0,
+        "explication": "C'est la définition de l'équivalence : le réactif titré vient d'être entièrement consommé."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sirop de menthe",
+    "histoire": [
+      "Un laboratoire contrôle la quantité de colorant dans un sirop de menthe. Une solution étalon contenant **2 g/L** de colorant a une absorbance de **0,30**.",
+      "On a dilué **10 fois** le sirop avant de mesurer son absorbance : **0,45**."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le coefficient",
+        "question": "Quel est le coefficient k de la loi A = k × C (en L/g) ?",
+        "reponse": 0.15,
+        "unite": "L/g",
+        "indices": [
+          "k = A / C = 0,30 / 2."
+        ],
+        "solution": "k = 0,15 L/g."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le sirop dilué",
+        "question": "Quelle est la concentration en colorant du sirop dilué, en g/L ?",
+        "reponse": 3,
+        "unite": "g/L",
+        "indices": [
+          "C = A / k = 0,45 / 0,15."
+        ],
+        "solution": "0,45 / 0,15 = 3 g/L."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le sirop pur",
+        "question": "Quelle est la concentration en colorant du sirop pur ?",
+        "reponse": 30,
+        "unite": "g/L",
+        "indices": [
+          "Le sirop a été dilué 10 fois."
+        ],
+        "solution": "3 × 10 = 30 g/L."
+      }
+    ],
+    "conclusion": "Bravo ! Le contrôle qualité des boissons, des médicaments et de l'eau potable repose sur ces dosages."
+  }
+}

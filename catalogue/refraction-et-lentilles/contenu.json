@@ -1,0 +1,181 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la paille cassée",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une paille plongée dans un verre d'eau semble **cassée** à la surface. La lumière change de direction en passant de l'eau à l'air : c'est la **réfraction**.",
+        "Ce phénomène permet de fabriquer des lunettes, des loupes et des objectifs."
+      ]
+    },
+    {
+      "titre": "Réflexion et réfraction",
+      "niveau": "seconde",
+      "paragraphes": [
+        "**Réflexion** : le rayon réfléchi fait avec la normale un angle égal à l'angle d'incidence (r = i).",
+        "**Réfraction (loi de Snell-Descartes)** : **n₁ × sin i₁ = n₂ × sin i₂**, où n est l'**indice de réfraction** du milieu : air 1,00 ; eau 1,33 ; verre environ 1,5. En entrant dans un milieu plus réfringent, le rayon se rapproche de la normale."
+      ],
+      "exemple": {
+        "titre": "Exemple : de l'air vers l'eau, i₁ = 30°",
+        "etapes": [
+          "1,00 × sin 30° = 1,33 × sin i₂.",
+          "sin i₂ = 0,5 / 1,33 ≈ 0,376.",
+          "i₂ ≈ 22° : le rayon se rapproche de la normale."
+        ]
+      }
+    },
+    {
+      "titre": "La dispersion",
+      "niveau": "seconde",
+      "paragraphes": [
+        "L'indice d'un milieu dépend légèrement de la **couleur** (longueur d'onde) : chaque couleur est déviée différemment. Un **prisme** décompose ainsi la lumière blanche en un spectre.",
+        "L'**arc-en-ciel** résulte de la dispersion de la lumière du Soleil dans les gouttes de pluie."
+      ]
+    },
+    {
+      "titre": "Les lentilles convergentes",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "Une **lentille convergente** fait converger un faisceau parallèle en un point, le **foyer image F'**. La distance OF' est la **distance focale** f'.",
+        "Sa **vergence** vaut **V = 1 / f'** (f' en mètres, V en dioptries δ) : f' = 0,25 m donne V = 4 δ. L'image d'un objet très lointain se forme au foyer F'."
+      ]
+    },
+    {
+      "titre": "Relation de conjugaison",
+      "niveau": "première",
+      "paragraphes": [
+        "Avec des distances algébriques mesurées depuis le centre O de la lentille (positives dans le sens de la lumière) : **1/OA' − 1/OA = 1/f'**. Le **grandissement** vaut γ = OA'/OA.",
+        "Exemple : f' = 10 cm et objet à OA = −30 cm : 1/OA' = 1/10 − 1/30 = 2/30, donc OA' = 15 cm (image réelle, γ = −0,5 : renversée et deux fois plus petite)."
+      ],
+      "aRetenir": "Attention aux signes : un objet réel, placé avant la lentille, a un OA négatif."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec la réflexion, la réfraction et les lentilles.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Réflexion",
+        "question": "Un rayon arrive sur un miroir avec un angle d'incidence de 30°. Quel est l'angle de réflexion ?",
+        "reponse": 30,
+        "unite": "°",
+        "indices": [
+          "Loi de la réflexion : r = i."
+        ],
+        "solution": "r = i = 30°."
+      },
+      {
+        "type": "nombre",
+        "titre": "Snell-Descartes",
+        "question": "Un rayon passe de l'air (n = 1,00) dans l'eau (n = 1,33) avec un angle d'incidence de 30°. Quel est l'angle de réfraction, arrondi au degré ?",
+        "reponse": 22,
+        "tolerance": 0.5,
+        "unite": "°",
+        "indices": [
+          "sin i₂ = sin 30° / 1,33 = 0,5 / 1,33.",
+          "sin i₂ ≈ 0,376 : utilise la touche arcsin (sin⁻¹)."
+        ],
+        "solution": "sin i₂ ≈ 0,376, donc i₂ ≈ 22°."
+      },
+      {
+        "type": "qcm",
+        "titre": "Arc-en-ciel",
+        "question": "Quel phénomène explique l'arc-en-ciel ?",
+        "choix": [
+          "La dispersion de la lumière",
+          "La réflexion sur les nuages",
+          "La diffraction par le vent"
+        ],
+        "bonne": 0,
+        "explication": "Chaque couleur est réfractée différemment dans les gouttes d'eau : c'est la dispersion."
+      },
+      {
+        "type": "nombre",
+        "titre": "Vergence",
+        "question": "Une lentille a une distance focale de 0,25 m. Quelle est sa vergence, en dioptries ?",
+        "reponse": 4,
+        "unite": "δ",
+        "indices": [
+          "V = 1 / f'."
+        ],
+        "solution": "1 / 0,25 = 4 δ."
+      },
+      {
+        "type": "nombre",
+        "titre": "Distance focale",
+        "question": "Une lentille a une vergence de 5 δ. Quelle est sa distance focale, en mètres ?",
+        "reponse": 0.2,
+        "unite": "m",
+        "indices": [
+          "f' = 1 / V."
+        ],
+        "solution": "1 / 5 = 0,2 m = 20 cm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Conjugaison",
+        "question": "f' = 10 cm et l'objet est à OA = −30 cm. Où se forme l'image (OA', en cm) ?",
+        "reponse": 15,
+        "unite": "cm",
+        "indices": [
+          "1/OA' = 1/f' + 1/OA = 1/10 − 1/30.",
+          "1/10 − 1/30 = 2/30 = 1/15."
+        ],
+        "solution": "1/OA' = 1/15, donc OA' = 15 cm."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'objectif photo",
+    "histoire": [
+      "L'objectif d'un appareil photo se comporte comme une lentille convergente de distance focale **f' = 50 mm**.",
+      "Le capteur doit être placé exactement là où se forme l'image."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Vergence",
+        "question": "Quelle est la vergence de l'objectif, en dioptries ?",
+        "reponse": 20,
+        "unite": "δ",
+        "indices": [
+          "f' = 50 mm = 0,05 m.",
+          "V = 1 / f'."
+        ],
+        "solution": "1 / 0,05 = 20 δ."
+      },
+      {
+        "type": "qcm",
+        "titre": "Paysage lointain",
+        "question": "Pour photographier un paysage très lointain, à quelle distance de l'objectif doit être le capteur ?",
+        "choix": [
+          "À 50 mm (au foyer)",
+          "À 25 mm",
+          "À 100 mm"
+        ],
+        "bonne": 0,
+        "explication": "L'image d'un objet très lointain se forme au foyer image : OA' = f' = 50 mm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un portrait",
+        "question": "On photographie une personne à 2 m (OA = −2 000 mm). Où se forme l'image (OA' en mm, arrondi au dixième) ?",
+        "reponse": 51.3,
+        "tolerance": 0.05,
+        "unite": "mm",
+        "indices": [
+          "1/OA' = 1/50 − 1/2 000.",
+          "1/50 − 1/2 000 = 39/2 000."
+        ],
+        "solution": "OA' = 2 000 / 39 ≈ 51,3 mm : l'objectif doit avancer d'environ 1,3 mm. C'est la mise au point !"
+      }
+    ],
+    "conclusion": "Clic ! La mise au point d'un appareil photo, c'est la relation de conjugaison appliquée en temps réel."
+  }
+}

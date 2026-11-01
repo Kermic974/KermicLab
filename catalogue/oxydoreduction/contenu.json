@@ -1,0 +1,161 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des électrons qui changent de main",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un clou en fer rouille, une pomme coupée brunit, une pile fournit du courant : dans toutes ces transformations, des **électrons passent d'une espèce à une autre**. Ce sont des réactions d'**oxydoréduction**."
+      ]
+    },
+    {
+      "titre": "Oxydant, réducteur et couples",
+      "niveau": "première",
+      "paragraphes": [
+        "Un **oxydant** est une espèce capable de **capter** des électrons ; un **réducteur**, une espèce capable d'en **céder**.",
+        "Ils forment des **couples Ox/Red** reliés par une **demi-équation** : **Cu²⁺ + 2e⁻ = Cu** ; Fe²⁺ + 2e⁻ = Fe ; Zn²⁺ + 2e⁻ = Zn ; Al³⁺ + 3e⁻ = Al."
+      ],
+      "aRetenir": "Une oxydation est une perte d'électrons ; une réduction est un gain d'électrons."
+    },
+    {
+      "titre": "La réaction d'oxydoréduction",
+      "niveau": "première",
+      "paragraphes": [
+        "Le **réducteur d'un couple** cède des électrons à l'**oxydant d'un autre couple**. Exemple : un clou en fer plongé dans une solution bleue de sulfate de cuivre se couvre d'un dépôt rouge de cuivre, et la solution verdit (ions Fe²⁺) :",
+        "**Fe + Cu²⁺ → Fe²⁺ + Cu**."
+      ]
+    },
+    {
+      "titre": "Équilibrer avec les électrons",
+      "niveau": "première",
+      "paragraphes": [
+        "Les électrons ne doivent pas apparaître dans l'équation bilan : on multiplie les demi-équations pour que le nombre d'électrons cédés soit égal au nombre d'électrons captés."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'aluminium et les ions cuivre",
+        "etapes": [
+          "Al = Al³⁺ + 3e⁻ (×2) : 6 électrons cédés.",
+          "Cu²⁺ + 2e⁻ = Cu (×3) : 6 électrons captés.",
+          "Bilan : 2 Al + 3 Cu²⁺ → 2 Al³⁺ + 3 Cu."
+        ]
+      }
+    },
+    {
+      "titre": "Plus loin : piles et corrosion",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Dans une **pile**, les électrons passent par le circuit extérieur : l'**oxydation** a lieu à la borne **négative** (l'anode), la **réduction** à la borne **positive** (la cathode).",
+        "La **corrosion** des métaux est une oxydation. On protège la coque des bateaux avec des blocs de zinc, qui s'oxydent à la place du fer (anode sacrificielle)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les couples et les demi-équations.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Oxydant",
+        "question": "Un oxydant est une espèce capable de…",
+        "choix": [
+          "capter des électrons",
+          "céder des électrons",
+          "capter des protons"
+        ],
+        "bonne": 0,
+        "explication": "Oxydant : capte des électrons. Réducteur : en cède."
+      },
+      {
+        "type": "nombre",
+        "titre": "Demi-équation",
+        "question": "Complète la demi-équation Cu²⁺ + n e⁻ = Cu. Combien vaut n ?",
+        "reponse": 2,
+        "indices": [
+          "La charge doit être conservée : 2+ à gauche."
+        ],
+        "solution": "Cu²⁺ + 2e⁻ = Cu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le clou",
+        "question": "Un clou en fer est plongé dans une solution de sulfate de cuivre. Qu'observe-t-on ?",
+        "choix": [
+          "Un dépôt rouge de cuivre sur le clou",
+          "Le clou devient bleu",
+          "Rien du tout"
+        ],
+        "bonne": 0,
+        "explication": "Fe + Cu²⁺ → Fe²⁺ + Cu : le cuivre métallique se dépose sur le clou."
+      },
+      {
+        "type": "nombre",
+        "titre": "Équilibrer",
+        "question": "Complète : 2 Al + n Cu²⁺ → 2 Al³⁺ + n Cu. Combien vaut n ?",
+        "reponse": 3,
+        "indices": [
+          "2 Al cèdent 2 × 3 = 6 électrons.",
+          "Chaque Cu²⁺ capte 2 électrons."
+        ],
+        "solution": "6 électrons ÷ 2 = 3 : 2 Al + 3 Cu²⁺ → 2 Al³⁺ + 3 Cu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Pile",
+        "question": "Dans une pile, quelle transformation a lieu à la borne négative ?",
+        "choix": [
+          "Une oxydation",
+          "Une réduction"
+        ],
+        "bonne": 0,
+        "explication": "À la borne négative, le réducteur cède des électrons au circuit : c'est une oxydation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La pile Daniell",
+    "histoire": [
+      "En 1836, John Daniell construit une pile avec une lame de **zinc** dans une solution d'ions Zn²⁺ et une lame de **cuivre** dans une solution d'ions Cu²⁺, reliées par un pont salin.",
+      "Le zinc est un meilleur réducteur que le cuivre."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Qui s'oxyde ?",
+        "question": "Quelle espèce est oxydée ?",
+        "choix": [
+          "Le zinc : Zn → Zn²⁺ + 2e⁻",
+          "Le cuivre : Cu → Cu²⁺ + 2e⁻",
+          "Les ions Cu²⁺"
+        ],
+        "bonne": 0,
+        "explication": "Le zinc, meilleur réducteur, cède ses électrons : la lame de zinc s'use."
+      },
+      {
+        "type": "qcm",
+        "titre": "La borne positive",
+        "question": "Quelle lame est la borne positive de la pile ?",
+        "choix": [
+          "La lame de zinc",
+          "La lame de cuivre"
+        ],
+        "bonne": 1,
+        "explication": "Les électrons arrivent par le circuit à la lame de cuivre, où Cu²⁺ + 2e⁻ = Cu (réduction) : c'est la borne positive."
+      },
+      {
+        "type": "nombre",
+        "titre": "Électrons transférés",
+        "question": "Combien d'électrons chaque atome de zinc oxydé envoie-t-il dans le circuit ?",
+        "reponse": 2,
+        "indices": [
+          "Zn → Zn²⁺ + ? e⁻."
+        ],
+        "solution": "Zn → Zn²⁺ + 2e⁻ : 2 électrons."
+      }
+    ],
+    "conclusion": "Bravo ! Chaque pile de ta télécommande fonctionne sur ce principe : une oxydation d'un côté, une réduction de l'autre, et des électrons qui travaillent entre les deux."
+  }
+}
