@@ -1,0 +1,171 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partager en parts égales",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une pizza est coupée en **4 parts égales** et tu en manges **3** : tu as mangé **3/4** (trois quarts) de la pizza.",
+        "Le nombre du bas, le **dénominateur**, dit en combien de parts égales on a coupé. Le nombre du haut, le **numérateur**, dit combien de parts on prend.",
+        "Une fraction peut dépasser 1 : 5/4, c'est une pizza entière et encore un quart d'une deuxième."
+      ],
+      "aRetenir": "Les parts doivent être égales : une pizza coupée en 4 morceaux de tailles différentes ne donne pas des quarts."
+    },
+    {
+      "titre": "Fractions égales et simplification",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Si on multiplie (ou divise) le numérateur **et** le dénominateur par le même nombre non nul, on obtient une fraction égale : 1/2 = 2/4 = 50/100.",
+        "**Simplifier**, c'est diviser le haut et le bas par un même nombre pour avoir des nombres plus petits. Quand on ne peut plus, la fraction est **irréductible**."
+      ],
+      "exemple": {
+        "titre": "Exemple : simplifier 12/18",
+        "etapes": [
+          "12 et 18 sont tous les deux dans la table de 6.",
+          "12 ÷ 6 = 2 et 18 ÷ 6 = 3, donc 12/18 = 2/3.",
+          "2 et 3 n'ont plus de diviseur commun (autre que 1) : 2/3 est irréductible."
+        ]
+      }
+    },
+    {
+      "titre": "Comparer, additionner, soustraire",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Avec le **même dénominateur**, on compare ou on additionne les numérateurs : 2/7 + 3/7 = 5/7. On garde le dénominateur !",
+        "Avec des dénominateurs **différents**, on commence par mettre les fractions au même dénominateur."
+      ],
+      "exemple": {
+        "titre": "Exemples",
+        "etapes": [
+          "1/2 + 1/3 = 3/6 + 2/6 = 5/6.",
+          "Qui est le plus grand : 3/4 ou 2/3 ? 3/4 = 9/12 et 2/3 = 8/12, donc 3/4 est plus grand.",
+          "Piège classique : 1/2 + 1/3 n'est pas égal à 2/5 ! On n'additionne jamais les dénominateurs."
+        ]
+      }
+    },
+    {
+      "titre": "Multiplier, diviser, prendre une fraction de",
+      "niveau": "4e",
+      "paragraphes": [
+        "**Multiplier** : on multiplie les numérateurs entre eux et les dénominateurs entre eux. 2/3 × 3/5 = 6/15 = 2/5.",
+        "**Diviser** par une fraction, c'est multiplier par son **inverse** (on la retourne) : 3/4 ÷ 1/2 = 3/4 × 2/1 = 6/4 = 3/2.",
+        "**Prendre une fraction d'une quantité**, c'est multiplier : les 2/3 de 30 €, c'est 30 ÷ 3 × 2 = 20 €."
+      ]
+    },
+    {
+      "titre": "Plus loin : les nombres rationnels",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Toute fraction est un nombre : on dit que c'est un **nombre rationnel** (l'ensemble se note ℚ). 3/4 = 0,75 est aussi un nombre décimal.",
+        "Mais 1/3 = 0,333… a une infinité de chiffres après la virgule : c'est un rationnel **qui n'est pas décimal**. Et certains nombres, comme √2 ou π, ne peuvent même pas s'écrire comme une fraction : ils sont **irrationnels**."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Choisis en combien de parts égales on partage (dénominateur) et combien on en prend (numérateur). Observe la forme simplifiée, le nombre décimal et le pourcentage.",
+    "figure": { "type": "fraction", "numerateur": 3, "denominateur": 4 },
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Simplifier",
+        "question": "Simplifie 6/8 au maximum (écris une fraction, par exemple 2/5).",
+        "reponse": 0.75,
+        "fractionIrreductible": true,
+        "indices": ["6 et 8 sont tous les deux pairs : divise-les par 2."],
+        "solution": "6/8 = (6 ÷ 2)/(8 ÷ 2) = 3/4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Additionner",
+        "question": "Calcule 1/2 + 1/4 (réponds avec une fraction ou un nombre décimal).",
+        "reponse": 0.75,
+        "indices": ["Écris 1/2 avec le dénominateur 4.", "1/2 = 2/4."],
+        "solution": "1/2 + 1/4 = 2/4 + 1/4 = 3/4 (soit 0,75)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Comparer",
+        "question": "Quelle est la plus grande de ces fractions ?",
+        "choix": ["2/3", "3/5", "5/8"],
+        "bonne": 0,
+        "indice": "Écris-les en nombres décimaux, ou mets-les au même dénominateur (120).",
+        "explication": "2/3 ≈ 0,667 ; 3/5 = 0,6 ; 5/8 = 0,625. C'est donc 2/3 la plus grande."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une fraction de",
+        "question": "Combien font les 3/4 de 20 bonbons ?",
+        "reponse": 15,
+        "unite": "bonbons",
+        "indices": ["Commence par trouver 1/4 de 20.", "1/4 de 20 = 5. Et 3/4, c'est trois fois plus."],
+        "solution": "20 ÷ 4 = 5, puis 5 × 3 = 15 bonbons."
+      },
+      {
+        "type": "nombre",
+        "titre": "Multiplier",
+        "question": "Calcule 2/3 × 9/4 et simplifie au maximum.",
+        "reponse": 1.5,
+        "fractionIrreductible": true,
+        "indices": ["Multiplie les numérateurs entre eux et les dénominateurs entre eux.", "2 × 9 = 18 et 3 × 4 = 12 : simplifie 18/12."],
+        "solution": "2/3 × 9/4 = 18/12 = 3/2 (on divise 18 et 12 par 6)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Décimal ou pas ?",
+        "question": "La fraction 1/3 est-elle un nombre décimal ?",
+        "choix": ["Oui", "Non"],
+        "bonne": 1,
+        "indice": "Pose la division 1 ÷ 3 : s'arrête-t-elle un jour ?",
+        "explication": "1 ÷ 3 = 0,333… ne s'arrête jamais : 1/3 est un nombre rationnel, mais pas un nombre décimal."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La soirée pizza",
+    "histoire": [
+      "Léa et Tom commandent une grande pizza coupée en **8 parts égales**. Elle coûte **12 €**.",
+      "Léa mange **3/8** de la pizza et Tom en mange **1/4**. Aide-les à faire les comptes !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Ensemble",
+        "question": "Quelle fraction de la pizza ont-ils mangée à eux deux ? Simplifie au maximum.",
+        "reponse": 0.625,
+        "fractionIrreductible": true,
+        "indices": ["Écris 1/4 avec le dénominateur 8.", "1/4 = 2/8, donc 3/8 + 2/8 = ?"],
+        "solution": "3/8 + 1/4 = 3/8 + 2/8 = 5/8."
+      },
+      {
+        "type": "nombre",
+        "titre": "Ce qu'il reste",
+        "question": "Quelle fraction de la pizza reste-t-il ?",
+        "reponse": 0.375,
+        "fractionIrreductible": true,
+        "indices": ["La pizza entière, c'est 8/8.", "8/8 − 5/8 = ?"],
+        "solution": "8/8 − 5/8 = 3/8 de la pizza."
+      },
+      {
+        "type": "nombre",
+        "titre": "En parts",
+        "question": "Combien de parts reste-t-il dans la boîte ?",
+        "reponse": 3,
+        "unite": "parts",
+        "indices": ["Il reste 3/8 d'une pizza coupée en 8 parts."],
+        "solution": "3/8 de 8 parts, c'est 3 parts."
+      },
+      {
+        "type": "nombre",
+        "titre": "Payer sa part",
+        "question": "Chacun paie ce qu'il a mangé. Combien Léa doit-elle payer ?",
+        "reponse": 4.5,
+        "tolerance": 0.001,
+        "unite": "€",
+        "indices": ["Léa a mangé 3/8 de la pizza : calcule 3/8 de 12 €.", "12 ÷ 8 = 1,5 € par part."],
+        "solution": "12 ÷ 8 = 1,50 € par part, et 3 parts × 1,50 € = 4,50 €."
+      }
+    ],
+    "conclusion": "Bravo ! Tu as additionné, soustrait et pris une fraction d'une quantité, exactement comme on le fait pour partager une note entre amis."
+  }
+}

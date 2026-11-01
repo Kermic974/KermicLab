@@ -26,7 +26,8 @@ Principes non négociables :
 | `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
 | `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
-| `catalogue/` | Maquette d'exemple minimale (`trigo-cercle`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
+| `catalogue/` | Maquettes publiques : `trigo-cercle` (écrite à la main) et les notions pilotes du gabarit (`pythagore`, `fractions`, `proportionnalite`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
+| `gabarit/` | Gabarit commun des notions (page, style, moteur) : une notion décrite par `contenu.json` est générée en `page.html` par `npm run build` (ADR 0011, guide `docs/gabarit.md`) |
 | `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
 | `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
 | `tests/e2e/` | Playwright : onglets, rendu mobile, chat |
@@ -71,7 +72,7 @@ npx wrangler pages dev dist     # chat en local
 
 1. Partir d'une issue `maquette-manquante`.
 2. Créer une branche `maquette/<id>`.
-3. Dans le dépôt privé `maquettes-catalogue` (ou `catalogue/` pour un exemple public) : dossier `<id>/` avec `fiche.md` (front matter : `id`, `titre`, `sujet`, `version`, `date`, `langues`, `onglets`, `mots-cles`, `questions`) et `page.html` (+ `page.<langue>.html` pour les traductions).
+3. Dans le dépôt privé `maquettes-catalogue` (ou `catalogue/` pour un exemple public) : dossier `<id>/` avec `fiche.md` (front matter : `id`, `titre`, `sujet`, `version`, `date`, `langues`, `onglets`, `mots-cles`, `questions`) et soit **`contenu.json`** (gabarit commun, recommandé : `page.html` est généré par `npm run build`, voir `docs/gabarit.md`), soit `page.html` écrit à la main (+ `page.<langue>.html` pour les traductions).
 4. `npm run ci` : les questions d'exemple doivent être routées vers l'ID (non-régression), la page doit passer `check:pages`.
 5. Pull request → revue IA de sécurité → **validation humaine du CODEOWNER** → fusion → déploiement automatique.
 

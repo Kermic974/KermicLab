@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
+import { genererPage } from "./gabarit.mjs";
 
 /** Analyse le front matter d'une fiche (sous-ensemble YAML : `cle: valeur`, `cle:` + `  - item`). */
 export function lireFrontMatter(texte) {
@@ -76,10 +77,15 @@ export async function chargerCatalogue(dossiers) {
       const langues = liste(fiche.langues);
       if (!langues.includes("fr")) throw new Error(`${rep}: la version française est obligatoire`);
       pages[fiche.id] = {};
+      // Notion décrite par un contenu (gabarit commun) : la page française est générée, puis comparée au fichier committé.
+      const contenuJson = path.join(rep, "contenu.json");
+      const generee = (await existe(contenuJson))
+        ? appliquerCsp(await genererPage({ fiche, contenu: JSON.parse(await readFile(contenuJson, "utf8")) }))
+        : null;
       for (const langue of langues) {
         const fichier = path.join(rep, langue === "fr" ? "page.html" : `page.${langue}.html`);
-        const source = await readFile(fichier, "utf8");
-        const html = appliquerCsp(source);
+        const source = (await existe(fichier)) ? await readFile(fichier, "utf8") : "";
+        const html = langue === "fr" && generee ? generee : appliquerCsp(source);
         sources.push({ fichier, aJour: source === html, html });
         const meta = lireMetaHtml(html);
         if (meta.id !== fiche.id || meta.version !== fiche.version) throw new Error(`${fichier}: id/version différents de la fiche`);

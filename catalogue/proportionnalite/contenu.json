@@ -1,0 +1,170 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : quand l'un double, l'autre double",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "À la boulangerie, un croissant coûte 1,20 €. Deux croissants coûtent 2,40 €, dix croissants coûtent 12 €. Quand le nombre de croissants double, le prix double ; quand il est multiplié par 10, le prix aussi.",
+        "On dit que le prix est **proportionnel** au nombre de croissants : on passe toujours de l'un à l'autre en multipliant par le même nombre (ici 1,20).",
+        "Contre-exemple : ta taille n'est pas proportionnelle à ton âge. À 20 ans, tu ne mesureras pas deux fois ta taille de tes 10 ans !"
+      ]
+    },
+    {
+      "titre": "Le tableau et le coefficient",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Dans un tableau de proportionnalité, on passe de la première ligne à la deuxième en multipliant toujours par le même nombre : le **coefficient de proportionnalité**.",
+        "Astuce du **passage à l'unité** : si 4 cahiers coûtent 6 €, un cahier coûte 6 ÷ 4 = 1,50 €, donc 7 cahiers coûtent 7 × 1,50 = 10,50 €."
+      ]
+    },
+    {
+      "titre": "Le produit en croix",
+      "niveau": "4e",
+      "paragraphes": [
+        "Dans un tableau de proportionnalité à quatre cases, les **produits en croix** sont égaux. Cela permet de trouver une valeur manquante (c'est aussi ce qu'on appelle la « règle de trois »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : 4 croissants coûtent 4,80 €. Combien coûtent 7 croissants ?",
+        "etapes": [
+          "On place les nombres : 4 → 4,80 et 7 → ?",
+          "Produit en croix : ? = 7 × 4,80 ÷ 4.",
+          "? = 33,60 ÷ 4 = 8,40 €."
+        ]
+      }
+    },
+    {
+      "titre": "Les pourcentages",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "« p % » veut dire « p pour 100 », c'est-à-dire la fraction p/100. Prendre 20 % de 50 €, c'est calculer 50 × 20 ÷ 100 = 10 €.",
+        "Une **baisse** de 20 %, c'est payer 80 % du prix : on multiplie par 0,8. Une **hausse** de 10 %, c'est payer 110 % : on multiplie par 1,1."
+      ],
+      "aRetenir": "Appliquer un pourcentage, c'est une situation de proportionnalité : le coefficient est p/100."
+    },
+    {
+      "titre": "Le graphique et la fonction linéaire",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Si on place les points d'une situation de proportionnalité dans un repère, ils sont **alignés sur une droite qui passe par l'origine**. Et réciproquement !",
+        "En 3e, on écrit cela avec une **fonction linéaire** : f(x) = a × x, où a est le coefficient de proportionnalité (le prix d'un croissant, par exemple)."
+      ]
+    },
+    {
+      "titre": "Plus loin : évolutions successives",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Une hausse de 10 % suivie d'une baisse de 10 % ne ramène **pas** au prix de départ : on multiplie par 1,1 puis par 0,9, soit par 0,99. Au final, le prix a baissé de 1 %.",
+        "Pour annuler une hausse de 25 % (× 1,25), il faut multiplier par 1/1,25 = 0,8 : c'est une baisse de 20 %, et non de 25 %."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Change le prix d'un croissant (le coefficient) et le nombre de croissants. Observe le tableau et la droite : elle passe toujours par l'origine.",
+    "figure": { "type": "proportion", "libelleX": "Croissants", "libelleY": "Prix (€)", "libelleCoefficient": "Prix d'un croissant (€)", "unite": "€", "coefficient": 1.2, "coefficientMin": 0.5, "coefficientMax": 3, "pas": 0.1, "x": 3, "xMax": 10 },
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Proportionnel ou pas ?",
+        "question": "Laquelle de ces situations est une situation de proportionnalité ?",
+        "choix": ["Le prix payé et le nombre de baguettes achetées (au même prix l'une)", "La taille d'un enfant et son âge", "La température dehors et l'heure de la journée"],
+        "bonne": 0,
+        "indice": "Si on double la première quantité, est-ce que l'autre double toujours ?",
+        "explication": "Deux fois plus de baguettes, c'est deux fois plus cher : le prix est proportionnel au nombre de baguettes."
+      },
+      {
+        "type": "nombre",
+        "titre": "Passage à l'unité",
+        "question": "3 cahiers coûtent 4,50 €. Combien coûtent 5 cahiers ?",
+        "reponse": 7.5,
+        "tolerance": 0.001,
+        "unite": "€",
+        "indices": ["Combien coûte un seul cahier ?", "Un cahier coûte 4,50 ÷ 3 = 1,50 €."],
+        "solution": "4,50 ÷ 3 = 1,50 € le cahier, et 5 × 1,50 = 7,50 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un pourcentage",
+        "question": "Combien font 25 % de 80 ?",
+        "reponse": 20,
+        "indices": ["25 %, c'est 25/100, c'est-à-dire un quart."],
+        "solution": "80 × 25 ÷ 100 = 20 (c'est aussi le quart de 80)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les soldes",
+        "question": "Un pull coûte 40 €. Il est soldé à −30 %. Quel est son nouveau prix ?",
+        "reponse": 28,
+        "unite": "€",
+        "indices": ["Une baisse de 30 %, c'est payer 70 % du prix.", "Calcule 40 × 0,7."],
+        "solution": "40 × 0,7 = 28 € (la réduction est de 40 × 0,3 = 12 €)."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'échelle d'une carte",
+        "question": "Sur une carte à l'échelle 1/25 000, deux villages sont à 4 cm l'un de l'autre. Quelle est la distance réelle en km ?",
+        "reponse": 1,
+        "unite": "km",
+        "indices": ["1 cm sur la carte représente 25 000 cm en réalité.", "4 × 25 000 = 100 000 cm. Combien de cm dans 1 km ?"],
+        "solution": "4 × 25 000 = 100 000 cm = 1 000 m = 1 km."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le piège des pourcentages",
+        "question": "Un prix augmente de 10 %, puis baisse de 10 %. Le prix final est…",
+        "choix": ["égal au prix de départ", "plus bas que le prix de départ", "plus haut que le prix de départ"],
+        "bonne": 1,
+        "indice": "Essaie avec 100 € : +10 %, puis −10 % du nouveau prix.",
+        "explication": "100 € → 110 € → 110 − 11 = 99 €. On a multiplié par 1,1 × 0,9 = 0,99 : le prix a baissé de 1 %."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La recette de cookies",
+    "histoire": [
+      "Ta recette préférée donne **12 cookies** avec **200 g de farine**, **100 g de sucre** et **2 œufs**.",
+      "Tu prépares un goûter pour toute la classe. Adapte la recette, étape par étape !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Pour 18 cookies",
+        "question": "Quelle masse de farine faut-il pour 18 cookies ?",
+        "reponse": 300,
+        "unite": "g",
+        "indices": ["18 cookies, c'est 1,5 fois 12 cookies.", "200 × 1,5 = ?"],
+        "solution": "18 = 12 × 1,5, donc 200 × 1,5 = 300 g de farine."
+      },
+      {
+        "type": "nombre",
+        "titre": "Pour 30 cookies",
+        "question": "Quelle masse de sucre faut-il pour 30 cookies ?",
+        "reponse": 250,
+        "unite": "g",
+        "indices": ["Pour 6 cookies (la moitié de 12), il faut 50 g de sucre.", "30 cookies, c'est 5 fois 6 cookies."],
+        "solution": "100 g pour 12 cookies, donc 50 g pour 6 cookies, et 5 × 50 = 250 g pour 30 cookies."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec ce qui reste",
+        "question": "Il ne te reste que 150 g de farine. Combien de cookies peux-tu faire au maximum ?",
+        "reponse": 9,
+        "unite": "cookies",
+        "indices": ["150 g, c'est les 3/4 de 200 g.", "Les 3/4 de 12 cookies, c'est… ?"],
+        "solution": "150 ÷ 200 = 0,75, et 12 × 0,75 = 9 cookies."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le chocolat en promo",
+        "question": "La tablette de chocolat coûte 3 €, avec 20 % de réduction aujourd'hui. Combien la paies-tu ?",
+        "reponse": 2.4,
+        "tolerance": 0.001,
+        "unite": "€",
+        "indices": ["Une baisse de 20 %, c'est payer 80 % du prix.", "Calcule 3 × 0,8."],
+        "solution": "3 × 0,8 = 2,40 € (la réduction est de 0,60 €)."
+      }
+    ],
+    "conclusion": "Les cookies sont prêts ! Tu as utilisé la proportionnalité comme un vrai pâtissier : c'est exactement ce qu'on fait pour adapter une recette au nombre d'invités."
+  }
+}

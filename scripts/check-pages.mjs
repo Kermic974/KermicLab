@@ -9,7 +9,7 @@ const erreurs = [];
 
 for (const { fichier, aJour, html } of sources) {
   const err = (m) => erreurs.push(`${fichier.replace(racine, "")}: ${m}`);
-  if (!aJour) err("hashes CSP obsolètes — lancer `npm run build` et committer");
+  if (!aJour) err("page obsolète (hashes CSP ou page générée depuis contenu.json) — lancer `npm run build` et committer");
   const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]*)"/)?.[1];
   if (!csp) err("CSP absente");
   else {
