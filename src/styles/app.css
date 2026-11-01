@@ -94,6 +94,17 @@ footer { margin-top: 16px; text-align: center; font-size: .85rem; color: var(--m
 @keyframes pop { 0% { transform: scale(.92); } 60% { transform: scale(1.05); } 100% { transform: scale(1); } }
 .stars { font-size: 2.4rem; letter-spacing: .2em; color: #ffd166; margin: .2rem 0; }
 .locked .hit { cursor: default; }
+/* Méthodes */
+.side { grid-template-columns: minmax(0, 1fr); }
+.mradio { display: flex; gap: 6px; overflow-x: auto; max-width: 100%; margin-bottom: 8px; padding: 3px; }
+.mradio button { flex: 0 0 auto; white-space: nowrap; border-radius: 999px; background: #0b1f33; }
+.mradio button[aria-checked=true] { background: var(--cyan); color: #03202a; border-color: var(--cyan); }
+h3 { font-size: 1rem; margin: 8px 0 4px; }
+.msteps { margin: 4px 0; padding-left: 1.3rem; color: var(--muted); }
+.msteps li { margin: 4px 0; overflow-wrap: anywhere; }
+.msteps b { color: var(--txt); }
+.mwarn { margin: 4px 0; padding-left: 1.3rem; color: var(--orange); }
+.mwarn:empty, .msteps:empty { display: none; }
 /* SVG */
 .axis { stroke: #7890aa; stroke-width: 2; }
 .ring { fill: #071725; stroke: var(--cyan); stroke-width: 3; }

@@ -2,7 +2,8 @@
 
 import { $, attrs } from './dom.js';
 import { C, R, polar, arcPath } from './geometry.js';
-import { compute, fmt, sign, dist, solutions, solutionContext } from '../api.js';
+import { compute, fmt, sign, dist, solutionContext } from '../api.js';
+import { methodsOf, resolveMethod, buildMethodRadios, renderMethod } from './method.js';
 
 export const HINT = 'Degrés (45 ; 22,5 ; −30) ou multiple de π (π/4 ; 2pi/3).';
 
@@ -48,7 +49,9 @@ export function render(s, meta) {
   $('coordsx').textContent = e ? 'exact : (' + e[1] + ' ; ' + e[2] + ')' : 'coordonnées approchées';
   $('signs').textContent = 'cos ' + sign(c.x) + ' · sin ' + sign(c.y) + ' · tan ' + sign(c.t);
   $('ref').textContent = 'Angle de référence : ' + fmt(c.ref, 1) + '°';
-  $('explain').textContent = solutions.get('geometric').solve(solutionContext(c)).explanation;
+  var methods = methodsOf(s.mode), method = resolveMethod(methods, s.method);
+  buildMethodRadios(methods, method);
+  renderMethod(method ? method.solve(solutionContext(c)) : null);
 
   $('range').value = a;
   if (document.activeElement !== $('input')) $('input').value = fmt(a, 3);

@@ -11,4 +11,5 @@ export function setMode(m) {
   each('[data-mode]', function (s) { s.classList.toggle('hidden', s.dataset.mode.split(' ').indexOf(m) < 0); });
   if (m === 'play') showMenu(); else stopGame();
   if (m === 'learn') showLesson(lesson.i);
+  store.refresh();
 }
