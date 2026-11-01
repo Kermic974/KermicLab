@@ -11,6 +11,19 @@
 <script type="module" src="app.js"></script>
 </head>
 <body>
+<aside id="catalogue" class="catalogue" aria-labelledby="catalogue-titre" hidden>
+  <div class="catalogue-entete">
+    <h2 id="catalogue-titre" data-i18n="catalogueTitre"></h2>
+    <button type="button" class="fermer-croix" id="fermer-catalogue"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+  </div>
+  <p class="catalogue-compteur" id="catalogue-compteur"></p>
+  <progress id="catalogue-progres" max="1" value="0"></progress>
+  <label class="visuellement-cache" for="recherche-notion" data-i18n="rechercherNotion"></label>
+  <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
+  <nav id="catalogue-liste" aria-labelledby="catalogue-titre"></nav>
+  <p id="catalogue-vide" class="doux petit" data-i18n="aucuneNotion" hidden></p>
+</aside>
+<div id="voile-catalogue" class="voile" hidden></div>
 <header class="entete">
   <div class="entete-interieur">
     <a class="marque" href="./">
@@ -21,6 +34,9 @@
       </span>
     </a>
     <div class="actions">
+      <button id="ouvrir-catalogue" type="button" class="bouton-catalogue" aria-controls="catalogue" aria-expanded="false" hidden>
+        <span aria-hidden="true">📚</span><span class="libelle-catalogue" data-i18n="ouvrirCatalogue"></span>
+      </button>
       <button id="ouvrir-progres" type="button" class="pastille-progres" aria-haspopup="dialog">
         <span class="visuellement-cache" data-i18n="monProgres"></span>
         <span class="pastille-serie" aria-hidden="true"><span class="icone-flamme">🔥</span><span id="pastille-serie"></span></span>

@@ -4,6 +4,7 @@ titre: La loi binomiale
 sujet: mathematiques/loi-binomiale
 version: 1.0.0
 date: 2026-11-01
+niveau: terminale
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

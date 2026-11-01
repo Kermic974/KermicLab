@@ -6,7 +6,8 @@ Décision : [ADR 0011](decisions/0011-gabarit-de-notion.md). Exemples complets :
 
 `catalogue/<id>/` (ou `<id>/` dans le dépôt privé `maquettes-catalogue`) avec :
 
-- `fiche.md` : front matter habituel (`id`, `titre`, `sujet`, `version`, **`date`**, `langues: fr`, `onglets`, `mots-cles`, `questions`).
+- `fiche.md` : front matter habituel (`id`, `titre`, `sujet`, `version`, **`date`**, `langues: fr`, `onglets`, `mots-cles`, `questions`)
+  et **`niveau`** (`college`, `seconde`, `premiere` ou `terminale`) qui range la notion dans la barre de navigation du chat (sinon : « Autres notions »).
   - Chaque question d'exemple doit être routée vers la notion par les mots-clés (test de non-régression) : vérifie qu'un mot-clé n'est pas déjà utilisé par une autre notion.
   - Les questions servent aussi de **suggestions cliquables** dans le chat : écris-les comme un élève les poserait.
 - `contenu.json` : le contenu (ci-dessous). **Ne crée pas `page.html`** : `npm run build` le génère.

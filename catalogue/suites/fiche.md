@@ -4,6 +4,7 @@ titre: Les suites numériques
 sujet: mathematiques/suites
 version: 1.0.0
 date: 2026-11-01
+niveau: premiere
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

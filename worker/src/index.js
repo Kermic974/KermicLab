@@ -65,6 +65,19 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
   return sortie;
 }
 
+const ORDRE_NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
+
+/** Clé de tri d'un titre : sans l'article initial (« Le théorème… » se range à T, « Les fractions » à F). */
+export const cleDeTri = (titre) => String(titre).replace(/^(?:(?:les|le|la|the)\s+|l['’]\s*)/i, "");
+
+/** Liste du catalogue pour la barre de navigation : par niveau scolaire, puis par titre (sans article). */
+export function listeCatalogue(index) {
+  const rang = (n) => { const i = ORDRE_NIVEAUX.indexOf(n); return i < 0 ? ORDRE_NIVEAUX.length : i; };
+  return index.maquettes
+    .map((m) => ({ id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres" }))
+    .sort((a, b) => rang(a.niveau) - rang(b.niveau) || cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }));
+}
+
 /** Numéro du jour (UTC) : fait tourner les suggestions d'un jour à l'autre, identiques pour tous le même jour. */
 const jourCourant = () => Math.floor(Date.now() / 86400000);
 
@@ -239,6 +252,11 @@ export default {
 
     if (requete.method === "GET" && url.pathname === "/api/sante") {
       return json({ ok: true, maquettes: CATALOGUE.index.maquettes.length }, 200, cors);
+    }
+    if (requete.method === "GET" && url.pathname === "/api/catalogue") {
+      return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
+        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
+      });
     }
     if (requete.method === "GET" && url.pathname === "/api/suggestions") {
       const langue = langueValide(url.searchParams.get("lang"));

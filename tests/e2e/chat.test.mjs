@@ -22,6 +22,15 @@ async function simulerApi(page) {
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
     body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })
   }));
+  await page.route(`${api}/api/catalogue`, (route) => route.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ notions: [
+      { id: "fractions", titre: "Les fractions", version: "1.0.0", niveau: "college" },
+      { id: "pythagore", titre: "Le théorème de Pythagore", version: "1.0.0", niveau: "college" },
+      { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", niveau: "seconde" },
+      { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" }
+    ] })
+  }));
   await page.route(`${api}/api/chat`, async (route) => {
     const corps = route.request().postDataJSON();
     requetes.push(corps);
@@ -117,5 +126,50 @@ test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'X
   await relance.click();
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("catalogue : barre de navigation, recherche sans accents, ouverture directe d'une notion", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  const requetes = await simulerApi(page);
+  await page.goto(serveur.url);
+  const barre = page.locator("#catalogue");
+  await barre.locator(".notion").first().waitFor();
+  assert.equal(await barre.isVisible(), true, "visible en permanence sur grand écran");
+  assert.deepEqual(await barre.locator(".groupe-niveau summary span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
+  assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 4 notions explorées/);
+  await page.fill("#recherche-notion", "theoreme");
+  assert.deepEqual(await barre.locator(".notion").allTextContents(), ["Le théorème de Pythagore"]);
+  await page.fill("#recherche-notion", "volcan");
+  assert.equal(await page.locator("#catalogue-vide").isVisible(), true);
+  await page.fill("#recherche-notion", "");
+  await barre.locator(".notion", { hasText: "Le cercle trigonométrique" }).click();
+  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+  assert.equal(requetes.length, 0, "aucun appel au chat : la page est ouverte directement");
+  const bouton = barre.locator("[data-notion=trigo-cercle]");
+  assert.equal(await bouton.getAttribute("aria-current"), "page");
+  assert.match(await bouton.textContent(), /✓/);
+  assert.match(await page.locator("#catalogue-compteur").textContent(), /1 \/ 4/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans débordement", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true });
+  await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.locator("#ouvrir-catalogue").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#catalogue").isVisible(), false, "fermé par défaut sur mobile");
+  await page.click("#ouvrir-catalogue");
+  await page.locator("#catalogue .notion").first().waitFor({ state: "visible" });
+  assert.equal(await page.locator("#ouvrir-catalogue").getAttribute("aria-expanded"), "true");
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => !document.querySelector("#catalogue").classList.contains("ouvert"));
+  await page.click("#ouvrir-catalogue");
+  await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
+  await page.locator("li[data-maquette=fractions] iframe").waitFor();
+  assert.equal(await page.locator("#voile-catalogue").isVisible(), false, "le tiroir se referme après le choix");
+  const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
