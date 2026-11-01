@@ -2,6 +2,13 @@
 
 Décision : [ADR 0011](decisions/0011-gabarit-de-notion.md). Exemples complets : `catalogue/pythagore/`, `catalogue/fractions/`, `catalogue/proportionnalite/`.
 
+Le même gabarit couvre l'histoire avec `catalogue/antiquite/`, `catalogue/moyen-age/`,
+`catalogue/renaissance/`, `catalogue/temps-modernes/`, `catalogue/lumieres/`,
+`catalogue/revolution-francaise/`, `catalogue/napoleon/` et `catalogue/revolution-industrielle/` :
+trois niveaux (intuition, collège, seconde), exemples, encadrés à retenir, cinq QCM corrigés et un
+défi de mémoire ou du quotidien en trois étapes. Les sujets sont préfixés par `histoire/`.
+Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modernes, pas des périodes successives.
+
 ## 1. Créer le dossier
 
 `catalogue/<id>/` (ou `<id>/` dans le dépôt privé `maquettes-catalogue`) avec :
@@ -55,6 +62,11 @@ npm run ci           # validation du contenu, routage des questions, contrôle d
 ```
 
 Ouvre `catalogue/<id>/page.html` dans un navigateur et fais tous les exercices. **Relis l'exactitude de chaque calcul** : c'est le point de contrôle humain (public mineur).
+
+Pour l'histoire, vérifie les dates, les personnages et les liens de causes-conséquences, ainsi que
+les limites des droits et les différences entre territoires. Les fiches indiquent des ressources de
+relecture ; les pages restent autonomes, sans ressource externe. Distingue repère conventionnel,
+évolution progressive et application effective d'une loi.
 
 ## 4. Ajouter un composant
 
