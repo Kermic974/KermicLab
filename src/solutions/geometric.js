@@ -7,7 +7,7 @@ export const geometricSolution = {
   id: 'geometric',
   label: 'Méthode géométrique',
   supportedModes: ['explore', 'learn', 'compare'],
-  supports: function () { return true; },
+  supports: function (ctx) { return !ctx || !ctx.mode || this.supportedModes.indexOf(ctx.mode) >= 0; },
   solve: function (ctx) {
     var v = ctx.values, e = v.exact, refTxt = fmt(v.ref, 1) + '°', axis = v.n % 90 === 0;
     var steps = [

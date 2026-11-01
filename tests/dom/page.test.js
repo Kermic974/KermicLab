@@ -1,5 +1,5 @@
 // Interface : ouvre le livrable index.html dans Chromium et lit le diagnostic intégré.
-// Ignoré si Playwright n'est pas installé (aucune dépendance obligatoire).
+// Ignoré en local si Playwright n'est pas installé (aucune dépendance obligatoire) ; en CI, son absence échoue.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -10,6 +10,12 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let playwright = null;
 try { playwright = createRequire(import.meta.url)('playwright'); } catch (_) { /* facultatif */ }
+
+if (!playwright && process.env.CI) {
+  test('Playwright est requis en CI', () => {
+    assert.fail('Playwright absent en CI : les autotests de la page ne peuvent pas être exécutés');
+  });
+}
 
 for (const [name, viewport] of [['ordinateur', { width: 1280, height: 900 }], ['mobile', { width: 390, height: 844 }]]) {
   test(`autotests de la page (${name})`, { skip: !playwright && 'Playwright absent' }, async () => {
