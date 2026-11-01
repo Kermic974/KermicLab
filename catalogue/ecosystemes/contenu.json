@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Un écosystème associe un milieu et les êtres vivants qui y interagissent. Suis la matière et l'énergie dans leurs relations.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un lieu habité",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une mare, une forêt ou une dune ne sont pas seulement des décors : les êtres vivants y interagissent entre eux et avec l'eau, la lumière, le sol ou la température.",
+        "Un changement de milieu peut affecter plusieurs organismes, parce que leurs besoins et leurs relations sont liés."
+      ],
+      "exemple": { "titre": "Une mare", "etapes": ["Les plantes aquatiques, insectes, poissons et micro-organismes vivent dans le même milieu.", "La lumière, la température et la qualité de l'eau influencent leur vie."] },
+      "aRetenir": "Un écosystème comprend des êtres vivants, leur milieu et les interactions qui les relient."
+    },
+    {
+      "titre": "Milieu et communauté vivante",
+      "niveau": "collège",
+      "paragraphes": [
+        "Le **biotope** désigne les caractéristiques physiques et chimiques du milieu ; la **biocénose** est la communauté des êtres vivants qui y vivent. Ensemble et avec leurs interactions, ils forment un écosystème.",
+        "Une chaîne alimentaire représente une relation alimentaire. Plusieurs chaînes reliées forment un réseau trophique. Les flèches vont de la ressource vers l'organisme qui la consomme."
+      ],
+      "exemple": { "titre": "Une chaîne de prairie", "etapes": ["L'herbe est consommée par un criquet ; le criquet peut être mangé par une grenouille.", "Les décomposeurs transforment les restes organiques et contribuent au recyclage de la matière."] },
+      "aRetenir": "Dans une chaîne alimentaire, une flèche indique le transfert de matière et d'énergie vers le consommateur."
+    },
+    {
+      "titre": "Flux d'énergie et cycles de matière",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Les producteurs, comme les plantes, utilisent une source d'énergie — souvent la lumière — pour fabriquer de la matière organique à partir de matière minérale. Les consommateurs obtiennent matière et énergie en se nourrissant.",
+        "L'énergie disponible diminue au long des transferts trophiques, notamment parce qu'une partie est dissipée sous forme de chaleur. La matière, elle, est recyclée dans les écosystèmes par des processus biologiques et géochimiques."
+      ],
+      "exemple": { "titre": "Une forêt et ses décomposeurs", "etapes": ["Les feuilles mortes sont fragmentées et transformées par des organismes du sol.", "Des éléments minéraux redeviennent disponibles pour les plantes, tandis que l'énergie n'est pas recyclée de la même façon que la matière."] },
+      "aRetenir": "La matière circule et se recycle ; l'énergie traverse l'écosystème et se dissipe progressivement."
+    }
+  ],
+  "application": {
+    "intro": "Relie les êtres vivants à leur milieu et lis correctement les réseaux trophiques.",
+    "exercices": [
+      { "type": "qcm", "titre": "Définition", "question": "Que comprend un écosystème ?", "choix": ["Un milieu, les êtres vivants et leurs interactions", "Uniquement les animaux visibles", "Uniquement le sol"], "bonne": 0, "explication": "Un écosystème associe la communauté vivante, le milieu et les interactions." },
+      { "type": "qcm", "titre": "Flèche alimentaire", "question": "Dans « herbe → lapin », que représente la flèche ?", "choix": ["Le transfert de l'herbe vers le consommateur", "Le déplacement du lapin vers l'herbe", "Une relation sans lien alimentaire"], "bonne": 0, "explication": "La flèche d'une chaîne trophique va de la ressource consommée vers le consommateur." },
+      { "type": "qcm", "titre": "Décomposeurs", "question": "Quel rôle les décomposeurs jouent-ils dans un écosystème ?", "choix": ["Ils transforment des restes organiques et contribuent au recyclage de la matière", "Ils arrêtent tout transfert d'énergie", "Ils fabriquent la lumière"], "bonne": 0, "explication": "Les décomposeurs participent à la transformation de la matière organique en éléments réutilisables." }
+    ]
+  },
+  "situation": {
+    "titre": "Une mare après une canicule",
+    "histoire": ["Après plusieurs jours très chauds, le niveau de la mare de ton quartier baisse. Des riverains souhaitent comprendre les effets possibles avant d'agir."],
+    "etapes": [
+      { "type": "qcm", "titre": "Repérer le milieu", "question": "Quelle mesure décrit directement une caractéristique physique du biotope ?", "choix": ["La température de l'eau", "Le nombre de grenouilles", "La couleur d'un poisson"], "bonne": 0, "explication": "La température est une caractéristique du milieu physique." },
+      { "type": "qcm", "titre": "Agir avec méthode", "question": "Quelle est une première démarche prudente pour comprendre les effets de la baisse d'eau ?", "choix": ["Observer l'évolution du milieu et demander conseil aux spécialistes locaux", "Introduire immédiatement de nouveaux poissons", "Déplacer tous les organismes sans diagnostic"], "bonne": 0, "explication": "Observer et consulter des spécialistes permet d'éviter une intervention qui perturberait davantage l'écosystème." }
+    ],
+    "conclusion": "Les relations d'un écosystème sont nombreuses. Observer le milieu et demander un avis compétent aide à choisir une action adaptée."
+  }
+}

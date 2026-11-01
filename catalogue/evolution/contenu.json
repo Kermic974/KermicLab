@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "L'évolution décrit des changements héréditaires dans les populations au fil des générations, pas la transformation volontaire d'un individu.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des populations qui changent",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans une population, les individus présentent des différences. Certaines sont héréditaires ; au fil des générations, leur fréquence peut augmenter ou diminuer.",
+        "L'évolution se déroule à l'échelle des populations. Un individu ne change pas volontairement ses gènes pour répondre à un besoin."
+      ],
+      "exemple": { "titre": "Des becs de tailles variées", "etapes": ["Dans une population d'oiseaux, les becs peuvent différer légèrement.", "Si les ressources favorisent certains becs, les oiseaux qui les portent peuvent laisser davantage de descendants, selon le contexte."] },
+      "aRetenir": "Ce sont les populations qui évoluent au fil des générations ; les individus ne s'adaptent pas par volonté."
+    },
+    {
+      "titre": "La sélection naturelle",
+      "niveau": "collège",
+      "paragraphes": [
+        "La **sélection naturelle** peut faire évoluer une population lorsque des variations héréditaires influencent la survie ou le nombre de descendants dans un environnement donné.",
+        "Une adaptation est un caractère héritable qui contribue au succès reproducteur dans un contexte précis. Elle n'apparaît pas parce qu'un individu en a besoin et n'est pas nécessairement avantageuse dans tout milieu."
+      ],
+      "exemple": { "titre": "Camouflage et prédation", "etapes": ["Dans un milieu donné, certains insectes sont moins visibles des prédateurs que d'autres.", "Si cette différence est héréditaire et influence la reproduction, la variante moins visible peut devenir plus fréquente sur plusieurs générations."] },
+      "aRetenir": "La sélection agit sur des variations existantes dans un environnement ; un avantage dépend du contexte."
+    },
+    {
+      "titre": "Mécanismes et histoire évolutive",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Les mutations créent de nouvelles variantes d'ADN. La sélection naturelle, la dérive génétique et les migrations modifient différemment la fréquence des variantes dans les populations.",
+        "Les espèces actuelles partagent des ancêtres communs à différents moments de leur histoire. La classification et les ressemblances moléculaires permettent de reconstruire des liens de parenté ; l'évolution n'est pas une échelle où une espèce actuelle serait « plus évoluée » qu'une autre."
+      ],
+      "exemple": { "titre": "Résistance bactérienne", "etapes": ["Des bactéries peuvent déjà présenter des variations qui les rendent moins sensibles à un antibiotique.", "Si l'antibiotique élimine les bactéries sensibles, les résistantes peuvent se multiplier et devenir plus fréquentes dans cette population."] },
+      "aRetenir": "La résistance évolue dans les populations bactériennes ; l'antibiotique ne donne pas aux bactéries une mutation sur commande."
+    }
+  ],
+  "application": {
+    "intro": "Distingue l'évolution d'une population de la transformation individuelle.",
+    "exercices": [
+      { "type": "qcm", "titre": "Échelle", "question": "À quelle échelle parle-t-on d'évolution biologique ?", "choix": ["Celle des populations au fil des générations", "Celle d'un individu qui grandit", "Celle d'un animal qui change d'avis"], "bonne": 0, "explication": "L'évolution correspond à des changements héréditaires dans les populations au fil du temps." },
+      { "type": "qcm", "titre": "Sélection", "question": "La sélection naturelle favorise parfois une variante héréditaire quand…", "choix": ["Elle contribue au succès reproducteur dans cet environnement", "L'individu décide de la transmettre", "Elle est toujours bénéfique dans tous les milieux"], "bonne": 0, "explication": "L'avantage dépend de l'environnement et de l'effet sur la survie ou la reproduction." },
+      { "type": "qcm", "titre": "Ancêtres communs", "question": "Que signifie dire que deux espèces partagent un ancêtre commun ?", "choix": ["Elles ont une parenté dans leur histoire évolutive", "L'une est forcément l'ancêtre actuel de l'autre", "Elles vivent forcément au même endroit"], "bonne": 0, "explication": "Un ancêtre commun est une population ancestrale dont descendent plusieurs lignées ; ce n'est pas une espèce actuelle." }
+    ]
+  },
+  "situation": {
+    "titre": "Une bonne utilisation des antibiotiques",
+    "histoire": ["Dans une classe, on entend dire qu'une bactérie « s'habitue » volontairement aux antibiotiques. Il faut expliquer le phénomène et rappeler le rôle des soins médicaux."],
+    "etapes": [
+      { "type": "qcm", "titre": "Comprendre la résistance", "question": "Pourquoi une population bactérienne peut-elle devenir plus résistante après l'usage d'un antibiotique ?", "choix": ["Les bactéries résistantes préexistantes peuvent survivre et se multiplier davantage", "Chaque bactérie choisit de changer ses gènes", "L'antibiotique rend toujours toutes les bactéries plus fortes"], "bonne": 0, "explication": "La sélection augmente la fréquence des bactéries résistantes déjà présentes ou apparues par variation." },
+      { "type": "qcm", "titre": "Agir avec prudence", "question": "Quelle attitude est appropriée face à un traitement antibiotique prescrit ?", "choix": ["Suivre les conseils du professionnel de santé et ne pas partager le médicament", "L'arrêter ou le prolonger au hasard", "En prendre contre chaque rhume"], "bonne": 0, "explication": "Les antibiotiques s'utilisent selon les consignes médicales ; ils ne traitent pas les infections virales comme le rhume." }
+    ],
+    "conclusion": "Comprendre l'évolution explique la résistance sans blâmer les individus. Pour un traitement, on suit les conseils de santé, pas une règle improvisée."
+  }
+}
