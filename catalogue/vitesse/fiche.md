@@ -2,7 +2,7 @@
 id: vitesse
 titre: Vitesse et grandeurs composées
 sujet: mathematiques/vitesse
-version: 1.0.0
+version: 1.1.0
 date: 2026-11-01
 niveau: college
 langues: fr
@@ -32,5 +32,5 @@ questions:
 Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
 
 - **Explication** : de la formule d = v × t aux conversions et aux pièges de la vitesse moyenne.
-- **S'entraîner** : 6 exercices corrigés.
-- **Défi** : la course à vélo, en 4 étapes.
+- **S'entraîner** : 10 exercices corrigés.
+- **Défi** : la course à vélo, en 5 étapes.
