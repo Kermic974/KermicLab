@@ -1,0 +1,92 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Pour accorder un mot, cherche d'abord avec quel mot il s'accorde : le donneur commande le nombre et parfois le genre.",
+  "niveaux": [
+    {
+      "titre": "Le nom donne le genre et le nombre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans un groupe nominal, le déterminant et l'adjectif s'accordent avec le nom : « une petite maison », « des petits vélos ».",
+        "Le sujet commande l'accord du verbe. Remplace-le mentalement par il, elle, ils ou elles pour vérifier la terminaison."
+      ],
+      "exemple": {
+        "titre": "Accorder avec le bon mot",
+        "etapes": [
+          "Dans « Les feuilles jaunes tombent », « feuilles » est féminin pluriel : « jaunes » s'accorde avec lui.",
+          "Le sujet « les feuilles » est pluriel : on écrit « tombent »."
+        ]
+      }
+    },
+    {
+      "titre": "Le participe passé",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Avec **être**, le participe passé s'accorde généralement avec le sujet : « Elles sont parties ».",
+        "Avec **avoir**, il ne s'accorde pas avec le sujet : « Elles ont rangé leurs affaires ». Il s'accorde avec le COD seulement si celui-ci est placé avant : « Les affaires qu'elles ont rangées ».",
+        "Pour appliquer la règle, repère d'abord l'auxiliaire, puis le sujet ou le COD et sa place."
+      ],
+      "exemple": {
+        "titre": "Comparer les auxiliaires",
+        "etapes": [
+          "« Les amies sont arrivées » : « arrivées » s'accorde avec le sujet féminin pluriel.",
+          "« Elles ont choisi une chanson » : avec avoir, le COD suit le participe, donc « choisi » ne s'accorde pas.",
+          "« La chanson qu'elles ont choisie » : le COD « la chanson » est placé avant, donc « choisie » s'accorde."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Choisis la forme qui s'accorde avec le donneur d'accord indiqué par la phrase.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Accord sujet-verbe",
+        "question": "Complète : « Les enfants ___ dans la cour. »",
+        "choix": ["joue", "jouent", "joues"],
+        "bonne": 1,
+        "explication": "Le sujet « les enfants » est à la troisième personne du pluriel : « jouent »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Accord de l'adjectif",
+        "question": "Quelle forme complète « des maisons ___ » avec l'adjectif « ancien » ?",
+        "choix": ["ancien", "ancienne", "anciennes"],
+        "bonne": 2,
+        "explication": "« Maisons » est féminin pluriel : l'adjectif devient « anciennes »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Participe passé avec être",
+        "question": "Complète : « Mes cousines sont ___ tôt. »",
+        "choix": ["arrivé", "arrivées", "arrivés"],
+        "bonne": 1,
+        "explication": "Avec l'auxiliaire être, le participe passé s'accorde avec « mes cousines », féminin pluriel."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La relecture du message",
+    "histoire": [
+      "Avant d'envoyer un message à ta classe, tu vérifies quelques accords pour qu'il soit facile à lire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Une phrase bien accordée",
+        "question": "Quelle phrase est correctement accordée ?",
+        "choix": ["Les affiches colorées décorent le couloir.", "Les affiches colorée décorent le couloir.", "Les affiches colorées décore le couloir."],
+        "bonne": 0,
+        "explication": "« Colorées » s'accorde avec « affiches » au féminin pluriel, et « décorent » avec le sujet pluriel."
+      },
+      {
+        "type": "qcm",
+        "titre": "La liste de courses",
+        "question": "Complète : « Les pommes que nous avons ___ sont dans le panier. »",
+        "choix": ["acheté", "achetées", "achetés"],
+        "bonne": 1,
+        "explication": "Avec avoir, le COD « les pommes », féminin pluriel, est placé avant le participe : on écrit « achetées »."
+      }
+    ],
+    "conclusion": "En cherchant le donneur d'accord et la place du COD, tu peux relire efficacement tes écrits."
+  }
+}

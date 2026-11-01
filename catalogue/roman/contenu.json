@@ -1,0 +1,91 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Un roman invite à suivre des personnages et une histoire : observe comment le texte les fait exister.",
+  "niveaux": [
+    {
+      "titre": "Entrer dans une histoire",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un roman est un récit généralement long, écrit en prose, qui raconte une histoire. Il peut s'inspirer du réel ou inventer des personnages et des événements.",
+        "L'**intrigue** est l'enchaînement des événements. Les personnages agissent, parlent et évoluent au fil du récit."
+      ],
+      "exemple": {
+        "titre": "Suivre une intrigue",
+        "etapes": [
+          "Une voyageuse découvre une lettre dans une gare : c'est un événement qui lance une question.",
+          "Sa recherche pour retrouver son destinataire fait avancer l'intrigue."
+        ]
+      }
+    },
+    {
+      "titre": "Comprendre le récit",
+      "niveau": "4e / lycée",
+      "paragraphes": [
+        "L'**incipit** est le début du roman. Il peut présenter un lieu, un personnage ou une situation, et donner envie de poursuivre la lecture.",
+        "Le **narrateur** est la voix qui raconte ; il ne se confond pas forcément avec l'auteur. Le récit peut être à la première ou à la troisième personne.",
+        "Les romans sont variés : aventure, historique, policier, fantastique ou réaliste, entre autres. Une œuvre peut mêler plusieurs caractéristiques."
+      ],
+      "exemple": {
+        "titre": "Lire le début",
+        "etapes": [
+          "« À six heures, la ville s'éveillait sous la pluie » situe l'action dans un lieu et un moment.",
+          "Le début n'a pas encore révélé toute l'intrigue : les premières phrases donnent des repères et peuvent installer une ambiance."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Lis attentivement les phrases proposées et distingue les éléments du récit.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "L'incipit",
+        "question": "Comment appelle-t-on le début d'un roman ?",
+        "choix": ["L'incipit", "La conclusion", "La didascalie"],
+        "bonne": 0,
+        "explication": "L'incipit désigne le début d'un récit ou d'un roman."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le narrateur",
+        "question": "Dans un roman écrit à la première personne, que désigne « je » ?",
+        "choix": ["La voix du narrateur", "Toujours la personne réelle qui a écrit le livre", "Le titre du roman"],
+        "bonne": 0,
+        "explication": "« Je » désigne le narrateur ; il ne faut pas en déduire qu'il s'agit de l'auteur réel."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'intrigue",
+        "question": "Qu'est-ce qui fait principalement avancer l'intrigue d'un roman ?",
+        "choix": ["L'enchaînement des événements", "La liste des chapitres seule", "Le nom de la maison d'édition"],
+        "bonne": 0,
+        "explication": "L'intrigue est construite par les événements et les actions qui composent le récit."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le conseil lecture",
+    "histoire": [
+      "Tu veux conseiller un roman à une personne de ta famille qui cherche une prochaine lecture."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Choisir un indice utile",
+        "question": "Pour donner envie de lire un roman d'aventure sans raconter la fin, que peux-tu présenter ?",
+        "choix": ["Le point de départ et une question de l'intrigue.", "La dernière page en détail.", "Uniquement le nombre de lettres du titre."],
+        "bonne": 0,
+        "explication": "Présenter la situation initiale et une question intrigante donne envie sans dévoiler le dénouement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Écrire une recommandation",
+        "question": "Quelle recommandation aide le mieux une personne à choisir un roman ?",
+        "choix": ["« J'ai aimé le personnage qui enquête et les indices à suivre. »", "« C'est un livre. »", "« Il faut le lire parce que je le dis. »"],
+        "bonne": 0,
+        "explication": "Un avis utile donne un élément concret de lecture tout en laissant au lecteur le plaisir de découvrir l'histoire."
+      }
+    ],
+    "conclusion": "Une recommandation précise partage ton expérience de lecture sans raconter toute l'intrigue."
+  }
+}

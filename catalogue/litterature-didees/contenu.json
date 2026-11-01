@@ -1,0 +1,91 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La littérature d'idées explore des questions et invite à réfléchir : elle peut convaincre directement ou passer par une histoire.",
+  "niveaux": [
+    {
+      "titre": "Des textes qui font réfléchir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **littérature d'idées** rassemble des textes qui interrogent des questions, défendent des idées ou critiquent des façons de penser.",
+        "Un auteur peut défendre une thèse directement dans un essai, un discours ou une lettre. Il peut aussi faire réfléchir par une fiction, comme une fable : l'idée passe alors de manière indirecte."
+      ],
+      "exemple": {
+        "titre": "Deux façons de défendre une idée",
+        "etapes": [
+          "Un essai peut affirmer qu'il faut protéger les espaces verts puis développer des raisons.",
+          "Une fable peut raconter l'histoire d'un jardin détruit et laisser le lecteur tirer une leçon."
+        ]
+      }
+    },
+    {
+      "titre": "Lire une idée dans sa forme",
+      "niveau": "lycée",
+      "paragraphes": [
+        "La **thèse** est l'idée principale que le texte cherche à faire accepter ou à examiner. Les arguments la soutiennent ; des exemples peuvent les illustrer.",
+        "Dans une argumentation directe, la thèse et les raisons sont formulées explicitement. Dans une argumentation indirecte, une fiction ou une mise en scène transmet la réflexion sans énoncer toujours une leçon complète.",
+        "Pour interpréter un texte, distingue ce qui est raconté de l'idée que cette histoire invite à examiner. Le contexte et les indices du texte aident à éviter les conclusions trop rapides."
+      ],
+      "exemple": {
+        "titre": "D'une histoire à une idée",
+        "etapes": [
+          "Une histoire montre un village qui gaspille l'eau pendant une sécheresse.",
+          "Le lecteur peut en tirer une réflexion sur la préservation des ressources : c'est une interprétation appuyée sur l'histoire, pas forcément une phrase écrite telle quelle."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Distingue l'idée défendue, les raisons qui la soutiennent et les procédés choisis pour la transmettre.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "La thèse",
+        "question": "Dans « Il faut aménager des pistes cyclables, car elles rendent les trajets plus sûrs », quelle est la thèse ?",
+        "choix": ["Il faut aménager des pistes cyclables.", "Les trajets sont des trajets.", "Le mot « car » est la thèse."],
+        "bonne": 0,
+        "explication": "La thèse est l'idée défendue : aménager des pistes cyclables."
+      },
+      {
+        "type": "qcm",
+        "titre": "La forme indirecte",
+        "question": "Pourquoi une fable peut-elle transmettre une idée de façon indirecte ?",
+        "choix": ["Elle raconte une histoire dont le lecteur peut tirer une réflexion.", "Elle ne contient jamais de personnages.", "Elle donne toujours une définition scientifique."],
+        "bonne": 0,
+        "explication": "Une fiction, comme une fable, peut mettre une idée en scène et laisser le lecteur en comprendre la portée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le rôle de l'exemple",
+        "question": "Dans un texte qui défend le tri des déchets, que peut apporter un exemple précis ?",
+        "choix": ["Illustrer une raison avancée.", "Remplacer nécessairement toute la thèse.", "Prouver que chaque lecteur pense pareil."],
+        "bonne": 0,
+        "explication": "Un exemple concret illustre un argument, sans garantir que tous les lecteurs partagent la thèse."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Une discussion au quotidien",
+    "histoire": [
+      "À la maison, une discussion commence sur la place à donner aux écrans le soir. Tu veux écouter les idées et contribuer à l'échange."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Comprendre une opinion",
+        "question": "Quel élément aide le mieux à comprendre une idée sur les écrans le soir ?",
+        "choix": ["La thèse et les raisons données pour la soutenir.", "Le volume de la voix uniquement.", "Le nombre de mots de la phrase uniquement."],
+        "bonne": 0,
+        "explication": "Identifier l'idée défendue et les raisons permet de comprendre le raisonnement proposé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Répondre avec nuance",
+        "question": "Quelle réponse montre que tu as examiné un argument sans attaquer la personne ?",
+        "choix": ["« Je comprends cette raison ; on pourrait aussi considérer les besoins de chacun. »", "« Tu as tort parce que tu es nul. »", "« Je ne répondrai à aucun argument. »"],
+        "bonne": 0,
+        "explication": "Cette réponse reprend une raison et ajoute un autre élément à discuter, sans viser la personne."
+      }
+    ],
+    "conclusion": "Lire la littérature d'idées aide à reconnaître les opinions, à suivre leurs raisons et à répondre sans confondre désaccord et attaque personnelle."
+  }
+}
