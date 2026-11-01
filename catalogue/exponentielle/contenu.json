@@ -123,6 +123,16 @@
         ],
         "bonne": 0,
         "explication": "L'exponentielle ne s'annule jamais et reste strictement positive, même pour x très négatif (e⁻¹⁰ ≈ 0,000 045)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Valeur remarquable",
+        "question": "Combien vaut e⁰ ?",
+        "reponse": 1,
+        "indices": [
+          "Toute base non nulle élevée à la puissance 0 vaut 1."
+        ],
+        "solution": "e⁰ = 1."
       }
     ]
   },

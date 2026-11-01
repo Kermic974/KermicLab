@@ -106,6 +106,17 @@
           "1 × 10 = C_fille × 100."
         ],
         "solution": "C_fille = 1 × 10 / 100 = 0,1 mol/L (dilution 10 fois)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Quantité de matière",
+        "question": "Un échantillon d'eau a une masse de 18 g. Avec M(H₂O) = 18 g/mol, quelle quantité de matière contient-il ?",
+        "reponse": 1,
+        "unite": "mol",
+        "indices": [
+          "Utilise n = m/M."
+        ],
+        "solution": "n = 18 g ÷ 18 g/mol = 1 mol."
       }
     ]
   },

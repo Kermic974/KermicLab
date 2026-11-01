@@ -112,6 +112,18 @@
         ],
         "bonne": 0,
         "explication": "À la borne négative, le réducteur cède des électrons au circuit : c'est une oxydation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Identifier l'oxydant",
+        "question": "Dans la réaction Zn + Cu²⁺ → Zn²⁺ + Cu, quelle espèce est l'oxydant ?",
+        "choix": [
+          "Zn",
+          "Cu²⁺",
+          "Zn²⁺"
+        ],
+        "bonne": 1,
+        "explication": "Cu²⁺ capte deux électrons et est réduit en Cu : c'est l'oxydant."
       }
     ]
   },

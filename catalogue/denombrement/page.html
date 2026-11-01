@@ -78,7 +78,8 @@
       "paragraphes": [
         "Un ensemble à n éléments possède **2ⁿ** parties (chaque élément est dedans ou non). En regroupant par taille : C(n, 0) + C(n, 1) + … + C(n, n) = 2ⁿ.",
         "Les coefficients binomiaux interviennent aussi dans la **loi binomiale** et dans le développement de (a + b)ⁿ."
-      ]
+      ],
+      "aRetenir": "Avant de compter, demande-toi : l'ordre compte-t-il ? La répétition est-elle autorisée ? Un choix d'équipe utilise une combinaison ; un podium utilise un arrangement."
     }
   ],
   "application": {
@@ -134,6 +135,18 @@
           "L'ordre compte : 8 choix pour le 1er, puis 7, puis 6."
         ],
         "solution": "8 × 7 × 6 = 336."
+      },
+      {
+        "type": "qcm",
+        "titre": "Former une équipe",
+        "question": "Un club choisit 2 élèves parmi 5 pour former une équipe, sans rôle particulier. Combien d'équipes différentes peut-il former ?",
+        "choix": [
+          "10",
+          "20",
+          "25"
+        ],
+        "bonne": 0,
+        "explication": "L'ordre ne compte pas : C(5, 2) = (5 × 4) / 2 = 10 équipes."
       }
     ]
   },

@@ -11,7 +11,7 @@
   "id": "transformations",
   "titre": "Les transformations",
   "sujet": "mathematiques/transformations",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -37,41 +37,91 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Un papillon est **symétrique** : si on le plie le long de son corps, ses deux ailes se superposent. C'est la **symétrie axiale** (comme un miroir).",
-        "On peut aussi faire **tourner** une figure (rotation), la faire **glisser** (translation) ou l'**agrandir** (homothétie). Ce sont des **transformations**."
-      ]
+        "On peut aussi faire **tourner** une figure (rotation), la faire **glisser** (translation) ou l'**agrandir** (homothétie). Ce sont des **transformations**.",
+        "Dans la vie : ton reflet dans le miroir, les aiguilles d'une horloge qui tournent, un train qui avance sur ses rails, la photo que tu agrandis sur un écran… ce sont toutes des transformations."
+      ],
+      "exemple": {
+        "titre": "Exemple : quatre gestes, quatre transformations",
+        "etapes": [
+          "Plier une feuille en deux : symétrie axiale.",
+          "Faire un demi-tour sur soi-même : symétrie centrale.",
+          "Faire glisser une règle sur la table sans la tourner : translation.",
+          "Zoomer sur une photo : homothétie."
+        ]
+      },
+      "aRetenir": "Transformer une figure, c'est la déplacer, la retourner, la tourner ou la changer de taille selon une règle précise."
     },
     {
       "titre": "La symétrie axiale",
       "niveau": "6e",
       "paragraphes": [
         "Le symétrique d'un point A par rapport à une droite (d) est le point A' tel que (d) est la **médiatrice** de [AA'] : (d) coupe [AA'] perpendiculairement en son milieu.",
-        "La symétrie axiale **conserve** les longueurs, les angles et les aires. Une figure a un **axe de symétrie** si elle se superpose à elle-même par pliage : un rectangle en a 2, un carré 4, un triangle équilatéral 3, un cercle une infinité."
-      ]
+        "La symétrie axiale **conserve** les longueurs, les angles et les aires. Une figure a un **axe de symétrie** si elle se superpose à elle-même par pliage : un rectangle en a 2, un carré 4, un triangle équilatéral 3, un cercle une infinité.",
+        "Pour construire le symétrique d'un point A : on trace la perpendiculaire à l'axe passant par A, puis on reporte au compas la même distance de l'autre côté de l'axe."
+      ],
+      "exemple": {
+        "titre": "Exemple : les axes d'un rectangle (non carré)",
+        "etapes": [
+          "Un axe passe par le milieu des deux grands côtés (pliage en deux dans la longueur).",
+          "Un autre passe par le milieu des deux petits côtés.",
+          "Les diagonales ne sont pas des axes : le rectangle a donc 2 axes de symétrie."
+        ]
+      },
+      "aRetenir": "Symétrie axiale : l'axe est la médiatrice de [AA']."
     },
     {
       "titre": "La symétrie centrale",
       "niveau": "5e",
       "paragraphes": [
         "Le symétrique de A par rapport à un point O est le point A' tel que **O est le milieu de [AA']**. C'est un **demi-tour** autour de O.",
-        "Dans un repère, le symétrique de A(x ; y) par rapport à l'origine est A'(−x ; −y). Un parallélogramme a un **centre de symétrie** : le point d'intersection de ses diagonales."
-      ]
+        "Dans un repère, le symétrique de A(x ; y) par rapport à l'origine est A'(−x ; −y). Un parallélogramme a un **centre de symétrie** : le point d'intersection de ses diagonales.",
+        "Analogie : tourner un volant d'une demi-tour, c'est faire une symétrie centrale de la roue ; les cartes à jouer sont d'ailleurs souvent symétriques par rapport à leur centre."
+      ],
+      "exemple": {
+        "titre": "Exemple : dans un repère",
+        "etapes": [
+          "Prenons B(−2 ; 4).",
+          "Par rapport à l'origine, on change les deux signes : B'(2 ; −4).",
+          "L'origine est bien le milieu de [BB'] : (−2 + 2)/2 = 0 et (4 + (−4))/2 = 0."
+        ]
+      },
+      "aRetenir": "Symétrie centrale = demi-tour (180°). Le centre est le milieu de [AA']."
     },
     {
       "titre": "Translation et rotation",
       "niveau": "4e",
       "paragraphes": [
         "Une **translation** fait glisser une figure : tous les points bougent dans la même direction, le même sens et de la même longueur (indiqués par une flèche). Les frises sont construites ainsi.",
-        "Une **rotation** fait tourner une figure autour d'un **centre**, d'un certain **angle**, dans un sens donné. Les rosaces et les hélices en sont des exemples."
+        "Une **rotation** fait tourner une figure autour d'un **centre**, d'un certain **angle**, dans un sens donné. Les rosaces et les hélices en sont des exemples.",
+        "Dans la vie : une grande roue, une porte tournante ou un ventilateur tournent par rotations ; une bande roulante d'aéroport ou un ascenseur évoquent la translation. Un tour complet vaut **360°** ; un quart de tour vaut 90°."
       ],
-      "aRetenir": "Symétries, translations et rotations conservent les longueurs, les angles et les aires : la figure garde sa forme et sa taille."
+      "aRetenir": "Symétries, translations et rotations conservent les longueurs, les angles et les aires : la figure garde sa forme et sa taille.",
+      "exemple": {
+        "titre": "Exemple : l'aiguille des minutes",
+        "etapes": [
+          "En 60 minutes, l'aiguille fait un tour complet : 360°.",
+          "En 1 minute, elle tourne de 360 ÷ 60 = 6°.",
+          "En 15 minutes, elle tourne de 15 × 6 = 90° : un quart de tour."
+        ]
+      }
     },
     {
       "titre": "L'homothétie",
       "niveau": "3e / seconde",
       "paragraphes": [
         "Une **homothétie** de centre O et de rapport k agrandit ou réduit une figure : chaque point A a pour image A' sur la droite (OA), avec OA' = |k| × OA.",
-        "Si k > 1, c'est un **agrandissement** ; si 0 \u003c k \u003c 1, une **réduction** ; si k est négatif, l'image passe de l'autre côté de O. Les longueurs sont multipliées par |k| et les aires par k² : c'est la transformation de Thalès !"
-      ]
+        "Si k > 1, c'est un **agrandissement** ; si 0 \u003c k \u003c 1, une **réduction** ; si k est négatif, l'image passe de l'autre côté de O. Les longueurs sont multipliées par |k| et les aires par k² : c'est la transformation de Thalès !",
+        "Dans la vie : un projecteur de cinéma agrandit l'image sur l'écran, une carte au 1/25 000 réduit le paysage (réduction de rapport 1/25 000), et une loupe agrandit ce qu'on regarde."
+      ],
+      "exemple": {
+        "titre": "Exemple : homothétie de rapport 2",
+        "etapes": [
+          "Un triangle a un côté de 5 cm et une aire de 12 cm².",
+          "Son image a un côté de 5 × 2 = 10 cm.",
+          "Son aire devient 12 × 2² = 48 cm²."
+        ]
+      },
+      "aRetenir": "Homothétie de rapport k : longueurs × |k|, aires × k², angles conservés."
     }
   ],
   "application": {
@@ -141,14 +191,62 @@
           "Essaie un pliage vertical, puis un pliage horizontal."
         ],
         "solution": "Un axe vertical et un axe horizontal : 2 axes."
+      },
+      {
+        "type": "nombre",
+        "titre": "Axes du triangle équilatéral",
+        "question": "Combien d'axes de symétrie un triangle équilatéral possède-t-il ?",
+        "reponse": 3,
+        "indices": [
+          "Chaque axe passe par un sommet et le milieu du côté opposé."
+        ],
+        "solution": "Un axe par sommet : 3 axes."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aiguille de l'horloge",
+        "question": "La grande aiguille d'une horloge tourne pendant 20 minutes. De quel angle a-t-elle tourné ?",
+        "reponse": 120,
+        "unite": "°",
+        "indices": [
+          "En 60 minutes, elle fait 360°.",
+          "En 1 minute : 360 ÷ 60 = 6°."
+        ],
+        "solution": "20 × 6 = 120° (un tiers de tour)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Centre de symétrie",
+        "question": "Laquelle de ces lettres majuscules possède un centre de symétrie ?",
+        "choix": [
+          "N",
+          "T",
+          "A"
+        ],
+        "bonne": 0,
+        "explication": "Un demi-tour du N le laisse inchangé. Le T et le A ont un axe vertical, mais pas de centre de symétrie.",
+        "indice": "Tourne la lettre d'un demi-tour (la tête en bas) : ressemble-t-elle à la lettre de départ ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Réduction",
+        "question": "Une homothétie de rapport 0,5 transforme un segment de 18 cm. Quelle est la longueur de son image ?",
+        "reponse": 9,
+        "unite": "cm",
+        "indices": [
+          "Les longueurs sont multipliées par le rapport."
+        ],
+        "solution": "18 × 0,5 = 9 cm : c'est une réduction de moitié."
       }
     ]
   },
   "situation": {
     "titre": "Rosaces, frises et photos",
     "histoire": [
-      "En arts plastiques, la classe décore le préau avec des rosaces, des frises et des photos agrandies.",
-      "Chaque décoration utilise une transformation : à toi de trouver laquelle et de calculer !"
+      "En arts plastiques, la classe décore le préau avec des rosaces, des frises, des photos agrandies et une mosaïque.",
+      "Chaque décoration utilise une transformation : à toi de trouver laquelle et de calculer !",
+      "La professeure de dessin explique que les artistes, des cathédrales gothiques aux palais de l'Alhambra, utilisent depuis des siècles les mêmes idées : tourner, glisser, retourner, agrandir.",
+      "Elle te confie les calculs et les choix de transformation. Prends tes règles, ton compas et ton rapporteur !"
     ],
     "etapes": [
       {
@@ -196,9 +294,20 @@
           "Les aires sont multipliées par k² = 9."
         ],
         "solution": "150 × 3² = 1 350 cm² (la photo mesure 30 cm × 45 cm)."
+      },
+      {
+        "type": "nombre",
+        "titre": "La mosaïque",
+        "question": "Pour la mosaïque, on tourne un carreau d'un quart de tour (90°) à chaque fois autour du même centre. Combien de carreaux faut-il pour faire un tour complet, carreau de départ compris ?",
+        "reponse": 4,
+        "indices": [
+          "Un tour complet vaut 360°.",
+          "360 ÷ 90."
+        ],
+        "solution": "360 ÷ 90 = 4 carreaux (aux positions 0°, 90°, 180° et 270°)."
       }
     ],
-    "conclusion": "Le préau est magnifique ! Les transformations sont partout dans l'art : rosaces des cathédrales, frises grecques, pavages de l'Alhambra…"
+    "conclusion": "Le préau est magnifique ! Les transformations sont partout dans l'art : rosaces des cathédrales, frises grecques, pavages de l'Alhambra… Tu sais maintenant que derrière chaque belle décoration se cachent des angles, des rapports et des calculs précis. Regarde autour de toi : tu en verras partout !"
   }
 }
 </script>
@@ -314,7 +423,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 <header>
   <div>
     <h1>Les transformations</h1>
-    <div class="meta">transformations · v1.0.0</div>
+    <div class="meta">transformations · v1.1.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
