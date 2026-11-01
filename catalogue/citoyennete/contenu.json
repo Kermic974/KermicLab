@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Des droits, des responsabilités et des façons de participer : explore la citoyenneté en France.",
+  "niveaux": [
+    {
+      "titre": "Intuition : participer à la vie commune", "niveau": "pour démarrer",
+      "paragraphes": ["La **citoyenneté** relie une personne à une communauté politique, avec des droits et des devoirs. Dans la vie quotidienne, une attitude civique consiste aussi à écouter et à prendre soin de ce qui est partagé.", "Petit jeu : un banc du quartier est abîmé. Comment proposer une réparation sans décider seul pour tout le monde ?"],
+      "exemple": { "titre": "Une proposition en classe", "etapes": ["Tu repères un besoin commun.", "Tu le présentes aux délégués avec une idée et des raisons."] },
+      "aRetenir": "Participer commence par observer, écouter et proposer."
+    },
+    {
+      "titre": "Collège : droits et responsabilités", "niveau": "collège",
+      "paragraphes": ["En France, les citoyens disposent de droits politiques selon les conditions prévues par la loi. Les droits fondamentaux, comme le respect de la dignité, ne sont pas réservés aux citoyens français : les étrangers et les mineurs en bénéficient aussi.", "Avant 18 ans, on peut participer aux élections de délégués, à des projets ou à des associations dans le cadre prévu. Respecter la loi et les droits des autres concerne chacun ; être citoyen ne signifie pas être toujours d'accord."],
+      "exemple": { "titre": "Élire un délégué", "etapes": ["Les candidats présentent leurs propositions.", "Les élèves choisissent leur représentant selon les règles scolaires, sans attendre l'âge du vote national."] },
+      "aRetenir": "Les droits humains sont pour tous ; certains droits politiques ont des conditions particulières."
+    },
+    {
+      "titre": "Lycée : nationalité et participation politique", "niveau": "lycée",
+      "paragraphes": ["Pour voter aux élections nationales françaises, il faut notamment être français, avoir au moins **18 ans**, jouir de ses droits civils et politiques et être inscrit sur les listes électorales. La nationalité ne se confond ni avec le lieu de résidence ni avec l'origine familiale.", "Les citoyens d'autres États de l'Union européenne résidant en France peuvent voter aux élections municipales et européennes, sous conditions, mais pas aux élections nationales françaises. La participation publique comprend aussi débat, association et initiatives collectives ; elle ne se réduit pas au vote."],
+      "exemple": { "titre": "Comparer deux scrutins", "etapes": ["Une personne majeure citoyenne d'un autre pays de l'UE vit en France.", "Elle s'informe sur son inscription pour les municipales ou les européennes, sans supposer un droit de vote à la présidentielle française."] },
+      "aRetenir": "Distingue nationalité, droits politiques et participation civique."
+    }
+  ],
+  "application": {
+    "intro": "Repère qui peut participer et sous quelles conditions.",
+    "exercices": [
+      { "type": "qcm", "titre": "Les droits fondamentaux", "question": "Les droits fondamentaux sont-ils réservés aux adultes français ?", "choix": ["Oui", "Non, ils protègent aussi les mineurs et les étrangers"], "bonne": 1, "explication": "Les droits humains ne dépendent pas de la possession du droit de vote." },
+      { "type": "qcm", "titre": "Avant 18 ans", "question": "Comment participer à la vie collective avant 18 ans ?", "choix": ["Il est interdit de proposer des idées", "Voter à la présidentielle française", "Participer à un projet ou aux élections de délégués"], "bonne": 2, "explication": "La participation scolaire et associative existe avant l'âge du vote national." },
+      { "type": "qcm", "titre": "Citoyenneté européenne", "question": "Sous conditions, un citoyen d'un autre pays de l'UE résidant en France peut voter…", "choix": ["Aux municipales et aux européennes", "À tous les scrutins français sans inscription", "À la présidentielle française uniquement"], "bonne": 0, "explication": "Ce droit concerne les municipales et les européennes, pas les élections nationales françaises." }
+    ]
+  },
+  "situation": {
+    "titre": "Proposer un coin lecture",
+    "histoire": ["Un groupe de jeunes fictifs souhaite un coin lecture dans un équipement du quartier. Certains sont mineurs et tous ne sont pas français.", "Construis une participation ouverte sans demander de données personnelles."],
+    "etapes": [
+      { "type": "qcm", "titre": "Écouter", "question": "Qui peut contribuer à la réflexion ?", "choix": ["Seulement les personnes qui votent à la présidentielle", "Les usagers intéressés, y compris les jeunes et les étrangers"], "bonne": 1, "explication": "Proposer un projet local ne se limite pas aux personnes disposant du vote national." },
+      { "type": "qcm", "titre": "Présenter", "question": "Comment porter l'idée ?", "choix": ["Décrire le besoin et transmettre une proposition par le canal de participation prévu", "Exiger sa réalisation sans discussion"], "bonne": 0, "explication": "Une proposition argumentée peut être examinée avec les contraintes et les besoins des autres." }
+    ],
+    "conclusion": "Mission accomplie ! Participer, c'est contribuer au débat commun, même sans disposer de tous les droits électoraux."
+  }
+}

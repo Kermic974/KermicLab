@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Même les personnes qui gouvernent doivent respecter le droit.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le responsable aussi a des règles", "niveau": "pour démarrer",
+      "paragraphes": ["Dans un **État de droit**, le pouvoir n'est pas sans limites : les autorités sont soumises au droit. Un responsable ne peut pas décider seulement selon son humeur.", "Petit jeu : l'arbitre change le résultat pour faire gagner son ami. Quelle règle devrait aussi s'appliquer à l'arbitre ?"],
+      "exemple": { "titre": "L'arbitre du jeu", "etapes": ["Des règles annoncées encadrent les joueurs.", "Elles encadrent aussi la façon dont l'arbitre prend ses décisions : c'est une image du pouvoir limité."] },
+      "aRetenir": "Avoir du pouvoir ne place pas au-dessus du droit."
+    },
+    {
+      "titre": "Collège : protéger contre l'arbitraire", "niveau": "collège",
+      "paragraphes": ["L'État de droit repose sur la protection des droits, l'égalité devant la loi et des tribunaux indépendants. Les personnes peuvent contester des décisions publiques par des recours adaptés.", "La séparation des pouvoirs évite qu'une seule autorité fasse les règles, les applique et juge sans contrôle. Les pouvoirs peuvent coopérer, mais ils doivent être encadrés."],
+      "exemple": { "titre": "Une décision administrative", "etapes": ["Une personne estime qu'une décision méconnaît ses droits.", "Elle peut s'informer sur les voies de recours et saisir le juge compétent."] },
+      "aRetenir": "Le droit doit pouvoir être invoqué contre les autorités elles-mêmes."
+    },
+    {
+      "titre": "Lycée : hiérarchie et contrôles", "niveau": "lycée",
+      "paragraphes": ["La **hiérarchie des normes** impose qu'une règle respecte les normes supérieures qui lui sont applicables : un règlement ne peut pas contredire la loi, et une loi doit respecter la Constitution. L'articulation avec les engagements internationaux et le droit de l'Union européenne fait aussi l'objet de contrôles.", "Le Conseil constitutionnel contrôle la constitutionnalité des lois selon des procédures précises ; les juridictions contrôlent les actes relevant de leur compétence. Avoir beaucoup de lois ne suffit pas : il faut des droits garantis et des contrôles effectifs."],
+      "exemple": { "titre": "Une règle contestée", "etapes": ["Une règle locale contredit une norme supérieure applicable.", "Un recours permet de faire examiner sa légalité par l'autorité ou le juge compétent."] },
+      "aRetenir": "L'État de droit combine normes hiérarchisées, droits fondamentaux et contrôle du pouvoir."
+    }
+  ],
+  "application": {
+    "intro": "Repère les protections contre une décision arbitraire.",
+    "exercices": [
+      { "type": "qcm", "titre": "Le pouvoir", "question": "Dans un État de droit, les gouvernants…", "choix": ["Sont eux aussi soumis au droit", "Peuvent ignorer toute règle", "N'ont jamais à justifier leurs décisions"], "bonne": 0, "explication": "Les autorités exercent leurs compétences dans le cadre du droit." },
+      { "type": "qcm", "titre": "Contester", "question": "Quel mécanisme protège contre une décision publique illégale ?", "choix": ["Une vengeance privée", "Un recours devant le juge compétent", "Un classement par popularité"], "bonne": 1, "explication": "Un recours permet un contrôle indépendant selon les procédures prévues." },
+      { "type": "qcm", "titre": "Des lois suffisent-elles ?", "question": "Un pays qui possède de nombreuses lois est-il forcément un État de droit ?", "choix": ["Oui, quel que soit leur contenu", "Oui, même sans tribunal indépendant", "Non, les droits et les contrôles doivent aussi être garantis"], "bonne": 2, "explication": "Gouverner au moyen de lois ne suffit pas si le pouvoir reste arbitraire et les droits sans protection." }
+    ]
+  },
+  "situation": {
+    "titre": "Une salle municipale refusée",
+    "histoire": ["Dans une commune fictive, une association reçoit un refus d'utiliser une salle. Elle souhaite comprendre la décision sans accuser ni menacer.", "Choisis une démarche fondée sur des règles et des recours."],
+    "etapes": [
+      { "type": "qcm", "titre": "Comprendre", "question": "Quelle première démarche est pertinente ?", "choix": ["Ignorer le refus et forcer l'entrée", "Demander les motifs et consulter les règles applicables"], "bonne": 1, "explication": "Il faut connaître la décision et son cadre avant d'apprécier sa légalité." },
+      { "type": "qcm", "titre": "Utiliser un recours", "question": "Si le refus paraît illégal, que faire ?", "choix": ["S'informer sur les recours et les délais auprès d'un service compétent", "Décider que l'association n'a aucun droit"], "bonne": 0, "explication": "Les voies de recours permettent de contester sans se substituer au juge." }
+    ],
+    "conclusion": "Mission accomplie ! Le pouvoir public peut être questionné et contrôlé par le droit."
+  }
+}

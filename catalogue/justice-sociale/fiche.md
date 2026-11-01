@@ -14,6 +14,7 @@ mots-cles:
   - redistribution
   - protection sociale
   - égalité des chances
+  - égalité et équité dans le débat sur la justice sociale
   - social justice
 questions:
   - qu'est-ce que la justice sociale ?

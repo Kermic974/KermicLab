@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Passer d'une idée à une action utile, volontaire et responsable : voilà un engagement civique.",
+  "niveaux": [
+    {
+      "titre": "Intuition : agir pour la vie commune", "niveau": "pour démarrer",
+      "paragraphes": ["L'**engagement civique** consiste à consacrer du temps ou des efforts à la vie collective. Il peut commencer par un petit projet, sans attendre d'être adulte.", "Petit jeu : tu veux réduire le gaspillage de papier en classe. Quelle action simple peut être proposée plutôt qu'imposée ?"],
+      "exemple": { "titre": "Un bac de brouillon", "etapes": ["Le groupe propose de réutiliser les feuilles encore vierges d'un côté.", "L'enseignant vérifie que les feuilles ne contiennent pas de données personnelles avant l'utilisation."] },
+      "aRetenir": "Une petite action réfléchie peut être un engagement utile."
+    },
+    {
+      "titre": "Collège : volontaire et collectif", "niveau": "collège",
+      "paragraphes": ["On peut s'engager dans un projet scolaire, une association ou une action solidaire, selon son âge et les règles applicables. Le **bénévolat** est une activité volontaire non rémunérée ; il ne se confond pas avec un emploi.", "Un projet responsable identifie les besoins, demande les autorisations nécessaires, répartit les rôles et respecte la sécurité et la vie privée. Personne n'est obligé de raconter une difficulté personnelle pour participer."],
+      "exemple": { "titre": "Une collecte", "etapes": ["Une association précise ce dont elle a réellement besoin.", "Avec un adulte, le groupe fixe un lieu autorisé et des tâches adaptées à l'âge des participants."] },
+      "aRetenir": "S'engager ne signifie pas agir seul, sans autorisation ou sans précaution."
+    },
+    {
+      "titre": "Lycée : formes, objectifs et bilan", "niveau": "lycée",
+      "paragraphes": ["L'engagement peut être associatif, politique, syndical ou solidaire, dans le respect du droit. Le **Service Civique** est un dispositif spécifique de mission d'intérêt général : accessible sous conditions de 16 à 25 ans, jusqu'à 30 ans pour les personnes en situation de handicap, il est indemnisé et ne se confond pas avec le bénévolat.", "Pour évaluer une action, on compare l'objectif aux effets réels : utilité, participation, risques et moyens employés. Une cause jugée bonne n'autorise ni pression sur les autres ni diffusion de leurs données."],
+      "exemple": { "titre": "Mesurer sans surveiller", "etapes": ["Le groupe compte les feuilles réutilisées sur une semaine.", "Il fait un bilan collectif sans noter les habitudes individuelles des élèves."] },
+      "aRetenir": "Un engagement responsable se prépare, se réalise et s'évalue."
+    }
+  ],
+  "application": {
+    "intro": "Prépare une action utile sans pression ni collecte de données personnelles.",
+    "exercices": [
+      { "type": "qcm", "titre": "Commencer jeune", "question": "Peut-on participer à un projet civique avant 18 ans ?", "choix": ["Oui, dans un cadre adapté à son âge", "Non, toute participation est interdite", "Seulement en votant à une élection nationale"], "bonne": 0, "explication": "Les projets scolaires et certaines formes de participation associative permettent un engagement adapté." },
+      { "type": "qcm", "titre": "Préparer", "question": "Avant une collecte scolaire, que faut-il vérifier ?", "choix": ["Uniquement le nombre de photos publiées", "Les besoins, les autorisations et la sécurité", "Que tout le monde soit obligé de donner"], "bonne": 1, "explication": "Une action utile répond à des besoins réels et respecte les participants." },
+      { "type": "qcm", "titre": "Service Civique", "question": "Le Service Civique est…", "choix": ["Un autre nom pour toute aide entre amis", "Obligatoire pour tous les collégiens", "Un dispositif spécifique de mission d'intérêt général, avec conditions et indemnisation"], "bonne": 2, "explication": "Il se distingue du bénévolat et d'un emploi ; son accès dépend des conditions du dispositif." }
+    ]
+  },
+  "situation": {
+    "titre": "Le défi papier de la classe",
+    "histoire": ["Une classe fictive veut installer un bac de feuilles de brouillon pour limiter le gaspillage.", "Le projet ne demande ni inscription sur un réseau ni relevé des comportements individuels."],
+    "etapes": [
+      { "type": "qcm", "titre": "Organiser", "question": "Quelle première étape choisir ?", "choix": ["Installer le bac partout sans prévenir", "Demander l'accord de l'enseignant et prévoir un tri sans données personnelles"], "bonne": 1, "explication": "L'autorisation et la protection de la vie privée font partie du projet." },
+      { "type": "qcm", "titre": "Évaluer", "question": "Quel bilan est adapté ?", "choix": ["Compter les feuilles réutilisées et discuter des améliorations", "Publier un classement nominatif des élèves"], "bonne": 0, "explication": "Un indicateur collectif mesure l'utilité sans surveiller ou humilier les personnes." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as préparé un engagement concret, volontaire et respectueux de chacun."
+  }
+}

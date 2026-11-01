@@ -18,7 +18,7 @@ mots-cles:
 questions:
   - pourquoi le commerce international relie-t-il les pays ?
   - qu'est-ce qu'un avantage comparatif dans le commerce international ?
-  - comment fonctionne une chaîne de valeur mondiale ?
+  - comment le commerce international organise-t-il une chaîne de valeur mondiale ?
   - quels sont les effets du commerce international ?
 ---
 

@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une décision utile à la collectivité n'est pas forcément celle qui m'avantage le plus.",
+  "niveaux": [
+    {
+      "titre": "Intuition : penser au-delà de soi", "niveau": "pour démarrer",
+      "paragraphes": ["L'**intérêt général** désigne ce qui bénéficie à la collectivité, au-delà d'un avantage personnel ou de celui d'un petit groupe. Il demande de considérer les besoins des autres.", "Petit jeu : faut-il réserver tout le terrain à son équipe ou organiser des créneaux pour plusieurs activités ?"],
+      "exemple": { "titre": "Un terrain partagé", "etapes": ["Plusieurs groupes veulent utiliser le terrain.", "Un planning transparent cherche un accès raisonnable pour tous."] },
+      "aRetenir": "L'intérêt général ne se confond pas avec mon intérêt particulier."
+    },
+    {
+      "titre": "Collège : des besoins collectifs", "niveau": "collège",
+      "paragraphes": ["L'éducation, la santé publique, la protection de l'environnement ou la sécurité peuvent répondre à des besoins collectifs. Un service public poursuit une mission d'intérêt général.", "Tout le monde n'a pas le même besoin : aménager un passage accessible peut servir l'intérêt général même si peu de personnes en ont immédiatement besoin. Il faut écouter aussi les personnes moins nombreuses."],
+      "exemple": { "titre": "Une traversée sûre", "etapes": ["Des enfants, des adultes et des personnes à mobilité réduite traversent une rue.", "L'aménagement tient compte de leur sécurité et de leur accessibilité, pas seulement de la rapidité des voitures."] },
+      "aRetenir": "Un bénéfice collectif peut inclure la protection d'un groupe vulnérable."
+    },
+    {
+      "titre": "Lycée : débattre et justifier", "niveau": "lycée",
+      "paragraphes": ["L'intérêt général n'est pas simplement la somme des intérêts privés ni l'avis du groupe le plus nombreux. Sa définition se construit dans le débat public et les institutions, avec des arbitrages entre besoins et ressources.", "Invoquer l'intérêt général ne rend pas toute décision légale. Les autorités doivent respecter les droits, expliquer leurs choix et accepter les contrôles. Les effets à long terme et sur les personnes peu représentées doivent aussi être examinés."],
+      "exemple": { "titre": "Un budget municipal", "etapes": ["La commune compare un espace de loisirs et un aménagement de sécurité.", "Elle examine coûts, bénéficiaires, accessibilité et effets durables avant de justifier son choix."] },
+      "aRetenir": "L'intérêt général exige des raisons discutables publiquement, pas un simple slogan."
+    }
+  ],
+  "application": {
+    "intro": "Compare l'avantage personnel et les besoins de la collectivité.",
+    "exercices": [
+      { "type": "qcm", "titre": "Un intérêt particulier", "question": "Quelle proposition défend seulement un avantage personnel ?", "choix": ["Réserver le terrain à mes amis parce que ce sont mes amis", "Prévoir un accès sûr à l'école", "Rendre la bibliothèque accessible"], "bonne": 0, "explication": "Favoriser ses proches sans autre justification ne répond pas à un besoin collectif." },
+      { "type": "qcm", "titre": "L'accessibilité", "question": "Un aménagement utile à peu de personnes peut-il relever de l'intérêt général ?", "choix": ["Non, seul le nombre compte", "Oui, notamment pour garantir l'accès aux droits", "Non, s'il ne m'est pas utile"], "bonne": 1, "explication": "Le respect des droits et la protection des personnes comptent aussi." },
+      { "type": "qcm", "titre": "Justifier", "question": "Dire « c'est pour l'intérêt général » suffit-il à justifier une décision ?", "choix": ["Oui, toujours", "Oui, si le responsable l'affirme", "Non, il faut examiner les raisons, les effets et le respect du droit"], "bonne": 2, "explication": "L'intérêt général n'est pas une dispense de justification ou de contrôle." }
+    ]
+  },
+  "situation": {
+    "titre": "Un petit budget pour le quartier",
+    "histoire": ["Une commune fictive consulte les jeunes sur un aménagement près de l'école. Le budget est limité.", "Compare les besoins sans organiser de sondage sur des données personnelles."],
+    "etapes": [
+      { "type": "qcm", "titre": "Identifier les besoins", "question": "Quel examen aide à choisir ?", "choix": ["Choisir ce qui plaît uniquement à mon groupe", "Comparer sécurité, accessibilité, usages et coûts pour les différents publics"], "bonne": 1, "explication": "On considère les effets sur la collectivité, y compris les personnes peu entendues." },
+      { "type": "qcm", "titre": "Expliquer le choix", "question": "Comment présenter la proposition ?", "choix": ["Donner ses raisons, ses limites et écouter les objections", "Dire que toute objection est interdite"], "bonne": 0, "explication": "Le débat permet d'améliorer une proposition et de rendre l'arbitrage compréhensible." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as cherché un choix argumenté pour la collectivité, pas seulement pour ton groupe."
+  }
+}
