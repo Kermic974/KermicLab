@@ -28,7 +28,15 @@
       "paragraphes": [
         "**ln(ab) = ln a + ln b**, **ln(a/b) = ln a − ln b**, **ln(aⁿ) = n ln a** et **ln √a = (1/2) ln a** (pour a, b > 0).",
         "Le logarithme permet de **résoudre des équations avec l'inconnue en exposant** : eˣ = 5 donne x = ln 5 ; 2ⁿ ≥ 1 000 donne n ln 2 ≥ ln 1 000, donc n ≥ 9,97…, soit n ≥ 10."
-      ]
+      ],
+      "exemple": {
+        "titre": "Résoudre 3e^(2x) = 12",
+        "etapes": [
+          "On divise par 3 : e^(2x) = 4.",
+          "On applique ln aux deux membres : 2x = ln 4.",
+          "x = (ln 4)/2 = ln 2 ≈ 0,69."
+        ]
+      }
     },
     {
       "titre": "Étude de la fonction ln",
@@ -44,7 +52,8 @@
       "paragraphes": [
         "Le **logarithme décimal** log x = ln x / ln 10 vérifie log(10ⁿ) = n : log 1 000 = 3. Il donne à peu près le nombre de chiffres d'un nombre.",
         "Sur l'échelle de Richter, un séisme de magnitude 7 libère environ 32 fois plus d'énergie qu'un séisme de magnitude 6."
-      ]
+      ],
+      "aRetenir": "Avant de calculer ln(x), vérifie toujours que x > 0. Pour résoudre e^(f(x)) = a, il faut aussi a > 0 ; ln permet alors de retrouver l'exposant."
     }
   ],
   "application": {
