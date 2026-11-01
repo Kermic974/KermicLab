@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi mémoires" },
+  "intro": "Enquête sur la fin de la domination coloniale : les peuples colonisés agissent pour leur indépendance, selon des parcours très différents.",
+  "niveaux": [
+    {
+      "titre": "Découverte : devenir indépendant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **colonisation** place des territoires et leurs populations sous la domination d'une puissance étrangère. La **décolonisation** est le processus par lequel ils accèdent à l'indépendance. Elle s'accélère après 1945, mais les résistances à la domination coloniale sont bien plus anciennes.",
+        "Jeu de repères : l'Inde et le Pakistan deviennent indépendants en **1947** ; l'Algérie en **1962**. L'indépendance signifie pouvoir décider de son gouvernement, sans garantir immédiatement la paix, l'égalité ou l'autonomie économique."
+      ],
+      "aRetenir": "Les colonisés sont des acteurs de leur émancipation, pas de simples bénéficiaires d'une décision européenne."
+    },
+    {
+      "titre": "Comprendre : causes et voies vers l'indépendance",
+      "niveau": "3e",
+      "paragraphes": [
+        "Les mouvements nationalistes dénoncent domination et inégalités et revendiquent le droit de se gouverner. La Seconde Guerre mondiale affaiblit les puissances coloniales européennes. L'ONU affirme le principe du droit des peuples à disposer d'eux-mêmes ; le contexte international favorise les revendications, sans supprimer les résistances des empires.",
+        "Dans l'Inde britannique, Gandhi promeut la non-violence et la désobéissance civile ; Nehru joue un rôle majeur au Congrès. Jinnah et la Ligue musulmane demandent un État séparé. En **1947**, la fin de la domination britannique s'accompagne de la **partition** entre l'Inde et le Pakistan, de déplacements massifs et de violences : une indépendance négociée n'est donc pas forcément pacifique.",
+        "En Algérie, le **FLN** engage la lutte armée en 1954. La guerre oppose la puissance coloniale française aux indépendantistes et touche les civils. Répression, torture, attentats et déplacements marquent le conflit. Les **accords d'Évian de mars 1962** prévoient un cessez-le-feu ; après le vote pour l'indépendance, celle-ci est reconnue en juillet 1962. Des violences continuent malgré le cessez-le-feu.",
+        "La conférence de **Bandung en 1955** rassemble des États d'Asie et d'Afrique qui dénoncent le colonialisme et cherchent à peser dans le monde. Elle annonce l'affirmation du tiers-monde ; le mouvement des non-alignés est fondé à Belgrade en 1961. Les indépendances africaines se multiplient, notamment en 1960, selon des modalités diverses."
+      ],
+      "exemple": {
+        "titre": "Comparer deux parcours",
+        "etapes": [
+          "Inde britannique : mobilisation, négociations puis partition en 1947.",
+          "Algérie : guerre de 1954 à 1962, négociations et indépendance.",
+          "Point commun : revendication d'autodétermination ; différence : chronologie, acteurs et modalités."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : souveraineté, développement et mémoires",
+      "niveau": "terminale / lycée",
+      "paragraphes": [
+        "Les nouveaux États doivent construire des institutions, développer l'économie et affronter parfois des conflits territoriaux ou politiques. Les frontières héritées et les dépendances commerciales pèsent, mais les trajectoires ne sont pas toutes identiques. Certains régimes deviennent autoritaires ; d'autres connaissent des expériences démocratiques.",
+        "Le mot **tiers-monde** désigne d'abord une volonté de compter entre les deux blocs, pas un ensemble uniforme de pays pauvres. Le non-alignement ne signifie pas absence de relations avec les grandes puissances. L'indépendance politique peut coexister avec des dépendances économiques.",
+        "Les mémoires de la colonisation et des guerres d'indépendance sont multiples. En Algérie et en France, anciens combattants, indépendantistes, civils, pieds-noirs et harkis n'ont pas vécu les mêmes expériences. Les harkis sont des Algériens ayant servi comme auxiliaires de l'armée française. Reconnaître cette diversité n'efface ni la domination coloniale ni les violences établies par l'histoire."
+      ],
+      "aRetenir": "Croise les sources et distingue les expériences individuelles, les responsabilités politiques et les récits nationaux."
+    }
+  ],
+  "application": {
+    "intro": "Compare les causes, les acteurs et les conséquences sans supposer que toutes les indépendances se ressemblent.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Causes",
+        "question": "Quelle explication rend compte de l'accélération de la décolonisation après 1945 ?",
+        "choix": ["Les puissances coloniales décident seules de tout", "L'action des mouvements nationalistes et l'affaiblissement des empires", "Tous les territoires étaient déjà indépendants en 1900"],
+        "bonne": 1,
+        "indice": "Associe l'action des colonisés au contexte international.",
+        "explication": "Les revendications et mobilisations des colonisés sont décisives ; l'affaiblissement européen et le contexte international favorisent leur aboutissement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Quel acteur est associé à la désobéissance civile non violente dans l'Inde britannique ?",
+        "choix": ["Gandhi", "Mussolini", "Kennedy"],
+        "bonne": 0,
+        "indice": "Il défend une mobilisation sans violence contre la domination britannique.",
+        "explication": "Gandhi défend la non-violence et la désobéissance civile. Il est un acteur majeur parmi d'autres du mouvement pour l'indépendance."
+      },
+      {
+        "type": "qcm",
+        "titre": "Modalités",
+        "question": "Que montre la partition de l'Inde britannique en 1947 ?",
+        "choix": ["Qu'une négociation exclut toute violence", "Que l'indépendance supprime toutes les frontières", "Qu'une indépendance négociée peut s'accompagner de violences et de déplacements"],
+        "bonne": 2,
+        "indice": "Distingue le mode de décision de ses conséquences pour les populations.",
+        "explication": "La négociation met fin à la domination britannique, mais la partition entraîne des violences et des déplacements massifs."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences",
+        "question": "Quel défi peut rester après l'indépendance ?",
+        "choix": ["Construire des institutions et réduire des dépendances économiques", "Ne plus avoir aucune décision politique à prendre", "Redevenir automatiquement une colonie"],
+        "bonne": 0,
+        "indice": "La souveraineté politique ne résout pas tous les problèmes.",
+        "explication": "Les nouveaux États doivent construire leur avenir politique et économique. Les héritages coloniaux pèsent sans déterminer entièrement leurs trajectoires."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Préparer un dossier sur les mémoires de l'Algérie",
+    "histoire": [
+      "Un centre d'archives prépare un dossier pédagogique à partir de témoignages publiés d'indépendantistes, de civils et d'anciens combattants.",
+      "Tu dois expliquer leurs différences sans demander aux élèves de raconter leur histoire familiale ni de fournir des données personnelles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Distinguer les étapes",
+        "question": "Quelle chronologie est correcte pour 1962 ?",
+        "choix": ["Indépendance en janvier, début de la guerre en juillet", "Accords d'Évian en mars, indépendance en juillet", "Conférence de Bandung en décembre"],
+        "bonne": 1,
+        "indice": "Un cessez-le-feu et l'indépendance sont deux étapes distinctes.",
+        "explication": "Les accords d'Évian sont signés en mars 1962 ; l'indépendance intervient en juillet. La violence ne cesse pas partout avec le cessez-le-feu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Respecter les expériences",
+        "question": "Comment présenter des témoignages qui diffèrent ?",
+        "choix": ["Les dater, situer leurs auteurs et les comparer à d'autres sources", "Affirmer qu'un seul témoin représente tout le monde", "En déduire que les archives sont inutiles"],
+        "bonne": 0,
+        "indice": "Des positions différentes peuvent produire des souvenirs différents.",
+        "explication": "Contextualiser les témoignages rend leurs différences compréhensibles. Les confronter aux archives aide à établir les faits sans effacer les personnes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Éviter la généralisation",
+        "question": "Quelle conclusion convient à un dossier sur la décolonisation ?",
+        "choix": ["Tous les pays connaissent le même parcours", "L'indépendance résout immédiatement toutes les inégalités", "Les peuples agissent dans des contextes variés, avec des héritages et des défis durables"],
+        "bonne": 2,
+        "indice": "Compare les trajectoires au lieu de les uniformiser.",
+        "explication": "La décolonisation est un ensemble de processus différents. La souveraineté ouvre de nouvelles possibilités sans effacer tous les héritages."
+      }
+    ],
+    "conclusion": "Mission accomplie : ton dossier distingue les faits, les acteurs et les mémoires, sans généralisation ni collecte d'informations personnelles."
+  }
+}

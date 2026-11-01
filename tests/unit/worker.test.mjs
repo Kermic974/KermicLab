@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "histoire/napoleon", plan_onglets: ["explication", "la carte des campagnes", "mise en situation"],
-    reponse: "Napoléon Bonaparte fut empereur des Français de 1804 à 1815."
+    sujet: "francais/sonnet", plan_onglets: ["explication", "atelier de rimes", "mise en situation"],
+    reponse: "Un sonnet est un poème de quatorze vers : deux quatrains puis deux tercets."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "qui était Napoléon ?", langue: "fr" });
-  await chat({ message: "raconte-moi Napoléon", langue: "fr" });
+  const a = await chat({ message: "c'est quoi un sonnet ?", langue: "fr" });
+  await chat({ message: "explique-moi le sonnet", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] histoire/napoleon");
-  assert.match(issues[0].body, /la carte des campagnes/);
+  assert.equal(issues[0].title, "[maquette-manquante] francais/sonnet");
+  assert.match(issues[0].body, /atelier de rimes/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -158,7 +158,7 @@ test("limitation de débit par IP", async () => {
 
 test("sans clé API : réponse hors catalogue qui propose des questions routées vers une page", async () => {
   delete env.ANTHROPIC_API_KEY;
-  const r = await chat({ message: "parle-moi de Napoléon", langue: "fr" });
+  const r = await chat({ message: "parle-moi du passé simple", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
   assert.match(r.donnees.texte, /\d+ notions, par exemple/);
   assert.ok(r.donnees.suggestions.length > 0);
@@ -230,6 +230,10 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   assert.equal(matieres[0], "mathematiques");
   assert.ok(matieres.includes("physique-chimie"));
   assert.ok(matieres.includes("svt"));
+  assert.ok(matieres.includes("philosophie"));
+  for (const id of ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"]) {
+    assert.ok(notions.some((n) => n.id === id && n.matiere === "philosophie" && n.niveau === "terminale"), id);
+  }
   for (let i = 1; i < notions.length; i++) {
     const [a, b] = [notions[i - 1], notions[i]];
     if (a.matiere !== b.matiere) { assert.ok(matieres.indexOf(a.matiere) < matieres.indexOf(b.matiere)); continue; }

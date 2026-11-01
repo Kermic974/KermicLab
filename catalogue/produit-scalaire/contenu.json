@@ -109,6 +109,16 @@
           "25 + 64 − 40 = 49."
         ],
         "solution": "BC² = 89 − 40 = 49, donc BC = 7."
+      },
+      {
+        "type": "nombre",
+        "titre": "Calcul avec les coordonnées",
+        "question": "Calcule le produit scalaire de u = (2 ; 1) et v = (3 ; 4).",
+        "reponse": 10,
+        "indices": [
+          "Multiplie les abscisses entre elles et les ordonnées entre elles, puis additionne."
+        ],
+        "solution": "u · v = 2 × 3 + 1 × 4 = 10."
       }
     ]
   },

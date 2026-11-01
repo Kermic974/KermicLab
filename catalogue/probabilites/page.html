@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les probabilités – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -37,15 +37,26 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Quand on lance un dé, on ne sait pas quelle face va sortir : c'est une **expérience aléatoire** (due au hasard). Mais on sait qu'avec un dé équilibré, chaque face a **une chance sur six**.",
-        "Une **probabilité** est un nombre entre **0** (événement impossible, comme « faire 7 avec un dé ») et **1** (événement certain, comme « faire moins de 10 »)."
-      ]
+        "Une **probabilité** est un nombre entre **0** (événement impossible, comme « faire 7 avec un dé ») et **1** (événement certain, comme « faire moins de 10 »).",
+        "Tu utilises déjà des probabilités sans le savoir : « 70 % de chances de pluie » à la météo, tirer à pile ou face pour décider qui commence un jeu, ou espérer tirer l'as dans un jeu de cartes."
+      ],
+      "exemple": {
+        "titre": "Exemple : pile ou face",
+        "etapes": [
+          "Une pièce équilibrée a deux faces, « pile » et « face », qui ont la même chance de sortir.",
+          "Une issue favorable sur deux issues possibles : la probabilité de « pile » est 1/2.",
+          "On peut l'écrire 0,5 ou 50 %."
+        ]
+      },
+      "aRetenir": "Une probabilité est toujours un nombre compris entre 0 et 1 : 0 pour l'impossible, 1 pour le certain."
     },
     {
       "titre": "Calculer une probabilité",
       "niveau": "5e / 4e",
       "paragraphes": [
         "Quand toutes les issues ont la même chance (on dit qu'elles sont **équiprobables**) : **probabilité = nombre d'issues favorables ÷ nombre total d'issues**.",
-        "Dé : P(faire 6) = 1/6 ; P(nombre pair) = 3/6 = 1/2 (issues 2, 4, 6)."
+        "Dé : P(faire 6) = 1/6 ; P(nombre pair) = 3/6 = 1/2 (issues 2, 4, 6).",
+        "Dans un jeu de 32 cartes, il y a 4 as : la probabilité de tirer un as est 4/32 = 1/8. Attention au piège : « deux issues possibles » ne veut pas dire « une chance sur deux ». Gagner ou perdre au loto, ce sont deux issues, mais elles sont loin d'avoir la même chance !"
       ],
       "exemple": {
         "titre": "Exemple : une urne",
@@ -54,7 +65,8 @@
           "Il y a 8 boules en tout, dont 3 rouges.",
           "P(tirer une rouge) = 3/8 = 0,375."
         ]
-      }
+      },
+      "aRetenir": "La formule favorables ÷ total ne marche que si toutes les issues ont la même chance (équiprobabilité). Vérifie-le avant de calculer."
     },
     {
       "titre": "L'événement contraire",
@@ -62,7 +74,16 @@
       "paragraphes": [
         "L'**événement contraire** de A, noté « non A », se réalise quand A ne se réalise pas. **P(non A) = 1 − P(A)**.",
         "P(ne pas faire 6) = 1 − 1/6 = 5/6. Pratique quand le contraire est plus simple à compter !"
-      ]
+      ],
+      "exemple": {
+        "titre": "Exemple : au moins un 6 en deux lancers",
+        "etapes": [
+          "« Au moins un 6 » est long à compter. Son contraire est « aucun 6 sur les deux lancers ».",
+          "P(pas de 6 à un lancer) = 5/6, donc P(aucun 6 en deux lancers) = 5/6 × 5/6 = 25/36.",
+          "P(au moins un 6) = 1 − 25/36 = 11/36, soit environ 0,31."
+        ]
+      },
+      "aRetenir": "Quand tu vois « au moins un », pense au contraire : « aucun »."
     },
     {
       "titre": "Deux épreuves : les arbres",
@@ -71,15 +92,33 @@
         "Pour deux expériences successives, on dessine un **arbre** : on multiplie les probabilités le long d'un chemin.",
         "On lance deux fois une pièce : P(pile puis pile) = 1/2 × 1/2 = 1/4. Avec deux dés, il y a 6 × 6 = 36 issues équiprobables ; 6 d'entre elles donnent une somme de 7 (1+6, 2+5, 3+4, 4+3, 5+2, 6+1), donc P(somme = 7) = 6/36 = 1/6."
       ],
-      "aRetenir": "Le hasard n'a pas de mémoire : après cinq « pile » de suite, la probabilité d'obtenir « pile » au lancer suivant est toujours 1/2."
+      "aRetenir": "Le hasard n'a pas de mémoire : après cinq « pile » de suite, la probabilité d'obtenir « pile » au lancer suivant est toujours 1/2.",
+      "exemple": {
+        "titre": "Exemple : un sac, avec remise",
+        "etapes": [
+          "Un sac contient 2 boules rouges et 3 boules vertes. On tire une boule, on la regarde, on la remet, puis on en tire une seconde.",
+          "P(rouge) = 2/5 et P(verte) = 3/5, à chaque tirage (la boule est remise).",
+          "P(rouge puis verte) = 2/5 × 3/5 = 6/25 = 0,24."
+        ]
+      }
     },
     {
       "titre": "Fréquence et probabilité",
       "niveau": "3e / seconde",
       "paragraphes": [
         "Si on répète une expérience un grand nombre de fois, la **fréquence** d'un résultat se rapproche de sa **probabilité** : c'est la **loi des grands nombres**. Essaie avec le simulateur de l'onglet « S'entraîner » : 10 lancers, puis 1 000…",
-        "Quand on ne connaît pas la probabilité (une punaise qui tombe sur la pointe ?), on l'**estime** par la fréquence observée sur beaucoup d'essais."
-      ]
+        "Quand on ne connaît pas la probabilité (une punaise qui tombe sur la pointe ?), on l'**estime** par la fréquence observée sur beaucoup d'essais.",
+        "C'est ce qui permet aux casinos, aux assureurs et aux fabricants de jeux de prévoir leurs résultats sur de très nombreuses parties, sans pouvoir deviner une partie en particulier."
+      ],
+      "exemple": {
+        "titre": "Exemple : 600 lancers de dé",
+        "etapes": [
+          "On lance un dé 600 fois et on obtient 96 fois la face 6.",
+          "Fréquence observée : 96 ÷ 600 = 0,16.",
+          "Probabilité théorique : 1/6 ≈ 0,167. Les deux valeurs sont proches, comme le prévoit la loi des grands nombres."
+        ]
+      },
+      "aRetenir": "La fréquence varie d'une série à l'autre, mais elle se stabilise autour de la probabilité quand le nombre d'essais augmente. Elle ne permet pas de prédire le prochain résultat."
     }
   ],
   "application": {
@@ -153,6 +192,54 @@
         ],
         "bonne": 1,
         "explication": "Chaque lancer est indépendant des précédents : la pièce ne se souvient de rien. C'est toujours 1/2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une probabilité possible ?",
+        "question": "Parmi ces nombres, lequel ne peut pas être une probabilité ?",
+        "choix": [
+          "0,8",
+          "1,2",
+          "0"
+        ],
+        "bonne": 1,
+        "explication": "Une probabilité est toujours comprise entre 0 et 1. Le nombre 1,2 est supérieur à 1 : il ne peut donc pas être une probabilité.",
+        "indice": "Une probabilité est comprise entre 0 et 1."
+      },
+      {
+        "type": "nombre",
+        "titre": "Somme de deux dés",
+        "question": "On lance deux dés équilibrés. Quelle est la probabilité d'obtenir une somme égale à 10 ? (Écris une fraction, par exemple 3/36.)",
+        "reponse": 0.08333333333333333,
+        "tolerance": 0.001,
+        "indices": [
+          "Il y a 36 issues équiprobables.",
+          "Sommes égales à 10 : 4+6, 5+5 et 6+4."
+        ],
+        "solution": "3 issues favorables sur 36 : P = 3/36 = 1/12 ≈ 0,083."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une urne avec trois couleurs",
+        "question": "Une urne contient 5 boules rouges, 7 boules bleues et 8 boules vertes. Quelle est la probabilité de tirer une boule qui n'est pas rouge ?",
+        "reponse": 0.75,
+        "indices": [
+          "Il y a 5 + 7 + 8 = 20 boules.",
+          "P(non rouge) = 1 − P(rouge) = 1 − 5/20."
+        ],
+        "solution": "P(rouge) = 5/20 = 0,25, donc P(non rouge) = 1 − 0,25 = 0,75."
+      },
+      {
+        "type": "nombre",
+        "titre": "Prévoir sur beaucoup d'essais",
+        "question": "On lance un dé équilibré 300 fois. Environ combien de fois obtiendra-t-on un 6 ?",
+        "reponse": 50,
+        "unite": "fois",
+        "indices": [
+          "Sur un grand nombre d'essais, la fréquence se rapproche de la probabilité 1/6.",
+          "Calcule 300 × 1/6."
+        ],
+        "solution": "300 × 1/6 = 50 fois environ (pas exactement : le hasard fait varier le résultat)."
       }
     ]
   },
@@ -160,7 +247,8 @@
     "titre": "La roue de la kermesse",
     "histoire": [
       "À la kermesse de l'école, une roue est partagée en **8 secteurs égaux** : 1 secteur « gros lot », 3 secteurs « petit lot » et 4 secteurs « perdu ».",
-      "Avant de tenter ta chance, calcule tes probabilités !"
+      "Chaque tour coûte un ticket. Les enfants font la queue en rêvant du gros lot : une immense peluche ! Mais les organisateurs, eux, doivent prévoir assez de lots sans se ruiner.",
+      "Avant de tenter ta chance, calcule tes probabilités. La roue est parfaitement équilibrée, et chaque tour ne dépend pas des précédents."
     ],
     "etapes": [
       {
@@ -183,6 +271,17 @@
           "Ou : 1 − P(perdu)."
         ],
         "solution": "4/8 = 1/2 = 0,5."
+      },
+      {
+        "type": "nombre",
+        "titre": "Perdre deux fois",
+        "question": "Tu joues deux fois. Quelle est la probabilité de perdre les deux fois ?",
+        "reponse": 0.25,
+        "indices": [
+          "P(perdu) = 4/8 = 1/2.",
+          "Multiplie les probabilités : 1/2 × 1/2."
+        ],
+        "solution": "1/2 × 1/2 = 1/4 = 0,25 : une chance sur quatre de repartir les mains vides deux fois de suite."
       },
       {
         "type": "nombre",
@@ -209,7 +308,7 @@
         "indice": "Utilise la probabilité 1/8 sur 400 parties."
       }
     ],
-    "conclusion": "Bravo ! Les organisateurs de jeux, les assureurs et les météorologues utilisent exactement ces calculs pour prévoir l'avenir… en moyenne."
+    "conclusion": "Bravo ! Tu as calculé des probabilités simples, utilisé l'événement contraire, multiplié des probabilités pour deux épreuves et prévu un résultat sur de nombreuses parties. Les organisateurs de jeux, les assureurs et les météorologues utilisent exactement ces calculs pour prévoir l'avenir… en moyenne. Souviens-toi : la roue n'a pas de mémoire, mais sur 400 tours, le hasard se laisse prévoir !"
   }
 }
 </script>
@@ -756,6 +855,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */

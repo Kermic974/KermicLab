@@ -47,6 +47,15 @@ export function validerContenu(c, ou = "contenu.json") {
     exiger(Array.isArray(n.paragraphes) && n.paragraphes.length >= 1 && n.paragraphes.every(texteNonVide), `${o} : au moins un paragraphe`);
     if (n.exemple) exiger(Array.isArray(n.exemple.etapes) && n.exemple.etapes.every(texteNonVide), `${o} : « exemple.etapes » invalide`);
   });
+  if (c.memo !== undefined) {
+    const m = c.memo, o = `${ou} memo`;
+    exiger(m && typeof m === "object" && !Array.isArray(m), `${o} : objet attendu`);
+    const formules = m.formules ?? [], points = m.pointsCles ?? [];
+    exiger(Array.isArray(formules) && Array.isArray(points) && formules.length + points.length >= 1, `${o} : au moins une formule ou un point clé`);
+    exiger(m.intro === undefined || texteNonVide(m.intro), `${o} : « intro » invalide`);
+    formules.forEach((f, i) => exiger(texteNonVide(f?.titre) && texteNonVide(f?.formule) && (f.explication === undefined || texteNonVide(f.explication)), `${o} formules[${i}] : « titre » et « formule » requis`));
+    points.forEach((p, i) => exiger(texteNonVide(p), `${o} pointsCles[${i}] : texte requis`));
+  }
   exiger(c.application && Array.isArray(c.application.exercices) && c.application.exercices.length >= 3, `${ou} : « application.exercices » (au moins 3)`);
   if (c.application.figure) validerFigure(c.application.figure, `${ou} application.figure`);
   c.application.exercices.forEach((ex, i) => validerExercice(ex, `${ou} application.exercices[${i}]`));
@@ -76,7 +85,7 @@ export async function genererPage({ fiche, contenu, langue = "fr" }) {
   const { page, style, moteur } = await lireGabarit();
   const meta = {
     id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, date: fiche.date, langue,
-    onglets: ["explication", "application", "mise-en-situation", "self-test"], gabarit: VERSION_GABARIT
+    onglets: ["explication", ...(contenu.memo ? ["memo"] : []), "application", "mise-en-situation", "self-test"], gabarit: VERSION_GABARIT
   };
   const valeurs = {
     ID: echapperHtml(fiche.id), TITRE: echapperHtml(fiche.titre), VERSION: echapperHtml(fiche.version), LANGUE: echapperHtml(langue),

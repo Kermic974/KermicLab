@@ -20,7 +20,15 @@
       "paragraphes": [
         "→AB a pour coordonnées (xB − xA ; yB − yA ; zB − zA). Le milieu de [AB] a pour coordonnées les moyennes des coordonnées.",
         "Dans un repère orthonormé, la norme de →u(x ; y ; z) vaut **√(x² + y² + z²)** (Pythagore deux fois !), et le produit scalaire vaut **xx' + yy' + zz'**."
-      ]
+      ],
+      "exemple": {
+        "titre": "Calculer la distance entre deux points",
+        "etapes": [
+          "A(1 ; 2 ; 2) et B(4 ; 6 ; 2), donc →AB = (4 − 1 ; 6 − 2 ; 2 − 2) = (3 ; 4 ; 0).",
+          "AB = ‖→AB‖ = √(3² + 4² + 0²) = √25.",
+          "La distance entre A et B est 5 unités."
+        ]
+      }
     },
     {
       "titre": "Droites : représentation paramétrique",

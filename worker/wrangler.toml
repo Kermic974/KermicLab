@@ -15,6 +15,7 @@ GITHUB_REPO = "kermic974/trigoLab"
 ORIGINES_AUTORISEES = "https://www.kermiclab.online,https://kermiclab.online,https://kermiclab.pages.dev,http://localhost:8788"
 TAILLE_MAX_MESSAGE = "500"
 LIMITE_PAR_MINUTE = "20"
+AUTH_CALLBACK_URL = "https://kermiclab.online/auth/callback"
 
 [[d1_databases]]
 binding = "DB"

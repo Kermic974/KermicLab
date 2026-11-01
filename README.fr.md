@@ -28,8 +28,11 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
-Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
-jeton en lecture seule. Ce dépôt ne contient qu'une maquette d'exemple (`catalogue/trigo-cercle`).
+Les maquettes privées sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
+jeton en lecture seule. Ce dépôt contient aussi des exemples publics dans `catalogue/`, en mathématiques,
+physique-chimie et philosophie : devoir, État, justice, liberté, langage, raison, science, technique et
+vérité. Ces neuf pages de philosophie utilisent le gabarit commun : explications progressives, auteurs,
+QCM auto-corrigés et défis de la vie quotidienne.
 
 ## Démarrage rapide
 

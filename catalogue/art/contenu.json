@@ -1,0 +1,58 @@
+{
+  "titresOnglets": { "explication": "Comprendre l'art", "application": "Jouer au critique", "mise-en-situation": "Notre exposition" },
+  "intro": "Un dessin, une chanson, un film : l'art nous fait percevoir le monde autrement. Explore la perspective « existence humaine et culture ». Les QCM vérifient des distinctions, pas tes goûts personnels.",
+  "niveaux": [
+    {
+      "titre": "Intuition : voir autrement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **œuvre d'art** est une création proposée à notre regard, à notre écoute ou à notre imagination. Elle peut émouvoir, raconter, faire réfléchir ou jouer avec les formes. Elle n'a pas besoin d'être jolie pour nous intéresser.",
+        "Petit jeu : regarde un objet ordinaire comme si tu voulais le dessiner. Sa couleur, son ombre ou sa forme changent-elles ce que tu remarques ?"
+      ],
+      "exemple": { "titre": "Une chaise, deux regards", "etapes": ["On utilise une chaise pour s'asseoir.", "Un dessin de cette chaise peut faire sentir la solitude ou la joie.", "La fonction pratique et l'expérience artistique ne sont pas la même chose."] },
+      "aRetenir": "L'art ne se réduit ni à l'utilité ni à la décoration."
+    },
+    {
+      "titre": "Collège : imiter ou inventer ?",
+      "niveau": "college",
+      "paragraphes": [
+        "L'**imitation**, ou *mimèsis*, représente quelque chose : un paysage, une action, une personne. Mais représenter n'est pas simplement copier. L'artiste choisit un cadrage, un rythme ou un point de vue.",
+        "Dans la *République*, **Platon** se méfie des images imitatives : elles peuvent nous éloigner de la connaissance et influencer nos émotions. **Aristote**, dans la *Poétique*, voit aussi dans l'imitation une source de plaisir et d'apprentissage.",
+        "Défi d'observation : imagine deux dessins du même arbre, l'un réaliste, l'autre abstrait. Qu'apprend-on à regarder dans chacun ?"
+      ],
+      "exemple": { "titre": "Une scène de dispute", "etapes": ["Une pièce montre une dispute inventée.", "Elle ne reproduit pas forcément un événement réel.", "Elle peut pourtant rendre compréhensible un conflit humain."] },
+      "aRetenir": "Une œuvre peut inventer et nous apprendre quelque chose : invention ne signifie pas mensonge."
+    },
+    {
+      "titre": "Lycée : peut-on discuter des goûts ?",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour **Kant**, le jugement de beauté repose sur un plaisir *désintéressé* : apprécier n'est pas vouloir posséder ou utiliser. Ce jugement est subjectif, mais nous cherchons souvent l'accord des autres, sans pouvoir démontrer la beauté comme un calcul.",
+        "Pour **Hegel**, l'art donne une forme sensible à des idées et à l'esprit humain. L'œuvre n'est donc pas seulement une copie de la nature.",
+        "Problème : si les goûts diffèrent, toute discussion est-elle inutile ? On peut comparer des raisons, des formes et des contextes sans imposer un goût unique. Distingue « cela me plaît » et « voilà ce que cette œuvre fait »."
+      ],
+      "exemple": { "titre": "Deux critiques", "etapes": ["Une personne aime une chanson, une autre non.", "Elles comparent ses paroles et sa construction.", "Elles peuvent mieux la comprendre sans finir par l'aimer autant."] },
+      "aRetenir": "Argumenter sur une œuvre n'oblige pas tout le monde à ressentir la même chose."
+    }
+  ],
+  "application": {
+    "intro": "Choisis la distinction ou la thèse présentée dans la page. Aucune réponse ne juge tes préférences.",
+    "exercices": [
+      { "type": "qcm", "titre": "Créer", "question": "Une œuvre qui dérange peut-elle avoir un intérêt artistique ?", "choix": ["Non, l'art doit toujours être joli", "Oui, elle peut faire réfléchir", "Seulement si elle coûte cher"], "bonne": 1, "indice": "Pense à ce qu'une œuvre fait, pas seulement à sa beauté.", "explication": "L'intérêt artistique ne se réduit pas au joli : une œuvre peut questionner ou émouvoir." },
+      { "type": "qcm", "titre": "Imiter", "question": "Que désigne la mimèsis ?", "choix": ["Le prix d'une œuvre", "L'interdiction d'inventer", "L'imitation ou la représentation"], "bonne": 2, "explication": "La mimèsis représente le monde ou les actions humaines, avec des choix de l'artiste." },
+      { "type": "qcm", "titre": "Platon", "question": "Quel risque Platon souligne-t-il à propos des images imitatives ?", "choix": ["Confondre apparence et connaissance", "Ne jamais ressentir d'émotion", "Apprendre automatiquement la vérité"], "bonne": 0, "explication": "Dans la République, Platon critique le pouvoir des apparences et leur éloignement de la connaissance." },
+      { "type": "qcm", "titre": "Aristote", "question": "Selon Aristote, l'imitation peut…", "choix": ["supprimer tout apprentissage", "procurer du plaisir et faire apprendre", "être uniquement une copie mécanique"], "bonne": 1, "explication": "La Poétique relie l'imitation au plaisir de reconnaître et d'apprendre." },
+      { "type": "qcm", "titre": "Kant", "question": "Que signifie ici un plaisir désintéressé ?", "choix": ["Ne rien ressentir", "Vouloir revendre l'œuvre", "Apprécier sans chercher à posséder ou utiliser"], "bonne": 2, "explication": "Désintéressé ne veut pas dire indifférent : le plaisir ne dépend pas d'un avantage pratique." }
+    ]
+  },
+  "situation": {
+    "titre": "Une exposition dans le quartier",
+    "histoire": ["La bibliothèque prépare une exposition : portraits, collages et objets détournés.", "Le groupe doit écrire des cartels qui invitent à observer sans dicter ce qu'il faut aimer."],
+    "etapes": [
+      { "type": "qcm", "titre": "Un objet détourné", "question": "Une vieille tasse devient une sculpture. Quelle question ouvre une réflexion ?", "choix": ["Combien de boissons contient-elle ?", "Quel regard nouveau cette présentation propose-t-elle ?", "Pourquoi tout le monde doit-il l'aimer ?"], "bonne": 1, "explication": "Le changement de contexte invite à distinguer usage quotidien et expérience artistique." },
+      { "type": "qcm", "titre": "Le cartel", "question": "Quel cartel permet de discuter d'un portrait ?", "choix": ["Observez comment les couleurs créent une atmosphère", "Ce portrait est beau, aucune discussion possible", "Si vous ne l'aimez pas, vous avez tort"], "bonne": 0, "explication": "L'observation de la composition donne des raisons partageables sans imposer un goût." },
+      { "type": "qcm", "titre": "Le désaccord", "question": "Deux visiteurs ne sont pas d'accord. Que proposer ?", "choix": ["Un vote qui prouve la beauté", "Interdire les avis différents", "Comparer leurs raisons et leurs perceptions"], "bonne": 2, "explication": "Une discussion peut enrichir la compréhension sans supprimer les différences de goût." }
+    ],
+    "conclusion": "Mission accomplie ! Imagine maintenant un cartel pour un objet ordinaire : décris ce qu'il fait voir, sans imposer qu'on l'aime."
+  }
+}

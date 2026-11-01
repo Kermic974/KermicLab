@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les fonctions affines et linéaires – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -77,8 +77,10 @@
       "niveau": "seconde",
       "paragraphes": [
         "Si **a > 0**, la fonction est **croissante** (la droite monte) ; si **a \u003c 0**, elle est **décroissante** (la droite descend) ; si a = 0, elle est constante.",
-        "f(x) = ax + b s'annule pour x = −b/a (avec a non nul) : c'est là que la droite coupe l'axe horizontal, et f change de signe."
-      ]
+        "f(x) = ax + b s'annule pour x = −b/a (avec a non nul) : c'est là que la droite coupe l'axe horizontal, et f change de signe.",
+        "Erreur fréquente : **a** est la pente et **b = f(0)** est l'ordonnée à l'origine. Ils ne jouent pas le même rôle."
+      ],
+      "aRetenir": "Pour f(x) = ax + b : b = f(0), le signe de a donne le sens de variation et la racine vaut −b/a si a ≠ 0."
     }
   ],
   "application": {
@@ -143,6 +145,16 @@
         "bonne": 1,
         "explication": "Le coefficient directeur a = −2 est négatif : la droite descend, la fonction est décroissante.",
         "indice": "Regarde le signe de a."
+      },
+      {
+        "type": "nombre",
+        "titre": "Zéro",
+        "question": "Pour f(x) = 2x − 6, quelle valeur de x annule f ?",
+        "reponse": 3,
+        "indices": [
+          "Résous 2x − 6 = 0."
+        ],
+        "solution": "2x = 6, donc x = 3."
       }
     ]
   },
@@ -745,6 +757,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */
