@@ -19,9 +19,11 @@ for (const id of NOTIONS) {
   test(`${id} : onglets, figure, aucune erreur ni violation CSP, pas de débordement mobile`, async () => {
     const { page, contexte, erreurs } = await ouvrir(nav, url(id), { viewport: { width: 360, height: 740 }, isMobile: true });
     await page.goto(url(id));
-    assert.deepEqual(await page.locator("[role=tab]").evaluateAll((n) => n.map((b) => b.dataset.onglet)), ["explication", "application", "mise-en-situation"]);
+    const onglets = await page.locator("[role=tab]").evaluateAll((n) => n.map((b) => b.dataset.onglet));
+    const ongletsAttendus = ["explication", ...(onglets.includes("memo") ? ["memo"] : []), "application", "mise-en-situation"];
+    assert.deepEqual(onglets, ongletsAttendus);
     assert.deepEqual((await page.evaluate(() => window.kermiclab.registre.map((o) => [o.id, o.actif]))).at(-1), ["self-test", false]);
-    for (const o of ["explication", "application", "mise-en-situation"]) {
+    for (const o of ongletsAttendus) {
       await page.click(`#onglet-${o}`);
       const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       assert.ok(debord <= 0, `${o} déborde de ${debord}px`);

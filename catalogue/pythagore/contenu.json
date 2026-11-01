@@ -1,5 +1,10 @@
 {
-  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "titresOnglets": {
+    "explication": "Explication",
+    "memo": "Mémo",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
   "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
   "niveaux": [
     {
@@ -68,15 +73,48 @@
       ]
     }
   ],
+  "memo": {
+    "intro": "L'essentiel de la notion en un coup d'œil, à relire avant un contrôle.",
+    "formules": [
+      {
+        "titre": "Calculer l'hypoténuse",
+        "formule": "BC² = AB² + AC²",
+        "explication": "ABC est rectangle en A : BC est l'hypoténuse."
+      },
+      {
+        "titre": "Calculer un côté de l'angle droit",
+        "formule": "AC² = BC² − AB²",
+        "explication": "On soustrait le carré du côté connu au carré de l'hypoténuse."
+      },
+      {
+        "titre": "Réciproque",
+        "formule": "Si BC² = AB² + AC², alors ABC est rectangle en A",
+        "explication": "On compare le carré du plus grand côté à la somme des carrés des deux autres."
+      }
+    ],
+    "pointsCles": [
+      "L'**hypoténuse** est le côté opposé à l'angle droit : c'est le plus long.",
+      "Le théorème de Pythagore ne s'applique que dans un triangle **rectangle**.",
+      "Une longueur est positive : on garde la racine carrée positive."
+    ]
+  },
   "application": {
     "intro": "Fais varier les deux côtés de l'angle droit et regarde les aires des carrés. Cherche les valeurs qui donnent une hypoténuse entière !",
-    "figure": { "type": "pythagore", "a": 3, "b": 4 },
+    "figure": {
+      "type": "pythagore",
+      "a": 3,
+      "b": 4
+    },
     "exercices": [
       {
         "type": "qcm",
         "titre": "Vocabulaire",
         "question": "Dans un triangle rectangle, l'hypoténuse est…",
-        "choix": ["le côté opposé à l'angle droit", "le plus petit côté", "un des côtés de l'angle droit"],
+        "choix": [
+          "le côté opposé à l'angle droit",
+          "le plus petit côté",
+          "un des côtés de l'angle droit"
+        ],
         "bonne": 0,
         "explication": "L'hypoténuse fait face à l'angle droit, et c'est toujours le plus long côté."
       },
@@ -86,7 +124,10 @@
         "question": "Un triangle est rectangle. Les côtés de l'angle droit mesurent 9 cm et 12 cm. Combien mesure l'hypoténuse ?",
         "reponse": 15,
         "unite": "cm",
-        "indices": ["Calcule 9² + 12².", "9² + 12² = 81 + 144 = 225. Quel nombre multiplié par lui-même donne 225 ?"],
+        "indices": [
+          "Calcule 9² + 12².",
+          "9² + 12² = 81 + 144 = 225. Quel nombre multiplié par lui-même donne 225 ?"
+        ],
         "solution": "9² + 12² = 81 + 144 = 225, et √225 = 15 cm."
       },
       {
@@ -95,7 +136,10 @@
         "question": "L'hypoténuse mesure 10 cm et un côté de l'angle droit mesure 6 cm. Combien mesure l'autre côté ?",
         "reponse": 8,
         "unite": "cm",
-        "indices": ["Cette fois, on soustrait : 10² − 6².", "10² − 6² = 100 − 36 = 64."],
+        "indices": [
+          "Cette fois, on soustrait : 10² − 6².",
+          "10² − 6² = 100 − 36 = 64."
+        ],
         "solution": "10² − 6² = 100 − 36 = 64, et √64 = 8 cm."
       },
       {
@@ -105,14 +149,21 @@
         "reponse": 8.6,
         "tolerance": 0.05,
         "unite": "cm",
-        "indices": ["5² + 7² = 25 + 49 = 74.", "Utilise la touche √ de la calculatrice : √74 ≈ 8,602…"],
+        "indices": [
+          "5² + 7² = 25 + 49 = 74.",
+          "Utilise la touche √ de la calculatrice : √74 ≈ 8,602…"
+        ],
         "solution": "5² + 7² = 74, et √74 ≈ 8,6 cm (au dixième)."
       },
       {
         "type": "qcm",
         "titre": "La réciproque",
         "question": "Un triangle a des côtés de 5 cm, 12 cm et 13 cm. Est-il rectangle ?",
-        "choix": ["Oui", "Non", "On ne peut pas savoir"],
+        "choix": [
+          "Oui",
+          "Non",
+          "On ne peut pas savoir"
+        ],
         "bonne": 0,
         "indice": "Compare 13² avec 5² + 12².",
         "explication": "13² = 169 et 5² + 12² = 25 + 144 = 169 : d'après la réciproque du théorème de Pythagore, il est rectangle."
@@ -121,7 +172,10 @@
         "type": "qcm",
         "titre": "La contraposée",
         "question": "Un triangle a des côtés de 7 cm, 8 cm et 11 cm. Est-il rectangle ?",
-        "choix": ["Oui", "Non"],
+        "choix": [
+          "Oui",
+          "Non"
+        ],
         "bonne": 1,
         "indice": "Compare 11² avec 7² + 8².",
         "explication": "11² = 121 mais 7² + 8² = 49 + 64 = 113 : ce n'est pas égal, donc le triangle n'est pas rectangle."
@@ -139,7 +193,11 @@
         "type": "qcm",
         "titre": "Repérer l'hypoténuse",
         "question": "Dans ce triangle rectangle, quel côté est l'hypoténuse ?",
-        "choix": ["L'échelle", "Le mur", "Le sol entre le mur et le pied de l'échelle"],
+        "choix": [
+          "L'échelle",
+          "Le mur",
+          "Le sol entre le mur et le pied de l'échelle"
+        ],
         "bonne": 0,
         "indice": "L'angle droit est entre le mur et le sol. Quel côté lui fait face ?",
         "explication": "L'angle droit est au pied du mur : le côté qui lui fait face, c'est l'échelle."
@@ -151,14 +209,20 @@
         "reponse": 4.8,
         "tolerance": 0.001,
         "unite": "m",
-        "indices": ["Hauteur² = 5² − 1,4².", "5² − 1,4² = 25 − 1,96 = 23,04."],
+        "indices": [
+          "Hauteur² = 5² − 1,4².",
+          "5² − 1,4² = 25 − 1,96 = 23,04."
+        ],
         "solution": "h² = 5² − 1,4² = 25 − 1,96 = 23,04, donc h = √23,04 = 4,8 m."
       },
       {
         "type": "qcm",
         "titre": "Le chat est-il sauvé ?",
         "question": "La fenêtre du chat est à 4,5 m du sol. Le pompier peut-il l'atteindre en haut de l'échelle ?",
-        "choix": ["Oui", "Non"],
+        "choix": [
+          "Oui",
+          "Non"
+        ],
         "bonne": 0,
         "explication": "L'échelle touche le mur à 4,8 m, plus haut que la fenêtre (4,5 m) : le chat est sauvé !"
       },
@@ -168,7 +232,10 @@
         "question": "Par sécurité, le chef demande d'écarter le pied de l'échelle à 3 m du mur. À quelle hauteur arrive-t-elle maintenant ?",
         "reponse": 4,
         "unite": "m",
-        "indices": ["Hauteur² = 5² − 3².", "5² − 3² = 25 − 9 = 16."],
+        "indices": [
+          "Hauteur² = 5² − 3².",
+          "5² − 3² = 25 − 9 = 16."
+        ],
         "solution": "h² = 25 − 9 = 16, donc h = 4 m : trop bas pour la fenêtre ! Tu reconnais le triplet 3, 4, 5."
       }
     ],

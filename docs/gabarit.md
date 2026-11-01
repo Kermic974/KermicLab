@@ -39,6 +39,15 @@ Décision : [ADR 0011](decisions/0011-gabarit-de-notion.md). Exemples complets :
 }
 ```
 
+- **Mémo (optionnel)** : ajoute `"memo"` dans `titresOnglets` (titre de l'onglet, défaut « Mémo ») et une section `memo` ; l'onglet apparaît après « Explication ». Sans section `memo`, aucun onglet n'est ajouté (les notions existantes sont inchangées). Pense à ajouter `memo` à `onglets` dans `fiche.md`. Exemple : `catalogue/pythagore/`.
+  ```json
+  "memo": {
+    "intro": "Optionnel : phrase d'accueil.",
+    "formules": [ { "titre": "Hypoténuse", "formule": "BC² = AB² + AC²", "explication": "Optionnel." } ],
+    "pointsCles": ["Point à retenir avec **gras**."]
+  }
+  ```
+  Au moins une formule ou un point clé est requis.
 - **Niveaux** : au moins 2, du plus intuitif au plus formel (collège → lycée), avec le niveau scolaire dans `niveau`. Le premier est ouvert par défaut.
 - **Exercice `qcm`** : `question`, `choix` (≥ 2), `bonne` (indice à partir de 0), `explication` (affichée après la bonne réponse), `indice` optionnel (affiché après une erreur).
 - **Exercice `nombre`** : `question`, `reponse` (nombre), `indices` (≥ 1, affichés un par erreur), `solution`, et en option `unite`, `tolerance` (ex. `0.05` pour un arrondi au dixième), `fractionIrreductible: true` (l'élève doit écrire une fraction simplifiée, ex. `3/4`). L'élève peut écrire `3,5`, `3.5` ou `7/2`.
