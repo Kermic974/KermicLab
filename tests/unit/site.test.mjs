@@ -35,3 +35,11 @@ test("mesure d'audience : présente sur le chat, absente de l'application autono
   assert.match(chat, /<script type="module" src="https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js" data-cf-beacon=/);
   assert.doesNotMatch(autonome, /cloudflareinsights/);
 });
+
+test("les CSS et JS du chat portent l'empreinte de leur contenu (pas de mélange avec une version en cache)", async () => {
+  const [html, app, confidentialite] = await Promise.all(["index.html", "app.js", "confidentialite.html"].map((f) => readFile(`${racine}dist/${f}`, "utf8")));
+  assert.match(html, /<link rel="stylesheet" href="style\.css\?v=[0-9a-f]{10}">/);
+  assert.match(html, /<script type="module" src="app\.js\?v=[0-9a-f]{10}"><\/script>/);
+  assert.match(app, /from "\.\/progression\.js\?v=[0-9a-f]{10}"/);
+  assert.match(confidentialite, /href="style\.css\?v=[0-9a-f]{10}"/);
+});

@@ -1,5 +1,6 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le chat à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
+import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
 
@@ -22,6 +23,7 @@ await writeFile(`${racine}worker/src/generated/catalogue-index.json`, `${JSON.st
 
 await rm(`${racine}dist`, { recursive: true, force: true });
 await cp(`${racine}web`, `${racine}dist`, { recursive: true });
+await versionnerRessources(`${racine}dist`);
 // Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).
 const API_PAR_DEFAUT = "https://kermiclab-api.kermic.workers.dev";
 const apiUrl = (process.env.KERMICLAB_API_URL ?? API_PAR_DEFAUT).replace(/\/$/, "");
@@ -45,3 +47,25 @@ await writeFile(`${racine}dist/_headers`, `/*
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
+
+/**
+ * Ajoute l'empreinte du contenu aux URL des CSS et JS du chat (`style.css?v=…`). Cloudflare Pages les met en cache
+ * 4 h dans le navigateur alors que le HTML est revalidé à chaque visite : sans empreinte, une nouvelle page HTML
+ * pouvait s'afficher avec l'ancien CSS ou l'ancien JS. Les modules importés passent d'abord, pour que l'empreinte
+ * d'app.js change aussi quand seul un module change.
+ */
+async function versionnerRessources(dossier) {
+  const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
+  const versions = {};
+  for (const fichier of ["progression.js", "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
+  const appSource = await readFile(`${dossier}/app.js`, "utf8");
+  const app = appSource.replace(/from "\.\/progression\.js"/g, `from "./progression.js?v=${versions["progression.js"]}"`);
+  if (app === appSource) throw new Error("versionnerRessources : import de progression.js introuvable dans app.js");
+  await writeFile(`${dossier}/app.js`, app);
+  versions["app.js"] = empreinte(app);
+  for (const page of (await readdir(dossier)).filter((f) => f.endsWith(".html"))) {
+    const source = await readFile(`${dossier}/${page}`, "utf8");
+    const html = source.replace(/(href|src)="(style\.css|app\.js)"/g, (tout, attribut, fichier) => `${attribut}="${fichier}?v=${versions[fichier]}"`);
+    await writeFile(`${dossier}/${page}`, html);
+  }
+}
