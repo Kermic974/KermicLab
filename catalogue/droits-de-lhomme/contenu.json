@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Les droits de l'homme, ou droits humains, protègent chaque personne, quel que soit son genre ou son âge.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une dignité pour tous", "niveau": "pour démarrer",
+      "paragraphes": ["Les **droits humains** appartiennent à chaque personne parce qu'elle est humaine. Ils ne sont pas une récompense pour les bonnes notes, la richesse ou la popularité.", "Petit jeu : une personne est inconnue du groupe. A-t-elle moins droit au respect ? Non : la dignité n'a pas de condition d'entrée."],
+      "exemple": { "titre": "Une personne nouvelle", "etapes": ["Le groupe ne connaît pas encore un personnage.", "Il respecte quand même sa sécurité, sa dignité et sa vie privée."] },
+      "aRetenir": "Les droits humains concernent tout le monde, pas seulement les hommes adultes."
+    },
+    {
+      "titre": "Collège : plusieurs familles de droits", "niveau": "collège",
+      "paragraphes": ["La Déclaration universelle des droits de l'homme, ou **DUDH**, a été adoptée par l'ONU le 10 décembre 1948. Elle proclame notamment des droits à la vie, à la liberté, à l'éducation, au travail et à la protection sociale.", "Les droits civils et politiques, économiques, sociaux et culturels se complètent. Les enfants ont aussi des protections spécifiques, affirmées par la Convention relative aux droits de l'enfant de 1989 : protection, éducation et prise en compte de leur parole selon leur âge et leur maturité."],
+      "exemple": { "titre": "Apprendre en sécurité", "etapes": ["Un enfant doit pouvoir accéder à l'éducation.", "Sa sécurité et sa dignité doivent aussi être protégées : les droits vont ensemble."] },
+      "aRetenir": "Les droits sont universels et interdépendants ; les enfants ont des droits propres."
+    },
+    {
+      "titre": "Lycée : textes et garanties juridiques", "niveau": "lycée",
+      "paragraphes": ["La DUDH est une **déclaration**, pas un traité qui crée à lui seul une procédure de recours individuel. Elle a inspiré des traités contraignants pour les États parties, ainsi que des constitutions et des lois.", "La Convention européenne des droits de l'homme est un traité assorti d'une cour. Une requête à cette cour obéit à des conditions, notamment l'épuisement des recours internes utiles et des délais. Certains droits peuvent être limités dans un cadre strict ; l'interdiction de la torture est absolue."],
+      "exemple": { "titre": "Chercher une protection", "etapes": ["Une personne identifie le droit concerné et le texte applicable.", "Elle se renseigne auprès d'un service compétent sur les démarches nationales puis, si les conditions sont réunies, internationales."] },
+      "aRetenir": "Distingue proclamer un droit et organiser les moyens juridiques de le faire respecter."
+    }
+  ],
+  "application": {
+    "intro": "Repère la portée des droits et des textes.",
+    "exercices": [
+      { "type": "qcm", "titre": "Universalité", "question": "À qui appartiennent les droits humains ?", "choix": ["Aux personnes qui ont réussi un examen", "À chaque personne", "Seulement aux électeurs"], "bonne": 1, "explication": "Ils reposent sur l'humanité de chacun, non sur le mérite ou le droit de vote." },
+      { "type": "qcm", "titre": "La DUDH", "question": "Quelle affirmation décrit correctement la DUDH ?", "choix": ["C'est un règlement scolaire", "C'est un traité créant sa propre cour", "C'est une déclaration adoptée en 1948 qui a inspiré des textes contraignants"], "bonne": 2, "explication": "La DUDH est un texte de référence ; il faut la distinguer des traités et de leurs mécanismes." },
+      { "type": "qcm", "titre": "Les enfants", "question": "Les enfants ont-ils des droits ?", "choix": ["Oui, avec aussi des protections spécifiques", "Non, avant 18 ans", "Seulement s'ils savent voter"], "bonne": 0, "explication": "La Convention relative aux droits de l'enfant reconnaît leurs droits et des protections adaptées." }
+    ]
+  },
+  "situation": {
+    "titre": "Une charte pour un groupe fictif",
+    "histoire": ["Des personnages créent un groupe de discussion scolaire. Ils veulent une charte qui protège chacun.", "Aucun compte réel ni témoignage personnel n'est nécessaire pour ce défi."],
+    "etapes": [
+      { "type": "qcm", "titre": "Respecter la vie privée", "question": "Quelle règle inscrire ?", "choix": ["Ne pas publier de données ou de photos d'autrui sans respecter ses droits", "Tout membre doit donner publiquement son adresse"], "bonne": 0, "explication": "La participation au groupe ne justifie pas de renoncer à sa vie privée." },
+      { "type": "qcm", "titre": "Protéger tout le monde", "question": "Un membre enfreint la charte. Perd-il sa dignité ?", "choix": ["Oui, le groupe peut l'humilier", "Non, une réponse encadrée doit aussi respecter ses droits"], "bonne": 1, "explication": "Une sanction ou une modération n'autorise ni humiliation ni atteinte aux droits fondamentaux." }
+    ],
+    "conclusion": "Mission accomplie ! Ta charte protège les droits de tous, même en cas de désaccord ou d'erreur."
+  }
+}

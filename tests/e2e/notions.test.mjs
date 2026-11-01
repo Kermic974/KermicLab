@@ -1,6 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { readdir, stat } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
+import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import { servir, navigateur, ouvrir, racine } from "./outils.mjs";
 
 // Pages générées depuis gabarit/ : même contrat que trigo-cercle, plus exercices, étoiles et défi progressif.
@@ -31,6 +32,36 @@ for (const id of NOTIONS) {
       assert.ok(await page.locator("#panneau-application .figure svg *").count() > 3, "la figure est dessinée");
     }
     assert.equal(await page.locator("#connexion").isVisible(), false);
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  });
+}
+
+for (const { id } of CATALOGUE.index.maquettes.filter((m) => m.sujet.startsWith("emc/") && NOTIONS.includes(m.id))) {
+  test(`${id} : QCM corrigés et défi quotidien complet`, async () => {
+    const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+    const { page, contexte, erreurs } = await ouvrir(nav, url(id));
+    await page.goto(url(id));
+    await page.click("#onglet-application");
+    for (const [i, ex] of contenu.application.exercices.entries()) {
+      const exercice = page.locator(`[data-exercice=app-${i + 1}]`);
+      if (i === 0) {
+        await exercice.getByRole("button", { name: ex.choix[(ex.bonne + 1) % ex.choix.length], exact: true }).click();
+        assert.ok((await exercice.locator(".retour").textContent()).includes(ex.indice ?? "Pas tout à fait"));
+      }
+      await exercice.getByRole("button", { name: ex.choix[ex.bonne], exact: true }).click();
+      assert.ok((await exercice.locator(".retour").textContent()).includes(ex.explication));
+    }
+    await page.click("#onglet-mise-en-situation");
+    const etapes = page.locator("#panneau-mise-en-situation .exercice");
+    assert.equal(await etapes.nth(1).isVisible(), false);
+    for (const [i, ex] of contenu.situation.etapes.entries()) {
+      assert.equal(await etapes.nth(i).isVisible(), true);
+      await etapes.nth(i).getByRole("button", { name: ex.choix[ex.bonne], exact: true }).click();
+      assert.ok((await etapes.nth(i).locator(".retour").textContent()).includes(ex.explication));
+    }
+    assert.equal(await page.locator("#panneau-mise-en-situation .bravo").isVisible(), true);
+    assert.ok((await page.locator("#panneau-mise-en-situation .bravo").textContent()).includes(contenu.situation.conclusion));
     assert.deepEqual(erreurs, []);
     await contexte.close();
   });

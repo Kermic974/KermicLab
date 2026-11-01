@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- EMC : douze notions (laïcité, liberté, égalité, fraternité, justice, État de droit, citoyenneté, démocratie, intérêt général, droits de l'homme, discrimination, engagement civique), avec niveaux intuition → collège → lycée, exemples, QCM corrigés et défis quotidiens ; tests de contenu, routage et parcours interactifs.
 - Physique-chimie, vague 3 (terminale) : lois de Newton, gravitation et satellites, cinétique chimique, radioactivité, thermodynamique, condensateur et circuit RC, diffraction et interférences. Le programme de physique-chimie est couvert (23 notions ; 59 au catalogue).
 - Physique-chimie, vague 2 (seconde et première) : quantité de matière, atome et tableau périodique, réfraction et lentilles, oxydoréduction, travail et énergie mécanique, ondes mécaniques, absorbance et dosages.
 - Catalogue de **physique-chimie**, vague 1 (collège) : états de la matière, masse volumique et mélanges, atomes et transformations chimiques, acides et bases, mouvements, forces et poids, circuits électriques et loi d'Ohm, énergie, signaux sonores et lumineux. Feuille de route : `docs/chantiers/catalogue-physique-chimie.md`.
