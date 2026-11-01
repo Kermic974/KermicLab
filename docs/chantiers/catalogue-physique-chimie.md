@@ -1,6 +1,6 @@
 # Chantier : catalogue de physique-chimie (programme complet)
 
-**Niveau actuel : vagues 1 (collège) et 2 (seconde, première) en PR**
+**Niveau actuel : programme complet rédigé (23 notions, collège → terminale), en PR**
 
 Objectif : couvrir le programme de physique-chimie du collège (cycle 4) à la terminale (spécialité), une notion par page, du plus
 intuitif au plus formel. Même méthode que les mathématiques (`docs/chantiers/catalogue-maths.md`) : gabarit commun (ADR 0011),
@@ -38,13 +38,13 @@ de navigation du chat affiche un onglet par matière. Statuts : `en ligne` / `PR
 
 | Notion | Statut |
 |---|---|
-| `lois-de-newton` (deuxième loi, chute libre, mouvement dans un champ) | à faire |
-| `gravitation-et-satellites` (lois de Kepler) | à faire |
-| `cinetique-chimique` | à faire |
-| `radioactivite` | à faire |
-| `thermodynamique` (premier principe, transferts thermiques) | à faire |
-| `condensateur-et-circuit-rc` | à faire |
-| `diffraction-et-interferences` | à faire |
+| `lois-de-newton` (deuxième loi, chute libre, mouvement dans un champ) | PR ouverte |
+| `gravitation-et-satellites` (lois de Kepler) | PR ouverte |
+| `cinetique-chimique` | PR ouverte |
+| `radioactivite` | PR ouverte |
+| `thermodynamique` (premier principe, transferts thermiques) | PR ouverte |
+| `condensateur-et-circuit-rc` | PR ouverte |
+| `diffraction-et-interferences` | PR ouverte |
 
 ## Points d'attention
 

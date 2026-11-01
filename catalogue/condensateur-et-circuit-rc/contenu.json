@@ -1,0 +1,156 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un réservoir de charges",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **condensateur** est formé de deux plaques conductrices séparées par un isolant. Branché à un générateur, il se **charge** : des charges s'accumulent sur ses plaques. Il peut ensuite les restituer d'un coup, comme le flash d'un appareil photo.",
+        "Les écrans tactiles, les défibrillateurs et les cartes électroniques en sont remplis."
+      ]
+    },
+    {
+      "titre": "Charge et capacité",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La charge q portée par l'armature positive est proportionnelle à la tension à ses bornes : **q = C × u**, où C est la **capacité** en farads (F). On utilise souvent le microfarad (1 µF = 10⁻⁶ F).",
+        "L'intensité du courant est la dérivée de la charge : **i = dq/dt = C × du/dt**."
+      ]
+    },
+    {
+      "titre": "La charge du circuit RC",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un condensateur chargé à travers une résistance R par une tension E : **u_C(t) = E × (1 − e^(−t/τ))**, avec la **constante de temps τ = R × C** (en secondes).",
+        "Au bout de τ, le condensateur est chargé à **63 %** ; au bout de 5τ, il est considéré comme complètement chargé (plus de 99 %)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "R = 10 kΩ = 10 000 Ω et C = 100 µF = 10⁻⁴ F.",
+          "τ = 10 000 × 10⁻⁴ = 1 s.",
+          "Le condensateur est pratiquement chargé au bout de 5 s."
+        ]
+      }
+    },
+    {
+      "titre": "Décharge et énergie",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Lors de la décharge dans une résistance : **u_C(t) = E × e^(−t/τ)**.",
+        "Un condensateur chargé sous la tension u stocke une énergie **E = ½ × C × u²**."
+      ],
+      "aRetenir": "τ = R × C donne l'ordre de grandeur de la durée de charge ou de décharge."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : q = C u, τ = R C et E = ½ C u².",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Charge",
+        "question": "Un condensateur de 100 µF est chargé sous 12 V. Quelle est sa charge, en coulombs ?",
+        "reponse": 0.0012,
+        "unite": "C",
+        "indices": [
+          "q = C × u, avec C = 100 × 10⁻⁶ F."
+        ],
+        "solution": "10⁻⁴ × 12 = 0,0012 C."
+      },
+      {
+        "type": "nombre",
+        "titre": "Constante de temps",
+        "question": "R = 10 kΩ et C = 100 µF. Quelle est la constante de temps τ, en secondes ?",
+        "reponse": 1,
+        "unite": "s",
+        "indices": [
+          "τ = R × C = 10 000 × 10⁻⁴."
+        ],
+        "solution": "τ = 1 s."
+      },
+      {
+        "type": "nombre",
+        "titre": "À t = τ",
+        "question": "À quel pourcentage de sa tension finale un condensateur est-il chargé au bout d'une durée τ (arrondi à l'unité) ?",
+        "reponse": 63,
+        "tolerance": 0.5,
+        "unite": "%",
+        "indices": [
+          "u_C(τ) = E × (1 − e⁻¹)."
+        ],
+        "solution": "1 − e⁻¹ ≈ 0,63, soit 63 %."
+      },
+      {
+        "type": "nombre",
+        "titre": "Énergie",
+        "question": "Quelle énergie stocke un condensateur de 100 µF chargé sous 10 V ?",
+        "reponse": 0.005,
+        "unite": "J",
+        "indices": [
+          "E = ½ × C × u² = 0,5 × 10⁻⁴ × 100."
+        ],
+        "solution": "0,005 J."
+      },
+      {
+        "type": "qcm",
+        "titre": "Après 5τ",
+        "question": "Au bout d'une durée égale à 5τ, le condensateur est…",
+        "choix": [
+          "chargé à environ 50 %",
+          "pratiquement complètement chargé",
+          "déchargé"
+        ],
+        "bonne": 1,
+        "explication": "1 − e⁻⁵ ≈ 0,993 : il est chargé à plus de 99 %."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le flash de l'appareil photo",
+    "histoire": [
+      "Le flash d'un appareil photo utilise un condensateur de **200 µF**, chargé sous **300 V**, qui se décharge d'un coup dans la lampe.",
+      "La décharge dure environ **1 ms**."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La charge",
+        "question": "Quelle charge le condensateur accumule-t-il, en coulombs ?",
+        "reponse": 0.06,
+        "unite": "C",
+        "indices": [
+          "q = C × u = 200 × 10⁻⁶ × 300."
+        ],
+        "solution": "2 × 10⁻⁴ × 300 = 0,06 C."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'énergie",
+        "question": "Quelle énergie stocke-t-il, en joules ?",
+        "reponse": 9,
+        "unite": "J",
+        "indices": [
+          "E = ½ × C × u² = 0,5 × 2 × 10⁻⁴ × 300²."
+        ],
+        "solution": "0,5 × 2 × 10⁻⁴ × 90 000 = 9 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "La puissance de l'éclair",
+        "question": "Quelle est la puissance moyenne pendant la décharge d'1 ms ?",
+        "reponse": 9000,
+        "unite": "W",
+        "indices": [
+          "P = E / t = 9 / 0,001."
+        ],
+        "solution": "9 / 0,001 = 9 000 W : l'énergie d'une pile, libérée en un éclair !"
+      }
+    ],
+    "conclusion": "Bravo ! Le condensateur ne stocke pas beaucoup d'énergie, mais il peut la libérer très vite : c'est tout l'intérêt du flash et du défibrillateur."
+  }
+}

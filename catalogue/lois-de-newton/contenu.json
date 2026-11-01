@@ -1,0 +1,165 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : pousser plus fort, accélérer plus",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Plus on pousse fort un chariot, plus il accélère ; plus il est chargé, moins il accélère. Newton a traduit cette intuition en une loi qui décrit le mouvement de presque tout, des balles de tennis aux planètes."
+      ]
+    },
+    {
+      "titre": "Le vecteur accélération",
+      "niveau": "terminale",
+      "paragraphes": [
+        "L'**accélération** mesure la variation de la vitesse au cours du temps : **a = dv/dt**, en m/s². Elle est non nulle dès que la vitesse change de **valeur** ou de **direction** (un virage à vitesse constante est accéléré !)."
+      ]
+    },
+    {
+      "titre": "La deuxième loi de Newton",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Dans un référentiel galiléen : **ΣF = m × a** (la somme des forces est égale à la masse multipliée par le vecteur accélération).",
+        "Si ΣF = 0, on retrouve le principe d'inertie (première loi). **Troisième loi** : les forces d'interaction entre deux objets sont opposées."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une voiture de 1 000 kg est soumise à une force résultante de 2 000 N.",
+          "a = ΣF / m = 2 000 / 1 000.",
+          "a = 2 m/s² : sa vitesse augmente de 2 m/s chaque seconde."
+        ]
+      }
+    },
+    {
+      "titre": "La chute libre",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un objet en **chute libre** n'est soumis qu'à son poids : m a = m g, donc **a = g**, quelle que soit sa masse.",
+        "Lâché sans vitesse initiale : **v = g t** et la distance parcourue vaut **d = ½ g t²**. Une plume et un marteau lâchés sur la Lune (sans air) tombent ensemble — l'astronaute David Scott l'a montré en 1971."
+      ]
+    },
+    {
+      "titre": "Mouvement d'un projectile",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un projectile lancé avec une vitesse v₀ faisant un angle α avec l'horizontale a pour équations horaires : **x(t) = v₀ cos α × t** et **z(t) = −½ g t² + v₀ sin α × t**.",
+        "Horizontalement, le mouvement est uniforme ; verticalement, il est uniformément accéléré. La trajectoire est une **parabole**."
+      ],
+      "aRetenir": "Méthode : système, référentiel, bilan des forces, deuxième loi de Newton, puis intégration pour trouver v(t) et la position."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : ΣF = m × a et chute libre (g = 9,8 m/s²).",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Accélération",
+        "question": "Une voiture de 1 000 kg subit une force résultante de 2 000 N. Quelle est son accélération ?",
+        "reponse": 2,
+        "unite": "m/s²",
+        "indices": [
+          "a = ΣF / m."
+        ],
+        "solution": "2 000 / 1 000 = 2 m/s²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Force",
+        "question": "Quelle force résultante faut-il pour donner une accélération de 3 m/s² à un objet de 50 kg ?",
+        "reponse": 150,
+        "unite": "N",
+        "indices": [
+          "ΣF = m × a."
+        ],
+        "solution": "50 × 3 = 150 N."
+      },
+      {
+        "type": "nombre",
+        "titre": "Vitesse en chute libre",
+        "question": "Un objet est lâché sans vitesse. Quelle est sa vitesse au bout de 2 s de chute libre ?",
+        "reponse": 19.6,
+        "unite": "m/s",
+        "indices": [
+          "v = g t."
+        ],
+        "solution": "9,8 × 2 = 19,6 m/s."
+      },
+      {
+        "type": "nombre",
+        "titre": "Distance de chute",
+        "question": "Quelle distance parcourt-il pendant les 3 premières secondes ?",
+        "reponse": 44.1,
+        "unite": "m",
+        "indices": [
+          "d = ½ g t²."
+        ],
+        "solution": "0,5 × 9,8 × 9 = 44,1 m."
+      },
+      {
+        "type": "qcm",
+        "titre": "Deux masses",
+        "question": "Sans frottement de l'air, une bille de 10 g et une boule de 5 kg lâchées en même temps de la même hauteur…",
+        "choix": [
+          "arrivent en même temps",
+          "la plus lourde arrive avant",
+          "la plus légère arrive avant"
+        ],
+        "bonne": 0,
+        "explication": "En chute libre, a = g pour tous les objets, quelle que soit leur masse."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plongeon de la falaise",
+    "histoire": [
+      "Une plongeuse se laisse tomber, sans vitesse initiale, d'une falaise de **20 m**. On néglige les frottements de l'air (g = 9,8 m/s²).",
+      "Calculons sa chute."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La durée",
+        "question": "Combien de temps dure la chute (arrondi au dixième de seconde) ?",
+        "reponse": 2.0,
+        "tolerance": 0.05,
+        "unite": "s",
+        "indices": [
+          "20 = ½ × 9,8 × t², donc t² = 40 / 9,8.",
+          "t = √(40 / 9,8) ≈ √4,08."
+        ],
+        "solution": "t ≈ 2,0 s."
+      },
+      {
+        "type": "nombre",
+        "titre": "La vitesse d'entrée dans l'eau",
+        "question": "À quelle vitesse entre-t-elle dans l'eau (arrondie au m/s) ?",
+        "reponse": 20,
+        "tolerance": 0.5,
+        "unite": "m/s",
+        "indices": [
+          "v = g t, ou v = √(2 g h) = √392."
+        ],
+        "solution": "√392 ≈ 19,8 m/s, soit environ 20 m/s (71 km/h)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une autre plongeuse",
+        "question": "Une plongeuse deux fois plus lourde ferait la même chute en…",
+        "choix": [
+          "deux fois moins de temps",
+          "le même temps",
+          "deux fois plus de temps"
+        ],
+        "bonne": 1,
+        "explication": "La durée d'une chute libre ne dépend pas de la masse."
+      }
+    ],
+    "conclusion": "Splash ! Les lois de Newton prédisent la chute d'une plongeuse comme celle d'une sonde spatiale : c'est la même physique partout."
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : lentes ou rapides",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une explosion dure une fraction de seconde ; la rouille met des semaines. La **cinétique chimique** étudie la **vitesse** des transformations et ce qui la modifie.",
+        "Au quotidien : on met les aliments au réfrigérateur pour **ralentir** leur dégradation, et la cocotte-minute **accélère** la cuisson."
+      ]
+    },
+    {
+      "titre": "Les facteurs cinétiques",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Une transformation est en général plus rapide si : la **température** augmente, la **concentration** des réactifs augmente, la **surface de contact** entre réactifs augmente (un sucre en poudre se dissout plus vite qu'un morceau), ou si l'on ajoute un **catalyseur**."
+      ]
+    },
+    {
+      "titre": "Vitesse et temps de demi-réaction",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La vitesse volumique de disparition d'un réactif A vaut v = −d[A]/dt : c'est la pente (au signe près) de la courbe [A] en fonction du temps.",
+        "Le **temps de demi-réaction t½** est la durée au bout de laquelle l'avancement atteint la moitié de sa valeur finale."
+      ]
+    },
+    {
+      "titre": "La loi de vitesse d'ordre 1",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour une loi d'**ordre 1**, v = k[A], et la concentration décroît exponentiellement : **[A] = [A]₀ × e^(−kt)**.",
+        "Le temps de demi-réaction vaut alors **t½ = ln 2 / k**, indépendant de la concentration initiale : à chaque t½, la concentration est divisée par 2."
+      ],
+      "exemple": {
+        "titre": "Exemple : t½ = 10 min",
+        "etapes": [
+          "Au bout de 10 min, il reste 1/2 du réactif.",
+          "Au bout de 20 min, 1/4 ; au bout de 30 min, 1/8.",
+          "1/8 = 12,5 %."
+        ]
+      }
+    },
+    {
+      "titre": "La catalyse",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un **catalyseur** accélère une réaction **sans être consommé** : on le retrouve intact à la fin. Il ne change pas l'état final, seulement la vitesse pour l'atteindre.",
+        "Exemples : les **enzymes** dans notre corps, le pot catalytique des voitures (platine, palladium)."
+      ],
+      "aRetenir": "Un catalyseur n'apparaît pas dans l'équation de la réaction."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les facteurs cinétiques et la loi d'ordre 1.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Température",
+        "question": "Quand on augmente la température, une transformation chimique est en général…",
+        "choix": [
+          "plus rapide",
+          "plus lente",
+          "inchangée"
+        ],
+        "bonne": 0,
+        "explication": "La température est un facteur cinétique : les particules s'agitent davantage et réagissent plus vite."
+      },
+      {
+        "type": "qcm",
+        "titre": "Catalyseur",
+        "question": "Un catalyseur…",
+        "choix": [
+          "accélère la réaction sans être consommé",
+          "est un réactif consommé",
+          "modifie les produits obtenus"
+        ],
+        "bonne": 0,
+        "explication": "Il accélère la réaction et se retrouve intact à la fin."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trois demi-vies",
+        "question": "Pour une loi d'ordre 1 avec t½ = 10 min, quel pourcentage du réactif reste-t-il au bout de 30 min ?",
+        "reponse": 12.5,
+        "unite": "%",
+        "indices": [
+          "30 min = 3 demi-réactions : (1/2)³."
+        ],
+        "solution": "(1/2)³ = 1/8 = 12,5 %."
+      },
+      {
+        "type": "nombre",
+        "titre": "Constante de vitesse",
+        "question": "Une réaction d'ordre 1 a une constante k = 0,0693 min⁻¹. Quel est son temps de demi-réaction, en minutes ?",
+        "reponse": 10,
+        "tolerance": 0.05,
+        "unite": "min",
+        "indices": [
+          "t½ = ln 2 / k, avec ln 2 ≈ 0,693."
+        ],
+        "solution": "0,693 / 0,0693 = 10 min."
+      },
+      {
+        "type": "nombre",
+        "titre": "Deux demi-vies",
+        "question": "[A]₀ = 0,8 mol/L. Quelle est la concentration au bout de deux temps de demi-réaction (ordre 1) ?",
+        "reponse": 0.2,
+        "unite": "mol/L",
+        "indices": [
+          "Elle est divisée par 2, puis encore par 2."
+        ],
+        "solution": "0,8 / 4 = 0,2 mol/L."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'eau oxygénée",
+    "histoire": [
+      "L'eau oxygénée H₂O₂ se décompose lentement en eau et en dioxygène. Dans les conditions de l'expérience, cette décomposition suit une loi d'ordre 1, avec **t½ = 20 min**.",
+      "La concentration initiale est **[H₂O₂]₀ = 1,0 mol/L**."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Après 20 min",
+        "question": "Quelle est la concentration au bout de 20 minutes ?",
+        "reponse": 0.5,
+        "unite": "mol/L",
+        "indices": [
+          "20 min = t½."
+        ],
+        "solution": "1,0 / 2 = 0,5 mol/L."
+      },
+      {
+        "type": "nombre",
+        "titre": "Après une heure",
+        "question": "Et au bout de 60 minutes ?",
+        "reponse": 0.125,
+        "unite": "mol/L",
+        "indices": [
+          "60 min = 3 t½."
+        ],
+        "solution": "1,0 / 2³ = 0,125 mol/L."
+      },
+      {
+        "type": "qcm",
+        "titre": "La catalase",
+        "question": "On ajoute une enzyme, la catalase (présente dans le sang). Le dégagement de dioxygène…",
+        "choix": [
+          "devient beaucoup plus rapide",
+          "s'arrête",
+          "ne change pas"
+        ],
+        "bonne": 0,
+        "explication": "La catalase est un catalyseur : c'est pour cela que l'eau oxygénée mousse sur une plaie."
+      }
+    ],
+    "conclusion": "Bravo ! Cuisine, médicaments, pollution : contrôler la vitesse des réactions est l'un des grands métiers de la chimie."
+  }
+}
