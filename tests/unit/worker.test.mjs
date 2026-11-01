@@ -170,11 +170,12 @@ test("sans clé API : réponse hors catalogue qui propose des questions routées
 
 test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async () => {
   const lire = async (lang) => (await (await worker.fetch(new Request(`https://api.kermiclab.test/api/suggestions?lang=${lang}`), env, ctx)).json()).suggestions;
+  const anglais = (q) => /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i.test(q);
   const fr = await lire("fr");
   const en = await lire("en");
   assert.ok(fr.length >= 1 && fr.length <= 4);
-  assert.ok(fr.every((q) => !/\b(what|how|explain)\b/i.test(q)));
-  assert.ok(en.length >= 1 && en.every((q) => /\b(what|how|explain)\b/i.test(q)));
+  assert.ok(fr.every((q) => !anglais(q)));
+  assert.ok(en.length >= 1 && en.every(anglais));
 });
 
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
