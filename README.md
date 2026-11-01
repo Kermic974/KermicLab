@@ -29,8 +29,11 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
-Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository only ships a minimal example page (`catalogue/trigo-cercle`).
+Private pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
+read-only token. This repository also ships public examples in `catalogue/`, including mathematics,
+physics and chemistry, and nine philosophy pages: duty, the state, justice, freedom, language, reason,
+science, technology and truth. These philosophy pages use the common template, with progressive
+explanations, authors, self-correcting quizzes and everyday challenges.
 
 ## Quick start
 

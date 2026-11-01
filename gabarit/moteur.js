@@ -420,6 +420,24 @@
       });
     } });
 
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
+    } });
+
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */
   enregistrerOnglet({ id: "application", type: "application", titre: C.titresOnglets?.application ?? "S'entraîner",
     rendu(panneau) {

@@ -2,7 +2,7 @@
 id: transformations
 titre: Les transformations
 sujet: mathematiques/transformations
-version: 1.0.0
+version: 1.1.0
 date: 2026-11-01
 niveau: college
 langues: fr
@@ -35,5 +35,5 @@ questions:
 Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
 
 - **Explication** : du miroir à l'homothétie, en passant par le demi-tour, le glissement et la rotation.
-- **S'entraîner** : 6 exercices corrigés.
-- **Défi** : rosaces, frises et photos, en 4 étapes.
+- **S'entraîner** : 10 exercices corrigés.
+- **Défi** : rosaces, frises et photos, en 5 étapes.

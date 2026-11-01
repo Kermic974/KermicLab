@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Diviseurs, multiples et nombres premiers – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "arithmetique",
   "titre": "Diviseurs, multiples et nombres premiers",
   "sujet": "mathematiques/arithmetique",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -37,15 +37,27 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Avec 12 œufs, on peut faire 1 rangée de 12, 2 rangées de 6, 3 de 4, 4 de 3, 6 de 2 ou 12 de 1 : toujours sans reste. Les nombres **1, 2, 3, 4, 6 et 12** sont les **diviseurs** de 12.",
-        "Avec 7 œufs, impossible de faire autre chose qu'une rangée de 7 ou 7 rangées de 1 : 7 est un nombre **premier**."
-      ]
+        "Avec 7 œufs, impossible de faire autre chose qu'une rangée de 7 ou 7 rangées de 1 : 7 est un nombre **premier**.",
+        "On retrouve les diviseurs dans la vie de tous les jours : former des équipes égales pour un match, partager des cartes ou des billes sans reste, ranger des chaises en rangées complètes."
+      ],
+      "exemple": {
+        "titre": "Exemple : les 12 œufs",
+        "etapes": [
+          "12 = 1 × 12, 12 = 2 × 6 et 12 = 3 × 4 : chaque produit donne deux diviseurs.",
+          "Les diviseurs de 12 sont donc 1, 2, 3, 4, 6 et 12.",
+          "Pour 7 : seul 1 × 7 = 7 convient, donc 7 n'a que deux diviseurs (1 et 7)."
+        ]
+      },
+      "aRetenir": "Un diviseur de n est un nombre qui « tombe juste » dans n : la division se fait sans reste."
     },
     {
       "titre": "Multiples, diviseurs et critères",
       "niveau": "5e / 4e",
       "paragraphes": [
         "a est un **multiple** de b (et b un **diviseur** de a) si a = b × k avec k entier : 35 = 5 × 7, donc 35 est un multiple de 5 et 5 divise 35.",
-        "Critères de divisibilité : par **2** si le nombre est pair ; par **5** s'il finit par 0 ou 5 ; par **10** s'il finit par 0 ; par **3** (ou **9**) si la somme de ses chiffres est un multiple de 3 (ou de 9)."
+        "Critères de divisibilité : par **2** si le nombre est pair ; par **5** s'il finit par 0 ou 5 ; par **10** s'il finit par 0 ; par **3** (ou **9**) si la somme de ses chiffres est un multiple de 3 (ou de 9).",
+        "Les multiples, ce sont les résultats des tables de multiplication : les multiples de 7 sont 7, 14, 21, 28… Ils se répètent à l'infini, comme les pas réguliers d'un sauteur de 7 en 7 sur une piste graduée.",
+        "Autre critère utile : un nombre est divisible par **4** si le nombre formé par ses deux derniers chiffres l'est (316 est divisible par 4 car 16 = 4 × 4)."
       ],
       "exemple": {
         "titre": "Exemple : 234",
@@ -54,22 +66,36 @@
           "2 + 3 + 4 = 9 : divisible par 3 et par 9.",
           "Il finit par 4 : pas divisible par 5."
         ]
-      }
+      },
+      "aRetenir": "Pair : 2 · finit par 0 ou 5 : 5 · finit par 0 : 10 · somme des chiffres multiple de 3 : 3 · de 9 : 9."
     },
     {
       "titre": "Les nombres premiers",
       "niveau": "4e / 3e",
       "paragraphes": [
         "Un nombre **premier** a exactement deux diviseurs : 1 et lui-même. Les premiers : 2, 3, 5, 7, 11, 13, 17, 19, 23, 29… Attention, **1 n'est pas premier** (un seul diviseur).",
-        "Tout entier supérieur à 1 se **décompose en produit de facteurs premiers**, de façon unique : 60 = 2 × 2 × 3 × 5 = 2² × 3 × 5."
-      ]
+        "Tout entier supérieur à 1 se **décompose en produit de facteurs premiers**, de façon unique : 60 = 2 × 2 × 3 × 5 = 2² × 3 × 5.",
+        "Pour savoir si un nombre est premier, on n'a pas besoin de tout essayer : il suffit de tester les nombres premiers dont le carré ne dépasse pas ce nombre. Pour 97, on teste 2, 3, 5 et 7 (car 11² = 121 > 97) : aucun ne divise 97, donc 97 est premier.",
+        "Comme les briques de LEGO® qui construisent n'importe quel assemblage, les nombres premiers sont les **briques** qui construisent tous les entiers par multiplication."
+      ],
+      "exemple": {
+        "titre": "Exemple : décomposer 60",
+        "etapes": [
+          "60 = 2 × 30.",
+          "30 = 2 × 15, puis 15 = 3 × 5.",
+          "Donc 60 = 2 × 2 × 3 × 5 = 2² × 3 × 5."
+        ]
+      },
+      "aRetenir": "1 n'est pas premier ; 2 est le seul nombre premier pair."
     },
     {
       "titre": "Le PGCD et les fractions irréductibles",
       "niveau": "3e",
       "paragraphes": [
         "Le **PGCD** (plus grand diviseur commun) de deux nombres se lit sur leurs décompositions : on garde les facteurs communs.",
-        "Diviser numérateur et dénominateur par leur PGCD donne directement une **fraction irréductible**."
+        "Diviser numérateur et dénominateur par leur PGCD donne directement une **fraction irréductible**.",
+        "Le **PPCM** (plus petit multiple commun non nul) sert à faire coïncider des rythmes. Deux bus passent, l'un toutes les 6 minutes, l'autre toutes les 8 minutes : partis ensemble, ils se retrouvent au bout de PPCM(6 ; 8) = 24 minutes (multiples de 6 : 6, 12, 18, 24 ; multiples de 8 : 8, 16, 24).",
+        "Il existe aussi une méthode sans décomposition, l'**algorithme d'Euclide** : on divise, puis on recommence avec le diviseur et le reste, jusqu'à obtenir un reste nul. Le dernier reste non nul est le PGCD : 126 = 1 × 84 + 42, puis 84 = 2 × 42 + 0, donc PGCD(84 ; 126) = 42."
       ],
       "exemple": {
         "titre": "Exemple : simplifier 84/126",
@@ -78,7 +104,8 @@
           "Facteurs communs : 2 × 3 × 7 = 42, donc PGCD = 42.",
           "84/126 = (84 ÷ 42)/(126 ÷ 42) = 2/3."
         ]
-      }
+      },
+      "aRetenir": "PGCD pour partager ou découper en parts égales ; PPCM pour se retrouver, synchroniser, recouvrir."
     },
     {
       "titre": "Plus loin : démontrer",
@@ -86,7 +113,16 @@
       "paragraphes": [
         "Un entier pair s'écrit 2k, un impair 2k + 1. La somme de deux impairs, (2k + 1) + (2m + 1) = 2(k + m + 1), est donc **toujours paire**.",
         "Il existe une **infinité** de nombres premiers : Euclide l'a démontré il y a plus de 2 000 ans. Ils sont au cœur du chiffrement qui protège tes messages sur Internet."
-      ]
+      ],
+      "exemple": {
+        "titre": "Exemple : trois entiers consécutifs",
+        "etapes": [
+          "Appelons-les n, n + 1 et n + 2 : n peut être n'importe quel entier.",
+          "Leur somme vaut n + (n + 1) + (n + 2) = 3n + 3.",
+          "3n + 3 = 3(n + 1) : c'est toujours un multiple de 3, quel que soit n."
+        ]
+      },
+      "aRetenir": "Démontrer, c'est raisonner avec des lettres pour que ce soit vrai pour tous les nombres, pas seulement pour quelques essais."
     }
   ],
   "application": {
@@ -161,6 +197,53 @@
           "Le PGCD de 84 et 126 est 42."
         ],
         "solution": "84/126 = 2/3 (on divise par 42)."
+      },
+      {
+        "type": "nombre",
+        "titre": "PPCM",
+        "question": "Deux bus partent ensemble à 8 h. L'un passe toutes les 6 minutes, l'autre toutes les 8 minutes. Au bout de combien de minutes se retrouvent-ils ensemble ?",
+        "reponse": 24,
+        "unite": "minutes",
+        "indices": [
+          "Écris les multiples de 6 : 6, 12, 18, 24…",
+          "Écris ceux de 8 : 8, 16, 24… Cherche le premier commun."
+        ],
+        "solution": "PPCM(6 ; 8) = 24 : ils se retrouvent après 24 minutes (6 × 4 = 24 et 8 × 3 = 24)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Vrai ou faux ?",
+        "question": "Quelle affirmation est vraie ?",
+        "choix": [
+          "2 est le seul nombre premier pair",
+          "Tous les nombres impairs sont premiers",
+          "1 est un nombre premier"
+        ],
+        "bonne": 0,
+        "explication": "Tout nombre pair supérieur à 2 est divisible par 2, donc non premier. 9 est impair mais 9 = 3 × 3, et 1 n'a qu'un seul diviseur.",
+        "indice": "Cherche un contre-exemple : 9 est-il premier ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Premiers jusqu'à 20",
+        "question": "Combien y a-t-il de nombres premiers inférieurs ou égaux à 20 ?",
+        "reponse": 8,
+        "indices": [
+          "Liste-les : 2, 3, 5, 7…",
+          "N'oublie pas que 1 n'est pas premier."
+        ],
+        "solution": "2, 3, 5, 7, 11, 13, 17 et 19 : 8 nombres premiers."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le chiffre manquant",
+        "question": "Quel chiffre c faut-il mettre pour que le nombre 14c (c'est-à-dire 140 + c) soit divisible par 9 ?",
+        "reponse": 4,
+        "indices": [
+          "Un nombre est divisible par 9 si la somme de ses chiffres l'est.",
+          "1 + 4 = 5 ; il faut atteindre le prochain multiple de 9."
+        ],
+        "solution": "1 + 4 + c doit valoir 9 : c = 4. En effet 144 = 9 × 16."
       }
     ]
   },
@@ -168,7 +251,9 @@
     "titre": "Les sachets de bonbons",
     "histoire": [
       "Pour la fête de l'école, Mila a **48 bonbons à la fraise** et **36 bonbons au citron**.",
-      "Elle veut faire des sachets **tous identiques** (même nombre de bonbons à la fraise et même nombre au citron dans chacun), en utilisant tous les bonbons."
+      "Elle veut faire des sachets **tous identiques** (même nombre de bonbons à la fraise et même nombre au citron dans chacun), en utilisant tous les bonbons.",
+      "Elle aimerait faire le plus de sachets possible, pour que chaque enfant de la fête en reçoive un. Mais attention : il faudra que les nombres tombent juste, sans bonbon en trop !",
+      "Mila sait que, pour partager équitablement, il faut penser aux diviseurs et au plus grand diviseur commun. À toi de l'aider, étape par étape."
     ],
     "etapes": [
       {
@@ -216,9 +301,21 @@
           "36 ÷ 12."
         ],
         "solution": "36 ÷ 12 = 3 bonbons au citron."
+      },
+      {
+        "type": "qcm",
+        "titre": "Des chocolats en plus",
+        "question": "Le boulanger offre 24 chocolats à Mila. Peut-elle les répartir à parts égales dans ses 12 sachets, sans chocolat en trop ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 0,
+        "explication": "24 = 12 × 2 : chaque sachet reçoit 2 chocolats. Comme 12 divise 24, la répartition tombe juste.",
+        "indice": "Le nombre de sachets (12) doit diviser 24."
       }
     ],
-    "conclusion": "Bravo ! Le PGCD sert à partager équitablement : sachets, rangées, carrelages… et même à simplifier les fractions."
+    "conclusion": "Bravo ! Le PGCD sert à partager équitablement : sachets, rangées, carrelages… et même à simplifier les fractions. Avec 12 sachets de 4 fraises, 3 citrons et 2 chocolats, Mila n'a laissé aucun bonbon de côté : en arithmétique, quand les nombres tombent juste, tout le monde est content."
   }
 }
 </script>
@@ -334,7 +431,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 <header>
   <div>
     <h1>Diviseurs, multiples et nombres premiers</h1>
-    <div class="meta">arithmetique · v1.0.0</div>
+    <div class="meta">arithmetique · v1.1.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
@@ -765,6 +862,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */
