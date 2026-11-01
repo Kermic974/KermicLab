@@ -10,7 +10,7 @@ import { bind } from './input.js';
 import { runUiChecks } from './selftest.js';
 import { compute, runCoreChecks } from '../api.js';
 
-const VERSION = '1.2.0';
+const VERSION = '1.4.0';
 
 store.subscribe(function (s, meta) {
   render(s, meta);

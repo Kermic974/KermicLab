@@ -19,7 +19,7 @@ entrée (pointeur, clavier, saisie)            src/ui/input.js
   → store.setAngle(saisie)                     src/core/store.js   (resolveAngle : lecture, normalisation)
   → abonnés notifiés                           src/ui/main.js
   → compute(angle)                             src/core/engine.js  (seule source des valeurs)
-  → méthodes géométrique et algébrique         src/solutions/geometric.js, algebraic.js
+  → méthodes géométrique, algébrique, tabulaire        src/solutions/geometric.js, algebraic.js
   → rendu SVG, valeurs, contrôles              src/ui/render.js
 ```
 
@@ -128,7 +128,7 @@ index.html (commité, publié par GitHub Pages)
 ## Étapes suivantes
 
 1. ~~Extraction sans changement fonctionnel, registre, méthode géométrique~~ (v1.2).
-2. **Méthode algébrique** (Moteur) : conversion, réduction à l'angle de référence, étapes écrites ; `approx` hors angles remarquables. Puis un **sélecteur de méthode** dans le panneau d'explication (Interface).
-3. **Méthode tabulaire** (Moteur) : lecture dans la table, symétries, périodicité.
+2. ~~Méthode algébrique et sélecteur de méthode~~ (v1.3).
+3. ~~Méthode tabulaire, statut `unsupported`, vérification de concordance `compareResults`~~ (v1.4).
 4. **Mode Comparer** (Interface) : deux méthodes côte à côte (onglets sur mobile) et un bloc « résultat commun » issu du moteur.
 5. Mises en page par `data-layout` sur la racine (compacte, laboratoire, accessible) plutôt que des vues séparées.

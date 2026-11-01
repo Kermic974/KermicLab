@@ -9,6 +9,7 @@ playful application, and an engaging challenge.
 - **Deterministic**: questions covered by the catalogue always return the same page file (zero generation tokens).
 - **Backlog learning**: uncovered questions open (or comment on) a `maquette-manquante` GitHub issue; once a human validates a new page, the same question returns it.
 - **Agent-agnostic**: all project instructions live in [AGENTS.md](AGENTS.md).
+- **Three solving methods** in the unit-circle app: geometric, algebraic and tabular (remarkable angles), with a cross-method agreement check. A Compare mode is planned.
 - **Child-safe by design**: no personal data collected, input/output moderation, anonymous KPIs only.
 
 ## Architecture

@@ -84,7 +84,7 @@ Saisies de référence communes à toutes les méthodes : `0, 30, 45, 60, 90, 12
 |---|---|---|
 | S-01 | Chaque méthode respecte le contrat commun (`ARCHITECTURE.md` § Contrat de solution) et donne le même résultat numérique que le moteur sur toutes les saisies de référence. | M |
 | S-02 | Une méthode ne modifie jamais l'état ni son contexte. | M |
-| S-03 | Méthodes disponibles : géométrique, algébrique. Prévues : tabulaire, puis un mode Comparer. | M+I |
+| S-03 | Méthodes disponibles : géométrique, algébrique, tabulaire. Prévu : un mode Comparer. | M+I |
 | S-04 | La méthode algébrique convertit l'angle en radians, le réduit au premier quadrant par une formule de réduction, puis en déduit cos, sin et tan. Toutes les étapes sont écrites. Hors angles remarquables, les valeurs sont approchées (`confidence: 'approx'`) et aucune forme exacte n'est inventée. | M |
 | S-07 | `solutions.list({ mode })` ne renvoie que les méthodes dont `supportedModes` contient ce mode. | M |
 | S-05 | La méthode tabulaire lit la valeur de l'angle de référence dans la table des angles remarquables, applique la symétrie du quadrant, puis le tableau des signes, et rappelle la périodicité (θ + 360° k). | M |
@@ -114,6 +114,7 @@ Saisies de référence communes à toutes les méthodes : `0, 30, 45, 60, 90, 12
 - v1.0 : version stable (radians, axe des tangentes, corrections) — livrée ;
 - v1.1 : orientation éducative et récréative (Explorer, Apprendre, Jouer) — livrée ;
 - v1.2 : architecture à deux agents, sources modulaires, livrable généré — livrée ;
-- v1.3 : méthode algébrique et sélecteur de méthode ;
-- v1.4 : mode Comparer ;
+- v1.3 : méthode algébrique et sélecteur de méthode — livrée ;
+- v1.4 : méthode tabulaire, statut `unsupported` et vérification de concordance — livrée ;
+- v1.5 : mode Comparer ;
 - v2.0 : PWA et fonctionnement hors ligne.
