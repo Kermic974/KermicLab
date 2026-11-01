@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  contents: read # lire le dépôt (privé) pour le checkout
   issues: write
 
 jobs:
