@@ -1,0 +1,116 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Un marché met en relation des vendeurs et des acheteurs. Suivons leurs décisions pour comprendre comment se forme un prix.",
+  "niveaux": [
+    {
+      "titre": "Un lieu d'échange",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un marché n'est pas forcément un endroit précis : c'est l'ensemble des échanges autour d'un bien ou d'un service. Les vendeurs proposent une **offre** et les acheteurs expriment une **demande**.",
+        "Le prix influence les décisions des deux côtés. Quand un produit devient plus cher, certains acheteurs renoncent ou en achètent moins ; des vendeurs peuvent, eux, trouver intéressant d'en proposer davantage."
+      ],
+      "exemple": {
+        "titre": "Les places de cinéma",
+        "etapes": [
+          "Les cinémas offrent des séances ; les spectateurs demandent des places.",
+          "Un tarif réduit peut attirer davantage de spectateurs, mais les salles disposent d'un nombre de sièges limité."
+        ]
+      }
+    },
+    {
+      "titre": "Le prix d'équilibre dans le modèle",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Dans le modèle simple, si le prix est très élevé, les quantités offertes peuvent dépasser les quantités demandées : des invendus apparaissent. Si le prix est très bas, la demande peut dépasser l'offre : il y a pénurie.",
+        "Le **prix d'équilibre** est celui pour lequel la quantité offerte est égale à la quantité demandée. Une hausse de la demande, à offre inchangée, tend à faire monter le prix et la quantité échangée ; une hausse de l'offre tend à faire baisser le prix et à augmenter la quantité échangée."
+      ],
+      "aRetenir": "Ces effets décrivent un modèle : ils ne prédisent pas seuls le prix de chaque produit dans la réalité."
+    },
+    {
+      "titre": "Concurrence et limites du modèle",
+      "niveau": "première",
+      "paragraphes": [
+        "Dans le modèle de concurrence parfaite, les entreprises sont nombreuses, les produits comparables, l'entrée sur le marché possible et l'information accessible. Aucun vendeur isolé ne peut alors imposer seul le prix : il s'adapte au prix du marché.",
+        "Dans la réalité, les produits peuvent être différenciés et quelques entreprises peuvent dominer. Les règles publiques, les coûts de production et le pouvoir de négociation influencent aussi les prix."
+      ],
+      "exemple": {
+        "titre": "Un marché avec peu de vendeurs",
+        "etapes": [
+          "S'il n'existe qu'un vendeur local d'un service essentiel, les clients ont peu d'alternatives.",
+          "Le vendeur peut avoir davantage de pouvoir sur le prix qu'une entreprise parmi beaucoup de concurrents."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Pour chaque situation, repère l'acteur qui agit et le mécanisme économique.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Les acteurs",
+        "question": "Sur un marché de fruits, qui exprime la demande ?",
+        "choix": ["Les acheteurs qui souhaitent acheter des fruits", "Les producteurs qui vendent leur récolte", "Uniquement la mairie"],
+        "bonne": 0,
+        "explication": "La demande correspond aux quantités que les acheteurs souhaitent acquérir à différents prix."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une demande qui augmente",
+        "question": "Dans le modèle simple, si davantage de consommateurs veulent un produit et que l'offre ne change pas, quel effet est attendu ?",
+        "choix": ["Le prix d'équilibre tend à augmenter", "Le prix d'équilibre tend toujours à baisser", "La demande devient une offre"],
+        "bonne": 0,
+        "indice": "Compare le nombre d'acheteurs intéressés avec la quantité disponible.",
+        "explication": "À offre inchangée, une hausse de la demande crée une pression à la hausse sur le prix d'équilibre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une offre qui augmente",
+        "question": "Une récolte abondante accroît l'offre de pommes. Dans le modèle concurrentiel, quel effet sur le prix est attendu si la demande ne change pas ?",
+        "choix": ["Une baisse du prix d'équilibre", "Une hausse automatique du prix", "Aucun échange n'est possible"],
+        "bonne": 0,
+        "explication": "À demande inchangée, une offre plus abondante tend à faire baisser le prix d'équilibre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le modèle",
+        "question": "Dans le modèle de concurrence parfaite, pourquoi une entreprise isolée ne fixe-t-elle pas librement le prix du marché ?",
+        "choix": ["Parce qu'elle est supposée trop petite face à de nombreux concurrents", "Parce que les acheteurs ne prennent jamais de décision", "Parce que les coûts de production n'existent pas"],
+        "bonne": 0,
+        "explication": "Le modèle suppose une multitude d'offreurs : une entreprise seule ne peut pas influencer le prix général."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les pommes du marché du quartier",
+    "histoire": [
+      "Plusieurs maraîchers vendent des pommes au marché. Une bonne météo a augmenté la récolte, tandis que le nombre d'acheteurs est resté à peu près stable. Raisonne avec le modèle d'offre et de demande."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Repérer le changement",
+        "question": "Quel élément a changé dans l'histoire ?",
+        "choix": ["L'offre de pommes a augmenté", "La demande a disparu", "Le nombre de vendeurs est nécessairement tombé à un"],
+        "bonne": 0,
+        "explication": "La récolte plus abondante signifie que les vendeurs peuvent proposer davantage de pommes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Anticiper l'effet sur le prix",
+        "question": "Si la demande reste stable, quel effet le modèle prévoit-il pour le prix d'équilibre ?",
+        "choix": ["Il tend à diminuer", "Il tend forcément à doubler", "Il ne peut plus exister de prix"],
+        "bonne": 0,
+        "explication": "Une offre accrue pour une demande stable tend à faire baisser le prix d'équilibre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Distinguer modèle et réalité",
+        "question": "Pourquoi le prix observé peut-il ne pas baisser exactement comme le modèle le suggère ?",
+        "choix": ["Les coûts, la qualité, les stocks et les décisions des vendeurs comptent aussi", "Le modèle affirme que la météo ne change jamais l'offre", "Le prix dépend uniquement du hasard"],
+        "bonne": 0,
+        "explication": "Le modèle isole certains mécanismes ; dans la réalité, plusieurs autres facteurs influencent les prix."
+      }
+    ],
+    "conclusion": "Tu as relié un changement de récolte à l'offre, puis à un effet attendu sur le prix. C'est une prévision de modèle, pas une certitude pour chaque vendeur."
+  }
+}
