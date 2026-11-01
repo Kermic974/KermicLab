@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue à repérer les activités d'une campagne : elle n'est ni vide ni uniquement agricole.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des campagnes habitées et actives", "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les **espaces ruraux** se caractérisent notamment par de faibles densités de population et une place importante des espaces non bâtis. Leur définition statistique dépend du pays. Ils accueillent des habitants, des exploitations agricoles, des entreprises et des services.",
+        "Une campagne peut être proche d'une grande ville, touristique, industrielle ou plus éloignée des principaux services. Dans le Morvan, forêts, villages, agriculture et tourisme coexistent. La faible densité ne signifie ni absence d'activité ni mode de vie identique pour tous."
+      ],
+      "exemple": { "titre": "Carte mentale : un village du Morvan", "etapes": [
+        "Écris habiter au centre ; ajoute logements, école et commerces.",
+        "Ajoute produire : agriculture, travail du bois et autres entreprises.",
+        "Ajoute se détendre : paysages et tourisme ; relie les activités plutôt que de dessiner un espace vide."
+      ] },
+      "aRetenir": "Les campagnes sont diverses : leurs habitants et leurs activités ne se réduisent pas à l'agriculture."
+    },
+    {
+      "titre": "Collège : plusieurs fonctions et des liens", "niveau": "collège",
+      "paragraphes": [
+        "La **multifonctionnalité** rurale associe production, habitat, loisirs et protection de l'environnement. Les espaces ruraux échangent avec les villes : alimentation, emplois, services, visiteurs. Certains gagnent des habitants ; d'autres connaissent vieillissement ou difficultés d'accès aux soins.",
+        "En métropole comme en outre-mer, les situations dépendent du relief, des réseaux et de l'histoire. En Guadeloupe, des espaces de culture de la canne côtoient habitat et activités touristiques. Agriculteurs, habitants, entreprises, associations et collectivités peuvent avoir des besoins différents pour la même terre ou la même eau."
+      ],
+      "exemple": { "titre": "Carte mentale : une terre en Guadeloupe", "etapes": [
+        "Branche production : culture et emplois ; branche habitat : logements et accès aux services.",
+        "Branche environnement : sols, eau et paysages ; branche loisirs : visiteurs.",
+        "Relie la commune aux villes et aux marchés ; cherche une coopération et un possible conflit d'usages."
+      ] },
+      "aRetenir": "Plusieurs fonctions peuvent coexister ou entrer en tension ; il faut identifier les acteurs et leurs besoins."
+    },
+    {
+      "titre": "Lycée : transitions et politiques territoriales", "niveau": "lycée",
+      "paragraphes": [
+        "Les campagnes sont intégrées à des réseaux régionaux et mondiaux : filières agricoles, tourisme, énergie et industrie. La proximité d'une ville n'efface pas les différences d'accès aux emplois. Les difficultés ne concernent pas toutes les campagnes ni tous les habitants de la même façon.",
+        "Les politiques agricoles, la protection des milieux, le numérique et le maintien de services soutiennent certains projets. Elles sont menées à plusieurs échelles, de la commune à l'Union européenne. Une liaison de transport ou une maison de santé exige un budget, des professionnels et une organisation ; un équipement ne résout pas tout à lui seul."
+      ],
+      "exemple": { "titre": "Carte mentale : des services dans le Morvan", "etapes": [
+        "Échelle locale : repérer un besoin fictif de soins et de déplacement.",
+        "Échelle intercommunale : coordonner une maison de santé et des trajets partagés.",
+        "Échelles nationale et européenne : rechercher les cadres d'aide ; ajouter les contraintes de personnel et de financement."
+      ] },
+      "aRetenir": "Le développement rural combine réseaux, services, productions et préservation des milieux, avec des arbitrages."
+    }
+  ],
+  "application": {
+    "intro": "Démêle fonctions, acteurs et réseaux des campagnes.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Un village associe agriculture, logements et tourisme. Cela illustre…", "choix": ["Une spécialisation exclusivement touristique", "Une activité uniquement agricole", "La multifonctionnalité rurale"], "bonne": 2, "indice": "Compte les fonctions différentes.", "explication": "Production, habitat et loisirs sont plusieurs fonctions d'un même espace rural." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui faut-il associer à une discussion sur le partage de l'eau dans un village ?", "choix": ["Habitants, agriculteurs, gestionnaires et collectivités", "Seulement les visiteurs et leurs hébergeurs", "Seulement les exploitations agricoles"], "bonne": 0, "indice": "L'eau sert à plusieurs usages.", "explication": "La concertation doit réunir les acteurs concernés, dans le respect des règles et des besoins des milieux." },
+      { "type": "qcm", "titre": "Échelles", "question": "Une production rurale est vendue dans plusieurs pays. Quels liens faut-il étudier ?", "choix": ["Seulement l'intérieur de la ferme", "Des liens locaux et internationaux", "Seulement les routes du village"], "bonne": 1, "indice": "Suis le produit jusqu'aux marchés.", "explication": "Une activité implantée localement peut dépendre de filières et de marchés internationaux." }
+    ]
+  },
+  "situation": {
+    "titre": "Habiter à Clairvillage",
+    "histoire": ["Clairvillage est inventé : il possède des cultures, des logements, une forêt et un petit commerce. Les habitants cherchent à améliorer les services sans effacer les autres usages.", "Aide ce village sur papier ; aucune enquête auprès de personnes réelles n'est nécessaire."],
+    "etapes": [
+      { "type": "qcm", "titre": "Repérer", "question": "Quel portrait respecte la diversité de Clairvillage ?", "choix": ["Tout le monde y exerce le même métier", "Il associe habitat, production, services et loisirs", "Il ne possède aucune activité puisqu'il est rural"], "bonne": 1, "indice": "Relis les éléments du village.", "explication": "Les fonctions rurales sont variées et ne déterminent pas un métier unique pour ses habitants." },
+      { "type": "qcm", "titre": "Se déplacer", "question": "Pour rejoindre les soins dans la ville voisine, quel projet mérite une étude ?", "choix": ["Supprimer le commerce", "Ignorer les horaires des soins", "Un transport à la demande accessible et financé"], "bonne": 2, "indice": "Pense au trajet et aux personnes qui ont besoin du service.", "explication": "Un service adapté peut améliorer l'accès aux soins ; coût, réservation et disponibilité doivent être examinés." },
+      { "type": "qcm", "titre": "Partager", "question": "Un projet touristique utilise une terre agricole. Que faire avant de décider ?", "choix": ["Comparer les usages, consulter les acteurs et évaluer les effets", "Supposer que le tourisme n'a aucun effet", "Considérer que l'agriculture interdit toute discussion"], "bonne": 0, "indice": "Un conflit d'usages demande un arbitrage.", "explication": "La discussion doit considérer activités, emplois, sols, besoins et règles, sans priorité automatique à un seul usage." }
+    ],
+    "conclusion": "Mission accomplie ! Invente sur papier quatre activités et joue à observer leurs liens à Clairvillage. Ajoute un service utile et une contrainte, sans données personnelles ni sortie."
+  }
+}
