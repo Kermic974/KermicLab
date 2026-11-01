@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Être libre, ce n'est pas pouvoir tout faire : c'est pouvoir choisir en respectant les droits des autres.",
+  "niveaux": [
+    {
+      "titre": "Intuition : choisir sans écraser l'autre", "niveau": "pour démarrer",
+      "paragraphes": ["La **liberté** permet de penser, de choisir et d'agir. Elle va avec la responsabilité : mon choix ne doit pas supprimer les droits d'une autre personne.", "Petit jeu : jouer de la musique ou dormir, comment permettre les deux ? Cherche un horaire et un volume compatibles."],
+      "exemple": { "titre": "À la maison", "etapes": ["Tu veux écouter une chanson, quelqu'un se repose.", "Un casque ou un volume plus bas permet de respecter chacun."] },
+      "aRetenir": "Ma liberté coexiste avec celle des autres."
+    },
+    {
+      "titre": "Collège : des libertés protégées", "niveau": "collège",
+      "paragraphes": ["La liberté d'expression permet d'exprimer un désaccord, de critiquer une idée et de débattre. Elle ne donne pas le droit de harceler, de diffamer ou d'inciter à la haine.", "Les libertés de conscience, d'association et de circulation sont protégées, avec des règles selon les situations. Le règlement scolaire organise la vie commune mais doit respecter les droits des élèves."],
+      "exemple": { "titre": "Un débat en classe", "etapes": ["Tu critiques une proposition en donnant une raison.", "Tu n'humilies pas la personne qui la défend."] },
+      "aRetenir": "Critiquer une idée n'est pas attaquer une personne."
+    },
+    {
+      "titre": "Lycée : encadrer les restrictions", "niveau": "lycée",
+      "paragraphes": ["L'article 4 de la Déclaration de **1789** définit la liberté comme la possibilité de faire ce qui ne nuit pas à autrui ; ses limites sont déterminées par la loi. Une restriction ne peut pas reposer seulement sur le désaccord d'un responsable.", "Pour les droits concernés, une restriction doit avoir une base légale, poursuivre un but légitime et être nécessaire et proportionnée. Les juges peuvent contrôler ces limites : la sécurité n'autorise pas automatiquement toute interdiction."],
+      "exemple": { "titre": "Une mesure à discuter", "etapes": ["Un risque concret peut justifier une mesure de sécurité.", "On examine si une mesure moins restrictive permettrait de protéger les personnes."] },
+      "aRetenir": "Une liberté protégée peut avoir des limites ; ces limites doivent être justifiées et contrôlées."
+    }
+  ],
+  "application": {
+    "intro": "Distingue un choix libre, un abus et une restriction justifiée.",
+    "exercices": [
+      { "type": "qcm", "titre": "Un désaccord", "question": "Quelle phrase relève d'un débat respectueux ?", "choix": ["Je ne suis pas d'accord, car cette solution coûte trop cher", "Je vais publier tes coordonnées pour te punir", "Personne n'a le droit de me contredire"], "bonne": 0, "explication": "On peut critiquer une proposition avec des arguments sans menacer ni exposer une personne." },
+      { "type": "qcm", "titre": "En ligne", "question": "La liberté d'expression autorise-t-elle le harcèlement ?", "choix": ["Oui, si c'est une plaisanterie", "Oui, sur un compte anonyme", "Non"], "bonne": 2, "explication": "L'anonymat ou l'humour ne suppriment pas les droits des personnes ni les règles contre le harcèlement." },
+      { "type": "qcm", "titre": "Une limite", "question": "Comment apprécier une restriction à une liberté ?", "choix": ["Il suffit qu'elle plaise au responsable", "Vérifier sa base légale, son but et sa proportionnalité", "Toute restriction est forcément interdite"], "bonne": 1, "explication": "Une restriction doit être justifiée et peut faire l'objet d'un contrôle par un juge." }
+    ]
+  },
+  "situation": {
+    "titre": "Modérer un forum de classe fictif",
+    "histoire": ["Sur un forum inventé, deux personnages discutent du menu de la cantine. L'un critique le menu, l'autre publie une attaque personnelle.", "Aide à protéger le débat sans encourager les abus. Ne publie aucune donnée réelle."],
+    "etapes": [
+      { "type": "qcm", "titre": "Garder le débat", "question": "Que faire d'une critique argumentée du menu ?", "choix": ["La supprimer parce qu'elle déplaît", "La laisser dans le débat si elle respecte les personnes"], "bonne": 1, "explication": "Le désaccord est une expression légitime ; il n'est pas en lui-même un abus." },
+      { "type": "qcm", "titre": "Protéger un camarade", "question": "Face à des attaques répétées contre un personnage, quelle réaction choisir ?", "choix": ["Ne pas relayer, signaler et solliciter un adulte de confiance", "Inviter tout le monde à se moquer de lui"], "bonne": 0, "explication": "On protège la personne et on demande de l'aide, sans amplifier les attaques." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as laissé de la place aux idées tout en protégeant les personnes."
+  }
+}

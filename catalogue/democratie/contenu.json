@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Décider ensemble demande plus qu'un vote : il faut pouvoir débattre et respecter les droits.",
+  "niveaux": [
+    {
+      "titre": "Intuition : chacun peut avoir voix au chapitre", "niveau": "pour démarrer",
+      "paragraphes": ["La **démocratie** est un régime dans lequel le pouvoir appartient au peuple. Pour une décision collective, on écoute les propositions et on applique une règle connue.", "Petit jeu : la classe choisit une activité. Comment laisser parler ceux qui préfèrent une autre option ?"],
+      "exemple": { "titre": "Choisir une activité", "etapes": ["Chaque proposition est expliquée avant le vote.", "Le résultat ne donne pas le droit de se moquer des personnes dont le choix n'a pas gagné."] },
+      "aRetenir": "Un vote ne remplace pas l'écoute et le respect."
+    },
+    {
+      "titre": "Collège : élections et pluralisme", "niveau": "collège",
+      "paragraphes": ["Une démocratie repose sur des élections libres, une compétition réelle entre propositions, des libertés et le **pluralisme** : plusieurs opinions peuvent s'exprimer. Une opposition peut critiquer les responsables.", "La majorité permet de trancher selon la règle du scrutin, mais elle ne peut pas supprimer arbitrairement les droits des minorités. Le secret du vote protège le choix contre les pressions."],
+      "exemple": { "titre": "Élections de délégués", "etapes": ["Les candidats présentent leurs idées dans des conditions équitables.", "Les élèves votent sans devoir montrer leur bulletin à leurs amis."] },
+      "aRetenir": "La majorité décide dans un cadre qui protège aussi les minorités."
+    },
+    {
+      "titre": "Lycée : représenter, participer et contrôler", "niveau": "lycée",
+      "paragraphes": ["Dans une démocratie **représentative**, des élus prennent des décisions au nom des citoyens. Des mécanismes directs, comme le référendum, et participatifs peuvent compléter cette représentation, selon des règles précises.", "La démocratie constitutionnelle associe souveraineté populaire, droits fondamentaux et contrôle du pouvoir. L'alternance doit être possible ; une élection seule ne suffit pas si l'opposition, la presse ou les juges ne peuvent agir librement."],
+      "exemple": { "titre": "Après une élection", "etapes": ["Les élus rendent compte de leurs décisions.", "Les citoyens peuvent les critiquer et choisir d'autres représentants lors d'un scrutin libre."] },
+      "aRetenir": "Une démocratie vit aussi entre les élections, grâce aux libertés et aux contre-pouvoirs."
+    }
+  ],
+  "application": {
+    "intro": "Repère ce qui rend une décision démocratique.",
+    "exercices": [
+      { "type": "qcm", "titre": "Le pluralisme", "question": "Que permet le pluralisme ?", "choix": ["L'expression de plusieurs opinions", "Une seule opinion obligatoire", "L'interdiction de toute opposition"], "bonne": 0, "explication": "Les désaccords et les propositions concurrentes font partie du débat démocratique." },
+      { "type": "qcm", "titre": "La majorité", "question": "La majorité peut-elle supprimer arbitrairement les droits d'une minorité ?", "choix": ["Oui, si elle est nombreuse", "Non", "Oui, après chaque vote"], "bonne": 1, "explication": "Les décisions restent encadrées par les droits fondamentaux." },
+      { "type": "qcm", "titre": "Un scrutin", "question": "Quelle situation respecte un vote libre ?", "choix": ["Un ami exige de voir ton bulletin", "Un seul candidat peut parler", "Tu choisis sans pression, selon les règles du scrutin"], "bonne": 2, "explication": "Un choix libre suppose l'absence de pression et une compétition équitable." }
+    ]
+  },
+  "situation": {
+    "titre": "Voter pour une activité de classe",
+    "histoire": ["Une classe fictive hésite entre un atelier créatif et un jeu coopératif. Elle choisit un vote où l'option ayant le plus de voix gagne.", "Toutes les activités proposées doivent rester accessibles et respecter les droits de chacun."],
+    "etapes": [
+      { "type": "qcm", "titre": "Avant le vote", "question": "Que faut-il faire ?", "choix": ["Expliquer les options et annoncer la règle avant le scrutin", "Changer la règle après avoir vu les bulletins"], "bonne": 0, "explication": "Des règles connues à l'avance et un débat équitable protègent la confiance." },
+      { "type": "qcm", "titre": "Après le vote", "question": "L'atelier gagne. Que faire pour ceux qui préféraient le jeu ?", "choix": ["Les exclure", "Respecter leur avis et permettre à tous de participer sans humiliation"], "bonne": 1, "explication": "Perdre un vote ne fait pas perdre ses droits ni sa place dans le groupe." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as combiné débat, règle de décision et respect de tous."
+  }
+}

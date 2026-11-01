@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Faire société, c'est aussi ne pas laisser une personne seule face à une difficulté.",
+  "niveaux": [
+    {
+      "titre": "Intuition : tendre la main", "niveau": "pour démarrer",
+      "paragraphes": ["La **fraternité** invite à reconnaître les autres comme des personnes avec qui nous partageons une humanité commune. Elle ne concerne pas seulement notre famille ou nos amis.", "Petit jeu : un nouveau camarade reste seul. Quelle invitation lui permet de participer sans l'obliger ?"],
+      "exemple": { "titre": "Accueillir", "etapes": ["Tu proposes au nouveau de rejoindre le jeu.", "Tu expliques les règles et respectes son choix."] },
+      "aRetenir": "La fraternité associe entraide et respect de la dignité."
+    },
+    {
+      "titre": "Collège : solidarité sans humiliation", "niveau": "collège",
+      "paragraphes": ["La solidarité transforme l'entraide en actions concrètes : prêter du matériel, participer à une collecte utile, soutenir une personne isolée. Une aide respecte les besoins et le consentement de la personne.", "Être fraternel ne signifie pas tout accepter ni se mettre en danger. Face à une situation grave, on sollicite un adulte ou un service compétent plutôt que d'agir seul."],
+      "exemple": { "titre": "Un prêt discret", "etapes": ["Un personnage n'a pas de matériel pour l'atelier.", "On lui propose un prêt sans annoncer sa difficulté à toute la classe."] },
+      "aRetenir": "Aider n'autorise pas à exposer la vie privée d'autrui."
+    },
+    {
+      "titre": "Lycée : un principe républicain", "niveau": "lycée",
+      "paragraphes": ["La fraternité figure dans la devise **Liberté, Égalité, Fraternité**. En 2018, le Conseil constitutionnel a reconnu sa valeur constitutionnelle et la liberté d'aider autrui dans un but humanitaire, sans considération de la régularité de son séjour.", "Cette liberté se concilie avec d'autres exigences constitutionnelles ; elle n'efface pas toutes les règles juridiques. La fraternité complète les droits par une attention aux liens sociaux, sans imposer une croyance ou une opinion commune."],
+      "exemple": { "titre": "Une collecte utile", "etapes": ["Une association indique les besoins concrets des personnes aidées.", "Les bénévoles organisent une aide respectueuse plutôt qu'une mise en scène des bénéficiaires."] },
+      "aRetenir": "La fraternité est un principe, pas seulement un sentiment entre proches."
+    }
+  ],
+  "application": {
+    "intro": "Choisis une entraide respectueuse et prudente.",
+    "exercices": [
+      { "type": "qcm", "titre": "Qui aider ?", "question": "La fraternité concerne…", "choix": ["Seulement sa famille", "Seulement les personnes du même avis", "Aussi les personnes que l'on ne connaît pas"], "bonne": 2, "explication": "L'humanité commune ne se limite pas à nos proches ou à nos opinions." },
+      { "type": "qcm", "titre": "Respecter", "question": "Avant de photographier une personne aidée pour publier son histoire, que choisir ?", "choix": ["Publier sans lui demander", "Privilégier une aide discrète et respecter son consentement et sa vie privée", "Exiger une photo en échange"], "bonne": 1, "explication": "L'aide ne donne aucun droit sur l'image ou l'histoire d'une personne." },
+      { "type": "qcm", "titre": "Se protéger", "question": "Une difficulté dépasse ce que tu peux gérer. Que faire ?", "choix": ["Demander l'aide d'un adulte de confiance", "Promettre de tout résoudre seul", "Ignorer toute règle de sécurité"], "bonne": 0, "explication": "Une aide adaptée peut passer par des personnes compétentes ; tu n'as pas à porter seul la difficulté." }
+    ]
+  },
+  "situation": {
+    "titre": "Un accueil solidaire",
+    "histoire": ["Dans une classe fictive, un nouvel élève ne connaît personne. Le groupe organise une activité d'accueil.", "Le défi : proposer de l'aide sans imposer ni humilier."],
+    "etapes": [
+      { "type": "qcm", "titre": "Inviter", "question": "Quelle proposition convient ?", "choix": ["Viens jouer si tu le souhaites, on t'explique les règles", "Tu dois raconter ta vie pour entrer dans le groupe"], "bonne": 0, "explication": "L'accueil laisse une liberté de choix et n'exige pas de confidences." },
+      { "type": "qcm", "titre": "Faire durer l'entraide", "question": "Comment organiser l'aide ?", "choix": ["Toujours tout faire à sa place", "Proposer des binômes volontaires et écouter ses besoins"], "bonne": 1, "explication": "Une entraide durable soutient l'autonomie plutôt que de rendre dépendant." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as construit un accueil qui respecte la liberté et la dignité de chacun."
+  }
+}
