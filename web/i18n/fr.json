@@ -8,7 +8,7 @@
   "placeholder": "Ex. : c'est quoi le sinus ?",
   "envoyer": "Envoyer",
   "bienvenueTitre": "Salut ! Qu'est-ce qu'on découvre aujourd'hui ?",
-  "bienvenue": "Bonjour ! Je suis Kermiclab. Pose-moi une question sur une notion de maths, par exemple « c'est quoi le sinus ? ».",
+  "bienvenue": "Bonjour ! Je suis Kermiclab. Pose-moi une question de maths ou de physique-chimie, par exemple « c'est quoi le sinus ? » ou « comment marche un circuit électrique ? ».",
   "bienvenueRetour": "Content de te revoir ! Ta série est à {n} jour(s) : une question aujourd'hui pour la garder ?",
   "suggestionsTitre": "Pour commencer, essaie :",
   "suggestion1": "C'est quoi le sinus ?",
@@ -77,5 +77,7 @@
   "niveau_seconde": "Seconde",
   "niveau_premiere": "Première",
   "niveau_terminale": "Terminale",
-  "niveau_autres": "Autres notions"
+  "niveau_autres": "Autres notions",
+  "matiere_mathematiques": "Maths",
+  "matiere_physique-chimie": "Physique-chimie"
 }

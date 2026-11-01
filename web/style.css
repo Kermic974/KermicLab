@@ -261,6 +261,12 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .catalogue h2 { margin: 0; font-size: 1.05rem; }
 .catalogue-compteur { margin: 0; font-size: .82rem; color: var(--doux); }
 #catalogue-progres { width: 100%; height: 6px; }
+.matieres { display: flex; gap: 4px; padding: 3px; border-radius: 12px; background: var(--fond-2); }
+.matiere {
+  flex: 1; padding: 6px 8px; border-radius: 9px; background: none; color: var(--doux); font-size: .85rem; font-weight: 600;
+}
+.matiere:hover { background: var(--surface); color: var(--texte); }
+.matiere[aria-selected="true"] { background: var(--surface); color: var(--accent); box-shadow: var(--ombre); }
 #recherche-notion {
   width: 100%; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--bord);
   background: var(--fond); color: var(--texte); font: inherit; font-size: .92rem;

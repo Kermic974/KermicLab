@@ -1,0 +1,156 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : l'éclair et le tonnerre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pendant un orage, on voit l'éclair **avant** d'entendre le tonnerre, alors qu'ils se produisent en même temps. La lumière va beaucoup plus vite que le son !",
+        "Son et lumière sont des **signaux** : ils transportent une information d'un **émetteur** à un **récepteur**."
+      ]
+    },
+    {
+      "titre": "Le son",
+      "niveau": "4e",
+      "paragraphes": [
+        "Un son est une **vibration** qui se propage de proche en proche dans un milieu matériel (air, eau, solide). Il **ne se propage pas dans le vide** : dans l'espace, aucun bruit.",
+        "Vitesse du son : environ **340 m/s dans l'air** et 1 500 m/s dans l'eau.",
+        "La **fréquence** (en hertz, Hz) indique si un son est grave ou aigu. L'oreille humaine entend de 20 Hz à 20 000 Hz ; au-delà, ce sont les **ultrasons**. Le niveau sonore se mesure en **décibels (dB)** : au-delà de 85 dB, l'oreille est en danger."
+      ]
+    },
+    {
+      "titre": "La lumière",
+      "niveau": "4e",
+      "paragraphes": [
+        "Dans un milieu transparent et homogène, la lumière se propage **en ligne droite**. Elle se propage aussi dans le **vide**, à **c = 3,0 × 10⁸ m/s** (300 000 km/s).",
+        "Une **année-lumière** est la distance parcourue par la lumière en un an : environ 9,5 × 10¹⁵ m."
+      ]
+    },
+    {
+      "titre": "Mesurer une distance avec un signal",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Avec **d = v × t** : 3 secondes entre l'éclair et le tonnerre, c'est environ 340 × 3 = 1 020 m.",
+        "Un **écho** fait un aller-retour : la distance de l'obstacle est la **moitié** de la distance parcourue par le son. C'est le principe du sonar et de l'échographie."
+      ],
+      "aRetenir": "Pour un écho : distance = v × t ÷ 2."
+    },
+    {
+      "titre": "Plus loin : période et fréquence",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Un signal périodique se répète chaque **période T** (en s). Sa **fréquence** vaut **f = 1 / T** (en Hz). Une période de 0,002 s correspond à 500 Hz.",
+        "La lumière visible fait partie des **ondes électromagnétiques**, comme les ondes radio et les rayons X ; ses longueurs d'onde vont d'environ 400 nm (violet) à 800 nm (rouge)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec d = v × t et f = 1 / T.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Dans le vide",
+        "question": "Le son peut-il se propager dans le vide ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 1,
+        "explication": "Le son a besoin d'un milieu matériel pour se propager ; la lumière, non."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'orage",
+        "question": "On compte 3 s entre l'éclair et le tonnerre. À quelle distance est l'orage (son : 340 m/s) ?",
+        "reponse": 1020,
+        "unite": "m",
+        "indices": [
+          "d = v × t."
+        ],
+        "solution": "340 × 3 = 1 020 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Fréquence",
+        "question": "Un son a une période de 0,002 s. Quelle est sa fréquence ?",
+        "reponse": 500,
+        "unite": "Hz",
+        "indices": [
+          "f = 1 / T."
+        ],
+        "solution": "1 ÷ 0,002 = 500 Hz."
+      },
+      {
+        "type": "qcm",
+        "titre": "Ultrason",
+        "question": "Un son de 30 000 Hz est…",
+        "choix": [
+          "audible et grave",
+          "audible et aigu",
+          "inaudible pour l'oreille humaine (ultrason)"
+        ],
+        "bonne": 2,
+        "explication": "Au-delà de 20 000 Hz, ce sont des ultrasons : les chauves-souris et les dauphins les entendent."
+      },
+      {
+        "type": "nombre",
+        "titre": "Du Soleil à la Terre",
+        "question": "La lumière parcourt 1,5 × 10¹¹ m du Soleil à la Terre à 3 × 10⁸ m/s. Combien de secondes met-elle ?",
+        "reponse": 500,
+        "unite": "s",
+        "indices": [
+          "t = d / v."
+        ],
+        "solution": "1,5 × 10¹¹ ÷ 3 × 10⁸ = 500 s, soit 8 min 20 s."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sonar du bateau",
+    "histoire": [
+      "Un bateau de pêche envoie une impulsion d'ultrasons vers le fond de la mer. Le son se propage dans l'eau à **1 500 m/s**.",
+      "L'écho revient au bateau **0,4 s** après l'émission."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La distance parcourue",
+        "question": "Quelle distance le son a-t-il parcourue en tout (aller et retour) ?",
+        "reponse": 600,
+        "unite": "m",
+        "indices": [
+          "d = v × t = 1 500 × 0,4."
+        ],
+        "solution": "1 500 × 0,4 = 600 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "La profondeur",
+        "question": "Quelle est la profondeur de la mer à cet endroit ?",
+        "reponse": 300,
+        "unite": "m",
+        "indices": [
+          "Le son a fait l'aller et le retour."
+        ],
+        "solution": "600 ÷ 2 = 300 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Plus loin",
+        "question": "Plus tard, l'écho revient au bout de 2 s. Quelle est la profondeur ?",
+        "reponse": 1500,
+        "unite": "m",
+        "indices": [
+          "Profondeur = v × t ÷ 2."
+        ],
+        "solution": "1 500 × 2 ÷ 2 = 1 500 m."
+      }
+    ],
+    "conclusion": "Bravo ! Sonar des bateaux, échographie médicale, écholocation des chauves-souris : tous mesurent des distances avec des échos."
+  }
+}

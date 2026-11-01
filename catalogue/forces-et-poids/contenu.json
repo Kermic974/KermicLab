@@ -1,0 +1,178 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : pousser, tirer, attirer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pousser une porte, tirer une luge, attirer un trombone avec un aimant : ce sont des **actions mécaniques**. Elles peuvent **mettre en mouvement**, **modifier une trajectoire** ou **déformer** un objet.",
+        "Certaines se font au contact (la main sur la porte), d'autres à distance (l'aimant, la Terre qui attire une pomme)."
+      ]
+    },
+    {
+      "titre": "Modéliser par une force",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "On modélise une action mécanique par une **force**, représentée par un vecteur : un point d'application, une direction, un sens et une **valeur en newtons (N)**, mesurée avec un **dynamomètre**.",
+        "Une action est toujours **réciproque** : si A agit sur B, alors B agit sur A avec une force de **même valeur** et de **sens opposé** (interaction)."
+      ]
+    },
+    {
+      "titre": "Masse et poids",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **masse** (en kg) mesure la quantité de matière : elle est la même partout. Le **poids** (en N) est la force d'attraction exercée par un astre : il dépend de l'endroit.",
+        "**P = m × g**, avec g = 9,8 N/kg sur Terre et environ 1,6 N/kg sur la Lune."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un élève a une masse de 50 kg.",
+          "Sur Terre : P = 50 × 9,8 = 490 N.",
+          "Sur la Lune : P = 50 × 1,6 = 80 N, mais sa masse reste 50 kg."
+        ]
+      },
+      "aRetenir": "Sur la Lune, on n'est pas « moins lourd » en masse : on est moins attiré."
+    },
+    {
+      "titre": "La gravitation universelle",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Deux objets qui ont une masse **s'attirent** toujours : **F = G × mA × mB / d²**, avec G = 6,67 × 10⁻¹¹ N·m²/kg².",
+        "Cette force est faible entre objets du quotidien, mais énorme pour les astres : elle maintient la Lune autour de la Terre et la Terre autour du Soleil."
+      ]
+    },
+    {
+      "titre": "Plus loin : bilan des forces",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "Pour étudier un objet, on fait l'**inventaire** des forces qui s'exercent sur lui : poids, réaction du support, tension d'un fil, frottements…",
+        "Si elles se **compensent**, l'objet est immobile ou en mouvement rectiligne uniforme (principe d'inertie)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Manipule la relation P = m × g : choisis l'astre (g) et la masse.",
+    "figure": {
+      "type": "proportion",
+      "libelleX": "Masse (kg)",
+      "libelleY": "Poids (N)",
+      "libelleCoefficient": "g (N/kg) : Lune 1,6 · Mars 3,7 · Terre 9,8",
+      "unite": "N",
+      "coefficient": 9.8,
+      "coefficientMin": 1.6,
+      "coefficientMax": 25,
+      "pas": 0.1,
+      "x": 5,
+      "xMax": 10
+    },
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Unité",
+        "question": "Dans quelle unité s'exprime une force ?",
+        "choix": [
+          "Le kilogramme (kg)",
+          "Le newton (N)",
+          "Le joule (J)"
+        ],
+        "bonne": 1,
+        "explication": "Une force (et donc un poids) s'exprime en newtons."
+      },
+      {
+        "type": "nombre",
+        "titre": "Poids sur Terre",
+        "question": "Calcule le poids d'un objet de 50 kg sur Terre (g = 9,8 N/kg).",
+        "reponse": 490,
+        "unite": "N",
+        "indices": [
+          "P = m × g."
+        ],
+        "solution": "50 × 9,8 = 490 N."
+      },
+      {
+        "type": "nombre",
+        "titre": "Poids sur la Lune",
+        "question": "Et sur la Lune (g = 1,6 N/kg) ?",
+        "reponse": 80,
+        "unite": "N",
+        "indices": [
+          "P = m × g avec g = 1,6."
+        ],
+        "solution": "50 × 1,6 = 80 N."
+      },
+      {
+        "type": "qcm",
+        "titre": "Masse sur la Lune",
+        "question": "Un astronaute de 80 kg (équipement compris) arrive sur la Lune. Sa masse là-bas est…",
+        "choix": [
+          "plus petite",
+          "la même",
+          "plus grande"
+        ],
+        "bonne": 1,
+        "explication": "La masse ne dépend pas du lieu : 80 kg. C'est son poids qui diminue."
+      },
+      {
+        "type": "qcm",
+        "titre": "Interaction",
+        "question": "La Terre attire une pomme. La pomme attire-t-elle la Terre ?",
+        "choix": [
+          "Non",
+          "Oui, avec une force de même valeur",
+          "Oui, mais avec une force beaucoup plus faible"
+        ],
+        "bonne": 1,
+        "explication": "Les interactions sont réciproques : même valeur, sens opposés. C'est la Terre, très massive, qui ne bouge presque pas."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le robot sur Mars",
+    "histoire": [
+      "Un robot d'exploration a une masse de **900 kg**. Il est envoyé sur Mars, où g = 3,7 N/kg.",
+      "Les ingénieurs doivent dimensionner ses roues et sa suspension."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Sa masse sur Mars",
+        "question": "Quelle est la masse du robot sur Mars, en kg ?",
+        "reponse": 900,
+        "unite": "kg",
+        "indices": [
+          "La masse dépend-elle du lieu ?"
+        ],
+        "solution": "900 kg : la masse ne change pas."
+      },
+      {
+        "type": "nombre",
+        "titre": "Son poids sur Terre",
+        "question": "Quel est son poids sur Terre (g = 9,8 N/kg) ?",
+        "reponse": 8820,
+        "unite": "N",
+        "indices": [
+          "P = m × g."
+        ],
+        "solution": "900 × 9,8 = 8 820 N."
+      },
+      {
+        "type": "nombre",
+        "titre": "Son poids sur Mars",
+        "question": "Quel est son poids sur Mars ?",
+        "reponse": 3330,
+        "unite": "N",
+        "indices": [
+          "P = 900 × 3,7."
+        ],
+        "solution": "900 × 3,7 = 3 330 N : environ 2,6 fois moins que sur Terre."
+      }
+    ],
+    "conclusion": "Bravo ! Sur Mars, le robot pèse beaucoup moins lourd : ses roues peuvent être plus légères, mais sa masse, elle, reste à faire avancer."
+  }
+}

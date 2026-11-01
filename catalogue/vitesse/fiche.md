@@ -16,8 +16,6 @@ mots-cles:
   - temps de parcours
   - grandeur composee
   - grandeurs composees
-  - debit
-  - masse volumique
   - heures decimales
   - speed
   - average speed

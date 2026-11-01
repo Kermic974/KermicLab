@@ -11,6 +11,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Catalogue de **physique-chimie**, vague 1 (collège) : états de la matière, masse volumique et mélanges, atomes et transformations chimiques, acides et bases, mouvements, forces et poids, circuits électriques et loi d'Ohm, énergie, signaux sonores et lumineux. Feuille de route : `docs/chantiers/catalogue-physique-chimie.md`.
+- Chat : onglets par matière (Maths | Physique-chimie) dans la barre de navigation ; une recherche porte sur toutes les matières. `GET /api/catalogue` renvoie la matière de chaque notion.
 - Chat : **barre de navigation du catalogue** — fixe à gauche sur grand écran, tiroir sur mobile (bouton « Catalogue », Échap pour fermer). Notions groupées par niveau (collège, seconde, première, terminale), recherche sans accents, coche ✓ et compteur des notions explorées ; un clic ouvre la page directement dans le fil (sans appel au chat) et compte comme notion découverte.
 - Worker : `GET /api/catalogue` (notions triées par niveau puis par titre) ; champ facultatif `niveau` dans les fiches.
 - Catalogue, vague 4 (terminale) : **limites et continuité**, **logarithme népérien**, **primitives et intégrales**, **raisonnement par récurrence**, **dénombrement**, **loi binomiale**, **géométrie dans l'espace**. Le programme de la 6e à la terminale est couvert (36 notions).
@@ -31,6 +33,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé
+- Gabarit : la légende de l'axe horizontal de la figure `proportion` ne met plus les unités en minuscules (« Intensité I (A) »).
 - Chat : une question hors catalogue sans modèle (mode zéro budget) renvoie une réponse `hors-catalogue` qui liste les notions disponibles et propose des questions qui marchent, au lieu d'une phrase de repli identique ; elle ne rapporte plus d'XP.
 - Chat : après une mise en ligne, la nouvelle page pouvait s'afficher avec l'ancien CSS ou JS gardé en cache par le navigateur (4 h), ce qui cassait le rendu. Le build ajoute désormais l'empreinte du contenu aux URL (`style.css?v=…`, `app.js?v=…`, `progression.js?v=…`).
 - CI : les tests navigateur du chat suivent l’URL d’API réellement construite (ils échouaient en CI avec `KERMICLAB_API_URL=http://localhost:8787`).

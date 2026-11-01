@@ -8,7 +8,7 @@
   "placeholder": "E.g.: what is the sine?",
   "envoyer": "Send",
   "bienvenueTitre": "Hi! What shall we discover today?",
-  "bienvenue": "Hello! I'm Kermiclab. Ask me about a maths idea, for example \"what is the sine?\".",
+  "bienvenue": "Hello! I'm Kermiclab. Ask me about maths or physics and chemistry, for example \"what is the sine?\" or \"how does an electric circuit work?\".",
   "bienvenueRetour": "Welcome back! Your streak is at {n} day(s): one question today to keep it going?",
   "suggestionsTitre": "To get started, try:",
   "suggestion1": "What is the sine?",
@@ -77,5 +77,7 @@
   "niveau_seconde": "High school – 1st year",
   "niveau_premiere": "High school – 2nd year",
   "niveau_terminale": "High school – final year",
-  "niveau_autres": "Other topics"
+  "niveau_autres": "Other topics",
+  "matiere_mathematiques": "Maths",
+  "matiere_physique-chimie": "Physics & chemistry"
 }
