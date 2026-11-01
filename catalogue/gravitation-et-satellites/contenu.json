@@ -52,7 +52,8 @@
       "paragraphes": [
         "Un satellite **géostationnaire** tourne dans le plan de l'équateur, dans le même sens que la Terre, avec une période égale à la rotation de la Terre (environ 24 h, précisément 23 h 56 min). Il paraît immobile au-dessus d'un point de l'équateur, à environ 36 000 km d'altitude.",
         "C'est idéal pour les télécommunications et la météo : les antennes paraboliques restent pointées vers lui."
-      ]
+      ],
+      "aRetenir": "Dans les formules de gravitation et de vitesse orbitale, r est mesuré depuis le centre de l'astre : r = rayon de l'astre + altitude. Pense aussi à convertir les kilomètres en mètres."
     }
   ],
   "application": {

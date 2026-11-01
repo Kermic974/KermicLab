@@ -23,6 +23,25 @@ test("gabarit : les notions pilotes ont un contenu valide", async () => {
   for (const { nom, contenu } of liste) assert.doesNotThrow(() => validerContenu(contenu, nom), nom);
 });
 
+test("vague 4 : chaque notion propose un exemple, un mémo et des exercices variés", async () => {
+  const attendues = [
+    "limites-et-continuite", "logarithme", "integrales", "recurrence", "denombrement", "loi-binomiale",
+    "geometrie-dans-l-espace", "lois-de-newton", "gravitation-et-satellites", "cinetique-chimique",
+    "radioactivite", "thermodynamique", "condensateur-et-circuit-rc", "diffraction-et-interferences"
+  ];
+  const catalogue = new Map((await notions()).map(({ nom, contenu }) => [nom, contenu]));
+  for (const nom of attendues) {
+    const contenu = catalogue.get(nom);
+    assert.ok(contenu, `${nom} : contenu présent`);
+    assert.ok(contenu.niveaux.some((niveau) => niveau.exemple?.etapes?.length), `${nom} : exemple guidé`);
+    assert.ok(contenu.niveaux.some((niveau) => niveau.aRetenir?.trim()), `${nom} : mémo`);
+    const types = new Set(contenu.application.exercices.map((exercice) => exercice.type));
+    assert.ok(types.has("nombre") && types.has("qcm"), `${nom} : exercices numériques et QCM`);
+    assert.ok(contenu.application.exercices.every((exercice) => exercice.type !== "nombre" || exercice.solution?.trim()), `${nom} : solutions des exercices numériques`);
+    assert.ok(contenu.situation.etapes.length >= 2, `${nom} : situation progressive`);
+  }
+});
+
 test("gabarit : chaque réponse attendue est cohérente avec son type", async () => {
   for (const { nom, contenu } of await notions()) {
     for (const ex of [...contenu.application.exercices, ...contenu.situation.etapes]) {
