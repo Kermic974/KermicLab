@@ -14,12 +14,13 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Chat : les suggestions de l'accueil viennent du catalogue (`GET /api/suggestions`) et mènent toujours à une page ; des questions de secours (i18n), vérifiées par un test de routage, prennent le relais si l'API ne répond pas.
 - Chat : relances proposées par le modèle après chaque réponse (champ `relances`, bornées et modérées), à la place de relances fixes qui ne fonctionnaient pas sans modèle.
 - Modèle : consignes de réponse plus exigeantes (exactitude, niveau adapté, image du quotidien, exemple chiffré, petit défi, suivi de la conversation).
-- Chat : nouvelle interface plus engageante — écran d'accueil avec suggestions cliquables, relances après chaque réponse (« plus simple », « un exemple », « un défi »), indicateur de saisie animé, bouton « Réessayer » en cas d'erreur, carte repliable pour les pages interactives, zone de saisie flottante et en-tête compact (mobile et mode sombre soignés, animations désactivées si « réduire les animations » est demandé).
+- Chat : nouvelle interface plus engageante — écran d'accueil avec suggestions cliquables, relances après chaque réponse, indicateur de saisie animé, bouton « Réessayer » en cas d'erreur, carte repliable pour les pages interactives, zone de saisie flottante et en-tête compact (mobile et mode sombre soignés, animations désactivées si « réduire les animations » est demandé).
 - Chat : progression locale sans compte (`web/progression.js`) — série de jours, XP, niveaux et 7 badges, avec notifications et fenêtre « Mes progrès ». Stockée uniquement dans le navigateur, prête à être synchronisée vers la table `progres` de l'ADR 0010.
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé
 - Chat : une question hors catalogue sans modèle (mode zéro budget) renvoie une réponse `hors-catalogue` qui liste les notions disponibles et propose des questions qui marchent, au lieu d'une phrase de repli identique ; elle ne rapporte plus d'XP.
+- Chat : après une mise en ligne, la nouvelle page pouvait s'afficher avec l'ancien CSS ou JS gardé en cache par le navigateur (4 h), ce qui cassait le rendu. Le build ajoute désormais l'empreinte du contenu aux URL (`style.css?v=…`, `app.js?v=…`, `progression.js?v=…`).
 - CI : les tests navigateur du chat suivent l’URL d’API réellement construite (ils échouaient en CI avec `KERMICLAB_API_URL=http://localhost:8787`).
 - CI : `pages.yml` et `ci.yml` ne partagent plus le même groupe de concurrence (ils s’annulaient mutuellement).
 - Déploiement : le site publié pointe vers le Worker `https://kermiclab-api.kermic.workers.dev` même sans variable `KERMICLAB_API_URL` (il pointait vers `localhost`).
