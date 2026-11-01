@@ -1,0 +1,188 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la clôture et la pelouse",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Autour d'un jardin, la longueur de la clôture est le **périmètre** : on fait le tour. La place occupée par la pelouse est l'**aire** : on compte combien de carreaux de 1 m sur 1 m la recouvrent.",
+        "Deux formes peuvent avoir le même périmètre et des aires différentes : un rectangle de 5 m × 1 m et un carré de 3 m × 3 m ont tous deux un périmètre de 12 m, mais des aires de 5 m² et 9 m²."
+      ]
+    },
+    {
+      "titre": "Les formules des polygones",
+      "niveau": "6e",
+      "paragraphes": [
+        "**Carré** de côté c : périmètre 4 × c, aire c × c = c².",
+        "**Rectangle** de longueur L et largeur l : périmètre 2 × (L + l), aire L × l.",
+        "**Triangle** : aire = base × hauteur ÷ 2 (la hauteur est perpendiculaire à la base). C'est la moitié d'un rectangle !"
+      ],
+      "aRetenir": "Un périmètre s'exprime en m, cm… ; une aire en m², cm²… (des carrés !)."
+    },
+    {
+      "titre": "Le cercle et le disque",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Le **périmètre d'un cercle** de rayon r vaut **2 × π × r** (ou π × d, avec le diamètre d). Le nombre π vaut environ 3,14.",
+        "L'**aire d'un disque** vaut **π × r²**."
+      ],
+      "exemple": {
+        "titre": "Exemple : rayon 3 cm",
+        "etapes": [
+          "Périmètre : 2 × π × 3 = 6π ≈ 18,85 cm.",
+          "Aire : π × 3² = 9π ≈ 28,27 cm².",
+          "On garde la valeur exacte (6π, 9π) le plus longtemps possible, et on arrondit à la fin."
+        ]
+      }
+    },
+    {
+      "titre": "Les unités d'aire",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Un carré de 1 m de côté mesure aussi 100 cm de côté : 1 m² = 100 × 100 = **10 000 cm²**. Pour les aires, on multiplie par 100 à chaque changement d'unité : 1 m² = 100 dm² = 10 000 cm².",
+        "Pour les terrains : 1 are = 100 m² et 1 hectare = 10 000 m² (un carré de 100 m de côté)."
+      ]
+    },
+    {
+      "titre": "Plus loin : autres figures et agrandissements",
+      "niveau": "4e / seconde",
+      "paragraphes": [
+        "**Parallélogramme** : base × hauteur. **Trapèze** : (grande base + petite base) × hauteur ÷ 2.",
+        "Si on multiplie toutes les longueurs par k, le périmètre est multiplié par k mais l'aire par **k²** : doubler le côté d'un carré multiplie son aire par 4."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : périmètre = tour, aire = surface.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Périmètre d'un rectangle",
+        "question": "Un rectangle mesure 7 cm sur 4 cm. Quel est son périmètre ?",
+        "reponse": 22,
+        "unite": "cm",
+        "indices": [
+          "Périmètre = 2 × (L + l)."
+        ],
+        "solution": "2 × (7 + 4) = 2 × 11 = 22 cm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aire d'un rectangle",
+        "question": "Quelle est l'aire de ce même rectangle de 7 cm sur 4 cm ?",
+        "reponse": 28,
+        "unite": "cm²",
+        "indices": [
+          "Aire = L × l."
+        ],
+        "solution": "7 × 4 = 28 cm²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aire d'un triangle",
+        "question": "Un triangle a une base de 10 cm et une hauteur de 6 cm. Quelle est son aire ?",
+        "reponse": 30,
+        "unite": "cm²",
+        "indices": [
+          "Aire = base × hauteur ÷ 2."
+        ],
+        "solution": "10 × 6 ÷ 2 = 30 cm²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aire d'un disque",
+        "question": "Quelle est l'aire d'un disque de rayon 5 cm, arrondie au dixième ?",
+        "reponse": 78.5,
+        "tolerance": 0.05,
+        "unite": "cm²",
+        "indices": [
+          "Aire = π × r² = π × 25.",
+          "25π ≈ 78,54."
+        ],
+        "solution": "π × 5² = 25π ≈ 78,5 cm²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Convertir",
+        "question": "Combien de cm² y a-t-il dans 3 m² ?",
+        "reponse": 30000,
+        "unite": "cm²",
+        "indices": [
+          "1 m² = 10 000 cm²."
+        ],
+        "solution": "3 × 10 000 = 30 000 cm²."
+      },
+      {
+        "type": "qcm",
+        "titre": "Même périmètre",
+        "question": "Un carré de 3 cm de côté et un rectangle de 5 cm sur 1 cm ont le même périmètre (12 cm). Lequel a la plus grande aire ?",
+        "choix": [
+          "Le carré",
+          "Le rectangle",
+          "Ils ont la même aire"
+        ],
+        "bonne": 0,
+        "explication": "Carré : 3 × 3 = 9 cm². Rectangle : 5 × 1 = 5 cm². Même périmètre ne veut pas dire même aire !"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le potager",
+    "histoire": [
+      "La classe crée un potager rectangulaire de **8 m de long** et **5 m de large**.",
+      "Il faut l'entourer d'un grillage et acheter des graines."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le grillage",
+        "question": "Quelle longueur de grillage faut-il pour faire le tour du potager ?",
+        "reponse": 26,
+        "unite": "m",
+        "indices": [
+          "C'est le périmètre : 2 × (8 + 5)."
+        ],
+        "solution": "2 × (8 + 5) = 26 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le prix du grillage",
+        "question": "Le grillage coûte 4 € le mètre. Combien coûte-t-il en tout ?",
+        "reponse": 104,
+        "unite": "€",
+        "indices": [
+          "Calcule 26 × 4."
+        ],
+        "solution": "26 × 4 = 104 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "La surface à semer",
+        "question": "Quelle est l'aire du potager ?",
+        "reponse": 40,
+        "unite": "m²",
+        "indices": [
+          "Aire = longueur × largeur."
+        ],
+        "solution": "8 × 5 = 40 m²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les graines",
+        "question": "Un sachet de graines permet de semer 5 m². Combien de sachets faut-il ?",
+        "reponse": 8,
+        "unite": "sachets",
+        "indices": [
+          "Divise l'aire par 5."
+        ],
+        "solution": "40 ÷ 5 = 8 sachets."
+      }
+    ],
+    "conclusion": "Le potager est prêt ! Périmètre pour la clôture, aire pour les graines : savoir lequel utiliser, c'est tout l'art du problème."
+  }
+}

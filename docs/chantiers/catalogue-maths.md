@@ -1,6 +1,6 @@
 # Chantier : catalogue de mathématiques (programme complet)
 
-**Niveau actuel : vague 1 livrée (11 notions générées + `trigo-cercle`)**
+**Niveau actuel : vagues 1 et 2 — collège complet (19 notions générées + `trigo-cercle`)**
 
 Objectif : couvrir le programme de mathématiques de la 6e à la terminale (spécialité), une notion par page, du plus intuitif au plus formel.
 Méthode : gabarit commun (ADR 0011, guide `docs/gabarit.md`), **une PR par vague** de 8 notions environ, pour que la relecture humaine
@@ -17,27 +17,27 @@ et un test navigateur qui résout **tous** les exercices avec la réponse attend
 | `pythagore` | 4e → première (Al-Kashi) | carrés sur les côtés | en ligne |
 | `fractions` | 6e → seconde (rationnels) | barres partagées | en ligne |
 | `proportionnalite` (et pourcentages) | 6e → seconde (évolutions) | tableau et droite | en ligne |
-| `nombres-relatifs` | 5e → seconde (valeur absolue) | — | PR ouverte |
-| `puissances` | 4e → seconde | — | PR ouverte |
-| `calcul-litteral` | 5e → seconde | — | PR ouverte |
-| `equations` (et inéquations) | 4e → seconde | — | PR ouverte |
-| `thales` | 4e → seconde (homothétie) | — | PR ouverte |
-| `statistiques` | 5e → seconde (quartiles, écart type) | — | PR ouverte |
-| `probabilites` | 5e → seconde (loi des grands nombres) | simulateur de dé | PR ouverte |
-| `fonctions-affines` | 3e → seconde (variations) | droite y = ax + b | PR ouverte |
+| `nombres-relatifs` | 5e → seconde (valeur absolue) | — | en ligne |
+| `puissances` | 4e → seconde | — | en ligne |
+| `calcul-litteral` | 5e → seconde | — | en ligne |
+| `equations` (et inéquations) | 4e → seconde | — | en ligne |
+| `thales` | 4e → seconde (homothétie) | — | en ligne |
+| `statistiques` | 5e → seconde (quartiles, écart type) | — | en ligne |
+| `probabilites` | 5e → seconde (loi des grands nombres) | simulateur de dé | en ligne |
+| `fonctions-affines` | 3e → seconde (variations) | droite y = ax + b | en ligne |
 
 ## Vague 2 — collège, compléments
 
 | Notion | Niveaux | Figure envisagée | Statut |
 |---|---|---|---|
-| `nombres-decimaux` | 6e | droite graduée | à faire |
-| `priorites-operatoires` | 5e | — | à faire |
-| `arithmetique` (diviseurs, nombres premiers, PGCD) | 5e → 3e | — | à faire |
-| `perimetres-aires` | 6e → 4e | — | à faire |
-| `volumes` | 6e → 3e | — | à faire |
-| `angles` (et triangles, parallèles) | 6e → 5e | — | à faire |
-| `transformations` (symétries, translation, rotation, homothétie) | 6e → 3e | — | à faire |
-| `vitesse` (grandeurs composées, conversions) | 4e → 3e | — | à faire |
+| `nombres-decimaux` | 6e | — | PR ouverte |
+| `priorites-operatoires` | 5e | — | PR ouverte |
+| `arithmetique` (diviseurs, nombres premiers, PGCD) | 5e → 3e | — | PR ouverte |
+| `perimetres-aires` | 6e → 4e | — | PR ouverte |
+| `volumes` | 6e → 3e | — | PR ouverte |
+| `angles` (et triangles, parallèles) | 6e → 5e | — | PR ouverte |
+| `transformations` (symétries, translation, rotation, homothétie) | 6e → 3e | — | PR ouverte |
+| `vitesse` (grandeurs composées, conversions) | 4e → 3e | — | PR ouverte |
 
 ## Vague 3 — seconde et première
 
