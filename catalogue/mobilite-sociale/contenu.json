@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La mobilité sociale observe comment les positions sociales évoluent. Elle ne se confond pas avec un déménagement ni avec un jugement sur les personnes.",
+  "niveaux": [
+    {
+      "titre": "Une position qui peut changer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **mobilité sociale** désigne le changement de position sociale d'une personne ou d'un groupe. Elle se distingue de la mobilité géographique, qui correspond à un changement de lieu.",
+        "On peut comparer la position d'une personne à celle de ses parents, ou étudier ses changements de position au cours de sa propre vie."
+      ],
+      "exemple": {
+        "titre": "Deux parcours",
+        "etapes": [
+          "Une personne exerce un métier différent de celui de ses parents : on peut étudier une mobilité entre générations.",
+          "Une personne change de profession après une formation : on peut étudier une mobilité au cours de sa vie."
+        ]
+      }
+    },
+    {
+      "titre": "Intergénérationnelle et intragénérationnelle",
+      "niveau": "première",
+      "paragraphes": [
+        "La mobilité **intergénérationnelle** compare la position sociale des enfants adultes à celle de leurs parents. La mobilité **intragénérationnelle** observe les changements de position d'une même personne au fil du temps.",
+        "Une table de mobilité présente les origines sociales et les positions atteintes. Il faut lire ses lignes et colonnes en vérifiant les pourcentages : certains décrivent les destinées, d'autres les origines."
+      ],
+      "aRetenir": "Changer de profession n'indique pas à lui seul une hausse ou une baisse de position : il faut comparer les positions selon la classification utilisée."
+    },
+    {
+      "titre": "Structure sociale et trajectoires",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La mobilité observée dépend en partie de la transformation de la structure des emplois. Si le nombre de postes dans certaines catégories augmente ou diminue, les trajectoires changent : on parle notamment de mobilité structurelle.",
+        "La mobilité nette ou fluidité sociale cherche à comparer les chances relatives d'accès aux positions en tenant compte des changements de structure. La reproduction sociale désigne la tendance à retrouver des positions proches entre générations ; elle n'est jamais une règle absolue pour chaque individu."
+      ],
+      "exemple": {
+        "titre": "Des emplois qui évoluent",
+        "etapes": [
+          "Si les emplois qualifiés deviennent plus nombreux, certaines personnes occupent des positions différentes de celles de leurs parents.",
+          "Cette mobilité observée peut résulter de la transformation des emplois, sans signifier que les chances relatives sont devenues égales."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Repère la période comparée et distingue les changements de structure des chances relatives.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Entre générations",
+        "question": "Comparer la position sociale d'une personne adulte à celle de ses parents étudie surtout…",
+        "choix": ["La mobilité intergénérationnelle", "La mobilité géographique", "La mobilité des prix"],
+        "bonne": 0,
+        "explication": "La comparaison entre parents et enfants relève de la mobilité intergénérationnelle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Au cours d'une vie",
+        "question": "Une personne change de position professionnelle après plusieurs années. Quel type de mobilité observe-t-on ?",
+        "choix": ["La mobilité intragénérationnelle", "La mobilité intergénérationnelle uniquement", "La mobilité géographique nécessairement"],
+        "bonne": 0,
+        "explication": "La mobilité intragénérationnelle concerne les changements de position au cours de la vie d'une personne."
+      },
+      {
+        "type": "qcm",
+        "titre": "Lire une table",
+        "question": "Avant de lire un pourcentage dans une table de mobilité, que faut-il vérifier ?",
+        "choix": ["La signification des lignes, des colonnes et du sens du pourcentage", "Seulement la couleur du tableau", "Que toutes les cases contiennent le même nombre"],
+        "bonne": 0,
+        "explication": "Selon que le pourcentage est calculé en ligne ou en colonne, il décrit une destinée ou une origine."
+      },
+      {
+        "type": "qcm",
+        "titre": "La structure des emplois",
+        "question": "Une hausse de la part des emplois qualifiés peut provoquer des changements de position entre parents et enfants. Quel facteur contribue à cette mobilité observée ?",
+        "choix": ["La transformation de la structure des emplois", "La seule distance entre les villes", "La disparition de toute origine sociale"],
+        "bonne": 0,
+        "explication": "La structure des emplois change les positions disponibles et contribue à la mobilité structurelle."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Trois parcours à comparer",
+    "histoire": [
+      "Pour un exercice de classe, on étudie des trajectoires fictives : Alex exerce un métier différent de ses parents ; Sam change de métier au cours de sa carrière ; Jo déménage dans une autre ville sans changer de profession. La comparaison porte sur les concepts, pas sur la valeur des parcours."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Alex",
+        "question": "Quel changement décrit le mieux le parcours d'Alex ?",
+        "choix": ["Une mobilité intergénérationnelle à étudier en comparant les positions", "Une mobilité géographique uniquement", "Une preuve de réussite individuelle"],
+        "bonne": 0,
+        "explication": "Le métier différent de celui des parents invite à comparer les positions entre générations, sans porter de jugement de mérite."
+      },
+      {
+        "type": "qcm",
+        "titre": "Sam",
+        "question": "Quel type de mobilité concerne le changement de métier de Sam au fil de sa carrière ?",
+        "choix": ["La mobilité intragénérationnelle", "La mobilité intergénérationnelle", "Aucune évolution possible"],
+        "bonne": 0,
+        "explication": "Sam change de position au cours de sa propre vie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Jo",
+        "question": "Jo déménage mais garde la même profession. Quel changement est certain d'après ces informations ?",
+        "choix": ["Une mobilité géographique", "Une mobilité sociale", "Une hausse de position sociale"],
+        "bonne": 0,
+        "explication": "Le déménagement est un changement de lieu ; il ne suffit pas à démontrer un changement de position sociale."
+      }
+    ],
+    "conclusion": "Les catégories décrivent des changements différents. Une trajectoire ne mesure ni le mérite d'une personne ni l'égalité des chances à elle seule."
+  }
+}

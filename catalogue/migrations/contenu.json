@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue à classer des parcours inventés sans supposer l'histoire d'une personne à partir de son origine.",
+  "niveaux": [
+    {
+      "titre": "Intuition : changer de résidence habituelle", "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **migration** est un déplacement avec changement de lieu de résidence habituel. Elle est **interne** lorsqu'elle reste dans un même pays, **internationale** lorsqu'elle franchit une frontière entre pays. Un séjour touristique ou un trajet quotidien est une mobilité, mais pas une migration.",
+        "On peut partir pour étudier, travailler, rejoindre des proches ou chercher une protection. Plusieurs raisons peuvent se combiner, avec des choix et des contraintes. Les personnes migrantes ne forment pas un groupe aux parcours ou aux besoins identiques."
+      ],
+      "exemple": { "titre": "Carte mentale : trois parcours fictifs", "etapes": [
+        "Un personnage déménage de Lille à Nantes : migration interne.",
+        "Un personnage s'installe d'un pays A dans un pays B : migration internationale.",
+        "Un personnage visite Nantes puis rentre chez lui : tourisme ; compare le changement de résidence, pas seulement la distance."
+      ] },
+      "aRetenir": "Le changement de résidence habituelle distingue une migration d'autres mobilités ; la frontière distingue interne et internationale."
+    },
+    {
+      "titre": "Collège : départs, arrivées et droits", "niveau": "collège",
+      "paragraphes": [
+        "L'**émigration** observe le départ depuis un territoire ; l'**immigration** observe l'arrivée dans un autre. Ce sont deux points de vue sur un même déplacement. Les liens peuvent continuer entre lieux de départ et d'installation : proches, échanges et transferts d'argent, sans que cela concerne tous les parcours.",
+        "Un réfugié bénéficie d'une protection selon des critères juridiques liés notamment à une crainte fondée de persécution ; une personne demandeuse d'asile attend l'examen de sa demande. Tous les migrants ne sont pas réfugiés. En France, un déménagement entre La Réunion et la métropole est une migration interne, malgré la distance."
+      ],
+      "exemple": { "titre": "Carte mentale : La Réunion et la métropole", "etapes": [
+        "Branche départ : un personnage fictif quitte La Réunion pour étudier.",
+        "Branche installation : il établit sa résidence habituelle à Montpellier.",
+        "Branche échelle : les deux territoires sont français ; classe le déplacement comme interne et ajoute les liens maintenus."
+      ] },
+      "aRetenir": "Distance, nationalité et statut juridique ne se confondent pas ; les droits doivent être examinés sans stigmatiser."
+    },
+    {
+      "titre": "Lycée : réseaux, politiques et représentations", "niveau": "lycée",
+      "paragraphes": [
+        "Les migrations relient lieux de départ, de transit et d'installation. Elles se produisent entre pays voisins comme à longue distance, entre pays aux revenus comparables ou différents. Les statistiques doivent distinguer flux sur une période et nombre de personnes résidant dans un territoire ; une catégorie statistique ne résume pas une identité.",
+        "Les États fixent des règles de séjour et de protection, dans des cadres juridiques nationaux et internationaux. Collectivités, écoles, associations, employeurs et habitants participent à l'accueil et à l'accès aux services. Logement, moyens disponibles et procédures constituent des contraintes ; protéger les droits et éviter les discriminations reste indispensable."
+      ],
+      "exemple": { "titre": "Carte mentale : un accueil dans une ville", "etapes": [
+        "Échelle locale : services, logement et scolarisation selon les besoins fictifs.",
+        "Échelle nationale : règles de séjour et examen des demandes de protection par les autorités compétentes.",
+        "Échelle internationale : droits et coopération ; sépare les faits des rumeurs et ne déduis pas un statut d'une apparence."
+      ] },
+      "aRetenir": "Étudier les migrations demande de croiser échelles, droits et données, sans réduire les personnes à une origine."
+    }
+  ],
+  "application": {
+    "intro": "Classe les situations en observant la résidence et les frontières, pas des préjugés.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Un personnage change de résidence de Bordeaux à Lyon. Il s'agit…", "choix": ["D'un voyage touristique sans installation", "D'une migration interne", "Nécessairement d'une demande d'asile"], "bonne": 1, "indice": "Il change de résidence mais reste dans le même pays.", "explication": "Le déplacement est une migration interne ; le motif ou un statut de protection ne peut pas être déduit de ce seul fait." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui examine les demandes d'asile dans le cadre juridique prévu ?", "choix": ["Les seuls habitants de la commune par un vote", "Les associations d'accueil qui attribuent seules le statut", "Les autorités compétentes, avec les recours prévus"], "bonne": 2, "indice": "Un statut de protection relève d'une procédure légale.", "explication": "Les institutions compétentes appliquent les critères juridiques ; une rumeur ou une origine ne décide pas du statut." },
+      { "type": "qcm", "titre": "Échelles", "question": "Une installation de La Réunion à Montpellier relève de quelle migration ?", "choix": ["Interne à la France", "Internationale parce qu'un océan est traversé", "Touristique dans tous les cas"], "bonne": 0, "indice": "La frontière nationale compte plus que la distance.", "explication": "La Réunion et Montpellier appartiennent à la France ; avec changement de résidence, c'est une migration interne." }
+    ]
+  },
+  "situation": {
+    "titre": "Habiter et accueillir à Accueilville",
+    "histoire": ["Accueilville et ses personnages sont entièrement fictifs. Un personnage s'y installe depuis une autre région du même pays ; un autre depuis un pays voisin.", "La commune prépare un guide de services sans demander aux joueurs d'informations sur eux-mêmes ou sur des personnes réelles."],
+    "etapes": [
+      { "type": "qcm", "titre": "Distinguer", "question": "Le second personnage établit sa résidence depuis un autre pays. C'est…", "choix": ["Une migration internationale", "Un trajet quotidien", "Une migration interne au même pays"], "bonne": 0, "indice": "Il franchit une frontière nationale pour s'installer.", "explication": "Le changement de résidence entre pays définit ici une migration internationale, sans préciser à lui seul le motif ou le statut." },
+      { "type": "qcm", "titre": "Respecter", "question": "Peut-on déduire son statut juridique de sa langue ou de son apparence ?", "choix": ["Oui, toujours", "Non, ces éléments ne déterminent pas un statut", "Oui, si la ville est petite"], "bonne": 1, "indice": "Les statuts relèvent de faits et de procédures, pas d'apparences.", "explication": "Aucune langue ou apparence ne suffit à connaître un statut ; éviter ces suppositions prévient les discriminations." },
+      { "type": "qcm", "titre": "Accéder aux services", "question": "Quel guide facilite un accueil respectueux ?", "choix": ["Une liste publique d'adresses personnelles", "Des rumeurs sur les nouveaux habitants", "Des informations accessibles sur les services et autorités compétentes"], "bonne": 2, "indice": "Informe sans exposer de données privées.", "explication": "Une information fiable sur les démarches et services aide les personnes, dans le respect de leur vie privée et des droits." }
+    ],
+    "conclusion": "Mission accomplie ! Invente sur papier trois parcours et joue à observer résidence, frontières et services utiles. N'utilise aucun nom, récit ou statut de personnes réelles et ne mène pas d'enquête personnelle."
+  }
+}

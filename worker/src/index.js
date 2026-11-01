@@ -54,11 +54,12 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
   const triees = [...index.maquettes].sort((a, b) => a.id.localeCompare(b.id)).filter((m) => m.id !== exclure);
   // Rotation (par exemple selon le jour) : toutes les notions finissent par être proposées.
   const debut = triees.length ? ((decalage % triees.length) + triees.length) % triees.length : 0;
-  const parPage = [...triees.slice(debut), ...triees.slice(0, debut)]
-    .map((m) => {
-      const questions = (m.questions ?? []).filter((q) => langueQuestion(q) === langue);
-      return (questions.length ? questions : m.questions ?? []).map((q) => q.charAt(0).toUpperCase() + q.slice(1));
-    });
+  const tournees = [...triees.slice(debut), ...triees.slice(0, debut)];
+  const questionsParPage = tournees.map((m) => (m.questions ?? []).filter((q) => langueQuestion(q) === langue));
+  const parPage = (questionsParPage.some((questions) => questions.length)
+    ? questionsParPage
+    : tournees.map((m) => m.questions ?? []))
+    .map((questions) => questions.map((q) => q.charAt(0).toUpperCase() + q.slice(1)));
   const sortie = [];
   for (let rang = 0; sortie.length < max && parPage.some((l) => l.length > rang); rang += 1) {
     for (const l of parPage) if (l[rang] && sortie.length < max && !sortie.includes(l[rang])) sortie.push(l[rang]);

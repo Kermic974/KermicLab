@@ -1,0 +1,118 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une frontière peut séparer deux États tout en étant traversée chaque jour. Enquête sur les coopérations et les différences entre territoires européens.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des voisins qui coopèrent",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Des pays européens ont choisi de construire des institutions et des règles communes : c'est l'**Union européenne**, ou UE. Ils restent des États, avec des compétences propres.",
+        "L'**Europe** est un ensemble géographique et historique plus large que l'UE. Jeu de classement : Europe et Union européenne ne sont pas deux noms pour le même ensemble."
+      ]
+    },
+    {
+      "titre": "Trois ensembles à ne pas confondre",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **zone euro** regroupe les États de l'UE qui ont adopté l'euro comme monnaie. Tous les membres de l'UE n'en font pas partie.",
+        "L'espace **Schengen** facilite la circulation des personnes par l'absence habituelle de contrôles aux frontières intérieures. Il ne se confond pas avec l'UE : la Suisse est dans Schengen, mais pas dans l'UE. Des contrôles temporaires peuvent être rétablis dans les conditions prévues par les règles.",
+        "Le **marché unique** facilite la circulation des biens, des services, des capitaux et des personnes dans un cadre commun. Ce n'est pas la même chose que l'usage d'une monnaie commune."
+      ],
+      "aRetenir": "Pour une carte, vérifie toujours quel ensemble la légende représente : UE, zone euro ou Schengen."
+    },
+    {
+      "titre": "Des échanges et des écarts",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les métropoles, les ports et les axes de transport relient les territoires européens entre eux et au reste du monde. Des personnes franchissent des frontières pour travailler, étudier ou voyager.",
+        "L'accès à l'emploi, aux transports et aux services reste inégal entre régions et au sein de chacune. Un indicateur moyen de richesse ne décrit pas la situation de tous les habitants.",
+        "La **politique de cohésion** soutient des projets visant à réduire des écarts économiques, sociaux et territoriaux. Une aide finance une action ; elle ne garantit pas à elle seule la disparition des inégalités."
+      ]
+    },
+    {
+      "titre": "Décider à plusieurs échelles",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Les institutions européennes, les États, les collectivités, les entreprises et les habitants participent à des décisions différentes. La Commission européenne propose notamment des textes ; le Parlement européen et le Conseil de l'UE adoptent de nombreux textes ensemble.",
+        "Un projet transfrontalier peut associer des collectivités de plusieurs États. Il faut préciser qui finance, qui organise et qui utilise le service, puis évaluer ses effets.",
+        "La transition écologique, l'accès aux services et les tensions sur les frontières posent des défis. Une analyse géographique compare les échelles locale, nationale, européenne et mondiale, au lieu d'attribuer toute décision à un acteur unique."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Démêle les ensembles et les rôles. Les budgets utilisés ci-dessous sont fictifs.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Europe ou UE ?",
+        "question": "Quelle affirmation est correcte ?",
+        "choix": ["Tous les pays européens appartiennent à l'UE", "L'UE et l'Europe désignent exactement le même ensemble", "L'UE regroupe une partie des pays européens"],
+        "bonne": 2, "indice": "Une organisation politique n'est pas un continent.",
+        "explication": "L'UE est une organisation politique et économique ; l'Europe est un ensemble géographique et historique plus large."
+      },
+      {
+        "type": "qcm", "titre": "La monnaie",
+        "question": "Que désigne la zone euro ?",
+        "choix": ["Les États de l'UE ayant adopté l'euro", "Tous les pays du monde", "Tous les pays traversés par une même rivière"],
+        "bonne": 0, "indice": "Le nom renvoie à une monnaie.",
+        "explication": "La zone euro concerne l'adoption de l'euro par des États de l'UE. Elle ne se confond pas avec Schengen."
+      },
+      {
+        "type": "qcm", "titre": "Une frontière",
+        "question": "La Suisse appartient à Schengen mais pas à l'UE. Que démontre cet exemple ?",
+        "choix": ["Schengen est une monnaie", "Les deux ensembles ne sont pas identiques", "Tous les États ont supprimé leurs frontières"],
+        "bonne": 1, "indice": "Compare les appartenances, pas seulement les noms.",
+        "explication": "Les appartenances à Schengen et à l'UE diffèrent. L'absence habituelle de contrôles ne supprime pas les frontières des États."
+      },
+      {
+        "type": "nombre", "titre": "Un financement partagé",
+        "question": "Un projet fictif coûte 200 unités budgétaires. Une aide européenne en apporte 80. Quelle part du coût représente cette aide, en pourcentage ?",
+        "reponse": 40, "unite": "%", "indices": ["Calcule 80 ÷ 200 × 100."],
+        "solution": "80 ÷ 200 × 100 = 40 %. Le reste doit être financé par d'autres contributions."
+      },
+      {
+        "type": "qcm", "titre": "Cohésion et vie quotidienne",
+        "question": "Quel projet vise directement à améliorer l'accès aux services dans un territoire mal desservi ?",
+        "choix": ["Un affichage qui nie tous les écarts", "La fermeture de tous les transports publics", "Une liaison de transport adaptée aux besoins des habitants"],
+        "bonne": 2, "indice": "Cherche un moyen d'atteindre les services.",
+        "explication": "Une liaison adaptée peut améliorer l'accès, si les horaires, le tarif et l'accessibilité répondent réellement aux besoins."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un bus entre deux villes frontalières",
+    "histoire": [
+      "Deux villes fictives de pays membres de l'UE préparent une liaison de bus pour rejoindre un centre de formation. Le projet coûte 120 unités budgétaires, dont 45 financées par une aide européenne.",
+      "Les collectivités discutent avec les habitants : le dossier ne prétend pas décrire un programme de financement réel."
+    ],
+    "etapes": [
+      {
+        "type": "qcm", "titre": "Identifier le flux",
+        "question": "Que transporte directement ce bus ?",
+        "choix": ["Des capitaux financiers uniquement", "Des personnes", "Une frontière"],
+        "bonne": 1, "indice": "Pense aux usagers qui montent dans le bus.",
+        "explication": "La liaison facilite un flux de personnes entre deux territoires, ici pour accéder à une formation."
+      },
+      {
+        "type": "nombre", "titre": "Boucler le budget",
+        "question": "Après l'aide de 45 unités sur un coût de 120, combien d'unités restent à financer ?",
+        "reponse": 75, "unite": "unités", "indices": ["Soustrais l'aide du coût total."],
+        "solution": "120 − 45 = 75 unités restent à financer. Une aide n'est pas forcément la totalité du budget."
+      },
+      {
+        "type": "qcm", "titre": "Ne laisser personne de côté",
+        "question": "Quel point doit être étudié pour les habitants ayant peu de ressources ou une mobilité réduite ?",
+        "choix": ["Le tarif et l'accessibilité du bus et des arrêts", "Uniquement la couleur du logo", "La disparition supposée de toutes les différences"],
+        "bonne": 0, "indice": "Un service doit pouvoir être réellement utilisé.",
+        "explication": "Une liaison ne réduit les difficultés d'accès que si son prix, ses horaires et ses équipements sont adaptés."
+      },
+      {
+        "type": "qcm", "titre": "Évaluer le projet",
+        "question": "Quelle observation aide le mieux à savoir si la liaison atteint son objectif ?",
+        "choix": ["Le nombre de drapeaux sur l'affiche", "L'affirmation que tout projet réussit", "L'évolution de l'accès au centre de formation pour les habitants concernés"],
+        "bonne": 2, "indice": "Compare le résultat avec l'objectif initial.",
+        "explication": "L'évaluation doit examiner l'accès réel au service, pas seulement la présence d'un financement."
+      }
+    ],
+    "conclusion": "Projet étudié ! Tu as distingué les ensembles européens et relié coopération, financement et accès quotidien aux services."
+  }
+}

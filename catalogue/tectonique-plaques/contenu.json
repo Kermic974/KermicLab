@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "La surface solide de la Terre est découpée en plaques mobiles. Leurs mouvements expliquent une grande partie des séismes et du volcanisme.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un puzzle en mouvement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La surface externe rigide de la Terre ressemble à un puzzle géant composé de plaques. Ces plaques bougent très lentement les unes par rapport aux autres, de quelques centimètres par an en moyenne.",
+        "Les continents sont portés par les plaques, mais une plaque peut contenir à la fois un continent et une partie d'océan."
+      ],
+      "exemple": { "titre": "Un déplacement mesuré", "etapes": ["Un déplacement de 2 cm par an semble petit à l'échelle d'une personne.", "Sur des millions d'années, ces mouvements peuvent changer la position des continents et ouvrir ou fermer des océans."] },
+      "aRetenir": "Les plaques lithosphériques sont rigides à l'échelle géologique et se déplacent lentement."
+    },
+    {
+      "titre": "Les frontières des plaques",
+      "niveau": "collège",
+      "paragraphes": [
+        "À une **dorsale**, deux plaques s'écartent et de la nouvelle lithosphère océanique se forme. En **subduction**, une plaque plonge sous une autre ; une collision entre continents peut aussi former des montagnes.",
+        "Le long d'une faille transformante, deux plaques coulissent. Les contraintes accumulées aux frontières peuvent provoquer des séismes."
+      ],
+      "exemple": { "titre": "Naissance d'un plancher océanique", "etapes": ["À une dorsale, du magma remonte et se refroidit en formant de la nouvelle croûte océanique.", "En s'éloignant de la dorsale, cette lithosphère vieillit ; une partie peut être recyclée dans une zone de subduction."] },
+      "aRetenir": "Écartement, rapprochement et coulissage sont trois types de mouvements aux frontières des plaques."
+    },
+    {
+      "titre": "Moteurs et limites du modèle",
+      "niveau": "lycée",
+      "paragraphes": [
+        "La lithosphère rigide repose sur l'asthénosphère, une partie du manteau solide mais déformable à long terme. La chaleur interne de la Terre et la gravité contribuent à des mouvements lents ; les plaques ne flottent pas sur un océan de magma.",
+        "Les séismes et volcans se concentrent souvent près des frontières, mais tous les volcans ne se trouvent pas sur une limite de plaque. Les mesures GPS et l'âge des fonds océaniques apportent des preuves des mouvements."
+      ],
+      "exemple": { "titre": "Des vitesses mesurées par GPS", "etapes": ["On suit au cours du temps la position de stations fixées au sol.", "Des déplacements relatifs de quelques centimètres par an permettent d'estimer la direction et la vitesse des plaques."] },
+      "aRetenir": "La tectonique des plaques est un modèle appuyé par plusieurs observations ; les mouvements sont lents et continus, mais les séismes sont brusques."
+    }
+  ],
+  "application": {
+    "intro": "Associe les mouvements des plaques aux structures observées à leur frontière.",
+    "exercices": [
+      { "type": "qcm", "titre": "Vitesse", "question": "À quel ordre de grandeur se déplacent souvent les plaques ?", "choix": ["Quelques centimètres par an", "Plusieurs kilomètres par jour", "Elles sont toujours immobiles"], "bonne": 0, "explication": "Les vitesses tectoniques sont généralement de l'ordre de quelques centimètres par an." },
+      { "type": "qcm", "titre": "Dorsale", "question": "Que se passe-t-il à une dorsale océanique ?", "choix": ["Des plaques s'écartent et de la lithosphère océanique se forme", "Deux plaques coulissent toujours sans volcanisme", "Un continent plonge toujours sous un autre"], "bonne": 0, "explication": "À une dorsale, l'écartement permet la formation de nouvelle lithosphère océanique." },
+      { "type": "qcm", "titre": "Subduction", "question": "Que désigne une zone de subduction ?", "choix": ["Une plaque qui plonge sous une autre", "Deux plaques qui s'écartent à une dorsale", "La formation d'un nuage"], "bonne": 0, "explication": "Lors d'une subduction, une plaque lithosphérique s'enfonce sous une autre." }
+    ]
+  },
+  "situation": {
+    "titre": "Une alerte sismique en voyage",
+    "histoire": ["Tu séjournes dans une région où les séismes sont possibles. Une secousse survient ; il faut comprendre le risque sans improviser les gestes de sécurité."],
+    "etapes": [
+      { "type": "qcm", "titre": "Comprendre le risque", "question": "Pourquoi certains séismes surviennent-ils près des frontières de plaques ?", "choix": ["Des contraintes s'accumulent puis se libèrent brusquement le long de failles", "Les plaques se déplacent de plusieurs mètres chaque seconde", "Les continents s'enfoncent tous dans le manteau"], "bonne": 0, "explication": "Le mouvement lent des plaques peut accumuler des contraintes qui se libèrent lors d'une rupture." },
+      { "type": "qcm", "titre": "Suivre les consignes", "question": "Quelle est la meilleure source pour savoir quoi faire dans la région ?", "choix": ["Les consignes officielles des autorités locales", "Une rumeur non vérifiée", "Une règle unique valable partout sans exception"], "bonne": 0, "explication": "Les consignes de sécurité dépendent du lieu et sont données par les autorités compétentes." }
+    ],
+    "conclusion": "La tectonique explique où certains risques sont plus probables, mais on suit toujours les consignes officielles adaptées au lieu."
+  }
+}

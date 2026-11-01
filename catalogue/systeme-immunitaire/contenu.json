@@ -1,0 +1,53 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Le système immunitaire est un ensemble de cellules, tissus et molécules qui protègent l'organisme contre de nombreux agents infectieux.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des défenses coordonnées",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La peau et les muqueuses forment des barrières qui limitent l'entrée de microbes. Si un agent infectieux franchit ces barrières, des défenses immunitaires peuvent agir.",
+        "La fièvre et l'inflammation sont des réactions de l'organisme ; elles ne sont pas des microbes et ne signifient pas toujours qu'une situation est grave."
+      ],
+      "exemple": { "titre": "Une petite coupure", "etapes": ["La peau intacte sert de barrière contre de nombreux microbes.", "Après une coupure, des cellules de défense peuvent participer à la réaction inflammatoire locale."] },
+      "aRetenir": "La protection repose d'abord sur des barrières, puis sur des réponses immunitaires coordonnées."
+    },
+    {
+      "titre": "Immunité innée et adaptative",
+      "niveau": "collège",
+      "paragraphes": [
+        "L'immunité **innée** agit rapidement et reconnaît des signaux communs à différents microbes. Des cellules comme les phagocytes peuvent englober certains agents infectieux.",
+        "L'immunité **adaptative** implique notamment des lymphocytes. Certains lymphocytes B produisent des anticorps qui se lient à des cibles ; d'autres cellules immunitaires participent à éliminer des cellules infectées."
+      ],
+      "exemple": { "titre": "Une réponse à un microbe", "etapes": ["Des défenses innées réagissent rapidement au site d'entrée.", "Une réponse adaptative ciblée peut se développer et contribuer à éliminer l'agent infectieux."] },
+      "aRetenir": "Les anticorps reconnaissent des cibles particulières ; ils ne sont qu'un élément de la réponse immunitaire."
+    },
+    {
+      "titre": "Mémoire immunitaire et vaccination",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Après certaines infections ou une vaccination, des lymphocytes mémoire peuvent persister. Lors d'un nouveau contact avec la même cible, la réponse peut être plus rapide et plus efficace.",
+        "Un vaccin entraîne le système immunitaire à reconnaître une cible sans reproduire la maladie de la même façon que l'infection correspondante. La protection varie selon les vaccins et les personnes ; la vaccination ne garantit pas qu'aucune infection ne surviendra."
+      ],
+      "exemple": { "titre": "Préparer une réponse", "etapes": ["Le vaccin présente au système immunitaire une cible ou une instruction permettant de la reconnaître.", "Des cellules mémoire peuvent ensuite aider à répondre plus rapidement lors d'une exposition ultérieure."] },
+      "aRetenir": "Les antibiotiques agissent contre des bactéries, pas contre les virus ; un professionnel de santé choisit le traitement adapté."
+    }
+  ],
+  "application": {
+    "intro": "Relie les barrières, les cellules de défense et la mémoire immunitaire.",
+    "exercices": [
+      { "type": "qcm", "titre": "Barrière", "question": "Quel élément constitue une première barrière contre de nombreux microbes ?", "choix": ["La peau intacte", "Un anticorps dans tous les cas", "Un antibiotique pris sans avis"], "bonne": 0, "explication": "La peau et les muqueuses constituent des barrières physiques et biologiques." },
+      { "type": "qcm", "titre": "Anticorps", "question": "Quel est un rôle des anticorps ?", "choix": ["Se lier à des cibles particulières", "Digérer les aliments dans l'estomac", "Déplacer les plaques tectoniques"], "bonne": 0, "explication": "Les anticorps reconnaissent des cibles spécifiques et peuvent contribuer à la défense." },
+      { "type": "qcm", "titre": "Vaccination", "question": "À quoi sert principalement la vaccination ?", "choix": ["Préparer une réponse immunitaire contre une cible", "Traiter toutes les infections déjà présentes", "Remplacer les cellules de la peau"], "bonne": 0, "explication": "La vaccination prépare le système immunitaire à reconnaître une cible ; son efficacité dépend du vaccin et de la situation." }
+    ]
+  },
+  "situation": {
+    "titre": "Prévenir une infection à l'école",
+    "histoire": ["Une infection circule dans l'école. La classe cherche des moyens de prévention fiables et distingue les informations scientifiques des idées reçues."],
+    "etapes": [
+      { "type": "qcm", "titre": "Choisir un geste de prévention", "question": "Quel geste aide à réduire la transmission de nombreux microbes ?", "choix": ["Se laver les mains avec soin aux moments appropriés", "Partager les gourdes", "Remplacer l'aération par du parfum"], "bonne": 0, "explication": "Une bonne hygiène des mains réduit la transmission de nombreux agents infectieux." },
+      { "type": "qcm", "titre": "Choisir le bon traitement", "question": "Une infection est causée par un virus. Quelle affirmation est correcte ?", "choix": ["Les antibiotiques ne traitent pas le virus ; un professionnel conseille les soins appropriés", "Les antibiotiques détruisent toujours tous les virus", "Il faut prendre un médicament d'une autre personne"], "bonne": 0, "explication": "Les antibiotiques ciblent des bactéries, pas les virus ; un professionnel de santé peut conseiller les soins adaptés." }
+    ],
+    "conclusion": "Les gestes de prévention sont utiles, mais ils ne remplacent pas un avis médical quand on est malade ou inquiet."
+  }
+}

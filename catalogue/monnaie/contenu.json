@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Pièces, billets et paiements par carte : ces formes différentes remplissent des fonctions communes dans l'économie.",
+  "niveaux": [
+    {
+      "titre": "Pourquoi utiliser une monnaie ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La monnaie facilite les échanges. Sans monnaie, deux personnes devraient vouloir exactement ce que l'autre propose au même moment : c'est la difficulté du troc.",
+        "La monnaie sert d'**intermédiaire des échanges**, d'**unité de compte** pour comparer les prix et de **réserve de valeur** pour transférer du pouvoir d'achat dans le temps. L'inflation peut toutefois réduire ce pouvoir d'achat."
+      ],
+      "exemple": {
+        "titre": "Comparer deux achats",
+        "etapes": [
+          "Un cahier coûte 3 euros et un livre 12 euros : la monnaie exprime les deux prix dans la même unité.",
+          "Avec des euros, l'acheteur peut payer le vendeur sans lui fournir un bien qu'il souhaiterait recevoir en échange."
+        ]
+      }
+    },
+    {
+      "titre": "Des formes de monnaie",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les pièces et les billets sont de la **monnaie fiduciaire**. La monnaie inscrite sur les comptes bancaires est de la **monnaie scripturale** ; un virement ou un paiement par carte permet de transférer cette monnaie sans remettre de billets.",
+        "Une carte bancaire est un instrument de paiement, pas une forme de monnaie en elle-même. La confiance dans les institutions et l'acceptation commune de la monnaie permettent son usage."
+      ],
+      "aRetenir": "Un paiement par carte débite généralement de la monnaie scripturale du compte : la carte donne un moyen d'accès au compte."
+    },
+    {
+      "titre": "Banques et création monétaire",
+      "niveau": "première",
+      "paragraphes": [
+        "Lorsqu'une banque accorde un crédit, elle inscrit généralement un dépôt sur le compte de l'emprunteur : elle crée ainsi de la monnaie scripturale. Quand le prêt est remboursé, la monnaie correspondante est détruite au fil des remboursements.",
+        "Cette création est encadrée : les banques doivent gérer les risques, respecter des règles prudentielles et se refinancer. La banque centrale influence les conditions du crédit et la quantité de monnaie, notamment par ses taux directeurs."
+      ],
+      "exemple": {
+        "titre": "Un prêt pour un équipement",
+        "etapes": [
+          "Une banque accorde un prêt de 1 000 euros et crédite le compte de l'emprunteur.",
+          "Le dépôt créé peut servir à payer un vendeur ; les remboursements réduisent ensuite progressivement le crédit et la monnaie créée."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Identifie la fonction de la monnaie, sa forme ou l'acteur concerné.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Unité de compte",
+        "question": "À quoi sert principalement la monnaie quand on compare le prix de deux produits ?",
+        "choix": ["À fournir une unité de compte commune", "À obliger chacun à faire du troc", "À garantir que tous les prix restent fixes"],
+        "bonne": 0,
+        "explication": "L'unité de compte permet d'exprimer et de comparer des valeurs dans une même unité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un paiement par carte",
+        "question": "Lors d'un paiement par carte débité sur le compte, quelle monnaie est transférée ?",
+        "choix": ["De la monnaie scripturale", "De la monnaie fiduciaire remise au commerçant", "Une monnaie créée par la carte elle-même"],
+        "bonne": 0,
+        "explication": "Le compte bancaire contient de la monnaie scripturale ; la carte est un instrument de paiement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un prêt bancaire",
+        "question": "Que fait généralement une banque lorsqu'elle accorde un prêt et crédite le compte de son client ?",
+        "choix": ["Elle crée de la monnaie scripturale", "Elle imprime nécessairement des billets", "Elle détruit toute la monnaie de l'économie"],
+        "bonne": 0,
+        "explication": "Le crédit accordé s'accompagne d'une inscription de dépôt : c'est une création de monnaie scripturale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le rôle de la banque centrale",
+        "question": "Quel acteur influence notamment les conditions auxquelles les banques peuvent se refinancer ?",
+        "choix": ["La banque centrale", "Chaque client individuellement", "Le commerçant qui reçoit un paiement"],
+        "bonne": 0,
+        "explication": "La banque centrale agit notamment par ses taux directeurs et sa politique monétaire."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Acheter un vélo avec un crédit",
+    "histoire": [
+      "Une famille compare le prix d'un vélo, paie une partie par carte et demande un prêt bancaire pour financer le reste. Suis les fonctions et les formes de monnaie mobilisées."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Comparer les prix",
+        "question": "Quelle fonction de la monnaie permet de comparer le prix de ce vélo à celui d'un autre modèle ?",
+        "choix": ["L'unité de compte", "L'intermédiaire des échanges uniquement", "La création de billets"],
+        "bonne": 0,
+        "explication": "Les prix exprimés en euros sont comparables grâce à l'unité de compte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Payer par carte",
+        "question": "La carte sert principalement à…",
+        "choix": ["transférer de la monnaie scripturale depuis le compte", "créer des pièces de monnaie", "remplacer la banque centrale"],
+        "bonne": 0,
+        "explication": "La carte est un instrument qui permet de donner l'ordre de débiter le compte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le crédit accordé",
+        "question": "Si la banque accorde le prêt et crédite le compte, quel mécanisme a lieu ?",
+        "choix": ["Une création de monnaie scripturale, encadrée par des règles et des risques", "Une création automatique de billets par le magasin", "Aucun changement sur les comptes"],
+        "bonne": 0,
+        "explication": "L'octroi du crédit s'accompagne généralement de la création d'un dépôt bancaire ; le remboursement réduit ensuite ce crédit."
+      }
+    ],
+    "conclusion": "Un achat peut faire intervenir l'unité de compte, un paiement scriptural et un crédit. La monnaie est créée par différents mécanismes encadrés, et non par la carte."
+  }
+}
