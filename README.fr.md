@@ -29,8 +29,8 @@ L’application autonome du cercle trigonométrique (`index.html`, générée de
 `/cercle/`, à côté du chat (ADR 0008).
 
 Des maquettes supplémentaires peuvent vivre dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
-jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics de mathématiques,
-de physique-chimie et de géographie fondés sur le gabarit.
+jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics fondés sur le gabarit
+en mathématiques, physique-chimie, géographie et philosophie.
 
 Le catalogue de géographie couvre **métropolisation, urbanisation, espaces ruraux, risques naturels,
 changement climatique, ressources, mobilités, migrations et territoires français**. Chaque page en français
@@ -38,6 +38,10 @@ progresse de l'intuition au collège puis au lycée, avec des cas d'étude, des 
 sur les notions, acteurs et échelles, et un défi du quotidien.
 Les pages sont générées depuis `catalogue/<id>/contenu.json` ; voir [le guide du gabarit](docs/gabarit.md).
 Une relecture humaine de l'exactitude géographique est requise avant fusion.
+
+Les neuf pages de philosophie couvrent le devoir, l’État, la justice, la liberté, le langage, la raison,
+la science, la technique et la vérité. Elles utilisent le gabarit commun : explications progressives,
+auteurs, QCM auto-corrigés et défis de la vie quotidienne.
 
 ## Démarrage rapide
 

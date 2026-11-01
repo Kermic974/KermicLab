@@ -96,6 +96,30 @@
         ],
         "bonne": 0,
         "explication": "C'est la définition de l'équivalence : le réactif titré vient d'être entièrement consommé."
+      },
+      {
+        "type": "nombre",
+        "titre": "Retrouver une concentration",
+        "question": "Une solution étalon à 4 mg/L a une absorbance de 0,8. Une solution inconnue a une absorbance de 0,5. Quelle est sa concentration en mg/L ?",
+        "reponse": 2.5,
+        "tolerance": 0.01,
+        "unite": "mg/L",
+        "indices": [
+          "La proportionnalité donne k = 0,8/4, puis C = A/k."
+        ],
+        "solution": "k = 0,2 L/mg ; C = 0,5/0,2 = 2,5 mg/L."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conditions de Beer-Lambert",
+        "question": "Dans le domaine de validité de Beer-Lambert, si la concentration double, l'absorbance…",
+        "choix": [
+          "double",
+          "est divisée par deux",
+          "ne change pas"
+        ],
+        "bonne": 0,
+        "explication": "À longueur d'onde et conditions fixées, A = k × C : l'absorbance est proportionnelle à la concentration."
       }
     ]
   },

@@ -1,0 +1,123 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Affirmations à vérifier", "mise-en-situation": "Horaires à confirmer" },
+  "intro": "Peut-on être très sûr et se tromper ? Distingue la vérité d'une affirmation, la certitude ressentie et les raisons de croire.",
+  "niveaux": [
+    {
+      "titre": "Intuition : est-ce que ce que je dis est vrai ?",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "La **vérité** concerne notamment nos affirmations : « la porte est ouverte » est vrai si la porte est effectivement ouverte dans la situation visée. Une impression de certitude ne suffit pas à rendre une affirmation vraie.",
+        "L'**erreur** n'est pas le **mensonge** : on peut affirmer quelque chose de faux en le croyant vrai ; mentir implique l'intention de tromper. La **sincérité** décrit notre intention, pas une garantie de vérité."
+      ],
+      "exemple": {
+        "titre": "Le jeu de la porte",
+        "etapes": [
+          "Un personnage croit la porte ouverte après avoir vu une ancienne photo.",
+          "La porte est maintenant fermée : il peut se tromper sincèrement.",
+          "Vérifie le moment et la situation auxquels l'affirmation se rapporte."
+        ]
+      },
+      "aRetenir": "Vrai, certain et sincère ne sont pas synonymes."
+    },
+    {
+      "titre": "Distinguer : croire, savoir et justifier",
+      "niveau": "lycée — chercher des raisons",
+      "paragraphes": [
+        "**Croire**, au sens large, c'est tenir une proposition pour vraie. **Savoir** demande au moins qu'elle soit vraie et qu'on dispose d'une justification appropriée : tomber juste par hasard ne suffit pas. Les conditions exactes de la connaissance restent discutées en philosophie.",
+        "La distinction ne signifie pas que toutes les croyances sont fausses. Un savoir peut inclure une croyance vraie ; ce qui compte est aussi la manière dont elle est établie. Une rumeur et une information vérifiée ne disposent pas des mêmes raisons.",
+        "Repères **objectif/subjectif** et **absolu/relatif** : un goût est lié à un sujet ; une affirmation vérifiable ne devient pas vraie parce qu'elle plaît. Préciser le lieu, la date ou les conditions ne transforme pas la vérité en préférence : « il pleut ici à midi » peut être vérifié dans ce contexte."
+      ],
+      "exemple": {
+        "titre": "La bonne réponse au hasard",
+        "etapes": [
+          "Tu choisis au hasard le bon horaire parmi trois propositions.",
+          "Ta réponse peut être vraie sans que tu saches pourquoi.",
+          "Une source à jour et pertinente apporte une justification qui manquait."
+        ]
+      },
+      "aRetenir": "Une affirmation vraie par chance ne suffit pas à constituer un savoir."
+    },
+    {
+      "titre": "Formaliser : quels critères de vérité ?",
+      "niveau": "terminale — avec Aristote, Descartes et James",
+      "paragraphes": [
+        "Dans la *Métaphysique*, **Aristote** relie le vrai au fait de dire de ce qui est qu'il est, et de ce qui n'est pas qu'il n'est pas. Cette approche inspire la **vérité-correspondance** : l'affirmation doit s'accorder avec ce qui est.",
+        "Dans les *Méditations métaphysiques*, **Descartes** pratique un **doute méthodique** pour chercher un fondement certain. Douter est ici un moyen d'examen, pas le but de ne rien croire. Le fait même de penser lui donne la certitude de son existence comme être pensant.",
+        "La **cohérence** demande que les propositions s'accordent entre elles, mais un récit fictif peut être cohérent sans décrire le réel. Dans *Le Pragmatisme*, **William James** insiste sur les processus de vérification des idées dans l'expérience et leurs conséquences. Ce n'est pas dire que tout ce qui m'arrange serait vrai.",
+        "Ces approches soulèvent des questions différentes : à quoi l'affirmation correspond-elle, comment s'articule-t-elle à d'autres connaissances, comment se vérifie-t-elle ? Il faut adapter les preuves au domaine : une démonstration mathématique n'est pas une simple enquête sur un horaire."
+      ],
+      "exemple": {
+        "titre": "Trois contrôles, pas un slogan",
+        "etapes": [
+          "Une information contredit-elle des faits accessibles ?",
+          "Est-elle cohérente avec les autres informations établies ?",
+          "Comment peut-on la vérifier, et que permet réellement cette vérification ?"
+        ]
+      },
+      "aRetenir": "Chercher la vérité demande des critères et des vérifications, pas seulement une forte conviction ou une histoire cohérente."
+    }
+  ],
+  "application": {
+    "intro": "Sépare vérité, sincérité et justification. Les QCM portent sur des distinctions précises.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Une personne affirme sincèrement un horaire faux. Elle…",
+        "choix": ["dit forcément la vérité.", "se trompe, sans nécessairement mentir.", "ment nécessairement."],
+        "bonne": 1,
+        "indice": "L'erreur ne demande pas l'intention de tromper.",
+        "explication": "La sincérité est compatible avec l'erreur. Le mensonge suppose une intention de tromper, qui n'est pas décrite ici."
+      },
+      {
+        "type": "qcm",
+        "question": "Trouver la bonne réponse par hasard suffit-il à savoir ?",
+        "choix": ["Oui : toute chance est une preuve.", "Oui : la justification est inutile.", "Non : la vérité de la réponse ne suffit pas à une connaissance."],
+        "bonne": 2,
+        "indice": "Pense aux raisons qui permettent d'établir la réponse.",
+        "explication": "Une réponse peut être vraie sans être justifiée. Le savoir ne se réduit pas à une réussite accidentelle."
+      },
+      {
+        "type": "qcm",
+        "question": "Quel est le rôle du doute méthodique de Descartes ?",
+        "choix": ["Chercher un fondement certain en examinant les croyances.", "Déclarer que toute opinion est également vraie.", "Renoncer par principe à toute connaissance."],
+        "bonne": 0,
+        "indice": "Le doute est une méthode, pas un renoncement définitif.",
+        "explication": "Descartes utilise le doute pour mettre à l'épreuve ses croyances et chercher ce qui résiste à cet examen."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : la bibliothèque sera-t-elle ouverte ?",
+    "histoire": [
+      "Dans un scénario fictif, une ancienne affiche annonce l'ouverture de la bibliothèque le mardi matin. Un avis récent signale une fermeture exceptionnelle ce mardi. Le groupe a confirmé que cet avis émane de la bibliothèque.",
+      "Ta mission : évaluer l'information sans appel réseau et sans saisir de données personnelles. Toutes les pièces de l'enquête sont dans l'histoire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Quelle pièce est la plus pertinente pour ce mardi particulier ?",
+        "choix": ["L'affiche ancienne, sans tenir compte des exceptions.", "L'avis récent concernant précisément ce mardi.", "Une préférence pour l'ouverture."],
+        "bonne": 1,
+        "indice": "Vérifie la date et la portée de l'information.",
+        "explication": "Une exception récente et datée est pertinente pour la journée visée. Il faut aussi s'assurer qu'elle émane bien de la bibliothèque."
+      },
+      {
+        "type": "qcm",
+        "question": "Dans ce scénario, l'affiche générale et l'avis exceptionnel se contredisent-ils nécessairement ?",
+        "choix": ["Non : une règle habituelle peut avoir une exception précisée.", "Oui : toute exception rend toutes les informations fausses.", "Oui : les dates ne comptent jamais."],
+        "bonne": 0,
+        "indice": "Précise les conditions auxquelles chaque affirmation s'applique.",
+        "explication": "Les informations peuvent être compatibles si l'une décrit l'horaire habituel et l'autre une exception. Le contexte est décisif."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle conclusion exprime une croyance justifiée par les pièces du scénario ?",
+        "choix": ["La bibliothèque est toujours fermée.", "Elle sera ouverte parce que je le souhaite.", "Selon l'avis récent et authentifié, elle sera fermée ce mardi matin."],
+        "bonne": 2,
+        "indice": "N'étends pas la conclusion au-delà de la date concernée.",
+        "explication": "La conclusion indique sa source et sa portée. Elle ne confond pas un horaire habituel, une exception et un souhait."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Explique à l'oral comment tu vérifierais une autre information fictive. Chercher le vrai, c'est distinguer ce qu'on croit de ce qu'on a établi."
+  }
+}

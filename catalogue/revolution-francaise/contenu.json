@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Construis une frise de la Révolution française et découvre pourquoi un événement a plusieurs causes et plusieurs conséquences.",
+  "niveaux": [
+    {
+      "titre": "Intuition : qui décide et selon quelles règles ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Révolution française**, de **1789 à 1799**, transforme la société et le pouvoir. Avant elle, la France est une monarchie et la société est organisée en trois **ordres** : clergé, noblesse et tiers état.",
+        "Le **tiers état** regroupe l'immense majorité des habitants : paysans, artisans, marchands, bourgeois et bien d'autres. Ces personnes ont des richesses et des attentes très différentes ; elles ne forment pas un groupe uniforme.",
+        "En 1789, des habitants demandent des changements. La question n'est pas seulement « qui est le roi ? », mais aussi « qui fait la loi, qui paie, quels droits sont reconnus ? »"
+      ],
+      "exemple": { "titre": "Jeu des règles", "etapes": ["Imagine un jeu où certains groupes ont des avantages fixés à la naissance.", "D'autres joueurs demandent les mêmes règles pour tous.", "Cette comparaison aide à comprendre les privilèges, sans réduire une révolution à une simple partie."] },
+      "aRetenir": "Une révolution change des règles et des institutions. Les acteurs peuvent partager une revendication tout en ayant des intérêts différents."
+    },
+    {
+      "titre": "Collège : causes et repères de 1789",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les causes se combinent : l'État est **endetté**, la fiscalité est inégale, les privilèges sont contestés et les difficultés de récolte renchérissent le pain. Les idées des Lumières alimentent les débats sans expliquer seules la crise.",
+        "**Louis XVI** réunit les États généraux en mai **1789**. Des députés se proclament Assemblée nationale ; le **20 juin**, le serment du Jeu de paume engage à donner une constitution à la France. Le **14 juillet**, la prise de la Bastille devient un symbole de la mobilisation populaire.",
+        "La nuit du **4 août 1789** ouvre l'abolition des privilèges, dont la mise en œuvre se poursuit ensuite. Le **26 août**, la **Déclaration des droits de l'homme et du citoyen** affirme liberté, égalité devant la loi et souveraineté de la nation. En **1791**, une constitution établit une monarchie constitutionnelle."
+      ],
+      "exemple": { "titre": "Une chaîne de causes", "etapes": ["Une mauvaise récolte contribue à la hausse du prix du pain.", "La hausse aggrave les difficultés et le mécontentement.", "Elle agit avec les crises politiques et financières : ce n'est pas une explication unique."] },
+      "aRetenir": "1789 : États généraux, Assemblée nationale, Bastille, abolition des privilèges et Déclaration des droits. Distingue crise, événement et changement de règle."
+    },
+    {
+      "titre": "Lycée : une révolution aux issues incertaines",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Après la chute de la monarchie le **10 août 1792**, la royauté est abolie le **21 septembre** et la République est proclamée en septembre. Louis XVI est exécuté en **1793**. La guerre extérieure et les conflits intérieurs pèsent sur les décisions.",
+        "En **1793-1794**, le gouvernement révolutionnaire utilise des mesures d'exception et la répression, dans la période appelée **Terreur**. **Robespierre** est un acteur important, mais il n'agit pas seul. Sa chute en juillet 1794 ne met pas fin à tous les conflits. Le Directoire gouverne de 1795 à 1799.",
+        "Les droits proclamés ont des limites : le vote a d'abord des conditions de richesse et les femmes restent exclues des droits politiques. **Olympe de Gouges** réclame leur égalité en **1791**. La Convention abolit l'esclavage dans les colonies françaises en **1794**, après notamment les révoltes à Saint-Domingue, mais l'application est inégale. En **1799**, le coup d'État de Bonaparte ouvre le Consulat."
+      ],
+      "exemple": { "titre": "Lire un texte de droits", "etapes": ["Repère ce que le texte de 1789 affirme : liberté et égalité en droits.", "Compare avec les personnes qui peuvent effectivement voter.", "Étudie ensuite le texte d'Olympe de Gouges : il met en évidence une exclusion."] },
+      "aRetenir": "La République n'est pas instaurée dès le 14 juillet 1789. Les changements de régime, les droits et leur application suivent des étapes différentes."
+    }
+  ],
+  "application": {
+    "intro": "Relie les dates à leurs événements et distingue les causes de leurs conséquences.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "Quand a lieu la prise de la Bastille ?", "choix": ["Le 14 juillet 1789", "Le 2 décembre 1804", "Le 25 décembre 800"], "bonne": 0, "explication": "La Bastille est prise le 14 juillet 1789, dans le contexte de la mobilisation parisienne." },
+      { "type": "qcm", "titre": "Personnage", "question": "Qui rédige en 1791 la Déclaration des droits de la femme et de la citoyenne ?", "choix": ["Louis XIV", "Olympe de Gouges", "Auguste"], "bonne": 1, "explication": "Olympe de Gouges réclame l'égalité des droits des femmes et des hommes, notamment politiques." },
+      { "type": "qcm", "titre": "Causes", "question": "Quelle explication du début de la Révolution est la plus juste ?", "choix": ["Une seule date explique tout", "Tous les habitants sont déjà d'accord sur tout", "Crise financière, inégalités, difficultés alimentaires et débats politiques se combinent"], "bonne": 2, "explication": "Une révolution a des causes multiples : aucune de ces dimensions ne suffit à elle seule." },
+      { "type": "qcm", "titre": "Conséquence politique", "question": "Quel changement de régime se produit en septembre 1792 ?", "choix": ["L'abolition de la royauté et l'instauration de la République", "Le couronnement de Louis XIV", "Le retour immédiat à la monarchie absolue"], "bonne": 0, "explication": "La Convention abolit la royauté le 21 septembre 1792 : la Première République commence." },
+      { "type": "qcm", "titre": "Droits et application", "question": "Quelle affirmation sur l'abolition de l'esclavage en 1794 est exacte ?", "choix": ["Elle concerne immédiatement tous les pays du monde", "Elle est décidée pour les colonies françaises, mais appliquée inégalement", "Elle est décidée par Louis XIV"], "bonne": 1, "explication": "La Convention décide l'abolition en 1794 ; les situations coloniales et les résistances empêchent une application partout." }
+    ]
+  },
+  "situation": {
+    "titre": "La frise et les deux cartes de droits",
+    "histoire": ["Sur papier, prépare trois cartes : « Bastille », « République » et « Consulat ». Ajoute deux cartes de textes : la Déclaration de 1789 et celle d'Olympe de Gouges en 1791.", "Ton défi consiste à les ordonner et à expliquer ce qui change, sans réciter une liste de dates isolées."],
+    "etapes": [
+      { "type": "qcm", "titre": "Ordonner", "question": "Quel ordre convient aux trois cartes de régime et d'événement ?", "choix": ["République → Bastille → Consulat", "Bastille → République → Consulat", "Consulat → République → Bastille"], "bonne": 1, "explication": "La Bastille est prise en 1789, la République commence en 1792, le Consulat en 1799." },
+      { "type": "qcm", "titre": "Comparer", "question": "Pourquoi lire le texte d'Olympe de Gouges avec celui de 1789 ?", "choix": ["Pour prouver que toutes les femmes votent en 1789", "Pour effacer le texte de 1789", "Pour comprendre une revendication face à l'exclusion politique des femmes"], "bonne": 2, "explication": "La comparaison met en évidence l'écart entre les principes de droits et leur application aux femmes." },
+      { "type": "qcm", "titre": "Raconter une cause", "question": "Quelle légende explique correctement la hausse du prix du pain ?", "choix": ["Elle aggrave le mécontentement avec d'autres crises", "Elle explique à elle seule toutes les décisions jusqu'en 1799", "Elle commence après Waterloo"], "bonne": 0, "explication": "La difficulté alimentaire contribue à la crise, mais elle n'en explique pas seule tous les aspects." }
+    ],
+    "conclusion": "Tu as construit un récit : causes, événements, changements et limites. Demain, replace 1789, 1792 et 1799 sans regarder et explique une différence entre eux."
+  }
+}

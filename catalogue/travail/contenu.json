@@ -1,0 +1,60 @@
+{
+  "titresOnglets": { "explication": "Comprendre le travail", "application": "Coopérer et réfléchir", "mise-en-situation": "L'atelier solidaire" },
+  "intro": "Fabriquer, entretenir, apprendre : le travail transforme le monde et parfois ceux qui le font. Explore la perspective « existence humaine et culture ». Ici, ce n'est pas le travail d'une force en physique.",
+  "niveaux": [
+    {
+      "titre": "Intuition : faire quelque chose qui demande un effort",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **travail** est une activité organisée qui produit des biens ou des services, répond à des besoins et demande un effort. Il peut être rémunéré ou non : entretenir un lieu ou prendre soin d'autrui peut aussi être du travail.",
+        "Un **emploi** est une forme sociale de travail, généralement rémunérée. Ne pas avoir d'emploi ne signifie pas n'avoir aucune activité utile, et la valeur d'une personne ne dépend pas de sa productivité.",
+        "Jeu : imagine fabriquer une cabane en carton. Quelles tâches faut-il prévoir ? Qu'apprend-on en les réalisant ?"
+      ],
+      "exemple": { "titre": "Une réparation", "etapes": ["Un adulte répare un meuble abîmé.", "Il choisit des outils et suit des étapes.", "Le meuble change, et la personne peut développer un savoir-faire."] },
+      "aRetenir": "Travail, emploi et valeur d'une personne ne se confondent pas."
+    },
+    {
+      "titre": "Collège : contrainte, apprentissage et coopération",
+      "niveau": "college",
+      "paragraphes": [
+        "Le travail peut être une **contrainte** : il faut répondre à des besoins et respecter des conditions. Il peut aussi apporter des compétences, une indépendance matérielle ou le plaisir d'une réalisation.",
+        "La **division du travail** répartit les tâches. Elle permet de coopérer et de se spécialiser, mais peut rendre l'activité répétitive ou empêcher de comprendre l'ensemble du projet.",
+        "Petit défi : pour préparer un repas collectif, faut-il toujours confier la même tâche à la même personne ? Compare efficacité, apprentissage, sécurité et équité."
+      ],
+      "exemple": { "titre": "Préparer ensemble", "etapes": ["Une personne prépare le matériel, une autre assemble, une troisième vérifie.", "La répartition aide le groupe à avancer.", "Une rotation adaptée peut permettre à chacun d'apprendre et de comprendre le résultat."] },
+      "aRetenir": "Les effets du travail dépendent aussi de son organisation et de ses conditions."
+    },
+    {
+      "titre": "Lycée : se former ou devenir étranger à son activité ?",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Dans l'analyse de la maîtrise et de la servitude chez **Hegel**, le travail forme : en transformant une chose et en différant la satisfaction immédiate, le sujet développe un rapport à lui-même. Cela ne justifie pas la servitude ni toutes les conditions de travail.",
+        "**Marx** analyse l'**aliénation** : dans certaines conditions sociales, le travailleur devient étranger au produit de son travail et à son activité, qu'il ne maîtrise pas. Ce n'est pas simplement être fatigué ou s'ennuyer un jour.",
+        "**Hannah Arendt** distingue, dans son vocabulaire, le travail lié à l'entretien de la vie, l'œuvre qui construit un monde durable et l'action entre les personnes. Cette distinction théorique ne classe pas les personnes par valeur.",
+        "Problème : le travail libère-t-il ? Compare acquisition de capacités et dépendance, coopération et domination. Il faut examiner les conditions réelles plutôt que répondre toujours oui ou toujours non."
+      ],
+      "exemple": { "titre": "Deux ateliers", "etapes": ["Dans l'un, chacun comprend le projet et peut proposer des améliorations.", "Dans l'autre, chacun répète un geste sans prise sur l'organisation.", "Le même type de production peut correspondre à des expériences très différentes."] },
+      "aRetenir": "Le travail peut former ou aliéner : la liberté dépend notamment des conditions et du pouvoir d'agir."
+    }
+  ],
+  "application": {
+    "intro": "Compare les notions et les organisations. Les exemples n'évaluent pas la valeur d'une personne.",
+    "exercices": [
+      { "type": "qcm", "titre": "Travail et emploi", "question": "Une activité non rémunérée peut-elle être du travail ?", "choix": ["Oui, elle peut produire un service ou répondre à un besoin", "Non, seul un emploi compte", "Non, si elle demande un effort"], "bonne": 0, "explication": "Travail et emploi ne sont pas identiques : des activités utiles non rémunérées constituent du travail." },
+      { "type": "qcm", "titre": "Répartir", "question": "Que désigne la division du travail ?", "choix": ["La suppression de toute tâche", "L'absence de coopération", "La répartition des tâches entre les personnes"], "bonne": 2, "explication": "La spécialisation permet la coopération, avec des avantages et des limites à examiner." },
+      { "type": "qcm", "titre": "Hegel", "question": "Quel rôle formateur Hegel attribue-t-il au travail ?", "choix": ["Il garantit toute liberté sans condition", "Il transforme la chose et développe le sujet", "Il rend toute réflexion impossible"], "bonne": 1, "explication": "Le travail peut former un rapport à soi par l'activité sur les choses, sans justifier la domination." },
+      { "type": "qcm", "titre": "Marx", "question": "L'aliénation du travail chez Marx signifie notamment…", "choix": ["avoir besoin d'une pause", "ne pas aimer une tâche un jour", "devenir étranger à son activité et à son produit"], "bonne": 2, "explication": "L'aliénation décrit une relation sociale de dépossession, pas seulement une fatigue passagère." },
+      { "type": "qcm", "titre": "Arendt", "question": "Dans le vocabulaire d'Arendt, l'œuvre contribue surtout à…", "choix": ["construire un monde d'objets durables", "répéter uniquement les besoins biologiques", "mesurer la valeur des personnes"], "bonne": 0, "explication": "Arendt distingue la durabilité de l'œuvre des activités d'entretien de la vie et de l'action entre les personnes." }
+    ]
+  },
+  "situation": {
+    "titre": "Un atelier de réparation solidaire",
+    "histoire": ["À la maison de quartier, des adultes encadrent un atelier pour réparer des jeux de société abîmés, sans outils dangereux.", "Le groupe doit répartir tri, rangement et vérification. Il veut apprendre ensemble, pas seulement terminer le plus vite possible."],
+    "etapes": [
+      { "type": "qcm", "titre": "Une activité utile", "question": "Cet atelier bénévole peut-il être un travail ?", "choix": ["Non, car il n'y a pas de salaire", "Oui, il rend un service et demande une activité organisée", "Non, car on peut y prendre plaisir"], "bonne": 1, "explication": "L'absence de salaire ou la présence de plaisir ne supprime pas le caractère de travail." },
+      { "type": "qcm", "titre": "L'organisation", "question": "Quelle répartition favorise aussi l'apprentissage ?", "choix": ["Cacher à chacun le résultat du projet", "Imposer un rythme sans pause", "Expliquer le projet et permettre une rotation adaptée des tâches"], "bonne": 2, "explication": "Comprendre l'ensemble et apprendre plusieurs gestes favorisent le pouvoir d'agir, avec des conditions adaptées." },
+      { "type": "qcm", "titre": "Le bilan", "question": "Quel bilan prend en compte autre chose que la quantité produite ?", "choix": ["Examiner ce qui a été appris, la coopération et les conditions de l'atelier", "Comparer la valeur des personnes au nombre de boîtes réparées", "Compter seulement la vitesse"], "bonne": 0, "explication": "La formation et la qualité des relations comptent aussi ; les personnes ne se réduisent pas à leur production." }
+    ],
+    "conclusion": "Mission accomplie ! Propose une amélioration de l'organisation et explique en quoi elle donne davantage de prise sur l'activité."
+  }
+}

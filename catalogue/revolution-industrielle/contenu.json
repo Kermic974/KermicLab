@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Suis le trajet d'un vêtement pour comprendre les transformations de la production, des transports et du travail.",
+  "niveaux": [
+    {
+      "titre": "Intuition : produire autrement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **révolution industrielle** désigne de grandes transformations de la production et de la société. Elles commencent en **Grande-Bretagne dans la seconde moitié du XVIIIe siècle**, puis se diffusent notamment en Europe au XIXe siècle.",
+        "Des machines et de nouvelles sources d'énergie permettent de produire davantage. Dans certaines activités, le travail se concentre dans des **usines**, même si artisans, ateliers et travail à domicile continuent d'exister.",
+        "Imagine fabriquer du tissu : il faut une matière première, de l'énergie, des machines, du travail et des acheteurs. Une invention seule ne suffit pas à transformer toute une économie."
+      ],
+      "exemple": { "titre": "Jeu de la chaîne", "etapes": ["Dessine une matière première, un atelier ou une usine, puis un magasin.", "Ajoute les personnes et les transports entre les étapes.", "Si une étape manque, produire plus devient difficile : tout est lié."] },
+      "aRetenir": "L'industrialisation est un processus, pas un événement d'une journée. Son rythme varie selon les pays, les régions et les activités."
+    },
+    {
+      "titre": "Collège : charbon, vapeur et villes",
+      "niveau": "4e",
+      "paragraphes": [
+        "Le **charbon** alimente des machines à vapeur qui transforment l'énergie de la chaleur en mouvement. **James Watt** améliore une technique déjà existante : en **1769**, il fait breveter notamment le condensateur séparé, qui réduit la consommation de combustible. Il n'invente pas la toute première machine à vapeur.",
+        "Le textile et la métallurgie se développent ; le **chemin de fer** s'étend au XIXe siècle. Il transporte personnes, charbon et marchandises plus rapidement et en plus grandes quantités sur ses lignes, ce qui favorise les échanges.",
+        "Des habitants quittent la campagne pour chercher du travail : l'**exode rural** contribue à l'**urbanisation**, la croissance des villes. Les ouvriers vendent leur travail contre un salaire, souvent dans des conditions difficiles : longues journées, risques, faibles protections et travail d'enfants."
+      ],
+      "exemple": { "titre": "Un tissu, plusieurs transformations", "etapes": ["Des machines accélèrent le filage et le tissage.", "Le rail facilite l'acheminement de matières et de tissus.", "Produire plus ne prouve pas que chaque travailleur vit mieux : il faut aussi étudier salaires, horaires et santé."] },
+      "aRetenir": "Repère technique : brevet de Watt en 1769. Charbon, machines, capitaux, travail et transports se renforcent mutuellement."
+    },
+    {
+      "titre": "Lycée : rythmes, droits et coûts",
+      "niveau": "seconde",
+      "paragraphes": [
+        "L'industrialisation dépend aussi des **capitaux**, argent investi dans les équipements, des marchés et des ressources. Elle s'inscrit dans des échanges mondiaux inégaux : une partie du coton utilisé dans le textile britannique provient de plantations esclavagistes des Amériques.",
+        "Les ouvriers s'organisent et réclament des améliorations. En France, la loi de **1841** limite le travail des enfants dans certaines manufactures et y interdit l'emploi des moins de huit ans ; son champ et ses contrôles restent limités. La gratuité de l'école primaire publique est établie en **1881**, puis l'instruction devient obligatoire de 6 à 13 ans et l'enseignement primaire public laïque en **1882**. Ces lois ne suppriment pas instantanément tout travail d'enfant.",
+        "À la fin du XIXe siècle, l'électricité, le pétrole, la chimie et de nouveaux procédés industriels prennent davantage de place : on parle souvent de **deuxième révolution industrielle**. Les gains de production coexistent avec des inégalités et des pollutions. Cette ouverture prolonge les notions de seconde vers l'étude du XIXe siècle."
+      ],
+      "exemple": { "titre": "Comparer deux indicateurs", "etapes": ["Une usine produit davantage de tissu : c'est un indicateur de production.", "Les horaires, les revenus et les accidents renseignent les conditions de vie.", "Les deux peuvent évoluer différemment : une hausse de production n'est pas une preuve suffisante de progrès pour tous."] },
+      "aRetenir": "Distingue progrès technique, croissance économique et progrès social. Une loi, son application et ses effets ne sont pas la même chose."
+    }
+  ],
+  "application": {
+    "intro": "Relie énergie, production et société. Vérifie les causes et les effets sans attribuer toute la transformation à un seul inventeur.",
+    "exercices": [
+      { "type": "qcm", "titre": "Période", "question": "Où et quand commence la première industrialisation ?", "choix": ["En Grande-Bretagne dans la seconde moitié du XVIIIe siècle", "À Rome en 27 avant J.-C.", "En France le seul jour du 14 juillet 1789"], "bonne": 0, "explication": "L'industrialisation commence en Grande-Bretagne à la fin du XVIIIe siècle et se diffuse ensuite à des rythmes différents." },
+      { "type": "qcm", "titre": "Personnage", "question": "Quel rôle joue James Watt ?", "choix": ["Il invente l'imprimerie", "Il améliore la machine à vapeur, notamment avec un brevet en 1769", "Il promulgue l'édit de Nantes"], "bonne": 1, "explication": "Watt améliore des machines à vapeur existantes ; son condensateur séparé réduit la consommation de combustible." },
+      { "type": "qcm", "titre": "Cause et conséquence", "question": "Quel effet le développement du chemin de fer favorise-t-il ?", "choix": ["La disparition de tous les ateliers", "La suppression de tout besoin d'énergie", "Le transport plus rapide de personnes et de marchandises sur ses lignes"], "bonne": 2, "explication": "Le rail facilite les transports et les échanges ; il consomme de l'énergie et ne remplace pas immédiatement tous les autres moyens." },
+      { "type": "qcm", "titre": "Société", "question": "Comment l'exode rural peut-il contribuer à l'urbanisation ?", "choix": ["Des habitants quittent la campagne pour vivre et travailler en ville", "Tous les citadins deviennent des paysans", "Les villes sont interdites"], "bonne": 0, "explication": "Les migrations vers les villes participent à leur croissance, sans être sa seule cause." },
+      { "type": "qcm", "titre": "Droits et date", "question": "Que fait la loi française de 1841 sur le travail des enfants ?", "choix": ["Elle supprime tout travail d'enfant partout", "Elle le limite dans certaines manufactures, avec une application imparfaite", "Elle crée le premier empereur"], "bonne": 1, "explication": "La loi de 1841 a un champ limité ; les protections et leur contrôle se développent progressivement." }
+    ]
+  },
+  "situation": {
+    "titre": "L'enquête sur un vêtement imaginaire",
+    "histoire": ["Dessine un vêtement en coton et imagine son trajet au XIXe siècle : matière première, filature, tissage, transport et vente. N'achète rien et ne note aucune marque ni information personnelle.", "Tu dois raconter la production sans oublier les personnes qui travaillent et les droits qui évoluent."],
+    "etapes": [
+      { "type": "qcm", "titre": "La chaîne de production", "question": "Quelle description est la plus complète ?", "choix": ["Une machine suffit, sans matière ni travailleurs", "Il faut matière, énergie, travail, équipements et transports", "Un vêtement apparaît directement dans le magasin"], "bonne": 1, "explication": "La production repose sur plusieurs ressources et activités liées, pas sur une invention isolée." },
+      { "type": "qcm", "titre": "Les personnes", "question": "Une usine produit deux fois plus. Que faut-il encore examiner pour parler des conditions de vie ?", "choix": ["Seulement la quantité de tissu", "Rien, tout le monde vit forcément mieux", "Les salaires, les horaires, la sécurité et les conditions de travail"], "bonne": 2, "explication": "Un gain de production ne renseigne pas à lui seul sur le bien-être ou les droits des travailleurs." },
+      { "type": "qcm", "titre": "La mémoire de l'école", "question": "Quelle association de dates est correcte pour la France ?", "choix": ["1881 : gratuité primaire publique ; 1882 : instruction obligatoire et enseignement primaire public laïque", "1841 : interdiction immédiate de tout travail d'enfant ; 1882 : invention de la vapeur", "1769 : école obligatoire ; 1881 : sacre de Napoléon"], "bonne": 0, "explication": "La gratuité date de 1881 ; l'obligation d'instruction de 6 à 13 ans et la laïcité de l'enseignement primaire public datent de 1882." }
+    ],
+    "conclusion": "Tu as relié un objet aux techniques, aux échanges et aux droits. De mémoire, dessine la chaîne et place 1769, 1841, 1881 et 1882 avec une légende."
+  }
+}

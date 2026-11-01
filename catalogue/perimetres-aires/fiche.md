@@ -2,7 +2,7 @@
 id: perimetres-aires
 titre: Périmètres et aires
 sujet: mathematiques/perimetres-aires
-version: 1.0.0
+version: 1.1.0
 date: 2026-11-01
 niveau: college
 langues: fr
@@ -33,5 +33,5 @@ questions:
 Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
 
 - **Explication** : de la clôture et de la pelouse aux formules, au cercle et aux unités.
-- **S'entraîner** : 6 exercices corrigés.
-- **Défi** : le potager, en 4 étapes.
+- **S'entraîner** : 10 exercices corrigés.
+- **Défi** : le potager, en 5 étapes.
