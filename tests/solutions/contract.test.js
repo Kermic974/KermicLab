@@ -19,11 +19,23 @@ for (const s of solutions.list()) {
   test(`${s.id} : résultat identique au moteur commun`, () => {
     for (const input of REFERENCE_INPUTS) {
       const v = compute(resolveAngle(input, true));
-      const r = s.solve(solutionContext(v)).result;
+      const res = s.solve(solutionContext(v));
+      if (res.status !== 'success') continue;
+      const r = res.result;
       assert.ok(Math.abs(resultNumber(r.cos) - v.x) < 1e-6, input + ' cos');
       assert.ok(Math.abs(resultNumber(r.sin) - v.y) < 1e-6, input + ' sin');
       if (v.t === null) assert.equal(r.tan, null, input + ' tan');
       else assert.ok(Math.abs(resultNumber(r.tan) - v.t) < 1e-6, input + ' tan');
+    }
+  });
+
+  test(`${s.id} : ne renvoie unsupported que si l'angle est justifié comme non applicable`, () => {
+    for (const input of REFERENCE_INPUTS) {
+      const res = s.solve(solutionContext(compute(resolveAngle(input, true))));
+      if (res.status !== 'unsupported') continue;
+      assert.equal(res.result, null, input);
+      assert.ok(res.steps.some(step => step.id === 'why' && step.text.trim()), input);
+      assert.ok(res.warnings.some(warning => warning.code === 'NOT_APPLICABLE'), input);
     }
   });
 
@@ -61,4 +73,19 @@ test('registre : refuse une solution incomplète ou en double', () => {
 test('contrat : une solution qui tente de modifier le contexte échoue', () => {
   const ctx = solutionContext(compute(30));
   assert.throws(() => { 'use strict'; ctx.values.x = 2; }, TypeError);
+});
+
+test('contrat : unsupported exige NOT_APPLICABLE et success refuse result null', () => {
+  const base = solutions.get('geometric').solve(solutionContext(compute(30)));
+  const unsupported = {
+    ...base,
+    status: 'unsupported',
+    confidence: undefined,
+    result: null,
+    steps: [{ id: 'why', title: 'Pourquoi ?', text: 'Non applicable.' }],
+    warnings: [{ code: 'NOT_APPLICABLE', message: 'Cette méthode ne s’applique pas.' }]
+  };
+  assert.deepEqual(checkSolutionResult(unsupported, 'geometric'), []);
+  assert.ok(checkSolutionResult({ ...unsupported, warnings: [] }, 'geometric').includes('unsupported sans avertissement NOT_APPLICABLE'));
+  assert.ok(checkSolutionResult({ ...base, result: null }, 'geometric').includes('result null réservé à unsupported'));
 });

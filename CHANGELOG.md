@@ -14,6 +14,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Vérification de concordance des méthodes : `compareResults` et `resultNumber` (`src/solutions/compare.js`, exposés par `src/api.js`), exigence S-08.
 - Application du cercle : sélecteur de méthode dans le panneau « Ce que montre cet angle », avec étapes numérotées, avertissements et prise en charge du statut `unsupported` (SPEC A-04).
 - Méthode algébrique (conversion en radians, réduction au premier quadrant, formules de réduction) et filtrage des méthodes par mode (`solutions.list({ mode })`), exigences S-04 et S-07.
+- Méthode tabulaire pour les angles remarquables et statut `unsupported` avec justification pour les angles hors table, exigences S-05 et S-06.
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé

@@ -87,8 +87,8 @@ Résultat normalisé :
   solutionId: 'geometric',
   status: 'success',             // success | partial | unsupported | invalid | error
   title: '…',
-  confidence: 'exact',           // exact (angle remarquable) | approx (sinon, jamais d'étape inventée)
-  result: { angle: 'π/3', cos: '1/2', sin: '√3/2', tan: '√3' },   // tan: null si non définie
+  confidence: 'exact',           // exact | approx ; absent si unsupported
+  result: { angle: 'π/3', cos: '1/2', sin: '√3/2', tan: '√3' },   // null si unsupported ; tan: null si non définie
   steps: [{ id, title, text }],  // au moins une étape, dans l'ordre
   explanation: '…',
   warnings: [{ code, message }]  // ex. TANGENT_UNDEFINED
@@ -96,7 +96,7 @@ Résultat normalisé :
 ```
 
 - Une tangente non définie n'est pas un statut. Le résultat reste `success`, avec `tan: null` et l'avertissement `TANGENT_UNDEFINED`. cos et sin restent valables.
-- `checkSolutionResult()` vérifie la forme. Les autotests vérifient en plus que chaque méthode redonne les valeurs du moteur sur toutes les saisies de référence (`REFERENCE_INPUTS`). Le résultat affiché comme « commun » vient toujours du moteur, jamais d'une méthode.
+- `checkSolutionResult()` vérifie la forme. `result: null` est accepté uniquement avec `status: 'unsupported'`, un avertissement `NOT_APPLICABLE` et une étape `why` ; `confidence` est facultatif dans ce cas. Pour les résultats `success`, les autotests vérifient en plus que chaque méthode redonne les valeurs du moteur sur toutes les saisies de référence (`REFERENCE_INPUTS`). Le résultat affiché comme « commun » vient toujours du moteur, jamais d'une méthode.
 
 `solutions.list({ mode })` ne renvoie que les méthodes dont `supportedModes` contient ce mode (S-07) : chaque `supports(context)` rend `true` si le contexte n'a pas de mode ou si le mode est pris en charge.
 
