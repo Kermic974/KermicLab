@@ -41,7 +41,7 @@ npm ci                # dépendances
 npm run lint          # syntaxe JS, JSON, parité i18n, secrets évidents
 npm run build         # index du catalogue + hashes CSP des pages + site statique dist/
 npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
-npm test              # tests unitaires (node:test)
+npm test              # tests unitaires (node:test) ; en CI (pages.yml), Playwright est installé et les tests de page (tests/dom/) sont exécutés, leur absence échoue
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
 npm run ci            # tout ce qui précède
 cd worker && npx wrangler dev   # Worker en local (http://localhost:8787)
