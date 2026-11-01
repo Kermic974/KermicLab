@@ -19,7 +19,7 @@ entrée (pointeur, clavier, saisie)            src/ui/input.js
   → store.setAngle(saisie)                     src/core/store.js   (resolveAngle : lecture, normalisation)
   → abonnés notifiés                           src/ui/main.js
   → compute(angle)                             src/core/engine.js  (seule source des valeurs)
-  → méthode géométrique (explication)          src/solutions/geometric.js
+  → méthodes géométrique et algébrique         src/solutions/geometric.js, algebraic.js
   → rendu SVG, valeurs, contrôles              src/ui/render.js
 ```
 
@@ -30,7 +30,7 @@ entrée (pointeur, clavier, saisie)            src/ui/input.js
 | Moteur mathématique | `src/core/angle.js`, `exact-values.js`, `engine.js`, `format.js` | Moteur | pur, sans DOM |
 | État central | `src/core/store.js` | Moteur | valeurs sources uniquement |
 | Pédagogie | `src/pedagogy/lessons.js`, `challenges.js` | Moteur | pur, hasard injectable |
-| Méthodes | `src/solutions/registry.js`, `catalog.js`, `geometric.js` | Moteur | contrat commun |
+| Méthodes | `src/solutions/registry.js`, `catalog.js`, `geometric.js`, `algebraic.js` | Moteur | contrat commun |
 | Autotests Moteur | `src/selfcheck.js` | Moteur | exécutés dans Node et dans la page |
 | **Contrat** | `src/api.js` | les deux | réexportations uniquement |
 | Interface | `src/ui/*.js`, `src/styles/app.css`, `src/index.template.html` | Interface | importe le Moteur via `api.js` |
@@ -97,6 +97,8 @@ Résultat normalisé :
 
 - Une tangente non définie n'est pas un statut. Le résultat reste `success`, avec `tan: null` et l'avertissement `TANGENT_UNDEFINED`. cos et sin restent valables.
 - `checkSolutionResult()` vérifie la forme. Les autotests vérifient en plus que chaque méthode redonne les valeurs du moteur sur toutes les saisies de référence (`REFERENCE_INPUTS`). Le résultat affiché comme « commun » vient toujours du moteur, jamais d'une méthode.
+
+`solutions.list({ mode })` ne renvoie que les méthodes dont `supportedModes` contient ce mode (S-07) : chaque `supports(context)` rend `true` si le contexte n'a pas de mode ou si le mode est pris en charge.
 
 Ajouter une méthode : `src/solutions/<id>.js`, puis `solutions.register(...)` dans `catalog.js`. Les tests de contrat (`tests/solutions/contract.test.js`) s'appliquent automatiquement à toute méthode enregistrée.
 

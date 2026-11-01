@@ -83,7 +83,9 @@ Saisies de référence communes à toutes les méthodes : `0, 30, 45, 60, 90, 12
 |---|---|---|
 | S-01 | Chaque méthode respecte le contrat commun (`ARCHITECTURE.md` § Contrat de solution) et donne le même résultat numérique que le moteur sur toutes les saisies de référence. | M |
 | S-02 | Une méthode ne modifie jamais l'état ni son contexte. | M |
-| S-03 | Méthode disponible : géométrique. Prévues : algébrique, tabulaire, puis un mode Comparer. | M+I |
+| S-03 | Méthodes disponibles : géométrique, algébrique. Prévues : tabulaire, puis un mode Comparer. | M+I |
+| S-04 | La méthode algébrique convertit l'angle en radians, le réduit au premier quadrant par une formule de réduction, puis en déduit cos, sin et tan. Toutes les étapes sont écrites. Hors angles remarquables, les valeurs sont approchées (`confidence: 'approx'`) et aucune forme exacte n'est inventée. | M |
+| S-07 | `solutions.list({ mode })` ne renvoie que les méthodes dont `supportedModes` contient ce mode. | M |
 
 ## Accessibilité
 
