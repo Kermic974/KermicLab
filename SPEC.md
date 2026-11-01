@@ -66,6 +66,7 @@ Saisies de référence communes à toutes les méthodes : `0, 30, 45, 60, 90, 12
 | A-01 | Valeurs affichées : angle, radians, cos, sin, tan, signes, angle de référence, coordonnées ; valeur exacte quand elle existe, sinon « valeur approchée ». | I |
 | A-02 | Options : projections x/y, repères remarquables, repères en radians, axe des tangentes (point T = (1 ; tan θ)). | I |
 | A-03 | Explication contextuelle fournie par la méthode géométrique (quadrant, projections, angle de référence, tangente). | M+I |
+| A-04 | Le panneau « Ce que montre cet angle » propose de choisir la méthode parmi celles du mode courant. Il affiche ses étapes numérotées et ses avertissements. Le choix est conservé en changeant d'angle et de mode. Les valeurs du panneau « Valeurs » ne changent jamais selon la méthode. | I |
 
 ## Modes
 

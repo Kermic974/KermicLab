@@ -9,6 +9,7 @@ import { syncOptions } from './options.js';
 import { lesson, showLesson } from './learn.js';
 import { game, startGame, showMenu, advanceGame } from './play.js';
 import { setMode } from './modes.js';
+import { chooseMethod, nextMethod } from './method.js';
 import { fmt, LESSONS } from '../api.js';
 
 function bindPointer() {
@@ -98,6 +99,21 @@ function bindModes() {
   $('gAgain').addEventListener('click', function () { startGame(game.last); });
 }
 
+function bindMethods() {
+  var group = $('mradio');
+  group.addEventListener('click', function (e) {
+    var b = e.target.closest('[role=radio]');
+    if (b) chooseMethod(b.dataset.method);
+  });
+  group.addEventListener('keydown', function (e) {
+    var b = e.target.closest('[role=radio]');
+    var id = b && nextMethod(b.dataset.method, e.key);
+    if (!id) return;
+    e.preventDefault();
+    chooseMethod(id, true);
+  });
+}
+
 function bindKeyboard() {
   $('svg').addEventListener('keydown', function (e) {
     var s = store.get();
@@ -120,5 +136,6 @@ export function bind() {
   bindPointer();
   bindControls();
   bindModes();
+  bindMethods();
   bindKeyboard();
 }

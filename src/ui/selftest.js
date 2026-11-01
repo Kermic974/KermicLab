@@ -6,7 +6,8 @@ import { C, R, polar } from './geometry.js';
 import { store, setAngle } from './state.js';
 import { getOptions, setOptions } from './options.js';
 import { setMode } from './modes.js';
-import { NOTABLE, EXACT, LESSONS, norm, dist } from '../api.js';
+import { renderMethod, UNSUPPORTED } from './method.js';
+import { NOTABLE, EXACT, LESSONS, norm, dist, solutions, solutionContext, compute } from '../api.js';
 
 export function runUiChecks() {
   var fail = [], count = 0, skipped = [];
@@ -177,6 +178,50 @@ export function runUiChecks() {
   ok('quitter déverrouille', !store.get().locked && !$('gMenu').classList.contains('hidden'));
   setMode('explore');
   ok('retour Explorer', visible('quick') && store.get().mode === 'explore');
+
+  // Sélecteur de méthode (A-04)
+  var opts = function () { return Array.prototype.slice.call($('mradio').querySelectorAll('[role=radio]')); };
+  var methods = solutions.list({ mode: 'explore' });
+  setAngle(150);
+  ok('options de méthode', opts().length === methods.length && $('mradio').getAttribute('role') === 'radiogroup');
+  var before = [$('cos').textContent, $('sin').textContent, $('tan').textContent], prevTitle = null, allSame = true;
+  opts().forEach(function (o) {
+    o.click();
+    var res = solutions.get(o.dataset.method).solve(solutionContext(compute(150)));
+    ok('méthode ' + o.dataset.method + ' : titre', $('mtitle').textContent === res.title && o.getAttribute('aria-checked') === 'true');
+    ok('méthode ' + o.dataset.method + ' : étapes', $('msteps').children.length === res.steps.length);
+    ok('méthode ' + o.dataset.method + ' : avertissements', $('mwarn').children.length === res.warnings.length);
+    if (prevTitle !== null && prevTitle !== $('mtitle').textContent) allSame = false;
+    if (prevTitle !== null) ok('le titre change avec la méthode', prevTitle !== $('mtitle').textContent);
+    prevTitle = $('mtitle').textContent;
+    ok('valeurs inchangées (' + o.dataset.method + ')', $('cos').textContent === before[0] && $('sin').textContent === before[1] &&
+      $('tan').textContent === before[2]);
+  });
+  ok('titre unique par méthode', opts().length < 2 || !allSame);
+  var chosen = opts()[opts().length - 1];
+  setAngle(30);
+  ok('méthode conservée (angle)', store.get().method === chosen.dataset.method && opts()[opts().length - 1].getAttribute('aria-checked') === 'true');
+  document.querySelector('[data-tab=learn]').click();
+  setMode('explore');
+  ok('méthode conservée (mode)', store.get().method === chosen.dataset.method && opts()[opts().length - 1].getAttribute('aria-checked') === 'true');
+  $('live').textContent = '';
+  if (opts().length > 1) {
+    key(opts()[opts().length - 1], 'ArrowRight');
+    ok('flèche dans le groupe', store.get().method === opts()[0].dataset.method && $('live').textContent.indexOf('Méthode : ') === 0);
+  }
+  var fake = {
+    solutionId: 'fake', status: 'unsupported', title: 'Fausse méthode', result: null,
+    steps: [{ id: 'why', title: 'Pourquoi', text: 'Parce que.' }], explanation: 'Sans objet.',
+    warnings: [{ code: 'NOT_APPLICABLE', message: 'Non applicable.' }]
+  }, threw = false;
+  try { renderMethod(fake); } catch (_) { threw = true; }
+  ok('résultat non applicable', !threw && $('mtitle').textContent === UNSUPPORTED && $('msteps').children.length === 1 &&
+    $('mwarn').children.length === 1 && $('explain').textContent === '');
+  threw = false;
+  try { renderMethod({ status: 'unsupported' }); } catch (_) { threw = true; }
+  ok('résultat non applicable incomplet', !threw && $('msteps').children.length === 0);
+  store.patch({ method: 'geometric' });
+  store.refresh();
 
   // Restauration
   setOptions(saved.options);

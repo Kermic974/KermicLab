@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Application du cercle : sélecteur de méthode dans le panneau « Ce que montre cet angle », avec étapes numérotées, avertissements et prise en charge du statut `unsupported` (SPEC A-04).
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé

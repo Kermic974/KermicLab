@@ -104,6 +104,17 @@ footer { margin-top: 16px; text-align: center; font-size: .85rem; color: var(--m
 @keyframes pop { 0% { transform: scale(.92); } 60% { transform: scale(1.05); } 100% { transform: scale(1); } }
 .stars { font-size: 2.4rem; letter-spacing: .2em; color: #ffd166; margin: .2rem 0; }
 .locked .hit { cursor: default; }
+/* Méthodes */
+.side { grid-template-columns: minmax(0, 1fr); }
+.mradio { display: flex; gap: 6px; overflow-x: auto; max-width: 100%; margin-bottom: 8px; padding: 3px; }
+.mradio button { flex: 0 0 auto; white-space: nowrap; border-radius: 999px; background: #0b1f33; }
+.mradio button[aria-checked=true] { background: var(--cyan); color: #03202a; border-color: var(--cyan); }
+h3 { font-size: 1rem; margin: 8px 0 4px; }
+.msteps { margin: 4px 0; padding-left: 1.3rem; color: var(--muted); }
+.msteps li { margin: 4px 0; overflow-wrap: anywhere; }
+.msteps b { color: var(--txt); }
+.mwarn { margin: 4px 0; padding-left: 1.3rem; color: var(--orange); }
+.mwarn:empty, .msteps:empty { display: none; }
 /* SVG */
 .axis { stroke: #7890aa; stroke-width: 2; }
 .ring { fill: #071725; stroke: var(--cyan); stroke-width: 3; }
@@ -296,6 +307,10 @@ button:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px soli
 
       <section class="card panel" data-mode="explore">
         <h2>Ce que montre cet angle</h2>
+        <div id="mradio" class="mradio" role="radiogroup" aria-label="Méthode de résolution"></div>
+        <h3 id="mtitle"></h3>
+        <ol id="msteps" class="msteps"></ol>
+        <ul id="mwarn" class="mwarn"></ul>
         <p id="explain"></p>
         <details>
           <summary>Diagnostic</summary>
@@ -890,10 +905,11 @@ function runCoreChecks() {
 
 // ===== src/ui/state.js =====
 // Instance unique de l'état central pour l'Interface.
-// mode : explore | learn | play ; locked : le point ne peut pas être déplacé (quiz).
+// mode : explore | learn | play ; locked : le point ne peut pas être déplacé (quiz) ;
+// method : identifiant de la méthode choisie (préférence, conservée entre angles et modes).
 
 
-const store = createStore({ angle: 45, snap: true, mode: 'explore', locked: false });
+const store = createStore({ angle: 45, snap: true, mode: 'explore', locked: false, method: 'geometric' });
 
 function setAngle(raw, keep360, announce) {
   return store.setAngle(raw, { keep360: !!keep360, announce: !!announce });
@@ -975,6 +991,99 @@ function buildCircle() {
   });
 }
 
+// ===== src/ui/method.js =====
+// Sélecteur de méthode et affichage de ses étapes dans le panneau « Ce que montre cet angle ».
+// La méthode choisie est une préférence (store.method) : elle ne change jamais les valeurs affichées.
+
+
+const UNSUPPORTED = 'Méthode non applicable à cet angle';
+
+function methodsOf(mode) { return solutions.list({ mode: mode }); }
+
+// Méthode choisie si elle est proposée dans le mode courant, sinon la première proposée.
+function resolveMethod(methods, id) {
+  var chosen = solutions.get(id);
+  return chosen && methods.indexOf(chosen) >= 0 ? chosen : methods[0] || null;
+}
+
+function currentMethod() {
+  var s = store.get();
+  return resolveMethod(methodsOf(s.mode), s.method);
+}
+
+function buildMethodRadios(methods, method) {
+  var group = $('mradio'), ids = methods.map(function (m) { return m.id; }).join('|');
+  if (group.dataset.ids !== ids) {
+    group.dataset.ids = ids;
+    group.textContent = '';
+    methods.forEach(function (m) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'radio');
+      b.dataset.method = m.id;
+      b.textContent = m.label;
+      group.appendChild(b);
+    });
+  }
+  group.classList.toggle('hidden', methods.length === 0);
+  Array.prototype.forEach.call(group.children, function (b) {
+    var on = !!method && b.dataset.method === method.id;
+    b.setAttribute('aria-checked', on);
+    b.tabIndex = on ? 0 : -1;
+    b.classList.toggle('on', on);
+  });
+}
+
+function fill(list, items, build) {
+  list.textContent = '';
+  items.forEach(function (it) {
+    var li = document.createElement('li');
+    build(li, it);
+    list.appendChild(li);
+  });
+}
+
+// Affiche un résultat de méthode ; cible = { title, steps, warnings, explain } (éléments), par défaut ceux de la page.
+function renderMethod(result, cible) {
+  var t = cible || { title: $('mtitle'), steps: $('msteps'), warnings: $('mwarn'), explain: $('explain') };
+  var r = result || {};
+  var steps = Array.isArray(r.steps) ? r.steps : [], warnings = Array.isArray(r.warnings) ? r.warnings : [];
+  t.title.textContent = !result ? '' : r.status === 'unsupported' ? UNSUPPORTED : r.title || '';
+  fill(t.steps, steps, function (li, st) {
+    var b = document.createElement('b');
+    b.textContent = st.title;
+    li.appendChild(b);
+    li.appendChild(document.createTextNode(' ' + st.text));
+  });
+  fill(t.warnings, warnings, function (li, w) { li.textContent = w.message; });
+  t.explain.textContent = result && r.status !== 'unsupported' && r.explanation ? r.explanation : '';
+}
+
+// Méthode voisine d'une méthode, selon la touche fléchée (null si la touche n'est pas gérée).
+function nextMethod(id, key) {
+  var ids = methodsOf(store.get().mode).map(function (m) { return m.id; }), i = ids.indexOf(id), n = ids.length, d;
+  if (i < 0) return null;
+  if (key === 'ArrowRight' || key === 'ArrowDown') d = 1;
+  else if (key === 'ArrowLeft' || key === 'ArrowUp') d = -1;
+  else if (key === 'Home') return ids[0];
+  else if (key === 'End') return ids[n - 1];
+  else return null;
+  return ids[(i + d + n) % n];
+}
+
+// Change la méthode (préférence) et l'annonce ; rien n'est annoncé si elle ne change pas.
+function chooseMethod(id, focus) {
+  var m = solutions.get(id), before = currentMethod();
+  if (!m || m === before) return;
+  store.patch({ method: m.id });
+  store.refresh();
+  $('live').textContent = 'Méthode : ' + m.label;
+  if (focus) {
+    var b = $('mradio').querySelector('[data-method="' + m.id + '"]');
+    if (b) b.focus();
+  }
+}
+
 // ===== src/ui/render.js =====
 // Rendu synchronisé : abonné à l'état, il met à jour le cercle, les valeurs et les contrôles.
 
@@ -1023,7 +1132,9 @@ function render(s, meta) {
   $('coordsx').textContent = e ? 'exact : (' + e[1] + ' ; ' + e[2] + ')' : 'coordonnées approchées';
   $('signs').textContent = 'cos ' + sign(c.x) + ' · sin ' + sign(c.y) + ' · tan ' + sign(c.t);
   $('ref').textContent = 'Angle de référence : ' + fmt(c.ref, 1) + '°';
-  $('explain').textContent = solutions.get('geometric').solve(solutionContext(c)).explanation;
+  var methods = methodsOf(s.mode), method = resolveMethod(methods, s.method);
+  buildMethodRadios(methods, method);
+  renderMethod(method ? method.solve(solutionContext(c)) : null);
 
   $('range').value = a;
   if (document.activeElement !== $('input')) $('input').value = fmt(a, 3);
@@ -1250,6 +1361,7 @@ function setMode(m) {
   each('[data-mode]', function (s) { s.classList.toggle('hidden', s.dataset.mode.split(' ').indexOf(m) < 0); });
   if (m === 'play') showMenu(); else stopGame();
   if (m === 'learn') showLesson(lesson.i);
+  store.refresh();
 }
 
 // ===== src/ui/input.js =====
@@ -1344,6 +1456,21 @@ function bindModes() {
   $('gAgain').addEventListener('click', function () { startGame(game.last); });
 }
 
+function bindMethods() {
+  var group = $('mradio');
+  group.addEventListener('click', function (e) {
+    var b = e.target.closest('[role=radio]');
+    if (b) chooseMethod(b.dataset.method);
+  });
+  group.addEventListener('keydown', function (e) {
+    var b = e.target.closest('[role=radio]');
+    var id = b && nextMethod(b.dataset.method, e.key);
+    if (!id) return;
+    e.preventDefault();
+    chooseMethod(id, true);
+  });
+}
+
 function bindKeyboard() {
   $('svg').addEventListener('keydown', function (e) {
     var s = store.get();
@@ -1366,6 +1493,7 @@ function bind() {
   bindPointer();
   bindControls();
   bindModes();
+  bindMethods();
   bindKeyboard();
 }
 
@@ -1543,6 +1671,50 @@ function runUiChecks() {
   ok('quitter déverrouille', !store.get().locked && !$('gMenu').classList.contains('hidden'));
   setMode('explore');
   ok('retour Explorer', visible('quick') && store.get().mode === 'explore');
+
+  // Sélecteur de méthode (A-04)
+  var opts = function () { return Array.prototype.slice.call($('mradio').querySelectorAll('[role=radio]')); };
+  var methods = solutions.list({ mode: 'explore' });
+  setAngle(150);
+  ok('options de méthode', opts().length === methods.length && $('mradio').getAttribute('role') === 'radiogroup');
+  var before = [$('cos').textContent, $('sin').textContent, $('tan').textContent], prevTitle = null, allSame = true;
+  opts().forEach(function (o) {
+    o.click();
+    var res = solutions.get(o.dataset.method).solve(solutionContext(compute(150)));
+    ok('méthode ' + o.dataset.method + ' : titre', $('mtitle').textContent === res.title && o.getAttribute('aria-checked') === 'true');
+    ok('méthode ' + o.dataset.method + ' : étapes', $('msteps').children.length === res.steps.length);
+    ok('méthode ' + o.dataset.method + ' : avertissements', $('mwarn').children.length === res.warnings.length);
+    if (prevTitle !== null && prevTitle !== $('mtitle').textContent) allSame = false;
+    if (prevTitle !== null) ok('le titre change avec la méthode', prevTitle !== $('mtitle').textContent);
+    prevTitle = $('mtitle').textContent;
+    ok('valeurs inchangées (' + o.dataset.method + ')', $('cos').textContent === before[0] && $('sin').textContent === before[1] &&
+      $('tan').textContent === before[2]);
+  });
+  ok('titre unique par méthode', opts().length < 2 || !allSame);
+  var chosen = opts()[opts().length - 1];
+  setAngle(30);
+  ok('méthode conservée (angle)', store.get().method === chosen.dataset.method && opts()[opts().length - 1].getAttribute('aria-checked') === 'true');
+  document.querySelector('[data-tab=learn]').click();
+  setMode('explore');
+  ok('méthode conservée (mode)', store.get().method === chosen.dataset.method && opts()[opts().length - 1].getAttribute('aria-checked') === 'true');
+  $('live').textContent = '';
+  if (opts().length > 1) {
+    key(opts()[opts().length - 1], 'ArrowRight');
+    ok('flèche dans le groupe', store.get().method === opts()[0].dataset.method && $('live').textContent.indexOf('Méthode : ') === 0);
+  }
+  var fake = {
+    solutionId: 'fake', status: 'unsupported', title: 'Fausse méthode', result: null,
+    steps: [{ id: 'why', title: 'Pourquoi', text: 'Parce que.' }], explanation: 'Sans objet.',
+    warnings: [{ code: 'NOT_APPLICABLE', message: 'Non applicable.' }]
+  }, threw = false;
+  try { renderMethod(fake); } catch (_) { threw = true; }
+  ok('résultat non applicable', !threw && $('mtitle').textContent === UNSUPPORTED && $('msteps').children.length === 1 &&
+    $('mwarn').children.length === 1 && $('explain').textContent === '');
+  threw = false;
+  try { renderMethod({ status: 'unsupported' }); } catch (_) { threw = true; }
+  ok('résultat non applicable incomplet', !threw && $('msteps').children.length === 0);
+  store.patch({ method: 'geometric' });
+  store.refresh();
 
   // Restauration
   setOptions(saved.options);
