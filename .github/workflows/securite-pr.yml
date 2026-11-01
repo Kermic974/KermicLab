@@ -11,26 +11,13 @@ permissions:
 jobs:
   revue-dependances:
     name: Revue des dépendances
-    # dependency-review-action exige le graphe de dépendances + GitHub Advanced Security, indisponibles sur un
-    # dépôt privé sans licence GHAS. Tant que le dépôt est privé, l'audit npm ci-dessous et Dependabot
-    # couvrent les vulnérabilités ; ce job s'active automatiquement au passage en public.
-    if: github.event_name == 'pull_request' && !github.event.repository.private
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/dependency-review-action@v5
-        with:
-          fail-on-severity: high
-
-  audit:
-    name: Audit npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: npm audit --audit-level=high --omit=dev
+      - run: npm audit --audit-level=high
 
   secrets:
     name: Scan des secrets
