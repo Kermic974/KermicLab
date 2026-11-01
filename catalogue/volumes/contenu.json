@@ -1,0 +1,189 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : remplir avec des petits cubes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **volume** est la place qu'occupe un objet dans l'espace. Pour le mesurer, on compte combien de petits cubes de 1 cm d'arête (1 **cm³**) il faut pour le remplir.",
+        "Une boîte de 3 cm × 2 cm × 2 cm contient 3 × 2 = 6 cubes au fond, sur 2 étages : 12 cm³."
+      ]
+    },
+    {
+      "titre": "Pavé droit et cube",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "**Pavé droit** (une boîte) : V = longueur × largeur × hauteur.",
+        "**Cube** d'arête a : V = a × a × a = a³ (d'où le nom « au cube » !)."
+      ]
+    },
+    {
+      "titre": "Volumes et contenances",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Pour les liquides, on parle de **contenance** en litres. **1 L = 1 dm³ = 1 000 cm³**, et 1 mL = 1 cm³.",
+        "Un cube de 1 m d'arête contient 10 × 10 × 10 = 1 000 cubes de 1 dm : **1 m³ = 1 000 L**. Pour les volumes, on multiplie par 1 000 à chaque changement d'unité."
+      ]
+    },
+    {
+      "titre": "Prisme et cylindre",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Pour un **prisme droit** ou un **cylindre** : V = **aire de la base × hauteur** (on empile des bases).",
+        "Cylindre de rayon r et de hauteur h : V = π × r² × h."
+      ],
+      "exemple": {
+        "titre": "Exemple : une canette de rayon 3 cm et de hauteur 10 cm",
+        "etapes": [
+          "Aire de la base : π × 3² = 9π cm².",
+          "Volume : 9π × 10 = 90π ≈ 282,7 cm³.",
+          "Soit environ 0,28 L."
+        ]
+      }
+    },
+    {
+      "titre": "Pyramide, cône et boule",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "**Pyramide** et **cône** : V = aire de la base × hauteur ÷ 3. Ils remplissent exactement le tiers du prisme ou du cylindre de même base et même hauteur.",
+        "**Boule** de rayon r : V = (4/3) × π × r³.",
+        "Dans un agrandissement de rapport k, les volumes sont multipliés par **k³** : doubler les dimensions multiplie le volume par 8."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : identifie la base, puis multiplie par la hauteur.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Pavé droit",
+        "question": "Quel est le volume d'un pavé droit de 5 cm × 4 cm × 3 cm ?",
+        "reponse": 60,
+        "unite": "cm³",
+        "indices": [
+          "V = longueur × largeur × hauteur."
+        ],
+        "solution": "5 × 4 × 3 = 60 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Cube",
+        "question": "Quel est le volume d'un cube de 4 cm d'arête ?",
+        "reponse": 64,
+        "unite": "cm³",
+        "indices": [
+          "V = a³ = 4 × 4 × 4."
+        ],
+        "solution": "4³ = 64 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Litres et cm³",
+        "question": "Combien de cm³ y a-t-il dans 2,5 L ?",
+        "reponse": 2500,
+        "unite": "cm³",
+        "indices": [
+          "1 L = 1 000 cm³."
+        ],
+        "solution": "2,5 × 1 000 = 2 500 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Cylindre",
+        "question": "Quel est le volume d'un cylindre de rayon 2 cm et de hauteur 5 cm, arrondi au dixième ?",
+        "reponse": 62.8,
+        "tolerance": 0.05,
+        "unite": "cm³",
+        "indices": [
+          "V = π × r² × h = π × 4 × 5.",
+          "20π ≈ 62,83."
+        ],
+        "solution": "π × 2² × 5 = 20π ≈ 62,8 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Pyramide",
+        "question": "Une pyramide a une base carrée de 6 cm de côté et une hauteur de 5 cm. Quel est son volume ?",
+        "reponse": 60,
+        "unite": "cm³",
+        "indices": [
+          "Aire de la base : 6 × 6 = 36 cm².",
+          "V = 36 × 5 ÷ 3."
+        ],
+        "solution": "36 × 5 ÷ 3 = 60 cm³."
+      },
+      {
+        "type": "qcm",
+        "titre": "Agrandissement",
+        "question": "On double toutes les dimensions d'une boîte. Son volume est multiplié par…",
+        "choix": [
+          "2",
+          "4",
+          "8"
+        ],
+        "bonne": 2,
+        "explication": "Les volumes sont multipliés par k³ = 2³ = 8.",
+        "indice": "Chacune des trois dimensions est doublée."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'aquarium",
+    "histoire": [
+      "Nina reçoit un aquarium en forme de pavé droit : **60 cm de long, 30 cm de large et 40 cm de haut**.",
+      "Avant d'installer ses poissons, elle doit savoir combien d'eau prévoir."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le volume",
+        "question": "Quel est le volume de l'aquarium, en cm³ ?",
+        "reponse": 72000,
+        "unite": "cm³",
+        "indices": [
+          "V = 60 × 30 × 40."
+        ],
+        "solution": "60 × 30 × 40 = 72 000 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "En litres",
+        "question": "Combien de litres d'eau faut-il pour le remplir entièrement ?",
+        "reponse": 72,
+        "unite": "L",
+        "indices": [
+          "1 L = 1 000 cm³."
+        ],
+        "solution": "72 000 ÷ 1 000 = 72 L."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aux trois quarts",
+        "question": "Pour laisser de la place, Nina le remplit aux 3/4 seulement. Combien de litres verse-t-elle ?",
+        "reponse": 54,
+        "unite": "L",
+        "indices": [
+          "Calcule les 3/4 de 72."
+        ],
+        "solution": "72 ÷ 4 × 3 = 54 L."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'arrosoir",
+        "question": "Elle utilise un arrosoir de 6 L. Combien d'arrosoirs doit-elle verser ?",
+        "reponse": 9,
+        "unite": "arrosoirs",
+        "indices": [
+          "Divise 54 par 6."
+        ],
+        "solution": "54 ÷ 6 = 9 arrosoirs."
+      }
+    ],
+    "conclusion": "Les poissons sont ravis ! Volumes et contenances, cm³ et litres : tu sais maintenant passer de l'un à l'autre."
+  }
+}
