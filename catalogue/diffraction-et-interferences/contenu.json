@@ -1,0 +1,158 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les vagues contournent les obstacles",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Des vagues qui passent par l'ouverture étroite d'une digue s'**étalent** de l'autre côté au lieu de continuer tout droit. C'est la **diffraction**.",
+        "La lumière, qui est aussi une onde, fait la même chose quand elle traverse une fente très fine."
+      ]
+    },
+    {
+      "titre": "La diffraction",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La diffraction est d'autant plus marquée que l'ouverture (ou l'obstacle) de taille a est **petite**, comparable à la longueur d'onde λ.",
+        "L'**écart angulaire** entre le centre de la tache centrale et la première extinction vaut **θ = λ / a** (θ en radians, petits angles)."
+      ]
+    },
+    {
+      "titre": "La tache centrale",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Sur un écran à la distance D de la fente, la tache centrale a pour largeur **L = 2 λ D / a**.",
+        "En mesurant L, on peut donc retrouver la longueur d'onde d'un laser : λ = L × a / (2D)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "λ = 600 nm, D = 2 m et a = 0,1 mm.",
+          "L = 2 × 600 × 10⁻⁹ × 2 / (0,1 × 10⁻³).",
+          "L = 0,024 m = 2,4 cm."
+        ]
+      }
+    },
+    {
+      "titre": "Les interférences",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Deux ondes **cohérentes** (même fréquence, déphasage constant) qui se superposent **interfèrent** : là où elles arrivent en phase, elles s'ajoutent (frange **brillante**, interférences constructives) ; en opposition de phase, elles s'annulent (frange **sombre**, interférences destructives).",
+        "Avec les **fentes d'Young** séparées de b, les franges sont régulièrement espacées de l'**interfrange i = λ D / b**."
+      ],
+      "aRetenir": "Les irisations des bulles de savon et des CD sont dues à des interférences."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec θ = λ / a, L = 2 λ D / a et i = λ D / b.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Écart angulaire",
+        "question": "Un laser de longueur d'onde 600 nm éclaire une fente de 0,1 mm. Quel est l'écart angulaire θ, en radians ?",
+        "reponse": 0.006,
+        "unite": "rad",
+        "indices": [
+          "θ = λ / a = 600 × 10⁻⁹ / 0,1 × 10⁻³."
+        ],
+        "solution": "6 × 10⁻⁷ / 10⁻⁴ = 0,006 rad."
+      },
+      {
+        "type": "qcm",
+        "titre": "Fente plus fine",
+        "question": "Si la fente est plus fine, la tache centrale de diffraction est…",
+        "choix": [
+          "plus large",
+          "plus étroite",
+          "inchangée"
+        ],
+        "bonne": 0,
+        "explication": "θ = λ / a : quand a diminue, θ augmente, la diffraction est plus marquée."
+      },
+      {
+        "type": "nombre",
+        "titre": "Tache centrale",
+        "question": "Avec λ = 600 nm, a = 0,1 mm et un écran à D = 2 m, quelle est la largeur de la tache centrale, en cm ?",
+        "reponse": 2.4,
+        "unite": "cm",
+        "indices": [
+          "L = 2 λ D / a."
+        ],
+        "solution": "2 × 6 × 10⁻⁷ × 2 / 10⁻⁴ = 0,024 m = 2,4 cm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Interfrange",
+        "question": "Fentes d'Young : λ = 500 nm, D = 1,5 m et b = 0,5 mm. Quel est l'interfrange, en mm ?",
+        "reponse": 1.5,
+        "unite": "mm",
+        "indices": [
+          "i = λ D / b = 5 × 10⁻⁷ × 1,5 / 5 × 10⁻⁴."
+        ],
+        "solution": "i = 1,5 × 10⁻³ m = 1,5 mm."
+      },
+      {
+        "type": "qcm",
+        "titre": "Frange sombre",
+        "question": "Une frange sombre correspond à des interférences…",
+        "choix": [
+          "constructives",
+          "destructives"
+        ],
+        "bonne": 1,
+        "explication": "Les deux ondes arrivent en opposition de phase et s'annulent."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Mesurer la longueur d'onde d'un laser",
+    "histoire": [
+      "En TP, un laser éclaire une fente de largeur **a = 0,05 mm**. Sur un écran placé à **D = 1,5 m**, la tache centrale mesure **L = 3,9 cm**.",
+      "Retrouvons la couleur du laser par le calcul."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La longueur d'onde",
+        "question": "Quelle est la longueur d'onde du laser, en nanomètres ?",
+        "reponse": 650,
+        "tolerance": 1,
+        "unite": "nm",
+        "indices": [
+          "λ = L × a / (2D) = 0,039 × 5 × 10⁻⁵ / 3.",
+          "Convertis en nm : 1 nm = 10⁻⁹ m."
+        ],
+        "solution": "λ = 6,5 × 10⁻⁷ m = 650 nm."
+      },
+      {
+        "type": "qcm",
+        "titre": "La couleur",
+        "question": "Quelle est la couleur de ce laser ?",
+        "choix": [
+          "Violet",
+          "Vert",
+          "Rouge"
+        ],
+        "bonne": 2,
+        "explication": "650 nm se trouve dans le rouge du spectre visible (environ 400 nm pour le violet, 800 nm pour le rouge)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une fente deux fois plus fine",
+        "question": "Avec une fente deux fois plus fine, quelle serait la largeur de la tache centrale, en cm ?",
+        "reponse": 7.8,
+        "unite": "cm",
+        "indices": [
+          "L est inversement proportionnelle à a."
+        ],
+        "solution": "2 × 3,9 = 7,8 cm."
+      }
+    ],
+    "conclusion": "Bravo ! Avec une simple fente et une règle, tu as mesuré une longueur 100 fois plus petite que l'épaisseur d'un cheveu."
+  }
+}

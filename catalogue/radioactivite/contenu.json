@@ -1,0 +1,153 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des noyaux instables",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Certains noyaux atomiques sont **instables** : un jour, sans prévenir, ils se transforment en un autre noyau en émettant un rayonnement. C'est la **radioactivité**, découverte par Henri Becquerel et Marie Curie.",
+        "On ne peut pas prévoir quand un noyau donné se désintégrera, mais sur des milliards de noyaux, la loi est parfaitement régulière."
+      ]
+    },
+    {
+      "titre": "Les désintégrations",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**α** : émission d'un noyau d'hélium ⁴₂He. **β⁻** : émission d'un électron. **β⁺** : émission d'un positon. Souvent accompagnée d'un rayonnement **γ** (lumière très énergétique).",
+        "Lois de conservation : le **nombre de nucléons A** et le **nombre de charge Z** se conservent."
+      ],
+      "exemple": {
+        "titre": "Exemple : désintégration α de l'uranium 238",
+        "etapes": [
+          "²³⁸₉₂U → ᴬ_Z X + ⁴₂He.",
+          "A = 238 − 4 = 234 et Z = 92 − 2 = 90.",
+          "Z = 90 : c'est du thorium, ²³⁴₉₀Th."
+        ]
+      }
+    },
+    {
+      "titre": "La loi de décroissance",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Le nombre de noyaux radioactifs décroît exponentiellement : **N(t) = N₀ × e^(−λt)**, où λ est la constante radioactive.",
+        "La **demi-vie t½ = ln 2 / λ** est la durée au bout de laquelle la moitié des noyaux s'est désintégrée. Elle ne dépend que du type de noyau : 8 jours pour l'iode 131, 5 730 ans pour le carbone 14, 4,5 milliards d'années pour l'uranium 238."
+      ]
+    },
+    {
+      "titre": "Activité et datation",
+      "niveau": "terminale",
+      "paragraphes": [
+        "L'**activité** A = λ N est le nombre de désintégrations par seconde, en becquerels (Bq).",
+        "**Datation au carbone 14** : un être vivant garde une proportion constante de carbone 14 ; après sa mort, elle diminue de moitié tous les 5 730 ans. Mesurer ce qu'il en reste donne l'âge (jusqu'à environ 50 000 ans)."
+      ],
+      "aRetenir": "Radioprotection : s'éloigner, limiter la durée d'exposition et s'abriter derrière un écran."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les lois de conservation et la demi-vie.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Numéro atomique",
+        "question": "L'uranium ²³⁸₉₂U subit une désintégration α. Quel est le numéro atomique Z du noyau fils ?",
+        "reponse": 90,
+        "indices": [
+          "Un noyau d'hélium ⁴₂He emporte 2 charges."
+        ],
+        "solution": "92 − 2 = 90 (thorium)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Nombre de nucléons",
+        "question": "Et son nombre de nucléons A ?",
+        "reponse": 234,
+        "indices": [
+          "Le noyau d'hélium emporte 4 nucléons."
+        ],
+        "solution": "238 − 4 = 234."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trois demi-vies",
+        "question": "Quel pourcentage d'un échantillon radioactif reste-t-il au bout de 3 demi-vies ?",
+        "reponse": 12.5,
+        "unite": "%",
+        "indices": [
+          "(1/2)³."
+        ],
+        "solution": "1/8 = 12,5 %."
+      },
+      {
+        "type": "nombre",
+        "titre": "Datation",
+        "question": "Un fossile ne contient plus que 25 % de son carbone 14 initial (t½ = 5 730 ans). Quel est son âge, en années ?",
+        "reponse": 11460,
+        "unite": "ans",
+        "indices": [
+          "25 % = (1/2)² : deux demi-vies."
+        ],
+        "solution": "2 × 5 730 = 11 460 ans."
+      },
+      {
+        "type": "qcm",
+        "titre": "La demi-vie",
+        "question": "La demi-vie d'un noyau radioactif dépend…",
+        "choix": [
+          "uniquement du type de noyau",
+          "de la quantité d'échantillon",
+          "de la température"
+        ],
+        "bonne": 0,
+        "explication": "Elle est caractéristique du noyau : ni la quantité, ni la température, ni la pression ne la changent."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La datation d'un os",
+    "histoire": [
+      "Des archéologues découvrent des ossements dans une grotte. Le laboratoire mesure la proportion de carbone 14 restante (t½ = 5 730 ans).",
+      "Aide-les à dater leurs découvertes."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Premier os",
+        "question": "Le premier os contient 50 % du carbone 14 initial. Quel est son âge ?",
+        "reponse": 5730,
+        "unite": "ans",
+        "indices": [
+          "50 % = une demi-vie."
+        ],
+        "solution": "5 730 ans."
+      },
+      {
+        "type": "nombre",
+        "titre": "Deuxième os",
+        "question": "Le deuxième n'en contient plus que 12,5 %. Quel est son âge ?",
+        "reponse": 17190,
+        "unite": "ans",
+        "indices": [
+          "12,5 % = (1/2)³ : trois demi-vies."
+        ],
+        "solution": "3 × 5 730 = 17 190 ans."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un dinosaure ?",
+        "question": "Peut-on dater au carbone 14 un os de dinosaure (66 millions d'années) ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 1,
+        "explication": "Au bout de 66 millions d'années (plus de 11 000 demi-vies), il ne reste plus du tout de carbone 14 mesurable : on utilise d'autres noyaux, à plus longue demi-vie."
+      }
+    ],
+    "conclusion": "Bravo ! La radioactivité est une horloge naturelle : elle date les fossiles, les roches et même l'âge de la Terre."
+  }
+}
