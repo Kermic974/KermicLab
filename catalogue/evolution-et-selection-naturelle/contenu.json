@@ -1,0 +1,150 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des populations qui changent",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les espèces ne sont pas figées : au fil des générations, la fréquence des différents caractères dans une population change. C'est l'**évolution**, dont Charles Darwin a proposé le mécanisme principal en 1859."
+      ]
+    },
+    {
+      "titre": "La sélection naturelle",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Dans une population, les individus diffèrent (grâce aux mutations et à la reproduction sexuée). Ceux dont les caractères sont les plus avantageux dans leur milieu **survivent et se reproduisent davantage** : leurs allèles deviennent plus fréquents. C'est la **sélection naturelle**.",
+        "Exemple actuel : l'usage massif des antibiotiques sélectionne les bactéries **résistantes**."
+      ]
+    },
+    {
+      "titre": "La dérive génétique",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La fréquence des allèles change aussi **au hasard**, sans lien avec un avantage : c'est la **dérive génétique**. Elle est d'autant plus forte que la population est **petite** (quelques individus fondateurs d'une île, par exemple).",
+        "Sélection et dérive peuvent conduire, avec l'isolement de deux populations, à l'apparition de nouvelles espèces : la **spéciation**."
+      ]
+    },
+    {
+      "titre": "Parentés et ancêtres communs",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Les êtres vivants sont apparentés : on représente leurs relations par un **arbre phylogénétique**, construit à partir des caractères partagés.",
+        "L'être humain ne descend pas du chimpanzé : ils partagent un **ancêtre commun** qui vivait il y a environ 7 millions d'années. Les deux lignées ont ensuite évolué chacune de leur côté."
+      ],
+      "aRetenir": "L'évolution n'a pas de but : elle résulte de la variation, de la sélection et du hasard."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les mécanismes de l'évolution.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Sélection naturelle",
+        "question": "La sélection naturelle favorise…",
+        "choix": [
+          "les allèles qui donnent un avantage de survie ou de reproduction dans le milieu",
+          "les individus les plus gros",
+          "les mutations apparues récemment"
+        ],
+        "bonne": 0,
+        "explication": "Ce qui compte, c'est le succès reproducteur dans un milieu donné."
+      },
+      {
+        "type": "qcm",
+        "titre": "Dérive génétique",
+        "question": "Dans quelle population la dérive génétique a-t-elle le plus d'effet ?",
+        "choix": [
+          "Une petite population",
+          "Une très grande population"
+        ],
+        "bonne": 0,
+        "explication": "Dans une petite population, le hasard peut faire disparaître ou fixer un allèle rapidement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Humain et chimpanzé",
+        "question": "Que dit la science de la parenté entre l'être humain et le chimpanzé ?",
+        "choix": [
+          "Ils ont un ancêtre commun",
+          "L'humain descend du chimpanzé",
+          "Ils ne sont pas apparentés"
+        ],
+        "bonne": 0,
+        "explication": "Ils partagent un ancêtre commun, vieux d'environ 7 millions d'années."
+      },
+      {
+        "type": "nombre",
+        "titre": "Fréquence",
+        "question": "Dans une population de 1 000 papillons, 90 % sont de forme sombre. Combien de papillons sombres cela représente-t-il ?",
+        "reponse": 900,
+        "unite": "papillons",
+        "indices": [
+          "90 % de 1 000."
+        ],
+        "solution": "1 000 × 0,9 = 900 papillons."
+      },
+      {
+        "type": "qcm",
+        "titre": "Antibiotiques",
+        "question": "Pourquoi l'usage excessif des antibiotiques favorise-t-il les bactéries résistantes ?",
+        "choix": [
+          "Il élimine les bactéries sensibles et laisse les résistantes se multiplier",
+          "Il rend toutes les bactéries plus fortes",
+          "Il crée des bactéries à partir de rien"
+        ],
+        "bonne": 0,
+        "explication": "C'est de la sélection naturelle en direct."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les phalènes du bouleau",
+    "histoire": [
+      "Au XIXe siècle, en Angleterre, la pollution au charbon noircit les troncs d'arbres. Chez un papillon, la phalène du bouleau, la forme claire était la plus courante ; la forme sombre devient alors majoritaire près des villes industrielles.",
+      "Les oiseaux repèrent plus facilement les papillons mal camouflés."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "L'explication",
+        "question": "Pourquoi la forme sombre est-elle devenue majoritaire ?",
+        "choix": [
+          "Sur les troncs noircis, elle était mieux camouflée et moins mangée par les oiseaux",
+          "La pollution a teint les papillons",
+          "Les papillons ont choisi de devenir sombres"
+        ],
+        "bonne": 0,
+        "explication": "Les papillons sombres survivaient et se reproduisaient davantage : c'est la sélection naturelle."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le comptage",
+        "question": "Vers 1895, sur 500 papillons capturés près de Manchester, 490 sont sombres. Quel pourcentage cela représente-t-il ?",
+        "reponse": 98,
+        "unite": "%",
+        "indices": [
+          "490 ÷ 500, puis × 100."
+        ],
+        "solution": "490 ÷ 500 = 0,98 = 98 %."
+      },
+      {
+        "type": "qcm",
+        "titre": "Après la dépollution",
+        "question": "Depuis la réduction de la pollution, que constate-t-on ?",
+        "choix": [
+          "La forme claire redevient majoritaire",
+          "La forme sombre reste à 98 %",
+          "L'espèce a disparu"
+        ],
+        "bonne": 0,
+        "explication": "Sur des troncs à nouveau clairs, c'est la forme claire qui est avantagée."
+      }
+    ],
+    "conclusion": "Bravo ! Les phalènes sont l'un des exemples les plus célèbres de sélection naturelle observée par les scientifiques."
+  }
+}

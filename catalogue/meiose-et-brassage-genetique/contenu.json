@@ -1,0 +1,149 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un jeu de cartes rebattu",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Chaque parent a deux exemplaires de chaque chromosome, mais ne transmet qu'un exemplaire de chaque paire, comme si l'on tirait une carte dans chaque paire. Les combinaisons possibles sont si nombreuses que chaque enfant est unique (sauf les vrais jumeaux)."
+      ]
+    },
+    {
+      "titre": "La méiose",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La **méiose** produit les **gamètes**. Elle comprend **deux divisions successives** et donne, à partir d'une cellule à 46 chromosomes, **quatre cellules à 23 chromosomes** (un de chaque paire).",
+        "La fécondation rétablit ensuite le nombre de 46 chromosomes."
+      ]
+    },
+    {
+      "titre": "Le brassage interchromosomique",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Lors de la première division, pour chaque paire, le chromosome d'origine paternelle part d'un côté ou de l'autre **au hasard**, indépendamment des autres paires.",
+        "Avec 23 paires, cela donne **2²³ ≈ 8,4 millions** de combinaisons de chromosomes possibles pour les gamètes d'un seul parent."
+      ]
+    },
+    {
+      "titre": "Le brassage intrachromosomique",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Avant la séparation, les chromosomes homologues s'apparient et peuvent **échanger des portions** : ce sont les **crossing-over**. Ils créent de nouvelles combinaisons d'allèles **sur un même chromosome**, ce qui multiplie encore la diversité.",
+        "La fécondation, qui réunit au hasard deux gamètes, ajoute un dernier brassage : chaque individu est génétiquement unique."
+      ],
+      "aRetenir": "Méiose (deux brassages) + fécondation (hasard de la rencontre) = diversité génétique."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur la méiose et les brassages.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Les gamètes",
+        "question": "Combien de chromosomes contient un gamète humain ?",
+        "reponse": 23,
+        "indices": [
+          "Un chromosome de chaque paire."
+        ],
+        "solution": "23 chromosomes."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trois paires",
+        "question": "Une cellule a 3 paires de chromosomes. Combien de combinaisons de chromosomes différentes ses gamètes peuvent-ils avoir (sans crossing-over) ?",
+        "reponse": 8,
+        "indices": [
+          "Deux possibilités par paire : 2³."
+        ],
+        "solution": "2³ = 8 combinaisons."
+      },
+      {
+        "type": "nombre",
+        "titre": "23 paires",
+        "question": "Avec 23 paires, combien de millions de combinaisons sont possibles (arrondi au dixième) ?",
+        "reponse": 8.4,
+        "tolerance": 0.05,
+        "unite": "millions",
+        "indices": [
+          "2²³ = 8 388 608."
+        ],
+        "solution": "2²³ ≈ 8,4 millions."
+      },
+      {
+        "type": "qcm",
+        "titre": "Crossing-over",
+        "question": "Un crossing-over est…",
+        "choix": [
+          "un échange de portions entre chromosomes homologues",
+          "la séparation des chromatides en mitose",
+          "la rencontre de deux gamètes"
+        ],
+        "bonne": 0,
+        "explication": "Il produit le brassage intrachromosomique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Bilan de la méiose",
+        "question": "À partir d'une cellule à 46 chromosomes, la méiose produit…",
+        "choix": [
+          "4 cellules à 23 chromosomes",
+          "2 cellules à 46 chromosomes",
+          "4 cellules à 46 chromosomes"
+        ],
+        "bonne": 0,
+        "explication": "Deux divisions successives, nombre de chromosomes divisé par deux."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Tous différents",
+    "histoire": [
+      "Lina et son frère Tom ont les mêmes parents, et pourtant ils ne se ressemblent pas tant que ça.",
+      "Comprenons pourquoi."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Les gamètes d'un parent",
+        "question": "Rien qu'avec le brassage interchromosomique, combien de millions de gamètes génétiquement différents chaque parent peut-il produire (arrondi au dixième) ?",
+        "reponse": 8.4,
+        "tolerance": 0.05,
+        "unite": "millions",
+        "indices": [
+          "2²³."
+        ],
+        "solution": "2²³ ≈ 8,4 millions."
+      },
+      {
+        "type": "qcm",
+        "titre": "Encore plus",
+        "question": "En tenant compte des crossing-over, le nombre de gamètes différents possibles est…",
+        "choix": [
+          "encore beaucoup plus grand",
+          "plus petit",
+          "le même"
+        ],
+        "bonne": 0,
+        "explication": "Les crossing-over créent de nouvelles combinaisons d'allèles sur chaque chromosome."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les vrais jumeaux",
+        "question": "Pourquoi les vrais jumeaux, eux, ont-ils le même patrimoine génétique ?",
+        "choix": [
+          "Ils proviennent de la même cellule-œuf, qui s'est séparée en deux",
+          "Ils sont nés le même jour",
+          "Ils ont reçu les mêmes gamètes par hasard"
+        ],
+        "bonne": 0,
+        "explication": "Une seule fécondation, puis l'embryon s'est divisé en deux."
+      }
+    ],
+    "conclusion": "Bravo ! Il y a bien plus de combinaisons génétiques possibles que d'êtres humains ayant jamais vécu : chacun est unique."
+  }
+}
