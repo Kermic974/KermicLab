@@ -29,8 +29,16 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
-Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository only ships a minimal example page (`catalogue/trigo-cercle`).
+Additional pages can live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
+read-only token. This repository ships the unit-circle page and public template-based mathematics,
+physics-chemistry and geography examples.
+
+The geography catalogue covers **metropolisation, urbanisation, rural spaces, natural hazards,
+climate change, resources, mobility, migration and French territories**. Each French-language page
+progresses from intuition through middle-school to high-school concepts, with case studies, mental
+maps, corrected multiple-choice questions about concepts, actors and scales, and an everyday challenge.
+Pages are generated from `catalogue/<id>/contenu.json`; see [the template guide](docs/gabarit.md).
+Human review of geographical accuracy is required before merging.
 
 ## Quick start
 

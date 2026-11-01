@@ -28,8 +28,16 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
-Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
-jeton en lecture seule. Ce dépôt ne contient qu'une maquette d'exemple (`catalogue/trigo-cercle`).
+Des maquettes supplémentaires peuvent vivre dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
+jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics de mathématiques,
+de physique-chimie et de géographie fondés sur le gabarit.
+
+Le catalogue de géographie couvre **métropolisation, urbanisation, espaces ruraux, risques naturels,
+changement climatique, ressources, mobilités, migrations et territoires français**. Chaque page en français
+progresse de l'intuition au collège puis au lycée, avec des cas d'étude, des cartes mentales, des QCM corrigés
+sur les notions, acteurs et échelles, et un défi du quotidien.
+Les pages sont générées depuis `catalogue/<id>/contenu.json` ; voir [le guide du gabarit](docs/gabarit.md).
+Une relecture humaine de l'exactitude géographique est requise avant fusion.
 
 ## Démarrage rapide
 

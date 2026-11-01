@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue à distinguer une journée et une tendance de plusieurs décennies, puis compare deux façons d'agir.",
+  "niveaux": [
+    {
+      "titre": "Intuition : météo aujourd'hui, climat sur la durée", "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **météo** décrit l'état de l'atmosphère à un moment et en un lieu : pluie demain, chaleur cet après-midi. Le **climat** décrit les conditions moyennes, leur variabilité et les extrêmes sur de longues périodes, souvent étudiées sur trente ans.",
+        "Le **changement climatique** actuel inclut un réchauffement mondial dû principalement aux émissions humaines de gaz à effet de serre. Une journée froide n'annule pas cette tendance. L'effet de serre naturel rend la Terre habitable ; son renforcement par les activités humaines modifie le climat."
+      ],
+      "exemple": { "titre": "Carte mentale : une journée froide à Lyon", "etapes": [
+        "Branche météo : note une journée froide fictive à Lyon.",
+        "Branche climat : imagine une série de températures sur plusieurs décennies, pas une seule journée.",
+        "Branche planète : compare de nombreuses régions ; un événement local ne suffit pas à conclure sur la tendance mondiale."
+      ] },
+      "aRetenir": "Météo et climat diffèrent par leur durée d'observation ; le réchauffement mondial n'empêche pas chaque épisode froid."
+    },
+    {
+      "titre": "Collège : causes et effets dans les territoires", "niveau": "collège",
+      "paragraphes": [
+        "La combustion du charbon, du pétrole et du gaz émet du dioxyde de carbone. Agriculture, industrie et changements d'usage des terres contribuent aussi aux émissions. Le réchauffement modifie notamment les températures et le cycle de l'eau ; tous les lieux ne connaissent pas les mêmes effets.",
+        "En métropole, les vagues de chaleur et certaines sécheresses posent des défis pour la santé, l'eau et l'agriculture. Dans les territoires ultramarins, l'élévation du niveau marin peut accroître les risques littoraux et le réchauffement de l'océan fragilise les coraux. Un cyclone précis ne se résume pas au climat : ses effets dépendent aussi de l'exposition et de la vulnérabilité."
+      ],
+      "exemple": { "titre": "Carte mentale : chaleur et littoral", "etapes": [
+        "Branche métropole : une cour d'école sans ombre est sensible aux fortes chaleurs.",
+        "Branche outre-mer : un littoral bas est exposé à la montée du niveau marin.",
+        "Ajoute habitants, collectivités et scientifiques : compare les besoins d'adaptation sans supposer des effets identiques."
+      ] },
+      "aRetenir": "Une cause globale produit des effets territoriaux différents, selon les milieux et les conditions de vie."
+    },
+    {
+      "titre": "Lycée : atténuation, adaptation et justice", "niveau": "lycée",
+      "paragraphes": [
+        "L'**atténuation** vise à limiter le changement climatique en réduisant les émissions et en préservant ou renforçant les puits de carbone. L'**adaptation** cherche à réduire les dommages des changements actuels ou attendus : ombrager des espaces, adapter certains bâtiments ou anticiper les risques littoraux.",
+        "Les États négocient des engagements, les collectivités aménagent et les entreprises transforment leurs productions ; les habitants participent sans pouvoir tout résoudre seuls. Coûts, accès aux alternatives et responsabilités historiques sont inégaux. Les choix doivent éviter la maladaptation, par exemple une réponse qui accroît les émissions ou déplace le risque vers d'autres personnes."
+      ],
+      "exemple": { "titre": "Carte mentale : transformer une école", "etapes": [
+        "Échelle locale : ombre et ventilation adaptée pour réduire l'exposition à la chaleur.",
+        "Échelle du réseau énergétique : rénovation et énergie moins émettrice pour atténuer.",
+        "Échelles nationale et mondiale : règles, financement et engagements ; examiner coûts, entretien et accès équitable."
+      ] },
+      "aRetenir": "Adaptation et atténuation sont complémentaires ; les réponses nécessitent des actions collectives et des arbitrages justes."
+    }
+  ],
+  "application": {
+    "intro": "Classe les observations et les réponses sans confondre leurs objectifs.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Quelle observation permet surtout d'étudier le climat ?", "choix": ["Une averse pendant dix minutes", "Des séries de températures et de pluies sur plusieurs décennies", "Le temps du seul prochain dimanche"], "bonne": 1, "indice": "Le climat s'étudie sur une longue durée.", "explication": "Les séries longues permettent d'étudier moyennes, variabilité et extrêmes ; une journée relève de la météo." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui peut agir sur les émissions à différentes échelles ?", "choix": ["Uniquement les consommateurs par leurs achats", "Uniquement les États, sans action locale ni économique", "États, collectivités, entreprises et habitants"], "bonne": 2, "indice": "Énergie, transports et production impliquent plusieurs acteurs.", "explication": "La transformation nécessite des actions collectives ; les possibilités et responsabilités diffèrent entre acteurs." },
+      { "type": "qcm", "titre": "Échelles", "question": "Pourquoi les émissions d'un pays concernent-elles aussi les autres pays ?", "choix": ["Les gaz à effet de serre contribuent au climat mondial", "Leurs effets climatiques restent uniquement près des usines", "Seuls les pays voisins peuvent subir des effets climatiques"], "bonne": 0, "indice": "L'atmosphère ne suit pas les frontières administratives.", "explication": "Les émissions contribuent à un phénomène mondial, tandis que les effets et les réponses sont aussi locaux." }
+    ]
+  },
+  "situation": {
+    "titre": "Habiter et se déplacer autour de l'école Ombrelle",
+    "histoire": ["L'école fictive Ombrelle a une cour très minérale. La commune veut protéger les élèves des chaleurs et réduire les émissions liées aux bâtiments et aux trajets.", "Compare les projets sur papier, sans expérience au soleil ni relevé de trajets personnels."],
+    "etapes": [
+      { "type": "qcm", "titre": "Adapter", "question": "Créer de l'ombre dans la cour vise d'abord à…", "choix": ["Adapter l'école aux fortes chaleurs", "Supprimer immédiatement le réchauffement mondial", "Prédire la pluie du lendemain"], "bonne": 0, "indice": "Le projet réduit une conséquence locale.", "explication": "L'ombre relève principalement de l'adaptation ; elle ne remplace pas la réduction des émissions." },
+      { "type": "qcm", "titre": "Atténuer", "question": "Quel projet vise directement à réduire les émissions des trajets ?", "choix": ["Ajouter un thermomètre décoratif", "Développer des transports collectifs peu émetteurs adaptés", "Changer le nom de la cour"], "bonne": 1, "indice": "Cherche une action sur le déplacement et l'énergie utilisée.", "explication": "Des alternatives adaptées peuvent réduire les émissions ; leur effet dépend de leur utilisation, de l'énergie et du contexte." },
+      { "type": "qcm", "titre": "Évaluer", "question": "Avant de financer les projets, que faut-il comparer ?", "choix": ["Seulement leur slogan", "Seulement le nombre d'affiches", "Efficacité, coût, entretien et accès pour tous"], "bonne": 2, "indice": "Un projet doit fonctionner durablement et équitablement.", "explication": "L'évaluation tient compte des résultats attendus, des contraintes et des besoins des différents usagers." }
+    ],
+    "conclusion": "Mission accomplie ! Dessine une école imaginaire et joue à observer trois projets : classe-les en adaptation ou atténuation, parfois les deux. Reste sur papier, sans données personnelles ni exposition à la chaleur."
+  }
+}

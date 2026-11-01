@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Construis une ville sur papier : gagner des habitants ne signifie pas forcément couvrir davantage de champs.",
+  "niveaux": [
+    {
+      "titre": "Intuition : davantage d'habitants vivent en ville", "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'**urbanisation** est l'augmentation de la part de la population vivant dans les villes. La population urbaine peut croître par les naissances, les arrivées d'habitants ou le reclassement de territoires devenus urbains. Les définitions de la ville varient selon les pays.",
+        "La ville peut se densifier ou s'étendre. L'**étalement urbain** est l'extension des surfaces urbanisées, souvent peu denses, vers les espaces voisins. La **métropolisation**, elle, concentre surtout des fonctions de commandement et des réseaux dans les grandes villes."
+      ],
+      "exemple": { "titre": "Carte mentale : deux villes imaginaires", "etapes": [
+        "Dans un pays fictif, 40 habitants sur 100 vivent en ville, puis 60 sur 100 : la part urbaine augmente.",
+        "Dessine une branche densification : nouveaux logements sur une ancienne friche.",
+        "Dessine une branche extension : lotissement sur un champ ; compare la surface utilisée."
+      ] },
+      "aRetenir": "Population urbaine, surface bâtie et fonctions métropolitaines sont des indicateurs différents."
+    },
+    {
+      "titre": "Collège : centres, banlieues et couronnes", "niveau": "collège",
+      "paragraphes": [
+        "La **périurbanisation** transforme des espaces autour des villes : beaucoup d'habitants y résident tout en se rendant dans les pôles urbains pour travailler ou utiliser des services. Les paysages peuvent mêler logements, activités et champs ; les banlieues ne sont pas toutes identiques.",
+        "Autour de Toulouse, les besoins de logements et les déplacements relient plusieurs communes. À La Réunion, autour de Saint-Denis, le relief et les espaces disponibles contraignent aussi l'extension. Habitants, aménageurs et collectivités font des choix sous des contraintes de prix et de transport."
+      ],
+      "exemple": { "titre": "Carte mentale : habiter près de Toulouse", "etapes": [
+        "Branche centre : services et emplois ; branche périphérie : logements et activités.",
+        "Ajoute les trajets entre communes et les espaces agricoles à préserver.",
+        "Compare avec Saint-Denis de La Réunion : ajoute la contrainte du relief, sans supposer des villes identiques."
+      ] },
+      "aRetenir": "L'habitat et les déplacements lient la ville à ses périphéries ; les situations varient selon les territoires."
+    },
+    {
+      "titre": "Lycée : aménager sans recette unique", "niveau": "lycée",
+      "paragraphes": [
+        "L'urbanisation mondiale est inégale : certaines régions sont déjà très urbanisées, d'autres connaissent une croissance urbaine rapide. Un taux d'urbanisation et un nombre d'habitants urbains ne disent pas la même chose. Les conditions d'accès au logement, à l'eau et aux transports diffèrent à l'intérieur d'une même ville.",
+        "Réutiliser les friches et coordonner logement et transports peut limiter l'artificialisation des sols. Densifier nécessite aussi des espaces verts, des équipements et des logements accessibles. Les plans d'urbanisme articulent communes et intercommunalités avec des règles nationales ; budgets et risques locaux limitent les possibilités."
+      ],
+      "exemple": { "titre": "Carte mentale : une friche à réaménager", "etapes": [
+        "Échelle du quartier : examiner pollution du sol, ombre et besoins de logements.",
+        "Échelle intercommunale : relier le projet au réseau de transports et aux écoles.",
+        "Échelle nationale : prendre en compte les objectifs de sobriété foncière ; comparer les coûts et les bénéfices."
+      ] },
+      "aRetenir": "Un projet urbain se juge par ses effets sociaux et environnementaux, pas uniquement par le nombre de bâtiments."
+    }
+  ],
+  "application": {
+    "intro": "Choisis l'indicateur ou le niveau d'action adapté.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Dans un pays fictif, la part urbaine passe de 50 % à 65 %. Que montre ce changement ?", "choix": ["Une baisse nécessaire des prix", "Une urbanisation accrue", "Une concentration certaine des sièges mondiaux"], "bonne": 1, "indice": "Il s'agit de la part d'habitants vivant en ville.", "explication": "La hausse de cette part indique l'urbanisation ; elle ne prouve ni une baisse des prix ni une métropolisation." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui élabore les règles locales d'usage des sols selon les compétences du territoire ?", "choix": ["Les seuls propriétaires sans règles publiques", "Les seuls promoteurs du projet immobilier", "La commune ou l'intercommunalité compétente"], "bonne": 2, "indice": "Pense au plan local d'urbanisme.", "explication": "Les collectivités compétentes élaborent le document d'urbanisme dans un cadre légal, avec consultation et participation du public." },
+      { "type": "qcm", "titre": "Échelles", "question": "Un logement est dans une commune et l'emploi dans une autre. Quelle échelle aide à organiser le trajet ?", "choix": ["L'ensemble des communes reliées", "Seulement la parcelle du logement", "Seulement le quartier de l'emploi"], "bonne": 0, "indice": "Le déplacement franchit une limite communale.", "explication": "La coordination intercommunale permet de penser les liens entre habitat, emploi et transports." }
+    ]
+  },
+  "situation": {
+    "titre": "Des logements pour Villepapier",
+    "histoire": ["Villepapier doit accueillir de nouveaux habitants. Une friche près d'un arrêt de bus et un champ éloigné sont proposés pour les logements.", "Tout se passe sur un plan inventé : compare aussi les contraintes, pas seulement la place disponible."],
+    "etapes": [
+      { "type": "qcm", "titre": "Habiter", "question": "Quel choix limite directement la consommation de nouvelles terres agricoles ?", "choix": ["Réutiliser la friche si elle peut être aménagée", "Construire uniquement sur le champ", "Éloigner encore le lotissement"], "bonne": 0, "indice": "Cherche un espace déjà transformé.", "explication": "Réutiliser une friche réduit le besoin de nouvelles terres, mais nécessite d'évaluer sa pollution et les coûts." },
+      { "type": "qcm", "titre": "Se déplacer", "question": "Pour les nouveaux logements près du bus, que faut-il vérifier ?", "choix": ["Seulement la couleur de l'arrêt", "Fréquence, tarif, accessibilité et destinations", "Seulement la distance à la frontière"], "bonne": 1, "indice": "La présence d'un arrêt ne garantit pas un service adapté.", "explication": "Un transport utile doit correspondre aux besoins et être accessible ; son fonctionnement demande un financement." },
+      { "type": "qcm", "titre": "Préserver", "question": "Comment densifier tout en tenant compte des habitants ?", "choix": ["Supprimer tous les espaces verts", "Construire sans consulter", "Associer logements, équipements, ombre et concertation"], "bonne": 2, "indice": "Habiter demande plus qu'un toit.", "explication": "La qualité de vie, les services et la participation font partie de l'aménagement ; la densité seule ne suffit pas." }
+    ],
+    "conclusion": "Mission accomplie ! Dessine deux versions de Villepapier et joue à observer les trajets de personnages fictifs. Compare terres préservées et accès aux services, sans adresse réelle ni sortie."
+  }
+}
