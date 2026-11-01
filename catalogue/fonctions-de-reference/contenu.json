@@ -118,6 +118,18 @@
           "(−2) × (−2) × (−2)."
         ],
         "solution": "(−2) × (−2) = 4, puis 4 × (−2) = −8."
+      },
+      {
+        "type": "qcm",
+        "titre": "Fonction carrée",
+        "question": "Quelle est l'image de −3 par la fonction carrée ?",
+        "choix": [
+          "−9",
+          "6",
+          "9"
+        ],
+        "bonne": 2,
+        "explication": "(−3)² = (−3) × (−3) = 9 : le carré d'un nombre négatif est positif."
       }
     ]
   },
