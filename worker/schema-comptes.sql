@@ -52,6 +52,6 @@ CREATE TABLE IF NOT EXISTS oauth_states (
   state           TEXT PRIMARY KEY,
   provider        TEXT NOT NULL,
   code_verifier   TEXT NOT NULL,
-  browser_binding TEXT,
+  browser_binding TEXT NOT NULL,
   expires_at      TEXT NOT NULL
 );
