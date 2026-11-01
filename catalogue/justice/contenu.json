@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Partages à examiner", "mise-en-situation": "Ordinateurs en commun" },
+  "intro": "Partager exactement pareil est-il toujours juste ? Cherche des critères de justice, pas seulement ton avantage.",
+  "niveaux": [
+    {
+      "titre": "Intuition : donner à chacun sa part",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "La **justice** désigne à la fois une exigence morale et politique, et l'institution qui applique le droit. Dire « ce partage est juste » demande des raisons ; dire « le tribunal juge » décrit une institution.",
+        "L'**égalité** peut porter sur les droits, les chances ou les parts reçues. L'**équité** tient compte de différences pertinentes pour appliquer une règle de manière juste. Elle n'autorise pas à favoriser arbitrairement ses amis."
+      ],
+      "exemple": {
+        "titre": "Le jeu du partage",
+        "etapes": [
+          "Deux élèves doivent lire le même document.",
+          "L'un a besoin d'une version agrandie pour y accéder.",
+          "Une aide différente peut permettre un accès plus égal, sans donner un privilège arbitraire."
+        ]
+      },
+      "aRetenir": "Avant de dire « égal », précise ce qui doit être égal. Avant de dire « équitable », justifie la différence de traitement."
+    },
+    {
+      "titre": "Distinguer : répartir, réparer, appliquer une règle",
+      "niveau": "lycée — avec Aristote",
+      "paragraphes": [
+        "Dans l'*Éthique à Nicomaque*, **Aristote** distingue la justice **distributive**, qui répartit selon une proportion et un critère, de la justice **corrective**, qui rectifie un tort dans une relation entre personnes. Le critère de répartition lui-même reste à discuter.",
+        "Chez Aristote, l'**équité** corrige aussi ce qu'une loi générale manque dans un cas particulier : une règle ne peut prévoir toutes les circonstances. Elle cherche l'esprit juste de la règle, pas une exception de complaisance.",
+        "Repère **légal/légitime** : une décision conforme au droit est légale ; savoir si elle est moralement justifiable est une autre question. Inversement, se croire juste ne dispense pas d'argumenter ni de considérer les droits d'autrui."
+      ],
+      "exemple": {
+        "titre": "Deux missions différentes",
+        "etapes": [
+          "Distribuer des créneaux d'accès à une salle pose un problème de répartition.",
+          "Réparer un équipement abîmé pose un problème de correction du tort.",
+          "On ne répond pas forcément aux deux problèmes avec la même règle."
+        ]
+      },
+      "aRetenir": "Répartir des biens et réparer un tort sont deux fonctions distinctes de la justice."
+    },
+    {
+      "titre": "Formaliser : choisir des principes impartiaux",
+      "niveau": "terminale — avec Rawls",
+      "paragraphes": [
+        "Dans *Théorie de la justice*, **John Rawls** propose une expérience de pensée : choisir des principes derrière un **voile d'ignorance**, sans connaître sa future place sociale, ses talents ou ses avantages. Il s'agit de limiter les biais liés à notre position, pas d'oublier toutes les connaissances sur la société.",
+        "Rawls donne priorité à un système égal de libertés fondamentales. Les inégalités sociales et économiques doivent ensuite être liées à des fonctions accessibles selon une juste égalité des chances et procurer le plus grand bénéfice aux moins avantagés. Cette dernière exigence constitue le **principe de différence**.",
+        "Ce principe n'autorise pas à sacrifier les libertés de certains pour enrichir les autres. La théorie ne prétend pas que toutes les parts doivent être identiques. Pour discuter une répartition, précise les droits garantis, le critère retenu et ce qu'il change pour les moins favorisés."
+      ],
+      "exemple": {
+        "titre": "Change de place",
+        "etapes": [
+          "Imagine fixer une règle d'accès avant de savoir si tu disposeras déjà d'un ordinateur chez toi.",
+          "Écarte les règles qui ne protègent que ta place actuelle.",
+          "Demande quelles garanties chacun pourrait raisonnablement accepter."
+        ]
+      },
+      "aRetenir": "L'impartialité demande de pouvoir justifier la règle à ceux qui n'occupent pas notre position."
+    }
+  ],
+  "application": {
+    "intro": "Les QCM vérifient les distinctions et les thèses. Un partage réel demande aussi des informations et une discussion.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Accorder une version agrandie à un élève qui en a besoin peut viser…",
+        "choix": ["un favoritisme nécessaire.", "un accès plus égal grâce à une adaptation pertinente.", "la suppression de tous les droits communs."],
+        "bonne": 1,
+        "indice": "Distingue une adaptation justifiée d'un privilège.",
+        "explication": "Des moyens différents peuvent favoriser un accès égal. Il faut pouvoir justifier l'adaptation par le besoin pertinent."
+      },
+      {
+        "type": "qcm",
+        "question": "Chez Aristote, réparer un tort relève principalement de la justice…",
+        "choix": ["distributive.", "réservée aux amis.", "corrective."],
+        "bonne": 2,
+        "indice": "Cherche la fonction qui rectifie une relation lésée.",
+        "explication": "La justice corrective rectifie le tort ; la distributive concerne la répartition selon un critère."
+      },
+      {
+        "type": "qcm",
+        "question": "Le voile d'ignorance de Rawls sert à…",
+        "choix": ["choisir sans connaître sa propre future position sociale.", "effacer toute connaissance de la société.", "garantir le maximum d'avantages aux plus riches."],
+        "bonne": 0,
+        "indice": "L'expérience de pensée limite les intérêts liés à notre place.",
+        "explication": "L'ignorance porte notamment sur notre position et nos avantages particuliers. Elle aide à choisir des principes impartiaux."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : quatre ordinateurs pour le groupe",
+    "histoire": [
+      "Une salle dispose de quatre ordinateurs. Chaque élève a un travail à terminer ; certains n'ont pas d'autre accès à un ordinateur.",
+      "Cherche une règle publique de réservation qui protège l'accès de chacun, plutôt que la règle qui t'arrange."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Quel problème faut-il d'abord identifier ?",
+        "choix": ["Une réparation de dommage déjà commis.", "Une répartition d'une ressource limitée.", "Un concours de popularité."],
+        "bonne": 1,
+        "indice": "Le groupe doit partager des créneaux.",
+        "explication": "C'est un problème de justice distributive : il faut préciser un critère de répartition."
+      },
+      {
+        "type": "qcm",
+        "question": "Quel critère peut justifier une priorité sans favoritisme ?",
+        "choix": ["Être l'ami de la personne qui réserve.", "Porter la même couleur de pull.", "Ne pas disposer d'un autre accès pour accomplir le travail demandé."],
+        "bonne": 2,
+        "indice": "Relie le critère au besoin d'accès.",
+        "explication": "L'absence d'autre accès est pertinente pour l'objectif. La priorité doit rester expliquée, proportionnée et compatible avec l'accès des autres."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle question s'inspire du voile d'ignorance ?",
+        "choix": ["Accepterais-je cette règle sans savoir si j'aurai un ordinateur chez moi ?", "Est-ce que j'obtiens personnellement tous les créneaux ?", "Puis-je cacher la règle aux autres ?"],
+        "bonne": 0,
+        "indice": "Imagine ne pas connaître ta future place.",
+        "explication": "Cette question aide à examiner l'impartialité de la règle. Ce petit cas illustre la démarche, sans remplacer toute la théorie de Rawls."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Propose une durée et un critère de priorité, puis teste ta règle en changeant de place. Une règle juste doit pouvoir être expliquée à tous."
+  }
+}

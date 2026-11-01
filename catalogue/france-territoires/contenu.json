@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue à relier des territoires : la France ne se limite pas à la métropole et aucun lieu ne résume tout le pays.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un pays, des territoires éloignés", "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **France métropolitaine** se situe en Europe et comprend la Corse. La France comprend aussi des **territoires ultramarins** dans plusieurs régions du monde, comme la Guadeloupe, la Guyane, La Réunion et la Polynésie française. Tous ne sont pas des îles : la Guyane se trouve sur le continent sud-américain.",
+        "Les paysages, les densités, les activités et les distances sont variés. Paris, une commune rurale, une vallée alpine et un littoral ultramarin ont des besoins différents. Un territoire est un espace habité, organisé et approprié par des acteurs ; il n'est pas seulement une forme sur une carte."
+      ],
+      "exemple": { "titre": "Carte mentale : une France à plusieurs horizons", "etapes": [
+        "Branche Europe : métropole et Corse.",
+        "Branche Amérique : Guadeloupe et Guyane ; distingue île et territoire continental.",
+        "Branches océan Indien et Pacifique : La Réunion et Polynésie française ; relie les distances aux besoins de transport."
+      ] },
+      "aRetenir": "La France associe métropole et outre-mer, avec une grande diversité géographique."
+    },
+    {
+      "titre": "Collège : des acteurs et des statuts variés", "niveau": "collège",
+      "paragraphes": [
+        "L'**aménagement du territoire** organise équipements, activités et services pour répondre à des besoins et réduire certains déséquilibres. Communes, intercommunalités, départements, régions, État et autres collectivités agissent selon leurs compétences, avec entreprises, associations et habitants.",
+        "Les statuts ultramarins ne sont pas tous identiques. La Guadeloupe et La Réunion sont des départements et régions d'outre-mer ; la Guyane et la Martinique ont une collectivité unique exerçant les compétences départementales et régionales. La Polynésie française est une collectivité d'outre-mer, et la Nouvelle-Calédonie dispose d'un statut particulier."
+      ],
+      "exemple": { "titre": "Carte mentale : organiser des services", "etapes": [
+        "Branche commune : besoins de proximité et équipements locaux.",
+        "Branche région ou collectivité compétente : transports et développement selon le statut.",
+        "Branche État : cadre national et services ; compare La Réunion et la Polynésie sans leur attribuer le même statut."
+      ] },
+      "aRetenir": "Les acteurs et leurs compétences varient ; l'outre-mer n'est pas un ensemble administrativement uniforme."
+    },
+    {
+      "titre": "Lycée : cohésion, réseaux et contraintes", "niveau": "lycée",
+      "paragraphes": [
+        "Le territoire français est relié par des réseaux de transport, d'énergie et de communication, mais l'accès aux services reste inégal. Éloignement, relief, insularité dans certains lieux, prix et densités influencent les possibilités. Les territoires ultramarins ont aussi des relations avec leurs régions voisines et ne se définissent pas seulement par leur distance à Paris.",
+        "Les projets d'aménagement cherchent à concilier cohésion territoriale, activités économiques et préservation des milieux. Les financements et règles combinent plusieurs échelles. Certaines parties de l'outre-mer sont des régions ultrapériphériques de l'Union européenne, tandis que d'autres sont des pays et territoires d'outre-mer associés : leur relation à l'Union n'est pas identique."
+      ],
+      "exemple": { "titre": "Carte mentale : un projet de liaison", "etapes": [
+        "Échelle locale : accès aux soins et besoins des usagers.",
+        "Échelle nationale : coopération, financement et continuité des services.",
+        "Échelle européenne et régionale : vérifier le statut du territoire et les liens voisins ; comparer coûts, environnement et bénéfices."
+      ] },
+      "aRetenir": "Aménager exige de changer d'échelle, de connaître les statuts et d'adapter les choix aux besoins locaux."
+    }
+  ],
+  "application": {
+    "intro": "Relie diversité géographique, compétences et échelles.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Quel énoncé décrit correctement les territoires français ?", "choix": ["La France se limite à l'Europe", "Tous les territoires ultramarins sont des îles", "La France comprend la métropole et des territoires ultramarins variés"], "bonne": 2, "indice": "Pense à la Guyane continentale et à La Réunion.", "explication": "La France comprend plusieurs territoires dans le monde ; la Guyane montre que l'outre-mer n'est pas uniquement insulaire." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Un projet d'accès aux services peut mobiliser…", "choix": ["Plusieurs collectivités et l'État selon leurs compétences, avec les usagers", "Seulement l'État, sans partenaire territorial", "Uniquement des entreprises, sans cadre public"], "bonne": 0, "indice": "Les compétences et les besoins se complètent.", "explication": "L'aménagement est multi-acteurs ; responsabilités et partenaires dépendent du projet et du statut du territoire." },
+      { "type": "qcm", "titre": "Échelles", "question": "Comment étudier une liaison entre un territoire ultramarin et ses voisins ?", "choix": ["Seulement en mesurant la distance à Paris", "En croisant échelles locale, régionale et nationale", "En supposant le même réseau partout"], "bonne": 1, "indice": "Les liens de voisinage comptent aussi.", "explication": "Les territoires s'inscrivent dans des réseaux régionaux et nationaux ; l'échelle parisienne seule ne suffit pas." }
+    ]
+  },
+  "situation": {
+    "titre": "Habiter et accéder aux services de Territoirepapier",
+    "histoire": ["Territoirepapier est un territoire français ultramarin fictif utilisé seulement pour ce jeu. Un centre de soins doit desservir plusieurs communes, avec un relief contraignant.", "Les acteurs doivent comparer les besoins, les coûts et les effets environnementaux ; aucun statut réel n'est attribué automatiquement à ce territoire inventé."],
+    "etapes": [
+      { "type": "qcm", "titre": "Connaître", "question": "Avant de répartir les responsabilités, que faut-il vérifier ?", "choix": ["La couleur du plan uniquement", "Le statut et les compétences des acteurs", "Supposer que tous les outre-mer ont le même statut"], "bonne": 1, "indice": "Les règles administratives varient selon les territoires.", "explication": "Connaître les compétences évite d'attribuer une décision au mauvais acteur ; la diversité des statuts compte." },
+      { "type": "qcm", "titre": "Se déplacer", "question": "Pour choisir le site du centre, quelle étude est utile ?", "choix": ["Seulement la beauté du nom", "Seulement la taille d'une affiche", "Temps d'accès, relief, réseaux et besoins des usagers"], "bonne": 2, "indice": "La distance en ligne droite ne suffit pas.", "explication": "L'accessibilité réelle dépend des transports, des contraintes du milieu et des situations des habitants." },
+      { "type": "qcm", "titre": "Arbitrer", "question": "Comment évaluer le projet avant financement ?", "choix": ["Croiser service rendu, budget, environnement et concertation", "Ignorer les coûts de fonctionnement", "Écarter tous les habitants de la discussion"], "bonne": 0, "indice": "Un service doit durer et répondre à des besoins.", "explication": "L'investissement et le fonctionnement, les effets sur les milieux et les besoins locaux doivent être examinés ensemble." }
+    ],
+    "conclusion": "Mission accomplie ! Dessine sur papier trois communes fictives et joue à observer l'accès à un service depuis chacune. Ajoute un relief et un budget imaginaire, sans adresse réelle, donnée personnelle ni sortie."
+  }
+}

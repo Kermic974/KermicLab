@@ -1,0 +1,119 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Explore une région diverse à travers un corridor de transport : suis les flux, puis demande à qui profitent les connexions.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une région n'est pas un pays",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'**Afrique australe** désigne une région du sud du continent africain. L'**Afrique du Sud** est un État : les deux expressions ne sont pas interchangeables.",
+        "Les limites de l'Afrique australe varient selon les définitions. Pour cette page, on étudie surtout des liens entre l'Afrique du Sud, le Mozambique et leurs voisins, sans prétendre donner une liste unique de pays."
+      ]
+    },
+    {
+      "titre": "Des espaces reliés aux échanges",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les métropoles, les ports, les mines, les espaces agricoles et les destinations de visite participent à des réseaux régionaux et mondiaux. Tous les territoires ne présentent pas les mêmes activités ni le même degré de connexion.",
+        "Le **corridor de Maputo** relie notamment des espaces de l'Afrique du Sud au port de Maputo, au Mozambique, par des réseaux de transport. Maputo n'est pas une ville sud-africaine.",
+        "Un **corridor** organise des circulations le long d'un axe équipé. Un port peut offrir un débouché maritime à des marchandises venues de l'intérieur, mais l'axe ne dessert pas forcément chaque village voisin."
+      ],
+      "aRetenir": "Jeu de carte : nomme les deux États, le port, les réseaux et la direction des flux avant de conclure."
+    },
+    {
+      "titre": "Acteurs et intégration régionale",
+      "niveau": "seconde",
+      "paragraphes": [
+        "États, collectivités, entreprises de transport, producteurs, salariés et habitants participent aux réseaux. Ils n'ont pas tous les mêmes moyens ni les mêmes intérêts.",
+        "La **SADC**, Communauté de développement de l'Afrique australe, est une organisation de coopération régionale. Son périmètre ne doit pas être pris pour une définition géographique unique de l'Afrique australe.",
+        "Les ressources naturelles ne garantissent pas automatiquement le développement : revenus, transformation locale, emplois, infrastructures et répartition des bénéfices doivent être étudiés."
+      ]
+    },
+    {
+      "titre": "Contrastes, héritages et défis",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "L'Afrique du Sud joue un rôle économique majeur dans la région, mais présente de fortes inégalités sociales et spatiales. L'apartheid, système de ségrégation institutionnalisée auquel la transition démocratique de 1994 a mis fin, a laissé des héritages dans l'organisation des espaces et l'accès aux ressources.",
+        "Ces héritages ne suffisent pas à expliquer tous les contrastes actuels. Les politiques publiques, les marchés de l'emploi et les choix d'aménagement interviennent aussi. Les situations des différents pays de la région ne sont pas identiques.",
+        "Accès à l'eau, emploi, logement, protection des milieux et adaptation aux risques climatiques sont des défis à analyser localement. Une activité exportatrice peut créer des revenus tout en produisant des nuisances ou des bénéfices inégalement répartis.",
+        "Une étude de cas éclaire des mécanismes ; elle ne permet pas de décrire toute l'Afrique comme un espace homogène."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Distingue les lieux et les échelles. Les volumes et budgets de ces exercices sont fictifs.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Région ou État ?",
+        "question": "Quelle affirmation est correcte ?",
+        "choix": ["L'Afrique australe est une région et l'Afrique du Sud est un État", "L'Afrique australe est le nom officiel d'un seul pays", "Tous les pays africains ont la même situation"],
+        "bonne": 0, "indice": "Compare l'échelle des deux noms.",
+        "explication": "L'Afrique du Sud est un État de la région. Les limites de l'Afrique australe dépendent de la définition retenue."
+      },
+      {
+        "type": "qcm", "titre": "Localiser Maputo",
+        "question": "Dans quel pays se trouve le port de Maputo ?",
+        "choix": ["La France", "Le Mozambique", "L'Afrique du Sud"],
+        "bonne": 1, "indice": "Le corridor franchit une frontière pour atteindre ce port.",
+        "explication": "Maputo se trouve au Mozambique. Le corridor relie notamment des espaces sud-africains à ce débouché maritime."
+      },
+      {
+        "type": "nombre", "titre": "Lire un flux",
+        "question": "Dans un dossier fictif, 90 lots sur 120 empruntent un corridor. Quelle part cela représente-t-il, en pourcentage ?",
+        "reponse": 75, "unite": "%", "indices": ["Calcule 90 ÷ 120 × 100."],
+        "solution": "90 ÷ 120 × 100 = 75 %. Cette donnée ne décrit pas le trafic réel du corridor de Maputo."
+      },
+      {
+        "type": "qcm", "titre": "Réseau et accès local",
+        "question": "Un axe transporte davantage de marchandises mais un village voisin n'a pas d'accès adapté. Que montre cette situation ?",
+        "choix": ["Tous les habitants bénéficient automatiquement autant de l'axe", "Aucun flux ne circule sur l'axe", "Une connexion régionale peut coexister avec des difficultés d'accès locales"],
+        "bonne": 2, "indice": "Compare l'échelle du corridor et celle du village.",
+        "explication": "Le trafic d'un grand axe ne prouve pas que tous les lieux voisins sont bien desservis. Les accès locaux doivent être étudiés."
+      },
+      {
+        "type": "qcm", "titre": "Ressources et développement",
+        "question": "Pour évaluer les effets d'une activité minière, quelle enquête est la plus pertinente ?",
+        "choix": ["Examiner emplois, revenus, usages de l'eau, impacts et répartition des bénéfices", "Compter seulement les tonnes extraites", "Supposer que toutes les populations ont le même revenu"],
+        "bonne": 0, "indice": "La production ne décrit pas à elle seule les conditions de vie.",
+        "explication": "Il faut croiser dimensions économiques, sociales et environnementales pour comprendre les retombées et leurs inégalités."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Étude de cas : le corridor de Maputo",
+    "histoire": [
+      "Ta classe réalise une étude simplifiée du corridor reliant notamment l'Afrique du Sud au port de Maputo au Mozambique. Le corridor est réel, mais toutes les données suivantes sont fictives.",
+      "Une livraison de l'exercice passe de 8 à 6 heures grâce à une amélioration. Des habitants demandent aussi des accès locaux plus sûrs et la protection d'un cours d'eau."
+    ],
+    "etapes": [
+      {
+        "type": "qcm", "titre": "Dessiner le lien",
+        "question": "Quel lien représente correctement cette étude ?",
+        "choix": ["Un trajet sans aucun changement de pays entre Paris et Lyon", "Un réseau reliant notamment l'Afrique du Sud au port de Maputo au Mozambique", "La preuve que Maputo se trouve en Afrique du Sud"],
+        "bonne": 1, "indice": "Relis la localisation du port.",
+        "explication": "Le corridor étudié relie des territoires de deux États, et donne accès à un port du Mozambique."
+      },
+      {
+        "type": "nombre", "titre": "Le gain de temps fictif",
+        "question": "La livraison passe de 8 à 6 heures. Combien d'heures gagne-t-on ?",
+        "reponse": 2, "unite": "heures", "indices": ["Soustrais le nouveau temps de l'ancien."],
+        "solution": "8 − 6 = 2 heures gagnées dans l'exercice. On ne peut pas en déduire les délais réels du corridor."
+      },
+      {
+        "type": "qcm", "titre": "Élargir la concertation",
+        "question": "Qui associer pour étudier les accès locaux et les impacts sur le cours d'eau ?",
+        "choix": ["Seulement le transporteur", "Aucun habitant", "Habitants, autorités, transporteurs et spécialistes des milieux"],
+        "bonne": 2, "indice": "Croise les besoins des usagers et l'étude des impacts.",
+        "explication": "Le corridor concerne plusieurs acteurs. La concertation et l'étude environnementale éclairent des effets qui ne se voient pas dans le seul temps de livraison."
+      },
+      {
+        "type": "qcm", "titre": "Conclure à la bonne échelle",
+        "question": "Quelle conclusion respecte les limites de l'étude ?",
+        "choix": ["Ce cas montre des connexions et des défis à vérifier, sans décrire toute l'Afrique australe", "Tous les territoires africains sont identiques", "Un gain de temps supprime forcément toutes les inégalités"],
+        "bonne": 0, "indice": "Une étude de cas n'est pas une règle universelle.",
+        "explication": "Il faut préciser l'échelle, les données et les acteurs étudiés. Les contrastes de la région demandent d'autres observations."
+      }
+    ],
+    "conclusion": "Étude terminée ! Tu as distingué région et pays, relié flux et acteurs, puis discuté les bénéfices et les défis sans généraliser."
+  }
+}

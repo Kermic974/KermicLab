@@ -2,7 +2,7 @@
 id: nombres-decimaux
 titre: Les nombres décimaux
 sujet: mathematiques/nombres-decimaux
-version: 1.0.0
+version: 1.1.0
 date: 2026-11-01
 niveau: college
 langues: fr
@@ -36,5 +36,5 @@ questions:
 Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
 
 - **Explication** : de la monnaie aux calculs, en passant par la valeur des chiffres, la comparaison et l'arrondi.
-- **S'entraîner** : 6 exercices corrigés.
-- **Défi** : les courses, en 4 étapes.
+- **S'entraîner** : 10 exercices corrigés.
+- **Défi** : les courses, en 5 étapes.

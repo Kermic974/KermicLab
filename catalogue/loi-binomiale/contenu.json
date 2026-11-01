@@ -108,6 +108,18 @@
           "P(X ≥ 1) = 1 − P(X = 0)."
         ],
         "solution": "1 − 0,0625 = 0,9375."
+      },
+      {
+        "type": "qcm",
+        "titre": "Reconnaître un schéma binomial",
+        "question": "Quelle situation peut être modélisée par une loi binomiale ?",
+        "choix": [
+          "On lance 8 fois une pièce équilibrée et on compte les « pile ».",
+          "On tire 8 cartes d'un jeu sans les remettre et on compte les as.",
+          "On lance une pièce jusqu'à obtenir le premier « pile »."
+        ],
+        "bonne": 0,
+        "explication": "Les 8 lancers sont identiques et indépendants, avec la même probabilité de succès ; le nombre de « pile » suit donc une loi binomiale."
       }
     ]
   },

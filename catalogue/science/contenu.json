@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Hypothèses en jeu", "mise-en-situation": "Graines et lumière" },
+  "intro": "Une affirmation devient-elle scientifique parce qu'elle paraît savante ? Découvre comment une enquête rend ses raisons vérifiables et ses résultats discutables.",
+  "niveaux": [
+    {
+      "titre": "Intuition : enquêter plutôt que deviner",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "La **science** cherche des connaissances organisées et justifiées. Dans les sciences empiriques, on confronte des hypothèses à des observations et à des expériences. Un témoignage isolé ne suffit pas toujours à établir une explication.",
+        "Une **hypothèse** propose une explication à examiner ; un **protocole** précise comment on la teste. On rend les méthodes et les résultats accessibles à la critique. Les mathématiques, elles, établissent leurs résultats par démonstration : toutes les sciences n'utilisent pas la même méthode."
+      ],
+      "exemple": {
+        "titre": "Le jeu du test juste",
+        "etapes": [
+          "Deux plantes poussent différemment.",
+          "Si l'eau, la lumière et le sol changent ensemble, on ne sait pas quel facteur explique l'écart.",
+          "Une comparaison contrôlée cherche à isoler le facteur étudié."
+        ]
+      },
+      "aRetenir": "Une enquête explicite ce qu'elle teste, comment elle le teste et ce que ses résultats permettent de conclure."
+    },
+    {
+      "titre": "Distinguer : confirmation et réfutation",
+      "niveau": "lycée — avec Popper",
+      "paragraphes": [
+        "Pour **Karl Popper**, dans *La Logique de la découverte scientifique*, une théorie empirique doit être **falsifiable** : elle doit pouvoir entrer en conflit avec des observations possibles. Falsifiable ne veut pas dire fausse ni falsifiée.",
+        "Observer de nombreux cygnes blancs ne démontre pas que tous les cygnes sont blancs. Un cygne non blanc, correctement identifié, constitue un contre-exemple à cette proposition universelle. Des tests réussis peuvent corroborer une théorie sans la rendre définitivement certaine.",
+        "Dans la pratique, un résultat inattendu demande aussi de vérifier mesures, protocole et hypothèses auxiliaires. On ne rejette pas mécaniquement une théorie sur une erreur de mesure. Le critère de Popper est une proposition philosophique importante, pas une description exhaustive de toute recherche."
+      ],
+      "exemple": {
+        "titre": "Trouve le test possible",
+        "etapes": [
+          "« Tous les objets de cette boîte sont rouges » peut être mis à l'épreuve en examinant la boîte.",
+          "« Une force invisible explique tout, mais aucune observation ne peut la contredire » ne propose aucun test contraire.",
+          "Demande quelle observation ferait revoir l'hypothèse."
+        ]
+      },
+      "aRetenir": "Une théorie falsifiable prend le risque d'être mise en défaut ; cela ne signifie pas qu'elle est déjà fausse."
+    },
+    {
+      "titre": "Formaliser : construire et réviser les connaissances",
+      "niveau": "terminale — avec Bachelard et Kuhn",
+      "paragraphes": [
+        "Dans *La Formation de l'esprit scientifique*, **Gaston Bachelard** étudie les **obstacles épistémologiques** : des habitudes de pensée peuvent empêcher de poser les bonnes questions. Construire un savoir demande parfois de rompre avec une évidence première.",
+        "Dans *La Structure des révolutions scientifiques*, **Thomas Kuhn** décrit les **paradigmes** : des cadres partagés de problèmes, de méthodes et d'exemples. La science normale travaille dans un cadre ; des crises peuvent conduire à des transformations profondes de ce cadre.",
+        "Repères **croire/savoir** et **objectif/subjectif** : une conviction individuelle ne suffit pas à établir un savoir. L'objectivité se construit par des contrôles, des justifications et une critique partagée. La révision des théories ne signifie pas que toutes les opinions se valent ni que la science serait sans résultats fiables."
+      ],
+      "exemple": {
+        "titre": "La force d'une correction",
+        "etapes": [
+          "Une équipe publie son protocole et ses incertitudes.",
+          "D'autres chercheurs examinent les résultats et signalent une limite.",
+          "Corriger la conclusion peut renforcer la fiabilité de l'enquête plutôt que la disqualifier."
+        ]
+      },
+      "aRetenir": "La science vise des connaissances justifiées et révisables. Sa fiabilité ne repose pas sur l'infaillibilité de chaque chercheur."
+    }
+  ],
+  "application": {
+    "intro": "Teste les repères de méthode. Les questions portent sur la justification, pas sur le prestige d'un discours.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Une hypothèse falsifiable est une hypothèse…",
+        "choix": ["nécessairement mensongère.", "qu'une observation possible pourrait contredire.", "qui interdit toute vérification."],
+        "bonne": 1,
+        "indice": "Distingue possibilité d'un test contraire et fausseté actuelle.",
+        "explication": "La falsifiabilité est la possibilité de mise à l'épreuve par des observations contraires, non un jugement disant que l'hypothèse est fausse."
+      },
+      {
+        "type": "qcm",
+        "question": "Que fait un cygne non blanc correctement identifié à l'affirmation « tous les cygnes sont blancs » ?",
+        "choix": ["Il la confirme.", "Il prouve qu'aucune science n'est possible.", "Il constitue un contre-exemple."],
+        "bonne": 2,
+        "indice": "Un seul cas contraire suffit à contredire cette proposition universelle.",
+        "explication": "Ce cas réfute la proposition formulée. Dans une enquête réelle, on vérifie aussi l'identification et les conditions d'observation."
+      },
+      {
+        "type": "qcm",
+        "question": "Chez Kuhn, un paradigme désigne principalement…",
+        "choix": ["un cadre partagé de problèmes, méthodes et exemples.", "une simple préférence individuelle sans rapport avec la recherche.", "une preuve que toutes les opinions se valent."],
+        "bonne": 0,
+        "indice": "Pense à ce qui organise une communauté de recherche.",
+        "explication": "Un paradigme oriente la science normale. Étudier ses transformations ne revient pas à supprimer les exigences de justification."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : la lumière fait-elle germer plus vite ?",
+    "histoire": [
+      "Dans une enquête fictive, un groupe affirme que la lumière accélère la germination d'une espèce de graines. Il veut comparer des lots sans utiliser de produit dangereux.",
+      "Ta mission : construire un test et limiter la conclusion à ce que le protocole permet d'établir."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Quelle comparaison isole mieux le rôle de la lumière ?",
+        "choix": ["Changer simultanément espèce, eau, température et lumière.", "Garder espèce, eau et température comparables et faire varier la lumière.", "Comparer une graine avec un caillou."],
+        "bonne": 1,
+        "indice": "Ne change que le facteur étudié autant que possible.",
+        "explication": "Contrôler les autres conditions aide à attribuer un écart à la lumière. Plusieurs graines par lot limitent l'effet d'un cas isolé."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle mesure rend « plus vite » examinable ?",
+        "choix": ["Définir la germination et relever le délai selon le même protocole.", "Dire seulement que le résultat paraît joli.", "Noter uniquement le lot qui nous plaît."],
+        "bonne": 0,
+        "indice": "Il faut un critère commun et annoncé à l'avance.",
+        "explication": "Une définition et des mesures comparables permettent de discuter le résultat. Il faut conserver aussi les observations défavorables."
+      },
+      {
+        "type": "qcm",
+        "question": "Si le lot éclairé germe plus vite dans cet essai, que peut-on dire ?",
+        "choix": ["Toutes les graines de toutes les espèces ont toujours besoin de lumière.", "Aucun nouveau test n'est utile.", "Le résultat soutient l'hypothèse dans ces conditions, à contrôler et à répéter."],
+        "bonne": 2,
+        "indice": "Une expérience limitée ne démontre pas une loi sans limites.",
+        "explication": "Le résultat apporte un soutien contextualisé. Répétitions, incertitudes et autres conditions doivent être examinées."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Explique à l'oral ce qui pourrait te faire revoir l'hypothèse. Un savoir scientifique rend visibles ses tests et ses limites."
+  }
+}

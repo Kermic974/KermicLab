@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Comprendre le bonheur", "application": "Démêler les désirs", "mise-en-situation": "Une belle journée" },
+  "intro": "Le bonheur, est-ce un bon moment ou une manière de vivre ? Explore la perspective « existence humaine et culture ». Les exercices portent sur des idées, pas sur ta vie personnelle.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un plaisir ne fait pas toute une vie",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **plaisir** est une satisfaction que l'on éprouve : savourer un fruit, jouer, retrouver quelqu'un. Le **bonheur** désigne plutôt une satisfaction globale et relativement durable à l'égard de sa vie.",
+        "Jeu : imagine une journée remplie de bonbons, mais sans repos ni compagnie. Accumuler des plaisirs garantit-il une bonne journée ? Il n'existe pas de recette qui convienne à tout le monde."
+      ],
+      "exemple": { "titre": "La victoire et l'amitié", "etapes": ["Gagner une partie donne un plaisir immédiat.", "Apprendre à jouer ensemble peut nourrir une relation durable.", "Le moment agréable et la qualité d'une vie ne se confondent pas."] },
+      "aRetenir": "Le bonheur ne se mesure pas au nombre de plaisirs."
+    },
+    {
+      "titre": "Collège : faut-il satisfaire tous les désirs ?",
+      "niveau": "college",
+      "paragraphes": [
+        "Un **désir** vise quelque chose que l'on imagine bon. Mais certains désirs reviennent sans fin ou entraînent des difficultés. **Épicure** distingue les désirs naturels et nécessaires, naturels mais non nécessaires, et vains.",
+        "Pour Épicure, le plaisir est un bien, mais il faut comparer les conséquences de nos choix. Une vie agréable recherche notamment l'absence de douleur du corps et de trouble de l'âme, avec des plaisirs simples et l'amitié.",
+        "Petit tri : boire quand on a soif, vouloir un repas luxueux, vouloir une célébrité sans limite. Quels désirs répondent à un besoin ? Lesquels peuvent devenir insatiables ?"
+      ],
+      "exemple": { "titre": "Le nouvel objet", "etapes": ["Un objet très à la mode promet une joie immédiate.", "On examine son utilité et ce qu'il coûte.", "Le refuser peut être raisonnable, sans condamner tout plaisir."] },
+      "aRetenir": "Chez Épicure, rechercher le plaisir ne signifie pas céder à tous les désirs."
+    },
+    {
+      "titre": "Lycée : plaisir, vertu et liberté",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour **Aristote**, le bonheur (*eudaimonia*) est une activité de l'âme conforme à la vertu, sur une vie accomplie : exercer ses capacités et bien agir. Il reconnaît aussi l'importance de certains biens extérieurs et de l'amitié.",
+        "Le stoïcien **Épictète** invite à distinguer ce qui dépend de nous, comme nos jugements et nos choix, de ce qui n'en dépend pas entièrement. Cela n'oblige pas à rester passif face aux difficultés.",
+        "**Kant** distingue la recherche du bonheur et le devoir moral : ce qui me rend satisfait n'est pas, à lui seul, un critère de ce qui est juste.",
+        "Problème : le bonheur dépend-il de nous ? Compare nos choix avec les conditions sociales, la santé et les événements. Les difficultés ne sont pas la preuve d'un manque de volonté."
+      ],
+      "exemple": { "titre": "Le match sous la pluie", "etapes": ["La pluie ne dépend pas de l'équipe.", "L'équipe peut choisir de s'entraider et d'adapter son projet.", "Ce pouvoir d'agir ne supprime pas toutes les contraintes."] },
+      "aRetenir": "Les philosophes proposent des conceptions discutables du bonheur, pas une injonction à être heureux."
+    }
+  ],
+  "application": {
+    "intro": "Retrouve les distinctions et compare les thèses. Les réponses ne sont pas un test de bien-être.",
+    "exercices": [
+      { "type": "qcm", "titre": "Deux notions", "question": "Quelle distinction est la plus précise ?", "choix": ["Un plaisir est ponctuel ; le bonheur concerne davantage l'ensemble de la vie", "Le bonheur est toujours un achat", "Tout plaisir garantit le bonheur"], "bonne": 0, "explication": "Une satisfaction immédiate ne suffit pas à définir une vie heureuse." },
+      { "type": "qcm", "titre": "Épicure", "question": "Pour Épicure, comment choisir entre des plaisirs ?", "choix": ["Toujours prendre le plus intense", "Ne jamais éprouver de plaisir", "Comparer leurs conséquences"], "bonne": 2, "explication": "Un plaisir peut entraîner une peine plus grande ; un choix se réfléchit." },
+      { "type": "qcm", "titre": "Les désirs", "question": "Quel désir est naturel et nécessaire dans l'exemple ?", "choix": ["Être célèbre sans limite", "Boire de l'eau quand on a soif", "Posséder toutes les nouveautés"], "bonne": 1, "explication": "Boire répond à un besoin naturel ; les désirs de gloire ou d'accumulation ne sont pas nécessaires." },
+      { "type": "qcm", "titre": "Aristote", "question": "À quoi Aristote relie-t-il le bonheur ?", "choix": ["Au hasard seul", "Au sommeil permanent", "À une activité conforme à la vertu sur une vie accomplie"], "bonne": 2, "explication": "L'eudaimonia implique de vivre et d'agir bien, pas seulement de ressentir du plaisir." },
+      { "type": "qcm", "titre": "Kant", "question": "Une action me rend satisfait. Cela prouve-t-il qu'elle est juste ?", "choix": ["Non, satisfaction et devoir moral sont distincts", "Oui, automatiquement", "Oui, si personne ne la voit"], "bonne": 0, "explication": "Chez Kant, la moralité ne se déduit pas du bonheur personnel obtenu." }
+    ]
+  },
+  "situation": {
+    "titre": "Organiser une journée avec des amis",
+    "histoire": ["Un groupe prépare une journée : promenade, jeux et goûter, avec un petit budget.", "Une personne propose de tout dépenser pour un seul jeu coûteux. Puis la météo annonce de la pluie."],
+    "etapes": [
+      { "type": "qcm", "titre": "Choisir", "question": "Quelle démarche ressemble à celle d'Épicure ?", "choix": ["Dépenser sans réfléchir", "Comparer le plaisir attendu, le coût et les conséquences", "Supprimer toutes les activités agréables"], "bonne": 1, "explication": "Le plaisir se choisit avec prudence, en tenant compte de ce qui suit." },
+      { "type": "qcm", "titre": "La pluie", "question": "Que peut décider le groupe malgré la météo ?", "choix": ["Garantir que la pluie cesse", "Contrôler toutes les émotions", "Adapter le programme à l'intérieur"], "bonne": 2, "explication": "À la manière d'Épictète, on distingue l'événement subi de la réponse que l'on peut choisir." },
+      { "type": "qcm", "titre": "Partager", "question": "Une activité exclut une personne mais plaît aux autres. Quelle question morale ajouter ?", "choix": ["Le choix est-il juste envers chacun ?", "Est-ce forcément juste si la majorité s'amuse ?", "Le plus cher est-il toujours le meilleur ?"], "bonne": 0, "explication": "Le plaisir du groupe ne dispense pas de réfléchir à la justice du choix." }
+    ],
+    "conclusion": "Mission accomplie ! Propose mentalement deux activités simples et une raison de les choisir. Le bonheur reste une question à discuter, non une performance."
+  }
+}

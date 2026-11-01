@@ -1,0 +1,118 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Un quartier change, une usine se transforme, un trajet s'allonge : cherche ce qui évolue, pour qui et à quelle échelle.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le jeu des deux dates",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Imagine deux plans d'un même bourg, à dix ans d'écart : des logements ont été construits et une ligne de bus a ouvert. Ces changements sont des **dynamiques territoriales**.",
+        "Un territoire est un espace habité, organisé et approprié par des acteurs. Pour jouer au géographe, compare les dates : qu'est-ce qui augmente, diminue ou se déplace ?"
+      ]
+    },
+    {
+      "titre": "Population, villes et mobilités",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **métropolisation** concentre des populations, des activités et surtout des fonctions de commandement dans les grandes villes. Elle ne désigne pas simplement toute construction de logements.",
+        "La **périurbanisation** correspond à l'extension de l'habitat et des modes de vie urbains autour des villes, dans des espaces encore en partie ruraux. Elle peut s'accompagner de déplacements réguliers vers les pôles d'emploi.",
+        "Les **mobilités quotidiennes** relient domicile, école, travail et services. Une flèche sur un croquis peut représenter ces trajets : vérifie son sens et sa légende."
+      ]
+    },
+    {
+      "titre": "Des territoires différents, des acteurs multiples",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les campagnes ne connaissent pas toutes la même évolution : certaines gagnent des habitants ou des activités, d'autres rencontrent des difficultés d'accès aux services. Les métropoles présentent elles aussi des inégalités internes.",
+        "État, collectivités, entreprises, associations et habitants participent aux transformations. L'**aménagement du territoire** cherche à organiser les espaces et les équipements en fonction d'objectifs collectifs.",
+        "Une moyenne de population ou de revenu masque parfois des écarts entre quartiers. Il faut comparer des cartes, des dates et des indicateurs à la même échelle."
+      ],
+      "aRetenir": "Ne transforme pas un exemple local en règle valable pour toutes les villes ou toutes les campagnes."
+    },
+    {
+      "titre": "Recompositions et arbitrages",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Les réseaux mondiaux influencent des choix locaux : implantation d'activités, logistique ou reconversion d'un site. Un territoire peut changer de fonction sans que tous ses habitants en tirent le même bénéfice.",
+        "Construire loin des services peut augmenter les trajets et la consommation d'espace. Réutiliser un terrain déjà aménagé peut limiter cette consommation, mais exige parfois une dépollution ou des travaux.",
+        "Pour comparer deux projets, examine emplois, logement, accessibilité, sols, milieux et budget. Les contraintes et les besoins des habitants doivent être discutés, pas réduits à un seul indicateur."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Détecte les transformations sans généraliser. Les nombres de population sont fictifs.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Reconnaître la métropolisation",
+        "question": "Quel changement illustre le mieux la métropolisation ?",
+        "choix": ["Une grande ville concentre davantage de sièges d'entreprises et de centres de décision", "Toutes les campagnes disparaissent", "Chaque commune devient indépendante"],
+        "bonne": 0, "indice": "Cherche la concentration des fonctions de commandement.",
+        "explication": "La métropolisation renforce le rôle des grandes villes, notamment pour les décisions économiques et les activités spécialisées."
+      },
+      {
+        "type": "qcm", "titre": "Repérer la périurbanisation",
+        "question": "Des ménages s'installent dans de nouveaux logements autour d'une ville tout en y travaillant. Quel processus est illustré ?",
+        "choix": ["La fermeture de tout réseau", "La périurbanisation", "La disparition de la mobilité"],
+        "bonne": 1, "indice": "Observe l'habitat autour du pôle urbain.",
+        "explication": "L'habitat s'étend autour de la ville et reste lié à son emploi : c'est un exemple de périurbanisation."
+      },
+      {
+        "type": "nombre", "titre": "Comparer deux dates",
+        "question": "Un bourg fictif passe de 2 000 à 2 200 habitants. Quel est son taux d'augmentation, en pourcentage ?",
+        "reponse": 10, "unite": "%", "indices": ["Le gain est de 200 habitants.", "Divise ce gain par les 2 000 habitants du départ, puis multiplie par 100."],
+        "solution": "(2 200 − 2 000) ÷ 2 000 × 100 = 10 %. Le nombre initial sert de référence."
+      },
+      {
+        "type": "qcm", "titre": "Lire les inégalités d'accès",
+        "question": "Deux quartiers ont le même nombre d'habitants, mais un seul dispose d'un bus fréquent vers le centre de santé. Que faut-il étudier ?",
+        "choix": ["Seulement le nombre total d'habitants", "La couleur des cartes", "Les écarts d'accès aux services et les besoins des habitants"],
+        "bonne": 2, "indice": "La population seule ne décrit pas le trajet.",
+        "explication": "Horaires, temps de trajet, coût et accessibilité permettent de comprendre une inégalité territoriale d'accès."
+      },
+      {
+        "type": "qcm", "titre": "Un choix d'aménagement",
+        "question": "Quel projet peut limiter la consommation de nouveaux sols, sous réserve de faisabilité ?",
+        "choix": ["Réutiliser une friche déjà aménagée", "Construire systématiquement sur des terres agricoles", "Éloigner tous les services des logements"],
+        "bonne": 0, "indice": "Cherche un espace déjà utilisé auparavant.",
+        "explication": "La réutilisation d'une friche peut éviter d'occuper de nouveaux sols. Il faut vérifier notamment son état et les besoins de dépollution."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le bourg des deux projets",
+    "histoire": [
+      "Dans un bourg fictif, un centre de formation ouvre sur une ancienne friche. Des habitants d'un hameau voisin veulent y accéder sans voiture.",
+      "Deux trajets sont étudiés : 45 minutes aujourd'hui, 30 minutes avec une liaison proposée. Les durées sont des données d'exercice."
+    ],
+    "etapes": [
+      {
+        "type": "qcm", "titre": "Nommer le changement",
+        "question": "Une ancienne friche devient un centre de formation. Quelle transformation observe-t-on ?",
+        "choix": ["Aucun changement d'usage", "Une reconversion du site", "La création d'un océan"],
+        "bonne": 1, "indice": "Compare l'ancienne fonction et la nouvelle.",
+        "explication": "Le site change d'usage : il est reconverti. La réussite dépend aussi de son accessibilité et de l'adéquation aux besoins."
+      },
+      {
+        "type": "nombre", "titre": "Le temps gagné",
+        "question": "Le trajet passe de 45 à 30 minutes. Combien de minutes gagne-t-on sur un aller ?",
+        "reponse": 15, "unite": "minutes", "indices": ["Calcule la différence entre les deux durées."],
+        "solution": "45 − 30 = 15 minutes sur un aller. Ce gain ne décrit pas à lui seul la fréquence ou le prix du service."
+      },
+      {
+        "type": "qcm", "titre": "Consulter les acteurs",
+        "question": "Qui associer à l'étude de la liaison ?",
+        "choix": ["Seulement les personnes qui possèdent une voiture", "Uniquement le fabricant de l'affiche", "Les habitants, la collectivité, l'organisateur du transport et le centre de formation"],
+        "bonne": 2, "indice": "Croise usagers, décideurs et responsables du service.",
+        "explication": "Ces acteurs ont des besoins et des responsabilités complémentaires ; les personnes sans voiture doivent aussi être entendues."
+      },
+      {
+        "type": "qcm", "titre": "Vérifier un effet réel",
+        "question": "Quelle conclusion est la plus prudente après l'ouverture de la liaison ?",
+        "choix": ["Il faut vérifier si les habitants concernés peuvent réellement accéder au centre", "Toutes les inégalités ont forcément disparu", "Le nombre d'arrêts suffit à prouver que chacun utilise le bus"],
+        "bonne": 0, "indice": "Un équipement ne suffit pas à garantir un usage.",
+        "explication": "L'évaluation doit comparer accès réel, horaires, tarif et besoins. Une amélioration n'efface pas automatiquement toutes les inégalités."
+      }
+    ],
+    "conclusion": "Diagnostic terminé ! Tu as comparé les dates, identifié les acteurs et évalué un projet à partir de la vie quotidienne."
+  }
+}

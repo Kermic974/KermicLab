@@ -1,0 +1,121 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "S'entraîner", "mise-en-situation": "Défi mémoire" },
+  "intro": "Repère les étapes d'un conflit mondial, les choix de ses acteurs et ses conséquences. Les violences sont expliquées sans images ni détails choquants.",
+  "niveaux": [
+    {
+      "titre": "Découverte : une guerre sur plusieurs continents",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "En Europe, la **Seconde Guerre mondiale** commence avec l'invasion de la Pologne par l'Allemagne le **1er septembre 1939**. En Asie, la guerre entre le Japon et la Chine s'est déjà étendue à partir de 1937. Les conflits se rejoignent et touchent les soldats comme les civils.",
+        "Mini-jeu : 1939, 1941, 1945. Associe-les à invasion de la Pologne, extension du conflit avec l'entrée des États-Unis, fin de la guerre. Réponse : dans cet ordre. En Europe, la capitulation allemande est commémorée le **8 mai 1945** ; le Japon signe sa capitulation le **2 septembre 1945**."
+      ],
+      "aRetenir": "La fin de la guerre en Europe n'est pas encore la fin de la guerre dans le Pacifique."
+    },
+    {
+      "titre": "Comprendre : expansion, acteurs et violences",
+      "niveau": "3e",
+      "paragraphes": [
+        "Les politiques d'expansion de l'Allemagne nazie, de l'Italie fasciste et du Japon impérial, les crises des années 1930 et les échecs de la sécurité collective contribuent au conflit. Le pacte germano-soviétique d'août 1939 comporte un partage de zones d'influence ; l'URSS envahit l'est de la Pologne en septembre. Rien ne rendait la guerre inévitable : les choix des États comptent.",
+        "L'**Axe** réunit notamment l'Allemagne, l'Italie et le Japon. Les **Alliés** comprennent le Royaume-Uni, la Chine, puis l'URSS après l'invasion allemande de juin 1941 et les États-Unis après l'attaque japonaise de Pearl Harbor en décembre 1941. Les populations des empires coloniaux participent aussi au conflit.",
+        "Après la défaite française de 1940, le régime de **Vichy**, dirigé par Pétain, collabore avec l'Allemagne nazie et participe aux persécutions et déportations des Juifs. La France libre, lancée par de Gaulle, et la Résistance intérieure combattent l'occupation et Vichy. Les résistants ont des origines et des engagements variés.",
+        "La guerre mobilise les économies et vise massivement les civils. Le régime nazi et ses collaborateurs organisent la **Shoah**, le génocide d'environ six millions de Juifs, et le génocide des Roms et des Sinti. Les massacres, les persécutions, les déportations et les bombardements font partie des violences du conflit."
+      ],
+      "exemple": {
+        "titre": "Suivre le tournant de la guerre",
+        "etapes": [
+          "En 1942-1943, les victoires alliées, notamment à Stalingrad et à Midway, marquent un tournant.",
+          "Le débarquement de Normandie du 6 juin 1944 contribue à la libération de l'Europe occidentale ; l'URSS avance à l'est.",
+          "L'Allemagne capitule en mai 1945. Après les bombardements atomiques d'Hiroshima et Nagasaki et l'entrée en guerre de l'URSS contre le Japon, le Japon capitule en 1945."
+        ]
+      }
+    },
+    {
+      "titre": "Approfondir : justice, reconstruction et mémoires",
+      "niveau": "terminale / lycée",
+      "paragraphes": [
+        "Le conflit fait des dizaines de millions de morts, en majorité des civils, et entraîne destructions et déplacements. L'**ONU**, créée en 1945, vise la paix et la coopération. Les États-Unis et l'URSS deviennent les principales puissances ; leur alliance de guerre ne les empêche pas de s'opposer ensuite.",
+        "Les procès de **Nuremberg** et de Tokyo jugent des dirigeants vaincus. Nuremberg constitue une étape majeure dans la poursuite des crimes contre l'humanité. Tous les responsables ne sont pas jugés, mais ces procès contribuent au développement de la justice internationale.",
+        "Les mémoires évoluent : certains groupes et certaines responsabilités ont longtemps été moins reconnus. Les historiens croisent archives et témoignages pour établir les faits. Le négationnisme nie des crimes établis ; ce n'est pas une interprétation historique fondée sur les sources. Transmettre exige précision, contextualisation et respect des victimes."
+      ],
+      "aRetenir": "Distingue les expériences des acteurs, les responsabilités des institutions et l'évolution des mémoires."
+    }
+  ],
+  "application": {
+    "intro": "Quatre enquêtes : explique les causes, situe les acteurs et distingue les conséquences.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Causes",
+        "question": "Quel facteur contribue au déclenchement de la guerre en Europe ?",
+        "choix": ["La création de l'ONU en 1945", "La politique d'expansion de l'Allemagne nazie", "La chute du mur de Berlin en 1989"],
+        "bonne": 1,
+        "indice": "Une cause doit précéder le conflit.",
+        "explication": "Les agressions et ambitions territoriales de l'Allemagne nazie contribuent au conflit ; l'invasion de la Pologne en septembre 1939 déclenche la guerre en Europe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Acteurs",
+        "question": "Quelle affirmation décrit correctement l'année 1941 ?",
+        "choix": ["L'URSS combat l'Allemagne après son invasion ; les États-Unis entrent en guerre après Pearl Harbor", "Tous les Alliés capitulent", "Le Japon quitte l'Axe pour rejoindre l'ONU"],
+        "bonne": 0,
+        "indice": "Deux attaques élargissent le conflit cette année-là.",
+        "explication": "L'Allemagne attaque l'URSS en juin 1941 ; le Japon attaque Pearl Harbor en décembre, entraînant l'entrée en guerre des États-Unis."
+      },
+      {
+        "type": "qcm",
+        "titre": "Responsabilités",
+        "question": "Quelle description du régime de Vichy est historiquement correcte ?",
+        "choix": ["Il dirige la France libre", "Il reste sans responsabilité dans les persécutions", "Il collabore avec l'Allemagne nazie et participe à la persécution des Juifs"],
+        "bonne": 2,
+        "indice": "Distingue Vichy de la France libre et de la Résistance.",
+        "explication": "Vichy mène une politique de collaboration et prend part aux persécutions et déportations. La France libre et la Résistance combattent l'occupation et ce régime."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conséquences",
+        "question": "Quel organisme est créé en 1945 pour favoriser la paix et la coopération ?",
+        "choix": ["L'ONU", "La Société des Nations en remplacement de l'ONU", "L'Union européenne"],
+        "bonne": 0,
+        "indice": "Son nom est Organisation des Nations unies.",
+        "explication": "L'ONU est créée en 1945. Elle vise à préserver la paix, sans garantir à elle seule la disparition des conflits."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Construire une exposition respectueuse",
+    "histoire": [
+      "Tu prépares une exposition scolaire avec un témoignage de rescapé, une archive administrative et une photographie de commémoration.",
+      "Ton défi est de transmettre des faits établis et de montrer comment on les connaît, sans images choquantes ni confusion entre mémoire et histoire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Contextualiser",
+        "question": "Que faut-il indiquer pour présenter un témoignage ?",
+        "choix": ["Seulement une phrase isolée", "Sa date, le contexte et l'expérience dont il rend compte", "Qu'il décrit nécessairement toutes les expériences"],
+        "bonne": 1,
+        "indice": "Un témoignage est précieux, mais situé.",
+        "explication": "Le contexte aide à comprendre ce que la personne a vécu et ce qu'elle raconte. Les autres sources complètent cette expérience."
+      },
+      {
+        "type": "qcm",
+        "titre": "Vérifier une affirmation",
+        "question": "Comment répondre à un message qui nie la Shoah ?",
+        "choix": ["Le traiter comme un avis historique équivalent", "Le recopier sans contexte", "S'appuyer sur les archives, les témoignages et les recherches qui établissent le génocide"],
+        "bonne": 2,
+        "indice": "Des faits établis ne deviennent pas incertains parce qu'un message les nie.",
+        "explication": "La Shoah est documentée par de multiples sources convergentes. Le négationnisme nie ces faits ; vérifier les sources permet de ne pas relayer cette falsification."
+      },
+      {
+        "type": "qcm",
+        "titre": "Distinguer les dates",
+        "question": "Quel cartel est exact ?",
+        "choix": ["« 8 mai 1945 : capitulation allemande ; 2 septembre 1945 : capitulation japonaise »", "« 8 mai 1945 : fin de tous les combats dans le monde »", "« 2 septembre 1945 : début de la guerre en Europe »"],
+        "bonne": 0,
+        "indice": "Le conflit se termine à des moments différents en Europe et en Asie.",
+        "explication": "Ces deux dates distinguent la fin de la guerre en Europe de sa fin dans le Pacifique."
+      }
+    ],
+    "conclusion": "Mission accomplie : ton exposition explique les faits, leurs sources et leur transmission avec rigueur et respect."
+  }
+}

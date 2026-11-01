@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les priorités opératoires – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "priorites-operatoires",
   "titre": "Les priorités opératoires",
   "sujet": "mathematiques/priorites-operatoires",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -37,8 +37,18 @@
       "niveau": "pour démarrer",
       "paragraphes": [
         "Combien fait 2 + 3 × 4 ? Si on calcule de gauche à droite, on trouve 5 × 4 = 20. Si on fait d'abord la multiplication, on trouve 2 + 12 = 14. Les deux ne peuvent pas être justes !",
+        "Imagine une boulangerie : 2 € de pain plus 3 croissants à 4 € pièce. Tu paies 2 + 3 × 4 = 14 €, et pas 20 € : on calcule d'abord le prix des croissants, puis on ajoute le pain.",
         "Pour que tout le monde trouve le même résultat, les mathématiciens ont fixé des **règles de priorité**. La bonne réponse est **14**."
-      ]
+      ],
+      "exemple": {
+        "titre": "Exemple : le ticket de caisse",
+        "etapes": [
+          "Une baguette à 1 € et 2 pizzas à 5 € pièce : 1 + 2 × 5.",
+          "La multiplication d'abord : 2 × 5 = 10.",
+          "Puis l'addition : 1 + 10 = 11 €."
+        ]
+      },
+      "aRetenir": "Multiplier et diviser passent avant additionner et soustraire."
     },
     {
       "titre": "La règle",
@@ -46,7 +56,8 @@
       "paragraphes": [
         "1. On calcule d'abord ce qui est **entre parenthèses** (en commençant par les plus intérieures).",
         "2. Puis les **multiplications et divisions**, de gauche à droite.",
-        "3. Enfin les **additions et soustractions**, de gauche à droite."
+        "3. Enfin les **additions et soustractions**, de gauche à droite.",
+        "Les parenthèses sont comme un sac que l'on ferme : tant que le sac n'est pas calculé, on ne touche à rien d'autre. Elles servent à *imposer* un ordre différent de l'ordre habituel."
       ],
       "exemple": {
         "titre": "Exemple : 20 − 2 × (3 + 4)",
@@ -55,23 +66,43 @@
           "Multiplication : 2 × 7 = 14, donc 20 − 14.",
           "Soustraction : 20 − 14 = 6."
         ]
-      }
+      },
+      "aRetenir": "Parenthèses, puis × et ÷, puis + et −."
     },
     {
       "titre": "De gauche à droite",
       "niveau": "5e",
       "paragraphes": [
         "Entre opérations de même priorité, on va **de gauche à droite** : 24 ÷ 4 × 2 = 6 × 2 = 12 (et non 24 ÷ 8 = 3).",
-        "De même : 10 − 4 + 3 = 6 + 3 = 9 (et non 10 − 7 = 3)."
-      ]
+        "De même : 10 − 4 + 3 = 6 + 3 = 9 (et non 10 − 7 = 3).",
+        "C'est comme lire une phrase : on lit de gauche à droite, un mot après l'autre. Une soustraction n'est pas « moins forte » qu'une addition : elles ont la même priorité."
+      ],
+      "exemple": {
+        "titre": "Exemple : 30 − 10 + 5 et 40 ÷ 4 × 5",
+        "etapes": [
+          "30 − 10 = 20, puis 20 + 5 = 25.",
+          "40 ÷ 4 = 10, puis 10 × 5 = 50.",
+          "Attention : pour 40 ÷ (4 × 5), il faudrait des parenthèses, et on trouverait 2."
+        ]
+      },
+      "aRetenir": "À priorité égale, on calcule dans l'ordre de lecture, de gauche à droite."
     },
     {
       "titre": "Avec des puissances",
       "niveau": "4e",
       "paragraphes": [
         "Les **puissances** passent avant les multiplications : 2 × 3² = 2 × 9 = 18, alors que (2 × 3)² = 6² = 36.",
-        "Attention : −3² = −9 (le carré s'applique au 3 seulement), alors que (−3)² = 9."
+        "Attention : −3² = −9 (le carré s'applique au 3 seulement), alors que (−3)² = 9.",
+        "Pense à l'aire d'un carré de 3 m de côté : 3² = 9 m². Si le carré coûte 2 € le m², le prix est 2 × 3² = 18 € : on calcule d'abord l'aire."
       ],
+      "exemple": {
+        "titre": "Exemple : 5 + 2 × 3²",
+        "etapes": [
+          "Puissance : 3² = 9, donc 5 + 2 × 9.",
+          "Multiplication : 2 × 9 = 18, donc 5 + 18.",
+          "Addition : 5 + 18 = 23."
+        ]
+      },
       "aRetenir": "Ordre complet : parenthèses, puissances, multiplications et divisions, additions et soustractions."
     },
     {
@@ -79,8 +110,18 @@
       "niveau": "4e / 3e",
       "paragraphes": [
         "Un **trait de fraction** agit comme des parenthèses autour du numérateur et du dénominateur : (8 + 4)/(5 − 2) = 12/3 = 4.",
-        "Sur une calculatrice, il faut **taper ces parenthèses** : 8 + 4 ÷ 5 − 2 donne 6,8, pas 4 !"
-      ]
+        "Sur une calculatrice, il faut **taper ces parenthèses** : 8 + 4 ÷ 5 − 2 donne 6,8, pas 4 !",
+        "La calculatrice n'est pas plus maligne que toi : elle respecte exactement les priorités, et ne devine pas ce que tu penses. Elle fait ce que tu écris."
+      ],
+      "exemple": {
+        "titre": "Exemple : (8 + 4)/(5 − 2) à la calculatrice",
+        "etapes": [
+          "Haut : on tape (8 + 4).",
+          "Bas : on tape (5 − 2), précédé de ÷.",
+          "On tape donc (8 + 4) ÷ (5 − 2) et on obtient 12 ÷ 3 = 4."
+        ]
+      },
+      "aRetenir": "Un trait de fraction (ou une racine) cache des parenthèses : à retaper sur la calculatrice."
     }
   ],
   "application": {
@@ -148,16 +189,73 @@
           "Calcule séparément le haut (12 + 8) et le bas (9 − 4)."
         ],
         "solution": "20 / 5 = 4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Soustraction et addition",
+        "question": "Calcule 10 − 4 + 3.",
+        "reponse": 9,
+        "indices": [
+          "Même priorité : de gauche à droite.",
+          "10 − 4 = 6."
+        ],
+        "solution": "10 − 4 = 6, puis 6 + 3 = 9."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le carré d'un nombre négatif",
+        "question": "Quelle est la valeur de −3² ?",
+        "choix": [
+          "9",
+          "−9",
+          "6"
+        ],
+        "bonne": 1,
+        "explication": "La puissance passe avant le signe : 3² = 9, puis on prend l'opposé : −9. C'est (−3)² qui vaut 9.",
+        "indice": "Le carré s'applique-t-il au signe moins ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Parenthèses et puissance",
+        "question": "Calcule 3 + 2 × (8 − 5)².",
+        "reponse": 21,
+        "indices": [
+          "Parenthèses : 8 − 5 = 3.",
+          "Puissance : 3² = 9. Puis 2 × 9 = 18."
+        ],
+        "solution": "3 + 2 × 3² = 3 + 2 × 9 = 3 + 18 = 21."
+      },
+      {
+        "type": "nombre",
+        "titre": "Les cahiers",
+        "question": "Léa achète 3 cahiers à 2 € et 2 stylos à 1,50 €. Calcule 3 × 2 + 2 × 1,5 pour trouver le prix total.",
+        "reponse": 9,
+        "unite": "€",
+        "indices": [
+          "Calcule d'abord les deux multiplications : 3 × 2 et 2 × 1,5."
+        ],
+        "solution": "3 × 2 = 6 et 2 × 1,5 = 3, donc 6 + 3 = 9 €."
       }
     ]
   },
   "situation": {
     "titre": "Le compte est bon",
     "histoire": [
-      "Sami joue au « compte est bon » : avec les nombres **2, 3, 5 et 7**, il doit écrire des calculs et trouver leur résultat sans se tromper de priorité.",
-      "Aide-le à vérifier ses calculs !"
+      "Sami joue au « compte est bon » avec sa classe : avec les nombres **2, 3, 5 et 7**, il doit écrire des calculs et trouver leur résultat sans se tromper de priorité.",
+      "Le jeu a une règle d'or : un seul résultat est accepté, celui que donnerait n'importe quelle calculatrice du monde. Chaque erreur de priorité fait perdre un point à son équipe.",
+      "Sami hésite souvent entre calculer de gauche à droite ou faire d'abord la multiplication. Aide-le à vérifier ses calculs, un par un, pour que son équipe gagne !"
     ],
     "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Échauffement",
+        "question": "Calcule 2 + 3 × 5.",
+        "reponse": 17,
+        "indices": [
+          "La multiplication d'abord : 3 × 5."
+        ],
+        "solution": "3 × 5 = 15, puis 2 + 15 = 17."
+      },
       {
         "type": "nombre",
         "titre": "Premier calcul",
@@ -183,6 +281,17 @@
       },
       {
         "type": "nombre",
+        "titre": "Trait de fraction et puissance",
+        "question": "Calcule (7 + 5) / 3 + 2 × 3².",
+        "reponse": 22,
+        "indices": [
+          "Le trait de fraction : (7 + 5) / 3 = 12 / 3.",
+          "La puissance avant la multiplication : 3² = 9."
+        ],
+        "solution": "12 / 3 = 4 et 2 × 3² = 2 × 9 = 18, donc 4 + 18 = 22."
+      },
+      {
+        "type": "nombre",
         "titre": "Le grand final",
         "question": "Calcule 2 × (7 + 3)² − 5.",
         "reponse": 195,
@@ -193,7 +302,7 @@
         "solution": "2 × 10² − 5 = 2 × 100 − 5 = 200 − 5 = 195."
       }
     ],
-    "conclusion": "Le compte est bon ! Les priorités opératoires sont le code de la route du calcul : grâce à elles, tout le monde trouve le même résultat."
+    "conclusion": "Le compte est bon ! Les priorités opératoires sont le code de la route du calcul : grâce à elles, tout le monde (élèves, enseignants, calculatrices et ordinateurs) trouve le même résultat. Et quand tu veux un autre ordre, tu as un outil précis : les parenthèses."
   }
 }
 </script>
@@ -309,7 +418,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 <header>
   <div>
     <h1>Les priorités opératoires</h1>
-    <div class="meta">priorites-operatoires · v1.0.0</div>
+    <div class="meta">priorites-operatoires · v1.1.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
@@ -740,6 +849,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
         if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
         panneau.append(bloc);
       });
+    } });
+
+  /* ---------- Onglet mémo (optionnel) : formules et points clés ---------- */
+  enregistrerOnglet({ id: "memo", type: "memo", titre: C.titresOnglets?.memo ?? "Mémo", actif: Boolean(C.memo),
+    rendu(panneau) {
+      const m = C.memo;
+      if (!m) return;
+      if (m.intro) panneau.append(paragraphe(m.intro, "intro"));
+      if (m.formules?.length) {
+        panneau.append(h("h2", null, "Formules"));
+        for (const f of m.formules) {
+          panneau.append(h("div", { classe: "exemple" }, h("strong", null, riche(f.titre)), paragraphe(f.formule), ...(f.explication ? [paragraphe(f.explication)] : [])));
+        }
+      }
+      if (m.pointsCles?.length) {
+        panneau.append(h("h2", null, "Points clés"));
+        panneau.append(h("ul", null, ...m.pointsCles.map((p) => h("li", null, riche(p)))));
+      }
     } });
 
   /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */

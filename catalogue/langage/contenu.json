@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Jeux de sens", "mise-en-situation": "Message ambigu" },
+  "intro": "Un même mot peut éclairer ou embrouiller. Comment le langage nous permet-il de penser, de communiquer et d'agir ?",
+  "niveaux": [
+    {
+      "titre": "Intuition : des signes pour se comprendre",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "Le **langage** est la capacité d'utiliser des signes pour exprimer et communiquer du sens. Une **langue** est un système partagé, comme le français ou une langue des signes. La **parole** est l'usage particulier qu'une personne fait d'une langue.",
+        "Un signe ne ressemble pas nécessairement à ce qu'il désigne. Le mot « arbre » n'a pas de branches ! Les langues des signes sont des langues à part entière, avec leur grammaire : le langage ne se réduit pas aux sons."
+      ],
+      "exemple": {
+        "titre": "Le jeu du mot sans objet",
+        "etapes": [
+          "Dis « dragon » : aucun dragon réel n'a besoin d'être présent.",
+          "Le langage permet d'évoquer l'absent, le possible et l'imaginaire.",
+          "Mais être capable de nommer une chose ne prouve pas qu'elle existe."
+        ]
+      },
+      "aRetenir": "Langage, langue et parole ne sont pas synonymes. Les signes permettent de parler au-delà de ce qui est présent."
+    },
+    {
+      "titre": "Distinguer : signe, sens et contexte",
+      "niveau": "lycée — avec Saussure et Wittgenstein",
+      "paragraphes": [
+        "Dans le *Cours de linguistique générale*, issu de ses enseignements, **Saussure** distingue le **signifiant** (l'image acoustique du signe) et le **signifié** (le concept associé), non l'objet lui-même. Leur lien est dit **arbitraire** : il ne repose pas sur une ressemblance naturelle nécessaire.",
+        "Arbitraire ne signifie pas que chacun peut changer les mots à volonté : la langue est une convention sociale. « Arbre » et « tree » peuvent renvoyer à un concept proche par des signifiants différents.",
+        "Dans les *Recherches philosophiques*, **Wittgenstein** invite à comprendre, pour une large classe de cas, la signification d'un mot par son usage. Demander, décrire, plaisanter ou promettre sont des **jeux de langage** liés à des pratiques. Le contexte aide à lever les ambiguïtés."
+      ],
+      "exemple": {
+        "titre": "Une phrase, deux usages",
+        "etapes": [
+          "« Il fait froid ici » peut décrire la température.",
+          "Dans une pièce où la fenêtre est ouverte, la même phrase peut demander indirectement de la fermer.",
+          "Le sens en situation dépend aussi de l'usage, pas seulement du dictionnaire."
+        ]
+      },
+      "aRetenir": "Le signe associe signifiant et signifié ; l'interprétation d'un énoncé demande aussi son contexte d'usage."
+    },
+    {
+      "titre": "Formaliser : parler, c'est parfois agir",
+      "niveau": "terminale — avec Austin",
+      "paragraphes": [
+        "Dans *Quand dire, c'est faire*, **Austin** montre que certains énoncés ne décrivent pas simplement un fait : dire « je promets » peut accomplir une promesse. Ce sont des énoncés **performatifs**, qui exigent des conditions adaptées pour réussir.",
+        "Il distingue l'acte **locutoire** (produire un énoncé doté de sens), **illocutoire** (ce qu'on fait en le disant : promettre, demander, avertir) et **perlocutoire** (les effets produits : convaincre, rassurer, inquiéter). Promettre ne garantit pas que la personne sera rassurée.",
+        "Le langage permet de formuler des concepts et d'organiser des raisonnements. Cela ne prouve pas que toute pensée soit verbale ni que les mots fixent définitivement ce que nous pouvons penser. Une discussion philosophique peut justement commencer en clarifiant les termes."
+      ],
+      "exemple": {
+        "titre": "Les pouvoirs d'une annonce",
+        "etapes": [
+          "Dire « la séance est ouverte » peut ouvrir une séance si la personne est habilitée et le cadre approprié.",
+          "Répéter cette phrase dans une pièce de théâtre ne produit pas la même institution réelle.",
+          "Le pouvoir des mots dépend donc aussi de conditions sociales."
+        ]
+      },
+      "aRetenir": "Distingue ce qui est dit, l'acte accompli en le disant et l'effet obtenu sur autrui."
+    }
+  ],
+  "application": {
+    "intro": "Joue avec les distinctions : chaque QCM vise un concept précis, pas une interprétation arbitraire.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Chez Saussure, le signifié est…",
+        "choix": ["l'objet matériel lui-même.", "le concept associé au signifiant.", "la voix du locuteur."],
+        "bonne": 1,
+        "indice": "Le signe lie deux dimensions, pas un son à un objet matériel.",
+        "explication": "Le signifié est le concept. Le signifiant est l'image acoustique ; l'objet auquel on peut faire référence est encore autre chose."
+      },
+      {
+        "type": "qcm",
+        "question": "Dire que le lien du signe est arbitraire signifie…",
+        "choix": ["qu'aucune convention partagée n'existe.", "que chacun peut toujours changer le sens tout seul.", "qu'il n'existe pas de lien naturel nécessaire entre signifiant et signifié."],
+        "bonne": 2,
+        "indice": "Arbitraire ne veut pas dire sans règle sociale.",
+        "explication": "Le lien est conventionnel, plutôt que naturellement nécessaire. La convention partagée rend la compréhension possible."
+      },
+      {
+        "type": "qcm",
+        "question": "Dans un contexte approprié, « je promets de venir » peut…",
+        "choix": ["accomplir un engagement, pas seulement décrire un fait.", "garantir physiquement ma présence future.", "n'avoir aucun rapport avec une action."],
+        "bonne": 0,
+        "indice": "Pense aux actes de parole d'Austin.",
+        "explication": "La formule peut accomplir l'acte de promettre. Cela ne garantit ni son exécution ni tous ses effets sur autrui."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : « on se retrouve là demain »",
+    "histoire": [
+      "Deux personnages fictifs préparent une visite. Leur message dit seulement : « on se retrouve là demain ». Chacun pense à un lieu différent.",
+      "Ta mission : clarifier le message sans saisir ni partager d'adresse ou de donnée personnelle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Pourquoi « là » et « demain » peuvent-ils être ambigus ?",
+        "choix": ["Ces mots n'ont jamais de sens.", "Ils dépendent d'un contexte qui peut manquer aux destinataires.", "Ils désignent toujours le même lieu et la même date."],
+        "bonne": 1,
+        "indice": "Qui parle, où et quand ?",
+        "explication": "Ce sont des expressions dont la référence dépend du contexte. Leur compréhension n'est pas garantie par les seuls mots."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle reformulation fictive clarifie le rendez-vous ?",
+        "choix": ["« Rendez-vous au musée imaginaire, mardi à 10 heures. »", "« Là, au moment habituel. »", "« Tu sais bien où. »"],
+        "bonne": 0,
+        "indice": "Remplace les références implicites par des indications explicites.",
+        "explication": "Le lieu et le moment sont précisés dans le scénario fictif. Une précision pertinente réduit l'ambiguïté."
+      },
+      {
+        "type": "qcm",
+        "question": "Si l'un répond « je promets d'être à l'heure », que faut-il distinguer ?",
+        "choix": ["Une promesse garantit tous ses effets.", "Dire et agir sont toujours séparés.", "L'engagement pris et l'effet éventuel de rassurer l'autre."],
+        "bonne": 2,
+        "indice": "L'acte illocutoire et l'effet perlocutoire ne sont pas identiques.",
+        "explication": "Promettre est un acte ; rassurer est un effet possible sur le destinataire. L'effet peut ne pas se produire."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Invente à l'oral un message fictif ambigu, puis clarifie-le. Les mots font sens dans des usages et peuvent aussi engager."
+  }
+}

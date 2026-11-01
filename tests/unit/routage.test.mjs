@@ -27,6 +27,26 @@ test("insensible aux accents et à la ponctuation", () => {
   assert.equal(routerLocal("le cercle-trigonométrique", index), "trigo-cercle");
 });
 
+test("philosophie : mots entiers et priorité aux expressions scientifiques spécifiques", () => {
+  const cas = [
+    ["C'est quoi l'ART ?", "art"],
+    ["le bonheur", "bonheur"],
+    ["la conscience", "conscience"],
+    ["l'inconscient", "inconscient"],
+    ["la nature", "nature"],
+    ["les religions", "religion"],
+    ["le temps", "temps"],
+    ["le travail", "travail"],
+    ["Comment calculer le travail d'une force ?", "energie-mecanique"],
+    ["Qu'est-ce qu'une constante de temps ?", "condensateur-et-circuit-rc"],
+    ["le temps de demi-réaction", "cinetique-chimique"],
+    ["le temps de parcours", "vitesse"],
+    ["un inconscient", "inconscient"],
+    ["une partie", null]
+  ];
+  for (const [question, id] of cas) assert.equal(routerLocal(question, index), id, question);
+});
+
 test("les suggestions de secours de l'accueil (web/i18n) ouvrent toutes une page du catalogue", async () => {
   const { readFile } = await import("node:fs/promises");
   for (const langue of ["fr", "en"]) {

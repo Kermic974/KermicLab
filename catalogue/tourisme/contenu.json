@@ -1,0 +1,119 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une plage, une ville ou un sentier accueillent des visiteurs : enquête sur les déplacements et sur la vie de ceux qui y habitent.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partir sans déménager",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Visiter une autre ville pendant les vacances, puis rentrer chez soi, n'est pas déménager. Le **tourisme** correspond à des activités de visiteurs hors de leur environnement habituel.",
+        "Il peut concerner les loisirs, mais aussi les affaires ou d'autres motifs. Il n'exige pas de traverser une frontière nationale."
+      ]
+    },
+    {
+      "titre": "Touriste, excursionniste et nuitées",
+      "niveau": "4e",
+      "paragraphes": [
+        "Dans la définition statistique, un visiteur se déplace hors de son environnement habituel pour moins d'un an, avec un motif principal autre qu'un emploi auprès d'un employeur du lieu visité. Le trajet quotidien habituel vers l'école n'est donc pas du tourisme.",
+        "Un **touriste** passe au moins une nuit sur place ; un **excursionniste** fait une visite sans nuitée. Les deux sont des visiteurs. Une migration implique un changement de résidence : ce n'est pas le même phénomène.",
+        "Une **nuitée** compte une personne pendant une nuit : 3 personnes restant 2 nuits représentent 6 nuitées. Jeu du réceptionniste : ne confonds pas personnes, chambres et nuitées."
+      ]
+    },
+    {
+      "titre": "Des flux et des acteurs",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les flux de visiteurs relient des espaces de départ et des destinations. Ils sont inégaux : revenus, temps disponible, accessibilité et règles de déplacement influencent la possibilité de voyager.",
+        "Hébergeurs, transporteurs, plateformes de réservation, collectivités, salariés, visiteurs et habitants participent au système touristique. Les dépenses soutiennent des activités, mais tous les acteurs n'en captent pas la même part.",
+        "La **saisonnalité** concentre la fréquentation sur certaines périodes. Elle peut produire des emplois saisonniers et des équipements sous-utilisés à d'autres moments."
+      ]
+    },
+    {
+      "titre": "Transformer un territoire sans le fragiliser",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Le tourisme peut développer des services et soutenir la valorisation du patrimoine. Il peut aussi augmenter la pression sur l'eau, les déchets, les milieux et les logements.",
+        "Le **surtourisme** désigne des situations où la pression de la fréquentation dégrade les conditions de vie, les milieux ou l'expérience de visite. Il ne correspond pas à un seuil universel identique pour toutes les destinations.",
+        "Étaler la fréquentation, améliorer les transports collectifs, protéger les sites et encadrer certains usages sont des pistes à discuter. L'évaluation doit tenir compte des habitants et des salariés, pas seulement compter les arrivées.",
+        "Un séjour proche n'est pas automatiquement sans impact : transport, hébergement, consommation de ressources et pratiques sur place comptent aussi."
+      ],
+      "aRetenir": "Compare les bénéfices, les coûts et leur répartition, à plusieurs échelles et à plusieurs moments de l'année."
+    }
+  ],
+  "application": {
+    "intro": "Classe les visiteurs puis mesure les effets. Tous les chiffres de fréquentation sont fictifs.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Une visite à la journée",
+        "question": "Une personne visite une ville hors de son environnement habituel pour les loisirs et rentre le soir sans y dormir. C'est…",
+        "choix": ["une personne qui déménage", "un touriste avec nuitée", "un excursionniste"],
+        "bonne": 2, "indice": "Le critère décisif est la nuit sur place.",
+        "explication": "Le visiteur sans nuitée est un excursionniste. Le touriste passe au moins une nuit sur place."
+      },
+      {
+        "type": "nombre", "titre": "Compter les nuitées",
+        "question": "Dans un hébergement fictif, 4 personnes restent 3 nuits chacune. Combien cela représente-t-il de nuitées ?",
+        "reponse": 12, "unite": "nuitées", "indices": ["Compte une nuitée par personne et par nuit."],
+        "solution": "4 × 3 = 12 nuitées. Ce n'est ni le nombre de chambres ni le nombre d'arrivées."
+      },
+      {
+        "type": "qcm", "titre": "Un flux touristique",
+        "question": "Des familles quittent temporairement leur région pour visiter une autre région du même pays. Quelle affirmation est correcte ?",
+        "choix": ["Il peut s'agir de tourisme intérieur", "Ce n'est jamais du tourisme sans frontière internationale", "Elles changent forcément de résidence"],
+        "bonne": 0, "indice": "Le tourisme peut se dérouler dans le même pays.",
+        "explication": "Le tourisme intérieur n'exige pas de passage de frontière internationale. Il faut toutefois être hors de l'environnement habituel."
+      },
+      {
+        "type": "qcm", "titre": "Saisonnalité et emploi",
+        "question": "Une station accueille surtout des visiteurs en été. Quel enjeu peut concerner les salariés ?",
+        "choix": ["La garantie d'un emploi identique toute l'année", "La stabilité de l'emploi et du revenu hors saison", "L'absence de tout besoin de logement"],
+        "bonne": 1, "indice": "Compare la haute saison au reste de l'année.",
+        "explication": "La concentration saisonnière peut rendre l'emploi et le revenu irréguliers. Elle n'affecte pas tous les salariés de la même façon."
+      },
+      {
+        "type": "qcm", "titre": "Un défi territorial",
+        "question": "La fréquentation augmente alors que l'eau disponible est limitée. Que faut-il examiner ?",
+        "choix": ["Seulement le nombre de photos publiées", "Uniquement la longueur des menus", "Les besoins des habitants et visiteurs, les économies possibles et l'état de la ressource"],
+        "bonne": 2, "indice": "La ressource est partagée.",
+        "explication": "Il faut étudier les usages et les capacités du territoire pour comparer des mesures, sans oublier la population résidente."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La station littorale en haute saison",
+    "histoire": [
+      "Une station fictive accueille 60 visiteurs : 20 passent 2 nuits sur place, 40 viennent à la journée. Habitants et professionnels discutent de l'accès à la plage.",
+      "Le dossier signale des difficultés de logement pour certains salariés et une pression sur un milieu dunaire fragile."
+    ],
+    "etapes": [
+      {
+        "type": "nombre", "titre": "Les nuits sur place",
+        "question": "Les 20 personnes restant 2 nuits chacune représentent combien de nuitées ?",
+        "reponse": 40, "unite": "nuitées", "indices": ["Multiplie le nombre de personnes par le nombre de nuits."],
+        "solution": "20 × 2 = 40 nuitées. Les 40 visiteurs à la journée n'ajoutent aucune nuitée."
+      },
+      {
+        "type": "qcm", "titre": "Identifier les acteurs",
+        "question": "Qui associer à la discussion sur l'accueil et la vie locale ?",
+        "choix": ["Habitants, salariés, professionnels et collectivité, avec prise en compte des visiteurs", "Seulement les vendeurs de souvenirs", "Aucun habitant"],
+        "bonne": 0, "indice": "Les effets ne concernent pas un seul groupe.",
+        "explication": "Ces acteurs ont des usages et des besoins différents. Leur concertation permet de repérer les bénéfices et les difficultés."
+      },
+      {
+        "type": "qcm", "titre": "Protéger le milieu",
+        "question": "Quelle action répond directement au piétinement de la dune ?",
+        "choix": ["Multiplier les passages non balisés", "Canaliser les passages sur des accès adaptés et protéger les secteurs fragiles", "Compter seulement les nuitées"],
+        "bonne": 1, "indice": "Cherche une mesure qui agit sur les parcours.",
+        "explication": "Des accès adaptés et la protection des secteurs fragiles peuvent réduire le piétinement, avec suivi des effets."
+      },
+      {
+        "type": "qcm", "titre": "Évaluer au-delà des arrivées",
+        "question": "Quel bilan prend en compte les inégalités et les défis du dossier ?",
+        "choix": ["Le nombre d'arrivées suffit à tout évaluer", "Tous les habitants bénéficient forcément autant de la fréquentation", "Comparer aussi logement des salariés, pression sur la dune et conditions de vie des habitants"],
+        "bonne": 2, "indice": "Reprends les difficultés mentionnées dans l'histoire.",
+        "explication": "Un bilan territorial croise fréquentation, emploi, logement et environnement. Une hausse des arrivées n'est pas un indicateur suffisant de réussite."
+      }
+    ],
+    "conclusion": "Accueil étudié ! Tu sais distinguer visiteurs et nuitées, puis analyser les effets du tourisme pour plusieurs acteurs."
+  }
+}
