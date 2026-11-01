@@ -1,0 +1,59 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Explore la Grèce et Rome comme un musée : ouvre les niveaux, compare les façons de vivre et joue avec les repères.",
+  "niveaux": [
+    {
+      "titre": "Intuition : deux mondes autour de la Méditerranée",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'**Antiquité** commence avec les premières écritures, vers 3500 avant J.-C. au Proche-Orient. Ici, nous explorons surtout la Grèce et Rome. Ces sociétés ne résument pas toute l'Antiquité : l'Égypte et la Mésopotamie en font aussi partie.",
+        "Les Grecs vivent dans des **cités** : une ville et la campagne qui l'entoure, avec ses lois. Athènes et Sparte sont deux cités différentes. Elles partagent notamment des dieux et la langue grecque, mais n'ont pas toutes le même gouvernement.",
+        "Rome devient le centre d'un vaste territoire autour de la Méditerranée. Des routes, des ports et des villes relient ses habitants. Imagine devoir voyager sans voiture ni téléphone !"
+      ],
+      "exemple": { "titre": "Jeu : classer des traces", "etapes": ["Un théâtre grec sert à des spectacles liés à la vie de la cité.", "Un aqueduc romain transporte l'eau vers une ville.", "Classe ces deux traces : laquelle évoque un spectacle, laquelle un besoin quotidien ?"] },
+      "aRetenir": "Une cité grecque n'est pas un pays comme la Grèce actuelle. Grèce antique et Rome antique sont liées par des échanges et des conquêtes."
+    },
+    {
+      "titre": "Collège : citoyens, République et Empire",
+      "niveau": "6e",
+      "paragraphes": [
+        "Au **Ve siècle avant J.-C.**, Athènes pratique une démocratie directe : les citoyens participent à l'Assemblée et votent. **Périclès** est un dirigeant important. Les femmes, les esclaves et les étrangers installés dans la cité, appelés métèques, sont exclus de la citoyenneté politique.",
+        "Rome est d'abord une monarchie puis une **République**, traditionnellement datée de 509 avant J.-C. Des magistrats gouvernent avec le Sénat ; ce n'est pas une démocratie égalitaire. Les conquêtes enrichissent Rome mais accentuent les inégalités et les rivalités entre chefs militaires.",
+        "Après les guerres civiles, **Auguste** concentre le pouvoir à partir de **27 avant J.-C.** : c'est le début du principat, le régime des premiers empereurs. En **212**, Caracalla étend la citoyenneté romaine à presque tous les hommes libres de l'Empire."
+      ],
+      "exemple": { "titre": "Comparer deux habitants", "etapes": ["Un citoyen athénien peut voter à l'Assemblée.", "Un métèque peut travailler et payer des taxes sans voter.", "Habiter une même ville ne donne donc pas automatiquement les mêmes droits."] },
+      "aRetenir": "Repères : Athènes au Ve siècle avant J.-C. ; Auguste en 27 avant J.-C. ; citoyenneté élargie en 212. Jules César n'est pas le premier empereur."
+    },
+    {
+      "titre": "Lycée : héritages et transformations",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Compare les **critères de citoyenneté** plutôt que de dire simplement « Athènes a inventé notre démocratie ». Nos démocraties représentatives ne fonctionnent pas comme l'Assemblée athénienne et leurs droits ont une autre histoire.",
+        "La **romanisation** désigne la diffusion de pratiques romaines : langue latine, droit, monuments, modes de vie. Elle est inégale et n'efface pas toutes les cultures locales. Les routes facilitent les échanges, mais aussi le contrôle militaire des territoires conquis.",
+        "En **476**, le dernier empereur romain d'Occident est déposé. C'est un repère conventionnel pour la fin de l'Antiquité en Europe occidentale, pas la disparition soudaine de tous les héritages romains. L'Empire romain d'Orient continue jusqu'en 1453."
+      ],
+      "exemple": { "titre": "Enquête sur une pièce", "etapes": ["Une monnaie porte le portrait d'un empereur : elle permet de faire circuler son image.", "Demande-toi qui l'a fait frapper et quel message elle diffuse.", "Ce portrait est une source du pouvoir, pas une photographie neutre de toute la société."] },
+      "aRetenir": "Un changement de période est un outil pour se repérer. Les sociétés se transforment progressivement et les sources doivent être interrogées."
+    }
+  ],
+  "application": {
+    "intro": "Relie dates, personnages et conséquences. Après chaque réponse, lis l'explication plutôt que de mémoriser seulement un numéro.",
+    "exercices": [
+      { "type": "qcm", "titre": "Date", "question": "Quel repère correspond au début du pouvoir impérial d'Auguste ?", "choix": ["476", "27 avant J.-C.", "1789"], "bonne": 1, "explication": "En 27 avant J.-C., Octave reçoit le titre d'Auguste : ce repère marque le début du principat." },
+      { "type": "qcm", "titre": "Personnage", "question": "Quel dirigeant est associé à la démocratie athénienne du Ve siècle avant J.-C. ?", "choix": ["Charlemagne", "Louis XIV", "Périclès"], "bonne": 2, "explication": "Périclès est un dirigeant athénien du Ve siècle avant J.-C., bien avant Charlemagne et Louis XIV." },
+      { "type": "qcm", "titre": "Droits", "question": "Qui peut voter à l'Assemblée dans l'Athènes classique ?", "choix": ["Les hommes citoyens", "Tous les habitants, enfants compris", "Tous les étrangers de passage"], "bonne": 0, "explication": "La participation politique est réservée aux citoyens : femmes, métèques et esclaves en sont exclus." },
+      { "type": "qcm", "titre": "Cause et conséquence", "question": "Quel effet des conquêtes contribue aux crises de la République romaine ?", "choix": ["La disparition immédiate des armées", "L'enrichissement inégal et les rivalités de chefs militaires", "Le vote de tous les habitants du monde"], "bonne": 1, "explication": "Les conquêtes apportent des richesses inégalement réparties et renforcent des chefs rivaux : elles contribuent aux conflits politiques." },
+      { "type": "qcm", "titre": "Changement de période", "question": "Que signifie le repère 476 ?", "choix": ["Tous les Romains disparaissent", "Athènes invente l'écriture", "Le dernier empereur romain d'Occident est déposé"], "bonne": 2, "explication": "476 est une rupture politique en Occident ; l'Empire d'Orient et de nombreux héritages romains subsistent." }
+    ]
+  },
+  "situation": {
+    "titre": "Le mini-musée de ta chambre",
+    "histoire": ["Sur trois papiers, dessine un théâtre, une monnaie et une route. Prépare les cartels de ton musée imaginaire sans acheter d'objet ni donner d'information personnelle.", "Associe chaque dessin à une idée, puis replace Athènes, Auguste et 476 sur une frise de mémoire."],
+    "etapes": [
+      { "type": "qcm", "titre": "Un cartel exact", "question": "Quel cartel convient à une scène d'Assemblée athénienne ?", "choix": ["Tous les habitants votent", "Les citoyens débattent et votent", "L'empereur romain décide seul"], "bonne": 1, "explication": "À Athènes, les citoyens votent directement ; la démocratie n'inclut pas tous les habitants." },
+      { "type": "qcm", "titre": "Une trace du pouvoir", "question": "Que peut montrer le portrait impérial sur une monnaie ?", "choix": ["Le pouvoir veut faire connaître son dirigeant", "Tous les habitants ont le même métier", "La monnaie prouve que Rome n'a pas d'armée"], "bonne": 0, "explication": "La monnaie circule : elle diffuse l'image et les titres de l'empereur." },
+      { "type": "qcm", "titre": "Frise de mémoire", "question": "Quel ordre est chronologique ?", "choix": ["Auguste → Athènes au Ve siècle avant J.-C. → 476", "476 → Auguste → Athènes au Ve siècle avant J.-C.", "Athènes au Ve siècle avant J.-C. → Auguste → 476"], "bonne": 2, "explication": "Le Ve siècle avant J.-C. précède 27 avant J.-C., puis vient 476 après J.-C." }
+    ],
+    "conclusion": "Ton musée relie objets, droits et dates. Refais la frise demain sans regarder : explique chaque repère avec une phrase, pas seulement un nombre."
+  }
+}
