@@ -29,11 +29,20 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
-Private pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository also ships public examples in `catalogue/`, including mathematics,
-physics and chemistry, and nine philosophy pages: duty, the state, justice, freedom, language, reason,
-science, technology and truth. These philosophy pages use the common template, with progressive
-explanations, authors, self-correcting quizzes and everyday challenges.
+Additional pages can live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
+read-only token. This repository ships the unit-circle page and public template-based examples in mathematics,
+physics-chemistry, geography and philosophy.
+
+The geography catalogue covers **metropolisation, urbanisation, rural spaces, natural hazards,
+climate change, resources, mobility, migration and French territories**. Each French-language page
+progresses from intuition through middle-school to high-school concepts, with case studies, mental
+maps, corrected multiple-choice questions about concepts, actors and scales, and an everyday challenge.
+Pages are generated from `catalogue/<id>/contenu.json`; see [the template guide](docs/gabarit.md).
+Human review of geographical accuracy is required before merging.
+
+The nine philosophy pages cover duty, the state, justice, freedom, language, reason, science, technology
+and truth. They use the common template, with progressive explanations, authors, self-correcting quizzes
+and everyday challenges.
 
 ## Quick start
 
