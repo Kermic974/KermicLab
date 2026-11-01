@@ -2,6 +2,8 @@
 
 import { createRegistry } from './registry.js';
 import { geometricSolution } from './geometric.js';
+import { algebraicSolution } from './algebraic.js';
 
 export const solutions = createRegistry();
 solutions.register(geometricSolution);
+solutions.register(algebraicSolution);
