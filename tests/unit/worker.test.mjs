@@ -1,6 +1,6 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import worker, { _reinitialiser, cleDeTri } from "../../worker/src/index.js";
+import worker, { _reinitialiser, cleDeTri, suggestionsCatalogue } from "../../worker/src/index.js";
 
 // ---- Doubles de test : D1, GitHub, Claude ----
 function creerD1() {
@@ -173,8 +173,16 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
   const fr = await lire("fr");
   const en = await lire("en");
   assert.ok(fr.length >= 1 && fr.length <= 4);
-  assert.ok(fr.every((q) => !/\b(what|how|explain)\b/i.test(q)));
-  assert.ok(en.length >= 1 && en.every((q) => /\b(what|how|explain)\b/i.test(q)));
+  assert.ok(en.length >= 1 && en.length <= 4);
+  // La rotation quotidienne change les notions tirées : on vérifie toutes les rotations, sans dépendre de la date.
+  const { CATALOGUE } = await import("../../worker/src/generated/catalogue.js");
+  const anglais = (q) => /\b(what|how|why|which|explain|is|are|does|do|can)\b/i.test(q);
+  const sansAnglais = new Set(CATALOGUE.index.maquettes.filter((m) => !m.questions.some(anglais)).map((m) => m.questions.map((q) => q.charAt(0).toUpperCase() + q.slice(1))).flat());
+  for (let decalage = 0; decalage < CATALOGUE.index.maquettes.length; decalage++) {
+    for (const q of suggestionsCatalogue(CATALOGUE.index, "fr", { decalage })) assert.ok(!anglais(q), `suggestion anglaise en français : ${q}`);
+    // Repli prévu : une notion sans question anglaise propose sa question française.
+    for (const q of suggestionsCatalogue(CATALOGUE.index, "en", { decalage })) assert.ok(anglais(q) || sansAnglais.has(q), `suggestion non anglaise : ${q}`);
+  }
 });
 
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
