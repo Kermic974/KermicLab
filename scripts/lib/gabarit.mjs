@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 
 export const VERSION_GABARIT = "1.0.0";
 const racine = new URL("../..", import.meta.url).pathname;
-export const TYPES_FIGURE = ["pythagore", "fraction", "proportion"];
+export const TYPES_FIGURE = ["pythagore", "fraction", "proportion", "affine", "des"];
 const TYPES_EXERCICE = ["qcm", "nombre"];
 
 const echapperHtml = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

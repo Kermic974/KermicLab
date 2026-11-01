@@ -1,0 +1,188 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : mesurer les chances",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand on lance un dé, on ne sait pas quelle face va sortir : c'est une **expérience aléatoire** (due au hasard). Mais on sait qu'avec un dé équilibré, chaque face a **une chance sur six**.",
+        "Une **probabilité** est un nombre entre **0** (événement impossible, comme « faire 7 avec un dé ») et **1** (événement certain, comme « faire moins de 10 »)."
+      ]
+    },
+    {
+      "titre": "Calculer une probabilité",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Quand toutes les issues ont la même chance (on dit qu'elles sont **équiprobables**) : **probabilité = nombre d'issues favorables ÷ nombre total d'issues**.",
+        "Dé : P(faire 6) = 1/6 ; P(nombre pair) = 3/6 = 1/2 (issues 2, 4, 6)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une urne",
+        "etapes": [
+          "Une urne contient 3 boules rouges et 5 boules bleues, indiscernables au toucher.",
+          "Il y a 8 boules en tout, dont 3 rouges.",
+          "P(tirer une rouge) = 3/8 = 0,375."
+        ]
+      }
+    },
+    {
+      "titre": "L'événement contraire",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "L'**événement contraire** de A, noté « non A », se réalise quand A ne se réalise pas. **P(non A) = 1 − P(A)**.",
+        "P(ne pas faire 6) = 1 − 1/6 = 5/6. Pratique quand le contraire est plus simple à compter !"
+      ]
+    },
+    {
+      "titre": "Deux épreuves : les arbres",
+      "niveau": "3e",
+      "paragraphes": [
+        "Pour deux expériences successives, on dessine un **arbre** : on multiplie les probabilités le long d'un chemin.",
+        "On lance deux fois une pièce : P(pile puis pile) = 1/2 × 1/2 = 1/4. Avec deux dés, il y a 6 × 6 = 36 issues équiprobables ; 6 d'entre elles donnent une somme de 7 (1+6, 2+5, 3+4, 4+3, 5+2, 6+1), donc P(somme = 7) = 6/36 = 1/6."
+      ],
+      "aRetenir": "Le hasard n'a pas de mémoire : après cinq « pile » de suite, la probabilité d'obtenir « pile » au lancer suivant est toujours 1/2."
+    },
+    {
+      "titre": "Fréquence et probabilité",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Si on répète une expérience un grand nombre de fois, la **fréquence** d'un résultat se rapproche de sa **probabilité** : c'est la **loi des grands nombres**. Essaie avec le simulateur de l'onglet « S'entraîner » : 10 lancers, puis 1 000…",
+        "Quand on ne connaît pas la probabilité (une punaise qui tombe sur la pointe ?), on l'**estime** par la fréquence observée sur beaucoup d'essais."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Lance le dé virtuel 10 fois, puis 100, puis 1 000 fois. Que deviennent les fréquences ?",
+    "figure": {
+      "type": "des"
+    },
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Un dé",
+        "question": "Quelle est la probabilité d'obtenir 3 avec un dé équilibré ? (Écris une fraction.)",
+        "reponse": 0.16666666666666666,
+        "tolerance": 0.005,
+        "indices": [
+          "Il y a 6 faces, et une seule est un 3."
+        ],
+        "solution": "Une issue favorable sur 6 : P = 1/6 ≈ 0,17."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une urne",
+        "question": "Une urne contient 4 boules rouges et 6 boules vertes. Quelle est la probabilité de tirer une boule verte ?",
+        "reponse": 0.6,
+        "indices": [
+          "Il y a 10 boules en tout, dont 6 vertes."
+        ],
+        "solution": "P = 6/10 = 3/5 = 0,6."
+      },
+      {
+        "type": "qcm",
+        "titre": "Probabilité 1",
+        "question": "Un événement de probabilité 1 est…",
+        "choix": [
+          "certain",
+          "impossible",
+          "une chance sur deux"
+        ],
+        "bonne": 0,
+        "explication": "Une probabilité de 1 signifie que l'événement se produit à coup sûr."
+      },
+      {
+        "type": "nombre",
+        "titre": "Contraire",
+        "question": "La probabilité qu'il pleuve demain est 0,3. Quelle est la probabilité qu'il ne pleuve pas ?",
+        "reponse": 0.7,
+        "indices": [
+          "P(non A) = 1 − P(A)."
+        ],
+        "solution": "1 − 0,3 = 0,7."
+      },
+      {
+        "type": "nombre",
+        "titre": "Deux pièces",
+        "question": "On lance deux pièces équilibrées. Quelle est la probabilité d'obtenir deux fois « face » ?",
+        "reponse": 0.25,
+        "indices": [
+          "Sur l'arbre, multiplie les probabilités du chemin face → face.",
+          "1/2 × 1/2 = ?"
+        ],
+        "solution": "1/2 × 1/2 = 1/4 = 0,25."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le hasard a-t-il une mémoire ?",
+        "question": "On a obtenu « pile » 5 fois de suite. Au 6e lancer, la probabilité d'obtenir « pile » est…",
+        "choix": [
+          "plus petite que 1/2",
+          "égale à 1/2",
+          "plus grande que 1/2"
+        ],
+        "bonne": 1,
+        "explication": "Chaque lancer est indépendant des précédents : la pièce ne se souvient de rien. C'est toujours 1/2."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La roue de la kermesse",
+    "histoire": [
+      "À la kermesse de l'école, une roue est partagée en **8 secteurs égaux** : 1 secteur « gros lot », 3 secteurs « petit lot » et 4 secteurs « perdu ».",
+      "Avant de tenter ta chance, calcule tes probabilités !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le gros lot",
+        "question": "Quelle est la probabilité de gagner le gros lot ?",
+        "reponse": 0.125,
+        "indices": [
+          "1 secteur favorable sur 8."
+        ],
+        "solution": "P = 1/8 = 0,125."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un lot quelconque",
+        "question": "Quelle est la probabilité de gagner un lot (gros ou petit) ?",
+        "reponse": 0.5,
+        "indices": [
+          "1 + 3 = 4 secteurs gagnants sur 8.",
+          "Ou : 1 − P(perdu)."
+        ],
+        "solution": "4/8 = 1/2 = 0,5."
+      },
+      {
+        "type": "nombre",
+        "titre": "Deux fois le gros lot",
+        "question": "Tu joues deux fois. Quelle est la probabilité de gagner le gros lot les deux fois ? (Écris une fraction.)",
+        "reponse": 0.015625,
+        "tolerance": 0.0005,
+        "indices": [
+          "Multiplie les probabilités : 1/8 × 1/8."
+        ],
+        "solution": "1/8 × 1/8 = 1/64 ≈ 0,016. Très peu probable !"
+      },
+      {
+        "type": "qcm",
+        "titre": "Sur la journée",
+        "question": "La roue est lancée 400 fois dans la journée. Environ combien de gros lots l'organisateur doit-il prévoir ?",
+        "choix": [
+          "8",
+          "50",
+          "100"
+        ],
+        "bonne": 1,
+        "explication": "Sur un grand nombre de parties, la fréquence se rapproche de 1/8 : 400 × 1/8 = 50 gros lots environ.",
+        "indice": "Utilise la probabilité 1/8 sur 400 parties."
+      }
+    ],
+    "conclusion": "Bravo ! Les organisateurs de jeux, les assureurs et les météorologues utilisent exactement ces calculs pour prévoir l'avenir… en moyenne."
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une machine à nombres",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un taxi facture **3 €** de prise en charge, puis **2 €** par kilomètre. Pour 5 km, on paie 2 × 5 + 3 = 13 €. Pour x km, on paie **2x + 3** euros.",
+        "Une **fonction** est comme une machine : on y fait entrer un nombre x, elle en fait sortir un autre, noté f(x). Ici, f(x) = 2x + 3."
+      ]
+    },
+    {
+      "titre": "Image et antécédent",
+      "niveau": "3e",
+      "paragraphes": [
+        "Si f(4) = 11, on dit que **11 est l'image de 4** et que **4 est un antécédent de 11**.",
+        "Avec f(x) = 2x + 3 : l'image de 4 est 2 × 4 + 3 = 11. Pour trouver l'antécédent de 9, on résout 2x + 3 = 9, donc x = 3."
+      ]
+    },
+    {
+      "titre": "Linéaire ou affine ?",
+      "niveau": "3e",
+      "paragraphes": [
+        "Une fonction **affine** s'écrit f(x) = **ax + b**. Sa représentation graphique est une **droite**.",
+        "Quand b = 0, f(x) = ax est **linéaire** : c'est une situation de proportionnalité, et sa droite passe par l'origine du repère. Une fonction linéaire est donc un cas particulier de fonction affine."
+      ]
+    },
+    {
+      "titre": "Lire a et b",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "**b, l'ordonnée à l'origine** : c'est f(0), la hauteur où la droite coupe l'axe vertical.",
+        "**a, le coefficient directeur** : quand x augmente de 1, f(x) augmente de a. Avec deux points : **a = (f(x₂) − f(x₁)) ÷ (x₂ − x₁)**."
+      ],
+      "exemple": {
+        "titre": "Exemple : f(1) = 5 et f(3) = 11",
+        "etapes": [
+          "a = (11 − 5) ÷ (3 − 1) = 6 ÷ 2 = 3.",
+          "f(1) = 3 × 1 + b = 5, donc b = 2.",
+          "Conclusion : f(x) = 3x + 2."
+        ]
+      }
+    },
+    {
+      "titre": "Plus loin : variations et signe",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Si **a > 0**, la fonction est **croissante** (la droite monte) ; si **a < 0**, elle est **décroissante** (la droite descend) ; si a = 0, elle est constante.",
+        "f(x) = ax + b s'annule pour x = −b/a (avec a non nul) : c'est là que la droite coupe l'axe horizontal, et f change de signe."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Règle a et b et observe la droite : que change a ? que change b ? L'escalier rose montre « +1 en x, +a en y ».",
+    "figure": {
+      "type": "affine",
+      "a": 2,
+      "b": 1
+    },
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Image",
+        "question": "f(x) = 3x − 2. Calcule l'image de 5.",
+        "reponse": 13,
+        "indices": [
+          "Remplace x par 5 : 3 × 5 − 2."
+        ],
+        "solution": "f(5) = 15 − 2 = 13."
+      },
+      {
+        "type": "nombre",
+        "titre": "Antécédent",
+        "question": "f(x) = 2x + 1. Trouve l'antécédent de 15.",
+        "reponse": 7,
+        "indices": [
+          "Résous 2x + 1 = 15."
+        ],
+        "solution": "2x = 14, donc x = 7."
+      },
+      {
+        "type": "qcm",
+        "titre": "Nature",
+        "question": "La fonction f(x) = −4x est…",
+        "choix": [
+          "linéaire (donc aussi affine)",
+          "affine mais pas linéaire",
+          "ni linéaire ni affine"
+        ],
+        "bonne": 0,
+        "explication": "Elle s'écrit ax avec a = −4 et b = 0 : elle est linéaire, et toute fonction linéaire est affine."
+      },
+      {
+        "type": "nombre",
+        "titre": "Coefficient directeur",
+        "question": "f est affine, f(2) = 7 et f(5) = 16. Combien vaut son coefficient directeur a ?",
+        "reponse": 3,
+        "indices": [
+          "a = (f(5) − f(2)) ÷ (5 − 2)."
+        ],
+        "solution": "a = (16 − 7) ÷ (5 − 2) = 9 ÷ 3 = 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Variations",
+        "question": "La fonction f(x) = −2x + 5 est…",
+        "choix": [
+          "croissante",
+          "décroissante",
+          "constante"
+        ],
+        "bonne": 1,
+        "explication": "Le coefficient directeur a = −2 est négatif : la droite descend, la fonction est décroissante.",
+        "indice": "Regarde le signe de a."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La location de vélos",
+    "histoire": [
+      "Pour une balade, deux loueurs de vélos sont en concurrence. **Loueur A** : 2 € de l'heure. **Loueur B** : 5 € de caution non remboursée, puis 1 € de l'heure.",
+      "On note x la durée de location en heures."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Linéaire ?",
+        "question": "Lequel des deux tarifs est représenté par une fonction linéaire ?",
+        "choix": [
+          "Celui du loueur A",
+          "Celui du loueur B"
+        ],
+        "bonne": 0,
+        "explication": "A : f(x) = 2x (proportionnel à la durée). B : g(x) = x + 5 est affine, avec une ordonnée à l'origine de 5."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le prix chez B",
+        "question": "Combien coûte une location de 4 heures chez le loueur B ?",
+        "reponse": 9,
+        "unite": "€",
+        "indices": [
+          "g(x) = x + 5. Calcule g(4)."
+        ],
+        "solution": "g(4) = 4 + 5 = 9 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Même prix",
+        "question": "Pour quelle durée les deux loueurs coûtent-ils le même prix ?",
+        "reponse": 5,
+        "unite": "heures",
+        "indices": [
+          "Résous 2x = x + 5."
+        ],
+        "solution": "2x = x + 5, donc x = 5 heures (10 € chez chacun)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Pour 3 heures",
+        "question": "Pour une balade de 3 heures, quel loueur est le moins cher ?",
+        "choix": [
+          "Le loueur A",
+          "Le loueur B"
+        ],
+        "bonne": 0,
+        "explication": "A : 2 × 3 = 6 €. B : 3 + 5 = 8 €. En dessous de 5 heures, A est moins cher (sa droite est en dessous)."
+      }
+    ],
+    "conclusion": "Bravo ! Comparer deux droites, c'est comparer deux tarifs : la méthode marche pour tous les abonnements et forfaits."
+  }
+}

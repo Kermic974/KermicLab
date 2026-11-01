@@ -63,6 +63,11 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .etiquette { font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
 .etiquette.a { fill: var(--a); } .etiquette.b { fill: var(--b); } .etiquette.c { fill: var(--c); }
 .legende { font-size: 11px; fill: var(--doux); }
+.grille { stroke: var(--bord); stroke-width: 1; }
+.escalier { fill: none; stroke: var(--b); stroke-width: 2; stroke-dasharray: 5 3; }
+.barre { fill: var(--accent); fill-opacity: .7; }
+.barre.derniere { fill: var(--b); fill-opacity: .9; }
+.boutons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin-top: 10px; }
 .defile { overflow-x: auto; }
 .tableau { border-collapse: collapse; margin: 10px auto 0; font-size: .9rem; }
 .tableau th, .tableau td { border: 1px solid var(--bord); padding: 4px 10px; text-align: center; }

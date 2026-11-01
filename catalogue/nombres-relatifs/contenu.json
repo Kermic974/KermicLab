@@ -1,0 +1,184 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : en dessous de zéro",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "En hiver, le thermomètre peut afficher **−5 °C** : cinq degrés en dessous de zéro. Dans un ascenseur, le bouton **−2** mène au deuxième sous-sol. Un plongeur à **−20 m** est vingt mètres sous la surface.",
+        "Les nombres avec un signe **−** sont les nombres **négatifs** ; ceux avec un signe **+** (qu'on n'écrit souvent pas) sont **positifs**. Ensemble, ce sont les **nombres relatifs**.",
+        "Deux nombres comme 7 et −7, à la même distance de zéro mais de part et d'autre, sont **opposés**."
+      ]
+    },
+    {
+      "titre": "Repérer et comparer",
+      "niveau": "5e",
+      "paragraphes": [
+        "Sur une droite graduée, zéro est au milieu, les positifs à droite, les négatifs à gauche. **Plus un nombre est à droite, plus il est grand.**",
+        "Donc −2 est plus grand que −7 (il fait moins froid à −2 °C qu'à −7 °C) : on écrit **−7 < −2**. Tout nombre négatif est plus petit que tout nombre positif."
+      ]
+    },
+    {
+      "titre": "Additionner et soustraire",
+      "niveau": "5e",
+      "paragraphes": [
+        "**Même signe** : on additionne les distances à zéro et on garde le signe. (−2) + (−6) = −8.",
+        "**Signes contraires** : on soustrait la plus petite distance à zéro de la plus grande, et on garde le signe du nombre le plus éloigné de zéro. (−7) + 3 = −4.",
+        "**Soustraire, c'est ajouter l'opposé** : 3 − (−5) = 3 + 5 = 8, et 4 − 9 = 4 + (−9) = −5."
+      ],
+      "exemple": {
+        "titre": "Exemple : la température",
+        "etapes": [
+          "Le matin, il fait −4 °C. L'après-midi, il fait 3 °C.",
+          "Écart : 3 − (−4) = 3 + 4 = 7.",
+          "La température a augmenté de 7 °C."
+        ]
+      }
+    },
+    {
+      "titre": "Multiplier et diviser : la règle des signes",
+      "niveau": "4e",
+      "paragraphes": [
+        "On multiplie (ou divise) les distances à zéro, puis on applique la **règle des signes** : deux signes identiques donnent un résultat **positif**, deux signes différents donnent un résultat **négatif**.",
+        "Pourquoi « moins par moins donne plus » ? Regarde la suite : (−3) × 2 = −6, (−3) × 1 = −3, (−3) × 0 = 0. À chaque ligne, le résultat augmente de 3. La ligne suivante est donc (−3) × (−1) = 3."
+      ],
+      "exemple": {
+        "titre": "Exemples",
+        "etapes": [
+          "(−3) × (−4) = 12 (deux signes moins : positif).",
+          "(−20) ÷ 5 = −4 (signes différents : négatif).",
+          "Pour un long produit, on compte les signes moins : (−1) × (−2) × (−3) = −6, car il y en a trois (nombre impair)."
+        ]
+      },
+      "aRetenir": "Un produit est négatif quand il contient un nombre impair de facteurs négatifs."
+    },
+    {
+      "titre": "Plus loin : la valeur absolue",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La **valeur absolue** d'un nombre est sa distance à zéro : |−5| = 5 et |5| = 5. Elle est toujours positive ou nulle.",
+        "|a − b| est la **distance entre a et b** sur la droite graduée : la distance entre −3 et 4 vaut |4 − (−3)| = 7."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les quatre opérations. Astuce : imagine un thermomètre ou une droite graduée.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Comparer",
+        "question": "Quel est le plus petit de ces nombres ?",
+        "choix": [
+          "−8",
+          "−3",
+          "0",
+          "2"
+        ],
+        "bonne": 0,
+        "explication": "−8 est le plus à gauche sur la droite graduée : c'est le plus petit.",
+        "indice": "Sur une droite graduée, le plus petit est le plus à gauche."
+      },
+      {
+        "type": "nombre",
+        "titre": "Addition",
+        "question": "Calcule (−7) + 4.",
+        "reponse": -3,
+        "indices": [
+          "Signes contraires : 7 − 4 = 3. Quel signe garde-t-on ?"
+        ],
+        "solution": "(−7) + 4 = −3 : −7 est plus loin de zéro, on garde le signe moins."
+      },
+      {
+        "type": "nombre",
+        "titre": "Soustraction",
+        "question": "Calcule 5 − 12.",
+        "reponse": -7,
+        "indices": [
+          "Soustraire 12, c'est ajouter −12 : 5 + (−12)."
+        ],
+        "solution": "5 − 12 = 5 + (−12) = −7."
+      },
+      {
+        "type": "nombre",
+        "titre": "Soustraire un négatif",
+        "question": "Calcule (−2) − (−9).",
+        "reponse": 7,
+        "indices": [
+          "Soustraire −9, c'est ajouter 9."
+        ],
+        "solution": "(−2) − (−9) = (−2) + 9 = 7."
+      },
+      {
+        "type": "nombre",
+        "titre": "Produit",
+        "question": "Calcule (−6) × (−7).",
+        "reponse": 42,
+        "indices": [
+          "6 × 7 = 42. Deux signes moins, quel signe pour le résultat ?"
+        ],
+        "solution": "(−6) × (−7) = 42 : deux signes identiques donnent un résultat positif."
+      },
+      {
+        "type": "nombre",
+        "titre": "Long produit",
+        "question": "Calcule (−3) × 4 × (−2) × (−1).",
+        "reponse": -24,
+        "indices": [
+          "3 × 4 × 2 × 1 = 24.",
+          "Compte les signes moins : il y en a trois."
+        ],
+        "solution": "3 × 4 × 2 × 1 = 24 et il y a trois facteurs négatifs (nombre impair) : le résultat est −24."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "De la plongée au sommet",
+    "histoire": [
+      "Pendant les vacances, Inès fait de la plongée sous-marine le matin et de la randonnée en montagne l'après-midi.",
+      "Le niveau de la mer correspond à l'altitude 0 m. Aide-la à suivre ses altitudes et ses températures !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Remonter",
+        "question": "Inès plonge à −18 m, puis remonte de 7 m. À quelle altitude est-elle ?",
+        "reponse": -11,
+        "unite": "m",
+        "indices": [
+          "Remonter, c'est ajouter : (−18) + 7."
+        ],
+        "solution": "(−18) + 7 = −11 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'écart",
+        "question": "L'après-midi, elle atteint un sommet à 2 350 m. Quel écart d'altitude y a-t-il entre ce sommet et sa position à −11 m ?",
+        "reponse": 2361,
+        "unite": "m",
+        "indices": [
+          "L'écart, c'est la différence : 2 350 − (−11).",
+          "Soustraire −11, c'est ajouter 11."
+        ],
+        "solution": "2 350 − (−11) = 2 350 + 11 = 2 361 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le froid du matin",
+        "question": "Au refuge, il faisait −6 °C à 8 h. La température monte de 3 °C chaque heure. Quelle température fait-il à 11 h ?",
+        "reponse": 3,
+        "unite": "°C",
+        "indices": [
+          "De 8 h à 11 h, il s'écoule 3 heures : la température monte de 3 × 3 = 9 °C.",
+          "(−6) + 9 = ?"
+        ],
+        "solution": "(−6) + 3 × 3 = (−6) + 9 = 3 °C."
+      }
+    ],
+    "conclusion": "Bravo ! Les nombres relatifs servent partout où l'on mesure de part et d'autre d'un zéro : altitudes, températures, comptes en banque, étages…"
+  }
+}

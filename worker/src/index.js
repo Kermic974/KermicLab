@@ -49,10 +49,11 @@ function langueQuestion(q) {
  * Questions d'exemple du catalogue, dans la langue demandée : une par page d'abord, puis les suivantes.
  * Elles sont toutes routées vers leur page (test de non-régression du catalogue) : cliquer dessus marche toujours.
  */
-export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS } = {}) {
-  const parPage = [...index.maquettes]
-    .sort((a, b) => a.id.localeCompare(b.id))
-    .filter((m) => m.id !== exclure)
+export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS, decalage = 0 } = {}) {
+  const triees = [...index.maquettes].sort((a, b) => a.id.localeCompare(b.id)).filter((m) => m.id !== exclure);
+  // Rotation (par exemple selon le jour) : toutes les notions finissent par être proposées.
+  const debut = triees.length ? ((decalage % triees.length) + triees.length) % triees.length : 0;
+  const parPage = [...triees.slice(debut), ...triees.slice(0, debut)]
     .map((m) => {
       const questions = (m.questions ?? []).filter((q) => langueQuestion(q) === langue);
       return (questions.length ? questions : m.questions ?? []).map((q) => q.charAt(0).toUpperCase() + q.slice(1));
@@ -64,10 +65,16 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
   return sortie;
 }
 
+/** Numéro du jour (UTC) : fait tourner les suggestions d'un jour à l'autre, identiques pour tous le même jour. */
+const jourCourant = () => Math.floor(Date.now() / 86400000);
+
 /** Réponse quand aucune page ne correspond et qu'aucun modèle ne peut répondre : on oriente vers ce qui existe. */
 function reponseHorsCatalogue(langue) {
-  const titres = [...new Set(CATALOGUE.index.maquettes.map((m) => m.titre))];
-  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres), suggestions: suggestionsCatalogue(CATALOGUE.index, langue) };
+  const maquettes = CATALOGUE.index.maquettes;
+  const decalage = jourCourant();
+  const exemples = [...maquettes].sort((a, b) => a.id.localeCompare(b.id));
+  const titres = Array.from({ length: Math.min(3, exemples.length) }, (_, i) => exemples[(decalage + i) % exemples.length].titre);
+  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres, maquettes.length), suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage }) };
 }
 
 /** Relances proposées par le modèle : bornées, modérées, sans doublon. */
@@ -235,7 +242,7 @@ export default {
     }
     if (requete.method === "GET" && url.pathname === "/api/suggestions") {
       const langue = langueValide(url.searchParams.get("lang"));
-      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(CATALOGUE.index, langue) }), {
+      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage: jourCourant() }) }), {
         headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
       });
     }

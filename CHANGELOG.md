@@ -11,6 +11,10 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Catalogue, vague 1 (cœur du brevet) : **nombres relatifs**, **puissances**, **calcul littéral**, **équations et inéquations**, **théorème de Thalès**, **statistiques**, **probabilités**, **fonctions affines et linéaires**. Feuille de route du programme complet : `docs/chantiers/catalogue-maths.md`.
+- Gabarit : figures `affine` (droite y = ax + b réglable) et `des` (simulateur de lancers, loi des grands nombres).
+- Chat : les suggestions et les exemples de la réponse hors catalogue tournent chaque jour parmi toutes les notions.
+- Tests : chaque exercice de chaque notion générée est résolu automatiquement avec sa réponse attendue.
 - Gabarit commun de notion (`gabarit/`, ADR 0011, guide `docs/gabarit.md`) : une notion = `fiche.md` + `contenu.json`, la page autonome est générée par `npm run build`. Composants : exercices QCM et numériques (fractions, virgules, tolérance, indices progressifs), figures interactives `pythagore`, `fraction` et `proportion`, étoiles par exercice, défi en étapes qui se débloquent.
 - Catalogue : trois notions pilotes générées avec le gabarit — **Le théorème de Pythagore**, **Les fractions**, **Proportionnalité et pourcentages** (du collège au lycée, 6 exercices et un défi en 4 étapes chacune).
 - Chat : les suggestions de l'accueil viennent du catalogue (`GET /api/suggestions`) et mènent toujours à une page ; des questions de secours (i18n), vérifiées par un test de routage, prennent le relais si l'API ne répond pas.

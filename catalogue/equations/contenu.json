@@ -1,0 +1,191 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une balance en équilibre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **équation** est une égalité avec un nombre inconnu, souvent noté x : x + 3 = 10. **Résoudre**, c'est trouver la ou les valeurs de x qui rendent l'égalité vraie.",
+        "Imagine une balance en équilibre : à gauche, une boîte mystère et 3 billes ; à droite, 10 billes. Si on enlève 3 billes **de chaque côté**, la balance reste en équilibre : la boîte pèse 7 billes. Donc x = 7."
+      ]
+    },
+    {
+      "titre": "Résoudre ax + b = c",
+      "niveau": "4e",
+      "paragraphes": [
+        "On fait **la même opération des deux côtés** pour isoler x : ajouter, soustraire, multiplier ou diviser (par un nombre non nul).",
+        "On termine toujours en **vérifiant** : on remplace x par la solution dans l'équation de départ."
+      ],
+      "exemple": {
+        "titre": "Exemple : résoudre 3x + 5 = 20",
+        "etapes": [
+          "On soustrait 5 des deux côtés : 3x = 15.",
+          "On divise par 3 des deux côtés : x = 5.",
+          "Vérification : 3 × 5 + 5 = 20. C'est juste !"
+        ]
+      }
+    },
+    {
+      "titre": "Inconnue des deux côtés et mise en équation",
+      "niveau": "4e",
+      "paragraphes": [
+        "Si x apparaît des deux côtés, on regroupe les x d'un côté et les nombres de l'autre : 5x − 4 = 2x + 8 donne 3x − 4 = 8 (on a retiré 2x), puis 3x = 12, donc x = 4.",
+        "Pour un problème, on choisit l'inconnue, on traduit l'énoncé en équation, on résout, puis on **répond à la question posée** par une phrase."
+      ]
+    },
+    {
+      "titre": "L'équation produit nul",
+      "niveau": "3e",
+      "paragraphes": [
+        "**Un produit est nul si et seulement si l'un de ses facteurs est nul.** Donc (x − 2)(x + 5) = 0 équivaut à x − 2 = 0 ou x + 5 = 0 : deux solutions, x = 2 ou x = −5.",
+        "L'équation x² = 9 a aussi deux solutions : x = 3 ou x = −3, car (−3)² = 9. En revanche, x² = −4 n'a aucune solution : un carré n'est jamais négatif."
+      ]
+    },
+    {
+      "titre": "Les inéquations",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Une **inéquation** utilise <, >, ≤ ou ≥. On la résout comme une équation : 2x − 3 < 7 donne 2x < 10, donc x < 5. Il y a une infinité de solutions : tous les nombres plus petits que 5, l'intervalle ]−∞ ; 5[.",
+        "**Attention** : quand on multiplie ou divise par un nombre **négatif**, on **change le sens** de l'inégalité. −2x > 6 donne x < −3 (on a divisé par −2)."
+      ],
+      "aRetenir": "Vérifie avec un exemple : x = −4 vérifie bien −2 × (−4) = 8 > 6."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à résoudre. Astuce : vérifie toujours ta solution en la remplaçant dans l'équation.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Une étape",
+        "question": "Résous x + 7 = 15.",
+        "reponse": 8,
+        "indices": [
+          "Enlève 7 des deux côtés."
+        ],
+        "solution": "x = 15 − 7 = 8."
+      },
+      {
+        "type": "nombre",
+        "titre": "Deux étapes",
+        "question": "Résous 4x − 3 = 21.",
+        "reponse": 6,
+        "indices": [
+          "Ajoute 3 des deux côtés : 4x = 24.",
+          "Divise par 4."
+        ],
+        "solution": "4x = 24, donc x = 6. Vérification : 4 × 6 − 3 = 21."
+      },
+      {
+        "type": "nombre",
+        "titre": "Inconnue des deux côtés",
+        "question": "Résous 7x + 2 = 3x + 18.",
+        "reponse": 4,
+        "indices": [
+          "Enlève 3x des deux côtés : 4x + 2 = 18.",
+          "Puis enlève 2 : 4x = 16."
+        ],
+        "solution": "4x + 2 = 18, 4x = 16, x = 4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec des parenthèses",
+        "question": "Résous 2(x + 3) = 20.",
+        "reponse": 7,
+        "indices": [
+          "Développe : 2x + 6 = 20. Ou divise directement par 2 : x + 3 = 10."
+        ],
+        "solution": "x + 3 = 10, donc x = 7."
+      },
+      {
+        "type": "qcm",
+        "titre": "Produit nul",
+        "question": "Quelles sont les solutions de (x − 4)(x + 1) = 0 ?",
+        "choix": [
+          "x = 4 ou x = −1",
+          "x = −4 ou x = 1",
+          "x = 4 seulement"
+        ],
+        "bonne": 0,
+        "explication": "x − 4 = 0 donne x = 4, et x + 1 = 0 donne x = −1.",
+        "indice": "Un produit est nul si l'un des facteurs est nul."
+      },
+      {
+        "type": "qcm",
+        "titre": "Inéquation",
+        "question": "Quelles sont les solutions de −3x > 12 ?",
+        "choix": [
+          "x < −4",
+          "x > −4",
+          "x < 4"
+        ],
+        "bonne": 0,
+        "explication": "On divise par −3, qui est négatif : le sens change. x < −4.",
+        "indice": "Diviser par un nombre négatif change le sens de l'inégalité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le forfait d'escalade",
+    "histoire": [
+      "La salle d'escalade propose deux formules. **Formule A** : 10 € la séance. **Formule B** : un abonnement de 30 € pour l'année, puis 4 € la séance.",
+      "Laquelle choisir ? Tout dépend du nombre de séances, qu'on note x."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Traduire la formule B",
+        "question": "Quel est le prix de la formule B pour x séances ?",
+        "choix": [
+          "34x",
+          "30 + 4x",
+          "4 + 30x"
+        ],
+        "bonne": 1,
+        "explication": "30 € une seule fois, plus 4 € par séance : 30 + 4x.",
+        "indice": "L'abonnement de 30 € ne se paie qu'une fois."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le même prix",
+        "question": "Pour combien de séances les deux formules coûtent-elles le même prix ?",
+        "reponse": 5,
+        "unite": "séances",
+        "indices": [
+          "Résous 10x = 30 + 4x.",
+          "Enlève 4x des deux côtés : 6x = 30."
+        ],
+        "solution": "10x = 30 + 4x, 6x = 30, x = 5 séances (50 € dans les deux cas)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le bon choix",
+        "question": "Tu comptes y aller 8 fois dans l'année. Quelle formule est la moins chère ?",
+        "choix": [
+          "La formule A",
+          "La formule B",
+          "C'est pareil"
+        ],
+        "bonne": 1,
+        "explication": "A : 10 × 8 = 80 €. B : 30 + 4 × 8 = 62 €. La formule B est moins chère au-delà de 5 séances."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec un budget",
+        "question": "Tu as 70 € et tu prends la formule B. Combien de séances peux-tu faire au maximum ?",
+        "reponse": 10,
+        "unite": "séances",
+        "indices": [
+          "Résous l'inéquation 30 + 4x ≤ 70.",
+          "4x ≤ 40."
+        ],
+        "solution": "30 + 4x ≤ 70, donc 4x ≤ 40, donc x ≤ 10 : 10 séances au maximum."
+      }
+    ],
+    "conclusion": "Mettre un problème en équation, c'est le transformer en calcul : la méthode marche pour tous les forfaits, abonnements et tarifs."
+  }
+}

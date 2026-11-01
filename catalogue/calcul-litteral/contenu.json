@@ -1,0 +1,198 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une lettre pour un nombre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le périmètre d'un carré de côté 3 cm vaut 4 × 3 = 12 cm ; de côté 5 cm, 4 × 5 = 20 cm. Pour **tous** les carrés à la fois, on écrit : périmètre = **4 × c**, où la lettre **c** représente la longueur du côté.",
+        "Une lettre permet d'écrire une règle valable pour tous les nombres. On abrège 4 × c en **4c**, et c × c en **c²**."
+      ]
+    },
+    {
+      "titre": "Réduire et calculer une valeur",
+      "niveau": "5e",
+      "paragraphes": [
+        "**Réduire**, c'est regrouper les termes de même nature : 3x + 5x = 8x ; 2a + 3 + a = 3a + 3. Mais 3x + 2 ne se réduit pas : on ne mélange pas les x et les nombres seuls.",
+        "Pour **calculer la valeur** d'une expression, on remplace la lettre par un nombre : pour x = 4, 3x + 2 = 3 × 4 + 2 = 14."
+      ]
+    },
+    {
+      "titre": "Développer",
+      "niveau": "4e",
+      "paragraphes": [
+        "**Développer**, c'est transformer un produit en somme. Distributivité simple : **k(a + b) = ka + kb**. Exemple : 5(x − 2) = 5x − 10.",
+        "**Double distributivité** : (a + b)(c + d) = ac + ad + bc + bd : chaque terme du premier facteur multiplie chaque terme du second."
+      ],
+      "exemple": {
+        "titre": "Exemple : développer (x + 2)(x + 3)",
+        "etapes": [
+          "x × x + x × 3 + 2 × x + 2 × 3",
+          "= x² + 3x + 2x + 6",
+          "= x² + 5x + 6 (on réduit)."
+        ]
+      }
+    },
+    {
+      "titre": "Factoriser et identités remarquables",
+      "niveau": "3e",
+      "paragraphes": [
+        "**Factoriser**, c'est l'inverse : transformer une somme en produit, en repérant un **facteur commun**. 6x + 9 = 3(2x + 3) ; x² + 5x = x(x + 5).",
+        "Trois **identités remarquables** à connaître : **(a + b)² = a² + 2ab + b²**, **(a − b)² = a² − 2ab + b²** et **(a + b)(a − b) = a² − b²**.",
+        "Exemple : x² − 9 = x² − 3² = (x − 3)(x + 3)."
+      ],
+      "aRetenir": "Piège classique : (x + 3)² n'est pas égal à x² + 9. Il manque le double produit 2 × x × 3 = 6x."
+    },
+    {
+      "titre": "Plus loin : prouver avec des lettres",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Le calcul littéral permet de **démontrer** une propriété pour tous les nombres. Trois entiers consécutifs s'écrivent n, n + 1 et n + 2. Leur somme vaut 3n + 3 = 3(n + 1) : c'est **toujours un multiple de 3**.",
+        "Factoriser sert aussi à résoudre des équations : x² − 9 = 0 équivaut à (x − 3)(x + 3) = 0, donc x = 3 ou x = −3."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à réduire, développer et factoriser.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Réduire",
+        "question": "Quelle est la forme réduite de 4x + 3 + 2x ?",
+        "choix": [
+          "6x + 3",
+          "9x",
+          "6x + 3x"
+        ],
+        "bonne": 0,
+        "explication": "On regroupe les x : 4x + 2x = 6x, et on garde le 3 : 6x + 3.",
+        "indice": "On ne peut pas ajouter des x et des nombres seuls."
+      },
+      {
+        "type": "nombre",
+        "titre": "Calculer une valeur",
+        "question": "Calcule 3x² − 2x pour x = 4.",
+        "reponse": 40,
+        "indices": [
+          "Remplace x par 4 : 3 × 4² − 2 × 4.",
+          "4² = 16, donc 3 × 16 = 48."
+        ],
+        "solution": "3 × 16 − 8 = 48 − 8 = 40."
+      },
+      {
+        "type": "qcm",
+        "titre": "Développer",
+        "question": "Quel est le développement de 5(x − 2) ?",
+        "choix": [
+          "5x − 10",
+          "5x − 2",
+          "5x + 10"
+        ],
+        "bonne": 0,
+        "explication": "5 multiplie x et 2 : 5 × x − 5 × 2 = 5x − 10.",
+        "indice": "Le 5 doit multiplier chaque terme de la parenthèse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Identité remarquable",
+        "question": "Quel est le développement de (x + 3)² ?",
+        "choix": [
+          "x² + 9",
+          "x² + 6x + 9",
+          "x² + 3x + 9"
+        ],
+        "bonne": 1,
+        "explication": "(x + 3)² = x² + 2 × x × 3 + 3² = x² + 6x + 9.",
+        "indice": "Pense au double produit 2ab."
+      },
+      {
+        "type": "qcm",
+        "titre": "Factoriser",
+        "question": "Quelle est la factorisation de x² − 25 ?",
+        "choix": [
+          "(x − 5)(x + 5)",
+          "(x − 5)²",
+          "x(x − 25)"
+        ],
+        "bonne": 0,
+        "explication": "x² − 25 = x² − 5² = (x − 5)(x + 5), grâce à l'identité a² − b² = (a − b)(a + b).",
+        "indice": "25 = 5² : reconnais-tu a² − b² ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Double distributivité",
+        "question": "On développe (x + 4)(x − 1) et on obtient x² + bx − 4. Combien vaut b ?",
+        "reponse": 3,
+        "indices": [
+          "(x + 4)(x − 1) = x² − x + 4x − 4.",
+          "−x + 4x = ?"
+        ],
+        "solution": "x² − x + 4x − 4 = x² + 3x − 4, donc b = 3."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jardin qui s'agrandit",
+    "histoire": [
+      "Le jardin de Mme Diallo est un carré de côté **x mètres**. Elle décide d'allonger chaque côté de **2 mètres**.",
+      "De combien la surface de son jardin va-t-elle augmenter ? Le calcul littéral va répondre pour toutes les tailles de jardin à la fois !"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "L'aire du nouveau jardin",
+        "question": "Quelle expression donne l'aire du nouveau jardin, en m² ?",
+        "choix": [
+          "x² + 2",
+          "(x + 2)²",
+          "x² + 4"
+        ],
+        "bonne": 1,
+        "explication": "Le nouveau côté mesure x + 2, donc l'aire est (x + 2)².",
+        "indice": "Le nouveau côté mesure x + 2 mètres."
+      },
+      {
+        "type": "qcm",
+        "titre": "Développer",
+        "question": "Quel est le développement de (x + 2)² ?",
+        "choix": [
+          "x² + 4x + 4",
+          "x² + 4",
+          "x² + 2x + 4"
+        ],
+        "bonne": 0,
+        "explication": "(x + 2)² = x² + 2 × x × 2 + 2² = x² + 4x + 4. L'aire augmente donc de 4x + 4 m².",
+        "indice": "Utilise (a + b)² = a² + 2ab + b²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Pour un jardin de 5 m",
+        "question": "Si x = 5, de combien de m² l'aire augmente-t-elle ?",
+        "reponse": 24,
+        "unite": "m²",
+        "indices": [
+          "Ancienne aire : 5² = 25 m². Nouvelle aire : 7² = 49 m².",
+          "Tu peux aussi calculer 4x + 4 avec x = 5."
+        ],
+        "solution": "49 − 25 = 24 m², et on retrouve bien 4 × 5 + 4 = 24."
+      },
+      {
+        "type": "nombre",
+        "titre": "Pour un jardin de 10 m",
+        "question": "Et si x = 10 ?",
+        "reponse": 44,
+        "unite": "m²",
+        "indices": [
+          "L'augmentation vaut 4x + 4."
+        ],
+        "solution": "4 × 10 + 4 = 44 m² (vérification : 12² − 10² = 144 − 100 = 44)."
+      }
+    ],
+    "conclusion": "Avec une seule expression, 4x + 4, tu connais l'augmentation pour tous les jardins carrés : c'est toute la force du calcul littéral."
+  }
+}
