@@ -52,16 +52,16 @@ function langueQuestion(q) {
  */
 export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS, decalage = 0 } = {}) {
   const triees = [...index.maquettes].sort((a, b) => a.id.localeCompare(b.id)).filter((m) => m.id !== exclure);
-  const questionsPourLangue = (maquette) => (maquette.questions ?? []).filter((q) => langueQuestion(q) === langue);
-  const aQuestionsDansLaLangue = triees.some((m) => questionsPourLangue(m).length > 0);
   // Rotation (par exemple selon le jour) : toutes les notions finissent par être proposées.
   const debut = triees.length ? ((decalage % triees.length) + triees.length) % triees.length : 0;
-  const parPage = [...triees.slice(debut), ...triees.slice(0, debut)]
-    .map((m) => {
-      const questions = questionsPourLangue(m);
-      return (questions.length || aQuestionsDansLaLangue ? questions : m.questions ?? [])
-        .map((q) => q.charAt(0).toUpperCase() + q.slice(1));
-    });
+  const tournees = [...triees.slice(debut), ...triees.slice(0, debut)];
+  const parPage = tournees.map((m) => (m.questions ?? [])
+    .filter((q) => langueQuestion(q) === langue)
+    .map((q) => q.charAt(0).toUpperCase() + q.slice(1)));
+  if (!parPage.some((questions) => questions.length)) {
+    parPage.splice(0, parPage.length, ...tournees.map((m) => (m.questions ?? [])
+      .map((q) => q.charAt(0).toUpperCase() + q.slice(1))));
+  }
   const sortie = [];
   for (let rang = 0; sortie.length < max && parPage.some((l) => l.length > rang); rang += 1) {
     for (const l of parPage) if (l[rang] && sortie.length < max && !sortie.includes(l[rang])) sortie.push(l[rang]);

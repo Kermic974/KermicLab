@@ -29,15 +29,23 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
-Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository also ships public examples in `catalogue/`: mathematics, physics and
-chemistry; eight geography topics (`mondialisation`, `mers-oceans`, `union-europeenne`,
-`dynamiques-territoriales`, `france-regions`, `espaces-productifs`, `tourisme` and `afrique-australe`);
-and nine philosophy pages: duty, the state, justice, freedom, language, reason, science, technology and
-truth. The geography topics have progressive middle-to-high-school levels, five self-marking practice
-exercises and a four-step challenge. Numerical scenario data are fictional; review references are in
-each `fiche.md`. Philosophy pages use the common template, with progressive explanations, authors,
-self-correcting quizzes and everyday challenges.
+Additional pages can live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
+read-only token. This repository ships the unit-circle page and public template-based examples in mathematics,
+physics-chemistry, geography and philosophy.
+
+The geography catalogue covers **metropolisation, urbanisation, rural spaces, natural hazards,
+climate change, resources, mobility, migration and French territories**, plus eight globalisation topics
+(`mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
+`espaces-productifs`, `tourisme` and `afrique-australe`). Each French-language page progresses from
+intuition or middle school through high school, with case studies, corrected exercises and an everyday
+challenge. The globalisation topics use five self-marking practice exercises and a four-step challenge;
+numerical scenario data are fictional and review references are in each `fiche.md`. Pages are generated
+from `catalogue/<id>/contenu.json`; see [the template guide](docs/gabarit.md). Human review of geographical
+accuracy is required before merging.
+
+The nine philosophy pages cover duty, the state, justice, freedom, language, reason, science, technology
+and truth. They use the common template, with progressive explanations, authors, self-correcting quizzes
+and everyday challenges.
 
 ## Quick start
 

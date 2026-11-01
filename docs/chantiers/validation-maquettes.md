@@ -13,4 +13,4 @@ Prochaines étapes :
 Les huit notions publiques ajoutées le 2026-11-01 suivent le gabarit commun, avec niveaux collège → lycée,
 exercices corrigés et références dans leurs fiches. Les tests vérifient le routage, les repères sensibles,
 les calculs, les indices après erreur et le rendu mobile ; ils ne remplacent pas la relecture géographique humaine.
-La validation pédagogique du CODEOWNER reste à faire : voir l'action 22 dans [les actions manuelles](../actions-manuelles.md).
+La validation pédagogique du CODEOWNER reste à faire : voir l'action 25 dans [les actions manuelles](../actions-manuelles.md).

@@ -10,8 +10,7 @@ onglets: explication, application, mise-en-situation
 mots-cles:
   - dynamique territoriale
   - dynamiques territoriales
-  - metropolisation
-  - periurbanisation
+  - difference entre metropolisation et periurbanisation
   - mobilites quotidiennes
   - amenagement du territoire
 questions:

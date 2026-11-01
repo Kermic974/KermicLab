@@ -28,15 +28,23 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
-Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
-jeton en lecture seule. Ce dépôt contient aussi des exemples publics dans `catalogue/` : mathématiques,
-physique-chimie, huit notions de géographie (`mondialisation`, `mers-oceans`, `union-europeenne`,
-`dynamiques-territoriales`, `france-regions`, `espaces-productifs`, `tourisme` et `afrique-australe`) et
-neuf pages de philosophie : devoir, État, justice, liberté, langage, raison, science, technique et vérité.
-Chaque notion de géographie propose des niveaux du collège au lycée, cinq exercices auto-corrigés et un
-défi en quatre étapes. Les données chiffrées des scénarios sont fictives ; les références de relecture
-figurent dans chaque `fiche.md`. Les pages de philosophie utilisent le gabarit commun : explications
-progressives, auteurs, QCM auto-corrigés et défis de la vie quotidienne.
+Des maquettes supplémentaires peuvent vivre dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
+jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics fondés sur le gabarit
+en mathématiques, physique-chimie, géographie et philosophie.
+
+Le catalogue de géographie couvre **métropolisation, urbanisation, espaces ruraux, risques naturels,
+changement climatique, ressources, mobilités, migrations et territoires français**, ainsi que huit notions
+de mondialisation (`mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`,
+`france-regions`, `espaces-productifs`, `tourisme` et `afrique-australe`). Chaque page en français
+progresse de l'intuition ou du collège jusqu'au lycée, avec des cas d'étude, des exercices corrigés et un
+défi du quotidien. Les notions de mondialisation proposent cinq exercices auto-corrigés et un défi en
+quatre étapes ; les données chiffrées des scénarios sont fictives et les références de relecture figurent
+dans chaque `fiche.md`. Les pages sont générées depuis `catalogue/<id>/contenu.json` ; voir
+[le guide du gabarit](docs/gabarit.md). Une relecture humaine de l'exactitude géographique est requise avant fusion.
+
+Les neuf pages de philosophie couvrent le devoir, l’État, la justice, la liberté, le langage, la raison,
+la science, la technique et la vérité. Elles utilisent le gabarit commun : explications progressives,
+auteurs, QCM auto-corrigés et défis de la vie quotidienne.
 
 ## Démarrage rapide
 

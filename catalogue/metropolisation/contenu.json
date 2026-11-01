@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue au détective des villes : une grande population ne suffit pas à expliquer leur influence.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une ville qui organise des réseaux", "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **métropole** rassemble des activités qui organisent un territoire : universités, grands services, centres de décision, transports. La **métropolisation** renforce la concentration de ces fonctions et des populations dans les grandes villes.",
+        "L'**urbanisation** désigne l'augmentation de la part des habitants vivant en ville. Une ville peut grandir sans devenir un grand centre de décision. Paris accueille des sièges d'entreprises et des institutions qui influencent des territoires bien au-delà de ses limites."
+      ],
+      "exemple": { "titre": "Carte mentale : Paris et ses liens", "etapes": [
+        "Au centre de ta feuille fictive, écris Paris : repère une université et un siège d'entreprise.",
+        "Trace une branche vers les communes voisines : logements et trajets quotidiens.",
+        "Trace une branche vers d'autres pays : échanges de connaissances et décisions économiques."
+      ] },
+      "aRetenir": "Grandir en habitants et concentrer des fonctions de commandement sont deux phénomènes liés, mais différents."
+    },
+    {
+      "titre": "Collège : des habitants et des acteurs inégalement reliés", "niveau": "collège",
+      "paragraphes": [
+        "Les emplois, les équipements et les réseaux attirent des personnes et des entreprises. Mais les prix du logement, les temps de trajet et l'accès aux services sont inégaux entre quartiers. Tous les habitants ne profitent pas de la même manière de l'attractivité.",
+        "À Lyon, les liens entre universités, entreprises et transports participent au rayonnement métropolitain. Les communes, les intercommunalités, l'État, les entreprises et les habitants négocient des aménagements. En outre-mer, Fort-de-France organise des services à l'échelle de la Martinique sans avoir le même poids mondial que Paris."
+      ],
+      "exemple": { "titre": "Carte mentale : comparer sans classer les habitants", "etapes": [
+        "Écris Lyon et Fort-de-France sur deux branches : quelles fonctions de services trouve-t-on ?",
+        "Ajoute les territoires desservis : région pour certaines fonctions, île pour d'autres.",
+        "Ajoute une contrainte : coût du logement ou transport ; identifie les acteurs capables d'agir."
+      ] },
+      "aRetenir": "L'influence d'une métropole se mesure par ses fonctions et ses liens ; elle n'efface pas les inégalités."
+    },
+    {
+      "titre": "Lycée : hiérarchies, coopération et arbitrages", "niveau": "lycée",
+      "paragraphes": [
+        "La métropolisation produit une **hiérarchie urbaine** : certaines villes concentrent davantage de commandement, de recherche et de connexions internationales. Les métropoles coopèrent et se concurrencent ; les villes petites et moyennes restent essentielles à leurs territoires.",
+        "Les politiques de logement abordable, de transports collectifs et de limitation de l'artificialisation peuvent réduire certains déséquilibres. Elles doivent composer avec les budgets, le foncier, les besoins des habitants et l'environnement. Un quartier d'affaires ne résume ni la ville entière ni tous ses emplois."
+      ],
+      "exemple": { "titre": "Carte mentale : un projet de quartier à Lyon", "etapes": [
+        "Branche locale : habitants, loyers et accès aux commerces.",
+        "Branche régionale : trains, universités et emplois reliés aux autres villes.",
+        "Branche mondiale : entreprises en réseau ; compare les bénéfices du projet à ses coûts sociaux et écologiques."
+      ] },
+      "aRetenir": "Changer d'échelle et croiser les acteurs permet d'évaluer un projet métropolitain, pas seulement son prestige."
+    }
+  ],
+  "application": {
+    "intro": "Associe chaque situation à une notion, un acteur ou une échelle.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Quel indice caractérise surtout la métropolisation ?", "choix": ["La concentration de centres de décision et de recherche", "Toute augmentation du nombre de maisons", "Une baisse de la part des habitants en ville"], "bonne": 0, "indice": "Cherche une fonction qui organise d'autres territoires.", "explication": "Les fonctions de commandement et de recherche distinguent la métropolisation d'une simple croissance du bâti." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui peut organiser un réseau de transports reliant plusieurs communes ?", "choix": ["Chaque commune sans aucune coordination", "Une intercommunalité compétente, avec ses partenaires", "Les seules entreprises installées dans le quartier d'affaires"], "bonne": 1, "indice": "Un réseau dépasse les limites d'une commune.", "explication": "Les collectivités compétentes coordonnent le réseau avec des opérateurs et d'autres autorités publiques ; les habitants peuvent participer aux consultations." },
+      { "type": "qcm", "titre": "Échelles", "question": "Un siège à Paris coordonne des filiales dans plusieurs pays. À quelle échelle s'étend ce lien ?", "choix": ["Uniquement celle du bâtiment", "Uniquement celle de la commune", "Internationale"], "bonne": 2, "indice": "Observe où sont les filiales.", "explication": "Les décisions relient plusieurs pays : la fonction locale du siège a une portée internationale." }
+    ]
+  },
+  "situation": {
+    "titre": "Habiter un quartier métropolitain fictif",
+    "histoire": ["Dans la ville inventée de Réseauville, un nouveau pôle de recherche attire des emplois. Sur un plan papier, aide les habitants à conserver des logements accessibles et des trajets raisonnables.", "Le jeu n'utilise ni adresse réelle ni information sur ta famille."],
+    "etapes": [
+      { "type": "qcm", "titre": "Identifier", "question": "Le pôle de recherche coopère avec des laboratoires étrangers. Quel phénomène illustre-t-il ?", "choix": ["Une disparition des villes", "La métropolisation", "Uniquement une hausse des naissances"], "bonne": 1, "indice": "Pense aux fonctions et aux réseaux.", "explication": "La recherche en réseau renforce une fonction métropolitaine ; le nombre d'habitants ne suffit pas à la décrire." },
+      { "type": "qcm", "titre": "Se déplacer", "question": "Quel projet aide les habitants des communes voisines à rejoindre le pôle ?", "choix": ["Une navette réservée aux dirigeants", "Un parking sans liaison avec les communes voisines", "Un transport collectif relié aux quartiers et accessible"], "bonne": 2, "indice": "Cherche un accès pour plusieurs groupes d'habitants.", "explication": "Une liaison accessible facilite les trajets, sous réserve de fréquence, de tarif et de financement adaptés." },
+      { "type": "qcm", "titre": "Arbitrer", "question": "Avant de construire, que doit examiner la collectivité ?", "choix": ["Logement, budget, besoins et effets environnementaux", "Seulement la hauteur des tours", "Seulement le nombre de visiteurs étrangers"], "bonne": 0, "indice": "Un aménagement touche plusieurs dimensions de la vie.", "explication": "Les acteurs publics doivent concilier attractivité, accès au logement, finances et environnement." }
+    ],
+    "conclusion": "Mission accomplie ! Sur papier, invente trois quartiers et relie logements, services et emplois. Joue à observer les accès de personnages fictifs, sans noter de données personnelles ni faire de sortie."
+  }
+}

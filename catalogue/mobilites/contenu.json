@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue avec des trajets imaginaires : aller plus vite ne suffit pas à rendre un lieu accessible à tous.",
+  "niveaux": [
+    {
+      "titre": "Intuition : se déplacer pour des besoins différents", "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les **mobilités** regroupent les déplacements des personnes dans l'espace, à différentes durées et distances : aller à l'école, visiter un proche, partir en vacances ou changer de résidence. Une **migration** est une mobilité avec changement de lieu de résidence habituel ; un trajet quotidien ne l'est pas.",
+        "Un déplacement a une origine, une destination, un motif et un ou plusieurs modes de transport. L'**intermodalité** combine plusieurs modes dans un même trajet, par exemple train puis bus. Le temps, le coût et l'accessibilité comptent autant que la distance."
+      ],
+      "exemple": { "titre": "Carte mentale : rejoindre une bibliothèque", "etapes": [
+        "Branche motif : emprunter un livre ; départ et destination restent fictifs.",
+        "Branche trajet : marcher jusqu'à un arrêt, prendre le bus puis revenir.",
+        "Branche durée : retour le même jour sans changer de résidence ; classe ce trajet parmi les mobilités quotidiennes."
+      ] },
+      "aRetenir": "Les mobilités ne sont pas toutes des migrations ; intermodalité signifie combiner des modes dans un trajet."
+    },
+    {
+      "titre": "Collège : réseaux et accès inégal", "niveau": "collège",
+      "paragraphes": [
+        "Les réseaux de transport relient des lieux mais leur couverture, leurs horaires et leurs tarifs varient. Un lieu proche peut être difficile à atteindre si le trajet n'est pas accessible. Âge, handicap, horaires de travail et budget influencent les possibilités, sans que ces contraintes soient une faute des personnes.",
+        "En métropole, une liaison train-bus peut relier une commune rurale à une ville. En outre-mer, les distances maritimes, le relief et les réseaux disponibles créent d'autres contraintes : en Guyane, certaines liaisons fluviales sont importantes. Collectivités, État, opérateurs et usagers contribuent à l'organisation des déplacements."
+      ],
+      "exemple": { "titre": "Carte mentale : deux réseaux différents", "etapes": [
+        "Branche métropole : gare, bus et correspondance pour un trajet régional.",
+        "Branche Guyane : cours d'eau, lieux desservis et conditions des liaisons.",
+        "Ajoute coût, fréquence et accessibilité ; compare sans supposer qu'un mode convient partout."
+      ] },
+      "aRetenir": "L'accessibilité dépend des réseaux et des situations des usagers, pas seulement du nombre de kilomètres."
+    },
+    {
+      "titre": "Lycée : organiser une transition des déplacements", "niveau": "lycée",
+      "paragraphes": [
+        "Les mobilités structurent les territoires : des gares favorisent certains liens, des périphéries peuvent dépendre de la voiture. Les flux quotidiens, touristiques et résidentiels se croisent à plusieurs échelles. Un gain de vitesse peut aussi encourager des trajets plus longs ; ses effets ne sont pas automatiquement positifs.",
+        "Les politiques de transport combinent accessibilité, réduction des émissions et sécurité. Transports collectifs, aménagements pour les modes actifs et proximité des services peuvent se compléter. Budget, densité, relief et besoins spécifiques imposent des arbitrages ; demander à chacun de changer de mode sans alternative adaptée peut renforcer les inégalités."
+      ],
+      "exemple": { "titre": "Carte mentale : repenser une liaison", "etapes": [
+        "Échelle locale : rejoindre l'arrêt de façon accessible et sûre.",
+        "Échelle régionale : coordonner horaires du train et du bus.",
+        "Échelle nationale : financement et objectifs environnementaux ; comparer émissions, coûts et service rendu."
+      ] },
+      "aRetenir": "Une politique de mobilité doit fournir des alternatives réellement utilisables et adaptées aux territoires."
+    }
+  ],
+  "application": {
+    "intro": "Identifie le déplacement, les organisateurs et le réseau pertinent.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Un personnage prend le train puis le bus dans un même trajet. Cela illustre…", "choix": ["L'intermodalité", "Un changement obligatoire de résidence", "Un trajet réalisé avec un mode unique"], "bonne": 0, "indice": "Il utilise plusieurs modes pour un seul trajet.", "explication": "Combiner train et bus dans un trajet relève de l'intermodalité ; ce n'est pas nécessairement une migration." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Qui organise notamment l'offre de transport public selon les compétences locales ?", "choix": ["Chaque passager isolément", "Les autorités organisatrices avec les opérateurs", "Seulement les constructeurs de véhicules"], "bonne": 1, "indice": "Distingue organisation du réseau et usage du réseau.", "explication": "Les autorités compétentes définissent l'offre et travaillent avec les opérateurs ; les usagers peuvent contribuer aux consultations." },
+      { "type": "qcm", "titre": "Échelles", "question": "Pour un train régional suivi d'un bus urbain, quelle coordination est utile ?", "choix": ["Seulement une organisation à l'intérieur du quartier d'arrivée", "Aucune puisque les modes diffèrent", "Une coordination entre réseaux régional et local"], "bonne": 2, "indice": "Les horaires doivent permettre la correspondance.", "explication": "L'intermodalité relie ici deux échelles ; horaires, tarifs et accessibilité doivent être coordonnés." }
+    ]
+  },
+  "situation": {
+    "titre": "Se déplacer vers la bibliothèque de Trajetville",
+    "histoire": ["À Trajetville, personnage et lieux sont inventés. Pour rejoindre la bibliothèque, un bus arrive près d'une gare où passe un train régional.", "Les horaires et les chemins sont fictifs : ce jeu n'est pas un itinéraire réel ni une invitation à sortir."],
+    "etapes": [
+      { "type": "qcm", "titre": "Classer", "question": "Le personnage va lire puis revient chez lui le jour même. C'est…", "choix": ["Une migration internationale", "Une mobilité sans changement de résidence", "Un déplacement forcément professionnel"], "bonne": 1, "indice": "Le domicile habituel reste le même.", "explication": "Le motif est un loisir ou un service ; le trajet est une mobilité mais pas une migration." },
+      { "type": "qcm", "titre": "Composer", "question": "Avant de choisir bus puis train, que comparer ?", "choix": ["Seulement la couleur des véhicules", "Seulement le nom de la gare", "Correspondance, tarif et accessibilité de tout le trajet"], "bonne": 2, "indice": "Chaque maillon doit fonctionner.", "explication": "Un trajet intermodal nécessite une correspondance possible et un accès adapté sur l'ensemble du parcours." },
+      { "type": "qcm", "titre": "Améliorer", "question": "Le bus arrive après le départ du train. Quelle action collective est pertinente ?", "choix": ["Étudier une coordination des horaires entre organisateurs", "Demander au personnage de traverser dangereusement", "Supprimer toute information sur les horaires"], "bonne": 0, "indice": "Le problème vient de la correspondance.", "explication": "Coordonner les services peut améliorer l'accès ; les décisions doivent considérer coûts et autres trajets des usagers." }
+    ],
+    "conclusion": "Mission accomplie ! Invente sur papier trois horaires et joue à observer les correspondances d'un personnage fictif. Compare deux parcours sans noter tes trajets personnels ni tester un chemin réel."
+  }
+}

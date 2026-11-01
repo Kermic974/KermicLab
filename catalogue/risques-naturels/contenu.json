@@ -1,0 +1,63 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue à lire un plan fictif : le risque dépend d'un phénomène mais aussi de ce qui peut être touché.",
+  "niveaux": [
+    {
+      "titre": "Intuition : phénomène et conséquences possibles", "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **aléa naturel** est la possibilité d'un phénomène d'une certaine intensité, comme une crue ou un séisme. L'**exposition** désigne la présence de personnes, de bâtiments ou d'activités là où ce phénomène peut se produire.",
+        "La **vulnérabilité** est la fragilité des personnes et des biens face au phénomène, ainsi que leurs difficultés à y faire face. Le **risque** résulte de leur rencontre : une crue dans un espace habité n'a pas les mêmes conséquences potentielles qu'une crue dans un espace sans bâtiments."
+      ],
+      "exemple": { "titre": "Carte mentale : une rivière fictive", "etapes": [
+        "Branche aléa : la rivière peut déborder lors de fortes pluies.",
+        "Branche exposition : une école et des maisons sont dans la zone inondable.",
+        "Branche vulnérabilité : bâtiments fragiles et accès difficiles ; relie les trois branches au risque."
+      ] },
+      "aRetenir": "Aléa, exposition et vulnérabilité sont distincts : la présence d'un phénomène ne suffit pas à décrire le risque."
+    },
+    {
+      "titre": "Collège : prévenir et se préparer", "niveau": "collège",
+      "paragraphes": [
+        "Les risques concernent la métropole et l'outre-mer : inondations dans des vallées métropolitaines, séismes aux Antilles, cyclones à La Réunion, par exemple. Leurs caractéristiques varient selon les lieux. Une catastrophe correspond à des dommages graves réellement survenus, pas à la seule existence d'un aléa.",
+        "Les scientifiques surveillent et étudient les phénomènes ; l'État et les collectivités encadrent l'aménagement, organisent l'alerte et les secours. Habitants, associations et entreprises participent à la préparation. Limiter les constructions exposées et renforcer des bâtiments peut réduire le risque, sans garantir qu'il disparaît."
+      ],
+      "exemple": { "titre": "Carte mentale : un séisme aux Antilles", "etapes": [
+        "Aléa : secousses liées aux mouvements tectoniques, dont la date exacte n'est pas prévisible.",
+        "Exposition : population et bâtiments ; vulnérabilité : qualité des constructions et capacités de secours.",
+        "Prévention : règles parasismiques et préparation organisée ; n'invente pas une méthode de prédiction certaine."
+      ] },
+      "aRetenir": "Prévention, préparation, alerte et secours se complètent ; aucune protection ne supprime tous les risques."
+    },
+    {
+      "titre": "Lycée : des choix sociaux et territoriaux", "niveau": "lycée",
+      "paragraphes": [
+        "Un phénomène d'origine naturelle peut causer des dommages très différents selon l'urbanisation, la pauvreté, les équipements et les politiques publiques. La vulnérabilité n'est pas une faute des habitants : elle dépend aussi de conditions de logement et de possibilités d'action inégales.",
+        "Les plans de prévention limitent certains usages du sol et peuvent susciter des tensions avec les besoins de logement ou d'activité. Les digues ont des limites et doivent être entretenues. Les bassins versants dépassent les communes : agir en amont, préserver des zones d'expansion des crues et coopérer peut protéger des territoires en aval."
+      ],
+      "exemple": { "titre": "Carte mentale : prévenir une inondation", "etapes": [
+        "Échelle du quartier : repérer les bâtiments exposés et les besoins d'aide.",
+        "Échelle du bassin versant : relier l'amont et l'aval, y compris les espaces où l'eau peut s'étaler.",
+        "Échelle nationale : cadre réglementaire et financement ; comparer entretien, logement et réduction du risque."
+      ] },
+      "aRetenir": "Réduire le risque demande des arbitrages collectifs à plusieurs échelles et une attention aux inégalités."
+    }
+  ],
+  "application": {
+    "intro": "Ne confonds pas le phénomène, la présence d'enjeux et leur fragilité.",
+    "exercices": [
+      { "type": "qcm", "titre": "Notion", "question": "Des logements sont situés en zone inondable. Quel élément cela décrit-il directement ?", "choix": ["L'exposition", "La vulnérabilité des matériaux de construction", "L'intensité exacte de la prochaine crue"], "bonne": 0, "indice": "Il s'agit de la localisation de biens pouvant être touchés.", "explication": "L'exposition décrit la présence des logements dans la zone de l'aléa ; leur fragilité relève de la vulnérabilité." },
+      { "type": "qcm", "titre": "Acteurs", "question": "Quel rôle revient notamment aux scientifiques dans la prévention ?", "choix": ["Promettre la date exacte de tous les séismes", "Étudier et surveiller les aléas", "Choisir seuls tous les logements à construire"], "bonne": 1, "indice": "Connaître un phénomène ne signifie pas tout prédire.", "explication": "Les scientifiques apportent des connaissances et une surveillance ; les décisions publiques et les secours mobilisent d'autres acteurs." },
+      { "type": "qcm", "titre": "Échelles", "question": "Une crue traverse plusieurs communes. Quel territoire aide à comprendre la circulation de l'eau ?", "choix": ["Seulement le quartier inondé", "Uniquement les limites de la commune en aval", "Le bassin versant"], "bonne": 2, "indice": "Suis l'eau depuis l'amont jusqu'à l'aval.", "explication": "Le bassin versant regroupe les espaces dont les eaux rejoignent un même cours d'eau ou exutoire ; il dépasse souvent les limites administratives." }
+    ]
+  },
+  "situation": {
+    "titre": "Habiter près de la rivière de Papierbourg",
+    "histoire": ["Papierbourg est fictif. Sur son plan, une zone est connue comme inondable et la commune prépare un projet de logements.", "Ce jeu apprend à comparer des choix d'aménagement, pas à improviser des gestes de secours. En situation réelle, on suit les consignes officielles et celles des adultes responsables."],
+    "etapes": [
+      { "type": "qcm", "titre": "Repérer", "question": "La possibilité d'une crue importante est…", "choix": ["Une activité touristique", "Un aléa", "La solidité du bâtiment"], "bonne": 1, "indice": "C'est le phénomène possible.", "explication": "L'aléa décrit la possibilité et l'intensité du phénomène, pas la localisation ou la fragilité des logements." },
+      { "type": "qcm", "titre": "Aménager", "question": "Quel choix réduit directement l'exposition des nouveaux logements à cette crue ?", "choix": ["Ajouter un panneau décoratif", "Supposer qu'une digue rend tout risque impossible", "Étudier un site hors de la zone inondable, selon les règles"], "bonne": 2, "indice": "Changer la localisation change l'exposition.", "explication": "Éviter une zone exposée réduit ce risque pour le projet ; il faut aussi examiner les autres contraintes et aléas du site." },
+      { "type": "qcm", "titre": "Préparer", "question": "Comment améliorer la préparation de la commune ?", "choix": ["Organiser un plan et une information accessibles avec les autorités", "Compter uniquement sur une rumeur", "Envoyer des enfants observer la crue"], "bonne": 0, "indice": "La préparation doit être organisée et sans mise en danger.", "explication": "L'information officielle et la préparation collective réduisent la vulnérabilité ; observer une crue sur place est dangereux." }
+    ],
+    "conclusion": "Mission accomplie ! Sur papier, joue à observer un plan inventé et colorie séparément aléa, exposition et vulnérabilité. Ne collecte aucune adresse et ne va jamais près d'un phénomène dangereux."
+  }
+}
