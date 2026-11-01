@@ -1,0 +1,154 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un corps qui change",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Entre 10 et 16 ans environ, le corps se transforme : c'est la **puberté**. Les organes reproducteurs deviennent fonctionnels : le corps devient capable de se reproduire.",
+        "Chacun vit ces changements à son rythme : c'est normal d'en parler avec un adulte de confiance ou un professionnel de santé."
+      ]
+    },
+    {
+      "titre": "La puberté",
+      "niveau": "4e",
+      "paragraphes": [
+        "La puberté est déclenchée par des **hormones**. Apparaissent les **caractères sexuels secondaires** (poils, voix plus grave, développement des seins…).",
+        "Chez le garçon, les testicules produisent des **spermatozoïdes** en continu. Chez la fille, les ovaires libèrent environ un **ovule** par cycle, qui dure en moyenne 28 jours : c'est le **cycle menstruel** (l'ovulation a lieu vers le 14e jour)."
+      ]
+    },
+    {
+      "titre": "La fécondation",
+      "niveau": "4e",
+      "paragraphes": [
+        "La **fécondation** est la rencontre d'un spermatozoïde et d'un ovule, dans une **trompe**. Elle donne une **cellule-œuf**, première cellule d'un nouvel individu.",
+        "Chaque cellule reproductrice (gamète) contient **23 chromosomes** ; la cellule-œuf en a **46** : la moitié vient de chaque parent."
+      ]
+    },
+    {
+      "titre": "La grossesse",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "La cellule-œuf se divise et s'implante dans la paroi de l'utérus (nidation). Pendant environ **9 mois**, l'embryon puis le fœtus se développe.",
+        "Le **placenta** assure les échanges entre le sang de la mère et celui du fœtus : nutriments et dioxygène dans un sens, déchets dans l'autre. L'alcool, le tabac et certains médicaments le traversent aussi : ils sont dangereux pour le fœtus."
+      ]
+    },
+    {
+      "titre": "Santé et responsabilité",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Des méthodes de **contraception** permettent d'éviter une grossesse non désirée. Seul le **préservatif** protège aussi des **infections sexuellement transmissibles** (IST).",
+        "En cas de question, l'infirmière scolaire, le médecin ou un centre de santé sexuelle peuvent répondre, de façon confidentielle."
+      ],
+      "aRetenir": "Tes questions sont légitimes : demande à un adulte de confiance ou à un professionnel de santé."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur la reproduction humaine.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Le lieu",
+        "question": "Où a lieu la fécondation chez la femme ?",
+        "choix": [
+          "Dans une trompe",
+          "Dans l'ovaire",
+          "Dans le vagin"
+        ],
+        "bonne": 0,
+        "explication": "L'ovule libéré par l'ovaire est fécondé dans une trompe."
+      },
+      {
+        "type": "nombre",
+        "titre": "Chromosomes d'un gamète",
+        "question": "Combien de chromosomes contient un spermatozoïde humain ?",
+        "reponse": 23,
+        "indices": [
+          "C'est la moitié des chromosomes d'une cellule du corps."
+        ],
+        "solution": "23 chromosomes (un de chaque paire)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Chromosomes de la cellule-œuf",
+        "question": "Combien de chromosomes contient la cellule-œuf ?",
+        "reponse": 46,
+        "indices": [
+          "23 viennent du spermatozoïde, 23 de l'ovule."
+        ],
+        "solution": "23 + 23 = 46 chromosomes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le placenta",
+        "question": "Quel est le rôle du placenta ?",
+        "choix": [
+          "Assurer les échanges entre la mère et le fœtus",
+          "Produire les ovules",
+          "Protéger contre les IST"
+        ],
+        "bonne": 0,
+        "explication": "Nutriments et dioxygène passent de la mère au fœtus, les déchets du fœtus vers la mère."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les IST",
+        "question": "Quel moyen protège à la fois d'une grossesse et des IST ?",
+        "choix": [
+          "Le préservatif",
+          "La pilule",
+          "Aucun"
+        ],
+        "bonne": 0,
+        "explication": "Le préservatif est le seul moyen de contraception qui protège aussi des IST."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "De la cellule-œuf au bébé",
+    "histoire": [
+      "Toute vie humaine commence par une seule cellule, la cellule-œuf.",
+      "Retrace les grandes étapes, avec des repères chiffrés."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "L'ovulation",
+        "question": "Dans un cycle menstruel moyen de 28 jours, vers quel jour a lieu l'ovulation ?",
+        "reponse": 14,
+        "unite": "e jour",
+        "indices": [
+          "Elle a lieu environ au milieu du cycle."
+        ],
+        "solution": "Vers le 14e jour (cela varie d'une personne et d'un cycle à l'autre)."
+      },
+      {
+        "type": "nombre",
+        "titre": "La cellule-œuf",
+        "question": "Combien de chromosomes possède chaque cellule du futur bébé, issue de la cellule-œuf ?",
+        "reponse": 46,
+        "indices": [
+          "Toutes les cellules du corps proviennent des divisions de la cellule-œuf."
+        ],
+        "solution": "46 chromosomes, comme la cellule-œuf."
+      },
+      {
+        "type": "nombre",
+        "titre": "La grossesse",
+        "question": "Combien de mois dure environ une grossesse ?",
+        "reponse": 9,
+        "unite": "mois",
+        "indices": [
+          "Environ 39 semaines."
+        ],
+        "solution": "Environ 9 mois."
+      }
+    ],
+    "conclusion": "Bravo ! D'une seule cellule à des milliers de milliards : la fabrication d'un être humain est l'une des aventures les plus étonnantes du vivant."
+  }
+}

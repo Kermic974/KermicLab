@@ -1,0 +1,158 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une Terre qui bouge",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La surface de la Terre semble immobile, mais elle bouge en permanence, de quelques centimètres par an, à peu près la vitesse de pousse des ongles. Ces mouvements provoquent séismes et éruptions volcaniques."
+      ]
+    },
+    {
+      "titre": "Les séismes",
+      "niveau": "4e",
+      "paragraphes": [
+        "Un **séisme** se produit quand des roches soumises à de fortes contraintes **se cassent** brusquement en profondeur, au **foyer**. Le point de la surface situé juste au-dessus est l'**épicentre**.",
+        "L'énergie libérée se propage sous forme d'**ondes sismiques**, enregistrées par des sismographes. La **magnitude** mesure l'énergie libérée. On ne sait pas prévoir les séismes : on s'en protège par des constructions parasismiques et les bons gestes (s'abriter sous une table solide)."
+      ]
+    },
+    {
+      "titre": "Les volcans",
+      "niveau": "4e",
+      "paragraphes": [
+        "Un volcan émet du **magma** (roche fondue) venu des profondeurs. Une éruption **effusive** produit des coulées de **lave fluide** (Piton de la Fournaise à La Réunion, volcans d'Hawaï). Une éruption **explosive** projette des cendres et des **nuées ardentes** très dangereuses, car la lave est **visqueuse** et retient les gaz (montagne Pelée en Martinique, 1902).",
+        "Les volcanologues **surveillent** les volcans actifs pour prévenir les populations."
+      ]
+    },
+    {
+      "titre": "La tectonique des plaques",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "La couche externe rigide de la Terre, la **lithosphère**, est découpée en **plaques** qui se déplacent de quelques centimètres par an.",
+        "Elles **s'écartent** au niveau des **dorsales** océaniques, où se forme une nouvelle croûte ; elles **se rapprochent** au niveau des zones de **subduction**, où une plaque plonge sous l'autre. La plupart des séismes et des volcans se situent aux **frontières des plaques**."
+      ],
+      "aRetenir": "Séismes et volcans dessinent les contours des plaques tectoniques."
+    },
+    {
+      "titre": "Plus loin : les points chauds",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "Certains volcans se trouvent au milieu d'une plaque, au-dessus d'un **point chaud** : une remontée de roches chaudes depuis le manteau profond. **La Réunion** et **Hawaï** sont des volcans de point chaud.",
+        "La plaque se déplaçant au-dessus du point chaud, il se forme des chapelets d'îles de plus en plus vieilles (Maurice est plus ancienne que La Réunion)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les séismes, les volcans et les plaques.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Épicentre",
+        "question": "Comment s'appelle le point de la surface situé juste au-dessus du foyer d'un séisme ?",
+        "choix": [
+          "L'épicentre",
+          "Le cratère",
+          "La dorsale"
+        ],
+        "bonne": 0,
+        "explication": "Le foyer est en profondeur, l'épicentre à la surface."
+      },
+      {
+        "type": "qcm",
+        "titre": "Effusif",
+        "question": "Une éruption effusive se caractérise par…",
+        "choix": [
+          "des coulées de lave fluide",
+          "des nuées ardentes",
+          "aucune émission de lave"
+        ],
+        "bonne": 0,
+        "explication": "La lave fluide laisse s'échapper les gaz : elle s'écoule en coulées."
+      },
+      {
+        "type": "nombre",
+        "titre": "Déplacement des plaques",
+        "question": "Une plaque se déplace de 2 cm par an. De combien de kilomètres se déplace-t-elle en 1 million d'années ?",
+        "reponse": 20,
+        "unite": "km",
+        "indices": [
+          "2 cm × 1 000 000 = 2 000 000 cm.",
+          "1 km = 100 000 cm."
+        ],
+        "solution": "2 000 000 cm = 20 km."
+      },
+      {
+        "type": "qcm",
+        "titre": "La Réunion",
+        "question": "Quelle est l'origine du volcanisme de La Réunion ?",
+        "choix": [
+          "Un point chaud",
+          "Une zone de subduction",
+          "Une dorsale"
+        ],
+        "bonne": 0,
+        "explication": "La Réunion est au milieu de la plaque africaine, au-dessus d'un point chaud."
+      },
+      {
+        "type": "nombre",
+        "titre": "Ondes sismiques",
+        "question": "Des ondes sismiques se propagent à 6 km/s. Combien de secondes mettent-elles pour parcourir 300 km ?",
+        "reponse": 50,
+        "unite": "s",
+        "indices": [
+          "t = d / v."
+        ],
+        "solution": "300 ÷ 6 = 50 s."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le Piton de la Fournaise",
+    "histoire": [
+      "Le Piton de la Fournaise, à La Réunion, est l'un des volcans les plus actifs du monde : il entre en éruption presque chaque année.",
+      "L'observatoire volcanologique suit chaque éruption de près."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Le type d'éruption",
+        "question": "Ses éruptions produisent de longues coulées de lave fluide. Elles sont…",
+        "choix": [
+          "effusives",
+          "explosives"
+        ],
+        "bonne": 0,
+        "explication": "Lave fluide et coulées : ce sont des éruptions effusives."
+      },
+      {
+        "type": "nombre",
+        "titre": "La vitesse d'une coulée",
+        "question": "Une coulée avance de 300 m en 10 minutes. Quelle est sa vitesse, en mètres par minute ?",
+        "reponse": 30,
+        "unite": "m/min",
+        "indices": [
+          "v = d / t."
+        ],
+        "solution": "300 ÷ 10 = 30 m/min."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le risque principal",
+        "question": "Quel est le principal risque de ses éruptions pour les habitants ?",
+        "choix": [
+          "Des coulées de lave qui coupent les routes et peuvent détruire des constructions",
+          "Des nuées ardentes qui rasent les villes",
+          "Un tsunami géant à chaque éruption"
+        ],
+        "bonne": 0,
+        "explication": "Les coulées sont lentes et prévisibles : on évacue et on ferme les routes, comme sur la route des Laves."
+      }
+    ],
+    "conclusion": "Bravo ! Les éruptions du Piton de la Fournaise attirent des visiteurs du monde entier : un volcan effusif bien surveillé se laisse observer."
+  }
+}

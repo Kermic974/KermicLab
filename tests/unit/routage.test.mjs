@@ -17,7 +17,7 @@ test("déterminisme : même question, même résultat", () => {
 });
 
 test("questions non couvertes → aucune maquette", () => {
-  for (const q of ["c'est quoi un volcan ?", "bonjour", "j'ai une sinusite", "explique la photosynthèse"]) {
+  for (const q of ["qui était Napoléon ?", "bonjour", "j'ai une sinusite", "explique-moi le passé simple"]) {
     assert.equal(routerLocal(q, index), null, q);
   }
 });

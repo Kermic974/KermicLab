@@ -1,0 +1,158 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : fabriquer sa propre nourriture",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un animal doit manger pour vivre. Une plante verte, elle, **fabrique sa propre matière** à partir de l'eau, de l'air et de la lumière du Soleil : c'est la **photosynthèse**.",
+        "Un chêne de plusieurs tonnes est essentiellement fait… de dioxyde de carbone de l'air et d'eau !"
+      ]
+    },
+    {
+      "titre": "Les besoins des végétaux",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Une plante verte a besoin d'**eau** et de **sels minéraux** (puisés par les racines), de **dioxyde de carbone** (qui entre par les **stomates** des feuilles) et de **lumière**.",
+        "Sans lumière, une plante verte ne peut pas produire de matière : elle finit par mourir."
+      ]
+    },
+    {
+      "titre": "La photosynthèse",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Dans les **chloroplastes**, grâce à la **chlorophylle** (le pigment vert) et à l'énergie lumineuse : **dioxyde de carbone + eau → matière organique (glucose) + dioxygène**.",
+        "Le glucose est souvent stocké sous forme d'**amidon**, que l'on repère avec l'**eau iodée** : elle devient **bleu-noir** en sa présence."
+      ],
+      "aRetenir": "La photosynthèse consomme du CO₂ et rejette du dioxygène : elle est à l'origine de l'oxygène que nous respirons."
+    },
+    {
+      "titre": "Les producteurs primaires",
+      "niveau": "4e / seconde",
+      "paragraphes": [
+        "Les végétaux chlorophylliens sont des **producteurs primaires** : toute la matière des chaînes alimentaires vient d'eux. En fixant du CO₂, forêts et océans (grâce au phytoplancton) limitent aussi l'effet de serre."
+      ]
+    },
+    {
+      "titre": "Plus loin : l'équation bilan",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "**6 CO₂ + 6 H₂O → C₆H₁₂O₆ + 6 O₂** (en présence de lumière et de chlorophylle).",
+        "Les plantes **respirent** aussi, jour et nuit ; mais à la lumière, la photosynthèse l'emporte : la plante rejette alors globalement du dioxygène."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les besoins des plantes et la photosynthèse.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Le gaz rejeté",
+        "question": "Quel gaz une plante rejette-t-elle lors de la photosynthèse ?",
+        "choix": [
+          "Le dioxygène",
+          "Le dioxyde de carbone",
+          "L'azote"
+        ],
+        "bonne": 0,
+        "explication": "Elle absorbe du CO₂ et rejette du dioxygène."
+      },
+      {
+        "type": "qcm",
+        "titre": "Où ?",
+        "question": "Dans quelles structures de la cellule se déroule la photosynthèse ?",
+        "choix": [
+          "Les chloroplastes",
+          "Le noyau",
+          "La vacuole"
+        ],
+        "bonne": 0,
+        "explication": "Les chloroplastes contiennent la chlorophylle."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'eau iodée",
+        "question": "En présence d'amidon, l'eau iodée devient…",
+        "choix": [
+          "bleu-noir",
+          "rouge",
+          "incolore"
+        ],
+        "bonne": 0,
+        "explication": "C'est le test classique de l'amidon."
+      },
+      {
+        "type": "nombre",
+        "titre": "Équation",
+        "question": "Complète : 6 CO₂ + 6 H₂O → C₆H₁₂O₆ + n O₂. Combien vaut n ?",
+        "reponse": 6,
+        "indices": [
+          "Compte les atomes d'oxygène : à gauche 12 + 6 = 18, dans le glucose 6."
+        ],
+        "solution": "18 − 6 = 12 atomes O, soit 6 O₂."
+      },
+      {
+        "type": "qcm",
+        "titre": "À l'obscurité",
+        "question": "Une plante est gardée 48 heures dans le noir, puis on teste ses feuilles à l'eau iodée. Que constate-t-on ?",
+        "choix": [
+          "Elles ne contiennent pas d'amidon",
+          "Elles contiennent beaucoup d'amidon",
+          "Elles deviennent rouges"
+        ],
+        "bonne": 0,
+        "explication": "Sans lumière, pas de photosynthèse : la plante a utilisé ses réserves d'amidon."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'expérience du cache",
+    "histoire": [
+      "On recouvre une partie d'une feuille d'un cache opaque (en papier aluminium), puis on laisse la plante deux jours à la lumière.",
+      "On décolore ensuite la feuille et on la plonge dans l'eau iodée."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "La partie éclairée",
+        "question": "Que devient la partie éclairée de la feuille ?",
+        "choix": [
+          "Bleu-noir",
+          "Jaune-orangé",
+          "Transparente"
+        ],
+        "bonne": 0,
+        "explication": "Elle a fait de la photosynthèse et contient de l'amidon."
+      },
+      {
+        "type": "qcm",
+        "titre": "La partie cachée",
+        "question": "Et la partie cachée ?",
+        "choix": [
+          "Bleu-noir",
+          "Jaune-orangé (couleur de l'eau iodée)"
+        ],
+        "bonne": 1,
+        "explication": "Pas de lumière, pas de photosynthèse, donc pas d'amidon."
+      },
+      {
+        "type": "qcm",
+        "titre": "La conclusion",
+        "question": "Que montre cette expérience ?",
+        "choix": [
+          "La lumière est nécessaire à la production d'amidon par la feuille",
+          "L'eau iodée tue les cellules",
+          "Le papier aluminium produit de l'amidon"
+        ],
+        "bonne": 0,
+        "explication": "Seule la partie éclairée a produit de l'amidon : la lumière est indispensable."
+      }
+    ],
+    "conclusion": "Bravo ! Tu viens de refaire une expérience historique de la biologie végétale."
+  }
+}

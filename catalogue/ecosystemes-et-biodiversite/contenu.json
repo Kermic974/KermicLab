@@ -1,0 +1,157 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : tout est lié",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans une forêt, les arbres nourrissent les chenilles, qui nourrissent les mésanges, qui sont mangées par l'épervier. Les feuilles mortes sont recyclées par les vers de terre et les champignons. Chaque être vivant dépend des autres.",
+        "Un milieu de vie et l'ensemble des êtres vivants qui l'habitent forment un **écosystème**."
+      ]
+    },
+    {
+      "titre": "Chaînes et réseaux alimentaires",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "Une **chaîne alimentaire** commence toujours par un **producteur** (végétal chlorophyllien), suivi de **consommateurs**. La flèche se lit « est mangé par » : herbe → lapin → renard.",
+        "Les chaînes s'entrecroisent en **réseaux trophiques**. Les **décomposeurs** (bactéries, champignons, vers de terre) transforment les restes et cadavres en sels minéraux, réutilisés par les plantes."
+      ]
+    },
+    {
+      "titre": "Le transfert d'énergie",
+      "niveau": "4e / seconde",
+      "paragraphes": [
+        "À chaque maillon, une grande partie de l'énergie est perdue (respiration, chaleur, déchets) : en moyenne, **environ 10 %** seulement passe au niveau suivant.",
+        "C'est pourquoi les chaînes alimentaires sont courtes et les grands prédateurs peu nombreux."
+      ]
+    },
+    {
+      "titre": "La biodiversité et ses menaces",
+      "niveau": "5e / 3e",
+      "paragraphes": [
+        "La **biodiversité** est la diversité du vivant : diversité des écosystèmes, des espèces et des gènes au sein d'une espèce.",
+        "Elle est menacée par la **destruction des habitats** (première cause), les pollutions, la surexploitation (pêche, chasse), les **espèces invasives** et le changement climatique."
+      ],
+      "aRetenir": "Protéger un habitat protège toutes les espèces qui y vivent."
+    },
+    {
+      "titre": "Plus loin : agir",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Aires protégées, corridors écologiques (haies, passages à faune), réduction des pesticides, gestion durable de la pêche : de nombreuses actions permettent de préserver la biodiversité, dont dépendent notre alimentation, nos médicaments et la pollinisation."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les chaînes alimentaires et la biodiversité.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Producteur",
+        "question": "Dans la chaîne herbe → lapin → renard, qui est le producteur ?",
+        "choix": [
+          "L'herbe",
+          "Le lapin",
+          "Le renard"
+        ],
+        "bonne": 0,
+        "explication": "Le producteur est le végétal chlorophyllien, qui fabrique sa matière par photosynthèse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Décomposeurs",
+        "question": "Lesquels sont des décomposeurs ?",
+        "choix": [
+          "Les vers de terre et les champignons",
+          "Les lapins",
+          "Les arbres"
+        ],
+        "bonne": 0,
+        "explication": "Ils recyclent la matière morte en sels minéraux."
+      },
+      {
+        "type": "nombre",
+        "titre": "Énergie (1)",
+        "question": "L'herbe d'une prairie contient 10 000 kJ d'énergie. Environ combien en passe dans les lapins (10 %) ?",
+        "reponse": 1000,
+        "unite": "kJ",
+        "indices": [
+          "10 % de 10 000."
+        ],
+        "solution": "10 000 × 0,1 = 1 000 kJ."
+      },
+      {
+        "type": "nombre",
+        "titre": "Énergie (2)",
+        "question": "Et combien en passe ensuite dans les renards ?",
+        "reponse": 100,
+        "unite": "kJ",
+        "indices": [
+          "10 % de 1 000."
+        ],
+        "solution": "1 000 × 0,1 = 100 kJ : seulement 1 % de l'énergie de départ."
+      },
+      {
+        "type": "qcm",
+        "titre": "La menace principale",
+        "question": "Quelle est la première cause de perte de biodiversité ?",
+        "choix": [
+          "La destruction des habitats",
+          "Les tremblements de terre",
+          "La photosynthèse"
+        ],
+        "bonne": 0,
+        "explication": "Déforestation, urbanisation, assèchement des zones humides détruisent les milieux de vie."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La mare",
+    "histoire": [
+      "Dans une mare, on observe la chaîne alimentaire suivante : **algues → daphnies → épinoches (petits poissons) → héron**.",
+      "Étudions cet écosystème."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Le producteur",
+        "question": "Quel est le producteur de cette chaîne ?",
+        "choix": [
+          "Les algues",
+          "Les daphnies",
+          "Le héron"
+        ],
+        "bonne": 0,
+        "explication": "Les algues font la photosynthèse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une disparition",
+        "question": "Si les épinoches disparaissent (à cause d'une pollution), que devient la population de daphnies ?",
+        "choix": [
+          "Elle augmente, car elles ne sont plus mangées",
+          "Elle diminue",
+          "Elle ne change pas"
+        ],
+        "bonne": 0,
+        "explication": "Sans prédateur, les daphnies prolifèrent… et peuvent épuiser les algues : tout l'écosystème est déséquilibré."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le niveau du héron",
+        "question": "Si les algues sont au niveau 1 de la chaîne, à quel niveau se trouve le héron ?",
+        "reponse": 4,
+        "indices": [
+          "Compte les maillons."
+        ],
+        "solution": "Algues (1), daphnies (2), épinoches (3), héron (4)."
+      }
+    ],
+    "conclusion": "Bravo ! Une espèce qui disparaît peut déstabiliser tout un écosystème : c'est pour cela que la biodiversité compte."
+  }
+}

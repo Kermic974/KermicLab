@@ -1,0 +1,159 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un échange d'air",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "À chaque inspiration, tu fais entrer de l'air riche en **dioxygène** ; à chaque expiration, tu rejettes plus de **dioxyde de carbone**. Le **sang** sert de livreur entre les poumons et toutes les cellules du corps."
+      ]
+    },
+    {
+      "titre": "L'appareil respiratoire",
+      "niveau": "5e",
+      "paragraphes": [
+        "L'air passe par la trachée, les bronches, puis arrive dans des millions de petits sacs, les **alvéoles pulmonaires**.",
+        "Leur paroi est très fine et entourée de capillaires sanguins : le dioxygène passe de l'air au sang, le CO₂ du sang à l'air. Ce sont les **échanges gazeux**."
+      ]
+    },
+    {
+      "titre": "Le cœur et la circulation",
+      "niveau": "5e",
+      "paragraphes": [
+        "Le **cœur** est un muscle à quatre cavités qui pompe le sang dans deux circuits : vers les poumons et vers le reste du corps (**double circulation**).",
+        "Les **artères** partent du cœur, les **veines** y reviennent, les **capillaires** relient les deux au contact des cellules. Dans le sang, les **globules rouges** transportent le dioxygène grâce à l'hémoglobine."
+      ]
+    },
+    {
+      "titre": "Respiration cellulaire et effort",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Les cellules utilisent le dioxygène pour dégrader le glucose et libérer de l'énergie : **glucose + dioxygène → dioxyde de carbone + eau + énergie**. C'est la **respiration cellulaire**.",
+        "Pendant un effort, les muscles consomment plus : les **fréquences respiratoire et cardiaque augmentent** pour apporter plus de dioxygène et de glucose."
+      ]
+    },
+    {
+      "titre": "Plus loin : le débit cardiaque",
+      "niveau": "seconde",
+      "paragraphes": [
+        "**Débit cardiaque = fréquence cardiaque × volume d'éjection systolique** (le volume de sang envoyé à chaque battement).",
+        "Au repos : 70 battements/min × 70 mL ≈ 4,9 L/min, presque tout le sang du corps chaque minute !"
+      ],
+      "aRetenir": "Le tabac abîme les alvéoles et les artères : il réduit la capacité à faire des efforts."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les échanges gazeux et le débit cardiaque.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Échanges gazeux",
+        "question": "Où ont lieu les échanges gazeux dans les poumons ?",
+        "choix": [
+          "Dans les alvéoles",
+          "Dans la trachée",
+          "Dans le cœur"
+        ],
+        "bonne": 0,
+        "explication": "La paroi très fine des alvéoles laisse passer le dioxygène et le CO₂."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le transport du dioxygène",
+        "question": "Quelles cellules du sang transportent le dioxygène ?",
+        "choix": [
+          "Les globules rouges",
+          "Les globules blancs",
+          "Les plaquettes"
+        ],
+        "bonne": 0,
+        "explication": "Grâce à l'hémoglobine qu'ils contiennent."
+      },
+      {
+        "type": "nombre",
+        "titre": "Débit cardiaque",
+        "question": "Un cœur bat 70 fois par minute et envoie 70 mL de sang à chaque battement. Quel est le débit cardiaque, en mL/min ?",
+        "reponse": 4900,
+        "unite": "mL/min",
+        "indices": [
+          "Débit = fréquence × volume d'éjection."
+        ],
+        "solution": "70 × 70 = 4 900 mL/min, soit 4,9 L/min."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'effort",
+        "question": "Pendant un effort, la fréquence cardiaque…",
+        "choix": [
+          "augmente",
+          "diminue",
+          "reste la même"
+        ],
+        "bonne": 0,
+        "explication": "Les muscles ont besoin de plus de dioxygène et de glucose : le cœur accélère."
+      },
+      {
+        "type": "qcm",
+        "titre": "Respiration cellulaire",
+        "question": "Que produit la respiration cellulaire, en plus de l'énergie ?",
+        "choix": [
+          "Du dioxyde de carbone et de l'eau",
+          "Du dioxygène",
+          "Du glucose"
+        ],
+        "bonne": 0,
+        "explication": "Glucose + dioxygène → dioxyde de carbone + eau + énergie."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course de 1 000 m",
+    "histoire": [
+      "Avant la course, au repos, le cœur de Malik bat à **70 battements par minute**. Juste après l'arrivée, il bat à **160 battements par minute**.",
+      "On suppose que son cœur envoie **80 mL** de sang à chaque battement."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Au repos",
+        "question": "Quel est son débit cardiaque au repos, en L/min ?",
+        "reponse": 5.6,
+        "unite": "L/min",
+        "indices": [
+          "70 × 80 mL = 5 600 mL/min.",
+          "1 L = 1 000 mL."
+        ],
+        "solution": "70 × 0,08 = 5,6 L/min."
+      },
+      {
+        "type": "nombre",
+        "titre": "Après l'effort",
+        "question": "Et juste après l'effort ?",
+        "reponse": 12.8,
+        "unite": "L/min",
+        "indices": [
+          "160 × 0,08."
+        ],
+        "solution": "160 × 0,08 = 12,8 L/min : plus du double !"
+      },
+      {
+        "type": "qcm",
+        "titre": "Pourquoi ?",
+        "question": "Pourquoi le débit cardiaque augmente-t-il pendant l'effort ?",
+        "choix": [
+          "Pour apporter plus de dioxygène et de glucose aux muscles",
+          "Pour refroidir le cœur",
+          "Pour digérer plus vite"
+        ],
+        "bonne": 0,
+        "explication": "Les muscles en activité respirent davantage : il faut les approvisionner et évacuer leur CO₂."
+      }
+    ],
+    "conclusion": "Bravo ! L'entraînement rend le cœur plus fort : il envoie plus de sang à chaque battement, et bat donc moins vite au repos."
+  }
+}

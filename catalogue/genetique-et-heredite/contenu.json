@@ -1,0 +1,160 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des ressemblances",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Tu as peut-être les yeux de ta mère ou les cheveux de ton grand-père. Certains caractères se transmettent des parents aux enfants : ce sont des caractères **héréditaires**.",
+        "D'autres dépendent de l'environnement (une cicatrice, un bronzage, une langue parlée)."
+      ]
+    },
+    {
+      "titre": "Les chromosomes",
+      "niveau": "3e",
+      "paragraphes": [
+        "Chaque cellule humaine contient **46 chromosomes**, rangés en **23 paires** : l'un de chaque paire vient du père, l'autre de la mère. Leur photographie classée s'appelle un **caryotype**.",
+        "La 23e paire détermine le sexe : **XX** chez la fille, **XY** chez le garçon."
+      ]
+    },
+    {
+      "titre": "Gènes et allèles",
+      "niveau": "3e",
+      "paragraphes": [
+        "Un **gène** est une portion d'**ADN** qui gouverne un caractère. Un même gène peut exister en plusieurs versions : les **allèles**.",
+        "Comme les chromosomes vont par paires, chaque personne possède **deux allèles** de chaque gène. Un allèle **dominant** s'exprime même s'il est seul ; un allèle **récessif** ne s'exprime que s'il est présent en deux exemplaires."
+      ],
+      "exemple": {
+        "titre": "Exemple : les groupes sanguins",
+        "etapes": [
+          "Allèles A, B et O ; A et B sont dominants sur O, et codominants entre eux.",
+          "AO donne le groupe A, BO le groupe B, AB le groupe AB.",
+          "OO donne le groupe O."
+        ]
+      }
+    },
+    {
+      "titre": "La transmission",
+      "niveau": "3e",
+      "paragraphes": [
+        "Chaque parent transmet **un seul chromosome de chaque paire** (donc un seul allèle de chaque gène), au hasard. La fécondation réunit ces deux moitiés.",
+        "C'est pourquoi deux frères et sœurs ne se ressemblent pas totalement (sauf les vrais jumeaux). La probabilité d'avoir une fille ou un garçon est de 1/2 à chaque naissance."
+      ]
+    },
+    {
+      "titre": "Plus loin : anomalies et mutations",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Une anomalie du nombre de chromosomes peut avoir des conséquences : la **trisomie 21** correspond à trois chromosomes 21 (47 chromosomes en tout).",
+        "Une **mutation** est une modification de l'ADN ; elle peut créer un nouvel allèle. C'est une source de diversité des êtres vivants."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les chromosomes et les allèles.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Les paires",
+        "question": "Combien de paires de chromosomes une cellule humaine contient-elle ?",
+        "reponse": 23,
+        "unite": "paires",
+        "indices": [
+          "46 chromosomes au total."
+        ],
+        "solution": "46 ÷ 2 = 23 paires."
+      },
+      {
+        "type": "qcm",
+        "titre": "XY",
+        "question": "Un caryotype présente une paire XY. Il s'agit…",
+        "choix": [
+          "d'un garçon",
+          "d'une fille"
+        ],
+        "bonne": 0,
+        "explication": "XY : garçon ; XX : fille."
+      },
+      {
+        "type": "nombre",
+        "titre": "Fille ou garçon",
+        "question": "Quelle est la probabilité, en %, qu'un bébé soit une fille ?",
+        "reponse": 50,
+        "unite": "%",
+        "indices": [
+          "Le père transmet un X ou un Y, avec la même probabilité."
+        ],
+        "solution": "1 chance sur 2 : 50 %."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trisomie 21",
+        "question": "Combien de chromosomes en tout possède une personne porteuse de trisomie 21 ?",
+        "reponse": 47,
+        "indices": [
+          "Il y a un chromosome 21 en plus."
+        ],
+        "solution": "46 + 1 = 47 chromosomes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un gène",
+        "question": "Un gène est…",
+        "choix": [
+          "une portion d'ADN qui gouverne un caractère",
+          "une cellule reproductrice",
+          "une paire de chromosomes"
+        ],
+        "bonne": 0,
+        "explication": "Le gène est une portion d'ADN ; ses versions sont les allèles."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le groupe sanguin",
+    "histoire": [
+      "Le père de Léa est du groupe A, avec les allèles **A et O**. Sa mère est du groupe B, avec les allèles **B et O**.",
+      "Rappel : A et B dominent O ; A et B sont codominants."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Les possibilités",
+        "question": "Quels groupes sanguins leurs enfants peuvent-ils avoir ?",
+        "choix": [
+          "Seulement A ou B",
+          "A, B, AB ou O",
+          "Seulement AB"
+        ],
+        "bonne": 1,
+        "explication": "Le père transmet A ou O, la mère B ou O : AB, AO (groupe A), BO (groupe B) ou OO (groupe O)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Groupe O",
+        "question": "Quelle est la probabilité qu'un enfant soit du groupe O ?",
+        "reponse": 0.25,
+        "indices": [
+          "Il faut recevoir O du père (1/2) et O de la mère (1/2)."
+        ],
+        "solution": "1/2 × 1/2 = 1/4 = 0,25."
+      },
+      {
+        "type": "nombre",
+        "titre": "Groupe AB",
+        "question": "Et la probabilité qu'il soit du groupe AB ?",
+        "reponse": 0.25,
+        "indices": [
+          "A du père (1/2) et B de la mère (1/2)."
+        ],
+        "solution": "1/2 × 1/2 = 0,25."
+      }
+    ],
+    "conclusion": "Bravo ! Deux parents de groupes A et B peuvent avoir un enfant de chacun des quatre groupes : la génétique réserve des surprises."
+  }
+}
