@@ -4,6 +4,7 @@ titre: Le cercle trigonométrique
 sujet: mathematiques/trigonometrie
 version: 1.0.0
 date: 2026-10-31
+niveau: seconde
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

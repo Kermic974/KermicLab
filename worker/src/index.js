@@ -50,10 +50,11 @@ function langueQuestion(q) {
  * Questions d'exemple du catalogue, dans la langue demandée : une par page d'abord, puis les suivantes.
  * Elles sont toutes routées vers leur page (test de non-régression du catalogue) : cliquer dessus marche toujours.
  */
-export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS } = {}) {
-  const parPage = [...index.maquettes]
-    .sort((a, b) => a.id.localeCompare(b.id))
-    .filter((m) => m.id !== exclure)
+export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS, decalage = 0 } = {}) {
+  const triees = [...index.maquettes].sort((a, b) => a.id.localeCompare(b.id)).filter((m) => m.id !== exclure);
+  // Rotation (par exemple selon le jour) : toutes les notions finissent par être proposées.
+  const debut = triees.length ? ((decalage % triees.length) + triees.length) % triees.length : 0;
+  const parPage = [...triees.slice(debut), ...triees.slice(0, debut)]
     .map((m) => {
       const questions = (m.questions ?? []).filter((q) => langueQuestion(q) === langue);
       return (questions.length ? questions : m.questions ?? []).map((q) => q.charAt(0).toUpperCase() + q.slice(1));
@@ -65,10 +66,34 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
   return sortie;
 }
 
+const ORDRE_NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
+const ORDRE_MATIERES = ["mathematiques", "physique-chimie"];
+/** Matière d'une notion : début de son sujet (« physique-chimie/etats-de-la-matiere » → « physique-chimie »). */
+const matiereDe = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
+
+/** Clé de tri d'un titre : sans l'article initial (« Le théorème… » se range à T, « Les fractions » à F). */
+export const cleDeTri = (titre) => String(titre).replace(/^(?:(?:les|le|la|the)\s+|l['’]\s*)/i, "");
+
+/** Liste du catalogue pour la barre de navigation : par niveau scolaire, puis par titre (sans article). */
+export function listeCatalogue(index) {
+  const rang = (liste, v) => { const i = liste.indexOf(v); return i < 0 ? liste.length : i; };
+  return index.maquettes
+    .map((m) => ({ id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres", matiere: matiereDe(m) }))
+    .sort((a, b) => rang(ORDRE_MATIERES, a.matiere) - rang(ORDRE_MATIERES, b.matiere) || a.matiere.localeCompare(b.matiere)
+      || rang(ORDRE_NIVEAUX, a.niveau) - rang(ORDRE_NIVEAUX, b.niveau)
+      || cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }));
+}
+
+/** Numéro du jour (UTC) : fait tourner les suggestions d'un jour à l'autre, identiques pour tous le même jour. */
+const jourCourant = () => Math.floor(Date.now() / 86400000);
+
 /** Réponse quand aucune page ne correspond et qu'aucun modèle ne peut répondre : on oriente vers ce qui existe. */
 function reponseHorsCatalogue(langue) {
-  const titres = [...new Set(CATALOGUE.index.maquettes.map((m) => m.titre))];
-  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres), suggestions: suggestionsCatalogue(CATALOGUE.index, langue) };
+  const maquettes = CATALOGUE.index.maquettes;
+  const decalage = jourCourant();
+  const exemples = [...maquettes].sort((a, b) => a.id.localeCompare(b.id));
+  const titres = Array.from({ length: Math.min(3, exemples.length) }, (_, i) => exemples[(decalage + i) % exemples.length].titre);
+  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres, maquettes.length), suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage }) };
 }
 
 /** Relances proposées par le modèle : bornées, modérées, sans doublon. */
@@ -321,9 +346,14 @@ export default {
     if (requete.method === "GET" && url.pathname === "/api/sante") {
       return json({ ok: true, maquettes: CATALOGUE.index.maquettes.length }, 200, cors);
     }
+    if (requete.method === "GET" && url.pathname === "/api/catalogue") {
+      return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
+        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
+      });
+    }
     if (requete.method === "GET" && url.pathname === "/api/suggestions") {
       const langue = langueValide(url.searchParams.get("lang"));
-      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(CATALOGUE.index, langue) }), {
+      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage: jourCourant() }) }), {
         headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
       });
     }

@@ -1,0 +1,159 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une flèche de déplacement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **vecteur** décrit un déplacement : une **direction** (la droite suivie), un **sens** (vers où) et une **longueur** (de combien). On le dessine par une flèche.",
+        "Faire glisser une figure selon un vecteur, c'est la **translation** du collège : tous les points bougent de la même façon."
+      ]
+    },
+    {
+      "titre": "Égalité et relation de Chasles",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Deux vecteurs sont **égaux** s'ils ont même direction, même sens et même longueur : →AB = →CD signifie que ABDC est un parallélogramme (attention à l'ordre des lettres).",
+        "**Relation de Chasles** : →AB + →BC = →AC. Aller de A à B puis de B à C revient à aller directement de A à C."
+      ],
+      "aRetenir": "Avec Chasles, on « insère » un point : →AC = →AB + →BC, quel que soit le point B."
+    },
+    {
+      "titre": "Coordonnées",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Dans un repère, le vecteur →AB a pour coordonnées **(xB − xA ; yB − yA)**. On additionne deux vecteurs coordonnée par coordonnée, et k·→u multiplie chaque coordonnée par k.",
+        "Dans un repère orthonormé, la **norme** (longueur) de →u(x ; y) vaut **√(x² + y²)** : c'est Pythagore !"
+      ],
+      "exemple": {
+        "titre": "Exemple : A(1 ; 2) et B(4 ; 6)",
+        "etapes": [
+          "→AB(4 − 1 ; 6 − 2) = →AB(3 ; 4).",
+          "Norme : √(3² + 4²) = √25 = 5.",
+          "Donc AB = 5."
+        ]
+      }
+    },
+    {
+      "titre": "Colinéarité",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Deux vecteurs sont **colinéaires** s'ils ont la même direction : l'un est un multiple de l'autre.",
+        "Avec les coordonnées, →u(x ; y) et →v(x' ; y') sont colinéaires si et seulement si **xy' − yx' = 0** (le **déterminant**).",
+        "Utilité : A, B, C sont **alignés** si →AB et →AC sont colinéaires ; (AB) et (CD) sont **parallèles** si →AB et →CD sont colinéaires."
+      ]
+    },
+    {
+      "titre": "Plus loin : vers le produit scalaire",
+      "niveau": "première",
+      "paragraphes": [
+        "En première, le **produit scalaire** de deux vecteurs permet de calculer des angles et de prouver que deux droites sont **perpendiculaires**. En terminale, les vecteurs passent en **trois dimensions**."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les coordonnées. Rappel : →AB(xB − xA ; yB − yA).",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Coordonnées",
+        "question": "A(2 ; −1) et B(5 ; 3). Quelle est l'abscisse du vecteur →AB ?",
+        "reponse": 3,
+        "indices": [
+          "Abscisse de →AB = xB − xA."
+        ],
+        "solution": "xB − xA = 5 − 2 = 3 (et l'ordonnée vaut 3 − (−1) = 4)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Norme",
+        "question": "Quelle est la norme du vecteur →u(6 ; 8) ?",
+        "reponse": 10,
+        "indices": [
+          "Norme = √(x² + y²)."
+        ],
+        "solution": "√(36 + 64) = √100 = 10."
+      },
+      {
+        "type": "nombre",
+        "titre": "Somme",
+        "question": "→u(2 ; 3) et →v(−5 ; 1). Quelle est l'ordonnée de →u + →v ?",
+        "reponse": 4,
+        "indices": [
+          "On additionne les ordonnées : 3 + 1."
+        ],
+        "solution": "→u + →v = (−3 ; 4) : son ordonnée est 4."
+      },
+      {
+        "type": "qcm",
+        "titre": "Colinéaires ?",
+        "question": "Les vecteurs →u(2 ; 3) et →v(4 ; 6) sont-ils colinéaires ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 0,
+        "explication": "Déterminant : 2 × 6 − 3 × 4 = 12 − 12 = 0. Ils sont colinéaires (→v = 2→u).",
+        "indice": "Calcule xy' − yx'."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trouver k",
+        "question": "Pour quelle valeur de k les vecteurs →u(3 ; k) et →v(6 ; 10) sont-ils colinéaires ?",
+        "reponse": 5,
+        "indices": [
+          "Le déterminant doit être nul : 3 × 10 − k × 6 = 0."
+        ],
+        "solution": "30 − 6k = 0, donc k = 5 (et →v = 2→u)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le drone de livraison",
+    "histoire": [
+      "Un drone part de son entrepôt, à l'origine O(0 ; 0) d'un repère orthonormé (unité : 1 km).",
+      "Il effectue le déplacement →u(3 ; 4) jusqu'au premier client, puis le déplacement →v(5 ; −2) jusqu'au second."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Abscisse finale",
+        "question": "Quelle est l'abscisse du drone chez le second client ?",
+        "reponse": 8,
+        "indices": [
+          "Sa position finale correspond au vecteur →u + →v."
+        ],
+        "solution": "→u + →v = (3 + 5 ; 4 − 2) = (8 ; 2) : abscisse 8."
+      },
+      {
+        "type": "nombre",
+        "titre": "Ordonnée finale",
+        "question": "Et son ordonnée ?",
+        "reponse": 2,
+        "indices": [
+          "4 + (−2)."
+        ],
+        "solution": "4 − 2 = 2 : le drone est au point (8 ; 2)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Retour direct",
+        "question": "Quelle distance doit-il parcourir pour revenir en ligne droite à l'entrepôt ? (Arrondis au dixième.)",
+        "reponse": 8.2,
+        "tolerance": 0.05,
+        "unite": "km",
+        "indices": [
+          "C'est la norme de (8 ; 2) : √(8² + 2²).",
+          "√68 ≈ 8,246."
+        ],
+        "solution": "√(64 + 4) = √68 ≈ 8,2 km."
+      }
+    ],
+    "conclusion": "Livraison réussie ! Les vecteurs sont le langage des déplacements : drones, GPS, jeux vidéo et physique les utilisent en permanence."
+  }
+}

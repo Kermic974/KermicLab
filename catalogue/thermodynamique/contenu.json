@@ -1,0 +1,165 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : du chaud vers le froid",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un chocolat chaud refroidit, un glaçon fond dans la main : un **transfert thermique** se fait toujours spontanément du corps le plus chaud vers le plus froid.",
+        "La thermodynamique étudie ces échanges d'énergie, qui font fonctionner moteurs, réfrigérateurs et centrales."
+      ]
+    },
+    {
+      "titre": "Énergie interne et premier principe",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un système possède une **énergie interne U**, liée à l'agitation et aux interactions de ses particules.",
+        "**Premier principe** : pour un système fermé au repos, **ΔU = W + Q**, où W est le travail et Q le transfert thermique **reçus** par le système (comptés négativement s'ils sont cédés)."
+      ]
+    },
+    {
+      "titre": "La capacité thermique",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour chauffer une masse m d'une substance de ΔT (sans changement d'état) : **Q = m × c × ΔT**, où c est la **capacité thermique massique**. Pour l'eau, **c = 4 180 J/(kg·°C)** : l'eau stocke beaucoup d'énergie, d'où son rôle dans les radiateurs et le climat."
+      ],
+      "exemple": {
+        "titre": "Exemple : chauffer 1 kg d'eau de 20 °C à 100 °C",
+        "etapes": [
+          "ΔT = 80 °C.",
+          "Q = 1 × 4 180 × 80.",
+          "Q = 334 400 J, soit environ 0,09 kWh."
+        ]
+      }
+    },
+    {
+      "titre": "Les modes de transfert",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Conduction** : de proche en proche dans la matière (une cuillère dans un thé chaud). **Convection** : par déplacement de matière (l'air chaud qui monte). **Rayonnement** : par la lumière, même dans le vide (le Soleil chauffe la Terre).",
+        "À travers une paroi, le flux thermique vaut **Φ = ΔT / R_th** : une bonne isolation correspond à une grande résistance thermique R_th."
+      ]
+    },
+    {
+      "titre": "Plus loin : le gaz parfait",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour un gaz peu dense : **P × V = n × R × T**, avec P en pascals, V en m³, n en mol, T en kelvins (T = θ + 273,15) et R = 8,31 J/(mol·K).",
+        "La température d'un corps qui refroidit au contact de l'air suit souvent une loi exponentielle (loi de refroidissement de Newton)."
+      ],
+      "aRetenir": "Dans les formules des gaz, la température est toujours en kelvins."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : Q = m c ΔT et ΔU = W + Q.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Chauffer de l'eau",
+        "question": "Quelle énergie faut-il pour chauffer 1 kg d'eau de 20 °C à 100 °C (c = 4 180 J/(kg·°C)) ?",
+        "reponse": 334400,
+        "unite": "J",
+        "indices": [
+          "Q = m × c × ΔT, avec ΔT = 80 °C."
+        ],
+        "solution": "1 × 4 180 × 80 = 334 400 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "Premier principe",
+        "question": "Un gaz reçoit un travail W = 200 J et cède un transfert thermique de 50 J (Q = −50 J). Quelle est la variation de son énergie interne ?",
+        "reponse": 150,
+        "unite": "J",
+        "indices": [
+          "ΔU = W + Q."
+        ],
+        "solution": "200 + (−50) = 150 J."
+      },
+      {
+        "type": "qcm",
+        "titre": "Rayonnement",
+        "question": "Quel transfert thermique permet au Soleil de chauffer la Terre à travers le vide spatial ?",
+        "choix": [
+          "La conduction",
+          "La convection",
+          "Le rayonnement"
+        ],
+        "bonne": 2,
+        "explication": "Seul le rayonnement se propage dans le vide."
+      },
+      {
+        "type": "nombre",
+        "titre": "Gaz parfait",
+        "question": "1 mol de gaz parfait à 300 K occupe 0,025 m³. Quelle est sa pression (R = 8,31 J/(mol·K)), arrondie à la centaine de pascals ?",
+        "reponse": 99700,
+        "tolerance": 50,
+        "unite": "Pa",
+        "indices": [
+          "P = n R T / V = 1 × 8,31 × 300 / 0,025."
+        ],
+        "solution": "P ≈ 99 720 Pa, soit environ 99 700 Pa (proche de la pression atmosphérique)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Isolation",
+        "question": "Une paroi de résistance thermique 0,05 K/W sépare l'intérieur et l'extérieur, avec un écart de 20 °C. Quel est le flux thermique ?",
+        "reponse": 400,
+        "unite": "W",
+        "indices": [
+          "Φ = ΔT / R_th."
+        ],
+        "solution": "20 / 0,05 = 400 W."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bouilloire",
+    "histoire": [
+      "Tu fais chauffer **1,5 L d'eau** (1,5 kg) de **20 °C à 100 °C** dans une bouilloire de **2 000 W**.",
+      "Données : c(eau) = 4 180 J/(kg·°C)."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "L'énergie nécessaire",
+        "question": "Quelle énergie faut-il fournir à l'eau ?",
+        "reponse": 501600,
+        "unite": "J",
+        "indices": [
+          "Q = m × c × ΔT = 1,5 × 4 180 × 80."
+        ],
+        "solution": "1,5 × 4 180 × 80 = 501 600 J."
+      },
+      {
+        "type": "nombre",
+        "titre": "La durée idéale",
+        "question": "Si toute l'énergie électrique chauffait l'eau, combien de secondes faudrait-il (arrondi à la seconde) ?",
+        "reponse": 251,
+        "tolerance": 0.5,
+        "unite": "s",
+        "indices": [
+          "t = E / P = 501 600 / 2 000."
+        ],
+        "solution": "501 600 / 2 000 ≈ 251 s, soit environ 4 min 11 s."
+      },
+      {
+        "type": "qcm",
+        "titre": "En réalité",
+        "question": "En pratique, la bouilloire met un peu plus longtemps. Pourquoi ?",
+        "choix": [
+          "Une partie de l'énergie chauffe la bouilloire et l'air (pertes thermiques)",
+          "L'eau perd de la masse",
+          "La puissance augmente avec le temps"
+        ],
+        "bonne": 0,
+        "explication": "Le rendement n'est jamais de 100 % : une partie de l'énergie est transférée à l'environnement."
+      }
+    ],
+    "conclusion": "Bravo ! Isoler une maison, concevoir un moteur, prévoir le climat : tout repose sur ces bilans d'énergie."
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : multiplier encore et encore",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Plie une feuille en deux : 2 épaisseurs. Replie : 4. Encore : 8, puis 16, puis 32… À chaque pli, on **multiplie par 2**.",
+        "Au lieu d'écrire 2 × 2 × 2 × 2 × 2, on écrit **2⁵** (« 2 puissance 5 ») : le petit nombre en haut, l'**exposant**, compte combien de fois on multiplie 2 par lui-même. 2⁵ = 32."
+      ]
+    },
+    {
+      "titre": "Carrés, cubes et pièges",
+      "niveau": "4e",
+      "paragraphes": [
+        "a² se lit « a au carré » (aire d'un carré de côté a) et a³ « a au cube » (volume d'un cube d'arête a). Par convention, a¹ = a et a⁰ = 1 (pour a non nul).",
+        "Piège n° 1 : 2³ = 2 × 2 × 2 = 8, et **pas** 2 × 3 = 6.",
+        "Piège n° 2 : (−2)² = (−2) × (−2) = 4, mais −2² = −(2 × 2) = −4. Les parenthèses changent tout !"
+      ]
+    },
+    {
+      "titre": "Les puissances de 10",
+      "niveau": "4e",
+      "paragraphes": [
+        "10² = 100, 10³ = 1 000, 10⁶ = 1 000 000 (un million) : l'exposant donne le **nombre de zéros**.",
+        "Avec un exposant négatif, on divise : 10⁻¹ = 0,1 ; 10⁻² = 0,01 ; 10⁻³ = 0,001 (l'exposant donne la position du 1 après la virgule).",
+        "Multiplier par 10³, c'est décaler la virgule de 3 rangs vers la droite : 4,7 × 10³ = 4 700."
+      ]
+    },
+    {
+      "titre": "La notation scientifique",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Pour écrire les très grands et très petits nombres, on utilise **a × 10ⁿ**, avec a compris entre 1 (inclus) et 10 (exclu).",
+        "Distance Terre–Soleil ≈ 150 000 000 km = **1,5 × 10⁸ km**. Taille d'une bactérie ≈ 0,000 002 m = **2 × 10⁻⁶ m**."
+      ],
+      "exemple": {
+        "titre": "Exemple : écrire 45 000 en notation scientifique",
+        "etapes": [
+          "On place la virgule après le premier chiffre non nul : 4,5.",
+          "Pour revenir à 45 000, il faut décaler la virgule de 4 rangs vers la droite.",
+          "45 000 = 4,5 × 10⁴."
+        ]
+      }
+    },
+    {
+      "titre": "Règles de calcul",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Pour un même nombre a (non nul) : **aᵐ × aⁿ = aᵐ⁺ⁿ**, **aᵐ ÷ aⁿ = aᵐ⁻ⁿ**, **(aᵐ)ⁿ = aᵐˣⁿ** et **a⁻ⁿ = 1/aⁿ**.",
+        "Exemple : 2³ × 2⁴ = (2 × 2 × 2) × (2 × 2 × 2 × 2) = 2⁷ = 128. On a bien additionné les exposants : 3 + 4 = 7."
+      ],
+      "aRetenir": "Ces règles ne marchent qu'avec le même nombre en bas : 2³ × 3⁴ ne se simplifie pas ainsi."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à calculer avec les puissances. Astuce : écris le produit en entier si tu hésites.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Calculer",
+        "question": "Calcule 3⁴.",
+        "reponse": 81,
+        "indices": [
+          "3⁴ = 3 × 3 × 3 × 3."
+        ],
+        "solution": "3 × 3 = 9, 9 × 3 = 27, 27 × 3 = 81."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le piège",
+        "question": "Que vaut 2³ ?",
+        "choix": [
+          "6",
+          "8",
+          "9"
+        ],
+        "bonne": 1,
+        "explication": "2³ = 2 × 2 × 2 = 8 (et non 2 × 3).",
+        "indice": "L'exposant indique combien de fois on multiplie 2 par lui-même."
+      },
+      {
+        "type": "nombre",
+        "titre": "Exposant négatif",
+        "question": "Écris 10⁻³ sous forme décimale.",
+        "reponse": 0.001,
+        "indices": [
+          "10⁻³ = 1 ÷ 10³ = 1 ÷ 1 000."
+        ],
+        "solution": "10⁻³ = 0,001."
+      },
+      {
+        "type": "nombre",
+        "titre": "Décaler la virgule",
+        "question": "Calcule 5,2 × 10³.",
+        "reponse": 5200,
+        "indices": [
+          "Multiplier par 10³, c'est décaler la virgule de 3 rangs vers la droite."
+        ],
+        "solution": "5,2 × 10³ = 5 200."
+      },
+      {
+        "type": "qcm",
+        "titre": "Notation scientifique",
+        "question": "Quelle est l'écriture scientifique de 45 000 ?",
+        "choix": [
+          "4,5 × 10⁴",
+          "45 × 10³",
+          "0,45 × 10⁵"
+        ],
+        "bonne": 0,
+        "explication": "Dans l'écriture scientifique, le nombre devant la puissance de 10 est entre 1 et 10 : 4,5 × 10⁴.",
+        "indice": "Le premier nombre doit être compris entre 1 et 10."
+      },
+      {
+        "type": "nombre",
+        "titre": "Règle de calcul",
+        "question": "2⁵ × 2³ = 2ⁿ. Combien vaut n ?",
+        "reponse": 8,
+        "indices": [
+          "Quand on multiplie des puissances du même nombre, on additionne les exposants."
+        ],
+        "solution": "2⁵ × 2³ = 2⁵⁺³ = 2⁸ (= 256), donc n = 8."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les bactéries qui doublent",
+    "histoire": [
+      "Dans un laboratoire, une bactérie est placée dans une boîte. Toutes les **20 minutes**, chaque bactérie se divise en **deux**.",
+      "Le nombre de bactéries est donc multiplié par 2 toutes les 20 minutes. Combien seront-elles ?"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Au bout d'une heure",
+        "question": "Combien y a-t-il de bactéries au bout d'une heure ?",
+        "reponse": 8,
+        "unite": "bactéries",
+        "indices": [
+          "En une heure, il y a 3 périodes de 20 minutes, donc 3 divisions.",
+          "1 × 2 × 2 × 2 = 2³."
+        ],
+        "solution": "En une heure, 3 divisions : 2³ = 8 bactéries."
+      },
+      {
+        "type": "nombre",
+        "titre": "Au bout de 3 heures",
+        "question": "Et au bout de 3 heures ?",
+        "reponse": 512,
+        "unite": "bactéries",
+        "indices": [
+          "3 heures = 9 périodes de 20 minutes.",
+          "Calcule 2⁹."
+        ],
+        "solution": "9 divisions : 2⁹ = 512 bactéries."
+      },
+      {
+        "type": "qcm",
+        "titre": "Au bout de 10 heures",
+        "question": "Au bout de 10 heures (30 divisions), il y a 2³⁰ bactéries. C'est environ…",
+        "choix": [
+          "1 000",
+          "1 million",
+          "1 milliard"
+        ],
+        "bonne": 2,
+        "explication": "2¹⁰ = 1 024 ≈ 1 000, donc 2³⁰ = (2¹⁰)³ ≈ 1 000³ = 1 milliard. Exactement : 1 073 741 824 !",
+        "indice": "2¹⁰ = 1 024, c'est environ 1 000."
+      },
+      {
+        "type": "nombre",
+        "titre": "En puissance de 10",
+        "question": "Un milliard s'écrit 10ⁿ. Combien vaut n ?",
+        "reponse": 9,
+        "indices": [
+          "Compte les zéros de 1 000 000 000."
+        ],
+        "solution": "1 milliard = 1 000 000 000 = 10⁹."
+      }
+    ],
+    "conclusion": "Une croissance qui double à chaque étape s'emballe très vite : c'est la croissance exponentielle, que tu retrouveras au lycée."
+  }
+}

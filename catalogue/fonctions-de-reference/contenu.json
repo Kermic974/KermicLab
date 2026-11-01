@@ -1,0 +1,169 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des briques de base",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quelques fonctions servent de **briques** pour construire toutes les autres : la **fonction carré** (aire d'un carré de côté x), la **fonction inverse** (partager 1 en x parts), la **fonction racine carrée** (côté d'un carré d'aire x) et la **fonction cube** (volume d'un cube d'arête x).",
+        "Connaître leurs courbes et leurs variations par cœur fait gagner un temps précieux."
+      ]
+    },
+    {
+      "titre": "La fonction carré",
+      "niveau": "seconde",
+      "paragraphes": [
+        "f(x) = x² est définie sur ℝ. Sa courbe est une **parabole** de sommet l'origine. Elle est **décroissante sur ]−∞ ; 0]** et **croissante sur [0 ; +∞[** ; un carré n'est jamais négatif.",
+        "L'équation x² = a a **deux solutions** √a et −√a si a > 0, une seule (0) si a = 0, aucune si a < 0."
+      ]
+    },
+    {
+      "titre": "La fonction inverse",
+      "niveau": "seconde",
+      "paragraphes": [
+        "f(x) = 1/x est définie pour **x ≠ 0** (on ne divise pas par zéro). Sa courbe est une **hyperbole** en deux morceaux.",
+        "Elle est décroissante sur ]−∞ ; 0[ **et** décroissante sur ]0 ; +∞[ — mais pas sur la réunion des deux : −1 < 1 et pourtant 1/(−1) < 1/1."
+      ],
+      "aRetenir": "Plus on partage entre beaucoup de personnes, plus chaque part est petite : c'est la fonction inverse."
+    },
+    {
+      "titre": "Racine carrée et cube",
+      "niveau": "seconde",
+      "paragraphes": [
+        "f(x) = √x est définie sur **[0 ; +∞[** et **croissante**. f(x) = x³ est définie sur ℝ et **croissante** ; (−2)³ = −8.",
+        "Pour x entre 0 et 1, les fonctions se rangent ainsi : **x³ ≤ x² ≤ x ≤ √x** (par exemple 0,3² = 0,09 < 0,3). Au-delà de 1, c'est l'inverse !"
+      ]
+    },
+    {
+      "titre": "Plus loin : résoudre graphiquement",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "Les courbes permettent de résoudre des inéquations : x² < 4 équivaut à −2 < x < 2 ; 1/x > 2 équivaut à 0 < x < 1/2.",
+        "En première, ces fonctions sont dérivées : (x²)' = 2x, (1/x)' = −1/x², (√x)' = 1/(2√x)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les fonctions de référence.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Équation carré",
+        "question": "Quelles sont les solutions de x² = 49 ?",
+        "choix": [
+          "7 seulement",
+          "7 et −7",
+          "aucune"
+        ],
+        "bonne": 1,
+        "explication": "7² = 49 et (−7)² = 49 : deux solutions.",
+        "indice": "Un nombre négatif au carré est positif."
+      },
+      {
+        "type": "nombre",
+        "titre": "Inverse",
+        "question": "Quelle est l'image de 0,25 par la fonction inverse ?",
+        "reponse": 4,
+        "indices": [
+          "1 ÷ 0,25 = ?"
+        ],
+        "solution": "1 ÷ 0,25 = 4 (car 4 × 0,25 = 1)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Racine carrée",
+        "question": "Calcule √144.",
+        "reponse": 12,
+        "indices": [
+          "Quel nombre positif multiplié par lui-même donne 144 ?"
+        ],
+        "solution": "12 × 12 = 144, donc √144 = 12."
+      },
+      {
+        "type": "qcm",
+        "titre": "Comparer",
+        "question": "Comment se comparent 0,3² et 0,3 ?",
+        "choix": [
+          "0,3² < 0,3",
+          "0,3² = 0,3",
+          "0,3² > 0,3"
+        ],
+        "bonne": 0,
+        "explication": "0,3² = 0,09 < 0,3 : entre 0 et 1, le carré est plus petit que le nombre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Inéquation",
+        "question": "Quelles sont les solutions de x² < 9 ?",
+        "choix": [
+          "x < 3",
+          "−3 < x < 3",
+          "x < −3 ou x > 3"
+        ],
+        "bonne": 1,
+        "explication": "Sur la parabole, x² < 9 quand x est entre −3 et 3.",
+        "indice": "Pense aux deux solutions de x² = 9."
+      },
+      {
+        "type": "nombre",
+        "titre": "Cube",
+        "question": "Calcule (−2)³.",
+        "reponse": -8,
+        "indices": [
+          "(−2) × (−2) × (−2)."
+        ],
+        "solution": "(−2) × (−2) = 4, puis 4 × (−2) = −8."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jardin carré et le partage",
+    "histoire": [
+      "Le club nature dispose d'un terrain et d'un budget à partager.",
+      "Chaque question utilise une fonction de référence : laquelle ?"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Un carré de 64 m²",
+        "question": "Un jardin carré a une aire de 64 m². Quelle est la longueur de son côté ?",
+        "reponse": 8,
+        "unite": "m",
+        "indices": [
+          "Le côté c vérifie c² = 64, avec c positif."
+        ],
+        "solution": "c = √64 = 8 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un carré de 50 m²",
+        "question": "Et pour une aire de 50 m² ? (Arrondis au centième.)",
+        "reponse": 7.07,
+        "tolerance": 0.005,
+        "unite": "m",
+        "indices": [
+          "c = √50."
+        ],
+        "solution": "√50 ≈ 7,07 m."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le partage",
+        "question": "Le club partage 120 € entre ses n membres. Quand n augmente, la part de chacun…",
+        "choix": [
+          "augmente",
+          "diminue",
+          "reste la même"
+        ],
+        "bonne": 1,
+        "explication": "La part vaut 120/n : c'est une fonction de type inverse, décroissante pour n > 0."
+      }
+    ],
+    "conclusion": "Bravo ! Racine carrée pour retrouver un côté, inverse pour partager : les fonctions de référence sont partout."
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la vitesse à un instant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le compteur d'une voiture n'affiche pas une vitesse moyenne mais la vitesse **à cet instant précis**. Mathématiquement, c'est la **dérivée** de la distance par rapport au temps.",
+        "Graphiquement, la dérivée en un point est la **pente de la tangente** à la courbe : la droite qui « frôle » la courbe en ce point."
+      ]
+    },
+    {
+      "titre": "Le nombre dérivé",
+      "niveau": "première",
+      "paragraphes": [
+        "Le **nombre dérivé** de f en a est la limite du taux d'accroissement : **f'(a) = lim (f(a + h) − f(a))/h** quand h tend vers 0.",
+        "L'équation de la **tangente** en a est **y = f'(a)(x − a) + f(a)**."
+      ],
+      "exemple": {
+        "titre": "Exemple : f(x) = x² en a = 3",
+        "etapes": [
+          "(f(3 + h) − f(3))/h = (9 + 6h + h² − 9)/h = 6 + h.",
+          "Quand h tend vers 0, cela tend vers 6 : f'(3) = 6.",
+          "Tangente : y = 6(x − 3) + 9 = 6x − 9."
+        ]
+      }
+    },
+    {
+      "titre": "Les formules",
+      "niveau": "première",
+      "paragraphes": [
+        "**(xⁿ)' = n xⁿ⁻¹** ; une constante a pour dérivée 0 ; **(ku)' = ku'** ; **(u + v)' = u' + v'**.",
+        "**(1/x)' = −1/x²** ; **(√x)' = 1/(2√x)** ; **(uv)' = u'v + uv'** ; **(u/v)' = (u'v − uv')/v²**.",
+        "Exemple : f(x) = 5x² − 3x + 7 a pour dérivée f'(x) = 10x − 3."
+      ]
+    },
+    {
+      "titre": "Variations et extremums",
+      "niveau": "première",
+      "paragraphes": [
+        "Si **f' > 0** sur un intervalle, f est **croissante** ; si **f' < 0**, f est **décroissante**. Là où f' s'annule en changeant de signe, f admet un **extremum** (maximum ou minimum local).",
+        "On résume tout dans un **tableau de variations** : signe de f' sur une ligne, flèches de f sur la suivante."
+      ],
+      "exemple": {
+        "titre": "Exemple : f(x) = x³ − 3x",
+        "etapes": [
+          "f'(x) = 3x² − 3 = 3(x − 1)(x + 1).",
+          "f' > 0 sur ]−∞ ; −1[ et ]1 ; +∞[, f' < 0 sur ]−1 ; 1[.",
+          "Maximum local f(−1) = 2, minimum local f(1) = −2."
+        ]
+      }
+    },
+    {
+      "titre": "Plus loin : composées et convexité",
+      "niveau": "terminale",
+      "paragraphes": [
+        "En terminale : dérivée d'une composée, **(f(ax + b))' = a f'(ax + b)**, et dérivée seconde f'' qui étudie la **convexité** (courbe « en creux » si f'' > 0)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les formules de dérivation.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Puissance",
+        "question": "f(x) = x³. Calcule f'(2).",
+        "reponse": 12,
+        "indices": [
+          "(x³)' = 3x².",
+          "Remplace x par 2."
+        ],
+        "solution": "f'(x) = 3x², donc f'(2) = 3 × 4 = 12."
+      },
+      {
+        "type": "nombre",
+        "titre": "Polynôme",
+        "question": "f(x) = 5x² − 3x + 7. Calcule f'(1).",
+        "reponse": 7,
+        "indices": [
+          "f'(x) = 10x − 3."
+        ],
+        "solution": "f'(1) = 10 − 3 = 7."
+      },
+      {
+        "type": "qcm",
+        "titre": "Inverse",
+        "question": "Quelle est la dérivée de f(x) = 1/x ?",
+        "choix": [
+          "−1/x²",
+          "1/x²",
+          "ln x"
+        ],
+        "bonne": 0,
+        "explication": "(1/x)' = −1/x², toujours négative : la fonction inverse est décroissante sur chaque intervalle."
+      },
+      {
+        "type": "nombre",
+        "titre": "Tangente",
+        "question": "La tangente à la courbe de f(x) = x² au point d'abscisse 3 a pour équation y = 6x + p. Combien vaut p ?",
+        "reponse": -9,
+        "indices": [
+          "y = f'(3)(x − 3) + f(3) = 6(x − 3) + 9."
+        ],
+        "solution": "6x − 18 + 9 = 6x − 9 : p = −9."
+      },
+      {
+        "type": "qcm",
+        "titre": "Variations",
+        "question": "f'(x) = 2x − 4. Comment varie f ?",
+        "choix": [
+          "Décroissante sur ]−∞ ; 2], puis croissante sur [2 ; +∞[",
+          "Croissante sur ]−∞ ; 2], puis décroissante",
+          "Toujours croissante"
+        ],
+        "bonne": 0,
+        "explication": "2x − 4 < 0 pour x < 2 et > 0 pour x > 2 : f décroît puis croît, avec un minimum en x = 2."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La boîte la plus grande",
+    "histoire": [
+      "Avec une feuille carrée de carton de **12 cm** de côté, on découpe un carré de côté **x cm** à chaque coin, puis on replie les bords pour fabriquer une boîte sans couvercle.",
+      "Son volume vaut **V(x) = x(12 − 2x)²**, pour x entre 0 et 6. Quelle valeur de x donne la plus grande boîte ?"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Pour x = 1",
+        "question": "Quel est le volume de la boîte pour x = 1 ?",
+        "reponse": 100,
+        "unite": "cm³",
+        "indices": [
+          "V(1) = 1 × (12 − 2)²."
+        ],
+        "solution": "V(1) = 1 × 10² = 100 cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "Annuler la dérivée",
+        "question": "On admet que V'(x) = (12 − 2x)(12 − 6x). Pour quelle valeur de x comprise strictement entre 0 et 6 la dérivée s'annule-t-elle ?",
+        "reponse": 2,
+        "indices": [
+          "12 − 2x = 0 donne x = 6 (exclu).",
+          "Résous 12 − 6x = 0."
+        ],
+        "solution": "12 − 6x = 0 donne x = 2. V' est positive avant 2 et négative après : c'est un maximum."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le volume maximal",
+        "question": "Quel est le volume maximal de la boîte ?",
+        "reponse": 128,
+        "unite": "cm³",
+        "indices": [
+          "Calcule V(2) = 2 × (12 − 4)²."
+        ],
+        "solution": "V(2) = 2 × 8² = 128 cm³."
+      }
+    ],
+    "conclusion": "Bravo ! Chercher où la dérivée s'annule, c'est la méthode des ingénieurs pour optimiser : moins de matière, plus de volume, moins de carburant…"
+  }
+}

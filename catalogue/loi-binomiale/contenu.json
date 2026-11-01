@@ -1,0 +1,157 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : compter les succès",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On lance 10 fois une pièce et on compte le nombre de « pile ». On tire 20 fois au panier et on compte les paniers réussis. À chaque fois : une même expérience à **deux issues** (succès ou échec), **répétée** plusieurs fois, et on **compte les succès**.",
+        "Ce nombre de succès, qui dépend du hasard, est une **variable aléatoire**. Sa loi est la **loi binomiale**."
+      ]
+    },
+    {
+      "titre": "Épreuve et schéma de Bernoulli",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Une **épreuve de Bernoulli** est une expérience à deux issues : succès (probabilité p) ou échec (probabilité 1 − p).",
+        "Un **schéma de Bernoulli** répète n fois cette épreuve de façon **identique et indépendante**. Le nombre X de succès suit la **loi binomiale B(n, p)**."
+      ]
+    },
+    {
+      "titre": "La formule",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour k entre 0 et n : **P(X = k) = C(n, k) × pᵏ × (1 − p)ⁿ⁻ᵏ**.",
+        "C(n, k) compte les façons de placer les k succès parmi les n épreuves ; pᵏ(1 − p)ⁿ⁻ᵏ est la probabilité de chacune de ces façons."
+      ],
+      "exemple": {
+        "titre": "Exemple : 3 lancers d'une pièce, X = nombre de « pile »",
+        "etapes": [
+          "X suit B(3 ; 0,5).",
+          "P(X = 2) = C(3, 2) × 0,5² × 0,5¹ = 3 × 0,125.",
+          "P(X = 2) = 0,375 = 3/8 (les issues PPF, PFP, FPP)."
+        ]
+      }
+    },
+    {
+      "titre": "Espérance, variance, écart type",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Si X suit B(n, p) : **E(X) = np** (le nombre moyen de succès sur un grand nombre de répétitions), **V(X) = np(1 − p)** et **σ(X) = √V(X)**.",
+        "Pour 100 lancers d'une pièce : E(X) = 50 et σ(X) = √25 = 5."
+      ],
+      "aRetenir": "« Au moins un succès » : P(X ≥ 1) = 1 − P(X = 0) = 1 − (1 − p)ⁿ. Bien plus rapide que d'additionner !"
+    },
+    {
+      "titre": "Plus loin : échantillonnage",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La loi binomiale permet de juger si un résultat observé est « normal » : si une pièce donne 70 « pile » sur 100 lancers, c'est très loin de l'espérance 50 (4 écarts types) : on peut soupçonner qu'elle est truquée.",
+        "C'est la base des sondages et des contrôles qualité."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec B(n, p) : identifie n, p et le succès.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Espérance",
+        "question": "X suit la loi binomiale B(10 ; 0,3). Calcule E(X).",
+        "reponse": 3,
+        "indices": [
+          "E(X) = np."
+        ],
+        "solution": "10 × 0,3 = 3."
+      },
+      {
+        "type": "nombre",
+        "titre": "Variance",
+        "question": "Pour cette même loi B(10 ; 0,3), calcule V(X).",
+        "reponse": 2.1,
+        "indices": [
+          "V(X) = np(1 − p)."
+        ],
+        "solution": "10 × 0,3 × 0,7 = 2,1."
+      },
+      {
+        "type": "nombre",
+        "titre": "Deux pile sur trois",
+        "question": "On lance 3 fois une pièce équilibrée. Quelle est la probabilité d'obtenir exactement 2 fois « pile » ?",
+        "reponse": 0.375,
+        "indices": [
+          "P(X = 2) = C(3, 2) × 0,5² × 0,5."
+        ],
+        "solution": "3 × 0,125 = 0,375."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aucun succès",
+        "question": "On lance 4 fois une pièce équilibrée. Quelle est la probabilité de n'obtenir aucun « pile » ?",
+        "reponse": 0.0625,
+        "indices": [
+          "P(X = 0) = 0,5⁴."
+        ],
+        "solution": "0,5⁴ = 0,0625 = 1/16."
+      },
+      {
+        "type": "nombre",
+        "titre": "Au moins un",
+        "question": "Toujours avec 4 lancers : quelle est la probabilité d'obtenir au moins un « pile » ?",
+        "reponse": 0.9375,
+        "indices": [
+          "P(X ≥ 1) = 1 − P(X = 0)."
+        ],
+        "solution": "1 − 0,0625 = 0,9375."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le QCM au hasard",
+    "histoire": [
+      "Un QCM comporte **10 questions**, chacune avec **4 réponses** dont une seule est juste. Un élève (qui n'a pas révisé !) répond complètement au hasard.",
+      "X est le nombre de bonnes réponses : X suit la loi binomiale B(10 ; 0,25)."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "En moyenne",
+        "question": "Combien de bonnes réponses obtient-il en moyenne ?",
+        "reponse": 2.5,
+        "unite": "réponses",
+        "indices": [
+          "E(X) = np = 10 × 0,25."
+        ],
+        "solution": "E(X) = 2,5 bonnes réponses sur 10."
+      },
+      {
+        "type": "nombre",
+        "titre": "Zéro !",
+        "question": "Quelle est la probabilité qu'il n'ait aucune bonne réponse ? (Arrondis au centième.)",
+        "reponse": 0.06,
+        "tolerance": 0.005,
+        "indices": [
+          "P(X = 0) = 0,75¹⁰."
+        ],
+        "solution": "0,75¹⁰ ≈ 0,056, soit environ 0,06."
+      },
+      {
+        "type": "nombre",
+        "titre": "Au moins une",
+        "question": "Quelle est la probabilité qu'il ait au moins une bonne réponse ? (Arrondis au centième.)",
+        "reponse": 0.94,
+        "tolerance": 0.005,
+        "indices": [
+          "P(X ≥ 1) = 1 − P(X = 0)."
+        ],
+        "solution": "1 − 0,056 ≈ 0,94."
+      }
+    ],
+    "conclusion": "Avec 2,5 bonnes réponses en moyenne sur 10, le hasard ne mène pas loin : réviser reste la meilleure stratégie !"
+  }
+}

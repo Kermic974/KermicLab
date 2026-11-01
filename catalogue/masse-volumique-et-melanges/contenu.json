@@ -1,0 +1,174 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : pourquoi l'huile flotte",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un litre d'eau pèse 1 kg, mais un litre d'huile seulement 0,92 kg environ. À volume égal, l'huile est plus légère : elle **flotte** sur l'eau.",
+        "C'est la **masse volumique** qui décide si un objet flotte ou coule."
+      ]
+    },
+    {
+      "titre": "La masse volumique",
+      "niveau": "4e",
+      "paragraphes": [
+        "**ρ = m / V** (masse divisée par volume). Pour l'eau : **1 g/mL = 1 kg/L = 1 000 kg/m³**.",
+        "Un objet plein **flotte** sur un liquide si sa masse volumique est plus petite que celle du liquide, et **coule** sinon. Le fer (7,9 g/cm³) coule dans l'eau ; le bois (souvent 0,5 à 0,8 g/cm³) flotte."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un objet a une masse de 54 g et un volume de 20 cm³.",
+          "ρ = 54 ÷ 20 = 2,7 g/cm³.",
+          "C'est la masse volumique de l'aluminium : il coule dans l'eau."
+        ]
+      }
+    },
+    {
+      "titre": "Les mélanges",
+      "niveau": "5e",
+      "paragraphes": [
+        "Un mélange est **homogène** si on ne distingue pas ses constituants à l'œil nu (eau sucrée), **hétérogène** sinon (eau + sable, eau + huile).",
+        "L'eau et l'huile sont **non miscibles** : elles ne se mélangent pas. Pour séparer un mélange : **décantation** (laisser reposer), **filtration** (retenir les particules solides), **distillation** (chauffer puis récupérer la vapeur liquéfiée)."
+      ]
+    },
+    {
+      "titre": "Les solutions",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Quand on **dissout** du sel (le **soluté**) dans l'eau (le **solvant**), on obtient une **solution**. Au-delà d'une certaine quantité, le sel ne se dissout plus : la solution est **saturée**.",
+        "La **masse se conserve** lors d'une dissolution : 100 g d'eau + 5 g de sel donnent 105 g d'eau salée."
+      ]
+    },
+    {
+      "titre": "Plus loin : la concentration en masse",
+      "niveau": "seconde",
+      "paragraphes": [
+        "**Cm = m(soluté) / V(solution)**, en g/L. 5 g de sel dans 0,25 L de solution : Cm = 5 ÷ 0,25 = 20 g/L.",
+        "**Diluer** une solution (ajouter du solvant) diminue sa concentration, mais la masse de soluté ne change pas."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : ρ = m / V et conservation de la masse.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Masse volumique",
+        "question": "Un objet a une masse de 54 g et un volume de 20 cm³. Quelle est sa masse volumique en g/cm³ ?",
+        "reponse": 2.7,
+        "unite": "g/cm³",
+        "indices": [
+          "ρ = m / V."
+        ],
+        "solution": "54 ÷ 20 = 2,7 g/cm³."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'eau",
+        "question": "Quelle est la masse de 3 L d'eau, en kg ?",
+        "reponse": 3,
+        "unite": "kg",
+        "indices": [
+          "La masse volumique de l'eau est 1 kg/L."
+        ],
+        "solution": "3 × 1 = 3 kg."
+      },
+      {
+        "type": "qcm",
+        "titre": "Homogène ?",
+        "question": "Un mélange d'eau et d'huile est…",
+        "choix": [
+          "homogène",
+          "hétérogène"
+        ],
+        "bonne": 1,
+        "explication": "On voit deux couches distinctes : le mélange est hétérogène (eau et huile sont non miscibles)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Dissolution",
+        "question": "On dissout 10 g de sucre dans 200 g d'eau. Quelle est la masse de la solution ?",
+        "reponse": 210,
+        "unite": "g",
+        "indices": [
+          "La masse se conserve lors d'une dissolution."
+        ],
+        "solution": "200 + 10 = 210 g."
+      },
+      {
+        "type": "qcm",
+        "titre": "Séparer",
+        "question": "Quelle technique permet de séparer le sable de l'eau ?",
+        "choix": [
+          "La filtration",
+          "La dissolution",
+          "La fusion"
+        ],
+        "bonne": 0,
+        "explication": "Le filtre retient les grains de sable et laisse passer l'eau."
+      },
+      {
+        "type": "nombre",
+        "titre": "Concentration",
+        "question": "On dissout 5 g de sel pour obtenir 0,25 L de solution. Quelle est la concentration en masse, en g/L ?",
+        "reponse": 20,
+        "unite": "g/L",
+        "indices": [
+          "Cm = m / V."
+        ],
+        "solution": "5 ÷ 0,25 = 20 g/L."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le trésor du pirate",
+    "histoire": [
+      "Tu trouves une pièce dans un vieux coffre. Sa masse est de **21 g** et, plongée dans une éprouvette graduée, elle fait monter l'eau de **2 mL** (2 cm³).",
+      "Données : or 19,3 g/cm³ ; argent 10,5 g/cm³ ; fer 7,9 g/cm³."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Sa masse volumique",
+        "question": "Quelle est la masse volumique de la pièce, en g/cm³ ?",
+        "reponse": 10.5,
+        "unite": "g/cm³",
+        "indices": [
+          "ρ = m / V = 21 ÷ 2."
+        ],
+        "solution": "21 ÷ 2 = 10,5 g/cm³."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le métal",
+        "question": "En quel métal est probablement la pièce ?",
+        "choix": [
+          "En or",
+          "En argent",
+          "En fer"
+        ],
+        "bonne": 1,
+        "explication": "10,5 g/cm³ correspond à l'argent. Pas de l'or, dommage !"
+      },
+      {
+        "type": "qcm",
+        "titre": "Flotte ou coule ?",
+        "question": "Si on lâche la pièce dans l'eau, que se passe-t-il ?",
+        "choix": [
+          "Elle flotte",
+          "Elle coule"
+        ],
+        "bonne": 1,
+        "explication": "10,5 g/cm³ est plus grand que 1 g/cm³ (l'eau) : elle coule."
+      }
+    ],
+    "conclusion": "Bravo ! La masse volumique est une carte d'identité des matériaux : Archimède l'aurait utilisée pour démasquer une fausse couronne en or."
+  }
+}

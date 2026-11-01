@@ -1,0 +1,185 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la même eau, trois visages",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un glaçon, l'eau du robinet et la vapeur qui sort d'une casserole sont faits des **mêmes molécules d'eau**. Seule leur organisation change : c'est l'**état** de la matière (solide, liquide ou gaz).",
+        "Chauffer ou refroidir permet de passer d'un état à l'autre."
+      ]
+    },
+    {
+      "titre": "Les trois états",
+      "niveau": "5e",
+      "paragraphes": [
+        "Un **solide** a une forme propre et un volume propre (un caillou garde sa forme).",
+        "Un **liquide** a un volume propre mais prend la forme du récipient ; au repos, sa surface libre est plane et horizontale.",
+        "Un **gaz** n'a ni forme ni volume propres : il occupe tout l'espace disponible et il est **compressible** (on peut le comprimer dans une seringue bouchée)."
+      ]
+    },
+    {
+      "titre": "Les changements d'état",
+      "niveau": "5e",
+      "paragraphes": [
+        "Solide → liquide : **fusion**. Liquide → solide : **solidification**. Liquide → gaz : **vaporisation** (ébullition ou évaporation). Gaz → liquide : **liquéfaction**. Solide → gaz : **sublimation**. Gaz → solide : **condensation**.",
+        "Pour un **corps pur**, la température reste constante pendant tout le changement d'état : c'est un **palier**. Sous la pression atmosphérique normale, l'eau pure fond à **0 °C** et bout à **100 °C**. Un mélange (eau salée) n'a pas de palier net."
+      ]
+    },
+    {
+      "titre": "Masse et volume",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Lors d'un changement d'état, la **masse se conserve** : 200 g de glace donnent 200 g d'eau liquide.",
+        "Le **volume**, lui, change. L'eau est une exception : en gelant, son volume **augmente** d'environ 9 %. C'est pour cela qu'une bouteille pleine éclate au congélateur et que la glace flotte."
+      ],
+      "aRetenir": "La masse se conserve toujours ; le volume peut changer."
+    },
+    {
+      "titre": "Plus loin : le modèle particulaire",
+      "niveau": "4e / seconde",
+      "paragraphes": [
+        "Dans un **solide**, les particules sont proches et **ordonnées** ; dans un **liquide**, proches mais **désordonnées** ; dans un **gaz**, **éloignées** et en mouvement rapide.",
+        "La température mesure l'**agitation** des particules. La température d'ébullition dépend de la pression : au sommet de l'Everest, l'eau bout vers 70 °C seulement."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les états et les changements d'état.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Fusion",
+        "question": "Comment s'appelle le passage de l'état solide à l'état liquide ?",
+        "choix": [
+          "La fusion",
+          "La solidification",
+          "La vaporisation"
+        ],
+        "bonne": 0,
+        "explication": "Solide → liquide : c'est la fusion (le glaçon fond)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Vaporisation",
+        "question": "Comment s'appelle le passage de l'état liquide à l'état gazeux ?",
+        "choix": [
+          "La liquéfaction",
+          "La vaporisation",
+          "La sublimation"
+        ],
+        "bonne": 1,
+        "explication": "Liquide → gaz : c'est la vaporisation (par ébullition ou évaporation)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Conservation de la masse",
+        "question": "200 g de glace fondent complètement. Quelle masse d'eau liquide obtient-on ?",
+        "reponse": 200,
+        "unite": "g",
+        "indices": [
+          "Que devient la masse lors d'un changement d'état ?"
+        ],
+        "solution": "La masse se conserve : 200 g d'eau liquide."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le palier",
+        "question": "Pendant la fusion, la température reste constante. C'est la preuve qu'il s'agit…",
+        "choix": [
+          "d'un corps pur",
+          "d'un mélange",
+          "d'un gaz"
+        ],
+        "bonne": 0,
+        "explication": "Un corps pur change d'état à température constante (palier) ; un mélange n'a pas de palier net."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le gaz",
+        "question": "Quel état de la matière n'a ni forme propre ni volume propre ?",
+        "choix": [
+          "Le solide",
+          "Le liquide",
+          "Le gaz"
+        ],
+        "bonne": 2,
+        "explication": "Le gaz occupe tout l'espace disponible et se comprime."
+      },
+      {
+        "type": "nombre",
+        "titre": "Température de fusion",
+        "question": "À quelle température (en °C) la glace pure fond-elle sous la pression atmosphérique normale ?",
+        "reponse": 0,
+        "unite": "°C",
+        "indices": [
+          "C'est le zéro de l'échelle Celsius."
+        ],
+        "solution": "0 °C."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bouteille au congélateur",
+    "histoire": [
+      "Tom place une bouteille contenant **1 L d'eau** (soit 1 kg) au congélateur, sans la fermer.",
+      "Le lendemain, l'eau est devenue de la glace. Que s'est-il passé ?"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La masse",
+        "question": "Quelle est la masse de la glace obtenue, en grammes ?",
+        "reponse": 1000,
+        "unite": "g",
+        "indices": [
+          "La masse se conserve lors d'un changement d'état.",
+          "1 kg = 1 000 g."
+        ],
+        "solution": "1 000 g : la masse n'a pas changé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le volume",
+        "question": "Comment a évolué le volume ?",
+        "choix": [
+          "Il a diminué",
+          "Il est resté le même",
+          "Il a augmenté"
+        ],
+        "bonne": 2,
+        "explication": "L'eau est une exception : en gelant, son volume augmente."
+      },
+      {
+        "type": "nombre",
+        "titre": "Combien ?",
+        "question": "Le volume de l'eau augmente d'environ 9 % en gelant. Quel est le volume de la glace, en litres ?",
+        "reponse": 1.09,
+        "tolerance": 0.005,
+        "unite": "L",
+        "indices": [
+          "Augmenter de 9 %, c'est multiplier par 1,09."
+        ],
+        "solution": "1 × 1,09 = 1,09 L."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le conseil",
+        "question": "Pourquoi ne faut-il pas mettre au congélateur une bouteille en verre pleine et fermée ?",
+        "choix": [
+          "La glace prend plus de place que l'eau liquide et la fait éclater",
+          "Le verre fond au froid",
+          "La glace est plus lourde que l'eau"
+        ],
+        "bonne": 0,
+        "explication": "Le volume augmente alors que la bouteille ne peut pas s'agrandir : elle éclate."
+      }
+    ],
+    "conclusion": "Bravo ! C'est aussi pour cela que les canalisations éclatent l'hiver et que les icebergs flottent."
+  }
+}

@@ -11,6 +11,20 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Physique-chimie, vague 3 (terminale) : lois de Newton, gravitation et satellites, cinétique chimique, radioactivité, thermodynamique, condensateur et circuit RC, diffraction et interférences. Le programme de physique-chimie est couvert (23 notions ; 59 au catalogue).
+- Physique-chimie, vague 2 (seconde et première) : quantité de matière, atome et tableau périodique, réfraction et lentilles, oxydoréduction, travail et énergie mécanique, ondes mécaniques, absorbance et dosages.
+- Catalogue de **physique-chimie**, vague 1 (collège) : états de la matière, masse volumique et mélanges, atomes et transformations chimiques, acides et bases, mouvements, forces et poids, circuits électriques et loi d'Ohm, énergie, signaux sonores et lumineux. Feuille de route : `docs/chantiers/catalogue-physique-chimie.md`.
+- Chat : onglets par matière (Maths | Physique-chimie) dans la barre de navigation ; une recherche porte sur toutes les matières. `GET /api/catalogue` renvoie la matière de chaque notion.
+- Chat : **barre de navigation du catalogue** — fixe à gauche sur grand écran, tiroir sur mobile (bouton « Catalogue », Échap pour fermer). Notions groupées par niveau (collège, seconde, première, terminale), recherche sans accents, coche ✓ et compteur des notions explorées ; un clic ouvre la page directement dans le fil (sans appel au chat) et compte comme notion découverte.
+- Worker : `GET /api/catalogue` (notions triées par niveau puis par titre) ; champ facultatif `niveau` dans les fiches.
+- Catalogue, vague 4 (terminale) : **limites et continuité**, **logarithme népérien**, **primitives et intégrales**, **raisonnement par récurrence**, **dénombrement**, **loi binomiale**, **géométrie dans l'espace**. Le programme de la 6e à la terminale est couvert (36 notions).
+- Catalogue, vague 3 (seconde et première) : **vecteurs**, **droites et systèmes d'équations**, **fonctions de référence**, **second degré**, **dérivation**, **suites numériques**, **fonction exponentielle**, **produit scalaire**, **probabilités conditionnelles**.
+- Gabarit : figure `parabole` (a, b, c réglables, discriminant, racines, sommet).
+- Catalogue, vague 2 (compléments du collège) : **nombres décimaux**, **priorités opératoires**, **diviseurs, multiples et nombres premiers**, **périmètres et aires**, **volumes**, **angles et triangles**, **transformations**, **vitesse et grandeurs composées**. Le collège est couvert (20 notions au catalogue).
+- Catalogue, vague 1 (cœur du brevet) : **nombres relatifs**, **puissances**, **calcul littéral**, **équations et inéquations**, **théorème de Thalès**, **statistiques**, **probabilités**, **fonctions affines et linéaires**. Feuille de route du programme complet : `docs/chantiers/catalogue-maths.md`.
+- Gabarit : figures `affine` (droite y = ax + b réglable) et `des` (simulateur de lancers, loi des grands nombres).
+- Chat : les suggestions et les exemples de la réponse hors catalogue tournent chaque jour parmi toutes les notions.
+- Tests : chaque exercice de chaque notion générée est résolu automatiquement avec sa réponse attendue.
 - Gabarit commun de notion (`gabarit/`, ADR 0011, guide `docs/gabarit.md`) : une notion = `fiche.md` + `contenu.json`, la page autonome est générée par `npm run build`. Composants : exercices QCM et numériques (fractions, virgules, tolérance, indices progressifs), figures interactives `pythagore`, `fraction` et `proportion`, étoiles par exercice, défi en étapes qui se débloquent.
 - Catalogue : trois notions pilotes générées avec le gabarit — **Le théorème de Pythagore**, **Les fractions**, **Proportionnalité et pourcentages** (du collège au lycée, 6 exercices et un défi en 4 étapes chacune).
 - Chat : les suggestions de l'accueil viennent du catalogue (`GET /api/suggestions`) et mènent toujours à une page ; des questions de secours (i18n), vérifiées par un test de routage, prennent le relais si l'API ne répond pas.
@@ -21,6 +35,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.
 
 ### Corrigé
+- Gabarit : la légende de l'axe horizontal de la figure `proportion` ne met plus les unités en minuscules (« Intensité I (A) »).
 - Chat : une question hors catalogue sans modèle (mode zéro budget) renvoie une réponse `hors-catalogue` qui liste les notions disponibles et propose des questions qui marchent, au lieu d'une phrase de repli identique ; elle ne rapporte plus d'XP.
 - Chat : après une mise en ligne, la nouvelle page pouvait s'afficher avec l'ancien CSS ou JS gardé en cache par le navigateur (4 h), ce qui cassait le rendu. Le build ajoute désormais l'empreinte du contenu aux URL (`style.css?v=…`, `app.js?v=…`, `progression.js?v=…`).
 - CI : les tests navigateur du chat suivent l’URL d’API réellement construite (ils échouaient en CI avec `KERMICLAB_API_URL=http://localhost:8787`).

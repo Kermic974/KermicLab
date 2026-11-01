@@ -1,0 +1,186 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des kilomètres par heure",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Rouler à **60 km/h**, c'est parcourir 60 km en 1 heure (si on garde toujours la même vitesse). En 2 heures, on parcourt 120 km ; en une demi-heure, 30 km.",
+        "La vitesse relie deux grandeurs, une **distance** et une **durée** : c'est une **grandeur composée**."
+      ]
+    },
+    {
+      "titre": "La formule",
+      "niveau": "4e",
+      "paragraphes": [
+        "**v = d ÷ t** (vitesse = distance ÷ durée). On en déduit **d = v × t** et **t = d ÷ v**.",
+        "Les unités doivent correspondre : une distance en km et une durée en heures donnent une vitesse en km/h."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une voiture parcourt 150 km en 2 h.",
+          "v = 150 ÷ 2 = 75 km/h.",
+          "À cette vitesse, en 3 h, elle parcourrait 75 × 3 = 225 km."
+        ]
+      }
+    },
+    {
+      "titre": "Les durées en heures décimales",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Pour calculer, on écrit souvent les durées en **heures décimales** : 30 min = 0,5 h ; 15 min = 0,25 h ; 45 min = 0,75 h ; 20 min = 1/3 h.",
+        "Piège : **1,5 h = 1 h 30 min**, et pas 1 h 50 min ! Pour convertir des minutes en heures, on divise par 60."
+      ]
+    },
+    {
+      "titre": "Convertir une vitesse",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "1 km/h = 1 000 m en 3 600 s, donc pour passer des **km/h aux m/s**, on **divise par 3,6** ; pour l'inverse, on multiplie par 3,6.",
+        "36 km/h = 10 m/s ; un sprinteur qui court à 10 m/s va donc à 36 km/h."
+      ]
+    },
+    {
+      "titre": "Plus loin : autres grandeurs et vitesse moyenne",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "D'autres grandeurs composées : le **débit** (litres par minute), la **masse volumique** (g/cm³), la consommation d'énergie (kWh).",
+        "Piège de la **vitesse moyenne** : on fait 120 km à 60 km/h (2 h), puis 120 km au retour à 40 km/h (3 h). La vitesse moyenne vaut 240 km ÷ 5 h = **48 km/h**, et non la moyenne de 60 et 40 (50 km/h) !"
+      ],
+      "aRetenir": "Une vitesse moyenne se calcule toujours avec la distance totale divisée par la durée totale."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec v = d ÷ t. Vérifie toujours les unités !",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Une vitesse",
+        "question": "Un train parcourt 180 km en 2 h. Quelle est sa vitesse moyenne ?",
+        "reponse": 90,
+        "unite": "km/h",
+        "indices": [
+          "v = d ÷ t."
+        ],
+        "solution": "180 ÷ 2 = 90 km/h."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une distance",
+        "question": "Une voiture roule à 80 km/h pendant 3 h. Quelle distance parcourt-elle ?",
+        "reponse": 240,
+        "unite": "km",
+        "indices": [
+          "d = v × t."
+        ],
+        "solution": "80 × 3 = 240 km."
+      },
+      {
+        "type": "nombre",
+        "titre": "Heures décimales",
+        "question": "Écris 1 h 15 min en heures décimales.",
+        "reponse": 1.25,
+        "unite": "h",
+        "indices": [
+          "15 min = 15 ÷ 60 h."
+        ],
+        "solution": "15 ÷ 60 = 0,25, donc 1 h 15 min = 1,25 h."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une durée",
+        "question": "Combien de temps faut-il pour parcourir 210 km à 70 km/h ?",
+        "reponse": 3,
+        "unite": "h",
+        "indices": [
+          "t = d ÷ v."
+        ],
+        "solution": "210 ÷ 70 = 3 h."
+      },
+      {
+        "type": "nombre",
+        "titre": "km/h en m/s",
+        "question": "Convertis 72 km/h en m/s.",
+        "reponse": 20,
+        "unite": "m/s",
+        "indices": [
+          "Divise par 3,6."
+        ],
+        "solution": "72 ÷ 3,6 = 20 m/s."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec des minutes",
+        "question": "Un scooter parcourt 30 km en 20 minutes. Quelle est sa vitesse en km/h ?",
+        "reponse": 90,
+        "unite": "km/h",
+        "indices": [
+          "20 min = 1/3 h : en 1 h, il ferait 3 fois plus de chemin."
+        ],
+        "solution": "En 1 h (3 × 20 min), il parcourt 3 × 30 = 90 km : 90 km/h."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course à vélo",
+    "histoire": [
+      "Lina participe à une randonnée à vélo. Elle parcourt **45 km en 1 h 30 min**.",
+      "Elle veut connaître sa vitesse et préparer sa prochaine sortie."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La durée",
+        "question": "Écris 1 h 30 min en heures décimales.",
+        "reponse": 1.5,
+        "unite": "h",
+        "indices": [
+          "30 min = une demi-heure."
+        ],
+        "solution": "1 h 30 min = 1,5 h."
+      },
+      {
+        "type": "nombre",
+        "titre": "Sa vitesse",
+        "question": "Quelle est sa vitesse moyenne ?",
+        "reponse": 30,
+        "unite": "km/h",
+        "indices": [
+          "v = 45 ÷ 1,5."
+        ],
+        "solution": "45 ÷ 1,5 = 30 km/h."
+      },
+      {
+        "type": "nombre",
+        "titre": "La prochaine sortie",
+        "question": "À cette vitesse, combien de minutes lui faut-il pour parcourir 20 km ?",
+        "reponse": 40,
+        "unite": "min",
+        "indices": [
+          "t = 20 ÷ 30 h.",
+          "20/30 = 2/3 h. Combien de minutes dans 2/3 d'heure ?"
+        ],
+        "solution": "t = 20 ÷ 30 = 2/3 h = 40 min."
+      },
+      {
+        "type": "nombre",
+        "titre": "En m/s",
+        "question": "Quelle est sa vitesse en m/s, arrondie au dixième ?",
+        "reponse": 8.3,
+        "tolerance": 0.05,
+        "unite": "m/s",
+        "indices": [
+          "Divise 30 par 3,6."
+        ],
+        "solution": "30 ÷ 3,6 ≈ 8,33, soit environ 8,3 m/s."
+      }
+    ],
+    "conclusion": "Bravo, Lina est prête ! Distance, durée, vitesse : avec une seule formule, tu peux organiser n'importe quel trajet."
+  }
+}

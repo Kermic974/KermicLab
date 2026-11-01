@@ -1,0 +1,167 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : acide, neutre ou basique",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le jus de citron et le vinaigre sont **acides** ; l'eau pure est **neutre** ; l'eau savonneuse et l'eau de Javel sont **basiques**.",
+        "Pour mesurer cela, on utilise une échelle allant de 0 à 14 : le **pH**."
+      ]
+    },
+    {
+      "titre": "L'échelle de pH",
+      "niveau": "3e",
+      "paragraphes": [
+        "**pH < 7 : solution acide ; pH = 7 : neutre ; pH > 7 : basique.** Plus le pH est loin de 7, plus la solution est acide (ou basique).",
+        "Exemples : jus de citron ≈ 2, vinaigre ≈ 3, eau pure = 7, eau savonneuse ≈ 10. On le mesure avec du papier pH ou un pH-mètre."
+      ],
+      "aRetenir": "Les solutions très acides ou très basiques sont corrosives : gants et lunettes de protection obligatoires."
+    },
+    {
+      "titre": "Ions H⁺ et HO⁻",
+      "niveau": "3e",
+      "paragraphes": [
+        "Une solution **acide** contient plus d'ions hydrogène **H⁺** que d'ions hydroxyde **HO⁻** ; une solution **basique**, plus de HO⁻ que de H⁺ ; une solution neutre, autant des deux.",
+        "**Diluer** un acide avec de l'eau rapproche son pH de 7 : le pH **augmente** (sans jamais dépasser 7)."
+      ]
+    },
+    {
+      "titre": "pH et concentration",
+      "niveau": "seconde / première",
+      "paragraphes": [
+        "Au lycée, on note les ions H⁺ sous la forme H₃O⁺. Le pH est lié à leur concentration : **pH = −log[H₃O⁺]**, soit **[H₃O⁺] = 10⁻ᵖᴴ** mol/L.",
+        "Un pH de 3 correspond à [H₃O⁺] = 10⁻³ = 0,001 mol/L. Diluer 10 fois un acide fort augmente son pH de 1."
+      ]
+    },
+    {
+      "titre": "Plus loin : couples acide-base et pKa",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Selon Brønsted, un **acide** est une espèce capable de **céder un proton** H⁺ et une **base** une espèce capable d'en **capter** un. Ils forment un **couple** AH/A⁻.",
+        "Chaque couple a un **pKa**. On a **pH = pKa + log([A⁻]/[AH])** : si pH < pKa, la forme acide AH prédomine ; si pH > pKa, la forme basique A⁻ prédomine."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec le pH.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "pH 3",
+        "question": "Une solution a un pH de 3. Elle est…",
+        "choix": [
+          "acide",
+          "neutre",
+          "basique"
+        ],
+        "bonne": 0,
+        "explication": "pH < 7 : la solution est acide."
+      },
+      {
+        "type": "qcm",
+        "titre": "pH 12",
+        "question": "Une solution a un pH de 12. Elle est…",
+        "choix": [
+          "acide",
+          "neutre",
+          "basique"
+        ],
+        "bonne": 2,
+        "explication": "pH > 7 : la solution est basique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Dilution",
+        "question": "On ajoute beaucoup d'eau à un vinaigre. Son pH…",
+        "choix": [
+          "diminue",
+          "augmente en se rapprochant de 7",
+          "dépasse 7"
+        ],
+        "bonne": 1,
+        "explication": "La dilution rapproche le pH de 7 : il augmente, mais reste inférieur à 7."
+      },
+      {
+        "type": "nombre",
+        "titre": "Concentration",
+        "question": "Une solution a un pH de 4 : [H₃O⁺] = 10⁻ⁿ mol/L. Combien vaut n ?",
+        "reponse": 4,
+        "indices": [
+          "[H₃O⁺] = 10⁻ᵖᴴ."
+        ],
+        "solution": "[H₃O⁺] = 10⁻⁴ mol/L, donc n = 4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Calculer un pH",
+        "question": "[H₃O⁺] = 0,01 mol/L. Quel est le pH ?",
+        "reponse": 2,
+        "indices": [
+          "0,01 = 10⁻²."
+        ],
+        "solution": "pH = −log(10⁻²) = 2."
+      },
+      {
+        "type": "nombre",
+        "titre": "Diluer 10 fois",
+        "question": "Un acide fort a un pH de 2. On le dilue 10 fois. Quel est son nouveau pH ?",
+        "reponse": 3,
+        "indices": [
+          "Diluer 10 fois divise [H₃O⁺] par 10."
+        ],
+        "solution": "[H₃O⁺] passe de 10⁻² à 10⁻³ mol/L : pH = 3."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le détartrage",
+    "histoire": [
+      "La bouilloire est pleine de calcaire (une base). Pour l'enlever, on utilise du vinaigre blanc, de pH environ 3.",
+      "Le vinaigre réagit avec le calcaire et le dissout."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Le vinaigre",
+        "question": "Le vinaigre blanc est…",
+        "choix": [
+          "acide",
+          "neutre",
+          "basique"
+        ],
+        "bonne": 0,
+        "explication": "pH ≈ 3 < 7 : il est acide."
+      },
+      {
+        "type": "qcm",
+        "titre": "La sécurité",
+        "question": "Quelles précautions prendre pour manipuler un détartrant acide concentré ?",
+        "choix": [
+          "Porter des gants et des lunettes",
+          "Aucune, c'est sans danger",
+          "Le chauffer pour qu'il agisse plus vite"
+        ],
+        "bonne": 0,
+        "explication": "Les acides concentrés sont corrosifs pour la peau et les yeux."
+      },
+      {
+        "type": "nombre",
+        "titre": "La concentration",
+        "question": "Quelle est la concentration en ions H₃O⁺ du vinaigre (pH = 3), en mol/L ?",
+        "reponse": 0.001,
+        "unite": "mol/L",
+        "indices": [
+          "[H₃O⁺] = 10⁻³ mol/L."
+        ],
+        "solution": "10⁻³ = 0,001 mol/L."
+      }
+    ],
+    "conclusion": "Bouilloire propre ! Acides et bases sont partout : cuisine, piscines (pH surveillé), sols agricoles, et même notre estomac (pH ≈ 2)."
+  }
+}

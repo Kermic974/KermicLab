@@ -1,0 +1,191 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une boucle fermée",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une lampe ne s'allume que si elle est reliée aux deux bornes d'une pile par une **boucle fermée** de conducteurs : c'est un **circuit électrique**. Ouvrir l'interrupteur coupe la boucle.",
+        "On peut comparer le courant à de l'eau qui circule dans des tuyaux, la pile jouant le rôle d'une pompe."
+      ]
+    },
+    {
+      "titre": "Série ou dérivation",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "En **série**, tous les dipôles sont sur une seule boucle : si une lampe grille, tout s'éteint.",
+        "En **dérivation**, il y a plusieurs boucles : chaque appareil fonctionne indépendamment (c'est le cas dans une maison).",
+        "Un **court-circuit** (relier directement les deux bornes d'un générateur) est dangereux : le courant devient très intense et peut provoquer un incendie."
+      ]
+    },
+    {
+      "titre": "Intensité et tension",
+      "niveau": "4e",
+      "paragraphes": [
+        "L'**intensité** I (en ampères, A) se mesure avec un **ampèremètre branché en série**. La **tension** U (en volts, V) se mesure avec un **voltmètre branché en dérivation**.",
+        "**En série**, l'intensité est la même partout et les tensions s'additionnent. **En dérivation**, la tension est la même aux bornes de chaque branche et les intensités s'additionnent (loi des nœuds)."
+      ]
+    },
+    {
+      "titre": "La loi d'Ohm",
+      "niveau": "4e",
+      "paragraphes": [
+        "Pour une **résistance** (un conducteur ohmique), la tension est proportionnelle à l'intensité : **U = R × I**, avec R en ohms (Ω).",
+        "Exemple : R = 100 Ω et I = 0,05 A donnent U = 100 × 0,05 = 5 V."
+      ],
+      "aRetenir": "U = R × I, donc I = U / R et R = U / I. Attention aux unités : V, Ω et A (et non mA)."
+    },
+    {
+      "titre": "Puissance et énergie électrique",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **puissance** d'un appareil vaut **P = U × I** (en watts, W). L'**énergie** consommée vaut **E = P × t** : en joules (W × s) ou en kilowattheures (kW × h), l'unité des factures.",
+        "Un radiateur de 2 000 W allumé 3 h consomme 2 kW × 3 h = 6 kWh. Les **fusibles** et disjoncteurs coupent le courant quand l'intensité devient trop grande."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Choisis la résistance R et l'intensité I : la tension U = R × I est proportionnelle à I (droite passant par l'origine).",
+    "figure": {
+      "type": "proportion",
+      "libelleX": "Intensité I (A)",
+      "libelleY": "Tension U (V)",
+      "libelleCoefficient": "Résistance R (Ω)",
+      "unite": "V",
+      "coefficient": 10,
+      "coefficientMin": 1,
+      "coefficientMax": 50,
+      "pas": 1,
+      "x": 2,
+      "xMax": 5
+    },
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Ampèremètre",
+        "question": "Comment branche-t-on un ampèremètre ?",
+        "choix": [
+          "En série",
+          "En dérivation"
+        ],
+        "bonne": 0,
+        "explication": "L'ampèremètre mesure le courant qui le traverse : il se branche en série."
+      },
+      {
+        "type": "nombre",
+        "titre": "Additivité des tensions",
+        "question": "Deux lampes en série ont à leurs bornes des tensions de 2,5 V et 3,5 V. Quelle est la tension aux bornes du générateur ?",
+        "reponse": 6,
+        "unite": "V",
+        "indices": [
+          "En série, les tensions s'additionnent."
+        ],
+        "solution": "2,5 + 3,5 = 6 V."
+      },
+      {
+        "type": "nombre",
+        "titre": "Loi d'Ohm",
+        "question": "Une résistance de 100 Ω est traversée par un courant de 0,05 A. Quelle est la tension à ses bornes ?",
+        "reponse": 5,
+        "unite": "V",
+        "indices": [
+          "U = R × I."
+        ],
+        "solution": "100 × 0,05 = 5 V."
+      },
+      {
+        "type": "nombre",
+        "titre": "Calculer I",
+        "question": "Une tension de 12 V est appliquée à une résistance de 4 Ω. Quelle est l'intensité ?",
+        "reponse": 3,
+        "unite": "A",
+        "indices": [
+          "I = U / R."
+        ],
+        "solution": "12 ÷ 4 = 3 A."
+      },
+      {
+        "type": "nombre",
+        "titre": "Puissance",
+        "question": "Une lampe branchée sur 230 V est traversée par un courant de 0,5 A. Quelle est sa puissance ?",
+        "reponse": 115,
+        "unite": "W",
+        "indices": [
+          "P = U × I."
+        ],
+        "solution": "230 × 0,5 = 115 W."
+      },
+      {
+        "type": "nombre",
+        "titre": "Énergie",
+        "question": "Un radiateur de 2 000 W fonctionne pendant 3 h. Quelle énergie consomme-t-il, en kWh ?",
+        "reponse": 6,
+        "unite": "kWh",
+        "indices": [
+          "2 000 W = 2 kW. E = P × t."
+        ],
+        "solution": "2 kW × 3 h = 6 kWh."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La guirlande de Noël",
+    "histoire": [
+      "Une guirlande comporte **20 lampes identiques montées en série**, branchées sur une prise de **230 V**. Le courant qui la traverse vaut **0,2 A**.",
+      "Analysons-la avant les fêtes !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Tension par lampe",
+        "question": "Quelle est la tension aux bornes de chaque lampe ?",
+        "reponse": 11.5,
+        "unite": "V",
+        "indices": [
+          "En série, les tensions des 20 lampes s'additionnent pour faire 230 V."
+        ],
+        "solution": "230 ÷ 20 = 11,5 V."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une lampe grille",
+        "question": "Une lampe grille. Que se passe-t-il ?",
+        "choix": [
+          "Seule cette lampe s'éteint",
+          "Toute la guirlande s'éteint"
+        ],
+        "bonne": 1,
+        "explication": "En série, le circuit est ouvert : plus aucun courant ne circule."
+      },
+      {
+        "type": "nombre",
+        "titre": "Puissance",
+        "question": "Quelle est la puissance de la guirlande ?",
+        "reponse": 46,
+        "unite": "W",
+        "indices": [
+          "P = U × I = 230 × 0,2."
+        ],
+        "solution": "230 × 0,2 = 46 W."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le mois de décembre",
+        "question": "Elle est allumée 5 h par jour pendant 30 jours. Quelle énergie consomme-t-elle, en kWh ?",
+        "reponse": 6.9,
+        "unite": "kWh",
+        "indices": [
+          "Durée totale : 5 × 30 = 150 h.",
+          "46 W = 0,046 kW."
+        ],
+        "solution": "0,046 kW × 150 h = 6,9 kWh."
+      }
+    ],
+    "conclusion": "Joyeuses fêtes ! Série ou dérivation, puissance et énergie : tu sais maintenant lire une installation et une facture d'électricité."
+  }
+}

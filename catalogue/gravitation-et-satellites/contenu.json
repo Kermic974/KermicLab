@@ -1,0 +1,169 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : tomber sans jamais toucher le sol",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Newton imagina un canon au sommet d'une montagne : plus on tire vite, plus le boulet tombe loin… Assez vite, il tombe **autour** de la Terre sans jamais la toucher : il est en **orbite**.",
+        "La Lune « tombe » ainsi en permanence vers la Terre, mais sa vitesse latérale l'empêche de s'écraser."
+      ]
+    },
+    {
+      "titre": "La force de gravitation",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un satellite de masse m, à la distance r du centre d'un astre de masse M, subit **F = G m M / r²** (G = 6,67 × 10⁻¹¹ N·m²/kg²), dirigée vers le centre de l'astre.",
+        "Si la distance double, la force est divisée par 4."
+      ]
+    },
+    {
+      "titre": "Orbites circulaires",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La deuxième loi de Newton appliquée à un satellite en orbite circulaire montre que son mouvement est **uniforme** et que **v = √(G M / r)**.",
+        "Plus un satellite est loin, plus il va **lentement**. Sa période vaut **T = 2πr / v**."
+      ],
+      "exemple": {
+        "titre": "Exemple : r = 7 000 km autour de la Terre (G M ≈ 4,0 × 10¹⁴ m³/s²)",
+        "etapes": [
+          "v = √(4,0 × 10¹⁴ / 7,0 × 10⁶).",
+          "v = √(5,7 × 10⁷).",
+          "v ≈ 7 600 m/s, soit environ 27 000 km/h."
+        ]
+      }
+    },
+    {
+      "titre": "Les lois de Kepler",
+      "niveau": "terminale",
+      "paragraphes": [
+        "1. Les planètes décrivent des **ellipses** dont le Soleil occupe un foyer. 2. Le segment Soleil-planète balaie des **aires égales** en des durées égales (la planète va plus vite près du Soleil). 3. **T² / a³ est le même** pour toutes les planètes (a : demi-grand axe).",
+        "Conséquence de la troisième loi : une planète 4 fois plus éloignée a une période 4^(3/2) = 8 fois plus longue."
+      ]
+    },
+    {
+      "titre": "Le satellite géostationnaire",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un satellite **géostationnaire** tourne dans le plan de l'équateur, dans le même sens que la Terre, avec une période égale à la rotation de la Terre (environ 24 h, précisément 23 h 56 min). Il paraît immobile au-dessus d'un point de l'équateur, à environ 36 000 km d'altitude.",
+        "C'est idéal pour les télécommunications et la météo : les antennes paraboliques restent pointées vers lui."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : F = G m M / r², v = √(G M / r).",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Distance doublée",
+        "question": "Si la distance entre deux astres double, la force de gravitation est…",
+        "choix": [
+          "divisée par 2",
+          "divisée par 4",
+          "multipliée par 2"
+        ],
+        "bonne": 1,
+        "explication": "F est inversement proportionnelle à r² : (2r)² = 4r²."
+      },
+      {
+        "type": "nombre",
+        "titre": "Troisième loi de Kepler",
+        "question": "Une planète est 4 fois plus éloignée de son étoile qu'une autre. Par combien sa période de révolution est-elle multipliée ?",
+        "reponse": 8,
+        "unite": "fois",
+        "indices": [
+          "T² est proportionnel à a³ : T est proportionnel à a^(3/2).",
+          "4^(3/2) = (√4)³."
+        ],
+        "solution": "4^(3/2) = 2³ = 8."
+      },
+      {
+        "type": "qcm",
+        "titre": "Altitude et vitesse",
+        "question": "Plus un satellite est éloigné de la Terre, plus sa vitesse sur orbite est…",
+        "choix": [
+          "grande",
+          "petite"
+        ],
+        "bonne": 1,
+        "explication": "v = √(G M / r) diminue quand r augmente."
+      },
+      {
+        "type": "nombre",
+        "titre": "Géostationnaire",
+        "question": "Quelle est, en heures arrondies, la période d'un satellite géostationnaire ?",
+        "reponse": 24,
+        "tolerance": 0.5,
+        "unite": "h",
+        "indices": [
+          "Il doit suivre la rotation de la Terre."
+        ],
+        "solution": "Environ 24 h (exactement 23 h 56 min)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Vitesse orbitale",
+        "question": "Calcule la vitesse d'un satellite en orbite circulaire à r = 7,0 × 10⁶ m du centre de la Terre (G M = 4,0 × 10¹⁴ m³/s²), arrondie à la centaine de m/s.",
+        "reponse": 7600,
+        "tolerance": 50,
+        "unite": "m/s",
+        "indices": [
+          "v = √(G M / r) = √(4,0 × 10¹⁴ / 7,0 × 10⁶)."
+        ],
+        "solution": "√(5,7 × 10⁷) ≈ 7 560 m/s, soit environ 7 600 m/s."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La Station spatiale internationale",
+    "histoire": [
+      "L'ISS tourne autour de la Terre à environ 400 km d'altitude, soit **r = 6,8 × 10⁶ m** du centre de la Terre.",
+      "On prend G M = 4,0 × 10¹⁴ m³/s² pour la Terre."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Sa vitesse",
+        "question": "Quelle est la vitesse de l'ISS, arrondie à la centaine de m/s ?",
+        "reponse": 7700,
+        "tolerance": 50,
+        "unite": "m/s",
+        "indices": [
+          "v = √(G M / r) = √(4,0 × 10¹⁴ / 6,8 × 10⁶)."
+        ],
+        "solution": "√(5,9 × 10⁷) ≈ 7 670 m/s, soit environ 7 700 m/s (27 600 km/h)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Sa période",
+        "question": "Combien de minutes met-elle pour faire un tour de la Terre (arrondi à la minute) ?",
+        "reponse": 93,
+        "tolerance": 0.5,
+        "unite": "min",
+        "indices": [
+          "T = 2π r / v = 2π × 6,8 × 10⁶ / 7 670 (en secondes).",
+          "Divise par 60 pour avoir des minutes."
+        ],
+        "solution": "T ≈ 5 570 s ≈ 93 min."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les levers de soleil",
+        "question": "Combien de levers de soleil les astronautes voient-ils environ par jour ?",
+        "choix": [
+          "Un seul",
+          "Environ 15 à 16",
+          "Environ 100"
+        ],
+        "bonne": 1,
+        "explication": "1 440 min / 93 min ≈ 15,5 tours par jour : autant de levers et de couchers de soleil !"
+      }
+    ],
+    "conclusion": "Bravo ! Avec deux lignes de calcul, tu retrouves le rythme de vie des astronautes de l'ISS."
+  }
+}

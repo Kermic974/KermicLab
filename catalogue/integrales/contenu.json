@@ -1,0 +1,162 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : l'aire sous la courbe",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une voiture roule à 50 km/h pendant 2 h : elle parcourt 100 km, c'est l'**aire du rectangle** sous la courbe de la vitesse. Quand la vitesse varie, la distance parcourue reste **l'aire sous la courbe** de la vitesse.",
+        "L'**intégrale** d'une fonction positive f entre a et b, notée **∫ₐᵇ f(x) dx**, est l'aire comprise entre la courbe, l'axe des abscisses et les droites x = a et x = b."
+      ]
+    },
+    {
+      "titre": "Les primitives",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Une **primitive** de f est une fonction F telle que **F' = f** : c'est l'opération inverse de la dérivation. Elle est définie à une constante près.",
+        "Primitives usuelles : xⁿ → **xⁿ⁺¹/(n + 1)** ; 1/x → **ln x** (sur ]0 ; +∞[) ; eˣ → **eˣ** ; une constante k → **kx**."
+      ],
+      "aRetenir": "Pour vérifier une primitive, il suffit de la dériver !"
+    },
+    {
+      "titre": "Calculer une intégrale",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Si F est une primitive de f : **∫ₐᵇ f(x) dx = F(b) − F(a)**, qu'on note [F(x)]ₐᵇ."
+      ],
+      "exemple": {
+        "titre": "Exemple : ∫₀² x² dx",
+        "etapes": [
+          "Une primitive de x² est x³/3.",
+          "[x³/3]₀² = 8/3 − 0 = 8/3.",
+          "L'aire sous la parabole entre 0 et 2 vaut 8/3 ≈ 2,67 unités d'aire."
+        ]
+      }
+    },
+    {
+      "titre": "Propriétés et valeur moyenne",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Linéarité** : ∫(f + g) = ∫f + ∫g et ∫kf = k∫f. **Relation de Chasles** : l'intégrale de a à b plus l'intégrale de b à c égale l'intégrale de a à c. **Positivité** : si f ≥ 0 sur [a ; b], l'intégrale est positive.",
+        "La **valeur moyenne** de f sur [a ; b] est **(1/(b − a)) × ∫ₐᵇ f(x) dx** : la hauteur du rectangle de même aire."
+      ]
+    },
+    {
+      "titre": "Plus loin : aire entre deux courbes et intégration par parties",
+      "niveau": "terminale",
+      "paragraphes": [
+        "L'aire entre deux courbes (f au-dessus de g) vaut ∫ₐᵇ (f(x) − g(x)) dx.",
+        "**Intégration par parties** : ∫ₐᵇ u v' = [uv]ₐᵇ − ∫ₐᵇ u' v. Elle permet par exemple d'intégrer x eˣ."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : trouve une primitive, puis calcule F(b) − F(a).",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Intégrale simple",
+        "question": "Calcule ∫₀³ 2x dx.",
+        "reponse": 9,
+        "indices": [
+          "Une primitive de 2x est x²."
+        ],
+        "solution": "[x²]₀³ = 9 − 0 = 9 (c'est l'aire d'un triangle de base 3 et de hauteur 6)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Sous la parabole",
+        "question": "Calcule ∫₀² x² dx. (Écris une fraction.)",
+        "reponse": 2.6666666666666665,
+        "tolerance": 0.005,
+        "indices": [
+          "Une primitive de x² est x³/3."
+        ],
+        "solution": "[x³/3]₀² = 8/3 ≈ 2,67."
+      },
+      {
+        "type": "qcm",
+        "titre": "Primitive",
+        "question": "Une primitive de 3x² est…",
+        "choix": [
+          "x³",
+          "6x",
+          "3x³"
+        ],
+        "bonne": 0,
+        "explication": "La dérivée de x³ est 3x² : c'est bien une primitive.",
+        "indice": "Dérive chaque proposition."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec ln",
+        "question": "Calcule ∫₁ᵉ (1/x) dx.",
+        "reponse": 1,
+        "indices": [
+          "Une primitive de 1/x est ln x."
+        ],
+        "solution": "ln e − ln 1 = 1 − 0 = 1."
+      },
+      {
+        "type": "nombre",
+        "titre": "Valeur moyenne",
+        "question": "Quelle est la valeur moyenne de f(x) = x sur [0 ; 4] ?",
+        "reponse": 2,
+        "indices": [
+          "∫₀⁴ x dx = [x²/2]₀⁴ = 8.",
+          "Divise par la longueur de l'intervalle, 4."
+        ],
+        "solution": "(1/4) × 8 = 2."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le TGV qui accélère",
+    "histoire": [
+      "Au départ de la gare, un TGV accélère régulièrement : sa vitesse au bout de t secondes est **v(t) = 2t** mètres par seconde, pendant 30 secondes.",
+      "La distance parcourue est l'intégrale de la vitesse."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La vitesse atteinte",
+        "question": "Quelle vitesse atteint-il au bout de 30 secondes ?",
+        "reponse": 60,
+        "unite": "m/s",
+        "indices": [
+          "v(30) = 2 × 30."
+        ],
+        "solution": "60 m/s, soit 216 km/h."
+      },
+      {
+        "type": "nombre",
+        "titre": "La distance",
+        "question": "Quelle distance a-t-il parcourue pendant ces 30 secondes ?",
+        "reponse": 900,
+        "unite": "m",
+        "indices": [
+          "Distance = ∫₀³⁰ 2t dt.",
+          "Une primitive de 2t est t²."
+        ],
+        "solution": "[t²]₀³⁰ = 900 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "La vitesse moyenne",
+        "question": "Quelle est sa vitesse moyenne sur ces 30 secondes ?",
+        "reponse": 30,
+        "unite": "m/s",
+        "indices": [
+          "Valeur moyenne = distance ÷ durée."
+        ],
+        "solution": "900 ÷ 30 = 30 m/s (la moitié de la vitesse finale, car l'accélération est régulière)."
+      }
+    ],
+    "conclusion": "En voiture ! L'intégrale additionne une infinité de petits morceaux : distances, aires, volumes, énergie… C'est l'un des outils les plus puissants des sciences."
+  }
+}

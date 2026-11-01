@@ -1,0 +1,172 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un seul résultat possible",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Combien fait 2 + 3 × 4 ? Si on calcule de gauche à droite, on trouve 5 × 4 = 20. Si on fait d'abord la multiplication, on trouve 2 + 12 = 14. Les deux ne peuvent pas être justes !",
+        "Pour que tout le monde trouve le même résultat, les mathématiciens ont fixé des **règles de priorité**. La bonne réponse est **14**."
+      ]
+    },
+    {
+      "titre": "La règle",
+      "niveau": "5e",
+      "paragraphes": [
+        "1. On calcule d'abord ce qui est **entre parenthèses** (en commençant par les plus intérieures).",
+        "2. Puis les **multiplications et divisions**, de gauche à droite.",
+        "3. Enfin les **additions et soustractions**, de gauche à droite."
+      ],
+      "exemple": {
+        "titre": "Exemple : 20 − 2 × (3 + 4)",
+        "etapes": [
+          "Parenthèses : 3 + 4 = 7, donc 20 − 2 × 7.",
+          "Multiplication : 2 × 7 = 14, donc 20 − 14.",
+          "Soustraction : 20 − 14 = 6."
+        ]
+      }
+    },
+    {
+      "titre": "De gauche à droite",
+      "niveau": "5e",
+      "paragraphes": [
+        "Entre opérations de même priorité, on va **de gauche à droite** : 24 ÷ 4 × 2 = 6 × 2 = 12 (et non 24 ÷ 8 = 3).",
+        "De même : 10 − 4 + 3 = 6 + 3 = 9 (et non 10 − 7 = 3)."
+      ]
+    },
+    {
+      "titre": "Avec des puissances",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les **puissances** passent avant les multiplications : 2 × 3² = 2 × 9 = 18, alors que (2 × 3)² = 6² = 36.",
+        "Attention : −3² = −9 (le carré s'applique au 3 seulement), alors que (−3)² = 9."
+      ],
+      "aRetenir": "Ordre complet : parenthèses, puissances, multiplications et divisions, additions et soustractions."
+    },
+    {
+      "titre": "Traits de fraction et calculatrice",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Un **trait de fraction** agit comme des parenthèses autour du numérateur et du dénominateur : (8 + 4)/(5 − 2) = 12/3 = 4.",
+        "Sur une calculatrice, il faut **taper ces parenthèses** : 8 + 4 ÷ 5 − 2 donne 6,8, pas 4 !"
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : souligne d'abord le calcul prioritaire.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Multiplication d'abord",
+        "question": "Calcule 5 + 3 × 6.",
+        "reponse": 23,
+        "indices": [
+          "La multiplication passe avant l'addition : 3 × 6 = 18."
+        ],
+        "solution": "5 + 18 = 23."
+      },
+      {
+        "type": "nombre",
+        "titre": "Parenthèses d'abord",
+        "question": "Calcule (5 + 3) × 6.",
+        "reponse": 48,
+        "indices": [
+          "Les parenthèses passent en premier : 5 + 3 = 8."
+        ],
+        "solution": "8 × 6 = 48."
+      },
+      {
+        "type": "nombre",
+        "titre": "Gauche à droite",
+        "question": "Calcule 36 ÷ 6 × 2.",
+        "reponse": 12,
+        "indices": [
+          "Division et multiplication ont la même priorité : de gauche à droite.",
+          "36 ÷ 6 = 6."
+        ],
+        "solution": "36 ÷ 6 = 6, puis 6 × 2 = 12."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec une puissance",
+        "question": "Calcule 2 + 3 × 4².",
+        "reponse": 50,
+        "indices": [
+          "La puissance d'abord : 4² = 16.",
+          "Puis 3 × 16 = 48."
+        ],
+        "solution": "4² = 16, 3 × 16 = 48, 2 + 48 = 50."
+      },
+      {
+        "type": "nombre",
+        "titre": "Parenthèses imbriquées",
+        "question": "Calcule 7 × (10 − 2 × 3).",
+        "reponse": 28,
+        "indices": [
+          "Dans la parenthèse, la multiplication d'abord : 2 × 3 = 6.",
+          "10 − 6 = 4."
+        ],
+        "solution": "7 × (10 − 6) = 7 × 4 = 28."
+      },
+      {
+        "type": "nombre",
+        "titre": "Trait de fraction",
+        "question": "Calcule (12 + 8) / (9 − 4).",
+        "reponse": 4,
+        "indices": [
+          "Calcule séparément le haut (12 + 8) et le bas (9 − 4)."
+        ],
+        "solution": "20 / 5 = 4."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le compte est bon",
+    "histoire": [
+      "Sami joue au « compte est bon » : avec les nombres **2, 3, 5 et 7**, il doit écrire des calculs et trouver leur résultat sans se tromper de priorité.",
+      "Aide-le à vérifier ses calculs !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Premier calcul",
+        "question": "Calcule 7 × 5 − 3 × 2.",
+        "reponse": 29,
+        "indices": [
+          "Les deux multiplications d'abord : 7 × 5 et 3 × 2."
+        ],
+        "solution": "35 − 6 = 29."
+      },
+      {
+        "type": "qcm",
+        "titre": "La calculatrice",
+        "question": "Sami veut obtenir 56 en ajoutant 3 et 5, puis en multipliant par 7. Il tape 3 + 5 × 7 et obtient 38. Que doit-il taper ?",
+        "choix": [
+          "(3 + 5) × 7",
+          "3 + (5 × 7)",
+          "3 × 5 + 7"
+        ],
+        "bonne": 0,
+        "explication": "Sans parenthèses, la calculatrice fait 5 × 7 d'abord. Avec (3 + 5) × 7, elle calcule 8 × 7 = 56.",
+        "indice": "Quelle opération doit être faite en premier ?"
+      },
+      {
+        "type": "nombre",
+        "titre": "Le grand final",
+        "question": "Calcule 2 × (7 + 3)² − 5.",
+        "reponse": 195,
+        "indices": [
+          "Parenthèses : 7 + 3 = 10.",
+          "Puissance : 10² = 100. Puis multiplication : 2 × 100."
+        ],
+        "solution": "2 × 10² − 5 = 2 × 100 − 5 = 200 − 5 = 195."
+      }
+    ],
+    "conclusion": "Le compte est bon ! Les priorités opératoires sont le code de la route du calcul : grâce à elles, tout le monde trouve le même résultat."
+  }
+}

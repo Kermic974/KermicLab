@@ -2,7 +2,10 @@
 import * as progression from "./progression.js";
 
 const $ = (s) => document.querySelector(s);
-const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], compte: null, eleves: [], eleveActif: null };
+const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [], notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null };
+const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
+const MATIERES = ["mathematiques", "physique-chimie"];
+const CLE_MATIERE = "kermiclab:matiere";
 const MAX_PUCES = 4;
 const TAILLE_MAX_PUCE = 120;
 const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -51,6 +54,7 @@ async function appliquerLangue(langue) {
   await chargerSuggestions();
   rafraichirBienvenue();
   rafraichirPastille();
+  rendreCatalogue();
 }
 
 /* ---------- Auth & Compte ---------- */
@@ -382,6 +386,7 @@ function appliquerResultat(resultat) {
   if (resultat.niveauGagne) notifier(t("niveauGagne", { n: progression.niveau(etat.progres).niveau }), "⭐");
   // Synchronise si un élève est actif
   if (etat.eleveActif) synchroniserProgression();
+  if (resultat.nouvelleNotion) rendreCatalogue();
 }
 
 function remplirProgres() {
@@ -407,6 +412,120 @@ function remplirProgres() {
     );
     liste.append(li);
   }
+}
+
+/* ---------- Barre de navigation du catalogue ---------- */
+
+const sansAccents = (texte) => String(texte).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+async function chargerCatalogue() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/catalogue`);
+    const notions = r.ok ? (await r.json()).notions : [];
+    etat.notions = Array.isArray(notions) ? notions.filter((n) => typeof n?.id === "string" && typeof n.titre === "string") : [];
+  } catch {
+    etat.notions = [];
+  }
+  try { etat.matiere = stockage()?.getItem(CLE_MATIERE) || "mathematiques"; } catch { etat.matiere = "mathematiques"; }
+  const visible = etat.notions.length > 0;
+  $("#catalogue").hidden = !visible;
+  $("#ouvrir-catalogue").hidden = !visible;
+  document.body.classList.toggle("avec-catalogue", visible);
+  rendreCatalogue();
+}
+
+const matiereDe = (n) => n.matiere || "mathematiques";
+
+/** Onglets de matière (affichés seulement s'il y en a plusieurs). */
+function rendreMatieres() {
+  const zone = $("#catalogue-matieres");
+  const presentes = [...new Set(etat.notions.map(matiereDe))].sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
+  if (!presentes.includes(etat.matiere)) etat.matiere = presentes[0];
+  zone.hidden = presentes.length < 2;
+  zone.replaceChildren(...presentes.map((m) => {
+    const b = element("button", { classe: "matiere", cle: `matiere_${m}`, attributs: { type: "button", role: "tab", "aria-selected": String(m === etat.matiere), "data-matiere": m } });
+    b.addEventListener("click", () => {
+      etat.matiere = m;
+      try { stockage()?.setItem(CLE_MATIERE, m); } catch { /* stockage indisponible */ }
+      rendreCatalogue();
+    });
+    return b;
+  }));
+}
+
+function rendreCatalogue() {
+  const liste = $("#catalogue-liste");
+  if (!liste || !etat.notions.length || !etat.progres) return;
+  rendreMatieres();
+  const filtre = sansAccents($("#recherche-notion").value.trim());
+  const explorees = new Set(etat.progres.notions);
+  liste.replaceChildren();
+  let affichees = 0;
+  // Une recherche porte sur toutes les matières ; sinon on affiche la matière choisie.
+  const groupes = filtre
+    ? [...new Set(etat.notions.map(matiereDe))].flatMap((m) => NIVEAUX.map((niveau) => [m, niveau]))
+    : NIVEAUX.map((niveau) => [etat.matiere, niveau]);
+  for (const [matiere, niveau] of groupes) {
+    const notions = etat.notions.filter((n) => matiereDe(n) === matiere && (NIVEAUX.includes(n.niveau) ? n.niveau : "autres") === niveau && (!filtre || sansAccents(n.titre).includes(filtre)));
+    if (!notions.length) continue;
+    affichees += notions.length;
+    const cleGroupe = `${matiere}/${niveau}`;
+    const groupe = element("details", { classe: "groupe-niveau", attributs: { "data-niveau": niveau, "data-matiere": matiere } });
+    // Une recherche ouvre tous les groupes ; sinon on garde ceux que l'utilisateur a refermés.
+    groupe.open = Boolean(filtre) || !etat.groupesFermes.has(cleGroupe);
+    groupe.addEventListener("toggle", () => { if (!filtre) etat.groupesFermes[groupe.open ? "delete" : "add"](cleGroupe); });
+    const resume = element("summary");
+    const vues = notions.filter((n) => explorees.has(n.id)).length;
+    const titre = element("span");
+    if (filtre) titre.append(element("span", { cle: `matiere_${matiere}` }), " · ");
+    titre.append(element("span", { cle: `niveau_${niveau}` }));
+    resume.append(titre, element("span", { classe: "compte", texte: `${vues}/${notions.length}` }));
+    const ul = element("ul");
+    for (const n of notions) {
+      const b = element("button", { classe: "notion", attributs: { type: "button", "data-notion": n.id } });
+      b.append(element("span", { texte: n.titre }));
+      if (explorees.has(n.id)) {
+        b.classList.add("exploree");
+        b.append(element("span", { classe: "coche", texte: "✓", attributs: { "aria-hidden": "true" } }), element("span", { classe: "visuellement-cache", texte: ` (${t("notionExploree")})` }));
+      }
+      if (n.id === etat.notionCourante) b.setAttribute("aria-current", "page");
+      b.addEventListener("click", () => ouvrirNotion(n));
+      const li = element("li");
+      li.append(b);
+      ul.append(li);
+    }
+    groupe.append(resume, ul);
+    liste.append(groupe);
+  }
+  $("#catalogue-vide").hidden = affichees > 0;
+  const total = etat.notions.length, vues = etat.notions.filter((n) => explorees.has(n.id)).length;
+  $("#catalogue-compteur").textContent = t("notionsExplorees", { n: vues, m: total });
+  $("#catalogue-progres").max = total;
+  $("#catalogue-progres").value = vues;
+}
+
+/** Ouvre une notion directement dans le fil, sans passer par le chat (zéro token, comme le routage par mots-clés). */
+function ouvrirNotion(n) {
+  etat.notionCourante = n.id;
+  const url = `${etat.config.apiUrl}/maquettes/${encodeURIComponent(n.id)}?lang=${encodeURIComponent(etat.langue)}`;
+  ajouterReponse({ texte: t("voiciPage", { titre: n.titre }), maquette: { id: n.id, titre: n.titre, version: n.version, url } });
+  fermerCatalogue();
+  appliquerResultat(progression.enregistrerNotion(etat.progres, n.id));
+  rendreCatalogue();
+}
+
+function ouvrirCatalogue() {
+  $("#catalogue").classList.add("ouvert");
+  $("#voile-catalogue").hidden = false;
+  $("#ouvrir-catalogue").setAttribute("aria-expanded", "true");
+  $("#recherche-notion").focus();
+}
+
+function fermerCatalogue() {
+  if (!$("#catalogue").classList.contains("ouvert")) return;
+  $("#catalogue").classList.remove("ouvert");
+  $("#voile-catalogue").hidden = true;
+  $("#ouvrir-catalogue").setAttribute("aria-expanded", "false");
 }
 
 /* ---------- Échanges avec l'API ---------- */
@@ -470,6 +589,14 @@ async function demarrer() {
   brancherAuth();
 
   ajouterBienvenue();
+  await chargerCatalogue();
+  $("#ouvrir-catalogue").addEventListener("click", () => ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue()));
+  $("#fermer-catalogue").addEventListener("click", () => { fermerCatalogue(); $("#ouvrir-catalogue").focus(); });
+  $("#voile-catalogue").addEventListener("click", fermerCatalogue);
+  $("#recherche-notion").addEventListener("input", rendreCatalogue);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && $("#catalogue").classList.contains("ouvert")) { fermerCatalogue(); $("#ouvrir-catalogue").focus(); }
+  });
 
   const champ = $("#question");
   const ajusterHauteur = () => { champ.style.height = "auto"; champ.style.height = `${Math.min(champ.scrollHeight, 160)}px`; };

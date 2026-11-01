@@ -1,0 +1,177 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : miroir, demi-tour, glissement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un papillon est **symétrique** : si on le plie le long de son corps, ses deux ailes se superposent. C'est la **symétrie axiale** (comme un miroir).",
+        "On peut aussi faire **tourner** une figure (rotation), la faire **glisser** (translation) ou l'**agrandir** (homothétie). Ce sont des **transformations**."
+      ]
+    },
+    {
+      "titre": "La symétrie axiale",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le symétrique d'un point A par rapport à une droite (d) est le point A' tel que (d) est la **médiatrice** de [AA'] : (d) coupe [AA'] perpendiculairement en son milieu.",
+        "La symétrie axiale **conserve** les longueurs, les angles et les aires. Une figure a un **axe de symétrie** si elle se superpose à elle-même par pliage : un rectangle en a 2, un carré 4, un triangle équilatéral 3, un cercle une infinité."
+      ]
+    },
+    {
+      "titre": "La symétrie centrale",
+      "niveau": "5e",
+      "paragraphes": [
+        "Le symétrique de A par rapport à un point O est le point A' tel que **O est le milieu de [AA']**. C'est un **demi-tour** autour de O.",
+        "Dans un repère, le symétrique de A(x ; y) par rapport à l'origine est A'(−x ; −y). Un parallélogramme a un **centre de symétrie** : le point d'intersection de ses diagonales."
+      ]
+    },
+    {
+      "titre": "Translation et rotation",
+      "niveau": "4e",
+      "paragraphes": [
+        "Une **translation** fait glisser une figure : tous les points bougent dans la même direction, le même sens et de la même longueur (indiqués par une flèche). Les frises sont construites ainsi.",
+        "Une **rotation** fait tourner une figure autour d'un **centre**, d'un certain **angle**, dans un sens donné. Les rosaces et les hélices en sont des exemples."
+      ],
+      "aRetenir": "Symétries, translations et rotations conservent les longueurs, les angles et les aires : la figure garde sa forme et sa taille."
+    },
+    {
+      "titre": "L'homothétie",
+      "niveau": "3e / seconde",
+      "paragraphes": [
+        "Une **homothétie** de centre O et de rapport k agrandit ou réduit une figure : chaque point A a pour image A' sur la droite (OA), avec OA' = |k| × OA.",
+        "Si k > 1, c'est un **agrandissement** ; si 0 < k < 1, une **réduction** ; si k est négatif, l'image passe de l'autre côté de O. Les longueurs sont multipliées par |k| et les aires par k² : c'est la transformation de Thalès !"
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi à reconnaître les transformations et leurs propriétés.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Axes du carré",
+        "question": "Combien d'axes de symétrie un carré possède-t-il ?",
+        "reponse": 4,
+        "indices": [
+          "Pense aux médiatrices des côtés et aux diagonales."
+        ],
+        "solution": "2 médiatrices des côtés + 2 diagonales = 4 axes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Symétrie centrale",
+        "question": "A' est le symétrique de A par rapport au point O. Alors…",
+        "choix": [
+          "O est le milieu de [AA']",
+          "OA' = 2 × OA",
+          "(AA') est perpendiculaire à une droite passant par O"
+        ],
+        "bonne": 0,
+        "explication": "Dans une symétrie centrale de centre O, O est toujours le milieu du segment [AA']."
+      },
+      {
+        "type": "nombre",
+        "titre": "Dans un repère",
+        "question": "A(3 ; 5) a pour symétrique A' par rapport à l'origine du repère. Quelle est l'abscisse de A' ?",
+        "reponse": -3,
+        "indices": [
+          "Par rapport à l'origine, (x ; y) devient (−x ; −y)."
+        ],
+        "solution": "A'(−3 ; −5) : son abscisse est −3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Conservation",
+        "question": "Laquelle de ces transformations ne conserve pas les longueurs ?",
+        "choix": [
+          "Une translation",
+          "Une rotation",
+          "Une homothétie de rapport 3"
+        ],
+        "bonne": 2,
+        "explication": "Une homothétie de rapport 3 multiplie toutes les longueurs par 3. Les autres conservent les longueurs."
+      },
+      {
+        "type": "nombre",
+        "titre": "Homothétie",
+        "question": "Une homothétie de rapport 2,5 transforme un segment de 4 cm. Quelle est la longueur de son image ?",
+        "reponse": 10,
+        "unite": "cm",
+        "indices": [
+          "Les longueurs sont multipliées par le rapport."
+        ],
+        "solution": "4 × 2,5 = 10 cm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Lettre H",
+        "question": "Combien d'axes de symétrie la lettre H (écrite en majuscule bâton) possède-t-elle ?",
+        "reponse": 2,
+        "indices": [
+          "Essaie un pliage vertical, puis un pliage horizontal."
+        ],
+        "solution": "Un axe vertical et un axe horizontal : 2 axes."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Rosaces, frises et photos",
+    "histoire": [
+      "En arts plastiques, la classe décore le préau avec des rosaces, des frises et des photos agrandies.",
+      "Chaque décoration utilise une transformation : à toi de trouver laquelle et de calculer !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Une rosace à 6 pétales",
+        "question": "On obtient une rosace de 6 pétales identiques en faisant tourner un pétale autour du centre. De quel angle faut-il tourner à chaque fois ?",
+        "reponse": 60,
+        "unite": "°",
+        "indices": [
+          "Les 6 pétales se partagent un tour complet de 360°."
+        ],
+        "solution": "360 ÷ 6 = 60°."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une rosace à 8 pétales",
+        "question": "Et pour 8 pétales ?",
+        "reponse": 45,
+        "unite": "°",
+        "indices": [
+          "360 ÷ 8."
+        ],
+        "solution": "360 ÷ 8 = 45°."
+      },
+      {
+        "type": "qcm",
+        "titre": "La frise",
+        "question": "Pour la frise, on reproduit le même motif en le faisant glisser vers la droite. Quelle transformation utilise-t-on ?",
+        "choix": [
+          "Une translation",
+          "Une rotation",
+          "Une symétrie centrale"
+        ],
+        "bonne": 0,
+        "explication": "Faire glisser sans tourner ni retourner, c'est une translation."
+      },
+      {
+        "type": "nombre",
+        "titre": "La photo agrandie",
+        "question": "Une photo de 10 cm × 15 cm est agrandie par une homothétie de rapport 3. Quelle est l'aire de la photo agrandie ?",
+        "reponse": 1350,
+        "unite": "cm²",
+        "indices": [
+          "L'aire de départ est 10 × 15 = 150 cm².",
+          "Les aires sont multipliées par k² = 9."
+        ],
+        "solution": "150 × 3² = 1 350 cm² (la photo mesure 30 cm × 45 cm)."
+      }
+    ],
+    "conclusion": "Le préau est magnifique ! Les transformations sont partout dans l'art : rosaces des cathédrales, frises grecques, pavages de l'Alhambra…"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la trajectoire d'un ballon",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un ballon lancé en l'air monte, ralentit, puis redescend : sa trajectoire est une **parabole**. Elle est décrite par une fonction **f(x) = ax² + bx + c** (avec a ≠ 0), qu'on appelle un **polynôme du second degré** (ou trinôme).",
+        "Si a > 0, la parabole est tournée vers le haut (comme un sourire) ; si a < 0, vers le bas (comme le ballon)."
+      ]
+    },
+    {
+      "titre": "Forme canonique et sommet",
+      "niveau": "première",
+      "paragraphes": [
+        "Tout trinôme s'écrit **a(x − α)² + β**, avec **α = −b/(2a)** et **β = f(α)** : c'est la **forme canonique**.",
+        "Le point S(α ; β) est le **sommet** de la parabole : un **minimum** si a > 0, un **maximum** si a < 0. Exemple : x² − 4x + 1 = (x − 2)² − 3, de sommet (2 ; −3)."
+      ]
+    },
+    {
+      "titre": "Le discriminant",
+      "niveau": "première",
+      "paragraphes": [
+        "Pour résoudre ax² + bx + c = 0, on calcule le **discriminant Δ = b² − 4ac**.",
+        "Si **Δ > 0** : deux solutions **x₁ = (−b − √Δ)/(2a)** et **x₂ = (−b + √Δ)/(2a)**. Si **Δ = 0** : une solution, −b/(2a). Si **Δ < 0** : aucune solution réelle."
+      ],
+      "exemple": {
+        "titre": "Exemple : x² − 5x + 6 = 0",
+        "etapes": [
+          "a = 1, b = −5, c = 6 : Δ = 25 − 24 = 1 > 0.",
+          "x₁ = (5 − 1)/2 = 2 et x₂ = (5 + 1)/2 = 3.",
+          "Vérification : 2² − 5 × 2 + 6 = 0."
+        ]
+      }
+    },
+    {
+      "titre": "Factorisation et signe",
+      "niveau": "première",
+      "paragraphes": [
+        "Si Δ ≥ 0, le trinôme se factorise : **a(x − x₁)(x − x₂)**. Ainsi x² − 5x + 6 = (x − 2)(x − 3).",
+        "**Signe** : le trinôme est du signe de a **à l'extérieur** des racines, et du signe contraire **entre** les racines. x² − 5x + 6 est négatif sur ]2 ; 3[ et positif ailleurs."
+      ],
+      "aRetenir": "Si Δ < 0, le trinôme a toujours le signe de a."
+    },
+    {
+      "titre": "Plus loin : somme et produit des racines",
+      "niveau": "première",
+      "paragraphes": [
+        "Quand Δ ≥ 0 : **x₁ + x₂ = −b/a** et **x₁ × x₂ = c/a**. Pratique pour vérifier ses calculs, ou trouver une racine quand on connaît l'autre."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Règle a, b et c : observe le sommet, le discriminant et les racines (points violets).",
+    "figure": {
+      "type": "parabole",
+      "a": 1,
+      "b": -2,
+      "c": -3
+    },
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Discriminant",
+        "question": "Calcule le discriminant de 2x² + 3x − 2.",
+        "reponse": 25,
+        "indices": [
+          "Δ = b² − 4ac avec a = 2, b = 3, c = −2."
+        ],
+        "solution": "Δ = 9 − 4 × 2 × (−2) = 9 + 16 = 25."
+      },
+      {
+        "type": "nombre",
+        "titre": "Racines",
+        "question": "Résous x² − 5x + 6 = 0. Quelle est la plus grande solution ?",
+        "reponse": 3,
+        "indices": [
+          "Δ = 25 − 24 = 1.",
+          "x = (5 ± 1)/2."
+        ],
+        "solution": "Les solutions sont 2 et 3 : la plus grande est 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Pas de solution ?",
+        "question": "Combien de solutions réelles l'équation x² + x + 1 = 0 a-t-elle ?",
+        "choix": [
+          "Deux",
+          "Une",
+          "Aucune"
+        ],
+        "bonne": 2,
+        "explication": "Δ = 1 − 4 = −3 < 0 : aucune solution réelle.",
+        "indice": "Calcule Δ."
+      },
+      {
+        "type": "nombre",
+        "titre": "Abscisse du sommet",
+        "question": "Quelle est l'abscisse du sommet de la parabole d'équation y = x² − 4x + 1 ?",
+        "reponse": 2,
+        "indices": [
+          "α = −b/(2a)."
+        ],
+        "solution": "α = 4/2 = 2."
+      },
+      {
+        "type": "nombre",
+        "titre": "Ordonnée du sommet",
+        "question": "Et l'ordonnée de ce sommet ?",
+        "reponse": -3,
+        "indices": [
+          "β = f(2)."
+        ],
+        "solution": "β = 4 − 8 + 1 = −3 : sommet (2 ; −3), c'est un minimum."
+      },
+      {
+        "type": "qcm",
+        "titre": "Signe",
+        "question": "Quel est le signe de x² − 5x + 6 pour x entre 2 et 3 ?",
+        "choix": [
+          "positif",
+          "négatif",
+          "nul"
+        ],
+        "bonne": 1,
+        "explication": "Entre les racines 2 et 3, le trinôme est du signe contraire de a = 1 : négatif. Exemple : x = 2,5 donne −0,25."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tir au but",
+    "histoire": [
+      "Un footballeur tire en cloche. La hauteur du ballon (en mètres) au bout de t secondes est **h(t) = −5t² + 10t**.",
+      "Analyse sa trajectoire !"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Après 1 seconde",
+        "question": "À quelle hauteur est le ballon au bout d'une seconde ?",
+        "reponse": 5,
+        "unite": "m",
+        "indices": [
+          "Calcule h(1)."
+        ],
+        "solution": "h(1) = −5 + 10 = 5 m."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le retour au sol",
+        "question": "Au bout de combien de secondes le ballon retombe-t-il au sol ?",
+        "reponse": 2,
+        "unite": "s",
+        "indices": [
+          "Résous −5t² + 10t = 0.",
+          "Factorise : −5t(t − 2) = 0."
+        ],
+        "solution": "−5t(t − 2) = 0 : t = 0 (le tir) ou t = 2 s (le retour au sol)."
+      },
+      {
+        "type": "nombre",
+        "titre": "La hauteur maximale",
+        "question": "Quelle est la hauteur maximale atteinte ?",
+        "reponse": 5,
+        "unite": "m",
+        "indices": [
+          "Le maximum est au sommet : α = −b/(2a) = −10/(−10) = 1."
+        ],
+        "solution": "Sommet en t = 1 : h(1) = 5 m. C'est la hauteur maximale (a = −5 < 0)."
+      },
+      {
+        "type": "nombre",
+        "titre": "À 3,75 m",
+        "question": "À quel instant (le premier) le ballon passe-t-il à 3,75 m de hauteur ?",
+        "reponse": 0.5,
+        "unite": "s",
+        "indices": [
+          "Résous −5t² + 10t = 3,75, soit t² − 2t + 0,75 = 0.",
+          "Δ = 4 − 3 = 1."
+        ],
+        "solution": "t = (2 ± 1)/2 : t = 0,5 s (en montant) ou t = 1,5 s (en descendant)."
+      }
+    ],
+    "conclusion": "But ! Le second degré décrit toutes les trajectoires en cloche : ballons, jets d'eau, sauts…"
+  }
+}

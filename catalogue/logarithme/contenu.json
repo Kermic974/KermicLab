@@ -1,0 +1,163 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : retrouver l'exposant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "2 puissance combien donne 8 ? Réponse : 3. Le **logarithme** répond à ce genre de question : il retrouve l'**exposant**.",
+        "Les logarithmes transforment les multiplications en additions : c'est pourquoi on les utilise pour les échelles qui couvrent d'énormes écarts (séismes, décibels, pH)."
+      ]
+    },
+    {
+      "titre": "Définition",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Pour tout réel x > 0, **ln x** est l'unique nombre dont l'exponentielle vaut x : **e^(ln x) = x**. Et pour tout réel x, **ln(eˣ) = x**. La fonction ln est la **réciproque** de l'exponentielle.",
+        "Valeurs à connaître : **ln 1 = 0** et **ln e = 1**. ln x n'existe que pour x > 0."
+      ]
+    },
+    {
+      "titre": "Propriétés algébriques",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**ln(ab) = ln a + ln b**, **ln(a/b) = ln a − ln b**, **ln(aⁿ) = n ln a** et **ln √a = (1/2) ln a** (pour a, b > 0).",
+        "Le logarithme permet de **résoudre des équations avec l'inconnue en exposant** : eˣ = 5 donne x = ln 5 ; 2ⁿ ≥ 1 000 donne n ln 2 ≥ ln 1 000, donc n ≥ 9,97…, soit n ≥ 10."
+      ]
+    },
+    {
+      "titre": "Étude de la fonction ln",
+      "niveau": "terminale",
+      "paragraphes": [
+        "(ln x)' = **1/x** > 0 sur ]0 ; +∞[ : ln est **strictement croissante**.",
+        "ln x tend vers **+∞** quand x tend vers +∞ (mais très lentement) et vers **−∞** quand x tend vers 0 (asymptote verticale x = 0). Croissance comparée : ln x / x tend vers 0."
+      ]
+    },
+    {
+      "titre": "Plus loin : le logarithme décimal",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Le **logarithme décimal** log x = ln x / ln 10 vérifie log(10ⁿ) = n : log 1 000 = 3. Il donne à peu près le nombre de chiffres d'un nombre.",
+        "Sur l'échelle de Richter, un séisme de magnitude 7 libère environ 32 fois plus d'énergie qu'un séisme de magnitude 6."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les propriétés du logarithme.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Valeur remarquable",
+        "question": "Combien vaut ln 1 ?",
+        "reponse": 0,
+        "indices": [
+          "e⁰ = 1."
+        ],
+        "solution": "ln 1 = 0, car e⁰ = 1."
+      },
+      {
+        "type": "nombre",
+        "titre": "Réciproque",
+        "question": "Combien vaut ln(e³) ?",
+        "reponse": 3,
+        "indices": [
+          "ln(eˣ) = x."
+        ],
+        "solution": "ln(e³) = 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Propriété",
+        "question": "ln 2 + ln 5 est égal à…",
+        "choix": [
+          "ln 7",
+          "ln 10",
+          "ln 2 × ln 5"
+        ],
+        "bonne": 1,
+        "explication": "ln a + ln b = ln(ab) = ln 10.",
+        "indice": "Le logarithme transforme les produits en sommes."
+      },
+      {
+        "type": "nombre",
+        "titre": "Équation",
+        "question": "Résous eˣ = 20. Donne x arrondi au centième.",
+        "reponse": 3,
+        "tolerance": 0.005,
+        "indices": [
+          "x = ln 20."
+        ],
+        "solution": "x = ln 20 ≈ 2,9957…, soit 3,00 au centième."
+      },
+      {
+        "type": "nombre",
+        "titre": "Seuil",
+        "question": "Quel est le plus petit entier n tel que 2ⁿ ≥ 1 000 ?",
+        "reponse": 10,
+        "indices": [
+          "n ln 2 ≥ ln 1 000, donc n ≥ ln 1 000 / ln 2 ≈ 9,97."
+        ],
+        "solution": "n ≥ 9,97, donc n = 10 (en effet 2¹⁰ = 1 024)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Logarithme décimal",
+        "question": "Combien vaut log 10 000 ?",
+        "reponse": 4,
+        "indices": [
+          "10 000 = 10⁴."
+        ],
+        "solution": "log(10⁴) = 4."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le placement qui double",
+    "histoire": [
+      "On place **1 000 €** à 5 % d'intérêts composés par an. Au bout de n années, le capital vaut **Cₙ = 1 000 × 1,05ⁿ**.",
+      "Combien de temps faut-il attendre ?"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Après 2 ans",
+        "question": "Combien vaut le capital au bout de 2 ans ?",
+        "reponse": 1102.5,
+        "unite": "€",
+        "indices": [
+          "1 000 × 1,05²."
+        ],
+        "solution": "1 000 × 1,1025 = 1 102,50 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le doublement",
+        "question": "Au bout de combien d'années complètes le capital aura-t-il au moins doublé ?",
+        "reponse": 15,
+        "unite": "ans",
+        "indices": [
+          "Résous 1,05ⁿ ≥ 2 : n ≥ ln 2 / ln 1,05.",
+          "ln 2 / ln 1,05 ≈ 14,2."
+        ],
+        "solution": "n ≥ 14,2, donc 15 ans (1,05¹⁴ ≈ 1,98 et 1,05¹⁵ ≈ 2,08)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le triplement",
+        "question": "Et pour qu'il ait au moins triplé ?",
+        "reponse": 23,
+        "unite": "ans",
+        "indices": [
+          "n ≥ ln 3 / ln 1,05 ≈ 22,5."
+        ],
+        "solution": "n ≥ 22,5, donc 23 ans."
+      }
+    ],
+    "conclusion": "Bravo ! Le logarithme sert à « descendre » l'exposant : c'est l'outil pour répondre à toutes les questions « au bout de combien de temps ? »."
+  }
+}

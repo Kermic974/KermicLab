@@ -20,6 +20,9 @@ export function lireFrontMatter(texte) {
   return donnees;
 }
 
+/** Niveaux scolaires connus, dans l'ordre du parcours (barre de navigation du chat). Champ facultatif d'une fiche. */
+export const NIVEAUX = ["college", "seconde", "premiere", "terminale"];
+
 const liste = (v) => (Array.isArray(v) ? v : String(v ?? "").split(",").map((s) => s.trim()).filter(Boolean));
 
 export function lireMetaHtml(html) {
@@ -73,6 +76,7 @@ export async function chargerCatalogue(dossiers) {
         if (!fiche[champ] || (Array.isArray(fiche[champ]) && !fiche[champ].length)) throw new Error(`${rep}: champ « ${champ} » manquant`);
       }
       if (fiche.id !== nom) throw new Error(`${rep}: l'id « ${fiche.id} » doit être égal au nom du dossier`);
+      if (fiche.niveau && !NIVEAUX.includes(fiche.niveau)) throw new Error(`${rep}: niveau « ${fiche.niveau} » inconnu (attendu : ${NIVEAUX.join(", ")})`);
       if (pages[fiche.id]) throw new Error(`id en double : ${fiche.id}`);
       const langues = liste(fiche.langues);
       if (!langues.includes("fr")) throw new Error(`${rep}: la version française est obligatoire`);
@@ -93,7 +97,8 @@ export async function chargerCatalogue(dossiers) {
       }
       maquettes.push({
         id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, langues,
-        onglets: liste(fiche.onglets), motsCles: liste(fiche["mots-cles"]), questions: liste(fiche.questions)
+        onglets: liste(fiche.onglets), motsCles: liste(fiche["mots-cles"]), questions: liste(fiche.questions),
+        niveau: fiche.niveau ?? "autres"
       });
     }
   }

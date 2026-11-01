@@ -1,0 +1,162 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une information change les chances",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On tire une carte dans un jeu de 52. La probabilité d'avoir un roi est 4/52 = 1/13. Mais si on **sait que** la carte est une figure (valet, dame ou roi : 12 cartes), la probabilité d'avoir un roi devient 4/12 = 1/3.",
+        "Une **probabilité conditionnelle** est une probabilité calculée en tenant compte d'une information."
+      ]
+    },
+    {
+      "titre": "Définition",
+      "niveau": "première",
+      "paragraphes": [
+        "La probabilité de B **sachant** A (avec P(A) ≠ 0) est **P_A(B) = P(A ∩ B) / P(A)**.",
+        "On en déduit la formule utile : **P(A ∩ B) = P(A) × P_A(B)**."
+      ]
+    },
+    {
+      "titre": "Arbres pondérés et probabilités totales",
+      "niveau": "première",
+      "paragraphes": [
+        "Sur un **arbre pondéré**, la somme des probabilités des branches issues d'un même nœud vaut 1. On **multiplie** le long d'un chemin pour obtenir P(A ∩ B).",
+        "**Formule des probabilités totales** : P(B) = P(A ∩ B) + P(Ā ∩ B) = P(A) × P_A(B) + P(Ā) × P_Ā(B)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "P(A) = 0,4, P_A(B) = 0,5 et P_Ā(B) = 0,25.",
+          "P(A ∩ B) = 0,4 × 0,5 = 0,2 et P(Ā ∩ B) = 0,6 × 0,25 = 0,15.",
+          "P(B) = 0,2 + 0,15 = 0,35."
+        ]
+      }
+    },
+    {
+      "titre": "L'indépendance",
+      "niveau": "première",
+      "paragraphes": [
+        "A et B sont **indépendants** si **P(A ∩ B) = P(A) × P(B)**, c'est-à-dire si savoir que A est réalisé ne change pas la probabilité de B : P_A(B) = P(B).",
+        "Deux lancers de dé successifs sont indépendants ; tirer deux cartes sans remise ne l'est pas."
+      ]
+    },
+    {
+      "titre": "Plus loin : le paradoxe des tests médicaux",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Une maladie touche 1 % de la population. Un test détecte 99 % des malades, mais il est aussi positif chez 5 % des personnes saines.",
+        "P(positif) = 0,01 × 0,99 + 0,99 × 0,05 = 0,0099 + 0,0495 = 0,0594. Donc P(malade sachant positif) = 0,0099/0,0594 ≈ **0,17** : seulement 17 % ! Quand une maladie est rare, la plupart des tests positifs sont de faux positifs."
+      ],
+      "aRetenir": "P_A(B) et P_B(A) sont deux choses très différentes : ne jamais les confondre."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : écris toujours les probabilités sur l'arbre avant de calculer.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Définition",
+        "question": "P(A) = 0,5 et P(A ∩ B) = 0,2. Calcule P_A(B).",
+        "reponse": 0.4,
+        "indices": [
+          "P_A(B) = P(A ∩ B) / P(A)."
+        ],
+        "solution": "0,2 / 0,5 = 0,4."
+      },
+      {
+        "type": "nombre",
+        "titre": "Intersection",
+        "question": "P(A) = 0,3 et P_A(B) = 0,6. Calcule P(A ∩ B).",
+        "reponse": 0.18,
+        "indices": [
+          "P(A ∩ B) = P(A) × P_A(B)."
+        ],
+        "solution": "0,3 × 0,6 = 0,18."
+      },
+      {
+        "type": "nombre",
+        "titre": "Probabilités totales",
+        "question": "P(A) = 0,4, P_A(B) = 0,5 et P_Ā(B) = 0,25. Calcule P(B).",
+        "reponse": 0.35,
+        "indices": [
+          "P(Ā) = 0,6.",
+          "P(B) = 0,4 × 0,5 + 0,6 × 0,25."
+        ],
+        "solution": "0,2 + 0,15 = 0,35."
+      },
+      {
+        "type": "qcm",
+        "titre": "Indépendance",
+        "question": "P(A) = 0,5, P(B) = 0,4 et P(A ∩ B) = 0,2. A et B sont-ils indépendants ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 0,
+        "explication": "P(A) × P(B) = 0,5 × 0,4 = 0,2 = P(A ∩ B) : ils sont indépendants.",
+        "indice": "Compare P(A ∩ B) et P(A) × P(B)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le test médical",
+        "question": "Maladie touchant 1 % de la population, test positif chez 99 % des malades et chez 5 % des personnes saines. Si ton test est positif, la probabilité d'être malade est environ…",
+        "choix": [
+          "99 %",
+          "50 %",
+          "17 %"
+        ],
+        "bonne": 2,
+        "explication": "P(malade ∩ positif) = 0,0099 et P(positif) = 0,0594 : 0,0099/0,0594 ≈ 0,17. Surprenant mais vrai !",
+        "indice": "Calcule P(positif) avec la formule des probabilités totales."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La cantine du lycée",
+    "histoire": [
+      "Dans un lycée, **60 %** des élèves sont demi-pensionnaires (événement D). Parmi eux, **70 %** aiment les frites de la cantine (événement F). Parmi les externes, **50 %** les aiment.",
+      "On interroge un élève au hasard."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Demi-pensionnaire et fan",
+        "question": "Quelle est la probabilité que l'élève soit demi-pensionnaire et aime les frites ?",
+        "reponse": 0.42,
+        "indices": [
+          "P(D ∩ F) = P(D) × P_D(F)."
+        ],
+        "solution": "0,6 × 0,7 = 0,42."
+      },
+      {
+        "type": "nombre",
+        "titre": "Aimer les frites",
+        "question": "Quelle est la probabilité que l'élève aime les frites ?",
+        "reponse": 0.62,
+        "indices": [
+          "Formule des probabilités totales : P(F) = P(D ∩ F) + P(D̄ ∩ F).",
+          "P(D̄ ∩ F) = 0,4 × 0,5 = 0,2."
+        ],
+        "solution": "P(F) = 0,42 + 0,2 = 0,62."
+      },
+      {
+        "type": "nombre",
+        "titre": "Dans l'autre sens",
+        "question": "L'élève aime les frites. Quelle est la probabilité qu'il soit demi-pensionnaire ? (Arrondis au centième.)",
+        "reponse": 0.68,
+        "tolerance": 0.005,
+        "indices": [
+          "P_F(D) = P(D ∩ F) / P(F)."
+        ],
+        "solution": "0,42 / 0,62 ≈ 0,68."
+      }
+    ],
+    "conclusion": "Bravo ! Tu as « remonté » l'arbre : passer de P_D(F) à P_F(D), c'est le raisonnement des médecins, des enquêteurs et des filtres anti-spam."
+  }
+}

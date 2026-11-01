@@ -1,0 +1,156 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : compter par paquets",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On achète les œufs par douzaines plutôt qu'à l'unité. Les chimistes font pareil avec les atomes, mais ils sont si nombreux qu'il faut un paquet gigantesque : la **mole**.",
+        "Une mole contient **6,02 × 10²³** entités (atomes, molécules, ions) : c'est la **constante d'Avogadro**, N_A."
+      ]
+    },
+    {
+      "titre": "La mole",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La **quantité de matière** n (en mol) d'un échantillon de N entités vaut **n = N / N_A**.",
+        "3,01 × 10²³ molécules d'eau représentent n = 3,01 × 10²³ / 6,02 × 10²³ = 0,5 mol."
+      ]
+    },
+    {
+      "titre": "La masse molaire",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La **masse molaire** M (en g/mol) est la masse d'une mole. Pour une molécule, on additionne les masses molaires atomiques : C = 12, H = 1,0, O = 16 g/mol.",
+        "M(H₂O) = 2 × 1,0 + 16 = 18 g/mol. On en déduit **n = m / M** : 36 g d'eau représentent 36 / 18 = 2 mol."
+      ]
+    },
+    {
+      "titre": "La concentration",
+      "niveau": "seconde",
+      "paragraphes": [
+        "La **concentration en quantité de matière** d'une espèce dissoute vaut **C = n / V** (en mol/L). Elle est liée à la concentration en masse par **Cm = C × M**.",
+        "0,2 mol de sel dissous dans 0,5 L de solution : C = 0,2 / 0,5 = 0,4 mol/L."
+      ]
+    },
+    {
+      "titre": "La dilution",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Lors d'une **dilution**, on ajoute du solvant : la quantité de soluté ne change pas. Donc **C_mère × V_mère = C_fille × V_fille**.",
+        "Le **facteur de dilution** F = C_mère / C_fille = V_fille / V_mère. Prélever 10 mL et compléter à 100 mL, c'est diluer 10 fois."
+      ],
+      "aRetenir": "Pour diluer, on prélève la solution mère à la pipette jaugée et on complète avec de l'eau dans une fiole jaugée."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : n = m / M, C = n / V, et la dilution.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Masse molaire",
+        "question": "Calcule la masse molaire du dioxyde de carbone CO₂ (C = 12 g/mol, O = 16 g/mol).",
+        "reponse": 44,
+        "unite": "g/mol",
+        "indices": [
+          "1 atome C et 2 atomes O."
+        ],
+        "solution": "12 + 2 × 16 = 44 g/mol."
+      },
+      {
+        "type": "nombre",
+        "titre": "Quantité de matière",
+        "question": "Combien de moles y a-t-il dans 36 g d'eau (M = 18 g/mol) ?",
+        "reponse": 2,
+        "unite": "mol",
+        "indices": [
+          "n = m / M."
+        ],
+        "solution": "36 / 18 = 2 mol."
+      },
+      {
+        "type": "nombre",
+        "titre": "Avec Avogadro",
+        "question": "Un échantillon contient 3,01 × 10²³ molécules. Quelle est sa quantité de matière (N_A = 6,02 × 10²³ mol⁻¹) ?",
+        "reponse": 0.5,
+        "unite": "mol",
+        "indices": [
+          "n = N / N_A."
+        ],
+        "solution": "3,01 × 10²³ / 6,02 × 10²³ = 0,5 mol."
+      },
+      {
+        "type": "nombre",
+        "titre": "Concentration",
+        "question": "On dissout 0,2 mol de soluté pour obtenir 0,5 L de solution. Quelle est la concentration en mol/L ?",
+        "reponse": 0.4,
+        "unite": "mol/L",
+        "indices": [
+          "C = n / V."
+        ],
+        "solution": "0,2 / 0,5 = 0,4 mol/L."
+      },
+      {
+        "type": "nombre",
+        "titre": "Dilution",
+        "question": "On prélève 10 mL d'une solution à 1 mol/L et on complète à 100 mL avec de l'eau. Quelle est la nouvelle concentration ?",
+        "reponse": 0.1,
+        "unite": "mol/L",
+        "indices": [
+          "C_mère × V_mère = C_fille × V_fille.",
+          "1 × 10 = C_fille × 100."
+        ],
+        "solution": "C_fille = 1 × 10 / 100 = 0,1 mol/L (dilution 10 fois)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sucre dans le thé",
+    "histoire": [
+      "Le sucre de table est du saccharose, de formule **C₁₂H₂₂O₁₁** (C = 12, H = 1,0 et O = 16 g/mol).",
+      "Tu mets **17,1 g** de sucre dans une tasse contenant **0,25 L** de thé."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Masse molaire",
+        "question": "Quelle est la masse molaire du saccharose ?",
+        "reponse": 342,
+        "unite": "g/mol",
+        "indices": [
+          "12 atomes C, 22 atomes H et 11 atomes O.",
+          "12 × 12 + 22 × 1 + 11 × 16."
+        ],
+        "solution": "144 + 22 + 176 = 342 g/mol."
+      },
+      {
+        "type": "nombre",
+        "titre": "Quantité de sucre",
+        "question": "Quelle quantité de matière de sucre as-tu ajoutée ?",
+        "reponse": 0.05,
+        "unite": "mol",
+        "indices": [
+          "n = m / M = 17,1 / 342."
+        ],
+        "solution": "17,1 / 342 = 0,05 mol."
+      },
+      {
+        "type": "nombre",
+        "titre": "Concentration",
+        "question": "Quelle est la concentration en sucre du thé, en mol/L ?",
+        "reponse": 0.2,
+        "unite": "mol/L",
+        "indices": [
+          "C = n / V = 0,05 / 0,25."
+        ],
+        "solution": "0,05 / 0,25 = 0,2 mol/L."
+      }
+    ],
+    "conclusion": "Bravo ! Masse molaire, quantité de matière, concentration : c'est le trio de base de tout chimiste, en laboratoire comme en cuisine."
+  }
+}

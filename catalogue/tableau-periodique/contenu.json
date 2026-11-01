@@ -1,0 +1,163 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ranger les éléments",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "En 1869, Dmitri Mendeleïev range les éléments chimiques dans un tableau et remarque que des propriétés semblables reviennent **périodiquement**. Il laisse même des cases vides pour des éléments encore inconnus… qui seront découverts plus tard !",
+        "Aujourd'hui, le **tableau périodique** compte 118 éléments, rangés par **numéro atomique** croissant."
+      ]
+    },
+    {
+      "titre": "Le noyau",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Un noyau est noté ᴬ_Z X : **Z** est le **numéro atomique** (nombre de protons) et **A** le **nombre de nucléons** (protons + neutrons). Nombre de neutrons : **N = A − Z**.",
+        "Des **isotopes** ont le même Z mais un A différent : le carbone 12 (6 neutrons) et le carbone 14 (8 neutrons) sont deux isotopes du carbone."
+      ]
+    },
+    {
+      "titre": "La configuration électronique",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les Z électrons se répartissent dans des sous-couches, dans l'ordre **1s, 2s, 2p, 3s, 3p** (s contient au plus 2 électrons, p au plus 6).",
+        "Oxygène (Z = 8) : **1s² 2s² 2p⁴**. Les électrons de la dernière couche (ici 2s² 2p⁴, soit 6) sont les **électrons de valence** : ce sont eux qui participent aux réactions."
+      ]
+    },
+    {
+      "titre": "Lire le tableau",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Une **ligne** (période) correspond à une couche électronique en cours de remplissage. Une **colonne** regroupe les éléments ayant le **même nombre d'électrons de valence** : ils forment une **famille** aux propriétés voisines.",
+        "Dernière colonne : les **gaz nobles** (hélium, néon, argon), très stables car leur couche externe est complète (duet pour l'hélium, octet pour les autres). Première colonne : les métaux alcalins ; avant-dernière : les halogènes."
+      ]
+    },
+    {
+      "titre": "Ions et liaisons",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Pour gagner en stabilité, un atome tend à acquérir la configuration du gaz noble le plus proche. Le sodium (1 électron de valence) le perd : **Na⁺**. Le chlore (7 électrons de valence) en gagne un : **Cl⁻**. Le magnésium (2 électrons de valence) donne **Mg²⁺**.",
+        "Des atomes peuvent aussi **partager** des électrons : une **liaison covalente** est un doublet d'électrons mis en commun. L'hydrogène forme 1 liaison, l'oxygène 2, l'azote 3 et le carbone 4."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec le noyau et les électrons.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Neutrons",
+        "question": "Le noyau de sodium est noté ²³₁₁Na. Combien contient-il de neutrons ?",
+        "reponse": 12,
+        "indices": [
+          "N = A − Z."
+        ],
+        "solution": "23 − 11 = 12 neutrons."
+      },
+      {
+        "type": "nombre",
+        "titre": "Électrons de valence",
+        "question": "Combien l'atome d'oxygène (Z = 8, configuration 1s² 2s² 2p⁴) a-t-il d'électrons de valence ?",
+        "reponse": 6,
+        "indices": [
+          "Compte les électrons de la couche 2 : 2s² 2p⁴."
+        ],
+        "solution": "2 + 4 = 6 électrons de valence."
+      },
+      {
+        "type": "qcm",
+        "titre": "Isotopes",
+        "question": "Deux isotopes d'un même élément ont…",
+        "choix": [
+          "le même nombre de protons mais pas le même nombre de neutrons",
+          "le même nombre de neutrons mais pas le même nombre de protons",
+          "le même nombre de nucléons"
+        ],
+        "bonne": 0,
+        "explication": "Même Z (même élément), mais A différent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un ion",
+        "question": "Le magnésium (Z = 12) a 2 électrons de valence. Quel ion forme-t-il ?",
+        "choix": [
+          "Mg⁺",
+          "Mg²⁺",
+          "Mg²⁻"
+        ],
+        "bonne": 1,
+        "explication": "Il perd ses 2 électrons de valence pour avoir la configuration du néon : Mg²⁺."
+      },
+      {
+        "type": "nombre",
+        "titre": "Liaisons du carbone",
+        "question": "Combien de liaisons covalentes l'atome de carbone forme-t-il en général ?",
+        "reponse": 4,
+        "indices": [
+          "Il a 4 électrons de valence et il lui en manque 4 pour l'octet."
+        ],
+        "solution": "4 liaisons (comme dans le méthane CH₄)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sel de cuisine",
+    "histoire": [
+      "Le sel de cuisine, le chlorure de sodium, est formé à partir de sodium (Z = 11) et de chlore (Z = 17).",
+      "Comprenons pourquoi ces deux éléments s'associent si bien."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le sodium",
+        "question": "Configuration du sodium : 1s² 2s² 2p⁶ 3s¹. Combien a-t-il d'électrons de valence ?",
+        "reponse": 1,
+        "indices": [
+          "Regarde la dernière couche : 3s¹."
+        ],
+        "solution": "1 électron de valence : le sodium est un métal alcalin (première colonne)."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'ion sodium",
+        "question": "Quel ion le sodium forme-t-il ?",
+        "choix": [
+          "Na⁺",
+          "Na⁻",
+          "Na²⁺"
+        ],
+        "bonne": 0,
+        "explication": "Il perd son électron de valence pour avoir la configuration du néon."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le chlore",
+        "question": "Configuration du chlore : 1s² 2s² 2p⁶ 3s² 3p⁵. Combien a-t-il d'électrons de valence ?",
+        "reponse": 7,
+        "indices": [
+          "Couche 3 : 3s² 3p⁵."
+        ],
+        "solution": "2 + 5 = 7 électrons de valence : c'est un halogène."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'ion chlorure",
+        "question": "Quel ion le chlore forme-t-il ?",
+        "choix": [
+          "Cl⁺",
+          "Cl⁻",
+          "Cl²⁻"
+        ],
+        "bonne": 1,
+        "explication": "Il gagne un électron pour avoir la configuration de l'argon. Na⁺ et Cl⁻ s'attirent : voilà le sel !"
+      }
+    ],
+    "conclusion": "Bravo ! L'électron que le sodium cède, le chlore le prend : leur association donne le cristal de sel NaCl."
+  }
+}
