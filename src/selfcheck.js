@@ -3,21 +3,16 @@
 
 import { norm, dist, refAngle, parseAngle } from './core/angle.js';
 import { NOTABLE, OFF_AXIS, EXACT, exactNum } from './core/exact-values.js';
-import { fmt, unfmt } from './core/format.js';
+import { fmt } from './core/format.js';
 import { calc, compute, resolveAngle } from './core/engine.js';
 import { LESSONS } from './pedagogy/lessons.js';
 import { quizOptions } from './pedagogy/challenges.js';
 import { solutions } from './solutions/catalog.js';
 import { solutionContext, checkSolutionResult } from './solutions/registry.js';
+import { compareResults } from './solutions/compare.js';
 
 // Angles de référence partagés par toutes les méthodes (ARCHITECTURE.md § Tests comparatifs).
 export const REFERENCE_INPUTS = ['0', '30', '45', '60', '90', '120', '135', '150', '180', '270', '360', '-30', '390', 'π/3', '2π/3', '22,5', '137,5'];
-
-// Valeur numérique d'une chaîne de résultat (forme exacte ou approchée).
-export function resultNumber(s) {
-  var e = exactNum(s);
-  return e === undefined ? unfmt(s) : e;
-}
 
 export function runCoreChecks() {
   var fail = [], count = 0;
@@ -92,12 +87,10 @@ export function runCoreChecks() {
       var problems = checkSolutionResult(res, s.id);
       ok(s.id + ' contrat ' + input + (problems.length ? ' (' + problems.join(', ') + ')' : ''), !problems.length);
       if (problems.length) return;
-      if (res.status === 'success') {
-        var tol = res.confidence === 'exact' ? 1e-9 : 1e-6;
-        ok(s.id + ' cos ' + input, near(resultNumber(res.result.cos), v.x, tol));
-        ok(s.id + ' sin ' + input, near(resultNumber(res.result.sin), v.y, tol));
-        ok(s.id + ' tan ' + input, res.result.tan === null ? v.t === null : near(resultNumber(res.result.tan), v.t, tol));
-      }
+      var cmp = compareResults([res], v);
+      ['cos', 'sin', 'tan'].forEach(function (f) {
+        ok(s.id + ' ' + f + ' ' + input, !cmp.mismatches.some(function (m) { return m.field === f; }));
+      });
     });
   });
   // Cas de référence 60° (SPEC.md).

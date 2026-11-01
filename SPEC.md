@@ -89,6 +89,7 @@ Saisies de référence communes à toutes les méthodes : `0, 30, 45, 60, 90, 12
 | S-07 | `solutions.list({ mode })` ne renvoie que les méthodes dont `supportedModes` contient ce mode. | M |
 | S-05 | La méthode tabulaire lit la valeur de l'angle de référence dans la table des angles remarquables, applique la symétrie du quadrant, puis le tableau des signes, et rappelle la périodicité (θ + 360° k). | M |
 | S-06 | Une méthode qui ne s'applique pas à un angle renvoie `status: 'unsupported'`, `result: null`, au moins une étape `why` qui explique pourquoi, et un avertissement `NOT_APPLICABLE`. L'Interface l'affiche sans valeur. | M+I |
+| S-08 | Le Moteur fournit une vérification de concordance (`compareResults`). Pour un angle, toutes les méthodes applicables donnent les mêmes cos, sin et tan que le moteur. Le résultat commun affiché vient du moteur, la concordance des méthodes. | M |
 
 ## Accessibilité
 

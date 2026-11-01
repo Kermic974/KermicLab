@@ -30,7 +30,7 @@ entrée (pointeur, clavier, saisie)            src/ui/input.js
 | Moteur mathématique | `src/core/angle.js`, `exact-values.js`, `engine.js`, `format.js` | Moteur | pur, sans DOM |
 | État central | `src/core/store.js` | Moteur | valeurs sources uniquement |
 | Pédagogie | `src/pedagogy/lessons.js`, `challenges.js` | Moteur | pur, hasard injectable |
-| Méthodes | `src/solutions/registry.js`, `catalog.js`, `geometric.js`, `algebraic.js` | Moteur | contrat commun |
+| Méthodes | `src/solutions/registry.js`, `catalog.js`, `geometric.js`, `algebraic.js`, `compare.js` | Moteur | contrat commun |
 | Autotests Moteur | `src/selfcheck.js` | Moteur | exécutés dans Node et dans la page |
 | **Contrat** | `src/api.js` | les deux | réexportations uniquement |
 | Interface | `src/ui/*.js`, `src/styles/app.css`, `src/index.template.html` | Interface | importe le Moteur via `api.js` |

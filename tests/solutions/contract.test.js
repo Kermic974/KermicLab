@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 import { solutions } from '../../src/solutions/catalog.js';
 import { createRegistry, solutionContext, checkSolutionResult } from '../../src/solutions/registry.js';
 import { compute, resolveAngle } from '../../src/core/engine.js';
-import { REFERENCE_INPUTS, resultNumber } from '../../src/selfcheck.js';
+import { REFERENCE_INPUTS } from '../../src/selfcheck.js';
+import { resultNumber } from '../../src/solutions/compare.js';
 
 for (const s of solutions.list()) {
   test(`${s.id} : contrat respecté sur toutes les saisies de référence`, () => {
