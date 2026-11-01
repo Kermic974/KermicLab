@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "mathematiques/theoreme-de-pythagore", plan_onglets: ["explication", "puzzle des carrés", "mise en situation"],
-    reponse: "Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés."
+    sujet: "mathematiques/theoreme-de-thales", plan_onglets: ["explication", "puzzle des triangles", "mise en situation"],
+    reponse: "Deux droites parallèles coupées par deux sécantes créent des longueurs proportionnelles."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "c'est quoi le théorème de Pythagore ?", langue: "fr" });
-  await chat({ message: "explique Pythagore", langue: "fr" });
+  const a = await chat({ message: "c'est quoi le théorème de Thalès ?", langue: "fr" });
+  await chat({ message: "explique Thalès", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] mathematiques/theoreme-de-pythagore");
-  assert.match(issues[0].body, /puzzle des carrés/);
+  assert.equal(issues[0].title, "[maquette-manquante] mathematiques/theoreme-de-thales");
+  assert.match(issues[0].body, /puzzle des triangles/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -173,19 +173,19 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
   const fr = await lire("fr");
   const en = await lire("en");
   assert.ok(fr.length >= 1 && fr.length <= 4);
-  assert.ok(fr.every((q) => !/\b(what|explain)\b/i.test(q)));
-  assert.ok(en.length >= 1 && en.every((q) => /\b(what|explain)\b/i.test(q)));
+  assert.ok(fr.every((q) => !/\b(what|how|explain)\b/i.test(q)));
+  assert.ok(en.length >= 1 && en.every((q) => /\b(what|how|explain)\b/i.test(q)));
 });
 
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
   _reinitialiser({ client: creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "mathematiques/fractions", plan_onglets: [],
-    reponse: "Une fraction, c'est un partage.",
-    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les fractions égales ?", 4]
+    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "mathematiques/equations", plan_onglets: [],
+    reponse: "Une équation, c'est une balance en équilibre.",
+    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et avec deux inconnues ?", 4]
   }) });
-  const r = await chat({ message: "c'est quoi une fraction ?", langue: "fr" });
+  const r = await chat({ message: "c'est quoi une équation ?", langue: "fr" });
   assert.equal(r.donnees.type, "reponse");
-  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les fractions égales ?"]);
+  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et avec deux inconnues ?"]);
 });
 
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {

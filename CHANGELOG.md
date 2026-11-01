@@ -11,6 +11,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Gabarit commun de notion (`gabarit/`, ADR 0011, guide `docs/gabarit.md`) : une notion = `fiche.md` + `contenu.json`, la page autonome est générée par `npm run build`. Composants : exercices QCM et numériques (fractions, virgules, tolérance, indices progressifs), figures interactives `pythagore`, `fraction` et `proportion`, étoiles par exercice, défi en étapes qui se débloquent.
+- Catalogue : trois notions pilotes générées avec le gabarit — **Le théorème de Pythagore**, **Les fractions**, **Proportionnalité et pourcentages** (du collège au lycée, 6 exercices et un défi en 4 étapes chacune).
 - Chat : les suggestions de l'accueil viennent du catalogue (`GET /api/suggestions`) et mènent toujours à une page ; des questions de secours (i18n), vérifiées par un test de routage, prennent le relais si l'API ne répond pas.
 - Chat : relances proposées par le modèle après chaque réponse (champ `relances`, bornées et modérées), à la place de relances fixes qui ne fonctionnaient pas sans modèle.
 - Modèle : consignes de réponse plus exigeantes (exactitude, niveau adapté, image du quotidien, exemple chiffré, petit défi, suivi de la conversation).

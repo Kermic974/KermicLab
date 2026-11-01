@@ -1,0 +1,37 @@
+<!doctype html>
+<!-- Page générée par scripts/lib/gabarit.mjs depuis catalogue/{{ID}}/contenu.json : ne pas modifier à la main. -->
+<html lang="{{LANGUE}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'calcule-par-le-build'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>{{TITRE}} – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{{META}}
+</script>
+<script type="application/json" id="kermiclab-contenu">
+{{CONTENU}}
+</script>
+<style>
+{{STYLE}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>{{TITRE}}</h1>
+    <div class="meta">{{ID}} · v{{VERSION}}</div>
+  </div>
+  <div class="entete-actions">
+    <span id="etoiles" class="etoiles" role="status"></span>
+    <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+  </div>
+</header>
+<nav role="tablist" aria-label="Onglets de la page" id="onglets"></nav>
+<main id="panneaux"></main>
+<footer>Kermiclab · page autonome, lisible hors ligne. Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</footer>
+<script>
+{{MOTEUR}}
+</script>
+</body>
+</html>
