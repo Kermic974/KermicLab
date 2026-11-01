@@ -33,11 +33,14 @@ jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des ex
 en mathématiques, physique-chimie, géographie et philosophie.
 
 Le catalogue de géographie couvre **métropolisation, urbanisation, espaces ruraux, risques naturels,
-changement climatique, ressources, mobilités, migrations et territoires français**. Chaque page en français
-progresse de l'intuition au collège puis au lycée, avec des cas d'étude, des cartes mentales, des QCM corrigés
-sur les notions, acteurs et échelles, et un défi du quotidien.
-Les pages sont générées depuis `catalogue/<id>/contenu.json` ; voir [le guide du gabarit](docs/gabarit.md).
-Une relecture humaine de l'exactitude géographique est requise avant fusion.
+changement climatique, ressources, mobilités, migrations et territoires français**, ainsi que huit notions
+de mondialisation (`mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`,
+`france-regions`, `espaces-productifs`, `tourisme` et `afrique-australe`). Chaque page en français
+progresse de l'intuition ou du collège jusqu'au lycée, avec des cas d'étude, des exercices corrigés et un
+défi du quotidien. Les notions de mondialisation proposent cinq exercices auto-corrigés et un défi en
+quatre étapes ; les données chiffrées des scénarios sont fictives et les références de relecture figurent
+dans chaque `fiche.md`. Les pages sont générées depuis `catalogue/<id>/contenu.json` ; voir
+[le guide du gabarit](docs/gabarit.md). Une relecture humaine de l'exactitude géographique est requise avant fusion.
 
 Les neuf pages de philosophie couvrent le devoir, l’État, la justice, la liberté, le langage, la raison,
 la science, la technique et la vérité. Elles utilisent le gabarit commun : explications progressives,

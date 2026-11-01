@@ -184,15 +184,32 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
   }
 });
 
+test("suggestionsCatalogue : le repli vers une autre langue est global", () => {
+  const questionsMixtes = { maquettes: [
+    { id: "francais", questions: ["c'est quoi les fractions ?"] },
+    { id: "anglais", questions: ["what are fractions?"] }
+  ] };
+  assert.deepEqual(suggestionsCatalogue(questionsMixtes, "en"), ["What are fractions?"]);
+
+  const sansAnglais = { maquettes: [
+    { id: "a", questions: ["c'est quoi les fractions ?"] },
+    { id: "b", questions: ["comment calculer une fraction ?"] }
+  ] };
+  assert.deepEqual(suggestionsCatalogue(sansAnglais, "en"), [
+    "C'est quoi les fractions ?",
+    "Comment calculer une fraction ?"
+  ]);
+});
+
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
   _reinitialiser({ client: creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "francais/passe-simple", plan_onglets: [],
-    reponse: "Le passé simple raconte des actions terminées.",
-    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les verbes du 3e groupe ?", 4]
+    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "sciences/gloubi-boulga", plan_onglets: [],
+    reponse: "Un volcan, c'est une ouverture par laquelle sort le magma.",
+    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les volcans en France ?", 4]
   }) });
-  const r = await chat({ message: "c'est quoi le passé simple ?", langue: "fr" });
+  const r = await chat({ message: "parle-moi du gloubi-boulga", langue: "fr" });
   assert.equal(r.donnees.type, "reponse");
-  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les verbes du 3e groupe ?"]);
+  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les volcans en France ?"]);
 });
 
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {
@@ -237,6 +254,7 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   assert.equal(matieres[0], "mathematiques");
   assert.ok(matieres.includes("physique-chimie"));
   assert.ok(matieres.includes("svt"));
+  assert.ok(matieres.includes("emc"));
   assert.ok(matieres.includes("philosophie"));
   for (const id of ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"]) {
     assert.ok(notions.some((n) => n.id === id && n.matiere === "philosophie" && n.niveau === "terminale"), id);

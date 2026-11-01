@@ -23,11 +23,11 @@ mots-cles:
   - alimentation equilibree
   - digestive system
 questions:
-  - comment fonctionne la digestion ?
+  - comment l'amylase participe-t-elle à la digestion ?
   - C'est quoi un nutriment ?
-  - je ne comprends pas le rôle des enzymes digestives
+  - je ne comprends pas le rôle de l'amylase dans la digestion
   - où passent les aliments dans l'appareil digestif ?
-  - how does digestion work?
+  - how does the digestive system turn food into nutrients?
 ---
 
 # Nutrition et digestion

@@ -24,14 +24,15 @@ mots-cles:
   - adn
   - groupe sanguin
   - groupes sanguins
+  - family resemblance
   - genetics
   - dna
 questions:
-  - c'est quoi un gène ?
+  - comment les gènes expliquent-ils les ressemblances familiales ?
   - Pourquoi je ressemble à mes parents ?
   - je ne comprends pas les allèles
   - comment se transmet le groupe sanguin
-  - what is a gene?
+  - how do genes explain family resemblance?
 ---
 
 # Génétique et hérédité

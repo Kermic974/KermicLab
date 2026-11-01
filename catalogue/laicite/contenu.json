@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Croire, ne pas croire et apprendre ensemble : découvre la laïcité dans le cadre français.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une place pour chacun", "niveau": "pour démarrer",
+      "paragraphes": ["La **laïcité** protège la liberté de conscience : chacun peut avoir une religion, en changer ou n'en avoir aucune. L'État ne choisit pas une croyance pour tout le monde.", "Petit jeu : peut-on être amis sans avoir les mêmes croyances ? Oui ! On respecte les personnes sans devoir partager leurs convictions."],
+      "exemple": { "titre": "Dans la classe", "etapes": ["Deux élèves ont des convictions différentes.", "Ils travaillent ensemble sans chercher à imposer leur croyance à l'autre."] },
+      "aRetenir": "La laïcité n'est ni une religion ni une interdiction de croire."
+    },
+    {
+      "titre": "Collège : une école publique commune", "niveau": "collège",
+      "paragraphes": ["Les agents du service public, notamment les enseignants de l'école publique, doivent être **neutres** dans l'exercice de leurs fonctions. Les élèves ont une liberté de conscience ; à l'école, au collège et au lycée publics, la loi interdit les signes ou tenues manifestant ostensiblement une appartenance religieuse.", "Les enseignements reposent sur des savoirs et peuvent étudier les religions comme faits historiques. Une conviction ne permet pas de refuser un enseignement obligatoire ni de faire pression sur un camarade."],
+      "exemple": { "titre": "Un cours d'histoire", "etapes": ["La classe étudie un monument religieux.", "Comprendre son histoire ne demande à personne d'adopter une religion."] },
+      "aRetenir": "Distingue la neutralité des personnels et les règles applicables aux élèves."
+    },
+    {
+      "titre": "Lycée : libertés et séparation", "niveau": "lycée",
+      "paragraphes": ["La loi de **1905** garantit la liberté de conscience et le libre exercice des cultes, sous les restrictions nécessaires à l'ordre public. Elle pose la séparation des Églises et de l'État ; son application connaît des régimes particuliers, notamment en Alsace-Moselle.", "Les usagers des services publics ne sont pas soumis, en général, à la même obligation de neutralité que les agents. Des règles spécifiques existent, comme pour les élèves du public. La laïcité n'interdit pas toute expression religieuse dans la rue."],
+      "exemple": { "titre": "Comparer deux situations", "etapes": ["Une agente accueille le public : elle respecte la neutralité du service.", "Une personne venue demander un document conserve sa liberté de conviction, dans le respect des règles du service."] },
+      "aRetenir": "Laïcité : liberté de conscience, égalité des personnes et neutralité de l'État."
+    }
+  ],
+  "application": {
+    "intro": "Repère la règle adaptée à chaque situation.",
+    "exercices": [
+      { "type": "qcm", "titre": "Liberté de conscience", "question": "Que protège la laïcité ?", "choix": ["L'obligation d'avoir une religion", "Le droit de croire ou de ne pas croire", "L'interdiction de parler d'histoire religieuse"], "bonne": 1, "explication": "La liberté de conscience protège les convictions religieuses comme l'absence de religion.", "indice": "Personne ne choisit tes convictions à ta place." },
+      { "type": "qcm", "titre": "Neutralité", "question": "Dans ses fonctions à l'école publique, un enseignant doit…", "choix": ["Convaincre les élèves d'adopter sa religion", "Demander les croyances de chaque famille", "Respecter la neutralité religieuse"], "bonne": 2, "explication": "L'agent représente un service public qui accueille tous les élèves sans privilégier une croyance." },
+      { "type": "qcm", "titre": "Dans la rue", "question": "La laïcité interdit-elle à toute personne de porter un signe religieux dans la rue ?", "choix": ["Non, ce n'est pas une interdiction générale", "Oui, partout et pour tous"], "bonne": 0, "explication": "La liberté religieuse demeure. Des restrictions particulières peuvent exister, mais on ne transpose pas la règle scolaire à tout l'espace public." }
+    ]
+  },
+  "situation": {
+    "titre": "Un panneau pour la classe",
+    "histoire": ["La classe prépare un panneau sur la laïcité avec des personnages fictifs. Aucune enquête sur les croyances des élèves n'est nécessaire.", "Choisis deux messages qui permettent à tous d'apprendre ensemble."],
+    "etapes": [
+      { "type": "qcm", "titre": "Choisir le slogan", "question": "Quel slogan est juste ?", "choix": ["Tous doivent penser pareil", "Des convictions différentes, les mêmes droits"], "bonne": 1, "explication": "La laïcité protège la diversité des convictions et l'égalité des personnes." },
+      { "type": "qcm", "titre": "Réagir à une pression", "question": "Un personnage insiste pour qu'un autre adopte sa croyance. Que proposer ?", "choix": ["Rappeler la liberté de conscience et demander l'aide d'un adulte si la pression continue", "Organiser un vote sur la croyance à adopter"], "bonne": 0, "explication": "Les convictions ne se décident pas à la majorité ; chacun doit être protégé des pressions." }
+    ],
+    "conclusion": "Mission accomplie ! Ton panneau protège les personnes sans exiger qu'elles pensent toutes pareil."
+  }
+}

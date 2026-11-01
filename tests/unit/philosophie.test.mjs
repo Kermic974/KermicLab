@@ -6,7 +6,7 @@ import { validerContenu } from "../../scripts/lib/gabarit.mjs";
 import { routerLocal } from "../../worker/src/router.js";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 
-const NOTIONS = ["devoir", "etat", "justice", "liberte", "langage", "raison", "science", "technique", "verite"];
+const NOTIONS = ["devoir", "etat", "justice-philosophie", "liberte-philosophie", "langage", "raison", "science", "technique", "verite"];
 const racine = new URL("../../catalogue/", import.meta.url);
 const texteNonVide = (texte) => assert.ok(typeof texte === "string" && texte.trim().length > 0);
 const cles = (objet, attendues) => assert.deepEqual(Object.keys(objet).sort(), [...attendues].sort());

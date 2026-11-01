@@ -1,0 +1,91 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Analyser, c'est observer des indices précis puis expliquer ce qu'ils font comprendre ou ressentir.",
+  "niveaux": [
+    {
+      "titre": "Observer avant d'interpréter",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Commence par repérer qui parle, à qui, où et quand. Dans un récit, le **narrateur** raconte l'histoire : il ne faut pas le confondre avec l'auteur, la personne qui a écrit le texte.",
+        "Relève ensuite des mots, des pronoms, des temps ou des répétitions. Une interprétation est plus solide quand elle s'appuie sur ces indices."
+      ],
+      "exemple": {
+        "titre": "Partir d'un indice",
+        "etapes": [
+          "Dans « Je poussai la porte. La pièce était glaciale », le pronom « je » montre que le narrateur raconte à la première personne.",
+          "« Glaciale » donne une impression de froid ; l'adjectif est l'indice qui soutient cette observation."
+        ]
+      }
+    },
+    {
+      "titre": "Relier les procédés à leurs effets",
+      "niveau": "3e / lycée",
+      "paragraphes": [
+        "Un **champ lexical** rassemble des mots liés à une même idée. Il peut installer une atmosphère ou insister sur un thème, mais son effet dépend du contexte.",
+        "Le **point de vue** indique les informations accessibles au lecteur : interne (liées à un personnage), externe (observables de l'extérieur) ou omniscient (le narrateur en sait davantage que les personnages).",
+        "Dans une réponse, cite un indice bref, nomme le procédé si tu le connais, puis explique l'effet produit dans ce passage. Évite d'attribuer automatiquement les pensées du narrateur à l'auteur."
+      ],
+      "exemple": {
+        "titre": "Justifier une interprétation",
+        "etapes": [
+          "« La peur s'empara de moi ; mes mains tremblaient » contient le vocabulaire de la peur et une réaction physique.",
+          "Ces indices montrent que le personnage a peur ; comme le récit donne accès à son ressenti, le point de vue est interne."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Pour chaque question, appuie-toi sur les indices explicitement présents dans l'extrait.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Auteur ou narrateur",
+        "question": "Dans un roman raconté par « je », qui est « je » ?",
+        "choix": ["Toujours l'auteur", "Le narrateur, sauf indice contraire", "Le lecteur"],
+        "bonne": 1,
+        "explication": "« Je » désigne la voix qui raconte. Elle peut être distincte de l'auteur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Point de vue interne",
+        "question": "Quel indice révèle le mieux un point de vue interne ?",
+        "choix": ["Le lecteur connaît les pensées d'un personnage.", "Aucun personnage n'est nommé.", "Le texte ne donne que la couleur du décor."],
+        "bonne": 0,
+        "explication": "Le point de vue interne donne accès aux perceptions ou aux pensées d'un personnage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Justifier une idée",
+        "question": "Quelle réponse justifie le mieux l'idée que le personnage est inquiet ?",
+        "choix": ["Il est inquiet, c'est évident.", "Ses mains tremblent ; ce geste suggère son inquiétude.", "L'auteur est inquiet."],
+        "bonne": 1,
+        "explication": "La réponse cite un indice du texte et explique le lien avec l'interprétation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le club de lecture",
+    "histoire": [
+      "Au club de lecture, tu présentes un court passage à tes amis. Tu veux expliquer ton interprétation sans inventer des détails absents du texte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Repérer l'atmosphère",
+        "question": "Dans « L'ombre envahissait la ruelle ; un volet claquait », quelle interprétation est appuyée par les indices ?",
+        "choix": ["Le passage peut créer une atmosphère inquiétante.", "Le soleil brille forcément.", "Le narrateur est nécessairement l'auteur."],
+        "bonne": 0,
+        "explication": "« Ombre » et « claquait » peuvent contribuer à une atmosphère inquiétante ; cette interprétation reste liée au passage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Préparer une réponse",
+        "question": "Quelle démarche aide le plus à préparer une réponse d'analyse ?",
+        "choix": ["Donner une impression sans relire.", "Relever un indice puis expliquer son effet.", "Raconter toute sa propre journée."],
+        "bonne": 1,
+        "explication": "Une réponse d'analyse s'appuie sur des éléments précis du texte et explique ce qu'ils suggèrent."
+      }
+    ],
+    "conclusion": "Une interprétation convaincante distingue ce que le texte dit, ce qu'il suggère et les indices qui permettent de le comprendre."
+  }
+}

@@ -1,26 +1,24 @@
 ---
 id: liberte
 titre: La liberté
-sujet: philosophie/liberte
+sujet: emc/liberte
 version: 1.0.0
 date: 2026-11-01
-niveau: terminale
+niveau: college
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
   - liberte
-  - libre arbitre
-  - autonomie morale
+  - libertes
+  - freedom
 questions:
-  - c'est quoi la liberté en philosophie ?
-  - Sommes-nous dotés d'un libre arbitre ?
-  - Que signifie l'autonomie morale ?
+  - c'est quoi la liberté ?
+  - Quelles sont les limites de la liberté d'expression ?
+  - what is freedom?
 ---
 
 # La liberté
 
-Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
+Page générée depuis `contenu.json` : intuition, collège, lycée ; trois QCM et un défi sur un réseau fictif.
 
-- **Explication** : du choix quotidien aux libertés morale et politique, avec Kant, Spinoza et Mill.
-- **S'entraîner** : 3 QCM corrigés sur autonomie, déterminisme et droits.
-- **Défi** : organiser un débat libre et respectueux, en 3 étapes.
+Repères : Déclaration des droits de l'homme et du citoyen de 1789, articles 4, 5 et 11 ; Convention européenne des droits de l'homme, article 10.

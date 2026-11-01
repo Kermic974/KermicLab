@@ -1,161 +1,53 @@
 {
-  "titresOnglets": {
-    "explication": "Explication",
-    "application": "S'entraîner",
-    "mise-en-situation": "Défi"
-  },
-  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Le système immunitaire est un ensemble de cellules, tissus et molécules qui protègent l'organisme contre de nombreux agents infectieux.",
   "niveaux": [
     {
-      "titre": "Intuition : un corps qui se défend",
+      "titre": "Intuition : des défenses coordonnées",
       "niveau": "pour démarrer",
       "paragraphes": [
-        "Nous vivons entourés de **microbes** (bactéries, virus, champignons). La plupart sont inoffensifs, voire utiles, mais certains peuvent nous rendre malades.",
-        "La peau et les muqueuses forment une première barrière. Si un microbe la franchit, notre **système immunitaire** contre-attaque."
-      ]
-    },
-    {
-      "titre": "Bactéries et virus",
-      "niveau": "3e",
-      "paragraphes": [
-        "Une **bactérie** est un être vivant formé d'une seule cellule ; elle peut se multiplier très vite (toutes les 20 minutes parfois). Les **antibiotiques** peuvent la tuer.",
-        "Un **virus** est beaucoup plus petit et ne peut se multiplier qu'**à l'intérieur de nos cellules**. Les antibiotiques n'ont **aucun effet** sur les virus (grippe, rhume, Covid…).",
-        "L'**hygiène** (se laver les mains) et l'**asepsie** (éviter l'entrée des microbes) limitent la contamination."
-      ]
-    },
-    {
-      "titre": "La réaction rapide",
-      "niveau": "3e",
-      "paragraphes": [
-        "Dès qu'un microbe entre, une **inflammation** apparaît (rougeur, chaleur, gonflement). Des globules blancs, les **phagocytes**, englobent et digèrent les microbes : c'est la **phagocytose**."
-      ]
-    },
-    {
-      "titre": "La réaction adaptée et la mémoire",
-      "niveau": "3e",
-      "paragraphes": [
-        "Si cela ne suffit pas, d'autres globules blancs, les **lymphocytes**, interviennent : les lymphocytes B produisent des **anticorps** qui neutralisent spécifiquement le microbe ; les lymphocytes T détruisent les cellules infectées.",
-        "Après la guérison, des **lymphocytes mémoire** restent : au contact suivant, la réponse est bien plus rapide et forte."
-      ]
-    },
-    {
-      "titre": "La vaccination",
-      "niveau": "3e",
-      "paragraphes": [
-        "Un **vaccin** contient un microbe affaibli ou tué, ou seulement un morceau de celui-ci : il est **sans danger** mais déclenche la fabrication de lymphocytes mémoire. L'organisme est alors prêt à se défendre.",
-        "Quand une grande partie de la population est vaccinée, le microbe circule moins : c'est l'**immunité collective**, qui protège aussi ceux qui ne peuvent pas être vaccinés."
+        "La peau et les muqueuses forment des barrières qui limitent l'entrée de microbes. Si un agent infectieux franchit ces barrières, des défenses immunitaires peuvent agir.",
+        "La fièvre et l'inflammation sont des réactions de l'organisme ; elles ne sont pas des microbes et ne signifient pas toujours qu'une situation est grave."
       ],
-      "aRetenir": "Antibiotiques : contre les bactéries seulement. Vaccins : pour prévenir. Ne jamais prendre d'antibiotique sans avis médical."
+      "exemple": { "titre": "Une petite coupure", "etapes": ["La peau intacte sert de barrière contre de nombreux microbes.", "Après une coupure, des cellules de défense peuvent participer à la réaction inflammatoire locale."] },
+      "aRetenir": "La protection repose d'abord sur des barrières, puis sur des réponses immunitaires coordonnées."
+    },
+    {
+      "titre": "Immunité innée et adaptative",
+      "niveau": "collège",
+      "paragraphes": [
+        "L'immunité **innée** agit rapidement et reconnaît des signaux communs à différents microbes. Des cellules comme les phagocytes peuvent englober certains agents infectieux.",
+        "L'immunité **adaptative** implique notamment des lymphocytes. Certains lymphocytes B produisent des anticorps qui se lient à des cibles ; d'autres cellules immunitaires participent à éliminer des cellules infectées."
+      ],
+      "exemple": { "titre": "Une réponse à un microbe", "etapes": ["Des défenses innées réagissent rapidement au site d'entrée.", "Une réponse adaptative ciblée peut se développer et contribuer à éliminer l'agent infectieux."] },
+      "aRetenir": "Les anticorps reconnaissent des cibles particulières ; ils ne sont qu'un élément de la réponse immunitaire."
+    },
+    {
+      "titre": "Mémoire immunitaire et vaccination",
+      "niveau": "lycée",
+      "paragraphes": [
+        "Après certaines infections ou une vaccination, des lymphocytes mémoire peuvent persister. Lors d'un nouveau contact avec la même cible, la réponse peut être plus rapide et plus efficace.",
+        "Un vaccin entraîne le système immunitaire à reconnaître une cible sans reproduire la maladie de la même façon que l'infection correspondante. La protection varie selon les vaccins et les personnes ; la vaccination ne garantit pas qu'aucune infection ne surviendra."
+      ],
+      "exemple": { "titre": "Préparer une réponse", "etapes": ["Le vaccin présente au système immunitaire une cible ou une instruction permettant de la reconnaître.", "Des cellules mémoire peuvent ensuite aider à répondre plus rapidement lors d'une exposition ultérieure."] },
+      "aRetenir": "Les antibiotiques agissent contre des bactéries, pas contre les virus ; un professionnel de santé choisit le traitement adapté."
     }
   ],
   "application": {
-    "intro": "Entraîne-toi sur les microbes et les défenses de l'organisme.",
+    "intro": "Relie les barrières, les cellules de défense et la mémoire immunitaire.",
     "exercices": [
-      {
-        "type": "qcm",
-        "titre": "Antibiotiques",
-        "question": "Contre quels microbes les antibiotiques sont-ils efficaces ?",
-        "choix": [
-          "Les bactéries",
-          "Les virus",
-          "Tous les microbes"
-        ],
-        "bonne": 0,
-        "explication": "Les antibiotiques n'agissent pas sur les virus."
-      },
-      {
-        "type": "qcm",
-        "titre": "Phagocytose",
-        "question": "Qu'est-ce que la phagocytose ?",
-        "choix": [
-          "Un globule blanc qui englobe et digère un microbe",
-          "La fabrication d'anticorps",
-          "La multiplication d'un virus"
-        ],
-        "bonne": 0,
-        "explication": "C'est la réaction rapide des phagocytes."
-      },
-      {
-        "type": "qcm",
-        "titre": "Anticorps",
-        "question": "Quelles cellules produisent les anticorps ?",
-        "choix": [
-          "Les lymphocytes B",
-          "Les globules rouges",
-          "Les phagocytes"
-        ],
-        "bonne": 0,
-        "explication": "Les lymphocytes B produisent des anticorps spécifiques d'un microbe."
-      },
-      {
-        "type": "qcm",
-        "titre": "Vaccin",
-        "question": "Sur quel principe repose la vaccination ?",
-        "choix": [
-          "La mémoire immunitaire",
-          "La destruction des virus par des antibiotiques",
-          "L'augmentation de la température du corps"
-        ],
-        "bonne": 0,
-        "explication": "Le vaccin entraîne le système immunitaire, qui garde la mémoire du microbe."
-      },
-      {
-        "type": "nombre",
-        "titre": "Multiplication",
-        "question": "Une bactérie se divise en deux toutes les 20 minutes. Combien y a-t-il de bactéries au bout de 2 heures, à partir d'une seule ?",
-        "reponse": 64,
-        "unite": "bactéries",
-        "indices": [
-          "2 heures = 6 périodes de 20 minutes.",
-          "2⁶ = ?"
-        ],
-        "solution": "2⁶ = 64 bactéries : d'où l'importance de soigner une plaie rapidement."
-      }
+      { "type": "qcm", "titre": "Barrière", "question": "Quel élément constitue une première barrière contre de nombreux microbes ?", "choix": ["La peau intacte", "Un anticorps dans tous les cas", "Un antibiotique pris sans avis"], "bonne": 0, "explication": "La peau et les muqueuses constituent des barrières physiques et biologiques." },
+      { "type": "qcm", "titre": "Anticorps", "question": "Quel est un rôle des anticorps ?", "choix": ["Se lier à des cibles particulières", "Digérer les aliments dans l'estomac", "Déplacer les plaques tectoniques"], "bonne": 0, "explication": "Les anticorps reconnaissent des cibles spécifiques et peuvent contribuer à la défense." },
+      { "type": "qcm", "titre": "Vaccination", "question": "À quoi sert principalement la vaccination ?", "choix": ["Préparer une réponse immunitaire contre une cible", "Traiter toutes les infections déjà présentes", "Remplacer les cellules de la peau"], "bonne": 0, "explication": "La vaccination prépare le système immunitaire à reconnaître une cible ; son efficacité dépend du vaccin et de la situation." }
     ]
   },
   "situation": {
-    "titre": "La grippe de la rentrée",
-    "histoire": [
-      "En novembre, plusieurs élèves de la classe ont la grippe, une maladie causée par un **virus**.",
-      "Aide l'infirmière à donner les bons conseils."
-    ],
+    "titre": "Prévenir une infection à l'école",
+    "histoire": ["Une infection circule dans l'école. La classe cherche des moyens de prévention fiables et distingue les informations scientifiques des idées reçues."],
     "etapes": [
-      {
-        "type": "qcm",
-        "titre": "Un antibiotique ?",
-        "question": "Un élève demande des antibiotiques pour guérir plus vite. Est-ce utile ?",
-        "choix": [
-          "Non, les antibiotiques n'agissent pas sur les virus",
-          "Oui, ils tuent tous les microbes"
-        ],
-        "bonne": 0,
-        "explication": "La grippe est virale : les antibiotiques seraient inutiles et favoriseraient les bactéries résistantes."
-      },
-      {
-        "type": "qcm",
-        "titre": "Le bon geste",
-        "question": "Quel geste limite le plus la contagion ?",
-        "choix": [
-          "Se laver souvent les mains et tousser dans son coude",
-          "Manger plus de sucre",
-          "Rester en t-shirt"
-        ],
-        "bonne": 0,
-        "explication": "Le virus se transmet par les gouttelettes et les mains."
-      },
-      {
-        "type": "qcm",
-        "titre": "Chaque année",
-        "question": "Pourquoi le vaccin contre la grippe doit-il être refait chaque année ?",
-        "choix": [
-          "Parce que le virus change (il mute) d'une année à l'autre",
-          "Parce que le vaccin est un antibiotique",
-          "Parce que le corps oublie tout chaque hiver"
-        ],
-        "bonne": 0,
-        "explication": "Le virus de la grippe évolue : la mémoire immunitaire ne le reconnaît plus, il faut un vaccin adapté."
-      }
+      { "type": "qcm", "titre": "Choisir un geste de prévention", "question": "Quel geste aide à réduire la transmission de nombreux microbes ?", "choix": ["Se laver les mains avec soin aux moments appropriés", "Partager les gourdes", "Remplacer l'aération par du parfum"], "bonne": 0, "explication": "Une bonne hygiène des mains réduit la transmission de nombreux agents infectieux." },
+      { "type": "qcm", "titre": "Choisir le bon traitement", "question": "Une infection est causée par un virus. Quelle affirmation est correcte ?", "choix": ["Les antibiotiques ne traitent pas le virus ; un professionnel conseille les soins appropriés", "Les antibiotiques détruisent toujours tous les virus", "Il faut prendre un médicament d'une autre personne"], "bonne": 0, "explication": "Les antibiotiques ciblent des bactéries, pas les virus ; un professionnel de santé peut conseiller les soins adaptés." }
     ],
-    "conclusion": "Bravo ! Hygiène, vaccination et bon usage des antibiotiques : trois gestes simples qui protègent toute la classe."
+    "conclusion": "Les gestes de prévention sont utiles, mais ils ne remplacent pas un avis médical quand on est malade ou inquiet."
   }
 }

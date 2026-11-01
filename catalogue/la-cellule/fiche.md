@@ -22,10 +22,10 @@ mots-cles:
   - cell
   - cells
 questions:
-  - c'est quoi une cellule ?
+  - quel est le rôle du chloroplaste dans une cellule végétale ?
   - Quelle est la différence entre une cellule animale et une cellule végétale ?
   - comment calculer le grossissement d'un microscope
-  - je ne comprends pas le rôle du noyau de la cellule
+  - quel rôle joue le noyau dans une cellule végétale ?
   - what is a cell?
 ---
 

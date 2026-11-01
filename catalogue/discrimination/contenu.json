@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Écarter quelqu'un pour un motif interdit peut porter atteinte à ses droits : apprends à reconnaître et à signaler.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une exclusion à questionner", "niveau": "pour démarrer",
+      "paragraphes": ["Une **discrimination** est un traitement défavorable fondé sur un critère interdit par la loi, dans une situation couverte par le droit. Par exemple, refuser un service à une personne à cause de son origine peut être discriminatoire.", "Petit jeu : refuser un accès parce que toutes les places sont prises ou parce que la personne a un handicap, est-ce le même motif ? Il faut regarder les faits."],
+      "exemple": { "titre": "Une inscription", "etapes": ["Un club ouvert au public refuse un personnage uniquement à cause de son origine.", "Le motif pose un problème de discrimination ; la situation doit être examinée."] },
+      "aRetenir": "Le motif du traitement et la situation comptent."
+    },
+    {
+      "titre": "Collège : stéréotype, préjugé, discrimination", "niveau": "collège",
+      "paragraphes": ["Un **stéréotype** généralise une idée sur un groupe ; un **préjugé** est un jugement porté sans examen suffisant. Ils peuvent conduire à une discrimination, mais ces mots ne désignent pas exactement la même chose.", "La loi protège notamment contre des discriminations liées à l'origine, au sexe, au handicap ou aux convictions religieuses. Une différence de traitement n'est pas automatiquement une discrimination : il faut un critère interdit et un domaine concerné, comme l'emploi ou l'accès à un service."],
+      "exemple": { "titre": "Ne pas confondre", "etapes": ["Un atelier complet ne peut plus accueillir personne : ce motif n'est pas, à lui seul, discriminatoire.", "Un refus fondé seulement sur l'origine dans un service ouvert au public appelle une autre analyse."] },
+      "aRetenir": "Toute injustice mérite attention, mais toute injustice n'est pas juridiquement une discrimination."
+    },
+    {
+      "titre": "Lycée : formes et recours", "niveau": "lycée",
+      "paragraphes": ["Une discrimination **directe** traite moins favorablement une personne en raison d'un critère protégé. Une discrimination **indirecte** peut venir d'une règle apparemment neutre qui désavantage particulièrement un groupe protégé, sauf justification admise par le droit.", "Des exceptions et justifications sont strictement encadrées selon les situations. Une qualification juridique demande d'examiner les faits. Une personne peut demander aide à un adulte de confiance, au Défenseur des droits ou aux services compétents sans subir de représailles."],
+      "exemple": { "titre": "Une règle à examiner", "etapes": ["Une condition d'accès apparemment neutre crée un obstacle particulier pour des personnes handicapées.", "On examine sa nécessité, les aménagements possibles et le cadre juridique, au lieu de conclure seulement sur son apparence."] },
+      "aRetenir": "Une règle neutre en apparence peut avoir des effets discriminatoires."
+    }
+  ],
+  "application": {
+    "intro": "Analyse les motifs sans coller une étiquette trop vite.",
+    "exercices": [
+      { "type": "qcm", "titre": "Un refus", "question": "Un service ouvert au public refuse quelqu'un uniquement à cause de son origine. Que repères-tu ?", "choix": ["Un simple manque de places", "Un motif potentiellement discriminatoire interdit par la loi", "Une règle toujours autorisée"], "bonne": 1, "explication": "L'origine est un critère protégé ; le refus d'un service pour ce motif relève du cadre de la discrimination." },
+      { "type": "qcm", "titre": "Une différence", "question": "Toute différence de traitement est-elle une discrimination juridique ?", "choix": ["Oui, sans examiner le motif", "Oui, même une différence justifiée légalement", "Non, il faut examiner critère, domaine et règles applicables"], "bonne": 2, "explication": "On distingue la différence de traitement de la discrimination interdite." },
+      { "type": "qcm", "titre": "Demander de l'aide", "question": "Que faire face à une situation qui semble discriminatoire ?", "choix": ["En parler à un adulte de confiance ou à un service compétent", "Publier l'identité des personnes et appeler à les menacer", "Se sentir obligé de gérer seul"], "bonne": 0, "explication": "L'aide et les recours permettent un examen des faits sans exposer ni mettre en danger les personnes." }
+    ]
+  },
+  "situation": {
+    "titre": "Une inscription au club",
+    "histoire": ["Dans une histoire fictive, un club ouvert au public refuse une inscription en invoquant uniquement l'origine d'un personnage.", "Tu choisis comment réagir sans enquêter sur des personnes réelles ni diffuser de données."],
+    "etapes": [
+      { "type": "qcm", "titre": "Décrire", "question": "Quelle description est utile ?", "choix": ["Inventer d'autres accusations", "Distinguer le refus observé et le motif annoncé"], "bonne": 1, "explication": "Un récit factuel permet à une personne compétente d'examiner la situation." },
+      { "type": "qcm", "titre": "Accompagner", "question": "Comment aider le personnage ?", "choix": ["Respecter son choix et proposer l'aide d'un adulte ou du Défenseur des droits", "Publier son histoire sans lui demander"], "bonne": 0, "explication": "L'accompagnement protège la personne, sa vie privée et son autonomie." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as repéré un motif interdit et choisi une aide respectueuse plutôt qu'une exposition publique."
+  }
+}

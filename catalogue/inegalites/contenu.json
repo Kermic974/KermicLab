@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Les ressources et les conditions de vie ne sont pas les mêmes pour tout le monde. Décrire les inégalités demande de préciser ce que l'on compare.",
+  "niveaux": [
+    {
+      "titre": "Comparer une dimension précise",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **inégalité sociale** est une différence d'accès à une ressource ou à une position qui se traduit par un avantage ou un désavantage entre des personnes ou des groupes.",
+        "On peut étudier les revenus, le patrimoine, la santé, le logement, l'éducation ou l'accès aux loisirs. Une différence n'est pas toujours une inégalité : il faut regarder ses effets et les ressources auxquelles elle donne accès."
+      ],
+      "exemple": {
+        "titre": "Deux budgets loisirs",
+        "etapes": [
+          "Deux familles disposent de budgets différents pour les activités sportives.",
+          "Cette différence de ressources peut créer des possibilités d'accès différentes, mais il faut aussi examiner les équipements disponibles et les tarifs."
+        ]
+      }
+    },
+    {
+      "titre": "Revenu et patrimoine",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Le **revenu** est une ressource reçue pendant une période, par exemple un salaire ou une prestation. Le **patrimoine** est l'ensemble des actifs possédés à un moment donné, après prise en compte des dettes.",
+        "Les inégalités se mesurent avec des indicateurs adaptés : médiane, quantiles ou rapport entre groupes. Un indicateur résume une dimension et doit être interprété avec sa définition et sa population de référence."
+      ],
+      "aRetenir": "Un revenu est un flux mesuré sur une période ; un patrimoine est un stock évalué à une date."
+    },
+    {
+      "titre": "Des inégalités qui interagissent",
+      "niveau": "première",
+      "paragraphes": [
+        "Les inégalités peuvent se cumuler ou se renforcer : un patrimoine plus important peut faciliter l'accès au logement ou aux études, tandis que des écarts de santé peuvent affecter les parcours professionnels.",
+        "Ces liens ne sont pas automatiques. Les institutions, les politiques publiques et les trajectoires individuelles peuvent réduire ou transformer les écarts. Étudier une inégalité exige donc de distinguer corrélation, mécanisme et causalité."
+      ],
+      "exemple": {
+        "titre": "Accès à une activité",
+        "etapes": [
+          "Le coût d'une activité peut limiter l'accès de certains ménages.",
+          "Une aide tarifaire ou la présence d'un équipement public peut réduire cet obstacle, même si d'autres différences persistent."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Choisis la notion et l'indicateur qui conviennent à la situation proposée.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Un revenu",
+        "question": "Le salaire reçu chaque mois est principalement…",
+        "choix": ["Un revenu, c'est-à-dire un flux sur une période", "Un patrimoine, c'est-à-dire un stock à une date", "Une mesure de la population active"],
+        "bonne": 0,
+        "explication": "Un salaire est reçu pendant une période : c'est un revenu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un patrimoine",
+        "question": "La valeur d'un logement possédé, en tenant compte du prêt restant dû, relève principalement…",
+        "choix": ["Du patrimoine", "Du revenu mensuel", "Du prix de tous les services"],
+        "bonne": 0,
+        "explication": "Le patrimoine désigne les actifs détenus à une date, en tenant compte des dettes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une mesure adaptée",
+        "question": "Pourquoi faut-il préciser l'indicateur utilisé pour comparer les inégalités ?",
+        "choix": ["Parce qu'un indicateur décrit une dimension et une population définies", "Parce que tous les indicateurs donnent toujours le même résultat", "Parce qu'une moyenne décrit la situation de chaque personne"],
+        "bonne": 0,
+        "explication": "Le résultat dépend de la ressource observée, de la population et de la mesure choisie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Des effets croisés",
+        "question": "Une difficulté de santé peut affecter les possibilités d'emploi, qui influencent à leur tour les revenus. Que suggère cet exemple ?",
+        "choix": ["Des inégalités peuvent interagir et se cumuler", "Chaque inégalité est totalement indépendante", "La santé est toujours déterminée par le revenu"],
+        "bonne": 0,
+        "explication": "Des dimensions peuvent être liées, sans que cela suffise à prouver une causalité unique ou automatique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Choisir une activité sportive",
+    "histoire": [
+      "Une commune étudie l'accès des jeunes aux activités sportives. Les prix, les horaires, le transport et la disponibilité des équipements peuvent tous compter. Le défi est de comparer sans supposer qu'un seul chiffre explique tout."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Une ressource",
+        "question": "Le budget disponible chaque mois pour une activité est principalement…",
+        "choix": ["Un revenu ou une ressource sur une période", "Un patrimoine à une date", "Un indicateur de croissance nationale"],
+        "bonne": 0,
+        "explication": "Un budget mensuel est une ressource disponible pendant une période."
+      },
+      {
+        "type": "qcm",
+        "titre": "D'autres obstacles",
+        "question": "Pourquoi ne suffit-il pas de comparer les budgets pour comprendre l'accès au sport ?",
+        "choix": ["Les horaires, le transport, les tarifs et les équipements peuvent aussi intervenir", "Parce que les budgets n'ont jamais d'effet", "Parce que chaque commune offre les mêmes activités"],
+        "bonne": 0,
+        "explication": "L'accès dépend de plusieurs dimensions économiques et sociales."
+      },
+      {
+        "type": "qcm",
+        "titre": "Une action possible",
+        "question": "Quelle mesure peut réduire une partie des obstacles liés au coût ?",
+        "choix": ["Une tarification adaptée ou une aide à l'inscription", "Augmenter le prix pour tous", "Supprimer les informations sur les activités"],
+        "bonne": 0,
+        "explication": "Une aide ou un tarif adapté peut réduire le frein financier, même si d'autres obstacles doivent aussi être examinés."
+      }
+    ],
+    "conclusion": "Les inégalités ont plusieurs dimensions et peuvent interagir. Un diagnostic utile précise l'indicateur, écoute les acteurs concernés et examine plusieurs leviers."
+  }
+}

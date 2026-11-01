@@ -1,0 +1,92 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Les figures de style sont des façons de choisir ou d'organiser les mots pour produire un effet.",
+  "niveaux": [
+    {
+      "titre": "Comparer et créer une image",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **comparaison** rapproche deux éléments avec un outil comme « comme », « tel » ou « semblable à » : « rapide comme le vent ».",
+        "Une **métaphore** rapproche aussi deux réalités, mais sans outil de comparaison : « cette enfant est un rayon de soleil ».",
+        "Le contexte aide à comprendre l'image : une métaphore n'est pas une description littérale."
+      ],
+      "exemple": {
+        "titre": "Comparer deux formulations",
+        "etapes": [
+          "« La lune est comme une lampe » contient l'outil « comme » : c'est une comparaison.",
+          "« La lune, lampe de la nuit » rapproche la lune et une lampe sans outil : c'est une métaphore."
+        ]
+      }
+    },
+    {
+      "titre": "Donner du relief aux mots",
+      "niveau": "4e / lycée",
+      "paragraphes": [
+        "La **personnification** attribue à un objet, un animal ou une idée un comportement humain : « Le vent murmure ».",
+        "L'**hyperbole** exagère une expression pour la renforcer : « Je t'ai attendu mille ans ». Elle ne se comprend pas au sens littéral.",
+        "L'**anaphore** répète un mot ou groupe de mots au début de plusieurs phrases ou vers. Une figure peut produire différents effets selon les mots et le passage."
+      ],
+      "exemple": {
+        "titre": "Repérer le procédé",
+        "etapes": [
+          "« La vieille horloge se plaint » attribue une réaction humaine à l'horloge : c'est une personnification.",
+          "« J'ai un million de choses à faire » exagère le nombre pour insister sur la quantité : c'est une hyperbole."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Choisis le nom de la figure qui correspond aux mots employés et à leur effet.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "La comparaison",
+        "question": "Quelle phrase contient une comparaison ?",
+        "choix": ["Ses yeux brillent comme des étoiles.", "Ses yeux sont des étoiles.", "Les étoiles brillent cette nuit."],
+        "bonne": 0,
+        "explication": "L'outil « comme » rapproche explicitement les yeux et les étoiles."
+      },
+      {
+        "type": "qcm",
+        "titre": "La personnification",
+        "question": "Quelle phrase contient une personnification ?",
+        "choix": ["La rivière chante entre les pierres.", "La rivière traverse le village.", "La rivière est longue de dix kilomètres."],
+        "bonne": 0,
+        "explication": "« Chante » attribue une action humaine à la rivière."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'anaphore",
+        "question": "Quelle figure répète un même groupe de mots au début de plusieurs phrases ?",
+        "choix": ["L'anaphore", "La comparaison", "La didascalie"],
+        "bonne": 0,
+        "explication": "L'anaphore est une répétition en début de phrases, de propositions ou de vers."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Une phrase plus imagée",
+    "histoire": [
+      "Tu écris une carte pour raconter une sortie au bord de la mer. Tu veux rendre une image plus vivante sans perdre le sens."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Créer une métaphore",
+        "question": "Tu veux remplacer « le soleil brillait » par une métaphore. Quel choix convient ?",
+        "choix": ["Le soleil était une pièce d'or dans le ciel.", "Le soleil brillait comme une lampe.", "Le soleil brillait à midi."],
+        "bonne": 0,
+        "explication": "La phrase rapproche le soleil d'une pièce d'or sans outil de comparaison : c'est une métaphore."
+      },
+      {
+        "type": "qcm",
+        "titre": "Éviter le sens littéral",
+        "question": "Dans « J'ai attendu une éternité », quelle interprétation est la plus probable ?",
+        "choix": ["C'est une hyperbole qui insiste sur une longue attente.", "La personne a réellement vécu pour toujours.", "C'est une consigne de théâtre."],
+        "bonne": 0,
+        "explication": "« Une éternité » exagère la durée pour insister sur l'attente : c'est une hyperbole."
+      }
+    ],
+    "conclusion": "Une figure de style peut rendre une phrase plus expressive ; observe toujours les mots et le contexte pour comprendre l'effet."
+  }
+}

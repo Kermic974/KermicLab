@@ -23,9 +23,9 @@ mots-cles:
   - biodiversity
 questions:
   - c'est quoi une chaîne alimentaire ?
-  - Pourquoi la biodiversité est-elle menacée ?
+  - comment l'effondrement d'un réseau trophique menace-t-il la biodiversité ?
   - je ne comprends pas le rôle des décomposeurs
-  - c'est quoi un écosystème ?
+  - comment un réseau trophique contribue-t-il à l'équilibre d'un écosystème ?
   - what is a food chain?
 ---
 

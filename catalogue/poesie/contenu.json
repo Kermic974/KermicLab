@@ -1,0 +1,92 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Un poème joue avec les mots, les sons et les images : plusieurs formes sont possibles.",
+  "niveaux": [
+    {
+      "titre": "Vers, strophes et sons",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **vers** est une ligne de poème. Un ensemble de vers forme une **strophe**, un peu comme un paragraphe en prose.",
+        "Les rimes rapprochent certains sons en fin de vers. Mais un poème peut aussi être écrit en vers libres ou en prose : la poésie n'est pas obligée de rimer.",
+        "Relire un poème à voix haute aide à entendre son rythme, ses répétitions et ses sonorités."
+      ],
+      "exemple": {
+        "titre": "Observer la mise en page",
+        "etapes": [
+          "Dans un poème disposé en trois lignes, chaque ligne peut former un vers.",
+          "Si ces trois vers sont séparés du reste par un espace, ils composent une strophe."
+        ]
+      }
+    },
+    {
+      "titre": "Faire entendre une image",
+      "niveau": "4e / lycée",
+      "paragraphes": [
+        "Un poème peut jouer sur le rythme, les rimes, les répétitions ou les enjambements. Dans un **enjambement**, la phrase commencée dans un vers continue au vers suivant.",
+        "Les images poétiques rapprochent parfois des réalités différentes. Pour les interpréter, observe les mots employés et l'impression qu'ils créent dans le contexte.",
+        "La forme contribue au sens, mais il n'existe pas une seule forme obligatoire pour tous les poèmes."
+      ],
+      "exemple": {
+        "titre": "Repérer un enjambement",
+        "etapes": [
+          "Un vers se termine par « Le chemin suit la rivière qui ».",
+          "Le vers suivant commence par « traverse le champ » : la phrase déborde du premier vers, c'est un enjambement."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Observe les lignes, les sons et la phrase avant de choisir une interprétation.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Vers et strophe",
+        "question": "Comment appelle-t-on une ligne dans un poème ?",
+        "choix": ["Un vers", "Une scène", "Un paragraphe narratif"],
+        "bonne": 0,
+        "explication": "Une ligne d'un poème est un vers ; plusieurs vers peuvent former une strophe."
+      },
+      {
+        "type": "qcm",
+        "titre": "La rime",
+        "question": "Toutes les poésies doivent-elles obligatoirement avoir des rimes ?",
+        "choix": ["Oui, sans exception", "Non, il existe aussi des vers libres et des poèmes en prose", "Oui, mais seulement dans les titres"],
+        "bonne": 1,
+        "explication": "La poésie peut prendre différentes formes : les rimes ne sont pas obligatoires."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'enjambement",
+        "question": "Que se passe-t-il lors d'un enjambement ?",
+        "choix": ["La phrase continue au vers suivant.", "Le poème change de narrateur.", "Chaque mot est écrit en majuscules."],
+        "bonne": 0,
+        "explication": "Dans un enjambement, la phrase ne s'arrête pas à la fin du vers et se poursuit sur le suivant."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un poème dans le carnet",
+    "histoire": [
+      "Tu notes des idées dans un carnet après avoir observé la pluie sur le chemin de l'école."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Écouter les mots",
+        "question": "Tu veux rendre la pluie audible dans tes vers. Quel choix peux-tu essayer ?",
+        "choix": ["Répéter des sons ou des mots qui évoquent son bruit.", "Supprimer toutes les images et les sons.", "Ajouter une liste de numéros sans lien."],
+        "bonne": 0,
+        "explication": "Les répétitions de sons ou de mots peuvent aider à faire entendre une ambiance ; relis-les à voix haute pour vérifier l'effet."
+      },
+      {
+        "type": "qcm",
+        "titre": "Choisir une image",
+        "question": "Quelle expression transforme la pluie en image poétique ?",
+        "choix": ["La pluie tombe depuis dix minutes.", "Des perles de pluie glissent sur la vitre.", "Il est 8 h 12."],
+        "bonne": 1,
+        "explication": "« Des perles de pluie » rapproche les gouttes de petites perles et crée une image."
+      }
+    ],
+    "conclusion": "La poésie peut partir d'une observation ordinaire et la transformer par le choix des sons, du rythme et des images."
+  }
+}
