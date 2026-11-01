@@ -1,0 +1,116 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Mène l'enquête : un objet de ton quotidien peut relier plusieurs continents. Ouvre les niveaux pour comprendre ces liens.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le voyage d'un téléphone",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Imagine un téléphone conçu dans un pays, assemblé dans un autre et vendu ailleurs. Ses matériaux et ses composants peuvent venir de plusieurs territoires. Cherche les étapes du voyage : extraire, fabriquer, transporter, vendre.",
+        "La **mondialisation** est un processus de mise en relation croissante des territoires par des échanges. Elle concerne aussi les informations, les cultures, l'argent et les personnes, pas seulement les objets."
+      ]
+    },
+    {
+      "titre": "Repérer les flux et les acteurs",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Un **flux** est un déplacement entre des lieux : marchandises, personnes, capitaux ou informations. Sur un croquis, une flèche montre sa direction ; son épaisseur peut représenter une quantité, si la légende le précise.",
+        "Les entreprises, les États, les organisations internationales et les habitants sont des **acteurs**. Une firme transnationale organise des activités dans plusieurs pays. Les États fixent des règles, financent des infrastructures et peuvent limiter certains échanges."
+      ],
+      "aRetenir": "Jeu du géographe : pour chaque flèche, nomme le départ, l'arrivée, ce qui circule et les acteurs."
+    },
+    {
+      "titre": "Une intégration inégale",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les grandes métropoles, les ports et les réseaux de transport concentrent souvent les échanges. Mais tous les territoires, ni tous leurs habitants, n'en bénéficient de la même façon.",
+        "Un pays très connecté peut conserver de fortes inégalités de revenu ou d'accès aux services. À l'inverse, un territoire moins connecté n'est pas forcément totalement isolé : il peut participer à des échanges régionaux ou spécialisés."
+      ]
+    },
+    {
+      "titre": "Chaînes de valeur et choix de société",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Une **chaîne de valeur mondiale** répartit les étapes de production entre plusieurs territoires. La conception, l'assemblage, la logistique et la vente ne captent pas nécessairement la même part de valeur. Le lieu d'assemblage ne dit donc pas toute l'origine d'un produit.",
+        "Les réseaux créent des interdépendances : une fermeture de route ou une pénurie peut perturber des livraisons ailleurs. Diversifier les fournisseurs peut réduire certains risques, sans supprimer toute dépendance.",
+        "Réparer, réemployer, améliorer les conditions de travail et réduire les émissions sont des défis. Acheter près de chez soi n'assure pas à lui seul un faible impact : il faut aussi examiner la fabrication, l'énergie, le transport et la durée d'usage."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Classe les liens entre territoires. Pour les calculs, les données sont fictives et ne décrivent pas un pays réel.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Quel flux ?",
+        "question": "Une entreprise envoie des composants d'un pays à un autre. Quel flux observe-t-on directement ?",
+        "choix": ["Un flux de touristes", "Un flux de marchandises", "Un déplacement de frontière"],
+        "bonne": 1, "indice": "Repère ce qui se déplace physiquement.",
+        "explication": "Les composants sont des biens matériels : c'est un flux de marchandises. La commande peut aussi entraîner des flux d'argent et d'informations."
+      },
+      {
+        "type": "qcm", "titre": "Un acteur public",
+        "question": "Qui peut fixer les règles douanières d'un territoire, directement ou dans un cadre commun ?",
+        "choix": ["Un conteneur", "Un consommateur seul", "Un État"],
+        "bonne": 2, "indice": "Cherche l'acteur qui exerce une autorité publique.",
+        "explication": "Un État exerce une autorité publique. Certains États, comme ceux de l'UE, appliquent des règles douanières communes."
+      },
+      {
+        "type": "nombre", "titre": "Une part des flux",
+        "question": "Dans un réseau fictif, 60 lots sur 100 passent par le port A. Quelle part des lots cela représente-t-il en pourcentage ?",
+        "reponse": 60, "unite": "%", "indices": ["Le total est déjà de 100 lots."],
+        "solution": "60 ÷ 100 × 100 = 60 %. Cette part porte sur les lots du réseau fictif, pas sur le commerce mondial."
+      },
+      {
+        "type": "qcm", "titre": "Connexion et inégalités",
+        "question": "Une métropole attire des sièges d'entreprises mais certains habitants accèdent difficilement à l'emploi. Que peut-on conclure ?",
+        "choix": ["L'intégration mondiale peut coexister avec des inégalités locales", "Tous les habitants ont le même revenu", "La ville n'a aucun lien avec le monde"],
+        "bonne": 0, "indice": "Distingue la connexion du territoire et la situation de chaque habitant.",
+        "explication": "Les échanges ne répartissent pas automatiquement leurs bénéfices entre tous les habitants : il faut étudier plusieurs échelles."
+      },
+      {
+        "type": "qcm", "titre": "Un défi quotidien",
+        "question": "Pour évaluer l'impact environnemental de deux téléphones, quelle enquête est la plus complète ?",
+        "choix": ["Comparer seulement la distance au magasin", "Comparer seulement la couleur", "Examiner fabrication, transport, réparabilité et durée d'utilisation"],
+        "bonne": 2, "indice": "Pense à toutes les étapes de la vie de l'objet.",
+        "explication": "L'analyse doit porter sur le cycle de vie. La distance au magasin ne suffit pas à évaluer l'impact total."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'enquête sur le sac à dos",
+    "histoire": [
+      "Un sac à dos fictif est conçu dans le pays A, assemblé dans le pays B et vendu dans le pays C. Le tissu vient du pays D. Aucune de ces lettres ne désigne un pays réel.",
+      "Ton équipe prépare une affiche pour aider la classe à comprendre les liens cachés derrière l'objet."
+    ],
+    "etapes": [
+      {
+        "type": "qcm", "titre": "Remonter la chaîne",
+        "question": "Quelle description correspond au dossier ?",
+        "choix": ["Toutes les étapes se déroulent en B", "Les étapes sont réparties entre plusieurs territoires", "Le sac ne nécessite aucun transport"],
+        "bonne": 1, "indice": "Relis les quatre lieux cités.",
+        "explication": "Conception, assemblage, tissu et vente relient plusieurs territoires : c'est une chaîne de valeur mondiale."
+      },
+      {
+        "type": "nombre", "titre": "Lire une répartition",
+        "question": "Sur un prix fictif de 50 €, le dossier attribue 10 € au poste assemblage. Quelle part du prix représente ce poste, en pourcentage ?",
+        "reponse": 20, "unite": "%", "indices": ["Calcule 10 ÷ 50 × 100."],
+        "solution": "10 ÷ 50 × 100 = 20 %. Ce poste n'est ni le salaire d'une personne ni le bénéfice net de l'usine."
+      },
+      {
+        "type": "qcm", "titre": "Identifier une fragilité",
+        "question": "Le seul fournisseur de tissu interrompt ses livraisons. Quel risque est le plus directement lié à cette dépendance ?",
+        "choix": ["L'assemblage peut manquer de tissu", "Toutes les frontières disparaissent", "Le sac devient automatiquement recyclable"],
+        "bonne": 0, "indice": "Quelle étape utilise le tissu ?",
+        "explication": "La dépendance à un fournisseur unique peut interrompre la production. Diversifier les fournisseurs est une possibilité à examiner."
+      },
+      {
+        "type": "qcm", "titre": "Agir sans simplifier",
+        "question": "Une couture du sac se défait. Quelle action peut prolonger sa durée d'usage ?",
+        "choix": ["Le remplacer à chaque saison", "Ignorer toute possibilité de réparation", "Faire réparer la couture si le sac reste utilisable"],
+        "bonne": 2, "indice": "Cherche une action qui évite un remplacement inutile.",
+        "explication": "Une réparation peut prolonger l'usage et éviter de produire immédiatement un nouveau sac, sans résoudre à elle seule tous les défis de la mondialisation."
+      }
+    ],
+    "conclusion": "Affiche terminée ! Tu as relié flux, acteurs, répartition de la valeur et choix quotidiens, sans confondre connexion mondiale et égalité."
+  }
+}

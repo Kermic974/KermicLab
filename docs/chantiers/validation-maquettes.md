@@ -7,3 +7,10 @@ Processus (voir AGENTS.md §6) : issue `maquette-manquante` → branche → maqu
 Prochaines étapes :
 - Niveau 1 : tests Playwright génériques exécutés sur chaque maquette du catalogue privé (onglets, mobile, absence d'erreur console).
 - Niveau 2 : grille de relecture pédagogique (exactitude, progression collège → lycée, adaptation à tous les âges).
+
+## Catalogue de géographie : mondialisation
+
+Les huit notions publiques ajoutées le 2026-11-01 suivent le gabarit commun, avec niveaux collège → lycée,
+exercices corrigés et références dans leurs fiches. Les tests vérifient le routage, les repères sensibles,
+les calculs, les indices après erreur et le rendu mobile ; ils ne remplacent pas la relecture géographique humaine.
+La validation pédagogique du CODEOWNER reste à faire : voir l'action 25 dans [les actions manuelles](../actions-manuelles.md).

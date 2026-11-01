@@ -173,3 +173,30 @@ test("toutes les notions : chaque exercice accepte sa réponse attendue (applica
     await contexte.close();
   }
 });
+
+test("géographie : une erreur donne un indice, le corrigé donne une étoile et le défi reste progressif", async () => {
+  const { readFile } = await import("node:fs/promises");
+  for (const id of ["mondialisation", "mers-oceans", "union-europeenne", "dynamiques-territoriales", "france-regions", "espaces-productifs", "tourisme", "afrique-australe"]) {
+    const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+    const { page, contexte, erreurs } = await ouvrir(nav, url(id));
+    await page.goto(url(id));
+    await page.click("#onglet-application");
+    const i = contenu.application.exercices.findIndex((ex) => ex.type === "qcm");
+    const ex = contenu.application.exercices[i];
+    const carte = page.locator(`[data-exercice=app-${i + 1}]`);
+    await carte.locator(".choix-bouton").nth((ex.bonne + 1) % ex.choix.length).click();
+    assert.ok((await carte.locator(".retour").textContent()).includes(ex.indice), id);
+    const total = contenu.application.exercices.length + contenu.situation.etapes.length;
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), `★ 0 / ${total}`, id);
+    await carte.locator(".choix-bouton").nth(ex.bonne).click();
+    assert.ok((await carte.locator(".retour").textContent()).includes(ex.explication), id);
+    await page.reload();
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), `★ 1 / ${total}`, id);
+    await page.click("#onglet-mise-en-situation");
+    const etapes = page.locator("#panneau-mise-en-situation .exercice");
+    assert.equal(await etapes.nth(0).isVisible(), true, id);
+    assert.equal(await etapes.nth(1).isVisible(), false, id);
+    assert.deepEqual(erreurs, [], id);
+    await contexte.close();
+  }
+});

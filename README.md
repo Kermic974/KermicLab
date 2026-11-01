@@ -34,11 +34,14 @@ read-only token. This repository ships the unit-circle page and public template-
 physics-chemistry, geography and philosophy.
 
 The geography catalogue covers **metropolisation, urbanisation, rural spaces, natural hazards,
-climate change, resources, mobility, migration and French territories**. Each French-language page
-progresses from intuition through middle-school to high-school concepts, with case studies, mental
-maps, corrected multiple-choice questions about concepts, actors and scales, and an everyday challenge.
-Pages are generated from `catalogue/<id>/contenu.json`; see [the template guide](docs/gabarit.md).
-Human review of geographical accuracy is required before merging.
+climate change, resources, mobility, migration and French territories**, plus eight globalisation topics
+(`mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
+`espaces-productifs`, `tourisme` and `afrique-australe`). Each French-language page progresses from
+intuition or middle school through high school, with case studies, corrected exercises and an everyday
+challenge. The globalisation topics use five self-marking practice exercises and a four-step challenge;
+numerical scenario data are fictional and review references are in each `fiche.md`. Pages are generated
+from `catalogue/<id>/contenu.json`; see [the template guide](docs/gabarit.md). Human review of geographical
+accuracy is required before merging.
 
 The nine philosophy pages cover duty, the state, justice, freedom, language, reason, science, technology
 and truth. They use the common template, with progressive explanations, authors, self-correcting quizzes
