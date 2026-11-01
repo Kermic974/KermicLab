@@ -11,6 +11,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Chat : **barre de navigation du catalogue** — fixe à gauche sur grand écran, tiroir sur mobile (bouton « Catalogue », Échap pour fermer). Notions groupées par niveau (collège, seconde, première, terminale), recherche sans accents, coche ✓ et compteur des notions explorées ; un clic ouvre la page directement dans le fil (sans appel au chat) et compte comme notion découverte.
+- Worker : `GET /api/catalogue` (notions triées par niveau puis par titre) ; champ facultatif `niveau` dans les fiches.
 - Catalogue, vague 4 (terminale) : **limites et continuité**, **logarithme népérien**, **primitives et intégrales**, **raisonnement par récurrence**, **dénombrement**, **loi binomiale**, **géométrie dans l'espace**. Le programme de la 6e à la terminale est couvert (36 notions).
 - Catalogue, vague 3 (seconde et première) : **vecteurs**, **droites et systèmes d'équations**, **fonctions de référence**, **second degré**, **dérivation**, **suites numériques**, **fonction exponentielle**, **produit scalaire**, **probabilités conditionnelles**.
 - Gabarit : figure `parabole` (a, b, c réglables, discriminant, racines, sommet).

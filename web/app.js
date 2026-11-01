@@ -2,7 +2,8 @@
 import * as progression from "./progression.js";
 
 const $ = (s) => document.querySelector(s);
-const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [] };
+const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [], notionCourante: null, groupesFermes: new Set() };
+const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MAX_PUCES = 4;
 const TAILLE_MAX_PUCE = 120;
 const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -51,6 +52,7 @@ async function appliquerLangue(langue) {
   await chargerSuggestions();
   rafraichirBienvenue();
   rafraichirPastille();
+  rendreCatalogue();
 }
 
 /* ---------- Construction du fil ---------- */
@@ -256,6 +258,7 @@ function appliquerResultat(resultat) {
   if (resultat.nouvelleNotion) notifier(t("nouvelleNotion"), "🧩");
   for (const b of resultat.nouveaux) notifier(t("badgeDebloque", { nom: t(`badge_${b.id}`) }), b.icone);
   if (resultat.niveauGagne) notifier(t("niveauGagne", { n: progression.niveau(etat.progres).niveau }), "⭐");
+  if (resultat.nouvelleNotion) rendreCatalogue();
 }
 
 function remplirProgres() {
@@ -281,6 +284,91 @@ function remplirProgres() {
     );
     liste.append(li);
   }
+}
+
+/* ---------- Barre de navigation du catalogue ---------- */
+
+const sansAccents = (texte) => String(texte).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+async function chargerCatalogue() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/catalogue`);
+    const notions = r.ok ? (await r.json()).notions : [];
+    etat.notions = Array.isArray(notions) ? notions.filter((n) => typeof n?.id === "string" && typeof n.titre === "string") : [];
+  } catch {
+    etat.notions = [];
+  }
+  const visible = etat.notions.length > 0;
+  $("#catalogue").hidden = !visible;
+  $("#ouvrir-catalogue").hidden = !visible;
+  document.body.classList.toggle("avec-catalogue", visible);
+  rendreCatalogue();
+}
+
+function rendreCatalogue() {
+  const liste = $("#catalogue-liste");
+  if (!liste || !etat.notions.length || !etat.progres) return;
+  const filtre = sansAccents($("#recherche-notion").value.trim());
+  const explorees = new Set(etat.progres.notions);
+  liste.replaceChildren();
+  let affichees = 0;
+  for (const niveau of NIVEAUX) {
+    const notions = etat.notions.filter((n) => (NIVEAUX.includes(n.niveau) ? n.niveau : "autres") === niveau && (!filtre || sansAccents(n.titre).includes(filtre)));
+    if (!notions.length) continue;
+    affichees += notions.length;
+    const groupe = element("details", { classe: "groupe-niveau", attributs: { "data-niveau": niveau } });
+    // Une recherche ouvre tous les groupes ; sinon on garde ceux que l'utilisateur a refermés.
+    groupe.open = Boolean(filtre) || !etat.groupesFermes.has(niveau);
+    groupe.addEventListener("toggle", () => { if (!filtre) etat.groupesFermes[groupe.open ? "delete" : "add"](niveau); });
+    const resume = element("summary");
+    const vues = notions.filter((n) => explorees.has(n.id)).length;
+    resume.append(element("span", { cle: `niveau_${niveau}` }), element("span", { classe: "compte", texte: `${vues}/${notions.length}` }));
+    const ul = element("ul");
+    for (const n of notions) {
+      const b = element("button", { classe: "notion", attributs: { type: "button", "data-notion": n.id } });
+      b.append(element("span", { texte: n.titre }));
+      if (explorees.has(n.id)) {
+        b.classList.add("exploree");
+        b.append(element("span", { classe: "coche", texte: "✓", attributs: { "aria-hidden": "true" } }), element("span", { classe: "visuellement-cache", texte: ` (${t("notionExploree")})` }));
+      }
+      if (n.id === etat.notionCourante) b.setAttribute("aria-current", "page");
+      b.addEventListener("click", () => ouvrirNotion(n));
+      const li = element("li");
+      li.append(b);
+      ul.append(li);
+    }
+    groupe.append(resume, ul);
+    liste.append(groupe);
+  }
+  $("#catalogue-vide").hidden = affichees > 0;
+  const total = etat.notions.length, vues = etat.notions.filter((n) => explorees.has(n.id)).length;
+  $("#catalogue-compteur").textContent = t("notionsExplorees", { n: vues, m: total });
+  $("#catalogue-progres").max = total;
+  $("#catalogue-progres").value = vues;
+}
+
+/** Ouvre une notion directement dans le fil, sans passer par le chat (zéro token, comme le routage par mots-clés). */
+function ouvrirNotion(n) {
+  etat.notionCourante = n.id;
+  const url = `${etat.config.apiUrl}/maquettes/${encodeURIComponent(n.id)}?lang=${encodeURIComponent(etat.langue)}`;
+  ajouterReponse({ texte: t("voiciPage", { titre: n.titre }), maquette: { id: n.id, titre: n.titre, version: n.version, url } });
+  fermerCatalogue();
+  appliquerResultat(progression.enregistrerNotion(etat.progres, n.id));
+  rendreCatalogue();
+}
+
+function ouvrirCatalogue() {
+  $("#catalogue").classList.add("ouvert");
+  $("#voile-catalogue").hidden = false;
+  $("#ouvrir-catalogue").setAttribute("aria-expanded", "true");
+  $("#recherche-notion").focus();
+}
+
+function fermerCatalogue() {
+  if (!$("#catalogue").classList.contains("ouvert")) return;
+  $("#catalogue").classList.remove("ouvert");
+  $("#voile-catalogue").hidden = true;
+  $("#ouvrir-catalogue").setAttribute("aria-expanded", "false");
 }
 
 /* ---------- Échanges avec l'API ---------- */
@@ -344,6 +432,14 @@ async function demarrer() {
   $("#mon-compte").hidden = !etat.config.connexionActive;
 
   ajouterBienvenue();
+  await chargerCatalogue();
+  $("#ouvrir-catalogue").addEventListener("click", () => ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue()));
+  $("#fermer-catalogue").addEventListener("click", () => { fermerCatalogue(); $("#ouvrir-catalogue").focus(); });
+  $("#voile-catalogue").addEventListener("click", fermerCatalogue);
+  $("#recherche-notion").addEventListener("input", rendreCatalogue);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && $("#catalogue").classList.contains("ouvert")) { fermerCatalogue(); $("#ouvrir-catalogue").focus(); }
+  });
 
   const champ = $("#question");
   const ajusterHauteur = () => { champ.style.height = "auto"; champ.style.height = `${Math.min(champ.scrollHeight, 160)}px`; };

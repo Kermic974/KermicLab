@@ -1,6 +1,6 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import worker, { _reinitialiser } from "../../worker/src/index.js";
+import worker, { _reinitialiser, cleDeTri } from "../../worker/src/index.js";
 
 // ---- Doubles de test : D1, GitHub, Claude ----
 function creerD1() {
@@ -217,4 +217,22 @@ test("hors API : les fichiers statiques sont servis par le binding ASSETS", asyn
   assert.equal(await r.text(), "statique /index.html");
   const api = await worker.fetch(new Request("https://trigolab.test/api/inconnue"), env, ctx);
   assert.equal(api.status, 404);
+});
+
+test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis par titre", async () => {
+  const r = await worker.fetch(new Request("https://api.kermiclab.test/api/catalogue"), env, ctx);
+  assert.equal(r.status, 200);
+  const { notions } = await r.json();
+  const { CATALOGUE } = await import("../../worker/src/generated/catalogue.js");
+  assert.equal(notions.length, CATALOGUE.index.maquettes.length);
+  const ordre = ["college", "seconde", "premiere", "terminale", "autres"];
+  for (let i = 1; i < notions.length; i++) {
+    const [a, b] = [notions[i - 1], notions[i]];
+    assert.ok(ordre.indexOf(a.niveau) < ordre.indexOf(b.niveau) || (a.niveau === b.niveau && cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }) <= 0), `${a.id} puis ${b.id}`);
+  }
+  assert.deepEqual(Object.keys(notions[0]).sort(), ["id", "niveau", "titre", "version"]);
+  assert.equal(cleDeTri("Le théorème de Pythagore"), "théorème de Pythagore");
+  assert.equal(cleDeTri("L'exponentielle"), "exponentielle");
+  assert.equal(cleDeTri("Les angles et les triangles"), "angles et les triangles");
+  assert.equal(cleDeTri("Lecture"), "Lecture");
 });

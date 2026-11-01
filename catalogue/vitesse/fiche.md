@@ -4,6 +4,7 @@ titre: Vitesse et grandeurs composées
 sujet: mathematiques/vitesse
 version: 1.0.0
 date: 2026-11-01
+niveau: college
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

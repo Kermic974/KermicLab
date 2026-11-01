@@ -4,6 +4,7 @@ titre: Géométrie dans l'espace
 sujet: mathematiques/geometrie-dans-l-espace
 version: 1.0.0
 date: 2026-11-01
+niveau: terminale
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

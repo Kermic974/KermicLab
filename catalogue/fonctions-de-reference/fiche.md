@@ -4,6 +4,7 @@ titre: Les fonctions de référence
 sujet: mathematiques/fonctions-de-reference
 version: 1.0.0
 date: 2026-11-01
+niveau: seconde
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

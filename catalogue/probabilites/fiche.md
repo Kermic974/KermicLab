@@ -4,6 +4,7 @@ titre: Les probabilités
 sujet: mathematiques/probabilites
 version: 1.0.0
 date: 2026-11-01
+niveau: college
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
