@@ -17,6 +17,14 @@ after(async () => { await nav?.close(); await serveur?.fermer(); });
 /** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
 async function simulerApi(page) {
   const requetes = [];
+  await page.route(`${api}/auth/me`, (route) => route.fulfill({
+    contentType: "application/json",
+    headers: {
+      "access-control-allow-origin": serveur.url,
+      "access-control-allow-credentials": "true"
+    },
+    body: JSON.stringify({ connecte: false })
+  }));
   await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
   await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },

@@ -2,7 +2,7 @@
 import * as progression from "./progression.js";
 
 const $ = (s) => document.querySelector(s);
-const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [], notionCourante: null, groupesFermes: new Set() };
+const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [], notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie"];
 const CLE_MATIERE = "kermiclab:matiere";
@@ -55,6 +55,130 @@ async function appliquerLangue(langue) {
   rafraichirBienvenue();
   rafraichirPastille();
   rendreCatalogue();
+}
+
+/* ---------- Auth & Compte ---------- */
+
+async function verifierConnexion() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/auth/me`, { credentials: "include" });
+    if (!r.ok) return;
+    const data = await r.json();
+    if (data.connecte) {
+      etat.compte = data.compte;
+      await chargerEleves();
+      mettreAJourUICompte();
+    }
+  } catch (e) {
+    console.error("auth", e);
+  }
+}
+
+function mettreAJourUICompte() {
+  const connecte = !!etat.compte;
+  $("#se-connecter").hidden = connecte;
+  $("#mon-compte").hidden = !connecte;
+  $("#compte-connecte").hidden = !connecte;
+  $("#compte-non-connecte").hidden = connecte;
+}
+
+async function chargerEleves() {
+  if (!etat.compte) return;
+  const r = await fetch(`${etat.config.apiUrl}/api/eleves`, { credentials: "include" });
+  if (r.ok) {
+    etat.eleves = await r.json();
+    afficherEleves();
+  }
+}
+
+function afficherEleves() {
+  const conteneur = $("#liste-eleves");
+  if (!conteneur) return;
+  conteneur.replaceChildren();
+  for (const e of etat.eleves) {
+    const btn = element("button", { classe: "eleve", texte: e.prenom_affiche, attributs: { type: "button" } });
+    btn.addEventListener("click", () => selectionnerEleve(e));
+    conteneur.append(btn);
+  }
+}
+
+function selectionnerEleve(eleve) {
+  etat.eleveActif = eleve;
+  chargerProgressionDistante(eleve.id);
+  $("#compte").close();
+}
+
+async function chargerProgressionDistante(eleveId) {
+  const r = await fetch(`${etat.config.apiUrl}/api/progres?eleveId=${eleveId}`, { credentials: "include" });
+  if (r.ok) {
+    const data = await r.json();
+    // Fusion simple : les notions distantes prennent le dessus
+    const notions = {};
+    for (const row of data) {
+      notions[row.notion_id] = { score: row.score, etoiles: row.etoiles };
+    }
+    etat.progres = { ...etat.progres, notions: { ...(etat.progres.notions || {}), ...notions } };
+    progression.sauver(stockage(), etat.progres);
+    rafraichirPastille();
+  }
+}
+
+async function synchroniserProgression() {
+  if (!etat.eleveActif || !etat.progres) return;
+  await fetch(`${etat.config.apiUrl}/api/progres`, {
+    method: "POST",
+    credentials: "include",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      eleveId: etat.eleveActif.id,
+      progres: etat.progres
+    })
+  });
+}
+
+function brancherAuth() {
+  $("#se-connecter")?.addEventListener("click", () => $("#compte").showModal());
+  $("#mon-compte")?.addEventListener("click", (e) => { e.preventDefault(); $("#compte").showModal(); });
+
+  $("#login-google")?.addEventListener("click", () => {
+    window.location.href = `${etat.config.apiUrl}/auth/login?provider=google`;
+  });
+  $("#login-microsoft")?.addEventListener("click", () => {
+    window.location.href = `${etat.config.apiUrl}/auth/login?provider=microsoft`;
+  });
+
+  $("#deconnexion")?.addEventListener("click", async () => {
+    await fetch(`${etat.config.apiUrl}/auth/logout`, { method: "POST", credentials: "include" });
+    etat.compte = null;
+    etat.eleves = [];
+    etat.eleveActif = null;
+    mettreAJourUICompte();
+    $("#compte").close();
+    location.reload();
+  });
+
+  $("#ajouter-eleve")?.addEventListener("click", () => {
+    $("#consentement").showModal();
+  });
+
+  $("#valider-consentement")?.addEventListener("click", async (e) => {
+    if (!$("#consent-check").checked) return;
+    e.preventDefault();
+    $("#consentement").close();
+    const prenom = prompt("Prénom ou surnom de l’élève :");
+    if (!prenom) return;
+    const r = await fetch(`${etat.config.apiUrl}/api/eleves`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ prenom_affiche: prenom, age_tranche: "11-13" })
+    });
+    if (r.ok) await chargerEleves();
+  });
+
+  $("#annuler-consentement")?.addEventListener("click", () => $("#consentement").close());
+  brancherDialogue($("#compte"), $("#fermer-compte"));
+  brancherDialogue($("#consentement"), $("#annuler-consentement"));
 }
 
 /* ---------- Construction du fil ---------- */
@@ -260,6 +384,8 @@ function appliquerResultat(resultat) {
   if (resultat.nouvelleNotion) notifier(t("nouvelleNotion"), "🧩");
   for (const b of resultat.nouveaux) notifier(t("badgeDebloque", { nom: t(`badge_${b.id}`) }), b.icone);
   if (resultat.niveauGagne) notifier(t("niveauGagne", { n: progression.niveau(etat.progres).niveau }), "⭐");
+  // Synchronise si un élève est actif
+  if (etat.eleveActif) synchroniserProgression();
   if (resultat.nouvelleNotion) rendreCatalogue();
 }
 
@@ -458,9 +584,9 @@ async function demarrer() {
   await appliquerLangue(select.value);
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
-  // Emplacements préparés, masqués tant que l'authentification n'est pas activée (ADR 0010, phase C).
-  $("#se-connecter").hidden = !etat.config.connexionActive;
-  $("#mon-compte").hidden = !etat.config.connexionActive;
+  // Auth
+  await verifierConnexion();
+  brancherAuth();
 
   ajouterBienvenue();
   await chargerCatalogue();
