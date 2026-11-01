@@ -2,7 +2,9 @@
 import * as progression from "./progression.js";
 
 const $ = (s) => document.querySelector(s);
-const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null };
+const etat = { config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [] };
+const MAX_PUCES = 4;
+const TAILLE_MAX_PUCE = 120;
 const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 function stockage() {
@@ -46,6 +48,7 @@ async function appliquerLangue(langue) {
   document.querySelectorAll("[data-i18n-placeholder]").forEach((n) => { n.placeholder = etat.textes[n.dataset.i18nPlaceholder] ?? ""; });
   document.querySelectorAll("[data-i18n-title]").forEach((n) => { n.title = etat.textes[n.dataset.i18nTitle] ?? ""; });
   document.title = etat.textes.titre;
+  await chargerSuggestions();
   rafraichirBienvenue();
   rafraichirPastille();
 }
@@ -81,6 +84,24 @@ function puce(texte, { cle, classe = "puce" } = {}) {
   return b;
 }
 
+/** Questions d'exemple du catalogue (toujours routées vers une page) ; textes de secours i18n si l'API ne répond pas. */
+async function chargerSuggestions() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/suggestions?lang=${encodeURIComponent(etat.langue)}`);
+    etat.suggestions = r.ok ? pucesValides((await r.json()).suggestions) : [];
+  } catch {
+    etat.suggestions = [];
+  }
+}
+
+function pucesValides(liste) {
+  return Array.isArray(liste) ? liste.filter((q) => typeof q === "string" && q.trim() && q.length <= TAILLE_MAX_PUCE).slice(0, MAX_PUCES) : [];
+}
+
+function remplirPuces(conteneur, questions) {
+  conteneur.replaceChildren(...questions.map((q) => puce(q)));
+}
+
 function ajouterBienvenue() {
   const { li, bulle } = creerMessage();
   li.classList.add("bienvenue");
@@ -89,9 +110,7 @@ function ajouterBienvenue() {
     element("p", { classe: "texte", attributs: { id: "texte-bienvenue" } }),
     element("p", { classe: "puces-titre", cle: "suggestionsTitre" })
   );
-  const puces = element("div", { classe: "puces" });
-  for (const cle of ["suggestion1", "suggestion2", "suggestion3", "suggestion4"]) puces.append(puce(undefined, { cle }));
-  bulle.append(puces);
+  bulle.append(element("div", { classe: "puces", attributs: { id: "puces-bienvenue" } }));
   rafraichirBienvenue();
 }
 
@@ -100,6 +119,8 @@ function rafraichirBienvenue() {
   if (!n || !etat.progres) return;
   const serie = progression.serieCourante(etat.progres);
   n.textContent = etat.progres.questions > 0 && serie > 0 ? t("bienvenueRetour", { n: serie }) : t("bienvenue");
+  const puces = $("#puces-bienvenue");
+  if (puces) remplirPuces(puces, etat.suggestions.length ? etat.suggestions : ["suggestion1", "suggestion2", "suggestion3", "suggestion4"].map((c) => t(c)));
 }
 
 function ajouterQuestion(question) {
@@ -147,17 +168,17 @@ function carteMaquette(maquette) {
   return carte;
 }
 
-function ajouterRelances(bulle) {
+function ajouterRelances(bulle, questions, cleTitre) {
   document.querySelectorAll("#fil .relances").forEach((n) => n.remove());
   const bloc = element("div", { classe: "relances" });
-  bloc.append(element("p", { classe: "puces-titre", cle: "relancesTitre" }));
+  bloc.append(element("p", { classe: "puces-titre", cle: cleTitre }));
   const puces = element("div", { classe: "puces" });
-  for (const cle of ["relanceSimple", "relanceExemple", "relanceDefi"]) puces.append(puce(undefined, { cle }));
+  remplirPuces(puces, questions);
   bloc.append(puces);
   bulle.append(bloc);
 }
 
-function ajouterReponse({ texte, maquette, relances }) {
+function ajouterReponse({ texte, maquette, suggestions, horsCatalogue }) {
   const { li, bulle } = creerMessage();
   bulle.append(element("p", { classe: "texte", texte }));
   if (maquette) {
@@ -165,7 +186,9 @@ function ajouterReponse({ texte, maquette, relances }) {
     li.dataset.maquette = maquette.id;
     bulle.append(carteMaquette(maquette));
   }
-  if (relances) ajouterRelances(bulle);
+  const questions = pucesValides(suggestions);
+  if (horsCatalogue) li.classList.add("hors-catalogue");
+  if (questions.length) ajouterRelances(bulle, questions, horsCatalogue ? "horsCatalogueTitre" : "relancesTitre");
   defiler(li, maquette ? "start" : "end");
   return li;
 }
@@ -279,7 +302,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
     const donnees = await r.json();
     attente.remove();
     const reussie = donnees.type === "reponse" || donnees.type === "maquette";
-    ajouterReponse({ texte: donnees.texte ?? t("erreurReseau"), maquette: donnees.maquette, relances: reussie });
+    ajouterReponse({ texte: donnees.texte ?? t("erreurReseau"), maquette: donnees.maquette, suggestions: donnees.suggestions, horsCatalogue: donnees.type === "hors-catalogue" });
     if (reussie) {
       etat.historique.push({ role: "user", content: question }, { role: "assistant", content: donnees.texte });
       appliquerResultat(progression.enregistrerQuestion(etat.progres));

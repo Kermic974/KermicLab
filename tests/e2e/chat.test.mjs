@@ -18,7 +18,11 @@ after(async () => { await nav?.close(); await serveur?.fermer(); });
 async function simulerApi(page) {
   const requetes = [];
   await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
-  await page.route(`${api}/api/**`, async (route) => {
+  await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })
+  }));
+  await page.route(`${api}/api/chat`, async (route) => {
     const corps = route.request().postDataJSON();
     requetes.push(corps);
     const sinus = /sinus|sine/i.test(corps.message);
@@ -26,8 +30,10 @@ async function simulerApi(page) {
       contentType: "application/json",
       headers: { "access-control-allow-origin": "*" },
       body: JSON.stringify(sinus
-        ? { type: "maquette", texte: "Voici la page.", maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${api}/maquettes/trigo-cercle?lang=fr` } }
-        : { type: "reponse", texte: "Réponse simple." })
+        ? { type: "maquette", texte: "Voici la page.", suggestions: ["Que vaut sin(30°) ?"], maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${api}/maquettes/trigo-cercle?lang=fr` } }
+        : /volcan/i.test(corps.message)
+          ? { type: "hors-catalogue", texte: "Pas encore de page.", suggestions: ["C'est quoi le sinus ?"] }
+          : { type: "reponse", texte: "Réponse simple." })
     });
   });
   return requetes;
@@ -94,6 +100,22 @@ test("progression : suggestions cliquables, XP et badges gardés dans le navigat
   assert.equal(await page.locator("#liste-badges .badge.obtenu").count(), 2);
   await page.click("#fermer-progres");
   assert.equal(await page.locator("#progres").isVisible(), false);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'XP", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.locator("#puces-bienvenue .puce", { hasText: "Je ne comprends pas les radians" }).waitFor();
+  await page.fill("#question", "parle-moi des volcans");
+  await page.keyboard.press("Enter");
+  const relance = page.locator("li.hors-catalogue .relances .puce");
+  await relance.waitFor();
+  assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:progression")), null);
+  await relance.click();
+  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

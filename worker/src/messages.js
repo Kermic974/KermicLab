@@ -8,6 +8,9 @@ export const MESSAGES = {
     vide: "Pose-moi une question, par exemple : « c'est quoi le sinus ? »",
     tropDeDemandes: "Tu poses beaucoup de questions d'un coup ! Attends une minute avant de réessayer.",
     indisponible: "Je ne peux pas répondre à cette question pour le moment. Essaie une question sur une notion de maths, par exemple le sinus ou le cosinus.",
+    horsCatalogue: (titres) => titres.length
+      ? `Je n'ai pas encore de page sur ce sujet. Pour l'instant, je sais t'expliquer : ${titres.join(", ")}. Choisis une question ci-dessous pour commencer !`
+      : "Je n'ai pas encore de page sur ce sujet. Reviens bientôt, de nouvelles notions arrivent !",
     maquetteBientot: "Je n'ai pas encore de page interactive sur ce sujet : je l'ai ajouté à la liste des pages à créer.",
     traductionManquante: "Cette page n'existe pas encore dans ta langue : voici la version française.",
     supportMerci: "Merci, ton signalement a bien été transmis.",
@@ -21,6 +24,9 @@ export const MESSAGES = {
     vide: "Ask me a question, for example: \"what is the sine?\"",
     tropDeDemandes: "That's a lot of questions at once! Wait a minute before trying again.",
     indisponible: "I can't answer that right now. Try a maths question, for example about sine or cosine.",
+    horsCatalogue: (titres) => titres.length
+      ? `I don't have a page on this topic yet. For now, I can explain: ${titres.join(", ")}. Pick a question below to get started!`
+      : "I don't have a page on this topic yet. Come back soon, new ideas are on the way!",
     maquetteBientot: "I don't have an interactive page on this topic yet: I've added it to the list of pages to create.",
     traductionManquante: "This page isn't available in your language yet: here is the French version.",
     supportMerci: "Thank you, your report has been sent.",
