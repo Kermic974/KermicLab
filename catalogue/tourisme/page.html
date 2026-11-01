@@ -1,0 +1,816 @@
+<!doctype html>
+<!-- Page générée par scripts/lib/gabarit.mjs depuis catalogue/tourisme/contenu.json : ne pas modifier à la main. -->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oU48VJGzZMSYwxq7lZgiN5Y4n2fNpSE/ylSEZlvS+K8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Le tourisme et les territoires – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "tourisme",
+  "titre": "Le tourisme et les territoires",
+  "sujet": "geographie/tourisme",
+  "version": "1.0.0",
+  "date": "2026-11-01",
+  "langue": "fr",
+  "onglets": [
+    "explication",
+    "application",
+    "mise-en-situation",
+    "self-test"
+  ],
+  "gabarit": "1.0.0"
+}
+</script>
+<script type="application/json" id="kermiclab-contenu">
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une plage, une ville ou un sentier accueillent des visiteurs : enquête sur les déplacements et sur la vie de ceux qui y habitent.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partir sans déménager",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Visiter une autre ville pendant les vacances, puis rentrer chez soi, n'est pas déménager. Le **tourisme** correspond à des activités de visiteurs hors de leur environnement habituel.",
+        "Il peut concerner les loisirs, mais aussi les affaires ou d'autres motifs. Il n'exige pas de traverser une frontière nationale."
+      ]
+    },
+    {
+      "titre": "Touriste, excursionniste et nuitées",
+      "niveau": "4e",
+      "paragraphes": [
+        "Dans la définition statistique, un visiteur se déplace hors de son environnement habituel pour moins d'un an, avec un motif principal autre qu'un emploi auprès d'un employeur du lieu visité. Le trajet quotidien habituel vers l'école n'est donc pas du tourisme.",
+        "Un **touriste** passe au moins une nuit sur place ; un **excursionniste** fait une visite sans nuitée. Les deux sont des visiteurs. Une migration implique un changement de résidence : ce n'est pas le même phénomène.",
+        "Une **nuitée** compte une personne pendant une nuit : 3 personnes restant 2 nuits représentent 6 nuitées. Jeu du réceptionniste : ne confonds pas personnes, chambres et nuitées."
+      ]
+    },
+    {
+      "titre": "Des flux et des acteurs",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les flux de visiteurs relient des espaces de départ et des destinations. Ils sont inégaux : revenus, temps disponible, accessibilité et règles de déplacement influencent la possibilité de voyager.",
+        "Hébergeurs, transporteurs, plateformes de réservation, collectivités, salariés, visiteurs et habitants participent au système touristique. Les dépenses soutiennent des activités, mais tous les acteurs n'en captent pas la même part.",
+        "La **saisonnalité** concentre la fréquentation sur certaines périodes. Elle peut produire des emplois saisonniers et des équipements sous-utilisés à d'autres moments."
+      ]
+    },
+    {
+      "titre": "Transformer un territoire sans le fragiliser",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Le tourisme peut développer des services et soutenir la valorisation du patrimoine. Il peut aussi augmenter la pression sur l'eau, les déchets, les milieux et les logements.",
+        "Le **surtourisme** désigne des situations où la pression de la fréquentation dégrade les conditions de vie, les milieux ou l'expérience de visite. Il ne correspond pas à un seuil universel identique pour toutes les destinations.",
+        "Étaler la fréquentation, améliorer les transports collectifs, protéger les sites et encadrer certains usages sont des pistes à discuter. L'évaluation doit tenir compte des habitants et des salariés, pas seulement compter les arrivées.",
+        "Un séjour proche n'est pas automatiquement sans impact : transport, hébergement, consommation de ressources et pratiques sur place comptent aussi."
+      ],
+      "aRetenir": "Compare les bénéfices, les coûts et leur répartition, à plusieurs échelles et à plusieurs moments de l'année."
+    }
+  ],
+  "application": {
+    "intro": "Classe les visiteurs puis mesure les effets. Tous les chiffres de fréquentation sont fictifs.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Une visite à la journée",
+        "question": "Une personne visite une ville hors de son environnement habituel pour les loisirs et rentre le soir sans y dormir. C'est…",
+        "choix": [
+          "une personne qui déménage",
+          "un touriste avec nuitée",
+          "un excursionniste"
+        ],
+        "bonne": 2,
+        "indice": "Le critère décisif est la nuit sur place.",
+        "explication": "Le visiteur sans nuitée est un excursionniste. Le touriste passe au moins une nuit sur place."
+      },
+      {
+        "type": "nombre",
+        "titre": "Compter les nuitées",
+        "question": "Dans un hébergement fictif, 4 personnes restent 3 nuits chacune. Combien cela représente-t-il de nuitées ?",
+        "reponse": 12,
+        "unite": "nuitées",
+        "indices": [
+          "Compte une nuitée par personne et par nuit."
+        ],
+        "solution": "4 × 3 = 12 nuitées. Ce n'est ni le nombre de chambres ni le nombre d'arrivées."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un flux touristique",
+        "question": "Des familles quittent temporairement leur région pour visiter une autre région du même pays. Quelle affirmation est correcte ?",
+        "choix": [
+          "Il peut s'agir de tourisme intérieur",
+          "Ce n'est jamais du tourisme sans frontière internationale",
+          "Elles changent forcément de résidence"
+        ],
+        "bonne": 0,
+        "indice": "Le tourisme peut se dérouler dans le même pays.",
+        "explication": "Le tourisme intérieur n'exige pas de passage de frontière internationale. Il faut toutefois être hors de l'environnement habituel."
+      },
+      {
+        "type": "qcm",
+        "titre": "Saisonnalité et emploi",
+        "question": "Une station accueille surtout des visiteurs en été. Quel enjeu peut concerner les salariés ?",
+        "choix": [
+          "La garantie d'un emploi identique toute l'année",
+          "La stabilité de l'emploi et du revenu hors saison",
+          "L'absence de tout besoin de logement"
+        ],
+        "bonne": 1,
+        "indice": "Compare la haute saison au reste de l'année.",
+        "explication": "La concentration saisonnière peut rendre l'emploi et le revenu irréguliers. Elle n'affecte pas tous les salariés de la même façon."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un défi territorial",
+        "question": "La fréquentation augmente alors que l'eau disponible est limitée. Que faut-il examiner ?",
+        "choix": [
+          "Seulement le nombre de photos publiées",
+          "Uniquement la longueur des menus",
+          "Les besoins des habitants et visiteurs, les économies possibles et l'état de la ressource"
+        ],
+        "bonne": 2,
+        "indice": "La ressource est partagée.",
+        "explication": "Il faut étudier les usages et les capacités du territoire pour comparer des mesures, sans oublier la population résidente."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La station littorale en haute saison",
+    "histoire": [
+      "Une station fictive accueille 60 visiteurs : 20 passent 2 nuits sur place, 40 viennent à la journée. Habitants et professionnels discutent de l'accès à la plage.",
+      "Le dossier signale des difficultés de logement pour certains salariés et une pression sur un milieu dunaire fragile."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Les nuits sur place",
+        "question": "Les 20 personnes restant 2 nuits chacune représentent combien de nuitées ?",
+        "reponse": 40,
+        "unite": "nuitées",
+        "indices": [
+          "Multiplie le nombre de personnes par le nombre de nuits."
+        ],
+        "solution": "20 × 2 = 40 nuitées. Les 40 visiteurs à la journée n'ajoutent aucune nuitée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Identifier les acteurs",
+        "question": "Qui associer à la discussion sur l'accueil et la vie locale ?",
+        "choix": [
+          "Habitants, salariés, professionnels et collectivité, avec prise en compte des visiteurs",
+          "Seulement les vendeurs de souvenirs",
+          "Aucun habitant"
+        ],
+        "bonne": 0,
+        "indice": "Les effets ne concernent pas un seul groupe.",
+        "explication": "Ces acteurs ont des usages et des besoins différents. Leur concertation permet de repérer les bénéfices et les difficultés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Protéger le milieu",
+        "question": "Quelle action répond directement au piétinement de la dune ?",
+        "choix": [
+          "Multiplier les passages non balisés",
+          "Canaliser les passages sur des accès adaptés et protéger les secteurs fragiles",
+          "Compter seulement les nuitées"
+        ],
+        "bonne": 1,
+        "indice": "Cherche une mesure qui agit sur les parcours.",
+        "explication": "Des accès adaptés et la protection des secteurs fragiles peuvent réduire le piétinement, avec suivi des effets."
+      },
+      {
+        "type": "qcm",
+        "titre": "Évaluer au-delà des arrivées",
+        "question": "Quel bilan prend en compte les inégalités et les défis du dossier ?",
+        "choix": [
+          "Le nombre d'arrivées suffit à tout évaluer",
+          "Tous les habitants bénéficient forcément autant de la fréquentation",
+          "Comparer aussi logement des salariés, pression sur la dune et conditions de vie des habitants"
+        ],
+        "bonne": 2,
+        "indice": "Reprends les difficultés mentionnées dans l'histoire.",
+        "explication": "Un bilan territorial croise fréquentation, emploi, logement et environnement. Une hausse des arrivées n'est pas un indicateur suffisant de réussite."
+      }
+    ],
+    "conclusion": "Accueil étudié ! Tu sais distinguer visiteurs et nuitées, puis analyser les effets du tourisme pour plusieurs acteurs."
+  }
+}
+</script>
+<style>
+:root {
+  --fond: #fbfaf7; --surface: #ffffff; --surface-2: #f2efe8; --texte: #1d2330; --doux: #5a6272; --bord: #e2e0da;
+  --accent: #1f5fbf; --accent-doux: #e6eefb; --accent-texte: #ffffff;
+  --succes: #15803d; --succes-doux: #e7f6ec; --alerte: #b91c1c; --alerte-doux: #fdecec; --or: #b7791f;
+  --a: #2563eb; --b: #db2777; --c: #7c3aed;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #12151b; --surface: #1d2129; --surface-2: #232834; --texte: #e8eaef; --doux: #a3aab8; --bord: #2e3440;
+    --accent: #7fb0ff; --accent-doux: #1e2b42; --accent-texte: #0b1220;
+    --succes: #4ade80; --succes-doux: #13291c; --alerte: #f87171; --alerte-doux: #2c1717; --or: #facc15;
+    --a: #60a5fa; --b: #f472b6; --c: #a78bfa;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--fond); color: var(--texte); }
+header { padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 760px; margin: 0 auto; }
+header h1 { font-size: 1.3rem; margin: 0; }
+.meta { color: var(--doux); font-size: .8rem; }
+.entete-actions { display: flex; gap: 8px; align-items: center; }
+.etoiles { font-weight: 700; color: var(--or); background: var(--surface); border: 1px solid var(--bord); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+.etoiles.brille { animation: brille .6s ease; }
+#connexion[hidden], [hidden] { display: none !important; }
+[role="tablist"] { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; max-width: 760px; margin: 0 auto; border-bottom: 1px solid var(--bord); }
+[role="tab"] { flex: 0 0 auto; padding: 10px 14px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+[role="tab"][aria-selected="true"] { color: var(--texte); border-bottom-color: var(--accent); font-weight: 600; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+h2 { font-size: 1.15rem; margin: 20px 0 10px; }
+h3 { font-size: 1rem; margin: 0 0 6px; display: flex; gap: 8px; align-items: center; }
+.intro { font-size: 1.05rem; }
+details { background: var(--surface); border: 1px solid var(--bord); border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; }
+summary { cursor: pointer; font-weight: 600; }
+.niveau { color: var(--doux); font-weight: 400; font-size: .85rem; }
+.exemple, .retenir { border-radius: 10px; padding: 10px 14px; margin: 10px 0; }
+.exemple { background: var(--surface-2); }
+.exemple ol { margin: 6px 0 0; padding-left: 1.3em; }
+.retenir { background: var(--accent-doux); border-left: 4px solid var(--accent); }
+.retenir p { margin: 4px 0 0; }
+
+/* Figures */
+.figure { background: var(--surface); border: 1px solid var(--bord); border-radius: 12px; padding: 12px; margin: 12px 0; }
+.figure svg { width: 100%; max-width: 360px; height: auto; display: block; margin: 0 auto; }
+.curseurs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4px 16px; margin-top: 8px; }
+.curseur { display: block; margin: 6px 0; }
+.curseur output { font-weight: 700; }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+.tuiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: 10px; }
+.tuile { background: var(--surface-2); border-radius: 10px; padding: 8px; text-align: center; font-size: .85rem; color: var(--doux); }
+.tuile b { display: block; font-size: 1.05rem; color: var(--texte); }
+.tuile.a b { color: var(--a); } .tuile.b b { color: var(--b); } .tuile.c b { color: var(--c); }
+.bulle-info { margin: 10px 0 0; font-size: .9rem; color: var(--doux); }
+.carre { fill-opacity: .18; stroke-width: 1.5; }
+.carre-a { fill: var(--a); stroke: var(--a); } .carre-b { fill: var(--b); stroke: var(--b); } .carre-c { fill: var(--c); stroke: var(--c); }
+.triangle { fill: var(--surface); stroke: var(--texte); stroke-width: 2; }
+.angle-droit { fill: none; stroke: var(--texte); stroke-width: 1.5; }
+.part { fill: var(--surface-2); stroke: var(--texte); stroke-width: 1; }
+.part.pleine { fill: var(--accent); fill-opacity: .75; }
+.axe { stroke: var(--doux); stroke-width: 1.5; }
+.droite { stroke: var(--accent); stroke-width: 3; }
+.repere { stroke: var(--doux); stroke-width: 1; stroke-dasharray: 4 4; }
+.point { fill: var(--b); }
+.etiquette { font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+.etiquette.a { fill: var(--a); } .etiquette.b { fill: var(--b); } .etiquette.c { fill: var(--c); }
+.legende { font-size: 11px; fill: var(--doux); }
+.grille { stroke: var(--bord); stroke-width: 1; }
+.escalier { fill: none; stroke: var(--b); stroke-width: 2; stroke-dasharray: 5 3; }
+.barre { fill: var(--accent); fill-opacity: .7; }
+.courbe { fill: none; }
+.racine { fill: var(--c); }
+.barre.derniere { fill: var(--b); fill-opacity: .9; }
+.boutons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin-top: 10px; }
+.defile { overflow-x: auto; }
+.tableau { border-collapse: collapse; margin: 10px auto 0; font-size: .9rem; }
+.tableau th, .tableau td { border: 1px solid var(--bord); padding: 4px 10px; text-align: center; }
+.tableau th { background: var(--surface-2); font-weight: 600; text-align: left; }
+.tableau td.actif { background: var(--accent-doux); font-weight: 700; }
+
+/* Exercices */
+.exercice { background: var(--surface); border: 1px solid var(--bord); border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; }
+.exercice.deja { border-color: color-mix(in srgb, var(--succes) 50%, var(--bord)); }
+.exercice p { margin: 4px 0 8px; }
+.numero { flex: none; width: 26px; height: 26px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--accent-doux); color: var(--accent); font-size: .85rem; }
+.exercice.deja .numero { background: var(--succes); color: var(--surface); }
+.choix { display: flex; flex-wrap: wrap; gap: 8px; }
+.choix-bouton { font: inherit; text-align: left; background: var(--surface-2); color: var(--texte); border: 2px solid transparent; border-radius: 10px; padding: 8px 12px; cursor: pointer; }
+.choix-bouton:hover:not(:disabled) { border-color: var(--accent); }
+.choix-bouton.juste { border-color: var(--succes); background: var(--succes-doux); }
+.choix-bouton.faux { border-color: var(--alerte); background: var(--alerte-doux); opacity: .8; }
+.choix-bouton:disabled { cursor: default; }
+.reponse { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.reponse input { font: inherit; width: 9em; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--bord); background: var(--fond); color: var(--texte); }
+.unite { color: var(--doux); }
+button.action { background: var(--accent); color: var(--accent-texte); border: 0; border-radius: 10px; padding: 8px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+button.action:disabled { opacity: .5; cursor: default; }
+button.lien { background: none; border: 0; padding: 0; margin-top: 6px; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
+.retour { min-height: 1.4em; margin: 8px 0 0; font-weight: 600; }
+.retour.ok { color: var(--succes); } .retour.ko { color: var(--alerte); }
+progress { width: 100%; height: 10px; accent-color: var(--succes); margin: 4px 0 14px; }
+.bravo { background: var(--succes-doux); border: 2px solid var(--succes); border-radius: 12px; padding: 12px 14px; animation: apparait .4s ease; }
+.bravo strong { font-size: 1.1rem; }
+footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); font-size: .8rem; }
+@keyframes brille { 40% { transform: scale(1.15); } }
+@keyframes apparait { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Le tourisme et les territoires</h1>
+    <div class="meta">tourisme · v1.0.0</div>
+  </div>
+  <div class="entete-actions">
+    <span id="etoiles" class="etoiles" role="status"></span>
+    <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+  </div>
+</header>
+<nav role="tablist" aria-label="Onglets de la page" id="onglets"></nav>
+<main id="panneaux"></main>
+<footer>Kermiclab · page autonome, lisible hors ligne. Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</footer>
+<script>
+(() => {
+  "use strict";
+  // Moteur commun des pages Kermiclab générées depuis gabarit/ (voir docs/gabarit.md).
+  // Le contenu de la notion est une donnée (script JSON #kermiclab-contenu) : le moteur ne l'interprète jamais comme du HTML.
+  const META = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const C = JSON.parse(document.getElementById("kermiclab-contenu").textContent);
+  const CONFIG = { connexionActive: false, stockage: "local" };
+
+  /* ---------- Stockage abstrait : local (actif) / distant (stub) ---------- */
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:${META.id}:${cle}`)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(`kermiclab:${META.id}:${cle}`, JSON.stringify(valeur)); } catch { /* stockage indisponible (page en iframe isolée) */ } }
+    },
+    distant: {
+      // Phase 4 : appellera le service web avec META.id et l'identifiant utilisateur.
+      lire() { return null; },
+      ecrire() { /* non activé */ }
+    }
+  };
+  const stockage = Stockage[CONFIG.stockage];
+
+  /* ---------- Registre des onglets ---------- */
+  const registre = [];
+  function enregistrerOnglet(def) { registre.push({ actif: true, ...def }); }
+
+  /* ---------- Outils DOM (aucun innerHTML) ---------- */
+  function h(balise, attributs, ...enfants) {
+    const n = document.createElement(balise);
+    for (const [k, v] of Object.entries(attributs ?? {})) {
+      if (v === undefined || v === null || v === false) continue;
+      if (k === "classe") n.className = v; else n.setAttribute(k, v === true ? "" : v);
+    }
+    for (const e of enfants.flat()) if (e !== undefined && e !== null) n.append(e);
+    return n;
+  }
+  /** Texte enrichi minimal : **gras** et *italique*, tout le reste est du texte brut. */
+  function riche(texte) {
+    const frag = document.createDocumentFragment();
+    const re = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+    let dernier = 0, m;
+    while ((m = re.exec(texte))) {
+      if (m.index > dernier) frag.append(texte.slice(dernier, m.index));
+      frag.append(m[1] ? h("strong", null, m[1]) : h("em", null, m[2]));
+      dernier = re.lastIndex;
+    }
+    if (dernier < texte.length) frag.append(texte.slice(dernier));
+    return frag;
+  }
+  const paragraphe = (t, classe) => h("p", { classe }, riche(t));
+  const nombreFr = (x, decimales = 2) => {
+    const arr = Math.round(x * 10 ** decimales) / 10 ** decimales;
+    return (Object.is(arr, -0) ? 0 : arr).toLocaleString("fr-FR", { maximumFractionDigits: decimales });
+  };
+  /** Vrai si x s'écrit exactement avec au plus `decimales` chiffres après la virgule. */
+  const exact = (x, decimales) => Math.abs(Math.round(x * 10 ** decimales) - x * 10 ** decimales) < 1e-9;
+  const pgcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
+  const SVG = "http://www.w3.org/2000/svg";
+  function s(nom, attributs, parent) {
+    const n = document.createElementNS(SVG, nom);
+    for (const [k, v] of Object.entries(attributs ?? {})) n.setAttribute(k, v);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  /** Lit « 12 », « 3,5 », « -2.25 » ou « 3/4 ». Renvoie { valeur, fraction: [n, d] | null } ou null. */
+  function lireNombre(saisie) {
+    const t = String(saisie).trim().replace(/\s+/g, "").replace(",", ".");
+    const f = t.match(/^(-?\d+)\/(-?\d+)$/);
+    if (f) { const n = Number(f[1]), d = Number(f[2]); return d === 0 ? null : { valeur: n / d, fraction: [n, d] }; }
+    if (!/^-?\d+(\.\d+)?$/.test(t)) return null;
+    return { valeur: Number(t), fraction: null };
+  }
+
+  /* ---------- Étoiles : une par exercice réussi, gardées dans le navigateur ---------- */
+  const etoiles = new Set(Array.isArray(stockage.lire("etoiles")) ? stockage.lire("etoiles") : []);
+  const totalExercices = [...(C.application?.exercices ?? []), ...(C.situation?.etapes ?? [])].length;
+  const compteur = document.getElementById("etoiles");
+  function majEtoiles() {
+    compteur.textContent = `★ ${etoiles.size} / ${totalExercices}`;
+    compteur.setAttribute("aria-label", `${etoiles.size} étoiles sur ${totalExercices}`);
+  }
+  function gagner(id) {
+    if (etoiles.has(id)) return false;
+    etoiles.add(id);
+    stockage.ecrire("etoiles", [...etoiles]);
+    majEtoiles();
+    compteur.classList.remove("brille"); void compteur.offsetWidth; compteur.classList.add("brille");
+    return true;
+  }
+
+  /* ---------- Composants d'exercice ---------- */
+  function retourZone() { return h("p", { classe: "retour", "aria-live": "polite" }); }
+  function afficherRetour(zone, ok, texte) {
+    zone.className = `retour ${ok ? "ok" : "ko"}`;
+    zone.replaceChildren(riche(texte));
+  }
+
+  function exerciceQcm(ex, id, surReussite) {
+    const zone = retourZone();
+    const choix = h("div", { classe: "choix", role: "group", "aria-label": "Réponses possibles" });
+    ex.choix.forEach((libelle, i) => {
+      const b = h("button", { type: "button", classe: "choix-bouton" }, riche(libelle));
+      b.addEventListener("click", () => {
+        if (choix.dataset.fini) return;
+        if (i === ex.bonne) {
+          choix.dataset.fini = "1";
+          b.classList.add("juste");
+          choix.querySelectorAll("button").forEach((x) => { x.disabled = true; });
+          afficherRetour(zone, true, `${gagner(id) ? "Bravo, +1 étoile ! " : "Bravo ! "}${ex.explication ?? ""}`);
+          surReussite?.();
+        } else {
+          b.classList.add("faux"); b.disabled = true;
+          afficherRetour(zone, false, ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
+        }
+      });
+      choix.append(b);
+    });
+    return [choix, zone];
+  }
+
+  function exerciceNombre(ex, id, surReussite) {
+    const zone = retourZone();
+    const champ = h("input", { type: "text", inputmode: "decimal", autocomplete: "off", "aria-label": "Ta réponse", placeholder: ex.fractionIrreductible ? "ex. 3/4" : "ta réponse" });
+    const valider = h("button", { type: "submit", classe: "action" }, "Valider");
+    const solution = h("button", { type: "button", classe: "lien", hidden: true }, "Voir la solution");
+    const form = h("form", { classe: "reponse" }, champ, ex.unite ? h("span", { classe: "unite" }, ex.unite) : null, valider);
+    let essais = 0, fini = false;
+    const terminer = (ok) => {
+      fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true;
+      const texte = ok ? `${gagner(id) ? "Exact, +1 étoile ! " : "Exact ! "}${ex.solution ?? ""}` : `Solution : ${ex.solution ?? nombreFr(ex.reponse)}`;
+      afficherRetour(zone, ok, texte);
+      if (ok) surReussite?.();
+    };
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (fini) return;
+      const lu = lireNombre(champ.value);
+      if (!lu) { afficherRetour(zone, false, ex.fractionIrreductible ? "Écris une fraction, par exemple 3/4." : "Écris un nombre, par exemple 12 ou 3,5."); return; }
+      const juste = Math.abs(lu.valeur - ex.reponse) <= (ex.tolerance ?? 1e-9);
+      if (juste && ex.fractionIrreductible && (!lu.fraction || pgcd(lu.fraction[0], lu.fraction[1]) !== 1)) {
+        afficherRetour(zone, false, "C'est la bonne valeur, mais la fraction n'est pas encore simplifiée au maximum !");
+        return;
+      }
+      if (juste) { terminer(true); return; }
+      essais += 1;
+      const indices = ex.indices ?? [];
+      afficherRetour(zone, false, essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.");
+      if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
+    });
+    solution.addEventListener("click", () => terminer(false));
+    return [form, solution, zone];
+  }
+
+  const TYPES_EXERCICE = { qcm: exerciceQcm, nombre: exerciceNombre };
+
+  function carteExercice(ex, id, numero, surReussite) {
+    const carte = h("article", { classe: "exercice", "data-exercice": id });
+    const titre = h("h3", null, h("span", { classe: "numero" }, String(numero)), riche(ex.titre ?? "Exercice"));
+    if (etoiles.has(id)) carte.classList.add("deja");
+    carte.append(titre, paragraphe(ex.question), ...TYPES_EXERCICE[ex.type](ex, id, () => { carte.classList.add("deja"); surReussite?.(); }));
+    return carte;
+  }
+
+  /* ---------- Figures interactives ---------- */
+  function curseur(libelle, min, max, pas, valeur, surChangement) {
+    const sortie = h("output", null);
+    const entree = h("input", { type: "range", min, max, step: pas, value: valeur });
+    const maj = () => { sortie.textContent = nombreFr(Number(entree.value)); surChangement(Number(entree.value)); };
+    entree.addEventListener("input", maj);
+    return { element: h("label", { classe: "curseur" }, h("span", null, `${libelle} : `, sortie), entree), maj, entree };
+  }
+  const tuile = (libelle, valeur, classe) => h("div", { classe: `tuile ${classe ?? ""}` }, h("span", null, libelle), h("b", null, valeur));
+
+  const FIGURES = {
+    /** Triangle rectangle et carrés construits sur ses côtés. */
+    pythagore(conf) {
+      const svg = s("svg", { viewBox: "0 0 300 300", role: "img", "aria-label": "Triangle rectangle et carrés construits sur ses côtés" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      const message = h("p", { classe: "bulle-info", "aria-live": "polite" });
+      let a = conf.a ?? 3, b = conf.b ?? 4;
+      const dessiner = () => {
+        svg.replaceChildren();
+        const c = Math.hypot(a, b);
+        // Angle droit en O, côté a horizontal (vers A), côté b vertical (vers B) ; chaque carré est construit vers l'extérieur.
+        // Encombrement : largeur (a + 2b)·k, hauteur (2a + b)·k ; l'échelle k fait tout tenir dans 300 × 300.
+        const k = 280 / Math.max(a + 2 * b, 2 * a + b);
+        const O = { x: 10 + b * k, y: 10 + a * k };
+        const A = { x: O.x + a * k, y: O.y }, B = { x: O.x, y: O.y + b * k };
+        const decale = (p, dx, dy) => ({ x: p.x + dx, y: p.y + dy });
+        const poly = (pts, classe) => s("polygon", { points: pts.map((p) => `${p.x},${p.y}`).join(" "), class: classe }, svg);
+        poly([O, A, decale(A, 0, -a * k), decale(O, 0, -a * k)], "carre carre-a");
+        poly([O, B, decale(B, -b * k, 0), decale(O, -b * k, 0)], "carre carre-b");
+        poly([A, B, decale(B, b * k, a * k), decale(A, b * k, a * k)], "carre carre-c");
+        poly([O, A, B], "triangle");
+        const aire = (pts, texte, classe) => {
+          const t = s("text", { x: pts.reduce((m, p) => m + p.x, 0) / 4, y: pts.reduce((m, p) => m + p.y, 0) / 4, class: `etiquette ${classe}` }, svg);
+          t.textContent = texte;
+        };
+        aire([O, A, decale(A, 0, -a * k), decale(O, 0, -a * k)], nombreFr(a * a), "a");
+        aire([O, B, decale(B, -b * k, 0), decale(O, -b * k, 0)], nombreFr(b * b), "b");
+        aire([A, B, decale(B, b * k, a * k), decale(A, b * k, a * k)], nombreFr(a * a + b * b), "c");
+        s("polyline", { points: `${O.x + 10},${O.y} ${O.x + 10},${O.y + 10} ${O.x},${O.y + 10}`, class: "angle-droit" }, svg);
+        valeurs.replaceChildren(
+          tuile("a²", `${nombreFr(a)}² = ${nombreFr(a * a)}`, "a"),
+          tuile("b²", `${nombreFr(b)}² = ${nombreFr(b * b)}`, "b"),
+          tuile("c² = a² + b²", nombreFr(a * a + b * b), "c"),
+          tuile("hypoténuse c", Number.isInteger(c) ? nombreFr(c) : `≈ ${nombreFr(c)}`, "c")
+        );
+        message.textContent = Number.isInteger(c)
+          ? `Triplet magique ! ${a}, ${b} et ${c} sont tous entiers : on dit que c'est un triplet pythagoricien.`
+          : "Astuce : cherche des valeurs de a et b qui donnent une hypoténuse entière (il en existe plusieurs !).";
+      };
+      const ca = curseur("Côté a", 1, 12, 1, a, (v) => { a = v; dessiner(); });
+      const cb = curseur("Côté b", 1, 12, 1, b, (v) => { b = v; dessiner(); });
+      ca.maj(); cb.maj();
+      return h("div", { classe: "figure" }, svg, h("div", { classe: "curseurs" }, ca.element, cb.element), valeurs, message);
+    },
+
+    /** Barres partagées en parts égales : numérateur / dénominateur, décimal, pourcentage, forme simplifiée. */
+    fraction(conf) {
+      const svg = s("svg", { viewBox: "0 0 300 52", role: "img", "aria-label": "Fraction représentée par des barres partagées en parts égales" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      let n = conf.numerateur ?? 3, d = conf.denominateur ?? 4;
+      const dessiner = () => {
+        svg.replaceChildren();
+        const barres = Math.max(1, Math.ceil(n / d));
+        const hauteur = 36;
+        svg.setAttribute("viewBox", `0 0 300 ${8 + barres * (hauteur + 8)}`);
+        for (let j = 0; j < barres; j++) {
+          const y = 8 + j * (hauteur + 8);
+          for (let i = 0; i < d; i++) {
+            const pleine = j * d + i < n;
+            s("rect", { x: 10 + (i * 280) / d, y, width: 280 / d, height: hauteur, class: pleine ? "part pleine" : "part" }, svg);
+          }
+        }
+        const g = pgcd(n, d);
+        valeurs.replaceChildren(
+          tuile("fraction", `${n}/${d}`),
+          tuile("forme simplifiée", g > 1 ? `${n / g}/${d / g}` : "déjà simplifiée"),
+          tuile("décimal", `${exact(n / d, 3) ? "" : "≈ "}${nombreFr(n / d, 3)}`),
+          tuile("pourcentage", `${exact((n / d) * 100, 1) ? "" : "≈ "}${nombreFr((n / d) * 100, 1)} %`)
+        );
+      };
+      const cn = curseur("Numérateur (parts prises)", 0, 12, 1, n, (v) => { n = v; dessiner(); });
+      const cd = curseur("Dénominateur (parts égales)", 1, 12, 1, d, (v) => { d = v; dessiner(); });
+      cn.maj(); cd.maj();
+      return h("div", { classe: "figure" }, svg, h("div", { classe: "curseurs" }, cn.element, cd.element), valeurs);
+    },
+
+    /** Situation de proportionnalité : tableau, droite passant par l'origine, coefficient. */
+    proportion(conf) {
+      const svg = s("svg", { viewBox: "0 0 300 200", role: "img", "aria-label": `Graphique : ${conf.libelleY} en fonction de ${conf.libelleX}` });
+      const table = h("table", { classe: "tableau" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      const xMax = conf.xMax ?? 10;
+      let k = conf.coefficient ?? 1.2, x = conf.x ?? 3;
+      const dessiner = () => {
+        svg.replaceChildren();
+        const yMax = (conf.coefficientMax ?? 3) * xMax * 1.05;
+        const px = (v) => 30 + (v / xMax) * 260, py = (v) => 180 - (v / yMax) * 170;
+        s("line", { x1: 30, y1: 180, x2: 295, y2: 180, class: "axe" }, svg);
+        s("line", { x1: 30, y1: 180, x2: 30, y2: 5, class: "axe" }, svg);
+        for (let i = 0; i <= xMax; i++) s("line", { x1: px(i), y1: 180, x2: px(i), y2: 184, class: "axe" }, svg);
+        const texte = (x0, y0, contenu, ancre) => { s("text", { x: x0, y: y0, class: "legende", "text-anchor": ancre }, svg).textContent = contenu; };
+        texte(26, 184, "0", "end");
+        texte(px(xMax), 197, `${conf.libelleX} : de 0 à ${nombreFr(xMax)}`, "end");
+        texte(36, 14, conf.libelleY, "start");
+        s("line", { x1: px(0), y1: py(0), x2: px(xMax), y2: py(k * xMax), class: "droite" }, svg);
+        s("line", { x1: px(x), y1: 180, x2: px(x), y2: py(k * x), class: "repere" }, svg);
+        s("line", { x1: 30, y1: py(k * x), x2: px(x), y2: py(k * x), class: "repere" }, svg);
+        s("circle", { cx: px(x), cy: py(k * x), r: 6, class: "point" }, svg);
+        const lignes = [1, 2, 5, 10].filter((v) => v <= xMax);
+        table.replaceChildren(
+          h("tr", null, h("th", { scope: "row" }, conf.libelleX), ...lignes.map((v) => h("td", null, nombreFr(v))), h("td", { classe: "actif" }, nombreFr(x))),
+          h("tr", null, h("th", { scope: "row" }, conf.libelleY), ...lignes.map((v) => h("td", null, nombreFr(k * v))), h("td", { classe: "actif" }, nombreFr(k * x)))
+        );
+        valeurs.replaceChildren(
+          tuile("coefficient", `× ${nombreFr(k)}`),
+          tuile(conf.libelleY, `${nombreFr(x)} × ${nombreFr(k)} = ${nombreFr(k * x)}${conf.unite ? ` ${conf.unite}` : ""}`)
+        );
+      };
+      const ck = curseur(conf.libelleCoefficient ?? "Coefficient", conf.coefficientMin ?? 0.5, conf.coefficientMax ?? 3, conf.pas ?? 0.1, k, (v) => { k = v; dessiner(); });
+      const cx = curseur(conf.libelleX, 0, xMax, 1, x, (v) => { x = v; dessiner(); });
+      ck.maj(); cx.maj();
+      return h("div", { classe: "figure" }, svg, h("div", { classe: "curseurs" }, ck.element, cx.element), h("div", { classe: "defile" }, table), valeurs);
+    },
+
+    /** Droite d'équation y = ax + b : coefficient directeur, ordonnée à l'origine, nature de la fonction. */
+    affine(conf) {
+      const svg = s("svg", { viewBox: "0 0 260 260", role: "img", "aria-label": "Représentation graphique de la fonction f(x) = ax + b" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      let a = conf.a ?? 2, b = conf.b ?? 1;
+      const px = (x) => 130 + x * 20, py = (y) => 130 - y * 20;
+      const signe = (v) => (v < 0 ? `− ${nombreFr(-v)}` : `+ ${nombreFr(v)}`);
+      const dessiner = () => {
+        svg.replaceChildren();
+        for (let i = -6; i <= 6; i++) {
+          s("line", { x1: px(i), y1: 0, x2: px(i), y2: 260, class: "grille" }, svg);
+          s("line", { x1: 0, y1: py(i), x2: 260, y2: py(i), class: "grille" }, svg);
+        }
+        s("line", { x1: 0, y1: 130, x2: 260, y2: 130, class: "axe" }, svg);
+        s("line", { x1: 130, y1: 0, x2: 130, y2: 260, class: "axe" }, svg);
+        s("text", { x: px(1), y: py(0) + 14, class: "legende", "text-anchor": "middle" }, svg).textContent = "1";
+        s("text", { x: px(0) - 6, y: py(1) + 4, class: "legende", "text-anchor": "end" }, svg).textContent = "1";
+        s("line", { x1: px(-7), y1: py(a * -7 + b), x2: px(7), y2: py(a * 7 + b), class: "droite" }, svg);
+        // Escalier « +1 en x → +a en y », depuis le point d'ordonnée à l'origine.
+        s("polyline", { points: `${px(0)},${py(b)} ${px(1)},${py(b)} ${px(1)},${py(a + b)}`, class: "escalier" }, svg);
+        s("circle", { cx: px(0), cy: py(b), r: 5, class: "point" }, svg);
+        const nature = a === 0 ? "constante" : b === 0 ? "linéaire (proportionnalité)" : "affine";
+        const formule = a === 0 ? `f(x) = ${nombreFr(b)}` : `f(x) = ${a === 1 ? "" : a === -1 ? "−" : nombreFr(a)}x${b === 0 ? "" : ` ${signe(b)}`}`;
+        valeurs.replaceChildren(
+          tuile("fonction", formule),
+          tuile("coefficient directeur a", `${nombreFr(a)} (${a > 0 ? "croissante" : a < 0 ? "décroissante" : "constante"})`, "a"),
+          tuile("ordonnée à l'origine b", nombreFr(b), "b"),
+          tuile("nature", nature)
+        );
+      };
+      const ca = curseur("Coefficient directeur a", -4, 4, 0.5, a, (v) => { a = v; dessiner(); });
+      const cb = curseur("Ordonnée à l'origine b", -5, 5, 0.5, b, (v) => { b = v; dessiner(); });
+      ca.maj(); cb.maj();
+      return h("div", { classe: "figure" }, svg, h("div", { classe: "curseurs" }, ca.element, cb.element), valeurs);
+    },
+
+    /** Parabole y = ax² + bx + c : sommet, discriminant et racines. */
+    parabole(conf) {
+      const svg = s("svg", { viewBox: "0 0 260 260", role: "img", "aria-label": "Représentation graphique de f(x) = ax² + bx + c" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      let a = conf.a ?? 1, b = conf.b ?? -2, c = conf.c ?? -3;
+      const px = (x) => 130 + x * 20, py = (y) => 130 - y * 20;
+      const terme = (v, lettre, premier) => {
+        if (v === 0) return "";
+        const abs = Math.abs(v), coef = lettre && abs === 1 ? "" : nombreFr(abs);
+        return premier ? `${v < 0 ? "−" : ""}${coef}${lettre}` : ` ${v < 0 ? "−" : "+"} ${coef}${lettre}`;
+      };
+      const dessiner = () => {
+        svg.replaceChildren();
+        for (let i = -6; i <= 6; i++) {
+          s("line", { x1: px(i), y1: 0, x2: px(i), y2: 260, class: "grille" }, svg);
+          s("line", { x1: 0, y1: py(i), x2: 260, y2: py(i), class: "grille" }, svg);
+        }
+        s("line", { x1: 0, y1: 130, x2: 260, y2: 130, class: "axe" }, svg);
+        s("line", { x1: 130, y1: 0, x2: 130, y2: 260, class: "axe" }, svg);
+        const f = (x) => a * x * x + b * x + c;
+        const points = [];
+        for (let x = -6.5; x <= 6.5; x += 0.05) points.push(`${px(x).toFixed(1)},${Math.max(-2000, Math.min(2000, py(f(x)))).toFixed(1)}`);
+        s("polyline", { points: points.join(" "), class: "droite courbe" }, svg);
+        const delta = b * b - 4 * a * c;
+        const alpha = -b / (2 * a), beta = f(alpha);
+        s("circle", { cx: px(alpha), cy: py(beta), r: 5, class: "point" }, svg);
+        const racines = delta > 0 ? [(-b - Math.sqrt(delta)) / (2 * a), (-b + Math.sqrt(delta)) / (2 * a)].sort((u, v) => u - v) : delta === 0 ? [alpha] : [];
+        for (const r of racines) s("circle", { cx: px(r), cy: py(0), r: 4, class: "racine" }, svg);
+        valeurs.replaceChildren(
+          tuile("fonction", `f(x) = ${terme(a, "x²", true)}${terme(b, "x", false)}${terme(c, "", false)}`),
+          tuile("discriminant Δ = b² − 4ac", nombreFr(delta), "a"),
+          tuile("racines", racines.length ? racines.map((r) => nombreFr(r)).join(" et ") : "aucune (Δ < 0)", "c"),
+          tuile("sommet (α ; β)", `(${nombreFr(alpha)} ; ${nombreFr(beta)}) — ${a > 0 ? "minimum" : "maximum"}`, "b")
+        );
+      };
+      // a ne peut pas valoir 0 (sinon ce n'est plus une parabole) : on saute directement de −0,5 à 0,5.
+      const ca = curseur("a", -3, 3, 0.5, a, (v) => {
+        if (v === 0) { ca.entree.value = a > 0 ? -0.5 : 0.5; ca.maj(); return; }
+        a = v; dessiner();
+      });
+      const cb = curseur("b", -6, 6, 1, b, (v) => { b = v; dessiner(); });
+      const cc = curseur("c", -6, 6, 1, c, (v) => { c = v; dessiner(); });
+      ca.maj(); cb.maj(); cc.maj();
+      return h("div", { classe: "figure" }, svg, h("div", { classe: "curseurs" }, ca.element, cb.element, cc.element), valeurs);
+    },
+
+    /** Lancers d'un dé équilibré : les fréquences se rapprochent de 1/6 quand le nombre de lancers augmente. */
+    des() {
+      const svg = s("svg", { viewBox: "0 0 300 170", role: "img", "aria-label": "Diagramme des fréquences de chaque face du dé" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      const effectifs = [0, 0, 0, 0, 0, 0];
+      let total = 0, dernier = null;
+      const dessiner = () => {
+        svg.replaceChildren();
+        const hauteur = (f) => (Math.min(f, 0.35) / 0.35) * 130;
+        effectifs.forEach((n, i) => {
+          const f = total ? n / total : 0;
+          s("rect", { x: 20 + i * 46, y: 145 - hauteur(f), width: 34, height: hauteur(f), class: `barre${dernier === i + 1 ? " derniere" : ""}` }, svg);
+          s("text", { x: 37 + i * 46, y: 162, class: "legende", "text-anchor": "middle" }, svg).textContent = String(i + 1);
+        });
+        s("line", { x1: 10, y1: 145 - hauteur(1 / 6), x2: 295, y2: 145 - hauteur(1 / 6), class: "repere" }, svg);
+        s("text", { x: 295, y: 141 - hauteur(1 / 6), class: "legende", "text-anchor": "end" }, svg).textContent = "1/6 ≈ 0,167";
+        s("line", { x1: 10, y1: 145, x2: 295, y2: 145, class: "axe" }, svg);
+        valeurs.replaceChildren(
+          tuile("lancers", nombreFr(total)),
+          tuile("dernier lancer", dernier ? String(dernier) : "—"),
+          tuile("fréquence du 6", total ? nombreFr(effectifs[5] / total, 3) : "—"),
+          tuile("probabilité du 6", "1/6 ≈ 0,167")
+        );
+      };
+      const lancer = (n) => {
+        for (let i = 0; i < n; i++) { dernier = 1 + Math.floor(Math.random() * 6); effectifs[dernier - 1] += 1; total += 1; }
+        dessiner();
+      };
+      const boutons = h("div", { classe: "boutons" },
+        ...[1, 10, 100, 1000].map((n) => { const b = h("button", { type: "button", classe: "action" }, `Lancer ${n === 1 ? "1 fois" : `${n} fois`}`); b.addEventListener("click", () => lancer(n)); return b; }),
+        (() => { const b = h("button", { type: "button", classe: "lien" }, "Recommencer"); b.addEventListener("click", () => { effectifs.fill(0); total = 0; dernier = null; dessiner(); }); return b; })());
+      dessiner();
+      return h("div", { classe: "figure" }, svg, boutons, valeurs);
+    }
+  };
+
+  /* ---------- Onglet explication : niveaux dépliables, du plus intuitif au plus formel ---------- */
+  enregistrerOnglet({ id: "explication", type: "explication", titre: C.titresOnglets?.explication ?? "Explication",
+    rendu(panneau) {
+      if (C.intro) panneau.append(paragraphe(C.intro, "intro"));
+      C.niveaux.forEach((n, i) => {
+        const bloc = h("details", { open: i === 0 }, h("summary", null, riche(n.titre), " ", h("span", { classe: "niveau" }, `– ${n.niveau}`)));
+        for (const p of n.paragraphes ?? []) bloc.append(paragraphe(p));
+        if (n.exemple) {
+          bloc.append(h("div", { classe: "exemple" }, h("strong", null, riche(n.exemple.titre ?? "Exemple")),
+            h("ol", null, ...n.exemple.etapes.map((e) => h("li", null, riche(e))))));
+        }
+        if (n.aRetenir) bloc.append(h("div", { classe: "retenir" }, h("strong", null, "À retenir"), paragraphe(n.aRetenir)));
+        panneau.append(bloc);
+      });
+    } });
+
+  /* ---------- Onglet application : manipuler, puis s'entraîner ---------- */
+  enregistrerOnglet({ id: "application", type: "application", titre: C.titresOnglets?.application ?? "S'entraîner",
+    rendu(panneau) {
+      const a = C.application;
+      if (a.intro) panneau.append(paragraphe(a.intro, "intro"));
+      if (a.figure) panneau.append(FIGURES[a.figure.type](a.figure));
+      panneau.append(h("h2", null, "Entraîne-toi"));
+      a.exercices.forEach((ex, i) => panneau.append(carteExercice(ex, `app-${i + 1}`, i + 1)));
+    } });
+
+  /* ---------- Onglet mise en situation : une histoire, des étapes qui se débloquent ---------- */
+  enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: C.titresOnglets?.["mise-en-situation"] ?? "Défi",
+    rendu(panneau) {
+      const sit = C.situation;
+      panneau.append(h("h2", null, riche(sit.titre)));
+      for (const p of sit.histoire) panneau.append(paragraphe(p));
+      const progression = h("progress", { max: sit.etapes.length, value: 0, "aria-label": "Étapes réussies" });
+      const fin = h("div", { classe: "bravo", hidden: true, role: "status" }, h("strong", null, "Mission accomplie !"), paragraphe(sit.conclusion));
+      panneau.append(progression);
+      const cartes = sit.etapes.map((ex, i) => carteExercice(ex, `defi-${i + 1}`, i + 1, () => debloquer(i + 1)));
+      function debloquer(suivante) {
+        const reussies = cartes.filter((c) => c.classList.contains("deja")).length;
+        progression.value = reussies;
+        if (cartes[suivante]) { cartes[suivante].hidden = false; }
+        if (reussies === cartes.length) fin.hidden = false;
+      }
+      cartes.forEach((c, i) => { c.hidden = i > 0 && !cartes[i - 1].classList.contains("deja"); panneau.append(c); });
+      panneau.append(fin);
+      debloquer(-1);
+    } });
+
+  /* ---------- Onglet self-test (prévu, désactivé) ---------- */
+  enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false, questions: [], rendu() {} });
+
+  /* ---------- Socle : construction des onglets ---------- */
+  const liste = document.getElementById("onglets"), panneaux = document.getElementById("panneaux");
+  const actifs = registre.filter((o) => o.actif);
+  const boutons = actifs.map((o, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.id = `onglet-${o.id}`; b.textContent = o.titre;
+    b.setAttribute("aria-controls", `panneau-${o.id}`); b.dataset.onglet = o.id;
+    const p = document.createElement("section");
+    p.setAttribute("role", "tabpanel"); p.id = `panneau-${o.id}`; p.setAttribute("aria-labelledby", b.id); p.tabIndex = 0;
+    o.rendu(p); panneaux.appendChild(p); liste.appendChild(b);
+    b.addEventListener("click", () => choisir(i));
+    return b;
+  });
+  function choisir(i) {
+    boutons.forEach((b, j) => {
+      const sel = i === j; b.setAttribute("aria-selected", String(sel)); b.tabIndex = sel ? 0 : -1;
+      document.getElementById(b.getAttribute("aria-controls")).hidden = !sel;
+    });
+    stockage.ecrire("onglet", actifs[i].id);
+  }
+  liste.addEventListener("keydown", (e) => {
+    const i = boutons.indexOf(document.activeElement); if (i < 0) return;
+    const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
+    if (n >= 0) { choisir(n); boutons[n].focus(); e.preventDefault(); }
+  });
+  const memo = actifs.findIndex((o) => o.id === stockage.lire("onglet"));
+  choisir(memo >= 0 ? memo : 0);
+  majEtoiles();
+
+  document.getElementById("connexion").hidden = !CONFIG.connexionActive;
+  window.kermiclab = { META, registre, CONFIG, lireNombre };
+})();
+</script>
+</body>
+</html>

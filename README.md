@@ -30,7 +30,11 @@ The standalone trigonometry-circle learning app (`index.html`, generated from `s
 `/cercle/`, next to the chat (ADR 0008).
 
 Real pages live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository only ships a minimal example page (`catalogue/trigo-cercle`).
+read-only token. This repository also ships public examples in `catalogue/`, including eight geography
+topics: `mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
+`espaces-productifs`, `tourisme` and `afrique-australe` (Maputo corridor case study).
+Each geography topic has progressive middle-to-high-school levels, five self-marking practice exercises
+and a four-step challenge. Numerical scenario data are fictional; review references are in each `fiche.md`.
 
 ## Quick start
 

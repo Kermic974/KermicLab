@@ -1,0 +1,119 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Joue au détective des territoires : situe les régions, puis cherche leurs liens, leurs acteurs et leurs défis.",
+  "niveaux": [
+    {
+      "titre": "Intuition : habiter à plusieurs échelles",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On peut situer un lieu à plusieurs échelles : commune, département, région, France, monde. Une **région** peut désigner un espace géographique ; ici, on étudie surtout le découpage régional français.",
+        "La France ne se limite pas à la métropole, située en Europe. Elle comprend aussi des territoires d'outre-mer, dans plusieurs océans et sur d'autres continents."
+      ]
+    },
+    {
+      "titre": "Repères : métropole et outre-mer",
+      "niveau": "3e",
+      "paragraphes": [
+        "Au 1er novembre 2026, le découpage régional compte **18 régions : 13 en métropole et 5 outre-mer**. Ce décompte géographique ne signifie pas que toutes ont le même statut institutionnel.",
+        "Les 13 régions métropolitaines sont : Auvergne-Rhône-Alpes, Bourgogne-Franche-Comté, Bretagne, Centre-Val de Loire, Corse, Grand Est, Hauts-de-France, Île-de-France, Normandie, Nouvelle-Aquitaine, Occitanie, Pays de la Loire et Provence-Alpes-Côte d'Azur.",
+        "Les cinq régions d'outre-mer sont la Guadeloupe et la Martinique dans les Antilles, la Guyane en Amérique du Sud, La Réunion et Mayotte dans l'océan Indien. La Guyane n'est pas une île.",
+        "Tous les territoires d'outre-mer ne sont pas des régions : la Polynésie française, par exemple, a un autre statut. Jeu de repérage : classe les cinq régions d'outre-mer par grand ensemble géographique."
+      ]
+    },
+    {
+      "titre": "Des compétences et des statuts",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les régions ou collectivités exerçant les compétences régionales interviennent notamment dans les lycées, les transports régionaux, la formation professionnelle et le développement économique. Elles ne décident pas seules de toutes les politiques publiques.",
+        "La Corse a un statut particulier ; la Guyane et la Martinique ont des collectivités uniques exerçant des compétences départementales et régionales. À Mayotte, la collectivité porte le nom de **Département-Région de Mayotte** depuis le 1er janvier 2026.",
+        "État, communes, autres collectivités, entreprises, associations et habitants coopèrent. Pour une action, demande qui finance, qui décide et qui en bénéficie."
+      ]
+    },
+    {
+      "titre": "Des liens mondiaux et des défis locaux",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Ports, aéroports, entreprises et universités relient les régions à des réseaux européens et mondiaux. Les territoires ultramarins ont aussi des liens avec leurs voisins régionaux : ils ne sont pas seulement reliés à Paris.",
+        "L'accès aux emplois, aux soins ou aux transports varie entre régions et à l'intérieur de chaque région. L'éloignement, le relief ou l'insularité peuvent poser des contraintes, sans expliquer à eux seuls toutes les difficultés.",
+        "La transition écologique, les risques naturels et l'accès aux services demandent des réponses adaptées. Il faut comparer les besoins réels, sans présenter toutes les régions métropolitaines ou ultramarines comme identiques."
+      ],
+      "aRetenir": "Un repère de localisation ne suffit pas : analyse aussi réseaux, acteurs, inégalités et choix d'aménagement."
+    }
+  ],
+  "application": {
+    "intro": "Vérifie les repères du découpage régional datés du 1er novembre 2026 et relie-les à la vie quotidienne.",
+    "exercices": [
+      {
+        "type": "nombre", "titre": "Retrouver le total",
+        "question": "Le découpage compte 13 régions en métropole et 5 outre-mer. Combien cela fait-il au total ?",
+        "reponse": 18, "unite": "régions", "indices": ["Additionne les deux nombres."],
+        "solution": "13 + 5 = 18 régions dans le découpage. Les statuts institutionnels de ces territoires ne sont pas tous identiques."
+      },
+      {
+        "type": "qcm", "titre": "Un piège de localisation",
+        "question": "Quelle région française se situe sur le continent sud-américain ?",
+        "choix": ["La Réunion", "La Guyane", "La Bretagne"],
+        "bonne": 1, "indice": "La région recherchée n'est pas une île.",
+        "explication": "La Guyane se situe en Amérique du Sud. La Réunion est une île de l'océan Indien et la Bretagne est en métropole."
+      },
+      {
+        "type": "qcm", "titre": "Qui intervient ?",
+        "question": "Quelle mission relève notamment des compétences régionales ?",
+        "choix": ["La délivrance de tous les passeports", "La fixation de toutes les règles mondiales", "La gestion des bâtiments et équipements des lycées"],
+        "bonne": 2, "indice": "Pense aux compétences présentées dans l'explication.",
+        "explication": "Les régions interviennent dans les bâtiments et équipements des lycées. L'enseignement et les programmes relèvent d'autres compétences, notamment de l'État."
+      },
+      {
+        "type": "qcm", "titre": "Des flux dans l'océan Indien",
+        "question": "Une entreprise de La Réunion échange des marchandises avec Maurice. Que montre cet exemple ?",
+        "choix": ["Un territoire ultramarin peut participer à des échanges avec ses voisins régionaux", "Tous les échanges passent forcément par Paris", "La Réunion est en Europe"],
+        "bonne": 0, "indice": "Observe le partenaire de l'échange.",
+        "explication": "Les territoires ultramarins ont des relations à plusieurs échelles, y compris avec leur environnement régional."
+      },
+      {
+        "type": "qcm", "titre": "Comprendre un écart d'accès",
+        "question": "Deux communes d'une région n'ont pas le même accès aux soins. Quelle méthode est la plus utile ?",
+        "choix": ["Supposer que tous les habitants de la région ont le même accès", "Comparer trajets, services disponibles et besoins des habitants", "Regarder seulement le nom de la région"],
+        "bonne": 1, "indice": "Descends à l'échelle locale.",
+        "explication": "Les inégalités internes se comprennent en étudiant les services et l'accessibilité, pas seulement une moyenne régionale."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Rejoindre une formation à La Réunion",
+    "histoire": [
+      "Une classe étudie un projet fictif de liaison vers un centre de formation à La Réunion. Des habitants de plusieurs communes veulent y accéder sans voiture.",
+      "Le budget de l'exercice est de 100 unités : 40 pour les arrêts accessibles et 35 pour les véhicules. Ces chiffres ne décrivent pas un projet réel."
+    ],
+    "etapes": [
+      {
+        "type": "qcm", "titre": "Situer le territoire",
+        "question": "Dans quel océan se trouve La Réunion ?",
+        "choix": ["L'océan Atlantique", "L'océan Arctique", "L'océan Indien"],
+        "bonne": 2, "indice": "Relis le groupe de régions auquel elle appartient.",
+        "explication": "La Réunion est une île de l'océan Indien, une région française d'outre-mer."
+      },
+      {
+        "type": "nombre", "titre": "Lire le budget",
+        "question": "Sur 100 unités, 40 et 35 sont déjà affectées. Combien reste-t-il d'unités ?",
+        "reponse": 25, "unite": "unités", "indices": ["Additionne d'abord 40 et 35, puis soustrais de 100."],
+        "solution": "100 − (40 + 35) = 25 unités restent disponibles. Le budget est fictif."
+      },
+      {
+        "type": "qcm", "titre": "Vérifier l'équité",
+        "question": "Quel point examiner pour éviter que la liaison exclue certains habitants ?",
+        "choix": ["Horaires, tarifs et accès pour les personnes à mobilité réduite", "Seulement le nombre de logos", "Seulement les trajets des automobilistes"],
+        "bonne": 0, "indice": "Pense aux personnes qui doivent utiliser le service.",
+        "explication": "L'accès dépend de plusieurs conditions concrètes. Une ligne sur une carte ne prouve pas qu'elle convient à chacun."
+      },
+      {
+        "type": "qcm", "titre": "Adapter au territoire",
+        "question": "Avant de fixer définitivement le trajet, quelle démarche répond aux défis locaux ?",
+        "choix": ["Copier un trajet d'une autre région sans étude", "Consulter les usagers et étudier relief, risques et besoins de desserte", "Ignorer les communes desservies"],
+        "bonne": 1, "indice": "Chaque territoire a des contraintes et des besoins particuliers.",
+        "explication": "L'étude locale et la concertation permettent d'adapter le service. Un modèle unique ne répond pas automatiquement à tous les territoires."
+      }
+    ],
+    "conclusion": "Enquête terminée ! Tu as situé une région, distingué compétences et statuts, puis étudié l'accès quotidien à un service."
+  }
+}

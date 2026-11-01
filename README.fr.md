@@ -29,7 +29,11 @@ L’application autonome du cercle trigonométrique (`index.html`, générée de
 `/cercle/`, à côté du chat (ADR 0008).
 
 Les vraies maquettes sont dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
-jeton en lecture seule. Ce dépôt ne contient qu'une maquette d'exemple (`catalogue/trigo-cercle`).
+jeton en lecture seule. Ce dépôt contient aussi des exemples publics dans `catalogue/`, dont huit notions
+de géographie : `mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
+`espaces-productifs`, `tourisme` et `afrique-australe` (étude du corridor de Maputo).
+Chaque notion propose des niveaux du collège au lycée, cinq exercices auto-corrigés et un défi en quatre étapes.
+Les données chiffrées des scénarios sont fictives ; les références de relecture figurent dans chaque `fiche.md`.
 
 ## Démarrage rapide
 
