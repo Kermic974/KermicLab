@@ -91,6 +91,44 @@
     </div>
   </form>
 </dialog>
+
+<!-- Dialogue Compte -->
+<dialog id="compte">
+  <form method="dialog">
+    <div class="dialogue-entete">
+      <h2>Mon compte</h2>
+      <button type="button" class="fermer-croix" id="fermer-compte"><span class="visuellement-cache">Fermer</span></button>
+    </div>
+    <section id="compte-connecte" hidden>
+      <p>Connecté en tant que parent</p>
+      <div id="liste-eleves"></div>
+      <button type="button" id="ajouter-eleve" class="secondaire">Ajouter un profil élève</button>
+      <button type="button" id="deconnexion" class="danger">Se déconnecter</button>
+    </section>
+    <section id="compte-non-connecte">
+      <p>Connecte-toi pour sauvegarder la progression de tes enfants.</p>
+      <button type="button" id="login-google" class="plein">Continuer avec Google</button>
+      <button type="button" id="login-microsoft" class="plein">Continuer avec Microsoft</button>
+    </section>
+  </form>
+</dialog>
+
+<!-- Dialogue Consentement -->
+<dialog id="consentement">
+  <form method="dialog">
+    <h2>Consentement parental</h2>
+    <p>En créant un profil pour un mineur de moins de 15 ans, tu confirmes être le responsable légal et accepter le traitement des données de progression.</p>
+    <label>
+      <input type="checkbox" id="consent-check" required>
+      J’accepte
+    </label>
+    <div class="actions">
+      <button type="button" id="annuler-consentement" class="secondaire">Annuler</button>
+      <button type="submit" id="valider-consentement">Valider</button>
+    </div>
+  </form>
+</dialog>
+
 <!-- Cloudflare Web Analytics : mesure d'audience sans cookie ni donnée personnelle (voir confidentialite.html).
      Jeton public du site, non secret. Absent de /cercle/, qui ne fait aucun appel réseau. -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "6cfdbc8f1c9b4998bdfe36686babe04d"}'></script>
