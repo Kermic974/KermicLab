@@ -1,0 +1,60 @@
+{
+  "titresOnglets": { "explication": "Comprendre l'inconscient", "application": "Comparer les hypothèses", "mise-en-situation": "Une erreur à comprendre" },
+  "intro": "Tout ce qui se passe en nous est-il connu de nous ? Explore la perspective « existence humaine et culture ». Cette page présente des concepts : elle n'interprète pas tes rêves et ne remplace pas un avis de santé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ce que l'on ne remarque pas",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Nous ne remarquons pas tous les processus qui permettent de percevoir ou d'agir. Un personnage peut suivre une habitude sans réfléchir à chaque geste. **Non-conscient** désigne largement ce qui n'est pas présent à la conscience.",
+        "Jeu : dans une histoire, une personne cherche ses clés déjà rangées par habitude. Imagine plusieurs explications : distraction, fatigue ou souvenir incomplet. Ne choisis pas une cause cachée sans indice."
+      ],
+      "exemple": { "titre": "Le bruit de fond", "etapes": ["Un personnage travaille près d'une fontaine.", "Il ne prête plus attention au bruit.", "L'absence d'attention ne prouve pas un désir refoulé."] },
+      "aRetenir": "Ne pas être conscient d'un processus ne suffit pas à expliquer sa cause."
+    },
+    {
+      "titre": "Collège : une hypothèse sur la vie psychique",
+      "niveau": "college",
+      "paragraphes": [
+        "**Leibniz** évoque des *petites perceptions* que l'on ne distingue pas clairement : le bruit de la mer résulte de nombreux bruits de vagues. Il ne s'agit pas encore de l'inconscient freudien.",
+        "**Freud**, fondateur de la psychanalyse, propose un **inconscient psychique** : des désirs et représentations qui ne sont pas directement accessibles à la conscience peuvent, selon lui, influencer nos pensées et nos actes.",
+        "Le **refoulement** est, dans cette théorie, un processus qui maintient hors de la conscience des représentations liées à un conflit. Ce n'est pas la décision consciente de garder un secret ni simplement un oubli.",
+        "Petit tri : ranger un objet automatiquement, oublier une date et garder volontairement un secret ne prouvent pas, à eux seuls, un refoulement."
+      ],
+      "exemple": { "titre": "Une erreur de mot", "etapes": ["Un personnage dit un prénom à la place d'un autre.", "Freud envisage que certains lapsus puissent avoir un sens lié à des motifs inconscients.", "Mais cette erreur seule ne démontre pas une interprétation précise."] },
+      "aRetenir": "L'inconscient freudien est une hypothèse théorique plus précise que le simple non-conscient."
+    },
+    {
+      "titre": "Lycée : expliquer sans tout attribuer au caché",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Freud distingue notamment le **ça**, le **moi** et le **surmoi** dans son second modèle : tendances pulsionnelles, médiation avec la réalité et exigences intériorisées. Ces instances ne sont pas trois zones anatomiques du cerveau ; le moi n'est pas entièrement conscient.",
+        "**Sartre** critique l'explication par le refoulement et analyse la *mauvaise foi*, manière de se masquer certains aspects de sa liberté. Sa critique ne revient pas à nier tout traitement non conscient de l'information.",
+        "Les sciences cognitives étudient aussi des processus non conscients, comme certains automatismes. Cela ne valide pas automatiquement toutes les thèses de la psychanalyse, dont la portée et la vérification restent discutées.",
+        "Problème : une cause non consciente enlève-t-elle toute responsabilité ? Expliquer une action et la justifier sont distincts. Compare plusieurs hypothèses et demande quelles observations permettraient de les départager."
+      ],
+      "exemple": { "titre": "Comparer des explications", "etapes": ["Une erreur peut venir d'une habitude, d'une distraction ou d'autres motifs.", "On cherche des indices pour chaque hypothèse.", "On évite de transformer une interprétation en certitude sur une personne."] },
+      "aRetenir": "Une hypothèse sur l'inconscient ne permet ni un diagnostic improvisé ni une lecture certaine des intentions."
+    }
+  ],
+  "application": {
+    "intro": "Les exemples sont fictifs. Retrouve les concepts sans chercher à diagnostiquer quelqu'un.",
+    "exercices": [
+      { "type": "qcm", "titre": "Non-conscient", "question": "Une action automatique démontre-t-elle à elle seule un refoulement ?", "choix": ["Oui, toujours", "Non, automatisme et refoulement sont distincts", "Oui, si elle est rapide"], "bonne": 1, "explication": "Un processus non conscient ne relève pas nécessairement du conflit psychique décrit par Freud." },
+      { "type": "qcm", "titre": "Leibniz", "question": "Les petites perceptions désignent ici…", "choix": ["des perceptions que l'on ne distingue pas clairement", "trois zones du cerveau", "une décision de garder un secret"], "bonne": 0, "explication": "Chez Leibniz, de petites perceptions peuvent contribuer à une expérience sans être aperçues séparément." },
+      { "type": "qcm", "titre": "Freud", "question": "Dans la théorie freudienne, le refoulement est…", "choix": ["un mensonge volontaire", "tout oubli d'un objet", "le maintien hors de la conscience de représentations liées à un conflit"], "bonne": 2, "explication": "Le refoulement est un mécanisme théorique inconscient, non une simple décision de cacher quelque chose." },
+      { "type": "qcm", "titre": "Les instances", "question": "Le ça, le moi et le surmoi sont…", "choix": ["des organes visibles", "des instances d'un modèle de la vie psychique", "trois parties toujours conscientes"], "bonne": 1, "explication": "Il s'agit d'un modèle freudien, pas d'un découpage anatomique ; le moi comporte aussi une dimension inconsciente." },
+      { "type": "qcm", "titre": "Prudence", "question": "Un lapsus permet-il de connaître avec certitude une intention cachée ?", "choix": ["Non, plusieurs explications doivent être examinées", "Oui, avec un dictionnaire des rêves", "Oui, sans autre indice"], "bonne": 0, "explication": "Une erreur isolée ne prouve ni une intention précise ni un diagnostic." }
+    ]
+  },
+  "situation": {
+    "titre": "Le prénom mélangé dans une invitation",
+    "histoire": ["Dans une histoire inventée, Noé écrit le mauvais prénom sur une invitation après avoir préparé plusieurs cartes.", "Le groupe veut comprendre l'erreur, sans attribuer à Noé une intention qu'il n'a pas exprimée."],
+    "etapes": [
+      { "type": "qcm", "titre": "Les faits", "question": "Que sait-on avec certitude dans cette histoire ?", "choix": ["Noé voulait exclure une personne", "Un prénom incorrect a été écrit", "Noé présente un trouble psychique"], "bonne": 1, "explication": "Le fait observable est l'erreur de prénom. Les autres propositions sont des interprétations non établies." },
+      { "type": "qcm", "titre": "Les hypothèses", "question": "Quelle démarche est la plus prudente ?", "choix": ["Consulter une liste de symboles pour conclure", "Déclarer toute erreur intentionnelle", "Comparer distraction, habitude et autres motifs possibles"], "bonne": 2, "explication": "On examine plusieurs causes possibles au lieu d'imposer une explication cachée." },
+      { "type": "qcm", "titre": "Réparer", "question": "Même sans connaître parfaitement la cause, que peut faire Noé ?", "choix": ["Corriger la carte et présenter des excuses", "Affirmer qu'aucune réparation n'est possible", "Accuser le destinataire"], "bonne": 0, "explication": "Chercher une explication et prendre soin des conséquences de son action sont compatibles." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as séparé un fait, des hypothèses et une réparation. Une théorie ne donne pas le droit de lire les pensées d'autrui."
+  }
+}

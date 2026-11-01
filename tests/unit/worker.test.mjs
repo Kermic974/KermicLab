@@ -229,6 +229,9 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   const matieres = [...new Set(notions.map((n) => n.matiere))];
   assert.equal(matieres[0], "mathematiques");
   assert.ok(matieres.includes("physique-chimie"));
+  assert.ok(matieres.includes("philosophie"));
+  assert.deepEqual(notions.filter((n) => n.matiere === "philosophie").map((n) => n.id),
+    ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"]);
   for (let i = 1; i < notions.length; i++) {
     const [a, b] = [notions[i - 1], notions[i]];
     if (a.matiere !== b.matiere) { assert.ok(matieres.indexOf(a.matiere) < matieres.indexOf(b.matiere)); continue; }

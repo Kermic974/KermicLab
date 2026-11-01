@@ -34,6 +34,30 @@ test("gabarit : chaque réponse attendue est cohérente avec son type", async ()
   }
 });
 
+test("philosophie : huit notions progressives avec exercices et défi narratif", async () => {
+  const ids = ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"];
+  for (const id of ids) {
+    const dossier = `${racine}catalogue/${id}`;
+    const fiche = lireFrontMatter(await readFile(`${dossier}/fiche.md`, "utf8"));
+    assert.equal(fiche.id, id);
+    assert.equal(fiche.sujet, `philosophie/${id}`);
+    assert.equal(fiche.niveau, "terminale");
+    assert.equal(fiche.langues, "fr");
+    const contenu = await lireJson(`${dossier}/contenu.json`);
+    assert.doesNotThrow(() => validerContenu(contenu, id));
+    assert.deepEqual(Object.keys(contenu.titresOnglets).sort(), ["application", "explication", "mise-en-situation"]);
+    assert.ok(contenu.intro.trim(), id);
+    assert.deepEqual(contenu.niveaux.map((n) => n.niveau), ["pour démarrer", "college", "terminale"]);
+    for (const niveau of contenu.niveaux) {
+      assert.ok(niveau.exemple.titre.trim(), id);
+      assert.ok(niveau.exemple.etapes.length >= 2, id);
+      assert.ok(niveau.aRetenir.trim(), id);
+    }
+    assert.ok(contenu.application.exercices.length >= 4 && contenu.application.exercices.length <= 6, id);
+    assert.ok(contenu.situation.histoire.every((p) => p.trim()), id);
+  }
+});
+
 test("gabarit : erreurs de contenu explicites", () => {
   const base = () => ({
     niveaux: [{ titre: "A", niveau: "6e", paragraphes: ["x"] }, { titre: "B", niveau: "5e", paragraphes: ["y"] }],
