@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12151b" media="(prefers-color-scheme: dark)">
 <title>Kermiclab</title>
 <meta name="description" content="Kermiclab — pages pédagogiques interactives / interactive learning pages">
 <link rel="stylesheet" href="style.css">
@@ -10,33 +12,73 @@
 </head>
 <body>
 <header class="entete">
-  <div>
-    <h1 data-i18n="titre"></h1>
-    <p class="sous-titre" data-i18n="sousTitre"></p>
-  </div>
-  <div class="actions">
-    <label class="langue"><span data-i18n="langue"></span>
-      <select id="langue"></select>
-    </label>
-    <button id="se-connecter" type="button" class="secondaire" data-i18n="seConnecter" hidden></button>
-    <a id="mon-compte" href="#compte" data-i18n="monCompte" hidden></a>
+  <div class="entete-interieur">
+    <a class="marque" href="./">
+      <span class="logo" aria-hidden="true">K</span>
+      <span class="marque-textes">
+        <span class="marque-nom" data-i18n="titre"></span>
+        <span class="sous-titre" data-i18n="sousTitre"></span>
+      </span>
+    </a>
+    <div class="actions">
+      <button id="ouvrir-progres" type="button" class="pastille-progres" aria-haspopup="dialog">
+        <span class="visuellement-cache" data-i18n="monProgres"></span>
+        <span class="pastille-serie" aria-hidden="true"><span class="icone-flamme">🔥</span><span id="pastille-serie"></span></span>
+        <span class="pastille-niveau" aria-hidden="true">
+          <span id="pastille-niveau"></span>
+          <progress id="pastille-xp" max="100" value="0"></progress>
+        </span>
+      </button>
+      <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
+        <select id="langue"></select>
+      </label>
+      <button id="se-connecter" type="button" class="secondaire" data-i18n="seConnecter" hidden></button>
+      <a id="mon-compte" class="bouton-lien" href="#compte" data-i18n="monCompte" hidden></a>
+    </div>
   </div>
 </header>
 <main>
   <p class="avertissement" role="note" data-i18n="avertissement"></p>
   <ol id="fil" aria-live="polite"></ol>
+</main>
+<div class="zone-saisie">
   <form id="formulaire" autocomplete="off">
     <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
-    <textarea id="question" rows="2" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
+    <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
     <button type="submit" data-i18n="envoyer"></button>
   </form>
-</main>
-<footer>
-  <a href="cercle/" data-i18n="application"></a>
-  <a href="confidentialite.html" data-i18n="confidentialite"></a>
-  <a href="mentions-legales.html" data-i18n="mentionsLegales"></a>
-  <button type="button" id="ouvrir-signalement" class="lien" data-i18n="signaler"></button>
-</footer>
+  <footer>
+    <a href="cercle/" data-i18n="application"></a>
+    <a href="confidentialite.html" data-i18n="confidentialite"></a>
+    <a href="mentions-legales.html" data-i18n="mentionsLegales"></a>
+    <button type="button" id="ouvrir-signalement" class="lien" data-i18n="signaler"></button>
+  </footer>
+</div>
+<div id="toasts" role="status" aria-live="polite"></div>
+<dialog id="progres" aria-labelledby="progres-titre">
+  <div class="dialogue-entete">
+    <h2 id="progres-titre" data-i18n="monProgres"></h2>
+    <button type="button" class="fermer-croix" id="fermer-progres"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+  </div>
+  <div class="niveau-carte">
+    <span class="niveau-rond" id="progres-niveau-num" aria-hidden="true"></span>
+    <div class="niveau-details">
+      <strong id="progres-niveau"></strong>
+      <progress id="progres-xp" max="100" value="0"></progress>
+      <span class="doux" id="progres-xp-texte"></span>
+    </div>
+  </div>
+  <dl class="stats">
+    <div><dt data-i18n="statQuestions"></dt><dd id="stat-questions"></dd></div>
+    <div><dt data-i18n="statNotions"></dt><dd id="stat-notions"></dd></div>
+    <div><dt data-i18n="statSerie"></dt><dd id="stat-serie"></dd></div>
+  </dl>
+  <p class="doux petit" id="stat-serie-max"></p>
+  <h3 data-i18n="badgesTitre"></h3>
+  <ul id="liste-badges" class="badges"></ul>
+  <p class="note-locale" data-i18n="progressionLocale"></p>
+  <p class="doux petit" data-i18n="progressionCompte"></p>
+</dialog>
 <dialog id="signalement">
   <form id="formulaire-signalement" method="dialog">
     <h2 data-i18n="signalerTitre"></h2>

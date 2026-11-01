@@ -78,3 +78,22 @@ test("chat mobile : aucun défilement horizontal", async () => {
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
+
+test("progression : suggestions cliquables, XP et badges gardés dans le navigateur", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.locator(".bienvenue .puce").first().click();
+  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+  await page.locator(".relances .puce").first().waitFor();
+  assert.equal(await page.locator("#pastille-serie").textContent(), "1");
+  const stocke = await page.evaluate(() => JSON.parse(localStorage.getItem("kermiclab:progression")));
+  assert.equal(stocke.questions, 1);
+  assert.deepEqual(stocke.notions, ["trigo-cercle"]);
+  await page.click("#ouvrir-progres");
+  assert.equal(await page.locator("#liste-badges .badge.obtenu").count(), 2);
+  await page.click("#fermer-progres");
+  assert.equal(await page.locator("#progres").isVisible(), false);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
