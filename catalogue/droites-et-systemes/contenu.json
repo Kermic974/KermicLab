@@ -1,0 +1,181 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une droite, une relation",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les points (0 ; 1), (1 ; 3), (2 ; 5)… sont alignés : pour chacun, y = 2x + 1. Cette relation est l'**équation** de la droite : un point est sur la droite exactement quand ses coordonnées la vérifient.",
+        "C'est la représentation graphique de la fonction affine f(x) = 2x + 1 vue en 3e."
+      ]
+    },
+    {
+      "titre": "L'équation réduite",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Toute droite non verticale a une équation **y = mx + p** : m est le **coefficient directeur** (la pente), p l'**ordonnée à l'origine**. Une droite verticale a une équation **x = c**.",
+        "Avec deux points A et B : **m = (yB − yA) ÷ (xB − xA)**, puis on trouve p en remplaçant les coordonnées de A."
+      ],
+      "exemple": {
+        "titre": "Exemple : la droite passant par A(1 ; 3) et B(3 ; 7)",
+        "etapes": [
+          "m = (7 − 3) ÷ (3 − 1) = 4 ÷ 2 = 2.",
+          "A est sur la droite : 3 = 2 × 1 + p, donc p = 1.",
+          "Équation : y = 2x + 1."
+        ]
+      }
+    },
+    {
+      "titre": "Droites parallèles",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Deux droites non verticales sont **parallèles** si et seulement si elles ont le **même coefficient directeur**. y = 3x − 1 et y = 3x + 5 sont parallèles.",
+        "Un **vecteur directeur** de la droite y = mx + p est →u(1 ; m) : on avance de 1, on monte de m."
+      ]
+    },
+    {
+      "titre": "Les systèmes de deux équations",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Résoudre un **système** de deux équations à deux inconnues, c'est trouver le couple (x ; y) qui vérifie les deux à la fois. Graphiquement, c'est le **point d'intersection** des deux droites.",
+        "Par **substitution** : on exprime une inconnue avec l'autre, puis on remplace. Par **combinaison** : on additionne ou soustrait les équations pour éliminer une inconnue."
+      ],
+      "exemple": {
+        "titre": "Exemple : x + y = 10 et x − y = 4",
+        "etapes": [
+          "En additionnant les deux équations : 2x = 14, donc x = 7.",
+          "Dans la première : 7 + y = 10, donc y = 3.",
+          "Solution : (7 ; 3). Vérification : 7 − 3 = 4."
+        ]
+      }
+    },
+    {
+      "titre": "Plus loin : équations cartésiennes",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Toute droite a une équation **ax + by + c = 0** (équation cartésienne), avec le vecteur directeur →u(−b ; a). Cette forme inclut les droites verticales.",
+        "Un système peut n'avoir **aucune solution** (droites parallèles distinctes) ou une **infinité** (droites confondues)."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi : coefficient directeur, ordonnée à l'origine, systèmes.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Coefficient directeur",
+        "question": "Quel est le coefficient directeur de la droite passant par A(2 ; 1) et B(6 ; 9) ?",
+        "reponse": 2,
+        "indices": [
+          "m = (yB − yA) ÷ (xB − xA)."
+        ],
+        "solution": "m = (9 − 1) ÷ (6 − 2) = 8 ÷ 4 = 2."
+      },
+      {
+        "type": "nombre",
+        "titre": "Ordonnée à l'origine",
+        "question": "Pour cette même droite (y = 2x + p, passant par A(2 ; 1)), combien vaut p ?",
+        "reponse": -3,
+        "indices": [
+          "Remplace x et y par les coordonnées de A : 1 = 2 × 2 + p."
+        ],
+        "solution": "1 = 4 + p, donc p = −3 : la droite a pour équation y = 2x − 3."
+      },
+      {
+        "type": "qcm",
+        "titre": "Parallèles",
+        "question": "Quelle droite est parallèle à la droite d'équation y = 3x − 1 ?",
+        "choix": [
+          "y = 3x + 5",
+          "y = −3x − 1",
+          "y = x ÷ 3"
+        ],
+        "bonne": 0,
+        "explication": "Même coefficient directeur (3) : les droites sont parallèles.",
+        "indice": "Compare les coefficients directeurs."
+      },
+      {
+        "type": "nombre",
+        "titre": "Système (combinaison)",
+        "question": "Résous le système x + y = 10 et x − y = 4. Combien vaut x ?",
+        "reponse": 7,
+        "indices": [
+          "Additionne les deux équations : les y disparaissent."
+        ],
+        "solution": "2x = 14, donc x = 7 (et y = 3)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Système (substitution)",
+        "question": "Résous le système 2x + y = 11 et x − y = 1. Combien vaut y ?",
+        "reponse": 3,
+        "indices": [
+          "De la deuxième équation : x = y + 1.",
+          "Remplace dans la première : 2(y + 1) + y = 11."
+        ],
+        "solution": "3y + 2 = 11, donc y = 3 (et x = 4)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les places de cinéma",
+    "histoire": [
+      "Au cinéma, une famille paie **41 €** pour 2 adultes et 3 enfants. Une autre paie **24 €** pour 1 adulte et 2 enfants.",
+      "On note a le prix d'une place adulte et e le prix d'une place enfant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Mettre en équations",
+        "question": "Quel système traduit l'énoncé ?",
+        "choix": [
+          "2a + 3e = 41 et a + 2e = 24",
+          "2a + 3e = 24 et a + 2e = 41",
+          "5ae = 41 et 3ae = 24"
+        ],
+        "bonne": 0,
+        "explication": "Première famille : 2a + 3e = 41. Deuxième : a + 2e = 24."
+      },
+      {
+        "type": "nombre",
+        "titre": "Place enfant",
+        "question": "Quel est le prix d'une place enfant ?",
+        "reponse": 7,
+        "unite": "€",
+        "indices": [
+          "De la deuxième équation : a = 24 − 2e.",
+          "Remplace dans la première : 2(24 − 2e) + 3e = 41, soit 48 − e = 41."
+        ],
+        "solution": "48 − e = 41, donc e = 7 €."
+      },
+      {
+        "type": "nombre",
+        "titre": "Place adulte",
+        "question": "Quel est le prix d'une place adulte ?",
+        "reponse": 10,
+        "unite": "€",
+        "indices": [
+          "a = 24 − 2e."
+        ],
+        "solution": "a = 24 − 2 × 7 = 10 €. Vérification : 2 × 10 + 3 × 7 = 41."
+      },
+      {
+        "type": "nombre",
+        "titre": "Une troisième famille",
+        "question": "Combien paiera une famille de 2 adultes et 2 enfants ?",
+        "reponse": 34,
+        "unite": "€",
+        "indices": [
+          "2a + 2e."
+        ],
+        "solution": "2 × 10 + 2 × 7 = 34 €."
+      }
+    ],
+    "conclusion": "Bravo ! Deux informations, deux inconnues : un système d'équations permet de retrouver des prix, des quantités, des vitesses…"
+  }
+}

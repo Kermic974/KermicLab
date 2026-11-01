@@ -1,0 +1,187 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : grandir proportionnellement à sa taille",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une population de bactéries grandit d'autant plus vite qu'elle est nombreuse : sa **vitesse de croissance est proportionnelle à sa taille**. C'est la **croissance exponentielle**, qu'on retrouve en biologie, en finance ou pour la propagation d'une épidémie.",
+        "Au lycée, on étudie la fonction la plus simple de ce type : celle qui est **égale à sa propre dérivée**."
+      ]
+    },
+    {
+      "titre": "Définition",
+      "niveau": "première",
+      "paragraphes": [
+        "Il existe une unique fonction f dérivable sur ℝ telle que **f' = f** et **f(0) = 1** : c'est la fonction **exponentielle**, notée exp. On note **eˣ = exp(x)**.",
+        "Le nombre **e = exp(1) ≈ 2,718** est, comme π, un nombre irrationnel célèbre."
+      ]
+    },
+    {
+      "titre": "Propriétés algébriques",
+      "niveau": "première",
+      "paragraphes": [
+        "Comme pour les puissances : **eᵃ⁺ᵇ = eᵃ × eᵇ**, **e⁻ᵃ = 1/eᵃ**, **eᵃ⁻ᵇ = eᵃ/eᵇ** et **(eᵃ)ⁿ = eⁿᵃ**.",
+        "Pour tout réel x, **eˣ > 0** : l'exponentielle est toujours strictement positive."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "e³ × e⁵ = e³⁺⁵ = e⁸.",
+          "e⁷/e² = e⁵.",
+          "(e²)³ = e⁶."
+        ]
+      }
+    },
+    {
+      "titre": "Étude de la fonction",
+      "niveau": "première",
+      "paragraphes": [
+        "(eˣ)' = eˣ > 0 : la fonction exponentielle est **strictement croissante** sur ℝ. Plus généralement, **(eᵏˣ)' = k eᵏˣ**.",
+        "Conséquence : **eᵃ = eᵇ ⇔ a = b** et **eᵃ < eᵇ ⇔ a < b**. Par exemple, e²ˣ = e⁶ équivaut à 2x = 6, donc x = 3."
+      ]
+    },
+    {
+      "titre": "Plus loin : limites et logarithme",
+      "niveau": "terminale",
+      "paragraphes": [
+        "eˣ tend vers **+∞** quand x tend vers +∞, et vers **0** quand x tend vers −∞ (asymptote horizontale y = 0).",
+        "L'exponentielle « l'emporte » sur toute puissance : eˣ/x tend vers +∞. Sa fonction réciproque est le **logarithme népérien** ln : eˣ = 5 équivaut à x = ln 5."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec les propriétés de l'exponentielle.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Valeur en 0",
+        "question": "Combien vaut e⁰ ?",
+        "reponse": 1,
+        "indices": [
+          "C'est dans la définition : exp(0) = 1."
+        ],
+        "solution": "e⁰ = 1."
+      },
+      {
+        "type": "qcm",
+        "titre": "Produit",
+        "question": "e³ × e⁵ est égal à…",
+        "choix": [
+          "e⁸",
+          "e¹⁵",
+          "2e⁸"
+        ],
+        "bonne": 0,
+        "explication": "eᵃ × eᵇ = eᵃ⁺ᵇ = e⁸.",
+        "indice": "On additionne les exposants."
+      },
+      {
+        "type": "nombre",
+        "titre": "Dérivée",
+        "question": "f(x) = e²ˣ. Calcule f'(0).",
+        "reponse": 2,
+        "indices": [
+          "(eᵏˣ)' = k eᵏˣ, donc f'(x) = 2e²ˣ."
+        ],
+        "solution": "f'(0) = 2 × e⁰ = 2."
+      },
+      {
+        "type": "nombre",
+        "titre": "Équation",
+        "question": "Résous e²ˣ = e⁶.",
+        "reponse": 3,
+        "indices": [
+          "eᵃ = eᵇ équivaut à a = b."
+        ],
+        "solution": "2x = 6, donc x = 3."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le nombre e",
+        "question": "Donne une valeur approchée de e au centième.",
+        "reponse": 2.72,
+        "tolerance": 0.005,
+        "indices": [
+          "Utilise la touche eˣ de la calculatrice avec x = 1."
+        ],
+        "solution": "e ≈ 2,718 28…, soit 2,72 au centième."
+      },
+      {
+        "type": "qcm",
+        "titre": "Signe",
+        "question": "Pour tout réel x, eˣ est…",
+        "choix": [
+          "strictement positif",
+          "positif ou nul",
+          "de signe variable"
+        ],
+        "bonne": 0,
+        "explication": "L'exponentielle ne s'annule jamais et reste strictement positive, même pour x très négatif (e⁻¹⁰ ≈ 0,000 045)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La culture de bactéries",
+    "histoire": [
+      "Dans un laboratoire, le nombre de bactéries t heures après le début de l'expérience est modélisé par **N(t) = 1 000 e^(0,5t)**.",
+      "Les biologistes veulent prévoir l'évolution de la culture."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Au départ",
+        "question": "Combien y a-t-il de bactéries au départ (t = 0) ?",
+        "reponse": 1000,
+        "unite": "bactéries",
+        "indices": [
+          "e⁰ = 1."
+        ],
+        "solution": "N(0) = 1 000 × e⁰ = 1 000 bactéries."
+      },
+      {
+        "type": "nombre",
+        "titre": "Après 2 heures",
+        "question": "Combien y en a-t-il au bout de 2 heures (arrondi à l'unité) ?",
+        "reponse": 2718,
+        "tolerance": 0.5,
+        "unite": "bactéries",
+        "indices": [
+          "N(2) = 1 000 × e¹ = 1 000e."
+        ],
+        "solution": "N(2) = 1 000e ≈ 2 718 bactéries."
+      },
+      {
+        "type": "qcm",
+        "titre": "Toujours plus",
+        "question": "Pourquoi le nombre de bactéries augmente-t-il toujours ?",
+        "choix": [
+          "Car N'(t) = 500 e^(0,5t) est toujours strictement positive",
+          "Car N(0) est positif",
+          "Car e > 2"
+        ],
+        "bonne": 0,
+        "explication": "N'(t) = 1 000 × 0,5 e^(0,5t) = 500 e^(0,5t) > 0 : N est strictement croissante."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le doublement",
+        "question": "Au bout de combien de temps environ la population a-t-elle doublé (2 000 bactéries) ?",
+        "choix": [
+          "environ 1,4 heure",
+          "2 heures",
+          "4 heures"
+        ],
+        "bonne": 0,
+        "explication": "Il faut e^(0,5t) = 2, soit 0,5t = ln 2, t = 2 ln 2 ≈ 1,39 h. Vérification : N(1,4) = 1 000 e^(0,7) ≈ 2 014.",
+        "indice": "Calcule N(1,4) et N(2) à la calculatrice."
+      }
+    ],
+    "conclusion": "Bravo ! Avec une croissance exponentielle, la population double toujours dans le même délai (ici environ 1 h 23 min) : 2 000, puis 4 000, puis 8 000…"
+  }
+}

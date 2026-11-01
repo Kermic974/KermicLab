@@ -11,6 +11,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Catalogue, vague 3 (seconde et première) : **vecteurs**, **droites et systèmes d'équations**, **fonctions de référence**, **second degré**, **dérivation**, **suites numériques**, **fonction exponentielle**, **produit scalaire**, **probabilités conditionnelles**.
+- Gabarit : figure `parabole` (a, b, c réglables, discriminant, racines, sommet).
 - Catalogue, vague 2 (compléments du collège) : **nombres décimaux**, **priorités opératoires**, **diviseurs, multiples et nombres premiers**, **périmètres et aires**, **volumes**, **angles et triangles**, **transformations**, **vitesse et grandeurs composées**. Le collège est couvert (20 notions au catalogue).
 - Catalogue, vague 1 (cœur du brevet) : **nombres relatifs**, **puissances**, **calcul littéral**, **équations et inéquations**, **théorème de Thalès**, **statistiques**, **probabilités**, **fonctions affines et linéaires**. Feuille de route du programme complet : `docs/chantiers/catalogue-maths.md`.
 - Gabarit : figures `affine` (droite y = ax + b réglable) et `des` (simulateur de lancers, loi des grands nombres).
