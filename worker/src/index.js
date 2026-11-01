@@ -9,6 +9,10 @@ import { routerAvecClaude } from "./llm.js";
 import { creerOuCommenterIssue, corpsMaquetteManquante, commentaireDemande } from "./github.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
+const MAX_SUGGESTIONS = 4;
+const MAX_RELANCES = 3;
+const TAILLE_MAX_SUGGESTION = 120;
+const MOTS_ANGLAIS = /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i;
 let limiteur = null;
 let clientClaude = null; // injecté par les tests ; sinon créé par llm.js
 
@@ -36,6 +40,46 @@ function maquetteParId(id) {
   return CATALOGUE.index.maquettes.find((m) => m.id === id);
 }
 
+/** Langue (approximative) d'une question d'exemple du catalogue : les fiches ne l'indiquent pas. */
+function langueQuestion(q) {
+  return MOTS_ANGLAIS.test(q) ? "en" : "fr";
+}
+
+/**
+ * Questions d'exemple du catalogue, dans la langue demandée : une par page d'abord, puis les suivantes.
+ * Elles sont toutes routées vers leur page (test de non-régression du catalogue) : cliquer dessus marche toujours.
+ */
+export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_SUGGESTIONS } = {}) {
+  const parPage = [...index.maquettes]
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .filter((m) => m.id !== exclure)
+    .map((m) => {
+      const questions = (m.questions ?? []).filter((q) => langueQuestion(q) === langue);
+      return (questions.length ? questions : m.questions ?? []).map((q) => q.charAt(0).toUpperCase() + q.slice(1));
+    });
+  const sortie = [];
+  for (let rang = 0; sortie.length < max && parPage.some((l) => l.length > rang); rang += 1) {
+    for (const l of parPage) if (l[rang] && sortie.length < max && !sortie.includes(l[rang])) sortie.push(l[rang]);
+  }
+  return sortie;
+}
+
+/** Réponse quand aucune page ne correspond et qu'aucun modèle ne peut répondre : on oriente vers ce qui existe. */
+function reponseHorsCatalogue(langue) {
+  const titres = [...new Set(CATALOGUE.index.maquettes.map((m) => m.titre))];
+  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres), suggestions: suggestionsCatalogue(CATALOGUE.index, langue) };
+}
+
+/** Relances proposées par le modèle : bornées, modérées, sans doublon. */
+function relancesValides(liste) {
+  if (!Array.isArray(liste)) return [];
+  const propres = liste
+    .filter((r) => typeof r === "string")
+    .map((r) => r.trim())
+    .filter((r) => r && r.length <= TAILLE_MAX_SUGGESTION && analyser(r).ok);
+  return [...new Set(propres)].slice(0, MAX_RELANCES);
+}
+
 function urlMaquette(requete, id, langue) {
   return `${new URL(requete.url).origin}/maquettes/${id}?lang=${langue}`;
 }
@@ -55,6 +99,7 @@ async function servirMaquette(requete, env, ctx, { id, langue, question, routage
   const t = messages(langue);
   return {
     type: "maquette",
+    suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { exclure: id, max: MAX_RELANCES }),
     texte: traduite ? t.maquette(m.titre) : `${t.traductionManquante} ${t.maquette(m.titre)}`,
     maquette: { id: m.id, titre: m.titre, version: m.version, langue: traduite ? langue : "fr", url: urlMaquette(requete, m.id, traduite ? langue : "fr") }
   };
@@ -91,7 +136,7 @@ async function traiterChat(requete, env, ctx) {
   // 2. Routage par le modèle (sortie JSON structurée).
   if (!env.ANTHROPIC_API_KEY) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "sans-modele" }));
-    return { statut: 200, donnees: { type: "reponse", texte: t().indisponible } };
+    return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
   const historique = (Array.isArray(corps.historique) ? corps.historique : [])
     .filter((h) => (h?.role === "user" || h?.role === "assistant") && typeof h.content === "string" && analyser(h.content).ok)
@@ -105,22 +150,25 @@ async function traiterChat(requete, env, ctx) {
   } catch (e) {
     console.error("llm", e?.message);
     ctx.waitUntil(journaliser(env, { type: "erreur", langue, detail: "llm" }));
-    return { statut: 200, donnees: { type: "reponse", texte: t().indisponible } };
+    return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
   if (r.refus || r.intention === "inapproprie") {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: r.refus ? "refus-modele" : "intention-inappropriee" }));
     return { statut: 200, donnees: { type: "refus", texte: t().inapproprie } };
   }
   langue = langueValide(r.langue);
+  const relances = relancesValides(r.relances);
   if (r.maquette_id !== "aucune") {
-    return { statut: 200, donnees: await servirMaquette(requete, env, ctx, { id: r.maquette_id, langue, question: message, routage: "modele" }) };
+    const donnees = await servirMaquette(requete, env, ctx, { id: r.maquette_id, langue, question: message, routage: "modele" });
+    if (relances.length) donnees.suggestions = relances;
+    return { statut: 200, donnees };
   }
 
   // Modération de sortie.
   let texte = String(r.reponse || "").trim();
   if (!texte || !analyser(texte).ok) {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "sortie-filtree" }));
-    texte = t().indisponible;
+    return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
 
   // 3. Boucle d'exception : maquette pertinente mais absente → issue GitHub.
@@ -131,10 +179,10 @@ async function traiterChat(requete, env, ctx) {
       corps: corpsMaquetteManquante({ question: message, sujet: r.sujet, langue, planOnglets: r.plan_onglets }),
       commentaire: commentaireDemande({ question: message, langue })
     }).catch((e) => console.error("issue maquette", e.message)));
-    return { statut: 200, donnees: { type: "reponse", texte: `${texte}\n\n${t().maquetteBientot}`, exception: true } };
+    return { statut: 200, donnees: { type: "reponse", texte: `${texte}\n\n${t().maquetteBientot}`, exception: true, suggestions: relances } };
   }
   ctx.waitUntil(journaliser(env, { type: "reponse", sujet: r.sujet || null, langue, routage: "modele" }));
-  return { statut: 200, donnees: { type: "reponse", texte } };
+  return { statut: 200, donnees: { type: "reponse", texte, suggestions: relances } };
 }
 
 async function traiterSupport(requete, env, ctx) {
@@ -184,6 +232,12 @@ export default {
 
     if (requete.method === "GET" && url.pathname === "/api/sante") {
       return json({ ok: true, maquettes: CATALOGUE.index.maquettes.length }, 200, cors);
+    }
+    if (requete.method === "GET" && url.pathname === "/api/suggestions") {
+      const langue = langueValide(url.searchParams.get("lang"));
+      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(CATALOGUE.index, langue) }), {
+        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
+      });
     }
     const page = url.pathname.match(/^\/maquettes\/([a-z0-9-]+)$/);
     if ((requete.method === "GET" || requete.method === "HEAD") && page) return servirPage(requete, env, page[1]);

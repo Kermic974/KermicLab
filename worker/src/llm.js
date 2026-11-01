@@ -5,7 +5,7 @@ export const MODELE_CHAT_PAR_DEFAUT = "claude-haiku-5-5";
 export const SCHEMA_ROUTAGE = {
   type: "object",
   additionalProperties: false,
-  required: ["langue", "intention", "maquette_id", "maquette_pertinente", "sujet", "plan_onglets", "reponse"],
+  required: ["langue", "intention", "maquette_id", "maquette_pertinente", "sujet", "plan_onglets", "reponse", "relances"],
   properties: {
     langue: { type: "string", enum: ["fr", "en"] },
     intention: { type: "string", enum: ["apprendre", "conversation", "inapproprie"] },
@@ -13,7 +13,8 @@ export const SCHEMA_ROUTAGE = {
     maquette_pertinente: { type: "boolean" },
     sujet: { type: "string" },
     plan_onglets: { type: "array", items: { type: "string" } },
-    reponse: { type: "string" }
+    reponse: { type: "string" },
+    relances: { type: "array", items: { type: "string" } }
   }
 };
 
@@ -34,7 +35,14 @@ Ta tâche : analyser la question et produire le JSON demandé.
 - maquette_pertinente : true si une page interactive à onglets (explication, application ludique, mise en situation) aiderait vraiment à apprendre cette notion.
 - sujet : la notion, courte et normalisée en français, au format "matiere/notion" (ex. "mathematiques/theoreme-de-pythagore"), sinon "".
 - plan_onglets : si maquette_pertinente et maquette_id vaut "aucune", 3 à 5 titres d'onglets proposés, sinon [].
-- reponse : une réponse courte (3 à 6 phrases), juste et adaptée, qui donne envie d'apprendre.
+- reponse : la réponse, en texte brut (pas de Markdown, pas de LaTeX : écris « racine de 2 », « x² », « π »). Règles :
+  - Exacte avant tout ; si tu n'es pas sûr, dis-le simplement.
+  - Adapte le niveau aux indices de la conversation (vocabulaire, classe ou âge évoqués) ; sans indice, vise un élève de collège.
+  - Structure : une phrase qui répond directement ; une image du quotidien ; un exemple concret avec des nombres simples ; une dernière phrase qui invite à essayer (petite question ou défi).
+  - 4 à 8 phrases courtes, des retours à la ligne entre les idées, ton chaleureux, tutoiement.
+  - Si l'utilisateur demande « plus simplement », « un exemple » ou « un défi », appuie-toi sur la notion des messages précédents : réexplique avec d'autres mots, donne un nouvel exemple, ou propose un petit exercice avec sa solution cachée (« Réponse : … » en dernière ligne).
+  - Si une page du catalogue correspond, la réponse est une courte introduction (2 phrases) qui donne envie d'ouvrir la page.
+- relances : 2 ou 3 questions courtes (moins de 60 caractères), à la première personne, que l'utilisateur aurait envie de poser ensuite pour aller plus loin sur la même notion (ex. « Donne-moi un exemple avec un angle de 30° »). Si intention vaut "inapproprie", [].
 
 Catalogue des pages disponibles :
 ${catalogue || "(vide)"}`;

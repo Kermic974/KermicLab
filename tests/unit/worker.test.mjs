@@ -156,10 +156,36 @@ test("limitation de débit par IP", async () => {
   assert.equal((await chat({ message: "sinus", langue: "fr" }, "8.8.8.8")).statut, 200);
 });
 
-test("sans clé API : réponse de repli, pas d'erreur", async () => {
+test("sans clé API : réponse hors catalogue qui propose des questions routées vers une page", async () => {
   delete env.ANTHROPIC_API_KEY;
   const r = await chat({ message: "parle-moi des volcans", langue: "fr" });
+  assert.equal(r.donnees.type, "hors-catalogue");
+  assert.match(r.donnees.texte, /Le cercle trigonométrique/);
+  assert.ok(r.donnees.suggestions.length > 0);
+  for (const q of r.donnees.suggestions) {
+    const suite = await chat({ message: q, langue: "fr" });
+    assert.equal(suite.donnees.type, "maquette", `« ${q} » doit ouvrir une page`);
+  }
+});
+
+test("GET /api/suggestions : questions d'exemple du catalogue dans la langue demandée", async () => {
+  const lire = async (lang) => (await (await worker.fetch(new Request(`https://api.kermiclab.test/api/suggestions?lang=${lang}`), env, ctx)).json()).suggestions;
+  const fr = await lire("fr");
+  const en = await lire("en");
+  assert.ok(fr.length >= 1 && fr.length <= 4);
+  assert.ok(fr.every((q) => !/\b(what|explain)\b/i.test(q)));
+  assert.ok(en.length >= 1 && en.every((q) => /\b(what|explain)\b/i.test(q)));
+});
+
+test("relances du modèle : bornées, modérées et sans doublon", async () => {
+  _reinitialiser({ client: creerClaude({
+    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "mathematiques/fractions", plan_onglets: [],
+    reponse: "Une fraction, c'est un partage.",
+    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les fractions égales ?", 4]
+  }) });
+  const r = await chat({ message: "c'est quoi une fraction ?", langue: "fr" });
   assert.equal(r.donnees.type, "reponse");
+  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les fractions égales ?"]);
 });
 
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {
