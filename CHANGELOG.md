@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- Vérification de concordance des méthodes : `compareResults` et `resultNumber` (`src/solutions/compare.js`, exposés par `src/api.js`), exigence S-08.
 - Application du cercle : sélecteur de méthode dans le panneau « Ce que montre cet angle », avec étapes numérotées, avertissements et prise en charge du statut `unsupported` (SPEC A-04).
 - Méthode algébrique (conversion en radians, réduction au premier quadrant, formules de réduction) et filtrage des méthodes par mode (`solutions.list({ mode })`), exigences S-04 et S-07.
 - Mesure d'audience Cloudflare Web Analytics (sans cookie) sur le chat ; absente de l'application autonome `/cercle/`.

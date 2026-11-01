@@ -740,6 +740,40 @@ function checkSolutionResult(res, solutionId) {
   return p;
 }
 
+// ===== src/solutions/compare.js =====
+// Vérification de concordance des méthodes avec le moteur (SPEC.md S-08).
+
+
+// Valeur numérique d'une chaîne de résultat (forme exacte ou approchée) ; null si « non définie ».
+function resultNumber(s) {
+  var e = exactNum(s);
+  return e === undefined ? unfmt(s) : e;
+}
+
+function differs(expected, got, tol) {
+  if (expected === null || got === null) return expected !== got;
+  return !(Math.abs(expected - got) < tol);
+}
+
+// Compare les résultats 'success' aux valeurs du moteur ; les autres sont ignorés (skipped).
+function compareResults(results, values) {
+  var expected = { cos: values.x, sin: values.y, tan: values.t };
+  var out = { agree: true, checked: 0, skipped: [], mismatches: [] };
+  results.forEach(function (res) {
+    if (res.status !== 'success') { out.skipped.push(res.solutionId); return; }
+    out.checked++;
+    var tol = res.confidence === 'exact' ? 1e-9 : 1e-6;
+    ['cos', 'sin', 'tan'].forEach(function (field) {
+      var got = res.result[field] === null ? null : resultNumber(res.result[field]);
+      if (differs(expected[field], got, tol)) {
+        out.mismatches.push({ solutionId: res.solutionId, field: field, expected: expected[field], got: got });
+      }
+    });
+  });
+  out.agree = out.mismatches.length === 0;
+  return out;
+}
+
 // ===== src/solutions/geometric.js =====
 // Méthode géométrique : lecture sur le cercle (projections, quadrant, angle de référence).
 // Elle lit les valeurs du moteur dans le contexte et ne recalcule rien.
@@ -886,12 +920,6 @@ solutions.register(algebraicSolution);
 // Angles de référence partagés par toutes les méthodes (ARCHITECTURE.md § Tests comparatifs).
 const REFERENCE_INPUTS = ['0', '30', '45', '60', '90', '120', '135', '150', '180', '270', '360', '-30', '390', 'π/3', '2π/3', '22,5', '137,5'];
 
-// Valeur numérique d'une chaîne de résultat (forme exacte ou approchée).
-function resultNumber(s) {
-  var e = exactNum(s);
-  return e === undefined ? unfmt(s) : e;
-}
-
 function runCoreChecks() {
   var fail = [], count = 0;
   function ok(name, v) { count++; if (!v) fail.push(name); }
@@ -965,10 +993,10 @@ function runCoreChecks() {
       var problems = checkSolutionResult(res, s.id);
       ok(s.id + ' contrat ' + input + (problems.length ? ' (' + problems.join(', ') + ')' : ''), !problems.length);
       if (problems.length) return;
-      var tol = res.confidence === 'exact' ? 1e-9 : 1e-6;
-      ok(s.id + ' cos ' + input, near(resultNumber(res.result.cos), v.x, tol));
-      ok(s.id + ' sin ' + input, near(resultNumber(res.result.sin), v.y, tol));
-      ok(s.id + ' tan ' + input, res.result.tan === null ? v.t === null : near(resultNumber(res.result.tan), v.t, tol));
+      var cmp = compareResults([res], v);
+      ['cos', 'sin', 'tan'].forEach(function (f) {
+        ok(s.id + ' ' + f + ' ' + input, !cmp.mismatches.some(function (m) { return m.field === f; }));
+      });
     });
   });
   // Cas de référence 60° (SPEC.md).

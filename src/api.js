@@ -10,5 +10,6 @@ export { createStore } from './core/store.js';
 export { LESSONS } from './pedagogy/lessons.js';
 export { ROUND, rnd, pick, placeQuestion, quizQuestion, scorePlacement, quizExplanation, starsFor } from './pedagogy/challenges.js';
 export { solutionContext, checkSolutionResult } from './solutions/registry.js';
+export { compareResults, resultNumber } from './solutions/compare.js';
 export { solutions } from './solutions/catalog.js';
 export { runCoreChecks } from './selfcheck.js';
