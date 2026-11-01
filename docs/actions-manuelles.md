@@ -53,3 +53,10 @@ acheter le domaine quand le budget le permet (action 15).
 | 17 | Décider du passage du dépôt en public | Settings → General | Open source | Visibilité changée par le propriétaire | à faire (plus tard) |
 
 Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, vérifier que `CLOUDFLARE_API_TOKEN` dispose bien de la permission `D1: Edit` sur le compte correspondant à `CLOUDFLARE_ACCOUNT_ID`, puis relancer le workflow.
+
+## Catalogue de philosophie
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire les neuf notions (devoir, État, justice, liberté, langage, raison, science, technique, vérité), leurs auteurs et leurs corrigés | [PR #67](https://github.com/Kermic974/trigoLab/pull/67) ; `catalogue/<id>/contenu.json` et `page.html` | Exactitude philosophique, accessibilité aux mineurs et contrôle humain des maquettes (action 16) | Revue CODEOWNER approuvée et CI verte avant fusion | à faire |
+| Autoriser les workflows de la PR de philosophie | [Actions de la PR #67](https://github.com/Kermic974/trigoLab/pull/67/checks) | L'exécution initiale est en statut `action_required`. Localement, lint, build, contrôle des pages et 64 tests unitaires passent ; l'e2e est bloqué par Chromium absent du cache Playwright, mais les 54 QCM et le rendu mobile des neuf pages ont été vérifiés via le navigateur disponible | Autoriser l'exécution GitHub Actions et vérifier que tous les contrôles passent, dont les tests e2e avec Chromium installé par la CI | à faire |

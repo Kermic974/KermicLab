@@ -1,0 +1,122 @@
+{
+  "titresOnglets": { "explication": "Comprendre", "application": "Choix et droits", "mise-en-situation": "Débat en commun" },
+  "intro": "Être libre, est-ce faire tout ce qui nous passe par la tête ? Explore les choix personnels, l'autonomie morale et les libertés politiques.",
+  "niveaux": [
+    {
+      "titre": "Intuition : pouvoir choisir, mais dans quelles conditions ?",
+      "niveau": "collège — pour démarrer",
+      "paragraphes": [
+        "La **liberté** peut désigner l'absence d'obstacle ou de contrainte, la capacité de choisir, ou des droits garantis. Ces sens sont liés, mais différents : être autorisé à lire ne suffit pas si aucun livre n'est accessible.",
+        "Une envie n'est pas toujours une décision réfléchie. Une habitude ou une pression peut orienter mon choix sans que je m'en aperçoive. S'interroger sur sa liberté, c'est aussi chercher ce qui rend un choix possible."
+      ],
+      "exemple": {
+        "titre": "Le choix du jeu",
+        "etapes": [
+          "Tu peux choisir entre deux jeux.",
+          "Un groupe menace de t'exclure si tu choisis le second.",
+          "Le choix reste matériellement possible, mais la pression en modifie les conditions."
+        ]
+      },
+      "aRetenir": "Distingue la permission, les moyens réels et la capacité de décider sans contrainte."
+    },
+    {
+      "titre": "Distinguer : autonomie morale et déterminisme",
+      "niveau": "lycée — avec Kant et Spinoza",
+      "paragraphes": [
+        "Le **libre arbitre** désigne la capacité de choisir par soi-même, souvent comprise comme la possibilité de choisir autrement. Le **déterminisme** soutient que les événements suivent de causes selon des lois. La compatibilité entre liberté et déterminisme est débattue.",
+        "Pour **Kant**, l'**autonomie morale** n'est pas inventer une règle selon son humeur : la volonté se donne une loi rationnelle universalisable. Suivre uniquement une récompense ou une pression relève de l'hétéronomie, une détermination par autre chose que cette loi.",
+        "Dans l'*Éthique*, **Spinoza** critique l'idée d'un libre arbitre sans causes : les humains se croient libres parce qu'ils connaissent leurs désirs et ignorent ce qui les détermine. Il pense néanmoins une libération par la compréhension des causes et une activité plus rationnelle."
+      ],
+      "exemple": {
+        "titre": "Enquête sur une envie",
+        "etapes": [
+          "Tu veux vérifier une notification immédiatement.",
+          "Cherche les habitudes et les dispositifs qui suscitent cette envie.",
+          "Pour Spinoza, mieux comprendre ces causes peut contribuer à devenir plus actif, non à sortir des lois de la nature."
+        ]
+      },
+      "aRetenir": "La liberté morale ne se réduit ni au caprice ni à l'ignorance des causes."
+    },
+    {
+      "titre": "Formaliser : la liberté politique et ses limites",
+      "niveau": "terminale — avec Mill",
+      "paragraphes": [
+        "La **liberté politique** suppose des droits et des institutions qui protègent contre l'arbitraire : expression, conscience, participation. Une loi peut limiter une action tout en garantissant une liberté commune, mais toute limitation doit être justifiée.",
+        "Dans *De la liberté*, **John Stuart Mill** soutient que la contrainte sur un adulte capable de décider ne se justifie que pour prévenir un tort à autrui, pas simplement pour imposer ce que l'on pense bon pour lui. Il distingue notamment le tort de la simple désapprobation.",
+        "Mill précise que son principe ne s'applique pas de la même façon aux enfants : leur protection et leur éducation demandent un cadre adapté. Sa thèse ne signifie donc pas que tout comportement serait permis à tout âge. Elle invite à distinguer protection, tort réel et contrôle arbitraire."
+      ],
+      "exemple": {
+        "titre": "Tester une limite",
+        "etapes": [
+          "Un débat accueille des opinions opposées.",
+          "Interdire une opinion uniquement parce qu'elle déplaît diffère d'empêcher une menace.",
+          "Demande quel droit est limité, quel tort est prévenu et si la mesure est proportionnée."
+        ]
+      },
+      "aRetenir": "Liberté morale : comment se déterminer ? Liberté politique : quelles garanties et quelles limites pour vivre ensemble ?"
+    }
+  ],
+  "application": {
+    "intro": "Repère les sens du mot liberté et les positions des auteurs. Les questions ne tranchent pas tous les débats sur le libre arbitre.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Chez Kant, l'autonomie morale consiste à…",
+        "choix": ["suivre toutes ses envies.", "se donner une loi rationnelle universalisable.", "obéir seulement pour une récompense."],
+        "bonne": 1,
+        "indice": "Autonomie ne signifie pas caprice.",
+        "explication": "La volonté autonome se détermine par une loi rationnelle qu'elle se donne, et non par le seul désir ou un avantage."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle affirmation correspond à Spinoza ?",
+        "choix": ["Tous nos désirs sont sans causes.", "Comprendre les causes ne sert jamais.", "Nous pouvons ignorer les causes qui déterminent nos désirs."],
+        "bonne": 2,
+        "indice": "Être conscient d'un désir n'est pas connaître son origine.",
+        "explication": "Spinoza critique l'illusion d'un libre arbitre sans causes ; comprendre celles-ci peut accroître notre activité rationnelle."
+      },
+      {
+        "type": "qcm",
+        "question": "Laquelle relève directement d'une liberté politique ?",
+        "choix": ["Un droit d'expression protégé contre l'arbitraire.", "L'envie de manger une pomme.", "L'absence de toute cause dans l'univers."],
+        "bonne": 0,
+        "indice": "Cherche une garantie commune portée par des institutions.",
+        "explication": "Le droit d'expression est une liberté politique. Une envie et une thèse sur les causes sont d'un autre ordre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Défi : un débat où chacun peut parler",
+    "histoire": [
+      "Un groupe organise un débat encadré. Les opinions divergent ; quelqu'un propose d'interdire toute idée qui lui déplaît.",
+      "Ta mission : préserver la discussion et un cadre protecteur, sans demander aux participants de raconter leur vie personnelle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "question": "Quelle règle soutient une liberté commune de discussion ?",
+        "choix": ["Seul le plus fort peut parler.", "Chacun dispose d'un tour de parole, sans menace ni humiliation.", "Tout désaccord est interdit."],
+        "bonne": 1,
+        "indice": "Une règle peut garantir l'accès de tous à la parole.",
+        "explication": "Le tour de parole et l'absence de menace protègent la participation. Toute règle n'est donc pas l'ennemie de la liberté."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle distinction s'inspire du principe de Mill ?",
+        "choix": ["Tout ce qui me déplaît est un tort.", "Une menace est une simple opinion sans effets.", "Une opinion déplaisante n'est pas, par ce seul fait, un tort à autrui."],
+        "bonne": 2,
+        "indice": "Distingue désapprobation et tort.",
+        "explication": "Mill refuse de faire de la simple désapprobation une raison suffisante de contraindre. Cela ne supprime pas les protections adaptées aux mineurs."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle démarche rend ton choix plus réfléchi ?",
+        "choix": ["Examiner tes raisons et les pressions du groupe avant de décider.", "Répéter uniquement l'avis le plus applaudi.", "Affirmer que tes envies n'ont jamais de causes."],
+        "bonne": 0,
+        "indice": "Rends visibles les raisons et les influences.",
+        "explication": "Examiner raisons et influences aide à décider de façon plus réfléchie. Cela ne prouve pas à lui seul une théorie du libre arbitre."
+      }
+    ],
+    "conclusion": "Mission accomplie ! Défends une règle de débat et teste-la du point de vue d'une personne en désaccord. La liberté demande des capacités, des droits et des raisons."
+  }
+}
