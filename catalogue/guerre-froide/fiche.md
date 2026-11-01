@@ -18,3 +18,13 @@ questions:
   - Pourquoi le mur de Berlin est-il construit ?
   - Quels sont les enjeux de la crise de Cuba ?
 ---
+
+# La guerre froide
+
+Page générée depuis `contenu.json` avec le gabarit commun : trois niveaux de découverte au lycée,
+quatre QCM corrigés sur les causes, les acteurs et les conséquences, puis un défi de vérification
+d'information en trois étapes. Distinguer les étapes de 1989, 1990 et 1991 et les limites des analogies actuelles.
+
+Références pour la relecture :
+- [Lumni : la guerre froide](https://www.lumni.fr/dossier/la-guerre-froide).
+- [Lumni : Berlin, enjeu de la guerre froide](https://enseignants.lumni.fr/parcours/0005/berlin-enjeu-de-la-guerre-froide.html).
