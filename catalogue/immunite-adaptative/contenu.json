@@ -1,0 +1,151 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des défenses sur mesure",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La première ligne de défense (l'**immunité innée** : inflammation, phagocytose) réagit vite, de la même façon contre tous les intrus. L'**immunité adaptative** met quelques jours à se mettre en place, mais elle est **spécifique** de chaque microbe et elle **se souvient**."
+      ]
+    },
+    {
+      "titre": "La sélection clonale",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Nous possédons des millions de lymphocytes différents, chacun capable de reconnaître un seul **antigène** grâce à ses récepteurs. Quand un antigène entre, seuls les lymphocytes qui le reconnaissent sont **sélectionnés** ; ils se multiplient (formant un **clone**) puis se différencient.",
+        "Un lymphocyte qui se divise 10 fois donne 2¹⁰ = 1 024 cellules identiques."
+      ]
+    },
+    {
+      "titre": "Lymphocytes B et T",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Les **lymphocytes B** se différencient en **plasmocytes**, qui sécrètent des **anticorps** : ils se lient à l'antigène et forment des complexes immuns éliminés par phagocytose.",
+        "Les **lymphocytes T CD8** deviennent cytotoxiques et détruisent les cellules infectées. Les **lymphocytes T CD4** (auxiliaires) coordonnent et stimulent toute la réponse : c'est eux que le **VIH** infecte et détruit, d'où l'effondrement des défenses au stade sida."
+      ]
+    },
+    {
+      "titre": "La mémoire immunitaire",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Après la réponse, des **cellules mémoire** persistent. Lors d'un second contact avec le même antigène, la **réponse secondaire** est **plus rapide**, **plus intense** et **plus durable**.",
+        "C'est le principe de la **vaccination** et des **rappels**. Une personne **séropositive** pour un virus possède des anticorps dirigés contre lui : elle a été en contact avec ce virus."
+      ],
+      "aRetenir": "Spécificité, amplification clonale et mémoire : les trois clés de l'immunité adaptative."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur l'immunité adaptative.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Le VIH",
+        "question": "Quelles cellules le VIH infecte-t-il et détruit-il ?",
+        "choix": [
+          "Les lymphocytes T CD4",
+          "Les globules rouges",
+          "Les plasmocytes"
+        ],
+        "bonne": 0,
+        "explication": "Sans T CD4 pour coordonner la réponse, les défenses s'effondrent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les anticorps",
+        "question": "Quelles cellules sécrètent les anticorps ?",
+        "choix": [
+          "Les plasmocytes, issus des lymphocytes B",
+          "Les lymphocytes T CD8",
+          "Les neurones"
+        ],
+        "bonne": 0,
+        "explication": "Les lymphocytes B sélectionnés se différencient en plasmocytes."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un clone",
+        "question": "Un lymphocyte sélectionné se divise 10 fois de suite. Combien de cellules obtient-on ?",
+        "reponse": 1024,
+        "unite": "cellules",
+        "indices": [
+          "Chaque division double le nombre : 2¹⁰."
+        ],
+        "solution": "2¹⁰ = 1 024 cellules."
+      },
+      {
+        "type": "qcm",
+        "titre": "Réponse secondaire",
+        "question": "Par rapport à la réponse primaire, la réponse secondaire est…",
+        "choix": [
+          "plus rapide et plus intense",
+          "plus lente",
+          "identique"
+        ],
+        "bonne": 0,
+        "explication": "Grâce aux cellules mémoire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Séropositif",
+        "question": "Être séropositif pour un virus signifie…",
+        "choix": [
+          "avoir des anticorps dirigés contre ce virus dans le sang",
+          "être vacciné contre tous les virus",
+          "avoir un groupe sanguin particulier"
+        ],
+        "bonne": 0,
+        "explication": "La présence d'anticorps montre un contact avec le virus."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le rappel du vaccin",
+    "histoire": [
+      "Le carnet de vaccination de Sarah indique une première injection, puis un rappel quelques mois plus tard.",
+      "On mesure son taux d'anticorps (en unités arbitraires) après chaque injection."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "La première injection",
+        "question": "Quelle réponse la première injection déclenche-t-elle ?",
+        "choix": [
+          "Une réponse primaire, lente et modérée",
+          "Une réponse secondaire",
+          "Aucune réponse"
+        ],
+        "bonne": 0,
+        "explication": "Premier contact avec l'antigène vaccinal : réponse primaire et formation de cellules mémoire."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le rappel",
+        "question": "Après la première injection, le taux d'anticorps atteint 10 unités. Après le rappel, il est 100 fois plus élevé. Quel est le nouveau taux ?",
+        "reponse": 1000,
+        "unite": "unités",
+        "indices": [
+          "10 × 100."
+        ],
+        "solution": "1 000 unités : c'est la réponse secondaire, amplifiée par les cellules mémoire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Pourquoi des rappels ?",
+        "question": "À quoi servent les rappels de vaccin ?",
+        "choix": [
+          "À réactiver et entretenir la mémoire immunitaire",
+          "À changer de groupe sanguin",
+          "À remplacer les antibiotiques"
+        ],
+        "bonne": 0,
+        "explication": "Ils maintiennent un niveau de protection élevé dans la durée."
+      }
+    ],
+    "conclusion": "Bravo ! La vaccination exploite la mémoire immunitaire : elle a permis d'éradiquer la variole et de faire reculer de nombreuses maladies."
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : remonter le temps",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La Terre est âgée d'environ **4,56 milliards d'années**. Si on ramenait toute son histoire à une seule journée de 24 heures, notre espèce n'apparaîtrait que dans les toutes dernières secondes avant minuit !",
+        "Pour reconstituer cette histoire, les géologues lisent les roches comme les pages d'un livre."
+      ]
+    },
+    {
+      "titre": "La datation relative",
+      "niveau": "terminale",
+      "paragraphes": [
+        "**Superposition** : une couche sédimentaire est plus récente que celle qu'elle recouvre. **Recoupement** : une faille ou un filon est plus récent que les couches qu'il recoupe. **Inclusion** : un morceau de roche inclus dans une autre est plus ancien qu'elle.",
+        "Ces principes permettent de classer les événements **les uns par rapport aux autres**, sans donner d'âge en années."
+      ]
+    },
+    {
+      "titre": "Les fossiles stratigraphiques",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un **fossile stratigraphique** appartient à une espèce qui a vécu **peu de temps** mais sur une **large zone** (comme certaines ammonites). Retrouver le même fossile dans deux régions éloignées montre que les couches ont le même âge.",
+        "Les grandes **crises biologiques** (comme celle d'il y a 66 millions d'années, qui vit disparaître les dinosaures non aviens) servent de limites à l'**échelle des temps géologiques**."
+      ]
+    },
+    {
+      "titre": "La datation absolue",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La **radiochronologie** utilise la désintégration d'éléments radioactifs présents dans les roches (potassium-argon, uranium-plomb) pour obtenir un âge en années. Le carbone 14 ne sert que pour les restes de moins de 50 000 ans environ.",
+        "C'est ainsi qu'on a établi l'âge de la Terre, grâce aux météorites, contemporaines de la formation du système solaire."
+      ],
+      "aRetenir": "Datation relative : un ordre. Datation absolue : un âge chiffré."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les principes de datation.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Superposition",
+        "question": "Dans une série de couches sédimentaires non déformées, la couche la plus ancienne est…",
+        "choix": [
+          "celle du bas",
+          "celle du haut",
+          "celle du milieu"
+        ],
+        "bonne": 0,
+        "explication": "Principe de superposition : chaque couche s'est déposée sur la précédente."
+      },
+      {
+        "type": "qcm",
+        "titre": "Recoupement",
+        "question": "Une faille coupe trois couches. La faille est…",
+        "choix": [
+          "plus récente que les couches qu'elle coupe",
+          "plus ancienne que ces couches"
+        ],
+        "bonne": 0,
+        "explication": "Principe de recoupement."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'âge de la Terre",
+        "question": "Quel est l'âge de la Terre, en milliards d'années, arrondi au dixième ?",
+        "reponse": 4.6,
+        "tolerance": 0.05,
+        "unite": "milliards d'années",
+        "indices": [
+          "Environ 4,56 milliards d'années."
+        ],
+        "solution": "4,56 ≈ 4,6 milliards d'années."
+      },
+      {
+        "type": "nombre",
+        "titre": "La journée de la Terre",
+        "question": "Si l'histoire de la Terre (4,56 milliards d'années) durait 24 h, combien de secondes avant minuit apparaîtrait Homo sapiens (il y a 300 000 ans) ? Arrondis à l'unité.",
+        "reponse": 6,
+        "tolerance": 0.5,
+        "unite": "s",
+        "indices": [
+          "Fraction : 300 000 ÷ 4 560 000 000.",
+          "Multiplie par 86 400 secondes."
+        ],
+        "solution": "300 000 ÷ 4,56 × 10⁹ × 86 400 ≈ 5,7 s, soit environ 6 secondes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Fossile stratigraphique",
+        "question": "Un bon fossile stratigraphique appartient à une espèce qui…",
+        "choix": [
+          "a vécu peu de temps sur une large zone",
+          "a vécu très longtemps dans une seule vallée",
+          "vit encore aujourd'hui partout"
+        ],
+        "bonne": 0,
+        "explication": "Courte durée de vie de l'espèce = précision ; large répartition = comparaisons lointaines."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Lire une falaise",
+    "histoire": [
+      "Une falaise montre trois couches sédimentaires horizontales : **A** en bas, **B** au milieu, **C** en haut. Une faille **F** coupe les couches A et B, mais pas la couche C.",
+      "Reconstituons l'histoire de ce paysage."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "La plus ancienne",
+        "question": "Quelle couche est la plus ancienne ?",
+        "choix": [
+          "A",
+          "B",
+          "C"
+        ],
+        "bonne": 0,
+        "explication": "Principe de superposition : A, tout en bas."
+      },
+      {
+        "type": "qcm",
+        "titre": "La faille",
+        "question": "Quand la faille s'est-elle formée ?",
+        "choix": [
+          "Après le dépôt de B et avant celui de C",
+          "Avant le dépôt de A",
+          "Après le dépôt de C"
+        ],
+        "bonne": 0,
+        "explication": "Elle coupe A et B (donc plus récente qu'elles) mais pas C (donc plus ancienne que C)."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le temps de dépôt",
+        "question": "La couche C mesure 30 m d'épaisseur et s'est déposée au rythme d'environ 1 cm par siècle. Combien d'années a duré son dépôt ?",
+        "reponse": 300000,
+        "unite": "ans",
+        "indices": [
+          "30 m = 3 000 cm, soit 3 000 siècles."
+        ],
+        "solution": "3 000 siècles = 300 000 ans."
+      }
+    ],
+    "conclusion": "Bravo ! Avec trois principes simples, tu as lu l'histoire d'une falaise comme le font les géologues sur le terrain."
+  }
+}

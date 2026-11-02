@@ -21,6 +21,7 @@ mots-cles:
   - reflexes
   - reflexe myotatique
   - cerveau
+  - cerveau commande
   - moelle epiniere
   - nervous system
   - neurons

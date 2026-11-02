@@ -1,0 +1,150 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des milliers de petits ressorts",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un muscle ne pousse jamais : il ne sait que **tirer**, en se raccourcissant. Ce raccourcissement résulte de milliards de minuscules mouvements moléculaires qui s'additionnent."
+      ]
+    },
+    {
+      "titre": "L'organisation du muscle",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un muscle est formé de **fibres musculaires** (de très longues cellules à plusieurs noyaux), elles-mêmes remplies de **myofibrilles**. Celles-ci sont découpées en unités répétées, les **sarcomères**, de quelques micromètres.",
+        "Dans chaque sarcomère, des filaments fins d'**actine** et des filaments épais de **myosine** s'entremêlent."
+      ]
+    },
+    {
+      "titre": "Le glissement des filaments",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Lors de la contraction, les têtes de myosine s'accrochent à l'actine et la tirent : les filaments **glissent** les uns sur les autres, le sarcomère **raccourcit**, et avec lui toute la fibre.",
+        "Ce mouvement consomme de l'**ATP**, produit surtout par la respiration cellulaire (et, lors d'efforts intenses et brefs, par la fermentation lactique)."
+      ]
+    },
+    {
+      "titre": "Commande nerveuse et antagonistes",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Un neurone moteur commande la contraction au niveau de la **jonction neuromusculaire** : il libère un neurotransmetteur (l'acétylcholine), ce qui déclenche une libération de calcium dans la fibre, qui permet l'accrochage actine-myosine.",
+        "Les muscles fonctionnent par paires **antagonistes** : le **biceps** fléchit l'avant-bras, le **triceps** l'étend. Quand l'un se contracte, l'autre se relâche."
+      ],
+      "aRetenir": "Un muscle se contracte en raccourcissant ses sarcomères ; il faut un autre muscle pour ramener le membre."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur la contraction musculaire.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Les protéines",
+        "question": "Quelles protéines glissent les unes sur les autres lors de la contraction ?",
+        "choix": [
+          "L'actine et la myosine",
+          "L'insuline et le glucagon",
+          "L'hémoglobine et la kératine"
+        ],
+        "bonne": 0,
+        "explication": "La myosine tire sur l'actine."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'énergie",
+        "question": "Sous quelle forme l'énergie est-elle directement utilisée par la contraction ?",
+        "choix": [
+          "L'ATP",
+          "Le glucose dans le sang",
+          "La chaleur"
+        ],
+        "bonne": 0,
+        "explication": "La myosine utilise l'ATP pour tirer sur l'actine."
+      },
+      {
+        "type": "qcm",
+        "titre": "Antagonistes",
+        "question": "Quel muscle est l'antagoniste du biceps ?",
+        "choix": [
+          "Le triceps",
+          "Le mollet",
+          "Le cœur"
+        ],
+        "bonne": 0,
+        "explication": "Biceps : flexion du bras ; triceps : extension."
+      },
+      {
+        "type": "nombre",
+        "titre": "Un sarcomère",
+        "question": "Un sarcomère passe de 2,5 µm à 2,0 µm. De combien a-t-il raccourci ?",
+        "reponse": 0.5,
+        "unite": "µm",
+        "indices": [
+          "2,5 − 2,0."
+        ],
+        "solution": "0,5 µm."
+      },
+      {
+        "type": "nombre",
+        "titre": "Toute une fibre",
+        "question": "Une myofibrille compte 10 000 sarcomères bout à bout, qui raccourcissent chacun de 0,5 µm. De combien de millimètres raccourcit-elle ?",
+        "reponse": 5,
+        "unite": "mm",
+        "indices": [
+          "10 000 × 0,5 µm = 5 000 µm.",
+          "1 mm = 1 000 µm."
+        ],
+        "solution": "5 000 µm = 5 mm."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Soulever un haltère",
+    "histoire": [
+      "Au gymnase, Enzo plie le bras pour soulever un haltère.",
+      "Observons ce qui se passe dans ses muscles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Le muscle actif",
+        "question": "Quel muscle se contracte pour plier le bras ?",
+        "choix": [
+          "Le biceps",
+          "Le triceps"
+        ],
+        "bonne": 0,
+        "explication": "Le biceps, à l'avant du bras, fléchit l'avant-bras."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'autre muscle",
+        "question": "Pendant ce temps, que fait le triceps ?",
+        "choix": [
+          "Il se relâche",
+          "Il se contracte aussi fort",
+          "Il disparaît"
+        ],
+        "bonne": 0,
+        "explication": "Muscles antagonistes : quand l'un se contracte, l'autre se relâche."
+      },
+      {
+        "type": "nombre",
+        "titre": "Dans une fibre",
+        "question": "Une myofibrille de son biceps compte 20 000 sarcomères qui raccourcissent chacun de 0,4 µm. De combien de millimètres raccourcit-elle ?",
+        "reponse": 8,
+        "unite": "mm",
+        "indices": [
+          "20 000 × 0,4 = 8 000 µm."
+        ],
+        "solution": "8 000 µm = 8 mm : des milliards de petits glissements font un grand mouvement."
+      }
+    ],
+    "conclusion": "Bravo ! Chaque geste que tu fais, du clin d'œil au sprint, repose sur ce glissement moléculaire de l'actine et de la myosine."
+  }
+}

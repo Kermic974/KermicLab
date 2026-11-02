@@ -1,0 +1,143 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un thermostat pour le sucre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Que tu viennes de manger un gâteau ou que tu sois à jeun depuis la veille, la quantité de glucose dans ton sang reste à peu près constante, autour de **1 g par litre**. C'est la **glycémie**, maintenue par un système de régulation, comme un thermostat."
+      ]
+    },
+    {
+      "titre": "Deux hormones du pancréas",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Après un repas, la glycémie augmente : des cellules du **pancréas** sécrètent l'**insuline**, une hormone **hypoglycémiante**. Elle fait entrer le glucose dans les cellules et le fait stocker sous forme de **glycogène** dans le foie et les muscles.",
+        "À jeun ou pendant un effort, la glycémie baisse : le pancréas sécrète le **glucagon**, hormone **hyperglycémiante**, qui fait libérer le glucose stocké par le foie."
+      ],
+      "aRetenir": "Insuline : fait baisser la glycémie. Glucagon : la fait monter."
+    },
+    {
+      "titre": "Les diabètes",
+      "niveau": "terminale",
+      "paragraphes": [
+        "On parle de **diabète** quand la glycémie à jeun dépasse **1,26 g/L** lors de deux mesures. Le **diabète de type 1** apparaît souvent jeune : le système immunitaire détruit les cellules du pancréas qui produisent l'insuline ; le traitement repose sur des **injections d'insuline**.",
+        "Le **diabète de type 2**, le plus fréquent, est lié à une moindre sensibilité des cellules à l'insuline ; il est favorisé par la sédentarité, le surpoids et une alimentation déséquilibrée, sur un terrain génétique. Activité physique et alimentation équilibrée le préviennent."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur la régulation de la glycémie.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "La valeur normale",
+        "question": "Quelle est, en g/L, la valeur approximative de la glycémie normale à jeun ?",
+        "reponse": 1,
+        "tolerance": 0.1,
+        "unite": "g/L",
+        "indices": [
+          "Elle tourne autour d'un gramme par litre."
+        ],
+        "solution": "Environ 1 g/L (entre 0,7 et 1,1 g/L)."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'insuline",
+        "question": "L'insuline…",
+        "choix": [
+          "fait baisser la glycémie",
+          "fait monter la glycémie",
+          "n'a pas d'effet sur la glycémie"
+        ],
+        "bonne": 0,
+        "explication": "C'est la seule hormone hypoglycémiante."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le glucagon",
+        "question": "Quand la glycémie baisse, le pancréas sécrète…",
+        "choix": [
+          "du glucagon",
+          "de l'insuline",
+          "de la bile"
+        ],
+        "bonne": 0,
+        "explication": "Le glucagon fait libérer le glucose stocké par le foie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Type 1",
+        "question": "Dans le diabète de type 1…",
+        "choix": [
+          "le pancréas ne produit plus d'insuline",
+          "le pancréas produit trop d'insuline",
+          "le foie ne stocke plus d'eau"
+        ],
+        "bonne": 0,
+        "explication": "Les cellules productrices d'insuline sont détruites : il faut injecter de l'insuline."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le glucose du sang",
+        "question": "Le corps d'un adulte contient environ 5 L de sang, avec une glycémie de 1 g/L. Combien de grammes de glucose cela représente-t-il ?",
+        "reponse": 5,
+        "unite": "g",
+        "indices": [
+          "Masse = concentration × volume."
+        ],
+        "solution": "1 × 5 = 5 g, soit environ un morceau de sucre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Après le goûter",
+    "histoire": [
+      "Avant le goûter, la glycémie de Jade est de **1,0 g/L**. Une heure après avoir mangé des biscuits, elle atteint **1,4 g/L**, puis revient progressivement à sa valeur initiale.",
+      "Que s'est-il passé ?"
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "L'augmentation",
+        "question": "De combien la glycémie de Jade a-t-elle augmenté ?",
+        "reponse": 0.4,
+        "unite": "g/L",
+        "indices": [
+          "1,4 − 1,0."
+        ],
+        "solution": "Elle a augmenté de 0,4 g/L."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le retour à la normale",
+        "question": "Quelle hormone a permis le retour de la glycémie à sa valeur initiale ?",
+        "choix": [
+          "L'insuline",
+          "Le glucagon",
+          "L'adrénaline"
+        ],
+        "bonne": 0,
+        "explication": "L'insuline fait entrer le glucose dans les cellules et le fait stocker."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un diagnostic",
+        "question": "Un adulte a une glycémie à jeun de 1,35 g/L lors de deux mesures différentes. Que peut conclure le médecin ?",
+        "choix": [
+          "Il s'agit d'un diabète",
+          "C'est une glycémie normale",
+          "Il manque de glucose"
+        ],
+        "bonne": 0,
+        "explication": "Au-delà de 1,26 g/L à jeun à deux reprises, on parle de diabète."
+      }
+    ],
+    "conclusion": "Bravo ! La régulation de la glycémie fonctionne en permanence, sans que tu y penses : un bel exemple de communication hormonale."
+  }
+}

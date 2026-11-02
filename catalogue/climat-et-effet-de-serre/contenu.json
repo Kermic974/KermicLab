@@ -1,0 +1,150 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une couverture autour de la Terre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Certains gaz de l'atmosphère retiennent une partie de la chaleur émise par la Terre, comme une couverture. Sans cet **effet de serre** naturel, la température moyenne serait d'environ **−18 °C** au lieu de **+15 °C** : la Terre serait gelée."
+      ]
+    },
+    {
+      "titre": "Les gaz à effet de serre",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Les principaux gaz à effet de serre sont la **vapeur d'eau**, le **dioxyde de carbone** (CO₂), le **méthane** (CH₄) et le protoxyde d'azote.",
+        "Depuis la révolution industrielle, la combustion du charbon, du pétrole et du gaz, ainsi que la déforestation, ont fait passer la concentration de CO₂ d'environ **280 ppm** à plus de **420 ppm** : c'est surtout le CO₂ d'origine humaine qui renforce l'effet de serre."
+      ]
+    },
+    {
+      "titre": "Les climats du passé",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Les **carottes de glace** de l'Antarctique piègent des bulles d'air vieilles de centaines de milliers d'années : on y mesure directement le CO₂ du passé. La composition isotopique de la glace renseigne sur la température.",
+        "On y voit une alternance de périodes glaciaires et interglaciaires, et un lien étroit entre CO₂ et température. Les fossiles et les sédiments renseignent sur des climats plus anciens encore."
+      ]
+    },
+    {
+      "titre": "Le réchauffement actuel",
+      "niveau": "terminale",
+      "paragraphes": [
+        "La température moyenne de la Terre a augmenté d'environ **1,2 °C** depuis la fin du XIXe siècle, une vitesse sans équivalent dans les derniers millénaires. Conséquences : fonte des glaciers, montée du niveau des mers, vagues de chaleur, pression sur la biodiversité.",
+        "Le **GIEC** synthétise les travaux scientifiques ; limiter le réchauffement suppose de réduire fortement les émissions (sobriété, énergies bas carbone, transports, isolation)."
+      ],
+      "aRetenir": "L'effet de serre est naturel et vital ; c'est son renforcement par les activités humaines qui réchauffe le climat."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur l'effet de serre et le climat.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Effet de serre naturel",
+        "question": "Sans effet de serre, la température moyenne serait de −18 °C ; elle est de +15 °C. Combien de degrés l'effet de serre naturel apporte-t-il ?",
+        "reponse": 33,
+        "unite": "°C",
+        "indices": [
+          "15 − (−18)."
+        ],
+        "solution": "15 + 18 = 33 °C."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le CO₂",
+        "question": "La concentration en CO₂ est passée d'environ 280 ppm à 420 ppm. De combien de pourcents a-t-elle augmenté ?",
+        "reponse": 50,
+        "unite": "%",
+        "indices": [
+          "Augmentation : 420 − 280 = 140.",
+          "140 ÷ 280."
+        ],
+        "solution": "140 ÷ 280 = 0,5 : +50 %."
+      },
+      {
+        "type": "qcm",
+        "titre": "Origine humaine",
+        "question": "Quel gaz à effet de serre, émis par la combustion des énergies fossiles, contribue le plus au réchauffement actuel ?",
+        "choix": [
+          "Le dioxyde de carbone",
+          "Le dioxygène",
+          "L'azote"
+        ],
+        "bonne": 0,
+        "explication": "Le CO₂ issu du charbon, du pétrole et du gaz."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les archives",
+        "question": "Comment connaît-on la teneur en CO₂ de l'atmosphère il y a 400 000 ans ?",
+        "choix": [
+          "Grâce aux bulles d'air piégées dans les carottes de glace",
+          "Grâce aux photos satellites",
+          "Grâce aux témoignages anciens"
+        ],
+        "bonne": 0,
+        "explication": "La glace de l'Antarctique conserve de minuscules échantillons d'atmosphère ancienne."
+      },
+      {
+        "type": "qcm",
+        "titre": "La vapeur d'eau",
+        "question": "La vapeur d'eau est-elle un gaz à effet de serre ?",
+        "choix": [
+          "Oui",
+          "Non"
+        ],
+        "bonne": 0,
+        "explication": "C'est même le principal gaz à effet de serre naturel ; sa quantité augmente quand l'atmosphère se réchauffe."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un trajet en voiture",
+    "histoire": [
+      "Une famille fait un trajet de **200 km** dans une voiture qui consomme **6 L d'essence aux 100 km**.",
+      "La combustion d'un litre d'essence rejette environ **2,3 kg de CO₂**."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La consommation",
+        "question": "Combien de litres d'essence le trajet consomme-t-il ?",
+        "reponse": 12,
+        "unite": "L",
+        "indices": [
+          "6 L pour 100 km, donc pour 200 km…"
+        ],
+        "solution": "6 × 2 = 12 L."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le CO₂ émis",
+        "question": "Quelle masse de CO₂ le trajet rejette-t-il, en kg ?",
+        "reponse": 27.6,
+        "tolerance": 0.05,
+        "unite": "kg",
+        "indices": [
+          "12 × 2,3."
+        ],
+        "solution": "12 × 2,3 = 27,6 kg de CO₂."
+      },
+      {
+        "type": "qcm",
+        "titre": "Réduire",
+        "question": "Quelle option réduit le plus les émissions pour ce trajet ?",
+        "choix": [
+          "Prendre le train ou faire du covoiturage",
+          "Rouler plus vite",
+          "Faire le trajet deux fois"
+        ],
+        "bonne": 0,
+        "explication": "Partager le véhicule ou prendre le train divise fortement les émissions par voyageur."
+      }
+    ],
+    "conclusion": "Bravo ! Calculer ses émissions est la première étape pour agir : chaque choix de transport, d'alimentation ou de chauffage compte."
+  }
+}

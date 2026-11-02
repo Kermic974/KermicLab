@@ -1,6 +1,6 @@
 # Chantier : catalogue de SVT (programme complet)
 
-**Niveau actuel : vagues 1 (collège) et 2 (seconde, première) en PR**
+**Niveau actuel : programme complet rédigé (23 notions, collège → terminale), en PR**
 
 Objectif : couvrir le programme de sciences de la vie et de la Terre du collège (cycle 4) à la terminale (spécialité), une notion par
 page. Même méthode que les maths et la physique-chimie : gabarit commun (ADR 0011), une PR par vague, relecture humaine de
@@ -37,13 +37,13 @@ Les notions ont un `sujet` en `svt/…` : la barre de navigation du chat leur co
 
 | Notion | Statut |
 |---|---|
-| `evolution-et-selection-naturelle` | à faire |
-| `meiose-et-brassage-genetique` | à faire |
-| `immunite-adaptative` | à faire |
-| `climat-et-effet-de-serre` | à faire |
-| `histoire-de-la-terre-et-datation` | à faire |
-| `glycemie-et-diabete` | à faire |
-| `contraction-musculaire` | à faire |
+| `evolution-et-selection-naturelle` | PR ouverte |
+| `meiose-et-brassage-genetique` | PR ouverte |
+| `immunite-adaptative` | PR ouverte |
+| `climat-et-effet-de-serre` | PR ouverte |
+| `histoire-de-la-terre-et-datation` | PR ouverte |
+| `glycemie-et-diabete` | PR ouverte |
+| `contraction-musculaire` | PR ouverte |
 
 ## Points d'attention
 
