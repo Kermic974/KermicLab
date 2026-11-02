@@ -1,0 +1,118 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Du champ au magasin, retrouve les lieux où l'on produit des biens et des services, puis les liens qui les organisent.",
+  "niveaux": [
+    {
+      "titre": "Intuition : produire, ce n'est pas seulement fabriquer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un champ fournit une récolte, une usine fabrique des objets, une entreprise de transport rend un service. Ce sont des activités de production différentes.",
+        "Un **espace productif** est un espace organisé et mis en valeur pour produire des biens ou des services. Jeu de classement : agriculture, industrie ou services ?"
+      ]
+    },
+    {
+      "titre": "Des activités liées dans un territoire",
+      "niveau": "3e",
+      "paragraphes": [
+        "Un produit alimentaire peut relier une exploitation agricole, une usine de transformation, un entrepôt et un commerce. Les catégories d'activités sont utiles, mais leurs liens sont essentiels.",
+        "Les flux de matières, de marchandises, de personnes, d'informations et d'argent organisent ces espaces. Un **système productif** associe les activités, les acteurs et les relations nécessaires à la production.",
+        "Les entreprises, les salariés, les agriculteurs, les collectivités et l'État interviennent. Une autoroute ou un port peut faciliter les échanges, sans suffire à expliquer une implantation."
+      ]
+    },
+    {
+      "titre": "Localiser et connecter",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les ressources, les compétences, les transports, les marchés, les coûts et les règles influencent les localisations. Tous les secteurs n'ont pas les mêmes besoins.",
+        "Une activité peut utiliser des fournisseurs proches et lointains. Un espace productif français peut être relié aux marchés européens et mondiaux, même si une partie de ses ventes reste locale.",
+        "La présence d'une grande entreprise ne garantit pas une amélioration identique pour tous : qualifications, conditions de travail et accès à l'emploi doivent aussi être étudiés."
+      ]
+    },
+    {
+      "titre": "Recompositions, inégalités et transition",
+      "niveau": "première / terminale",
+      "paragraphes": [
+        "Innovation, automatisation, concurrence et décisions publiques peuvent transformer les activités. Une **reconversion industrielle** change l'usage ou les activités d'un site ; les emplois nouveaux ne correspondent pas forcément aux compétences des anciens salariés.",
+        "Les services participent pleinement à la production, y compris la recherche, la logistique et le numérique. Agriculture, industrie et services ne sont pas des mondes séparés.",
+        "La transition pose des questions d'énergie, d'eau, de sols, de déchets et de conditions de travail. Comparer des projets exige d'étudier leurs impacts et les personnes concernées, pas seulement le nombre de produits vendus."
+      ],
+      "aRetenir": "Pour expliquer un espace productif : localise, identifie les activités et acteurs, trace les flux, puis examine les effets."
+    }
+  ],
+  "application": {
+    "intro": "Classe les activités et analyse les liens. Les lots utilisés pour les calculs sont fictifs.",
+    "exercices": [
+      {
+        "type": "qcm", "titre": "Produire un service",
+        "question": "Quelle activité appartient aux services ?",
+        "choix": ["Cultiver du blé", "Organiser le transport de marchandises", "Fabriquer de l'acier"],
+        "bonne": 1, "indice": "Un service n'est ni une récolte ni une fabrication matérielle.",
+        "explication": "Le transport rend un service. Il participe au système productif en reliant les lieux de production et de vente."
+      },
+      {
+        "type": "qcm", "titre": "Un facteur de localisation",
+        "question": "Pourquoi une entreprise peut-elle rechercher un site proche d'un réseau de transport ?",
+        "choix": ["Pour supprimer tous les besoins de main-d'œuvre", "Pour garantir automatiquement un bénéfice", "Pour faciliter l'approvisionnement et les livraisons"],
+        "bonne": 2, "indice": "Pense aux entrées et sorties de marchandises.",
+        "explication": "L'accessibilité peut faciliter les flux. Les compétences, les coûts, les ressources et les règles comptent aussi."
+      },
+      {
+        "type": "nombre", "titre": "Deux marchés",
+        "question": "Une entreprise fictive vend 80 lots : 30 dans sa région et le reste ailleurs. Combien de lots vend-elle ailleurs ?",
+        "reponse": 50, "unite": "lots", "indices": ["Soustrais les ventes régionales du total."],
+        "solution": "80 − 30 = 50 lots sont vendus ailleurs. « Ailleurs » ne signifie pas forcément à l'étranger."
+      },
+      {
+        "type": "qcm", "titre": "Emplois et compétences",
+        "question": "Un ancien site industriel accueille un laboratoire demandant de nouvelles qualifications. Quel enjeu faut-il étudier pour les anciens salariés ?",
+        "choix": ["L'accès à la formation et aux nouveaux emplois", "Seulement le nombre de places de parking", "L'idée que tous ont déjà les qualifications requises"],
+        "bonne": 0, "indice": "Une reconversion du site ne reconvertit pas automatiquement les personnes.",
+        "explication": "La formation, l'accompagnement et les conditions d'accès à l'emploi sont essentiels pour analyser les effets sociaux."
+      },
+      {
+        "type": "qcm", "titre": "Un défi environnemental",
+        "question": "Une usine utilise beaucoup d'eau dans un bassin où la ressource est limitée. Quelle démarche est adaptée ?",
+        "choix": ["Ignorer les autres usages de l'eau", "Mesurer les besoins, rechercher des économies et discuter avec les autres usagers", "Déduire que toute production est impossible partout"],
+        "bonne": 1, "indice": "La ressource est partagée entre plusieurs usages.",
+        "explication": "Le suivi des prélèvements et la concertation permettent d'étudier des solutions adaptées aux contraintes locales."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La coopérative du jus de fruit",
+    "histoire": [
+      "Une coopérative fictive réunit des producteurs de fruits, un atelier de transformation et un transporteur. Elle prépare 100 caisses : 40 pour des commerces proches et 60 pour d'autres marchés.",
+      "La classe doit proposer un schéma des activités et un point de vigilance social et environnemental."
+    ],
+    "etapes": [
+      {
+        "type": "qcm", "titre": "Assembler les activités",
+        "question": "Quel enchaînement suit le dossier ?",
+        "choix": ["Transport → récolte → disparition des fruits", "Commerce → aucun approvisionnement", "Récolte → transformation → transport vers les commerces"],
+        "bonne": 2, "indice": "Le fruit est récolté avant d'être transformé.",
+        "explication": "La chaîne associe agriculture, industrie et services. Les échanges d'informations et d'argent relient aussi les acteurs."
+      },
+      {
+        "type": "nombre", "titre": "Lire les flux sortants",
+        "question": "Sur 100 caisses, 60 vont vers d'autres marchés. Quelle part représente ce flux, en pourcentage ?",
+        "reponse": 60, "unite": "%", "indices": ["Le total est déjà de 100 caisses."],
+        "solution": "60 ÷ 100 × 100 = 60 %. La donnée est fictive et ne permet pas de savoir si ces marchés sont étrangers."
+      },
+      {
+        "type": "qcm", "titre": "Un acteur collectif",
+        "question": "Quel rôle peut jouer la coopérative pour les producteurs ?",
+        "choix": ["Mettre en commun certains moyens et organiser une partie de la commercialisation", "Fixer seule toutes les lois nationales", "Supprimer automatiquement toutes les inégalités"],
+        "bonne": 0, "indice": "Une coopérative organise une coopération entre ses membres.",
+        "explication": "La mise en commun peut aider à transformer et vendre les produits. Les résultats doivent être évalués, pas supposés identiques pour chacun."
+      },
+      {
+        "type": "qcm", "titre": "Comparer des améliorations",
+        "question": "Quelle enquête permet de discuter les défis de la coopérative ?",
+        "choix": ["Observer seulement la couleur des bouteilles", "Examiner eau, énergie, emballages, transport et conditions de travail", "Supposer que proximité signifie absence de tout impact"],
+        "bonne": 1, "indice": "Croise les effets environnementaux et sociaux.",
+        "explication": "Une analyse complète porte sur plusieurs étapes et plusieurs acteurs. La proximité seule ne garantit ni faible impact ni bonnes conditions de travail."
+      }
+    ],
+    "conclusion": "Schéma prêt ! Tu as relié activités agricoles, industrielles et de services, sans oublier les personnes et les ressources."
+  }
+}

@@ -9,32 +9,24 @@ langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
   - reproduction humaine
-  - reproduction
-  - puberte
-  - fecondation
+  - gametes
   - ovule
-  - ovules
   - spermatozoide
-  - spermatozoides
-  - cellule oeuf
-  - cellule œuf
-  - grossesse
-  - placenta
+  - fecondation
+  - puberte
   - cycle menstruel
-  - contraception
-  - human reproduction
+  - grossesse
 questions:
-  - c'est quoi la puberté ?
-  - Comment se passe la fécondation ?
-  - je ne comprends pas le cycle menstruel
-  - à quoi sert le placenta ?
-  - what is fertilisation in human reproduction?
+  - comment commence une grossesse ?
+  - que sont les gamètes ?
+  - qu'est-ce qui change à la puberté ?
+  - comment fonctionne le cycle menstruel ?
 ---
 
 # La reproduction humaine
 
 Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`).
 
-- **Explication** : de la puberté à la fécondation, à la grossesse et à la santé.
-- **S'entraîner** : 5 exercices corrigés.
-- **Défi** : de la cellule-œuf au bébé, en 3 étapes.
+- **Explication** : puberté, gamètes, fécondation et développement embryonnaire.
+- **S'entraîner** : 3 QCM corrigés.
+- **Défi** : démêler des informations de santé et connaître les sources fiables.

@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "francais/sonnet", plan_onglets: ["explication", "atelier de rimes", "mise en situation"],
-    reponse: "Un sonnet est un poème de quatorze vers : deux quatrains puis deux tercets."
+    sujet: "sciences/gloubi-boulga", plan_onglets: ["explication", "recette", "mise en situation"],
+    reponse: "Le gloubi-boulga est une recette fictive."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "c'est quoi un sonnet ?", langue: "fr" });
-  await chat({ message: "explique-moi le sonnet", langue: "fr" });
+  const a = await chat({ message: "parle-moi du gloubi-boulga", langue: "fr" });
+  await chat({ message: "comment préparer un gloubi-boulga ?", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] francais/sonnet");
-  assert.match(issues[0].body, /atelier de rimes/);
+  assert.equal(issues[0].title, "[maquette-manquante] sciences/gloubi-boulga");
+  assert.match(issues[0].body, /recette/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -158,7 +158,7 @@ test("limitation de débit par IP", async () => {
 
 test("sans clé API : réponse hors catalogue qui propose des questions routées vers une page", async () => {
   delete env.ANTHROPIC_API_KEY;
-  const r = await chat({ message: "parle-moi du passé simple", langue: "fr" });
+  const r = await chat({ message: "parle-moi du gloubi-boulga", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
   assert.match(r.donnees.texte, /\d+ notions, par exemple/);
   assert.ok(r.donnees.suggestions.length > 0);
@@ -184,15 +184,32 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
   }
 });
 
+test("suggestionsCatalogue : le repli vers une autre langue est global", () => {
+  const questionsMixtes = { maquettes: [
+    { id: "francais", questions: ["c'est quoi les fractions ?"] },
+    { id: "anglais", questions: ["what are fractions?"] }
+  ] };
+  assert.deepEqual(suggestionsCatalogue(questionsMixtes, "en"), ["What are fractions?"]);
+
+  const sansAnglais = { maquettes: [
+    { id: "a", questions: ["c'est quoi les fractions ?"] },
+    { id: "b", questions: ["comment calculer une fraction ?"] }
+  ] };
+  assert.deepEqual(suggestionsCatalogue(sansAnglais, "en"), [
+    "C'est quoi les fractions ?",
+    "Comment calculer une fraction ?"
+  ]);
+});
+
 test("relances du modèle : bornées, modérées et sans doublon", async () => {
   _reinitialiser({ client: creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "francais/passe-simple", plan_onglets: [],
-    reponse: "Le passé simple raconte des actions terminées.",
-    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les verbes du 3e groupe ?", 4]
+    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "sciences/gloubi-boulga", plan_onglets: [],
+    reponse: "Le gloubi-boulga est une recette fictive.",
+    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Quels ingrédients faut-il ?", 4]
   }) });
-  const r = await chat({ message: "c'est quoi le passé simple ?", langue: "fr" });
+  const r = await chat({ message: "parle-moi du gloubi-boulga", langue: "fr" });
   assert.equal(r.donnees.type, "reponse");
-  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les verbes du 3e groupe ?"]);
+  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Quels ingrédients faut-il ?"]);
 });
 
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {

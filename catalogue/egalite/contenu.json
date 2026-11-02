@@ -1,0 +1,41 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Les mêmes droits ne signifient pas que tout le monde a les mêmes besoins.",
+  "niveaux": [
+    {
+      "titre": "Intuition : personne ne vaut moins", "niveau": "pour démarrer",
+      "paragraphes": ["L'**égalité** signifie que chaque personne a la même dignité et doit être respectée dans ses droits. Être différent ne rend pas moins important.", "Petit jeu : une activité est à l'étage, sans ascenseur. Proposer exactement le même escalier à tous suffit-il pour que tous puissent participer ?"],
+      "exemple": { "titre": "Un jeu accessible", "etapes": ["Un élève ne peut pas utiliser l'escalier.", "Déplacer l'activité dans une salle accessible permet à tous de jouer."] },
+      "aRetenir": "L'égalité des droits n'efface pas les différences entre les personnes."
+    },
+    {
+      "titre": "Collège : mêmes droits, accès réel", "niveau": "collège",
+      "paragraphes": ["L'égalité devant la loi signifie que les mêmes règles s'appliquent aux personnes dans des situations comparables, sans privilège arbitraire. Filles et garçons ont les mêmes droits.", "Pour rendre l'accès réel, des aides ou des aménagements peuvent répondre à des besoins : support adapté, accessibilité, aide financière selon les ressources. Cela ne signifie pas accorder un droit de tricher."],
+      "exemple": { "titre": "Pendant une évaluation", "etapes": ["Un aménagement prévu pour un élève en situation de handicap compense un obstacle.", "L'objectif reste de lui permettre de montrer ses compétences."] },
+      "aRetenir": "Un aménagement adapté peut rendre l'égalité effective."
+    },
+    {
+      "titre": "Lycée : principe et politiques publiques", "niveau": "lycée",
+      "paragraphes": ["La Déclaration de **1789** affirme l'égalité en droits et l'égalité devant la loi. L'égalité juridique ne garantit pas à elle seule l'absence d'inégalités économiques ou sociales.", "Une différence de traitement peut être admise si elle repose sur une différence de situation ou un motif d'intérêt général en rapport avec l'objet de la règle. Elle doit respecter le droit : toute différence n'est donc ni juste ni interdite par principe."],
+      "exemple": { "titre": "Un tarif de cantine", "etapes": ["La collectivité prévoit des tarifs selon les ressources des familles.", "On examine si les critères sont légaux, transparents et liés à l'accès au repas."] },
+      "aRetenir": "Distingue égalité en droits, inégalités de fait et moyens de les réduire."
+    }
+  ],
+  "application": {
+    "intro": "Cherche ce qui rend les droits accessibles à chacun.",
+    "exercices": [
+      { "type": "qcm", "titre": "La dignité", "question": "Une différence de réussite scolaire change-t-elle la dignité d'une personne ?", "choix": ["Oui, une bonne note donne plus de droits", "Non, chacun conserve la même dignité", "Oui, selon la matière"], "bonne": 1, "explication": "La dignité et les droits ne dépendent pas des notes." },
+      { "type": "qcm", "titre": "Un aménagement", "question": "À quoi sert un support adapté au handicap d'un élève ?", "choix": ["À compenser un obstacle pour accéder à l'activité", "À lui permettre de ne respecter aucune règle", "À lui donner automatiquement la meilleure note"], "bonne": 0, "explication": "L'aménagement rend l'accès plus égal sans supprimer l'objectif de l'activité." },
+      { "type": "qcm", "titre": "Comparer", "question": "Une différence de traitement est-elle toujours interdite ?", "choix": ["Oui, même pour rendre une salle accessible", "Non, aucune justification n'est nécessaire", "Non, mais elle doit être légalement justifiée"], "bonne": 2, "explication": "Il faut examiner les situations et la justification, pas seulement constater une différence." }
+    ]
+  },
+  "situation": {
+    "titre": "Un atelier ouvert à toute la classe",
+    "histoire": ["Une classe fictive organise un atelier. La salle choisie n'est pas accessible et le matériel est trop coûteux pour certains.", "Choisis des solutions sans demander aux camarades d'exposer publiquement leur santé ou leurs ressources."],
+    "etapes": [
+      { "type": "qcm", "titre": "La salle", "question": "Quelle solution favorise l'accès de tous ?", "choix": ["Choisir une salle accessible avec l'équipe éducative", "Exclure les personnes qui ne peuvent pas monter"], "bonne": 0, "explication": "L'organisation doit chercher à supprimer l'obstacle plutôt qu'à exclure." },
+      { "type": "qcm", "titre": "Le matériel", "question": "Comment éviter un obstacle financier ?", "choix": ["Afficher les revenus des familles", "Prévoir du matériel prêté et une aide discrète avec l'établissement"], "bonne": 1, "explication": "L'aide peut faciliter l'accès tout en respectant la vie privée." }
+    ],
+    "conclusion": "Mission accomplie ! Tu as cherché une participation réelle, pas seulement une invitation identique."
+  }
+}

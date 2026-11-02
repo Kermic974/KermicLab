@@ -1,0 +1,91 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Une pièce est écrite pour être représentée : les paroles et les indications de jeu se complètent.",
+  "niveaux": [
+    {
+      "titre": "Lire une pièce",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Au théâtre, les paroles des personnages sont présentées sous forme de **répliques**, généralement précédées du nom du personnage qui parle.",
+        "Les **didascalies** sont des indications de l'auteur : elles peuvent préciser un geste, un déplacement, un ton ou un décor. Elles ne sont généralement pas prononcées par les personnages."
+      ],
+      "exemple": {
+        "titre": "Lire la page",
+        "etapes": [
+          "« MAYA — Je t'attendais ! » : le nom annonce qui prononce cette réplique.",
+          "« (Elle regarde vers la porte.) » donne une indication de jeu : c'est une didascalie."
+        ]
+      }
+    },
+    {
+      "titre": "Comprendre les formes de parole",
+      "niveau": "4e / lycée",
+      "paragraphes": [
+        "Un **dialogue** fait alterner plusieurs personnages. Un **monologue** est une longue prise de parole d'un personnage seul en scène ou qui s'adresse à lui-même.",
+        "Dans un **aparté**, un personnage semble parler à part : les autres personnages sont censés ne pas l'entendre, tandis que le public l'entend.",
+        "Les actes et les scènes structurent souvent une pièce. Au moment de jouer, les indications écrites orientent la représentation, mais les choix de mise en scène peuvent varier."
+      ],
+      "exemple": {
+        "titre": "Interpréter une scène",
+        "etapes": [
+          "Un personnage dit à voix haute ce qu'il pense pendant que les autres restent silencieux : cela peut constituer un monologue.",
+          "Une indication comme « à voix basse » guide le jeu et peut modifier l'effet de la réplique."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Distingue les paroles prononcées des indications destinées à guider le jeu.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "La didascalie",
+        "question": "Dans une pièce, que désigne généralement une didascalie ?",
+        "choix": ["Une indication de geste, de décor ou de ton.", "Le nom du public.", "La dernière réplique de chaque scène."],
+        "bonne": 0,
+        "explication": "Une didascalie fournit des indications utiles à la lecture ou à la représentation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le monologue",
+        "question": "Un personnage seul sur scène parle longuement pour exprimer ses pensées : quelle forme de parole est-ce ?",
+        "choix": ["Un monologue", "Un aparté entre deux personnages", "Une didascalie"],
+        "bonne": 0,
+        "explication": "Un monologue est une longue prise de parole d'un personnage seul ou s'adressant à lui-même."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'aparté",
+        "question": "Dans un aparté, qui est censé entendre les paroles ?",
+        "choix": ["Le public, mais pas les autres personnages.", "Personne, y compris le public.", "Uniquement le personnage qui ne parle pas."],
+        "bonne": 0,
+        "explication": "L'aparté est destiné au public et n'est pas censé être entendu par les autres personnages."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Répéter une scène",
+    "histoire": [
+      "Avec des amis, tu prépares une courte scène à lire à voix haute. Le texte comporte des dialogues et quelques indications entre parenthèses."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Distribuer les paroles",
+        "question": "Comment savoir quel personnage lit une réplique ?",
+        "choix": ["Le nom placé avant ses paroles l'indique.", "La ponctuation choisit au hasard.", "Les didascalies sont toutes des répliques."],
+        "bonne": 0,
+        "explication": "Dans la forme théâtrale, le nom du personnage précède généralement sa réplique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Jouer une indication",
+        "question": "Le texte indique « (Elle recule lentement.) ». Que dois-tu faire ?",
+        "choix": ["Utiliser cette indication pour guider le geste, sans la lire comme une réplique.", "La faire dire par tous les personnages.", "L'effacer du texte avant la lecture."],
+        "bonne": 0,
+        "explication": "Cette didascalie indique un geste à jouer ; elle n'est pas une parole du personnage."
+      }
+    ],
+    "conclusion": "En repérant les répliques et les didascalies, le groupe peut donner vie à la scène sans confondre texte prononcé et consignes de jeu."
+  }
+}

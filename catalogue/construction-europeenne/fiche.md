@@ -9,7 +9,6 @@ langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
   - construction europeenne
-  - union europeenne
   - traite de rome
   - traite de maastricht
   - ceca
@@ -17,7 +16,7 @@ mots-cles:
 questions:
   - Pourquoi commence la construction européenne ?
   - Que change le traité de Maastricht ?
-  - Quelle différence entre Union européenne et zone euro ?
+  - Quelles étapes ont mené au traité de Maastricht ?
 ---
 
 # La construction européenne

@@ -1,0 +1,91 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Argumenter, c'est présenter une idée et des raisons pour aider un lecteur à comprendre pourquoi on la défend.",
+  "niveaux": [
+    {
+      "titre": "Une idée et des raisons",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **thèse** est l'idée que l'on défend. Un **argument** est une raison qui soutient cette thèse.",
+        "Un **exemple** rend une raison plus concrète. Il peut être tiré d'une situation vécue, d'un fait vérifiable ou d'un cas imaginé clairement présenté."
+      ],
+      "exemple": {
+        "titre": "Séparer les éléments",
+        "etapes": [
+          "Thèse : « La classe devrait avoir un coin lecture. »",
+          "Argument : « Il donnerait un endroit calme pour lire. » Exemple : « À la bibliothèque, je me concentre mieux dans l'espace silencieux. »"
+        ]
+      }
+    },
+    {
+      "titre": "Organiser et nuancer",
+      "niveau": "3e / lycée",
+      "paragraphes": [
+        "Les **connecteurs logiques** rendent le raisonnement plus facile à suivre : « d'abord », « en effet », « par exemple », « cependant », « donc » n'ont pas tous le même rôle.",
+        "Un **contre-argument** présente une objection possible. On peut y répondre ou reconnaître qu'il apporte une limite à son idée.",
+        "Une argumentation claire relie chaque raison à la thèse et évite de présenter un exemple isolé comme une preuve universelle."
+      ],
+      "exemple": {
+        "titre": "Relier puis nuancer",
+        "etapes": [
+          "« D'abord, le coin lecture permet de se concentrer. Par exemple, on peut y lire pendant un temps calme. »",
+          "« Cependant, il faut aussi prévoir des livres variés pour que chacun y trouve son compte. »"
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Repère la thèse, la raison qui la soutient et le rôle du connecteur ou de l'exemple.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "La thèse",
+        "question": "Dans « Les élèves devraient pouvoir emprunter des livres, car cela facilite la lecture à la maison », quelle est la thèse ?",
+        "choix": ["Les élèves devraient pouvoir emprunter des livres.", "La maison facilite la lecture.", "Le mot « car »."],
+        "bonne": 0,
+        "explication": "La thèse est l'idée défendue dans la phrase : permettre aux élèves d'emprunter des livres."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'argument",
+        "question": "Quelle phrase est un argument pour créer un jardin à l'école ?",
+        "choix": ["Un jardin permettrait d'observer les plantes au fil des saisons.", "Jardin est un nom commun.", "Le jardin est vert aujourd'hui."],
+        "bonne": 0,
+        "explication": "Cette raison explique en quoi le projet de jardin peut être utile."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le connecteur",
+        "question": "Quel connecteur annonce une opposition ou une limite ?",
+        "choix": ["Cependant", "Par exemple", "D'abord"],
+        "bonne": 0,
+        "explication": "« Cependant » introduit souvent une opposition ou une nuance."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Une idée pour la classe",
+    "histoire": [
+      "Ta classe discute d'une idée pour rendre la cour plus agréable. Tu souhaites proposer un espace ombragé et répondre aux questions de tes camarades."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Choisir une raison",
+        "question": "Quel argument soutient le mieux l'idée d'ajouter un coin ombragé dans la cour ?",
+        "choix": ["Il offrirait un endroit pour se reposer quand il fait chaud.", "Le mot « ombre » compte cinq lettres.", "Une autre école a une porte bleue."],
+        "bonne": 0,
+        "explication": "Cette raison est directement liée à l'utilité du coin ombragé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Répondre à une objection",
+        "question": "Quel contre-argument utile peux-tu examiner si une personne dit que le coin ombragé prendra trop de place ?",
+        "choix": ["Vérifier avec la classe quel espace est disponible et proposer une taille adaptée.", "Dire que cette personne ne comprend rien.", "Changer de sujet sans répondre."],
+        "bonne": 0,
+        "explication": "La réponse prend l'objection au sérieux et propose d'examiner une solution concrète."
+      }
+    ],
+    "conclusion": "Une argumentation gagne en clarté quand une idée, ses raisons et les exemples qui les illustrent sont bien reliés."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "Ne pas avoir d'emploi ne suffit pas toujours à être compté comme chômeur. Les critères statistiques permettent de distinguer plusieurs situations.",
+  "niveaux": [
+    {
+      "titre": "Emploi, chômage et inactivité",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La population en âge de travailler peut être répartie entre personnes en emploi, personnes au chômage et personnes inactives. Les personnes en emploi et les personnes au chômage constituent la **population active**.",
+        "Une personne inactive n'est ni en emploi ni considérée comme au chômage selon les critères retenus : c'est par exemple le cas d'une personne qui ne recherche pas de travail."
+      ],
+      "exemple": {
+        "titre": "Deux situations différentes",
+        "etapes": [
+          "Une personne sans emploi qui cherche activement un travail et peut commencer rapidement peut être comptée comme chômeuse.",
+          "Une personne sans emploi qui ne recherche pas actuellement de travail est généralement classée inactive."
+        ]
+      }
+    },
+    {
+      "titre": "Les critères et le taux",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Au sens du Bureau international du travail (BIT), une personne est chômeuse si elle n'a pas travaillé pendant la période de référence, est disponible pour travailler et a entrepris des démarches actives de recherche d'emploi, sous réserve des règles de mesure.",
+        "Le **taux de chômage** est le nombre de chômeurs rapporté à la population active, puis multiplié par 100. Il ne faut donc pas le confondre avec la part de personnes sans emploi dans toute la population."
+      ],
+      "aRetenir": "Les personnes souhaitant travailler mais ne répondant pas à tous les critères peuvent être proches du chômage, dans le « halo du chômage »."
+    },
+    {
+      "titre": "Des causes multiples",
+      "niveau": "première",
+      "paragraphes": [
+        "Le chômage **conjoncturel** peut augmenter quand l'activité ralentit et que les entreprises réduisent leurs embauches. Le chômage **structurel** est lié à des transformations plus durables : compétences recherchées, localisation des emplois ou fonctionnement du marché du travail.",
+        "Les causes peuvent se combiner. La formation, l'accompagnement, la mobilité, la demande de biens et les décisions des entreprises influencent les possibilités d'emploi ; aucune cause unique n'explique toutes les situations."
+      ],
+      "exemple": {
+        "titre": "Un secteur qui se transforme",
+        "etapes": [
+          "Une baisse temporaire des commandes peut conduire une entreprise à suspendre ses recrutements : c'est un mécanisme conjoncturel.",
+          "Si les emplois changent durablement et que les compétences disponibles ne correspondent plus aux postes, un décalage structurel peut apparaître."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Applique les critères avec prudence et repère les dénominateurs et mécanismes.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Les critères BIT",
+        "question": "Quelle situation correspond le mieux à la définition statistique du chômage au sens du BIT ?",
+        "choix": ["Sans emploi, disponible et ayant recherché activement un emploi", "Sans emploi mais ne souhaitant pas travailler", "En emploi à temps partiel et sans recherche d'un autre poste"],
+        "bonne": 0,
+        "explication": "Les critères principaux sont l'absence d'emploi, la disponibilité et une recherche active."
+      },
+      {
+        "type": "qcm",
+        "titre": "La population active",
+        "question": "Qui fait partie de la population active ?",
+        "choix": ["Les personnes en emploi et les personnes au chômage", "Uniquement les personnes au chômage", "Toutes les personnes, y compris les enfants et les retraités"],
+        "bonne": 0,
+        "explication": "La population active regroupe les personnes en emploi et les personnes au chômage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le dénominateur",
+        "question": "Par quoi divise-t-on le nombre de chômeurs pour calculer le taux de chômage ?",
+        "choix": ["La population active", "La population totale mondiale", "Le nombre d'entreprises"],
+        "bonne": 0,
+        "explication": "Le taux rapporte les chômeurs à la population active, puis s'exprime en pourcentage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Un ralentissement",
+        "question": "Si les commandes baissent temporairement et que les entreprises embauchent moins, quel type de chômage peut augmenter ?",
+        "choix": ["Le chômage conjoncturel", "Le chômage causé uniquement par les vacances", "Aucun type de chômage"],
+        "bonne": 0,
+        "explication": "Le chômage conjoncturel est lié aux variations de l'activité économique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le forum des métiers",
+    "histoire": [
+      "Au forum, trois personnes parlent de leur situation : Lina recherche un poste et peut commencer rapidement ; Sami suit une formation et ne recherche pas encore ; Noé travaille à temps partiel. Classe les situations sans juger les personnes."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "La recherche active",
+        "question": "Lina est sans emploi, disponible et a envoyé des candidatures. Quelle catégorie correspond aux critères décrits ?",
+        "choix": ["Chômeuse au sens statistique si les autres critères de période sont remplis", "Inactive nécessairement", "En emploi parce qu'elle a envoyé un CV"],
+        "bonne": 0,
+        "explication": "La recherche active et la disponibilité, avec l'absence d'emploi, correspondent aux critères principaux."
+      },
+      {
+        "type": "qcm",
+        "titre": "La formation",
+        "question": "Sami ne recherche pas d'emploi pendant sa formation. Est-il automatiquement compté comme chômeur ?",
+        "choix": ["Non, l'absence de recherche active peut le classer parmi les inactifs", "Oui, toute personne en formation est chômeuse", "Oui, s'il souhaite travailler un jour"],
+        "bonne": 0,
+        "explication": "Le souhait de travailler ne suffit pas : la définition statistique exige notamment une recherche active et la disponibilité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le temps partiel",
+        "question": "Noé travaille à temps partiel et ne cherche pas un autre emploi. Est-il nécessairement chômeur ?",
+        "choix": ["Non, il est en emploi selon ces informations", "Oui, toute personne à temps partiel est chômeuse", "Oui, car son temps de travail est inférieur à un temps plein"],
+        "bonne": 0,
+        "explication": "Le temps partiel est un emploi. Le sous-emploi est une notion distincte du chômage."
+      }
+    ],
+    "conclusion": "Les catégories statistiques décrivent des situations selon des critères communs. Elles ne résument ni les parcours ni les difficultés vécues par chaque personne."
+  }
+}

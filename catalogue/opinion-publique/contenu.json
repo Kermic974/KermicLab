@@ -1,0 +1,115 @@
+{
+  "titresOnglets": { "explication": "Explication", "application": "S'entraîner", "mise-en-situation": "Défi" },
+  "intro": "On parle souvent de « l'opinion publique », mais les opinions sont diverses et leur mesure dépend des questions posées et des personnes interrogées.",
+  "niveaux": [
+    {
+      "titre": "Des opinions diverses",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'**opinion publique** désigne les opinions exprimées ou observées dans une population sur des questions d'intérêt collectif. Elle n'est pas une pensée unique : des groupes peuvent avoir des avis différents ou ne pas se prononcer.",
+        "Les discussions, les expériences personnelles, les associations, les responsables politiques et les médias contribuent à faire émerger des sujets dans l'espace public."
+      ],
+      "exemple": {
+        "titre": "Les transports du quartier",
+        "etapes": [
+          "Des habitants peuvent souhaiter des bus plus fréquents, tandis que d'autres mettent en avant le coût ou la circulation.",
+          "Une consultation ou une enquête peut rendre ces avis visibles, à condition de préciser qui a été interrogé et comment."
+        ]
+      }
+    },
+    {
+      "titre": "Comment un sondage mesure des réponses",
+      "niveau": "première",
+      "paragraphes": [
+        "Un sondage interroge un **échantillon** afin d'estimer des réponses dans une population. La méthode de sélection, la taille et la composition de l'échantillon ainsi que les redressements influencent la qualité de l'estimation.",
+        "La formulation, l'ordre des questions, les choix de réponse, la date et le mode de recueil peuvent aussi modifier les réponses. Une marge d'incertitude accompagne l'estimation ; un sondage n'est pas une prédiction certaine."
+      ],
+      "aRetenir": "Pour interpréter un chiffre, demande qui a été interrogé, quand, par quelle méthode, avec quelle question et quelle incertitude."
+    },
+    {
+      "titre": "Médias, débat et effets de mesure",
+      "niveau": "terminale",
+      "paragraphes": [
+        "Les médias rendent certains sujets plus visibles et offrent des espaces de débat. Ils peuvent contribuer à la formation des opinions, mais les individus ne reçoivent pas tous les mêmes informations et ne réagissent pas de manière identique.",
+        "La publication répétée de sondages peut influencer la perception d'un sujet ou des stratégies d'acteurs. Il faut donc distinguer les opinions, leur mesure et les effets possibles de leur médiatisation."
+      ],
+      "exemple": {
+        "titre": "Une question orientée",
+        "etapes": [
+          "« Êtes-vous favorable à une amélioration des transports ? » suggère une réponse positive.",
+          "Une question plus neutre précise la mesure envisagée, son coût éventuel et les alternatives pour permettre une réponse informée."
+        ]
+      }
+    }
+  ],
+  "application": {
+    "intro": "Interroge la méthode et les acteurs avant de tirer une conclusion d'un sondage.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Un échantillon",
+        "question": "À quoi sert un échantillon dans une enquête par sondage ?",
+        "choix": ["À estimer les réponses d'une population à partir des personnes interrogées", "À garantir que toutes les personnes ont exactement la même opinion", "À remplacer les questions par des suppositions"],
+        "bonne": 0,
+        "explication": "Un échantillon permet d'estimer des résultats pour une population, sous réserve de la qualité de la méthode."
+      },
+      {
+        "type": "qcm",
+        "titre": "La formulation",
+        "question": "Pourquoi une question orientée peut-elle poser problème ?",
+        "choix": ["Elle peut influencer les réponses recueillies", "Elle garantit une estimation sans incertitude", "Elle rend inutile la description de l'échantillon"],
+        "bonne": 0,
+        "explication": "Le choix des mots et des réponses proposées peut influer sur les réponses."
+      },
+      {
+        "type": "qcm",
+        "titre": "La marge d'incertitude",
+        "question": "Que signifie une marge d'incertitude publiée avec un résultat ?",
+        "choix": ["L'estimation n'est pas une valeur exacte et certaine pour toute la population", "Le résultat est forcément faux", "Toutes les réponses sont identiques"],
+        "bonne": 0,
+        "explication": "Une enquête par échantillon comporte une incertitude ; elle doit être prise en compte dans l'interprétation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les médias",
+        "question": "Quel rôle les médias peuvent-ils jouer dans le débat public ?",
+        "choix": ["Rendre certains sujets visibles et contribuer aux discussions", "Produire une opinion identique chez tout le monde", "Remplacer toutes les institutions"],
+        "bonne": 0,
+        "explication": "Les médias contribuent à rendre des enjeux visibles, sans déterminer mécaniquement toutes les opinions."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un sondage sur les horaires de bus",
+    "histoire": [
+      "Un article annonce que « les habitants veulent changer les horaires de bus » à partir d'une enquête locale. Avant de reprendre cette conclusion, examine la question, l'échantillon et les limites de l'information publiée."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Qui a répondu ?",
+        "question": "Quelle information est la plus utile pour savoir si les réponses peuvent éclairer l'avis de la population locale ?",
+        "choix": ["Comment les personnes ont été sélectionnées et combien ont répondu", "La couleur du titre de l'article", "Le nombre de bus dans une autre ville"],
+        "bonne": 0,
+        "explication": "La sélection et la composition de l'échantillon aident à juger la portée de l'estimation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Que demandait-on ?",
+        "question": "Pourquoi faut-il consulter la formulation exacte de la question ?",
+        "choix": ["Les mots et les choix proposés peuvent orienter les réponses", "La formulation ne change jamais aucune réponse", "Elle donne le résultat avec certitude"],
+        "bonne": 0,
+        "explication": "Les termes utilisés, le contexte et les réponses possibles font partie de la méthode."
+      },
+      {
+        "type": "qcm",
+        "titre": "Interpréter la conclusion",
+        "question": "Quelle conclusion est la plus prudente ?",
+        "choix": ["Le sondage estime des réponses selon une méthode et une date précises", "Tous les habitants pensent la même chose", "Le sondage prédit avec certitude les choix futurs"],
+        "bonne": 0,
+        "explication": "Un résultat décrit une enquête à un moment donné ; il ne garantit ni unanimité ni prédiction certaine."
+      }
+    ],
+    "conclusion": "Un sondage est une mesure construite. Pour comprendre ce qu'il nous apprend, il faut connaître la méthode, les questions et l'incertitude, puis distinguer le résultat du débat public plus large."
+  }
+}

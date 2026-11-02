@@ -1,6 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { readdir, stat } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
+import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import { servir, navigateur, ouvrir, racine } from "./outils.mjs";
 
 // Pages générées depuis gabarit/ : même contrat que trigo-cercle, plus exercices, étoiles et défi progressif.
@@ -33,6 +34,36 @@ for (const id of NOTIONS) {
       assert.ok(await page.locator("#panneau-application .figure svg *").count() > 3, "la figure est dessinée");
     }
     assert.equal(await page.locator("#connexion").isVisible(), false);
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  });
+}
+
+for (const { id } of CATALOGUE.index.maquettes.filter((m) => m.sujet.startsWith("emc/") && NOTIONS.includes(m.id))) {
+  test(`${id} : QCM corrigés et défi quotidien complet`, async () => {
+    const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+    const { page, contexte, erreurs } = await ouvrir(nav, url(id));
+    await page.goto(url(id));
+    await page.click("#onglet-application");
+    for (const [i, ex] of contenu.application.exercices.entries()) {
+      const exercice = page.locator(`[data-exercice=app-${i + 1}]`);
+      if (i === 0) {
+        await exercice.getByRole("button", { name: ex.choix[(ex.bonne + 1) % ex.choix.length], exact: true }).click();
+        assert.ok((await exercice.locator(".retour").textContent()).includes(ex.indice ?? "Pas tout à fait"));
+      }
+      await exercice.getByRole("button", { name: ex.choix[ex.bonne], exact: true }).click();
+      assert.ok((await exercice.locator(".retour").textContent()).includes(ex.explication));
+    }
+    await page.click("#onglet-mise-en-situation");
+    const etapes = page.locator("#panneau-mise-en-situation .exercice");
+    assert.equal(await etapes.nth(1).isVisible(), false);
+    for (const [i, ex] of contenu.situation.etapes.entries()) {
+      assert.equal(await etapes.nth(i).isVisible(), true);
+      await etapes.nth(i).getByRole("button", { name: ex.choix[ex.bonne], exact: true }).click();
+      assert.ok((await etapes.nth(i).locator(".retour").textContent()).includes(ex.explication));
+    }
+    assert.equal(await page.locator("#panneau-mise-en-situation .bravo").isVisible(), true);
+    assert.ok((await page.locator("#panneau-mise-en-situation .bravo").textContent()).includes(contenu.situation.conclusion));
     assert.deepEqual(erreurs, []);
     await contexte.close();
   });
@@ -169,6 +200,33 @@ test("toutes les notions : chaque exercice accepte sa réponse attendue (applica
     assert.equal(await page.locator("#panneau-mise-en-situation .bravo").isVisible(), true, `${id} : défi terminé`);
     const total = contenu.application.exercices.length + contenu.situation.etapes.length;
     assert.equal((await page.locator("#etoiles").textContent()).trim(), `★ ${total} / ${total}`);
+    assert.deepEqual(erreurs, [], id);
+    await contexte.close();
+  }
+});
+
+test("géographie : une erreur donne un indice, le corrigé donne une étoile et le défi reste progressif", async () => {
+  const { readFile } = await import("node:fs/promises");
+  for (const id of ["mondialisation", "mers-oceans", "union-europeenne", "dynamiques-territoriales", "france-regions", "espaces-productifs", "tourisme", "afrique-australe"]) {
+    const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+    const { page, contexte, erreurs } = await ouvrir(nav, url(id));
+    await page.goto(url(id));
+    await page.click("#onglet-application");
+    const i = contenu.application.exercices.findIndex((ex) => ex.type === "qcm");
+    const ex = contenu.application.exercices[i];
+    const carte = page.locator(`[data-exercice=app-${i + 1}]`);
+    await carte.locator(".choix-bouton").nth((ex.bonne + 1) % ex.choix.length).click();
+    assert.ok((await carte.locator(".retour").textContent()).includes(ex.indice), id);
+    const total = contenu.application.exercices.length + contenu.situation.etapes.length;
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), `★ 0 / ${total}`, id);
+    await carte.locator(".choix-bouton").nth(ex.bonne).click();
+    assert.ok((await carte.locator(".retour").textContent()).includes(ex.explication), id);
+    await page.reload();
+    assert.equal((await page.locator("#etoiles").textContent()).trim(), `★ 1 / ${total}`, id);
+    await page.click("#onglet-mise-en-situation");
+    const etapes = page.locator("#panneau-mise-en-situation .exercice");
+    assert.equal(await etapes.nth(0).isVisible(), true, id);
+    assert.equal(await etapes.nth(1).isVisible(), false, id);
     assert.deepEqual(erreurs, [], id);
     await contexte.close();
   }
