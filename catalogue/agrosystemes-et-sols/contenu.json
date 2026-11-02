@@ -1,0 +1,149 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la terre qui nous nourrit",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Presque toute notre nourriture vient, directement ou non, d'une mince couche à la surface des continents : le **sol**. Il met des siècles à se former, mais peut disparaître en quelques années s'il est mal protégé."
+      ]
+    },
+    {
+      "titre": "La formation d'un sol",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Un sol se forme par **altération** de la roche mère (pluie, gel, racines) et par l'apport de **matière organique** (feuilles mortes, cadavres) transformée par les décomposeurs en **humus**.",
+        "C'est très lent : il faut souvent plusieurs siècles pour former quelques centimètres de sol."
+      ]
+    },
+    {
+      "titre": "L'agrosystème",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Un **agrosystème** est un écosystème géré par l'être humain pour produire des aliments. Contrairement à un écosystème naturel, une grande partie de la biomasse est **exportée** (les récoltes) : les éléments minéraux qu'elle contenait quittent le champ.",
+        "Pour compenser, on apporte des **engrais** (azote, phosphore, potassium). Mal dosés, ils polluent les eaux (**nitrates**) et favorisent la prolifération d'algues."
+      ]
+    },
+    {
+      "titre": "Vers une agriculture durable",
+      "niveau": "seconde",
+      "paragraphes": [
+        "L'**agroécologie** s'appuie sur le fonctionnement des écosystèmes : **rotation des cultures**, **légumineuses** (pois, luzerne) qui fixent l'azote de l'air grâce à des bactéries de leurs racines, couverts végétaux contre l'**érosion**, haies qui abritent les auxiliaires (coccinelles mangeuses de pucerons).",
+        "L'enjeu : nourrir bientôt près de 10 milliards de personnes tout en préservant les sols, l'eau et la biodiversité."
+      ],
+      "aRetenir": "Un sol couvert de végétation est protégé de l'érosion par la pluie et le vent."
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur les sols et les agrosystèmes.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "L'humus",
+        "question": "Qu'est-ce que l'humus ?",
+        "choix": [
+          "La matière organique décomposée du sol",
+          "Une roche du sous-sol",
+          "Un engrais chimique"
+        ],
+        "bonne": 0,
+        "explication": "Il provient de la décomposition des restes de végétaux et d'animaux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les légumineuses",
+        "question": "Pourquoi cultive-t-on des légumineuses (pois, luzerne) en rotation ?",
+        "choix": [
+          "Elles enrichissent le sol en azote",
+          "Elles appauvrissent le sol",
+          "Elles remplacent l'eau"
+        ],
+        "bonne": 0,
+        "explication": "Des bactéries de leurs racines fixent l'azote de l'air."
+      },
+      {
+        "type": "nombre",
+        "titre": "Rendement",
+        "question": "Un champ de 20 hectares produit 7 tonnes de blé par hectare. Quelle est la récolte totale, en tonnes ?",
+        "reponse": 140,
+        "unite": "t",
+        "indices": [
+          "Multiplie le rendement par la surface."
+        ],
+        "solution": "7 × 20 = 140 t."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'érosion",
+        "question": "Quelle pratique réduit le plus l'érosion des sols ?",
+        "choix": [
+          "Garder le sol couvert de végétation",
+          "Laisser le sol nu tout l'hiver",
+          "Arracher les haies"
+        ],
+        "bonne": 0,
+        "explication": "Les racines retiennent le sol et les feuilles amortissent la pluie."
+      },
+      {
+        "type": "nombre",
+        "titre": "Le temps long",
+        "question": "Si 1 cm de sol met 200 ans à se former, combien d'années faut-il pour 10 cm ?",
+        "reponse": 2000,
+        "unite": "ans",
+        "indices": [
+          "Multiplie par 10."
+        ],
+        "solution": "10 × 200 = 2 000 ans."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La ferme de Nadia",
+    "histoire": [
+      "Nadia cultive du blé sur un champ de **10 hectares**. Chaque année, la récolte exporte environ **25 kg d'azote par tonne** de grain récoltée.",
+      "Elle réfléchit à des pratiques plus durables."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "La récolte",
+        "question": "Avec un rendement de 8 t/ha, quelle est sa récolte, en tonnes ?",
+        "reponse": 80,
+        "unite": "t",
+        "indices": [
+          "8 × 10."
+        ],
+        "solution": "80 tonnes de blé."
+      },
+      {
+        "type": "nombre",
+        "titre": "L'azote exporté",
+        "question": "Combien de kilogrammes d'azote quittent le champ avec la récolte ?",
+        "reponse": 2000,
+        "unite": "kg",
+        "indices": [
+          "25 kg par tonne × 80 t."
+        ],
+        "solution": "25 × 80 = 2 000 kg d'azote, qu'il faut restituer au sol."
+      },
+      {
+        "type": "qcm",
+        "titre": "La solution durable",
+        "question": "Quelle pratique permet d'apporter de l'azote au sol tout en limitant les engrais de synthèse ?",
+        "choix": [
+          "Cultiver une légumineuse en rotation",
+          "Brûler les pailles",
+          "Labourer plus profondément"
+        ],
+        "bonne": 0,
+        "explication": "La luzerne ou le pois fixent l'azote de l'air et enrichissent le sol pour la culture suivante."
+      }
+    ],
+    "conclusion": "Bravo ! L'agroécologie consiste à faire travailler les écosystèmes pour nous, plutôt que contre nous."
+  }
+}

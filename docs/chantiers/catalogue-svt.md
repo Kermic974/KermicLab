@@ -1,6 +1,6 @@
 # Chantier : catalogue de SVT (programme complet)
 
-**Niveau actuel : vague 1 (collège) en PR**
+**Niveau actuel : vagues 1 (collège) et 2 (seconde, première) en PR**
 
 Objectif : couvrir le programme de sciences de la vie et de la Terre du collège (cycle 4) à la terminale (spécialité), une notion par
 page. Même méthode que les maths et la physique-chimie : gabarit commun (ADR 0011), une PR par vague, relecture humaine de
@@ -25,13 +25,13 @@ Les notions ont un `sujet` en `svt/…` : la barre de navigation du chat leur co
 
 | Notion | Statut |
 |---|---|
-| `metabolisme-et-enzymes` | à faire |
-| `adn-et-division-cellulaire` (réplication, mitose) | à faire |
-| `expression-genetique` (transcription, synthèse des protéines) | à faire |
-| `mutations-et-variabilite` | à faire |
-| `structure-de-la-terre` (croûte, manteau, ondes sismiques) | à faire |
-| `systeme-nerveux` (neurones, réflexes, synapses) | à faire |
-| `agrosystemes-et-sols` | à faire |
+| `metabolisme-et-enzymes` | PR ouverte |
+| `adn-et-division-cellulaire` (réplication, mitose) | PR ouverte |
+| `expression-genetique` (transcription, synthèse des protéines) | PR ouverte |
+| `mutations-et-variabilite` | PR ouverte |
+| `structure-de-la-terre` (croûte, manteau, ondes sismiques) | PR ouverte |
+| `systeme-nerveux` (neurones, réflexes, synapses) | PR ouverte |
+| `agrosystemes-et-sols` | PR ouverte |
 
 ## Vague 3 — terminale (spécialité)
 

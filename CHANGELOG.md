@@ -11,6 +11,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- SVT, vague 2 (seconde et première) : métabolisme et enzymes, ADN et mitose, expression des gènes, mutations et variabilité, structure interne de la Terre, système nerveux et réflexes, agrosystèmes et sols.
 - Catalogue de **SVT**, vague 1 (collège) : la cellule, nutrition et digestion, respiration et circulation, photosynthèse, reproduction humaine, génétique et hérédité, microbes et système immunitaire, écosystèmes et biodiversité, séismes, volcans et tectonique des plaques. Feuille de route : `docs/chantiers/catalogue-svt.md`. Onglet « SVT » dans la barre de navigation.
 - EMC : douze notions (laïcité, liberté, égalité, fraternité, justice, État de droit, citoyenneté, démocratie, intérêt général, droits de l'homme, discrimination, engagement civique), avec niveaux intuition → collège → lycée, exemples, QCM corrigés et défis quotidiens ; tests de contenu, routage et parcours interactifs.
 - Philosophie, perspective **existence humaine et culture** : art, bonheur, conscience, inconscient, nature, religion, temps et travail. Chaque notion propose trois niveaux progressifs, 5 QCM corrigés et un défi quotidien en 3 étapes ; onglet de matière « Philosophie » dans le chat. / Philosophy: eight concepts with progressive explanations, corrected quizzes and everyday challenges.
