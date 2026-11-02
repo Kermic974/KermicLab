@@ -97,18 +97,18 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
 test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
   const claude = creerClaude({
     langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "sciences/photosynthese", plan_onglets: ["explication", "la feuille au microscope", "mise en situation"],
-    reponse: "Les plantes fabriquent leur nourriture avec la lumière, l'eau et le gaz carbonique."
+    sujet: "francais/sonnet", plan_onglets: ["explication", "atelier de rimes", "mise en situation"],
+    reponse: "Un sonnet est un poème de quatorze vers : deux quatrains puis deux tercets."
   });
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "c'est quoi la photosynthèse ?", langue: "fr" });
-  await chat({ message: "explique la photosynthèse", langue: "fr" });
+  const a = await chat({ message: "c'est quoi un sonnet ?", langue: "fr" });
+  await chat({ message: "explique-moi le sonnet", langue: "fr" });
   assert.equal(a.donnees.type, "reponse");
   assert.equal(a.donnees.exception, true);
   const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
   assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] sciences/photosynthese");
-  assert.match(issues[0].body, /la feuille au microscope/);
+  assert.equal(issues[0].title, "[maquette-manquante] francais/sonnet");
+  assert.match(issues[0].body, /atelier de rimes/);
   assert.equal(issues[0].comments.length, 1);
   assert.equal(claude.appels[0].model, "claude-haiku-5-5");
   assert.equal(claude.appels[0].output_config.format.type, "json_schema");
@@ -158,7 +158,7 @@ test("limitation de débit par IP", async () => {
 
 test("sans clé API : réponse hors catalogue qui propose des questions routées vers une page", async () => {
   delete env.ANTHROPIC_API_KEY;
-  const r = await chat({ message: "parle-moi des volcans", langue: "fr" });
+  const r = await chat({ message: "parle-moi du passé simple", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
   assert.match(r.donnees.texte, /\d+ notions, par exemple/);
   assert.ok(r.donnees.suggestions.length > 0);
@@ -176,6 +176,12 @@ test("GET /api/suggestions : questions d'exemple du catalogue dans la langue dem
   assert.ok(fr.length >= 1 && fr.length <= 4);
   assert.ok(fr.every((q) => !anglais(q)));
   assert.ok(en.length >= 1 && en.every(anglais));
+  // La rotation quotidienne change les notions tirées : on vérifie toutes les rotations, sans dépendre de la date.
+  const { CATALOGUE } = await import("../../worker/src/generated/catalogue.js");
+  for (let decalage = 0; decalage < CATALOGUE.index.maquettes.length; decalage++) {
+    for (const q of suggestionsCatalogue(CATALOGUE.index, "fr", { decalage })) assert.ok(!anglais(q), `suggestion anglaise en français : ${q}`);
+    for (const q of suggestionsCatalogue(CATALOGUE.index, "en", { decalage })) assert.ok(anglais(q), `suggestion non anglaise : ${q}`);
+  }
 });
 
 test("suggestionsCatalogue : le repli vers une autre langue est global", () => {
@@ -247,6 +253,8 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   const matieres = [...new Set(notions.map((n) => n.matiere))];
   assert.equal(matieres[0], "mathematiques");
   assert.ok(matieres.includes("physique-chimie"));
+  assert.ok(matieres.includes("svt"));
+  assert.ok(matieres.includes("emc"));
   assert.ok(matieres.includes("philosophie"));
   for (const id of ["art", "bonheur", "conscience", "inconscient", "nature", "religion", "temps", "travail"]) {
     assert.ok(notions.some((n) => n.id === id && n.matiere === "philosophie" && n.niveau === "terminale"), id);

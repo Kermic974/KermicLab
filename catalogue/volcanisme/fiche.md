@@ -20,7 +20,7 @@ mots-cles:
 questions:
   - quelle est la différence entre le magma et la lave ?
   - pourquoi certains volcans explosent-ils ?
-  - comment se forme un volcan ?
+  - comment le magma devient-il de la lave lors d'une éruption ?
   - que faire en cas d'alerte volcanique ?
 ---
 

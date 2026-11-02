@@ -117,6 +117,8 @@ test("géographie : routage avec accents, pluriels et formulations naturelles", 
       assert.equal(routerLocal(sansAccents, CATALOGUE.index), id, sansAccents);
     }
   }
+  // Le volcanisme relève des SVT (séismes et volcans), pas des risques naturels de géographie.
+  assert.equal(routerLocal("c'est quoi un volcan ?", CATALOGUE.index), "seismes-et-volcans");
   assert.equal(routerLocal("c'est quoi un geyser ?", CATALOGUE.index), null);
 });
 

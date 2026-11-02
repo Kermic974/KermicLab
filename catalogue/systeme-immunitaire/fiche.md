@@ -10,18 +10,35 @@ onglets: explication, application, mise-en-situation
 mots-cles:
   - systeme immunitaire
   - immunite
+  - defenses de l organisme
+  - microbe
+  - microbes
+  - bacterie
+  - bacteries
+  - virus
   - anticorps
   - globules blancs
   - lymphocytes
+  - vaccin
+  - vaccins
   - vaccination
+  - antibiotiques
+  - antibiotique
+  - phagocytose
   - defenses immunitaires
   - fonctionne un vaccin
   - infection virale
+  - immune system
+  - vaccine
 questions:
   - comment le système immunitaire nous défend-il ?
   - à quoi servent les anticorps ?
   - comment fonctionne un vaccin ?
   - pourquoi les antibiotiques ne soignent-ils pas une infection virale ?
+  - comment marche un vaccin ?
+  - je ne comprends pas la différence entre bactérie et virus
+  - pourquoi les antibiotiques ne marchent pas contre la grippe ?
+  - how does a vaccine work?
 ---
 
 # Le système immunitaire

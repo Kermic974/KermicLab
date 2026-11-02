@@ -1,0 +1,159 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les briques du vivant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Tous les êtres vivants sont faits de **cellules**. Une bactérie n'en a qu'une ; ton corps en compte des dizaines de milliers de milliards.",
+        "Elles sont si petites qu'il faut un **microscope** pour les voir : la plupart mesurent entre 10 et 100 micromètres (µm), soit quelques centièmes de millimètre."
+      ]
+    },
+    {
+      "titre": "Observer au microscope",
+      "niveau": "6e / 5e",
+      "paragraphes": [
+        "**Grossissement = grossissement de l'oculaire × grossissement de l'objectif** : un oculaire ×10 et un objectif ×40 donnent un grossissement de 400.",
+        "Toute cellule possède une **membrane** qui la délimite et un **cytoplasme**. La plupart ont un **noyau**. Les cellules **végétales** ont en plus une **paroi** rigide, une grande **vacuole** et, dans les parties vertes, des **chloroplastes**."
+      ]
+    },
+    {
+      "titre": "L'unité du vivant",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Chez les êtres pluricellulaires, les cellules sont **spécialisées** : neurones, globules rouges, cellules musculaires… Elles s'assemblent en **tissus**, puis en **organes**.",
+        "Toute cellule provient d'une autre cellule, par **division cellulaire** : c'est ainsi qu'un organisme grandit et répare ses blessures."
+      ]
+    },
+    {
+      "titre": "Le noyau et l'ADN",
+      "niveau": "3e",
+      "paragraphes": [
+        "Le **noyau** contient les **chromosomes**, formés d'**ADN** : c'est le support de l'**information génétique**, qui gouverne le fonctionnement et les caractères de l'organisme.",
+        "Les bactéries n'ont pas de noyau : leur ADN est directement dans le cytoplasme."
+      ],
+      "aRetenir": "Membrane, cytoplasme et (souvent) noyau : le plan commun de toutes les cellules."
+    },
+    {
+      "titre": "Plus loin : eucaryotes et procaryotes",
+      "niveau": "seconde",
+      "paragraphes": [
+        "Les cellules à noyau sont dites **eucaryotes** (animaux, végétaux, champignons) ; les cellules sans noyau, **procaryotes** (bactéries). Les eucaryotes contiennent des **organites** spécialisés, comme les mitochondries (respiration) et les chloroplastes (photosynthèse).",
+        "Une bactérie mesure environ 1 µm : 10 à 100 fois moins qu'une cellule animale."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi avec le microscope et l'organisation des cellules.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "titre": "Grossissement",
+        "question": "Un microscope a un oculaire ×10 et un objectif ×40. Quel est son grossissement ?",
+        "reponse": 400,
+        "unite": "fois",
+        "indices": [
+          "Multiplie les deux grossissements."
+        ],
+        "solution": "10 × 40 = 400."
+      },
+      {
+        "type": "qcm",
+        "titre": "Cellule végétale",
+        "question": "Quelle cellule possède une paroi et des chloroplastes ?",
+        "choix": [
+          "Une cellule de feuille",
+          "Un globule rouge",
+          "Un neurone"
+        ],
+        "bonne": 0,
+        "explication": "Paroi et chloroplastes sont propres aux cellules végétales (les chloroplastes, dans les parties vertes)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Les bactéries",
+        "question": "Qu'est-ce qui distingue une bactérie d'une cellule animale ?",
+        "choix": [
+          "Elle n'a pas de noyau",
+          "Elle n'a pas de membrane",
+          "Elle est plus grande"
+        ],
+        "bonne": 0,
+        "explication": "Son ADN est libre dans le cytoplasme : c'est une cellule procaryote."
+      },
+      {
+        "type": "nombre",
+        "titre": "Taille",
+        "question": "Une cellule mesure 0,02 mm. Combien cela fait-il en micromètres (1 mm = 1 000 µm) ?",
+        "reponse": 20,
+        "unite": "µm",
+        "indices": [
+          "Multiplie par 1 000."
+        ],
+        "solution": "0,02 × 1 000 = 20 µm."
+      },
+      {
+        "type": "qcm",
+        "titre": "L'information génétique",
+        "question": "Où se trouve l'information génétique dans une cellule animale ?",
+        "choix": [
+          "Dans le noyau",
+          "Dans la membrane",
+          "Dans la paroi"
+        ],
+        "bonne": 0,
+        "explication": "Le noyau contient les chromosomes, faits d'ADN."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Au microscope",
+    "histoire": [
+      "En TP, tu observes un fin morceau de peau d'oignon (son épiderme) coloré au bleu de méthylène.",
+      "Tu utilises un oculaire ×10 et un objectif ×10."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "titre": "Le grossissement",
+        "question": "Quel est le grossissement utilisé ?",
+        "reponse": 100,
+        "unite": "fois",
+        "indices": [
+          "Oculaire × objectif."
+        ],
+        "solution": "10 × 10 = 100."
+      },
+      {
+        "type": "qcm",
+        "titre": "Pas de vert",
+        "question": "Les cellules d'oignon n'ont pas de chloroplastes. Pourquoi ?",
+        "choix": [
+          "L'oignon est un bulbe qui pousse sous terre, à l'abri de la lumière",
+          "Ce sont des cellules animales",
+          "Le colorant les a détruits"
+        ],
+        "bonne": 0,
+        "explication": "Sans lumière, pas de photosynthèse : ces cellules végétales n'ont pas besoin de chloroplastes. Elles ont bien une paroi."
+      },
+      {
+        "type": "nombre",
+        "titre": "La taille réelle",
+        "question": "Sur ton dessin d'observation, une cellule mesure 20 mm au grossissement 100. Quelle est sa taille réelle, en µm ?",
+        "reponse": 200,
+        "unite": "µm",
+        "indices": [
+          "Taille réelle = taille observée ÷ grossissement.",
+          "20 mm ÷ 100 = 0,2 mm."
+        ],
+        "solution": "0,2 mm = 200 µm : les cellules d'épiderme d'oignon sont grandes pour des cellules."
+      }
+    ],
+    "conclusion": "Bravo ! Robert Hooke a observé les premières « cellules » en 1665… dans du liège, avec un microscope bien moins puissant que le tien."
+  }
+}

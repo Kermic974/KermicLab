@@ -17,7 +17,7 @@ mots-cles:
   - microscope cellule
 questions:
   - c'est quoi une cellule ?
-  - qu'est-ce qui différencie une cellule animale et végétale ?
+  - comment les organites coopèrent-ils pour faire fonctionner une cellule ?
   - à quoi sert le noyau dans une cellule ?
   - comment les cellules construisent-elles un organisme ?
 ---

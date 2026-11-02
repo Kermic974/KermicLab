@@ -1,0 +1,160 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une seule page pour toute la notion : ouvre les niveaux dans l'ordre que tu veux, du plus simple au plus avancé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des aliments aux nutriments",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une tartine ne peut pas passer telle quelle dans le sang ! La **digestion** découpe les aliments en molécules très petites, les **nutriments** (glucose, acides aminés, acides gras…), que le sang distribue ensuite à toutes les cellules."
+      ]
+    },
+    {
+      "titre": "Le tube digestif",
+      "niveau": "5e",
+      "paragraphes": [
+        "Les aliments traversent le **tube digestif** : bouche, œsophage, estomac, intestin grêle, gros intestin.",
+        "Des **glandes** y déversent des sucs digestifs : glandes salivaires, foie (la bile), pancréas. Le foie et le pancréas ne font pas partie du tube digestif : les aliments n'y passent pas."
+      ]
+    },
+    {
+      "titre": "La digestion chimique",
+      "niveau": "5e / 3e",
+      "paragraphes": [
+        "Les dents et l'estomac broient les aliments (digestion mécanique). Les **enzymes digestives** les découpent chimiquement : l'**amylase** de la salive transforme l'**amidon** en sucres plus petits, jusqu'au **glucose**.",
+        "Les enzymes agissent mieux à la température du corps, environ **37 °C**."
+      ]
+    },
+    {
+      "titre": "L'absorption",
+      "niveau": "5e",
+      "paragraphes": [
+        "Les nutriments passent dans le sang à travers la paroi de l'**intestin grêle**. Celle-ci est couverte de replis et de **villosités** qui augmentent énormément la surface d'échange (environ 30 m², la surface d'un petit studio).",
+        "Ce qui n'est pas digéré forme les excréments."
+      ],
+      "aRetenir": "Digestion : découper. Absorption : faire passer dans le sang, au niveau de l'intestin grêle."
+    },
+    {
+      "titre": "Plus loin : une alimentation équilibrée",
+      "niveau": "5e / seconde",
+      "paragraphes": [
+        "Le corps a besoin de **glucides**, **lipides**, **protéines**, **vitamines**, **sels minéraux**, de **fibres** et d'**eau**, en quantités adaptées à l'âge et à l'activité.",
+        "Le **microbiote intestinal** (des milliards de bactéries) aide aussi à digérer et protège contre certains microbes."
+      ]
+    }
+  ],
+  "application": {
+    "intro": "Entraîne-toi sur le trajet des aliments et le rôle des enzymes.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Absorption",
+        "question": "Dans quel organe les nutriments passent-ils principalement dans le sang ?",
+        "choix": [
+          "L'estomac",
+          "L'intestin grêle",
+          "L'œsophage"
+        ],
+        "bonne": 1,
+        "explication": "La paroi de l'intestin grêle, fine et très plissée, est la grande surface d'absorption."
+      },
+      {
+        "type": "qcm",
+        "titre": "Amylase",
+        "question": "Sur quel aliment agit l'amylase de la salive ?",
+        "choix": [
+          "L'amidon",
+          "Les graisses",
+          "Les protéines"
+        ],
+        "bonne": 0,
+        "explication": "L'amylase découpe l'amidon (pain, pâtes, riz) en sucres plus petits."
+      },
+      {
+        "type": "qcm",
+        "titre": "La bile",
+        "question": "Quel organe produit la bile, sans faire partie du tube digestif ?",
+        "choix": [
+          "L'estomac",
+          "Le foie",
+          "Le gros intestin"
+        ],
+        "bonne": 1,
+        "explication": "Le foie produit la bile, déversée dans l'intestin grêle."
+      },
+      {
+        "type": "nombre",
+        "titre": "Température",
+        "question": "À quelle température (en °C) les enzymes digestives humaines sont-elles les plus efficaces ?",
+        "reponse": 37,
+        "unite": "°C",
+        "indices": [
+          "C'est la température du corps humain."
+        ],
+        "solution": "Environ 37 °C."
+      },
+      {
+        "type": "qcm",
+        "titre": "Villosités",
+        "question": "À quoi servent les villosités intestinales ?",
+        "choix": [
+          "À augmenter la surface d'échange avec le sang",
+          "À broyer les aliments",
+          "À produire de la salive"
+        ],
+        "bonne": 0,
+        "explication": "Plus la surface est grande, plus l'absorption est efficace."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le trajet d'une tartine",
+    "histoire": [
+      "Au petit-déjeuner, tu manges une tartine de pain, riche en **amidon**.",
+      "Suis son voyage dans ton appareil digestif."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Dans la bouche",
+        "question": "Que se passe-t-il dans la bouche ?",
+        "choix": [
+          "Les dents broient le pain et l'amylase de la salive commence à digérer l'amidon",
+          "Rien, la digestion commence dans l'estomac",
+          "Le pain passe directement dans le sang"
+        ],
+        "bonne": 0,
+        "explication": "La digestion commence dès la bouche, mécaniquement et chimiquement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le nutriment final",
+        "question": "En quel nutriment l'amidon est-il finalement transformé ?",
+        "choix": [
+          "En glucose",
+          "En acides aminés",
+          "En vitamines"
+        ],
+        "bonne": 0,
+        "explication": "L'amidon est une longue chaîne de glucose : la digestion la découpe en glucose."
+      },
+      {
+        "type": "qcm",
+        "titre": "Le passage dans le sang",
+        "question": "Où le glucose passe-t-il dans le sang ?",
+        "choix": [
+          "Dans l'intestin grêle",
+          "Dans l'estomac",
+          "Dans le gros intestin"
+        ],
+        "bonne": 0,
+        "explication": "À travers les villosités de l'intestin grêle ; le sang l'apporte ensuite à toutes les cellules."
+      }
+    ],
+    "conclusion": "Bravo ! Il faut quelques heures à ta tartine pour devenir du glucose qui alimente tes muscles et ton cerveau."
+  }
+}

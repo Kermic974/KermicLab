@@ -19,9 +19,9 @@ mots-cles:
   - seismes aux frontieres des plaques
 questions:
   - pourquoi les continents bougent-ils ?
-  - comment les plaques tectoniques se déplacent-elles ?
-  - qu'est-ce qu'une zone de subduction ?
-  - pourquoi y a-t-il des séismes aux frontières des plaques ?
+  - quel rôle joue la lithosphère dans le déplacement des plaques tectoniques ?
+  - comment la lithosphère s'enfonce-t-elle lors d'une subduction ?
+  - comment une faille transformante provoque-t-elle un séisme ?
 ---
 
 # La tectonique des plaques

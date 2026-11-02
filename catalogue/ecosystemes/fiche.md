@@ -12,15 +12,12 @@ mots-cles:
   - ecosystemes
   - biotope
   - biocenose
-  - chaine alimentaire
-  - reseau trophique
   - milieu de vie
-  - decomposeurs
 questions:
   - c'est quoi un écosystème ?
   - quelle est la différence entre un milieu et un écosystème ?
-  - comment fonctionne une chaîne alimentaire ?
-  - pourquoi les décomposeurs sont-ils importants ?
+  - comment le biotope et la biocénose forment-ils un écosystème ?
+  - comment les caractéristiques du milieu modifient-elles la biocénose ?
 ---
 
 # Les écosystèmes
