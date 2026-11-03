@@ -3,15 +3,226 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#12151b" media="(prefers-color-scheme: dark)">
-<title>Kermiclab</title>
+<meta name="theme-color" content="#f4f5fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f1f" media="(prefers-color-scheme: dark)">
+<title>KermicLab</title>
 <meta name="description" content="Kermiclab — pages pédagogiques interactives / interactive learning pages">
 <link rel="stylesheet" href="style.css">
 <script type="module" src="app.js"></script>
 </head>
 <body>
-<aside id="catalogue" class="catalogue" aria-labelledby="catalogue-titre" hidden>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11.5h13V9"/><path d="M10 20.5v-5.5h4v5.5"/></symbol>
+  <symbol id="i-boussole" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+  <symbol id="i-eclair" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+  <symbol id="i-graphique" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></symbol>
+  <symbol id="i-trophee" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8.5 20.5h7M10 17h4v3.5h-4z"/></symbol>
+  <symbol id="i-reglages" viewBox="0 0 24 24"><path d="M4 7h9M18 7h2M4 17h3M11 17h9"/><circle cx="15.5" cy="7" r="2.3"/><circle cx="8.5" cy="17" r="2.3"/></symbol>
+  <symbol id="i-aide" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.6.3-1 .9-1 1.6v.5"/><path d="M12 17v.1"/></symbol>
+  <symbol id="i-soleil" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+  <symbol id="i-lune" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-lecture" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></symbol>
+  <symbol id="i-horloge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-coche" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-croix" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-fiole" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.4 9.4A2 2 0 0 0 6.3 21.5h11.4a2 2 0 0 0 1.7-3.1L14 9V3"/><path d="M7.2 15h9.6"/></symbol>
+  <symbol id="i-etincelle" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+  <symbol id="i-bulle" viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 4v-4h-2.5z"/></symbol>
+  <symbol id="i-utilisateur" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
+  <symbol id="i-cercle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12 17.5 6.5"/><circle cx="17.5" cy="6.5" r="1.6"/></symbol>
+</svg>
+
+<a class="evitement" href="#contenu" data-i18n="allerAuContenu"></a>
+
+<div class="app">
+  <aside class="barre-laterale" data-i18n-aria="navigationPrincipale">
+    <a class="marque" href="./">
+      <span class="marque-logo" aria-hidden="true">
+        <svg viewBox="0 0 26 26" fill="none" stroke-linecap="round"><circle cx="13" cy="13" r="9" stroke="#fff" stroke-opacity=".55" stroke-width="1.8"/><path d="M13 13 19.4 6.6" stroke="#fff" stroke-width="2"/><path d="M19.4 6.6V13" stroke="#fff" stroke-opacity=".7" stroke-width="1.6" stroke-dasharray="1.6 2"/><circle cx="19.4" cy="6.6" r="2.6" fill="#fff"/></svg>
+      </span>
+      <span class="marque-textes">
+        <span class="marque-nom">Kermic<span>Lab</span></span>
+        <span class="marque-slogan" data-i18n="slogan"></span>
+      </span>
+    </a>
+    <nav class="nav" data-i18n-aria="sections">
+      <button type="button" class="nav-bouton" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
+      <button type="button" class="nav-bouton" data-nav="catalogue" id="ouvrir-catalogue" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navExplorer"></span></button>
+      <button type="button" class="nav-bouton" data-nav="defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span class="nav-texte" data-i18n="navDefi"></span></button>
+      <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
+      <button type="button" class="nav-bouton" data-nav="badges"><svg class="ico" aria-hidden="true"><use href="#i-trophee"/></svg><span class="nav-texte" data-i18n="navBadges"></span></button>
+    </nav>
+    <div class="barre-pied">
+      <button type="button" class="nav-bouton" data-nav="profil"><svg class="ico" aria-hidden="true"><use href="#i-reglages"/></svg><span class="nav-texte" data-i18n="navParametres"></span></button>
+      <button type="button" class="nav-bouton" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="signaler"></span></button>
+      <button type="button" class="profil-carte" data-nav="profil">
+        <span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span>
+        <span class="profil-textes"><span class="profil-nom" data-profil="pseudo"></span><span class="profil-meta" data-profil="niveau"></span></span>
+      </button>
+    </div>
+  </aside>
+
+  <main id="contenu" class="principal" tabindex="-1">
+    <div class="enveloppe">
+      <header class="entete" id="haut">
+        <div class="salut">
+          <h1 id="salut"></h1>
+          <p data-i18n="accroche"></p>
+        </div>
+        <div class="actions">
+          <button id="ouvrir-progres" type="button" class="pastille-progres" aria-haspopup="dialog">
+            <span class="visuellement-cache" data-i18n="monProgres"></span>
+            <span class="pastille-serie" aria-hidden="true"><span class="icone-flamme">🔥</span><span id="pastille-serie"></span></span>
+            <span class="pastille-niveau" aria-hidden="true">
+              <span id="pastille-niveau"></span>
+              <progress id="pastille-xp" max="100" value="0"></progress>
+            </span>
+          </button>
+          <button type="button" class="bouton-icone" id="bascule-theme" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-lune"/></svg></button>
+          <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
+            <select id="langue"></select>
+          </label>
+          <button id="se-connecter" type="button" class="secondaire" data-i18n="seConnecter" hidden></button>
+          <a id="mon-compte" class="bouton-lien" href="#compte" data-i18n="monCompte" hidden></a>
+        </div>
+      </header>
+
+      <p class="avertissement" role="note" data-i18n="avertissement"></p>
+
+      <div class="accueil" id="accueil">
+        <section class="carte chat" aria-labelledby="chat-titre">
+          <div class="chat-entete">
+            <span class="chat-icone" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
+            <div>
+              <h2 id="chat-titre" data-i18n="chatTitre"></h2>
+              <p class="doux petit" data-i18n="sousTitre"></p>
+            </div>
+          </div>
+          <ol id="fil" aria-live="polite"></ol>
+          <div class="zone-saisie">
+            <form id="formulaire" autocomplete="off">
+              <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
+              <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
+              <button type="submit" data-i18n="envoyer"></button>
+            </form>
+          </div>
+        </section>
+
+        <div class="colonne">
+          <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre">
+            <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fiole"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
+            <div id="reprendre-contenu" class="reprendre-contenu"></div>
+          </section>
+          <section class="carte suggestion" id="suggestion" aria-labelledby="suggestion-titre">
+            <div class="suggestion-entete">
+              <span class="badge-ico" aria-hidden="true"><svg class="ico"><use href="#i-etincelle"/></svg></span>
+              <h2 id="suggestion-titre" data-i18n="suggestionTitre"></h2>
+            </div>
+            <div id="suggestion-contenu" class="suggestion-contenu"></div>
+          </section>
+        </div>
+      </div>
+
+      <section aria-labelledby="matieres-titre" id="matieres">
+        <div class="tete-section">
+          <div>
+            <h2 id="matieres-titre" data-i18n="matieresTitre"></h2>
+            <p data-i18n="matieresAide"></p>
+          </div>
+          <button type="button" class="lien-fleche" data-nav="catalogue"><span data-i18n="toutVoir"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </div>
+        <div class="grille-matieres" id="grille-matieres"></div>
+      </section>
+
+      <section aria-labelledby="activites-titre" id="activites">
+        <div class="tete-section">
+          <div>
+            <h2 id="activites-titre" data-i18n="activitesTitre"></h2>
+            <p data-i18n="activitesAide"></p>
+          </div>
+        </div>
+        <div class="activites">
+          <article class="carte activite explorer">
+            <span class="activite-ico" aria-hidden="true"><svg class="ico"><use href="#i-fiole"/></svg></span>
+            <h3 data-i18n="activiteExplorer"></h3>
+            <p data-i18n="activiteExplorerTexte"></p>
+            <p class="meta" id="meta-explorer"></p>
+            <button type="button" class="bouton lab" data-nav="catalogue"><span data-i18n="activiteExplorerBouton"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+          </article>
+          <article class="carte activite question">
+            <span class="activite-ico" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
+            <h3 data-i18n="activiteQuestion"></h3>
+            <p data-i18n="activiteQuestionTexte"></p>
+            <p class="meta" id="meta-question"></p>
+            <button type="button" class="bouton doux-bouton" data-action="question"><span data-i18n="activiteQuestionBouton"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+          </article>
+          <article class="carte activite express">
+            <span class="activite-ico" aria-hidden="true"><svg class="ico"><use href="#i-eclair"/></svg></span>
+            <h3 data-i18n="activiteDefi"></h3>
+            <p data-i18n="activiteDefiTexte"></p>
+            <p class="meta"><span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-horloge"/></svg><span data-i18n="activiteDefiDuree"></span></span><span class="xp" id="meta-defi"></span></p>
+            <button type="button" class="bouton" data-nav="defi" id="lancer-defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span data-i18n="activiteDefiBouton"></span></button>
+          </article>
+        </div>
+      </section>
+
+      <div class="rangee-bas">
+        <section class="carte semaine" aria-labelledby="semaine-titre" id="semaine">
+          <div class="tete-section">
+            <div>
+              <h2 id="semaine-titre" data-i18n="semaineTitre"></h2>
+              <p id="semaine-periode"></p>
+            </div>
+          </div>
+          <dl class="chiffres" id="chiffres-semaine"></dl>
+          <div class="graphique-tete">
+            <h3 data-i18n="graphiqueTitre"></h3>
+            <span class="doux petit" data-i18n="graphiqueUnite"></span>
+          </div>
+          <div class="graphique" id="graphique-semaine" role="img"></div>
+          <p class="doux petit" id="semaine-vide" data-i18n="semaineVide" hidden></p>
+        </section>
+
+        <section class="carte minilab" id="minilab" aria-labelledby="minilab-titre">
+          <div class="minilab-tete">
+            <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
+            <span class="doux petit" data-i18n="minilabAide"></span>
+          </div>
+          <div class="cercle-hote" data-cercle></div>
+          <div class="curseur-ligne">
+            <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
+            <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
+            <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
+          </div>
+          <dl class="lectures" aria-live="polite">
+            <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
+            <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
+            <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
+          </dl>
+          <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </section>
+      </div>
+
+      <footer class="pied">
+        <a href="cercle/" data-i18n="application"></a>
+        <a href="confidentialite.html" data-i18n="confidentialite"></a>
+        <a href="mentions-legales.html" data-i18n="mentionsLegales"></a>
+        <button type="button" id="ouvrir-signalement" class="lien" data-i18n="signaler"></button>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<nav class="nav-mobile" data-i18n-aria="navigationMobile">
+  <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="catalogue" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg></span><span data-i18n="navExplorer"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="defi"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg></span><span data-i18n="navDefiCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgression"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
+</nav>
+
+<aside id="catalogue" class="catalogue" aria-labelledby="catalogue-titre">
   <div class="catalogue-entete">
     <h2 id="catalogue-titre" data-i18n="catalogueTitre"></h2>
     <button type="button" class="fermer-croix" id="fermer-catalogue"><span class="visuellement-cache" data-i18n="fermer"></span></button>
@@ -23,58 +234,70 @@
   <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
   <nav id="catalogue-liste" aria-labelledby="catalogue-titre"></nav>
   <p id="catalogue-vide" class="doux petit" data-i18n="aucuneNotion" hidden></p>
+  <p id="catalogue-indisponible" class="doux petit" data-i18n="catalogueIndisponible" hidden></p>
 </aside>
 <div id="voile-catalogue" class="voile" hidden></div>
-<header class="entete">
-  <div class="entete-interieur">
-    <a class="marque" href="./">
-      <span class="logo" aria-hidden="true">K</span>
-      <span class="marque-textes">
-        <span class="marque-nom" data-i18n="titre"></span>
-        <span class="sous-titre" data-i18n="sousTitre"></span>
-      </span>
-    </a>
-    <div class="actions">
-      <button id="ouvrir-catalogue" type="button" class="bouton-catalogue" aria-controls="catalogue" aria-expanded="false" hidden>
-        <span aria-hidden="true">📚</span><span class="libelle-catalogue" data-i18n="ouvrirCatalogue"></span>
-      </button>
-      <button id="ouvrir-progres" type="button" class="pastille-progres" aria-haspopup="dialog">
-        <span class="visuellement-cache" data-i18n="monProgres"></span>
-        <span class="pastille-serie" aria-hidden="true"><span class="icone-flamme">🔥</span><span id="pastille-serie"></span></span>
-        <span class="pastille-niveau" aria-hidden="true">
-          <span id="pastille-niveau"></span>
-          <progress id="pastille-xp" max="100" value="0"></progress>
-        </span>
-      </button>
-      <a id="ouvrir-dashboard" class="bouton-dashboard" href="dashboard/" data-i18n-title="monTableauDeBord">
-        <span aria-hidden="true">📊</span><span class="libelle-dashboard" data-i18n="monTableauDeBord"></span>
-      </a>
-      <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
-        <select id="langue"></select>
-      </label>
-      <button id="se-connecter" type="button" class="secondaire" data-i18n="seConnecter" hidden></button>
-      <a id="mon-compte" class="bouton-lien" href="#compte" data-i18n="monCompte" hidden></a>
-    </div>
-  </div>
-</header>
-<main>
-  <p class="avertissement" role="note" data-i18n="avertissement"></p>
-  <ol id="fil" aria-live="polite"></ol>
-</main>
-<div class="zone-saisie">
-  <form id="formulaire" autocomplete="off">
-    <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
-    <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
-    <button type="submit" data-i18n="envoyer"></button>
-  </form>
-  <footer>
-    <a href="cercle/" data-i18n="application"></a>
-    <a href="confidentialite.html" data-i18n="confidentialite"></a>
-    <a href="mentions-legales.html" data-i18n="mentionsLegales"></a>
-    <button type="button" id="ouvrir-signalement" class="lien" data-i18n="signaler"></button>
-  </footer>
-</div>
+
 <div id="toasts" role="status" aria-live="polite"></div>
+
+<!-- Premier lancement : choix du pseudo et de la mémorisation (ADR 0012) -->
+<dialog id="dialogue-pseudo" aria-labelledby="pseudo-titre" aria-describedby="pseudo-aide">
+  <form id="formulaire-pseudo" class="formulaire-profil" novalidate>
+    <span class="marque-logo grand" aria-hidden="true">
+      <svg viewBox="0 0 26 26" fill="none" stroke-linecap="round"><circle cx="13" cy="13" r="9" stroke="#fff" stroke-opacity=".55" stroke-width="1.8"/><path d="M13 13 19.4 6.6" stroke="#fff" stroke-width="2"/><circle cx="19.4" cy="6.6" r="2.6" fill="#fff"/></svg>
+    </span>
+    <h2 id="pseudo-titre" data-i18n="pseudoTitre"></h2>
+    <p id="pseudo-aide" class="doux" data-i18n="pseudoAide"></p>
+    <p id="pseudo-reprise" class="note-reprise" data-i18n="pseudoReprise" hidden></p>
+    <label for="pseudo" class="etiquette-champ" data-i18n="pseudoLabel"></label>
+    <input id="pseudo" name="pseudo" type="text" maxlength="20" autocomplete="off" spellcheck="false" required aria-describedby="pseudo-conseil pseudo-erreur">
+    <p id="pseudo-conseil" class="doux petit" data-i18n="pseudoConseil"></p>
+    <p id="pseudo-erreur" class="erreur-champ" aria-live="assertive"></p>
+    <label class="case-memoire">
+      <input type="checkbox" id="pseudo-memoriser">
+      <span><strong data-i18n="memoriserLabel"></strong><span class="doux petit" data-i18n="memoriserAide"></span></span>
+    </label>
+    <button type="submit" class="bouton grand-bouton"><span data-i18n="pseudoValider"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+  </form>
+</dialog>
+
+<!-- Profil et paramètres -->
+<dialog id="profil" aria-labelledby="profil-titre">
+  <div class="dialogue-entete">
+    <h2 id="profil-titre" data-i18n="profilTitre"></h2>
+    <button type="button" class="fermer-croix" id="fermer-profil"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+  </div>
+  <form id="formulaire-profil" class="formulaire-profil" novalidate>
+    <label for="profil-pseudo" class="etiquette-champ" data-i18n="pseudoLabel"></label>
+    <div class="champ-ligne">
+      <input id="profil-pseudo" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="profil-erreur">
+      <button type="submit" class="bouton" data-i18n="enregistrer"></button>
+    </div>
+    <p id="profil-erreur" class="erreur-champ" aria-live="assertive"></p>
+  </form>
+  <label class="case-memoire">
+    <input type="checkbox" id="profil-memoriser">
+    <span><strong data-i18n="memoriserLabel"></strong><span class="doux petit" data-i18n="memoriserAide"></span></span>
+  </label>
+  <p class="doux petit" id="profil-etat-memoire"></p>
+  <div class="zone-effacement">
+    <button type="button" class="danger" id="effacer-donnees" data-i18n="effacerDonnees"></button>
+    <p class="doux petit" id="effacer-aide" data-i18n="effacerAide"></p>
+  </div>
+</dialog>
+
+<!-- Défi express -->
+<dialog id="defi" aria-labelledby="defi-titre">
+  <div class="dialogue-entete">
+    <div>
+      <p class="sur-titre chaud" id="defi-sur-titre"></p>
+      <h2 id="defi-titre" data-i18n="defiTitre"></h2>
+    </div>
+    <button type="button" class="fermer-croix" id="fermer-defi"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+  </div>
+  <div id="defi-corps"></div>
+</dialog>
+
 <dialog id="progres" aria-labelledby="progres-titre">
   <div class="dialogue-entete">
     <h2 id="progres-titre" data-i18n="monProgres"></h2>
@@ -96,7 +319,7 @@
   <p class="doux petit" id="stat-serie-max"></p>
   <h3 data-i18n="badgesTitre"></h3>
   <ul id="liste-badges" class="badges"></ul>
-  <p class="note-locale" data-i18n="progressionLocale"></p>
+  <p class="note-locale" id="note-memoire"></p>
   <p class="doux petit" data-i18n="progressionCompte"></p>
 </dialog>
 <dialog id="signalement">

@@ -39,3 +39,47 @@ export async function ouvrir(nav, url, options = {}) {
 }
 
 export const racine = new URL("../..", import.meta.url).pathname;
+
+/** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
+export async function simulerApiKermiclab(page, { origine, api, htmlMaquette }) {
+  const requetes = [];
+  await page.route(`${api}/auth/me`, (route) => route.fulfill({
+    contentType: "application/json",
+    headers: {
+      "access-control-allow-origin": origine,
+      "access-control-allow-credentials": "true"
+    },
+    body: JSON.stringify({ connecte: false })
+  }));
+  await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
+  await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })
+  }));
+  await page.route(`${api}/api/catalogue`, (route) => route.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ notions: [
+      { id: "fractions", titre: "Les fractions", version: "1.0.0", niveau: "college" },
+      { id: "pythagore", titre: "Le théorème de Pythagore", version: "1.0.0", niveau: "college" },
+      { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", niveau: "seconde" },
+      { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" },
+      { id: "electricite", titre: "Circuits électriques et loi d'Ohm", version: "1.0.0", niveau: "college", matiere: "physique-chimie" },
+      { id: "art", titre: "L'art", version: "1.0.0", niveau: "terminale", matiere: "philosophie" }
+    ].map((n) => ({ matiere: "mathematiques", ...n })) })
+  }));
+  await page.route(`${api}/api/chat`, async (route) => {
+    const corps = route.request().postDataJSON();
+    requetes.push(corps);
+    const sinus = /sinus|sine/i.test(corps.message);
+    return route.fulfill({
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify(sinus
+        ? { type: "maquette", texte: "Voici la page.", suggestions: ["Que vaut sin(30°) ?"], maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${api}/maquettes/trigo-cercle?lang=fr` } }
+        : /volcan/i.test(corps.message)
+          ? { type: "hors-catalogue", texte: "Pas encore de page.", suggestions: ["C'est quoi le sinus ?"] }
+          : { type: "reponse", texte: "Réponse simple." })
+    });
+  });
+  return requetes;
+}

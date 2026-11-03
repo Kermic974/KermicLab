@@ -5,6 +5,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
+- **Tableau de bord élève par défaut** : l'accueil reprend la maquette KermicLab (barre latérale, rail sur tablette, barre inférieure sur mobile, mode sombre) et intègre le chat. Les données affichées viennent de la session en cours : reprise de la dernière notion, suggestion de la prochaine, progression par matière, activité des 7 derniers jours, défi express (5 XP par bonne réponse, une fois par jour), mini-lab du cercle trigonométrique. Le catalogue devient le tiroir « Explorer ». `/dashboard/` redirige vers l'accueil (ADR 0012).
+- **Pseudo au premier lancement** et **mémorisation au choix** : par défaut la session seulement ; « Se souvenir de moi » crée un cookie local fonctionnel `kermiclab_memoire=1` (sans donnée personnelle) pour garder pseudo et progression sur l'appareil. Profil : changer de pseudo, retirer le cookie, tout effacer. Page de confidentialité mise à jour.
 - `www.kermiclab.online` sert le chat à la racine et l’application autonome du cercle trigonométrique sous `/cercle/` (Cloudflare Pages, ADR 0008) ; le domaine nu n’est plus protégé par Cloudflare Access.
 - Un seul chemin de publication : GitHub Actions déploie le Worker `kermiclab-api` et Pages après les vérifications ; plus de Workers Builds (ADR 0009, abandonné) ni de publication GitHub Pages.
 - Le Worker accepte les origines `www.kermiclab.online` et `kermiclab.online`.
