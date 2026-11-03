@@ -1,5 +1,6 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
-//    le chat à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
+//    le chat à la racine, l'application autonome du cercle trigonométrique sous /cercle/ et la maquette du
+//    tableau de bord élève sous /dashboard/.
 import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
@@ -13,6 +14,11 @@ const fichierIndex = `${racine}index.html`;
 const sourceIndex = await readFile(fichierIndex, "utf8");
 const index = appliquerCsp(sourceIndex, { styles: true });
 if (sourceIndex !== index) { await writeFile(fichierIndex, index); console.log(`CSP mise à jour : ${fichierIndex}`); }
+// Maquette du tableau de bord élève (web/dashboard/) : page autonome avec sa propre CSP, hash du script tenu à jour.
+const fichierDashboard = `${racine}web/dashboard/index.html`;
+const sourceDashboard = await readFile(fichierDashboard, "utf8");
+const dashboard = appliquerCsp(sourceDashboard);
+if (sourceDashboard !== dashboard) { await writeFile(fichierDashboard, dashboard); console.log(`CSP mise à jour : ${fichierDashboard}`); }
 
 await mkdir(`${racine}worker/src/generated`, { recursive: true });
 await writeFile(
@@ -41,9 +47,12 @@ await writeFile(`${racine}dist/_headers`, `/*
 
 /cercle/*
   ! Content-Security-Policy
+
+/dashboard/*
+  ! Content-Security-Policy
 `);
 // L'application autonome porte sa propre CSP (meta, hashes des scripts et styles en ligne) : celle du chat,
-// sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
+// sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/* et /dashboard/* (maquette, CSP en meta).
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
