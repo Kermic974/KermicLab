@@ -13,9 +13,8 @@ mots-cles:
   - brassage intrachromosomique
   - brassage interchromosomique
   - crossing over
-  - gamete
-  - gametes
   - diversite genetique des gametes
+  - formation des gametes
   - chromosomes homologues
   - frères et sœurs
   - meiosis

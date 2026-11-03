@@ -9,21 +9,21 @@ langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
   - evolution
-  - evolution des especes
   - theorie de l evolution
   - selection naturelle
   - darwin
   - derive genetique
   - speciation
+  - apparaissent de nouvelles especes
   - arbre phylogenetique
   - phylogenie
   - ancetre commun
   - descend du singe
   - natural selection
 questions:
-  - c'est quoi la sélection naturelle ?
-  - Comment fonctionne l'évolution des espèces ?
-  - je ne comprends pas la dérive génétique
+  - comment la sélection naturelle mène-t-elle à la spéciation ?
+  - comment apparaissent de nouvelles espèces ?
+  - quel est le rôle de la dérive génétique dans la spéciation ?
   - est-ce que l'humain descend du singe ?
   - what is natural selection?
 ---
