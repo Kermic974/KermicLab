@@ -51,3 +51,38 @@ test("progression : un stockage corrompu ou indisponible n'empêche pas de déma
   assert.equal(relu.dernierJour, null);
   assert.doesNotThrow(() => P.sauver(faux(null), relu));
 });
+
+test("progression : historique par jour, dernière notion et activité de la semaine", () => {
+  let p = P.enregistrerQuestion(P.etatInitial(), "2026-11-02").p;
+  p = P.enregistrerNotion(p, "trigo-cercle", "2026-11-03").p;
+  p = P.enregistrerNotion(p, "pythagore", "2026-11-03").p;
+  p = P.enregistrerNotion(p, "trigo-cercle", "2026-11-03").p;
+  assert.equal(p.derniereNotion, "trigo-cercle", "une notion déjà vue redevient « à reprendre »");
+  assert.deepEqual(p.jours["2026-11-03"], { q: 0, n: 2, xp: 2 * P.XP_NOTION });
+  const semaine = P.activite(p, "2026-11-03");
+  assert.equal(semaine.length, 7);
+  assert.equal(semaine[0].jour, "2026-10-28");
+  assert.deepEqual(semaine.slice(-2).map((j) => j.xp), [P.XP_QUESTION, 2 * P.XP_NOTION]);
+});
+
+test("progression : le défi express rapporte 5 XP par bonne réponse, une fois par jour, et entretient la série", () => {
+  let r = P.enregistrerDefi(P.etatInitial(), 4, "2026-11-03");
+  assert.equal(r.xpGagne, 4 * P.XP_DEFI_BONNE);
+  assert.equal(r.p.serie, 1);
+  r = P.enregistrerDefi(r.p, 5, "2026-11-03");
+  assert.equal(r.xpGagne, 0);
+  r = P.enregistrerDefi(r.p, 9, "2026-11-04");
+  assert.equal(r.xpGagne, 5 * P.XP_DEFI_BONNE, "au plus 5 bonnes réponses");
+  assert.equal(r.p.serie, 2);
+});
+
+test("progression : un historique corrompu est nettoyé et limité à 31 jours", () => {
+  const jours = { "pas-une-date": { q: 1 }, "2026-01-01": { q: -3, n: "x", xp: 4 } };
+  for (let i = 1; i <= 40; i += 1) jours[`2026-03-${String(i).padStart(2, "0")}`] = { q: 1, n: 0, xp: 10 };
+  const p = P.normaliser({ jours, derniereNotion: 42, defiJour: "hier" });
+  assert.equal(Object.keys(p.jours).length, 31);
+  assert.ok(!("pas-une-date" in p.jours));
+  assert.equal(p.derniereNotion, null);
+  assert.equal(p.defiJour, null);
+  assert.deepEqual(P.normaliser({ jours: { "2026-01-01": { q: -3, n: "x", xp: 4 } } }).jours, { "2026-01-01": { q: 0, n: 0, xp: 4 } });
+});

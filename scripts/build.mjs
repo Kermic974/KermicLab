@@ -1,6 +1,5 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
-//    le chat à la racine, l'application autonome du cercle trigonométrique sous /cercle/ et la maquette du
-//    tableau de bord élève sous /dashboard/.
+//    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
@@ -14,11 +13,6 @@ const fichierIndex = `${racine}index.html`;
 const sourceIndex = await readFile(fichierIndex, "utf8");
 const index = appliquerCsp(sourceIndex, { styles: true });
 if (sourceIndex !== index) { await writeFile(fichierIndex, index); console.log(`CSP mise à jour : ${fichierIndex}`); }
-// Maquette du tableau de bord élève (web/dashboard/) : page autonome avec sa propre CSP, hash du script tenu à jour.
-const fichierDashboard = `${racine}web/dashboard/index.html`;
-const sourceDashboard = await readFile(fichierDashboard, "utf8");
-const dashboard = appliquerCsp(sourceDashboard);
-if (sourceDashboard !== dashboard) { await writeFile(fichierDashboard, dashboard); console.log(`CSP mise à jour : ${fichierDashboard}`); }
 
 await mkdir(`${racine}worker/src/generated`, { recursive: true });
 await writeFile(
@@ -47,12 +41,11 @@ await writeFile(`${racine}dist/_headers`, `/*
 
 /cercle/*
   ! Content-Security-Policy
-
-/dashboard/*
-  ! Content-Security-Policy
 `);
+// L'ancienne maquette /dashboard/ est devenue l'accueil : les liens existants y mènent.
+await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 301\n");
 // L'application autonome porte sa propre CSP (meta, hashes des scripts et styles en ligne) : celle du chat,
-// sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/* et /dashboard/* (maquette, CSP en meta).
+// sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
@@ -66,10 +59,15 @@ console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/
 async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
-  for (const fichier of ["progression.js", "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
+  const modules = ["progression.js", "profil.js", "cercle.js"];
+  for (const fichier of [...modules, "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
-  const app = appSource.replace(/from "\.\/progression\.js"/g, `from "./progression.js?v=${versions["progression.js"]}"`);
-  if (app === appSource) throw new Error("versionnerRessources : import de progression.js introuvable dans app.js");
+  let app = appSource;
+  for (const module of modules) {
+    const avant = app;
+    app = app.replaceAll(`from "./${module}"`, `from "./${module}?v=${versions[module]}"`);
+    if (app === avant) throw new Error(`versionnerRessources : import de ${module} introuvable dans app.js`);
+  }
   await writeFile(`${dossier}/app.js`, app);
   versions["app.js"] = empreinte(app);
   for (const page of (await readdir(dossier)).filter((f) => f.endsWith(".html"))) {

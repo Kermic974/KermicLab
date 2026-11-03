@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
 
 let serveur, nav, htmlMaquette, api;
 before(async () => {
@@ -14,48 +14,11 @@ before(async () => {
 });
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
-/** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
-async function simulerApi(page) {
-  const requetes = [];
-  await page.route(`${api}/auth/me`, (route) => route.fulfill({
-    contentType: "application/json",
-    headers: {
-      "access-control-allow-origin": serveur.url,
-      "access-control-allow-credentials": "true"
-    },
-    body: JSON.stringify({ connecte: false })
-  }));
-  await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
-  await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
-    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
-    body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })
-  }));
-  await page.route(`${api}/api/catalogue`, (route) => route.fulfill({
-    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
-    body: JSON.stringify({ notions: [
-      { id: "fractions", titre: "Les fractions", version: "1.0.0", niveau: "college" },
-      { id: "pythagore", titre: "Le théorème de Pythagore", version: "1.0.0", niveau: "college" },
-      { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", niveau: "seconde" },
-      { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" },
-      { id: "electricite", titre: "Circuits électriques et loi d'Ohm", version: "1.0.0", niveau: "college", matiere: "physique-chimie" },
-      { id: "art", titre: "L'art", version: "1.0.0", niveau: "terminale", matiere: "philosophie" }
-    ].map((n) => ({ matiere: "mathematiques", ...n })) })
-  }));
-  await page.route(`${api}/api/chat`, async (route) => {
-    const corps = route.request().postDataJSON();
-    requetes.push(corps);
-    const sinus = /sinus|sine/i.test(corps.message);
-    return route.fulfill({
-      contentType: "application/json",
-      headers: { "access-control-allow-origin": "*" },
-      body: JSON.stringify(sinus
-        ? { type: "maquette", texte: "Voici la page.", suggestions: ["Que vaut sin(30°) ?"], maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${api}/maquettes/trigo-cercle?lang=fr` } }
-        : /volcan/i.test(corps.message)
-          ? { type: "hors-catalogue", texte: "Pas encore de page.", suggestions: ["C'est quoi le sinus ?"] }
-          : { type: "reponse", texte: "Réponse simple." })
-    });
-  });
-  return requetes;
+/** Simule l'API et entre un pseudo de session (fenêtre de premier lancement déjà passée). */
+async function simulerApi(page, { pseudo = "Testeur" } = {}) {
+  // Le script s'exécute aussi dans les iframes sandboxées des maquettes, sans accès au stockage : on l'ignore alors.
+  if (pseudo) await page.addInitScript((p) => { try { if (!sessionStorage.getItem("kermiclab:pseudo")) sessionStorage.setItem("kermiclab:pseudo", p); } catch { /* iframe sandboxée */ } }, pseudo);
+  return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette });
 }
 
 test("chat : une question sur le sinus affiche la maquette dans le fil", async () => {
@@ -104,7 +67,7 @@ test("chat mobile : aucun défilement horizontal", async () => {
   await contexte.close();
 });
 
-test("progression : suggestions cliquables, XP et badges gardés dans le navigateur", async () => {
+test("progression : suggestions cliquables, XP et badges gardés pour la session (sans cookie)", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
   await simulerApi(page);
   await page.goto(serveur.url);
@@ -112,7 +75,8 @@ test("progression : suggestions cliquables, XP et badges gardés dans le navigat
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   await page.locator(".relances .puce").first().waitFor();
   assert.equal(await page.locator("#pastille-serie").textContent(), "1");
-  const stocke = await page.evaluate(() => JSON.parse(localStorage.getItem("kermiclab:progression")));
+  const stocke = await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")));
+  assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:progression")), null, "rien dans le stockage local sans cookie");
   assert.equal(stocke.questions, 1);
   assert.deepEqual(stocke.notions, ["trigo-cercle"]);
   await page.click("#ouvrir-progres");
@@ -132,20 +96,23 @@ test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'X
   await page.keyboard.press("Enter");
   const relance = page.locator("li.hors-catalogue .relances .puce");
   await relance.waitFor();
-  assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:progression")), null);
+  assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:progression")), null);
   await relance.click();
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
 
-test("catalogue : barre de navigation, recherche sans accents, ouverture directe d'une notion", async () => {
+test("catalogue : tiroir « Explorer », recherche sans accents, ouverture directe d'une notion", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
   const barre = page.locator("#catalogue");
+  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  assert.equal(await barre.isVisible(), false, "fermé tant qu'on n'explore pas");
+  await page.click("#ouvrir-catalogue");
   await barre.locator(".notion").first().waitFor();
-  assert.equal(await barre.isVisible(), true, "visible en permanence sur grand écran");
+  assert.equal(await page.locator("#ouvrir-catalogue").getAttribute("aria-expanded"), "true");
   assert.deepEqual(await barre.locator(".groupe-niveau summary > span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
   assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 6 notions explorées/);
   await page.fill("#recherche-notion", "theoreme");
@@ -156,6 +123,8 @@ test("catalogue : barre de navigation, recherche sans accents, ouverture directe
   await barre.locator(".notion", { hasText: "Le cercle trigonométrique" }).click();
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.equal(requetes.length, 0, "aucun appel au chat : la page est ouverte directement");
+  await barre.waitFor({ state: "hidden" }); // le tiroir se referme après le choix
+  await page.click("#ouvrir-catalogue");
   const bouton = barre.locator("[data-notion=trigo-cercle]");
   assert.equal(await bouton.getAttribute("aria-current"), "page");
   assert.match(await bouton.textContent(), /✓/);
@@ -184,14 +153,15 @@ test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans d�
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true });
   await simulerApi(page);
   await page.goto(serveur.url);
-  await page.locator("#ouvrir-catalogue").waitFor({ state: "visible" });
+  const explorer = page.locator(".nav-mobile [data-nav=catalogue]");
+  await explorer.waitFor({ state: "visible" });
   assert.equal(await page.locator("#catalogue").isVisible(), false, "fermé par défaut sur mobile");
-  await page.click("#ouvrir-catalogue");
+  await explorer.click();
   await page.locator("#catalogue .notion").first().waitFor({ state: "visible" });
-  assert.equal(await page.locator("#ouvrir-catalogue").getAttribute("aria-expanded"), "true");
+  assert.equal(await explorer.getAttribute("aria-expanded"), "true");
   await page.keyboard.press("Escape");
   await page.waitForFunction(() => !document.querySelector("#catalogue").classList.contains("ouvert"));
-  await page.click("#ouvrir-catalogue");
+  await explorer.click();
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
   await page.locator("li[data-maquette=fractions] iframe").waitFor();
   assert.equal(await page.locator("#voile-catalogue").isVisible(), false, "le tiroir se referme après le choix");
