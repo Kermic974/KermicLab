@@ -527,15 +527,48 @@ function rendreCatalogue() {
   $("#catalogue-progres").value = vues;
 }
 
-/** Ouvre une notion directement dans le fil, sans passer par le chat (zéro token, comme le routage par mots-clés). */
+/**
+ * Ouvre une notion depuis le tableau de bord (catalogue, reprise, suggestion, mini-lab) dans une bulle par-dessus
+ * la page, sans l'ajouter au fil du chat ni appeler le chat (zéro token, comme le routage par mots-clés).
+ */
 function ouvrirNotion(n) {
   etat.notionCourante = n.id;
   const url = `${etat.config.apiUrl}/maquettes/${encodeURIComponent(n.id)}?lang=${encodeURIComponent(etat.langue)}`;
-  ajouterReponse({ texte: t("voiciPage", { titre: n.titre }), maquette: { id: n.id, titre: n.titre, version: n.version, url } });
   fermerCatalogue();
+  ouvrirBulle(n, url);
   appliquerResultat(progression.enregistrerNotion(etat.progres, n.id));
   rendreCatalogue();
   rafraichirTableau();
+}
+
+function ouvrirBulle(n, url) {
+  const bulle = $("#bulle-lab");
+  const contexte = n.matiere || n.niveau
+    ? `${t(`matiere_${matiereDe(n)}`)} · ${t(`niveau_${NIVEAUX.includes(n.niveau) ? n.niveau : "autres"}`)}`
+    : t("reprendreTitre");
+  $("#bulle-contexte").textContent = contexte;
+  $("#bulle-titre").textContent = n.titre;
+  $("#bulle-plein-ecran").href = url;
+  const cadre = $("#bulle-cadre");
+  // Même origine que le chat : pas d'allow-same-origin, pour que la page reste isolée (comme dans le fil).
+  cadre.title = n.titre;
+  cadre.src = url;
+  bulle.dataset.notion = n.id;
+  if (!bulle.open) bulle.showModal();
+  $("#fermer-bulle").focus();
+}
+
+function brancherBulle() {
+  const bulle = $("#bulle-lab");
+  brancherDialogue(bulle, $("#fermer-bulle"));
+  // Fermée : on décharge la page pour arrêter ses animations et libérer la mémoire.
+  bulle.addEventListener("close", () => { $("#bulle-cadre").removeAttribute("src"); delete bulle.dataset.notion; });
+  $("#bulle-question").addEventListener("click", () => {
+    bulle.close();
+    marquerNavigation("accueil");
+    aller("#accueil");
+    $("#question").focus({ preventScroll: true });
+  });
 }
 
 let declencheurCatalogue = null;
@@ -670,6 +703,7 @@ async function demarrer() {
 
   brancherNavigation();
   brancherDefi();
+  brancherBulle();
   $("#bascule-theme").addEventListener("click", () => {
     const suivant = themeSombre() ? "light" : "dark";
     ecrireCle(preferences(), CLE_THEME, suivant);
