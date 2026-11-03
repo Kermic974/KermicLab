@@ -286,6 +286,25 @@
   </div>
 </dialog>
 
+<!-- Bulle : page interactive ouverte depuis le tableau de bord (hors du fil du chat) -->
+<dialog id="bulle-lab" class="bulle-lab" aria-labelledby="bulle-titre">
+  <div class="bulle-entete">
+    <div class="bulle-titres">
+      <p class="sur-titre" id="bulle-contexte"></p>
+      <h2 id="bulle-titre"></h2>
+    </div>
+    <div class="bulle-actions">
+      <a class="bouton-lien" id="bulle-plein-ecran" target="_blank" rel="noopener" data-i18n-title="ouvrirPage"><span data-i18n="pleinEcran"></span></a>
+      <button type="button" class="fermer-croix" id="fermer-bulle"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+    </div>
+  </div>
+  <iframe id="bulle-cadre" sandbox="allow-scripts" title=""></iframe>
+  <div class="bulle-pied">
+    <span class="doux petit" data-i18n="bulleAide"></span>
+    <button type="button" class="bouton doux-bouton" id="bulle-question"><span data-i18n="bulleQuestion"></span></button>
+  </div>
+</dialog>
+
 <!-- Défi express -->
 <dialog id="defi" aria-labelledby="defi-titre">
   <div class="dialogue-entete">

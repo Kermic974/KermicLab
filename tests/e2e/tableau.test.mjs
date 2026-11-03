@@ -86,7 +86,8 @@ test("tableau de bord : reprise, suggestion, matières et semaine calculées à 
   assert.equal(await page.locator("#semaine-vide").isVisible(), true);
 
   await page.locator("#suggestion button").click();
-  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+  await page.locator("#bulle-lab[open][data-notion=trigo-cercle]").waitFor();
+  await page.click("#fermer-bulle");
   assert.match(await texte(page, "#reprendre"), /Le cercle trigonométrique.*Maths : 1 \/ 4 notions explorées.*25 %/s);
   assert.match(await texte(page, "#suggestion"), /Les fractions|Le théorème de Pythagore|La dérivation/);
   assert.doesNotMatch(await texte(page, "#suggestion .encart"), /Le cercle trigonométrique/, "une notion déjà vue n'est plus suggérée");
@@ -190,6 +191,44 @@ test("mobile : navigation inférieure, mini-lab utilisable, aucun défilement ho
   await page.click(".nav-mobile [data-nav=profil]");
   await page.locator("#profil[open]").waitFor();
   await page.click("#fermer-profil");
+  const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  assert.ok(debord <= 0, `déborde de ${debord}px`);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("bulle : les pages ouvertes depuis le tableau de bord s'affichent par-dessus, hors du fil du chat", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  await choisirPseudo(page, "Bao");
+  await page.locator("#suggestion button").click();
+  const bulle = page.locator("#bulle-lab");
+  await page.frameLocator("#bulle-cadre").locator("[role=tab]").first().waitFor();
+  assert.equal(await texte(page, "#bulle-titre"), "Le cercle trigonométrique");
+  assert.equal(await texte(page, "#bulle-contexte"), "Maths · Seconde");
+  assert.match(await page.getAttribute("#bulle-plein-ecran", "href"), /\/maquettes\/trigo-cercle\?lang=fr$/);
+  assert.equal(await page.getAttribute("#bulle-cadre", "sandbox"), "allow-scripts");
+  assert.equal(await page.locator("#fil li[data-maquette]").count(), 0, "rien n'est ajouté au fil du chat");
+  // Fermer décharge la page ; « Rouvrir la page » la rouvre dans la bulle.
+  await page.keyboard.press("Escape");
+  await bulle.waitFor({ state: "hidden" });
+  await page.waitForFunction(() => !document.querySelector("#bulle-cadre").hasAttribute("src"));
+  await page.locator("#reprendre button").click();
+  await page.locator("#bulle-lab[open][data-notion=trigo-cercle]").waitFor();
+  // « Poser une question » ferme la bulle et place le curseur dans le chat.
+  await page.click("#bulle-question");
+  await bulle.waitFor({ state: "hidden" });
+  assert.equal(await page.evaluate(() => document.activeElement.id), "question");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("bulle mobile : plein écran, sans débordement", async () => {
+  const { page, contexte, erreurs } = await demarrer({ viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true });
+  await choisirPseudo(page, "Lou");
+  await page.locator("#suggestion button").click();
+  await page.frameLocator("#bulle-cadre").locator("[role=tab]").first().waitFor();
+  // Taille de mise en page (sans l'échelle de l'animation d'ouverture).
+  assert.deepEqual(await page.locator("#bulle-lab").evaluate((d) => [d.offsetWidth, d.offsetHeight]), [360, 740]);
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   assert.deepEqual(erreurs, []);

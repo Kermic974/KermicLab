@@ -121,8 +121,11 @@ test("catalogue : tiroir « Explorer », recherche sans accents, ouverture direc
   assert.equal(await page.locator("#catalogue-vide").isVisible(), true);
   await page.fill("#recherche-notion", "");
   await barre.locator(".notion", { hasText: "Le cercle trigonométrique" }).click();
-  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+  await page.locator("#bulle-lab[open][data-notion=trigo-cercle] #bulle-cadre").waitFor();
   assert.equal(requetes.length, 0, "aucun appel au chat : la page est ouverte directement");
+  assert.equal(await page.locator("#fil li[data-maquette]").count(), 0, "ouverte dans une bulle, pas dans le fil");
+  await page.keyboard.press("Escape");
+  await page.locator("#bulle-lab").waitFor({ state: "hidden" });
   await barre.waitFor({ state: "hidden" }); // le tiroir se referme après le choix
   await page.click("#ouvrir-catalogue");
   const bouton = barre.locator("[data-notion=trigo-cercle]");
@@ -163,7 +166,7 @@ test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans d�
   await page.waitForFunction(() => !document.querySelector("#catalogue").classList.contains("ouvert"));
   await explorer.click();
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
-  await page.locator("li[data-maquette=fractions] iframe").waitFor();
+  await page.locator("#bulle-lab[open][data-notion=fractions] #bulle-cadre").waitFor();
   assert.equal(await page.locator("#voile-catalogue").isVisible(), false, "le tiroir se referme après le choix");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);

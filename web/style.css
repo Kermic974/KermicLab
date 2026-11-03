@@ -427,6 +427,22 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .badge.verrouille { opacity: .6; }
 .note-locale { margin: 16px 0 4px; font-size: .85rem; }
 
+/* Bulle : page interactive ouverte depuis le tableau de bord */
+dialog.bulle-lab {
+  width: min(1080px, calc(100vw - 32px)); height: min(860px, calc(100dvh - 32px)); max-height: none; padding: 0;
+  display: none; flex-direction: column; overflow: hidden;
+}
+dialog.bulle-lab[open] { display: flex; }
+.bulle-entete { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--bord); }
+.bulle-titres { min-width: 0; }
+.bulle-titres h2 { font-size: 1.15rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bulle-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.bulle-actions .bouton-lien { padding: 7px 12px; font-size: .88rem; }
+.bulle-actions .bouton-lien::after { content: "↗"; }
+#bulle-cadre { flex: 1; width: 100%; min-height: 0; border: 0; background: #fff; display: block; }
+.bulle-pied { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; padding: 12px 20px; border-top: 1px solid var(--bord); background: var(--surface-2); }
+.bulle-pied .bouton { min-height: 40px; }
+
 /* Défi express */
 #defi { width: min(560px, calc(100vw - 24px)); }
 .defi-haut { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
@@ -567,6 +583,11 @@ main.prose p, main.prose ul { margin: 0 0 12px; }
   .nav-mobile-bouton[aria-current="page"], .nav-mobile-bouton[aria-expanded="true"] { color: var(--accent-doux-texte); }
   .nav-mobile-bouton[aria-current="page"] .nav-mobile-ico, .nav-mobile-bouton[aria-expanded="true"] .nav-mobile-ico { background: var(--accent-doux); }
   dialog { padding: 18px; }
+  dialog.bulle-lab { width: 100vw; height: 100dvh; max-width: 100vw; border-radius: 0; border: 0; padding: 0; }
+  .bulle-entete { padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) 12px max(12px, env(safe-area-inset-left, 0px)); }
+  .bulle-pied { padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+  .bulle-pied .doux { display: none; }
+  .bulle-pied .bouton { width: 100%; }
   #dialogue-pseudo { padding: 22px; }
 }
 @media (max-width: 380px) {
