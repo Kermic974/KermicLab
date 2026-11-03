@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- CSP propre à la page (hash du script recalculé par npm run build) ; les styles en ligne de la maquette restent autorisés. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Mgpcw8LVFCY/3YRmGtzWnRMbG1qRLfc/MuT009YlTgQ='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <title>KermicLab · Tableau de bord</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout : sidebar fixe (desktop) → rail d'icônes (tablette) → barre inférieure (mobile) ; contenu en rangées de cartes, max 1240px. */
 :root {
@@ -87,6 +88,10 @@ button { cursor: pointer; }
 .math { font-family: var(--font-math); font-variant-numeric: tabular-nums; }
 .skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--primary); color: var(--primary-ink); padding: 10px 14px; border-radius: var(--r-sm); text-decoration: none; font-weight: 600; }
 .skip:focus { top: 12px; }
+.apercu { display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; padding: 10px 14px; border-radius: var(--r-md); background: var(--surface-2); border: 1px dashed var(--line-strong); font-size: 13.5px; color: var(--muted); }
+.apercu b { color: var(--ink-2); }
+.apercu a { color: var(--primary); font-weight: 650; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
+.apercu a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Coque applicative ---------- */
 .app { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); min-height: 100vh; background: linear-gradient(to right, var(--surface) calc(var(--sidebar) - 1px), var(--line) 0, var(--line) var(--sidebar), transparent 0); }
@@ -543,7 +548,7 @@ dialog[open]::backdrop { animation: fade .25s ease; }
 
 <div class="app">
   <aside class="sidebar" aria-label="Navigation principale">
-    <a class="brand" href="#contenu" aria-label="KermicLab, laboratoire interactif — accueil">
+    <a class="brand" href="../" aria-label="KermicLab, laboratoire interactif : retour au chat">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 26 26" fill="none" stroke-linecap="round">
           <circle cx="13" cy="13" r="9" stroke="#fff" stroke-opacity=".55" stroke-width="1.8"/>
@@ -581,6 +586,7 @@ dialog[open]::backdrop { animation: fade .25s ease; }
 
   <main class="main" id="contenu" tabindex="-1">
     <div class="wrap">
+      <p class="apercu" role="note"><span><b>Aperçu du futur tableau de bord.</b> Les données affichées (Lucas, XP, notions) sont fictives.</span><a href="../">Retour au chat <svg class="ico sm" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
 
       <header class="topbar" id="sec-accueil">
         <div class="hello">

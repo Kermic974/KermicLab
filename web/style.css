@@ -96,6 +96,11 @@ textarea {
 .serie-active .icone-flamme { filter: none; opacity: 1; }
 .pastille-niveau { display: inline-flex; flex-direction: column; align-items: stretch; gap: 2px; font-weight: 700; font-size: .78rem; line-height: 1.1; }
 .pastille-niveau progress { width: 56px; height: 5px; }
+.bouton-dashboard {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; text-decoration: none;
+  background: var(--surface); color: var(--texte); border: 1px solid var(--bord); box-shadow: var(--ombre); font-size: .9rem; white-space: nowrap;
+}
+.bouton-dashboard:hover { background: var(--fond-2); }
 .pastille-progres.pulse { animation: pulse .6s ease; }
 .gain {
   position: absolute; right: 10px; top: 100%; pointer-events: none; font-weight: 800; font-size: .8rem;
@@ -326,6 +331,8 @@ main.prose { display: block; max-width: var(--largeur); margin: 0 auto; padding:
   .entete-interieur { padding: 8px 12px; }
   .pastille-progres { gap: 8px; padding: 5px 10px; }
   .pastille-niveau progress { width: 40px; }
+  .libelle-dashboard { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .bouton-dashboard { padding: 7px 10px; }
   body > main { padding: 12px; }
   .zone-saisie { padding-left: 12px; padding-right: 12px; }
   .avatar { display: none; }
