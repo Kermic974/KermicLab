@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f5fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f1f" media="(prefers-color-scheme: dark)">
+<title>Feuille de route – KermicLab</title>
+<meta name="description" content="KermicLab — feuille de route : de trigoLab à une plateforme d'apprentissage multi-matières, explicable et respectueuse des données des enfants.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="prose feuille-route" id="contenu">
+<p class="fr-retour"><a href="./">← KermicLab</a></p>
+
+<header class="fr-entete">
+  <p class="fr-surtitre">trigoLab → KermicLab · version 2 · novembre 2026</p>
+  <h1>Feuille de route</h1>
+  <p class="fr-chapeau">Transformer un laboratoire de trigonométrie en une plateforme d'apprentissage multi-matières,
+    personnalisée et familiale, <strong>sans renoncer à ce qui fait KermicLab</strong> : des pages déterministes,
+    servies sans token, et aucune donnée personnelle par défaut.</p>
+  <ul class="fr-etiquettes" aria-label="Thèmes">
+    <li>Local d'abord</li><li>Explicable</li><li>Sans IA obligatoire</li><li>Public mineur</li><li>Zéro budget au départ</li>
+  </ul>
+</header>
+
+<nav class="fr-sommaire" aria-label="Sommaire">
+  <ol>
+    <li><a href="#synthese">Synthèse</a></li>
+    <li><a href="#acquis">Où en est-on vraiment</a></li>
+    <li><a href="#principes">Principes directeurs</a></li>
+    <li><a href="#phases">Les phases</a></li>
+    <li><a href="#pedagogie">Modèle pédagogique</a></li>
+    <li><a href="#tuteur">Tuteur IA</a></li>
+    <li><a href="#familles">Familles et données</a></li>
+    <li><a href="#technique">Architecture et données</a></li>
+    <li><a href="#mesure">Comment on mesure</a></li>
+    <li><a href="#risques">Risques</a></li>
+    <li><a href="#non">Ce qu'on ne fait pas</a></li>
+    <li><a href="#revision">Notes de révision</a></li>
+  </ol>
+</nav>
+
+<section id="synthese" aria-labelledby="t-synthese">
+<h2 id="t-synthese">Synthèse</h2>
+<p>On ne repart pas de zéro : le catalogue, le gabarit de notion, la progression locale et le chat existent déjà.
+  La suite consiste à <strong>structurer</strong> (un référentiel de notions reliées par leurs prérequis),
+  à <strong>personnaliser localement</strong> (parcours et cahier de vacances dans le navigateur, sans compte),
+  puis seulement à <strong>ouvrir les comptes familles et le tuteur IA</strong>, chacun derrière un point de
+  contrôle humain (juridique pour les comptes, budget pour l'IA).</p>
+<ol class="fr-cartes">
+  <li><strong>Fiabiliser</strong><span>Une CI qui bloque vraiment et une relecture pédagogique tracée des 170+ notions.</span></li>
+  <li><strong>Structurer</strong><span>Prérequis, compétences et niveaux décrits dans chaque notion, vérifiés par la CI.</span></li>
+  <li><strong>Personnaliser</strong><span>Parcours, révisions et cahier de vacances calculés dans le navigateur, explicables.</span></li>
+  <li><strong>Accompagner</strong><span>Comptes familles et tuteur IA, quand le cadre juridique et le budget sont en place.</span></li>
+</ol>
+<p class="fr-encadre"><strong>Principe directeur.</strong> KermicLab doit rester entièrement utilisable sans IA et
+  sans compte. L'IA améliore l'accompagnement ; le compte permet de retrouver sa progression ailleurs. Aucun des deux
+  n'est indispensable pour apprendre.</p>
+</section>
+
+<section id="acquis" aria-labelledby="t-acquis">
+<h2 id="t-acquis">Où en est-on vraiment</h2>
+<p>La première version de cette feuille de route décrivait un projet « centré sur la trigonométrie ». Le dépôt
+  est en réalité plus avancé : plusieurs étapes prévues pour plus tard sont déjà faites, et la roadmap doit partir
+  de là.</p>
+<div class="fr-tableau">
+<table>
+  <thead><tr><th scope="col">Capacité</th><th scope="col">État</th><th scope="col">Ce qu'il reste</th></tr></thead>
+  <tbody>
+    <tr><td>Catalogue multi-matières</td><td><span class="fr-etat fait">En ligne</span> 170+ notions : maths, physique-chimie, SVT, histoire, géographie, EMC, philosophie, français, SES</td><td>Relecture pédagogique systématique, métadonnées de prérequis</td></tr>
+    <tr><td>Gabarit de notion (<code>contenu.json</code> → page)</td><td><span class="fr-etat fait">En ligne</span> ADR 0011</td><td>En faire le contrat officiel des « labs » : événements, exercices notés</td></tr>
+    <tr><td>Cercle trigonométrique</td><td><span class="fr-etat fait">v1.4</span> 3 méthodes, modes Explorer / Apprendre / Jouer</td><td>Mode Comparer (v1.5), hors ligne (v2.0)</td></tr>
+    <tr><td>Routage déterministe et chat</td><td><span class="fr-etat fait">En ligne</span> zéro token sur le catalogue, repli sans clé API</td><td>Clé API avec plafond quand un budget existe (ADR 0006)</td></tr>
+    <tr><td>Tableau de bord, pseudo, progression</td><td><span class="fr-etat fait">En ligne</span> local, session ou mémorisé (ADR 0012)</td><td>Notion de maîtrise et de révision, au-delà de « notion vue »</td></tr>
+    <tr><td>Comptes parent et profils élèves</td><td><span class="fr-etat partiel">Proposé</span> ADR 0010, code OAuth en place, désactivé</td><td>Validation juridique (RGPD, consentement des moins de 15 ans), AIPD</td></tr>
+    <tr><td>KPI anonymes, sauvegardes</td><td><span class="fr-etat fait">En ligne</span> D1 + R2, ni IP ni texte</td><td>Indicateurs pédagogiques agrégés</td></tr>
+    <tr><td>Contrôle qualité des pages</td><td><span class="fr-etat partiel">Technique : fait</span> sécurité (<code>check:pages</code>), routage, tests navigateur de chaque notion (onglets, CSP, mobile)</td><td>Relecture pédagogique outillée : aujourd'hui 100&nbsp;% humaine et sans trace</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>Conséquence :</strong> le risque principal n'est plus de « généraliser la trigonométrie », mais de garantir
+  la <strong>qualité</strong> d'un catalogue déjà large, destiné à des mineurs, et de lui donner une
+  <strong>structure</strong> (prérequis, maîtrise) pour que la personnalisation soit possible.</p>
+</section>
+
+<section id="principes" aria-labelledby="t-principes">
+<h2 id="t-principes">Principes directeurs</h2>
+<ul class="fr-liste">
+  <li><strong>Déterminisme d'abord.</strong> Une question couverte par le catalogue donne toujours la même page, sans
+    appel à un modèle. Les recommandations suivent la même règle : mêmes données, même proposition, avec la raison affichée.</li>
+  <li><strong>Local d'abord.</strong> Tout ce qui peut fonctionner dans le navigateur (progression, maîtrise, parcours,
+    cahier de vacances) y fonctionne. Le serveur ne sert qu'à synchroniser, et seulement avec un compte.</li>
+  <li><strong>Points de contrôle humains.</strong> Juridique avant les comptes, budget avant l'IA, relecture avant
+    publication d'une notion. Une phase ne démarre pas tant que son point de contrôle n'est pas levé ; les autres avancent.</li>
+  <li><strong>Une phase = une condition de sortie mesurable.</strong> Pas de date imposée : l'ordre et les critères
+    comptent plus que le calendrier.</li>
+  <li><strong>Pas de complexité anticipée.</strong> Un seul Worker, D1 et R2 tant que le besoin ne prouve pas le contraire.</li>
+</ul>
+</section>
+
+<section id="phases" aria-labelledby="t-phases">
+<h2 id="t-phases">Les phases</h2>
+<p>Les phases sont ordonnées par dépendance. Les phases 2 et 3 peuvent avancer en parallèle de la préparation
+  juridique de la phase 4, qui prend du temps et ne dépend pas du code.</p>
+
+<ol class="fr-phases">
+<li class="fr-phase">
+  <details open>
+  <summary><span class="fr-num">0</span><span class="fr-titre-phase">Socle fiable</span><span class="fr-horizon maintenant">Maintenant</span></summary>
+  <div class="fr-corps">
+  <p><strong>Objectif :</strong> pouvoir tout faire évoluer sans casser ce qui est en ligne.</p>
+  <ul>
+    <li>Protéger <code>main</code> : CI obligatoire avant fusion (action manuelle du propriétaire).</li>
+    <li>Les tests navigateur couvrent déjà chaque notion du gabarit : les appliquer aussi aux pages écrites à la main
+      et au catalogue privé, et en faire un contrôle obligatoire de la PR.</li>
+    <li>Grille de relecture pédagogique (exactitude, progression collège → lycée, adaptation à l'âge) et statut
+      « relue » dans chaque fiche, appliqués d'abord aux notions les plus consultées.</li>
+    <li>Versions séparées : plateforme (<code>package.json</code>), notion (<code>fiche.md</code>), application du cercle.</li>
+    <li>Migrations D1 versionnées et test de fumée après déploiement, avec retour arrière.</li>
+  </ul>
+  <p class="fr-sortie"><strong>Condition de sortie :</strong> une PR qui casse une page du catalogue est bloquée par la CI ;
+    un déploiement raté est détecté et annulé automatiquement ; les notions les plus consultées sont marquées « relues ».</p>
+  </div>
+  </details>
+</li>
+
+<li class="fr-phase">
+  <details open>
+  <summary><span class="fr-num">1</span><span class="fr-titre-phase">Référentiel et contrat des labs</span><span class="fr-horizon maintenant">Maintenant</span></summary>
+  <div class="fr-corps">
+  <p><strong>Objectif :</strong> décrire chaque notion de façon structurée, pour qu'un programme puisse raisonner dessus.</p>
+  <ul>
+    <li>Champs ajoutés à <code>fiche.md</code> : <code>prerequis</code>, <code>competences</code>,
+      <code>niveaux</code> normalisés (cycle 3, cycle 4, seconde, première, terminale), <code>duree</code> estimée.</li>
+    <li>Graphe de prérequis vérifié en CI : identifiants existants, aucun cycle, niveaux cohérents.</li>
+    <li>Contrat d'événements des pages : une page autonome n'a pas d'accès réseau (<code>connect-src 'none'</code>) ;
+      elle signale <em>démarré</em>, <em>indice demandé</em>, <em>réponse</em>, <em>terminé</em> à la page qui
+      l'affiche par <code>postMessage</code>, avec un schéma versionné. C'est la page d'accueil qui enregistre.</li>
+    <li>Exercices du gabarit notés de façon déterministe (réponse attendue, tolérance, erreur fréquente associée).</li>
+    <li>Le cercle trigonométrique devient la première page conforme de bout en bout : il sert de référence.</li>
+  </ul>
+  <p class="fr-sortie"><strong>Condition de sortie :</strong> ajouter une notion, avec ses prérequis et ses exercices notés,
+    se fait par un dossier et une CI verte, sans toucher au code de la plateforme.</p>
+  </div>
+  </details>
+</li>
+
+<li class="fr-phase">
+  <details open>
+  <summary><span class="fr-num">2</span><span class="fr-titre-phase">Parcours et cahier de vacances, sans compte</span><span class="fr-horizon ensuite">Ensuite</span></summary>
+  <div class="fr-corps">
+  <p><strong>Objectif :</strong> une vraie personnalisation, entièrement dans le navigateur, donc sans enjeu de données.</p>
+  <ul>
+    <li>Maîtrise par notion : <em>non commencée → découverte → en cours → maîtrisée</em>, puis <em>à revoir</em>
+      quand la révision est due.</li>
+    <li>Recommandation déterministe : prochaine notion dont les prérequis sont maîtrisés, ou révision due.
+      Chaque proposition affiche sa raison (« parce que tu maîtrises les fractions »).</li>
+    <li>Révision espacée simple (boîtes de Leitner) branchée sur le défi express existant.</li>
+    <li>Cahier de vacances : niveau, période, rythme → diagnostic court → planning jour par jour. Une absence
+      recalcule le planning sans pénalité ni message culpabilisant.</li>
+    <li>Export et import de la progression en fichier, pour changer d'appareil sans compte.</li>
+  </ul>
+  <p class="fr-sortie"><strong>Condition de sortie :</strong> un élève peut suivre un cahier de vacances complet sur
+    une matière et un niveau, sans compte et sans qu'aucune donnée le concernant ne quitte son navigateur.</p>
+  <div class="fr-tableau">
+  <table>
+    <caption>Une journée type du cahier de vacances (20 à 30 minutes)</caption>
+    <thead><tr><th scope="col">Étape</th><th scope="col">Activité</th><th scope="col">But</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Révision courte (2 à 3 questions dues)</td><td>Rappel actif</td></tr>
+      <tr><td>2</td><td>Notion du jour, niveau adapté</td><td>Comprendre</td></tr>
+      <tr><td>3</td><td>Manipulation dans la page interactive</td><td>Expérimenter</td></tr>
+      <tr><td>4</td><td>Exercices notés</td><td>Appliquer</td></tr>
+      <tr><td>5</td><td>Mini-bilan et badge</td><td>Valider, se motiver</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </details>
+</li>
+
+<li class="fr-phase">
+  <details>
+  <summary><span class="fr-num">3</span><span class="fr-titre-phase">Tuteur borné</span><span class="fr-horizon ensuite">Ensuite · budget requis</span></summary>
+  <div class="fr-corps">
+  <p><strong>Objectif :</strong> aider l'élève bloqué, sans lui donner la réponse et sans devenir la source de vérité.</p>
+  <ul>
+    <li><strong>D'abord sans IA :</strong> indices gradués rédigés dans <code>contenu.json</code> (3 niveaux par exercice).
+      Ils restent la réponse par défaut et le repli quand l'IA est indisponible.</li>
+    <li><strong>Puis avec IA</strong>, une fois la clé API et son plafond de dépense en place : reformulation et dialogue
+      socratique, avec le contexte de la notion, de l'exercice, de l'erreur et des indices déjà donnés.</li>
+    <li>Actions limitées : reformuler, questionner, donner l'indice suivant, ouvrir une page du catalogue.</li>
+    <li>Jeu de dialogues de référence évalué automatiquement (exactitude, ne donne pas la réponse, ton adapté à l'âge,
+      aucune donnée personnelle demandée, résistance aux injections).</li>
+    <li>Budget quotidien global, coupe-circuit, aucun texte de conversation conservé.</li>
+  </ul>
+  <p class="fr-sortie"><strong>Condition de sortie :</strong> le jeu d'évaluation passe en CI, le coût par session aidée
+    est mesuré et sous le plafond, et couper l'IA ne casse aucun parcours.</p>
+  </div>
+  </details>
+</li>
+
+<li class="fr-phase">
+  <details>
+  <summary><span class="fr-num">4</span><span class="fr-titre-phase">Comptes et familles</span><span class="fr-horizon plus-tard">Après validation juridique</span></summary>
+  <div class="fr-corps">
+  <p><strong>Objectif :</strong> retrouver sa progression sur plusieurs appareils et permettre au parent d'accompagner.</p>
+  <ul>
+    <li>Préalable, à lancer dès maintenant en parallèle : RGPD niveau 1, AIPD, texte de consentement parental
+      pour les moins de 15 ans, validation juridique.</li>
+    <li>Compte parent (OAuth déjà codé), profils élèves sans connexion autonome, tranche d'âge plutôt que date de naissance (ADR 0010).</li>
+    <li>Consentement versionné et révocable, stocké avec sa version.</li>
+    <li>Synchronisation de la progression locale, sur action explicite (« enregistrer ma progression dans le compte »).</li>
+    <li>Tableau de bord parent agrégé : notions travaillées, difficultés persistantes, suggestions d'accompagnement.</li>
+    <li>Export et suppression du compte en un geste, effacement en cascade.</li>
+  </ul>
+  <p class="fr-sortie"><strong>Condition de sortie :</strong> AIPD validée, parcours complet testé (création, consentement,
+    synchronisation, export, suppression) et aucune donnée d'enfant accessible sans le compte parent.</p>
+  </div>
+  </details>
+</li>
+
+<li class="fr-phase">
+  <details>
+  <summary><span class="fr-num">5</span><span class="fr-titre-phase">Fabrique de contenus</span><span class="fr-horizon plus-tard">Plus tard</span></summary>
+  <div class="fr-corps">
+  <p><strong>Objectif :</strong> produire et maintenir des notions de qualité plus vite que le catalogue ne grandit.</p>
+  <ul>
+    <li>Préparation de notions candidates par IA à partir des issues <code>maquette-manquante</code>, relecture humaine obligatoire.</li>
+    <li>Prévisualisation de chaque PR de notion, grille de relecture intégrée à la revue.</li>
+    <li>Traductions (anglais d'abord) avec le même circuit de validation.</li>
+    <li>Indicateurs pédagogiques agrégés : où les élèves bloquent, quels indices servent, quelles notions sont abandonnées.</li>
+  </ul>
+  <p class="fr-sortie"><strong>Condition de sortie :</strong> le délai entre une demande non couverte et une notion
+    publiée et relue est mesuré, et il diminue.</p>
+  </div>
+  </details>
+</li>
+
+<li class="fr-phase">
+  <details>
+  <summary><span class="fr-num">6</span><span class="fr-titre-phase">Options conditionnelles</span><span class="fr-horizon plus-tard">Si le besoin est prouvé</span></summary>
+  <div class="fr-corps">
+  <p>Chaque option a un <strong>déclencheur</strong> : on ne la lance pas avant.</p>
+  <ul>
+    <li><strong>Application hors ligne (PWA)</strong> — quand une part significative des visites vient du mobile avec
+      reprise de session. Déjà prévue pour le cercle (v2.0).</li>
+    <li><strong>Recherche sémantique</strong> — quand le routage par mots-clés laisse trop de questions sans page
+      alors qu'une notion existe.</li>
+    <li><strong>Espace enseignant et classes</strong> — après les familles, et après un nouvel avis juridique.</li>
+    <li><strong>Personnalisation statistique</strong> — seulement si les données agrégées montrent un gain sur le moteur déterministe.</li>
+    <li><strong>Application native</strong> — seulement si la PWA ne suffit pas.</li>
+  </ul>
+  </div>
+  </details>
+</li>
+</ol>
+
+<p class="fr-encadre"><strong>Piste parallèle — cercle trigonométrique.</strong> v1.5 : mode Comparer (deux méthodes
+  côte à côte, résultat commun vérifié). v2.0 : hors ligne. Ces versions servent aussi de banc d'essai au contrat
+  d'événements de la phase 1.</p>
+</section>
+
+<section id="pedagogie" aria-labelledby="t-pedagogie">
+<h2 id="t-pedagogie">Modèle pédagogique</h2>
+<pre class="fr-schema" aria-label="Arborescence du référentiel">Matière
+└── Domaine
+    └── Notion (une page, collège → lycée)
+        ├── niveaux dépliables (intuition → formel)
+        ├── prérequis        → autres notions
+        ├── compétences
+        ├── exercices notés  → erreurs fréquentes → indices gradués
+        ├── page interactive → événements (postMessage)
+        └── mise en situation</pre>
+<p>La notion reste l'unité : une page autonome couvrant plusieurs niveaux, comme aujourd'hui. On n'introduit pas de
+  niveau « chapitre » tant qu'il n'apporte rien au parcours.</p>
+<p><strong>Exemple de fiche enrichie</strong> (les nouveaux champs sont facultatifs, la CI les vérifie quand ils sont présents) :</p>
+<pre class="fr-code"><code>id: fractions
+titre: Les fractions
+sujet: maths/nombres
+version: 1.2.0
+niveaux: [cycle-3, cycle-4]
+prerequis: [nombres-decimaux]
+competences: [comparer-fractions, simplifier, additionner-fractions]
+duree: 20</code></pre>
+</section>
+
+<section id="tuteur" aria-labelledby="t-tuteur">
+<h2 id="t-tuteur">Tuteur IA : les garde-fous</h2>
+<div class="fr-deux">
+  <div>
+    <h3>Ce qu'il reçoit</h3>
+    <ul>
+      <li>La notion, l'exercice et le niveau visé</li>
+      <li>Le contenu validé de la page</li>
+      <li>L'erreur commise et les indices déjà donnés</li>
+      <li>Une tranche d'âge, jamais d'identité</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Ce qu'il ne fait jamais</h3>
+    <ul>
+      <li>Noter ou valider seul une maîtrise</li>
+      <li>Demander ou retenir une donnée personnelle</li>
+      <li>Poser un diagnostic médical ou psychologique</li>
+      <li>Conserver le texte de la conversation</li>
+    </ul>
+  </div>
+</div>
+<p>Modèle utilisé : celui du chat (rapide et économique), avec modération en entrée et en sortie, plafond de dépense
+  global et coupe-circuit. Le choix d'un modèle plus puissant ne se fait que sur mesure, à partir du jeu d'évaluation.</p>
+</section>
+
+<section id="familles" aria-labelledby="t-familles">
+<h2 id="t-familles">Familles et données</h2>
+<ul class="fr-liste">
+  <li><strong>Collecter le minimum :</strong> pseudo ou prénom affiché, tranche d'âge, langue. Pas de nom de famille,
+    pas de date de naissance, pas d'école.</li>
+  <li><strong>Privé par défaut,</strong> sans publicité ni revente, sans classement entre enfants.</li>
+  <li><strong>Le parent voit des tendances, pas une surveillance :</strong> notions travaillées et difficultés, pas le
+    détail minute par minute ni les échanges avec le tuteur.</li>
+  <li><strong>Consentement versionné et révocable ;</strong> export et suppression accessibles en un geste.</li>
+  <li><strong>Séparation stricte</strong> entre KPI anonymes et données de compte : aucune clé ne relie les deux.</li>
+</ul>
+</section>
+
+<section id="technique" aria-labelledby="t-technique">
+<h2 id="t-technique">Architecture et données</h2>
+<p>Un seul Worker Cloudflare, organisé en modules, reste la cible. Les pages restent des fichiers autonomes servis tels quels.</p>
+<pre class="fr-schema" aria-label="Schéma d'architecture">Navigateur : tableau de bord + pages autonomes (iframe isolée)
+   │  progression, maîtrise, parcours  → stockage local
+   │  événements des pages             → postMessage → tableau de bord
+   ▼
+Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
+   │
+   ├── Git    sources des notions, schémas, historique
+   ├── R2     pages publiées, sauvegardes, exports
+   └── D1     KPI anonymes · comptes, profils, consentements, progression synchronisée</pre>
+<div class="fr-tableau">
+<table>
+  <caption>Tables à ajouter (noms en français, comme le reste du code)</caption>
+  <thead><tr><th scope="col">Phase</th><th scope="col">Tables</th></tr></thead>
+  <tbody>
+    <tr><td>4 — comptes (ADR 0010)</td><td><code>comptes</code>, <code>eleves</code>, <code>consentements</code></td></tr>
+    <tr><td>4 — progression synchronisée</td><td><code>maitrises</code>, <code>revisions</code>, <code>parcours</code>, <code>tentatives</code> (résultat seulement, jamais de texte libre)</td></tr>
+    <tr><td>4 — traçabilité</td><td><code>journal_acces</code> (actions sur les données d'un enfant)</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Avant la phase 4, aucune nouvelle table n'est nécessaire : le référentiel vit dans Git, la progression dans le navigateur.</p>
+</section>
+
+<section id="mesure" aria-labelledby="t-mesure">
+<h2 id="t-mesure">Comment on mesure</h2>
+<p>Des indicateurs agrégés et anonymes uniquement, déjà compatibles avec les KPI actuels.</p>
+<div class="fr-tableau">
+<table>
+  <thead><tr><th scope="col">Indicateur</th><th scope="col">Pourquoi</th><th scope="col">Phase</th></tr></thead>
+  <tbody>
+    <tr><td>Part des questions servies par le catalogue</td><td>Couverture, coût en tokens</td><td>Déjà mesuré</td></tr>
+    <tr><td>Notions marquées « relues »</td><td>Qualité du contenu</td><td>0</td></tr>
+    <tr><td>Notions avec prérequis renseignés</td><td>Structure du référentiel</td><td>1</td></tr>
+    <tr><td>Exercices réussis après un indice</td><td>Efficacité des indices</td><td>2–3</td></tr>
+    <tr><td>Journées de cahier de vacances terminées</td><td>Engagement</td><td>2</td></tr>
+    <tr><td>Coût IA par session aidée</td><td>Soutenabilité</td><td>3</td></tr>
+    <tr><td>Délai demande → notion publiée</td><td>Capacité de production</td><td>5</td></tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+<section id="risques" aria-labelledby="t-risques">
+<h2 id="t-risques">Risques</h2>
+<div class="fr-tableau">
+<table>
+  <thead><tr><th scope="col">Risque</th><th scope="col">Effet</th><th scope="col">Parade</th></tr></thead>
+  <tbody>
+    <tr><td>Erreur de contenu dans une notion</td><td>Un enfant apprend une chose fausse</td><td>Grille de relecture, signalement en un clic, version de notion corrigeable vite</td></tr>
+    <tr><td>Comptes ouverts sans cadre juridique</td><td>Non-conformité, perte de confiance</td><td>Phase 4 bloquée tant que l'AIPD n'est pas validée</td></tr>
+    <tr><td>Coût de l'IA hors de contrôle</td><td>Arrêt du service</td><td>Plafond de dépense, coupe-circuit, repli déterministe</td></tr>
+    <tr><td>Tuteur qui donne la réponse ou dérive</td><td>Apprentissage court-circuité</td><td>Jeu d'évaluation en CI, actions limitées</td></tr>
+    <tr><td>Catalogue qui grandit plus vite que la relecture</td><td>Qualité inégale</td><td>Priorité à la qualité sur le volume ; statut « relue » par notion</td></tr>
+    <tr><td>Recommandations opaques</td><td>Élève ou parent perdu</td><td>Raison affichée pour chaque proposition</td></tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+<section id="non" aria-labelledby="t-non">
+<h2 id="t-non">Ce qu'on ne fait pas</h2>
+<ul class="fr-liste fr-non">
+  <li>Pas de microservices ni de base vectorielle avant un besoin démontré.</li>
+  <li>Pas d'application native avant que la version web hors ligne ait montré ses limites.</li>
+  <li>Pas d'apprentissage automatique sur les données des enfants pour personnaliser.</li>
+  <li>Pas de classement entre élèves, pas de notifications culpabilisantes.</li>
+  <li>Pas de compte enfant autonome au démarrage.</li>
+  <li>Pas de publicité.</li>
+</ul>
+</section>
+
+<section id="revision" aria-labelledby="t-revision">
+<h2 id="t-revision">Notes de révision</h2>
+<p>Cette version reprend la proposition initiale « trigoLab → KermicLab » et la corrige sur les points suivants.</p>
+<div class="fr-tableau">
+<table>
+  <thead><tr><th scope="col">Proposition initiale</th><th scope="col">Version révisée</th></tr></thead>
+  <tbody>
+    <tr><td>Audit d'un projet « centré sur la trigonométrie »</td><td>Audit à jour : 170+ notions, gabarit, progression locale et comptes déjà amorcés</td></tr>
+    <tr><td>Progression locale et catalogue multi-matières prévus au MVP</td><td>Déjà livrés : retirés des phases à venir</td></tr>
+    <tr><td>Cahier de vacances après le graphe de prérequis, comptes juste après</td><td>Cahier de vacances entièrement local, avant les comptes : forte valeur, aucun enjeu de données</td></tr>
+    <tr><td>Phases sans condition de sortie pour la plupart</td><td>Une condition mesurable et un point de contrôle humain par phase</td></tr>
+    <tr><td>Labs qui émettent des événements, sans dire comment</td><td>Contrat <code>postMessage</code> versionné, compatible avec la CSP sans réseau des pages</td></tr>
+    <tr><td>Tables et API en anglais</td><td>Noms en français, alignés sur l'ADR 0010</td></tr>
+    <tr><td>Qualité du contenu peu présente</td><td>Phase 0 dédiée : relecture pédagogique tracée ; les tests techniques existants deviennent bloquants</td></tr>
+    <tr><td>Coût et mode zéro budget absents</td><td>IA conditionnée à un plafond de dépense, repli sans IA garanti</td></tr>
+    <tr><td>Options long terme sans critère</td><td>Chaque option a un déclencheur explicite</td></tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+<hr>
+<section lang="en" aria-labelledby="t-en">
+<h2 id="t-en">Roadmap (English summary)</h2>
+<p>KermicLab grows from trigoLab without a rewrite. Phase 0 makes quality enforceable (blocking CI on the existing
+  browser tests, tracked pedagogical review). Phase 1 adds structure: prerequisites and skills in each concept, checked
+  by CI, and a versioned <code>postMessage</code> event contract for interactive pages. Phase 2 brings learning paths,
+  spaced review and a holiday workbook that run entirely in the browser, with no account. Phase 3 adds a bounded AI
+  tutor once an API budget with a spending cap exists, always backed by written hints. Phase 4 opens parent accounts
+  and child profiles only after legal validation and a DPIA. Later phases cover a content pipeline and options
+  (offline app, semantic search, teacher spaces) that start only when a measured need triggers them. KermicLab must
+  always work without AI and without an account.</p>
+</section>
+
+<p class="fr-retour"><a href="./">← KermicLab</a></p>
+</main>
+</body>
+</html>

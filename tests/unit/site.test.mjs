@@ -43,3 +43,20 @@ test("les CSS et JS du chat portent l'empreinte de leur contenu (pas de mélange
   assert.match(app, /from "\.\/progression\.js\?v=[0-9a-f]{10}"/);
   assert.match(confidentialite, /href="style\.css\?v=[0-9a-f]{10}"/);
 });
+
+test("la feuille de route est publiée et accessible entre « Profil et paramètres » et « Signaler un problème »", async () => {
+  const [html, page] = await Promise.all([
+    readFile(`${racine}web/index.html`, "utf8"),
+    readFile(`${racine}dist/feuille-de-route.html`, "utf8")
+  ]);
+  const ordre = ["navParametres", "navFeuilleDeRoute", 'data-nav="aide"'].map((cle) => html.indexOf(cle));
+  assert.ok(ordre.every((i) => i > 0) && ordre[0] < ordre[1] && ordre[1] < ordre[2], "ordre de la barre latérale");
+  assert.match(html, /<a class="nav-bouton" href="feuille-de-route\.html">/);
+  assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
+  // Page de texte sans script ni style en ligne : compatible avec la CSP du site.
+  assert.doesNotMatch(page, /<script|<style|style="/);
+  for (const l of ["fr", "en"]) {
+    const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
+    assert.ok(textes.navFeuilleDeRoute, `clé « navFeuilleDeRoute » absente de ${l}.json`);
+  }
+});
