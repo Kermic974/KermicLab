@@ -1,6 +1,6 @@
 # ADR 0014 — Académie des échecs : didacticiel progressif et gamification gardée dans la page
 
-- Date : 2026-11-04 — Statut : **proposé** (à valider par le propriétaire)
+- Date : 2026-11-04 — Statut : **accepté** (validé par le propriétaire le 2026-11-04)
 - Contexte : la page Échecs (ADR 0013) doit aussi faire progresser le joueur « du débutant au pro » : retenir les
   stratégies connues et s'améliorer, avec une gamification riche et personnalisée. Le tableau de bord a déjà sa propre
   progression (XP, série, badges : ADR 0012), mais une page autonome n'a aucun accès réseau (`connect-src 'none'`) et
