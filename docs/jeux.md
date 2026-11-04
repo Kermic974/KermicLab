@@ -31,6 +31,8 @@ validation du CODEOWNER.
 - **Lisibilité** : un état ne dépend jamais de la seule couleur (symbole, chiffre ou texte, plus `aria-label`).
 - **Mobile** : la page ne défile jamais horizontalement ; une grande grille défile dans son propre cadre.
 - **Données** : records et préférences en stockage `local` uniquement, sans donnée personnelle.
+- **Progression** (facultatif) : un didacticiel et sa gamification suivent l'Académie des échecs (ADR 0014) — parcours en
+  JSON vérifié par le moteur, logique de progression dans un module pur, données relues et validées au chargement.
 
 ## 3. Tests
 

@@ -23,7 +23,7 @@ test("échecs : s'ouvre sur « Jouer » avec la position initiale, sans erreur n
   const { page, contexte, erreurs } = await ouvrir(nav, URL_PAGE());
   await page.goto(URL_PAGE());
   const onglets = await page.locator("[role=tab]").evaluateAll((n) => n.map((b) => b.dataset.onglet));
-  assert.deepEqual(onglets, ["explication", "application", "mise-en-situation"]);
+  assert.deepEqual(onglets, ["explication", "application", "academie", "mise-en-situation"]);
   assert.equal(await page.locator("#onglet-application").getAttribute("aria-selected"), "true");
   assert.equal(await jeu(page).locator(".case").count(), 64);
   assert.equal(await jeu(page).locator(".case .piece").count(), 32);
@@ -190,5 +190,154 @@ test("énigmes : un coup qui ne fait pas mat donne un indice, le mat explique la
     await panneau.locator('[data-action="suivante"]').click();
   }
   assert.match(await panneau.locator('[data-sortie="progression"]').textContent(), /Énigme 1 \/ 4/);
+  await contexte.close();
+});
+
+/* ---------- Académie ---------- */
+const academie = (page) => page.locator("#panneau-academie");
+const etatAcademie = (page) => page.evaluate(() => window.kermiclab.academie.etat());
+const coupAcademie = async (page, c) => {
+  await academie(page).locator(`[data-case="${c.slice(0, 2)}"]`).click();
+  await academie(page).locator(`[data-case="${c.slice(2, 4)}"]`).click();
+};
+
+test("académie : première leçon complète, XP, étoiles, badge, progression gardée au rechargement", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, URL_PAGE());
+  await page.goto(URL_PAGE());
+  await page.click("#onglet-academie");
+  assert.match(await academie(page).locator('[data-sortie="conseil"]').textContent(), /Commence par « La valeur des pièces »/);
+  assert.equal(await academie(page).locator('[data-lecon="fourchette"]').isDisabled(), true, "grade Fou verrouillé");
+  await academie(page).locator('[data-action="conseil"]').click();
+  assert.match(await academie(page).locator('[data-sortie="retenir"]').textContent(), /Pion 1, cavalier 3/);
+  await academie(page).locator('[data-choix="1"]').click();
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /Pas tout à fait/);
+  await academie(page).locator('[data-choix="2"]').click();
+  assert.match(await academie(page).locator('[data-sortie="toast"]').textContent(), /\+10 XP/);
+  await academie(page).locator('[data-action="suivant"]').click();
+  await coupAcademie(page, "d4h4");
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /la dame en vaut 9/, "piège expliqué");
+  await coupAcademie(page, "d4d8");
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /Txd8\+/);
+  await academie(page).locator('[data-action="suivant"]').click();
+  assert.match(await academie(page).locator('[data-sortie="bilan-titre"]').textContent(), /★★☆ Leçon terminée/);
+  assert.match(await academie(page).locator('[data-sortie="toast"]').textContent(), /Badge « Premiers pas »/);
+  assert.match(await academie(page).locator('[data-action="bilan-suite"]').textContent(), /Parer un échec/);
+  const etat = await etatAcademie(page);
+  assert.equal(etat.xp, 10 + 10 + 30);
+  assert.equal(etat.lecons.valeurs.etoiles, 2, "deux erreurs : 2 étoiles");
+  assert.deepEqual(Object.keys(etat.cartes).sort(), ["valeurs/0", "valeurs/1"]);
+  await page.reload();
+  await page.click("#onglet-academie");
+  assert.equal((await etatAcademie(page)).xp, 50);
+  assert.match(await academie(page).locator('[data-lecon="valeurs"]').getAttribute("aria-label"), /2 étoiles sur 3/);
+  assert.match(await academie(page).locator('[data-sortie="stats"]').textContent(), /Aujourd'hui : 2 \/ 3/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("académie : indice qui montre la pièce, exercice en deux coups avec réponse automatique (mode libre)", async () => {
+  const { page, contexte } = await ouvrir(nav, URL_PAGE());
+  await page.goto(URL_PAGE());
+  await page.click("#onglet-academie");
+  await academie(page).locator("summary", { hasText: "Personnaliser" }).click();
+  await academie(page).locator('input[name="libre"]').check();
+  await academie(page).locator('[data-lecon="fourchette"]').click();
+  await academie(page).locator('[data-action="indice"]').click();
+  assert.equal(await academie(page).locator('[data-case="d5"]').getAttribute("data-selection"), "", "l'indice montre le cavalier");
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /Indice/);
+  await academie(page).locator('[data-case="c7"]').click();
+  await page.waitForFunction(() => document.querySelector('#panneau-academie [data-sortie="retour"]').textContent.startsWith("L'adversaire a joué"));
+  await coupAcademie(page, "c7a8");
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /^Réussi !/);
+  assert.equal((await etatAcademie(page)).themes.tactique.premiers, 0, "un indice ne compte pas comme réussi du premier coup");
+  await contexte.close();
+});
+
+test("académie : révisions espacées dues, défi du jour et emblème personnalisé", async () => {
+  const { page, contexte } = await ouvrir(nav, URL_PAGE());
+  // Progression déjà commencée : grade Pion obtenu, trois cartes à revoir aujourd'hui.
+  await page.addInitScript(() => {
+    const hier = new Date(Date.now() - 86400000), j = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    localStorage.setItem("kermiclab:echecs:academie", JSON.stringify({
+      xp: 120, lecons: { valeurs: { etoiles: 3 }, "parer-echec": { etoiles: 2 }, roque: { etoiles: 3 } },
+      cartes: { "valeurs/0": { boite: 1, prochaine: j(hier) }, "roque/1": { boite: 2, prochaine: j(hier) }, "parer-echec/0": { boite: 1, prochaine: j(hier) } },
+      serie: 4, serieMax: 4, dernierJour: j(hier)
+    }));
+  });
+  await page.goto(URL_PAGE());
+  await page.click("#onglet-academie");
+  assert.match(await academie(page).locator('[data-sortie="titre"]').textContent(), /^Pion$/);
+  assert.match(await academie(page).locator('[data-sortie="stats"]').textContent(), /Série : 4 jours/);
+  assert.match(await academie(page).locator('[data-sortie="conseil"]').textContent(), /3 stratégies t'attendent/);
+  assert.equal(await academie(page).locator('[data-lecon="mat-couloir"]').isDisabled(), false, "grade Cavalier ouvert");
+  // Emblème du cavalier débloqué par le grade Pion, la dame pas encore.
+  await academie(page).locator("summary", { hasText: "Personnaliser" }).click();
+  assert.equal(await academie(page).locator('input[name="embleme"][value="q"]').isDisabled(), true);
+  await academie(page).locator('input[name="embleme"][value="n"]').check({ force: true });
+  assert.equal((await etatAcademie(page)).embleme, "n");
+  // Révisions : on répond juste à chaque carte.
+  await academie(page).locator('[data-action="conseil"]').click();
+  assert.match(await academie(page).locator('[data-sortie="session-titre"]').textContent(), /Tes révisions/);
+  for (let k = 0; k < 3; k++) {
+    const exo = await page.evaluate(() => document.querySelector('#panneau-academie [data-sortie="consigne"]').textContent);
+    const bonne = { "Combien de points vaut une tour ?": 2, "Dans quel cas le roque est-il interdit ?": 0, "Laquelle de ces réponses NE pare PAS un échec ?": 2 }[exo];
+    assert.notEqual(bonne, undefined, exo);
+    await academie(page).locator(`[data-choix="${bonne}"]`).click();
+    assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /À retenir/, "la stratégie est rappelée");
+    await academie(page).locator('[data-action="suivant"]').click();
+  }
+  assert.match(await academie(page).locator('[data-sortie="bilan-titre"]').textContent(), /Révisions terminées/);
+  const etat = await etatAcademie(page);
+  assert.equal(etat.revisions, 3);
+  assert.equal(etat.serie, 5, "la série continue");
+  assert.equal(etat.cartes["roque/1"].boite, 3);
+  assert.ok(etat.badges.includes("serie-3") && etat.badges.includes("sans-faute"));
+  assert.ok(!etat.badges.includes("perfectionniste"), "« Parer un échec » n'a que 2 étoiles");
+  await academie(page).locator('[data-action="bilan-retour"]').click();
+  assert.equal(await academie(page).locator('[data-action="reviser"]').isDisabled(), true);
+  assert.match(await academie(page).locator('[data-action="defi"]').textContent(), /Défi du jour \(\+15 XP\)/);
+  await contexte.close();
+});
+
+test("académie mobile : parcours et exercice sans défilement horizontal, échiquier dans l'écran", async () => {
+  const { page, contexte } = await ouvrir(nav, URL_PAGE(), MOBILE);
+  await page.goto(URL_PAGE());
+  await page.click("#onglet-academie");
+  const debord = () => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  assert.ok(await debord() <= 0, `accueil : ${await debord()}px`);
+  await academie(page).locator('[data-action="conseil"]').tap();
+  await academie(page).locator('[data-choix="2"]').tap();
+  await academie(page).locator('[data-action="suivant"]').tap();
+  const boite = await academie(page).locator(".echiquier").boundingBox();
+  assert.ok(boite.x >= 0 && boite.x + boite.width <= 360, `échiquier de ${boite.width}px`);
+  await academie(page).locator('[data-case="d4"]').tap();
+  await academie(page).locator('[data-case="d8"]').tap();
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /^Parfait !/);
+  assert.ok(await debord() <= 0, `exercice : ${await debord()}px`);
+  await contexte.close();
+});
+
+test("académie : une victoire contre l'ordinateur rapporte de l'XP et un badge, une seule fois", async () => {
+  const { page, contexte } = await ouvrir(nav, URL_PAGE());
+  // Hasard figé : l'ordinateur Facile joue toujours les mêmes coups, et cette suite le mate.
+  await page.addInitScript(() => { Math.random = () => 0.5; });
+  await page.goto(URL_PAGE());
+  const blancs = "a2a4 c2c4 d1b3 b3f3 a4b5 b5c6 e2e4 f3e4 b1d2 b2b4 a1a8 a8c8".split(" ");
+  for (const [k, coup] of blancs.entries()) {
+    await jouer(page, coup);
+    if (k < blancs.length - 1) await page.waitForFunction((n) => window.kermiclab.echecs.etat().coups.length === n, 2 * (k + 1), { timeout: 5000 });
+  }
+  assert.equal(await statut(page), "Échec et mat : bravo, tu as gagné ! 🏆 (+50 XP à l'Académie)");
+  let etat = await etatAcademie(page);
+  assert.equal(etat.parties.facile.victoires, 1);
+  assert.ok(etat.badges.includes("robot-facile"));
+  // Annuler puis rejouer le coup gagnant ne compte pas une deuxième victoire.
+  await jeu(page).locator('[data-action="annuler"]').click();
+  await jouer(page, "a8c8");
+  etat = await etatAcademie(page);
+  assert.equal(etat.parties.facile.victoires, 1);
+  assert.equal(etat.xp, 50);
+  await page.click("#onglet-academie");
+  assert.match(await academie(page).locator('[data-sortie="parties"]').textContent(), /Facile 1 victoire/);
   await contexte.close();
 });
