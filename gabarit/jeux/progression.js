@@ -33,13 +33,16 @@ const ProgressionJeux = (() => {
     }));
     const EMBLEMES = Object.freeze(parcours.grades.map((g) => g.embleme));
     const NIVEAUX_PARTIE = parcours.parties?.niveaux ?? {};
+    // Compteurs d'événements propres au jeu (capots, belotes…), déclarés par les badges de type « compteur ».
+    const COMPTEURS = [...new Set((parcours.badges ?? []).filter((b) => b.condition.type === "compteur").map((b) => b.condition.nom))];
     const toutesLecons = parcours.grades.flatMap((g) => g.lecons);
 
     function etatInitial() {
       return {
         version: 1, xp: 0, lecons: {}, cartes: {}, themes: {}, serie: 0, serieMax: 0, dernierJour: null, jours: {},
         badges: [], objectif: 3, embleme: EMBLEMES[0], libre: false, revisions: 0, objectifsAtteints: 0, objectifsJours: [], defis: [],
-        parties: Object.fromEntries(Object.keys(NIVEAUX_PARTIE).map((n) => [n, { victoires: 0, nulles: 0, defaites: 0, meilleur: null }]))
+        parties: Object.fromEntries(Object.keys(NIVEAUX_PARTIE).map((n) => [n, { victoires: 0, nulles: 0, defaites: 0, meilleur: null }])),
+        compteurs: Object.fromEntries(COMPTEURS.map((n) => [n, 0]))
       };
     }
 
@@ -83,6 +86,8 @@ const ProgressionJeux = (() => {
         avance = (e) => { const l = lecDuTheme(c.themes), faites = l.filter((x) => e.lecons[x.id]).length; return c.toutes === false ? [Math.min(1, faites), 1] : [faites, l.length]; };
       } else if (c.type === "victoires") {
         avance = (e) => [c.niveau ? e.parties[c.niveau]?.victoires ?? 0 : victoiresTotal(e), c.min];
+      } else if (c.type === "compteur") {
+        avance = (e) => [e.compteurs[c.nom] ?? 0, c.min];
       } else if (c.type === "record") {
         avance = (e) => { const m = e.parties[c.niveau]?.meilleur; return [m !== null && m !== undefined && m <= c.max ? 1 : 0, 1]; };
       } else throw new Error(`badge ${id} : condition « ${c.type} » inconnue`);
@@ -123,6 +128,7 @@ const ProgressionJeux = (() => {
         const p = objet(objet(brut.parties)[n]);
         e.parties[n] = { victoires: entier(p.victoires), nulles: entier(p.nulles), defaites: entier(p.defaites), meilleur: Number.isInteger(p.meilleur) && p.meilleur >= 0 ? p.meilleur : null };
       }
+      for (const n of COMPTEURS) e.compteurs[n] = entier(objet(brut.compteurs)[n]);
       return e;
     }
 
@@ -189,6 +195,13 @@ const ProgressionJeux = (() => {
       p[RESULTATS[resultat]] += 1;
       if (resultat === "victoire" && Number.isInteger(temps) && temps >= 0 && (p.meilleur === null || temps < p.meilleur)) { p.meilleur = temps; gains.record = true; }
       compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    /** Événements de jeu (ex. un capot) : seulement les compteurs déclarés par les badges, sans XP ni activité. */
+    function compter(etat, { compteurs = {} }) {
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      for (const [n, k] of Object.entries(compteurs)) if (COMPTEURS.includes(n) && Number.isInteger(k) && k > 0) e.compteurs[n] += k;
       return cloturer(e, etat, gains);
     }
 
@@ -268,7 +281,7 @@ const ProgressionJeux = (() => {
     return Object.freeze({
       parcours, EMBLEMES, BADGES: BADGES.map(({ avance, ...b }) => b), NIVEAUX_PARTIE, lecons, exercices,
       etatInitial, normaliser, niveau, gradesObtenus, titre, leconDebloquee, emblemesDisponibles, badges,
-      enregistrerExercice, terminerLecon, enregistrerPartie, enregistrerDefi, regler,
+      enregistrerExercice, terminerLecon, enregistrerPartie, enregistrerDefi, compter, regler,
       revisionsDues, forces, serieActuelle, activite, defiDuJour, recommandation, reglesXP
     });
   }

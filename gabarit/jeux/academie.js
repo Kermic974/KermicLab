@@ -403,6 +403,12 @@ const VueAcademie = (() => {
         const g = appliquer(P.enregistrerPartie(etat, { ...partie, jour: jour() }));
         if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
         return g;
+      },
+      /** Événements de jeu (capot, belote…) comptés pour les badges. */
+      compter(compteurs) {
+        const g = appliquer(P.compter(etat, { compteurs }));
+        if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
+        return g;
       }
     };
   }

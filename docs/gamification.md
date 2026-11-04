@@ -5,8 +5,8 @@ Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (
 
 ## Synthèse
 
-Chaque jeu (Échecs, Démineur) a un onglet **Académie** : un parcours **du débutant au pro**, découpé en **grades**
-(6 aux échecs, 5 au Démineur). Chaque grade contient des **leçons**, et chaque leçon a une explication courte, une
+Chaque jeu (Échecs, Démineur, Belote) a un onglet **Académie** : un parcours **du débutant au pro**, découpé en **grades**
+(6 aux échecs, 5 au Démineur et à la belote). Chaque grade contient des **leçons**, et chaque leçon a une explication courte, une
 stratégie **« À retenir »** et des exercices. Ce sont des QCM, ou des positions à jouer sur l'échiquier ou sur la grille,
 toutes vérifiées par le moteur du jeu.
 
@@ -76,8 +76,11 @@ révision, la stratégie « À retenir » est rappelée.
 - mémoire : 10 révisions, 10 stratégies maîtrisées ;
 - 3 défis du jour.
 
-**Propres à chaque jeu**, décrits dans son parcours : leçons d'un thème terminées, victoires à un niveau ou au total,
-record de temps.
+**Propres à chaque jeu**, décrits dans son parcours (`badges[].condition`) :
+- `themes` : leçons d'un ou plusieurs thèmes terminées (toutes, ou une seule avec `"toutes": false`) ;
+- `victoires` : victoires à un niveau, ou au total ;
+- `record` : meilleur temps sous un seuil (Démineur) ;
+- `compteur` : événements de jeu comptés par la page (belote : contrats réussis, belotes, capots).
 
 ### Conseil personnalisé, par ordre de priorité
 
@@ -97,6 +100,10 @@ record de temps.
   vraie partie. **Chaque geste est jugé par le solveur du moteur** : on n'accepte que des certitudes. Un pari est refusé,
   même s'il tombe juste. Buts possibles : une case sûre, une mine, toutes les mines certaines, tout déblayer en chaîne,
   ouverture rapide. Les tests comparent le solveur à une recherche exhaustive.
+- **Belote (`pli`, `enchere`)** : choisir la carte à jouer dans un pli en cours (une carte interdite est expliquée par la
+  règle qui s'applique : fournir, couper, monter…), ou prendre, passer, choisir l'atout. Les tests vérifient que chaque
+  pli suit le sens du jeu, que les solutions sont légales, que les pièges sont jouables mais refusés, et que les réponses
+  aux enchères sont celles de l'ordinateur.
 
 ### Accessibilité
 

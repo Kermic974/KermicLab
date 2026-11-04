@@ -26,7 +26,7 @@ Principes non négociables :
 | `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
 | `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
-| `catalogue/` | Maquettes publiques : `trigo-cercle` (écrite à la main) et les notions pilotes du gabarit (`pythagore`, `fractions`, `proportionnalite`). Les jeux (`demineur`, `echecs`, matière `jeux`) sont écrits à la main avec un moteur testable (ADR 0013, guide `docs/jeux.md`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
+| `catalogue/` | Maquettes publiques : `trigo-cercle` (écrite à la main) et les notions pilotes du gabarit (`pythagore`, `fractions`, `proportionnalite`). Les jeux (`demineur`, `echecs`, `belote`, matière `jeux`) sont écrits à la main avec un moteur testable (ADR 0013, guide `docs/jeux.md`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
 | `gabarit/` | Gabarit commun des notions (page, style, moteur) : une notion décrite par `contenu.json` est générée en `page.html` par `npm run build` (ADR 0011, guide `docs/gabarit.md`) |
 | `gabarit/jeux/` | Modules partagés des jeux (progression, Académie) recopiés dans chaque page par `npm run build` (ADR 0015, `docs/gamification.md`) |
 | `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
