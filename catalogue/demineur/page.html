@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-REepvWFa12j3YjRtCaRoT+aBk5pwzCeePIEI1N7dsJI=' 'sha256-l28RwD1fKcw4djGSJrRq1CCTtn6SSnb24upUw/iEh/k='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Démineur – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "demineur",
+  "titre": "Démineur",
+  "sujet": "jeux/demineur",
+  "version": "1.0.0",
+  "date": "2026-11-04",
+  "langue": "fr",
+  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+  :root {
+    --fond: #fbfaf7; --surface: #ffffff; --texte: #1d2330; --doux: #5a6272;
+    --accent: #1f5fbf; --accent-texte: #ffffff; --bord: #d9dce3;
+    --succes: #15803d; --alerte: #b91c1c;
+    --cachee: #c7d2e4; --cachee-clair: #e4eaf4; --cachee-sombre: #8f9db5; --ouverte: #f1f2f5; --explosion: #fecaca;
+    --n1: #1d4ed8; --n2: #15803d; --n3: #b91c1c; --n4: #1e3a8a; --n5: #7c2d12; --n6: #0f766e; --n7: #1d2330; --n8: #4b5563;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #14171d; --surface: #1d2129; --texte: #e8eaef; --doux: #a3aab8;
+      --accent: #7fb0ff; --accent-texte: #0b1220; --bord: #343a46;
+      --succes: #4ade80; --alerte: #f87171;
+      --cachee: #3a4458; --cachee-clair: #4d5970; --cachee-sombre: #262d3a; --ouverte: #171a21; --explosion: #7f1d1d;
+      --n1: #93c5fd; --n2: #86efac; --n3: #fca5a5; --n4: #c4b5fd; --n5: #fdba74; --n6: #5eead4; --n7: #e8eaef; --n8: #cbd5e1;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--fond); color: var(--texte); }
+  header { padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 980px; margin: 0 auto; }
+  header h1 { font-size: 1.25rem; margin: 0; }
+  .meta { color: var(--doux); font-size: .8rem; }
+  #connexion[hidden] { display: none; }
+  [role="tablist"] { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; max-width: 980px; margin: 0 auto; border-bottom: 1px solid var(--bord); }
+  [role="tab"] { flex: 0 0 auto; padding: 10px 14px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+  [role="tab"][aria-selected="true"] { color: var(--texte); border-bottom-color: var(--accent); font-weight: 600; }
+  [role="tab"]:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { max-width: 980px; margin: 0 auto; padding: 16px; }
+  [role="tabpanel"][hidden] { display: none; }
+  [role="tabpanel"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  h2 { font-size: 1.05rem; margin: 18px 0 6px; }
+  .carte { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+  .commandes { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .commandes th, .commandes td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--bord); vertical-align: top; }
+  .commandes th { font-weight: 600; }
+  kbd { font: inherit; font-size: .85em; border: 1px solid var(--bord); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--fond); }
+  button.action, button.secondaire { border-radius: 8px; padding: 9px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.action { background: var(--accent); color: var(--accent-texte); border: 2px solid var(--accent); }
+  button.secondaire { background: var(--surface); color: var(--texte); border: 2px solid var(--bord); }
+  button.secondaire[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-texte); }
+
+  /* ---------- Barre du jeu ---------- */
+  .niveaux { border: 0; padding: 0; margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .niveaux legend { padding: 0; margin-bottom: 4px; font-weight: 600; width: 100%; }
+  .niveaux label { position: relative; display: inline-flex; flex-direction: column; align-items: center; padding: 6px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; line-height: 1.25; }
+  .niveaux label small { color: var(--doux); font-size: .75rem; }
+  .niveaux input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .niveaux label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+  .niveaux label:has(input:checked)::before { content: "✓ "; position: absolute; left: 4px; top: 2px; font-size: .75rem; color: var(--accent); }
+  .niveaux label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .commandes-jeu { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .zoom { display: inline-flex; gap: 4px; margin-left: auto; }
+  .zoom button { min-width: 44px; }
+  .tableau { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; padding: 0; list-style: none; }
+  .tableau li { background: var(--surface); border: 1px solid var(--bord); border-radius: 8px; padding: 4px 10px; font-size: .9rem; }
+  .tableau b { font-variant-numeric: tabular-nums; }
+  .statut[data-statut="victoire"] { border-color: var(--succes); color: var(--succes); font-weight: 700; }
+  .statut[data-statut="perdu"] { border-color: var(--alerte); color: var(--alerte); font-weight: 700; }
+  .message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
+  .message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+  .aide-defilement { color: var(--doux); font-size: .85rem; margin: 4px 0 0; }
+  .aide-defilement[hidden] { display: none; }
+
+  /* ---------- Grille ---------- */
+  .plateau { width: 100%; max-width: 100%; overflow: auto; padding: 4px 2px 8px; overscroll-behavior: contain; }
+  .grille { --taille: 32px; display: inline-flex; flex-direction: column; gap: 2px; padding: 4px; border-radius: 8px; background: var(--bord); user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  .rangee { display: flex; gap: 2px; }
+  .case { width: var(--taille); height: var(--taille); padding: 0; margin: 0; flex: 0 0 auto; display: grid; place-items: center;
+    font: 700 calc(var(--taille) * .58)/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--texte);
+    border: 0; border-radius: 3px; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+    background: var(--cachee); box-shadow: inset 2px 2px 0 var(--cachee-clair), inset -2px -2px 0 var(--cachee-sombre); }
+  .case:hover { filter: brightness(1.06); }
+  .case:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; position: relative; z-index: 1; }
+  .case[data-etat="vide"], .case[data-etat^="n"], .case[data-etat="explosion"] { background: var(--ouverte); box-shadow: none; cursor: default; }
+  .case[data-etat^="n"] { cursor: pointer; }
+  .case[data-etat="explosion"] { background: var(--explosion); }
+  .case[data-etat="mine"], .case[data-etat="erreur"] { box-shadow: none; }
+  .case[data-etat="n1"] { color: var(--n1); } .case[data-etat="n2"] { color: var(--n2); } .case[data-etat="n3"] { color: var(--n3); }
+  .case[data-etat="n4"] { color: var(--n4); } .case[data-etat="n5"] { color: var(--n5); } .case[data-etat="n6"] { color: var(--n6); }
+  .case[data-etat="n7"] { color: var(--n7); } .case[data-etat="n8"] { color: var(--n8); }
+  .grille[data-fin] .case { cursor: default; }
+  .exemple { display: inline-flex; flex-direction: column; gap: 2px; padding: 4px; border-radius: 8px; background: var(--bord); --taille: 40px; margin: 6px 0; }
+
+  /* ---------- Énigmes ---------- */
+  .enigme-entete { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+  .enigme-entete h2 { margin: 0; }
+  .progression { color: var(--doux); font-size: .9rem; }
+
+  footer { max-width: 980px; margin: 0 auto; padding: 16px; color: var(--doux); font-size: .8rem; }
+  @media (max-width: 480px) {
+    main { padding: 12px 10px; }
+    .zoom { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Démineur</h1>
+    <div class="meta">demineur · v1.0.0</div>
+  </div>
+  <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+</header>
+<nav role="tablist" aria-label="Onglets de la page" id="onglets"></nav>
+<main id="panneaux"></main>
+<footer>Kermiclab · page autonome, lisible hors ligne. Aucune donnée n'est envoyée : tes records restent sur ton appareil. Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</footer>
+
+<template id="tpl-explication">
+  <p>Une grille cache des <strong>mines</strong>. Ton but : ouvrir toutes les cases <strong>sans mine</strong>… sans jamais en toucher une !</p>
+  <div class="carte">
+    <h2>Les chiffres</h2>
+    <p>Quand tu ouvres une case, un <strong>chiffre</strong> peut apparaître. Il dit combien de mines touchent cette case, <strong>y compris en diagonale</strong> (jusqu'à 8 cases autour).</p>
+    <div class="exemple" role="img" aria-label="Exemple : une case 2 au centre, avec une mine en haut à gauche et une mine en bas à droite.">
+      <div class="rangee"><span class="case" data-etat="mine">💣</span><span class="case" data-etat="vide"></span><span class="case" data-etat="vide"></span></div>
+      <div class="rangee"><span class="case" data-etat="vide"></span><span class="case" data-etat="n2">2</span><span class="case" data-etat="vide"></span></div>
+      <div class="rangee"><span class="case" data-etat="vide"></span><span class="case" data-etat="vide"></span><span class="case" data-etat="mine">💣</span></div>
+    </div>
+    <p>Ici, le <strong>2</strong> touche deux mines : une en haut à gauche, une en bas à droite.</p>
+  </div>
+  <div class="carte">
+    <h2>La case vide</h2>
+    <p>Une case ouverte <strong>sans chiffre</strong> n'a aucune mine autour. Le jeu ouvre alors tout seul ses voisines : c'est souvent un grand morceau de grille qui se dévoile d'un coup.</p>
+  </div>
+  <div class="carte">
+    <h2>Les drapeaux 🚩</h2>
+    <p>Quand tu es <strong>sûr</strong> qu'une case cache une mine, plante un drapeau dessus. Une case avec un drapeau ne s'ouvre pas par erreur. Le compteur « drapeaux restants » t'aide à savoir combien de mines il reste à trouver.</p>
+    <p>Astuce : si un chiffre a déjà tous ses drapeaux autour de lui, touche ce chiffre pour ouvrir d'un coup les autres cases voisines.</p>
+  </div>
+  <div class="carte">
+    <h2>Comment gagner ?</h2>
+    <p>Tu gagnes quand <strong>toutes les cases sans mine sont ouvertes</strong>. Les drapeaux ne sont pas obligatoires. Pas d'inquiétude pour commencer : <strong>ton premier coup n'est jamais une mine</strong>.</p>
+  </div>
+  <div class="carte">
+    <h2>Les commandes</h2>
+    <table class="commandes">
+      <thead><tr><th scope="col">Je veux…</th><th scope="col">Souris</th><th scope="col">Écran tactile</th><th scope="col">Clavier</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ouvrir une case</th><td>Clic</td><td>Toucher</td><td><kbd>Entrée</kbd> ou <kbd>Espace</kbd></td></tr>
+        <tr><th scope="row">Poser / enlever un drapeau</th><td>Clic droit</td><td>Appui long</td><td><kbd>D</kbd> ou <kbd>F</kbd></td></tr>
+        <tr><th scope="row">Se déplacer</th><td>—</td><td>—</td><td>Flèches, <kbd>Début</kbd>, <kbd>Fin</kbd></td></tr>
+      </tbody>
+    </table>
+    <p>Le bouton <strong>« 🚩 Mode drapeau »</strong> fait la même chose sans clic droit ni appui long : quand il est activé, chaque toucher pose ou enlève un drapeau.</p>
+  </div>
+</template>
+
+<template id="tpl-application">
+  <fieldset class="niveaux">
+    <legend>Niveau</legend>
+    <label><input type="radio" name="niveau" value="debutant">Débutant<small>9 × 9 · 10 mines</small></label>
+    <label><input type="radio" name="niveau" value="intermediaire">Intermédiaire<small>16 × 16 · 40 mines</small></label>
+    <label><input type="radio" name="niveau" value="expert">Expert<small>30 × 16 · 99 mines</small></label>
+  </fieldset>
+  <div class="commandes-jeu">
+    <button class="action" type="button" data-action="nouvelle-partie">Nouvelle partie</button>
+    <button class="secondaire" type="button" data-action="mode-drapeau" aria-pressed="false">🚩 Mode drapeau</button>
+    <span class="zoom" role="group" aria-label="Taille des cases">
+      <button class="secondaire" type="button" data-action="zoom-moins" aria-label="Cases plus petites">−</button>
+      <button class="secondaire" type="button" data-action="zoom-plus" aria-label="Cases plus grandes">+</button>
+    </span>
+  </div>
+  <ul class="tableau" aria-label="Tableau de bord de la partie">
+    <li>Niveau : <b data-sortie="niveau"></b></li>
+    <li>💣 Mines : <b data-sortie="mines"></b></li>
+    <li>🚩 Drapeaux restants : <b data-sortie="restantes"></b></li>
+    <li>⏱ Temps : <b data-sortie="temps">0:00</b></li>
+    <li class="statut" data-sortie="statut-zone">État : <b data-sortie="statut"></b></li>
+    <li>🏆 Record : <b data-sortie="record">—</b></li>
+  </ul>
+  <div data-zone="plateau"></div>
+  <p class="aide-defilement" data-sortie="aide-defilement" hidden>La grille est plus grande que l'écran : fais-la glisser pour voir le reste, ou utilise « − ».</p>
+  <p class="message" data-sortie="message" role="status" aria-live="polite"></p>
+</template>
+
+<template id="tpl-mise-en-situation">
+  <p>Le Démineur, c'est surtout de la <strong>déduction</strong> : en lisant bien les chiffres, on sait où sont les mines sans jamais deviner. Résous ces petites énigmes !</p>
+  <div class="carte">
+    <div class="enigme-entete">
+      <h2 data-sortie="titre"></h2>
+      <span class="progression" data-sortie="progression"></span>
+    </div>
+    <p data-sortie="consigne"></p>
+    <div data-zone="enigme"></div>
+    <p class="message" data-sortie="retour" role="status" aria-live="polite"></p>
+    <button class="action" type="button" data-action="suivante" hidden>Énigme suivante</button>
+  </div>
+</template>
+
+<script id="moteur-demineur">
+/* Moteur du Démineur : règles et état d'une partie, sans DOM (testé dans Node, tests/unit/demineur.test.mjs). */
+const MoteurDemineur = (() => {
+  "use strict";
+  const NIVEAUX = Object.freeze({
+    debutant: Object.freeze({ id: "debutant", nom: "Débutant", colonnes: 9, lignes: 9, mines: 10 }),
+    intermediaire: Object.freeze({ id: "intermediaire", nom: "Intermédiaire", colonnes: 16, lignes: 16, mines: 40 }),
+    expert: Object.freeze({ id: "expert", nom: "Expert", colonnes: 30, lignes: 16, mines: 99 })
+  });
+
+  const nouvelleCase = () => ({ mine: false, voisines: 0, revelee: false, drapeau: false });
+
+  /** Nouvelle partie « prête » : les mines seront placées au premier coup, pour qu'il soit toujours sûr. */
+  function creerPartie(niveau) {
+    const config = typeof niveau === "string" ? NIVEAUX[niveau] : niveau;
+    if (!config) throw new Error(`niveau inconnu : ${niveau}`);
+    const { colonnes, lignes, mines } = config;
+    if (![colonnes, lignes].every((n) => Number.isInteger(n) && n > 0)) throw new Error("dimensions invalides");
+    if (!Number.isInteger(mines) || mines < 0 || mines >= colonnes * lignes) throw new Error("nombre de mines invalide");
+    return {
+      niveau: config.id ?? "personnalise", colonnes, lignes, mines,
+      cases: Array.from({ length: colonnes * lignes }, nouvelleCase),
+      statut: "pret", minesPlacees: false, revelees: 0, drapeaux: 0, explosion: null
+    };
+  }
+
+  const position = (partie, index) => ({ ligne: Math.floor(index / partie.colonnes), colonne: index % partie.colonnes });
+
+  /** Indices des cases qui touchent la case (diagonales comprises). */
+  function voisins(partie, index) {
+    const { ligne, colonne } = position(partie, index);
+    const sortie = [];
+    for (let dl = -1; dl <= 1; dl++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        const l = ligne + dl, c = colonne + dc;
+        if ((dl || dc) && l >= 0 && l < partie.lignes && c >= 0 && c < partie.colonnes) sortie.push(l * partie.colonnes + c);
+      }
+    }
+    return sortie;
+  }
+
+  function calculerVoisines(partie) {
+    partie.cases.forEach((c, i) => { c.voisines = voisins(partie, i).filter((v) => partie.cases[v].mine).length; });
+  }
+
+  /** Place exactement `partie.mines` mines, hors de la case jouée et, si la place le permet, hors de ses voisines. */
+  function placerMines(partie, indexSur, hasard = Math.random) {
+    let interdites = new Set([indexSur, ...voisins(partie, indexSur)]);
+    if (partie.cases.length - interdites.size < partie.mines) interdites = new Set([indexSur]);
+    const candidates = partie.cases.map((_, i) => i).filter((i) => !interdites.has(i));
+    for (let k = 0; k < partie.mines; k++) {
+      const j = Math.min(candidates.length - 1, k + Math.floor(hasard() * (candidates.length - k)));
+      [candidates[k], candidates[j]] = [candidates[j], candidates[k]];
+      partie.cases[candidates[k]].mine = true;
+    }
+    partie.minesPlacees = true;
+    calculerVoisines(partie);
+  }
+
+  const estTerminee = (partie) => partie.statut === "victoire" || partie.statut === "perdu";
+  const minesRestantes = (partie) => partie.mines - partie.drapeaux;
+
+  /** Ouvre la case et, si elle est vide, toutes ses voisines de proche en proche. */
+  function propager(partie, depart) {
+    const ouvertes = [], pile = [depart];
+    while (pile.length) {
+      const i = pile.pop(), c = partie.cases[i];
+      if (c.revelee || c.drapeau || c.mine) continue;
+      c.revelee = true; partie.revelees += 1; ouvertes.push(i);
+      if (c.voisines === 0) pile.push(...voisins(partie, i));
+    }
+    return ouvertes;
+  }
+
+  function verifierVictoire(partie) {
+    if (partie.statut !== "en-cours" || partie.revelees !== partie.cases.length - partie.mines) return;
+    partie.statut = "victoire";
+    for (const c of partie.cases) if (c.mine && !c.drapeau) { c.drapeau = true; partie.drapeaux += 1; }
+  }
+
+  /** Ouvre une case. Renvoie les indices des cases ouvertes (vide si le coup est sans effet). */
+  function reveler(partie, index, hasard = Math.random) {
+    const c = partie.cases[index];
+    if (estTerminee(partie) || !c || c.revelee || c.drapeau) return [];
+    if (!partie.minesPlacees) placerMines(partie, index, hasard);
+    partie.statut = "en-cours";
+    if (c.mine) {
+      c.revelee = true; partie.explosion = index; partie.statut = "perdu";
+      return [index];
+    }
+    const ouvertes = propager(partie, index);
+    verifierVictoire(partie);
+    return ouvertes;
+  }
+
+  /** Pose ou enlève un drapeau sur une case fermée. Renvoie true si quelque chose a changé. */
+  function basculerDrapeau(partie, index) {
+    const c = partie.cases[index];
+    if (estTerminee(partie) || !c || c.revelee) return false;
+    c.drapeau = !c.drapeau;
+    partie.drapeaux += c.drapeau ? 1 : -1;
+    return true;
+  }
+
+  /** Sur un chiffre entouré d'autant de drapeaux : ouvre ses autres voisines. */
+  function revelerAutour(partie, index, hasard = Math.random) {
+    const c = partie.cases[index];
+    if (estTerminee(partie) || !c || !c.revelee || c.voisines === 0) return [];
+    const autour = voisins(partie, index);
+    if (autour.filter((v) => partie.cases[v].drapeau).length !== c.voisines) return [];
+    return autour.flatMap((v) => reveler(partie, v, hasard));
+  }
+
+  /**
+   * Partie construite depuis un modèle (énigmes, tests) : une chaîne par ligne,
+   * « * » mine cachée, « F » mine avec drapeau, « . » case cachée sans mine, « o » case ouverte.
+   */
+  function depuisModele(lignes) {
+    const largeur = lignes[0]?.length ?? 0;
+    if (!largeur || lignes.some((l) => l.length !== largeur || /[^*F.o]/.test(l))) throw new Error("modèle invalide");
+    const partie = creerPartie({ id: "modele", colonnes: largeur, lignes: lignes.length, mines: 0 });
+    [...lignes.join("")].forEach((signe, i) => {
+      const c = partie.cases[i];
+      c.mine = signe === "*" || signe === "F";
+      c.drapeau = signe === "F";
+      c.revelee = signe === "o";
+    });
+    partie.mines = partie.cases.filter((c) => c.mine).length;
+    partie.drapeaux = partie.cases.filter((c) => c.drapeau).length;
+    partie.revelees = partie.cases.filter((c) => c.revelee).length;
+    partie.minesPlacees = true; partie.statut = "en-cours";
+    calculerVoisines(partie);
+    return partie;
+  }
+
+  return Object.freeze({
+    NIVEAUX, creerPartie, voisins, placerMines, reveler, basculerDrapeau, revelerAutour,
+    estTerminee, minesRestantes, depuisModele, position
+  });
+})();
+</script>
+<script>
+(() => {
+  "use strict";
+  const META = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const CONFIG = { connexionActive: false, stockage: "local" };
+  const Moteur = MoteurDemineur;
+
+  /* ---------- Stockage abstrait : local (actif) / distant (stub) ---------- */
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:${META.id}:${cle}`)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(`kermiclab:${META.id}:${cle}`, JSON.stringify(valeur)); } catch { /* stockage indisponible */ } }
+    },
+    distant: {
+      // Phase 4 : appellera le service web avec META.id et l'identifiant utilisateur.
+      lire() { return null; },
+      ecrire() { /* non activé dans le MVP */ }
+    }
+  };
+  const stockage = Stockage[CONFIG.stockage];
+
+  /* ---------- Registre des onglets ---------- */
+  const registre = [];
+  function enregistrerOnglet(def) { registre.push({ actif: true, ...def }); }
+
+  const formaterTemps = (secondes) => `${Math.floor(secondes / 60)}:${String(secondes % 60).padStart(2, "0")}`;
+  const borner = (x, min, max) => Math.max(min, Math.min(max, x));
+
+  /* ---------- Vue d'une grille : rendu et entrées (souris, tactile, clavier), sans règle du jeu ---------- */
+  const DELAI_APPUI_LONG = 450, TOLERANCE_APPUI = 10;
+
+  /** Contenu, état et description d'une case pour l'affichage. Le symbole ou le chiffre suffit sans les couleurs. */
+  function apparence(partie, c) {
+    const perdu = partie.statut === "perdu";
+    if (c.revelee && c.mine) return { texte: "💥", etat: "explosion", description: "mine touchée" };
+    if (c.revelee && c.voisines) return { texte: String(c.voisines), etat: `n${c.voisines}`, description: `${c.voisines} mine${c.voisines > 1 ? "s" : ""} autour` };
+    if (c.revelee) return { texte: "", etat: "vide", description: "vide, aucune mine autour" };
+    if (c.drapeau && perdu && !c.mine) return { texte: "❌", etat: "erreur", description: "drapeau mal placé" };
+    if (c.drapeau) return { texte: "🚩", etat: "drapeau", description: "drapeau" };
+    if (perdu && c.mine) return { texte: "💣", etat: "mine", description: "mine" };
+    return { texte: "", etat: "cachee", description: "cachée" };
+  }
+
+  function creerVueGrille({ libelle, surOuvrir, surDrapeau }) {
+    const plateau = document.createElement("div");
+    plateau.className = "plateau";
+    const grille = document.createElement("div");
+    grille.className = "grille";
+    grille.setAttribute("role", "grid");
+    grille.setAttribute("aria-label", libelle);
+    plateau.appendChild(grille);
+    let partie = null, transpose = false, boutons = [], courant = 0;
+
+    // Coordonnées affichées : une grille plus large que haute peut être tournée d'un quart de tour (téléphone).
+    const dimensions = () => (transpose ? { lignes: partie.colonnes, colonnes: partie.lignes } : { lignes: partie.lignes, colonnes: partie.colonnes });
+    const indexDe = (l, c) => (transpose ? c * partie.colonnes + l : l * partie.colonnes + c);
+
+    function construire(p, { transposer = false } = {}) {
+      partie = p; transpose = transposer && p.colonnes !== p.lignes;
+      boutons = new Array(p.cases.length);
+      grille.replaceChildren();
+      const { lignes, colonnes } = dimensions();
+      for (let l = 0; l < lignes; l++) {
+        const rangee = document.createElement("div");
+        rangee.className = "rangee"; rangee.setAttribute("role", "row");
+        for (let c = 0; c < colonnes; c++) {
+          const i = indexDe(l, c), b = document.createElement("button");
+          b.type = "button"; b.className = "case"; b.setAttribute("role", "gridcell"); b.tabIndex = -1;
+          b.dataset.index = i; b.dataset.ligne = l; b.dataset.colonne = c;
+          boutons[i] = b; rangee.appendChild(b);
+        }
+        grille.appendChild(rangee);
+      }
+      courant = borner(courant, 0, p.cases.length - 1);
+      boutons[courant].tabIndex = 0;
+      rafraichir();
+    }
+
+    function rafraichir() {
+      if (Moteur.estTerminee(partie)) grille.dataset.fin = partie.statut; else delete grille.dataset.fin;
+      boutons.forEach((b, i) => {
+        const { texte, etat, description } = apparence(partie, partie.cases[i]);
+        if (b.textContent !== texte) b.textContent = texte;
+        b.dataset.etat = etat;
+        b.setAttribute("aria-label", `Ligne ${Number(b.dataset.ligne) + 1}, colonne ${Number(b.dataset.colonne) + 1} : ${description}`);
+      });
+    }
+
+    function marquer(i) { boutons[courant].tabIndex = -1; courant = i; boutons[i].tabIndex = 0; }
+    function focaliser(i) { marquer(i); boutons[i].focus(); }
+    const caseDe = (e) => e.target.closest?.("button.case");
+
+    grille.addEventListener("keydown", (e) => {
+      const b = caseDe(e);
+      if (!b || e.ctrlKey && !["Home", "End"].includes(e.key) || e.metaKey || e.altKey) return;
+      if (/^[dDfF]$/.test(e.key)) { e.preventDefault(); surDrapeau(Number(b.dataset.index)); return; }
+      const l = Number(b.dataset.ligne), c = Number(b.dataset.colonne), { lignes, colonnes } = dimensions();
+      const cibles = {
+        ArrowUp: [l - 1, c], ArrowDown: [l + 1, c], ArrowLeft: [l, c - 1], ArrowRight: [l, c + 1],
+        Home: [e.ctrlKey ? 0 : l, 0], End: [e.ctrlKey ? lignes - 1 : l, colonnes - 1]
+      };
+      const cible = cibles[e.key];
+      if (!cible) return;
+      e.preventDefault();
+      focaliser(indexDe(borner(cible[0], 0, lignes - 1), borner(cible[1], 0, colonnes - 1)));
+    });
+
+    // Appui long (tactile, stylet) = drapeau ; le clic qui suit est ignoré. Un glissement annule l'appui (défilement).
+    let appui = null, dernierPointeur = "mouse", ignorerClic = -1;
+    const annulerAppui = () => { if (appui) clearTimeout(appui.minuteur); appui = null; };
+    grille.addEventListener("pointerdown", (e) => {
+      const b = caseDe(e);
+      dernierPointeur = e.pointerType || "mouse";
+      if (!b || dernierPointeur === "mouse") return;
+      annulerAppui();
+      const index = Number(b.dataset.index);
+      appui = { x: e.clientX, y: e.clientY, minuteur: setTimeout(() => { appui = null; ignorerClic = index; surDrapeau(index); }, DELAI_APPUI_LONG) };
+    });
+    grille.addEventListener("pointermove", (e) => {
+      if (appui && Math.hypot(e.clientX - appui.x, e.clientY - appui.y) > TOLERANCE_APPUI) annulerAppui();
+    });
+    for (const type of ["pointerup", "pointercancel", "pointerleave"]) grille.addEventListener(type, annulerAppui);
+    grille.addEventListener("click", (e) => {
+      const b = caseDe(e);
+      if (!b) return;
+      const index = Number(b.dataset.index);
+      marquer(index);
+      if (ignorerClic === index) { ignorerClic = -1; return; }
+      ignorerClic = -1;
+      surOuvrir(index);
+    });
+    grille.addEventListener("contextmenu", (e) => {
+      const b = caseDe(e);
+      if (!b) return;
+      e.preventDefault();
+      // Sur écran tactile, l'appui long déclenche aussi « contextmenu » : le minuteur s'en charge déjà.
+      if (dernierPointeur !== "mouse") return;
+      const index = Number(b.dataset.index);
+      marquer(index);
+      surDrapeau(index);
+    });
+
+    return {
+      element: plateau, grille, construire, rafraichir, focaliser,
+      get transpose() { return transpose; },
+      fixerTaille(px) { grille.style.setProperty("--taille", `${px}px`); }
+    };
+  }
+
+  /* ---------- Onglet explication ---------- */
+  enregistrerOnglet({ id: "explication", type: "explication", titre: "Règles",
+    rendu(panneau) { panneau.appendChild(document.getElementById("tpl-explication").content.cloneNode(true)); } });
+
+  /* ---------- Onglet application : le jeu ---------- */
+  const STATUTS = { pret: "Prêt", "en-cours": "En cours", victoire: "Victoire 🎉", perdu: "Perdu 💥" };
+  const jeu = {};
+  enregistrerOnglet({ id: "application", type: "application", titre: "Jouer",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-application").content.cloneNode(true));
+      const sortie = (n) => panneau.querySelector(`[data-sortie="${n}"]`);
+      const bouton = (n) => panneau.querySelector(`[data-action="${n}"]`);
+      const lu = stockage.lire("niveau");
+      let niveau = Moteur.NIVEAUX[lu] ? lu : "debutant";
+      let partie = null, modeDrapeau = false, debut = null, minuteur = null, zoom = 0;
+
+      const vue = creerVueGrille({ libelle: "Grille du démineur", surOuvrir: ouvrir, surDrapeau: drapeau });
+      panneau.querySelector('[data-zone="plateau"]').replaceWith(vue.element);
+
+      const ecoule = () => (debut === null ? 0 : Math.floor((Date.now() - debut) / 1000));
+      const record = () => stockage.lire(`record-${niveau}`);
+      function arreterMinuteur() { clearInterval(minuteur); minuteur = null; }
+      function message(texte, classe = "") { sortie("message").textContent = texte; sortie("message").className = `message ${classe}`; }
+
+      function nouvellePartie() {
+        arreterMinuteur(); debut = null;
+        partie = Moteur.creerPartie(niveau);
+        for (const r of panneau.querySelectorAll('input[name="niveau"]')) r.checked = r.value === niveau;
+        mettreEnPage(true);
+        message("Touche une case pour commencer : le premier coup n'est jamais une mine.");
+        afficher();
+      }
+
+      function ouvrir(index) {
+        const c = partie.cases[index];
+        if (modeDrapeau && !c.revelee) { drapeau(index); return; }
+        if (c.revelee) Moteur.revelerAutour(partie, index); else Moteur.reveler(partie, index);
+        apresCoup();
+      }
+      function drapeau(index) { if (Moteur.basculerDrapeau(partie, index)) afficher(); }
+
+      function apresCoup() {
+        if (partie.statut === "en-cours" && debut === null) {
+          debut = Date.now();
+          message("");
+          minuteur = setInterval(() => { sortie("temps").textContent = formaterTemps(ecoule()); }, 250);
+        }
+        if (Moteur.estTerminee(partie)) terminer();
+        afficher();
+      }
+
+      function terminer() {
+        arreterMinuteur();
+        const temps = ecoule();
+        if (partie.statut === "perdu") { message("Boum ! Tu as touché une mine. Retente ta chance avec « Nouvelle partie ».", "ko"); return; }
+        const ancien = record();
+        const nouveauRecord = typeof ancien !== "number" || temps < ancien;
+        if (nouveauRecord) stockage.ecrire(`record-${niveau}`, temps);
+        message(`Bravo, grille déminée en ${formaterTemps(temps)} !${nouveauRecord ? " Nouveau record 🏆" : ""}`, "ok");
+      }
+
+      function afficher() {
+        vue.rafraichir();
+        sortie("niveau").textContent = Moteur.NIVEAUX[niveau].nom;
+        sortie("mines").textContent = partie.mines;
+        sortie("restantes").textContent = Moteur.minesRestantes(partie);
+        sortie("temps").textContent = formaterTemps(ecoule());
+        sortie("statut").textContent = STATUTS[partie.statut];
+        sortie("statut-zone").dataset.statut = partie.statut;
+        panneau.dataset.statut = partie.statut;
+        const r = record();
+        sortie("record").textContent = typeof r === "number" ? formaterTemps(r) : "—";
+        bouton("mode-drapeau").setAttribute("aria-pressed", String(modeDrapeau));
+      }
+
+      // Taille des cases : la grille tient dans la largeur si possible ; sinon elle défile dans son cadre, jamais la page.
+      function mettreEnPage(reconstruire = false) {
+        const dispo = vue.element.clientWidth - 16;
+        const tactile = matchMedia("(pointer: coarse)").matches;
+        const min = tactile ? 24 : 20, max = 44, ecart = 2;
+        const tient = (n) => Math.floor((dispo - ecart) / n) - ecart;
+        const tourner = dispo > 0 && partie.colonnes > partie.lignes && tient(partie.colonnes) < min;
+        if (reconstruire || tourner !== vue.transpose) vue.construire(partie, { transposer: tourner });
+        const colonnes = vue.transpose ? partie.lignes : partie.colonnes;
+        const base = dispo > 0 ? borner(tient(colonnes), min, max) : 32;
+        vue.fixerTaille(borner(base + zoom * 4, 16, 64));
+        sortie("aide-defilement").hidden = vue.grille.offsetWidth <= vue.element.clientWidth;
+      }
+
+      for (const r of panneau.querySelectorAll('input[name="niveau"]')) {
+        r.addEventListener("change", () => { niveau = r.value; stockage.ecrire("niveau", niveau); nouvellePartie(); });
+      }
+      bouton("nouvelle-partie").addEventListener("click", nouvellePartie);
+      bouton("mode-drapeau").addEventListener("click", () => { modeDrapeau = !modeDrapeau; afficher(); });
+      bouton("zoom-moins").addEventListener("click", () => { zoom = Math.max(-4, zoom - 1); mettreEnPage(); });
+      bouton("zoom-plus").addEventListener("click", () => { zoom = Math.min(6, zoom + 1); mettreEnPage(); });
+      // Le panneau est caché au premier rendu : la mise en page se refait quand il devient visible ou change de taille.
+      let largeur = -1;
+      new ResizeObserver(() => {
+        if (vue.element.clientWidth === largeur) return;
+        largeur = vue.element.clientWidth; mettreEnPage();
+      }).observe(vue.element);
+
+      nouvellePartie();
+      Object.assign(jeu, { partie: () => partie, nouvellePartie });
+    } });
+
+  /* ---------- Onglet mise en situation : énigmes de déduction ---------- */
+  const ENIGMES = [
+    { titre: "Le 1 tout seul", attendu: "mine", modele: ["o*", "oo"],
+      consigne: "Chaque 1 touche une seule mine, et il ne reste qu'une case fermée. Touche la case qui cache la mine.",
+      indice: "Regarde les cases autour d'un 1 : laquelle est encore fermée ?",
+      explication: "Bien vu ! Un 1 touche exactement une mine. Une seule case est fermée autour de lui : c'est forcément elle." },
+    { titre: "La case vide qui aide", attendu: "mine", modele: ["*..", "ooo"],
+      consigne: "En bas : 1, 1, puis une case vide. Touche la case qui cache la mine.",
+      indice: "La case vide en bas à droite n'a aucune mine autour d'elle. Quelles cases du haut touche-t-elle ?",
+      explication: "Exact ! La case vide dit « aucune mine autour de moi » : les deux cases au-dessus d'elle sont sûres. Il ne reste qu'une place pour la mine du 1 de gauche." },
+    { titre: "Le motif 1-1-1", attendu: "mine", modele: [".*.", "ooo"],
+      consigne: "Trois 1 côte à côte, et une seule mine en haut. Touche la case qui cache la mine.",
+      indice: "Le 1 de gauche ne voit que les deux cases de gauche, le 1 de droite que les deux de droite. Quelle case voient-ils tous les deux ?",
+      explication: "Parfait ! Le 1 du milieu voit les trois cases : il n'y a donc qu'une mine en tout. Les 1 de gauche et de droite la voient chacun : c'est la case du milieu." },
+    { titre: "Le motif 1-2-1", attendu: "sure", modele: ["*.*", "ooo"],
+      consigne: "Cette fois, trouve la case sûre (sans mine) et touche-la.",
+      indice: "Si la mine était au milieu, le 1 de gauche et le 1 de droite seraient déjà contents… combien de mines verrait alors le 2 ?",
+      explication: "Super déduction ! Une mine au milieu suffirait aux deux 1, et le 2 n'en verrait qu'une : impossible. Les mines sont donc dans les coins, et le milieu est sûr." }
+  ];
+  enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: "Énigmes",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-mise-en-situation").content.cloneNode(true));
+      const sortie = (n) => panneau.querySelector(`[data-sortie="${n}"]`);
+      const suivante = panneau.querySelector('[data-action="suivante"]');
+      let rang = 0, partie = null, resolue = false;
+      const vue = creerVueGrille({ libelle: "Grille de l'énigme", surOuvrir: choisir, surDrapeau: choisir });
+      vue.fixerTaille(48);
+      panneau.querySelector('[data-zone="enigme"]').replaceWith(vue.element);
+
+      function charger(i) {
+        rang = i; resolue = false;
+        const e = ENIGMES[rang];
+        partie = Moteur.depuisModele(e.modele);
+        vue.construire(partie);
+        sortie("titre").textContent = e.titre;
+        sortie("progression").textContent = `Énigme ${rang + 1} / ${ENIGMES.length}`;
+        sortie("consigne").textContent = e.consigne;
+        sortie("retour").textContent = ""; sortie("retour").className = "message";
+        suivante.hidden = true;
+      }
+
+      function choisir(index) {
+        const c = partie.cases[index], e = ENIGMES[rang];
+        if (resolue || c.revelee) return;
+        const juste = e.attendu === "mine" ? c.mine : !c.mine;
+        if (!juste) { sortie("retour").textContent = `Pas tout à fait. ${e.indice}`; sortie("retour").className = "message ko"; return; }
+        resolue = true;
+        if (e.attendu === "mine") { if (!c.drapeau) Moteur.basculerDrapeau(partie, index); } else Moteur.reveler(partie, index);
+        vue.rafraichir();
+        const derniere = rang === ENIGMES.length - 1;
+        sortie("retour").textContent = `${e.explication}${derniere ? " Tu as résolu toutes les énigmes : à toi de jouer dans l'onglet « Jouer » !" : ""}`;
+        sortie("retour").className = "message ok";
+        suivante.textContent = derniere ? "Recommencer les énigmes" : "Énigme suivante";
+        suivante.hidden = false;
+      }
+
+      suivante.addEventListener("click", () => { charger((rang + 1) % ENIGMES.length); vue.focaliser(0); });
+      charger(0);
+    } });
+
+  /* ---------- Onglet self-test (prévu phase 2, désactivé) ---------- */
+  enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false,
+    questions: [], rendu() {} });
+
+  /* ---------- Socle : construction des onglets ---------- */
+  const liste = document.getElementById("onglets"), panneaux = document.getElementById("panneaux");
+  const actifs = registre.filter((o) => o.actif);
+  const boutons = actifs.map((o, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.id = `onglet-${o.id}`; b.textContent = o.titre;
+    b.setAttribute("aria-controls", `panneau-${o.id}`); b.dataset.onglet = o.id;
+    const p = document.createElement("section");
+    p.setAttribute("role", "tabpanel"); p.id = `panneau-${o.id}`; p.setAttribute("aria-labelledby", b.id); p.tabIndex = 0;
+    o.rendu(p); panneaux.appendChild(p); liste.appendChild(b);
+    b.addEventListener("click", () => choisir(i));
+    return b;
+  });
+  function choisir(i) {
+    boutons.forEach((b, j) => {
+      const sel = i === j; b.setAttribute("aria-selected", String(sel)); b.tabIndex = sel ? 0 : -1;
+      document.getElementById(b.getAttribute("aria-controls")).hidden = !sel;
+    });
+    stockage.ecrire("onglet", actifs[i].id);
+  }
+  liste.addEventListener("keydown", (e) => {
+    const i = boutons.indexOf(document.activeElement); if (i < 0) return;
+    const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
+    if (n >= 0) { choisir(n); boutons[n].focus(); e.preventDefault(); }
+  });
+  // Un jeu s'ouvre directement sur l'onglet « Jouer » (sauf si un autre onglet a été mémorisé).
+  const memo = actifs.findIndex((o) => o.id === stockage.lire("onglet"));
+  choisir(memo >= 0 ? memo : Math.max(0, actifs.findIndex((o) => o.id === "application")));
+
+  document.getElementById("connexion").hidden = !CONFIG.connexionActive;
+  window.kermiclab = { META, registre, CONFIG, demineur: jeu };
+})();
+</script>
+</body>
+</html>

@@ -12,7 +12,7 @@ const etat = {
   memoire: false, pseudo: null, reprise: false, cercle: null
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
 const DEFI_BONNES = [1, 0, 1, 0, 0];

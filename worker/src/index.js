@@ -68,7 +68,7 @@ export function suggestionsCatalogue(index, langue, { exclure = null, max = MAX_
 }
 
 const ORDRE_NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const ORDRE_MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie"];
+const ORDRE_MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
 /** Matière d'une notion : début de son sujet (« physique-chimie/etats-de-la-matiere » → « physique-chimie »). */
 const matiereDe = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
 
