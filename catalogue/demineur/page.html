@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-REepvWFa12j3YjRtCaRoT+aBk5pwzCeePIEI1N7dsJI=' 'sha256-rymbMZ4tvWJRHD6F4PxOSHdlUjyyehy0h4avtm9CedU='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wyPEDO04Qo5oxZNmjmgoBOYXc5BB5Z/DJUJ46XCkr0U=' 'sha256-4ZwOXMPP6v7RUgTkr1Yv+QqZqqIjHAuCwMmguwYQd00=' 'sha256-P/FdOmV0TM8t4QpvyGN4DzcvDryQTHOFB/ls3hyrJQc=' 'sha256-BqLbC+uZtCoxupH+LQApV4Wl25BgEjy/UtOZf+t4ykk='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Démineur – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "demineur",
   "titre": "Démineur",
   "sujet": "jeux/demineur",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-04",
   "langue": "fr",
-  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
 }
 </script>
 <style>
@@ -109,13 +109,766 @@
     main { padding: 12px 10px; }
     .zoom { margin-left: 0; }
   }
+  .case[data-indice] { outline: 4px dashed var(--accent); outline-offset: -2px; position: relative; z-index: 1; }
 </style>
+<style data-inclure="gabarit/jeux/academie.css">
+/* Styles communs de l'Académie des jeux (ADR 0015). Utilise les variables de couleur de chaque page :
+   --fond, --surface, --texte, --doux, --accent, --accent-texte, --bord, --succes, --alerte. */
+.doux { color: var(--doux); }
+/* « hidden » l'emporte toujours sur les règles d'affichage (grilles, listes) de l'Académie. */
+.toast[hidden], [data-vue][hidden], [data-vue] [hidden] { display: none !important; }
+.toast { margin: 0 0 10px; font-weight: 700; color: var(--succes); }
+.toast:empty { display: none; }
+.toast:not(:empty) { padding: 8px 12px; border: 2px solid var(--succes); border-radius: 8px; background: var(--surface); }
+.boutons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+button.lien { background: none; border: 0; padding: 4px 0; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+button.danger { border-color: var(--alerte); color: var(--alerte); }
+.barre { height: 12px; border-radius: 6px; background: var(--bord); overflow: hidden; margin: 4px 0; }
+.barre span { display: block; height: 100%; background: var(--accent); border-radius: 6px; transition: width .4s; }
+/* Synthèse */
+.synthese-tete { display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; align-items: center; }
+.synthese-embleme { font-size: 2.6rem; line-height: 1; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; background: var(--fond); border: 2px solid var(--bord); }
+.synthese-identite h2 { margin: 0; }
+.synthese-identite p { margin: 0; font-size: .9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 10px 0 0; }
+.chips li { border: 1px solid var(--bord); border-radius: 999px; padding: 3px 10px; font-size: .9rem; background: var(--fond); }
+.conseil { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--fond); border: 1px solid var(--bord); }
+.conseil-titre { margin: 0; font-weight: 700; }
+.conseil-texte { margin: 4px 0 0; }
+.prochain-badge { margin: 10px 0 0; font-size: .9rem; }
+@media (max-width: 560px) { .synthese-tete { grid-template-columns: auto 1fr; } .synthese-tete button.lien { grid-column: 1 / -1; justify-self: start; } }
+/* Parcours */
+.parcours { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+.grade { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 10px 12px; }
+.grade.verrouille { opacity: .7; }
+.grade-entete { display: flex; align-items: center; gap: 10px; }
+.grade-embleme { font-size: 1.8rem; line-height: 1; }
+.grade-entete h3 { margin: 0; font-size: 1rem; }
+.grade-entete p { margin: 0; font-size: .85rem; }
+.grade-etat { margin-left: auto; font-size: .85rem; font-weight: 600; text-align: right; }
+.lecons { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; }
+.lecon { width: 100%; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 0 6px; padding: 8px 10px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+.lecon:disabled { cursor: not-allowed; opacity: .6; }
+.lecon.faite { border-color: var(--succes); }
+.lecon-titre { font-weight: 600; }
+.lecon-theme { grid-row: 2; font-size: .8rem; color: var(--doux); }
+.lecon-etoiles { grid-row: 1 / 3; grid-column: 2; align-self: center; color: #b45309; font-size: .95rem; letter-spacing: 1px; }
+/* Page détaillée */
+.detail-section h3 { margin: 0 0 6px; font-size: 1rem; }
+.detail-section details summary { cursor: pointer; font-weight: 600; margin-top: 6px; }
+.regles-xp { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: 6px; }
+.regles-xp td { padding: 4px 6px; border-top: 1px solid var(--bord); }
+.regles-xp td:last-child { text-align: right; font-weight: 700; white-space: nowrap; }
+.grades-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.grades-liste li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--bord); }
+.grades-liste li.obtenu { border-color: var(--succes); }
+.grades-liste li.en-cours { border-color: var(--accent); }
+.grades-liste li.verrouille { opacity: .65; }
+.carnet, .badges, .forces, .parties { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+.carnet p { margin: 2px 0 0; }
+.badges { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+.badges li { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; align-content: start; padding: 8px; border-radius: 8px; border: 1px solid var(--bord); }
+.badges li.obtenu { border-color: var(--succes); }
+.badges li.verrouille { opacity: .75; }
+.badges li .barre { grid-column: 2; height: 8px; }
+.badge-icone { grid-row: 1 / 4; font-size: 1.6rem; }
+.badges .doux { font-size: .85rem; }
+.activite { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; max-width: 420px; }
+.activite li { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; border-radius: 8px; border: 1px solid var(--bord); font-size: .8rem; }
+.activite li.actif { border-color: var(--accent); }
+.activite li.atteint { border-color: var(--succes); background: var(--surface); font-weight: 700; }
+.activite .compte { font-size: 1rem; }
+.forces li { display: grid; grid-template-columns: 10em 1fr; gap: 8px; align-items: center; }
+.jauge { position: relative; height: 18px; border-radius: 9px; background: var(--bord); overflow: hidden; }
+.jauge span { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
+.jauge b { position: relative; font-size: .8rem; padding-left: 6px; color: var(--texte); }
+.emblemes { display: flex; flex-wrap: wrap; gap: 6px; }
+.emblemes label { font-size: 1.5rem; line-height: 1.2; }
+.emblemes label.verrouille { opacity: .45; cursor: not-allowed; }
+.emblemes label.verrouille::after { content: "🔒"; font-size: .8rem; vertical-align: top; }
+.case-a-cocher { display: flex; gap: 8px; align-items: center; cursor: pointer; margin: 8px 0; }
+/* Séance */
+.fil { margin: 10px 0 0; font-size: .85rem; }
+.a-retenir { border-left: 4px solid var(--accent); background: var(--surface); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-bottom: 12px; }
+.a-retenir p { margin: 4px 0 0; }
+.consigne { font-weight: 600; }
+.zone-exercice { max-width: 420px; margin: 8px 0; }
+.qcm { list-style: none; padding: 0; display: grid; gap: 6px; }
+.choix-qcm { width: 100%; text-align: left; padding: 10px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+.choix-qcm[data-etat="juste"] { border-color: var(--succes); color: var(--succes); font-weight: 700; opacity: 1; }
+.choix-qcm[data-etat="faux"] { border-color: var(--alerte); color: var(--alerte); text-decoration: line-through; }
+.bilan h2 { font-size: 1.3rem; }
+@media (max-width: 480px) { .forces li { grid-template-columns: 7em 1fr; } }
+/* Choix en boutons (réglages), autonomes : chaque page n'a pas forcément ces styles. */
+.detail-section .choix { border: 0; padding: 0; margin: 10px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.detail-section .choix legend { padding: 0; margin-bottom: 4px; font-weight: 600; width: 100%; font-size: .9rem; }
+.detail-section .choix label { position: relative; padding: 5px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; }
+.detail-section .choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.detail-section .choix label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+.detail-section .choix label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+.message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
+.message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+</style>
+<script type="application/json" id="parcours-demineur">
+{
+ "themes": {
+  "bases": "Les bases",
+  "deduction": "Les déductions",
+  "motifs": "Les motifs",
+  "methode": "La méthode",
+  "expert": "Le jeu d'expert"
+ },
+ "conseilFinal": "Tu as tout appris ! Tente le niveau Expert et bats ton record.",
+ "parties": {
+  "niveaux": {
+   "debutant": {
+    "nom": "Débutant",
+    "xp": {
+     "victoire": 30,
+     "defaite": 3
+    }
+   },
+   "intermediaire": {
+    "nom": "Intermédiaire",
+    "xp": {
+     "victoire": 80,
+     "defaite": 5
+    }
+   },
+   "expert": {
+    "nom": "Expert",
+    "xp": {
+     "victoire": 200,
+     "defaite": 10
+    }
+   }
+  }
+ },
+ "badges": [
+  {
+   "id": "logicien",
+   "icone": "🧩",
+   "nom": "Logicien",
+   "description": "Termine toutes les leçons de motifs.",
+   "condition": {
+    "type": "themes",
+    "themes": [
+     "motifs"
+    ]
+   }
+  },
+  {
+   "id": "premier-deminage",
+   "icone": "🚩",
+   "nom": "Premier déminage",
+   "description": "Gagne une partie au niveau Débutant.",
+   "condition": {
+    "type": "victoires",
+    "niveau": "debutant",
+    "min": 1
+   }
+  },
+  {
+   "id": "confirme",
+   "icone": "🎖️",
+   "nom": "Démineur confirmé",
+   "description": "Gagne une partie au niveau Intermédiaire.",
+   "condition": {
+    "type": "victoires",
+    "niveau": "intermediaire",
+    "min": 1
+   }
+  },
+  {
+   "id": "expert",
+   "icone": "💎",
+   "nom": "Démineur expert",
+   "description": "Gagne une partie au niveau Expert.",
+   "condition": {
+    "type": "victoires",
+    "niveau": "expert",
+    "min": 1
+   }
+  },
+  {
+   "id": "eclair",
+   "icone": "⚡",
+   "nom": "Éclair",
+   "description": "Gagne au niveau Débutant en moins d'une minute.",
+   "condition": {
+    "type": "record",
+    "niveau": "debutant",
+    "max": 59
+   }
+  },
+  {
+   "id": "champion",
+   "icone": "🥇",
+   "nom": "Champion",
+   "description": "Gagne 10 parties.",
+   "condition": {
+    "type": "victoires",
+    "min": 10
+   }
+  }
+ ],
+ "grades": [
+  {
+   "id": "apprenti",
+   "nom": "Apprenti",
+   "embleme": "🔍",
+   "sousTitre": "Je lis la grille",
+   "lecons": [
+    {
+     "id": "lire-chiffre",
+     "titre": "Lire un chiffre",
+     "theme": "bases",
+     "texte": "Chaque chiffre compte les mines cachées dans les 8 cases qui le touchent, diagonales comprises. C'est le seul indice du jeu… et il suffit presque toujours !",
+     "retenir": "Un chiffre = le nombre de mines parmi ses 8 voisines. S'il ne reste qu'une case fermée autour d'un 1, la mine est dessous.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Une case affiche 3. Combien de mines la touchent ?",
+       "choix": [
+        "1",
+        "3",
+        "8",
+        "On ne peut pas savoir"
+       ],
+       "bonne": 1,
+       "explication": "Exactement 3 mines se cachent parmi ses 8 voisines."
+      },
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "....",
+         "....",
+         "...*",
+         "...."
+        ],
+        "ouvrir": [
+         [
+          0,
+          0
+         ]
+        ]
+       },
+       "but": "mine",
+       "consigne": "Un des 1 n'a plus qu'une seule case fermée autour de lui. Pose un drapeau sur la mine.",
+       "indice": "Cherche un 1 qui ne touche qu'une case fermée.",
+       "explication": "Bravo : ce 1 n'avait qu'une case fermée autour de lui, la mine ne pouvait être que là."
+      }
+     ]
+    },
+    {
+     "id": "case-vide",
+     "titre": "La case vide",
+     "theme": "bases",
+     "texte": "Une case ouverte sans chiffre ne touche aucune mine. Le jeu ouvre alors tout seul ses voisines : c'est pour ça qu'une grande zone se dévoile parfois d'un coup.",
+     "retenir": "Une case vide n'a aucune mine autour d'elle : toutes ses voisines sont sûres (et le jeu les ouvre pour toi).",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Tu ouvres une case vide. Que se passe-t-il ?",
+       "choix": [
+        "La partie est perdue",
+        "Ses voisines s'ouvrent toutes seules",
+        "Un drapeau apparaît",
+        "Rien du tout"
+       ],
+       "bonne": 1,
+       "explication": "Aucune mine autour : le jeu ouvre les voisines, et continue tant qu'il trouve des cases vides."
+      },
+      {
+       "type": "qcm",
+       "question": "Une case vide peut-elle toucher une mine ?",
+       "choix": [
+        "Oui, en diagonale",
+        "Non, jamais",
+        "Seulement au bord",
+        "Oui, une seule"
+       ],
+       "bonne": 1,
+       "explication": "Jamais : si une mine la touchait, même en diagonale, la case afficherait au moins 1."
+      }
+     ]
+    },
+    {
+     "id": "drapeaux",
+     "titre": "Les drapeaux",
+     "theme": "bases",
+     "texte": "Un drapeau marque une mine dont tu es sûr. Il évite de l'ouvrir par erreur et t'aide à compter. Pose-le seulement quand tu en es certain !",
+     "retenir": "Drapeau = mine certaine. Ne pose jamais un drapeau « au hasard » : un faux drapeau trompe tes déductions.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Quand faut-il poser un drapeau ?",
+       "choix": [
+        "Sur chaque case qui me fait peur",
+        "Quand je suis sûr qu'il y a une mine",
+        "Au début de la partie",
+        "Jamais"
+       ],
+       "bonne": 1,
+       "explication": "Un drapeau est une certitude : il te sert ensuite à déduire les cases sûres autour."
+      },
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         ".....",
+         ".....",
+         "..*..",
+         "....."
+        ],
+        "ouvrir": [
+         [
+          0,
+          0
+         ]
+        ]
+       },
+       "but": "mine",
+       "consigne": "Lis chaque 1 autour de la case fermée du milieu, puis pose un drapeau sur la mine certaine.",
+       "indice": "Le 1 juste au-dessus du trou ne touche qu'une case fermée… laquelle ?",
+       "explication": "Plusieurs 1 n'ont qu'une case fermée en commun : la mine est forcément là."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "eclaireur",
+   "nom": "Éclaireur",
+   "embleme": "🚩",
+   "sousTitre": "Je déduis",
+   "lecons": [
+    {
+     "id": "chiffre-complet",
+     "titre": "Le chiffre complet",
+     "theme": "deduction",
+     "texte": "Quand un chiffre touche déjà autant de mines certaines que sa valeur, il est « complet » : toutes ses autres voisines sont sûres.",
+     "retenir": "Chiffre complet (autant de mines certaines que sa valeur) → toutes ses autres voisines sont sûres.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "....",
+         ".*..",
+         "....",
+         "*..."
+        ],
+        "ouvrir": [
+         [
+          0,
+          3
+         ]
+        ],
+        "drapeaux": [
+         [
+          1,
+          1
+         ]
+        ]
+       },
+       "but": "sure",
+       "consigne": "Le drapeau marque une mine certaine. Trouve un 1 déjà complet et ouvre une de ses autres voisines.",
+       "indice": "Le 1 en haut touche déjà le drapeau : ses autres voisines fermées sont sûres.",
+       "explication": "Ce 1 était complet grâce au drapeau : sa voisine ne pouvait pas cacher une seconde mine."
+      }
+     ]
+    },
+    {
+     "id": "autant-de-cases",
+     "titre": "Autant de cases que le chiffre",
+     "theme": "deduction",
+     "texte": "Quand un chiffre a exactement autant de cases fermées autour de lui que sa valeur, elles cachent toutes une mine. Un 2 avec seulement 2 cases fermées : deux mines !",
+     "retenir": "Chiffre = nombre de cases fermées autour → ce sont toutes des mines.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "......",
+         "......",
+         "......",
+         "**....",
+         "......"
+        ],
+        "ouvrir": [
+         [
+          0,
+          5
+         ]
+        ]
+       },
+       "but": "drapeaux",
+       "consigne": "Un 2 n'a que deux cases fermées autour de lui. Pose un drapeau sur toutes les mines certaines.",
+       "indice": "Regarde le 2 tout à gauche : combien de cases fermées le touchent ?",
+       "explication": "Le 2 ne touchait que 2 cases fermées : les deux sont des mines."
+      }
+     ]
+    },
+    {
+     "id": "accord",
+     "titre": "Ouvrir d'un coup",
+     "theme": "deduction",
+     "texte": "Astuce des pros : quand un chiffre est complet (ses drapeaux sont posés), touche ce chiffre. Le jeu ouvre d'un coup toutes ses autres voisines.",
+     "retenir": "Touche un chiffre complet pour ouvrir toutes ses autres voisines en un seul geste… mais seulement si tes drapeaux sont justes !",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "....",
+         ".*..",
+         "....",
+         "*..."
+        ],
+        "ouvrir": [
+         [
+          0,
+          3
+         ]
+        ],
+        "drapeaux": [
+         [
+          1,
+          1
+         ]
+        ]
+       },
+       "but": "accord",
+       "consigne": "Le drapeau est juste. Touche un chiffre complet pour ouvrir ses voisines d'un coup.",
+       "indice": "Le 1 de la première ligne a déjà son drapeau : touche-le.",
+       "explication": "Un seul geste, plusieurs cases ouvertes : c'est l'ouverture rapide."
+      },
+      {
+       "type": "qcm",
+       "question": "Tu touches un 2 qui a deux drapeaux autour de lui, mais un des drapeaux est faux. Que risques-tu ?",
+       "choix": [
+        "Rien",
+        "D'ouvrir une mine et de perdre",
+        "De gagner plus vite",
+        "Le jeu enlève le faux drapeau"
+       ],
+       "bonne": 1,
+       "explication": "L'ouverture rapide fait confiance à tes drapeaux : un drapeau faux, et une mine s'ouvre."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "logicien",
+   "nom": "Logicien",
+   "embleme": "💡",
+   "sousTitre": "Je reconnais les motifs",
+   "lecons": [
+    {
+     "id": "motif-11",
+     "titre": "Le motif 1-1 contre un bord",
+     "theme": "motifs",
+     "texte": "Deux 1 côte à côte le long d'un bord partagent la même mine. Le premier 1 ne voit que deux cases ; le second en voit une de plus, qui est donc sûre.",
+     "retenir": "1-1 contre un bord : la mine est dans les deux premières cases, la troisième case est sûre.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         ".....",
+         ".....",
+         ".....",
+         "*....",
+         "....."
+        ],
+        "ouvrir": [
+         [
+          0,
+          4
+         ]
+        ]
+       },
+       "but": "sure",
+       "consigne": "Le long du bord gauche, des 1 se suivent. Ouvre la case sûre.",
+       "indice": "Compare ce que voit chaque 1 : celui du milieu touche une case que l'autre ne touche pas.",
+       "explication": "Le 1-1 a fait son travail : la mine est partagée, la case suivante est sûre."
+      }
+     ]
+    },
+    {
+     "id": "motif-121",
+     "titre": "Le motif 1-2-1",
+     "theme": "motifs",
+     "texte": "Un 1-2-1 contre une rangée de cases fermées : les mines sont sous les deux 1, et la case sous le 2 est sûre. On l'a démontré dans l'onglet Énigmes !",
+     "retenir": "1-2-1 → mines sous les 1, case sûre sous le 2.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "...",
+         "...",
+         "...",
+         "*.*"
+        ],
+        "ouvrir": [
+         [
+          0,
+          0
+         ]
+        ]
+       },
+       "but": "sure",
+       "consigne": "Repère le 1-2-1 et ouvre la case sûre.",
+       "indice": "La case sûre est juste sous le 2.",
+       "explication": "Si la case sous le 2 était une mine, les deux 1 seraient complets et le 2 n'en verrait qu'une : impossible."
+      }
+     ]
+    },
+    {
+     "id": "motif-1221",
+     "titre": "Le motif 1-2-2-1",
+     "theme": "motifs",
+     "texte": "Un 1-2-2-1 contre des cases fermées : les deux mines sont sous les deux 2, et les cases sous les 1 sont sûres.",
+     "retenir": "1-2-2-1 → mines sous les deux 2, cases sûres sous les 1.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "....",
+         "....",
+         "....",
+         ".**."
+        ],
+        "ouvrir": [
+         [
+          0,
+          0
+         ]
+        ]
+       },
+       "but": "drapeaux",
+       "consigne": "Repère le 1-2-2-1 et pose un drapeau sur chaque mine certaine.",
+       "indice": "Les mines sont sous les deux 2.",
+       "explication": "Bravo : c'est le motif 1-2-2-1. Les cases sous les 1 sont sûres."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stratege",
+   "nom": "Stratège",
+   "embleme": "🧠",
+   "sousTitre": "J'ai une méthode",
+   "lecons": [
+    {
+     "id": "chaine",
+     "titre": "Déduire en chaîne",
+     "theme": "methode",
+     "texte": "Chaque case sûre que tu ouvres révèle un nouveau chiffre, qui permet souvent une nouvelle déduction. Les pros enchaînent ainsi sans jamais deviner.",
+     "retenir": "Après chaque case ouverte, relis les chiffres autour : une déduction en entraîne souvent une autre.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "......",
+         "......",
+         "...*..",
+         "......",
+         "*....*",
+         "......"
+        ],
+        "ouvrir": [
+         [
+          0,
+          0
+         ]
+        ]
+       },
+       "but": "deblayer",
+       "consigne": "Ouvre toutes les cases sûres, une par une, jusqu'à ce qu'il n'y en ait plus. Tu peux poser des drapeaux pour t'aider.",
+       "indice": "Commence par la case juste sous la mine entourée de 1.",
+       "explication": "Bravo : tu as tout ouvert sans deviner. Les cases qui restent fermées ne peuvent pas être déduites."
+      }
+     ]
+    },
+    {
+     "id": "commencer",
+     "titre": "Bien commencer",
+     "theme": "methode",
+     "texte": "Ici, le premier coup n'est jamais une mine et ouvre toujours une zone. Ensuite, on joue d'abord les cases sûres, puis on cherche les motifs.",
+     "retenir": "Ordre de jeu : cases sûres évidentes, puis motifs (1-1, 1-2-1…), puis seulement en dernier recours un pari.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Sur cette page, que se passe-t-il au premier coup ?",
+       "choix": [
+        "On peut tomber sur une mine",
+        "Il n'y a jamais de mine, et une zone s'ouvre",
+        "Le jeu place un drapeau",
+        "Le chronomètre ne démarre pas"
+       ],
+       "bonne": 1,
+       "explication": "Le premier coup est protégé : ni mine sur la case, ni autour. Une zone s'ouvre toujours."
+      },
+      {
+       "type": "qcm",
+       "question": "Tu vois une case sûre et un motif 1-2-1. Par quoi commencer ?",
+       "choix": [
+        "Par un pari, pour aller vite",
+        "Par la case sûre la plus évidente",
+        "Par poser des drapeaux partout",
+        "Par recommencer la partie"
+       ],
+       "bonne": 1,
+       "explication": "Toujours le plus sûr et le plus simple d'abord : chaque case ouverte apporte de nouveaux chiffres."
+      }
+     ]
+    },
+    {
+     "id": "deviner",
+     "titre": "Quand il faut deviner",
+     "theme": "methode",
+     "texte": "Parfois, aucune déduction n'est possible : il faut prendre un risque. Choisis alors la case la moins dangereuse.",
+     "retenir": "Si tu dois deviner, choisis la case qui a le moins de chances d'être une mine, et qui peut ouvrir le plus d'informations.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Deux cases fermées, une seule mine entre elles, aucun autre indice. Quelle chance de tomber sur la mine ?",
+       "choix": [
+        "1 chance sur 4",
+        "1 chance sur 2",
+        "Aucune",
+        "Toujours"
+       ],
+       "bonne": 1,
+       "explication": "Une mine pour deux cases : 1 chance sur 2. C'est un vrai pile ou face."
+      },
+      {
+       "type": "qcm",
+       "question": "Au niveau Expert, 99 mines pour 480 cases. Vaut-il mieux une case loin des chiffres ou ce pile ou face ?",
+       "choix": [
+        "Le pile ou face",
+        "Une case loin des chiffres : environ 1 chance sur 5",
+        "C'est pareil",
+        "Aucune des deux"
+       ],
+       "bonne": 1,
+       "explication": "99 ÷ 480 ≈ 0,2 : environ 1 chance sur 5, bien mieux que 1 sur 2."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "expert",
+   "nom": "Expert",
+   "embleme": "🏆",
+   "sousTitre": "Je joue comme un pro",
+   "lecons": [
+    {
+     "id": "compter",
+     "titre": "Compter les mines restantes",
+     "theme": "expert",
+     "texte": "En fin de partie, le compteur de mines devient un indice : si toutes les mines restantes sont déjà dans un coin, les autres cases fermées sont sûres.",
+     "retenir": "En fin de partie, compte les mines restantes : quand elles sont toutes localisées, le reste est sûr.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         "..***.",
+         "....*.",
+         "......",
+         "......",
+         "......"
+        ],
+        "ouvrir": [
+         [
+          4,
+          0
+         ]
+        ]
+       },
+       "but": "deblayer",
+       "compterMines": true,
+       "consigne": "Il y a 4 mines en tout dans cette grille. Compte-les, puis ouvre toutes les cases sûres.",
+       "indice": "Les chiffres désignent déjà 4 mines. Combien en reste-t-il pour le coin en haut à droite ?",
+       "explication": "Les 4 mines étaient toutes trouvées : le coin restant ne pouvait plus en cacher. Compter, c'est la dernière arme de l'expert !"
+      }
+     ]
+    },
+    {
+     "id": "vitesse",
+     "titre": "Jouer vite",
+     "theme": "expert",
+     "texte": "Les pros ne posent pas tous les drapeaux : ils posent seulement ceux qui servent à l'ouverture rapide, et gardent leurs yeux en avance sur leur doigt.",
+     "retenir": "Pour aller vite : peu de drapeaux, beaucoup d'ouvertures rapides, et toujours chercher la prochaine case sûre pendant que tu joues.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Pour gagner, faut-il poser un drapeau sur chaque mine ?",
+       "choix": [
+        "Oui, sinon on ne gagne pas",
+        "Non : il suffit d'ouvrir toutes les cases sûres",
+        "Seulement en Expert",
+        "Oui, mais à la fin"
+       ],
+       "bonne": 1,
+       "explication": "On gagne quand toutes les cases sans mine sont ouvertes. Les drapeaux sont facultatifs."
+      }
+     ]
+    },
+    {
+     "id": "defi-expert",
+     "titre": "Le défi de l'expert",
+     "theme": "expert",
+     "texte": "Tout ce que tu as appris, dans une seule grille : chiffres complets, motifs et déductions en chaîne.",
+     "retenir": "Méthode d'expert : lire, déduire, ouvrir, relire. Ne deviner qu'en tout dernier recours.",
+     "exercices": [
+      {
+       "type": "grille",
+       "grille": {
+        "mines": [
+         ".......",
+         ".......",
+         "..*....",
+         ".......",
+         "*....*.",
+         "...*...",
+         "......."
+        ],
+        "ouvrir": [
+         [
+          0,
+          6
+         ]
+        ]
+       },
+       "but": "deblayer",
+       "consigne": "Ouvre toutes les cases sûres de cette grande grille, sans jamais deviner.",
+       "indice": "Commence sous la mine entourée de 1, en haut à gauche.",
+       "explication": "Grille déminée comme un pro : chaque case ouverte était une certitude."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <header>
   <div>
     <h1>Démineur</h1>
-    <div class="meta">demineur · v1.0.0</div>
+    <div class="meta">demineur · v1.1.0</div>
   </div>
   <button id="connexion" class="action" type="button" hidden>Se connecter</button>
 </header>
@@ -172,6 +925,7 @@
   <div class="commandes-jeu">
     <button class="action" type="button" data-action="nouvelle-partie">Nouvelle partie</button>
     <button class="secondaire" type="button" data-action="mode-drapeau" aria-pressed="false">🚩 Mode drapeau</button>
+    <button class="secondaire" type="button" data-action="indice-jeu">💡 Indice</button>
     <span class="zoom" role="group" aria-label="Taille des cases">
       <button class="secondaire" type="button" data-action="zoom-moins" aria-label="Cases plus petites">−</button>
       <button class="secondaire" type="button" data-action="zoom-plus" aria-label="Cases plus grandes">+</button>
@@ -204,6 +958,706 @@
   </div>
 </template>
 
+<script id="progression-jeux" data-inclure="gabarit/jeux/progression.js">
+/* Progression commune des jeux (ADR 0014, 0015) : XP, niveaux, grades, étoiles, badges, série, objectif du jour,
+   révisions espacées, défi du jour, forces et conseil personnalisé. Pur, sans DOM : la date est passée en paramètre.
+   Module partagé, recopié dans chaque page par `npm run build` : modifier ce fichier, jamais sa copie dans une page. */
+const ProgressionJeux = (() => {
+  "use strict";
+  const XP = Object.freeze({ parfait: 20, reussi: 10, avecIndice: 5, revision: 5, revisionRatee: 1, lecon: 30, objectif: 20, defi: 15 });
+  // Révision espacée (boîtes de Leitner) : une carte réussie passe dans la boîte suivante, revue de plus en plus tard.
+  const INTERVALLES = Object.freeze([1, 2, 4, 8, 16]);
+  const OBJECTIFS = Object.freeze([1, 3, 5]);
+  const MAX_JOURS = 31;
+  const JOUR = /^\d{4}-\d{2}-\d{2}$/;
+  const RESULTATS = Object.freeze({ victoire: "victoires", nulle: "nulles", defaite: "defaites" });
+
+  /* ---------- Dates (AAAA-MM-JJ, calendrier de l'utilisateur fourni par l'appelant) ---------- */
+  function ajouterJours(jour, n) {
+    const [a, m, j] = jour.split("-").map(Number);
+    return new Date(Date.UTC(a, m - 1, j + n)).toISOString().slice(0, 10);
+  }
+  const estJour = (v) => typeof v === "string" && JOUR.test(v);
+  const entier = (v, max = 1e9) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : 0);
+  const copie = (e) => JSON.parse(JSON.stringify(e));
+  const exoId = (lecon, k) => `${lecon.id}/${k}`;
+  const etoiles = ({ erreurs, indices }) => { const p = erreurs + 2 * indices; return p === 0 ? 3 : p <= 2 ? 2 : 1; };
+  /** Petit hachage déterministe : le même défi pour tout le monde le même jour, sans hasard ni réseau. */
+  const hacher = (texte) => [...texte].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
+
+  /** Crée l'API de progression d'un jeu à partir de son parcours (grades, leçons, thèmes, badges, niveaux de partie). */
+  function creer(parcours) {
+    const lecons = new Map(), exercices = new Map();
+    parcours.grades.forEach((grade, gi) => grade.lecons.forEach((lecon) => {
+      lecons.set(lecon.id, { lecon, grade, gi });
+      lecon.exercices.forEach((exo, k) => exercices.set(exoId(lecon, k), { exo, lecon, grade, gi }));
+    }));
+    const EMBLEMES = Object.freeze(parcours.grades.map((g) => g.embleme));
+    const NIVEAUX_PARTIE = parcours.parties?.niveaux ?? {};
+    const toutesLecons = parcours.grades.flatMap((g) => g.lecons);
+
+    function etatInitial() {
+      return {
+        version: 1, xp: 0, lecons: {}, cartes: {}, themes: {}, serie: 0, serieMax: 0, dernierJour: null, jours: {},
+        badges: [], objectif: 3, embleme: EMBLEMES[0], libre: false, revisions: 0, objectifsAtteints: 0, objectifsJours: [], defis: [],
+        parties: Object.fromEntries(Object.keys(NIVEAUX_PARTIE).map((n) => [n, { victoires: 0, nulles: 0, defaites: 0, meilleur: null }]))
+      };
+    }
+
+    /* ---------- Grades et niveaux ---------- */
+    const gradeTermine = (e, grade) => grade.lecons.every((l) => e.lecons[l.id]);
+    function gradesObtenus(e) {
+      let n = 0;
+      while (n < parcours.grades.length && gradeTermine(e, parcours.grades[n])) n += 1;
+      return n;
+    }
+    function titre(e) {
+      const n = gradesObtenus(e);
+      return n === 0 ? "Débutant" : n === parcours.grades.length ? `${parcours.grades[n - 1].nom} : tu es un pro !` : parcours.grades[n - 1].nom;
+    }
+    function leconDebloquee(e, id) {
+      const info = lecons.get(id);
+      return !!info && (e.libre || info.gi === 0 || gradeTermine(e, parcours.grades[info.gi - 1]));
+    }
+    const emblemesDisponibles = (e) => EMBLEMES.slice(0, Math.max(1, gradesObtenus(e) + 1));
+
+    /* ---------- Badges : communs à tous les jeux, puis propres au jeu (décrits dans le parcours) ---------- */
+    const victoiresTotal = (e) => Object.values(e.parties).reduce((s, p) => s + p.victoires, 0);
+    const lecDuTheme = (themes) => toutesLecons.filter((l) => themes.includes(l.theme));
+    const COMMUNS = [
+      { id: "premiers-pas", icone: "👣", nom: "Premiers pas", description: "Termine ta première leçon.", avance: (e) => [Object.keys(e.lecons).length, 1] },
+      { id: "sans-faute", icone: "⭐", nom: "Sans faute", description: "Termine une leçon avec 3 étoiles.", avance: (e) => [Object.values(e.lecons).some((l) => l.etoiles === 3) ? 1 : 0, 1] },
+      { id: "perfectionniste", icone: "🌟", nom: "Perfectionniste", description: "Obtiens 3 étoiles sur toutes les leçons d'un grade.",
+        avance: (e) => [Math.max(...parcours.grades.map((g) => g.lecons.filter((l) => e.lecons[l.id]?.etoiles === 3).length / g.lecons.length)) >= 1 ? 1 : 0, 1] },
+      { id: "pro", icone: "🏆", nom: "Du débutant au pro", description: `Obtiens les ${parcours.grades.length} grades.`, avance: (e) => [gradesObtenus(e), parcours.grades.length] },
+      { id: "serie-3", icone: "🔥", nom: "Ça chauffe", description: "Entraîne-toi 3 jours de suite.", avance: (e) => [e.serieMax, 3] },
+      { id: "serie-7", icone: "📅", nom: "Une semaine sans pause", description: "Entraîne-toi 7 jours de suite.", avance: (e) => [e.serieMax, 7] },
+      { id: "regulier", icone: "🎯", nom: "Régulier", description: "Atteins 5 fois ton objectif du jour.", avance: (e) => [e.objectifsAtteints, 5] },
+      { id: "memoire", icone: "🧠", nom: "Mémoire d'éléphant", description: "Fais 10 révisions.", avance: (e) => [e.revisions, 10] },
+      { id: "bibliotheque", icone: "📚", nom: "Bibliothèque", description: "Maîtrise 10 stratégies (révisées plusieurs fois avec succès).",
+        avance: (e) => [Object.values(e.cartes).filter((c) => c.boite >= 4).length, 10] },
+      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis du jour.", avance: (e) => [e.defis.length, 3] }
+    ];
+    function versBadge({ id, icone, nom, description, condition: c }) {
+      let avance;
+      if (c.type === "themes") {
+        avance = (e) => { const l = lecDuTheme(c.themes), faites = l.filter((x) => e.lecons[x.id]).length; return c.toutes === false ? [Math.min(1, faites), 1] : [faites, l.length]; };
+      } else if (c.type === "victoires") {
+        avance = (e) => [c.niveau ? e.parties[c.niveau]?.victoires ?? 0 : victoiresTotal(e), c.min];
+      } else if (c.type === "record") {
+        avance = (e) => { const m = e.parties[c.niveau]?.meilleur; return [m !== null && m !== undefined && m <= c.max ? 1 : 0, 1]; };
+      } else throw new Error(`badge ${id} : condition « ${c.type} » inconnue`);
+      return { id, icone, nom, description, avance };
+    }
+    const BADGES = [...COMMUNS, ...(parcours.badges ?? []).map(versBadge)];
+    const ids = BADGES.map((b) => b.id);
+    if (new Set(ids).size !== ids.length) throw new Error("badges en double");
+
+    function badges(e) {
+      return BADGES.map(({ avance, ...b }) => { const [actuel, cible] = avance(e); return { ...b, actuel: Math.min(actuel, cible), cible, obtenu: actuel >= cible }; });
+    }
+
+    /* ---------- Relecture d'un état stocké ---------- */
+    const objet = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v : {});
+    function normaliser(brut) {
+      const base = etatInitial();
+      if (!brut || typeof brut !== "object") return base;
+      const e = { ...base, xp: entier(brut.xp), serie: entier(brut.serie), serieMax: entier(brut.serieMax), revisions: entier(brut.revisions),
+        objectifsAtteints: entier(brut.objectifsAtteints), libre: brut.libre === true,
+        objectif: OBJECTIFS.includes(brut.objectif) ? brut.objectif : base.objectif,
+        embleme: EMBLEMES.includes(brut.embleme) ? brut.embleme : base.embleme,
+        dernierJour: estJour(brut.dernierJour) ? brut.dernierJour : null };
+      for (const [id, v] of Object.entries(objet(brut.lecons))) {
+        if (lecons.has(id) && [1, 2, 3].includes(v?.etoiles)) e.lecons[id] = { etoiles: v.etoiles, jour: estJour(v.jour) ? v.jour : null };
+      }
+      for (const [id, v] of Object.entries(objet(brut.cartes))) {
+        if (exercices.has(id) && Number.isInteger(v?.boite) && v.boite >= 1 && v.boite <= INTERVALLES.length && estJour(v.prochaine)) e.cartes[id] = { boite: v.boite, prochaine: v.prochaine };
+      }
+      for (const [t, v] of Object.entries(objet(brut.themes))) {
+        if (parcours.themes[t]) { const essais = entier(v?.essais); e.themes[t] = { essais, premiers: Math.min(essais, entier(v?.premiers)) }; }
+      }
+      for (const [j, n] of Object.entries(objet(brut.jours))) if (estJour(j)) e.jours[j] = entier(n, 1000);
+      e.badges = Array.isArray(brut.badges) ? [...new Set(brut.badges.filter((b) => ids.includes(b)))] : [];
+      e.defis = Array.isArray(brut.defis) ? [...new Set(brut.defis.filter(estJour))].slice(-MAX_JOURS) : [];
+      e.objectifsJours = Array.isArray(brut.objectifsJours) ? [...new Set(brut.objectifsJours.filter(estJour))].slice(-MAX_JOURS) : [];
+      for (const n of Object.keys(NIVEAUX_PARTIE)) {
+        const p = objet(objet(brut.parties)[n]);
+        e.parties[n] = { victoires: entier(p.victoires), nulles: entier(p.nulles), defaites: entier(p.defaites), meilleur: Number.isInteger(p.meilleur) && p.meilleur >= 0 ? p.meilleur : null };
+      }
+      return e;
+    }
+
+    /* ---------- Enregistrements : chaque fonction renvoie un nouvel état et ce qui a été gagné ---------- */
+    function cloturer(e, avant, gains) {
+      const obtenus = badges(e).filter((b) => b.obtenu).map((b) => b.id);
+      gains.badges = obtenus.filter((id) => !avant.badges.includes(id)).map((id) => { const { avance, ...b } = BADGES.find((x) => x.id === id); return b; });
+      e.badges = [...new Set([...avant.badges.filter((id) => ids.includes(id)), ...obtenus])];
+      gains.niveauAvant = niveau(avant.xp).niveau;
+      gains.niveauApres = niveau(e.xp).niveau;
+      gains.gradesAvant = gradesObtenus(avant);
+      gains.gradesApres = gradesObtenus(e);
+      return { etat: e, gains };
+    }
+    /** Activité du jour : série de jours consécutifs, compteur du jour, bonus quand l'objectif est atteint. */
+    function compterActivite(e, jour, gains) {
+      if (e.dernierJour !== jour) {
+        e.serie = e.dernierJour && ajouterJours(e.dernierJour, 1) === jour ? e.serie + 1 : 1;
+        e.serieMax = Math.max(e.serieMax, e.serie);
+        e.dernierJour = jour;
+      }
+      e.jours[jour] = (e.jours[jour] ?? 0) + 1;
+      for (const j of Object.keys(e.jours).sort().slice(0, -MAX_JOURS)) delete e.jours[j];
+      // Une seule récompense par date, même si le joueur change son objectif dans la journée.
+      if (e.jours[jour] >= e.objectif && !e.objectifsJours.includes(jour)) {
+        e.objectifsJours = [...e.objectifsJours, jour].slice(-MAX_JOURS);
+        e.xp += XP.objectif; gains.xp += XP.objectif; gains.objectif = true; e.objectifsAtteints += 1;
+      }
+    }
+
+    function enregistrerExercice(etat, { id, erreurs = 0, indice = false, jour, revision = false }) {
+      const info = exercices.get(id);
+      if (!info) throw new Error(`exercice inconnu : ${id}`);
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      const parfait = erreurs === 0 && !indice;
+      const gain = revision ? (parfait ? XP.revision : XP.revisionRatee) : parfait ? XP.parfait : indice ? XP.avecIndice : XP.reussi;
+      e.xp += gain; gains.xp += gain;
+      const t = e.themes[info.lecon.theme] ?? { essais: 0, premiers: 0 };
+      e.themes[info.lecon.theme] = { essais: t.essais + 1, premiers: t.premiers + (parfait ? 1 : 0) };
+      const carte = e.cartes[id];
+      const boite = !carte ? 1 : parfait ? Math.min(INTERVALLES.length, carte.boite + 1) : 1;
+      e.cartes[id] = { boite, prochaine: ajouterJours(jour, INTERVALLES[boite - 1]) };
+      if (revision) e.revisions += 1;
+      compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    function terminerLecon(etat, { id, etoiles: n, jour }) {
+      if (!lecons.has(id)) throw new Error(`leçon inconnue : ${id}`);
+      const e = copie(etat), gains = { xp: 0, objectif: false, premiereFois: !etat.lecons[id] };
+      if (gains.premiereFois) { e.xp += XP.lecon; gains.xp += XP.lecon; }
+      e.lecons[id] = { etoiles: Math.max(n, e.lecons[id]?.etoiles ?? 0), jour };
+      return cloturer(e, etat, gains);
+    }
+
+    /** Partie terminée (contre l'ordinateur, ou partie de démineur). `temps` en secondes, pour les records. */
+    function enregistrerPartie(etat, { resultat, niveau: n, jour, temps = null }) {
+      const regle = NIVEAUX_PARTIE[n];
+      if (!RESULTATS[resultat] || !regle || regle.xp[resultat] === undefined) throw new Error("partie invalide");
+      const e = copie(etat), gains = { xp: 0, objectif: false, record: false };
+      const gain = regle.xp[resultat];
+      e.xp += gain; gains.xp += gain;
+      const p = e.parties[n];
+      p[RESULTATS[resultat]] += 1;
+      if (resultat === "victoire" && Number.isInteger(temps) && temps >= 0 && (p.meilleur === null || temps < p.meilleur)) { p.meilleur = temps; gains.record = true; }
+      compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    function enregistrerDefi(etat, { jour }) {
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      if (!e.defis.includes(jour)) { e.defis = [...e.defis, jour].slice(-MAX_JOURS); e.xp += XP.defi; gains.xp += XP.defi; }
+      return cloturer(e, etat, gains);
+    }
+
+    function regler(etat, { objectif, embleme, libre }) {
+      const e = copie(etat);
+      if (OBJECTIFS.includes(objectif)) e.objectif = objectif;
+      if (emblemesDisponibles(etat).includes(embleme)) e.embleme = embleme;
+      if (typeof libre === "boolean") e.libre = libre;
+      return e;
+    }
+
+    /* ---------- Lectures ---------- */
+    function revisionsDues(etat, jour) {
+      return Object.entries(etat.cartes)
+        .filter(([, c]) => c.prochaine <= jour)
+        .sort(([, a], [, b]) => a.prochaine.localeCompare(b.prochaine) || a.boite - b.boite)
+        .map(([id]) => id);
+    }
+    function forces(etat) {
+      return Object.entries(parcours.themes).map(([id, nom]) => {
+        const t = etat.themes[id] ?? { essais: 0, premiers: 0 };
+        return { id, nom, essais: t.essais, taux: t.essais >= 3 ? t.premiers / t.essais : null };
+      });
+    }
+    /** Série encore valable aujourd'hui (elle est cassée si le dernier jour actif est avant-hier ou plus ancien). */
+    const serieActuelle = (e, jour) => (e.dernierJour === jour || e.dernierJour === ajouterJours(jour, -1) ? e.serie : 0);
+    /** Activité des `n` derniers jours, du plus ancien au plus récent. */
+    const activite = (e, jour, n = 7) => Array.from({ length: n }, (_, k) => { const j = ajouterJours(jour, k - n + 1); return { jour: j, exercices: e.jours[j] ?? 0 }; });
+
+    function defiDuJour(etat, jour) {
+      // Liste commune, indépendante de la progression : vraiment le même défi pour tout le monde le même jour.
+      const candidats = [...exercices.entries()].filter(([, x]) => x.exo.type !== "qcm").map(([id]) => id);
+      if (!candidats.length) return null;
+      return { id: candidats[hacher(jour) % candidats.length], fait: etat.defis.includes(jour) };
+    }
+
+    /** Conseil personnalisé : réviser, retravailler un point faible, avancer, se perfectionner, ou jouer. */
+    function recommandation(etat, jour) {
+      const dues = revisionsDues(etat, jour);
+      const ouvertes = toutesLecons.filter((l) => leconDebloquee(etat, l.id));
+      if (dues.length >= 3) return { type: "revision", nombre: dues.length, texte: `${dues.length} stratégies t'attendent pour une révision : c'est le meilleur moyen de les retenir pour toujours.` };
+      const faibles = forces(etat).filter((f) => f.taux !== null && f.taux < 0.6).sort((a, b) => a.taux - b.taux);
+      for (const f of faibles) {
+        const lecon = ouvertes.filter((l) => l.theme === f.id).sort((a, b) => (etat.lecons[a.id]?.etoiles ?? 0) - (etat.lecons[b.id]?.etoiles ?? 0))[0];
+        if (lecon && (etat.lecons[lecon.id]?.etoiles ?? 0) < 3) return { type: "faiblesse", lecon: lecon.id, theme: f.id, texte: `Ton point à travailler : ${f.nom.toLowerCase()} (${Math.round(f.taux * 100)} % réussi du premier coup). Refais « ${lecon.titre} ».` };
+      }
+      const suivante = ouvertes.find((l) => !etat.lecons[l.id]);
+      if (suivante) return { type: "suite", lecon: suivante.id, texte: Object.keys(etat.lecons).length ? `Prochaine étape : « ${suivante.titre} ».` : `Bienvenue ! Commence par « ${suivante.titre} ».` };
+      if (dues.length) return { type: "revision", nombre: dues.length, texte: `${dues.length} révision${dues.length > 1 ? "s" : ""} pour garder tes stratégies en tête.` };
+      const aPerfectionner = ouvertes.find((l) => etat.lecons[l.id].etoiles < 3);
+      if (aPerfectionner) return { type: "perfection", lecon: aPerfectionner.id, texte: `Vise les 3 étoiles sur « ${aPerfectionner.titre} ».` };
+      if (gradesObtenus(etat) < parcours.grades.length) {
+        const g = parcours.grades[gradesObtenus(etat)];
+        return { type: "suite", lecon: g.lecons.find((l) => !etat.lecons[l.id])?.id ?? g.lecons[0].id, texte: `Termine le grade ${g.nom} pour progresser.` };
+      }
+      return { type: "jouer", texte: parcours.conseilFinal ?? "Tu as tout appris ! Mets tes stratégies en pratique en jouant." };
+    }
+
+    /** Règles de gain d'XP, pour les expliquer au joueur (transparence de la gamification). */
+    function reglesXP() {
+      const regles = [
+        ["Exercice réussi du premier coup", XP.parfait], ["Exercice réussi après une erreur", XP.reussi], ["Exercice réussi avec un indice", XP.avecIndice],
+        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi du jour réussi", XP.defi]
+      ];
+      for (const [, n] of Object.entries(NIVEAUX_PARTIE)) {
+        for (const [r, xp] of Object.entries(n.xp)) regles.push([`Partie ${n.nom} : ${{ victoire: "victoire", nulle: "nulle", defaite: "défaite" }[r]}`, xp]);
+      }
+      return regles.map(([texte, xp]) => ({ texte, xp }));
+    }
+
+    return Object.freeze({
+      parcours, EMBLEMES, BADGES: BADGES.map(({ avance, ...b }) => b), NIVEAUX_PARTIE, lecons, exercices,
+      etatInitial, normaliser, niveau, gradesObtenus, titre, leconDebloquee, emblemesDisponibles, badges,
+      enregistrerExercice, terminerLecon, enregistrerPartie, enregistrerDefi, regler,
+      revisionsDues, forces, serieActuelle, activite, defiDuJour, recommandation, reglesXP
+    });
+  }
+
+  /** Niveau n atteint à 50 × n × (n − 1) XP : 0, 100, 300, 600, 1000… (chaque niveau demande un peu plus). */
+  function niveau(xp) {
+    let n = 1;
+    while (50 * (n + 1) * n <= xp) n += 1;
+    const debut = 50 * n * (n - 1), fin = 50 * (n + 1) * n;
+    return { niveau: n, xpDansNiveau: xp - debut, xpPourNiveau: fin - debut };
+  }
+
+  return Object.freeze({ XP, INTERVALLES, OBJECTIFS, ajouterJours, exoId, etoiles, niveau, creer });
+})();
+</script>
+<script id="academie-jeux" data-inclure="gabarit/jeux/academie.js">
+/* Interface commune de l'Académie des jeux (ADR 0014, 0015) : synthèse, parcours, séances d'exercices et page
+   « Ma progression ». Les exercices propres à un jeu (échiquier, grille…) sont fournis par des adaptateurs.
+   Module partagé, recopié dans chaque page par `npm run build` : modifier ce fichier, jamais sa copie dans une page.
+   Contenu affiché uniquement par textContent et createElement (jamais innerHTML). */
+const VueAcademie = (() => {
+  "use strict";
+
+  function el(balise, attributs = {}, ...enfants) {
+    const n = document.createElement(balise);
+    for (const [k, v] of Object.entries(attributs)) {
+      if (v === false || v === null || v === undefined) continue;
+      if (k === "texte") n.textContent = v; else if (k === "classe") n.className = v; else n.setAttribute(k, v === true ? "" : v);
+    }
+    n.append(...enfants.filter((x) => x !== null && x !== undefined && x !== false));
+    return n;
+  }
+  const etoilesTexte = (n) => `${"★".repeat(n)}${"☆".repeat(3 - n)}`;
+  const pluriel = (n, mot) => `${n} ${mot}${n > 1 ? "s" : ""}`;
+  const jourLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const dateCourte = (jour) => `${jour.slice(8, 10)}/${jour.slice(5, 7)}`;
+  const JOURS = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
+  const nomJour = (jour) => { const [a, m, j] = jour.split("-").map(Number); return JOURS[new Date(a, m - 1, j).getDay()]; };
+  const formaterTemps = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+
+  function barre(actuel, cible, libelle) {
+    const b = el("div", { classe: "barre", role: "progressbar", "aria-label": libelle, "aria-valuemin": 0, "aria-valuemax": cible, "aria-valuenow": actuel }, el("span"));
+    b.firstChild.style.width = `${cible ? Math.round((100 * actuel) / cible) : 0}%`;
+    return b;
+  }
+
+  /**
+   * Monte l'Académie dans un panneau d'onglet.
+   * - progression : API créée par ProgressionJeux.creer(parcours)
+   * - embleme(id) : nœud affichant un emblème (pièce d'échecs, symbole…)
+   * - adaptateurs : { type: (outils) => ({ element, demarrer(exo), consigne?(exo), indice(exo), arreter?() }) }
+   *   où outils = { reussir(), erreur(message?), retour(texte, classe) }
+   */
+  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal }) {
+    const parcours = P.parcours;
+    let etat = P.normaliser(stockage.lire(cle));
+    let session = null, ex = null, confirmationEffacement = false;
+    const sauver = () => stockage.ecrire(cle, etat);
+
+    /* ---------- Squelette ---------- */
+    const toast = el("p", { classe: "toast", "data-sortie": "toast", role: "status", "aria-live": "polite" });
+    const vues = { accueil: el("div", { "data-vue": "accueil" }), detail: el("div", { "data-vue": "detail", hidden: true }), session: el("div", { "data-vue": "session", hidden: true }) };
+    panneau.append(toast, vues.accueil, vues.detail, vues.session);
+
+    // Synthèse
+    const synthese = el("section", { classe: "carte synthese", "aria-labelledby": "academie-titre" });
+    const z = {}; // zones mises à jour
+    z.embleme = el("div", { classe: "synthese-embleme", "aria-hidden": "true" });
+    z.titre = el("h2", { id: "academie-titre", tabindex: "-1", "data-sortie": "titre" });
+    z.niveau = el("p", { classe: "doux", "data-sortie": "niveau" });
+    z.barre = el("div");
+    z.chips = el("ul", { classe: "chips", "aria-label": "En bref", "data-sortie": "stats" });
+    z.conseil = el("p", { classe: "conseil-texte", "data-sortie": "conseil" });
+    z.actionConseil = el("button", { type: "button", classe: "action", "data-action": "conseil" });
+    z.reviser = el("button", { type: "button", classe: "secondaire", "data-action": "reviser" });
+    z.defi = el("button", { type: "button", classe: "secondaire", "data-action": "defi" });
+    z.prochainBadge = el("p", { classe: "prochain-badge", "data-sortie": "prochain-badge" });
+    const boutonDetail = el("button", { type: "button", classe: "lien", "data-action": "detail", texte: "📊 Ma progression détaillée →" });
+    synthese.append(
+      el("div", { classe: "synthese-tete" }, z.embleme, el("div", { classe: "synthese-identite" }, z.titre, z.niveau, z.barre), boutonDetail),
+      z.chips,
+      el("div", { classe: "conseil" }, el("p", { classe: "conseil-titre", texte: "✨ Pour toi aujourd'hui" }), z.conseil,
+        el("div", { classe: "boutons" }, z.actionConseil, z.reviser, z.defi)),
+      z.prochainBadge);
+    z.parcours = el("ol", { classe: "parcours", "aria-label": "Parcours" });
+    z.stockage = el("p", { classe: "doux", hidden: stockageDisponible, texte: "Ici, ta progression ne peut pas être gardée : ouvre la page en plein écran pour la conserver sur ton appareil." });
+    vues.accueil.append(synthese, el("h2", { texte: "🗺️ Ton parcours, du débutant au pro" }), z.parcours, z.stockage);
+
+    // Page détaillée
+    const retourDetail = el("button", { type: "button", classe: "secondaire", "data-action": "retour", texte: "← Retour à l'Académie" });
+    z.detailTitre = el("h2", { tabindex: "-1", texte: "📊 Ma progression", "data-sortie": "detail-titre" });
+    const section = (titre, ...contenu) => el("section", { classe: "carte detail-section" }, el("h3", { texte: titre }), ...contenu);
+    z.dNiveau = el("div", { "data-sortie": "detail-niveau" }); z.dRegles = el("table", { classe: "regles-xp" });
+    z.dGrades = el("ol", { classe: "grades-liste" });
+    z.dBadges = el("ul", { classe: "badges", "data-sortie": "badges" });
+    z.dRegularite = el("div", { "data-sortie": "regularite" }); z.dActivite = el("ol", { classe: "activite", "aria-label": "Activité des 7 derniers jours", "data-sortie": "activite" });
+    z.dCarnet = el("ul", { classe: "carnet", "data-sortie": "carnet" });
+    z.dForces = el("ul", { classe: "forces" }); z.dParties = el("ul", { classe: "parties", "data-sortie": "parties" });
+    z.dReglages = el("div");
+    vues.detail.append(retourDetail, z.detailTitre,
+      section("⬆️ Niveau et XP", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner de l'XP ?" }), z.dRegles)),
+      section("🎖️ Grades", el("p", { classe: "doux", texte: "Chaque grade obtenu ouvre le suivant et un nouvel emblème." }), z.dGrades),
+      section("🏅 Badges", z.dBadges),
+      section("🔥 Régularité", z.dRegularite, z.dActivite),
+      section("📒 Carnet de stratégies", el("p", { classe: "doux", texte: "Chaque stratégie apprise revient en révision, de plus en plus espacée quand tu la réussis." }), z.dCarnet),
+      section("📈 Points forts et points faibles", z.dForces, z.dParties),
+      section("⚙️ Réglages", z.dReglages));
+
+    // Séance
+    z.fil = el("p", { classe: "doux fil", "data-sortie": "fil" });
+    z.sTitre = el("h2", { tabindex: "-1", "data-sortie": "session-titre" });
+    z.sTexte = el("p");
+    z.retenir = el("p", { "data-sortie": "retenir" });
+    z.zoneRetenir = el("div", { classe: "a-retenir" }, el("strong", { texte: "📌 À retenir" }), z.retenir);
+    z.progression = el("p", { classe: "progression", "data-sortie": "progression" });
+    z.consigne = el("p", { classe: "consigne", "data-sortie": "consigne" });
+    z.qcm = el("ul", { classe: "qcm", hidden: true });
+    z.zoneJeu = el("div", { classe: "zone-exercice" });
+    z.retour = el("p", { classe: "message", role: "status", "aria-live": "polite", "data-sortie": "retour" });
+    z.indice = el("button", { type: "button", classe: "secondaire", "data-action": "indice", texte: "💡 Indice" });
+    z.suivant = el("button", { type: "button", classe: "action", "data-action": "suivant", hidden: true });
+    z.exercice = el("div", { classe: "carte" }, z.progression, z.consigne, z.zoneJeu, z.qcm, z.retour, el("div", { classe: "boutons" }, z.indice, z.suivant));
+    z.bTitre = el("h2", { tabindex: "-1", "data-sortie": "bilan-titre" }); z.bTexte = el("p", { "data-sortie": "bilan-texte" });
+    z.bSuite = el("button", { type: "button", classe: "action", "data-action": "bilan-suite", hidden: true });
+    const bRetour = el("button", { type: "button", classe: "secondaire", "data-action": "bilan-retour", texte: "Retour à l'Académie" });
+    z.bilan = el("div", { classe: "carte bilan", hidden: true }, z.bTitre, z.bTexte, el("div", { classe: "boutons" }, z.bSuite, bRetour));
+    const retourSession = el("button", { type: "button", classe: "secondaire", "data-action": "retour", texte: "← Retour à l'Académie" });
+    vues.session.append(retourSession, z.fil, z.sTitre, z.sTexte, z.zoneRetenir, z.exercice, z.bilan);
+
+    /* ---------- Gains ---------- */
+    function appliquer({ etat: nouvel, gains }) {
+      etat = nouvel; sauver();
+      const morceaux = [];
+      if (gains.xp) morceaux.push(`+${gains.xp} XP`);
+      if (gains.record) morceaux.push("⏱️ Nouveau record");
+      if (gains.objectif) morceaux.push("🎯 Objectif du jour atteint");
+      if (gains.niveauApres > gains.niveauAvant) morceaux.push(`⬆️ Niveau ${gains.niveauApres} !`);
+      if (gains.gradesApres > gains.gradesAvant) morceaux.push(`🎖️ Grade ${parcours.grades[gains.gradesApres - 1].nom} obtenu : nouvel emblème disponible`);
+      for (const b of gains.badges) morceaux.push(`${b.icone} Badge « ${b.nom} »`);
+      if (morceaux.length) toast.textContent = morceaux.join(" · ");
+      return gains;
+    }
+
+    function montrer(nom) {
+      for (const [k, v] of Object.entries(vues)) v.hidden = k !== nom;
+      if (nom !== "session") { session?.adaptateur?.arreter?.(); session = null; ex = null; }
+      if (nom === "accueil") afficherAccueil();
+      if (nom === "detail") afficherDetail();
+      ({ accueil: z.titre, detail: z.detailTitre, session: z.sTitre })[nom].focus();
+    }
+
+    /* ---------- Synthèse et parcours ---------- */
+    function afficherAccueil() {
+      const j = jour(), niv = P.niveau(etat.xp), grades = P.gradesObtenus(etat), tous = P.badges(etat);
+      z.embleme.replaceChildren(embleme(etat.embleme));
+      z.titre.textContent = P.titre(etat);
+      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} XP · encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}`;
+      z.barre.replaceChildren(barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"));
+      const aujourdhui = etat.jours[j] ?? 0, serie = P.serieActuelle(etat, j);
+      z.chips.replaceChildren(...[
+        `🔥 ${pluriel(serie, "jour")} de suite`,
+        `🎯 Aujourd'hui : ${Math.min(aujourdhui, etat.objectif)} / ${etat.objectif}${aujourdhui >= etat.objectif ? " ✓" : ""}`,
+        `🎖️ Grades : ${grades} / ${parcours.grades.length}`,
+        `🏅 Badges : ${tous.filter((b) => b.obtenu).length} / ${tous.length}`
+      ].map((t) => el("li", { texte: t })));
+      const conseil = P.recommandation(etat, j);
+      z.conseil.textContent = conseil.texte;
+      z.actionConseil.textContent = { revision: "Réviser maintenant", jouer: "Jouer une partie" }[conseil.type] ?? "C'est parti !";
+      z.actionConseil.onclick = () => (conseil.type === "revision" ? reviser() : conseil.type === "jouer" ? ouvrirOnglet?.("application") : ouvrirLecon(conseil.lecon));
+      const dues = P.revisionsDues(etat, j);
+      z.reviser.textContent = `🧠 Révisions (${dues.length})`; z.reviser.disabled = dues.length === 0;
+      const defi = P.defiDuJour(etat, j);
+      z.defi.textContent = defi?.fait ? "⚡ Défi du jour relevé ✓" : `⚡ Défi du jour (+${ProgressionJeux.XP.defi} XP)`;
+      z.defi.disabled = !defi || defi.fait;
+      // Prochain badge : celui qui est le plus près d'être gagné.
+      const prochain = tous.filter((b) => !b.obtenu).sort((a, b) => b.actuel / b.cible - a.actuel / a.cible)[0];
+      z.prochainBadge.replaceChildren(...(prochain ? [el("span", { classe: "doux", texte: "Prochain badge : " }),
+        el("strong", { texte: `${prochain.icone} ${prochain.nom}` }), el("span", { texte: ` — ${prochain.description} (${prochain.actuel} / ${prochain.cible})` })]
+        : [el("strong", { texte: "🏆 Tous les badges sont gagnés. Bravo !" })]));
+      // Parcours
+      z.parcours.replaceChildren(...parcours.grades.map((g, gi) => {
+        const faites = g.lecons.filter((l) => etat.lecons[l.id]).length, ouvert = P.leconDebloquee(etat, g.lecons[0].id);
+        const etatGrade = faites === g.lecons.length ? "✓ obtenu" : ouvert ? `${faites} / ${g.lecons.length}` : `🔒 termine le grade ${parcours.grades[gi - 1].nom}`;
+        return el("li", { classe: `grade${ouvert ? "" : " verrouille"}`, "data-grade": g.id },
+          el("div", { classe: "grade-entete" }, el("span", { classe: "grade-embleme", "aria-hidden": "true" }, embleme(g.embleme)),
+            el("div", {}, el("h3", { texte: `${gi + 1}. ${g.nom}` }), el("p", { classe: "doux", texte: g.sousTitre })),
+            el("span", { classe: "grade-etat", texte: etatGrade })),
+          el("ul", { classe: "lecons" }, ...g.lecons.map((l) => {
+            const fait = etat.lecons[l.id], libre = P.leconDebloquee(etat, l.id);
+            const b = el("button", { type: "button", classe: `lecon${fait ? " faite" : ""}`, "data-lecon": l.id, disabled: !libre,
+              "aria-label": `${l.titre}, ${parcours.themes[l.theme]}, ${fait ? `${pluriel(fait.etoiles, "étoile")} sur 3` : libre ? "à faire" : "verrouillée"}` },
+              el("span", { classe: "lecon-titre", texte: l.titre }), el("span", { classe: "lecon-theme", texte: parcours.themes[l.theme] }),
+              el("span", { classe: "lecon-etoiles", "aria-hidden": "true", texte: fait ? etoilesTexte(fait.etoiles) : libre ? "Nouveau" : "🔒" }));
+            b.addEventListener("click", () => ouvrirLecon(l.id));
+            return el("li", {}, b);
+          })));
+      }));
+    }
+
+    /* ---------- Page détaillée « Ma progression » ---------- */
+    function afficherDetail() {
+      const j = jour(), niv = P.niveau(etat.xp), obtenus = P.gradesObtenus(etat);
+      z.dNiveau.replaceChildren(
+        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} XP au total · ${P.titre(etat)}` })),
+        barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"),
+        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} XP : encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}.` }));
+      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp} XP` })))));
+      z.dGrades.replaceChildren(...parcours.grades.map((g, gi) => {
+        const faites = g.lecons.filter((l) => etat.lecons[l.id]).length;
+        const statut = gi < obtenus ? "✓ obtenu" : gi === obtenus ? `en cours : ${faites} / ${g.lecons.length} leçons` : "🔒 à venir";
+        return el("li", { classe: gi < obtenus ? "obtenu" : gi === obtenus ? "en-cours" : "verrouille" },
+          el("span", { classe: "grade-embleme", "aria-hidden": "true" }, embleme(g.embleme)),
+          el("strong", { texte: g.nom }), el("span", { classe: "doux", texte: ` — ${g.sousTitre} · ${statut}` }));
+      }));
+      const tous = P.badges(etat);
+      z.dBadges.replaceChildren(...[...tous.filter((b) => b.obtenu), ...tous.filter((b) => !b.obtenu)].map((b) => el("li", { classe: b.obtenu ? "obtenu" : "verrouille" },
+        el("span", { classe: "badge-icone", "aria-hidden": "true", texte: b.obtenu ? b.icone : "🔒" }),
+        el("strong", { texte: b.nom }),
+        el("span", { classe: "doux", texte: `${b.obtenu ? "✓ Gagné : " : "À gagner : "}${b.description}` }),
+        b.obtenu || b.cible <= 1 ? null : barre(b.actuel, b.cible, `${b.nom} : ${b.actuel} sur ${b.cible}`))));
+      const serie = P.serieActuelle(etat, j);
+      z.dRegularite.replaceChildren(el("p", { texte: `Série actuelle : ${pluriel(serie, "jour")} · record : ${pluriel(etat.serieMax, "jour")} · objectif du jour : ${pluriel(etat.objectif, "exercice")} (atteint ${etat.objectifsAtteints} fois).` }));
+      z.dActivite.replaceChildren(...P.activite(etat, j).map((a) => {
+        const atteint = a.exercices >= etat.objectif;
+        return el("li", { classe: atteint ? "atteint" : a.exercices ? "actif" : "", "aria-label": `${nomJour(a.jour)} ${dateCourte(a.jour)} : ${pluriel(a.exercices, "activité")}${atteint ? ", objectif atteint" : ""}` },
+          el("span", { classe: "jour", texte: nomJour(a.jour) }), el("span", { classe: "compte", texte: atteint ? "✓" : String(a.exercices) }));
+      }));
+      const apprises = parcours.grades.flatMap((g) => g.lecons).filter((l) => etat.lecons[l.id]);
+      z.dCarnet.replaceChildren(...(apprises.length ? apprises.map((l) => {
+        const cartes = l.exercices.map((_, k) => etat.cartes[ProgressionJeux.exoId(l, k)]).filter(Boolean);
+        const maitrise = cartes.length && cartes.every((c) => c.boite >= 4);
+        const prochaine = cartes.map((c) => c.prochaine).sort()[0];
+        const quand = maitrise ? "✓ maîtrisée" : !prochaine ? "à revoir demain" : prochaine <= j ? "à réviser aujourd'hui" : `à revoir le ${dateCourte(prochaine)}`;
+        return el("li", {}, el("strong", { texte: `${etoilesTexte(etat.lecons[l.id].etoiles)} ${l.titre}` }), el("span", { classe: "doux", texte: quand ? ` · ${quand}` : "" }), el("p", { texte: l.retenir }));
+      }) : [el("li", { classe: "doux", texte: "Termine une leçon : sa stratégie s'ajoute ici, pour la relire et la réviser." })]));
+      z.dForces.replaceChildren(...P.forces(etat).map((f) => el("li", {}, el("span", { texte: f.nom }),
+        f.taux === null
+          ? el("span", { classe: "doux", texte: f.essais ? `${pluriel(f.essais, "essai")} : encore un peu de pratique` : "pas encore travaillé" })
+          : el("span", { classe: "jauge", role: "img", "aria-label": `${Math.round(f.taux * 100)} % réussi du premier coup sur ${f.essais} essais` },
+            Object.assign(el("span"), { style: `width:${Math.round(f.taux * 100)}%` }), el("b", { texte: `${Math.round(f.taux * 100)} %` })))));
+      z.dParties.replaceChildren(...Object.entries(P.NIVEAUX_PARTIE).map(([id, n]) => {
+        const p = etat.parties[id], nulles = n.xp.nulle !== undefined ? ` · ${pluriel(p.nulles, "nulle")}` : "";
+        return el("li", { texte: `${n.nom} : ${pluriel(p.victoires, "victoire")}${nulles} · ${pluriel(p.defaites, "défaite")}${p.meilleur !== null ? ` · record ${formaterTemps(p.meilleur)}` : ""}` });
+      }));
+      afficherReglages();
+    }
+
+    function afficherReglages() {
+      const objectif = el("fieldset", { classe: "choix" }, el("legend", { texte: "Mon objectif du jour" }), ...ProgressionJeux.OBJECTIFS.map((n) => {
+        const r = el("input", { type: "radio", name: "objectif", value: n, checked: etat.objectif === n });
+        r.addEventListener("change", () => { etat = P.regler(etat, { objectif: n }); sauver(); afficherDetail(); });
+        return el("label", {}, r, pluriel(n, "exercice"));
+      }));
+      const dispo = P.emblemesDisponibles(etat);
+      const emblemes = el("fieldset", { classe: "choix emblemes" }, el("legend", { texte: "Mon emblème (un nouveau à chaque grade)" }), ...P.EMBLEMES.map((id, i) => {
+        const ouvert = dispo.includes(id), g = parcours.grades[i];
+        const r = el("input", { type: "radio", name: "embleme", value: id, disabled: !ouvert, checked: etat.embleme === id, "aria-label": ouvert ? `Emblème ${g.nom}` : `Emblème ${g.nom}, verrouillé` });
+        r.addEventListener("change", () => { etat = P.regler(etat, { embleme: id }); sauver(); afficherDetail(); });
+        return el("label", { classe: ouvert ? "" : "verrouille", title: ouvert ? g.nom : `Grade ${parcours.grades[i - 1]?.nom} à obtenir` }, r, embleme(id));
+      }));
+      const libre = el("input", { type: "checkbox", name: "libre", checked: etat.libre });
+      libre.addEventListener("change", () => { etat = P.regler(etat, { libre: libre.checked }); sauver(); afficherDetail(); });
+      const effacer = el("button", { type: "button", classe: "secondaire danger", "data-action": "effacer", texte: confirmationEffacement ? "Confirmer : tout effacer" : "🗑️ Effacer ma progression" });
+      effacer.addEventListener("click", () => {
+        if (!confirmationEffacement) { confirmationEffacement = true; afficherReglages(); z.dReglages.querySelector('[data-action="effacer"]').focus(); return; }
+        confirmationEffacement = false; etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
+      });
+      z.dReglages.replaceChildren(objectif, emblemes,
+        el("label", { classe: "case-a-cocher" }, libre, "Je connais déjà les bases : ouvrir toutes les leçons"),
+        el("p", { classe: "doux", texte: "Ta progression reste sur cet appareil. Elle ne contient aucune donnée personnelle." }), effacer);
+    }
+
+    /* ---------- Séances : leçon, révisions, défi du jour ---------- */
+    const instances = {};
+    const outils = {
+      reussir: () => terminerExercice(),
+      erreur: (message) => {
+        ex.erreurs += 1;
+        retour(message ?? (ex.erreurs >= 2 ? `Pas tout à fait. Indice : ${ex.exo.indice ?? "relis bien la question."}` : "Pas tout à fait : essaie encore !"), "ko");
+      },
+      retour: (texte, classe = "") => retour(texte, classe)
+    };
+    function adaptateur(type) {
+      if (!adaptateurs[type]) throw new Error(`type d'exercice inconnu : ${type}`);
+      if (!instances[type]) { instances[type] = adaptateurs[type](outils); z.zoneJeu.appendChild(instances[type].element); }
+      return instances[type];
+    }
+    function retour(texte, classe) { z.retour.textContent = texte; z.retour.className = `message ${classe}`; }
+
+    function ouvrirLecon(id) {
+      const info = P.lecons.get(id);
+      if (!info || !P.leconDebloquee(etat, id)) return;
+      demarrerSession("lecon", info.lecon.exercices.map((_, k) => ProgressionJeux.exoId(info.lecon, k)), info.lecon);
+    }
+    function reviser() {
+      const dues = P.revisionsDues(etat, jour()).slice(0, 8);
+      if (dues.length) demarrerSession("revision", dues);
+    }
+    function demarrerSession(mode, file, lecon = null) {
+      session = { mode, file, lecon, rang: 0, erreurs: 0, indices: 0 };
+      const grade = lecon && P.lecons.get(lecon.id).grade;
+      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi du jour" : "Révisions espacées";
+      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi du jour" : "🧠 Tes révisions";
+      z.sTexte.textContent = mode === "lecon" ? lecon.texte
+        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} XP de plus !`
+        : "Retrouve la bonne réponse sans aide. Chaque réussite repousse la prochaine révision : c'est comme ça qu'on retient pour toujours.";
+      z.zoneRetenir.hidden = mode !== "lecon";
+      z.retenir.textContent = lecon?.retenir ?? "";
+      z.exercice.hidden = false; z.bilan.hidden = true;
+      toast.textContent = "";
+      montrer("session");
+      demarrerExercice();
+    }
+
+    function demarrerExercice() {
+      const id = session.file[session.rang], { exo, lecon } = P.exercices.get(id);
+      session.adaptateur?.arreter?.();
+      ex = { id, exo, lecon, erreurs: 0, indice: false, fini: false };
+      z.progression.textContent = `${session.mode === "lecon" ? "Exercice" : `${lecon.titre} ·`} ${session.rang + 1} / ${session.file.length}`;
+      retour("", "");
+      z.suivant.hidden = true; z.indice.hidden = false; z.indice.disabled = false;
+      const qcm = exo.type === "qcm";
+      for (const [type, inst] of Object.entries(instances)) inst.element.hidden = qcm || type !== exo.type;
+      z.qcm.hidden = !qcm;
+      if (qcm) {
+        session.adaptateur = null;
+        z.consigne.textContent = exo.question;
+        z.indice.textContent = "💡 Retirer une mauvaise réponse";
+        z.qcm.replaceChildren(...exo.choix.map((texte, i) => {
+          const b = el("button", { type: "button", classe: "choix-qcm", "data-choix": i, texte });
+          b.addEventListener("click", () => repondreQcm(i));
+          return el("li", {}, b);
+        }));
+      } else {
+        const a = adaptateur(exo.type);
+        a.element.hidden = false;
+        session.adaptateur = a;
+        z.consigne.textContent = a.consigne ? a.consigne(exo) : exo.consigne;
+        z.indice.textContent = "💡 Indice";
+        a.demarrer(exo);
+      }
+    }
+
+    function repondreQcm(i) {
+      if (ex.fini) return;
+      const b = z.qcm.querySelector(`[data-choix="${i}"]`);
+      if (i !== ex.exo.bonne) { b.disabled = true; b.dataset.etat = "faux"; b.textContent = `✗ ${ex.exo.choix[i]}`; outils.erreur(); return; }
+      b.dataset.etat = "juste"; b.textContent = `✓ ${ex.exo.choix[i]}`;
+      for (const autre of z.qcm.querySelectorAll("button")) autre.disabled = true;
+      terminerExercice();
+    }
+
+    z.indice.addEventListener("click", () => {
+      if (!ex || ex.fini) return;
+      ex.indice = true; z.indice.disabled = true;
+      if (ex.exo.type === "qcm") {
+        const faux = [...z.qcm.querySelectorAll("button:not(:disabled)")].find((b) => Number(b.dataset.choix) !== ex.exo.bonne);
+        if (faux) { faux.disabled = true; faux.dataset.etat = "retire"; faux.textContent = `— ${faux.textContent}`; }
+        retour("Une mauvaise réponse a été retirée.", "");
+        return;
+      }
+      retour(`Indice : ${ex.exo.indice}`, "");
+      session.adaptateur.indice(ex.exo);
+    });
+
+    function terminerExercice() {
+      if (ex.fini) return;
+      ex.fini = true;
+      const j = jour();
+      session.erreurs += ex.erreurs; session.indices += ex.indice ? 1 : 0;
+      appliquer(P.enregistrerExercice(etat, { id: ex.id, erreurs: ex.erreurs, indice: ex.indice, jour: j, revision: session.mode === "revision" }));
+      if (session.mode === "defi") appliquer(P.enregistrerDefi(etat, { jour: j }));
+      const rappel = session.mode !== "lecon" ? ` À retenir : ${ex.lecon.retenir}` : "";
+      retour(`${ex.erreurs === 0 && !ex.indice ? "Parfait ! " : "Réussi ! "}${ex.exo.explication}${rappel}`, "ok");
+      z.indice.hidden = true;
+      const fin = session.rang === session.file.length - 1;
+      z.suivant.textContent = fin ? "Voir le bilan" : "Exercice suivant";
+      z.suivant.hidden = false;
+      z.suivant.focus();
+    }
+    z.suivant.addEventListener("click", () => {
+      if (session.rang < session.file.length - 1) { session.rang += 1; demarrerExercice(); return; }
+      afficherBilan();
+    });
+
+    function afficherBilan() {
+      session.adaptateur?.arreter?.();
+      z.exercice.hidden = true; z.bilan.hidden = false;
+      const j = jour();
+      if (session.mode === "lecon") {
+        const n = ProgressionJeux.etoiles(session);
+        appliquer(P.terminerLecon(etat, { id: session.lecon.id, etoiles: n, jour: j }));
+        z.bTitre.textContent = `${etoilesTexte(n)} Leçon terminée !`;
+        z.bTexte.textContent = `${n === 3 ? "Sans faute : bravo !" : n === 2 ? "Très bien ! Refais-la plus tard pour viser les 3 étoiles." : "Leçon réussie. Refais-la pour gagner des étoiles."} La stratégie « ${session.lecon.titre} » rejoint ton carnet : elle reviendra en révision demain.`;
+      } else if (session.mode === "defi") {
+        z.bTitre.textContent = "⚡ Défi relevé !"; z.bTexte.textContent = "Reviens demain pour un nouveau défi.";
+      } else {
+        z.bTitre.textContent = "🧠 Révisions terminées";
+        z.bTexte.textContent = `${pluriel(session.file.length, "stratégie")} révisée${session.file.length > 1 ? "s" : ""}. Les bonnes réponses reviendront plus tard, les autres dès demain.`;
+      }
+      const ordre = parcours.grades.flatMap((g) => g.lecons);
+      const prochaine = session.mode === "lecon" ? ordre.slice(ordre.findIndex((l) => l.id === session.lecon.id) + 1).find((l) => P.leconDebloquee(etat, l.id) && !etat.lecons[l.id]) : null;
+      z.bSuite.hidden = !prochaine;
+      if (prochaine) { z.bSuite.textContent = `Leçon suivante : ${prochaine.titre}`; z.bSuite.onclick = () => ouvrirLecon(prochaine.id); }
+      z.bTitre.focus();
+    }
+
+    /* ---------- Commandes ---------- */
+    z.reviser.addEventListener("click", reviser);
+    z.defi.addEventListener("click", () => { const d = P.defiDuJour(etat, jour()); if (d && !d.fait) demarrerSession("defi", [d.id]); });
+    boutonDetail.addEventListener("click", () => { confirmationEffacement = false; montrer("detail"); });
+    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => montrer("accueil"));
+
+    afficherAccueil();
+    return {
+      etat: () => etat,
+      /** Partie terminée dans l'onglet « Jouer » : enregistrée ici, et les gains sont renvoyés pour être affichés. */
+      enregistrerPartie(partie) {
+        const g = appliquer(P.enregistrerPartie(etat, { ...partie, jour: jour() }));
+        if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
+        return g;
+      }
+    };
+  }
+
+  return Object.freeze({ monter, jourLocal });
+})();
+</script>
 <script id="moteur-demineur">
 /* Moteur du Démineur : règles et état d'une partie, sans DOM (testé dans Node, tests/unit/demineur.test.mjs). */
 const MoteurDemineur = (() => {
@@ -339,9 +1793,84 @@ const MoteurDemineur = (() => {
     return partie;
   }
 
+  /**
+   * Déductions certaines d'après les chiffres visibles : cases forcément sans mine et forcément minées.
+   * Les drapeaux du joueur ne sont pas pris pour vrais (ils peuvent être faux). Les cases fermées touchant un chiffre
+   * sont réparties en groupes indépendants, dont on énumère toutes les dispositions de mines compatibles ; un groupe
+   * trop grand est ignoré (pas de déduction plutôt qu'une page figée). Avec `compterMines`, le nombre total de mines
+   * sert aussi (petites positions seulement, typiquement les fins de partie et les exercices).
+   */
+  function deduire(partie, { compterMines = false, maxCases = 22 } = {}) {
+    const { cases } = partie;
+    const contraintes = [];
+    cases.forEach((c, i) => {
+      if (!c.revelee || c.mine) return;
+      const fermees = voisins(partie, i).filter((v) => !cases[v].revelee);
+      if (fermees.length) contraintes.push({ cases: fermees, mines: c.voisines - voisins(partie, i).filter((v) => cases[v].revelee && cases[v].mine).length });
+    });
+    const frontiere = [...new Set(contraintes.flatMap((k) => k.cases))];
+    const interieur = cases.map((c, i) => i).filter((i) => !cases[i].revelee && !frontiere.includes(i));
+    const sures = new Set(), mines = new Set();
+    /** Énumère les dispositions d'un ensemble de cases ; renvoie, par nombre de mines, les cases toujours/jamais minées. */
+    function enumerer(vars, ks) {
+      const pos = new Map(vars.map((v, k) => [v, k])), valeur = new Array(vars.length).fill(-1);
+      const liees = vars.map(() => []);
+      ks.forEach((k, n) => k.cases.forEach((v) => liees[pos.get(v)].push(n)));
+      const parNombre = new Map(); // nombre de mines → { min[], max[] } par case
+      function possible(n) {
+        let poses = 0, libres = 0;
+        for (const v of ks[n].cases) { const x = valeur[pos.get(v)]; if (x === 1) poses += 1; else if (x === -1) libres += 1; }
+        return poses <= ks[n].mines && poses + libres >= ks[n].mines;
+      }
+      (function explorer(k, total) {
+        if (k === vars.length) {
+          const r = parNombre.get(total) ?? { jamais: vars.map(() => true), toujours: vars.map(() => true) };
+          valeur.forEach((x, j) => { if (x) r.jamais[j] = false; else r.toujours[j] = false; });
+          parNombre.set(total, r);
+          return;
+        }
+        for (const x of [0, 1]) {
+          valeur[k] = x;
+          if (liees[k].every(possible)) explorer(k + 1, total + x);
+        }
+        valeur[k] = -1;
+      })(0, 0);
+      return parNombre;
+    }
+    const conclure = (vars, jamais, toujours) => vars.forEach((v, j) => { if (jamais[j]) sures.add(v); if (toujours[j]) mines.add(v); });
+    const restantes = partie.mines - cases.filter((c) => c.revelee && c.mine).length;
+    if (compterMines && frontiere.length <= maxCases) {
+      // Énumération globale, filtrée par le nombre total de mines (le reste va dans les cases intérieures).
+      const parNombre = enumerer(frontiere, contraintes);
+      const valides = [...parNombre.entries()].filter(([n]) => restantes - n >= 0 && restantes - n <= interieur.length);
+      if (valides.length) {
+        conclure(frontiere, frontiere.map((_, j) => valides.every(([, r]) => r.jamais[j])), frontiere.map((_, j) => valides.every(([, r]) => r.toujours[j])));
+        if (valides.every(([n]) => restantes - n === 0)) interieur.forEach((i) => sures.add(i));
+        if (valides.every(([n]) => restantes - n === interieur.length)) interieur.forEach((i) => mines.add(i));
+      }
+    } else {
+      // Groupes indépendants : deux cases sont liées si un même chiffre les touche.
+      const restant = new Set(frontiere);
+      while (restant.size) {
+        const groupe = [], file = [restant.values().next().value];
+        restant.delete(file[0]);
+        while (file.length) {
+          const v = file.pop(); groupe.push(v);
+          for (const k of contraintes) if (k.cases.includes(v)) for (const w of k.cases) if (restant.has(w)) { restant.delete(w); file.push(w); }
+        }
+        if (groupe.length > maxCases) continue;
+        const ks = contraintes.filter((k) => k.cases.some((v) => groupe.includes(v)));
+        const tous = [...enumerer(groupe, ks).values()];
+        if (tous.length) conclure(groupe, groupe.map((_, j) => tous.every((r) => r.jamais[j])), groupe.map((_, j) => tous.every((r) => r.toujours[j])));
+      }
+    }
+    const tri = (s) => [...s].sort((a, b) => a - b);
+    return { sures: tri(sures), mines: tri(mines) };
+  }
+
   return Object.freeze({
     NIVEAUX, creerPartie, voisins, placerMines, reveler, basculerDrapeau, revelerAutour,
-    estTerminee, minesRestantes, depuisModele, position
+    estTerminee, minesRestantes, depuisModele, position, deduire
   });
 })();
 </script>
@@ -490,6 +2019,8 @@ const MoteurDemineur = (() => {
     return {
       element: plateau, grille, construire, rafraichir, focaliser,
       get transpose() { return transpose; },
+      /** Indice : met une case en évidence (contour pointillé) et lui donne le focus. */
+      surligner(i) { for (const b of boutons) if (b) delete b.dataset.indice; boutons[i].dataset.indice = ""; focaliser(i); },
       fixerTaille(px) { grille.style.setProperty("--taille", `${px}px`); }
     };
   }
@@ -501,6 +2032,8 @@ const MoteurDemineur = (() => {
   /* ---------- Onglet application : le jeu ---------- */
   const STATUTS = { pret: "Prêt", "en-cours": "En cours", victoire: "Victoire 🎉", perdu: "Perdu 💥" };
   const jeu = {};
+  // Services offerts par d'autres onglets (l'Académie enregistre les parties terminées).
+  const services = {};
   enregistrerOnglet({ id: "application", type: "application", titre: "Jouer",
     rendu(panneau) {
       panneau.appendChild(document.getElementById("tpl-application").content.cloneNode(true));
@@ -551,11 +2084,14 @@ const MoteurDemineur = (() => {
         fin = Date.now();
         arreterMinuteur();
         const temps = ecoule();
-        if (partie.statut === "perdu") { message("Boum ! Tu as touché une mine. Retente ta chance avec « Nouvelle partie ».", "ko"); return; }
+        // Chaque partie terminée compte une fois pour l'Académie (la fin de partie n'est traitée qu'une fois).
+        const gains = services.enregistrerPartie?.({ resultat: partie.statut === "perdu" ? "defaite" : "victoire", niveau, temps });
+        const xp = gains?.xp ? ` (+${gains.xp} XP à l'Académie)` : "";
+        if (partie.statut === "perdu") { message(`Boum ! Tu as touché une mine. Retente ta chance avec « Nouvelle partie ».${xp}`, "ko"); return; }
         const ancien = record();
         const nouveauRecord = typeof ancien !== "number" || temps < ancien;
         if (nouveauRecord) stockage.ecrire(`record-${niveau}`, temps);
-        message(`Bravo, grille déminée en ${formaterTemps(temps)} !${nouveauRecord ? " Nouveau record 🏆" : ""}`, "ok");
+        message(`Bravo, grille déminée en ${formaterTemps(temps)} !${nouveauRecord ? " Nouveau record 🏆" : ""}${xp}`, "ok");
       }
 
       function afficher() {
@@ -591,6 +2127,15 @@ const MoteurDemineur = (() => {
       }
       bouton("nouvelle-partie").addEventListener("click", nouvellePartie);
       bouton("mode-drapeau").addEventListener("click", () => { modeDrapeau = !modeDrapeau; afficher(); });
+      // Indice : le solveur montre une case sûre (ou une mine certaine), sans jamais jouer à ta place.
+      bouton("indice-jeu").addEventListener("click", () => {
+        if (partie.statut !== "en-cours") { message(partie.statut === "pret" ? "Commence par ouvrir une case : le premier coup est toujours sûr." : "La partie est terminée : lance une nouvelle partie.", ""); return; }
+        const d = Moteur.deduire(partie, { compterMines: true });
+        const sure = d.sures.find((i) => !partie.cases[i].revelee), mine = d.mines.find((i) => !partie.cases[i].drapeau);
+        if (sure !== undefined) { vue.surligner(sure); message("💡 La case entourée est sûre : tu peux l'ouvrir. Sais-tu pourquoi ?", ""); }
+        else if (mine !== undefined) { vue.surligner(mine); message("💡 La case entourée cache forcément une mine : pose un drapeau.", ""); }
+        else message("💡 Aucune case n'est certaine : il faut prendre un risque. Choisis la case la moins dangereuse.", "");
+      });
       bouton("zoom-moins").addEventListener("click", () => { zoom = Math.max(-4, zoom - 1); mettreEnPage(); });
       bouton("zoom-plus").addEventListener("click", () => { zoom = Math.min(6, zoom + 1); mettreEnPage(); });
       // Le panneau est caché au premier rendu : la mise en page se refait quand il devient visible ou change de taille.
@@ -602,6 +2147,118 @@ const MoteurDemineur = (() => {
 
       nouvellePartie();
       Object.assign(jeu, { partie: () => partie, nouvellePartie });
+    } });
+
+  /* ---------- Onglet Académie : du débutant au pro (interface commune, gabarit/jeux/academie.js) ---------- */
+  const PROGRESSION = ProgressionJeux.creer(JSON.parse(document.getElementById("parcours-demineur").textContent));
+  const stockageDisponible = (() => { try { localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test"); return true; } catch { return false; } })();
+  const academie = {};
+  /** Grille d'exercice : une disposition de mines, puis les cases ouvertes au départ, comme dans une vraie partie. */
+  function construireGrille({ mines, ouvrir, drapeaux = [] }) {
+    const p = Moteur.depuisModele(mines);
+    for (const [l, c] of ouvrir) Moteur.reveler(p, l * p.colonnes + c);
+    for (const [l, c] of drapeaux) Moteur.basculerDrapeau(p, l * p.colonnes + c);
+    return p;
+  }
+
+  /**
+   * Exercice « grille » : chaque geste est jugé par le solveur du moteur. On n'accepte que des certitudes :
+   * ouvrir une case forcément sûre, poser un drapeau sur une mine forcément présente, ouvrir d'un coup un chiffre complet.
+   * Buts : « sure » (une case sûre), « mine » (une mine), « drapeaux » (toutes les mines certaines),
+   * « deblayer » (toutes les cases sûres, en chaîne), « accord » (ouverture rapide d'un chiffre complet).
+   */
+  function adaptateurGrille(outils) {
+    let ex = null, modeDrapeau = false;
+    const element = document.createElement("div");
+    const bascule = Object.assign(document.createElement("button"), { type: "button", className: "secondaire", textContent: "🚩 Mode drapeau" });
+    bascule.dataset.action = "mode-drapeau-exercice";
+    bascule.setAttribute("aria-pressed", "false");
+    bascule.addEventListener("click", () => { modeDrapeau = !modeDrapeau; bascule.setAttribute("aria-pressed", String(modeDrapeau)); });
+    const compteur = document.createElement("p");
+    compteur.className = "doux";
+    const vue = creerVueGrille({ libelle: "Grille de l'exercice", surOuvrir: (i) => (modeDrapeau && !ex?.partie.cases[i].revelee ? drapeau(i) : ouvrir(i)), surDrapeau: drapeau });
+    vue.fixerTaille(40);
+    element.append(compteur, vue.element, bascule);
+    const deductions = () => Moteur.deduire(ex.partie, { compterMines: !!ex.exo.compterMines });
+    const fermeesSures = () => deductions().sures.filter((i) => !ex.partie.cases[i].revelee);
+    const minesNonMarquees = () => deductions().mines.filter((i) => !ex.partie.cases[i].drapeau);
+    function afficher() {
+      vue.rafraichir();
+      compteur.textContent = ex.exo.compterMines ? `💣 Mines dans la grille : ${ex.partie.mines} · 🚩 drapeaux posés : ${ex.partie.drapeaux}` : "";
+      compteur.hidden = !ex.exo.compterMines;
+    }
+    function verifierBut() {
+      const b = ex.exo.but;
+      const atteint = b === "drapeaux" ? minesNonMarquees().length === 0 : b === "deblayer" ? fermeesSures().length === 0 : ex.progres;
+      if (atteint) { ex.fini = true; outils.reussir(); }
+      else if (b === "deblayer") outils.retour(`Bien ! Encore ${fermeesSures().length > 1 ? "des cases sûres" : "une case sûre"} à trouver.`, "ok");
+      else if (b === "drapeaux") outils.retour(`Juste ! Encore ${minesNonMarquees().length} mine${minesNonMarquees().length > 1 ? "s" : ""} certaine${minesNonMarquees().length > 1 ? "s" : ""}.`, "ok");
+    }
+    function ouvrir(i) {
+      if (!ex || ex.fini) return;
+      const c = ex.partie.cases[i];
+      if (c.revelee) {
+        // Ouverture rapide : seulement sur un chiffre complet dont les drapeaux sont tous de vraies mines.
+        const autour = Moteur.voisins(ex.partie, i), drapeaux = autour.filter((v) => ex.partie.cases[v].drapeau);
+        if (!c.voisines || drapeaux.length !== c.voisines || !autour.some((v) => !ex.partie.cases[v].revelee && !ex.partie.cases[v].drapeau)) {
+          if (ex.exo.but === "accord") outils.erreur("Ce chiffre n'est pas complet : il lui faut autant de drapeaux autour que sa valeur, et des cases encore fermées.");
+          return;
+        }
+        if (drapeaux.some((v) => !ex.partie.cases[v].mine)) { outils.erreur("Attention : un de tes drapeaux est faux. L'ouverture rapide aurait fait exploser une mine !"); return; }
+        Moteur.revelerAutour(ex.partie, i);
+        ex.progres = true; afficher(); verifierBut(); return;
+      }
+      if (c.drapeau) return;
+      if (ex.exo.but === "mine" || ex.exo.but === "drapeaux") { outils.erreur("Ici, on cherche les mines : pose un drapeau (clic droit, appui long, touche D ou mode drapeau)."); return; }
+      if (ex.exo.but === "accord") { outils.erreur("Ici, touche un chiffre complet pour ouvrir ses voisines d'un coup."); return; }
+      if (!fermeesSures().includes(i)) {
+        outils.erreur(c.mine ? "Boum ! Cette case cachait une mine. Cherche une case dont tu es certain." : "Cette case n'avait pas de mine… mais on ne pouvait pas en être sûr : c'était un pari. Cherche une certitude !");
+        return;
+      }
+      Moteur.reveler(ex.partie, i);
+      ex.progres = true; afficher(); verifierBut();
+    }
+    function drapeau(i) {
+      if (!ex || ex.fini) return;
+      const c = ex.partie.cases[i];
+      if (c.revelee) return;
+      if (c.drapeau) { Moteur.basculerDrapeau(ex.partie, i); afficher(); return; }
+      if (!deductions().mines.includes(i)) {
+        outils.erreur(c.mine ? "Il y a bien une mine ici, mais les chiffres ne permettaient pas encore d'en être sûr." : "Il n'y a pas de mine ici ! Un drapeau doit être une certitude.");
+        return;
+      }
+      Moteur.basculerDrapeau(ex.partie, i); afficher();
+      if (ex.exo.but === "mine") { ex.progres = true; verifierBut(); } else if (ex.exo.but === "drapeaux") verifierBut();
+    }
+    return {
+      element,
+      demarrer(exo) {
+        ex = { exo, partie: construireGrille(exo.grille), progres: false, fini: false };
+        modeDrapeau = false; bascule.setAttribute("aria-pressed", "false");
+        vue.construire(ex.partie);
+        afficher();
+      },
+      indice() {
+        if (!ex) return;
+        const d = deductions();
+        const cible = ex.exo.but === "accord"
+          ? ex.partie.cases.findIndex((c, i) => c.revelee && c.voisines > 0 && Moteur.voisins(ex.partie, i).filter((v) => ex.partie.cases[v].drapeau).length === c.voisines && Moteur.voisins(ex.partie, i).some((v) => !ex.partie.cases[v].revelee && !ex.partie.cases[v].drapeau))
+          : ["mine", "drapeaux"].includes(ex.exo.but) ? d.mines.find((i) => !ex.partie.cases[i].drapeau) : d.sures.find((i) => !ex.partie.cases[i].revelee);
+        if (cible >= 0) vue.surligner(cible);
+      },
+      arreter() { ex = null; }
+    };
+  }
+
+  enregistrerOnglet({ id: "academie", type: "parcours", titre: "Académie",
+    rendu(panneau) {
+      const vue = VueAcademie.monter({
+        panneau, progression: PROGRESSION, stockage, stockageDisponible, ouvrirOnglet,
+        embleme: (symbole) => Object.assign(document.createElement("span"), { textContent: symbole }),
+        adaptateurs: { grille: adaptateurGrille }
+      });
+      services.enregistrerPartie = vue.enregistrerPartie;
+      Object.assign(academie, { etat: vue.etat });
     } });
 
   /* ---------- Onglet mise en situation : énigmes de déduction ---------- */
@@ -688,6 +2345,7 @@ const MoteurDemineur = (() => {
     });
     stockage.ecrire("onglet", actifs[i].id);
   }
+  function ouvrirOnglet(id) { const i = actifs.findIndex((o) => o.id === id); if (i >= 0) { choisir(i); boutons[i].focus(); } }
   liste.addEventListener("keydown", (e) => {
     const i = boutons.indexOf(document.activeElement); if (i < 0) return;
     const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
@@ -698,7 +2356,7 @@ const MoteurDemineur = (() => {
   choisir(memo >= 0 ? memo : Math.max(0, actifs.findIndex((o) => o.id === "application")));
 
   document.getElementById("connexion").hidden = !CONFIG.connexionActive;
-  window.kermiclab = { META, registre, CONFIG, demineur: jeu };
+  window.kermiclab = { META, registre, CONFIG, demineur: jeu, academie };
 })();
 </script>
 </body>

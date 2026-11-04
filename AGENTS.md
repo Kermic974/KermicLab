@@ -28,6 +28,7 @@ Principes non négociables :
 | `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquettes publiques : `trigo-cercle` (écrite à la main) et les notions pilotes du gabarit (`pythagore`, `fractions`, `proportionnalite`). Les jeux (`demineur`, `echecs`, matière `jeux`) sont écrits à la main avec un moteur testable (ADR 0013, guide `docs/jeux.md`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
 | `gabarit/` | Gabarit commun des notions (page, style, moteur) : une notion décrite par `contenu.json` est générée en `page.html` par `npm run build` (ADR 0011, guide `docs/gabarit.md`) |
+| `gabarit/jeux/` | Modules partagés des jeux (progression, Académie) recopiés dans chaque page par `npm run build` (ADR 0015, `docs/gamification.md`) |
 | `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
 | `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
 | `tests/e2e/` | Playwright : onglets, rendu mobile, chat |

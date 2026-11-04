@@ -16,3 +16,17 @@ test("appliquerCsp : calcule aussi les hashes des styles quand demandé", () => 
   const html = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'x'; style-src 'self'"><script>a()</script><style>b{color:red}</style>`;
   assert.ok(appliquerCsp(html, { styles: true }).includes(`style-src ${hashScript("b{color:red}")}`));
 });
+
+test("inclureModules : recopie un module partagé, refuse tout autre chemin ou la mauvaise balise", async () => {
+  const { inclureModules } = await import("../../scripts/lib/catalogue.mjs");
+  const { readFile } = await import("node:fs/promises");
+  const source = (await readFile(new URL("../../gabarit/jeux/progression.js", import.meta.url), "utf8")).trimEnd();
+  const page = `<p>a</p><script id="x" data-inclure="gabarit/jeux/progression.js">ancien</script><p>b</p>`;
+  assert.equal(await inclureModules(page), `<p>a</p><script id="x" data-inclure="gabarit/jeux/progression.js">\n${source}\n</script><p>b</p>`);
+  assert.equal(await inclureModules(await inclureModules(page)), await inclureModules(page), "idempotent");
+  for (const chemin of ["../.env", "gabarit/jeux/../../package.json", "/etc/passwd", "worker/src/index.js", "gabarit/jeux/x.html"]) {
+    await assert.rejects(inclureModules(`<script data-inclure="${chemin}"></script>`), /inclusion refusée/, chemin);
+  }
+  await assert.rejects(inclureModules(`<style data-inclure="gabarit/jeux/progression.js"></style>`), /mauvaise balise/);
+  assert.equal(await inclureModules("<p>sans inclusion</p>"), "<p>sans inclusion</p>");
+});
