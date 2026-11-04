@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-pEBlO4MBntyIO1C3Hrl5s1BkhWEVuCOkrZqnKCBHyUM=' 'sha256-ybnx/KzNAJZmkwCTFuZMvOKSdJRZNu3JybLYiKQxqpY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Échecs – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "echecs",
+  "titre": "Échecs",
+  "sujet": "jeux/echecs",
+  "version": "1.0.0",
+  "date": "2026-11-04",
+  "langue": "fr",
+  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+}
+</script>
+<script type="application/json" id="enigmes-echecs">
+[
+  { "titre": "Le mat du couloir", "fen": "6k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1",
+    "indice": "Le roi noir est enfermé derrière ses propres pions. Quelle pièce blanche peut l'attaquer sur sa rangée ?",
+    "explication": "Ta8 : la tour attaque toute la 8e rangée. Le roi ne peut ni avancer (ses pions le bloquent) ni glisser sur le côté. Échec et mat !" },
+  { "titre": "Le coup du berger", "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+    "indice": "Regarde le pion f7 : il n'est défendu que par le roi. Qui l'attaque déjà deux fois ?",
+    "explication": "Dxf7 : la dame prend le pion f7, protégée par le fou c4. Le roi ne peut pas la reprendre et n'a aucune case libre. Échec et mat !" },
+  { "titre": "Le roi et la dame", "fen": "7k/8/6K1/8/8/8/8/1Q6 w - - 0 1",
+    "indice": "Le roi blanc surveille déjà g7 et h7. Il ne manque qu'une attaque sur la 8e rangée.",
+    "explication": "Db8 : la dame attaque toute la 8e rangée, et le roi blanc garde g7 et h7. Le roi noir n'a plus aucune case. Échec et mat !" },
+  { "titre": "Le mat étouffé", "fen": "6rk/6pp/7N/8/8/8/8/6K1 w - - 0 1",
+    "indice": "Le roi noir est entouré de ses propres pièces. Quelle pièce peut sauter par-dessus les autres ?",
+    "explication": "Cf7 : le cavalier saute et donne échec. Le roi est « étouffé » par sa tour et ses pions : il ne peut pas bouger. Échec et mat !" }
+]
+</script>
+<style>
+  :root {
+    --fond: #fbfaf7; --surface: #ffffff; --texte: #1d2330; --doux: #5a6272;
+    --accent: #1f5fbf; --accent-texte: #ffffff; --bord: #d9dce3;
+    --succes: #15803d; --alerte: #b91c1c;
+    --claire: #e9edf5; --foncee: #8ea3c4; --cadre: #4a5873;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #14171d; --surface: #1d2129; --texte: #e8eaef; --doux: #a3aab8;
+      --accent: #7fb0ff; --accent-texte: #0b1220; --bord: #343a46;
+      --succes: #4ade80; --alerte: #f87171;
+      --cadre: #0b0e13;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--fond); color: var(--texte); }
+  header { padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 980px; margin: 0 auto; }
+  header h1 { font-size: 1.25rem; margin: 0; }
+  .meta { color: var(--doux); font-size: .8rem; }
+  #connexion[hidden] { display: none; }
+  [role="tablist"] { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; max-width: 980px; margin: 0 auto; border-bottom: 1px solid var(--bord); }
+  [role="tab"] { flex: 0 0 auto; padding: 10px 14px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+  [role="tab"][aria-selected="true"] { color: var(--texte); border-bottom-color: var(--accent); font-weight: 600; }
+  [role="tab"]:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { max-width: 980px; margin: 0 auto; padding: 16px; }
+  [role="tabpanel"][hidden] { display: none; }
+  [role="tabpanel"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  h2 { font-size: 1.05rem; margin: 18px 0 6px; }
+  .carte { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+  .carte > h2:first-child { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--bord); vertical-align: top; }
+  th { font-weight: 600; }
+  .symbole { font-size: 1.5rem; line-height: 1; }
+  kbd { font: inherit; font-size: .85em; border: 1px solid var(--bord); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--fond); }
+  button.action, button.secondaire { border-radius: 8px; padding: 9px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.action { background: var(--accent); color: var(--accent-texte); border: 2px solid var(--accent); }
+  button.secondaire { background: var(--surface); color: var(--texte); border: 2px solid var(--bord); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* ---------- Réglages ---------- */
+  .reglages { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
+  .choix { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .choix[hidden] { display: none; }
+  .choix legend { padding: 0; margin-bottom: 4px; font-weight: 600; width: 100%; font-size: .9rem; }
+  .choix label { position: relative; padding: 5px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; }
+  .choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .choix label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+  .choix label:has(input:checked)::before { content: "✓ "; color: var(--accent); }
+  .choix label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Jeu ---------- */
+  .jeu { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+  .colonne-plateau { flex: 1 1 320px; max-width: 560px; min-width: 0; }
+  .colonne-infos { flex: 1 1 220px; min-width: 0; }
+  .prises { min-height: 1.6em; margin: 2px 0; font-size: 1.2rem; line-height: 1.3; letter-spacing: 1px; }
+  .prises small { font-size: .8rem; color: var(--doux); letter-spacing: 0; }
+  .statut { font-weight: 700; margin: 0 0 10px; padding: 8px 12px; border-radius: 8px; border: 2px solid var(--bord); background: var(--surface); }
+  .statut[data-etat="echec"] { border-color: var(--alerte); color: var(--alerte); }
+  .statut[data-etat="victoire"] { border-color: var(--succes); color: var(--succes); }
+  .statut[data-etat="defaite"], .statut[data-etat="mat"] { border-color: var(--alerte); }
+  .commandes-jeu { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .coups { margin: 0; padding: 8px 8px 8px 40px; max-height: 260px; overflow: auto; background: var(--surface); border: 1px solid var(--bord); border-radius: 8px; font-variant-numeric: tabular-nums; min-height: 3em; }
+  .coups li { padding: 1px 0; }
+  .coups:empty::before { content: "Aucun coup pour l'instant."; color: var(--doux); margin-left: -32px; }
+
+  /* ---------- Échiquier ---------- */
+  .echiquier { width: 100%; aspect-ratio: 1; display: grid; grid-template-rows: repeat(8, 1fr); border: 4px solid var(--cadre); border-radius: 6px; container-type: inline-size; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; overflow: hidden; }
+  .rangee { display: grid; grid-template-columns: repeat(8, 1fr); }
+  .case { position: relative; border: 0; padding: 0; margin: 0; min-width: 0; display: grid; place-items: center; font-size: 10cqw; line-height: 1; cursor: pointer;
+    background-color: var(--claire); touch-action: manipulation; -webkit-tap-highlight-color: transparent; color: inherit; }
+  .case.foncee { background-color: var(--foncee); }
+  .case:focus-visible { outline: 4px solid var(--accent); outline-offset: -4px; z-index: 1; }
+  .case[data-dernier] { background-image: linear-gradient(rgba(250, 204, 21, .5), rgba(250, 204, 21, .5)); }
+  .case[data-selection] { box-shadow: inset 0 0 0 4px var(--accent); background-image: linear-gradient(rgba(31, 95, 191, .25), rgba(31, 95, 191, .25)); }
+  .case[data-echec] { background-image: radial-gradient(circle, rgba(220, 38, 38, .95) 0, rgba(220, 38, 38, .55) 45%, transparent 72%); }
+  .case[data-destination]::after { content: ""; position: absolute; width: 30%; height: 30%; border-radius: 50%; background: rgba(15, 23, 42, .4); pointer-events: none; }
+  .case[data-destination="prise"]::after { width: 88%; height: 88%; background: transparent; border: .9cqw solid rgba(15, 23, 42, .5); }
+  .piece { pointer-events: none; position: relative; z-index: 1; }
+  .piece.blanc { color: #ffffff; -webkit-text-stroke: .35cqw #1d2330; paint-order: stroke fill; }
+  .piece.noir { color: #111827; -webkit-text-stroke: .15cqw #f8fafc; paint-order: stroke fill; }
+  .coord { position: absolute; font: 700 2.3cqw/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; pointer-events: none; color: var(--foncee); }
+  .case.foncee .coord { color: var(--claire); }
+  .coord.colonne { right: 6%; bottom: 5%; }
+  .coord.rang { left: 6%; top: 5%; }
+
+  /* ---------- Promotion ---------- */
+  dialog { border: 1px solid var(--bord); border-radius: 12px; background: var(--surface); color: var(--texte); padding: 16px; max-width: min(92vw, 420px); }
+  dialog::backdrop { background: rgba(0, 0, 0, .45); }
+  .choix-promotion { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0; }
+  .choix-promotion button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 4px; border: 2px solid var(--bord); border-radius: 8px; background: var(--claire); color: #1d2330; font: inherit; font-size: .85rem; cursor: pointer; }
+  .choix-promotion .piece { font-size: 2.2rem; -webkit-text-stroke-width: 1px; }
+
+  /* ---------- Énigmes ---------- */
+  .enigme-entete { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+  .enigme-entete h2 { margin: 0; }
+  .progression { color: var(--doux); font-size: .9rem; }
+  .enigme-plateau { max-width: 420px; margin: 10px 0; }
+  .message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
+  .message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+
+  footer { max-width: 980px; margin: 0 auto; padding: 16px; color: var(--doux); font-size: .8rem; }
+  @media (max-width: 480px) {
+    main { padding: 12px 10px; }
+    th, td { padding: 5px 4px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Échecs</h1>
+    <div class="meta">echecs · v1.0.0</div>
+  </div>
+  <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+</header>
+<nav role="tablist" aria-label="Onglets de la page" id="onglets"></nav>
+<main id="panneaux"></main>
+<footer>Kermiclab · page autonome, lisible hors ligne. Aucune donnée n'est envoyée : tes réglages restent sur ton appareil. Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</footer>
+
+<dialog id="promotion" aria-labelledby="promotion-titre">
+  <p id="promotion-titre"><strong>Ton pion arrive au bout !</strong> Choisis ce qu'il devient :</p>
+  <div class="choix-promotion">
+    <button type="button" data-promotion="q"><span class="piece" data-glyphe="q"></span>Dame</button>
+    <button type="button" data-promotion="r"><span class="piece" data-glyphe="r"></span>Tour</button>
+    <button type="button" data-promotion="b"><span class="piece" data-glyphe="b"></span>Fou</button>
+    <button type="button" data-promotion="n"><span class="piece" data-glyphe="n"></span>Cavalier</button>
+  </div>
+  <button type="button" class="secondaire" data-promotion="">Annuler</button>
+</dialog>
+
+<template id="tpl-explication">
+  <p>Deux armées s'affrontent sur un plateau de 64 cases. Les Blancs commencent, puis chacun joue à son tour. <strong>Le but : attaquer le roi adverse sans qu'il puisse s'échapper</strong> — c'est l'<strong>échec et mat</strong>.</p>
+  <div class="carte">
+    <h2>Comment bougent les pièces</h2>
+    <table>
+      <thead><tr><th scope="col">Pièce</th><th scope="col">Déplacement</th><th scope="col">Valeur</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span class="symbole" aria-hidden="true">♚&#xFE0E;</span> Roi</th><td>Une seule case, dans n'importe quelle direction. Il ne doit jamais rester attaqué.</td><td>—</td></tr>
+        <tr><th scope="row"><span class="symbole" aria-hidden="true">♛&#xFE0E;</span> Dame</th><td>Aussi loin qu'elle veut, en ligne droite ou en diagonale.</td><td>9</td></tr>
+        <tr><th scope="row"><span class="symbole" aria-hidden="true">♜&#xFE0E;</span> Tour</th><td>Aussi loin qu'elle veut, en ligne droite (horizontale ou verticale).</td><td>5</td></tr>
+        <tr><th scope="row"><span class="symbole" aria-hidden="true">♝&#xFE0E;</span> Fou</th><td>Aussi loin qu'il veut, en diagonale : il reste toujours sur sa couleur.</td><td>3</td></tr>
+        <tr><th scope="row"><span class="symbole" aria-hidden="true">♞&#xFE0E;</span> Cavalier</th><td>En « L » : deux cases tout droit puis une sur le côté. C'est la seule pièce qui saute par-dessus les autres.</td><td>3</td></tr>
+        <tr><th scope="row"><span class="symbole" aria-hidden="true">♟&#xFE0E;</span> Pion</th><td>Avance d'une case (de deux à son premier coup), sans jamais reculer. Il prend en diagonale, une case devant lui.</td><td>1</td></tr>
+      </tbody>
+    </table>
+    <p>Une pièce <strong>prend</strong> une pièce adverse en se posant sur sa case. Seules les pièces adverses peuvent être prises.</p>
+  </div>
+  <div class="carte">
+    <h2>Trois coups spéciaux</h2>
+    <p><strong>Le roque</strong> : le roi va de deux cases vers une tour, et la tour saute de l'autre côté du roi. Possible seulement si le roi et cette tour n'ont jamais bougé, si aucune pièce n'est entre eux, et si le roi n'est pas en échec, ne traverse pas et n'arrive pas sur une case attaquée.</p>
+    <p><strong>La promotion</strong> : un pion qui atteint la dernière rangée se transforme en dame, tour, fou ou cavalier (souvent une dame !).</p>
+    <p><strong>La prise en passant</strong> : quand un pion avance de deux cases et s'arrête juste à côté d'un pion adverse, ce dernier peut le prendre comme s'il n'avait avancé que d'une case — mais seulement au coup suivant.</p>
+  </div>
+  <div class="carte">
+    <h2>Échec, mat, pat et nulle</h2>
+    <p><strong>Échec</strong> : le roi est attaqué. Il faut aussitôt le protéger (le déplacer, prendre l'attaquant ou s'interposer).</p>
+    <p><strong>Échec et mat</strong> : le roi est attaqué et rien ne peut le sauver. La partie est gagnée !</p>
+    <p><strong>Pat</strong> : le joueur au trait n'est pas en échec mais ne peut jouer aucun coup. La partie est nulle. La partie est aussi nulle quand la même position revient trois fois, après 50 coups sans prise ni mouvement de pion, ou quand il ne reste pas assez de pièces pour faire mat.</p>
+  </div>
+  <div class="carte">
+    <h2>Les commandes</h2>
+    <p>Touche (ou clique) une de tes pièces : les cases où elle peut aller sont marquées d'un <strong>point</strong>, les prises d'un <strong>cercle</strong>. Touche ensuite la case d'arrivée. Touche à nouveau la pièce pour changer d'avis.</p>
+    <p>Au clavier : <kbd>Tab</kbd> jusqu'à l'échiquier, les <strong>flèches</strong> pour te déplacer, <kbd>Entrée</kbd> ou <kbd>Espace</kbd> pour choisir la pièce puis la case, <kbd>Échap</kbd> pour annuler.</p>
+  </div>
+</template>
+
+<template id="tpl-application">
+  <div class="reglages">
+    <fieldset class="choix">
+      <legend>Adversaire</legend>
+      <label><input type="radio" name="mode" value="ordinateur">Ordinateur</label>
+      <label><input type="radio" name="mode" value="deux">À deux</label>
+    </fieldset>
+    <fieldset class="choix" data-zone="niveau">
+      <legend>Niveau</legend>
+      <label><input type="radio" name="niveau" value="facile">Facile</label>
+      <label><input type="radio" name="niveau" value="moyen">Moyen</label>
+    </fieldset>
+    <fieldset class="choix" data-zone="couleur">
+      <legend>Tes pièces</legend>
+      <label><input type="radio" name="couleur" value="w">Blancs</label>
+      <label><input type="radio" name="couleur" value="b">Noirs</label>
+    </fieldset>
+  </div>
+  <div class="jeu">
+    <div class="colonne-plateau">
+      <p class="prises" data-sortie="prises-haut"></p>
+      <div data-zone="plateau"></div>
+      <p class="prises" data-sortie="prises-bas"></p>
+    </div>
+    <div class="colonne-infos">
+      <p class="statut" data-sortie="statut" role="status" aria-live="polite"></p>
+      <div class="commandes-jeu">
+        <button class="action" type="button" data-action="nouvelle-partie">Nouvelle partie</button>
+        <button class="secondaire" type="button" data-action="annuler">↶ Annuler le coup</button>
+        <button class="secondaire" type="button" data-action="tourner">⇅ Tourner l'échiquier</button>
+      </div>
+      <h2 id="titre-coups">Coups joués</h2>
+      <ol class="coups" data-sortie="coups" aria-labelledby="titre-coups"></ol>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-mise-en-situation">
+  <p><strong>Mat en un coup !</strong> Les Blancs jouent et gagnent tout de suite. Trouve le coup qui fait échec et mat.</p>
+  <div class="carte">
+    <div class="enigme-entete">
+      <h2 data-sortie="titre"></h2>
+      <span class="progression" data-sortie="progression"></span>
+    </div>
+    <div class="enigme-plateau" data-zone="enigme"></div>
+    <p class="message" data-sortie="retour" role="status" aria-live="polite"></p>
+    <button class="action" type="button" data-action="suivante" hidden>Énigme suivante</button>
+  </div>
+</template>
+
+<script id="moteur-echecs">
+/* Moteur des échecs : position, coups légaux, fin de partie, notation et ordinateur, sans DOM (tests/unit/echecs.test.mjs). */
+const MoteurEchecs = (() => {
+  "use strict";
+  // Cases : 0 = a8, 7 = h8, 56 = a1, 63 = h1. Pièces en lettres FEN : majuscule = Blancs, minuscule = Noirs.
+  const COLONNES = "abcdefgh";
+  const FEN_INITIALE = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+  const CAVALIER = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]];
+  const DIAGONALES = [[-1, -1], [-1, 1], [1, -1], [1, 1]];
+  const DROITES = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+  const TOUTES = [...DIAGONALES, ...DROITES];
+  const LETTRES = { k: "R", q: "D", r: "T", b: "F", n: "C" };
+  const NOMS = { k: "roi", q: "dame", r: "tour", b: "fou", n: "cavalier", p: "pion" };
+  const VALEURS = { p: 100, n: 320, b: 330, r: 500, q: 900, k: 0 };
+  const MAT = 100000;
+
+  const couleurDe = (piece) => (piece === piece.toUpperCase() ? "w" : "b");
+  const adversaire = (couleur) => (couleur === "w" ? "b" : "w");
+  const typeDe = (piece) => piece.toLowerCase();
+  const dans = (l, c) => l >= 0 && l < 8 && c >= 0 && c < 8;
+  const nomCase = (i) => `${COLONNES[i & 7]}${8 - (i >> 3)}`;
+  const indexCase = (nom) => {
+    const c = COLONNES.indexOf(nom[0]), r = Number(nom[1]);
+    if (c < 0 || !(r >= 1 && r <= 8) || nom.length !== 2) throw new Error(`case invalide : ${nom}`);
+    return (8 - r) * 8 + c;
+  };
+  const enCouleur = (type, couleur) => (couleur === "w" ? type.toUpperCase() : type);
+
+  /* ---------- Position (FEN) ---------- */
+  function depuisFEN(fen) {
+    const [placement, trait, roques, ep, demi = "0", numero = "1"] = String(fen).trim().split(/\s+/);
+    const rangees = placement?.split("/") ?? [];
+    if (rangees.length !== 8 || !/^[wb]$/.test(trait) || !/^(-|K?Q?k?q?)$/.test(roques ?? "") || !/^(-|[a-h][36])$/.test(ep ?? "")) throw new Error(`FEN invalide : ${fen}`);
+    const plateau = [];
+    for (const rangee of rangees) {
+      let largeur = 0;
+      for (const signe of rangee) {
+        if (/[1-8]/.test(signe)) { for (let k = 0; k < Number(signe); k++) plateau.push(null); largeur += Number(signe); }
+        else if (/[prnbqkPRNBQK]/.test(signe)) { plateau.push(signe); largeur += 1; }
+        else throw new Error(`FEN invalide : ${fen}`);
+      }
+      if (largeur !== 8) throw new Error(`FEN invalide : ${fen}`);
+    }
+    if (plateau.filter((p) => p === "K").length !== 1 || plateau.filter((p) => p === "k").length !== 1) throw new Error(`FEN invalide (rois) : ${fen}`);
+    const position = {
+      plateau, trait, roques: roques === "-" ? "" : roques, enPassant: ep === "-" ? null : indexCase(ep),
+      demiCoups: Number(demi) || 0, numero: Number(numero) || 1, historique: []
+    };
+    // Position impossible : le roi du joueur qui vient de jouer ne peut pas être en échec.
+    if (enEchec(position, adversaire(trait))) throw new Error(`FEN invalide (roi en prise) : ${fen}`);
+    if (plateau.some((piece, i) => piece && typeDe(piece) === "p" && (i < 8 || i >= 56))) throw new Error(`FEN invalide (pion sur la première ou la dernière rangée) : ${fen}`);
+    position.historique = [cle(position)];
+    return position;
+  }
+
+  function versFEN(p) {
+    const rangees = [];
+    for (let l = 0; l < 8; l++) {
+      let s = "", vides = 0;
+      for (let c = 0; c < 8; c++) {
+        const piece = p.plateau[l * 8 + c];
+        if (!piece) { vides += 1; continue; }
+        if (vides) { s += vides; vides = 0; }
+        s += piece;
+      }
+      rangees.push(s + (vides || ""));
+    }
+    return `${rangees.join("/")} ${p.trait} ${p.roques || "-"} ${p.enPassant === null ? "-" : nomCase(p.enPassant)} ${p.demiCoups} ${p.numero}`;
+  }
+
+  /** Clé de répétition : placement, trait, roques et prise en passant (sans les compteurs). */
+  const cle = (p) => versFEN(p).split(" ").slice(0, 4).join(" ");
+  const positionInitiale = () => depuisFEN(FEN_INITIALE);
+
+  /* ---------- Attaques ---------- */
+  /** La case `i` est-elle attaquée par une pièce de la couleur `par` ? */
+  function caseAttaquee(plateau, i, par) {
+    const l = i >> 3, c = i & 7;
+    const est = (ll, cc, types) => {
+      if (!dans(ll, cc)) return false;
+      const piece = plateau[ll * 8 + cc];
+      return !!piece && couleurDe(piece) === par && types.includes(typeDe(piece));
+    };
+    const dirPion = par === "w" ? 1 : -1; // un pion blanc attaque vers le haut : il se trouve une rangée plus bas
+    if (est(l + dirPion, c - 1, "p") || est(l + dirPion, c + 1, "p")) return true;
+    for (const [dl, dc] of CAVALIER) if (est(l + dl, c + dc, "n")) return true;
+    for (const [dl, dc] of TOUTES) if (est(l + dl, c + dc, "k")) return true;
+    const glisser = (directions, types) => directions.some(([dl, dc]) => {
+      for (let ll = l + dl, cc = c + dc; dans(ll, cc); ll += dl, cc += dc) {
+        const piece = plateau[ll * 8 + cc];
+        if (piece) return couleurDe(piece) === par && types.includes(typeDe(piece));
+      }
+      return false;
+    });
+    return glisser(DIAGONALES, "bq") || glisser(DROITES, "rq");
+  }
+
+  const caseDuRoi = (plateau, couleur) => plateau.indexOf(couleur === "w" ? "K" : "k");
+  const enEchec = (p, couleur = p.trait) => caseAttaquee(p.plateau, caseDuRoi(p.plateau, couleur), adversaire(couleur));
+
+  /* ---------- Génération des coups ---------- */
+  function coupsPseudoLegaux(p) {
+    const { plateau, trait } = p, coups = [];
+    for (let i = 0; i < 64; i++) {
+      const piece = plateau[i];
+      if (!piece || couleurDe(piece) !== trait) continue;
+      const type = typeDe(piece), l = i >> 3, c = i & 7;
+      const ajouter = (j, extra = {}) => coups.push({ de: i, vers: j, piece, prise: plateau[j] ?? null, ...extra });
+      if (type === "p") {
+        const dir = trait === "w" ? -1 : 1, depart = trait === "w" ? 6 : 1, derniere = trait === "w" ? 0 : 7;
+        const pion = (j, extra = {}) => {
+          if ((j >> 3) === derniere) for (const t of "qrbn") ajouter(j, { ...extra, promotion: enCouleur(t, trait) });
+          else ajouter(j, extra);
+        };
+        const un = (l + dir) * 8 + c;
+        if (dans(l + dir, c) && !plateau[un]) {
+          pion(un);
+          const deux = (l + 2 * dir) * 8 + c;
+          if (l === depart && !plateau[deux]) ajouter(deux, { double: true });
+        }
+        for (const dc of [-1, 1]) {
+          if (!dans(l + dir, c + dc)) continue;
+          const j = (l + dir) * 8 + c + dc, cible = plateau[j];
+          if (cible && couleurDe(cible) !== trait) pion(j);
+          else if (j === p.enPassant) ajouter(j, { prise: enCouleur("p", adversaire(trait)), enPassant: true });
+        }
+        continue;
+      }
+      const pas = type === "n" ? CAVALIER : type === "b" ? DIAGONALES : type === "r" ? DROITES : TOUTES;
+      const glisse = type === "b" || type === "r" || type === "q";
+      for (const [dl, dc] of pas) {
+        for (let ll = l + dl, cc = c + dc; dans(ll, cc); ll += dl, cc += dc) {
+          const j = ll * 8 + cc, cible = plateau[j];
+          if (cible && couleurDe(cible) === trait) break;
+          ajouter(j);
+          if (cible || !glisse) break;
+        }
+      }
+      if (type === "k") {
+        const base = trait === "w" ? 56 : 0, [petit, grand] = trait === "w" ? ["K", "Q"] : ["k", "q"];
+        if (i === base + 4 && p.roques.includes(petit) && !plateau[base + 5] && !plateau[base + 6]) ajouter(base + 6, { roque: "petit" });
+        if (i === base + 4 && p.roques.includes(grand) && !plateau[base + 3] && !plateau[base + 2] && !plateau[base + 1]) ajouter(base + 2, { roque: "grand" });
+      }
+    }
+    return coups;
+  }
+
+  /** Applique un coup (supposé pseudo-légal) et renvoie une nouvelle position, sans historique de répétition. */
+  function appliquer(p, coup) {
+    const plateau = p.plateau.slice();
+    const { de, vers, piece } = coup, couleur = couleurDe(piece);
+    plateau[vers] = coup.promotion ?? piece;
+    plateau[de] = null;
+    if (coup.enPassant) plateau[(de & ~7) | (vers & 7)] = null;
+    if (coup.roque) {
+      const base = couleur === "w" ? 56 : 0;
+      const [tourDe, tourVers] = coup.roque === "petit" ? [base + 7, base + 5] : [base, base + 3];
+      plateau[tourVers] = plateau[tourDe]; plateau[tourDe] = null;
+    }
+    let roques = p.roques;
+    if (typeDe(piece) === "k") roques = roques.replace(couleur === "w" ? /[KQ]/g : /[kq]/g, "");
+    const coins = { 63: "K", 56: "Q", 7: "k", 0: "q" };
+    for (const k of [de, vers]) if (coins[k]) roques = roques.replace(coins[k], "");
+    return {
+      plateau, trait: adversaire(p.trait), roques,
+      enPassant: coup.double ? (de + vers) / 2 : null,
+      demiCoups: typeDe(piece) === "p" || coup.prise ? 0 : p.demiCoups + 1,
+      numero: p.numero + (p.trait === "b" ? 1 : 0),
+      historique: p.historique
+    };
+  }
+
+  /** Coups légaux du joueur au trait (option : seulement ceux partant de la case `depuis`). */
+  function coupsLegaux(p, depuis = null) {
+    return coupsPseudoLegaux(p).filter((coup) => {
+      if (depuis !== null && coup.de !== depuis) return false;
+      if (coup.roque) {
+        const passage = coup.roque === "petit" ? coup.de + 1 : coup.de - 1;
+        const adv = adversaire(p.trait);
+        if (caseAttaquee(p.plateau, coup.de, adv) || caseAttaquee(p.plateau, passage, adv)) return false;
+      }
+      const suivante = appliquer(p, coup);
+      return !caseAttaquee(suivante.plateau, caseDuRoi(suivante.plateau, p.trait), suivante.trait);
+    });
+  }
+
+  /** Joue un coup légal et renvoie la nouvelle position (avec l'historique pour la règle de répétition). */
+  function jouer(p, coup) {
+    const legal = coupsLegaux(p, coup.de).find((c) => c.vers === coup.vers && (c.promotion ?? null) === (coup.promotion ?? null));
+    if (!legal) throw new Error(`coup illégal : ${nomCase(coup.de)}-${nomCase(coup.vers)}`);
+    const suivante = appliquer(p, legal);
+    suivante.historique = [...p.historique, cle(suivante)];
+    return suivante;
+  }
+
+  /* ---------- Fin de partie ---------- */
+  function materielInsuffisant(plateau) {
+    const pieces = plateau.map((piece, i) => piece && { type: typeDe(piece), i }).filter((x) => x && x.type !== "k");
+    if (pieces.length === 0) return true;
+    if (pieces.length === 1) return pieces[0].type === "b" || pieces[0].type === "n";
+    // Seulement des fous, tous sur des cases de même couleur.
+    if (pieces.every((x) => x.type === "b")) return new Set(pieces.map(({ i }) => ((i >> 3) + (i & 7)) % 2)).size === 1;
+    return false;
+  }
+
+  /** État de la position : en cours (avec ou sans échec), mat, pat ou nulle (et sa raison). */
+  function statut(p) {
+    const echec = enEchec(p);
+    if (coupsLegaux(p).length === 0) {
+      return echec
+        ? { fin: true, etat: "mat", gagnant: adversaire(p.trait), echec: true }
+        : { fin: true, etat: "pat", gagnant: null, echec: false };
+    }
+    const actuelle = p.historique.at(-1) ?? cle(p);
+    if (p.historique.filter((k) => k === actuelle).length >= 3) return { fin: true, etat: "nulle", raison: "repetition", gagnant: null, echec };
+    if (p.demiCoups >= 100) return { fin: true, etat: "nulle", raison: "cinquante-coups", gagnant: null, echec };
+    if (materielInsuffisant(p.plateau)) return { fin: true, etat: "nulle", raison: "materiel", gagnant: null, echec };
+    return { fin: false, etat: echec ? "echec" : "en-cours", gagnant: null, echec };
+  }
+
+  /* ---------- Notation algébrique (lettres françaises : R, D, T, F, C) ---------- */
+  function notation(p, coup) {
+    let texte;
+    const type = typeDe(coup.piece);
+    if (coup.roque) texte = coup.roque === "petit" ? "O-O" : "O-O-O";
+    else if (type === "p") {
+      texte = `${coup.prise ? `${COLONNES[coup.de & 7]}x` : ""}${nomCase(coup.vers)}${coup.promotion ? `=${LETTRES[typeDe(coup.promotion)]}` : ""}`;
+    } else {
+      const rivaux = coupsLegaux(p).filter((c) => c.piece === coup.piece && c.vers === coup.vers && c.de !== coup.de);
+      let precision = "";
+      if (rivaux.length) {
+        if (!rivaux.some((c) => (c.de & 7) === (coup.de & 7))) precision = COLONNES[coup.de & 7];
+        else if (!rivaux.some((c) => (c.de >> 3) === (coup.de >> 3))) precision = String(8 - (coup.de >> 3));
+        else precision = nomCase(coup.de);
+      }
+      texte = `${LETTRES[type]}${precision}${coup.prise ? "x" : ""}${nomCase(coup.vers)}`;
+    }
+    const suivante = appliquer(p, coup);
+    if (enEchec(suivante)) texte += coupsLegaux(suivante).length ? "+" : "#";
+    return texte;
+  }
+
+  /* ---------- Ordinateur : recherche negamax avec élagage alpha-bêta ---------- */
+  const centre = (i) => 7 - (Math.abs((i >> 3) - 3.5) + Math.abs((i & 7) - 3.5));
+  /** Évaluation du point de vue des Blancs : matériel, centralisation, avance des pions. */
+  function evaluer(p) {
+    let score = 0;
+    p.plateau.forEach((piece, i) => {
+      if (!piece) return;
+      const type = typeDe(piece), blanc = couleurDe(piece) === "w";
+      let v = VALEURS[type];
+      if (type === "n" || type === "b") v += centre(i) * 4;
+      if (type === "p") v += (blanc ? 6 - (i >> 3) : (i >> 3) - 1) * 6 + ((i & 7) === 3 || (i & 7) === 4 ? 8 : 0);
+      score += blanc ? v : -v;
+    });
+    return score;
+  }
+  const ordonner = (coups) => coups.sort((a, b) => (b.prise ? VALEURS[typeDe(b.prise)] * 10 - VALEURS[typeDe(b.piece)] : 0) + (b.promotion ? 800 : 0)
+    - (a.prise ? VALEURS[typeDe(a.prise)] * 10 - VALEURS[typeDe(a.piece)] : 0) - (a.promotion ? 800 : 0));
+
+  function negamax(p, profondeur, alpha, beta, distance) {
+    const coups = coupsLegaux(p);
+    if (!coups.length) return enEchec(p) ? -MAT + distance : 0;
+    if (profondeur === 0) return (p.trait === "w" ? 1 : -1) * evaluer(p);
+    let meilleur = -Infinity;
+    for (const coup of ordonner(coups)) {
+      const score = -negamax(appliquer(p, coup), profondeur - 1, -beta, -alpha, distance + 1);
+      if (score > meilleur) meilleur = score;
+      if (score > alpha) alpha = score;
+      if (alpha >= beta) break;
+    }
+    return meilleur;
+  }
+
+  const NIVEAUX = Object.freeze({
+    facile: Object.freeze({ id: "facile", nom: "Facile", profondeur: 1, bruit: 250 }),
+    moyen: Object.freeze({ id: "moyen", nom: "Moyen", profondeur: 2, bruit: 8 })
+  });
+
+  /** Coup choisi par l'ordinateur. Le bruit rend le niveau facile plus humain (il se trompe parfois). */
+  function choisirCoup(p, { niveau = "moyen", hasard = Math.random } = {}) {
+    const { profondeur, bruit } = NIVEAUX[niveau] ?? NIVEAUX.moyen;
+    const coups = coupsLegaux(p);
+    if (!coups.length) return null;
+    let choix = null, meilleur = -Infinity;
+    for (const coup of ordonner(coups)) {
+      const exact = -negamax(appliquer(p, coup), profondeur - 1, -Infinity, Infinity, 1);
+      // Un mat trouvé n'est jamais brouillé par le bruit.
+      const score = Math.abs(exact) > MAT / 2 ? exact : exact + (hasard() - 0.5) * 2 * bruit;
+      if (score > meilleur) { meilleur = score; choix = coup; }
+    }
+    return choix;
+  }
+
+  /** Nombre de positions atteignables en `profondeur` demi-coups (test de référence des générateurs de coups). */
+  function perft(p, profondeur) {
+    if (profondeur === 0) return 1;
+    const coups = coupsLegaux(p);
+    if (profondeur === 1) return coups.length;
+    let total = 0;
+    for (const coup of coups) total += perft(appliquer(p, coup), profondeur - 1);
+    return total;
+  }
+
+  return Object.freeze({
+    FEN_INITIALE, NIVEAUX, NOMS, LETTRES, VALEURS,
+    positionInitiale, depuisFEN, versFEN, nomCase, indexCase, couleurDe, typeDe,
+    coupsLegaux, jouer, appliquer, enEchec, caseAttaquee, statut, notation, evaluer, choisirCoup, perft
+  });
+})();
+</script>
+<script>
+(() => {
+  "use strict";
+  const META = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const ENIGMES = JSON.parse(document.getElementById("enigmes-echecs").textContent);
+  const CONFIG = { connexionActive: false, stockage: "local" };
+  const M = MoteurEchecs;
+
+  /* ---------- Stockage abstrait : local (actif) / distant (stub) ---------- */
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:${META.id}:${cle}`)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(`kermiclab:${META.id}:${cle}`, JSON.stringify(valeur)); } catch { /* stockage indisponible */ } }
+    },
+    distant: {
+      // Phase 4 : appellera le service web avec META.id et l'identifiant utilisateur.
+      lire() { return null; },
+      ecrire() { /* non activé dans le MVP */ }
+    }
+  };
+  const stockage = Stockage[CONFIG.stockage];
+
+  /* ---------- Registre des onglets ---------- */
+  const registre = [];
+  function enregistrerOnglet(def) { registre.push({ actif: true, ...def }); }
+
+  /* ---------- Pièces ---------- */
+  // Mêmes symboles pleins pour les deux camps (U+FE0E : jamais d'émoji) ; la couleur est donnée par le style et par le nom lu.
+  const GLYPHES = { k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟" };
+  const COULEURS = { w: "Blancs", b: "Noirs" };
+  function elementPiece(piece) {
+    const span = document.createElement("span");
+    span.className = `piece ${M.couleurDe(piece) === "w" ? "blanc" : "noir"}`;
+    span.textContent = `${GLYPHES[M.typeDe(piece)]}︎`;
+    return span;
+  }
+  const nomPiece = (piece) => `${M.NOMS[M.typeDe(piece)]} ${M.couleurDe(piece) === "w" ? "blanc" : "noir"}`;
+  for (const s of document.querySelectorAll("[data-glyphe]")) { s.textContent = `${GLYPHES[s.dataset.glyphe]}︎`; s.classList.add("blanc"); }
+
+  /* ---------- Promotion : boîte de dialogue partagée ---------- */
+  const dialogue = document.getElementById("promotion");
+  let repondrePromotion = null;
+  function demanderPromotion() {
+    return new Promise((resoudre) => {
+      repondrePromotion = resoudre;
+      dialogue.showModal();
+      dialogue.querySelector("[data-promotion]").focus();
+    });
+  }
+  function fermerPromotion(type) {
+    const r = repondrePromotion; repondrePromotion = null;
+    if (dialogue.open) dialogue.close();
+    if (r) r(type || null);
+  }
+  dialogue.addEventListener("click", (e) => { const b = e.target.closest("[data-promotion]"); if (b) fermerPromotion(b.dataset.promotion); });
+  dialogue.addEventListener("cancel", (e) => { e.preventDefault(); fermerPromotion(null); });
+
+  /* ---------- Vue de l'échiquier : rendu et entrées (souris, tactile, clavier), sans règle du jeu ---------- */
+  function creerVueEchiquier({ libelle, surCase, surEchap }) {
+    const grille = document.createElement("div");
+    grille.className = "echiquier";
+    grille.setAttribute("role", "grid");
+    grille.setAttribute("aria-label", libelle);
+    let orientation = "w", boutons = [], courant = 0;
+    // Case affichée (ligne, colonne) → case du moteur, selon le camp placé en bas.
+    const indexDe = (l, c) => (orientation === "w" ? l * 8 + c : (7 - l) * 8 + (7 - c));
+
+    function construire() {
+      grille.replaceChildren(); boutons = new Array(64);
+      for (let l = 0; l < 8; l++) {
+        const rangee = document.createElement("div");
+        rangee.className = "rangee"; rangee.setAttribute("role", "row");
+        for (let c = 0; c < 8; c++) {
+          const i = indexDe(l, c), b = document.createElement("button");
+          b.type = "button"; b.setAttribute("role", "gridcell"); b.tabIndex = -1;
+          b.className = `case ${((i >> 3) + (i & 7)) % 2 ? "foncee" : "claire"}`;
+          b.dataset.index = i; b.dataset.case = M.nomCase(i); b.dataset.ligne = l; b.dataset.colonne = c;
+          boutons[i] = b; rangee.appendChild(b);
+        }
+        grille.appendChild(rangee);
+      }
+      boutons[courant].tabIndex = 0;
+    }
+
+    function rendre(position, { selection = null, destinations = [], dernier = null } = {}) {
+      const echec = M.enEchec(position) ? position.plateau.indexOf(position.trait === "w" ? "K" : "k") : -1;
+      const cibles = new Map(destinations.map((c) => [c.vers, c]));
+      boutons.forEach((b, i) => {
+        const piece = position.plateau[i], l = Number(b.dataset.ligne), c = Number(b.dataset.colonne);
+        const enfants = piece ? [elementPiece(piece)] : [];
+        if (l === 7) enfants.push(Object.assign(document.createElement("span"), { className: "coord colonne", textContent: b.dataset.case[0] }));
+        if (c === 0) enfants.push(Object.assign(document.createElement("span"), { className: "coord rang", textContent: b.dataset.case[1] }));
+        for (const e of enfants) e.setAttribute("aria-hidden", "true"); // le bouton porte déjà la description complète
+        b.replaceChildren(...enfants);
+        const dest = cibles.get(i);
+        const marques = { selection: i === selection, dernier: !!dernier && (i === dernier.de || i === dernier.vers), echec: i === echec };
+        for (const [k, v] of Object.entries(marques)) { if (v) b.dataset[k] = ""; else delete b.dataset[k]; }
+        if (dest) b.dataset.destination = dest.prise ? "prise" : "deplacement"; else delete b.dataset.destination;
+        const details = [
+          piece ? nomPiece(piece) : "vide",
+          marques.selection && "sélectionnée",
+          dest && (dest.prise ? `prise possible de ${nomPiece(dest.prise)}` : "destination possible"),
+          marques.echec && "roi en échec",
+          marques.dernier && "dernier coup"
+        ].filter(Boolean);
+        b.setAttribute("aria-label", `${b.dataset.case} : ${details.join(", ")}`);
+      });
+    }
+
+    function focaliser(i) { boutons[courant].tabIndex = -1; courant = i; boutons[i].tabIndex = 0; boutons[i].focus(); }
+    grille.addEventListener("click", (e) => {
+      const b = e.target.closest("button.case");
+      if (!b) return;
+      const i = Number(b.dataset.index);
+      boutons[courant].tabIndex = -1; courant = i; b.tabIndex = 0;
+      surCase(i);
+    });
+    grille.addEventListener("keydown", (e) => {
+      const b = e.target.closest?.("button.case");
+      if (!b || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "Escape") { e.preventDefault(); surEchap(); return; }
+      const l = Number(b.dataset.ligne), c = Number(b.dataset.colonne);
+      const cible = { ArrowUp: [l - 1, c], ArrowDown: [l + 1, c], ArrowLeft: [l, c - 1], ArrowRight: [l, c + 1], Home: [l, 0], End: [l, 7] }[e.key];
+      if (!cible) return;
+      e.preventDefault();
+      focaliser(indexDe(Math.max(0, Math.min(7, cible[0])), Math.max(0, Math.min(7, cible[1]))));
+    });
+    construire();
+    return {
+      element: grille, rendre,
+      orienter(couleur) { if (couleur !== orientation) { orientation = couleur; construire(); } },
+      get orientation() { return orientation; }
+    };
+  }
+
+  /** Saisie d'un coup en deux touchers (pièce puis case), commune au jeu et aux énigmes. */
+  function creerSaisie({ libelle, position, peutJouer, surCoup, rafraichir }) {
+    let selection = null, destinations = [];
+    const effacer = () => { selection = null; destinations = []; };
+    async function surCase(i) {
+      const p = position();
+      if (!peutJouer()) { effacer(); rafraichir(); return; }
+      const vers = destinations.filter((c) => c.vers === i);
+      if (selection !== null && vers.length) {
+        effacer();
+        let coup = vers[0];
+        if (vers.length > 1) {
+          rafraichir();
+          const type = await demanderPromotion();
+          if (!type) { rafraichir(); return; }
+          coup = vers.find((c) => M.typeDe(c.promotion) === type);
+        }
+        surCoup(coup);
+        return;
+      }
+      const piece = p.plateau[i];
+      if (piece && M.couleurDe(piece) === p.trait && i !== selection) { selection = i; destinations = M.coupsLegaux(p, i); }
+      else effacer();
+      rafraichir();
+    }
+    const vue = creerVueEchiquier({ libelle, surCase, surEchap: () => { effacer(); rafraichir(); } });
+    return { vue, effacer, get selection() { return selection; }, get destinations() { return destinations; } };
+  }
+
+  /* ---------- Onglet explication ---------- */
+  enregistrerOnglet({ id: "explication", type: "explication", titre: "Règles",
+    rendu(panneau) { panneau.appendChild(document.getElementById("tpl-explication").content.cloneNode(true)); } });
+
+  /* ---------- Onglet application : la partie ---------- */
+  const RAISONS = {
+    repetition: "la même position est revenue trois fois",
+    "cinquante-coups": "50 coups sans prise ni mouvement de pion",
+    materiel: "il ne reste pas assez de pièces pour faire mat"
+  };
+  const DEPART = { p: 8, n: 2, b: 2, r: 2, q: 1 };
+  const jeu = {};
+  enregistrerOnglet({ id: "application", type: "application", titre: "Jouer",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-application").content.cloneNode(true));
+      const sortie = (n) => panneau.querySelector(`[data-sortie="${n}"]`);
+      const bouton = (n) => panneau.querySelector(`[data-action="${n}"]`);
+      const lire = (cle, valeurs, defaut) => { const v = stockage.lire(cle); return valeurs.includes(v) ? v : defaut; };
+      let mode = lire("mode", ["ordinateur", "deux"], "ordinateur");
+      let niveau = lire("niveau", Object.keys(M.NIVEAUX), "facile");
+      let couleur = lire("couleur", ["w", "b"], "w");
+      let positions = [], coups = [], notations = [], attente = null;
+      const position = () => positions.at(-1);
+      const tourOrdinateur = () => mode === "ordinateur" && position().trait !== couleur;
+
+      const saisie = creerSaisie({
+        libelle: "Échiquier",
+        position,
+        peutJouer: () => !M.statut(position()).fin && attente === null && !tourOrdinateur(),
+        surCoup: jouerCoup,
+        rafraichir: afficher
+      });
+      panneau.querySelector('[data-zone="plateau"]').replaceWith(saisie.vue.element);
+
+      function jouerCoup(coup) {
+        const p = position();
+        notations.push(M.notation(p, coup));
+        positions.push(M.jouer(p, coup));
+        coups.push(coup);
+        saisie.effacer();
+        afficher();
+        if (tourOrdinateur() && !M.statut(position()).fin) planifierOrdinateur();
+      }
+
+      function planifierOrdinateur() {
+        attente = setTimeout(() => {
+          attente = null;
+          const coup = M.choisirCoup(position(), { niveau });
+          if (coup) jouerCoup(coup);
+        }, 400);
+        afficher();
+      }
+      function arreterOrdinateur() { clearTimeout(attente); attente = null; }
+
+      function nouvellePartie() {
+        arreterOrdinateur();
+        positions = [M.positionInitiale()]; coups = []; notations = [];
+        saisie.effacer();
+        saisie.vue.orienter(mode === "ordinateur" ? couleur : "w");
+        afficher();
+        if (tourOrdinateur()) planifierOrdinateur();
+      }
+
+      function annuler() {
+        arreterOrdinateur();
+        const retirer = () => { positions.pop(); coups.pop(); notations.pop(); };
+        if (positions.length > 1) retirer();
+        // Contre l'ordinateur, on revient jusqu'à un coup du joueur.
+        while (mode === "ordinateur" && positions.length > 1 && tourOrdinateur()) retirer();
+        saisie.effacer();
+        afficher();
+        if (tourOrdinateur()) planifierOrdinateur();
+      }
+
+      function texteStatut(s, p) {
+        const contre = mode === "ordinateur";
+        if (s.etat === "mat") {
+          if (!contre) return { texte: `Échec et mat ! Les ${COULEURS[s.gagnant]} gagnent.`, etat: "mat" };
+          return s.gagnant === couleur
+            ? { texte: "Échec et mat : bravo, tu as gagné ! 🏆", etat: "victoire" }
+            : { texte: "Échec et mat : l'ordinateur a gagné. Retente ta chance !", etat: "defaite" };
+        }
+        if (s.etat === "pat") return { texte: "Pat : le joueur au trait ne peut plus bouger sans mettre son roi en échec. Partie nulle.", etat: "nulle" };
+        if (s.etat === "nulle") return { texte: `Partie nulle : ${RAISONS[s.raison]}.`, etat: "nulle" };
+        const qui = contre ? (p.trait === couleur ? `À toi de jouer (${COULEURS[couleur]})` : "L'ordinateur réfléchit…") : `Au tour des ${COULEURS[p.trait]}`;
+        return { texte: s.echec ? `${qui} — Échec au roi !` : qui, etat: s.echec ? "echec" : "en-cours" };
+      }
+
+      function afficherPrises() {
+        const restants = { w: {}, b: {} };
+        for (const piece of position().plateau) if (piece) { const c = M.couleurDe(piece), t = M.typeDe(piece); restants[c][t] = (restants[c][t] ?? 0) + 1; }
+        // Pièces prises PAR une couleur = pièces adverses manquantes (une promotion peut en rajouter : jamais négatif).
+        const prises = (par) => {
+          const adv = par === "w" ? "b" : "w";
+          return Object.entries(DEPART).flatMap(([t, n]) => Array(Math.max(0, n - (restants[adv][t] ?? 0))).fill(t));
+        };
+        const ecrire = (zone, par) => {
+          const liste = prises(par), adv = par === "w" ? "b" : "w";
+          zone.replaceChildren();
+          zone.setAttribute("aria-label", `Pièces prises par les ${COULEURS[par]} : ${liste.length ? liste.map((t) => M.NOMS[t]).join(", ") : "aucune"}`);
+          const legende = document.createElement("small"); legende.textContent = `Prises des ${COULEURS[par]} : ${liste.length ? "" : "aucune"}`;
+          zone.append(legende, ...liste.map((t) => elementPiece(adv === "w" ? t.toUpperCase() : t)));
+          for (const enfant of zone.children) enfant.setAttribute("aria-hidden", "true");
+        };
+        const bas = saisie.vue.orientation;
+        ecrire(sortie("prises-bas"), bas);
+        ecrire(sortie("prises-haut"), bas === "w" ? "b" : "w");
+      }
+
+      function afficherCoups() {
+        const liste = sortie("coups");
+        liste.replaceChildren();
+        for (let k = 0; k < notations.length; k += 2) {
+          const li = document.createElement("li");
+          li.textContent = `${notations[k]}${notations[k + 1] ? `   ${notations[k + 1]}` : ""}`;
+          liste.appendChild(li);
+        }
+        liste.scrollTop = liste.scrollHeight;
+      }
+
+      function afficher() {
+        const p = position(), s = M.statut(p);
+        saisie.vue.rendre(p, { selection: saisie.selection, destinations: saisie.destinations, dernier: coups.at(-1) ?? null });
+        const { texte, etat } = texteStatut(s, p);
+        sortie("statut").textContent = texte;
+        sortie("statut").dataset.etat = etat;
+        panneau.dataset.etat = s.etat;
+        afficherCoups();
+        afficherPrises();
+        // Contre l'ordinateur, il faut au moins un coup du joueur à annuler.
+        bouton("annuler").disabled = mode === "ordinateur" ? !coups.some((c) => M.couleurDe(c.piece) === couleur) : coups.length === 0;
+        panneau.querySelector('[data-zone="niveau"]').hidden = mode !== "ordinateur";
+        panneau.querySelector('[data-zone="couleur"]').hidden = mode !== "ordinateur";
+        for (const [nom, valeur] of [["mode", mode], ["niveau", niveau], ["couleur", couleur]]) {
+          for (const r of panneau.querySelectorAll(`input[name="${nom}"]`)) r.checked = r.value === valeur;
+        }
+      }
+
+      for (const r of panneau.querySelectorAll('input[name="mode"]')) r.addEventListener("change", () => { mode = r.value; stockage.ecrire("mode", mode); nouvellePartie(); });
+      for (const r of panneau.querySelectorAll('input[name="couleur"]')) r.addEventListener("change", () => { couleur = r.value; stockage.ecrire("couleur", couleur); nouvellePartie(); });
+      for (const r of panneau.querySelectorAll('input[name="niveau"]')) r.addEventListener("change", () => { niveau = r.value; stockage.ecrire("niveau", niveau); afficher(); });
+      bouton("nouvelle-partie").addEventListener("click", nouvellePartie);
+      bouton("annuler").addEventListener("click", annuler);
+      bouton("tourner").addEventListener("click", () => { saisie.effacer(); saisie.vue.orienter(saisie.vue.orientation === "w" ? "b" : "w"); afficher(); });
+
+      nouvellePartie();
+      Object.assign(jeu, {
+        etat: () => ({ fen: M.versFEN(position()), coups: [...notations], statut: M.statut(position()), reflechit: attente !== null })
+      });
+    } });
+
+  /* ---------- Onglet mise en situation : mats en un coup ---------- */
+  enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: "Énigmes",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-mise-en-situation").content.cloneNode(true));
+      const sortie = (n) => panneau.querySelector(`[data-sortie="${n}"]`);
+      const suivante = panneau.querySelector('[data-action="suivante"]');
+      let rang = 0, position = null, dernier = null, resolue = false;
+      const saisie = creerSaisie({
+        libelle: "Échiquier de l'énigme",
+        position: () => position,
+        peutJouer: () => !resolue,
+        surCoup: essayer,
+        rafraichir: afficher
+      });
+      panneau.querySelector('[data-zone="enigme"]').appendChild(saisie.vue.element);
+
+      function afficher() { saisie.vue.rendre(position, { selection: saisie.selection, destinations: saisie.destinations, dernier }); }
+      function retour(texte, classe) { sortie("retour").textContent = texte; sortie("retour").className = `message ${classe}`; }
+
+      function charger(i) {
+        rang = i; resolue = false; dernier = null;
+        const e = ENIGMES[rang];
+        position = M.depuisFEN(e.fen);
+        saisie.effacer();
+        saisie.vue.orienter(position.trait);
+        sortie("titre").textContent = e.titre;
+        sortie("progression").textContent = `Énigme ${rang + 1} / ${ENIGMES.length}`;
+        retour("", "");
+        suivante.hidden = true;
+        afficher();
+      }
+
+      function essayer(coup) {
+        const e = ENIGMES[rang], texte = M.notation(position, coup), suite = M.jouer(position, coup);
+        if (M.statut(suite).etat !== "mat") { retour(`${texte} ne fait pas mat. ${e.indice}`, "ko"); afficher(); return; }
+        position = suite; dernier = coup; resolue = true;
+        afficher();
+        const derniere = rang === ENIGMES.length - 1;
+        retour(`${e.explication}${derniere ? " Tu as résolu toutes les énigmes : à toi de jouer dans l'onglet « Jouer » !" : ""}`, "ok");
+        suivante.textContent = derniere ? "Recommencer les énigmes" : "Énigme suivante";
+        suivante.hidden = false;
+      }
+
+      suivante.addEventListener("click", () => charger((rang + 1) % ENIGMES.length));
+      charger(0);
+    } });
+
+  /* ---------- Onglet self-test (prévu phase 2, désactivé) ---------- */
+  enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false,
+    questions: [], rendu() {} });
+
+  /* ---------- Socle : construction des onglets ---------- */
+  const liste = document.getElementById("onglets"), panneaux = document.getElementById("panneaux");
+  const actifs = registre.filter((o) => o.actif);
+  const boutons = actifs.map((o, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.id = `onglet-${o.id}`; b.textContent = o.titre;
+    b.setAttribute("aria-controls", `panneau-${o.id}`); b.dataset.onglet = o.id;
+    const p = document.createElement("section");
+    p.setAttribute("role", "tabpanel"); p.id = `panneau-${o.id}`; p.setAttribute("aria-labelledby", b.id); p.tabIndex = 0;
+    o.rendu(p); panneaux.appendChild(p); liste.appendChild(b);
+    b.addEventListener("click", () => choisir(i));
+    return b;
+  });
+  function choisir(i) {
+    boutons.forEach((b, j) => {
+      const sel = i === j; b.setAttribute("aria-selected", String(sel)); b.tabIndex = sel ? 0 : -1;
+      document.getElementById(b.getAttribute("aria-controls")).hidden = !sel;
+    });
+    stockage.ecrire("onglet", actifs[i].id);
+  }
+  liste.addEventListener("keydown", (e) => {
+    const i = boutons.indexOf(document.activeElement); if (i < 0) return;
+    const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
+    if (n >= 0) { choisir(n); boutons[n].focus(); e.preventDefault(); }
+  });
+  // Un jeu s'ouvre directement sur l'onglet « Jouer » (sauf si un autre onglet a été mémorisé), comme le Démineur.
+  const memo = actifs.findIndex((o) => o.id === stockage.lire("onglet"));
+  choisir(memo >= 0 ? memo : Math.max(0, actifs.findIndex((o) => o.id === "application")));
+
+  document.getElementById("connexion").hidden = !CONFIG.connexionActive;
+  window.kermiclab = { META, registre, CONFIG, echecs: jeu };
+})();
+</script>
+</body>
+</html>

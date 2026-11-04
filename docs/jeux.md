@@ -1,6 +1,7 @@
 # Ajouter un jeu universel
 
-Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemple complet : `catalogue/demineur/`.
+Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/demineur/` (grille, hasard) et
+`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données).
 
 Un jeu suit le processus d'une maquette (AGENTS.md §6) : issue `maquette-manquante`, branche `maquette/<id>`, PR,
 validation du CODEOWNER.
@@ -21,6 +22,7 @@ validation du CODEOWNER.
 |---|---|---|
 | `<script id="moteur-<id>">` | état et règles du jeu | pur : aucun `document`, `window` ni stockage ; hasard passé en paramètre |
 | second `<script>` | vue, entrées, onglets | ne modifie l'état que par les fonctions du moteur |
+| `<script type="application/json">` (facultatif) | données : énigmes, niveaux | lues par l'interface **et** par les tests, qui vérifient leur solution avec le moteur |
 
 - **Onglets** : `explication` (règles très simples, commandes), `application` (le jeu, ouvert par défaut),
   `mise-en-situation` (énigmes ou défis courts). Le jeu reste amusant : pas de cours.
@@ -33,7 +35,8 @@ validation du CODEOWNER.
 ## 3. Tests
 
 - `tests/unit/<id>.test.mjs` : extraire le moteur de la page et l'exécuter avec `node:vm` (voir
-  `tests/unit/demineur.test.mjs`) ; tester les règles avec un hasard reproductible.
+  `tests/unit/demineur.test.mjs`) ; tester les règles avec un hasard reproductible. Pour un jeu à règles nombreuses, comparer le moteur
+  à des valeurs de référence publiques (aux échecs : le perft, nombre de positions atteignables).
 - `tests/e2e/<id>.test.mjs` : parcours principaux sur ordinateur et sur mobile (`isMobile`, `hasTouch`), absence
   d'erreur console et de violation CSP, absence de débordement horizontal.
 
