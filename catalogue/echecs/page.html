@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wJtFz5B7MlVNnnBFeXfk1fTtTYfMdi/Fz19SublDQMg=' 'sha256-SgpVvFnTzi+yUKfvV7cO9wwbjU+eiaubfwSKPG0/5Gg=' 'sha256-u5SmCpcOssKeDgkGetbEvaLczJF3O0wQ6XXJmfIHaH8='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wJtFz5B7MlVNnnBFeXfk1fTtTYfMdi/Fz19SublDQMg=' 'sha256-burseg9jb03jZPhDZAA2LpqdjBwJlXBXPOk3dh89rLI=' 'sha256-Oe9X1kBGC2Su7I+F3FuvwX9AyfFYXzCgTIXnRq5zVUM='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Échecs – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -1496,7 +1496,7 @@ const AcademieEchecs = (() => {
   function etatInitial() {
     return {
       version: 1, xp: 0, lecons: {}, cartes: {}, themes: {}, serie: 0, serieMax: 0, dernierJour: null, jours: {},
-      badges: [], objectif: 3, embleme: "p", libre: false, revisions: 0, objectifsAtteints: 0, defis: [],
+      badges: [], objectif: 3, embleme: "p", libre: false, revisions: 0, objectifsAtteints: 0, objectifsJours: [], defis: [],
       parties: { facile: { victoires: 0, nulles: 0, defaites: 0 }, moyen: { victoires: 0, nulles: 0, defaites: 0 } }
     };
   }
@@ -1526,6 +1526,7 @@ const AcademieEchecs = (() => {
       if (themes.has(t)) { const essais = entier(v?.essais); e.themes[t] = { essais, premiers: Math.min(essais, entier(v?.premiers)) }; }
     }
     for (const [j, n] of Object.entries(objet(brut.jours))) if (estJour(j)) e.jours[j] = entier(n, 1000);
+    e.objectifsJours = Array.isArray(brut.objectifsJours) ? [...new Set(brut.objectifsJours.filter(estJour))].slice(-MAX_JOURS) : [];
     e.badges = Array.isArray(brut.badges) ? [...new Set(brut.badges.filter((b) => BADGES.some((d) => d.id === b)))] : [];
     e.defis = Array.isArray(brut.defis) ? [...new Set(brut.defis.filter(estJour))].slice(-MAX_JOURS) : [];
     for (const niveau of Object.keys(base.parties)) {
@@ -1618,7 +1619,10 @@ const AcademieEchecs = (() => {
     }
     e.jours[jour] = (e.jours[jour] ?? 0) + 1;
     for (const j of Object.keys(e.jours).sort().slice(0, -MAX_JOURS)) delete e.jours[j];
-    if (e.jours[jour] === e.objectif) { e.xp += XP.objectif; gains.xp += XP.objectif; gains.objectif = true; e.objectifsAtteints += 1; }
+    if (e.jours[jour] >= e.objectif && !e.objectifsJours.includes(jour)) {
+      e.objectifsJours = [...e.objectifsJours, jour].slice(-MAX_JOURS);
+      e.xp += XP.objectif; gains.xp += XP.objectif; gains.objectif = true; e.objectifsAtteints += 1;
+    }
   }
 
   /** Exercice réussi (après d'éventuelles erreurs). Toute nouvelle réussite programme sa prochaine révision. */
@@ -1694,7 +1698,7 @@ const AcademieEchecs = (() => {
   const hacher = (texte) => [...texte].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
   function defiDuJour(etat, parcours, jour) {
     const { exercices } = indexer(parcours);
-    const candidats = [...exercices.entries()].filter(([, x]) => x.exo.type === "coup" && leconDebloquee(etat, parcours, x.lecon.id)).map(([id]) => id);
+    const candidats = [...exercices.entries()].filter(([, x]) => x.exo.type === "coup").map(([id]) => id);
     if (!candidats.length) return null;
     return { id: candidats[hacher(jour) % candidats.length], fait: etat.defis.includes(jour) };
   }
@@ -2167,7 +2171,7 @@ const AcademieEchecs = (() => {
           const cartes = l.exercices.map((_, k) => etat.cartes[A.exoId(l, k)]).filter(Boolean);
           const maitrise = cartes.length && cartes.every((c) => c.boite >= 4);
           const prochaine = cartes.map((c) => c.prochaine).sort()[0];
-          const quand = maitrise ? "✓ maîtrisée" : prochaine <= jour ? "à réviser aujourd'hui" : `à revoir le ${prochaine.slice(8, 10)}/${prochaine.slice(5, 7)}`;
+          const quand = maitrise ? "✓ maîtrisée" : !prochaine ? "à revoir demain" : prochaine <= jour ? "à réviser aujourd'hui" : `à revoir le ${prochaine.slice(8, 10)}/${prochaine.slice(5, 7)}`;
           return el("li", {}, el("strong", { texte: l.titre }), el("span", { classe: "doux", texte: ` · ${quand}` }), el("p", { texte: l.retenir }));
         }) : [el("li", { classe: "doux", texte: "Termine une leçon : sa stratégie s'ajoute ici, pour la relire et la réviser." })]));
         // Badges
@@ -2306,11 +2310,12 @@ const AcademieEchecs = (() => {
         if (!reponse) { retour("Bien ! Continue.", "ok"); return; }
         ex.attente = true;
         retour("Bien joué ! L'adversaire répond…", "ok");
+        const exercice = ex;
         setTimeout(() => {
-          if (!ex || ex.fini) return;
-          const r = M.coupsLegaux(ex.position).find((c) => uci(c) === reponse);
-          const texte = M.notation(ex.position, r);
-          ex.position = M.jouer(ex.position, r); ex.dernier = r; ex.attente = false;
+          if (ex !== exercice || exercice.fini) return;
+          const r = M.coupsLegaux(exercice.position).find((c) => uci(c) === reponse);
+          const texte = M.notation(exercice.position, r);
+          exercice.position = M.jouer(exercice.position, r); exercice.dernier = r; exercice.attente = false;
           retour(`L'adversaire a joué ${texte}. À toi de finir !`, "");
           afficherPlateau();
         }, 600);
