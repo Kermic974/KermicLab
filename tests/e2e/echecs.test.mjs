@@ -254,6 +254,37 @@ test("académie : indice qui montre la pièce, exercice en deux coups avec répo
   await contexte.close();
 });
 
+test("académie : une réponse différée est ignorée après le changement d'exercice", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, URL_PAGE());
+  await page.goto(URL_PAGE());
+  await page.click("#onglet-academie");
+  await academie(page).locator('[data-action="detail"]').click();
+  await academie(page).locator('input[name="libre"]').check();
+  await academie(page).locator('[data-vue="detail"] [data-action="retour"]').click();
+  await academie(page).locator('[data-lecon="fourchette"]').click();
+  await coupAcademie(page, "d5c7");
+  assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /adversaire répond/);
+  await academie(page).locator('[data-vue="session"] [data-action="retour"]').click();
+  await academie(page).locator('[data-lecon="valeurs"]').click();
+  await page.waitForTimeout(700);
+  assert.equal(await academie(page).locator('[data-sortie="session-titre"]').textContent(), "La valeur des pièces");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("académie : le carnet tolère une leçon terminée sans carte valide", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, URL_PAGE());
+  await page.addInitScript(() => localStorage.setItem("kermiclab:echecs:academie", JSON.stringify({
+    lecons: { valeurs: { etoiles: 3 } }
+  })));
+  await page.goto(URL_PAGE());
+  await page.click("#onglet-academie");
+  await academie(page).locator('[data-action="detail"]').click();
+  assert.match(await academie(page).locator('[data-sortie="carnet"]').textContent(), /à revoir demain/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("académie : révisions espacées dues, défi du jour et emblème personnalisé", async () => {
   const { page, contexte } = await ouvrir(nav, URL_PAGE());
   // Progression déjà commencée : grade Pion obtenu, trois cartes à revoir aujourd'hui.

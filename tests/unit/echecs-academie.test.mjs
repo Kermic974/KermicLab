@@ -150,6 +150,19 @@ test("exercices : XP selon la réussite, statistiques par thème, objectif du jo
   assert.equal(A.etatInitial().xp, 0, "les enregistrements ne modifient pas l'état reçu");
 });
 
+test("objectif du jour : changer la cible ne récompense qu'une fois par date", () => {
+  let e = A.regler(A.etatInitial(), { objectif: 1 });
+  let r = A.enregistrerExercice(e, { id: "valeurs/0", jour: J }); e = r.etat;
+  assert.equal(r.gains.objectif, true);
+  e = A.regler(e, { objectif: 3 });
+  r = A.enregistrerExercice(e, { id: "valeurs/1", jour: J }); e = r.etat;
+  assert.equal(r.gains.objectif, false);
+  r = A.enregistrerExercice(e, { id: "parer-echec/0", jour: J }); e = r.etat;
+  assert.equal(r.gains.objectif, false);
+  assert.equal(e.objectifsAtteints, 1);
+  assert.deepEqual(local(e.objectifsJours), [J]);
+});
+
 test("révisions espacées : la carte monte d'une boîte quand elle est réussie, retombe à la première sinon", () => {
   let e = A.enregistrerExercice(A.etatInitial(), { id: "fourchette/0", jour: J }).etat;
   assert.deepEqual(local(e.cartes["fourchette/0"]), { boite: 1, prochaine: "2026-11-05" });
@@ -225,13 +238,16 @@ test("parties contre l'ordinateur : XP et badges", () => {
   assert.throws(() => A.enregistrerPartie(e, { resultat: "abandon", niveau: "facile", jour: J }), /invalide/);
 });
 
-test("défi du jour : le même pour tous le même jour, parmi les leçons ouvertes, bonus une fois", () => {
+test("défi du jour : identique quel que soit le parcours et le mode libre, bonus une fois", () => {
   const e = A.etatInitial();
   const d = A.defiDuJour(e, J);
   assert.deepEqual(local(A.defiDuJour(e, J)), local(d));
+  assert.deepEqual(local(A.defiDuJour(A.regler(e, { libre: true }), J)), local(d));
+  let progresse = e;
+  for (const id of ["valeurs", "parer-echec", "roque"]) progresse = A.terminerLecon(progresse, { id, etoiles: 3, jour: J }).etat;
+  assert.deepEqual(local(A.defiDuJour(progresse, J)), local(d));
   const { exercices } = A;
   assert.equal(exercices.get(d.id).exo.type, "coup");
-  assert.equal(A.leconDebloquee(e, exercices.get(d.id).lecon.id), true);
   const jours = new Set(Array.from({ length: 20 }, (_, k) => A.defiDuJour(e, G.ajouterJours(J, k)).id));
   assert.ok(jours.size > 1, "le défi change d'un jour à l'autre");
   let r = A.enregistrerDefi(e, { jour: J });
@@ -278,7 +294,7 @@ test("stockage : un état corrompu ou modifié à la main est relu sans danger",
     lecons: { valeurs: { etoiles: 3, jour: J }, inconnue: { etoiles: 3 }, roque: { etoiles: 9 } },
     cartes: { "valeurs/0": { boite: 2, prochaine: "2026-11-06" }, "valeurs/9": { boite: 1, prochaine: J }, "roque/0": { boite: 8, prochaine: J } },
     themes: { bases: { essais: 2, premiers: 5 }, magie: { essais: 1, premiers: 1 } },
-    jours: { [J]: 2, hier: 3 }, parties: { facile: { victoires: 2 } }, defis: [J, "pas-un-jour"]
+    jours: { [J]: 2, hier: 3 }, objectifsJours: [J, "pas-un-jour", J], parties: { facile: { victoires: 2 } }, defis: [J, "pas-un-jour"]
   };
   const e = local(A.normaliser(brut));
   assert.equal(e.xp, 0); assert.equal(e.serie, 0); assert.equal(e.objectif, 3); assert.equal(e.embleme, "p"); assert.equal(e.libre, false);
@@ -287,6 +303,7 @@ test("stockage : un état corrompu ou modifié à la main est relu sans danger",
   assert.deepEqual(Object.keys(e.cartes), ["valeurs/0"]);
   assert.deepEqual(e.themes, { bases: { essais: 2, premiers: 2 } });
   assert.deepEqual(e.jours, { [J]: 2 });
+  assert.deepEqual(e.objectifsJours, [J]);
   assert.deepEqual(e.parties.facile, { victoires: 2, nulles: 0, defaites: 0, meilleur: null });
   assert.deepEqual(e.defis, [J]);
   // Un état valide fait l'aller-retour sans perte.
