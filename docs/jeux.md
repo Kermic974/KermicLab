@@ -1,7 +1,8 @@
 # Ajouter un jeu universel
 
 Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/demineur/` (grille, hasard) et
-`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données).
+`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données) et `catalogue/belote/` (jeu de cartes à quatre,
+exercices « pli » et « enchère »).
 
 Un jeu suit le processus d'une maquette (AGENTS.md §6) : issue `maquette-manquante`, branche `maquette/<id>`, PR,
 validation du CODEOWNER.

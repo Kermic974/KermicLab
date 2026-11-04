@@ -294,16 +294,26 @@ test("académie du démineur : déduction en chaîne jusqu'au bout, un pari est 
 
 test("démineur : une victoire nourrit l'Académie (XP, record, badges) et l'indice montre une certitude", async () => {
   const { page, contexte } = await ouvrir(nav, URL_PAGE());
+  // Hasard reproductible : le plateau est le même à chaque exécution du test.
+  await page.addInitScript(() => { let a = 2026; Math.random = () => { a = (a * 1103515245 + 12345) >>> 0; return a / 4294967296; }; });
   await page.goto(URL_PAGE());
   await jeu(page).locator('[data-action="indice-jeu"]').click();
   assert.match(await sortie(page, "message").textContent(), /Commence par ouvrir une case/);
   await caseJeu(page, 40).click();
   await jeu(page).locator('[data-action="indice-jeu"]').click();
-  const indice = await jeu(page).locator(".case[data-indice]").getAttribute("data-index");
-  const partie = await page.evaluate(() => window.kermiclab.demineur.partie());
-  assert.match(await sortie(page, "message").textContent(), /sûre|mine/);
   const message = await sortie(page, "message").textContent();
-  assert.equal(partie.cases[Number(indice)].mine, /mine/.test(message) && !/sûre/.test(message), "l'indice ne ment jamais");
+  const partie = await page.evaluate(() => window.kermiclab.demineur.partie());
+  const deductions = MOTEUR.deduire(MOTEUR.depuisModele(Array.from({ length: 9 }, (_, l) => partie.cases.slice(l * 9, l * 9 + 9).map((c) => (c.revelee ? "o" : c.mine ? "*" : ".")).join(""))), { compterMines: true });
+  if (/Aucune case n'est certaine/.test(message)) {
+    // Parfois rien n'est certain : l'indice doit le dire, sans entourer de case.
+    assert.equal(await jeu(page).locator(".case[data-indice]").count(), 0);
+    assert.equal(deductions.sures.length + deductions.mines.length, 0, "l'indice ne cache aucune certitude");
+  } else {
+    const indice = Number(await jeu(page).locator(".case[data-indice]").getAttribute("data-index"));
+    assert.match(message, /sûre|mine/);
+    assert.equal(partie.cases[indice].mine, /mine/.test(message) && !/sûre/.test(message), "l'indice ne ment jamais");
+    assert.ok([...deductions.sures, ...deductions.mines].includes(indice), "l'indice désigne une certitude");
+  }
   const positions = await mines(page);
   for (let i = 0; i < 81; i++) {
     if (positions.includes(i) || (await caseJeu(page, i).getAttribute("data-etat")) !== "cachee") continue;

@@ -1,0 +1,2484 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-lJjSJoT7kBzAg5K1wn5zoyoXyTcdBZmzUoZuD664sHk=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-6/Y3XISzMf4CBf3qlJbFoPAr/GZqkixCGDZZz0UQRmM=' 'sha256-kDe1KT60XOpIgwZ8bJ9erRc0SvMjQSLl/crAckMGovY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Belote – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "belote",
+  "titre": "Belote",
+  "sujet": "jeux/belote",
+  "version": "1.0.0",
+  "date": "2026-11-04",
+  "langue": "fr",
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
+}
+</script>
+<script type="application/json" id="parcours-belote">
+{
+ "themes": {
+  "bases": "Les bases",
+  "regles": "Les règles du pli",
+  "equipe": "Le jeu d'équipe",
+  "encheres": "Les enchères",
+  "strategie": "La stratégie",
+  "expert": "Le jeu d'expert"
+ },
+ "conseilFinal": "Tu as tout appris ! Gagne une partie au niveau Normal pour prouver que tu es un champion.",
+ "parties": {
+  "niveaux": {
+   "facile": {
+    "nom": "Facile",
+    "xp": {
+     "victoire": 60,
+     "defaite": 10
+    }
+   },
+   "normal": {
+    "nom": "Normal",
+    "xp": {
+     "victoire": 120,
+     "defaite": 15
+    }
+   }
+  }
+ },
+ "badges": [
+  {
+   "id": "arbitre",
+   "icone": "⚖️",
+   "nom": "Arbitre",
+   "description": "Termine toutes les leçons sur les règles du pli.",
+   "condition": {
+    "type": "themes",
+    "themes": [
+     "regles"
+    ]
+   }
+  },
+  {
+   "id": "premiere-victoire",
+   "icone": "🃏",
+   "nom": "Première victoire",
+   "description": "Gagne une partie au niveau Facile.",
+   "condition": {
+    "type": "victoires",
+    "niveau": "facile",
+    "min": 1
+   }
+  },
+  {
+   "id": "victoire-normal",
+   "icone": "🎖️",
+   "nom": "Belotteur confirmé",
+   "description": "Gagne une partie au niveau Normal.",
+   "condition": {
+    "type": "victoires",
+    "niveau": "normal",
+    "min": 1
+   }
+  },
+  {
+   "id": "champion",
+   "icone": "🥇",
+   "nom": "Champion du café",
+   "description": "Gagne 10 parties.",
+   "condition": {
+    "type": "victoires",
+    "min": 10
+   }
+  },
+  {
+   "id": "preneur",
+   "icone": "✋",
+   "nom": "Preneur confiant",
+   "description": "Prends et réussis 5 contrats.",
+   "condition": {
+    "type": "compteur",
+    "nom": "contrats",
+    "min": 5
+   }
+  },
+  {
+   "id": "belote",
+   "icone": "👑",
+   "nom": "Belote et rebelote",
+   "description": "Annonce une belote (roi et dame d'atout).",
+   "condition": {
+    "type": "compteur",
+    "nom": "belotes",
+    "min": 1
+   }
+  },
+  {
+   "id": "capot",
+   "icone": "💥",
+   "nom": "Capot !",
+   "description": "Remporte les 8 plis d'une donne avec ton partenaire.",
+   "condition": {
+    "type": "compteur",
+    "nom": "capots",
+    "min": 1
+   }
+  }
+ ],
+ "grades": [
+  {
+   "id": "apprenti",
+   "nom": "Apprenti",
+   "embleme": "♣",
+   "sousTitre": "Je connais les cartes",
+   "lecons": [
+    {
+     "id": "equipes",
+     "titre": "Les équipes et le sens du jeu",
+     "theme": "bases",
+     "texte": "On joue à quatre, deux contre deux. Ton partenaire est assis en face de toi. Le jeu tourne vers la droite, dans le sens inverse des aiguilles d'une montre.",
+     "retenir": "Partenaire = le joueur d'en face. Le jeu tourne vers la droite. Chaque équipe additionne ses points.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Qui est ton partenaire ?",
+       "choix": [
+        "Le joueur à ta gauche",
+        "Le joueur en face de toi",
+        "Le joueur à ta droite",
+        "Personne : chacun joue pour soi"
+       ],
+       "bonne": 1,
+       "explication": "Ton partenaire est en face : ici, c'est Nord. Est et Ouest jouent ensemble contre vous."
+      },
+      {
+       "type": "qcm",
+       "question": "Dans quel sens tourne le jeu ?",
+       "choix": [
+        "Dans le sens des aiguilles d'une montre",
+        "Dans le sens inverse des aiguilles d'une montre",
+        "Au hasard",
+        "Le gagnant choisit"
+       ],
+       "bonne": 1,
+       "explication": "À la belote, on joue vers la droite : dans le sens inverse des aiguilles d'une montre."
+      }
+     ]
+    },
+    {
+     "id": "force",
+     "titre": "La force des cartes",
+     "theme": "bases",
+     "texte": "Hors atout, l'as est la plus forte carte, puis le 10. À l'atout, tout change : le valet devient la plus forte carte, puis le 9 !",
+     "retenir": "Hors atout : As, 10, Roi, Dame, Valet, 9, 8, 7. À l'atout : Valet, 9, As, 10, Roi, Dame, 8, 7.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Hors atout, quelle carte est la plus forte ?",
+       "choix": [
+        "Le roi",
+        "Le 10",
+        "L'as",
+        "Le valet"
+       ],
+       "bonne": 2,
+       "explication": "Hors atout, l'as bat tout, puis vient le 10."
+      },
+      {
+       "type": "qcm",
+       "question": "À l'atout, quelle carte est la plus forte ?",
+       "choix": [
+        "L'as",
+        "Le valet",
+        "Le roi",
+        "Le 10"
+       ],
+       "bonne": 1,
+       "explication": "À l'atout, le valet est le plus fort, suivi du 9."
+      },
+      {
+       "type": "pli",
+       "atout": "C",
+       "main": [
+        "AP",
+        "7P",
+        "VK",
+        "9T",
+        "8C"
+       ],
+       "pli": [
+        {
+         "joueur": "est",
+         "carte": "RP"
+        },
+        {
+         "joueur": "nord",
+         "carte": "8P"
+        },
+        {
+         "joueur": "ouest",
+         "carte": "DP"
+        }
+       ],
+       "accepte": [
+        "AP"
+       ],
+       "consigne": "On joue pique. Remporte le pli !",
+       "indice": "Hors atout, l'as est la carte la plus forte.",
+       "explication": "Ton as de pique bat le roi : le pli est pour ton équipe."
+      }
+     ]
+    },
+    {
+     "id": "points",
+     "titre": "Les points des cartes",
+     "theme": "bases",
+     "texte": "À la fin de la donne, on compte les points des cartes gagnées. Le valet d'atout vaut 20, le 9 d'atout 14, chaque as 11 et chaque 10 vaut 10.",
+     "retenir": "Atout : Valet 20, 9 14, As 11, 10 10, Roi 4, Dame 3. Hors atout : As 11, 10 10, Roi 4, Dame 3, Valet 2. En tout : 162 avec le dix de der.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Combien vaut le valet d'atout ?",
+       "choix": [
+        "2",
+        "11",
+        "14",
+        "20"
+       ],
+       "bonne": 3,
+       "explication": "20 points : c'est la carte la plus précieuse du jeu."
+      },
+      {
+       "type": "qcm",
+       "question": "Combien de points y a-t-il en tout dans une donne, dix de der compris ?",
+       "choix": [
+        "100",
+        "152",
+        "162",
+        "250"
+       ],
+       "bonne": 2,
+       "explication": "152 points de cartes plus 10 pour le dernier pli : 162 (sans compter la belote)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "joueur",
+   "nom": "Joueur",
+   "embleme": "♦",
+   "sousTitre": "Je respecte les règles",
+   "lecons": [
+    {
+     "id": "fournir",
+     "titre": "Fournir la couleur",
+     "theme": "regles",
+     "texte": "Quand une couleur est demandée, tu dois en jouer une carte si tu en as. C'est obligatoire, même si tu préférerais garder tes cartes !",
+     "retenir": "Tu as la couleur demandée ? Tu dois la fournir.",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "P",
+       "main": [
+        "7K",
+        "RK",
+        "AP",
+        "VC",
+        "8T"
+       ],
+       "pli": [
+        {
+         "joueur": "est",
+         "carte": "10K"
+        },
+        {
+         "joueur": "nord",
+         "carte": "8K"
+        },
+        {
+         "joueur": "ouest",
+         "carte": "9K"
+        }
+       ],
+       "accepte": "jouables",
+       "consigne": "On joue carreau. Joue une carte autorisée.",
+       "indice": "Regarde si tu as du carreau.",
+       "explication": "Tu avais du carreau : tu devais en jouer. Le 7 coûte moins cher que le roi, puisque le 10 de l'adversaire gagne de toute façon."
+      }
+     ]
+    },
+    {
+     "id": "couper",
+     "titre": "Couper",
+     "theme": "regles",
+     "texte": "Si tu n'as pas la couleur demandée et que l'adversaire est maître du pli, tu dois couper : jouer un atout. Un atout bat toutes les autres cartes.",
+     "retenir": "Pas la couleur, adversaire maître → tu dois couper. Un petit atout suffit souvent.",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "C",
+       "main": [
+        "9C",
+        "7C",
+        "RK",
+        "8K",
+        "DP"
+       ],
+       "pli": [
+        {
+         "joueur": "ouest",
+         "carte": "AT"
+        }
+       ],
+       "accepte": [
+        "7C"
+       ],
+       "pieges": {
+        "9C": "Ça coupe aussi… mais tu gaspilles ton 9 d'atout (14 points) : le 7 suffit ici."
+       },
+       "consigne": "Ouest joue l'as de trèfle et tu n'as pas de trèfle. Joue la bonne carte.",
+       "indice": "Tu dois couper, mais avec quel atout ?",
+       "explication": "Bien : tu coupes l'as avec ton plus petit atout et tu gardes le 9 pour plus tard."
+      }
+     ]
+    },
+    {
+     "id": "monter",
+     "titre": "Monter à l'atout",
+     "theme": "regles",
+     "texte": "Quand on joue atout, tu dois fournir à l'atout et, si tu peux, jouer plus fort que l'atout le plus fort du pli. On dit « monter ».",
+     "retenir": "On joue atout : fournis, et monte si tu peux (même sur ton partenaire).",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "C",
+       "main": [
+        "AC",
+        "7C",
+        "VP",
+        "8K"
+       ],
+       "pli": [
+        {
+         "joueur": "est",
+         "carte": "10C"
+        },
+        {
+         "joueur": "nord",
+         "carte": "8C"
+        },
+        {
+         "joueur": "ouest",
+         "carte": "RC"
+        }
+       ],
+       "accepte": "jouables",
+       "consigne": "Est a joué le 10 d'atout. Joue une carte autorisée.",
+       "indice": "À l'atout, l'as est plus fort que le 10.",
+       "explication": "Ton as d'atout bat le 10 : tu étais obligé de monter."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "equipier",
+   "nom": "Équipier",
+   "embleme": "♥",
+   "sousTitre": "Je joue avec mon partenaire",
+   "lecons": [
+    {
+     "id": "partenaire-maitre",
+     "titre": "Le partenaire maître",
+     "theme": "equipe",
+     "texte": "Si ton partenaire gagne déjà le pli et que tu n'as pas la couleur, tu n'es pas obligé de couper. Mieux : donne-lui des points !",
+     "retenir": "Partenaire maître → ne coupe pas, « charge » : donne-lui une carte qui rapporte des points.",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "C",
+       "main": [
+        "10K",
+        "8K",
+        "VC",
+        "RT",
+        "7T"
+       ],
+       "pli": [
+        {
+         "joueur": "est",
+         "carte": "7P"
+        },
+        {
+         "joueur": "nord",
+         "carte": "AP"
+        },
+        {
+         "joueur": "ouest",
+         "carte": "8P"
+        }
+       ],
+       "accepte": [
+        "10K"
+       ],
+       "pieges": {
+        "VC": "Inutile de couper : ton partenaire gagne déjà ! Garde ton valet d'atout.",
+        "7T": "Ce n'est pas interdit, mais tu peux faire mieux : donne des points à ton partenaire.",
+        "8K": "Ce n'est pas interdit, mais tu peux faire mieux : donne des points à ton partenaire.",
+        "RT": "Pas mal (4 points), mais il y a mieux à donner."
+       },
+       "consigne": "Ton partenaire Nord gagne le pli avec l'as de pique, et tu joues en dernier. Que joues-tu ?",
+       "indice": "Quelle carte de ta main rapporte le plus de points sans être un atout ?",
+       "explication": "Bravo : tu « charges » ton partenaire avec ton 10, soit 10 points de plus pour ton équipe."
+      }
+     ]
+    },
+    {
+     "id": "prendre",
+     "titre": "Prendre ou passer",
+     "theme": "encheres",
+     "texte": "Au premier tour, on regarde la carte retournée : si on la prend, sa couleur devient l'atout. Il faut des atouts forts (valet, 9) et quelques as pour réussir son contrat.",
+     "retenir": "Prends avec le valet ou le 9 d'atout, au moins 3 atouts (carte retournée comprise) et un as à côté. Sinon, passe.",
+     "exercices": [
+      {
+       "type": "enchere",
+       "tour": 1,
+       "main": [
+        "VC",
+        "9C",
+        "AP",
+        "10T",
+        "7K"
+       ],
+       "retournee": "AC",
+       "accepte": [
+        "prendre"
+       ],
+       "consigne": "La carte retournée est l'as de cœur. Prends-tu ?",
+       "indice": "Compte tes atouts à cœur avec la carte retournée, et regarde les plus forts.",
+       "explication": "Valet, 9 et as d'atout, et un as à côté : c'est une main de preneur."
+      },
+      {
+       "type": "enchere",
+       "tour": 1,
+       "main": [
+        "7C",
+        "8P",
+        "DT",
+        "9K",
+        "8K"
+       ],
+       "retournee": "RC",
+       "accepte": [
+        "passer"
+       ],
+       "consigne": "La carte retournée est le roi de cœur. Prends-tu ?",
+       "indice": "As-tu le valet ou le 9 d'atout ? Et des as ?",
+       "explication": "Aucun gros atout, aucun as : prendre serait trop risqué. On passe."
+      }
+     ]
+    },
+    {
+     "id": "second-tour",
+     "titre": "Choisir l'atout au second tour",
+     "theme": "encheres",
+     "texte": "Si tout le monde a passé, il y a un second tour : chacun peut choisir une autre couleur d'atout que celle de la carte retournée.",
+     "retenir": "Au second tour, choisis la couleur où tu as le valet, le 9 et des cartes, et prends seulement si ta main est forte.",
+     "exercices": [
+      {
+       "type": "enchere",
+       "tour": 2,
+       "main": [
+        "VK",
+        "9K",
+        "AK",
+        "7P",
+        "DC"
+       ],
+       "retournee": "8T",
+       "accepte": [
+        "K"
+       ],
+       "consigne": "Second tour : la carte retournée (8 de trèfle) a été refusée. Choisis un atout, ou passe.",
+       "indice": "Dans quelle couleur as-tu le valet et le 9 ?",
+       "explication": "Valet, 9 et as de carreau : carreau est l'atout idéal."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stratege",
+   "nom": "Stratège",
+   "embleme": "♠",
+   "sousTitre": "Je calcule",
+   "lecons": [
+    {
+     "id": "tomber-atouts",
+     "titre": "Faire tomber les atouts",
+     "theme": "strategie",
+     "texte": "Quand ton équipe a pris, commence par jouer tes gros atouts : les adversaires doivent fournir leurs atouts, et ils ne pourront plus couper tes as.",
+     "retenir": "Preneur : fais d'abord tomber les atouts adverses avec ton valet et ton 9, puis encaisse tes as.",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "P",
+       "main": [
+        "VP",
+        "9P",
+        "AP",
+        "10C",
+        "7K",
+        "8T"
+       ],
+       "pli": [],
+       "preneur": "sud",
+       "accepte": [
+        "VP"
+       ],
+       "pieges": {
+        "10C": "Ton 10 risque d'être coupé : fais d'abord tomber les atouts adverses !",
+        "7K": "Ce n'est pas faux, mais le preneur doit d'abord faire tomber les atouts.",
+        "8T": "Ce n'est pas faux, mais le preneur doit d'abord faire tomber les atouts.",
+        "9P": "Bonne idée de jouer atout ! Mais commence par le valet, la carte maîtresse : sinon ton 9 risque de tomber sous le valet adverse.",
+        "AP": "Bonne idée de jouer atout ! Mais commence par le valet, la carte maîtresse."
+       },
+       "consigne": "Tu as pris à pique et tu commences. Que joues-tu ?",
+       "indice": "Quel est l'atout le plus fort ?",
+       "explication": "Valet d'atout : personne ne peut le battre, et les adversaires doivent fournir leurs atouts."
+      }
+     ]
+    },
+    {
+     "id": "economiser",
+     "titre": "Ne pas gâcher ses points",
+     "theme": "strategie",
+     "texte": "Quand tu ne peux pas gagner le pli et que l'adversaire est maître, joue ta plus petite carte : ne lui offre pas de points.",
+     "retenir": "Adversaire maître et tu ne peux pas gagner → joue petit (« pisse » une carte sans valeur).",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "T",
+       "main": [
+        "10K",
+        "9K",
+        "VT",
+        "AP"
+       ],
+       "pli": [
+        {
+         "joueur": "est",
+         "carte": "AK"
+        },
+        {
+         "joueur": "nord",
+         "carte": "7K"
+        },
+        {
+         "joueur": "ouest",
+         "carte": "8K"
+        }
+       ],
+       "accepte": [
+        "9K"
+       ],
+       "pieges": {
+        "10K": "Tu offres 10 points à l'adversaire ! Garde ton 10 pour plus tard."
+       },
+       "consigne": "Est gagne avec l'as de carreau. Que joues-tu ?",
+       "indice": "Tu dois fournir à carreau. Laquelle de tes cartes de carreau vaut 0 point ?",
+       "explication": "Ton 9 de carreau ne vaut rien hors atout : l'adversaire ne gagne aucun point de plus."
+      }
+     ]
+    },
+    {
+     "id": "belote-der",
+     "titre": "Belote, rebelote et dix de der",
+     "theme": "strategie",
+     "texte": "Le joueur qui a le roi et la dame d'atout dit « belote » en jouant le premier, puis « rebelote » avec le second : 20 points pour son équipe. Le dernier pli rapporte 10 points de plus : le « dix de der ».",
+     "retenir": "Belote-rebelote (roi + dame d'atout) = 20 points. Dernier pli = 10 points (dix de der).",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Qu'est-ce que la belote ?",
+       "choix": [
+        "Le roi et la dame d'atout dans la même main",
+        "Deux valets",
+        "Le dernier pli",
+        "Quatre as"
+       ],
+       "bonne": 0,
+       "explication": "Roi et dame d'atout dans la même main : 20 points, même si l'équipe perd son contrat."
+      },
+      {
+       "type": "qcm",
+       "question": "Combien rapporte le dernier pli de la donne, en plus de ses cartes ?",
+       "choix": [
+        "Rien",
+        "10 points",
+        "20 points",
+        "50 points"
+       ],
+       "bonne": 1,
+       "explication": "C'est le dix de der : 10 points pour l'équipe qui remporte le dernier pli."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "champion",
+   "nom": "Champion",
+   "embleme": "👑",
+   "sousTitre": "Je joue comme un pro",
+   "lecons": [
+    {
+     "id": "contrat",
+     "titre": "Le contrat",
+     "theme": "expert",
+     "texte": "L'équipe qui prend doit marquer plus de points que l'autre. Sinon elle est « dedans » et la défense marque tout : 162 points. Si une équipe gagne les 8 plis, c'est un capot : 250 points !",
+     "retenir": "Preneur : faire plus que la défense. Dedans : la défense marque 162. Capot (8 plis) : 250.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Ton équipe a pris et marque 70 points contre 92. Que se passe-t-il ?",
+       "choix": [
+        "Vous marquez 70",
+        "Vous êtes dedans : la défense marque 162",
+        "On rejoue la donne",
+        "Personne ne marque"
+       ],
+       "bonne": 1,
+       "explication": "Moins que la défense : vous êtes dedans, la défense marque les 162 points."
+      },
+      {
+       "type": "qcm",
+       "question": "Que vaut un capot ?",
+       "choix": [
+        "162 points",
+        "200 points",
+        "250 points",
+        "500 points"
+       ],
+       "bonne": 2,
+       "explication": "Gagner les 8 plis rapporte 250 points (plus la belote si on l'a)."
+      }
+     ]
+    },
+    {
+     "id": "maitresse",
+     "titre": "La carte maîtresse",
+     "theme": "expert",
+     "texte": "Une carte est maîtresse quand aucune carte plus forte de sa couleur ne reste en jeu. Pour le savoir, il faut se souvenir des cartes tombées.",
+     "retenir": "Retiens les as et les 10 tombés : quand l'as d'une couleur est tombé, le 10 devient maître.",
+     "exercices": [
+      {
+       "type": "pli",
+       "atout": "C",
+       "main": [
+        "10P",
+        "7P",
+        "8K",
+        "9T"
+       ],
+       "pli": [],
+       "tombees": [
+        "AP",
+        "VC",
+        "9C",
+        "AC",
+        "10C",
+        "RC",
+        "DC",
+        "8C",
+        "7C"
+       ],
+       "accepte": [
+        "10P"
+       ],
+       "pieges": {
+        "7P": "Pas faux, mais tu as une carte maîtresse à encaisser !",
+        "8K": "Pas faux, mais tu as une carte maîtresse à encaisser !",
+        "9T": "Pas faux, mais tu as une carte maîtresse à encaisser !"
+       },
+       "consigne": "Tous les atouts et l'as de pique sont tombés. Tu commences : que joues-tu ?",
+       "indice": "L'as de pique est tombé : quelle est maintenant la plus forte carte à pique ?",
+       "explication": "L'as de pique est tombé et il n'y a plus d'atout : ton 10 de pique est maître, il rapporte 10 points à coup sûr."
+      }
+     ]
+    },
+    {
+     "id": "compter-atouts",
+     "titre": "Compter les atouts",
+     "theme": "expert",
+     "texte": "Il y a 8 atouts dans le jeu. Les champions les comptent à mesure qu'ils tombent : ils savent ainsi quand les adversaires n'en ont plus.",
+     "retenir": "8 atouts en tout : compte ceux qui tombent et ceux que tu as. Le reste est chez les autres.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "5 atouts sont tombés et tu en as 2. Combien en reste-t-il chez les autres joueurs ?",
+       "choix": [
+        "0",
+        "1",
+        "2",
+        "3"
+       ],
+       "bonne": 1,
+       "explication": "8 − 5 − 2 = 1 : il reste un seul atout chez les autres."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+  :root {
+    --fond: #fbfaf7; --surface: #ffffff; --texte: #1d2330; --doux: #5a6272;
+    --accent: #1f5fbf; --accent-texte: #ffffff; --bord: #d9dce3;
+    --succes: #15803d; --alerte: #b91c1c;
+    --tapis: #1f6f4a; --tapis-bord: #155238; --carte: #ffffff; --carte-texte: #1d2330; --rouge: #c0262d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #14171d; --surface: #1d2129; --texte: #e8eaef; --doux: #a3aab8;
+      --accent: #7fb0ff; --accent-texte: #0b1220; --bord: #343a46;
+      --succes: #4ade80; --alerte: #f87171;
+      --tapis: #17533a; --tapis-bord: #0f3b29;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--fond); color: var(--texte); }
+  header { padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 980px; margin: 0 auto; }
+  header h1 { font-size: 1.25rem; margin: 0; }
+  .meta { color: var(--doux); font-size: .8rem; }
+  #connexion[hidden] { display: none; }
+  [role="tablist"] { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; max-width: 980px; margin: 0 auto; border-bottom: 1px solid var(--bord); }
+  [role="tab"] { flex: 0 0 auto; padding: 10px 14px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+  [role="tab"][aria-selected="true"] { color: var(--texte); border-bottom-color: var(--accent); font-weight: 600; }
+  [role="tab"]:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  main { max-width: 980px; margin: 0 auto; padding: 16px; }
+  [role="tabpanel"][hidden] { display: none; }
+  [role="tabpanel"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  h2 { font-size: 1.05rem; margin: 18px 0 6px; }
+  .carte { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+  .carte > h2:first-child { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--bord); vertical-align: top; }
+  button.action, button.secondaire { border-radius: 8px; padding: 9px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.action { background: var(--accent); color: var(--accent-texte); border: 2px solid var(--accent); }
+  button.secondaire { background: var(--surface); color: var(--texte); border: 2px solid var(--bord); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
+  .message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+  .doux { color: var(--doux); }
+
+  /* ---------- Réglages ---------- */
+  .reglages { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 10px; }
+  .choix { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .choix legend { padding: 0; margin-bottom: 4px; font-weight: 600; width: 100%; font-size: .9rem; }
+  .choix label { position: relative; padding: 5px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; }
+  .choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .choix label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+  .choix label:has(input:checked)::before { content: "✓ "; color: var(--accent); }
+  .choix label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Cartes ---------- */
+  .carte-jeu { width: 54px; height: 78px; flex: 0 0 auto; display: inline-flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 4px 3px;
+    border: 1px solid #9aa3b2; border-radius: 7px; background: var(--carte); color: var(--carte-texte); font: 700 1.05rem/1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+  .carte-jeu .symbole { font-size: 1.7rem; }
+  .carte-jeu .petit { font-size: .85rem; align-self: flex-end; }
+  .carte-jeu.rouge { color: var(--rouge); }
+  .carte-jeu.atout { box-shadow: 0 0 0 3px #f5b301, 0 1px 2px rgba(0,0,0,.25); }
+  button.carte-jeu { cursor: pointer; transition: transform .12s; }
+  button.carte-jeu:hover:not(:disabled) { transform: translateY(-4px); }
+  button.carte-jeu:disabled { opacity: .45; cursor: not-allowed; }
+  button.carte-jeu[data-conseil] { outline: 4px dashed var(--accent); outline-offset: 2px; }
+  .main-joueur { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; min-height: 84px; padding: 4px 0; }
+  [data-cartes] { display: flex; flex-wrap: nowrap; padding-right: 14px; }
+  .dos { display: inline-block; flex: 0 0 auto; width: 26px; height: 36px; border-radius: 4px; background: repeating-linear-gradient(45deg, #2b4c8c, #2b4c8c 4px, #3c63ad 4px, #3c63ad 8px); border: 1px solid #f8fafc; margin-right: -14px; }
+
+  /* ---------- Table ---------- */
+  .scores { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 8px; }
+  .scores li { border: 1px solid var(--bord); border-radius: 8px; padding: 4px 10px; background: var(--surface); font-size: .92rem; }
+  .scores b { font-variant-numeric: tabular-nums; }
+  .table-jeu { display: grid; grid-template-columns: 1fr 2.2fr 1fr; grid-template-rows: auto 1fr auto; gap: 6px; background: var(--tapis); border: 4px solid var(--tapis-bord);
+    border-radius: 16px; padding: 10px; color: #f8fafc; min-height: 280px; }
+  .place { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-weight: 600; font-size: .9rem; text-align: center; }
+  .place[data-place="nord"] { grid-column: 2; grid-row: 1; }
+  .place[data-place="ouest"] { grid-column: 1; grid-row: 2; }
+  .place[data-place="est"] { grid-column: 3; grid-row: 2; }
+  .place[data-place="sud"] { grid-column: 2; grid-row: 3; }
+  .place[data-actif] .nom { background: #f5b301; color: #1d2330; border-radius: 999px; padding: 0 8px; }
+  .place .bulle { min-height: 1.3em; font-size: .8rem; font-weight: 500; color: #e2f5ea; }
+  .tapis { grid-column: 2; grid-row: 2; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, auto); place-items: center; gap: 2px; min-height: 200px; }
+  .tapis [data-place="nord"] { grid-column: 2; grid-row: 1; } .tapis [data-place="ouest"] { grid-column: 1; grid-row: 2; }
+  .tapis [data-place="est"] { grid-column: 3; grid-row: 2; } .tapis [data-place="sud"] { grid-column: 2; grid-row: 3; }
+  .tapis .centre { grid-column: 2; grid-row: 2; font-size: .85rem; text-align: center; }
+  .encheres { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 8px 0; }
+  .encheres[hidden], .bilan[hidden] { display: none; }
+  .regle { min-height: 1.4em; font-size: .9rem; color: var(--doux); text-align: center; margin: 4px 0; }
+  .commandes-jeu { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 8px 0; }
+  .bilan table td:last-child, .bilan table th:last-child { text-align: right; }
+
+  /* ---------- Compteur (mise en situation) et exercices ---------- */
+  .pli-exercice { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin: 6px 0 10px; }
+  .pli-exercice figure { margin: 0; display: grid; justify-items: center; gap: 2px; font-size: .8rem; color: var(--doux); }
+  .infos { font-size: .9rem; margin: 4px 0; }
+  .choix-boutons { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+  .champ-nombre { font: inherit; width: 6em; padding: 6px 8px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); color: var(--texte); }
+
+  footer { max-width: 980px; margin: 0 auto; padding: 16px; color: var(--doux); font-size: .8rem; }
+  @media (max-width: 560px) {
+    main { padding: 12px 8px; }
+    .carte-jeu { width: 40px; height: 58px; font-size: .9rem; padding: 3px 2px; }
+    .carte-jeu .symbole { font-size: 1.25rem; }
+    .table-jeu { grid-template-columns: .8fr 2.4fr .8fr; padding: 6px; }
+    .tapis { min-height: 170px; }
+    .dos { width: 16px; height: 26px; margin-right: -9px; }
+    [data-cartes] { padding-right: 9px; }
+    th, td { padding: 5px 4px; }
+  }
+</style>
+<style data-inclure="gabarit/jeux/academie.css">
+/* Styles communs de l'Académie des jeux (ADR 0015). Utilise les variables de couleur de chaque page :
+   --fond, --surface, --texte, --doux, --accent, --accent-texte, --bord, --succes, --alerte. */
+.doux { color: var(--doux); }
+/* « hidden » l'emporte toujours sur les règles d'affichage (grilles, listes) de l'Académie. */
+.toast[hidden], [data-vue][hidden], [data-vue] [hidden] { display: none !important; }
+.toast { margin: 0 0 10px; font-weight: 700; color: var(--succes); }
+.toast:empty { display: none; }
+.toast:not(:empty) { padding: 8px 12px; border: 2px solid var(--succes); border-radius: 8px; background: var(--surface); }
+.boutons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+button.lien { background: none; border: 0; padding: 4px 0; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+button.danger { border-color: var(--alerte); color: var(--alerte); }
+.barre { height: 12px; border-radius: 6px; background: var(--bord); overflow: hidden; margin: 4px 0; }
+.barre span { display: block; height: 100%; background: var(--accent); border-radius: 6px; transition: width .4s; }
+/* Synthèse */
+.synthese-tete { display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; align-items: center; }
+.synthese-embleme { font-size: 2.6rem; line-height: 1; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; background: var(--fond); border: 2px solid var(--bord); }
+.synthese-identite h2 { margin: 0; }
+.synthese-identite p { margin: 0; font-size: .9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 10px 0 0; }
+.chips li { border: 1px solid var(--bord); border-radius: 999px; padding: 3px 10px; font-size: .9rem; background: var(--fond); }
+.conseil { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--fond); border: 1px solid var(--bord); }
+.conseil-titre { margin: 0; font-weight: 700; }
+.conseil-texte { margin: 4px 0 0; }
+.prochain-badge { margin: 10px 0 0; font-size: .9rem; }
+@media (max-width: 560px) { .synthese-tete { grid-template-columns: auto 1fr; } .synthese-tete button.lien { grid-column: 1 / -1; justify-self: start; } }
+/* Parcours */
+.parcours { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+.grade { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 10px 12px; }
+.grade.verrouille { opacity: .7; }
+.grade-entete { display: flex; align-items: center; gap: 10px; }
+.grade-embleme { font-size: 1.8rem; line-height: 1; }
+.grade-entete h3 { margin: 0; font-size: 1rem; }
+.grade-entete p { margin: 0; font-size: .85rem; }
+.grade-etat { margin-left: auto; font-size: .85rem; font-weight: 600; text-align: right; }
+.lecons { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; }
+.lecon { width: 100%; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 0 6px; padding: 8px 10px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+.lecon:disabled { cursor: not-allowed; opacity: .6; }
+.lecon.faite { border-color: var(--succes); }
+.lecon-titre { font-weight: 600; }
+.lecon-theme { grid-row: 2; font-size: .8rem; color: var(--doux); }
+.lecon-etoiles { grid-row: 1 / 3; grid-column: 2; align-self: center; color: #b45309; font-size: .95rem; letter-spacing: 1px; }
+/* Page détaillée */
+.detail-section h3 { margin: 0 0 6px; font-size: 1rem; }
+.detail-section details summary { cursor: pointer; font-weight: 600; margin-top: 6px; }
+.regles-xp { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: 6px; }
+.regles-xp td { padding: 4px 6px; border-top: 1px solid var(--bord); }
+.regles-xp td:last-child { text-align: right; font-weight: 700; white-space: nowrap; }
+.grades-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.grades-liste li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--bord); }
+.grades-liste li.obtenu { border-color: var(--succes); }
+.grades-liste li.en-cours { border-color: var(--accent); }
+.grades-liste li.verrouille { opacity: .65; }
+.carnet, .badges, .forces, .parties { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+.carnet p { margin: 2px 0 0; }
+.badges { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+.badges li { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; align-content: start; padding: 8px; border-radius: 8px; border: 1px solid var(--bord); }
+.badges li.obtenu { border-color: var(--succes); }
+.badges li.verrouille { opacity: .75; }
+.badges li .barre { grid-column: 2; height: 8px; }
+.badge-icone { grid-row: 1 / 4; font-size: 1.6rem; }
+.badges .doux { font-size: .85rem; }
+.activite { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; max-width: 420px; }
+.activite li { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; border-radius: 8px; border: 1px solid var(--bord); font-size: .8rem; }
+.activite li.actif { border-color: var(--accent); }
+.activite li.atteint { border-color: var(--succes); background: var(--surface); font-weight: 700; }
+.activite .compte { font-size: 1rem; }
+.forces li { display: grid; grid-template-columns: 10em 1fr; gap: 8px; align-items: center; }
+.jauge { position: relative; height: 18px; border-radius: 9px; background: var(--bord); overflow: hidden; }
+.jauge span { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
+.jauge b { position: relative; font-size: .8rem; padding-left: 6px; color: var(--texte); }
+.emblemes { display: flex; flex-wrap: wrap; gap: 6px; }
+.emblemes label { font-size: 1.5rem; line-height: 1.2; }
+.emblemes label.verrouille { opacity: .45; cursor: not-allowed; }
+.emblemes label.verrouille::after { content: "🔒"; font-size: .8rem; vertical-align: top; }
+.case-a-cocher { display: flex; gap: 8px; align-items: center; cursor: pointer; margin: 8px 0; }
+/* Séance */
+.fil { margin: 10px 0 0; font-size: .85rem; }
+.a-retenir { border-left: 4px solid var(--accent); background: var(--surface); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-bottom: 12px; }
+.a-retenir p { margin: 4px 0 0; }
+.consigne { font-weight: 600; }
+.zone-exercice { max-width: 420px; margin: 8px 0; }
+.qcm { list-style: none; padding: 0; display: grid; gap: 6px; }
+.choix-qcm { width: 100%; text-align: left; padding: 10px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+.choix-qcm[data-etat="juste"] { border-color: var(--succes); color: var(--succes); font-weight: 700; opacity: 1; }
+.choix-qcm[data-etat="faux"] { border-color: var(--alerte); color: var(--alerte); text-decoration: line-through; }
+.bilan h2 { font-size: 1.3rem; }
+@media (max-width: 480px) { .forces li { grid-template-columns: 7em 1fr; } }
+/* Choix en boutons (réglages), autonomes : chaque page n'a pas forcément ces styles. */
+.detail-section .choix { border: 0; padding: 0; margin: 10px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.detail-section .choix legend { padding: 0; margin-bottom: 4px; font-weight: 600; width: 100%; font-size: .9rem; }
+.detail-section .choix label { position: relative; padding: 5px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; }
+.detail-section .choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.detail-section .choix label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+.detail-section .choix label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+.message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
+.message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Belote</h1>
+    <div class="meta">belote · v1.0.0</div>
+  </div>
+  <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+</header>
+<nav role="tablist" aria-label="Onglets de la page" id="onglets"></nav>
+<main id="panneaux"></main>
+<footer>Kermiclab · page autonome, lisible hors ligne. Aucune donnée n'est envoyée : ta progression reste sur ton appareil. Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</footer>
+
+<template id="tpl-explication">
+  <p>La belote se joue à <strong>quatre, deux contre deux</strong>, avec 32 cartes (du 7 à l'as). Ton partenaire est en face de toi. Le but : marquer le plus de points avec ton équipe, donne après donne, jusqu'à 501 (ou 1001) points.</p>
+  <div class="carte">
+    <h2>Déroulement d'une donne</h2>
+    <ol>
+      <li><strong>Distribution</strong> : 5 cartes chacun, puis une carte est retournée au milieu.</li>
+      <li><strong>Enchères</strong> : chacun à son tour dit « je prends » (la couleur de la carte retournée devient l'atout) ou « je passe ». Si tout le monde passe, un second tour permet de choisir une autre couleur. Si tout le monde passe encore, on redistribue.</li>
+      <li>Le <strong>preneur</strong> reçoit la carte retournée et 2 cartes, les autres 3 : chacun a 8 cartes.</li>
+      <li><strong>Les 8 plis</strong> : chacun pose une carte à son tour. La plus forte carte remporte le pli, et son joueur commence le pli suivant.</li>
+    </ol>
+  </div>
+  <div class="carte">
+    <h2>Les obligations</h2>
+    <ul>
+      <li><strong>Fournir</strong> : si tu as la couleur demandée, tu dois la jouer.</li>
+      <li><strong>Couper</strong> : si tu ne l'as pas et que l'adversaire est maître, tu dois jouer atout (et <strong>surcouper</strong> s'il a déjà coupé et que tu peux).</li>
+      <li><strong>Monter à l'atout</strong> : quand on joue atout, tu dois jouer plus fort que l'atout le plus fort du pli si tu peux.</li>
+      <li><strong>Partenaire maître</strong> : si ton partenaire gagne le pli et que tu n'as pas la couleur, tu joues ce que tu veux.</li>
+    </ul>
+  </div>
+  <div class="carte">
+    <h2>Valeur des cartes</h2>
+    <table>
+      <thead><tr><th scope="col">Carte</th><th scope="col">À l'atout</th><th scope="col">Hors atout</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Valet</th><td>20 (la plus forte)</td><td>2</td></tr>
+        <tr><th scope="row">9</th><td>14</td><td>0</td></tr>
+        <tr><th scope="row">As</th><td>11</td><td>11 (la plus forte)</td></tr>
+        <tr><th scope="row">10</th><td>10</td><td>10</td></tr>
+        <tr><th scope="row">Roi</th><td>4</td><td>4</td></tr>
+        <tr><th scope="row">Dame</th><td>3</td><td>3</td></tr>
+        <tr><th scope="row">8 et 7</th><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+    <p>Ordre à l'atout : Valet, 9, As, 10, Roi, Dame, 8, 7. Hors atout : As, 10, Roi, Dame, Valet, 9, 8, 7.</p>
+  </div>
+  <div class="carte">
+    <h2>Le décompte</h2>
+    <p>Une donne vaut <strong>162 points</strong> : 152 en cartes et 10 pour le dernier pli (le <strong>dix de der</strong>). Le roi et la dame d'atout dans la même main font la <strong>belote-rebelote</strong> : 20 points de plus.</p>
+    <p>L'équipe qui a pris doit marquer <strong>plus de points que l'autre</strong>. Sinon, elle est <strong>dedans</strong> : la défense marque 162 points. Une équipe qui gagne les 8 plis fait <strong>capot</strong> : 250 points. Sur cette page, en cas d'égalité, le preneur est dedans, et on joue sans annonces (tierce, cinquante…) hormis la belote.</p>
+  </div>
+  <div class="carte">
+    <h2>Les commandes</h2>
+    <p>Touche (ou clique) une carte de ta main pour la jouer : seules les cartes autorisées sont actives, et la règle qui s'applique est écrite au-dessus. Au clavier, <kbd>Tab</kbd> passe d'une carte à l'autre et <kbd>Entrée</kbd> la joue. Le bouton <strong>💡 Conseil</strong> montre la carte que l'ordinateur jouerait à ta place.</p>
+  </div>
+</template>
+
+<template id="tpl-application">
+  <div class="reglages">
+    <fieldset class="choix"><legend>Adversaires</legend>
+      <label><input type="radio" name="niveau" value="facile">Facile</label>
+      <label><input type="radio" name="niveau" value="normal">Normal</label>
+    </fieldset>
+    <fieldset class="choix"><legend>Partie en</legend>
+      <label><input type="radio" name="objectif" value="501">501 points</label>
+      <label><input type="radio" name="objectif" value="1001">1001 points</label>
+    </fieldset>
+    <fieldset class="choix"><legend>Vitesse</legend>
+      <label><input type="radio" name="vitesse" value="normale">Normale</label>
+      <label><input type="radio" name="vitesse" value="rapide">Rapide</label>
+    </fieldset>
+  </div>
+  <ul class="scores" data-sortie="scores" aria-label="Scores"></ul>
+  <div class="table-jeu" data-zone="table">
+    <div class="place" data-place="nord"><span class="nom">Nord (partenaire)</span><span data-cartes="nord"></span><span class="bulle" data-bulle="nord"></span></div>
+    <div class="place" data-place="ouest"><span class="nom">Ouest</span><span data-cartes="ouest"></span><span class="bulle" data-bulle="ouest"></span></div>
+    <div class="tapis" data-zone="tapis" aria-label="Cartes sur la table" role="group"></div>
+    <div class="place" data-place="est"><span class="nom">Est</span><span data-cartes="est"></span><span class="bulle" data-bulle="est"></span></div>
+    <div class="place" data-place="sud"><span class="nom">Toi</span><span class="bulle" data-bulle="sud"></span></div>
+  </div>
+  <p class="message" data-sortie="message" role="status" aria-live="polite"></p>
+  <div class="encheres" data-zone="encheres" hidden></div>
+  <p class="regle" data-sortie="regle"></p>
+  <div class="main-joueur" data-zone="main" role="group" aria-label="Ta main"></div>
+  <div class="commandes-jeu">
+    <button class="secondaire" type="button" data-action="conseil">💡 Conseil</button>
+    <button class="secondaire" type="button" data-action="nouvelle-partie">Nouvelle partie</button>
+  </div>
+  <div class="carte bilan" data-zone="bilan" hidden>
+    <h2 data-sortie="bilan-titre" tabindex="-1"></h2>
+    <table data-sortie="bilan-table"></table>
+    <p data-sortie="bilan-texte"></p>
+    <button class="action" type="button" data-action="donne-suivante">Donne suivante</button>
+  </div>
+</template>
+
+<template id="tpl-mise-en-situation">
+  <p><strong>Le compteur</strong> : voici un vrai pli, joué par l'ordinateur. Qui le remporte, et combien de points rapporte-t-il ? Enchaîne les bonnes réponses !</p>
+  <div class="carte">
+    <p class="infos" data-sortie="atout"></p>
+    <div class="pli-exercice" data-zone="pli"></div>
+    <p><strong>1. Qui remporte le pli ?</strong></p>
+    <div class="choix-boutons" data-zone="gagnant"></div>
+    <p><label for="compteur-points"><strong>2. Combien de points vaut ce pli ?</strong></label></p>
+    <div class="choix-boutons"><input id="compteur-points" class="champ-nombre" type="number" min="0" max="162" inputmode="numeric" data-zone="points"><button class="action" type="button" data-action="valider">Valider</button></div>
+    <p class="message" data-sortie="retour" role="status" aria-live="polite"></p>
+    <p class="doux" data-sortie="serie"></p>
+    <button class="secondaire" type="button" data-action="autre">Un autre pli</button>
+  </div>
+</template>
+
+<script id="moteur-belote">
+/* Moteur de la belote : cartes, donne, enchères, cartes jouables, plis, décompte, partie et ordinateur. Pur, sans DOM. */
+const MoteurBelote = (() => {
+  "use strict";
+  // Une carte = rang + couleur : « VC » valet de cœur, « 10P » dix de pique. P pique, C cœur, K carreau, T trèfle.
+  const COULEURS = Object.freeze(["P", "C", "K", "T"]);
+  const SYMBOLES = Object.freeze({ P: "♠", C: "♥", K: "♦", T: "♣" });
+  const NOMS_COULEURS = Object.freeze({ P: "pique", C: "cœur", K: "carreau", T: "trèfle" });
+  const RANGS = Object.freeze(["7", "8", "9", "10", "V", "D", "R", "A"]);
+  const NOMS_RANGS = Object.freeze({ 7: "7", 8: "8", 9: "9", 10: "10", V: "valet", D: "dame", R: "roi", A: "as" });
+  const ORDRE_ATOUT = Object.freeze(["7", "8", "D", "R", "10", "A", "9", "V"]); // du plus faible au plus fort
+  const ORDRE_NORMAL = Object.freeze(["7", "8", "9", "V", "D", "R", "10", "A"]);
+  const POINTS_ATOUT = Object.freeze({ V: 20, 9: 14, A: 11, 10: 10, R: 4, D: 3, 8: 0, 7: 0 });
+  const POINTS_NORMAL = Object.freeze({ A: 11, 10: 10, R: 4, D: 3, V: 2, 9: 0, 8: 0, 7: 0 });
+  // Le jeu tourne dans le sens inverse des aiguilles d'une montre : Sud, Est, Nord, Ouest. Sud et Nord sont partenaires.
+  const JOUEURS = Object.freeze(["sud", "est", "nord", "ouest"]);
+  const NOMS_JOUEURS = Object.freeze({ sud: "Toi", est: "Est", nord: "Nord", ouest: "Ouest" });
+  const EQUIPES = Object.freeze({ NS: "Nous (Sud et Nord)", EO: "Eux (Est et Ouest)" });
+
+  const couleur = (c) => c.slice(-1);
+  const rang = (c) => c.slice(0, -1);
+  const estCarte = (c) => typeof c === "string" && /^(7|8|9|10|V|D|R|A)[PCKT]$/.test(c);
+  const nomCarte = (c) => `${NOMS_RANGS[rang(c)]} de ${NOMS_COULEURS[couleur(c)]}`;
+  const texteCarte = (c) => `${rang(c)}${SYMBOLES[couleur(c)]}`;
+  const equipe = (j) => (j === "sud" || j === "nord" ? "NS" : "EO");
+  const adverse = (e) => (e === "NS" ? "EO" : "NS");
+  const partenaire = (j) => ({ sud: "nord", nord: "sud", est: "ouest", ouest: "est" })[j];
+  const suivant = (j) => JOUEURS[(JOUEURS.indexOf(j) + 1) % 4];
+  const copie = (x) => JSON.parse(JSON.stringify(x));
+
+  /* ---------- Cartes ---------- */
+  const paquet = () => COULEURS.flatMap((c) => RANGS.map((r) => r + c));
+  function melanger(cartes, hasard = Math.random) {
+    const t = cartes.slice();
+    for (let i = t.length - 1; i > 0; i--) { const j = Math.min(i, Math.floor(hasard() * (i + 1))); [t[i], t[j]] = [t[j], t[i]]; }
+    return t;
+  }
+  const pointsCarte = (c, atout) => (couleur(c) === atout ? POINTS_ATOUT : POINTS_NORMAL)[rang(c)];
+  /** Force d'une carte dans un pli : un atout bat tout, sinon seule la couleur demandée compte. */
+  function force(c, atout, demandee) {
+    if (couleur(c) === atout) return 100 + ORDRE_ATOUT.indexOf(rang(c));
+    return couleur(c) === demandee ? ORDRE_NORMAL.indexOf(rang(c)) : -1;
+  }
+  /** Indice, dans le pli, de la carte qui le remporte pour l'instant. */
+  function gagnantPli(pli, atout) {
+    const demandee = couleur(pli[0].carte);
+    let meilleur = 0;
+    pli.forEach((p, i) => { if (force(p.carte, atout, demandee) > force(pli[meilleur].carte, atout, demandee)) meilleur = i; });
+    return meilleur;
+  }
+  const pointsPli = (pli, atout) => pli.reduce((s, p) => s + pointsCarte(p.carte, atout), 0);
+  /** Trie une main pour l'affichage : par couleur, atout en premier, puis de la plus faible à la plus forte. */
+  function trierMain(main, atout = null) {
+    const ordreC = atout ? [atout, ...COULEURS.filter((c) => c !== atout)] : COULEURS;
+    return main.slice().sort((a, b) => ordreC.indexOf(couleur(a)) - ordreC.indexOf(couleur(b))
+      || (couleur(a) === atout ? ORDRE_ATOUT : ORDRE_NORMAL).indexOf(rang(a)) - (couleur(b) === atout ? ORDRE_ATOUT : ORDRE_NORMAL).indexOf(rang(b)));
+  }
+
+  /* ---------- Cartes jouables (règles officielles, sans annonces autres que la belote) ---------- */
+  const REGLES = Object.freeze({
+    entame: "Tu commences le pli : tu peux jouer la carte de ton choix.",
+    fournir: "Tu dois fournir : jouer une carte de la couleur demandée.",
+    monter: "On joue atout : tu dois fournir à l'atout et monter, c'est-à-dire jouer plus fort que l'atout le plus fort du pli.",
+    "fournir-atout": "On joue atout : tu dois fournir à l'atout (tu ne peux pas monter, alors n'importe lequel de tes atouts).",
+    couper: "Tu n'as pas la couleur demandée et l'adversaire est maître : tu dois couper (jouer atout).",
+    surcouper: "L'adversaire a coupé : tu dois surcouper, c'est-à-dire jouer un atout plus fort que le sien.",
+    "sous-couper": "L'adversaire a coupé plus fort que tes atouts : tu dois quand même jouer atout (sous-couper).",
+    "partenaire-maitre": "Ton partenaire est maître du pli : tu n'es pas obligé de couper, joue la carte de ton choix.",
+    defausse: "Tu n'as ni la couleur demandée ni atout : tu peux te défausser de n'importe quelle carte."
+  });
+  function cartesJouables(main, pli, atout, joueur) {
+    if (!pli.length) return { cartes: main.slice(), regle: "entame" };
+    const demandee = couleur(pli[0].carte);
+    const meneur = pli[gagnantPli(pli, atout)];
+    const forceMeneur = force(meneur.carte, atout, demandee);
+    const memes = main.filter((c) => couleur(c) === demandee);
+    if (demandee === atout && memes.length) {
+      const plusFortes = memes.filter((c) => force(c, atout, demandee) > forceMeneur);
+      return plusFortes.length ? { cartes: plusFortes, regle: "monter" } : { cartes: memes, regle: "fournir-atout" };
+    }
+    if (memes.length) return { cartes: memes, regle: "fournir" };
+    if (meneur.joueur === partenaire(joueur)) return { cartes: main.slice(), regle: "partenaire-maitre" };
+    const atouts = main.filter((c) => couleur(c) === atout);
+    if (!atouts.length) return { cartes: main.slice(), regle: "defausse" };
+    if (couleur(meneur.carte) === atout) {
+      const plusForts = atouts.filter((c) => force(c, atout, demandee) > forceMeneur);
+      return plusForts.length ? { cartes: plusForts, regle: "surcouper" } : { cartes: atouts, regle: "sous-couper" };
+    }
+    return { cartes: atouts, regle: "couper" };
+  }
+
+  /* ---------- Donne : distribution, enchères, plis ---------- */
+  /** Distribue 3 puis 2 cartes à chacun, à partir du joueur qui suit le donneur, et retourne la carte suivante. */
+  function creerDonne({ donneur = "ouest", hasard = Math.random, cartes = null } = {}) {
+    const jeu = cartes ? cartes.slice() : melanger(paquet(), hasard);
+    if (jeu.length !== 32 || new Set(jeu).size !== 32 || !jeu.every(estCarte)) throw new Error("paquet invalide");
+    const mains = { sud: [], est: [], nord: [], ouest: [] };
+    const ordre = [suivant(donneur), suivant(suivant(donneur)), suivant(suivant(suivant(donneur))), donneur];
+    for (const n of [3, 2]) for (const j of ordre) mains[j].push(...jeu.splice(0, n));
+    return {
+      phase: "encheres", donneur, mains, retournee: jeu.shift(), reste: jeu, tour: 1, parole: ordre[0], passes: 0,
+      annonces: [], atout: null, preneur: null, pli: [], plis: [], beloteJoueur: null, beloteJouees: 0, resultat: null
+    };
+  }
+  const choixPossibles = (d) => (d.tour === 1 ? ["prendre", "passer"] : [...COULEURS.filter((c) => c !== couleur(d.retournee)), "passer"]);
+
+  function encherir(donne, joueur, choix) {
+    if (donne.phase !== "encheres" || donne.parole !== joueur) throw new Error("ce n'est pas ton tour d'enchérir");
+    if (!choixPossibles(donne).includes(choix)) throw new Error(`enchère impossible : ${choix}`);
+    const d = copie(donne);
+    d.annonces.push({ joueur, tour: d.tour, choix });
+    if (choix === "passer") {
+      d.passes += 1;
+      d.parole = suivant(joueur);
+      if (d.passes === 4) {
+        if (d.tour === 1) { d.tour = 2; d.passes = 0; d.parole = suivant(d.donneur); } else d.phase = "redonne";
+      }
+      return d;
+    }
+    d.atout = choix === "prendre" ? couleur(d.retournee) : choix;
+    d.preneur = joueur;
+    // Le preneur reçoit la carte retournée et 2 cartes, les autres 3 cartes, toujours à partir du joueur qui suit le donneur.
+    d.mains[joueur].push(d.retournee, ...d.reste.splice(0, 2));
+    let j = suivant(d.donneur);
+    for (let k = 0; k < 4; k++, j = suivant(j)) if (j !== joueur) d.mains[j].push(...d.reste.splice(0, 3));
+    d.retournee = null;
+    d.beloteJoueur = JOUEURS.find((x) => d.mains[x].includes(`R${d.atout}`) && d.mains[x].includes(`D${d.atout}`)) ?? null;
+    d.phase = "jeu";
+    d.parole = suivant(d.donneur);
+    return d;
+  }
+
+  function jouerCarte(donne, joueur, carte) {
+    if (donne.phase !== "jeu" || donne.parole !== joueur) throw new Error("ce n'est pas ton tour de jouer");
+    if (!donne.mains[joueur].includes(carte)) throw new Error(`carte absente : ${carte}`);
+    if (!cartesJouables(donne.mains[joueur], donne.pli, donne.atout, joueur).cartes.includes(carte)) throw new Error(`carte interdite : ${carte}`);
+    const d = copie(donne);
+    d.mains[joueur] = d.mains[joueur].filter((c) => c !== carte);
+    d.pli.push({ joueur, carte });
+    // Belote (roi d'atout) puis rebelote (dame d'atout) : annoncées automatiquement par le joueur qui a les deux.
+    let annonce = null;
+    if (joueur === d.beloteJoueur && (carte === `R${d.atout}` || carte === `D${d.atout}`)) { d.beloteJouees += 1; annonce = d.beloteJouees === 1 ? "belote" : "rebelote"; }
+    d.derniereAnnonce = annonce;
+    if (d.pli.length < 4) { d.parole = suivant(joueur); return d; }
+    const g = d.pli[gagnantPli(d.pli, d.atout)].joueur;
+    d.plis.push({ cartes: d.pli, gagnant: g, points: pointsPli(d.pli, d.atout) });
+    d.pli = [];
+    d.parole = g;
+    if (d.plis.length === 8) { d.phase = "fin"; d.resultat = resultat(d); }
+    return d;
+  }
+
+  /**
+   * Décompte d'une donne. 162 points par donne (152 en cartes + 10 de der). Le camp preneur doit marquer plus que la
+   * défense (belote comprise) ; sinon il est « dedans » : la défense marque 162. Capot (tous les plis) : 250 points.
+   * La belote (20) reste toujours au camp qui l'a eue. Égalité : le preneur est dedans (règle simplifiée de cette page).
+   */
+  function resultat(d) {
+    const cartes = { NS: 0, EO: 0 }, plis = { NS: 0, EO: 0 };
+    for (const p of d.plis) { cartes[equipe(p.gagnant)] += p.points; plis[equipe(p.gagnant)] += 1; }
+    const der = equipe(d.plis[7].gagnant);
+    const belote = d.beloteJoueur ? equipe(d.beloteJoueur) : null;
+    const total = { NS: cartes.NS + (der === "NS" ? 10 : 0) + (belote === "NS" ? 20 : 0), EO: cartes.EO + (der === "EO" ? 10 : 0) + (belote === "EO" ? 20 : 0) };
+    const preneur = equipe(d.preneur), defense = adverse(preneur);
+    const capot = plis.NS === 8 ? "NS" : plis.EO === 8 ? "EO" : null;
+    const faite = total[preneur] > total[defense];
+    const marque = { NS: belote === "NS" ? 20 : 0, EO: belote === "EO" ? 20 : 0 };
+    if (capot) marque[capot] += 250;
+    else if (faite) { marque[preneur] = total[preneur]; marque[defense] = total[defense]; }
+    else marque[defense] += 162;
+    return { cartes, plis, der, belote, total, preneur, faite: capot ? capot === preneur : faite, capot, marque, atout: d.atout };
+  }
+
+  /* ---------- Partie ---------- */
+  function creerPartie({ objectif = 501, donneur = "ouest" } = {}) {
+    return { objectif, donneur, scores: { NS: 0, EO: 0 }, donnes: 0, gagnant: null };
+  }
+  /** Ajoute une donne terminée (ou une redonne quand tout le monde a passé) ; le donneur tourne. */
+  function ajouterDonne(partie, donne) {
+    const p = copie(partie);
+    if (donne.phase === "fin") { p.scores.NS += donne.resultat.marque.NS; p.scores.EO += donne.resultat.marque.EO; p.donnes += 1; }
+    else if (donne.phase !== "redonne") throw new Error("donne non terminée");
+    p.donneur = suivant(p.donneur);
+    if (p.scores.NS >= p.objectif || p.scores.EO >= p.objectif) p.gagnant = p.scores.NS === p.scores.EO ? null : p.scores.NS > p.scores.EO ? "NS" : "EO";
+    return p;
+  }
+
+  /* ---------- Ordinateur ---------- */
+  const VALEUR_ENCHERE_ATOUT = { V: 18, 9: 14, A: 10, 10: 8, R: 5, D: 5, 8: 3, 7: 3 };
+  /** Force d'une main pour un atout donné (heuristique d'enchère). */
+  function evaluerMain(main, atout) {
+    let s = 0;
+    const atouts = main.filter((c) => couleur(c) === atout);
+    for (const c of atouts) s += VALEUR_ENCHERE_ATOUT[rang(c)];
+    for (const c of main.filter((x) => couleur(x) !== atout)) {
+      if (rang(c) === "A") s += 9;
+      else if (rang(c) === "10") s += main.includes(`A${couleur(c)}`) ? 5 : 1;
+    }
+    if (atouts.length >= 4) s += 8;
+    if (atouts.includes(`R${atout}`) && atouts.includes(`D${atout}`)) s += 6;
+    return s;
+  }
+  const SEUIL = { 1: 34, 2: 38 };
+  function choisirEnchere(d, joueur, { niveau = "normal", hasard = Math.random } = {}) {
+    const main = [...d.mains[joueur], d.retournee];
+    const bruit = niveau === "facile" ? (hasard() - 0.5) * 24 : 0;
+    if (d.tour === 1) return evaluerMain(main, couleur(d.retournee)) + bruit >= SEUIL[1] ? "prendre" : "passer";
+    const options = COULEURS.filter((c) => c !== couleur(d.retournee)).map((c) => ({ c, s: evaluerMain(main, c) + bruit })).sort((a, b) => b.s - a.s);
+    return options[0].s >= SEUIL[2] ? options[0].c : "passer";
+  }
+
+  /** Cartes déjà vues (plis joués et pli en cours). */
+  const vues = (d) => [...d.plis.flatMap((p) => p.cartes.map((x) => x.carte)), ...d.pli.map((x) => x.carte)];
+  /** Une carte est maîtresse si aucune carte plus forte de sa couleur ne reste hors de la main du joueur. */
+  function estMaitresse(d, joueur, c) {
+    const ordre = couleur(c) === d.atout ? ORDRE_ATOUT : ORDRE_NORMAL, sorties = new Set([...vues(d), ...d.mains[joueur]]);
+    return ordre.slice(ordre.indexOf(rang(c)) + 1).every((r) => sorties.has(r + couleur(c)));
+  }
+  const parPoints = (d) => (a, b) => pointsCarte(a, d.atout) - pointsCarte(b, d.atout) || force(a, d.atout, couleur(a)) - force(b, d.atout, couleur(b));
+  const moinsChere = (d, cartes) => cartes.slice().sort((a, b) => (couleur(a) === d.atout) - (couleur(b) === d.atout) || parPoints(d)(a, b))[0];
+
+  function choisirCarte(d, joueur, { niveau = "normal", hasard = Math.random } = {}) {
+    const { cartes } = cartesJouables(d.mains[joueur], d.pli, d.atout, joueur);
+    if (cartes.length === 1) return cartes[0];
+    if (niveau === "facile" && hasard() < 0.45) return cartes[Math.floor(hasard() * cartes.length)];
+    const atouts = cartes.filter((c) => couleur(c) === d.atout), autres = cartes.filter((c) => couleur(c) !== d.atout);
+    if (!d.pli.length) {
+      // Entame : le camp preneur fait tomber les atouts avec ses atouts maîtres ; sinon on encaisse ses cartes maîtresses.
+      const atoutsDehors = 8 - [...vues(d), ...d.mains[joueur]].filter((c) => couleur(c) === d.atout).length;
+      if (equipe(joueur) === equipe(d.preneur) && atoutsDehors > 0 && atouts.length) {
+        const maitre = atouts.find((c) => estMaitresse(d, joueur, c));
+        if (maitre) return maitre;
+        if (joueur === d.preneur) return atouts.slice().sort(parPoints(d))[0];
+      }
+      const maitresses = autres.filter((c) => estMaitresse(d, joueur, c)).sort(parPoints(d)).reverse();
+      if (maitresses.length) return maitresses[0];
+      return moinsChere(d, autres.length ? autres : cartes);
+    }
+    const demandee = couleur(d.pli[0].carte), meneur = d.pli[gagnantPli(d.pli, d.atout)];
+    const dernier = d.pli.length === 3;
+    const gagnantes = cartes.filter((c) => force(c, d.atout, demandee) > force(meneur.carte, d.atout, demandee));
+    if (meneur.joueur === partenaire(joueur)) {
+      // Partenaire maître : on lui donne des points s'il est sûr de gagner, sinon on joue petit.
+      const sur = dernier || (couleur(meneur.carte) !== d.atout && estMaitresse(d, joueur, meneur.carte) && d.pli.length === 2) || couleur(meneur.carte) === d.atout && estMaitresse(d, joueur, meneur.carte);
+      if (sur && autres.length) return autres.slice().sort(parPoints(d)).reverse()[0];
+      return moinsChere(d, cartes);
+    }
+    if (gagnantes.length) {
+      const moinsForte = gagnantes.slice().sort((a, b) => force(a, d.atout, demandee) - force(b, d.atout, demandee))[0];
+      if (dernier) return moinsForte;
+      const maitre = gagnantes.find((c) => estMaitresse(d, joueur, c) && couleur(c) !== d.atout) ?? gagnantes.find((c) => couleur(c) === d.atout && estMaitresse(d, joueur, c));
+      if (maitre) return maitre;
+      if (couleur(moinsForte) === d.atout && pointsPli(d.pli, d.atout) >= 10) return moinsForte;
+    }
+    return moinsChere(d, cartes);
+  }
+
+  return Object.freeze({
+    COULEURS, SYMBOLES, NOMS_COULEURS, RANGS, JOUEURS, NOMS_JOUEURS, EQUIPES, REGLES, POINTS_ATOUT, POINTS_NORMAL,
+    couleur, rang, estCarte, nomCarte, texteCarte, equipe, adverse, partenaire, suivant, paquet, melanger, pointsCarte, force,
+    gagnantPli, pointsPli, trierMain, cartesJouables, creerDonne, choixPossibles, encherir, jouerCarte, resultat,
+    creerPartie, ajouterDonne, evaluerMain, choisirEnchere, choisirCarte, estMaitresse
+  });
+})();
+</script>
+<script id="progression-jeux" data-inclure="gabarit/jeux/progression.js">
+/* Progression commune des jeux (ADR 0014, 0015) : XP, niveaux, grades, étoiles, badges, série, objectif du jour,
+   révisions espacées, défi du jour, forces et conseil personnalisé. Pur, sans DOM : la date est passée en paramètre.
+   Module partagé, recopié dans chaque page par `npm run build` : modifier ce fichier, jamais sa copie dans une page. */
+const ProgressionJeux = (() => {
+  "use strict";
+  const XP = Object.freeze({ parfait: 20, reussi: 10, avecIndice: 5, revision: 5, revisionRatee: 1, lecon: 30, objectif: 20, defi: 15 });
+  // Révision espacée (boîtes de Leitner) : une carte réussie passe dans la boîte suivante, revue de plus en plus tard.
+  const INTERVALLES = Object.freeze([1, 2, 4, 8, 16]);
+  const OBJECTIFS = Object.freeze([1, 3, 5]);
+  const MAX_JOURS = 31;
+  const JOUR = /^\d{4}-\d{2}-\d{2}$/;
+  const RESULTATS = Object.freeze({ victoire: "victoires", nulle: "nulles", defaite: "defaites" });
+
+  /* ---------- Dates (AAAA-MM-JJ, calendrier de l'utilisateur fourni par l'appelant) ---------- */
+  function ajouterJours(jour, n) {
+    const [a, m, j] = jour.split("-").map(Number);
+    return new Date(Date.UTC(a, m - 1, j + n)).toISOString().slice(0, 10);
+  }
+  const estJour = (v) => typeof v === "string" && JOUR.test(v);
+  const entier = (v, max = 1e9) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : 0);
+  const copie = (e) => JSON.parse(JSON.stringify(e));
+  const exoId = (lecon, k) => `${lecon.id}/${k}`;
+  const etoiles = ({ erreurs, indices }) => { const p = erreurs + 2 * indices; return p === 0 ? 3 : p <= 2 ? 2 : 1; };
+  /** Petit hachage déterministe : le même défi pour tout le monde le même jour, sans hasard ni réseau. */
+  const hacher = (texte) => [...texte].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
+
+  /** Crée l'API de progression d'un jeu à partir de son parcours (grades, leçons, thèmes, badges, niveaux de partie). */
+  function creer(parcours) {
+    const lecons = new Map(), exercices = new Map();
+    parcours.grades.forEach((grade, gi) => grade.lecons.forEach((lecon) => {
+      lecons.set(lecon.id, { lecon, grade, gi });
+      lecon.exercices.forEach((exo, k) => exercices.set(exoId(lecon, k), { exo, lecon, grade, gi }));
+    }));
+    const EMBLEMES = Object.freeze(parcours.grades.map((g) => g.embleme));
+    const NIVEAUX_PARTIE = parcours.parties?.niveaux ?? {};
+    // Compteurs d'événements propres au jeu (capots, belotes…), déclarés par les badges de type « compteur ».
+    const COMPTEURS = [...new Set((parcours.badges ?? []).filter((b) => b.condition.type === "compteur").map((b) => b.condition.nom))];
+    const toutesLecons = parcours.grades.flatMap((g) => g.lecons);
+
+    function etatInitial() {
+      return {
+        version: 1, xp: 0, lecons: {}, cartes: {}, themes: {}, serie: 0, serieMax: 0, dernierJour: null, jours: {},
+        badges: [], objectif: 3, embleme: EMBLEMES[0], libre: false, revisions: 0, objectifsAtteints: 0, objectifsJours: [], defis: [],
+        parties: Object.fromEntries(Object.keys(NIVEAUX_PARTIE).map((n) => [n, { victoires: 0, nulles: 0, defaites: 0, meilleur: null }])),
+        compteurs: Object.fromEntries(COMPTEURS.map((n) => [n, 0]))
+      };
+    }
+
+    /* ---------- Grades et niveaux ---------- */
+    const gradeTermine = (e, grade) => grade.lecons.every((l) => e.lecons[l.id]);
+    function gradesObtenus(e) {
+      let n = 0;
+      while (n < parcours.grades.length && gradeTermine(e, parcours.grades[n])) n += 1;
+      return n;
+    }
+    function titre(e) {
+      const n = gradesObtenus(e);
+      return n === 0 ? "Débutant" : n === parcours.grades.length ? `${parcours.grades[n - 1].nom} : tu es un pro !` : parcours.grades[n - 1].nom;
+    }
+    function leconDebloquee(e, id) {
+      const info = lecons.get(id);
+      return !!info && (e.libre || info.gi === 0 || gradeTermine(e, parcours.grades[info.gi - 1]));
+    }
+    const emblemesDisponibles = (e) => EMBLEMES.slice(0, Math.max(1, gradesObtenus(e) + 1));
+
+    /* ---------- Badges : communs à tous les jeux, puis propres au jeu (décrits dans le parcours) ---------- */
+    const victoiresTotal = (e) => Object.values(e.parties).reduce((s, p) => s + p.victoires, 0);
+    const lecDuTheme = (themes) => toutesLecons.filter((l) => themes.includes(l.theme));
+    const COMMUNS = [
+      { id: "premiers-pas", icone: "👣", nom: "Premiers pas", description: "Termine ta première leçon.", avance: (e) => [Object.keys(e.lecons).length, 1] },
+      { id: "sans-faute", icone: "⭐", nom: "Sans faute", description: "Termine une leçon avec 3 étoiles.", avance: (e) => [Object.values(e.lecons).some((l) => l.etoiles === 3) ? 1 : 0, 1] },
+      { id: "perfectionniste", icone: "🌟", nom: "Perfectionniste", description: "Obtiens 3 étoiles sur toutes les leçons d'un grade.",
+        avance: (e) => [Math.max(...parcours.grades.map((g) => g.lecons.filter((l) => e.lecons[l.id]?.etoiles === 3).length / g.lecons.length)) >= 1 ? 1 : 0, 1] },
+      { id: "pro", icone: "🏆", nom: "Du débutant au pro", description: `Obtiens les ${parcours.grades.length} grades.`, avance: (e) => [gradesObtenus(e), parcours.grades.length] },
+      { id: "serie-3", icone: "🔥", nom: "Ça chauffe", description: "Entraîne-toi 3 jours de suite.", avance: (e) => [e.serieMax, 3] },
+      { id: "serie-7", icone: "📅", nom: "Une semaine sans pause", description: "Entraîne-toi 7 jours de suite.", avance: (e) => [e.serieMax, 7] },
+      { id: "regulier", icone: "🎯", nom: "Régulier", description: "Atteins 5 fois ton objectif du jour.", avance: (e) => [e.objectifsAtteints, 5] },
+      { id: "memoire", icone: "🧠", nom: "Mémoire d'éléphant", description: "Fais 10 révisions.", avance: (e) => [e.revisions, 10] },
+      { id: "bibliotheque", icone: "📚", nom: "Bibliothèque", description: "Maîtrise 10 stratégies (révisées plusieurs fois avec succès).",
+        avance: (e) => [Object.values(e.cartes).filter((c) => c.boite >= 4).length, 10] },
+      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis du jour.", avance: (e) => [e.defis.length, 3] }
+    ];
+    function versBadge({ id, icone, nom, description, condition: c }) {
+      let avance;
+      if (c.type === "themes") {
+        avance = (e) => { const l = lecDuTheme(c.themes), faites = l.filter((x) => e.lecons[x.id]).length; return c.toutes === false ? [Math.min(1, faites), 1] : [faites, l.length]; };
+      } else if (c.type === "victoires") {
+        avance = (e) => [c.niveau ? e.parties[c.niveau]?.victoires ?? 0 : victoiresTotal(e), c.min];
+      } else if (c.type === "compteur") {
+        avance = (e) => [e.compteurs[c.nom] ?? 0, c.min];
+      } else if (c.type === "record") {
+        avance = (e) => { const m = e.parties[c.niveau]?.meilleur; return [m !== null && m !== undefined && m <= c.max ? 1 : 0, 1]; };
+      } else throw new Error(`badge ${id} : condition « ${c.type} » inconnue`);
+      return { id, icone, nom, description, avance };
+    }
+    const BADGES = [...COMMUNS, ...(parcours.badges ?? []).map(versBadge)];
+    const ids = BADGES.map((b) => b.id);
+    if (new Set(ids).size !== ids.length) throw new Error("badges en double");
+
+    function badges(e) {
+      return BADGES.map(({ avance, ...b }) => { const [actuel, cible] = avance(e); return { ...b, actuel: Math.min(actuel, cible), cible, obtenu: actuel >= cible }; });
+    }
+
+    /* ---------- Relecture d'un état stocké ---------- */
+    const objet = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v : {});
+    function normaliser(brut) {
+      const base = etatInitial();
+      if (!brut || typeof brut !== "object") return base;
+      const e = { ...base, xp: entier(brut.xp), serie: entier(brut.serie), serieMax: entier(brut.serieMax), revisions: entier(brut.revisions),
+        objectifsAtteints: entier(brut.objectifsAtteints), libre: brut.libre === true,
+        objectif: OBJECTIFS.includes(brut.objectif) ? brut.objectif : base.objectif,
+        embleme: EMBLEMES.includes(brut.embleme) ? brut.embleme : base.embleme,
+        dernierJour: estJour(brut.dernierJour) ? brut.dernierJour : null };
+      for (const [id, v] of Object.entries(objet(brut.lecons))) {
+        if (lecons.has(id) && [1, 2, 3].includes(v?.etoiles)) e.lecons[id] = { etoiles: v.etoiles, jour: estJour(v.jour) ? v.jour : null };
+      }
+      for (const [id, v] of Object.entries(objet(brut.cartes))) {
+        if (exercices.has(id) && Number.isInteger(v?.boite) && v.boite >= 1 && v.boite <= INTERVALLES.length && estJour(v.prochaine)) e.cartes[id] = { boite: v.boite, prochaine: v.prochaine };
+      }
+      for (const [t, v] of Object.entries(objet(brut.themes))) {
+        if (parcours.themes[t]) { const essais = entier(v?.essais); e.themes[t] = { essais, premiers: Math.min(essais, entier(v?.premiers)) }; }
+      }
+      for (const [j, n] of Object.entries(objet(brut.jours))) if (estJour(j)) e.jours[j] = entier(n, 1000);
+      e.badges = Array.isArray(brut.badges) ? [...new Set(brut.badges.filter((b) => ids.includes(b)))] : [];
+      e.defis = Array.isArray(brut.defis) ? [...new Set(brut.defis.filter(estJour))].slice(-MAX_JOURS) : [];
+      e.objectifsJours = Array.isArray(brut.objectifsJours) ? [...new Set(brut.objectifsJours.filter(estJour))].slice(-MAX_JOURS) : [];
+      for (const n of Object.keys(NIVEAUX_PARTIE)) {
+        const p = objet(objet(brut.parties)[n]);
+        e.parties[n] = { victoires: entier(p.victoires), nulles: entier(p.nulles), defaites: entier(p.defaites), meilleur: Number.isInteger(p.meilleur) && p.meilleur >= 0 ? p.meilleur : null };
+      }
+      for (const n of COMPTEURS) e.compteurs[n] = entier(objet(brut.compteurs)[n]);
+      return e;
+    }
+
+    /* ---------- Enregistrements : chaque fonction renvoie un nouvel état et ce qui a été gagné ---------- */
+    function cloturer(e, avant, gains) {
+      const obtenus = badges(e).filter((b) => b.obtenu).map((b) => b.id);
+      gains.badges = obtenus.filter((id) => !avant.badges.includes(id)).map((id) => { const { avance, ...b } = BADGES.find((x) => x.id === id); return b; });
+      e.badges = [...new Set([...avant.badges.filter((id) => ids.includes(id)), ...obtenus])];
+      gains.niveauAvant = niveau(avant.xp).niveau;
+      gains.niveauApres = niveau(e.xp).niveau;
+      gains.gradesAvant = gradesObtenus(avant);
+      gains.gradesApres = gradesObtenus(e);
+      return { etat: e, gains };
+    }
+    /** Activité du jour : série de jours consécutifs, compteur du jour, bonus quand l'objectif est atteint. */
+    function compterActivite(e, jour, gains) {
+      if (e.dernierJour !== jour) {
+        e.serie = e.dernierJour && ajouterJours(e.dernierJour, 1) === jour ? e.serie + 1 : 1;
+        e.serieMax = Math.max(e.serieMax, e.serie);
+        e.dernierJour = jour;
+      }
+      e.jours[jour] = (e.jours[jour] ?? 0) + 1;
+      for (const j of Object.keys(e.jours).sort().slice(0, -MAX_JOURS)) delete e.jours[j];
+      // Une seule récompense par date, même si le joueur change son objectif dans la journée.
+      if (e.jours[jour] >= e.objectif && !e.objectifsJours.includes(jour)) {
+        e.objectifsJours = [...e.objectifsJours, jour].slice(-MAX_JOURS);
+        e.xp += XP.objectif; gains.xp += XP.objectif; gains.objectif = true; e.objectifsAtteints += 1;
+      }
+    }
+
+    function enregistrerExercice(etat, { id, erreurs = 0, indice = false, jour, revision = false }) {
+      const info = exercices.get(id);
+      if (!info) throw new Error(`exercice inconnu : ${id}`);
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      const parfait = erreurs === 0 && !indice;
+      const gain = revision ? (parfait ? XP.revision : XP.revisionRatee) : parfait ? XP.parfait : indice ? XP.avecIndice : XP.reussi;
+      e.xp += gain; gains.xp += gain;
+      const t = e.themes[info.lecon.theme] ?? { essais: 0, premiers: 0 };
+      e.themes[info.lecon.theme] = { essais: t.essais + 1, premiers: t.premiers + (parfait ? 1 : 0) };
+      const carte = e.cartes[id];
+      const boite = !carte ? 1 : parfait ? Math.min(INTERVALLES.length, carte.boite + 1) : 1;
+      e.cartes[id] = { boite, prochaine: ajouterJours(jour, INTERVALLES[boite - 1]) };
+      if (revision) e.revisions += 1;
+      compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    function terminerLecon(etat, { id, etoiles: n, jour }) {
+      if (!lecons.has(id)) throw new Error(`leçon inconnue : ${id}`);
+      const e = copie(etat), gains = { xp: 0, objectif: false, premiereFois: !etat.lecons[id] };
+      if (gains.premiereFois) { e.xp += XP.lecon; gains.xp += XP.lecon; }
+      e.lecons[id] = { etoiles: Math.max(n, e.lecons[id]?.etoiles ?? 0), jour };
+      return cloturer(e, etat, gains);
+    }
+
+    /** Partie terminée (contre l'ordinateur, ou partie de démineur). `temps` en secondes, pour les records. */
+    function enregistrerPartie(etat, { resultat, niveau: n, jour, temps = null }) {
+      const regle = NIVEAUX_PARTIE[n];
+      if (!RESULTATS[resultat] || !regle || regle.xp[resultat] === undefined) throw new Error("partie invalide");
+      const e = copie(etat), gains = { xp: 0, objectif: false, record: false };
+      const gain = regle.xp[resultat];
+      e.xp += gain; gains.xp += gain;
+      const p = e.parties[n];
+      p[RESULTATS[resultat]] += 1;
+      if (resultat === "victoire" && Number.isInteger(temps) && temps >= 0 && (p.meilleur === null || temps < p.meilleur)) { p.meilleur = temps; gains.record = true; }
+      compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    /** Événements de jeu (ex. un capot) : seulement les compteurs déclarés par les badges, sans XP ni activité. */
+    function compter(etat, { compteurs = {} }) {
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      for (const [n, k] of Object.entries(compteurs)) if (COMPTEURS.includes(n) && Number.isInteger(k) && k > 0) e.compteurs[n] += k;
+      return cloturer(e, etat, gains);
+    }
+
+    function enregistrerDefi(etat, { jour }) {
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      if (!e.defis.includes(jour)) { e.defis = [...e.defis, jour].slice(-MAX_JOURS); e.xp += XP.defi; gains.xp += XP.defi; }
+      return cloturer(e, etat, gains);
+    }
+
+    function regler(etat, { objectif, embleme, libre }) {
+      const e = copie(etat);
+      if (OBJECTIFS.includes(objectif)) e.objectif = objectif;
+      if (emblemesDisponibles(etat).includes(embleme)) e.embleme = embleme;
+      if (typeof libre === "boolean") e.libre = libre;
+      return e;
+    }
+
+    /* ---------- Lectures ---------- */
+    function revisionsDues(etat, jour) {
+      return Object.entries(etat.cartes)
+        .filter(([, c]) => c.prochaine <= jour)
+        .sort(([, a], [, b]) => a.prochaine.localeCompare(b.prochaine) || a.boite - b.boite)
+        .map(([id]) => id);
+    }
+    function forces(etat) {
+      return Object.entries(parcours.themes).map(([id, nom]) => {
+        const t = etat.themes[id] ?? { essais: 0, premiers: 0 };
+        return { id, nom, essais: t.essais, taux: t.essais >= 3 ? t.premiers / t.essais : null };
+      });
+    }
+    /** Série encore valable aujourd'hui (elle est cassée si le dernier jour actif est avant-hier ou plus ancien). */
+    const serieActuelle = (e, jour) => (e.dernierJour === jour || e.dernierJour === ajouterJours(jour, -1) ? e.serie : 0);
+    /** Activité des `n` derniers jours, du plus ancien au plus récent. */
+    const activite = (e, jour, n = 7) => Array.from({ length: n }, (_, k) => { const j = ajouterJours(jour, k - n + 1); return { jour: j, exercices: e.jours[j] ?? 0 }; });
+
+    function defiDuJour(etat, jour) {
+      // Liste commune, indépendante de la progression : vraiment le même défi pour tout le monde le même jour.
+      const candidats = [...exercices.entries()].filter(([, x]) => x.exo.type !== "qcm").map(([id]) => id);
+      if (!candidats.length) return null;
+      return { id: candidats[hacher(jour) % candidats.length], fait: etat.defis.includes(jour) };
+    }
+
+    /** Conseil personnalisé : réviser, retravailler un point faible, avancer, se perfectionner, ou jouer. */
+    function recommandation(etat, jour) {
+      const dues = revisionsDues(etat, jour);
+      const ouvertes = toutesLecons.filter((l) => leconDebloquee(etat, l.id));
+      if (dues.length >= 3) return { type: "revision", nombre: dues.length, texte: `${dues.length} stratégies t'attendent pour une révision : c'est le meilleur moyen de les retenir pour toujours.` };
+      const faibles = forces(etat).filter((f) => f.taux !== null && f.taux < 0.6).sort((a, b) => a.taux - b.taux);
+      for (const f of faibles) {
+        const lecon = ouvertes.filter((l) => l.theme === f.id).sort((a, b) => (etat.lecons[a.id]?.etoiles ?? 0) - (etat.lecons[b.id]?.etoiles ?? 0))[0];
+        if (lecon && (etat.lecons[lecon.id]?.etoiles ?? 0) < 3) return { type: "faiblesse", lecon: lecon.id, theme: f.id, texte: `Ton point à travailler : ${f.nom.toLowerCase()} (${Math.round(f.taux * 100)} % réussi du premier coup). Refais « ${lecon.titre} ».` };
+      }
+      const suivante = ouvertes.find((l) => !etat.lecons[l.id]);
+      if (suivante) return { type: "suite", lecon: suivante.id, texte: Object.keys(etat.lecons).length ? `Prochaine étape : « ${suivante.titre} ».` : `Bienvenue ! Commence par « ${suivante.titre} ».` };
+      if (dues.length) return { type: "revision", nombre: dues.length, texte: `${dues.length} révision${dues.length > 1 ? "s" : ""} pour garder tes stratégies en tête.` };
+      const aPerfectionner = ouvertes.find((l) => etat.lecons[l.id].etoiles < 3);
+      if (aPerfectionner) return { type: "perfection", lecon: aPerfectionner.id, texte: `Vise les 3 étoiles sur « ${aPerfectionner.titre} ».` };
+      if (gradesObtenus(etat) < parcours.grades.length) {
+        const g = parcours.grades[gradesObtenus(etat)];
+        return { type: "suite", lecon: g.lecons.find((l) => !etat.lecons[l.id])?.id ?? g.lecons[0].id, texte: `Termine le grade ${g.nom} pour progresser.` };
+      }
+      return { type: "jouer", texte: parcours.conseilFinal ?? "Tu as tout appris ! Mets tes stratégies en pratique en jouant." };
+    }
+
+    /** Règles de gain d'XP, pour les expliquer au joueur (transparence de la gamification). */
+    function reglesXP() {
+      const regles = [
+        ["Exercice réussi du premier coup", XP.parfait], ["Exercice réussi après une erreur", XP.reussi], ["Exercice réussi avec un indice", XP.avecIndice],
+        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi du jour réussi", XP.defi]
+      ];
+      for (const [, n] of Object.entries(NIVEAUX_PARTIE)) {
+        for (const [r, xp] of Object.entries(n.xp)) regles.push([`Partie ${n.nom} : ${{ victoire: "victoire", nulle: "nulle", defaite: "défaite" }[r]}`, xp]);
+      }
+      return regles.map(([texte, xp]) => ({ texte, xp }));
+    }
+
+    return Object.freeze({
+      parcours, EMBLEMES, BADGES: BADGES.map(({ avance, ...b }) => b), NIVEAUX_PARTIE, lecons, exercices,
+      etatInitial, normaliser, niveau, gradesObtenus, titre, leconDebloquee, emblemesDisponibles, badges,
+      enregistrerExercice, terminerLecon, enregistrerPartie, enregistrerDefi, compter, regler,
+      revisionsDues, forces, serieActuelle, activite, defiDuJour, recommandation, reglesXP
+    });
+  }
+
+  /** Niveau n atteint à 50 × n × (n − 1) XP : 0, 100, 300, 600, 1000… (chaque niveau demande un peu plus). */
+  function niveau(xp) {
+    let n = 1;
+    while (50 * (n + 1) * n <= xp) n += 1;
+    const debut = 50 * n * (n - 1), fin = 50 * (n + 1) * n;
+    return { niveau: n, xpDansNiveau: xp - debut, xpPourNiveau: fin - debut };
+  }
+
+  return Object.freeze({ XP, INTERVALLES, OBJECTIFS, ajouterJours, exoId, etoiles, niveau, creer });
+})();
+</script>
+<script id="academie-jeux" data-inclure="gabarit/jeux/academie.js">
+/* Interface commune de l'Académie des jeux (ADR 0014, 0015) : synthèse, parcours, séances d'exercices et page
+   « Ma progression ». Les exercices propres à un jeu (échiquier, grille…) sont fournis par des adaptateurs.
+   Module partagé, recopié dans chaque page par `npm run build` : modifier ce fichier, jamais sa copie dans une page.
+   Contenu affiché uniquement par textContent et createElement (jamais innerHTML). */
+const VueAcademie = (() => {
+  "use strict";
+
+  function el(balise, attributs = {}, ...enfants) {
+    const n = document.createElement(balise);
+    for (const [k, v] of Object.entries(attributs)) {
+      if (v === false || v === null || v === undefined) continue;
+      if (k === "texte") n.textContent = v; else if (k === "classe") n.className = v; else n.setAttribute(k, v === true ? "" : v);
+    }
+    n.append(...enfants.filter((x) => x !== null && x !== undefined && x !== false));
+    return n;
+  }
+  const etoilesTexte = (n) => `${"★".repeat(n)}${"☆".repeat(3 - n)}`;
+  const pluriel = (n, mot) => `${n} ${mot}${n > 1 ? "s" : ""}`;
+  const jourLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const dateCourte = (jour) => `${jour.slice(8, 10)}/${jour.slice(5, 7)}`;
+  const JOURS = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
+  const nomJour = (jour) => { const [a, m, j] = jour.split("-").map(Number); return JOURS[new Date(a, m - 1, j).getDay()]; };
+  const formaterTemps = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+
+  function barre(actuel, cible, libelle) {
+    const b = el("div", { classe: "barre", role: "progressbar", "aria-label": libelle, "aria-valuemin": 0, "aria-valuemax": cible, "aria-valuenow": actuel }, el("span"));
+    b.firstChild.style.width = `${cible ? Math.round((100 * actuel) / cible) : 0}%`;
+    return b;
+  }
+
+  /**
+   * Monte l'Académie dans un panneau d'onglet.
+   * - progression : API créée par ProgressionJeux.creer(parcours)
+   * - embleme(id) : nœud affichant un emblème (pièce d'échecs, symbole…)
+   * - adaptateurs : { type: (outils) => ({ element, demarrer(exo), consigne?(exo), indice(exo), arreter?() }) }
+   *   où outils = { reussir(), erreur(message?), retour(texte, classe) }
+   */
+  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal }) {
+    const parcours = P.parcours;
+    let etat = P.normaliser(stockage.lire(cle));
+    let session = null, ex = null, confirmationEffacement = false;
+    const sauver = () => stockage.ecrire(cle, etat);
+
+    /* ---------- Squelette ---------- */
+    const toast = el("p", { classe: "toast", "data-sortie": "toast", role: "status", "aria-live": "polite" });
+    const vues = { accueil: el("div", { "data-vue": "accueil" }), detail: el("div", { "data-vue": "detail", hidden: true }), session: el("div", { "data-vue": "session", hidden: true }) };
+    panneau.append(toast, vues.accueil, vues.detail, vues.session);
+
+    // Synthèse
+    const synthese = el("section", { classe: "carte synthese", "aria-labelledby": "academie-titre" });
+    const z = {}; // zones mises à jour
+    z.embleme = el("div", { classe: "synthese-embleme", "aria-hidden": "true" });
+    z.titre = el("h2", { id: "academie-titre", tabindex: "-1", "data-sortie": "titre" });
+    z.niveau = el("p", { classe: "doux", "data-sortie": "niveau" });
+    z.barre = el("div");
+    z.chips = el("ul", { classe: "chips", "aria-label": "En bref", "data-sortie": "stats" });
+    z.conseil = el("p", { classe: "conseil-texte", "data-sortie": "conseil" });
+    z.actionConseil = el("button", { type: "button", classe: "action", "data-action": "conseil" });
+    z.reviser = el("button", { type: "button", classe: "secondaire", "data-action": "reviser" });
+    z.defi = el("button", { type: "button", classe: "secondaire", "data-action": "defi" });
+    z.prochainBadge = el("p", { classe: "prochain-badge", "data-sortie": "prochain-badge" });
+    const boutonDetail = el("button", { type: "button", classe: "lien", "data-action": "detail", texte: "📊 Ma progression détaillée →" });
+    synthese.append(
+      el("div", { classe: "synthese-tete" }, z.embleme, el("div", { classe: "synthese-identite" }, z.titre, z.niveau, z.barre), boutonDetail),
+      z.chips,
+      el("div", { classe: "conseil" }, el("p", { classe: "conseil-titre", texte: "✨ Pour toi aujourd'hui" }), z.conseil,
+        el("div", { classe: "boutons" }, z.actionConseil, z.reviser, z.defi)),
+      z.prochainBadge);
+    z.parcours = el("ol", { classe: "parcours", "aria-label": "Parcours" });
+    z.stockage = el("p", { classe: "doux", hidden: stockageDisponible, texte: "Ici, ta progression ne peut pas être gardée : ouvre la page en plein écran pour la conserver sur ton appareil." });
+    vues.accueil.append(synthese, el("h2", { texte: "🗺️ Ton parcours, du débutant au pro" }), z.parcours, z.stockage);
+
+    // Page détaillée
+    const retourDetail = el("button", { type: "button", classe: "secondaire", "data-action": "retour", texte: "← Retour à l'Académie" });
+    z.detailTitre = el("h2", { tabindex: "-1", texte: "📊 Ma progression", "data-sortie": "detail-titre" });
+    const section = (titre, ...contenu) => el("section", { classe: "carte detail-section" }, el("h3", { texte: titre }), ...contenu);
+    z.dNiveau = el("div", { "data-sortie": "detail-niveau" }); z.dRegles = el("table", { classe: "regles-xp" });
+    z.dGrades = el("ol", { classe: "grades-liste" });
+    z.dBadges = el("ul", { classe: "badges", "data-sortie": "badges" });
+    z.dRegularite = el("div", { "data-sortie": "regularite" }); z.dActivite = el("ol", { classe: "activite", "aria-label": "Activité des 7 derniers jours", "data-sortie": "activite" });
+    z.dCarnet = el("ul", { classe: "carnet", "data-sortie": "carnet" });
+    z.dForces = el("ul", { classe: "forces" }); z.dParties = el("ul", { classe: "parties", "data-sortie": "parties" });
+    z.dReglages = el("div");
+    vues.detail.append(retourDetail, z.detailTitre,
+      section("⬆️ Niveau et XP", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner de l'XP ?" }), z.dRegles)),
+      section("🎖️ Grades", el("p", { classe: "doux", texte: "Chaque grade obtenu ouvre le suivant et un nouvel emblème." }), z.dGrades),
+      section("🏅 Badges", z.dBadges),
+      section("🔥 Régularité", z.dRegularite, z.dActivite),
+      section("📒 Carnet de stratégies", el("p", { classe: "doux", texte: "Chaque stratégie apprise revient en révision, de plus en plus espacée quand tu la réussis." }), z.dCarnet),
+      section("📈 Points forts et points faibles", z.dForces, z.dParties),
+      section("⚙️ Réglages", z.dReglages));
+
+    // Séance
+    z.fil = el("p", { classe: "doux fil", "data-sortie": "fil" });
+    z.sTitre = el("h2", { tabindex: "-1", "data-sortie": "session-titre" });
+    z.sTexte = el("p");
+    z.retenir = el("p", { "data-sortie": "retenir" });
+    z.zoneRetenir = el("div", { classe: "a-retenir" }, el("strong", { texte: "📌 À retenir" }), z.retenir);
+    z.progression = el("p", { classe: "progression", "data-sortie": "progression" });
+    z.consigne = el("p", { classe: "consigne", "data-sortie": "consigne" });
+    z.qcm = el("ul", { classe: "qcm", hidden: true });
+    z.zoneJeu = el("div", { classe: "zone-exercice" });
+    z.retour = el("p", { classe: "message", role: "status", "aria-live": "polite", "data-sortie": "retour" });
+    z.indice = el("button", { type: "button", classe: "secondaire", "data-action": "indice", texte: "💡 Indice" });
+    z.suivant = el("button", { type: "button", classe: "action", "data-action": "suivant", hidden: true });
+    z.exercice = el("div", { classe: "carte" }, z.progression, z.consigne, z.zoneJeu, z.qcm, z.retour, el("div", { classe: "boutons" }, z.indice, z.suivant));
+    z.bTitre = el("h2", { tabindex: "-1", "data-sortie": "bilan-titre" }); z.bTexte = el("p", { "data-sortie": "bilan-texte" });
+    z.bSuite = el("button", { type: "button", classe: "action", "data-action": "bilan-suite", hidden: true });
+    const bRetour = el("button", { type: "button", classe: "secondaire", "data-action": "bilan-retour", texte: "Retour à l'Académie" });
+    z.bilan = el("div", { classe: "carte bilan", hidden: true }, z.bTitre, z.bTexte, el("div", { classe: "boutons" }, z.bSuite, bRetour));
+    const retourSession = el("button", { type: "button", classe: "secondaire", "data-action": "retour", texte: "← Retour à l'Académie" });
+    vues.session.append(retourSession, z.fil, z.sTitre, z.sTexte, z.zoneRetenir, z.exercice, z.bilan);
+
+    /* ---------- Gains ---------- */
+    function appliquer({ etat: nouvel, gains }) {
+      etat = nouvel; sauver();
+      const morceaux = [];
+      if (gains.xp) morceaux.push(`+${gains.xp} XP`);
+      if (gains.record) morceaux.push("⏱️ Nouveau record");
+      if (gains.objectif) morceaux.push("🎯 Objectif du jour atteint");
+      if (gains.niveauApres > gains.niveauAvant) morceaux.push(`⬆️ Niveau ${gains.niveauApres} !`);
+      if (gains.gradesApres > gains.gradesAvant) morceaux.push(`🎖️ Grade ${parcours.grades[gains.gradesApres - 1].nom} obtenu : nouvel emblème disponible`);
+      for (const b of gains.badges) morceaux.push(`${b.icone} Badge « ${b.nom} »`);
+      if (morceaux.length) toast.textContent = morceaux.join(" · ");
+      return gains;
+    }
+
+    function montrer(nom) {
+      for (const [k, v] of Object.entries(vues)) v.hidden = k !== nom;
+      if (nom !== "session") { session?.adaptateur?.arreter?.(); session = null; ex = null; }
+      if (nom === "accueil") afficherAccueil();
+      if (nom === "detail") afficherDetail();
+      ({ accueil: z.titre, detail: z.detailTitre, session: z.sTitre })[nom].focus();
+    }
+
+    /* ---------- Synthèse et parcours ---------- */
+    function afficherAccueil() {
+      const j = jour(), niv = P.niveau(etat.xp), grades = P.gradesObtenus(etat), tous = P.badges(etat);
+      z.embleme.replaceChildren(embleme(etat.embleme));
+      z.titre.textContent = P.titre(etat);
+      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} XP · encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}`;
+      z.barre.replaceChildren(barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"));
+      const aujourdhui = etat.jours[j] ?? 0, serie = P.serieActuelle(etat, j);
+      z.chips.replaceChildren(...[
+        `🔥 ${pluriel(serie, "jour")} de suite`,
+        `🎯 Aujourd'hui : ${Math.min(aujourdhui, etat.objectif)} / ${etat.objectif}${aujourdhui >= etat.objectif ? " ✓" : ""}`,
+        `🎖️ Grades : ${grades} / ${parcours.grades.length}`,
+        `🏅 Badges : ${tous.filter((b) => b.obtenu).length} / ${tous.length}`
+      ].map((t) => el("li", { texte: t })));
+      const conseil = P.recommandation(etat, j);
+      z.conseil.textContent = conseil.texte;
+      z.actionConseil.textContent = { revision: "Réviser maintenant", jouer: "Jouer une partie" }[conseil.type] ?? "C'est parti !";
+      z.actionConseil.onclick = () => (conseil.type === "revision" ? reviser() : conseil.type === "jouer" ? ouvrirOnglet?.("application") : ouvrirLecon(conseil.lecon));
+      const dues = P.revisionsDues(etat, j);
+      z.reviser.textContent = `🧠 Révisions (${dues.length})`; z.reviser.disabled = dues.length === 0;
+      const defi = P.defiDuJour(etat, j);
+      z.defi.textContent = defi?.fait ? "⚡ Défi du jour relevé ✓" : `⚡ Défi du jour (+${ProgressionJeux.XP.defi} XP)`;
+      z.defi.disabled = !defi || defi.fait;
+      // Prochain badge : celui qui est le plus près d'être gagné.
+      const prochain = tous.filter((b) => !b.obtenu).sort((a, b) => b.actuel / b.cible - a.actuel / a.cible)[0];
+      z.prochainBadge.replaceChildren(...(prochain ? [el("span", { classe: "doux", texte: "Prochain badge : " }),
+        el("strong", { texte: `${prochain.icone} ${prochain.nom}` }), el("span", { texte: ` — ${prochain.description} (${prochain.actuel} / ${prochain.cible})` })]
+        : [el("strong", { texte: "🏆 Tous les badges sont gagnés. Bravo !" })]));
+      // Parcours
+      z.parcours.replaceChildren(...parcours.grades.map((g, gi) => {
+        const faites = g.lecons.filter((l) => etat.lecons[l.id]).length, ouvert = P.leconDebloquee(etat, g.lecons[0].id);
+        const etatGrade = faites === g.lecons.length ? "✓ obtenu" : ouvert ? `${faites} / ${g.lecons.length}` : `🔒 termine le grade ${parcours.grades[gi - 1].nom}`;
+        return el("li", { classe: `grade${ouvert ? "" : " verrouille"}`, "data-grade": g.id },
+          el("div", { classe: "grade-entete" }, el("span", { classe: "grade-embleme", "aria-hidden": "true" }, embleme(g.embleme)),
+            el("div", {}, el("h3", { texte: `${gi + 1}. ${g.nom}` }), el("p", { classe: "doux", texte: g.sousTitre })),
+            el("span", { classe: "grade-etat", texte: etatGrade })),
+          el("ul", { classe: "lecons" }, ...g.lecons.map((l) => {
+            const fait = etat.lecons[l.id], libre = P.leconDebloquee(etat, l.id);
+            const b = el("button", { type: "button", classe: `lecon${fait ? " faite" : ""}`, "data-lecon": l.id, disabled: !libre,
+              "aria-label": `${l.titre}, ${parcours.themes[l.theme]}, ${fait ? `${pluriel(fait.etoiles, "étoile")} sur 3` : libre ? "à faire" : "verrouillée"}` },
+              el("span", { classe: "lecon-titre", texte: l.titre }), el("span", { classe: "lecon-theme", texte: parcours.themes[l.theme] }),
+              el("span", { classe: "lecon-etoiles", "aria-hidden": "true", texte: fait ? etoilesTexte(fait.etoiles) : libre ? "Nouveau" : "🔒" }));
+            b.addEventListener("click", () => ouvrirLecon(l.id));
+            return el("li", {}, b);
+          })));
+      }));
+    }
+
+    /* ---------- Page détaillée « Ma progression » ---------- */
+    function afficherDetail() {
+      const j = jour(), niv = P.niveau(etat.xp), obtenus = P.gradesObtenus(etat);
+      z.dNiveau.replaceChildren(
+        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} XP au total · ${P.titre(etat)}` })),
+        barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"),
+        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} XP : encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}.` }));
+      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp} XP` })))));
+      z.dGrades.replaceChildren(...parcours.grades.map((g, gi) => {
+        const faites = g.lecons.filter((l) => etat.lecons[l.id]).length;
+        const statut = gi < obtenus ? "✓ obtenu" : gi === obtenus ? `en cours : ${faites} / ${g.lecons.length} leçons` : "🔒 à venir";
+        return el("li", { classe: gi < obtenus ? "obtenu" : gi === obtenus ? "en-cours" : "verrouille" },
+          el("span", { classe: "grade-embleme", "aria-hidden": "true" }, embleme(g.embleme)),
+          el("strong", { texte: g.nom }), el("span", { classe: "doux", texte: ` — ${g.sousTitre} · ${statut}` }));
+      }));
+      const tous = P.badges(etat);
+      z.dBadges.replaceChildren(...[...tous.filter((b) => b.obtenu), ...tous.filter((b) => !b.obtenu)].map((b) => el("li", { classe: b.obtenu ? "obtenu" : "verrouille" },
+        el("span", { classe: "badge-icone", "aria-hidden": "true", texte: b.obtenu ? b.icone : "🔒" }),
+        el("strong", { texte: b.nom }),
+        el("span", { classe: "doux", texte: `${b.obtenu ? "✓ Gagné : " : "À gagner : "}${b.description}` }),
+        b.obtenu || b.cible <= 1 ? null : barre(b.actuel, b.cible, `${b.nom} : ${b.actuel} sur ${b.cible}`))));
+      const serie = P.serieActuelle(etat, j);
+      z.dRegularite.replaceChildren(el("p", { texte: `Série actuelle : ${pluriel(serie, "jour")} · record : ${pluriel(etat.serieMax, "jour")} · objectif du jour : ${pluriel(etat.objectif, "exercice")} (atteint ${etat.objectifsAtteints} fois).` }));
+      z.dActivite.replaceChildren(...P.activite(etat, j).map((a) => {
+        const atteint = a.exercices >= etat.objectif;
+        return el("li", { classe: atteint ? "atteint" : a.exercices ? "actif" : "", "aria-label": `${nomJour(a.jour)} ${dateCourte(a.jour)} : ${pluriel(a.exercices, "activité")}${atteint ? ", objectif atteint" : ""}` },
+          el("span", { classe: "jour", texte: nomJour(a.jour) }), el("span", { classe: "compte", texte: atteint ? "✓" : String(a.exercices) }));
+      }));
+      const apprises = parcours.grades.flatMap((g) => g.lecons).filter((l) => etat.lecons[l.id]);
+      z.dCarnet.replaceChildren(...(apprises.length ? apprises.map((l) => {
+        const cartes = l.exercices.map((_, k) => etat.cartes[ProgressionJeux.exoId(l, k)]).filter(Boolean);
+        const maitrise = cartes.length && cartes.every((c) => c.boite >= 4);
+        const prochaine = cartes.map((c) => c.prochaine).sort()[0];
+        const quand = maitrise ? "✓ maîtrisée" : !prochaine ? "à revoir demain" : prochaine <= j ? "à réviser aujourd'hui" : `à revoir le ${dateCourte(prochaine)}`;
+        return el("li", {}, el("strong", { texte: `${etoilesTexte(etat.lecons[l.id].etoiles)} ${l.titre}` }), el("span", { classe: "doux", texte: quand ? ` · ${quand}` : "" }), el("p", { texte: l.retenir }));
+      }) : [el("li", { classe: "doux", texte: "Termine une leçon : sa stratégie s'ajoute ici, pour la relire et la réviser." })]));
+      z.dForces.replaceChildren(...P.forces(etat).map((f) => el("li", {}, el("span", { texte: f.nom }),
+        f.taux === null
+          ? el("span", { classe: "doux", texte: f.essais ? `${pluriel(f.essais, "essai")} : encore un peu de pratique` : "pas encore travaillé" })
+          : el("span", { classe: "jauge", role: "img", "aria-label": `${Math.round(f.taux * 100)} % réussi du premier coup sur ${f.essais} essais` },
+            Object.assign(el("span"), { style: `width:${Math.round(f.taux * 100)}%` }), el("b", { texte: `${Math.round(f.taux * 100)} %` })))));
+      z.dParties.replaceChildren(...Object.entries(P.NIVEAUX_PARTIE).map(([id, n]) => {
+        const p = etat.parties[id], nulles = n.xp.nulle !== undefined ? ` · ${pluriel(p.nulles, "nulle")}` : "";
+        return el("li", { texte: `${n.nom} : ${pluriel(p.victoires, "victoire")}${nulles} · ${pluriel(p.defaites, "défaite")}${p.meilleur !== null ? ` · record ${formaterTemps(p.meilleur)}` : ""}` });
+      }));
+      afficherReglages();
+    }
+
+    function afficherReglages() {
+      const objectif = el("fieldset", { classe: "choix" }, el("legend", { texte: "Mon objectif du jour" }), ...ProgressionJeux.OBJECTIFS.map((n) => {
+        const r = el("input", { type: "radio", name: "objectif", value: n, checked: etat.objectif === n });
+        r.addEventListener("change", () => { etat = P.regler(etat, { objectif: n }); sauver(); afficherDetail(); });
+        return el("label", {}, r, pluriel(n, "exercice"));
+      }));
+      const dispo = P.emblemesDisponibles(etat);
+      const emblemes = el("fieldset", { classe: "choix emblemes" }, el("legend", { texte: "Mon emblème (un nouveau à chaque grade)" }), ...P.EMBLEMES.map((id, i) => {
+        const ouvert = dispo.includes(id), g = parcours.grades[i];
+        const r = el("input", { type: "radio", name: "embleme", value: id, disabled: !ouvert, checked: etat.embleme === id, "aria-label": ouvert ? `Emblème ${g.nom}` : `Emblème ${g.nom}, verrouillé` });
+        r.addEventListener("change", () => { etat = P.regler(etat, { embleme: id }); sauver(); afficherDetail(); });
+        return el("label", { classe: ouvert ? "" : "verrouille", title: ouvert ? g.nom : `Grade ${parcours.grades[i - 1]?.nom} à obtenir` }, r, embleme(id));
+      }));
+      const libre = el("input", { type: "checkbox", name: "libre", checked: etat.libre });
+      libre.addEventListener("change", () => { etat = P.regler(etat, { libre: libre.checked }); sauver(); afficherDetail(); });
+      const effacer = el("button", { type: "button", classe: "secondaire danger", "data-action": "effacer", texte: confirmationEffacement ? "Confirmer : tout effacer" : "🗑️ Effacer ma progression" });
+      effacer.addEventListener("click", () => {
+        if (!confirmationEffacement) { confirmationEffacement = true; afficherReglages(); z.dReglages.querySelector('[data-action="effacer"]').focus(); return; }
+        confirmationEffacement = false; etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
+      });
+      z.dReglages.replaceChildren(objectif, emblemes,
+        el("label", { classe: "case-a-cocher" }, libre, "Je connais déjà les bases : ouvrir toutes les leçons"),
+        el("p", { classe: "doux", texte: "Ta progression reste sur cet appareil. Elle ne contient aucune donnée personnelle." }), effacer);
+    }
+
+    /* ---------- Séances : leçon, révisions, défi du jour ---------- */
+    const instances = {};
+    const outils = {
+      reussir: () => terminerExercice(),
+      erreur: (message) => {
+        ex.erreurs += 1;
+        retour(message ?? (ex.erreurs >= 2 ? `Pas tout à fait. Indice : ${ex.exo.indice ?? "relis bien la question."}` : "Pas tout à fait : essaie encore !"), "ko");
+      },
+      retour: (texte, classe = "") => retour(texte, classe)
+    };
+    function adaptateur(type) {
+      if (!adaptateurs[type]) throw new Error(`type d'exercice inconnu : ${type}`);
+      if (!instances[type]) { instances[type] = adaptateurs[type](outils); z.zoneJeu.appendChild(instances[type].element); }
+      return instances[type];
+    }
+    function retour(texte, classe) { z.retour.textContent = texte; z.retour.className = `message ${classe}`; }
+
+    function ouvrirLecon(id) {
+      const info = P.lecons.get(id);
+      if (!info || !P.leconDebloquee(etat, id)) return;
+      demarrerSession("lecon", info.lecon.exercices.map((_, k) => ProgressionJeux.exoId(info.lecon, k)), info.lecon);
+    }
+    function reviser() {
+      const dues = P.revisionsDues(etat, jour()).slice(0, 8);
+      if (dues.length) demarrerSession("revision", dues);
+    }
+    function demarrerSession(mode, file, lecon = null) {
+      session = { mode, file, lecon, rang: 0, erreurs: 0, indices: 0 };
+      const grade = lecon && P.lecons.get(lecon.id).grade;
+      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi du jour" : "Révisions espacées";
+      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi du jour" : "🧠 Tes révisions";
+      z.sTexte.textContent = mode === "lecon" ? lecon.texte
+        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} XP de plus !`
+        : "Retrouve la bonne réponse sans aide. Chaque réussite repousse la prochaine révision : c'est comme ça qu'on retient pour toujours.";
+      z.zoneRetenir.hidden = mode !== "lecon";
+      z.retenir.textContent = lecon?.retenir ?? "";
+      z.exercice.hidden = false; z.bilan.hidden = true;
+      toast.textContent = "";
+      montrer("session");
+      demarrerExercice();
+    }
+
+    function demarrerExercice() {
+      const id = session.file[session.rang], { exo, lecon } = P.exercices.get(id);
+      session.adaptateur?.arreter?.();
+      ex = { id, exo, lecon, erreurs: 0, indice: false, fini: false };
+      z.progression.textContent = `${session.mode === "lecon" ? "Exercice" : `${lecon.titre} ·`} ${session.rang + 1} / ${session.file.length}`;
+      retour("", "");
+      z.suivant.hidden = true; z.indice.hidden = false; z.indice.disabled = false;
+      const qcm = exo.type === "qcm";
+      for (const [type, inst] of Object.entries(instances)) inst.element.hidden = qcm || type !== exo.type;
+      z.qcm.hidden = !qcm;
+      if (qcm) {
+        session.adaptateur = null;
+        z.consigne.textContent = exo.question;
+        z.indice.textContent = "💡 Retirer une mauvaise réponse";
+        z.qcm.replaceChildren(...exo.choix.map((texte, i) => {
+          const b = el("button", { type: "button", classe: "choix-qcm", "data-choix": i, texte });
+          b.addEventListener("click", () => repondreQcm(i));
+          return el("li", {}, b);
+        }));
+      } else {
+        const a = adaptateur(exo.type);
+        a.element.hidden = false;
+        session.adaptateur = a;
+        z.consigne.textContent = a.consigne ? a.consigne(exo) : exo.consigne;
+        z.indice.textContent = "💡 Indice";
+        a.demarrer(exo);
+      }
+    }
+
+    function repondreQcm(i) {
+      if (ex.fini) return;
+      const b = z.qcm.querySelector(`[data-choix="${i}"]`);
+      if (i !== ex.exo.bonne) { b.disabled = true; b.dataset.etat = "faux"; b.textContent = `✗ ${ex.exo.choix[i]}`; outils.erreur(); return; }
+      b.dataset.etat = "juste"; b.textContent = `✓ ${ex.exo.choix[i]}`;
+      for (const autre of z.qcm.querySelectorAll("button")) autre.disabled = true;
+      terminerExercice();
+    }
+
+    z.indice.addEventListener("click", () => {
+      if (!ex || ex.fini) return;
+      ex.indice = true; z.indice.disabled = true;
+      if (ex.exo.type === "qcm") {
+        const faux = [...z.qcm.querySelectorAll("button:not(:disabled)")].find((b) => Number(b.dataset.choix) !== ex.exo.bonne);
+        if (faux) { faux.disabled = true; faux.dataset.etat = "retire"; faux.textContent = `— ${faux.textContent}`; }
+        retour("Une mauvaise réponse a été retirée.", "");
+        return;
+      }
+      retour(`Indice : ${ex.exo.indice}`, "");
+      session.adaptateur.indice(ex.exo);
+    });
+
+    function terminerExercice() {
+      if (ex.fini) return;
+      ex.fini = true;
+      const j = jour();
+      session.erreurs += ex.erreurs; session.indices += ex.indice ? 1 : 0;
+      appliquer(P.enregistrerExercice(etat, { id: ex.id, erreurs: ex.erreurs, indice: ex.indice, jour: j, revision: session.mode === "revision" }));
+      if (session.mode === "defi") appliquer(P.enregistrerDefi(etat, { jour: j }));
+      const rappel = session.mode !== "lecon" ? ` À retenir : ${ex.lecon.retenir}` : "";
+      retour(`${ex.erreurs === 0 && !ex.indice ? "Parfait ! " : "Réussi ! "}${ex.exo.explication}${rappel}`, "ok");
+      z.indice.hidden = true;
+      const fin = session.rang === session.file.length - 1;
+      z.suivant.textContent = fin ? "Voir le bilan" : "Exercice suivant";
+      z.suivant.hidden = false;
+      z.suivant.focus();
+    }
+    z.suivant.addEventListener("click", () => {
+      if (session.rang < session.file.length - 1) { session.rang += 1; demarrerExercice(); return; }
+      afficherBilan();
+    });
+
+    function afficherBilan() {
+      session.adaptateur?.arreter?.();
+      z.exercice.hidden = true; z.bilan.hidden = false;
+      const j = jour();
+      if (session.mode === "lecon") {
+        const n = ProgressionJeux.etoiles(session);
+        appliquer(P.terminerLecon(etat, { id: session.lecon.id, etoiles: n, jour: j }));
+        z.bTitre.textContent = `${etoilesTexte(n)} Leçon terminée !`;
+        z.bTexte.textContent = `${n === 3 ? "Sans faute : bravo !" : n === 2 ? "Très bien ! Refais-la plus tard pour viser les 3 étoiles." : "Leçon réussie. Refais-la pour gagner des étoiles."} La stratégie « ${session.lecon.titre} » rejoint ton carnet : elle reviendra en révision demain.`;
+      } else if (session.mode === "defi") {
+        z.bTitre.textContent = "⚡ Défi relevé !"; z.bTexte.textContent = "Reviens demain pour un nouveau défi.";
+      } else {
+        z.bTitre.textContent = "🧠 Révisions terminées";
+        z.bTexte.textContent = `${pluriel(session.file.length, "stratégie")} révisée${session.file.length > 1 ? "s" : ""}. Les bonnes réponses reviendront plus tard, les autres dès demain.`;
+      }
+      const ordre = parcours.grades.flatMap((g) => g.lecons);
+      const prochaine = session.mode === "lecon" ? ordre.slice(ordre.findIndex((l) => l.id === session.lecon.id) + 1).find((l) => P.leconDebloquee(etat, l.id) && !etat.lecons[l.id]) : null;
+      z.bSuite.hidden = !prochaine;
+      if (prochaine) { z.bSuite.textContent = `Leçon suivante : ${prochaine.titre}`; z.bSuite.onclick = () => ouvrirLecon(prochaine.id); }
+      z.bTitre.focus();
+    }
+
+    /* ---------- Commandes ---------- */
+    z.reviser.addEventListener("click", reviser);
+    z.defi.addEventListener("click", () => { const d = P.defiDuJour(etat, jour()); if (d && !d.fait) demarrerSession("defi", [d.id]); });
+    boutonDetail.addEventListener("click", () => { confirmationEffacement = false; montrer("detail"); });
+    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => montrer("accueil"));
+
+    afficherAccueil();
+    return {
+      etat: () => etat,
+      /** Partie terminée dans l'onglet « Jouer » : enregistrée ici, et les gains sont renvoyés pour être affichés. */
+      enregistrerPartie(partie) {
+        const g = appliquer(P.enregistrerPartie(etat, { ...partie, jour: jour() }));
+        if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
+        return g;
+      },
+      /** Événements de jeu (capot, belote…) comptés pour les badges. */
+      compter(compteurs) {
+        const g = appliquer(P.compter(etat, { compteurs }));
+        if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
+        return g;
+      }
+    };
+  }
+
+  return Object.freeze({ monter, jourLocal });
+})();
+</script>
+<script>
+(() => {
+  "use strict";
+  const META = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const CONFIG = { connexionActive: false, stockage: "local" };
+  const B = MoteurBelote;
+
+  /* ---------- Stockage abstrait : local (actif) / distant (stub) ---------- */
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:${META.id}:${cle}`)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(`kermiclab:${META.id}:${cle}`, JSON.stringify(valeur)); } catch { /* stockage indisponible */ } }
+    },
+    distant: {
+      // Phase 4 : appellera le service web avec META.id et l'identifiant utilisateur.
+      lire() { return null; },
+      ecrire() { /* non activé dans le MVP */ }
+    }
+  };
+  const stockage = Stockage[CONFIG.stockage];
+
+  /* ---------- Registre des onglets ---------- */
+  const registre = [];
+  function enregistrerOnglet(def) { registre.push({ actif: true, ...def }); }
+  const services = {};
+
+  /* ---------- Cartes ---------- */
+  /** Une carte visible : rang et symbole (jamais la couleur seule), nom complet pour les lecteurs d'écran. */
+  function elementCarte(carte, { bouton = false, atout = null } = {}) {
+    const n = document.createElement(bouton ? "button" : "span");
+    if (bouton) n.type = "button";
+    n.className = `carte-jeu${"CK".includes(B.couleur(carte)) ? " rouge" : ""}${atout && B.couleur(carte) === atout ? " atout" : ""}`;
+    n.dataset.carte = carte;
+    const haut = document.createElement("span"); haut.textContent = B.rang(carte);
+    const milieu = document.createElement("span"); milieu.className = "symbole"; milieu.textContent = B.SYMBOLES[B.couleur(carte)];
+    const bas = document.createElement("span"); bas.className = "petit"; bas.textContent = B.rang(carte);
+    for (const x of [haut, milieu, bas]) x.setAttribute("aria-hidden", "true");
+    n.append(haut, milieu, bas);
+    n.setAttribute(bouton ? "aria-label" : "title", `${B.nomCarte(carte)}${atout && B.couleur(carte) === atout ? " (atout)" : ""}`);
+    if (!bouton) { n.setAttribute("role", "img"); n.setAttribute("aria-label", n.getAttribute("title")); }
+    return n;
+  }
+  const nomAtout = (a) => `${B.SYMBOLES[a]} ${B.NOMS_COULEURS[a]}`;
+  const nomJoueur = (j) => ({ sud: "Toi", est: "Est", nord: "Nord", ouest: "Ouest" })[j];
+  /** Sujet et verbe accordés : « Tu prends » pour Sud, « Est prend » pour les autres. */
+  const phrase = (j, toi, autre) => (j === "sud" ? `Tu ${toi}` : `${nomJoueur(j)} ${autre}`);
+  const texteEnchere = (j, c) => (c === "passer" ? phrase(j, "passes", "passe") : c === "prendre" ? phrase(j, "prends", "prend") : phrase(j, "choisis", "choisit") + ` ${nomAtout(c)}`);
+
+  /* ---------- Onglet explication ---------- */
+  enregistrerOnglet({ id: "explication", type: "explication", titre: "Règles",
+    rendu(panneau) { panneau.appendChild(document.getElementById("tpl-explication").content.cloneNode(true)); } });
+
+  /* ---------- Onglet application : la partie ---------- */
+  const jeu = {};
+  enregistrerOnglet({ id: "application", type: "application", titre: "Jouer",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-application").content.cloneNode(true));
+      const q = (s) => panneau.querySelector(s);
+      const sortie = (n) => q(`[data-sortie="${n}"]`);
+      const lire = (cle, valeurs, defaut) => { const v = stockage.lire(cle); return valeurs.includes(v) ? v : defaut; };
+      let niveau = lire("niveau", ["facile", "normal"], "facile");
+      let objectif = lire("objectif", [501, 1001], 501);
+      let vitesse = lire("vitesse", ["normale", "rapide"], "normale");
+      let partie = null, donne = null, minuteur = null, pliAffiche = null, bulles = {}, partieComptee = false, conseil = null;
+      const delai = () => (vitesse === "rapide" ? 120 : 650);
+
+      function message(texte, classe = "") { sortie("message").textContent = texte; sortie("message").className = `message ${classe}`; }
+      function arreter() { clearTimeout(minuteur); minuteur = null; }
+
+      function nouvellePartie() {
+        arreter();
+        partie = B.creerPartie({ objectif });
+        partieComptee = false;
+        nouvelleDonne();
+      }
+      function nouvelleDonne() {
+        arreter();
+        donne = B.creerDonne({ donneur: partie.donneur });
+        pliAffiche = null; bulles = {}; conseil = null;
+        q('[data-zone="bilan"]').hidden = true;
+        message(`Nouvelle donne : ${phrase(partie.donneur, "distribues", "distribue")}.`);
+        avancer();
+      }
+
+      /** Fait jouer l'ordinateur jusqu'à ce que ce soit à toi (ou la fin de la donne). */
+      function avancer() {
+        arreter();
+        afficher();
+        if (pliAffiche) { minuteur = setTimeout(() => { pliAffiche = null; bulles = {}; avancer(); }, delai() * 2.2); return; }
+        if (donne.phase === "encheres" && donne.parole !== "sud") {
+          minuteur = setTimeout(() => {
+            const j = donne.parole, c = B.choisirEnchere(donne, j, { niveau });
+            encherir(j, c);
+          }, delai());
+        } else if (donne.phase === "jeu" && donne.parole !== "sud") {
+          minuteur = setTimeout(() => { const j = donne.parole; jouer(j, B.choisirCarte(donne, j, { niveau })); }, delai());
+        } else if (donne.phase === "redonne") {
+          message("Tout le monde a passé : on redistribue.");
+          partie = B.ajouterDonne(partie, donne);
+          minuteur = setTimeout(nouvelleDonne, delai() * 2.5);
+        } else if (donne.phase === "fin") terminerDonne();
+      }
+
+      function encherir(j, c) {
+        donne = B.encherir(donne, j, c);
+        bulles[j] = c === "passer" ? "Je passe" : c === "prendre" ? "Je prends !" : `${B.SYMBOLES[c]} !`;
+        if (donne.phase === "jeu") {
+          bulles = {};
+          message(`${texteEnchere(j, c)} : l'atout est ${nomAtout(donne.atout)}. ${phrase(donne.parole, "commences", "commence")}.`, "ok");
+        } else message(texteEnchere(j, c) + ".");
+        avancer();
+      }
+
+      function jouer(j, carte) {
+        conseil = null;
+        donne = B.jouerCarte(donne, j, carte);
+        const annonce = donne.derniereAnnonce ? ` — ${donne.derniereAnnonce === "belote" ? "Belote !" : "Rebelote !"}` : "";
+        bulles[j] = donne.derniereAnnonce ? (donne.derniereAnnonce === "belote" ? "Belote !" : "Rebelote !") : "";
+        if (!donne.pli.length) {
+          // Pli complet : on le laisse visible un instant, avec son gagnant.
+          pliAffiche = donne.plis.at(-1);
+          message(`${phrase(j, "joues", "joue")} ${B.nomCarte(carte)}${annonce}. Pli pour ${pliAffiche.gagnant === "sud" ? "toi" : nomJoueur(pliAffiche.gagnant)} (${pliAffiche.points} point${pliAffiche.points > 1 ? "s" : ""}).`, B.equipe(pliAffiche.gagnant) === "NS" ? "ok" : "");
+        } else message(`${phrase(j, "joues", "joue")} ${B.nomCarte(carte)}${annonce}.`);
+        avancer();
+      }
+
+      function terminerDonne() {
+        const r = donne.resultat;
+        partie = B.ajouterDonne(partie, donne);
+        // Événements comptés pour les badges de l'Académie (seulement pour ton équipe).
+        services.compter?.({ contrats: r.preneur === "NS" && r.faite ? 1 : 0, belotes: r.belote === "NS" ? 1 : 0, capots: r.capot === "NS" ? 1 : 0 });
+        const ligne = (libelle, ns, eo) => { const tr = document.createElement("tr"); for (const [k, v] of [["th", libelle], ["td", ns], ["td", eo]]) { const c = document.createElement(k); c.textContent = v; tr.appendChild(c); } return tr; };
+        const entete = ligne("", "Nous", "Eux");
+        sortie("bilan-table").replaceChildren(entete,
+          ligne("Points des cartes", r.cartes.NS, r.cartes.EO),
+          ligne("Dix de der", r.der === "NS" ? 10 : 0, r.der === "EO" ? 10 : 0),
+          ligne("Belote-rebelote", r.belote === "NS" ? 20 : 0, r.belote === "EO" ? 20 : 0),
+          ligne("Plis gagnés", r.plis.NS, r.plis.EO),
+          ligne("Points marqués", r.marque.NS, r.marque.EO),
+          ligne("Score de la partie", partie.scores.NS, partie.scores.EO));
+        const preneur = r.preneur === "NS" ? "Ton équipe" : "L'équipe adverse";
+        sortie("bilan-titre").textContent = r.capot ? `💥 Capot ${r.capot === "NS" ? "pour ton équipe" : "pour l'équipe adverse"} !` : r.faite ? `✅ ${preneur} a réussi son contrat` : `❌ ${preneur} est dedans`;
+        let texte = r.capot ? "Les 8 plis pour la même équipe : 250 points !" : r.faite ? `${preneur} a pris à ${nomAtout(r.atout)} et a marqué plus que la défense.` : `${preneur} a pris à ${nomAtout(r.atout)} mais n'a pas fait plus que la défense : la défense marque 162 points.`;
+        const bouton = q('[data-action="donne-suivante"]');
+        if (partie.gagnant) {
+          const gagne = partie.gagnant === "NS";
+          texte += ` ${gagne ? "🏆 Victoire ! Ton équipe remporte la partie." : "L'équipe adverse remporte la partie. Revanche ?"}`;
+          if (!partieComptee) {
+            partieComptee = true;
+            const gains = services.enregistrerPartie?.({ resultat: gagne ? "victoire" : "defaite", niveau });
+            if (gains?.xp) texte += ` (+${gains.xp} XP à l'Académie)`;
+          }
+          bouton.textContent = "Nouvelle partie";
+          bouton.onclick = nouvellePartie;
+        } else { bouton.textContent = "Donne suivante"; bouton.onclick = nouvelleDonne; }
+        sortie("bilan-texte").textContent = texte;
+        q('[data-zone="bilan"]').hidden = false;
+        message(sortie("bilan-titre").textContent, r.marque.NS >= r.marque.EO ? "ok" : "ko");
+        afficher();
+      }
+
+      function afficher() {
+        const d = donne;
+        sortie("scores").replaceChildren(...[
+          `Nous : ${partie.scores.NS}`, `Eux : ${partie.scores.EO}`, `Objectif : ${partie.objectif}`,
+          d.atout ? `Atout : ${nomAtout(d.atout)} (pris par ${nomJoueur(d.preneur)})` : `Donneur : ${nomJoueur(d.donneur)}`
+        ].map((t) => Object.assign(document.createElement("li"), { textContent: t })));
+        for (const j of ["nord", "ouest", "est"]) {
+          const n = d.mains[j].length, zone = q(`[data-cartes="${j}"]`);
+          zone.replaceChildren(...Array.from({ length: n }, () => Object.assign(document.createElement("span"), { className: "dos" })));
+          zone.setAttribute("aria-label", `${n} carte${n > 1 ? "s" : ""}`);
+          zone.setAttribute("role", "img");
+        }
+        for (const j of B.JOUEURS) {
+          q(`[data-bulle="${j}"]`).textContent = bulles[j] ?? "";
+          const place = q(`.place[data-place="${j}"]`);
+          if ((d.phase === "encheres" || d.phase === "jeu") && d.parole === j && !pliAffiche) place.dataset.actif = ""; else delete place.dataset.actif;
+        }
+        // Tapis : carte retournée pendant les enchères, sinon le pli en cours (ou le pli qui vient de se terminer).
+        const tapis = q('[data-zone="tapis"]');
+        tapis.replaceChildren();
+        if (d.phase === "encheres") {
+          const centre = Object.assign(document.createElement("div"), { className: "centre" });
+          centre.append(elementCarte(d.retournee), Object.assign(document.createElement("div"), { textContent: d.tour === 1 ? "Carte retournée" : "2e tour : choisir l'atout" }));
+          tapis.appendChild(centre);
+        } else {
+          const cartes = pliAffiche ? pliAffiche.cartes : d.pli;
+          for (const { joueur, carte } of cartes) { const c = elementCarte(carte, { atout: d.atout }); c.dataset.place = joueur; tapis.appendChild(c); }
+          if (pliAffiche) tapis.appendChild(Object.assign(document.createElement("div"), { className: "centre", textContent: `Pli pour ${pliAffiche.gagnant === "sud" ? "toi" : nomJoueur(pliAffiche.gagnant)}` }));
+        }
+        // Enchères de Sud
+        const zoneEncheres = q('[data-zone="encheres"]');
+        const aMoiEnchere = d.phase === "encheres" && d.parole === "sud";
+        zoneEncheres.hidden = !aMoiEnchere;
+        if (aMoiEnchere) {
+          zoneEncheres.replaceChildren(...B.choixPossibles(d).map((c) => {
+            const b = document.createElement("button");
+            b.type = "button"; b.className = c === "passer" ? "secondaire" : "action"; b.dataset.enchere = c;
+            b.textContent = c === "passer" ? "Je passe" : c === "prendre" ? `Je prends (${nomAtout(B.couleur(d.retournee))})` : `Atout ${nomAtout(c)}`;
+            b.addEventListener("click", () => encherir("sud", c));
+            return b;
+          }));
+        }
+        // Main de Sud : seules les cartes autorisées sont actives, la règle est expliquée.
+        const aMoiJouer = d.phase === "jeu" && d.parole === "sud" && !pliAffiche;
+        const regle = aMoiJouer ? B.cartesJouables(d.mains.sud, d.pli, d.atout, "sud") : null;
+        sortie("regle").textContent = regle ? B.REGLES[regle.regle] : d.phase === "encheres" && aMoiEnchere ? "À toi de parler : prends-tu, ou passes-tu ?" : "";
+        q('[data-zone="main"]').replaceChildren(...B.trierMain(d.mains.sud, d.atout).map((c) => {
+          const b = elementCarte(c, { bouton: true, atout: d.atout });
+          b.disabled = !regle || !regle.cartes.includes(c);
+          if (conseil === c) b.dataset.conseil = "";
+          b.addEventListener("click", () => { if (!b.disabled) jouer("sud", c); });
+          return b;
+        }));
+        q('[data-action="conseil"]').disabled = !(aMoiJouer || aMoiEnchere);
+      }
+
+      q('[data-action="conseil"]').addEventListener("click", () => {
+        if (donne.phase === "encheres" && donne.parole === "sud") {
+          const c = B.choisirEnchere(donne, "sud", { niveau: "normal" });
+          message(`💡 À ta place, l'ordinateur ${c === "passer" ? "passerait" : c === "prendre" ? "prendrait" : `choisirait ${nomAtout(c)}`}.`);
+          return;
+        }
+        if (donne.phase !== "jeu" || donne.parole !== "sud") return;
+        conseil = B.choisirCarte(donne, "sud", { niveau: "normal" });
+        afficher();
+        q(`[data-zone="main"] [data-carte="${conseil}"]`)?.focus();
+        message(`💡 Conseil : ${B.nomCarte(conseil)}.`);
+      });
+      q('[data-action="nouvelle-partie"]').addEventListener("click", nouvellePartie);
+      for (const [nom, poser] of [["niveau", (v) => { niveau = v; }], ["objectif", (v) => { objectif = Number(v); }], ["vitesse", (v) => { vitesse = v; }]]) {
+        for (const r of panneau.querySelectorAll(`input[name="${nom}"]`)) {
+          r.checked = String({ niveau, objectif, vitesse }[nom]) === r.value;
+          r.addEventListener("change", () => { poser(r.value); stockage.ecrire(nom, nom === "objectif" ? Number(r.value) : r.value); if (nom === "objectif") nouvellePartie(); });
+        }
+      }
+      // La partie démarre dès l'ouverture de la page (onglet « Jouer » ouvert par défaut).
+      nouvellePartie();
+      Object.assign(jeu, { etat: () => ({ donne, partie, pliAffiche: !!pliAffiche }), jouer: (c) => jouer("sud", c), encherir: (c) => encherir("sud", c) });
+    } });
+
+  /* ---------- Onglet Académie : du débutant au pro (interface commune, gabarit/jeux/academie.js) ---------- */
+  const PROGRESSION = ProgressionJeux.creer(JSON.parse(document.getElementById("parcours-belote").textContent));
+  const stockageDisponible = (() => { try { localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test"); return true; } catch { return false; } })();
+  const academie = {};
+
+  /** Pli figé d'un exercice : les cartes déjà posées, avec leur joueur. */
+  function afficherPli(zone, pli, atout) {
+    zone.replaceChildren(...pli.map(({ joueur, carte }) => {
+      const f = document.createElement("figure");
+      const legende = document.createElement("figcaption"); legende.textContent = nomJoueur(joueur);
+      f.append(elementCarte(carte, { atout }), legende);
+      return f;
+    }));
+    if (!pli.length) zone.appendChild(Object.assign(document.createElement("p"), { className: "doux", textContent: "Le pli est vide : c'est toi qui commences." }));
+  }
+
+  /** Exercice « pli » : choisir la carte à jouer. Une carte interdite est expliquée par la règle qui s'applique. */
+  function adaptateurPli(outils) {
+    let ex = null;
+    const element = document.createElement("div");
+    const infos = Object.assign(document.createElement("p"), { className: "infos" });
+    const tapis = Object.assign(document.createElement("div"), { className: "pli-exercice" });
+    const titreMain = Object.assign(document.createElement("p"), { className: "infos", textContent: "Ta main :" });
+    const main = Object.assign(document.createElement("div"), { className: "main-joueur" });
+    main.setAttribute("role", "group"); main.setAttribute("aria-label", "Ta main");
+    element.append(infos, tapis, titreMain, main);
+    function choisir(carte) {
+      if (!ex || ex.fini) return;
+      const { cartes, regle } = B.cartesJouables(ex.exo.main, ex.exo.pli, ex.exo.atout, "sud");
+      if (!cartes.includes(carte)) { outils.erreur(`Interdit : ${B.REGLES[regle]}`); return; }
+      const acceptees = ex.exo.accepte === "jouables" ? cartes : ex.exo.accepte;
+      if (!acceptees.includes(carte)) { outils.erreur(ex.exo.pieges?.[carte]); return; }
+      ex.fini = true;
+      main.querySelector(`[data-carte="${carte}"]`).dataset.conseil = "";
+      outils.reussir();
+    }
+    return {
+      element,
+      demarrer(exo) {
+        ex = { exo, fini: false };
+        infos.textContent = `Atout : ${nomAtout(exo.atout)}${exo.preneur ? ` · preneur : ${nomJoueur(exo.preneur)}` : ""}${exo.tombees?.length ? ` · déjà tombées : ${exo.tombees.map(B.texteCarte).join(" ")}` : ""}`;
+        afficherPli(tapis, exo.pli, exo.atout);
+        main.replaceChildren(...B.trierMain(exo.main, exo.atout).map((c) => {
+          const b = elementCarte(c, { bouton: true, atout: exo.atout });
+          b.addEventListener("click", () => choisir(c));
+          return b;
+        }));
+      },
+      indice() {
+        if (!ex) return;
+        const { cartes } = B.cartesJouables(ex.exo.main, ex.exo.pli, ex.exo.atout, "sud");
+        const cible = (ex.exo.accepte === "jouables" ? cartes : ex.exo.accepte)[0];
+        const b = main.querySelector(`[data-carte="${cible}"]`);
+        if (b) { b.dataset.conseil = ""; b.focus(); }
+      },
+      arreter() { ex = null; }
+    };
+  }
+
+  /** Exercice « enchère » : prendre, passer ou choisir l'atout au second tour. */
+  function adaptateurEnchere(outils) {
+    let ex = null;
+    const element = document.createElement("div");
+    const tapis = Object.assign(document.createElement("div"), { className: "pli-exercice" });
+    const titreMain = Object.assign(document.createElement("p"), { className: "infos", textContent: "Ta main :" });
+    const main = Object.assign(document.createElement("div"), { className: "main-joueur" });
+    const boutons = Object.assign(document.createElement("div"), { className: "choix-boutons" });
+    element.append(tapis, titreMain, main, boutons);
+    return {
+      element,
+      demarrer(exo) {
+        ex = { exo, fini: false };
+        const f = document.createElement("figure");
+        f.append(elementCarte(exo.retournee), Object.assign(document.createElement("figcaption"), { textContent: exo.tour === 1 ? "Carte retournée" : "Carte retournée (refusée au 1er tour)" }));
+        tapis.replaceChildren(f);
+        main.replaceChildren(...B.trierMain(exo.main).map((c) => elementCarte(c)));
+        const choix = exo.tour === 1 ? ["prendre", "passer"] : [...B.COULEURS.filter((c) => c !== B.couleur(exo.retournee)), "passer"];
+        boutons.replaceChildren(...choix.map((c) => {
+          const b = document.createElement("button");
+          b.type = "button"; b.className = "secondaire"; b.dataset.enchere = c;
+          b.textContent = c === "passer" ? "Je passe" : c === "prendre" ? "Je prends" : `Atout ${nomAtout(c)}`;
+          b.addEventListener("click", () => {
+            if (!ex || ex.fini) return;
+            if (!ex.exo.accepte.includes(c)) { outils.erreur(); return; }
+            ex.fini = true; outils.reussir();
+          });
+          return b;
+        }));
+      },
+      indice() { const b = boutons.querySelector(`[data-enchere="${ex?.exo.accepte[0]}"]`); if (b) b.focus(); },
+      arreter() { ex = null; }
+    };
+  }
+
+  enregistrerOnglet({ id: "academie", type: "parcours", titre: "Académie",
+    rendu(panneau) {
+      const vue = VueAcademie.monter({
+        panneau, progression: PROGRESSION, stockage, stockageDisponible, ouvrirOnglet,
+        embleme: (symbole) => Object.assign(document.createElement("span"), { textContent: symbole }),
+        adaptateurs: { pli: adaptateurPli, enchere: adaptateurEnchere }
+      });
+      services.enregistrerPartie = vue.enregistrerPartie;
+      services.compter = vue.compter;
+      Object.assign(academie, { etat: vue.etat });
+    } });
+
+  /* ---------- Onglet mise en situation : le compteur de plis ---------- */
+  enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: "Le compteur",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-mise-en-situation").content.cloneNode(true));
+      const q = (s) => panneau.querySelector(s);
+      const sortie = (n) => q(`[data-sortie="${n}"]`);
+      let pli = null, atout = null, gagnant = null, choixGagnant = null, serie = 0;
+      let record = Number(stockage.lire("record-compteur")) || 0;
+      /** Un vrai pli : on fait jouer une donne entière par l'ordinateur et on en tire un pli au hasard. */
+      function tirerPli() {
+        for (;;) {
+          let d = B.creerDonne({ donneur: B.JOUEURS[Math.floor(Math.random() * 4)] });
+          while (d.phase === "encheres") d = B.encherir(d, d.parole, B.choisirEnchere(d, d.parole));
+          if (d.phase !== "jeu") continue;
+          while (d.phase === "jeu") d = B.jouerCarte(d, d.parole, B.choisirCarte(d, d.parole, { niveau: "facile" }));
+          return { pli: d.plis[Math.floor(Math.random() * 8)], atout: d.atout };
+        }
+      }
+      function charger() {
+        ({ pli, atout } = tirerPli());
+        gagnant = pli.gagnant; choixGagnant = null;
+        sortie("atout").textContent = `Atout : ${nomAtout(atout)} · ${nomJoueur(pli.cartes[0].joueur)} a commencé le pli.`;
+        afficherPli(q('[data-zone="pli"]'), pli.cartes, atout);
+        q('[data-zone="gagnant"]').replaceChildren(...pli.cartes.map(({ joueur }) => {
+          const b = document.createElement("button");
+          b.type = "button"; b.className = "secondaire"; b.dataset.joueur = joueur; b.textContent = nomJoueur(joueur);
+          b.setAttribute("aria-pressed", "false");
+          b.addEventListener("click", () => { choixGagnant = joueur; for (const x of q('[data-zone="gagnant"]').children) x.setAttribute("aria-pressed", String(x === b)); });
+          return b;
+        }));
+        q('[data-zone="points"]').value = "";
+        sortie("retour").textContent = ""; sortie("retour").className = "message";
+      }
+      function valider() {
+        const points = Number(q('[data-zone="points"]').value);
+        if (!choixGagnant || q('[data-zone="points"]').value === "") { sortie("retour").textContent = "Choisis le gagnant et écris le nombre de points."; return; }
+        const bonGagnant = choixGagnant === gagnant, bonsPoints = points === pli.points;
+        const detail = pli.cartes.map(({ carte }) => `${B.texteCarte(carte)} = ${B.pointsCarte(carte, atout)}`).join(", ");
+        if (bonGagnant && bonsPoints) {
+          serie += 1;
+          if (serie > record) { record = serie; stockage.ecrire("record-compteur", record); }
+          sortie("retour").textContent = `Bravo ! ${nomJoueur(gagnant)} remporte le pli, qui vaut ${pli.points} points (${detail}).`;
+          sortie("retour").className = "message ok";
+        } else {
+          serie = 0;
+          sortie("retour").textContent = `${bonGagnant ? "Bon gagnant" : `Le pli est pour ${nomJoueur(gagnant)}`}, ${bonsPoints ? "bons points" : `il vaut ${pli.points} points`} : ${detail}.`;
+          sortie("retour").className = "message ko";
+        }
+        sortie("serie").textContent = `Série : ${serie} · record : ${record}`;
+      }
+      q('[data-action="valider"]').addEventListener("click", valider);
+      q('[data-zone="points"]').addEventListener("keydown", (e) => { if (e.key === "Enter") valider(); });
+      q('[data-action="autre"]').addEventListener("click", charger);
+      sortie("serie").textContent = `Série : 0 · record : ${record}`;
+      charger();
+      Object.assign(jeu, { compteur: () => ({ gagnant, points: pli.points }) });
+    } });
+
+  /* ---------- Onglet self-test (prévu phase 2, désactivé) ---------- */
+  enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false,
+    questions: [], rendu() {} });
+
+  /* ---------- Socle : construction des onglets ---------- */
+  const liste = document.getElementById("onglets"), panneaux = document.getElementById("panneaux");
+  const actifs = registre.filter((o) => o.actif);
+  const boutons = actifs.map((o, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab"); b.id = `onglet-${o.id}`; b.textContent = o.titre;
+    b.setAttribute("aria-controls", `panneau-${o.id}`); b.dataset.onglet = o.id;
+    const p = document.createElement("section");
+    p.setAttribute("role", "tabpanel"); p.id = `panneau-${o.id}`; p.setAttribute("aria-labelledby", b.id); p.tabIndex = 0;
+    o.rendu(p); panneaux.appendChild(p); liste.appendChild(b);
+    b.addEventListener("click", () => choisir(i));
+    return b;
+  });
+  function choisir(i) {
+    boutons.forEach((b, j) => {
+      const sel = i === j; b.setAttribute("aria-selected", String(sel)); b.tabIndex = sel ? 0 : -1;
+      document.getElementById(b.getAttribute("aria-controls")).hidden = !sel;
+    });
+    stockage.ecrire("onglet", actifs[i].id);
+  }
+  function ouvrirOnglet(id) { const i = actifs.findIndex((o) => o.id === id); if (i >= 0) { choisir(i); boutons[i].focus(); } }
+  liste.addEventListener("keydown", (e) => {
+    const i = boutons.indexOf(document.activeElement); if (i < 0) return;
+    const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
+    if (n >= 0) { choisir(n); boutons[n].focus(); e.preventDefault(); }
+  });
+  // Un jeu s'ouvre directement sur l'onglet « Jouer » (sauf si un autre onglet a été mémorisé).
+  const memo = actifs.findIndex((o) => o.id === stockage.lire("onglet"));
+  choisir(memo >= 0 ? memo : Math.max(0, actifs.findIndex((o) => o.id === "application")));
+
+  document.getElementById("connexion").hidden = !CONFIG.connexionActive;
+  window.kermiclab = { META, registre, CONFIG, belote: jeu, academie };
+})();
+</script>
+</body>
+</html>
