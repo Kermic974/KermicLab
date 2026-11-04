@@ -239,8 +239,9 @@ test("académie : indice qui montre la pièce, exercice en deux coups avec répo
   const { page, contexte } = await ouvrir(nav, URL_PAGE());
   await page.goto(URL_PAGE());
   await page.click("#onglet-academie");
-  await academie(page).locator("summary", { hasText: "Personnaliser" }).click();
+  await academie(page).locator('[data-action="detail"]').click();
   await academie(page).locator('input[name="libre"]').check();
+  await academie(page).locator('[data-vue="detail"] [data-action="retour"]').click();
   await academie(page).locator('[data-lecon="fourchette"]').click();
   await academie(page).locator('[data-action="indice"]').click();
   assert.equal(await academie(page).locator('[data-case="d5"]').getAttribute("data-selection"), "", "l'indice montre le cavalier");
@@ -267,14 +268,15 @@ test("académie : révisions espacées dues, défi du jour et emblème personnal
   await page.goto(URL_PAGE());
   await page.click("#onglet-academie");
   assert.match(await academie(page).locator('[data-sortie="titre"]').textContent(), /^Pion$/);
-  assert.match(await academie(page).locator('[data-sortie="stats"]').textContent(), /Série : 4 jours/);
+  assert.match(await academie(page).locator('[data-sortie="stats"]').textContent(), /4 jours de suite/);
   assert.match(await academie(page).locator('[data-sortie="conseil"]').textContent(), /3 stratégies t'attendent/);
   assert.equal(await academie(page).locator('[data-lecon="mat-couloir"]').isDisabled(), false, "grade Cavalier ouvert");
   // Emblème du cavalier débloqué par le grade Pion, la dame pas encore.
-  await academie(page).locator("summary", { hasText: "Personnaliser" }).click();
+  await academie(page).locator('[data-action="detail"]').click();
   assert.equal(await academie(page).locator('input[name="embleme"][value="q"]').isDisabled(), true);
   await academie(page).locator('input[name="embleme"][value="n"]').check({ force: true });
   assert.equal((await etatAcademie(page)).embleme, "n");
+  await academie(page).locator('[data-vue="detail"] [data-action="retour"]').click();
   // Révisions : on répond juste à chaque carte.
   await academie(page).locator('[data-action="conseil"]').click();
   assert.match(await academie(page).locator('[data-sortie="session-titre"]').textContent(), /Tes révisions/);
@@ -338,6 +340,7 @@ test("académie : une victoire contre l'ordinateur rapporte de l'XP et un badge,
   assert.equal(etat.parties.facile.victoires, 1);
   assert.equal(etat.xp, 50);
   await page.click("#onglet-academie");
-  assert.match(await academie(page).locator('[data-sortie="parties"]').textContent(), /Facile 1 victoire/);
+  await academie(page).locator('[data-action="detail"]').click();
+  assert.match(await academie(page).locator('[data-sortie="parties"]').textContent(), /Facile : 1 victoire · 0 nulle · 0 défaite/);
   await contexte.close();
 });

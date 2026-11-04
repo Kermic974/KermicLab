@@ -61,6 +61,31 @@ export function appliquerCsp(html, { styles = false } = {}) {
 
 async function existe(p) { try { await stat(p); return true; } catch { return false; } }
 
+const racineDepot = path.resolve(new URL("../..", import.meta.url).pathname);
+/** Seuls les modules partagés des jeux peuvent être inclus (pas de chemin arbitraire). */
+const INCLUSION_AUTORISEE = /^gabarit\/jeux\/[a-z0-9-]+\.(js|css)$/;
+
+/**
+ * Pages écrites à la main : recopie dans chaque `<script data-inclure="…">` ou `<style data-inclure="…">` le module
+ * partagé qu'il désigne (ADR 0015). La page reste un fichier unique et autonome ; une copie périmée est détectée
+ * comme une page obsolète par `check:pages`, comme un hash CSP périmé.
+ */
+export async function inclureModules(html, racine = racineDepot) {
+  const motif = /(<(script|style)\b[^>]*\sdata-inclure="([^"]*)"[^>]*>)([\s\S]*?)(<\/\2>)/g;
+  const morceaux = [];
+  let dernier = 0;
+  for (const m of html.matchAll(motif)) {
+    const [, ouverture, balise, chemin, , fermeture] = m;
+    if (!INCLUSION_AUTORISEE.test(chemin)) throw new Error(`inclusion refusée : « ${chemin} » (attendu : gabarit/jeux/<nom>.js ou .css)`);
+    if ((balise === "script") !== chemin.endsWith(".js")) throw new Error(`inclusion « ${chemin} » : mauvaise balise <${balise}>`);
+    const contenu = (await readFile(path.join(racine, chemin), "utf8")).trimEnd();
+    morceaux.push(html.slice(dernier, m.index), ouverture, "\n", contenu, "\n", fermeture);
+    dernier = m.index + m[0].length;
+  }
+  morceaux.push(html.slice(dernier));
+  return morceaux.join("");
+}
+
 /** Charge toutes les maquettes des dossiers donnés (dépôt public + éventuel dépôt privé). */
 export async function chargerCatalogue(dossiers) {
   const maquettes = [];
@@ -89,7 +114,7 @@ export async function chargerCatalogue(dossiers) {
       for (const langue of langues) {
         const fichier = path.join(rep, langue === "fr" ? "page.html" : `page.${langue}.html`);
         const source = (await existe(fichier)) ? await readFile(fichier, "utf8") : "";
-        const html = langue === "fr" && generee ? generee : appliquerCsp(source);
+        const html = langue === "fr" && generee ? generee : appliquerCsp(await inclureModules(source));
         sources.push({ fichier, aJour: source === html, html });
         const meta = lireMetaHtml(html);
         if (meta.id !== fiche.id || meta.version !== fiche.version) throw new Error(`${fichier}: id/version différents de la fiche`);

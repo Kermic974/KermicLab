@@ -31,8 +31,13 @@ validation du CODEOWNER.
 - **Lisibilité** : un état ne dépend jamais de la seule couleur (symbole, chiffre ou texte, plus `aria-label`).
 - **Mobile** : la page ne défile jamais horizontalement ; une grande grille défile dans son propre cadre.
 - **Données** : records et préférences en stockage `local` uniquement, sans donnée personnelle.
-- **Progression** (facultatif) : un didacticiel et sa gamification suivent l'Académie des échecs (ADR 0014) — parcours en
-  JSON vérifié par le moteur, logique de progression dans un module pur, données relues et validées au chargement.
+- **Académie** (facultatif, recommandé) : didacticiel « du débutant au pro » et gamification, communs à tous les jeux
+  (ADR 0014, 0015, présentation : `docs/gamification.md`). Le jeu fournit son parcours en JSON
+  (`<script type="application/json" id="parcours-<id>">`) et un adaptateur par type d'exercice interactif. Il inclut les
+  modules partagés avec `<script id="progression-jeux" data-inclure="gabarit/jeux/progression.js"></script>`,
+  `<script id="academie-jeux" data-inclure="gabarit/jeux/academie.js"></script>` et
+  `<style data-inclure="gabarit/jeux/academie.css"></style>`, que `npm run build` remplit. Ne modifie jamais ces copies
+  dans la page : modifie `gabarit/jeux/`, puis relance le build.
 
 ## 3. Tests
 
