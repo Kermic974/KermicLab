@@ -1,8 +1,9 @@
 # Ajouter un jeu universel
 
-Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/demineur/` (grille, hasard) et
-`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données) et `catalogue/belote/` (jeu de cartes à quatre,
-exercices « pli » et « enchère »).
+Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/demineur/` (grille, hasard),
+`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données), `catalogue/belote/` (jeu de cartes à quatre,
+exercices « pli » et « enchère ») et `catalogue/sudoku/` (grilles à solution unique, saisie clavier et tactile,
+progression du débutant au pro).
 
 Un jeu suit le processus d'une maquette (AGENTS.md §6) : issue `maquette-manquante`, branche `maquette/<id>`, PR,
 validation du CODEOWNER.
@@ -32,7 +33,7 @@ validation du CODEOWNER.
 - **Lisibilité** : un état ne dépend jamais de la seule couleur (symbole, chiffre ou texte, plus `aria-label`).
 - **Mobile** : la page ne défile jamais horizontalement ; une grande grille défile dans son propre cadre.
 - **Données** : records et préférences en stockage `local` uniquement, sans donnée personnelle.
-- **Académie** (facultatif, recommandé) : didacticiel « du débutant au pro » et gamification, communs à tous les jeux
+- **Académie** (facultatif, recommandé) : didacticiel « du débutant au pro » et gamification, communs aux jeux qui les intègrent
   (ADR 0014, 0015, présentation : `docs/gamification.md`). Le jeu fournit son parcours en JSON
   (`<script type="application/json" id="parcours-<id>">`) et un adaptateur par type d'exercice interactif. Il inclut les
   modules partagés avec `<script id="progression-jeux" data-inclure="gabarit/jeux/progression.js"></script>`,
