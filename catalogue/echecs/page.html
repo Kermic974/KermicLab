@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-pEBlO4MBntyIO1C3Hrl5s1BkhWEVuCOkrZqnKCBHyUM=' 'sha256-ybnx/KzNAJZmkwCTFuZMvOKSdJRZNu3JybLYiKQxqpY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wJtFz5B7MlVNnnBFeXfk1fTtTYfMdi/Fz19SublDQMg=' 'sha256-burseg9jb03jZPhDZAA2LpqdjBwJlXBXPOk3dh89rLI=' 'sha256-Oe9X1kBGC2Su7I+F3FuvwX9AyfFYXzCgTIXnRq5zVUM='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Échecs – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "echecs",
   "titre": "Échecs",
   "sujet": "jeux/echecs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-04",
   "langue": "fr",
-  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
 }
 </script>
 <script type="application/json" id="enigmes-echecs">
@@ -31,6 +31,762 @@
     "indice": "Le roi noir est entouré de ses propres pièces. Quelle pièce peut sauter par-dessus les autres ?",
     "explication": "Cf7 : le cavalier saute et donne échec. Le roi est « étouffé » par sa tour et ses pions : il ne peut pas bouger. Échec et mat !" }
 ]
+</script>
+<script type="application/json" id="parcours-echecs">
+{
+ "themes": {
+  "bases": "Les bases",
+  "mats": "Les mats",
+  "tactique": "La tactique",
+  "ouverture": "L'ouverture",
+  "milieu": "Le milieu de partie",
+  "finales": "Les finales"
+ },
+ "grades": [
+  {
+   "id": "pion",
+   "nom": "Pion",
+   "embleme": "p",
+   "sousTitre": "Je découvre le jeu",
+   "lecons": [
+    {
+     "id": "valeurs",
+     "titre": "La valeur des pièces",
+     "theme": "bases",
+     "texte": "Toutes les pièces ne se valent pas. Pour savoir si un échange est bon, on compte des points : on ne donne pas une tour pour un pion !",
+     "retenir": "Pion 1, cavalier 3, fou 3, tour 5, dame 9. Le roi n'a pas de prix : le perdre, c'est perdre la partie.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Combien de points vaut une tour ?",
+       "choix": [
+        "1",
+        "3",
+        "5",
+        "9"
+       ],
+       "bonne": 2,
+       "explication": "Une tour vaut 5 points : presque deux cavaliers."
+      },
+      {
+       "type": "coup",
+       "fen": "3q2k1/8/8/8/3R3n/8/8/6K1 w - - 0 1",
+       "consigne": "Ta tour peut prendre deux pièces. Prends celle qui vaut le plus de points.",
+       "etapes": [
+        {
+         "accepte": [
+          "d4d8"
+         ]
+        }
+       ],
+       "indice": "La dame vaut 9 points, le cavalier seulement 3.",
+       "explication": "Txd8+ : tu gagnes la dame (9 points) au lieu du cavalier (3 points).",
+       "pieges": {
+        "d4h4": "Txh4 gagne un cavalier (3 points)… mais la dame en vaut 9 !"
+       }
+      }
+     ]
+    },
+    {
+     "id": "parer-echec",
+     "titre": "Parer un échec",
+     "theme": "bases",
+     "texte": "Quand ton roi est attaqué, tu dois réagir tout de suite. Il existe trois façons de s'en sortir.",
+     "retenir": "Contre un échec : déplace le roi, prends la pièce qui attaque, ou mets une pièce entre les deux.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Laquelle de ces réponses NE pare PAS un échec ?",
+       "choix": [
+        "Déplacer le roi",
+        "Prendre la pièce qui attaque",
+        "Attaquer la dame adverse",
+        "Placer une pièce entre l'attaquant et le roi"
+       ],
+       "bonne": 2,
+       "explication": "Attaquer ailleurs ne protège pas le roi : il faut d'abord régler l'échec."
+      },
+      {
+       "type": "coup",
+       "fen": "4k3/8/8/8/8/8/4q3/4K3 w - - 0 1",
+       "consigne": "Ton roi est en échec. La dame noire n'est pas protégée : sauve ton roi !",
+       "etapes": [
+        {
+         "accepte": [
+          "e1e2"
+         ]
+        }
+       ],
+       "indice": "Toutes les cases autour de ton roi sont attaquées… sauf celle de la dame elle-même.",
+       "explication": "Rxe2 : le roi prend la dame, qui n'était défendue par personne."
+      },
+      {
+       "type": "coup",
+       "fen": "6k1/8/8/8/8/8/4BPPP/r5K1 w - - 0 1",
+       "consigne": "La tour noire fait échec sur la première rangée et ton roi ne peut pas bouger. Place une pièce entre les deux, sur une case protégée.",
+       "etapes": [
+        {
+         "accepte": [
+          "e2f1"
+         ]
+        }
+       ],
+       "indice": "Ton fou e2 peut reculer d'une case, sur une case que ton roi protège.",
+       "explication": "Ff1 : le fou bloque la ligne, et ton roi le protège. Si la tour le prend, ton roi reprend la tour !",
+       "pieges": {
+        "e2d1": "Fd1 bloque bien la ligne… mais rien ne le protège : Txd1 serait échec et mat ! Choisis une case que ton roi défend."
+       }
+      }
+     ]
+    },
+    {
+     "id": "roque",
+     "titre": "Le roque",
+     "theme": "bases",
+     "texte": "Au milieu, le roi est en danger. Le roque le met à l'abri derrière ses pions et fait entrer la tour dans le jeu, en un seul coup.",
+     "retenir": "Roque tôt, en général du petit côté : roi en sécurité, tour activée.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "r3k2r/ppppqppp/2n1bn2/4p3/4P3/2N1BN2/PPPPQPPP/R3K2R w KQkq - 0 1",
+       "consigne": "Fais le petit roque : touche ton roi, puis la case g1.",
+       "etapes": [
+        {
+         "accepte": [
+          "e1g1"
+         ]
+        }
+       ],
+       "indice": "Le roi va de deux cases vers la tour h1.",
+       "explication": "O-O : le roi est caché derrière les pions f2, g2, h2 et la tour arrive en f1."
+      },
+      {
+       "type": "qcm",
+       "question": "Dans quel cas le roque est-il interdit ?",
+       "choix": [
+        "Quand le roi est en échec",
+        "Quand une tour adverse est sur l'échiquier",
+        "Après le dixième coup",
+        "Quand la dame a déjà bougé"
+       ],
+       "bonne": 0,
+       "explication": "On ne roque pas pour sortir d'un échec. Il faut aussi que le roi et la tour n'aient jamais bougé."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cavalier",
+   "nom": "Cavalier",
+   "embleme": "n",
+   "sousTitre": "Je sais faire mat",
+   "lecons": [
+    {
+     "id": "mat-couloir",
+     "titre": "Le mat du couloir",
+     "theme": "mats",
+     "texte": "Un roi bien abrité derrière ses pions peut se retrouver… enfermé ! Une tour ou une dame sur sa rangée suffit alors à le mater.",
+     "retenir": "Un roi bloqué par ses propres pions craint le mat du couloir. Pense à lui ouvrir une fenêtre (un pion avancé).",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "6k1/5ppp/8/8/8/8/8/3R2K1 w - - 0 1",
+       "consigne": "Les Blancs font mat en un coup.",
+       "etapes": [
+        {
+         "but": "mat"
+        }
+       ],
+       "indice": "Le roi noir ne peut pas avancer : attaque toute sa rangée.",
+       "explication": "Td8# : la tour attaque la 8e rangée, les pions empêchent le roi de fuir."
+      },
+      {
+       "type": "qcm",
+       "question": "Comment éviter de subir un mat du couloir ?",
+       "choix": [
+        "Garder tous ses pions devant le roi",
+        "Avancer un pion devant le roi pour lui ouvrir une case",
+        "Mettre le roi au centre",
+        "Échanger sa dame"
+       ],
+       "bonne": 1,
+       "explication": "Un pion avancé (h3 ou g3 par exemple) donne au roi une case de fuite : on l'appelle une « fenêtre »."
+      }
+     ]
+    },
+    {
+     "id": "mat-dame",
+     "titre": "Mater avec la dame",
+     "theme": "mats",
+     "texte": "Avec une dame et ton roi, tu peux toujours mater le roi seul. On repousse le roi adverse sur un bord, puis le roi vient aider la dame.",
+     "retenir": "Dame + roi contre roi : pousse le roi adverse au bord, approche ton roi, puis mate. Attention au pat !",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "k7/8/1K6/8/8/8/7Q/8 w - - 0 1",
+       "consigne": "Ton roi est tout près. Trouve un mat en un coup.",
+       "etapes": [
+        {
+         "but": "mat"
+        }
+       ],
+       "indice": "Le roi blanc garde déjà a7 et b7.",
+       "explication": "Bravo ! La dame attaque le roi, ton roi garde les cases de fuite : échec et mat."
+      },
+      {
+       "type": "qcm",
+       "question": "Le roi noir n'est pas en échec mais ne peut plus bouger, et les Noirs n'ont aucun autre coup. C'est…",
+       "choix": [
+        "Échec et mat : les Blancs gagnent",
+        "Pat : la partie est nulle",
+        "Les Noirs passent leur tour",
+        "Les Blancs rejouent"
+       ],
+       "bonne": 1,
+       "explication": "C'est le pat : partie nulle. Avec une dame, laisse toujours une case au roi adverse tant que tu ne fais pas mat."
+      }
+     ]
+    },
+    {
+     "id": "mat-escalier",
+     "titre": "L'escalier des deux tours",
+     "theme": "mats",
+     "texte": "Deux tours se relaient comme sur un escalier : l'une coupe une rangée, l'autre donne échec sur la suivante. Le roi recule jusqu'au bord.",
+     "retenir": "Deux tours : une tour barre la rangée, l'autre donne échec juste devant. Recommence jusqu'au bord.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "6k1/R7/8/8/8/8/8/1R4K1 w - - 0 1",
+       "consigne": "La tour a7 coupe déjà la 7e rangée. Mate en un coup.",
+       "etapes": [
+        {
+         "but": "mat"
+        }
+       ],
+       "indice": "L'autre tour peut monter jusqu'en haut.",
+       "explication": "Tb8# : la tour b8 donne échec, la tour a7 empêche le roi de reculer."
+      },
+      {
+       "type": "coup",
+       "fen": "6k1/8/8/8/8/8/R7/1R4K1 w - - 0 1",
+       "consigne": "Mat en deux coups ! D'abord, coupe la 7e rangée avec une tour.",
+       "etapes": [
+        {
+         "accepte": [
+          "a2a7",
+          "b1b7"
+         ],
+         "reponse": "g8h8"
+        },
+        {
+         "but": "mat"
+        }
+       ],
+       "indice": "Une tour monte sur la 7e rangée, l'autre finira le travail sur la 8e.",
+       "explication": "La première tour barre la 7e rangée, la seconde donne mat sur la 8e : c'est l'escalier !"
+      }
+     ]
+    },
+    {
+     "id": "berger",
+     "titre": "Se défendre du coup du berger",
+     "theme": "mats",
+     "texte": "Le coup du berger vise le pion f7 (ou f2), défendu seulement par le roi au début. Dame et fou l'attaquent ensemble.",
+     "retenir": "Au début, f7 et f2 sont les points faibles. Défends-les, et ne laisse pas la dame et le fou adverses viser le même pion.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+       "consigne": "Les Blancs menacent Dxf7#. Tu joues les Noirs : protège-toi !",
+       "etapes": [
+        {
+         "accepte": [
+          "g7g6",
+          "d8e7",
+          "d8f6"
+         ]
+        }
+       ],
+       "indice": "Défends f7 avec la dame, ou chasse la dame blanche avec un pion.",
+       "explication": "Bien joué ! g6 chasse la dame, De7 ou Df6 défend f7. Attention : Cf6 perdrait tout de suite sur Dxf7#.",
+       "pieges": {
+        "g8f6": "Cf6 ?? semble naturel, mais il ne défend pas f7 : Dxf7 serait échec et mat !"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fou",
+   "nom": "Fou",
+   "embleme": "b",
+   "sousTitre": "Je vois la tactique",
+   "lecons": [
+    {
+     "id": "fourchette",
+     "titre": "La fourchette",
+     "theme": "tactique",
+     "texte": "Une fourchette, c'est une pièce qui attaque deux pièces adverses en même temps. L'adversaire ne peut en sauver qu'une.",
+     "retenir": "Fourchette : une pièce attaque deux cibles à la fois. Le cavalier et le pion sont les champions de la fourchette.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1",
+       "consigne": "Ton cavalier peut attaquer le roi et la tour en même temps. Trouve la fourchette !",
+       "etapes": [
+        {
+         "accepte": [
+          "d5c7"
+         ],
+         "reponse": "e8d7"
+        },
+        {
+         "accepte": [
+          "c7a8"
+         ]
+        }
+       ],
+       "indice": "Cherche une case d'où le cavalier touche e8 et a8.",
+       "explication": "Cc7+ attaque le roi et la tour. Le roi doit bouger, et le cavalier prend la tour."
+      },
+      {
+       "type": "coup",
+       "fen": "4k3/8/8/2n1b3/8/2PP4/8/4K3 w - - 0 1",
+       "consigne": "Un simple pion peut faire une fourchette. Attaque le cavalier et le fou en même temps.",
+       "etapes": [
+        {
+         "accepte": [
+          "d3d4"
+         ]
+        }
+       ],
+       "indice": "Un pion prend en diagonale : place-le entre les deux pièces noires.",
+       "explication": "d4 attaque c5 et e5, et le pion c3 le protège. Les Noirs vont perdre une pièce contre un pion."
+      }
+     ]
+    },
+    {
+     "id": "clouage",
+     "titre": "Le clouage",
+     "theme": "tactique",
+     "texte": "Une pièce est clouée quand elle ne peut pas bouger sans exposer une pièce plus importante derrière elle. Clouée devant le roi, elle n'a même pas le droit de bouger.",
+     "retenir": "Une pièce clouée ne défend plus vraiment : attaque ce qu'elle semble protéger.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "4k3/3n4/8/1B2b3/8/8/8/4R1K1 w - - 0 1",
+       "consigne": "Le cavalier d7 semble défendre le fou e5… mais il est cloué par ton fou b5. Profites-en !",
+       "etapes": [
+        {
+         "accepte": [
+          "e1e5"
+         ]
+        }
+       ],
+       "indice": "Ta tour peut prendre le fou : le cavalier pourra-t-il la reprendre ?",
+       "explication": "Txe5+ : le cavalier ne peut pas reprendre, il laisserait son roi en échec. Une pièce gagnée !"
+      },
+      {
+       "type": "qcm",
+       "question": "Une pièce noire est clouée contre son roi par un fou blanc. Que peut-elle faire ?",
+       "choix": [
+        "Bouger librement",
+        "Bouger seulement en restant sur la ligne du fou",
+        "Sauter par-dessus le fou",
+        "Rien : elle est prise"
+       ],
+       "bonne": 1,
+       "explication": "Elle peut seulement glisser le long de la ligne de clouage (ou prendre le fou si elle le peut), sans jamais découvrir son roi."
+      }
+     ]
+    },
+    {
+     "id": "enfilade",
+     "titre": "L'enfilade",
+     "theme": "tactique",
+     "texte": "L'enfilade, c'est un clouage à l'envers : on attaque la pièce la plus précieuse, elle s'écarte, et on prend celle qui était cachée derrière.",
+     "retenir": "Enfilade : attaque le roi ou la dame quand une autre pièce se trouve derrière, sur la même ligne.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "4q3/8/8/4k3/8/8/8/R5K1 w - - 0 1",
+       "consigne": "Le roi et la dame noirs sont sur la même colonne. Donne échec, puis gagne la dame.",
+       "etapes": [
+        {
+         "accepte": [
+          "a1e1"
+         ],
+         "reponse": "e5d4"
+        },
+        {
+         "accepte": [
+          "e1e8"
+         ]
+        }
+       ],
+       "indice": "Ta tour peut attaquer la colonne e.",
+       "explication": "Te1+ : le roi doit quitter la colonne, et la tour prend la dame cachée derrière lui."
+      }
+     ]
+    },
+    {
+     "id": "decouverte",
+     "titre": "L'attaque à la découverte",
+     "theme": "tactique",
+     "texte": "Quand une pièce s'écarte, elle peut découvrir l'attaque d'une autre pièce placée derrière elle. Deux attaques d'un coup !",
+     "retenir": "Attaque à la découverte : la pièce qui bouge attaque une cible, celle qu'elle démasque en attaque une autre.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "q3k3/8/8/8/4B3/8/8/4R1K1 w - - 0 1",
+       "consigne": "Ton fou cache ta tour. Fais-le bouger pour donner échec avec la tour… et gagner gros.",
+       "etapes": [
+        {
+         "accepte": [
+          "e4a8"
+         ]
+        }
+       ],
+       "indice": "Le fou peut prendre quelque chose sur sa diagonale.",
+       "explication": "Fxa8+ : le fou prend la dame et la tour e1 donne échec. Les Noirs ne peuvent pas reprendre."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tour",
+   "nom": "Tour",
+   "embleme": "r",
+   "sousTitre": "Je commence bien mes parties",
+   "lecons": [
+    {
+     "id": "centre",
+     "titre": "Prendre le centre",
+     "theme": "ouverture",
+     "texte": "Les quatre cases du centre (d4, e4, d5, e5) sont les plus importantes : les pièces y contrôlent le plus de cases.",
+     "retenir": "Ouverture, règle n° 1 : occupe ou contrôle le centre avec tes pions (e4, d4).",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+       "consigne": "Premier coup de la partie : avance un pion de deux cases vers le centre.",
+       "etapes": [
+        {
+         "accepte": [
+          "e2e4",
+          "d2d4"
+         ]
+        }
+       ],
+       "indice": "Les pions du centre sont ceux des colonnes d et e.",
+       "explication": "Parfait : ce pion occupe le centre et ouvre le chemin à ta dame et à un fou."
+      },
+      {
+       "type": "qcm",
+       "question": "Quelles sont les cases du centre ?",
+       "choix": [
+        "a1, h1, a8, h8",
+        "d4, e4, d5, e5",
+        "e1, e8, d1, d8",
+        "c3, f3, c6, f6"
+       ],
+       "bonne": 1,
+       "explication": "d4, e4, d5 et e5 : une pièce placée au centre rayonne dans toutes les directions."
+      }
+     ]
+    },
+    {
+     "id": "developper",
+     "titre": "Développer ses pièces",
+     "theme": "ouverture",
+     "texte": "Développer, c'est sortir ses cavaliers et ses fous de la première rangée pour qu'ils participent à la bataille.",
+     "retenir": "Sors les cavaliers avant les fous, vers le centre (Cf3, Cc3). Évite de jouer deux fois la même pièce au début.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+       "consigne": "Développe un cavalier vers le centre.",
+       "etapes": [
+        {
+         "accepte": [
+          "g1f3",
+          "b1c3"
+         ]
+        }
+       ],
+       "indice": "Un cavalier au bord (Ch3, Ca3) est mal placé : vise f3 ou c3.",
+       "explication": "Bien : ton cavalier vise le centre. Cf3 attaque même le pion e5 !"
+      },
+      {
+       "type": "qcm",
+       "question": "Pourquoi éviter de sortir sa dame trop tôt ?",
+       "choix": [
+        "Elle n'a pas le droit de bouger avant le 5e coup",
+        "L'adversaire la chasse en développant ses pièces avec gain de temps",
+        "Elle devient plus faible",
+        "Elle ne peut plus revenir"
+       ],
+       "bonne": 1,
+       "explication": "Chaque pièce adverse qui attaque ta dame se développe, pendant que toi tu perds du temps à la déplacer."
+      }
+     ]
+    },
+    {
+     "id": "roi-abri",
+     "titre": "Mettre son roi à l'abri",
+     "theme": "ouverture",
+     "texte": "Une fois les pièces sorties, le roque met le roi à l'abri. Un roi resté au centre devient une cible quand les colonnes s'ouvrent.",
+     "retenir": "Les trois règles de l'ouverture : centre, développement, roque.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5",
+       "consigne": "Tes pièces du côté roi sont sorties. Quel est le meilleur moyen de mettre ton roi en sécurité ?",
+       "etapes": [
+        {
+         "accepte": [
+          "e1g1"
+         ]
+        }
+       ],
+       "indice": "Un coup spécial déplace le roi ET une tour.",
+       "explication": "O-O : ton roi est à l'abri et ta tour rejoint le centre."
+      },
+      {
+       "type": "qcm",
+       "question": "Quel est le bon ordre de priorités dans l'ouverture ?",
+       "choix": [
+        "Attaquer tout de suite avec la dame",
+        "Centre, développement, roque",
+        "Avancer tous les pions",
+        "Garder toutes ses pièces à la maison"
+       ],
+       "bonne": 1,
+       "explication": "Centre, développement, roque : avec ces trois idées, tu commences bien presque toutes tes parties."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dame",
+   "nom": "Dame",
+   "embleme": "q",
+   "sousTitre": "J'ai un plan",
+   "lecons": [
+    {
+     "id": "compter",
+     "titre": "Compter avant de prendre",
+     "theme": "milieu",
+     "texte": "Avant de prendre une pièce, demande-toi : est-elle défendue ? Si oui, compte qui gagne l'échange.",
+     "retenir": "Avant chaque prise : qui attaque, qui défend ? Prends les pièces non défendues, méfie-toi des cadeaux.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "4k3/8/2p5/3p4/6n1/8/8/3QK3 w - - 0 1",
+       "consigne": "Ta dame peut prendre le pion d5 ou le cavalier g4. Une seule prise est bonne.",
+       "etapes": [
+        {
+         "accepte": [
+          "d1g4"
+         ]
+        }
+       ],
+       "indice": "Le pion d5 est protégé par le pion c6. Et le cavalier ?",
+       "explication": "Dxg4 : le cavalier n'était pas défendu. Dxd5 aurait perdu la dame après cxd5 !",
+       "pieges": {
+        "d1d5": "Dxd5 ?? Le pion c6 reprendrait ta dame : tu donnerais 9 points pour en gagner 1."
+       }
+      },
+      {
+       "type": "qcm",
+       "question": "Ton fou peut prendre un pion défendu par un autre pion. Bonne idée ?",
+       "choix": [
+        "Oui, un pion c'est toujours bon à prendre",
+        "Non : tu donnes 3 points pour 1",
+        "Oui, si c'est le premier coup",
+        "Ça ne change rien"
+       ],
+       "bonne": 1,
+       "explication": "Le pion te reprend le fou : tu perds 3 points pour en gagner 1."
+      }
+     ]
+    },
+    {
+     "id": "colonne-ouverte",
+     "titre": "La tour sur la colonne ouverte",
+     "theme": "milieu",
+     "texte": "Une colonne ouverte n'a plus aucun pion. C'est l'autoroute des tours : de là, elles peuvent pénétrer chez l'adversaire.",
+     "retenir": "Place tes tours sur les colonnes ouvertes : elles y sont actives et visent la 7e rangée adverse.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "r4rk1/ppp2ppp/8/8/8/8/PPP2PPP/R4RK1 w - - 0 1",
+       "consigne": "Les colonnes d et e sont ouvertes. Place une de tes tours sur l'une d'elles.",
+       "etapes": [
+        {
+         "accepte": [
+          "a1d1",
+          "a1e1",
+          "f1d1",
+          "f1e1"
+         ]
+        }
+       ],
+       "indice": "Une tour glisse sur la première rangée jusqu'en d1 ou e1.",
+       "explication": "Bravo : ta tour contrôle la colonne ouverte avant celle de l'adversaire."
+      },
+      {
+       "type": "qcm",
+       "question": "Qu'est-ce qu'une pièce « active » ?",
+       "choix": [
+        "Une pièce qui a déjà bougé",
+        "Une pièce qui contrôle beaucoup de cases utiles",
+        "Une pièce protégée",
+        "Une pièce sur sa case de départ"
+       ],
+       "bonne": 1,
+       "explication": "Une pièce active touche beaucoup de cases importantes. Améliore toujours ta pièce la moins active."
+      }
+     ]
+    },
+    {
+     "id": "plan",
+     "titre": "Faire un plan",
+     "theme": "milieu",
+     "texte": "Quand il n'y a rien à prendre ni à attaquer, on cherche un plan : améliorer sa plus mauvaise pièce, attaquer un point faible, avancer là où on est plus fort.",
+     "retenir": "À chaque coup : 1) Que menace l'adversaire ? 2) Puis-je gagner quelque chose ? 3) Sinon, améliore ta plus mauvaise pièce.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "Ton adversaire vient de jouer. Quelle est la première question à te poser ?",
+       "choix": [
+        "Quelle pièce vais-je déplacer ?",
+        "Que menace son dernier coup ?",
+        "Combien de temps me reste-t-il ?",
+        "Puis-je roquer ?"
+       ],
+       "bonne": 1,
+       "explication": "Toujours regarder d'abord la menace adverse : c'est comme ça qu'on évite les mauvaises surprises."
+      },
+      {
+       "type": "qcm",
+       "question": "Il n'y a ni prise ni menace. Que faire ?",
+       "choix": [
+        "Avancer un pion au hasard",
+        "Améliorer ta pièce la moins active",
+        "Déplacer le roi",
+        "Proposer nulle"
+       ],
+       "bonne": 1,
+       "explication": "Un cavalier au bord, un fou bloqué par ses pions, une tour enfermée : améliore-les, une à une."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "roi",
+   "nom": "Roi",
+   "embleme": "k",
+   "sousTitre": "Je gagne les finales",
+   "lecons": [
+    {
+     "id": "roi-actif",
+     "titre": "Le roi actif",
+     "theme": "finales",
+     "texte": "En finale, il reste peu de pièces et le roi ne craint plus les mats : il devient une pièce forte qui doit aller au centre.",
+     "retenir": "En finale, active ton roi : centralise-le pour soutenir tes pions et bloquer ceux de l'adversaire.",
+     "exercices": [
+      {
+       "type": "qcm",
+       "question": "En finale, où doit aller le roi ?",
+       "choix": [
+        "Rester caché dans un coin",
+        "Au centre, pour participer",
+        "Toujours sur sa case de départ",
+        "Le plus loin possible des pions"
+       ],
+       "bonne": 1,
+       "explication": "Un roi centralisé soutient ses pions et freine ceux de l'adversaire."
+      }
+     ]
+    },
+    {
+     "id": "promotion",
+     "titre": "Le pion passé",
+     "theme": "finales",
+     "texte": "Un pion passé n'a plus aucun pion adverse devant lui ni sur les colonnes voisines. Il rêve de devenir dame !",
+     "retenir": "Les pions passés doivent être poussés. La règle du carré dit si le roi adverse peut encore le rattraper.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "8/1P6/8/8/8/5k2/8/6K1 w - - 0 1",
+       "consigne": "Ton pion est à un pas de la dame. Fais-le passer… en dame !",
+       "etapes": [
+        {
+         "accepte": [
+          "b7b8q"
+         ]
+        }
+       ],
+       "indice": "Avance le pion en b8 et choisis la dame.",
+       "explication": "b8=D : une nouvelle dame ! Avec elle, le mat ne sera plus qu'une question de temps."
+      },
+      {
+       "type": "qcm",
+       "question": "Pion blanc en a5, roi noir en e5, aux Noirs de jouer. Le roi peut-il rattraper le pion ?",
+       "choix": [
+        "Oui : il entre dans le carré du pion",
+        "Non : il est trop loin",
+        "Seulement si le pion recule",
+        "Les rois ne prennent pas les pions"
+       ],
+       "bonne": 0,
+       "explication": "Le carré du pion a5 va de a5 à d8 (4 cases de côté). En jouant Rd5 ou Rd6, le roi y entre : il arrivera à temps."
+      }
+     ]
+    },
+    {
+     "id": "mat-tour",
+     "titre": "Mater avec la tour",
+     "theme": "finales",
+     "texte": "Tour et roi contre roi seul : c'est gagné ! Le roi adverse est repoussé au bord, puis la tour donne échec sur la dernière rangée.",
+     "retenir": "Tour + roi : ton roi fait face au roi adverse, la tour donne échec sur le bord.",
+     "exercices": [
+      {
+       "type": "coup",
+       "fen": "k7/8/1K6/8/8/8/8/7R w - - 0 1",
+       "consigne": "Le roi noir est coincé dans le coin. Mate en un coup avec la tour.",
+       "etapes": [
+        {
+         "but": "mat"
+        }
+       ],
+       "indice": "Ton roi garde a7 et b7. Il reste la 8e rangée à fermer.",
+       "explication": "Th8# : la tour ferme la 8e rangée, ton roi garde la 7e. Échec et mat !"
+      },
+      {
+       "type": "qcm",
+       "question": "Pour mater avec tour et roi, où doit être le roi adverse ?",
+       "choix": [
+        "Au centre",
+        "Sur un bord de l'échiquier",
+        "À côté de ta tour",
+        "N'importe où"
+       ],
+       "bonne": 1,
+       "explication": "La tour seule ne peut pas mater au centre : il faut d'abord repousser le roi sur un bord."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
 </script>
 <style>
   :root {
@@ -134,6 +890,65 @@
   .message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
   .message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
 
+  /* ---------- Académie ---------- */
+  .doux { color: var(--doux); }
+  .visuellement-cache { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .toast { min-height: 0; margin: 0 0 10px; font-weight: 700; color: var(--succes); }
+  .toast:empty { display: none; }
+  .toast:not(:empty) { padding: 8px 12px; border: 2px solid var(--succes); border-radius: 8px; background: var(--surface); }
+  .profil { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; }
+  .profil-embleme { font-size: 3.2rem; line-height: 1; width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; background: var(--claire); }
+  .profil-embleme .piece { -webkit-text-stroke-width: 1.5px; }
+  .profil-infos h2 { margin: 0; }
+  .profil-infos p { margin: 0 0 4px; }
+  .barre { height: 12px; border-radius: 6px; background: var(--bord); overflow: hidden; }
+  .barre span { display: block; height: 100%; background: var(--accent); border-radius: 6px; transition: width .4s; }
+  .stats { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 6px 0 0; }
+  .stats li { border: 1px solid var(--bord); border-radius: 8px; padding: 3px 9px; font-size: .9rem; background: var(--fond); }
+  .reglages-academie { grid-column: 1 / -1; }
+  .reglages-academie summary, details.carte summary { cursor: pointer; font-weight: 600; }
+  .reglages-academie .choix { margin: 10px 0; }
+  .emblemes div { display: flex; flex-wrap: wrap; gap: 6px; }
+  .emblemes label { font-size: 1.6rem; line-height: 1.2; }
+  .emblemes label.verrouille { opacity: .45; cursor: not-allowed; }
+  .emblemes label.verrouille::after { content: "🔒"; font-size: .8rem; vertical-align: top; }
+  .case-a-cocher { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+  .parcours { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+  .grade { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 10px 12px; }
+  .grade.verrouille { opacity: .7; }
+  .grade-entete { display: flex; align-items: center; gap: 10px; }
+  .grade-entete > .piece { font-size: 2rem; }
+  .grade-entete h3 { margin: 0; font-size: 1rem; }
+  .grade-entete p { margin: 0; font-size: .85rem; }
+  .grade-etat { margin-left: auto; font-size: .85rem; font-weight: 600; text-align: right; }
+  .lecons { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; }
+  .lecon { width: 100%; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 0 6px; padding: 8px 10px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+  .lecon.faite { border-color: var(--succes); }
+  .lecon-titre { font-weight: 600; }
+  .lecon-theme { grid-row: 2; font-size: .8rem; color: var(--doux); }
+  .lecon-etoiles { grid-row: 1 / 3; grid-column: 2; align-self: center; color: #b45309; font-size: .95rem; letter-spacing: 1px; }
+  .carnet, .badges, .forces { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; }
+  .carnet p { margin: 2px 0 0; }
+  .badges { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .badges li { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; padding: 8px; border-radius: 8px; border: 1px solid var(--bord); }
+  .badges li.verrouille { opacity: .6; }
+  .badge-icone { grid-row: 1 / 3; font-size: 1.6rem; }
+  .badges .doux { font-size: .85rem; }
+  .forces li { display: grid; grid-template-columns: 9em 1fr; gap: 8px; align-items: center; }
+  .jauge { position: relative; height: 18px; border-radius: 9px; background: var(--bord); overflow: hidden; }
+  .jauge span { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
+  .jauge b { position: relative; font-size: .8rem; padding-left: 6px; color: var(--texte); mix-blend-mode: normal; }
+  .fil { margin: 10px 0 0; font-size: .85rem; }
+  .a-retenir { border-left: 4px solid var(--accent); background: var(--surface); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-bottom: 12px; }
+  .a-retenir p { margin: 4px 0 0; }
+  .consigne { font-weight: 600; }
+  .qcm { list-style: none; padding: 0; display: grid; gap: 6px; }
+  .choix-qcm { width: 100%; text-align: left; padding: 10px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+  .choix-qcm[data-etat="juste"] { border-color: var(--succes); color: var(--succes); font-weight: 700; opacity: 1; }
+  .choix-qcm[data-etat="faux"] { border-color: var(--alerte); color: var(--alerte); text-decoration: line-through; }
+  .bilan h2 { font-size: 1.3rem; }
+  @media (max-width: 480px) { .forces li { grid-template-columns: 7em 1fr; } }
+
   footer { max-width: 980px; margin: 0 auto; padding: 16px; color: var(--doux); font-size: .8rem; }
   @media (max-width: 480px) {
     main { padding: 12px 10px; }
@@ -145,7 +960,7 @@
 <header>
   <div>
     <h1>Échecs</h1>
-    <div class="meta">echecs · v1.0.0</div>
+    <div class="meta">echecs · v1.1.0</div>
   </div>
   <button id="connexion" class="action" type="button" hidden>Se connecter</button>
 </header>
@@ -233,6 +1048,86 @@
       </div>
       <h2 id="titre-coups">Coups joués</h2>
       <ol class="coups" data-sortie="coups" aria-labelledby="titre-coups"></ol>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-academie">
+  <p class="toast" data-sortie="toast" role="status" aria-live="polite"></p>
+  <div data-vue="accueil">
+    <div class="carte profil">
+      <div class="profil-embleme" data-sortie="embleme" aria-hidden="true"></div>
+      <div class="profil-infos">
+        <h2 data-sortie="titre" tabindex="-1"></h2>
+        <p class="doux" data-sortie="niveau"></p>
+        <div class="barre" data-sortie="barre-niveau" role="progressbar" aria-label="Progression vers le niveau suivant" aria-valuemin="0"><span></span></div>
+      </div>
+      <ul class="stats" data-sortie="stats" aria-label="Tes statistiques"></ul>
+      <details class="reglages-academie">
+        <summary>⚙️ Personnaliser</summary>
+        <fieldset class="choix">
+          <legend>Mon objectif du jour</legend>
+          <label><input type="radio" name="objectif" value="1">1 exercice</label>
+          <label><input type="radio" name="objectif" value="3">3 exercices</label>
+          <label><input type="radio" name="objectif" value="5">5 exercices</label>
+        </fieldset>
+        <fieldset class="choix emblemes">
+          <legend>Mon emblème (un nouveau à chaque grade)</legend>
+          <div data-sortie="emblemes"></div>
+        </fieldset>
+        <label class="case-a-cocher"><input type="checkbox" name="libre"> Je connais déjà les bases : ouvrir toutes les leçons</label>
+      </details>
+    </div>
+    <div class="carte conseil">
+      <h2>✨ Pour toi aujourd'hui</h2>
+      <p data-sortie="conseil"></p>
+      <div class="commandes-jeu">
+        <button class="action" type="button" data-action="conseil">C'est parti !</button>
+        <button class="secondaire" type="button" data-action="reviser"></button>
+        <button class="secondaire" type="button" data-action="defi"></button>
+      </div>
+    </div>
+    <h2>🗺️ Ton parcours, du débutant au pro</h2>
+    <ol class="parcours" data-sortie="parcours"></ol>
+    <details class="carte">
+      <summary data-sortie="titre-carnet"></summary>
+      <ul class="carnet" data-sortie="carnet"></ul>
+    </details>
+    <details class="carte">
+      <summary data-sortie="titre-badges"></summary>
+      <ul class="badges" data-sortie="badges"></ul>
+    </details>
+    <details class="carte">
+      <summary>📊 Tes points forts et points faibles</summary>
+      <ul class="forces" data-sortie="forces"></ul>
+      <p class="doux" data-sortie="parties"></p>
+    </details>
+    <p class="doux" data-zone="stockage" hidden>Ici, ta progression ne peut pas être gardée : ouvre la page en plein écran pour la conserver sur ton appareil.</p>
+  </div>
+  <div data-vue="session" hidden>
+    <button class="secondaire" type="button" data-action="retour">← Retour au parcours</button>
+    <p class="doux fil" data-sortie="fil"></p>
+    <h2 data-sortie="session-titre" tabindex="-1"></h2>
+    <p data-sortie="session-texte"></p>
+    <div class="a-retenir" data-zone="retenir"><strong>📌 À retenir</strong><p data-sortie="retenir"></p></div>
+    <div class="carte" data-zone="exercice">
+      <p class="progression" data-sortie="progression"></p>
+      <p class="consigne" data-sortie="consigne"></p>
+      <div class="enigme-plateau" data-zone="plateau"></div>
+      <ul class="qcm" data-sortie="qcm" hidden></ul>
+      <p class="message" data-sortie="retour" role="status" aria-live="polite"></p>
+      <div class="commandes-jeu">
+        <button class="secondaire" type="button" data-action="indice">💡 Indice</button>
+        <button class="action" type="button" data-action="suivant" hidden>Exercice suivant</button>
+      </div>
+    </div>
+    <div class="carte bilan" data-zone="bilan" hidden>
+      <h2 data-sortie="bilan-titre" tabindex="-1"></h2>
+      <p data-sortie="bilan-texte"></p>
+      <div class="commandes-jeu">
+        <button class="action" type="button" data-action="bilan-suite" hidden></button>
+        <button class="secondaire" type="button" data-action="bilan-retour">Retour au parcours</button>
+      </div>
     </div>
   </div>
 </template>
@@ -544,6 +1439,13 @@ const MoteurEchecs = (() => {
     return choix;
   }
 
+  /** Score exact (sans bruit) de chaque coup légal, du meilleur au moins bon, pour le joueur au trait. */
+  function analyser(p, profondeur = 2) {
+    return coupsLegaux(p)
+      .map((coup) => ({ coup, score: -negamax(appliquer(p, coup), profondeur - 1, -Infinity, Infinity, 1) }))
+      .sort((a, b) => b.score - a.score);
+  }
+
   /** Nombre de positions atteignables en `profondeur` demi-coups (test de référence des générateurs de coups). */
   function perft(p, profondeur) {
     if (profondeur === 0) return 1;
@@ -557,7 +1459,280 @@ const MoteurEchecs = (() => {
   return Object.freeze({
     FEN_INITIALE, NIVEAUX, NOMS, LETTRES, VALEURS,
     positionInitiale, depuisFEN, versFEN, nomCase, indexCase, couleurDe, typeDe,
-    coupsLegaux, jouer, appliquer, enEchec, caseAttaquee, statut, notation, evaluer, choisirCoup, perft
+    coupsLegaux, jouer, appliquer, enEchec, caseAttaquee, statut, notation, evaluer, choisirCoup, analyser, perft, MAT
+  });
+})();
+</script>
+<script id="academie-echecs">
+/* Académie : progression, XP, grades, badges, série, objectif du jour, révisions espacées et conseils. Pur, sans DOM. */
+const AcademieEchecs = (() => {
+  "use strict";
+  const XP = Object.freeze({ parfait: 20, reussi: 10, avecIndice: 5, revision: 5, revisionRatee: 1, lecon: 30, objectif: 20, defi: 15,
+    victoire: Object.freeze({ facile: 50, moyen: 100 }), nulle: 20, defaite: 5 });
+  // Révision espacée (boîtes de Leitner) : une carte réussie passe dans la boîte suivante, revue de plus en plus tard.
+  const INTERVALLES = Object.freeze([1, 2, 4, 8, 16]);
+  const OBJECTIFS = Object.freeze([1, 3, 5]);
+  const EMBLEMES = Object.freeze(["p", "n", "b", "r", "q", "k"]);
+  const MAX_JOURS = 31;
+  const JOUR = /^\d{4}-\d{2}-\d{2}$/;
+
+  /* ---------- Dates (AAAA-MM-JJ, calendrier de l'utilisateur fourni par l'appelant) ---------- */
+  function ajouterJours(jour, n) {
+    const [a, m, j] = jour.split("-").map(Number);
+    return new Date(Date.UTC(a, m - 1, j + n)).toISOString().slice(0, 10);
+  }
+
+  /* ---------- Parcours ---------- */
+  const exoId = (lecon, k) => `${lecon.id}/${k}`;
+  function indexer(parcours) {
+    const lecons = new Map(), exercices = new Map();
+    parcours.grades.forEach((grade, gi) => grade.lecons.forEach((lecon) => {
+      lecons.set(lecon.id, { lecon, grade, gi });
+      lecon.exercices.forEach((exo, k) => exercices.set(exoId(lecon, k), { exo, lecon, grade, gi }));
+    }));
+    return { lecons, exercices };
+  }
+
+  function etatInitial() {
+    return {
+      version: 1, xp: 0, lecons: {}, cartes: {}, themes: {}, serie: 0, serieMax: 0, dernierJour: null, jours: {},
+      badges: [], objectif: 3, embleme: "p", libre: false, revisions: 0, objectifsAtteints: 0, objectifsJours: [], defis: [],
+      parties: { facile: { victoires: 0, nulles: 0, defaites: 0 }, moyen: { victoires: 0, nulles: 0, defaites: 0 } }
+    };
+  }
+
+  const entier = (v, max = 1e9) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : 0);
+  const estJour = (v) => typeof v === "string" && JOUR.test(v);
+
+  /** Relit un état stocké en le validant champ par champ (stockage corrompu ou modifié à la main : valeurs par défaut). */
+  function normaliser(brut, parcours) {
+    const base = etatInitial();
+    if (!brut || typeof brut !== "object") return base;
+    const { lecons, exercices } = indexer(parcours);
+    const objet = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v : {});
+    const e = { ...base, xp: entier(brut.xp), serie: entier(brut.serie), serieMax: entier(brut.serieMax), revisions: entier(brut.revisions),
+      objectifsAtteints: entier(brut.objectifsAtteints), libre: brut.libre === true,
+      objectif: OBJECTIFS.includes(brut.objectif) ? brut.objectif : base.objectif,
+      embleme: EMBLEMES.includes(brut.embleme) ? brut.embleme : base.embleme,
+      dernierJour: estJour(brut.dernierJour) ? brut.dernierJour : null };
+    for (const [id, v] of Object.entries(objet(brut.lecons))) {
+      if (lecons.has(id) && [1, 2, 3].includes(v?.etoiles)) e.lecons[id] = { etoiles: v.etoiles, jour: estJour(v.jour) ? v.jour : null };
+    }
+    for (const [id, v] of Object.entries(objet(brut.cartes))) {
+      if (exercices.has(id) && Number.isInteger(v?.boite) && v.boite >= 1 && v.boite <= INTERVALLES.length && estJour(v.prochaine)) e.cartes[id] = { boite: v.boite, prochaine: v.prochaine };
+    }
+    const themes = new Set(Object.keys(parcours.themes));
+    for (const [t, v] of Object.entries(objet(brut.themes))) {
+      if (themes.has(t)) { const essais = entier(v?.essais); e.themes[t] = { essais, premiers: Math.min(essais, entier(v?.premiers)) }; }
+    }
+    for (const [j, n] of Object.entries(objet(brut.jours))) if (estJour(j)) e.jours[j] = entier(n, 1000);
+    e.objectifsJours = Array.isArray(brut.objectifsJours) ? [...new Set(brut.objectifsJours.filter(estJour))].slice(-MAX_JOURS) : [];
+    e.badges = Array.isArray(brut.badges) ? [...new Set(brut.badges.filter((b) => BADGES.some((d) => d.id === b)))] : [];
+    e.defis = Array.isArray(brut.defis) ? [...new Set(brut.defis.filter(estJour))].slice(-MAX_JOURS) : [];
+    for (const niveau of Object.keys(base.parties)) {
+      const p = objet(objet(brut.parties)[niveau]);
+      e.parties[niveau] = { victoires: entier(p.victoires), nulles: entier(p.nulles), defaites: entier(p.defaites) };
+    }
+    return e;
+  }
+
+  const copie = (e) => JSON.parse(JSON.stringify(e));
+
+  /* ---------- Niveaux et grades ---------- */
+  /** Niveau n atteint à 50 × n × (n − 1) XP : 0, 100, 300, 600, 1000… (chaque niveau demande un peu plus). */
+  function niveau(xp) {
+    let n = 1;
+    while (50 * (n + 1) * n <= xp) n += 1;
+    const debut = 50 * n * (n - 1), fin = 50 * (n + 1) * n;
+    return { niveau: n, xpDansNiveau: xp - debut, xpPourNiveau: fin - debut };
+  }
+
+  const gradeTermine = (e, grade) => grade.lecons.every((l) => e.lecons[l.id]);
+  /** Nombre de grades obtenus, dans l'ordre (un grade compte quand toutes ses leçons sont faites). */
+  function gradesObtenus(e, parcours) {
+    let n = 0;
+    while (n < parcours.grades.length && gradeTermine(e, parcours.grades[n])) n += 1;
+    return n;
+  }
+  function titre(e, parcours) {
+    const n = gradesObtenus(e, parcours);
+    return n === 0 ? "Débutant" : n === parcours.grades.length ? `${parcours.grades[n - 1].nom} : tu es un pro !` : parcours.grades[n - 1].nom;
+  }
+
+  function leconDebloquee(e, parcours, leconId) {
+    const info = indexer(parcours).lecons.get(leconId);
+    if (!info) return false;
+    return e.libre || info.gi === 0 || gradeTermine(e, parcours.grades[info.gi - 1]);
+  }
+  /** Emblèmes choisis par le joueur : un nouveau à chaque grade obtenu. */
+  const emblemesDisponibles = (e, parcours) => EMBLEMES.slice(0, Math.max(1, gradesObtenus(e, parcours) + 1));
+
+  /* ---------- Badges ---------- */
+  const victoires = (e) => e.parties.facile.victoires + e.parties.moyen.victoires;
+  const BADGES = [
+    { id: "premiers-pas", icone: "👣", nom: "Premiers pas", description: "Termine ta première leçon.", obtenu: (e) => Object.keys(e.lecons).length >= 1 },
+    { id: "sans-faute", icone: "⭐", nom: "Sans faute", description: "Termine une leçon avec 3 étoiles.", obtenu: (e) => Object.values(e.lecons).some((l) => l.etoiles === 3) },
+    { id: "premier-mat", icone: "♚", nom: "Premier mat", description: "Termine une leçon de mats.", obtenu: (e, ctx) => Object.keys(e.lecons).some((id) => ctx.lecons.get(id)?.lecon.theme === "mats") },
+    { id: "tacticien", icone: "🗡️", nom: "Tacticien", description: "Termine toutes les leçons de tactique.", obtenu: (e, ctx) => themeTermine(e, ctx, "tactique") },
+    { id: "stratege", icone: "🧭", nom: "Stratège", description: "Termine les leçons d'ouverture et de milieu de partie.", obtenu: (e, ctx) => themeTermine(e, ctx, "ouverture") && themeTermine(e, ctx, "milieu") },
+    { id: "finaliste", icone: "👑", nom: "As des finales", description: "Termine toutes les leçons de finales.", obtenu: (e, ctx) => themeTermine(e, ctx, "finales") },
+    { id: "perfectionniste", icone: "🌟", nom: "Perfectionniste", description: "Obtiens 3 étoiles sur toutes les leçons d'un grade.", obtenu: (e, ctx) => ctx.parcours.grades.some((g) => g.lecons.every((l) => e.lecons[l.id]?.etoiles === 3)) },
+    { id: "pro", icone: "🏆", nom: "Du débutant au pro", description: "Obtiens les six grades.", obtenu: (e, ctx) => gradesObtenus(e, ctx.parcours) === ctx.parcours.grades.length },
+    { id: "serie-3", icone: "🔥", nom: "Ça chauffe", description: "Entraîne-toi 3 jours de suite.", obtenu: (e) => e.serieMax >= 3 },
+    { id: "serie-7", icone: "📅", nom: "Une semaine sans pause", description: "Entraîne-toi 7 jours de suite.", obtenu: (e) => e.serieMax >= 7 },
+    { id: "regulier", icone: "🎯", nom: "Régulier", description: "Atteins 5 fois ton objectif du jour.", obtenu: (e) => e.objectifsAtteints >= 5 },
+    { id: "memoire", icone: "🧠", nom: "Mémoire d'éléphant", description: "Fais 10 révisions.", obtenu: (e) => e.revisions >= 10 },
+    { id: "bibliotheque", icone: "📚", nom: "Bibliothèque", description: "Maîtrise 10 stratégies (révisées plusieurs fois avec succès).", obtenu: (e) => Object.values(e.cartes).filter((c) => c.boite >= 4).length >= 10 },
+    { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis du jour.", obtenu: (e) => e.defis.length >= 3 },
+    { id: "robot-facile", icone: "🤖", nom: "Premier robot battu", description: "Bats l'ordinateur au niveau Facile.", obtenu: (e) => e.parties.facile.victoires >= 1 },
+    { id: "robot-moyen", icone: "🦾", nom: "Robot moyen battu", description: "Bats l'ordinateur au niveau Moyen.", obtenu: (e) => e.parties.moyen.victoires >= 1 },
+    { id: "champion", icone: "🥇", nom: "Champion", description: "Gagne 10 parties contre l'ordinateur.", obtenu: (e) => victoires(e) >= 10 }
+  ];
+  function themeTermine(e, ctx, theme) {
+    const lecons = [...ctx.lecons.values()].filter((x) => x.lecon.theme === theme);
+    return lecons.length > 0 && lecons.every((x) => e.lecons[x.lecon.id]);
+  }
+  function badges(e, parcours) {
+    const ctx = { ...indexer(parcours), parcours };
+    return BADGES.map(({ obtenu, ...b }) => ({ ...b, obtenu: obtenu(e, ctx) }));
+  }
+
+  /* ---------- Enregistrements (chaque fonction renvoie un nouvel état et ce qui a été gagné) ---------- */
+  function cloturer(e, parcours, avant, gains) {
+    const obtenus = badges(e, parcours).filter((b) => b.obtenu).map((b) => b.id);
+    gains.badges = obtenus.filter((id) => !e.badges.includes(id)).map((id) => BADGES.find((b) => b.id === id));
+    e.badges = obtenus;
+    gains.niveauAvant = niveau(avant.xp).niveau;
+    gains.niveauApres = niveau(e.xp).niveau;
+    gains.gradesAvant = gradesObtenus(avant, parcours);
+    gains.gradesApres = gradesObtenus(e, parcours);
+    gains.badges = gains.badges.map(({ obtenu, ...b }) => b);
+    return { etat: e, gains };
+  }
+
+  /** Activité du jour : série de jours consécutifs, compteur du jour, bonus quand l'objectif est atteint. */
+  function compterActivite(e, jour, gains) {
+    if (e.dernierJour !== jour) {
+      e.serie = e.dernierJour && ajouterJours(e.dernierJour, 1) === jour ? e.serie + 1 : 1;
+      e.serieMax = Math.max(e.serieMax, e.serie);
+      e.dernierJour = jour;
+    }
+    e.jours[jour] = (e.jours[jour] ?? 0) + 1;
+    for (const j of Object.keys(e.jours).sort().slice(0, -MAX_JOURS)) delete e.jours[j];
+    if (e.jours[jour] >= e.objectif && !e.objectifsJours.includes(jour)) {
+      e.objectifsJours = [...e.objectifsJours, jour].slice(-MAX_JOURS);
+      e.xp += XP.objectif; gains.xp += XP.objectif; gains.objectif = true; e.objectifsAtteints += 1;
+    }
+  }
+
+  /** Exercice réussi (après d'éventuelles erreurs). Toute nouvelle réussite programme sa prochaine révision. */
+  function enregistrerExercice(etat, parcours, { id, erreurs = 0, indice = false, jour, revision = false }) {
+    const info = indexer(parcours).exercices.get(id);
+    if (!info) throw new Error(`exercice inconnu : ${id}`);
+    const e = copie(etat), gains = { xp: 0, objectif: false };
+    const parfait = erreurs === 0 && !indice;
+    const gain = revision ? (parfait ? XP.revision : XP.revisionRatee) : parfait ? XP.parfait : indice ? XP.avecIndice : XP.reussi;
+    e.xp += gain; gains.xp += gain;
+    const t = e.themes[info.lecon.theme] ?? { essais: 0, premiers: 0 };
+    e.themes[info.lecon.theme] = { essais: t.essais + 1, premiers: t.premiers + (parfait ? 1 : 0) };
+    const carte = e.cartes[id];
+    const boite = !carte ? 1 : parfait ? Math.min(INTERVALLES.length, carte.boite + 1) : 1;
+    e.cartes[id] = { boite, prochaine: ajouterJours(jour, INTERVALLES[boite - 1]) };
+    if (revision) e.revisions += 1;
+    compterActivite(e, jour, gains);
+    return cloturer(e, parcours, etat, gains);
+  }
+
+  /** Leçon terminée : on garde le meilleur nombre d'étoiles ; bonus la première fois. */
+  function terminerLecon(etat, parcours, { id, etoiles, jour }) {
+    if (!indexer(parcours).lecons.has(id)) throw new Error(`leçon inconnue : ${id}`);
+    const e = copie(etat), gains = { xp: 0, objectif: false, premiereFois: !etat.lecons[id] };
+    if (gains.premiereFois) { e.xp += XP.lecon; gains.xp += XP.lecon; }
+    e.lecons[id] = { etoiles: Math.max(etoiles, e.lecons[id]?.etoiles ?? 0), jour };
+    return cloturer(e, parcours, etat, gains);
+  }
+
+  /** Partie terminée contre l'ordinateur. */
+  function enregistrerPartie(etat, parcours, { resultat, niveau: n, jour }) {
+    if (!["victoire", "nulle", "defaite"].includes(resultat) || !etat.parties[n]) throw new Error("partie invalide");
+    const e = copie(etat), gains = { xp: 0, objectif: false };
+    const gain = resultat === "victoire" ? XP.victoire[n] : XP[resultat];
+    e.xp += gain; gains.xp += gain;
+    e.parties[n][{ victoire: "victoires", nulle: "nulles", defaite: "defaites" }[resultat]] += 1;
+    compterActivite(e, jour, gains);
+    return cloturer(e, parcours, etat, gains);
+  }
+
+  function enregistrerDefi(etat, parcours, { jour }) {
+    const e = copie(etat), gains = { xp: 0, objectif: false };
+    if (!e.defis.includes(jour)) { e.defis = [...e.defis, jour].slice(-MAX_JOURS); e.xp += XP.defi; gains.xp += XP.defi; }
+    return cloturer(e, parcours, etat, gains);
+  }
+
+  function regler(etat, parcours, { objectif, embleme, libre }) {
+    const e = copie(etat);
+    if (OBJECTIFS.includes(objectif)) e.objectif = objectif;
+    if (emblemesDisponibles(etat, parcours).includes(embleme)) e.embleme = embleme;
+    if (typeof libre === "boolean") e.libre = libre;
+    return e;
+  }
+
+  /* ---------- Lectures ---------- */
+  /** Cartes à réviser aujourd'hui : les plus en retard d'abord, puis les moins bien sues. */
+  function revisionsDues(etat, jour) {
+    return Object.entries(etat.cartes)
+      .filter(([, c]) => c.prochaine <= jour)
+      .sort(([, a], [, b]) => a.prochaine.localeCompare(b.prochaine) || a.boite - b.boite)
+      .map(([id]) => id);
+  }
+
+  /** Taux de réussite du premier coup par thème (null tant qu'il y a moins de 3 essais). */
+  function forces(etat, parcours) {
+    return Object.entries(parcours.themes).map(([id, nom]) => {
+      const t = etat.themes[id] ?? { essais: 0, premiers: 0 };
+      return { id, nom, essais: t.essais, taux: t.essais >= 3 ? t.premiers / t.essais : null };
+    });
+  }
+
+  /** Petit hachage déterministe : le même défi pour tout le monde le même jour, sans hasard ni réseau. */
+  const hacher = (texte) => [...texte].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
+  function defiDuJour(etat, parcours, jour) {
+    const { exercices } = indexer(parcours);
+    const candidats = [...exercices.entries()].filter(([, x]) => x.exo.type === "coup").map(([id]) => id);
+    if (!candidats.length) return null;
+    return { id: candidats[hacher(jour) % candidats.length], fait: etat.defis.includes(jour) };
+  }
+
+  /** Conseil personnalisé : réviser, retravailler un point faible, avancer, se perfectionner, ou jouer. */
+  function recommandation(etat, parcours, jour) {
+    const dues = revisionsDues(etat, jour);
+    const ouvertes = parcours.grades.flatMap((g) => g.lecons).filter((l) => leconDebloquee(etat, parcours, l.id));
+    if (dues.length >= 3) return { type: "revision", nombre: dues.length, texte: `${dues.length} stratégies t'attendent pour une révision : c'est le meilleur moyen de les retenir pour toujours.` };
+    const faibles = forces(etat, parcours).filter((f) => f.taux !== null && f.taux < 0.6).sort((a, b) => a.taux - b.taux);
+    for (const f of faibles) {
+      const lecon = ouvertes.filter((l) => l.theme === f.id).sort((a, b) => (etat.lecons[a.id]?.etoiles ?? 0) - (etat.lecons[b.id]?.etoiles ?? 0))[0];
+      if (lecon && (etat.lecons[lecon.id]?.etoiles ?? 0) < 3) return { type: "faiblesse", lecon: lecon.id, theme: f.id, texte: `Ton point à travailler : ${f.nom.toLowerCase()} (${Math.round(f.taux * 100)} % réussi du premier coup). Refais « ${lecon.titre} ».` };
+    }
+    const suivante = ouvertes.find((l) => !etat.lecons[l.id]);
+    if (suivante) return { type: "suite", lecon: suivante.id, texte: Object.keys(etat.lecons).length ? `Prochaine étape : « ${suivante.titre} ».` : `Bienvenue ! Commence par « ${suivante.titre} ».` };
+    if (dues.length) return { type: "revision", nombre: dues.length, texte: `${dues.length} révision${dues.length > 1 ? "s" : ""} pour garder tes stratégies en tête.` };
+    const aPerfectionner = ouvertes.find((l) => etat.lecons[l.id].etoiles < 3);
+    if (aPerfectionner) return { type: "perfection", lecon: aPerfectionner.id, texte: `Vise les 3 étoiles sur « ${aPerfectionner.titre} ».` };
+    if (gradesObtenus(etat, parcours) < parcours.grades.length) {
+      const g = parcours.grades[gradesObtenus(etat, parcours)];
+      return { type: "suite", lecon: g.lecons.find((l) => !etat.lecons[l.id])?.id ?? g.lecons[0].id, texte: `Termine le grade ${g.nom} pour progresser.` };
+    }
+    return { type: "jouer", texte: "Tu as tout appris ! Mets tes stratégies en pratique contre l'ordinateur au niveau Moyen." };
+  }
+
+  /** Étoiles d'une leçon selon les erreurs et les indices utilisés. */
+  const etoiles = ({ erreurs, indices }) => { const p = erreurs + 2 * indices; return p === 0 ? 3 : p <= 2 ? 2 : 1; };
+
+  return Object.freeze({
+    XP, INTERVALLES, OBJECTIFS, EMBLEMES, BADGES: BADGES.map(({ obtenu, ...b }) => b),
+    ajouterJours, indexer, exoId, etatInitial, normaliser, niveau, gradesObtenus, titre, leconDebloquee, emblemesDisponibles,
+    badges, enregistrerExercice, terminerLecon, enregistrerPartie, enregistrerDefi, regler, revisionsDues, forces, defiDuJour,
+    recommandation, etoiles
   });
 })();
 </script>
@@ -722,7 +1897,9 @@ const MoteurEchecs = (() => {
       rafraichir();
     }
     const vue = creerVueEchiquier({ libelle, surCase, surEchap: () => { effacer(); rafraichir(); } });
-    return { vue, effacer, get selection() { return selection; }, get destinations() { return destinations; } };
+    /** Sélectionne une pièce comme si le joueur l'avait touchée (indice). */
+    const selectionner = (i) => { selection = i; destinations = M.coupsLegaux(position(), i); };
+    return { vue, effacer, selectionner, get selection() { return selection; }, get destinations() { return destinations; } };
   }
 
   /* ---------- Onglet explication ---------- */
@@ -737,6 +1914,8 @@ const MoteurEchecs = (() => {
   };
   const DEPART = { p: 8, n: 2, b: 2, r: 2, q: 1 };
   const jeu = {};
+  // Services offerts par d'autres onglets (l'Académie enregistre les parties terminées contre l'ordinateur).
+  const services = {};
   enregistrerOnglet({ id: "application", type: "application", titre: "Jouer",
     rendu(panneau) {
       panneau.appendChild(document.getElementById("tpl-application").content.cloneNode(true));
@@ -746,7 +1925,7 @@ const MoteurEchecs = (() => {
       let mode = lire("mode", ["ordinateur", "deux"], "ordinateur");
       let niveau = lire("niveau", Object.keys(M.NIVEAUX), "facile");
       let couleur = lire("couleur", ["w", "b"], "w");
-      let positions = [], coups = [], notations = [], attente = null;
+      let positions = [], coups = [], notations = [], attente = null, partieComptee = false, gainPartie = "";
       const position = () => positions.at(-1);
       const tourOrdinateur = () => mode === "ordinateur" && position().trait !== couleur;
 
@@ -781,7 +1960,7 @@ const MoteurEchecs = (() => {
 
       function nouvellePartie() {
         arreterOrdinateur();
-        positions = [M.positionInitiale()]; coups = []; notations = [];
+        positions = [M.positionInitiale()]; coups = []; notations = []; partieComptee = false; gainPartie = "";
         saisie.effacer();
         saisie.vue.orienter(mode === "ordinateur" ? couleur : "w");
         afficher();
@@ -849,7 +2028,14 @@ const MoteurEchecs = (() => {
         const p = position(), s = M.statut(p);
         saisie.vue.rendre(p, { selection: saisie.selection, destinations: saisie.destinations, dernier: coups.at(-1) ?? null });
         const { texte, etat } = texteStatut(s, p);
-        sortie("statut").textContent = texte;
+        // Une partie terminée contre l'ordinateur compte une seule fois pour l'Académie (même après « Annuler »).
+        if (s.fin && mode === "ordinateur" && !partieComptee && services.enregistrerPartie) {
+          partieComptee = true;
+          const resultat = s.gagnant === couleur ? "victoire" : s.gagnant ? "defaite" : "nulle";
+          const gains = services.enregistrerPartie({ resultat, niveau });
+          gainPartie = gains?.xp ? ` (+${gains.xp} XP à l'Académie)` : "";
+        }
+        sortie("statut").textContent = s.fin ? texte + gainPartie : texte;
         sortie("statut").dataset.etat = etat;
         panneau.dataset.etat = s.etat;
         afficherCoups();
@@ -874,6 +2060,332 @@ const MoteurEchecs = (() => {
       Object.assign(jeu, {
         etat: () => ({ fen: M.versFEN(position()), coups: [...notations], statut: M.statut(position()), reflechit: attente !== null })
       });
+    } });
+
+  /* ---------- Onglet Académie : du débutant au pro ---------- */
+  const PARCOURS = JSON.parse(document.getElementById("parcours-echecs").textContent);
+  const A = AcademieEchecs;
+  const jourLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const stockageDisponible = (() => { try { localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test"); return true; } catch { return false; } })();
+  const uci = (c) => `${M.nomCase(c.de)}${M.nomCase(c.vers)}${c.promotion ? M.typeDe(c.promotion) : ""}`;
+  const academie = {};
+  enregistrerOnglet({ id: "academie", type: "parcours", titre: "Académie",
+    rendu(panneau) {
+      panneau.appendChild(document.getElementById("tpl-academie").content.cloneNode(true));
+      const q = (s) => panneau.querySelector(s);
+      const sortie = (n) => q(`[data-sortie="${n}"]`);
+      const index = A.indexer(PARCOURS);
+      let etat = A.normaliser(stockage.lire("academie"), PARCOURS);
+      let session = null, ex = null;
+      const el = (balise, attributs = {}, ...enfants) => {
+        const n = document.createElement(balise);
+        for (const [k, v] of Object.entries(attributs)) {
+          if (k === "texte") n.textContent = v; else if (k === "classe") n.className = v; else if (v !== false && v !== null && v !== undefined) n.setAttribute(k, v === true ? "" : v);
+        }
+        n.append(...enfants.filter((x) => x !== null && x !== undefined && x !== false));
+        return n;
+      };
+      const etoilesTexte = (n) => `${"★".repeat(n)}${"☆".repeat(3 - n)}`;
+      q('[data-zone="stockage"]').hidden = stockageDisponible;
+
+      /* --- Gains : XP, objectif, niveau, grade, badges --- */
+      function appliquer({ etat: nouvel, gains }) {
+        etat = nouvel; stockage.ecrire("academie", etat);
+        const morceaux = [];
+        if (gains.xp) morceaux.push(`+${gains.xp} XP`);
+        if (gains.objectif) morceaux.push("🎯 Objectif du jour atteint");
+        if (gains.niveauApres > gains.niveauAvant) morceaux.push(`⬆️ Niveau ${gains.niveauApres} !`);
+        if (gains.gradesApres > gains.gradesAvant) morceaux.push(`🎖️ Grade ${PARCOURS.grades[gains.gradesApres - 1].nom} obtenu : nouvel emblème disponible`);
+        for (const b of gains.badges) morceaux.push(`${b.icone} Badge « ${b.nom} »`);
+        if (morceaux.length) sortie("toast").textContent = morceaux.join(" · ");
+        return gains;
+      }
+
+      /* --- Accueil : profil, conseil, parcours, carnet, badges, forces --- */
+      function afficherAccueil() {
+        const jour = jourLocal(), niv = A.niveau(etat.xp), grades = A.gradesObtenus(etat, PARCOURS);
+        const lecons = PARCOURS.grades.flatMap((g) => g.lecons);
+        sortie("embleme").replaceChildren(elementPiece(etat.embleme.toUpperCase()));
+        sortie("titre").textContent = A.titre(etat, PARCOURS);
+        sortie("niveau").textContent = `Niveau ${niv.niveau} · ${etat.xp} XP`;
+        const barre = sortie("barre-niveau");
+        barre.setAttribute("aria-valuemax", niv.xpPourNiveau); barre.setAttribute("aria-valuenow", niv.xpDansNiveau);
+        barre.setAttribute("aria-valuetext", `${niv.xpDansNiveau} XP sur ${niv.xpPourNiveau} pour le niveau ${niv.niveau + 1}`);
+        barre.firstElementChild.style.width = `${Math.round((100 * niv.xpDansNiveau) / niv.xpPourNiveau)}%`;
+        const aujourdhui = etat.jours[jour] ?? 0, serie = etat.dernierJour === jour || etat.dernierJour === A.ajouterJours(jour, -1) ? etat.serie : 0;
+        const etoiles = Object.values(etat.lecons).reduce((s, l) => s + l.etoiles, 0);
+        sortie("stats").replaceChildren(...[
+          `🔥 Série : ${serie} jour${serie > 1 ? "s" : ""}`,
+          `🎯 Aujourd'hui : ${Math.min(aujourdhui, etat.objectif)} / ${etat.objectif}${aujourdhui >= etat.objectif ? " ✓" : ""}`,
+          `⭐ Étoiles : ${etoiles} / ${lecons.length * 3}`,
+          `🎖️ Grades : ${grades} / ${PARCOURS.grades.length}`,
+          `🏅 Badges : ${etat.badges.length} / ${A.BADGES.length}`
+        ].map((t) => el("li", { texte: t })));
+        // Réglages personnels
+        for (const r of panneau.querySelectorAll('input[name="objectif"]')) r.checked = Number(r.value) === etat.objectif;
+        const dispo = A.emblemesDisponibles(etat, PARCOURS);
+        sortie("emblemes").replaceChildren(...A.EMBLEMES.map((t, i) => {
+          const ouvert = dispo.includes(t);
+          const input = el("input", { type: "radio", name: "embleme", value: t, disabled: !ouvert, checked: etat.embleme === t });
+          input.addEventListener("change", () => { etat = A.regler(etat, PARCOURS, { embleme: t }); stockage.ecrire("academie", etat); afficherAccueil(); });
+          return el("label", { classe: ouvert ? "" : "verrouille", title: ouvert ? M.NOMS[t] : `Grade ${PARCOURS.grades[i - 1]?.nom} à obtenir` },
+            input, elementPiece(t.toUpperCase()), el("span", { classe: "visuellement-cache", texte: ouvert ? M.NOMS[t] : `${M.NOMS[t]}, verrouillé` }));
+        }));
+        q('input[name="libre"]').checked = etat.libre;
+        // Conseil personnalisé
+        const conseil = A.recommandation(etat, PARCOURS, jour);
+        sortie("conseil").textContent = conseil.texte;
+        const action = q('[data-action="conseil"]');
+        action.textContent = { revision: "Réviser maintenant", jouer: "Jouer une partie" }[conseil.type] ?? "C'est parti !";
+        action.onclick = () => (conseil.type === "revision" ? reviser() : conseil.type === "jouer" ? ouvrirOnglet("application") : ouvrirLecon(conseil.lecon));
+        const dues = A.revisionsDues(etat, jour);
+        const boutonRevision = q('[data-action="reviser"]');
+        boutonRevision.textContent = `🧠 Révisions (${dues.length})`; boutonRevision.disabled = dues.length === 0;
+        const defi = A.defiDuJour(etat, PARCOURS, jour);
+        const boutonDefi = q('[data-action="defi"]');
+        boutonDefi.textContent = defi?.fait ? "⚡ Défi du jour relevé ✓" : `⚡ Défi du jour (+${A.XP.defi} XP)`;
+        boutonDefi.disabled = !defi || defi.fait;
+        // Parcours
+        sortie("parcours").replaceChildren(...PARCOURS.grades.map((g, gi) => {
+          const faites = g.lecons.filter((l) => etat.lecons[l.id]).length;
+          const ouvert = A.leconDebloquee(etat, PARCOURS, g.lecons[0].id);
+          const etatGrade = faites === g.lecons.length ? "✓ obtenu" : ouvert ? `${faites} / ${g.lecons.length}` : `🔒 termine le grade ${PARCOURS.grades[gi - 1].nom}`;
+          return el("li", { classe: `grade${ouvert ? "" : " verrouille"}`, "data-grade": g.id },
+            el("div", { classe: "grade-entete" }, elementPiece(g.embleme.toUpperCase()),
+              el("div", {}, el("h3", { texte: `${gi + 1}. ${g.nom}` }), el("p", { classe: "doux", texte: g.sousTitre })),
+              el("span", { classe: "grade-etat", texte: etatGrade })),
+            el("ul", { classe: "lecons" }, ...g.lecons.map((l) => {
+              const fait = etat.lecons[l.id], libre = A.leconDebloquee(etat, PARCOURS, l.id);
+              const b = el("button", { type: "button", classe: `lecon${fait ? " faite" : ""}`, "data-lecon": l.id, disabled: !libre,
+                "aria-label": `${l.titre}, ${PARCOURS.themes[l.theme]}, ${fait ? `${fait.etoiles} étoile${fait.etoiles > 1 ? "s" : ""} sur 3` : libre ? "à faire" : "verrouillée"}` },
+                el("span", { classe: "lecon-titre", texte: l.titre }), el("span", { classe: "lecon-theme", texte: PARCOURS.themes[l.theme] }),
+                el("span", { classe: "lecon-etoiles", "aria-hidden": "true", texte: fait ? etoilesTexte(fait.etoiles) : libre ? "Nouveau" : "🔒" }));
+              b.addEventListener("click", () => ouvrirLecon(l.id));
+              return el("li", {}, b);
+            })));
+        }));
+        // Carnet de stratégies : ce qui a été appris, et quand le revoir
+        const apprises = lecons.filter((l) => etat.lecons[l.id]);
+        sortie("titre-carnet").textContent = `📒 Ton carnet de stratégies (${apprises.length} / ${lecons.length})`;
+        sortie("carnet").replaceChildren(...(apprises.length ? apprises.map((l) => {
+          const cartes = l.exercices.map((_, k) => etat.cartes[A.exoId(l, k)]).filter(Boolean);
+          const maitrise = cartes.length && cartes.every((c) => c.boite >= 4);
+          const prochaine = cartes.map((c) => c.prochaine).sort()[0];
+          const quand = maitrise ? "✓ maîtrisée" : !prochaine ? "à revoir demain" : prochaine <= jour ? "à réviser aujourd'hui" : `à revoir le ${prochaine.slice(8, 10)}/${prochaine.slice(5, 7)}`;
+          return el("li", {}, el("strong", { texte: l.titre }), el("span", { classe: "doux", texte: ` · ${quand}` }), el("p", { texte: l.retenir }));
+        }) : [el("li", { classe: "doux", texte: "Termine une leçon : sa stratégie s'ajoute ici, pour la relire et la réviser." })]));
+        // Badges
+        const tous = A.badges(etat, PARCOURS);
+        sortie("titre-badges").textContent = `🏅 Tes badges (${tous.filter((b) => b.obtenu).length} / ${tous.length})`;
+        sortie("badges").replaceChildren(...tous.map((b) => el("li", { classe: b.obtenu ? "obtenu" : "verrouille" },
+          el("span", { classe: "badge-icone", "aria-hidden": "true", texte: b.obtenu ? b.icone : "🔒" }),
+          el("strong", { texte: b.nom }), el("span", { classe: "doux", texte: `${b.obtenu ? "Gagné : " : "À gagner : "}${b.description}` }))));
+        // Points forts et points faibles
+        sortie("forces").replaceChildren(...A.forces(etat, PARCOURS).map((f) => el("li", {},
+          el("span", { texte: f.nom }),
+          f.taux === null
+            ? el("span", { classe: "doux", texte: f.essais ? `${f.essais} essai${f.essais > 1 ? "s" : ""} : encore un peu de pratique` : "pas encore travaillé" })
+            : el("span", { classe: "jauge", role: "img", "aria-label": `${Math.round(f.taux * 100)} % réussi du premier coup sur ${f.essais} essais` },
+              el("span", { style: `width:${Math.round(f.taux * 100)}%` }), el("b", { texte: `${Math.round(f.taux * 100)} %` })))));
+        const parties = etat.parties;
+        sortie("parties").textContent = `Contre l'ordinateur : Facile ${parties.facile.victoires} victoire${parties.facile.victoires > 1 ? "s" : ""}, Moyen ${parties.moyen.victoires} victoire${parties.moyen.victoires > 1 ? "s" : ""}.`;
+      }
+
+      for (const r of panneau.querySelectorAll('input[name="objectif"]')) r.addEventListener("change", () => { etat = A.regler(etat, PARCOURS, { objectif: Number(r.value) }); stockage.ecrire("academie", etat); afficherAccueil(); });
+      q('input[name="libre"]').addEventListener("change", (e) => { etat = A.regler(etat, PARCOURS, { libre: e.target.checked }); stockage.ecrire("academie", etat); afficherAccueil(); });
+      q('[data-action="reviser"]').addEventListener("click", () => reviser());
+      q('[data-action="defi"]').addEventListener("click", () => { const d = A.defiDuJour(etat, PARCOURS, jourLocal()); if (d && !d.fait) demarrerSession("defi", [d.id]); });
+      q('[data-action="retour"]').addEventListener("click", () => montrer("accueil"));
+      q('[data-action="bilan-retour"]').addEventListener("click", () => montrer("accueil"));
+
+      function montrer(vue) {
+        q('[data-vue="accueil"]').hidden = vue !== "accueil";
+        q('[data-vue="session"]').hidden = vue !== "session";
+        if (vue === "accueil") { session = null; ex = null; afficherAccueil(); }
+        q(`[data-vue="${vue}"] h2, [data-vue="${vue}"] h3`)?.focus?.();
+        panneau.scrollIntoView?.({ block: "start" });
+      }
+
+      /* --- Séance : une leçon, des révisions ou le défi du jour --- */
+      const saisie = creerSaisie({
+        libelle: "Échiquier de l'exercice",
+        position: () => ex.position,
+        peutJouer: () => !!ex && !ex.fini && !ex.attente,
+        surCoup: jouerCoup,
+        rafraichir: afficherPlateau
+      });
+      q('[data-zone="plateau"]').appendChild(saisie.vue.element);
+
+      function ouvrirLecon(id) {
+        const { lecon } = index.lecons.get(id);
+        if (!A.leconDebloquee(etat, PARCOURS, id)) return;
+        demarrerSession("lecon", lecon.exercices.map((_, k) => A.exoId(lecon, k)), lecon);
+      }
+      function reviser() {
+        const dues = A.revisionsDues(etat, jourLocal()).slice(0, 8);
+        if (dues.length) demarrerSession("revision", dues);
+      }
+      function demarrerSession(mode, file, lecon = null) {
+        session = { mode, file, lecon, rang: 0, erreurs: 0, indices: 0 };
+        const { grade } = lecon ? index.lecons.get(lecon.id) : {};
+        sortie("fil").textContent = mode === "lecon" ? `Grade ${grade.nom} · ${PARCOURS.themes[lecon.theme]}` : mode === "defi" ? "Défi du jour" : "Révisions espacées";
+        sortie("session-titre").textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi du jour" : "🧠 Tes révisions";
+        sortie("session-texte").textContent = mode === "lecon" ? lecon.texte
+          : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${A.XP.defi} XP de plus !`
+          : "Retrouve la bonne réponse sans aide. Chaque réussite repousse la prochaine révision : c'est comme ça qu'on retient pour toujours.";
+        q('[data-zone="retenir"]').hidden = mode !== "lecon";
+        sortie("retenir").textContent = lecon?.retenir ?? "";
+        q('[data-zone="exercice"]').hidden = false;
+        q('[data-zone="bilan"]').hidden = true;
+        sortie("toast").textContent = "";
+        montrer("session");
+        demarrerExercice();
+      }
+
+      function demarrerExercice() {
+        const id = session.file[session.rang], { exo, lecon } = index.exercices.get(id);
+        ex = { id, exo, lecon, erreurs: 0, indice: false, etape: 0, fini: false, attente: false, position: null, dernier: null };
+        sortie("progression").textContent = `${session.mode === "lecon" ? "Exercice" : lecon.titre + " ·"} ${session.rang + 1} / ${session.file.length}`;
+        retour("", "");
+        q('[data-action="suivant"]').hidden = true;
+        q('[data-action="indice"]').hidden = false;
+        q('[data-action="indice"]').disabled = false;
+        const qcm = exo.type === "qcm";
+        q('[data-zone="plateau"]').hidden = qcm;
+        sortie("qcm").hidden = !qcm;
+        if (qcm) {
+          sortie("consigne").textContent = exo.question;
+          q('[data-action="indice"]').textContent = "💡 Retirer une mauvaise réponse";
+          sortie("qcm").replaceChildren(...exo.choix.map((texte, i) => {
+            const b = el("button", { type: "button", classe: "choix-qcm", "data-choix": i, texte });
+            b.addEventListener("click", () => repondreQcm(i));
+            return el("li", {}, b);
+          }));
+        } else {
+          sortie("consigne").textContent = `${exo.consigne} (${M.depuisFEN(exo.fen).trait === "w" ? "Tu as les Blancs" : "Tu as les Noirs"}.)`;
+          q('[data-action="indice"]').textContent = "💡 Indice";
+          ex.position = M.depuisFEN(exo.fen);
+          saisie.effacer();
+          saisie.vue.orienter(ex.position.trait);
+          afficherPlateau();
+        }
+      }
+
+      function afficherPlateau() {
+        if (!ex?.position) return;
+        saisie.vue.rendre(ex.position, { selection: saisie.selection, destinations: saisie.destinations, dernier: ex.dernier });
+      }
+      function retour(texte, classe) { sortie("retour").textContent = texte; sortie("retour").className = `message ${classe}`; }
+      function erreur() {
+        ex.erreurs += 1;
+        retour(ex.erreurs >= 2 ? `Pas tout à fait. Indice : ${ex.exo.indice ?? "relis bien la question."}` : "Pas tout à fait : essaie encore !", "ko");
+      }
+
+      function repondreQcm(i) {
+        if (ex.fini) return;
+        const b = q(`[data-choix="${i}"]`);
+        if (i !== ex.exo.bonne) { b.disabled = true; b.dataset.etat = "faux"; b.textContent = `✗ ${ex.exo.choix[i]}`; erreur(); return; }
+        b.dataset.etat = "juste"; b.textContent = `✓ ${ex.exo.choix[i]}`;
+        for (const autre of sortie("qcm").querySelectorAll("button")) autre.disabled = true;
+        terminerExercice();
+      }
+
+      function etapeReussie(etape, suite, coup) {
+        return etape.but === "mat" ? M.statut(suite).etat === "mat" : etape.accepte.includes(uci(coup));
+      }
+      function jouerCoup(coup) {
+        const etape = ex.exo.etapes[ex.etape], suite = M.jouer(ex.position, coup);
+        if (!etapeReussie(etape, suite, coup)) {
+          saisie.effacer(); erreur();
+          // Piège connu : une explication sur mesure plutôt qu'un simple « essaie encore ».
+          const piege = ex.exo.pieges?.[uci(coup)];
+          if (piege) retour(piege, "ko");
+          afficherPlateau(); return;
+        }
+        ex.position = suite; ex.dernier = coup; ex.etape += 1;
+        saisie.effacer();
+        if (ex.etape >= ex.exo.etapes.length) { afficherPlateau(); terminerExercice(); return; }
+        const reponse = typeof etape.reponse === "string" ? etape.reponse : etape.reponse?.[uci(coup)];
+        afficherPlateau();
+        if (!reponse) { retour("Bien ! Continue.", "ok"); return; }
+        ex.attente = true;
+        retour("Bien joué ! L'adversaire répond…", "ok");
+        const exercice = ex;
+        setTimeout(() => {
+          if (ex !== exercice || exercice.fini) return;
+          const r = M.coupsLegaux(exercice.position).find((c) => uci(c) === reponse);
+          const texte = M.notation(exercice.position, r);
+          exercice.position = M.jouer(exercice.position, r); exercice.dernier = r; exercice.attente = false;
+          retour(`L'adversaire a joué ${texte}. À toi de finir !`, "");
+          afficherPlateau();
+        }, 600);
+      }
+
+      q('[data-action="indice"]').addEventListener("click", () => {
+        if (!ex || ex.fini) return;
+        ex.indice = true;
+        q('[data-action="indice"]').disabled = true;
+        if (ex.exo.type === "qcm") {
+          const faux = [...sortie("qcm").querySelectorAll("button:not(:disabled)")].find((b) => Number(b.dataset.choix) !== ex.exo.bonne);
+          if (faux) { faux.disabled = true; faux.dataset.etat = "retire"; faux.textContent = `— ${faux.textContent}`; }
+          retour("Une mauvaise réponse a été retirée.", "");
+          return;
+        }
+        const etape = ex.exo.etapes[ex.etape];
+        const coup = M.coupsLegaux(ex.position).find((c) => etapeReussie(etape, M.jouer(ex.position, c), c));
+        retour(`Indice : ${ex.exo.indice}`, "");
+        if (coup && !ex.attente) { saisie.selectionner(coup.de); afficherPlateau(); }
+      });
+
+      function terminerExercice() {
+        ex.fini = true;
+        const jour = jourLocal();
+        session.erreurs += ex.erreurs; session.indices += ex.indice ? 1 : 0;
+        appliquer(A.enregistrerExercice(etat, PARCOURS, { id: ex.id, erreurs: ex.erreurs, indice: ex.indice, jour, revision: session.mode === "revision" }));
+        if (session.mode === "defi") appliquer(A.enregistrerDefi(etat, PARCOURS, { jour }));
+        const rappel = session.mode !== "lecon" ? ` À retenir : ${ex.lecon.retenir}` : "";
+        retour(`${ex.erreurs === 0 && !ex.indice ? "Parfait ! " : "Réussi ! "}${ex.exo.explication}${rappel}`, "ok");
+        q('[data-action="indice"]').hidden = true;
+        const fin = session.rang === session.file.length - 1;
+        const suivant = q('[data-action="suivant"]');
+        suivant.textContent = fin ? "Voir le bilan" : "Exercice suivant";
+        suivant.hidden = false;
+        suivant.focus();
+      }
+      q('[data-action="suivant"]').addEventListener("click", () => {
+        if (session.rang < session.file.length - 1) { session.rang += 1; demarrerExercice(); return; }
+        afficherBilan();
+      });
+
+      function afficherBilan() {
+        q('[data-zone="exercice"]').hidden = true;
+        q('[data-zone="bilan"]').hidden = false;
+        const jour = jourLocal();
+        let titreBilan, texte;
+        if (session.mode === "lecon") {
+          const n = A.etoiles(session);
+          appliquer(A.terminerLecon(etat, PARCOURS, { id: session.lecon.id, etoiles: n, jour }));
+          titreBilan = `${etoilesTexte(n)} Leçon terminée !`;
+          texte = n === 3 ? "Sans faute : bravo !" : n === 2 ? "Très bien ! Refais-la plus tard pour viser les 3 étoiles." : "Leçon réussie. Refais-la pour gagner des étoiles.";
+          texte += ` La stratégie « ${session.lecon.titre} » rejoint ton carnet : elle reviendra en révision demain.`;
+        } else if (session.mode === "defi") {
+          titreBilan = "⚡ Défi relevé !"; texte = "Reviens demain pour un nouveau défi.";
+        } else {
+          titreBilan = "🧠 Révisions terminées"; texte = `${session.file.length} stratégie${session.file.length > 1 ? "s" : ""} révisée${session.file.length > 1 ? "s" : ""}. Les bonnes réponses reviendront plus tard, les autres dès demain.`;
+        }
+        sortie("bilan-titre").textContent = titreBilan;
+        sortie("bilan-texte").textContent = texte;
+        const ordre = PARCOURS.grades.flatMap((g) => g.lecons);
+        const prochaine = session.mode === "lecon" ? ordre.slice(ordre.findIndex((l) => l.id === session.lecon.id) + 1).find((l) => A.leconDebloquee(etat, PARCOURS, l.id) && !etat.lecons[l.id]) : null;
+        const bouton = q('[data-action="bilan-suite"]');
+        bouton.hidden = !prochaine;
+        if (prochaine) { bouton.textContent = `Leçon suivante : ${prochaine.titre}`; bouton.onclick = () => ouvrirLecon(prochaine.id); }
+        sortie("bilan-titre").focus();
+      }
+
+      services.enregistrerPartie = (partie) => { const g = appliquer(A.enregistrerPartie(etat, PARCOURS, { ...partie, jour: jourLocal() })); if (!session) afficherAccueil(); return g; };
+      montrer("accueil");
+      Object.assign(academie, { etat: () => etat });
     } });
 
   /* ---------- Onglet mise en situation : mats en un coup ---------- */
@@ -947,6 +2459,7 @@ const MoteurEchecs = (() => {
     });
     stockage.ecrire("onglet", actifs[i].id);
   }
+  function ouvrirOnglet(id) { const i = actifs.findIndex((o) => o.id === id); if (i >= 0) { choisir(i); boutons[i].focus(); } }
   liste.addEventListener("keydown", (e) => {
     const i = boutons.indexOf(document.activeElement); if (i < 0) return;
     const n = e.key === "ArrowRight" ? (i + 1) % boutons.length : e.key === "ArrowLeft" ? (i - 1 + boutons.length) % boutons.length : -1;
@@ -957,7 +2470,7 @@ const MoteurEchecs = (() => {
   choisir(memo >= 0 ? memo : Math.max(0, actifs.findIndex((o) => o.id === "application")));
 
   document.getElementById("connexion").hidden = !CONFIG.connexionActive;
-  window.kermiclab = { META, registre, CONFIG, echecs: jeu };
+  window.kermiclab = { META, registre, CONFIG, echecs: jeu, academie };
 })();
 </script>
 </body>
