@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-REepvWFa12j3YjRtCaRoT+aBk5pwzCeePIEI1N7dsJI=' 'sha256-l28RwD1fKcw4djGSJrRq1CCTtn6SSnb24upUw/iEh/k='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-REepvWFa12j3YjRtCaRoT+aBk5pwzCeePIEI1N7dsJI=' 'sha256-rymbMZ4tvWJRHD6F4PxOSHdlUjyyehy0h4avtm9CedU='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Démineur – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -128,12 +128,12 @@
   <div class="carte">
     <h2>Les chiffres</h2>
     <p>Quand tu ouvres une case, un <strong>chiffre</strong> peut apparaître. Il dit combien de mines touchent cette case, <strong>y compris en diagonale</strong> (jusqu'à 8 cases autour).</p>
-    <div class="exemple" role="img" aria-label="Exemple : une case 2 au centre, avec une mine en haut à gauche et une mine en bas à droite.">
-      <div class="rangee"><span class="case" data-etat="mine">💣</span><span class="case" data-etat="vide"></span><span class="case" data-etat="vide"></span></div>
-      <div class="rangee"><span class="case" data-etat="vide"></span><span class="case" data-etat="n2">2</span><span class="case" data-etat="vide"></span></div>
-      <div class="rangee"><span class="case" data-etat="vide"></span><span class="case" data-etat="vide"></span><span class="case" data-etat="mine">💣</span></div>
+    <div class="exemple" role="img" aria-label="Exemple : une case 2 au centre, avec une mine en haut à gauche et une mine en bas à droite ; les quatre cases du milieu des bords affichent 1, les deux autres coins sont vides.">
+      <div class="rangee"><span class="case" data-etat="mine">💣</span><span class="case" data-etat="n1">1</span><span class="case" data-etat="vide"></span></div>
+      <div class="rangee"><span class="case" data-etat="n1">1</span><span class="case" data-etat="n2">2</span><span class="case" data-etat="n1">1</span></div>
+      <div class="rangee"><span class="case" data-etat="vide"></span><span class="case" data-etat="n1">1</span><span class="case" data-etat="mine">💣</span></div>
     </div>
-    <p>Ici, le <strong>2</strong> touche deux mines : une en haut à gauche, une en bas à droite.</p>
+    <p>Ici, le <strong>2</strong> touche deux mines : une en haut à gauche, une en bas à droite. Chaque <strong>1</strong> n'en touche qu'une, et les deux coins vides n'en touchent aucune.</p>
   </div>
   <div class="carte">
     <h2>La case vide</h2>
@@ -508,18 +508,19 @@ const MoteurDemineur = (() => {
       const bouton = (n) => panneau.querySelector(`[data-action="${n}"]`);
       const lu = stockage.lire("niveau");
       let niveau = Moteur.NIVEAUX[lu] ? lu : "debutant";
-      let partie = null, modeDrapeau = false, debut = null, minuteur = null, zoom = 0;
+      let partie = null, modeDrapeau = false, debut = null, fin = null, minuteur = null, zoom = 0;
 
       const vue = creerVueGrille({ libelle: "Grille du démineur", surOuvrir: ouvrir, surDrapeau: drapeau });
       panneau.querySelector('[data-zone="plateau"]').replaceWith(vue.element);
 
-      const ecoule = () => (debut === null ? 0 : Math.floor((Date.now() - debut) / 1000));
+      // La durée est figée à la fin de la partie : ni l'affichage ni un clic sur la grille terminée ne la font avancer.
+      const ecoule = () => (debut === null ? 0 : Math.floor(((fin ?? Date.now()) - debut) / 1000));
       const record = () => stockage.lire(`record-${niveau}`);
       function arreterMinuteur() { clearInterval(minuteur); minuteur = null; }
       function message(texte, classe = "") { sortie("message").textContent = texte; sortie("message").className = `message ${classe}`; }
 
       function nouvellePartie() {
-        arreterMinuteur(); debut = null;
+        arreterMinuteur(); debut = null; fin = null;
         partie = Moteur.creerPartie(niveau);
         for (const r of panneau.querySelectorAll('input[name="niveau"]')) r.checked = r.value === niveau;
         mettreEnPage(true);
@@ -528,6 +529,7 @@ const MoteurDemineur = (() => {
       }
 
       function ouvrir(index) {
+        if (Moteur.estTerminee(partie)) return;
         const c = partie.cases[index];
         if (modeDrapeau && !c.revelee) { drapeau(index); return; }
         if (c.revelee) Moteur.revelerAutour(partie, index); else Moteur.reveler(partie, index);
@@ -541,11 +543,12 @@ const MoteurDemineur = (() => {
           message("");
           minuteur = setInterval(() => { sortie("temps").textContent = formaterTemps(ecoule()); }, 250);
         }
-        if (Moteur.estTerminee(partie)) terminer();
+        if (Moteur.estTerminee(partie) && fin === null) terminer();
         afficher();
       }
 
       function terminer() {
+        fin = Date.now();
         arreterMinuteur();
         const temps = ecoule();
         if (partie.statut === "perdu") { message("Boum ! Tu as touché une mine. Retente ta chance avec « Nouvelle partie ».", "ko"); return; }

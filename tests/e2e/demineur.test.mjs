@@ -85,6 +85,30 @@ test("démineur : drapeau au clic droit, compteur, puis victoire en ouvrant tout
   await contexte.close();
 });
 
+test("démineur : le temps final est figé, même en recliquant sur la grille terminée", async () => {
+  const { page, contexte } = await ouvrir(nav, URL_PAGE());
+  await page.goto(URL_PAGE());
+  await caseJeu(page, 40).click();
+  await page.waitForTimeout(1100);
+  const positions = await mines(page);
+  for (let i = 0; i < 81; i++) {
+    if (positions.includes(i) || (await caseJeu(page, i).getAttribute("data-etat")) !== "cachee") continue;
+    await caseJeu(page, i).click();
+  }
+  assert.equal(await sortie(page, "statut").textContent(), "Victoire 🎉");
+  const temps = await sortie(page, "temps").textContent();
+  const message = await sortie(page, "message").textContent();
+  assert.notEqual(temps, "0:00");
+  await page.waitForTimeout(2100);
+  await caseJeu(page, 40).click();
+  await caseJeu(page, positions[0]).click();
+  await jeu(page).locator('[data-action="mode-drapeau"]').click();
+  assert.equal(await sortie(page, "temps").textContent(), temps, "temps affiché inchangé");
+  assert.equal(await sortie(page, "message").textContent(), message, "message de victoire inchangé");
+  assert.equal(await sortie(page, "record").textContent(), temps, "record égal au temps final");
+  await contexte.close();
+});
+
 test("démineur : défaite en ouvrant une mine, mines dévoilées, nouvelle partie remise à zéro", async () => {
   const { page, contexte } = await ouvrir(nav, URL_PAGE());
   await page.goto(URL_PAGE());

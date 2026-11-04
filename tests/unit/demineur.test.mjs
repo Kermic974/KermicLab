@@ -195,3 +195,17 @@ test("catalogue : métadonnées du jeu et routage des questions d'exemple", () =
   assert.equal(meta.langue, "fr");
   for (const q of ["je veux jouer au démineur", "Le DÉMINEUR", "minesweeper"]) assert.equal(routerLocal(q, CATALOGUE.index), "demineur", q);
 });
+
+test("règles : l'illustration des chiffres respecte le comptage du moteur", () => {
+  const bloc = html.match(/<div class="exemple"[\s\S]*?<\/div>\s*<\/div>/)?.[0];
+  assert.ok(bloc, "illustration présente");
+  const lignes = [...bloc.matchAll(/<div class="rangee">([\s\S]*?)<\/div>/g)]
+    .map(([, rangee]) => [...rangee.matchAll(/data-etat="([^"]+)">([^<]*)</g)].map(([, etat, texte]) => ({ etat, texte })));
+  const p = M.depuisModele(lignes.map((l) => l.map((c) => (c.etat === "mine" ? "*" : "o")).join("")));
+  lignes.flat().forEach(({ etat, texte }, i) => {
+    if (etat === "mine") return;
+    const n = p.cases[i].voisines;
+    assert.equal(etat, n ? `n${n}` : "vide", `case ${i}`);
+    assert.equal(texte, n ? String(n) : "", `case ${i}`);
+  });
+});
