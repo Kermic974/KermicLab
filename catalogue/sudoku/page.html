@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-9Epjj/8RNS9oUVIx3hkt5x2pO8ml0QsmAQcXt7U8h/A='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Sudoku – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "sudoku",
+  "titre": "Sudoku",
+  "sujet": "jeux/sudoku",
+  "version": "1.0.0",
+  "date": "2026-11-04",
+  "langue": "fr",
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+:root {
+  color-scheme: light dark;
+  --fond: #f5f7fb; --surface: #fff; --texte: #172033; --doux: #596579;
+  --accent: #3156a4; --accent-texte: #fff; --bord: #cbd3e1;
+  --succes: #147d45; --alerte: #bd3030; --selection: #dce8ff; --donnee: #edf1f8;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fond: #121721; --surface: #1d2532; --texte: #edf2fb; --doux: #a7b3c5;
+    --accent: #a7c3ff; --accent-texte: #111a2b; --bord: #39475b; --succes: #6de0a0;
+    --alerte: #ff9292; --selection: #304568; --donnee: #263244; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.5 system-ui, sans-serif; }
+header, main, footer { width: min(100% - 24px, 900px); margin-inline: auto; }
+header { padding: 16px 0 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+h1 { margin: 0; font-size: 1.35rem; }
+.sous-titre, .doux { color: var(--doux); }
+.sous-titre { margin: 2px 0 0; font-size: .9rem; }
+#connexion[hidden] { display: none; }
+[role="tablist"] { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--bord); }
+[role="tab"] { flex: 0 0 auto; border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+[role="tab"][aria-selected="true"] { border-bottom-color: var(--accent); color: var(--texte); font-weight: 700; }
+[role="tab"]:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding: 16px 0; }
+[role="tabpanel"][hidden] { display: none; }
+.carte { padding: 14px; margin-bottom: 12px; border: 1px solid var(--bord); border-radius: 12px; background: var(--surface); }
+h2 { font-size: 1.1rem; margin: 0 0 8px; }
+h3 { font-size: 1rem; margin: 12px 0 4px; }
+p { margin: 6px 0; }
+button { color: inherit; font: inherit; }
+button.action, button.secondaire, .chiffre, .case { border-radius: 8px; cursor: pointer; touch-action: manipulation; }
+button.action, button.secondaire { padding: 9px 13px; font-weight: 700; }
+button.action { border: 2px solid var(--accent); background: var(--accent); color: var(--accent-texte); }
+button.secondaire { border: 2px solid var(--bord); background: var(--surface); }
+button.secondaire[aria-pressed="true"], button.secondaire.actif { border-color: var(--accent); background: var(--selection); }
+.niveaux, .clavier, .commandes { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.niveaux { margin: 8px 0 12px; }
+.niveaux button { text-align: left; }
+.niveaux small { display: block; font-size: .75rem; font-weight: 400; }
+.tableau { width: min(100%, 520px); margin: 12px auto; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); border: 3px solid var(--texte); background: var(--surface); }
+.case { aspect-ratio: 1; min-width: 0; padding: 0; border: 0; border-radius: 0; border-right: 1px solid var(--bord); border-bottom: 1px solid var(--bord); background: var(--surface); color: var(--accent); font-size: clamp(1rem, 5vw, 1.65rem); font-weight: 700; }
+.case:nth-child(3n) { border-right: 2px solid var(--texte); }
+.case:nth-child(n+19):nth-child(-n+27), .case:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid var(--texte); }
+.case.donnee { background: var(--donnee); color: var(--texte); }
+.case.selection { background: var(--selection); }
+.case.meme-chiffre { background: color-mix(in srgb, var(--selection) 55%, var(--surface)); }
+.case.erreur { color: var(--alerte); text-decoration: underline wavy; }
+.case:disabled { cursor: default; opacity: 1; }
+.clavier { justify-content: center; margin: 8px 0; }
+.chiffre { width: 42px; min-height: 42px; border: 1px solid var(--bord); background: var(--surface); font-size: 1.1rem; font-weight: 700; }
+.chiffre:hover, button.secondaire:hover { background: var(--selection); }
+.message { min-height: 1.6em; text-align: center; font-weight: 650; }
+.message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+.grille-aide { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.grade { border: 1px solid var(--bord); border-radius: 10px; padding: 12px; background: var(--surface); }
+.grade.verrouille { opacity: .7; }
+.grade h3 { margin-top: 0; }
+.badge { font-size: 1.5rem; }
+footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
+@media (max-width: 480px) { header { align-items: flex-start; } .case { font-size: clamp(.9rem, 7vw, 1.4rem); } .carte { padding: 11px; } }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Sudoku</h1><p class="sous-titre">Des premiers chiffres au niveau pro</p></div>
+  <button id="connexion" class="secondaire" hidden>Se connecter</button>
+</header>
+<nav id="onglets" role="tablist" aria-label="Sudoku"></nav>
+<main id="panneaux"></main>
+<footer>Tout se joue hors ligne. Ta progression reste sur cet appareil.</footer>
+
+<template id="tpl-regles">
+  <section class="carte">
+    <h2>Le but du jeu</h2>
+    <p>Remplis les cases vides avec les chiffres de 1 à 9. Chaque chiffre doit apparaître une seule fois dans chaque ligne, chaque colonne et chaque carré de 3 × 3.</p>
+    <h3>Comment commencer ?</h3>
+    <p>Choisis une case vide, puis un chiffre. Cherche d'abord une ligne, une colonne ou un carré où il ne manque qu'un seul chiffre. Tu peux aussi cliquer une case puis taper un chiffre au clavier.</p>
+    <p>Les chiffres déjà imprimés ne peuvent pas être changés. Le bouton <strong>Indice</strong> révèle une case, et <strong>Vérifier</strong> souligne les erreurs sans effacer ta grille.</p>
+  </section>
+</template>
+<template id="tpl-jeu">
+  <section class="carte">
+    <h2>Choisis ton défi</h2>
+    <div class="niveaux" data-zone="niveaux" aria-label="Niveau de difficulté"></div>
+    <div class="commandes">
+      <button class="action" data-action="nouvelle">Nouvelle grille</button>
+      <button class="secondaire" data-action="indice">💡 Indice</button>
+      <button class="secondaire" data-action="verifier">Vérifier</button>
+      <button class="secondaire" data-action="effacer">Effacer</button>
+    </div>
+    <p class="doux" data-sortie="objectif"></p>
+    <div class="tableau" data-zone="grille" role="grid" aria-label="Grille de Sudoku"></div>
+    <div class="clavier" data-zone="clavier" aria-label="Choisir un chiffre"></div>
+    <p class="message" data-sortie="message" role="status" aria-live="polite"></p>
+  </section>
+</template>
+<template id="tpl-academie">
+  <section class="carte">
+    <h2>Académie : du débutant au pro</h2>
+    <p>Résous une grille pour ouvrir le grade suivant. Chaque étape te présente une stratégie utile.</p>
+    <p class="doux" data-sortie="progression"></p>
+    <div class="grille-aide" data-zone="grades"></div>
+  </section>
+</template>
+<template id="tpl-defis">
+  <section class="carte">
+    <h2>Les réflexes du champion</h2>
+    <div class="grille-aide">
+      <article class="grade"><h3>1. Le chiffre manquant</h3><p>Dans une ligne, note les chiffres absents. Si une seule case peut contenir le 7, le 7 est trouvé.</p></article>
+      <article class="grade"><h3>2. Regarde les trois directions</h3><p>Pour chaque case vide, vérifie sa ligne, sa colonne et son carré de 3 × 3. Un chiffre déjà présent est éliminé.</p></article>
+      <article class="grade"><h3>3. Un seul endroit possible</h3><p>Un chiffre peut avoir plusieurs cases possibles dans une région. Mais s'il n'a qu'un seul emplacement, pose-le là.</p></article>
+      <article class="grade"><h3>4. Les paires</h3><p>Si deux cases d'une région ne peuvent contenir que les mêmes deux chiffres, ces chiffres sont réservés à ces cases.</p></article>
+      <article class="grade"><h3>5. Le niveau pro</h3><p>Répète ces observations après chaque chiffre posé. Une déduction peut en débloquer une autre : pas besoin de deviner.</p></article>
+    </div>
+    <p><button class="action" data-action="defi">Lancer un défi débutant</button></p>
+  </section>
+</template>
+
+<script id="moteur-sudoku">
+const MoteurSudoku = (() => {
+  const ETAPES = [
+    { id: "novice", nom: "Novice", icone: "🌱", description: "Repère les chiffres déjà placés et complète une case facile.", vides: 30, conseil: "Commence par une ligne ou un carré qui contient déjà beaucoup de chiffres." },
+    { id: "debutant", nom: "Débutant", icone: "🔎", description: "Cherche un chiffre qui n'a qu'une place possible.", vides: 40, conseil: "Pour chaque chiffre manquant, élimine les cases interdites par la ligne, la colonne et le carré." },
+    { id: "intermediaire", nom: "Intermédiaire", icone: "🧩", description: "Enchaîne plusieurs déductions sans faire de pari.", vides: 48, conseil: "Après chaque chiffre placé, recommence les vérifications dans les trois directions." },
+    { id: "avance", nom: "Avancé", icone: "🧠", description: "Utilise les candidats et les paires pour débloquer la grille.", vides: 54, conseil: "Deux cases d'une région qui partagent les mêmes deux candidats forment une paire." },
+    { id: "pro", nom: "Pro", icone: "🏆", description: "Résous une grille dense avec patience et méthode.", vides: 56, conseil: "Ne devine pas : chaque chiffre doit être justifié par une ligne, une colonne ou un carré." }
+  ];
+  const BIT = (n) => 1 << n;
+  const melanger = (valeurs, hasard) => {
+    const resultat = [...valeurs];
+    for (let i = resultat.length - 1; i > 0; i--) {
+      const j = Math.min(i, Math.max(0, Math.floor(hasard() * (i + 1))));
+      [resultat[i], resultat[j]] = [resultat[j], resultat[i]];
+    }
+    return resultat;
+  };
+  const permutation = (hasard) => melanger([0, 1, 2], hasard).flatMap((g) => melanger([0, 1, 2], hasard).map((r) => g * 3 + r));
+  function compterSolutions(grille, limite = 2) {
+    const cases = [...grille], lignes = Array(9).fill(0), colonnes = Array(9).fill(0), carres = Array(9).fill(0);
+    for (let i = 0; i < 81; i++) {
+      const n = cases[i];
+      if (!n) continue;
+      if (!Number.isInteger(n) || n < 1 || n > 9) return 0;
+      const r = Math.floor(i / 9), c = i % 9, b = Math.floor(r / 3) * 3 + Math.floor(c / 3), bit = BIT(n);
+      if ((lignes[r] | colonnes[c] | carres[b]) & bit) return 0;
+      lignes[r] |= bit; colonnes[c] |= bit; carres[b] |= bit;
+    }
+    let total = 0;
+    function chercher() {
+      if (total >= limite) return;
+      let meilleur = -1, choix = 0, minimum = 10;
+      for (let i = 0; i < 81; i++) {
+        if (cases[i]) continue;
+        const r = Math.floor(i / 9), c = i % 9, b = Math.floor(r / 3) * 3 + Math.floor(c / 3);
+        const candidats = 0x3fe & ~(lignes[r] | colonnes[c] | carres[b]);
+        const nombre = candidats.toString(2).replace(/0/g, "").length;
+        if (nombre < minimum) { meilleur = i; choix = candidats; minimum = nombre; if (nombre < 2) break; }
+      }
+      if (meilleur < 0) { total++; return; }
+      if (!choix) return;
+      const r = Math.floor(meilleur / 9), c = meilleur % 9, b = Math.floor(r / 3) * 3 + Math.floor(c / 3);
+      for (let n = 1; n <= 9 && total < limite; n++) {
+        const bit = BIT(n);
+        if (!(choix & bit)) continue;
+        cases[meilleur] = n; lignes[r] |= bit; colonnes[c] |= bit; carres[b] |= bit;
+        chercher();
+        cases[meilleur] = 0; lignes[r] &= ~bit; colonnes[c] &= ~bit; carres[b] &= ~bit;
+      }
+    }
+    chercher();
+    return total;
+  }
+  function creerPartie(id, hasard = Math.random) {
+    const niveau = ETAPES.find((e) => e.id === id);
+    if (!niveau) throw new Error(`niveau inconnu : ${id}`);
+    for (let tentative = 0; tentative < 40; tentative++) {
+      const rangs = permutation(hasard), colonnes = permutation(hasard), chiffres = melanger([1, 2, 3, 4, 5, 6, 7, 8, 9], hasard);
+      const solution = Array.from({ length: 81 }, (_, i) => {
+        const r = rangs[Math.floor(i / 9)], c = colonnes[i % 9];
+        return chiffres[(r * 3 + Math.floor(r / 3) + c) % 9];
+      });
+      const depart = [...solution];
+      for (const i of melanger(Array.from({ length: 81 }, (_, n) => n), hasard)) {
+        if (depart.filter(Boolean).length <= 81 - niveau.vides) break;
+        const valeur = depart[i];
+        depart[i] = 0;
+        if (compterSolutions(depart) !== 1) depart[i] = valeur;
+      }
+      if (depart.filter(Boolean).length !== 81 - niveau.vides) continue;
+      return { niveau: id, solution, depart, grille: [...depart], indicesFixes: depart.map((n, i) => n ? i : -1).filter((i) => i >= 0), aides: 0 };
+    }
+    throw new Error(`impossible de générer une grille ${niveau.nom} avec ${niveau.vides} cases vides`);
+  }
+  function peutPlacer(partie, index, valeur) {
+    if (!Number.isInteger(index) || index < 0 || index >= 81 || !Number.isInteger(valeur) || valeur < 1 || valeur > 9) return false;
+    const r = Math.floor(index / 9), c = index % 9, b = Math.floor(r / 3) * 3 + Math.floor(c / 3);
+    for (let i = 0; i < 81; i++) {
+      if (i === index || partie.grille[i] !== valeur) continue;
+      const ri = Math.floor(i / 9), ci = i % 9, bi = Math.floor(ri / 3) * 3 + Math.floor(ci / 3);
+      if (ri === r || ci === c || bi === b) return false;
+    }
+    return true;
+  }
+  function placer(partie, index, valeur) {
+    if (!Number.isInteger(index) || index < 0 || index >= 81 || !Number.isInteger(valeur) || valeur < 0 || valeur > 9) return "invalide";
+    if (partie.indicesFixes.includes(index)) return "fixe";
+    if (valeur && !peutPlacer(partie, index, valeur)) return "conflit";
+    partie.grille[index] = valeur;
+    return "ok";
+  }
+  function verifier(partie) {
+    const vides = [], erreurs = [];
+    for (let i = 0; i < 81; i++) {
+      if (!partie.grille[i]) vides.push(i);
+      else if (partie.grille[i] !== partie.solution[i]) erreurs.push(i);
+    }
+    return { vides, erreurs, resolu: vides.length === 0 && erreurs.length === 0 };
+  }
+  function revelerIndice(partie, hasard = Math.random) {
+    const candidats = partie.grille.map((n, i) => !n && !partie.indicesFixes.includes(i) ? i : -1).filter((i) => i >= 0);
+    if (!candidats.length) return null;
+    const index = candidats[Math.min(candidats.length - 1, Math.floor(hasard() * candidats.length))];
+    partie.grille[index] = partie.solution[index]; partie.aides++;
+    return index;
+  }
+  return Object.freeze({ ETAPES, compterSolutions, creerPartie, peutPlacer, placer, verifier, revelerIndice });
+})();
+</script>
+<script>
+(() => {
+  const M = MoteurSudoku, registre = [];
+  function enregistrerOnglet(def) { registre.push(def); }
+  const panneaux = document.getElementById("panneaux"), onglets = document.getElementById("onglets");
+  const stockage = (() => {
+    try { return {
+      lire() { try { return JSON.parse(localStorage.getItem("kermiclab:sudoku") || '{"ouvert":0}'); } catch { return { ouvert: 0 }; } },
+      ecrire: (x) => localStorage.setItem("kermiclab:sudoku", JSON.stringify(x))
+    }; }
+    catch { return { lire: () => ({ ouvert: 0 }), ecrire() {} }; }
+  })();
+  let progression = stockage.lire();
+  if (!Number.isInteger(progression.ouvert)) progression = { ouvert: 0 };
+  progression.ouvert = Math.max(0, Math.min(M.ETAPES.length - 1, progression.ouvert));
+  let ouvrirOnglet = () => {};
+  const sortie = (el, texte) => { el.textContent = texte; };
+
+  enregistrerOnglet({ id: "explication", titre: "Règles", rendu(p) { p.append(document.getElementById("tpl-regles").content.cloneNode(true)); } });
+  enregistrerOnglet({ id: "application", titre: "Jouer", rendu(p) {
+    p.append(document.getElementById("tpl-jeu").content.cloneNode(true));
+    const zoneNiveaux = p.querySelector('[data-zone="niveaux"]'), grille = p.querySelector('[data-zone="grille"]'), clavier = p.querySelector('[data-zone="clavier"]');
+    const message = p.querySelector('[data-sortie="message"]'), objectif = p.querySelector('[data-sortie="objectif"]');
+    let rang = progression.ouvert, partie, selection = -1, erreurs = [], terminee = false;
+    const boutonsNiveau = M.ETAPES.map((niveau, i) => {
+      const b = document.createElement("button"); b.className = "secondaire"; b.type = "button";
+      b.append(document.createTextNode(`${niveau.icone} ${niveau.nom} `));
+      const detail = document.createElement("small"); detail.textContent = `${niveau.vides} cases à remplir`; b.append(detail);
+      b.addEventListener("click", () => { if (i <= progression.ouvert) demarrer(i); });
+      zoneNiveaux.append(b); return b;
+    });
+    const boutonsChiffre = [];
+    for (let n = 1; n <= 9; n++) {
+      const b = document.createElement("button"); b.className = "chiffre"; b.type = "button"; b.textContent = String(n); b.setAttribute("aria-label", `Choisir ${n}`);
+      b.addEventListener("click", () => saisir(n)); clavier.append(b); boutonsChiffre.push(b);
+    }
+    const vider = document.createElement("button"); vider.className = "secondaire"; vider.type = "button"; vider.textContent = "⌫ Effacer"; vider.addEventListener("click", () => saisir(0)); clavier.append(vider);
+
+    function afficher(focaliser = false) {
+      const meme = selection >= 0 ? partie.grille[selection] : 0;
+      grille.replaceChildren();
+      for (let i = 0; i < 81; i++) {
+        const b = document.createElement("button"), r = Math.floor(i / 9), c = i % 9, n = partie.grille[i];
+        b.type = "button"; b.className = "case"; b.setAttribute("role", "gridcell"); b.dataset.index = String(i);
+        b.setAttribute("aria-label", `Ligne ${r + 1}, colonne ${c + 1}${n ? `, ${n}${partie.indicesFixes.includes(i) ? ", chiffre donné" : ""}` : ", vide"}`);
+        if (partie.indicesFixes.includes(i)) b.classList.add("donnee");
+        if (i === selection) b.classList.add("selection");
+        else if (selection >= 0 && (r === Math.floor(selection / 9) || c === selection % 9 || (Math.floor(r / 3) === Math.floor(selection / 27) && Math.floor(c / 3) === Math.floor((selection % 9) / 3)))) b.classList.add("meme-chiffre");
+        if (meme && n === meme && i !== selection) b.classList.add("meme-chiffre");
+        if (erreurs.includes(i)) b.classList.add("erreur");
+        b.textContent = n ? String(n) : "";
+        b.disabled = terminee;
+        b.addEventListener("click", () => { selection = i; afficher(true); });
+        b.addEventListener("keydown", (e) => {
+          let cible = -1;
+          if (e.key === "ArrowUp") cible = i - 9;
+          if (e.key === "ArrowDown") cible = i + 9;
+          if (e.key === "ArrowLeft") cible = i - 1;
+          if (e.key === "ArrowRight") cible = i + 1;
+          if (cible >= 0 && cible < 81 && !(e.key === "ArrowLeft" && c === 0) && !(e.key === "ArrowRight" && c === 8)) { e.preventDefault(); selection = cible; afficher(true); }
+          else if (/^[1-9]$/.test(e.key)) { e.preventDefault(); saisir(Number(e.key)); }
+          else if (e.key === "Backspace" || e.key === "Delete") { e.preventDefault(); saisir(0); }
+        });
+        grille.append(b);
+      }
+      boutonsNiveau.forEach((b, i) => { b.setAttribute("aria-pressed", String(rang === i)); b.disabled = i > progression.ouvert; });
+      if (focaliser && selection >= 0) grille.children[selection].focus();
+    }
+    function annoncer(texte, classe = "") { sortie(message, texte); message.className = `message ${classe}`; }
+    function terminer() {
+      terminee = true;
+      if (rang === progression.ouvert && progression.ouvert < M.ETAPES.length - 1) progression.ouvert++;
+      stockage.ecrire(progression); afficher();
+      const prochain = progression.ouvert > rang ? ` Le grade ${M.ETAPES[progression.ouvert].nom} est débloqué !` : " Tu as terminé tous les grades : bravo, pro du Sudoku !";
+      annoncer(`Grille résolue ! 🎉${prochain}`, "ok");
+      actualiserAcademie();
+    }
+    function saisir(n) {
+      if (terminee || selection < 0) { annoncer("Choisis d'abord une case vide."); return; }
+      const resultat = M.placer(partie, selection, n);
+      if (resultat === "fixe") { annoncer("Ce chiffre était déjà donné : choisis une case vide."); return; }
+      if (resultat === "conflit") { annoncer("Ce chiffre est déjà présent dans la ligne, la colonne ou le carré."); return; }
+      if (resultat !== "ok") return;
+      erreurs = [];
+      const bilan = M.verifier(partie);
+      afficher();
+      if (bilan.resolu) terminer();
+      else if (n) annoncer("Chiffre placé. Continue !", "ok");
+      else annoncer("Case effacée.");
+    }
+    function demarrer(i) {
+      rang = i; partie = M.creerPartie(M.ETAPES[rang].id); selection = partie.depart.findIndex((n) => !n);
+      erreurs = []; terminee = false;
+      sortie(objectif, `${M.ETAPES[rang].icone} ${M.ETAPES[rang].nom} — ${M.ETAPES[rang].conseil}`);
+      afficher(); annoncer("Sélectionne une case vide, puis choisis un chiffre.");
+    }
+    p.querySelector('[data-action="nouvelle"]').addEventListener("click", () => demarrer(rang));
+    p.querySelector('[data-action="indice"]').addEventListener("click", () => {
+      if (terminee) return;
+      const i = M.revelerIndice(partie);
+      if (i === null) { annoncer("Il n'y a plus de case vide à révéler."); return; }
+      selection = i; afficher(); annoncer(`Indice : la ligne ${Math.floor(i / 9) + 1}, colonne ${i % 9 + 1} contient ${partie.grille[i]}.`, "ok");
+      if (M.verifier(partie).resolu) terminer();
+    });
+    p.querySelector('[data-action="verifier"]').addEventListener("click", () => {
+      const bilan = M.verifier(partie); erreurs = bilan.erreurs; afficher();
+      if (bilan.resolu) terminer();
+      else annoncer(bilan.erreurs.length ? `${bilan.erreurs.length} chiffre${bilan.erreurs.length > 1 ? "s" : ""} à corriger.` : `${bilan.vides.length} case${bilan.vides.length > 1 ? "s" : ""} encore vide${bilan.vides.length > 1 ? "s" : ""}.`, bilan.erreurs.length ? "ko" : "");
+    });
+    p.querySelector('[data-action="effacer"]').addEventListener("click", () => saisir(0));
+    demarrer(rang);
+    jeu.demarrer = demarrer;
+  } });
+  const jeu = {};
+
+  function actualiserAcademie() {
+    if (!academie.zone) return;
+    academie.progres.textContent = `${progression.ouvert + 1} / ${M.ETAPES.length} grades débloqués`;
+    academie.zone.replaceChildren();
+    M.ETAPES.forEach((e, i) => {
+      const carte = document.createElement("article"), h = document.createElement("h3"), desc = document.createElement("p"), conseil = document.createElement("p"), bouton = document.createElement("button");
+      carte.className = `grade${i > progression.ouvert ? " verrouille" : ""}`;
+      h.textContent = `${e.icone} ${i < progression.ouvert ? "✓ " : ""}${e.nom}`;
+      desc.textContent = e.description;
+      conseil.textContent = `À retenir : ${e.conseil}`;
+      bouton.type = "button"; bouton.className = i > progression.ouvert ? "secondaire" : "action"; bouton.disabled = i > progression.ouvert;
+      bouton.textContent = i > progression.ouvert ? "🔒 Résous le grade précédent" : "Jouer cette étape";
+      bouton.addEventListener("click", () => { jeu.demarrer(i); ouvrirOnglet("application"); });
+      carte.append(h, desc, conseil, bouton); academie.zone.append(carte);
+    });
+  }
+  const academie = {};
+  enregistrerOnglet({ id: "academie", titre: "Académie", rendu(p) {
+    p.append(document.getElementById("tpl-academie").content.cloneNode(true));
+    academie.zone = p.querySelector('[data-zone="grades"]'); academie.progres = p.querySelector('[data-sortie="progression"]');
+    actualiserAcademie();
+  } });
+  enregistrerOnglet({ id: "mise-en-situation", titre: "Défis", rendu(p) {
+    p.append(document.getElementById("tpl-defis").content.cloneNode(true));
+    p.querySelector('[data-action="defi"]').addEventListener("click", () => { jeu.demarrer(0); ouvrirOnglet("application"); });
+  } });
+  enregistrerOnglet({ id: "self-test", titre: "Auto-évaluation", actif: false, rendu() {} });
+
+  const actifs = registre.filter((o) => o.actif !== false);
+  for (const [i, o] of actifs.entries()) {
+    const b = document.createElement("button"), section = document.createElement("section");
+    b.type = "button"; b.id = `onglet-${o.id}`; b.setAttribute("role", "tab"); b.setAttribute("aria-controls", `panneau-${o.id}`);
+    const actif = o.id === "application";
+    b.setAttribute("aria-selected", String(actif)); b.tabIndex = actif ? 0 : -1; b.textContent = o.titre; b.dataset.id = o.id;
+    section.id = `panneau-${o.id}`; section.setAttribute("role", "tabpanel"); section.setAttribute("aria-labelledby", b.id); section.tabIndex = 0; section.hidden = !actif;
+    o.rendu(section); onglets.append(b); panneaux.append(section);
+    b.addEventListener("click", () => ouvrirOnglet(o.id));
+    b.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault(); const prochain = (i + (e.key === "ArrowRight" ? 1 : -1) + actifs.length) % actifs.length;
+      ouvrirOnglet(actifs[prochain].id); onglets.children[prochain].focus();
+    });
+  }
+  ouvrirOnglet = (id) => {
+    actifs.forEach((o) => {
+      const actif = o.id === id, b = onglets.querySelector(`[data-id="${o.id}"]`), p = document.getElementById(`panneau-${o.id}`);
+      b.setAttribute("aria-selected", String(actif)); b.tabIndex = actif ? 0 : -1; p.hidden = !actif;
+    });
+  };
+})();
+</script>
+</body>
+</html>
