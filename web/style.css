@@ -464,6 +464,8 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .trophee-module progress { width: 100%; }
 .trophee-module summary { cursor: pointer; margin: 12px 0; font-weight: 650; }
 .trophee-module > button { margin-top: 12px; }
+.trophees-categorie { margin-top: 18px; }
+.trophees-categorie > summary { cursor: pointer; font-weight: 750; font-size: 1rem; }
 .trophees-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
 .trophees-chiffres dt { color: var(--doux); font-size: .8rem; }
 .trophees-chiffres dd { margin: 0; font-weight: 750; }

@@ -3,6 +3,7 @@
 import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
+import { collectionTrophees } from "./lib/trophees.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { sources, ...catalogue } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
@@ -23,6 +24,7 @@ await writeFile(`${racine}worker/src/generated/catalogue-index.json`, `${JSON.st
 
 await rm(`${racine}dist`, { recursive: true, force: true });
 await cp(`${racine}web`, `${racine}dist`, { recursive: true });
+await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTrophees(catalogue))}\n`);
 await versionnerRessources(`${racine}dist`);
 // Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).
 const API_PAR_DEFAUT = "https://kermiclab-api.kermic.workers.dev";

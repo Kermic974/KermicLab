@@ -10,7 +10,8 @@ const $ = (s) => document.querySelector(s);
 const etat = {
   config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null,
-  memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}
+  memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
+  erreurTrophees: false, chargementTrophees: false
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
@@ -444,9 +445,12 @@ function remplirProgres() {
 }
 
 function rendreTrophees() {
-  const modules = Object.entries(etat.trophees);
+  const ouverts = new Set([...document.querySelectorAll(".trophee-module details[open]")].map((n) => n.closest("[data-trophee-module]").dataset.tropheeModule));
+  const modules = Object.entries({ ...etat.collectionTrophees, ...etat.trophees });
   const obtenus = etat.progres.badges.length + modules.reduce((s, [, m]) => s + m.badges.filter((b) => b.obtenu).length, 0);
   $("#trophees-resume").textContent = t("tropheesResume", { n: obtenus, m: modules.length });
+  $("#trophees-etat").textContent = etat.erreurTrophees ? t("tropheesErreur") : etat.collectionTrophees ? "" : t("tropheesChargement");
+  $("#trophees-reessayer").hidden = !etat.erreurTrophees;
   for (const genre of ["notions", "labs", "jeux"]) {
     const zone = $(`#trophees-${genre}`);
     zone.replaceChildren();
@@ -455,7 +459,7 @@ function rendreTrophees() {
     for (const [id, m] of selection) {
       const carte = element("article", { classe: "trophee-module", attributs: { "data-trophee-module": id } });
       const notion = notionParId(id);
-      carte.append(element("h4", { texte: id === "mini-cercle" ? t("minilabTitre") : notion?.titre ?? id }));
+      carte.append(element("h4", { texte: id === "mini-cercle" ? t("minilabTitre") : notion?.titre ?? etat.collectionTrophees?.[id]?.titre ?? id }));
       if (id === "mini-cercle") carte.append(element("p", { cle: "tropheesMiniLab" }));
       const chiffres = element("dl", { classe: "trophees-chiffres" });
       for (const [cle, valeur] of [
@@ -477,6 +481,7 @@ function rendreTrophees() {
       }
       if (m.badges.length) {
         const details = element("details");
+        details.open = ouverts.has(id);
         details.append(element("summary", { texte: t("tropheesBadges", { n: m.badges.filter((b) => b.obtenu).length, m: m.badges.length }) }));
         const badges = element("ul", { classe: "badges" });
         for (const b of m.badges) {
@@ -489,13 +494,30 @@ function rendreTrophees() {
         }
         details.append(badges); carte.append(details);
       }
-      if (notion) {
-        const reprendre = element("button", { classe: "secondaire", cle: "reprendreBouton", attributs: { type: "button" } });
-        reprendre.addEventListener("click", () => { $("#progres").close(); ouvrirNotion(notion); });
+      const cible = notion ?? (etat.collectionTrophees?.[id]?.titre ? { id, titre: etat.collectionTrophees[id].titre } : null);
+      if (cible) {
+        const reprendre = element("button", { classe: "secondaire", cle: etat.trophees[id] ? "reprendreBouton" : "commencer", attributs: { type: "button" } });
+        reprendre.addEventListener("click", () => { $("#progres").close(); ouvrirNotion(cible); });
         carte.append(reprendre);
       }
       zone.append(carte);
     }
+  }
+}
+
+async function chargerCollectionTrophees() {
+  if (etat.collectionTrophees || etat.chargementTrophees) return;
+  etat.chargementTrophees = true;
+  etat.erreurTrophees = false;
+  rendreTrophees();
+  try {
+    etat.collectionTrophees = trophees.lireCollection(await chargerJson("trophees.json"));
+  } catch (e) {
+    console.error("trophees", e);
+    etat.erreurTrophees = true;
+  } finally {
+    etat.chargementTrophees = false;
+    if ($("#progres").open) rendreTrophees();
   }
 }
 
@@ -723,6 +745,7 @@ async function demarrer() {
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
   brancherTrophees();
+  $("#trophees-reessayer").addEventListener("click", chargerCollectionTrophees);
   appliquerTheme(lireCle(preferences(), CLE_THEME));
   const select = $("#langue");
   for (const l of etat.config.langues) {
@@ -811,7 +834,7 @@ async function demarrer() {
   rafraichirTableau();
 }
 
-function ouvrirProgres() { remplirProgres(); $("#progres").showModal(); }
+function ouvrirProgres() { remplirProgres(); $("#progres").showModal(); chargerCollectionTrophees(); }
 function ouvrirSignalement() { $("#retour-signalement").textContent = ""; $("#signalement").showModal(); }
 
 /* ---------- Session, pseudo et mémorisation (ADR 0012) ---------- */

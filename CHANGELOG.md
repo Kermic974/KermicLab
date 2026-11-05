@@ -5,6 +5,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
+- **Collection des trophées accessible depuis l'accueil** : les objectifs des notions, labs et jeux compatibles sont présentés dès l'ouverture de « Mes trophées », sans devoir lancer un module. Les résultats déjà conservés se superposent à la collection ; les objectifs non commencés restent à débloquer, sans gain de progression artificiel.
 - **Remontée des trophées** : le pont des pages intégrées fonctionne avec la politique `Referrer-Policy: no-referrer` du site déployé. L'origine du parent est vérifiée et fixée lors de la connexion par message, sans dépendre du Referer ni désactiver l'isolation des pages.
 - **Mes trophées** remplace « Mes badges » : succès d'exploration, étoiles des notions et du mini-lab, records du cercle, XP, niveaux, grades, leçons, révisions et badges des jeux compatibles. Remontée locale depuis les iframes isolées et reprise des résultats, avec la même mémorisation optionnelle et le même effacement que le profil.
 - **Feuille de route** : nouvelle page `feuille-de-route.html` (version révisée de la proposition « trigoLab → KermicLab » : état réel du projet, phases avec conditions de sortie et points de contrôle humains, cahier de vacances local avant les comptes, contrat d'événements `postMessage` des pages, garde-fous du tuteur IA, risques, résumé en anglais). Accessible depuis la barre latérale, entre « Profil et paramètres » et « Signaler un problème », et depuis le pied de page.

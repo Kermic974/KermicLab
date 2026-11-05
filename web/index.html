@@ -369,6 +369,8 @@
   </div>
   <p data-i18n="tropheesIntro"></p>
   <p id="trophees-resume" role="status"></p>
+  <p id="trophees-etat" role="status"></p>
+  <button type="button" class="secondaire" id="trophees-reessayer" data-i18n="reessayer" hidden></button>
   <h3 data-i18n="tropheesExploration"></h3>
   <div class="niveau-carte">
     <span class="niveau-rond" id="progres-niveau-num" aria-hidden="true"></span>
@@ -386,12 +388,18 @@
   <p class="doux petit" id="stat-serie-max"></p>
   <h3 data-i18n="badgesTitre"></h3>
   <ul id="liste-badges" class="badges"></ul>
-  <h3 data-i18n="tropheesNotions"></h3>
-  <div id="trophees-notions"></div>
-  <h3 data-i18n="tropheesLabs"></h3>
-  <div id="trophees-labs"></div>
-  <h3 data-i18n="tropheesJeux"></h3>
-  <div id="trophees-jeux"></div>
+  <details class="trophees-categorie">
+    <summary data-i18n="tropheesNotions"></summary>
+    <div id="trophees-notions"></div>
+  </details>
+  <details class="trophees-categorie" open>
+    <summary data-i18n="tropheesLabs"></summary>
+    <div id="trophees-labs"></div>
+  </details>
+  <details class="trophees-categorie" open>
+    <summary data-i18n="tropheesJeux"></summary>
+    <div id="trophees-jeux"></div>
+  </details>
   <p class="doux petit" data-i18n="tropheesLimites"></p>
   <p class="note-locale" id="note-memoire"></p>
   <p class="doux petit" data-i18n="progressionCompte"></p>

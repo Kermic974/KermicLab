@@ -37,6 +37,7 @@ async function demarrer(options = {}) {
 }
 
 async function ouvrirModule(page, id) {
+  await page.locator("#minilab [data-angles] button").first().waitFor({ state: "attached" });
   await page.click("#ouvrir-catalogue");
   await page.fill("#recherche-notion", modules.find((m) => m.id === id).titre);
   await page.locator(`#catalogue-liste [data-notion="${id}"]`).click();
@@ -161,6 +162,7 @@ for (const id of ["sudoku", "2048"]) {
         for (let tour = 0; tour < 5; tour++) {
           for (const direction of ["left", "up", "right", "down"]) await cadre.locator(`[data-direction="${direction}"]`).click();
         }
+
         await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))["2048"].record > 0);
         const record = Number(await cadre.locator('[data-sortie="record"]').textContent());
         await page.waitForFunction((record) => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))["2048"].record === record, record);
@@ -180,3 +182,67 @@ for (const id of ["sudoku", "2048"]) {
     } finally { await contexte.close(); }
   });
 }
+
+test("trophées depuis l'accueil : toute la collection est visible sans avoir ouvert un module", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  const pagesOuvertes = [];
+  page.on("request", (r) => { if (new URL(r.url()).pathname.startsWith("/maquettes/")) pagesOuvertes.push(r.url()); });
+  try {
+    await page.click("[data-nav=badges]");
+    await page.locator("#trophees-jeux [data-trophee-module=echecs]").waitFor();
+    assert.equal(await page.locator("#trophees-notions [data-trophee-module=pythagore]").count(), 1);
+    assert.equal(await page.locator("#trophees-labs [data-trophee-module=mini-cercle]").count(), 1);
+    assert.equal(await page.locator("#trophees-labs [data-trophee-module=trigo-cercle]").count(), 1);
+    const echecs = page.locator("[data-trophee-module=echecs]");
+    assert.match(await echecs.textContent(), /Les échecs.*0 \/ 17 trophées obtenus/s);
+    await echecs.locator("summary").click();
+    assert.equal(await echecs.locator(".badge.verrouille").count(), 17);
+    assert.equal(await page.locator("#progres .badge.obtenu").count(), 0, "aucun succès inventé");
+    assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:trophees")), null, "consulter ne crée pas de progression");
+    assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
+    assert.deepEqual(pagesOuvertes, [], "la collection ne lance aucune page de jeu en arrière-plan");
+    await echecs.getByRole("button", { name: "Commencer", exact: true }).click();
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? "{}").echecs);
+    assert.equal(await page.locator("#bulle-lab").getAttribute("data-notion"), "echecs");
+    assert.deepEqual(erreurs, []);
+  } finally { await contexte.close(); }
+});
+
+test("trophées depuis l'accueil : les résultats conservés apparaissent sans rouvrir le jeu", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  try {
+    const c = JSON.parse(await readFile(`${racine}dist/trophees.json`, "utf8"));
+    const p = c.modules.find((m) => m.id === "echecs").progression;
+    p.xp = 70; p.etoiles = 3; p.lecons = 1;
+    p.etat.xp = 70; p.etat.lecons.valeurs = { etoiles: 3, jour: "2026-11-05" };
+    for (const badge of p.badges.filter((b) => ["premiers-pas", "sans-faute"].includes(b.id))) {
+      badge.actuel = 1; badge.obtenu = true;
+    }
+    await page.evaluate((p) => sessionStorage.setItem("kermiclab:trophees", JSON.stringify({ echecs: p })), p);
+    await page.reload();
+    await page.locator("#grille-matieres button").first().waitFor();
+    await page.click("[data-nav=badges]");
+    const carte = page.locator("#trophees-jeux [data-trophee-module=echecs]");
+    await carte.waitFor();
+    await carte.locator("summary").click();
+    assert.match(await carte.textContent(), /70/);
+    assert.equal(await carte.locator(".badge.obtenu").count(), 2);
+    assert.equal(await page.locator("iframe[data-module]").count(), 0);
+    assert.deepEqual(erreurs, []);
+  } finally { await contexte.close(); }
+});
+
+test("trophées : un échec du chargement de la collection est visible et réessayable", async () => {
+  const { page, contexte } = await demarrer();
+  try {
+    await page.route("**/trophees.json", (r) => r.fulfill({ status: 503, body: "indisponible" }));
+    await page.click("[data-nav=badges]");
+    await page.locator("#trophees-reessayer").waitFor();
+    assert.match(await page.locator("#trophees-etat").textContent(), /Impossible de charger/);
+    await page.unroute("**/trophees.json");
+    await page.click("#trophees-reessayer");
+    await page.locator("#trophees-jeux [data-trophee-module=echecs]").waitFor();
+    assert.equal(await page.locator("#trophees-etat").textContent(), "");
+    assert.equal(await page.locator("#trophees-reessayer").isVisible(), false);
+  } finally { await contexte.close(); }
+});

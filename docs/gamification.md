@@ -47,6 +47,13 @@ révisions, victoires et tous ses badges avec leur avancement. Sudoku remonte se
 Les jeux sans adaptateur ne déclarent aucun résultat ; un état vide est affiché, sans inventer de réussite.
 Les XP ne sont pas additionnés : les règles et les niveaux diffèrent selon les parcours.
 
+La collection est consultable **depuis l'accueil, avant toute ouverture d'un module** : le build produit
+`dist/trophees.json` à partir des contenus et des moteurs de progression du catalogue. Ce fichier public ne contient
+que les objectifs disponibles et leurs états initiaux, jamais de données utilisateur. À l'ouverture de « Mes trophées »,
+le tableau de bord affiche cette collection puis y superpose les instantanés déjà conservés dans le navigateur.
+Un trophée sans résultat est présenté comme à débloquer ; consulter la collection ne crée ni XP, ni étoile,
+ni notion explorée et ne lance aucun jeu en arrière-plan. Un échec de chargement est signalé et peut être réessayé.
+
 Le pont autonome `gabarit/jeux/trophees.js`, inclus au build avec ses hashes CSP, échange seulement avec le parent
 par `postMessage`. Les iframes restent `sandbox="allow-scripts"`, **sans** `allow-same-origin`.
 Le module envoie `kermiclab:trophees:pret` avec son identifiant ; le tableau de bord répond par
@@ -70,7 +77,9 @@ Une page ouverte séparément reste autonome, avec son propre stockage : **pas d
 ni de récupération des anciens résultats de pages plein écran**. Aucun résultat n'est envoyé au serveur.
 
 English: **My trophies** combines exploration achievements, concept and mini-lab stars, lab records and compatible
-game learning paths. Sandboxed pages exchange bounded, source-checked local snapshots with the dashboard;
+game learning paths. The available collection is visible directly from the homepage before opening any module,
+with saved dashboard snapshots overlaid on locked goals. Browsing the collection does not award progress or launch games.
+Sandboxed pages exchange bounded, source-checked local snapshots with the dashboard;
 progress follows the profile's session/remember/erase choice. XP scales remain separate. Standalone pages retain
 their independent storage and do not sync with the dashboard.
 
