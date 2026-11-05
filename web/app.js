@@ -653,11 +653,17 @@ function brancherBulle() {
 
 let declencheurCatalogue = null;
 
-function ouvrirCatalogue() {
+function ouvrirCatalogue({ matiere, nav } = {}) {
+  if (matiere) {
+    etat.matiere = matiere;
+    ecrireCle(preferences(), CLE_MATIERE, matiere);
+    $("#recherche-notion").value = "";
+    rendreCatalogue();
+  }
   declencheurCatalogue = document.activeElement;
   $("#catalogue").classList.add("ouvert");
   $("#voile-catalogue").hidden = false;
-  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", "true"));
+  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", String(b.dataset.nav === nav)));
   $("#recherche-notion").focus();
 }
 
@@ -972,6 +978,13 @@ function brancherNavigation() {
     if (cle === "accueil") { marquerNavigation("accueil"); aller("#haut"); }
     else if (cle === "progression") { marquerNavigation("progression"); aller("#semaine"); }
     else if (cle === "catalogue") ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue());
+    else if (cle === "labs" || cle === "jeux") {
+      if (bouton.getAttribute("aria-expanded") === "true") fermerCatalogue();
+      else {
+        const matiere = cle === "jeux" ? "jeux" : etat.notions.map(matiereDe).find((m) => m !== "jeux") || "mathematiques";
+        ouvrirCatalogue({ matiere, nav: cle });
+      }
+    }
     else if (cle === "defi") ouvrirDefi();
     else if (cle === "badges") ouvrirProgres();
     else if (cle === "profil") ouvrirProfil();

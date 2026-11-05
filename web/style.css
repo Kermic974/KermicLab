@@ -125,6 +125,8 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .marque-nom span { color: var(--accent); }
 .marque-slogan { font-size: 12px; color: var(--doux); }
 .nav, .barre-pied { display: flex; flex-direction: column; gap: 2px; }
+.nav-groupe { display: flex; flex-direction: column; gap: 2px; padding-top: 12px; border-top: 1px solid var(--bord); }
+.nav-groupe-titre { padding: 0 12px 4px; color: var(--doux); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
 .barre-pied { margin-top: auto; }
 .nav-bouton {
   display: flex; align-items: center; gap: 12px; width: 100%; min-height: 42px; padding: 0 12px; border-radius: var(--rayon-petit);
@@ -669,6 +671,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .marque { padding: 0; }
   .marque-textes, .nav-texte, .profil-textes { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .nav, .barre-pied { width: 100%; }
+  .nav-groupe { padding-top: 8px; }
+  .nav-groupe-titre { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .nav-bouton { justify-content: center; padding: 0; min-height: 48px; }
   .nav-bouton .ico { width: 22px; height: 22px; }
   .profil-carte { justify-content: center; padding: 8px; background: none; border: 0; }
@@ -712,11 +716,12 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .stats dd { font-size: 1.25rem; }
   #toasts { top: 12px; }
   .nav-mobile {
-    display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
+    display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
     background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--bord);
     padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px));
   }
+  .nav-mobile-groupe { grid-column: span 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-mobile-bouton { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 54px; padding: 0; background: none; color: var(--doux); font-size: 11px; font-weight: 600; border-radius: 12px; }
   .nav-mobile-bouton:hover { background: none; color: var(--texte); }
   .nav-mobile-bouton .ico { width: 22px; height: 22px; }

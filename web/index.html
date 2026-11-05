@@ -14,6 +14,7 @@
 <svg class="sprite" aria-hidden="true" focusable="false">
   <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11.5h13V9"/><path d="M10 20.5v-5.5h4v5.5"/></symbol>
   <symbol id="i-boussole" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+  <symbol id="i-jeu" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="3"/><path d="M8 9v5M5.5 11.5h5"/><circle cx="15.5" cy="10" r=".8"/><circle cx="18" cy="13" r=".8"/></symbol>
   <symbol id="i-eclair" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
   <symbol id="i-graphique" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></symbol>
   <symbol id="i-trophee" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8.5 20.5h7M10 17h4v3.5h-4z"/></symbol>
@@ -49,7 +50,11 @@
     </a>
     <nav class="nav" data-i18n-aria="sections">
       <button type="button" class="nav-bouton" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
-      <button type="button" class="nav-bouton" data-nav="catalogue" id="ouvrir-catalogue" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navExplorer"></span></button>
+      <div class="nav-groupe">
+        <span class="nav-groupe-titre" data-i18n="navGroupeLabsJeux"></span>
+        <button type="button" class="nav-bouton" data-nav="labs" id="ouvrir-catalogue" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
+        <button type="button" class="nav-bouton" data-nav="jeux" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
+      </div>
       <button type="button" class="nav-bouton" data-nav="defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span class="nav-texte" data-i18n="navDefi"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <button type="button" class="nav-bouton" data-nav="badges"><svg class="ico" aria-hidden="true"><use href="#i-trophee"/></svg><span class="nav-texte" data-i18n="navBadges"></span></button>
@@ -253,9 +258,12 @@
 
 <nav class="nav-mobile" data-i18n-aria="navigationMobile">
   <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="catalogue" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg></span><span data-i18n="navExplorer"></span></button>
+  <div class="nav-mobile-groupe" role="group" data-i18n-aria="navGroupeLabsJeux">
+    <button type="button" class="nav-mobile-bouton" data-nav="labs" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg></span><span data-i18n="navLabs"></span></button>
+    <button type="button" class="nav-mobile-bouton" data-nav="jeux" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
+  </div>
   <button type="button" class="nav-mobile-bouton" data-nav="defi"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg></span><span data-i18n="navDefiCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgression"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
 </nav>
 

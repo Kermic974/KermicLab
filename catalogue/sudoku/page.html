@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KEYNihQI8va1VTDbUSyRhj9zzh0iWQVkTG6hnnoObK0=' 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-BqFuLcRrKZGTOVX2gIz/hlhB/2G/KEuW+ec/Ni9NK6g='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2NCbZTuzFHRoF8wLALkIG4Joli6KGmi9R9ZKnMAY40o=' 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-BqFuLcRrKZGTOVX2gIz/hlhB/2G/KEuW+ec/Ni9NK6g='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Sudoku – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -83,18 +83,21 @@ footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
 const Trophees = (() => {
   function monter({ restaurer, resumer }) {
     if (window.parent === window) return () => {};
-    const module = JSON.parse(document.getElementById("kermiclab-meta").textContent).id;
+    const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+    const module = meta.id;
+    const origineParent = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    if (!origineParent) return () => {};
     let pret = false;
     const publier = () => {
-      if (pret) window.parent.postMessage({ type: "kermiclab:trophees:progres", module, ...resumer() }, "*");
+      if (pret) window.parent.postMessage({ type: "kermiclab:trophees:progres", module, ...resumer() }, origineParent);
     };
     window.addEventListener("message", (e) => {
-      if (e.source !== window.parent || e.data?.type !== "kermiclab:trophees:charger" || e.data.module !== module || pret) return;
+      if (e.source !== window.parent || e.origin !== origineParent || e.data?.type !== "kermiclab:trophees:charger" || e.data.module !== module || pret) return;
       if (e.data.etat !== null) restaurer(e.data.etat);
       pret = true;
       publier();
     });
-    window.parent.postMessage({ type: "kermiclab:trophees:pret", module }, "*");
+    window.parent.postMessage({ type: "kermiclab:trophees:pret", module }, origineParent);
     return publier;
   }
   return Object.freeze({ monter });
