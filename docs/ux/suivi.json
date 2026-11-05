@@ -25,10 +25,10 @@
       "sourcesSha256": "1ea9419d8e2adf64c4895405b09f95345d9c7e723863f7753136a1111566e590"
     },
     "jeux.html": {
-      "version": "1.3.1",
+      "version": "1.3.4",
       "date": "2026-11-05",
       "revision": "ffd2da59b02dca092b494394d285dc9c282cf065",
-      "squeletteSha256": "7b8e5e595c763d04b0ea5acfae6ea91d919e6208ba3980079924e79fcfce2c5a",
+      "squeletteSha256": "daebb239c98e6f9379b72a330c74d4a800c7acd0bccc7631e9aadbd15b49bbd7",
       "sourcesSha256": "4469bfab73fd82962321453d3e6038b5b30a436bfd061e45ece64af7a8b7d703"
     },
     "editorial.html": {
@@ -348,6 +348,7 @@
       "date": "2026-11-05",
       "modifies": [
         "index.html",
+        "jeux.html",
         "inventaire.html"
       ],
       "precedente": "1.3.3",
@@ -358,6 +359,13 @@
           "revision": "b28203c945cd9def7dd413a312095957c5594506",
           "squeletteSha256": "56e365ad2732c1795b3f8ebaa7ceed66d0ef38981dad05d698dffdb82a6416b1",
           "sourcesSha256": "ade6c8c21b36acda7adec621c9e5b58ec43b7aeb96c6aabdced8e3716d27b817"
+        },
+        "jeux.html": {
+          "version": "1.3.4",
+          "date": "2026-11-05",
+          "revision": "ffd2da59b02dca092b494394d285dc9c282cf065",
+          "squeletteSha256": "daebb239c98e6f9379b72a330c74d4a800c7acd0bccc7631e9aadbd15b49bbd7",
+          "sourcesSha256": "4469bfab73fd82962321453d3e6038b5b30a436bfd061e45ece64af7a8b7d703"
         },
         "inventaire.html": {
           "version": "1.3.4",
