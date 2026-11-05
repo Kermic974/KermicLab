@@ -494,7 +494,7 @@ const MoteurPoker = (() => {
       : main[0].rang === main[1].rang ? "Tu as une paire en main." : "Tu n'as pas de paire en main.";
     const cout = aPayer > 0
       ? `Suivre coûte ${aPayer} jetons pour un pot de ${pot}. Tu peux aussi te coucher et conserver tes jetons restants.`
-      : "Tu peux parler gratuitement pour voir la suite, ou miser de 20.";
+      : "Tu peux parler gratuitement sans ajouter de jetons.";
     return `${description} ${cout} Les cartes adverses sont inconnues : ce n'est pas une garantie de gagner.`;
   }
   function comparerScores(a, b) {
