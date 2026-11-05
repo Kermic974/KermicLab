@@ -1,0 +1,78 @@
+name: Actualisation de la roadmap
+
+on:
+  workflow_run:
+    workflows: ["CI/CD", "Validation de l'application autonome", "Sécurité des contributions"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: roadmap
+  cancel-in-progress: false
+
+jobs:
+  proposer:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_repository.full_name == github.repository &&
+       github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Vérifier main et préparer l'encart factuel
+        id: roadmap
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/roadmap.mjs
+      - name: Vérifier la génération
+        if: steps.roadmap.outputs.prete == 'true'
+        run: |
+          node --test tests/unit/roadmap.test.mjs
+          npm run build
+          git diff --check
+      - name: Proposer la mise à jour sans fusion automatique
+        if: steps.roadmap.outputs.prete == 'true'
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          token: ${{ github.token }}
+          branch: automatisation/roadmap
+          delete-branch: true
+          add-paths: web/feuille-de-route.html
+          commit-message: "docs: actualiser le suivi factuel de la roadmap"
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          title: "docs: actualiser la roadmap après validation de main"
+          body: |
+            ## Résumé / Summary
+            Mise à jour déterministe de l'encart « Suivi automatique » : catalogue public courant,
+            PR fusionnées présentes dans le commit validé et liens vers les trois validations.
+            Les phases stratégiques et le reste du document ne sont pas modifiés.
+
+            ## Type
+            - [x] Documentation / chantier / décision
+
+            ## Vérifications
+            - [x] CI/CD, application autonome et sécurité réussies sur le même commit de main
+            - [x] Tests du générateur, build et git diff --check
+            - [x] Aucune IA, aucun nouveau secret ni donnée personnelle
+            - [ ] CI de cette PR : fermer puis rouvrir manuellement cette PR pour la déclencher
+
+            ## Contrôle humain
+            Validation du CODEOWNER et CI verte requises avant fusion ; aucune fusion automatique.
+            Le GITHUB_TOKEN ne déclenche pas les workflows pull_request (voir docs/chantiers/ci-cd.md).
