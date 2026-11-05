@@ -63,6 +63,7 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
       assert.match(corps, new RegExp(`navigation: ${vue}`));
       assert.match(corps, /panneau: catalogue/);
       await page.locator("#fermer-catalogue").click();
+      assert.doesNotMatch(await brouillon(page.locator("body > .boite-idees")), /onglet:/);
     }
     if (await ouvert.count()) await page.evaluate(() => document.querySelectorAll("dialog[open]").forEach((d) => d.close()));
   }
@@ -97,6 +98,16 @@ test("boîte à idées : onglets des notions, sous-vues des jeux et popup depuis
       assert.doesNotMatch(corps, /vues: accueil/);
     }
   }
+  await page.evaluate(() => {
+    const dialogue = document.createElement("dialog");
+    dialogue.id = "dialogue-sans-onglet";
+    document.body.append(dialogue);
+    dialogue.showModal();
+  });
+  const dialogue = page.locator("#dialogue-sans-onglet");
+  await dialogue.locator(":scope > .boite-idees").waitFor();
+  assert.match(await brouillon(dialogue.locator(":scope > .boite-idees")), /onglet: academie/);
+  await dialogue.evaluate((element) => element.close());
   await simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette: CATALOGUE.pages["trigo-cercle"].fr });
   await page.goto(serveur.url);
   await page.fill("#pseudo", "Test");

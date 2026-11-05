@@ -10,7 +10,8 @@
     const zone = dialogue ?? document.querySelector("#catalogue.ouvert") ?? document;
     const visible = (noeud) => noeud.getClientRects().length > 0
       && getComputedStyle(noeud).visibility === "visible";
-    const onglet = [...zone.querySelectorAll('[role="tab"][aria-selected="true"]')].find(visible);
+    const onglets = (racine) => [...racine.querySelectorAll('[role="tab"][aria-selected="true"]')].find(visible);
+    const onglet = onglets(zone) ?? (zone === document ? undefined : onglets(document));
     const navigation = document.querySelector('[data-nav][aria-expanded="true"]')
       ?? document.querySelector('[data-nav][aria-current="page"]');
     const cadre = dialogue?.querySelector("iframe[data-module]");
