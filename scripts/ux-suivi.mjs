@@ -16,15 +16,16 @@ const definitions = {
     sources: ["web", "catalogue", "gabarit/jeux/trophees.js", "scripts/lib/trophees.mjs", "scripts/roadmap.mjs"],
     vues: [
       ["premiere-visite", "", "Première visite : nouveau navigateur, dialogue de pseudo"],
-      ["accueil", "", "Accueil"],
-      ["progression", "#semaine", "Progression : section Cette semaine"],
-      ["catalogue", "", "Catalogue : cliquer sur Labs"],
-      ["catalogue-jeux", "", "Jeux : cliquer sur Jeux"],
+      ["accueil", "#accueil", "Accueil"],
+      ["labs", "#labs", "Labs : applications autonomes"],
+      ["jeux", "#jeux", "Jeux : cartes et recherche"],
+      ["progression", "#progression", "Progression : écran dédié"],
+      ["catalogue", "", "Notions : cliquer sur Notions pour ouvrir le panneau"],
       ["conversation", "", "Conversation : poser une question"],
       ["bulle", "", "Bulle Lab : ouvrir une notion du catalogue"],
-      ["defi", "", "Défi : cliquer sur Défi express"],
-      ["badges", "", "Mes trophées : cliquer sur Mes trophées ou la pastille XP"],
-      ["profil", "", "Profil : cliquer sur Profil et paramètres"],
+      ["defi", "#defi", "Défi express : écran dédié"],
+      ["badges", "#badges", "Mes trophées : écran dédié"],
+      ["profil", "#profil", "Profil et paramètres : écran dédié"],
       ["support", "", "Support : cliquer sur Signaler un problème"],
       ["comptes", null, "Compte et consentement : accès actuellement masqué"]
     ]

@@ -179,6 +179,12 @@ test("les squelettes UX restent autonomes, navigables hors ligne et lisibles sur
     for (const nav of new Set([...source.matchAll(/data-nav="([^"]+)"/g)].map((m) => m[1]))) {
       assert.ok(await page.locator(`[data-nav="${nav}"]`).count() > 0, `navigation ${nav}`);
     }
+    const ecrans = [...new Set([...source.matchAll(/data-ecrans="([^"]+)"/g)].flatMap((m) => m[1].split(" ")))];
+    for (const ecran of ecrans) {
+      assert.equal(await page.locator(`[data-vue-active="${ecran}"]`).count(), 1, `écran dédié ${ecran}`);
+      assert.ok(await page.locator(`[data-lien-actif][href="https://kermiclab.online/#${ecran}"]`).count() > 0,
+        `lien actif direct de l'écran ${ecran}`);
+    }
     await page.getByRole("link", { name: "Page de notion", exact: true }).click();
     assert.equal(new URL(page.url()).pathname, new URL("notion.html", dossier).pathname);
 

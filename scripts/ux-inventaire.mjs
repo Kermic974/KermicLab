@@ -34,6 +34,7 @@ export async function construireInventaire() {
     .update(normaliserSource(fichier, await readFile(path.join(racine, fichier)))).update("\0");
   const dialogues = [...index.matchAll(/<dialog id="([^"]+)"/g)].map((m) => m[1]);
   const navigation = [...new Set([...index.matchAll(/data-nav="([^"]+)"/g)].map((m) => m[1]))];
+  const ecrans = [...new Set([...index.matchAll(/data-ecrans="([^"]+)"/g)].flatMap((m) => m[1].split(" ")))];
   const lignes = [];
   for (const notion of catalogue.index.maquettes) {
     const html = catalogue.pages[notion.id].fr;
@@ -90,7 +91,7 @@ export async function construireInventaire() {
       <p>Régénérer et versionner : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Les tests détectent une dérive des sources, des squelettes, des dialogues, de la navigation et des onglets des jeux ; relire les squelettes manuels avant de valider une nouvelle version.</p>
     </section>
     <section data-ecran="inventaire-site"><h2>Coquille, dialogues et variantes</h2>
-      <p>Navigation actuelle : ${navigation.map(echapper).join(" · ")}. Couverture détaillée dans le squelette principal, avec variantes vides, chargement, erreur, réussite, mémoire et notifications.</p>
+      <p>Navigation actuelle : ${navigation.map(echapper).join(" · ")}. Écrans dédiés accessibles par fragment d'URL : ${ecrans.map(echapper).join(" · ")}. Labs et Jeux sont séparés du panneau Notions ; Profil, Défi et Trophées ne sont plus des dialogues. Couverture détaillée dans le squelette principal, avec variantes vides, chargement, erreur, réussite, mémoire et notifications.</p>
       <ul>${dialogues.map((id) => `<li data-dialogue="${echapper(id)}"><a href="index.html#${liensDialogues[id]}">${echapper(id)}</a>${["compte", "consentement"].includes(id) ? " · accès masqué" : ""}</li>`).join("")}</ul>
       <p>Éditorial : <a href="editorial.html#feuille-de-route">Feuille de route</a>, <a href="editorial.html#confidentialite">Confidentialité</a>, <a href="editorial.html#mentions-legales">Mentions légales</a>. Participation : lien externe, pas d'écran interne. Worker : aucune page d'erreur HTML dédiée, 404 textuelle.</p>
     </section>
