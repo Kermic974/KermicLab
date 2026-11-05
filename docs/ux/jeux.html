@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Squelette UX · Jeu et Académie · KermicLab</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #222; font: 16px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 4px; }
+    header, main, footer { max-width: 1100px; margin: auto; padding: 1.2rem; }
+    h1, h2, h3 { line-height: 1.25; }
+    nav, .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
+    nav a, .bouton, button { display: inline-block; padding: .65rem 1rem; min-height: 44px; border: 1px solid #555; border-radius: .3rem; background: white; color: #222; font: inherit; text-decoration: none; }
+    button:disabled { border-style: dashed; color: #555; }
+    .note { background: #e9e9e9; border: 1px dashed #777; padding: 1rem; }
+    .ecran { margin: 2rem 0; border-top: 2px solid #333; padding-top: 1rem; scroll-margin-top: 1rem; }
+    .repere { color: #555; font: 700 .8rem ui-monospace, monospace; text-transform: uppercase; }
+    .grille { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; }
+    .carte, details { padding: 1rem; background: white; border: 1px solid #ccc; border-radius: .4rem; margin: 1rem 0; min-width: 0; }
+    .plateau { aspect-ratio: 1; width: 100%; max-width: 440px; margin: auto; border: 2px solid #555; display: grid; place-items: center; padding: 2rem; text-align: center; background: repeating-conic-gradient(#ddd 0% 25%, #fff 0% 50%) 0 0 / 25% 25%; }
+    .plateau span { background: white; border: 1px solid #555; padding: 1rem; }
+    progress { width: 100%; accent-color: #444; }
+    .zone { min-height: 160px; display: grid; place-items: center; padding: 1rem; text-align: center; border: 2px dashed #999; }
+    label { display: block; margin: .6rem 0; }
+    input { width: 100%; padding: .6rem; font: inherit; }
+    summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+    @media (max-width: 700px) { .grille { grid-template-columns: 1fr; } }
+    @media print { .ecran { break-before: page; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html#catalogue-jeux">Retour aux jeux du catalogue</a>
+    <p class="note">ATELIER UX · 5 novembre 2026 · Les neuf jeux du catalogue public. Chaque jeu conserve ses onglets et commandes ; les vues de l'Académie commune sont détaillées en bas. Aucun moteur, score ni stockage n'est embarqué ; toutes les commandes sont désactivées.</p>
+    <h1>Jeux et Académies</h1><p>Sur le site : une page autonome par jeu, titre · identifiant · version ; connexion masquée, auto-évaluation inactive.</p>
+    <nav aria-label="Les neuf jeux"><a href="#jeu-2048">2048</a><a href="#jeu-belote">Belote</a><a href="#jeu-demineur">Démineur</a><a href="#jeu-echecs">Échecs</a><a href="#jeu-mots-croises">Mots croisés</a><a href="#jeu-mots-fleches">Mots fléchés</a><a href="#jeu-pendu">Le pendu</a><a href="#jeu-poker-texas-holdem">Poker Texas Hold'em</a><a href="#jeu-sudoku">Sudoku</a></nav>
+    <nav aria-label="Sections représentant les onglets du jeu"><a href="#regles">Règles</a><a href="#jouer">Jouer</a><a href="#academie">Académie</a><a href="#enigmes">Énigmes</a></nav>
+    <p>Sur le site, ces panneaux sont des onglets. Ici, ils restent visibles pour être retravaillés dans Canvas.</p>
+<!-- ux:suivi:debut -->
+<aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
+  <strong>Squelette v1.1.0 · 2026-11-05</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/178600a6d97c12c63fb5af1b6d1479148992a981" target="_blank" rel="noopener noreferrer" data-lien-actif>178600a</a>.
+  <a href="https://github.com/Kermic974/trigoLab/commits/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/jeux.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
+  <details><summary>Comparer avec les vues actives et les sources</summary>
+    <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
+    <ul><li><a href="#jeu-2048">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/2048?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>2048</a></li>
+<li><a href="#jeu-belote">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/belote?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>belote</a></li>
+<li><a href="#jeu-demineur">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/demineur?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>demineur</a></li>
+<li><a href="#jeu-echecs">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/echecs?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>echecs</a></li>
+<li><a href="#jeu-mots-croises">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/mots-croises?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>mots-croises</a></li>
+<li><a href="#jeu-mots-fleches">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/mots-fleches?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>mots-fleches</a></li>
+<li><a href="#jeu-pendu">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/pendu?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>pendu</a></li>
+<li><a href="#jeu-poker-texas-holdem">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/poker-texas-holdem?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>poker-texas-holdem</a></li>
+<li><a href="#jeu-sudoku">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/sudoku?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>sudoku</a></li></ul>
+    <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/gabarit/jeux" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux</a></p>
+    <p>Empreinte des sources : <code>00514b10eef589a4d19a2748ff82ce45919adb81b3eed8e94d21ff206a4180ba</code><br>Empreinte du squelette hors cartouche : <code>7b8e5e595c763d04b0ea5acfae6ea91d919e6208ba3980079924e79fcfce2c5a</code></p>
+    <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
+  </details>
+</aside>
+<!-- ux:suivi:fin -->
+  </header>
+  <main>
+    <section class="ecran" id="jeu-2048" data-ecran="jeu-2048" data-jeu="2048" data-source="catalogue/2048/page.html">
+      <h2>2048</h2><p>Des premières fusions au grade Pro</p>
+      <nav aria-label="Onglets 2048"><a href="#2048-regles">Règles</a><a href="#2048-jouer">Jouer</a><a href="#2048-academie">Académie</a><a href="#2048-defis">Défis</a></nav>
+      <article class="carte" id="2048-regles" data-onglet="explication"><h3>Règles</h3><p>Le but du jeu · Comment jouer ? Fusionner deux tuiles identiques ; choisir son niveau.</p></article>
+      <article class="carte" id="2048-jouer" data-onglet="application"><h3>Jouer</h3><p>Niveau · score · record · meilleure tuile · objectif</p><div class="plateau"><span>Grille 4 × 4<br>2 · 4 · 8 · cases libres</span></div><div class="actions"><button disabled aria-label="Déplacer vers le haut">↑</button><button disabled aria-label="Déplacer vers la gauche">←</button><button disabled aria-label="Déplacer vers le bas">↓</button><button disabled aria-label="Déplacer vers la droite">→</button><button disabled>Nouvelle partie</button></div><details><summary>Fusion, niveau et fin</summary><p>Flèches clavier et boutons directionnels. Tuiles fusionnées, nouvelle tuile, objectif atteint et niveau débloqué, grille bloquée et fin de partie. Le record et les paliers 16, 32, 64, 128, 2048 remontent aux trophées.</p></details></article>
+      <article class="carte" id="2048-academie" data-onglet="academie"><h3>Académie : de Noob à Pro</h3><p>Académie spécifique, pas les séances du module partagé.</p><h4>Les réflexes du champion</h4><ol><li>Garde ton grand nombre</li><li>Prépare les fusions</li><li>Ne remplis pas la grille</li><li>Pense à la chaîne</li><li>Le calme du Pro</li></ol></article>
+      <article class="carte" id="2048-defis" data-onglet="mise-en-situation"><h3>Défis</h3><p>Défi de fusion et objectif de tuile.</p><button disabled>Jouer un défi</button></article>
+    </section>
+    <section class="ecran" id="jeu-belote" data-ecran="jeu-belote" data-jeu="belote" data-source="catalogue/belote/page.html">
+      <h2>Belote</h2><nav aria-label="Onglets Belote"><a href="#belote-regles">Règles</a><a href="#belote-jouer">Jouer</a><a href="#belote-academie">Académie</a><a href="#belote-compteur">Le compteur</a></nav>
+      <article class="carte" id="belote-regles" data-onglet="explication"><h3>Règles</h3><p>Déroulement d'une donne · Les obligations · Valeur des cartes · Le décompte · Les commandes.</p></article>
+      <article class="carte" id="belote-jouer" data-onglet="application"><h3>Jouer</h3><div class="zone"><p>Nord · Est · Ouest · Toi<br>Atout · cartes au centre · ta main</p></div><p>Phase de prise d'atout, tour du joueur, pli en cours, scores des équipes.</p><div class="actions"><button disabled>💡 Conseil</button><button disabled>Nouvelle partie</button></div><details><summary>Fin de donne</summary><p>Titre de résultat, total des équipes, contrat réussi ou chuté.</p><button disabled>Donne suivante</button></details></article>
+      <article class="carte" id="belote-academie" data-onglet="academie"><h3>Académie</h3><p>5 grades · 15 leçons · 45 étoiles · 17 badges disponibles</p><a href="#academie">Voir toutes les vues communes</a></article>
+      <article class="carte" id="belote-compteur" data-onglet="mise-en-situation"><h3>Le compteur</h3><p>Compter la valeur d'un pli affiché.</p><label>Points (0 à 162)<input type="number" min="0" max="162" disabled></label><button disabled>Valider</button><button disabled>Un autre pli</button><p>Retour juste / faux et explication du total.</p></article>
+    </section>
+    <section class="ecran" id="jeu-demineur" data-ecran="jeu-demineur" data-jeu="demineur" data-source="catalogue/demineur/page.html">
+      <h2>Démineur</h2><nav aria-label="Onglets Démineur"><a href="#demineur-regles">Règles</a><a href="#demineur-jouer">Jouer</a><a href="#demineur-academie">Académie</a><a href="#demineur-enigmes">Énigmes</a></nav>
+      <article class="carte" id="demineur-regles" data-onglet="explication"><h3>Règles</h3><p>Les chiffres · La case vide · Les drapeaux · Comment gagner ? · Les commandes.</p></article>
+      <article class="carte" id="demineur-jouer" data-onglet="application"><h3>Jouer</h3><p>Difficulté · mines restantes · drapeaux · temps · record</p><div class="plateau"><span>Cases cachées, révélées,<br>chiffres, drapeaux et mines</span></div><div class="actions"><button disabled>Nouvelle partie</button><button disabled>🚩 Mode drapeau</button><button disabled>💡 Indice</button><button disabled aria-label="Cases plus petites">−</button><button disabled aria-label="Cases plus grandes">+</button></div><details><summary>États de partie</summary><p>Révélation d'une zone vide, drapeau posé/retiré, action impossible, mine touchée, victoire, temps et record final.</p></details></article>
+      <article class="carte" id="demineur-academie" data-onglet="academie"><h3>Académie</h3><p>5 grades · 15 leçons · 45 étoiles · 16 badges disponibles</p><a href="#academie">Voir toutes les vues communes</a></article>
+      <article class="carte" id="demineur-enigmes" data-onglet="mise-en-situation"><h3>Énigmes</h3><p>Position partielle, question de logique et réponse sur la grille, retour explicatif.</p><button disabled>Énigme suivante</button></article>
+    </section>
+    <section class="ecran" id="jeu-echecs" data-ecran="jeu-echecs" data-jeu="echecs" data-source="catalogue/echecs/page.html">
+      <h2>Échecs</h2><p>Onglets : Règles · Jouer · Académie · Énigmes</p>
+      <article class="carte" data-onglet="explication"><h3>Règles</h3><a href="#regles">Voir les règles illustrées</a></article>
+      <article class="carte" data-onglet="application"><h3>Jouer</h3><a href="#jouer">Voir l'échiquier, réglages et historique</a><details><summary>Promotion</summary><p>Choisir la pièce dans le sélecteur de promotion.</p><button disabled>Dame</button><button disabled>Tour</button><button disabled>Fou</button><button disabled>Cavalier</button><button disabled>Annuler</button></details><p>États : échec, mat, pat/nulle, coup illégal, promotion, adversaire humain ou ordinateur.</p></article>
+      <article class="carte" data-onglet="academie"><h3>Académie</h3><p>6 grades · 20 leçons · 60 étoiles · 17 badges disponibles</p><a href="#academie">Voir toutes les vues communes</a></article>
+      <article class="carte" data-onglet="mise-en-situation"><h3>Énigmes</h3><a href="#enigmes">Voir une position à résoudre</a><button disabled>Énigme suivante</button></article>
+    </section>
+    <section class="ecran" id="jeu-mots-croises" data-ecran="jeu-mots-croises" data-jeu="mots-croises" data-source="catalogue/mots-croises/page.html">
+      <h2>Mots croisés</h2><p>Des premiers mots aux défis de pro</p><nav aria-label="Onglets Mots croisés"><a href="#croises-regles">Règles</a><a href="#croises-jouer">Jouer</a><a href="#croises-academie">Académie</a><a href="#croises-defis">Défis</a></nav>
+      <article class="carte" id="croises-regles" data-onglet="explication"><h3>Règles</h3><p>Comment jouer ? · Choisis ta grille</p></article>
+      <article class="carte" id="croises-jouer" data-onglet="application"><h3>Jouer</h3><div class="grille"><div class="plateau"><span>Grille de lettres<br>Cases noires et numéros</span></div><div><h4>Définitions</h4><p>Indices numérotés et sélection du mot.</p><label>Lettre de la case<input maxlength="1" disabled></label><button disabled>Effacer la case</button></div></div><div class="actions"><button disabled>Recommencer</button><button disabled>💡 Indice</button><button disabled>Vérifier</button></div><p>États : mot/case sélectionnés, lettre saisie, erreur de vérification, indice révélé, grille terminée.</p></article>
+      <article class="carte" id="croises-academie" data-onglet="academie"><h3>Académie : de Noob à Pro</h3><h4>Les réflexes du cruciverbiste</h4><ol><li>Repère les mots courts</li><li>Croise tes réponses</li><li>Pense aux notions apprises</li><li>Avance sans te bloquer</li><li>Vise le grade Pro</li></ol><p>Académie spécifique, pas le module de séances partagé ; pas de remontée dans la collection Mes trophées.</p><button disabled>Jouer au premier défi</button></article>
+      <article class="carte" id="croises-defis" data-onglet="mise-en-situation"><h3>Défis</h3><p>Définition courte, réponse et correction.</p></article>
+    </section>
+    <section class="ecran" id="jeu-mots-fleches" data-ecran="jeu-mots-fleches" data-jeu="mots-fleches" data-source="catalogue/mots-fleches/page.html">
+      <h2>Mots fléchés</h2><p>Des premiers mots au niveau pro</p><nav aria-label="Onglets Mots fléchés"><a href="#fleches-regles">Règles</a><a href="#fleches-jouer">Jouer</a><a href="#fleches-academie">Académie</a><a href="#fleches-defi">Défi</a></nav>
+      <article class="carte" id="fleches-regles" data-onglet="explication"><h3>Règles</h3><p>Comment jouer ? · Choisis ton grade</p></article>
+      <article class="carte" id="fleches-jouer" data-onglet="application"><h3>Jouer</h3><p>Grade · XP · niveau</p><progress value="1" max="5" aria-label="Progression fictive du grade"></progress><div class="grille"><div><h4>Indices</h4><p>Définition et sens de lecture, mot actif.</p></div><div class="plateau"><span>Grille<br>Lettres et croisements</span></div></div><label>Lettre<input maxlength="1" disabled></label><div class="actions"><button disabled>Vérifier</button><button disabled>💡 Indice</button><button disabled>Effacer la lettre</button><button disabled>Recommencer</button></div><details><summary>Grade terminé</summary><p>Retour de réussite, XP, badges et grade suivant débloqué.</p><button disabled>Grade suivant</button></details></article>
+      <article class="carte" id="fleches-academie" data-onglet="academie"><h3>Académie</h3><p>5 grades · 5 leçons · 15 étoiles · 12 badges disponibles</p><a href="#academie">Voir toutes les vues communes</a></article>
+      <article class="carte" id="fleches-defi" data-onglet="mise-en-situation"><h3>Défi : quel mot correspond à l'indice ?</h3><button disabled>LUNE</button><button disabled>SOLEIL</button><button disabled>NUIT</button><p>Bonne/mauvaise réponse et explication.</p></article>
+    </section>
+    <section class="ecran" id="jeu-pendu" data-ecran="jeu-pendu" data-jeu="pendu" data-source="catalogue/pendu/page.html">
+      <h2>Le pendu</h2><p>Des premiers mots au niveau pro</p><nav aria-label="Onglets Pendu"><a href="#pendu-regles">Règles</a><a href="#pendu-jouer">Jouer</a><a href="#pendu-academie">Académie</a><a href="#pendu-defi">Défi</a></nav>
+      <article class="carte" id="pendu-regles" data-onglet="explication"><h3>Règles</h3><p>Comment jouer ? · Choisis ton grade</p></article>
+      <article class="carte" id="pendu-jouer" data-onglet="application"><h3>Jouer</h3><p>Grade · progression · lettres tentées · erreurs restantes</p><div class="zone"><p>Dessin du pendu<br>Mot : _ O _ _ _ _</p></div><p>Clavier de lettres tactile et saisie au clavier sur le site.</p><div class="actions"><button disabled>A</button><button disabled>B</button><button disabled>C</button><button disabled>Nouveau mot</button><button disabled>💡 Indice</button></div><details><summary>États et fin de mot</summary><p>Nouvelle lettre correcte/incorrecte, lettre déjà tentée, indice révélé, mot trouvé ou perdu, dessin complété. Fin de grade : bilan, XP, étoiles et déblocage.</p><button disabled>Grade suivant</button></details></article>
+      <article class="carte" id="pendu-academie" data-onglet="academie"><h3>Académie</h3><p>5 grades · 5 leçons · 15 étoiles · 12 badges disponibles</p><a href="#academie">Voir toutes les vues communes</a></article>
+      <article class="carte" id="pendu-defi" data-onglet="mise-en-situation"><h3>Défi : quel mot se cache derrière l'indice ?</h3><button disabled>LUNE</button><button disabled>SOLEIL</button><button disabled>NUAGE</button><p>Retour correct/incorrect et explication.</p></article>
+    </section>
+    <section class="ecran" id="jeu-poker-texas-holdem" data-ecran="jeu-poker-texas-holdem" data-jeu="poker-texas-holdem" data-source="catalogue/poker-texas-holdem/page.html">
+      <h2>Poker Texas Hold'em</h2><p>Une table d'entraînement, sans argent réel</p><nav aria-label="Onglets Poker"><a href="#poker-jouer">Jouer</a><a href="#poker-regles">Règles</a><a href="#poker-defi">Défi</a></nav>
+      <article class="carte" id="poker-jouer" data-onglet="application"><h3>Jouer · premier onglet</h3><div class="zone"><p>Ordinateur · Toi<br>Cartes privées · cartes communes<br>Pot et mises</p></div><div class="actions"><button disabled>Se coucher</button><button disabled>Suivre</button><button disabled>Relancer</button></div><details><summary>Tours et fin de manche</summary><p>Pré-flop, flop, turn, river ; actions disponibles selon la phase ; abandon ou dévoilement des mains. Victoire du joueur/de l'ordinateur ou égalité.</p><button disabled>Manche suivante</button></details></article>
+      <article class="carte" id="poker-regles" data-onglet="explication"><h3>Règles</h3><p>Le but · Une manche en quatre tours · Les combinaisons, de la plus forte à la plus faible · Quel joueur gagne ?</p></article>
+      <article class="carte" id="poker-defi" data-onglet="mise-en-situation"><h3>Défi</h3><p>Comparer deux mains affichées.</p><button disabled>Joueur A : brelan de 7</button><button disabled>Joueur B : brelan de rois</button><button disabled>Égalité</button><p>Correction expliquée. Pas d'Académie ni de module dans Mes trophées.</p></article>
+    </section>
+    <section class="ecran" id="jeu-sudoku" data-ecran="jeu-sudoku" data-jeu="sudoku" data-source="catalogue/sudoku/page.html">
+      <h2>Sudoku</h2><p>Des premiers chiffres au niveau pro</p><nav aria-label="Onglets Sudoku"><a href="#sudoku-regles">Règles</a><a href="#sudoku-jouer">Jouer</a><a href="#sudoku-academie">Académie</a><a href="#sudoku-defis">Défis</a></nav>
+      <article class="carte" id="sudoku-regles" data-onglet="explication"><h3>Règles</h3><p>Le but du jeu · Comment commencer ? · Choisis ton défi</p></article>
+      <article class="carte" id="sudoku-jouer" data-onglet="application"><h3>Jouer</h3><p>Grade choisi · progression</p><div class="plateau"><span>Grille 9 × 9<br>Chiffres donnés / modifiables<br>Case active et conflits</span></div><p>Clavier numérique tactile 1 à 9 (« Choisir un chiffre ») et clavier physique.</p><div class="actions"><button disabled>1</button><button disabled>2</button><button disabled>3</button><button disabled>Nouvelle grille</button><button disabled>💡 Indice</button><button disabled>Vérifier</button><button disabled>Effacer</button></div><details><summary>Vérification et réussite</summary><p>Case sélectionnée, chiffre saisi, conflit ligne/colonne/bloc, indice, grille incomplète ou incorrecte, grille résolue et grade débloqué. Cinq grades remontent dans Mes trophées.</p></details></article>
+      <article class="carte" id="sudoku-academie" data-onglet="academie"><h3>Académie : du débutant au pro</h3><h4>Les réflexes du champion</h4><ol><li>Le chiffre manquant</li><li>Regarde les trois directions</li><li>Un seul endroit possible</li><li>Les paires</li><li>Le niveau pro</li></ol><p>Académie spécifique, pas les séances de révision du module partagé.</p></article>
+      <article class="carte" id="sudoku-defis" data-onglet="mise-en-situation"><h3>Défis</h3><p>Accès à une grille de niveau débutant.</p><button disabled>Lancer un défi débutant</button></article>
+    </section>
+    <section class="ecran" id="regles" data-ecran="jeu-regles" aria-labelledby="titre-regles">
+      <span class="repere">J01 · Règles</span><h2 id="titre-regles">Comprendre avant de jouer</h2>
+      <details open><summary>Comment bougent les pièces</summary><p>Zone d'explication illustrée : pièces et déplacements.</p></details>
+      <details><summary>Trois coups spéciaux</summary><p>Roque, prise en passant, promotion.</p></details>
+      <details><summary>Échec, mat, pat et nulle</summary><p>Zone d'exemples et de conditions de fin de partie.</p></details>
+      <details><summary>Les commandes</summary><p>Interaction avec le plateau, clavier et réglages du jeu.</p></details>
+      <a class="bouton" href="#jouer">Passer au jeu</a>
+    </section>
+    <section class="ecran" id="jouer" data-ecran="jeu-partie" aria-labelledby="titre-jouer">
+      <span class="repere">J02 · Partie</span><h2 id="titre-jouer">Jouer</h2>
+      <div class="grille">
+        <article class="carte"><h3>Plateau</h3><div class="plateau" role="img" aria-label="Emplacement schématique d'un échiquier, sans pièces ni interaction"><span>Zone de jeu<br>Plateau, pièces et sélection</span></div></article>
+        <aside class="carte"><h3>État de la partie</h3><p>Tour du joueur · message d'aide · pièces prises · résultat éventuel</p><p>Réglages : Adversaire (Ordinateur / À deux), Niveau (Facile / Moyen), Tes pièces (Blancs / Noirs).</p><div class="actions"><button type="button" disabled>Nouvelle partie</button><button type="button" disabled>↶ Annuler le coup</button><button disabled>⇅ Tourner l'échiquier</button></div><h3>Coups joués</h3><ol><li>Emplacement de l'historique.</li></ol><details><summary>États à prévoir</summary><p>Sélection, coup autorisé ou refusé, réflexion de l'adversaire, fin de partie et redémarrage. Flèches clavier pour parcourir, Entrée/Espace pour sélectionner, Échap pour annuler.</p></details></aside>
+      </div>
+    </section>
+    <section class="ecran" id="academie" data-ecran="jeu-academie" aria-labelledby="titre-academie">
+      <span class="repere">J03 · Académie et modules partagés</span><h2 id="titre-academie">Apprendre du débutant au pro</h2>
+      <article class="carte" data-source="gabarit/jeux/academie.js:accueil"><h3>Vue d'ensemble</h3><p>Grade actuel · emblème · niveau · XP · série · objectif du jour</p><progress value="30" max="100" aria-label="Progression fictive : 30 %"></progress><p>Pour toi aujourd'hui · conseil déterministe · prochain badge</p><a href="#progression-detail">Ma progression détaillée →</a><p class="note">Module partagé par Échecs, Belote, Démineur, Mots fléchés et Pendu. Les résultats des pages intégrées remontent à Mes trophées ; les pages séparées gardent leur progression propre. Si le stockage est indisponible hors intégration, une note invite à ouvrir en plein écran.</p></article>
+      <div class="grille"><article class="carte"><h3>Parcours par grades</h3><ol><li>Grade et leçons accessibles.</li><li>Leçons à terminer, étoiles obtenues.</li><li>Prochain grade à débloquer.</li></ol><a class="bouton" href="#lecon">Voir une leçon · structure</a></article><article class="carte"><h3>Prochaine action</h3><p>Conseil déterministe et explicable, objectif du jour, révisions espacées et défi quotidien.</p><a class="bouton" href="#lecon">Voir une révision · structure</a></article></div>
+      <article class="carte" id="lecon" data-ecran="jeu-lecon"><h3>Leçon / révision</h3><p>Titre, progression, consigne et position d'exercice.</p><div class="actions"><button type="button" disabled>Indice</button><button type="button" disabled>Vérifier</button><button type="button" disabled>Suivant</button></div><details><summary>Retour pédagogique</summary><p>Bonne réponse ou erreur, explication, impact d'un indice, étoiles et bilan de leçon.</p></details></article>
+      <article class="carte" data-ecran="jeu-bilan" data-source="gabarit/jeux/academie.js:session"><h3>Bilan de leçon / révision / défi du jour</h3><p>Résultat, étoiles et XP ; grade ou niveau gagné, badge débloqué, record et objectif quotidien atteint sous forme de notifications.</p><button disabled>Exercice suivant</button><button disabled>Voir le bilan</button><a href="#academie">Retour à l'Académie</a></article>
+      <article class="carte" id="progression-detail" data-ecran="jeu-progression" data-source="gabarit/jeux/academie.js:detail"><h3>Ma progression</h3><a href="#academie">← Retour à l'Académie</a><h4>Niveau et XP</h4><details><summary>Comment gagner de l'XP ?</summary><p>Table des règles de gains, progression vers le prochain niveau.</p></details><h4>Grades</h4><p>Obtenu / en cours / verrouillé ; chaque grade ouvre le suivant et un emblème.</p><h4>Badges</h4><p>Grille des badges obtenus et objectifs à débloquer.</p><h4>Régularité</h4><p>Série, objectif quotidien, activité des 7 derniers jours.</p><h4>Carnet de stratégies</h4><p>Stratégies apprises, dates et intervalles de révision ; état vide avant les premières leçons.</p><h4>Points forts et points faibles</h4><p>Résultats par thème et bilan des parties par difficulté.</p><h4>Réglages</h4><p>Emblème, objectif quotidien, accès libre au parcours.</p><button disabled>Effacer ma progression</button><details><summary>Confirmation d'effacement</summary><button disabled>Confirmer : tout effacer</button></details></article>
+    </section>
+    <section class="ecran" id="enigmes" data-ecran="jeu-enigmes" aria-labelledby="titre-enigmes">
+      <span class="repere">J04 · Énigmes / mise en situation</span><h2 id="titre-enigmes">Résoudre une situation</h2>
+      <article class="carte"><h3>Énigme</h3><p>Zone de position de départ, objectif et interaction avec le plateau.</p><details><summary>Indice</summary><p>Zone d'aide adaptée à l'énigme.</p></details><details><summary>Solution expliquée</summary><p>Zone de correction, justification et passage à la suite.</p></details></article>
+      <p class="note">Auto-évaluation : onglet inactif dans le registre actuel. Cette base ne simule ni victoire ni déblocage de contenu.</p>
+    </section>
+  </main>
+  <footer><p>KermicLab · squelette autonome hors ligne · aucune donnée enregistrée.</p><a href="notion.html">Page de notion</a> · <a href="cercle.html">Application cercle</a> · <a href="index.html">Site et parcours principal</a></footer>
+</body>
+</html>
