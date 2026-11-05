@@ -2,6 +2,18 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Actualisation automatique de la roadmap
+
+- **À faire** : après fusion du workflow `roadmap.yml`, autoriser **Allow GitHub Actions to create and approve
+  pull requests** dans [Settings → Actions → General](https://github.com/Kermic974/trigoLab/settings/actions).
+  Cette permission n'a pas pu être vérifiée par l'agent (API GitHub : HTTP 403).
+- **Pourquoi** : créer ou actualiser la PR `automatisation/roadmap` avec le jeton éphémère, sans PAT ni IA.
+- **Comment confirmer** : lancer « Actualisation de la roadmap » après les trois validations vertes de `main` ;
+  une PR factuelle est proposée (ou aucune modification si elle est déjà à jour).
+- **Permanent** : fermer puis rouvrir la PR automatique après sa dernière mise à jour pour déclencher sa CI
+  (restriction GitHub sur les événements créés par `GITHUB_TOKEN`), puis revue CODEOWNER et CI verte avant fusion.
+  Voir [le fonctionnement et les limites](chantiers/ci-cd.md#roadmap-après-fusion).
+
 ## Validation du catalogue d'histoire contemporaine
 
 - **À faire** : relire et valider les huit notions `premiere-guerre-mondiale`, `totalitarismes`,
