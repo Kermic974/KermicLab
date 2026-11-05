@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Squelette UX · Page de notion · KermicLab</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #222; font: 16px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 4px; }
+    header, main, footer { max-width: 1000px; padding: 1.2rem; margin: auto; }
+    h1, h2, h3 { line-height: 1.25; }
+    nav, .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
+    nav a, .bouton, button { display: inline-block; min-height: 44px; padding: .65rem 1rem; border: 1px solid #555; border-radius: .3rem; background: white; color: #222; font: inherit; text-decoration: none; }
+    button:disabled { border-style: dashed; color: #555; }
+    .note { background: #e9e9e9; border: 1px dashed #777; padding: 1rem; }
+    .ecran { margin: 2rem 0; border-top: 2px solid #333; padding-top: 1rem; scroll-margin-top: 1rem; }
+    .repere { color: #555; font: 700 .8rem ui-monospace, monospace; text-transform: uppercase; }
+    .carte, details { padding: 1rem; margin: 1rem 0; border: 1px solid #ccc; border-radius: .4rem; background: white; }
+    summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+    .grille { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .zone { min-height: 220px; display: grid; place-items: center; text-align: center; padding: 1rem; border: 2px dashed #999; background: #eee; }
+    fieldset { min-width: 0; border: 1px solid #aaa; }
+    label { display: block; padding: .5rem; }
+    input { width: 100%; padding: .5rem; font: inherit; }
+    progress { width: 100%; accent-color: #444; }
+    @media (max-width: 650px) { .grille { grid-template-columns: 1fr; } }
+    @media print { .ecran { break-before: page; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">Retour au squelette du site</a>
+    <p class="note">ATELIER UX · 5 novembre 2026 · Gabarit des 171 notions publiques et variante du cercle écrite à la main. Contenus abrégés ; commandes désactivées, aucun moteur ni stockage. Les titres d'onglets dépendent de chaque contenu.json ; l'inventaire les liste tous.</p>
+    <h1>Page de notion · gabarit commun</h1>
+    <p>Titre de la notion · identifiant · version · ★ 2 / 10 (exemple Pythagore)</p>
+    <nav aria-label="Sections représentant les onglets actuels">
+      <a href="#explication">Explication</a><a href="#memo">Mémo (optionnel)</a><a href="#application">S'entraîner</a><a href="#mise-en-situation">Défi</a><a href="#cercle-catalogue">Variante cercle</a>
+    </nav>
+    <p>Dans le site, un seul onglet est affiché à la fois. Ici, tous les panneaux sont visibles et les liens font défiler la page.</p>
+<!-- ux:suivi:debut -->
+<aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
+  <strong>Squelette v1.1.0 · 2026-11-05</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/178600a6d97c12c63fb5af1b6d1479148992a981" target="_blank" rel="noopener noreferrer" data-lien-actif>178600a</a>.
+  <a href="https://github.com/Kermic974/trigoLab/commits/main/gabarit" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/notion.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
+  <details><summary>Comparer avec les vues actives et les sources</summary>
+    <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
+    <ul><li><a href="#explication">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/pythagore?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>Gabarit commun : Pythagore, onglets Explication / Mémo / S&#39;entraîner / Défi</a></li>
+<li><a href="#thales">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/thales?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>Lab Thalès : curseur du rapport de réduction et triangles semblables</a></li>
+<li><a href="#cercle-catalogue">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/trigo-cercle?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>Notion cercle : Explication / Application / Défi</a></li></ul>
+    <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/gabarit" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a></p>
+    <p>Empreinte des sources : <code>2f70684c39ab5e7a97c7ebd13636760e788f527e6b82b04f02497a9ce71d377d</code><br>Empreinte du squelette hors cartouche : <code>bace13ea7d2d803efe83d26e8f71b905f5454d01bebd7027280aaea604312897</code></p>
+    <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
+  </details>
+</aside>
+<!-- ux:suivi:fin -->
+  </header>
+  <main>
+    <section class="ecran" id="explication" data-ecran="notion-explication" data-source="gabarit/moteur.js:explication" aria-labelledby="titre-explication">
+      <span class="repere">N01 · Explication progressive</span>
+      <h2 id="titre-explication">Comprendre la notion</h2>
+      <article class="carte"><h3>Introduction de la notion</h3><p>Un triangle rectangle permet de relier les longueurs de ses trois côtés (exemple Pythagore).</p></article>
+      <details open><summary>Intuition · observer avant de calculer</summary><p>Zone de manipulation ou de schéma commenté. Exemple concret puis vocabulaire essentiel.</p><div class="zone">Emplacement du schéma pédagogique<br>Angle, point, axes et projections</div></details>
+      <details><summary>Collège · premières relations</summary><p>Zone d'explications, d'exemples guidés et de rappel des prérequis.</p></details>
+      <details><summary>Lycée · formalisation</summary><p>Zone de définitions, valeurs exactes, radians et relations entre les représentations.</p></details>
+      <article class="carte"><h3>À retenir</h3><p>Une synthèse courte et un passage vers la pratique.</p><a class="bouton" href="#application">Passer à l'application</a></article>
+    </section>
+    <section class="ecran" id="memo" data-ecran="notion-memo" data-source="gabarit/moteur.js:memo">
+      <span class="repere">N02 · Onglet conditionnel</span><h2>Mémo</h2><p>Présent uniquement si le contenu déclare un mémo (actuellement Pythagore). Absent des autres notions, pas un onglet vide.</p><article class="carte"><h3>Formules</h3><p>Titre de formule, expression, explication facultative.</p><p>BC² = AB² + AC² pour un triangle ABC rectangle en A.</p></article><article class="carte"><h3>Points clés</h3><ul><li>Repérer l'hypoténuse, opposée à l'angle droit.</li><li>Appliquer la relation aux longueurs dans la même unité.</li></ul></article>
+    </section>
+    <section class="ecran" id="application" data-ecran="notion-application" data-source="gabarit/moteur.js:application" aria-labelledby="titre-application">
+      <span class="repere">N02 · Application ludique</span>
+      <h2 id="titre-application">Manipuler et s'entraîner</h2>
+      <div class="grille">
+        <div class="zone">Emplacement de l'interaction principale<br>Curseur, figure ou paramètres selon la notion</div>
+        <article class="carte"><h3>Consigne courte</h3><p>Observe ce qui change quand les paramètres de la figure varient.</p><p>Zone de résultat : valeurs, phrase explicative ou vérification.</p><a class="bouton" href="cercle.html">Voir le squelette du cercle complet</a></article>
+      </div>
+      <h3>Entraîne-toi</h3>
+      <fieldset><legend>Exercice QCM · réponses sous forme de boutons</legend><p>Quel côté est l'hypoténuse ?</p><div class="actions"><button disabled>Le côté opposé à l'angle droit</button><button disabled>Un côté adjacent à l'angle droit</button></div></fieldset>
+      <details><summary>États du QCM</summary><p>Erreur : choix marqué faux et désactivé, indice, autres choix encore accessibles. Réussite : tous les choix désactivés ; « Bravo, +1 étoile ! » et explication. Une réponse déjà réussie ne rapporte pas une seconde étoile.</p></details>
+      <article class="carte" data-ecran="notion-nombre"><h3>Exercice numérique</h3><p>Triangle de côtés 3 et 4 : longueur de l'hypoténuse ?</p><label>Ta réponse <input value="5" disabled></label><div class="actions"><button disabled>Valider</button><button disabled>Voir la solution</button></div><p>Nombre entier, décimal ou fraction ; unité et tolérance selon l'exercice. « Voir la solution » n'apparaît qu'après les erreurs prévues.</p><details><summary>États de saisie et correction</summary><p>Saisie invalide : « Écris un nombre, par exemple 12 ou 3,5. » Fraction attendue : « Écris une fraction, par exemple 3/4. » Fraction non réduite : demander une simplification. Erreur : indices successifs, puis possibilité de voir la solution. Réussite : « Exact, +1 étoile ! », champ désactivé. Solution révélée : pas d'étoile et pas de déblocage de l'étape suivante.</p></details></article>
+      <article class="carte" id="thales" data-ecran="notion-thales" data-source="gabarit/moteur.js:thales"><h3>Lab Thalès · triangles semblables</h3><div class="zone">Triangle ABC, M sur AB, N sur AC<br>(MN) parallèle à (BC)</div><p>Les droites (MN) et (BC) sont parallèles : les triangles AMN et ABC sont semblables.</p><label>Rapport de réduction k (AM / AB)<input type="range" min="0.1" max="0.9" step="0.1" value="0.5" disabled></label><p>AB = 10 · AC = 8 · BC ≈ 9,17</p><p>AM / AB = 0,5 · AN / AC = 0,5 · MN / BC = 0,5</p><p>Sur le site : le curseur redessine M, N et la parallèle ; les trois rapports restent égaux. Les exercices et le défi suivent le gabarit commun.</p></article>
+      <details><summary>Toutes les variantes de figure du gabarit</summary><p>Figure facultative (la majorité des notions n'en a pas). Types actuels : triangle de Pythagore, triangles semblables de Thalès, fractions, proportionnalité, fonction affine, parabole, simulation de dés. Curseurs, schéma, tuiles de valeurs ; les dés proposent des lancers et « Recommencer ». Chaque instance est listée dans l'inventaire.</p></details>
+      <a class="bouton" href="#mise-en-situation">Passer au défi</a>
+    </section>
+    <section class="ecran" id="mise-en-situation" data-ecran="notion-mise-en-situation" data-source="gabarit/moteur.js:mise-en-situation" aria-labelledby="titre-situation">
+      <span class="repere">N03 · Mise en situation</span>
+      <h2 id="titre-situation">Utiliser la notion dans un contexte</h2>
+      <article class="carte"><h3>Le défi du quotidien</h3><p>Zone du scénario, de son objectif et des données utiles.</p><ol><li>Observer la situation.</li><li>Choisir une représentation.</li><li>Tester une réponse.</li><li>Comprendre la solution.</li></ol></article>
+      <details><summary>Un indice</summary><p>Zone d'aide progressive, sans donner immédiatement la solution.</p></details>
+      <progress value="1" max="3" aria-label="Une étape réussie sur trois, exemple"></progress>
+      <details><summary>Étapes verrouillées et fin</summary><p>La première étape est visible, les suivantes se dévoilent après une réussite (QCM ou numérique). Les étoiles précédentes permettent de retrouver les étapes débloquées à la réouverture.</p><h3>Mission accomplie !</h3><p>Conclusion du scénario, affichée quand toutes les étapes sont réussies.</p></details>
+      <p class="note">Auto-évaluation : onglet prévu mais inactif dans le socle actuel. Connexion également masquée. Ne pas les présenter comme des fonctionnalités actives.</p>
+    </section>
+    <section class="ecran" data-ecran="notion-etats" aria-labelledby="titre-etats">
+      <span class="repere">N04 · États à conserver lors de la refonte</span>
+      <h2 id="titre-etats">États et contexte d'ouverture</h2>
+      <p>Onglet sélectionné mémorisé, premier niveau ouvert, autres niveaux dépliables, réponse juste/fausse, indice ou solution révélés, compteur d'étoiles et exercices déjà réussis.</p>
+      <p>Une même page peut être ouverte dans le fil du chat, dans une bulle depuis le tableau de bord, ou en plein écran ; garder une lecture mobile et une navigation au clavier.</p>
+      <p>Les étoiles sont publiées vers « Mes trophées » quand la page est intégrée au tableau de bord. Ouverte séparément, la page garde sa progression propre. Aucun compte distant actif.</p>
+    </section>
+    <section class="ecran" id="cercle-catalogue" data-ecran="notion-cercle-catalogue" data-source="catalogue/trigo-cercle/page.html">
+      <span class="repere">N06 · Page écrite à la main, distincte de /cercle/</span><h2>Le cercle trigonométrique</h2><p>trigo-cercle · v1.0.0</p><nav aria-label="Onglets du cercle catalogue"><a href="#cercle-explication">Explication</a><a href="#cercle-application">Application</a><a href="#cercle-defi">Défi</a></nav>
+      <article class="carte" id="cercle-explication"><h3>Explication</h3><p>Présentation du cercle unité, coordonnées du point et lien entre degrés/radians. Niveaux pédagogiques dépliables.</p></article>
+      <article class="carte" id="cercle-application"><h3>Application</h3><div class="zone">Cercle, point mobile et projections<br>Angle, radians, cosinus, sinus, tangente</div><label>Angle <input type="range" min="0" max="360" value="30" disabled></label></article>
+      <article class="carte" id="cercle-defi"><h3>Défi de la grande roue</h3><p>Place la nacelle à l'angle demandé en touchant le cercle. Plus tu es précis, plus tu gagnes de points !</p><p>Cible · Points · Série · Record</p><div class="zone">Cercle du défi · position à choisir</div><p>Retour : écart angulaire, gain et bonus de série ou indice. Un seul placement par défi.</p><button disabled>Nouveau défi</button><p>Le record remonte à la catégorie Labs des trophées, pas au compteur d'étoiles du gabarit.</p></article>
+      <p class="note">Ne pas confondre cette page de catalogue, le mini-lab de l'accueil et <a href="cercle.html">l'application /cercle/ à trois modes</a>. Auto-évaluation et connexion restent masquées.</p>
+    </section>
+  </main>
+  <footer><p>KermicLab · squelette autonome hors ligne · aucune donnée enregistrée.</p><a href="index.html#conversation">Retour au contexte chat / bulle</a> · <a href="jeux.html">Jeu et Académie</a></footer>
+</body>
+</html>

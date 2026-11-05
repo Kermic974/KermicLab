@@ -94,6 +94,46 @@ Secrets et variables : voir le [README anglais](README.md#deploy) et [docs/actio
 
 Voir [CONTRIBUTING.fr.md](CONTRIBUTING.fr.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) et [SECURITY.md](SECURITY.md).
 
+## Base HTML pour l'atelier UX
+
+Ouvrir [docs/ux/index.html](docs/ux/index.html) dans un navigateur ou copier son contenu dans Canvas.
+Le dossier contient six fichiers HTML autonomes : le tableau de bord actuel (parcours d'accueil v3,
+navigation Labs/Jeux, chat, catalogue, défi, trophées, profil et dialogues), les [variantes de notions](docs/ux/notion.html),
+l'[application cercle](docs/ux/cercle.html), les [neuf jeux et leurs Académies](docs/ux/jeux.html),
+les [pages éditoriales](docs/ux/editorial.html) et un [inventaire issu des sources](docs/ux/inventaire.html).
+Télécharger les six fichiers dans le même dossier pour conserver les liens ; chacun fonctionne hors ligne avec son style intégré.
+
+Ce sont des squelettes structurels en français, pas une refonte ni une copie au pixel près.
+L'inventaire liste toutes les pages du catalogue public (181 à cet instant), leurs vrais onglets, versions,
+figures et compatibilités avec Mes trophées. Les gabarits partagés sont représentés une fois, avec les écrans propres
+aux jeux et les variantes d'état. Le catalogue privé et le déploiement effectif ne sont pas vérifiés.
+Les écrans de compte masqués restent signalés comme inactifs.
+Les écrans et dialogues sont dépliés, repérés par `data-ecran` et reliés aux sources par `data-source`, avec des exemples fictifs.
+Seuls les liens et volets natifs fonctionnent : aucun envoi, calcul, stockage ou service externe.
+Les textes sont figés pour cet atelier, hors de l'interface traduite `web/i18n/`.
+Ces fichiers ne sont pas publiés par le build et ne modifient pas le site actuel.
+Après édition dans Canvas, transmettre le HTML modifié ou les instructions par écran pour préparer la refonte.
+Chaque fichier affiche un cartouche de version lié à ses vues actives, aux sources courantes et au commit
+de référence immuable. Chaque ligne de l'inventaire relie aussi la page active et sa source. Les liens externes
+ne chargent rien avant un clic ; les dialogues sans URL directe sont reliés à leur page d'entrée avec la procédure
+d'ouverture. La version déployée n'est pas déduite de l'instantané des sources.
+
+Après une évolution des sources ou des squelettes, relire les squelettes manuels puis lancer
+`node scripts/ux-suivi.mjs --version=X.Y.Z` avec une version SemVer strictement croissante.
+Cette commande régénère l'inventaire et les six cartouches, versionne uniquement les fichiers affectés et ajoute
+les vues modifiées, commits sources et empreintes SHA-256 au journal `docs/ux/suivi.json`.
+Version majeure pour une restructuration, mineure pour de nouveaux écrans, corrective pour des corrections.
+Committer ensemble squelettes et registre ; Git conserve les instantanés précédents.
+`node scripts/ux-suivi.mjs --check` détecte les écarts de sources ou de squelettes sans modifier les fichiers.
+`node --test tests/e2e/ux.test.mjs` contrôle aussi la couverture du catalogue, des dialogues, de la navigation
+et des onglets des jeux, les liens locaux et vers les vues actives, et les mises en page hors ligne à 360, 768 et 1440 pixels.
+La CI des pull requests contrôle les sources fusionnées avec `main` : si une nouvelle vue y est livrée entre-temps,
+intégrer `main`, actualiser les squelettes concernés et publier une nouvelle version ; ne pas régénérer les empreintes en CI.
+Committer les sources avant de lancer le versioning : une source modifiée ou non suivie est refusée avant toute écriture.
+Le contrôle vérifie aussi que le commit référencé contient les sources empreintées.
+Seul l'encart factuel `roadmap:auto` est neutralisé pour ne pas bloquer les PR de suivi automatique :
+le reste de la roadmap et son générateur restent contrôlés, donc leurs évolutions structurelles nécessitent une nouvelle version UX.
+
 ## Licence
 
 [MIT](LICENSE) pour le moteur générique. Le catalogue de maquettes et les paramètres des générateurs sont privés.
