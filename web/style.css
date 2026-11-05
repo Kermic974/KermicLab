@@ -260,7 +260,7 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .llm-piste::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--surface); transition: transform .18s ease; }
 .llm-interrupteur input:checked + .llm-piste { background: var(--accent); }
 .llm-interrupteur input:checked + .llm-piste::after { transform: translateX(16px); }
-.llm-interrupteur input:focus-visible + .llm-piste { outline: 3px solid var(--accent-doux); outline-offset: 2px; }
+.llm-interrupteur input:focus-visible + .llm-piste { outline: 3px solid var(--accent); outline-offset: 2px; }
 .llm-interrupteur input:disabled + .llm-piste { opacity: .5; }
 #fil {
   list-style: none; margin: 0; padding: 18px 22px; display: flex; flex-direction: column; gap: 14px;
