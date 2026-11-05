@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 
 export const VERSION_GABARIT = "1.0.0";
 const racine = new URL("../..", import.meta.url).pathname;
-export const TYPES_FIGURE = ["pythagore", "fraction", "proportion", "affine", "des", "parabole"];
+export const TYPES_FIGURE = ["pythagore", "fraction", "proportion", "affine", "des", "parabole", "thales"];
 const TYPES_EXERCICE = ["qcm", "nombre"];
 
 const echapperHtml = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -35,6 +35,11 @@ function validerExercice(ex, ou) {
 function validerFigure(f, ou) {
   exiger(TYPES_FIGURE.includes(f?.type), `${ou} : figure « ${f?.type} » inconnue (attendu : ${TYPES_FIGURE.join(", ")})`);
   if (f.type === "proportion") exiger(texteNonVide(f.libelleX) && texteNonVide(f.libelleY), `${ou} : « libelleX » et « libelleY » requis`);
+  if (f.type === "thales") {
+    for (const cle of ["ab", "ac"]) exiger(f[cle] === undefined || (typeof f[cle] === "number" && Number.isFinite(f[cle]) && f[cle] >= 1 && f[cle] <= 20), `${ou} : « ${cle} » doit être compris entre 1 et 20`);
+    exiger(f.angle === undefined || (typeof f.angle === "number" && Number.isFinite(f.angle) && f.angle >= 15 && f.angle <= 165), `${ou} : « angle » doit être compris entre 15° et 165°`);
+    exiger(f.rapport === undefined || (typeof f.rapport === "number" && Number.isFinite(f.rapport) && f.rapport >= 0.1 && f.rapport <= 0.9), `${ou} : « rapport » doit être compris entre 0,1 et 0,9`);
+  }
 }
 
 /** Vérifie la structure d'un contenu de notion ; lève une erreur explicite au premier problème. */

@@ -53,6 +53,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .carre { fill-opacity: .18; stroke-width: 1.5; }
 .carre-a { fill: var(--a); stroke: var(--a); } .carre-b { fill: var(--b); stroke: var(--b); } .carre-c { fill: var(--c); stroke: var(--c); }
 .triangle { fill: var(--surface); stroke: var(--texte); stroke-width: 2; }
+.cote { stroke: var(--texte); stroke-width: 2; }
+.parallele { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 6 4; }
 .angle-droit { fill: none; stroke: var(--texte); stroke-width: 1.5; }
 .part { fill: var(--surface-2); stroke: var(--texte); stroke-width: 1; }
 .part.pleine { fill: var(--accent); fill-opacity: .75; }
@@ -61,6 +63,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .repere { stroke: var(--doux); stroke-width: 1; stroke-dasharray: 4 4; }
 .point { fill: var(--b); }
 .etiquette { font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+.etiquette.sommet { fill: var(--texte); }
 .etiquette.a { fill: var(--a); } .etiquette.b { fill: var(--b); } .etiquette.c { fill: var(--c); }
 .legende { font-size: 11px; fill: var(--doux); }
 .grille { stroke: var(--bord); stroke-width: 1; }

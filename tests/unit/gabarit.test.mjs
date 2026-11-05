@@ -91,6 +91,8 @@ test("gabarit : erreurs de contenu explicites", () => {
   casse((c) => { c.situation.etapes[0].reponse = "2"; }, /« reponse » doit être un nombre/);
   casse((c) => { c.situation.etapes[1].indices = []; }, /au moins un « indices »/);
   casse((c) => { c.application.figure = { type: "camembert" }; }, /figure « camembert » inconnue/);
+  casse((c) => { c.application.figure = { type: "thales", rapport: 1 }; }, /« rapport » doit être compris entre 0,1 et 0,9/);
+  casse((c) => { c.application.figure = { type: "thales", ab: 0 }; }, /« ab » doit être compris entre 1 et 20/);
   casse((c) => { c.niveaux[0].paragraphes = ["fetch('https://exemple.test')"]; }, /contenu interdit/);
 });
 

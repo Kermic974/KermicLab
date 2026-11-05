@@ -169,6 +169,19 @@ test("figures : la droite affine et le simulateur de dé réagissent", async () 
   await des.contexte.close();
 });
 
+test("Thalès : le rapport de réduction met à jour les trois rapports égaux", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, url("thales"));
+  await page.goto(url("thales"));
+  await page.click("#onglet-application");
+  const figure = page.locator("#panneau-application .figure");
+  const ratios = figure.locator(".tuile b").nth(3);
+  assert.equal(await ratios.textContent(), "0,5");
+  await figure.locator(".curseur input").fill("0.8");
+  assert.deepEqual(await figure.locator(".tuile b").allTextContents(), ["10", "8", "≈ 9,17", "0,8", "0,8", "0,8"]);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 /** Écriture qu'un élève taperait pour la réponse attendue : fraction (si exigée) ou nombre décimal à virgule. */
 function saisie(ex) {
   if (!ex.fractionIrreductible) return String(ex.reponse).replace(".", ",");
