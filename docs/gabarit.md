@@ -62,6 +62,7 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
   - `pythagore` : `a`, `b` (côtés initiaux).
   - `fraction` : `numerateur`, `denominateur`.
   - `proportion` : `libelleX`, `libelleY` (requis), `libelleCoefficient`, `unite`, `coefficient`, `coefficientMin`, `coefficientMax`, `pas`, `x`, `xMax`.
+  - `thales` : `ab`, `ac` (longueurs initiales de 1 à 20), `angle` (angle en A, de 15° à 165°), `rapport` (rapport de réduction initial, de 0,1 à 0,9). Les paramètres sont facultatifs.
 
 ## 3. Vérifier
 
