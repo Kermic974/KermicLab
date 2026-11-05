@@ -151,10 +151,18 @@ async function traiterChat(requete, env, ctx) {
   if (idLocal) {
     const donnees = await servirMaquette(requete, env, ctx, { id: idLocal, langue, question: message, routage: "mots-cles" });
     let cookie;
-    if (llmActive(env) && utiliserLlm) {
+    if (llmActive(env)) {
       try {
-        cookie = await definirContexteLlm(requete, env, idLocal);
-        donnees.suggestions = relancesContexte(langue);
+        if (utiliserLlm) {
+          cookie = await definirContexteLlm(requete, env, idLocal);
+          donnees.suggestions = relancesContexte(langue);
+        } else {
+          const session = await lireSessionLlm(requete, env);
+          if (session) {
+            await env.DB.prepare("UPDATE sessions_llm SET maquette_id = ? WHERE id = ?")
+              .bind(idLocal, session.id).run();
+          }
+        }
       } catch {
         console.error("llm initialisation de session indisponible");
       }
