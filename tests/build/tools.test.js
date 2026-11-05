@@ -14,6 +14,7 @@ function sandbox(mutate) {
   const dir = mkdtempSync(join(tmpdir(), 'trigolab-'));
   cpSync(join(ROOT, 'src'), join(dir, 'src'), { recursive: true });
   cpSync(join(ROOT, 'scripts'), join(dir, 'scripts'), { recursive: true });
+  cpSync(join(ROOT, 'web'), join(dir, 'web'), { recursive: true });
   mutate((file, fn) => { const p = join(dir, file); writeFileSync(p, fn(readFileSync(p, 'utf8'))); });
   return dir;
 }

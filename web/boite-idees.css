@@ -1,0 +1,23 @@
+.boite-idees {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: .65rem .9rem;
+  border: 2px solid #fff;
+  border-radius: .75rem;
+  background: #193b80;
+  color: #fff;
+  font: 600 .9rem/1.4 system-ui, sans-serif;
+  text-decoration: none;
+  white-space: normal;
+}
+.boite-idees:visited { color: #fff; }
+.boite-idees:focus-visible { outline: 3px solid #e6a700; outline-offset: 3px; }
+.boite-idees-flottante {
+  position: fixed;
+  z-index: 100;
+  right: max(.75rem, env(safe-area-inset-right));
+  bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  max-width: calc(100vw - 1.5rem);
+}
+dialog > .boite-idees { margin-top: 1rem; }

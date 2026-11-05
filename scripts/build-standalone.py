@@ -15,6 +15,7 @@ Conventions imposées aux modules (voir AGENTS.md) :
 """
 import re
 import sys
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -116,13 +117,29 @@ def standalone():
     parts.append("})();\n")
     html = template().replace("<!-- @STYLES -->", "<style>\n" + CSS.read_text(encoding="utf-8") + "</style>")
     html = html.replace("<!-- @SCRIPT -->", "<script>\n" + "".join(parts) + "</script>")
+    html = ajouter_idees(html)
     return html.replace("<!doctype html>\n", "<!doctype html>\n" + BANNER, 1)
+
+
+def ajouter_idees(html):
+    textes = {}
+    for fichier in sorted((ROOT / "web" / "i18n").glob("*.json")):
+        traduction = json.loads(fichier.read_text(encoding="utf-8"))
+        textes[fichier.stem] = {k: v for k, v in traduction.items() if k.startswith("idee")}
+    version = re.search(r"const VERSION = '([^']+)';", ENTRY.read_text(encoding="utf-8"))
+    if not version:
+        raise BuildError("version de l’application autonome introuvable")
+    config = json.dumps({"page": "cercle", "version": version[1], "textes": textes}, ensure_ascii=False).replace("<", "\\u003c")
+    style = (ROOT / "web" / "boite-idees.css").read_text(encoding="utf-8")
+    script = (ROOT / "web" / "boite-idees.js").read_text(encoding="utf-8")
+    return html.replace("</body>", '<script type="application/json" id="boite-idees-config">' + config
+                        + "</script>\n<style>" + style + "</style>\n<script>" + script + "</script>\n</body>")
 
 
 def dev():
     collect(ENTRY)  # mêmes vérifications que le livrable
     html = template().replace("<!-- @STYLES -->", '<link rel="stylesheet" href="styles/app.css">')
-    return html.replace("<!-- @SCRIPT -->", '<script type="module" src="ui/main.js"></script>')
+    return ajouter_idees(html.replace("<!-- @SCRIPT -->", '<script type="module" src="ui/main.js"></script>'))
 
 
 def main(argv):

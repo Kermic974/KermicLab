@@ -4,8 +4,10 @@ import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
+import { ajouterBoiteIdees } from "./lib/idees.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
+const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
 const { sources, ...catalogue } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 
 // Les pages sources restent lisibles hors ligne : on y réécrit les hashes CSP à jour.
@@ -24,6 +26,10 @@ await writeFile(`${racine}worker/src/generated/catalogue-index.json`, `${JSON.st
 
 await rm(`${racine}dist`, { recursive: true, force: true });
 await cp(`${racine}web`, `${racine}dist`, { recursive: true });
+for (const fichier of (await readdir(`${racine}dist`)).filter((f) => f.endsWith(".html"))) {
+  const chemin = `${racine}dist/${fichier}`;
+  await writeFile(chemin, ajouterBoiteIdees(await readFile(chemin, "utf8"), { page: fichier, version, externe: true }));
+}
 await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTrophees(catalogue))}\n`);
 await versionnerRessources(`${racine}dist`);
 // Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).

@@ -276,5 +276,9 @@
   "defiQ5R3": "the length of the arc",
   "defiQ5E": "cos θ is read on the horizontal axis: it is the x-coordinate of point M.",
   "bulleAide": "A question about this idea? Ask it in the chat.",
-  "bulleQuestion": "Ask a question"
+  "bulleQuestion": "Ask a question",
+  "ideeAction": "Idea box",
+  "ideeAvertissement": "Opens a draft GitHub issue (new tab). Publish only after reviewing it; do not share personal data.",
+  "ideeTrame": "### Need\nDescribe the requested improvement, without personal data.\n\n### Current and expected behaviour\nTo complete.\n\n### Acceptance criteria\n- [ ] To specify.",
+  "ideeAgent": "### Agent preparation\n- Analyse the need and relevant files; check existing ideas and issues.\n- Propose an implementation and identify uncertainties before changing code.\n- Cover views, languages, accessibility and standalone-page constraints.\n- Add regression tests and update documentation.\n- Prepare a PR; human approval is required (AGENTS.md)."
 }
