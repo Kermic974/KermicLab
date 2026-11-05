@@ -2,6 +2,14 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Validation de Poker Texas Hold'em v1.1.0
+
+- **À faire** : relire les six leçons et jouer une manche sur téléphone et ordinateur ; valider les règles
+  simplifiées annoncées, les conseils sans garantie de gain et les récompenses sans valeur monétaire.
+- **Où** : `catalogue/poker-texas-holdem/`, branche `amelioration/poker-gamification`.
+- **Pourquoi** : contenu destiné aussi aux mineurs ; validation du CODEOWNER requise avant fusion.
+- **Comment confirmer** : revue approuvée après vérification de l'Académie et de « Mes trophées » ; CI verte avant fusion.
+
 ## Actualisation automatique de la roadmap
 
 - **À faire** : après fusion du workflow `roadmap.yml`, autoriser **Allow GitHub Actions to create and approve

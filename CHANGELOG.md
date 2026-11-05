@@ -5,6 +5,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
+- **Poker Texas Hold'em v1.1.0** : coûts des actions, étapes, historique, conseils sans cartes adverses et bilan des cinq meilleures cartes. Académie commune (3 grades, 6 leçons, XP, étoiles, badges, révisions et défi quotidien), intégration à « Mes trophées » et défis libres vérifiés par le moteur. Correction du full du défi initial et des cartes dévoilées après un coucher à la river. / Improved poker training UX and shared Academy with local dashboard trophies.
 - **Navigation** : écrans dédiés aux Labs, Jeux, Défi express, Progression, Trophées et Profil dans la zone principale, liens directs et historique du navigateur. Les Labs ne renvoient plus aux Notions ; une entrée « Notions » conserve le catalogue existant sans modifier sa structure. Les jeux ont leurs propres cartes et recherche. Navigation mobile sur deux rangées.
 - **Collection des trophées accessible depuis l'accueil** : les objectifs des notions, labs et jeux compatibles sont présentés dès l'ouverture de « Mes trophées », sans devoir lancer un module. Les résultats déjà conservés se superposent à la collection ; les objectifs non commencés restent à débloquer, sans gain de progression artificiel.
 - **Remontée des trophées** : le pont des pages intégrées fonctionne avec la politique `Referrer-Policy: no-referrer` du site déployé. L'origine du parent est vérifiée et fixée lors de la connexion par message, sans dépendre du Referer ni désactiver l'isolation des pages.

@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-PpPIp7AcTtYv2tLAocrDt6ZsQRCxUrNwQ4Q2Vt5uJQ0=' 'sha256-FAjme6e+TwXypJ+g8TdaR8uQzkm8shvsEVVWKrM/Jx0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-dib3X8eGvSNwopYvB/PwEnCqn8EqlwlcNp5GWlKnVjY=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-GwlWmN1k52ScIrLctBCSPertpidtfWvaOfGeosRWa5w='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Poker Texas Hold'em – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "poker-texas-holdem",
   "titre": "Poker Texas Hold'em",
   "sujet": "jeux/poker-texas-holdem",
-  "version": "1.0.0",
-  "date": "2026-11-04",
+  "version": "1.1.0",
+  "date": "2026-11-05",
   "langue": "fr",
-  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
 }
 </script>
 <style>
@@ -54,9 +54,217 @@
   .rangs li { padding:3px 0; }
   .defi { display:grid; gap:10px; }
   .reponse { min-height:1.4em; font-weight:700; }
+  [hidden] { display:none !important; }
+  .etapes { display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; font-size:.9rem; }
+  .etapes li { border:1px solid var(--bord); border-radius:20px; padding:4px 10px; }
+  .etapes [aria-current] { border:2px solid var(--accent); font-weight:700; }
+  .bilan-main { display:grid; gap:8px; }
+  .bilan-main .cartes { justify-content:flex-start; }
+  .carte-jeu { flex:0 0 auto; }
+  .historique { max-height:190px; overflow:auto; padding-left:24px; }
+  .conseil-jeu { border-left:4px solid var(--accent); padding:8px 12px; }
+  .recompense { color:var(--succes); font-weight:700; }
+  .stats-jeu { display:flex; flex-wrap:wrap; gap:12px; padding:0; list-style:none; font-size:.9rem; }
+  .communes .emplacement { opacity:.65; border:1px dashed #fff; background:transparent; color:#fff; box-shadow:none; }
+  .carte-jeu { animation:apparaitre .18s ease-out; }
+  @keyframes apparaitre { from { opacity:.4; transform:translateY(4px); } to { opacity:1; transform:none; } }
+  @media(prefers-reduced-motion:reduce) { .carte-jeu { animation:none; } }
   footer { color:var(--doux); font-size:.82rem; }
-  @media(max-width:500px) { header, main, footer { padding:12px; } .sieges { grid-template-columns:1fr; } .carte-jeu { width:43px; height:61px; } }
+  @media(max-width:500px) {
+    header, main, footer { padding:12px; }
+    .plateau { padding:10px; }
+    .siege { padding:8px; font-size:.9rem; }
+    .cartes, .communes { gap:5px; min-height:60px; }
+    .carte-jeu { width:38px; height:54px; }
+  }
 </style>
+<style data-inclure="gabarit/jeux/academie.css">
+/* Styles communs de l'Académie des jeux (ADR 0015). Utilise les variables de couleur de chaque page :
+   --fond, --surface, --texte, --doux, --accent, --accent-texte, --bord, --succes, --alerte. */
+.doux { color: var(--doux); }
+/* « hidden » l'emporte toujours sur les règles d'affichage (grilles, listes) de l'Académie. */
+.toast[hidden], [data-vue][hidden], [data-vue] [hidden] { display: none !important; }
+.toast { margin: 0 0 10px; font-weight: 700; color: var(--succes); }
+.toast:empty { display: none; }
+.toast:not(:empty) { padding: 8px 12px; border: 2px solid var(--succes); border-radius: 8px; background: var(--surface); }
+.boutons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+button.lien { background: none; border: 0; padding: 4px 0; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+button.danger { border-color: var(--alerte); color: var(--alerte); }
+.barre { height: 12px; border-radius: 6px; background: var(--bord); overflow: hidden; margin: 4px 0; }
+.barre span { display: block; height: 100%; background: var(--accent); border-radius: 6px; transition: width .4s; }
+/* Synthèse */
+.synthese-tete { display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; align-items: center; }
+.synthese-embleme { font-size: 2.6rem; line-height: 1; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; background: var(--fond); border: 2px solid var(--bord); }
+.synthese-identite h2 { margin: 0; }
+.synthese-identite p { margin: 0; font-size: .9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 10px 0 0; }
+.chips li { border: 1px solid var(--bord); border-radius: 999px; padding: 3px 10px; font-size: .9rem; background: var(--fond); }
+.conseil { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--fond); border: 1px solid var(--bord); }
+.conseil-titre { margin: 0; font-weight: 700; }
+.conseil-texte { margin: 4px 0 0; }
+.prochain-badge { margin: 10px 0 0; font-size: .9rem; }
+@media (max-width: 560px) { .synthese-tete { grid-template-columns: auto 1fr; } .synthese-tete button.lien { grid-column: 1 / -1; justify-self: start; } }
+/* Parcours */
+.parcours { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+.grade { background: var(--surface); border: 1px solid var(--bord); border-radius: 10px; padding: 10px 12px; }
+.grade.verrouille { opacity: .7; }
+.grade-entete { display: flex; align-items: center; gap: 10px; }
+.grade-embleme { font-size: 1.8rem; line-height: 1; }
+.grade-entete h3 { margin: 0; font-size: 1rem; }
+.grade-entete p { margin: 0; font-size: .85rem; }
+.grade-etat { margin-left: auto; font-size: .85rem; font-weight: 600; text-align: right; }
+.lecons { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; }
+.lecon { width: 100%; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 0 6px; padding: 8px 10px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+.lecon:disabled { cursor: not-allowed; opacity: .6; }
+.lecon.faite { border-color: var(--succes); }
+.lecon-titre { font-weight: 600; }
+.lecon-theme { grid-row: 2; font-size: .8rem; color: var(--doux); }
+.lecon-etoiles { grid-row: 1 / 3; grid-column: 2; align-self: center; color: #b45309; font-size: .95rem; letter-spacing: 1px; }
+/* Page détaillée */
+.detail-section h3 { margin: 0 0 6px; font-size: 1rem; }
+.detail-section details summary { cursor: pointer; font-weight: 600; margin-top: 6px; }
+.regles-xp { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: 6px; }
+.regles-xp td { padding: 4px 6px; border-top: 1px solid var(--bord); }
+.regles-xp td:last-child { text-align: right; font-weight: 700; white-space: nowrap; }
+.grades-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.grades-liste li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--bord); }
+.grades-liste li.obtenu { border-color: var(--succes); }
+.grades-liste li.en-cours { border-color: var(--accent); }
+.grades-liste li.verrouille { opacity: .65; }
+.carnet, .badges, .forces, .parties { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+.carnet p { margin: 2px 0 0; }
+.badges { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+.badges li { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; align-content: start; padding: 8px; border-radius: 8px; border: 1px solid var(--bord); }
+.badges li.obtenu { border-color: var(--succes); }
+.badges li.verrouille { opacity: .75; }
+.badges li .barre { grid-column: 2; height: 8px; }
+.badge-icone { grid-row: 1 / 4; font-size: 1.6rem; }
+.badges .doux { font-size: .85rem; }
+.activite { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; max-width: 420px; }
+.activite li { display: grid; justify-items: center; gap: 2px; padding: 6px 2px; border-radius: 8px; border: 1px solid var(--bord); font-size: .8rem; }
+.activite li.actif { border-color: var(--accent); }
+.activite li.atteint { border-color: var(--succes); background: var(--surface); font-weight: 700; }
+.activite .compte { font-size: 1rem; }
+.forces li { display: grid; grid-template-columns: 10em 1fr; gap: 8px; align-items: center; }
+.jauge { position: relative; height: 18px; border-radius: 9px; background: var(--bord); overflow: hidden; }
+.jauge span { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
+.jauge b { position: relative; font-size: .8rem; padding-left: 6px; color: var(--texte); }
+.emblemes { display: flex; flex-wrap: wrap; gap: 6px; }
+.emblemes label { font-size: 1.5rem; line-height: 1.2; }
+.emblemes label.verrouille { opacity: .45; cursor: not-allowed; }
+.emblemes label.verrouille::after { content: "🔒"; font-size: .8rem; vertical-align: top; }
+.case-a-cocher { display: flex; gap: 8px; align-items: center; cursor: pointer; margin: 8px 0; }
+/* Séance */
+.fil { margin: 10px 0 0; font-size: .85rem; }
+.a-retenir { border-left: 4px solid var(--accent); background: var(--surface); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-bottom: 12px; }
+.a-retenir p { margin: 4px 0 0; }
+.consigne { font-weight: 600; }
+.zone-exercice { max-width: 420px; margin: 8px 0; }
+.qcm { list-style: none; padding: 0; display: grid; gap: 6px; }
+.choix-qcm { width: 100%; text-align: left; padding: 10px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--fond); color: var(--texte); font: inherit; cursor: pointer; }
+.choix-qcm[data-etat="juste"] { border-color: var(--succes); color: var(--succes); font-weight: 700; opacity: 1; }
+.choix-qcm[data-etat="faux"] { border-color: var(--alerte); color: var(--alerte); text-decoration: line-through; }
+.bilan h2 { font-size: 1.3rem; }
+@media (max-width: 480px) { .forces li { grid-template-columns: 7em 1fr; } }
+/* Choix en boutons (réglages), autonomes : chaque page n'a pas forcément ces styles. */
+.detail-section .choix { border: 0; padding: 0; margin: 10px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.detail-section .choix legend { padding: 0; margin-bottom: 4px; font-weight: 600; width: 100%; font-size: .9rem; }
+.detail-section .choix label { position: relative; padding: 5px 12px; border: 2px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; }
+.detail-section .choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.detail-section .choix label:has(input:checked) { border-color: var(--accent); font-weight: 600; }
+.detail-section .choix label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+.message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
+.message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+</style>
+<script type="application/json" id="parcours-poker-texas-holdem">
+{
+  "themes": { "bases": "Les bases", "lecture": "Lire les mains", "strategie": "Décider sans certitude" },
+  "conseilFinal": "Tu connais les bases ! Entraîne-toi à expliquer ta meilleure main, sans chercher à gagner chaque manche.",
+  "parties": { "niveaux": { "entrainement": { "nom": "Entraînement", "xp": { "victoire": 40, "nulle": 10, "defaite": 5 } } } },
+  "badges": [
+    { "id": "observateur", "icone": "♠", "nom": "Observateur", "description": "Va jusqu'à l'abattage dans 5 manches.", "condition": { "type": "compteur", "nom": "abattages", "min": 5 } },
+    { "id": "premier-pot", "icone": "♣", "nom": "Premier pot", "description": "Remporte une manche avec des jetons fictifs.", "condition": { "type": "victoires", "min": 1 } },
+    { "id": "lecteur", "icone": "♦", "nom": "Lecteur de mains", "description": "Termine les leçons de lecture des combinaisons.", "condition": { "type": "themes", "themes": ["lecture"] } },
+    { "id": "pratique", "icone": "♥", "nom": "Pratique réfléchie", "description": "Termine 10 manches, quel que soit le résultat.", "condition": { "type": "compteur", "nom": "manches", "min": 10 } }
+  ],
+  "grades": [
+    {
+      "id": "decouverte", "nom": "Découverte", "embleme": "♣", "sousTitre": "Je comprends la table",
+      "lecons": [
+        {
+          "id": "cinq-cartes", "titre": "Les cinq meilleures cartes", "theme": "bases",
+          "texte": "Tu as deux cartes privées. Les cinq cartes communes appartiennent aux deux joueurs. Ta main finale contient exactement cinq cartes choisies parmi ces sept.",
+          "retenir": "Tu peux utiliser zéro, une ou deux cartes privées. Seules tes cinq meilleures cartes comptent.",
+          "exercices": [
+            { "type": "qcm", "question": "Combien de cartes composent ta combinaison finale ?", "choix": ["Deux", "Cinq", "Sept"], "bonne": 1, "explication": "On choisit les cinq meilleures cartes parmi les sept disponibles." },
+            { "type": "qcm", "question": "Combien de cartes privées dois-tu obligatoirement utiliser ?", "choix": ["Exactement deux", "Exactement une", "Aucune obligation : zéro, une ou deux"], "bonne": 2, "explication": "Si le tableau est meilleur que tes cartes privées, tu peux jouer uniquement les cinq cartes communes." }
+          ]
+        },
+        {
+          "id": "actions", "titre": "Parler, suivre ou se coucher", "theme": "bases",
+          "texte": "Parler ne coûte rien quand les mises sont égales. Suivre consiste à égaler une mise. Se coucher abandonne la manche, mais conserve les jetons que tu n'as pas engagés.",
+          "retenir": "Se coucher est une décision normale. Une main forte n'est jamais une garantie de gagner.",
+          "exercices": [
+            { "type": "qcm", "question": "Personne n'a misé sur ce tour. Quelle action ne coûte aucun jeton ?", "choix": ["Relancer", "Parler", "Suivre une mise de 20"], "bonne": 1, "explication": "Parler permet de rester dans la manche sans ajouter de jetons." },
+            { "type": "qcm", "question": "Ta mise est de 10 et la mise adverse est de 20. Combien faut-il ajouter pour suivre ?", "choix": ["10 jetons", "20 jetons", "30 jetons"], "bonne": 0, "explication": "Tu ajoutes la différence : 20 − 10 = 10 jetons." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lecture", "nom": "Lecture", "embleme": "♦", "sousTitre": "Je compare les combinaisons",
+      "lecons": [
+        {
+          "id": "full", "titre": "Repérer un full", "theme": "lecture",
+          "texte": "Un full réunit trois cartes de même rang et une paire. Il bat une couleur, une quinte et un simple brelan.",
+          "retenir": "Un brelan accompagné d'une paire devient un full. Compare d'abord le rang du brelan.",
+          "exercices": [
+            { "type": "comparaison", "question": "Qui gagne sur ce tableau ?", "communes": ["7♣", "7♦", "2♠", "9♥", "R♣"], "a": ["A♠", "7♥"], "b": ["R♦", "R♥"], "explication": "B forme un full : trois rois et deux 7. A n'a qu'un brelan de 7." }
+          ]
+        },
+        {
+          "id": "partage", "titre": "Partager le pot", "theme": "lecture",
+          "texte": "Les cinq cartes communes peuvent constituer la meilleure main pour les deux joueurs. Les couleurs ne départagent pas les égalités.",
+          "retenir": "Si les cinq meilleures cartes ont les mêmes rangs et la même force, le pot est partagé.",
+          "exercices": [
+            { "type": "comparaison", "question": "Les cartes privées changent-elles le résultat ?", "communes": ["10♥", "V♥", "D♥", "R♥", "A♥"], "a": ["2♣", "3♦"], "b": ["R♠", "R♦"], "explication": "Le tableau est une quinte flush royale pour chacun. Même une paire de rois privée ne l'améliore pas : égalité." },
+            { "type": "comparaison", "question": "Qui a la meilleure quinte ?", "communes": ["A♣", "2♦", "3♥", "4♠", "9♣"], "a": ["5♥", "R♣"], "b": ["5♣", "6♦"], "explication": "B a une quinte au 6. A n'a qu'une quinte au 5, avec l'as utilisé comme carte basse." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strategie", "nom": "Stratégie", "embleme": "♠", "sousTitre": "Je décide avec prudence",
+      "lecons": [
+        {
+          "id": "kicker", "titre": "La carte de départage", "theme": "lecture",
+          "texte": "Avec la même paire, on compare les cartes restantes, de la plus haute à la plus basse. On appelle souvent cette carte de départage le kicker.",
+          "retenir": "Compare toute la combinaison de cinq cartes, pas seulement la paire.",
+          "exercices": [
+            { "type": "comparaison", "question": "Les deux joueurs ont une paire de rois. Qui gagne ?", "communes": ["R♣", "R♦", "2♠", "8♥", "9♣"], "a": ["A♠", "3♥"], "b": ["D♦", "4♥"], "explication": "A gagne grâce à son as : R-R-A-9-8 bat R-R-D-9-8." }
+          ]
+        },
+        {
+          "id": "incertitude", "titre": "Jouer sans certitude", "theme": "strategie",
+          "texte": "Tu ne connais pas les cartes adverses. Une bonne décision peut perdre une manche : le hasard reste présent. Les conseils de cette table décrivent ta main visible, pas une prédiction.",
+          "retenir": "Entraîne-toi à expliquer tes décisions. Les jetons et les XP ne valent pas d'argent ; fais des pauses.",
+          "exercices": [
+            { "type": "qcm", "question": "Un conseil indique que tu as une paire. Est-ce une victoire garantie ?", "choix": ["Oui", "Non, la main adverse est inconnue"], "bonne": 1, "explication": "Une paire peut être battue. Le conseil n'a pas accès aux cartes privées adverses." },
+            { "type": "qcm", "question": "Après plusieurs manches perdues, quelle attitude est raisonnable ?", "choix": ["Faire une pause et revoir les règles", "Relancer chaque main pour tout récupérer"], "bonne": 0, "explication": "Aucune série de pertes ne garantit un gain futur. Prends le temps de réfléchir ou de faire une pause." }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/json" id="defis-poker">
+[
+  { "titre": "Brelan ou full ?", "communes": ["7♣", "7♦", "2♠", "9♥", "R♣"], "a": ["A♠", "7♥"], "b": ["R♦", "R♥"], "explication": "B gagne avec un full aux rois par les 7, qui bat le brelan de 7 de A." },
+  { "titre": "Le tableau pour tous", "communes": ["10♥", "V♥", "D♥", "R♥", "A♥"], "a": ["2♣", "3♦"], "b": ["R♠", "R♦"], "explication": "Égalité ! Les deux joueurs utilisent la quinte flush royale du tableau." },
+  { "titre": "La carte de départage", "communes": ["R♣", "R♦", "2♠", "8♥", "9♣"], "a": ["A♠", "3♥"], "b": ["D♦", "4♥"], "explication": "A gagne : sa paire de rois est accompagnée d'un as, plus haut que la dame de B." }
+]
+</script>
 <script id="trophees" data-inclure="gabarit/jeux/trophees.js">
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
 const Trophees = (() => {
@@ -99,10 +307,16 @@ const Trophees = (() => {
 <nav role="tablist" aria-label="Rubriques du jeu">
   <button role="tab" id="onglet-application" aria-controls="panneau-application" aria-selected="true" tabindex="0" data-onglet="application">Jouer</button>
   <button role="tab" id="onglet-explication" aria-controls="panneau-explication" aria-selected="false" tabindex="-1" data-onglet="explication">Règles</button>
+  <button role="tab" id="onglet-academie" aria-controls="panneau-academie" aria-selected="false" tabindex="-1" data-onglet="academie">Académie</button>
   <button role="tab" id="onglet-mise-en-situation" aria-controls="panneau-mise-en-situation" aria-selected="false" tabindex="-1" data-onglet="mise-en-situation">Défi</button>
 </nav>
 <main>
   <section id="panneau-application" role="tabpanel" aria-labelledby="onglet-application">
+    <ol class="etapes" aria-label="Tours de la manche">
+      <li data-phase="preflop">1 · Préflop</li><li data-phase="flop">2 · Flop</li><li data-phase="turn">3 · Turn</li><li data-phase="river">4 · River</li>
+    </ol>
+    <p class="doux">Table d'entraînement : blindes 10 / 20, mise ou relance de 20. Tu parles en premier ; l'ordinateur suit ou se couche.</p>
+    <ul class="stats-jeu" aria-label="Ta pratique" data-sortie="stats-jeu"></ul>
     <div class="carte">
       <div class="plateau">
         <div class="table-entete"><strong>Toi · <span data-sortie="pile-joueur"></span> jetons</strong><span>Manche <span data-sortie="numero"></span></span><strong>Ordinateur · <span data-sortie="pile-ordi"></span> jetons</strong></div>
@@ -115,15 +329,28 @@ const Trophees = (() => {
         <p class="legende" data-sortie="phase"></p>
       </div>
       <p class="message" data-sortie="message" aria-live="polite"></p>
+      <p data-sortie="main-actuelle"></p>
+      <p data-sortie="cout-action" class="doux"></p>
       <div class="actions" data-zone="actions">
         <button class="secondaire" data-action="coucher">Se coucher</button>
         <button class="action" data-action="suivre" data-bouton="suivre">Suivre</button>
-        <button class="secondaire" data-action="relancer">Relancer</button>
+        <button class="secondaire" data-action="relancer">Relancer de 20</button>
       </div>
-      <div class="actions"><button class="secondaire" data-action="nouvelle" hidden>Manche suivante</button></div>
+      <div class="actions">
+        <button class="secondaire" data-action="conseil">Conseil</button>
+        <button class="action" data-action="nouvelle" hidden>Manche suivante</button>
+      </div>
+      <p class="conseil-jeu" data-sortie="conseil-jeu" role="status" hidden></p>
+      <div data-zone="bilan" class="bilan-main" hidden>
+        <h2 tabindex="-1" data-sortie="bilan-titre">Bilan de la manche</h2>
+        <div data-sortie="meilleures-mains"></div>
+        <p data-sortie="recompense" class="recompense" role="status"></p>
+      </div>
+      <details><summary>Historique de la manche</summary><ol class="historique" data-sortie="historique"></ol></details>
     </div>
     <p class="doux">Les jetons sont fictifs et restent dans cette page. Aucun pari d'argent n'est proposé.</p>
   </section>
+  <section id="panneau-academie" role="tabpanel" aria-labelledby="onglet-academie" hidden></section>
   <section id="panneau-explication" role="tabpanel" aria-labelledby="onglet-explication" hidden>
     <article class="carte">
       <h2>Le but</h2>
@@ -135,7 +362,10 @@ const Trophees = (() => {
         <li><strong>Turn</strong> : une quatrième carte commune apparaît.</li>
         <li><strong>River</strong> : la cinquième carte commune est révélée ; les mains sont comparées.</li>
       </ol>
-      <p>À ton tour, tu peux <strong>te coucher</strong> (abandonner la manche), <strong>suivre</strong> (payer la mise à égaler), <strong>parler</strong> (ne rien miser si personne n'a misé), ou <strong>relancer</strong>. Pour simplifier l'entraînement, tu parles toujours en premier et chaque joueur ne peut relancer qu'une fois par tour d'enchères.</p>
+      <p>À ton tour, tu peux <strong>te coucher</strong> (abandonner la manche), <strong>suivre</strong> (payer la mise à égaler), <strong>parler</strong> (ne rien miser si personne n'a misé), ou <strong>relancer</strong>. Sur cette table d'entraînement simplifiée, tu parles toujours en premier. Tu peux miser ou relancer de 20 jetons ; l'ordinateur suit ou se couche, sans surrelancer. Ce n'est pas une simulation complète de tournoi.</p>
+      <p>Si un joueur n'a plus de jetons, sa mise non suivie est rendue et les cartes restantes sont révélées. Si une pile est trop petite pour les blindes de la manche suivante, le bouton propose explicitement une nouvelle session à 1 000 jetons chacun.</p>
+      <h2>Apprendre et progresser</h2>
+      <p>L'Académie propose 3 grades, 6 leçons, des étoiles, des badges, des révisions et un défi du jour. Une manche terminée rapporte 40 XP pour une victoire, 10 pour une égalité et 5 pour une défaite. Les jetons ne sont pas de l'XP et n'ont aucune valeur monétaire.</p>
     </article>
     <article class="carte">
       <h2>Les combinaisons, de la plus forte à la plus faible</h2>
@@ -155,16 +385,19 @@ const Trophees = (() => {
   </section>
   <section id="panneau-mise-en-situation" role="tabpanel" aria-labelledby="onglet-mise-en-situation" hidden>
     <article class="carte defi">
-      <h2>Quel joueur gagne ?</h2>
-      <p>Cartes communes : <strong>7♣ 7♦ 2♠ 9♥ K♣</strong></p>
-      <p>Joueur A : <strong>A♠ 7♥</strong> · Joueur B : <strong>K♦ K♥</strong></p>
+      <h2 data-sortie="defi-titre">Quel joueur gagne ?</h2>
+      <p>Cartes communes : <span class="cartes" data-sortie="defi-communes"></span></p>
+      <p>Joueur A : <span class="cartes" data-sortie="defi-a"></span></p>
+      <p>Joueur B : <span class="cartes" data-sortie="defi-b"></span></p>
       <p>Quelle main l'emporte ?</p>
       <div class="actions">
-        <button class="choix" data-reponse="a">Joueur A : brelan de 7</button>
-        <button class="choix" data-reponse="b">Joueur B : brelan de rois</button>
+        <button class="choix" data-reponse="a">Joueur A</button>
+        <button class="choix" data-reponse="b">Joueur B</button>
         <button class="choix" data-reponse="egalite">Égalité</button>
       </div>
       <p class="reponse" data-sortie="reponse-defi" aria-live="polite"></p>
+      <button class="secondaire" data-action="autre-defi">Défi suivant</button>
+      <p class="doux">Pour gagner des étoiles et de l'XP avec ces exercices, ouvre l'Académie.</p>
     </article>
   </section>
 </main>
@@ -217,7 +450,7 @@ const MoteurPoker = (() => {
     return [0, ...rangs.sort((a, b) => b - a)];
   }
 
-  function evaluerMain(cartes) {
+  function meilleureMain(cartes) {
     if (!Array.isArray(cartes) || cartes.length < 5 || cartes.length > 7) throw new RangeError("une main doit contenir de 5 à 7 cartes");
     const ids = new Set();
     for (const c of cartes) {
@@ -226,18 +459,44 @@ const MoteurPoker = (() => {
       if (ids.has(id)) throw new Error("une même carte ne peut pas apparaître deux fois");
       ids.add(id);
     }
-    let meilleure = null;
+    let meilleure = null, selection = null;
     for (let a = 0; a < cartes.length - 4; a++)
       for (let b = a + 1; b < cartes.length - 3; b++)
         for (let c = b + 1; c < cartes.length - 2; c++)
           for (let d = c + 1; d < cartes.length - 1; d++)
             for (let e = d + 1; e < cartes.length; e++) {
-              const score = evaluerCinq([cartes[a], cartes[b], cartes[c], cartes[d], cartes[e]]);
-              if (!meilleure || comparerScores(score, meilleure) > 0) meilleure = score;
+              const cinq = [cartes[a], cartes[b], cartes[c], cartes[d], cartes[e]];
+              const score = evaluerCinq(cinq);
+              if (!meilleure || comparerScores(score, meilleure) > 0) { meilleure = score; selection = cinq; }
             }
-    return meilleure;
+    return { score: meilleure, cartes: selection };
   }
 
+  const evaluerMain = (cartes) => meilleureMain(cartes).score;
+  function lireCartes(codes) {
+    if (!Array.isArray(codes)) throw new TypeError("liste de cartes attendue");
+    return codes.map((code) => {
+      if (typeof code !== "string" || !/^(?:[2-9]|10|V|D|R|A)[♣♦♥♠]$/u.test(code)) throw new TypeError("carte invalide");
+      return { rang: ({ V: 11, D: 12, R: 13, A: 14 }[code[0]] ?? Number(code.slice(0, -1))), couleur: code.at(-1) };
+    });
+  }
+  function comparerSituation(situation) {
+    const communes = lireCartes(situation.communes), a = lireCartes(situation.a), b = lireCartes(situation.b);
+    if (communes.length !== 5 || a.length !== 2 || b.length !== 2) throw new RangeError("tableau de 5 cartes et 2 cartes par joueur attendus");
+    if (new Set([...communes, ...a, ...b].map((c) => `${c.rang}${c.couleur}`)).size !== 9) throw new Error("cartes en double");
+    const scoreA = evaluerMain([...a, ...communes]), scoreB = evaluerMain([...b, ...communes]);
+    const comparaison = comparerScores(scoreA, scoreB);
+    return { gagnant: comparaison > 0 ? "a" : comparaison < 0 ? "b" : "egalite", scoreA, scoreB };
+  }
+  function conseiller(main, communes, aPayer, pot) {
+    const description = communes.length >= 3
+      ? `Ta meilleure combinaison visible est : ${nomMain(evaluerMain([...main, ...communes]))}.`
+      : main[0].rang === main[1].rang ? "Tu as une paire en main." : "Tu n'as pas de paire en main.";
+    const cout = aPayer > 0
+      ? `Suivre coûte ${aPayer} jetons pour un pot de ${pot}. Tu peux aussi te coucher et conserver tes jetons restants.`
+      : "Tu peux parler gratuitement pour voir la suite, ou miser de 20.";
+    return `${description} ${cout} Les cartes adverses sont inconnues : ce n'est pas une garantie de gagner.`;
+  }
   function comparerScores(a, b) {
     for (let i = 0; i < Math.max(a.length, b.length); i++) {
       const ecart = (a[i] ?? 0) - (b[i] ?? 0);
@@ -262,7 +521,8 @@ const MoteurPoker = (() => {
     ordinateur.pile -= ordinateur.mise;
     return {
       statut: "en-cours", phase: "preflop", joueur, ordinateur, communes: [], paquet: paquet.slice(4),
-      pot: 30, miseHaute: 20, relanceFaite: false, resultat: null, message: "À toi : suis 10 jetons, relance ou couche-toi."
+      pot: 30, miseHaute: 20, relanceFaite: false, resultat: null, message: "À toi : suis 10 jetons, relance ou couche-toi.",
+      historique: ["Préflop : tu poses la petite blinde de 10 ; l'ordinateur pose la grosse blinde de 20."]
     };
   }
 
@@ -272,20 +532,21 @@ const MoteurPoker = (() => {
     return (a.rang === b.rang ? .55 + a.rang / 60 : (Math.max(a.rang, b.rang) - 2) / 22 + (a.couleur === b.couleur ? .12 : 0));
   }
 
-  function terminer(p, gagnant, egalite = false) {
+  function terminer(p, gagnant, egalite = false, abattage = false) {
     const partage = egalite ? Math.floor(p.pot / 2) : p.pot;
     if (egalite) { p.joueur.pile += partage; p.ordinateur.pile += p.pot - partage; }
     else p[gagnant].pile += p.pot;
     p.resultat = { gagnant: egalite ? "egalite" : gagnant, scoreJoueur: null, scoreOrdi: null };
-    if (p.phase === "river" || p.communes.length === 5) {
+    if (abattage) {
       p.resultat.scoreJoueur = evaluerMain([...p.joueur.main, ...p.communes]);
       p.resultat.scoreOrdi = evaluerMain([...p.ordinateur.main, ...p.communes]);
       p.resultat.nomJoueur = nomMain(p.resultat.scoreJoueur);
       p.resultat.nomOrdi = nomMain(p.resultat.scoreOrdi);
     }
     p.statut = "terminee";
-    p.message = egalite ? `Égalité : le pot est partagé (${partage} jetons chacun).` :
+    p.message = egalite ? `Égalité : le pot est partagé (${partage} et ${p.pot - partage} jetons).` :
       gagnant === "joueur" ? "Tu remportes le pot !" : "L'ordinateur remporte le pot.";
+    p.historique.push(p.message);
   }
 
   function avancer(p) {
@@ -295,7 +556,7 @@ const MoteurPoker = (() => {
       const j = evaluerMain([...p.joueur.main, ...p.communes]);
       const o = evaluerMain([...p.ordinateur.main, ...p.communes]);
       const cmp = comparerScores(j, o);
-      terminer(p, cmp >= 0 ? "joueur" : "ordinateur", cmp === 0);
+      terminer(p, cmp >= 0 ? "joueur" : "ordinateur", cmp === 0, true);
       return;
     }
     const suivante = PHASES[PHASES.indexOf(p.phase) + 1];
@@ -303,7 +564,7 @@ const MoteurPoker = (() => {
       const j = evaluerMain([...p.joueur.main, ...p.communes]);
       const o = evaluerMain([...p.ordinateur.main, ...p.communes]);
       const cmp = comparerScores(j, o);
-      terminer(p, cmp >= 0 ? "joueur" : "ordinateur", cmp === 0);
+      terminer(p, cmp >= 0 ? "joueur" : "ordinateur", cmp === 0, true);
       return;
     }
     p.phase = suivante;
@@ -314,13 +575,14 @@ const MoteurPoker = (() => {
     p.miseHaute = 0;
     p.relanceFaite = false;
     p.message = `${NOM_PHASE[p.phase]} : à toi de parler.`;
+    p.historique.push(`${NOM_PHASE[p.phase]} : ${p.communes.map((c) => `${({ 11: "V", 12: "D", 13: "R", 14: "A" }[c.rang] ?? c.rang)}${c.couleur}`).join(" ")}.`);
   }
 
   function agir(p, action, aleatoire = Math.random) {
     if (!p || p.statut !== "en-cours") throw new Error("la manche est terminée");
     const aPayer = p.miseHaute - p.joueur.mise;
     if (!["coucher", "suivre", "parole", "relancer"].includes(action)) throw new Error("action inconnue");
-    if (action === "coucher") { terminer(p, "ordinateur"); return p; }
+    if (action === "coucher") { p.historique.push("Tu te couches."); terminer(p, "ordinateur"); return p; }
     if (action === "parole" && aPayer !== 0) throw new Error("tu dois suivre ou te coucher");
     if (action === "suivre" && aPayer === 0) throw new Error("tu peux parler sans miser");
     if (action === "relancer" && (p.relanceFaite || p.joueur.pile <= aPayer || p.ordinateur.pile < aPayer + 20)) {
@@ -329,12 +591,14 @@ const MoteurPoker = (() => {
     if (action === "suivre") {
       const montant = Math.min(aPayer, p.joueur.pile);
       p.joueur.pile -= montant; p.joueur.mise += montant; p.pot += montant;
+      p.historique.push(`Tu suis pour ${montant} jetons.`);
     } else if (action === "parole") {
-      // Aucun jeton ne bouge quand les mises sont déjà égales.
+      p.historique.push("Tu parles ; l'ordinateur parle.");
     } else {
       const montant = Math.min(p.joueur.pile, aPayer + 20);
       p.joueur.pile -= montant; p.joueur.mise += montant; p.pot += montant;
       p.miseHaute = p.joueur.mise; p.relanceFaite = true;
+      p.historique.push(`Tu ajoutes ${montant} jetons (mise totale : ${p.joueur.mise}).`);
     }
     const du = p.miseHaute - p.ordinateur.mise;
     if (du > 0) {
@@ -343,12 +607,14 @@ const MoteurPoker = (() => {
       const hasard = aleatoire();
       if (!(hasard >= 0 && hasard < 1)) throw new RangeError("le hasard doit renvoyer une valeur entre 0 inclus et 1 exclu");
       if (force + hasard * .2 < limite) {
+        p.historique.push("L'ordinateur se couche.");
         terminer(p, "joueur");
         p.message = "L'ordinateur se couche : tu remportes le pot.";
         return p;
       }
       const montant = Math.min(du, p.ordinateur.pile);
       p.ordinateur.pile -= montant; p.ordinateur.mise += montant; p.pot += montant;
+      p.historique.push(`L'ordinateur suit pour ${montant} jetons.`);
     }
     if (!p.joueur.pile || !p.ordinateur.pile) {
       const difference = p.joueur.mise - p.ordinateur.mise;
@@ -362,7 +628,743 @@ const MoteurPoker = (() => {
     return p;
   }
 
-  return { COULEURS, creerPaquet, melanger, evaluerMain, comparerScores, nomMain, creerPartie, agir };
+  return { COULEURS, creerPaquet, melanger, evaluerMain, meilleureMain, lireCartes, comparerSituation, conseiller, comparerScores, nomMain, creerPartie, agir };
+})();
+</script>
+<script id="progression-jeux" data-inclure="gabarit/jeux/progression.js">
+/* Progression commune des jeux (ADR 0014, 0015) : XP, niveaux, grades, étoiles, badges, série, objectif du jour,
+   révisions espacées, défi du jour, forces et conseil personnalisé. Pur, sans DOM : la date est passée en paramètre.
+   Module partagé, recopié dans chaque page par `npm run build` : modifier ce fichier, jamais sa copie dans une page. */
+const ProgressionJeux = (() => {
+  "use strict";
+  const XP = Object.freeze({ parfait: 20, reussi: 10, avecIndice: 5, revision: 5, revisionRatee: 1, lecon: 30, objectif: 20, defi: 15 });
+  // Révision espacée (boîtes de Leitner) : une carte réussie passe dans la boîte suivante, revue de plus en plus tard.
+  const INTERVALLES = Object.freeze([1, 2, 4, 8, 16]);
+  const OBJECTIFS = Object.freeze([1, 3, 5]);
+  const MAX_JOURS = 31;
+  const JOUR = /^\d{4}-\d{2}-\d{2}$/;
+  const RESULTATS = Object.freeze({ victoire: "victoires", nulle: "nulles", defaite: "defaites" });
+
+  /* ---------- Dates (AAAA-MM-JJ, calendrier de l'utilisateur fourni par l'appelant) ---------- */
+  function ajouterJours(jour, n) {
+    const [a, m, j] = jour.split("-").map(Number);
+    return new Date(Date.UTC(a, m - 1, j + n)).toISOString().slice(0, 10);
+  }
+  const estJour = (v) => typeof v === "string" && JOUR.test(v);
+  const entier = (v, max = 1e9) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : 0);
+  const copie = (e) => JSON.parse(JSON.stringify(e));
+  const exoId = (lecon, k) => `${lecon.id}/${k}`;
+  const etoiles = ({ erreurs, indices }) => { const p = erreurs + 2 * indices; return p === 0 ? 3 : p <= 2 ? 2 : 1; };
+  /** Petit hachage déterministe : le même défi pour tout le monde le même jour, sans hasard ni réseau. */
+  const hacher = (texte) => [...texte].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
+
+  /** Crée l'API de progression d'un jeu à partir de son parcours (grades, leçons, thèmes, badges, niveaux de partie). */
+  function creer(parcours) {
+    const lecons = new Map(), exercices = new Map();
+    parcours.grades.forEach((grade, gi) => grade.lecons.forEach((lecon) => {
+      lecons.set(lecon.id, { lecon, grade, gi });
+      lecon.exercices.forEach((exo, k) => exercices.set(exoId(lecon, k), { exo, lecon, grade, gi }));
+    }));
+    const EMBLEMES = Object.freeze(parcours.grades.map((g) => g.embleme));
+    const NIVEAUX_PARTIE = parcours.parties?.niveaux ?? {};
+    // Compteurs d'événements propres au jeu (capots, belotes…), déclarés par les badges de type « compteur ».
+    const COMPTEURS = [...new Set((parcours.badges ?? []).filter((b) => b.condition.type === "compteur").map((b) => b.condition.nom))];
+    const toutesLecons = parcours.grades.flatMap((g) => g.lecons);
+
+    function etatInitial() {
+      return {
+        version: 1, xp: 0, lecons: {}, cartes: {}, themes: {}, serie: 0, serieMax: 0, dernierJour: null, jours: {},
+        badges: [], objectif: 3, embleme: EMBLEMES[0], libre: false, revisions: 0, objectifsAtteints: 0, objectifsJours: [], defis: [],
+        parties: Object.fromEntries(Object.keys(NIVEAUX_PARTIE).map((n) => [n, { victoires: 0, nulles: 0, defaites: 0, meilleur: null }])),
+        compteurs: Object.fromEntries(COMPTEURS.map((n) => [n, 0]))
+      };
+    }
+
+    /* ---------- Grades et niveaux ---------- */
+    const gradeTermine = (e, grade) => grade.lecons.every((l) => e.lecons[l.id]);
+    function gradesObtenus(e) {
+      let n = 0;
+      while (n < parcours.grades.length && gradeTermine(e, parcours.grades[n])) n += 1;
+      return n;
+    }
+    function titre(e) {
+      const n = gradesObtenus(e);
+      return n === 0 ? "Débutant" : n === parcours.grades.length ? `${parcours.grades[n - 1].nom} : tu es un pro !` : parcours.grades[n - 1].nom;
+    }
+    function leconDebloquee(e, id) {
+      const info = lecons.get(id);
+      return !!info && (e.libre || info.gi === 0 || gradeTermine(e, parcours.grades[info.gi - 1]));
+    }
+    const emblemesDisponibles = (e) => EMBLEMES.slice(0, Math.max(1, gradesObtenus(e) + 1));
+
+    /* ---------- Badges : communs à tous les jeux, puis propres au jeu (décrits dans le parcours) ---------- */
+    const victoiresTotal = (e) => Object.values(e.parties).reduce((s, p) => s + p.victoires, 0);
+    const lecDuTheme = (themes) => toutesLecons.filter((l) => themes.includes(l.theme));
+    const COMMUNS = [
+      { id: "premiers-pas", icone: "👣", nom: "Premiers pas", description: "Termine ta première leçon.", avance: (e) => [Object.keys(e.lecons).length, 1] },
+      { id: "sans-faute", icone: "⭐", nom: "Sans faute", description: "Termine une leçon avec 3 étoiles.", avance: (e) => [Object.values(e.lecons).some((l) => l.etoiles === 3) ? 1 : 0, 1] },
+      { id: "perfectionniste", icone: "🌟", nom: "Perfectionniste", description: "Obtiens 3 étoiles sur toutes les leçons d'un grade.",
+        avance: (e) => [Math.max(...parcours.grades.map((g) => g.lecons.filter((l) => e.lecons[l.id]?.etoiles === 3).length / g.lecons.length)) >= 1 ? 1 : 0, 1] },
+      { id: "pro", icone: "🏆", nom: "Du débutant au pro", description: `Obtiens les ${parcours.grades.length} grades.`, avance: (e) => [gradesObtenus(e), parcours.grades.length] },
+      { id: "serie-3", icone: "🔥", nom: "Ça chauffe", description: "Entraîne-toi 3 jours de suite.", avance: (e) => [e.serieMax, 3] },
+      { id: "serie-7", icone: "📅", nom: "Une semaine sans pause", description: "Entraîne-toi 7 jours de suite.", avance: (e) => [e.serieMax, 7] },
+      { id: "regulier", icone: "🎯", nom: "Régulier", description: "Atteins 5 fois ton objectif du jour.", avance: (e) => [e.objectifsAtteints, 5] },
+      { id: "memoire", icone: "🧠", nom: "Mémoire d'éléphant", description: "Fais 10 révisions.", avance: (e) => [e.revisions, 10] },
+      { id: "bibliotheque", icone: "📚", nom: "Bibliothèque", description: "Maîtrise 10 stratégies (révisées plusieurs fois avec succès).",
+        avance: (e) => [Object.values(e.cartes).filter((c) => c.boite >= 4).length, 10] },
+      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis du jour.", avance: (e) => [e.defis.length, 3] }
+    ];
+    function versBadge({ id, icone, nom, description, condition: c }) {
+      let avance;
+      if (c.type === "themes") {
+        avance = (e) => { const l = lecDuTheme(c.themes), faites = l.filter((x) => e.lecons[x.id]).length; return c.toutes === false ? [Math.min(1, faites), 1] : [faites, l.length]; };
+      } else if (c.type === "victoires") {
+        avance = (e) => [c.niveau ? e.parties[c.niveau]?.victoires ?? 0 : victoiresTotal(e), c.min];
+      } else if (c.type === "compteur") {
+        avance = (e) => [e.compteurs[c.nom] ?? 0, c.min];
+      } else if (c.type === "record") {
+        avance = (e) => { const m = e.parties[c.niveau]?.meilleur; return [m !== null && m !== undefined && m <= c.max ? 1 : 0, 1]; };
+      } else throw new Error(`badge ${id} : condition « ${c.type} » inconnue`);
+      return { id, icone, nom, description, avance };
+    }
+    const BADGES = [...COMMUNS, ...(parcours.badges ?? []).map(versBadge)];
+    const ids = BADGES.map((b) => b.id);
+    if (new Set(ids).size !== ids.length) throw new Error("badges en double");
+
+    function badges(e) {
+      return BADGES.map(({ avance, ...b }) => { const [actuel, cible] = avance(e); return { ...b, actuel: Math.min(actuel, cible), cible, obtenu: actuel >= cible }; });
+    }
+
+    /* ---------- Relecture d'un état stocké ---------- */
+    const objet = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v : {});
+    function normaliser(brut) {
+      const base = etatInitial();
+      if (!brut || typeof brut !== "object") return base;
+      const e = { ...base, xp: entier(brut.xp), serie: entier(brut.serie), serieMax: entier(brut.serieMax), revisions: entier(brut.revisions),
+        objectifsAtteints: entier(brut.objectifsAtteints), libre: brut.libre === true,
+        objectif: OBJECTIFS.includes(brut.objectif) ? brut.objectif : base.objectif,
+        embleme: EMBLEMES.includes(brut.embleme) ? brut.embleme : base.embleme,
+        dernierJour: estJour(brut.dernierJour) ? brut.dernierJour : null };
+      for (const [id, v] of Object.entries(objet(brut.lecons))) {
+        if (lecons.has(id) && [1, 2, 3].includes(v?.etoiles)) e.lecons[id] = { etoiles: v.etoiles, jour: estJour(v.jour) ? v.jour : null };
+      }
+      for (const [id, v] of Object.entries(objet(brut.cartes))) {
+        if (exercices.has(id) && Number.isInteger(v?.boite) && v.boite >= 1 && v.boite <= INTERVALLES.length && estJour(v.prochaine)) e.cartes[id] = { boite: v.boite, prochaine: v.prochaine };
+      }
+      for (const [t, v] of Object.entries(objet(brut.themes))) {
+        if (parcours.themes[t]) { const essais = entier(v?.essais); e.themes[t] = { essais, premiers: Math.min(essais, entier(v?.premiers)) }; }
+      }
+      for (const [j, n] of Object.entries(objet(brut.jours))) if (estJour(j)) e.jours[j] = entier(n, 1000);
+      e.badges = Array.isArray(brut.badges) ? [...new Set(brut.badges.filter((b) => ids.includes(b)))] : [];
+      e.defis = Array.isArray(brut.defis) ? [...new Set(brut.defis.filter(estJour))].slice(-MAX_JOURS) : [];
+      e.objectifsJours = Array.isArray(brut.objectifsJours) ? [...new Set(brut.objectifsJours.filter(estJour))].slice(-MAX_JOURS) : [];
+      for (const n of Object.keys(NIVEAUX_PARTIE)) {
+        const p = objet(objet(brut.parties)[n]);
+        e.parties[n] = { victoires: entier(p.victoires), nulles: entier(p.nulles), defaites: entier(p.defaites), meilleur: Number.isInteger(p.meilleur) && p.meilleur >= 0 ? p.meilleur : null };
+      }
+      for (const n of COMPTEURS) e.compteurs[n] = entier(objet(brut.compteurs)[n]);
+      return e;
+    }
+
+    /* ---------- Enregistrements : chaque fonction renvoie un nouvel état et ce qui a été gagné ---------- */
+    function cloturer(e, avant, gains) {
+      const obtenus = badges(e).filter((b) => b.obtenu).map((b) => b.id);
+      gains.badges = obtenus.filter((id) => !avant.badges.includes(id)).map((id) => { const { avance, ...b } = BADGES.find((x) => x.id === id); return b; });
+      e.badges = [...new Set([...avant.badges.filter((id) => ids.includes(id)), ...obtenus])];
+      gains.niveauAvant = niveau(avant.xp).niveau;
+      gains.niveauApres = niveau(e.xp).niveau;
+      gains.gradesAvant = gradesObtenus(avant);
+      gains.gradesApres = gradesObtenus(e);
+      return { etat: e, gains };
+    }
+    /** Activité du jour : série de jours consécutifs, compteur du jour, bonus quand l'objectif est atteint. */
+    function compterActivite(e, jour, gains) {
+      if (e.dernierJour !== jour) {
+        e.serie = e.dernierJour && ajouterJours(e.dernierJour, 1) === jour ? e.serie + 1 : 1;
+        e.serieMax = Math.max(e.serieMax, e.serie);
+        e.dernierJour = jour;
+      }
+      e.jours[jour] = (e.jours[jour] ?? 0) + 1;
+      for (const j of Object.keys(e.jours).sort().slice(0, -MAX_JOURS)) delete e.jours[j];
+      // Une seule récompense par date, même si le joueur change son objectif dans la journée.
+      if (e.jours[jour] >= e.objectif && !e.objectifsJours.includes(jour)) {
+        e.objectifsJours = [...e.objectifsJours, jour].slice(-MAX_JOURS);
+        e.xp += XP.objectif; gains.xp += XP.objectif; gains.objectif = true; e.objectifsAtteints += 1;
+      }
+    }
+
+    function enregistrerExercice(etat, { id, erreurs = 0, indice = false, jour, revision = false }) {
+      const info = exercices.get(id);
+      if (!info) throw new Error(`exercice inconnu : ${id}`);
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      const parfait = erreurs === 0 && !indice;
+      const gain = revision ? (parfait ? XP.revision : XP.revisionRatee) : parfait ? XP.parfait : indice ? XP.avecIndice : XP.reussi;
+      e.xp += gain; gains.xp += gain;
+      const t = e.themes[info.lecon.theme] ?? { essais: 0, premiers: 0 };
+      e.themes[info.lecon.theme] = { essais: t.essais + 1, premiers: t.premiers + (parfait ? 1 : 0) };
+      const carte = e.cartes[id];
+      const boite = !carte ? 1 : parfait ? Math.min(INTERVALLES.length, carte.boite + 1) : 1;
+      e.cartes[id] = { boite, prochaine: ajouterJours(jour, INTERVALLES[boite - 1]) };
+      if (revision) e.revisions += 1;
+      compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    function terminerLecon(etat, { id, etoiles: n, jour }) {
+      if (!lecons.has(id)) throw new Error(`leçon inconnue : ${id}`);
+      const e = copie(etat), gains = { xp: 0, objectif: false, premiereFois: !etat.lecons[id] };
+      if (gains.premiereFois) { e.xp += XP.lecon; gains.xp += XP.lecon; }
+      e.lecons[id] = { etoiles: Math.max(n, e.lecons[id]?.etoiles ?? 0), jour };
+      return cloturer(e, etat, gains);
+    }
+
+    /** Partie terminée (contre l'ordinateur, ou partie de démineur). `temps` en secondes, pour les records. */
+    function enregistrerPartie(etat, { resultat, niveau: n, jour, temps = null }) {
+      const regle = NIVEAUX_PARTIE[n];
+      if (!RESULTATS[resultat] || !regle || regle.xp[resultat] === undefined) throw new Error("partie invalide");
+      const e = copie(etat), gains = { xp: 0, objectif: false, record: false };
+      const gain = regle.xp[resultat];
+      e.xp += gain; gains.xp += gain;
+      const p = e.parties[n];
+      p[RESULTATS[resultat]] += 1;
+      if (resultat === "victoire" && Number.isInteger(temps) && temps >= 0 && (p.meilleur === null || temps < p.meilleur)) { p.meilleur = temps; gains.record = true; }
+      compterActivite(e, jour, gains);
+      return cloturer(e, etat, gains);
+    }
+
+    /** Événements de jeu (ex. un capot) : seulement les compteurs déclarés par les badges, sans XP ni activité. */
+    function compter(etat, { compteurs = {} }) {
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      for (const [n, k] of Object.entries(compteurs)) if (COMPTEURS.includes(n) && Number.isInteger(k) && k > 0) e.compteurs[n] += k;
+      return cloturer(e, etat, gains);
+    }
+
+    function enregistrerDefi(etat, { jour }) {
+      const e = copie(etat), gains = { xp: 0, objectif: false };
+      if (!e.defis.includes(jour)) { e.defis = [...e.defis, jour].slice(-MAX_JOURS); e.xp += XP.defi; gains.xp += XP.defi; }
+      return cloturer(e, etat, gains);
+    }
+
+    function regler(etat, { objectif, embleme, libre }) {
+      const e = copie(etat);
+      if (OBJECTIFS.includes(objectif)) e.objectif = objectif;
+      if (emblemesDisponibles(etat).includes(embleme)) e.embleme = embleme;
+      if (typeof libre === "boolean") e.libre = libre;
+      return e;
+    }
+
+    /* ---------- Lectures ---------- */
+    function revisionsDues(etat, jour) {
+      return Object.entries(etat.cartes)
+        .filter(([, c]) => c.prochaine <= jour)
+        .sort(([, a], [, b]) => a.prochaine.localeCompare(b.prochaine) || a.boite - b.boite)
+        .map(([id]) => id);
+    }
+    function forces(etat) {
+      return Object.entries(parcours.themes).map(([id, nom]) => {
+        const t = etat.themes[id] ?? { essais: 0, premiers: 0 };
+        return { id, nom, essais: t.essais, taux: t.essais >= 3 ? t.premiers / t.essais : null };
+      });
+    }
+    /** Série encore valable aujourd'hui (elle est cassée si le dernier jour actif est avant-hier ou plus ancien). */
+    const serieActuelle = (e, jour) => (e.dernierJour === jour || e.dernierJour === ajouterJours(jour, -1) ? e.serie : 0);
+    /** Activité des `n` derniers jours, du plus ancien au plus récent. */
+    const activite = (e, jour, n = 7) => Array.from({ length: n }, (_, k) => { const j = ajouterJours(jour, k - n + 1); return { jour: j, exercices: e.jours[j] ?? 0 }; });
+
+    function defiDuJour(etat, jour) {
+      // Liste commune, indépendante de la progression : vraiment le même défi pour tout le monde le même jour.
+      const candidats = [...exercices.entries()].filter(([, x]) => x.exo.type !== "qcm").map(([id]) => id);
+      if (!candidats.length) return null;
+      return { id: candidats[hacher(jour) % candidats.length], fait: etat.defis.includes(jour) };
+    }
+
+    /** Conseil personnalisé : réviser, retravailler un point faible, avancer, se perfectionner, ou jouer. */
+    function recommandation(etat, jour) {
+      const dues = revisionsDues(etat, jour);
+      const ouvertes = toutesLecons.filter((l) => leconDebloquee(etat, l.id));
+      if (dues.length >= 3) return { type: "revision", nombre: dues.length, texte: `${dues.length} stratégies t'attendent pour une révision : c'est le meilleur moyen de les retenir pour toujours.` };
+      const faibles = forces(etat).filter((f) => f.taux !== null && f.taux < 0.6).sort((a, b) => a.taux - b.taux);
+      for (const f of faibles) {
+        const lecon = ouvertes.filter((l) => l.theme === f.id).sort((a, b) => (etat.lecons[a.id]?.etoiles ?? 0) - (etat.lecons[b.id]?.etoiles ?? 0))[0];
+        if (lecon && (etat.lecons[lecon.id]?.etoiles ?? 0) < 3) return { type: "faiblesse", lecon: lecon.id, theme: f.id, texte: `Ton point à travailler : ${f.nom.toLowerCase()} (${Math.round(f.taux * 100)} % réussi du premier coup). Refais « ${lecon.titre} ».` };
+      }
+      const suivante = ouvertes.find((l) => !etat.lecons[l.id]);
+      if (suivante) return { type: "suite", lecon: suivante.id, texte: Object.keys(etat.lecons).length ? `Prochaine étape : « ${suivante.titre} ».` : `Bienvenue ! Commence par « ${suivante.titre} ».` };
+      if (dues.length) return { type: "revision", nombre: dues.length, texte: `${dues.length} révision${dues.length > 1 ? "s" : ""} pour garder tes stratégies en tête.` };
+      const aPerfectionner = ouvertes.find((l) => etat.lecons[l.id].etoiles < 3);
+      if (aPerfectionner) return { type: "perfection", lecon: aPerfectionner.id, texte: `Vise les 3 étoiles sur « ${aPerfectionner.titre} ».` };
+      if (gradesObtenus(etat) < parcours.grades.length) {
+        const g = parcours.grades[gradesObtenus(etat)];
+        return { type: "suite", lecon: g.lecons.find((l) => !etat.lecons[l.id])?.id ?? g.lecons[0].id, texte: `Termine le grade ${g.nom} pour progresser.` };
+      }
+      return { type: "jouer", texte: parcours.conseilFinal ?? "Tu as tout appris ! Mets tes stratégies en pratique en jouant." };
+    }
+
+    /** Règles de gain d'XP, pour les expliquer au joueur (transparence de la gamification). */
+    function reglesXP() {
+      const regles = [
+        ["Exercice réussi du premier coup", XP.parfait], ["Exercice réussi après une erreur", XP.reussi], ["Exercice réussi avec un indice", XP.avecIndice],
+        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi du jour réussi", XP.defi]
+      ];
+      for (const [, n] of Object.entries(NIVEAUX_PARTIE)) {
+        for (const [r, xp] of Object.entries(n.xp)) regles.push([`Partie ${n.nom} : ${{ victoire: "victoire", nulle: "nulle", defaite: "défaite" }[r]}`, xp]);
+      }
+      return regles.map(([texte, xp]) => ({ texte, xp }));
+    }
+
+    return Object.freeze({
+      parcours, EMBLEMES, BADGES: BADGES.map(({ avance, ...b }) => b), NIVEAUX_PARTIE, lecons, exercices,
+      etatInitial, normaliser, niveau, gradesObtenus, titre, leconDebloquee, emblemesDisponibles, badges,
+      enregistrerExercice, terminerLecon, enregistrerPartie, enregistrerDefi, compter, regler,
+      revisionsDues, forces, serieActuelle, activite, defiDuJour, recommandation, reglesXP
+    });
+  }
+
+  /** Niveau n atteint à 50 × n × (n − 1) XP : 0, 100, 300, 600, 1000… (chaque niveau demande un peu plus). */
+  function niveau(xp) {
+    let n = 1;
+    while (50 * (n + 1) * n <= xp) n += 1;
+    const debut = 50 * n * (n - 1), fin = 50 * (n + 1) * n;
+    return { niveau: n, xpDansNiveau: xp - debut, xpPourNiveau: fin - debut };
+  }
+
+  return Object.freeze({ XP, INTERVALLES, OBJECTIFS, ajouterJours, exoId, etoiles, niveau, creer });
+})();
+</script>
+<script id="academie-jeux" data-inclure="gabarit/jeux/academie.js">
+/* Interface commune de l'Académie des jeux (ADR 0014, 0015) : synthèse, parcours, séances d'exercices et page
+   « Ma progression ». Les exercices propres à un jeu (échiquier, grille…) sont fournis par des adaptateurs.
+   Module partagé, recopié dans chaque page par `npm run build` : modifier ce fichier, jamais sa copie dans une page.
+   Contenu affiché uniquement par textContent et createElement (jamais innerHTML). */
+const VueAcademie = (() => {
+  "use strict";
+
+  function el(balise, attributs = {}, ...enfants) {
+    const n = document.createElement(balise);
+    for (const [k, v] of Object.entries(attributs)) {
+      if (v === false || v === null || v === undefined) continue;
+      if (k === "texte") n.textContent = v; else if (k === "classe") n.className = v; else n.setAttribute(k, v === true ? "" : v);
+    }
+    n.append(...enfants.filter((x) => x !== null && x !== undefined && x !== false));
+    return n;
+  }
+  const etoilesTexte = (n) => `${"★".repeat(n)}${"☆".repeat(3 - n)}`;
+  const pluriel = (n, mot) => `${n} ${mot}${n > 1 ? "s" : ""}`;
+  const jourLocal = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const dateCourte = (jour) => `${jour.slice(8, 10)}/${jour.slice(5, 7)}`;
+  const JOURS = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
+  const nomJour = (jour) => { const [a, m, j] = jour.split("-").map(Number); return JOURS[new Date(a, m - 1, j).getDay()]; };
+  const formaterTemps = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+
+  function barre(actuel, cible, libelle) {
+    const b = el("div", { classe: "barre", role: "progressbar", "aria-label": libelle, "aria-valuemin": 0, "aria-valuemax": cible, "aria-valuenow": actuel }, el("span"));
+    b.firstChild.style.width = `${cible ? Math.round((100 * actuel) / cible) : 0}%`;
+    return b;
+  }
+
+  /**
+   * Monte l'Académie dans un panneau d'onglet.
+   * - progression : API créée par ProgressionJeux.creer(parcours)
+   * - embleme(id) : nœud affichant un emblème (pièce d'échecs, symbole…)
+   * - adaptateurs : { type: (outils) => ({ element, demarrer(exo), consigne?(exo), indice(exo), arreter?() }) }
+   *   où outils = { reussir(), erreur(message?), retour(texte, classe) }
+   */
+  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal }) {
+    const parcours = P.parcours;
+    let etat = P.normaliser(stockage.lire(cle));
+    let session = null, ex = null, confirmationEffacement = false;
+    const sauver = () => { stockage.ecrire(cle, etat); publier(); };
+    const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
+      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); },
+      resumer() {
+        z.stockage.hidden = true;
+        const lecons = parcours.grades.flatMap((g) => g.lecons);
+        return {
+          genre: "jeux", etat,
+          xp: etat.xp, niveau: P.niveau(etat.xp).niveau,
+          etoiles: Object.values(etat.lecons).reduce((s, l) => s + l.etoiles, 0), etoilesTotal: lecons.length * 3,
+          lecons: Object.keys(etat.lecons).length, leconsTotal: lecons.length,
+          grades: P.gradesObtenus(etat), gradesTotal: parcours.grades.length,
+          serie: P.serieActuelle(etat, jour()), dernierJour: etat.dernierJour, revisions: etat.revisions,
+          victoires: Object.values(etat.parties).reduce((s, p) => s + p.victoires, 0),
+          badges: P.badges(etat)
+        };
+      }
+    });
+
+    /* ---------- Squelette ---------- */
+    const toast = el("p", { classe: "toast", "data-sortie": "toast", role: "status", "aria-live": "polite" });
+    const vues = { accueil: el("div", { "data-vue": "accueil" }), detail: el("div", { "data-vue": "detail", hidden: true }), session: el("div", { "data-vue": "session", hidden: true }) };
+    panneau.append(toast, vues.accueil, vues.detail, vues.session);
+
+    // Synthèse
+    const synthese = el("section", { classe: "carte synthese", "aria-labelledby": "academie-titre" });
+    const z = {}; // zones mises à jour
+    z.embleme = el("div", { classe: "synthese-embleme", "aria-hidden": "true" });
+    z.titre = el("h2", { id: "academie-titre", tabindex: "-1", "data-sortie": "titre" });
+    z.niveau = el("p", { classe: "doux", "data-sortie": "niveau" });
+    z.barre = el("div");
+    z.chips = el("ul", { classe: "chips", "aria-label": "En bref", "data-sortie": "stats" });
+    z.conseil = el("p", { classe: "conseil-texte", "data-sortie": "conseil" });
+    z.actionConseil = el("button", { type: "button", classe: "action", "data-action": "conseil" });
+    z.reviser = el("button", { type: "button", classe: "secondaire", "data-action": "reviser" });
+    z.defi = el("button", { type: "button", classe: "secondaire", "data-action": "defi" });
+    z.prochainBadge = el("p", { classe: "prochain-badge", "data-sortie": "prochain-badge" });
+    const boutonDetail = el("button", { type: "button", classe: "lien", "data-action": "detail", texte: "📊 Ma progression détaillée →" });
+    synthese.append(
+      el("div", { classe: "synthese-tete" }, z.embleme, el("div", { classe: "synthese-identite" }, z.titre, z.niveau, z.barre), boutonDetail),
+      z.chips,
+      el("div", { classe: "conseil" }, el("p", { classe: "conseil-titre", texte: "✨ Pour toi aujourd'hui" }), z.conseil,
+        el("div", { classe: "boutons" }, z.actionConseil, z.reviser, z.defi)),
+      z.prochainBadge);
+    z.parcours = el("ol", { classe: "parcours", "aria-label": "Parcours" });
+    z.stockage = el("p", { classe: "doux", hidden: stockageDisponible, texte: "Ici, ta progression ne peut pas être gardée : ouvre la page en plein écran pour la conserver sur ton appareil." });
+    vues.accueil.append(synthese, el("h2", { texte: "🗺️ Ton parcours, du débutant au pro" }), z.parcours, z.stockage);
+
+    // Page détaillée
+    const retourDetail = el("button", { type: "button", classe: "secondaire", "data-action": "retour", texte: "← Retour à l'Académie" });
+    z.detailTitre = el("h2", { tabindex: "-1", texte: "📊 Ma progression", "data-sortie": "detail-titre" });
+    const section = (titre, ...contenu) => el("section", { classe: "carte detail-section" }, el("h3", { texte: titre }), ...contenu);
+    z.dNiveau = el("div", { "data-sortie": "detail-niveau" }); z.dRegles = el("table", { classe: "regles-xp" });
+    z.dGrades = el("ol", { classe: "grades-liste" });
+    z.dBadges = el("ul", { classe: "badges", "data-sortie": "badges" });
+    z.dRegularite = el("div", { "data-sortie": "regularite" }); z.dActivite = el("ol", { classe: "activite", "aria-label": "Activité des 7 derniers jours", "data-sortie": "activite" });
+    z.dCarnet = el("ul", { classe: "carnet", "data-sortie": "carnet" });
+    z.dForces = el("ul", { classe: "forces" }); z.dParties = el("ul", { classe: "parties", "data-sortie": "parties" });
+    z.dReglages = el("div");
+    vues.detail.append(retourDetail, z.detailTitre,
+      section("⬆️ Niveau et XP", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner de l'XP ?" }), z.dRegles)),
+      section("🎖️ Grades", el("p", { classe: "doux", texte: "Chaque grade obtenu ouvre le suivant et un nouvel emblème." }), z.dGrades),
+      section("🏅 Badges", z.dBadges),
+      section("🔥 Régularité", z.dRegularite, z.dActivite),
+      section("📒 Carnet de stratégies", el("p", { classe: "doux", texte: "Chaque stratégie apprise revient en révision, de plus en plus espacée quand tu la réussis." }), z.dCarnet),
+      section("📈 Points forts et points faibles", z.dForces, z.dParties),
+      section("⚙️ Réglages", z.dReglages));
+
+    // Séance
+    z.fil = el("p", { classe: "doux fil", "data-sortie": "fil" });
+    z.sTitre = el("h2", { tabindex: "-1", "data-sortie": "session-titre" });
+    z.sTexte = el("p");
+    z.retenir = el("p", { "data-sortie": "retenir" });
+    z.zoneRetenir = el("div", { classe: "a-retenir" }, el("strong", { texte: "📌 À retenir" }), z.retenir);
+    z.progression = el("p", { classe: "progression", "data-sortie": "progression" });
+    z.consigne = el("p", { classe: "consigne", "data-sortie": "consigne" });
+    z.qcm = el("ul", { classe: "qcm", hidden: true });
+    z.zoneJeu = el("div", { classe: "zone-exercice" });
+    z.retour = el("p", { classe: "message", role: "status", "aria-live": "polite", "data-sortie": "retour" });
+    z.indice = el("button", { type: "button", classe: "secondaire", "data-action": "indice", texte: "💡 Indice" });
+    z.suivant = el("button", { type: "button", classe: "action", "data-action": "suivant", hidden: true });
+    z.exercice = el("div", { classe: "carte" }, z.progression, z.consigne, z.zoneJeu, z.qcm, z.retour, el("div", { classe: "boutons" }, z.indice, z.suivant));
+    z.bTitre = el("h2", { tabindex: "-1", "data-sortie": "bilan-titre" }); z.bTexte = el("p", { "data-sortie": "bilan-texte" });
+    z.bSuite = el("button", { type: "button", classe: "action", "data-action": "bilan-suite", hidden: true });
+    const bRetour = el("button", { type: "button", classe: "secondaire", "data-action": "bilan-retour", texte: "Retour à l'Académie" });
+    z.bilan = el("div", { classe: "carte bilan", hidden: true }, z.bTitre, z.bTexte, el("div", { classe: "boutons" }, z.bSuite, bRetour));
+    const retourSession = el("button", { type: "button", classe: "secondaire", "data-action": "retour", texte: "← Retour à l'Académie" });
+    vues.session.append(retourSession, z.fil, z.sTitre, z.sTexte, z.zoneRetenir, z.exercice, z.bilan);
+
+    /* ---------- Gains ---------- */
+    function appliquer({ etat: nouvel, gains }) {
+      etat = nouvel; sauver();
+      const morceaux = [];
+      if (gains.xp) morceaux.push(`+${gains.xp} XP`);
+      if (gains.record) morceaux.push("⏱️ Nouveau record");
+      if (gains.objectif) morceaux.push("🎯 Objectif du jour atteint");
+      if (gains.niveauApres > gains.niveauAvant) morceaux.push(`⬆️ Niveau ${gains.niveauApres} !`);
+      if (gains.gradesApres > gains.gradesAvant) morceaux.push(`🎖️ Grade ${parcours.grades[gains.gradesApres - 1].nom} obtenu : nouvel emblème disponible`);
+      for (const b of gains.badges) morceaux.push(`${b.icone} Badge « ${b.nom} »`);
+      if (morceaux.length) toast.textContent = morceaux.join(" · ");
+      return gains;
+    }
+
+    function montrer(nom) {
+      for (const [k, v] of Object.entries(vues)) v.hidden = k !== nom;
+      if (nom !== "session") { session?.adaptateur?.arreter?.(); session = null; ex = null; }
+      if (nom === "accueil") afficherAccueil();
+      if (nom === "detail") afficherDetail();
+      ({ accueil: z.titre, detail: z.detailTitre, session: z.sTitre })[nom].focus();
+    }
+
+    /* ---------- Synthèse et parcours ---------- */
+    function afficherAccueil() {
+      const j = jour(), niv = P.niveau(etat.xp), grades = P.gradesObtenus(etat), tous = P.badges(etat);
+      z.embleme.replaceChildren(embleme(etat.embleme));
+      z.titre.textContent = P.titre(etat);
+      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} XP · encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}`;
+      z.barre.replaceChildren(barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"));
+      const aujourdhui = etat.jours[j] ?? 0, serie = P.serieActuelle(etat, j);
+      z.chips.replaceChildren(...[
+        `🔥 ${pluriel(serie, "jour")} de suite`,
+        `🎯 Aujourd'hui : ${Math.min(aujourdhui, etat.objectif)} / ${etat.objectif}${aujourdhui >= etat.objectif ? " ✓" : ""}`,
+        `🎖️ Grades : ${grades} / ${parcours.grades.length}`,
+        `🏅 Badges : ${tous.filter((b) => b.obtenu).length} / ${tous.length}`
+      ].map((t) => el("li", { texte: t })));
+      const conseil = P.recommandation(etat, j);
+      z.conseil.textContent = conseil.texte;
+      z.actionConseil.textContent = { revision: "Réviser maintenant", jouer: "Jouer une partie" }[conseil.type] ?? "C'est parti !";
+      z.actionConseil.onclick = () => (conseil.type === "revision" ? reviser() : conseil.type === "jouer" ? ouvrirOnglet?.("application") : ouvrirLecon(conseil.lecon));
+      const dues = P.revisionsDues(etat, j);
+      z.reviser.textContent = `🧠 Révisions (${dues.length})`; z.reviser.disabled = dues.length === 0;
+      const defi = P.defiDuJour(etat, j);
+      z.defi.textContent = defi?.fait ? "⚡ Défi du jour relevé ✓" : `⚡ Défi du jour (+${ProgressionJeux.XP.defi} XP)`;
+      z.defi.disabled = !defi || defi.fait;
+      // Prochain badge : celui qui est le plus près d'être gagné.
+      const prochain = tous.filter((b) => !b.obtenu).sort((a, b) => b.actuel / b.cible - a.actuel / a.cible)[0];
+      z.prochainBadge.replaceChildren(...(prochain ? [el("span", { classe: "doux", texte: "Prochain badge : " }),
+        el("strong", { texte: `${prochain.icone} ${prochain.nom}` }), el("span", { texte: ` — ${prochain.description} (${prochain.actuel} / ${prochain.cible})` })]
+        : [el("strong", { texte: "🏆 Tous les badges sont gagnés. Bravo !" })]));
+      // Parcours
+      z.parcours.replaceChildren(...parcours.grades.map((g, gi) => {
+        const faites = g.lecons.filter((l) => etat.lecons[l.id]).length, ouvert = P.leconDebloquee(etat, g.lecons[0].id);
+        const etatGrade = faites === g.lecons.length ? "✓ obtenu" : ouvert ? `${faites} / ${g.lecons.length}` : `🔒 termine le grade ${parcours.grades[gi - 1].nom}`;
+        return el("li", { classe: `grade${ouvert ? "" : " verrouille"}`, "data-grade": g.id },
+          el("div", { classe: "grade-entete" }, el("span", { classe: "grade-embleme", "aria-hidden": "true" }, embleme(g.embleme)),
+            el("div", {}, el("h3", { texte: `${gi + 1}. ${g.nom}` }), el("p", { classe: "doux", texte: g.sousTitre })),
+            el("span", { classe: "grade-etat", texte: etatGrade })),
+          el("ul", { classe: "lecons" }, ...g.lecons.map((l) => {
+            const fait = etat.lecons[l.id], libre = P.leconDebloquee(etat, l.id);
+            const b = el("button", { type: "button", classe: `lecon${fait ? " faite" : ""}`, "data-lecon": l.id, disabled: !libre,
+              "aria-label": `${l.titre}, ${parcours.themes[l.theme]}, ${fait ? `${pluriel(fait.etoiles, "étoile")} sur 3` : libre ? "à faire" : "verrouillée"}` },
+              el("span", { classe: "lecon-titre", texte: l.titre }), el("span", { classe: "lecon-theme", texte: parcours.themes[l.theme] }),
+              el("span", { classe: "lecon-etoiles", "aria-hidden": "true", texte: fait ? etoilesTexte(fait.etoiles) : libre ? "Nouveau" : "🔒" }));
+            b.addEventListener("click", () => ouvrirLecon(l.id));
+            return el("li", {}, b);
+          })));
+      }));
+    }
+
+    /* ---------- Page détaillée « Ma progression » ---------- */
+    function afficherDetail() {
+      const j = jour(), niv = P.niveau(etat.xp), obtenus = P.gradesObtenus(etat);
+      z.dNiveau.replaceChildren(
+        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} XP au total · ${P.titre(etat)}` })),
+        barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"),
+        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} XP : encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}.` }));
+      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp} XP` })))));
+      z.dGrades.replaceChildren(...parcours.grades.map((g, gi) => {
+        const faites = g.lecons.filter((l) => etat.lecons[l.id]).length;
+        const statut = gi < obtenus ? "✓ obtenu" : gi === obtenus ? `en cours : ${faites} / ${g.lecons.length} leçons` : "🔒 à venir";
+        return el("li", { classe: gi < obtenus ? "obtenu" : gi === obtenus ? "en-cours" : "verrouille" },
+          el("span", { classe: "grade-embleme", "aria-hidden": "true" }, embleme(g.embleme)),
+          el("strong", { texte: g.nom }), el("span", { classe: "doux", texte: ` — ${g.sousTitre} · ${statut}` }));
+      }));
+      const tous = P.badges(etat);
+      z.dBadges.replaceChildren(...[...tous.filter((b) => b.obtenu), ...tous.filter((b) => !b.obtenu)].map((b) => el("li", { classe: b.obtenu ? "obtenu" : "verrouille" },
+        el("span", { classe: "badge-icone", "aria-hidden": "true", texte: b.obtenu ? b.icone : "🔒" }),
+        el("strong", { texte: b.nom }),
+        el("span", { classe: "doux", texte: `${b.obtenu ? "✓ Gagné : " : "À gagner : "}${b.description}` }),
+        b.obtenu || b.cible <= 1 ? null : barre(b.actuel, b.cible, `${b.nom} : ${b.actuel} sur ${b.cible}`))));
+      const serie = P.serieActuelle(etat, j);
+      z.dRegularite.replaceChildren(el("p", { texte: `Série actuelle : ${pluriel(serie, "jour")} · record : ${pluriel(etat.serieMax, "jour")} · objectif du jour : ${pluriel(etat.objectif, "exercice")} (atteint ${etat.objectifsAtteints} fois).` }));
+      z.dActivite.replaceChildren(...P.activite(etat, j).map((a) => {
+        const atteint = a.exercices >= etat.objectif;
+        return el("li", { classe: atteint ? "atteint" : a.exercices ? "actif" : "", "aria-label": `${nomJour(a.jour)} ${dateCourte(a.jour)} : ${pluriel(a.exercices, "activité")}${atteint ? ", objectif atteint" : ""}` },
+          el("span", { classe: "jour", texte: nomJour(a.jour) }), el("span", { classe: "compte", texte: atteint ? "✓" : String(a.exercices) }));
+      }));
+      const apprises = parcours.grades.flatMap((g) => g.lecons).filter((l) => etat.lecons[l.id]);
+      z.dCarnet.replaceChildren(...(apprises.length ? apprises.map((l) => {
+        const cartes = l.exercices.map((_, k) => etat.cartes[ProgressionJeux.exoId(l, k)]).filter(Boolean);
+        const maitrise = cartes.length && cartes.every((c) => c.boite >= 4);
+        const prochaine = cartes.map((c) => c.prochaine).sort()[0];
+        const quand = maitrise ? "✓ maîtrisée" : !prochaine ? "à revoir demain" : prochaine <= j ? "à réviser aujourd'hui" : `à revoir le ${dateCourte(prochaine)}`;
+        return el("li", {}, el("strong", { texte: `${etoilesTexte(etat.lecons[l.id].etoiles)} ${l.titre}` }), el("span", { classe: "doux", texte: quand ? ` · ${quand}` : "" }), el("p", { texte: l.retenir }));
+      }) : [el("li", { classe: "doux", texte: "Termine une leçon : sa stratégie s'ajoute ici, pour la relire et la réviser." })]));
+      z.dForces.replaceChildren(...P.forces(etat).map((f) => el("li", {}, el("span", { texte: f.nom }),
+        f.taux === null
+          ? el("span", { classe: "doux", texte: f.essais ? `${pluriel(f.essais, "essai")} : encore un peu de pratique` : "pas encore travaillé" })
+          : el("span", { classe: "jauge", role: "img", "aria-label": `${Math.round(f.taux * 100)} % réussi du premier coup sur ${f.essais} essais` },
+            Object.assign(el("span"), { style: `width:${Math.round(f.taux * 100)}%` }), el("b", { texte: `${Math.round(f.taux * 100)} %` })))));
+      z.dParties.replaceChildren(...Object.entries(P.NIVEAUX_PARTIE).map(([id, n]) => {
+        const p = etat.parties[id], nulles = n.xp.nulle !== undefined ? ` · ${pluriel(p.nulles, "nulle")}` : "";
+        return el("li", { texte: `${n.nom} : ${pluriel(p.victoires, "victoire")}${nulles} · ${pluriel(p.defaites, "défaite")}${p.meilleur !== null ? ` · record ${formaterTemps(p.meilleur)}` : ""}` });
+      }));
+      afficherReglages();
+    }
+
+    function afficherReglages() {
+      const objectif = el("fieldset", { classe: "choix" }, el("legend", { texte: "Mon objectif du jour" }), ...ProgressionJeux.OBJECTIFS.map((n) => {
+        const r = el("input", { type: "radio", name: "objectif", value: n, checked: etat.objectif === n });
+        r.addEventListener("change", () => { etat = P.regler(etat, { objectif: n }); sauver(); afficherDetail(); });
+        return el("label", {}, r, pluriel(n, "exercice"));
+      }));
+      const dispo = P.emblemesDisponibles(etat);
+      const emblemes = el("fieldset", { classe: "choix emblemes" }, el("legend", { texte: "Mon emblème (un nouveau à chaque grade)" }), ...P.EMBLEMES.map((id, i) => {
+        const ouvert = dispo.includes(id), g = parcours.grades[i];
+        const r = el("input", { type: "radio", name: "embleme", value: id, disabled: !ouvert, checked: etat.embleme === id, "aria-label": ouvert ? `Emblème ${g.nom}` : `Emblème ${g.nom}, verrouillé` });
+        r.addEventListener("change", () => { etat = P.regler(etat, { embleme: id }); sauver(); afficherDetail(); });
+        return el("label", { classe: ouvert ? "" : "verrouille", title: ouvert ? g.nom : `Grade ${parcours.grades[i - 1]?.nom} à obtenir` }, r, embleme(id));
+      }));
+      const libre = el("input", { type: "checkbox", name: "libre", checked: etat.libre });
+      libre.addEventListener("change", () => { etat = P.regler(etat, { libre: libre.checked }); sauver(); afficherDetail(); });
+      const effacer = el("button", { type: "button", classe: "secondaire danger", "data-action": "effacer", texte: confirmationEffacement ? "Confirmer : tout effacer" : "🗑️ Effacer ma progression" });
+      effacer.addEventListener("click", () => {
+        if (!confirmationEffacement) { confirmationEffacement = true; afficherReglages(); z.dReglages.querySelector('[data-action="effacer"]').focus(); return; }
+        confirmationEffacement = false; etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
+      });
+      z.dReglages.replaceChildren(objectif, emblemes,
+        el("label", { classe: "case-a-cocher" }, libre, "Je connais déjà les bases : ouvrir toutes les leçons"),
+        el("p", { classe: "doux", texte: "Ta progression reste sur cet appareil. Elle ne contient aucune donnée personnelle." }), effacer);
+    }
+
+    /* ---------- Séances : leçon, révisions, défi du jour ---------- */
+    const instances = {};
+    const outils = {
+      reussir: () => terminerExercice(),
+      erreur: (message) => {
+        ex.erreurs += 1;
+        retour(message ?? (ex.erreurs >= 2 ? `Pas tout à fait. Indice : ${ex.exo.indice ?? "relis bien la question."}` : "Pas tout à fait : essaie encore !"), "ko");
+      },
+      retour: (texte, classe = "") => retour(texte, classe)
+    };
+    function adaptateur(type) {
+      if (!adaptateurs[type]) throw new Error(`type d'exercice inconnu : ${type}`);
+      if (!instances[type]) { instances[type] = adaptateurs[type](outils); z.zoneJeu.appendChild(instances[type].element); }
+      return instances[type];
+    }
+    function retour(texte, classe) { z.retour.textContent = texte; z.retour.className = `message ${classe}`; }
+
+    function ouvrirLecon(id) {
+      const info = P.lecons.get(id);
+      if (!info || !P.leconDebloquee(etat, id)) return;
+      demarrerSession("lecon", info.lecon.exercices.map((_, k) => ProgressionJeux.exoId(info.lecon, k)), info.lecon);
+    }
+    function reviser() {
+      const dues = P.revisionsDues(etat, jour()).slice(0, 8);
+      if (dues.length) demarrerSession("revision", dues);
+    }
+    function demarrerSession(mode, file, lecon = null) {
+      session = { mode, file, lecon, rang: 0, erreurs: 0, indices: 0 };
+      const grade = lecon && P.lecons.get(lecon.id).grade;
+      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi du jour" : "Révisions espacées";
+      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi du jour" : "🧠 Tes révisions";
+      z.sTexte.textContent = mode === "lecon" ? lecon.texte
+        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} XP de plus !`
+        : "Retrouve la bonne réponse sans aide. Chaque réussite repousse la prochaine révision : c'est comme ça qu'on retient pour toujours.";
+      z.zoneRetenir.hidden = mode !== "lecon";
+      z.retenir.textContent = lecon?.retenir ?? "";
+      z.exercice.hidden = false; z.bilan.hidden = true;
+      toast.textContent = "";
+      montrer("session");
+      demarrerExercice();
+    }
+
+    function demarrerExercice() {
+      const id = session.file[session.rang], { exo, lecon } = P.exercices.get(id);
+      session.adaptateur?.arreter?.();
+      ex = { id, exo, lecon, erreurs: 0, indice: false, fini: false };
+      z.progression.textContent = `${session.mode === "lecon" ? "Exercice" : `${lecon.titre} ·`} ${session.rang + 1} / ${session.file.length}`;
+      retour("", "");
+      z.suivant.hidden = true; z.indice.hidden = false; z.indice.disabled = false;
+      const qcm = exo.type === "qcm";
+      for (const [type, inst] of Object.entries(instances)) inst.element.hidden = qcm || type !== exo.type;
+      z.qcm.hidden = !qcm;
+      if (qcm) {
+        session.adaptateur = null;
+        z.consigne.textContent = exo.question;
+        z.indice.textContent = "💡 Retirer une mauvaise réponse";
+        z.qcm.replaceChildren(...exo.choix.map((texte, i) => {
+          const b = el("button", { type: "button", classe: "choix-qcm", "data-choix": i, texte });
+          b.addEventListener("click", () => repondreQcm(i));
+          return el("li", {}, b);
+        }));
+      } else {
+        const a = adaptateur(exo.type);
+        a.element.hidden = false;
+        session.adaptateur = a;
+        z.consigne.textContent = a.consigne ? a.consigne(exo) : exo.consigne;
+        z.indice.textContent = "💡 Indice";
+        a.demarrer(exo);
+      }
+    }
+
+    function repondreQcm(i) {
+      if (ex.fini) return;
+      const b = z.qcm.querySelector(`[data-choix="${i}"]`);
+      if (i !== ex.exo.bonne) { b.disabled = true; b.dataset.etat = "faux"; b.textContent = `✗ ${ex.exo.choix[i]}`; outils.erreur(); return; }
+      b.dataset.etat = "juste"; b.textContent = `✓ ${ex.exo.choix[i]}`;
+      for (const autre of z.qcm.querySelectorAll("button")) autre.disabled = true;
+      terminerExercice();
+    }
+
+    z.indice.addEventListener("click", () => {
+      if (!ex || ex.fini) return;
+      ex.indice = true; z.indice.disabled = true;
+      if (ex.exo.type === "qcm") {
+        const faux = [...z.qcm.querySelectorAll("button:not(:disabled)")].find((b) => Number(b.dataset.choix) !== ex.exo.bonne);
+        if (faux) { faux.disabled = true; faux.dataset.etat = "retire"; faux.textContent = `— ${faux.textContent}`; }
+        retour("Une mauvaise réponse a été retirée.", "");
+        return;
+      }
+      retour(`Indice : ${ex.exo.indice}`, "");
+      session.adaptateur.indice(ex.exo);
+    });
+
+    function terminerExercice() {
+      if (ex.fini) return;
+      ex.fini = true;
+      const j = jour();
+      session.erreurs += ex.erreurs; session.indices += ex.indice ? 1 : 0;
+      appliquer(P.enregistrerExercice(etat, { id: ex.id, erreurs: ex.erreurs, indice: ex.indice, jour: j, revision: session.mode === "revision" }));
+      if (session.mode === "defi") appliquer(P.enregistrerDefi(etat, { jour: j }));
+      const rappel = session.mode !== "lecon" ? ` À retenir : ${ex.lecon.retenir}` : "";
+      retour(`${ex.erreurs === 0 && !ex.indice ? "Parfait ! " : "Réussi ! "}${ex.exo.explication}${rappel}`, "ok");
+      z.indice.hidden = true;
+      const fin = session.rang === session.file.length - 1;
+      z.suivant.textContent = fin ? "Voir le bilan" : "Exercice suivant";
+      z.suivant.hidden = false;
+      z.suivant.focus();
+    }
+    z.suivant.addEventListener("click", () => {
+      if (session.rang < session.file.length - 1) { session.rang += 1; demarrerExercice(); return; }
+      afficherBilan();
+    });
+
+    function afficherBilan() {
+      session.adaptateur?.arreter?.();
+      z.exercice.hidden = true; z.bilan.hidden = false;
+      const j = jour();
+      if (session.mode === "lecon") {
+        const n = ProgressionJeux.etoiles(session);
+        appliquer(P.terminerLecon(etat, { id: session.lecon.id, etoiles: n, jour: j }));
+        z.bTitre.textContent = `${etoilesTexte(n)} Leçon terminée !`;
+        z.bTexte.textContent = `${n === 3 ? "Sans faute : bravo !" : n === 2 ? "Très bien ! Refais-la plus tard pour viser les 3 étoiles." : "Leçon réussie. Refais-la pour gagner des étoiles."} La stratégie « ${session.lecon.titre} » rejoint ton carnet : elle reviendra en révision demain.`;
+      } else if (session.mode === "defi") {
+        z.bTitre.textContent = "⚡ Défi relevé !"; z.bTexte.textContent = "Reviens demain pour un nouveau défi.";
+      } else {
+        z.bTitre.textContent = "🧠 Révisions terminées";
+        z.bTexte.textContent = `${pluriel(session.file.length, "stratégie")} révisée${session.file.length > 1 ? "s" : ""}. Les bonnes réponses reviendront plus tard, les autres dès demain.`;
+      }
+      const ordre = parcours.grades.flatMap((g) => g.lecons);
+      const prochaine = session.mode === "lecon" ? ordre.slice(ordre.findIndex((l) => l.id === session.lecon.id) + 1).find((l) => P.leconDebloquee(etat, l.id) && !etat.lecons[l.id]) : null;
+      z.bSuite.hidden = !prochaine;
+      if (prochaine) { z.bSuite.textContent = `Leçon suivante : ${prochaine.titre}`; z.bSuite.onclick = () => ouvrirLecon(prochaine.id); }
+      z.bTitre.focus();
+    }
+
+    /* ---------- Commandes ---------- */
+    z.reviser.addEventListener("click", reviser);
+    z.defi.addEventListener("click", () => { const d = P.defiDuJour(etat, jour()); if (d && !d.fait) demarrerSession("defi", [d.id]); });
+    boutonDetail.addEventListener("click", () => { confirmationEffacement = false; montrer("detail"); });
+    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => montrer("accueil"));
+
+    afficherAccueil();
+    return {
+      etat: () => etat,
+      /** Partie terminée dans l'onglet « Jouer » : enregistrée ici, et les gains sont renvoyés pour être affichés. */
+      enregistrerPartie(partie) {
+        const g = appliquer(P.enregistrerPartie(etat, { ...partie, jour: jour() }));
+        if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
+        return g;
+      },
+      /** Événements de jeu (capot, belote…) comptés pour les badges. */
+      compter(compteurs) {
+        const g = appliquer(P.compter(etat, { compteurs }));
+        if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
+        return g;
+      }
+    };
+  }
+
+  return Object.freeze({ monter, jourLocal });
 })();
 </script>
 <script>
@@ -377,20 +1379,46 @@ const MoteurPoker = (() => {
   };
   const CONFIG = { connexionActive: false, stockage: "local" };
   const stockage = Stockage[CONFIG.stockage];
+  const stockageDisponible = (() => {
+    try { localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test"); return true; }
+    catch { return false; }
+  })();
+  const PROGRESSION = ProgressionJeux.creer(JSON.parse(document.getElementById("parcours-poker-texas-holdem").textContent));
   const registre = [];
   function enregistrerOnglet(definition) { registre.push({ actif: true, ...definition }); }
   const el = (selecteur) => document.querySelector(selecteur);
   const sortie = (nom) => el(`[data-sortie="${nom}"]`);
   const symboleRang = (rang) => ({ 11: "V", 12: "D", 13: "R", 14: "A" }[rang] ?? rang);
+  const nomCarte = (carte) => `${({ 11: "valet", 12: "dame", 13: "roi", 14: "as" }[carte.rang] ?? carte.rang)} de ${{ "♣": "trèfle", "♦": "carreau", "♥": "cœur", "♠": "pique" }[carte.couleur]}`;
   const carteHtml = (carte, cachee = false) => {
     if (cachee) return '<span class="carte-jeu cachee" aria-label="Carte cachée">◆</span>';
     const rouge = carte.couleur === "♦" || carte.couleur === "♥";
-    return `<span class="carte-jeu${rouge ? " rouge" : ""}" aria-label="${symboleRang(carte.rang)} ${carte.couleur}">${symboleRang(carte.rang)}${carte.couleur}</span>`;
+    return `<span class="carte-jeu${rouge ? " rouge" : ""}" aria-label="${nomCarte(carte)}">${symboleRang(carte.rang)}${carte.couleur}</span>`;
   };
   let partie = MoteurPoker.creerPartie();
   let numero = Number(stockage.lire("numero")) || 1;
   let defiReussi = false;
+  let recompense = "";
+  let academie = null;
+  const defis = JSON.parse(document.getElementById("defis-poker").textContent);
+  let numeroDefi = 0;
+  function afficherDefi() {
+    const defi = defis[numeroDefi];
+    sortie("defi-titre").textContent = `${numeroDefi + 1} / ${defis.length} · ${defi.titre}`;
+    for (const zone of ["communes", "a", "b"]) sortie(`defi-${zone}`).innerHTML = MoteurPoker.lireCartes(defi[zone]).map((c) => carteHtml(c)).join("");
+    sortie("reponse-defi").textContent = "";
+    defiReussi = false;
+  }
+  function afficherStats() {
+    const etat = academie.etat(), parties = etat.parties.entrainement;
+    sortie("stats-jeu").replaceChildren(...[
+      `${etat.xp} XP · niveau ${PROGRESSION.niveau(etat.xp).niveau}`,
+      `${etat.compteurs.manches} manches terminées`,
+      `${parties.victoires} victoires · ${parties.nulles} égalités`
+    ].map((texte) => Object.assign(document.createElement("li"), { textContent: texte })));
+  }
   function afficher() {
+    afficherStats();
     sortie("pile-joueur").textContent = partie.joueur?.pile ?? 0;
     sortie("pile-ordi").textContent = partie.ordinateur?.pile ?? 0;
     sortie("numero").textContent = numero;
@@ -399,7 +1427,8 @@ const MoteurPoker = (() => {
     sortie("main-ordi").innerHTML = partie.statut === "terminee" && partie.resultat?.scoreOrdi
       ? partie.ordinateur.main.map((c) => carteHtml(c)).join("")
       : (partie.ordinateur?.main ?? []).map(() => carteHtml(null, true)).join("");
-    sortie("communes").innerHTML = (partie.communes ?? []).map((c) => carteHtml(c)).join("");
+    sortie("communes").innerHTML = partie.communes.map((c) => carteHtml(c)).join("") +
+      Array.from({ length: 5 - partie.communes.length }, () => '<span class="carte-jeu emplacement" aria-label="Carte commune à venir">?</span>').join("");
     sortie("mise-joueur").textContent = `Mise : ${partie.joueur?.mise ?? 0}`;
     sortie("mise-ordi").textContent = `Mise : ${partie.ordinateur?.mise ?? 0}`;
     sortie("phase").textContent = partie.statut === "en-cours" ? `${{ preflop: "Préflop", flop: "Flop", turn: "Turn", river: "River" }[partie.phase]} · ${Math.max(0, partie.miseHaute - partie.joueur.mise)} jetons à suivre`
@@ -412,15 +1441,49 @@ const MoteurPoker = (() => {
     const aPayer = Math.max(0, partie.miseHaute - (partie.joueur?.mise ?? 0));
     zone.querySelector('[data-action="coucher"]').disabled = partie.statut !== "en-cours";
     const suivre = zone.querySelector('[data-bouton="suivre"]');
-    suivre.textContent = aPayer ? `Suivre ${aPayer}` : "Parole";
+    suivre.textContent = aPayer ? `Suivre ${Math.min(aPayer, partie.joueur.pile)}${partie.joueur.pile <= aPayer ? " (tapis)" : ""}` : "Parole (gratuit)";
     suivre.dataset.action = aPayer ? "suivre" : "parole";
     suivre.disabled = partie.statut !== "en-cours";
     const relancer = zone.querySelector('[data-action="relancer"]');
     relancer.disabled = partie.statut !== "en-cours" || partie.relanceFaite || partie.joueur.pile <= aPayer || partie.ordinateur.pile < aPayer + 20;
+    const ajout = Math.min(partie.joueur.pile, aPayer + 20);
+    relancer.textContent = `${aPayer ? "Relancer de" : "Miser"} ${relancer.disabled ? 20 : ajout - aPayer}${!relancer.disabled && ajout === partie.joueur.pile ? " (tapis)" : ""}`;
+    sortie("cout-action").textContent = partie.statut === "en-cours"
+      ? `${aPayer ? `Suivre : ajouter ${Math.min(aPayer, partie.joueur.pile)} jetons. ` : "Parole : aucun jeton à ajouter. "}${relancer.disabled ? "Relance indisponible avec les piles restantes." : `Miser / relancer : ajouter ${ajout} jetons au total${ajout === partie.joueur.pile ? " (tapis)" : ""}.`}`
+      : "Les jetons du pot ont été attribués. Tu peux consulter le bilan avant de continuer.";
+    sortie("main-actuelle").textContent = partie.communes.length >= 3
+      ? `Ta combinaison actuelle : ${MoteurPoker.nomMain(MoteurPoker.evaluerMain([...partie.joueur.main, ...partie.communes]))}.`
+      : "Ta combinaison sera évaluée dès le flop.";
+    el('[data-action="conseil"]').disabled = partie.statut !== "en-cours";
     el('[data-action="nouvelle"]').hidden = partie.statut !== "terminee";
+    const finSession = partie.joueur.pile < 20 || partie.ordinateur.pile < 20;
+    el('[data-action="nouvelle"]').textContent = finSession ? "Nouvelle session · 1 000 jetons chacun" : "Manche suivante";
+    const fini = partie.statut === "terminee";
+    el('[data-zone="bilan"]').hidden = !fini;
+    if (fini) {
+      sortie("bilan-titre").textContent = finSession ? "Session terminée : une pile ne permet plus les blindes" : "Bilan de la manche";
+      const mains = sortie("meilleures-mains");
+      mains.replaceChildren();
+      if (partie.resultat.scoreJoueur) {
+        for (const [id, titre] of [["joueur", "Toi"], ["ordinateur", "Ordinateur"]]) {
+          const meilleure = MoteurPoker.meilleureMain([...partie[id].main, ...partie.communes]);
+          const description = Object.assign(document.createElement("p"), { textContent: `${titre} : ${MoteurPoker.nomMain(meilleure.score)}` });
+          const cartes = Object.assign(document.createElement("div"), { className: "cartes" });
+          cartes.innerHTML = meilleure.cartes.map((c) => carteHtml(c)).join("");
+          mains.append(description, cartes);
+        }
+      } else mains.textContent = "La manche s'est terminée par un coucher : les cartes adverses restent privées.";
+      sortie("recompense").textContent = recompense;
+    }
+    sortie("historique").replaceChildren(...partie.historique.map((texte) => Object.assign(document.createElement("li"), { textContent: texte })));
+    document.querySelectorAll("[data-phase]").forEach((etape) => {
+      if (etape.dataset.phase === partie.phase) etape.setAttribute("aria-current", "step");
+      else etape.removeAttribute("aria-current");
+    });
   }
   enregistrerOnglet({ id: "application", type: "application", titre: "Jouer", rendu: afficher, actif: true });
   enregistrerOnglet({ id: "explication", type: "explication", titre: "Règles", rendu() {} });
+  enregistrerOnglet({ id: "academie", type: "parcours", titre: "Académie", rendu() {} });
   enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: "Défi", rendu() {} });
   enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false, rendu() {} });
   const onglets = registre.filter((o) => o.actif);
@@ -437,19 +1500,38 @@ const MoteurPoker = (() => {
     if (memoriser) stockage.ecrire("onglet", id);
   }
   document.querySelector('[data-zone="actions"]').addEventListener("click", (event) => {
-    const action = event.target.closest("[data-action]")?.dataset.action;
+    const bouton = event.target.closest("[data-action]");
+    if (!bouton || bouton.disabled || partie.statut !== "en-cours") return;
+    const action = bouton.dataset.action;
     if (!action || action === "nouvelle") return;
-    try { partie = MoteurPoker.agir(partie, action); afficher(); }
-    catch (erreur) { sortie("message").textContent = erreur.message; }
+    try {
+      partie = MoteurPoker.agir(partie, action);
+      sortie("conseil-jeu").hidden = true;
+      if (partie.statut === "terminee") {
+        const resultat = { joueur: "victoire", ordinateur: "defaite", egalite: "nulle" }[partie.resultat.gagnant];
+        const gains = academie.enregistrerPartie({ resultat, niveau: "entrainement" });
+        academie.compter({ manches: 1, abattages: partie.resultat.scoreJoueur ? 1 : 0 });
+        recompense = `+${gains.xp} XP · manche enregistrée dans ton Académie.${gains.objectif ? " Objectif quotidien atteint (+20 XP inclus)." : ""}`;
+      }
+      afficher();
+      if (partie.statut === "terminee") sortie("bilan-titre").focus();
+    } catch (erreur) { sortie("message").textContent = erreur.message; sortie("message").dataset.type = "alerte"; }
+  });
+  el('[data-action="conseil"]').addEventListener("click", () => {
+    sortie("conseil-jeu").textContent = MoteurPoker.conseiller(partie.joueur.main, partie.communes, partie.miseHaute - partie.joueur.mise, partie.pot);
+    sortie("conseil-jeu").hidden = false;
   });
   el('[data-action="nouvelle"]').addEventListener("click", () => {
     const piles = partie.joueur.pile >= 20 && partie.ordinateur.pile >= 20
       ? { joueur: partie.joueur.pile, ordinateur: partie.ordinateur.pile }
       : { joueur: 1000, ordinateur: 1000 };
     partie = MoteurPoker.creerPartie(undefined, piles);
+    recompense = "";
+    sortie("conseil-jeu").hidden = true;
     numero += 1;
     stockage.ecrire("numero", numero);
     afficher();
+    el('[data-bouton="suivre"]').focus();
   });
   document.querySelectorAll("[role=tab]").forEach((tab, i, liste) => {
     tab.addEventListener("click", () => ouvrirOnglet(tab.dataset.onglet));
@@ -463,16 +1545,63 @@ const MoteurPoker = (() => {
     });
   });
   document.querySelectorAll("[data-reponse]").forEach((bouton) => bouton.addEventListener("click", () => {
-    const bon = bouton.dataset.reponse === "b";
+    const defi = defis[numeroDefi];
+    const bon = bouton.dataset.reponse === MoteurPoker.comparerSituation(defi).gagnant;
     defiReussi = bon;
     sortie("reponse-defi").textContent = bon
-      ? "Bravo ! Le joueur B a un brelan de rois, qui bat le brelan de 7 du joueur A."
-      : "Pas tout à fait : le joueur B a un brelan de rois (trois rois), plus fort que le brelan de 7.";
+      ? `Bravo ! ${defi.explication}`
+      : `Pas tout à fait. ${defi.explication}`;
     sortie("reponse-defi").dataset.type = bon ? "ok" : "alerte";
   }));
+  el('[data-action="autre-defi"]').addEventListener("click", () => {
+    numeroDefi = (numeroDefi + 1) % defis.length;
+    afficherDefi();
+    el('[data-reponse="a"]').focus();
+  });
+  function adaptateurComparaison(outils) {
+    const element = document.createElement("div");
+    let exercice = null;
+    return {
+      element,
+      consigne: (exo) => exo.question,
+      demarrer(exo) {
+        exercice = exo;
+        element.replaceChildren();
+        for (const [zone, nom] of [["communes", "Tableau"], ["a", "Joueur A"], ["b", "Joueur B"]]) {
+          element.append(Object.assign(document.createElement("p"), { textContent: nom }));
+          const cartes = Object.assign(document.createElement("div"), { className: "cartes" });
+          cartes.innerHTML = MoteurPoker.lireCartes(exo[zone]).map((c) => carteHtml(c)).join("");
+          element.append(cartes);
+        }
+        const actions = Object.assign(document.createElement("div"), { className: "actions" });
+        for (const [id, texte] of [["a", "Joueur A"], ["b", "Joueur B"], ["egalite", "Égalité"]]) {
+          const bouton = Object.assign(document.createElement("button"), { className: "secondaire", textContent: texte });
+          bouton.dataset.comparaison = id;
+          bouton.addEventListener("click", () => {
+            if (id === MoteurPoker.comparerSituation(exercice).gagnant) {
+              actions.querySelectorAll("button").forEach((b) => { b.disabled = true; });
+              outils.reussir();
+            } else outils.erreur("Compare les cinq meilleures cartes : regarde aussi les paires du tableau.");
+          });
+          actions.append(bouton);
+        }
+        element.append(actions);
+      },
+      indice() {
+        const r = MoteurPoker.comparerSituation(exercice);
+        outils.retour(`Indice : A a ${MoteurPoker.nomMain(r.scoreA)} ; B a ${MoteurPoker.nomMain(r.scoreB)}. Compare ensuite les rangs.`, "");
+      }
+    };
+  }
+  academie = VueAcademie.monter({
+    panneau: document.getElementById("panneau-academie"), progression: PROGRESSION, stockage, stockageDisponible, ouvrirOnglet,
+    embleme: (symbole) => Object.assign(document.createElement("span"), { textContent: symbole }),
+    adaptateurs: { comparaison: adaptateurComparaison }
+  });
+  afficherDefi();
   document.getElementById("connexion").hidden = !CONFIG.connexionActive;
   ouvrirOnglet(onglets.find((o) => o.id === stockage.lire("onglet"))?.id ?? "application", false);
-  window.kermiclab = { META, CONFIG, registre, poker: { etat: () => partie, defiReussi: () => defiReussi } };
+  window.kermiclab = { META, CONFIG, registre, academie, poker: { etat: () => partie, defiReussi: () => defiReussi } };
 })();
 </script>
 </body>

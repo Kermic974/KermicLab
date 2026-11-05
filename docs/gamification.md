@@ -5,7 +5,7 @@ Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (
 
 ## Synthèse
 
-L'interface commune de l'Académie, utilisée par les Échecs, le Démineur, la Belote et les Mots fléchés, propose un parcours
+L'interface commune de l'Académie, utilisée par les Échecs, le Démineur, la Belote, les Mots fléchés et le Poker Texas Hold'em, propose un parcours
 **du débutant au pro**, découpé en **grades**
 (6 aux échecs, 5 au Démineur et à la belote). Chaque grade contient des **leçons**, et chaque leçon a une explication courte, une
 stratégie **« À retenir »** et des exercices. Ce sont des QCM, ou des positions à jouer sur l'échiquier ou sur la grille,
@@ -41,7 +41,7 @@ compteurs, des identifiants de leçons et des dates.
 La rubrique « Mes trophées » rassemble les succès d'exploration et du défi express, les étoiles des notions
 du gabarit commun, les deux objectifs du mini-lab du cercle (trois angles manipulés et `sin(θ) = 1`),
 le record du Lab `trigo-cercle`, ainsi que les parcours des jeux. L'Académie commune
-(Échecs, Démineur, Belote, Mots fléchés, Pendu) remonte XP, niveau, étoiles, leçons, grades, série,
+(Échecs, Démineur, Belote, Mots fléchés, Pendu, Poker Texas Hold'em) remonte XP, niveau, étoiles, leçons, grades, série,
 révisions, victoires et tous ses badges avec leur avancement. Sudoku remonte ses grades réellement terminés
 (le premier grade ouvert n'est pas un grade obtenu) et 2048 ses objectifs de tuiles et son record.
 Les jeux sans adaptateur ne déclarent aucun résultat ; un état vide est affiché, sans inventer de réussite.
@@ -141,6 +141,11 @@ révision, la stratégie « À retenir » est rappelée.
 
 ### Exercices propres aux jeux
 
+- **Poker (`comparaison`)** : comparer les cinq meilleures cartes de deux joueurs à partir de leurs cartes privées
+  et du tableau commun. Le moteur calcule le gagnant, y compris les égalités ; les tests vérifient les situations et
+  les explications (full, quinte basse, carte de départage). Trois grades et six leçons ; une manche rapporte
+  40 / 10 / 5 XP pour victoire / égalité / défaite, jamais selon le montant misé. Les badges de pratique comptent
+  les manches et les abattages. Les défis libres sont sans XP ; le défi quotidien récompensé utilise le socle commun.
 - **Échecs (`coup`)** : trouver un coup ou une suite de coups, l'adversaire répondant automatiquement. Les pièges
   fréquents ont une explication sur mesure. Les tests rejouent chaque solution avec le moteur et vérifient qu'en tactique
   elle est le meilleur coup.
