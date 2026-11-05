@@ -32,3 +32,15 @@ test("application autonome : contrôles, défi et rendu mobile", async () => {
   assert.deepEqual(erreurs, [], "aucune erreur console ou JavaScript");
   await contexte.close();
 });
+
+test("application autonome : les liens du parcours ouvrent le mode demandé", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, `${serveur.url}/index.html?mode=explore`);
+  for (const mode of ["explore", "learn", "play"]) {
+    await page.goto(`${serveur.url}/index.html?mode=${mode}`);
+    await page.waitForFunction(() => document.querySelector("#status")?.textContent.startsWith("Prêt"));
+    assert.equal(await page.locator(`[data-tab="${mode}"]`).getAttribute("aria-selected"), "true");
+    assert.ok(await page.locator(`[data-mode~="${mode}"]:not(.hidden)`).count() > 0, `le mode ${mode} est visible`);
+  }
+  assert.deepEqual(erreurs, [], "aucune erreur console ou JavaScript");
+  await contexte.close();
+});

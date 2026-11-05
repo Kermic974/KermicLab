@@ -11,6 +11,7 @@ import { runUiChecks } from './selftest.js';
 import { compute, runCoreChecks } from '../api.js';
 
 const VERSION = '1.4.0';
+const MODES = ['explore', 'learn', 'play'];
 
 store.subscribe(function (s, meta) {
   render(s, meta);
@@ -30,6 +31,8 @@ function start() {
     '\nMoteur : ' + core.count + ' · Interface : ' + ui.count +
     (ui.skipped.length ? '\nNon exécutés : ' + ui.skipped.join(', ') : '') +
     '\nScénario 60° synchronisé.\nVersion : ' + VERSION + '\nPointer Events : ' + ('PointerEvent' in window ? 'oui' : 'non');
+  var requestedMode = new URLSearchParams(window.location.search).get('mode');
+  if (MODES.indexOf(requestedMode) >= 0) setMode(requestedMode);
 }
 
 try {

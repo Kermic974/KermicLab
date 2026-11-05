@@ -1,5 +1,5 @@
 /* KermicLab : barre latérale (desktop) → rail d'icônes (tablette) → barre inférieure (mobile).
-   Accueil = chat + reprise + suggestion ; puis matières, activités, semaine et mini-lab. */
+   Accueil = parcours guidé + mini-lab ; puis reprise, suggestion, chat et progression. */
 :root {
   --fond: #f4f5fb; --surface: #ffffff; --surface-2: #f8f9fd; --texte: #141833; --texte-2: #3d4363; --doux: #5f6585;
   --bord: #e3e6f1; --bord-fort: #d3d7e8;
@@ -175,6 +175,29 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 }
 .avertissement::before { content: "🛡️"; }
 
+/* ---------- Parcours d'accueil v3 ---------- */
+.parcours-v3 {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr); gap: 24px; align-items: center;
+  padding: clamp(20px, 3vw, 36px); border: 1px solid var(--lab-bord); border-radius: 28px;
+  background: radial-gradient(70% 100% at 100% 0%, var(--lab-doux) 0%, transparent 72%), var(--surface);
+  box-shadow: var(--ombre);
+}
+.parcours-v3-texte { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.parcours-v3-texte h2 { max-width: 620px; font-size: clamp(28px, 4vw, 44px); font-weight: 780; letter-spacing: -.04em; line-height: 1.08; }
+.parcours-v3-texte > p { max-width: 560px; color: var(--texte-2); font-size: 16px; }
+.parcours-v3-texte .parcours-defi { padding: 11px 14px; border-left: 3px solid var(--lab); border-radius: 0 10px 10px 0; background: var(--lab-doux); color: var(--lab); }
+.parcours-action { width: auto; margin: 2px 0 4px; background: var(--lab); color: var(--surface); }
+.parcours-action:hover { background: var(--lab); filter: brightness(1.08); }
+.parcours-etapes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; margin: 0; padding: 0; list-style: none; }
+.parcours-etapes a { display: flex; align-items: flex-start; gap: 8px; min-height: 70px; padding: 10px; border: 1px solid var(--bord); border-radius: 13px; background: var(--surface); color: var(--texte); text-decoration: none; }
+.parcours-etapes a:hover { border-color: var(--lab); background: var(--lab-doux); }
+.parcours-numero { color: var(--lab); font: 750 12px var(--police-math); }
+.parcours-etapes strong, .parcours-etapes small { display: block; }
+.parcours-etapes strong { font-size: 13px; }
+.parcours-etapes small { margin-top: 3px; color: var(--doux); font-size: 11px; line-height: 1.35; }
+.parcours-mini { width: 100%; min-width: 0; }
+.parcours-mini .cercle-hote { max-width: 300px; }
+
 /* ---------- Cartes génériques ---------- */
 .carte { background: var(--surface); border: 1px solid var(--bord); border-radius: var(--rayon); box-shadow: var(--ombre); }
 .tete-section { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -196,8 +219,15 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .meta span { display: inline-flex; align-items: center; gap: 5px; }
 .xp { color: var(--succes); font-weight: 700; }
 
-/* ---------- Accueil : chat + colonne ---------- */
-.accueil { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+/* ---------- Accueil : reprise et suggestion avant le chat ---------- */
+.accueil {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "resume suggestion" "chat chat";
+  gap: 20px; align-items: start;
+}
+.accueil > .chat { grid-area: chat; }
+.accueil > .colonne { display: contents; }
+.accueil .reprendre { grid-area: resume; }
+.accueil .suggestion { grid-area: suggestion; }
 .chat { display: flex; flex-direction: column; overflow: hidden; }
 .chat-entete { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--bord); }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
@@ -298,7 +328,7 @@ form#formulaire button::after { content: "➜"; font-size: 1rem; }
 .activite .bouton { margin-top: auto; align-self: flex-start; }
 
 /* ---------- Semaine + mini-lab ---------- */
-.rangee-bas { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.rangee-bas { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
 .semaine { padding: 24px 26px; display: flex; flex-direction: column; gap: 6px; }
 .chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 18px; }
 .chiffres div { padding: 14px; border-radius: var(--rayon-moyen); background: var(--surface-2); border: 1px solid var(--bord); min-width: 0; }
@@ -621,9 +651,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
-  .accueil { grid-template-columns: 1fr; }
-  .colonne { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rangee-bas { grid-template-columns: 1fr; }
+  .parcours-v3 { grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr); gap: 18px; }
+  .accueil { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
 }
 @media (max-width: 1100px) {
   :root { --laterale: 84px; }
@@ -637,9 +666,11 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .principal { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
 }
 @media (max-width: 900px) {
+  .parcours-v3 { grid-template-columns: 1fr; }
+  .parcours-mini { max-width: 620px; margin-inline: auto; }
+  .accueil { grid-template-columns: 1fr; grid-template-areas: "resume" "suggestion" "chat"; }
   .activites { grid-template-columns: 1fr; }
   .chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .colonne { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   .app { grid-template-columns: 1fr; background: none; }
@@ -649,6 +680,13 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .salut h1 { font-size: 22px; }
   .salut p { font-size: 14px; }
   .actions { width: 100%; }
+  .parcours-v3 { gap: 18px; padding: 18px; border-radius: 22px; }
+  .parcours-v3-texte h2 { font-size: 30px; }
+  .parcours-v3-texte > p { font-size: 14px; }
+  .parcours-etapes { gap: 6px; }
+  .parcours-etapes a { min-height: 76px; flex-direction: column; gap: 4px; padding: 9px 8px; }
+  .parcours-etapes small { font-size: 10px; }
+  .parcours-action { width: 100%; }
   .pastille-progres { flex: 1; justify-content: center; }
   .chat { border-radius: 18px; }
   .chat-entete { padding: 14px 16px; }
