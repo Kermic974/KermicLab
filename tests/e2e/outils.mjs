@@ -9,13 +9,13 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json" };
 
 /** Petit serveur statique pour les tests de rendu. */
-export async function servir(dossier) {
+export async function servir(dossier, { headers = {} } = {}) {
   const serveur = createServer(async (req, res) => {
     const chemin = path.join(dossier, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
     if (!chemin.startsWith(dossier)) { res.writeHead(403).end(); return; }
     try {
       const contenu = await readFile(chemin);
-      res.writeHead(200, { "content-type": TYPES[path.extname(chemin)] ?? "application/octet-stream" }).end(contenu);
+      res.writeHead(200, { "content-type": TYPES[path.extname(chemin)] ?? "application/octet-stream", ...headers }).end(contenu);
     } catch { res.writeHead(404).end("introuvable"); }
   });
   await new Promise((ok) => serveur.listen(0, "127.0.0.1", ok));

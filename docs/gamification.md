@@ -56,6 +56,13 @@ ses badges et l'état nécessaire à la reprise. Le parent vérifie la fenêtre 
 l'identifiant attendu et le format borné de l'instantané. L'enfant accepte une seule restauration,
 uniquement depuis sa fenêtre parente. L'origine opaque impose `targetOrigin: "*"`, sans ouverture réseau.
 
+Le pont ne dépend pas de `document.referrer` : la politique de confidentialité du site est
+`Referrer-Policy: no-referrer`. L'annonce initiale ne contient que le type et l'identifiant du module ;
+l'enfant apprend l'origine HTTP(S) du parent depuis le message de restauration, après vérification de
+`event.source === window.parent`. Toute origine explicitement configurée dans les métadonnées reste imposée.
+Les instantanés suivants ciblent exclusivement cette origine. Les tests de remontée et du chat reproduisent
+la politique `no-referrer` du déploiement.
+
 Les instantanés sont conservés sous `kermiclab:trophees`, en session par défaut, dans le stockage local
 uniquement après choix de mémorisation. Changer ce choix déplace les instantanés ; l'effacement du profil les
 supprime des deux stockages. Effacer la progression dans l'Académie met aussi à jour le tableau de bord.
