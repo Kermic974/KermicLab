@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-hgBD2PhCCPKZ8OYb3k2Q4sYI6T5GU/a+Mgvxj/OIJ0c=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-klv7za7HY8aOdGEHvlfVmmtSGg84z9CsU8Onvw4GvsE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-/Di+zRLt51DcjkttOzjVvD9lXEwM+d+act7XY4Hzlao=' 'sha256-AmWLGse4RTTtCmfZNeKljDUhCMZ6uzkuWR7kHmg1nBQ=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-DqJmScUW9qvqnyrl0g976c2n0fUTnLdfdmv1+rwfqO4='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Le pendu – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "pendu",
   "titre": "Le pendu",
   "sujet": "jeux/pendu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-05",
   "langue": "fr",
-  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
+  "onglets": ["explication", "application", "academie", "orthographe", "mise-en-situation", "self-test"]
 }
 </script>
 <style>
@@ -46,6 +46,13 @@
   .clavier button { min-height:42px; padding:4px; border:1px solid var(--bord); border-radius:7px; background:var(--surface); font-weight:700; cursor:pointer; }
   .message { min-height:1.6em; text-align:center; font-weight:650; } .message.ok { color:var(--succes); } .message.ko { color:var(--alerte); }
   .choix-defi { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+  [hidden] { display:none !important; }
+  input,textarea,select { max-width:100%; min-height:44px; padding:8px; border:1px solid var(--bord); border-radius:6px; color:var(--texte); background:var(--surface); font:inherit; }
+  input:focus-visible,textarea:focus-visible,select:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+  textarea { display:block; width:100%; margin-top:6px; }
+  .fiche-mot,.bilan-mots li { overflow-wrap:anywhere; }
+  .mot-a-retenir { font-size:1.6rem; font-weight:700; overflow-wrap:anywhere; }
+  .bilan-mots { padding-left:24px; }
   footer { padding:8px 0 20px; color:var(--doux); font-size:.85rem; }
   @media(max-width:480px) { header { align-items:flex-start; } .carte { padding:11px; } .clavier { grid-template-columns:repeat(7,minmax(34px,1fr)); } }
 </style>
@@ -187,6 +194,7 @@ const Trophees = (() => {
   <button id="connexion" class="secondaire" hidden>Se connecter</button>
 </header>
 <nav id="onglets" role="tablist" aria-label="Le pendu"></nav>
+<p id="stockage-avertissement" class="message" role="status" aria-live="polite"></p>
 <main id="panneaux"></main>
 <footer>Tout se joue hors ligne. Ta progression reste sur cet appareil.</footer>
 
@@ -194,8 +202,10 @@ const Trophees = (() => {
   <section class="carte">
     <h2>Comment jouer ?</h2>
     <p>Un mot secret se cache derrière les tirets. Choisis une lettre : si elle est dans le mot, elle apparaît à sa place. Sinon, une partie du dessin du pendu est ajoutée.</p>
-    <p>Tu as six erreurs possibles. Trouve le mot avant que le dessin soit terminé ! Les lettres accentuées sont acceptées sans accent.</p>
+    <p>Tu perds à la sixième erreur. Trouve le mot avant que le dessin soit terminé ! Tu peux proposer les lettres sans accent ; le mot révélé conserve ses accents. Œ est affiché OE pour le clavier.</p>
     <p>Tu peux cliquer sur les lettres ou les taper au clavier. Une partie gagnée débloque le grade suivant, jusqu’à Pro.</p>
+    <p>Chaque niveau contient 100 mots différents. La difficulté dépend de la familiarité du vocabulaire et des pièges d’orthographe, pas du nombre de lettres : un mot court peut être difficile ! Après chaque partie, découvre la définition et un repère pour retenir l’orthographe.</p>
+    <p>Dans <strong>Mes mots</strong>, prépare une liste éditable ou charge un niveau. Le test de mémorisation montre un mot, puis le cache pour que tu l’écrives de mémoire, accents compris. Il ne s’agit pas d’une dictée audio.</p>
   </section>
 </template>
 <template id="tpl-jeu">
@@ -214,7 +224,61 @@ const Trophees = (() => {
     </div>
     <div class="clavier" data-zone="clavier" aria-label="Choisir une lettre"></div>
     <p class="message" data-sortie="message" role="status" aria-live="polite"></p>
+    <section class="fiche-mot" data-zone="fiche-mot" hidden>
+      <h3 data-sortie="mot-decouvert"></h3>
+      <p data-sortie="definition"></p>
+      <p data-sortie="orthographe"></p>
+    </section>
     <button class="action" data-action="suivant" hidden>Grade suivant</button>
+  </section>
+</template>
+<template id="tpl-orthographe">
+  <section class="carte">
+    <h2 tabindex="-1">Mes mots : vocabulaire et orthographe</h2>
+    <p>Observe chaque mot, puis écris-le de mémoire. Les accents, les lettres doubles et les lettres muettes comptent ; les majuscules ne comptent pas.</p>
+    <p class="doux">Aucun nom d’enfant n’est demandé. La liste reste sur cet appareil, sans envoi réseau. Le bilan ne dure que le temps de la séance.</p>
+    <div data-zone="editeur">
+      <label for="niveau-mots">Liste du dictionnaire</label>
+      <select id="niveau-mots" data-entree="niveau"></select>
+      <button class="secondaire" data-action="charger-mots">Remplacer la liste par les 100 mots de ce niveau</button>
+      <p id="aide-liste">Un mot par ligne, de 1 à 100 mots, 40 caractères maximum par mot. Les apostrophes et traits d’union sont acceptés. Tu peux modifier ou supprimer les mots chargés.</p>
+      <label for="liste-mots">Liste de mots à apprendre</label>
+      <textarea id="liste-mots" rows="8" maxlength="5000" aria-describedby="aide-liste" data-entree="liste" spellcheck="false" autocorrect="off"></textarea>
+      <div class="commandes">
+        <button class="secondaire" data-action="sauver-mots">Enregistrer la liste</button>
+        <button class="action" data-action="tester-mots">Commencer le test</button>
+        <button class="secondaire" data-action="effacer-mots">Effacer la liste enregistrée</button>
+      </div>
+      <p class="message" data-sortie="liste-message" role="status" aria-live="polite"></p>
+    </div>
+    <div data-zone="test-mots" hidden>
+      <p data-sortie="avancement-mots"></p>
+      <div data-zone="observer-mot">
+        <p>Observe bien ce mot et ses particularités avant de le cacher.</p>
+        <p class="mot-a-retenir" data-sortie="mot-a-retenir" tabindex="-1"></p>
+        <p data-sortie="definition-mot"></p>
+        <button class="action" data-action="cacher-mot">Cacher et répondre</button>
+      </div>
+      <div data-zone="repondre-mot" hidden>
+        <label for="reponse-mot">Écris le mot de mémoire</label>
+        <input id="reponse-mot" data-entree="reponse" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+        <div class="commandes">
+          <button class="action" data-action="verifier-mot">Vérifier le mot</button>
+          <button class="secondaire" data-action="passer-mot">Je ne sais pas</button>
+        </div>
+      </div>
+      <p class="message" data-sortie="correction-mot" role="status" aria-live="polite"></p>
+      <button class="action" data-action="mot-suivant" hidden>Mot suivant</button>
+      <button class="secondaire" data-action="abandonner-mots">Arrêter et modifier la liste</button>
+    </div>
+    <div data-zone="bilan-mots" hidden>
+      <h3 tabindex="-1" data-sortie="bilan-mots"></h3>
+      <ol class="bilan-mots" data-sortie="details-mots"></ol>
+      <div class="commandes">
+        <button class="action" data-action="revoir-mots">Revoir les mots à retravailler</button>
+        <button class="secondaire" data-action="modifier-mots">Modifier la liste</button>
+      </div>
+    </div>
   </section>
 </template>
 <template id="tpl-defis">
@@ -288,16 +352,330 @@ const Trophees = (() => {
 }
 </script>
 
+<script type="application/json" id="dictionnaire-pendu">
+{
+  "noob": [
+    { "repere": "Noms d’animaux familiers : observe aussi les lettres finales qui ne se prononcent pas.", "mots": [
+      ["chat", "Un animal qui miaule"], ["loup", "Un animal sauvage qui vit souvent en meute"],
+      ["rat", "Un petit rongeur à longue queue"], ["mule", "Un animal issu d’un âne et d’une jument"],
+      ["poule", "Un oiseau de ferme qui pond des œufs"], ["vache", "Un grand animal de ferme qui produit du lait"],
+      ["canard", "Un oiseau aux pattes palmées"], ["panda", "Un ours noir et blanc qui mange du bambou"],
+      ["koala", "Un animal australien qui vit dans les arbres"], ["lama", "Un animal des Andes au long cou"],
+      ["boa", "Un grand serpent qui serre ses proies"], ["otarie", "Un mammifère marin à nageoires"],
+      ["renard", "Un animal sauvage souvent roux"], ["lapin", "Un animal aux longues oreilles"],
+      ["souris", "Un petit rongeur au museau pointu"], ["tortue", "Un animal protégé par une carapace"],
+      ["cochon", "Un animal de ferme au groin rond"], ["cheval", "Un animal que l’on peut monter"],
+      ["lion", "Un grand félin dont le mâle porte une crinière"], ["mouche", "Un petit insecte qui vole"]
+    ] },
+    { "repere": "Objets du quotidien : prononce les syllabes, puis repère les lettres muettes et les accents éventuels.", "mots": [
+      ["table", "Un meuble sur lequel on pose des objets"], ["porte", "Un panneau qui ferme une entrée"],
+      ["lit", "Un meuble dans lequel on dort"], ["bol", "Un récipient rond pour boire ou manger"],
+      ["sac", "Un objet qui sert à transporter des affaires"], ["tasse", "Un petit récipient muni d’une anse"],
+      ["carte", "Un dessin qui représente un territoire"], ["lampe", "Un objet qui produit de la lumière"],
+      ["robe", "Un vêtement d’une seule pièce qui descend sur les jambes"], ["jupe", "Un vêtement qui couvre le bas du corps sans séparer les jambes"],
+      ["pantalon", "Un vêtement qui couvre chaque jambe séparément"], ["chemise", "Un vêtement à manches souvent fermé par des boutons"],
+      ["botte", "Une chaussure qui monte sur la jambe"], ["savon", "Un produit qui sert à se laver"],
+      ["tapis", "Une pièce de tissu épais posée au sol"], ["vase", "Un récipient destiné à recevoir des fleurs"],
+      ["livre", "Un ensemble de pages reliées pour être lues"], ["stylo", "Un outil qui écrit avec de l’encre"],
+      ["moto", "Un véhicule à moteur sur deux roues"], ["vélo", "Un véhicule à deux roues que l’on fait avancer en pédalant"]
+    ] },
+    { "repere": "Mots concrets de la nature et des repas : découpe le mot en syllabes pour le mémoriser.", "mots": [
+      ["lune", "Le satellite naturel de la Terre"], ["soleil", "L’étoile qui éclaire la Terre"],
+      ["mer", "Une grande étendue d’eau salée"], ["lac", "Une étendue d’eau entourée de terres"],
+      ["arbre", "Une plante qui possède un tronc"], ["fleur", "La partie d’une plante qui porte les organes reproducteurs"],
+      ["herbe", "Une plante souple qui couvre souvent le sol"], ["sable", "De très petits grains de roche"],
+      ["roche", "Une matière solide qui compose une partie du sol"], ["nuage", "Un ensemble de gouttelettes ou de cristaux dans le ciel"],
+      ["pomme", "Un fruit rond à pépins"], ["banane", "Un fruit allongé à peau souvent jaune"],
+      ["tomate", "Un fruit rouge souvent mangé comme un légume"], ["salade", "Une plante dont on mange les feuilles"],
+      ["carotte", "Une racine comestible souvent orange"], ["melon", "Un fruit à chair sucrée et à nombreux pépins"],
+      ["prune", "Un petit fruit à noyau"], ["cerise", "Un petit fruit rond à noyau et à longue queue"],
+      ["riz", "Une céréale dont on mange les grains cuits"], ["pâtes", "Un aliment fait notamment de farine et d’eau"]
+    ] },
+    { "repere": "Mots très courants : associe leur sens à leur écriture et vérifie leur dernière lettre.", "mots": [
+      ["bras", "Un membre du haut du corps"], ["jambe", "Un membre qui permet de marcher"],
+      ["dos", "La partie arrière du tronc"], ["nez", "La partie du visage qui sert à sentir"],
+      ["bouche", "L’ouverture du visage par laquelle on mange"], ["dent", "Un petit organe dur qui sert à mâcher"],
+      ["tête", "La partie du corps qui porte le visage"], ["patte", "Un membre sur lequel marche un animal"],
+      ["ami", "Une personne avec laquelle on partage de l’affection"], ["papa", "Un mot familier pour désigner son père"],
+      ["maman", "Un mot familier pour désigner sa mère"], ["bébé", "Un très jeune enfant"],
+      ["école", "Un lieu où les enfants apprennent ensemble"], ["classe", "Un groupe d’élèves ou la salle où ils travaillent"],
+      ["rue", "Un passage entre les bâtiments d’une ville"], ["place", "Un espace disponible ou une étendue dans une ville"],
+      ["ville", "Un ensemble important de bâtiments et d’habitants"], ["village", "Un petit ensemble d’habitations"],
+      ["route", "Une voie aménagée pour circuler"], ["gare", "Un lieu où les trains s’arrêtent"]
+    ] },
+    { "repere": "Ces verbes sont à l’infinitif : mémorise leur terminaison, souvent -er ou -ir.", "mots": [
+      ["laver", "Nettoyer avec de l’eau ou un produit"], ["jouer", "Participer à une activité pour s’amuser"],
+      ["parler", "Exprimer quelque chose avec des mots"], ["chanter", "Produire des sons avec la voix en suivant une mélodie"],
+      ["danser", "Bouger son corps en rythme"], ["sauter", "Quitter le sol avec une impulsion"],
+      ["marcher", "Se déplacer en posant un pied puis l’autre"], ["rouler", "Avancer en tournant sur soi-même ou sur des roues"],
+      ["voler", "Se déplacer dans les airs"], ["nager", "Se déplacer dans l’eau"],
+      ["lire", "Comprendre des signes écrits"], ["dormir", "Se reposer dans un état de sommeil"],
+      ["rire", "Exprimer la joie par des sons et des mouvements du visage"], ["saluer", "Adresser un signe de politesse à quelqu’un"],
+      ["porter", "Soutenir et déplacer un objet ou une personne"], ["tirer", "Amener quelque chose vers soi en exerçant une force"],
+      ["poser", "Mettre quelque chose sur un support"], ["couper", "Séparer quelque chose en plusieurs parties"],
+      ["coller", "Faire adhérer deux surfaces"], ["tracer", "Dessiner une ligne ou une forme"]
+    ] }
+  ],
+  "debutant": [
+    { "repere": "Le son « ou » s’écrit ici avec les deux lettres ou : garde-les ensemble.", "mots": [
+      ["roue", "Une pièce ronde qui tourne autour d’un axe"], ["four", "Un appareil fermé dans lequel on cuit les aliments"],
+      ["tour", "Une construction haute et étroite"], ["jour", "La période où le soleil éclaire un lieu"],
+      ["cour", "Un espace découvert entouré de bâtiments"], ["boue", "Un mélange de terre et d’eau"],
+      ["joue", "Un côté du visage sous l’œil"], ["pouce", "Le doigt de la main opposable aux autres"],
+      ["coude", "L’articulation au milieu du bras"], ["genou", "L’articulation entre la cuisse et la jambe"],
+      ["mouton", "Un animal de ferme couvert de laine"], ["hibou", "Un oiseau nocturne portant des touffes de plumes sur la tête"],
+      ["bijou", "Un petit objet que l’on porte pour se décorer"], ["caillou", "Un petit morceau de pierre"],
+      ["chou", "Un légume aux feuilles souvent serrées"], ["soupe", "Un plat liquide préparé avec des aliments cuits"],
+      ["foudre", "Une décharge électrique entre un nuage et le sol"], ["poudre", "Une matière divisée en grains très fins"],
+      ["source", "Un endroit où l’eau sort naturellement du sol"], ["brouette", "Un petit chariot à une roue poussé à la main"]
+    ] },
+    { "repere": "Sons nasaux : observe les groupes an, en, on, in, ain ou un ; plusieurs écritures existent.", "mots": [
+      ["vent", "Un déplacement d’air"], ["banc", "Un siège long pour plusieurs personnes"],
+      ["gant", "Un vêtement qui couvre la main"], ["champ", "Une parcelle de terre cultivée"],
+      ["pont", "Une construction pour franchir un obstacle"], ["rond", "Qui a la forme d’un cercle"],
+      ["bonbon", "Une petite friandise sucrée"], ["ballon", "Un objet gonflé d’air servant à jouer"],
+      ["maison", "Un bâtiment destiné à être habité"], ["jardin", "Un terrain où l’on cultive des plantes"],
+      ["matin", "Le début de la journée"], ["sapin", "Un arbre qui porte des aiguilles"],
+      ["coussin", "Un petit sac rembourré pour s’appuyer"], ["raisin", "Un fruit qui pousse en grappes"],
+      ["pain", "Un aliment à base de farine, d’eau et généralement de levure"], ["main", "L’extrémité du bras portant les doigts"],
+      ["train", "Un ensemble de véhicules qui circulent sur des rails"], ["brun", "Une couleur proche du marron"],
+      ["parfum", "Une odeur agréable ou un produit qui la diffuse"], ["enfant", "Une personne qui n’a pas encore atteint l’âge adulte"]
+    ] },
+    { "repere": "Le groupe ch représente ici le son de « chapeau » : retiens ses deux lettres.", "mots": [
+      ["chapeau", "Un objet que l’on porte sur la tête"], ["chameau", "Un animal du désert possédant deux bosses"],
+      ["chariot", "Un véhicule à roues pour transporter des charges"], ["chemin", "Une voie pour aller d’un endroit à un autre"],
+      ["cheminée", "Un conduit qui évacue la fumée"], ["chenille", "La larve d’un papillon"],
+      ["cheville", "L’articulation entre le pied et la jambe"], ["cheveu", "Un filament qui pousse sur la tête"],
+      ["chèvre", "Un animal de ferme souvent pourvu de cornes"], ["chocolat", "Un aliment fabriqué à partir de cacao"],
+      ["chouette", "Un oiseau nocturne sans touffes de plumes sur la tête"], ["chiffon", "Un morceau de tissu utilisé pour nettoyer"],
+      ["chute", "Le fait de tomber"], ["chasse", "L’action de poursuivre un animal pour le capturer"],
+      ["pêche", "Un fruit à peau veloutée ou l’activité de capturer des poissons"], ["poche", "Un petit compartiment cousu dans un vêtement"],
+      ["fourche", "Un outil à plusieurs dents"], ["branche", "Une partie d’un arbre qui part du tronc"],
+      ["planche", "Une pièce de bois plate et allongée"], ["moustache", "Des poils qui poussent au-dessus de la lèvre"]
+    ] },
+    { "repere": "Observe les accents : aigu é, grave è ou circonflexe ê. Ils font partie de l’orthographe.", "mots": [
+      ["été", "La saison qui suit le printemps"], ["élève", "Une personne qui suit un enseignement"],
+      ["étoile", "Un astre qui produit sa propre lumière"], ["épine", "Une pointe dure sur une plante"],
+      ["épée", "Une arme ancienne à lame longue"], ["écharpe", "Une bande de tissu portée autour du cou"],
+      ["éponge", "Un objet poreux qui absorbe les liquides"], ["équipe", "Un groupe de personnes qui agit ensemble"],
+      ["étagère", "Une tablette pour ranger des objets"], ["étang", "Une étendue d’eau calme moins grande qu’un lac"],
+      ["rivière", "Un cours d’eau naturel"], ["lumière", "Ce qui permet de voir les objets"],
+      ["père", "Un parent masculin"], ["mère", "Un parent féminin"],
+      ["frère", "Un garçon qui a au moins un parent en commun avec une autre personne"], ["règle", "Un instrument pour tracer droit ou une consigne à respecter"],
+      ["forêt", "Un grand terrain couvert d’arbres"], ["fenêtre", "Une ouverture vitrée dans un mur"],
+      ["fête", "Un moment de réjouissance collective"], ["crêpe", "Une fine galette de pâte cuite"]
+    ] },
+    { "repere": "Les lettres finales et les groupes de voyelles ne s’entendent pas toujours comme ils s’écrivent : observe le mot entier.", "mots": [
+      ["lait", "Un liquide nutritif produit par les mammifères"], ["toit", "La couverture supérieure d’un bâtiment"],
+      ["doigt", "Un élément articulé de la main ou du pied"], ["pied", "L’extrémité de la jambe qui touche le sol"],
+      ["nid", "Un abri construit par certains animaux pour leurs petits"], ["outil", "Un objet utilisé pour effectuer un travail"],
+      ["fusil", "Une arme à feu portée à l’épaule"], ["sourcil", "Une ligne de poils au-dessus de l’œil"],
+      ["repas", "Un moment où l’on mange"], ["tapisserie", "Un tissu décoratif ou un revêtement mural"],
+      ["bateau", "Un véhicule qui se déplace sur l’eau"], ["gâteau", "Une préparation sucrée cuite"],
+      ["oiseau", "Un animal à plumes"], ["poisson", "Un animal aquatique muni de branchies"],
+      ["seau", "Un récipient à anse utilisé pour transporter un liquide"], ["manteau", "Un vêtement chaud porté par-dessus les autres"],
+      ["cadeau", "Un objet que l’on offre"], ["rideau", "Un tissu suspendu pour couvrir une fenêtre"],
+      ["chaud", "Qui a une température élevée"], ["froid", "Qui a une température basse"]
+    ] }
+  ],
+  "intermediaire": [
+    { "repere": "Consonnes doubles : repère précisément la lettre répétée et sa position.", "mots": [
+      ["adresse", "L’indication d’un lieu ou l’habileté dans un geste"], ["allumette", "Une petite tige qui permet d’allumer un feu"],
+      ["assiette", "Un plat individuel pour manger"], ["batterie", "Un ensemble qui stocke de l’énergie électrique ou un instrument de musique"],
+      ["bouteille", "Un récipient au col étroit"], ["carrefour", "Un lieu où plusieurs voies se croisent"],
+      ["carrosse", "Une ancienne voiture tirée par des chevaux"], ["chaussette", "Un vêtement qui couvre le pied"],
+      ["couronne", "Un cercle décoratif porté sur la tête"], ["dessin", "Une représentation faite avec des traits"],
+      ["effort", "L’énergie déployée pour réussir quelque chose"], ["gomme", "Un objet qui efface les traces de crayon"],
+      ["hirondelle", "Un petit oiseau migrateur aux ailes pointues"], ["lunette", "Un instrument optique qui permet de voir au loin"],
+      ["nourriture", "Ce qui sert à alimenter un être vivant"], ["pommeau", "Une extrémité arrondie servant de poignée"],
+      ["poussette", "Un petit véhicule pour transporter un jeune enfant"], ["toboggan", "Une pente aménagée sur laquelle on glisse"],
+      ["trottoir", "Un passage réservé aux piétons au bord d’une rue"], ["vaisselle", "L’ensemble des objets utilisés pour servir les repas"]
+    ] },
+    { "repere": "Observe c, ç, g, gu et ge : leur son dépend souvent de la lettre qui suit.", "mots": [
+      ["garçon", "Un enfant ou un jeune de sexe masculin"], ["leçon", "Un contenu que l’on apprend ou un enseignement reçu"],
+      ["façade", "La face extérieure d’un bâtiment"], ["glaçon", "Un petit morceau de glace"],
+      ["balançoire", "Un siège suspendu qui se balance"], ["citron", "Un agrume jaune au goût acide"],
+      ["cigale", "Un insecte qui produit un bruit caractéristique en été"], ["ciment", "Une poudre qui durcit lorsqu’on la mélange avec de l’eau"],
+      ["girafe", "Un mammifère au très long cou"], ["gilet", "Un vêtement porté sur le haut du corps"],
+      ["guitare", "Un instrument de musique à cordes pincées"], ["guirlande", "Une décoration disposée en longue chaîne"],
+      ["guêpe", "Un insecte souvent jaune et noir capable de piquer"], ["guidon", "La barre qui permet de diriger un vélo"],
+      ["nageoire", "Un organe qui aide un animal aquatique à se déplacer"], ["plongeon", "Un saut dans l’eau, souvent la tête en avant"],
+      ["bougeoir", "Un support pour maintenir une bougie"], ["pigeon", "Un oiseau au corps trapu que l’on rencontre en ville"],
+      ["orangeade", "Une boisson préparée avec du jus d’orange et de l’eau"], ["mangeoire", "Un récipient dans lequel on met la nourriture des animaux"]
+    ] },
+    { "repere": "La terminaison -tion s’écrit avec un t, même quand on entend le son « sion ».", "mots": [
+      ["action", "Le fait d’agir ou ce que l’on fait"], ["addition", "Une opération qui réunit plusieurs quantités"],
+      ["attention", "La concentration portée à quelque chose"], ["collection", "Un ensemble d’objets réunis selon un intérêt"],
+      ["création", "Le fait de produire quelque chose de nouveau"], ["direction", "Le sens dans lequel on se déplace"],
+      ["éducation", "La transmission de connaissances et de manières de vivre"], ["émotion", "Une réaction affective comme la joie ou la peur"],
+      ["explication", "Ce qui aide à comprendre quelque chose"], ["imagination", "La capacité à se représenter des choses absentes ou inventées"],
+      ["invitation", "Une proposition de venir ou de participer"], ["multiplication", "Une opération qui répète une addition"],
+      ["natation", "La pratique du déplacement dans l’eau"], ["opération", "Un ensemble d’actions organisées ou un calcul"],
+      ["pollution", "Une dégradation de l’environnement par des éléments nuisibles"], ["ponctuation", "Les signes qui organisent un texte écrit"],
+      ["récréation", "Un moment de pause où les élèves peuvent jouer"], ["solution", "Une réponse à un problème"],
+      ["soustraction", "Une opération qui retire une quantité à une autre"], ["vibration", "Un mouvement rapide de va-et-vient"]
+    ] },
+    { "repere": "Repère les morceaux du mot : préfixes et suffixes peuvent aider à retrouver son sens et son écriture.", "mots": [
+      ["impossible", "Qui ne peut pas se produire ou être réalisé"], ["invisible", "Que l’on ne peut pas voir"],
+      ["inutile", "Qui ne sert pas au but recherché"], ["incapable", "Qui n’a pas la capacité nécessaire"],
+      ["désordre", "Un manque d’organisation ou de rangement"], ["défaire", "Annuler ce qui a été fait ou détacher"],
+      ["refaire", "Faire une nouvelle fois"], ["revenir", "Venir de nouveau à un endroit"],
+      ["préhistoire", "La période de l’humanité antérieure à l’écriture"], ["sous-sol", "La partie située sous la surface du sol"],
+      ["jardinier", "Une personne qui entretient les jardins"], ["boulanger", "Une personne qui fabrique du pain"],
+      ["rapidement", "Avec une grande vitesse"], ["lentement", "Avec une faible vitesse"],
+      ["lisible", "Qui peut être lu facilement"], ["lavable", "Qui peut être lavé"],
+      ["musicien", "Une personne qui pratique la musique"], ["dessinateur", "Une personne qui fait des dessins"],
+      ["courageux", "Qui agit malgré la peur ou la difficulté"], ["joyeux", "Qui éprouve ou exprime de la joie"]
+    ] },
+    { "repere": "Vocabulaire des idées : associe une définition précise à la suite de lettres pour mieux la retenir.", "mots": [
+      ["amitié", "Un lien d’affection entre des personnes"], ["bonheur", "Un état de satisfaction profonde"],
+      ["confiance", "Le fait de croire en la fiabilité de quelqu’un ou de quelque chose"], ["courage", "La capacité à agir malgré la peur"],
+      ["curiosité", "L’envie de découvrir et de comprendre"], ["douceur", "Une manière d’agir sans brutalité"],
+      ["égalité", "Le fait d’avoir les mêmes droits ou la même valeur"], ["entraide", "Une aide que des personnes s’apportent mutuellement"],
+      ["espoir", "Le fait d’attendre quelque chose de favorable"], ["fierté", "La satisfaction ressentie devant une réussite"],
+      ["honnêteté", "La qualité de quelqu’un qui agit sans tromper"], ["justice", "Le principe de traiter chacun de façon équitable"],
+      ["liberté", "La possibilité d’agir et de choisir dans le respect des autres"], ["patience", "La capacité à attendre ou persévérer sans s’énerver"],
+      ["politesse", "L’ensemble des marques de respect envers les autres"], ["respect", "L’attention portée à la dignité et aux droits d’autrui"],
+      ["sagesse", "La capacité à agir avec réflexion et mesure"], ["silence", "Une absence de bruit"],
+      ["souvenir", "Une trace du passé gardée en mémoire"], ["vérité", "Ce qui correspond à la réalité"]
+    ] }
+  ],
+  "expert": [
+    { "repere": "Orthographes délicates : le son ne suffit pas toujours ; observe doubles consonnes et lettres peu audibles.", "mots": [
+      ["accueil", "La manière de recevoir une personne"], ["cueillir", "Détacher une fleur ou un fruit de sa plante"],
+      ["orgueil", "Une estime exagérée de soi-même"], ["recueil", "Un ouvrage réunissant plusieurs textes"],
+      ["écureuil", "Un petit rongeur à queue touffue"], ["seuil", "Le bas de l’ouverture d’une porte"],
+      ["fauteuil", "Un siège avec un dossier et des accoudoirs"], ["feuille", "Un organe plat d’une plante ou une pièce de papier"],
+      ["grenouille", "Un amphibien qui saute et vit près de l’eau"], ["brouillard", "Un nuage de fines gouttelettes près du sol"],
+      ["brouillon", "Une première version destinée à être corrigée"], ["aiguille", "Une fine tige pointue utilisée notamment pour coudre"],
+      ["aiguillage", "Un dispositif qui dirige un train vers une voie"], ["quincaillerie", "Un magasin de petits objets métalliques et d’outils"],
+      ["tranquille", "Qui est calme et sans agitation"], ["aquarium", "Un réservoir destiné à des animaux ou plantes aquatiques"],
+      ["examen", "Une vérification attentive ou une épreuve de connaissances"], ["exercice", "Une activité effectuée pour s’entraîner"],
+      ["rythme", "Une organisation de durées et d’accents dans le temps"], ["symbole", "Un signe qui représente une idée ou une chose"]
+    ] },
+    { "repere": "Vocabulaire scientifique : repère les racines qui reviennent, comme géo-, bio- ou photo-.", "mots": [
+      ["photosynthèse", "La fabrication de matière organique grâce à la lumière chez certains êtres vivants"], ["chlorophylle", "Un pigment vert qui capte la lumière chez les végétaux"],
+      ["atmosphère", "La couche de gaz qui entoure une planète"], ["écosystème", "Un milieu et les êtres vivants qui y interagissent"],
+      ["biodiversité", "La diversité des êtres vivants et des milieux"], ["géologie", "L’étude de la Terre, de ses roches et de son histoire"],
+      ["géométrie", "L’étude des formes, des dimensions et des positions"], ["hypothèse", "Une proposition que l’on cherche à vérifier"],
+      ["microscope", "Un instrument qui permet de voir de très petits objets"], ["télescope", "Un instrument qui permet d’observer des astres lointains"],
+      ["thermomètre", "Un instrument qui mesure la température"], ["baromètre", "Un instrument qui mesure la pression atmosphérique"],
+      ["électricité", "Un ensemble de phénomènes liés aux charges électriques"], ["magnétisme", "Un ensemble de phénomènes liés notamment aux aimants"],
+      ["molécule", "Un assemblage d’atomes liés entre eux"], ["oxygène", "Un élément chimique présent dans l’air et indispensable à notre respiration"],
+      ["hydrogène", "L’élément chimique le plus léger"], ["évaporation", "Le passage d’un liquide à l’état gazeux à sa surface"],
+      ["condensation", "Le passage d’un gaz à l’état liquide"], ["précipitation", "Une chute d’eau liquide ou solide venant de l’atmosphère"]
+    ] },
+    { "repere": "Verbes de sens précis : relie le préfixe ou la terminaison à une action bien définie.", "mots": [
+      ["apercevoir", "Voir brièvement ou avec difficulté"], ["acquérir", "Obtenir quelque chose ou apprendre une capacité"],
+      ["convaincre", "Amener quelqu’un à reconnaître une idée comme vraie"], ["persuader", "Amener quelqu’un à croire ou à agir"],
+      ["distinguer", "Reconnaître une différence ou percevoir nettement"], ["déduire", "Tirer une conclusion à partir d’informations"],
+      ["supposer", "Admettre provisoirement une idée sans certitude"], ["constater", "Reconnaître un fait par l’observation"],
+      ["interpréter", "Donner un sens à un signe, un fait ou un texte"], ["justifier", "Apporter des raisons qui expliquent ou soutiennent une affirmation"],
+      ["argumenter", "Présenter des raisons pour défendre une idée"], ["synthétiser", "Réunir l’essentiel de plusieurs informations"],
+      ["approfondir", "Étudier quelque chose de manière plus détaillée"], ["anticiper", "Prévoir ce qui pourrait se produire"],
+      ["persévérer", "Continuer un effort malgré les difficultés"], ["renoncer", "Décider de ne plus poursuivre quelque chose"],
+      ["suggérer", "Proposer une idée sans l’imposer"], ["témoigner", "Rapporter ce que l’on a vu ou vécu"],
+      ["susciter", "Faire naître une réaction ou une envie"], ["réconcilier", "Rétablir l’entente entre des personnes"]
+    ] },
+    { "repere": "Mots des textes et des idées : mémorise leur définition et repère les suffixes.", "mots": [
+      ["métaphore", "Une comparaison sans outil de comparaison explicite"], ["comparaison", "Un rapprochement de deux éléments pour en montrer une ressemblance"],
+      ["personnification", "Le fait d’attribuer des traits humains à une chose"], ["allitération", "La répétition d’un même son de consonne"],
+      ["assonance", "La répétition d’un même son de voyelle"], ["narrateur", "La voix qui raconte une histoire"],
+      ["dialogue", "Un échange de paroles entre plusieurs personnes"], ["monologue", "Un discours prononcé par une seule personne"],
+      ["intrigue", "L’ensemble des événements qui construisent une histoire"], ["péripétie", "Un événement imprévu qui modifie le cours d’une histoire"],
+      ["dénouement", "La partie finale qui résout une intrigue"], ["chronologie", "L’ordre des événements dans le temps"],
+      ["anecdote", "Un récit bref d’un événement particulier"], ["biographie", "Le récit de la vie d’une personne"],
+      ["autobiographie", "Le récit qu’une personne fait de sa propre vie"], ["témoignage", "Un récit de ce que l’on a vu ou vécu"],
+      ["vraisemblance", "Le caractère de ce qui paraît possible ou crédible"], ["ironie", "Une manière de dire autre chose que ce que les mots semblent affirmer"],
+      ["nuance", "Une petite différence de sens ou de degré"], ["paradoxe", "Une idée qui paraît contraire à ce que l’on attend"]
+    ] },
+    { "repere": "Racines savantes : ph peut noter le son f, th le son t, et y se prononce souvent comme i.", "mots": [
+      ["phare", "Une tour lumineuse qui guide les navigateurs"], ["phoque", "Un mammifère marin au corps fuselé"],
+      ["photographie", "Une image obtenue en enregistrant la lumière"], ["pharmacie", "Un lieu où l’on délivre des médicaments"],
+      ["philosophie", "Une recherche réfléchie sur le monde, le savoir et l’existence"], ["orthographe", "L’ensemble des règles d’écriture des mots"],
+      ["alphabet", "L’ensemble ordonné des lettres d’une langue"], ["éléphant", "Un grand mammifère muni d’une trompe"],
+      ["dauphin", "Un mammifère marin qui respire de l’air"], ["sphère", "Une surface dont tous les points sont à la même distance d’un centre"],
+      ["théâtre", "Un art où des personnes jouent des personnages devant un public"], ["bibliothèque", "Un lieu où l’on conserve et consulte des livres"],
+      ["athlète", "Une personne qui pratique un sport exigeant un entraînement physique"], ["labyrinthe", "Un ensemble de chemins où il est difficile de s’orienter"],
+      ["mythe", "Un récit traditionnel qui explique le monde ou met en scène des êtres extraordinaires"], ["mystère", "Quelque chose dont l’explication reste inconnue"],
+      ["pyramide", "Un solide à base polygonale et à faces latérales triangulaires"], ["cylindre", "Un solide droit à deux bases circulaires parallèles"],
+      ["analyse", "L’étude détaillée des éléments d’un ensemble"], ["synonyme", "Un mot dont le sens est proche de celui d’un autre"]
+    ] }
+  ],
+  "pro": [
+    { "repere": "Pièges étymologiques : apprends la place exacte des consonnes et des voyelles, même dans un mot court.", "mots": [
+      ["chrysanthème", "Une plante à fleurs souvent cultivée en automne"], ["rhododendron", "Un arbuste à fleurs réunies en bouquets"],
+      ["hippopotame", "Un grand mammifère d’Afrique qui passe beaucoup de temps dans l’eau"], ["ornithorynque", "Un mammifère australien qui pond des œufs et possède un bec plat"],
+      ["archéologie", "L’étude du passé humain à partir de vestiges matériels"], ["apothicaire", "Un ancien nom pour une personne qui préparait et vendait des remèdes"],
+      ["dilemme", "Un choix difficile entre deux possibilités"], ["occurrence", "Une apparition d’un élément dans un ensemble"],
+      ["acquiescer", "Exprimer son accord"], ["suffrage", "Un vote exprimé lors d’une consultation"],
+      ["succinct", "Qui exprime l’essentiel en peu de mots"], ["susceptible", "Qui peut réagir facilement à ce qui le touche"],
+      ["inaccessible", "Que l’on ne peut pas atteindre"], ["irréprochable", "À qui l’on ne peut faire de reproche justifié"],
+      ["irrésistible", "À quoi il est très difficile de résister"], ["dyslexie", "Une difficulté durable d’apprentissage de la lecture"],
+      ["dithyrambe", "Un éloge très enthousiaste"], ["exhumer", "Sortir de terre ou remettre au jour quelque chose d’oublié"],
+      ["exacerber", "Rendre une sensation ou une tension plus forte"], ["subreptice", "Qui se fait discrètement pour ne pas être remarqué"]
+    ] },
+    { "repere": "Suites de voyelles, accents, trémas et ligatures : observe leur écriture, même quand elle est peu audible.", "mots": [
+      ["août", "Le huitième mois de l’année"], ["aïeul", "Un grand-parent ou un ancêtre"],
+      ["aïeule", "Une grand-mère ou une ancêtre"], ["maïs", "Une céréale qui porte ses grains sur un épi"],
+      ["naïveté", "Une confiance ou une simplicité qui manque parfois de recul"], ["ambiguïté", "Le caractère de ce qui peut se comprendre de plusieurs façons"],
+      ["exiguïté", "Le caractère d’un espace très petit"], ["ciguë", "Une plante très toxique"],
+      ["canoë", "Une embarcation légère propulsée à la pagaie"], ["Noël", "Une fête célébrée notamment le 25 décembre"],
+      ["oasis", "Un lieu fertile et arrosé dans une région désertique"], ["ouïe", "Le sens qui permet de percevoir les sons"],
+      ["inouï", "Qui est extraordinaire ou sans précédent"], ["haïr", "Éprouver une très forte aversion"],
+      ["chœur", "Un ensemble de personnes qui chantent ensemble"], ["œuvre", "Une création artistique, littéraire ou intellectuelle"],
+      ["œuf", "Une structure contenant une réserve et parfois un embryon animal"], ["nœud", "Un entrelacement serré d’un fil ou d’une corde"],
+      ["sœur", "Une fille qui a au moins un parent en commun avec une autre personne"], ["cœur", "L’organe qui fait circuler le sang"]
+    ] },
+    { "repere": "Sens savants ou techniques : appuie-toi sur la définition et sur les racines du mot.", "mots": [
+      ["étymologie", "L’étude de l’origine et de l’évolution des mots"], ["onomatopée", "Un mot qui imite un bruit"],
+      ["homonymie", "La relation entre des mots de même forme mais de sens différents"], ["polysémie", "Le fait qu’un même mot possède plusieurs sens"],
+      ["synecdoque", "Une figure qui désigne notamment le tout par une partie ou l’inverse"], ["oxymore", "Une association de mots dont les sens semblent opposés"],
+      ["antithèse", "Une opposition marquée entre deux idées ou expressions"], ["euphémisme", "Une expression qui adoucit une réalité difficile à dire"],
+      ["hyperbole", "Une exagération volontaire dans l’expression"], ["litote", "Une manière d’en dire moins pour faire comprendre davantage"],
+      ["anaphore", "La répétition d’un même début de phrase ou de vers"], ["périphrase", "Un groupe de mots employé à la place d’un terme direct"],
+      ["pléonasme", "Une répétition d’informations dans une expression"], ["néologisme", "Un mot ou un sens nouvellement créé"],
+      ["palindrome", "Un mot ou une suite qui se lit dans les deux sens"], ["anagramme", "Un mot obtenu en réordonnant les lettres d’un autre"],
+      ["hiatus", "La rencontre de deux voyelles prononcées séparément"], ["diphtongue", "Un son vocalique dont le timbre change dans une même syllabe"],
+      ["morphologie", "L’étude de la forme et de la structure des mots ou des organismes"], ["lexicographie", "Le travail de description des mots dans les dictionnaires"]
+    ] },
+    { "repere": "Vocabulaire précis du vivant et des paysages : le mot peut être court et pourtant peu familier.", "mots": [
+      ["isthme", "Une bande étroite de terre entre deux étendues d’eau"], ["fjord", "Un long bras de mer dans une vallée creusée par un glacier"],
+      ["geyser", "Une source qui projette périodiquement de l’eau chaude et de la vapeur"], ["lichen", "Une association durable entre un champignon et un partenaire photosynthétique"],
+      ["mycélium", "L’ensemble des filaments qui constituent une grande partie d’un champignon"], ["sporulation", "La production de spores par un organisme"],
+      ["chrysalide", "Le stade de transformation entre la chenille et le papillon adulte"], ["élytre", "Une aile avant durcie qui protège les ailes de certains insectes"],
+      ["thorax", "La partie du corps située entre la tête et l’abdomen chez les insectes"], ["proboscis", "Une trompe ou un organe allongé chez certains animaux"],
+      ["écholocation", "Le repérage d’obstacles grâce à l’écho de sons émis"], ["mimétisme", "Une ressemblance qui aide un être vivant à se confondre avec son environnement"],
+      ["symbiose", "Une association étroite et durable entre des organismes d’espèces différentes"], ["endémique", "Qui n’existe naturellement que dans une région donnée"],
+      ["abyssal", "Qui appartient aux grandes profondeurs marines"], ["pélagique", "Qui vit ou se trouve en pleine eau, loin du fond"],
+      ["estuaire", "L’embouchure d’un cours d’eau influencée par les marées"], ["mangrove", "Une forêt littorale tropicale adaptée à l’eau salée"],
+      ["tourbière", "Un milieu humide où s’accumule de la matière végétale peu décomposée"], ["paon", "Un oiseau dont le mâle peut déployer une grande roue de plumes"]
+    ] },
+    { "repere": "Idées abstraites et mots moins fréquents : reformule la définition avant de mémoriser l’orthographe.", "mots": [
+      ["altruisme", "Le souci du bien d’autrui"], ["bienveillance", "Une disposition à vouloir du bien aux autres"],
+      ["magnanimité", "La générosité de quelqu’un qui pardonne ou dépasse ses intérêts"], ["pusillanime", "Qui manque de courage face à une décision"],
+      ["perspicacité", "La capacité à comprendre rapidement ce qui est peu évident"], ["sagacité", "Une finesse de jugement qui permet de voir juste"],
+      ["discernement", "La capacité à distinguer et à juger avec justesse"], ["équanimité", "Une égalité d’humeur face aux événements"],
+      ["résilience", "La capacité à se reconstruire après une épreuve"], ["abnégation", "Le fait de renoncer à son intérêt personnel pour les autres"],
+      ["probité", "Une grande honnêteté dans les actes"], ["intégrité", "Le fait de rester fidèle à des principes honnêtes"],
+      ["rectitude", "La qualité d’une conduite droite et honnête"], ["mansuétude", "Une indulgence qui pousse à traiter les autres avec douceur"],
+      ["clémence", "Une disposition à adoucir une sanction"], ["véhémence", "Une grande force dans l’expression d’un sentiment"],
+      ["éloquence", "L’art de parler avec force et clarté"], ["laconique", "Qui s’exprime en très peu de mots"],
+      ["sibyllin", "Dont le sens est difficile à comprendre"], ["éphémère", "Qui ne dure que très peu de temps"]
+    ] }
+  ]
+}
+</script>
 <script id="moteur-pendu">
 const MoteurPendu = (() => {
   const LETTRES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const MAX_ERREURS = 6;
   const NIVEAUX = Object.freeze([
-    { id: "noob", nom: "Noob", description: "Des mots courts", mots: [["CHAT", "Un animal qui miaule"], ["LUNE", "Elle brille la nuit"], ["POMME", "Un fruit rond"]] },
-    { id: "debutant", nom: "Débutant", description: "Des mots familiers", mots: [["JARDIN", "On y cultive des fleurs"], ["SOLEIL", "Il éclaire la journée"], ["BATEAU", "Il navigue sur l’eau"]] },
-    { id: "intermediaire", nom: "Intermédiaire", description: "Des mots plus longs", mots: [["MONTAGNE", "Un grand relief naturel"], ["PAPILLON", "Un insecte aux ailes colorées"], ["CARAMEL", "Une confiserie sucrée"]] },
-    { id: "expert", nom: "Expert", description: "Des mots à analyser", mots: [["CHOCOLAT", "Une gourmandise au cacao"], ["ESCARGOT", "Un animal qui porte sa maison"], ["PLANETES", "Les astres qui tournent autour d’une étoile"]] },
-    { id: "pro", nom: "Pro", description: "Des mots de champion", mots: [["ASTRONAUTE", "Une personne qui voyage dans l’espace"], ["LABYRINTHE", "Un parcours plein de chemins"], ["EQUILIBRE", "Un état stable, sans tomber"]] }
+    { id: "noob", nom: "Noob", description: "Vocabulaire du quotidien" },
+    { id: "debutant", nom: "Débutant", description: "Sons composés et lettres muettes" },
+    { id: "intermediaire", nom: "Intermédiaire", description: "Doubles consonnes et familles de mots" },
+    { id: "expert", nom: "Expert", description: "Sens précis et racines savantes" },
+    { id: "pro", nom: "Pro", description: "Mots rares et orthographes délicates" }
   ]);
   const DESSINS = Object.freeze([
     "  +---+\n      |\n      |\n      |\n     ===",
@@ -308,17 +686,21 @@ const MoteurPendu = (() => {
     "  +---+\n  O   |\n /|\\  |\n /    |\n     ===",
     "  +---+\n  O   |\n /|\\  |\n / \\  |\n     ==="
   ]);
-  const normaliserLettre = (valeur) => typeof valeur === "string"
-    ? valeur.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 1)
-    : "";
-  function creerPartie(id, hasard = Math.random) {
-    const niveau = NIVEAUX.find((n) => n.id === id);
-    if (!niveau) throw new Error(`niveau inconnu : ${id}`);
+  const normaliserMot = (valeur) => valeur.normalize("NFD").replace(/\p{Diacritic}/gu, "").toUpperCase().replaceAll("Œ", "OE").replaceAll("Æ", "AE");
+  const normaliserLettre = (valeur) => typeof valeur === "string" && /^[A-ZÀ-ÖØ-Ý]$/i.test(valeur.normalize("NFC"))
+    ? normaliserMot(valeur) : "";
+  function motsDuNiveau(dictionnaire, id) {
+    if (!NIVEAUX.some((n) => n.id === id)) throw new Error(`niveau inconnu : ${id}`);
+    return dictionnaire[id].flatMap((groupe) => groupe.mots.map(([mot, indice]) => ({ mot, indice, repere: groupe.repere })));
+  }
+  function creerPartie(id, dictionnaire, hasard = Math.random, precedent = null) {
+    const mots = motsDuNiveau(dictionnaire, id).filter((m) => m.mot !== precedent);
     if (typeof hasard !== "function") throw new Error("hasard doit être une fonction");
     const tirage = hasard();
     if (!Number.isFinite(tirage) || tirage < 0 || tirage >= 1) throw new Error("hasard doit renvoyer un nombre entre 0 inclus et 1 exclu");
-    const [mot, indice] = niveau.mots[Math.floor(tirage * niveau.mots.length)];
-    return { niveau: id, mot, indice, lettres: [], erreurs: 0, aides: 0, terminee: false, resultat: null };
+    const { mot: orthographe, indice, repere } = mots[Math.floor(tirage * mots.length)];
+    const graphie = orthographe.toUpperCase().replaceAll("Œ", "OE").replaceAll("Æ", "AE");
+    return { niveau: id, mot: normaliserMot(graphie), graphie, orthographe, indice, repere, lettres: [], erreurs: 0, terminee: false, resultat: null };
   }
   function jouerLettre(partie, valeur) {
     if (partie.terminee) return "terminee";
@@ -327,13 +709,62 @@ const MoteurPendu = (() => {
     if (partie.lettres.includes(lettre)) return "deja-jouee";
     partie.lettres.push(lettre);
     if (!partie.mot.includes(lettre)) partie.erreurs++;
-    const gagne = [...new Set(partie.mot)].every((l) => partie.lettres.includes(l));
+    const gagne = [...new Set(partie.mot)].every((l) => !LETTRES.includes(l) || partie.lettres.includes(l));
     if (gagne) { partie.terminee = true; partie.resultat = "victoire"; return "victoire"; }
     if (partie.erreurs >= MAX_ERREURS) { partie.terminee = true; partie.resultat = "defaite"; return "defaite"; }
     return partie.mot.includes(lettre) ? "trouve" : "rate";
   }
   function revelerIndice(partie) { return partie.indice; }
-  return Object.freeze({ LETTRES, MAX_ERREURS, NIVEAUX, DESSINS, normaliserLettre, creerPartie, jouerLettre, revelerIndice });
+  return Object.freeze({ LETTRES, MAX_ERREURS, NIVEAUX, DESSINS, normaliserMot, normaliserLettre, motsDuNiveau, creerPartie, jouerLettre, revelerIndice });
+})();
+</script>
+<script id="moteur-orthographe">
+const MoteurOrthographe = (() => {
+  const MAX_MOTS = 100, MAX_LETTRES = 40, MAX_TEXTE = 5000;
+  const normaliser = (texte) => texte.normalize("NFC").trim().toLocaleLowerCase("fr").replaceAll("’", "'");
+  function analyserListe(texte) {
+    if (typeof texte !== "string" || texte.length > MAX_TEXTE) throw new Error(`La liste doit contenir au plus ${MAX_TEXTE} caractères.`);
+    const mots = texte.split(/\r?\n/).map((m) => m.normalize("NFC").trim()).filter(Boolean);
+    if (!mots.length || mots.length > MAX_MOTS) throw new Error(`Prépare une liste de 1 à ${MAX_MOTS} mots.`);
+    const connus = new Set();
+    for (const [i, mot] of mots.entries()) {
+      if (mot.length > MAX_LETTRES || !/^[a-zàâäéèêëîïôöùûüÿçœæ]+(?:[-'’][a-zàâäéèêëîïôöùûüÿçœæ]+)*$/i.test(mot)) {
+        throw new Error(`Ligne ${i + 1} : écris un mot de ${MAX_LETTRES} caractères maximum, sans chiffre ni espace.`);
+      }
+      const cle = normaliser(mot);
+      if (connus.has(cle)) throw new Error(`Ligne ${i + 1} : ce mot est déjà dans la liste.`);
+      connus.add(cle);
+    }
+    return mots;
+  }
+  function creerSession(mots) {
+    if (!Array.isArray(mots) || !mots.every((m) => typeof m === "string")) throw new Error("Une liste de mots est nécessaire.");
+    const liste = analyserListe(mots.join("\n"));
+    return { mots: liste, rang: 0, phase: "observer", resultats: [] };
+  }
+  function cacher(session) {
+    if (session.phase !== "observer") throw new Error("Observe d’abord le mot.");
+    session.phase = "repondre";
+  }
+  function repondre(session, reponse) {
+    if (session.phase !== "repondre") throw new Error("Cache le mot avant de répondre.");
+    if (typeof reponse !== "string" || reponse.length > MAX_LETTRES) throw new Error("La réponse est trop longue.");
+    const mot = session.mots[session.rang];
+    const resultat = { mot, reponse: reponse.trim(), juste: normaliser(reponse) === normaliser(mot) };
+    session.resultats.push(resultat);
+    session.phase = "correction";
+    return resultat;
+  }
+  function suivant(session) {
+    if (session.phase !== "correction") throw new Error("Vérifie la réponse avant de continuer.");
+    session.rang++;
+    session.phase = session.rang === session.mots.length ? "termine" : "observer";
+  }
+  function bilan(session) {
+    const justes = session.resultats.filter((r) => r.juste).length;
+    return { justes, total: session.mots.length, aRevoir: session.resultats.filter((r) => !r.juste).map((r) => r.mot) };
+  }
+  return Object.freeze({ MAX_MOTS, MAX_LETTRES, MAX_TEXTE, normaliser, analyserListe, creerSession, cacher, repondre, suivant, bilan });
 })();
 </script>
 <script id="progression-jeux" data-inclure="gabarit/jeux/progression.js">
@@ -1076,16 +1507,31 @@ const VueAcademie = (() => {
 (() => {
   "use strict";
   const M = MoteurPendu, registre = [], panneaux = document.getElementById("panneaux"), onglets = document.getElementById("onglets");
+  const dictionnaire = JSON.parse(document.getElementById("dictionnaire-pendu").textContent);
+  const avertirStockage = (texte) => { document.getElementById("stockage-avertissement").textContent = texte; };
   function enregistrerOnglet(definition) { registre.push(definition); }
   const stockage = (() => {
     try {
       localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test");
       return {
         disponible: true,
-        lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:pendu:${cle}`) || "null"); } catch { return null; } },
-        ecrire(cle, valeur) { localStorage.setItem(`kermiclab:pendu:${cle}`, JSON.stringify(valeur)); }
+        lire(cle) {
+          try { return JSON.parse(localStorage.getItem(`kermiclab:pendu:${cle}`) || "null"); }
+          catch { avertirStockage("Une sauvegarde est illisible. Tu peux continuer, mais vérifie ta liste avant de l’enregistrer."); return null; }
+        },
+        ecrire(cle, valeur) {
+          try { localStorage.setItem(`kermiclab:pendu:${cle}`, JSON.stringify(valeur)); return true; }
+          catch { avertirStockage("Enregistrement impossible sur cet appareil. Tes changements ne seront pas conservés après fermeture."); return false; }
+        },
+        effacer(cle) {
+          try { localStorage.removeItem(`kermiclab:pendu:${cle}`); return true; }
+          catch { avertirStockage("La liste enregistrée n’a pas pu être effacée sur cet appareil."); return false; }
+        }
       };
-    } catch { return { disponible: false, lire: () => null, ecrire() {} }; }
+    } catch {
+      avertirStockage("Le stockage local est indisponible : tu peux jouer et tester des mots, mais rien ne sera conservé après fermeture.");
+      return { disponible: false, lire: () => null, ecrire: () => false, effacer: () => false };
+    }
   })();
   const sauvegarde = stockage.lire("partie");
   const progression = { ouvert: Number.isInteger(sauvegarde?.ouvert) ? Math.max(0, Math.min(M.NIVEAUX.length - 1, sauvegarde.ouvert)) : 0 };
@@ -1100,6 +1546,7 @@ const VueAcademie = (() => {
     const erreurs = p.querySelector('[data-sortie="erreurs"]'), objectif = p.querySelector('[data-sortie="objectif"]');
     const message = p.querySelector('[data-sortie="message"]'), boutonSuivant = p.querySelector('[data-action="suivant"]');
     let rang = 0, partie;
+    const derniersMots = new Map(), fiche = p.querySelector('[data-zone="fiche-mot"]');
     const boutonsNiveau = M.NIVEAUX.map((niveau, i) => {
       const b = document.createElement("button"); b.type = "button"; b.className = "niveau"; b.dataset.rang = String(i);
       b.append(document.createTextNode(`${niveau.nom} `));
@@ -1115,9 +1562,10 @@ const VueAcademie = (() => {
     }
     function annoncer(texte, classe = "") { sortie(message, texte); message.className = `message ${classe}`; }
     function afficher() {
-      mot.replaceChildren(...[...partie.mot].map((lettre) => {
-        const n = document.createElement("span"); n.className = "lettre-mot"; n.textContent = partie.lettres.includes(lettre) || partie.terminee ? lettre : "＿";
-        n.setAttribute("aria-label", partie.lettres.includes(lettre) || partie.terminee ? lettre : "lettre cachée");
+      mot.replaceChildren(...[...partie.graphie].map((lettre, i) => {
+        const revelee = !M.LETTRES.includes(partie.mot[i]) || partie.lettres.includes(partie.mot[i]) || partie.terminee;
+        const n = document.createElement("span"); n.className = "lettre-mot"; n.textContent = revelee ? lettre : "＿";
+        n.setAttribute("aria-label", revelee ? lettre : "lettre cachée");
         return n;
       }));
       dessin.textContent = M.DESSINS[partie.erreurs];
@@ -1129,13 +1577,16 @@ const VueAcademie = (() => {
     function terminer() {
       const gagne = partie.resultat === "victoire";
       if (gagne && rang === progression.ouvert && progression.ouvert < M.NIVEAUX.length - 1) progression.ouvert++;
-      try { stockage.ecrire("partie", progression); }
-      catch { annoncer("Partie terminée, mais la progression ne peut pas être enregistrée sur cet appareil.", "ko"); }
+      stockage.ecrire("partie", progression);
       if (gagne) {
         academie?.enregistrerPartie?.({ resultat: "victoire", niveau: M.NIVEAUX[rang].id });
         if (partie.erreurs === 0) academie?.compter?.({ "sans-erreur": 1 });
       } else academie?.enregistrerPartie?.({ resultat: "defaite", niveau: M.NIVEAUX[rang].id });
       afficher();
+      fiche.hidden = false;
+      sortie(p.querySelector('[data-sortie="mot-decouvert"]'), `À retenir : ${partie.orthographe}`);
+      sortie(p.querySelector('[data-sortie="definition"]'), `Définition : ${partie.indice}`);
+      sortie(p.querySelector('[data-sortie="orthographe"]'), partie.repere);
       if (gagne) {
         annoncer("Mot trouvé ! 🎉 Bravo !", "ok");
         boutonSuivant.hidden = rang >= M.NIVEAUX.length - 1;
@@ -1144,20 +1595,24 @@ const VueAcademie = (() => {
     function saisir(lettre) {
       const resultat = M.jouerLettre(partie, lettre);
       if (resultat === "invalide" || resultat === "deja-jouee" || resultat === "terminee") return;
-      if (resultat === "victoire" || resultat === "defaite") { partie.resultat = resultat; terminer(); return; }
+      if (resultat === "victoire" || resultat === "defaite") { terminer(); return; }
       afficher();
       annoncer(resultat === "trouve" ? "Bien joué, cette lettre est dans le mot !" : "Cette lettre n’est pas dans le mot.", resultat === "trouve" ? "ok" : "ko");
     }
     function demarrer(i, nouveauMot = false) {
-      rang = i; partie = M.creerPartie(M.NIVEAUX[i].id); boutonSuivant.hidden = true;
-      sortie(objectif, `${M.NIVEAUX[i].nom} — ${M.NIVEAUX[i].description}. Devine le mot de ${partie.mot.length} lettres.`);
+      rang = i;
+      const id = M.NIVEAUX[i].id;
+      partie = M.creerPartie(id, dictionnaire, Math.random, derniersMots.get(id));
+      derniersMots.set(id, partie.orthographe);
+      boutonSuivant.hidden = true; fiche.hidden = true;
+      sortie(objectif, `${M.NIVEAUX[i].nom} — ${M.NIVEAUX[i].description} (100 mots). Devine le mot de ${partie.mot.replace(/[^A-Z]/g, "").length} lettres.`);
       afficher(); annoncer(nouveauMot ? "Nouveau mot ! À toi de jouer." : "Choisis une lettre au clavier ou à l’écran.");
     }
     p.querySelector('[data-action="nouvelle"]').addEventListener("click", () => demarrer(rang, true));
     p.querySelector('[data-action="indice"]').addEventListener("click", () => annoncer(`Indice : ${M.revelerIndice(partie)}`));
     boutonSuivant.addEventListener("click", () => demarrer(Math.min(rang + 1, progression.ouvert)));
     document.addEventListener("keydown", (e) => {
-      if (!/^[a-zA-ZÀ-ÿ]$/.test(e.key) || p.closest('[role="tabpanel"]').hidden) return;
+      if (!M.normaliserLettre(e.key) || e.ctrlKey || e.altKey || e.metaKey || e.isComposing || p.hidden) return;
       e.preventDefault(); saisir(e.key);
     });
     demarrer(rang);
@@ -1166,9 +1621,112 @@ const VueAcademie = (() => {
     const parcours = JSON.parse(document.getElementById("parcours-pendu").textContent);
     const progressionJeu = ProgressionJeux.creer(parcours);
     academie = VueAcademie.monter({
-      panneau: p, progression: progressionJeu, stockage, stockageDisponible: stockage.disponible, ouvrirOnglet,
+      panneau: p, progression: progressionJeu, stockage, stockageDisponible: stockage.disponible, ouvrirOnglet: (id) => ouvrirOnglet(id),
       embleme: (symbole) => Object.assign(document.createElement("span"), { textContent: symbole })
     });
+  } });
+  enregistrerOnglet({ id: "orthographe", type: "entrainement", titre: "Mes mots", rendu(p) {
+    p.append(document.getElementById("tpl-orthographe").content.cloneNode(true));
+    const O = MoteurOrthographe;
+    const zone = (nom) => p.querySelector(`[data-zone="${nom}"]`);
+    const entree = (nom) => p.querySelector(`[data-entree="${nom}"]`);
+    const texte = (nom) => p.querySelector(`[data-sortie="${nom}"]`);
+    const bouton = (nom) => p.querySelector(`[data-action="${nom}"]`);
+    const liste = entree("liste"), reponse = entree("reponse");
+    const notices = new Map(M.NIVEAUX.flatMap((n) => M.motsDuNiveau(dictionnaire, n.id)).map((m) => [O.normaliser(m.mot), m]));
+    let session = null;
+    for (const niveau of M.NIVEAUX) {
+      const option = document.createElement("option"); option.value = niveau.id; option.textContent = `${niveau.nom} — ${niveau.description}`;
+      entree("niveau").append(option);
+    }
+    const sauvegardeMots = stockage.lire("mots");
+    if (sauvegardeMots !== null) {
+      try { liste.value = O.analyserListe(sauvegardeMots).join("\n"); }
+      catch (e) { texte("liste-message").textContent = `Liste enregistrée invalide : ${e.message} Prépare une nouvelle liste.`; }
+    }
+    function informer(message, ok = false) {
+      texte("liste-message").textContent = message;
+      texte("liste-message").className = `message ${ok ? "ok" : "ko"}`;
+    }
+    function listeValide() {
+      try { return O.analyserListe(liste.value); }
+      catch (e) { informer(e.message); liste.focus(); return null; }
+    }
+    function afficherMot() {
+      const observer = session.phase === "observer", repondre = session.phase === "repondre";
+      zone("observer-mot").hidden = !observer; zone("repondre-mot").hidden = !repondre;
+      bouton("mot-suivant").hidden = session.phase !== "correction";
+      texte("avancement-mots").textContent = `Mot ${session.rang + 1} sur ${session.mots.length}`;
+      texte("mot-a-retenir").textContent = observer ? session.mots[session.rang] : "";
+      const notice = notices.get(O.normaliser(session.mots[session.rang]));
+      texte("definition-mot").textContent = observer && notice ? notice.indice : "";
+      if (observer) {
+        texte("correction-mot").textContent = ""; reponse.value = "";
+        texte("mot-a-retenir").focus();
+      } else if (repondre) reponse.focus();
+    }
+    function demarrer(mots) {
+      session = O.creerSession(mots);
+      zone("editeur").hidden = true; zone("bilan-mots").hidden = true; zone("test-mots").hidden = false;
+      afficherMot();
+    }
+    function modifier() {
+      session = null;
+      zone("editeur").hidden = false; zone("bilan-mots").hidden = true; zone("test-mots").hidden = true;
+      texte("mot-a-retenir").textContent = ""; texte("definition-mot").textContent = "";
+      texte("correction-mot").textContent = ""; texte("details-mots").replaceChildren(); reponse.value = "";
+      liste.focus();
+    }
+    function corriger(passer = false) {
+      if (session?.phase !== "repondre") return;
+      if (!passer && !reponse.value.trim()) {
+        texte("correction-mot").textContent = "Écris une réponse, ou choisis « Je ne sais pas »."; reponse.focus(); return;
+      }
+      const resultat = O.repondre(session, passer ? "" : reponse.value);
+      const notice = notices.get(O.normaliser(resultat.mot));
+      afficherMot();
+      texte("correction-mot").textContent = `${resultat.juste ? "✓ Bien écrit !" : "À retravailler :"} ${resultat.mot}.${notice ? ` ${notice.indice}. ${notice.repere}` : " Observe chaque lettre avant de réessayer."}`;
+      texte("correction-mot").className = `message ${resultat.juste ? "ok" : "ko"}`;
+      bouton("mot-suivant").textContent = session.rang === session.mots.length - 1 ? "Voir mon bilan" : "Mot suivant";
+      bouton("mot-suivant").focus();
+    }
+    bouton("charger-mots").addEventListener("click", () => {
+      liste.value = M.motsDuNiveau(dictionnaire, entree("niveau").value).map((m) => m.mot).join("\n");
+      informer("100 mots chargés. Modifie la liste si besoin, puis enregistre-la ou commence le test.", true);
+    });
+    bouton("sauver-mots").addEventListener("click", () => {
+      const mots = listeValide();
+      if (!mots) return;
+      const enregistre = stockage.ecrire("mots", mots.join("\n"));
+      informer(enregistre ? `${mots.length} mot(s) enregistré(s) sur cet appareil.` : "Enregistrement impossible. Tu peux tout de même commencer le test.", enregistre);
+    });
+    bouton("effacer-mots").addEventListener("click", () => {
+      const efface = stockage.effacer("mots");
+      if (efface) liste.value = "";
+      informer(efface ? "Liste enregistrée effacée." : "La liste enregistrée n’a pas pu être effacée.", efface);
+    });
+    bouton("tester-mots").addEventListener("click", () => { const mots = listeValide(); if (mots) demarrer(mots); });
+    bouton("cacher-mot").addEventListener("click", () => { O.cacher(session); afficherMot(); });
+    bouton("verifier-mot").addEventListener("click", () => corriger());
+    bouton("passer-mot").addEventListener("click", () => corriger(true));
+    reponse.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.isComposing) { e.preventDefault(); corriger(); } });
+    bouton("mot-suivant").addEventListener("click", () => {
+      O.suivant(session);
+      if (session.phase !== "termine") { afficherMot(); return; }
+      zone("test-mots").hidden = true; zone("bilan-mots").hidden = false;
+      const bilan = O.bilan(session);
+      texte("bilan-mots").textContent = `${bilan.justes} / ${bilan.total} mots bien écrits`;
+      texte("details-mots").replaceChildren(...session.resultats.map((r) => {
+        const li = document.createElement("li");
+        li.textContent = r.juste ? `✓ ${r.mot}` : `${r.mot} — à revoir (ta réponse : ${r.reponse || "pas de réponse"}).`;
+        return li;
+      }));
+      bouton("revoir-mots").hidden = bilan.aRevoir.length === 0;
+      texte("bilan-mots").focus();
+    });
+    bouton("revoir-mots").addEventListener("click", () => demarrer(O.bilan(session).aRevoir));
+    bouton("modifier-mots").addEventListener("click", modifier);
+    bouton("abandonner-mots").addEventListener("click", modifier);
   } });
   enregistrerOnglet({ id: "mise-en-situation", titre: "Défi", rendu(p) {
     p.append(document.getElementById("tpl-defis").content.cloneNode(true));
