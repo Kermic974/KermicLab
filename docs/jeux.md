@@ -2,7 +2,8 @@
 
 Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/2048/` (fusion de tuiles,
 progression de Noob à Pro), `catalogue/demineur/` (grille, hasard),
-`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données), `catalogue/pendu/` (mots, clavier et Académie),
+`catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données), `catalogue/pendu/` (500 mots classés
+par complexité, définitions, Académie et listes éditables avec tests de mémorisation orthographique),
 `catalogue/belote/` (jeu de cartes à quatre,
 exercices « pli » et « enchère »), `catalogue/sudoku/` (grilles à solution unique, saisie clavier et tactile,
 progression du débutant au pro), `catalogue/mots-fleches/` (mots croisés, saisie clavier et tactile, Académie de Noob à Pro)
@@ -57,3 +58,18 @@ npm run build && npm run ci
 ```
 
 Relecture humaine : jouer quelques parties sur ordinateur et sur téléphone.
+
+### Dictionnaire et listes du pendu
+
+Le bloc JSON `dictionnaire-pendu` de `catalogue/pendu/page.html` contient cinq niveaux de **100 mots chacun**.
+Chaque groupe fournit un repère orthographique et chaque entrée une graphie française et une définition.
+Noob privilégie le vocabulaire quotidien ; Débutant, les sons composés et lettres muettes ; Intermédiaire, les
+consonnes doubles et familles de mots ; Expert, les sens précis et racines savantes ; Pro, les mots rares,
+accents et graphies atypiques. Ces niveaux sont pédagogiques, pas un classement scolaire ou une mesure automatique.
+Les tests vérifient les effectifs exacts, l’unicité des 500 mots et leur jouabilité, accents et ligatures compris.
+
+L’onglet **Mes mots** réutilise ce dictionnaire ou une liste locale éditable. Le moteur pur
+`moteur-orthographe` gère les étapes observation → écriture du mot caché → correction → bilan, puis la révision
+des erreurs. Il exige l’orthographe exacte (accents et ligatures), mais accepte la casse et les variantes
+d’apostrophe. Aucun son ni service distant n’est nécessaire. Les listes enregistrées utilisent une clé locale
+séparée de l’Académie ; réponses et bilan ne sont jamais persistés ni envoyés au pont des trophées.
