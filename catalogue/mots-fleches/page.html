@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XnmKlnnabcdiQaFGbjt/93gXh6fb4QYfIbwG/jorwtA=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-6/Y3XISzMf4CBf3qlJbFoPAr/GZqkixCGDZZz0UQRmM=' 'sha256-9ZXcXuw8v7c6geam87w8ux3kXEEUGN2AuWnKgkrRHC0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KEYNihQI8va1VTDbUSyRhj9zzh0iWQVkTG6hnnoObK0=' 'sha256-XnmKlnnabcdiQaFGbjt/93gXh6fb4QYfIbwG/jorwtA=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-9ZXcXuw8v7c6geam87w8ux3kXEEUGN2AuWnKgkrRHC0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Mots fléchés – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -157,6 +157,28 @@ button.danger { border-color: var(--alerte); color: var(--alerte); }
 .message { min-height: 1.6em; font-weight: 600; margin: 8px 0; }
 .message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
 </style>
+<script id="trophees" data-inclure="gabarit/jeux/trophees.js">
+// Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+const Trophees = (() => {
+  function monter({ restaurer, resumer }) {
+    if (window.parent === window) return () => {};
+    const module = JSON.parse(document.getElementById("kermiclab-meta").textContent).id;
+    let pret = false;
+    const publier = () => {
+      if (pret) window.parent.postMessage({ type: "kermiclab:trophees:progres", module, ...resumer() }, "*");
+    };
+    window.addEventListener("message", (e) => {
+      if (e.source !== window.parent || e.data?.type !== "kermiclab:trophees:charger" || e.data.module !== module || pret) return;
+      if (e.data.etat !== null) restaurer(e.data.etat);
+      pret = true;
+      publier();
+    });
+    window.parent.postMessage({ type: "kermiclab:trophees:pret", module }, "*");
+    return publier;
+  }
+  return Object.freeze({ monter });
+})();
+</script>
 </head>
 <body>
 <header>
@@ -683,7 +705,24 @@ const VueAcademie = (() => {
     const parcours = P.parcours;
     let etat = P.normaliser(stockage.lire(cle));
     let session = null, ex = null, confirmationEffacement = false;
-    const sauver = () => stockage.ecrire(cle, etat);
+    const sauver = () => { stockage.ecrire(cle, etat); publier(); };
+    const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
+      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); },
+      resumer() {
+        z.stockage.hidden = true;
+        const lecons = parcours.grades.flatMap((g) => g.lecons);
+        return {
+          genre: "jeux", etat,
+          xp: etat.xp, niveau: P.niveau(etat.xp).niveau,
+          etoiles: Object.values(etat.lecons).reduce((s, l) => s + l.etoiles, 0), etoilesTotal: lecons.length * 3,
+          lecons: Object.keys(etat.lecons).length, leconsTotal: lecons.length,
+          grades: P.gradesObtenus(etat), gradesTotal: parcours.grades.length,
+          serie: P.serieActuelle(etat, jour()), dernierJour: etat.dernierJour, revisions: etat.revisions,
+          victoires: Object.values(etat.parties).reduce((s, p) => s + p.victoires, 0),
+          badges: P.badges(etat)
+        };
+      }
+    });
 
     /* ---------- Squelette ---------- */
     const toast = el("p", { classe: "toast", "data-sortie": "toast", role: "status", "aria-live": "polite" });

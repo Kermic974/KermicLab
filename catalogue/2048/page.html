@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-IpR2zTyOVuh2b/KLhZIMHjjK5r0TB+bgrbs5lbIQT2E=' 'sha256-zexWowLxxmFshjgGsTQathGppiI16+M1sc0a7v9Ic8A='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-KEYNihQI8va1VTDbUSyRhj9zzh0iWQVkTG6hnnoObK0=' 'sha256-IpR2zTyOVuh2b/KLhZIMHjjK5r0TB+bgrbs5lbIQT2E=' 'sha256-kSWHX77VKwqaQmGZ8gJfkbmlHi+Wnf81n6kiA6F2Hs0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>2048 – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -83,6 +83,28 @@ button.secondaire[aria-pressed="true"], button.secondaire.actif { border-color: 
 footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
 @media (max-width: 480px) { header { align-items: flex-start; } .carte { padding: 11px; } .plateau { gap: 6px; padding: 6px; } }
 </style>
+<script id="trophees" data-inclure="gabarit/jeux/trophees.js">
+// Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+const Trophees = (() => {
+  function monter({ restaurer, resumer }) {
+    if (window.parent === window) return () => {};
+    const module = JSON.parse(document.getElementById("kermiclab-meta").textContent).id;
+    let pret = false;
+    const publier = () => {
+      if (pret) window.parent.postMessage({ type: "kermiclab:trophees:progres", module, ...resumer() }, "*");
+    };
+    window.addEventListener("message", (e) => {
+      if (e.source !== window.parent || e.data?.type !== "kermiclab:trophees:charger" || e.data.module !== module || pret) return;
+      if (e.data.etat !== null) restaurer(e.data.etat);
+      pret = true;
+      publier();
+    });
+    window.parent.postMessage({ type: "kermiclab:trophees:pret", module }, "*");
+    return publier;
+  }
+  return Object.freeze({ monter });
+})();
+</script>
 </head>
 <body>
 <header>
@@ -216,7 +238,7 @@ const Moteur2048 = (() => {
           try { return JSON.parse(localStorage.getItem("kermiclab:2048") || '{"debloque":0,"record":0,"meilleureTuile":0}'); }
           catch { return { debloque: 0, record: 0, meilleureTuile: 0 }; }
         },
-        ecrire(valeur) { localStorage.setItem("kermiclab:2048", JSON.stringify(valeur)); }
+        ecrire(valeur) { try { localStorage.setItem("kermiclab:2048", JSON.stringify(valeur)); } catch { /* iframe isolée : le parent conserve la progression */ } publier(); }
       };
     } catch { return { lire: () => ({ debloque: 0, record: 0, meilleureTuile: 0 }), ecrire() {} }; }
   })();
@@ -227,6 +249,19 @@ const Moteur2048 = (() => {
   let ouvrirOnglet = () => {};
   const academie = {};
   let jeu = {};
+  const publier = Trophees.monter({
+    restaurer(brut) {
+      progression.debloque = Number.isInteger(brut?.debloque) ? Math.max(0, Math.min(M.NIVEAUX.length - 1, brut.debloque)) : 0;
+      progression.record = Number.isSafeInteger(brut?.record) && brut.record >= 0 ? brut.record : 0;
+      progression.meilleureTuile = Number.isSafeInteger(brut?.meilleureTuile) && brut.meilleureTuile >= 0 ? brut.meilleureTuile : 0;
+      afficherAcademie();
+      jeu.demarrer(progression.debloque);
+    },
+    resumer: () => ({ genre: "jeux", etat: progression, record: progression.record, badges: M.NIVEAUX.map((n) => ({
+      id: String(n.cible), nom: n.nom, description: `${n.cible}`, icone: "🏆",
+      actuel: Math.min(progression.meilleureTuile, n.cible), cible: n.cible, obtenu: progression.meilleureTuile >= n.cible
+    })) })
+  });
 
   enregistrerOnglet({ id: "explication", titre: "Règles", rendu(p) { p.append(document.getElementById("tpl-regles").content.cloneNode(true)); } });
   enregistrerOnglet({ id: "application", titre: "Jouer", rendu(p) {

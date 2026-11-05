@@ -36,6 +36,37 @@ compteurs, des identifiants de leçons et des dates.
 
 ## Détail
 
+### Tableau de bord : « Mes trophées »
+
+La rubrique « Mes trophées » rassemble les succès d'exploration et du défi express, les étoiles des notions
+du gabarit commun, les deux objectifs du mini-lab du cercle (trois angles manipulés et `sin(θ) = 1`),
+le record du Lab `trigo-cercle`, ainsi que les parcours des jeux. L'Académie commune
+(Échecs, Démineur, Belote, Mots fléchés, Pendu) remonte XP, niveau, étoiles, leçons, grades, série,
+révisions, victoires et tous ses badges avec leur avancement. Sudoku remonte ses grades réellement terminés
+(le premier grade ouvert n'est pas un grade obtenu) et 2048 ses objectifs de tuiles et son record.
+Les jeux sans adaptateur ne déclarent aucun résultat ; un état vide est affiché, sans inventer de réussite.
+Les XP ne sont pas additionnés : les règles et les niveaux diffèrent selon les parcours.
+
+Le pont autonome `gabarit/jeux/trophees.js`, inclus au build avec ses hashes CSP, échange seulement avec le parent
+par `postMessage`. Les iframes restent `sandbox="allow-scripts"`, **sans** `allow-same-origin`.
+Le module envoie `kermiclab:trophees:pret` avec son identifiant ; le tableau de bord répond par
+`kermiclab:trophees:charger` avec l'état précédemment conservé (ou `null`). L'adaptateur valide cet état,
+restaure sa progression et publie `kermiclab:trophees:progres` à chaque changement, avec ses compteurs,
+ses badges et l'état nécessaire à la reprise. Le parent vérifie la fenêtre source, son origine opaque,
+l'identifiant attendu et le format borné de l'instantané. L'enfant accepte une seule restauration,
+uniquement depuis sa fenêtre parente. L'origine opaque impose `targetOrigin: "*"`, sans ouverture réseau.
+
+Les instantanés sont conservés sous `kermiclab:trophees`, en session par défaut, dans le stockage local
+uniquement après choix de mémorisation. Changer ce choix déplace les instantanés ; l'effacement du profil les
+supprime des deux stockages. Effacer la progression dans l'Académie met aussi à jour le tableau de bord.
+Une page ouverte séparément reste autonome, avec son propre stockage : **pas de synchronisation entre origines
+ni de récupération des anciens résultats de pages plein écran**. Aucun résultat n'est envoyé au serveur.
+
+English: **My trophies** combines exploration achievements, concept and mini-lab stars, lab records and compatible
+game learning paths. Sandboxed pages exchange bounded, source-checked local snapshots with the dashboard;
+progress follows the profile's session/remember/erase choice. XP scales remain separate. Standalone pages retain
+their independent storage and do not sync with the dashboard.
+
 ### Gains d'XP
 
 | Action | XP |

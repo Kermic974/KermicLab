@@ -4,12 +4,13 @@
 import * as progression from "./progression.js";
 import * as profil from "./profil.js";
 import { monterCercle } from "./cercle.js";
+import * as trophees from "./trophees.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
   config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null,
-  memoire: false, pseudo: null, reprise: false, cercle: null
+  memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
@@ -77,6 +78,7 @@ async function appliquerLangue(langue) {
   rendreCatalogue();
   rafraichirTheme();
   etat.cercle?.rafraichir();
+  if ($("#progres").open) remplirProgres();
 }
 
 /* ---------- Auth & Compte ---------- */
@@ -305,8 +307,9 @@ function carteMaquette(maquette) {
 
   const cadre = element("iframe", { attributs: { src: maquette.url, title: maquette.titre, loading: "lazy" } });
   // Même origine que le chat : pas d'allow-same-origin, pour que la maquette reste isolée de la page.
-  // Les scores sont conservés en ouvrant la page en plein écran.
+  // Les modules compatibles confient leur progression locale au tableau de bord par postMessage.
   cadre.setAttribute("sandbox", "allow-scripts");
+  cadre.dataset.module = maquette.id;
   bascule.addEventListener("click", () => {
     const ouvert = bascule.getAttribute("aria-expanded") === "true";
     bascule.setAttribute("aria-expanded", String(!ouvert));
@@ -437,6 +440,82 @@ function remplirProgres() {
     );
     liste.append(li);
   }
+  rendreTrophees();
+}
+
+function rendreTrophees() {
+  const modules = Object.entries(etat.trophees);
+  const obtenus = etat.progres.badges.length + modules.reduce((s, [, m]) => s + m.badges.filter((b) => b.obtenu).length, 0);
+  $("#trophees-resume").textContent = t("tropheesResume", { n: obtenus, m: modules.length });
+  for (const genre of ["notions", "labs", "jeux"]) {
+    const zone = $(`#trophees-${genre}`);
+    zone.replaceChildren();
+    const selection = modules.filter(([, m]) => m.genre === genre);
+    if (!selection.length) zone.append(element("p", { classe: "doux", cle: "tropheesVide" }));
+    for (const [id, m] of selection) {
+      const carte = element("article", { classe: "trophee-module", attributs: { "data-trophee-module": id } });
+      const notion = notionParId(id);
+      carte.append(element("h4", { texte: id === "mini-cercle" ? t("minilabTitre") : notion?.titre ?? id }));
+      if (id === "mini-cercle") carte.append(element("p", { cle: "tropheesMiniLab" }));
+      const chiffres = element("dl", { classe: "trophees-chiffres" });
+      for (const [cle, valeur] of [
+        ["tropheesXp", m.xp], ["tropheesNiveau", m.niveau], ["tropheesEtoiles", m.etoiles === undefined ? undefined : `${m.etoiles} / ${m.etoilesTotal}`],
+        ["tropheesLecons", m.lecons === undefined ? undefined : `${m.lecons} / ${m.leconsTotal}`],
+        ["tropheesGrades", m.grades === undefined ? undefined : `${m.grades} / ${m.gradesTotal}`],
+        ["statSerie", m.serie === undefined ? undefined : progression.serieCourante(m)],
+        ["tropheesRevisions", m.revisions], ["tropheesVictoires", m.victoires], ["tropheesRecord", m.record]
+      ]) {
+        if (valeur === undefined) continue;
+        const d = element("div");
+        d.append(element("dt", { texte: t(cle) }), element("dd", { texte: String(valeur) }));
+        chiffres.append(d);
+      }
+      carte.append(chiffres);
+      if (m.etoilesTotal) {
+        const barre = element("progress", { attributs: { max: m.etoilesTotal, value: m.etoiles, "aria-label": t("tropheesEtoiles") } });
+        carte.append(barre);
+      }
+      if (m.badges.length) {
+        const details = element("details");
+        details.append(element("summary", { texte: t("tropheesBadges", { n: m.badges.filter((b) => b.obtenu).length, m: m.badges.length }) }));
+        const badges = element("ul", { classe: "badges" });
+        for (const b of m.badges) {
+          const li = element("li", { classe: `badge ${b.obtenu ? "obtenu" : "verrouille"}` });
+          li.append(element("strong", { texte: `${b.obtenu ? b.icone : "🔒"} ${b.nom}` }),
+            element("span", { texte: b.description }),
+            element("span", { texte: b.obtenu ? t("tropheesObtenu") : `${t("badgeVerrouille")} · ${b.actuel} / ${b.cible}` }),
+            element("progress", { attributs: { max: b.cible, value: b.actuel, "aria-label": b.nom } }));
+          badges.append(li);
+        }
+        details.append(badges); carte.append(details);
+      }
+      if (notion) {
+        const reprendre = element("button", { classe: "secondaire", cle: "reprendreBouton", attributs: { type: "button" } });
+        reprendre.addEventListener("click", () => { $("#progres").close(); ouvrirNotion(notion); });
+        carte.append(reprendre);
+      }
+      zone.append(carte);
+    }
+  }
+}
+
+function brancherTrophees() {
+  window.addEventListener("message", (e) => {
+    // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
+    const cadre = [...document.querySelectorAll("iframe[data-module]")].find((c) => c.contentWindow === e.source);
+    if (!cadre || e.origin !== "null" || !cadre.hasAttribute("src")) return;
+    const id = cadre.dataset.module;
+    if (e.data?.module !== id) return;
+    if (e.data?.type === "kermiclab:trophees:pret") {
+      cadre.contentWindow.postMessage({ type: "kermiclab:trophees:charger", module: id, etat: etat.trophees[id]?.etat ?? null }, "*");
+    } else if (e.data?.type === "kermiclab:trophees:progres") {
+      const module = trophees.normaliser(e.data);
+      if (!module) { console.warn("trophees : instantané invalide", id); return; }
+      etat.trophees[id] = module;
+      trophees.sauver(stockage(), etat.trophees);
+      if ($("#progres").open) remplirProgres();
+    }
+  });
 }
 
 /* ---------- Barre de navigation du catalogue ---------- */
@@ -552,6 +631,7 @@ function ouvrirBulle(n, url) {
   const cadre = $("#bulle-cadre");
   // Même origine que le chat : pas d'allow-same-origin, pour que la page reste isolée (comme dans le fil).
   cadre.title = n.titre;
+  cadre.dataset.module = n.id;
   cadre.src = url;
   bulle.dataset.notion = n.id;
   if (!bulle.open) bulle.showModal();
@@ -562,7 +642,7 @@ function brancherBulle() {
   const bulle = $("#bulle-lab");
   brancherDialogue(bulle, $("#fermer-bulle"));
   // Fermée : on décharge la page pour arrêter ses animations et libérer la mémoire.
-  bulle.addEventListener("close", () => { $("#bulle-cadre").removeAttribute("src"); delete bulle.dataset.notion; });
+  bulle.addEventListener("close", () => { $("#bulle-cadre").removeAttribute("src"); delete $("#bulle-cadre").dataset.module; delete bulle.dataset.notion; });
   $("#bulle-question").addEventListener("click", () => {
     bulle.close();
     marquerNavigation("accueil");
@@ -635,6 +715,8 @@ function brancherDialogue(dialogue, boutonFermer) {
 async function demarrer() {
   etat.config = await chargerJson("config.json");
   initialiserSession();
+  etat.trophees = trophees.charger(stockage());
+  brancherTrophees();
   appliquerTheme(lireCle(preferences(), CLE_THEME));
   const select = $("#langue");
   for (const l of etat.config.langues) {
@@ -709,7 +791,13 @@ async function demarrer() {
     ecrireCle(preferences(), CLE_THEME, suivant);
     appliquerTheme(suivant);
   });
-  etat.cercle = monterCercle($("#minilab"), { t, langue: () => etat.langue });
+  etat.cercle = monterCercle($("#minilab"), { t, langue: () => etat.langue, manipuler: (angle) => {
+    const avant = etat.trophees["mini-cercle"]?.etat;
+    const angles = [...new Set([...(Array.isArray(avant?.angles) ? avant.angles.filter((a) => Number.isInteger(a) && a >= 0 && a <= 360) : []), angle])];
+    const cible = avant?.cible === true || angle === 90;
+    etat.trophees["mini-cercle"] = { genre: "labs", etat: { angles, cible }, etoiles: Number(angles.length >= 3) + Number(cible), etoilesTotal: 2, badges: [] };
+    trophees.sauver(stockage(), etat.trophees);
+  } });
   $("#minilab-page").addEventListener("click", () => {
     const n = notionParId("trigo-cercle");
     if (n) ouvrirNotion(n); else location.href = "cercle/";
@@ -741,7 +829,7 @@ function changerMemoire(active) {
   if (active) document.cookie = profil.cookieMemoire({ securise: cookieSecurise() });
   else document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
   etat.memoire = active;
-  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE]) effacerCle(ancien, cle);
+  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE]) effacerCle(ancien, cle);
   if (!active) effacerCle(preferences(), progression.CLE_STOCKAGE);
   sauverSession();
 }
@@ -749,6 +837,7 @@ function changerMemoire(active) {
 function sauverSession() {
   if (etat.pseudo) ecrireCle(stockage(), profil.CLE_PSEUDO, etat.pseudo);
   progression.sauver(stockage(), etat.progres);
+  trophees.sauver(stockage(), etat.trophees);
 }
 
 function messageErreurPseudo(erreur) {
@@ -814,7 +903,7 @@ function brancherProfil() {
     }
     document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
     for (const zone of [preferences(), (() => { try { return window.sessionStorage; } catch { return null; } })()]) {
-      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE]) effacerCle(zone, cle);
+      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE]) effacerCle(zone, cle);
     }
     location.reload();
   });
