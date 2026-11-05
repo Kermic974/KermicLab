@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "site": "https://kermiclab.online/",
   "api": "https://kermiclab-api.kermic.workers.dev",
   "artefacts": {
@@ -25,10 +25,10 @@
       "sourcesSha256": "1ea9419d8e2adf64c4895405b09f95345d9c7e723863f7753136a1111566e590"
     },
     "jeux.html": {
-      "version": "1.4.0",
+      "version": "1.5.0",
       "date": "2026-11-05",
       "revision": "6a2966b33171db920621f5d64530a1ed626dbfa8",
-      "squeletteSha256": "43044096e5b8fb4b74677b1962575a6521561c4b1b4b56d0a8f2da0bbfd4353e",
+      "squeletteSha256": "a6c89f6e9396c04fb4844cc0efa493d54073450345864c4034fa5d0c9a4525a1",
       "sourcesSha256": "73b78809a89dcfe7a3efb49132f33bc8802a1ffac1b27b3035472e26e674e307"
     },
     "editorial.html": {
@@ -274,6 +274,23 @@
           "revision": "6a2966b33171db920621f5d64530a1ed626dbfa8",
           "squeletteSha256": "245b4f95c3f80ec4f22c329e009d74e6888a4f9e9e8c73cfdce2a889b26952c8",
           "sourcesSha256": "516d0945c4b567d98a2959abab3fb9990e40eebee45009e1d439b0c2d2c03697"
+        }
+      }
+    },
+    {
+      "version": "1.5.0",
+      "date": "2026-11-05",
+      "modifies": [
+        "jeux.html"
+      ],
+      "precedente": "1.4.0",
+      "artefacts": {
+        "jeux.html": {
+          "version": "1.5.0",
+          "date": "2026-11-05",
+          "revision": "6a2966b33171db920621f5d64530a1ed626dbfa8",
+          "squeletteSha256": "a6c89f6e9396c04fb4844cc0efa493d54073450345864c4034fa5d0c9a4525a1",
+          "sourcesSha256": "73b78809a89dcfe7a3efb49132f33bc8802a1ffac1b27b3035472e26e674e307"
         }
       }
     }
