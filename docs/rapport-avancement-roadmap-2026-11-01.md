@@ -3,6 +3,12 @@
 **Dépôt :** [Kermic974/trigoLab](https://github.com/Kermic974/trigoLab)  
 **Version actuelle de l’application cercle :** 1.4.0
 
+> **Archive au 1er novembre 2026.** Ce rapport conserve l'état constaté à cette date.
+> Pour la feuille de route actualisée au 5 novembre (tableau de bord, huit jeux intégrés,
+> Académie partagée, pendu en PR ouverte et Gantt simplifié), consulter
+> [la roadmap](https://www.kermiclab.online/feuille-de-route.html)
+> ([source versionnée](../web/feuille-de-route.html)).
+
 ## Vue d’ensemble du projet
 
 **trigoLab** (Kermiclab) est un agent conversationnel pédagogique (7-77 ans) qui sert des pages HTML autonomes et versionnées.  
