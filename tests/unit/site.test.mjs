@@ -60,3 +60,14 @@ test("la feuille de route est publiée et accessible entre « Profil et paramèt
     assert.ok(textes.navFeuilleDeRoute, `clé « navFeuilleDeRoute » absente de ${l}.json`);
   }
 });
+
+test("le lien de participation est visible dans les navigations desktop et mobile et traduit", async () => {
+  const html = await readFile(`${racine}web/index.html`, "utf8");
+  assert.equal((html.match(/https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc/g) ?? []).length, 2);
+  assert.match(html, /class="nav-bouton nav-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
+  assert.match(html, /class="nav-mobile-bouton nav-mobile-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
+  for (const l of ["fr", "en"]) {
+    const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
+    assert.ok(textes.navParticiper, `clé « navParticiper » absente de ${l}.json`);
+  }
+});
