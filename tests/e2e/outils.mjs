@@ -41,7 +41,7 @@ export async function ouvrir(nav, url, options = {}) {
 export const racine = new URL("../..", import.meta.url).pathname;
 
 /** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
-export async function simulerApiKermiclab(page, { origine, api, htmlMaquette }) {
+export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false }) {
   const requetes = [];
   await page.route(`${api}/auth/me`, (route) => route.fulfill({
     contentType: "application/json",
@@ -64,7 +64,8 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette }) 
       { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", niveau: "seconde" },
       { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" },
       { id: "electricite", titre: "Circuits électriques et loi d'Ohm", version: "1.0.0", niveau: "college", matiere: "physique-chimie" },
-      { id: "art", titre: "L'art", version: "1.0.0", niveau: "terminale", matiere: "philosophie" }
+      { id: "art", titre: "L'art", version: "1.0.0", niveau: "terminale", matiere: "philosophie" },
+      ...(jeux ? [{ id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux" }] : [])
     ].map((n) => ({ matiere: "mathematiques", ...n })) })
   }));
   await page.route(`${api}/api/chat`, async (route) => {

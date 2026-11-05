@@ -15,10 +15,10 @@ before(async () => {
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
 /** Simule l'API et entre un pseudo de session (fenêtre de premier lancement déjà passée). */
-async function simulerApi(page, { pseudo = "Testeur" } = {}) {
+async function simulerApi(page, { pseudo = "Testeur", jeux = false } = {}) {
   // Le script s'exécute aussi dans les iframes sandboxées des maquettes, sans accès au stockage : on l'ignore alors.
   if (pseudo) await page.addInitScript((p) => { try { if (!sessionStorage.getItem("kermiclab:pseudo")) sessionStorage.setItem("kermiclab:pseudo", p); } catch { /* iframe sandboxée */ } }, pseudo);
-  return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette });
+  return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, jeux });
 }
 
 test("chat : une question sur le sinus affiche la maquette dans le fil", async () => {
@@ -152,11 +152,33 @@ test("catalogue : tiroir « Explorer », recherche sans accents, ouverture direc
   await contexte.close();
 });
 
+test("navigation : les Labs et les jeux ouvrent directement leur catégorie", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page, { jeux: true });
+  await page.goto(serveur.url);
+  const catalogue = page.locator("#catalogue");
+  const labs = page.locator(".barre-laterale [data-nav=labs]");
+  const jeux = page.locator(".barre-laterale [data-nav=jeux]");
+  await labs.click();
+  await catalogue.locator(".notion").first().waitFor();
+  assert.equal(await page.locator("[data-matiere=mathematiques][role=tab]").getAttribute("aria-selected"), "true");
+  assert.equal(await labs.getAttribute("aria-expanded"), "true");
+  assert.equal(await jeux.getAttribute("aria-expanded"), "false");
+  await page.click("#fermer-catalogue");
+  await jeux.click();
+  assert.equal(await page.locator("[data-matiere=jeux][role=tab]").getAttribute("aria-selected"), "true");
+  assert.deepEqual(await catalogue.locator(".notion").allTextContents(), ["Les échecs"]);
+  assert.equal(await labs.getAttribute("aria-expanded"), "false");
+  assert.equal(await jeux.getAttribute("aria-expanded"), "true");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans débordement", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true });
   await simulerApi(page);
   await page.goto(serveur.url);
-  const explorer = page.locator(".nav-mobile [data-nav=catalogue]");
+  const explorer = page.locator(".nav-mobile [data-nav=labs]");
   await explorer.waitFor({ state: "visible" });
   assert.equal(await page.locator("#catalogue").isVisible(), false, "fermé par défaut sur mobile");
   await explorer.click();
@@ -168,6 +190,21 @@ test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans d�
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
   await page.locator("#bulle-lab[open][data-notion=fractions] #bulle-cadre").waitFor();
   assert.equal(await page.locator("#voile-catalogue").isVisible(), false, "le tiroir se referme après le choix");
+  const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  assert.ok(debord <= 0, `déborde de ${debord}px`);
+  await contexte.close();
+});
+
+test("navigation mobile : Labs et jeux restent accessibles sans débordement", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 740 }, isMobile: true });
+  await simulerApi(page, { jeux: true });
+  await page.goto(serveur.url);
+  const groupe = page.locator(".nav-mobile-groupe");
+  const jeux = groupe.locator("[data-nav=jeux]");
+  await page.locator(".nav-mobile [data-nav=labs]").waitFor({ state: "visible" });
+  await jeux.click();
+  await page.locator("#catalogue [data-matiere=jeux][role=tab][aria-selected=true]").waitFor();
+  assert.deepEqual(await page.locator("#catalogue .notion").allTextContents(), ["Les échecs"]);
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
