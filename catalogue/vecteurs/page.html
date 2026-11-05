@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-p5XAxYlmoDvRAHKYkj/8tkVBfw56siY6RWFZZjKrGvc=' 'sha256-WGObV13L1T+D2MSKTNChzn8zrUKH8oQTANJ9rYoApxo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-D3p+WvettAzTrkCBOdqoriM4WF10EB4BxXsqBc2wjEw=' 'sha256-WGObV13L1T+D2MSKTNChzn8zrUKH8oQTANJ9rYoApxo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les vecteurs – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -309,7 +309,7 @@ const Trophees = (() => {
     const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
     const module = meta.id;
     const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
-    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [window.location.origin];
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [origineCandidate];
     const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
     if (!origineParent) return () => {};
     let pret = false;

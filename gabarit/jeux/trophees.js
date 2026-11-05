@@ -5,7 +5,7 @@ const Trophees = (() => {
     const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
     const module = meta.id;
     const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
-    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [window.location.origin];
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [origineCandidate];
     const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
     if (!origineParent) return () => {};
     let pret = false;
