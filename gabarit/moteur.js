@@ -82,6 +82,11 @@
       etoiles.clear();
       for (const id of brut) if (idsExercices.has(id)) etoiles.add(id);
       majEtoiles();
+      for (const onglet of registre.filter((o) => o.actif && ["application", "mise-en-situation"].includes(o.id))) {
+        const panneau = document.getElementById(`panneau-${onglet.id}`);
+        panneau.replaceChildren();
+        onglet.rendu(panneau);
+      }
     },
     resumer: () => ({ genre: "notions", etat: [...etoiles], etoiles: etoiles.size, etoilesTotal: totalExercices, badges: [] })
   });
