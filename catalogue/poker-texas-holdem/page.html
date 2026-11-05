@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-PpPIp7AcTtYv2tLAocrDt6ZsQRCxUrNwQ4Q2Vt5uJQ0=' 'sha256-FAjme6e+TwXypJ+g8TdaR8uQzkm8shvsEVVWKrM/Jx0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Poker Texas Hold'em – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "poker-texas-holdem",
+  "titre": "Poker Texas Hold'em",
+  "sujet": "jeux/poker-texas-holdem",
+  "version": "1.0.0",
+  "date": "2026-11-04",
+  "langue": "fr",
+  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+  :root { color-scheme: light dark; --fond:#f4f6f2; --surface:#fff; --texte:#17231d; --doux:#59665f; --accent:#176b46; --accent-texte:#fff; --bord:#cbd5ce; --table:#176b46; --succes:#147a42; --alerte:#b42318; }
+  @media (prefers-color-scheme:dark) { :root { --fond:#141a17; --surface:#202923; --texte:#edf4ef; --doux:#b2beb6; --accent:#7ed4a6; --accent-texte:#102018; --bord:#3a4940; --table:#174d36; --succes:#7ed4a6; --alerte:#ff938a; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fond); color:var(--texte); font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  header, main, footer { max-width:900px; margin:auto; padding:16px; }
+  header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  h1 { font-size:1.3rem; margin:0; }
+  .meta, .doux { color:var(--doux); font-size:.88rem; }
+  [role=tablist] { display:flex; gap:4px; overflow-x:auto; border-bottom:1px solid var(--bord); max-width:900px; margin:auto; padding:0 16px; }
+  [role=tab] { flex:0 0 auto; border:0; border-bottom:3px solid transparent; background:none; color:var(--doux); padding:10px 14px; font:inherit; cursor:pointer; }
+  [role=tab][aria-selected=true] { border-bottom-color:var(--accent); color:var(--texte); font-weight:700; }
+  [role=tabpanel][hidden], #connexion[hidden] { display:none; }
+  :focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  h2 { font-size:1.1rem; margin:18px 0 8px; }
+  .carte { padding:14px; margin:10px 0; border:1px solid var(--bord); border-radius:12px; background:var(--surface); }
+  .actions { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  button { font:inherit; }
+  button.action, button.secondaire, .choix { min-height:44px; padding:8px 14px; border:2px solid var(--bord); border-radius:9px; background:var(--surface); color:var(--texte); font-weight:650; cursor:pointer; }
+  button.action { border-color:var(--accent); background:var(--accent); color:var(--accent-texte); }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  .plateau { padding:14px; border:2px solid #145637; border-radius:18px; background:var(--table); color:#fff; }
+  .table-entete { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
+  .sieges { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:12px 0; }
+  .siege { min-height:94px; padding:10px; border:1px solid #ffffff70; border-radius:12px; background:#0b422a88; }
+  .siege strong { display:block; }
+  .cartes, .communes { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; min-height:74px; align-items:center; }
+  .carte-jeu { display:grid; place-items:center; width:49px; height:68px; border:1px solid #d5d9d7; border-radius:7px; background:#fff; color:#19221d; font-weight:800; font-size:1.05rem; box-shadow:0 2px 4px #0003; }
+  .carte-jeu.rouge { color:#b42318; }
+  .carte-jeu.cachee { background:repeating-linear-gradient(45deg,#d9e8df,#d9e8df 5px,#9ab9a5 5px,#9ab9a5 10px); color:#174d36; }
+  .pot { text-align:center; font-weight:800; padding:8px; }
+  .message { min-height:1.5em; margin:8px 0; font-weight:700; }
+  .message[data-type=ok] { color:var(--succes); } .message[data-type=alerte] { color:var(--alerte); }
+  .legende { font-size:.88rem; text-align:center; margin:4px 0; }
+  .rangs { padding-left:1.5rem; }
+  .rangs li { padding:3px 0; }
+  .defi { display:grid; gap:10px; }
+  .reponse { min-height:1.4em; font-weight:700; }
+  footer { color:var(--doux); font-size:.82rem; }
+  @media(max-width:500px) { header, main, footer { padding:12px; } .sieges { grid-template-columns:1fr; } .carte-jeu { width:43px; height:61px; } }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Poker Texas Hold'em</h1><div class="meta">Une table d'entraînement, sans argent réel</div></div>
+  <button id="connexion" class="action" type="button" hidden>Se connecter</button>
+</header>
+<nav role="tablist" aria-label="Rubriques du jeu">
+  <button role="tab" id="onglet-application" aria-controls="panneau-application" aria-selected="true" tabindex="0" data-onglet="application">Jouer</button>
+  <button role="tab" id="onglet-explication" aria-controls="panneau-explication" aria-selected="false" tabindex="-1" data-onglet="explication">Règles</button>
+  <button role="tab" id="onglet-mise-en-situation" aria-controls="panneau-mise-en-situation" aria-selected="false" tabindex="-1" data-onglet="mise-en-situation">Défi</button>
+</nav>
+<main>
+  <section id="panneau-application" role="tabpanel" aria-labelledby="onglet-application">
+    <div class="carte">
+      <div class="plateau">
+        <div class="table-entete"><strong>Toi · <span data-sortie="pile-joueur"></span> jetons</strong><span>Manche <span data-sortie="numero"></span></span><strong>Ordinateur · <span data-sortie="pile-ordi"></span> jetons</strong></div>
+        <div class="sieges">
+          <div class="siege"><strong>Ordinateur</strong><span data-sortie="main-ordi" class="cartes"></span><span class="legende" data-sortie="mise-ordi"></span></div>
+          <div class="siege"><strong>Toi</strong><span data-sortie="main-joueur" class="cartes"></span><span class="legende" data-sortie="mise-joueur"></span></div>
+        </div>
+        <div class="pot">Pot : <span data-sortie="pot"></span> jetons</div>
+        <div class="communes" data-sortie="communes" aria-label="Cartes communes"></div>
+        <p class="legende" data-sortie="phase"></p>
+      </div>
+      <p class="message" data-sortie="message" aria-live="polite"></p>
+      <div class="actions" data-zone="actions">
+        <button class="secondaire" data-action="coucher">Se coucher</button>
+        <button class="action" data-action="suivre" data-bouton="suivre">Suivre</button>
+        <button class="secondaire" data-action="relancer">Relancer</button>
+      </div>
+      <div class="actions"><button class="secondaire" data-action="nouvelle" hidden>Manche suivante</button></div>
+    </div>
+    <p class="doux">Les jetons sont fictifs et restent dans cette page. Aucun pari d'argent n'est proposé.</p>
+  </section>
+  <section id="panneau-explication" role="tabpanel" aria-labelledby="onglet-explication" hidden>
+    <article class="carte">
+      <h2>Le but</h2>
+      <p>Avec tes deux cartes privées et les cinq cartes communes, forme la meilleure combinaison de cinq cartes. Tu peux gagner en ayant la meilleure main à la fin, ou si l'autre joueur se couche.</p>
+      <h2>Une manche en quatre tours</h2>
+      <ol>
+        <li><strong>Préflop</strong> : chacun reçoit deux cartes privées.</li>
+        <li><strong>Flop</strong> : trois cartes communes sont révélées.</li>
+        <li><strong>Turn</strong> : une quatrième carte commune apparaît.</li>
+        <li><strong>River</strong> : la cinquième carte commune est révélée ; les mains sont comparées.</li>
+      </ol>
+      <p>À ton tour, tu peux <strong>te coucher</strong> (abandonner la manche), <strong>suivre</strong> (payer la mise à égaler), <strong>parler</strong> (ne rien miser si personne n'a misé), ou <strong>relancer</strong>. Pour simplifier l'entraînement, tu parles toujours en premier et chaque joueur ne peut relancer qu'une fois par tour d'enchères.</p>
+    </article>
+    <article class="carte">
+      <h2>Les combinaisons, de la plus forte à la plus faible</h2>
+      <ol class="rangs">
+        <li><strong>Quinte flush royale</strong> : 10, valet, dame, roi, as de la même couleur.</li>
+        <li><strong>Quinte flush</strong> : cinq rangs consécutifs de la même couleur.</li>
+        <li><strong>Carré</strong> : quatre cartes de même rang.</li>
+        <li><strong>Full</strong> : un brelan et une paire.</li>
+        <li><strong>Couleur</strong> : cinq cartes de la même couleur.</li>
+        <li><strong>Quinte</strong> : cinq rangs consécutifs, couleurs quelconques (l'as peut être bas).</li>
+        <li><strong>Brelan</strong> : trois cartes de même rang.</li>
+        <li><strong>Deux paires</strong>, puis <strong>une paire</strong>.</li>
+        <li><strong>Carte haute</strong> : si personne n'a mieux, la carte la plus forte l'emporte.</li>
+      </ol>
+      <p>Si les combinaisons sont de même type, les rangs restants départagent les joueurs. Les couleurs ne départagent jamais une égalité.</p>
+    </article>
+  </section>
+  <section id="panneau-mise-en-situation" role="tabpanel" aria-labelledby="onglet-mise-en-situation" hidden>
+    <article class="carte defi">
+      <h2>Quel joueur gagne ?</h2>
+      <p>Cartes communes : <strong>7♣ 7♦ 2♠ 9♥ K♣</strong></p>
+      <p>Joueur A : <strong>A♠ 7♥</strong> · Joueur B : <strong>K♦ K♥</strong></p>
+      <p>Quelle main l'emporte ?</p>
+      <div class="actions">
+        <button class="choix" data-reponse="a">Joueur A : brelan de 7</button>
+        <button class="choix" data-reponse="b">Joueur B : brelan de rois</button>
+        <button class="choix" data-reponse="egalite">Égalité</button>
+      </div>
+      <p class="reponse" data-sortie="reponse-defi" aria-live="polite"></p>
+    </article>
+  </section>
+</main>
+<footer>Jeu de stratégie et de probabilités avec jetons fictifs uniquement.</footer>
+
+<script id="moteur-poker-texas-holdem">
+const MoteurPoker = (() => {
+  const COULEURS = ["♣", "♦", "♥", "♠"];
+  const RANGS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const PHASES = ["preflop", "flop", "turn", "river"];
+  const NOM_PHASE = { preflop: "Préflop", flop: "Flop", turn: "Turn", river: "River" };
+  const NOMS_MAINS = ["carte haute", "paire", "deux paires", "brelan", "quinte", "couleur", "full", "carré", "quinte flush"];
+  const creerPaquet = () => COULEURS.flatMap((couleur) => RANGS.map((rang) => ({ rang, couleur })));
+
+  function melanger(paquet, aleatoire = Math.random) {
+    const cartes = paquet.map((carte) => ({ ...carte }));
+    for (let i = cartes.length - 1; i > 0; i--) {
+      const valeur = aleatoire();
+      if (!(valeur >= 0 && valeur < 1)) throw new RangeError("le hasard doit renvoyer une valeur entre 0 inclus et 1 exclu");
+      const j = Math.floor(valeur * (i + 1));
+      [cartes[i], cartes[j]] = [cartes[j], cartes[i]];
+    }
+    return cartes;
+  }
+
+  function quinteHaute(rangs) {
+    const uniques = [...new Set(rangs)].sort((a, b) => b - a);
+    if (uniques[0] === 14) uniques.push(1);
+    for (let i = 0; i <= uniques.length - 5; i++) {
+      if (uniques[i] - uniques[i + 4] === 4) return uniques[i];
+    }
+    return 0;
+  }
+
+  function evaluerCinq(cartes) {
+    const rangs = cartes.map((c) => c.rang);
+    const compte = new Map();
+    for (const rang of rangs) compte.set(rang, (compte.get(rang) ?? 0) + 1);
+    const groupes = [...compte].map(([rang, nombre]) => ({ rang, nombre })).sort((a, b) => b.nombre - a.nombre || b.rang - a.rang);
+    const couleur = cartes.every((c) => c.couleur === cartes[0].couleur);
+    const quinte = quinteHaute(rangs);
+    if (couleur && quinte) return [8, quinte];
+    if (groupes[0].nombre === 4) return [7, groupes[0].rang, groupes[1].rang];
+    if (groupes[0].nombre === 3 && groupes[1].nombre === 2) return [6, groupes[0].rang, groupes[1].rang];
+    if (couleur) return [5, ...rangs.sort((a, b) => b - a)];
+    if (quinte) return [4, quinte];
+    if (groupes[0].nombre === 3) return [3, groupes[0].rang, ...groupes.slice(1).map((g) => g.rang)];
+    if (groupes[0].nombre === 2 && groupes[1].nombre === 2) return [2, groupes[0].rang, groupes[1].rang, groupes[2].rang];
+    if (groupes[0].nombre === 2) return [1, groupes[0].rang, ...groupes.slice(1).map((g) => g.rang)];
+    return [0, ...rangs.sort((a, b) => b - a)];
+  }
+
+  function evaluerMain(cartes) {
+    if (!Array.isArray(cartes) || cartes.length < 5 || cartes.length > 7) throw new RangeError("une main doit contenir de 5 à 7 cartes");
+    const ids = new Set();
+    for (const c of cartes) {
+      if (!RANGS.includes(c.rang) || !COULEURS.includes(c.couleur)) throw new TypeError("carte invalide");
+      const id = `${c.rang}${c.couleur}`;
+      if (ids.has(id)) throw new Error("une même carte ne peut pas apparaître deux fois");
+      ids.add(id);
+    }
+    let meilleure = null;
+    for (let a = 0; a < cartes.length - 4; a++)
+      for (let b = a + 1; b < cartes.length - 3; b++)
+        for (let c = b + 1; c < cartes.length - 2; c++)
+          for (let d = c + 1; d < cartes.length - 1; d++)
+            for (let e = d + 1; e < cartes.length; e++) {
+              const score = evaluerCinq([cartes[a], cartes[b], cartes[c], cartes[d], cartes[e]]);
+              if (!meilleure || comparerScores(score, meilleure) > 0) meilleure = score;
+            }
+    return meilleure;
+  }
+
+  function comparerScores(a, b) {
+    for (let i = 0; i < Math.max(a.length, b.length); i++) {
+      const ecart = (a[i] ?? 0) - (b[i] ?? 0);
+      if (ecart) return Math.sign(ecart);
+    }
+    return 0;
+  }
+
+  function nomMain(score) {
+    return score[0] === 8 && score[1] === 14 ? "quinte flush royale" : NOMS_MAINS[score[0]];
+  }
+
+  function creerPartie(aleatoire = Math.random, piles = { joueur: 1000, ordinateur: 1000 }) {
+    if (!Number.isSafeInteger(piles.joueur) || !Number.isSafeInteger(piles.ordinateur) || piles.joueur < 0 || piles.ordinateur < 0) {
+      throw new RangeError("les piles doivent être des nombres entiers positifs ou nuls");
+    }
+    if (piles.joueur < 20 || piles.ordinateur < 20) return { statut: "fin-de-partie", piles: { ...piles }, resultat: null };
+    const paquet = melanger(creerPaquet(), aleatoire);
+    const joueur = { main: [paquet[0], paquet[2]], pile: piles.joueur, mise: 10 };
+    const ordinateur = { main: [paquet[1], paquet[3]], pile: piles.ordinateur, mise: 20 };
+    joueur.pile -= joueur.mise;
+    ordinateur.pile -= ordinateur.mise;
+    return {
+      statut: "en-cours", phase: "preflop", joueur, ordinateur, communes: [], paquet: paquet.slice(4),
+      pot: 30, miseHaute: 20, relanceFaite: false, resultat: null, message: "À toi : suis 10 jetons, relance ou couche-toi."
+    };
+  }
+
+  function forceApproximative(main, communes) {
+    if (communes.length >= 3) return evaluerMain([...main, ...communes])[0] / 8;
+    const [a, b] = main;
+    return (a.rang === b.rang ? .55 + a.rang / 60 : (Math.max(a.rang, b.rang) - 2) / 22 + (a.couleur === b.couleur ? .12 : 0));
+  }
+
+  function terminer(p, gagnant, egalite = false) {
+    const partage = egalite ? Math.floor(p.pot / 2) : p.pot;
+    if (egalite) { p.joueur.pile += partage; p.ordinateur.pile += p.pot - partage; }
+    else p[gagnant].pile += p.pot;
+    p.resultat = { gagnant: egalite ? "egalite" : gagnant, scoreJoueur: null, scoreOrdi: null };
+    if (p.phase === "river" || p.communes.length === 5) {
+      p.resultat.scoreJoueur = evaluerMain([...p.joueur.main, ...p.communes]);
+      p.resultat.scoreOrdi = evaluerMain([...p.ordinateur.main, ...p.communes]);
+      p.resultat.nomJoueur = nomMain(p.resultat.scoreJoueur);
+      p.resultat.nomOrdi = nomMain(p.resultat.scoreOrdi);
+    }
+    p.statut = "terminee";
+    p.message = egalite ? `Égalité : le pot est partagé (${partage} jetons chacun).` :
+      gagnant === "joueur" ? "Tu remportes le pot !" : "L'ordinateur remporte le pot.";
+  }
+
+  function avancer(p) {
+    if (!p.joueur.pile || !p.ordinateur.pile) {
+      while (p.communes.length < 5) p.communes.push(p.paquet.shift());
+      p.phase = "river";
+      const j = evaluerMain([...p.joueur.main, ...p.communes]);
+      const o = evaluerMain([...p.ordinateur.main, ...p.communes]);
+      const cmp = comparerScores(j, o);
+      terminer(p, cmp >= 0 ? "joueur" : "ordinateur", cmp === 0);
+      return;
+    }
+    const suivante = PHASES[PHASES.indexOf(p.phase) + 1];
+    if (!suivante) {
+      const j = evaluerMain([...p.joueur.main, ...p.communes]);
+      const o = evaluerMain([...p.ordinateur.main, ...p.communes]);
+      const cmp = comparerScores(j, o);
+      terminer(p, cmp >= 0 ? "joueur" : "ordinateur", cmp === 0);
+      return;
+    }
+    p.phase = suivante;
+    if (suivante === "flop") p.communes.push(p.paquet.shift(), p.paquet.shift(), p.paquet.shift());
+    else p.communes.push(p.paquet.shift());
+    p.joueur.mise = 0;
+    p.ordinateur.mise = 0;
+    p.miseHaute = 0;
+    p.relanceFaite = false;
+    p.message = `${NOM_PHASE[p.phase]} : à toi de parler.`;
+  }
+
+  function agir(p, action, aleatoire = Math.random) {
+    if (!p || p.statut !== "en-cours") throw new Error("la manche est terminée");
+    const aPayer = p.miseHaute - p.joueur.mise;
+    if (!["coucher", "suivre", "parole", "relancer"].includes(action)) throw new Error("action inconnue");
+    if (action === "coucher") { terminer(p, "ordinateur"); return p; }
+    if (action === "parole" && aPayer !== 0) throw new Error("tu dois suivre ou te coucher");
+    if (action === "suivre" && aPayer === 0) throw new Error("tu peux parler sans miser");
+    if (action === "relancer" && (p.relanceFaite || p.joueur.pile <= aPayer || p.ordinateur.pile < aPayer + 20)) {
+      throw new Error("relance impossible");
+    }
+    if (action === "suivre") {
+      const montant = Math.min(aPayer, p.joueur.pile);
+      p.joueur.pile -= montant; p.joueur.mise += montant; p.pot += montant;
+    } else if (action === "parole") {
+      // Aucun jeton ne bouge quand les mises sont déjà égales.
+    } else {
+      const montant = Math.min(p.joueur.pile, aPayer + 20);
+      p.joueur.pile -= montant; p.joueur.mise += montant; p.pot += montant;
+      p.miseHaute = p.joueur.mise; p.relanceFaite = true;
+    }
+    const du = p.miseHaute - p.ordinateur.mise;
+    if (du > 0) {
+      const force = forceApproximative(p.ordinateur.main, p.communes);
+      const limite = Math.min(.38, du / Math.max(1, p.pot) * .8);
+      const hasard = aleatoire();
+      if (!(hasard >= 0 && hasard < 1)) throw new RangeError("le hasard doit renvoyer une valeur entre 0 inclus et 1 exclu");
+      if (force + hasard * .2 < limite) {
+        terminer(p, "joueur");
+        p.message = "L'ordinateur se couche : tu remportes le pot.";
+        return p;
+      }
+      const montant = Math.min(du, p.ordinateur.pile);
+      p.ordinateur.pile -= montant; p.ordinateur.mise += montant; p.pot += montant;
+    }
+    if (!p.joueur.pile || !p.ordinateur.pile) {
+      const difference = p.joueur.mise - p.ordinateur.mise;
+      if (difference > 0) {
+        p.joueur.pile += difference; p.joueur.mise -= difference; p.pot -= difference;
+      } else if (difference < 0) {
+        p.ordinateur.pile -= difference; p.ordinateur.mise += difference; p.pot += difference;
+      }
+    }
+    avancer(p);
+    return p;
+  }
+
+  return { COULEURS, creerPaquet, melanger, evaluerMain, comparerScores, nomMain, creerPartie, agir };
+})();
+</script>
+<script>
+(() => {
+  const META = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem(`kermiclab:${META.id}:${cle}`)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(`kermiclab:${META.id}:${cle}`, JSON.stringify(valeur)); } catch { /* Stockage local indisponible. */ } }
+    },
+    distant: { lire() { return null; }, ecrire() {} }
+  };
+  const CONFIG = { connexionActive: false, stockage: "local" };
+  const stockage = Stockage[CONFIG.stockage];
+  const registre = [];
+  function enregistrerOnglet(definition) { registre.push({ actif: true, ...definition }); }
+  const el = (selecteur) => document.querySelector(selecteur);
+  const sortie = (nom) => el(`[data-sortie="${nom}"]`);
+  const symboleRang = (rang) => ({ 11: "V", 12: "D", 13: "R", 14: "A" }[rang] ?? rang);
+  const carteHtml = (carte, cachee = false) => {
+    if (cachee) return '<span class="carte-jeu cachee" aria-label="Carte cachée">◆</span>';
+    const rouge = carte.couleur === "♦" || carte.couleur === "♥";
+    return `<span class="carte-jeu${rouge ? " rouge" : ""}" aria-label="${symboleRang(carte.rang)} ${carte.couleur}">${symboleRang(carte.rang)}${carte.couleur}</span>`;
+  };
+  let partie = MoteurPoker.creerPartie();
+  let numero = Number(stockage.lire("numero")) || 1;
+  let defiReussi = false;
+  function afficher() {
+    sortie("pile-joueur").textContent = partie.joueur?.pile ?? 0;
+    sortie("pile-ordi").textContent = partie.ordinateur?.pile ?? 0;
+    sortie("numero").textContent = numero;
+    sortie("pot").textContent = partie.pot ?? 0;
+    sortie("main-joueur").innerHTML = (partie.joueur?.main ?? []).map((c) => carteHtml(c)).join("");
+    sortie("main-ordi").innerHTML = partie.statut === "terminee" && partie.resultat?.scoreOrdi
+      ? partie.ordinateur.main.map((c) => carteHtml(c)).join("")
+      : (partie.ordinateur?.main ?? []).map(() => carteHtml(null, true)).join("");
+    sortie("communes").innerHTML = (partie.communes ?? []).map((c) => carteHtml(c)).join("");
+    sortie("mise-joueur").textContent = `Mise : ${partie.joueur?.mise ?? 0}`;
+    sortie("mise-ordi").textContent = `Mise : ${partie.ordinateur?.mise ?? 0}`;
+    sortie("phase").textContent = partie.statut === "en-cours" ? `${{ preflop: "Préflop", flop: "Flop", turn: "Turn", river: "River" }[partie.phase]} · ${Math.max(0, partie.miseHaute - partie.joueur.mise)} jetons à suivre`
+      : partie.statut === "terminee" && partie.resultat?.scoreJoueur
+        ? `Toi : ${partie.resultat.nomJoueur} · Ordinateur : ${partie.resultat.nomOrdi}`
+        : "Manche terminée";
+    sortie("message").textContent = partie.message;
+    sortie("message").dataset.type = partie.statut === "terminee" && partie.resultat?.gagnant === "joueur" ? "ok" : "";
+    const zone = el('[data-zone="actions"]');
+    const aPayer = Math.max(0, partie.miseHaute - (partie.joueur?.mise ?? 0));
+    zone.querySelector('[data-action="coucher"]').disabled = partie.statut !== "en-cours";
+    const suivre = zone.querySelector('[data-bouton="suivre"]');
+    suivre.textContent = aPayer ? `Suivre ${aPayer}` : "Parole";
+    suivre.dataset.action = aPayer ? "suivre" : "parole";
+    suivre.disabled = partie.statut !== "en-cours";
+    const relancer = zone.querySelector('[data-action="relancer"]');
+    relancer.disabled = partie.statut !== "en-cours" || partie.relanceFaite || partie.joueur.pile <= aPayer || partie.ordinateur.pile < aPayer + 20;
+    el('[data-action="nouvelle"]').hidden = partie.statut !== "terminee";
+  }
+  enregistrerOnglet({ id: "application", type: "application", titre: "Jouer", rendu: afficher, actif: true });
+  enregistrerOnglet({ id: "explication", type: "explication", titre: "Règles", rendu() {} });
+  enregistrerOnglet({ id: "mise-en-situation", type: "mise-en-situation", titre: "Défi", rendu() {} });
+  enregistrerOnglet({ id: "self-test", type: "self-test", titre: "Auto-évaluation", actif: false, rendu() {} });
+  const onglets = registre.filter((o) => o.actif);
+  function ouvrirOnglet(id, memoriser = true) {
+    const onglet = onglets.find((o) => o.id === id);
+    if (!onglet) return;
+    for (const o of onglets) {
+      const actif = o.id === id;
+      document.getElementById(`onglet-${o.id}`).setAttribute("aria-selected", String(actif));
+      document.getElementById(`onglet-${o.id}`).tabIndex = actif ? 0 : -1;
+      document.getElementById(`panneau-${o.id}`).hidden = !actif;
+    }
+    onglet.rendu();
+    if (memoriser) stockage.ecrire("onglet", id);
+  }
+  document.querySelector('[data-zone="actions"]').addEventListener("click", (event) => {
+    const action = event.target.closest("[data-action]")?.dataset.action;
+    if (!action || action === "nouvelle") return;
+    try { partie = MoteurPoker.agir(partie, action); afficher(); }
+    catch (erreur) { sortie("message").textContent = erreur.message; }
+  });
+  el('[data-action="nouvelle"]').addEventListener("click", () => {
+    const piles = partie.joueur.pile >= 20 && partie.ordinateur.pile >= 20
+      ? { joueur: partie.joueur.pile, ordinateur: partie.ordinateur.pile }
+      : { joueur: 1000, ordinateur: 1000 };
+    partie = MoteurPoker.creerPartie(undefined, piles);
+    numero += 1;
+    stockage.ecrire("numero", numero);
+    afficher();
+  });
+  document.querySelectorAll("[role=tab]").forEach((tab, i, liste) => {
+    tab.addEventListener("click", () => ouvrirOnglet(tab.dataset.onglet));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const index = event.key === "Home" ? 0 : event.key === "End" ? liste.length - 1 :
+        (i + (event.key === "ArrowRight" ? 1 : liste.length - 1)) % liste.length;
+      liste[index].focus();
+      ouvrirOnglet(liste[index].dataset.onglet);
+    });
+  });
+  document.querySelectorAll("[data-reponse]").forEach((bouton) => bouton.addEventListener("click", () => {
+    const bon = bouton.dataset.reponse === "b";
+    defiReussi = bon;
+    sortie("reponse-defi").textContent = bon
+      ? "Bravo ! Le joueur B a un brelan de rois, qui bat le brelan de 7 du joueur A."
+      : "Pas tout à fait : le joueur B a un brelan de rois (trois rois), plus fort que le brelan de 7.";
+    sortie("reponse-defi").dataset.type = bon ? "ok" : "alerte";
+  }));
+  document.getElementById("connexion").hidden = !CONFIG.connexionActive;
+  ouvrirOnglet(onglets.find((o) => o.id === stockage.lire("onglet"))?.id ?? "application", false);
+  window.kermiclab = { META, CONFIG, registre, poker: { etat: () => partie, defiReussi: () => defiReussi } };
+})();
+</script>
+</body>
+</html>
