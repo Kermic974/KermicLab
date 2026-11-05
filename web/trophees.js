@@ -42,3 +42,17 @@ export function charger(stockage) {
 export function sauver(stockage, modules) {
   try { stockage?.setItem(CLE_STOCKAGE, JSON.stringify(modules)); } catch { /* même repli en mémoire que progression.js */ }
 }
+
+export function lireCollection(brut) {
+  if (!Array.isArray(brut?.modules) || brut.modules.length > 200) throw new Error("trophées : collection invalide");
+  const collection = {};
+  for (const m of brut.modules) {
+    const p = normaliser(m?.progression);
+    if (!/^[a-z0-9][a-z0-9-]{0,79}$/.test(m?.id) || !p ||
+        (m.id !== "mini-cercle" && !texte(m.titre, 200)) || Object.hasOwn(collection, m.id)) {
+      throw new Error("trophées : module invalide dans la collection");
+    }
+    collection[m.id] = { ...p, titre: m.titre };
+  }
+  return collection;
+}
