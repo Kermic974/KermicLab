@@ -108,6 +108,12 @@ Committer ensemble squelettes et registre ; Git conserve les instantanés préc�
 `node scripts/ux-suivi.mjs --check` détecte les écarts de sources ou de squelettes sans modifier les fichiers.
 `node --test tests/e2e/ux.test.mjs` contrôle aussi la couverture du catalogue, des dialogues, de la navigation
 et des onglets des jeux, les liens locaux et vers les vues actives, et les mises en page hors ligne à 360, 768 et 1440 pixels.
+La CI des pull requests contrôle les sources fusionnées avec `main` : si une nouvelle vue y est livrée entre-temps,
+intégrer `main`, actualiser les squelettes concernés et publier une nouvelle version ; ne pas régénérer les empreintes en CI.
+Committer les sources avant de lancer le versioning : une source modifiée ou non suivie est refusée avant toute écriture.
+Le contrôle vérifie aussi que le commit référencé contient les sources empreintées.
+Seul l'encart factuel `roadmap:auto` est neutralisé pour ne pas bloquer les PR de suivi automatique :
+le reste de la roadmap et son générateur restent contrôlés, donc leurs évolutions structurelles nécessitent une nouvelle version UX.
 
 ## Licence
 

@@ -39,15 +39,21 @@ test("le suivi UX versionne uniquement les vues affectées et conserve les insta
   const lancer = (...args) => execFileSync(process.execPath, ["scripts/ux-suivi.mjs", ...args],
     { cwd: temporaire, stdio: "pipe" });
   const registre = async () => JSON.parse(await readFile(path.join(temporaire, "docs/ux/suivi.json"), "utf8"));
+  const committer = () => {
+    execFileSync("git", ["add", "."], { cwd: temporaire, stdio: "pipe" });
+    execFileSync("git", ["-c", "user.name=UX fixture", "-c", "user.email=ux@example.invalid",
+      "commit", "-qm", "Fixture UX\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"],
+    { cwd: temporaire, stdio: "pipe" });
+  };
   try {
     for (const nom of ["docs/ux", "scripts", "web", "catalogue", "gabarit", "src"]) {
       await cp(path.join(racine, nom), path.join(temporaire, nom), { recursive: true });
     }
     execFileSync("git", ["init", "-q"], { cwd: temporaire, stdio: "pipe" });
-    execFileSync("git", ["add", "."], { cwd: temporaire, stdio: "pipe" });
-    execFileSync("git", ["-c", "user.name=UX fixture", "-c", "user.email=ux@example.invalid",
-      "commit", "-qm", "Fixture UX\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"],
-    { cwd: temporaire, stdio: "pipe" });
+    committer();
+    const versionInitiale = (await registre()).version;
+    await rm(path.join(temporaire, "docs/ux/suivi.json"));
+    lancer(`--version=${versionInitiale}`);
     const initial = await registre();
     const [majeure, mineure, corrective] = initial.version.split(".").map(Number);
     const correction = `${majeure}.${mineure}.${corrective + 1}`;
@@ -69,8 +75,29 @@ test("le suivi UX versionne uniquement les vues affectées et conserve les insta
     const source = path.join(temporaire, "src/index.template.html");
     await writeFile(source, `${await readFile(source, "utf8")}\n`);
     assert.throws(() => lancer("--check"));
+    assert.throws(() => lancer(`--version=${evolution}`), /Command failed/);
+    assert.deepEqual(await registre(), apresCorrection, "aucune écriture avec une source non commitée");
+    committer();
     lancer(`--version=${evolution}`);
     assert.deepEqual((await registre()).historique.at(-1).modifies, ["cercle.html", "inventaire.html"]);
+
+    const nonSuivie = path.join(temporaire, "web/nouvelle-vue.html");
+    await writeFile(nonSuivie, "<!doctype html><title>Nouvelle vue</title>");
+    assert.throws(() => lancer("--check"));
+    assert.throws(() => lancer(`--version=${liens}`), /Command failed/);
+    await rm(nonSuivie);
+    const roadmap = path.join(temporaire, "web/feuille-de-route.html");
+    const avantRoadmap = await readFile(roadmap, "utf8");
+    await writeFile(roadmap, avantRoadmap.replace("<!-- roadmap:auto:debut -->",
+      "<!-- roadmap:auto:debut -->\n<p>Nouvelle validation factuelle</p>"));
+    lancer("--check");
+    assert.equal(sansSuivi(await readFile(path.join(temporaire, "docs/ux/inventaire.html"), "utf8")),
+      execFileSync(process.execPath, ["--input-type=module", "-e",
+        'import { construireInventaire } from "./scripts/ux-inventaire.mjs"; process.stdout.write(await construireInventaire());'],
+      { cwd: temporaire, encoding: "utf8" }));
+    await writeFile(roadmap, avantRoadmap.replace("<h1", '<h1 data-structure="modifiee"'));
+    assert.throws(() => lancer("--check"));
+    await writeFile(roadmap, avantRoadmap);
 
     const outil = path.join(temporaire, "scripts/ux-suivi.mjs");
     await writeFile(outil, (await readFile(outil, "utf8")).replace("Historique des sources", "Historique des vues sources"));

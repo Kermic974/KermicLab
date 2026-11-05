@@ -116,6 +116,12 @@ minor for new screens, patch for corrections. Commit the wireframes and registry
 `node scripts/ux-suivi.mjs --check` detects source or wireframe drift without rewriting files.
 `node --test tests/e2e/ux.test.mjs` additionally checks catalogue/dialog/navigation/game-tab coverage,
 local and active-view links and offline layouts at 360, 768 and 1440 pixels.
+Pull request CI checks sources merged with `main`: when a new view lands there in the meantime, integrate `main`,
+update the affected wireframes and publish a new version; do not regenerate fingerprints in CI.
+Commit sources before versioning: modified or untracked sources are rejected before any file is written.
+Checks also verify that the reference commit contains the fingerprinted sources.
+Only the factual `roadmap:auto` block is normalized to avoid blocking automated roadmap PRs:
+the rest of the page and its generator remain tracked, so structural changes require a new UX version.
 
 ## License
 

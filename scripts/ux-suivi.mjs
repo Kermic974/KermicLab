@@ -5,6 +5,7 @@ import { readFile, readdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { construireInventaire } from "./ux-inventaire.mjs";
+import { normaliserSource, verifierReference } from "./ux-sources.mjs";
 
 const racine = fileURLToPath(new URL("../", import.meta.url));
 const dossier = path.join(racine, "docs/ux");
@@ -12,7 +13,7 @@ const depot = "https://github.com/Kermic974/trigoLab";
 const site = "https://kermiclab.online/";
 const definitions = {
   "index.html": {
-    sources: ["web", "catalogue", "gabarit/jeux/trophees.js", "scripts/lib/trophees.mjs"],
+    sources: ["web", "catalogue", "gabarit/jeux/trophees.js", "scripts/lib/trophees.mjs", "scripts/roadmap.mjs"],
     vues: [
       ["premiere-visite", "", "Première visite : nouveau navigateur, dialogue de pseudo"],
       ["accueil", "", "Accueil"],
@@ -31,6 +32,7 @@ const definitions = {
   "notion.html": {
     sources: ["gabarit", "catalogue"],
     vues: [["explication", "maquette:pythagore", "Gabarit commun : Pythagore, onglets Explication / Mémo / S'entraîner / Défi"],
+      ["thales", "maquette:thales", "Lab Thalès : curseur du rapport de réduction et triangles semblables"],
       ["cercle-catalogue", "maquette:trigo-cercle", "Notion cercle : Explication / Application / Défi"]]
   },
   "cercle.html": {
@@ -43,11 +45,11 @@ const definitions = {
       .map((id) => [`jeu-${id}`, `maquette:${id}`, id])
   },
   "editorial.html": {
-    sources: ["web/feuille-de-route.html", "web/confidentialite.html", "web/mentions-legales.html"],
+    sources: ["web/feuille-de-route.html", "web/confidentialite.html", "web/mentions-legales.html", "scripts/roadmap.mjs"],
     vues: ["feuille-de-route", "confidentialite", "mentions-legales"].map((id) => [id, `${id}.html`, id])
   },
   "inventaire.html": {
-    sources: ["web", "catalogue", "gabarit", "src", "scripts/ux-inventaire.mjs"],
+    sources: ["web", "catalogue", "gabarit", "src", "scripts/ux-inventaire.mjs", "scripts/ux-sources.mjs", "scripts/roadmap.mjs"],
     vues: [[null, "", "Site actif : point d'entrée de tous les parcours"]]
   }
 };
@@ -68,7 +70,8 @@ async function empreinteSources(sources) {
   const fichiers = [...new Set((await Promise.all(sources.map(fichiersSources))).flat())].sort();
   const empreinte = createHash("sha256");
   for (const fichier of fichiers) {
-    empreinte.update(fichier).update("\0").update(await readFile(path.join(racine, fichier))).update("\0");
+    empreinte.update(fichier).update("\0")
+      .update(normaliserSource(fichier, await readFile(path.join(racine, fichier)))).update("\0");
   }
   return empreinte.digest("hex");
 }
@@ -123,6 +126,8 @@ export async function verifierSuivi() {
   for (const [fichier, def] of Object.entries(definitions)) {
     const html = await readFile(path.join(dossier, fichier), "utf8");
     const entree = registre.artefacts[fichier];
+    assert.match(entree.revision, /^[a-f0-9]{40}$/, `${fichier} : commit source invalide`);
+    await verifierReference(def.sources, entree.revision);
     assert.ok(versionValide(entree.version), `${fichier} : version invalide`);
     assert.equal(entree.squeletteSha256, hash(sansSuivi(html)), `${fichier} : squelette modifié sans nouvelle version`);
     assert.equal(entree.sourcesSha256, await empreinteSources(def.sources), `${fichier} : sources modifiées, relire et versionner`);
@@ -135,6 +140,7 @@ async function actualiser(version) {
   assert.ok(versionValide(version), "Utiliser --version=X.Y.Z (SemVer sans préversion)");
   const ancien = await chargerRegistre();
   if (ancien) assert.ok(versionSuperieure(version, ancien.version), `La version doit dépasser ${ancien.version}`);
+  await verifierReference([...new Set(Object.values(definitions).flatMap((d) => d.sources))]);
   const { apiUrl } = JSON.parse(await lire("web/config.json"));
   const date = new Date().toISOString().slice(0, 10);
   const artefacts = {}, sorties = [], modifies = [];

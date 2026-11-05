@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chargerCatalogue } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
+import { normaliserSource } from "./ux-sources.mjs";
 
 const racine = fileURLToPath(new URL("../", import.meta.url));
 const echapper = (texte) => String(texte).replace(/[&<>"']/g, (c) =>
@@ -26,9 +27,11 @@ export async function construireInventaire() {
   const index = await lire("web/index.html");
   const fr = JSON.parse(await lire("web/i18n/fr.json"));
   const { apiUrl } = JSON.parse(await lire("web/config.json"));
-  const fichiers = (await Promise.all(["web", "catalogue", "gabarit", "src"].map(sources))).flat().sort();
+  const fichiers = [...(await Promise.all(["web", "catalogue", "gabarit", "src"].map(sources))).flat(),
+    "scripts/roadmap.mjs"].sort();
   const empreinte = createHash("sha256");
-  for (const fichier of fichiers) empreinte.update(fichier).update("\0").update(await readFile(path.join(racine, fichier))).update("\0");
+  for (const fichier of fichiers) empreinte.update(fichier).update("\0")
+    .update(normaliserSource(fichier, await readFile(path.join(racine, fichier)))).update("\0");
   const dialogues = [...index.matchAll(/<dialog id="([^"]+)"/g)].map((m) => m[1]);
   const navigation = [...new Set([...index.matchAll(/data-nav="([^"]+)"/g)].map((m) => m[1]))];
   const lignes = [];
@@ -82,7 +85,7 @@ export async function construireInventaire() {
     <section data-ecran="inventaire-perimetre"><h2>Périmètre et traçabilité</h2>
       <p>${catalogue.index.maquettes.length} pages publiques : ${catalogue.index.maquettes.length - jeux - 1} notions du gabarit, une notion cercle écrite à la main et ${jeux} jeux ; plus l'application /cercle/, le tableau de bord et trois pages éditoriales.</p>
       <p>${modules.size} modules dans Mes trophées, dont le mini-cercle de l'accueil. Les badges d'exploration du tableau de bord sont distincts des badges de jeux.</p>
-      <p>Empreinte SHA-256 des fichiers de web/, catalogue/, gabarit/ et src/ : <code data-empreinte>${empreinte.digest("hex")}</code>.</p>
+      <p>Empreinte SHA-256 de web/, catalogue/, gabarit/, src/ et du générateur de roadmap : <code data-empreinte>${empreinte.digest("hex")}</code>. Seul le contenu factuel entre les marqueurs roadmap:auto est exclu ; son générateur et le reste de la page restent suivis.</p>
       <p>Le catalogue privé et le déploiement effectif ne sont pas vérifiés. Les contenus pédagogiques sont représentés par leur gabarit, pas recopiés intégralement. Les options masquées ne sont pas déclarées actives. Les états clair/sombre et français/anglais partagent les mêmes structures ; l'atelier est figé en français.</p>
       <p>Régénérer et versionner : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Les tests détectent une dérive des sources, des squelettes, des dialogues, de la navigation et des onglets des jeux ; relire les squelettes manuels avant de valider une nouvelle version.</p>
     </section>
