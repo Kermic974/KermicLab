@@ -63,7 +63,14 @@
     }
   ],
   "application": {
-    "intro": "Entraîne-toi à écrire les rapports de Thalès. Repère toujours les droites parallèles d'abord.",
+    "intro": "Fais varier le rapport de réduction et observe les longueurs correspondantes dans les deux triangles.",
+    "figure": {
+      "type": "thales",
+      "ab": 10,
+      "ac": 8,
+      "angle": 60,
+      "rapport": 0.5
+    },
     "exercices": [
       {
         "type": "qcm",

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-WGObV13L1T+D2MSKTNChzn8zrUKH8oQTANJ9rYoApxo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-2BLVvlX5TjXpr/0Wdp566NfSJ3Sorqkzm4lDzxVWULo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>L'Union européenne et ses territoires – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -255,6 +255,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .carre { fill-opacity: .18; stroke-width: 1.5; }
 .carre-a { fill: var(--a); stroke: var(--a); } .carre-b { fill: var(--b); stroke: var(--b); } .carre-c { fill: var(--c); stroke: var(--c); }
 .triangle { fill: var(--surface); stroke: var(--texte); stroke-width: 2; }
+.cote { stroke: var(--texte); stroke-width: 2; }
+.parallele { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 6 4; }
 .angle-droit { fill: none; stroke: var(--texte); stroke-width: 1.5; }
 .part { fill: var(--surface-2); stroke: var(--texte); stroke-width: 1; }
 .part.pleine { fill: var(--accent); fill-opacity: .75; }
@@ -263,6 +265,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .repere { stroke: var(--doux); stroke-width: 1; stroke-dasharray: 4 4; }
 .point { fill: var(--b); }
 .etiquette { font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+.etiquette.sommet { fill: var(--texte); }
 .etiquette.a { fill: var(--a); } .etiquette.b { fill: var(--b); } .etiquette.c { fill: var(--c); }
 .legende { font-size: 11px; fill: var(--doux); }
 .grille { stroke: var(--bord); stroke-width: 1; }
@@ -591,6 +594,55 @@ const Trophees = (() => {
       const cb = curseur("Côté b", 1, 12, 1, b, (v) => { b = v; dessiner(); });
       ca.maj(); cb.maj();
       return h("div", { classe: "figure" }, svg, h("div", { classe: "curseurs" }, ca.element, cb.element), valeurs, message);
+    },
+
+    /** Triangles semblables : le rapport de réduction est le même sur les trois côtés. */
+    thales(conf) {
+      const svg = s("svg", { viewBox: "0 0 320 260", role: "img", "aria-label": "Deux triangles semblables : M est sur AB, N est sur AC et MN est parallèle à BC" });
+      const valeurs = h("div", { classe: "tuiles", "aria-live": "polite" });
+      const ab = conf.ab ?? 10, ac = conf.ac ?? 8, angle = conf.angle ?? 60;
+      let rapport = conf.rapport ?? 0.5;
+      const dessiner = () => {
+        svg.replaceChildren();
+        const theta = angle * Math.PI / 180;
+        const dx = ac * Math.sin(theta), dy = ac * Math.cos(theta);
+        const bc = Math.hypot(dx, dy - ab);
+        const bas = Math.min(0, dy), haut = Math.max(ab, dy);
+        const echelle = Math.min(205 / (haut - bas), 235 / Math.abs(dx));
+        const A = { x: 42, y: 26 - bas * echelle };
+        const B = { x: A.x, y: A.y + ab * echelle };
+        const C = { x: A.x + dx * echelle, y: A.y + dy * echelle };
+        const M = { x: A.x + rapport * (B.x - A.x), y: A.y + rapport * (B.y - A.y) };
+        const N = { x: A.x + rapport * (C.x - A.x), y: A.y + rapport * (C.y - A.y) };
+        const longueur = (P, Q) => Math.hypot(Q.x - P.x, Q.y - P.y) / echelle;
+        const rapports = [longueur(A, M) / ab, longueur(A, N) / ac, longueur(M, N) / bc];
+        const ligne = (P, Q, classe) => s("line", { x1: P.x, y1: P.y, x2: Q.x, y2: Q.y, class: classe }, svg);
+        const point = (P, nom, dx, dy) => {
+          s("circle", { cx: P.x, cy: P.y, r: 4, class: "point" }, svg);
+          const label = s("text", { x: P.x + dx, y: P.y + dy, class: "etiquette sommet" }, svg);
+          label.textContent = nom;
+        };
+        ligne(A, B, "cote");
+        ligne(A, C, "cote");
+        ligne(B, C, "cote");
+        ligne(M, N, "parallele");
+        point(A, "A", -13, -8);
+        point(B, "B", -13, 16);
+        point(C, "C", 12, 4);
+        point(M, "M", -14, 2);
+        point(N, "N", 12, 2);
+        valeurs.replaceChildren(
+          tuile("AB", nombreFr(ab)),
+          tuile("AC", nombreFr(ac)),
+          tuile("BC", `≈ ${nombreFr(bc)}`),
+          tuile("AM / AB", nombreFr(rapports[0])),
+          tuile("AN / AC", nombreFr(rapports[1])),
+          tuile("MN / BC", nombreFr(rapports[2]))
+        );
+      };
+      const curseurRapport = curseur("Rapport de réduction k (AM / AB)", 0.1, 0.9, 0.1, rapport, (v) => { rapport = v; dessiner(); });
+      curseurRapport.maj();
+      return h("div", { classe: "figure" }, svg, h("p", { classe: "bulle-info" }, "Les droites (MN) et (BC) sont parallèles : les triangles AMN et ABC sont semblables."), curseurRapport.element, valeurs);
     },
 
     /** Barres partagées en parts égales : numérateur / dénominateur, décimal, pourcentage, forme simplifiée. */
