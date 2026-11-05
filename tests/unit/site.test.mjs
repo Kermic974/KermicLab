@@ -44,7 +44,7 @@ test("les CSS et JS du chat portent l'empreinte de leur contenu (pas de mélange
   assert.match(confidentialite, /href="style\.css\?v=[0-9a-f]{10}"/);
 });
 
-test("la feuille de route est publiée et accessible entre « Profil et paramètres » et « Signaler un problème »", async () => {
+test("la feuille de route est publiée et accessible entre « Configuration » et « Signaler un problème »", async () => {
   const [html, page] = await Promise.all([
     readFile(`${racine}web/index.html`, "utf8"),
     readFile(`${racine}dist/feuille-de-route.html`, "utf8")

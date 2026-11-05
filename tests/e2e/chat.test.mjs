@@ -21,6 +21,11 @@ async function simulerApi(page, { pseudo = "Testeur", jeux = false, llmActif = t
   return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, jeux, llmActif });
 }
 
+async function ouvrirConfiguration(page) {
+  if (await page.locator("#panneau-chat").isVisible()) await page.click("#fermer-chat");
+  await page.locator("[data-nav=profil]:visible").first().click();
+}
+
 test("avatar : chat replié, accessible au clavier sur chaque écran, conversation et brouillon conservés", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   const requetes = await simulerApi(page);
@@ -271,9 +276,9 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
     });
   });
   await page.goto(serveur.url);
-  await page.click("#ouvrir-chat");
-  await page.locator("#fil li").first().waitFor();
+  await ouvrirConfiguration(page);
   await page.locator("#llm-actif").check();
+  await page.click("#ouvrir-chat");
   await page.fill("#question", "Explique plus simplement");
   await page.keyboard.press("Enter");
   const fin = page.locator(".references-llm");
@@ -300,7 +305,7 @@ test("IA : opt-in de session, désactivée si le site la coupe globalement", asy
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
   await simulerApi(page, { llmActif: false });
   await page.goto(serveur.url);
-  await page.click("#ouvrir-chat");
+  await ouvrirConfiguration(page);
   const toggle = page.locator("#llm-actif");
   await toggle.waitFor();
   assert.equal(await toggle.isDisabled(), true);
@@ -320,10 +325,10 @@ test("IA : l’opt-in individuel reste désactivé par défaut et peut être mé
   await page.keyboard.press("Enter");
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.equal(requetes[0].utiliserLlm, false);
+  await ouvrirConfiguration(page);
   await toggle.check();
   assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:llm:actif")), "true");
   await page.reload();
-  await page.click("#ouvrir-chat");
   await page.locator("#llm-actif").waitFor();
   await page.waitForFunction(() => !document.querySelector("#llm-actif").disabled);
   assert.equal(await page.locator("#llm-actif").isChecked(), true);
@@ -502,7 +507,7 @@ test("jeux : états vides explicites sans bloquer les Labs", async () => {
   await contexte.close();
 });
 
-test("navigation : défi, trophées et profil remplacent l'accueil sans panneau modal", async () => {
+test("navigation : défi, trophées et configuration remplacent l'accueil sans panneau modal", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   await simulerApi(page);
   await page.goto(`${serveur.url}/#defi`);
@@ -517,7 +522,9 @@ test("navigation : défi, trophées et profil remplacent l'accueil sans panneau 
   await page.locator(".barre-laterale .nav-bouton[data-nav=profil]").click();
   assert.equal(await page.locator("#profil").isVisible(), true);
   assert.equal(await page.locator("#defi").isVisible(), false);
-  assert.equal(await page.inputValue("#profil-pseudo"), "Testeur");
+  assert.equal(await page.locator("#configuration-titre").textContent(), "Configuration");
+  assert.equal(await page.locator("#llm-actif").isVisible(), true);
+  assert.equal(await page.locator("#dialogue-profil").isVisible(), false);
   await page.locator(".barre-laterale [data-nav=badges]").click();
   assert.equal(await page.locator("#progres").isVisible(), true);
   assert.equal(await page.locator("#profil").isVisible(), false);

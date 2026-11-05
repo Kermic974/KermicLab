@@ -85,9 +85,9 @@
         <a href="#progression" data-nav="progression">Progression</a>
         <a href="#badges" data-nav="badges">Mes trophées</a>
       </nav>
-      <nav aria-label="Navigation secondaire"><a href="#profil" data-nav="profil">Profil et paramètres</a><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="#support" data-nav="aide">Signaler un problème</a><a href="#participer">Je participe</a></nav>
-      <p>E · Explorateur · Niveau 2</p>
-      <p class="note">Sur mobile : barre basse Accueil, groupe Labs/Jeux, Notions, Défi, Progrès, Profil, Je participe. « Mes trophées » reste accessible par la pastille XP de l'en-tête.</p>
+      <nav aria-label="Navigation secondaire"><a href="#profil" data-nav="profil">Configuration</a><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="#support" data-nav="aide">Signaler un problème</a><a href="#participer">Je participe</a></nav>
+      <p><a href="#profil-dialogue">E · Explorateur · Niveau 2 · Ouvrir le profil</a></p>
+      <p class="note">Sur mobile : barre basse Accueil, groupe Labs/Jeux, Notions, Défi, Progrès, Configuration, Je participe. « Mes trophées » reste accessible par la pastille XP de l'en-tête ; l'avatar de l'en-tête ouvre le profil.</p>
     </aside>
     <main>
       <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" data-source="web/index.html:dialogue-pseudo">
@@ -175,7 +175,11 @@
         <details><summary>Chargement, erreur, catégorie vide et mémoire</summary><p>Chargement de la collection de trophées…</p><p>Impossible de charger la collection de trophées. Tes résultats enregistrés restent affichés. Réessaie.</p><button disabled>Réessayer</button><p>Aucun module compatible dans cette catégorie.</p><p>La collection présente les objectifs disponibles avant de jouer. Les résultats des pages intégrées remontent au tableau de bord ; les pages ouvertes séparément gardent leur propre progression. Session seule ou cookie selon le profil.</p><p>Bientôt : un compte parent pour les retrouver sur tous tes appareils.</p></details>
       </section>
       <section class="ecran" id="profil" data-ecran="profil" data-vue-active="profil" data-source="web/index.html:profil">
-        <span class="repere">S09 · Écran Profil</span><h2>Profil et paramètres</h2><p>Ton pseudo et tes préférences de mémorisation sur cet appareil.</p><a href="#accueil">Accueil</a><label>Ton pseudo<input value="Explorateur" disabled></label><button disabled>Enregistrer</button><label><input type="checkbox" disabled> Se souvenir de moi sur cet appareil</label><p>Ton pseudo et tes progrès sont gardés pour cette session seulement : ils s'effacent quand tu fermes l'onglet.</p><button disabled>Effacer mes données</button><p>Supprime le pseudo, la progression et le cookie de cet appareil.</p>
+        <span class="repere">S09 · Écran Configuration (route #profil conservée)</span><h2>Configuration</h2><p>Choisis si tu souhaites utiliser l'IA dans tes échanges.</p><a href="#accueil">Accueil</a><label><input type="checkbox" role="switch" disabled> Utiliser l'IA</label><p>L'IA est désactivée pour tes échanges.</p>
+        <details><summary>Disponibilité et préférence</summary><p>Un seul interrupteur, déplacé du chat vers Configuration. Choix individuel désactivé par défaut, conservé dans la session du navigateur. Si le service IA est indisponible ou désactivé globalement, l'interrupteur est désactivé et un message explicite est affiché.</p></details>
+      </section>
+      <section class="ecran" id="profil-dialogue" data-ecran="dialogue-profil" data-source="web/index.html:dialogue-profil">
+        <h2>Ton profil</h2><a href="#accueil">Fermer</a><p>Fenêtre séparée, ouverte par la carte du profil ou l'avatar mobile, sans changer l'écran courant. Échap ferme cette fenêtre et le focus revient au déclencheur.</p><label>Ton pseudo<input value="Explorateur" disabled></label><button disabled>Enregistrer</button><label><input type="checkbox" disabled> Se souvenir de moi sur cet appareil</label><p>Ton pseudo et tes progrès sont gardés pour cette session seulement : ils s'effacent quand tu fermes l'onglet.</p><button disabled>Effacer mes données</button><p>Supprime le pseudo, la progression et le cookie de cet appareil.</p>
         <details><summary>Enregistrement, mémoire et confirmation</summary><p>Pseudo enregistré ; mêmes erreurs de saisie qu'à la première visite. Mémoire activée : cookie local créé ; désactivée : cookie supprimé. Effacement en deux temps : « Confirmer : tout effacer ».</p></details>
       </section>
       <section class="ecran" id="support" data-ecran="signalement" data-source="web/index.html:signalement">

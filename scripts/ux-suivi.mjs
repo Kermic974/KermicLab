@@ -25,7 +25,8 @@ const definitions = {
       ["bulle", "", "Bulle Lab : ouvrir une notion du catalogue"],
       ["defi", "#defi", "Défi express : écran dédié"],
       ["badges", "#badges", "Mes trophées : écran dédié"],
-      ["profil", "#profil", "Profil et paramètres : écran dédié"],
+      ["profil", "#profil", "Configuration : interrupteur d'utilisation de l'IA"],
+      ["profil-dialogue", "", "Profil : cliquer sur la carte du profil ou l'avatar mobile"],
       ["support", "", "Support : cliquer sur Signaler un problème"],
       ["comptes", null, "Compte et consentement : accès actuellement masqué"]
     ]

@@ -108,7 +108,7 @@ test("trophées : mini-lab, mémorisation choisie, langue et effacement global s
     assert.match(await page.locator("#trophees-labs").textContent(), /2 \/ 2/);
     assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
     await page.click("#fermer-progres");
-    await page.locator(".nav-mobile-bouton[data-nav=profil]").click();
+    await page.locator(".profil-mobile[data-ouvrir-profil]").click();
     await page.check("#profil-memoriser");
     assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:trophees")), null);
     assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem("kermiclab:trophees"))["mini-cercle"].etoiles), 2);
@@ -121,7 +121,7 @@ test("trophées : mini-lab, mémorisation choisie, langue et effacement global s
     await page.click("#ouvrir-progres");
     assert.equal(await page.locator("#progres-titre").textContent(), "My trophies");
     await page.click("#fermer-progres");
-    await page.locator(".nav-mobile-bouton[data-nav=profil]").click();
+    await page.locator(".profil-mobile[data-ouvrir-profil]").click();
     await page.uncheck("#profil-memoriser");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
     await page.click("#effacer-donnees");

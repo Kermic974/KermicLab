@@ -144,16 +144,52 @@ test("défi express : correction immédiate, 5 XP par bonne réponse une fois pa
   await contexte.close();
 });
 
-test("profil : changer de pseudo, retirer le cookie, puis tout effacer avec confirmation", async () => {
+test("configuration : seul le switch IA est affiché, le profil reste dans une fenêtre séparée", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  await choisirPseudo(page, "Léo");
+  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  assert.equal(await texte(page, "#salut"), "Configuration");
+  assert.equal(await texte(page, "#configuration-titre"), "Configuration");
+  assert.equal(await page.locator("#profil input").count(), 1);
+  assert.equal(await page.locator("#profil form").count(), 0);
+  assert.equal(await page.locator("#panneau-chat [role=switch]").count(), 0);
+  const interrupteur = page.locator("#profil [role=switch]");
+  assert.equal(await interrupteur.isChecked(), false);
+  await interrupteur.focus();
+  await page.keyboard.press("Space");
+  assert.equal(await interrupteur.isChecked(), true);
+  assert.match(await texte(page, "#llm-etat"), /activée pour cette session/);
+  await page.reload();
+  await page.locator("#profil").waitFor();
+  assert.equal(await interrupteur.isChecked(), true);
+  await interrupteur.uncheck();
+  assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:llm:actif")), "false");
+  await page.click(".barre-laterale .profil-carte");
+  await page.locator("#dialogue-profil[open]").waitFor();
+  assert.equal(new URL(page.url()).hash, "#profil");
+  await page.keyboard.press("Escape");
+  assert.equal(await page.locator("#dialogue-profil").isVisible(), false);
+  assert.equal(await page.locator("#profil").isVisible(), true);
+  assert.equal(await page.locator(".barre-laterale .profil-carte").evaluate((n) => n === document.activeElement), true);
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.documentElement.lang === "en");
+  assert.equal(await texte(page, "#configuration-titre"), "Configuration");
+  assert.match(await texte(page, "#profil"), /Use AI/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("fenêtre de profil : changer de pseudo, retirer le cookie, puis tout effacer avec confirmation", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Ana", { memoriser: true });
   await page.click(".barre-laterale .profil-carte");
+  assert.equal(await page.locator("#dialogue-profil").isVisible(), true);
   assert.equal(await page.inputValue("#profil-pseudo"), "Ana");
   assert.equal(await page.isChecked("#profil-memoriser"), true);
   await page.fill("#profil-pseudo", "Ana B");
   await page.click("#formulaire-profil button[type=submit]");
   assert.equal(await texte(page, ".barre-laterale [data-profil=pseudo]"), "Ana B");
-  assert.equal(await texte(page, "#salut"), "Profil et paramètres");
+  assert.equal(await texte(page, "#salut"), "Bonjour Ana B 👋");
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:pseudo")), "Ana B");
   await page.uncheck("#profil-memoriser");
   assert.deepEqual(await contexte.cookies(), []);
@@ -213,7 +249,12 @@ test("mobile : navigation inférieure, mini-lab utilisable, aucun défilement ho
   assert.equal(await texte(page, '#minilab [data-sortie="rad"]'), "π/2 rad");
   await page.click(".nav-mobile [data-nav=profil]");
   await page.locator("#profil").waitFor();
+  assert.equal(await texte(page, "#configuration-titre"), "Configuration");
+  await page.click(".profil-mobile[data-ouvrir-profil]");
+  await page.locator("#dialogue-profil[open]").waitFor();
   await page.click("#fermer-profil");
+  assert.equal(await page.locator("#profil").isVisible(), true, "fermer le profil conserve l'écran courant");
+  await page.click("#profil [data-nav=accueil]");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   assert.deepEqual(erreurs, []);

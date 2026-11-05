@@ -141,6 +141,7 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
   background: var(--surface-2); border: 1px solid var(--bord); color: var(--texte); text-align: left; font-weight: 400;
 }
 .profil-carte:hover { background: var(--accent-doux); }
+.profil-mobile { display: none; }
 .avatar-profil {
   width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; font-weight: 750; color: #fff;
   background: #0b8f78; box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--succes);
@@ -262,12 +263,11 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 }
 .chat-entete { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--bord); flex: none; }
 .chat-titres { flex: 1; min-width: 0; }
-.chat-entete .llm-controle { width: 100%; justify-content: flex-start; text-align: left; }
 .chat .zone-saisie { flex: none; }
 body:has(#ouvrir-chat) > .boite-idees-flottante { right: auto; left: max(calc(var(--laterale) + 24px), env(safe-area-inset-left, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px)); }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
 .chat-icone { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-doux); color: var(--accent-doux-texte); flex: none; }
-.llm-controle { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; text-align: right; }
+.llm-controle { margin-top: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .llm-interrupteur { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: .88rem; font-weight: 650; }
 .llm-interrupteur input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .llm-piste { width: 38px; height: 22px; border-radius: 999px; background: var(--bord-fort); position: relative; transition: background .18s ease; }
@@ -744,6 +744,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .salut h1 { font-size: 22px; }
   .salut p { font-size: 14px; }
   .actions { width: 100%; }
+  .profil-mobile { display: flex; margin-top: 0; }
   .parcours-v3 { gap: 18px; padding: 18px; border-radius: 22px; }
   .parcours-v3-texte h2 { font-size: 30px; }
   .parcours-v3-texte > p { font-size: 14px; }

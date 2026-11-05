@@ -1002,6 +1002,8 @@ function demanderPseudo() {
 }
 
 function brancherProfil() {
+  document.querySelectorAll("[data-ouvrir-profil]").forEach((bouton) => bouton.addEventListener("click", ouvrirProfil));
+  brancherDialogue($("#dialogue-profil"), $("#fermer-profil"));
   $("#formulaire-pseudo").addEventListener("submit", (e) => {
     e.preventDefault();
     const champ = $("#pseudo");
@@ -1070,6 +1072,8 @@ function ouvrirProfil() {
   $("#profil-erreur").textContent = "";
   rafraichirEtatMemoire();
   reinitialiserEffacement();
+  $("#dialogue-profil").showModal();
+  $("#profil-pseudo").focus();
 }
 
 /* ---------- Thème ---------- */
@@ -1103,7 +1107,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "profilTitre" }[etat.ecran]);
+    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "badges" ? "tropheesIntro" : `${etat.ecran}Intro`);
 }
 
@@ -1118,7 +1122,6 @@ function afficherEcran(cle, { focus = true } = {}) {
   });
   marquerNavigation(etat.ecran);
   rafraichirEntete();
-  if (etat.ecran === "profil" && changement) ouvrirProfil();
   if (etat.ecran === "defi" && changement) ouvrirDefi();
   if (etat.ecran === "badges") { remplirProgres(); chargerCollectionTrophees(); }
   if (focus) {
