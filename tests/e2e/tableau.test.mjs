@@ -151,7 +151,8 @@ test("profil : changer de pseudo, retirer le cookie, puis tout effacer avec conf
   assert.equal(await page.isChecked("#profil-memoriser"), true);
   await page.fill("#profil-pseudo", "Ana B");
   await page.click("#formulaire-profil button[type=submit]");
-  assert.equal(await texte(page, "#salut"), "Bonjour Ana B 👋");
+  assert.equal(await texte(page, ".barre-laterale [data-profil=pseudo]"), "Ana B");
+  assert.equal(await texte(page, "#salut"), "Profil et paramètres");
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:pseudo")), "Ana B");
   await page.uncheck("#profil-memoriser");
   assert.deepEqual(await contexte.cookies(), []);
@@ -210,7 +211,7 @@ test("mobile : navigation inférieure, mini-lab utilisable, aucun défilement ho
   assert.equal(await texte(page, '#minilab [data-sortie="cos"]'), "0,000");
   assert.equal(await texte(page, '#minilab [data-sortie="rad"]'), "π/2 rad");
   await page.click(".nav-mobile [data-nav=profil]");
-  await page.locator("#profil[open]").waitFor();
+  await page.locator("#profil").waitFor();
   await page.click("#fermer-profil");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);

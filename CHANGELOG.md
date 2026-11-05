@@ -5,6 +5,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
+- **Navigation** : écrans dédiés aux Labs, Jeux, Défi express, Progression, Trophées et Profil dans la zone principale, liens directs et historique du navigateur. Les Labs ne renvoient plus aux Notions ; une entrée « Notions » conserve le catalogue existant sans modifier sa structure. Les jeux ont leurs propres cartes et recherche. Navigation mobile sur deux rangées.
 - **Collection des trophées accessible depuis l'accueil** : les objectifs des notions, labs et jeux compatibles sont présentés dès l'ouverture de « Mes trophées », sans devoir lancer un module. Les résultats déjà conservés se superposent à la collection ; les objectifs non commencés restent à débloquer, sans gain de progression artificiel.
 - **Remontée des trophées** : le pont des pages intégrées fonctionne avec la politique `Referrer-Policy: no-referrer` du site déployé. L'origine du parent est vérifiée et fixée lors de la connexion par message, sans dépendre du Referer ni désactiver l'isolation des pages.
 - **Mes trophées** remplace « Mes badges » : succès d'exploration, étoiles des notions et du mini-lab, records du cercle, XP, niveaux, grades, leçons, révisions et badges des jeux compatibles. Remontée locale depuis les iframes isolées et reprise des résultats, avec la même mémorisation optionnelle et le même effacement que le profil.

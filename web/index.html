@@ -34,6 +34,7 @@
   <symbol id="i-coeur" viewBox="0 0 24 24"><path d="M20.2 8.8c0 4.4-8.2 10-8.2 10s-8.2-5.6-8.2-10a4.3 4.3 0 0 1 8.2-1.7 4.3 4.3 0 0 1 8.2 1.7z"/></symbol>
   <symbol id="i-utilisateur" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
   <symbol id="i-cercle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12 17.5 6.5"/><circle cx="17.5" cy="6.5" r="1.6"/></symbol>
+  <symbol id="i-livre" viewBox="0 0 24 24"><path d="M12 5v15M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Z"/></symbol>
 </svg>
 
 <a class="evitement" href="#contenu" data-i18n="allerAuContenu"></a>
@@ -53,9 +54,10 @@
       <button type="button" class="nav-bouton" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
       <div class="nav-groupe">
         <span class="nav-groupe-titre" data-i18n="navGroupeLabsJeux"></span>
-        <button type="button" class="nav-bouton" data-nav="labs" id="ouvrir-catalogue" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
-        <button type="button" class="nav-bouton" data-nav="jeux" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
+        <button type="button" class="nav-bouton" data-nav="labs" aria-controls="ecran-labs"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
+        <button type="button" class="nav-bouton" data-nav="jeux" aria-controls="ecran-jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       </div>
+      <button type="button" class="nav-bouton" data-nav="catalogue" id="ouvrir-catalogue" aria-controls="catalogue" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navNotions"></span></button>
       <button type="button" class="nav-bouton" data-nav="defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span class="nav-texte" data-i18n="navDefi"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <button type="button" class="nav-bouton" data-nav="badges"><svg class="ico" aria-hidden="true"><use href="#i-trophee"/></svg><span class="nav-texte" data-i18n="navBadges"></span></button>
@@ -76,11 +78,11 @@
     <div class="enveloppe">
       <header class="entete" id="haut">
         <div class="salut">
-          <h1 id="salut"></h1>
-          <p data-i18n="accroche"></p>
+          <h1 id="salut" tabindex="-1"></h1>
+          <p id="accroche"></p>
         </div>
         <div class="actions">
-          <button id="ouvrir-progres" type="button" class="pastille-progres" aria-haspopup="dialog">
+          <button id="ouvrir-progres" type="button" class="pastille-progres" aria-controls="progres">
             <span class="visuellement-cache" data-i18n="monProgres"></span>
             <span class="pastille-serie" aria-hidden="true"><span class="icone-flamme">🔥</span><span id="pastille-serie"></span></span>
             <span class="pastille-niveau" aria-hidden="true">
@@ -99,7 +101,38 @@
 
       <p class="avertissement" role="note" data-i18n="avertissement"></p>
 
-      <section class="parcours-v3" aria-labelledby="parcours-v3-titre">
+      <section id="ecran-labs" class="ecran" data-ecrans="labs" aria-labelledby="labs-titre" hidden>
+        <div class="tete-section">
+          <div><h2 id="labs-titre" data-i18n="labsDisponibles"></h2><p data-i18n="labsSeparation"></p></div>
+        </div>
+        <article class="carte lab-dedie">
+          <div class="lab-apercu" aria-hidden="true"><svg class="ico"><use href="#i-cercle"/></svg><span class="math">sin(θ) · cos(θ)</span></div>
+          <div class="lab-description">
+            <span class="pastille lab" data-i18n="matiere_mathematiques"></span>
+            <h3 data-i18n="labCercleTitre"></h3>
+            <p class="doux" data-i18n="labCercleDescription"></p>
+            <a class="bouton lab" href="cercle/?mode=explore" data-i18n="parcoursV3Action"></a>
+            <div class="lab-modes">
+              <a href="cercle/?mode=learn" data-i18n="parcoursV3Manipuler"></a>
+              <a href="cercle/?mode=play" data-i18n="parcoursV3Entrainement"></a>
+            </div>
+          </div>
+        </article>
+        <button type="button" class="lien-fleche" data-nav="catalogue" data-i18n="labsVoirNotions"></button>
+      </section>
+
+      <section id="ecran-jeux" class="ecran" data-ecrans="jeux" aria-labelledby="jeux-titre" hidden>
+        <div class="tete-section">
+          <h2 id="jeux-titre" data-i18n="jeuxDisponibles"></h2>
+          <p id="jeux-compteur" role="status"></p>
+        </div>
+        <label for="recherche-jeu" class="visuellement-cache" data-i18n="rechercherJeu"></label>
+        <input id="recherche-jeu" type="search" autocomplete="off" data-i18n-placeholder="rechercherJeu">
+        <div id="grille-jeux" class="grille-jeux"></div>
+        <p id="jeux-vide" class="doux" hidden></p>
+      </section>
+
+      <section class="parcours-v3" data-ecrans="accueil" aria-labelledby="parcours-v3-titre">
         <div class="parcours-v3-texte">
           <span class="sur-titre" data-i18n="parcoursV3SurTitre"></span>
           <h2 id="parcours-v3-titre" data-i18n="parcoursV3Titre"></h2>
@@ -151,7 +184,7 @@
         </section>
       </section>
 
-      <div class="accueil" id="accueil">
+      <div class="accueil" id="accueil" data-ecrans="accueil">
         <section class="carte chat" aria-labelledby="chat-titre">
           <div class="chat-entete">
             <span class="chat-icone" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
@@ -185,7 +218,7 @@
         </div>
       </div>
 
-      <section aria-labelledby="matieres-titre" id="matieres">
+      <section aria-labelledby="matieres-titre" id="matieres" data-ecrans="accueil">
         <div class="tete-section">
           <div>
             <h2 id="matieres-titre" data-i18n="matieresTitre"></h2>
@@ -196,7 +229,7 @@
         <div class="grille-matieres" id="grille-matieres"></div>
       </section>
 
-      <section aria-labelledby="activites-titre" id="activites">
+      <section aria-labelledby="activites-titre" id="activites" data-ecrans="accueil">
         <div class="tete-section">
           <div>
             <h2 id="activites-titre" data-i18n="activitesTitre"></h2>
@@ -228,7 +261,7 @@
         </div>
       </section>
 
-      <div class="rangee-bas">
+      <div class="rangee-bas" data-ecrans="accueil progression">
         <section class="carte semaine" aria-labelledby="semaine-titre" id="semaine">
           <div class="tete-section">
             <div>
@@ -261,9 +294,10 @@
 <nav class="nav-mobile" data-i18n-aria="navigationMobile">
   <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
   <div class="nav-mobile-groupe" role="group" data-i18n-aria="navGroupeLabsJeux">
-    <button type="button" class="nav-mobile-bouton" data-nav="labs" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg></span><span data-i18n="navLabs"></span></button>
-    <button type="button" class="nav-mobile-bouton" data-nav="jeux" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
+    <button type="button" class="nav-mobile-bouton" data-nav="labs" aria-controls="ecran-labs"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg></span><span data-i18n="navLabs"></span></button>
+    <button type="button" class="nav-mobile-bouton" data-nav="jeux" aria-controls="ecran-jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   </div>
+  <button type="button" class="nav-mobile-bouton" data-nav="catalogue" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navNotions"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="defi"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg></span><span data-i18n="navDefiCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
@@ -310,10 +344,10 @@
 </dialog>
 
 <!-- Profil et paramètres -->
-<dialog id="profil" aria-labelledby="profil-titre">
+<section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="profil-titre" hidden>
   <div class="dialogue-entete">
     <h2 id="profil-titre" data-i18n="profilTitre"></h2>
-    <button type="button" class="fermer-croix" id="fermer-profil"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+    <button type="button" class="secondaire" id="fermer-profil" data-nav="accueil" data-i18n="navAccueil"></button>
   </div>
   <form id="formulaire-profil" class="formulaire-profil" novalidate>
     <label for="profil-pseudo" class="etiquette-champ" data-i18n="pseudoLabel"></label>
@@ -332,7 +366,7 @@
     <button type="button" class="danger" id="effacer-donnees" data-i18n="effacerDonnees"></button>
     <p class="doux petit" id="effacer-aide" data-i18n="effacerAide"></p>
   </div>
-</dialog>
+</section>
 
 <!-- Bulle : page interactive ouverte depuis le tableau de bord (hors du fil du chat) -->
 <dialog id="bulle-lab" class="bulle-lab" aria-labelledby="bulle-titre">
@@ -354,21 +388,21 @@
 </dialog>
 
 <!-- Défi express -->
-<dialog id="defi" aria-labelledby="defi-titre">
+<section id="defi" class="carte ecran-personnel" data-ecrans="defi" aria-labelledby="defi-titre" hidden>
   <div class="dialogue-entete">
     <div>
       <p class="sur-titre chaud" id="defi-sur-titre"></p>
       <h2 id="defi-titre" data-i18n="defiTitre"></h2>
     </div>
-    <button type="button" class="fermer-croix" id="fermer-defi"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+    <button type="button" class="secondaire" id="fermer-defi" data-nav="accueil" data-i18n="navAccueil"></button>
   </div>
   <div id="defi-corps"></div>
-</dialog>
+</section>
 
-<dialog id="progres" aria-labelledby="progres-titre">
+<section id="progres" class="carte ecran-personnel" data-ecrans="badges" aria-labelledby="progres-titre" hidden>
   <div class="dialogue-entete">
     <h2 id="progres-titre" data-i18n="navBadges"></h2>
-    <button type="button" class="fermer-croix" id="fermer-progres"><span class="visuellement-cache" data-i18n="fermer"></span></button>
+    <button type="button" class="secondaire" id="fermer-progres" data-nav="accueil" data-i18n="navAccueil"></button>
   </div>
   <p data-i18n="tropheesIntro"></p>
   <p id="trophees-resume" role="status"></p>
@@ -406,7 +440,7 @@
   <p class="doux petit" data-i18n="tropheesLimites"></p>
   <p class="note-locale" id="note-memoire"></p>
   <p class="doux petit" data-i18n="progressionCompte"></p>
-</dialog>
+</section>
 <dialog id="signalement">
   <form id="formulaire-signalement" method="dialog">
     <h2 data-i18n="signalerTitre"></h2>

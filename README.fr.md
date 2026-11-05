@@ -39,6 +39,14 @@ dans les pages du catalogue servies par le Worker ; les sources du catalogue res
 L’application autonome les incorpore via `python3 scripts/build-standalone.py`. Aucun secret ni accès réseau
 n’est nécessaire pour préparer le lien, même hors ligne ; publier nécessite une connexion à GitHub.
 
+La navigation distingue les écrans **Accueil**, **Labs**, **Jeux**, **Défi express**, **Progression**,
+**Mes trophées** et **Profil** dans la zone principale, avec des liens directs (`/#labs`, `/#jeux`,
+`/#defi`, `/#progression`, `/#badges`, `/#profil`) et le retour du navigateur.
+Les Labs présentent les applications dédiées disponibles (actuellement le cercle sous `/cercle/`),
+pas les fiches du catalogue. L'entrée **Notions** conserve le catalogue existant, ses matières, niveaux,
+recherche et compteurs. Les jeux disposent de cartes et d'une recherche séparée ; leur ouverture
+conserve la bulle isolée et la progression locale. Sur mobile, la navigation s'affiche sur deux rangées.
+
 Des maquettes supplémentaires peuvent vivre dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
 jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics fondés sur le gabarit
 en mathématiques, physique-chimie, géographie et philosophie.
