@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GLd9pRk4X2bKJLO/WYgG1Y/IzYdM6qlg/UuLVQAf+Ms=' 'sha256-/q1gx97A+ps1+KUZh/kcm93eQ1ey/SQ6fWA8d3vCQSQ='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Mots croisés – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "mots-croises",
+  "titre": "Mots croisés",
+  "sujet": "jeux/mots-croises",
+  "version": "1.0.0",
+  "date": "2026-11-04",
+  "langue": "fr",
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+:root {
+  color-scheme: light dark;
+  --fond: #f5f7fb; --surface: #fff; --texte: #172033; --doux: #596579;
+  --accent: #3156a4; --accent-texte: #fff; --bord: #cbd3e1;
+  --succes: #147d45; --alerte: #bd3030; --selection: #dce8ff; --case: #f0f3f9;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fond: #121721; --surface: #1d2532; --texte: #edf2fb; --doux: #a7b3c5;
+    --accent: #a7c3ff; --accent-texte: #111a2b; --bord: #39475b; --succes: #6de0a0;
+    --alerte: #ff9292; --selection: #304568; --case: #263244; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.5 system-ui, sans-serif; }
+header, main, footer { width: min(100% - 24px, 900px); margin-inline: auto; }
+header { padding: 16px 0 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+h1 { margin: 0; font-size: 1.35rem; }
+.sous-titre, .doux { color: var(--doux); }
+.sous-titre { margin: 2px 0 0; font-size: .9rem; }
+#connexion[hidden] { display: none; }
+[role="tablist"] { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--bord); }
+[role="tab"] { flex: 0 0 auto; border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+[role="tab"][aria-selected="true"] { border-bottom-color: var(--accent); color: var(--texte); font-weight: 700; }
+[role="tab"]:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding: 16px 0; }
+[role="tabpanel"][hidden] { display: none; }
+.carte { padding: 14px; margin-bottom: 12px; border: 1px solid var(--bord); border-radius: 12px; background: var(--surface); }
+h2 { font-size: 1.1rem; margin: 0 0 8px; }
+h3 { font-size: 1rem; margin: 12px 0 4px; }
+p { margin: 6px 0; }
+button { color: inherit; font: inherit; }
+button.action, button.secondaire, .lettre, .case { border-radius: 8px; cursor: pointer; touch-action: manipulation; }
+button.action, button.secondaire { padding: 9px 13px; font-weight: 700; }
+button.action { border: 2px solid var(--accent); background: var(--accent); color: var(--accent-texte); }
+button.secondaire { border: 2px solid var(--bord); background: var(--surface); }
+button.secondaire[aria-pressed="true"], button.secondaire.actif { border-color: var(--accent); background: var(--selection); }
+.niveaux, .commandes, .clavier { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.niveaux { margin: 8px 0 12px; }
+.niveaux button { text-align: left; }
+.niveaux small { display: block; font-size: .75rem; font-weight: 400; }
+.plateau { width: min(100%, 560px); margin: 12px auto; }
+.grille { display: grid; width: 100%; gap: 2px; padding: 3px; border: 2px solid var(--texte); border-radius: 7px; background: var(--texte); }
+.case, .noire { min-width: 0; aspect-ratio: 1; }
+.case { position: relative; display: grid; place-items: center; padding: 0; border: 0; border-radius: 2px; background: var(--surface); color: var(--accent); font-size: clamp(.72rem, 3.8vw, 1.2rem); font-weight: 800; text-transform: uppercase; }
+.case .numero { position: absolute; top: 0; left: 2px; color: var(--doux); font-size: clamp(.42rem, 1.4vw, .62rem); font-weight: 500; line-height: 1; }
+.case.selection { background: var(--selection); }
+.case.dans-mot { background: var(--case); }
+.case.erreur { color: var(--alerte); text-decoration: underline wavy; }
+.case:disabled { cursor: default; opacity: 1; }
+.clues { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.clues h3 { margin-top: 0; }
+.clue { width: 100%; margin: 3px 0; padding: 8px 10px; text-align: left; border: 1px solid var(--bord); border-radius: 8px; background: var(--surface); cursor: pointer; }
+.clue[aria-pressed="true"] { border-color: var(--accent); background: var(--selection); font-weight: 700; }
+.clavier { justify-content: center; margin: 10px 0 4px; }
+.lettre { width: 34px; min-height: 40px; padding: 2px; border: 1px solid var(--bord); background: var(--surface); font-weight: 700; }
+.lettre:hover, button.secondaire:hover, .clue:hover { background: var(--selection); }
+.message { min-height: 1.6em; text-align: center; font-weight: 650; }
+.message.ok { color: var(--succes); } .message.ko { color: var(--alerte); }
+.grille-grades { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.grade { border: 1px solid var(--bord); border-radius: 10px; padding: 12px; background: var(--surface); }
+.grade.verrouille { opacity: .7; }
+.grade h3 { margin-top: 0; }
+footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
+@media (max-width: 480px) { header { align-items: flex-start; } .carte { padding: 11px; } .lettre { width: 31px; min-height: 38px; } }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Mots croisés</h1><p class="sous-titre">Des premiers mots aux défis de pro</p></div>
+  <button id="connexion" class="secondaire" hidden>Se connecter</button>
+</header>
+<nav id="onglets" role="tablist" aria-label="Mots croisés"></nav>
+<main id="panneaux"></main>
+<footer>Tout se joue hors ligne. Ta progression reste sur cet appareil.</footer>
+
+<script type="application/json" id="donnees-mots-croises">
+{
+  "etapes": [
+    {
+      "id": "noob", "nom": "Noob", "icone": "🌱",
+      "description": "Découvre les définitions courtes et prends tes premiers repères.",
+      "conseil": "Lis toutes les définitions : une lettre déjà trouvée peut t'aider pour les croisements.",
+      "verticale": { "mot": "FORME", "indice": "Contour ou aspect géométrique d'un objet." },
+      "horizontales": [
+        { "mot": "FACE", "indice": "Un des côtés plats d'un solide." },
+        { "mot": "POLYGONE", "croisement": 1, "indice": "Figure fermée formée de plusieurs segments." },
+        { "mot": "RAYON", "indice": "Segment qui relie le centre d'un cercle à son bord." },
+        { "mot": "SOMMET", "croisement": 2, "indice": "Point où se rejoignent deux côtés d'un polygone." },
+        { "mot": "PERIMETRE", "croisement": 1, "indice": "Longueur totale du contour d'une figure." }
+      ]
+    },
+    {
+      "id": "debutant", "nom": "Débutant", "icone": "🔎",
+      "description": "Reconnais les mots essentiels de la géométrie et du calcul.",
+      "conseil": "Les croisements sont tes alliés : chaque réponse confirme une lettre de l'autre mot.",
+      "verticale": { "mot": "ANGLE", "indice": "Ouverture formée par deux demi-droites de même origine." },
+      "horizontales": [
+        { "mot": "AIRE", "indice": "Mesure de la surface d'une figure." },
+        { "mot": "NOMBRE", "indice": "Il peut être entier, décimal ou fractionnaire." },
+        { "mot": "GEOMETRIE", "indice": "Branche des maths qui étudie les figures et l'espace." },
+        { "mot": "POLYGONE", "croisement": 2, "indice": "Figure fermée formée de plusieurs segments." },
+        { "mot": "PERIMETRE", "croisement": 1, "indice": "Longueur totale du contour d'une figure." }
+      ]
+    },
+    {
+      "id": "intermediaire", "nom": "Intermédiaire", "icone": "🧩",
+      "description": "Joue avec les fonctions, leurs représentations et leur vocabulaire.",
+      "conseil": "Pense aux mots liés : une fonction associe une image à chaque nombre de son domaine.",
+      "verticale": { "mot": "FONCTION", "indice": "Relation qui associe une image à un nombre de départ." },
+      "horizontales": [
+        { "mot": "FACTEUR", "indice": "Dans une multiplication, chacun des nombres multipliés." },
+        { "mot": "POLYGONE", "croisement": 1, "indice": "Figure fermée formée de plusieurs segments." },
+        { "mot": "NOMBRE", "indice": "Valeur que l'on peut placer sur un axe gradué." },
+        { "mot": "COURBE", "indice": "Représentation graphique d'une fonction." },
+        { "mot": "CENTRE", "croisement": 3, "indice": "Point situé à égale distance de tous les points d'un cercle." },
+        { "mot": "IMAGE", "indice": "Résultat obtenu en appliquant une fonction à un nombre." },
+        { "mot": "ORDONNEE", "croisement": 3, "indice": "Deuxième coordonnée d'un point dans un repère." },
+        { "mot": "NIVEAU", "indice": "Ligne d'altitude ou degré atteint dans un parcours." }
+      ]
+    },
+    {
+      "id": "avance", "nom": "Avancé", "icone": "🧠",
+      "description": "Mobilise les mots de la géométrie et du raisonnement.",
+      "conseil": "Cherche les mots longs : leurs croisements te donnent beaucoup de lettres utiles.",
+      "verticale": { "mot": "TRIANGLE", "indice": "Polygone qui possède trois côtés et trois sommets." },
+      "horizontales": [
+        { "mot": "THALES", "indice": "Nom du théorème qui relie des longueurs proportionnelles." },
+        { "mot": "RAYON", "indice": "La moitié du diamètre d'un cercle." },
+        { "mot": "PYRAMIDE", "croisement": 5, "indice": "Solide dont les faces latérales sont des triangles." },
+        { "mot": "ABSCISSE", "indice": "Première coordonnée d'un point dans un repère." },
+        { "mot": "NOMBRE", "indice": "Résultat d'un calcul ou élément d'un ensemble numérique." },
+        { "mot": "GEOMETRIE", "indice": "Étude mathématique des formes, des dimensions et de l'espace." },
+        { "mot": "LIMITE", "indice": "Valeur vers laquelle une fonction se rapproche." },
+        { "mot": "EQUATION", "indice": "On la résout en cherchant les valeurs qui rendent l'égalité vraie." }
+      ]
+    },
+    {
+      "id": "pro", "nom": "Pro", "icone": "🏆",
+      "description": "Relève le défi des fonctions, de l'algèbre et de l'analyse.",
+      "conseil": "Même les mots techniques se déduisent : croise les définitions et vérifie chaque lettre.",
+      "verticale": { "mot": "DERIVEE", "indice": "Elle mesure le taux de variation instantané d'une fonction." },
+      "horizontales": [
+        { "mot": "DOMAINE", "indice": "Ensemble des valeurs pour lesquelles une fonction est définie." },
+        { "mot": "ENSEMBLE", "indice": "Collection d'objets mathématiques décrite par ses éléments." },
+        { "mot": "RACINE", "indice": "Valeur qui annule une fonction ou un polynôme." },
+        { "mot": "INTEGRALE", "indice": "Elle peut représenter une aire algébrique sous une courbe." },
+        { "mot": "VARIATION", "indice": "Étude de la croissance ou de la décroissance d'une fonction." },
+        { "mot": "EQUATION", "indice": "Égalité à résoudre pour déterminer les inconnues." },
+        { "mot": "EXPONENTIELLE", "croisement": 5, "indice": "Fonction qui est sa propre dérivée et vaut 1 en 0." }
+      ]
+    }
+  ]
+}
+</script>
+
+<template id="tpl-regles">
+  <section class="carte">
+    <h2>Comment jouer ?</h2>
+    <p>Chaque définition correspond à un mot horizontal ou vertical. Clique sur une définition pour sélectionner son mot, puis remplis les cases avec les lettres.</p>
+    <p>Tu peux taper au clavier ou toucher les lettres affichées sous la grille. Les mots se croisent : une même case appartient à deux mots.</p>
+    <p><strong>Indice</strong> révèle une lettre du mot sélectionné. <strong>Vérifier</strong> contrôle la grille et ouvre le grade suivant quand tout est juste.</p>
+  </section>
+</template>
+<template id="tpl-jeu">
+  <section class="carte">
+    <h2>Choisis ta grille</h2>
+    <div class="niveaux" data-zone="niveaux" aria-label="Grades"></div>
+    <p class="doux" data-sortie="objectif"></p>
+    <div class="commandes">
+      <button class="action" data-action="nouveau">Recommencer</button>
+      <button class="secondaire" data-action="indice">💡 Indice</button>
+      <button class="secondaire" data-action="verifier">Vérifier</button>
+      <button class="secondaire" data-action="effacer">Effacer la case</button>
+    </div>
+    <div class="plateau"><div class="grille" data-zone="grille" role="grid" aria-label="Grille de mots croisés"></div></div>
+    <div class="clavier" data-zone="clavier" aria-label="Choisir une lettre"></div>
+    <div class="clues" data-zone="definitions"></div>
+    <p class="message" data-sortie="message" role="status" aria-live="polite"></p>
+  </section>
+</template>
+<template id="tpl-academie">
+  <section class="carte">
+    <h2>Académie : de Noob à Pro</h2>
+    <p>Résous une grille pour ouvrir le grade suivant. Chaque étape te fait découvrir de nouveaux mots de maths.</p>
+    <p class="doux" data-sortie="progression"></p>
+    <div class="grille-grades" data-zone="grades"></div>
+  </section>
+</template>
+<template id="tpl-defis">
+  <section class="carte">
+    <h2>Les réflexes du cruciverbiste</h2>
+    <div class="grille-grades">
+      <article class="grade"><h3>1. Repère les mots courts</h3><p>Une définition simple peut rapidement remplir les premières cases.</p></article>
+      <article class="grade"><h3>2. Croise tes réponses</h3><p>Une lettre commune aux mots horizontaux et verticaux aide à confirmer les deux réponses.</p></article>
+      <article class="grade"><h3>3. Pense aux notions apprises</h3><p>Les mots de géométrie, de fonctions et d'algèbre sont souvent cachés dans les définitions.</p></article>
+      <article class="grade"><h3>4. Avance sans te bloquer</h3><p>Change de définition si un mot résiste, puis reviens-y avec de nouvelles lettres.</p></article>
+      <article class="grade"><h3>5. Vise le grade Pro</h3><p>Utilise les croisements et vérifie la grille quand tu penses avoir trouvé tous les mots.</p></article>
+    </div>
+    <p><button class="action" data-action="defi">Jouer au premier défi</button></p>
+  </section>
+</template>
+
+<script id="moteur-mots-croises">
+const MoteurMotsCroises = (() => {
+  const normaliser = (mot) => mot.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
+  function creerGrille(etape) {
+    if (!etape?.verticale?.mot || !Array.isArray(etape.horizontales) || etape.horizontales.length !== etape.verticale.mot.length) {
+      throw new Error("grille invalide : une définition horizontale est requise par lettre verticale");
+    }
+    const vertical = normaliser(etape.verticale.mot);
+    if (vertical.length !== etape.verticale.mot.length || !vertical) throw new Error("mot vertical invalide");
+    const colVerticale = 6;
+    const mots = [{ ...etape.verticale, mot: vertical, direction: "vertical", id: "v" }];
+    etape.horizontales.forEach((entree, ligne) => {
+      const mot = normaliser(entree.mot);
+      const croisement = entree.croisement ?? 0;
+      if (!mot || !Number.isInteger(croisement) || croisement < 0 || croisement >= mot.length
+        || mot[croisement] !== vertical[ligne] || !entree.indice?.trim()) throw new Error(`croisement invalide à la ligne ${ligne + 1}`);
+      mots.push({ ...entree, mot, direction: "horizontal", id: `h${ligne}` });
+    });
+    const colonnes = Math.max(15, colVerticale + Math.max(...mots.map((m) => m.direction === "horizontal" ? m.mot.length - (m.croisement || 0) : 1)));
+    const cases = Array.from({ length: vertical.length }, () => Array(colonnes).fill(null));
+    for (const mot of mots) {
+      mot.cases = Array.from({ length: mot.mot.length }, (_, i) => ({
+        ligne: mot.direction === "vertical" ? i : Number(mot.id.slice(1)),
+        colonne: mot.direction === "vertical" ? colVerticale : colVerticale + i - (mot.croisement || 0)
+      }));
+      mot.cases.forEach(({ ligne, colonne }, i) => {
+        if (cases[ligne][colonne] && cases[ligne][colonne] !== mot.mot[i]) throw new Error(`lettres incompatibles : ${mot.id}`);
+        cases[ligne][colonne] = mot.mot[i];
+      });
+    }
+    return { lignes: vertical.length, colonnes, cases, mots };
+  }
+  function verifier(grille, saisie) {
+    const incompletes = [], erreurs = [];
+    for (let l = 0; l < grille.lignes; l++) for (let c = 0; c < grille.colonnes; c++) {
+      const attendu = grille.cases[l][c];
+      if (!attendu) continue;
+      if (!saisie[l]?.[c]) incompletes.push({ ligne: l, colonne: c });
+      else if (saisie[l][c] !== attendu) erreurs.push({ ligne: l, colonne: c });
+    }
+    return { incompletes, erreurs, resolu: incompletes.length === 0 && erreurs.length === 0 };
+  }
+  function prochainIndice(grille, saisie, mot) {
+    const cases = mot?.cases ?? grille.cases.flatMap((rangee, ligne) => rangee.map((lettre, colonne) => lettre ? { ligne, colonne } : null).filter(Boolean));
+    const cible = cases.find(({ ligne, colonne }) => !saisie[ligne][colonne]);
+    return cible ? { ...cible, lettre: grille.cases[cible.ligne][cible.colonne] } : null;
+  }
+  return Object.freeze({ normaliser, creerGrille, verifier, prochainIndice });
+})();
+</script>
+<script>
+(() => {
+  const M = MoteurMotsCroises, registre = [], donnees = JSON.parse(document.getElementById("donnees-mots-croises").textContent);
+  const etapes = donnees.etapes.map((e) => ({ ...e, grille: M.creerGrille(e) }));
+  function enregistrerOnglet(def) { registre.push(def); }
+  const panneaux = document.getElementById("panneaux"), onglets = document.getElementById("onglets");
+  const stockage = (() => {
+    try { return {
+      lire() { try { return JSON.parse(localStorage.getItem("kermiclab:mots-croises") || '{"ouvert":0,"terminees":[]}'); } catch { return { ouvert: 0, terminees: [] }; } },
+      ecrire: (x) => localStorage.setItem("kermiclab:mots-croises", JSON.stringify(x))
+    }; } catch { return { lire: () => ({ ouvert: 0, terminees: [] }), ecrire() {} }; }
+  })();
+  let progression = stockage.lire();
+  if (!Number.isInteger(progression.ouvert)) progression = { ouvert: 0, terminees: [] };
+  progression.ouvert = Math.max(0, Math.min(etapes.length - 1, progression.ouvert));
+  if (!Array.isArray(progression.terminees)) progression.terminees = [];
+  progression.terminees = progression.terminees.filter((id) => etapes.some((e) => e.id === id));
+  let ouvrirOnglet = () => {};
+  const texte = (el, valeur) => { el.textContent = valeur; };
+
+  enregistrerOnglet({ id: "explication", titre: "Règles", rendu(p) { p.append(document.getElementById("tpl-regles").content.cloneNode(true)); } });
+  const jeu = {};
+  enregistrerOnglet({ id: "application", titre: "Jouer", rendu(p) {
+    p.append(document.getElementById("tpl-jeu").content.cloneNode(true));
+    const zoneNiveaux = p.querySelector('[data-zone="niveaux"]'), grilleEl = p.querySelector('[data-zone="grille"]');
+    const zoneClavier = p.querySelector('[data-zone="clavier"]'), definitions = p.querySelector('[data-zone="definitions"]');
+    const message = p.querySelector('[data-sortie="message"]'), objectif = p.querySelector('[data-sortie="objectif"]');
+    let rang = progression.ouvert, saisie, motActif, caseActive, erreurs = [], terminee = false;
+    const boutonsNiveau = etapes.map((e, i) => {
+      const b = document.createElement("button"); b.className = "secondaire"; b.type = "button";
+      b.append(document.createTextNode(`${e.icone} ${e.nom} `));
+      const detail = document.createElement("small"); detail.textContent = `${e.grille.mots.length} mots`; b.append(detail);
+      b.addEventListener("click", () => { if (i <= progression.ouvert) demarrer(i); });
+      zoneNiveaux.append(b); return b;
+    });
+    const lettres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    for (const lettre of lettres) {
+      const b = document.createElement("button"); b.type = "button"; b.className = "lettre"; b.textContent = lettre;
+      b.setAttribute("aria-label", `Saisir ${lettre}`); b.addEventListener("click", () => saisir(lettre)); zoneClavier.append(b);
+    }
+    p.querySelector('[data-action="effacer"]').addEventListener("click", () => saisir(""));
+
+    function annoncer(valeur, classe = "") { texte(message, valeur); message.className = `message ${classe}`; }
+    function motsDeCase(cible) { return etapes[rang].grille.mots.filter((m) => m.cases.some((x) => x.ligne === cible.ligne && x.colonne === cible.colonne)); }
+    function afficher(focaliser = false) {
+      const definition = etapes[rang].grille, motCases = new Set(motActif.cases.map((x) => `${x.ligne}:${x.colonne}`));
+      grilleEl.replaceChildren();
+      grilleEl.style.gridTemplateColumns = `repeat(${definition.colonnes}, minmax(0, 1fr))`;
+      grilleEl.setAttribute("aria-rowcount", String(definition.lignes));
+      grilleEl.setAttribute("aria-colcount", String(definition.colonnes));
+      const elements = [];
+      for (let l = 0; l < definition.lignes; l++) for (let c = 0; c < definition.colonnes; c++) {
+        const attendu = definition.cases[l][c];
+        if (!attendu) { const noire = document.createElement("span"); noire.className = "noire"; noire.setAttribute("aria-hidden", "true"); grilleEl.append(noire); continue; }
+        const b = document.createElement("button"); b.type = "button"; b.className = "case"; b.setAttribute("role", "gridcell");
+        b.setAttribute("aria-label", `Ligne ${l + 1}, colonne ${c + 1}${saisie[l][c] ? `, ${saisie[l][c]}` : ", vide"}`);
+        if (motCases.has(`${l}:${c}`)) b.classList.add("dans-mot");
+        if (caseActive.ligne === l && caseActive.colonne === c) b.classList.add("selection");
+        if (erreurs.some((x) => x.ligne === l && x.colonne === c)) b.classList.add("erreur");
+        const numero = (definition.mots.find((m) => m.cases[0].ligne === l && m.cases[0].colonne === c));
+        if (numero) { const n = document.createElement("span"); n.className = "numero"; n.textContent = String(definition.mots.indexOf(numero) + 1); b.append(n); }
+        b.append(document.createTextNode(saisie[l][c] || ""));
+        b.addEventListener("click", () => {
+          const options = motsDeCase({ ligne: l, colonne: c });
+          motActif = options.find((m) => m.direction === motActif.direction) || options[0];
+          caseActive = { ligne: l, colonne: c }; afficher(true);
+        });
+        b.addEventListener("keydown", (e) => {
+          if (/^[a-z]$/i.test(e.key)) { e.preventDefault(); saisir(M.normaliser(e.key)); }
+          else if (e.key === "Backspace" || e.key === "Delete") { e.preventDefault(); saisir(""); }
+          else if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "ArrowLeft" || e.key === "ArrowUp") {
+            e.preventDefault(); const pas = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
+            const i = motActif.cases.findIndex((x) => x.ligne === l && x.colonne === c);
+            caseActive = motActif.cases[Math.max(0, Math.min(motActif.cases.length - 1, i + pas))]; afficher(true);
+          }
+        });
+        elements.push({ ligne: l, colonne: c, element: b }); grilleEl.append(b);
+      }
+      definitions.replaceChildren();
+      for (const sens of ["horizontal", "vertical"]) {
+        const bloc = document.createElement("section"), titre = document.createElement("h3");
+        titre.textContent = sens === "horizontal" ? "Horizontales" : "Verticales"; bloc.append(titre);
+        const liste = document.createElement("div");
+        definition.mots.filter((m) => m.direction === sens).forEach((m, i) => {
+          const b = document.createElement("button"); b.type = "button"; b.className = "clue";
+          b.setAttribute("aria-pressed", String(m.id === motActif.id));
+          b.textContent = `${definition.mots.indexOf(m) + 1}. ${m.indice}`;
+          b.addEventListener("click", () => { motActif = m; caseActive = m.cases[0]; afficher(true); });
+          liste.append(b);
+        });
+        bloc.append(liste); definitions.append(bloc);
+      }
+      boutonsNiveau.forEach((b, i) => { b.setAttribute("aria-pressed", String(rang === i)); b.disabled = i > progression.ouvert; });
+      if (focaliser) elements.find((x) => x.ligne === caseActive.ligne && x.colonne === caseActive.colonne)?.element.focus();
+    }
+    function verifier() {
+      const bilan = M.verifier(etapes[rang].grille, saisie); erreurs = bilan.erreurs;
+      if (bilan.resolu) terminer();
+      else {
+        afficher();
+        annoncer(bilan.erreurs.length ? `${bilan.erreurs.length} lettre${bilan.erreurs.length > 1 ? "s" : ""} à corriger.` : `${bilan.incompletes.length} case${bilan.incompletes.length > 1 ? "s" : ""} encore vide${bilan.incompletes.length > 1 ? "s" : ""}.`, bilan.erreurs.length ? "ko" : "");
+      }
+    }
+    function terminer() {
+      terminee = true;
+      if (!progression.terminees.includes(etapes[rang].id)) progression.terminees.push(etapes[rang].id);
+      if (rang === progression.ouvert && progression.ouvert < etapes.length - 1) progression.ouvert++;
+      stockage.ecrire(progression); afficher();
+      const prochain = progression.ouvert > rang ? ` Le grade ${etapes[progression.ouvert].nom} est débloqué !` : " Tu as terminé tous les grades : tu es un pro des mots croisés !";
+      annoncer(`Grille résolue ! 🎉${prochain}`, "ok"); actualiserAcademie();
+    }
+    function saisir(lettre) {
+      if (terminee) return;
+      const { ligne, colonne } = caseActive;
+      saisie[ligne][colonne] = lettre || "";
+      erreurs = [];
+      const i = motActif.cases.findIndex((x) => x.ligne === ligne && x.colonne === colonne);
+      if (lettre && i < motActif.cases.length - 1) caseActive = motActif.cases[i + 1];
+      afficher(true);
+      if (M.verifier(etapes[rang].grille, saisie).resolu) verifier();
+    }
+    function demarrer(i) {
+      rang = i; const definition = etapes[rang].grille;
+      saisie = Array.from({ length: definition.lignes }, () => Array(definition.colonnes).fill(""));
+      motActif = definition.mots[1]; caseActive = motActif.cases[0]; erreurs = []; terminee = false;
+      texte(objectif, `${etapes[rang].icone} ${etapes[rang].nom} — ${etapes[rang].conseil}`);
+      afficher(); annoncer("Choisis une définition, puis saisis les lettres.");
+    }
+    p.querySelector('[data-action="nouveau"]').addEventListener("click", () => demarrer(rang));
+    p.querySelector('[data-action="indice"]').addEventListener("click", () => {
+      if (terminee) return;
+      const indice = M.prochainIndice(etapes[rang].grille, saisie, motActif);
+      if (!indice) { annoncer("Ce mot est déjà rempli."); return; }
+      saisie[indice.ligne][indice.colonne] = indice.lettre;
+      caseActive = indice;
+      afficher(true); annoncer(`Indice : la lettre ${indice.lettre}.`, "ok");
+      if (M.verifier(etapes[rang].grille, saisie).resolu) verifier();
+    });
+    p.querySelector('[data-action="verifier"]').addEventListener("click", verifier);
+    jeu.demarrer = demarrer;
+    demarrer(rang);
+  } });
+
+  function actualiserAcademie() {
+    if (!academie.zone) return;
+    academie.progres.textContent = `${progression.terminees.length} / ${etapes.length} grilles résolues — ${progression.ouvert + 1} / ${etapes.length} grades débloqués`;
+    academie.zone.replaceChildren();
+    etapes.forEach((e, i) => {
+      const carte = document.createElement("article"), h = document.createElement("h3"), desc = document.createElement("p"), conseil = document.createElement("p"), bouton = document.createElement("button");
+      carte.className = `grade${i > progression.ouvert ? " verrouille" : ""}`;
+      h.textContent = `${e.icone} ${progression.terminees.includes(e.id) ? "✓ " : ""}${e.nom}`;
+      desc.textContent = e.description; conseil.textContent = `À retenir : ${e.conseil}`;
+      bouton.type = "button"; bouton.className = i > progression.ouvert ? "secondaire" : "action"; bouton.disabled = i > progression.ouvert;
+      bouton.textContent = i > progression.ouvert ? "🔒 Résous le grade précédent" : "Jouer cette étape";
+      bouton.addEventListener("click", () => { jeu.demarrer(i); ouvrirOnglet("application"); });
+      carte.append(h, desc, conseil, bouton); academie.zone.append(carte);
+    });
+  }
+  const academie = {};
+  enregistrerOnglet({ id: "academie", titre: "Académie", rendu(p) {
+    p.append(document.getElementById("tpl-academie").content.cloneNode(true));
+    academie.zone = p.querySelector('[data-zone="grades"]'); academie.progres = p.querySelector('[data-sortie="progression"]');
+    actualiserAcademie();
+  } });
+  enregistrerOnglet({ id: "mise-en-situation", titre: "Défis", rendu(p) {
+    p.append(document.getElementById("tpl-defis").content.cloneNode(true));
+    p.querySelector('[data-action="defi"]').addEventListener("click", () => { jeu.demarrer(0); ouvrirOnglet("application"); });
+  } });
+  enregistrerOnglet({ id: "self-test", titre: "Auto-évaluation", actif: false, rendu() {} });
+  const actifs = registre.filter((o) => o.actif !== false);
+  for (const [i, o] of actifs.entries()) {
+    const b = document.createElement("button"), section = document.createElement("section");
+    b.type = "button"; b.id = `onglet-${o.id}`; b.setAttribute("role", "tab"); b.setAttribute("aria-controls", `panneau-${o.id}`);
+    const actif = o.id === "application";
+    b.setAttribute("aria-selected", String(actif)); b.tabIndex = actif ? 0 : -1; b.textContent = o.titre; b.dataset.id = o.id;
+    section.id = `panneau-${o.id}`; section.setAttribute("role", "tabpanel"); section.setAttribute("aria-labelledby", b.id); section.tabIndex = 0; section.hidden = !actif;
+    o.rendu(section); onglets.append(b); panneaux.append(section);
+    b.addEventListener("click", () => ouvrirOnglet(o.id));
+    b.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault(); const prochain = (i + (e.key === "ArrowRight" ? 1 : -1) + actifs.length) % actifs.length;
+      ouvrirOnglet(actifs[prochain].id); onglets.children[prochain].focus();
+    });
+  }
+  ouvrirOnglet = (id) => actifs.forEach((o) => {
+    const actif = o.id === id, b = onglets.querySelector(`[data-id="${o.id}"]`), section = document.getElementById(`panneau-${o.id}`);
+    b.setAttribute("aria-selected", String(actif)); b.tabIndex = actif ? 0 : -1; section.hidden = !actif;
+  });
+})();
+</script>
+</body>
+</html>
