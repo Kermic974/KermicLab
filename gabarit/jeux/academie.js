@@ -39,7 +39,24 @@ const VueAcademie = (() => {
     const parcours = P.parcours;
     let etat = P.normaliser(stockage.lire(cle));
     let session = null, ex = null, confirmationEffacement = false;
-    const sauver = () => stockage.ecrire(cle, etat);
+    const sauver = () => { stockage.ecrire(cle, etat); publier(); };
+    const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
+      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); },
+      resumer() {
+        z.stockage.hidden = true;
+        const lecons = parcours.grades.flatMap((g) => g.lecons);
+        return {
+          genre: "jeux", etat,
+          xp: etat.xp, niveau: P.niveau(etat.xp).niveau,
+          etoiles: Object.values(etat.lecons).reduce((s, l) => s + l.etoiles, 0), etoilesTotal: lecons.length * 3,
+          lecons: Object.keys(etat.lecons).length, leconsTotal: lecons.length,
+          grades: P.gradesObtenus(etat), gradesTotal: parcours.grades.length,
+          serie: P.serieActuelle(etat, jour()), dernierJour: etat.dernierJour, revisions: etat.revisions,
+          victoires: Object.values(etat.parties).reduce((s, p) => s + p.victoires, 0),
+          badges: P.badges(etat)
+        };
+      }
+    });
 
     /* ---------- Squelette ---------- */
     const toast = el("p", { classe: "toast", "data-sortie": "toast", role: "status", "aria-live": "polite" });

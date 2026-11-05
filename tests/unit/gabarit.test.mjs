@@ -105,7 +105,8 @@ test("gabarit : la page générée respecte le contrat et neutralise le HTML du 
   const { memo, ...sansMemo } = contenu;
   assert.deepEqual(lireMetaHtml(await genererPage({ fiche, contenu: sansMemo })).onglets, ["explication", "application", "mise-en-situation", "self-test"]);
   await assert.rejects(genererPage({ fiche, contenu: { ...contenu, memo: {} } }), /memo/);
-  assert.equal(scriptsEnLigne(html).length, 1, "un seul script exécutable : le moteur");
+  assert.equal(scriptsEnLigne(html).length, 2, "deux scripts exécutables : le pont local et le moteur");
+  assert.match(scriptsEnLigne(html)[0].attributs, /id="trophees"/);
   assert.ok(!html.includes("</script><script>alert"), "le contenu ne peut pas fermer la balise de données");
   const donnees = html.match(/<script type="application\/json" id="kermiclab-contenu">([\s\S]*?)<\/script>/)[1];
   assert.equal(JSON.parse(donnees).intro, contenu.intro);

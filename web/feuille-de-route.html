@@ -111,8 +111,9 @@
   <div><h3>Acquis réutilisable</h3><p>XP, grades, étoiles, badges, objectif du jour, défi quotidien,
     révisions Leitner, conseil explicable et page « Ma progression » : le socle existe dans
     <code>gabarit/jeux/</code> (ADR 0014 et 0015).</p></div>
-  <div><h3>Prochaine jonction</h3><p>Les progressions des jeux restent locales à chaque page.
-    Les relier au tableau de bord exige encore le contrat d'événements et un modèle de maîtrise scolaire :
+  <div><h3>Prochaine jonction</h3><p>« Mes trophées » rassemble localement les résultats des modules compatibles
+    ouverts dans le tableau de bord, sans synchroniser les pages ouvertes séparément.
+    Aller au-delà de ces instantanés exige encore un contrat d'événements pédagogiques et un modèle de maîtrise scolaire :
     <strong>XP de jeu ≠ maîtrise d'une notion</strong>.</p></div>
 </div>
 </section>
@@ -173,7 +174,7 @@
     <tr><td>Routage déterministe et chat</td><td><span class="fr-etat fait">En ligne</span> zéro token sur le catalogue, repli sans clé API</td><td>Clé API avec plafond quand un budget existe (ADR 0006)</td></tr>
     <tr><td>Tableau de bord, pseudo, progression</td><td><span class="fr-etat fait">En ligne</span> local, session ou mémorisé (ADR 0012)</td><td>Notion de maîtrise et de révision, au-delà de « notion vue »</td></tr>
     <tr><td>Catalogue de jeux autonomes</td><td><span class="fr-etat fait">Fusionné</span> Démineur, Échecs, Belote, Sudoku, Poker Texas Hold'em (jetons fictifs), Mots croisés, Mots fléchés, 2048</td><td>Consolider clavier, tactile et relecture des règles ; pendu en PR ouverte (#100), exclu des huit jeux livrés</td></tr>
-    <tr><td>Académie et gamification partagées</td><td><span class="fr-etat fait">Fusionné</span> modules de progression et d'interface, exercices vérifiés par les moteurs, révisions et conseils locaux (#90, #92)</td><td>Intégration au tableau de bord ; transposition aux notions scolaires après définition des compétences</td></tr>
+    <tr><td>Académie et gamification partagées</td><td><span class="fr-etat fait">Disponible</span> modules de progression et d'interface, exercices vérifiés par les moteurs, révisions et conseils locaux (#90, #92) ; remontée des résultats dans « Mes trophées »</td><td>Événements pédagogiques détaillés ; transposition aux notions scolaires après définition des compétences</td></tr>
     <tr><td>Comptes parent et profils élèves</td><td><span class="fr-etat partiel">Proposé</span> ADR 0010, code OAuth en place, désactivé</td><td>Validation juridique (RGPD, consentement des moins de 15 ans), AIPD</td></tr>
     <tr><td>KPI anonymes, sauvegardes</td><td><span class="fr-etat fait">En ligne</span> D1 + R2, ni IP ni texte</td><td>Indicateurs pédagogiques agrégés</td></tr>
     <tr><td>Contrôle qualité des pages</td><td><span class="fr-etat partiel">Technique : fait</span> sécurité (<code>check:pages</code>), routage, tests navigateur de chaque notion (onglets, CSP, mobile)</td><td>Relecture pédagogique outillée : aujourd'hui 100&nbsp;% humaine et sans trace</td></tr>
@@ -218,7 +219,7 @@
   <li><a href="#phase-2"><strong>2 · Personnaliser</strong><span>Parcours et cahier local</span></a></li>
 </ol>
 <p class="fr-encadre"><strong>Priorité immédiate :</strong> consolider les huit jeux et relire le pendu proposé,
-  puis cadrer la remontée de progression au tableau de bord. Ni la fusion d'un jeu, ni ses badges ne valident
+  puis étendre les instantanés de « Mes trophées » aux événements pédagogiques détaillés. Ni la fusion d'un jeu, ni ses badges ne valident
   à eux seuls les phases 0, 1 ou 2. La préparation juridique peut avancer en parallèle ; l'IA reste conditionnée au budget.</p>
 </section>
 
@@ -278,7 +279,7 @@
     <li>Contrat d'événements des pages : une page autonome n'a pas d'accès réseau (<code>connect-src 'none'</code>) ;
       elle signale <em>démarré</em>, <em>indice demandé</em>, <em>réponse</em>, <em>terminé</em> à la page qui
       l'affiche par <code>postMessage</code>, avec un schéma versionné. C'est la page d'accueil qui enregistre.</li>
-    <li>Relier l'Académie au tableau de bord par ce contrat, sans transférer tout son stockage local.
+    <li>Compléter le pont local d'instantanés de « Mes trophées » par ce contrat pédagogique, sans transférer tout le stockage du navigateur.
       Réutiliser les modules de <code>gabarit/jeux/</code> quand ils conviennent, tout en séparant XP ludique,
       exercices réussis et maîtrise scolaire.</li>
     <li>Exercices du gabarit notés de façon déterministe (réponse attendue, tolérance, erreur fréquente associée).</li>
@@ -582,7 +583,8 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 <h2 id="t-en">Roadmap (English summary)</h2>
 <p>As of November 5, 2026, the merged baseline includes the student dashboard, eight standalone games and shared
   Academy modules with local XP, badges, spaced review and deterministic advice. Hangman (#100) is still an open PR,
-  not a delivered game. Game progress is not yet connected to the dashboard and does not establish school-subject mastery.
+  not a delivered game. “My trophies” locally displays compatible module snapshots in the dashboard, without syncing
+  separately opened pages. This does not establish school-subject mastery or complete the pedagogical event contract.
   The simplified Gantt shows dependencies, not delivery dates or completion percentages.</p>
 <p>KermicLab grows from trigoLab without a rewrite. Phase 0 makes quality enforceable (blocking CI on the existing
   browser tests, tracked pedagogical review). Phase 1 adds structure: prerequisites and skills in each concept, checked

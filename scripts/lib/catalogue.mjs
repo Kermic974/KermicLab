@@ -114,7 +114,10 @@ export async function chargerCatalogue(dossiers) {
       for (const langue of langues) {
         const fichier = path.join(rep, langue === "fr" ? "page.html" : `page.${langue}.html`);
         const source = (await existe(fichier)) ? await readFile(fichier, "utf8") : "";
-        const html = langue === "fr" && generee ? generee : appliquerCsp(await inclureModules(source));
+        let page = langue === "fr" && generee ? generee : await inclureModules(source);
+        const pont = `<script id="trophees" data-inclure="gabarit/jeux/trophees.js"></script>`;
+        if (!page.includes('id="trophees"')) page = page.replace("</head>", `${pont}\n</head>`);
+        const html = appliquerCsp(await inclureModules(page));
         sources.push({ fichier, aJour: source === html, html });
         const meta = lireMetaHtml(html);
         if (meta.id !== fiche.id || meta.version !== fiche.version) throw new Error(`${fichier}: id/version différents de la fiche`);

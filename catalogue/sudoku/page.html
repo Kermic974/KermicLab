@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-9Epjj/8RNS9oUVIx3hkt5x2pO8ml0QsmAQcXt7U8h/A='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-D3p+WvettAzTrkCBOdqoriM4WF10EB4BxXsqBc2wjEw=' 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-BqFuLcRrKZGTOVX2gIz/hlhB/2G/KEuW+ec/Ni9NK6g='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Sudoku – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -78,6 +78,33 @@ button.secondaire[aria-pressed="true"], button.secondaire.actif { border-color: 
 footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
 @media (max-width: 480px) { header { align-items: flex-start; } .case { font-size: clamp(.9rem, 7vw, 1.4rem); } .carte { padding: 11px; } }
 </style>
+<script id="trophees" data-inclure="gabarit/jeux/trophees.js">
+// Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+const Trophees = (() => {
+  function monter({ restaurer, resumer }) {
+    if (window.parent === window) return () => {};
+    const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+    const module = meta.id;
+    const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [origineCandidate];
+    const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
+    if (!origineParent) return () => {};
+    let pret = false;
+    const publier = () => {
+      if (pret) window.parent.postMessage({ type: "kermiclab:trophees:progres", module, ...resumer() }, origineParent);
+    };
+    window.addEventListener("message", (e) => {
+      if (e.source !== window.parent || e.origin !== origineParent || e.data?.type !== "kermiclab:trophees:charger" || e.data.module !== module || pret) return;
+      if (e.data.etat !== null) restaurer(e.data.etat);
+      pret = true;
+      publier();
+    });
+    window.parent.postMessage({ type: "kermiclab:trophees:pret", module }, origineParent);
+    return publier;
+  }
+  return Object.freeze({ monter });
+})();
+</script>
 </head>
 <body>
 <header>
@@ -253,13 +280,26 @@ const MoteurSudoku = (() => {
   const stockage = (() => {
     try { return {
       lire() { try { return JSON.parse(localStorage.getItem("kermiclab:sudoku") || '{"ouvert":0}'); } catch { return { ouvert: 0 }; } },
-      ecrire: (x) => localStorage.setItem("kermiclab:sudoku", JSON.stringify(x))
+      ecrire(x) { try { localStorage.setItem("kermiclab:sudoku", JSON.stringify(x)); } catch { /* iframe isolée : le parent conserve la progression */ } publier(); }
     }; }
     catch { return { lire: () => ({ ouvert: 0 }), ecrire() {} }; }
   })();
   let progression = stockage.lire();
   if (!Number.isInteger(progression.ouvert)) progression = { ouvert: 0 };
   progression.ouvert = Math.max(0, Math.min(M.ETAPES.length - 1, progression.ouvert));
+  const publier = Trophees.monter({
+    restaurer(brut) {
+      progression.ouvert = Number.isInteger(brut?.ouvert) ? Math.max(0, Math.min(M.ETAPES.length - 1, brut.ouvert)) : 0;
+      progression.termine = brut?.termine === true;
+      actualiserAcademie();
+      jeu.demarrer(progression.ouvert);
+    },
+    resumer: () => ({ genre: "jeux", etat: progression, grades: progression.termine ? M.ETAPES.length : progression.ouvert,
+      gradesTotal: M.ETAPES.length, badges: M.ETAPES.map((e, i) => ({
+        id: String(i), nom: e.nom, description: e.nom, icone: e.icone, actuel: i < progression.ouvert || progression.termine ? 1 : 0,
+        cible: 1, obtenu: i < progression.ouvert || progression.termine === true
+      })) })
+  });
   let ouvrirOnglet = () => {};
   const sortie = (el, texte) => { el.textContent = texte; };
 
@@ -316,6 +356,7 @@ const MoteurSudoku = (() => {
     function annoncer(texte, classe = "") { sortie(message, texte); message.className = `message ${classe}`; }
     function terminer() {
       terminee = true;
+      if (rang === M.ETAPES.length - 1) progression.termine = true;
       if (rang === progression.ouvert && progression.ouvert < M.ETAPES.length - 1) progression.ouvert++;
       stockage.ecrire(progression); afficher();
       const prochain = progression.ouvert > rang ? ` Le grade ${M.ETAPES[progression.ouvert].nom} est débloqué !` : " Tu as terminé tous les grades : bravo, pro du Sudoku !";

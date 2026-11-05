@@ -45,7 +45,7 @@ export function valeurExacte(v, deg) {
  * Monte le mini-lab dans `racine` (contient [data-cercle], input[type=range], [data-angles] et [data-sortie=…]).
  * `options.t` traduit, `options.langue()` donne la langue courante.
  */
-export function monterCercle(racine, { t, langue }) {
+export function monterCercle(racine, { t, langue, manipuler = () => {} }) {
   const hote = racine.querySelector("[data-cercle]");
   const curseur = racine.querySelector("input[type=range]");
   const zoneAngles = racine.querySelector("[data-angles]");
@@ -81,7 +81,7 @@ export function monterCercle(racine, { t, langue }) {
   const boutons = ANGLES.map((v) => {
     const b = document.createElement("button");
     b.type = "button"; b.className = "angle"; b.textContent = `${v}°`; b.setAttribute("aria-pressed", "false");
-    b.addEventListener("click", () => regler(v));
+    b.addEventListener("click", () => { regler(v); manipuler(angle); });
     zoneAngles.append(b);
     return b;
   });
@@ -128,7 +128,7 @@ export function monterCercle(racine, { t, langue }) {
     boutons.forEach((b, i) => b.setAttribute("aria-pressed", String(ANGLES[i] === angle)));
   }
 
-  curseur.addEventListener("input", () => regler(Number(curseur.value)));
+  curseur.addEventListener("input", () => { regler(Number(curseur.value)); manipuler(angle); });
 
   // Glisser le point directement sur le cercle, avec aimantation douce tous les 15°.
   let glisse = false;
@@ -143,6 +143,7 @@ export function monterCercle(racine, { t, langue }) {
     if (Math.abs(deg - aimant) < 2.5) deg = aimant;
     if (angle >= 330 && deg < 3) deg = 360;
     regler(deg);
+    manipuler(angle);
   }
   dessin.addEventListener("pointerdown", (ev) => {
     glisse = true; hote.classList.add("glisse");

@@ -458,6 +458,15 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .badge.obtenu { background: color-mix(in srgb, var(--or) 14%, var(--surface)); border-color: color-mix(in srgb, var(--or) 45%, var(--bord)); }
 .badge.verrouille { opacity: .6; }
 .note-locale { margin: 16px 0 4px; font-size: .85rem; }
+#progres { width: min(760px, calc(100vw - 24px)); }
+.trophee-module { border: 1px solid var(--bord); border-radius: 14px; padding: 14px; margin: 10px 0; overflow-wrap: anywhere; }
+.trophee-module h4 { margin: 0 0 10px; }
+.trophee-module progress { width: 100%; }
+.trophee-module summary { cursor: pointer; margin: 12px 0; font-weight: 650; }
+.trophee-module > button { margin-top: 12px; }
+.trophees-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+.trophees-chiffres dt { color: var(--doux); font-size: .8rem; }
+.trophees-chiffres dd { margin: 0; font-weight: 750; }
 
 /* Bulle : page interactive ouverte depuis le tableau de bord */
 dialog.bulle-lab {

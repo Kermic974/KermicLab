@@ -73,7 +73,8 @@ async function lireGabarit() {
   fichiersGabarit ??= {
     page: await readFile(`${racine}gabarit/page.html`, "utf8"),
     style: (await readFile(`${racine}gabarit/style.css`, "utf8")).trimEnd(),
-    moteur: (await readFile(`${racine}gabarit/moteur.js`, "utf8")).trimEnd()
+    moteur: (await readFile(`${racine}gabarit/moteur.js`, "utf8")).trimEnd(),
+    trophees: (await readFile(`${racine}gabarit/jeux/trophees.js`, "utf8")).trimEnd()
   };
   return fichiersGabarit;
 }
@@ -82,14 +83,14 @@ async function lireGabarit() {
 export async function genererPage({ fiche, contenu, langue = "fr" }) {
   exiger(/^\d{4}-\d{2}-\d{2}$/.test(fiche.date ?? ""), `${fiche.id}/fiche.md : « date » (AAAA-MM-JJ) requise pour une page générée`);
   validerContenu(contenu, `${fiche.id}/contenu.json`);
-  const { page, style, moteur } = await lireGabarit();
+  const { page, style, moteur, trophees } = await lireGabarit();
   const meta = {
     id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, date: fiche.date, langue,
     onglets: ["explication", ...(contenu.memo ? ["memo"] : []), "application", "mise-en-situation", "self-test"], gabarit: VERSION_GABARIT
   };
   const valeurs = {
     ID: echapperHtml(fiche.id), TITRE: echapperHtml(fiche.titre), VERSION: echapperHtml(fiche.version), LANGUE: echapperHtml(langue),
-    META: JSON.stringify(meta, null, 2).replace(/</g, "\\u003c"), CONTENU: jsonDansScript(contenu), STYLE: style, MOTEUR: moteur
+    META: JSON.stringify(meta, null, 2).replace(/</g, "\\u003c"), CONTENU: jsonDansScript(contenu), STYLE: style, MOTEUR: moteur, TROPHEES: trophees
   };
   return page.replace(/\{\{([A-Z]+)\}\}/g, (tout, cle) => {
     if (!(cle in valeurs)) throw new Error(`gabarit : emplacement inconnu {{${cle}}}`);

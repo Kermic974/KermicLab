@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0bYa2Eh0g7KdbYu+mcr5pnzccdABDi5H4sc4Q4uLotw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-D3p+WvettAzTrkCBOdqoriM4WF10EB4BxXsqBc2wjEw=' 'sha256-WGObV13L1T+D2MSKTNChzn8zrUKH8oQTANJ9rYoApxo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>La photosynthèse et les besoins des plantes – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -290,6 +290,33 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 @keyframes apparait { from { opacity: 0; transform: translateY(6px); } }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 </style>
+<script id="trophees" data-inclure="gabarit/jeux/trophees.js">
+// Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+const Trophees = (() => {
+  function monter({ restaurer, resumer }) {
+    if (window.parent === window) return () => {};
+    const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+    const module = meta.id;
+    const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [origineCandidate];
+    const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
+    if (!origineParent) return () => {};
+    let pret = false;
+    const publier = () => {
+      if (pret) window.parent.postMessage({ type: "kermiclab:trophees:progres", module, ...resumer() }, origineParent);
+    };
+    window.addEventListener("message", (e) => {
+      if (e.source !== window.parent || e.origin !== origineParent || e.data?.type !== "kermiclab:trophees:charger" || e.data.module !== module || pret) return;
+      if (e.data.etat !== null) restaurer(e.data.etat);
+      pret = true;
+      publier();
+    });
+    window.parent.postMessage({ type: "kermiclab:trophees:pret", module }, origineParent);
+    return publier;
+  }
+  return Object.freeze({ monter });
+})();
+</script>
 </head>
 <body>
 <header>
@@ -384,6 +411,24 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
   const etoiles = new Set(Array.isArray(stockage.lire("etoiles")) ? stockage.lire("etoiles") : []);
   const totalExercices = [...(C.application?.exercices ?? []), ...(C.situation?.etapes ?? [])].length;
   const compteur = document.getElementById("etoiles");
+  const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
+    restaurer(brut) {
+      if (!Array.isArray(brut)) return;
+      etoiles.clear();
+      for (const id of brut) if (idsExercices.has(id)) etoiles.add(id);
+      majEtoiles();
+      for (const onglet of registre.filter((o) => o.actif && ["application", "mise-en-situation"].includes(o.id))) {
+        const panneau = document.getElementById(`panneau-${onglet.id}`);
+        panneau.replaceChildren();
+        onglet.rendu(panneau);
+      }
+    },
+    resumer: () => ({ genre: "notions", etat: [...etoiles], etoiles: etoiles.size, etoilesTotal: totalExercices, badges: [] })
+  });
+  const idsExercices = new Set([
+    ...(C.application?.exercices ?? []).map((_, i) => `app-${i + 1}`),
+    ...(C.situation?.etapes ?? []).map((_, i) => `defi-${i + 1}`)
+  ]);
   function majEtoiles() {
     compteur.textContent = `★ ${etoiles.size} / ${totalExercices}`;
     compteur.setAttribute("aria-label", `${etoiles.size} étoiles sur ${totalExercices}`);
@@ -393,6 +438,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
     etoiles.add(id);
     stockage.ecrire("etoiles", [...etoiles]);
     majEtoiles();
+    publier();
     compteur.classList.remove("brille"); void compteur.offsetWidth; compteur.classList.add("brille");
     return true;
   }

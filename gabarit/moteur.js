@@ -76,6 +76,24 @@
   const etoiles = new Set(Array.isArray(stockage.lire("etoiles")) ? stockage.lire("etoiles") : []);
   const totalExercices = [...(C.application?.exercices ?? []), ...(C.situation?.etapes ?? [])].length;
   const compteur = document.getElementById("etoiles");
+  const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
+    restaurer(brut) {
+      if (!Array.isArray(brut)) return;
+      etoiles.clear();
+      for (const id of brut) if (idsExercices.has(id)) etoiles.add(id);
+      majEtoiles();
+      for (const onglet of registre.filter((o) => o.actif && ["application", "mise-en-situation"].includes(o.id))) {
+        const panneau = document.getElementById(`panneau-${onglet.id}`);
+        panneau.replaceChildren();
+        onglet.rendu(panneau);
+      }
+    },
+    resumer: () => ({ genre: "notions", etat: [...etoiles], etoiles: etoiles.size, etoilesTotal: totalExercices, badges: [] })
+  });
+  const idsExercices = new Set([
+    ...(C.application?.exercices ?? []).map((_, i) => `app-${i + 1}`),
+    ...(C.situation?.etapes ?? []).map((_, i) => `defi-${i + 1}`)
+  ]);
   function majEtoiles() {
     compteur.textContent = `★ ${etoiles.size} / ${totalExercices}`;
     compteur.setAttribute("aria-label", `${etoiles.size} étoiles sur ${totalExercices}`);
@@ -85,6 +103,7 @@
     etoiles.add(id);
     stockage.ecrire("etoiles", [...etoiles]);
     majEtoiles();
+    publier();
     compteur.classList.remove("brille"); void compteur.offsetWidth; compteur.classList.add("brille");
     return true;
   }
