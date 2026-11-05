@@ -8,7 +8,8 @@
   function contextualiser(lien) {
     const dialogue = lien.closest("dialog");
     const zone = dialogue ?? document.querySelector("#catalogue.ouvert") ?? document;
-    const visible = (noeud) => noeud.getClientRects().length > 0;
+    const visible = (noeud) => noeud.getClientRects().length > 0
+      && getComputedStyle(noeud).visibility === "visible";
     const onglet = [...zone.querySelectorAll('[role="tab"][aria-selected="true"]')].find(visible);
     const navigation = document.querySelector('[data-nav][aria-expanded="true"]')
       ?? document.querySelector('[data-nav][aria-current="page"]');
