@@ -4,7 +4,9 @@ const Trophees = (() => {
     if (window.parent === window) return () => {};
     const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
     const module = meta.id;
-    const origineParent = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [window.location.origin];
+    const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
     if (!origineParent) return () => {};
     let pret = false;
     const publier = () => {
