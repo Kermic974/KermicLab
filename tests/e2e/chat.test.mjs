@@ -5,7 +5,7 @@ import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outil
 
 let serveur, nav, htmlMaquette, api;
 before(async () => {
-  serveur = await servir(`${racine}dist`);
+  serveur = await servir(`${racine}dist`, { headers: { "referrer-policy": "no-referrer" } });
   nav = await navigateur();
   htmlMaquette = await readFile(`${racine}catalogue/trigo-cercle/page.html`, "utf8");
   // L'URL d'API est celle que le build a réellement écrite (Worker kermiclab-api, localhost en CI, ou même origine).

@@ -12,7 +12,7 @@ const modules = [
   { id: "2048", titre: "2048", matiere: "jeux", niveau: "autres" }
 ];
 before(async () => {
-  serveur = await servir(`${racine}dist`);
+  serveur = await servir(`${racine}dist`, { headers: { "referrer-policy": "no-referrer" } });
   nav = await navigateur();
   ({ apiUrl: api } = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8")));
   api ||= serveur.url;
@@ -40,7 +40,7 @@ async function ouvrirModule(page, id) {
   await page.click("#ouvrir-catalogue");
   await page.fill("#recherche-notion", modules.find((m) => m.id === id).titre);
   await page.locator(`#catalogue-liste [data-notion="${id}"]`).click();
-  await page.waitForFunction((id) => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? localStorage.getItem("kermiclab:trophees") ?? "{}")[id], id);
+  await page.waitForFunction((id) => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? localStorage.getItem("kermiclab:trophees") ?? "{}")[id], id, { timeout: 5000 });
   return page.frameLocator("#bulle-cadre");
 }
 
@@ -71,6 +71,7 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
   const { page, contexte, erreurs } = await demarrer();
   try {
     const cadre = await ouvrirModule(page, "echecs");
+    assert.equal(await cadre.locator("body").evaluate(() => document.referrer), "", "la remontée fonctionne sans Referer");
     const academie = cadre.locator("#panneau-academie");
     await cadre.locator("#onglet-academie").click();
     await academie.locator('[data-action="conseil"]').click();
