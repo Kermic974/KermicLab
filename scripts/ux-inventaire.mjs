@@ -58,7 +58,7 @@ export async function construireInventaire() {
     lignes.push(`<tr data-notion="${echapper(notion.id)}"><td><a href="${echapper(cible)}">${echapper(notion.titre)}</a><br><code>${echapper(notion.id)}</code><br><a data-lien-actif href="${echapper(active)}" target="_blank" rel="noopener noreferrer">Vue active</a> · <a data-lien-actif href="${echapper(source)}" target="_blank" rel="noopener noreferrer">Source main</a></td><td>${echapper(fr[`matiere_${matiere}`] ?? `${matiere} (libellé absent du site)`)}</td><td>${echapper(fr[`niveau_${notion.niveau}`])}</td><td>${echapper(notion.version)}</td><td>${echapper(onglets.join(" · "))}</td><td>${echapper(c?.application?.figure?.type ?? "—")}</td><td>${echapper(progression)}</td></tr>`);
   }
   const jeux = catalogue.index.maquettes.filter((n) => n.sujet.startsWith("jeux/")).length;
-  const liensDialogues = { "dialogue-pseudo": "premiere-visite", profil: "profil", "bulle-lab": "bulle", defi: "defi", progres: "badges", signalement: "support", compte: "comptes", consentement: "comptes" };
+  const liensDialogues = { "dialogue-pseudo": "premiere-visite", "dialogue-profil": "profil-dialogue", "bulle-lab": "bulle", defi: "defi", progres: "badges", signalement: "support", compte: "comptes", consentement: "comptes" };
   for (const id of dialogues) if (!liensDialogues[id]) throw new Error(`Inventaire UX : dialogue non représenté ${id}`);
   return `<!doctype html>
 <html lang="fr">
@@ -91,7 +91,7 @@ export async function construireInventaire() {
       <p>Régénérer et versionner : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Les tests détectent une dérive des sources, des squelettes, des dialogues, de la navigation et des onglets des jeux ; relire les squelettes manuels avant de valider une nouvelle version.</p>
     </section>
     <section data-ecran="inventaire-site"><h2>Coquille, dialogues et variantes</h2>
-      <p>Navigation actuelle : ${navigation.map(echapper).join(" · ")}. Écrans dédiés accessibles par fragment d'URL : ${ecrans.map(echapper).join(" · ")}. Labs et Jeux sont séparés du panneau Notions ; Profil, Défi et Trophées ne sont plus des dialogues. Couverture détaillée dans le squelette principal, avec variantes vides, chargement, erreur, réussite, mémoire et notifications.</p>
+      <p>Navigation actuelle : ${navigation.map(echapper).join(" · ")}. Écrans dédiés accessibles par fragment d'URL : ${ecrans.map(echapper).join(" · ")}. Labs et Jeux sont séparés du panneau Notions ; Configuration, Défi et Trophées sont des écrans dédiés. Le profil reste accessible dans une fenêtre séparée. Couverture détaillée dans le squelette principal, avec variantes vides, chargement, erreur, réussite, mémoire et notifications.</p>
       <ul>${dialogues.map((id) => `<li data-dialogue="${echapper(id)}"><a href="index.html#${liensDialogues[id]}">${echapper(id)}</a>${["compte", "consentement"].includes(id) ? " · accès masqué" : ""}</li>`).join("")}</ul>
       <p>Éditorial : <a href="editorial.html#feuille-de-route">Feuille de route</a>, <a href="editorial.html#confidentialite">Confidentialité</a>, <a href="editorial.html#mentions-legales">Mentions légales</a>. Participation : lien externe, pas d'écran interne. Worker : aucune page d'erreur HTML dédiée, 404 textuelle.</p>
     </section>
