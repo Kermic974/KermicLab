@@ -50,7 +50,7 @@ test("roadmap : HTML échappé, URL canonique et conservation exacte du contenu 
   assert.ok(resultat.startsWith(`avant${DEBUT}`));
   assert.ok(resultat.endsWith(`${FIN}après`));
   assert.match(resultat, /&lt;script&gt;alert\(&quot;x&quot;\)&lt;\/script&gt; &amp; texte/);
-  assert.match(resultat, /https:\/\/github.com\/Kermic974\/trigoLab\/pull\/7/);
+  assert.match(resultat, /(?:^|[^A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-])https:\/\/github\.com\/Kermic974\/trigoLab\/pull\/7(?:$|[^A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-])/);
   assert.match(resultat, /180 pages, dont 9 jeux/);
   assert.equal(actualiser(resultat, { ...donnees, prs: [pr(7, { title: '<script>alert("x")</script> & texte' })] }), resultat);
 });
