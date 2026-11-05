@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Squelette UX · KermicLab</title>
+  <style>
+    :root { color-scheme: light; --fond: #f5f5f5; --papier: #fff; --texte: #222; --doux: #555; --bord: #ccc; --accent: #333; }
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 1rem; }
+    body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    a, button, input, textarea, select, summary { touch-action: manipulation; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 4px; }
+    h1, h2, h3 { line-height: 1.25; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.1rem; }
+    p { margin: .6rem 0 1rem; }
+    small, .note { color: var(--doux); }
+    .evitement { position: absolute; left: 1rem; top: -5rem; background: white; padding: 1rem; z-index: 2; }
+    .evitement:focus { top: 1rem; }
+    .atelier { padding: 1rem max(1rem, calc((100% - 1400px) / 2)); background: #e7e7e7; border-bottom: 2px solid var(--accent); }
+    .atelier p { margin: .3rem 0; }
+    .coquille { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1440px; margin: auto; }
+    .navigation { padding: 1.5rem; background: var(--papier); border-right: 1px solid var(--bord); }
+    .marque { display: block; font-size: 1.4rem; font-weight: 800; text-decoration: none; }
+    .navigation nav { display: grid; gap: .35rem; margin: 1.5rem 0; }
+    .navigation nav a { padding: .6rem; border: 1px solid transparent; text-decoration: none; }
+    .navigation nav a:hover { border-color: var(--bord); background: var(--fond); }
+    main { min-width: 0; padding: 1.5rem; }
+    .ecran { border-top: 2px solid var(--accent); margin: 2.5rem 0; padding-top: 1rem; scroll-margin-top: 1rem; }
+    .ecran:first-child { margin-top: 0; }
+    .repere { display: block; color: var(--doux); font: 700 .8rem/1.5 ui-monospace, monospace; text-transform: uppercase; }
+    .entete, .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+    .actions { justify-content: flex-start; }
+    .grille { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .trois { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .carte { padding: 1.2rem; background: var(--papier); border: 1px solid var(--bord); border-radius: .5rem; min-width: 0; }
+    .carte > :first-child { margin-top: 0; }
+    .carte > :last-child { margin-bottom: 0; }
+    .annotation { border: 1px dashed #777; padding: .8rem; background: #eee; font-size: .9rem; }
+    .bouton, button { display: inline-block; padding: .65rem .95rem; min-height: 44px; border: 1px solid var(--accent); border-radius: .3rem; background: var(--papier); color: var(--texte); font: inherit; text-align: center; text-decoration: none; }
+    .primaire { background: var(--accent); color: white; }
+    button:disabled { color: #555; border-style: dashed; cursor: not-allowed; }
+    label { display: block; margin: .6rem 0; }
+    input:not([type="checkbox"]):not([type="radio"]), select, textarea { width: 100%; padding: .7rem; border: 1px solid #888; border-radius: .25rem; font: inherit; color: inherit; background: white; }
+    input[type="checkbox"], input[type="radio"] { width: 1.2rem; height: 1.2rem; vertical-align: middle; }
+    textarea { resize: vertical; }
+    progress { width: 100%; accent-color: var(--accent); }
+    fieldset { border: 1px solid var(--bord); padding: 1rem; min-width: 0; }
+    details { border: 1px solid var(--bord); padding: .8rem; margin: .75rem 0; background: white; }
+    summary { cursor: pointer; min-height: 28px; font-weight: 600; }
+    .messages { list-style: none; padding: 0; }
+    .messages li { padding: .8rem; margin: .7rem 0; border: 1px solid var(--bord); }
+    .messages .question { margin-left: 1.5rem; background: #eee; }
+    .pastille { display: inline-block; border: 1px solid #888; border-radius: 2rem; padding: .2rem .65rem; font-size: .85rem; }
+    .stats { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .stats div { flex: 1 1 110px; }
+    .stats dt { color: var(--doux); }
+    .stats dd { margin: 0; font-size: 1.5rem; font-weight: 700; }
+    .graphique { display: flex; align-items: end; justify-content: space-around; height: 160px; gap: .4rem; padding: 1rem .5rem 0; border-bottom: 1px solid #555; }
+    .graphique span { width: 12%; background: #ddd; border: 1px solid #777; text-align: center; font-size: .8rem; }
+    .schema { display: block; width: min(100%, 260px); margin: 1rem auto; }
+    .pied { display: flex; flex-wrap: wrap; gap: 1rem; padding: 1.5rem 0; border-top: 1px solid var(--bord); }
+    @media (max-width: 800px) {
+      .coquille { grid-template-columns: 1fr; }
+      .navigation { border-right: 0; border-bottom: 1px solid var(--bord); padding: 1rem; }
+      .navigation nav { display: flex; flex-wrap: wrap; margin: .5rem 0; gap: .25rem; }
+      .navigation nav a { padding: .5rem; }
+      .grille, .trois { grid-template-columns: 1fr; }
+      main { padding: 1rem; }
+    }
+    @media print {
+      .navigation, .evitement { display: none; }
+      .coquille { display: block; }
+      .ecran { break-before: page; }
+      .carte { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="evitement" href="#contenu">Aller au contenu</a>
+  <header class="atelier">
+    <strong>ATELIER UX · Squelette du site actuel · 5 novembre 2026</strong>
+    <p>Base structurelle pour Canvas, pas une refonte ni une copie au pixel près. Tous les écrans sont dépliés pour faciliter leur édition.</p>
+    <p>Navigation par liens et volets natifs uniquement. Recherche, envois, calculs et sauvegarde non branchés ; données de démonstration, aucun appel réseau ni stockage.</p>
+    <nav class="actions" aria-label="Fichiers de l'atelier">
+      <a href="index.html">Site et parcours principal</a>
+      <a href="notion.html">Page de notion</a>
+      <a href="cercle.html">Application cercle</a>
+      <a href="jeux.html">Jeu et Académie</a>
+    </nav>
+  </header>
+  <div class="coquille">
+    <aside class="navigation">
+      <a class="marque" href="#accueil">KermicLab</a>
+      <small>Laboratoire interactif</small>
+      <nav aria-label="Écrans du squelette">
+        <a href="#premiere-visite">Première visite</a>
+        <a href="#accueil">Accueil</a>
+        <a href="#catalogue">Explorer</a>
+        <a href="#conversation">Conversation et Lab</a>
+        <a href="#defi">Défi express</a>
+        <a href="#progression">Progression</a>
+        <a href="#badges">Mes badges</a>
+        <a href="#profil">Profil et paramètres</a>
+        <a href="#support">Signaler un problème</a>
+        <a href="#informations">Informations</a>
+      </nav>
+      <p class="annotation">Sur le site : barre latérale sur ordinateur, navigation basse sur mobile. Ici : sommaire de travail.</p>
+      <p><a href="#profil">Invité · Niveau 2 (exemple)</a></p>
+    </aside>
+    <main id="contenu">
+      <!-- Chaque data-ecran délimite un écran ou un dialogue à retravailler dans Canvas. -->
+      <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" aria-labelledby="titre-premiere-visite">
+        <span class="repere">01 · Dialogue de première visite</span>
+        <h1 id="titre-premiere-visite">Bienvenue sur KermicLab !</h1>
+        <div class="carte">
+          <p>Avant de commencer, choisis un pseudo. Il sert seulement à te saluer et reste dans ce navigateur.</p>
+          <label for="pseudo-initial">Ton pseudo</label>
+          <input id="pseudo-initial" type="text" maxlength="20" placeholder="Un surnom inventé" autocomplete="off" aria-describedby="conseil-pseudo">
+          <p id="conseil-pseudo" class="note">Pas ton vrai nom, ni ton adresse, ni ton numéro. Champ de maquette : rien n'est enregistré.</p>
+          <label><input type="checkbox"> Se souvenir de moi sur cet appareil</label>
+          <p class="note">Sur le site, cette option conserve le pseudo et les progrès localement ; sinon, ils restent limités à la session.</p>
+          <a class="bouton primaire" href="#accueil">C'est parti · voir l'accueil</a>
+        </div>
+        <details><summary>États à retravailler</summary><p>Pseudo trop court, trop long, caractères refusés ; progression retrouvée sur cet appareil ; mémorisation cochée ou non.</p></details>
+      </section>
+
+      <section class="ecran" id="accueil" data-ecran="accueil" aria-labelledby="titre-accueil">
+        <span class="repere">02 · Tableau de bord</span>
+        <header class="entete">
+          <div><h2 id="titre-accueil">Bonjour, Explorateur</h2><p>Prêt à comprendre quelque chose de nouveau ?</p></div>
+          <div class="actions">
+            <a class="pastille" href="#progression">Série : 3 jours · Niveau 2</a>
+            <button type="button" disabled>Thème clair / sombre</button>
+            <label>Langue <select disabled><option>Français</option><option>English</option></select></label>
+          </div>
+        </header>
+        <p class="annotation">Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</p>
+        <div class="grille">
+          <section class="carte" aria-labelledby="titre-question">
+            <h3 id="titre-question">Pose ta question</h3>
+            <p>Pose ta question, explore la page, joue avec la notion.</p>
+            <p>Salut ! Qu'est-ce qu'on découvre aujourd'hui ?</p>
+            <div class="actions"><a href="#conversation">C'est quoi le sinus ?</a><a href="#conversation">Je ne comprends pas les radians</a></div>
+            <label for="question">Ta question</label>
+            <textarea id="question" rows="3" maxlength="500" placeholder="Ex. : c'est quoi le sinus ?"></textarea>
+            <a class="bouton primaire" href="#conversation">Voir un exemple de réponse</a>
+            <p class="note">Aucune question n'est envoyée dans ce squelette.</p>
+          </section>
+          <div>
+            <section class="carte">
+              <h3>Reprendre ton Lab</h3><p>Le cercle trigonométrique</p>
+              <p>Rouvre la page là où tu l'as laissée et continue à manipuler.</p>
+              <a class="bouton" href="notion.html">Rouvrir la page · exemple</a>
+            </section>
+            <section class="carte">
+              <h3>KermicLab te suggère</h3><p>Prochaine notion : les fractions</p>
+              <p class="note">Suggestion calculée à partir de la progression de session sur le site.</p>
+              <a href="#catalogue">Commencer · explorer le catalogue</a>
+            </section>
+          </div>
+        </div>
+        <h3>Tes matières</h3>
+        <p>Les notions déjà explorées, matière par matière. <a href="#catalogue">Tout voir</a></p>
+        <div class="grille trois">
+          <article class="carte"><h3>Maths</h3><p>En cours · exemple : 2 / 10 notions</p><progress value="2" max="10" aria-label="Maths : 2 notions sur 10, exemple"></progress><a href="#catalogue">Explorer les maths</a></article>
+          <article class="carte"><h3>Physique-chimie et SVT</h3><p>À découvrir</p><a href="#catalogue">Voir les notions</a></article>
+          <article class="carte"><h3>Autres matières et jeux</h3><p>Histoire, géographie, EMC, philosophie, jeux.</p><a href="#catalogue">Voir les matières</a></article>
+        </div>
+        <h3>Que veux-tu faire maintenant ?</h3>
+        <div class="grille trois">
+          <article class="carte"><h3>Explorer</h3><p>Manipule les concepts et observe ce qui se passe.</p><a class="bouton" href="#catalogue">Ouvrir un Lab</a></article>
+          <article class="carte"><h3>Poser une question</h3><p>Demande ce que tu ne comprends pas.</p><a class="bouton" href="#titre-question">Écrire ma question</a></article>
+          <article class="carte"><h3>Défi express</h3><p>5 questions · environ 3 minutes</p><a class="bouton primaire" href="#defi">Lancer le défi · exemple</a></article>
+        </div>
+        <div class="grille">
+          <article class="carte">
+            <h3>Cette semaine</h3>
+            <dl class="stats"><div><dt>Notions découvertes</dt><dd>2</dd></div><div><dt>XP gagnés</dt><dd>60</dd></div><div><dt>Jours actifs</dt><dd>3 / 7</dd></div></dl>
+            <div class="graphique" role="img" aria-label="Exemple fictif d'activité : lundi 10 XP, mardi 20, mercredi 30, autres jours 0">
+              <span style="height: 35%">L</span><span style="height: 60%">M</span><span style="height: 90%">M</span><span style="height: 20%">J</span><span style="height: 20%">V</span><span style="height: 20%">S</span><span style="height: 20%">D</span>
+            </div>
+            <p class="note">Chiffres fictifs ; barres schématiques, pas une mesure réelle.</p>
+          </article>
+          <article class="carte">
+            <h3>Mini-lab : cercle trigonométrique</h3>
+            <svg class="schema" viewBox="0 0 240 240" role="img" aria-label="Schéma statique du cercle : angle de 45 degrés">
+              <circle cx="120" cy="120" r="85" fill="none" stroke="#333" stroke-width="2"/>
+              <path d="M15 120H225M120 15V225M120 120L180 60" fill="none" stroke="#555" stroke-width="2"/>
+              <path d="M180 60V120" fill="none" stroke="#555" stroke-dasharray="4 4"/>
+              <circle cx="180" cy="60" r="6" fill="#333"/>
+              <text x="146" y="109" font-size="15">45°</text>
+            </svg>
+            <p>Angle : 45° · sinus ≈ 0,707 · cosinus ≈ 0,707</p>
+            <a class="bouton" href="cercle.html">Ouvrir la page complète</a>
+          </article>
+        </div>
+        <details><summary>État initial sans progression</summary><p>« Ton premier Lab t'attend » remplace la reprise ; matières à découvrir, compteurs à zéro et graphique vide invitent à explorer ou poser une question.</p></details>
+      </section>
+
+      <section class="ecran" id="catalogue" data-ecran="catalogue" aria-labelledby="titre-catalogue">
+        <span class="repere">03 · Panneau Explorer</span>
+        <div class="entete"><h2 id="titre-catalogue">Toutes les notions</h2><a href="#accueil">Fermer · retour à l'accueil</a></div>
+        <p class="annotation">Sur le site : panneau latéral avec voile. Ici : section ouverte. Liste représentative, non exhaustive ; les filtres ne sont pas branchés.</p>
+        <label for="recherche">Rechercher une notion</label><input id="recherche" type="search" placeholder="Rechercher une notion…" disabled>
+        <nav class="actions" aria-label="Exemples de groupes du catalogue"><a href="#catalogue-maths">Maths</a><a href="#catalogue-autres">Autres matières</a><a href="#catalogue-jeux">Jeux</a></nav>
+        <div class="grille">
+          <article class="carte" id="catalogue-maths"><h3>Maths</h3><p>Classement par niveau : collège, seconde, première, terminale.</p><ul><li>Les fractions · collège</li><li>Le théorème de Pythagore · collège</li><li><a href="notion.html">Le cercle trigonométrique · page de notion</a></li></ul></article>
+          <article class="carte" id="catalogue-autres"><h3>Autres matières</h3><ul><li>Physique-chimie</li><li>SVT</li><li>Histoire</li><li>Géographie</li><li>EMC</li><li>Philosophie</li></ul><p class="note">Même structure de page de notion ; contenus non reproduits dans l'atelier.</p></article>
+          <article class="carte" id="catalogue-jeux"><h3>Jeux</h3><p>Échecs, Démineur, Belote, Sudoku, Poker à jetons fictifs, Mots croisés, Mots fléchés, 2048.</p><a class="bouton" href="jeux.html">Voir le squelette Jeu / Académie</a></article>
+        </div>
+        <details><summary>États de recherche et de chargement</summary><p>Chargement ; notion déjà explorée ; aucun résultat ; catalogue indisponible avec invitation à poser une question.</p></details>
+      </section>
+
+      <section class="ecran" id="conversation" data-ecran="conversation" aria-labelledby="titre-conversation">
+        <span class="repere">04 · Fil du chat et ouverture d'un Lab</span>
+        <h2 id="titre-conversation">Conversation · exemple fixe</h2>
+        <ol class="messages">
+          <li class="question"><strong>Toi</strong><p>C'est quoi le sinus ?</p></li>
+          <li><strong>KermicLab</strong><p>Voici la page « Le cercle trigonométrique ». Explore les onglets dans l'ordre que tu veux !</p><a class="bouton primaire" href="notion.html">Afficher la page de notion</a><p class="note">Zone de page intégrée sur le site : titre, version, afficher / réduire, plein écran.</p></li>
+        </ol>
+        <p>Et maintenant ? <a href="cercle.html">Que vaut sin(30°) ? · voir l'application</a></p>
+        <details open><summary>Bulle Lab ouverte depuis le tableau de bord</summary><p>En-tête : matière et titre · Plein écran · Fermer. Corps : page pédagogique intégrée. Pied : « Une question sur cette notion ? » et retour au chat.</p><a href="notion.html">Voir le contenu de la bulle</a> · <a href="#titre-question">Poser une question</a></details>
+        <details><summary>États alternatifs</summary><p>« Je réfléchis… » ; réponse simple ; notion hors catalogue et suggestions ; message modéré ; erreur réseau et bouton Réessayer. Aucune réponse IA n'est générée ici.</p></details>
+      </section>
+
+      <section class="ecran" id="defi" data-ecran="defi" aria-labelledby="titre-defi">
+        <span class="repere">05 · Dialogue Défi express</span>
+        <div class="entete"><h2 id="titre-defi">Vérifie ce que tu maîtrises</h2><a href="#accueil">Quitter le défi</a></div>
+        <div class="carte">
+          <p>Question 1 / 5 · exemple sans calcul de score</p><progress max="5" value="1" aria-label="Question 1 sur 5"></progress>
+          <fieldset><legend>Combien vaut cos(0°) ?</legend><label><input type="radio" name="reponse" value="0"> 0</label><label><input type="radio" name="reponse" value="1"> 1</label><label><input type="radio" name="reponse" value="-1"> −1</label></fieldset>
+          <details><summary>Voir l'exemple de correction</summary><p><strong>Correct : 1.</strong> À 0°, le point est en (1 ; 0) : son abscisse, donc cos 0°, vaut 1.</p><a href="#resultat-defi">Voir un résultat de démonstration</a></details>
+        </div>
+        <article class="carte" id="resultat-defi"><h3>Résultat · exemple</h3><p>3 bonnes réponses / 5. Bon travail. Un passage par le mini-lab et ce sera parfait.</p><a class="bouton" href="cercle.html">Revoir le cercle</a> <a class="bouton" href="#defi">Recommencer</a> <a href="#accueil">Terminer</a></article>
+        <details><summary>Autres états</summary><p>Réponse incorrecte et explication ; question suivante ; résultat parfait ou à retravailler ; XP déjà gagnés aujourd'hui.</p></details>
+      </section>
+
+      <section class="ecran" id="progression" data-ecran="progression" aria-labelledby="titre-progression">
+        <span class="repere">06 · Dialogue Mes progrès</span>
+        <h2 id="titre-progression">Mes progrès</h2>
+        <article class="carte"><h3>Niveau 2 · données fictives</h3><progress value="40" max="100" aria-label="Exemple : 40 XP sur 100"></progress><p>Encore 60 XP avant le niveau 3</p><dl class="stats"><div><dt>Questions posées</dt><dd>5</dd></div><div><dt>Notions explorées</dt><dd>2</dd></div><div><dt>Jours de suite</dt><dd>3</dd></div></dl><p>Meilleure série : 3 jours</p></article>
+        <p class="annotation">Pseudo et progrès limités à la session par défaut sur le site. Mémorisation locale facultative. Pas de compte nécessaire ; les progrès des jeux restent séparés du tableau de bord.</p>
+      </section>
+
+      <section class="ecran" id="badges" data-ecran="badges" aria-labelledby="titre-badges">
+        <span class="repere">07 · Badges dans Mes progrès</span>
+        <h2 id="titre-badges">Mes badges</h2>
+        <div class="grille trois"><article class="carte"><h3>Premier pas</h3><p>Pose ta première question.</p><span class="pastille">Débloqué · exemple</span></article><article class="carte"><h3>Explorateur</h3><p>Ouvre ta première page interactive.</p><span class="pastille">Débloqué · exemple</span></article><article class="carte"><h3>Collectionneur</h3><p>Explore 3 notions différentes.</p><span class="pastille">À débloquer</span></article></div>
+        <p class="note">Autres badges du site : Curieux, En feu, Passionné, Champion. Notifications prévues dans l'UX actuelle : XP gagnés, niveau atteint, nouvelle notion et badge débloqué.</p>
+      </section>
+
+      <section class="ecran" id="profil" data-ecran="profil" aria-labelledby="titre-profil">
+        <span class="repere">08 · Dialogue Profil et paramètres</span>
+        <h2 id="titre-profil">Profil et paramètres</h2>
+        <div class="carte">
+          <label for="pseudo-profil">Ton pseudo</label><input id="pseudo-profil" type="text" maxlength="20" value="Explorateur" autocomplete="off">
+          <button type="button" disabled>Enregistrer · non branché</button>
+          <label><input type="checkbox"> Se souvenir de moi sur cet appareil</label><p class="note">Dans cet atelier, cette case ne crée aucun cookie.</p>
+          <details><summary>Effacer mes données · aperçu de confirmation</summary><p>Sur le site, cette action supprime pseudo, progression et cookie local de cet appareil.</p><button type="button" disabled>Confirmer : tout effacer · non branché</button></details>
+        </div>
+        <p class="annotation">Compte parent, connexion Google / Microsoft et consentement existent dans le code mais sont masqués par la configuration actuelle. Ils ne font pas partie du parcours actif reproduit ici.</p>
+      </section>
+
+      <section class="ecran" id="support" data-ecran="support" aria-labelledby="titre-support">
+        <span class="repere">09 · Dialogue de signalement</span>
+        <h2 id="titre-support">Signaler un problème</h2>
+        <div class="carte"><label for="signalement">Décris le problème, sans donnée personnelle.</label><textarea id="signalement" rows="4" maxlength="2000"></textarea><div class="actions"><a href="#accueil">Fermer</a><button type="button" disabled>Envoyer le signalement · non branché</button></div><p class="note">Emplacement du retour : envoi en cours, confirmation ou erreur.</p></div>
+      </section>
+
+      <section class="ecran" id="informations" data-ecran="informations" aria-labelledby="titre-informations">
+        <span class="repere">10 · Pages éditoriales et pied de page</span>
+        <h2 id="titre-informations">Informations</h2>
+        <details open><summary>Feuille de route · structure</summary><p>Retour au site, titre et date, sommaire, synthèse, livraisons, suivi automatique, acquis, planning, principes, phases, pédagogie, tuteur, familles, architecture, mesure, risques, exclusions et notes de révision.</p></details>
+        <details><summary>Confidentialité · structure</summary><p>Ce que nous enregistrons ; données locales au navigateur ; traitement des questions ; version anglaise.</p></details>
+        <details><summary>Mentions légales · structure</summary><p>Zone réservée au contenu légal existant. Ce squelette n'est pas un document juridique et ne remplace pas les mentions du site.</p></details>
+        <p class="annotation">Mode d'emploi Canvas : ouvrir ou copier le HTML d'un fichier, retravailler ses blocs <code>data-ecran</code>, puis renvoyer le HTML modifié ou des instructions par écran. Chaque fichier contient son propre style et fonctionne sans installation.</p>
+      </section>
+      <footer class="pied"><a href="cercle.html">Application cercle</a><a href="#informations">Confidentialité et mentions légales</a><a href="#informations">Feuille de route</a><a href="#support">Signaler un problème</a></footer>
+    </main>
+  </div>
+</body>
+</html>

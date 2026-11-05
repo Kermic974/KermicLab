@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Squelette UX · Page de notion · KermicLab</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #222; font: 16px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 4px; }
+    header, main, footer { max-width: 1000px; padding: 1.2rem; margin: auto; }
+    h1, h2, h3 { line-height: 1.25; }
+    nav, .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
+    nav a, .bouton, button { display: inline-block; min-height: 44px; padding: .65rem 1rem; border: 1px solid #555; border-radius: .3rem; background: white; color: #222; font: inherit; text-decoration: none; }
+    button:disabled { border-style: dashed; color: #555; }
+    .note { background: #e9e9e9; border: 1px dashed #777; padding: 1rem; }
+    .ecran { margin: 2rem 0; border-top: 2px solid #333; padding-top: 1rem; scroll-margin-top: 1rem; }
+    .repere { color: #555; font: 700 .8rem ui-monospace, monospace; text-transform: uppercase; }
+    .carte, details { padding: 1rem; margin: 1rem 0; border: 1px solid #ccc; border-radius: .4rem; background: white; }
+    summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+    .grille { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .zone { min-height: 220px; display: grid; place-items: center; text-align: center; padding: 1rem; border: 2px dashed #999; background: #eee; }
+    fieldset { min-width: 0; border: 1px solid #aaa; }
+    label { display: block; padding: .5rem; }
+    @media (max-width: 650px) { .grille { grid-template-columns: 1fr; } }
+    @media print { .ecran { break-before: page; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">Retour au squelette du site</a>
+    <p class="note">ATELIER UX · Page de notion représentative. Structure issue du registre d'onglets et du gabarit commun ; ce fichier n'est pas une maquette du catalogue. Contenu abrégé, aucun moteur pédagogique ni stockage.</p>
+    <h1>Le cercle trigonométrique</h1>
+    <p>Zone d'identité : titre · identifiant · version · langue · étoiles</p>
+    <nav aria-label="Sections représentant les onglets actuels">
+      <a href="#explication">Explication</a><a href="#application">Application ludique</a><a href="#mise-en-situation">Mise en situation</a>
+    </nav>
+    <p>Dans le site, un seul onglet est affiché à la fois. Ici, tous les panneaux sont visibles et les liens font défiler la page.</p>
+  </header>
+  <main>
+    <section class="ecran" id="explication" data-ecran="notion-explication" aria-labelledby="titre-explication">
+      <span class="repere">N01 · Explication progressive</span>
+      <h2 id="titre-explication">Comprendre la notion</h2>
+      <article class="carte"><h3>L'idée en une phrase</h3><p>Sur un cercle de rayon 1, le cosinus et le sinus donnent les coordonnées d'un point repéré par son angle.</p></article>
+      <details open><summary>Intuition · observer avant de calculer</summary><p>Zone de manipulation ou de schéma commenté. Exemple concret puis vocabulaire essentiel.</p><div class="zone">Emplacement du schéma pédagogique<br>Angle, point, axes et projections</div></details>
+      <details><summary>Collège · premières relations</summary><p>Zone d'explications, d'exemples guidés et de rappel des prérequis.</p></details>
+      <details><summary>Lycée · formalisation</summary><p>Zone de définitions, valeurs exactes, radians et relations entre les représentations.</p></details>
+      <article class="carte"><h3>À retenir</h3><p>Une synthèse courte et un passage vers la pratique.</p><a class="bouton" href="#application">Passer à l'application</a></article>
+    </section>
+    <section class="ecran" id="application" data-ecran="notion-application" aria-labelledby="titre-application">
+      <span class="repere">N02 · Application ludique</span>
+      <h2 id="titre-application">Manipuler et s'entraîner</h2>
+      <div class="grille">
+        <div class="zone">Emplacement de l'interaction principale<br>Curseur, figure ou paramètres selon la notion</div>
+        <article class="carte"><h3>Consigne courte</h3><p>Observe ce qui change quand l'angle augmente.</p><p>Zone de résultat : valeurs, phrase explicative ou vérification.</p><a class="bouton" href="cercle.html">Voir le squelette du cercle complet</a></article>
+      </div>
+      <fieldset><legend>Exercice de démonstration : que vaut sin(30°) ?</legend><label><input type="radio" name="exercice" value="demi"> 1/2</label><label><input type="radio" name="exercice" value="un"> 1</label><label><input type="radio" name="exercice" value="zero"> 0</label></fieldset>
+      <details><summary>Afficher la correction de démonstration</summary><p>sin(30°) = 1/2. Emplacement de l'explication, du résultat et des étoiles éventuelles.</p></details>
+      <div class="actions"><button type="button" disabled>Vérifier · non branché</button><button type="button" disabled>Réinitialiser · non branché</button><a class="bouton" href="#mise-en-situation">Passer au défi</a></div>
+    </section>
+    <section class="ecran" id="mise-en-situation" data-ecran="notion-mise-en-situation" aria-labelledby="titre-situation">
+      <span class="repere">N03 · Mise en situation</span>
+      <h2 id="titre-situation">Utiliser la notion dans un contexte</h2>
+      <article class="carte"><h3>Le défi du quotidien</h3><p>Zone du scénario, de son objectif et des données utiles.</p><ol><li>Observer la situation.</li><li>Choisir une représentation.</li><li>Tester une réponse.</li><li>Comprendre la solution.</li></ol></article>
+      <details><summary>Un indice</summary><p>Zone d'aide progressive, sans donner immédiatement la solution.</p></details>
+      <details><summary>La solution expliquée</summary><p>Zone de correction : étapes, justification et prolongement.</p></details>
+      <p class="note">Auto-évaluation : onglet prévu mais inactif dans le socle actuel. Connexion également masquée. Ne pas les présenter comme des fonctionnalités actives.</p>
+    </section>
+    <section class="ecran" data-ecran="notion-etats" aria-labelledby="titre-etats">
+      <span class="repere">N04 · États à conserver lors de la refonte</span>
+      <h2 id="titre-etats">États et contexte d'ouverture</h2>
+      <p>Onglet sélectionné, niveaux dépliés, réponse juste ou fausse, indice révélé, progression locale et redémarrage de l'exercice.</p>
+      <p>Une même page peut être ouverte dans le fil du chat, dans une bulle depuis le tableau de bord, ou en plein écran ; garder une lecture mobile et une navigation au clavier.</p>
+    </section>
+  </main>
+  <footer><p>KermicLab · squelette autonome hors ligne · aucune donnée enregistrée.</p><a href="index.html#conversation">Retour au contexte chat / bulle</a> · <a href="jeux.html">Jeu et Académie</a></footer>
+</body>
+</html>

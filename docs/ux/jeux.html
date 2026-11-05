@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Squelette UX · Jeu et Académie · KermicLab</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #222; font: 16px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 4px; }
+    header, main, footer { max-width: 1100px; margin: auto; padding: 1.2rem; }
+    h1, h2, h3 { line-height: 1.25; }
+    nav, .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
+    nav a, .bouton, button { display: inline-block; padding: .65rem 1rem; min-height: 44px; border: 1px solid #555; border-radius: .3rem; background: white; color: #222; font: inherit; text-decoration: none; }
+    button:disabled { border-style: dashed; color: #555; }
+    .note { background: #e9e9e9; border: 1px dashed #777; padding: 1rem; }
+    .ecran { margin: 2rem 0; border-top: 2px solid #333; padding-top: 1rem; scroll-margin-top: 1rem; }
+    .repere { color: #555; font: 700 .8rem ui-monospace, monospace; text-transform: uppercase; }
+    .grille { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; }
+    .carte, details { padding: 1rem; background: white; border: 1px solid #ccc; border-radius: .4rem; margin: 1rem 0; min-width: 0; }
+    .plateau { aspect-ratio: 1; width: 100%; max-width: 440px; margin: auto; border: 2px solid #555; display: grid; place-items: center; padding: 2rem; text-align: center; background: repeating-conic-gradient(#ddd 0% 25%, #fff 0% 50%) 0 0 / 25% 25%; }
+    .plateau span { background: white; border: 1px solid #555; padding: 1rem; }
+    progress { width: 100%; accent-color: #444; }
+    summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+    @media (max-width: 700px) { .grille { grid-template-columns: 1fr; } }
+    @media print { .ecran { break-before: page; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html#catalogue-jeux">Retour aux jeux du catalogue</a>
+    <p class="note">ATELIER UX · Échecs comme exemple de jeu autonome avec Académie. Représentation structurelle, pas un jeu fonctionnel. Les commandes et parcours varient selon le jeu ; aucun moteur, score ni stockage n'est embarqué.</p>
+    <h1>Échecs</h1><p>Zone d'identité : titre · identifiant · version · étoiles</p>
+    <nav aria-label="Sections représentant les onglets du jeu"><a href="#regles">Règles</a><a href="#jouer">Jouer</a><a href="#academie">Académie</a><a href="#enigmes">Énigmes</a></nav>
+    <p>Sur le site, ces panneaux sont des onglets. Ici, ils restent visibles pour être retravaillés dans Canvas.</p>
+  </header>
+  <main>
+    <section class="ecran" id="regles" data-ecran="jeu-regles" aria-labelledby="titre-regles">
+      <span class="repere">J01 · Règles</span><h2 id="titre-regles">Comprendre avant de jouer</h2>
+      <details open><summary>Comment bougent les pièces</summary><p>Zone d'explication illustrée : pièces et déplacements.</p></details>
+      <details><summary>Trois coups spéciaux</summary><p>Roque, prise en passant, promotion.</p></details>
+      <details><summary>Échec, mat, pat et nulle</summary><p>Zone d'exemples et de conditions de fin de partie.</p></details>
+      <details><summary>Les commandes</summary><p>Interaction avec le plateau, clavier et réglages du jeu.</p></details>
+      <a class="bouton" href="#jouer">Passer au jeu</a>
+    </section>
+    <section class="ecran" id="jouer" data-ecran="jeu-partie" aria-labelledby="titre-jouer">
+      <span class="repere">J02 · Partie</span><h2 id="titre-jouer">Jouer</h2>
+      <div class="grille">
+        <article class="carte"><h3>Plateau</h3><div class="plateau" role="img" aria-label="Emplacement schématique d'un échiquier, sans pièces ni interaction"><span>Zone de jeu<br>Plateau, pièces et sélection</span></div></article>
+        <aside class="carte"><h3>État de la partie</h3><p>Tour du joueur · message d'aide · résultat éventuel</p><p>Zone de réglages : mode de jeu et difficulté.</p><div class="actions"><button type="button" disabled>Nouvelle partie</button><button type="button" disabled>Annuler un coup</button></div><h3>Coups joués</h3><ol><li>Emplacement de l'historique.</li></ol><details><summary>États à prévoir</summary><p>Sélection, coup autorisé ou refusé, réflexion de l'adversaire, fin de partie et redémarrage.</p></details></aside>
+      </div>
+    </section>
+    <section class="ecran" id="academie" data-ecran="jeu-academie" aria-labelledby="titre-academie">
+      <span class="repere">J03 · Académie et modules partagés</span><h2 id="titre-academie">Apprendre du débutant au pro</h2>
+      <article class="carte"><h3>Vue d'ensemble</h3><p>Grade actuel · XP · série · objectif du jour</p><progress value="30" max="100" aria-label="Progression fictive : 30 %"></progress><p class="note">Ces progrès sont locaux au jeu, pas synchronisés avec les progrès du tableau de bord.</p></article>
+      <div class="grille"><article class="carte"><h3>Parcours par grades</h3><ol><li>Grade et leçons accessibles.</li><li>Leçons à terminer, étoiles obtenues.</li><li>Prochain grade à débloquer.</li></ol><a class="bouton" href="#lecon">Voir une leçon · structure</a></article><article class="carte"><h3>Prochaine action</h3><p>Conseil déterministe et explicable, objectif du jour, révisions espacées et défi quotidien.</p><a class="bouton" href="#lecon">Voir une révision · structure</a></article></div>
+      <article class="carte" id="lecon" data-ecran="jeu-lecon"><h3>Leçon / révision</h3><p>Titre, progression, consigne et position d'exercice.</p><div class="actions"><button type="button" disabled>Indice</button><button type="button" disabled>Vérifier</button><button type="button" disabled>Suivant</button></div><details><summary>Retour pédagogique</summary><p>Bonne réponse ou erreur, explication, impact d'un indice, étoiles et bilan de leçon.</p></details></article>
+      <details open data-ecran="jeu-progression"><summary>Ma progression</summary><p>XP, grades, étoiles, badges, série, objectifs atteints et stratégies révisées. Vue d'ensemble de l'Académie, distincte du résultat d'une partie.</p></details>
+    </section>
+    <section class="ecran" id="enigmes" data-ecran="jeu-enigmes" aria-labelledby="titre-enigmes">
+      <span class="repere">J04 · Énigmes / mise en situation</span><h2 id="titre-enigmes">Résoudre une situation</h2>
+      <article class="carte"><h3>Énigme</h3><p>Zone de position de départ, objectif et interaction avec le plateau.</p><details><summary>Indice</summary><p>Zone d'aide adaptée à l'énigme.</p></details><details><summary>Solution expliquée</summary><p>Zone de correction, justification et passage à la suite.</p></details></article>
+      <p class="note">Auto-évaluation : onglet inactif dans le registre actuel. Cette base ne simule ni victoire ni déblocage de contenu.</p>
+    </section>
+  </main>
+  <footer><p>KermicLab · squelette autonome hors ligne · aucune donnée enregistrée.</p><a href="notion.html">Page de notion</a> · <a href="cercle.html">Application cercle</a> · <a href="index.html">Site et parcours principal</a></footer>
+</body>
+</html>

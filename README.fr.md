@@ -75,6 +75,21 @@ Secrets et variables : voir le [README anglais](README.md#deploy) et [docs/actio
 
 Voir [CONTRIBUTING.fr.md](CONTRIBUTING.fr.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) et [SECURITY.md](SECURITY.md).
 
+## Base HTML pour l'atelier UX
+
+Ouvrir [docs/ux/index.html](docs/ux/index.html) dans un navigateur ou copier son contenu dans Canvas.
+Le dossier contient quatre fichiers HTML autonomes : le site (accueil, catalogue, chat, défi, progression,
+profil et informations), une [page de notion](docs/ux/notion.html), l'[application cercle](docs/ux/cercle.html)
+et un [jeu avec Académie](docs/ux/jeux.html). Télécharger les quatre fichiers dans le même dossier pour
+conserver les liens ; chacun reste utilisable seul, hors ligne, avec son style intégré.
+
+Ce sont des squelettes structurels en français, pas une refonte ni une reproduction exhaustive du catalogue.
+Les écrans et dialogues sont dépliés, repérés par `data-ecran`, avec des exemples fictifs et des notes sur les états.
+Seuls les liens, champs de démonstration et volets natifs fonctionnent : aucun envoi, calcul, stockage ou service externe.
+Les textes sont figés pour cet atelier, hors de l'interface traduite `web/i18n/`.
+Ces fichiers ne sont pas publiés par le build et ne modifient pas le site actuel.
+Après édition dans Canvas, transmettre le HTML modifié ou les instructions par écran pour préparer la refonte.
+
 ## Licence
 
 [MIT](LICENSE) pour le moteur générique. Le catalogue de maquettes et les paramètres des générateurs sont privés.

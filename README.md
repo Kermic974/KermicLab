@@ -85,6 +85,21 @@ See [docs/actions-manuelles.md](docs/actions-manuelles.md) for the full checklis
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) and [SECURITY.md](SECURITY.md).
 
+## HTML base for UX workshops
+
+Open [docs/ux/index.html](docs/ux/index.html) in a browser or copy its contents into Canvas.
+Four self-contained HTML files cover the main site (dashboard, catalogue, chat, challenge, progress,
+profile and information), a [learning page](docs/ux/notion.html), the [unit-circle app](docs/ux/cercle.html)
+and a [game with Academy](docs/ux/jeux.html). Download all four into the same directory to retain navigation;
+each also works independently offline with embedded styles.
+
+These are French structural wireframes, not a redesign or an exhaustive catalogue export.
+Screens and dialogs are expanded, identified by `data-ecran`, with fictional examples and state notes.
+Only links, demonstration fields and native disclosure panels work: no submissions, calculations, storage or external services.
+Copy is frozen for this workshop, separate from the translated `web/i18n/` interface.
+The build does not publish these files and the current site is unchanged.
+Return the edited HTML or screen-by-screen instructions after the Canvas workshop to prepare the redesign.
+
 ## License
 
 [MIT](LICENSE) for the generic engine (HTML template, tab registry, storage, routing).
