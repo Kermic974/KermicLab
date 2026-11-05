@@ -51,7 +51,9 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
   assert.match(await brouillon(pseudo.locator(":scope > .boite-idees")), /dialogue: dialogue-pseudo/);
   await page.fill("#pseudo", "PseudoSecret");
   await page.click("#formulaire-pseudo button[type=submit]");
+  await page.click("#ouvrir-chat");
   await page.fill("#question", "Conversation privée à ne pas transmettre");
+  await page.click("#fermer-chat");
   for (const vue of ["labs", "jeux", "defi", "progression", "badges", "profil", "aide"]) {
     await page.locator(`.barre-laterale [data-nav="${vue}"]`).first().click();
     const ouvert = page.locator("dialog[open]").last();

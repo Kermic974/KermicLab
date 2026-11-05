@@ -62,6 +62,7 @@ test("se souvenir de moi : cookie local sans donnée personnelle, pseudo et prog
   const cookies = await contexte.cookies();
   assert.deepEqual(cookies.map((c) => [c.name, c.value, c.sameSite]), [["kermiclab_memoire", "1", "Strict"]]);
   assert.ok(cookies[0].expires * 1000 > Date.now() + 300 * 24 * 3600 * 1000, "valable environ un an");
+  await page.click("#ouvrir-chat");
   await page.fill("#question", "c'est quoi le sinus ?");
   await page.keyboard.press("Enter");
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();

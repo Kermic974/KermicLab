@@ -1,4 +1,4 @@
-// Interface Kermiclab : tableau de bord élève avec le chat intégré à l'accueil.
+// Interface Kermiclab : tableau de bord élève avec un chat flottant.
 // Aucun texte en dur : tout vient de i18n/<langue>.json. Toutes les données affichées viennent de la session en cours
 // (pseudo, progression) : rien n'est envoyé à Kermiclab (ADR 0012).
 import * as progression from "./progression.js";
@@ -225,7 +225,25 @@ function element(balise, { classe, texte, cle, attributs } = {}) {
 }
 
 function defiler(li, bloc = "end") {
-  li.scrollIntoView({ behavior: mouvementReduit() ? "auto" : "smooth", block: bloc });
+  if (!$("#panneau-chat").hidden) li.scrollIntoView({ behavior: mouvementReduit() ? "auto" : "smooth", block: bloc });
+}
+
+function ouvrirChat() {
+  fermerCatalogue();
+  $("#panneau-chat").hidden = false;
+  $("#ouvrir-chat").setAttribute("aria-expanded", "true");
+  $("#question").focus({ preventScroll: true });
+  const fil = $("#fil");
+  fil.scrollTop = fil.scrollHeight;
+}
+
+function fermerChat({ rendreFocus = false } = {}) {
+  const panneau = $("#panneau-chat");
+  if (panneau.hidden) return;
+  const focusDansChat = panneau.contains(document.activeElement);
+  panneau.hidden = true;
+  $("#ouvrir-chat").setAttribute("aria-expanded", "false");
+  if (rendreFocus || focusDansChat) $("#ouvrir-chat").focus({ preventScroll: true });
 }
 
 /** Crée une bulle du fil. `cleAuteur` reste lié à i18n pour suivre un changement de langue. */
@@ -730,15 +748,14 @@ function brancherBulle() {
   });
   $("#bulle-question").addEventListener("click", () => {
     bulle.close();
-    naviguer("accueil");
-    aller("#accueil");
-    $("#question").focus({ preventScroll: true });
+    ouvrirChat();
   });
 }
 
 let declencheurCatalogue = null;
 
 function ouvrirCatalogue({ matiere } = {}) {
+  fermerChat();
   if (matiere) {
     etat.matiere = matiere;
     ecrireCle(preferences(), CLE_MATIERE, matiere);
@@ -851,6 +868,11 @@ async function demarrer() {
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
   brancherProfil();
+  $("#ouvrir-chat").addEventListener("click", () => {
+    if ($("#panneau-chat").hidden) ouvrirChat();
+    else fermerChat({ rendreFocus: true });
+  });
+  $("#fermer-chat").addEventListener("click", () => fermerChat({ rendreFocus: true }));
   if (!etat.pseudo) demanderPseudo();
 
   // Auth
@@ -864,7 +886,12 @@ async function demarrer() {
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
   $("#recherche-jeu").addEventListener("input", rendreJeux);
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && $("#catalogue").classList.contains("ouvert")) fermerCatalogue({ rendreFocus: true });
+    if (e.key !== "Escape" || document.querySelector("dialog[open]")) return;
+    if ($("#catalogue").classList.contains("ouvert")) fermerCatalogue({ rendreFocus: true });
+    else if (!$("#panneau-chat").hidden) {
+      e.preventDefault();
+      fermerChat({ rendreFocus: true });
+    }
   });
 
   const champ = $("#question");
@@ -990,7 +1017,7 @@ function brancherProfil() {
     $("#dialogue-pseudo").close();
     rafraichirTableau();
     notifier(t("pseudoBienvenue", { pseudo: etat.pseudo }), "👋");
-    $(etat.ecran === "accueil" ? "#question" : "#salut").focus({ preventScroll: true });
+    $(etat.ecran === "accueil" ? "#ouvrir-chat" : "#salut").focus({ preventScroll: true });
   });
 
   $("#formulaire-profil").addEventListener("submit", (e) => {
@@ -1111,10 +1138,6 @@ function marquerNavigation(cle) {
   });
 }
 
-function aller(cible) {
-  $(cible)?.scrollIntoView({ behavior: mouvementReduit() ? "auto" : "smooth", block: "start" });
-}
-
 function brancherNavigation() {
   const suivreAdresse = () => {
     const cle = location.hash.slice(1);
@@ -1130,7 +1153,7 @@ function brancherNavigation() {
     if (ECRANS.includes(cle)) naviguer(cle);
     else if (cle === "catalogue") ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue());
     else if (cle === "aide") ouvrirSignalement();
-    else if (cle === "question") { naviguer("accueil"); aller("#accueil"); $("#question").focus({ preventScroll: true }); }
+    else if (cle === "question") ouvrirChat();
   });
 }
 

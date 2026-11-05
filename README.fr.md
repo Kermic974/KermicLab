@@ -28,6 +28,10 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
+L’avatar robot souriant, en bas à droite du tableau de bord, ouvre **Pose ta question** dans un
+panneau flottant à droite, accessible depuis chaque écran. L’avatar, la croix ou Échap le referment
+sans perdre la conversation ni le brouillon. Sur mobile, il reste au-dessus de la navigation.
+
 La **Boîte à idées**, accessible sur chaque vue publiée (pages, onglets et dialogues, y compris les
 notions et jeux intégrés), ouvre dans un nouvel onglet un brouillon d’issue GitHub « Évolution ».
 La page, sa version, la langue et la vue active sont renseignées, avec une trame de besoin, de critères

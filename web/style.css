@@ -1,5 +1,5 @@
 /* KermicLab : barre latérale (desktop) → rail d'icônes (tablette) → barre inférieure (mobile).
-   Accueil = parcours guidé + mini-lab ; puis reprise, suggestion, chat et progression. */
+   Accueil = parcours guidé + mini-lab ; chat flottant accessible sur chaque écran. */
 :root {
   --fond: #f4f5fb; --surface: #ffffff; --surface-2: #f8f9fd; --texte: #141833; --texte-2: #3d4363; --doux: #5f6585;
   --bord: #e3e6f1; --bord-fort: #d3d7e8;
@@ -240,17 +240,31 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .meta span { display: inline-flex; align-items: center; gap: 5px; }
 .xp { color: var(--succes); font-weight: 700; }
 
-/* ---------- Accueil : reprise et suggestion avant le chat ---------- */
+/* ---------- Accueil et chat flottant ---------- */
 .accueil {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "resume suggestion" "chat chat";
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "resume suggestion";
   gap: 20px; align-items: start;
 }
-.accueil > .chat { grid-area: chat; }
 .accueil > .colonne { display: contents; }
 .accueil .reprendre { grid-area: resume; }
 .accueil .suggestion { grid-area: suggestion; }
-.chat { display: flex; flex-direction: column; overflow: hidden; }
-.chat-entete { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--bord); }
+.ouvrir-chat {
+  position: fixed; z-index: 51; right: max(24px, env(safe-area-inset-right, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 6px 20px 6px 8px;
+  border-radius: 999px; box-shadow: var(--ombre-forte); border: 2px solid var(--surface);
+}
+.avatar-robot { width: 48px; height: 48px; flex: none; }
+.ouvrir-chat[aria-expanded="true"] { background: var(--accent-fort); }
+.chat {
+  position: fixed; z-index: 52; right: max(24px, env(safe-area-inset-right, 0px)); bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  width: min(460px, calc(100vw - 32px)); height: min(680px, calc(100dvh - 120px));
+  display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--ombre-forte); animation: dialogue-entre .2s ease both;
+}
+.chat-entete { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--bord); flex: none; }
+.chat-titres { flex: 1; min-width: 0; }
+.chat-entete .llm-controle { width: 100%; justify-content: flex-start; text-align: left; }
+.chat .zone-saisie { flex: none; }
+body:has(#ouvrir-chat) > .boite-idees-flottante { right: auto; left: max(calc(var(--laterale) + 24px), env(safe-area-inset-left, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px)); }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
 .chat-icone { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-doux); color: var(--accent-doux-texte); flex: none; }
 .llm-controle { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; text-align: right; }
@@ -264,7 +278,7 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .llm-interrupteur input:disabled + .llm-piste { opacity: .5; }
 #fil {
   list-style: none; margin: 0; padding: 18px 22px; display: flex; flex-direction: column; gap: 14px;
-  min-height: 320px; max-height: min(68vh, 760px); overflow-y: auto; overscroll-behavior: contain; scroll-padding: 16px;
+  flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scroll-padding: 16px;
 }
 .message { display: flex; gap: 10px; align-items: flex-start; animation: apparait .28s ease both; }
 .message.moi { justify-content: flex-end; }
@@ -718,7 +732,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (max-width: 900px) {
   .parcours-v3 { grid-template-columns: 1fr; }
   .parcours-mini { max-width: 620px; margin-inline: auto; }
-  .accueil { grid-template-columns: 1fr; grid-template-areas: "resume" "suggestion" "chat"; }
+  .accueil { grid-template-columns: 1fr; grid-template-areas: "resume" "suggestion"; }
   .activites { grid-template-columns: 1fr; }
   .chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -741,10 +755,17 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .lab-apercu { padding: 24px; }
   .lab-apercu .ico { width: 120px; height: 120px; }
   .pastille-progres { flex: 1; justify-content: center; }
-  .chat { border-radius: 18px; }
+  .ouvrir-chat { right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(140px + env(safe-area-inset-bottom, 0px)); min-height: 60px; padding: 4px; }
+  .ouvrir-chat > span { display: none; }
+  .chat {
+    left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px));
+    bottom: calc(212px + env(safe-area-inset-bottom, 0px)); width: auto;
+    height: min(680px, calc(100dvh - 224px - env(safe-area-inset-bottom, 0px) - env(safe-area-inset-top, 0px))); border-radius: 18px;
+  }
+  body:has(#ouvrir-chat) > .boite-idees-flottante { left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
   .chat-entete { padding: 14px 16px; }
-  #fil { padding: 14px 12px; max-height: none; overflow: visible; min-height: 0; }
-  .zone-saisie { position: sticky; bottom: calc(126px + env(safe-area-inset-bottom, 0px)); padding: 10px; z-index: 5; }
+  #fil { padding: 14px 12px; }
+  .zone-saisie { padding: 10px; }
   .avatar { display: none; }
   .message.moi .bulle { max-width: 92%; }
   .carte-maquette iframe { height: 65vh; min-height: 380px; }
@@ -779,6 +800,12 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .bulle-pied .doux { display: none; }
   .bulle-pied .bouton { width: 100%; }
   #dialogue-pseudo { padding: 22px; }
+}
+@media (max-width: 720px) and (max-height: 540px) {
+  .chat {
+    bottom: max(8px, env(safe-area-inset-bottom, 0px));
+    height: calc(100dvh - 16px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  }
 }
 @media (max-width: 380px) {
   .grille-matieres { grid-template-columns: 1fr; }

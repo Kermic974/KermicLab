@@ -14,7 +14,7 @@ binding = "AI"
 crons = ["17 2 * * *"]
 
 [vars]
-LLM_ACTIF = "false"
+LLM_ACTIF = "true"
 MODELE_CHAT = "claude-haiku-5-5"
 MODELE_WORKERS_AI = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
 GITHUB_REPO = "kermic974/trigoLab"

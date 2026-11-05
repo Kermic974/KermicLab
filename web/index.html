@@ -185,32 +185,6 @@
       </section>
 
       <div class="accueil" id="accueil" data-ecrans="accueil">
-        <section class="carte chat" aria-labelledby="chat-titre">
-          <div class="chat-entete">
-            <span class="chat-icone" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
-            <div>
-              <h2 id="chat-titre" data-i18n="chatTitre"></h2>
-              <p class="doux petit" data-i18n="sousTitre"></p>
-            </div>
-            <div class="llm-controle">
-              <label class="llm-interrupteur" for="llm-actif">
-                <span data-i18n="llmToggleLabel"></span>
-                <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
-                <span class="llm-piste" aria-hidden="true"></span>
-              </label>
-              <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
-            </div>
-          </div>
-          <ol id="fil" aria-live="polite"></ol>
-          <div class="zone-saisie">
-            <form id="formulaire" autocomplete="off">
-              <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
-              <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
-              <button type="submit" data-i18n="envoyer"></button>
-            </form>
-          </div>
-        </section>
-
         <div class="colonne">
           <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre">
             <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fiole"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
@@ -298,6 +272,44 @@
     </div>
   </main>
 </div>
+
+<button type="button" class="ouvrir-chat" id="ouvrir-chat" aria-controls="panneau-chat" aria-expanded="false" aria-haspopup="dialog" data-i18n-aria="chatOuvrir">
+  <svg class="avatar-robot" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 13V7m-4 0h8M12 30H7v12h5m40-12h5v12h-5"/>
+    <rect x="12" y="17" width="40" height="36" rx="13" fill="currentColor" fill-opacity=".12"/>
+    <circle cx="24" cy="32" r="3" fill="currentColor" stroke="none"/>
+    <circle cx="40" cy="32" r="3" fill="currentColor" stroke="none"/>
+    <path d="M24 42q8 8 16 0"/>
+  </svg>
+  <span data-i18n="chatTitre"></span>
+</button>
+
+<section class="carte chat" id="panneau-chat" role="dialog" aria-modal="false" aria-labelledby="chat-titre" hidden>
+  <div class="chat-entete">
+    <span class="chat-icone" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
+    <div class="chat-titres">
+      <h2 id="chat-titre" data-i18n="chatTitre"></h2>
+      <p class="doux petit" data-i18n="sousTitre"></p>
+    </div>
+    <button type="button" class="bouton-icone fermer-croix" id="fermer-chat" data-i18n-aria="chatFermer"></button>
+    <div class="llm-controle">
+      <label class="llm-interrupteur" for="llm-actif">
+        <span data-i18n="llmToggleLabel"></span>
+        <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
+        <span class="llm-piste" aria-hidden="true"></span>
+      </label>
+      <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
+    </div>
+  </div>
+  <ol id="fil" aria-live="polite"></ol>
+  <div class="zone-saisie">
+    <form id="formulaire" autocomplete="off">
+      <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
+      <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
+      <button type="submit" data-i18n="envoyer"></button>
+    </form>
+  </div>
+</section>
 
 <nav class="nav-mobile" data-i18n-aria="navigationMobile">
   <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
