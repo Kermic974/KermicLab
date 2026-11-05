@@ -61,9 +61,12 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
     assert.match(corps, /AGENTS\.md/);
     if (vue === "labs" || vue === "jeux") {
       assert.match(corps, new RegExp(`navigation: ${vue}`));
-      assert.match(corps, /panneau: catalogue/);
+      assert.doesNotMatch(corps, /panneau: catalogue/);
+      await page.locator('.barre-laterale [data-nav="catalogue"]').click();
+      assert.match(await brouillon(page.locator("body > .boite-idees")), /panneau: catalogue/);
       await page.locator("#fermer-catalogue").click();
-      assert.doesNotMatch(await brouillon(page.locator("body > .boite-idees")), /onglet:/);
+      await page.waitForFunction(() => getComputedStyle(document.querySelector("#catalogue")).visibility === "hidden");
+      assert.doesNotMatch(await brouillon(page.locator("body > .boite-idees")), /panneau: catalogue|onglet:/);
     }
     if (await ouvert.count()) await page.evaluate(() => document.querySelectorAll("dialog[open]").forEach((d) => d.close()));
   }
