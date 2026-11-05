@@ -78,7 +78,7 @@ cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && 
 KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev dist           # chat sur :8788
 ```
 
-Workers AI utilise le binding Cloudflare `AI` (sans clé API). Avec `LLM_ACTIF=true`, un secret de signature et le schéma D1 à jour, les relances proposées sur une page déjà ouverte peuvent utiliser l'IA. Les autres questions ouvrent une page du catalogue ou sont refusées sans appel.
+Workers AI utilise le binding Cloudflare `AI` (sans clé API). `LLM_ACTIF=false` est le coupe-circuit global, géré par l’administration Cloudflare ; le site propose aussi un opt-in individuel, désactivé par défaut et mémorisé pour la session du navigateur. Les appels ne sont possibles que si les deux niveaux sont activés, avec le secret de signature et le schéma D1 à jour. Les autres questions ouvrent une page du catalogue ou sont refusées sans appel.
 La limite est de **1 000 tokens générés par session navigateur**, au maximum 24 h côté serveur, partagée avec le repli Anthropic. Les entrées restent facturables ; une nouvelle session anonyme n'est pas un plafond par personne. Sources avec liens/descriptions et métadonnées modèle/harness figurent en fin de réponse. Accès gratuit provisoire, abonnement au backlog. `LLM_ACTIF=false` coupe tous les appels sans bloquer le catalogue.
 Voir [l'ADR 0016](docs/decisions/0016-workers-ai-principal-anthropic-repli.md) et l'[ADR 0006](docs/decisions/0006-mode-zero-budget.md) pour l'historique du mode zéro budget.
 Sans `GITHUB_TOKEN`, le Worker ne crée aucune issue automatiquement ; la Boîte à idées reste utilisable via GitHub.

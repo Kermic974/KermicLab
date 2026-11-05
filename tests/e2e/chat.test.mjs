@@ -15,10 +15,10 @@ before(async () => {
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
 /** Simule l'API et entre un pseudo de session (fenêtre de premier lancement déjà passée). */
-async function simulerApi(page, { pseudo = "Testeur", jeux = false } = {}) {
+async function simulerApi(page, { pseudo = "Testeur", jeux = false, llmActif = true } = {}) {
   // Le script s'exécute aussi dans les iframes sandboxées des maquettes, sans accès au stockage : on l'ignore alors.
   if (pseudo) await page.addInitScript((p) => { try { if (!sessionStorage.getItem("kermiclab:pseudo")) sessionStorage.setItem("kermiclab:pseudo", p); } catch { /* iframe sandboxée */ } }, pseudo);
-  return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, jeux });
+  return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, jeux, llmActif });
 }
 
 test("chat : une question sur le sinus affiche la maquette dans le fil", async () => {
@@ -47,6 +47,7 @@ test("i18n : détection automatique de l'anglais et sélecteur manuel", async ()
   await page.goto(serveur.url);
   await page.locator("#fil li").first().waitFor();
   assert.equal(await page.locator("#formulaire button").textContent(), "Send");
+  assert.equal(await page.locator("#llm-actif").isChecked(), false);
   await page.selectOption("#langue", "fr");
   await page.waitForFunction(() => document.documentElement.lang === "fr");
   assert.equal(await page.locator("#formulaire button").textContent(), "Envoyer");
@@ -138,13 +139,14 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
   });
   await page.goto(serveur.url);
   await page.locator("#fil li").first().waitFor();
+  await page.locator("#llm-actif").check();
   await page.fill("#question", "Explique plus simplement");
   await page.keyboard.press("Enter");
   const fin = page.locator(".references-llm");
   await fin.waitFor();
   const credentials = await page.evaluate(() => window.credentialsChat);
   assert.equal(credentials, "include");
-  assert.deepEqual(demande, { message: "Explique plus simplement", langue: "fr" });
+  assert.deepEqual(demande, { message: "Explique plus simplement", langue: "fr", utiliserLlm: true });
   assert.equal(await fin.locator("a").getAttribute("href"), `${api}/maquettes/trigo-cercle?lang=fr`);
   assert.match(await fin.locator(".source-description").textContent(), /trigonometrie · v1.0.0/);
   assert.match(await fin.textContent(), /tuteur-catalogue-v1/);
@@ -157,6 +159,37 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
   assert.match(await fin.textContent(), /KermicLab sources consulted/);
   assert.match(await fin.textContent(), /Temporarily free/);
   assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("IA : opt-in de session, désactivée si le site la coupe globalement", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  await simulerApi(page, { llmActif: false });
+  await page.goto(serveur.url);
+  const toggle = page.locator("#llm-actif");
+  await toggle.waitFor();
+  assert.equal(await toggle.isDisabled(), true);
+  assert.match(await page.locator("#llm-etat").textContent(), /désactivée ou indisponible/);
+  await contexte.close();
+});
+
+test("IA : l’opt-in individuel reste désactivé par défaut et peut être mémorisé par session", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url);
+  const requetes = await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.locator("#fil li").first().waitFor();
+  const toggle = page.locator("#llm-actif");
+  assert.equal(await toggle.isChecked(), false);
+  await page.fill("#question", "c'est quoi le sinus ?");
+  await page.keyboard.press("Enter");
+  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+  assert.equal(requetes[0].utiliserLlm, false);
+  await toggle.check();
+  assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:llm:actif")), "true");
+  await page.reload();
+  await page.locator("#llm-actif").waitFor();
+  await page.waitForFunction(() => !document.querySelector("#llm-actif").disabled);
+  assert.equal(await page.locator("#llm-actif").isChecked(), true);
   await contexte.close();
 });
 

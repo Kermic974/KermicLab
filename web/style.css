@@ -253,6 +253,15 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .chat-entete { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--bord); }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
 .chat-icone { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-doux); color: var(--accent-doux-texte); flex: none; }
+.llm-controle { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; text-align: right; }
+.llm-interrupteur { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: .88rem; font-weight: 650; }
+.llm-interrupteur input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.llm-piste { width: 38px; height: 22px; border-radius: 999px; background: var(--bord-fort); position: relative; transition: background .18s ease; }
+.llm-piste::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--surface); transition: transform .18s ease; }
+.llm-interrupteur input:checked + .llm-piste { background: var(--accent); }
+.llm-interrupteur input:checked + .llm-piste::after { transform: translateX(16px); }
+.llm-interrupteur input:focus-visible + .llm-piste { outline: 3px solid var(--accent-doux); outline-offset: 2px; }
+.llm-interrupteur input:disabled + .llm-piste { opacity: .5; }
 #fil {
   list-style: none; margin: 0; padding: 18px 22px; display: flex; flex-direction: column; gap: 14px;
   min-height: 320px; max-height: min(68vh, 760px); overflow-y: auto; overscroll-behavior: contain; scroll-padding: 16px;

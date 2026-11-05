@@ -11,12 +11,13 @@ const etat = {
   config: null, langue: "fr", textes: {}, envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
-  erreurTrophees: false, chargementTrophees: false, ecran: "accueil"
+  erreurTrophees: false, chargementTrophees: false, ecran: "accueil", llmActif: false, llmDisponible: false
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
+const CLE_LLM = "kermiclab:llm:actif";
 const DEFI_BONNES = [1, 0, 1, 0, 0];
 const MAX_PUCES = 4;
 const TAILLE_MAX_PUCE = 120;
@@ -25,6 +26,9 @@ const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: redu
 /** Stockage des données de l'élève : local si le cookie de mémorisation existe, sinon limité à la session (onglet). */
 function stockage() {
   try { return etat.memoire ? window.localStorage : window.sessionStorage; } catch { return null; }
+}
+function sessionPreferences() {
+  try { return window.sessionStorage; } catch { return null; }
 }
 /** Préférences d'affichage (langue, thème, matière) : sans donnée personnelle, gardées sur l'appareil. */
 function preferences() {
@@ -80,6 +84,7 @@ async function appliquerLangue(langue) {
   rendreJeux();
   rafraichirEntete();
   rafraichirTheme();
+  rafraichirControleLlm();
   etat.cercle?.rafraichir();
   if (etat.ecran === "badges") remplirProgres();
   rafraichirDefiTextes();
@@ -770,7 +775,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
       method: "POST",
       credentials: "include",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ message: question, langue: etat.langue })
+      body: JSON.stringify({ message: question, langue: etat.langue, utiliserLlm: etat.llmDisponible && etat.llmActif })
     });
     const donnees = await r.json();
     attente.remove();
@@ -788,6 +793,28 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
     etat.envoiEnCours = false;
     document.body.classList.remove("occupe");
   }
+}
+
+function rafraichirControleLlm() {
+  const interrupteur = $("#llm-actif");
+  if (!interrupteur) return;
+  interrupteur.disabled = !etat.llmDisponible;
+  interrupteur.checked = etat.llmDisponible && etat.llmActif;
+  const statut = $("#llm-etat");
+  const cle = !etat.llmDisponible ? "llmStatutIndisponible" : etat.llmActif ? "llmStatutActif" : "llmStatutInactif";
+  statut.textContent = t(cle);
+}
+
+async function chargerStatutLlm() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/llm/status`, { cache: "no-store" });
+    if (!r.ok) throw new Error(`statut LLM ${r.status}`);
+    etat.llmDisponible = (await r.json()).actif === true;
+  } catch {
+    etat.llmDisponible = false;
+    console.error("llm statut indisponible");
+  }
+  rafraichirControleLlm();
 }
 
 /* ---------- Démarrage ---------- */
@@ -814,6 +841,13 @@ async function demarrer() {
   }
   select.value = langueInitiale(etat.config.langues);
   await appliquerLangue(select.value);
+  etat.llmActif = lireCle(sessionPreferences(), CLE_LLM) === "true";
+  await chargerStatutLlm();
+  $("#llm-actif").addEventListener("change", (e) => {
+    etat.llmActif = e.currentTarget.checked;
+    ecrireCle(sessionPreferences(), CLE_LLM, String(etat.llmActif));
+    rafraichirControleLlm();
+  });
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
   brancherProfil();

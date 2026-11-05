@@ -124,8 +124,8 @@ test("Workers AI est le moteur principal et demande une sortie JSON structurée"
   const claude = creerClaude({});
   env.AI = ai;
   _reinitialiser({ client: claude });
-  await chat({ message: "sinus", langue: "fr" });
-  const r = await chat({ message: "Explique plus simplement", langue: "fr" });
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  const r = await chat({ message: "Explique plus simplement", langue: "fr", utiliserLlm: true });
   assert.equal(r.donnees.texte, "Le sinus donne la hauteur du point.");
   assert.equal(ai.appels[0].modele, "@cf/meta/llama-3.3-70b-instruct-fp8-fast");
   assert.equal(ai.appels[0].parametres.response_format.type, "json_schema");
@@ -141,8 +141,8 @@ test("Workers AI est le moteur principal et demande une sortie JSON structurée"
 test("échec Workers AI : repli Anthropic avec quota partagé et métadonnées exactes", async () => {
   const claude = creerClaude({ langue: "fr", intention: "apprendre", source_ids: ["trigo-cercle"], reponse: "Le sinus est une hauteur." });
   _reinitialiser({ client: claude });
-  await chat({ message: "sinus", langue: "fr" });
-  const r = await chat({ message: "Donne-moi un exemple", langue: "fr" });
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  const r = await chat({ message: "Donne-moi un exemple", langue: "fr", utiliserLlm: true });
   assert.equal(r.donnees.type, "reponse");
   assert.equal(r.donnees.llm.fournisseur, "anthropic");
   assert.equal(r.donnees.llm.repli, true);
@@ -155,8 +155,8 @@ test("échec Workers AI : repli Anthropic avec quota partagé et métadonnées e
 test("une source inventée n'est jamais publiée", async () => {
   delete env.ANTHROPIC_API_KEY;
   env.AI = creerWorkersAI({ langue: "fr", intention: "apprendre", source_ids: ["invente"], reponse: "Fausse réponse." });
-  await chat({ message: "sinus", langue: "fr" });
-  const r = await chat({ message: "Donne-moi un exemple", langue: "fr" });
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  const r = await chat({ message: "Donne-moi un exemple", langue: "fr", utiliserLlm: true });
   assert.equal(r.statut, 503);
   assert.equal(r.donnees.sources, undefined);
   assert.doesNotMatch(JSON.stringify(r.donnees), /Fausse réponse/);
@@ -171,8 +171,8 @@ test("données personnelles → refus, journalisé sans le texte", async () => {
 
 test("refus du modèle ou intention inappropriée → message de recentrage", async () => {
   _reinitialiser({ client: { messages: { create: async () => ({ stop_reason: "refusal", content: [] }) } } });
-  await chat({ message: "sinus", langue: "fr" });
-  const r = await chat({ message: "un exemple", langue: "fr" });
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  const r = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
   assert.equal(r.donnees.type, "refus");
 });
 
@@ -249,23 +249,34 @@ test("historique et contexte fournis par le client n'autorisent pas une question
 test("quota 1 000 tokens persistant malgré un rechargement et une réinitialisation d'isolat", async () => {
   const ai = creerWorkersAI({ langue: "fr", intention: "apprendre", source_ids: ["trigo-cercle"], reponse: "Le sinus donne la hauteur du point." }, 500);
   env.AI = ai;
-  await chat({ message: "sinus", langue: "fr" });
-  assert.equal((await chat({ message: "un exemple", langue: "fr" })).donnees.llm.quota.consommes, 500);
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  assert.equal((await chat({ message: "un exemple", langue: "fr", utiliserLlm: true })).donnees.llm.quota.consommes, 500);
   _reinitialiser();
-  await chat({ message: "sinus", langue: "fr" });
-  assert.equal((await chat({ message: "un exemple", langue: "fr" })).donnees.llm.quota.consommes, 1000);
-  const r = await chat({ message: "un exemple", langue: "fr" });
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  assert.equal((await chat({ message: "un exemple", langue: "fr", utiliserLlm: true })).donnees.llm.quota.consommes, 1000);
+  const r = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
   assert.equal(r.statut, 429);
   assert.equal(ai.appels.length, 2);
-  assert.equal((await chat({ message: "sinus", langue: "fr" })).donnees.type, "maquette");
+  assert.equal((await chat({ message: "sinus", langue: "fr", utiliserLlm: true })).donnees.type, "maquette");
 });
 
 test("sans cookie valide, le client ne peut pas appeler le LLM avec un quota inventé", async () => {
   const ai = creerWorkersAI({});
   env.AI = ai;
-  const r = await chat({ message: "un exemple", langue: "fr", tokensRestants: 1000, maquette_id: "trigo-cercle" });
+  const r = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true, tokensRestants: 1000, maquette_id: "trigo-cercle" });
   assert.equal(r.statut, 428);
   assert.equal(ai.appels.length, 0);
+});
+
+test("sans opt-in utilisateur, le Worker ne crée pas de session et n'appelle aucun modèle", async () => {
+  const ai = creerWorkersAI({});
+  env.AI = ai;
+  const page = await chat({ message: "sinus", langue: "fr", utiliserLlm: false });
+  const suite = await chat({ message: "Donne-moi un exemple", langue: "fr", utiliserLlm: false });
+  assert.equal(page.entetes.has("set-cookie"), false);
+  assert.equal(suite.donnees.type, "hors-catalogue");
+  assert.equal(ai.appels.length, 0);
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM sessions_llm").get().n, 0);
 });
 
 test("arrêt d'urgence LLM_ACTIF : les clés seules ne permettent pas d'appel", async () => {
@@ -277,6 +288,23 @@ test("arrêt d'urgence LLM_ACTIF : les clés seules ne permettent pas d'appel", 
   const r = await chat({ message: "un exemple", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
   assert.equal(ai.appels.length, 0);
+});
+
+test("GET /api/llm/status expose uniquement la disponibilité effective et sans cache", async () => {
+  const lire = async () => worker.fetch(new Request("https://api.kermiclab.test/api/llm/status", {
+    headers: { origin: "https://kermiclab.pages.dev" }
+  }), env, ctx);
+  const actif = await lire();
+  assert.equal((await actif.json()).actif, true);
+  assert.equal(actif.headers.get("cache-control"), "no-store");
+  env.LLM_ACTIF = "false";
+  const inactif = await lire();
+  assert.deepEqual(await inactif.json(), { actif: false });
+  assert.equal(inactif.headers.get("cache-control"), "no-store");
+  env.LLM_ACTIF = "true";
+  delete env.LLM_SESSION_SECRET;
+  const sansSecret = await lire();
+  assert.deepEqual(await sansSecret.json(), { actif: false });
 });
 
 test("origine non autorisée : refus avant toute session ou dépense LLM", async () => {

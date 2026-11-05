@@ -41,7 +41,7 @@ export async function ouvrir(nav, url, options = {}) {
 export const racine = new URL("../..", import.meta.url).pathname;
 
 /** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
-export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false }) {
+export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false, llmActif = true }) {
   const requetes = [];
   await page.route(`${api}/auth/me`, (route) => route.fulfill({
     contentType: "application/json",
@@ -52,6 +52,10 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
     body: JSON.stringify({ connecte: false })
   }));
   await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
+  await page.route(`${api}/api/llm/status`, (route) => route.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ actif: llmActif })
+  }));
   await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
     body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })

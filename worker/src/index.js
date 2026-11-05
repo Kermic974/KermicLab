@@ -129,6 +129,7 @@ async function traiterChat(requete, env, ctx) {
   let langue = langueValide(corps?.langue);
   const t = () => messages(langue);
   const message = String(corps?.message ?? "").trim();
+  const utiliserLlm = corps?.utiliserLlm === true;
   const tailleMax = Number(env.TAILLE_MAX_MESSAGE) || TAILLE_MAX_PAR_DEFAUT;
 
   if (!message) return { statut: 400, donnees: { type: "refus", texte: t().vide } };
@@ -150,7 +151,7 @@ async function traiterChat(requete, env, ctx) {
   if (idLocal) {
     const donnees = await servirMaquette(requete, env, ctx, { id: idLocal, langue, question: message, routage: "mots-cles" });
     let cookie;
-    if (llmActive(env)) {
+    if (llmActive(env) && utiliserLlm) {
       try {
         cookie = await definirContexteLlm(requete, env, idLocal);
         donnees.suggestions = relancesContexte(langue);
@@ -168,7 +169,7 @@ async function traiterChat(requete, env, ctx) {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "hors-perimetre-llm" }));
     return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
   }
-  if (!llmActive(env) || (!env.AI?.run && !env.ANTHROPIC_API_KEY)) {
+  if (!utiliserLlm || !llmActive(env) || (!env.AI?.run && !env.ANTHROPIC_API_KEY)) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "sans-modele" }));
     return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
@@ -346,6 +347,14 @@ export default {
 
     if (requete.method === "GET" && url.pathname === "/api/sante") {
       return json({ ok: true, maquettes: CATALOGUE.index.maquettes.length }, 200, cors);
+    }
+    if (requete.method === "GET" && url.pathname === "/api/llm/status") {
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        return json({ actif: false }, 403, { "cache-control": "no-store" });
+      }
+      const actif = llmActive(env) && !!env.DB && typeof env.LLM_SESSION_SECRET === "string"
+        && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || !!env.ANTHROPIC_API_KEY);
+      return json({ actif }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {
       return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
