@@ -260,5 +260,9 @@
   "defiQ5R3": "la longueur de l'arc",
   "defiQ5E": "cos θ se lit sur l'axe horizontal : c'est l'abscisse du point M.",
   "bulleAide": "Une question sur cette notion ? Pose-la dans le chat.",
-  "bulleQuestion": "Poser une question"
+  "bulleQuestion": "Poser une question",
+  "ideeAction": "Boîte à idées",
+  "ideeAvertissement": "Ouvre un brouillon d’issue sur GitHub (nouvel onglet). Publication après votre validation ; ne partagez aucune donnée personnelle.",
+  "ideeTrame": "### Besoin\nDécrire l’amélioration souhaitée, sans donnée personnelle.\n\n### Comportement actuel et résultat attendu\nÀ compléter.\n\n### Critères d’acceptation\n- [ ] À préciser.",
+  "ideeAgent": "### Travail préparatoire de l’agent\n- Analyser le besoin et les fichiers concernés ; vérifier les idées et issues existantes.\n- Proposer une implémentation et relever les incertitudes avant de modifier le code.\n- Couvrir les vues, langues, accessibilité et contraintes des pages autonomes.\n- Ajouter les tests de non-régression et mettre à jour la documentation.\n- Préparer une PR ; validation humaine obligatoire (AGENTS.md)."
 }

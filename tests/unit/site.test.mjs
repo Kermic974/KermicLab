@@ -53,8 +53,9 @@ test("la feuille de route est publiée et accessible entre « Profil et paramèt
   assert.ok(ordre.every((i) => i > 0) && ordre[0] < ordre[1] && ordre[1] < ordre[2], "ordre de la barre latérale");
   assert.match(html, /<a class="nav-bouton" href="feuille-de-route\.html">/);
   assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
-  // Page de texte sans script ni style en ligne : compatible avec la CSP du site.
-  assert.doesNotMatch(page, /<script|<style|style="/);
+  // Seul le JSON de configuration est en ligne ; le composant utilise des ressources locales.
+  assert.doesNotMatch(page, /<script(?! type="(?:application\/json|module)")|<style|style="/);
+  assert.match(page, /src="boite-idees\.js\?v=[0-9a-f]{10}"/);
   for (const l of ["fr", "en"]) {
     const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
     assert.ok(textes.navFeuilleDeRoute, `clé « navFeuilleDeRoute » absente de ${l}.json`);

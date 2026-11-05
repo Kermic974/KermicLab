@@ -1959,5 +1959,92 @@ try {
 }
 })();
 </script>
+<script type="application/json" id="boite-idees-config">{"page": "cercle", "version": "1.4.0", "textes": {"en": {"ideeAction": "Idea box", "ideeAvertissement": "Opens a draft GitHub issue (new tab). Publish only after reviewing it; do not share personal data.", "ideeTrame": "### Need\nDescribe the requested improvement, without personal data.\n\n### Current and expected behaviour\nTo complete.\n\n### Acceptance criteria\n- [ ] To specify.", "ideeAgent": "### Agent preparation\n- Analyse the need and relevant files; check existing ideas and issues.\n- Propose an implementation and identify uncertainties before changing code.\n- Cover views, languages, accessibility and standalone-page constraints.\n- Add regression tests and update documentation.\n- Prepare a PR; human approval is required (AGENTS.md)."}, "fr": {"ideeAction": "Boîte à idées", "ideeAvertissement": "Ouvre un brouillon d’issue sur GitHub (nouvel onglet). Publication après votre validation ; ne partagez aucune donnée personnelle.", "ideeTrame": "### Besoin\nDécrire l’amélioration souhaitée, sans donnée personnelle.\n\n### Comportement actuel et résultat attendu\nÀ compléter.\n\n### Critères d’acceptation\n- [ ] À préciser.", "ideeAgent": "### Travail préparatoire de l’agent\n- Analyser le besoin et les fichiers concernés ; vérifier les idées et issues existantes.\n- Proposer une implémentation et relever les incertitudes avant de modifier le code.\n- Couvrir les vues, langues, accessibilité et contraintes des pages autonomes.\n- Ajouter les tests de non-régression et mettre à jour la documentation.\n- Préparer une PR ; validation humaine obligatoire (AGENTS.md)."}}}</script>
+<style>.boite-idees {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: .65rem .9rem;
+  border: 2px solid #fff;
+  border-radius: .75rem;
+  background: #193b80;
+  color: #fff;
+  font: 600 .9rem/1.4 system-ui, sans-serif;
+  text-decoration: none;
+  white-space: normal;
+}
+.boite-idees:visited { color: #fff; }
+.boite-idees:focus-visible { outline: 3px solid #e6a700; outline-offset: 3px; }
+.boite-idees-flottante {
+  position: fixed;
+  z-index: 100;
+  right: max(.75rem, env(safe-area-inset-right));
+  bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  max-width: calc(100vw - 1.5rem);
+}
+dialog > .boite-idees { margin-top: 1rem; }
+</style>
+<script>// Partagé avec les pages autonomes par le build ; aucun accès réseau ni stockage.
+(() => {
+  const config = JSON.parse(document.getElementById("boite-idees-config").textContent);
+  const textes = () => config.textes[document.documentElement.lang] ?? config.textes.fr;
+  const identifiant = (noeud) => noeud?.dataset.onglet ?? noeud?.dataset.tab ?? noeud?.dataset.nav
+    ?? noeud?.dataset.matiere ?? noeud?.getAttribute("aria-controls") ?? noeud?.id ?? "";
+
+  function contextualiser(lien) {
+    const dialogue = lien.closest("dialog");
+    const zone = dialogue ?? document.querySelector("#catalogue.ouvert") ?? document;
+    const visible = (noeud) => noeud.getClientRects().length > 0;
+    const onglet = [...zone.querySelectorAll('[role="tab"][aria-selected="true"]')].find(visible);
+    const navigation = document.querySelector('[data-nav][aria-expanded="true"]')
+      ?? document.querySelector('[data-nav][aria-current="page"]');
+    const cadre = dialogue?.querySelector("iframe[data-module]");
+    const vues = [...zone.querySelectorAll("[data-vue]:not([hidden])")].filter(visible).map((n) => n.dataset.vue);
+    const contexte = {
+      page: config.page,
+      version: config.version,
+      langue: document.documentElement.lang,
+      navigation: identifiant(navigation),
+      dialogue: dialogue?.id,
+      panneau: zone === document ? undefined : zone.id,
+      module: cadre?.dataset.module,
+      onglet: identifiant(onglet),
+      vues: vues.join(", ")
+    };
+    const details = Object.entries(contexte).filter(([, valeur]) => valeur)
+      .map(([cle, valeur]) => `- ${cle}: ${valeur}`).join("\n");
+    const url = new URL("https://github.com/Kermic974/trigoLab/issues/new");
+    url.searchParams.set("template", "feature.yml");
+    url.searchParams.set("title", `[Feature] ${config.page} — `);
+    url.searchParams.set("need", `${textes().ideeTrame}\n\n### Contexte\n${details}\n\n${textes().ideeAgent}`);
+    lien.href = url.href;
+    lien.textContent = textes().ideeAction;
+    lien.title = textes().ideeAvertissement;
+    lien.setAttribute("aria-label", `${textes().ideeAction} — ${textes().ideeAvertissement}`);
+  }
+
+  function ajouter(hote, flottant = false) {
+    if (hote.querySelector(":scope > .boite-idees")) return;
+    const lien = document.createElement("a");
+    lien.className = `boite-idees${flottant ? " boite-idees-flottante" : ""}`;
+    lien.target = "_blank";
+    lien.rel = "noopener noreferrer";
+    for (const evenement of ["click", "pointerdown", "focus", "contextmenu"]) {
+      lien.addEventListener(evenement, () => contextualiser(lien));
+    }
+    hote.append(lien);
+    contextualiser(lien);
+  }
+
+  function monter() {
+    ajouter(document.body, true);
+    document.querySelectorAll("dialog").forEach((dialogue) => ajouter(dialogue));
+  }
+  monter();
+  new MutationObserver(monter).observe(document.body, { childList: true, subtree: true });
+  new MutationObserver(() => document.querySelectorAll(".boite-idees").forEach(contextualiser))
+    .observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+})();
+</script>
 </body>
 </html>

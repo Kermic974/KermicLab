@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import { routerLocal } from "../../worker/src/router.js";
-import { lireFrontMatter, lireMetaHtml } from "../../scripts/lib/catalogue.mjs";
+import { appliquerCsp, lireFrontMatter, lireMetaHtml } from "../../scripts/lib/catalogue.mjs";
+import { ajouterBoiteIdees } from "../../scripts/lib/idees.mjs";
 import { validerContenu } from "../../scripts/lib/gabarit.mjs";
 
 const NOTIONS = [
@@ -207,7 +208,8 @@ for (const [id, attendu] of Object.entries(NOTIONS_MONDIALISATION)) {
       assert.equal(routerLocal(question.toUpperCase(), index), id, question);
     }
     const html = await lire(id, "page.html");
-    assert.equal(CATALOGUE.pages[id].fr, html, "la page est servie telle quelle");
+    const publiee = appliquerCsp(ajouterBoiteIdees(html, { page: id, version: fiche.version }));
+    assert.equal(CATALOGUE.pages[id].fr, publiee, "page pédagogique inchangée, boîte à idées incorporée au build");
     const meta = lireMetaHtml(html);
     assert.equal(meta.id, id);
     assert.equal(meta.version, fiche.version);

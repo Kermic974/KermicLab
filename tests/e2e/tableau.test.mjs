@@ -227,7 +227,7 @@ test("bulle : les pages ouvertes depuis le tableau de bord s'affichent par-dessu
   assert.equal(await texte(page, "#bulle-titre"), "Le cercle trigonométrique");
   assert.equal(await texte(page, "#bulle-contexte"), "Maths · Seconde");
   assert.match(await page.getAttribute("#bulle-plein-ecran", "href"), /\/maquettes\/trigo-cercle\?lang=fr$/);
-  assert.equal(await page.getAttribute("#bulle-cadre", "sandbox"), "allow-scripts");
+  assert.equal(await page.getAttribute("#bulle-cadre", "sandbox"), "allow-scripts allow-popups allow-popups-to-escape-sandbox");
   assert.equal(await page.locator("#fil li[data-maquette]").count(), 0, "rien n'est ajouté au fil du chat");
   // Fermer décharge la page ; « Rouvrir la page » la rouvre dans la bulle.
   await page.keyboard.press("Escape");

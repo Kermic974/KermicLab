@@ -5,6 +5,7 @@ import { genererPage, validerContenu } from "../../scripts/lib/gabarit.mjs";
 import { appliquerCsp, lireFrontMatter, lireMetaHtml } from "../../scripts/lib/catalogue.mjs";
 import { routerLocal } from "../../worker/src/router.js";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
+import { ajouterBoiteIdees } from "../../scripts/lib/idees.mjs";
 
 const notions = [
   "laicite", "liberte", "egalite", "fraternite", "justice", "etat-de-droit",
@@ -50,7 +51,8 @@ for (const id of notions) {
     assert.equal(entree.sujet, fiche.sujet);
     const html = appliquerCsp(await genererPage({ fiche, contenu }));
     assert.equal(await readFile(`${dossier}/page.html`, "utf8"), html, "page générée à jour");
-    assert.equal(CATALOGUE.pages[id].fr, html, "page servie telle quelle");
+    const publiee = appliquerCsp(ajouterBoiteIdees(html, { page: id, version: fiche.version }));
+    assert.equal(CATALOGUE.pages[id].fr, publiee, "page pédagogique inchangée, boîte à idées incorporée au build");
     const meta = lireMetaHtml(html);
     assert.equal(meta.sujet, fiche.sujet);
     assert.equal(meta.version, fiche.version);

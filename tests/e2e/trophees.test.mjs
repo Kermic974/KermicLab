@@ -49,7 +49,7 @@ test("trophées : étoiles d'une notion remontées, restaurées et isolées de l
   const { page, contexte, erreurs } = await demarrer();
   try {
     const cadre = await ouvrirModule(page, "pythagore");
-    assert.equal(await page.locator("#bulle-cadre").getAttribute("sandbox"), "allow-scripts");
+    assert.equal(await page.locator("#bulle-cadre").getAttribute("sandbox"), "allow-scripts allow-popups allow-popups-to-escape-sandbox");
     await cadre.locator("#onglet-application").click();
     await cadre.locator("[data-exercice=app-1]").getByRole("button", { name: "le côté opposé à l'angle droit", exact: true }).click();
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).pythagore.etoiles === 1);

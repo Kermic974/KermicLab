@@ -309,7 +309,7 @@ function carteMaquette(maquette) {
   const cadre = element("iframe", { attributs: { src: maquette.url, title: maquette.titre, loading: "lazy" } });
   // Même origine que le chat : pas d'allow-same-origin, pour que la maquette reste isolée de la page.
   // Les modules compatibles confient leur progression locale au tableau de bord par postMessage.
-  cadre.setAttribute("sandbox", "allow-scripts");
+  cadre.setAttribute("sandbox", "allow-scripts allow-popups allow-popups-to-escape-sandbox");
   cadre.dataset.module = maquette.id;
   bascule.addEventListener("click", () => {
     const ouvert = bascule.getAttribute("aria-expanded") === "true";

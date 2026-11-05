@@ -28,6 +28,17 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
+La **Boîte à idées**, accessible sur chaque vue publiée (pages, onglets et dialogues, y compris les
+notions et jeux intégrés), ouvre dans un nouvel onglet un brouillon d’issue GitHub « Évolution ».
+La page, sa version, la langue et la vue active sont renseignées, avec une trame de besoin, de critères
+d’acceptation et de travail pour l’agent. L’utilisateur complète et valide la publication sur GitHub
+(compte requis) : rien n’est créé automatiquement. Aucun pseudo, conversation, résultat d’exercice,
+paramètre d’URL ou stockage local n’est transmis. Ne pas ajouter de données personnelles à l’issue publique.
+Le composant partagé `web/boite-idees.{js,css}` et ses textes `web/i18n/*.json` sont incorporés au build
+dans les pages du catalogue servies par le Worker ; les sources du catalogue restent inchangées.
+L’application autonome les incorpore via `python3 scripts/build-standalone.py`. Aucun secret ni accès réseau
+n’est nécessaire pour préparer le lien, même hors ligne ; publier nécessite une connexion à GitHub.
+
 Des maquettes supplémentaires peuvent vivre dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
 jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics fondés sur le gabarit
 en mathématiques, physique-chimie, géographie et philosophie.
@@ -61,7 +72,7 @@ KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev 
 
 Sans `ANTHROPIC_API_KEY`, le catalogue fonctionne ; les autres questions reçoivent une réponse de repli.
 C'est le **mode zéro budget** actuel (offres gratuites Cloudflare et GitHub uniquement), voir [l'ADR 0006](docs/decisions/0006-mode-zero-budget.md).
-Sans `GITHUB_TOKEN`, aucune issue n'est créée.
+Sans `GITHUB_TOKEN`, le Worker ne crée aucune issue automatiquement ; la Boîte à idées reste utilisable via GitHub.
 
 ## Déploiement
 

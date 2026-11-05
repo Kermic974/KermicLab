@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { genererPage } from "./gabarit.mjs";
+import { ajouterBoiteIdees } from "./idees.mjs";
 
 /** Analyse le front matter d'une fiche (sous-ensemble YAML : `cle: valeur`, `cle:` + `  - item`). */
 export function lireFrontMatter(texte) {
@@ -121,7 +122,9 @@ export async function chargerCatalogue(dossiers) {
         sources.push({ fichier, aJour: source === html, html });
         const meta = lireMetaHtml(html);
         if (meta.id !== fiche.id || meta.version !== fiche.version) throw new Error(`${fichier}: id/version différents de la fiche`);
-        pages[fiche.id][langue] = html;
+        pages[fiche.id][langue] = appliquerCsp(ajouterBoiteIdees(html, { page: fiche.id, version: fiche.version }), {
+          styles: !/style-src[^;]*'unsafe-inline'/.test(html)
+        });
       }
       maquettes.push({
         id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, langues,

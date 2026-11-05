@@ -29,6 +29,16 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
+The **Idea box** is available on every published view (pages, tabs and dialogs, including embedded
+catalogue pages and games). It opens a draft GitHub feature issue in a new tab, with the page, version,
+language and active view, plus need, acceptance criteria and agent preparation sections. Users complete
+and publish it on GitHub (an account is required); nothing is created automatically. Nicknames, chats,
+exercise results, URL parameters and local storage are never included. Do not add personal data to public issues.
+The build embeds `web/boite-idees.{js,css}` and translations from `web/i18n/*.json` in the catalogue pages
+served by the Worker without changing catalogue sources. `python3 scripts/build-standalone.py` embeds
+them in the standalone app. Preparing the link works offline, without secrets or network calls;
+publishing requires a connection to GitHub.
+
 Additional pages can live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
 read-only token. This repository ships the unit-circle page and public template-based examples in mathematics,
 physics-chemistry, geography and philosophy.
@@ -62,7 +72,7 @@ KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev 
 
 Without `ANTHROPIC_API_KEY` the catalogue still works; other questions get a fallback answer.
 This is the current **zero-budget mode** (free Cloudflare and GitHub plans only), see [ADR 0006](docs/decisions/0006-mode-zero-budget.md).
-Without `GITHUB_TOKEN` no issue is created.
+Without `GITHUB_TOKEN`, the Worker creates no issues automatically; the Idea box still works through GitHub.
 
 ## Deploy
 

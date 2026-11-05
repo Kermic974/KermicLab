@@ -3,11 +3,13 @@
 import { chargerCatalogue, lireMetaHtml } from "./lib/catalogue.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
-const { sources } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
+const { sources, pages } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
+const publiees = Object.entries(pages).flatMap(([id, traductions]) =>
+  Object.entries(traductions).map(([langue, html]) => ({ fichier: `Worker/${id}/${langue}`, aJour: true, html })));
 const ONGLETS_DE_BASE = ["explication", "application", "mise-en-situation"];
 const erreurs = [];
 
-for (const { fichier, aJour, html } of sources) {
+for (const { fichier, aJour, html } of [...sources, ...publiees]) {
   const err = (m) => erreurs.push(`${fichier.replace(racine, "")}: ${m}`);
   if (!aJour) err("page obsolète (hashes CSP ou page générée depuis contenu.json) — lancer `npm run build` et committer");
   const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]*)"/)?.[1];
@@ -30,4 +32,4 @@ for (const { fichier, aJour, html } of sources) {
 }
 
 if (erreurs.length) { console.error(erreurs.join("\n")); process.exit(1); }
-console.log(`Pages OK (${sources.length}).`);
+console.log(`Pages OK (${sources.length} sources, ${publiees.length} publiées).`);
