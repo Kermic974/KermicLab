@@ -14,7 +14,7 @@
 <p class="fr-retour"><a href="./">← KermicLab</a></p>
 
 <header class="fr-entete">
-  <p class="fr-surtitre">trigoLab → KermicLab · version 2 · novembre 2026</p>
+  <p class="fr-surtitre">trigoLab → KermicLab · version 3 · <time datetime="2026-11-05">5 novembre 2026</time></p>
   <h1>Feuille de route</h1>
   <p class="fr-chapeau">Transformer un laboratoire de trigonométrie en une plateforme d'apprentissage multi-matières,
     personnalisée et familiale, <strong>sans renoncer à ce qui fait KermicLab</strong> : des pages déterministes,
@@ -27,7 +27,9 @@
 <nav class="fr-sommaire" aria-label="Sommaire">
   <ol>
     <li><a href="#synthese">Synthèse</a></li>
+    <li><a href="#livraisons">Livraisons récentes</a></li>
     <li><a href="#acquis">Où en est-on vraiment</a></li>
+    <li><a href="#planning">Gantt simplifié</a></li>
     <li><a href="#principes">Principes directeurs</a></li>
     <li><a href="#phases">Les phases</a></li>
     <li><a href="#pedagogie">Modèle pédagogique</a></li>
@@ -43,20 +45,75 @@
 
 <section id="synthese" aria-labelledby="t-synthese">
 <h2 id="t-synthese">Synthèse</h2>
-<p>On ne repart pas de zéro : le catalogue, le gabarit de notion, la progression locale et le chat existent déjà.
+<p>On ne repart pas de zéro : le catalogue, le gabarit de notion, le tableau de bord et le chat existent déjà.
+  Les PR fusionnées les 4 et 5 novembre ajoutent <strong>huit jeux autonomes</strong> et une
+  <strong>Académie à modules partagés</strong>. Révisions espacées, conseils déterministes et progression détaillée
+  fonctionnent déjà dans les jeux qui intègrent ces modules, mais pas encore à l'échelle des matières scolaires.
   La suite consiste à <strong>structurer</strong> (un référentiel de notions reliées par leurs prérequis),
   à <strong>personnaliser localement</strong> (parcours et cahier de vacances dans le navigateur, sans compte),
   puis seulement à <strong>ouvrir les comptes familles et le tuteur IA</strong>, chacun derrière un point de
   contrôle humain (juridique pour les comptes, budget pour l'IA).</p>
+<dl class="fr-chiffres" aria-label="Repères au 5 novembre 2026">
+  <div><dt>Jeux intégrés à main</dt><dd>8</dd></div>
+  <div><dt>Socle Académie partagé</dt><dd>1</dd></div>
+  <div><dt>Jeu en PR ouverte</dt><dd>1 <span>le pendu · #100</span></dd></div>
+  <div><dt>Compte requis pour jouer</dt><dd>0</dd></div>
+</dl>
 <ol class="fr-cartes">
   <li><strong>Fiabiliser</strong><span>Une CI qui bloque vraiment et une relecture pédagogique tracée des 170+ notions.</span></li>
   <li><strong>Structurer</strong><span>Prérequis, compétences et niveaux décrits dans chaque notion, vérifiés par la CI.</span></li>
-  <li><strong>Personnaliser</strong><span>Parcours, révisions et cahier de vacances calculés dans le navigateur, explicables.</span></li>
+  <li><strong>Relier et personnaliser</strong><span>Capitaliser sur l'Académie, puis relier les notions au tableau de bord et au cahier de vacances.</span></li>
   <li><strong>Accompagner</strong><span>Comptes familles et tuteur IA, quand le cadre juridique et le budget sont en place.</span></li>
 </ol>
 <p class="fr-encadre"><strong>Principe directeur.</strong> KermicLab doit rester entièrement utilisable sans IA et
   sans compte. L'IA améliore l'accompagnement ; le compte permet de retrouver sa progression ailleurs. Aucun des deux
   n'est indispensable pour apprendre.</p>
+</section>
+
+<section id="livraisons" aria-labelledby="t-livraisons">
+<h2 id="t-livraisons">Livraisons récentes</h2>
+<p>État vérifié sur <code>main</code> et les PR au <time datetime="2026-11-05">5 novembre 2026</time>.
+  « Fusionné » signifie intégré au dépôt, pas validation pédagogique complète ni vérification du déploiement en production.</p>
+<ol class="fr-jalons">
+  <li>
+    <p class="fr-date"><time datetime="2026-11-03">3 novembre</time> · accueil</p>
+    <h3>Le tableau de bord devient l'entrée</h3>
+    <p>Chat intégré, pseudo et progression de session, ouverture des notions dans une bulle, roadmap accessible.
+      PR <a href="https://github.com/Kermic974/trigoLab/pull/80">#80</a>,
+      <a href="https://github.com/Kermic974/trigoLab/pull/81">#81</a>,
+      <a href="https://github.com/Kermic974/trigoLab/pull/82">#82</a>,
+      <a href="https://github.com/Kermic974/trigoLab/pull/83">#83</a>,
+      <a href="https://github.com/Kermic974/trigoLab/pull/84">#84</a>.</p>
+  </li>
+  <li>
+    <p class="fr-date"><time datetime="2026-11-04">4 novembre</time> · jeux et apprentissage</p>
+    <h3>Premiers jeux et Académie commune</h3>
+    <p>Démineur <a href="https://github.com/Kermic974/trigoLab/pull/86">#86</a>,
+      Échecs <a href="https://github.com/Kermic974/trigoLab/pull/88">#88</a>,
+      Académie des Échecs <a href="https://github.com/Kermic974/trigoLab/pull/90">#90</a>,
+      Académie du Démineur et modules partagés <a href="https://github.com/Kermic974/trigoLab/pull/92">#92</a>,
+      Belote <a href="https://github.com/Kermic974/trigoLab/pull/94">#94</a>,
+      Sudoku <a href="https://github.com/Kermic974/trigoLab/pull/95">#95</a>.</p>
+  </li>
+  <li>
+    <p class="fr-date"><time datetime="2026-11-05">5 novembre</time> · catalogue ludique</p>
+    <h3>Huit jeux intégrés, une proposition en attente</h3>
+    <p>Poker Texas Hold'em à jetons fictifs <a href="https://github.com/Kermic974/trigoLab/pull/96">#96</a>,
+      Mots croisés <a href="https://github.com/Kermic974/trigoLab/pull/97">#97</a>,
+      Mots fléchés <a href="https://github.com/Kermic974/trigoLab/pull/98">#98</a>,
+      2048 <a href="https://github.com/Kermic974/trigoLab/pull/99">#99</a>.</p>
+    <p><span class="fr-etat partiel">PR ouverte · non livrée</span>
+      Pendu <a href="https://github.com/Kermic974/trigoLab/pull/100">#100</a> : à relire et valider avant fusion.</p>
+  </li>
+</ol>
+<div class="fr-deux">
+  <div><h3>Acquis réutilisable</h3><p>XP, grades, étoiles, badges, objectif du jour, défi quotidien,
+    révisions Leitner, conseil explicable et page « Ma progression » : le socle existe dans
+    <code>gabarit/jeux/</code> (ADR 0014 et 0015).</p></div>
+  <div><h3>Prochaine jonction</h3><p>Les progressions des jeux restent locales à chaque page.
+    Les relier au tableau de bord exige encore le contrat d'événements et un modèle de maîtrise scolaire :
+    <strong>XP de jeu ≠ maîtrise d'une notion</strong>.</p></div>
+</div>
 </section>
 
 <section id="acquis" aria-labelledby="t-acquis">
@@ -73,6 +130,8 @@
     <tr><td>Cercle trigonométrique</td><td><span class="fr-etat fait">v1.4</span> 3 méthodes, modes Explorer / Apprendre / Jouer</td><td>Mode Comparer (v1.5), hors ligne (v2.0)</td></tr>
     <tr><td>Routage déterministe et chat</td><td><span class="fr-etat fait">En ligne</span> zéro token sur le catalogue, repli sans clé API</td><td>Clé API avec plafond quand un budget existe (ADR 0006)</td></tr>
     <tr><td>Tableau de bord, pseudo, progression</td><td><span class="fr-etat fait">En ligne</span> local, session ou mémorisé (ADR 0012)</td><td>Notion de maîtrise et de révision, au-delà de « notion vue »</td></tr>
+    <tr><td>Catalogue de jeux autonomes</td><td><span class="fr-etat fait">Fusionné</span> Démineur, Échecs, Belote, Sudoku, Poker Texas Hold'em (jetons fictifs), Mots croisés, Mots fléchés, 2048</td><td>Consolider clavier, tactile et relecture des règles ; pendu en PR ouverte (#100), exclu des huit jeux livrés</td></tr>
+    <tr><td>Académie et gamification partagées</td><td><span class="fr-etat fait">Fusionné</span> modules de progression et d'interface, exercices vérifiés par les moteurs, révisions et conseils locaux (#90, #92)</td><td>Intégration au tableau de bord ; transposition aux notions scolaires après définition des compétences</td></tr>
     <tr><td>Comptes parent et profils élèves</td><td><span class="fr-etat partiel">Proposé</span> ADR 0010, code OAuth en place, désactivé</td><td>Validation juridique (RGPD, consentement des moins de 15 ans), AIPD</td></tr>
     <tr><td>KPI anonymes, sauvegardes</td><td><span class="fr-etat fait">En ligne</span> D1 + R2, ni IP ni texte</td><td>Indicateurs pédagogiques agrégés</td></tr>
     <tr><td>Contrôle qualité des pages</td><td><span class="fr-etat partiel">Technique : fait</span> sécurité (<code>check:pages</code>), routage, tests navigateur de chaque notion (onglets, CSP, mobile)</td><td>Relecture pédagogique outillée : aujourd'hui 100&nbsp;% humaine et sans trace</td></tr>
@@ -82,6 +141,43 @@
 <p><strong>Conséquence :</strong> le risque principal n'est plus de « généraliser la trigonométrie », mais de garantir
   la <strong>qualité</strong> d'un catalogue déjà large, destiné à des mineurs, et de lui donner une
   <strong>structure</strong> (prérequis, maîtrise) pour que la personnalisation soit possible.</p>
+</section>
+
+<section id="planning" aria-labelledby="t-planning">
+<h2 id="t-planning">Gantt simplifié : l'ordre, pas des dates promises</h2>
+<p id="aide-gantt">Les colonnes sont des horizons de dépendance, pas des durées. Une barre indique où se situe
+  le travail ; elle ne représente pas un pourcentage d'avancement. Les phases 0 et 1 restent ouvertes.</p>
+<ul class="fr-legende" aria-label="Légende du Gantt">
+  <li><span class="fr-barre fait">✓ Acquis</span></li>
+  <li><span class="fr-barre priorite">→ Priorité</span></li>
+  <li><span class="fr-barre suite">○ À construire</span></li>
+  <li><span class="fr-barre controle">◇ Sous condition</span></li>
+</ul>
+<div class="fr-tableau fr-gantt" role="region" aria-label="Gantt des chantiers, défilement horizontal" tabindex="0">
+<table aria-describedby="aide-gantt">
+  <caption>Du socle livré aux options conditionnelles</caption>
+  <thead><tr><th scope="col">Chantier</th><th scope="col">Acquis au 05/11</th><th scope="col">Maintenant</th><th scope="col">Après le socle</th><th scope="col">Après validation</th></tr></thead>
+  <tbody>
+    <tr><th scope="row"><a href="#livraisons">Catalogue, accueil, jeux</a></th><td><span class="fr-barre fait">✓ Intégrés</span></td><td colspan="3">Consolidation continue, sans nouvelle dépendance aux comptes</td></tr>
+    <tr><th scope="row"><a href="#phase-0">0 · Qualité</a></th><td>Tests existants</td><td colspan="2"><span class="fr-barre priorite">→ Couverture, CI bloquante, relecture tracée</span></td><td>Contrôle continu</td></tr>
+    <tr><th scope="row"><a href="#phase-1">1 · Référentiel et événements</a></th><td>Modules de jeux</td><td colspan="2"><span class="fr-barre priorite">→ Prérequis, exercices notés, lien au tableau de bord</span></td><td>Contrat stable</td></tr>
+    <tr><th scope="row"><a href="#phase-2">2 · Parcours locaux</a></th><td>Leitner dans l'Académie</td><td>Préparer le réemploi</td><td><span class="fr-barre suite">○ Après 0 et 1</span></td><td>Sans compte</td></tr>
+    <tr><th scope="row"><a href="#phase-3">3 · Tuteur borné</a></th><td>Chat, pas tuteur</td><td>Définir les indices</td><td><span class="fr-barre suite">○ Indices écrits après 1</span></td><td><span class="fr-barre controle">◇ IA : budget + évaluations</span></td></tr>
+    <tr><th scope="row"><a href="#phase-4">4 · Familles</a></th><td>OAuth désactivé</td><td colspan="2"><span class="fr-barre controle">◇ Préparation juridique en parallèle</span></td><td><span class="fr-barre controle">◇ AIPD + consentement</span></td></tr>
+    <tr><th scope="row"><a href="#phase-5">5 · Fabrique</a></th><td>Build et gabarits</td><td>Relecture en phase 0</td><td colspan="2"><span class="fr-barre suite">○ Industrialiser après qualité et contrat stables</span></td></tr>
+    <tr><th scope="row"><a href="#phase-6">6 · Options</a></th><td colspan="3">Hors ligne, recherche, enseignants : pas d'engagement de livraison</td><td><span class="fr-barre controle">◇ Besoin mesuré</span></td></tr>
+  </tbody>
+</table>
+</div>
+<ol class="fr-flux" aria-label="Chemin critique des parcours sans compte">
+  <li><a href="#livraisons"><strong>Acquis</strong><span>Pages + jeux + Académie</span></a></li>
+  <li><a href="#phase-0"><strong>0 · Fiabiliser</strong><span>Qualité et relecture</span></a></li>
+  <li><a href="#phase-1"><strong>1 · Relier</strong><span>Prérequis et événements</span></a></li>
+  <li><a href="#phase-2"><strong>2 · Personnaliser</strong><span>Parcours et cahier local</span></a></li>
+</ol>
+<p class="fr-encadre"><strong>Priorité immédiate :</strong> consolider les huit jeux et relire le pendu proposé,
+  puis cadrer la remontée de progression au tableau de bord. Ni la fusion d'un jeu, ni ses badges ne valident
+  à eux seuls les phases 0, 1 ou 2. La préparation juridique peut avancer en parallèle ; l'IA reste conditionnée au budget.</p>
 </section>
 
 <section id="principes" aria-labelledby="t-principes">
@@ -105,7 +201,7 @@
   juridique de la phase 4, qui prend du temps et ne dépend pas du code.</p>
 
 <ol class="fr-phases">
-<li class="fr-phase">
+<li class="fr-phase" id="phase-0">
   <details open>
   <summary><span class="fr-num">0</span><span class="fr-titre-phase">Socle fiable</span><span class="fr-horizon maintenant">Maintenant</span></summary>
   <div class="fr-corps">
@@ -113,7 +209,10 @@
   <ul>
     <li>Protéger <code>main</code> : CI obligatoire avant fusion (action manuelle du propriétaire).</li>
     <li>Les tests navigateur couvrent déjà chaque notion du gabarit : les appliquer aussi aux pages écrites à la main
-      et au catalogue privé, et en faire un contrôle obligatoire de la PR.</li>
+      et au catalogue privé, et en faire un contrôle obligatoire de la PR. Les huit jeux ont déjà leurs tests moteur
+      et navigateur : maintenir cette couverture et vérifier leurs parcours clavier et tactile.</li>
+    <li>Relire les règles et les leçons des jeux intégrés ; traiter la proposition de pendu (#100)
+      séparément, sans la compter comme livrée avant sa fusion.</li>
     <li>Grille de relecture pédagogique (exactitude, progression collège → lycée, adaptation à l'âge) et statut
       « relue » dans chaque fiche, appliqués d'abord aux notions les plus consultées.</li>
     <li>Versions séparées : plateforme (<code>package.json</code>), notion (<code>fiche.md</code>), application du cercle.</li>
@@ -125,7 +224,7 @@
   </details>
 </li>
 
-<li class="fr-phase">
+<li class="fr-phase" id="phase-1">
   <details open>
   <summary><span class="fr-num">1</span><span class="fr-titre-phase">Référentiel et contrat des labs</span><span class="fr-horizon maintenant">Maintenant</span></summary>
   <div class="fr-corps">
@@ -137,6 +236,9 @@
     <li>Contrat d'événements des pages : une page autonome n'a pas d'accès réseau (<code>connect-src 'none'</code>) ;
       elle signale <em>démarré</em>, <em>indice demandé</em>, <em>réponse</em>, <em>terminé</em> à la page qui
       l'affiche par <code>postMessage</code>, avec un schéma versionné. C'est la page d'accueil qui enregistre.</li>
+    <li>Relier l'Académie au tableau de bord par ce contrat, sans transférer tout son stockage local.
+      Réutiliser les modules de <code>gabarit/jeux/</code> quand ils conviennent, tout en séparant XP ludique,
+      exercices réussis et maîtrise scolaire.</li>
     <li>Exercices du gabarit notés de façon déterministe (réponse attendue, tolérance, erreur fréquente associée).</li>
     <li>Le cercle trigonométrique devient la première page conforme de bout en bout : il sert de référence.</li>
   </ul>
@@ -146,17 +248,20 @@
   </details>
 </li>
 
-<li class="fr-phase">
+<li class="fr-phase" id="phase-2">
   <details open>
   <summary><span class="fr-num">2</span><span class="fr-titre-phase">Parcours et cahier de vacances, sans compte</span><span class="fr-horizon ensuite">Ensuite</span></summary>
   <div class="fr-corps">
   <p><strong>Objectif :</strong> une vraie personnalisation, entièrement dans le navigateur, donc sans enjeu de données.</p>
+  <p><span class="fr-etat partiel">Partiellement amorcé dans les jeux</span> L'Académie fournit déjà
+    les révisions Leitner, le conseil déterministe, les badges et une progression détaillée.
+    Il reste à les adapter aux notions et à les agréger dans l'accueil, pas à réécrire un second moteur.</p>
   <ul>
     <li>Maîtrise par notion : <em>non commencée → découverte → en cours → maîtrisée</em>, puis <em>à revoir</em>
       quand la révision est due.</li>
     <li>Recommandation déterministe : prochaine notion dont les prérequis sont maîtrisés, ou révision due.
       Chaque proposition affiche sa raison (« parce que tu maîtrises les fractions »).</li>
-    <li>Révision espacée simple (boîtes de Leitner) branchée sur le défi express existant.</li>
+    <li>Étendre les révisions Leitner de l'Académie aux exercices scolaires et les brancher sur le défi express existant.</li>
     <li>Cahier de vacances : niveau, période, rythme → diagnostic court → planning jour par jour. Une absence
       recalcule le planning sans pénalité ni message culpabilisant.</li>
     <li>Export et import de la progression en fichier, pour changer d'appareil sans compte.</li>
@@ -180,7 +285,7 @@
   </details>
 </li>
 
-<li class="fr-phase">
+<li class="fr-phase" id="phase-3">
   <details>
   <summary><span class="fr-num">3</span><span class="fr-titre-phase">Tuteur borné</span><span class="fr-horizon ensuite">Ensuite · budget requis</span></summary>
   <div class="fr-corps">
@@ -201,7 +306,7 @@
   </details>
 </li>
 
-<li class="fr-phase">
+<li class="fr-phase" id="phase-4">
   <details>
   <summary><span class="fr-num">4</span><span class="fr-titre-phase">Comptes et familles</span><span class="fr-horizon plus-tard">Après validation juridique</span></summary>
   <div class="fr-corps">
@@ -221,7 +326,7 @@
   </details>
 </li>
 
-<li class="fr-phase">
+<li class="fr-phase" id="phase-5">
   <details>
   <summary><span class="fr-num">5</span><span class="fr-titre-phase">Fabrique de contenus</span><span class="fr-horizon plus-tard">Plus tard</span></summary>
   <div class="fr-corps">
@@ -238,7 +343,7 @@
   </details>
 </li>
 
-<li class="fr-phase">
+<li class="fr-phase" id="phase-6">
   <details>
   <summary><span class="fr-num">6</span><span class="fr-titre-phase">Options conditionnelles</span><span class="fr-horizon plus-tard">Si le besoin est prouvé</span></summary>
   <div class="fr-corps">
@@ -401,7 +506,17 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 
 <section id="revision" aria-labelledby="t-revision">
 <h2 id="t-revision">Notes de révision</h2>
-<p>Cette version reprend la proposition initiale « trigoLab → KermicLab » et la corrige sur les points suivants.</p>
+<h3>Version 3 · 5 novembre 2026</h3>
+<ul class="fr-liste">
+  <li>État actualisé à partir des PR fusionnées #80–84, #86, #88, #90, #92 et #94–99 :
+    accueil, huit jeux et Académie partagée. La PR #100 (pendu) reste explicitement non livrée.</li>
+  <li>Ajout de repères chiffrés, d'une frise des livraisons, d'un Gantt par horizons et d'un chemin critique navigable,
+    sans calendrier ni pourcentage inventé.</li>
+  <li>Phases 0–2 précisées : capitaliser sur les tests et la progression des jeux, puis relier l'Académie au tableau
+    de bord ; ne pas confondre gamification existante et parcours scolaires achevés.</li>
+</ul>
+<h3>Version 2 · 3 novembre 2026</h3>
+<p>La révision précédente corrigeait la proposition initiale « trigoLab → KermicLab » sur les points suivants.</p>
 <div class="fr-tableau">
 <table>
   <thead><tr><th scope="col">Proposition initiale</th><th scope="col">Version révisée</th></tr></thead>
@@ -423,10 +538,15 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 <hr>
 <section lang="en" aria-labelledby="t-en">
 <h2 id="t-en">Roadmap (English summary)</h2>
+<p>As of November 5, 2026, the merged baseline includes the student dashboard, eight standalone games and shared
+  Academy modules with local XP, badges, spaced review and deterministic advice. Hangman (#100) is still an open PR,
+  not a delivered game. Game progress is not yet connected to the dashboard and does not establish school-subject mastery.
+  The simplified Gantt shows dependencies, not delivery dates or completion percentages.</p>
 <p>KermicLab grows from trigoLab without a rewrite. Phase 0 makes quality enforceable (blocking CI on the existing
   browser tests, tracked pedagogical review). Phase 1 adds structure: prerequisites and skills in each concept, checked
   by CI, and a versioned <code>postMessage</code> event contract for interactive pages. Phase 2 brings learning paths,
-  spaced review and a holiday workbook that run entirely in the browser, with no account. Phase 3 adds a bounded AI
+  spaced review and a holiday workbook that run entirely in the browser, with no account, reusing the Academy where
+  appropriate rather than duplicating it. Phase 3 adds a bounded AI
   tutor once an API budget with a spending cap exists, always backed by written hints. Phase 4 opens parent accounts
   and child profiles only after legal validation and a DPIA. Later phases cover a content pipeline and options
   (offline app, semantic search, teacher spaces) that start only when a measured need triggers them. KermicLab must
