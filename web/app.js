@@ -842,7 +842,7 @@ async function demarrer() {
   select.value = langueInitiale(etat.config.langues);
   await appliquerLangue(select.value);
   etat.llmActif = lireCle(sessionPreferences(), CLE_LLM) === "true";
-  await chargerStatutLlm();
+  void chargerStatutLlm();
   $("#llm-actif").addEventListener("change", (e) => {
     etat.llmActif = e.currentTarget.checked;
     ecrireCle(sessionPreferences(), CLE_LLM, String(etat.llmActif));
