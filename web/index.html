@@ -92,6 +92,58 @@
 
       <p class="avertissement" role="note" data-i18n="avertissement"></p>
 
+      <section class="parcours-v3" aria-labelledby="parcours-v3-titre">
+        <div class="parcours-v3-texte">
+          <span class="sur-titre" data-i18n="parcoursV3SurTitre"></span>
+          <h2 id="parcours-v3-titre" data-i18n="parcoursV3Titre"></h2>
+          <p data-i18n="parcoursV3Intro"></p>
+          <p class="parcours-defi"><strong data-i18n="parcoursV3Defi"></strong></p>
+          <a class="bouton grand-bouton parcours-action" href="cercle/?mode=explore">
+            <span data-i18n="parcoursV3Action"></span>
+            <svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </a>
+          <ol class="parcours-etapes" data-i18n-aria="parcoursV3Etapes">
+            <li>
+              <a href="cercle/?mode=explore">
+                <span class="parcours-numero">01</span>
+                <span><strong data-i18n="parcoursV3Decouvrir"></strong><small data-i18n="parcoursV3DecouvrirTexte"></small></span>
+              </a>
+            </li>
+            <li>
+              <a href="cercle/?mode=learn">
+                <span class="parcours-numero">02</span>
+                <span><strong data-i18n="parcoursV3Manipuler"></strong><small data-i18n="parcoursV3ManipulerTexte"></small></span>
+              </a>
+            </li>
+            <li>
+              <a href="cercle/?mode=play">
+                <span class="parcours-numero">03</span>
+                <span><strong data-i18n="parcoursV3Entrainement"></strong><small data-i18n="parcoursV3EntrainementTexte"></small></span>
+              </a>
+            </li>
+          </ol>
+        </div>
+
+        <section class="carte minilab parcours-mini" id="minilab" aria-labelledby="minilab-titre">
+          <div class="minilab-tete">
+            <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
+            <span class="doux petit" data-i18n="minilabAide"></span>
+          </div>
+          <div class="cercle-hote" data-cercle></div>
+          <div class="curseur-ligne">
+            <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
+            <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
+            <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
+          </div>
+          <dl class="lectures" aria-live="polite">
+            <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
+            <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
+            <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
+          </dl>
+          <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </section>
+      </section>
+
       <div class="accueil" id="accueil">
         <section class="carte chat" aria-labelledby="chat-titre">
           <div class="chat-entete">
@@ -186,24 +238,6 @@
           <p class="doux petit" id="semaine-vide" data-i18n="semaineVide" hidden></p>
         </section>
 
-        <section class="carte minilab" id="minilab" aria-labelledby="minilab-titre">
-          <div class="minilab-tete">
-            <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
-            <span class="doux petit" data-i18n="minilabAide"></span>
-          </div>
-          <div class="cercle-hote" data-cercle></div>
-          <div class="curseur-ligne">
-            <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
-            <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
-            <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
-          </div>
-          <dl class="lectures" aria-live="polite">
-            <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
-            <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
-            <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
-          </dl>
-          <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-        </section>
       </div>
 
       <footer class="pied">

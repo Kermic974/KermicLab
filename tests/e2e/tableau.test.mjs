@@ -103,6 +103,24 @@ test("tableau de bord : reprise, suggestion, matières et semaine calculées à 
   await contexte.close();
 });
 
+test("parcours v3 : mini-lab en premier et liens vers les trois modes du cercle", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  await choisirPseudo(page, "Lina");
+
+  assert.match(await texte(page, "#parcours-v3-titre"), /Comprends le cercle en le manipulant/);
+  assert.match(await texte(page, ".parcours-defi"), /sin\(θ\) = 1/);
+  assert.equal(await page.locator(".parcours-action").getAttribute("href"), "cercle/?mode=explore");
+  assert.deepEqual(await page.locator(".parcours-etapes a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
+    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
+  ]);
+  assert.equal(await page.locator("#minilab").isVisible(), true);
+  assert.equal(await page.locator("#minilab").evaluate((el) => Boolean(el.compareDocumentPosition(document.querySelector("#accueil")) & Node.DOCUMENT_POSITION_FOLLOWING)), true);
+  assert.match(await texte(page, "#reprendre"), /Ton premier Lab t'attend/);
+  assert.equal(await page.locator("#chat-titre").textContent(), "Pose ta question");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("défi express : correction immédiate, 5 XP par bonne réponse une fois par jour", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Sam");
@@ -182,6 +200,9 @@ test("thème : bascule clair/sombre mémorisée comme préférence d'affichage",
 test("mobile : navigation inférieure, mini-lab utilisable, aucun défilement horizontal", async () => {
   const { page, contexte, erreurs } = await demarrer({ viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true });
   await choisirPseudo(page, "Inès");
+  assert.equal(await page.locator(".parcours-action").isVisible(), true);
+  assert.equal(await page.locator("#minilab").isVisible(), true);
+  assert.equal(await page.locator(".parcours-etapes a").count(), 3);
   assert.equal(await page.locator(".barre-laterale").isVisible(), false);
   assert.equal(await page.locator(".nav-mobile").isVisible(), true);
   await page.locator("#angle-minilab").fill("90");
