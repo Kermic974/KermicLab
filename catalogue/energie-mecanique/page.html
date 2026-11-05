@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2NCbZTuzFHRoF8wLALkIG4Joli6KGmi9R9ZKnMAY40o=' 'sha256-FbTUhs1vj7kZ3iYt8CSpeDe07J1NV/Y9eOfGUOSwCZI='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-p5XAxYlmoDvRAHKYkj/8tkVBfw56siY6RWFZZjKrGvc=' 'sha256-WGObV13L1T+D2MSKTNChzn8zrUKH8oQTANJ9rYoApxo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Travail et énergie mécanique – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -309,7 +309,9 @@ const Trophees = (() => {
     if (window.parent === window) return () => {};
     const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
     const module = meta.id;
-    const origineParent = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [window.location.origin];
+    const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
     if (!origineParent) return () => {};
     let pret = false;
     const publier = () => {
@@ -427,6 +429,11 @@ const Trophees = (() => {
       etoiles.clear();
       for (const id of brut) if (idsExercices.has(id)) etoiles.add(id);
       majEtoiles();
+      for (const onglet of registre.filter((o) => o.actif && ["application", "mise-en-situation"].includes(o.id))) {
+        const panneau = document.getElementById(`panneau-${onglet.id}`);
+        panneau.replaceChildren();
+        onglet.rendu(panneau);
+      }
     },
     resumer: () => ({ genre: "notions", etat: [...etoiles], etoiles: etoiles.size, etoilesTotal: totalExercices, badges: [] })
   });

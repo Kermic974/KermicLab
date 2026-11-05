@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2NCbZTuzFHRoF8wLALkIG4Joli6KGmi9R9ZKnMAY40o=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-P/FdOmV0TM8t4QpvyGN4DzcvDryQTHOFB/ls3hyrJQc=' 'sha256-BqLbC+uZtCoxupH+LQApV4Wl25BgEjy/UtOZf+t4ykk='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-p5XAxYlmoDvRAHKYkj/8tkVBfw56siY6RWFZZjKrGvc=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-P/FdOmV0TM8t4QpvyGN4DzcvDryQTHOFB/ls3hyrJQc=' 'sha256-BqLbC+uZtCoxupH+LQApV4Wl25BgEjy/UtOZf+t4ykk='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Démineur – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -870,7 +870,9 @@ const Trophees = (() => {
     if (window.parent === window) return () => {};
     const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
     const module = meta.id;
-    const origineParent = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const origineCandidate = meta.parentOrigin || (document.referrer ? new URL(document.referrer).origin : null);
+    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : [window.location.origin];
+    const origineParent = originesAutorisees.includes(origineCandidate) ? origineCandidate : null;
     if (!origineParent) return () => {};
     let pret = false;
     const publier = () => {
