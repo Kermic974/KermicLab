@@ -28,6 +28,14 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
+La navigation distingue les écrans **Accueil**, **Labs**, **Jeux**, **Défi express**, **Progression**,
+**Mes trophées** et **Profil** dans la zone principale, avec des liens directs (`/#labs`, `/#jeux`,
+`/#defi`, `/#progression`, `/#badges`, `/#profil`) et le retour du navigateur.
+Les Labs présentent les applications dédiées disponibles (actuellement le cercle sous `/cercle/`),
+pas les fiches du catalogue. L'entrée **Notions** conserve le catalogue existant, ses matières, niveaux,
+recherche et compteurs. Les jeux disposent de cartes et d'une recherche séparée ; leur ouverture
+conserve la bulle isolée et la progression locale. Sur mobile, la navigation s'affiche sur deux rangées.
+
 Des maquettes supplémentaires peuvent vivre dans un dépôt **privé** séparé (`maquettes-catalogue`), récupéré par la CI avec un
 jeton en lecture seule. Ce dépôt contient le cercle trigonométrique et des exemples publics fondés sur le gabarit
 en mathématiques, physique-chimie, géographie et philosophie.

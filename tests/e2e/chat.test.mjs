@@ -103,7 +103,7 @@ test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'X
   await contexte.close();
 });
 
-test("catalogue : tiroir « Explorer », recherche sans accents, ouverture directe d'une notion", async () => {
+test("catalogue : tiroir « Notions », recherche sans accents, ouverture directe d'une notion", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
@@ -152,24 +152,130 @@ test("catalogue : tiroir « Explorer », recherche sans accents, ouverture direc
   await contexte.close();
 });
 
-test("navigation : les Labs et les jeux ouvrent directement leur catégorie", async () => {
+test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notions", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
-  await simulerApi(page, { jeux: true });
+  const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const catalogue = page.locator("#catalogue");
   const labs = page.locator(".barre-laterale [data-nav=labs]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
   await labs.click();
-  await catalogue.locator(".notion").first().waitFor();
-  assert.equal(await page.locator("[data-matiere=mathematiques][role=tab]").getAttribute("aria-selected"), "true");
-  assert.equal(await labs.getAttribute("aria-expanded"), "true");
-  assert.equal(await jeux.getAttribute("aria-expanded"), "false");
-  await page.click("#fermer-catalogue");
+  assert.equal(await page.locator("#ecran-labs").isVisible(), true);
+  assert.equal(await catalogue.isVisible(), false);
+  assert.equal(await page.locator("#accueil").isVisible(), false);
+  assert.equal(await page.locator("#matieres").isVisible(), false);
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
+  assert.equal(await labs.getAttribute("aria-current"), "page");
+  assert.equal(await page.locator("#salut").textContent(), "Labs");
+  assert.equal(await page.locator("#salut").evaluate((n) => n === document.activeElement), true);
+  assert.deepEqual(await page.locator("#ecran-labs a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
+    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
+  ]);
+  assert.equal(await page.locator("#ecran-labs [data-notion]").count(), 0, "les fiches de Notions ne deviennent pas des Labs");
   await jeux.click();
-  assert.equal(await page.locator("[data-matiere=jeux][role=tab]").getAttribute("aria-selected"), "true");
-  assert.deepEqual(await catalogue.locator(".notion").allTextContents(), ["Les échecs"]);
-  assert.equal(await labs.getAttribute("aria-expanded"), "false");
-  assert.equal(await jeux.getAttribute("aria-expanded"), "true");
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), true);
+  assert.equal(await page.locator("#ecran-labs").isVisible(), false);
+  assert.equal(await catalogue.isVisible(), false);
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Les échecs"]);
+  assert.equal(await labs.getAttribute("aria-current"), null);
+  assert.equal(await jeux.getAttribute("aria-current"), "page");
+  await page.fill("#recherche-jeu", "echecs");
+  assert.equal(await page.locator("#grille-jeux article").count(), 1, "recherche sans accents");
+  await page.fill("#recherche-jeu", "fractions");
+  assert.equal(await page.locator("#grille-jeux article").count(), 0);
+  assert.equal(await page.locator("#jeux-vide").isVisible(), true);
+  await page.fill("#recherche-jeu", "");
+  await page.click("[data-jeu=echecs]");
+  await page.locator("#bulle-lab[open][data-notion=echecs]").waitFor();
+  assert.equal(requetes.length, 0, "l'ouverture ne passe pas par le chat");
+  await page.click("#fermer-bulle");
+  await page.waitForFunction(() => document.activeElement?.dataset.jeu === "echecs");
+  assert.match(await page.locator("#grille-jeux").textContent(), /déjà explorée/);
+  await page.click("#ouvrir-catalogue");
+  await page.locator("#catalogue .notion").first().waitFor();
+  assert.deepEqual(await page.locator("#catalogue-matieres [role=tab]").allTextContents(), ["Maths", "Physique-chimie", "Philosophie", "Jeux"]);
+  await page.keyboard.press("Escape");
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), true, "fermer les Notions conserve l'écran courant");
+  await page.locator(".barre-laterale [data-nav=progression]").click();
+  assert.equal(await page.locator("#semaine").isVisible(), true);
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
+  assert.equal(await page.locator("#accueil").isVisible(), false);
+  await page.locator(".barre-laterale [data-nav=accueil]").click();
+  assert.equal(await page.locator("#accueil").isVisible(), true);
+  assert.equal(await page.locator("#salut").textContent(), "Bonjour Testeur 👋");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("navigation : liens directs, rechargement, historique et traduction des écrans", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page, { jeux: true });
+  await page.goto(`${serveur.url}/#labs`);
+  await page.locator("#ecran-labs").waitFor();
+  assert.equal(await page.locator("#accueil").isVisible(), false);
+  await page.locator(".evitement").focus();
+  await page.keyboard.press("Enter");
+  await page.waitForFunction(() => location.hash === "#contenu");
+  assert.equal(await page.locator("#ecran-labs").isVisible(), true, "le lien d'évitement ne change pas d'écran");
+  await page.goBack();
+  await page.locator(".barre-laterale [data-nav=jeux]").click();
+  assert.equal(new URL(page.url()).hash, "#jeux");
+  await page.goBack();
+  await page.locator("#ecran-labs").waitFor();
+  await page.goForward();
+  await page.locator("#ecran-jeux").waitFor();
+  await page.reload();
+  await page.locator("#ecran-jeux").waitFor();
+  assert.equal(await page.locator(".barre-laterale [data-nav=jeux]").getAttribute("aria-current"), "page");
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.querySelector("#salut").textContent === "Games");
+  assert.match(await page.locator("#accroche").textContent(), /Choose a game/);
+  assert.equal(await page.locator("#recherche-jeu").getAttribute("placeholder"), "Search a game…");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("jeux : états vides explicites sans bloquer les Labs", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page);
+  await page.goto(`${serveur.url}/#jeux`);
+  await page.locator("#ecran-jeux").waitFor();
+  assert.equal(await page.locator("#jeux-vide").textContent(), "Aucun jeu disponible pour le moment.");
+  await page.route(`${api}/api/catalogue`, (route) => route.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ notions: [] })
+  }));
+  await page.reload();
+  await page.locator("#ecran-jeux").waitFor();
+  assert.match(await page.locator("#jeux-vide").textContent(), /catalogue/i);
+  await page.locator(".barre-laterale [data-nav=labs]").click();
+  assert.equal(await page.locator("#ecran-labs a").count(), 3);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("navigation : défi, trophées et profil remplacent l'accueil sans panneau modal", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page);
+  await page.goto(`${serveur.url}/#defi`);
+  await page.locator("#defi .reponse").first().waitFor();
+  assert.equal(await page.locator("#accueil").isVisible(), false);
+  assert.equal(await page.locator("#defi").evaluate((n) => n.closest("main") !== null && n.tagName === "SECTION"), true);
+  await page.locator("#defi .reponse").nth(1).click();
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.querySelector("#salut").textContent === "Quick challenge");
+  assert.match(await page.locator("#defi-retour").textContent(), /Correct/);
+  assert.ok((await page.locator("#defi .reponse").first().isDisabled()), "changer de langue ne permet pas de répondre deux fois");
+  await page.locator(".barre-laterale .nav-bouton[data-nav=profil]").click();
+  assert.equal(await page.locator("#profil").isVisible(), true);
+  assert.equal(await page.locator("#defi").isVisible(), false);
+  assert.equal(await page.inputValue("#profil-pseudo"), "Testeur");
+  await page.locator(".barre-laterale [data-nav=badges]").click();
+  assert.equal(await page.locator("#progres").isVisible(), true);
+  assert.equal(await page.locator("#profil").isVisible(), false);
+  assert.equal(await page.locator("dialog[open]").count(), 0);
+  await page.reload();
+  await page.locator("#progres").waitFor();
+  assert.equal(await page.locator(".barre-laterale [data-nav=badges]").getAttribute("aria-current"), "page");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
@@ -178,7 +284,7 @@ test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans d�
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true });
   await simulerApi(page);
   await page.goto(serveur.url);
-  const explorer = page.locator(".nav-mobile [data-nav=labs]");
+  const explorer = page.locator(".nav-mobile [data-nav=catalogue]");
   await explorer.waitFor({ state: "visible" });
   assert.equal(await page.locator("#catalogue").isVisible(), false, "fermé par défaut sur mobile");
   await explorer.click();
@@ -203,8 +309,21 @@ test("navigation mobile : Labs et jeux restent accessibles sans débordement", a
   const jeux = groupe.locator("[data-nav=jeux]");
   await page.locator(".nav-mobile [data-nav=labs]").waitFor({ state: "visible" });
   await jeux.click();
-  await page.locator("#catalogue [data-matiere=jeux][role=tab][aria-selected=true]").waitFor();
-  assert.deepEqual(await page.locator("#catalogue .notion").allTextContents(), ["Les échecs"]);
+  await page.locator("#ecran-jeux").waitFor();
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Les échecs"]);
+  assert.equal(await page.locator("#catalogue").isVisible(), false);
+  await page.locator(".nav-mobile [data-nav=labs]").click();
+  assert.equal(await page.locator("#ecran-labs").isVisible(), true);
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
+  await page.locator(".nav-mobile [data-nav=progression]").click();
+  assert.equal(await page.locator("#semaine").isVisible(), true);
+  await page.locator(".nav-mobile [data-nav=accueil]").click();
+  assert.equal(await page.locator("#accueil").isVisible(), true);
+  const boutons = await page.locator(".nav-mobile-bouton").evaluateAll((elements) => elements.map((n) => {
+    const r = n.getBoundingClientRect();
+    return { largeur: r.width, hauteur: r.height, droite: r.right, bas: r.bottom };
+  }));
+  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les huit entrées restent visibles et tactiles");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
