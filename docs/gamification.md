@@ -5,7 +5,8 @@ Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (
 
 ## Synthèse
 
-Chaque jeu (Échecs, Démineur, Belote) a un onglet **Académie** : un parcours **du débutant au pro**, découpé en **grades**
+L'interface commune de l'Académie, utilisée par les Échecs, le Démineur, la Belote et les Mots fléchés, propose un parcours
+**du débutant au pro**, découpé en **grades**
 (6 aux échecs, 5 au Démineur et à la belote). Chaque grade contient des **leçons**, et chaque leçon a une explication courte, une
 stratégie **« À retenir »** et des exercices. Ce sont des QCM, ou des positions à jouer sur l'échiquier ou sur la grille,
 toutes vérifiées par le moteur du jeu.
