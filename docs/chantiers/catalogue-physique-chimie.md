@@ -53,3 +53,10 @@ de navigation du chat affiche un onglet par matière. Statuts : `en ligne` / `PR
   (« son », « base », « solution » seuls).
 - **Données** : valeurs usuelles du programme (g = 9,8 N/kg, son ≈ 340 m/s dans l'air, c = 3,0 × 10⁸ m/s).
 - **Sécurité** : rappeler les consignes (acides et bases corrosifs, court-circuit, niveaux sonores) ; aucune expérience dangereuse proposée.
+
+## Labs interactifs
+
+L'inventaire des figures dédiées et le plan priorisé (circuit simulé, chronophotographie, puis
+modèles des autres matières) figurent dans [le plan des labs des autres matières](labs-autres-matieres.md).
+Les deux figures de proportionnalité déjà présentes dans `electricite` et `forces-et-poids` restent
+les références actuelles ; elles ne remplacent pas un schéma de circuit ni un modèle de mouvement.

@@ -1,6 +1,6 @@
 # Chantier : catalogue de SVT (programme complet)
 
-**Niveau actuel : programme complet rédigé (23 notions, collège → terminale), en PR**
+**Niveau actuel : 31 fiches au catalogue ; 23 notions listées ci-dessous (collège → terminale), en PR**
 
 Objectif : couvrir le programme de sciences de la vie et de la Terre du collège (cycle 4) à la terminale (spécialité), une notion par
 page. Même méthode que les maths et la physique-chimie : gabarit commun (ADR 0011), une PR par vague, relecture humaine de
@@ -52,3 +52,10 @@ Les notions ont un `sujet` en `svt/…` : la barre de navigation du chat leur co
 - **Public mineur** : les notions de santé et de reproduction restent strictement scientifiques et renvoient vers un adulte de confiance
   ou un professionnel de santé.
 - **Exemples locaux** : le Piton de la Fournaise (La Réunion) illustre le volcanisme effusif et les points chauds.
+
+## Labs interactifs
+
+L'inventaire a repéré huit fiches supplémentaires à réconcilier avec les 23 notions listées ici
+avant de créer du contenu ou des figures. Les priorités d'interaction (cellule schématique, puis
+réseau trophique et modèles de transmission) et les critères de relecture sont décrits dans
+[le plan des labs des autres matières](labs-autres-matieres.md).
