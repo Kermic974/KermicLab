@@ -32,28 +32,19 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
   environnement. Les 56 exercices des nouvelles pages ont été vérifiés avec Chromium système,
   ainsi que les indices, les défis complets, le rendu mobile et l'absence d'erreurs CSP.
 
-## Mode zéro budget (actif)
+## Fournisseurs LLM actifs
 
-Le MVP est mis en ligne **sans aucune dépense** (décision : `docs/decisions/0006-mode-zero-budget.md`).
+Le routage vers le catalogue reste déterministe et sans appel modèle. Seules les relances pédagogiques proposées sur une page déjà ouverte peuvent utiliser Workers AI ; les demandes hors périmètre sont refusées sans appel. Activation avec `LLM_ACTIF=true`, secret de signature et schéma D1 à jour.
 
 | Service | Coût | Statut |
 |---|---|---|
-| Cloudflare Workers, Pages, D1, Web Analytics (plan Free) | 0 € | utilisé |
-| Cloudflare R2 (offre gratuite : 10 Go, opérations incluses) | 0 € | utilisé |
-| GitHub (dépôt, Actions, issues) | 0 € | utilisé |
-| Adresse `https://kermiclab.pages.dev` | 0 € | utilisée à la place d'un domaine |
-| Clé API Anthropic (crédits prépayés) | payant | **reporté** |
-| Domaine `kermiclab.ai` (≈ 160 €, 2 ans minimum) | payant | **reporté** |
+| Cloudflare Workers AI (`AI` binding) | selon tarifs et quotas Cloudflare | principal, à vérifier (action 28) |
+| Anthropic (`ANTHROPIC_API_KEY`) | selon le compte Anthropic | repli facultatif, non requis pour Workers AI |
+| Cloudflare Workers, Pages, D1, GitHub | selon les offres du compte | utilisés |
+| Domaine `kermiclab.online` | acheté | utilisé |
 
-Ce qui fonctionne sans clé Anthropic : routage par mots-clés vers le catalogue (sinus, cosinus, trigo…),
-pages interactives, signalement de problèmes (issues `support`), KPI, deux langues.
-
-Ce qui attend la clé Anthropic : réponses aux questions hors catalogue (à la place : liste des notions disponibles et questions d'exemple cliquables), relances personnalisées après chaque réponse, et
-création automatique des issues `maquette-manquante` (en attendant, elles se créent à la main avec le modèle
-d'issue « Demande de maquette »).
-
-Pour sortir du mode zéro budget : ajouter le secret GitHub `ANTHROPIC_API_KEY` (action 5), sans modifier le code ;
-acheter le domaine quand le budget le permet (action 15).
+Sans secret Anthropic, le Worker utilise tout de même Workers AI. La clé Anthropic (action 5) n'est sollicitée que si l'appel Workers AI échoue.
+Le budget partagé est de **1 000 tokens générés par session navigateur**, expiration serveur absolue de 24 h. Les entrées restent facturables ; supprimer le cookie ou changer de navigateur crée une autre session. Ce n'est pas un plafond financier global. L'accès est gratuit provisoirement ; le contrôle par abonnement est au [backlog #121](https://github.com/Kermic974/trigoLab/issues/121).
 
 ## Liste des actions
 
@@ -63,7 +54,7 @@ acheter le domaine quand le budget le permet (action 15).
 | 2 | Créer ou vérifier le jeton API Cloudflare (Workers Scripts : Edit, Pages : Edit, D1 : Edit, Workers R2 Storage : Edit), associé au compte indiqué par `CLOUDFLARE_ACCOUNT_ID` | [Guide Cloudflare](setup-cloudflare.md) ; https://dash.cloudflare.com/profile/api-tokens | Déploiement par la CI ; le jeton actuel est refusé par l'API D1 (`Authentication error [code: 10000]`) | Secrets `CLOUDFLARE_API_TOKEN` et `CLOUDFLARE_ACCOUNT_ID` à jour dans GitHub ; le jeton est valide et autorisé sur ce compte (plan Free, gratuit) ; relancer le workflow CI/CD sur `main` : le job « Déploiement Cloudflare » passe au vert | à vérifier à la fusion de la PR « www : chat et cercle » : le job « Déploiement Cloudflare » doit passer au vert |
 | 3 | Créer la base D1 : `cd worker && npx wrangler d1 create kermiclab-kpi`, reporter `database_id` dans `worker/wrangler.toml` | Terminal + PR | KPI | `wrangler d1 list` montre la base ; `database_id` est référencé dans `worker/wrangler.toml` ; PR fusionnée | fait |
 | 4 | Créer le projet Pages `kermiclab` et activer Web Analytics | Cloudflare → Workers & Pages ; Analytics & Logs → Web Analytics | Hébergement du chat ; mesure d'audience sans cookie | `https://www.kermiclab.online` sert le chat ; les visites apparaissent dans Web Analytics (site `kermiclab.online`) | fait (2026-10-31) : script de mesure ajouté au chat (`web/index.html`), injection automatique désactivée car elle ne s'appliquait pas aux pages servies par Pages ; mode « lite » (exclusion de l'UE) désactivé |
-| 5 | Créer une clé API Anthropic **et définir un plafond de dépense mensuel** | https://console.anthropic.com/settings/keys et /settings/limits | Chat et routage | Secret `ANTHROPIC_API_KEY` dans GitHub ; plafond visible dans la console ; au déploiement suivant, le job « Déploiement Cloudflare » n'affiche plus « ANTHROPIC_API_KEY absent » et le chat répond à « c'est quoi une fraction ? » | à faire (demandé par le propriétaire le 2026-11-01) |
+| 5 | (Facultatif) Créer une clé API Anthropic et définir un plafond de dépense | https://console.anthropic.com/settings/keys et /settings/limits | Repli du chat si Workers AI échoue | Secret `ANTHROPIC_API_KEY` dans GitHub ; vérifier qu'une erreur Workers AI peut être relayée par Anthropic sans exposer de clé | à faire si le repli Anthropic est souhaité |
 | 6 | Créer un jeton GitHub fine-grained : dépôt `trigoLab` uniquement, permission Issues lecture/écriture | https://github.com/settings/personal-access-tokens/new | Création des issues par le Worker (boucle d'apprentissage) | Secret `KERMICLAB_GITHUB_TOKEN` dans GitHub ; la CI le transmet au Worker comme `GITHUB_TOKEN` au déploiement suivant | fait (2026-10-31) : secret `GITHUB_TOKEN` présent sur le Worker `kermiclab-api` ; issue de test #33 (`support`) créée depuis le chat. Jeton à renouveler avant son expiration (1 an) |
 | 7 | Renseigner la variable GitHub `KERMICLAB_API_URL` (URL du Worker après le 1er déploiement) et `ORIGINES_AUTORISEES` dans `wrangler.toml` | Settings → Secrets and variables → Actions | Le chat doit joindre le Worker | Le chat répond à « c'est quoi le sinus ? » | fait par défaut : la CI utilise `https://kermiclab-api.kermic.workers.dev` si la variable est absente ; `ORIGINES_AUTORISEES` contient `www.kermiclab.online`, `kermiclab.online` et `kermiclab.pages.dev` |
 | 8 | Protéger `main` (PR obligatoire, CI « Lint, build, tests » verte, revue CODEOWNER, pas de force push) | GitHub → Settings → Branches → Add branch ruleset (réservé à l'administrateur du dépôt) | Sécurité : rien n'arrive sur `main` sans vérifications | Un push direct sur `main` est refusé | à faire — les labels sont désormais créés automatiquement par le workflow « Labels » (`.github/labels.json`) |
@@ -87,6 +78,8 @@ acheter le domaine quand le budget le permet (action 15).
 | 25 | Relire et valider les huit notions de géographie : mondialisation, mers-oceans, union-europeenne, dynamiques-territoriales, france-regions, espaces-productifs, tourisme et afrique-australe | PR du catalogue ; références dans chaque `catalogue/<id>/fiche.md` | Exactitude pour un public mineur : repères régionaux datés de 2026, distinction UE/euro/Schengen, ZEE, tourisme et limites de l'étude de Maputo | Relecture des niveaux et corrigés, exercices parcourus, CI verte et approbation du CODEOWNER avant fusion | à faire |
 | 26 | Autoriser les workflows de la PR géographie et traiter séparément l'installation des dépendances du Worker dans la CI | [PR #71](https://github.com/Kermic974/trigoLab/pull/71) ; `.github/workflows/ci.yml` et `worker/package.json` | Le run 41318570992 est `action_required`, sans job exécuté. Localement, `npm ci` à la racine ne fournit pas `jose`, déclaré dans le Worker : la suite complète nécessite aussi ces dépendances, indépendamment du catalogue | Workflows autorisés, dépendances du Worker disponibles et CI verte avant fusion ; aucune modification de dépendances ou de workflow dans cette contribution | à faire |
 | 27 | Autoriser les workflows de la PR EMC et relire les douze notions avant fusion | [PR #74](https://github.com/Kermic974/trigoLab/pull/74) | GitHub attend une autorisation pour exécuter les workflows ; validation pédagogique du CODEOWNER requise pour le public mineur | Workflows CI/CD et sécurité verts, puis revue CODEOWNER approuvée | à faire |
+| 28 | Vérifier l'accès Workers AI, ses conditions pour mineurs et les coûts avant activation en production | [Tableau de bord Cloudflare](https://dash.cloudflare.com/) ; [tarifs Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) | Le modèle `@cf/meta/llama-3.3-70b-instruct-fp8-fast` utilise le binding `AI`, sans clé API ; le quota de 1 000 tokens de sortie par session n'est pas un plafond global de dépense | Confirmer l'accès/conditions du modèle et les quotas/tarifs du compte, vérifier les options d'alerte/coût ; après déploiement ouvrir une page puis choisir une relance, contrôler les sources, métadonnées et compteur | à faire |
+| 29 | Créer `LLM_SESSION_SECRET` (au moins 32 caractères aléatoires), valider le cookie technique et vérifier la migration D1 | [Secrets GitHub du dépôt](https://github.com/Kermic974/trigoLab/settings/secrets/actions) ; Cloudflare → Worker `kermiclab-api` → Settings → Variables and Secrets | Signature du quota serveur ; aucune clé ni historique dans le chat. Le cookie navigateur peut être bloqué comme cookie tiers entre Pages et workers.dev : aucun appel n'est autorisé sans cookie valide | Secret ajouté sans le partager dans une issue/chat ; CI applique `worker/schema.sql`, le Worker possède `sessions_llm` ; vérifier l'expiration 24 h, le refus après quota et les règles de confidentialité. L'IA reste désactivée par défaut (`LLM_ACTIF=false`) jusqu'à validation explicite de l'activation ; cette valeur est aussi l'arrêt d'urgence | à faire |
 
 Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, vérifier que `CLOUDFLARE_API_TOKEN` dispose bien de la permission `D1: Edit` sur le compte correspondant à `CLOUDFLARE_ACCOUNT_ID`, puis relancer le workflow.
 

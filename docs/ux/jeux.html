@@ -41,8 +41,8 @@
     <p>Sur le site, ces panneaux sont des onglets. Ici, ils restent visibles pour être retravaillés dans Canvas.</p>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.1.0 · 2026-11-05</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/178600a6d97c12c63fb5af1b6d1479148992a981" target="_blank" rel="noopener noreferrer" data-lien-actif>178600a</a>.
+  <strong>Squelette v1.3.4 · 2026-11-05</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/ffd2da59b02dca092b494394d285dc9c282cf065" target="_blank" rel="noopener noreferrer" data-lien-actif>ffd2da5</a>.
   <a href="https://github.com/Kermic974/trigoLab/commits/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/jeux.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -56,7 +56,7 @@
 <li><a href="#jeu-poker-texas-holdem">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/poker-texas-holdem?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>poker-texas-holdem</a></li>
 <li><a href="#jeu-sudoku">Squelette</a> ↔ <a href="https://kermiclab-api.kermic.workers.dev/maquettes/sudoku?lang=fr" target="_blank" rel="noopener noreferrer" data-lien-actif>sudoku</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/gabarit/jeux" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux</a></p>
-    <p>Empreinte des sources : <code>00514b10eef589a4d19a2748ff82ce45919adb81b3eed8e94d21ff206a4180ba</code><br>Empreinte du squelette hors cartouche : <code>7b8e5e595c763d04b0ea5acfae6ea91d919e6208ba3980079924e79fcfce2c5a</code></p>
+    <p>Empreinte des sources : <code>4469bfab73fd82962321453d3e6038b5b30a436bfd061e45ece64af7a8b7d703</code><br>Empreinte du squelette hors cartouche : <code>daebb239c98e6f9379b72a330c74d4a800c7acd0bccc7631e9aadbd15b49bbd7</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -107,10 +107,11 @@
       <article class="carte" id="fleches-defi" data-onglet="mise-en-situation"><h3>Défi : quel mot correspond à l'indice ?</h3><button disabled>LUNE</button><button disabled>SOLEIL</button><button disabled>NUIT</button><p>Bonne/mauvaise réponse et explication.</p></article>
     </section>
     <section class="ecran" id="jeu-pendu" data-ecran="jeu-pendu" data-jeu="pendu" data-source="catalogue/pendu/page.html">
-      <h2>Le pendu</h2><p>Des premiers mots au niveau pro</p><nav aria-label="Onglets Pendu"><a href="#pendu-regles">Règles</a><a href="#pendu-jouer">Jouer</a><a href="#pendu-academie">Académie</a><a href="#pendu-defi">Défi</a></nav>
+      <h2>Le pendu</h2><p>Des premiers mots au niveau pro</p><nav aria-label="Onglets Pendu"><a href="#pendu-regles">Règles</a><a href="#pendu-jouer">Jouer</a><a href="#pendu-academie">Académie</a><a href="#pendu-orthographe">Mes mots</a><a href="#pendu-defi">Défi</a></nav>
       <article class="carte" id="pendu-regles" data-onglet="explication"><h3>Règles</h3><p>Comment jouer ? · Choisis ton grade</p></article>
       <article class="carte" id="pendu-jouer" data-onglet="application"><h3>Jouer</h3><p>Grade · progression · lettres tentées · erreurs restantes</p><div class="zone"><p>Dessin du pendu<br>Mot : _ O _ _ _ _</p></div><p>Clavier de lettres tactile et saisie au clavier sur le site.</p><div class="actions"><button disabled>A</button><button disabled>B</button><button disabled>C</button><button disabled>Nouveau mot</button><button disabled>💡 Indice</button></div><details><summary>États et fin de mot</summary><p>Nouvelle lettre correcte/incorrecte, lettre déjà tentée, indice révélé, mot trouvé ou perdu, dessin complété. Fin de grade : bilan, XP, étoiles et déblocage.</p><button disabled>Grade suivant</button></details></article>
       <article class="carte" id="pendu-academie" data-onglet="academie"><h3>Académie</h3><p>5 grades · 5 leçons · 15 étoiles · 12 badges disponibles</p><a href="#academie">Voir toutes les vues communes</a></article>
+      <article class="carte" id="pendu-orthographe" data-onglet="orthographe"><h3>Mes mots : vocabulaire et orthographe</h3><p>Choisir une liste de niveau, la modifier ou saisir jusqu'à 100 mots, puis les mémoriser avec leurs accents, lettres doubles et lettres muettes.</p><label>Liste à apprendre<textarea disabled rows="3"></textarea></label><div class="actions"><button disabled>Enregistrer la liste</button><button disabled>Commencer le test</button><button disabled>Effacer la liste</button></div><p>La liste reste sur cet appareil, sans envoi réseau.</p></article>
       <article class="carte" id="pendu-defi" data-onglet="mise-en-situation"><h3>Défi : quel mot se cache derrière l'indice ?</h3><button disabled>LUNE</button><button disabled>SOLEIL</button><button disabled>NUAGE</button><p>Retour correct/incorrect et explication.</p></article>
     </section>
     <section class="ecran" id="jeu-poker-texas-holdem" data-ecran="jeu-poker-texas-holdem" data-jeu="poker-texas-holdem" data-source="catalogue/poker-texas-holdem/page.html">

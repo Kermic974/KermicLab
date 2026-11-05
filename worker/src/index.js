@@ -5,14 +5,15 @@ import { messages, LANGUES } from "./messages.js";
 import { creerLimiteur } from "./limiteur.js";
 import { journaliser } from "./kpi.js";
 import { sauvegarderKpi, jourPrecedent } from "./sauvegarde.js";
-import { routerAvecClaude } from "./llm.js";
-import { creerOuCommenterIssue, corpsMaquetteManquante, commentaireDemande } from "./github.js";
+import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
+import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
+import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm } from "./session-llm.js";
+import { interrogerTuteur } from "./tuteur-llm.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
 const MAX_SUGGESTIONS = 4;
 const MAX_RELANCES = 3;
-const TAILLE_MAX_SUGGESTION = 120;
 const MOTS_ANGLAIS = /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i;
 let limiteur = null;
 let clientClaude = null; // injecté par les tests ; sinon créé par llm.js
@@ -97,16 +98,6 @@ function reponseHorsCatalogue(langue) {
   return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres, maquettes.length), suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage }) };
 }
 
-/** Relances proposées par le modèle : bornées, modérées, sans doublon. */
-function relancesValides(liste) {
-  if (!Array.isArray(liste)) return [];
-  const propres = liste
-    .filter((r) => typeof r === "string")
-    .map((r) => r.trim())
-    .filter((r) => r && r.length <= TAILLE_MAX_SUGGESTION && analyser(r).ok);
-  return [...new Set(propres)].slice(0, MAX_RELANCES);
-}
-
 function urlMaquette(requete, id, langue) {
   return `${new URL(requete.url).origin}/maquettes/${id}?lang=${langue}`;
 }
@@ -138,6 +129,7 @@ async function traiterChat(requete, env, ctx) {
   let langue = langueValide(corps?.langue);
   const t = () => messages(langue);
   const message = String(corps?.message ?? "").trim();
+  const utiliserLlm = corps?.utiliserLlm === true;
   const tailleMax = Number(env.TAILLE_MAX_MESSAGE) || TAILLE_MAX_PAR_DEFAUT;
 
   if (!message) return { statut: 400, donnees: { type: "refus", texte: t().vide } };
@@ -157,59 +149,76 @@ async function traiterChat(requete, env, ctx) {
   // 1. Routage déterministe par mots-clés (zéro token).
   const idLocal = routerLocal(message, CATALOGUE.index);
   if (idLocal) {
-    return { statut: 200, donnees: await servirMaquette(requete, env, ctx, { id: idLocal, langue, question: message, routage: "mots-cles" }) };
+    const donnees = await servirMaquette(requete, env, ctx, { id: idLocal, langue, question: message, routage: "mots-cles" });
+    let cookie;
+    if (llmActive(env)) {
+      try {
+        if (utiliserLlm) {
+          cookie = await definirContexteLlm(requete, env, idLocal);
+          donnees.suggestions = relancesContexte(langue);
+        } else {
+          const session = await lireSessionLlm(requete, env);
+          if (session) {
+            await env.DB.prepare("UPDATE sessions_llm SET maquette_id = ? WHERE id = ?")
+              .bind(idLocal, session.id).run();
+          }
+        }
+      } catch {
+        console.error("llm initialisation de session indisponible");
+      }
+    }
+    return { statut: 200, donnees, entetes: cookie ? { "set-cookie": cookie } : {} };
   }
 
-  // 2. Routage par le modèle (sortie JSON structurée).
-  if (!env.ANTHROPIC_API_KEY) {
+  // Seules des relances fermées sur une page déjà servie sont admises : un ID ou
+  // un historique fournis par le navigateur ne suffisent jamais à autoriser l'IA.
+  const suivi = questionDeSuivi(message);
+  if (!suivi) {
+    ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "hors-perimetre-llm" }));
+    return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
+  }
+  if (!utiliserLlm || !llmActive(env) || (!env.AI?.run && !env.ANTHROPIC_API_KEY)) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "sans-modele" }));
     return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
-  const historique = (Array.isArray(corps.historique) ? corps.historique : [])
-    .filter((h) => (h?.role === "user" || h?.role === "assistant") && typeof h.content === "string" && analyser(h.content).ok)
-    .slice(-6)
-    .map((h) => ({ role: h.role, content: h.content.slice(0, tailleMax * 2) }));
-  while (historique.length && historique[0].role !== "user") historique.shift();
-
-  let r;
+  let reponse;
+  let source;
   try {
-    r = await routerAvecClaude(env, { message, historique, index: CATALOGUE.index }, clientClaude);
-  } catch (e) {
-    console.error("llm", e?.message);
+    const session = await lireSessionLlm(requete, env);
+    if (!session) {
+      return { statut: 428, donnees: { type: "refus", texte: t().sessionLlmRequise } };
+    }
+    source = sourceContexte(CATALOGUE, session.maquette_id, langue, new URL(requete.url).origin);
+    if (!source) return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
+    reponse = await interrogerTuteur(env, session, { message: `${suivi} (${langue})`, source }, clientClaude);
+  } catch {
+    console.error("llm contrôle de quota ou fournisseur indisponible");
     ctx.waitUntil(journaliser(env, { type: "erreur", langue, detail: "llm" }));
-    return { statut: 200, donnees: reponseHorsCatalogue(langue) };
+    return { statut: 503, donnees: { type: "erreur", texte: t().indisponible } };
   }
+  if (reponse.erreur) {
+    const quota = reponse.erreur === "quota-ou-en-cours";
+    ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: quota ? "quota-llm" : "llm-indisponible" }));
+    return { statut: quota ? 429 : 503, donnees: { type: "refus", texte: quota ? t().quotaLlm : t().indisponible } };
+  }
+  const { resultat: r, llm } = reponse;
+  const { contenu, ...reference } = source;
+  const finReponse = { sources: [reference], llm };
   if (r.refus || r.intention === "inapproprie") {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: r.refus ? "refus-modele" : "intention-inappropriee" }));
-    return { statut: 200, donnees: { type: "refus", texte: t().inapproprie } };
+    return { statut: 200, donnees: { type: "refus", texte: t().inapproprie, ...finReponse } };
   }
-  langue = langueValide(r.langue);
-  const relances = relancesValides(r.relances);
-  if (r.maquette_id !== "aucune") {
-    const donnees = await servirMaquette(requete, env, ctx, { id: r.maquette_id, langue, question: message, routage: "modele" });
-    if (relances.length) donnees.suggestions = relances;
-    return { statut: 200, donnees };
+  if (r.intention === "hors-perimetre") {
+    return { statut: 200, donnees: { type: "refus", texte: t().perimetreLlm, ...finReponse } };
   }
 
-  // Modération de sortie.
-  let texte = String(r.reponse || "").trim();
+  const texte = r.reponse.trim();
   if (!texte || !analyser(texte).ok) {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "sortie-filtree" }));
-    return { statut: 200, donnees: reponseHorsCatalogue(langue) };
+    return { statut: 200, donnees: { type: "refus", texte: t().inapproprie, ...finReponse } };
   }
-
-  // 3. Boucle d'exception : maquette pertinente mais absente → issue GitHub.
-  if (r.intention === "apprendre" && r.maquette_pertinente && r.sujet) {
-    ctx.waitUntil(journaliser(env, { type: "exception", sujet: r.sujet, langue, routage: "modele" }));
-    ctx.waitUntil(creerOuCommenterIssue(env, {
-      label: "maquette-manquante", sujet: r.sujet,
-      corps: corpsMaquetteManquante({ question: message, sujet: r.sujet, langue, planOnglets: r.plan_onglets }),
-      commentaire: commentaireDemande({ question: message, langue })
-    }).catch((e) => console.error("issue maquette", e.message)));
-    return { statut: 200, donnees: { type: "reponse", texte: `${texte}\n\n${t().maquetteBientot}`, exception: true, suggestions: relances } };
-  }
-  ctx.waitUntil(journaliser(env, { type: "reponse", sujet: r.sujet || null, langue, routage: "modele" }));
-  return { statut: 200, donnees: { type: "reponse", texte, suggestions: relances } };
+  ctx.waitUntil(journaliser(env, { type: "reponse", maquetteId: source.id, langue, routage: "modele" }));
+  return { statut: 200, donnees: { type: "reponse", texte, suggestions: relancesContexte(langue), ...finReponse } };
 }
 
 async function traiterSupport(requete, env, ctx) {
@@ -347,6 +356,14 @@ export default {
     if (requete.method === "GET" && url.pathname === "/api/sante") {
       return json({ ok: true, maquettes: CATALOGUE.index.maquettes.length }, 200, cors);
     }
+    if (requete.method === "GET" && url.pathname === "/api/llm/status") {
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        return json({ actif: false }, 403, { "cache-control": "no-store" });
+      }
+      const actif = llmActive(env) && !!env.DB && typeof env.LLM_SESSION_SECRET === "string"
+        && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || !!env.ANTHROPIC_API_KEY);
+      return json({ actif }, 200, { ...cors, "cache-control": "no-store" });
+    }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {
       return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
         headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
@@ -362,6 +379,9 @@ export default {
     if ((requete.method === "GET" || requete.method === "HEAD") && page) return servirPage(requete, env, page[1]);
 
     if (requete.method === "POST" && (url.pathname === "/api/chat" || url.pathname === "/api/support")) {
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        return json({ type: "refus", texte: messages("fr").inapproprie }, 403, {});
+      }
       limiteur ??= creerLimiteur({ maxParMinute: Number(env.LIMITE_PAR_MINUTE) || 20 });
       const ip = requete.headers.get("cf-connecting-ip") || "inconnue";
       if (!limiteur(ip)) {
@@ -369,8 +389,8 @@ export default {
         return json({ type: "refus", texte: messages("fr").tropDeDemandes }, 429, cors);
       }
       try {
-        const { statut, donnees } = url.pathname === "/api/chat" ? await traiterChat(requete, env, ctx) : await traiterSupport(requete, env, ctx);
-        return json(donnees, statut, cors);
+        const { statut, donnees, entetes = {} } = url.pathname === "/api/chat" ? await traiterChat(requete, env, ctx) : await traiterSupport(requete, env, ctx);
+        return json(donnees, statut, { ...cors, ...entetes });
       } catch (e) {
         console.error("erreur", e?.message);
         ctx.waitUntil(journaliser(env, { type: "erreur", detail: "interne" }));
@@ -384,6 +404,8 @@ export default {
 
   /** Cron quotidien (wrangler.toml) : sauvegarde des KPI de la veille dans R2. */
   async scheduled(evenement, env, ctx) {
+    ctx.waitUntil(purgerSessionsLlm(env, evenement.scheduledTime)
+      .catch(() => console.error("purge sessions llm indisponible")));
     ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
       .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
       .catch((e) => console.error("sauvegarde kpi", e?.message)));

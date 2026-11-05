@@ -117,16 +117,17 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: worker
           command: deploy
-      # Secrets du Worker : seuls ceux qui sont définis sont envoyés. En mode zéro budget,
-      # ANTHROPIC_API_KEY est absent et wrangler-action échouerait sur une valeur vide.
+      # Secrets facultatifs du Worker : Workers AI utilise le binding wrangler.toml ;
+      # ANTHROPIC_API_KEY ne sert qu'au repli et les valeurs vides sont ignorées.
       - name: Secrets du Worker (si définis)
         if: steps.secrets.outputs.ok == 'true'
         working-directory: worker
         env:
+          LLM_SESSION_SECRET: ${{ secrets.LLM_SESSION_SECRET }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.KERMICLAB_GITHUB_TOKEN }}
         run: |
-          for nom in ANTHROPIC_API_KEY GITHUB_TOKEN; do
+          for nom in LLM_SESSION_SECRET ANTHROPIC_API_KEY GITHUB_TOKEN; do
             if [ -n "${!nom}" ]; then
               printf '%s' "${!nom}" | npx --yes wrangler@4 secret put "$nom"
             else
