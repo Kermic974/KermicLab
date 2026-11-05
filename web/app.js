@@ -11,7 +11,7 @@ const etat = {
   config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
-  erreurTrophees: false, chargementTrophees: false
+  erreurTrophees: false, chargementTrophees: false, ecran: "accueil"
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
@@ -77,9 +77,12 @@ async function appliquerLangue(langue) {
   rafraichirBienvenue();
   rafraichirPastille();
   rendreCatalogue();
+  rendreJeux();
+  rafraichirEntete();
   rafraichirTheme();
   etat.cercle?.rafraichir();
-  if ($("#progres").open) remplirProgres();
+  if (etat.ecran === "badges") remplirProgres();
+  rafraichirDefiTextes();
 }
 
 /* ---------- Auth & Compte ---------- */
@@ -497,7 +500,7 @@ function rendreTrophees() {
       const cible = notion ?? (etat.collectionTrophees?.[id]?.titre ? { id, titre: etat.collectionTrophees[id].titre } : null);
       if (cible) {
         const reprendre = element("button", { classe: "secondaire", cle: etat.trophees[id] ? "reprendreBouton" : "commencer", attributs: { type: "button" } });
-        reprendre.addEventListener("click", () => { $("#progres").close(); ouvrirNotion(cible); });
+        reprendre.addEventListener("click", () => ouvrirNotion(cible));
         carte.append(reprendre);
       }
       zone.append(carte);
@@ -517,7 +520,7 @@ async function chargerCollectionTrophees() {
     etat.erreurTrophees = true;
   } finally {
     etat.chargementTrophees = false;
-    if ($("#progres").open) rendreTrophees();
+    if (etat.ecran === "badges") rendreTrophees();
   }
 }
 
@@ -535,7 +538,7 @@ function brancherTrophees() {
       if (!module) { console.warn("trophees : instantané invalide", id); return; }
       etat.trophees[id] = module;
       trophees.sauver(stockage(), etat.trophees);
-      if ($("#progres").open) remplirProgres();
+      if (etat.ecran === "badges") remplirProgres();
     }
   });
 }
@@ -664,10 +667,17 @@ function brancherBulle() {
   const bulle = $("#bulle-lab");
   brancherDialogue(bulle, $("#fermer-bulle"));
   // Fermée : on décharge la page pour arrêter ses animations et libérer la mémoire.
-  bulle.addEventListener("close", () => { $("#bulle-cadre").removeAttribute("src"); delete $("#bulle-cadre").dataset.module; delete bulle.dataset.notion; });
+  bulle.addEventListener("close", () => {
+    const id = bulle.dataset.notion;
+    $("#bulle-cadre").removeAttribute("src");
+    delete $("#bulle-cadre").dataset.module;
+    delete bulle.dataset.notion;
+    if (etat.ecran === "jeux") document.querySelector(`[data-jeu="${CSS.escape(id)}"]`)?.focus({ preventScroll: true });
+    if (etat.ecran === "badges") document.querySelector(`[data-trophee-module="${CSS.escape(id)}"] button`)?.focus({ preventScroll: true });
+  });
   $("#bulle-question").addEventListener("click", () => {
     bulle.close();
-    marquerNavigation("accueil");
+    naviguer("accueil");
     aller("#accueil");
     $("#question").focus({ preventScroll: true });
   });
@@ -675,7 +685,7 @@ function brancherBulle() {
 
 let declencheurCatalogue = null;
 
-function ouvrirCatalogue({ matiere, nav } = {}) {
+function ouvrirCatalogue({ matiere } = {}) {
   if (matiere) {
     etat.matiere = matiere;
     ecrireCle(preferences(), CLE_MATIERE, matiere);
@@ -685,7 +695,7 @@ function ouvrirCatalogue({ matiere, nav } = {}) {
   declencheurCatalogue = document.activeElement;
   $("#catalogue").classList.add("ouvert");
   $("#voile-catalogue").hidden = false;
-  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", String(b.dataset.nav === nav)));
+  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", "true"));
   $("#recherche-notion").focus();
 }
 
@@ -741,6 +751,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
+  $(".pied").before($("#profil"), $("#defi"), $("#progres"));
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -769,6 +780,7 @@ async function demarrer() {
   $("#fermer-catalogue").addEventListener("click", () => fermerCatalogue({ rendreFocus: true }));
   $("#voile-catalogue").addEventListener("click", () => fermerCatalogue());
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
+  $("#recherche-jeu").addEventListener("input", rendreJeux);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && $("#catalogue").classList.contains("ouvert")) fermerCatalogue({ rendreFocus: true });
   });
@@ -788,9 +800,7 @@ async function demarrer() {
     if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#formulaire").requestSubmit(); }
   });
 
-  const dialogueProgres = $("#progres");
   $("#ouvrir-progres").addEventListener("click", ouvrirProgres);
-  brancherDialogue(dialogueProgres, $("#fermer-progres"));
 
   const dialogue = $("#signalement");
   $("#ouvrir-signalement").addEventListener("click", ouvrirSignalement);
@@ -813,7 +823,6 @@ async function demarrer() {
   });
 
   brancherNavigation();
-  brancherDefi();
   brancherBulle();
   $("#bascule-theme").addEventListener("click", () => {
     const suivant = themeSombre() ? "light" : "dark";
@@ -834,7 +843,7 @@ async function demarrer() {
   rafraichirTableau();
 }
 
-function ouvrirProgres() { remplirProgres(); $("#progres").showModal(); chargerCollectionTrophees(); }
+function ouvrirProgres() { naviguer("badges"); }
 function ouvrirSignalement() { $("#retour-signalement").textContent = ""; $("#signalement").showModal(); }
 
 /* ---------- Session, pseudo et mémorisation (ADR 0012) ---------- */
@@ -899,12 +908,9 @@ function brancherProfil() {
     $("#dialogue-pseudo").close();
     rafraichirTableau();
     notifier(t("pseudoBienvenue", { pseudo: etat.pseudo }), "👋");
-    $("#question").focus({ preventScroll: true });
+    $(etat.ecran === "accueil" ? "#question" : "#salut").focus({ preventScroll: true });
   });
 
-  const dialogue = $("#profil");
-  brancherDialogue(dialogue, $("#fermer-profil"));
-  dialogue.addEventListener("close", reinitialiserEffacement);
   $("#formulaire-profil").addEventListener("submit", (e) => {
     e.preventDefault();
     const champ = $("#profil-pseudo");
@@ -955,7 +961,6 @@ function ouvrirProfil() {
   $("#profil-erreur").textContent = "";
   rafraichirEtatMemoire();
   reinitialiserEffacement();
-  $("#profil").showModal();
 }
 
 /* ---------- Thème ---------- */
@@ -983,6 +988,41 @@ function rafraichirTheme() {
 
 /* ---------- Navigation ---------- */
 
+const ECRANS = ["accueil", "labs", "jeux", "progression", "defi", "badges", "profil"];
+
+function rafraichirEntete() {
+  const accueil = etat.ecran === "accueil";
+  $("#salut").textContent = accueil
+    ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
+    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "profilTitre" }[etat.ecran]);
+  $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "badges" ? "tropheesIntro" : `${etat.ecran}Intro`);
+}
+
+function afficherEcran(cle, { focus = true } = {}) {
+  const ecran = ECRANS.includes(cle) ? cle : "accueil";
+  const changement = ecran !== etat.ecran;
+  etat.ecran = ecran;
+  fermerCatalogue();
+  if (changement && $("#bulle-lab").open) $("#bulle-lab").close();
+  document.querySelectorAll("[data-ecrans]").forEach((zone) => {
+    zone.hidden = !zone.dataset.ecrans.split(" ").includes(etat.ecran);
+  });
+  marquerNavigation(etat.ecran);
+  rafraichirEntete();
+  if (etat.ecran === "profil" && changement) ouvrirProfil();
+  if (etat.ecran === "defi" && changement) ouvrirDefi();
+  if (etat.ecran === "badges") { remplirProgres(); chargerCollectionTrophees(); }
+  if (focus) {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    $("#salut").focus({ preventScroll: true });
+  }
+}
+
+function naviguer(cle) {
+  if (location.hash !== `#${cle}`) history.pushState(null, "", `#${cle}`);
+  afficherEcran(cle);
+}
+
 function marquerNavigation(cle) {
   document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav]").forEach((b) => {
     if (b.dataset.nav === cle) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
@@ -994,25 +1034,21 @@ function aller(cible) {
 }
 
 function brancherNavigation() {
+  const suivreAdresse = () => {
+    const cle = location.hash.slice(1);
+    if (!cle || ECRANS.includes(cle)) afficherEcran(cle);
+  };
+  window.addEventListener("popstate", suivreAdresse);
+  window.addEventListener("hashchange", suivreAdresse);
+  afficherEcran(location.hash.slice(1), { focus: false });
   document.addEventListener("click", (e) => {
     const bouton = e.target.closest("[data-nav], [data-action]");
     if (!bouton || bouton.closest("dialog")) return;
     const cle = bouton.dataset.nav ?? bouton.dataset.action;
-    if (cle === "accueil") { marquerNavigation("accueil"); aller("#haut"); }
-    else if (cle === "progression") { marquerNavigation("progression"); aller("#semaine"); }
+    if (ECRANS.includes(cle)) naviguer(cle);
     else if (cle === "catalogue") ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue());
-    else if (cle === "labs" || cle === "jeux") {
-      if (bouton.getAttribute("aria-expanded") === "true") fermerCatalogue();
-      else {
-        const matiere = cle === "jeux" ? "jeux" : etat.notions.map(matiereDe).find((m) => m !== "jeux") || "mathematiques";
-        ouvrirCatalogue({ matiere, nav: cle });
-      }
-    }
-    else if (cle === "defi") ouvrirDefi();
-    else if (cle === "badges") ouvrirProgres();
-    else if (cle === "profil") ouvrirProfil();
     else if (cle === "aide") ouvrirSignalement();
-    else if (cle === "question") { marquerNavigation("accueil"); aller("#accueil"); $("#question").focus({ preventScroll: true }); }
+    else if (cle === "question") { naviguer("accueil"); aller("#accueil"); $("#question").focus({ preventScroll: true }); }
   });
 }
 
@@ -1050,7 +1086,7 @@ function statsMatiere(matiere) {
 function rafraichirTableau() {
   if (!etat.progres || !etat.textes.titre) return;
   const pseudo = etat.pseudo ?? "";
-  $("#salut").textContent = pseudo ? t("salut", { pseudo }) : t("salutAnonyme");
+  rafraichirEntete();
   const { niveau } = progression.niveau(etat.progres);
   document.querySelectorAll("[data-profil=initiale]").forEach((n) => { n.textContent = profil.initiale(pseudo); });
   document.querySelectorAll("[data-profil=pseudo]").forEach((n) => { n.textContent = pseudo || t("anonyme"); });
@@ -1059,11 +1095,34 @@ function rafraichirTableau() {
   rendreSuggestion();
   rendreMatieresTableau();
   rendreSemaine();
+  rendreJeux();
   $("#meta-explorer").textContent = etat.notions.length ? t("metaNotions", { n: etat.notions.length }) : "";
   $("#meta-question").textContent = t("metaQuestions", { n: etat.progres.questions });
   const defiFait = etat.progres.defiJour === progression.jourLocal();
   $("#meta-defi").textContent = defiFait ? t("defiFaitAujourdhui") : t("xpGagne", { n: 5 * progression.XP_DEFI_BONNE });
   $("#minilab-page").hidden = etat.notions.length > 0 && !notionParId("trigo-cercle");
+}
+
+function rendreJeux() {
+  if (!etat.progres) return;
+  const jeux = etat.notions.filter((n) => matiereDe(n) === "jeux");
+  const filtre = sansAccents($("#recherche-jeu").value.trim());
+  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre));
+  const grille = $("#grille-jeux");
+  grille.replaceChildren();
+  $("#jeux-compteur").textContent = t("jeuxCompteur", { n: selection.length, m: jeux.length });
+  $("#jeux-vide").hidden = selection.length > 0;
+  $("#jeux-vide").textContent = t(!etat.notions.length ? "catalogueIndisponible" : jeux.length ? "aucunJeu" : "jeuxIndisponibles");
+  for (const jeu of selection) {
+    const carte = element("article", { classe: "carte jeu-carte" });
+    carte.append(element("span", { classe: "sur-titre", cle: "navJeux" }), element("h3", { texte: jeu.titre }));
+    const explore = etat.progres.notions.includes(jeu.id);
+    if (explore) carte.append(element("span", { classe: "pastille ok", cle: "notionExploree" }));
+    const ouvrir = element("button", { classe: "bouton doux-bouton", cle: explore ? "reprendreBouton" : "commencer", attributs: { type: "button", "data-jeu": jeu.id } });
+    ouvrir.addEventListener("click", () => ouvrirNotion(jeu));
+    carte.append(ouvrir);
+    grille.append(carte);
+  }
 }
 
 function filAriane(n) {
@@ -1219,17 +1278,17 @@ function rendreSemaine() {
 
 const defi = { index: 0, bonnes: 0, resultats: [] };
 
-function brancherDefi() {
-  brancherDialogue($("#defi"), $("#fermer-defi"));
-}
-
 function ouvrirDefi() {
   defi.index = 0; defi.bonnes = 0; defi.resultats = [];
+  rendreQuestionDefi();
+  rafraichirDefiTextes();
+}
+
+function rafraichirDefiTextes() {
   const fait = etat.progres.defiJour === progression.jourLocal();
   $("#defi-sur-titre").textContent = fait ? t("defiFaitAujourdhui") : t("defiSurTitre", { n: 5 * progression.XP_DEFI_BONNE });
-  rendreQuestionDefi();
-  $("#defi").showModal();
-  $("#defi .reponse")?.focus();
+  const compteur = $("#defi .defi-haut .math");
+  if (compteur) compteur.textContent = t("defiProgression", { n: defi.index + 1, m: DEFI_BONNES.length });
 }
 
 function pointsDefi() {
@@ -1246,11 +1305,11 @@ function rendreQuestionDefi() {
   const q = defi.index + 1;
   const haut = element("div", { classe: "defi-haut" });
   haut.append(pointsDefi(), element("span", { classe: "doux petit math", texte: t("defiProgression", { n: q, m: DEFI_BONNES.length }) }));
-  const question = element("p", { classe: "defi-question", texte: t(`defiQ${q}`), attributs: { id: "defi-question" } });
+  const question = element("p", { classe: "defi-question", cle: `defiQ${q}`, attributs: { id: "defi-question" } });
   const reponses = element("div", { classe: "reponses", attributs: { role: "group", "aria-labelledby": "defi-question" } });
   [1, 2, 3].forEach((r, i) => {
     const b = element("button", { classe: "reponse", attributs: { type: "button" } });
-    b.append(element("span", { classe: "lettre", texte: "ABC"[i], attributs: { "aria-hidden": "true" } }), element("span", { texte: t(`defiQ${q}R${r}`) }));
+    b.append(element("span", { classe: "lettre", texte: "ABC"[i], attributs: { "aria-hidden": "true" } }), element("span", { cle: `defiQ${q}R${r}` }));
     b.addEventListener("click", () => repondreDefi(i));
     reponses.append(b);
   });
@@ -1268,7 +1327,7 @@ function repondreDefi(choix) {
   });
   $("#defi .defi-points").replaceWith(pointsDefi());
   const retour = element("div", { classe: `retour-defi ${juste ? "juste" : "faux"}` });
-  retour.append(element("strong", { cle: juste ? "defiJuste" : "defiFaux" }), element("span", { texte: t(`defiQ${q}E`) }));
+  retour.append(element("strong", { cle: juste ? "defiJuste" : "defiFaux" }), element("span", { cle: `defiQ${q}E` }));
   const fin = defi.index === DEFI_BONNES.length - 1;
   const suite = element("div", { classe: "defi-suite" });
   const b = bouton(fin ? "defiResultat" : "defiSuivante", "i-fleche");
@@ -1284,12 +1343,12 @@ function terminerDefi() {
   const bloc = element("div", { classe: "resultat-defi" });
   const message = defi.bonnes === DEFI_BONNES.length ? "defiParfait" : defi.bonnes >= 3 ? "defiBien" : "defiEncore";
   bloc.append(pointsDefi(), element("div", { classe: "score", texte: `${defi.bonnes}/${DEFI_BONNES.length}` }), element("p", { cle: message }),
-    element("span", { classe: "pastille ok", texte: resultat.xpGagne ? t("xpGagne", { n: resultat.xpGagne }) : t("defiDejaFait") }));
+    element("span", { classe: "pastille ok", ...(resultat.xpGagne ? { texte: t("xpGagne", { n: resultat.xpGagne }) } : { cle: "defiDejaFait" }) }));
   const actions = element("div", { classe: "defi-suite" });
   const recommencer = element("button", { classe: "bouton secondaire-bouton", cle: "defiRecommencer", attributs: { type: "button" } });
   recommencer.addEventListener("click", () => { defi.index = 0; defi.bonnes = 0; defi.resultats = []; rendreQuestionDefi(); });
   const terminer = element("button", { classe: "bouton", cle: "defiTerminer", attributs: { type: "button" } });
-  terminer.addEventListener("click", () => $("#defi").close());
+  terminer.addEventListener("click", () => naviguer("accueil"));
   actions.append(recommencer, terminer);
   bloc.append(actions);
   $("#defi-corps").replaceChildren(bloc);

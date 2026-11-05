@@ -29,6 +29,13 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
+Navigation provides distinct **Home**, **Labs**, **Games**, **Challenge**, **Progress**, **Trophies** and
+**Profile** screens in the main area, with direct links (`/#labs`, `/#jeux`, `/#defi`, `/#progression`,
+`/#badges`, `/#profil`) and browser back support. Labs list dedicated
+apps (currently the unit circle at `/cercle/`), not catalogue lessons. **Topics** retains the existing
+catalogue, subject tabs, school levels, search and counters. Games have their own searchable cards;
+opening a game still uses the isolated overlay and local progress. Mobile navigation uses two rows.
+
 Additional pages can live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
 read-only token. This repository ships the unit-circle page and public template-based examples in mathematics,
 physics-chemistry, geography and philosophy.

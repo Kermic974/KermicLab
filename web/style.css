@@ -155,6 +155,23 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 }
 .enveloppe { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
 
+/* ---------- Ecrans Labs et Jeux ---------- */
+.ecran { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.ecran .tete-section { margin-bottom: 0; }
+.lab-dedie { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); overflow: hidden; }
+.lab-apercu { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 32px; background: var(--lab-doux); color: var(--lab); }
+.lab-apercu .ico { width: 180px; height: 180px; stroke-width: .8; }
+.lab-description { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding: clamp(20px, 4vw, 40px); }
+.lab-description h3 { font-size: clamp(24px, 3vw, 32px); }
+.lab-description > .bouton { border-radius: 12px; text-decoration: none; }
+.lab-modes { display: flex; flex-wrap: wrap; gap: 20px; }
+.grille-jeux { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.jeu-carte { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
+.jeu-carte h3 { overflow-wrap: anywhere; }
+.jeu-carte .bouton { margin-top: auto; }
+.ecran-personnel { width: 100%; padding: clamp(18px, 3vw, 32px); }
+.ecran-personnel h3 { margin: 18px 0 8px; font-size: 1rem; }
+
 /* ---------- En-tête ---------- */
 .entete { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .salut h1 { font-size: 28px; font-weight: 760; letter-spacing: -.025em; overflow-wrap: anywhere; }
@@ -460,7 +477,7 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .badge.obtenu { background: color-mix(in srgb, var(--or) 14%, var(--surface)); border-color: color-mix(in srgb, var(--or) 45%, var(--bord)); }
 .badge.verrouille { opacity: .6; }
 .note-locale { margin: 16px 0 4px; font-size: .85rem; }
-#progres { width: min(760px, calc(100vw - 24px)); }
+#progres { max-width: 960px; }
 .trophee-module { border: 1px solid var(--bord); border-radius: 14px; padding: 14px; margin: 10px 0; overflow-wrap: anywhere; }
 .trophee-module h4 { margin: 0 0 10px; }
 .trophee-module progress { width: 100%; }
@@ -489,7 +506,7 @@ dialog.bulle-lab[open] { display: flex; }
 .bulle-pied .bouton { min-height: 40px; }
 
 /* Défi express */
-#defi { width: min(560px, calc(100vw - 24px)); }
+#defi, #profil { max-width: 760px; }
 .defi-haut { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
 .defi-points { display: flex; gap: 6px; }
 .defi-points i { width: 28px; height: 6px; border-radius: 99px; background: var(--bord); }
@@ -692,7 +709,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (max-width: 720px) {
   .app { grid-template-columns: 1fr; background: none; }
   .barre-laterale { display: none; }
-  .principal { padding-block: 16px calc(92px + env(safe-area-inset-bottom, 0px)); padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
+  .principal { padding-block: 16px calc(152px + env(safe-area-inset-bottom, 0px)); padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
   .enveloppe { gap: 20px; }
   .salut h1 { font-size: 22px; }
   .salut p { font-size: 14px; }
@@ -704,11 +721,14 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .parcours-etapes a { min-height: 76px; flex-direction: column; gap: 4px; padding: 9px 8px; }
   .parcours-etapes small { font-size: 10px; }
   .parcours-action { width: 100%; }
+  .lab-dedie { grid-template-columns: 1fr; }
+  .lab-apercu { padding: 24px; }
+  .lab-apercu .ico { width: 120px; height: 120px; }
   .pastille-progres { flex: 1; justify-content: center; }
   .chat { border-radius: 18px; }
   .chat-entete { padding: 14px 16px; }
   #fil { padding: 14px 12px; max-height: none; overflow: visible; min-height: 0; }
-  .zone-saisie { position: sticky; bottom: calc(66px + env(safe-area-inset-bottom, 0px)); padding: 10px; z-index: 5; }
+  .zone-saisie { position: sticky; bottom: calc(126px + env(safe-area-inset-bottom, 0px)); padding: 10px; z-index: 5; }
   .avatar { display: none; }
   .message.moi .bulle { max-width: 92%; }
   .carte-maquette iframe { height: 65vh; min-height: 380px; }
@@ -720,7 +740,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .stats dd { font-size: 1.25rem; }
   #toasts { top: 12px; }
   .nav-mobile {
-    display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
     background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--bord);
     padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px));
