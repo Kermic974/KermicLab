@@ -96,3 +96,9 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 |---|---|---|---|---|
 | Relire les neuf notions (devoir, État, justice, liberté, langage, raison, science, technique, vérité), leurs auteurs et leurs corrigés | [PR #67](https://github.com/Kermic974/trigoLab/pull/67) ; `catalogue/<id>/contenu.json` et `page.html` | Exactitude philosophique, accessibilité aux mineurs et contrôle humain des maquettes (action 16) | Revue CODEOWNER approuvée et CI verte avant fusion | à faire |
 | Autoriser les workflows de la PR de philosophie | [Actions de la PR #67](https://github.com/Kermic974/trigoLab/pull/67/checks) | L'exécution initiale est en statut `action_required`. Localement, lint, build, contrôle des pages et 64 tests unitaires passent ; l'e2e est bloqué par Chromium absent du cache Playwright, mais les 54 QCM et le rendu mobile des neuf pages ont été vérifiés via le navigateur disponible | Autoriser l'exécution GitHub Actions et vérifier que tous les contrôles passent, dont les tests e2e avec Chromium installé par la CI | à faire |
+
+## Atelier UX versionné
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Confirmer les liens vers les vues actives | Cartouche de suivi de chacun des six fichiers dans `docs/ux/` ; `https://kermiclab.online/` et API définie dans `web/config.json` | Les liens proviennent de la configuration du projet ; leur résolution DNS échoue depuis l'environnement de travail au 5 novembre 2026. La version locale du catalogue ne certifie pas la version déployée | Ouvrir les liens depuis un navigateur connecté ; vérifier les trois modes du cercle, les pages éditoriales et les pages du catalogue ; ouvrir les dialogues via les actions précisées dans les cartouches | à faire |

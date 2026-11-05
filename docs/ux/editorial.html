@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Atelier UX · Pages annexes · KermicLab</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #222; font: 16px/1.6 system-ui, sans-serif; }
+    header, main, footer { max-width: 1100px; padding: 1.2rem; margin: auto; }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 3px; }
+    nav { display: flex; flex-wrap: wrap; gap: .7rem; }
+    nav a { min-height: 44px; padding: .6rem; border: 1px solid #777; background: white; }
+    .ecran { border-top: 2px solid #333; padding-top: 1rem; margin: 2rem 0; }
+    .note, article, details { background: white; border: 1px solid #ccc; padding: 1rem; margin: 1rem 0; }
+    summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+    code { overflow-wrap: anywhere; }
+    @media print { .ecran { break-before: page; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">Retour au site</a><h1>Pages annexes · Atelier UX</h1>
+    <p class="note">5 novembre 2026 · Structures et contenus abrégés, non destinés à remplacer les textes légaux. Sur le site, ces trois pages sont des documents séparés, non des dialogues. Les liens externes ne sont pas actifs ici.</p>
+    <nav aria-label="Pages annexes"><a href="#feuille-de-route">Feuille de route</a><a href="#confidentialite">Confidentialité</a><a href="#mentions-legales">Mentions légales</a><a href="inventaire.html">Inventaire exact</a></nav>
+<!-- ux:suivi:debut -->
+<aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
+  <strong>Squelette v1.0.0 · 2026-11-05</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/9abe3886aa462b483e212fc5c8ce9f4c5394f1c5" target="_blank" rel="noopener noreferrer" data-lien-actif>9abe388</a>.
+  <a href="https://github.com/Kermic974/trigoLab/commits/main/web/feuille-de-route.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/editorial.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
+  <details><summary>Comparer avec les vues actives et les sources</summary>
+    <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
+    <ul><li><a href="#feuille-de-route">Squelette</a> ↔ <a href="https://kermiclab.online/feuille-de-route.html" target="_blank" rel="noopener noreferrer" data-lien-actif>feuille-de-route</a></li>
+<li><a href="#confidentialite">Squelette</a> ↔ <a href="https://kermiclab.online/confidentialite.html" target="_blank" rel="noopener noreferrer" data-lien-actif>confidentialite</a></li>
+<li><a href="#mentions-legales">Squelette</a> ↔ <a href="https://kermiclab.online/mentions-legales.html" target="_blank" rel="noopener noreferrer" data-lien-actif>mentions-legales</a></li></ul>
+    <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/web/feuille-de-route.html" target="_blank" rel="noopener noreferrer" data-lien-actif>web/feuille-de-route.html</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/web/confidentialite.html" target="_blank" rel="noopener noreferrer" data-lien-actif>web/confidentialite.html</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/web/mentions-legales.html" target="_blank" rel="noopener noreferrer" data-lien-actif>web/mentions-legales.html</a></p>
+    <p>Empreinte des sources : <code>f6f2df95c4da7ff446080fbd18dea012603bcfa0764a074bff8b7f30464c183e</code><br>Empreinte du squelette hors cartouche : <code>87b9d62ea58fa0d25b1912c482a2296584e8b01e5e96f0683be32021c8acf269</code></p>
+    <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
+  </details>
+</aside>
+<!-- ux:suivi:fin -->
+  </header>
+  <main>
+    <section class="ecran" id="feuille-de-route" data-ecran="feuille-de-route" data-source="web/feuille-de-route.html">
+      <p>Document éditorial · sommaire par ancres · retour au site</p><h2>Feuille de route</h2>
+      <nav aria-label="Sommaire de la feuille de route"><a href="#synthese">Synthèse</a><a href="#livraisons">Livraisons récentes</a><a href="#suivi">Suivi automatique</a><a href="#etat">Où en est-on vraiment</a><a href="#gantt">Gantt</a><a href="#principes">Principes</a><a href="#phases">Les phases</a><a href="#pedagogie">Modèle pédagogique</a><a href="#tuteur">Tuteur IA</a><a href="#familles">Familles et données</a><a href="#technique">Architecture</a><a href="#mesure">Mesure</a><a href="#risques">Risques</a><a href="#non">Exclusions</a><a href="#revision">Révisions</a></nav>
+      <article id="synthese"><h3>Synthèse</h3><p>Présentation du projet, chiffres repères, cartes de priorités et principe : apprendre sans compte et sans IA reste possible.</p></article>
+      <article id="livraisons"><h3>Livraisons récentes</h3><p>Frise datée et liens de PR, acquis réutilisable et prochaine jonction pédagogique.</p><p class="note">Le bilan éditorial mentionne encore huit jeux et le Pendu en attente ; le suivi automatique et le catalogue contiennent neuf jeux. Cette divergence du texte source n'est pas corrigée par l'atelier.</p></article>
+      <article id="suivi"><h3>Suivi automatique après validation</h3><p>Commit de référence, liens de validations GitHub, total du catalogue (181 pages, 9 jeux) et tableau de PR récentes : fusion UTC, PR, livraison. Région à défilement horizontal sur petit écran.</p></article>
+      <article id="etat"><h3>Où en est-on vraiment</h3><p>Table de maturité des chantiers : acquis, partiel, prévu et conditions de passage.</p></article>
+      <article id="gantt"><h3>Gantt simplifié : l'ordre, pas des dates promises</h3><p>Frise des dépendances et légende, sans engagement calendaire.</p></article>
+      <article id="principes"><h3>Principes directeurs</h3><p>Autonomie, sobriété, protection des mineurs et validation humaine.</p></article>
+      <article id="phases"><h3>Les phases</h3><p>Cartes de phases, objectifs, livrables et points de contrôle.</p></article>
+      <article id="pedagogie"><h3>Modèle pédagogique</h3><p>Notions, compétences et prérequis, pratique et maîtrise ; XP de jeu distinct de la maîtrise scolaire.</p></article>
+      <article id="tuteur"><h3>Tuteur IA : les garde-fous</h3><p>Accompagnement envisagé, modération et budget ; ne pas le présenter comme livré.</p></article>
+      <article id="familles"><h3>Familles et données</h3><p>Progression locale actuelle, comptes familles soumis au contrôle juridique.</p></article>
+      <article id="technique"><h3>Architecture et données</h3><p>Catalogue autonome, tableau de bord, Worker et stockage.</p></article>
+      <article id="mesure"><h3>Comment on mesure</h3><p>Indicateurs d'usage et d'apprentissage sans données personnelles.</p></article>
+      <article id="risques"><h3>Risques</h3><p>Table de risques et mesures de maîtrise.</p></article>
+      <article id="non"><h3>Ce qu'on ne fait pas</h3><p>Limites explicites du périmètre.</p></article>
+      <article id="revision"><h3>Notes de révision</h3><p>Historique daté des modifications.</p></article>
+      <details><summary>Roadmap (English summary)</summary><p lang="en">English summary of the roadmap, current scope and future milestones.</p></details>
+      <a href="index.html">← Kermiclab</a>
+    </section>
+    <section class="ecran" id="confidentialite" data-ecran="confidentialite" data-source="web/confidentialite.html">
+      <h2>Confidentialité</h2><p>Introduction : pas de compte actif, publicité ni cookie sans accord.</p>
+      <article><h3>Ce que nous enregistrons</h3><ul><li>Statistiques anonymes sans IP ni texte de message.</li><li>Question filtrée hors catalogue pouvant alimenter une demande publique de page.</li><li>Cloudflare Web Analytics sans cookie.</li></ul></article>
+      <article><h3>Dans ton navigateur</h3><p>Pseudo et progression de session par défaut ; option « Se souvenir de moi » via cookie fonctionnel d'un an et stockage local. Langue et thème conservés sur l'appareil.</p><p>Effacement depuis le profil. Mes trophées reçoit la progression des pages intégrées compatibles ; les pages séparées ne sont pas synchronisées.</p></article>
+      <article><h3>Traitement des questions</h3><p>Questions sans correspondance transmises à Anthropic pour produire une réponse ; avertissement de ne jamais partager de données personnelles.</p></article>
+      <details><summary>Privacy (English)</summary><p lang="en">English version of the privacy information, including local trophies and the remember/erase choice.</p></details>
+      <a href="index.html">← Kermiclab</a>
+    </section>
+    <section class="ecran" id="mentions-legales" data-ecran="mentions-legales" data-source="web/mentions-legales.html">
+      <h2>Mentions légales</h2><p>Projet expérimental MVP. Identité, adresse et contact de l'éditeur restent à compléter par le propriétaire dans la page source (action déjà documentée dans docs/actions-manuelles.md).</p><p>Hébergement Cloudflare ; moteur sous licence MIT.</p><p lang="en">English summary: experimental MVP, hosting and engine licence.</p><p class="note">Aucune identité fictive ajoutée ; cette base n'est pas une validation juridique.</p><a href="index.html">← Kermiclab</a>
+    </section>
+  </main>
+  <footer><p>Structure hors ligne · <a href="inventaire.html">Sources et couverture</a></p></footer>
+</body>
+</html>

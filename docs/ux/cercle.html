@@ -36,14 +36,30 @@
 <body>
   <header>
     <a href="index.html">Retour au squelette du site</a>
-    <p class="note">ATELIER UX · Structure de l'application autonome <code>/cercle/</code>, distincte de la page de notion. Figure et valeurs fixes à 45° ; commandes désactivées, aucun calcul ni score.</p>
+    <p class="note">ATELIER UX · 5 novembre 2026 · Structure de l'application autonome <code>/cercle/</code>, distincte de la page de notion. Figure et valeurs fixes à 45° ; commandes désactivées, aucun calcul ni score. Source : src/index.template.html et src/ui/.</p>
     <h1>Cercle trigonométrique interactif</h1>
     <p>Explore librement, apprends pas à pas, puis relève les défis.</p>
     <nav aria-label="Sections représentant les modes actuels"><a href="#explorer">Explorer</a><a href="#apprendre">Apprendre</a><a href="#jouer">Jouer</a></nav>
-    <p>Les trois modes sont visibles ici pour l'édition dans Canvas, au lieu de s'afficher un par un.</p>
+    <p>Les trois modes sont visibles ici pour l'édition dans Canvas. Les liens du héros ouvrent respectivement <code>?mode=explore</code>, <code>?mode=learn</code> et <code>?mode=play</code>. Le site affiche un seul mode à la fois.</p>
+<!-- ux:suivi:debut -->
+<aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
+  <strong>Squelette v1.0.0 · 2026-11-05</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/ebd2599e9c3effa281829f713bdee58c160ee85e" target="_blank" rel="noopener noreferrer" data-lien-actif>ebd2599</a>.
+  <a href="https://github.com/Kermic974/trigoLab/commits/main/src" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/cercle.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
+  <details><summary>Comparer avec les vues actives et les sources</summary>
+    <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
+    <ul><li><a href="#explorer">Squelette</a> ↔ <a href="https://kermiclab.online/cercle/?mode=explore" target="_blank" rel="noopener noreferrer" data-lien-actif>Explorer</a></li>
+<li><a href="#apprendre">Squelette</a> ↔ <a href="https://kermiclab.online/cercle/?mode=learn" target="_blank" rel="noopener noreferrer" data-lien-actif>Apprendre</a></li>
+<li><a href="#jouer">Squelette</a> ↔ <a href="https://kermiclab.online/cercle/?mode=play" target="_blank" rel="noopener noreferrer" data-lien-actif>Jouer</a></li></ul>
+    <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/src" target="_blank" rel="noopener noreferrer" data-lien-actif>src</a></p>
+    <p>Empreinte des sources : <code>1ea9419d8e2adf64c4895405b09f95345d9c7e723863f7753136a1111566e590</code><br>Empreinte du squelette hors cartouche : <code>fa2bed4ff6f4525b49c42c2fee9fddc340ee0219157bebfb291805aa7f466d15</code></p>
+    <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
+  </details>
+</aside>
+<!-- ux:suivi:fin -->
   </header>
   <main>
-    <section class="ecran" id="explorer" data-ecran="cercle-explorer" aria-labelledby="titre-explorer">
+    <section class="ecran" id="explorer" data-ecran="cercle-explorer" data-source="src/index.template.html:explore" aria-labelledby="titre-explorer">
       <span class="repere">C01 · Explorer</span><h2 id="titre-explorer">Explorer le cercle</h2>
       <div class="grille">
         <article class="carte">
@@ -66,16 +82,17 @@
       <article class="carte"><h3>Angles remarquables</h3><div class="actions"><button type="button" disabled>0°</button><button type="button" disabled>30°</button><button type="button" disabled>45°</button><button type="button" disabled>60°</button><button type="button" disabled>90°</button><button type="button" disabled>180°</button></div></article>
       <article class="carte"><h3>Ce que montre cet angle</h3><p>Choix de méthode : géométrique · algébrique · tableau des valeurs.</p><ol><li>Identifier le quadrant et l'angle de référence.</li><li>Relier le point aux projections.</li><li>Lire et justifier les valeurs exactes.</li></ol><details><summary>Diagnostic</summary><p>Zone technique du résultat et de l'accord entre méthodes.</p></details></article>
     </section>
-    <section class="ecran" id="apprendre" data-ecran="cercle-apprendre" aria-labelledby="titre-apprendre">
+    <section class="ecran" id="apprendre" data-ecran="cercle-apprendre" data-source="src/index.template.html:learn" aria-labelledby="titre-apprendre">
       <span class="repere">C02 · Apprendre</span><h2 id="titre-apprendre">Apprendre pas à pas</h2>
       <div class="grille"><article class="carte"><h3>Figure partagée</h3><p>La figure du mode Explorer reste visible et répond à la consigne de la leçon.</p></article><article class="carte"><p>Zone étape / total</p><progress max="100" value="20" aria-label="Progression fictive dans la leçon : 20 %"></progress><h3>Titre de la leçon</h3><p>Explication courte, puis consigne à réaliser sur le cercle.</p><p><strong>À toi :</strong> place le point à 90°.</p><p>Zone de retour : à essayer / réussi.</p><div class="actions"><button type="button" disabled>Précédent</button><button type="button" disabled>Suivant</button></div></article></div>
     </section>
-    <section class="ecran" id="jouer" data-ecran="cercle-jouer" aria-labelledby="titre-jouer">
+    <section class="ecran" id="jouer" data-ecran="cercle-jouer" data-source="src/index.template.html:play" aria-labelledby="titre-jouer">
       <span class="repere">C03 · Jouer</span><h2 id="titre-jouer">Choisis un défi</h2>
       <div class="grille"><article class="carte"><h3>Place le point</h3><p>Une valeur exacte est donnée : place P au bon endroit du cercle.</p><a class="bouton" href="#partie">Voir l'état de partie</a></article><article class="carte"><h3>Quiz des valeurs</h3><p>Le point est placé : retrouve le cosinus, le sinus ou la tangente exacts.</p><a class="bouton" href="#partie">Voir l'état de partie</a></article></div>
       <p>8 questions par partie · jusqu'à 100 points par question · objectif : 3 étoiles.</p>
       <article class="carte" id="partie"><h3>Partie en cours · structure</h3><p>Numéro de question · score · série de bonnes réponses</p><p>Consigne, aide, figure partagée ou choix de réponses, puis retour explicatif.</p><div class="actions"><a class="bouton" href="#jouer">Quitter</a><button type="button" disabled>Valider</button></div></article>
-      <details><summary>Partie terminée</summary><p>Étoiles, score et bilan.</p><div class="actions"><a class="bouton" href="#jouer">Autres défis</a><a class="bouton" href="#partie">Rejouer · aperçu</a></div></details>
+      <details><summary>Partie terminée</summary><p>Étoiles, score et bilan ; meilleurs scores affichés sur les cartes des deux défis.</p><div class="actions"><a class="bouton" href="#jouer">Autres défis</a><a class="bouton" href="#partie">Rejouer · aperçu</a></div></details>
+      <details><summary>États transverses à conserver</summary><p>Saisie d'angle invalide, angle normalisé, tangente non définie, options de repères et diagnostic. Leçon à réaliser / réussie, étapes précédente/suivante. Jeu : consigne, réponse juste/fausse, score, série, question suivante, abandon et bilan.</p><p>Le mini-lab du tableau de bord possède deux étoiles dans Mes trophées ; ce n'est pas le score des parties de cette application. La page catalogue trigo-cercle possède elle aussi son propre record.</p></details>
     </section>
   </main>
   <footer><p>trigoLab · squelette autonome hors ligne · aucune donnée enregistrée.</p><a href="notion.html">Page de notion</a> · <a href="jeux.html">Jeu et Académie</a></footer>

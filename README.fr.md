@@ -78,17 +78,36 @@ Voir [CONTRIBUTING.fr.md](CONTRIBUTING.fr.md), [CODE_OF_CONDUCT.md](CODE_OF_COND
 ## Base HTML pour l'atelier UX
 
 Ouvrir [docs/ux/index.html](docs/ux/index.html) dans un navigateur ou copier son contenu dans Canvas.
-Le dossier contient quatre fichiers HTML autonomes : le site (accueil, catalogue, chat, défi, progression,
-profil et informations), une [page de notion](docs/ux/notion.html), l'[application cercle](docs/ux/cercle.html)
-et un [jeu avec Académie](docs/ux/jeux.html). Télécharger les quatre fichiers dans le même dossier pour
-conserver les liens ; chacun reste utilisable seul, hors ligne, avec son style intégré.
+Le dossier contient six fichiers HTML autonomes : le tableau de bord actuel (parcours d'accueil v3,
+navigation Labs/Jeux, chat, catalogue, défi, trophées, profil et dialogues), les [variantes de notions](docs/ux/notion.html),
+l'[application cercle](docs/ux/cercle.html), les [neuf jeux et leurs Académies](docs/ux/jeux.html),
+les [pages éditoriales](docs/ux/editorial.html) et un [inventaire issu des sources](docs/ux/inventaire.html).
+Télécharger les six fichiers dans le même dossier pour conserver les liens ; chacun fonctionne hors ligne avec son style intégré.
 
-Ce sont des squelettes structurels en français, pas une refonte ni une reproduction exhaustive du catalogue.
-Les écrans et dialogues sont dépliés, repérés par `data-ecran`, avec des exemples fictifs et des notes sur les états.
-Seuls les liens, champs de démonstration et volets natifs fonctionnent : aucun envoi, calcul, stockage ou service externe.
+Ce sont des squelettes structurels en français, pas une refonte ni une copie au pixel près.
+L'inventaire liste toutes les pages du catalogue public (181 à cet instant), leurs vrais onglets, versions,
+figures et compatibilités avec Mes trophées. Les gabarits partagés sont représentés une fois, avec les écrans propres
+aux jeux et les variantes d'état. Le catalogue privé et le déploiement effectif ne sont pas vérifiés.
+Les écrans de compte masqués restent signalés comme inactifs.
+Les écrans et dialogues sont dépliés, repérés par `data-ecran` et reliés aux sources par `data-source`, avec des exemples fictifs.
+Seuls les liens et volets natifs fonctionnent : aucun envoi, calcul, stockage ou service externe.
 Les textes sont figés pour cet atelier, hors de l'interface traduite `web/i18n/`.
 Ces fichiers ne sont pas publiés par le build et ne modifient pas le site actuel.
 Après édition dans Canvas, transmettre le HTML modifié ou les instructions par écran pour préparer la refonte.
+Chaque fichier affiche un cartouche de version lié à ses vues actives, aux sources courantes et au commit
+de référence immuable. Chaque ligne de l'inventaire relie aussi la page active et sa source. Les liens externes
+ne chargent rien avant un clic ; les dialogues sans URL directe sont reliés à leur page d'entrée avec la procédure
+d'ouverture. La version déployée n'est pas déduite de l'instantané des sources.
+
+Après une évolution des sources ou des squelettes, relire les squelettes manuels puis lancer
+`node scripts/ux-suivi.mjs --version=X.Y.Z` avec une version SemVer strictement croissante.
+Cette commande régénère l'inventaire et les six cartouches, versionne uniquement les fichiers affectés et ajoute
+les vues modifiées, commits sources et empreintes SHA-256 au journal `docs/ux/suivi.json`.
+Version majeure pour une restructuration, mineure pour de nouveaux écrans, corrective pour des corrections.
+Committer ensemble squelettes et registre ; Git conserve les instantanés précédents.
+`node scripts/ux-suivi.mjs --check` détecte les écarts de sources ou de squelettes sans modifier les fichiers.
+`node --test tests/e2e/ux.test.mjs` contrôle aussi la couverture du catalogue, des dialogues, de la navigation
+et des onglets des jeux, les liens locaux et vers les vues actives, et les mises en page hors ligne à 360, 768 et 1440 pixels.
 
 ## Licence
 

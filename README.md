@@ -88,17 +88,34 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 ## HTML base for UX workshops
 
 Open [docs/ux/index.html](docs/ux/index.html) in a browser or copy its contents into Canvas.
-Four self-contained HTML files cover the main site (dashboard, catalogue, chat, challenge, progress,
-profile and information), a [learning page](docs/ux/notion.html), the [unit-circle app](docs/ux/cercle.html)
-and a [game with Academy](docs/ux/jeux.html). Download all four into the same directory to retain navigation;
-each also works independently offline with embedded styles.
+Six self-contained HTML files cover the current dashboard (v3 welcome journey, Labs/Games navigation,
+chat, catalogue, challenge, trophies, profile and dialogs), the [learning-page variants](docs/ux/notion.html),
+the [unit-circle app](docs/ux/cercle.html), [all nine games and their Academies](docs/ux/jeux.html),
+the [editorial pages](docs/ux/editorial.html) and a [source-derived inventory](docs/ux/inventaire.html).
+Download all six into the same directory to retain navigation; each works offline with embedded styles.
 
-These are French structural wireframes, not a redesign or an exhaustive catalogue export.
-Screens and dialogs are expanded, identified by `data-ecran`, with fictional examples and state notes.
-Only links, demonstration fields and native disclosure panels work: no submissions, calculations, storage or external services.
+These are French structural wireframes, not a redesign or a pixel-perfect export.
+The inventory lists every public catalogue page (181 at this snapshot), actual tabs, versions, figures
+and trophy compatibility. Shared layouts are represented once, with game-specific screens and state variants.
+Private catalogue contents and the live deployment are not verified. Hidden account screens remain labeled inactive.
+Screens and dialogs are expanded, identified by `data-ecran` and traced with `data-source`, with fictional examples.
+Only links and native disclosure panels work: no submissions, calculations, storage or external services.
 Copy is frozen for this workshop, separate from the translated `web/i18n/` interface.
 The build does not publish these files and the current site is unchanged.
 Return the edited HTML or screen-by-screen instructions after the Canvas workshop to prepare the redesign.
+Each file includes a version panel linking to its active views, current sources and immutable reference commit.
+Every inventory row also links to the live page and its source. External links open only on click; no resources
+are loaded automatically. Dialogs without direct URLs link to their entry page with opening instructions.
+The deployment version is not inferred from the source snapshot.
+
+After source or wireframe changes, review the manual wireframes, then run
+`node scripts/ux-suivi.mjs --version=X.Y.Z` with a strictly increasing SemVer version.
+This regenerates the inventory and the six version panels, versions only affected files and appends the changed
+views, source commits and SHA-256 fingerprints to `docs/ux/suivi.json`. Use a major version for restructuring,
+minor for new screens, patch for corrections. Commit the wireframes and registry together; Git preserves previous snapshots.
+`node scripts/ux-suivi.mjs --check` detects source or wireframe drift without rewriting files.
+`node --test tests/e2e/ux.test.mjs` additionally checks catalogue/dialog/navigation/game-tab coverage,
+local and active-view links and offline layouts at 360, 768 and 1440 pixels.
 
 ## License
 
