@@ -166,6 +166,37 @@ test("Mes mots : stockage indisponible ou corrompu signalé, test toujours utili
   }
 });
 
+test("Mes mots : une liste enregistrée reste lisible et effaçable si le quota est déjà atteint", async () => {
+  const serveur = await servir(`${racine}catalogue/pendu`);
+  let nav;
+  try {
+    nav = await navigateur();
+    const { page, erreurs } = await ouvrir(nav, serveur.url);
+    await page.addInitScript(() => {
+      if (!location.hostname) return;
+      const setItem = Storage.prototype.setItem;
+      setItem.call(localStorage, "kermiclab:pendu:mots", JSON.stringify("chat\nécole"));
+      Storage.prototype.setItem = function (cle, valeur) {
+        if (cle === "kermiclab:test") throw new DOMException("Quota dépassé", "QuotaExceededError");
+        return setItem.call(this, cle, valeur);
+      };
+    });
+    await page.goto(`${serveur.url}/page.html`);
+    assert.match(await page.locator("#stockage-avertissement").textContent(), /stockage local est saturé/);
+    await page.getByRole("tab", { name: "Mes mots", exact: true }).click();
+    const liste = page.getByLabel("Liste de mots à apprendre");
+    assert.equal(await liste.inputValue(), "chat\nécole");
+    await page.getByRole("button", { name: "Effacer la liste enregistrée", exact: true }).click();
+    assert.equal(await page.locator('[data-sortie="liste-message"]').textContent(), "Liste enregistrée effacée.");
+    assert.equal(await liste.inputValue(), "");
+    assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:pendu:mots")), null);
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await nav?.close();
+    await serveur.fermer();
+  }
+});
+
 test("Pendu : accents visibles, nouveau mot différent et correction après une défaite", async () => {
   const serveur = await servir(`${racine}catalogue/pendu`);
   let nav;
