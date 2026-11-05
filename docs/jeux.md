@@ -1,10 +1,12 @@
 # Ajouter un jeu universel
 
-Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/demineur/` (grille, hasard),
+Décision : [ADR 0013](decisions/0013-jeux-universels.md). Exemples complets : `catalogue/2048/` (fusion de tuiles,
+progression de Noob à Pro), `catalogue/demineur/` (grille, hasard),
 `catalogue/echecs/` (deux joueurs ou contre l'ordinateur, énigmes en données), `catalogue/pendu/` (mots, clavier et Académie),
 `catalogue/belote/` (jeu de cartes à quatre,
 exercices « pli » et « enchère »), `catalogue/sudoku/` (grilles à solution unique, saisie clavier et tactile,
-progression du débutant au pro) et `catalogue/mots-fleches/` (mots croisés, saisie clavier et tactile, Académie de Noob à Pro).
+progression du débutant au pro), `catalogue/mots-fleches/` (mots croisés, saisie clavier et tactile, Académie de Noob à Pro)
+et `catalogue/mots-croises/` (grilles de vocabulaire mathématique et progression de Noob à Pro).
 
 Un jeu suit le processus d'une maquette (AGENTS.md §6) : issue `maquette-manquante`, branche `maquette/<id>`, PR,
 validation du CODEOWNER.

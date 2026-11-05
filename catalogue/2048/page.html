@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-IpR2zTyOVuh2b/KLhZIMHjjK5r0TB+bgrbs5lbIQT2E=' 'sha256-zexWowLxxmFshjgGsTQathGppiI16+M1sc0a7v9Ic8A='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>2048 – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "2048",
+  "titre": "2048",
+  "sujet": "jeux/2048",
+  "version": "1.0.0",
+  "date": "2026-11-05",
+  "langue": "fr",
+  "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+:root {
+  color-scheme: light dark;
+  --fond: #f5f7fb; --surface: #fff; --texte: #172033; --doux: #596579;
+  --accent: #3156a4; --accent-texte: #fff; --bord: #cbd3e1;
+  --succes: #147d45; --selection: #dce8ff; --case: #e7ebf2; --tuile: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fond: #121721; --surface: #1d2532; --texte: #edf2fb; --doux: #a7b3c5;
+    --accent: #a7c3ff; --accent-texte: #111a2b; --bord: #39475b; --succes: #6de0a0;
+    --selection: #304568; --case: #303a49; --tuile: #202a39; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte); font: 16px/1.5 system-ui, sans-serif; }
+header, main, footer { width: min(100% - 24px, 760px); margin-inline: auto; }
+header { padding: 16px 0 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+h1 { margin: 0; font-size: 1.35rem; }
+.sous-titre, .doux { color: var(--doux); }
+.sous-titre { margin: 2px 0 0; font-size: .9rem; }
+#connexion[hidden] { display: none; }
+[role="tablist"] { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid var(--bord); }
+[role="tab"] { flex: 0 0 auto; border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; background: none; color: var(--doux); font: inherit; cursor: pointer; }
+[role="tab"][aria-selected="true"] { border-bottom-color: var(--accent); color: var(--texte); font-weight: 700; }
+[role="tab"]:focus-visible, button:focus-visible, [role="gridcell"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding: 16px 0; }
+[role="tabpanel"][hidden] { display: none; }
+.carte { padding: 14px; margin-bottom: 12px; border: 1px solid var(--bord); border-radius: 12px; background: var(--surface); }
+h2 { font-size: 1.1rem; margin: 0 0 8px; }
+h3 { font-size: 1rem; margin: 12px 0 4px; }
+p { margin: 6px 0; }
+button { color: inherit; font: inherit; }
+button.action, button.secondaire, .direction { border-radius: 8px; cursor: pointer; touch-action: manipulation; }
+button.action, button.secondaire { padding: 9px 13px; font-weight: 700; }
+button.action { border: 2px solid var(--accent); background: var(--accent); color: var(--accent-texte); }
+button.secondaire, .direction { border: 2px solid var(--bord); background: var(--surface); }
+button.secondaire[aria-pressed="true"], button.secondaire.actif { border-color: var(--accent); background: var(--selection); }
+.commandes, .niveaux { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.niveaux { margin: 8px 0 14px; }
+.niveaux small { display: block; font-size: .75rem; font-weight: 400; }
+.scores { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 8px 0; }
+.score { min-width: 90px; padding: 5px 12px; border-radius: 8px; background: var(--case); text-align: center; font-weight: 700; }
+.plateau { width: min(100%, 420px); aspect-ratio: 1; margin: 12px auto; padding: 8px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; border-radius: 12px; background: var(--case); touch-action: none; }
+.tuile { min-width: 0; display: grid; place-items: center; border-radius: 7px; background: var(--tuile); font-size: clamp(1.05rem, 8vw, 2rem); font-weight: 800; overflow-wrap: anywhere; }
+.tuile[data-valeur="2"] { background: #e5e9f2; color: #172033; }
+.tuile[data-valeur="4"] { background: #d2e4ff; color: #172033; }
+.tuile[data-valeur="8"] { background: #ffc98f; color: #172033; }
+.tuile[data-valeur="16"] { background: #ffad73; color: #172033; }
+.tuile[data-valeur="32"] { background: #ff8a65; color: #172033; }
+.tuile[data-valeur="64"] { background: #ef6c59; color: #fff; }
+.tuile[data-valeur="128"], .tuile[data-valeur="256"], .tuile[data-valeur="512"] { background: #f2d15d; color: #172033; font-size: clamp(.9rem, 6vw, 1.6rem); }
+.tuile[data-valeur="1024"], .tuile[data-valeur="2048"] { background: #edbe35; color: #172033; font-size: clamp(.8rem, 5vw, 1.35rem); }
+.tuile[data-valeur=""] { background: color-mix(in srgb, var(--tuile) 40%, var(--case)); }
+.directionneurs { width: 148px; margin: 8px auto; display: grid; grid-template: repeat(2, 44px) / repeat(3, 44px); justify-content: center; gap: 4px; }
+.direction { font-size: 1.15rem; font-weight: 700; }
+.direction[data-direction="up"] { grid-area: 1 / 2; }
+.direction[data-direction="left"] { grid-area: 2 / 1; }
+.direction[data-direction="down"] { grid-area: 2 / 2; }
+.direction[data-direction="right"] { grid-area: 2 / 3; }
+.message { min-height: 1.6em; text-align: center; font-weight: 650; }
+.message.ok { color: var(--succes); }
+.grille-grades { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.grade { border: 1px solid var(--bord); border-radius: 10px; padding: 12px; background: var(--surface); }
+.grade.verrouille { opacity: .7; }
+.grade h3 { margin-top: 0; }
+footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
+@media (max-width: 480px) { header { align-items: flex-start; } .carte { padding: 11px; } .plateau { gap: 6px; padding: 6px; } }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>2048</h1><p class="sous-titre">Des premières fusions au grade Pro</p></div>
+  <button id="connexion" class="secondaire" hidden>Se connecter</button>
+</header>
+<nav id="onglets" role="tablist" aria-label="2048"></nav>
+<main id="panneaux"></main>
+<footer>Tout se joue hors ligne. Tes records restent sur cet appareil.</footer>
+
+<template id="tpl-regles">
+  <section class="carte">
+    <h2>Le but du jeu</h2>
+    <p>Fais glisser toutes les tuiles dans une direction. Deux tuiles de même valeur fusionnent en une tuile deux fois plus grande. Atteins 2048 !</p>
+    <h3>Comment jouer ?</h3>
+    <p>Utilise les flèches du clavier, les boutons directionnels ou glisse sur le plateau. Après chaque coup réussi, une tuile 2 ou 4 apparaît. Une tuile fusionne au plus une fois par coup.</p>
+    <p>La partie s’arrête quand plus aucune tuile ne peut bouger. Tu peux recommencer quand tu veux ; ton record et tes grades sont conservés sur cet appareil.</p>
+  </section>
+</template>
+<template id="tpl-jeu">
+  <section class="carte">
+    <h2>À toi de jouer</h2>
+    <div class="niveaux" data-zone="niveaux" aria-label="Grade visé"></div>
+    <div class="scores"><div class="score">Score <span data-sortie="score">0</span></div><div class="score">Record <span data-sortie="record">0</span></div></div>
+    <p class="doux" data-sortie="objectif"></p>
+    <div class="plateau" data-zone="plateau" role="grid" aria-label="Plateau de 2048"></div>
+    <div class="directionneurs" aria-label="Commandes de déplacement">
+      <button class="direction" type="button" data-direction="up" aria-label="Déplacer vers le haut">↑</button>
+      <button class="direction" type="button" data-direction="left" aria-label="Déplacer vers la gauche">←</button>
+      <button class="direction" type="button" data-direction="down" aria-label="Déplacer vers le bas">↓</button>
+      <button class="direction" type="button" data-direction="right" aria-label="Déplacer vers la droite">→</button>
+    </div>
+    <div class="commandes"><button class="action" type="button" data-action="nouvelle">Nouvelle partie</button></div>
+    <p class="message" data-sortie="message" role="status" aria-live="polite"></p>
+  </section>
+</template>
+<template id="tpl-academie">
+  <section class="carte">
+    <h2>Académie : de Noob à Pro</h2>
+    <p>Atteins l’objectif d’un grade pour le débloquer et ouvrir le suivant. Tes progrès restent sur cet appareil.</p>
+    <p class="doux" data-sortie="progression"></p>
+    <div class="grille-grades" data-zone="grades"></div>
+  </section>
+</template>
+<template id="tpl-defis">
+  <section class="carte">
+    <h2>Les réflexes du champion</h2>
+    <div class="grille-grades">
+      <article class="grade"><h3>1. Garde ton grand nombre</h3><p>Choisis un coin et essaie d’y laisser ta plus grande tuile. Déplace-toi surtout dans deux directions pour éviter de la déranger.</p></article>
+      <article class="grade"><h3>2. Prépare les fusions</h3><p>Regarde les tuiles qui se suivront après ton prochain coup. Deux petites fusions préparées valent mieux qu’un mouvement au hasard.</p></article>
+      <article class="grade"><h3>3. Ne remplis pas la grille</h3><p>Chaque coup qui ne fusionne rien ajoute une tuile. Si le plateau se remplit, cherche une fusion avant de changer de direction.</p></article>
+      <article class="grade"><h3>4. Pense à la chaîne</h3><p>Une fusion peut libérer une case ou rapprocher deux tuiles utiles. Anticipe le coup d’après avant de déplacer.</p></article>
+      <article class="grade"><h3>5. Le calme du Pro</h3><p>Garde une ligne ordonnée et protège ton coin. Si un coup ne change rien, essaie une autre direction plutôt que d’insister.</p></article>
+    </div>
+    <p><button class="action" type="button" data-action="defi">Jouer un défi</button></p>
+  </section>
+</template>
+
+<script id="moteur-2048">
+const Moteur2048 = (() => {
+  const TAILLE = 4;
+  const NIVEAUX = [
+    { id: "noob", nom: "Noob", cible: 16, description: "Découvre les déplacements et les premières fusions.", conseil: "Garde tes petites tuiles côte à côte." },
+    { id: "debutant", nom: "Débutant", cible: 32, description: "Commence à ranger les tuiles dans un coin.", conseil: "Choisis un coin pour ta plus grande tuile." },
+    { id: "intermediaire", nom: "Intermédiaire", cible: 64, description: "Enchaîne plusieurs fusions en protégeant ton espace.", conseil: "Évite de déplacer ta grande tuile hors de son coin." },
+    { id: "avance", nom: "Avancé", cible: 128, description: "Organise les valeurs pour préparer des chaînes.", conseil: "Garde une ligne ordonnée du plus grand au plus petit." },
+    { id: "pro", nom: "Pro", cible: 2048, description: "Maîtrise le plateau et atteins la tuile 2048.", conseil: "Anticipe la prochaine fusion avant chaque déplacement." }
+  ];
+  function creerPartie(hasard = Math.random) {
+    const partie = { grille: Array(TAILLE * TAILLE).fill(0), score: 0, terminee: false };
+    ajouterTuile(partie, hasard);
+    ajouterTuile(partie, hasard);
+    return partie;
+  }
+  function ajouterTuile(partie, hasard = Math.random) {
+    const vides = partie.grille.map((n, i) => n === 0 ? i : -1).filter((i) => i >= 0);
+    if (!vides.length) return null;
+    const index = vides[Math.min(vides.length - 1, Math.max(0, Math.floor(hasard() * vides.length)))];
+    partie.grille[index] = hasard() < 0.9 ? 2 : 4;
+    return index;
+  }
+  function peutBouger(grille) {
+    for (let i = 0; i < grille.length; i++) {
+      if (!grille[i]) return true;
+      if (i % TAILLE < TAILLE - 1 && grille[i] === grille[i + 1]) return true;
+      if (i < grille.length - TAILLE && grille[i] === grille[i + TAILLE]) return true;
+    }
+    return false;
+  }
+  function deplacer(partie, direction, hasard = Math.random) {
+    if (!["up", "down", "left", "right"].includes(direction)) throw new Error(`direction inconnue : ${direction}`);
+    const avant = [...partie.grille];
+    let gagne = 0;
+    for (let ligne = 0; ligne < TAILLE; ligne++) {
+      const indices = Array.from({ length: TAILLE }, (_, i) => {
+        if (direction === "left") return ligne * TAILLE + i;
+        if (direction === "right") return ligne * TAILLE + (TAILLE - 1 - i);
+        if (direction === "up") return i * TAILLE + ligne;
+        return (TAILLE - 1 - i) * TAILLE + ligne;
+      });
+      const valeurs = indices.map((i) => avant[i]).filter(Boolean), resultat = [];
+      for (let i = 0; i < valeurs.length; i++) {
+        if (valeurs[i] === valeurs[i + 1]) {
+          const fusion = valeurs[i] * 2;
+          resultat.push(fusion); gagne += fusion; i++;
+        } else resultat.push(valeurs[i]);
+      }
+      while (resultat.length < TAILLE) resultat.push(0);
+      indices.forEach((index, i) => { partie.grille[index] = resultat[i]; });
+    }
+    const deplace = partie.grille.some((n, i) => n !== avant[i]);
+    if (deplace) {
+      partie.score += gagne;
+      ajouterTuile(partie, hasard);
+    }
+    partie.terminee = !peutBouger(partie.grille);
+    return { deplace, fusionne: gagne, score: partie.score, terminee: partie.terminee };
+  }
+  return Object.freeze({ TAILLE, NIVEAUX, creerPartie, ajouterTuile, peutBouger, deplacer });
+})();
+</script>
+<script>
+(() => {
+  const M = Moteur2048, registre = [];
+  function enregistrerOnglet(def) { registre.push(def); }
+  const panneaux = document.getElementById("panneaux"), onglets = document.getElementById("onglets");
+  const stockage = (() => {
+    try {
+      return {
+        lire() {
+          try { return JSON.parse(localStorage.getItem("kermiclab:2048") || '{"debloque":0,"record":0,"meilleureTuile":0}'); }
+          catch { return { debloque: 0, record: 0, meilleureTuile: 0 }; }
+        },
+        ecrire(valeur) { localStorage.setItem("kermiclab:2048", JSON.stringify(valeur)); }
+      };
+    } catch { return { lire: () => ({ debloque: 0, record: 0, meilleureTuile: 0 }), ecrire() {} }; }
+  })();
+  const progression = stockage.lire();
+  progression.debloque = Number.isInteger(progression.debloque) ? Math.max(0, Math.min(M.NIVEAUX.length - 1, progression.debloque)) : 0;
+  progression.record = Number.isFinite(progression.record) ? Math.max(0, progression.record) : 0;
+  progression.meilleureTuile = Number.isFinite(progression.meilleureTuile) ? Math.max(0, progression.meilleureTuile) : 0;
+  let ouvrirOnglet = () => {};
+  const academie = {};
+  let jeu = {};
+
+  enregistrerOnglet({ id: "explication", titre: "Règles", rendu(p) { p.append(document.getElementById("tpl-regles").content.cloneNode(true)); } });
+  enregistrerOnglet({ id: "application", titre: "Jouer", rendu(p) {
+    p.append(document.getElementById("tpl-jeu").content.cloneNode(true));
+    const plateau = p.querySelector('[data-zone="plateau"]'), sortieScore = p.querySelector('[data-sortie="score"]');
+    const sortieRecord = p.querySelector('[data-sortie="record"]'), objectif = p.querySelector('[data-sortie="objectif"]');
+    const message = p.querySelector('[data-sortie="message"]'), boutonsNiveau = [];
+    let partie, rang = progression.debloque, gagne = false, debutGlisse = null;
+    function annoncer(texte, classe = "") { message.textContent = texte; message.className = `message ${classe}`; }
+    function afficher() {
+      plateau.replaceChildren();
+      for (const valeur of partie.grille) {
+        const tuile = document.createElement("div");
+        tuile.className = "tuile"; tuile.setAttribute("role", "gridcell");
+        tuile.setAttribute("aria-label", valeur ? String(valeur) : "vide");
+        tuile.dataset.valeur = valeur ? String(valeur) : ""; tuile.textContent = valeur ? String(valeur) : "";
+        plateau.append(tuile);
+      }
+      sortieScore.textContent = String(partie.score);
+      sortieRecord.textContent = String(progression.record);
+      boutonsNiveau.forEach((b, i) => { b.setAttribute("aria-pressed", String(rang === i)); b.disabled = i > progression.debloque; });
+      objectif.textContent = `${M.NIVEAUX[rang].nom} : atteins la tuile ${M.NIVEAUX[rang].cible}.`;
+    }
+    function demarrer(i = rang) {
+      rang = i; partie = M.creerPartie(); gagne = false;
+      afficher(); annoncer("À toi de jouer : utilise les flèches ou glisse sur le plateau.");
+    }
+    function majProgression() {
+      const max = Math.max(...partie.grille);
+      progression.record = Math.max(progression.record, partie.score);
+      progression.meilleureTuile = Math.max(progression.meilleureTuile, max);
+      M.NIVEAUX.forEach((niveau, i) => { if (progression.meilleureTuile >= niveau.cible) progression.debloque = Math.max(progression.debloque, i); });
+      stockage.ecrire(progression);
+      if (academie.zone) afficherAcademie();
+    }
+    function agir(direction) {
+      if (!partie || partie.terminee) return;
+      const resultat = M.deplacer(partie, direction);
+      if (!resultat.deplace && !resultat.terminee) return;
+      majProgression(); afficher();
+      const max = Math.max(...partie.grille);
+      if (!gagne && max >= M.NIVEAUX[rang].cible) {
+        gagne = true;
+        const prochain = progression.debloque > rang ? ` Grade ${M.NIVEAUX[progression.debloque].nom} débloqué !` : "";
+        annoncer(`Bravo ! Objectif ${M.NIVEAUX[rang].cible} atteint !${prochain}`, "ok");
+      } else if (resultat.terminee) annoncer("Plus de déplacement possible. Lance une nouvelle partie !");
+      else if (resultat.fusionne) annoncer(`Fusion ! +${resultat.fusionne} points.`, "ok");
+      else if (resultat.deplace) annoncer("Bien joué, une nouvelle tuile est apparue.");
+    }
+    M.NIVEAUX.forEach((niveau, i) => {
+      const b = document.createElement("button"); b.className = "secondaire"; b.type = "button";
+      b.append(document.createTextNode(`${niveau.nom} `));
+      const detail = document.createElement("small"); detail.textContent = `Objectif ${niveau.cible}`; b.append(detail);
+      b.addEventListener("click", () => { if (i <= progression.debloque) demarrer(i); });
+      plateau.parentElement.querySelector('[data-zone="niveaux"]').append(b); boutonsNiveau.push(b);
+    });
+    p.querySelectorAll("[data-direction]").forEach((b) => b.addEventListener("click", () => agir(b.dataset.direction)));
+    p.querySelector('[data-action="nouvelle"]').addEventListener("click", () => demarrer());
+    plateau.addEventListener("pointerdown", (e) => { debutGlisse = { x: e.clientX, y: e.clientY }; });
+    plateau.addEventListener("pointerup", (e) => {
+      if (!debutGlisse) return;
+      const dx = e.clientX - debutGlisse.x, dy = e.clientY - debutGlisse.y; debutGlisse = null;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
+      agir(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up"));
+    });
+    jeu = { demarrer, agir };
+    demarrer(rang);
+  } });
+
+  function afficherAcademie() {
+    if (!academie.zone) return;
+    academie.progres.textContent = `Grades débloqués : ${progression.debloque + 1} / ${M.NIVEAUX.length} · meilleur record : ${progression.record}`;
+    academie.zone.replaceChildren();
+    M.NIVEAUX.forEach((niveau, i) => {
+      const carte = document.createElement("article"), h = document.createElement("h3");
+      const desc = document.createElement("p"), conseil = document.createElement("p"), bouton = document.createElement("button");
+      carte.className = `grade${i > progression.debloque ? " verrouille" : ""}`;
+      h.textContent = `${i < progression.debloque ? "✓ " : ""}${niveau.nom}`;
+      desc.textContent = `${niveau.description} Objectif : ${niveau.cible}.`;
+      conseil.textContent = `À retenir : ${niveau.conseil}`;
+      bouton.type = "button"; bouton.className = i > progression.debloque ? "secondaire" : "action"; bouton.disabled = i > progression.debloque;
+      bouton.textContent = i > progression.debloque ? "🔒 Atteins le grade précédent" : "Jouer ce grade";
+      bouton.addEventListener("click", () => { jeu.demarrer(i); ouvrirOnglet("application"); });
+      carte.append(h, desc, conseil, bouton); academie.zone.append(carte);
+    });
+  }
+  enregistrerOnglet({ id: "academie", titre: "Académie", rendu(p) {
+    p.append(document.getElementById("tpl-academie").content.cloneNode(true));
+    academie.zone = p.querySelector('[data-zone="grades"]'); academie.progres = p.querySelector('[data-sortie="progression"]');
+    afficherAcademie();
+  } });
+  enregistrerOnglet({ id: "mise-en-situation", titre: "Défis", rendu(p) {
+    p.append(document.getElementById("tpl-defis").content.cloneNode(true));
+    p.querySelector('[data-action="defi"]').addEventListener("click", () => { jeu.demarrer(0); ouvrirOnglet("application"); });
+  } });
+  enregistrerOnglet({ id: "self-test", titre: "Auto-évaluation", actif: false, rendu() {} });
+  document.addEventListener("keydown", (e) => {
+    const direction = { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right" }[e.key];
+    if (!direction || !document.getElementById("panneau-application") || document.getElementById("panneau-application").hidden) return;
+    if (e.target.closest("button, input, textarea, select")) return;
+    e.preventDefault(); jeu.agir(direction);
+  });
+
+  const actifs = registre.filter((o) => o.actif !== false);
+  for (const [i, o] of actifs.entries()) {
+    const b = document.createElement("button"), section = document.createElement("section");
+    b.type = "button"; b.id = `onglet-${o.id}`; b.setAttribute("role", "tab"); b.setAttribute("aria-controls", `panneau-${o.id}`);
+    const actif = o.id === "application";
+    b.setAttribute("aria-selected", String(actif)); b.tabIndex = actif ? 0 : -1; b.textContent = o.titre; b.dataset.id = o.id;
+    section.id = `panneau-${o.id}`; section.setAttribute("role", "tabpanel"); section.setAttribute("aria-labelledby", b.id); section.tabIndex = 0; section.hidden = !actif;
+    o.rendu(section); onglets.append(b); panneaux.append(section);
+    b.addEventListener("click", () => ouvrirOnglet(o.id));
+    b.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault(); const prochain = (i + (e.key === "ArrowRight" ? 1 : -1) + actifs.length) % actifs.length;
+      ouvrirOnglet(actifs[prochain].id); onglets.children[prochain].focus();
+    });
+  }
+  ouvrirOnglet = (id) => {
+    actifs.forEach((o) => {
+      const actif = o.id === id, b = onglets.querySelector(`[data-id="${o.id}"]`), p = document.getElementById(`panneau-${o.id}`);
+      b.setAttribute("aria-selected", String(actif)); b.tabIndex = actif ? 0 : -1; p.hidden = !actif;
+    });
+  };
+})();
+</script>
+</body>
+</html>
