@@ -74,7 +74,7 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
     const sinus = /sinus|sine/i.test(corps.message);
     return route.fulfill({
       contentType: "application/json",
-      headers: { "access-control-allow-origin": "*" },
+      headers: { "access-control-allow-origin": origine, "access-control-allow-credentials": "true" },
       body: JSON.stringify(sinus
         ? { type: "maquette", texte: "Voici la page.", suggestions: ["Que vaut sin(30°) ?"], maquette: { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", langue: "fr", url: `${api}/maquettes/trigo-cercle?lang=fr` } }
         : /volcan/i.test(corps.message)

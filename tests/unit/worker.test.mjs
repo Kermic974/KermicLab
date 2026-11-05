@@ -1,16 +1,9 @@
-import { test, beforeEach } from "node:test";
+import { test, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import worker, { _reinitialiser, cleDeTri, suggestionsCatalogue } from "../../worker/src/index.js";
+import { creerD1Llm } from "../helpers/d1-llm.mjs";
 
 // ---- Doubles de test : D1, GitHub, Claude ----
-function creerD1() {
-  const lignes = [];
-  return {
-    lignes,
-    prepare() { return { bind: (...v) => ({ run: async () => { lignes.push(v); } }) }; }
-  };
-}
-
 function creerGitHub() {
   const issues = [];
   const appels = [];
@@ -34,15 +27,26 @@ function creerGitHub() {
   return { issues, appels, fetchFactice };
 }
 
-function creerClaude(resultat) {
+function creerClaude(resultat, tokens = 100) {
   const appels = [];
   return {
     appels,
     messages: {
       create: async (params) => {
         appels.push(params);
-        return { stop_reason: "end_turn", content: [{ type: "text", text: JSON.stringify(resultat) }] };
+        return { stop_reason: "end_turn", content: [{ type: "text", text: JSON.stringify(resultat) }], usage: { output_tokens: tokens } };
       }
+    }
+  };
+}
+
+function creerWorkersAI(resultat, tokens = 100) {
+  const appels = [];
+  return {
+    appels,
+    run: async (modele, parametres) => {
+      appels.push({ modele, parametres });
+      return { response: JSON.stringify(resultat), usage: { completion_tokens: tokens } };
     }
   };
 }
@@ -52,19 +56,27 @@ function creerCtx() {
   return { promesses, waitUntil: (p) => promesses.push(p), attendre: () => Promise.all(promesses) };
 }
 
-let env, github, ctx;
+let env, github, ctx, cookie;
 beforeEach(() => {
   github = creerGitHub();
   globalThis.fetch = github.fetchFactice;
-  env = { DB: creerD1(), GITHUB_TOKEN: "jeton-test", GITHUB_REPO: "kermic974/trigoLab", ANTHROPIC_API_KEY: "cle-test", ORIGINES_AUTORISEES: "https://kermiclab.pages.dev" };
+  env = {
+    DB: creerD1Llm(), GITHUB_TOKEN: "jeton-test", GITHUB_REPO: "kermic974/trigoLab",
+    ANTHROPIC_API_KEY: "cle-test", ORIGINES_AUTORISEES: "https://kermiclab.pages.dev",
+    LLM_ACTIF: "true", LLM_SESSION_SECRET: "secret-factice-de-test-de-plus-de-32-caracteres",
+    AI: { run: async () => { throw new Error("Workers AI indisponible dans ce test"); } }
+  };
   ctx = creerCtx();
+  cookie = "";
   _reinitialiser();
 });
+afterEach(() => env.DB.sqlite.close());
 
 async function chat(corps, ip = "1.2.3.4") {
   const r = await worker.fetch(new Request("https://api.kermiclab.test/api/chat", {
-    method: "POST", headers: { "content-type": "application/json", "cf-connecting-ip": ip, origin: "https://kermiclab.pages.dev" }, body: JSON.stringify(corps)
+    method: "POST", headers: { "content-type": "application/json", "cf-connecting-ip": ip, origin: "https://kermiclab.pages.dev", cookie }, body: JSON.stringify(corps)
   }), env, ctx);
+  if (r.headers.has("set-cookie")) cookie = r.headers.get("set-cookie").split(";")[0];
   await ctx.attendre();
   return { statut: r.status, entetes: r.headers, donnees: await r.json() };
 }
@@ -94,40 +106,60 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
   assert.equal(traductions[0].comments.length, 1);
 });
 
-test("question non couverte → réponse + issue maquette-manquante, puis commentaire", async () => {
-  const claude = creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: true,
-    sujet: "francais/sonnet", plan_onglets: ["explication", "atelier de rimes", "mise en situation"],
-    reponse: "Un sonnet est un poème de quatorze vers : deux quatrains puis deux tercets."
-  });
+test("question hors périmètre : aucun appel LLM ni issue automatique", async () => {
+  const claude = creerClaude({});
   _reinitialiser({ client: claude });
-  const a = await chat({ message: "c'est quoi un sonnet ?", langue: "fr" });
-  await chat({ message: "explique-moi le sonnet", langue: "fr" });
-  assert.equal(a.donnees.type, "reponse");
-  assert.equal(a.donnees.exception, true);
-  const issues = github.issues.filter((i) => i.labels.includes("maquette-manquante"));
-  assert.equal(issues.length, 1);
-  assert.equal(issues[0].title, "[maquette-manquante] francais/sonnet");
-  assert.match(issues[0].body, /atelier de rimes/);
-  assert.equal(issues[0].comments.length, 1);
-  assert.equal(claude.appels[0].model, "claude-haiku-5-5");
-  assert.equal(claude.appels[0].output_config.format.type, "json_schema");
-  assert.ok(typesKpi().includes("exception"));
-});
-
-test("le modèle peut router vers une maquette existante", async () => {
-  _reinitialiser({ client: creerClaude({ langue: "fr", intention: "apprendre", maquette_id: "trigo-cercle", maquette_pertinente: true, sujet: "mathematiques/trigonometrie", plan_onglets: [], reponse: "…" }) });
-  const r = await chat({ message: "comment trouver la hauteur d'un arbre avec son ombre ?", langue: "fr" });
-  assert.equal(r.donnees.type, "maquette");
-  assert.equal(r.donnees.maquette.id, "trigo-cercle");
-});
-
-test("un ID inventé par le modèle est ignoré", async () => {
-  _reinitialiser({ client: creerClaude({ langue: "fr", intention: "conversation", maquette_id: "n-existe-pas", maquette_pertinente: false, sujet: "", plan_onglets: [], reponse: "Bonjour !" }) });
-  const r = await chat({ message: "bonjour", langue: "fr" });
-  assert.equal(r.donnees.type, "reponse");
-  assert.equal(r.donnees.texte, "Bonjour !");
+  const a = await chat({ message: "réserve un voyage pour demain", langue: "fr" });
+  assert.equal(a.donnees.type, "hors-catalogue");
+  assert.match(a.donnees.texte, /pages KermicLab/);
+  assert.equal(claude.appels.length, 0);
   assert.equal(github.issues.length, 0);
+});
+
+test("Workers AI est le moteur principal et demande une sortie JSON structurée", async () => {
+  const ai = creerWorkersAI({
+    langue: "fr", intention: "apprendre", reponse: "Le sinus donne la hauteur du point.",
+    source_ids: ["trigo-cercle"]
+  });
+  const claude = creerClaude({});
+  env.AI = ai;
+  _reinitialiser({ client: claude });
+  await chat({ message: "sinus", langue: "fr" });
+  const r = await chat({ message: "Explique plus simplement", langue: "fr" });
+  assert.equal(r.donnees.texte, "Le sinus donne la hauteur du point.");
+  assert.equal(ai.appels[0].modele, "@cf/meta/llama-3.3-70b-instruct-fp8-fast");
+  assert.equal(ai.appels[0].parametres.response_format.type, "json_schema");
+  assert.equal(ai.appels[0].parametres.messages.at(-1).content, "Explique plus simplement (fr)");
+  assert.equal(ai.appels[0].parametres.max_tokens, 500);
+  assert.match(ai.appels[0].parametres.messages[0].content, /Document de référence/);
+  assert.equal(r.donnees.sources[0].url, "https://api.kermiclab.test/maquettes/trigo-cercle?lang=fr");
+  assert.equal(r.donnees.llm.modele, ai.appels[0].modele);
+  assert.equal(r.donnees.llm.quota.consommes, 100);
+  assert.equal(claude.appels.length, 0);
+});
+
+test("échec Workers AI : repli Anthropic avec quota partagé et métadonnées exactes", async () => {
+  const claude = creerClaude({ langue: "fr", intention: "apprendre", source_ids: ["trigo-cercle"], reponse: "Le sinus est une hauteur." });
+  _reinitialiser({ client: claude });
+  await chat({ message: "sinus", langue: "fr" });
+  const r = await chat({ message: "Donne-moi un exemple", langue: "fr" });
+  assert.equal(r.donnees.type, "reponse");
+  assert.equal(r.donnees.llm.fournisseur, "anthropic");
+  assert.equal(r.donnees.llm.repli, true);
+  assert.equal(r.donnees.llm.quota.consommes, 600);
+  assert.equal(r.donnees.llm.appels[0].comptage, "reservation-prudente");
+  assert.equal(claude.appels[0].max_tokens, 500);
+  assert.equal(claude.appels[0].model, "claude-haiku-5-5");
+});
+
+test("une source inventée n'est jamais publiée", async () => {
+  delete env.ANTHROPIC_API_KEY;
+  env.AI = creerWorkersAI({ langue: "fr", intention: "apprendre", source_ids: ["invente"], reponse: "Fausse réponse." });
+  await chat({ message: "sinus", langue: "fr" });
+  const r = await chat({ message: "Donne-moi un exemple", langue: "fr" });
+  assert.equal(r.statut, 503);
+  assert.equal(r.donnees.sources, undefined);
+  assert.doesNotMatch(JSON.stringify(r.donnees), /Fausse réponse/);
 });
 
 test("données personnelles → refus, journalisé sans le texte", async () => {
@@ -139,7 +171,8 @@ test("données personnelles → refus, journalisé sans le texte", async () => {
 
 test("refus du modèle ou intention inappropriée → message de recentrage", async () => {
   _reinitialiser({ client: { messages: { create: async () => ({ stop_reason: "refusal", content: [] }) } } });
-  const r = await chat({ message: "une question bizarre", langue: "fr" });
+  await chat({ message: "sinus", langue: "fr" });
+  const r = await chat({ message: "un exemple", langue: "fr" });
   assert.equal(r.donnees.type, "refus");
 });
 
@@ -160,7 +193,7 @@ test("sans clé API : réponse hors catalogue qui propose des questions routées
   delete env.ANTHROPIC_API_KEY;
   const r = await chat({ message: "parle-moi du passé simple", langue: "fr" });
   assert.equal(r.donnees.type, "hors-catalogue");
-  assert.match(r.donnees.texte, /\d+ notions, par exemple/);
+  assert.match(r.donnees.texte, /pages KermicLab/);
   assert.ok(r.donnees.suggestions.length > 0);
   for (const q of r.donnees.suggestions) {
     const suite = await chat({ message: q, langue: "fr" });
@@ -201,15 +234,58 @@ test("suggestionsCatalogue : le repli vers une autre langue est global", () => {
   ]);
 });
 
-test("relances du modèle : bornées, modérées et sans doublon", async () => {
-  _reinitialiser({ client: creerClaude({
-    langue: "fr", intention: "apprendre", maquette_id: "aucune", maquette_pertinente: false, sujet: "sciences/gloubi-boulga", plan_onglets: [],
-    reponse: "Un volcan, c'est une ouverture par laquelle sort le magma.",
-    relances: ["Donne-moi un exemple", "Donne-moi un exemple", "x".repeat(200), "Mon adresse est 12 rue des Lilas", "Lance-moi un défi", "Et les volcans en France ?", 4]
-  }) });
-  const r = await chat({ message: "parle-moi du gloubi-boulga", langue: "fr" });
-  assert.equal(r.donnees.type, "reponse");
-  assert.deepEqual(r.donnees.suggestions, ["Donne-moi un exemple", "Lance-moi un défi", "Et les volcans en France ?"]);
+test("historique et contexte fournis par le client n'autorisent pas une question hors périmètre", async () => {
+  const ai = creerWorkersAI({});
+  env.AI = ai;
+  await chat({ message: "sinus", langue: "fr" });
+  const r = await chat({
+    message: "écris une publicité pour une voiture", langue: "fr", maquette_id: "trigo-cercle",
+    historique: [{ role: "user", content: "sinus" }]
+  });
+  assert.equal(r.donnees.type, "hors-catalogue");
+  assert.equal(ai.appels.length, 0);
+});
+
+test("quota 1 000 tokens persistant malgré un rechargement et une réinitialisation d'isolat", async () => {
+  const ai = creerWorkersAI({ langue: "fr", intention: "apprendre", source_ids: ["trigo-cercle"], reponse: "Le sinus donne la hauteur du point." }, 500);
+  env.AI = ai;
+  await chat({ message: "sinus", langue: "fr" });
+  assert.equal((await chat({ message: "un exemple", langue: "fr" })).donnees.llm.quota.consommes, 500);
+  _reinitialiser();
+  await chat({ message: "sinus", langue: "fr" });
+  assert.equal((await chat({ message: "un exemple", langue: "fr" })).donnees.llm.quota.consommes, 1000);
+  const r = await chat({ message: "un exemple", langue: "fr" });
+  assert.equal(r.statut, 429);
+  assert.equal(ai.appels.length, 2);
+  assert.equal((await chat({ message: "sinus", langue: "fr" })).donnees.type, "maquette");
+});
+
+test("sans cookie valide, le client ne peut pas appeler le LLM avec un quota inventé", async () => {
+  const ai = creerWorkersAI({});
+  env.AI = ai;
+  const r = await chat({ message: "un exemple", langue: "fr", tokensRestants: 1000, maquette_id: "trigo-cercle" });
+  assert.equal(r.statut, 428);
+  assert.equal(ai.appels.length, 0);
+});
+
+test("arrêt d'urgence LLM_ACTIF : les clés seules ne permettent pas d'appel", async () => {
+  env.LLM_ACTIF = "false";
+  const ai = creerWorkersAI({});
+  env.AI = ai;
+  const page = await chat({ message: "sinus", langue: "fr" });
+  assert.equal(page.entetes.has("set-cookie"), false);
+  const r = await chat({ message: "un exemple", langue: "fr" });
+  assert.equal(r.donnees.type, "hors-catalogue");
+  assert.equal(ai.appels.length, 0);
+});
+
+test("origine non autorisée : refus avant toute session ou dépense LLM", async () => {
+  const r = await worker.fetch(new Request("https://api.kermiclab.test/api/chat", {
+    method: "POST", headers: { origin: "https://inconnu.invalid", "content-type": "application/json" },
+    body: JSON.stringify({ message: "sinus", langue: "fr" })
+  }), env, ctx);
+  assert.equal(r.status, 403);
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM sessions_llm").get().n, 0);
 });
 
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {

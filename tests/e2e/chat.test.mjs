@@ -103,6 +103,84 @@ test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'X
   await contexte.close();
 });
 
+test("IA : sources et métadonnées en fin de réponse, requête avec cookie sans historique", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 800 } });
+  await simulerApi(page);
+  await page.addInitScript(() => {
+    const fetchOrigine = window.fetch;
+    window.fetch = (url, options) => {
+      if (String(url).endsWith("/api/chat")) window.credentialsChat = options.credentials;
+      return fetchOrigine(url, options);
+    };
+  });
+  let demande;
+  await page.route(`${api}/api/chat`, (route) => {
+    demande = route.request().postDataJSON();
+    return route.fulfill({
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": serveur.url, "access-control-allow-credentials": "true" },
+      body: JSON.stringify({
+        type: "reponse", texte: "Le sinus donne la hauteur du point.",
+        suggestions: ["Donne-moi un exemple"],
+        sources: [{
+          id: "trigo-cercle", titre: "Le cercle trigonométrique",
+          url: `${api}/maquettes/trigo-cercle?lang=fr`,
+          description: "Le cercle trigonométrique — mathematiques/trigonometrie · v1.0.0"
+        }],
+        llm: {
+          fournisseur: "cloudflare-workers-ai", modele: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+          harness: { nom: "KermicLab", version: "1.0.0", prompt: "tuteur-catalogue-v1", perimetre: "catalogue-kermiclab", acces: "gratuit-provisoire" },
+          quota: { limite: 1000, consommes: 180, restants: 820 }, repli: false,
+          appels: [{ fournisseur: "cloudflare-workers-ai", modele: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", tokensSortie: 180, comptage: "fournisseur" }]
+        }
+      })
+    });
+  });
+  await page.goto(serveur.url);
+  await page.locator("#fil li").first().waitFor();
+  await page.fill("#question", "Explique plus simplement");
+  await page.keyboard.press("Enter");
+  const fin = page.locator(".references-llm");
+  await fin.waitFor();
+  const credentials = await page.evaluate(() => window.credentialsChat);
+  assert.equal(credentials, "include");
+  assert.deepEqual(demande, { message: "Explique plus simplement", langue: "fr" });
+  assert.equal(await fin.locator("a").getAttribute("href"), `${api}/maquettes/trigo-cercle?lang=fr`);
+  assert.match(await fin.locator(".source-description").textContent(), /trigonometrie · v1.0.0/);
+  assert.match(await fin.textContent(), /tuteur-catalogue-v1/);
+  assert.match(await fin.textContent(), /180 \/ 1000/);
+  assert.match(await fin.textContent(), /@cf\/meta\/llama-3.3/);
+  assert.equal(await fin.evaluate((n) => n === n.parentElement.lastElementChild), true);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.documentElement.lang === "en");
+  assert.match(await fin.textContent(), /KermicLab sources consulted/);
+  assert.match(await fin.textContent(), /Temporarily free/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("IA : un lien non issu du catalogue n'est pas rendu comme source cliquable", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  await simulerApi(page);
+  await page.route(`${api}/api/chat`, (route) => route.fulfill({
+    contentType: "application/json",
+    headers: { "access-control-allow-origin": serveur.url, "access-control-allow-credentials": "true" },
+    body: JSON.stringify({
+      type: "reponse", texte: "Une explication.",
+      sources: [{ titre: "Source non autorisée", url: "javascript:alert(1)", description: "Lien à refuser." }],
+      llm: { fournisseur: "test", modele: "test", harness: { nom: "KermicLab", version: "1.0.0", prompt: "tuteur-catalogue-v1", perimetre: "catalogue-kermiclab" }, quota: { consommes: 100, limite: 1000 }, appels: [] }
+    })
+  }));
+  await page.goto(serveur.url);
+  await page.locator("#fil li").first().waitFor();
+  await page.fill("#question", "un exemple");
+  await page.keyboard.press("Enter");
+  await page.locator(".references-llm").waitFor();
+  assert.equal(await page.locator(".references-llm a").count(), 0);
+  await contexte.close();
+});
+
 test("catalogue : tiroir « Notions », recherche sans accents, ouverture directe d'une notion", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page);

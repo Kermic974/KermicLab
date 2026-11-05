@@ -12,7 +12,12 @@ Ces secrets sont validés par le workflow manuel **Vérifier la configuration Cl
 ## Fonctionnalités du Worker
 
 - [ ] `KERMICLAB_GITHUB_TOKEN` — nécessaire à la création d’issues par le Worker ; jeton fine-grained limité au dépôt `trigoLab` avec la permission Issues en lecture/écriture.
-- [ ] `ANTHROPIC_API_KEY` — facultatif ; active les réponses hors catalogue et le routage assisté. Définir un plafond de dépense dans la console Anthropic avant activation.
+- Workers AI est le modèle principal via le binding `AI` dans `worker/wrangler.toml` ; aucune clé API Workers AI n’est requise.
+- [ ] `LLM_SESSION_SECRET` — secret aléatoire d'au moins 32 caractères, nécessaire à la signature des sessions de quota IA. À créer dans GitHub Secrets pour transmission au Worker (ou directement dans Cloudflare). Ne pas le transmettre dans le chat. Le schéma D1 doit contenir `sessions_llm`.
+- `LLM_ACTIF=true` autorise les relances pédagogiques sur les pages du catalogue ; `false` coupe tous les appels. Quota partagé Workers AI/Anthropic de 1 000 tokens générés par session, maximum 24 h. Les entrées ne sont pas plafonnées par ce compteur. Accès gratuit provisoire ; contrôle par abonnement au backlog.
+- [ ] `ANTHROPIC_API_KEY` — facultatif ; utilisé comme repli seulement si Workers AI échoue. Définir un plafond de dépense dans la console Anthropic avant de l’ajouter.
+
+Workers AI facture selon les quotas et tarifs du compte Cloudflare. Vérifiez la consommation et les options de contrôle des coûts dans le tableau de bord Cloudflare avant activation.
 
 La CI transmet `KERMICLAB_GITHUB_TOKEN` au Worker sous le nom `GITHUB_TOKEN`.
 

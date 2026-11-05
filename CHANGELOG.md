@@ -5,6 +5,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
+- **IA encadrée** : Cloudflare Workers AI (`@cf/meta/llama-3.3-70b-instruct-fp8-fast`) devient le moteur principal via le binding `AI`, sans clé API ; Anthropic reste un repli facultatif. Activation explicite, quota D1 atomique partagé de 1 000 tokens générés par session navigateur (expiration serveur 24 h), aucune génération libre hors catalogue. Seules les relances proposées sur une page servie utilisent le modèle ; sources avec liens et descriptions, modèle réel et métadonnées du harness en fin de réponse. Cookie technique signé, aucun historique envoyé au modèle ; accès gratuit provisoire et contrôle d'abonnement au backlog.
+
 - **Navigation** : écrans dédiés aux Labs, Jeux, Défi express, Progression, Trophées et Profil dans la zone principale, liens directs et historique du navigateur. Les Labs ne renvoient plus aux Notions ; une entrée « Notions » conserve le catalogue existant sans modifier sa structure. Les jeux ont leurs propres cartes et recherche. Navigation mobile sur deux rangées.
 - **Collection des trophées accessible depuis l'accueil** : les objectifs des notions, labs et jeux compatibles sont présentés dès l'ouverture de « Mes trophées », sans devoir lancer un module. Les résultats déjà conservés se superposent à la collection ; les objectifs non commencés restent à débloquer, sans gain de progression artificiel.
 - **Remontée des trophées** : le pont des pages intégrées fonctionne avec la politique `Referrer-Policy: no-referrer` du site déployé. L'origine du parent est vérifiée et fixée lors de la connexion par message, sans dépendre du Referer ni désactiver l'isolation des pages.

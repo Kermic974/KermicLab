@@ -276,6 +276,13 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .puce:hover { background: var(--accent-doux); border-color: var(--accent); transform: translateY(-1px); }
 .occupe .puce { opacity: .55; cursor: wait; }
 .relances .puces-titre { margin-top: 12px; }
+.references-llm { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--bord); font-size: .82rem; }
+.references-llm ul { margin: 6px 0 12px; padding-left: 20px; }
+.source-description { display: block; color: var(--doux); }
+.metadonnees-llm { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; margin: 8px 0; }
+.metadonnees-llm dt { font-weight: 700; }
+.metadonnees-llm dd { margin: 0; overflow-wrap: anywhere; }
+.llm-appel { margin: 4px 0; color: var(--doux); }
 .points { display: inline-flex; gap: 5px; padding: 8px 2px 4px; }
 .points span { width: 8px; height: 8px; border-radius: 50%; background: var(--doux); animation: rebond 1.2s infinite ease-in-out; }
 .points span:nth-child(2) { animation-delay: .15s; }
