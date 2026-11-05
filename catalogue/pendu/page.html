@@ -1512,7 +1512,12 @@ const VueAcademie = (() => {
   function enregistrerOnglet(definition) { registre.push(definition); }
   const stockage = (() => {
     try {
-      localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test");
+      try {
+        localStorage.setItem("kermiclab:test", "1"); localStorage.removeItem("kermiclab:test");
+      } catch (e) {
+        if (e.name !== "QuotaExceededError") throw e;
+        avertirStockage("Le stockage local est saturé : tu peux lire ou effacer une liste existante, mais un nouvel enregistrement peut échouer.");
+      }
       return {
         disponible: true,
         lire(cle) {
