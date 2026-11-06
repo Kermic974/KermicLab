@@ -50,7 +50,7 @@ async function ouvrirModule(page, id) {
   const cadre = page.frameLocator("#bulle-cadre");
   const titrePage = { echecs: "Échecs", sudoku: "Sudoku" }[id] ?? modules.find((m) => m.id === id).titre;
   await cadre.locator("header h1").filter({ hasText: titrePage }).waitFor();
-  await cadre.locator("#onglets [role=tab]").first().waitFor();
+  await cadre.locator('[role="tab"]').first().waitFor();
   await page.waitForFunction((id) => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? localStorage.getItem("kermiclab:trophees") ?? "{}")[id], id, { timeout: 5000 });
   return cadre;
 }
