@@ -281,6 +281,7 @@ test("bulle : les pages ouvertes depuis le tableau de bord s'affichent par-dessu
   // « Poser une question » ferme la bulle et place le curseur dans le chat.
   await page.click("#bulle-question");
   await bulle.waitFor({ state: "hidden" });
+  await page.waitForFunction(() => document.activeElement.id === "question");
   assert.equal(await page.evaluate(() => document.activeElement.id), "question");
   assert.deepEqual(erreurs, []);
   await contexte.close();

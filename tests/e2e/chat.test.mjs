@@ -170,6 +170,11 @@ test("chat : une question sur le sinus affiche la maquette dans le fil", async (
   const onglets = page.frameLocator("li[data-maquette=trigo-cercle] iframe").locator("[role=tab]");
   await onglets.first().waitFor();
   assert.equal(await onglets.count(), 3);
+  await onglets.first().focus();
+  await page.keyboard.press("Escape");
+  await page.locator("#panneau-chat").waitFor({ state: "hidden" });
+  assert.equal(await page.locator("#panneau-chat").isVisible(), false);
+  assert.equal(await page.locator("#ouvrir-chat").evaluate((n) => n === document.activeElement), true);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

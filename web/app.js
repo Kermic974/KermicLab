@@ -600,6 +600,11 @@ function brancherTrophees() {
     // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
     const cadre = [...document.querySelectorAll("iframe[data-module]")].find((c) => c.contentWindow === e.source);
     if (!cadre || e.origin !== "null" || !cadre.hasAttribute("src")) return;
+    if (e.data?.type === "kermiclab:chat:fermer") {
+      if ($("#panneau-chat").hidden || !$("#fil").contains(cadre) || document.querySelector("dialog[open]")) return;
+      fermerChat({ rendreFocus: true });
+      return;
+    }
     const id = cadre.dataset.module;
     if (e.data?.module !== id) return;
     if (e.data?.type === "kermiclab:trophees:pret") {
@@ -747,8 +752,8 @@ function brancherBulle() {
     if (etat.ecran === "badges") document.querySelector(`[data-trophee-module="${CSS.escape(id)}"] button`)?.focus({ preventScroll: true });
   });
   $("#bulle-question").addEventListener("click", () => {
+    bulle.addEventListener("close", ouvrirChat, { once: true });
     bulle.close();
-    ouvrirChat();
   });
 }
 
