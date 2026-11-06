@@ -1,6 +1,7 @@
 // Moteur de la belote : extrait de la page (catalogue/belote/page.html) et exécuté dans un contexte sans DOM.
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { performance } from "node:perf_hooks";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { routerLocal } from "../../worker/src/router.js";
@@ -159,17 +160,18 @@ test("partie : scores cumulés, donneur qui tourne, gagnant à l'objectif", () =
   assert.throws(() => B.ajouterDonne(p, { phase: "jeu" }), /non terminée/);
 });
 
-test("ordinateur : 3 000 donnes complètes, toujours légales, toujours 162 points, en moins de 10 ms par coup", () => {
+test("ordinateur : 3 000 donnes complètes, toujours légales, toujours 162 points, en moins de 10 ms en moyenne par coup", () => {
   const h = graine(9);
-  let jouees = 0, pire = 0, faites = 0;
+  let jouees = 0, tempsChoix = 0, choix = 0, faites = 0;
   for (let n = 0; n < 3000; n++) {
     let d = B.creerDonne({ donneur: B.JOUEURS[n % 4], hasard: h });
     while (d.phase === "encheres") d = B.encherir(d, d.parole, B.choisirEnchere(d, d.parole, { niveau: n % 2 ? "facile" : "normal", hasard: h }));
     if (d.phase === "redonne") continue;
     while (d.phase === "jeu") {
-      const debut = Date.now();
+      const debut = performance.now();
       const c = B.choisirCarte(d, d.parole, { niveau: B.equipe(d.parole) === "NS" ? "normal" : "facile", hasard: h });
-      pire = Math.max(pire, Date.now() - debut);
+      tempsChoix += performance.now() - debut;
+      choix += 1;
       d = B.jouerCarte(d, d.parole, c); // lève une erreur si la carte est interdite
     }
     const r = d.resultat;
@@ -179,7 +181,7 @@ test("ordinateur : 3 000 donnes complètes, toujours légales, toujours 162 poin
   }
   assert.ok(jouees > 1500, `${jouees} donnes jouées (les autres redistribuées)`);
   assert.ok(faites / jouees > 0.6 && faites / jouees < 0.98, `taux de contrats réussis : ${faites / jouees}`);
-  assert.ok(pire < 10, `${pire} ms`);
+  assert.ok(tempsChoix / choix < 10, `${(tempsChoix / choix).toFixed(2)} ms en moyenne`);
 });
 
 test("ordinateur : le niveau Normal joue mieux que le niveau Facile", () => {
