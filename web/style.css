@@ -539,6 +539,7 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .trophee-module > button { margin-top: 12px; }
 .trophees-categorie { margin-top: 14px; border: 1px solid var(--bord); border-radius: 16px; background: var(--surface-2); overflow: hidden; }
 .trophees-categorie > summary { cursor: pointer; padding: 14px 16px; font-weight: 750; font-size: 1rem; }
+.trophees-categorie > summary:focus-visible { outline-offset: -5px; }
 .trophees-categorie > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; padding: 0 12px 12px; }
 .trophees-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
 .trophees-chiffres > div { padding: 8px; border-radius: 10px; background: var(--surface-2); }
