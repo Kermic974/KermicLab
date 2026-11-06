@@ -1,6 +1,7 @@
 ---
 id: sudoku
 titre: Sudoku
+resume: Remplis la grille sans répéter de chiffre, des premières grilles aux grilles de niveau pro.
 sujet: jeux/sudoku
 version: 1.0.0
 date: 2026-11-04

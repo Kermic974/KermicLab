@@ -53,3 +53,17 @@ test("boîte à idées : insertion unique et configuration échappée", () => {
   assert.equal(configuration(html).page, "</script><script>injection</script>");
   assert.throws(() => ajouterBoiteIdees("<body>", { page: "invalide" }), /body.*absent/);
 });
+
+test("signal d'activité : ajouté une seule fois aux pages servies, sans aucune donnée transmise", async () => {
+  const { ajouterSignalActivite, preparerPageServie } = await import("../../scripts/lib/idees.mjs");
+  const html = ajouterSignalActivite("<body></body>", { page: "pythagore" });
+  assert.equal((html.match(/id="signal-activite"/g) ?? []).length, 1);
+  assert.equal(ajouterSignalActivite(html, { page: "pythagore" }), html, "idempotent");
+  assert.throws(() => ajouterSignalActivite("<body>", { page: "x" }), /body.*absent/);
+  const servie = preparerPageServie("<body></body>", { page: "pythagore", version: "1.0.0" });
+  assert.ok(servie.indexOf('id="boite-idees-config"') < servie.indexOf('id="signal-activite"'));
+  // Le message ne porte que son type : ni touche, ni position, ni contenu ; aucun réseau ni stockage.
+  const script = html.match(/<script id="signal-activite">([\s\S]*?)<\/script>/)[1];
+  assert.match(script, /postMessage\(\{ type: "kermiclab:activite" \}, "\*"\)/);
+  assert.doesNotMatch(script, /fetch\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|document\.cookie|\.key\b|clientX|eval\(/);
+});

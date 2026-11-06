@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { genererPage } from "./gabarit.mjs";
-import { ajouterBoiteIdees } from "./idees.mjs";
+import { preparerPageServie } from "./idees.mjs";
 
 /** Analyse le front matter d'une fiche (sous-ensemble YAML : `cle: valeur`, `cle:` + `  - item`). */
 export function lireFrontMatter(texte) {
@@ -102,6 +102,10 @@ export async function chargerCatalogue(dossiers) {
         if (!fiche[champ] || (Array.isArray(fiche[champ]) && !fiche[champ].length)) throw new Error(`${rep}: champ « ${champ} » manquant`);
       }
       if (fiche.id !== nom) throw new Error(`${rep}: l'id « ${fiche.id} » doit être égal au nom du dossier`);
+      // Résumé facultatif (une phrase, texte brut) : présenté sur la carte d'un jeu (écran Jeux).
+      if (fiche.resume !== undefined && (typeof fiche.resume !== "string" || !fiche.resume || fiche.resume.length > 160 || /[<>]/.test(fiche.resume))) {
+        throw new Error(`${rep}: champ « resume » invalide (une phrase de 160 caractères au plus, sans balise)`);
+      }
       if (fiche.niveau && !NIVEAUX.includes(fiche.niveau)) throw new Error(`${rep}: niveau « ${fiche.niveau} » inconnu (attendu : ${NIVEAUX.join(", ")})`);
       if (pages[fiche.id]) throw new Error(`id en double : ${fiche.id}`);
       const langues = liste(fiche.langues);
@@ -122,14 +126,16 @@ export async function chargerCatalogue(dossiers) {
         sources.push({ fichier, aJour: source === html, html });
         const meta = lireMetaHtml(html);
         if (meta.id !== fiche.id || meta.version !== fiche.version) throw new Error(`${fichier}: id/version différents de la fiche`);
-        pages[fiche.id][langue] = appliquerCsp(ajouterBoiteIdees(html, { page: fiche.id, version: fiche.version }), {
+        const servie = preparerPageServie(html, { page: fiche.id, version: fiche.version });
+        pages[fiche.id][langue] = appliquerCsp(servie, {
           styles: !/style-src[^;]*'unsafe-inline'/.test(html)
         });
       }
       maquettes.push({
         id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, langues,
         onglets: liste(fiche.onglets), motsCles: liste(fiche["mots-cles"]), questions: liste(fiche.questions),
-        niveau: fiche.niveau ?? "autres"
+        niveau: fiche.niveau ?? "autres",
+        ...(fiche.resume ? { resume: fiche.resume } : {})
       });
     }
   }

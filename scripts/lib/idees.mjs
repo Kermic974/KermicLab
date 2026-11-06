@@ -3,6 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 
 const racine = new URL("../../", import.meta.url);
 const script = await readFile(new URL("web/boite-idees.js", racine), "utf8");
+const signalActivite = await readFile(new URL("web/signal-activite.js", racine), "utf8");
 const style = await readFile(new URL("web/boite-idees.css", racine), "utf8");
 /** Seuls le libellé et l'infobulle voyagent dans les pages : le formulaire vit dans le tableau de bord. */
 const CLES = ["ideeAction", "ideeAvertissement"];
@@ -23,4 +24,19 @@ export function ajouterBoiteIdees(html, { page, version, externe = false }) {
     ? `<link rel="stylesheet" href="boite-idees.css?v=${empreinte(style)}">\n<script type="module" src="boite-idees.js?v=${empreinte(script)}"></script>`
     : `<style>${style}</style>\n<script>${script}</script>`;
   return html.replace("</body>", `<script type="application/json" id="boite-idees-config">${config}</script>\n${ressources}\n</body>`);
+}
+
+/**
+ * Signal d'activité (web/signal-activite.js) : ajouté aux pages servies, qui s'ouvrent en iframe dans le tableau de
+ * bord, pour que le temps actif passé dans une page soit compté. Script en ligne : son hash entre dans la CSP.
+ */
+export function ajouterSignalActivite(html, { page }) {
+  if (html.includes('id="signal-activite"')) return html;
+  if (!html.includes("</body>")) throw new Error(`signal d'activité : </body> absent de ${page}`);
+  return html.replace("</body>", `<script id="signal-activite">${signalActivite}</script>\n</body>`);
+}
+
+/** Composants ajoutés à toute page servie par le Worker : boîte à idées puis signal d'activité. */
+export function preparerPageServie(html, { page, version }) {
+  return ajouterSignalActivite(ajouterBoiteIdees(html, { page, version }), { page });
 }
