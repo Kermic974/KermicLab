@@ -52,6 +52,9 @@ l'épreuve des interactions très différentes. Les lots suivants ne démarrent 
 pédagogique et technique ; les idées d'un même domaine peuvent être regroupées si cela évite la
 duplication de composants.
 
+Le découpage en pull requests (ordre, dépendances, critères d'acceptation) est dans
+[le plan des PR des labs](../plan-pr-labs.md).
+
 ## Critères communs et déroulement
 
 Pour chaque lot :

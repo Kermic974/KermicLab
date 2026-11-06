@@ -102,6 +102,9 @@ modèle de profondeur du parcours, pas un composant à recopier dans chaque page
 
 ### Découpage et critères d'acceptation
 
+Le lot Thalès est fait (figure `thales`). Le découpage des lots suivants en pull requests est dans
+[le plan des PR des labs](../plan-pr-labs.md).
+
 1. **Lot Thalès** : définir et valider le schéma de configuration, ajouter la figure au moteur et au
    validateur du gabarit, documenter son format dans `docs/gabarit.md`, l'intégrer à
    `catalogue/thales/contenu.json` et tester les variations et les cas limites dans
