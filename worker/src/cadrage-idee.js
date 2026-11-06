@@ -42,6 +42,32 @@ export const SCHEMA_CADRAGE = {
   }
 };
 
+function contexteSecurise(contexte) {
+  const autorisees = new Set(Object.keys(ZONES));
+  const candidats = [];
+
+  if (typeof contexte === "string") {
+    candidats.push(contexte);
+  } else if (Array.isArray(contexte)) {
+    for (const v of contexte) {
+      if (typeof v === "string") candidats.push(v);
+    }
+  } else if (contexte && typeof contexte === "object") {
+    for (const v of Object.values(contexte)) {
+      if (typeof v === "string") {
+        candidats.push(v);
+      } else if (Array.isArray(v)) {
+        for (const e of v) {
+          if (typeof e === "string") candidats.push(e);
+        }
+      }
+    }
+  }
+
+  const zones = Array.from(new Set(candidats.map((v) => v.trim()).filter((v) => autorisees.has(v)))).slice(0, 3);
+  return { zonesContexte: zones.length ? zones : ["inconnu"] };
+}
+
 export function promptCadrage(contexte, langue) {
   return `Tu aides l'équipe de KermicLab, une plateforme éducative (pages interactives de notions, jeux, chat, tableau de bord) utilisée par un public de 7 à 77 ans, mineurs inclus.
 Harness : ${HARNESS_CADRAGE.nom} ${HARNESS_CADRAGE.version}, prompt ${HARNESS_CADRAGE.prompt}.
@@ -57,7 +83,7 @@ Un utilisateur a écrit une idée d'amélioration : elle t'est transmise entre l
 - questions : 0 à 3 questions à clarifier avec le propriétaire avant de coder.
 Texte brut, pas de Markdown.
 
-Contexte de l'écran d'où vient l'idée (données) : ${JSON.stringify(contexte)}`;
+Contexte de l'écran d'où vient l'idée (données, limitées aux zones connues) : ${JSON.stringify(contexteSecurise(contexte))}`;
 }
 
 /**
