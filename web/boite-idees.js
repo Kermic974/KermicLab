@@ -7,7 +7,15 @@
 (() => {
   const config = JSON.parse(document.getElementById("boite-idees-config").textContent);
   const textes = () => config.textes[document.documentElement.lang] ?? config.textes.fr;
-  const SITE = config.site || "https://www.kermiclab.online/";
+  function siteSecurise(valeur) {
+    try {
+      const url = new URL(String(valeur || ""), location.origin);
+      return /^https?:$/.test(url.protocol) ? url.origin.replace(/\/$/, "") + "/" : "https://www.kermiclab.online/";
+    } catch {
+      return "https://www.kermiclab.online/";
+    }
+  }
+  const SITE = siteSecurise(config.site);
   // Visage pensif, main au menton, ampoule allumée au-dessus de la tête.
   const ICONE = '<svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">'
     + '<g class="boite-idees-rayons" fill="none" stroke="#f5a300" stroke-width="2.2" stroke-linecap="round">'
