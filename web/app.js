@@ -770,10 +770,16 @@ function rendreTrophees() {
   $("#trophees-resume").textContent = t("tropheesResume", { n: obtenus, m: modules.length });
   $("#trophees-etat").textContent = etat.erreurTrophees ? t("tropheesErreur") : etat.collectionTrophees ? "" : t("tropheesChargement");
   $("#trophees-reessayer").hidden = !etat.erreurTrophees;
+  const titres = { notions: "tropheesNotions", labs: "tropheesLabs", jeux: "tropheesJeux" };
   for (const genre of ["notions", "labs", "jeux"]) {
     const zone = $(`#trophees-${genre}`);
     zone.replaceChildren();
     const selection = modules.filter(([, m]) => m.genre === genre);
+    const obtenusCategorie = selection.reduce((s, [, m]) => s + m.badges.filter((b) => b.obtenu).length, 0);
+    const totalCategorie = selection.reduce((s, [, m]) => s + m.badges.length, 0);
+    $(`[data-trophees-categorie="${genre}"] summary`).textContent = totalCategorie
+      ? `${t(titres[genre])} · ${t("tropheesBadges", { n: obtenusCategorie, m: totalCategorie })}`
+      : t(titres[genre]);
     if (!selection.length) zone.append(element("p", { classe: "doux", cle: "tropheesVide" }));
     for (const [id, m] of selection) {
       const carte = element("article", { classe: "trophee-module", attributs: { "data-trophee-module": id } });

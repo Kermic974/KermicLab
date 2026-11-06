@@ -263,6 +263,14 @@ test("trophées depuis l'accueil : toute la collection est visible sans avoir ou
     assert.equal(await page.locator("#trophees-notions [data-trophee-module=pythagore]").count(), 1);
     assert.equal(await page.locator("#trophees-labs [data-trophee-module=mini-cercle]").count(), 1);
     assert.equal(await page.locator("#trophees-labs [data-trophee-module=trigo-cercle]").count(), 1);
+    const collection = JSON.parse(await readFile(`${racine}dist/trophees.json`, "utf8"));
+    const jeux = collection.modules.filter((m) => m.progression.genre === "jeux");
+    const totalTropheesJeux = jeux.reduce((s, m) => s + m.progression.badges.length, 0);
+    const obtenusTropheesJeux = jeux.reduce((s, m) => s + m.progression.badges.filter((b) => b.obtenu).length, 0);
+    assert.equal(
+      await page.locator('details[data-trophees-categorie="jeux"] > summary').textContent(),
+      `Jeux · parcours et succès · ${obtenusTropheesJeux} / ${totalTropheesJeux} trophées obtenus`
+    );
     const echecs = page.locator("[data-trophee-module=echecs]");
     assert.match(await echecs.textContent(), /Les échecs.*0 \/ 17 trophées obtenus/s);
     await echecs.locator("summary").click();

@@ -532,14 +532,17 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .badge.verrouille { opacity: .6; }
 .note-locale { margin: 16px 0 4px; font-size: .85rem; }
 #progres { max-width: 960px; }
-.trophee-module { border: 1px solid var(--bord); border-radius: 14px; padding: 14px; margin: 10px 0; overflow-wrap: anywhere; }
+.trophee-module { border: 1px solid var(--bord); border-radius: 16px; padding: 16px; margin: 0; background: var(--surface); box-shadow: 0 4px 16px color-mix(in srgb, var(--texte) 6%, transparent); overflow-wrap: anywhere; }
 .trophee-module h4 { margin: 0 0 10px; }
 .trophee-module progress { width: 100%; }
 .trophee-module summary { cursor: pointer; margin: 12px 0; font-weight: 650; }
 .trophee-module > button { margin-top: 12px; }
-.trophees-categorie { margin-top: 18px; }
-.trophees-categorie > summary { cursor: pointer; font-weight: 750; font-size: 1rem; }
+.trophees-categorie { margin-top: 14px; border: 1px solid var(--bord); border-radius: 16px; background: var(--surface-2); overflow: hidden; }
+.trophees-categorie > summary { cursor: pointer; padding: 14px 16px; font-weight: 750; font-size: 1rem; }
+.trophees-categorie > summary:focus-visible { outline-offset: -5px; }
+.trophees-categorie > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; padding: 0 12px 12px; }
 .trophees-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+.trophees-chiffres > div { padding: 8px; border-radius: 10px; background: var(--surface-2); }
 .trophees-chiffres dt { color: var(--doux); font-size: .8rem; }
 .trophees-chiffres dd { margin: 0; font-weight: 750; }
 
