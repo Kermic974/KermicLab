@@ -852,7 +852,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .stats dd { font-size: 1.25rem; }
   #toasts { top: 12px; }
   .nav-mobile {
-    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
     background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--bord);
     padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px));
