@@ -188,8 +188,9 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .carrousel-jeux-fleche { color: var(--accent); }
 .carrousel-jeux-pied { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; color: var(--doux); font-size: 12px; }
 .carrousel-jeux-points { display: flex; flex-wrap: wrap; gap: 6px; }
-.carrousel-jeux-point { width: 10px; height: 10px; min-height: 0; padding: 0; border-radius: 50%; background: var(--bord-fort); }
-.carrousel-jeux-point[aria-pressed="true"] { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-doux); }
+.carrousel-jeux-point, .carrousel-jeux-point:hover { display: grid; place-items: center; width: 24px; height: 24px; min-height: 24px; padding: 0; border-radius: 50%; background: transparent; }
+.carrousel-jeux-point::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--doux); }
+.carrousel-jeux-point[aria-pressed="true"]::before { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-doux); }
 .lab-carte { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
 .lab-carte h3 { overflow-wrap: anywhere; }
 .lab-carte .bouton { margin-top: auto; }
