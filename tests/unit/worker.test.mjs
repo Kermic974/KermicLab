@@ -681,6 +681,11 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
     assert.ok(ordre.indexOf(a.niveau) < ordre.indexOf(b.niveau) || (a.niveau === b.niveau && cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }) <= 0), `${a.id} puis ${b.id}`);
   }
   assert.deepEqual(Object.keys(notions[0]).sort(), ["id", "matiere", "niveau", "titre", "version"]);
+  // Résumé facultatif (écran Jeux) : présent seulement quand la fiche le déclare, jamais inventé.
+  const jeux = notions.filter((n) => n.matiere === "jeux");
+  assert.ok(jeux.length >= 2);
+  for (const jeu of jeux) assert.ok(typeof jeu.resume === "string" && jeu.resume.length <= 160, `${jeu.id} : résumé`);
+  assert.ok(notions.filter((n) => n.matiere !== "jeux").every((n) => !("resume" in n)), "aucun résumé sur les notions");
   assert.equal(cleDeTri("Le théorème de Pythagore"), "théorème de Pythagore");
   assert.equal(cleDeTri("L'exponentielle"), "exponentielle");
   assert.equal(cleDeTri("Les angles et les triangles"), "angles et les triangles");

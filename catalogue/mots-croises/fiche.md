@@ -1,6 +1,7 @@
 ---
 id: mots-croises
 titre: Mots croisés
+resume: Des mots croisés autour des mathématiques, avec cinq grilles à débloquer de Noob à Pro.
 sujet: jeux/mots-croises
 version: 1.0.0
 date: 2026-11-04

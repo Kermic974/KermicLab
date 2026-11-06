@@ -1,6 +1,7 @@
 ---
 id: pendu
 titre: Le pendu
+resume: Trouve le mot secret lettre par lettre avant que le dessin ne soit terminé.
 sujet: jeux/pendu
 version: 1.1.0
 date: 2026-11-05

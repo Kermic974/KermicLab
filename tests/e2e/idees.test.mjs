@@ -56,20 +56,27 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
   await page.click("#ouvrir-chat");
   await page.fill("#question", "Conversation privée à ne pas transmettre");
   await page.click("#fermer-chat");
-  for (const vue of ["labs", "jeux", "defi", "progression", "badges", "profil", "aide"]) {
+  // Les 5 destinations, le défi (sous Éducation) et « Signaler un problème » (dans Profil).
+  const ouvrirVue = async (vue) => {
+    if (vue === "defi") { await page.locator('.barre-laterale [data-nav="education"]').click(); await page.click("#lancer-defi"); return; }
+    if (vue === "aide") { await page.locator('.barre-laterale [data-nav="profil"]').click(); await page.click('#profil [data-nav="aide"]'); return; }
     await page.locator(`.barre-laterale [data-nav="${vue}"]`).first().click();
+  };
+  for (const vue of ["education", "jeux", "defi", "progression", "profil", "aide"]) {
+    await ouvrirVue(vue);
     const ouvert = page.locator("dialog[open]").last();
     // Le formulaire de signalement (comme celui des idées) n'embarque pas de boîte à idées.
     const lien = await ouvert.locator(":scope > .boite-idees").count() ? ouvert.locator(":scope > .boite-idees") : page.locator(".nav-idees > .boite-idees");
     if (vue === "aide") assert.equal(await ouvert.locator(".boite-idees").count(), 0);
     const corps = await brouillon(lien);
     assert.doesNotMatch(corps, /PseudoSecret|Conversation privée/);
-    if (vue === "labs" || vue === "jeux") {
-      assert.match(corps, new RegExp(`navigation: ${vue}`));
-      await page.locator('.barre-laterale [data-nav="notions"]').click();
-      assert.match(await brouillon(page.locator(".nav-idees > .boite-idees")), /navigation: notions/);
+    if (vue === "education" || vue === "jeux") assert.match(corps, new RegExp(`navigation: ${vue}`));
+    if (vue === "defi") assert.match(corps, /navigation: education/, "le défi est rattaché à Éducation");
+    if (vue === "jeux") {
+      await page.locator('.barre-laterale [data-nav="education"]').click();
+      assert.match(await brouillon(page.locator(".nav-idees > .boite-idees")), /navigation: education/);
       await page.goBack();
-      assert.doesNotMatch(await brouillon(page.locator(".nav-idees > .boite-idees")), /navigation: notions|onglet:/);
+      assert.doesNotMatch(await brouillon(page.locator(".nav-idees > .boite-idees")), /navigation: education|onglet:/);
     }
     if (await ouvert.count()) await page.evaluate(() => document.querySelectorAll("dialog[open]").forEach((d) => d.close()));
   }
@@ -145,7 +152,7 @@ test("boîte à idées : formulaire natif envoyé au Worker, depuis le site et d
     envois.push(route.request().postDataJSON());
     return route.fulfill({ contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ ok: true, texte: "Merci pour ton idée !" }) });
   });
-  await page.goto(`${serveur.url}/#labs`);
+  await page.goto(`${serveur.url}/#education`);
   const cta = page.locator(".nav-idees > .boite-idees");
   await cta.waitFor();
   assert.equal(await cta.locator("svg").count(), 1, "icône pensive à l'ampoule");
@@ -154,13 +161,13 @@ test("boîte à idées : formulaire natif envoyé au Worker, depuis le site et d
   const dialogue = page.locator("#dialogue-idee");
   await dialogue.waitFor({ state: "visible" });
   assert.equal(await dialogue.locator(".boite-idees").count(), 0, "pas de bouton dans son propre formulaire");
-  assert.match(await page.locator("#idee-contexte").textContent(), /index\.html · labs/);
+  assert.match(await page.locator("#idee-contexte").textContent(), /index\.html · education/);
   await capturer(page, "idees-formulaire");
   await page.fill("#texte-idee", "Un mode chronomètre");
   await page.click("#formulaire-idee button[type=submit]");
   await page.locator("#retour-idee", { hasText: "Merci" }).waitFor();
   assert.equal(envois[0].message, "Un mode chronomètre");
-  assert.equal(envois[0].contexte.navigation, "labs");
+  assert.equal(envois[0].contexte.navigation, "education");
   assert.equal(await page.inputValue("#texte-idee"), "");
   await page.click("#fermer-idee");
 

@@ -33,17 +33,24 @@ async function demarrer(options = {}) {
     await r.fulfill({ contentType: "text/html", body: await readFile(`${racine}catalogue/${id}/page.html`, "utf8") });
   });
   await page.goto(serveur.url);
-  await page.locator("#grille-matieres button").first().waitFor();
+  await page.locator("#entree-education", { hasText: "notions" }).waitFor();
   return session;
 }
 
 async function ouvrirModule(page, id) {
   await page.locator("#minilab [data-angles] button").first().waitFor({ state: "attached" });
-  await page.click("#ouvrir-catalogue");
-  await page.fill("#recherche-notion", modules.find((m) => m.id === id).titre);
+  const module = modules.find((m) => m.id === id);
   const navigation = page.waitForEvent("framenavigated", (frame) =>
     frame.parentFrame() === page.mainFrame() && new URL(frame.url()).pathname === `/maquettes/${id}`);
-  await page.locator(`#catalogue-liste [data-notion="${id}"]`).click();
+  // Un jeu s'ouvre depuis l'écran Jeux, une notion depuis Éducation (recherche).
+  if (module.matiere === "jeux") {
+    await page.click(".barre-laterale [data-nav=jeux]");
+    await page.click(`#grille-jeux [data-jeu="${id}"]`);
+  } else {
+    await page.click("#ouvrir-catalogue");
+    await page.fill("#recherche-notion", module.titre);
+    await page.locator(`#catalogue-liste [data-notion="${id}"]`).click();
+  }
   const iframe = await navigation;
   await iframe.waitForLoadState("load");
   const cadre = page.frameLocator("#bulle-cadre");
@@ -65,11 +72,10 @@ test("trophées : étoiles d'une notion remontées, restaurées et isolées de l
     await application.locator("[data-exercice=app-1]").getByRole("button", { name: "le côté opposé à l'angle droit", exact: true }).click();
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).pythagore.etoiles === 1);
     await page.click("#fermer-bulle");
-    await page.click("[data-nav=badges]");
-    assert.equal(await page.locator("#progres-titre").textContent(), "Mes trophées");
+    await page.click(".barre-laterale [data-nav=progression]");
+    assert.equal(await page.locator("#progres-titre").textContent(), "Mes badges");
     assert.match(await page.locator("#trophees-notions").textContent(), /Pythagore.*1 \/ 10/s);
     assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
-    await page.click("#fermer-progres");
     await page.reload();
     const reprise = await ouvrirModule(page, "pythagore");
     await reprise.locator("#etoiles").filter({ hasText: "★ 1 / 10" }).waitFor();
@@ -96,7 +102,7 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
     await academie.locator('[data-action="suivant"]').click();
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).echecs.lecons === 1);
     await page.click("#fermer-bulle");
-    await page.click("[data-nav=badges]");
+    await page.click(".barre-laterale [data-nav=progression]");
     const carte = page.locator("#trophees-jeux [data-trophee-module=echecs]");
     assert.match(await carte.textContent(), /70/);
     await carte.locator("summary").click();
@@ -135,7 +141,7 @@ test("trophées poker : pratique et leçons remontées, restaurées puis effacé
     await academie.locator('[data-action="suivant"]').click();
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))["poker-texas-holdem"].lecons === 1);
     await page.click("#fermer-bulle");
-    await page.click("[data-nav=badges]");
+    await page.click(".barre-laterale [data-nav=progression]");
     const carte = page.locator('#trophees-jeux [data-trophee-module="poker-texas-holdem"]');
     await carte.waitFor();
     await carte.locator("summary").click();
@@ -165,24 +171,23 @@ test("trophées poker : pratique et leçons remontées, restaurées puis effacé
 test("trophées : mini-lab, mémorisation choisie, langue et effacement global sur mobile", async () => {
   const { page, contexte, erreurs } = await demarrer({ viewport: { width: 360, height: 740 }, isMobile: true });
   try {
+    await page.click(".nav-mobile [data-nav=education]");
+    await page.click("[aria-controls=minilab]");
     for (const angle of [30, 45, 90]) await page.locator(`#minilab [data-angles] button`).filter({ hasText: new RegExp(`^${angle}°$`) }).click();
     await page.click("#ouvrir-progres");
+    assert.equal(await page.locator("#progression-vide").isVisible(), false, "un module manipulé n'est pas une progression vide");
     assert.match(await page.locator("#trophees-labs").textContent(), /2 \/ 2/);
     assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
-    await page.click("#fermer-progres");
     await page.locator(".profil-mobile[data-ouvrir-profil]").click();
     await page.check("#profil-memoriser");
     assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:trophees")), null);
     assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem("kermiclab:trophees"))["mini-cercle"].etoiles), 2);
     await page.click("#fermer-profil");
     await page.reload();
-    await page.click("#ouvrir-progres");
+    await page.locator("#trophees-labs").waitFor();
     assert.match(await page.locator("#trophees-labs").textContent(), /2 \/ 2/);
-    await page.click("#fermer-progres");
     await page.selectOption("#langue", "en");
-    await page.click("#ouvrir-progres");
-    assert.equal(await page.locator("#progres-titre").textContent(), "My trophies");
-    await page.click("#fermer-progres");
+    await page.waitForFunction(() => document.querySelector("#progres-titre").textContent === "My badges");
     await page.locator(".profil-mobile[data-ouvrir-profil]").click();
     await page.uncheck("#profil-memoriser");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
@@ -253,35 +258,35 @@ for (const id of ["sudoku", "2048"]) {
   });
 }
 
-test("trophées depuis l'accueil : toute la collection est visible sans avoir ouvert un module", async () => {
+test("Mes badges : aucun module jamais lancé, aucune grille grisée, rien chargé en arrière-plan", async () => {
   const { page, contexte, erreurs } = await demarrer();
   const pagesOuvertes = [];
-  page.on("request", (r) => { if (new URL(r.url()).pathname.startsWith("/maquettes/")) pagesOuvertes.push(r.url()); });
+  const chargements = [];
+  page.on("request", (r) => {
+    const chemin = new URL(r.url()).pathname;
+    if (chemin.startsWith("/maquettes/")) pagesOuvertes.push(r.url());
+    if (chemin.endsWith("/trophees.json")) chargements.push(r.url());
+  });
   try {
-    await page.click("[data-nav=badges]");
-    await page.locator("#trophees-jeux [data-trophee-module=echecs]").waitFor();
-    assert.equal(await page.locator("#trophees-notions [data-trophee-module=pythagore]").count(), 1);
-    assert.equal(await page.locator("#trophees-labs [data-trophee-module=mini-cercle]").count(), 1);
-    assert.equal(await page.locator("#trophees-labs [data-trophee-module=trigo-cercle]").count(), 1);
-    const collection = JSON.parse(await readFile(`${racine}dist/trophees.json`, "utf8"));
-    const jeux = collection.modules.filter((m) => m.progression.genre === "jeux");
-    const totalTropheesJeux = jeux.reduce((s, m) => s + m.progression.badges.length, 0);
-    const obtenusTropheesJeux = jeux.reduce((s, m) => s + m.progression.badges.filter((b) => b.obtenu).length, 0);
-    assert.equal(
-      await page.locator('details[data-trophees-categorie="jeux"] > summary').textContent(),
-      `Jeux · parcours et succès · ${obtenusTropheesJeux} / ${totalTropheesJeux} trophées obtenus`
-    );
-    const echecs = page.locator("[data-trophee-module=echecs]");
-    assert.match(await echecs.textContent(), /Les échecs.*0 \/ 17 trophées obtenus/s);
-    await echecs.locator("summary").click();
-    assert.equal(await echecs.locator(".badge.verrouille").count(), 17);
-    assert.equal(await page.locator("#progres .badge.obtenu").count(), 0, "aucun succès inventé");
+    await page.click(".barre-laterale [data-nav=progression]");
+    // Divulgation progressive : avant toute activité, un état vide et deux portes d'entrée, rien d'autre.
+    assert.equal(await page.locator("#progression-vide").isVisible(), true);
+    assert.equal(await page.locator("#progres").isVisible(), false);
+    assert.equal(await page.locator("[data-trophee-module]").count(), 0, "aucun module jamais lancé");
+    assert.equal(await page.locator(".badge.verrouille").count(), 0, "aucune grille de badges grisés");
+    assert.deepEqual(pagesOuvertes, [], "aucune page de jeu lancée en arrière-plan");
+    assert.deepEqual(chargements, [], "la collection complète n'est plus téléchargée");
     assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:trophees")), null, "consulter ne crée pas de progression");
-    assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
-    assert.deepEqual(pagesOuvertes, [], "la collection ne lance aucune page de jeu en arrière-plan");
-    await echecs.getByRole("button", { name: "Commencer", exact: true }).click();
-    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? "{}").echecs);
-    assert.equal(await page.locator("#bulle-lab").getAttribute("data-notion"), "echecs");
+    // Après un premier lancement réel, le module apparaît avec ses propres objectifs.
+    await ouvrirModule(page, "echecs");
+    await page.click("#fermer-bulle");
+    await page.click(".barre-laterale [data-nav=progression]");
+    const echecs = page.locator("#trophees-jeux [data-trophee-module=echecs]");
+    assert.match(await echecs.textContent(), /Les échecs.*0 \/ 17 trophées obtenus/s);
+    assert.equal(await page.locator("[data-trophee-module]").count(), 1);
+    assert.equal(await page.locator("#progres .badge.obtenu").count(), 1, "seul « Explorateur » (première page ouverte) est obtenu : aucun succès inventé");
+    await page.click("[aria-controls=decouvertes-jeux]");
+    assert.match(await page.locator("#decouvertes").textContent(), /Les échecs.*Ouvert 1 fois/s);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
 });
@@ -298,8 +303,8 @@ test("trophées depuis l'accueil : les résultats conservés apparaissent sans r
     }
     await page.evaluate((p) => sessionStorage.setItem("kermiclab:trophees", JSON.stringify({ echecs: p })), p);
     await page.reload();
-    await page.locator("#grille-matieres button").first().waitFor();
-    await page.click("[data-nav=badges]");
+    await page.locator("#entree-education", { hasText: "notions" }).waitFor();
+    await page.click(".barre-laterale [data-nav=progression]");
     const carte = page.locator("#trophees-jeux [data-trophee-module=echecs]");
     await carte.waitFor();
     await carte.locator("summary").click();
@@ -307,20 +312,5 @@ test("trophées depuis l'accueil : les résultats conservés apparaissent sans r
     assert.equal(await carte.locator(".badge.obtenu").count(), 2);
     assert.equal(await page.locator("iframe[data-module]").count(), 0);
     assert.deepEqual(erreurs, []);
-  } finally { await contexte.close(); }
-});
-
-test("trophées : un échec du chargement de la collection est visible et réessayable", async () => {
-  const { page, contexte } = await demarrer();
-  try {
-    await page.route("**/trophees.json", (r) => r.fulfill({ status: 503, body: "indisponible" }));
-    await page.click("[data-nav=badges]");
-    await page.locator("#trophees-reessayer").waitFor();
-    assert.match(await page.locator("#trophees-etat").textContent(), /Impossible de charger/);
-    await page.unroute("**/trophees.json");
-    await page.click("#trophees-reessayer");
-    await page.locator("#trophees-jeux [data-trophee-module=echecs]").waitFor();
-    assert.equal(await page.locator("#trophees-etat").textContent(), "");
-    assert.equal(await page.locator("#trophees-reessayer").isVisible(), false);
   } finally { await contexte.close(); }
 });
