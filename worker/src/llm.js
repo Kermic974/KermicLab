@@ -1,12 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { HARNESS_LLM } from "./contexte-llm.js";
+import { defaut, lireConfiguration } from "./configuration.js";
 import { pseudonymiser } from "./pseudonymisation.js";
 
-export const MODELE_CHAT_PAR_DEFAUT = "claude-haiku-5-5";
-export const MODELE_WORKERS_AI_PAR_DEFAUT = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+export const MODELE_CHAT_PAR_DEFAUT = defaut("MODELE_CHAT");
+export const MODELE_WORKERS_AI_PAR_DEFAUT = defaut("MODELE_WORKERS_AI");
 export const GATEWAY_LLM = "kermiclab-gateway";
 /** Alias de modèle AI Gateway (pool géré sur la gateway, onglet Routing) pour le défi express (ADR 0018). */
-export const MODELE_DEFI_PAR_DEFAUT = "custom/haiku";
+export const MODELE_DEFI_PAR_DEFAUT = defaut("MODELE_DEFI");
 
 const ENTETES_GATEWAY = {
   "cf-aig-skip-cache": "true",
@@ -112,7 +113,7 @@ export function normaliserResultat(reponse, source) {
 export async function appelerWorkersAI(env, { system, message: brut, schema, maxTokens }) {
   if (!env.AI?.run) throw new Error("binding Workers AI absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
-  const reponse = await env.AI.run(env.MODELE_WORKERS_AI || MODELE_WORKERS_AI_PAR_DEFAUT, {
+  const reponse = await env.AI.run(lireConfiguration(env).MODELE_WORKERS_AI, {
     messages: [
       { role: "system", content: system },
       { role: "user", content: message }
@@ -148,7 +149,7 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
     }
   });
   const reponse = await anthropic.messages.create({
-    model: env.MODELE_CHAT || MODELE_CHAT_PAR_DEFAUT,
+    model: lireConfiguration(env).MODELE_CHAT,
     max_tokens: maxTokens,
     system,
     messages: [{ role: "user", content: message }],
@@ -170,7 +171,7 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
 export async function appelerAliasGateway(env, { system, message: brut, schema, maxTokens }) {
   if (!env.AI?.run) throw new Error("binding AI absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
-  const reponse = await env.AI.run(env.MODELE_DEFI || MODELE_DEFI_PAR_DEFAUT, {
+  const reponse = await env.AI.run(lireConfiguration(env).MODELE_DEFI, {
     messages: [
       { role: "system", content: system },
       { role: "user", content: message }

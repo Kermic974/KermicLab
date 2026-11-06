@@ -257,6 +257,26 @@
         </div>
       </div>
 
+      <section class="carte jeux-accueil" id="jeux-accueil" data-ecrans="accueil" aria-labelledby="jeux-accueil-titre">
+        <div class="tete-section">
+          <div><h2 id="jeux-accueil-titre" data-i18n="jeuxAccueilTitre"></h2><p data-i18n="jeuxAccueilIntro"></p></div>
+          <button type="button" class="lien-fleche" data-nav="jeux"><span data-i18n="jeuxAccueilToutVoir"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </div>
+        <div class="carrousel-jeux" role="region" data-i18n-aria="jeuxAccueilRegion">
+          <button type="button" class="carrousel-jeux-controle" id="jeux-accueil-precedent" data-i18n-aria="jeuxAccueilPrecedent"><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+          <button type="button" class="carrousel-jeux-carte" id="jeux-accueil-carte" data-nav="jeux">
+            <span class="carrousel-jeux-icone" aria-hidden="true"><svg class="ico"><use href="#i-jeu"/></svg></span>
+            <span class="carrousel-jeux-texte"><strong id="jeux-accueil-nom"></strong><span data-i18n="jeuxAccueilAction"></span></span>
+            <svg class="ico carrousel-jeux-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+          <button type="button" class="carrousel-jeux-controle" id="jeux-accueil-suivant" data-i18n-aria="jeuxAccueilSuivant"><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </div>
+        <div class="carrousel-jeux-pied">
+          <span id="jeux-accueil-compteur" role="status" aria-live="polite"></span>
+          <div id="jeux-accueil-points" class="carrousel-jeux-points" role="group" data-i18n-aria="jeuxAccueilChoisir"></div>
+        </div>
+      </section>
+
       <section aria-labelledby="matieres-titre" id="matieres" data-ecrans="accueil">
         <div class="tete-section">
           <div>
@@ -434,6 +454,13 @@
     <label for="defi-ia-par-jour" class="etiquette-champ" data-i18n="defiIaReglage"></label>
     <select id="defi-ia-par-jour" aria-describedby="defi-ia-etat" disabled></select>
     <span id="defi-ia-etat" class="doux petit" aria-live="polite"></span>
+  </div>
+  <!-- Paramètres du site (ADR 0019) : vue en lecture seule de la configuration centralisée du Worker. -->
+  <div class="config-serveur" aria-labelledby="config-serveur-titre">
+    <h3 id="config-serveur-titre" data-i18n="configServeurTitre"></h3>
+    <p class="doux petit" data-i18n="configServeurAide"></p>
+    <div id="config-modules" class="config-modules"></div>
+    <p id="config-serveur-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></p>
   </div>
 </section>
 

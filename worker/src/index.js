@@ -14,13 +14,13 @@ import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
 import { pseudonymiser } from "./pseudonymisation.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
-import { MODELE_DEFI_PAR_DEFAUT, appelerAliasGateway, claudeViaGatewayDisponible } from "./llm.js";
+import { appelerAliasGateway, claudeViaGatewayDisponible } from "./llm.js";
+import { configurationPublique, lireConfiguration, skillActif } from "./configuration.js";
 import {
-  HARNESS_DEFI, MAX_TOKENS_DEFI, SCHEMA_DEFI, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
+  HARNESS_DEFI, SCHEMA_DEFI, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
   messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
 } from "./defi-llm.js";
 
-const TAILLE_MAX_PAR_DEFAUT = 500;
 const MAX_SUGGESTIONS = 4;
 
 const MAX_RELANCES = 3;
@@ -176,7 +176,8 @@ async function traiterChat(requete, env, ctx) {
   const t = () => messages(langue);
   const message = String(corps?.message ?? "").trim();
   const utiliserLlm = corps?.utiliserLlm === true;
-  const tailleMax = Number(env.TAILLE_MAX_MESSAGE) || TAILLE_MAX_PAR_DEFAUT;
+  const tailleMax = lireConfiguration(env).TAILLE_MAX_MESSAGE;
+  const tuteurActif = llmActive(env) && skillActif(env, "tuteur");
 
   if (!message) return { statut: 400, donnees: { type: "refus", texte: t().vide } };
   if (message.length > tailleMax) {
@@ -197,7 +198,7 @@ async function traiterChat(requete, env, ctx) {
   if (idLocal) {
     const donnees = await servirMaquette(requete, env, ctx, { id: idLocal, langue, question: message, routage: "mots-cles" });
     let cookie;
-    if (llmActive(env)) {
+    if (tuteurActif) {
       try {
         if (utiliserLlm) {
           cookie = await definirContexteLlm(requete, env, idLocal);
@@ -230,7 +231,7 @@ async function traiterChat(requete, env, ctx) {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "hors-perimetre-llm" }));
     return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
   }
-  if (!utiliserLlm || !llmActive(env) || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
+  if (!utiliserLlm || !tuteurActif || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "sans-modele" }));
     return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
@@ -403,7 +404,8 @@ async function traiterCadrageIdee(requete, env) {
   const t = messages(langue);
   const message = String(corps?.message ?? "").trim().slice(0, 2000);
   if (!message) return { statut: 400, donnees: { ok: false } };
-  if (corps?.utiliserLlm !== true || !llmActive(env) || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
+  if (corps?.utiliserLlm !== true || !llmActive(env) || !skillActif(env, "cadrage-idee")
+    || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
     return { statut: 503, donnees: { ok: false, texte: t.indisponible } };
   }
   const moderation = analyser(message);
@@ -451,7 +453,7 @@ function servirPage(requete, env, id) {
   });
 }
 
-const defiIaPossible = (env) => llmActive(env) && !!env.DB && !!env.AI?.run
+const defiIaPossible = (env) => llmActive(env) && skillActif(env, "defi-express") && !!env.DB && !!env.AI?.run
   && typeof env.LLM_SESSION_SECRET === "string" && env.LLM_SESSION_SECRET.length >= 32;
 
 /**
@@ -497,7 +499,7 @@ async function traiterDefi(requete, env, ctx) {
   try {
     generation = await appelerAliasGateway(env, {
       system: promptDefi(langue), message: messageDefi(CATALOGUE, tirages, langue),
-      schema: SCHEMA_DEFI, maxTokens: MAX_TOKENS_DEFI
+      schema: SCHEMA_DEFI, maxTokens: lireConfiguration(env).MAX_TOKENS_DEFI
     });
     if (!generation.refus) defis = normaliserDefis(generation.contenu, tirages);
   } catch {
@@ -515,7 +517,7 @@ async function traiterDefi(requete, env, ctx) {
       defis: defis.map((d) => ({ ...d, url: `${origine}/maquettes/${encodeURIComponent(d.notion)}?lang=${langue}` })),
       quota,
       llm: {
-        fournisseur: "cloudflare-ai-gateway", modele: env.MODELE_DEFI || MODELE_DEFI_PAR_DEFAUT, harness: HARNESS_DEFI,
+        fournisseur: "cloudflare-ai-gateway", modele: lireConfiguration(env).MODELE_DEFI, harness: HARNESS_DEFI,
         tokensSortie: Number.isSafeInteger(generation?.tokensSortie) ? generation.tokensSortie : null,
         pseudonymisation: { appliquee: true, remplacements: generation?.pseudonymisations ?? 0 }
       }
@@ -576,7 +578,8 @@ export default {
       const actif = llmActive(env) && !!env.DB && typeof env.LLM_SESSION_SECRET === "string"
         && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || claudeViaGatewayDisponible(env));
       const defi = { ia: defiIaPossible(env), generationsParJour: generationsDefiParJour(env) };
-      return json({ actif, defi }, 200, { ...cors, "cache-control": "no-store" });
+      const skills = { tuteur: actif && skillActif(env, "tuteur"), "cadrage-idee": actif && skillActif(env, "cadrage-idee"), "defi-express": defi.ia };
+      return json({ actif, defi, skills, configuration: configurationPublique(env) }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {
       return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
@@ -596,7 +599,7 @@ export default {
       if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
         return json({ type: "refus", texte: messages("fr").inapproprie }, 403, {});
       }
-      limiteur ??= creerLimiteur({ maxParMinute: Number(env.LIMITE_PAR_MINUTE) || 20 });
+      limiteur ??= creerLimiteur({ maxParMinute: lireConfiguration(env).LIMITE_PAR_MINUTE });
       const ip = requete.headers.get("cf-connecting-ip") || "inconnue";
       if (!limiteur(ip)) {
         ctx.waitUntil(journaliser(env, { type: "refus", detail: "limite-debit" }));

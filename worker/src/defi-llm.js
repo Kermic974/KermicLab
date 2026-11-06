@@ -3,31 +3,22 @@
 // n'est envoyé au modèle : le message ne contient que des extraits publiés du catalogue.
 import { analyser } from "./moderation.js";
 import { textePedagogique } from "./contexte-llm.js";
+import { PARAMETRES, defaut, harnessSkill, lireConfiguration } from "./configuration.js";
 
 export const NB_DEFIS = 5;
 export const FORMATS_DEFI = Object.freeze(["qcm", "vrai-faux", "situation", "intrus"]);
-export const GENERATIONS_DEFI_PAR_DEFAUT = 3;
-export const MAX_GENERATIONS_DEFI = 10;
-export const MAX_TOKENS_DEFI = 1500;
+export const GENERATIONS_DEFI_PAR_DEFAUT = defaut("DEFI_GENERATIONS_JOUR");
+export const MAX_GENERATIONS_DEFI = PARAMETRES.find((p) => p.cle === "DEFI_GENERATIONS_JOUR").max;
+/** Budget de sortie par défaut d'une génération ; la valeur effective est `MAX_TOKENS_DEFI` (configuration.js). */
+export const MAX_TOKENS_DEFI = defaut("MAX_TOKENS_DEFI");
 const TAILLE_EXTRAIT = 1500;
 const MATIERES_EXCLUES = new Set(["jeux"]);
 const DUREE_QUOTA = 24 * 60 * 60;
 
-export const HARNESS_DEFI = Object.freeze({
-  nom: "KermicLab",
-  version: "1.0.0",
-  prompt: "defi-express-v1",
-  perimetre: "catalogue-kermiclab",
-  acces: "gratuit-provisoire"
-});
+export const HARNESS_DEFI = harnessSkill("defi-express");
 
-/** Nombre de générations IA par session (24 h) : variable `DEFI_GENERATIONS_JOUR`, bornée, 3 par défaut. */
-export function generationsDefiParJour(env) {
-  const brut = env?.DEFI_GENERATIONS_JOUR;
-  if (brut === undefined || brut === null || brut === "") return GENERATIONS_DEFI_PAR_DEFAUT;
-  const n = Number(brut);
-  return Number.isInteger(n) ? Math.max(0, Math.min(MAX_GENERATIONS_DEFI, n)) : GENERATIONS_DEFI_PAR_DEFAUT;
-}
+/** Nombre de générations IA par session (24 h) : variable `DEFI_GENERATIONS_JOUR`, bornée (configuration.js). */
+export const generationsDefiParJour = (env) => lireConfiguration(env).DEFI_GENERATIONS_JOUR;
 
 export const SCHEMA_DEFI = {
   type: "object",

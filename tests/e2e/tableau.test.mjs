@@ -107,6 +107,33 @@ test("tableau de bord : reprise, suggestion, matières et semaine calculées à 
   await contexte.close();
 });
 
+test("accueil : carrousel des jeux et accès direct au menu Jeux", async () => {
+  const { page, contexte, erreurs } = await demarrer({}, null, { jeux: [
+    { id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux" },
+    { id: "sudoku", titre: "Le Sudoku", version: "1.0.0", niveau: "autres", matiere: "jeux" }
+  ] });
+  await choisirPseudo(page, "Lina");
+
+  await page.locator("#jeux-accueil-carte").waitFor();
+  assert.equal(await page.locator("#jeux-accueil-nom").textContent(), "Les échecs");
+  assert.equal(await page.locator("#jeux-accueil-compteur").textContent(), "1 / 2 jeux");
+  await page.locator("#jeux-accueil-suivant").click();
+  assert.equal(await page.locator("#jeux-accueil-nom").textContent(), "Le Sudoku");
+  await page.locator("#jeux-accueil-precedent").click();
+  assert.equal(await page.locator("#jeux-accueil-nom").textContent(), "Les échecs");
+  await page.locator("#jeux-accueil-points button").nth(1).click();
+  assert.equal(await page.locator("#jeux-accueil-points button").nth(1).getAttribute("aria-pressed"), "true");
+  assert.equal(await page.locator("#jeux-accueil-points button").nth(1).evaluate((b) => b === document.activeElement), true);
+  await page.setViewportSize({ width: 360, height: 740 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
+  await page.locator("#jeux-accueil-carte").click();
+  await page.locator("#ecran-jeux").waitFor({ state: "visible" });
+  assert.equal(new URL(page.url()).hash, "#jeux");
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Les échecs", "Le Sudoku"]);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la session", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Nina");
@@ -203,6 +230,12 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   assert.match(await texte(page, "#defi-ia-etat"), /Il te reste 3 défi/);
   await page.selectOption("#defi-ia-par-jour", "2");
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:defi:ia-par-jour")), "2");
+  // Paramètres du site centralisés par module (ADR 0019) : alias, budgets min–max et skills.
+  assert.deepEqual(await page.locator("#config-modules .config-module h4").allTextContents(),
+    ["Général", "Tuteur IA et boîte à idées", "Défi express"]);
+  assert.equal(await texte(page, '#config-modules [data-cle="MODELE_DEFI"] dd'), "custom/haiku");
+  assert.equal(await texte(page, '#config-modules [data-cle="LIMITE_TOKENS_SESSION"] dd'), "1000 (200–4000)");
+  assert.match(await texte(page, '#config-modules [data-skill="defi-express"] dd'), /Actif\s+defi-express-v1 · v1\.0\.0/);
 
   await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
   await page.locator("#defi-question").waitFor();
