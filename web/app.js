@@ -777,8 +777,9 @@ function rendreTrophees() {
     const selection = modules.filter(([, m]) => m.genre === genre);
     const obtenusCategorie = selection.reduce((s, [, m]) => s + m.badges.filter((b) => b.obtenu).length, 0);
     const totalCategorie = selection.reduce((s, [, m]) => s + m.badges.length, 0);
-    $(`[data-trophees-categorie="${genre}"] summary`).textContent =
-      `${t(titres[genre])} · ${t("tropheesBadges", { n: obtenusCategorie, m: totalCategorie })}`;
+    $(`[data-trophees-categorie="${genre}"] summary`).textContent = totalCategorie
+      ? `${t(titres[genre])} · ${t("tropheesBadges", { n: obtenusCategorie, m: totalCategorie })}`
+      : t(titres[genre]);
     if (!selection.length) zone.append(element("p", { classe: "doux", cle: "tropheesVide" }));
     for (const [id, m] of selection) {
       const carte = element("article", { classe: "trophee-module", attributs: { "data-trophee-module": id } });
