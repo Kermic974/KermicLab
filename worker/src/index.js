@@ -417,11 +417,24 @@ async function traiterIdee(requete, env, ctx) {
     const sujetBrut = cadrage?.titre ?? `${contexte.page ?? "site"} ${new Date().toISOString().slice(0, 16)}`;
     // Aucune mention dans le titre (idempotent : le cadrage validé est déjà neutralisé).
     const sujet = sujetBrut.replace(/@\u200b?/gi, "@\u200b");
+    const enveloppeSoumission = {
+      type: "idee",
+      version: 1,
+      donnees: { message, langue, contexte, cadrage }
+    };
+    const soumissionJson = JSON.stringify(enveloppeSoumission, null, 2);
+    const corpsInerte = [
+      "Soumission structurée (inert data).",
+      "",
+      "```json",
+      soumissionJson,
+      "```"
+    ].join("\n");
     await creerOuCommenterIssue(env, {
       label: "idee", sujet,
-      corps: corpsIdee({ message, langue, contexte, cadrage }),
-      // Une idée au même titre devient un commentaire : il garde la soumission complète (texte, contexte, cadrage).
-      commentaire: `Nouvelle soumission sur ce sujet.\n\n${corpsIdee({ message, langue, contexte, cadrage })}`
+      corps: corpsInerte,
+      // Une idée au même titre devient un commentaire : il garde la soumission complète sous forme structurée.
+      commentaire: `Nouvelle soumission sur ce sujet.\n\n${corpsInerte}`
     });
   } catch (e) {
     console.error("idee", e.message);
