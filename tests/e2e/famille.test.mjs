@@ -67,6 +67,8 @@ test("connexion désactivée : aucun appel aux comptes, Espace famille et type d
 
 test("sans compte parent : profil local complet et invitation réservée au parent", async () => {
   const { page, contexte, erreurs } = await demarrer({ connexion: true });
+  // L'Espace famille fait partie du compte : il est proposé dans l'écran Profil.
+  await page.click(".barre-laterale [data-nav=profil]");
   await page.locator("#entree-famille").waitFor();
   await page.click(".barre-laterale [data-ouvrir-profil]");
   assert.equal(await page.locator("#type-profil-nom").textContent(), "Profil local, sur cet appareil");
@@ -82,6 +84,7 @@ test("sans compte parent : profil local complet et invitation réservée au pare
 
 test("parent connecté : création d'un profil enfant avec consentement obligatoire, puis mode enfant", async () => {
   const { page, contexte, erreurs, enfants } = await demarrer({ connexion: true, connecte: true });
+  await page.click(".barre-laterale [data-nav=profil]");
   await page.click("#entree-famille");
   await page.locator("#famille-parent").waitFor();
   assert.equal(await page.locator("#famille-vide").isVisible(), true);
@@ -138,7 +141,7 @@ test("démonstration (green card) : parcours parent → enfant sans OAuth ni app
   await page.locator("#famille-invite").waitFor({ state: "visible" });
   await page.click("#quitter-demo");
   await page.waitForURL((url) => !url.search.includes("demo"));
-  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  await page.locator("#entree-education", { hasText: "notions" }).waitFor();
   assert.equal(await bandeau.isVisible(), false);
   assert.equal(await page.locator("#entree-famille").isVisible(), false, "hors démo, l'Espace famille reste fermé (connexionActive = false)");
   assert.deepEqual(appels.filter((a) => !a.endsWith("/auth/me")), [], "aucun appel aux comptes pendant la démo");

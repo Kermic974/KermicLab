@@ -31,6 +31,13 @@ async function choisirPseudo(page, pseudo, { memoriser = false } = {}) {
 }
 
 const texte = (page, s) => page.locator(s).textContent();
+/** Attend la fin du chargement du catalogue (entrée Éducation de l'accueil renseignée). */
+const catalogueCharge = (page) => page.locator("#entree-education", { hasText: "notions" }).waitFor();
+/** Le défi express est un outil d'Éducation. */
+async function lancerDefi(page) {
+  await page.click(".barre-laterale .nav-bouton[data-nav=education]");
+  await page.click("#lancer-defi");
+}
 
 test("premier lancement : pseudo obligatoire et validé, données gardées pour la session seulement", async () => {
   const { page, contexte, erreurs } = await demarrer();
@@ -68,7 +75,7 @@ test("se souvenir de moi : cookie local sans donnée personnelle, pseudo et prog
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:progression")), null);
   await page.reload();
-  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  await catalogueCharge(page);
   assert.equal(await page.locator("#dialogue-pseudo").evaluate((d) => d.open), false);
   assert.equal(await texte(page, "#salut"), "Bonjour Max 👋");
   assert.equal(await texte(page, "#pastille-serie"), "1");
@@ -77,67 +84,74 @@ test("se souvenir de moi : cookie local sans donnée personnelle, pseudo et prog
   await contexte.close();
 });
 
-test("tableau de bord : reprise, suggestion, matières et semaine calculées à partir de la session", async () => {
+test("accueil : une seule prochaine action, deux entrées, aperçu après usage ; progression calculée", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Nina");
-  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
-  assert.match(await texte(page, "#reprendre"), /Ton premier Lab t'attend/);
+  await catalogueCharge(page);
+  // Premier lancement : pas de « Reprendre » inventé, une suggestion, les deux entrées, aucun aperçu vide.
+  assert.equal(await page.locator("#reprendre").isVisible(), false);
   assert.match(await texte(page, "#suggestion"), /Le cercle trigonométrique/, "première suggestion : le cercle");
-  assert.equal(await texte(page, "#chiffres-semaine"), "Questions posées0Notions découvertes0XP gagnés+0 XPJours actifs0 / 7");
-  assert.equal(await page.locator("#semaine-vide").isVisible(), true);
+  assert.equal(await texte(page, "#entree-education"), "6 notions dans 3 matières");
+  assert.equal(await texte(page, "#entree-jeux"), "", "aucun jeu au catalogue : aucun chiffre inventé");
+  assert.equal(await page.locator("#apercu-progression").isVisible(), false);
+  for (const absent of ["#grille-matieres", "#activites", "#jeux-accueil", ".parcours-v3"]) assert.equal(await page.locator(absent).count(), 0, absent);
 
   await page.locator("#suggestion button").click();
   await page.locator("#bulle-lab[open][data-notion=trigo-cercle]").waitFor();
   await page.click("#fermer-bulle");
-  assert.match(await texte(page, "#reprendre"), /Le cercle trigonométrique.*Maths : 1 \/ 4 notions explorées.*25 %/s);
-  assert.match(await texte(page, "#suggestion"), /Les fractions|Le théorème de Pythagore|La dérivation/);
-  assert.doesNotMatch(await texte(page, "#suggestion .encart"), /Le cercle trigonométrique/, "une notion déjà vue n'est plus suggérée");
-  const maths = page.locator("[data-matiere-carte=mathematiques]");
-  assert.match(await maths.textContent(), /1 \/ 4 notions explorées.*25.*En cours/s);
-  assert.equal(await maths.locator(".matiere-monogramme").textContent(), "M");
-  assert.deepEqual(await maths.locator(":scope > *").evaluateAll((elements) => elements.map((e) => e.classList[0])),
-    ["matiere-entete", "matiere-progression", "barre", "matiere-bas"]);
+  assert.match(await texte(page, "#reprendre"), /Maths.*Seconde.*Le cercle trigonométrique/s);
+  assert.equal(await page.locator("#suggestion").isVisible(), false, "une seule prochaine action à la fois");
+  assert.equal(await texte(page, "#apercu-progression-texte"), "1 notion(s) explorée(s)");
+
+  await page.click("#apercu-progression [data-nav=progression]");
+  assert.equal(await texte(page, '[data-compteur="statNotions"] dd'), "1");
+  assert.equal(await texte(page, '[data-compteur="compteurMatieres"] dd'), "1");
+  assert.equal(await page.locator('[data-compteur="compteurJeux"]').count(), 0, "un compteur nul n'est pas affiché");
+  assert.equal(await texte(page, "#progression-matieres"), "Maths1 / 4 explorées");
   assert.match(await texte(page, "#chiffres-semaine"), /Questions posées0Notions découvertes1XP gagnés\+25 XP/);
   assert.equal(await page.locator("#graphique-semaine .baton.aujourdhui").count(), 1);
   assert.equal(await page.locator("#semaine-vide").isVisible(), false);
-  // Une carte de matière ouvre le catalogue sur cette matière.
-  await page.locator("[data-matiere-carte=physique-chimie]").click();
-  await page.locator("#catalogue .notion", { hasText: "Circuits électriques" }).waitFor({ state: "visible" });
+  assert.equal(await page.evaluate(() => /NaN|undefined|null/.test(document.querySelector("#ecran-progression").textContent)), false);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-
-test("accueil : carrousel des jeux et accès direct au menu Jeux", async () => {
+test("Jeux : seulement les jeux du catalogue, résumé réel, « Jouer » puis « Déjà lancé », depuis l'accueil", async () => {
   const { page, contexte, erreurs } = await demarrer({}, null, { jeux: [
-    { id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux" },
+    { id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux", resume: "Joue contre l'ordinateur." },
     { id: "sudoku", titre: "Le Sudoku", version: "1.0.0", niveau: "autres", matiere: "jeux" }
   ] });
   await choisirPseudo(page, "Lina");
-
-  await page.locator("#jeux-accueil-carte").waitFor();
-  assert.equal(await page.locator("#jeux-accueil-nom").textContent(), "Les échecs");
-  assert.equal(await page.locator("#jeux-accueil-compteur").textContent(), "1 / 2 jeux");
-  await page.locator("#jeux-accueil-suivant").click();
-  assert.equal(await page.locator("#jeux-accueil-nom").textContent(), "Le Sudoku");
-  await page.locator("#jeux-accueil-precedent").click();
-  assert.equal(await page.locator("#jeux-accueil-nom").textContent(), "Les échecs");
-  await page.locator("#jeux-accueil-points button").nth(1).click();
-  assert.equal(await page.locator("#jeux-accueil-points button").nth(1).getAttribute("aria-pressed"), "true");
-  assert.equal(await page.locator("#jeux-accueil-points button").nth(1).evaluate((b) => b === document.activeElement), true);
-  await page.setViewportSize({ width: 360, height: 740 });
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
-  await page.locator("#jeux-accueil-carte").click();
+  await catalogueCharge(page);
+  assert.equal(await texte(page, "#entree-jeux"), "2 jeux");
+  await page.locator(".entree[data-nav=jeux]").click();
   await page.locator("#ecran-jeux").waitFor({ state: "visible" });
   assert.equal(new URL(page.url()).hash, "#jeux");
   assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Les échecs", "Le Sudoku"]);
+  assert.deepEqual(await page.locator("#grille-jeux .jeu-carte p").allTextContents(), ["Joue contre l'ordinateur."], "aucun résumé inventé");
+  assert.deepEqual(await page.locator("#grille-jeux [data-jeu]").allTextContents(), ["Jouer", "Jouer"]);
+  assert.equal(await page.getAttribute("[data-jeu=sudoku]", "aria-label"), "Jouer : Le Sudoku");
+  assert.equal(await page.locator("#grille-jeux .pastille").count(), 0);
+  await page.click("[data-jeu=sudoku]");
+  await page.locator("#bulle-lab[open][data-notion=sudoku]").waitFor();
+  await page.click("#fermer-bulle");
+  assert.equal(await page.locator("[data-jeu=sudoku]").evaluate((n) => n.closest("article").textContent), "Le SudokuDéjà lancéJouer");
+  // Un jeu n'est pas une notion : ni dans Éducation, ni dans les notions explorées.
+  const stocke = await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")));
+  assert.deepEqual(stocke.notions, []);
+  assert.equal(stocke.decouvertes.jeu.sudoku.ouvertures, 1);
+  await page.setViewportSize({ width: 360, height: 740 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-
 test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la session", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Nina");
-  await page.locator(".barre-laterale [data-nav=cahiers]").click();
+  // Mes cahiers : un outil d'Éducation, replié par défaut ; l'ancienne adresse #cahiers l'ouvre directement.
+  await page.locator(".barre-laterale [data-nav=education]").click();
+  assert.equal(await page.locator("#ecran-cahiers").isVisible(), false);
+  await page.locator("[aria-controls=ecran-cahiers]").click();
+  assert.equal(await page.getAttribute("[aria-controls=ecran-cahiers]", "aria-expanded"), "true");
   await page.locator("#ecran-cahiers").waitFor({ state: "visible" });
   assert.equal(await page.locator("#cahiers-vide").isVisible(), true);
 
@@ -157,6 +171,7 @@ test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la 
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:cahiers")), null);
   await page.click("#fermer-profil");
 
+  await page.goto(`${serveur.url}/#cahiers`);
   await page.reload();
   await page.locator("#liste-cahiers .cahier-enregistre").first().waitFor();
   assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 3);
@@ -164,35 +179,36 @@ test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la 
   assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 2);
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.locator(".nav-mobile [data-nav=cahiers]").click();
-  assert.equal(await page.locator("#ecran-cahiers").isVisible(), true);
+  await page.locator(".nav-mobile [data-nav=accueil]").click();
+  await page.locator(".nav-mobile [data-nav=education]").click();
+  assert.equal(await page.locator("#ecran-cahiers").isVisible(), true, "l'accordéon garde son état pendant la session");
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
 
-test("parcours v3 : mini-lab en premier et liens vers les trois modes du cercle", async () => {
+test("Éducation : le Lab du cercle, ses trois modes et le mini-lab replié", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Lina");
-
-  assert.match(await texte(page, "#parcours-v3-titre"), /Comprends le cercle en le manipulant/);
-  assert.match(await texte(page, ".parcours-defi"), /sin\(θ\) = 1/);
-  assert.equal(await page.locator(".parcours-action").getAttribute("href"), "cercle/?mode=explore");
-  assert.deepEqual(await page.locator(".parcours-etapes a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
+  await page.click(".barre-laterale [data-nav=education]");
+  assert.deepEqual(await page.locator(".outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
   ]);
+  const bascule = page.locator("[aria-controls=minilab]");
+  assert.equal(await bascule.getAttribute("aria-expanded"), "false");
+  assert.equal(await page.locator("#minilab").isVisible(), false, "rien n'est ouvert par défaut");
+  await bascule.focus();
+  await page.keyboard.press("Enter");
+  assert.equal(await bascule.getAttribute("aria-expanded"), "true");
   assert.equal(await page.locator("#minilab").isVisible(), true);
-  assert.equal(await page.locator("#minilab").evaluate((el) => Boolean(el.compareDocumentPosition(document.querySelector("#accueil")) & Node.DOCUMENT_POSITION_FOLLOWING)), true);
-  assert.match(await texte(page, "#reprendre"), /Ton premier Lab t'attend/);
   assert.equal(await page.locator("#chat-titre").textContent(), "Pose ta question");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-
 test("défi express : correction immédiate, 5 XP par bonne réponse une fois par jour", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Sam");
-  await page.click("#lancer-defi");
+  await lancerDefi(page);
   const bonnes = [1, 0, 1, 0, 0];
   for (const [i, bonne] of bonnes.entries()) {
     await page.locator("#defi .reponse").nth(bonne).click();
@@ -201,12 +217,15 @@ test("défi express : correction immédiate, 5 XP par bonne réponse une fois pa
   }
   assert.equal(await texte(page, "#defi .score"), "5/5");
   assert.match(await texte(page, "#defi .resultat-defi"), /\+25 XP/);
-  assert.match(await texte(page, "#chiffres-semaine"), /\+25 XP/);
+  // « Terminer » ramène à Éducation, où se trouve le défi.
   await page.click("#defi .defi-suite button:not(.secondaire-bouton)");
+  assert.equal(new URL(page.url()).hash, "#education");
   await page.click("#lancer-defi");
   await page.locator("#defi .reponse").nth(0).click();
   assert.match(await texte(page, "#defi-retour"), /Pas tout à fait\./);
   assert.match(await texte(page, "#defi-sur-titre"), /Déjà fait aujourd'hui/);
+  await page.click(".barre-laterale [data-nav=progression]");
+  assert.match(await texte(page, "#chiffres-semaine"), /\+25 XP/);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
@@ -237,7 +256,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   assert.equal(await texte(page, '#config-modules [data-cle="LIMITE_TOKENS_SESSION"] dd'), "1000 (200–4000)");
   assert.match(await texte(page, '#config-modules [data-skill="defi-express"] dd'), /Actif\s+defi-express-v1 · v1\.0\.0/);
 
-  await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
+  await lancerDefi(page);
   await page.locator("#defi-question").waitFor();
   assert.equal(await texte(page, "#defi-question"), "Défi inédit 1 ?");
   assert.match(await texte(page, "#defi-source"), /préparés par l’IA/);
@@ -267,7 +286,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
   assert.match(await texte(page, "#defi-ia-etat"), /Il te reste 0 défi/);
   const avant = requetes.filter((r) => r.defi).length;
-  await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
+  await lancerDefi(page);
   await page.locator("#defi-question").waitFor();
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
   assert.equal(requetes.filter((r) => r.defi).length, avant);
@@ -280,7 +299,7 @@ test("configuration : sans IA activée, le réglage du défi invite à l'activer
   await choisirPseudo(page, "Noé");
   await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
   assert.match(await texte(page, "#defi-ia-etat"), /Active « Utiliser l’IA »/);
-  await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
+  await lancerDefi(page);
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
   assert.equal(requetes.filter((r) => r.defi).length, 0, "aucun appel sans consentement IA");
   assert.deepEqual(erreurs, []);
@@ -291,7 +310,7 @@ test("configuration : seul le switch IA est affiché, le profil reste dans une f
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Léo");
   await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
-  assert.equal(await texte(page, "#salut"), "Configuration");
+  assert.equal(await texte(page, "#salut"), "Profil");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
   assert.equal(await page.locator("#profil input").count(), 1);
   assert.equal(await page.locator("#profil form").count(), 0);
@@ -359,7 +378,8 @@ test("reprise : une progression d'une version précédente est proposée à la m
   await page.click("#formulaire-pseudo button[type=submit]");
   await page.locator("#dialogue-pseudo").waitFor({ state: "hidden" });
   assert.equal((await contexte.cookies())[0]?.name, "kermiclab_memoire");
-  assert.match(await texte(page, "#meta-question"), /^3 /);
+  await page.click(".barre-laterale [data-nav=progression]");
+  assert.equal(await texte(page, '[data-compteur="statQuestions"] dd'), "3", "progression d'une version précédente conservée");
   assert.equal(JSON.parse(await page.evaluate(() => localStorage.getItem("kermiclab:progression"))).questions, 3);
   assert.deepEqual(erreurs, []);
   await contexte.close();
@@ -373,19 +393,19 @@ test("thème : bascule clair/sombre mémorisée comme préférence d'affichage",
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
   assert.equal(await page.getAttribute("#bascule-theme", "aria-label"), "Activer le mode clair");
   await page.reload();
-  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  await catalogueCharge(page);
   assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), "dark");
   await contexte.close();
 });
 
-test("mobile : navigation inférieure, mini-lab utilisable, aucun défilement horizontal", async () => {
+test("mobile : navigation inférieure, mini-lab utilisable dans Éducation, aucun défilement horizontal", async () => {
   const { page, contexte, erreurs } = await demarrer({ viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true });
   await choisirPseudo(page, "Inès");
-  assert.equal(await page.locator(".parcours-action").isVisible(), true);
-  assert.equal(await page.locator("#minilab").isVisible(), true);
-  assert.equal(await page.locator(".parcours-etapes a").count(), 3);
   assert.equal(await page.locator(".barre-laterale").isVisible(), false);
   assert.equal(await page.locator(".nav-mobile").isVisible(), true);
+  assert.equal(await page.locator("#suggestion").isVisible(), true);
+  await page.click(".nav-mobile [data-nav=education]");
+  await page.click("[aria-controls=minilab]");
   await page.locator("#angle-minilab").fill("90");
   assert.equal(await texte(page, '#minilab [data-sortie="sin"]'), "1,000");
   assert.equal(await texte(page, '#minilab [data-sortie="cos"]'), "0,000");
@@ -393,17 +413,18 @@ test("mobile : navigation inférieure, mini-lab utilisable, aucun défilement ho
   await page.click(".nav-mobile [data-nav=profil]");
   await page.locator("#profil").waitFor();
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
+  assert.match(await texte(page, "#profil .identite-textes"), /Inès/, "l'identité reste lisible sur mobile");
+  assert.equal(await page.locator("#profil .lien-profil", { hasText: "Feuille de route" }).isVisible(), true);
   await page.click(".profil-mobile[data-ouvrir-profil]");
   await page.locator("#dialogue-profil[open]").waitFor();
   await page.click("#fermer-profil");
   assert.equal(await page.locator("#profil").isVisible(), true, "fermer le profil conserve l'écran courant");
-  await page.click("#profil [data-nav=accueil]");
+  await page.click(".nav-mobile [data-nav=accueil]");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-
 test("bulle : les pages ouvertes depuis le tableau de bord s'affichent par-dessus, hors du fil du chat", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Bao");

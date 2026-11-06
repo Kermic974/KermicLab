@@ -34,6 +34,7 @@
   <symbol id="i-coeur" viewBox="0 0 24 24"><path d="M20.2 8.8c0 4.4-8.2 10-8.2 10s-8.2-5.6-8.2-10a4.3 4.3 0 0 1 8.2-1.7 4.3 4.3 0 0 1 8.2 1.7z"/></symbol>
   <symbol id="i-utilisateur" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
   <symbol id="i-cercle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12 17.5 6.5"/><circle cx="17.5" cy="6.5" r="1.6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
   <symbol id="i-livre" viewBox="0 0 24 24"><path d="M12 5v15M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Z"/></symbol>
 </svg>
 
@@ -52,21 +53,12 @@
     </a>
     <nav class="nav" data-i18n-aria="sections">
       <button type="button" class="nav-bouton" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
-      <div class="nav-groupe">
-        <span class="nav-groupe-titre" data-i18n="navGroupeLabsJeux"></span>
-        <button type="button" class="nav-bouton" data-nav="labs" aria-controls="ecran-labs"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
-        <button type="button" class="nav-bouton" data-nav="jeux" aria-controls="ecran-jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
-      </div>
-      <button type="button" class="nav-bouton" data-nav="notions" id="ouvrir-catalogue" aria-controls="catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navNotions"></span></button>
-      <button type="button" class="nav-bouton" data-nav="cahiers" aria-controls="ecran-cahiers"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navCahiers"></span></button>
-      <button type="button" class="nav-bouton" data-nav="defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span class="nav-texte" data-i18n="navDefi"></span></button>
+      <button type="button" class="nav-bouton" data-nav="education" id="ouvrir-catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navEducation"></span></button>
+      <button type="button" class="nav-bouton" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
-      <button type="button" class="nav-bouton" data-nav="badges"><svg class="ico" aria-hidden="true"><use href="#i-trophee"/></svg><span class="nav-texte" data-i18n="navBadges"></span></button>
+      <button type="button" class="nav-bouton" data-nav="profil"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navProfil"></span></button>
     </nav>
     <div class="barre-pied">
-      <button type="button" class="nav-bouton" data-nav="profil"><svg class="ico" aria-hidden="true"><use href="#i-reglages"/></svg><span class="nav-texte" data-i18n="navParametres"></span></button>
-      <a class="nav-bouton" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span class="nav-texte" data-i18n="navFeuilleDeRoute"></span></a>
-      <button type="button" class="nav-bouton" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="signaler"></span></button>
       <div class="nav-idees" data-boite-idees-hote></div>
       <a class="nav-bouton nav-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span class="nav-texte" data-i18n="navParticiper"></span></a>
       <button type="button" class="profil-carte" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n-aria="profilTitre">
@@ -102,31 +94,130 @@
           <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
             <select id="langue"></select>
           </label>
-          <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
         </div>
       </header>
 
       <p class="avertissement" role="note" data-i18n="avertissement"></p>
 
-      <section id="ecran-labs" class="ecran" data-ecrans="labs" aria-labelledby="labs-titre" hidden>
-        <div class="tete-section">
-          <div><h2 id="labs-titre" data-i18n="labsDisponibles"></h2><p data-i18n="labsSeparation"></p></div>
-        </div>
-        <article class="carte lab-dedie">
-          <div class="lab-apercu" aria-hidden="true"><svg class="ico"><use href="#i-cercle"/></svg><span class="math">sin(θ) · cos(θ)</span></div>
-          <div class="lab-description">
-            <span class="pastille lab" data-i18n="matiere_mathematiques"></span>
-            <h3 data-i18n="labCercleTitre"></h3>
-            <p class="doux" data-i18n="labCercleDescription"></p>
-            <a class="bouton lab" href="cercle/?mode=explore" data-i18n="parcoursV3Action"></a>
-            <div class="lab-modes">
-              <a href="cercle/?mode=learn" data-i18n="parcoursV3Manipuler"></a>
-              <a href="cercle/?mode=play" data-i18n="parcoursV3Entrainement"></a>
-            </div>
+      <section class="accueil-depart" id="accueil" data-ecrans="accueil" aria-labelledby="depart-titre">
+        <h2 id="depart-titre" class="visuellement-cache" data-i18n="departTitre"></h2>
+        <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre" hidden>
+          <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-lecture"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
+          <div id="reprendre-contenu" class="reprendre-contenu"></div>
+        </section>
+        <section class="carte suggestion" id="suggestion" aria-labelledby="suggestion-titre">
+          <div class="suggestion-entete">
+            <span class="badge-ico" aria-hidden="true"><svg class="ico"><use href="#i-etincelle"/></svg></span>
+            <h3 id="suggestion-titre" data-i18n="suggestionTitre"></h3>
           </div>
-        </article>
-        <div id="grille-labs" class="grille-labs"></div>
-        <button type="button" class="lien-fleche" data-nav="notions" data-i18n="labsVoirNotions"></button>
+          <div id="suggestion-contenu" class="suggestion-contenu"></div>
+        </section>
+        <div class="entrees-accueil">
+          <button type="button" class="carte entree" data-nav="education">
+            <span class="entree-ico" aria-hidden="true"><svg class="ico"><use href="#i-livre"/></svg></span>
+            <span class="entree-textes"><strong data-i18n="navEducation"></strong><span class="doux" id="entree-education"></span></span>
+            <svg class="ico entree-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+          <button type="button" class="carte entree" data-nav="jeux">
+            <span class="entree-ico jeux" aria-hidden="true"><svg class="ico"><use href="#i-jeu"/></svg></span>
+            <span class="entree-textes"><strong data-i18n="navJeux"></strong><span class="doux" id="entree-jeux"></span></span>
+            <svg class="ico entree-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+        </div>
+        <p class="apercu-progression" id="apercu-progression" hidden>
+          <span id="apercu-progression-texte"></span>
+          <button type="button" class="lien-fleche" data-nav="progression"><span data-i18n="apercuVoir"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </p>
+      </section>
+
+      <section id="catalogue" class="ecran education" data-ecrans="education" aria-labelledby="catalogue-titre" hidden>
+        <div class="tete-section">
+          <h2 id="catalogue-titre" data-i18n="educationNotions"></h2>
+          <p class="catalogue-compteur" id="catalogue-compteur" role="status"></p>
+        </div>
+        <label class="visuellement-cache" for="recherche-notion" data-i18n="rechercherNotion"></label>
+        <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
+        <div id="catalogue-liste" class="arbre"></div>
+        <p id="catalogue-vide" class="doux" data-i18n="aucuneNotion" hidden></p>
+        <p id="catalogue-indisponible" class="doux" data-i18n="catalogueIndisponible" hidden></p>
+
+        <section class="outils-education" aria-labelledby="outils-titre">
+          <h2 id="outils-titre" data-i18n="educationOutils"></h2>
+          <div class="liste-outils">
+            <article class="carte outil">
+              <h3 data-i18n="activiteDefi"></h3>
+              <p class="doux" data-i18n="activiteDefiTexte"></p>
+              <p class="meta"><span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-horloge"/></svg><span data-i18n="activiteDefiDuree"></span></span><span class="xp" id="meta-defi"></span></p>
+              <button type="button" class="bouton" data-nav="defi" id="lancer-defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span data-i18n="activiteDefiBouton"></span></button>
+            </article>
+            <article class="carte outil">
+              <h3 data-i18n="labCercleTitre"></h3>
+              <p class="doux" data-i18n="labCercleDescription"></p>
+              <div class="outil-actions">
+                <a class="bouton lab" href="cercle/?mode=explore" data-i18n="parcoursV3Action"></a>
+                <a class="lien-mode" href="cercle/?mode=learn" data-i18n="parcoursV3Manipuler"></a>
+                <a class="lien-mode" href="cercle/?mode=play" data-i18n="parcoursV3Entrainement"></a>
+                <button type="button" class="accordeon-bouton secondaire" data-accordeon-fixe aria-expanded="false" aria-controls="minilab"><svg class="ico chevron" aria-hidden="true"><use href="#i-chevron"/></svg><span data-i18n="minilabTitre"></span></button>
+              </div>
+              <section class="minilab" id="minilab" aria-labelledby="minilab-titre" hidden>
+                <div class="minilab-tete">
+                  <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
+                  <span class="doux petit" data-i18n="minilabAide"></span>
+                </div>
+                <div class="cercle-hote" data-cercle></div>
+                <div class="curseur-ligne">
+                  <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
+                  <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
+                  <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
+                </div>
+                <dl class="lectures" aria-live="polite">
+                  <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
+                  <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
+                  <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
+                </dl>
+                <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+              </section>
+            </article>
+            <article class="carte outil">
+              <h3 data-i18n="navCahiers"></h3>
+              <p class="doux" data-i18n="cahiersIntro"></p>
+              <div class="outil-actions">
+                <button type="button" class="accordeon-bouton secondaire" data-accordeon-fixe aria-expanded="false" aria-controls="ecran-cahiers"><svg class="ico chevron" aria-hidden="true"><use href="#i-chevron"/></svg><span data-i18n="cahiersOuvrir"></span></button>
+              </div>
+            </article>
+          </div>
+          <section id="ecran-cahiers" class="cahiers" aria-labelledby="cahiers-titre" hidden>
+            <h3 id="cahiers-titre" data-i18n="cahiersDisponibles"></h3>
+            <div class="grille-types-cahier">
+              <article class="carte type-cahier">
+                <h4 data-i18n="cahier_brouillon"></h4>
+                <p data-i18n="cahierBrouillonAide"></p>
+                <button type="button" class="bouton" data-cahier-type="brouillon" data-i18n="cahierCreer"></button>
+              </article>
+              <article class="carte type-cahier">
+                <h4 data-i18n="cahier_fiches"></h4>
+                <p data-i18n="cahierFichesAide"></p>
+                <button type="button" class="bouton" data-cahier-type="fiches" data-i18n="cahierCreer"></button>
+              </article>
+              <article class="carte type-cahier">
+                <h4 data-i18n="cahier_vacances"></h4>
+                <p data-i18n="cahierVacancesAide"></p>
+                <button type="button" class="bouton" data-cahier-type="vacances" data-i18n="cahierCreer"></button>
+              </article>
+              <article class="carte type-cahier">
+                <h4 data-i18n="cahier_exercices"></h4>
+                <p data-i18n="cahierExercicesAide"></p>
+                <button type="button" class="bouton" data-cahier-type="exercices" data-i18n="cahierCreer"></button>
+              </article>
+            </div>
+            <section class="cahiers-enregistres" aria-labelledby="cahiers-personnels-titre">
+              <h4 id="cahiers-personnels-titre" data-i18n="cahiersPersonnels"></h4>
+              <p class="doux petit" data-i18n="cahiersStockage"></p>
+              <p id="cahiers-vide" class="doux" data-i18n="cahiersVides"></p>
+              <div id="liste-cahiers" class="grille-cahiers" aria-live="polite"></div>
+            </section>
+          </section>
+        </section>
       </section>
 
       <section id="ecran-jeux" class="ecran" data-ecrans="jeux" aria-labelledby="jeux-titre" hidden>
@@ -140,188 +231,24 @@
         <p id="jeux-vide" class="doux" hidden></p>
       </section>
 
-      <section id="ecran-cahiers" class="ecran" data-ecrans="cahiers" aria-labelledby="cahiers-titre" hidden>
-        <div class="tete-section">
-          <div><h2 id="cahiers-titre" data-i18n="cahiersDisponibles"></h2><p data-i18n="cahiersIntro"></p></div>
-        </div>
-        <div class="grille-types-cahier">
-          <article class="carte type-cahier">
-            <h3 data-i18n="cahier_brouillon"></h3>
-            <p data-i18n="cahierBrouillonAide"></p>
-            <button type="button" class="bouton" data-cahier-type="brouillon" data-i18n="cahierCreer"></button>
-          </article>
-          <article class="carte type-cahier">
-            <h3 data-i18n="cahier_fiches"></h3>
-            <p data-i18n="cahierFichesAide"></p>
-            <button type="button" class="bouton" data-cahier-type="fiches" data-i18n="cahierCreer"></button>
-          </article>
-          <article class="carte type-cahier">
-            <h3 data-i18n="cahier_vacances"></h3>
-            <p data-i18n="cahierVacancesAide"></p>
-            <button type="button" class="bouton" data-cahier-type="vacances" data-i18n="cahierCreer"></button>
-          </article>
-          <article class="carte type-cahier">
-            <h3 data-i18n="cahier_exercices"></h3>
-            <p data-i18n="cahierExercicesAide"></p>
-            <button type="button" class="bouton" data-cahier-type="exercices" data-i18n="cahierCreer"></button>
-          </article>
-        </div>
-        <section class="cahiers-enregistres" aria-labelledby="cahiers-personnels-titre">
-          <div class="tete-section">
-            <div><h3 id="cahiers-personnels-titre" data-i18n="cahiersPersonnels"></h3><p data-i18n="cahiersStockage"></p></div>
+      <section id="ecran-progression" class="ecran" data-ecrans="progression" aria-labelledby="ensemble-titre" hidden>
+        <div class="carte progression-vide" id="progression-vide" hidden>
+          <p data-i18n="progressionVide"></p>
+          <div class="actions">
+            <button type="button" class="bouton" data-nav="education" data-i18n="progressionVideEducation"></button>
+            <button type="button" class="secondaire" data-nav="jeux" data-i18n="progressionVideJeux"></button>
           </div>
-          <p id="cahiers-vide" class="doux" data-i18n="cahiersVides"></p>
-          <div id="liste-cahiers" class="grille-cahiers" aria-live="polite"></div>
+        </div>
+        <section id="vue-ensemble" aria-labelledby="ensemble-titre">
+          <h2 id="ensemble-titre" data-i18n="progressionEnsemble"></h2>
+          <dl id="compteurs" class="compteurs"></dl>
+          <p class="doux petit" data-i18n="tempsActifAide"></p>
         </section>
-      </section>
-
-      <section id="catalogue" class="ecran catalogue" data-ecrans="notions" aria-labelledby="catalogue-titre" hidden>
-        <div class="tete-section">
-          <h2 id="catalogue-titre" data-i18n="catalogueTitre"></h2>
-          <p class="catalogue-compteur" id="catalogue-compteur" role="status"></p>
-        </div>
-        <progress id="catalogue-progres" max="1" value="0"></progress>
-        <div id="catalogue-matieres" class="matieres" role="tablist" hidden></div>
-        <label class="visuellement-cache" for="recherche-notion" data-i18n="rechercherNotion"></label>
-        <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
-        <nav id="catalogue-liste" class="catalogue-liste" aria-labelledby="catalogue-titre"></nav>
-        <p id="catalogue-vide" class="doux" data-i18n="aucuneNotion" hidden></p>
-        <p id="catalogue-indisponible" class="doux" data-i18n="catalogueIndisponible" hidden></p>
-      </section>
-
-      <section class="parcours-v3" data-ecrans="accueil" aria-labelledby="parcours-v3-titre">
-        <div class="parcours-v3-texte">
-          <span class="sur-titre" data-i18n="parcoursV3SurTitre"></span>
-          <h2 id="parcours-v3-titre" data-i18n="parcoursV3Titre"></h2>
-          <p data-i18n="parcoursV3Intro"></p>
-          <p class="parcours-defi"><strong data-i18n="parcoursV3Defi"></strong></p>
-          <a class="bouton grand-bouton parcours-action" href="cercle/?mode=explore">
-            <span data-i18n="parcoursV3Action"></span>
-            <svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg>
-          </a>
-          <ol class="parcours-etapes" data-i18n-aria="parcoursV3Etapes">
-            <li>
-              <a href="cercle/?mode=explore">
-                <span class="parcours-numero">01</span>
-                <span><strong data-i18n="parcoursV3Decouvrir"></strong><small data-i18n="parcoursV3DecouvrirTexte"></small></span>
-              </a>
-            </li>
-            <li>
-              <a href="cercle/?mode=learn">
-                <span class="parcours-numero">02</span>
-                <span><strong data-i18n="parcoursV3Manipuler"></strong><small data-i18n="parcoursV3ManipulerTexte"></small></span>
-              </a>
-            </li>
-            <li>
-              <a href="cercle/?mode=play">
-                <span class="parcours-numero">03</span>
-                <span><strong data-i18n="parcoursV3Entrainement"></strong><small data-i18n="parcoursV3EntrainementTexte"></small></span>
-              </a>
-            </li>
-          </ol>
-        </div>
-
-        <section class="carte minilab parcours-mini" id="minilab" aria-labelledby="minilab-titre">
-          <div class="minilab-tete">
-            <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
-            <span class="doux petit" data-i18n="minilabAide"></span>
-          </div>
-          <div class="cercle-hote" data-cercle></div>
-          <div class="curseur-ligne">
-            <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
-            <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
-            <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
-          </div>
-          <dl class="lectures" aria-live="polite">
-            <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
-            <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
-            <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
-          </dl>
-          <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        <section id="bloc-matieres" class="carte" aria-labelledby="matieres-progression-titre" hidden>
+          <h2 id="matieres-progression-titre" data-i18n="progressionMatieres"></h2>
+          <ul id="progression-matieres" class="progression-matieres"></ul>
         </section>
-      </section>
-
-      <div class="accueil" id="accueil" data-ecrans="accueil">
-        <div class="colonne">
-          <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre">
-            <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fiole"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
-            <div id="reprendre-contenu" class="reprendre-contenu"></div>
-          </section>
-          <section class="carte suggestion" id="suggestion" aria-labelledby="suggestion-titre">
-            <div class="suggestion-entete">
-              <span class="badge-ico" aria-hidden="true"><svg class="ico"><use href="#i-etincelle"/></svg></span>
-              <h2 id="suggestion-titre" data-i18n="suggestionTitre"></h2>
-            </div>
-            <div id="suggestion-contenu" class="suggestion-contenu"></div>
-          </section>
-        </div>
-      </div>
-
-      <section class="carte jeux-accueil" id="jeux-accueil" data-ecrans="accueil" aria-labelledby="jeux-accueil-titre">
-        <div class="tete-section">
-          <div><h2 id="jeux-accueil-titre" data-i18n="jeuxAccueilTitre"></h2><p data-i18n="jeuxAccueilIntro"></p></div>
-          <button type="button" class="lien-fleche" data-nav="jeux"><span data-i18n="jeuxAccueilToutVoir"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-        </div>
-        <div class="carrousel-jeux" role="region" data-i18n-aria="jeuxAccueilRegion">
-          <button type="button" class="carrousel-jeux-controle" id="jeux-accueil-precedent" data-i18n-aria="jeuxAccueilPrecedent"><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-          <button type="button" class="carrousel-jeux-carte" id="jeux-accueil-carte" data-nav="jeux">
-            <span class="carrousel-jeux-icone" aria-hidden="true"><svg class="ico"><use href="#i-jeu"/></svg></span>
-            <span class="carrousel-jeux-texte"><strong id="jeux-accueil-nom"></strong><span data-i18n="jeuxAccueilAction"></span></span>
-            <svg class="ico carrousel-jeux-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
-          </button>
-          <button type="button" class="carrousel-jeux-controle" id="jeux-accueil-suivant" data-i18n-aria="jeuxAccueilSuivant"><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-        </div>
-        <div class="carrousel-jeux-pied">
-          <span id="jeux-accueil-compteur" role="status" aria-live="polite"></span>
-          <div id="jeux-accueil-points" class="carrousel-jeux-points" role="group" data-i18n-aria="jeuxAccueilChoisir"></div>
-        </div>
-      </section>
-
-      <section aria-labelledby="matieres-titre" id="matieres" data-ecrans="accueil">
-        <div class="tete-section">
-          <div>
-            <h2 id="matieres-titre" data-i18n="matieresTitre"></h2>
-            <p data-i18n="matieresAide"></p>
-          </div>
-          <button type="button" class="lien-fleche" data-nav="notions"><span data-i18n="toutVoir"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-        </div>
-        <div class="grille-matieres" id="grille-matieres"></div>
-      </section>
-
-      <section aria-labelledby="activites-titre" id="activites" data-ecrans="accueil">
-        <div class="tete-section">
-          <div>
-            <h2 id="activites-titre" data-i18n="activitesTitre"></h2>
-            <p data-i18n="activitesAide"></p>
-          </div>
-        </div>
-        <div class="activites">
-          <article class="carte activite explorer">
-            <span class="activite-ico" aria-hidden="true"><svg class="ico"><use href="#i-fiole"/></svg></span>
-            <h3 data-i18n="activiteExplorer"></h3>
-            <p data-i18n="activiteExplorerTexte"></p>
-            <p class="meta" id="meta-explorer"></p>
-            <button type="button" class="bouton lab" data-nav="notions"><span data-i18n="activiteExplorerBouton"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-          </article>
-          <article class="carte activite question">
-            <span class="activite-ico" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
-            <h3 data-i18n="activiteQuestion"></h3>
-            <p data-i18n="activiteQuestionTexte"></p>
-            <p class="meta" id="meta-question"></p>
-            <button type="button" class="bouton doux-bouton" data-action="question"><span data-i18n="activiteQuestionBouton"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-          </article>
-          <article class="carte activite express">
-            <span class="activite-ico" aria-hidden="true"><svg class="ico"><use href="#i-eclair"/></svg></span>
-            <h3 data-i18n="activiteDefi"></h3>
-            <p data-i18n="activiteDefiTexte"></p>
-            <p class="meta"><span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-horloge"/></svg><span data-i18n="activiteDefiDuree"></span></span><span class="xp" id="meta-defi"></span></p>
-            <button type="button" class="bouton" data-nav="defi" id="lancer-defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span data-i18n="activiteDefiBouton"></span></button>
-          </article>
-        </div>
-      </section>
-
-      <div class="rangee-bas" data-ecrans="accueil progression">
-        <section class="carte semaine" aria-labelledby="semaine-titre" id="semaine">
+        <section class="carte semaine" aria-labelledby="semaine-titre" id="semaine" hidden>
           <div class="tete-section">
             <div>
               <h2 id="semaine-titre" data-i18n="semaineTitre"></h2>
@@ -336,8 +263,11 @@
           <div class="graphique" id="graphique-semaine" role="img"></div>
           <p class="doux petit" id="semaine-vide" data-i18n="semaineVide" hidden></p>
         </section>
-
-      </div>
+        <section id="decouvertes" class="carte" aria-labelledby="decouvertes-titre" hidden>
+          <h2 id="decouvertes-titre" data-i18n="progressionDecouvertes"></h2>
+          <div id="decouvertes-liste" class="arbre"></div>
+        </section>
+      </section>
 
       <footer class="pied">
         <a href="cercle/" data-i18n="application"></a>
@@ -390,16 +320,10 @@
 
 <nav class="nav-mobile" data-i18n-aria="navigationMobile">
   <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
-  <div class="nav-mobile-groupe" role="group" data-i18n-aria="navGroupeLabsJeux">
-    <button type="button" class="nav-mobile-bouton" data-nav="labs" aria-controls="ecran-labs"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg></span><span data-i18n="navLabs"></span></button>
-    <button type="button" class="nav-mobile-bouton" data-nav="jeux" aria-controls="ecran-jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
-  </div>
-  <button type="button" class="nav-mobile-bouton" data-nav="notions" aria-controls="catalogue"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navNotions"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="cahiers" aria-controls="ecran-cahiers"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navCahiers"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="defi"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg></span><span data-i18n="navDefiCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="education"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navEducation"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-reglages"/></svg></span><span data-i18n="navProfil"></span></button>
-  <a class="nav-mobile-bouton nav-mobile-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg></span><span data-i18n="navParticiper"></span></a>
+  <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
 </nav>
 
 <div id="toasts" role="status" aria-live="polite"></div>
@@ -426,11 +350,19 @@
 </dialog>
 
 <!-- Configuration : la route #profil reste compatible. -->
-<section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="configuration-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
-    <button type="button" class="secondaire" data-nav="accueil" data-i18n="navAccueil"></button>
-  </div>
+<section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="identite-titre" hidden>
+  <section class="profil-identite" aria-labelledby="identite-titre">
+    <h2 id="identite-titre" data-i18n="profilIdentite"></h2>
+    <div class="identite-ligne">
+      <span class="avatar-profil grand" data-profil="initiale" aria-hidden="true"></span>
+      <span class="identite-textes"><strong data-profil="pseudo"></strong><span class="doux" data-profil="niveau"></span></span>
+    </div>
+    <div class="actions">
+      <button type="button" class="bouton" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n="profilModifier"></button>
+      <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
+    </div>
+  </section>
+  <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
   <div class="llm-controle">
     <label class="llm-interrupteur" for="llm-actif">
       <span data-i18n="llmToggleLabel"></span>
@@ -452,13 +384,20 @@
     <div id="config-modules" class="config-modules"></div>
     <p id="config-serveur-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></p>
   </div>
+  <h2 data-i18n="profilAide"></h2>
+  <ul class="liens-profil">
+    <li><a class="lien-profil" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="navFeuilleDeRoute"></span></a></li>
+    <li><button type="button" class="lien-profil" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="signaler"></span></button></li>
+    <li><a class="lien-profil" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span data-i18n="navParticiper"></span></a></li>
+    <li><a class="lien-profil" href="confidentialite.html"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="confidentialite"></span></a></li>
+  </ul>
 </section>
 
 <!-- Espace famille (ADR 0017) : accessible seulement si connexionActive ; un compte parent crée les profils enfants. -->
 <section id="famille" class="carte ecran-personnel" data-ecrans="famille" aria-labelledby="famille-titre" hidden>
   <div class="dialogue-entete">
     <h2 id="famille-titre" data-i18n="familleTitre"></h2>
-    <button type="button" class="secondaire" data-nav="accueil" data-i18n="navAccueil"></button>
+    <button type="button" class="secondaire" data-nav="profil" data-i18n="retourProfil"></button>
   </div>
   <p id="famille-etat" class="doux" role="status"></p>
   <div id="famille-invite" hidden>
@@ -574,22 +513,14 @@
       <p class="sur-titre chaud" id="defi-sur-titre"></p>
       <h2 id="defi-titre" data-i18n="defiTitre"></h2>
     </div>
-    <button type="button" class="secondaire" id="fermer-defi" data-nav="accueil" data-i18n="navAccueil"></button>
+    <button type="button" class="secondaire" id="fermer-defi" data-nav="education" data-i18n="retourEducation"></button>
   </div>
   <p id="defi-source" class="doux petit"></p>
   <div id="defi-corps"></div>
 </section>
 
-<section id="progres" class="carte ecran-personnel" data-ecrans="badges" aria-labelledby="progres-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="progres-titre" data-i18n="navBadges"></h2>
-    <button type="button" class="secondaire" id="fermer-progres" data-nav="accueil" data-i18n="navAccueil"></button>
-  </div>
-  <p data-i18n="tropheesIntro"></p>
-  <p id="trophees-resume" role="status"></p>
-  <p id="trophees-etat" role="status"></p>
-  <button type="button" class="secondaire" id="trophees-reessayer" data-i18n="reessayer" hidden></button>
-  <h3 data-i18n="tropheesExploration"></h3>
+<section id="progres" class="carte ecran-personnel" data-ecrans="progression" aria-labelledby="progres-titre" hidden>
+  <h2 id="progres-titre" data-i18n="mesBadges"></h2>
   <div class="niveau-carte">
     <span class="niveau-rond" id="progres-niveau-num" aria-hidden="true"></span>
     <div class="niveau-details">
@@ -597,28 +528,28 @@
       <progress id="progres-xp" max="100" value="0"></progress>
       <span class="doux" id="progres-xp-texte"></span>
     </div>
+    <p class="doux petit" id="stat-serie-max"></p>
   </div>
-  <dl class="stats">
-    <div><dt data-i18n="statQuestions"></dt><dd id="stat-questions"></dd></div>
-    <div><dt data-i18n="statNotions"></dt><dd id="stat-notions"></dd></div>
-    <div><dt data-i18n="statSerie"></dt><dd id="stat-serie"></dd></div>
-  </dl>
-  <p class="doux petit" id="stat-serie-max"></p>
-  <h3 data-i18n="badgesTitre"></h3>
-  <ul id="liste-badges" class="badges"></ul>
-  <details class="trophees-categorie" data-trophees-categorie="notions">
-    <summary data-i18n="tropheesNotions"></summary>
-    <div id="trophees-notions"></div>
-  </details>
-  <details class="trophees-categorie" data-trophees-categorie="labs" open>
-    <summary data-i18n="tropheesLabs"></summary>
-    <div id="trophees-labs"></div>
-  </details>
-  <details class="trophees-categorie" data-trophees-categorie="jeux" open>
-    <summary data-i18n="tropheesJeux"></summary>
-    <div id="trophees-jeux"></div>
-  </details>
-  <p class="doux petit" data-i18n="tropheesLimites"></p>
+  <p id="trophees-resume" role="status"></p>
+  <h3 id="badges-obtenus-titre" data-i18n="badgesObtenus" hidden></h3>
+  <ul id="liste-badges" class="badges" aria-labelledby="badges-obtenus-titre"></ul>
+  <h3 id="badges-portee-titre" data-i18n="badgesAPortee" hidden></h3>
+  <ul id="badges-portee" class="badges" aria-labelledby="badges-portee-titre"></ul>
+  <div id="trophees-modules" hidden>
+    <h3 data-i18n="badgesModules"></h3>
+    <details class="trophees-categorie" data-trophees-categorie="notions" open>
+      <summary data-i18n="tropheesNotions"></summary>
+      <div id="trophees-notions"></div>
+    </details>
+    <details class="trophees-categorie" data-trophees-categorie="labs" open>
+      <summary data-i18n="tropheesLabs"></summary>
+      <div id="trophees-labs"></div>
+    </details>
+    <details class="trophees-categorie" data-trophees-categorie="jeux" open>
+      <summary data-i18n="tropheesJeux"></summary>
+      <div id="trophees-jeux"></div>
+    </details>
+  </div>
   <p class="note-locale" id="note-memoire"></p>
   <p class="doux petit" data-i18n="progressionCompte"></p>
 </section>

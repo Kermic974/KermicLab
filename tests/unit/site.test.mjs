@@ -44,14 +44,15 @@ test("les CSS et JS du chat portent l'empreinte de leur contenu (pas de mélange
   assert.match(confidentialite, /href="style\.css\?v=[0-9a-f]{10}"/);
 });
 
-test("la feuille de route est publiée et accessible entre « Configuration » et « Signaler un problème »", async () => {
+test("la feuille de route est publiée et accessible depuis Profil, entre « Configuration » et « Signaler un problème »", async () => {
   const [html, page] = await Promise.all([
     readFile(`${racine}web/index.html`, "utf8"),
     readFile(`${racine}dist/feuille-de-route.html`, "utf8")
   ]);
-  const ordre = ["navParametres", "navFeuilleDeRoute", 'data-nav="aide"'].map((cle) => html.indexOf(cle));
-  assert.ok(ordre.every((i) => i > 0) && ordre[0] < ordre[1] && ordre[1] < ordre[2], "ordre de la barre latérale");
-  assert.match(html, /<a class="nav-bouton" href="feuille-de-route\.html">/);
+  const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("</section>\n\n<!-- Espace famille"));
+  const ordre = ['id="configuration-titre"', "navFeuilleDeRoute", 'data-nav="aide"'].map((cle) => profil.indexOf(cle));
+  assert.ok(ordre.every((i) => i > 0) && ordre[0] < ordre[1] && ordre[1] < ordre[2], "ordre dans l'écran Profil");
+  assert.match(profil, /<a class="lien-profil" href="feuille-de-route\.html">/);
   assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
   // Seul le JSON de configuration est en ligne ; le composant utilise des ressources locales.
   assert.doesNotMatch(page, /<script(?! type="(?:application\/json|module)")|<style|style="/);
@@ -62,11 +63,19 @@ test("la feuille de route est publiée et accessible entre « Configuration » e
   }
 });
 
-test("le lien de participation est visible dans les navigations desktop et mobile et traduit", async () => {
+test("le lien de participation reste visible (barre latérale et Profil), hors des 5 destinations, et traduit", async () => {
   const html = await readFile(`${racine}web/index.html`, "utf8");
   assert.equal((html.match(/https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc/g) ?? []).length, 2);
-  assert.match(html, /class="nav-bouton nav-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
-  assert.match(html, /class="nav-mobile-bouton nav-mobile-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
+  const pied = html.slice(html.indexOf('<div class="barre-pied">'), html.indexOf("</aside>"));
+  assert.match(pied, /class="nav-bouton nav-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
+  const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("<!-- Espace famille"));
+  assert.match(profil, /class="lien-profil" href="https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc" target="_blank" rel="noopener noreferrer"/);
+  // Les deux navigations ne contiennent que les 5 destinations, sans action secondaire.
+  for (const classe of ["nav", "nav-mobile"]) {
+    const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
+    assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), ["accueil", "education", "jeux", "progression", "profil"], classe);
+    assert.doesNotMatch(bloc, /<a\b/, `${classe} : aucun lien, seulement des destinations`);
+  }
   for (const l of ["fr", "en"]) {
     const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
     assert.ok(textes.navParticiper, `clé « navParticiper » absente de ${l}.json`);

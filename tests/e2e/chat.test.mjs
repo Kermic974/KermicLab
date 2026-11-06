@@ -30,7 +30,7 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
-  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  await page.locator("#entree-education", { hasText: "notions" }).waitFor();
   const avatar = page.locator("#ouvrir-chat");
   const panneau = page.locator("#panneau-chat");
   assert.equal(await panneau.isVisible(), false);
@@ -51,7 +51,7 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   assert.equal(await panneau.isVisible(), false);
   assert.equal(await avatar.evaluate((n) => n === document.activeElement), true);
   assert.equal(await avatar.getAttribute("aria-expanded"), "false");
-  for (const ecran of ["labs", "jeux", "defi", "progression", "badges", "profil"]) {
+  for (const ecran of ["education", "jeux", "progression", "profil"]) {
     await page.click(`.barre-laterale [data-nav="${ecran}"]`);
     await avatar.click();
     assert.equal(new URL(page.url()).hash, `#${ecran}`, "ouvrir le chat ne change pas d’écran");
@@ -62,7 +62,7 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
     assert.equal(await panneau.isVisible(), false);
   }
   await page.click(".barre-laterale [data-nav=accueil]");
-  await page.click('[data-action="question"]');
+  await avatar.click();
   assert.equal(await panneau.isVisible(), true);
   await page.click("#fermer-chat");
   assert.equal(await avatar.evaluate((n) => n === document.activeElement), true);
@@ -74,8 +74,8 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   assert.equal(await panneau.isVisible(), true);
   assert.equal(await page.locator("#bulle-lab").isVisible(), false);
   assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
-  await page.click(".barre-laterale [data-nav=notions]");
-  assert.equal(new URL(page.url()).hash, "#notions", "Notions est un écran, comme les autres menus");
+  await page.click(".barre-laterale [data-nav=education]");
+  assert.equal(new URL(page.url()).hash, "#education", "Éducation est une destination, comme les autres");
   assert.equal(await page.locator("#catalogue").isVisible(), true);
   assert.equal(requetes.length, 1, "ouvrir ou fermer ne déclenche aucun échange");
   assert.deepEqual(erreurs, []);
@@ -104,9 +104,9 @@ test("avatar mobile : panneau borné à l’écran, saisie visible et fil défil
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   await page.click("#fermer-chat");
-  await page.click(".nav-mobile [data-nav=labs]");
+  await page.click(".nav-mobile [data-nav=education]");
   await page.click("#ouvrir-chat");
-  assert.equal(new URL(page.url()).hash, "#labs");
+  assert.equal(new URL(page.url()).hash, "#education");
   assert.equal(await page.locator("li[data-maquette=trigo-cercle]").count(), 1);
   await page.setViewportSize({ width: 667, height: 375 });
   const paysage = await page.locator("#panneau-chat").boundingBox();
@@ -148,7 +148,8 @@ test("chat replié : une réponse en cours arrive sans rouvrir le panneau ni dé
   assert.equal(await page.evaluate(() => scrollY), position);
   await page.click("#ouvrir-chat");
   assert.equal(await page.locator("#fil li", { hasText: "Réponse différée." }).isVisible(), true);
-  await page.click(".barre-laterale [data-nav=aide]");
+  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click("#profil [data-nav=aide]");
   await page.keyboard.press("Escape");
   assert.equal(await page.locator("#signalement").isVisible(), false);
   assert.equal(await page.locator("#panneau-chat").isVisible(), true, "Échap respecte la priorité du dialogue modal");
@@ -225,8 +226,9 @@ test("progression : suggestions cliquables, XP et badges gardés pour la session
   assert.deepEqual(stocke.notions, ["trigo-cercle"]);
   await page.click("#fermer-chat");
   await page.click("#ouvrir-progres");
+  assert.equal(new URL(page.url()).hash, "#progression");
   assert.equal(await page.locator("#liste-badges .badge.obtenu").count(), 2);
-  await page.click("#fermer-progres");
+  await page.click(".barre-laterale [data-nav=accueil]");
   assert.equal(await page.locator("#progres").isVisible(), false);
   assert.deepEqual(erreurs, []);
   await contexte.close();
@@ -242,7 +244,11 @@ test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'X
   await page.keyboard.press("Enter");
   const relance = page.locator("li.hors-catalogue .relances .puce");
   await relance.waitFor();
-  assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:progression")), null);
+  // Afficher un écran est une découverte (sans récompense) : aucune XP, aucune question ni notion comptée.
+  const stocke = JSON.parse(await page.evaluate(() => sessionStorage.getItem("kermiclab:progression")) ?? "{}");
+  assert.equal(stocke.xp ?? 0, 0);
+  assert.equal(stocke.questions ?? 0, 0);
+  assert.deepEqual(stocke.notions ?? [], []);
   await relance.click();
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.deepEqual(erreurs, []);
@@ -435,89 +441,89 @@ test("IA : un lien non issu du catalogue n'est pas rendu comme source cliquable"
   await contexte.close();
 });
 
-test("catalogue : écran « Notions », recherche sans accents, ouverture directe d'une notion", async () => {
+test("Éducation : Niveau > Matière > Notions en accordéons fermés, recherche sans accents, ouverture directe", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
-  const barre = page.locator("#catalogue");
-  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
-  assert.equal(await barre.isVisible(), false, "masqué tant qu'on n'ouvre pas le menu");
+  const ecran = page.locator("#catalogue");
+  await page.locator("#entree-education", { hasText: "notions" }).waitFor();
+  assert.equal(await ecran.isVisible(), false, "masqué tant qu'on n'ouvre pas Éducation");
   await page.click("#ouvrir-catalogue");
-  await barre.locator(".notion").first().waitFor();
+  await ecran.locator(".accordeon-bouton").first().waitFor();
   assert.equal(await page.locator("#ouvrir-catalogue").getAttribute("aria-current"), "page");
-  assert.equal(new URL(page.url()).hash, "#notions");
-  assert.equal(await page.locator("#salut").textContent(), "Notions");
+  assert.equal(new URL(page.url()).hash, "#education");
+  assert.equal(await page.locator("#salut").textContent(), "Éducation");
   assert.equal(await page.locator("#accueil").isVisible(), false);
-  await capturer(page, "notions-ecran");
-  assert.deepEqual(await barre.locator(".groupe-niveau summary > span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
+  await capturer(page, "education-ecran");
+  // Premier niveau : les niveaux scolaires réels, tous fermés, sur de vrais boutons reliés à leur panneau.
+  const niveaux = ecran.locator("#catalogue-liste > .accordeon > .accordeon-titre > .accordeon-bouton");
+  assert.deepEqual(await niveaux.locator(".accordeon-libelle").allTextContents(), ["Collège", "Seconde", "Première", "Terminale"]);
+  for (const bouton of await niveaux.all()) {
+    assert.equal(await bouton.getAttribute("aria-expanded"), "false");
+    assert.equal(await page.locator(`#${await bouton.getAttribute("aria-controls")}`).isHidden(), true);
+  }
+  assert.equal(await ecran.locator(".notion:visible").count(), 0, "rien n'est ouvert par défaut");
   assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 6 notions explorées/);
+  // Clavier : Entrée ouvre le niveau, puis la matière ; les associations viennent des métadonnées.
+  await niveaux.first().focus();
+  await page.keyboard.press("Enter");
+  assert.equal(await niveaux.first().getAttribute("aria-expanded"), "true");
+  const matieres = page.locator("#edu-college .accordeon-bouton");
+  assert.deepEqual(await matieres.locator(".accordeon-libelle").allTextContents(), ["Maths", "Physique-chimie"]);
+  await matieres.nth(1).click();
+  assert.deepEqual(await page.locator("#edu-college-physique-chimie .notion").allTextContents(), ["Circuits électriques et loi d'Ohm"]);
   await page.fill("#recherche-notion", "theoreme");
-  assert.deepEqual(await barre.locator(".notion").allTextContents(), ["Le théorème de Pythagore"]);
+  assert.deepEqual(await ecran.locator(".notion:visible").allTextContents(), ["Le théorème de Pythagore"], "une recherche ouvre les groupes concernés");
   await page.fill("#recherche-notion", "volcan");
   assert.equal(await page.locator("#catalogue-vide").isVisible(), true);
-  await page.fill("#recherche-notion", "");
-  await barre.locator(".notion", { hasText: "Le cercle trigonométrique" }).click();
+  await page.fill("#recherche-notion", "trigo");
+  await ecran.locator(".notion", { hasText: "Le cercle trigonométrique" }).click();
   await page.locator("#bulle-lab[open][data-notion=trigo-cercle] #bulle-cadre").waitFor();
   assert.equal(requetes.length, 0, "aucun appel au chat : la page est ouverte directement");
   assert.equal(await page.locator("#fil li[data-maquette]").count(), 0, "ouverte dans une bulle, pas dans le fil");
   await page.keyboard.press("Escape");
   await page.locator("#bulle-lab").waitFor({ state: "hidden" });
-  assert.equal(await barre.isVisible(), true, "l'écran Notions reste affiché sous la bulle, comme Jeux");
-  const bouton = barre.locator("[data-notion=trigo-cercle]");
+  assert.equal(await ecran.isVisible(), true, "Éducation reste affiché sous la bulle");
+  const bouton = ecran.locator("[data-notion=trigo-cercle]");
   assert.equal(await bouton.getAttribute("aria-current"), "page");
   assert.match(await bouton.textContent(), /✓/);
   assert.match(await page.locator("#catalogue-compteur").textContent(), /1 \/ 6/);
-  // Onglets de matière : la physique-chimie a sa propre liste ; une recherche porte sur toutes les matières.
-  assert.deepEqual(await page.locator("#catalogue-matieres [role=tab]").allTextContents(), ["Maths", "Physique-chimie", "Philosophie"]);
-  await page.click("[data-matiere=physique-chimie][role=tab]");
-  assert.deepEqual(await barre.locator(".notion").allTextContents(), ["Circuits électriques et loi d'Ohm"]);
-  await page.click("[data-matiere=philosophie][role=tab]");
-  assert.deepEqual(await barre.locator(".notion").allTextContents(), ["L'art"]);
+  await page.fill("#recherche-notion", "");
+  // Les accordéons ouverts restent ouverts après un rendu (ici, le changement de langue), et sont traduits.
   await page.selectOption("#langue", "en");
   await page.waitForFunction(() => document.documentElement.lang === "en");
-  assert.equal(await page.locator("[data-matiere=philosophie][role=tab]").textContent(), "Philosophy");
-  await page.selectOption("#langue", "fr");
-  await page.waitForFunction(() => document.documentElement.lang === "fr");
-  await page.fill("#recherche-notion", "la");
-  assert.ok((await barre.locator(".groupe-niveau summary > span:first-child").allTextContents()).some((t) => t.startsWith("Maths · ")));
-  await page.fill("#recherche-notion", "art");
-  assert.ok((await barre.locator(".groupe-niveau summary > span:first-child").allTextContents()).some((t) => t.startsWith("Philosophie · ")));
-  await page.fill("#recherche-notion", "");
+  assert.equal(await niveaux.first().getAttribute("aria-expanded"), "true");
+  assert.deepEqual(await page.locator("#edu-college .accordeon-libelle").allTextContents(), ["Maths", "Physics & chemistry"]);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-
-test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notions", async () => {
+test("navigation : 5 destinations séparées, jeux absents d'Éducation, retour arrière", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
-  const catalogue = page.locator("#catalogue");
-  assert.equal(await page.locator("#grille-matieres [data-matiere-carte=jeux]").count(), 0, "Jeux n’apparaît pas dans Tes matières");
-  const labs = page.locator(".barre-laterale [data-nav=labs]");
+  const destinations = page.locator(".barre-laterale nav [data-nav]");
+  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "jeux", "progression", "profil"]);
+  assert.equal(await page.locator(".barre-laterale [aria-current=page]").count(), 1);
+  const education = page.locator(".barre-laterale [data-nav=education]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
-  await labs.click();
-  assert.equal(await page.locator("#ecran-labs").isVisible(), true);
-  assert.equal(await catalogue.isVisible(), false);
+  await education.click();
+  assert.equal(await page.locator("#catalogue").isVisible(), true);
   assert.equal(await page.locator("#accueil").isVisible(), false);
-  assert.equal(await page.locator("#matieres").isVisible(), false);
   assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
-  assert.equal(await labs.getAttribute("aria-current"), "page");
-  assert.equal(await page.locator("#salut").textContent(), "Labs");
-  assert.equal(await page.locator("#salut").evaluate((n) => n === document.activeElement), true);
-  assert.deepEqual(await page.locator("#ecran-labs a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
+  assert.equal(await education.getAttribute("aria-current"), "page");
+  assert.equal(await page.locator("#salut").evaluate((n) => n === document.activeElement), true, "le focus suit le changement d'écran");
+  // Le Lab du cercle et ses trois modes restent accessibles depuis Éducation.
+  assert.deepEqual(await page.locator("#catalogue .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
   ]);
-  assert.deepEqual(await page.locator("#grille-labs [data-lab-matiere]").evaluateAll((boutons) => boutons.map((b) => b.dataset.labMatiere)), ["physique-chimie", "philosophie"]);
-  await page.click("#grille-labs [data-lab-matiere=physique-chimie]");
-  await page.locator("#bulle-lab[open][data-notion=electricite]").waitFor();
-  await page.click("#fermer-bulle");
-  assert.equal(await page.locator("#ecran-labs [data-notion]").count(), 0, "les fiches de Notions ne deviennent pas des Labs");
+  await page.fill("#recherche-notion", "echecs");
+  assert.equal(await page.locator("#catalogue-vide").isVisible(), true, "un jeu n'est pas une notion scolaire");
+  await page.fill("#recherche-notion", "");
   await jeux.click();
   assert.equal(await page.locator("#ecran-jeux").isVisible(), true);
-  assert.equal(await page.locator("#ecran-labs").isVisible(), false);
-  assert.equal(await catalogue.isVisible(), false);
+  assert.equal(await page.locator("#catalogue").isVisible(), false);
   assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Les échecs"]);
-  assert.equal(await labs.getAttribute("aria-current"), null);
+  assert.equal(await education.getAttribute("aria-current"), null);
   assert.equal(await jeux.getAttribute("aria-current"), "page");
   await page.fill("#recherche-jeu", "echecs");
   assert.equal(await page.locator("#grille-jeux article").count(), 1, "recherche sans accents");
@@ -525,21 +531,20 @@ test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notio
   assert.equal(await page.locator("#grille-jeux article").count(), 0);
   assert.equal(await page.locator("#jeux-vide").isVisible(), true);
   await page.fill("#recherche-jeu", "");
+  assert.equal(await page.locator("#grille-jeux [data-jeu=echecs]").textContent(), "Jouer");
   await page.click("[data-jeu=echecs]");
   await page.locator("#bulle-lab[open][data-notion=echecs]").waitFor();
   assert.equal(requetes.length, 0, "l'ouverture ne passe pas par le chat");
   await page.click("#fermer-bulle");
   await page.waitForFunction(() => document.activeElement?.dataset.jeu === "echecs");
-  assert.match(await page.locator("#grille-jeux").textContent(), /déjà explorée/);
+  assert.match(await page.locator("#grille-jeux").textContent(), /Déjà lancé/);
   await page.click("#ouvrir-catalogue");
-  await page.locator("#catalogue .notion").first().waitFor();
-  assert.deepEqual(await page.locator("#catalogue-matieres [role=tab]").allTextContents(), ["Maths", "Physique-chimie", "Philosophie", "Jeux"]);
-  assert.equal(await page.locator("#ecran-jeux").isVisible(), false, "Notions remplace l'écran courant, comme les autres menus");
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), false, "Éducation remplace l'écran courant");
   await page.goBack();
   await page.locator("#ecran-jeux").waitFor({ state: "visible" });
   assert.equal(await page.locator("#catalogue").isVisible(), false, "le retour arrière ramène à l'écran précédent");
   await page.locator(".barre-laterale [data-nav=progression]").click();
-  assert.equal(await page.locator("#semaine").isVisible(), true);
+  assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
   assert.equal(await page.locator("#accueil").isVisible(), false);
   await page.locator(".barre-laterale [data-nav=accueil]").click();
@@ -548,22 +553,23 @@ test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notio
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-
 test("navigation : liens directs, rechargement, historique et traduction des écrans", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   await simulerApi(page, { jeux: true });
+  // Ancienne adresse #labs : redirigée vers Éducation, qui contient le Lab du cercle.
   await page.goto(`${serveur.url}/#labs`);
-  await page.locator("#ecran-labs").waitFor();
+  await page.locator("#catalogue").waitFor();
+  assert.equal(await page.locator(".barre-laterale [data-nav=education]").getAttribute("aria-current"), "page");
   assert.equal(await page.locator("#accueil").isVisible(), false);
   await page.locator(".evitement").focus();
   await page.keyboard.press("Enter");
   await page.waitForFunction(() => location.hash === "#contenu");
-  assert.equal(await page.locator("#ecran-labs").isVisible(), true, "le lien d'évitement ne change pas d'écran");
+  assert.equal(await page.locator("#catalogue").isVisible(), true, "le lien d'évitement ne change pas d'écran");
   await page.goBack();
   await page.locator(".barre-laterale [data-nav=jeux]").click();
   assert.equal(new URL(page.url()).hash, "#jeux");
   await page.goBack();
-  await page.locator("#ecran-labs").waitFor();
+  await page.locator("#catalogue").waitFor();
   await page.goForward();
   await page.locator("#ecran-jeux").waitFor();
   await page.reload();
@@ -577,7 +583,7 @@ test("navigation : liens directs, rechargement, historique et traduction des éc
   await contexte.close();
 });
 
-test("jeux : états vides explicites sans bloquer les Labs", async () => {
+test("jeux : états vides explicites sans bloquer Éducation", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   await simulerApi(page);
   await page.goto(`${serveur.url}/#jeux`);
@@ -589,19 +595,21 @@ test("jeux : états vides explicites sans bloquer les Labs", async () => {
   await page.reload();
   await page.locator("#ecran-jeux").waitFor();
   assert.match(await page.locator("#jeux-vide").textContent(), /catalogue/i);
-  await page.locator(".barre-laterale [data-nav=labs]").click();
-  assert.equal(await page.locator("#ecran-labs a").count(), 3);
+  await page.locator(".barre-laterale [data-nav=education]").click();
+  assert.equal(await page.locator("#catalogue-indisponible").isVisible(), true);
+  assert.equal(await page.locator("#catalogue .outil a").count(), 3, "le Lab du cercle reste accessible hors ligne");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
 
-test("navigation : défi, trophées et configuration remplacent l'accueil sans panneau modal", async () => {
+test("navigation : défi (sous Éducation), Profil et Progression remplacent l'accueil sans panneau modal", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   await simulerApi(page);
   await page.goto(`${serveur.url}/#defi`);
   await page.locator("#defi .reponse").first().waitFor();
   assert.equal(await page.locator("#accueil").isVisible(), false);
   assert.equal(await page.locator("#defi").evaluate((n) => n.closest("main") !== null && n.tagName === "SECTION"), true);
+  assert.equal(await page.locator(".barre-laterale [data-nav=education]").getAttribute("aria-current"), "page", "le défi appartient à Éducation");
   await page.locator("#defi .reponse").nth(1).click();
   await page.selectOption("#langue", "en");
   await page.waitForFunction(() => document.querySelector("#salut").textContent === "Quick challenge");
@@ -613,28 +621,29 @@ test("navigation : défi, trophées et configuration remplacent l'accueil sans p
   assert.equal(await page.locator("#configuration-titre").textContent(), "Configuration");
   assert.equal(await page.locator("#llm-actif").isVisible(), true);
   assert.equal(await page.locator("#dialogue-profil").isVisible(), false);
-  await page.locator(".barre-laterale [data-nav=badges]").click();
-  assert.equal(await page.locator("#progres").isVisible(), true);
+  await page.locator(".barre-laterale [data-nav=progression]").click();
+  assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   assert.equal(await page.locator("#profil").isVisible(), false);
   assert.equal(await page.locator("dialog[open]").count(), 0);
   await page.reload();
-  await page.locator("#progres").waitFor();
-  assert.equal(await page.locator(".barre-laterale [data-nav=badges]").getAttribute("aria-current"), "page");
+  await page.locator("#ecran-progression").waitFor();
+  assert.equal(await page.locator(".barre-laterale [data-nav=progression]").getAttribute("aria-current"), "page");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
 
-test("catalogue mobile : écran « Notions » depuis la navigation du bas, sans débordement", async () => {
+test("Éducation mobile : depuis la navigation du bas, une colonne, sans débordement", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true });
   await simulerApi(page);
   await page.goto(serveur.url);
-  const explorer = page.locator(".nav-mobile [data-nav=notions]");
-  await explorer.waitFor({ state: "visible" });
+  const education = page.locator(".nav-mobile [data-nav=education]");
+  await education.waitFor({ state: "visible" });
   assert.equal(await page.locator("#catalogue").isVisible(), false, "masqué sur l'accueil");
-  await explorer.click();
-  await page.locator("#catalogue .notion").first().waitFor({ state: "visible" });
-  assert.equal(await explorer.getAttribute("aria-current"), "page");
-  await capturer(page, "notions-mobile");
+  await education.click();
+  await page.locator("#catalogue .accordeon-bouton", { hasText: "Collège" }).click();
+  await page.locator("#edu-college .accordeon-bouton", { hasText: "Maths" }).click();
+  assert.equal(await education.getAttribute("aria-current"), "page");
+  await capturer(page, "education-mobile");
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
   await page.locator("#bulle-lab[open][data-notion=fractions] #bulle-cadre").waitFor();
   await page.click("#fermer-bulle");
@@ -643,35 +652,32 @@ test("catalogue mobile : écran « Notions » depuis la navigation du bas, sans 
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
-
-test("navigation mobile : Labs et jeux restent accessibles sans débordement", async () => {
+test("navigation mobile : 5 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 740 }, isMobile: true });
   await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
-  const groupe = page.locator(".nav-mobile-groupe");
-  const jeux = groupe.locator("[data-nav=jeux]");
-  await page.locator(".nav-mobile [data-nav=labs]").waitFor({ state: "visible" });
-  await jeux.click();
+  await page.locator(".nav-mobile [data-nav=jeux]").click();
   await page.locator("#ecran-jeux").waitFor();
   assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Les échecs"]);
   assert.equal(await page.locator("#catalogue").isVisible(), false);
-  await page.locator(".nav-mobile [data-nav=labs]").click();
-  assert.equal(await page.locator("#ecran-labs").isVisible(), true);
+  await page.locator(".nav-mobile [data-nav=education]").click();
+  assert.equal(await page.locator("#catalogue").isVisible(), true);
   assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
   await page.locator(".nav-mobile [data-nav=progression]").click();
-  assert.equal(await page.locator("#semaine").isVisible(), true);
+  assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   await page.locator(".nav-mobile [data-nav=accueil]").click();
   assert.equal(await page.locator("#accueil").isVisible(), true);
+  assert.deepEqual(await page.locator(".nav-mobile-bouton").allTextContents(), ["Accueil", "Éducation", "Jeux", "Progrès", "Profil"]);
+  assert.deepEqual(await page.locator(".nav-mobile [aria-current=page]").allTextContents(), ["Accueil"]);
   const boutons = await page.locator(".nav-mobile-bouton").evaluateAll((elements) => elements.map((n) => {
     const r = n.getBoundingClientRect();
     return { largeur: r.width, hauteur: r.height, droite: r.right, bas: r.bottom };
   }));
-  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les huit entrées restent visibles et tactiles");
+  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les cinq entrées restent visibles et tactiles");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
-
 test("chat : bascule plein écran et retour, sur ordinateur et mobile", async () => {
   for (const options of [{ viewport: { width: 1280, height: 800 } }, { viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true }]) {
     const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", ...options });
@@ -731,11 +737,14 @@ test("assistant : progression résumée sur l'appareil et boutons vers les écra
   assert.match(await resume.textContent(), /Série0 jour\(s\)/);
   assert.match(await resume.textContent(), /Badges0 \/ \d+/);
   const boutons = page.locator("#fil .actions-chat button");
-  assert.deepEqual(await boutons.allTextContents(), ["Progression", "Mes trophées", "Défi express"], "écran inconnu ignoré");
+  assert.deepEqual(await boutons.allTextContents(), ["Progression", "Mes badges", "Défi express"], "écran inconnu ignoré");
   await capturer(page, "chat-assistant-progression");
-  await boutons.filter({ hasText: "Mes trophées" }).click();
-  assert.equal(new URL(page.url()).hash, "#badges");
-  assert.equal(await page.locator("#progres").isVisible(), true);
+  await boutons.filter({ hasText: "Mes badges" }).click();
+  assert.equal(new URL(page.url()).hash, "#badges", "ancienne adresse conservée");
+  assert.equal(await page.locator(".barre-laterale [data-nav=progression]").getAttribute("aria-current"), "page");
+  // Une conversation ne compte pas comme une question : rien à montrer encore, donc l'état vide (aucun badge grisé).
+  assert.equal(await page.locator("#progression-vide").isVisible(), true);
+  assert.equal(await page.locator("#progres").isVisible(), false);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

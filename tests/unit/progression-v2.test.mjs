@@ -86,6 +86,7 @@ test("expérience non scolaire : retenue pour « Reprendre », XP la première f
   assert.equal(r1.nouvelle, true);
   assert.deepEqual(r1.p.derniere, { type: "jeu", id: "demineur" });
   assert.deepEqual(r1.p.notions, []);
+  assert.deepEqual(r1.nouveaux.map((b) => b.id), ["explorateur"], "un jeu est aussi une première page interactive");
   const r2 = P.enregistrerExperience(r1.p, "jeu", "demineur", J);
   assert.equal(r2.xpGagne, 0);
   assert.equal(r2.p.decouvertes.jeu.demineur.ouvertures, 2);

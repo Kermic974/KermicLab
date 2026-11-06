@@ -34,7 +34,8 @@ const JOUR = /^\d{4}-\d{2}-\d{2}$/;
 /** Badges : l'icône est décorative, le nom et la description viennent de i18n (`badge_<id>`, `badge_<id>_desc`). */
 export const BADGES = [
   { id: "premier-pas", icone: "👣", obtenu: (p) => p.questions >= 1 },
-  { id: "explorateur", icone: "🧭", obtenu: (p) => p.notions.length >= 1 },
+  // Première page interactive ouverte, quel que soit son type (notion, jeu…).
+  { id: "explorateur", icone: "🧭", obtenu: (p) => p.notions.length >= 1 || p.derniere !== null },
   { id: "curieux", icone: "🔍", obtenu: (p) => p.questions >= 5 },
   { id: "serie-3", icone: "🔥", obtenu: (p) => p.serieMax >= 3 },
   { id: "collectionneur", icone: "🗂️", obtenu: (p) => p.notions.length >= 3 },
@@ -45,7 +46,7 @@ export const BADGES = [
 
 /** Avancement d'un badge, pour montrer « ce qui est à portée » sans afficher une grille de badges verrouillés. */
 const AVANCES = {
-  "premier-pas": (p) => [p.questions, 1], explorateur: (p) => [p.notions.length, 1], curieux: (p) => [p.questions, 5],
+  "premier-pas": (p) => [p.questions, 1], explorateur: (p) => [p.notions.length || p.derniere ? 1 : 0, 1], curieux: (p) => [p.questions, 5],
   "serie-3": (p) => [p.serieMax, 3], collectionneur: (p) => [p.notions.length, 3], passionne: (p) => [p.questions, 25],
   "serie-7": (p) => [p.serieMax, 7], assidu: (p) => [Math.floor(p.tempsActif.total / 60_000), 60]
 };
