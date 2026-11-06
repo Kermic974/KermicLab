@@ -2,6 +2,7 @@ import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { createRequire } from "node:module";
+import { configurationPublique } from "../../worker/src/configuration.js";
 
 // require() respecte NODE_PATH (Playwright préinstallé globalement) ; en CI il est installé par le workflow.
 const { chromium } = createRequire(import.meta.url)("playwright");
@@ -80,7 +81,11 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
   await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
   await page.route(`${api}/api/llm/status`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
-    body: JSON.stringify({ actif: llmActif, defi: { ia: llmActif, generationsParJour: 3 } })
+    body: JSON.stringify({
+      actif: llmActif, defi: { ia: llmActif, generationsParJour: 3 },
+      skills: { tuteur: llmActif, "cadrage-idee": llmActif, "defi-express": llmActif },
+      configuration: configurationPublique({ LLM_ACTIF: String(llmActif), DEFI_GENERATIONS_JOUR: "3" })
+    })
   }));
   await page.route(`${api}/api/defi`, async (route) => {
     const corps = route.request().postDataJSON();
