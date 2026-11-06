@@ -7,6 +7,7 @@ import { journaliser } from "./kpi.js";
 import { sauvegarderKpi, jourPrecedent } from "./sauvegarde.js";
 import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
+import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm } from "./session-llm.js";
 import { interrogerTuteur } from "./tuteur-llm.js";
@@ -30,7 +31,7 @@ function enTetesCors(requete, env) {
   const origine = requete.headers.get("origin");
   const autorisees = String(env.ORIGINES_AUTORISEES || "").split(",").map((s) => s.trim()).filter(Boolean);
   if (origine && (autorisees.includes(origine) || autorisees.includes("*"))) {
-    return { "access-control-allow-origin": origine, "access-control-allow-methods": "GET, POST, OPTIONS", "access-control-allow-headers": "content-type", "access-control-allow-credentials": "true", vary: "origin" };
+    return { "access-control-allow-origin": origine, "access-control-allow-methods": "GET, POST, DELETE, OPTIONS", "access-control-allow-headers": "content-type", "access-control-allow-credentials": "true", vary: "origin" };
   }
   return {};
 }
@@ -264,65 +265,10 @@ function servirPage(requete, env, id) {
 // ---------- Auth helpers ----------
 async function lireCompteDepuisCookie(requete, env) {
   const cookie = requete.headers.get("cookie") || "";
-  const match = cookie.match(/session=([^;]+)/);
+  const match = cookie.match(/(?:^|;\s*)session=([^;]+)/);
   if (!match) return null;
   const { lireSession } = await import("./auth/session.js");
   return lireSession(env, match[1]);
-}
-
-async function gererApiCompte(requete, env, compteId) {
-  const url = new URL(requete.url);
-
-  if (url.pathname === "/api/eleves" && requete.method === "GET") {
-    const eleves = await env.DB.prepare(
-      "SELECT id, prenom_affiche, age_tranche, langue FROM eleves WHERE parent_id = ?"
-    ).bind(compteId).all();
-    return json(eleves.results, 200, {});
-  }
-
-  if (url.pathname === "/api/eleves" && requete.method === "POST") {
-    const body = await requete.json();
-    const id = crypto.randomUUID();
-    await env.DB.prepare(
-      "INSERT INTO eleves (id, parent_id, prenom_affiche, age_tranche) VALUES (?, ?, ?, ?)"
-    ).bind(id, compteId, body.prenom_affiche, body.age_tranche || null).run();
-    return json({ id }, 201, {});
-  }
-
-  if (url.pathname === "/api/progres" && requete.method === "GET") {
-    const eleveId = url.searchParams.get("eleveId");
-    const ok = await env.DB.prepare(
-      "SELECT 1 FROM eleves WHERE id = ? AND parent_id = ?"
-    ).bind(eleveId, compteId).first();
-    if (!ok) return json({ erreur: "interdit" }, 403, {});
-
-    const rows = await env.DB.prepare(
-      "SELECT notion_id, score, etoiles, completed_at FROM progres WHERE eleve_id = ?"
-    ).bind(eleveId).all();
-    return json(rows.results, 200, {});
-  }
-
-  if (url.pathname === "/api/progres" && requete.method === "POST") {
-    const body = await requete.json();
-    const ok = await env.DB.prepare(
-      "SELECT 1 FROM eleves WHERE id = ? AND parent_id = ?"
-    ).bind(body.eleveId, compteId).first();
-    if (!ok) return json({ erreur: "interdit" }, 403, {});
-
-    for (const [notion, data] of Object.entries(body.progres?.notions || {})) {
-      await env.DB.prepare(`
-        INSERT INTO progres (eleve_id, notion_id, score, etoiles, updated_at)
-        VALUES (?, ?, ?, ?, datetime('now'))
-        ON CONFLICT(eleve_id, notion_id) DO UPDATE SET
-          score = excluded.score,
-          etoiles = excluded.etoiles,
-          updated_at = excluded.updated_at
-      `).bind(body.eleveId, notion, data.score || null, data.etoiles || null).run();
-    }
-    return new Response(null, { status: 204 });
-  }
-
-  return null;
 }
 
 export default {
@@ -344,14 +290,19 @@ export default {
     }
 
     // Authenticated account API
-    const compteId = await lireCompteDepuisCookie(requete, env);
-    if (compteId && url.pathname.startsWith("/api/")) {
-      const apiResponse = await gererApiCompte(requete, env, compteId);
-      if (apiResponse) {
-        const headers = new Headers(apiResponse.headers);
-        for (const [k, v] of Object.entries(cors)) headers.set(k, v);
-        return new Response(apiResponse.body, { status: apiResponse.status, headers });
+    // Comptes famille (ADR 0017) : réservés au parent connecté ; 401 sans session valide.
+    if (estRouteCompte(url.pathname)) {
+      let apiResponse;
+      try {
+        const compteId = await lireCompteDepuisCookie(requete, env);
+        apiResponse = compteId ? await gererApiCompte(requete, env, compteId) : json({ erreur: "non-connecte" }, 401, {});
+      } catch {
+        // Tables des comptes absentes ou D1 indisponible : jamais de 500 ni de détail interne.
+        apiResponse = json({ erreur: "comptes-indisponibles" }, 503, {});
       }
+      const headers = new Headers(apiResponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(apiResponse.body, { status: apiResponse.status, headers });
     }
 
     if (requete.method === "GET" && url.pathname === "/api/sante") {

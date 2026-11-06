@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS eleves (
   prenom_affiche  TEXT NOT NULL,
   age_tranche     TEXT,
   langue          TEXT NOT NULL DEFAULT 'fr',
+  consentement_version TEXT NOT NULL,      -- texte de consentement accepté par le parent (ADR 0017)
+  consentement_at TEXT NOT NULL,
   created_at      TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
