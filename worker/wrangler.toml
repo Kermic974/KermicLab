@@ -1,16 +1,22 @@
-# Worker Kermiclab. Les secrets (ANTHROPIC_API_KEY, GITHUB_TOKEN) se définissent avec
-# `wrangler secret put` ou via la CI — jamais ici.
+# Worker Kermiclab. Le binding AI est fourni par Cloudflare ; les secrets
+# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN) se définissent avec `wrangler secret put`
+# ou via la CI — jamais ici.
 name = "kermiclab-api"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
+
+[ai]
+binding = "AI"
 
 # Sauvegarde quotidienne des KPI D1 dans R2 (02:17 UTC = 06:17 à La Réunion).
 [triggers]
 crons = ["17 2 * * *"]
 
 [vars]
+LLM_ACTIF = "false"
 MODELE_CHAT = "claude-haiku-5-5"
+MODELE_WORKERS_AI = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
 GITHUB_REPO = "kermic974/trigoLab"
 ORIGINES_AUTORISEES = "https://www.kermiclab.online,https://kermiclab.online,https://kermiclab.pages.dev,http://localhost:8788"
 TAILLE_MAX_MESSAGE = "500"

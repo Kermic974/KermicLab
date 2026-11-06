@@ -67,19 +67,20 @@ auteurs, QCM auto-corrigés et défis de la vie quotidienne.
 
 ## Démarrage rapide
 
-Prérequis : Node.js 22+, un compte Cloudflare, une clé API Anthropic (facultative en local).
+Prérequis : Node.js 22+ et un compte Cloudflare avec Workers AI disponible. Une clé Anthropic est facultative : elle sert de repli si Workers AI échoue.
 
 ```bash
 npm ci
 npm run ci                          # lint, build, contrôle des pages, tests unitaires et navigateur
-cp .env.example worker/.dev.vars    # renseigner ANTHROPIC_API_KEY / GITHUB_TOKEN (facultatif)
+cp .env.example worker/.dev.vars    # renseigner LLM_SESSION_SECRET (32 caractères min.), ANTHROPIC_API_KEY (repli facultatif), GITHUB_TOKEN
 cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev   # API sur :8787
 # dans un autre terminal
 KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev dist           # chat sur :8788
 ```
 
-Sans `ANTHROPIC_API_KEY`, le catalogue fonctionne ; les autres questions reçoivent une réponse de repli.
-C'est le **mode zéro budget** actuel (offres gratuites Cloudflare et GitHub uniquement), voir [l'ADR 0006](docs/decisions/0006-mode-zero-budget.md).
+Workers AI utilise le binding Cloudflare `AI` (sans clé API). `LLM_ACTIF=false` est le coupe-circuit global, géré par l’administration Cloudflare ; le site propose aussi un opt-in individuel, désactivé par défaut et mémorisé pour la session du navigateur. Les appels ne sont possibles que si les deux niveaux sont activés, avec le secret de signature et le schéma D1 à jour. Les autres questions ouvrent une page du catalogue ou sont refusées sans appel.
+La limite est de **1 000 tokens générés par session navigateur**, au maximum 24 h côté serveur, partagée avec le repli Anthropic. Les entrées restent facturables ; une nouvelle session anonyme n'est pas un plafond par personne. Sources avec liens/descriptions et métadonnées modèle/harness figurent en fin de réponse. Accès gratuit provisoire, abonnement au backlog. `LLM_ACTIF=false` coupe tous les appels sans bloquer le catalogue.
+Voir [l'ADR 0016](docs/decisions/0016-workers-ai-principal-anthropic-repli.md) et l'[ADR 0006](docs/decisions/0006-mode-zero-budget.md) pour l'historique du mode zéro budget.
 Sans `GITHUB_TOKEN`, le Worker ne crée aucune issue automatiquement ; la Boîte à idées reste utilisable via GitHub.
 
 ## Déploiement

@@ -192,6 +192,14 @@
               <h2 id="chat-titre" data-i18n="chatTitre"></h2>
               <p class="doux petit" data-i18n="sousTitre"></p>
             </div>
+            <div class="llm-controle">
+              <label class="llm-interrupteur" for="llm-actif">
+                <span data-i18n="llmToggleLabel"></span>
+                <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
+                <span class="llm-piste" aria-hidden="true"></span>
+              </label>
+              <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
+            </div>
           </div>
           <ol id="fil" aria-live="polite"></ol>
           <div class="zone-saisie">

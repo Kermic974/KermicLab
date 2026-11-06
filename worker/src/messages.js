@@ -7,6 +7,9 @@ export const MESSAGES = {
     tropLong: "Ton message est trop long. Essaie de poser ta question en quelques phrases.",
     vide: "Pose-moi une question, par exemple : « c'est quoi le sinus ? »",
     tropDeDemandes: "Tu poses beaucoup de questions d'un coup ! Attends une minute avant de réessayer.",
+    perimetreLlm: "Je réponds uniquement à partir des pages KermicLab. Ouvre une notion du catalogue, puis choisis « Explique plus simplement », « Donne-moi un exemple » ou « Propose un petit défi ».",
+    sessionLlmRequise: "Ouvre d'abord une notion depuis le chat. Le cookie technique de session doit être autorisé pour appliquer le quota IA.",
+    quotaLlm: "La limite de 1 000 tokens générés pour cette session est atteinte, ou une réponse est encore en cours. Les pages du catalogue restent accessibles.",
     indisponible: "Je ne peux pas répondre à cette question pour le moment. Essaie une question sur une notion de maths, par exemple le sinus ou le cosinus.",
     horsCatalogue: (titres, total = titres.length) => titres.length
       ? `Je n'ai pas encore de page sur ce sujet. Je sais déjà t'expliquer ${total > 1 ? `${total} notions, par exemple ` : ""}: ${titres.join(", ")}. Choisis une question ci-dessous pour commencer !`
@@ -23,6 +26,9 @@ export const MESSAGES = {
     tropLong: "Your message is too long. Try asking your question in a few sentences.",
     vide: "Ask me a question, for example: \"what is the sine?\"",
     tropDeDemandes: "That's a lot of questions at once! Wait a minute before trying again.",
+    perimetreLlm: "I only answer using KermicLab pages. Open a concept from the catalogue, then choose “Explain more simply”, “Give me an example” or “Suggest a small challenge”.",
+    sessionLlmRequise: "First open a concept through the chat. The technical session cookie must be allowed to enforce the AI quota.",
+    quotaLlm: "This session's limit of 1,000 generated tokens has been reached, or a reply is still in progress. Catalogue pages remain available.",
     indisponible: "I can't answer that right now. Try a maths question, for example about sine or cosine.",
     horsCatalogue: (titres, total = titres.length) => titres.length
       ? `I don't have a page on this topic yet. I can already explain ${total > 1 ? `${total} ideas, for example` : ""}: ${titres.join(", ")}. Pick a question below to get started!`

@@ -8,15 +8,16 @@ import * as trophees from "./trophees.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
-  config: null, langue: "fr", textes: {}, historique: [], envoiEnCours: false, progres: null, suggestions: [], notions: [],
+  config: null, langue: "fr", textes: {}, envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
-  erreurTrophees: false, chargementTrophees: false, ecran: "accueil"
+  erreurTrophees: false, chargementTrophees: false, ecran: "accueil", llmActif: false, llmDisponible: false
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
+const CLE_LLM = "kermiclab:llm:actif";
 const DEFI_BONNES = [1, 0, 1, 0, 0];
 const MAX_PUCES = 4;
 const TAILLE_MAX_PUCE = 120;
@@ -25,6 +26,9 @@ const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: redu
 /** Stockage des données de l'élève : local si le cookie de mémorisation existe, sinon limité à la session (onglet). */
 function stockage() {
   try { return etat.memoire ? window.localStorage : window.sessionStorage; } catch { return null; }
+}
+function sessionPreferences() {
+  try { return window.sessionStorage; } catch { return null; }
 }
 /** Préférences d'affichage (langue, thème, matière) : sans donnée personnelle, gardées sur l'appareil. */
 function preferences() {
@@ -80,6 +84,7 @@ async function appliquerLangue(langue) {
   rendreJeux();
   rafraichirEntete();
   rafraichirTheme();
+  rafraichirControleLlm();
   etat.cercle?.rafraichir();
   if (etat.ecran === "badges") remplirProgres();
   rafraichirDefiTextes();
@@ -335,7 +340,54 @@ function ajouterRelances(bulle, questions, cleTitre) {
   bulle.append(bloc);
 }
 
-function ajouterReponse({ texte, maquette, suggestions, horsCatalogue }) {
+function referencesLlm(sources, llm) {
+  const bloc = element("footer", { classe: "references-llm" });
+  bloc.append(element("strong", { cle: "llmSources" }));
+  const liste = element("ul");
+  for (const source of sources) {
+    let url;
+    try { url = new URL(source.url, etat.config.apiUrl || location.origin); } catch {
+      console.error("source LLM invalide");
+      continue;
+    }
+    const origineApi = new URL(etat.config.apiUrl || location.origin).origin;
+    if (!["http:", "https:"].includes(url.protocol) || url.origin !== origineApi
+      || !/^\/maquettes\/[a-z0-9-]+$/.test(url.pathname)) {
+      console.error("source LLM non autorisée");
+      continue;
+    }
+    const ligne = element("li");
+    ligne.append(
+      element("a", { texte: source.titre, attributs: { href: url.href, target: "_blank", rel: "noopener noreferrer" } }),
+      element("span", { classe: "source-description", texte: source.description })
+    );
+    liste.append(ligne);
+  }
+  bloc.append(liste);
+  const metadonnees = element("dl", { classe: "metadonnees-llm" });
+  for (const [cle, valeur] of [
+    ["llmModele", `${llm.fournisseur} · ${llm.modele}`],
+    ["llmHarness", `${llm.harness.nom} v${llm.harness.version} · ${llm.harness.prompt}`],
+    ["llmPerimetre", llm.harness.perimetre],
+    ["llmAcces", t("llmAccesGratuit")],
+    ["llmQuota", `${llm.quota.consommes} / ${llm.quota.limite}`]
+  ]) {
+    metadonnees.append(element("dt", { cle }), element("dd", { texte: valeur, ...(cle === "llmAcces" ? { cle: "llmAccesGratuit" } : {}) }));
+  }
+  bloc.append(metadonnees);
+  for (const appel of llm.appels) {
+    const ligne = element("p", { classe: "llm-appel" });
+    ligne.append(
+      element("span", { texte: `${appel.fournisseur} · ${appel.modele} · ${appel.tokensSortie} ` }),
+      element("span", { cle: appel.comptage === "fournisseur" ? "llmTokensMesures" : "llmTokensReserves" })
+    );
+    bloc.append(ligne);
+  }
+  if (llm.repli) bloc.append(element("p", { cle: "llmRepli" }));
+  return bloc;
+}
+
+function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, sources, llm }) {
   const { li, bulle } = creerMessage();
   bulle.append(element("p", { classe: "texte", texte }));
   if (maquette) {
@@ -346,6 +398,7 @@ function ajouterReponse({ texte, maquette, suggestions, horsCatalogue }) {
   const questions = pucesValides(suggestions);
   if (horsCatalogue) li.classList.add("hors-catalogue");
   if (questions.length) ajouterRelances(bulle, questions, horsCatalogue ? "horsCatalogueTitre" : "relancesTitre");
+  if (llm && Array.isArray(sources)) bulle.append(referencesLlm(sources, llm));
   defiler(li, maquette ? "start" : "end");
   return li;
 }
@@ -720,15 +773,15 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/chat`, {
       method: "POST",
+      credentials: "include",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ message: question, langue: etat.langue, historique: etat.historique.slice(-6) })
+      body: JSON.stringify({ message: question, langue: etat.langue, utiliserLlm: etat.llmDisponible && etat.llmActif })
     });
     const donnees = await r.json();
     attente.remove();
     const reussie = donnees.type === "reponse" || donnees.type === "maquette";
-    ajouterReponse({ texte: donnees.texte ?? t("erreurReseau"), maquette: donnees.maquette, suggestions: donnees.suggestions, horsCatalogue: donnees.type === "hors-catalogue" });
+    ajouterReponse({ ...donnees, texte: donnees.texte ?? t("erreurReseau"), horsCatalogue: donnees.type === "hors-catalogue" });
     if (reussie) {
-      etat.historique.push({ role: "user", content: question }, { role: "assistant", content: donnees.texte });
       appliquerResultat(progression.enregistrerQuestion(etat.progres));
       if (donnees.maquette?.id) appliquerResultat(progression.enregistrerNotion(etat.progres, donnees.maquette.id));
     }
@@ -740,6 +793,28 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
     etat.envoiEnCours = false;
     document.body.classList.remove("occupe");
   }
+}
+
+function rafraichirControleLlm() {
+  const interrupteur = $("#llm-actif");
+  if (!interrupteur) return;
+  interrupteur.disabled = !etat.llmDisponible;
+  interrupteur.checked = etat.llmDisponible && etat.llmActif;
+  const statut = $("#llm-etat");
+  const cle = !etat.llmDisponible ? "llmStatutIndisponible" : etat.llmActif ? "llmStatutActif" : "llmStatutInactif";
+  statut.textContent = t(cle);
+}
+
+async function chargerStatutLlm() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/llm/status`, { cache: "no-store" });
+    if (!r.ok) throw new Error(`statut LLM ${r.status}`);
+    etat.llmDisponible = (await r.json()).actif === true;
+  } catch {
+    etat.llmDisponible = false;
+    console.error("llm statut indisponible");
+  }
+  rafraichirControleLlm();
 }
 
 /* ---------- Démarrage ---------- */
@@ -766,6 +841,13 @@ async function demarrer() {
   }
   select.value = langueInitiale(etat.config.langues);
   await appliquerLangue(select.value);
+  etat.llmActif = lireCle(sessionPreferences(), CLE_LLM) === "true";
+  void chargerStatutLlm();
+  $("#llm-actif").addEventListener("change", (e) => {
+    etat.llmActif = e.currentTarget.checked;
+    ecrireCle(sessionPreferences(), CLE_LLM, String(etat.llmActif));
+    rafraichirControleLlm();
+  });
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
   brancherProfil();

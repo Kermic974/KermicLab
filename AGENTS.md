@@ -55,7 +55,7 @@ npx wrangler pages dev dist     # chat en local
 - Code et identifiants en **français** (le projet est francophone) ; documentation publique en anglais avec version française.
 - JavaScript ES modules, sans framework ni étape de compilation. Dépendances minimales : chaque ajout doit être justifié dans un ADR.
 - Aucun texte d'interface en dur : clé dans `web/i18n/fr.json` **et** dans toutes les autres langues (le lint vérifie la parité). Ajouter une langue = ajouter un fichier.
-- Modèles : `claude-haiku-5-5` pour le chat et le routage (sortie JSON structurée) ; `claude-sonnet-5-5` uniquement pour préparer des maquettes candidates.
+- Modèles : Workers AI `@cf/meta/llama-3.3-70b-instruct-fp8-fast` pour les relances pédagogiques ; `claude-haiku-5-5` uniquement en repli (sortie JSON structurée) ; `claude-sonnet-5-5` pour préparer des maquettes candidates. Quota de 1 000 tokens générés par session, sources du catalogue et métadonnées en fin de réponse (ADR 0016). Abonnement au backlog ; accès gratuit provisoire.
 - Zéro secret dans le code : variables d'environnement, Cloudflare Secrets, GitHub Secrets ; documenter toute variable dans `.env.example`.
 - Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
 

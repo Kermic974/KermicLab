@@ -66,19 +66,20 @@ and everyday challenges.
 
 ## Quick start
 
-Requirements: Node.js 22+, a Cloudflare account, an Anthropic API key (optional for local dev).
+Requirements: Node.js 22+ and a Cloudflare account with Workers AI available. An Anthropic API key is optional and is only used as a fallback if Workers AI fails.
 
 ```bash
 npm ci
 npm run ci                          # lint, build, page security checks, unit + browser tests
-cp .env.example worker/.dev.vars    # fill in ANTHROPIC_API_KEY / GITHUB_TOKEN (optional)
+cp .env.example worker/.dev.vars    # set LLM_SESSION_SECRET (32+ random characters), ANTHROPIC_API_KEY (optional fallback), GITHUB_TOKEN
 cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev   # API on :8787
 # in another terminal
 KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev dist           # chat on :8788
 ```
 
-Without `ANTHROPIC_API_KEY` the catalogue still works; other questions get a fallback answer.
-This is the current **zero-budget mode** (free Cloudflare and GitHub plans only), see [ADR 0006](docs/decisions/0006-mode-zero-budget.md).
+Workers AI uses Cloudflare's `AI` binding (no API key). `LLM_ACTIF=false` is the global kill switch, controlled in Cloudflare; the site also offers individual opt-in, off by default and remembered for the browser session. Calls require both switches, the signing secret and the updated D1 schema. Other questions open a catalogue page or are declined without a model call.
+The server enforces **1,000 generated tokens per browser session**, with an absolute 24-hour expiry, shared with optional Anthropic fallback. Input tokens remain billable; new anonymous sessions are not a per-person spending cap. Trusted source links/descriptions and actual model/harness metadata appear after replies. Access is temporarily free; subscription gating is on the backlog. `LLM_ACTIF=false` disables all model calls without blocking the catalogue.
+See [ADR 0016](docs/decisions/0016-workers-ai-principal-anthropic-repli.md) and [ADR 0006](docs/decisions/0006-mode-zero-budget.md) for the history of zero-budget mode.
 Without `GITHUB_TOKEN`, the Worker creates no issues automatically; the Idea box still works through GitHub.
 
 ## Deploy
@@ -92,7 +93,9 @@ sets its secrets when defined, and publishes `dist/` to the Cloudflare Pages pro
 |---|---|---|
 | Secret | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | Deploy Worker, Pages, D1 |
 | Secret | `KERMICLAB_GITHUB_TOKEN` | Fine-grained token (Issues read/write on this repo), pushed to the Worker as `GITHUB_TOKEN` |
-| Secret | `ANTHROPIC_API_KEY` | Chat/router model, optional (zero-budget mode without it); also the AI security review |
+| Binding | Cloudflare Workers AI (`AI`) | Primary chat/router model; no API key |
+| Secret | `LLM_SESSION_SECRET` | 32+ random characters; signs the technical quota session cookie |
+| Secret | `ANTHROPIC_API_KEY` | Optional fallback if Workers AI fails; also used by the AI security review |
 | Secret | `CATALOGUE_TOKEN` | Read-only token on the private catalogue repo (optional) |
 | Variable | `KERMICLAB_API_URL` | API URL baked into the chat (default `https://kermiclab-api.kermic.workers.dev`) |
 
