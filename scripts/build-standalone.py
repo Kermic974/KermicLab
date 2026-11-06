@@ -129,7 +129,7 @@ def ajouter_idees(html):
     version = re.search(r"const VERSION = '([^']+)';", ENTRY.read_text(encoding="utf-8"))
     if not version:
         raise BuildError("version de l’application autonome introuvable")
-    config = json.dumps({"page": "cercle", "version": version[1], "site": "https://www.kermiclab.online/", "textes": textes}, ensure_ascii=False).replace("<", "\\u003c")
+    config = json.dumps({"page": "cercle", "version": version[1], "textes": textes}, ensure_ascii=False).replace("<", "\\u003c")
     style = (ROOT / "web" / "boite-idees.css").read_text(encoding="utf-8")
     script = (ROOT / "web" / "boite-idees.js").read_text(encoding="utf-8")
     return html.replace("</body>", '<script type="application/json" id="boite-idees-config">' + config

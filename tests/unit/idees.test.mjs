@@ -15,7 +15,7 @@ test("boîte à idées : chaque page publiée possède le composant et ses tradu
     const config = configuration(html);
     assert.equal(config.page, fichier);
     assert.ok(config.version);
-    assert.equal(config.site, "https://www.kermiclab.online/");
+    assert.equal(config.site, undefined, "l'adresse du site n'est jamais lue dans le DOM");
     for (const langue of ["fr", "en"]) {
       assert.deepEqual(Object.keys(config.textes[langue]).sort(), ["ideeAction", "ideeAvertissement"]);
     }

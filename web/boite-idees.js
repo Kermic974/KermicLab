@@ -7,7 +7,8 @@
 (() => {
   const config = JSON.parse(document.getElementById("boite-idees-config").textContent);
   const textes = () => config.textes[document.documentElement.lang] ?? config.textes.fr;
-  const SITE = config.site || "https://www.kermiclab.online/";
+  // Constante du script (jamais lue dans le DOM) : le lien de repli ne peut pointer que vers le site ou l'origine courante.
+  const SITE = "https://www.kermiclab.online/";
   // Visage pensif, main au menton, ampoule allumée au-dessus de la tête.
   const ICONE = '<svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">'
     + '<g class="boite-idees-rayons" fill="none" stroke="#f5a300" stroke-width="2.2" stroke-linecap="round">'
@@ -50,8 +51,9 @@
 
   /** Repli sans tableau de bord : le formulaire du site, contexte dans le fragment (jamais envoyé au serveur). */
   function cible(infos) {
-    const fragment = `#idee=${encodeURIComponent(JSON.stringify(infos))}`;
-    return /^https?:$/.test(location.protocol) ? new URL(`/${fragment}`, location.origin).href : `${SITE}${fragment}`;
+    const url = new URL(/^https?:$/.test(location.protocol) ? `${location.origin}/` : SITE);
+    url.hash = `idee=${encodeURIComponent(JSON.stringify(infos))}`;
+    return url.href;
   }
 
   function actualiser(lien) {
