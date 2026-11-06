@@ -110,7 +110,7 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
       { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" },
       { id: "electricite", titre: "Circuits électriques et loi d'Ohm", version: "1.0.0", niveau: "college", matiere: "physique-chimie" },
       { id: "art", titre: "L'art", version: "1.0.0", niveau: "terminale", matiere: "philosophie" },
-      ...(jeux ? [{ id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux" }] : [])
+      ...(Array.isArray(jeux) ? jeux : jeux ? [{ id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux" }] : [])
     ].map((n) => ({ matiere: "mathematiques", ...n })) })
   }));
   await page.route(`${api}/api/chat`, async (route) => {
