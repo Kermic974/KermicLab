@@ -294,6 +294,12 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
   assert.deepEqual(demande, { message: "Explique plus simplement", langue: "fr", utiliserLlm: true });
   assert.equal(await fin.locator("a").getAttribute("href"), `${api}/maquettes/trigo-cercle?lang=fr`);
   assert.match(await fin.locator(".source-description").textContent(), /trigonometrie · v1.0.0/);
+  const details = fin.locator("details.details-llm");
+  assert.equal(await details.evaluate((n) => n.open), false, "métadonnées repliées par défaut");
+  assert.equal(await fin.locator(".metadonnees-llm").isVisible(), false);
+  assert.equal(await fin.locator("a").isVisible(), true, "les sources restent visibles");
+  await details.locator("summary").click();
+  assert.equal(await fin.locator(".metadonnees-llm").isVisible(), true);
   assert.match(await fin.textContent(), /tuteur-catalogue-v1/);
   assert.match(await fin.textContent(), /180 \/ 1000/);
   assert.match(await fin.textContent(), /@cf\/meta\/llama-3.3/);
@@ -304,6 +310,67 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
   assert.match(await fin.textContent(), /KermicLab sources consulted/);
   assert.match(await fin.textContent(), /Temporarily free/);
   assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("conversation : bonjour suivi de relances cliquables, puis nouvelle conversation", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  const requetes = await simulerApi(page);
+  await page.route(`${api}/api/chat`, (route) => {
+    const { message } = route.request().postDataJSON();
+    requetes.push(message);
+    const aide = /sais-tu faire/.test(message);
+    return route.fulfill({
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": serveur.url, "access-control-allow-credentials": "true" },
+      body: JSON.stringify({
+        type: "conversation", intention: aide ? "aide" : "salutation",
+        texte: aide ? "Je connais 6 notions." : "Bonjour ! Je suis Kermiclab.",
+        suggestions: aide ? ["C'est quoi le sinus ?"] : ["Que sais-tu faire ?", "C'est quoi le sinus ?"]
+      })
+    });
+  });
+  await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
+  await page.locator("#fil li.bienvenue").waitFor();
+  await page.fill("#question", "bonjour");
+  await page.keyboard.press("Enter");
+  const reponse = page.locator("#fil li.conversation");
+  await reponse.waitFor();
+  assert.match(await reponse.textContent(), /Bonjour ! Je suis Kermiclab/);
+  assert.match(await reponse.locator(".relances .puces-titre").textContent(), /Je te propose/);
+  await reponse.locator(".puce", { hasText: "Que sais-tu faire ?" }).click();
+  await page.locator("#fil li.conversation", { hasText: "Je connais 6 notions." }).waitFor();
+  assert.deepEqual(requetes, ["bonjour", "Que sais-tu faire ?"]);
+  assert.equal(await page.locator("#fil .relances").count(), 1, "seules les dernières relances restent proposées");
+
+  const bouton = page.locator("#nouvelle-conversation");
+  assert.equal(await bouton.getAttribute("aria-label"), "Nouvelle conversation");
+  await page.fill("#question", "brouillon");
+  await bouton.click();
+  assert.equal(await page.locator("#fil li").count(), 1);
+  assert.equal(await page.locator("#fil li.bienvenue").count(), 1);
+  assert.equal(await page.locator("#puces-bienvenue .puce").count() > 0, true);
+  assert.equal(await page.inputValue("#question"), "");
+  assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
+  assert.equal(requetes.length, 2, "repartir de zéro n'appelle pas l'API");
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.documentElement.lang === "en");
+  assert.equal(await bouton.getAttribute("aria-label"), "New conversation");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("conversation : bouton « Nouvelle conversation » visible et sans débordement sur mobile", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true });
+  await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
+  const bouton = await page.locator("#nouvelle-conversation").boundingBox();
+  const panneau = await page.locator("#panneau-chat").boundingBox();
+  await page.waitForTimeout(300);
+  assert.ok(bouton.width >= 36 && bouton.x >= panneau.x && bouton.x + bouton.width <= panneau.x + panneau.width);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
   await contexte.close();
 });
 
