@@ -264,7 +264,6 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .chat-entete { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--bord); flex: none; }
 .chat-titres { flex: 1; min-width: 0; }
 .chat .zone-saisie { flex: none; }
-body:has(#ouvrir-chat) > .boite-idees-flottante { right: auto; left: max(calc(var(--laterale) + 24px), env(safe-area-inset-left, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px)); }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
 .nouvelle-conversation { width: auto; padding: 0 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 650; flex: none; }
 .nouvelle-conversation .ico { width: 16px; height: 16px; }
@@ -483,7 +482,8 @@ dialog h2 { font-size: 1.2rem; }
 dialog h3 { margin: 18px 0 8px; font-size: 1rem; }
 dialog .actions { justify-content: flex-end; margin-top: 8px; }
 #formulaire-signalement h2 { margin-bottom: 12px; }
-#formulaire-signalement textarea { margin-top: 6px; resize: vertical; }
+#formulaire-signalement textarea, #formulaire-idee textarea { margin-top: 6px; resize: vertical; }
+#formulaire-idee h2 { margin-bottom: 10px; }
 .dialogue-entete { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
 .fermer-croix { width: 38px; height: 38px; padding: 0; border-radius: 50%; background: var(--surface-2); color: var(--texte); border: 1px solid var(--bord); flex: none; }
 .fermer-croix::before { content: "✕"; }
@@ -615,6 +615,24 @@ main.prose p, main.prose ul { margin: 0 0 12px; }
 
 /* ---------- Feuille de route (page de texte enrichie, sans script) ---------- */
 a.nav-bouton { text-decoration: none; }
+/* Boîte à idées (composant partagé web/boite-idees.*) : couleurs du tableau de bord, clair comme sombre. */
+body .boite-idees { --bi-fond: var(--surface); --bi-texte: var(--texte-2); --bi-bord: var(--bord-fort); --bi-survol: var(--accent-doux); --bi-focus: var(--accent); }
+body:has(#ouvrir-chat) > .boite-idees-flottante { display: none; }
+.nav-idees { display: contents; }
+.nav-idees > .boite-idees-integree { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 42px; padding: 0 12px 0 8px; border-radius: var(--rayon-petit); font: inherit; font-weight: 560; color: var(--texte-2); }
+.nav-idees > .boite-idees-integree:hover { background: var(--surface-2); color: var(--texte); }
+.nav-idees .boite-idees-icone { width: 28px; height: 28px; margin-right: -4px; }
+.idee-titre { display: flex; align-items: center; gap: 10px; }
+.idee-titre-icone { display: grid; width: 40px; height: 40px; flex: none; }
+.idee-titre-icone svg { width: 100%; height: 100%; }
+.idee-contexte:empty { display: none; }
+.idee-ia { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 10px 0 4px; }
+.idee-cadrage { margin: 10px 0; padding: 12px 14px; border: 1px solid var(--bord); border-radius: var(--rayon-petit); background: var(--surface-2); font-size: .9rem; }
+.idee-cadrage h3 { margin: 0 0 6px; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--doux); }
+.idee-cadrage-nom { margin: 0 0 4px; font-weight: 700; color: var(--texte); }
+.idee-cadrage ul { margin: 4px 0 8px; padding-left: 20px; }
+.idee-cadrage .puces-titre { margin: 8px 0 2px; }
+.idee-joindre { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-weight: 650; }
 main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .feuille-route section { margin-top: 40px; scroll-margin-top: 16px; }
 .feuille-route h2 { font-size: 1.45rem; letter-spacing: -.01em; }
@@ -736,6 +754,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .nav-groupe { padding-top: 8px; }
   .nav-groupe-titre { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .nav-bouton { justify-content: center; padding: 0; min-height: 48px; }
+  .nav-idees > .boite-idees-integree { justify-content: center; padding: 0; min-height: 48px; }
+  .nav-idees .boite-idees-texte { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .nav-bouton .ico { width: 22px; height: 22px; }
   .profil-carte { justify-content: center; padding: 8px; background: none; border: 0; }
   .principal { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
@@ -774,7 +794,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
     bottom: calc(212px + env(safe-area-inset-bottom, 0px)); width: auto;
     height: min(680px, calc(100dvh - 224px - env(safe-area-inset-bottom, 0px) - env(safe-area-inset-top, 0px))); border-radius: 18px;
   }
-  body:has(#ouvrir-chat) > .boite-idees-flottante { left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+  body:has(#ouvrir-chat) > .boite-idees-flottante { display: inline-flex; right: auto; left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(146px + env(safe-area-inset-bottom, 0px)); min-height: 0; padding: .2rem; }
+  body:has(#ouvrir-chat) > .boite-idees-flottante .boite-idees-icone { width: 2.1rem; height: 2.1rem; }
   .chat-entete { padding: 14px 16px; }
   #fil { padding: 14px 12px; }
   .zone-saisie { padding: 10px; }

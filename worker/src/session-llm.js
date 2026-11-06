@@ -33,27 +33,36 @@ export async function lireSessionLlm(requete, env) {
     .bind(payload.sub, Math.floor(Date.now() / 1000)).first();
 }
 
-export async function definirContexteLlm(requete, env, maquetteId) {
+async function creerSessionLlm(env, maquetteId) {
   const cle = cleSession(env);
   const maintenant = Math.floor(Date.now() / 1000);
-  let session = await lireSessionLlm(requete, env);
-  let cookie;
-  if (!session) {
-    const id = crypto.randomUUID();
-    const expiration = maintenant + DUREE_SESSION;
-    await env.DB.prepare("INSERT INTO sessions_llm (id, expire_a, maquette_id) VALUES (?, ?, ?)")
-      .bind(id, expiration, maquetteId).run();
-    const jeton = await new SignJWT({}).setProtectedHeader({ alg: "HS256" })
-      .setSubject(id).setIssuer(EMETTEUR).setAudience(EMETTEUR)
-      .setIssuedAt(maintenant).setExpirationTime(expiration).sign(cle);
-    // Sans Max-Age ni Expires : cookie de session, expiration serveur absolue de 24 h.
-    cookie = `${NOM_COOKIE}=${jeton}; HttpOnly; Secure; SameSite=None; Path=/`;
-    session = { id, maquette_id: maquetteId };
-  } else {
-    await env.DB.prepare("UPDATE sessions_llm SET maquette_id = ? WHERE id = ?")
-      .bind(maquetteId, session.id).run();
-  }
-  return cookie;
+  const id = crypto.randomUUID();
+  const expiration = maintenant + DUREE_SESSION;
+  await env.DB.prepare("INSERT INTO sessions_llm (id, expire_a, maquette_id) VALUES (?, ?, ?)")
+    .bind(id, expiration, maquetteId).run();
+  const jeton = await new SignJWT({}).setProtectedHeader({ alg: "HS256" })
+    .setSubject(id).setIssuer(EMETTEUR).setAudience(EMETTEUR)
+    .setIssuedAt(maintenant).setExpirationTime(expiration).sign(cle);
+  // Sans Max-Age ni Expires : cookie de session, expiration serveur absolue de 24 h.
+  return { id, cookie: `${NOM_COOKIE}=${jeton}; HttpOnly; Secure; SameSite=None; Path=/` };
+}
+
+export async function definirContexteLlm(requete, env, maquetteId) {
+  cleSession(env);
+  const session = await lireSessionLlm(requete, env);
+  if (!session) return (await creerSessionLlm(env, maquetteId)).cookie;
+  await env.DB.prepare("UPDATE sessions_llm SET maquette_id = ? WHERE id = ?")
+    .bind(maquetteId, session.id).run();
+  return undefined;
+}
+
+/** Session pour la boîte à idées : celle du tuteur si elle existe (même quota), sinon une nouvelle sans page. */
+export const SESSION_SANS_PAGE = "boite-idees";
+export async function sessionPourIdee(requete, env) {
+  const existante = await lireSessionLlm(requete, env);
+  if (existante) return { session: existante };
+  const { id, cookie } = await creerSessionLlm(env, SESSION_SANS_PAGE);
+  return { session: { id, maquette_id: SESSION_SANS_PAGE }, cookie };
 }
 
 /** Une réservation atomique et un seul appel en vol évitent les dépassements concurrents. */

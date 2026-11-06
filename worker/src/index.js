@@ -9,8 +9,9 @@ import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
-import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm } from "./session-llm.js";
-import { interrogerTuteur } from "./tuteur-llm.js";
+import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee } from "./session-llm.js";
+import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
+import { HARNESS_CADRAGE, SCHEMA_CADRAGE, normaliserCadrage, pistesFichiers, promptCadrage, sectionCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
 import { claudeViaGatewayDisponible } from "./llm.js";
 
@@ -268,6 +269,110 @@ async function traiterSupport(requete, env, ctx) {
   return { statut: 200, donnees: { ok: true, texte: messages(langue).supportMerci } };
 }
 
+const CLES_CONTEXTE_IDEE = ["page", "version", "langue", "navigation", "dialogue", "panneau", "module", "onglet", "vues"];
+
+/** Contexte d'une idée : clés connues, valeurs courtes sans caractère spécial (jamais de texte libre). */
+export function contexteIdee(brut) {
+  if (!brut || typeof brut !== "object" || Array.isArray(brut)) return {};
+  return Object.fromEntries(CLES_CONTEXTE_IDEE
+    .map((cle) => [cle, brut[cle]])
+    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_/@-]+$/u.test(v)));
+}
+
+export function corpsIdee({ message, langue, contexte, cadrage = null }) {
+  const details = Object.entries(contexte).map(([cle, valeur]) => `- ${cle}: ${valeur}`).join("\n") || "- (aucun)";
+  return [
+    `Idée envoyée depuis la boîte à idées (${langue}), sans compte GitHub :`,
+    "",
+    `> ${message.replace(/\n/g, "\n> ")}`,
+    "",
+    "### Contexte",
+    details,
+    "",
+    ...(cadrage ? [sectionCadrage(cadrage, contexte), ""] : []),
+    "### Travail préparatoire de l'agent",
+    "- Analyser le besoin et les fichiers concernés ; vérifier les idées et issues existantes.",
+    "- Proposer une implémentation et relever les incertitudes avant de modifier le code.",
+    "- Couvrir les vues, langues, accessibilité et contraintes des pages autonomes.",
+    "- Ajouter les tests de non-régression et mettre à jour la documentation.",
+    "- Préparer une PR ; validation humaine obligatoire (AGENTS.md).",
+    "",
+    "Issue créée automatiquement par le Worker Kermiclab."
+  ].join("\n");
+}
+
+/** Boîte à idées : même parcours que le signalement (modération, issue créée par le Worker, aucun compte). */
+async function traiterIdee(requete, env, ctx) {
+  let corps;
+  try { corps = await requete.json(); } catch { return { statut: 400, donnees: { ok: false } }; }
+  const langue = langueValide(corps?.langue);
+  const message = String(corps?.message ?? "").trim().slice(0, 2000);
+  if (!message) return { statut: 400, donnees: { ok: false } };
+  const moderation = analyser(message);
+  if (!moderation.ok) {
+    const t = messages(langue);
+    return { statut: 200, donnees: { ok: false, texte: moderation.raison.startsWith("donnees-personnelles") ? t.donneesPersonnelles : t.inapproprie } };
+  }
+  const contexte = contexteIdee(corps?.contexte);
+  // Cadrage IA accepté par l'utilisateur : renvoyé par le navigateur, donc revalidé ici (bornes, zones, modération).
+  let cadrage = null;
+  if (corps?.cadrage) {
+    try { cadrage = validerCadrage(corps.cadrage); } catch { cadrage = null; }
+  }
+  ctx.waitUntil(journaliser(env, { type: "idee", langue, detail: contexte.page ?? null, routage: cadrage ? "cadrage-ia" : null }));
+  try {
+    await creerOuCommenterIssue(env, {
+      label: "idee", sujet: cadrage?.titre ?? `${contexte.page ?? "site"} ${new Date().toISOString().slice(0, 16)}`,
+      corps: corpsIdee({ message, langue, contexte, cadrage }),
+      commentaire: `Idée similaire (${langue}) :\n> ${message.replace(/\n/g, " ").slice(0, 500)}`
+    });
+  } catch (e) {
+    console.error("idee", e.message);
+    return { statut: 502, donnees: { ok: false, texte: messages(langue).erreur } };
+  }
+  return { statut: 200, donnees: { ok: true, texte: messages(langue).ideeMerci } };
+}
+
+/**
+ * Boîte à idées : le LLM propose un cadrage d'issue (titre, besoin, critères, zones, questions) que
+ * l'utilisateur relit avant l'envoi. Même opt-in, même quota de session et mêmes fournisseurs que le tuteur.
+ */
+async function traiterCadrageIdee(requete, env) {
+  let corps;
+  try { corps = await requete.json(); } catch { return { statut: 400, donnees: { ok: false } }; }
+  const langue = langueValide(corps?.langue);
+  const t = messages(langue);
+  const message = String(corps?.message ?? "").trim().slice(0, 2000);
+  if (!message) return { statut: 400, donnees: { ok: false } };
+  if (corps?.utiliserLlm !== true || !llmActive(env) || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
+    return { statut: 503, donnees: { ok: false, texte: t.indisponible } };
+  }
+  const moderation = analyser(message);
+  if (!moderation.ok) {
+    return { statut: 200, donnees: { ok: false, texte: moderation.raison.startsWith("donnees-personnelles") ? t.donneesPersonnelles : t.inapproprie } };
+  }
+  const contexte = contexteIdee(corps?.contexte);
+  let reponse, cookie;
+  try {
+    const ouverte = await sessionPourIdee(requete, env);
+    cookie = ouverte.cookie;
+    reponse = await interrogerFournisseurs(env, ouverte.session, {
+      system: promptCadrage(contexte, langue), message, schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
+    }, clientClaude, HARNESS_CADRAGE);
+  } catch {
+    console.error("llm cadrage indisponible");
+    return { statut: 503, donnees: { ok: false, texte: t.indisponible } };
+  }
+  const entetes = cookie ? { "set-cookie": cookie } : {};
+  if (reponse.erreur) {
+    const quota = reponse.erreur === "quota-ou-en-cours";
+    return { statut: quota ? 429 : 503, donnees: { ok: false, texte: quota ? t.quotaLlm : t.indisponible }, entetes };
+  }
+  const { resultat, llm } = reponse;
+  if (resultat.refus || resultat.horsSujet) return { statut: 200, donnees: { ok: false, texte: t.ideeHorsSujet, llm }, entetes };
+  return { statut: 200, donnees: { ok: true, cadrage: { ...resultat, pistes: pistesFichiers(resultat.zones, contexte) }, llm }, entetes };
+}
+
 function servirPage(requete, env, id) {
   const m = maquetteParId(id);
   if (!m) return new Response("Not found", { status: 404 });
@@ -355,7 +460,7 @@ export default {
     const page = url.pathname.match(/^\/maquettes\/([a-z0-9-]+)$/);
     if ((requete.method === "GET" || requete.method === "HEAD") && page) return servirPage(requete, env, page[1]);
 
-    if (requete.method === "POST" && (url.pathname === "/api/chat" || url.pathname === "/api/support")) {
+    if (requete.method === "POST" && ["/api/chat", "/api/support", "/api/idee", "/api/idee/cadrage"].includes(url.pathname)) {
       if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
         return json({ type: "refus", texte: messages("fr").inapproprie }, 403, {});
       }
@@ -366,7 +471,8 @@ export default {
         return json({ type: "refus", texte: messages("fr").tropDeDemandes }, 429, cors);
       }
       try {
-        const { statut, donnees, entetes = {} } = url.pathname === "/api/chat" ? await traiterChat(requete, env, ctx) : await traiterSupport(requete, env, ctx);
+        const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee }[url.pathname];
+        const { statut, donnees, entetes = {} } = await traiter(requete, env, ctx);
         return json(donnees, statut, { ...cors, ...entetes });
       } catch (e) {
         console.error("erreur", e?.message);

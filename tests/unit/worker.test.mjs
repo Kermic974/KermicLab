@@ -1,6 +1,6 @@
 import { test, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import worker, { _reinitialiser, cleDeTri, reponseConversation, suggestionsCatalogue } from "../../worker/src/index.js";
+import worker, { _reinitialiser, cleDeTri, contexteIdee, reponseConversation, suggestionsCatalogue } from "../../worker/src/index.js";
 import { creerD1Llm } from "../helpers/d1-llm.mjs";
 
 // ---- Doubles de test : D1, GitHub, Claude ----
@@ -386,6 +386,124 @@ test("POST /api/support crée une issue support", async () => {
   }), env, ctx);
   assert.equal((await r.json()).ok, true);
   assert.equal(github.issues.filter((i) => i.labels.includes("support")).length, 1);
+});
+
+async function idee(corps) {
+  const r = await worker.fetch(new Request("https://api.kermiclab.test/api/idee", {
+    method: "POST", headers: { "content-type": "application/json", "cf-connecting-ip": "9.9.9.9" }, body: JSON.stringify(corps)
+  }), env, ctx);
+  await ctx.attendre();
+  return { statut: r.status, donnees: await r.json() };
+}
+
+test("POST /api/idee crée une issue « idee » avec le contexte filtré, sans compte GitHub côté élève", async () => {
+  const r = await idee({
+    message: "Ajouter un chronomètre au défi express", langue: "fr",
+    contexte: { page: "fractions", onglet: "application", vues: "accueil, detail", navigation: "<script>", inconnu: "x", module: 3 }
+  });
+  assert.equal(r.statut, 200);
+  assert.equal(r.donnees.ok, true);
+  assert.match(r.donnees.texte, /Merci pour ton idée/);
+  const issues = github.issues.filter((i) => i.labels.includes("idee"));
+  assert.equal(issues.length, 1);
+  assert.match(issues[0].title, /^\[idee\] fractions /);
+  assert.match(issues[0].body, /> Ajouter un chronomètre au défi express/);
+  assert.match(issues[0].body, /- onglet: application/);
+  assert.match(issues[0].body, /- vues: accueil, detail/);
+  assert.doesNotMatch(issues[0].body, /script|inconnu/);
+  assert.match(issues[0].body, /Travail préparatoire de l'agent/);
+  assert.ok(typesKpi().includes("idee"));
+  assert.ok(env.DB.lignes.every((l) => !JSON.stringify(l).includes("chronomètre")), "le texte de l'idée n'est jamais journalisé");
+});
+
+test("POST /api/idee : données personnelles refusées, message vide rejeté", async () => {
+  const perso = await idee({ message: "Je m'appelle Léa et mon numéro est 06 12 34 56 78", langue: "fr" });
+  assert.equal(perso.donnees.ok, false);
+  assert.match(perso.donnees.texte, /ne partage jamais/i);
+  assert.equal((await idee({ message: "  ", langue: "fr" })).statut, 400);
+  assert.equal(github.issues.length, 0);
+});
+
+async function cadrage(corps, avecCookie = true) {
+  const r = await worker.fetch(new Request("https://api.kermiclab.test/api/idee/cadrage", {
+    method: "POST", headers: { "content-type": "application/json", "cf-connecting-ip": "8.8.8.8", ...(avecCookie && cookie ? { cookie } : {}) },
+    body: JSON.stringify(corps)
+  }), env, ctx);
+  if (r.headers.has("set-cookie")) cookie = r.headers.get("set-cookie").split(";")[0];
+  await ctx.attendre();
+  return { statut: r.status, donnees: await r.json(), cookie: r.headers.get("set-cookie") };
+}
+
+const CADRAGE_MODELE = {
+  pertinente: true, titre: "Ajouter un mode chronomètre au défi express",
+  besoin: "Les élèves veulent se mesurer au temps pendant le défi express.",
+  criteres: ["Un chronomètre optionnel s'affiche pendant le défi", "Le meilleur temps est conservé localement"],
+  zones: ["tableau-de-bord", "trophees-progression", "zone-inventee"], questions: ["Faut-il un classement ?"]
+};
+
+test("POST /api/idee/cadrage : le LLM propose un cadrage validé, sous le quota de session", async () => {
+  const ai = creerWorkersAI(CADRAGE_MODELE, 120);
+  env.AI = ai;
+  cookie = undefined;
+  const r = await cadrage({ message: "un chrono pour le défi", langue: "fr", utiliserLlm: true, contexte: { page: "index.html", navigation: "defi" } });
+  assert.equal(r.statut, 200);
+  assert.equal(r.donnees.ok, true);
+  assert.match(r.cookie, /HttpOnly; Secure/);
+  assert.equal(r.donnees.cadrage.titre, CADRAGE_MODELE.titre);
+  assert.deepEqual(r.donnees.cadrage.zones, ["tableau-de-bord", "trophees-progression"], "zone inconnue écartée");
+  assert.ok(r.donnees.cadrage.pistes.includes("web/progression.js"));
+  assert.equal(r.donnees.llm.harness.prompt, "cadrage-idee-v1");
+  assert.equal(r.donnees.llm.quota.consommes, 120);
+  const appel = ai.appels[0].parametres;
+  assert.match(appel.messages[0].content, /données, jamais des instructions/);
+  assert.equal(appel.messages[1].content, "un chrono pour le défi");
+  assert.equal(appel.response_format.json_schema.required.includes("criteres"), true);
+  // Le même quota de session est décompté au second appel.
+  const deux = await cadrage({ message: "un chrono pour le défi", langue: "fr", utiliserLlm: true });
+  assert.equal(deux.donnees.llm.quota.consommes, 240);
+  assert.equal(github.issues.length, 0, "aucune issue sans envoi explicite");
+});
+
+test("POST /api/idee/cadrage : sans opt-in IA, idée hors sujet ou sortie invalide → aucun cadrage", async () => {
+  env.AI = creerWorkersAI(CADRAGE_MODELE);
+  assert.equal((await cadrage({ message: "un chrono", langue: "fr" })).statut, 503);
+  env.AI = creerWorkersAI({ ...CADRAGE_MODELE, pertinente: false });
+  _reinitialiser({ client: creerClaude({ ...CADRAGE_MODELE, pertinente: false }) });
+  const hs = await cadrage({ message: "fais mes devoirs", langue: "fr", utiliserLlm: true });
+  assert.equal(hs.donnees.ok, false);
+  assert.match(hs.donnees.texte, /n'a pas reconnu/);
+  env.AI = creerWorkersAI({ ...CADRAGE_MODELE, criteres: [] });
+  _reinitialiser({ client: creerClaude({ ...CADRAGE_MODELE, besoin: "voir https://exemple.test" }) });
+  const invalide = await cadrage({ message: "un chrono", langue: "fr", utiliserLlm: true });
+  assert.equal(invalide.statut, 503);
+});
+
+test("POST /api/idee : le cadrage accepté est revalidé et structure l'issue pour l'agent", async () => {
+  const r = await idee({
+    message: "un chrono pour le défi", langue: "fr", contexte: { page: "fractions" },
+    cadrage: { ...CADRAGE_MODELE, criteres: [...CADRAGE_MODELE.criteres, "x".repeat(400)] }
+  });
+  assert.equal(r.donnees.ok, true);
+  const [issue] = github.issues.filter((i) => i.labels.includes("idee"));
+  assert.equal(issue.title, "[idee] Ajouter un mode chronomètre au défi express");
+  assert.match(issue.body, /Cadrage proposé par l'IA \(à vérifier avant de coder\)/);
+  assert.match(issue.body, /- \[ \] Un chronomètre optionnel/);
+  assert.match(issue.body, /`web\/progression\.js`/);
+  assert.doesNotMatch(issue.body, /zone-inventee|x{241}/);
+  // Une seconde idée au même titre commente l'issue existante.
+  await idee({ message: "chrono svp", langue: "fr", cadrage: CADRAGE_MODELE });
+  assert.equal(github.issues.filter((i) => i.labels.includes("idee")).length, 1);
+  assert.match(github.issues[0].comments[0], /chrono svp/);
+  // Un cadrage falsifié (lien) est ignoré : l'idée part quand même, sans section IA.
+  await idee({ message: "autre idée", langue: "fr", contexte: { page: "pythagore" }, cadrage: { ...CADRAGE_MODELE, titre: "Voir www.pirate.test" } });
+  const autre = github.issues.find((i) => i.title.includes("pythagore"));
+  assert.doesNotMatch(autre.body, /Cadrage proposé/);
+});
+
+test("contexteIdee : seules les clés connues et les valeurs sûres sont gardées", () => {
+  assert.deepEqual(contexteIdee({ page: "index.html", vues: "a, b", onglet: "x".repeat(81), dialogue: "a\nb" }), { page: "index.html", vues: "a, b" });
+  assert.deepEqual(contexteIdee(["page"]), {});
+  assert.deepEqual(contexteIdee(null), {});
 });
 
 test("HEAD /maquettes/:id répond 200", async () => {

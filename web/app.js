@@ -690,6 +690,10 @@ function brancherTrophees() {
     // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
     const cadre = [...document.querySelectorAll("iframe[data-module]")].find((c) => c.contentWindow === e.source);
     if (!cadre || e.origin !== "null" || !cadre.hasAttribute("src")) return;
+    if (e.data?.type === "kermiclab:idee") {
+      ouvrirIdee({ ...nettoyerContexteIdee(e.data.contexte), module: cadre.dataset.module });
+      return;
+    }
     if (e.data?.type === "kermiclab:chat:fermer") {
       if ($("#panneau-chat").hidden || !$("#fil").contains(cadre) || document.querySelector("dialog[open]")) return;
       fermerChat({ rendreFocus: true });
@@ -920,6 +924,7 @@ function rafraichirControleLlm() {
   const statut = $("#llm-etat");
   const cle = !etat.llmDisponible ? "llmStatutIndisponible" : etat.llmActif ? "llmStatutActif" : "llmStatutInactif";
   statut.textContent = t(cle);
+  rafraichirIdeeIa();
 }
 
 async function chargerStatutLlm() {
@@ -1012,6 +1017,10 @@ async function demarrer() {
 
   $("#ouvrir-progres").addEventListener("click", ouvrirProgres);
 
+  brancherIdees();
+  const ideeDemandee = lireIdeeDepuisAdresse();
+  if (ideeDemandee) ouvrirIdee(ideeDemandee);
+
   const dialogue = $("#signalement");
   $("#ouvrir-signalement").addEventListener("click", ouvrirSignalement);
   brancherDialogue(dialogue, $("#fermer-signalement"));
@@ -1054,6 +1063,131 @@ async function demarrer() {
 }
 
 function ouvrirProgres() { naviguer("badges"); }
+/* ---------- Boîte à idées (formulaire natif, comme le signalement) ---------- */
+
+const CLES_CONTEXTE_IDEE = ["page", "version", "langue", "navigation", "dialogue", "panneau", "module", "onglet", "vues"];
+
+/** Contexte venu d'une page (éventuellement isolée) : clés connues, valeurs courtes et sans caractère spécial. */
+function nettoyerContexteIdee(brut) {
+  if (!brut || typeof brut !== "object") return {};
+  return Object.fromEntries(CLES_CONTEXTE_IDEE
+    .map((cle) => [cle, brut[cle]])
+    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_\/@-]+$/u.test(v)));
+}
+
+function ouvrirIdee(contexte = {}) {
+  etat.ideeContexte = nettoyerContexteIdee(contexte);
+  const resume = Object.entries(etat.ideeContexte).filter(([cle]) => ["page", "navigation", "onglet", "module", "dialogue"].includes(cle))
+    .map(([, v]) => v).join(" · ");
+  $("#idee-contexte").textContent = resume ? t("ideeContexte", { contexte: resume }) : "";
+  $("#retour-idee").textContent = "";
+  afficherCadrage(null);
+  rafraichirIdeeIa();
+  const icone = document.querySelector(".boite-idees .boite-idees-icone svg");
+  if (icone && !$("#idee-icone").firstChild) $("#idee-icone").append(icone.cloneNode(true));
+  const dialogue = $("#dialogue-idee");
+  if (!dialogue.open) dialogue.showModal();
+  $("#texte-idee").focus();
+}
+
+/** Le cadrage par l'IA suit le même opt-in que le tuteur (Configuration) et la disponibilité du site. */
+function rafraichirIdeeIa() {
+  const bouton = $("#preparer-idee");
+  if (!bouton) return;
+  const possible = etat.llmDisponible && etat.llmActif;
+  bouton.disabled = !possible;
+  const aide = $("#idee-ia-aide");
+  aide.dataset.i18n = possible ? "ideeIaAide" : "ideeIaInactive";
+  aide.textContent = t(aide.dataset.i18n);
+}
+
+function afficherCadrage(cadrage, llm) {
+  etat.ideeCadrage = cadrage;
+  const bloc = $("#idee-cadrage");
+  bloc.hidden = !cadrage;
+  if (!cadrage) return;
+  $("#idee-cadrage-nom").textContent = cadrage.titre;
+  $("#idee-cadrage-besoin").textContent = cadrage.besoin;
+  $("#idee-cadrage-criteres").replaceChildren(...cadrage.criteres.map((c) => element("li", { texte: c })));
+  $("#idee-cadrage-zones").textContent = cadrage.zones.length ? t("ideeCadrageZones", { zones: cadrage.zones.join(", ") }) : "";
+  $("#idee-cadrage-questions").replaceChildren(...cadrage.questions.map((q) => element("li", { texte: q })));
+  $("#idee-cadrage-questions-bloc").hidden = !cadrage.questions.length;
+  $("#idee-cadrage-llm").textContent = llm
+    ? `${llm.fournisseur} · ${llm.modele} · ${llm.harness?.prompt ?? ""} · ${llm.quota?.consommes ?? "?"} / ${llm.quota?.limite ?? "?"}`
+    : "";
+  $("#idee-joindre").checked = true;
+}
+
+function cadrageValide(c) {
+  const chaines = (l, n) => Array.isArray(l) && l.length <= n && l.every((v) => typeof v === "string" && v.length <= 600);
+  return c && typeof c.titre === "string" && typeof c.besoin === "string" && chaines(c.criteres, 5) && chaines(c.zones, 3) && chaines(c.questions, 3);
+}
+
+async function preparerIdee() {
+  const message = $("#texte-idee").value.trim();
+  const retour = $("#retour-idee");
+  if (!message) { retour.textContent = t("ideeIaVide"); $("#texte-idee").focus(); return; }
+  const bouton = $("#preparer-idee");
+  bouton.disabled = true;
+  retour.textContent = t("ideeIaChargement");
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/idee/cadrage`, {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ message, langue: etat.langue, contexte: etat.ideeContexte ?? {}, utiliserLlm: true })
+    });
+    const d = await r.json();
+    if (d.ok && cadrageValide(d.cadrage)) {
+      afficherCadrage(d.cadrage, d.llm);
+      retour.textContent = "";
+    } else {
+      retour.textContent = d.texte ?? t("erreurReseau");
+    }
+  } catch {
+    retour.textContent = t("erreurReseau");
+  } finally {
+    rafraichirIdeeIa();
+  }
+}
+
+/** Contexte transmis par une page ouverte seule (fragment #idee=…, jamais envoyé au serveur). */
+function lireIdeeDepuisAdresse() {
+  if (!location.hash.startsWith("#idee=")) return null;
+  let contexte = {};
+  try { contexte = JSON.parse(decodeURIComponent(location.hash.slice(6))); } catch { contexte = {}; }
+  history.replaceState(null, "", `${location.pathname}${location.search}`);
+  return contexte;
+}
+
+function brancherIdees() {
+  document.addEventListener("kermiclab:idee", (e) => { e.preventDefault(); ouvrirIdee(e.detail); });
+  brancherDialogue($("#dialogue-idee"), $("#fermer-idee"));
+  $("#preparer-idee").addEventListener("click", preparerIdee);
+  $("#formulaire-idee").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const champ = $("#texte-idee");
+    const message = champ.value.trim();
+    if (!message) return;
+    const bouton = e.submitter ?? $("#formulaire-idee button[type=submit]");
+    bouton.disabled = true;
+    try {
+      const r = await fetch(`${etat.config.apiUrl}/api/idee`, {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          message, langue: etat.langue, contexte: etat.ideeContexte ?? {},
+          ...(etat.ideeCadrage && $("#idee-joindre").checked ? { cadrage: etat.ideeCadrage } : {})
+        })
+      });
+      const d = await r.json();
+      $("#retour-idee").textContent = d.texte ?? t("erreurReseau");
+      if (d.ok) { champ.value = ""; afficherCadrage(null); }
+    } catch {
+      $("#retour-idee").textContent = t("erreurReseau");
+    } finally {
+      bouton.disabled = false;
+    }
+  });
+}
+
 function ouvrirSignalement() { $("#retour-signalement").textContent = ""; $("#signalement").showModal(); }
 
 /* ---------- Session, pseudo et mémorisation (ADR 0012) ---------- */

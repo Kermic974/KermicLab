@@ -24,6 +24,8 @@ export const MESSAGES = {
     },
     suggestionAide: "Que sais-tu faire ?",
     supportMerci: "Merci, ton signalement a bien été transmis.",
+    ideeMerci: "Merci pour ton idée ! Elle a bien été transmise à l'équipe KermicLab.",
+    ideeHorsSujet: "L'IA n'a pas reconnu une idée pour améliorer KermicLab. Tu peux reformuler, ou l'envoyer telle quelle.",
     erreur: "Oups, une erreur est survenue. Réessaie dans un instant."
   },
   en: {
@@ -50,6 +52,8 @@ export const MESSAGES = {
     },
     suggestionAide: "What can you do?",
     supportMerci: "Thank you, your report has been sent.",
+    ideeMerci: "Thanks for your idea! It has been sent to the KermicLab team.",
+    ideeHorsSujet: "The AI didn't recognise an idea to improve KermicLab. You can rephrase it, or send it as is.",
     erreur: "Oops, something went wrong. Please try again in a moment."
   }
 };

@@ -66,6 +66,7 @@
       <button type="button" class="nav-bouton" data-nav="profil"><svg class="ico" aria-hidden="true"><use href="#i-reglages"/></svg><span class="nav-texte" data-i18n="navParametres"></span></button>
       <a class="nav-bouton" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span class="nav-texte" data-i18n="navFeuilleDeRoute"></span></a>
       <button type="button" class="nav-bouton" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="signaler"></span></button>
+      <div class="nav-idees" data-boite-idees-hote></div>
       <a class="nav-bouton nav-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span class="nav-texte" data-i18n="navParticiper"></span></a>
       <button type="button" class="profil-carte" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n-aria="profilTitre">
         <span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span>
@@ -540,7 +541,7 @@
   <p class="note-locale" id="note-memoire"></p>
   <p class="doux petit" data-i18n="progressionCompte"></p>
 </section>
-<dialog id="signalement">
+<dialog id="signalement" data-sans-idees>
   <form id="formulaire-signalement" method="dialog">
     <h2 data-i18n="signalerTitre"></h2>
     <label for="texte-signalement" data-i18n="signalerAide"></label>
@@ -549,6 +550,36 @@
     <div class="actions">
       <button type="button" class="secondaire" id="fermer-signalement" data-i18n="fermer"></button>
       <button type="submit" data-i18n="signalerEnvoyer"></button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dialogue-idee" data-sans-idees aria-labelledby="idee-titre">
+  <form id="formulaire-idee" method="dialog">
+    <h2 id="idee-titre" class="idee-titre"><span class="idee-titre-icone" id="idee-icone" aria-hidden="true"></span><span data-i18n="ideeAction"></span></h2>
+    <label for="texte-idee" data-i18n="ideeAide"></label>
+    <textarea id="texte-idee" rows="4" maxlength="2000" required data-i18n-placeholder="ideeExemple"></textarea>
+    <div class="idee-ia">
+      <button type="button" class="secondaire petit-bouton" id="preparer-idee"><span aria-hidden="true">✨ </span><span data-i18n="ideeIa"></span></button>
+      <span class="doux petit" id="idee-ia-aide" data-i18n="ideeIaAide"></span>
+    </div>
+    <section class="idee-cadrage" id="idee-cadrage" aria-labelledby="idee-cadrage-titre" hidden>
+      <h3 id="idee-cadrage-titre" data-i18n="ideeCadrageTitre"></h3>
+      <p class="idee-cadrage-nom" id="idee-cadrage-nom"></p>
+      <p id="idee-cadrage-besoin"></p>
+      <p class="puces-titre" data-i18n="ideeCadrageCriteres"></p>
+      <ul id="idee-cadrage-criteres"></ul>
+      <p class="doux petit" id="idee-cadrage-zones"></p>
+      <div id="idee-cadrage-questions-bloc"><p class="puces-titre" data-i18n="ideeCadrageQuestions"></p><ul id="idee-cadrage-questions"></ul></div>
+      <details class="details-llm"><summary data-i18n="llmDetails"></summary><p class="doux petit" id="idee-cadrage-llm"></p></details>
+      <label class="idee-joindre"><input type="checkbox" id="idee-joindre" checked> <span data-i18n="ideeCadrageJoindre"></span></label>
+    </section>
+    <p class="doux petit idee-contexte" id="idee-contexte"></p>
+    <p class="doux petit" data-i18n="ideeConfidentialite"></p>
+    <p id="retour-idee" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="fermer-idee" data-i18n="fermer"></button>
+      <button type="submit" data-i18n="ideeEnvoyer"></button>
     </div>
   </form>
 </dialog>

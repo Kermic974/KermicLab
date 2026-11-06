@@ -19,3 +19,8 @@
 - Références : [documentation Cloudflare JSON Mode](https://developers.cloudflare.com/workers-ai/features/json-mode/), [tarifs Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/).
 - Gateway (English): Workers AI and the Anthropic SDK fallback must use `kermiclab-gateway`, with no direct-provider bypass. Requests disable caching and log collection and allow only one gateway attempt. The fallback also requires an AI Gateway Run token; disable payload exports and additional gateway retries/fallbacks in the dashboard.
 - Références gateway : [binding Workers](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/), [SDK Anthropic](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/), [logs](https://developers.cloudflare.com/ai-gateway/observability/logging/), [retries](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/).
+
+## Complément — cadrage des idées (boîte à idées)
+
+La boîte à idées peut demander au modèle un cadrage d'issue (prompt `cadrage-idee-v1`, sortie JSON : pertinence, titre, besoin, critères, zones, questions). Mêmes règles que le tuteur : opt-in explicite, quota D1 de session partagé (une session est créée si besoin, sans page associée), Workers AI puis repli Claude Haiku, aucun historique, message et contexte traités comme des données. Le cadrage est relu par l'utilisateur avant l'envoi et revalidé par le Worker (bornes, zones connues, modération, aucun lien) ; les pistes de fichiers sont déduites par le serveur, jamais par le modèle.
+
