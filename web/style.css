@@ -167,9 +167,13 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .lab-description > .bouton { border-radius: 12px; text-decoration: none; }
 .lab-modes { display: flex; flex-wrap: wrap; gap: 20px; }
 .grille-jeux { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.grille-labs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; margin-top: 20px; }
 .jeu-carte { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
 .jeu-carte h3 { overflow-wrap: anywhere; }
 .jeu-carte .bouton { margin-top: auto; }
+.lab-carte { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
+.lab-carte h3 { overflow-wrap: anywhere; }
+.lab-carte .bouton { margin-top: auto; }
 .ecran-personnel { width: 100%; padding: clamp(18px, 3vw, 32px); }
 .ecran-personnel h3 { margin: 18px 0 8px; font-size: 1rem; }
 

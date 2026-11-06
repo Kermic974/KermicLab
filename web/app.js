@@ -17,7 +17,7 @@ const etat = {
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null }
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
 const CLE_CAHIERS = "kermiclab:cahiers";
@@ -88,6 +88,7 @@ async function appliquerLangue(langue) {
   rafraichirBienvenue();
   rafraichirPastille();
   rendreCatalogue();
+  rendreLabs();
   rendreJeux();
   rafraichirEntete();
   rafraichirTheme();
@@ -1656,6 +1657,7 @@ function rafraichirTableau() {
   rendreReprendre();
   rendreSuggestion();
   rendreMatieresTableau();
+  rendreLabs();
   rendreCahiers();
   rendreSemaine();
   rendreJeux();
@@ -1686,6 +1688,25 @@ function rendreJeux() {
     carte.append(ouvrir);
     grille.append(carte);
   }
+}
+
+function rendreLabs() {
+  const grille = $("#grille-labs");
+  if (!grille) return;
+  const matieres = [...new Set(etat.notions.map(matiereDe))]
+    .filter((matiere) => matiere !== "mathematiques" && matiere !== "jeux")
+    .sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
+  grille.replaceChildren(...matieres.map((matiere) => {
+    const notion = etat.notions.find((n) => matiereDe(n) === matiere);
+    const carte = element("article", { classe: "carte lab-carte" });
+    carte.append(element("span", { classe: "pastille lab", cle: `matiere_${matiere}` }));
+    carte.append(element("h3", { texte: notion.titre }));
+    carte.append(element("p", { classe: "doux", texte: t("labNotionDescription", { titre: notion.titre }) }));
+    const ouvrir = element("button", { classe: "bouton lab", cle: "explorerLab", attributs: { type: "button", "data-lab-matiere": matiere } });
+    ouvrir.addEventListener("click", () => ouvrirNotion(notion));
+    carte.append(ouvrir);
+    return carte;
+  }));
 }
 
 function filAriane(n) {
@@ -1768,7 +1789,7 @@ function rendreMatieresTableau() {
   const grille = $("#grille-matieres");
   grille.replaceChildren();
   if (!etat.notions.length) { grille.append(element("p", { classe: "doux", cle: "catalogueIndisponible" })); return; }
-  const matieres = [...new Set(etat.notions.map(matiereDe))].sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
+  const matieres = [...new Set(etat.notions.map(matiereDe))].filter((m) => m !== "jeux").sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
   for (const m of matieres) {
     const s = statsMatiere(m);
     const etatMatiere = s.vues === 0 ? ["neutre", "aDecouvrir"] : s.pct === 100 ? ["ok", "termine"] : s.pct >= 50 ? ["ok", "bienAvance"] : ["en-cours", "enCours"];
