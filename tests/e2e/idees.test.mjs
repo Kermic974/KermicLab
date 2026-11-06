@@ -1,7 +1,7 @@
 import { after, before, test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 
 let serveur, nav, api;
@@ -153,6 +153,7 @@ test("boîte à idées : formulaire natif envoyé au Worker, depuis le site et d
   await dialogue.waitFor({ state: "visible" });
   assert.equal(await dialogue.locator(".boite-idees").count(), 0, "pas de bouton dans son propre formulaire");
   assert.match(await page.locator("#idee-contexte").textContent(), /index\.html · labs/);
+  await capturer(page, "idees-formulaire");
   await page.fill("#texte-idee", "Un mode chronomètre");
   await page.click("#formulaire-idee button[type=submit]");
   await page.locator("#retour-idee", { hasText: "Merci" }).waitFor();
@@ -179,6 +180,7 @@ test("boîte à idées : pastille compacte sur mobile, sans débordement", async
   await pastille.waitFor();
   const boite = await pastille.boundingBox();
   assert.ok(boite.width <= 48 && boite.height <= 48, `pastille ${boite.width}×${boite.height}`);
+  await capturer(page, "idees-pastille-mobile");
   const barre = await page.locator(".nav-mobile").boundingBox();
   assert.ok(boite.y + boite.height <= barre.y, "au-dessus de la navigation");
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -237,6 +239,7 @@ test("boîte à idées : l'IA prépare le cadrage de l'issue, relu puis joint à
   assert.equal(await page.locator("#idee-cadrage-criteres li").count(), 1);
   assert.equal(await page.locator("#idee-cadrage-questions-bloc").isVisible(), false);
   assert.equal(await page.locator("#idee-cadrage-llm").isVisible(), false, "métadonnées repliées");
+  await capturer(page, "idees-cadrage-ia");
   await page.click("#formulaire-idee button[type=submit]");
   await page.locator("#retour-idee", { hasText: "Merci" }).waitFor();
   assert.equal(envois[0].cadrage.titre, "Ajouter un chronomètre au défi express");

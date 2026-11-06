@@ -45,6 +45,7 @@ npm run build         # index du catalogue + hashes CSP des pages + site statiqu
 npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
 npm test              # tests unitaires (node:test) ; en CI (pages.yml), Playwright est installé et les tests de page (tests/dom/) sont exécutés, leur absence échoue
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
+npm run test:captures # mêmes tests + captures d'écran des parcours clés dans captures/ (documentation ; artefact « captures » en CI)
 npm run ci            # tout ce qui précède
 cd worker && npx wrangler dev   # Worker en local (http://localhost:8787)
 npx wrangler pages dev dist     # chat en local

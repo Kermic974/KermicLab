@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 
 // Comptes famille (ADR 0017) : profil local par défaut, compte parent nécessaire pour créer un profil enfant.
 let serveur, nav, htmlMaquette, api, config;
@@ -115,6 +115,7 @@ test("démonstration (green card) : parcours parent → enfant sans OAuth ni app
   await page.locator("#famille-invite").waitFor({ state: "visible" });
   assert.equal(await page.locator("#essayer-demo").isVisible(), false);
   assert.equal(await page.locator("#famille-demo-note").isVisible(), true);
+  await capturer(page, "famille-demo-invitation");
   await page.click("#connexion-google");
   await page.locator("#famille-parent").waitFor({ state: "visible" });
   await page.locator("#famille-ajout summary").click();
@@ -123,12 +124,14 @@ test("démonstration (green card) : parcours parent → enfant sans OAuth ni app
   await page.check("#enfant-consentement");
   await page.click("#creer-enfant");
   await page.locator("#famille-enfants li", { hasText: "Lou" }).waitFor();
+  await capturer(page, "famille-demo-parent");
   await page.reload();
   await page.locator("#famille-enfants li", { hasText: "Lou" }).waitFor();
   assert.equal(await bandeau.isVisible(), true, "la démo survit au rechargement de l'onglet");
   await page.locator("#famille-enfants li", { hasText: "Lou" }).locator("button.bouton").click();
   await page.locator("#famille-enfant").waitFor({ state: "visible" });
   assert.match(await page.locator("#famille-enfant-texte").textContent(), /Lou/);
+  await capturer(page, "famille-demo-enfant");
   await page.click("#quitter-mode-enfant");
   await page.locator("#famille-invite").waitFor({ state: "visible" });
   await page.click("#quitter-demo");
@@ -148,6 +151,7 @@ test("connexion réelle : fournisseur non configuré → message et proposition 
   await page.locator("#famille-invite").waitFor({ state: "visible" });
   await page.click("#connexion-google");
   await page.locator("#famille-etat", { hasText: "pas encore ouverte" }).waitFor();
+  await capturer(page, "famille-connexion-indisponible");
   assert.equal(new URL(page.url()).pathname, "/");
   await page.click("#essayer-demo");
   await page.locator("#bandeau-demo").waitFor({ state: "visible" });

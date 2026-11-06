@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 
 let serveur, nav, htmlMaquette, api;
 before(async () => {
@@ -299,8 +299,10 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
   assert.equal(await details.evaluate((n) => n.open), false, "métadonnées repliées par défaut");
   assert.equal(await fin.locator(".metadonnees-llm").isVisible(), false);
   assert.equal(await fin.locator("a").isVisible(), true, "les sources restent visibles");
+  await capturer(page, "chat-ia-details-replies");
   await details.locator("summary").click();
   assert.equal(await fin.locator(".metadonnees-llm").isVisible(), true);
+  await capturer(page, "chat-ia-details-ouverts");
   assert.match(await fin.textContent(), /tuteur-catalogue-v1/);
   assert.match(await fin.textContent(), /180 \/ 1000/);
   assert.match(await fin.textContent(), /@cf\/meta\/llama-3.3/);
@@ -340,6 +342,7 @@ test("conversation : bonjour suivi de relances cliquables, puis nouvelle convers
   await reponse.waitFor();
   assert.match(await reponse.textContent(), /Bonjour ! Je suis Kermiclab/);
   assert.match(await reponse.locator(".relances .puces-titre").textContent(), /Je te propose/);
+  await capturer(page, "chat-politesse-relances");
   await reponse.locator(".puce", { hasText: "Que sais-tu faire ?" }).click();
   await page.locator("#fil li.conversation", { hasText: "Je connais 6 notions." }).waitFor();
   assert.deepEqual(requetes, ["bonjour", "Que sais-tu faire ?"]);
@@ -355,6 +358,7 @@ test("conversation : bonjour suivi de relances cliquables, puis nouvelle convers
   assert.equal(await page.inputValue("#question"), "");
   assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
   assert.equal(requetes.length, 2, "repartir de zéro n'appelle pas l'API");
+  await capturer(page, "chat-nouvelle-conversation");
   await page.selectOption("#langue", "en");
   await page.waitForFunction(() => document.documentElement.lang === "en");
   assert.equal(await bouton.getAttribute("aria-label"), "New conversation");
@@ -444,6 +448,7 @@ test("catalogue : écran « Notions », recherche sans accents, ouverture direct
   assert.equal(new URL(page.url()).hash, "#notions");
   assert.equal(await page.locator("#salut").textContent(), "Notions");
   assert.equal(await page.locator("#accueil").isVisible(), false);
+  await capturer(page, "notions-ecran");
   assert.deepEqual(await barre.locator(".groupe-niveau summary > span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
   assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 6 notions explorées/);
   await page.fill("#recherche-notion", "theoreme");
@@ -624,6 +629,7 @@ test("catalogue mobile : écran « Notions » depuis la navigation du bas, sans 
   await explorer.click();
   await page.locator("#catalogue .notion").first().waitFor({ state: "visible" });
   assert.equal(await explorer.getAttribute("aria-current"), "page");
+  await capturer(page, "notions-mobile");
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
   await page.locator("#bulle-lab[open][data-notion=fractions] #bulle-cadre").waitFor();
   await page.click("#fermer-bulle");
@@ -684,6 +690,7 @@ test("chat : bascule plein écran et retour, sur ordinateur et mobile", async ()
     const saisie = await page.locator("#formulaire").boundingBox();
     assert.ok(saisie.y + saisie.height <= height, "la saisie reste visible");
     assert.equal(await page.locator("body > .boite-idees-flottante").isVisible(), false, "aucun bouton flottant par-dessus");
+    await capturer(page, `chat-plein-ecran-${width}`);
     await page.fill("#question", "c'est quoi le sinus ?");
     await page.keyboard.press("Enter");
     await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
@@ -720,6 +727,7 @@ test("assistant : progression résumée sur l'appareil et boutons vers les écra
   assert.match(await resume.textContent(), /Badges0 \/ \d+/);
   const boutons = page.locator("#fil .actions-chat button");
   assert.deepEqual(await boutons.allTextContents(), ["Progression", "Mes trophées", "Défi express"], "écran inconnu ignoré");
+  await capturer(page, "chat-assistant-progression");
   await boutons.filter({ hasText: "Mes trophées" }).click();
   assert.equal(new URL(page.url()).hash, "#badges");
   assert.equal(await page.locator("#progres").isVisible(), true);

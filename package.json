@@ -14,6 +14,7 @@
     "check:pages": "node scripts/check-pages.mjs",
     "test": "node --test \"tests/unit/*.test.mjs\"",
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
+    "test:captures": "KERMICLAB_CAPTURES=captures node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
     "ci": "npm run lint && npm run build && npm run check:pages && npm test && npm run test:e2e"
   },
   "dependencies": {

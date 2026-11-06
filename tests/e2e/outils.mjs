@@ -40,6 +40,21 @@ export async function ouvrir(nav, url, options = {}) {
 
 export const racine = new URL("../..", import.meta.url).pathname;
 
+/**
+ * Capture d'écran pour la documentation, uniquement si KERMICLAB_CAPTURES désigne un dossier
+ * (`npm run test:captures`, et la CI qui publie l'artefact « captures ») : sinon, aucun coût.
+ * Les noms sont normalisés (lettres, chiffres, tirets) ; un même nom écrase la capture précédente.
+ */
+export async function capturer(page, nom, { pleinePage = false } = {}) {
+  const dossier = process.env.KERMICLAB_CAPTURES;
+  if (!dossier) return null;
+  const fichier = String(nom).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const chemin = path.resolve(racine, dossier, `${fichier}.png`);
+  await page.waitForTimeout(250); // fin des animations d'apparition
+  await page.screenshot({ path: chemin, fullPage: pleinePage, animations: "disabled" });
+  return chemin;
+}
+
 /** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
 export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false, llmActif = true }) {
   const requetes = [];
