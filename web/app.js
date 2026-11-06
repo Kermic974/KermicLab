@@ -2009,6 +2009,11 @@ function ligneExperience(x) {
 
 function rendreSemaine() {
   const jours = progression.activite(etat.progres);
+  const kpi = progression.indicateurs(etat.progres);
+  $("#kpi-xp-total").textContent = String(kpi.xpTotal);
+  $("#kpi-xp-30-jours").textContent = String(kpi.xp30Jours);
+  $("#kpi-jours-actifs-30-jours").textContent = String(kpi.joursActifs30Jours);
+  $("#kpi-meilleure-journee-30-jours").textContent = String(kpi.meilleureJournee30Jours);
   const somme = (cle) => jours.reduce((total, j) => total + j[cle], 0);
   const actifs = jours.filter((j) => j.q + j.n + j.xp + j.s > 0).length;
   const date = (j, options) => new Intl.DateTimeFormat(etat.langue, options).format(new Date(`${j}T12:00:00`));

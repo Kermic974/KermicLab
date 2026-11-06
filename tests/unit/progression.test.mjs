@@ -65,6 +65,25 @@ test("progression : historique par jour, dernière notion et activité de la sem
   assert.deepEqual(semaine.slice(-2).map((j) => j.xp), [P.XP_QUESTION, 2 * P.XP_NOTION]);
 });
 
+test("progression : les KPI distinguent le cumul et les 30 derniers jours", () => {
+  let p = P.enregistrerQuestion(P.etatInitial(), "2026-10-06").p;
+  p = P.enregistrerQuestion(p, "2026-10-07").p;
+  p = P.enregistrerQuestion(p, "2026-11-04").p;
+  p = P.enregistrerNotion(p, "trigo-cercle", "2026-11-05").p;
+  assert.deepEqual(P.indicateurs(p, "2026-11-05"), {
+    xpTotal: 3 * P.XP_QUESTION + P.XP_NOTION,
+    xp30Jours: 2 * P.XP_QUESTION + P.XP_NOTION,
+    joursActifs30Jours: 3,
+    meilleureJournee30Jours: P.XP_NOTION
+  });
+  assert.deepEqual(P.indicateurs(P.etatInitial(), "2026-11-05"), {
+    xpTotal: 0,
+    xp30Jours: 0,
+    joursActifs30Jours: 0,
+    meilleureJournee30Jours: 0
+  });
+});
+
 test("progression : le défi express rapporte 5 XP par bonne réponse, une fois par jour, et entretient la série", () => {
   let r = P.enregistrerDefi(P.etatInitial(), 4, "2026-11-03");
   assert.equal(r.xpGagne, 4 * P.XP_DEFI_BONNE);
