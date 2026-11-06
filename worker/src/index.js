@@ -11,7 +11,7 @@ import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
-import { HARNESS_CADRAGE, SCHEMA_CADRAGE, normaliserCadrage, pistesFichiers, promptCadrage, sectionCadrage, validerCadrage } from "./cadrage-idee.js";
+import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, sectionCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
 import { claudeViaGatewayDisponible } from "./llm.js";
 
@@ -398,7 +398,7 @@ async function traiterCadrageIdee(requete, env) {
     const ouverte = await sessionPourIdee(requete, env);
     cookie = ouverte.cookie;
     reponse = await interrogerFournisseurs(env, ouverte.session, {
-      system: promptCadrage(contexte, langue), message, schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
+      system: promptCadrage(contexte, langue), message: enveloppeIdee(message), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
     }, clientClaude, HARNESS_CADRAGE);
   } catch {
     console.error("llm cadrage indisponible");
