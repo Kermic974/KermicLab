@@ -2,6 +2,7 @@
 // Mêmes règles que l'interface (web/profil.js, web/comptes.js) : un seul jeu de règles, partagé.
 import { validerPseudo } from "../../web/profil.js";
 import { MAX_ENFANTS, TRANCHES_AGE, VERSION_CONSENTEMENT } from "../../web/comptes.js";
+import { cookieSessionVide } from "./auth/session.js";
 
 export const MAX_NOTIONS_PROGRES = 500;
 const TAILLE_MAX_CORPS = 64 * 1024;
@@ -16,7 +17,23 @@ const erreur = (code, statut) => json({ erreur: code }, statut);
 
 /** Routes servies par ce module : sans session valide, elles répondent 401 au lieu de tomber dans le 404 général. */
 export function estRouteCompte(chemin) {
-  return chemin === "/api/eleves" || chemin === "/api/progres" || ROUTE_ENFANT.test(chemin);
+  return chemin === "/api/eleves" || chemin === "/api/progres" || chemin === "/api/compte" || ROUTE_ENFANT.test(chemin);
+}
+
+/**
+ * Supprime le compte parent et tout ce qui en dépend (ADR 0010 §5) : progression, profils enfants, sessions, liaisons
+ * OAuth, puis le compte. Suppression explicite table par table, en une requête groupée : D1 n'applique les clés étrangères
+ * (ON DELETE CASCADE) que si elles sont activées.
+ */
+export async function supprimerCompte(env, compteId) {
+  const db = env.DB;
+  await db.batch([
+    db.prepare("DELETE FROM progres WHERE eleve_id IN (SELECT id FROM eleves WHERE parent_id = ?)").bind(compteId),
+    db.prepare("DELETE FROM eleves WHERE parent_id = ?").bind(compteId),
+    db.prepare("DELETE FROM sessions WHERE compte_id = ?").bind(compteId),
+    db.prepare("DELETE FROM auth_providers WHERE compte_id = ?").bind(compteId),
+    db.prepare("DELETE FROM comptes WHERE id = ?").bind(compteId)
+  ]);
 }
 
 async function lireCorps(requete) {
@@ -83,6 +100,11 @@ export async function gererApiCompte(requete, env, compteId) {
     await env.DB.prepare("UPDATE comptes SET consent_at = datetime('now'), consent_version = ? WHERE id = ?")
       .bind(VERSION_CONSENTEMENT, compteId).run();
     return json({ id }, 201);
+  }
+
+  if (chemin === "/api/compte" && methode === "DELETE") {
+    await supprimerCompte(env, compteId);
+    return new Response(null, { status: 204, headers: { "Set-Cookie": cookieSessionVide() } });
   }
 
   const route = chemin.match(ROUTE_ENFANT);

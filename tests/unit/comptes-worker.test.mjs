@@ -76,6 +76,25 @@ test("liste et suppression : un parent ne voit et ne supprime que ses propres pr
   assert.equal((await appel(`/api/eleves/${id}`, { methode: "PUT" })).status, 405);
 });
 
+test("suppression du compte parent : profils, progression, sessions et liaisons OAuth effacés, autres comptes intacts", async () => {
+  const { id } = await (await creer()).json();
+  await creer(enfantValide, "parent-2");
+  await appel("/api/progres", { methode: "POST", corps: { eleveId: id, progres: { notions: { pythagore: { etoiles: 3 } } } } });
+  env.DB.sqlite.prepare("INSERT INTO auth_providers (compte_id, provider, provider_sub) VALUES ('parent-1', 'google', 'sub-1')").run();
+
+  const r = await appel("/api/compte", { methode: "DELETE" });
+  assert.equal(r.status, 204);
+  assert.match(r.headers.get("set-cookie"), /^session=; .*Max-Age=0/, "cookie de session effacé");
+  const compter = (table, colonne) => env.DB.sqlite.prepare(`SELECT count(*) AS n FROM ${table} WHERE ${colonne} = 'parent-1'`).get().n;
+  assert.equal(compter("comptes", "id"), 0);
+  assert.equal(compter("eleves", "parent_id"), 0);
+  assert.equal(compter("sessions", "compte_id"), 0);
+  assert.equal(compter("auth_providers", "compte_id"), 0);
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM progres").get().n, 0);
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM eleves WHERE parent_id = 'parent-2'").get().n, 1, "l'autre parent garde ses profils");
+  assert.equal((await appel("/api/compte")).status, 405);
+});
+
 test("progression : propriétaire vérifié, lignes filtrées et bornées, écriture groupée", async () => {
   const { id } = await (await creer()).json();
   assert.equal((await appel("/api/progres", { methode: "POST", corps: { eleveId: id, progres: { notions: {} } }, parent: "parent-2" })).status, 403);
