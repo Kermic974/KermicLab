@@ -58,6 +58,7 @@
 <li><a href="#accueil">Squelette</a> ↔ <a href="https://kermiclab.online/#accueil" target="_blank" rel="noopener noreferrer" data-lien-actif>Accueil</a></li>
 <li><a href="#labs">Squelette</a> ↔ <a href="https://kermiclab.online/#labs" target="_blank" rel="noopener noreferrer" data-lien-actif>Labs : applications autonomes</a></li>
 <li><a href="#jeux">Squelette</a> ↔ <a href="https://kermiclab.online/#jeux" target="_blank" rel="noopener noreferrer" data-lien-actif>Jeux : cartes et recherche</a></li>
+<li><a href="#cahiers">Squelette</a> ↔ <a href="https://kermiclab.online/#cahiers" target="_blank" rel="noopener noreferrer" data-lien-actif>Mes cahiers : écran dédié</a></li>
 <li><a href="#progression">Squelette</a> ↔ <a href="https://kermiclab.online/#progression" target="_blank" rel="noopener noreferrer" data-lien-actif>Progression : écran dédié</a></li>
 <li><a href="#catalogue">Squelette</a> ↔ <a href="https://kermiclab.online/#notions" target="_blank" rel="noopener noreferrer" data-lien-actif>Notions : écran dédié, comme Labs et Jeux</a></li>
 <li><a href="#conversation">Squelette</a> ↔ <a href="https://kermiclab.online/" target="_blank" rel="noopener noreferrer" data-lien-actif>Conversation : poser une question</a></li>
@@ -83,13 +84,14 @@
         <a href="#accueil" data-nav="accueil">Accueil</a>
         <details open><summary>Labs et jeux</summary><a href="#labs" data-nav="labs">Labs</a> · <a href="#jeux" data-nav="jeux">Jeux</a></details>
         <a href="#catalogue" data-nav="notions">Notions</a>
+        <a href="#cahiers" data-nav="cahiers">Mes cahiers</a>
         <a href="#defi" data-nav="defi">Défi express</a>
         <a href="#progression" data-nav="progression">Progression</a>
         <a href="#badges" data-nav="badges">Mes trophées</a>
       </nav>
       <nav aria-label="Navigation secondaire"><a href="#profil" data-nav="profil">Profil et paramètres</a><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="#support" data-nav="aide">Signaler un problème</a><a href="#participer">Je participe</a></nav>
       <p>E · Explorateur · Niveau 2</p>
-      <p class="note">Sur mobile : barre basse Accueil, groupe Labs/Jeux, Notions, Défi, Progrès, Profil, Je participe. « Mes trophées » reste accessible par la pastille XP de l'en-tête.</p>
+      <p class="note">Sur mobile : barre basse Accueil, groupe Labs/Jeux, Notions, Mes cahiers, Défi, Progrès, Profil, Je participe. « Mes trophées » reste accessible par la pastille XP de l'en-tête.</p>
     </aside>
     <main>
       <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" data-source="web/index.html:dialogue-pseudo">
@@ -112,6 +114,16 @@
         <article class="carte"><h4>Carte de jeu · exemple Échecs</h4><p>Jeux · Échecs · déjà explorée</p><a href="#bulle">Rouvrir la page</a><p>Avant exploration : bouton « Commencer ». Ouverture dans la bulle, retour du focus sur la carte à la fermeture.</p></article>
         <details><summary>Recherche et états vides</summary><p>Recherche sans accents sur le titre ; compteur des résultats. « Aucun jeu ne correspond à ta recherche. » / « Aucun jeu disponible pour le moment. » / « Le catalogue n'a pas pu être chargé. Tu peux quand même poser une question. »</p></details>
       </section>
+      <section class="ecran" id="cahiers" data-ecran="cahiers" data-vue-active="cahiers" data-source="web/index.html:ecran-cahiers">
+        <span class="repere">S05 · Écran Mes cahiers</span><h2>Mes cahiers</h2><p>Choisis un modèle pour créer un cahier gardé dans ce navigateur.</p>
+        <div class="grille"><article class="carte"><h3>Brouillon</h3><p>Note librement tes idées et tes questions.</p><button disabled>Créer ce cahier</button></article>
+          <article class="carte"><h3>Fiches de notes</h3><p>Rassemble les points importants à retenir.</p><button disabled>Créer ce cahier</button></article>
+          <article class="carte"><h3>Cahier de vacances</h3><p>Prépare des révisions à ton rythme.</p><button disabled>Créer ce cahier</button></article>
+          <article class="carte"><h3>Cahier d'exercices</h3><p>Garde tes exercices et tes entraînements ensemble.</p><button disabled>Créer ce cahier</button></article></div>
+        <h3>Tes cahiers</h3><p>Ils restent sur cet appareil. Active « Se souvenir de moi » pour les retrouver après la session.</p>
+        <article class="carte"><h4>Cahier de vacances</h4><p>Créé le 6 nov. 2026</p><button disabled>Supprimer Cahier de vacances</button></article>
+        <p class="note">Les cahiers sont enregistrés dans le stockage de session sans consentement, puis transférés au stockage local si « Se souvenir de moi » est activé. Ils sont effacés avec les autres données de l'appareil.</p>
+      </section>
       <section class="ecran" id="accueil" data-ecran="accueil" data-vue-active="accueil" data-source="web/index.html:accueil">
         <span class="repere">S02 · Tableau de bord</span><h2>Bonjour Explorateur 👋</h2><p>Prêt à comprendre quelque chose de nouveau ?</p>
         <div class="actions"><a class="bouton" href="#badges">🔥 3 j · Niv. 2 · Mes trophées</a><button disabled>Activer le mode sombre</button><label>Langue<select disabled><option>Français</option><option>English</option></select></label></div>
@@ -133,7 +145,7 @@
           <div><article class="carte" data-source="web/app.js:reprendre"><h3>Reprendre ton Lab</h3><p>Maths › Collège</p><h4>Le théorème de Pythagore</h4><p>Rouvre la page là où tu l'as laissée et continue à manipuler.</p><p>Maths : 3 / 36 notions explorées</p><progress value="3" max="36" aria-label="Notions explorées fictives"></progress><a href="notion.html">Rouvrir la page</a><details><summary>État sans historique</summary><h4>Ton premier Lab t'attend</h4><p>Ouvre une notion du catalogue ou pose une question : la page interactive que tu explores apparaîtra ici pour la reprendre plus tard.</p><a href="#catalogue">Explorer le catalogue</a></details></article>
           <article class="carte" data-source="web/app.js:suggestion"><h3>KermicLab te suggère</h3><p>Tu viens d'explorer « Le théorème de Pythagore ». Continue en Maths avec une notion que tu n'as pas encore ouverte.</p><h4>Prochaine notion</h4><p>Maths › Collège · Les fractions · +XP</p><a href="notion.html#application">Commencer</a><p>Suggestion calculée à partir de ta progression dans cette session.</p><details><summary>Autres états de suggestion</summary><p>Début : une notion à manipuler, le cercle. Tout exploré : « Bravo, tu as exploré toutes les notions disponibles ! Pose une question pour aller plus loin. » Catalogue indisponible : message d'erreur et « Écrire ma question ».</p></details></article></div>
         </div>
-        <article class="carte" data-source="web/app.js:matieres"><h3>Tes matières</h3><p>Les notions que tu as déjà explorées, matière par matière.</p><a href="#catalogue" data-nav="notions">Tout voir</a><nav aria-label="Matières"><a href="#catalogue">Maths</a><a href="#catalogue">Physique-chimie</a><a href="#catalogue">SVT</a><a href="#catalogue">Histoire</a><a href="#catalogue">Géographie</a><a href="#catalogue">EMC</a><a href="#catalogue">Philosophie</a><a href="#catalogue-jeux">Jeux</a></nav><p>Chaque carte : n/m notions explorées, pourcentage, barre et pastille À découvrir / En cours / Bien avancé / Terminé.</p><p class="note">Le catalogue public contient aussi Français et SES, mais la liste de matières du tableau de bord est actuellement limitée à ces huit entrées. L'inventaire conserve les pages Français/SES sans inventer des boutons absents du site.</p></article>
+        <article class="carte" data-source="web/app.js:matieres"><h3>Tes matières</h3><p>Les notions que tu as déjà explorées, matière par matière.</p><a href="#catalogue" data-nav="notions">Tout voir</a><nav aria-label="Matières"><a href="#catalogue">Maths</a><a href="#catalogue">Physique-chimie</a><a href="#catalogue">SVT</a><a href="#catalogue">Histoire</a><a href="#catalogue">Géographie</a><a href="#catalogue">EMC</a><a href="#catalogue">Philosophie</a><a href="#catalogue-jeux">Jeux</a></nav><p>Chaque carte présente un monogramme et un titre, le nombre de notions explorées, le pourcentage, une barre de progression et une pastille d'état : À découvrir / En cours / Bien avancé / Terminé.</p><p class="note">Le catalogue public contient aussi Français et SES, mais la liste de matières du tableau de bord est actuellement limitée à ces huit entrées. L'inventaire conserve les pages Français/SES sans inventer des boutons absents du site.</p></article>
         <article class="carte"><h3>Que veux-tu faire maintenant ?</h3><p>Trois façons d'avancer, du plus libre au plus rapide.</p><div class="grille"><div><h4>Explorer</h4><p>Manipule les concepts et observe ce qui se passe.</p><a href="#catalogue">Ouvrir un Lab</a></div><div><h4>Poser une question</h4><p>KermicLab te sert la bonne page.</p><a href="#conversation">Écrire ma question</a></div><div><h4>Défi express</h4><p>5 questions · ≈ 3 min</p><a href="#defi">Lancer le défi</a></div></div></article>
       </section>
       <section class="ecran" id="progression" data-ecran="progression" data-vue-active="progression" data-source="web/index.html:semaine">
