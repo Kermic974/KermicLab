@@ -2,6 +2,11 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Mes cahiers : budget LLM (ADR 0019)
+
+- **À faire** : créer l'alias de modèle `custom/sonnet-5-5` (Claude Sonnet 5.5) sur `kermiclab-gateway`, avec une sortie
+  maximale d'au moins 100 000 tokens (`MAX_TOKENS_CAHIERS`). Confirmer une fois l'alias visible dans AI Gateway.
+
 ## Défi express généré par l'IA (ADR 0018)
 
 - **Fait** (2026-11-06) : alias de modèle `custom/haiku` créé sur `kermiclab-gateway` (confirmé par le propriétaire).
