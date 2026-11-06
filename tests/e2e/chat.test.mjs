@@ -492,6 +492,7 @@ test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notio
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const catalogue = page.locator("#catalogue");
+  assert.equal(await page.locator("#grille-matieres [data-matiere-carte=jeux]").count(), 0, "Jeux n’apparaît pas dans Tes matières");
   const labs = page.locator(".barre-laterale [data-nav=labs]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
   await labs.click();
@@ -506,6 +507,10 @@ test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notio
   assert.deepEqual(await page.locator("#ecran-labs a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
   ]);
+  assert.deepEqual(await page.locator("#grille-labs [data-lab-matiere]").evaluateAll((boutons) => boutons.map((b) => b.dataset.labMatiere)), ["physique-chimie", "philosophie"]);
+  await page.click("#grille-labs [data-lab-matiere=physique-chimie]");
+  await page.locator("#bulle-lab[open][data-notion=electricite]").waitFor();
+  await page.click("#fermer-bulle");
   assert.equal(await page.locator("#ecran-labs [data-notion]").count(), 0, "les fiches de Notions ne deviennent pas des Labs");
   await jeux.click();
   assert.equal(await page.locator("#ecran-jeux").isVisible(), true);

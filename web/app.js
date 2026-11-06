@@ -13,11 +13,11 @@ const etat = {
   config: null, langue: "fr", textes: {}, envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
-  erreurTrophees: false, chargementTrophees: false, ecran: "accueil", llmActif: false, llmDisponible: false,
+  erreurTrophees: false, chargementTrophees: false, ecran: "accueil", indexJeuAccueil: 0, llmActif: false, llmDisponible: false,
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null }
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
 const CLE_CAHIERS = "kermiclab:cahiers";
@@ -88,7 +88,9 @@ async function appliquerLangue(langue) {
   rafraichirBienvenue();
   rafraichirPastille();
   rendreCatalogue();
+  rendreLabs();
   rendreJeux();
+  rendreJeuxAccueil();
   rafraichirEntete();
   rafraichirTheme();
   rafraichirControleLlm();
@@ -1151,6 +1153,8 @@ async function demarrer() {
   await chargerCatalogue();
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
   $("#recherche-jeu").addEventListener("input", rendreJeux);
+  $("#jeux-accueil-precedent").addEventListener("click", () => naviguerJeuAccueil(-1));
+  $("#jeux-accueil-suivant").addEventListener("click", () => naviguerJeuAccueil(1));
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || document.querySelector("dialog[open]")) return;
     if (!$("#panneau-chat").hidden) {
@@ -1656,9 +1660,11 @@ function rafraichirTableau() {
   rendreReprendre();
   rendreSuggestion();
   rendreMatieresTableau();
+  rendreLabs();
   rendreCahiers();
   rendreSemaine();
   rendreJeux();
+  rendreJeuxAccueil();
   $("#meta-explorer").textContent = etat.notions.length ? t("metaNotions", { n: etat.notions.length }) : "";
   $("#meta-question").textContent = t("metaQuestions", { n: etat.progres.questions });
   const defiFait = etat.progres.defiJour === progression.jourLocal();
@@ -1686,6 +1692,65 @@ function rendreJeux() {
     carte.append(ouvrir);
     grille.append(carte);
   }
+}
+
+function naviguerJeuAccueil(sens) {
+  const jeux = etat.notions.filter((n) => matiereDe(n) === "jeux");
+  if (jeux.length < 2) return;
+  etat.indexJeuAccueil = (etat.indexJeuAccueil + sens + jeux.length) % jeux.length;
+  rendreJeuxAccueil();
+}
+
+function rendreJeuxAccueil() {
+  const jeux = etat.notions.filter((n) => matiereDe(n) === "jeux");
+  const points = $("#jeux-accueil-points");
+  if (!points) return;
+  if (!jeux.length) {
+    $("#jeux-accueil-nom").textContent = t("jeuxIndisponibles");
+    $("#jeux-accueil-compteur").textContent = "";
+    points.replaceChildren();
+    $("#jeux-accueil-precedent").disabled = true;
+    $("#jeux-accueil-suivant").disabled = true;
+    return;
+  }
+  etat.indexJeuAccueil %= jeux.length;
+  $("#jeux-accueil-nom").textContent = jeux[etat.indexJeuAccueil].titre;
+  $("#jeux-accueil-compteur").textContent = t("jeuxCompteur", { n: etat.indexJeuAccueil + 1, m: jeux.length });
+  $("#jeux-accueil-precedent").disabled = jeux.length < 2;
+  $("#jeux-accueil-suivant").disabled = jeux.length < 2;
+  if (points.childElementCount !== jeux.length) {
+    points.replaceChildren(...jeux.map((_, index) => {
+      const point = element("button", { classe: "carrousel-jeux-point", attributs: { type: "button" } });
+      point.addEventListener("click", () => {
+        etat.indexJeuAccueil = index;
+        rendreJeuxAccueil();
+      });
+      return point;
+    }));
+  }
+  [...points.children].forEach((point, index) => {
+    point.setAttribute("aria-label", t("jeuxAccueilDiapo", { n: index + 1, titre: jeux[index].titre }));
+    point.setAttribute("aria-pressed", String(index === etat.indexJeuAccueil));
+  });
+}
+
+function rendreLabs() {
+  const grille = $("#grille-labs");
+  if (!grille) return;
+  const matieres = [...new Set(etat.notions.map(matiereDe))]
+    .filter((matiere) => matiere !== "mathematiques" && matiere !== "jeux")
+    .sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
+  grille.replaceChildren(...matieres.map((matiere) => {
+    const notion = etat.notions.find((n) => matiereDe(n) === matiere);
+    const carte = element("article", { classe: "carte lab-carte" });
+    carte.append(element("span", { classe: "pastille lab", cle: `matiere_${matiere}` }));
+    carte.append(element("h3", { texte: notion.titre }));
+    carte.append(element("p", { classe: "doux", texte: t("labNotionDescription", { titre: notion.titre }) }));
+    const ouvrir = element("button", { classe: "bouton lab", cle: "explorerLab", attributs: { type: "button", "data-lab-matiere": matiere } });
+    ouvrir.addEventListener("click", () => ouvrirNotion(notion));
+    carte.append(ouvrir);
+    return carte;
+  }));
 }
 
 function filAriane(n) {
@@ -1768,7 +1833,7 @@ function rendreMatieresTableau() {
   const grille = $("#grille-matieres");
   grille.replaceChildren();
   if (!etat.notions.length) { grille.append(element("p", { classe: "doux", cle: "catalogueIndisponible" })); return; }
-  const matieres = [...new Set(etat.notions.map(matiereDe))].sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
+  const matieres = [...new Set(etat.notions.map(matiereDe))].filter((m) => m !== "jeux").sort((a, b) => (MATIERES.indexOf(a) + 1 || 99) - (MATIERES.indexOf(b) + 1 || 99));
   for (const m of matieres) {
     const s = statsMatiere(m);
     const etatMatiere = s.vues === 0 ? ["neutre", "aDecouvrir"] : s.pct === 100 ? ["ok", "termine"] : s.pct >= 50 ? ["ok", "bienAvance"] : ["en-cours", "enCours"];

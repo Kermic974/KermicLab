@@ -125,6 +125,7 @@
             </div>
           </div>
         </article>
+        <div id="grille-labs" class="grille-labs"></div>
         <button type="button" class="lien-fleche" data-nav="notions" data-i18n="labsVoirNotions"></button>
       </section>
 
@@ -255,6 +256,26 @@
           </section>
         </div>
       </div>
+
+      <section class="carte jeux-accueil" id="jeux-accueil" data-ecrans="accueil" aria-labelledby="jeux-accueil-titre">
+        <div class="tete-section">
+          <div><h2 id="jeux-accueil-titre" data-i18n="jeuxAccueilTitre"></h2><p data-i18n="jeuxAccueilIntro"></p></div>
+          <button type="button" class="lien-fleche" data-nav="jeux"><span data-i18n="jeuxAccueilToutVoir"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </div>
+        <div class="carrousel-jeux" role="region" data-i18n-aria="jeuxAccueilRegion">
+          <button type="button" class="carrousel-jeux-controle" id="jeux-accueil-precedent" data-i18n-aria="jeuxAccueilPrecedent"><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+          <button type="button" class="carrousel-jeux-carte" id="jeux-accueil-carte" data-nav="jeux">
+            <span class="carrousel-jeux-icone" aria-hidden="true"><svg class="ico"><use href="#i-jeu"/></svg></span>
+            <span class="carrousel-jeux-texte"><strong id="jeux-accueil-nom"></strong><span data-i18n="jeuxAccueilAction"></span></span>
+            <svg class="ico carrousel-jeux-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+          <button type="button" class="carrousel-jeux-controle" id="jeux-accueil-suivant" data-i18n-aria="jeuxAccueilSuivant"><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </div>
+        <div class="carrousel-jeux-pied">
+          <span id="jeux-accueil-compteur" role="status" aria-live="polite"></span>
+          <div id="jeux-accueil-points" class="carrousel-jeux-points" role="group" data-i18n-aria="jeuxAccueilChoisir"></div>
+        </div>
+      </section>
 
       <section aria-labelledby="matieres-titre" id="matieres" data-ecrans="accueil">
         <div class="tete-section">
