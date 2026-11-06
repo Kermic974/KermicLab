@@ -16,7 +16,7 @@ notions en ont réellement besoin.
 | Matière | Fiches cataloguées | Figures interactives dédiées | Observation |
 |---|---:|---|---|
 | Physique-chimie | 23 | `electricite` et `forces-et-poids` utilisent la figure générique de proportionnalité. | Pas encore de schéma de circuit ni de représentation temporelle du mouvement. |
-| SVT | 31 | Aucune | Les mécanismes cellulaires, génétiques, écologiques et géologiques sont expliqués et exercés, sans modèle manipulable dédié. |
+| SVT | 24 | Aucune | Les mécanismes cellulaires, génétiques, écologiques et géologiques sont expliqués et exercés, sans modèle manipulable dédié. |
 | Géographie | 17 | Aucune | Les études de territoires et d'échelles gagneraient à associer cartes schématiques et données. |
 | Histoire | 16 | Aucune | Les repères et études de sources sont traités sans frise ni carte manipulable. |
 | Français | 10 | Aucune | Les accords, la grammaire et l'analyse littéraire reposent surtout sur des QCM. |
@@ -24,18 +24,16 @@ notions en ont réellement besoin.
 | SES | 10 | Aucune | Les mécanismes économiques et sociaux sont expliqués avec exemples, sans simulation de modèle ou de données. |
 | EMC | 12 | Aucune | Les cas pratiques existent ; un parcours de décision peut rendre visibles droits, règles et conséquences. |
 
-**Point de cohérence SVT :** le chantier [catalogue-svt.md](catalogue-svt.md) liste 23 notions,
-alors que les fiches du catalogue couvrent 31 identifiants. Les huit fiches qui ne figurent pas dans
-ses tableaux sont `biodiversite`, `cellule`, `ecosystemes`, `evolution`, `genetique-adn`,
-`nutrition-digestion`, `tectonique-plaques` et `volcanisme`. Réconcilier ces variantes avec les
-notions déjà listées avant d'ajouter un contenu ou une figure ; ne pas créer de doublon pédagogique.
+**Point de cohérence SVT :** les huit fiches de collège ajoutées hors des vagues ont été réconciliées
+(lot S2) : sept doublons ont été fusionnés dans la notion la plus complète, `evolution` reste une page de
+collège complémentaire. Voir [catalogue-svt.md](catalogue-svt.md).
 
 ## Labs proposés
 
 | Priorité | Matière et pages existantes | Lab à concevoir | Ce que l'élève peut explorer | Garde-fous |
 |---|---|---|---|---|
 | 1 | Physique-chimie — `electricite` | Schéma de circuit en basse tension, avec composants déplaçables ou activables. | Ouvrir ou fermer un circuit, choisir série ou dérivation, puis observer les mesures cohérentes de U et I. | Simulation seulement, aucune consigne de branchement secteur ou de court-circuit réel ; calculs testés et unités toujours visibles. |
-| 2 | SVT — `la-cellule` / `cellule` (après réconciliation) | Cellule schématique à couches informatives. | Sélectionner des organites, comparer cellule végétale, animale et procaryote, relier structure et fonction. | Dessin conventionnel explicitement schématique, échelles et exceptions précisées ; pas de fausse précision visuelle. |
+| 2 | SVT — `la-cellule` | Cellule schématique à couches informatives. | Sélectionner des organites, comparer cellule végétale, animale et procaryote, relier structure et fonction. | Dessin conventionnel explicitement schématique, échelles et exceptions précisées ; pas de fausse précision visuelle. |
 | 3 | Histoire — ensemble des notions | Frise chronologique manipulable. | Trier des repères, zoomer entre périodes et relier un événement à une conséquence documentée. | Dates et formulations sourcées dans les données du lab ; distinguer repère conventionnel, processus long et débat d'interprétation. |
 | 4 | Français — `accords`, `grammaire-phrase-complexe`, `conjugaison-temps` | Constructeur de phrase et repérage des relations grammaticales. | Sélectionner donneur d'accord, sujet, auxiliaire ou COD ; observer les formes possibles et la justification. | Plusieurs analyses peuvent être valides selon le contexte ; explication explicite plutôt qu'une simple couleur ou sanction. |
 | 5 | Physique-chimie — `mouvements`, puis `lois-de-newton` | Chronophotographie et vecteurs vitesse/force. | Déplacer des positions ou changer l'intervalle de temps ; comparer mouvement uniforme et accéléré, puis relier variation de vitesse et force résultante. | Référentiel et unités affichés ; ne pas confondre espacement des positions et vitesse si les intervalles changent. |
