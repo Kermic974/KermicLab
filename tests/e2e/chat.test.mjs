@@ -74,8 +74,9 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   assert.equal(await panneau.isVisible(), true);
   assert.equal(await page.locator("#bulle-lab").isVisible(), false);
   assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
-  await page.click(".barre-laterale [data-nav=catalogue]");
-  assert.equal(await panneau.isVisible(), false, "le catalogue et le chat ne se superposent pas");
+  await page.click(".barre-laterale [data-nav=notions]");
+  assert.equal(new URL(page.url()).hash, "#notions", "Notions est un écran, comme les autres menus");
+  assert.equal(await page.locator("#catalogue").isVisible(), true);
   assert.equal(requetes.length, 1, "ouvrir ou fermer ne déclenche aucun échange");
   assert.deepEqual(erreurs, []);
   await contexte.close();
@@ -430,16 +431,19 @@ test("IA : un lien non issu du catalogue n'est pas rendu comme source cliquable"
   await contexte.close();
 });
 
-test("catalogue : tiroir « Notions », recherche sans accents, ouverture directe d'une notion", async () => {
+test("catalogue : écran « Notions », recherche sans accents, ouverture directe d'une notion", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
   const barre = page.locator("#catalogue");
   await page.locator("#grille-matieres .matiere-carte").first().waitFor();
-  assert.equal(await barre.isVisible(), false, "fermé tant qu'on n'explore pas");
+  assert.equal(await barre.isVisible(), false, "masqué tant qu'on n'ouvre pas le menu");
   await page.click("#ouvrir-catalogue");
   await barre.locator(".notion").first().waitFor();
-  assert.equal(await page.locator("#ouvrir-catalogue").getAttribute("aria-expanded"), "true");
+  assert.equal(await page.locator("#ouvrir-catalogue").getAttribute("aria-current"), "page");
+  assert.equal(new URL(page.url()).hash, "#notions");
+  assert.equal(await page.locator("#salut").textContent(), "Notions");
+  assert.equal(await page.locator("#accueil").isVisible(), false);
   assert.deepEqual(await barre.locator(".groupe-niveau summary > span:first-child").allTextContents(), ["Collège", "Seconde", "Première"]);
   assert.match(await page.locator("#catalogue-compteur").textContent(), /0 \/ 6 notions explorées/);
   await page.fill("#recherche-notion", "theoreme");
@@ -453,8 +457,7 @@ test("catalogue : tiroir « Notions », recherche sans accents, ouverture direct
   assert.equal(await page.locator("#fil li[data-maquette]").count(), 0, "ouverte dans une bulle, pas dans le fil");
   await page.keyboard.press("Escape");
   await page.locator("#bulle-lab").waitFor({ state: "hidden" });
-  await barre.waitFor({ state: "hidden" }); // le tiroir se referme après le choix
-  await page.click("#ouvrir-catalogue");
+  assert.equal(await barre.isVisible(), true, "l'écran Notions reste affiché sous la bulle, comme Jeux");
   const bouton = barre.locator("[data-notion=trigo-cercle]");
   assert.equal(await bouton.getAttribute("aria-current"), "page");
   assert.match(await bouton.textContent(), /✓/);
@@ -521,8 +524,10 @@ test("navigation : Labs, Jeux et Progression ont des écrans séparés des Notio
   await page.click("#ouvrir-catalogue");
   await page.locator("#catalogue .notion").first().waitFor();
   assert.deepEqual(await page.locator("#catalogue-matieres [role=tab]").allTextContents(), ["Maths", "Physique-chimie", "Philosophie", "Jeux"]);
-  await page.keyboard.press("Escape");
-  assert.equal(await page.locator("#ecran-jeux").isVisible(), true, "fermer les Notions conserve l'écran courant");
+  assert.equal(await page.locator("#ecran-jeux").isVisible(), false, "Notions remplace l'écran courant, comme les autres menus");
+  await page.goBack();
+  await page.locator("#ecran-jeux").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#catalogue").isVisible(), false, "le retour arrière ramène à l'écran précédent");
   await page.locator(".barre-laterale [data-nav=progression]").click();
   assert.equal(await page.locator("#semaine").isVisible(), true);
   assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
@@ -609,22 +614,20 @@ test("navigation : défi, trophées et configuration remplacent l'accueil sans p
   await contexte.close();
 });
 
-test("catalogue mobile : tiroir ouvert par le bouton, fermé par Échap, sans débordement", async () => {
+test("catalogue mobile : écran « Notions » depuis la navigation du bas, sans débordement", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true });
   await simulerApi(page);
   await page.goto(serveur.url);
-  const explorer = page.locator(".nav-mobile [data-nav=catalogue]");
+  const explorer = page.locator(".nav-mobile [data-nav=notions]");
   await explorer.waitFor({ state: "visible" });
-  assert.equal(await page.locator("#catalogue").isVisible(), false, "fermé par défaut sur mobile");
+  assert.equal(await page.locator("#catalogue").isVisible(), false, "masqué sur l'accueil");
   await explorer.click();
   await page.locator("#catalogue .notion").first().waitFor({ state: "visible" });
-  assert.equal(await explorer.getAttribute("aria-expanded"), "true");
-  await page.keyboard.press("Escape");
-  await page.waitForFunction(() => !document.querySelector("#catalogue").classList.contains("ouvert"));
-  await explorer.click();
+  assert.equal(await explorer.getAttribute("aria-current"), "page");
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
   await page.locator("#bulle-lab[open][data-notion=fractions] #bulle-cadre").waitFor();
-  assert.equal(await page.locator("#voile-catalogue").isVisible(), false, "le tiroir se referme après le choix");
+  await page.click("#fermer-bulle");
+  assert.equal(await page.locator("#catalogue").isVisible(), true, "retour à la liste après la bulle");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
@@ -656,4 +659,40 @@ test("navigation mobile : Labs et jeux restent accessibles sans débordement", a
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
+});
+
+test("chat : bascule plein écran et retour, sur ordinateur et mobile", async () => {
+  for (const options of [{ viewport: { width: 1280, height: 800 } }, { viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true }]) {
+    const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", ...options });
+    await simulerApi(page);
+    await page.goto(serveur.url);
+    await page.click("#ouvrir-chat");
+    const panneau = page.locator("#panneau-chat");
+    const bouton = page.locator("#plein-ecran-chat");
+    assert.equal(await bouton.getAttribute("aria-pressed"), "false");
+    assert.equal(await bouton.getAttribute("aria-label"), "Afficher le chat en plein écran");
+    await page.waitForTimeout(300); // fin de l'animation d'ouverture
+    const avant = await panneau.boundingBox();
+    await bouton.click();
+    await page.waitForTimeout(300);
+    const { width, height } = options.viewport;
+    const apres = await panneau.boundingBox();
+    assert.equal(await bouton.getAttribute("aria-pressed"), "true");
+    assert.equal(await bouton.getAttribute("aria-label"), "Quitter le plein écran");
+    assert.ok(apres.width >= width - 32 && apres.height >= height - 32, `panneau ${apres.width}×${apres.height}`);
+    assert.ok(apres.x >= 0 && apres.y >= 0 && apres.x + apres.width <= width && apres.y + apres.height <= height);
+    const saisie = await page.locator("#formulaire").boundingBox();
+    assert.ok(saisie.y + saisie.height <= height, "la saisie reste visible");
+    assert.equal(await page.locator("body > .boite-idees-flottante").isVisible(), false, "aucun bouton flottant par-dessus");
+    await page.fill("#question", "c'est quoi le sinus ?");
+    await page.keyboard.press("Enter");
+    await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+    await bouton.click();
+    await page.waitForTimeout(300);
+    const retour = await panneau.boundingBox();
+    assert.ok(Math.abs(retour.width - avant.width) < 2, "retour à la taille d'origine");
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  }
 });

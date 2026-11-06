@@ -66,12 +66,10 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
     assert.doesNotMatch(corps, /PseudoSecret|Conversation privée/);
     if (vue === "labs" || vue === "jeux") {
       assert.match(corps, new RegExp(`navigation: ${vue}`));
-      assert.doesNotMatch(corps, /panneau: catalogue/);
-      await page.locator('.barre-laterale [data-nav="catalogue"]').click();
-      assert.match(await brouillon(page.locator(".nav-idees > .boite-idees")), /panneau: catalogue/);
-      await page.locator("#fermer-catalogue").click();
-      await page.waitForFunction(() => getComputedStyle(document.querySelector("#catalogue")).visibility === "hidden");
-      assert.doesNotMatch(await brouillon(page.locator(".nav-idees > .boite-idees")), /panneau: catalogue|onglet:/);
+      await page.locator('.barre-laterale [data-nav="notions"]').click();
+      assert.match(await brouillon(page.locator(".nav-idees > .boite-idees")), /navigation: notions/);
+      await page.goBack();
+      assert.doesNotMatch(await brouillon(page.locator(".nav-idees > .boite-idees")), /navigation: notions|onglet:/);
     }
     if (await ouvert.count()) await page.evaluate(() => document.querySelectorAll("dialog[open]").forEach((d) => d.close()));
   }
@@ -184,6 +182,15 @@ test("boîte à idées : pastille compacte sur mobile, sans débordement", async
   const barre = await page.locator(".nav-mobile").boundingBox();
   assert.ok(boite.y + boite.height <= barre.y, "au-dessus de la navigation");
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  // En bas de page, le pied de page reste lisible au-dessus des boutons flottants (chat, boîte à idées).
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await page.waitForTimeout(300);
+  const chevauchement = await page.evaluate(() => {
+    const pied = document.querySelector(".pied").getBoundingClientRect();
+    const hauts = [...document.querySelectorAll("#ouvrir-chat, body > .boite-idees-flottante")].map((n) => n.getBoundingClientRect().top);
+    return pied.bottom - Math.min(...hauts);
+  });
+  assert.ok(chevauchement <= 0, `pied de page masqué de ${chevauchement}px`);
   await pastille.tap();
   await page.locator("#dialogue-idee").waitFor({ state: "visible" });
   await contexte.close();

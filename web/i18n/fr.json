@@ -98,6 +98,8 @@
   "matiere_emc": "EMC",
   "matiere_philosophie": "Philosophie",
   "matiere_jeux": "Jeux",
+  "matiere_francais": "Français",
+  "matiere_ses": "SES",
   "allerAuContenu": "Aller au contenu",
   "navigationPrincipale": "Navigation principale",
   "navigationMobile": "Navigation",
@@ -367,5 +369,8 @@
   "demoEssayer": "Essayer en démonstration (sans compte)",
   "demoInviteNote": "Démonstration : « Continuer avec Google » ou « Microsoft » connecte un parent fictif sans quitter KermicLab.",
   "demoConnecte": "Parent de démonstration connecté",
-  "connexionIndisponible": "La connexion avec ce fournisseur n’est pas encore ouverte. Tu peux visiter l’Espace famille en démonstration."
+  "connexionIndisponible": "La connexion avec ce fournisseur n’est pas encore ouverte. Tu peux visiter l’Espace famille en démonstration.",
+  "notionsIntro": "Toutes les notions, par matière et par niveau : cherche, puis ouvre une page à explorer.",
+  "chatPleinEcran": "Afficher le chat en plein écran",
+  "chatQuitterPleinEcran": "Quitter le plein écran"
 }

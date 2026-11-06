@@ -263,6 +263,13 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 }
 .chat-entete { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--bord); flex: none; }
 .chat-titres { flex: 1; min-width: 0; }
+/* Plein écran : le panneau couvre la fenêtre (navigation comprise), le fil reste centré et lisible. */
+.chat.plein-ecran { inset: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); width: auto; height: auto; z-index: 70; border-radius: 20px; }
+.chat.plein-ecran #fil, .chat.plein-ecran .zone-saisie { width: 100%; max-width: 860px; margin-inline: auto; }
+body:has(.chat.plein-ecran:not([hidden])) { overflow: hidden; }
+body:has(.chat.plein-ecran:not([hidden])) > .boite-idees-flottante { display: none !important; }
+#plein-ecran-chat .ico-reduire, #plein-ecran-chat[aria-pressed="true"] .ico-agrandir { display: none; }
+#plein-ecran-chat[aria-pressed="true"] .ico-reduire { display: block; }
 .chat .zone-saisie { flex: none; }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
 .nouvelle-conversation { width: auto; padding: 0 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 650; flex: none; }
@@ -574,24 +581,19 @@ dialog.bulle-lab[open] { display: flex; }
 .resultat-defi .score { font-size: 46px; font-weight: 800; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
 .resultat-defi p { color: var(--doux); max-width: 40ch; }
 
-/* ---------- Catalogue (tiroir) ---------- */
-.catalogue {
-  position: fixed; top: 0; bottom: 0; left: 0; z-index: 60; width: 320px; max-width: 88vw;
-  display: flex; flex-direction: column; gap: 8px; padding: 16px 14px calc(16px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px));
-  background: var(--surface); border-right: 1px solid var(--bord);
-  transform: translateX(-100%); visibility: hidden; transition: transform .25s ease, visibility .25s;
-}
-.catalogue.ouvert { transform: none; visibility: visible; box-shadow: var(--ombre-forte); }
-.catalogue-entete { display: flex; justify-content: space-between; align-items: center; }
-.catalogue h2 { font-size: 1.05rem; }
-.catalogue-compteur { font-size: .82rem; color: var(--doux); }
+/* ---------- Notions (écran, comme Labs et Jeux) ---------- */
+.catalogue { display: flex; flex-direction: column; gap: 12px; }
+.catalogue[hidden] { display: none; }
+.catalogue .tete-section { margin-bottom: 0; }
+.catalogue-compteur { margin: 0; font-size: .88rem; color: var(--doux); }
 #catalogue-progres { width: 100%; height: 6px; }
 .matieres { display: flex; flex-wrap: wrap; gap: 4px; padding: 3px; border-radius: 12px; background: var(--surface-2); }
 .matiere { flex: 1 1 auto; padding: 6px 8px; border-radius: 9px; background: none; color: var(--doux); font-size: .85rem; font-weight: 600; }
 .matiere:hover { background: var(--surface); color: var(--texte); }
 .matiere[aria-selected="true"] { background: var(--surface); color: var(--accent); box-shadow: var(--ombre); }
-#recherche-notion { padding: 8px 12px; font-size: .92rem; background: var(--surface-2); }
-#catalogue-liste { flex: 1; overflow-y: auto; margin: 0 -4px; padding: 0 4px; }
+#recherche-notion { padding: 10px 14px; font-size: .95rem; background: var(--surface); }
+.catalogue-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 12px; align-items: start; }
+.catalogue-liste .groupe-niveau { margin: 0; padding: 8px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen, 16px); background: var(--surface); box-shadow: var(--ombre); }
 .groupe-niveau { margin-bottom: 6px; }
 .groupe-niveau summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 6px 8px; border-radius: 10px; font-size: .78rem; font-weight: 700; color: var(--doux); text-transform: uppercase; letter-spacing: .04em; }
 .groupe-niveau summary:hover { background: var(--surface-2); }
@@ -602,7 +604,6 @@ dialog.bulle-lab[open] { display: flex; }
 .notion .coche { color: var(--succes); font-weight: 800; }
 .notion.exploree { color: var(--doux); }
 .notion[aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); font-weight: 700; }
-.voile { position: fixed; inset: 0; z-index: 55; background: var(--voile); }
 
 /* ---------- Navigation mobile ---------- */
 .nav-mobile { display: none; }
@@ -777,7 +778,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (max-width: 720px) {
   .app { grid-template-columns: 1fr; background: none; }
   .barre-laterale { display: none; }
-  .principal { padding-block: 16px calc(152px + env(safe-area-inset-bottom, 0px)); padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
+  /* Réserve la navigation du bas (≈ 136 px) et les boutons flottants posés au-dessus (chat, boîte à idées). */
+  .principal { padding-block: 16px calc(224px + env(safe-area-inset-bottom, 0px)); padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
   .enveloppe { gap: 20px; }
   .salut h1 { font-size: 22px; }
   .salut p { font-size: 14px; }
@@ -803,6 +805,10 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   }
   body:has(#ouvrir-chat) > .boite-idees-flottante { display: inline-flex; right: auto; left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(146px + env(safe-area-inset-bottom, 0px)); min-height: 0; padding: .2rem; }
   body:has(#ouvrir-chat) > .boite-idees-flottante .boite-idees-icone { width: 2.1rem; height: 2.1rem; }
+  .pied { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 8px; padding-top: 12px; border-top: 1px solid var(--bord); font-size: .85rem; text-align: center; }
+  .pied > :first-child { grid-column: 1 / -1; }
+  .pied a, .pied button.lien { display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 4px 8px; border-radius: var(--rayon-petit); text-wrap: balance; }
+  .pied a:hover, .pied button.lien:hover { background: var(--surface-2); }
   .chat-entete { padding: 14px 16px; }
   #fil { padding: 14px 12px; }
   .zone-saisie { padding: 10px; }

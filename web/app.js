@@ -387,7 +387,6 @@ function defiler(li, bloc = "end") {
 }
 
 function ouvrirChat() {
-  fermerCatalogue();
   $("#panneau-chat").hidden = false;
   $("#ouvrir-chat").setAttribute("aria-expanded", "true");
   $("#question").focus({ preventScroll: true });
@@ -472,6 +471,20 @@ function nouvelleConversation() {
   champ.value = "";
   champ.style.height = "auto";
   champ.focus({ preventScroll: true });
+}
+
+/** Bascule le panneau du chat en plein écran (et retour) ; le libellé suit l'état pour les lecteurs d'écran. */
+function basculerPleinEcran(actif = !$("#panneau-chat").classList.contains("plein-ecran")) {
+  $("#panneau-chat").classList.toggle("plein-ecran", actif);
+  const bouton = $("#plein-ecran-chat");
+  bouton.setAttribute("aria-pressed", String(actif));
+  const cle = actif ? "chatQuitterPleinEcran" : "chatPleinEcran";
+  bouton.dataset.i18nAria = cle;
+  bouton.dataset.i18nTitle = cle;
+  bouton.setAttribute("aria-label", t(cle));
+  bouton.title = t(cle);
+  const fil = $("#fil");
+  fil.scrollTop = fil.scrollHeight;
 }
 
 function ajouterQuestion(question) {
@@ -895,7 +908,6 @@ function rendreCatalogue() {
 function ouvrirNotion(n) {
   etat.notionCourante = n.id;
   const url = `${etat.config.apiUrl}/maquettes/${encodeURIComponent(n.id)}?lang=${encodeURIComponent(etat.langue)}`;
-  fermerCatalogue();
   ouvrirBulle(n, url);
   appliquerResultat(progression.enregistrerNotion(etat.progres, n.id));
   rendreCatalogue();
@@ -938,29 +950,15 @@ function brancherBulle() {
   });
 }
 
-let declencheurCatalogue = null;
-
+/** « Notions » est un écran comme Labs ou Jeux ; une matière choisie ailleurs (carte du tableau de bord) le présélectionne. */
 function ouvrirCatalogue({ matiere } = {}) {
-  fermerChat();
-  if (matiere) {
+  if (typeof matiere === "string") {
     etat.matiere = matiere;
     ecrireCle(preferences(), CLE_MATIERE, matiere);
     $("#recherche-notion").value = "";
     rendreCatalogue();
   }
-  declencheurCatalogue = document.activeElement;
-  $("#catalogue").classList.add("ouvert");
-  $("#voile-catalogue").hidden = false;
-  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", "true"));
-  $("#recherche-notion").focus();
-}
-
-function fermerCatalogue({ rendreFocus = false } = {}) {
-  if (!$("#catalogue").classList.contains("ouvert")) return;
-  $("#catalogue").classList.remove("ouvert");
-  $("#voile-catalogue").hidden = true;
-  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", "false"));
-  if (rendreFocus) declencheurCatalogue?.focus?.();
+  naviguer("notions");
 }
 
 /* ---------- Échanges avec l'API ---------- */
@@ -1066,6 +1064,7 @@ async function demarrer() {
   });
   $("#fermer-chat").addEventListener("click", () => fermerChat({ rendreFocus: true }));
   $("#nouvelle-conversation").addEventListener("click", nouvelleConversation);
+  $("#plein-ecran-chat").addEventListener("click", () => basculerPleinEcran());
   if (!etat.pseudo) demanderPseudo();
 
   // Comptes famille : rien n'est appelé côté Worker si la connexion est désactivée.
@@ -1076,14 +1075,11 @@ async function demarrer() {
 
   ajouterBienvenue();
   await chargerCatalogue();
-  $("#fermer-catalogue").addEventListener("click", () => fermerCatalogue({ rendreFocus: true }));
-  $("#voile-catalogue").addEventListener("click", () => fermerCatalogue());
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
   $("#recherche-jeu").addEventListener("input", rendreJeux);
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || document.querySelector("dialog[open]")) return;
-    if ($("#catalogue").classList.contains("ouvert")) fermerCatalogue({ rendreFocus: true });
-    else if (!$("#panneau-chat").hidden) {
+    if (!$("#panneau-chat").hidden) {
       e.preventDefault();
       fermerChat({ rendreFocus: true });
     }
@@ -1425,21 +1421,23 @@ function rafraichirTheme() {
 
 /* ---------- Navigation ---------- */
 
-const ECRANS = ["accueil", "labs", "jeux", "progression", "defi", "badges", "profil"];
+const ECRANS = ["accueil", "labs", "jeux", "notions", "progression", "defi", "badges", "profil"];
+/** Anciennes adresses : le tiroir « catalogue » est devenu l'écran « notions ». */
+const ALIAS_ECRANS = { catalogue: "notions" };
 
 function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
+    : t({ labs: "navLabs", jeux: "navJeux", notions: "navNotions", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "badges" ? "tropheesIntro" : `${etat.ecran}Intro`);
 }
 
 function afficherEcran(cle, { focus = true } = {}) {
-  const ecran = ECRANS.includes(cle) ? cle : "accueil";
+  const demande = ALIAS_ECRANS[cle] ?? cle;
+  const ecran = ECRANS.includes(demande) ? demande : "accueil";
   const changement = ecran !== etat.ecran;
   etat.ecran = ecran;
-  fermerCatalogue();
   if (changement && $("#bulle-lab").open) $("#bulle-lab").close();
   document.querySelectorAll("[data-ecrans]").forEach((zone) => {
     zone.hidden = !zone.dataset.ecrans.split(" ").includes(etat.ecran);
@@ -1468,7 +1466,7 @@ function marquerNavigation(cle) {
 function brancherNavigation() {
   const suivreAdresse = () => {
     const cle = location.hash.slice(1);
-    if (!cle || ECRANS.includes(cle)) afficherEcran(cle);
+    if (!cle || ECRANS.includes(ALIAS_ECRANS[cle] ?? cle)) afficherEcran(cle);
   };
   window.addEventListener("popstate", suivreAdresse);
   window.addEventListener("hashchange", suivreAdresse);
@@ -1478,7 +1476,6 @@ function brancherNavigation() {
     if (!bouton || bouton.closest("dialog")) return;
     const cle = bouton.dataset.nav ?? bouton.dataset.action;
     if (ECRANS.includes(cle)) naviguer(cle);
-    else if (cle === "catalogue") ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue());
     else if (cle === "aide") ouvrirSignalement();
     else if (cle === "question") ouvrirChat();
   });
@@ -1572,7 +1569,7 @@ function rendreReprendre() {
   if (!n) {
     zone.append(element("h3", { cle: "reprendreVideTitre" }), element("p", { classe: "doux", cle: "reprendreVideTexte" }));
     const b = bouton("reprendreVideBouton", "i-boussole");
-    b.addEventListener("click", ouvrirCatalogue);
+    b.addEventListener("click", () => ouvrirCatalogue());
     zone.append(b);
     return;
   }

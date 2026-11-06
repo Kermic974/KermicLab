@@ -26,7 +26,7 @@
   /** Où l'on se trouve (jamais de saisie de l'élève ni d'URL complète) : page, vue, onglet, dialogue. */
   function contexte(lien) {
     const dialogue = lien.closest("dialog");
-    const zone = dialogue ?? document.querySelector("#catalogue.ouvert") ?? document;
+    const zone = dialogue ?? document;
     const visible = (noeud) => noeud.getClientRects().length > 0
       && getComputedStyle(noeud).visibility === "visible";
     const onglets = (racine) => [...racine.querySelectorAll('[role="tab"][aria-selected="true"]')].find(visible);
@@ -41,7 +41,6 @@
       langue: document.documentElement.lang,
       navigation: identifiant(navigation),
       dialogue: dialogue?.id,
-      panneau: zone === document ? undefined : zone.id,
       module: cadre?.dataset.module,
       onglet: identifiant(onglet),
       vues: vues.join(", ")

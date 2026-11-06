@@ -98,6 +98,8 @@
   "matiere_emc": "Civics",
   "matiere_philosophie": "Philosophy",
   "matiere_jeux": "Games",
+  "matiere_francais": "French",
+  "matiere_ses": "Economics",
   "allerAuContenu": "Skip to content",
   "navigationPrincipale": "Main navigation",
   "navigationMobile": "Navigation",
@@ -367,5 +369,8 @@
   "demoEssayer": "Try the demo (no account)",
   "demoInviteNote": "Demo: “Continue with Google” or “Microsoft” signs in a fictional parent without leaving KermicLab.",
   "demoConnecte": "Demo parent signed in",
-  "connexionIndisponible": "Sign-in with this provider isn’t open yet. You can visit the family space in demo mode."
+  "connexionIndisponible": "Sign-in with this provider isn’t open yet. You can visit the family space in demo mode.",
+  "notionsIntro": "Every concept, by subject and level: search, then open a page to explore.",
+  "chatPleinEcran": "Show the chat full screen",
+  "chatQuitterPleinEcran": "Exit full screen"
 }

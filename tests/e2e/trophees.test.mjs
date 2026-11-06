@@ -44,7 +44,6 @@ async function ouvrirModule(page, id) {
   const navigation = page.waitForEvent("framenavigated", (frame) =>
     frame.parentFrame() === page.mainFrame() && new URL(frame.url()).pathname === `/maquettes/${id}`);
   await page.locator(`#catalogue-liste [data-notion="${id}"]`).click();
-  await page.waitForFunction(() => getComputedStyle(document.querySelector("#catalogue")).visibility === "hidden");
   const iframe = await navigation;
   await iframe.waitForLoadState("load");
   const cadre = page.frameLocator("#bulle-cadre");
