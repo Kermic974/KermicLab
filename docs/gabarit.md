@@ -80,4 +80,12 @@ relecture ; les pages restent autonomes, sans ressource externe. Distingue repè
 
 ## 4. Ajouter un composant
 
-Nouvelle figure ou nouveau type d'exercice : l'ajouter dans `gabarit/moteur.js` (objet `FIGURES` ou `TYPES_EXERCICE`), le déclarer dans `scripts/lib/gabarit.mjs` (`TYPES_FIGURE` ou `TYPES_EXERCICE`, avec sa validation), le documenter ici et le tester dans `tests/e2e/notions.test.mjs`. Toutes les pages générées sont alors régénérées : relis leur diff.
+**Nouvelle figure** (ADR 0019) : chaque figure est un fichier à part, inséré par le build dans le moteur des seules pages qui l'utilisent.
+
+1. `gabarit/figures/<type>.js` : `FIGURES.<type> = function <type>(conf) { … };`, qui renvoie l'élément de la figure. Les outils du moteur (`h`, `s`, `riche`, `paragraphe`, `nombreFr`, `exact`, `pgcd`, `curseur`, `tuile`) sont disponibles. Le type est découvert automatiquement.
+2. Si les paramètres ont des contraintes : `scripts/lib/figures/<type>.mjs`, qui exporte `valider(conf, ou, { exiger, texteNonVide })`.
+3. Une puce dans la liste des figures ci-dessus, et un test dans `tests/e2e/notions.test.mjs`.
+
+Seule la page de la notion qui déclare la figure change : si `npm run build` modifie d'autres pages, c'est une erreur.
+
+**Nouveau type d'exercice**, ou toute modification de `gabarit/moteur.js` : l'ajouter dans `TYPES_EXERCICE` du moteur et de `scripts/lib/gabarit.mjs` (avec sa validation), le documenter ici et le tester. Toutes les pages générées sont alors régénérées : relis leur diff.

@@ -114,7 +114,7 @@ Le lot Thalès est fait (figure `thales`). Le découpage des lots suivants en pu
    situations où une opération n'est pas permise.
 3. **Lots suivants** : réaliser le graphique des systèmes, puis le lab de statistiques. Réévaluer
    les priorités après les retours sur les deux premiers labs plutôt que de lancer plusieurs
-   figures concurrentes dans `gabarit/moteur.js`.
+   figures concurrentes dans `gabarit/figures/`.
 
 Pour chaque lot : conserver les trois onglets et la progression du plus intuitif au plus formel ;
 mettre à jour le schéma de validation, le guide et les tests navigateur ; vérifier clavier, tactile,

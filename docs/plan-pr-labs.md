@@ -82,29 +82,29 @@ Une PR ne doit **jamais** régénérer les pages d'autres notions. Si son diff c
 restent légères (une page n'embarque que sa figure).
 
 **À faire**
-- [ ] Déplacer chaque figure de l'objet `FIGURES` de `gabarit/moteur.js` vers
+- [x] Déplacer chaque figure de l'objet `FIGURES` de `gabarit/moteur.js` vers
   `gabarit/figures/<type>.js`. Chaque fichier enregistre sa figure auprès du moteur
   (ex. `FIGURES.thales = (conf) => …`). Les aides communes (`h`, `s`, `curseur`, `tuile`)
   restent dans `moteur.js`.
-- [ ] `scripts/lib/gabarit.mjs` : n'insérer dans la page que le fichier de la figure déclarée par
+- [x] `scripts/lib/gabarit.mjs` : n'insérer dans la page que le fichier de la figure déclarée par
   `application.figure.type` (aucun si la notion n'a pas de figure). Garder une seule balise
   `<script>` pour ne pas changer le calcul des hashes CSP, ou adapter ce calcul.
-- [ ] Dériver `TYPES_FIGURE` du contenu de `gabarit/figures/` au lieu d'une liste en dur. Déplacer
+- [x] Dériver `TYPES_FIGURE` du contenu de `gabarit/figures/` au lieu d'une liste en dur. Déplacer
   la validation propre à chaque figure dans `scripts/lib/figures/<type>.mjs`
   (`export function valider(conf, ou, exiger)`).
-- [ ] `docs/gabarit.md` § 4 : décrire la nouvelle procédure (un fichier de figure, un fichier de
+- [x] `docs/gabarit.md` § 4 : décrire la nouvelle procédure (un fichier de figure, un fichier de
   validation, une puce de doc, un test).
-- [ ] ADR court `docs/decisions/0019-figures-modulaires.md`.
+- [x] ADR court `docs/decisions/0019-figures-modulaires.md`.
 
 **Tests**
-- [ ] `tests/unit/gabarit.test.mjs` : une page sans figure ne contient aucun code de figure ; une
+- [x] `tests/unit/gabarit.test.mjs` : une page sans figure ne contient aucun code de figure ; une
   page `thales` ne contient que la figure `thales` ; un type inconnu est refusé avec la liste des
   types découverts.
-- [ ] Les tests navigateur existants des figures (`tests/e2e/notions.test.mjs`) passent sans
+- [x] Les tests navigateur existants des figures (`tests/e2e/notions.test.mjs`) passent sans
   modification.
 
 **Acceptation**
-- [ ] `npm run ci` vert. Toutes les `page.html` sont régénérées **une seule fois** dans cette PR, et
+- [x] `npm run ci` vert. Toutes les `page.html` sont régénérées **une seule fois** dans cette PR, et
   la taille des pages sans figure diminue.
 - [ ] Ajouter une figure factice dans une branche locale ne modifie que la page qui l'utilise
   (vérification manuelle, décrite dans la PR).
