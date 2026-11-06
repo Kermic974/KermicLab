@@ -367,12 +367,12 @@ test("GET /api/llm/status expose uniquement la disponibilité effective et sans 
   assert.equal(actif.headers.get("cache-control"), "no-store");
   env.LLM_ACTIF = "false";
   const inactif = await lire();
-  assert.deepEqual(await inactif.json(), { actif: false });
+  assert.deepEqual(await inactif.json(), { actif: false, defi: { ia: false, generationsParJour: 3 } });
   assert.equal(inactif.headers.get("cache-control"), "no-store");
   env.LLM_ACTIF = "true";
   delete env.LLM_SESSION_SECRET;
   const sansSecret = await lire();
-  assert.deepEqual(await sansSecret.json(), { actif: false });
+  assert.deepEqual(await sansSecret.json(), { actif: false, defi: { ia: false, generationsParJour: 3 } });
 });
 
 test("sans Workers AI, le repli n'est disponible qu'avec le binding et le jeton gateway", async () => {
@@ -380,9 +380,10 @@ test("sans Workers AI, le repli n'est disponible qu'avec le binding et le jeton 
     new Request("https://api.kermiclab.test/api/llm/status"), env, ctx
   )).json();
   delete env.AI.run;
-  assert.deepEqual(await lire(), { actif: true });
+  // Le défi exige le binding AI (alias gateway) : sans `run`, il reste sur la banque fixe.
+  assert.deepEqual(await lire(), { actif: true, defi: { ia: false, generationsParJour: 3 } });
   delete env.AI_GATEWAY_TOKEN;
-  assert.deepEqual(await lire(), { actif: false });
+  assert.deepEqual(await lire(), { actif: false, defi: { ia: false, generationsParJour: 3 } });
   const page = await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
   const suite = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
   assert.equal(page.donnees.type, "maquette");

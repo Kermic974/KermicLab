@@ -5,6 +5,8 @@ import { pseudonymiser } from "./pseudonymisation.js";
 export const MODELE_CHAT_PAR_DEFAUT = "claude-haiku-5-5";
 export const MODELE_WORKERS_AI_PAR_DEFAUT = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 export const GATEWAY_LLM = "kermiclab-gateway";
+/** Alias de modèle AI Gateway (pool géré sur la gateway, onglet Routing) pour le défi express (ADR 0018). */
+export const MODELE_DEFI_PAR_DEFAUT = "custom/haiku";
 
 const ENTETES_GATEWAY = {
   "cf-aig-skip-cache": "true",
@@ -156,6 +158,34 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
     contenu: reponse.content.find((b) => b.type === "text")?.text,
     refus: reponse.stop_reason === "refusal",
     tokensSortie: reponse.usage?.output_tokens,
+    pseudonymisations
+  };
+}
+
+/**
+ * Appel d'un alias de modèle AI Gateway (`custom/haiku` par défaut) via le binding, format chat completions,
+ * sortie JSON structurée. Même pseudonymisation imposée. Pas d'en-tête `cf-aig-max-attempts` : le repli
+ * entre les modèles de l'alias est géré par la gateway.
+ */
+export async function appelerAliasGateway(env, { system, message: brut, schema, maxTokens }) {
+  if (!env.AI?.run) throw new Error("binding AI absent");
+  const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
+  const reponse = await env.AI.run(env.MODELE_DEFI || MODELE_DEFI_PAR_DEFAUT, {
+    messages: [
+      { role: "system", content: system },
+      { role: "user", content: message }
+    ],
+    max_tokens: maxTokens,
+    response_format: { type: "json_schema", json_schema: { name: "defis", strict: true, schema } }
+  }, {
+    gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
+    extraHeaders: { "cf-aig-skip-cache": "true", "cf-aig-collect-log": "false" }
+  });
+  const choix = reponse?.choices?.[0];
+  return {
+    contenu: choix?.message?.content ?? reponse?.response,
+    refus: choix?.finish_reason === "content_filter",
+    tokensSortie: reponse?.usage?.completion_tokens,
     pseudonymisations
   };
 }
