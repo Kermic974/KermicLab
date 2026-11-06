@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-0EH0DpCTZyHa6x0Ele7vpIkK9Vwr2AZ3ckN/br9x7BU=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-hOlbfzyOfViZPcPbEcFeXCpe3d8G7zTo831vlHnZVoE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-0EH0DpCTZyHa6x0Ele7vpIkK9Vwr2AZ3ckN/br9x7BU=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-hOlbfzyOfViZPcPbEcFeXCpe3d8G7zTo831vlHnZVoE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Poker Texas Hold'em – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -267,6 +267,12 @@ button.danger { border-color: var(--alerte); color: var(--alerte); }
 </script>
 <script id="trophees" data-inclure="gabarit/jeux/trophees.js">
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && window.parent !== window) {
+    window.parent.postMessage({ type: "kermiclab:chat:fermer" }, "*");
+  }
+});
+
 const Trophees = (() => {
   function monter({ restaurer, resumer }) {
     if (window.parent === window) return () => {};

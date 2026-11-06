@@ -41,9 +41,18 @@ async function ouvrirModule(page, id) {
   await page.locator("#minilab [data-angles] button").first().waitFor({ state: "attached" });
   await page.click("#ouvrir-catalogue");
   await page.fill("#recherche-notion", modules.find((m) => m.id === id).titre);
+  const navigation = page.waitForEvent("framenavigated", (frame) =>
+    frame.parentFrame() === page.mainFrame() && new URL(frame.url()).pathname === `/maquettes/${id}`);
   await page.locator(`#catalogue-liste [data-notion="${id}"]`).click();
+  await page.waitForFunction(() => getComputedStyle(document.querySelector("#catalogue")).visibility === "hidden");
+  const iframe = await navigation;
+  await iframe.waitForLoadState("load");
+  const cadre = page.frameLocator("#bulle-cadre");
+  const titrePage = { echecs: "Échecs", sudoku: "Sudoku" }[id] ?? modules.find((m) => m.id === id).titre;
+  await cadre.locator("header h1").filter({ hasText: titrePage }).waitFor();
+  await cadre.locator("#onglets [role=tab]").first().waitFor();
   await page.waitForFunction((id) => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? localStorage.getItem("kermiclab:trophees") ?? "{}")[id], id, { timeout: 5000 });
-  return page.frameLocator("#bulle-cadre");
+  return cadre;
 }
 
 test("trophées : étoiles d'une notion remontées, restaurées et isolées de l'XP d'exploration", async () => {
@@ -52,7 +61,9 @@ test("trophées : étoiles d'une notion remontées, restaurées et isolées de l
     const cadre = await ouvrirModule(page, "pythagore");
     assert.equal(await page.locator("#bulle-cadre").getAttribute("sandbox"), "allow-scripts allow-popups allow-popups-to-escape-sandbox");
     await cadre.locator("#onglet-application").click();
-    await cadre.locator("[data-exercice=app-1]").getByRole("button", { name: "le côté opposé à l'angle droit", exact: true }).click();
+    const application = cadre.locator("#panneau-application");
+    await application.waitFor({ state: "visible" });
+    await application.locator("[data-exercice=app-1]").getByRole("button", { name: "le côté opposé à l'angle droit", exact: true }).click();
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).pythagore.etoiles === 1);
     await page.click("#fermer-bulle");
     await page.click("[data-nav=badges]");
@@ -76,6 +87,8 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
     assert.equal(await cadre.locator("body").evaluate(() => document.referrer), "", "la remontée fonctionne sans Referer");
     const academie = cadre.locator("#panneau-academie");
     await cadre.locator("#onglet-academie").click();
+    await cadre.locator("#onglet-academie[aria-selected=true]").waitFor();
+    await academie.waitFor({ state: "visible" });
     await academie.locator('[data-action="conseil"]').click();
     await academie.locator('[data-choix="2"]').click();
     await academie.locator('[data-action="suivant"]').click();
@@ -90,8 +103,15 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
     await carte.locator("summary").click();
     assert.equal(await carte.locator(".badge.obtenu").count(), 2);
     assert.match(await carte.textContent(), /Premiers pas.*Obtenu/s);
+    const navigation = page.waitForEvent("framenavigated", (frame) =>
+      frame.parentFrame() === page.mainFrame() && new URL(frame.url()).pathname === "/maquettes/echecs");
     await carte.getByRole("button", { name: "Rouvrir la page" }).click();
+    const iframe = await navigation;
+    await iframe.waitForLoadState("load");
+    await cadre.locator("header h1").filter({ hasText: "Échecs" }).waitFor();
     await cadre.locator("#onglet-academie").click();
+    await cadre.locator("#onglet-academie[aria-selected=true]").waitFor();
+    await academie.waitFor({ state: "visible" });
     await academie.locator('[data-sortie="niveau"]').filter({ hasText: "70 XP" }).waitFor();
     await academie.locator('[data-action="detail"]').click();
     await academie.locator('[data-action="effacer"]').click();
@@ -151,7 +171,7 @@ test("trophées : mini-lab, mémorisation choisie, langue et effacement global s
     assert.match(await page.locator("#trophees-labs").textContent(), /2 \/ 2/);
     assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
     await page.click("#fermer-progres");
-    await page.locator(".nav-mobile-bouton[data-nav=profil]").click();
+    await page.locator(".profil-mobile[data-ouvrir-profil]").click();
     await page.check("#profil-memoriser");
     assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:trophees")), null);
     assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem("kermiclab:trophees"))["mini-cercle"].etoiles), 2);
@@ -164,7 +184,7 @@ test("trophées : mini-lab, mémorisation choisie, langue et effacement global s
     await page.click("#ouvrir-progres");
     assert.equal(await page.locator("#progres-titre").textContent(), "My trophies");
     await page.click("#fermer-progres");
-    await page.locator(".nav-mobile-bouton[data-nav=profil]").click();
+    await page.locator(".profil-mobile[data-ouvrir-profil]").click();
     await page.uncheck("#profil-memoriser");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
     await page.click("#effacer-donnees");
@@ -198,7 +218,11 @@ for (const id of ["sudoku", "2048"]) {
       const n = await page.evaluate((id) => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))[id].badges.length, id);
       assert.equal(n, 5);
       if (id === "sudoku") {
-        for (let i = 0; i < 30; i++) await cadre.getByRole("button", { name: "💡 Indice" }).click();
+        const message = cadre.locator('[data-sortie="message"]');
+        for (let i = 0; i < 81 && !(await message.textContent()).includes("Grille résolue"); i++) {
+          await cadre.getByRole("button", { name: "💡 Indice" }).click();
+        }
+        assert.match(await message.textContent(), /Grille résolue/, "les indices terminent la grille et débloquent le grade suivant");
         await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).sudoku.grades === 1);
         assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).sudoku.badges.filter((b) => b.obtenu).length), 1);
       } else {
@@ -214,8 +238,12 @@ for (const id of ["sudoku", "2048"]) {
       await page.click("#fermer-bulle");
       await ouvrirModule(page, id);
       if (id === "sudoku") {
-        await cadre.getByRole("tab", { name: "Académie" }).click();
-        await cadre.locator(".grade button:not(:disabled)").nth(1).waitFor();
+        const academie = cadre.getByRole("tab", { name: "Académie" });
+        await academie.click();
+        await cadre.locator("#onglet-academie[aria-selected=true]").waitFor();
+        await cadre.locator("#panneau-academie").waitFor({ state: "visible" });
+        assert.match(await cadre.locator('[data-sortie="progression"]').textContent(), /2 \/ 5 grades débloqués/);
+        assert.equal(await cadre.locator("#panneau-academie .grade button:not(:disabled)").count(), 2);
         assert.equal(await cadre.locator(".grade button:disabled").count(), 3);
       } else {
         await cadre.locator('[data-sortie="record"]').filter({ hasText: new RegExp(`^${avant.record}$`) }).waitFor();

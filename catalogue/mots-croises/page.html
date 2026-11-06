@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-GLd9pRk4X2bKJLO/WYgG1Y/IzYdM6qlg/UuLVQAf+Ms=' 'sha256-/q1gx97A+ps1+KUZh/kcm93eQ1ey/SQ6fWA8d3vCQSQ='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-GLd9pRk4X2bKJLO/WYgG1Y/IzYdM6qlg/UuLVQAf+Ms=' 'sha256-/q1gx97A+ps1+KUZh/kcm93eQ1ey/SQ6fWA8d3vCQSQ='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Mots croisés – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -83,6 +83,12 @@ footer { padding: 8px 0 20px; color: var(--doux); font-size: .85rem; }
 </style>
 <script id="trophees" data-inclure="gabarit/jeux/trophees.js">
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && window.parent !== window) {
+    window.parent.postMessage({ type: "kermiclab:chat:fermer" }, "*");
+  }
+});
+
 const Trophees = (() => {
   function monter({ restaurer, resumer }) {
     if (window.parent === window) return () => {};

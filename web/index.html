@@ -67,7 +67,7 @@
       <a class="nav-bouton" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span class="nav-texte" data-i18n="navFeuilleDeRoute"></span></a>
       <button type="button" class="nav-bouton" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="signaler"></span></button>
       <a class="nav-bouton nav-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span class="nav-texte" data-i18n="navParticiper"></span></a>
-      <button type="button" class="profil-carte" data-nav="profil">
+      <button type="button" class="profil-carte" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n-aria="profilTitre">
         <span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span>
         <span class="profil-textes"><span class="profil-nom" data-profil="pseudo"></span><span class="profil-meta" data-profil="niveau"></span></span>
       </button>
@@ -91,6 +91,7 @@
             </span>
           </button>
           <button type="button" class="bouton-icone" id="bascule-theme" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-lune"/></svg></button>
+          <button type="button" class="profil-carte profil-mobile" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n-aria="profilTitre"><span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span></button>
           <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
             <select id="langue"></select>
           </label>
@@ -185,32 +186,6 @@
       </section>
 
       <div class="accueil" id="accueil" data-ecrans="accueil">
-        <section class="carte chat" aria-labelledby="chat-titre">
-          <div class="chat-entete">
-            <span class="chat-icone" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
-            <div>
-              <h2 id="chat-titre" data-i18n="chatTitre"></h2>
-              <p class="doux petit" data-i18n="sousTitre"></p>
-            </div>
-            <div class="llm-controle">
-              <label class="llm-interrupteur" for="llm-actif">
-                <span data-i18n="llmToggleLabel"></span>
-                <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
-                <span class="llm-piste" aria-hidden="true"></span>
-              </label>
-              <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
-            </div>
-          </div>
-          <ol id="fil" aria-live="polite"></ol>
-          <div class="zone-saisie">
-            <form id="formulaire" autocomplete="off">
-              <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
-              <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
-              <button type="submit" data-i18n="envoyer"></button>
-            </form>
-          </div>
-        </section>
-
         <div class="colonne">
           <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre">
             <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fiole"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
@@ -299,6 +274,36 @@
   </main>
 </div>
 
+<button type="button" class="ouvrir-chat" id="ouvrir-chat" aria-controls="panneau-chat" aria-expanded="false" aria-haspopup="dialog" data-i18n-aria="chatOuvrir">
+  <svg class="avatar-robot" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 13V7m-4 0h8M12 30H7v12h5m40-12h5v12h-5"/>
+    <rect x="12" y="17" width="40" height="36" rx="13" fill="currentColor" fill-opacity=".12"/>
+    <circle cx="24" cy="32" r="3" fill="currentColor" stroke="none"/>
+    <circle cx="40" cy="32" r="3" fill="currentColor" stroke="none"/>
+    <path d="M24 42q8 8 16 0"/>
+  </svg>
+  <span data-i18n="chatTitre"></span>
+</button>
+
+<section class="carte chat" id="panneau-chat" role="dialog" aria-modal="false" aria-labelledby="chat-titre" hidden>
+  <div class="chat-entete">
+    <span class="chat-icone" aria-hidden="true"><svg class="ico"><use href="#i-bulle"/></svg></span>
+    <div class="chat-titres">
+      <h2 id="chat-titre" data-i18n="chatTitre"></h2>
+      <p class="doux petit" data-i18n="sousTitre"></p>
+    </div>
+    <button type="button" class="bouton-icone fermer-croix" id="fermer-chat" data-i18n-aria="chatFermer"></button>
+  </div>
+  <ol id="fil" aria-live="polite"></ol>
+  <div class="zone-saisie">
+    <form id="formulaire" autocomplete="off">
+      <label for="question" class="visuellement-cache" data-i18n="placeholder"></label>
+      <textarea id="question" rows="1" maxlength="500" required data-i18n-placeholder="placeholder"></textarea>
+      <button type="submit" data-i18n="envoyer"></button>
+    </form>
+  </div>
+</section>
+
 <nav class="nav-mobile" data-i18n-aria="navigationMobile">
   <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
   <div class="nav-mobile-groupe" role="group" data-i18n-aria="navGroupeLabsJeux">
@@ -308,7 +313,7 @@
   <button type="button" class="nav-mobile-bouton" data-nav="catalogue" aria-controls="catalogue" aria-expanded="false"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navNotions"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="defi"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg></span><span data-i18n="navDefiCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-reglages"/></svg></span><span data-i18n="navProfil"></span></button>
   <a class="nav-mobile-bouton nav-mobile-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg></span><span data-i18n="navParticiper"></span></a>
 </nav>
 
@@ -351,11 +356,26 @@
   </form>
 </dialog>
 
-<!-- Profil et paramètres -->
-<section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="profil-titre" hidden>
+<!-- Configuration : la route #profil reste compatible. -->
+<section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="configuration-titre" hidden>
+  <div class="dialogue-entete">
+    <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
+    <button type="button" class="secondaire" data-nav="accueil" data-i18n="navAccueil"></button>
+  </div>
+  <div class="llm-controle">
+    <label class="llm-interrupteur" for="llm-actif">
+      <span data-i18n="llmToggleLabel"></span>
+      <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
+      <span class="llm-piste" aria-hidden="true"></span>
+    </label>
+    <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
+  </div>
+</section>
+
+<dialog id="dialogue-profil" aria-labelledby="profil-titre">
   <div class="dialogue-entete">
     <h2 id="profil-titre" data-i18n="profilTitre"></h2>
-    <button type="button" class="secondaire" id="fermer-profil" data-nav="accueil" data-i18n="navAccueil"></button>
+    <button type="button" class="secondaire" id="fermer-profil" data-i18n="fermer"></button>
   </div>
   <form id="formulaire-profil" class="formulaire-profil" novalidate>
     <label for="profil-pseudo" class="etiquette-champ" data-i18n="pseudoLabel"></label>
@@ -374,7 +394,7 @@
     <button type="button" class="danger" id="effacer-donnees" data-i18n="effacerDonnees"></button>
     <p class="doux petit" id="effacer-aide" data-i18n="effacerAide"></p>
   </div>
-</section>
+</dialog>
 
 <!-- Bulle : page interactive ouverte depuis le tableau de bord (hors du fil du chat) -->
 <dialog id="bulle-lab" class="bulle-lab" aria-labelledby="bulle-titre">

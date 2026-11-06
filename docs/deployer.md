@@ -36,13 +36,23 @@ Wrangler demande une authentification interactive avec `npx wrangler login`. Ne 
 
 ## Après publication
 
+### Gateway LLM
+
+Tous les appels pédagogiques passent obligatoirement par **`kermiclab-gateway`**, dans le même compte Cloudflare que le Worker. Workers AI utilise le troisième argument de `AI.run` ; le SDK Anthropic utilise l'URL `anthropic` obtenue par `AI.gateway("kermiclab-gateway").getUrl(...)`, jamais `api.anthropic.com`. Aucun retour direct au fournisseur n'est autorisé en cas d'erreur gateway.
+
+Le repli nécessite aussi le secret **`AI_GATEWAY_TOKEN`** (permission AI Gateway Run), en plus de `ANTHROPIC_API_KEY`. Le créer dans les secrets GitHub Actions pour transmission au Worker, sans le partager dans le chat. Workers AI via binding n'a pas besoin de ce jeton. L'absence du jeton empêche le repli, pas les appels Workers AI.
+
+Le code désactive le cache et la collecte de logs par requête et limite la gateway à un essai ; les réservations D1 et le repli applicatif restent inchangés. Dans les réglages Cloudflare, désactiver aussi les logs de contenu, tout export Logpush de requêtes/réponses et les retries/fallbacks additionnels. Après validation humaine et déploiement, vérifier les métriques agrégées de `kermiclab-gateway` pour une relance, sans consulter ni conserver son texte. L'accès au tableau de bord n'est pas vérifiable depuis cette session.
+
+English: Pedagogical calls must use `kermiclab-gateway`, including the Anthropic SDK fallback. Workers AI uses the binding; fallback requires a separate AI Gateway Run token. No direct-provider bypass, request logging or cache; gateway retries must not add hidden generations outside the application quota.
+
 - Vérifiez que le Worker `https://kermiclab-api.<compte>.workers.dev` répond.
 - Configurez la variable Actions `KERMICLAB_API_URL` avec cette URL, puis relancez un déploiement pour générer le site avec la bonne adresse d’API.
 - Vérifiez `https://kermiclab.pages.dev` et testez une question couverte par le catalogue.
 - Activez Web Analytics dans les paramètres du projet Pages si souhaité.
 - Gardez `ORIGINES_AUTORISEES` dans `worker/wrangler.toml` alignée avec le domaine du site. Une modification de domaine doit être revue avant le déploiement.
 
-Workers AI est déclaré dans `worker/wrangler.toml` avec le binding `AI` : aucune clé API Workers AI n'est à ajouter. Le coupe-circuit global `LLM_ACTIF` est géré par l'administration dans Cloudflare et reste `false` par défaut. Quand l'administration l'active, chaque visiteur doit également cocher « Utiliser l'IA » dans le chat ; ce choix individuel est désactivé par défaut et mémorisé dans la session du navigateur. Les appels nécessitent les deux activations, le secret aléatoire `LLM_SESSION_SECRET` (32 caractères minimum) et le schéma D1 à jour (`sessions_llm`). La CI applique le schéma avant le déploiement et transfère les secrets définis. Sans session de quota valide, aucun appel n'est effectué.
+Workers AI est déclaré dans `worker/wrangler.toml` avec le binding `AI` : aucune clé API Workers AI n'est à ajouter. À la demande du propriétaire, la configuration de déploiement active le coupe-circuit global (`LLM_ACTIF=true`) ; `false` reste l'arrêt d'urgence. Cette modification ne certifie pas l'activation en production avant déploiement et vérification de `/api/llm/status`. Chaque visiteur doit également cocher « Utiliser l'IA » dans Configuration ; ce choix individuel est désactivé par défaut et mémorisé dans la session du navigateur. Les appels nécessitent les deux activations, le secret aléatoire `LLM_SESSION_SECRET` (32 caractères minimum) et le schéma D1 à jour (`sessions_llm`). La CI applique le schéma avant le déploiement et transfère les secrets définis. Sans session de quota valide, aucun appel n'est effectué.
 
 Après activation globale et opt-in individuel : ouvrir une notion dans le chat puis cliquer « Donne-moi un exemple ». Vérifier le cookie technique, les sources et métadonnées en fin de réponse, et le compteur de sortie limité à 1 000 par session, tous fournisseurs compris. Une demande sans lien avec les données ou un historique arbitraire ne doit pas appeler le modèle. Le catalogue reste accessible après épuisement, si l'opt-in individuel est désactivé, ou avec `LLM_ACTIF=false`.
 

@@ -10,6 +10,7 @@ import { gererAuth } from "./auth/routes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm } from "./session-llm.js";
 import { interrogerTuteur } from "./tuteur-llm.js";
+import { claudeViaGatewayDisponible } from "./llm.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
 const MAX_SUGGESTIONS = 4;
@@ -177,7 +178,7 @@ async function traiterChat(requete, env, ctx) {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "hors-perimetre-llm" }));
     return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
   }
-  if (!utiliserLlm || !llmActive(env) || (!env.AI?.run && !env.ANTHROPIC_API_KEY)) {
+  if (!utiliserLlm || !llmActive(env) || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "sans-modele" }));
     return { statut: 200, donnees: reponseHorsCatalogue(langue) };
   }
@@ -361,7 +362,7 @@ export default {
         return json({ actif: false }, 403, { "cache-control": "no-store" });
       }
       const actif = llmActive(env) && !!env.DB && typeof env.LLM_SESSION_SECRET === "string"
-        && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || !!env.ANTHROPIC_API_KEY);
+        && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || claudeViaGatewayDisponible(env));
       return json({ actif }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {

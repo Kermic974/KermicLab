@@ -10,7 +10,10 @@ import { normaliserResultat } from "../../worker/src/llm.js";
 
 let env;
 beforeEach(() => {
-  env = { DB: creerD1Llm(), LLM_SESSION_SECRET: "secret-factice-de-test-de-plus-de-32-caracteres" };
+  env = {
+    DB: creerD1Llm(), LLM_SESSION_SECRET: "secret-factice-de-test-de-plus-de-32-caracteres",
+    AI_GATEWAY_TOKEN: "jeton-gateway-test"
+  };
 });
 afterEach(() => env.DB.sqlite.close());
 
@@ -105,7 +108,10 @@ test("purge : ne conserve aucune session au-delà de son expiration, aucun texte
 test("Workers AI et Anthropic partagent les 1 000 tokens même après un timeout", async () => {
   const { session } = await ouvrirSession();
   const plafonds = [];
-  env.AI = { run: async (modele, params) => { plafonds.push(params.max_tokens); throw new Error("timeout"); } };
+  env.AI = {
+    run: async (modele, params) => { plafonds.push(params.max_tokens); throw new Error("timeout"); },
+    gateway: () => ({ getUrl: async () => `https://gateway.ai.cloudflare.com/v1/${"a".repeat(32)}/kermiclab-gateway/anthropic` })
+  };
   env.ANTHROPIC_API_KEY = "cle-factice";
   const claude = { messages: { create: async (params, options) => {
     plafonds.push(params.max_tokens);
@@ -122,7 +128,10 @@ test("Workers AI et Anthropic partagent les 1 000 tokens même après un timeout
 
 test("sortie JSON invalide : consommation facturée avant le repli", async () => {
   const { session } = await ouvrirSession();
-  env.AI = { run: async () => ({ response: "{", usage: { completion_tokens: 150 } }) };
+  env.AI = {
+    run: async () => ({ response: "{", usage: { completion_tokens: 150 } }),
+    gateway: () => ({ getUrl: async () => `https://gateway.ai.cloudflare.com/v1/${"a".repeat(32)}/kermiclab-gateway/anthropic` })
+  };
   env.ANTHROPIC_API_KEY = "cle-factice";
   const claude = { messages: { create: async () => ({
     stop_reason: "end_turn", content: [{ type: "text", text: JSON.stringify(resultat) }], usage: { output_tokens: 100 }

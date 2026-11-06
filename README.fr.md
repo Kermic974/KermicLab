@@ -28,6 +28,14 @@ Navigateur ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », con
 L’application autonome du cercle trigonométrique (`index.html`, générée depuis `src/`) est publiée sous
 `/cercle/`, à côté du chat (ADR 0008).
 
+L’avatar robot souriant, en bas à droite du tableau de bord, ouvre **Pose ta question** dans un
+panneau flottant à droite, accessible depuis chaque écran. L’avatar, la croix ou Échap le referment
+sans perdre la conversation ni le brouillon. Sur mobile, il reste au-dessus de la navigation.
+
+**Configuration** (route existante `/#profil`) contient uniquement l’interrupteur **Utiliser l’IA** et
+son état de disponibilité. Le pseudo, la mémorisation et l’effacement restent dans une fenêtre de profil
+séparée, accessible par la carte du profil ou l’avatar dans l’en-tête mobile.
+
 La **Boîte à idées**, accessible sur chaque vue publiée (pages, onglets et dialogues, y compris les
 notions et jeux intégrés), ouvre dans un nouvel onglet un brouillon d’issue GitHub « Évolution ».
 La page, sa version, la langue et la vue active sont renseignées, avec une trame de besoin, de critères
@@ -40,7 +48,7 @@ L’application autonome les incorpore via `python3 scripts/build-standalone.py`
 n’est nécessaire pour préparer le lien, même hors ligne ; publier nécessite une connexion à GitHub.
 
 La navigation distingue les écrans **Accueil**, **Labs**, **Jeux**, **Défi express**, **Progression**,
-**Mes trophées** et **Profil** dans la zone principale, avec des liens directs (`/#labs`, `/#jeux`,
+**Mes trophées** et **Configuration** dans la zone principale, avec des liens directs (`/#labs`, `/#jeux`,
 `/#defi`, `/#progression`, `/#badges`, `/#profil`) et le retour du navigateur.
 Les Labs présentent les applications dédiées disponibles (actuellement le cercle sous `/cercle/`),
 pas les fiches du catalogue. L'entrée **Notions** conserve le catalogue existant, ses matières, niveaux,
