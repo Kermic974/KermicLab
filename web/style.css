@@ -570,6 +570,12 @@ dialog.bulle-lab[open] { display: flex; }
 .defi-points i.courant { background: var(--accent); }
 .defi-points i.juste { background: var(--succes); }
 .defi-points i.faux { background: var(--danger); }
+.defi-etiquette { margin: 0 0 6px; text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+.defi-chargement { padding: 24px 0; text-align: center; }
+#defi-source { margin: -6px 0 14px; }
+.defi-reglage { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--bord); }
+.defi-reglage h3 { margin: 0; }
+.defi-reglage select { max-width: 320px; }
 .defi-question { font-size: 20px; font-weight: 720; letter-spacing: -.02em; margin-bottom: 16px; }
 .reponses { display: grid; gap: 10px; }
 .reponse { display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 16px; border: 1.5px solid var(--bord-fort); border-radius: 14px; background: var(--surface); color: var(--texte); text-align: left; font-size: 16px; }

@@ -56,7 +56,18 @@ export async function capturer(page, nom, { pleinePage = false } = {}) {
 }
 
 /** Simule le Worker kermiclab-api (API et maquettes) à l'adresse configurée dans dist/config.json. */
-export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false, llmActif = true }) {
+/** Lot de défis tel que le renvoie `/api/defi` (ADR 0018) ; `n` défis valides, la page complète avec sa banque. */
+export function defisIa(api, n = 5) {
+  return Array.from({ length: n }, (_, i) => ({
+    notion: i % 2 ? "fractions" : "pythagore", titre: i % 2 ? "Les fractions" : "Le théorème de Pythagore",
+    format: i === 1 ? "vrai-faux" : "qcm", enonce: `Défi inédit ${i + 1} ?`,
+    choix: i === 1 ? ["Vrai", "Faux"] : [`Réponse A${i + 1}`, `Réponse B${i + 1}`, `Réponse C${i + 1}`],
+    bonne: i === 1 ? 0 : 2, explication: `Explication ${i + 1}.`,
+    url: `${api}/maquettes/${i % 2 ? "fractions" : "pythagore"}?lang=fr`
+  }));
+}
+
+export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false, llmActif = true, defi = null }) {
   const requetes = [];
   await page.route(`${api}/auth/me`, (route) => route.fulfill({
     contentType: "application/json",
@@ -69,8 +80,18 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
   await page.route(`${api}/maquettes/**`, (route) => route.fulfill({ contentType: "text/html", body: htmlMaquette }));
   await page.route(`${api}/api/llm/status`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
-    body: JSON.stringify({ actif: llmActif })
+    body: JSON.stringify({ actif: llmActif, defi: { ia: llmActif, generationsParJour: 3 } })
   }));
+  await page.route(`${api}/api/defi`, async (route) => {
+    const corps = route.request().postDataJSON();
+    requetes.push({ defi: corps });
+    const reponse = defi ? defi(corps) : { source: "banque", raison: "ia-inactive", defis: [], quota: { limite: 3, utilisees: 0, restantes: 3 } };
+    return route.fulfill({
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": origine, "access-control-allow-credentials": "true" },
+      body: JSON.stringify(reponse)
+    });
+  });
   await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
     body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })

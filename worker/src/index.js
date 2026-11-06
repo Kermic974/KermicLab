@@ -9,12 +9,16 @@ import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
-import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee } from "./session-llm.js";
+import { SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
 import { pseudonymiser } from "./pseudonymisation.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
-import { claudeViaGatewayDisponible } from "./llm.js";
+import { MODELE_DEFI_PAR_DEFAUT, appelerAliasGateway, claudeViaGatewayDisponible } from "./llm.js";
+import {
+  HARNESS_DEFI, MAX_TOKENS_DEFI, SCHEMA_DEFI, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
+  messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
+} from "./defi-llm.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
 const MAX_SUGGESTIONS = 4;
@@ -447,6 +451,78 @@ function servirPage(requete, env, id) {
   });
 }
 
+const defiIaPossible = (env) => llmActive(env) && !!env.DB && !!env.AI?.run
+  && typeof env.LLM_SESSION_SECRET === "string" && env.LLM_SESSION_SECRET.length >= 32;
+
+/**
+ * Défi express (ADR 0018) : 5 défis générés par l'alias AI Gateway, sur des notions tirées au hasard par le serveur.
+ * Sans IA (désactivée, quota atteint, panne), `defis` est vide et l'interface sert sa banque fixe : le défi marche toujours.
+ * Les défis invalides sont retirés ; l'interface complète avec la banque fixe.
+ */
+async function traiterDefi(requete, env, ctx) {
+  let corps;
+  try { corps = await requete.json(); } catch { return { statut: 400, donnees: { defis: [] } }; }
+  const langue = langueValide(corps?.langue);
+  const matiere = typeof corps?.matiere === "string" && /^[a-z-]{1,40}$/.test(corps.matiere) ? corps.matiere : null;
+  const limite = generationsDefiParJour(env);
+  const banque = (raison, quota = { limite, utilisees: 0, restantes: limite }) => {
+    ctx.waitUntil(journaliser(env, { type: "defi", langue, routage: "banque", detail: raison }));
+    return { statut: 200, donnees: { source: "banque", raison, defis: [], quota } };
+  };
+  if (corps?.utiliserLlm !== true) return banque("ia-inactive");
+  if (!defiIaPossible(env)) return banque("ia-indisponible");
+  let session, cookie;
+  try {
+    ({ session, cookie } = await sessionSansPage(requete, env, SESSION_DEFI));
+  } catch {
+    console.error("llm session défi indisponible");
+    return banque("ia-indisponible");
+  }
+  const entetes = cookie ? { "set-cookie": cookie } : {};
+  const avecCookie = (r) => ({ ...r, entetes });
+  let utilisees;
+  try {
+    utilisees = await reserverGenerationDefi(env, session.id, limite);
+  } catch {
+    console.error("llm quota défi indisponible");
+    return avecCookie(banque("ia-indisponible"));
+  }
+  if (utilisees === null) {
+    const deja = await generationsDefiUtilisees(env, session.id).catch(() => limite);
+    return avecCookie(banque("quota", { limite, utilisees: deja, restantes: Math.max(0, limite - deja) }));
+  }
+  const quota = { limite, utilisees, restantes: Math.max(0, limite - utilisees) };
+  const tirages = tirerDefis(CATALOGUE, { matiere });
+  let generation, defis = [];
+  try {
+    generation = await appelerAliasGateway(env, {
+      system: promptDefi(langue), message: messageDefi(CATALOGUE, tirages, langue),
+      schema: SCHEMA_DEFI, maxTokens: MAX_TOKENS_DEFI
+    });
+    if (!generation.refus) defis = normaliserDefis(generation.contenu, tirages);
+  } catch {
+    console.error("llm défi fournisseur ou sortie invalide");
+  } finally {
+    await libererGenerationDefi(env, session.id).catch(() => console.error("llm libération défi indisponible"));
+  }
+  if (!defis.length) return avecCookie(banque(generation ? "sortie-invalide" : "ia-indisponible", quota));
+  ctx.waitUntil(journaliser(env, { type: "defi", langue, routage: "ia", detail: `valides:${defis.length}` }));
+  const origine = new URL(requete.url).origin;
+  return avecCookie({
+    statut: 200,
+    donnees: {
+      source: "ia",
+      defis: defis.map((d) => ({ ...d, url: `${origine}/maquettes/${encodeURIComponent(d.notion)}?lang=${langue}` })),
+      quota,
+      llm: {
+        fournisseur: "cloudflare-ai-gateway", modele: env.MODELE_DEFI || MODELE_DEFI_PAR_DEFAUT, harness: HARNESS_DEFI,
+        tokensSortie: Number.isSafeInteger(generation?.tokensSortie) ? generation.tokensSortie : null,
+        pseudonymisation: { appliquee: true, remplacements: generation?.pseudonymisations ?? 0 }
+      }
+    }
+  });
+}
+
 // ---------- Auth helpers ----------
 async function lireCompteDepuisCookie(requete, env) {
   const cookie = requete.headers.get("cookie") || "";
@@ -499,7 +575,8 @@ export default {
       }
       const actif = llmActive(env) && !!env.DB && typeof env.LLM_SESSION_SECRET === "string"
         && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || claudeViaGatewayDisponible(env));
-      return json({ actif }, 200, { ...cors, "cache-control": "no-store" });
+      const defi = { ia: defiIaPossible(env), generationsParJour: generationsDefiParJour(env) };
+      return json({ actif, defi }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {
       return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
@@ -515,7 +592,7 @@ export default {
     const page = url.pathname.match(/^\/maquettes\/([a-z0-9-]+)$/);
     if ((requete.method === "GET" || requete.method === "HEAD") && page) return servirPage(requete, env, page[1]);
 
-    if (requete.method === "POST" && ["/api/chat", "/api/support", "/api/idee", "/api/idee/cadrage"].includes(url.pathname)) {
+    if (requete.method === "POST" && ["/api/chat", "/api/support", "/api/idee", "/api/idee/cadrage", "/api/defi"].includes(url.pathname)) {
       if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
         return json({ type: "refus", texte: messages("fr").inapproprie }, 403, {});
       }
@@ -526,7 +603,7 @@ export default {
         return json({ type: "refus", texte: messages("fr").tropDeDemandes }, 429, cors);
       }
       try {
-        const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee }[url.pathname];
+        const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee, "/api/defi": traiterDefi }[url.pathname];
         const { statut, donnees, entetes = {} } = await traiter(requete, env, ctx);
         return json(donnees, statut, { ...cors, ...entetes });
       } catch (e) {
@@ -544,6 +621,8 @@ export default {
   async scheduled(evenement, env, ctx) {
     ctx.waitUntil(purgerSessionsLlm(env, evenement.scheduledTime)
       .catch(() => console.error("purge sessions llm indisponible")));
+    ctx.waitUntil(purgerDefisLlm(env, evenement.scheduledTime)
+      .catch(() => console.error("purge défis llm indisponible")));
     ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
       .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
       .catch((e) => console.error("sauvegarde kpi", e?.message)));

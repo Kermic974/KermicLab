@@ -2,6 +2,18 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Défi express généré par l'IA (ADR 0018)
+
+- **Fait** (2026-11-06) : alias de modèle `custom/haiku` créé sur `kermiclab-gateway` (confirmé par le propriétaire).
+- **À faire** : après le déploiement, activer « Utiliser l'IA » dans Configuration, lancer le défi express et vérifier
+  que cinq défis inédits s'affichent (et non les questions fixes sur le cercle). En cas de questions fixes, consulter
+  les logs du Worker (`llm défi fournisseur ou sortie invalide`) et le journal de l'alias dans AI Gateway : le format
+  de sortie du binding pour un alias n'est pas documenté. Vérifier aussi les crédits de facturation unifiée (ou la clé
+  enregistrée sous l'alias `default`).
+- **Où** : https://kermiclab.online/#defi et Cloudflare → AI → AI Gateway → `kermiclab-gateway` → Routing.
+- **Pourquoi** : le contenu généré est destiné à des mineurs ; relire un échantillon de défis (exactitude, ton).
+- **Comment confirmer** : défis inédits affichés, pastille « préparés par l'IA », signalements éventuels traités.
+
 ## Validation de Poker Texas Hold'em v1.1.0
 
 - **À faire** : relire les six leçons et jouer une manche sur téléphone et ordinateur ; valider les règles
