@@ -47,7 +47,7 @@ export async function construireInventaire() {
     if (!onglets.length) throw new Error(`Inventaire UX : onglets absents pour ${notion.id}`);
     const cible = jeu ? `jeux.html#jeu-${notion.id}` : notion.id === "trigo-cercle" ? "notion.html#cercle-catalogue" : "notion.html";
     const p = modules.get(notion.id);
-    const progression = !p ? "Non compatible avec Mes trophées" :
+    const progression = !p ? "Non compatible avec Mes badges" :
       [p.genre, p.etoilesTotal === undefined ? "" : `${p.etoilesTotal} étoiles`,
         p.leconsTotal === undefined ? "" : `${p.leconsTotal} leçons`,
         p.gradesTotal === undefined ? "" : `${p.gradesTotal} grades`,
@@ -85,20 +85,20 @@ export async function construireInventaire() {
   <main>
     <section data-ecran="inventaire-perimetre"><h2>Périmètre et traçabilité</h2>
       <p>${catalogue.index.maquettes.length} pages publiques : ${catalogue.index.maquettes.length - jeux - 1} notions du gabarit, une notion cercle écrite à la main et ${jeux} jeux ; plus l'application /cercle/, le tableau de bord et trois pages éditoriales.</p>
-      <p>${modules.size} modules dans Mes trophées, dont le mini-cercle de l'accueil. Les badges d'exploration du tableau de bord sont distincts des badges de jeux.</p>
+      <p>${modules.size} modules compatibles avec Mes badges (écran Progression), dont le mini-cercle d'Éducation ; seuls les modules lancés sur l'appareil y sont affichés. Les badges d'exploration du tableau de bord sont distincts des badges de jeux.</p>
       <p>Empreinte SHA-256 de web/, catalogue/, gabarit/, src/ et du générateur de roadmap : <code data-empreinte>${empreinte.digest("hex")}</code>. Seul le contenu factuel entre les marqueurs roadmap:auto est exclu ; son générateur et le reste de la page restent suivis.</p>
       <p>Le catalogue privé et le déploiement effectif ne sont pas vérifiés. Les contenus pédagogiques sont représentés par leur gabarit, pas recopiés intégralement. Les options masquées ne sont pas déclarées actives. Les états clair/sombre et français/anglais partagent les mêmes structures ; l'atelier est figé en français.</p>
       <p>Régénérer et versionner : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Les tests détectent une dérive des sources, des squelettes, des dialogues, de la navigation et des onglets des jeux ; relire les squelettes manuels avant de valider une nouvelle version.</p>
     </section>
     <section data-ecran="inventaire-site"><h2>Coquille, dialogues et variantes</h2>
-      <p>Navigation actuelle : ${navigation.map(echapper).join(" · ")}. Écrans dédiés accessibles par fragment d'URL : ${ecrans.map((e) => echapper(e === "famille" ? "famille (masqué tant que connexionActive vaut false)" : e)).join(" · ")}. Labs, Jeux et Notions sont des écrans séparés ; Configuration, Défi et Trophées sont aussi des écrans dédiés. Le profil reste accessible dans une fenêtre séparée. Couverture détaillée dans le squelette principal, avec variantes vides, chargement, erreur, réussite, mémoire et notifications.</p>
+      <p>Navigation actuelle : ${navigation.map(echapper).join(" · ")}. Écrans dédiés accessibles par fragment d'URL : ${ecrans.map((e) => echapper(e === "famille" ? "famille (masqué tant que connexionActive vaut false)" : e)).join(" · ")}. Cinq destinations : Accueil, Éducation (notions, Lab du cercle, cahiers, défi), Jeux, Progression (dont Mes badges) et Profil ; le défi est un sous-écran d'Éducation, l'Espace famille un sous-écran de Profil. Les anciennes adresses #labs, #notions, #catalogue, #cahiers et #badges restent valides. La fenêtre du profil (pseudo, mémoire, effacement) s'ouvre depuis Profil ou la carte du profil. Couverture détaillée dans le squelette principal, avec variantes vides, chargement, erreur, réussite, mémoire et notifications.</p>
       <ul>${dialogues.map((id) => `<li data-dialogue="${echapper(id)}"><a href="index.html#${liensDialogues[id]}">${echapper(id)}</a></li>`).join("")}</ul>
       <p>Éditorial : <a href="editorial.html#feuille-de-route">Feuille de route</a>, <a href="editorial.html#confidentialite">Confidentialité</a>, <a href="editorial.html#mentions-legales">Mentions légales</a>. Participation : lien externe, pas d'écran interne. Worker : aucune page d'erreur HTML dédiée, 404 textuelle.</p>
     </section>
     <section data-ecran="inventaire-catalogue"><h2>Toutes les pages publiques</h2><p>Chaque ligne relie le squelette, la vue active de l'API et sa source sur main ; la version indiquée est celle du catalogue local, pas une certification du déploiement. Les liens externes ne chargent rien avant un clic. Les onglets ci-dessous sont actifs ; Auto-évaluation est inactive et Se connecter est masqué dans les pages autonomes.</p>
-      <div class="tableau" role="region" aria-label="Toutes les pages du catalogue, défilement horizontal" tabindex="0"><table><caption>Catalogue public, versions et variantes réelles</caption><thead><tr><th>Titre et ID</th><th>Matière</th><th>Niveau</th><th>Version</th><th>Onglets</th><th>Figure</th><th>Mes trophées</th></tr></thead><tbody>${lignes.join("\n")}</tbody></table></div>
+      <div class="tableau" role="region" aria-label="Toutes les pages du catalogue, défilement horizontal" tabindex="0"><table><caption>Catalogue public, versions et variantes réelles</caption><thead><tr><th>Titre et ID</th><th>Matière</th><th>Niveau</th><th>Version</th><th>Onglets</th><th>Figure</th><th>Mes badges</th></tr></thead><tbody>${lignes.join("\n")}</tbody></table></div>
     </section>
-    <details><summary>Limites et écarts observés dans les sources</summary><p>Français et SES ont des pages mais ne figurent pas dans la liste fixe de matières du tableau de bord ; leurs libellés de traduction sont absents. La feuille de route juxtapose un bilan éditorial plus ancien (huit jeux) et un suivi automatique (neuf jeux). Poker et Mots croisés ne remontent pas dans la collection Mes trophées. Ces écarts sont documentés, pas corrigés par les artefacts UX.</p></details>
+    <details><summary>Limites et écarts observés dans les sources</summary><p>Français et SES ont des pages mais ne figurent pas dans la liste fixe de matières du tableau de bord ; leurs libellés de traduction sont absents. La feuille de route juxtapose un bilan éditorial plus ancien (huit jeux) et un suivi automatique (neuf jeux). Mots croisés ne remonte pas dans Mes badges. Ces écarts sont documentés, pas corrigés par les artefacts UX.</p></details>
   </main>
   <footer><a href="index.html">Retour à l'atelier</a> · fichier autonome hors ligne</footer>
 </body>
