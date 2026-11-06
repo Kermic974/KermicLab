@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, defisIa } from "./outils.mjs";
 
 // Tableau de bord élève (accueil) : pseudo au premier lancement, mémorisation par cookie local, données de la session.
 let serveur, nav, htmlMaquette, api;
@@ -14,9 +14,9 @@ before(async () => {
 });
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
-async function demarrer(options = {}, avant) {
+async function demarrer(options = {}, avant, simulation = {}) {
   const session = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 }, ...options });
-  await simulerApiKermiclab(session.page, { origine: serveur.url, api, htmlMaquette });
+  session.requetes = await simulerApiKermiclab(session.page, { origine: serveur.url, api, htmlMaquette, ...simulation });
   if (avant) await avant(session.page);
   await session.page.goto(serveur.url);
   return session;
@@ -140,6 +140,76 @@ test("défi express : correction immédiate, 5 XP par bonne réponse une fois pa
   await page.locator("#defi .reponse").nth(0).click();
   assert.match(await texte(page, "#defi-retour"), /Pas tout à fait\./);
   assert.match(await texte(page, "#defi-sur-titre"), /Déjà fait aujourd'hui/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complété par la banque, quota réglé dans Configuration", async () => {
+  let restantes = 3;
+  const { page, contexte, erreurs, requetes } = await demarrer({}, async (p) => {
+    await p.addInitScript(() => { try { sessionStorage.setItem("kermiclab:llm:actif", "true"); } catch { /* iframe sandboxée */ } });
+  }, {
+    defi: () => {
+      restantes -= 1;
+      return { source: "ia", defis: defisIa(api, restantes === 2 ? 5 : 3), quota: { limite: 3, utilisees: 3 - restantes, restantes } };
+    }
+  });
+  await choisirPseudo(page, "Ana");
+  // Configuration : réglage du défi, plafonné par le serveur (3 par jour), mémorisé sur l'appareil.
+  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  assert.deepEqual(await page.locator("#defi-ia-par-jour option").allTextContents(),
+    ["Désactivé (questions fixes)", "1 par jour", "2 par jour", "3 par jour"]);
+  assert.equal(await page.inputValue("#defi-ia-par-jour"), "3");
+  assert.match(await texte(page, "#defi-ia-etat"), /Il te reste 3 défi/);
+  await page.selectOption("#defi-ia-par-jour", "2");
+  assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:defi:ia-par-jour")), "2");
+
+  await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
+  await page.locator("#defi-question").waitFor();
+  assert.equal(await texte(page, "#defi-question"), "Défi inédit 1 ?");
+  assert.match(await texte(page, "#defi-source"), /préparés par l’IA/);
+  assert.match(await texte(page, "#defi .defi-etiquette"), /Question · Le théorème de Pythagore/);
+  const envoi = requetes.find((r) => r.defi)?.defi;
+  assert.deepEqual(envoi, { langue: "fr", matiere: "mathematiques", utiliserLlm: true });
+  for (const bonne of [2, 0, 2, 2, 2]) {
+    await page.locator("#defi .reponse").nth(bonne).click();
+    assert.match(await texte(page, "#defi-retour"), /Correct !/);
+    assert.equal(await page.locator("#defi-retour button", { hasText: "Revoir la notion" }).count(), 1);
+    await page.locator("#defi .defi-suite .bouton:not(.secondaire-bouton)").click();
+  }
+  assert.equal(await texte(page, "#defi .score"), "5/5");
+  assert.match(await texte(page, "#defi .resultat-defi"), /Cinq sur cinq/);
+
+  // Recommencer : 3 défis inédits seulement, complétés par 2 questions fixes de la banque.
+  await page.click("#defi .defi-suite .secondaire-bouton");
+  await page.locator("#defi-question").waitFor();
+  for (let i = 0; i < 3; i++) {
+    await page.locator("#defi .reponse").nth(0).click();
+    await page.locator("#defi .defi-suite .bouton:not(.secondaire-bouton)").click();
+  }
+  assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.equal(await page.locator("#defi-retour button", { hasText: "Revoir la notion" }).count(), 0);
+
+  // Réglage à 2 par jour : la troisième ouverture n'appelle plus l'IA.
+  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  assert.match(await texte(page, "#defi-ia-etat"), /Il te reste 0 défi/);
+  const avant = requetes.filter((r) => r.defi).length;
+  await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
+  await page.locator("#defi-question").waitFor();
+  assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.equal(requetes.filter((r) => r.defi).length, avant);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("configuration : sans IA activée, le réglage du défi invite à l'activer et le défi reste sur la banque", async () => {
+  const { page, contexte, erreurs, requetes } = await demarrer();
+  await choisirPseudo(page, "Noé");
+  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  assert.match(await texte(page, "#defi-ia-etat"), /Active « Utiliser l’IA »/);
+  await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
+  assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.equal(requetes.filter((r) => r.defi).length, 0, "aucun appel sans consentement IA");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

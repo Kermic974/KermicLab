@@ -56,14 +56,16 @@ export async function definirContexteLlm(requete, env, maquetteId) {
   return undefined;
 }
 
-/** Session pour la boîte à idées : celle du tuteur si elle existe (même quota), sinon une nouvelle sans page. */
+/** Session sans page (boîte à idées, défi express) : celle du tuteur si elle existe, sinon une nouvelle. */
 export const SESSION_SANS_PAGE = "boite-idees";
-export async function sessionPourIdee(requete, env) {
+export const SESSION_DEFI = "defi-express";
+export async function sessionSansPage(requete, env, contexte) {
   const existante = await lireSessionLlm(requete, env);
   if (existante) return { session: existante };
-  const { id, cookie } = await creerSessionLlm(env, SESSION_SANS_PAGE);
-  return { session: { id, maquette_id: SESSION_SANS_PAGE }, cookie };
+  const { id, cookie } = await creerSessionLlm(env, contexte);
+  return { session: { id, maquette_id: contexte }, cookie };
 }
+export const sessionPourIdee = (requete, env) => sessionSansPage(requete, env, SESSION_SANS_PAGE);
 
 /** Une réservation atomique et un seul appel en vol évitent les dépassements concurrents. */
 export async function reserverTokens(env, sessionId) {
