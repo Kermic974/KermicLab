@@ -139,6 +139,17 @@ export function activite(p, jour = jourLocal(), n = 7) {
   return liste.map((j) => ({ jour: j, ...(p.jours?.[j] ?? { q: 0, n: 0, xp: 0 }) }));
 }
 
+/** Indicateurs cumulés et récents : l'historique local couvre au plus 31 jours. */
+export function indicateurs(p, jour = jourLocal()) {
+  const jours = activite(p, jour, 30);
+  return {
+    xpTotal: p.xp,
+    xp30Jours: jours.reduce((total, j) => total + j.xp, 0),
+    joursActifs30Jours: jours.filter((j) => j.q + j.n + j.xp > 0).length,
+    meilleureJournee30Jours: Math.max(0, ...jours.map((j) => j.xp))
+  };
+}
+
 /** Série affichée : elle tombe à 0 si le dernier jour actif n'est ni aujourd'hui ni hier. */
 export function serieCourante(p, jour = jourLocal()) {
   return p.dernierJour === jour || p.dernierJour === veille(jour) ? p.serie : 0;
