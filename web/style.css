@@ -814,3 +814,16 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .lectures .lecture:first-child { grid-column: 1 / -1; }
   .chiffres dd { font-size: 20px; }
 }
+
+/* ---------- Espace famille (ADR 0017) ---------- */
+.famille-points { margin: 0 0 16px; padding-left: 20px; display: grid; gap: 6px; color: var(--texte-2); }
+.famille-enfants { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 10px; }
+.famille-enfant { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface-2); }
+.famille-enfant-nom { flex: 1 1 160px; display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.famille-ajout { margin: 0 0 16px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); padding: 12px 14px; }
+.famille-ajout > summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+.tranches { border: 0; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.tranches label { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
+.type-profil { margin: 16px 0; padding: 12px 14px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface-2); }
+.type-profil h3 { margin: 0 0 4px; font-size: 1rem; }
+.type-profil p { margin: 0 0 8px; }

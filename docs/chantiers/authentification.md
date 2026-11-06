@@ -15,7 +15,7 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 | Worker : `/auth/login`, `/auth/callback`, `/auth/me`, `/auth/logout` (Google, Microsoft, PKCE, `state`) | Présent, non utilisé |
 | Worker : `/api/eleves` (GET, POST), `/api/progres` (GET, POST) | Présent, sans validation ni consentement |
 | Schéma `worker/schema-comptes.sql` | Présent, non appliqué en production |
-| Interface : dialogues « Mon compte » et « Consentement » | Provisoires, masqués (`connexionActive = false` dans `dist/config.json`) |
+| Interface : Espace famille `#famille`, type de profil, formulaire enfant avec consentement | PR ouverte (remplace les dialogues provisoires « Mon compte » et « Consentement ») ; masquée tant que `connexionActive = false` |
 
 ## Constats de l'audit
 
@@ -34,7 +34,7 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 | Étape | Contenu | Statut |
 |---|---|---|
 | 1 | ADR 0017, ce plan, actions manuelles | PR ouverte |
-| 2 | Interface : `web/comptes.js` (logique pure), Espace famille `#famille`, bloc « Type de profil », formulaire enfant et consentement, i18n, `/auth/me` seulement si `connexionActive` | À faire |
+| 2 | Interface : `web/comptes.js` (logique pure), Espace famille `#famille`, bloc « Type de profil », formulaire enfant et consentement, i18n, `/auth/me` seulement si `connexionActive` | PR ouverte |
 | 3 | Worker : validation et consentement de `/api/eleves`, `DELETE /api/eleves/:id`, endpoint authentifié de suppression du compte parent avec effacement en cascade, plafond de 6 profils, tests de suppression en cascade | À faire |
 | 4 | Worker : session limitée au profil enfant choisi et refus côté serveur des opérations de gestion tant que le parent ne s'est pas réauthentifié ; tests d'appels directs aux API de gestion. L'appairage reste en phase D | À faire |
 | 5 | OAuth : liaison navigateur (`browser_binding`), URL de retour du site configurée et autorisée, test du parcours complet jusqu'à `#famille` ; choisir et tester une réauthentification vérifiable par fournisseur ou un facteur parent propre à l'application, avec test du déverrouillage | À faire |

@@ -31,7 +31,8 @@
    sur tous tes appareils, demande à un parent d'ouvrir l'Espace famille ». Aucun formulaire, aucune donnée demandée.
 
 **B. Parent : connexion et Espace famille**
-1. Entrée « Espace famille » (en-tête, et lien discret « Je suis un parent » sous le dialogue de pseudo).
+1. Entrée « Espace famille » dans l'en-tête et bouton « Ouvrir l'Espace famille » dans le dialogue Profil. Le dialogue de pseudo
+   reste inchangé : le pseudo local est demandé à tout visiteur, parent compris.
 2. Écran d'accueil non connecté : ce que fait le compte, ce qui est stocké, choix Google / Microsoft, et rappel « Ton enfant
    peut continuer avec un profil local sans compte ».
 3. Connecté : écran plein « Espace famille » (route `#famille`, comme Configuration) avec la liste des profils enfants
@@ -42,20 +43,23 @@
 1. Prénom ou surnom (mêmes règles que le pseudo : 2 à 20 caractères, pas de suite de 6 chiffres) et tranche d'âge
    (`6-10`, `11-14`, `15-17`). Pas de nom de famille, pas de date de naissance, pas d'école.
 2. Consentement explicite **dans le formulaire**, texte versionné (`consentement-v1`), case non cochée par défaut ; le bouton
-   reste inactif tant qu'elle n'est pas cochée. Le Worker refuse la création sans consentement (pas seulement l'interface).
+   reste actif mais la création est refusée avec un message tant qu'elle n'est pas cochée (un bouton désactivé n'explique
+   rien aux lecteurs d'écran). Le Worker refuse aussi la création sans consentement (pas seulement l'interface).
 3. Si l'appareil a une progression locale, proposer « Reprendre la progression de « pseudo » » (case cochée par défaut,
    décochable).
 4. Au plus 6 profils enfants par compte.
 
 **D. Utiliser un profil enfant sur un appareil**
 - Phase C : le parent, connecté sur l'appareil, choisit « Utiliser sur cet appareil ». Le Worker remplace la session parent
-  par une session limitée au profil enfant choisi : l'en-tête affiche le prénom et la progression est synchronisée.
+  par une session limitée au profil enfant choisi : le bloc « Type de profil » affiche le prénom et la progression est synchronisée.
   Le Worker refuse toute opération de gestion des profils ou du compte tant qu'une session parent n'a pas été rétablie ;
   masquer ces actions dans l'interface ne suffit pas.
 - Le retour à l'Espace famille exige une réauthentification parentale vérifiable. Avant l'activation, choisir et tester un
   mécanisme garantissant une nouvelle authentification pour chaque fournisseur, ou mettre en place un facteur parent propre
   à l'application. `prompt=login` seul ne constitue pas cette garantie, notamment pour Google. Tester le déverrouillage et
   le refus des appels directs aux API de gestion avant cette réauthentification.
+- En attendant cette session limitée, l'interface préparée (`#famille`) ne propose en mode enfant que « Le parent se
+  reconnecte », qui ferme la session du parent et ramène l'appareil au profil local.
 - Phase D : code d'appairage à usage unique (6 caractères, 10 minutes) généré par le parent et saisi sur l'appareil de
   l'enfant, pour une session limitée au profil enfant. Cet appairage est hors périmètre de la phase C et de la première
   activation.
@@ -98,7 +102,7 @@ mode enfant, session expirée, erreur réseau, quota de profils atteint. Chaque 
 | PR | Contenu | Effet en production |
 |---|---|---|
 | 1 | Cet ADR, plan dans `docs/chantiers/authentification.md`, actions manuelles | Aucun |
-| 2 | Interface : logique pure `web/comptes.js`, Espace famille (`#famille`), bloc « Type de profil », formulaire enfant avec consentement, textes i18n, aucun appel `/auth/me` sans `connexionActive` | Aucun tant que `connexionActive = false`, sauf la suppression de l'appel `/auth/me` |
+| 2 | Interface : logique pure `web/comptes.js`, Espace famille (`#famille`), bloc « Type de profil », formulaire enfant avec consentement, textes i18n, aucun appel `/auth/me` sans `connexionActive` | Aucun tant que `connexionActive = false`, sauf la suppression de l'appel `/auth/me` à chaque visite |
 | 3 | Worker : validation et consentement de `/api/eleves`, suppression du profil et endpoint authentifié de suppression du compte parent, effacement en cascade et tests | Aucun tant que les tables et secrets OAuth ne sont pas en place |
 | 4 | Worker : sessions limitées au profil enfant, refus des opérations de gestion jusqu'à réauthentification parentale vérifiable (par fournisseur ou facteur parent de l'application), URL de retour du site configurée et autorisée, tests des refus, déverrouillage et parcours OAuth jusqu'à `#famille` | Aucun tant que les tables et secrets OAuth ne sont pas en place |
 | Ensuite | Domaine API même site, liaison navigateur OAuth, URL `AUTH_CALLBACK_URL` exacte chez Google et Microsoft et redéploiement, validation juridique, activation de `connexionActive` après réussite des tests | Activation, après validation humaine |

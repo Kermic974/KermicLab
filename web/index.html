@@ -95,8 +95,7 @@
           <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
             <select id="langue"></select>
           </label>
-          <button id="se-connecter" type="button" class="secondaire" data-i18n="seConnecter" hidden></button>
-          <a id="mon-compte" class="bouton-lien" href="#compte" data-i18n="monCompte" hidden></a>
+          <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
         </div>
       </header>
 
@@ -372,6 +371,68 @@
   </div>
 </section>
 
+<!-- Espace famille (ADR 0017) : accessible seulement si connexionActive ; un compte parent crée les profils enfants. -->
+<section id="famille" class="carte ecran-personnel" data-ecrans="famille" aria-labelledby="famille-titre" hidden>
+  <div class="dialogue-entete">
+    <h2 id="famille-titre" data-i18n="familleTitre"></h2>
+    <button type="button" class="secondaire" data-nav="accueil" data-i18n="navAccueil"></button>
+  </div>
+  <p id="famille-etat" class="doux" role="status"></p>
+  <div id="famille-invite" hidden>
+    <p data-i18n="familleInviteIntro"></p>
+    <ul class="famille-points">
+      <li data-i18n="familleInvitePoint1"></li>
+      <li data-i18n="familleInvitePoint2"></li>
+      <li data-i18n="familleInvitePoint3"></li>
+    </ul>
+    <div class="actions">
+      <button type="button" class="bouton" id="connexion-google" data-i18n="connexionGoogle"></button>
+      <button type="button" class="bouton" id="connexion-microsoft" data-i18n="connexionMicrosoft"></button>
+    </div>
+    <p class="note-locale" data-i18n="familleInviteLocal"></p>
+  </div>
+  <div id="famille-parent" hidden>
+    <h3 data-i18n="familleEnfantsTitre"></h3>
+    <p id="famille-vide" class="doux" data-i18n="familleAucunEnfant" hidden></p>
+    <ul id="famille-enfants" class="famille-enfants"></ul>
+    <details id="famille-ajout" class="famille-ajout">
+      <summary data-i18n="familleAjouter"></summary>
+      <form id="formulaire-enfant" class="formulaire-profil" novalidate>
+        <label for="enfant-prenom" class="etiquette-champ" data-i18n="enfantPrenomLabel"></label>
+        <input id="enfant-prenom" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="enfant-prenom-aide enfant-prenom-erreur">
+        <p id="enfant-prenom-aide" class="doux petit" data-i18n="enfantPrenomAide"></p>
+        <p id="enfant-prenom-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <fieldset class="tranches" aria-describedby="enfant-tranche-erreur">
+          <legend class="etiquette-champ" data-i18n="enfantTrancheLabel"></legend>
+          <label><input type="radio" name="enfant-tranche" value="6-10"> <span data-i18n="tranche_6-10"></span></label>
+          <label><input type="radio" name="enfant-tranche" value="11-14"> <span data-i18n="tranche_11-14"></span></label>
+          <label><input type="radio" name="enfant-tranche" value="15-17"> <span data-i18n="tranche_15-17"></span></label>
+        </fieldset>
+        <p id="enfant-tranche-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label class="case-memoire">
+          <input type="checkbox" id="enfant-consentement" aria-describedby="enfant-consentement-erreur">
+          <span><strong data-i18n="consentementTitre"></strong><span class="doux petit" data-i18n="consentementTexte"></span></span>
+        </label>
+        <p id="enfant-consentement-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label class="case-memoire" id="enfant-reprise-ligne" hidden>
+          <input type="checkbox" id="enfant-reprise" checked>
+          <span><strong id="enfant-reprise-texte"></strong><span class="doux petit" data-i18n="enfantRepriseAide"></span></span>
+        </label>
+        <p id="enfant-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <button type="submit" class="bouton" id="creer-enfant" data-i18n="enfantCreer"></button>
+      </form>
+    </details>
+    <div class="zone-effacement">
+      <button type="button" class="secondaire" id="deconnexion" data-i18n="familleDeconnexion"></button>
+    </div>
+  </div>
+  <div id="famille-enfant" hidden>
+    <p id="famille-enfant-texte"></p>
+    <p class="doux petit" data-i18n="familleEnfantAide"></p>
+    <button type="button" class="secondaire" id="quitter-mode-enfant" data-i18n="quitterModeEnfant"></button>
+  </div>
+</section>
+
 <dialog id="dialogue-profil" aria-labelledby="profil-titre">
   <div class="dialogue-entete">
     <h2 id="profil-titre" data-i18n="profilTitre"></h2>
@@ -390,6 +451,12 @@
     <span><strong data-i18n="memoriserLabel"></strong><span class="doux petit" data-i18n="memoriserAide"></span></span>
   </label>
   <p class="doux petit" id="profil-etat-memoire"></p>
+  <section class="type-profil" id="type-profil" aria-labelledby="type-profil-titre" hidden>
+    <h3 id="type-profil-titre" data-i18n="typeProfilTitre"></h3>
+    <p><strong id="type-profil-nom"></strong></p>
+    <p class="doux petit" id="type-profil-aide"></p>
+    <button type="button" class="secondaire" id="ouvrir-famille" data-i18n="familleOuvrir"></button>
+  </section>
   <div class="zone-effacement">
     <button type="button" class="danger" id="effacer-donnees" data-i18n="effacerDonnees"></button>
     <p class="doux petit" id="effacer-aide" data-i18n="effacerAide"></p>
@@ -478,43 +545,6 @@
     <div class="actions">
       <button type="button" class="secondaire" id="fermer-signalement" data-i18n="fermer"></button>
       <button type="submit" data-i18n="signalerEnvoyer"></button>
-    </div>
-  </form>
-</dialog>
-
-<!-- Dialogue Compte -->
-<dialog id="compte">
-  <form method="dialog">
-    <div class="dialogue-entete">
-      <h2>Mon compte</h2>
-      <button type="button" class="fermer-croix" id="fermer-compte"><span class="visuellement-cache">Fermer</span></button>
-    </div>
-    <section id="compte-connecte" hidden>
-      <p>Connecté en tant que parent</p>
-      <div id="liste-eleves"></div>
-      <button type="button" id="ajouter-eleve" class="secondaire">Ajouter un profil élève</button>
-      <button type="button" id="deconnexion" class="danger">Se déconnecter</button>
-    </section>
-    <section id="compte-non-connecte">
-      <p>Connecte-toi pour sauvegarder la progression de tes enfants.</p>
-      <button type="button" id="login-google" class="plein">Continuer avec Google</button>
-      <button type="button" id="login-microsoft" class="plein">Continuer avec Microsoft</button>
-    </section>
-  </form>
-</dialog>
-
-<!-- Dialogue Consentement -->
-<dialog id="consentement">
-  <form method="dialog">
-    <h2>Consentement parental</h2>
-    <p>En créant un profil pour un mineur de moins de 15 ans, tu confirmes être le responsable légal et accepter le traitement des données de progression.</p>
-    <label>
-      <input type="checkbox" id="consent-check" required>
-      J’accepte
-    </label>
-    <div class="actions">
-      <button type="button" id="annuler-consentement" class="secondaire">Annuler</button>
-      <button type="submit" id="valider-consentement">Valider</button>
     </div>
   </form>
 </dialog>
