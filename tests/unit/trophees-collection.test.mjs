@@ -21,7 +21,9 @@ test("collection : objectifs issus des vrais parcours, sans réussite ni XP inve
       if (m[cle] !== undefined) assert.equal(m[cle], 0);
     }
   }
-  assert.equal(c["poker-texas-holdem"], undefined, "pas de trophées inventés pour un jeu sans adaptateur");
+  assert.equal(c["poker-texas-holdem"].leconsTotal, 6);
+  assert.equal(c["poker-texas-holdem"].gradesTotal, 3);
+  assert.equal(c["poker-texas-holdem"].badges.length, 14);
 });
 
 test("collection : le fichier statique livré reflète le catalogue compilé", async () => {

@@ -8,6 +8,7 @@ const modules = [
   { id: "pythagore", titre: "Le théorème de Pythagore", matiere: "mathematiques", niveau: "college" },
   { id: "trigo-cercle", titre: "Le cercle trigonométrique", matiere: "mathematiques", niveau: "seconde" },
   { id: "echecs", titre: "Les échecs", matiere: "jeux", niveau: "autres" },
+  { id: "poker-texas-holdem", titre: "Poker Texas Hold'em", matiere: "jeux", niveau: "autres" },
   { id: "sudoku", titre: "Le Sudoku", matiere: "jeux", niveau: "autres" },
   { id: "2048", titre: "2048", matiere: "jeux", niveau: "autres" }
 ];
@@ -49,7 +50,7 @@ async function ouvrirModule(page, id) {
   const cadre = page.frameLocator("#bulle-cadre");
   const titrePage = { echecs: "Échecs", sudoku: "Sudoku" }[id] ?? modules.find((m) => m.id === id).titre;
   await cadre.locator("header h1").filter({ hasText: titrePage }).waitFor();
-  await cadre.locator("#onglets [role=tab]").first().waitFor();
+  await cadre.locator('[role="tab"]').first().waitFor();
   await page.waitForFunction((id) => JSON.parse(sessionStorage.getItem("kermiclab:trophees") ?? localStorage.getItem("kermiclab:trophees") ?? "{}")[id], id, { timeout: 5000 });
   return cadre;
 }
@@ -116,6 +117,48 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
     await academie.locator('[data-action="effacer"]').click();
     await academie.locator('[data-action="effacer"]').click();
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees")).echecs.xp === 0);
+    assert.deepEqual(erreurs, []);
+  } finally { await contexte.close(); }
+});
+
+test("trophées poker : pratique et leçons remontées, restaurées puis effacées dans le tableau de bord", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  try {
+    let cadre = await ouvrirModule(page, "poker-texas-holdem");
+    await cadre.locator('[data-action="coucher"]').click();
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))["poker-texas-holdem"].etat.compteurs.manches === 1);
+    await cadre.locator("#onglet-academie").click();
+    let academie = cadre.locator("#panneau-academie");
+    await academie.locator('[data-lecon="cinq-cartes"]').click();
+    await academie.locator('[data-choix="1"]').click();
+    await academie.locator('[data-action="suivant"]').click();
+    await academie.locator('[data-choix="2"]').click();
+    await academie.locator('[data-action="suivant"]').click();
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))["poker-texas-holdem"].lecons === 1);
+    await page.click("#fermer-bulle");
+    await page.click("[data-nav=badges]");
+    const carte = page.locator('#trophees-jeux [data-trophee-module="poker-texas-holdem"]');
+    await carte.waitFor();
+    await carte.locator("summary").click();
+    assert.match(await carte.textContent(), /Premiers pas.*Obtenu/s);
+    await carte.getByRole("button", { name: "Rouvrir la page" }).click();
+    cadre = page.frameLocator("#bulle-cadre");
+    const stats = cadre.locator('[data-sortie="stats-jeu"]');
+    await stats.waitFor({ state: "visible" });
+    const etat = await cadre.locator("body").evaluate(() => window.kermiclab.academie.etat());
+    const texteStats = await stats.textContent();
+    assert.ok(etat.xp > 0);
+    assert.match(texteStats, new RegExp(`${etat.xp} XP`), "le bandeau Jouer reflète les XP restaurés avant interaction");
+    assert.match(texteStats, new RegExp(`${etat.compteurs.manches} manches terminées`), "le bandeau reflète les manches restaurées");
+    assert.match(texteStats, new RegExp(`${etat.parties.entrainement.victoires} victoires`), "le bandeau reflète les victoires restaurées");
+    academie = cadre.locator("#panneau-academie");
+    await cadre.locator("#onglet-academie").click();
+    await academie.locator('[data-lecon="cinq-cartes"].faite').waitFor();
+    assert.equal(await cadre.locator("body").evaluate(() => window.kermiclab.academie.etat().compteurs.manches), 1);
+    await academie.locator('[data-action="detail"]').click();
+    await academie.locator('[data-action="effacer"]').click();
+    await academie.locator('[data-action="effacer"]').click();
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:trophees"))["poker-texas-holdem"].xp === 0);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
 });

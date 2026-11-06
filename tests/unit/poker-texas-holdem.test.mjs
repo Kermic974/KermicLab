@@ -160,7 +160,120 @@ test("catalogue : métadonnées et routage des demandes poker", () => {
   const meta = lireMetaHtml(html);
   assert.equal(meta.id, "poker-texas-holdem");
   assert.equal(meta.sujet, "jeux/poker-texas-holdem");
+  assert.ok(meta.onglets.includes("academie"));
   for (const question of ["je veux jouer au poker", "Texas Hold'em", "quelles sont les combinaisons au poker ?", "Pocker Texas Hold them"]) {
     assert.equal(routerLocal(question, CATALOGUE.index), "poker-texas-holdem", question);
+  }
+});
+
+const parcours = JSON.parse(html.match(/<script type="application\/json" id="parcours-poker-texas-holdem">([\s\S]*?)<\/script>/)[1]);
+const defis = JSON.parse(html.match(/<script type="application\/json" id="defis-poker">([\s\S]*?)<\/script>/)[1]);
+const progressionSource = await readFile(new URL("../../gabarit/jeux/progression.js", import.meta.url), "utf8");
+const P = vm.runInNewContext(`${progressionSource}\nProgressionJeux.creer(${JSON.stringify(parcours)})`, {});
+
+test("meilleure main : choisit exactement cinq vraies cartes, même sur une quinte basse", () => {
+  for (const texte of ["A♣ 2♦ 3♥ 4♠ 5♣ 9♦ R♥", "A♣ A♦ A♥ R♠ R♣ 2♦ 3♥", "10♥ V♥ D♥ R♥ A♥ 2♦ 3♥"]) {
+    const cartes = main(texte), meilleure = M.meilleureMain(cartes);
+    assert.equal(meilleure.cartes.length, 5);
+    assert.ok(meilleure.cartes.every((c) => cartes.includes(c)), "les cartes montrées appartiennent à la main");
+    assert.deepEqual([...M.evaluerMain(meilleure.cartes)], [...M.evaluerMain(cartes)]);
+  }
+});
+
+test("défis et Académie : gagnants et types de mains vérifiés par le moteur", () => {
+  const exercices = parcours.grades.flatMap((g) => g.lecons).flatMap((l) => l.exercices).filter((e) => e.type === "comparaison");
+  const attendus = [
+    ["b", "brelan", "full"],
+    ["egalite", "quinte flush royale", "quinte flush royale"],
+    ["b", "quinte", "quinte"],
+    ["a", "paire", "paire"]
+  ];
+  exercices.forEach((exercice, i) => {
+    const r = M.comparerSituation(exercice);
+    assert.deepEqual([r.gagnant, M.nomMain(r.scoreA), M.nomMain(r.scoreB)], attendus[i]);
+  });
+  assert.deepEqual(defis.map((d) => M.comparerSituation(d).gagnant), ["b", "egalite", "a"]);
+  const quinte = M.comparerSituation(exercices[2]);
+  assert.equal(quinte.scoreA[1], 5);
+  assert.equal(quinte.scoreB[1], 6);
+  assert.throws(() => M.comparerSituation({ ...defis[0], a: ["R♦", "7♥"] }), /double/);
+  assert.throws(() => M.lireCartes(["15♣"]), /invalide/);
+});
+
+test("conseil : ne reçoit que l'information visible et n'altère jamais la manche", () => {
+  const p = M.creerPartie(graine(2)), avant = JSON.stringify(p);
+  const conseil = M.conseiller(p.joueur.main, p.communes, 10, p.pot);
+  assert.match(conseil, /10 jetons/);
+  assert.match(conseil, /inconnues/);
+  assert.doesNotMatch(conseil, /miser|relancer/);
+  assert.match(M.conseiller(p.joueur.main, p.communes, 0, p.pot), /parler gratuitement/);
+  assert.equal(JSON.stringify(p), avant);
+  p.ordinateur.main = main("A♣ A♦");
+  assert.equal(M.conseiller(p.joueur.main, p.communes, 10, p.pot), conseil);
+});
+
+test("un coucher à la river ne révèle pas les cartes privées adverses", () => {
+  const p = M.creerPartie(graine());
+  M.agir(p, "suivre");
+  M.agir(p, "parole");
+  M.agir(p, "parole");
+  M.agir(p, "coucher");
+  assert.equal(p.phase, "river");
+  assert.equal(p.resultat.scoreOrdi, null);
+  assert.match(p.historique.at(-2), /te couches/);
+});
+
+test("Académie : trois grades, six leçons, QCM et progression sans succès initial inventé", () => {
+  assert.equal(parcours.grades.length, 3);
+  const ids = new Set();
+  for (const grade of parcours.grades) {
+    for (const lecon of grade.lecons) {
+      assert.ok(!ids.has(lecon.id));
+      ids.add(lecon.id);
+      assert.ok(lecon.texte && lecon.retenir && parcours.themes[lecon.theme]);
+      for (const exo of lecon.exercices) {
+        assert.ok(exo.explication && exo.question);
+        if (exo.type === "qcm") assert.ok(Number.isInteger(exo.bonne) && exo.bonne >= 0 && exo.bonne < exo.choix.length);
+        else assert.equal(exo.type, "comparaison");
+      }
+    }
+  }
+  assert.equal(ids.size, 6);
+  const e = P.etatInitial();
+  assert.equal(e.xp, 0);
+  assert.ok(P.badges(e).every((b) => !b.obtenu));
+  assert.equal(P.leconDebloquee(e, "full"), false);
+  let etat = e;
+  for (const id of ["cinq-cartes", "actions"]) etat = P.terminerLecon(etat, { id, etoiles: 3, jour: "2026-11-05" }).etat;
+  assert.equal(P.leconDebloquee(etat, "full"), true);
+});
+
+test("récompenses : gains de pratique, égalité, badges et relecture d'état", () => {
+  let e = P.etatInitial();
+  for (const [resultat, xp] of [["victoire", 40], ["nulle", 10], ["defaite", 5]]) {
+    const r = P.enregistrerPartie(e, { resultat, niveau: "entrainement", jour: "2026-11-05" });
+    assert.equal(r.gains.xp, xp + (r.gains.objectif ? 20 : 0));
+    e = r.etat;
+  }
+  e = P.compter(e, { compteurs: { abattages: 5, manches: 10 } }).etat;
+  for (const id of ["observateur", "premier-pot", "pratique"]) assert.ok(P.badges(e).find((b) => b.id === id).obtenu);
+  assert.equal(P.normaliser({ ...e, xp: -1 }).xp, 0);
+  assert.equal(P.normaliser(JSON.parse(JSON.stringify(e))).compteurs.manches, 10);
+});
+
+test("simulation : mille manches avec piles inégales, sans jeton perdu ni créé", () => {
+  for (let i = 0; i < 1000; i++) {
+    const hasard = graine(i);
+    const p = M.creerPartie(hasard, { joueur: 20 + i % 101, ordinateur: 20 + i % 89 });
+    const total = p.joueur.pile + p.ordinateur.pile + p.pot;
+    let tours = 0;
+    while (p.statut === "en-cours") {
+      const du = p.miseHaute - p.joueur.mise;
+      const relancePossible = p.joueur.pile > du && p.ordinateur.pile >= du + 20;
+      M.agir(p, relancePossible && hasard() > .5 ? "relancer" : du ? "suivre" : "parole", hasard);
+      assert.ok(p.joueur.pile >= 0 && p.ordinateur.pile >= 0);
+      assert.equal(p.joueur.pile + p.ordinateur.pile + (p.statut === "en-cours" ? p.pot : 0), total, `manche ${i}`);
+      assert.ok(++tours <= 4);
+    }
   }
 });

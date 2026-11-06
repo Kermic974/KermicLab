@@ -35,13 +35,13 @@ const VueAcademie = (() => {
    * - adaptateurs : { type: (outils) => ({ element, demarrer(exo), consigne?(exo), indice(exo), arreter?() }) }
    *   où outils = { reussir(), erreur(message?), retour(texte, classe) }
    */
-  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal }) {
+  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal, apresRestauration = () => {} }) {
     const parcours = P.parcours;
     let etat = P.normaliser(stockage.lire(cle));
     let session = null, ex = null, confirmationEffacement = false;
     const sauver = () => { stockage.ecrire(cle, etat); publier(); };
     const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
-      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); },
+      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); apresRestauration(); },
       resumer() {
         z.stockage.hidden = true;
         const lecons = parcours.grades.flatMap((g) => g.lecons);
