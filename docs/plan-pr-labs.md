@@ -94,7 +94,7 @@ restent légères (une page n'embarque que sa figure).
   (`export function valider(conf, ou, exiger)`).
 - [x] `docs/gabarit.md` § 4 : décrire la nouvelle procédure (un fichier de figure, un fichier de
   validation, une puce de doc, un test).
-- [x] ADR court `docs/decisions/0019-figures-modulaires.md`.
+- [x] ADR court `docs/decisions/0020-figures-modulaires.md`.
 
 **Tests**
 - [x] `tests/unit/gabarit.test.mjs` : une page sans figure ne contient aucun code de figure ; une

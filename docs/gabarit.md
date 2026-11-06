@@ -80,7 +80,7 @@ relecture ; les pages restent autonomes, sans ressource externe. Distingue repè
 
 ## 4. Ajouter un composant
 
-**Nouvelle figure** (ADR 0019) : chaque figure est un fichier à part, inséré par le build dans le moteur des seules pages qui l'utilisent.
+**Nouvelle figure** (ADR 0020) : chaque figure est un fichier à part, inséré par le build dans le moteur des seules pages qui l'utilisent.
 
 1. `gabarit/figures/<type>.js` : `FIGURES.<type> = function <type>(conf) { … };`, qui renvoie l'élément de la figure. Les outils du moteur (`h`, `s`, `riche`, `paragraphe`, `nombreFr`, `exact`, `pgcd`, `curseur`, `tuile`) sont disponibles. Le type est découvert automatiquement.
 2. Si les paramètres ont des contraintes : `scripts/lib/figures/<type>.mjs`, qui exporte `valider(conf, ou, { exiger, texteNonVide })`.

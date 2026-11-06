@@ -1,4 +1,4 @@
-# ADR 0019 — Figures du gabarit modulaires : une page n'embarque que sa figure
+# ADR 0020 — Figures du gabarit modulaires : une page n'embarque que sa figure
 
 - Date : 2026-11-06 — Statut : **proposé** (à valider par le propriétaire)
 - Contexte : toutes les figures interactives du gabarit des notions (ADR 0011) vivaient dans l'objet `FIGURES` de

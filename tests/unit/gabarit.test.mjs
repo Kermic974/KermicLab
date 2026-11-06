@@ -116,7 +116,7 @@ test("gabarit : la page générée respecte le contrat et neutralise le HTML du 
   await assert.rejects(genererPage({ fiche: { ...fiche, date: undefined }, contenu }), /« date »/);
 });
 
-test("gabarit : une page n'embarque que sa propre figure (figures modulaires, ADR 0019)", async () => {
+test("gabarit : une page n'embarque que sa propre figure (figures modulaires, ADR 0020)", async () => {
   const types = (await readdir(`${racine}gabarit/figures`)).filter((f) => f.endsWith(".js")).map((f) => f.slice(0, -3)).sort();
   assert.deepEqual(TYPES_FIGURE, types, "les types de figure sont découverts dans gabarit/figures/");
   const moteur = await readFile(`${racine}gabarit/moteur.js`, "utf8");
