@@ -385,8 +385,10 @@ async function traiterIdee(requete, env, ctx) {
   }
   ctx.waitUntil(journaliser(env, { type: "idee", langue, detail: contexte.page ?? null, routage: cadrage ? "cadrage-ia" : null }));
   try {
+    const sujetBrut = cadrage?.titre ?? `${contexte.page ?? "site"} ${new Date().toISOString().slice(0, 16)}`;
+    const sujet = sujetBrut.replace(/@/g, "@\u200B");
     await creerOuCommenterIssue(env, {
-      label: "idee", sujet: cadrage?.titre ?? `${contexte.page ?? "site"} ${new Date().toISOString().slice(0, 16)}`,
+      label: "idee", sujet,
       corps: corpsIdee({ message, langue, contexte, cadrage }),
       // Une idée au même titre devient un commentaire : il garde la soumission complète (texte, contexte, cadrage).
       commentaire: `Nouvelle soumission sur ce sujet.\n\n${corpsIdee({ message, langue, contexte, cadrage })}`
