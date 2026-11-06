@@ -15,3 +15,13 @@
 - Limites : la validation ne prouve pas l'exactitude d'un fait généré ; l'ancrage sur le catalogue et le signalement réduisent le risque, une relecture pédagogique reste nécessaire. Le format exact de réponse du binding pour un alias (`choices[0].message.content` ou `response`) est géré dans les deux cas mais doit être vérifié en production. Supprimer le cookie crée une nouvelle session et donc un nouveau quota (comme ADR 0016).
 - English summary: the quick challenge now asks the AI Gateway model alias `custom/haiku` (through `kermiclab-gateway`, JSON Schema, pseudonymized, no cache/logs) for 5 challenges on catalogue topics and formats drawn at random by the server. Only server-side catalogue excerpts are sent. Each challenge is strictly validated and moderated; invalid ones are replaced by the fixed question bank, which also serves when AI is off, unconsented, over quota or failing. A separate D1 quota allows `DEFI_GENERATIONS_JOUR` (default 3) generations per 24-hour session; users can lower it in Settings. An R2 bank of validated challenges is planned for phase 2.
 - Références : [Model aliases](https://developers.cloudflare.com/ai-gateway/features/routing/model-aliases/), [binding Workers](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/), ADR 0016.
+
+## Complément — repli Workers AI et raison affichée (2026-11-06)
+
+En production, l'alias `custom/haiku` a été rejeté en HTTP 402 (`payment_defaulted` : aucun crédit de facturation unifiée ni clé fournisseur sur la gateway). Les élèves voyaient alors les questions fixes sans explication. Décisions :
+
+1. Si l'alias lève une erreur ou ne produit aucun défi valide, le même lot (mêmes tirages, même prompt, même schéma) est demandé à Workers AI (`MODELE_WORKERS_AI`, Llama 3.3, binding sans clé), comme pour le tuteur (ADR 0016). Les deux essais comptent pour une seule génération du quota. Les métadonnées `llm` indiquent le fournisseur réellement utilisé, `repli` et les codes d'échec.
+2. Les échecs sont journalisés par code court (`http-402`, `sortie-invalide`, `refus`), jamais par le message d'erreur, et remontés dans un KPI `erreur` / routage `defi`.
+3. L'écran du défi affiche la raison des questions fixes : IA non activée, défis inédits désactivés dans Configuration, quota du jour atteint, IA indisponible, ou sortie refusée par les vérifications.
+
+English: if the `custom/haiku` alias fails (e.g. HTTP 402, no gateway payment method) or yields no valid challenge, the Worker retries the same batch on Workers AI (one quota unit for both). Failures are logged as short codes only, and the challenge screen explains why fixed questions are shown.
