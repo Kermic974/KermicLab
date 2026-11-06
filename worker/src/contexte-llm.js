@@ -1,12 +1,8 @@
 import { normaliser } from "./texte.js";
+import { harnessSkill } from "./configuration.js";
 
-export const HARNESS_LLM = Object.freeze({
-  nom: "KermicLab",
-  version: "1.0.0",
-  prompt: "tuteur-catalogue-v1",
-  perimetre: "catalogue-kermiclab",
-  acces: "gratuit-provisoire"
-});
+/** Skill du tuteur (version et prompt déclarés dans configuration.js). */
+export const HARNESS_LLM = harnessSkill("tuteur");
 
 const RELANCES = {
   fr: ["Explique plus simplement", "Donne-moi un exemple", "Propose un petit défi"],

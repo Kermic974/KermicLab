@@ -230,6 +230,12 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   assert.match(await texte(page, "#defi-ia-etat"), /Il te reste 3 défi/);
   await page.selectOption("#defi-ia-par-jour", "2");
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:defi:ia-par-jour")), "2");
+  // Paramètres du site centralisés par module (ADR 0019) : alias, budgets min–max et skills.
+  assert.deepEqual(await page.locator("#config-modules .config-module h4").allTextContents(),
+    ["Général", "Tuteur IA et boîte à idées", "Défi express"]);
+  assert.equal(await texte(page, '#config-modules [data-cle="MODELE_DEFI"] dd'), "custom/haiku");
+  assert.equal(await texte(page, '#config-modules [data-cle="LIMITE_TOKENS_SESSION"] dd'), "1000 (200–4000)");
+  assert.match(await texte(page, '#config-modules [data-skill="defi-express"] dd'), /Actif\s+defi-express-v1 · v1\.0\.0/);
 
   await page.click(".barre-laterale .nav-bouton[data-nav=defi]");
   await page.locator("#defi-question").waitFor();
