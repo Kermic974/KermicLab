@@ -28,7 +28,7 @@ const definitions = {
       ["profil", "#profil", "Configuration : interrupteur d'utilisation de l'IA"],
       ["profil-dialogue", "", "Profil : cliquer sur la carte du profil ou l'avatar mobile"],
       ["support", "", "Support : cliquer sur Signaler un problème"],
-      ["comptes", null, "Compte et consentement : accès actuellement masqué"]
+      ["comptes", null, "Espace famille et type de profil : accès masqué tant que connexionActive vaut false"]
     ]
   },
   "notion.html": {

@@ -15,7 +15,7 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 | Worker : `/auth/login`, `/auth/callback`, `/auth/me`, `/auth/logout` (Google, Microsoft, PKCE, `state`) | Présent, non utilisé |
 | Worker : `/api/eleves` (GET, POST), `/api/progres` (GET, POST) | Présent, sans validation ni consentement |
 | Schéma `worker/schema-comptes.sql` | Présent, non appliqué en production |
-| Interface : dialogues « Mon compte » et « Consentement » | Provisoires, masqués (`connexionActive = false` dans `dist/config.json`) |
+| Interface : Espace famille `#famille`, type de profil, formulaire enfant avec consentement | PR ouverte (remplace les dialogues provisoires « Mon compte » et « Consentement ») ; masquée tant que `connexionActive = false` |
 
 ## Constats de l'audit
 
@@ -34,7 +34,7 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 | Étape | Contenu | Statut |
 |---|---|---|
 | 1 | ADR 0017, ce plan, actions manuelles | PR ouverte |
-| 2 | Interface : `web/comptes.js` (logique pure), Espace famille `#famille`, bloc « Type de profil », formulaire enfant et consentement, i18n, `/auth/me` seulement si `connexionActive` | À faire |
+| 2 | Interface : `web/comptes.js` (logique pure), Espace famille `#famille`, bloc « Type de profil », formulaire enfant et consentement, i18n, `/auth/me` seulement si `connexionActive` | PR ouverte |
 | 3 | Worker : validation et consentement de `/api/eleves`, `DELETE /api/eleves/:id`, plafond de 6 profils, tests | À faire |
 | 4 | Liaison navigateur OAuth (`browser_binding`), `prompt=login` pour revenir à l'Espace famille depuis le mode enfant, tests | À faire |
 | 5 | Domaine API même site, application du schéma D1, secrets OAuth, page de confidentialité, activation | Actions manuelles |

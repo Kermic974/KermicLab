@@ -3,13 +3,14 @@
 // (pseudo, progression) : rien n'est envoyé à Kermiclab (ADR 0012).
 import * as progression from "./progression.js";
 import * as profil from "./profil.js";
+import * as comptes from "./comptes.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
   config: null, langue: "fr", textes: {}, envoiEnCours: false, progres: null, suggestions: [], notions: [],
-  notionCourante: null, groupesFermes: new Set(), compte: null, eleves: [], eleveActif: null,
+  notionCourante: null, groupesFermes: new Set(), compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
   erreurTrophees: false, chargementTrophees: false, ecran: "accueil", llmActif: false, llmDisponible: false
 };
@@ -88,130 +89,200 @@ async function appliquerLangue(langue) {
   etat.cercle?.rafraichir();
   if (etat.ecran === "badges") remplirProgres();
   rafraichirDefiTextes();
+  rafraichirFamille();
 }
 
-/* ---------- Auth & Compte ---------- */
+/* ---------- Comptes famille (ADR 0017) ---------- */
+// Profil local par défaut. Un compte parent (OAuth) est nécessaire pour créer un profil enfant ; rien n'est appelé
+// côté Worker tant que `connexionActive` vaut false.
+
+const connexionActive = () => etat.config?.connexionActive === true;
+const urlApi = (chemin) => `${etat.config.apiUrl}${chemin}`;
+
+function modeFamille() {
+  return comptes.modeCompte({
+    connexionActive: connexionActive(), compte: etat.compte, enfants: etat.enfants,
+    enfantActifId: lireCle(stockage(), comptes.CLE_ENFANT_ACTIF)
+  });
+}
 
 async function verifierConnexion() {
+  if (!connexionActive()) return;
+  etat.familleChargee = false;
   try {
-    const r = await fetch(`${etat.config.apiUrl}/auth/me`, { credentials: "include" });
+    const r = await fetch(urlApi("/auth/me"), { credentials: "include" });
+    const data = r.ok ? await r.json() : null;
+    etat.compte = data?.connecte ? data.compte : null;
+    if (etat.compte) await chargerEnfants();
+    etat.familleErreur = false;
+  } catch {
+    etat.compte = null;
+    etat.familleErreur = true;
+  }
+  etat.familleChargee = true;
+  rafraichirFamille();
+  const actif = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
+  if (actif) await chargerProgressionDistante(actif.id);
+}
+
+async function chargerEnfants() {
+  const r = await fetch(urlApi("/api/eleves"), { credentials: "include" });
+  if (!r.ok) throw new Error(`eleves ${r.status}`);
+  etat.enfants = comptes.normaliserEnfants(await r.json());
+}
+
+function rafraichirFamille() {
+  const actif = connexionActive();
+  $("#entree-famille").hidden = !actif;
+  $("#type-profil").hidden = !actif;
+  if (!actif) return;
+  const mode = modeFamille();
+  const enfant = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
+  $("#type-profil-nom").textContent = t(comptes.cleTypeProfil(mode), { prenom: enfant?.prenom_affiche ?? "" });
+  $("#type-profil-aide").textContent = t(comptes.cleAideProfil(mode));
+  $("#famille-etat").textContent = !etat.familleChargee ? t("familleChargement") : etat.familleErreur ? t("familleErreur") : "";
+  $("#famille-invite").hidden = !etat.familleChargee || mode !== "local";
+  $("#famille-parent").hidden = mode !== "parent";
+  $("#famille-enfant").hidden = mode !== "enfant";
+  if (mode === "enfant") $("#famille-enfant-texte").textContent = t("familleModeEnfant", { prenom: enfant.prenom_affiche });
+  if (mode === "parent") rendreEnfants();
+}
+
+function rendreEnfants() {
+  const liste = $("#famille-enfants");
+  liste.replaceChildren(...etat.enfants.map((e) => {
+    const li = element("li", { classe: "famille-enfant" });
+    const nom = element("span", { classe: "famille-enfant-nom" });
+    nom.append(element("strong", { texte: e.prenom_affiche }));
+    if (e.age_tranche) nom.append(element("span", { classe: "doux petit", cle: `tranche_${e.age_tranche}` }));
+    const utiliser = element("button", { classe: "bouton", cle: "enfantUtiliser", attributs: { type: "button" } });
+    utiliser.addEventListener("click", () => utiliserEnfant(e));
+    const supprimer = element("button", { classe: "danger", cle: "enfantSupprimer", attributs: { type: "button" } });
+    supprimer.addEventListener("click", () => supprimerEnfant(e, supprimer));
+    li.append(nom, utiliser, supprimer);
+    return li;
+  }));
+  $("#famille-vide").hidden = etat.enfants.length > 0;
+  const plein = etat.enfants.length >= comptes.MAX_ENFANTS;
+  $("#famille-ajout").hidden = plein;
+  $("#famille-etat").textContent = plein ? t("familleQuota", { n: comptes.MAX_ENFANTS }) : $("#famille-etat").textContent;
+  const local = etat.progres && (etat.progres.questions > 0 || Object.keys(etat.progres.notions ?? {}).length > 0);
+  $("#enfant-reprise-ligne").hidden = !local;
+  $("#enfant-reprise-texte").textContent = t("enfantReprise", { pseudo: etat.pseudo ?? t("anonyme") });
+}
+
+async function utiliserEnfant(enfant, { reprendre = false } = {}) {
+  ecrireCle(stockage(), comptes.CLE_ENFANT_ACTIF, enfant.id);
+  if (reprendre) await synchroniserProgression();
+  else await chargerProgressionDistante(enfant.id);
+  rafraichirFamille();
+  notifier(t("familleModeEnfant", { prenom: enfant.prenom_affiche }), "👧");
+}
+
+async function supprimerEnfant(enfant, bouton) {
+  // Confirmation en deux temps, comme l'effacement des données locales.
+  if (bouton.dataset.confirmer !== "1") {
+    bouton.dataset.confirmer = "1";
+    bouton.textContent = t("enfantSupprimerConfirmer", { prenom: enfant.prenom_affiche });
+    return;
+  }
+  try {
+    const r = await fetch(urlApi(`/api/eleves/${encodeURIComponent(enfant.id)}`), { method: "DELETE", credentials: "include" });
+    if (!r.ok) throw new Error(`suppression ${r.status}`);
+    if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF) === enfant.id) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
+    await chargerEnfants();
+    rafraichirFamille();
+    notifier(t("enfantSupprime"), "🧹");
+  } catch {
+    $("#famille-etat").textContent = t("familleErreur");
+  }
+}
+
+function erreursEnfant(erreurs = {}) {
+  const prenom = $("#enfant-prenom");
+  prenom.setAttribute("aria-invalid", String(!!erreurs.prenom));
+  $("#enfant-prenom-erreur").textContent = erreurs.prenom ? messageErreurPseudo(erreurs.prenom) : "";
+  $("#enfant-tranche-erreur").textContent = erreurs.tranche ? t("enfantTrancheErreur") : "";
+  $("#enfant-consentement-erreur").textContent = erreurs.consentement ? t("consentementErreur") : "";
+  $("#enfant-erreur").textContent = erreurs.quota ? t("familleQuota", { n: comptes.MAX_ENFANTS }) : erreurs.reseau ? t("familleErreur") : "";
+}
+
+async function creerEnfant(e) {
+  e.preventDefault();
+  const r = comptes.validerEnfant({
+    prenom: $("#enfant-prenom").value,
+    tranche: document.querySelector("input[name=enfant-tranche]:checked")?.value,
+    consentement: $("#enfant-consentement").checked
+  }, etat.enfants.length, profil.validerPseudo);
+  erreursEnfant(r.ok ? {} : r.erreurs);
+  if (!r.ok) {
+    if (r.erreurs.prenom) $("#enfant-prenom").focus();
+    return;
+  }
+  const reprendre = !$("#enfant-reprise-ligne").hidden && $("#enfant-reprise").checked;
+  try {
+    const reponse = await fetch(urlApi("/api/eleves"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify(r.enfant)
+    });
+    if (!reponse.ok) throw new Error(`creation ${reponse.status}`);
+    const { id } = await reponse.json();
+    await chargerEnfants();
+    $("#formulaire-enfant").reset();
+    $("#famille-ajout").open = false;
+    notifier(t("enfantCree", { prenom: r.enfant.prenom_affiche }), "🎉");
+    const cree = etat.enfants.find((x) => x.id === id);
+    if (reprendre && cree) await utiliserEnfant(cree, { reprendre: true });
+    else rafraichirFamille();
+  } catch {
+    erreursEnfant({ reseau: true });
+  }
+}
+
+async function chargerProgressionDistante(enfantId) {
+  try {
+    const r = await fetch(urlApi(`/api/progres?eleveId=${encodeURIComponent(enfantId)}`), { credentials: "include" });
     if (!r.ok) return;
-    const data = await r.json();
-    if (data.connecte) {
-      etat.compte = data.compte;
-      await chargerEleves();
-      mettreAJourUICompte();
-    }
-  } catch (e) {
-    console.error("auth", e);
-  }
-}
-
-function mettreAJourUICompte() {
-  const connecte = !!etat.compte;
-  $("#se-connecter").hidden = connecte;
-  $("#mon-compte").hidden = !connecte;
-  $("#compte-connecte").hidden = !connecte;
-  $("#compte-non-connecte").hidden = connecte;
-}
-
-async function chargerEleves() {
-  if (!etat.compte) return;
-  const r = await fetch(`${etat.config.apiUrl}/api/eleves`, { credentials: "include" });
-  if (r.ok) {
-    etat.eleves = await r.json();
-    afficherEleves();
-  }
-}
-
-function afficherEleves() {
-  const conteneur = $("#liste-eleves");
-  if (!conteneur) return;
-  conteneur.replaceChildren();
-  for (const e of etat.eleves) {
-    const btn = element("button", { classe: "eleve", texte: e.prenom_affiche, attributs: { type: "button" } });
-    btn.addEventListener("click", () => selectionnerEleve(e));
-    conteneur.append(btn);
-  }
-}
-
-function selectionnerEleve(eleve) {
-  etat.eleveActif = eleve;
-  chargerProgressionDistante(eleve.id);
-  $("#compte").close();
-}
-
-async function chargerProgressionDistante(eleveId) {
-  const r = await fetch(`${etat.config.apiUrl}/api/progres?eleveId=${eleveId}`, { credentials: "include" });
-  if (r.ok) {
-    const data = await r.json();
-    // Fusion simple : les notions distantes prennent le dessus
+    // Fusion simple : les notions distantes prennent le dessus.
     const notions = {};
-    for (const row of data) {
-      notions[row.notion_id] = { score: row.score, etoiles: row.etoiles };
-    }
+    for (const ligne of await r.json()) notions[ligne.notion_id] = { score: ligne.score, etoiles: ligne.etoiles };
     etat.progres = { ...etat.progres, notions: { ...(etat.progres.notions || {}), ...notions } };
     progression.sauver(stockage(), etat.progres);
     rafraichirPastille();
-  }
+  } catch { /* hors ligne : la progression locale reste utilisable */ }
 }
 
 async function synchroniserProgression() {
-  if (!etat.eleveActif || !etat.progres) return;
-  await fetch(`${etat.config.apiUrl}/api/progres`, {
-    method: "POST",
-    credentials: "include",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      eleveId: etat.eleveActif.id,
-      progres: etat.progres
-    })
-  });
+  const enfant = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
+  if (!connexionActive() || !etat.compte || !enfant || !etat.progres) return;
+  try {
+    await fetch(urlApi("/api/progres"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ eleveId: enfant.id, progres: etat.progres })
+    });
+  } catch { /* hors ligne : nouvel essai à la prochaine progression */ }
 }
 
-function brancherAuth() {
-  $("#se-connecter")?.addEventListener("click", () => $("#compte").showModal());
-  $("#mon-compte")?.addEventListener("click", (e) => { e.preventDefault(); $("#compte").showModal(); });
+/** Fin de session parent : en mode enfant, revenir à l'Espace famille demande une nouvelle connexion du parent. */
+async function deconnecterParent() {
+  try { await fetch(urlApi("/auth/logout"), { method: "POST", credentials: "include" }); } catch { /* session déjà close */ }
+  effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
+  etat.compte = null;
+  etat.enfants = [];
+  rafraichirFamille();
+}
 
-  $("#login-google")?.addEventListener("click", () => {
-    window.location.href = `${etat.config.apiUrl}/auth/login?provider=google`;
-  });
-  $("#login-microsoft")?.addEventListener("click", () => {
-    window.location.href = `${etat.config.apiUrl}/auth/login?provider=microsoft`;
-  });
-
-  $("#deconnexion")?.addEventListener("click", async () => {
-    await fetch(`${etat.config.apiUrl}/auth/logout`, { method: "POST", credentials: "include" });
-    etat.compte = null;
-    etat.eleves = [];
-    etat.eleveActif = null;
-    mettreAJourUICompte();
-    $("#compte").close();
-    location.reload();
-  });
-
-  $("#ajouter-eleve")?.addEventListener("click", () => {
-    $("#consentement").showModal();
-  });
-
-  $("#valider-consentement")?.addEventListener("click", async (e) => {
-    if (!$("#consent-check").checked) return;
-    e.preventDefault();
-    $("#consentement").close();
-    const prenom = prompt("Prénom ou surnom de l’élève :");
-    if (!prenom) return;
-    const r = await fetch(`${etat.config.apiUrl}/api/eleves`, {
-      method: "POST",
-      credentials: "include",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ prenom_affiche: prenom, age_tranche: "11-13" })
-    });
-    if (r.ok) await chargerEleves();
-  });
-
-  $("#annuler-consentement")?.addEventListener("click", () => $("#consentement").close());
-  brancherDialogue($("#compte"), $("#fermer-compte"));
-  brancherDialogue($("#consentement"), $("#annuler-consentement"));
+function brancherFamille() {
+  if (!connexionActive()) return;
+  ECRANS.push("famille");
+  const connecter = (fournisseur) => { window.location.href = urlApi(`/auth/login?provider=${fournisseur}`); };
+  $("#connexion-google").addEventListener("click", () => connecter("google"));
+  $("#connexion-microsoft").addEventListener("click", () => connecter("microsoft"));
+  $("#deconnexion").addEventListener("click", deconnecterParent);
+  $("#quitter-mode-enfant").addEventListener("click", deconnecterParent);
+  $("#formulaire-enfant").addEventListener("submit", creerEnfant);
+  $("#ouvrir-famille").addEventListener("click", () => { $("#dialogue-profil").close(); naviguer("famille"); });
+  rafraichirFamille();
 }
 
 /* ---------- Construction du fil ---------- */
@@ -485,8 +556,8 @@ function appliquerResultat(resultat) {
   if (resultat.nouvelleNotion) notifier(t("nouvelleNotion"), "🧩");
   for (const b of resultat.nouveaux) notifier(t("badgeDebloque", { nom: t(`badge_${b.id}`) }), b.icone);
   if (resultat.niveauGagne) notifier(t("niveauGagne", { n: progression.niveau(etat.progres).niveau }), "⭐");
-  // Synchronise si un élève est actif
-  if (etat.eleveActif) synchroniserProgression();
+  // Synchronise si un profil enfant est actif sur l'appareil (ADR 0017).
+  void synchroniserProgression();
   if (resultat.nouvelleNotion) rendreCatalogue();
   rafraichirTableau();
 }
@@ -848,7 +919,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#famille"), $("#defi"), $("#progres"));
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -880,9 +951,9 @@ async function demarrer() {
   $("#fermer-chat").addEventListener("click", () => fermerChat({ rendreFocus: true }));
   if (!etat.pseudo) demanderPseudo();
 
-  // Auth
-  await verifierConnexion();
-  brancherAuth();
+  // Comptes famille : rien n'est appelé côté Worker si la connexion est désactivée.
+  brancherFamille();
+  void verifierConnexion();
 
   ajouterBienvenue();
   await chargerCatalogue();
@@ -1112,7 +1183,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre" }[etat.ecran]);
+    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "badges" ? "tropheesIntro" : `${etat.ecran}Intro`);
 }
 
