@@ -145,7 +145,7 @@ export function indicateurs(p, jour = jourLocal()) {
   return {
     xpTotal: p.xp,
     xp30Jours: jours.reduce((total, j) => total + j.xp, 0),
-    joursActifs30Jours: jours.filter((j) => j.q + j.n + j.xp > 0).length,
+    joursActifs30Jours: jours.filter((j) => p.jours?.[j.jour] !== undefined).length,
     meilleureJournee30Jours: Math.max(0, ...jours.map((j) => j.xp))
   };
 }
