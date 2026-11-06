@@ -20,6 +20,8 @@ const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
+const CLE_CAHIERS = "kermiclab:cahiers";
+const TYPES_CAHIERS = ["brouillon", "fiches", "vacances", "exercices"];
 const CLE_LLM = "kermiclab:llm:actif";
 const DEFI_BONNES = [1, 0, 1, 0, 0];
 const CLE_DEFI_IA = "kermiclab:defi:ia-par-jour";
@@ -94,6 +96,7 @@ async function appliquerLangue(langue) {
   if (etat.ecran === "badges") remplirProgres();
   rafraichirDefiTextes();
   rafraichirFamille();
+  rendreCahiers();
 }
 
 /* ---------- Comptes famille (ADR 0017) ---------- */
@@ -1198,6 +1201,7 @@ async function demarrer() {
   });
 
   brancherNavigation();
+  brancherCahiers();
   brancherBulle();
   $("#bascule-theme").addEventListener("click", () => {
     const suivant = themeSombre() ? "light" : "dark";
@@ -1372,12 +1376,14 @@ function initialiserSession() {
 /** Passe du stockage de session au stockage local (ou l'inverse) en déplaçant pseudo et progression. */
 function changerMemoire(active) {
   const ancien = stockage();
+  const cahiers = lireCle(ancien, CLE_CAHIERS);
   if (active) document.cookie = profil.cookieMemoire({ securise: cookieSecurise() });
   else document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
   etat.memoire = active;
-  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE]) effacerCle(ancien, cle);
+  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS]) effacerCle(ancien, cle);
   if (!active) effacerCle(preferences(), progression.CLE_STOCKAGE);
   sauverSession();
+  if (cahiers) ecrireCle(stockage(), CLE_CAHIERS, cahiers);
 }
 
 function sauverSession() {
@@ -1448,7 +1454,7 @@ function brancherProfil() {
     }
     document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
     for (const zone of [preferences(), (() => { try { return window.sessionStorage; } catch { return null; } })()]) {
-      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE]) effacerCle(zone, cle);
+      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS]) effacerCle(zone, cle);
     }
     location.reload();
   });
@@ -1500,7 +1506,7 @@ function rafraichirTheme() {
 
 /* ---------- Navigation ---------- */
 
-const ECRANS = ["accueil", "labs", "jeux", "notions", "progression", "defi", "badges", "profil"];
+const ECRANS = ["accueil", "labs", "jeux", "notions", "cahiers", "progression", "defi", "badges", "profil"];
 /** Anciennes adresses : le tiroir « catalogue » est devenu l'écran « notions ». */
 const ALIAS_ECRANS = { catalogue: "notions" };
 
@@ -1508,7 +1514,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ labs: "navLabs", jeux: "navJeux", notions: "navNotions", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
+    : t({ labs: "navLabs", jeux: "navJeux", notions: "navNotions", cahiers: "navCahiers", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "badges" ? "tropheesIntro" : `${etat.ecran}Intro`);
 }
 
@@ -1560,6 +1566,54 @@ function brancherNavigation() {
   });
 }
 
+function cahiersEnregistres() {
+  try {
+    const cahiers = JSON.parse(lireCle(stockage(), CLE_CAHIERS) ?? "[]");
+    return Array.isArray(cahiers)
+      ? cahiers.filter((c) => c && typeof c.id === "string" && TYPES_CAHIERS.includes(c.type) && typeof c.creeLe === "string" && !Number.isNaN(Date.parse(c.creeLe)))
+      : [];
+  } catch { return []; }
+}
+
+function rendreCahiers() {
+  const liste = $("#liste-cahiers");
+  if (!liste || !etat.textes.titre) return;
+  const cahiers = cahiersEnregistres();
+  liste.replaceChildren(...cahiers.map((cahier) => {
+    const titre = t(`cahier_${cahier.type}`);
+    const carte = element("article", { classe: "carte cahier-enregistre" });
+    const contenu = element("div");
+    contenu.append(
+      element("h4", { texte: titre }),
+      element("p", { classe: "doux petit", texte: new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe)) })
+    );
+    const supprimer = element("button", { classe: "secondaire petit-bouton", cle: "cahierSupprimer", attributs: { type: "button", "data-supprimer-cahier": cahier.id } });
+    supprimer.setAttribute("aria-label", t("cahierSupprimer", { titre }));
+    carte.append(contenu, supprimer);
+    return carte;
+  }));
+  $("#cahiers-vide").hidden = cahiers.length > 0;
+}
+
+function brancherCahiers() {
+  document.querySelectorAll("[data-cahier-type]").forEach((bouton) => bouton.addEventListener("click", () => {
+    const type = bouton.dataset.cahierType;
+    if (!TYPES_CAHIERS.includes(type)) return;
+    const cahiers = cahiersEnregistres();
+    const id = window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`;
+    cahiers.unshift({ id, type, creeLe: new Date().toISOString() });
+    ecrireCle(stockage(), CLE_CAHIERS, JSON.stringify(cahiers));
+    rendreCahiers();
+  }));
+  $("#liste-cahiers").addEventListener("click", (e) => {
+    const bouton = e.target.closest("[data-supprimer-cahier]");
+    if (!bouton) return;
+    const cahiers = cahiersEnregistres().filter((c) => c.id !== bouton.dataset.supprimerCahier);
+    ecrireCle(stockage(), CLE_CAHIERS, JSON.stringify(cahiers));
+    rendreCahiers();
+  });
+}
+
 /* ---------- Tableau de bord : données de la session ---------- */
 
 const notionParId = (id) => etat.notions.find((n) => n.id === id) ?? null;
@@ -1602,6 +1656,7 @@ function rafraichirTableau() {
   rendreReprendre();
   rendreSuggestion();
   rendreMatieresTableau();
+  rendreCahiers();
   rendreSemaine();
   rendreJeux();
   $("#meta-explorer").textContent = etat.notions.length ? t("metaNotions", { n: etat.notions.length }) : "";
@@ -1718,16 +1773,20 @@ function rendreMatieresTableau() {
     const s = statsMatiere(m);
     const etatMatiere = s.vues === 0 ? ["neutre", "aDecouvrir"] : s.pct === 100 ? ["ok", "termine"] : s.pct >= 50 ? ["ok", "bienAvance"] : ["en-cours", "enCours"];
     const carte = element("button", { classe: `matiere-carte ${etatMatiere[0]}`, attributs: { type: "button", "data-matiere-carte": m } });
+    const nom = t(`matiere_${m}`);
+    const entete = element("div", { classe: "matiere-entete" });
+    entete.append(element("span", { classe: "matiere-monogramme", texte: [...nom][0], attributs: { "aria-hidden": "true" } }), element("h3", { texte: nom }));
     const bas = element("div", { classe: "matiere-bas" });
+    const detail = element("div", { classe: "matiere-progression" });
     const pct = element("span", { classe: "pourcent", texte: String(s.pct) });
     pct.append(element("small", { texte: "%" }));
     const pastille = element("span", { classe: `pastille ${etatMatiere[0]}`, cle: etatMatiere[1] });
-    bas.append(pct, pastille);
+    detail.append(element("span", { classe: "compte", texte: t("notionsExplorees", { n: s.vues, m: s.total }) }), pct);
+    bas.append(pastille);
     carte.append(
-      element("span", { classe: "compte", texte: t("notionsExplorees", { n: s.vues, m: s.total }) }),
-      element("h3", { cle: `matiere_${m}` }), bas, barre(s.pct)
+      entete, detail, barre(s.pct), bas
     );
-    carte.setAttribute("aria-label", `${t(`matiere_${m}`)} : ${t("notionsExplorees", { n: s.vues, m: s.total })}, ${t(etatMatiere[1])}`);
+    carte.setAttribute("aria-label", `${nom} : ${t("notionsExplorees", { n: s.vues, m: s.total })}, ${s.pct} %, ${t(etatMatiere[1])}`);
     carte.addEventListener("click", () => {
       etat.matiere = m;
       ecrireCle(preferences(), CLE_MATIERE, m);

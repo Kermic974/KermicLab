@@ -94,12 +94,52 @@ test("tableau de bord : reprise, suggestion, matières et semaine calculées à 
   assert.doesNotMatch(await texte(page, "#suggestion .encart"), /Le cercle trigonométrique/, "une notion déjà vue n'est plus suggérée");
   const maths = page.locator("[data-matiere-carte=mathematiques]");
   assert.match(await maths.textContent(), /1 \/ 4 notions explorées.*25.*En cours/s);
+  assert.equal(await maths.locator(".matiere-monogramme").textContent(), "M");
+  assert.deepEqual(await maths.locator(":scope > *").evaluateAll((elements) => elements.map((e) => e.classList[0])),
+    ["matiere-entete", "matiere-progression", "barre", "matiere-bas"]);
   assert.match(await texte(page, "#chiffres-semaine"), /Questions posées0Notions découvertes1XP gagnés\+25 XP/);
   assert.equal(await page.locator("#graphique-semaine .baton.aujourdhui").count(), 1);
   assert.equal(await page.locator("#semaine-vide").isVisible(), false);
   // Une carte de matière ouvre le catalogue sur cette matière.
   await page.locator("[data-matiere-carte=physique-chimie]").click();
   await page.locator("#catalogue .notion", { hasText: "Circuits électriques" }).waitFor({ state: "visible" });
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la session", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  await choisirPseudo(page, "Nina");
+  await page.locator(".barre-laterale [data-nav=cahiers]").click();
+  await page.locator("#ecran-cahiers").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#cahiers-vide").isVisible(), true);
+
+  for (const type of ["brouillon", "fiches", "vacances"]) {
+    await page.locator(`[data-cahier-type="${type}"]`).click();
+  }
+  assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 3);
+  assert.deepEqual(await page.locator("#liste-cahiers h4").allTextContents(), ["Cahier de vacances", "Fiches de notes", "Brouillon"]);
+  assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:cahiers")).length), 3);
+  assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:cahiers")), null, "pas de persistance locale sans consentement");
+  await page.click(".barre-laterale .profil-carte");
+  await page.check("#profil-memoriser");
+  assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem("kermiclab:cahiers")).length), 3);
+  assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:cahiers")), null);
+  await page.uncheck("#profil-memoriser");
+  assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:cahiers")).length), 3);
+  assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:cahiers")), null);
+  await page.click("#fermer-profil");
+
+  await page.reload();
+  await page.locator("#liste-cahiers .cahier-enregistre").first().waitFor();
+  assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 3);
+  await page.getByRole("button", { name: "Supprimer Cahier de vacances" }).click();
+  assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 2);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator(".nav-mobile [data-nav=cahiers]").click();
+  assert.equal(await page.locator("#ecran-cahiers").isVisible(), true);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
