@@ -171,6 +171,25 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .jeu-carte { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
 .jeu-carte h3 { overflow-wrap: anywhere; }
 .jeu-carte .bouton { margin-top: auto; }
+.jeux-accueil { padding: clamp(18px, 2.5vw, 28px); }
+.jeux-accueil .tete-section { margin-bottom: 14px; }
+.carrousel-jeux { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; gap: 10px; }
+.carrousel-jeux-controle { display: grid; place-items: center; width: 42px; padding: 0; border: 1px solid var(--bord); background: var(--surface-2); color: var(--texte-2); }
+.carrousel-jeux-controle:hover { background: var(--accent-doux); color: var(--accent-doux-texte); }
+.carrousel-jeux-controle:disabled { opacity: .4; cursor: default; }
+#jeux-accueil-precedent .ico { transform: rotate(180deg); }
+.carrousel-jeux-carte { display: flex; min-width: 0; min-height: 112px; align-items: center; gap: 16px; padding: 18px 22px; background: linear-gradient(110deg, var(--accent-doux), var(--surface)); color: var(--texte); text-align: left; }
+.carrousel-jeux-carte:hover { background: linear-gradient(110deg, var(--accent-doux), var(--surface-2)); }
+.carrousel-jeux-icone { display: grid; width: 56px; height: 56px; flex: none; place-items: center; border-radius: 16px; background: var(--accent); color: var(--accent-texte); }
+.carrousel-jeux-icone .ico { width: 30px; height: 30px; }
+.carrousel-jeux-texte { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 5px; }
+.carrousel-jeux-texte strong { font-size: 19px; overflow-wrap: anywhere; }
+.carrousel-jeux-texte > span { color: var(--doux); font-size: 13px; font-weight: 500; }
+.carrousel-jeux-fleche { color: var(--accent); }
+.carrousel-jeux-pied { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; color: var(--doux); font-size: 12px; }
+.carrousel-jeux-points { display: flex; flex-wrap: wrap; gap: 6px; }
+.carrousel-jeux-point { width: 10px; height: 10px; min-height: 0; padding: 0; border-radius: 50%; background: var(--bord-fort); }
+.carrousel-jeux-point[aria-pressed="true"] { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-doux); }
 .lab-carte { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
 .lab-carte h3 { overflow-wrap: anywhere; }
 .lab-carte .bouton { margin-top: auto; }
@@ -825,6 +844,14 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .parcours-etapes a { min-height: 76px; flex-direction: column; gap: 4px; padding: 9px 8px; }
   .parcours-etapes small { font-size: 10px; }
   .parcours-action { width: 100%; }
+  .jeux-accueil { padding: 18px; }
+  .carrousel-jeux { gap: 6px; }
+  .carrousel-jeux-controle { width: 36px; }
+  .carrousel-jeux-carte { min-height: 100px; gap: 10px; padding: 14px 12px; }
+  .carrousel-jeux-icone { width: 44px; height: 44px; border-radius: 13px; }
+  .carrousel-jeux-texte strong { font-size: 16px; }
+  .carrousel-jeux-texte > span { font-size: 12px; }
+  .carrousel-jeux-fleche { display: none; }
   .lab-dedie { grid-template-columns: 1fr; }
   .lab-apercu { padding: 24px; }
   .lab-apercu .ico { width: 120px; height: 120px; }
