@@ -50,13 +50,16 @@ l'épreuve des interactions très différentes. Les lots suivants ne démarrent 
 pédagogique et technique ; les idées d'un même domaine peuvent être regroupées si cela évite la
 duplication de composants.
 
+Le découpage en pull requests (ordre, dépendances, critères d'acceptation) est dans
+[le plan des PR des labs](../plan-pr-labs.md).
+
 ## Critères communs et déroulement
 
 Pour chaque lot :
 
 1. Partir d'une fiche existante et définir l'état manipulable, les règles du modèle et les cas limites
    avant de coder. Conserver les exercices et les niveaux déjà utiles.
-2. Ajouter la figure dans `gabarit/moteur.js`, sa validation dans `scripts/lib/gabarit.mjs`, son
+2. Ajouter la figure dans `gabarit/figures/<type>.js`, sa validation dans `scripts/lib/figures/<type>.mjs`, son
    format dans `docs/gabarit.md`, puis l'intégrer à `contenu.json`.
 3. Tester le calcul ou les transitions d'état dans les tests unitaires adaptés et vérifier le rendu,
    les interactions et les réponses dans `tests/e2e/notions.test.mjs`.
