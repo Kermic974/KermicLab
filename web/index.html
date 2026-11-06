@@ -77,6 +77,11 @@
 
   <main id="contenu" class="principal" tabindex="-1">
     <div class="enveloppe">
+      <div class="bandeau-demo" id="bandeau-demo" role="status" hidden>
+        <span class="bandeau-demo-pastille" aria-hidden="true" data-i18n="demoPastille"></span>
+        <span data-i18n="demoBandeau"></span>
+        <button type="button" class="secondaire petit-bouton" id="quitter-demo" data-i18n="demoQuitter"></button>
+      </div>
       <header class="entete" id="haut">
         <div class="salut">
           <h1 id="salut" tabindex="-1"></h1>
@@ -394,7 +399,9 @@
       <button type="button" class="bouton" id="connexion-google" data-i18n="connexionGoogle"></button>
       <button type="button" class="bouton" id="connexion-microsoft" data-i18n="connexionMicrosoft"></button>
     </div>
+    <p class="doux petit" id="famille-demo-note" data-i18n="demoInviteNote" hidden></p>
     <p class="note-locale" data-i18n="familleInviteLocal"></p>
+    <button type="button" class="secondaire" id="essayer-demo" data-i18n="demoEssayer"></button>
   </div>
   <div id="famille-parent" hidden>
     <h3 data-i18n="familleEnfantsTitre"></h3>

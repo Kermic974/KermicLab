@@ -4,6 +4,7 @@
 import * as progression from "./progression.js";
 import * as profil from "./profil.js";
 import * as comptes from "./comptes.js";
+import * as demoFamille from "./demo-famille.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 
@@ -96,8 +97,104 @@ async function appliquerLangue(langue) {
 // Profil local par défaut. Un compte parent (OAuth) est nécessaire pour créer un profil enfant ; rien n'est appelé
 // côté Worker tant que `connexionActive` vaut false.
 
-const connexionActive = () => etat.config?.connexionActive === true;
+// Démonstration (« green card ») : `?demo=famille` simule le compte parent et les profils enfants dans le navigateur,
+// sans OAuth ni appel au Worker, pour valider les écrans. Un bandeau la signale ; elle s'arrête en un clic.
+const CLE_DEMO_ACTIVE = "kermiclab:demo-famille:active";
+const demoActive = () => etat.demoFamille === true;
+const connexionActive = () => demoActive() || etat.config?.connexionActive === true;
 const urlApi = (chemin) => `${etat.config.apiUrl}${chemin}`;
+
+function sauverDemo(suivant) {
+  etat.demo = suivant;
+  ecrireCle(sessionPreferences(), demoFamille.CLE_DEMO, JSON.stringify(suivant));
+}
+
+function initialiserDemo() {
+  const demandee = new URLSearchParams(location.search).get("demo") === demoFamille.PARAMETRE_DEMO;
+  if (demandee) ecrireCle(sessionPreferences(), CLE_DEMO_ACTIVE, "1");
+  etat.demoFamille = demandee || lireCle(sessionPreferences(), CLE_DEMO_ACTIVE) === "1";
+  if (etat.demoFamille) etat.demo = demoFamille.lireEtat(lireCle(sessionPreferences(), demoFamille.CLE_DEMO));
+  $("#bandeau-demo").hidden = !etat.demoFamille;
+}
+
+function demarrerDemo() {
+  ecrireCle(sessionPreferences(), CLE_DEMO_ACTIVE, "1");
+  const url = new URL(location.href);
+  url.searchParams.set("demo", demoFamille.PARAMETRE_DEMO);
+  url.hash = "famille";
+  location.assign(url.href);
+}
+
+function quitterDemo() {
+  for (const cle of [CLE_DEMO_ACTIVE, demoFamille.CLE_DEMO]) effacerCle(sessionPreferences(), cle);
+  if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF)?.startsWith("demo-")) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
+  const url = new URL(location.href);
+  url.searchParams.delete("demo");
+  url.hash = "";
+  location.assign(url.href);
+}
+
+/** Accès aux comptes : le Worker, ou le double de démonstration (mêmes formes de réponse). */
+const apiFamille = {
+  async moi() {
+    if (demoActive()) return demoFamille.moi(etat.demo);
+    const r = await fetch(urlApi("/auth/me"), { credentials: "include" });
+    return r.ok ? r.json() : null;
+  },
+  async eleves() {
+    if (demoActive()) return demoFamille.eleves(etat.demo);
+    const r = await fetch(urlApi("/api/eleves"), { credentials: "include" });
+    if (!r.ok) throw new Error(`eleves ${r.status}`);
+    return r.json();
+  },
+  async creer(enfant) {
+    if (demoActive()) { const { etat: suivant, id } = demoFamille.creerEleve(etat.demo, enfant); sauverDemo(suivant); return id; }
+    const r = await fetch(urlApi("/api/eleves"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" }, body: JSON.stringify(enfant)
+    });
+    if (!r.ok) throw new Error(`creation ${r.status}`);
+    return (await r.json()).id;
+  },
+  async supprimer(id) {
+    if (demoActive()) { sauverDemo(demoFamille.supprimerEleve(etat.demo, id)); return; }
+    const r = await fetch(urlApi(`/api/eleves/${encodeURIComponent(id)}`), { method: "DELETE", credentials: "include" });
+    if (!r.ok) throw new Error(`suppression ${r.status}`);
+  },
+  async progres(id) {
+    if (demoActive()) return demoFamille.lireProgres(etat.demo, id);
+    const r = await fetch(urlApi(`/api/progres?eleveId=${encodeURIComponent(id)}`), { credentials: "include" });
+    return r.ok ? r.json() : null;
+  },
+  async sauverProgres(id, progres) {
+    if (demoActive()) { sauverDemo(demoFamille.sauverProgres(etat.demo, id, progres)); return; }
+    await fetch(urlApi("/api/progres"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ eleveId: id, progres })
+    });
+  },
+  async deconnecter() {
+    if (demoActive()) { sauverDemo(demoFamille.deconnecter(etat.demo)); return; }
+    await fetch(urlApi("/auth/logout"), { method: "POST", credentials: "include" });
+  }
+};
+
+/** « Continuer avec Google / Microsoft » : connexion simulée en démonstration, sinon OAuth si le fournisseur est configuré. */
+async function connecterParent(fournisseur) {
+  if (demoActive()) {
+    sauverDemo(demoFamille.connecter(etat.demo, fournisseur));
+    await verifierConnexion();
+    notifier(t("demoConnecte"), "🟢");
+    return;
+  }
+  $("#famille-etat").textContent = t("familleChargement");
+  try {
+    const r = await fetch(urlApi("/auth/fournisseurs"), { cache: "no-store" });
+    const disponibles = r.ok ? await r.json() : {};
+    if (disponibles[fournisseur] === true) { window.location.href = urlApi(`/auth/login?provider=${fournisseur}`); return; }
+  } catch { /* service des comptes injoignable */ }
+  $("#famille-etat").textContent = t("connexionIndisponible");
+  $("#essayer-demo").hidden = false;
+}
 
 function modeFamille() {
   return comptes.modeCompte({
@@ -110,8 +207,7 @@ async function verifierConnexion() {
   if (!connexionActive()) return;
   etat.familleChargee = false;
   try {
-    const r = await fetch(urlApi("/auth/me"), { credentials: "include" });
-    const data = r.ok ? await r.json() : null;
+    const data = await apiFamille.moi();
     etat.compte = data?.connecte ? data.compte : null;
     if (etat.compte) await chargerEnfants();
     etat.familleErreur = false;
@@ -126,9 +222,7 @@ async function verifierConnexion() {
 }
 
 async function chargerEnfants() {
-  const r = await fetch(urlApi("/api/eleves"), { credentials: "include" });
-  if (!r.ok) throw new Error(`eleves ${r.status}`);
-  etat.enfants = comptes.normaliserEnfants(await r.json());
+  etat.enfants = comptes.normaliserEnfants(await apiFamille.eleves());
 }
 
 function rafraichirFamille() {
@@ -142,6 +236,8 @@ function rafraichirFamille() {
   $("#type-profil-aide").textContent = t(comptes.cleAideProfil(mode));
   $("#famille-etat").textContent = !etat.familleChargee ? t("familleChargement") : etat.familleErreur ? t("familleErreur") : "";
   $("#famille-invite").hidden = !etat.familleChargee || mode !== "local";
+  $("#essayer-demo").hidden = demoActive();
+  $("#famille-demo-note").hidden = !demoActive();
   $("#famille-parent").hidden = mode !== "parent";
   $("#famille-enfant").hidden = mode !== "enfant";
   if (mode === "enfant") $("#famille-enfant-texte").textContent = t("familleModeEnfant", { prenom: enfant.prenom_affiche });
@@ -187,8 +283,7 @@ async function supprimerEnfant(enfant, bouton) {
     return;
   }
   try {
-    const r = await fetch(urlApi(`/api/eleves/${encodeURIComponent(enfant.id)}`), { method: "DELETE", credentials: "include" });
-    if (!r.ok) throw new Error(`suppression ${r.status}`);
+    await apiFamille.supprimer(enfant.id);
     if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF) === enfant.id) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
     await chargerEnfants();
     rafraichirFamille();
@@ -221,12 +316,7 @@ async function creerEnfant(e) {
   }
   const reprendre = !$("#enfant-reprise-ligne").hidden && $("#enfant-reprise").checked;
   try {
-    const reponse = await fetch(urlApi("/api/eleves"), {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
-      body: JSON.stringify(r.enfant)
-    });
-    if (!reponse.ok) throw new Error(`creation ${reponse.status}`);
-    const { id } = await reponse.json();
+    const id = await apiFamille.creer(r.enfant);
     await chargerEnfants();
     $("#formulaire-enfant").reset();
     $("#famille-ajout").open = false;
@@ -241,11 +331,11 @@ async function creerEnfant(e) {
 
 async function chargerProgressionDistante(enfantId) {
   try {
-    const r = await fetch(urlApi(`/api/progres?eleveId=${encodeURIComponent(enfantId)}`), { credentials: "include" });
-    if (!r.ok) return;
+    const lignes = await apiFamille.progres(enfantId);
+    if (!Array.isArray(lignes)) return;
     // Fusion simple : les notions distantes prennent le dessus.
     const notions = {};
-    for (const ligne of await r.json()) notions[ligne.notion_id] = { score: ligne.score, etoiles: ligne.etoiles };
+    for (const ligne of lignes) notions[ligne.notion_id] = { score: ligne.score, etoiles: ligne.etoiles };
     etat.progres = { ...etat.progres, notions: { ...(etat.progres.notions || {}), ...notions } };
     progression.sauver(stockage(), etat.progres);
     rafraichirPastille();
@@ -256,16 +346,13 @@ async function synchroniserProgression() {
   const enfant = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
   if (!connexionActive() || !etat.compte || !enfant || !etat.progres) return;
   try {
-    await fetch(urlApi("/api/progres"), {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ eleveId: enfant.id, progres: etat.progres })
-    });
+    await apiFamille.sauverProgres(enfant.id, etat.progres);
   } catch { /* hors ligne : nouvel essai à la prochaine progression */ }
 }
 
 /** Fin de session parent : en mode enfant, revenir à l'Espace famille demande une nouvelle connexion du parent. */
 async function deconnecterParent() {
-  try { await fetch(urlApi("/auth/logout"), { method: "POST", credentials: "include" }); } catch { /* session déjà close */ }
+  try { await apiFamille.deconnecter(); } catch { /* session déjà close */ }
   effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
   etat.compte = null;
   etat.enfants = [];
@@ -275,9 +362,9 @@ async function deconnecterParent() {
 function brancherFamille() {
   if (!connexionActive()) return;
   ECRANS.push("famille");
-  const connecter = (fournisseur) => { window.location.href = urlApi(`/auth/login?provider=${fournisseur}`); };
-  $("#connexion-google").addEventListener("click", () => connecter("google"));
-  $("#connexion-microsoft").addEventListener("click", () => connecter("microsoft"));
+  $("#connexion-google").addEventListener("click", () => connecterParent("google"));
+  $("#connexion-microsoft").addEventListener("click", () => connecterParent("microsoft"));
+  $("#essayer-demo").addEventListener("click", demarrerDemo);
   $("#deconnexion").addEventListener("click", deconnecterParent);
   $("#quitter-mode-enfant").addEventListener("click", deconnecterParent);
   $("#formulaire-enfant").addEventListener("submit", creerEnfant);
@@ -982,6 +1069,8 @@ async function demarrer() {
   if (!etat.pseudo) demanderPseudo();
 
   // Comptes famille : rien n'est appelé côté Worker si la connexion est désactivée.
+  initialiserDemo();
+  $("#quitter-demo").addEventListener("click", quitterDemo);
   brancherFamille();
   void verifierConnexion();
 

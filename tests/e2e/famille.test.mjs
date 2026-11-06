@@ -105,3 +105,52 @@ test("parent connecté : création d'un profil enfant avec consentement obligato
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("démonstration (green card) : parcours parent → enfant sans OAuth ni appel au Worker, puis sortie", async () => {
+  const { page, contexte, erreurs, appels } = await demarrer();
+  await page.goto(`${serveur.url}/?demo=famille#famille`);
+  const bandeau = page.locator("#bandeau-demo");
+  await bandeau.waitFor({ state: "visible" });
+  assert.match(await bandeau.textContent(), /rien n’est envoyé au serveur/);
+  await page.locator("#famille-invite").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#essayer-demo").isVisible(), false);
+  assert.equal(await page.locator("#famille-demo-note").isVisible(), true);
+  await page.click("#connexion-google");
+  await page.locator("#famille-parent").waitFor({ state: "visible" });
+  await page.locator("#famille-ajout summary").click();
+  await page.fill("#enfant-prenom", "Lou");
+  await page.check("input[name=enfant-tranche][value='6-10']");
+  await page.check("#enfant-consentement");
+  await page.click("#creer-enfant");
+  await page.locator("#famille-enfants li", { hasText: "Lou" }).waitFor();
+  await page.reload();
+  await page.locator("#famille-enfants li", { hasText: "Lou" }).waitFor();
+  assert.equal(await bandeau.isVisible(), true, "la démo survit au rechargement de l'onglet");
+  await page.locator("#famille-enfants li", { hasText: "Lou" }).locator("button.bouton").click();
+  await page.locator("#famille-enfant").waitFor({ state: "visible" });
+  assert.match(await page.locator("#famille-enfant-texte").textContent(), /Lou/);
+  await page.click("#quitter-mode-enfant");
+  await page.locator("#famille-invite").waitFor({ state: "visible" });
+  await page.click("#quitter-demo");
+  await page.waitForURL((url) => !url.search.includes("demo"));
+  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  assert.equal(await bandeau.isVisible(), false);
+  assert.equal(await page.locator("#entree-famille").isVisible(), false, "hors démo, l'Espace famille reste fermé (connexionActive = false)");
+  assert.deepEqual(appels.filter((a) => !a.endsWith("/auth/me")), [], "aucun appel aux comptes pendant la démo");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("connexion réelle : fournisseur non configuré → message et proposition de démonstration, sans redirection", async () => {
+  const { page, contexte } = await demarrer({ connexion: true });
+  await page.route(`${api}/auth/fournisseurs`, (r) => r.fulfill({ contentType: "application/json", headers: cors(), body: JSON.stringify({ google: false, microsoft: false }) }));
+  await page.goto(`${serveur.url}/#famille`);
+  await page.locator("#famille-invite").waitFor({ state: "visible" });
+  await page.click("#connexion-google");
+  await page.locator("#famille-etat", { hasText: "pas encore ouverte" }).waitFor();
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.click("#essayer-demo");
+  await page.locator("#bandeau-demo").waitFor({ state: "visible" });
+  assert.match(page.url(), /demo=famille/);
+  await contexte.close();
+});
