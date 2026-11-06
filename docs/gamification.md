@@ -36,9 +36,9 @@ compteurs, des identifiants de leçons et des dates.
 
 ## Détail
 
-### Tableau de bord : « Mes trophées »
+### Tableau de bord : « Mes badges » (écran Progression)
 
-La rubrique « Mes trophées » rassemble les succès d'exploration et du défi express, les étoiles des notions
+La section « Mes badges » de l'écran Progression (ex-« Mes trophées », voir aussi `docs/progression.md`) rassemble les succès d'exploration et du défi express, les étoiles des notions
 du gabarit commun, les deux objectifs du mini-lab du cercle (trois angles manipulés et `sin(θ) = 1`),
 le record du Lab `trigo-cercle`, ainsi que les parcours des jeux. L'Académie commune
 (Échecs, Démineur, Belote, Mots fléchés, Pendu, Poker Texas Hold'em) remonte XP, niveau, étoiles, leçons, grades, série,
@@ -47,12 +47,11 @@ révisions, victoires et tous ses badges avec leur avancement. Sudoku remonte se
 Les jeux sans adaptateur ne déclarent aucun résultat ; un état vide est affiché, sans inventer de réussite.
 Les XP ne sont pas additionnés : les règles et les niveaux diffèrent selon les parcours.
 
-La collection est consultable **depuis l'accueil, avant toute ouverture d'un module** : le build produit
-`dist/trophees.json` à partir des contenus et des moteurs de progression du catalogue. Ce fichier public ne contient
-que les objectifs disponibles et leurs états initiaux, jamais de données utilisateur. À l'ouverture de « Mes trophées »,
-le tableau de bord affiche cette collection puis y superpose les instantanés déjà conservés dans le navigateur.
-Un trophée sans résultat est présenté comme à débloquer ; consulter la collection ne crée ni XP, ni étoile,
-ni notion explorée et ne lance aucun jeu en arrière-plan. Un échec de chargement est signalé et peut être réessayé.
+**Divulgation progressive** (ADR 0021) : seuls les modules réellement lancés sur l'appareil apparaissent, avec
+leurs propres objectifs ; aucun module jamais ouvert, aucune grille de badges grisés. Les badges d'exploration sont
+présentés en « Obtenus » puis « À portée » (les deux plus avancés, avec leur progression) ; s'y ajoute « Assidu »
+(1 h de temps actif). Le build produit toujours `dist/trophees.json` (objectifs disponibles, sans donnée
+utilisateur), mais le tableau de bord ne le charge plus : consulter Progression ne lance aucune page ni requête.
 
 Le pont autonome `gabarit/jeux/trophees.js`, inclus au build avec ses hashes CSP, échange seulement avec le parent
 par `postMessage`. Les iframes restent `sandbox="allow-scripts"`, **sans** `allow-same-origin`.
@@ -76,9 +75,9 @@ supprime des deux stockages. Effacer la progression dans l'Académie met aussi �
 Une page ouverte séparément reste autonome, avec son propre stockage : **pas de synchronisation entre origines
 ni de récupération des anciens résultats de pages plein écran**. Aucun résultat n'est envoyé au serveur.
 
-English: **My trophies** combines exploration achievements, concept and mini-lab stars, lab records and compatible
-game learning paths. The available collection is visible directly from the homepage before opening any module,
-with saved dashboard snapshots overlaid on locked goals. Browsing the collection does not award progress or launch games.
+English: **My badges** (Progress screen) combines exploration achievements, concept and mini-lab stars, lab records and
+compatible game learning paths. Only modules actually launched on the device are shown (no greyed-out grid, no
+never-played game); browsing Progress does not award progress, load the collection or launch games.
 Sandboxed pages exchange bounded, source-checked local snapshots with the dashboard;
 progress follows the profile's session/remember/erase choice. XP scales remain separate. Standalone pages retain
 their independent storage and do not sync with the dashboard.
