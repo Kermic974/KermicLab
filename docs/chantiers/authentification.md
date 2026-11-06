@@ -35,14 +35,17 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 |---|---|---|
 | 1 | ADR 0017, ce plan, actions manuelles | PR ouverte |
 | 2 | Interface : `web/comptes.js` (logique pure), Espace famille `#famille`, bloc « Type de profil », formulaire enfant et consentement, i18n, `/auth/me` seulement si `connexionActive` | PR ouverte |
-| 3 | Worker : validation et consentement de `/api/eleves`, `DELETE /api/eleves/:id`, plafond de 6 profils, tests | PR ouverte (`worker/src/comptes.js`, `tests/unit/comptes-worker.test.mjs`) |
-| 4 | Liaison navigateur OAuth (`browser_binding`), `prompt=login` pour revenir à l'Espace famille depuis le mode enfant, tests | À faire |
-| 5 | Domaine API même site, application du schéma D1, secrets OAuth, page de confidentialité, activation | Actions manuelles |
-| 6 | Phase D : code d'appairage d'un appareil enfant, tableau de bord parent, export | Backlog |
+| 3 | Worker : validation et consentement de `/api/eleves`, `DELETE /api/eleves/:id`, endpoint authentifié de suppression du compte parent avec effacement en cascade, plafond de 6 profils, tests de suppression en cascade | PR ouverte (`worker/src/comptes.js`, `tests/unit/comptes-worker.test.mjs`) |
+| 4 | Worker : session limitée au profil enfant choisi et refus côté serveur des opérations de gestion tant que le parent ne s'est pas réauthentifié ; tests d'appels directs aux API de gestion. L'appairage reste en phase D | À faire |
+| 5 | OAuth : liaison navigateur (`browser_binding`), URL de retour du site configurée et autorisée, test du parcours complet jusqu'à `#famille` ; choisir et tester une réauthentification vérifiable par fournisseur ou un facteur parent propre à l'application, avec test du déverrouillage | À faire |
+| 6 | Domaine API même site, `AUTH_CALLBACK_URL` identique à l'URL de rappel déclarée chez Google et Microsoft, redéploiement du Worker, application du schéma D1, secrets OAuth, page de confidentialité ; activation seulement après validation des tests et de la méthode de réauthentification | Actions manuelles |
+| 7 | Phase D : code d'appairage d'un appareil enfant, tableau de bord parent, export | Backlog |
 
 ## Prérequis humains avant l'activation
 
 - Valider les ADR 0010 et 0017.
 - RGPD niveau 1 et texte de consentement parental (`docs/chantiers/rgpd.md`) — **point de contrôle humain / juridique**.
 - Inscrire les applications OAuth (Google, Microsoft) et déposer les secrets en Cloudflare Secrets.
+- Déclarer exactement la même URL de rappel OAuth chez les deux fournisseurs et dans `AUTH_CALLBACK_URL`, puis redéployer le Worker ; configurer et autoriser l'URL de retour du site vers `#famille`.
+- Avant l'activation, vérifier par des tests que le mode enfant ne donne pas accès aux API de gestion et que le parent peut les déverrouiller après une réauthentification vérifiable (ou un facteur parent propre à l'application).
 - Servir l'API sur un sous-domaine de `kermiclab.online`.
