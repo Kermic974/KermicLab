@@ -386,7 +386,8 @@ async function traiterIdee(requete, env, ctx) {
   ctx.waitUntil(journaliser(env, { type: "idee", langue, detail: contexte.page ?? null, routage: cadrage ? "cadrage-ia" : null }));
   try {
     const sujetBrut = cadrage?.titre ?? `${contexte.page ?? "site"} ${new Date().toISOString().slice(0, 16)}`;
-    const sujet = sujetBrut.replace(/@/g, "@\u200B");
+    // Aucune mention dans le titre (idempotent : le cadrage validé est déjà neutralisé).
+    const sujet = sujetBrut.replace(/@\u200b?/gi, "@\u200b");
     await creerOuCommenterIssue(env, {
       label: "idee", sujet,
       corps: corpsIdee({ message, langue, contexte, cadrage }),
@@ -424,7 +425,7 @@ async function traiterCadrageIdee(requete, env) {
     const ouverte = await sessionPourIdee(requete, env);
     cookie = ouverte.cookie;
     reponse = await interrogerFournisseurs(env, ouverte.session, {
-      system: promptCadrage(contexte, langue), message: enveloppeIdee(message), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
+      system: promptCadrage(langue), message: enveloppeIdee(message, contexte), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
     }, clientClaude, HARNESS_CADRAGE);
   } catch {
     console.error("llm cadrage indisponible");
