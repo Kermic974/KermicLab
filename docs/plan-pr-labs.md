@@ -106,7 +106,7 @@ restent légères (une page n'embarque que sa figure).
 **Acceptation**
 - [x] `npm run ci` vert. Toutes les `page.html` sont régénérées **une seule fois** dans cette PR, et
   la taille des pages sans figure diminue.
-- [ ] Ajouter une figure factice dans une branche locale ne modifie que la page qui l'utilise
+- [x] Ajouter une figure factice dans une branche locale ne modifie que la page qui l'utilise
   (vérification manuelle, décrite dans la PR).
 
 **Prompt de lancement**
