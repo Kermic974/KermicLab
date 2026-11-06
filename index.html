@@ -2026,7 +2026,18 @@ dialog > .boite-idees-dialogue:hover { background: var(--bi-survol); border-styl
 (() => {
   const config = JSON.parse(document.getElementById("boite-idees-config").textContent);
   const textes = () => config.textes[document.documentElement.lang] ?? config.textes.fr;
-  const SITE = config.site || "https://www.kermiclab.online/";
+  const SITE = (() => {
+    const fallback = "https://www.kermiclab.online/";
+    try {
+      const brut = typeof config.site === "string" ? config.site.trim() : "";
+      if (!brut) return fallback;
+      const u = new URL(brut);
+      if (!/^https?:$/.test(u.protocol)) return fallback;
+      return `${u.origin}/`;
+    } catch {
+      return fallback;
+    }
+  })();
   // Visage pensif, main au menton, ampoule allumée au-dessus de la tête.
   const ICONE = '<svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">'
     + '<g class="boite-idees-rayons" fill="none" stroke="#f5a300" stroke-width="2.2" stroke-linecap="round">'
