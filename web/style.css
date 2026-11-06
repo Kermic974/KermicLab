@@ -676,7 +676,8 @@ body:has(#ouvrir-chat) > .boite-idees-flottante { display: none; }
 .idee-joindre { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-weight: 650; }
 main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .feuille-route section { margin-top: 40px; scroll-margin-top: 16px; }
-.feuille-route h2 { font-size: 1.45rem; letter-spacing: -.01em; }
+.feuille-route section > p, .feuille-route .fr-corps > p { max-width: 74ch; }
+.feuille-route h2 { font-size: 1.55rem; letter-spacing: -.01em; }
 .feuille-route h3 { font-size: 1rem; margin: 0 0 6px; }
 .feuille-route code { font-family: var(--police-math); font-size: .88em; padding: 1px 5px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--bord); }
 .fr-retour { margin: 0 0 12px; font-size: .9rem; }
@@ -746,8 +747,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .fr-gantt table { min-width: 820px; table-layout: fixed; }
 .fr-gantt th:first-child { width: 22%; }
 .fr-gantt th, .fr-gantt td { padding: 10px; vertical-align: middle; }
-.fr-gantt tbody th { text-transform: none; letter-spacing: normal; font-size: .85rem; }
-.fr-gantt td { font-size: .8rem; }
+.fr-gantt tbody th { text-transform: none; letter-spacing: normal; font-size: .88rem; }
+.fr-gantt td { font-size: .88rem; line-height: 1.45; }
 .fr-flux { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding: 0; margin: 24px 0; list-style: none; }
 .fr-flux li { position: relative; }
 .fr-flux li + li::before { content: "→"; position: absolute; left: -20px; top: 14px; color: var(--accent); font-weight: 800; }
