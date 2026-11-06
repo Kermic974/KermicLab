@@ -1,4 +1,10 @@
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && window.parent !== window) {
+    window.parent.postMessage({ type: "kermiclab:chat:fermer" }, "*");
+  }
+});
+
 const Trophees = (() => {
   function monter({ restaurer, resumer }) {
     if (window.parent === window) return () => {};

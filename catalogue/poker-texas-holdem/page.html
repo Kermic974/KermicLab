@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-PpPIp7AcTtYv2tLAocrDt6ZsQRCxUrNwQ4Q2Vt5uJQ0=' 'sha256-FAjme6e+TwXypJ+g8TdaR8uQzkm8shvsEVVWKrM/Jx0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-PpPIp7AcTtYv2tLAocrDt6ZsQRCxUrNwQ4Q2Vt5uJQ0=' 'sha256-FAjme6e+TwXypJ+g8TdaR8uQzkm8shvsEVVWKrM/Jx0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Poker Texas Hold'em – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -59,6 +59,12 @@
 </style>
 <script id="trophees" data-inclure="gabarit/jeux/trophees.js">
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && window.parent !== window) {
+    window.parent.postMessage({ type: "kermiclab:chat:fermer" }, "*");
+  }
+});
+
 const Trophees = (() => {
   function monter({ restaurer, resumer }) {
     if (window.parent === window) return () => {};

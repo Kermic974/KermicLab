@@ -21,10 +21,145 @@ async function simulerApi(page, { pseudo = "Testeur", jeux = false, llmActif = t
   return simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, jeux, llmActif });
 }
 
+async function ouvrirConfiguration(page) {
+  if (await page.locator("#panneau-chat").isVisible()) await page.click("#fermer-chat");
+  await page.locator("[data-nav=profil]:visible").first().click();
+}
+
+test("avatar : chat replié, accessible au clavier sur chaque écran, conversation et brouillon conservés", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  const requetes = await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  const avatar = page.locator("#ouvrir-chat");
+  const panneau = page.locator("#panneau-chat");
+  assert.equal(await panneau.isVisible(), false);
+  assert.equal(await avatar.getAttribute("aria-expanded"), "false");
+  assert.equal(await avatar.locator(".avatar-robot").count(), 1);
+  await avatar.focus();
+  await page.keyboard.press("Enter");
+  assert.equal(await panneau.isVisible(), true);
+  assert.equal(await avatar.getAttribute("aria-expanded"), "true");
+  assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
+  const boite = await panneau.boundingBox();
+  assert.ok(boite.x > 1280 / 2 && boite.x + boite.width <= 1280 && boite.y >= 0);
+  await page.fill("#question", "bonjour");
+  await page.keyboard.press("Enter");
+  await page.locator("#fil li", { hasText: "Réponse simple." }).waitFor();
+  await page.fill("#question", "Mon brouillon");
+  await page.keyboard.press("Escape");
+  assert.equal(await panneau.isVisible(), false);
+  assert.equal(await avatar.evaluate((n) => n === document.activeElement), true);
+  assert.equal(await avatar.getAttribute("aria-expanded"), "false");
+  for (const ecran of ["labs", "jeux", "defi", "progression", "badges", "profil"]) {
+    await page.click(`.barre-laterale [data-nav="${ecran}"]`);
+    await avatar.click();
+    assert.equal(new URL(page.url()).hash, `#${ecran}`, "ouvrir le chat ne change pas d’écran");
+    assert.equal(await panneau.isVisible(), true);
+    assert.equal(await page.inputValue("#question"), "Mon brouillon");
+    assert.equal(await page.locator("#fil .moi").count(), 1);
+    await avatar.click();
+    assert.equal(await panneau.isVisible(), false);
+  }
+  await page.click(".barre-laterale [data-nav=accueil]");
+  await page.click('[data-action="question"]');
+  assert.equal(await panneau.isVisible(), true);
+  await page.click("#fermer-chat");
+  assert.equal(await avatar.evaluate((n) => n === document.activeElement), true);
+  await page.click("#suggestion button");
+  await page.locator("#bulle-lab[open]").waitFor();
+  await page.click("#bulle-question");
+  await panneau.waitFor({ state: "visible" });
+  await page.waitForFunction(() => document.activeElement.id === "question");
+  assert.equal(await panneau.isVisible(), true);
+  assert.equal(await page.locator("#bulle-lab").isVisible(), false);
+  assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
+  await page.click(".barre-laterale [data-nav=catalogue]");
+  assert.equal(await panneau.isVisible(), false, "le catalogue et le chat ne se superposent pas");
+  assert.equal(requetes.length, 1, "ouvrir ou fermer ne déclenche aucun échange");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("avatar mobile : panneau borné à l’écran, saisie visible et fil défilant au-dessus de la navigation", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, {
+    locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true
+  });
+  await simulerApi(page);
+  await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
+  await page.locator("#fil li").first().waitFor();
+  const avatar = await page.locator("#ouvrir-chat").boundingBox();
+  const navigation = await page.locator(".nav-mobile").boundingBox();
+  const panneau = await page.locator("#panneau-chat").boundingBox();
+  const formulaire = await page.locator("#formulaire").boundingBox();
+  assert.ok(avatar.y + avatar.height <= navigation.y);
+  assert.ok(panneau.x >= 0 && panneau.x + panneau.width <= 360 && panneau.y >= 0);
+  assert.ok(panneau.y + panneau.height <= avatar.y);
+  assert.ok(formulaire.y >= panneau.y && formulaire.y + formulaire.height <= panneau.y + panneau.height);
+  assert.equal(await page.locator("#fil").evaluate((n) => getComputedStyle(n).overflowY), "auto");
+  await page.fill("#question", "c'est quoi le sinus ?");
+  await page.keyboard.press("Enter");
+  await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.click("#fermer-chat");
+  await page.click(".nav-mobile [data-nav=labs]");
+  await page.click("#ouvrir-chat");
+  assert.equal(new URL(page.url()).hash, "#labs");
+  assert.equal(await page.locator("li[data-maquette=trigo-cercle]").count(), 1);
+  await page.setViewportSize({ width: 667, height: 375 });
+  const paysage = await page.locator("#panneau-chat").boundingBox();
+  const saisie = await page.locator("#formulaire").boundingBox();
+  assert.ok(paysage.y >= 0 && paysage.y + paysage.height <= 375);
+  assert.ok(saisie.y >= paysage.y && saisie.y + saisie.height <= paysage.y + paysage.height);
+  assert.ok((await page.locator("#fil").boundingBox()).height >= 100, "le fil reste lisible en paysage");
+  await page.click("#fermer-chat");
+  assert.equal(await page.locator("#panneau-chat").isVisible(), false);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("chat replié : une réponse en cours arrive sans rouvrir le panneau ni déplacer la page", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  await simulerApi(page);
+  let repondre;
+  const suite = new Promise((resolve) => { repondre = resolve; });
+  await page.route(`${api}/api/chat`, async (route) => {
+    await suite;
+    await route.fulfill({
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": serveur.url, "access-control-allow-credentials": "true" },
+      body: JSON.stringify({ type: "reponse", texte: "Réponse différée." })
+    });
+  });
+  await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
+  await page.fill("#question", "bonjour");
+  const demande = page.waitForRequest(`${api}/api/chat`);
+  await page.keyboard.press("Enter");
+  await demande;
+  await page.click("#fermer-chat");
+  await page.evaluate(() => window.scrollTo(0, 300));
+  const position = await page.evaluate(() => scrollY);
+  repondre();
+  await page.locator("#fil li", { hasText: "Réponse différée." }).waitFor({ state: "attached" });
+  assert.equal(await page.locator("#panneau-chat").isVisible(), false);
+  assert.equal(await page.evaluate(() => scrollY), position);
+  await page.click("#ouvrir-chat");
+  assert.equal(await page.locator("#fil li", { hasText: "Réponse différée." }).isVisible(), true);
+  await page.click(".barre-laterale [data-nav=aide]");
+  await page.keyboard.press("Escape");
+  assert.equal(await page.locator("#signalement").isVisible(), false);
+  assert.equal(await page.locator("#panneau-chat").isVisible(), true, "Échap respecte la priorité du dialogue modal");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("chat : une question sur le sinus affiche la maquette dans le fil", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator("#fil li").first().waitFor();
   assert.match(await page.locator("#fil li").first().textContent(), /Kermiclab/);
   assert.equal(await page.locator("#se-connecter").isVisible(), false);
@@ -37,6 +172,11 @@ test("chat : une question sur le sinus affiche la maquette dans le fil", async (
   const onglets = page.frameLocator("li[data-maquette=trigo-cercle] iframe").locator("[role=tab]");
   await onglets.first().waitFor();
   assert.equal(await onglets.count(), 3);
+  await onglets.first().focus();
+  await page.keyboard.press("Escape");
+  await page.locator("#panneau-chat").waitFor({ state: "hidden" });
+  assert.equal(await page.locator("#panneau-chat").isVisible(), false);
+  assert.equal(await page.locator("#ouvrir-chat").evaluate((n) => n === document.activeElement), true);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
@@ -45,6 +185,7 @@ test("i18n : détection automatique de l'anglais et sélecteur manuel", async ()
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "en-US" });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator("#fil li").first().waitFor();
   assert.equal(await page.locator("#formulaire button").textContent(), "Send");
   assert.equal(await page.locator("#llm-actif").isChecked(), false);
@@ -62,6 +203,7 @@ test("chat mobile : aucun défilement horizontal", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { viewport: { width: 360, height: 740 }, isMobile: true });
   await simulerApi(page);
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator("#fil li").first().waitFor();
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
@@ -72,6 +214,7 @@ test("progression : suggestions cliquables, XP et badges gardés pour la session
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
   await simulerApi(page);
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator(".bienvenue .puce").first().click();
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   await page.locator(".relances .puce").first().waitFor();
@@ -80,6 +223,7 @@ test("progression : suggestions cliquables, XP et badges gardés pour la session
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:progression")), null, "rien dans le stockage local sans cookie");
   assert.equal(stocke.questions, 1);
   assert.deepEqual(stocke.notions, ["trigo-cercle"]);
+  await page.click("#fermer-chat");
   await page.click("#ouvrir-progres");
   assert.equal(await page.locator("#liste-badges .badge.obtenu").count(), 2);
   await page.click("#fermer-progres");
@@ -92,6 +236,7 @@ test("hors catalogue : propose des questions qui marchent et ne rapporte pas d'X
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
   await simulerApi(page);
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator("#puces-bienvenue .puce", { hasText: "Je ne comprends pas les radians" }).waitFor();
   await page.fill("#question", "parle-moi des volcans");
   await page.keyboard.press("Enter");
@@ -138,8 +283,9 @@ test("IA : sources et métadonnées en fin de réponse, requête avec cookie san
     });
   });
   await page.goto(serveur.url);
-  await page.locator("#fil li").first().waitFor();
+  await ouvrirConfiguration(page);
   await page.locator("#llm-actif").check();
+  await page.click("#ouvrir-chat");
   await page.fill("#question", "Explique plus simplement");
   await page.keyboard.press("Enter");
   const fin = page.locator(".references-llm");
@@ -166,6 +312,7 @@ test("IA : opt-in de session, désactivée si le site la coupe globalement", asy
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
   await simulerApi(page, { llmActif: false });
   await page.goto(serveur.url);
+  await ouvrirConfiguration(page);
   const toggle = page.locator("#llm-actif");
   await toggle.waitFor();
   assert.equal(await toggle.isDisabled(), true);
@@ -177,6 +324,7 @@ test("IA : l’opt-in individuel reste désactivé par défaut et peut être mé
   const { page, contexte } = await ouvrir(nav, serveur.url);
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator("#fil li").first().waitFor();
   const toggle = page.locator("#llm-actif");
   assert.equal(await toggle.isChecked(), false);
@@ -184,6 +332,7 @@ test("IA : l’opt-in individuel reste désactivé par défaut et peut être mé
   await page.keyboard.press("Enter");
   await page.locator("li[data-maquette=trigo-cercle] iframe").waitFor();
   assert.equal(requetes[0].utiliserLlm, false);
+  await ouvrirConfiguration(page);
   await toggle.check();
   assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:llm:actif")), "true");
   await page.reload();
@@ -206,6 +355,7 @@ test("IA : un lien non issu du catalogue n'est pas rendu comme source cliquable"
     })
   }));
   await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
   await page.locator("#fil li").first().waitFor();
   await page.fill("#question", "un exemple");
   await page.keyboard.press("Enter");
@@ -364,7 +514,7 @@ test("jeux : états vides explicites sans bloquer les Labs", async () => {
   await contexte.close();
 });
 
-test("navigation : défi, trophées et profil remplacent l'accueil sans panneau modal", async () => {
+test("navigation : défi, trophées et configuration remplacent l'accueil sans panneau modal", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   await simulerApi(page);
   await page.goto(`${serveur.url}/#defi`);
@@ -379,7 +529,9 @@ test("navigation : défi, trophées et profil remplacent l'accueil sans panneau 
   await page.locator(".barre-laterale .nav-bouton[data-nav=profil]").click();
   assert.equal(await page.locator("#profil").isVisible(), true);
   assert.equal(await page.locator("#defi").isVisible(), false);
-  assert.equal(await page.inputValue("#profil-pseudo"), "Testeur");
+  assert.equal(await page.locator("#configuration-titre").textContent(), "Configuration");
+  assert.equal(await page.locator("#llm-actif").isVisible(), true);
+  assert.equal(await page.locator("#dialogue-profil").isVisible(), false);
   await page.locator(".barre-laterale [data-nav=badges]").click();
   assert.equal(await page.locator("#progres").isVisible(), true);
   assert.equal(await page.locator("#profil").isVisible(), false);

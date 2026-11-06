@@ -29,6 +29,14 @@ Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built 
 The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
 `/cercle/`, next to the chat (ADR 0008).
 
+The smiling robot avatar in the dashboard's bottom-right corner opens **Ask your question** in a
+floating right-hand panel, available on every dashboard screen. Close it with the avatar, the close
+button or Escape; the conversation and draft remain intact. On mobile, it sits above the navigation.
+
+**Configuration** (the existing `/#profil` route) contains only the **Use AI** switch and its availability
+status. Nickname, storage and data deletion controls remain in a separate profile dialog, opened from
+the sidebar profile card or the mobile header avatar.
+
 The **Idea box** is available on every published view (pages, tabs and dialogs, including embedded
 catalogue pages and games). It opens a draft GitHub feature issue in a new tab, with the page, version,
 language and active view, plus need, acceptance criteria and agent preparation sections. Users complete
@@ -40,7 +48,7 @@ them in the standalone app. Preparing the link works offline, without secrets or
 publishing requires a connection to GitHub.
 
 Navigation provides distinct **Home**, **Labs**, **Games**, **Challenge**, **Progress**, **Trophies** and
-**Profile** screens in the main area, with direct links (`/#labs`, `/#jeux`, `/#defi`, `/#progression`,
+**Configuration** screens in the main area, with direct links (`/#labs`, `/#jeux`, `/#defi`, `/#progression`,
 `/#badges`, `/#profil`) and browser back support. Labs list dedicated
 apps (currently the unit circle at `/cercle/`), not catalogue lessons. **Topics** retains the existing
 catalogue, subject tabs, school levels, search and counters. Games have their own searchable cards;
