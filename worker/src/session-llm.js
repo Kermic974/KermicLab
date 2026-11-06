@@ -1,7 +1,9 @@
 import { SignJWT, jwtVerify } from "jose";
+import { defaut, lireConfiguration } from "./configuration.js";
 
-export const LIMITE_TOKENS_SESSION = 1000;
-export const MAX_TOKENS_APPEL = 500;
+/** Valeurs par défaut ; les budgets effectifs viennent de `LIMITE_TOKENS_SESSION` et `MAX_TOKENS_APPEL` (configuration.js). */
+export const LIMITE_TOKENS_SESSION = defaut("LIMITE_TOKENS_SESSION");
+export const MAX_TOKENS_APPEL = defaut("MAX_TOKENS_APPEL");
 const DUREE_SESSION = 24 * 60 * 60;
 const NOM_COOKIE = "__Host-kermiclab_llm";
 const EMETTEUR = "kermiclab-llm";
@@ -13,7 +15,7 @@ function cleSession(env) {
   return new TextEncoder().encode(env.LLM_SESSION_SECRET);
 }
 
-export const llmActive = (env) => env.LLM_ACTIF === "true";
+export const llmActive = (env) => lireConfiguration(env).LLM_ACTIF;
 
 export async function lireSessionLlm(requete, env) {
   const jeton = (requete.headers.get("cookie") || "").split(";")
@@ -69,6 +71,7 @@ export const sessionPourIdee = (requete, env) => sessionSansPage(requete, env, S
 
 /** Une réservation atomique et un seul appel en vol évitent les dépassements concurrents. */
 export async function reserverTokens(env, sessionId) {
+  const { LIMITE_TOKENS_SESSION: limite, MAX_TOKENS_APPEL: parAppel } = lireConfiguration(env);
   return env.DB.prepare(`
     UPDATE sessions_llm
     SET en_cours = 1,
@@ -76,11 +79,11 @@ export async function reserverTokens(env, sessionId) {
         tokens_factures = tokens_factures + min(?, ? - tokens_factures)
     WHERE id = ? AND expire_a > ? AND en_cours = 0 AND tokens_factures < ?
     RETURNING reservation, tokens_factures
-  `).bind(MAX_TOKENS_APPEL, LIMITE_TOKENS_SESSION, MAX_TOKENS_APPEL, LIMITE_TOKENS_SESSION,
-    sessionId, Math.floor(Date.now() / 1000), LIMITE_TOKENS_SESSION).first();
+  `).bind(parAppel, limite, parAppel, limite, sessionId, Math.floor(Date.now() / 1000), limite).first();
 }
 
 export async function solderTokens(env, sessionId, reservation, usage) {
+  const limite = lireConfiguration(env).LIMITE_TOKENS_SESSION;
   const connu = Number.isSafeInteger(usage) && usage >= 0 && usage <= reservation;
   const depassement = Number.isSafeInteger(usage) && usage > reservation;
   const tokens = connu ? usage : reservation;
@@ -90,13 +93,13 @@ export async function solderTokens(env, sessionId, reservation, usage) {
         reservation = 0, en_cours = 0
     WHERE id = ? AND en_cours = 1 AND reservation = ?
     RETURNING tokens_factures
-  `).bind(depassement ? 1 : 0, LIMITE_TOKENS_SESSION, tokens, sessionId, reservation).first();
+  `).bind(depassement ? 1 : 0, limite, tokens, sessionId, reservation).first();
   if (!ligne) throw new Error("réservation LLM introuvable");
   if (depassement) throw new Error("limite fournisseur dépassée");
   return {
     tokens, comptage: connu ? "fournisseur" : "reservation-prudente",
-    limite: LIMITE_TOKENS_SESSION, consommes: ligne.tokens_factures,
-    restants: LIMITE_TOKENS_SESSION - ligne.tokens_factures
+    limite, consommes: ligne.tokens_factures,
+    restants: Math.max(0, limite - ligne.tokens_factures)
   };
 }
 

@@ -445,6 +445,13 @@
     <select id="defi-ia-par-jour" aria-describedby="defi-ia-etat" disabled></select>
     <span id="defi-ia-etat" class="doux petit" aria-live="polite"></span>
   </div>
+  <!-- Paramètres du site (ADR 0019) : vue en lecture seule de la configuration centralisée du Worker. -->
+  <div class="config-serveur" aria-labelledby="config-serveur-titre">
+    <h3 id="config-serveur-titre" data-i18n="configServeurTitre"></h3>
+    <p class="doux petit" data-i18n="configServeurAide"></p>
+    <div id="config-modules" class="config-modules"></div>
+    <p id="config-serveur-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></p>
+  </div>
 </section>
 
 <!-- Espace famille (ADR 0017) : accessible seulement si connexionActive ; un compte parent crée les profils enfants. -->

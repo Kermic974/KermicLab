@@ -86,7 +86,7 @@ KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev 
 ```
 
 Workers AI uses Cloudflare's `AI` binding (no API key). `LLM_ACTIF=false` is the global kill switch, controlled in Cloudflare; the site also offers individual opt-in, off by default and remembered for the browser session. Calls require both switches, the signing secret and the updated D1 schema. Other questions open a catalogue page or are declined without a model call.
-The server enforces **1,000 generated tokens per browser session**, with an absolute 24-hour expiry, shared with optional Anthropic fallback. Input tokens remain billable; new anonymous sessions are not a per-person spending cap. Trusted source links/descriptions and actual model/harness metadata appear after replies. Access is temporarily free; subscription gating is on the backlog. `LLM_ACTIF=false` disables all model calls without blocking the catalogue.
+The server enforces **1,000 generated tokens per browser session** (default; `LIMITE_TOKENS_SESSION`, see the centralised configuration, ADR 0019), with an absolute 24-hour expiry, shared with optional Anthropic fallback. Input tokens remain billable; new anonymous sessions are not a per-person spending cap. Trusted source links/descriptions and actual model/harness metadata appear after replies. Access is temporarily free; subscription gating is on the backlog. `LLM_ACTIF=false` disables all model calls without blocking the catalogue.
 See [ADR 0016](docs/decisions/0016-workers-ai-principal-anthropic-repli.md) and [ADR 0006](docs/decisions/0006-mode-zero-budget.md) for the history of zero-budget mode.
 Without `GITHUB_TOKEN`, the Worker creates no issues automatically; the Idea box still works through GitHub.
 

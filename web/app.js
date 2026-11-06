@@ -14,7 +14,9 @@ const etat = {
   notionCourante: null, groupesFermes: new Set(), compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
   erreurTrophees: false, chargementTrophees: false, ecran: "accueil", indexJeuAccueil: 0, llmActif: false, llmDisponible: false,
-  defiIa: { ia: false, generationsParJour: 0, restantesServeur: null }
+  defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
+  // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
+  configurationServeur: null, skills: {}
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
@@ -1077,6 +1079,69 @@ function rafraichirControleLlm() {
   statut.textContent = t(cle);
   rafraichirIdeeIa();
   rafraichirReglageDefi();
+  rafraichirConfigurationServeur();
+}
+
+/** Valeur lisible d'un paramètre (booléen, liste de skills, entier borné, alias). */
+function valeurParametre(p) {
+  if (p.type === "booleen") return t(p.valeur ? "configOui" : "configNon");
+  if (p.type === "liste") return p.valeur.length ? p.valeur.map((id) => t(`configSkill_${id}`)).join(", ") : t("configAucun");
+  if (p.type === "entier") return t("configBornes", { valeur: p.valeur, min: p.min, max: p.max });
+  return String(p.valeur);
+}
+
+/** Écran Configuration : paramètres du site regroupés par module, en lecture seule (réglés dans wrangler.toml). */
+function rafraichirConfigurationServeur() {
+  const conteneur = $("#config-modules");
+  if (!conteneur) return;
+  const etatTexte = $("#config-serveur-etat");
+  const modules = etat.configurationServeur?.modules;
+  conteneur.replaceChildren();
+  if (!Array.isArray(modules)) {
+    etatTexte.hidden = false;
+    etatTexte.textContent = t(etat.configurationServeur === null ? "llmStatutChargement" : "configIndisponible");
+    return;
+  }
+  etatTexte.hidden = true;
+  for (const module of modules) {
+    const bloc = document.createElement("section");
+    bloc.className = "config-module";
+    bloc.dataset.module = module.id;
+    const titre = document.createElement("h4");
+    titre.textContent = t(`configModule_${module.id}`);
+    const liste = document.createElement("dl");
+    for (const p of module.parametres || []) {
+      const ligne = document.createElement("div");
+      ligne.className = "config-ligne";
+      ligne.dataset.cle = p.cle;
+      const dt = document.createElement("dt");
+      dt.textContent = t(`configParam_${p.cle}`);
+      const dd = document.createElement("dd");
+      const code = document.createElement("code");
+      code.textContent = valeurParametre(p);
+      dd.append(code);
+      ligne.append(dt, dd);
+      liste.append(ligne);
+    }
+    for (const s of module.skills || []) {
+      const ligne = document.createElement("div");
+      ligne.className = "config-ligne config-skill";
+      ligne.dataset.skill = s.id;
+      const dt = document.createElement("dt");
+      dt.textContent = t("configSkill", { nom: t(`configSkill_${s.id}`) });
+      const dd = document.createElement("dd");
+      const pastille = document.createElement("span");
+      pastille.className = `config-pastille ${s.actif ? "actif" : "inactif"}`;
+      pastille.textContent = t(s.actif ? "configActif" : "configInactif");
+      const version = document.createElement("code");
+      version.textContent = `${s.prompt} · v${s.version}`;
+      dd.append(pastille, " ", version);
+      ligne.append(dt, dd);
+      liste.append(ligne);
+    }
+    bloc.append(titre, liste);
+    conteneur.append(bloc);
+  }
 }
 
 async function chargerStatutLlm() {
@@ -1087,10 +1152,16 @@ async function chargerStatutLlm() {
     etat.llmDisponible = statut.actif === true;
     const n = statut.defi?.generationsParJour;
     etat.defiIa.ia = statut.defi?.ia === true;
-    etat.defiIa.generationsParJour = Number.isInteger(n) ? Math.max(0, Math.min(10, n)) : 0;
+    const maxDefi = statut.configuration?.modules?.flatMap((m) => m.parametres || [])
+      .find((p) => p.cle === "DEFI_GENERATIONS_JOUR")?.max;
+    etat.defiIa.generationsParJour = Number.isInteger(n) ? Math.max(0, Math.min(Number.isInteger(maxDefi) ? maxDefi : 10, n)) : 0;
+    etat.skills = statut.skills && typeof statut.skills === "object" ? statut.skills : {};
+    etat.configurationServeur = statut.configuration && Array.isArray(statut.configuration.modules) ? statut.configuration : false;
   } catch {
     etat.llmDisponible = false;
     etat.defiIa.ia = false;
+    etat.skills = {};
+    etat.configurationServeur = false;
     console.error("llm statut indisponible");
   }
   rafraichirControleLlm();
@@ -1258,7 +1329,7 @@ function ouvrirIdee(contexte = {}) {
 function rafraichirIdeeIa() {
   const bouton = $("#preparer-idee");
   if (!bouton) return;
-  const possible = etat.llmDisponible && etat.llmActif;
+  const possible = etat.llmDisponible && etat.llmActif && etat.skills["cadrage-idee"] !== false;
   bouton.disabled = !possible;
   const aide = $("#idee-ia-aide");
   aide.dataset.i18n = possible ? "ideeIaAide" : "ideeIaInactive";

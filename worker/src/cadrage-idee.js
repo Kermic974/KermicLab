@@ -1,17 +1,12 @@
 import { analyser } from "./moderation.js";
+import { harnessSkill } from "./configuration.js";
 
 /**
  * Cadrage d'une idée de la boîte à idées par le LLM : titre, besoin reformulé, critères d'acceptation,
  * zones concernées et questions ouvertes, pour que l'agent qui traite l'issue démarre sans relire l'élève.
  * Les pistes de fichiers sont déduites par le serveur (jamais inventées par le modèle).
  */
-export const HARNESS_CADRAGE = Object.freeze({
-  nom: "KermicLab",
-  version: "1.0.0",
-  prompt: "cadrage-idee-v1",
-  perimetre: "boite-a-idees",
-  acces: "gratuit-provisoire"
-});
+export const HARNESS_CADRAGE = harnessSkill("cadrage-idee");
 
 /** Zones du dépôt et fichiers d'entrée correspondants (`<id>` : notion ou jeu du contexte). */
 export const ZONES = Object.freeze({

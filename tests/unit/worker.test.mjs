@@ -328,6 +328,47 @@ test("quota 1 000 tokens persistant malgré un rechargement et une réinitialisa
   assert.equal((await chat({ message: "sinus", langue: "fr", utiliserLlm: true })).donnees.type, "maquette");
 });
 
+test("configuration : budget de session et budget par appel réglés par LIMITE_TOKENS_SESSION et MAX_TOKENS_APPEL", async () => {
+  env.LIMITE_TOKENS_SESSION = "400";
+  env.MAX_TOKENS_APPEL = "300";
+  const ai = creerWorkersAI({ langue: "fr", intention: "apprendre", source_ids: ["trigo-cercle"], reponse: "Le sinus donne la hauteur du point." }, 300);
+  env.AI = ai;
+  await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  const premiere = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
+  assert.deepEqual(premiere.donnees.llm.quota, { limite: 400, consommes: 300, restants: 100 });
+  await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
+  // La seconde réservation est bornée au reste du budget (100 tokens).
+  assert.equal(ai.appels.at(-1).parametres.max_tokens, 100);
+});
+
+test("configuration : un skill retiré de SKILLS_ACTIFS n'appelle aucun modèle", async () => {
+  env.SKILLS_ACTIFS = "cadrage-idee,defi-express";
+  const ai = creerWorkersAI({});
+  env.AI = ai;
+  const page = await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  assert.equal(page.entetes.has("set-cookie"), false);
+  const suite = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
+  assert.equal(suite.donnees.type, "hors-catalogue");
+  assert.equal(ai.appels.length, 0);
+  const statut = await (await worker.fetch(new Request("https://api.kermiclab.test/api/llm/status"), env, ctx)).json();
+  assert.equal(statut.skills.tuteur, false);
+  assert.equal(statut.skills["cadrage-idee"], true);
+  const tuteur = statut.configuration.modules.find((m) => m.id === "tuteur");
+  assert.deepEqual(tuteur.skills.map((x) => [x.id, x.actif]), [["tuteur", false], ["cadrage-idee", true]]);
+});
+
+test("configuration publique : paramètres par module, sans secret", async () => {
+  env.MODELE_DEFI = "custom/sonnet";
+  const corps = await (await worker.fetch(new Request("https://api.kermiclab.test/api/llm/status"), env, ctx)).json();
+  assert.deepEqual(corps.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi"]);
+  const defi = corps.configuration.modules.find((m) => m.id === "defi");
+  assert.equal(defi.parametres.find((p) => p.cle === "MODELE_DEFI").valeur, "custom/sonnet");
+  const texte = JSON.stringify(corps);
+  for (const secret of [env.LLM_SESSION_SECRET, env.ANTHROPIC_API_KEY, env.AI_GATEWAY_TOKEN, env.GITHUB_TOKEN]) {
+    assert.equal(texte.includes(secret), false);
+  }
+});
+
 test("sans cookie valide, le client ne peut pas appeler le LLM avec un quota inventé", async () => {
   const ai = creerWorkersAI({});
   env.AI = ai;
@@ -358,7 +399,9 @@ test("arrêt d'urgence LLM_ACTIF : les clés seules ne permettent pas d'appel", 
   assert.equal(ai.appels.length, 0);
 });
 
-test("GET /api/llm/status expose uniquement la disponibilité effective et sans cache", async () => {
+const resumeStatut = ({ actif, defi }) => ({ actif, defi });
+
+test("GET /api/llm/status expose la disponibilité effective et sans cache", async () => {
   const lire = async () => worker.fetch(new Request("https://api.kermiclab.test/api/llm/status", {
     headers: { origin: "https://kermiclab.pages.dev" }
   }), env, ctx);
@@ -367,18 +410,20 @@ test("GET /api/llm/status expose uniquement la disponibilité effective et sans 
   assert.equal(actif.headers.get("cache-control"), "no-store");
   env.LLM_ACTIF = "false";
   const inactif = await lire();
-  assert.deepEqual(await inactif.json(), { actif: false, defi: { ia: false, generationsParJour: 3 } });
+  const corpsInactif = await inactif.json();
+  assert.deepEqual(resumeStatut(corpsInactif), { actif: false, defi: { ia: false, generationsParJour: 3 } });
+  assert.deepEqual(corpsInactif.skills, { tuteur: false, "cadrage-idee": false, "defi-express": false });
   assert.equal(inactif.headers.get("cache-control"), "no-store");
   env.LLM_ACTIF = "true";
   delete env.LLM_SESSION_SECRET;
   const sansSecret = await lire();
-  assert.deepEqual(await sansSecret.json(), { actif: false, defi: { ia: false, generationsParJour: 3 } });
+  assert.deepEqual(resumeStatut(await sansSecret.json()), { actif: false, defi: { ia: false, generationsParJour: 3 } });
 });
 
 test("sans Workers AI, le repli n'est disponible qu'avec le binding et le jeton gateway", async () => {
-  const lire = async () => (await worker.fetch(
+  const lire = async () => resumeStatut(await (await worker.fetch(
     new Request("https://api.kermiclab.test/api/llm/status"), env, ctx
-  )).json();
+  )).json());
   delete env.AI.run;
   // Le défi exige le binding AI (alias gateway) : sans `run`, il reste sur la banque fixe.
   assert.deepEqual(await lire(), { actif: true, defi: { ia: false, generationsParJour: 3 } });
