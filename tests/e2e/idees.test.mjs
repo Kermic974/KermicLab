@@ -117,9 +117,14 @@ test("boîte à idées : onglets des notions, sous-vues des jeux et popup depuis
   await page.goto(serveur.url);
   await page.fill("#pseudo", "Test");
   await page.click("#formulaire-pseudo button[type=submit]");
+  const iframe = page.waitForEvent("framenavigated", (frame) =>
+    frame.parentFrame() === page.mainFrame() && new URL(frame.url()).pathname === "/maquettes/trigo-cercle");
   await page.locator("#suggestion button").click();
+  const maquette = await iframe;
+  await maquette.waitForLoadState("load");
   const cadre = page.frameLocator("#bulle-cadre");
   const lien = cadre.locator("body > .boite-idees");
+  await brouillon(lien);
   const popupPromise = contexte.waitForEvent("page");
   await lien.click();
   const popup = await popupPromise;
