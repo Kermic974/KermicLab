@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import worker, { _reinitialiser } from "../../worker/src/index.js";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import {
-  FORMATS_DEFI, NB_DEFIS, generationsDefiParJour, messageDefi, normaliserDefis, promptDefi, tirerDefis, validerDefi
+  FORMATS_DEFI, NB_DEFIS, codeErreurFournisseur, generationsDefiParJour, messageDefi, normaliserDefis, promptDefi, tirerDefis, validerDefi
 } from "../../worker/src/defi-llm.js";
 import { creerD1Llm } from "../helpers/d1-llm.mjs";
 
@@ -205,4 +205,37 @@ test("statut LLM : expose la génération du défi et son quota pour l'écran Co
   const r = await worker.fetch(new Request("https://api.kermiclab.test/api/llm/status", { headers: { origin: "https://kermiclab.pages.dev" } }), env, ctx);
   const donnees = await r.json();
   assert.deepEqual(donnees.defi, { ia: true, generationsParJour: 2 });
+});
+
+test("défi : alias refusé par la gateway (402) → repli Workers AI, défis toujours générés et code journalisé", async () => {
+  const alias = creerAlias();
+  const appels = [];
+  env.AI = {
+    run: async (modele, parametres, options) => {
+      appels.push({ modele, parametres, options });
+      if (modele === "custom/haiku") throw new Error("AiError: 402: Payment Required (payment_defaulted)");
+      const { choices } = await alias.run(modele, parametres, options);
+      // Workers AI renvoie `response`, éventuellement déjà analysé en objet.
+      return { response: JSON.parse(choices[0].message.content), usage: { completion_tokens: 700 } };
+    }
+  };
+  const { donnees } = await defi({ langue: "fr", utiliserLlm: true });
+  assert.equal(donnees.source, "ia");
+  assert.equal(donnees.defis.length, NB_DEFIS);
+  assert.deepEqual(appels.map((a) => a.modele), ["custom/haiku", "@cf/meta/llama-3.3-70b-instruct-fp8-fast"]);
+  assert.equal(appels[1].parametres.response_format.type, "json_schema");
+  assert.equal(donnees.llm.fournisseur, "cloudflare-workers-ai");
+  assert.equal(donnees.llm.repli, true);
+  assert.deepEqual(donnees.llm.echecs, ["cloudflare-ai-gateway:http-402"]);
+  assert.deepEqual(donnees.quota, { limite: 3, utilisees: 1, restantes: 2 }, "les deux essais comptent pour une génération");
+});
+
+test("défi : les deux fournisseurs échouent → banque fixe et KPI avec les codes, sans texte", async () => {
+  env.AI = creerAlias({ erreur: Object.assign(new Error("indisponible"), { status: 429 }) });
+  const { donnees } = await defi({ langue: "fr", utiliserLlm: true });
+  assert.equal(donnees.raison, "ia-indisponible");
+  const ligne = env.DB.lignes.find((l) => l[0] === "erreur" && l[4] === "defi");
+  assert.equal(ligne[5], "cloudflare-ai-gateway:http-429 cloudflare-workers-ai:http-429");
+  assert.equal(codeErreurFournisseur(new Error("3030: quelque chose")), "erreur");
+  assert.equal(codeErreurFournisseur(new Error("AiError: 402: Payment Required")), "http-402");
 });

@@ -17,6 +17,17 @@ const DUREE_QUOTA = 24 * 60 * 60;
 
 export const HARNESS_DEFI = harnessSkill("defi-express");
 
+/**
+ * Code d'erreur court d'un fournisseur (ex. « http-402 » pour une gateway sans moyen de paiement), pour les logs
+ * et les KPI. Le message d'erreur n'est jamais journalisé tel quel.
+ */
+export function codeErreurFournisseur(erreur) {
+  const statut = erreur?.status ?? erreur?.statusCode;
+  if (Number.isInteger(statut) && statut >= 400 && statut <= 599) return `http-${statut}`;
+  const trouve = String(erreur?.message ?? "").match(/\b([45]\d{2})\b/);
+  return trouve ? `http-${trouve[1]}` : "erreur";
+}
+
 /** Nombre de générations IA par session (24 h) : variable `DEFI_GENERATIONS_JOUR`, bornée (configuration.js). */
 export const generationsDefiParJour = (env) => lireConfiguration(env).DEFI_GENERATIONS_JOUR;
 

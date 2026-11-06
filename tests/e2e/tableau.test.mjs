@@ -289,6 +289,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   await lancerDefi(page);
   await page.locator("#defi-question").waitFor();
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.match(await texte(page, "#defi-source"), /tous tes défis inédits pour aujourd’hui/);
   assert.equal(requetes.filter((r) => r.defi).length, avant);
   assert.deepEqual(erreurs, []);
   await contexte.close();
@@ -301,7 +302,23 @@ test("configuration : sans IA activée, le réglage du défi invite à l'activer
   assert.match(await texte(page, "#defi-ia-etat"), /Active « Utiliser l’IA »/);
   await lancerDefi(page);
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.match(await texte(page, "#defi-source"), /Active « Utiliser l’IA »/);
   assert.equal(requetes.filter((r) => r.defi).length, 0, "aucun appel sans consentement IA");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("défi express : IA indisponible côté serveur, les questions fixes s'affichent avec la raison", async () => {
+  const { page, contexte, erreurs } = await demarrer({}, async (p) => {
+    await p.addInitScript(() => { try { sessionStorage.setItem("kermiclab:llm:actif", "true"); } catch { /* iframe sandboxée */ } });
+  }, {
+    defi: () => ({ source: "banque", raison: "ia-indisponible", defis: [], quota: { limite: 3, utilisees: 1, restantes: 2 } })
+  });
+  await choisirPseudo(page, "Lou");
+  await lancerDefi(page);
+  await page.locator("#defi-question").waitFor();
+  assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.match(await texte(page, "#defi-source"), /l’IA ne peut pas préparer de défis pour le moment/);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

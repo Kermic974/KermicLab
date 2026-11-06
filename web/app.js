@@ -2059,7 +2059,7 @@ function rendreSemaine() {
 /* ---------- Défi express (5 défis, XP une fois par jour ; générés par l'IA si autorisé, ADR 0018) ---------- */
 
 const NB_DEFIS = 5;
-const defi = { index: 0, bonnes: 0, resultats: [], questions: [], source: "banque", jeton: 0 };
+const defi = { index: 0, bonnes: 0, resultats: [], questions: [], source: "banque", raison: null, jeton: 0 };
 
 /** Banque fixe (i18n) : sert sans IA et complète un lot généré incomplet. */
 const questionBanque = (q) => ({
@@ -2111,11 +2111,27 @@ function rafraichirReglageDefi() {
   $("#defi-ia-etat").textContent = t(cle, { n: defiIaRestantes() });
 }
 
+/** Pourquoi le défi sert les questions fixes : affiché sous le titre pour que l'élève sache ce qui se passe. */
+const RAISONS_BANQUE = {
+  "ia-inactive": "defiIaConsentement",
+  desactive: "defiBanqueDesactive",
+  quota: "defiBanqueQuota",
+  "ia-indisponible": "defiBanqueIndisponible",
+  "sortie-invalide": "defiBanqueSortie"
+};
+function raisonBanqueLocale() {
+  if (!etat.llmDisponible || !etat.defiIa.ia || etat.defiIa.generationsParJour === 0) return "ia-indisponible";
+  if (!etat.llmActif) return "ia-inactive";
+  if (defiIaParJour() === 0) return "desactive";
+  return defiIaRestantes() > 0 ? null : "quota";
+}
+
 async function ouvrirDefi() {
   const jeton = ++defi.jeton;
   defi.index = 0; defi.bonnes = 0; defi.resultats = [];
   let generes = [];
   defi.source = "banque";
+  defi.raison = raisonBanqueLocale();
   if (defiIaPossible()) {
     $("#defi-corps").replaceChildren(element("p", { classe: "defi-chargement doux", cle: "defiChargement", attributs: { role: "status" } }));
     rafraichirDefiTextes();
@@ -2127,12 +2143,14 @@ async function ouvrirDefi() {
       const d = await r.json();
       if (jeton !== defi.jeton) return;
       if (Number.isInteger(d.quota?.restantes)) etat.defiIa.restantesServeur = d.quota.restantes;
+      defi.raison = RAISONS_BANQUE[d.raison] ? d.raison : "ia-indisponible";
       if (d.source === "ia" && Array.isArray(d.defis)) {
         generes = d.defis.slice(0, NB_DEFIS).map(questionIa);
         defi.source = "ia";
         noterGenerationDefi();
       }
     } catch {
+      defi.raison = "ia-indisponible";
       console.error("défi IA indisponible");
     }
     if (jeton !== defi.jeton) return;
@@ -2151,8 +2169,7 @@ function rafraichirDefiTextes() {
   if (compteur) compteur.textContent = t("defiProgression", { n: defi.index + 1, m: defi.questions.length });
   const source = $("#defi-source");
   if (source) {
-    const cle = defi.source === "ia" ? "defiSourceIa"
-      : etat.llmDisponible && etat.defiIa.ia && !etat.llmActif ? "defiIaConsentement" : "defiSourceBanque";
+    const cle = defi.source === "ia" ? "defiSourceIa" : RAISONS_BANQUE[defi.raison] ?? "defiSourceBanque";
     source.textContent = t(cle);
   }
 }
