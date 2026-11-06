@@ -67,7 +67,7 @@ export async function gererAuth(request, env) {
 
   if (path === "/auth/me" && request.method === "GET") {
     const cookie = request.headers.get("cookie") || "";
-    const match = cookie.match(/session=([^;]+)/);
+    const match = cookie.match(/(?:^|;\s*)session=([^;]+)/);
     const compteId = await lireSession(env, match?.[1]);
     if (!compteId) return new Response(JSON.stringify({ connecte: false }), { status: 401 });
 
@@ -80,7 +80,7 @@ export async function gererAuth(request, env) {
 
   if (path === "/auth/logout" && request.method === "POST") {
     const cookie = request.headers.get("cookie") || "";
-    const match = cookie.match(/session=([^;]+)/);
+    const match = cookie.match(/(?:^|;\s*)session=([^;]+)/);
     await supprimerSession(env, match?.[1]);
     return new Response(null, {
       status: 204,
