@@ -16,6 +16,13 @@ export const MESSAGES = {
       : "Je n'ai pas encore de page sur ce sujet. Reviens bientôt, de nouvelles notions arrivent !",
     maquetteBientot: "Je n'ai pas encore de page interactive sur ce sujet : je l'ai ajouté à la liste des pages à créer.",
     traductionManquante: "Cette page n'existe pas encore dans ta langue : voici la version française.",
+    conversation: {
+      salutation: "Bonjour ! Je suis Kermiclab, ton assistant pour apprendre. Écris ce que tu veux comprendre (maths, sciences, histoire, jeux…) et je t'ouvre une page interactive à explorer. Choisis une idée ci-dessous ou pose ta propre question !",
+      aide: (total) => `Je connais ${total} notion${total > 1 ? "s" : ""}. Écris simplement ce que tu veux comprendre, par exemple « c'est quoi le sinus ? » : je t'ouvre une page avec une explication, un jeu et une mise en situation. Si l'IA est activée dans ton profil, tu peux ensuite me demander « Explique plus simplement », « Donne-moi un exemple » ou « Propose un petit défi ».`,
+      remerciement: "Avec plaisir ! On continue avec une autre notion ?",
+      "au-revoir": "À bientôt ! Reviens quand tu veux pour garder ta série."
+    },
+    suggestionAide: "Que sais-tu faire ?",
     supportMerci: "Merci, ton signalement a bien été transmis.",
     erreur: "Oups, une erreur est survenue. Réessaie dans un instant."
   },
@@ -35,6 +42,13 @@ export const MESSAGES = {
       : "I don't have a page on this topic yet. Come back soon, new ideas are on the way!",
     maquetteBientot: "I don't have an interactive page on this topic yet: I've added it to the list of pages to create.",
     traductionManquante: "This page isn't available in your language yet: here is the French version.",
+    conversation: {
+      salutation: "Hello! I'm Kermiclab, your learning assistant. Tell me what you want to understand (maths, science, history, games…) and I'll open an interactive page for you to explore. Pick an idea below or ask your own question!",
+      aide: (total) => `I know ${total} concept${total > 1 ? "s" : ""}. Just write what you want to understand, for example "what is the sine?": I'll open a page with an explanation, a game and a real-life situation. If AI is enabled in your profile, you can then ask me to "Explain more simply", "Give me an example" or "Suggest a small challenge".`,
+      remerciement: "You're welcome! Shall we carry on with another concept?",
+      "au-revoir": "See you soon! Come back whenever you like to keep your streak going."
+    },
+    suggestionAide: "What can you do?",
     supportMerci: "Thank you, your report has been sent.",
     erreur: "Oops, something went wrong. Please try again in a moment."
   }

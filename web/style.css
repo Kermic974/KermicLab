@@ -266,6 +266,10 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .chat .zone-saisie { flex: none; }
 body:has(#ouvrir-chat) > .boite-idees-flottante { right: auto; left: max(calc(var(--laterale) + 24px), env(safe-area-inset-left, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px)); }
 .chat-entete h2 { font-size: 17px; font-weight: 720; }
+.nouvelle-conversation { width: auto; padding: 0 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 650; flex: none; }
+.nouvelle-conversation .ico { width: 16px; height: 16px; }
+.nouvelle-conversation:disabled { opacity: .5; cursor: wait; }
+@media (max-width: 400px) { .nouvelle-conversation { width: 40px; padding: 0; justify-content: center; } .nouvelle-conversation-texte { display: none; } }
 .chat-icone { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-doux); color: var(--accent-doux-texte); flex: none; }
 .llm-controle { margin-top: 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .llm-interrupteur { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: .88rem; font-weight: 650; }
@@ -306,6 +310,13 @@ body:has(#ouvrir-chat) > .boite-idees-flottante { right: auto; left: max(calc(va
 .metadonnees-llm dt { font-weight: 700; }
 .metadonnees-llm dd { margin: 0; overflow-wrap: anywhere; }
 .llm-appel { margin: 4px 0; color: var(--doux); }
+.details-llm { margin-top: 6px; }
+.details-llm > summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none; color: var(--doux); font-weight: 650; border-radius: 8px; padding: 2px 4px; margin-left: -4px; }
+.details-llm > summary::-webkit-details-marker { display: none; }
+.details-llm > summary::before { content: "›"; display: inline-block; font-size: 1.1em; line-height: 1; transition: transform .18s ease; }
+.details-llm[open] > summary::before { transform: rotate(90deg); }
+.details-llm > summary:hover { color: var(--texte); }
+.details-llm > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .points { display: inline-flex; gap: 5px; padding: 8px 2px 4px; }
 .points span { width: 8px; height: 8px; border-radius: 50%; background: var(--doux); animation: rebond 1.2s infinite ease-in-out; }
 .points span:nth-child(2) { animation-delay: .15s; }

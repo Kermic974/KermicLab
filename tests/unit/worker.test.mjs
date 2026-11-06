@@ -1,6 +1,6 @@
 import { test, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import worker, { _reinitialiser, cleDeTri, suggestionsCatalogue } from "../../worker/src/index.js";
+import worker, { _reinitialiser, cleDeTri, reponseConversation, suggestionsCatalogue } from "../../worker/src/index.js";
 import { creerD1Llm } from "../helpers/d1-llm.mjs";
 
 // ---- Doubles de test : D1, GitHub, Claude ----
@@ -107,6 +107,42 @@ test("cosinus en anglais → version française + issue traduction-manquante dé
   const traductions = github.issues.filter((i) => i.labels.includes("traduction-manquante"));
   assert.equal(traductions.length, 1);
   assert.equal(traductions[0].comments.length, 1);
+});
+
+test("bonjour → réponse d'accueil déterministe avec relances, sans modèle ni issue", async () => {
+  const claude = creerClaude({});
+  _reinitialiser({ client: claude });
+  const a = await chat({ message: "Bonjour !", langue: "fr", utiliserLlm: true });
+  const b = await chat({ message: "bonjour", langue: "fr" });
+  assert.equal(a.statut, 200);
+  assert.equal(a.donnees.type, "conversation");
+  assert.equal(a.donnees.intention, "salutation");
+  assert.match(a.donnees.texte, /^Bonjour ! Je suis Kermiclab/);
+  assert.equal(a.donnees.suggestions[0], "Que sais-tu faire ?");
+  assert.ok(a.donnees.suggestions.length >= 2 && a.donnees.suggestions.length <= 4);
+  assert.deepEqual(a.donnees, b.donnees);
+  const aide = await chat({ message: a.donnees.suggestions[0], langue: "fr" });
+  assert.equal(aide.donnees.intention, "aide");
+  assert.match(aide.donnees.texte, /notions?/);
+  for (const q of aide.donnees.suggestions) assert.equal((await chat({ message: q, langue: "fr" })).donnees.type, "maquette", q);
+  const en = await chat({ message: "Hello", langue: "en" });
+  assert.equal(en.donnees.suggestions[0], "What can you do?");
+  assert.equal(claude.appels.length, 0);
+  assert.equal(github.issues.length, 0);
+  assert.ok(env.DB.lignes.some((l) => l[0] === "reponse" && l[4] === "conversation"));
+});
+
+test("bonjour suivi d'une question → la page est servie, pas la politesse", async () => {
+  const r = await chat({ message: "Bonjour, c'est quoi le sinus ?", langue: "fr" });
+  assert.equal(r.donnees.type, "maquette");
+});
+
+test("reponseConversation : texte d'aide avec le nombre de notions", () => {
+  const index = { maquettes: [{ id: "a", titre: "A", questions: ["c'est quoi a ?"] }, { id: "b", titre: "B", questions: ["c'est quoi b ?"] }] };
+  const r = reponseConversation("aide", "fr", { index, decalage: 0 });
+  assert.match(r.texte, /Je connais 2 notions/);
+  assert.deepEqual(r.suggestions, ["C'est quoi a ?", "C'est quoi b ?"]);
+  assert.deepEqual(reponseConversation("remerciement", "en", { index, decalage: 1 }).suggestions, ["C'est quoi b ?", "C'est quoi a ?"]);
 });
 
 test("question hors périmètre : aucun appel LLM ni issue automatique", async () => {

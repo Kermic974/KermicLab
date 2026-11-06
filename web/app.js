@@ -373,6 +373,20 @@ function rafraichirBienvenue() {
   if (puces) remplirPuces(puces, etat.suggestions.length ? etat.suggestions : ["suggestion1", "suggestion2", "suggestion3", "suggestion4"].map((c) => t(c)));
 }
 
+/**
+ * Repart d'un fil vierge (message d'accueil et suggestions). Côté serveur, rien n'est effacé : le quota IA
+ * de la session reste décompté, et aucun historique n'est envoyé au modèle de toute façon.
+ */
+function nouvelleConversation() {
+  if (etat.envoiEnCours) return;
+  $("#fil").replaceChildren();
+  ajouterBienvenue();
+  const champ = $("#question");
+  champ.value = "";
+  champ.style.height = "auto";
+  champ.focus({ preventScroll: true });
+}
+
 function ajouterQuestion(question) {
   const { li, bulle } = creerMessage({ moi: true });
   bulle.append(element("p", { classe: "texte", texte: question }));
@@ -453,6 +467,9 @@ function referencesLlm(sources, llm) {
     liste.append(ligne);
   }
   bloc.append(liste);
+  // Métadonnées techniques repliées derrière un chevron : présentes (ADR 0016) sans surcharger le fil.
+  const details = element("details", { classe: "details-llm" });
+  details.append(element("summary", { cle: "llmDetails" }));
   const metadonnees = element("dl", { classe: "metadonnees-llm" });
   for (const [cle, valeur] of [
     ["llmModele", `${llm.fournisseur} · ${llm.modele}`],
@@ -463,21 +480,23 @@ function referencesLlm(sources, llm) {
   ]) {
     metadonnees.append(element("dt", { cle }), element("dd", { texte: valeur, ...(cle === "llmAcces" ? { cle: "llmAccesGratuit" } : {}) }));
   }
-  bloc.append(metadonnees);
+  details.append(metadonnees);
   for (const appel of llm.appels) {
     const ligne = element("p", { classe: "llm-appel" });
     ligne.append(
       element("span", { texte: `${appel.fournisseur} · ${appel.modele} · ${appel.tokensSortie} ` }),
       element("span", { cle: appel.comptage === "fournisseur" ? "llmTokensMesures" : "llmTokensReserves" })
     );
-    bloc.append(ligne);
+    details.append(ligne);
   }
-  if (llm.repli) bloc.append(element("p", { cle: "llmRepli" }));
+  if (llm.repli) details.append(element("p", { cle: "llmRepli" }));
+  bloc.append(details);
   return bloc;
 }
 
-function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, sources, llm }) {
+function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, conversation, sources, llm }) {
   const { li, bulle } = creerMessage();
+  if (conversation) li.classList.add("conversation");
   bulle.append(element("p", { classe: "texte", texte }));
   if (maquette) {
     li.classList.add("maquette");
@@ -486,7 +505,7 @@ function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, sources, 
   }
   const questions = pucesValides(suggestions);
   if (horsCatalogue) li.classList.add("hors-catalogue");
-  if (questions.length) ajouterRelances(bulle, questions, horsCatalogue ? "horsCatalogueTitre" : "relancesTitre");
+  if (questions.length) ajouterRelances(bulle, questions, horsCatalogue ? "horsCatalogueTitre" : conversation ? "conversationTitre" : "relancesTitre");
   if (llm && Array.isArray(sources)) bulle.append(referencesLlm(sources, llm));
   defiler(li, maquette ? "start" : "end");
   return li;
@@ -863,6 +882,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
   const attente = ajouterAttente();
   const bouton = $("#formulaire button");
   bouton.disabled = true;
+  $("#nouvelle-conversation").disabled = true;
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/chat`, {
       method: "POST",
@@ -873,7 +893,10 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
     const donnees = await r.json();
     attente.remove();
     const reussie = donnees.type === "reponse" || donnees.type === "maquette";
-    ajouterReponse({ ...donnees, texte: donnees.texte ?? t("erreurReseau"), horsCatalogue: donnees.type === "hors-catalogue" });
+    ajouterReponse({
+      ...donnees, texte: donnees.texte ?? t("erreurReseau"),
+      horsCatalogue: donnees.type === "hors-catalogue", conversation: donnees.type === "conversation"
+    });
     if (reussie) {
       appliquerResultat(progression.enregistrerQuestion(etat.progres));
       if (donnees.maquette?.id) appliquerResultat(progression.enregistrerNotion(etat.progres, donnees.maquette.id));
@@ -883,6 +906,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
     ajouterErreur(question);
   } finally {
     bouton.disabled = false;
+    $("#nouvelle-conversation").disabled = false;
     etat.envoiEnCours = false;
     document.body.classList.remove("occupe");
   }
@@ -949,6 +973,7 @@ async function demarrer() {
     else fermerChat({ rendreFocus: true });
   });
   $("#fermer-chat").addEventListener("click", () => fermerChat({ rendreFocus: true }));
+  $("#nouvelle-conversation").addEventListener("click", nouvelleConversation);
   if (!etat.pseudo) demanderPseudo();
 
   // Comptes famille : rien n'est appelé côté Worker si la connexion est désactivée.

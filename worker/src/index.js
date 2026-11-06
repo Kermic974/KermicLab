@@ -11,6 +11,7 @@ import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm } from "./session-llm.js";
 import { interrogerTuteur } from "./tuteur-llm.js";
+import { intentionConversation } from "./conversation.js";
 import { claudeViaGatewayDisponible } from "./llm.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
@@ -100,6 +101,23 @@ function reponseHorsCatalogue(langue) {
   return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres, maquettes.length), suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage }) };
 }
 
+/**
+ * Réponse à une formule de politesse (bonjour, aide, merci, au revoir) : déterministe, zéro token.
+ * Les relances proposées sont des questions du catalogue (toujours routées vers une page) ; après un bonjour,
+ * « Que sais-tu faire ? » oriente vers l'aide, elle-même reconnue sans modèle.
+ */
+export function reponseConversation(intention, langue, { index = CATALOGUE.index, decalage = jourCourant() } = {}) {
+  const t = messages(langue);
+  const texte = t.conversation[intention];
+  const exemples = suggestionsCatalogue(index, langue, { decalage, max: intention === "aide" ? MAX_SUGGESTIONS : MAX_RELANCES });
+  return {
+    type: "conversation",
+    intention,
+    texte: typeof texte === "function" ? texte(index.maquettes.length) : texte,
+    suggestions: intention === "salutation" ? [t.suggestionAide, ...exemples] : exemples
+  };
+}
+
 function urlMaquette(requete, id, langue) {
   return `${new URL(requete.url).origin}/maquettes/${id}?lang=${langue}`;
 }
@@ -170,6 +188,13 @@ async function traiterChat(requete, env, ctx) {
       }
     }
     return { statut: 200, donnees, entetes: cookie ? { "set-cookie": cookie } : {} };
+  }
+
+  // 2. Politesse (bonjour, aide, merci, au revoir) : réponse fixe qui oriente vers le catalogue, sans modèle.
+  const intention = intentionConversation(message);
+  if (intention) {
+    ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "conversation", detail: intention }));
+    return { statut: 200, donnees: reponseConversation(intention, langue) };
   }
 
   // Seules des relances fermées sur une page déjà servie sont admises : un ID ou
