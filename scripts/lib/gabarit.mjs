@@ -1,10 +1,17 @@
 // Génération des pages du catalogue à partir du gabarit commun (gabarit/) et d'un contenu de notion (contenu.json).
 // La page produite respecte le contrat d'une page autonome (AGENTS.md §5) ; ses hashes CSP sont posés par appliquerCsp.
-import { readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { readdir, readFile } from "node:fs/promises";
 
 export const VERSION_GABARIT = "1.0.0";
 const racine = new URL("../..", import.meta.url).pathname;
-export const TYPES_FIGURE = ["pythagore", "fraction", "proportion", "affine", "des", "parabole", "thales"];
+// Une figure = un fichier gabarit/figures/<type>.js (code inséré dans le moteur des seules pages qui l'utilisent)
+// et, si ses paramètres ont des contraintes, scripts/lib/figures/<type>.mjs qui exporte valider(conf, ou, outils).
+export const TYPES_FIGURE = (await readdir(`${racine}gabarit/figures`)).filter((f) => /^[a-z][a-z0-9-]*\.js$/.test(f)).map((f) => f.slice(0, -3)).sort();
+const VALIDATEURS_FIGURE = Object.fromEntries(await Promise.all(TYPES_FIGURE
+  .filter((type) => existsSync(`${racine}scripts/lib/figures/${type}.mjs`))
+  .map(async (type) => [type, (await import(`./figures/${type}.mjs`)).valider])));
+const MARQUEUR_FIGURE = /^ *\/\/ @figure\b.*$/m;
 const TYPES_EXERCICE = ["qcm", "nombre"];
 
 const echapperHtml = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -34,12 +41,7 @@ function validerExercice(ex, ou) {
 
 function validerFigure(f, ou) {
   exiger(TYPES_FIGURE.includes(f?.type), `${ou} : figure « ${f?.type} » inconnue (attendu : ${TYPES_FIGURE.join(", ")})`);
-  if (f.type === "proportion") exiger(texteNonVide(f.libelleX) && texteNonVide(f.libelleY), `${ou} : « libelleX » et « libelleY » requis`);
-  if (f.type === "thales") {
-    for (const cle of ["ab", "ac"]) exiger(f[cle] === undefined || (typeof f[cle] === "number" && Number.isFinite(f[cle]) && f[cle] >= 1 && f[cle] <= 20), `${ou} : « ${cle} » doit être compris entre 1 et 20`);
-    exiger(f.angle === undefined || (typeof f.angle === "number" && Number.isFinite(f.angle) && f.angle >= 15 && f.angle <= 165), `${ou} : « angle » doit être compris entre 15° et 165°`);
-    exiger(f.rapport === undefined || (typeof f.rapport === "number" && Number.isFinite(f.rapport) && f.rapport >= 0.1 && f.rapport <= 0.9), `${ou} : « rapport » doit être compris entre 0,1 et 0,9`);
-  }
+  VALIDATEURS_FIGURE[f.type]?.(f, ou, { exiger, texteNonVide });
 }
 
 /** Vérifie la structure d'un contenu de notion ; lève une erreur explicite au premier problème. */
@@ -79,16 +81,33 @@ async function lireGabarit() {
     page: await readFile(`${racine}gabarit/page.html`, "utf8"),
     style: (await readFile(`${racine}gabarit/style.css`, "utf8")).trimEnd(),
     moteur: (await readFile(`${racine}gabarit/moteur.js`, "utf8")).trimEnd(),
-    trophees: (await readFile(`${racine}gabarit/jeux/trophees.js`, "utf8")).trimEnd()
+    trophees: (await readFile(`${racine}gabarit/jeux/trophees.js`, "utf8")).trimEnd(),
+    figures: new Map()
   };
   return fichiersGabarit;
+}
+
+/** Moteur d'une page : le marqueur « // @figure » est remplacé par le code de sa figure (sans l'en-tête de commentaires), ou supprimé. */
+async function moteurAvecFigure(gabarit, type) {
+  exiger((gabarit.moteur.match(new RegExp(MARQUEUR_FIGURE.source, "gm")) ?? []).length === 1, "gabarit/moteur.js : marqueur « // @figure » absent ou en double");
+  let code = "";
+  if (type) {
+    if (!gabarit.figures.has(type)) {
+      const source = await readFile(`${racine}gabarit/figures/${type}.js`, "utf8");
+      gabarit.figures.set(type, source.replace(/^(\/\/.*\n)+\n*/, "").trimEnd());
+    }
+    code = gabarit.figures.get(type);
+  }
+  return gabarit.moteur.replace(MARQUEUR_FIGURE, () => code);
 }
 
 /** Produit le HTML (avant pose des hashes CSP) d'une notion à partir de sa fiche et de son contenu. */
 export async function genererPage({ fiche, contenu, langue = "fr" }) {
   exiger(/^\d{4}-\d{2}-\d{2}$/.test(fiche.date ?? ""), `${fiche.id}/fiche.md : « date » (AAAA-MM-JJ) requise pour une page générée`);
   validerContenu(contenu, `${fiche.id}/contenu.json`);
-  const { page, style, moteur, trophees } = await lireGabarit();
+  const gabarit = await lireGabarit();
+  const { page, style, trophees } = gabarit;
+  const moteur = await moteurAvecFigure(gabarit, contenu.application.figure?.type);
   const meta = {
     id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, date: fiche.date, langue,
     onglets: ["explication", ...(contenu.memo ? ["memo"] : []), "application", "mise-en-situation", "self-test"], gabarit: VERSION_GABARIT

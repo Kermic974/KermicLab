@@ -560,9 +560,11 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .niveau-details { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .niveau-details progress { width: 100%; height: 10px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0 6px; }
+.stats-progression { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .stats div { background: var(--surface-2); border-radius: 14px; padding: 10px; text-align: center; }
 .stats dt { font-size: .75rem; color: var(--doux); }
 .stats dd { margin: 2px 0 0; font-size: 1.5rem; font-weight: 800; }
+@media (max-width: 640px) { .stats-progression { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .badges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
 .badge { display: flex; flex-direction: column; gap: 2px; padding: 10px; border-radius: 14px; border: 1px solid var(--bord); }
 .badge-icone { font-size: 1.6rem; line-height: 1.2; }
@@ -934,3 +936,18 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .type-profil { margin: 16px 0; padding: 12px 14px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface-2); }
 .type-profil h3 { margin: 0 0 4px; font-size: 1rem; }
 .type-profil p { margin: 0 0 8px; }
+
+/* Configuration : paramètres du site par module (ADR 0019), lecture seule. */
+.config-serveur { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--bord); }
+.config-serveur h3 { margin: 0; }
+.config-modules { display: grid; gap: 12px; }
+.config-module { border: 1px solid var(--bord); border-radius: 14px; padding: 12px 14px; background: var(--surface-2); }
+.config-module h4 { margin: 0 0 8px; font-size: .92rem; }
+.config-module dl { margin: 0; display: grid; gap: 6px; }
+.config-ligne { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: .85rem; }
+.config-ligne dt { color: var(--doux); }
+.config-ligne dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.config-ligne code { font-size: .8rem; }
+.config-pastille { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: .75rem; font-weight: 650; }
+.config-pastille.actif { background: var(--succes-doux); color: var(--succes); }
+.config-pastille.inactif { background: var(--surface); color: var(--doux); border: 1px solid var(--bord); }

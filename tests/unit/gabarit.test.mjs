@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
-import { genererPage, validerContenu } from "../../scripts/lib/gabarit.mjs";
+import { genererPage, TYPES_FIGURE, validerContenu } from "../../scripts/lib/gabarit.mjs";
 import { lireFrontMatter, lireMetaHtml, scriptsEnLigne } from "../../scripts/lib/catalogue.mjs";
 
 const racine = new URL("../..", import.meta.url).pathname;
@@ -90,7 +90,8 @@ test("gabarit : erreurs de contenu explicites", () => {
   casse((c) => { c.application.exercices[0].type = "glisser"; }, /type « glisser » inconnu/);
   casse((c) => { c.situation.etapes[0].reponse = "2"; }, /« reponse » doit être un nombre/);
   casse((c) => { c.situation.etapes[1].indices = []; }, /au moins un « indices »/);
-  casse((c) => { c.application.figure = { type: "camembert" }; }, /figure « camembert » inconnue/);
+  casse((c) => { c.application.figure = { type: "camembert" }; }, /figure « camembert » inconnue \(attendu : affine, des, fraction, parabole, proportion, pythagore, thales/);
+  casse((c) => { c.application.figure = { type: "proportion", libelleX: "x" }; }, /« libelleX » et « libelleY » requis/);
   casse((c) => { c.application.figure = { type: "thales", rapport: 1 }; }, /« rapport » doit être compris entre 0,1 et 0,9/);
   casse((c) => { c.application.figure = { type: "thales", ab: 0 }; }, /« ab » doit être compris entre 1 et 20/);
   casse((c) => { c.niveaux[0].paragraphes = ["fetch('https://exemple.test')"]; }, /contenu interdit/);
@@ -113,4 +114,28 @@ test("gabarit : la page générée respecte le contrat et neutralise le HTML du 
   const donnees = html.match(/<script type="application\/json" id="kermiclab-contenu">([\s\S]*?)<\/script>/)[1];
   assert.equal(JSON.parse(donnees).intro, contenu.intro);
   await assert.rejects(genererPage({ fiche: { ...fiche, date: undefined }, contenu }), /« date »/);
+});
+
+test("gabarit : une page n'embarque que sa propre figure (figures modulaires, ADR 0020)", async () => {
+  const types = (await readdir(`${racine}gabarit/figures`)).filter((f) => f.endsWith(".js")).map((f) => f.slice(0, -3)).sort();
+  assert.deepEqual(TYPES_FIGURE, types, "les types de figure sont découverts dans gabarit/figures/");
+  const moteur = await readFile(`${racine}gabarit/moteur.js`, "utf8");
+  assert.equal(moteur.match(/^ *\/\/ @figure\b/gm)?.length, 1, "un seul marqueur d'insertion dans le moteur");
+  const figuresDe = (html) => [...html.matchAll(/FIGURES\.([a-z-]+) = function/g)].map((m) => m[1]);
+  const fiche = lireFrontMatter(await readFile(`${racine}catalogue/pythagore/fiche.md`, "utf8"));
+  const contenu = await lireJson(`${racine}catalogue/pythagore/contenu.json`);
+  for (const type of TYPES_FIGURE) {
+    const html = await genererPage({ fiche, contenu: { ...contenu, application: { ...contenu.application, figure: { type, libelleX: "x", libelleY: "y" } } } });
+    assert.deepEqual(figuresDe(html), [type], `${type} : seule figure présente`);
+    assert.ok(!html.includes("@figure"), `${type} : marqueur remplacé`);
+    assert.ok(!html.includes("Figure « "), `${type} : en-tête de commentaires retiré`);
+  }
+  const { figure, ...sansFigure } = contenu.application;
+  const html = await genererPage({ fiche, contenu: { ...contenu, application: sansFigure } });
+  assert.deepEqual(figuresDe(html), [], "aucune figure sans application.figure");
+  assert.match(html, /const FIGURES = \{\};/);
+  for (const { nom, contenu: c } of await notions()) {
+    const page = await readFile(`${racine}catalogue/${nom}/page.html`, "utf8");
+    assert.deepEqual(figuresDe(page), c.application.figure ? [c.application.figure.type] : [], `${nom} : page.html à jour`);
+  }
 });

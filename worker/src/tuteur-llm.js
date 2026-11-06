@@ -1,26 +1,28 @@
 import { HARNESS_LLM } from "./contexte-llm.js";
+import { lireConfiguration } from "./configuration.js";
 import {
-  MODELE_CHAT_PAR_DEFAUT, MODELE_WORKERS_AI_PAR_DEFAUT, SCHEMA_ROUTAGE,
+  SCHEMA_ROUTAGE,
   appelerClaude, appelerWorkersAI, claudeViaGatewayDisponible, normaliserResultat, promptSysteme
 } from "./llm.js";
 import { reserverTokens, solderTokens } from "./session-llm.js";
 
 /**
  * Workers AI puis repli Claude. Tous les essais, y compris les échecs et le repli, passent par le même
- * compteur D1 de la session (1 000 tokens générés au plus).
+ * compteur D1 de la session (`LIMITE_TOKENS_SESSION` tokens générés au plus, 1 000 par défaut).
  * `demande` : { system, message, schema, normaliser(contenu) → résultat validé (lève sinon) }.
  */
 export async function interrogerFournisseurs(env, session, demande, clientClaude, harness = HARNESS_LLM) {
+  const config = lireConfiguration(env);
   const fournisseurs = [];
   if (env.AI?.run) fournisseurs.push({
-    nom: "cloudflare-workers-ai", modele: env.MODELE_WORKERS_AI || MODELE_WORKERS_AI_PAR_DEFAUT,
+    nom: "cloudflare-workers-ai", modele: config.MODELE_WORKERS_AI,
     appeler: (parametres) => appelerWorkersAI(env, parametres)
   });
   if (env.ANTHROPIC_API_KEY && !claudeViaGatewayDisponible(env)) {
     console.error("llm configuration gateway Anthropic incomplète");
   }
   if (claudeViaGatewayDisponible(env)) fournisseurs.push({
-    nom: "anthropic", modele: env.MODELE_CHAT || MODELE_CHAT_PAR_DEFAUT,
+    nom: "anthropic", modele: config.MODELE_CHAT,
     appeler: (parametres) => appelerClaude(env, parametres, clientClaude)
   });
   const appels = [];
