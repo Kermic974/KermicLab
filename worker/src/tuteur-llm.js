@@ -55,6 +55,8 @@ export async function interrogerFournisseurs(env, session, demande, clientClaude
       llm: {
         fournisseur: fournisseur.nom, modele: fournisseur.modele,
         harness, repli: appels.length > 1, appels,
+        // Transparence : nombre de données personnelles remplacées par un jeton avant l'envoi au modèle.
+        pseudonymisation: { appliquee: true, remplacements: generation.pseudonymisations ?? 0 },
         quota: { limite: quota.limite, consommes: quota.consommes, restants: quota.restants }
       }
     };

@@ -24,3 +24,7 @@
 
 La boîte à idées peut demander au modèle un cadrage d'issue (prompt `cadrage-idee-v1`, sortie JSON : pertinence, titre, besoin, critères, zones, questions). Mêmes règles que le tuteur : opt-in explicite, quota D1 de session partagé (une session est créée si besoin, sans page associée), Workers AI puis repli Claude Haiku, aucun historique, message et contexte traités comme des données. Le cadrage est relu par l'utilisateur avant l'envoi et revalidé par le Worker (bornes, zones connues, modération, aucun lien) ; les pistes de fichiers sont déduites par le serveur, jamais par le modèle.
 
+## Complément — pseudonymisation imposée
+
+Tout texte d'origine utilisateur envoyé à un modèle (relances du tuteur, idées de la boîte à idées) est pseudonymisé par `worker/src/pseudonymisation.js` : e-mails, téléphones, adresses, URL, IP, identifiants numériques (9 chiffres ou plus) et ce qui suit une formule d'identité (« je m'appelle », « j'habite », « mon école est »…) sont remplacés par des jetons cohérents (`[EMAIL_1]`, `[PRENOM_1]`…). La règle est appliquée dans `appelerWorkersAI` et `appelerClaude`, seules fonctions qui appellent un fournisseur : aucun appelant ne peut la contourner. Le prompt système ne contient que du texte du serveur. Aucune table de correspondance n'est conservée (pas de réidentification). Le nombre de remplacements figure dans les métadonnées (`llm.pseudonymisation`). En cas de doute, le masquage est large : mieux vaut masquer trop que pas assez.
+
