@@ -124,12 +124,39 @@ test("bonjour → réponse d'accueil déterministe avec relances, sans modèle n
   const aide = await chat({ message: a.donnees.suggestions[0], langue: "fr" });
   assert.equal(aide.donnees.intention, "aide");
   assert.match(aide.donnees.texte, /notions?/);
-  for (const q of aide.donnees.suggestions) assert.equal((await chat({ message: q, langue: "fr" })).donnees.type, "maquette", q);
+  // Chaque relance proposée aboutit : une page du catalogue ou une réponse de l'assistant, jamais « hors catalogue ».
+  for (const q of aide.donnees.suggestions) assert.ok(["maquette", "conversation"].includes((await chat({ message: q, langue: "fr" })).donnees.type), q);
   const en = await chat({ message: "Hello", langue: "en" });
   assert.equal(en.donnees.suggestions[0], "What can you do?");
   assert.equal(claude.appels.length, 0);
   assert.equal(github.issues.length, 0);
   assert.ok(env.DB.lignes.some((l) => l[0] === "reponse" && l[4] === "conversation"));
+});
+
+test("jeux, labs, progression : réponses sans modèle, relances routées et actions limitées aux écrans", async () => {
+  const claude = creerClaude({});
+  _reinitialiser({ client: claude });
+  const jeux = await chat({ message: "Quels jeux as-tu ?", langue: "fr" });
+  assert.equal(jeux.donnees.intention, "jeux");
+  assert.match(jeux.donnees.texte, /J'ai \d+ jeux/);
+  assert.deepEqual(jeux.donnees.actions, ["jeux"]);
+  for (const q of jeux.donnees.suggestions) {
+    const r = await chat({ message: q, langue: "fr" });
+    assert.equal(r.donnees.type, "maquette", q);
+    assert.match(r.donnees.maquette.id, /^(?:2048|belote|demineur|echecs|mots-croises|mots-fleches|pendu|poker-texas-holdem|sudoku)$/);
+  }
+  const labs = await chat({ message: "c'est quoi les labs ?", langue: "fr" });
+  assert.deepEqual(labs.donnees.actions, ["labs", "notions"]);
+  const progres = await chat({ message: "Où j'en suis ?", langue: "fr" });
+  assert.equal(progres.donnees.resume, "progression", "les chiffres sont calculés par le navigateur");
+  assert.doesNotMatch(JSON.stringify(progres.donnees), /"xp"|"serie"/);
+  assert.deepEqual(progres.donnees.actions, ["progression", "badges", "defi"]);
+  const aide = await chat({ message: "Que sais-tu faire ?", langue: "fr" });
+  assert.match(aide.donnees.texte, /jeux, des labs et de ta progression/);
+  assert.equal(aide.donnees.suggestions[0], "Quels jeux as-tu ?");
+  assert.equal(claude.appels.length, 0);
+  // Une demande de jeu précis reste routée vers ce jeu.
+  assert.equal((await chat({ message: "je veux jouer aux échecs", langue: "fr" })).donnees.maquette.id, "echecs");
 });
 
 test("bonjour suivi d'une question → la page est servie, pas la politesse", async () => {
@@ -141,7 +168,8 @@ test("reponseConversation : texte d'aide avec le nombre de notions", () => {
   const index = { maquettes: [{ id: "a", titre: "A", questions: ["c'est quoi a ?"] }, { id: "b", titre: "B", questions: ["c'est quoi b ?"] }] };
   const r = reponseConversation("aide", "fr", { index, decalage: 0 });
   assert.match(r.texte, /Je connais 2 notions/);
-  assert.deepEqual(r.suggestions, ["C'est quoi a ?", "C'est quoi b ?"]);
+  assert.deepEqual(r.suggestions, ["Quels jeux as-tu ?", "Où j'en suis ?", "C'est quoi a ?", "C'est quoi b ?"]);
+  assert.deepEqual(r.actions, ["jeux", "labs", "progression"]);
   assert.deepEqual(reponseConversation("remerciement", "en", { index, decalage: 1 }).suggestions, ["C'est quoi b ?", "C'est quoi a ?"]);
 });
 

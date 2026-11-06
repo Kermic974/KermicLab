@@ -309,6 +309,12 @@ body:has(.chat.plein-ecran:not([hidden])) > .boite-idees-flottante { display: no
 .puce:hover { background: var(--accent-doux); border-color: var(--accent); transform: translateY(-1px); }
 .occupe .puce { opacity: .55; cursor: wait; }
 .relances .puces-titre { margin-top: 12px; }
+.actions-chat { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.resume-progression { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0 0; }
+.resume-progression div { padding: 8px 10px; border-radius: var(--rayon-petit); background: var(--surface); border: 1px solid var(--bord); }
+.resume-progression dt { font-size: .72rem; font-weight: 700; color: var(--doux); text-transform: uppercase; letter-spacing: .04em; }
+.resume-progression dd { margin: 2px 0 0; font-weight: 750; font-size: 1.05rem; }
+@media (max-width: 480px) { .resume-progression { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .references-llm { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--bord); font-size: .82rem; }
 .references-llm ul { margin: 6px 0 12px; padding-left: 20px; }
 .source-description { display: block; color: var(--doux); }

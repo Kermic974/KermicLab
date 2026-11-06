@@ -110,12 +110,31 @@ function reponseHorsCatalogue(langue) {
 export function reponseConversation(intention, langue, { index = CATALOGUE.index, decalage = jourCourant() } = {}) {
   const t = messages(langue);
   const texte = t.conversation[intention];
-  const exemples = suggestionsCatalogue(index, langue, { decalage, max: intention === "aide" ? MAX_SUGGESTIONS : MAX_RELANCES });
+  const jeux = [...index.maquettes].filter((m) => String(m.sujet ?? "").startsWith("jeux/")).sort((a, b) => a.id.localeCompare(b.id));
+  const sansJeux = { maquettes: index.maquettes.filter((m) => !String(m.sujet ?? "").startsWith("jeux/")) };
+  const exemples = (max, source = index) => suggestionsCatalogue(source, langue, { decalage, max });
+  const premiere = (m) => { const q = (m.questions ?? [])[0]; return q ? q.charAt(0).toUpperCase() + q.slice(1) : null; };
+  const reponses = {
+    salutation: () => ({ suggestions: [t.suggestionAide, ...exemples(MAX_RELANCES)] }),
+    aide: () => ({ suggestions: [t.suggestionJeux, t.suggestionProgression, ...exemples(2)], actions: ["jeux", "labs", "progression"] }),
+    jeux: () => ({
+      texte: texte(jeux.slice(0, 5).map((m) => m.titre), jeux.length),
+      // Questions d'exemple des jeux : toujours routées vers la page du jeu.
+      suggestions: jeux.map((_, i) => premiere(jeux[(i + decalage) % jeux.length])).filter(Boolean).slice(0, MAX_SUGGESTIONS),
+      actions: ["jeux"]
+    }),
+    labs: () => ({ suggestions: [...exemples(2, sansJeux), t.suggestionJeux], actions: ["labs", "notions"] }),
+    // Les chiffres viennent du navigateur (« resume: progression ») : le serveur ne connaît pas la progression.
+    progression: () => ({ suggestions: [t.suggestionJeux, ...exemples(2, sansJeux)], actions: ["progression", "badges", "defi"], resume: "progression" })
+  };
+  const propre = reponses[intention]?.() ?? { suggestions: exemples(MAX_RELANCES) };
   return {
     type: "conversation",
     intention,
-    texte: typeof texte === "function" ? texte(index.maquettes.length) : texte,
-    suggestions: intention === "salutation" ? [t.suggestionAide, ...exemples] : exemples
+    texte: propre.texte ?? (typeof texte === "function" ? texte(index.maquettes.length) : texte),
+    suggestions: propre.suggestions.slice(0, MAX_SUGGESTIONS),
+    ...(propre.actions ? { actions: propre.actions } : {}),
+    ...(propre.resume ? { resume: propre.resume } : {})
   };
 }
 

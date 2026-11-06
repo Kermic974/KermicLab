@@ -17,3 +17,15 @@ test("un message qui contient une vraie question n'est pas pris pour une polites
     assert.equal(intentionConversation(message), null, message);
   }
 });
+
+test("questions sur l'application : jeux, labs et progression de l'élève", () => {
+  for (const [message, intention] of [
+    ["Quels jeux as-tu ?", "jeux"], ["on joue ?", "jeux"], ["What games do you have?", "jeux"],
+    ["C'est quoi les labs ?", "labs"], ["What are the labs?", "labs"],
+    ["Où j'en suis ?", "progression"], ["Mes trophées", "progression"], ["Quel est mon niveau ?", "progression"],
+    ["combien j'ai d'XP ?", "progression"], ["How am I doing?", "progression"]
+  ]) assert.equal(intentionConversation(message), intention, message);
+  for (const message of ["c'est quoi un point d'inflexion ?", "les points d'un cercle", "le niveau de la mer", "explique le jeu de l'offre et de la demande en économie s'il te plaît"]) {
+    assert.equal(intentionConversation(message), null, message);
+  }
+});

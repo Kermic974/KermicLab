@@ -18,11 +18,17 @@ export const MESSAGES = {
     traductionManquante: "Cette page n'existe pas encore dans ta langue : voici la version française.",
     conversation: {
       salutation: "Bonjour ! Je suis Kermiclab, ton assistant pour apprendre. Écris ce que tu veux comprendre (maths, sciences, histoire, jeux…) et je t'ouvre une page interactive à explorer. Choisis une idée ci-dessous ou pose ta propre question !",
-      aide: (total) => `Je connais ${total} notion${total > 1 ? "s" : ""}. Écris simplement ce que tu veux comprendre, par exemple « c'est quoi le sinus ? » : je t'ouvre une page avec une explication, un jeu et une mise en situation. Si l'IA est activée dans ton profil, tu peux ensuite me demander « Explique plus simplement », « Donne-moi un exemple » ou « Propose un petit défi ».`,
+      aide: (total) => `Je connais ${total} notion${total > 1 ? "s" : ""}. Écris simplement ce que tu veux comprendre, par exemple « c'est quoi le sinus ? » : je t'ouvre une page avec une explication, un jeu et une mise en situation. Si l'IA est activée dans ton profil, tu peux ensuite me demander « Explique plus simplement », « Donne-moi un exemple » ou « Propose un petit défi ». Je peux aussi te parler des jeux, des labs et de ta progression.`,
       remerciement: "Avec plaisir ! On continue avec une autre notion ?",
-      "au-revoir": "À bientôt ! Reviens quand tu veux pour garder ta série."
+      "au-revoir": "À bientôt ! Reviens quand tu veux pour garder ta série.",
+      jeux: (titres, total) => `J'ai ${total} jeu${total > 1 ? "x" : ""} pour t'entraîner en t'amusant : ${titres.join(", ")}. Chacun a son Académie avec des leçons, de l'XP, des étoiles et des trophées. Choisis-en un ci-dessous ou ouvre l'écran Jeux !`,
+      labs: "Les Labs sont des applications à manipuler : dans le cercle trigonométrique, tu fais tourner le point, tu observes le sinus et le cosinus, puis tu t'entraînes. Chaque notion a aussi un onglet « Application » pour jouer avec. Ouvre l'écran Labs ou pose-moi une question pour commencer !",
+      progression: "Voici où tu en es. Ces chiffres sont calculés sur ton appareil : rien n'est envoyé à KermicLab. Chaque question rapporte de l'XP, chaque nouvelle notion encore plus, et revenir chaque jour fait grandir ta série !"
     },
     suggestionAide: "Que sais-tu faire ?",
+    suggestionJeux: "Quels jeux as-tu ?",
+    suggestionLabs: "C'est quoi les labs ?",
+    suggestionProgression: "Où j'en suis ?",
     supportMerci: "Merci, ton signalement a bien été transmis.",
     ideeMerci: "Merci pour ton idée ! Elle a bien été transmise à l'équipe KermicLab.",
     ideeHorsSujet: "L'IA n'a pas reconnu une idée pour améliorer KermicLab. Tu peux reformuler, ou l'envoyer telle quelle.",
@@ -46,11 +52,17 @@ export const MESSAGES = {
     traductionManquante: "This page isn't available in your language yet: here is the French version.",
     conversation: {
       salutation: "Hello! I'm Kermiclab, your learning assistant. Tell me what you want to understand (maths, science, history, games…) and I'll open an interactive page for you to explore. Pick an idea below or ask your own question!",
-      aide: (total) => `I know ${total} concept${total > 1 ? "s" : ""}. Just write what you want to understand, for example "what is the sine?": I'll open a page with an explanation, a game and a real-life situation. If AI is enabled in your profile, you can then ask me to "Explain more simply", "Give me an example" or "Suggest a small challenge".`,
+      aide: (total) => `I know ${total} concept${total > 1 ? "s" : ""}. Just write what you want to understand, for example "what is the sine?": I'll open a page with an explanation, a game and a real-life situation. If AI is enabled in your profile, you can then ask me to "Explain more simply", "Give me an example" or "Suggest a small challenge". I can also tell you about games, labs and your progress.`,
       remerciement: "You're welcome! Shall we carry on with another concept?",
-      "au-revoir": "See you soon! Come back whenever you like to keep your streak going."
+      "au-revoir": "See you soon! Come back whenever you like to keep your streak going.",
+      jeux: (titres, total) => `I have ${total} game${total > 1 ? "s" : ""} to practise while having fun: ${titres.join(", ")}. Each one has its Academy with lessons, XP, stars and trophies. Pick one below or open the Games screen!`,
+      labs: "Labs are apps you can play with: in the unit circle, you turn the point, watch the sine and cosine, then practise. Every concept also has an “Application” tab to play with. Open the Labs screen or ask me a question to get started!",
+      progression: "Here is where you stand. These numbers are computed on your device: nothing is sent to KermicLab. Every question earns XP, every new concept even more, and coming back each day grows your streak!"
     },
     suggestionAide: "What can you do?",
+    suggestionJeux: "What games do you have?",
+    suggestionLabs: "What are the labs?",
+    suggestionProgression: "How am I doing?",
     supportMerci: "Thank you, your report has been sent.",
     ideeMerci: "Thanks for your idea! It has been sent to the KermicLab team.",
     ideeHorsSujet: "The AI didn't recognise an idea to improve KermicLab. You can rephrase it, or send it as is.",

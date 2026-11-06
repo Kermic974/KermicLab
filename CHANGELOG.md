@@ -22,6 +22,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Ajouté
+- **L'assistant parle des Jeux, des Labs et de ta progression** : « Quels jeux as-tu ? », « C'est quoi les labs ? », « Où j'en suis ? » (et leurs équivalents anglais) reçoivent une réponse sans modèle avec des relances (questions d'exemple des jeux, toujours routées vers la page) et des boutons qui ouvrent l'écran concerné (liste fermée). Pour la progression, le serveur ne reçoit ni ne renvoie aucun chiffre : niveau, XP, série, notions, badges et modules à trophées sont résumés par le navigateur. Une demande précise (« je veux jouer aux échecs ») ouvre toujours directement le jeu. / The assistant now talks about games, labs and the learner's progress.
 - **Chat en plein écran** : bouton dans l'en-tête du chat pour agrandir le panneau à toute la fenêtre (fil et saisie centrés) puis revenir ; libellé et `aria-pressed` suivent l'état. / Full-screen chat toggle.
 
 ### Modifié (navigation)

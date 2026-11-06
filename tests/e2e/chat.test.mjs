@@ -696,3 +696,33 @@ test("chat : bascule plein écran et retour, sur ordinateur et mobile", async ()
     await contexte.close();
   }
 });
+
+test("assistant : progression résumée sur l'appareil et boutons vers les écrans", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page);
+  await page.route(`${api}/api/chat`, (route) => route.fulfill({
+    contentType: "application/json",
+    headers: { "access-control-allow-origin": serveur.url, "access-control-allow-credentials": "true" },
+    body: JSON.stringify({
+      type: "conversation", intention: "progression", resume: "progression",
+      texte: "Voici où tu en es.", suggestions: ["Quels jeux as-tu ?"],
+      actions: ["progression", "badges", "inconnu", "defi"]
+    })
+  }));
+  await page.goto(serveur.url);
+  await page.click("#ouvrir-chat");
+  await page.fill("#question", "Où j'en suis ?");
+  await page.keyboard.press("Enter");
+  const resume = page.locator("#fil .resume-progression");
+  await resume.waitFor();
+  assert.match(await resume.textContent(), /NiveauNiveau 1/);
+  assert.match(await resume.textContent(), /Série0 jour\(s\)/);
+  assert.match(await resume.textContent(), /Badges0 \/ \d+/);
+  const boutons = page.locator("#fil .actions-chat button");
+  assert.deepEqual(await boutons.allTextContents(), ["Progression", "Mes trophées", "Défi express"], "écran inconnu ignoré");
+  await boutons.filter({ hasText: "Mes trophées" }).click();
+  assert.equal(new URL(page.url()).hash, "#badges");
+  assert.equal(await page.locator("#progres").isVisible(), true);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});

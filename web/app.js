@@ -594,10 +594,60 @@ function referencesLlm(sources, llm) {
   return bloc;
 }
 
-function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, conversation, sources, llm }) {
+/** Écrans que l'assistant peut proposer d'ouvrir (liste fermée : la réponse du serveur ne choisit rien d'autre). */
+const ACTIONS_ECRANS = { jeux: "navJeux", labs: "navLabs", notions: "navNotions", progression: "navProgression", badges: "navBadges", defi: "navDefi" };
+
+function actionsEcrans(actions) {
+  const valides = (Array.isArray(actions) ? actions : []).filter((a) => Object.hasOwn(ACTIONS_ECRANS, a)).slice(0, 3);
+  if (!valides.length) return null;
+  const bloc = element("div", { classe: "actions-chat" });
+  for (const ecran of valides) {
+    const b = element("button", { classe: "secondaire petit-bouton", cle: ACTIONS_ECRANS[ecran], attributs: { type: "button", "data-ecran-chat": ecran } });
+    b.addEventListener("click", () => {
+      naviguer(ecran);
+      // Sur petit écran ou en plein écran, le chat couvre l'écran ouvert : on le replie.
+      if ($("#panneau-chat").classList.contains("plein-ecran") || window.matchMedia?.("(max-width: 720px)").matches) fermerChat();
+    });
+    bloc.append(b);
+  }
+  return bloc;
+}
+
+/** Résumé de progression calculé sur l'appareil (le serveur ne connaît ni l'XP, ni la série, ni les trophées). */
+function resumeProgression() {
+  const p = etat.progres;
+  if (!p) return null;
+  const { niveau } = progression.niveau(p);
+  const badges = p.badges.length;
+  const modules = Object.keys(etat.trophees ?? {}).length;
+  const liste = element("dl", { classe: "resume-progression" });
+  for (const [cle, valeur] of [
+    ["resumeNiveau", t("niveauLong", { n: niveau })],
+    ["resumeXp", `${p.xp ?? 0} XP`],
+    ["resumeSerie", t("resumeJours", { n: progression.serieCourante(p) })],
+    ["resumeNotions", String(p.notions.length)],
+    ["resumeBadges", `${badges} / ${progression.BADGES.length}`],
+    ["resumeModules", String(modules)]
+  ]) {
+    const ligne = element("div");
+    ligne.append(element("dt", { cle }), element("dd", { texte: valeur }));
+    liste.append(ligne);
+  }
+  return liste;
+}
+
+function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, conversation, sources, llm, actions, resume }) {
   const { li, bulle } = creerMessage();
   if (conversation) li.classList.add("conversation");
   bulle.append(element("p", { classe: "texte", texte }));
+  if (conversation && resume === "progression") {
+    const carte = resumeProgression();
+    if (carte) bulle.append(carte);
+  }
+  if (conversation) {
+    const boutons = actionsEcrans(actions);
+    if (boutons) bulle.append(boutons);
+  }
   if (maquette) {
     li.classList.add("maquette");
     li.dataset.maquette = maquette.id;
