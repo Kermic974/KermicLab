@@ -36,6 +36,16 @@ Wrangler demande une authentification interactive avec `npx wrangler login`. Ne 
 
 ## Après publication
 
+### Gateway LLM
+
+Tous les appels pédagogiques passent obligatoirement par **`kermiclab-gateway`**, dans le même compte Cloudflare que le Worker. Workers AI utilise le troisième argument de `AI.run` ; le SDK Anthropic utilise l'URL `anthropic` obtenue par `AI.gateway("kermiclab-gateway").getUrl(...)`, jamais `api.anthropic.com`. Aucun retour direct au fournisseur n'est autorisé en cas d'erreur gateway.
+
+Le repli nécessite aussi le secret **`AI_GATEWAY_TOKEN`** (permission AI Gateway Run), en plus de `ANTHROPIC_API_KEY`. Le créer dans les secrets GitHub Actions pour transmission au Worker, sans le partager dans le chat. Workers AI via binding n'a pas besoin de ce jeton. L'absence du jeton empêche le repli, pas les appels Workers AI.
+
+Le code désactive le cache et la collecte de logs par requête et limite la gateway à un essai ; les réservations D1 et le repli applicatif restent inchangés. Dans les réglages Cloudflare, désactiver aussi les logs de contenu, tout export Logpush de requêtes/réponses et les retries/fallbacks additionnels. Après validation humaine et déploiement, vérifier les métriques agrégées de `kermiclab-gateway` pour une relance, sans consulter ni conserver son texte. L'accès au tableau de bord n'est pas vérifiable depuis cette session.
+
+English: Pedagogical calls must use `kermiclab-gateway`, including the Anthropic SDK fallback. Workers AI uses the binding; fallback requires a separate AI Gateway Run token. No direct-provider bypass, request logging or cache; gateway retries must not add hidden generations outside the application quota.
+
 - Vérifiez que le Worker `https://kermiclab-api.<compte>.workers.dev` répond.
 - Configurez la variable Actions `KERMICLAB_API_URL` avec cette URL, puis relancez un déploiement pour générer le site avec la bonne adresse d’API.
 - Vérifiez `https://kermiclab.pages.dev` et testez une question couverte par le catalogue.

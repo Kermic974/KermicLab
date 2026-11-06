@@ -44,8 +44,8 @@ function creerWorkersAI(resultat, tokens = 100) {
   const appels = [];
   return {
     appels,
-    run: async (modele, parametres) => {
-      appels.push({ modele, parametres });
+    run: async (modele, parametres, options) => {
+      appels.push({ modele, parametres, options });
       return { response: JSON.stringify(resultat), usage: { completion_tokens: tokens } };
     }
   };
@@ -62,9 +62,12 @@ beforeEach(() => {
   globalThis.fetch = github.fetchFactice;
   env = {
     DB: creerD1Llm(), GITHUB_TOKEN: "jeton-test", GITHUB_REPO: "kermic974/trigoLab",
-    ANTHROPIC_API_KEY: "cle-test", ORIGINES_AUTORISEES: "https://kermiclab.pages.dev",
+    ANTHROPIC_API_KEY: "cle-test", AI_GATEWAY_TOKEN: "jeton-gateway-test", ORIGINES_AUTORISEES: "https://kermiclab.pages.dev",
     LLM_ACTIF: "true", LLM_SESSION_SECRET: "secret-factice-de-test-de-plus-de-32-caracteres",
-    AI: { run: async () => { throw new Error("Workers AI indisponible dans ce test"); } }
+    AI: {
+      run: async () => { throw new Error("Workers AI indisponible dans ce test"); },
+      gateway: () => ({ getUrl: async () => `https://gateway.ai.cloudflare.com/v1/${"a".repeat(32)}/kermiclab-gateway/anthropic` })
+    }
   };
   ctx = creerCtx();
   cookie = "";
@@ -131,6 +134,7 @@ test("Workers AI est le moteur principal et demande une sortie JSON structurée"
   assert.equal(ai.appels[0].parametres.response_format.type, "json_schema");
   assert.equal(ai.appels[0].parametres.messages.at(-1).content, "Explique plus simplement (fr)");
   assert.equal(ai.appels[0].parametres.max_tokens, 500);
+  assert.deepEqual(ai.appels[0].options.gateway, { id: "kermiclab-gateway", skipCache: true, collectLog: false });
   assert.match(ai.appels[0].parametres.messages[0].content, /Document de référence/);
   assert.equal(r.donnees.sources[0].url, "https://api.kermiclab.test/maquettes/trigo-cercle?lang=fr");
   assert.equal(r.donnees.llm.modele, ai.appels[0].modele);
@@ -307,6 +311,20 @@ test("GET /api/llm/status expose uniquement la disponibilité effective et sans 
   assert.deepEqual(await sansSecret.json(), { actif: false });
 });
 
+test("sans Workers AI, le repli n'est disponible qu'avec le binding et le jeton gateway", async () => {
+  const lire = async () => (await worker.fetch(
+    new Request("https://api.kermiclab.test/api/llm/status"), env, ctx
+  )).json();
+  delete env.AI.run;
+  assert.deepEqual(await lire(), { actif: true });
+  delete env.AI_GATEWAY_TOKEN;
+  assert.deepEqual(await lire(), { actif: false });
+  const page = await chat({ message: "sinus", langue: "fr", utiliserLlm: true });
+  const suite = await chat({ message: "un exemple", langue: "fr", utiliserLlm: true });
+  assert.equal(page.donnees.type, "maquette");
+  assert.equal(suite.donnees.type, "hors-catalogue");
+  assert.equal(env.DB.sqlite.prepare("SELECT coalesce(sum(tokens_factures), 0) AS n FROM sessions_llm").get().n, 0);
+});
 test("origine non autorisée : refus avant toute session ou dépense LLM", async () => {
   const r = await worker.fetch(new Request("https://api.kermiclab.test/api/chat", {
     method: "POST", headers: { origin: "https://inconnu.invalid", "content-type": "application/json" },

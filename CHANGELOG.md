@@ -5,6 +5,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 ## [Non publié]
 
 ### Modifié
+- Les appels pédagogiques Workers AI et le repli SDK Anthropic passent par `kermiclab-gateway`, sans contournement direct ; cache, collecte de logs et retries additionnels désactivés par requête. Le repli authentifié nécessite le secret `AI_GATEWAY_TOKEN`.
 - **IA encadrée** : Cloudflare Workers AI (`@cf/meta/llama-3.3-70b-instruct-fp8-fast`) devient le moteur principal via le binding `AI`, sans clé API ; Anthropic reste un repli facultatif. Activation explicite, quota D1 atomique partagé de 1 000 tokens générés par session navigateur (expiration serveur 24 h), aucune génération libre hors catalogue. Seules les relances proposées sur une page servie utilisent le modèle ; sources avec liens et descriptions, modèle réel et métadonnées du harness en fin de réponse. Cookie technique signé, aucun historique envoyé au modèle ; accès gratuit provisoire et contrôle d'abonnement au backlog.
 
 - **Navigation** : écrans dédiés aux Labs, Jeux, Défi express, Progression, Trophées et Profil dans la zone principale, liens directs et historique du navigateur. Les Labs ne renvoient plus aux Notions ; une entrée « Notions » conserve le catalogue existant sans modifier sa structure. Les jeux ont leurs propres cartes et recherche. Navigation mobile sur deux rangées.

@@ -3,6 +3,16 @@ import { HARNESS_LLM } from "./contexte-llm.js";
 
 export const MODELE_CHAT_PAR_DEFAUT = "claude-haiku-5-5";
 export const MODELE_WORKERS_AI_PAR_DEFAUT = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+export const GATEWAY_LLM = "kermiclab-gateway";
+
+const ENTETES_GATEWAY = {
+  "cf-aig-skip-cache": "true",
+  "cf-aig-collect-log": "false",
+  "cf-aig-max-attempts": "1"
+};
+
+export const claudeViaGatewayDisponible = (env) => !!env.ANTHROPIC_API_KEY
+  && !!env.AI_GATEWAY_TOKEN && typeof env.AI?.gateway === "function";
 
 export const SCHEMA_ROUTAGE = {
   type: "object",
@@ -101,13 +111,33 @@ export async function routerAvecWorkersAI(env, { message, source, maxTokens }) {
     ],
     max_tokens: maxTokens,
     response_format: { type: "json_schema", json_schema: SCHEMA_ROUTAGE }
+  }, {
+    gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
+    extraHeaders: ENTETES_GATEWAY
   });
   return { contenu: reponse?.response, tokensSortie: reponse?.usage?.completion_tokens };
 }
 
 /** Appelle Claude (Haiku 5.5) pour router la demande avec une sortie JSON structurée. */
 export async function routerAvecClaude(env, { message, source, maxTokens }, client) {
-  const anthropic = client ?? new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0 });
+  if (!env.AI?.gateway) throw new Error("binding AI Gateway absent");
+  if (!env.AI_GATEWAY_TOKEN) throw new Error("AI_GATEWAY_TOKEN absent");
+  const baseURL = await env.AI.gateway(GATEWAY_LLM).getUrl("anthropic");
+  const url = new URL(baseURL);
+  if (url.origin !== "https://gateway.ai.cloudflare.com"
+    || !new RegExp(`^/v1/[a-f0-9]{32}/${GATEWAY_LLM}/anthropic/?$`).test(url.pathname)
+    || url.search || url.hash || url.username || url.password) {
+    throw new Error("URL AI Gateway invalide");
+  }
+  const anthropic = client ?? new Anthropic({
+    apiKey: env.ANTHROPIC_API_KEY, baseURL, maxRetries: 0,
+    defaultHeaders: {
+      ...ENTETES_GATEWAY,
+      "x-api-key": env.ANTHROPIC_API_KEY,
+      Authorization: null,
+      "cf-aig-authorization": `Bearer ${env.AI_GATEWAY_TOKEN}`
+    }
+  });
   const reponse = await anthropic.messages.create({
     model: env.MODELE_CHAT || MODELE_CHAT_PAR_DEFAUT,
     max_tokens: maxTokens,
