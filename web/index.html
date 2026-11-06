@@ -58,6 +58,7 @@
         <button type="button" class="nav-bouton" data-nav="jeux" aria-controls="ecran-jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       </div>
       <button type="button" class="nav-bouton" data-nav="notions" id="ouvrir-catalogue" aria-controls="catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navNotions"></span></button>
+      <button type="button" class="nav-bouton" data-nav="cahiers" aria-controls="ecran-cahiers"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navCahiers"></span></button>
       <button type="button" class="nav-bouton" data-nav="defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span class="nav-texte" data-i18n="navDefi"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <button type="button" class="nav-bouton" data-nav="badges"><svg class="ico" aria-hidden="true"><use href="#i-trophee"/></svg><span class="nav-texte" data-i18n="navBadges"></span></button>
@@ -136,6 +137,41 @@
         <input id="recherche-jeu" type="search" autocomplete="off" data-i18n-placeholder="rechercherJeu">
         <div id="grille-jeux" class="grille-jeux"></div>
         <p id="jeux-vide" class="doux" hidden></p>
+      </section>
+
+      <section id="ecran-cahiers" class="ecran" data-ecrans="cahiers" aria-labelledby="cahiers-titre" hidden>
+        <div class="tete-section">
+          <div><h2 id="cahiers-titre" data-i18n="cahiersDisponibles"></h2><p data-i18n="cahiersIntro"></p></div>
+        </div>
+        <div class="grille-types-cahier">
+          <article class="carte type-cahier">
+            <h3 data-i18n="cahier_brouillon"></h3>
+            <p data-i18n="cahierBrouillonAide"></p>
+            <button type="button" class="bouton" data-cahier-type="brouillon" data-i18n="cahierCreer"></button>
+          </article>
+          <article class="carte type-cahier">
+            <h3 data-i18n="cahier_fiches"></h3>
+            <p data-i18n="cahierFichesAide"></p>
+            <button type="button" class="bouton" data-cahier-type="fiches" data-i18n="cahierCreer"></button>
+          </article>
+          <article class="carte type-cahier">
+            <h3 data-i18n="cahier_vacances"></h3>
+            <p data-i18n="cahierVacancesAide"></p>
+            <button type="button" class="bouton" data-cahier-type="vacances" data-i18n="cahierCreer"></button>
+          </article>
+          <article class="carte type-cahier">
+            <h3 data-i18n="cahier_exercices"></h3>
+            <p data-i18n="cahierExercicesAide"></p>
+            <button type="button" class="bouton" data-cahier-type="exercices" data-i18n="cahierCreer"></button>
+          </article>
+        </div>
+        <section class="cahiers-enregistres" aria-labelledby="cahiers-personnels-titre">
+          <div class="tete-section">
+            <div><h3 id="cahiers-personnels-titre" data-i18n="cahiersPersonnels"></h3><p data-i18n="cahiersStockage"></p></div>
+          </div>
+          <p id="cahiers-vide" class="doux" data-i18n="cahiersVides"></p>
+          <div id="liste-cahiers" class="grille-cahiers" aria-live="polite"></div>
+        </section>
       </section>
 
       <section id="catalogue" class="ecran catalogue" data-ecrans="notions" aria-labelledby="catalogue-titre" hidden>
@@ -338,6 +374,7 @@
     <button type="button" class="nav-mobile-bouton" data-nav="jeux" aria-controls="ecran-jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   </div>
   <button type="button" class="nav-mobile-bouton" data-nav="notions" aria-controls="catalogue"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navNotions"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="cahiers" aria-controls="ecran-cahiers"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navCahiers"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="defi"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg></span><span data-i18n="navDefiCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-reglages"/></svg></span><span data-i18n="navProfil"></span></button>

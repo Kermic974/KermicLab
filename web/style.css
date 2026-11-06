@@ -373,19 +373,33 @@ form#formulaire button::after { content: "➜"; font-size: 1rem; }
 /* ---------- Matières ---------- */
 .grille-matieres { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
 .matiere-carte {
-  padding: 18px; display: flex; flex-direction: column; gap: 12px; width: 100%; text-align: left; font-weight: 400;
+  padding: 18px; display: flex; flex-direction: column; gap: 14px; width: 100%; text-align: left; font-weight: 400;
   background: var(--surface); color: var(--texte); border: 1px solid var(--bord); border-radius: var(--rayon); box-shadow: var(--ombre);
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
 }
 .matiere-carte:hover { background: var(--surface); transform: translateY(-2px); box-shadow: var(--ombre-forte); border-color: var(--bord-fort); }
-.matiere-carte h3 { font-size: 15px; font-weight: 680; }
-.matiere-carte .compte { font: 500 12px var(--police-math); color: var(--doux); }
-.matiere-carte .pourcent { font-size: 26px; font-weight: 760; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
-.matiere-carte .pourcent small { font-size: 15px; color: var(--doux); font-weight: 650; }
-.matiere-bas { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.matiere-entete { display: flex; align-items: center; gap: 11px; }
+.matiere-monogramme { width: 38px; height: 38px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--accent-doux); color: var(--accent-doux-texte); font-size: 16px; font-weight: 760; }
+.matiere-carte h3 { min-width: 0; font-size: 15px; font-weight: 700; }
+.matiere-carte .compte { font-size: 13px; color: var(--doux); }
+.matiere-progression { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.matiere-carte .pourcent { font-size: 19px; font-weight: 760; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1; }
+.matiere-carte .pourcent small { margin-left: 1px; font-size: 12px; color: var(--doux); font-weight: 650; }
+.matiere-bas { display: flex; align-items: center; gap: 8px; }
 .matiere-carte .barre { height: 6px; }
 .matiere-carte.ok .barre > i { background: var(--succes); }
 .matiere-carte.en-cours .barre > i { background: var(--chaud-barre); }
+
+/* ---------- Cahiers ---------- */
+.grille-types-cahier, .grille-cahiers { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+.type-cahier, .cahier-enregistre { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px; }
+.type-cahier h3, .cahier-enregistre h4 { font-size: 16px; font-weight: 720; }
+.type-cahier p { flex: 1; color: var(--doux); }
+.type-cahier .bouton { margin-top: 4px; }
+.cahiers-enregistres { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.cahiers-enregistres .tete-section { margin: 0; }
+.cahier-enregistre { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; }
+.cahier-enregistre .doux { margin-top: 4px; }
 
 /* ---------- Activités ---------- */
 .activites { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -833,12 +847,12 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .reprendre, .suggestion, .semaine, .minilab, .activite { padding: 18px; }
   .grille-matieres { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .matiere-carte { padding: 14px; }
-  .matiere-carte .pourcent { font-size: 22px; }
+  .matiere-carte .pourcent { font-size: 19px; }
   .barres { gap: 6px; }
   .stats dd { font-size: 1.25rem; }
   #toasts { top: 12px; }
   .nav-mobile {
-    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
     background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--bord);
     padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px));

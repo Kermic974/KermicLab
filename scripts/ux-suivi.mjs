@@ -19,6 +19,7 @@ const definitions = {
       ["accueil", "#accueil", "Accueil"],
       ["labs", "#labs", "Labs : applications autonomes"],
       ["jeux", "#jeux", "Jeux : cartes et recherche"],
+      ["cahiers", "#cahiers", "Mes cahiers : écran dédié"],
       ["progression", "#progression", "Progression : écran dédié"],
       ["catalogue", "#notions", "Notions : écran dédié, comme Labs et Jeux"],
       ["conversation", "", "Conversation : poser une question"],

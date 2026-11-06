@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.12.3 · 2026-11-06</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/ca59cc847a5c64e362e210245073cf2226e62aa1" target="_blank" rel="noopener noreferrer" data-lien-actif>ca59cc8</a>.
+  <strong>Squelette v1.13.1 · 2026-11-06</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/66fd799976c6a2ca794a5e517d9462cb3479c46b" target="_blank" rel="noopener noreferrer" data-lien-actif>66fd799</a>.
   <a href="https://github.com/Kermic974/trigoLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -58,6 +58,7 @@
 <li><a href="#accueil">Squelette</a> ↔ <a href="https://kermiclab.online/#accueil" target="_blank" rel="noopener noreferrer" data-lien-actif>Accueil</a></li>
 <li><a href="#labs">Squelette</a> ↔ <a href="https://kermiclab.online/#labs" target="_blank" rel="noopener noreferrer" data-lien-actif>Labs : applications autonomes</a></li>
 <li><a href="#jeux">Squelette</a> ↔ <a href="https://kermiclab.online/#jeux" target="_blank" rel="noopener noreferrer" data-lien-actif>Jeux : cartes et recherche</a></li>
+<li><a href="#cahiers">Squelette</a> ↔ <a href="https://kermiclab.online/#cahiers" target="_blank" rel="noopener noreferrer" data-lien-actif>Mes cahiers : écran dédié</a></li>
 <li><a href="#progression">Squelette</a> ↔ <a href="https://kermiclab.online/#progression" target="_blank" rel="noopener noreferrer" data-lien-actif>Progression : écran dédié</a></li>
 <li><a href="#catalogue">Squelette</a> ↔ <a href="https://kermiclab.online/#notions" target="_blank" rel="noopener noreferrer" data-lien-actif>Notions : écran dédié, comme Labs et Jeux</a></li>
 <li><a href="#conversation">Squelette</a> ↔ <a href="https://kermiclab.online/" target="_blank" rel="noopener noreferrer" data-lien-actif>Conversation : poser une question</a></li>
@@ -70,7 +71,7 @@
 <li><a href="#famille">Squelette</a> ↔ <a href="https://kermiclab.online/#famille" target="_blank" rel="noopener noreferrer" data-lien-actif>Espace famille : écran dédié, masqué tant que connexionActive vaut false</a></li>
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>7faef7f4b664bedccf70cdd997a7eb86579c31da92889152081981958c12db5b</code><br>Empreinte du squelette hors cartouche : <code>7399076407b0d2913552aa3a6b4e30c32ff51130339a33604eefec5740c40748</code></p>
+    <p>Empreinte des sources : <code>8376f4e4fa07d471639edd3e30518a581ce6d17c7bf6dc141aa70a8afbc24188</code><br>Empreinte du squelette hors cartouche : <code>0a1bf8e647a3c44defb82a9f86dc97210d9ab4788c3e352cf1040283e2e51e56</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -83,13 +84,14 @@
         <a href="#accueil" data-nav="accueil">Accueil</a>
         <details open><summary>Labs et jeux</summary><a href="#labs" data-nav="labs">Labs</a> · <a href="#jeux" data-nav="jeux">Jeux</a></details>
         <a href="#catalogue" data-nav="notions">Notions</a>
+        <a href="#cahiers" data-nav="cahiers">Mes cahiers</a>
         <a href="#defi" data-nav="defi">Défi express</a>
         <a href="#progression" data-nav="progression">Progression</a>
         <a href="#badges" data-nav="badges">Mes trophées</a>
       </nav>
       <nav aria-label="Navigation secondaire"><a href="#profil" data-nav="profil">Profil et paramètres</a><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="#support" data-nav="aide">Signaler un problème</a><a href="#participer">Je participe</a></nav>
       <p>E · Explorateur · Niveau 2</p>
-      <p class="note">Sur mobile : barre basse Accueil, groupe Labs/Jeux, Notions, Défi, Progrès, Profil, Je participe. « Mes trophées » reste accessible par la pastille XP de l'en-tête.</p>
+      <p class="note">Sur mobile : barre basse Accueil, groupe Labs/Jeux, Notions, Mes cahiers, Défi, Progrès, Profil, Je participe. « Mes trophées » reste accessible par la pastille XP de l'en-tête.</p>
     </aside>
     <main>
       <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" data-source="web/index.html:dialogue-pseudo">
@@ -112,6 +114,16 @@
         <article class="carte"><h4>Carte de jeu · exemple Échecs</h4><p>Jeux · Échecs · déjà explorée</p><a href="#bulle">Rouvrir la page</a><p>Avant exploration : bouton « Commencer ». Ouverture dans la bulle, retour du focus sur la carte à la fermeture.</p></article>
         <details><summary>Recherche et états vides</summary><p>Recherche sans accents sur le titre ; compteur des résultats. « Aucun jeu ne correspond à ta recherche. » / « Aucun jeu disponible pour le moment. » / « Le catalogue n'a pas pu être chargé. Tu peux quand même poser une question. »</p></details>
       </section>
+      <section class="ecran" id="cahiers" data-ecran="cahiers" data-vue-active="cahiers" data-source="web/index.html:ecran-cahiers">
+        <span class="repere">S05 · Écran Mes cahiers</span><h2>Mes cahiers</h2><p>Choisis un modèle pour créer un cahier gardé dans ce navigateur.</p>
+        <div class="grille"><article class="carte"><h3>Brouillon</h3><p>Note librement tes idées et tes questions.</p><button disabled>Créer ce cahier</button></article>
+          <article class="carte"><h3>Fiches de notes</h3><p>Rassemble les points importants à retenir.</p><button disabled>Créer ce cahier</button></article>
+          <article class="carte"><h3>Cahier de vacances</h3><p>Prépare des révisions à ton rythme.</p><button disabled>Créer ce cahier</button></article>
+          <article class="carte"><h3>Cahier d'exercices</h3><p>Garde tes exercices et tes entraînements ensemble.</p><button disabled>Créer ce cahier</button></article></div>
+        <h3>Tes cahiers</h3><p>Ils restent sur cet appareil. Active « Se souvenir de moi » pour les retrouver après la session.</p>
+        <article class="carte"><h4>Cahier de vacances</h4><p>Créé le 6 nov. 2026</p><button disabled>Supprimer Cahier de vacances</button></article>
+        <p class="note">Les cahiers sont enregistrés dans le stockage de session sans consentement, puis transférés au stockage local si « Se souvenir de moi » est activé. Ils sont effacés avec les autres données de l'appareil.</p>
+      </section>
       <section class="ecran" id="accueil" data-ecran="accueil" data-vue-active="accueil" data-source="web/index.html:accueil">
         <span class="repere">S02 · Tableau de bord</span><h2>Bonjour Explorateur 👋</h2><p>Prêt à comprendre quelque chose de nouveau ?</p>
         <div class="actions"><a class="bouton" href="#badges">🔥 3 j · Niv. 2 · Mes trophées</a><button disabled>Activer le mode sombre</button><label>Langue<select disabled><option>Français</option><option>English</option></select></label></div>
@@ -133,7 +145,7 @@
           <div><article class="carte" data-source="web/app.js:reprendre"><h3>Reprendre ton Lab</h3><p>Maths › Collège</p><h4>Le théorème de Pythagore</h4><p>Rouvre la page là où tu l'as laissée et continue à manipuler.</p><p>Maths : 3 / 36 notions explorées</p><progress value="3" max="36" aria-label="Notions explorées fictives"></progress><a href="notion.html">Rouvrir la page</a><details><summary>État sans historique</summary><h4>Ton premier Lab t'attend</h4><p>Ouvre une notion du catalogue ou pose une question : la page interactive que tu explores apparaîtra ici pour la reprendre plus tard.</p><a href="#catalogue">Explorer le catalogue</a></details></article>
           <article class="carte" data-source="web/app.js:suggestion"><h3>KermicLab te suggère</h3><p>Tu viens d'explorer « Le théorème de Pythagore ». Continue en Maths avec une notion que tu n'as pas encore ouverte.</p><h4>Prochaine notion</h4><p>Maths › Collège · Les fractions · +XP</p><a href="notion.html#application">Commencer</a><p>Suggestion calculée à partir de ta progression dans cette session.</p><details><summary>Autres états de suggestion</summary><p>Début : une notion à manipuler, le cercle. Tout exploré : « Bravo, tu as exploré toutes les notions disponibles ! Pose une question pour aller plus loin. » Catalogue indisponible : message d'erreur et « Écrire ma question ».</p></details></article></div>
         </div>
-        <article class="carte" data-source="web/app.js:matieres"><h3>Tes matières</h3><p>Les notions que tu as déjà explorées, matière par matière.</p><a href="#catalogue" data-nav="notions">Tout voir</a><nav aria-label="Matières"><a href="#catalogue">Maths</a><a href="#catalogue">Physique-chimie</a><a href="#catalogue">SVT</a><a href="#catalogue">Histoire</a><a href="#catalogue">Géographie</a><a href="#catalogue">EMC</a><a href="#catalogue">Philosophie</a><a href="#catalogue-jeux">Jeux</a></nav><p>Chaque carte : n/m notions explorées, pourcentage, barre et pastille À découvrir / En cours / Bien avancé / Terminé.</p><p class="note">Le catalogue public contient aussi Français et SES, mais la liste de matières du tableau de bord est actuellement limitée à ces huit entrées. L'inventaire conserve les pages Français/SES sans inventer des boutons absents du site.</p></article>
+        <article class="carte" data-source="web/app.js:matieres"><h3>Tes matières</h3><p>Les notions que tu as déjà explorées, matière par matière.</p><a href="#catalogue" data-nav="notions">Tout voir</a><nav aria-label="Matières"><a href="#catalogue">Maths</a><a href="#catalogue">Physique-chimie</a><a href="#catalogue">SVT</a><a href="#catalogue">Histoire</a><a href="#catalogue">Géographie</a><a href="#catalogue">EMC</a><a href="#catalogue">Philosophie</a><a href="#catalogue-jeux">Jeux</a></nav><p>Chaque carte présente un monogramme et un titre, le nombre de notions explorées, le pourcentage, une barre de progression et une pastille d'état : À découvrir / En cours / Bien avancé / Terminé.</p><p class="note">Le catalogue public contient aussi Français et SES, mais la liste de matières du tableau de bord est actuellement limitée à ces huit entrées. L'inventaire conserve les pages Français/SES sans inventer des boutons absents du site.</p></article>
         <article class="carte"><h3>Que veux-tu faire maintenant ?</h3><p>Trois façons d'avancer, du plus libre au plus rapide.</p><div class="grille"><div><h4>Explorer</h4><p>Manipule les concepts et observe ce qui se passe.</p><a href="#catalogue">Ouvrir un Lab</a></div><div><h4>Poser une question</h4><p>KermicLab te sert la bonne page.</p><a href="#conversation">Écrire ma question</a></div><div><h4>Défi express</h4><p>5 questions · ≈ 3 min</p><a href="#defi">Lancer le défi</a></div></div></article>
       </section>
       <section class="ecran" id="progression" data-ecran="progression" data-vue-active="progression" data-source="web/index.html:semaine">
