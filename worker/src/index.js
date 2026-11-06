@@ -17,6 +17,34 @@ import { claudeViaGatewayDisponible } from "./llm.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
 const MAX_SUGGESTIONS = 4;
+
+function caviarderTexteDeterministe(texte) {
+  if (typeof texte !== "string") return "";
+  return texte
+    // Emails
+    .replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, "[EMAIL]")
+    // Téléphones (formats internationaux/fr usuels)
+    .replace(/(?:\+?\d{1,3}[\s.-]?)?(?:\(?\d{1,4}\)?[\s.-]?){2,}\d{2,4}\b/g, "[TELEPHONE]")
+    // URLs
+    .replace(/\bhttps?:\/\/[^\s/$.?#].[^\s]*\b/gi, "[URL]")
+    // IPv4
+    .replace(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g, "[IP]")
+    // Formulations d'identité explicites
+    .replace(/\b(je m['’]appelle|mon nom est|my name is)\s+[^\n,.;:!?]+/gi, "$1 [IDENTITE]")
+    // Séquences numériques longues (potentiels identifiants)
+    .replace(/\b\d{6,}\b/g, "[NOMBRE]");
+}
+
+function caviarderContexteDeterministe(contexte) {
+  if (!contexte || typeof contexte !== "object") return contexte;
+  const copie = { ...contexte };
+  for (const cle of Object.keys(copie)) {
+    if (typeof copie[cle] === "string") {
+      copie[cle] = caviarderTexteDeterministe(copie[cle]);
+    }
+  }
+  return copie;
+}
 const MAX_RELANCES = 3;
 const MOTS_ANGLAIS = /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i;
 let limiteur = null;
@@ -421,12 +449,14 @@ async function traiterCadrageIdee(requete, env) {
     return { statut: 200, donnees: { ok: false, texte: moderation.raison.startsWith("donnees-personnelles") ? t.donneesPersonnelles : t.inapproprie } };
   }
   const contexte = contexteIdee(corps?.contexte);
+  const messageCaviarde = caviarderTexteDeterministe(message);
+  const contexteCaviarde = caviarderContexteDeterministe(contexte);
   let reponse, cookie;
   try {
     const ouverte = await sessionPourIdee(requete, env);
     cookie = ouverte.cookie;
     reponse = await interrogerFournisseurs(env, ouverte.session, {
-      system: promptCadrage(langue), message: enveloppeIdee(message, contexte), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
+      system: promptCadrage(langue), message: enveloppeIdee(messageCaviarde, contexteCaviarde), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
     }, clientClaude, HARNESS_CADRAGE);
   } catch {
     console.error("llm cadrage indisponible");
