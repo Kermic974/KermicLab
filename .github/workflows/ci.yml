@@ -125,9 +125,10 @@ jobs:
         env:
           LLM_SESSION_SECRET: ${{ secrets.LLM_SESSION_SECRET }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_GATEWAY_TOKEN: ${{ secrets.AI_GATEWAY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.KERMICLAB_GITHUB_TOKEN }}
         run: |
-          for nom in LLM_SESSION_SECRET ANTHROPIC_API_KEY GITHUB_TOKEN; do
+          for nom in LLM_SESSION_SECRET ANTHROPIC_API_KEY AI_GATEWAY_TOKEN GITHUB_TOKEN; do
             if [ -n "${!nom}" ]; then
               printf '%s' "${!nom}" | npx --yes wrangler@4 secret put "$nom"
             else

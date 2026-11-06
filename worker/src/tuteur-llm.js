@@ -1,7 +1,7 @@
 import { HARNESS_LLM } from "./contexte-llm.js";
 import {
   MODELE_CHAT_PAR_DEFAUT, MODELE_WORKERS_AI_PAR_DEFAUT,
-  normaliserResultat, routerAvecClaude, routerAvecWorkersAI
+  claudeViaGatewayDisponible, normaliserResultat, routerAvecClaude, routerAvecWorkersAI
 } from "./llm.js";
 import { reserverTokens, solderTokens } from "./session-llm.js";
 
@@ -12,7 +12,10 @@ export async function interrogerTuteur(env, session, contexte, clientClaude) {
     nom: "cloudflare-workers-ai", modele: env.MODELE_WORKERS_AI || MODELE_WORKERS_AI_PAR_DEFAUT,
     appeler: (parametres) => routerAvecWorkersAI(env, parametres)
   });
-  if (env.ANTHROPIC_API_KEY) fournisseurs.push({
+  if (env.ANTHROPIC_API_KEY && !claudeViaGatewayDisponible(env)) {
+    console.error("llm configuration gateway Anthropic incomplète");
+  }
+  if (claudeViaGatewayDisponible(env)) fournisseurs.push({
     nom: "anthropic", modele: env.MODELE_CHAT || MODELE_CHAT_PAR_DEFAUT,
     appeler: (parametres) => routerAvecClaude(env, parametres, clientClaude)
   });
