@@ -69,6 +69,8 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   await page.click("#suggestion button");
   await page.locator("#bulle-lab[open]").waitFor();
   await page.click("#bulle-question");
+  await panneau.waitFor({ state: "visible" });
+  await page.waitForFunction(() => document.activeElement.id === "question");
   assert.equal(await panneau.isVisible(), true);
   assert.equal(await page.locator("#bulle-lab").isVisible(), false);
   assert.equal(await page.locator("#question").evaluate((n) => n === document.activeElement), true);
