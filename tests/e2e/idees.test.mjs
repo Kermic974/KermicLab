@@ -91,6 +91,8 @@ test("boîte à idées : onglets des notions, sous-vues des jeux et formulaire d
       const corps = await brouillon(page.locator("body > .boite-idees"));
       assert.match(corps, new RegExp(`page: ${id}`));
       assert.match(corps, new RegExp(`onglet: ${onglet}`));
+      // Page servie par le Worker (/maquettes/…), sans tableau de bord à la racine : repli vers le site.
+      assert.match(await page.locator("body > .boite-idees").getAttribute("href"), /^https:\/\/www\.kermiclab\.online\/#idee=/);
       assert.match(corps, /version: /);
     }
     if (id === "echecs") {
@@ -243,6 +245,16 @@ test("boîte à idées : l'IA prépare le cadrage de l'issue, relu puis joint à
   await page.click("#formulaire-idee button[type=submit]");
   await page.locator("#retour-idee", { hasText: "Merci" }).waitFor();
   assert.equal(envois[0].cadrage.titre, "Ajouter un chronomètre au défi express");
+  // Modifier le texte après la préparation invalide le cadrage : il ne part jamais avec une autre idée.
+  await page.fill("#texte-idee", "idée A");
+  await preparer.click();
+  await bloc.waitFor({ state: "visible" });
+  await page.fill("#texte-idee", "idée B, toute différente");
+  assert.equal(await bloc.isVisible(), false);
+  await page.click("#formulaire-idee button[type=submit]");
+  await page.waitForFunction(() => document.querySelector("#texte-idee").value === "");
+  assert.equal(envois[1].cadrage, undefined);
+  assert.equal(envois[1].message, "idée B, toute différente");
   assert.equal(await bloc.isVisible(), false);
   // Sans la case cochée, l'idée part seule.
   await page.fill("#texte-idee", "autre idée");
@@ -251,7 +263,7 @@ test("boîte à idées : l'IA prépare le cadrage de l'issue, relu puis joint à
   await page.locator("#idee-joindre").uncheck();
   await page.click("#formulaire-idee button[type=submit]");
   await page.waitForFunction(() => document.querySelector("#texte-idee").value === "");
-  assert.equal(envois[1].cadrage, undefined);
+  assert.equal(envois[2].cadrage, undefined);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

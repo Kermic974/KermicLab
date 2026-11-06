@@ -131,6 +131,8 @@ test("démonstration (green card) : parcours parent → enfant sans OAuth ni app
   await page.locator("#famille-enfants li", { hasText: "Lou" }).locator("button.bouton").click();
   await page.locator("#famille-enfant").waitFor({ state: "visible" });
   assert.match(await page.locator("#famille-enfant-texte").textContent(), /Lou/);
+  assert.equal(await page.evaluate(() => Array.isArray(JSON.parse(sessionStorage.getItem("kermiclab:progression")).notions)), true,
+    "la progression garde son tableau de notions après « Utiliser »");
   await capturer(page, "famille-demo-enfant");
   await page.click("#quitter-mode-enfant");
   await page.locator("#famille-invite").waitFor({ state: "visible" });

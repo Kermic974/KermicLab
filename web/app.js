@@ -333,10 +333,10 @@ async function chargerProgressionDistante(enfantId) {
   try {
     const lignes = await apiFamille.progres(enfantId);
     if (!Array.isArray(lignes)) return;
-    // Fusion simple : les notions distantes prennent le dessus.
-    const notions = {};
-    for (const ligne of lignes) notions[ligne.notion_id] = { score: ligne.score, etoiles: ligne.etoiles };
-    etat.progres = { ...etat.progres, notions: { ...(etat.progres.notions || {}), ...notions } };
+    // La progression locale garde un tableau d'identifiants de notions : on y ajoute les notions distantes.
+    const locales = Array.isArray(etat.progres.notions) ? etat.progres.notions : [];
+    const distantes = lignes.map((l) => l?.notion_id).filter((id) => typeof id === "string" && id);
+    etat.progres = { ...etat.progres, notions: [...new Set([...locales, ...distantes])] };
     progression.sauver(stockage(), etat.progres);
     rafraichirPastille();
   } catch { /* hors ligne : la progression locale reste utilisable */ }
@@ -346,7 +346,9 @@ async function synchroniserProgression() {
   const enfant = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
   if (!connexionActive() || !etat.compte || !enfant || !etat.progres) return;
   try {
-    await apiFamille.sauverProgres(enfant.id, etat.progres);
+    // L'API attend un dictionnaire { idNotion: { score, etoiles } } (worker/src/comptes.js, lignesProgres).
+    const notions = Object.fromEntries((Array.isArray(etat.progres.notions) ? etat.progres.notions : []).map((id) => [id, {}]));
+    await apiFamille.sauverProgres(enfant.id, { ...etat.progres, notions });
   } catch { /* hors ligne : nouvel essai à la prochaine progression */ }
 }
 
@@ -1207,7 +1209,7 @@ function nettoyerContexteIdee(brut) {
   if (!brut || typeof brut !== "object") return {};
   return Object.fromEntries(CLES_CONTEXTE_IDEE
     .map((cle) => [cle, brut[cle]])
-    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_\/@-]+$/u.test(v)));
+    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_\/-]+$/u.test(v) && !/\d{5,}/.test(v)));
 }
 
 function ouvrirIdee(contexte = {}) {
@@ -1264,14 +1266,20 @@ async function preparerIdee() {
   if (!message) { retour.textContent = t("ideeIaVide"); $("#texte-idee").focus(); return; }
   const bouton = $("#preparer-idee");
   bouton.disabled = true;
+  afficherCadrage(null);
   retour.textContent = t("ideeIaChargement");
+  const contexteDemande = JSON.stringify(etat.ideeContexte ?? {});
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/idee/cadrage`, {
       method: "POST", credentials: "include", headers: { "content-type": "application/json" },
       body: JSON.stringify({ message, langue: etat.langue, contexte: etat.ideeContexte ?? {}, utiliserLlm: true })
     });
     const d = await r.json();
-    if (d.ok && cadrageValide(d.cadrage)) {
+    // Le texte ou le contexte ont changé pendant l'appel : ce cadrage ne correspond plus à la saisie.
+    if ($("#texte-idee").value.trim() !== message || JSON.stringify(etat.ideeContexte ?? {}) !== contexteDemande) {
+      retour.textContent = "";
+    } else if (d.ok && cadrageValide(d.cadrage)) {
+      etat.ideeCadrageMessage = message;
       afficherCadrage(d.cadrage, d.llm);
       retour.textContent = "";
     } else {
@@ -1297,6 +1305,8 @@ function brancherIdees() {
   document.addEventListener("kermiclab:idee", (e) => { e.preventDefault(); ouvrirIdee(e.detail); });
   brancherDialogue($("#dialogue-idee"), $("#fermer-idee"));
   $("#preparer-idee").addEventListener("click", preparerIdee);
+  // Toute modification du texte invalide le cadrage : il ne doit jamais partir avec une autre idée.
+  $("#texte-idee").addEventListener("input", () => { if (etat.ideeCadrage) afficherCadrage(null); });
   $("#formulaire-idee").addEventListener("submit", async (e) => {
     e.preventDefault();
     const champ = $("#texte-idee");
@@ -1309,7 +1319,7 @@ function brancherIdees() {
         method: "POST", headers: { "content-type": "application/json" },
         body: JSON.stringify({
           message, langue: etat.langue, contexte: etat.ideeContexte ?? {},
-          ...(etat.ideeCadrage && $("#idee-joindre").checked ? { cadrage: etat.ideeCadrage } : {})
+          ...(etat.ideeCadrage && $("#idee-joindre").checked && etat.ideeCadrageMessage === message ? { cadrage: etat.ideeCadrage } : {})
         })
       });
       const d = await r.json();

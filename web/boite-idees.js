@@ -51,7 +51,9 @@
 
   /** Repli sans tableau de bord : le formulaire du site, contexte dans le fragment (jamais envoyé au serveur). */
   function cible(infos) {
-    const url = new URL(/^https?:$/.test(location.protocol) ? `${location.origin}/` : SITE);
+    // Les pages /maquettes/… sont servies par le Worker, sans tableau de bord à la racine : lien vers le site.
+    const tableauDeBord = /^https?:$/.test(location.protocol) && !location.pathname.startsWith("/maquettes/");
+    const url = new URL(tableauDeBord ? `${location.origin}/` : SITE);
     url.hash = `idee=${encodeURIComponent(JSON.stringify(infos))}`;
     return url.href;
   }

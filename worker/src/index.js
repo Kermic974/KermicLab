@@ -290,12 +290,17 @@ async function traiterSupport(requete, env, ctx) {
 
 const CLES_CONTEXTE_IDEE = ["page", "version", "langue", "navigation", "dialogue", "panneau", "module", "onglet", "vues"];
 
-/** Contexte d'une idée : clés connues, valeurs courtes sans caractère spécial (jamais de texte libre). */
+/**
+ * Contexte d'une idée : clés connues, valeurs courtes d'identifiants d'écran (jamais de texte libre).
+ * Ni « @ » ni longue suite de chiffres, et la modération s'applique aussi : une donnée personnelle glissée dans
+ * le contexte ne doit atteindre ni les KPI, ni l'issue, ni le modèle.
+ */
 export function contexteIdee(brut) {
   if (!brut || typeof brut !== "object" || Array.isArray(brut)) return {};
   return Object.fromEntries(CLES_CONTEXTE_IDEE
     .map((cle) => [cle, brut[cle]])
-    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_/@-]+$/u.test(v)));
+    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_/-]+$/u.test(v)
+      && !/\d{5,}/.test(v) && analyser(v).ok));
 }
 
 /**
@@ -365,7 +370,8 @@ async function traiterIdee(requete, env, ctx) {
     await creerOuCommenterIssue(env, {
       label: "idee", sujet: cadrage?.titre ?? `${contexte.page ?? "site"} ${new Date().toISOString().slice(0, 16)}`,
       corps: corpsIdee({ message, langue, contexte, cadrage }),
-      commentaire: `Idée similaire (${langue}), texte saisi par un utilisateur (non fiable) :\n\`\`\`text\n${texteNonFiable(message.slice(0, 500))}\n\`\`\``
+      // Une idée au même titre devient un commentaire : il garde la soumission complète (texte, contexte, cadrage).
+      commentaire: `Nouvelle soumission sur ce sujet.\n\n${corpsIdee({ message, langue, contexte, cadrage })}`
     });
   } catch (e) {
     console.error("idee", e.message);
