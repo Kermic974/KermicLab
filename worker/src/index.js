@@ -11,6 +11,7 @@ import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
+import { pseudonymiser } from "./pseudonymisation.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
 import { claudeViaGatewayDisponible } from "./llm.js";
@@ -280,7 +281,7 @@ async function traiterSupport(requete, env, ctx) {
   try {
     await creerOuCommenterIssue(env, {
       label: "support", sujet: `Signalement ${new Date().toISOString().slice(0, 16)}`,
-      corps: [`Signalement envoyé depuis le chat (${langue}) :`, "", blocNonFiable(texteNonFiable(message)), "", "Issue créée automatiquement par le Worker Kermiclab."].join("\n")
+      corps: [`Signalement envoyé depuis le chat (${langue}) :`, "", blocNonFiable(texteNonFiable(pseudonymiser(message).texte)), "", "Issue créée automatiquement par le Worker Kermiclab."].join("\n")
     });
   } catch (e) {
     console.error("support", e.message);
@@ -342,7 +343,8 @@ export function corpsIdee({ message, langue, contexte, cadrage = null }) {
     type: "idee",
     version: 1,
     donnees: {
-      message, langue, contexte,
+      // Pseudonymisé avant toute publication sur GitHub (système externe), comme avant tout envoi à un modèle.
+      message: pseudonymiser(message).texte, langue, contexte,
       cadrage: cadrage ? { ...cadrage, pistes: pistesFichiers(cadrage.zones, contexte) } : null
     }
   };

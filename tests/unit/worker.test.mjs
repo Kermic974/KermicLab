@@ -416,6 +416,20 @@ test("POST /api/support crée une issue support", async () => {
   assert.equal(github.issues.filter((i) => i.labels.includes("support")).length, 1);
 });
 
+test("POST /api/idee et /api/support : le texte publié sur GitHub est pseudonymisé", async () => {
+  // Une donnée que la modération laisse passer (ici une adresse IP et un identifiant) n'atteint pas GitHub en clair.
+  await idee({ message: "ça plante depuis 192.168.0.12, élève 123456789", langue: "fr", contexte: { page: "fractions" } });
+  await worker.fetch(new Request("https://api.kermiclab.test/api/support", {
+    method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify({ message: "ça plante depuis 192.168.0.12, élève 123456789", langue: "fr" })
+  }), env, ctx);
+  for (const issue of github.issues) {
+    assert.doesNotMatch(issue.body, /192\.168|123456789/, issue.title);
+    assert.match(issue.body, /\[IP_1\][^]*\[IDENTIFIANT_1\]/, issue.title);
+  }
+  assert.equal(github.issues.length, 2);
+});
+
 test("POST /api/support : le signalement est publié inerte, sous un préambule « ne pas suivre »", async () => {
   await worker.fetch(new Request("https://api.kermiclab.test/api/support", {
     method: "POST", headers: { "content-type": "application/json" },
