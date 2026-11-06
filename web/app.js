@@ -13,7 +13,8 @@ const etat = {
   config: null, langue: "fr", textes: {}, envoiEnCours: false, progres: null, suggestions: [], notions: [],
   notionCourante: null, groupesFermes: new Set(), compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {}, collectionTrophees: null,
-  erreurTrophees: false, chargementTrophees: false, ecran: "accueil", llmActif: false, llmDisponible: false
+  erreurTrophees: false, chargementTrophees: false, ecran: "accueil", llmActif: false, llmDisponible: false,
+  defiIa: { ia: false, generationsParJour: 0, restantesServeur: null }
 };
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "jeux"];
@@ -21,6 +22,8 @@ const CLE_MATIERE = "kermiclab:matiere";
 const CLE_THEME = "kermiclab:theme";
 const CLE_LLM = "kermiclab:llm:actif";
 const DEFI_BONNES = [1, 0, 1, 0, 0];
+const CLE_DEFI_IA = "kermiclab:defi:ia-par-jour";
+const CLE_DEFI_COMPTE = "kermiclab:defi:ia-generations";
 const MAX_PUCES = 4;
 const TAILLE_MAX_PUCE = 120;
 const mouvementReduit = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -767,10 +770,16 @@ function rendreTrophees() {
   $("#trophees-resume").textContent = t("tropheesResume", { n: obtenus, m: modules.length });
   $("#trophees-etat").textContent = etat.erreurTrophees ? t("tropheesErreur") : etat.collectionTrophees ? "" : t("tropheesChargement");
   $("#trophees-reessayer").hidden = !etat.erreurTrophees;
+  const titres = { notions: "tropheesNotions", labs: "tropheesLabs", jeux: "tropheesJeux" };
   for (const genre of ["notions", "labs", "jeux"]) {
     const zone = $(`#trophees-${genre}`);
     zone.replaceChildren();
     const selection = modules.filter(([, m]) => m.genre === genre);
+    const obtenusCategorie = selection.reduce((s, [, m]) => s + m.badges.filter((b) => b.obtenu).length, 0);
+    const totalCategorie = selection.reduce((s, [, m]) => s + m.badges.length, 0);
+    $(`[data-trophees-categorie="${genre}"] summary`).textContent = totalCategorie
+      ? `${t(titres[genre])} · ${t("tropheesBadges", { n: obtenusCategorie, m: totalCategorie })}`
+      : t(titres[genre]);
     if (!selection.length) zone.append(element("p", { classe: "doux", cle: "tropheesVide" }));
     for (const [id, m] of selection) {
       const carte = element("article", { classe: "trophee-module", attributs: { "data-trophee-module": id } });
@@ -1062,15 +1071,21 @@ function rafraichirControleLlm() {
   const cle = !etat.llmDisponible ? "llmStatutIndisponible" : etat.llmActif ? "llmStatutActif" : "llmStatutInactif";
   statut.textContent = t(cle);
   rafraichirIdeeIa();
+  rafraichirReglageDefi();
 }
 
 async function chargerStatutLlm() {
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/llm/status`, { cache: "no-store" });
     if (!r.ok) throw new Error(`statut LLM ${r.status}`);
-    etat.llmDisponible = (await r.json()).actif === true;
+    const statut = await r.json();
+    etat.llmDisponible = statut.actif === true;
+    const n = statut.defi?.generationsParJour;
+    etat.defiIa.ia = statut.defi?.ia === true;
+    etat.defiIa.generationsParJour = Number.isInteger(n) ? Math.max(0, Math.min(10, n)) : 0;
   } catch {
     etat.llmDisponible = false;
+    etat.defiIa.ia = false;
     console.error("llm statut indisponible");
   }
   rafraichirControleLlm();
@@ -1106,6 +1121,10 @@ async function demarrer() {
     etat.llmActif = e.currentTarget.checked;
     ecrireCle(sessionPreferences(), CLE_LLM, String(etat.llmActif));
     rafraichirControleLlm();
+  });
+  $("#defi-ia-par-jour").addEventListener("change", (e) => {
+    ecrireCle(preferences(), CLE_DEFI_IA, e.currentTarget.value);
+    rafraichirReglageDefi();
   });
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
@@ -1763,26 +1782,110 @@ function rendreSemaine() {
   $("#semaine-vide").hidden = max > 0;
 }
 
-/* ---------- Défi express (5 questions, XP une fois par jour) ---------- */
+/* ---------- Défi express (5 défis, XP une fois par jour ; générés par l'IA si autorisé, ADR 0018) ---------- */
 
-const defi = { index: 0, bonnes: 0, resultats: [] };
+const NB_DEFIS = 5;
+const defi = { index: 0, bonnes: 0, resultats: [], questions: [], source: "banque", jeton: 0 };
 
-function ouvrirDefi() {
+/** Banque fixe (i18n) : sert sans IA et complète un lot généré incomplet. */
+const questionBanque = (q) => ({
+  banque: q, format: "qcm", enonce: { cle: `defiQ${q}` }, explication: { cle: `defiQ${q}E` },
+  choix: [1, 2, 3].map((r) => ({ cle: `defiQ${q}R${r}` })), bonne: DEFI_BONNES[q - 1]
+});
+const questionIa = (d) => ({
+  notion: d.notion, titre: d.titre, format: d.format, enonce: { texte: d.enonce }, explication: { texte: d.explication },
+  choix: d.choix.map((c) => ({ texte: c })), bonne: d.bonne
+});
+
+function generationsDefiDuJour() {
+  try {
+    const brut = JSON.parse(lireCle(preferences(), CLE_DEFI_COMPTE) || "null");
+    return brut?.jour === progression.jourLocal() && Number.isInteger(brut.n) ? brut.n : 0;
+  } catch { return 0; }
+}
+function noterGenerationDefi() {
+  ecrireCle(preferences(), CLE_DEFI_COMPTE, JSON.stringify({ jour: progression.jourLocal(), n: generationsDefiDuJour() + 1 }));
+}
+/** Réglage de l'écran Configuration : générations IA voulues par jour (0 = questions fixes), plafonné par le serveur. */
+function defiIaParJour() {
+  const max = etat.defiIa.generationsParJour;
+  const brut = lireCle(preferences(), CLE_DEFI_IA);
+  const n = brut === null ? max : Number(brut);
+  return Number.isInteger(n) ? Math.max(0, Math.min(max, n)) : max;
+}
+function defiIaRestantes() {
+  const locales = Math.max(0, defiIaParJour() - generationsDefiDuJour());
+  return etat.defiIa.restantesServeur === null ? locales : Math.min(locales, etat.defiIa.restantesServeur);
+}
+const defiIaPossible = () => etat.llmDisponible && etat.llmActif && etat.defiIa.ia && defiIaRestantes() > 0;
+
+function rafraichirReglageDefi() {
+  const select = $("#defi-ia-par-jour");
+  if (!select) return;
+  const max = etat.defiIa.generationsParJour;
+  const options = Array.from({ length: max + 1 }, (_, n) => {
+    const o = document.createElement("option");
+    o.value = String(n);
+    o.textContent = n === 0 ? t("defiIaAucun") : t("defiIaParJour", { n });
+    return o;
+  });
+  select.replaceChildren(...options);
+  select.value = String(defiIaParJour());
+  select.disabled = !etat.llmDisponible || !etat.defiIa.ia || max === 0;
+  const cle = !etat.llmDisponible || !etat.defiIa.ia || max === 0 ? "defiIaIndisponible"
+    : !etat.llmActif ? "defiIaConsentement" : defiIaParJour() === 0 ? "defiIaDesactive" : "defiIaRestantes";
+  $("#defi-ia-etat").textContent = t(cle, { n: defiIaRestantes() });
+}
+
+async function ouvrirDefi() {
+  const jeton = ++defi.jeton;
   defi.index = 0; defi.bonnes = 0; defi.resultats = [];
+  let generes = [];
+  defi.source = "banque";
+  if (defiIaPossible()) {
+    $("#defi-corps").replaceChildren(element("p", { classe: "defi-chargement doux", cle: "defiChargement", attributs: { role: "status" } }));
+    rafraichirDefiTextes();
+    try {
+      const r = await fetch(`${etat.config.apiUrl}/api/defi`, {
+        method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ langue: etat.langue, matiere: etat.matiere, utiliserLlm: true })
+      });
+      const d = await r.json();
+      if (jeton !== defi.jeton) return;
+      if (Number.isInteger(d.quota?.restantes)) etat.defiIa.restantesServeur = d.quota.restantes;
+      if (d.source === "ia" && Array.isArray(d.defis)) {
+        generes = d.defis.slice(0, NB_DEFIS).map(questionIa);
+        defi.source = "ia";
+        noterGenerationDefi();
+      }
+    } catch {
+      console.error("défi IA indisponible");
+    }
+    if (jeton !== defi.jeton) return;
+  }
+  const banque = [1, 2, 3, 4, 5].map(questionBanque);
+  defi.questions = [...generes, ...banque.slice(0, NB_DEFIS - generes.length)];
   rendreQuestionDefi();
   rafraichirDefiTextes();
+  rafraichirReglageDefi();
 }
 
 function rafraichirDefiTextes() {
   const fait = etat.progres.defiJour === progression.jourLocal();
-  $("#defi-sur-titre").textContent = fait ? t("defiFaitAujourdhui") : t("defiSurTitre", { n: 5 * progression.XP_DEFI_BONNE });
+  $("#defi-sur-titre").textContent = fait ? t("defiFaitAujourdhui") : t("defiSurTitre", { n: NB_DEFIS * progression.XP_DEFI_BONNE });
   const compteur = $("#defi .defi-haut .math");
-  if (compteur) compteur.textContent = t("defiProgression", { n: defi.index + 1, m: DEFI_BONNES.length });
+  if (compteur) compteur.textContent = t("defiProgression", { n: defi.index + 1, m: defi.questions.length });
+  const source = $("#defi-source");
+  if (source) {
+    const cle = defi.source === "ia" ? "defiSourceIa"
+      : etat.llmDisponible && etat.defiIa.ia && !etat.llmActif ? "defiIaConsentement" : "defiSourceBanque";
+    source.textContent = t(cle);
+  }
 }
 
 function pointsDefi() {
   const zone = element("div", { classe: "defi-points", attributs: { "aria-hidden": "true" } });
-  DEFI_BONNES.forEach((_, i) => {
+  defi.questions.forEach((_, i) => {
     const r = defi.resultats[i];
     zone.append(element("i", { classe: r === true ? "juste" : r === false ? "faux" : i === defi.index ? "courant" : "" }));
   });
@@ -1791,34 +1894,44 @@ function pointsDefi() {
 
 function rendreQuestionDefi() {
   const corps = $("#defi-corps");
-  const q = defi.index + 1;
+  const item = defi.questions[defi.index];
   const haut = element("div", { classe: "defi-haut" });
-  haut.append(pointsDefi(), element("span", { classe: "doux petit math", texte: t("defiProgression", { n: q, m: DEFI_BONNES.length }) }));
-  const question = element("p", { classe: "defi-question", cle: `defiQ${q}`, attributs: { id: "defi-question" } });
+  haut.append(pointsDefi(), element("span", { classe: "doux petit math", texte: t("defiProgression", { n: defi.index + 1, m: defi.questions.length }) }));
+  const etiquette = element("p", { classe: "defi-etiquette doux petit" });
+  etiquette.append(element("span", { cle: `defiFormat_${item.format}` }));
+  if (item.titre) etiquette.append(element("span", { texte: ` · ${item.titre}` }));
+  const question = element("p", { classe: "defi-question", ...item.enonce, attributs: { id: "defi-question" } });
   const reponses = element("div", { classe: "reponses", attributs: { role: "group", "aria-labelledby": "defi-question" } });
-  [1, 2, 3].forEach((r, i) => {
+  item.choix.forEach((c, i) => {
     const b = element("button", { classe: "reponse", attributs: { type: "button" } });
-    b.append(element("span", { classe: "lettre", texte: "ABC"[i], attributs: { "aria-hidden": "true" } }), element("span", { cle: `defiQ${q}R${r}` }));
+    b.append(element("span", { classe: "lettre", texte: "ABC"[i], attributs: { "aria-hidden": "true" } }), element("span", c));
     b.addEventListener("click", () => repondreDefi(i));
     reponses.append(b);
   });
-  corps.replaceChildren(haut, question, reponses, element("div", { attributs: { id: "defi-retour", "aria-live": "assertive" } }));
+  corps.replaceChildren(haut, etiquette, question, reponses, element("div", { attributs: { id: "defi-retour", "aria-live": "assertive" } }));
 }
 
 function repondreDefi(choix) {
-  const q = defi.index + 1;
-  const juste = choix === DEFI_BONNES[defi.index];
+  const item = defi.questions[defi.index];
+  const juste = choix === item.bonne;
   defi.resultats[defi.index] = juste;
   if (juste) defi.bonnes += 1;
   document.querySelectorAll("#defi .reponse").forEach((b, i) => {
     b.disabled = true;
-    b.classList.add(i === DEFI_BONNES[defi.index] ? "juste" : i === choix ? "faux" : "estompee");
+    b.classList.add(i === item.bonne ? "juste" : i === choix ? "faux" : "estompee");
   });
   $("#defi .defi-points").replaceWith(pointsDefi());
   const retour = element("div", { classe: `retour-defi ${juste ? "juste" : "faux"}` });
-  retour.append(element("strong", { cle: juste ? "defiJuste" : "defiFaux" }), element("span", { cle: `defiQ${q}E` }));
-  const fin = defi.index === DEFI_BONNES.length - 1;
+  retour.append(element("strong", { cle: juste ? "defiJuste" : "defiFaux" }), element("span", item.explication));
+  const fin = defi.index === defi.questions.length - 1;
   const suite = element("div", { classe: "defi-suite" });
+  if (item.notion) {
+    const revoir = element("button", { classe: "bouton secondaire-bouton", cle: "defiRevoirNotion", attributs: { type: "button" } });
+    revoir.addEventListener("click", () => ouvrirNotion(notionParId(item.notion) ?? { id: item.notion, titre: item.titre }));
+    const signaler = element("button", { classe: "bouton secondaire-bouton", cle: "defiSignaler", attributs: { type: "button" } });
+    signaler.addEventListener("click", ouvrirSignalement);
+    suite.append(signaler, revoir);
+  }
   const b = bouton(fin ? "defiResultat" : "defiSuivante", "i-fleche");
   b.addEventListener("click", () => { if (fin) terminerDefi(); else { defi.index += 1; rendreQuestionDefi(); $("#defi .reponse")?.focus(); } });
   suite.append(b);
@@ -1830,12 +1943,14 @@ function terminerDefi() {
   const resultat = progression.enregistrerDefi(etat.progres, defi.bonnes);
   appliquerResultat(resultat);
   const bloc = element("div", { classe: "resultat-defi" });
-  const message = defi.bonnes === DEFI_BONNES.length ? "defiParfait" : defi.bonnes >= 3 ? "defiBien" : "defiEncore";
-  bloc.append(pointsDefi(), element("div", { classe: "score", texte: `${defi.bonnes}/${DEFI_BONNES.length}` }), element("p", { cle: message }),
+  const total = defi.questions.length;
+  const general = defi.source === "ia" ? "General" : "";
+  const message = `${defi.bonnes === total ? "defiParfait" : defi.bonnes >= 3 ? "defiBien" : "defiEncore"}${general}`;
+  bloc.append(pointsDefi(), element("div", { classe: "score", texte: `${defi.bonnes}/${total}` }), element("p", { cle: message }),
     element("span", { classe: "pastille ok", ...(resultat.xpGagne ? { texte: t("xpGagne", { n: resultat.xpGagne }) } : { cle: "defiDejaFait" }) }));
   const actions = element("div", { classe: "defi-suite" });
   const recommencer = element("button", { classe: "bouton secondaire-bouton", cle: "defiRecommencer", attributs: { type: "button" } });
-  recommencer.addEventListener("click", () => { defi.index = 0; defi.bonnes = 0; defi.resultats = []; rendreQuestionDefi(); });
+  recommencer.addEventListener("click", () => { void ouvrirDefi(); });
   const terminer = element("button", { classe: "bouton", cle: "defiTerminer", attributs: { type: "button" } });
   terminer.addEventListener("click", () => naviguer("accueil"));
   actions.append(recommencer, terminer);

@@ -381,6 +381,12 @@
     </label>
     <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
   </div>
+  <div class="defi-reglage">
+    <h3 data-i18n="defiIaTitre"></h3>
+    <label for="defi-ia-par-jour" class="etiquette-champ" data-i18n="defiIaReglage"></label>
+    <select id="defi-ia-par-jour" aria-describedby="defi-ia-etat" disabled></select>
+    <span id="defi-ia-etat" class="doux petit" aria-live="polite"></span>
+  </div>
 </section>
 
 <!-- Espace famille (ADR 0017) : accessible seulement si connexionActive ; un compte parent crée les profils enfants. -->
@@ -505,6 +511,7 @@
     </div>
     <button type="button" class="secondaire" id="fermer-defi" data-nav="accueil" data-i18n="navAccueil"></button>
   </div>
+  <p id="defi-source" class="doux petit"></p>
   <div id="defi-corps"></div>
 </section>
 
@@ -534,15 +541,15 @@
   <p class="doux petit" id="stat-serie-max"></p>
   <h3 data-i18n="badgesTitre"></h3>
   <ul id="liste-badges" class="badges"></ul>
-  <details class="trophees-categorie">
+  <details class="trophees-categorie" data-trophees-categorie="notions">
     <summary data-i18n="tropheesNotions"></summary>
     <div id="trophees-notions"></div>
   </details>
-  <details class="trophees-categorie" open>
+  <details class="trophees-categorie" data-trophees-categorie="labs" open>
     <summary data-i18n="tropheesLabs"></summary>
     <div id="trophees-labs"></div>
   </details>
-  <details class="trophees-categorie" open>
+  <details class="trophees-categorie" data-trophees-categorie="jeux" open>
     <summary data-i18n="tropheesJeux"></summary>
     <div id="trophees-jeux"></div>
   </details>
