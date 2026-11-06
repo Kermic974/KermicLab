@@ -13,6 +13,8 @@ test("défauts : sans variable, la configuration reprend les valeurs historiques
   assert.equal(c.DEFI_GENERATIONS_JOUR, 3);
   assert.equal(c.MODELE_DEFI, "custom/haiku");
   assert.equal(c.MODELE_CHAT, "claude-haiku-5-5");
+  assert.equal(c.MODELE_CAHIERS, "custom/sonnet-5-5");
+  assert.equal(c.MAX_TOKENS_CAHIERS, 100000);
   assert.deepEqual(c.SKILLS_ACTIFS, Object.keys(SKILLS));
   assert.ok(Object.isFrozen(c));
 });
@@ -23,6 +25,8 @@ test("entiers bornés min–max, valeurs invalides ramenées au défaut", () => 
   assert.equal(parametre({ DEFI_GENERATIONS_JOUR: "-2" }, "DEFI_GENERATIONS_JOUR"), 0);
   assert.equal(parametre({ DEFI_GENERATIONS_JOUR: "2.5" }, "DEFI_GENERATIONS_JOUR"), 3);
   assert.equal(parametre({ TAILLE_MAX_MESSAGE: "abc" }, "TAILLE_MAX_MESSAGE"), 500);
+  assert.equal(parametre({ MAX_TOKENS_CAHIERS: "200000" }, "MAX_TOKENS_CAHIERS"), 128000);
+  assert.equal(parametre({ MAX_TOKENS_CAHIERS: "10" }, "MAX_TOKENS_CAHIERS"), 1000);
   assert.throws(() => parametre({}, "INCONNU"));
 });
 

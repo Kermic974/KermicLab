@@ -360,7 +360,7 @@ test("configuration : un skill retiré de SKILLS_ACTIFS n'appelle aucun modèle"
 test("configuration publique : paramètres par module, sans secret", async () => {
   env.MODELE_DEFI = "custom/sonnet";
   const corps = await (await worker.fetch(new Request("https://api.kermiclab.test/api/llm/status"), env, ctx)).json();
-  assert.deepEqual(corps.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi"]);
+  assert.deepEqual(corps.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers"]);
   const defi = corps.configuration.modules.find((m) => m.id === "defi");
   assert.equal(defi.parametres.find((p) => p.cle === "MODELE_DEFI").valeur, "custom/sonnet");
   const texte = JSON.stringify(corps);

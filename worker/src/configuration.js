@@ -4,7 +4,7 @@
 // Aucun secret ici : les secrets (clés, jetons) ne sont jamais lus ni exposés par ce module.
 
 /** Modules fonctionnels, dans l'ordre d'affichage de l'écran Configuration. */
-export const MODULES = Object.freeze(["general", "tuteur", "defi"]);
+export const MODULES = Object.freeze(["general", "tuteur", "defi", "cahiers"]);
 
 /**
  * Skills LLM : une consigne système versionnée par module, activable séparément via `SKILLS_ACTIFS`.
@@ -33,7 +33,10 @@ export const PARAMETRES = Object.freeze([
   { cle: "MAX_TOKENS_APPEL", module: "tuteur", type: "entier", defaut: 500, min: 100, max: 1000 },
   { cle: "MODELE_DEFI", module: "defi", type: "alias", defaut: "custom/haiku" },
   { cle: "DEFI_GENERATIONS_JOUR", module: "defi", type: "entier", defaut: 3, min: 0, max: 10 },
-  { cle: "MAX_TOKENS_DEFI", module: "defi", type: "entier", defaut: 1500, min: 500, max: 3000 }
+  { cle: "MAX_TOKENS_DEFI", module: "defi", type: "entier", defaut: 1500, min: 500, max: 3000 },
+  // Mes cahiers : alias AI Gateway Sonnet 5.5, budget de sortie large (plafond de 128 000 tokens du modèle).
+  { cle: "MODELE_CAHIERS", module: "cahiers", type: "alias", defaut: "custom/sonnet-5-5" },
+  { cle: "MAX_TOKENS_CAHIERS", module: "cahiers", type: "entier", defaut: 100000, min: 1000, max: 128000 }
 ].map((p) => Object.freeze(p)));
 
 const PAR_CLE = new Map(PARAMETRES.map((p) => [p.cle, p]));
