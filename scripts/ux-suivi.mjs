@@ -20,7 +20,7 @@ const definitions = {
       ["labs", "#labs", "Labs : applications autonomes"],
       ["jeux", "#jeux", "Jeux : cartes et recherche"],
       ["progression", "#progression", "Progression : écran dédié"],
-      ["catalogue", "", "Notions : cliquer sur Notions pour ouvrir le panneau"],
+      ["catalogue", "#notions", "Notions : écran dédié, comme Labs et Jeux"],
       ["conversation", "", "Conversation : poser une question"],
       ["bulle", "", "Bulle Lab : ouvrir une notion du catalogue"],
       ["defi", "#defi", "Défi express : écran dédié"],

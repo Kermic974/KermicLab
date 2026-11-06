@@ -125,7 +125,7 @@ def ajouter_idees(html):
     textes = {}
     for fichier in sorted((ROOT / "web" / "i18n").glob("*.json")):
         traduction = json.loads(fichier.read_text(encoding="utf-8"))
-        textes[fichier.stem] = {k: v for k, v in traduction.items() if k.startswith("idee")}
+        textes[fichier.stem] = {k: v for k, v in traduction.items() if k in ("ideeAction", "ideeAvertissement")}
     version = re.search(r"const VERSION = '([^']+)';", ENTRY.read_text(encoding="utf-8"))
     if not version:
         raise BuildError("version de l’application autonome introuvable")

@@ -50,6 +50,16 @@ jobs:
           npm install --no-save playwright@1.63.0
           npx playwright install --with-deps chromium
       - run: npm run test:e2e
+        env:
+          # Captures d'écran des parcours clés (documentation), publiées dans l'artefact « captures ».
+          KERMICLAB_CAPTURES: captures
+      - uses: actions/upload-artifact@v7
+        if: ${{ always() }}
+        with:
+          name: captures
+          path: captures/
+          if-no-files-found: ignore
+          retention-days: 14
       - uses: actions/upload-artifact@v7
         with:
           name: build

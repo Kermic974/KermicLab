@@ -4,11 +4,13 @@ import { readFile, readdir } from "node:fs/promises";
 const racine = new URL("../../", import.meta.url);
 const script = await readFile(new URL("web/boite-idees.js", racine), "utf8");
 const style = await readFile(new URL("web/boite-idees.css", racine), "utf8");
+/** Seuls le libellé et l'infobulle voyagent dans les pages : le formulaire vit dans le tableau de bord. */
+const CLES = ["ideeAction", "ideeAvertissement"];
 const textes = {};
 for (const fichier of await readdir(new URL("web/i18n/", racine))) {
   if (!fichier.endsWith(".json")) continue;
   const traduction = JSON.parse(await readFile(new URL(`web/i18n/${fichier}`, racine), "utf8"));
-  textes[fichier.slice(0, -5)] = Object.fromEntries(Object.entries(traduction).filter(([cle]) => cle.startsWith("idee")));
+  textes[fichier.slice(0, -5)] = Object.fromEntries(Object.entries(traduction).filter(([cle]) => CLES.includes(cle)));
 }
 const empreinte = (contenu) => createHash("sha256").update(contenu).digest("hex").slice(0, 10);
 

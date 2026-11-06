@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 
 // Comptes famille (ADR 0017) : profil local par défaut, compte parent nécessaire pour créer un profil enfant.
 let serveur, nav, htmlMaquette, api, config;
@@ -103,5 +103,60 @@ test("parent connecté : création d'un profil enfant avec consentement obligato
   assert.equal(await page.locator("#famille-enfant-texte").textContent(), "Cet appareil utilise le profil de Tom.");
   assert.equal(await page.locator("#famille-parent").isHidden(), true, "en mode enfant, la gestion des profils est masquée");
   assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("démonstration (green card) : parcours parent → enfant sans OAuth ni appel au Worker, puis sortie", async () => {
+  const { page, contexte, erreurs, appels } = await demarrer();
+  await page.goto(`${serveur.url}/?demo=famille#famille`);
+  const bandeau = page.locator("#bandeau-demo");
+  await bandeau.waitFor({ state: "visible" });
+  assert.match(await bandeau.textContent(), /rien n’est envoyé au serveur/);
+  await page.locator("#famille-invite").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#essayer-demo").isVisible(), false);
+  assert.equal(await page.locator("#famille-demo-note").isVisible(), true);
+  await capturer(page, "famille-demo-invitation");
+  await page.click("#connexion-google");
+  await page.locator("#famille-parent").waitFor({ state: "visible" });
+  await page.locator("#famille-ajout summary").click();
+  await page.fill("#enfant-prenom", "Lou");
+  await page.check("input[name=enfant-tranche][value='6-10']");
+  await page.check("#enfant-consentement");
+  await page.click("#creer-enfant");
+  await page.locator("#famille-enfants li", { hasText: "Lou" }).waitFor();
+  await capturer(page, "famille-demo-parent");
+  await page.reload();
+  await page.locator("#famille-enfants li", { hasText: "Lou" }).waitFor();
+  assert.equal(await bandeau.isVisible(), true, "la démo survit au rechargement de l'onglet");
+  await page.locator("#famille-enfants li", { hasText: "Lou" }).locator("button.bouton").click();
+  await page.locator("#famille-enfant").waitFor({ state: "visible" });
+  assert.match(await page.locator("#famille-enfant-texte").textContent(), /Lou/);
+  assert.equal(await page.evaluate(() => Array.isArray(JSON.parse(sessionStorage.getItem("kermiclab:progression")).notions)), true,
+    "la progression garde son tableau de notions après « Utiliser »");
+  await capturer(page, "famille-demo-enfant");
+  await page.click("#quitter-mode-enfant");
+  await page.locator("#famille-invite").waitFor({ state: "visible" });
+  await page.click("#quitter-demo");
+  await page.waitForURL((url) => !url.search.includes("demo"));
+  await page.locator("#grille-matieres .matiere-carte").first().waitFor();
+  assert.equal(await bandeau.isVisible(), false);
+  assert.equal(await page.locator("#entree-famille").isVisible(), false, "hors démo, l'Espace famille reste fermé (connexionActive = false)");
+  assert.deepEqual(appels.filter((a) => !a.endsWith("/auth/me")), [], "aucun appel aux comptes pendant la démo");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("connexion réelle : fournisseur non configuré → message et proposition de démonstration, sans redirection", async () => {
+  const { page, contexte } = await demarrer({ connexion: true });
+  await page.route(`${api}/auth/fournisseurs`, (r) => r.fulfill({ contentType: "application/json", headers: cors(), body: JSON.stringify({ google: false, microsoft: false }) }));
+  await page.goto(`${serveur.url}/#famille`);
+  await page.locator("#famille-invite").waitFor({ state: "visible" });
+  await page.click("#connexion-google");
+  await page.locator("#famille-etat", { hasText: "pas encore ouverte" }).waitFor();
+  await capturer(page, "famille-connexion-indisponible");
+  assert.equal(new URL(page.url()).pathname, "/");
+  await page.click("#essayer-demo");
+  await page.locator("#bandeau-demo").waitFor({ state: "visible" });
+  assert.match(page.url(), /demo=famille/);
   await contexte.close();
 });

@@ -1,6 +1,6 @@
 /**
  * Journalisation anonyme des KPI dans D1. Aucune IP, aucun texte de message n'est stocké.
- * Types : demande, maquette_servie, exception, reponse, refus, erreur, support.
+ * Types : demande, maquette_servie, exception, reponse, refus, erreur, support, idee.
  */
 export async function journaliser(env, evenement) {
   if (!env.DB) return;

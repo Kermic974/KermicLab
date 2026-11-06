@@ -31,7 +31,7 @@ test("Workers AI : gateway obligatoire, pas de cache ni de journal, un seul essa
     return { response: "réponse", usage: { completion_tokens: 42 } };
   } } }, contexte);
   assert.equal(appels, 1);
-  assert.deepEqual(resultat, { contenu: "réponse", tokensSortie: 42 });
+  assert.deepEqual(resultat, { contenu: "réponse", tokensSortie: 42, pseudonymisations: 0 });
 });
 
 test("Workers AI : une erreur gateway ne déclenche jamais d'appel direct", async () => {
@@ -64,7 +64,7 @@ test("SDK Anthropic : la vraie requête HTTP cible uniquement la gateway authent
       usage: { input_tokens: 10, output_tokens: 42 }
     });
   };
-  assert.deepEqual(await routerAvecClaude(envClaude(), contexte), { contenu: "réponse", refus: false, tokensSortie: 42 });
+  assert.deepEqual(await routerAvecClaude(envClaude(), contexte), { contenu: "réponse", refus: false, tokensSortie: 42, pseudonymisations: 0 });
   assert.equal(appels, 1);
 });
 
@@ -95,4 +95,25 @@ test("SDK Anthropic : une erreur gateway n'est pas réessayée ni envoyée au fo
   };
   await assert.rejects(routerAvecClaude(envClaude(), contexte), /503/);
   assert.deepEqual(urls, [`${baseURL}/v1/messages`]);
+});
+
+test("pseudonymisation imposée : Workers AI et Claude ne reçoivent jamais le message en clair", async () => {
+  const { appelerWorkersAI, appelerClaude } = await import("../../worker/src/llm.js");
+  const brut = "Je m'appelle Léa Martin, écris à lea@example.org ou au 06 12 34 56 78";
+  let recuWorkers;
+  const w = await appelerWorkersAI({ AI: { run: async (modele, entrees) => {
+    recuWorkers = entrees.messages;
+    return { response: "{}", usage: { completion_tokens: 1 } };
+  } } }, { system: "Consignes fixes", message: brut, schema: {}, maxTokens: 10 });
+  assert.equal(recuWorkers[0].content, "Consignes fixes", "le système (texte du serveur) n'est pas modifié");
+  assert.equal(recuWorkers[1].content, "Je m'appelle [PRENOM_1], écris à [EMAIL_1] ou au [TELEPHONE_1]");
+  assert.equal(w.pseudonymisations, 3);
+  let recuClaude;
+  const client = { messages: { create: async (params) => {
+    recuClaude = params.messages;
+    return { stop_reason: "end_turn", content: [{ type: "text", text: "{}" }], usage: { output_tokens: 1 } };
+  } } };
+  const c = await appelerClaude(envClaude(), { system: "Consignes fixes", message: brut, schema: {}, maxTokens: 10 }, client);
+  assert.doesNotMatch(JSON.stringify(recuClaude), /Léa|lea@example|06 12/);
+  assert.equal(c.pseudonymisations, 3);
 });

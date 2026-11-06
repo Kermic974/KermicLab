@@ -115,6 +115,14 @@ mode enfant, session expirée, erreur réseau, quota de profils atteint. Chaque 
 - Points de contrôle humains : texte de consentement et base légale (chantier RGPD, action 14), choix du fournisseur et
   inscription des applications OAuth, domaine de l'API.
 
+## Démonstration des écrans (« green card »)
+
+Pour valider les écrans avant l'inscription des applications OAuth (action manuelle 34), `?demo=famille` active un double
+du service des comptes dans le navigateur (`web/demo-famille.js`, mêmes formes de réponse que `/auth/me`, `/api/eleves`,
+`/api/progres`). La connexion est simulée, les identifiants sont préfixés `demo-`, l'état reste dans `sessionStorage` de
+l'onglet et aucun appel n'est fait au Worker. Aucun contournement d'OAuth n'existe côté serveur : la démonstration ne
+donne accès à aucune donnée réelle. Hors démonstration, `connexionActive` reste faux dans le site construit.
+
 ## Révision
 
 À valider par le propriétaire avant l'activation de `connexionActive`.

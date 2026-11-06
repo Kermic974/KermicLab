@@ -1,7 +1,8 @@
 import { normaliser } from "./texte.js";
 
 /**
- * Échanges de politesse reconnus sans modèle (zéro token) : bonjour, aide, merci, au revoir.
+ * Échanges reconnus sans modèle (zéro token) : bonjour, aide, merci, au revoir, et questions sur les jeux,
+ * les labs et la progression de l'élève.
  * Seul un message composé uniquement de ces formules est reconnu : « bonjour, c'est quoi le sinus ? »
  * reste routé vers la page du sinus (le routage du catalogue passe avant).
  */
@@ -16,9 +17,24 @@ const INTENTIONS = [
   ["au-revoir", /^(?:au revoir|a bientot|a plus|bye|bye bye|ciao|salut a plus|bonne (?:nuit|journee|soiree)|goodbye|good night|see you(?: soon)?)$/]
 ];
 
-/** Intention de conversation d'un message, ou null s'il contient autre chose qu'une formule de politesse. */
+/**
+ * Questions sur l'application elle-même (jeux, labs, progression de l'élève) : courtes, sans notion du catalogue
+ * (le routage du catalogue passe avant : « je veux jouer aux échecs » ouvre directement les échecs).
+ */
+const POSSESSIF = /\b(?:mes|mon|ma|my|j ai|ai je|combien|ou j en suis|ou en suis je|how many|how much)\b/;
+const SUJETS_APPLICATION = [
+  ["progression", (t) => /\b(?:xp|niveaux?|levels?|series?|streaks?|trophees?|trophies|trophy|badges?|progression|progres|progress|scores?|etoiles?|stars?|recompenses?|rewards?|points?)\b/.test(t)
+    && (POSSESSIF.test(t) || /^(?:ma |my )?(?:progression|progres|progress|trophees|trophies|badges)$/.test(t))
+    || /^(?:ou j en suis|ou en suis je|how am i doing|how am i progressing)$/.test(t)],
+  ["jeux", (t) => /\b(?:jeux|jeu|jouer|joue|joues|games?|play)\b/.test(t)],
+  ["labs", (t) => /\b(?:labs?|laboratoires?|laboratory)\b/.test(t)]
+];
+
+/** Intention de conversation d'un message, ou null s'il contient autre chose qu'une formule ou une question sur l'application. */
 export function intentionConversation(message) {
   const texte = normaliser(message).replace(/\s+/g, " ");
   if (!texte || texte.split(" ").length > 8) return null;
-  return INTENTIONS.find(([, motif]) => motif.test(texte))?.[0] ?? null;
+  return INTENTIONS.find(([, motif]) => motif.test(texte))?.[0]
+    ?? SUJETS_APPLICATION.find(([, teste]) => teste(texte))?.[0]
+    ?? null;
 }

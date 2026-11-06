@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { HARNESS_LLM } from "./contexte-llm.js";
+import { pseudonymiser } from "./pseudonymisation.js";
 
 export const MODELE_CHAT_PAR_DEFAUT = "claude-haiku-5-5";
 export const MODELE_WORKERS_AI_PAR_DEFAUT = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
@@ -101,26 +102,32 @@ export function normaliserResultat(reponse, source) {
   return resultat;
 }
 
-/** Appelle Workers AI en premier ; le binding Cloudflare ne nécessite aucune clé API. */
-export async function routerAvecWorkersAI(env, { message, source, maxTokens }) {
+/**
+ * Appel Workers AI générique (sortie JSON structurée) ; le binding Cloudflare ne nécessite aucune clé API.
+ * Le message (seule partie d'origine utilisateur) est toujours pseudonymisé ici, au dernier point avant le
+ * fournisseur : aucun appelant ne peut l'envoyer en clair. Le système ne contient que du texte du serveur.
+ */
+export async function appelerWorkersAI(env, { system, message: brut, schema, maxTokens }) {
   if (!env.AI?.run) throw new Error("binding Workers AI absent");
+  const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
   const reponse = await env.AI.run(env.MODELE_WORKERS_AI || MODELE_WORKERS_AI_PAR_DEFAUT, {
     messages: [
-      { role: "system", content: promptSysteme(source) },
+      { role: "system", content: system },
       { role: "user", content: message }
     ],
     max_tokens: maxTokens,
-    response_format: { type: "json_schema", json_schema: SCHEMA_ROUTAGE }
+    response_format: { type: "json_schema", json_schema: schema }
   }, {
     gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
     extraHeaders: ENTETES_GATEWAY
   });
-  return { contenu: reponse?.response, tokensSortie: reponse?.usage?.completion_tokens };
+  return { contenu: reponse?.response, tokensSortie: reponse?.usage?.completion_tokens, pseudonymisations };
 }
 
-/** Appelle Claude (Haiku 5.5) pour router la demande avec une sortie JSON structurée. */
-export async function routerAvecClaude(env, { message, source, maxTokens }, client) {
+/** Appel Claude (Haiku 5.5, repli) générique via AI Gateway, sortie JSON structurée ; même pseudonymisation imposée. */
+export async function appelerClaude(env, { system, message: brut, schema, maxTokens }, client) {
   if (!env.AI?.gateway) throw new Error("binding AI Gateway absent");
+  const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
   if (!env.AI_GATEWAY_TOKEN) throw new Error("AI_GATEWAY_TOKEN absent");
   const baseURL = await env.AI.gateway(GATEWAY_LLM).getUrl("anthropic");
   const url = new URL(baseURL);
@@ -141,13 +148,22 @@ export async function routerAvecClaude(env, { message, source, maxTokens }, clie
   const reponse = await anthropic.messages.create({
     model: env.MODELE_CHAT || MODELE_CHAT_PAR_DEFAUT,
     max_tokens: maxTokens,
-    system: promptSysteme(source),
+    system,
     messages: [{ role: "user", content: message }],
-    output_config: { effort: "low", format: { type: "json_schema", schema: SCHEMA_ROUTAGE } }
+    output_config: { effort: "low", format: { type: "json_schema", schema } }
   }, { maxRetries: 0 });
   return {
     contenu: reponse.content.find((b) => b.type === "text")?.text,
     refus: reponse.stop_reason === "refusal",
-    tokensSortie: reponse.usage?.output_tokens
+    tokensSortie: reponse.usage?.output_tokens,
+    pseudonymisations
   };
 }
+
+/** Tuteur : relance pédagogique sur une page du catalogue (Workers AI en premier). */
+export const routerAvecWorkersAI = (env, { message, source, maxTokens }) =>
+  appelerWorkersAI(env, { system: promptSysteme(source), message, schema: SCHEMA_ROUTAGE, maxTokens });
+
+/** Tuteur : repli Claude pour la même relance. */
+export const routerAvecClaude = (env, { message, source, maxTokens }, client) =>
+  appelerClaude(env, { system: promptSysteme(source), message, schema: SCHEMA_ROUTAGE, maxTokens }, client);

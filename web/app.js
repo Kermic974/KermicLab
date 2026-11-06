@@ -4,6 +4,7 @@
 import * as progression from "./progression.js";
 import * as profil from "./profil.js";
 import * as comptes from "./comptes.js";
+import * as demoFamille from "./demo-famille.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 
@@ -96,8 +97,104 @@ async function appliquerLangue(langue) {
 // Profil local par défaut. Un compte parent (OAuth) est nécessaire pour créer un profil enfant ; rien n'est appelé
 // côté Worker tant que `connexionActive` vaut false.
 
-const connexionActive = () => etat.config?.connexionActive === true;
+// Démonstration (« green card ») : `?demo=famille` simule le compte parent et les profils enfants dans le navigateur,
+// sans OAuth ni appel au Worker, pour valider les écrans. Un bandeau la signale ; elle s'arrête en un clic.
+const CLE_DEMO_ACTIVE = "kermiclab:demo-famille:active";
+const demoActive = () => etat.demoFamille === true;
+const connexionActive = () => demoActive() || etat.config?.connexionActive === true;
 const urlApi = (chemin) => `${etat.config.apiUrl}${chemin}`;
+
+function sauverDemo(suivant) {
+  etat.demo = suivant;
+  ecrireCle(sessionPreferences(), demoFamille.CLE_DEMO, JSON.stringify(suivant));
+}
+
+function initialiserDemo() {
+  const demandee = new URLSearchParams(location.search).get("demo") === demoFamille.PARAMETRE_DEMO;
+  if (demandee) ecrireCle(sessionPreferences(), CLE_DEMO_ACTIVE, "1");
+  etat.demoFamille = demandee || lireCle(sessionPreferences(), CLE_DEMO_ACTIVE) === "1";
+  if (etat.demoFamille) etat.demo = demoFamille.lireEtat(lireCle(sessionPreferences(), demoFamille.CLE_DEMO));
+  $("#bandeau-demo").hidden = !etat.demoFamille;
+}
+
+function demarrerDemo() {
+  ecrireCle(sessionPreferences(), CLE_DEMO_ACTIVE, "1");
+  const url = new URL(location.href);
+  url.searchParams.set("demo", demoFamille.PARAMETRE_DEMO);
+  url.hash = "famille";
+  location.assign(url.href);
+}
+
+function quitterDemo() {
+  for (const cle of [CLE_DEMO_ACTIVE, demoFamille.CLE_DEMO]) effacerCle(sessionPreferences(), cle);
+  if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF)?.startsWith("demo-")) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
+  const url = new URL(location.href);
+  url.searchParams.delete("demo");
+  url.hash = "";
+  location.assign(url.href);
+}
+
+/** Accès aux comptes : le Worker, ou le double de démonstration (mêmes formes de réponse). */
+const apiFamille = {
+  async moi() {
+    if (demoActive()) return demoFamille.moi(etat.demo);
+    const r = await fetch(urlApi("/auth/me"), { credentials: "include" });
+    return r.ok ? r.json() : null;
+  },
+  async eleves() {
+    if (demoActive()) return demoFamille.eleves(etat.demo);
+    const r = await fetch(urlApi("/api/eleves"), { credentials: "include" });
+    if (!r.ok) throw new Error(`eleves ${r.status}`);
+    return r.json();
+  },
+  async creer(enfant) {
+    if (demoActive()) { const { etat: suivant, id } = demoFamille.creerEleve(etat.demo, enfant); sauverDemo(suivant); return id; }
+    const r = await fetch(urlApi("/api/eleves"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" }, body: JSON.stringify(enfant)
+    });
+    if (!r.ok) throw new Error(`creation ${r.status}`);
+    return (await r.json()).id;
+  },
+  async supprimer(id) {
+    if (demoActive()) { sauverDemo(demoFamille.supprimerEleve(etat.demo, id)); return; }
+    const r = await fetch(urlApi(`/api/eleves/${encodeURIComponent(id)}`), { method: "DELETE", credentials: "include" });
+    if (!r.ok) throw new Error(`suppression ${r.status}`);
+  },
+  async progres(id) {
+    if (demoActive()) return demoFamille.lireProgres(etat.demo, id);
+    const r = await fetch(urlApi(`/api/progres?eleveId=${encodeURIComponent(id)}`), { credentials: "include" });
+    return r.ok ? r.json() : null;
+  },
+  async sauverProgres(id, progres) {
+    if (demoActive()) { sauverDemo(demoFamille.sauverProgres(etat.demo, id, progres)); return; }
+    await fetch(urlApi("/api/progres"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ eleveId: id, progres })
+    });
+  },
+  async deconnecter() {
+    if (demoActive()) { sauverDemo(demoFamille.deconnecter(etat.demo)); return; }
+    await fetch(urlApi("/auth/logout"), { method: "POST", credentials: "include" });
+  }
+};
+
+/** « Continuer avec Google / Microsoft » : connexion simulée en démonstration, sinon OAuth si le fournisseur est configuré. */
+async function connecterParent(fournisseur) {
+  if (demoActive()) {
+    sauverDemo(demoFamille.connecter(etat.demo, fournisseur));
+    await verifierConnexion();
+    notifier(t("demoConnecte"), "🟢");
+    return;
+  }
+  $("#famille-etat").textContent = t("familleChargement");
+  try {
+    const r = await fetch(urlApi("/auth/fournisseurs"), { cache: "no-store" });
+    const disponibles = r.ok ? await r.json() : {};
+    if (disponibles[fournisseur] === true) { window.location.href = urlApi(`/auth/login?provider=${fournisseur}`); return; }
+  } catch { /* service des comptes injoignable */ }
+  $("#famille-etat").textContent = t("connexionIndisponible");
+  $("#essayer-demo").hidden = false;
+}
 
 function modeFamille() {
   return comptes.modeCompte({
@@ -110,8 +207,7 @@ async function verifierConnexion() {
   if (!connexionActive()) return;
   etat.familleChargee = false;
   try {
-    const r = await fetch(urlApi("/auth/me"), { credentials: "include" });
-    const data = r.ok ? await r.json() : null;
+    const data = await apiFamille.moi();
     etat.compte = data?.connecte ? data.compte : null;
     if (etat.compte) await chargerEnfants();
     etat.familleErreur = false;
@@ -126,9 +222,7 @@ async function verifierConnexion() {
 }
 
 async function chargerEnfants() {
-  const r = await fetch(urlApi("/api/eleves"), { credentials: "include" });
-  if (!r.ok) throw new Error(`eleves ${r.status}`);
-  etat.enfants = comptes.normaliserEnfants(await r.json());
+  etat.enfants = comptes.normaliserEnfants(await apiFamille.eleves());
 }
 
 function rafraichirFamille() {
@@ -142,6 +236,8 @@ function rafraichirFamille() {
   $("#type-profil-aide").textContent = t(comptes.cleAideProfil(mode));
   $("#famille-etat").textContent = !etat.familleChargee ? t("familleChargement") : etat.familleErreur ? t("familleErreur") : "";
   $("#famille-invite").hidden = !etat.familleChargee || mode !== "local";
+  $("#essayer-demo").hidden = demoActive();
+  $("#famille-demo-note").hidden = !demoActive();
   $("#famille-parent").hidden = mode !== "parent";
   $("#famille-enfant").hidden = mode !== "enfant";
   if (mode === "enfant") $("#famille-enfant-texte").textContent = t("familleModeEnfant", { prenom: enfant.prenom_affiche });
@@ -187,8 +283,7 @@ async function supprimerEnfant(enfant, bouton) {
     return;
   }
   try {
-    const r = await fetch(urlApi(`/api/eleves/${encodeURIComponent(enfant.id)}`), { method: "DELETE", credentials: "include" });
-    if (!r.ok) throw new Error(`suppression ${r.status}`);
+    await apiFamille.supprimer(enfant.id);
     if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF) === enfant.id) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
     await chargerEnfants();
     rafraichirFamille();
@@ -221,12 +316,7 @@ async function creerEnfant(e) {
   }
   const reprendre = !$("#enfant-reprise-ligne").hidden && $("#enfant-reprise").checked;
   try {
-    const reponse = await fetch(urlApi("/api/eleves"), {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
-      body: JSON.stringify(r.enfant)
-    });
-    if (!reponse.ok) throw new Error(`creation ${reponse.status}`);
-    const { id } = await reponse.json();
+    const id = await apiFamille.creer(r.enfant);
     await chargerEnfants();
     $("#formulaire-enfant").reset();
     $("#famille-ajout").open = false;
@@ -241,12 +331,12 @@ async function creerEnfant(e) {
 
 async function chargerProgressionDistante(enfantId) {
   try {
-    const r = await fetch(urlApi(`/api/progres?eleveId=${encodeURIComponent(enfantId)}`), { credentials: "include" });
-    if (!r.ok) return;
-    // Fusion simple : les notions distantes prennent le dessus.
-    const notions = {};
-    for (const ligne of await r.json()) notions[ligne.notion_id] = { score: ligne.score, etoiles: ligne.etoiles };
-    etat.progres = { ...etat.progres, notions: { ...(etat.progres.notions || {}), ...notions } };
+    const lignes = await apiFamille.progres(enfantId);
+    if (!Array.isArray(lignes)) return;
+    // La progression locale garde un tableau d'identifiants de notions : on y ajoute les notions distantes.
+    const locales = Array.isArray(etat.progres.notions) ? etat.progres.notions : [];
+    const distantes = lignes.map((l) => l?.notion_id).filter((id) => typeof id === "string" && id);
+    etat.progres = { ...etat.progres, notions: [...new Set([...locales, ...distantes])] };
     progression.sauver(stockage(), etat.progres);
     rafraichirPastille();
   } catch { /* hors ligne : la progression locale reste utilisable */ }
@@ -256,16 +346,15 @@ async function synchroniserProgression() {
   const enfant = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
   if (!connexionActive() || !etat.compte || !enfant || !etat.progres) return;
   try {
-    await fetch(urlApi("/api/progres"), {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ eleveId: enfant.id, progres: etat.progres })
-    });
+    // L'API attend un dictionnaire { idNotion: { score, etoiles } } (worker/src/comptes.js, lignesProgres).
+    const notions = Object.fromEntries((Array.isArray(etat.progres.notions) ? etat.progres.notions : []).map((id) => [id, {}]));
+    await apiFamille.sauverProgres(enfant.id, { ...etat.progres, notions });
   } catch { /* hors ligne : nouvel essai à la prochaine progression */ }
 }
 
 /** Fin de session parent : en mode enfant, revenir à l'Espace famille demande une nouvelle connexion du parent. */
 async function deconnecterParent() {
-  try { await fetch(urlApi("/auth/logout"), { method: "POST", credentials: "include" }); } catch { /* session déjà close */ }
+  try { await apiFamille.deconnecter(); } catch { /* session déjà close */ }
   effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
   etat.compte = null;
   etat.enfants = [];
@@ -275,9 +364,9 @@ async function deconnecterParent() {
 function brancherFamille() {
   if (!connexionActive()) return;
   ECRANS.push("famille");
-  const connecter = (fournisseur) => { window.location.href = urlApi(`/auth/login?provider=${fournisseur}`); };
-  $("#connexion-google").addEventListener("click", () => connecter("google"));
-  $("#connexion-microsoft").addEventListener("click", () => connecter("microsoft"));
+  $("#connexion-google").addEventListener("click", () => connecterParent("google"));
+  $("#connexion-microsoft").addEventListener("click", () => connecterParent("microsoft"));
+  $("#essayer-demo").addEventListener("click", demarrerDemo);
   $("#deconnexion").addEventListener("click", deconnecterParent);
   $("#quitter-mode-enfant").addEventListener("click", deconnecterParent);
   $("#formulaire-enfant").addEventListener("submit", creerEnfant);
@@ -300,7 +389,6 @@ function defiler(li, bloc = "end") {
 }
 
 function ouvrirChat() {
-  fermerCatalogue();
   $("#panneau-chat").hidden = false;
   $("#ouvrir-chat").setAttribute("aria-expanded", "true");
   $("#question").focus({ preventScroll: true });
@@ -385,6 +473,20 @@ function nouvelleConversation() {
   champ.value = "";
   champ.style.height = "auto";
   champ.focus({ preventScroll: true });
+}
+
+/** Bascule le panneau du chat en plein écran (et retour) ; le libellé suit l'état pour les lecteurs d'écran. */
+function basculerPleinEcran(actif = !$("#panneau-chat").classList.contains("plein-ecran")) {
+  $("#panneau-chat").classList.toggle("plein-ecran", actif);
+  const bouton = $("#plein-ecran-chat");
+  bouton.setAttribute("aria-pressed", String(actif));
+  const cle = actif ? "chatQuitterPleinEcran" : "chatPleinEcran";
+  bouton.dataset.i18nAria = cle;
+  bouton.dataset.i18nTitle = cle;
+  bouton.setAttribute("aria-label", t(cle));
+  bouton.title = t(cle);
+  const fil = $("#fil");
+  fil.scrollTop = fil.scrollHeight;
 }
 
 function ajouterQuestion(question) {
@@ -494,10 +596,60 @@ function referencesLlm(sources, llm) {
   return bloc;
 }
 
-function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, conversation, sources, llm }) {
+/** Écrans que l'assistant peut proposer d'ouvrir (liste fermée : la réponse du serveur ne choisit rien d'autre). */
+const ACTIONS_ECRANS = { jeux: "navJeux", labs: "navLabs", notions: "navNotions", progression: "navProgression", badges: "navBadges", defi: "navDefi" };
+
+function actionsEcrans(actions) {
+  const valides = (Array.isArray(actions) ? actions : []).filter((a) => Object.hasOwn(ACTIONS_ECRANS, a)).slice(0, 3);
+  if (!valides.length) return null;
+  const bloc = element("div", { classe: "actions-chat" });
+  for (const ecran of valides) {
+    const b = element("button", { classe: "secondaire petit-bouton", cle: ACTIONS_ECRANS[ecran], attributs: { type: "button", "data-ecran-chat": ecran } });
+    b.addEventListener("click", () => {
+      naviguer(ecran);
+      // Sur petit écran ou en plein écran, le chat couvre l'écran ouvert : on le replie.
+      if ($("#panneau-chat").classList.contains("plein-ecran") || window.matchMedia?.("(max-width: 720px)").matches) fermerChat();
+    });
+    bloc.append(b);
+  }
+  return bloc;
+}
+
+/** Résumé de progression calculé sur l'appareil (le serveur ne connaît ni l'XP, ni la série, ni les trophées). */
+function resumeProgression() {
+  const p = etat.progres;
+  if (!p) return null;
+  const { niveau } = progression.niveau(p);
+  const badges = p.badges.length;
+  const modules = Object.keys(etat.trophees ?? {}).length;
+  const liste = element("dl", { classe: "resume-progression" });
+  for (const [cle, valeur] of [
+    ["resumeNiveau", t("niveauLong", { n: niveau })],
+    ["resumeXp", `${p.xp ?? 0} XP`],
+    ["resumeSerie", t("resumeJours", { n: progression.serieCourante(p) })],
+    ["resumeNotions", String(p.notions.length)],
+    ["resumeBadges", `${badges} / ${progression.BADGES.length}`],
+    ["resumeModules", String(modules)]
+  ]) {
+    const ligne = element("div");
+    ligne.append(element("dt", { cle }), element("dd", { texte: valeur }));
+    liste.append(ligne);
+  }
+  return liste;
+}
+
+function ajouterReponse({ texte, maquette, suggestions, horsCatalogue, conversation, sources, llm, actions, resume }) {
   const { li, bulle } = creerMessage();
   if (conversation) li.classList.add("conversation");
   bulle.append(element("p", { classe: "texte", texte }));
+  if (conversation && resume === "progression") {
+    const carte = resumeProgression();
+    if (carte) bulle.append(carte);
+  }
+  if (conversation) {
+    const boutons = actionsEcrans(actions);
+    if (boutons) bulle.append(boutons);
+  }
   if (maquette) {
     li.classList.add("maquette");
     li.dataset.maquette = maquette.id;
@@ -690,6 +842,10 @@ function brancherTrophees() {
     // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
     const cadre = [...document.querySelectorAll("iframe[data-module]")].find((c) => c.contentWindow === e.source);
     if (!cadre || e.origin !== "null" || !cadre.hasAttribute("src")) return;
+    if (e.data?.type === "kermiclab:idee") {
+      ouvrirIdee({ ...nettoyerContexteIdee(e.data.contexte), module: cadre.dataset.module });
+      return;
+    }
     if (e.data?.type === "kermiclab:chat:fermer") {
       if ($("#panneau-chat").hidden || !$("#fil").contains(cadre) || document.querySelector("dialog[open]")) return;
       fermerChat({ rendreFocus: true });
@@ -804,7 +960,6 @@ function rendreCatalogue() {
 function ouvrirNotion(n) {
   etat.notionCourante = n.id;
   const url = `${etat.config.apiUrl}/maquettes/${encodeURIComponent(n.id)}?lang=${encodeURIComponent(etat.langue)}`;
-  fermerCatalogue();
   ouvrirBulle(n, url);
   appliquerResultat(progression.enregistrerNotion(etat.progres, n.id));
   rendreCatalogue();
@@ -847,29 +1002,15 @@ function brancherBulle() {
   });
 }
 
-let declencheurCatalogue = null;
-
+/** « Notions » est un écran comme Labs ou Jeux ; une matière choisie ailleurs (carte du tableau de bord) le présélectionne. */
 function ouvrirCatalogue({ matiere } = {}) {
-  fermerChat();
-  if (matiere) {
+  if (typeof matiere === "string") {
     etat.matiere = matiere;
     ecrireCle(preferences(), CLE_MATIERE, matiere);
     $("#recherche-notion").value = "";
     rendreCatalogue();
   }
-  declencheurCatalogue = document.activeElement;
-  $("#catalogue").classList.add("ouvert");
-  $("#voile-catalogue").hidden = false;
-  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", "true"));
-  $("#recherche-notion").focus();
-}
-
-function fermerCatalogue({ rendreFocus = false } = {}) {
-  if (!$("#catalogue").classList.contains("ouvert")) return;
-  $("#catalogue").classList.remove("ouvert");
-  $("#voile-catalogue").hidden = true;
-  document.querySelectorAll("[aria-controls=catalogue]").forEach((b) => b.setAttribute("aria-expanded", "false"));
-  if (rendreFocus) declencheurCatalogue?.focus?.();
+  naviguer("notions");
 }
 
 /* ---------- Échanges avec l'API ---------- */
@@ -920,6 +1061,7 @@ function rafraichirControleLlm() {
   const statut = $("#llm-etat");
   const cle = !etat.llmDisponible ? "llmStatutIndisponible" : etat.llmActif ? "llmStatutActif" : "llmStatutInactif";
   statut.textContent = t(cle);
+  rafraichirIdeeIa();
 }
 
 async function chargerStatutLlm() {
@@ -974,22 +1116,22 @@ async function demarrer() {
   });
   $("#fermer-chat").addEventListener("click", () => fermerChat({ rendreFocus: true }));
   $("#nouvelle-conversation").addEventListener("click", nouvelleConversation);
+  $("#plein-ecran-chat").addEventListener("click", () => basculerPleinEcran());
   if (!etat.pseudo) demanderPseudo();
 
   // Comptes famille : rien n'est appelé côté Worker si la connexion est désactivée.
+  initialiserDemo();
+  $("#quitter-demo").addEventListener("click", quitterDemo);
   brancherFamille();
   void verifierConnexion();
 
   ajouterBienvenue();
   await chargerCatalogue();
-  $("#fermer-catalogue").addEventListener("click", () => fermerCatalogue({ rendreFocus: true }));
-  $("#voile-catalogue").addEventListener("click", () => fermerCatalogue());
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
   $("#recherche-jeu").addEventListener("input", rendreJeux);
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || document.querySelector("dialog[open]")) return;
-    if ($("#catalogue").classList.contains("ouvert")) fermerCatalogue({ rendreFocus: true });
-    else if (!$("#panneau-chat").hidden) {
+    if (!$("#panneau-chat").hidden) {
       e.preventDefault();
       fermerChat({ rendreFocus: true });
     }
@@ -1011,6 +1153,10 @@ async function demarrer() {
   });
 
   $("#ouvrir-progres").addEventListener("click", ouvrirProgres);
+
+  brancherIdees();
+  const ideeDemandee = lireIdeeDepuisAdresse();
+  if (ideeDemandee) ouvrirIdee(ideeDemandee);
 
   const dialogue = $("#signalement");
   $("#ouvrir-signalement").addEventListener("click", ouvrirSignalement);
@@ -1054,6 +1200,139 @@ async function demarrer() {
 }
 
 function ouvrirProgres() { naviguer("badges"); }
+/* ---------- Boîte à idées (formulaire natif, comme le signalement) ---------- */
+
+const CLES_CONTEXTE_IDEE = ["page", "version", "langue", "navigation", "dialogue", "panneau", "module", "onglet", "vues"];
+
+/** Contexte venu d'une page (éventuellement isolée) : clés connues, valeurs courtes et sans caractère spécial. */
+function nettoyerContexteIdee(brut) {
+  if (!brut || typeof brut !== "object") return {};
+  return Object.fromEntries(CLES_CONTEXTE_IDEE
+    .map((cle) => [cle, brut[cle]])
+    .filter(([, v]) => typeof v === "string" && v.length <= 80 && /^[\p{L}\p{N} .,:_\/-]+$/u.test(v) && !/\d{5,}/.test(v)));
+}
+
+function ouvrirIdee(contexte = {}) {
+  etat.ideeContexte = nettoyerContexteIdee(contexte);
+  const resume = Object.entries(etat.ideeContexte).filter(([cle]) => ["page", "navigation", "onglet", "module", "dialogue"].includes(cle))
+    .map(([, v]) => v).join(" · ");
+  $("#idee-contexte").textContent = resume ? t("ideeContexte", { contexte: resume }) : "";
+  $("#retour-idee").textContent = "";
+  afficherCadrage(null);
+  rafraichirIdeeIa();
+  const icone = document.querySelector(".boite-idees .boite-idees-icone svg");
+  if (icone && !$("#idee-icone").firstChild) $("#idee-icone").append(icone.cloneNode(true));
+  const dialogue = $("#dialogue-idee");
+  if (!dialogue.open) dialogue.showModal();
+  $("#texte-idee").focus();
+}
+
+/** Le cadrage par l'IA suit le même opt-in que le tuteur (Configuration) et la disponibilité du site. */
+function rafraichirIdeeIa() {
+  const bouton = $("#preparer-idee");
+  if (!bouton) return;
+  const possible = etat.llmDisponible && etat.llmActif;
+  bouton.disabled = !possible;
+  const aide = $("#idee-ia-aide");
+  aide.dataset.i18n = possible ? "ideeIaAide" : "ideeIaInactive";
+  aide.textContent = t(aide.dataset.i18n);
+}
+
+function afficherCadrage(cadrage, llm) {
+  etat.ideeCadrage = cadrage;
+  const bloc = $("#idee-cadrage");
+  bloc.hidden = !cadrage;
+  if (!cadrage) return;
+  $("#idee-cadrage-nom").textContent = cadrage.titre;
+  $("#idee-cadrage-besoin").textContent = cadrage.besoin;
+  $("#idee-cadrage-criteres").replaceChildren(...cadrage.criteres.map((c) => element("li", { texte: c })));
+  $("#idee-cadrage-zones").textContent = cadrage.zones.length ? t("ideeCadrageZones", { zones: cadrage.zones.join(", ") }) : "";
+  $("#idee-cadrage-questions").replaceChildren(...cadrage.questions.map((q) => element("li", { texte: q })));
+  $("#idee-cadrage-questions-bloc").hidden = !cadrage.questions.length;
+  $("#idee-cadrage-llm").textContent = llm
+    ? `${llm.fournisseur} · ${llm.modele} · ${llm.harness?.prompt ?? ""} · ${llm.quota?.consommes ?? "?"} / ${llm.quota?.limite ?? "?"}`
+    : "";
+  $("#idee-joindre").checked = true;
+}
+
+function cadrageValide(c) {
+  const chaines = (l, n) => Array.isArray(l) && l.length <= n && l.every((v) => typeof v === "string" && v.length <= 600);
+  return c && typeof c.titre === "string" && typeof c.besoin === "string" && chaines(c.criteres, 5) && chaines(c.zones, 3) && chaines(c.questions, 3);
+}
+
+async function preparerIdee() {
+  const message = $("#texte-idee").value.trim();
+  const retour = $("#retour-idee");
+  if (!message) { retour.textContent = t("ideeIaVide"); $("#texte-idee").focus(); return; }
+  const bouton = $("#preparer-idee");
+  bouton.disabled = true;
+  afficherCadrage(null);
+  retour.textContent = t("ideeIaChargement");
+  const contexteDemande = JSON.stringify(etat.ideeContexte ?? {});
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/idee/cadrage`, {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ message, langue: etat.langue, contexte: etat.ideeContexte ?? {}, utiliserLlm: true })
+    });
+    const d = await r.json();
+    // Le texte ou le contexte ont changé pendant l'appel : ce cadrage ne correspond plus à la saisie.
+    if ($("#texte-idee").value.trim() !== message || JSON.stringify(etat.ideeContexte ?? {}) !== contexteDemande) {
+      retour.textContent = "";
+    } else if (d.ok && cadrageValide(d.cadrage)) {
+      etat.ideeCadrageMessage = message;
+      afficherCadrage(d.cadrage, d.llm);
+      retour.textContent = "";
+    } else {
+      retour.textContent = d.texte ?? t("erreurReseau");
+    }
+  } catch {
+    retour.textContent = t("erreurReseau");
+  } finally {
+    rafraichirIdeeIa();
+  }
+}
+
+/** Contexte transmis par une page ouverte seule (fragment #idee=…, jamais envoyé au serveur). */
+function lireIdeeDepuisAdresse() {
+  if (!location.hash.startsWith("#idee=")) return null;
+  let contexte = {};
+  try { contexte = JSON.parse(decodeURIComponent(location.hash.slice(6))); } catch { contexte = {}; }
+  history.replaceState(null, "", `${location.pathname}${location.search}`);
+  return contexte;
+}
+
+function brancherIdees() {
+  document.addEventListener("kermiclab:idee", (e) => { e.preventDefault(); ouvrirIdee(e.detail); });
+  brancherDialogue($("#dialogue-idee"), $("#fermer-idee"));
+  $("#preparer-idee").addEventListener("click", preparerIdee);
+  // Toute modification du texte invalide le cadrage : il ne doit jamais partir avec une autre idée.
+  $("#texte-idee").addEventListener("input", () => { if (etat.ideeCadrage) afficherCadrage(null); });
+  $("#formulaire-idee").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const champ = $("#texte-idee");
+    const message = champ.value.trim();
+    if (!message) return;
+    const bouton = e.submitter ?? $("#formulaire-idee button[type=submit]");
+    bouton.disabled = true;
+    try {
+      const r = await fetch(`${etat.config.apiUrl}/api/idee`, {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          message, langue: etat.langue, contexte: etat.ideeContexte ?? {},
+          ...(etat.ideeCadrage && $("#idee-joindre").checked && etat.ideeCadrageMessage === message ? { cadrage: etat.ideeCadrage } : {})
+        })
+      });
+      const d = await r.json();
+      $("#retour-idee").textContent = d.texte ?? t("erreurReseau");
+      if (d.ok) { champ.value = ""; afficherCadrage(null); }
+    } catch {
+      $("#retour-idee").textContent = t("erreurReseau");
+    } finally {
+      bouton.disabled = false;
+    }
+  });
+}
+
 function ouvrirSignalement() { $("#retour-signalement").textContent = ""; $("#signalement").showModal(); }
 
 /* ---------- Session, pseudo et mémorisation (ADR 0012) ---------- */
@@ -1202,21 +1481,23 @@ function rafraichirTheme() {
 
 /* ---------- Navigation ---------- */
 
-const ECRANS = ["accueil", "labs", "jeux", "progression", "defi", "badges", "profil"];
+const ECRANS = ["accueil", "labs", "jeux", "notions", "progression", "defi", "badges", "profil"];
+/** Anciennes adresses : le tiroir « catalogue » est devenu l'écran « notions ». */
+const ALIAS_ECRANS = { catalogue: "notions" };
 
 function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
+    : t({ labs: "navLabs", jeux: "navJeux", notions: "navNotions", progression: "navProgression", defi: "navDefi", badges: "navBadges", profil: "configurationTitre", famille: "familleTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "badges" ? "tropheesIntro" : `${etat.ecran}Intro`);
 }
 
 function afficherEcran(cle, { focus = true } = {}) {
-  const ecran = ECRANS.includes(cle) ? cle : "accueil";
+  const demande = ALIAS_ECRANS[cle] ?? cle;
+  const ecran = ECRANS.includes(demande) ? demande : "accueil";
   const changement = ecran !== etat.ecran;
   etat.ecran = ecran;
-  fermerCatalogue();
   if (changement && $("#bulle-lab").open) $("#bulle-lab").close();
   document.querySelectorAll("[data-ecrans]").forEach((zone) => {
     zone.hidden = !zone.dataset.ecrans.split(" ").includes(etat.ecran);
@@ -1245,7 +1526,7 @@ function marquerNavigation(cle) {
 function brancherNavigation() {
   const suivreAdresse = () => {
     const cle = location.hash.slice(1);
-    if (!cle || ECRANS.includes(cle)) afficherEcran(cle);
+    if (!cle || ECRANS.includes(ALIAS_ECRANS[cle] ?? cle)) afficherEcran(cle);
   };
   window.addEventListener("popstate", suivreAdresse);
   window.addEventListener("hashchange", suivreAdresse);
@@ -1255,7 +1536,6 @@ function brancherNavigation() {
     if (!bouton || bouton.closest("dialog")) return;
     const cle = bouton.dataset.nav ?? bouton.dataset.action;
     if (ECRANS.includes(cle)) naviguer(cle);
-    else if (cle === "catalogue") ($("#catalogue").classList.contains("ouvert") ? fermerCatalogue() : ouvrirCatalogue());
     else if (cle === "aide") ouvrirSignalement();
     else if (cle === "question") ouvrirChat();
   });
@@ -1349,7 +1629,7 @@ function rendreReprendre() {
   if (!n) {
     zone.append(element("h3", { cle: "reprendreVideTitre" }), element("p", { classe: "doux", cle: "reprendreVideTexte" }));
     const b = bouton("reprendreVideBouton", "i-boussole");
-    b.addEventListener("click", ouvrirCatalogue);
+    b.addEventListener("click", () => ouvrirCatalogue());
     zone.append(b);
     return;
   }

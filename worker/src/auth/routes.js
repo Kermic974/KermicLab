@@ -32,14 +32,30 @@ async function trouverOuCreerCompte(env, provider, identity) {
   return id;
 }
 
+/** Un fournisseur est utilisable si ses identifiants OAuth et la base des comptes sont présents. */
+export function fournisseursConfigures(env) {
+  const pret = (id, secret) => !!env.DB && typeof env[id] === "string" && !!env[id] && typeof env[secret] === "string" && !!env[secret];
+  return { google: pret("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET"), microsoft: pret("MICROSOFT_CLIENT_ID", "MICROSOFT_CLIENT_SECRET") };
+}
+
 export async function gererAuth(request, env) {
   const url = new URL(request.url);
   const path = url.pathname;
+
+  // Fournisseurs réellement configurés : le site n'envoie pas vers une connexion qui échouerait.
+  if (path === "/auth/fournisseurs" && request.method === "GET") {
+    return Response.json(fournisseursConfigures(env), { headers: { "cache-control": "no-store" } });
+  }
 
   if (path === "/auth/login" && request.method === "GET") {
     const provider = url.searchParams.get("provider");
     if (!["google", "microsoft"].includes(provider)) {
       return new Response("Provider invalide", { status: 400 });
+    }
+    if (!fournisseursConfigures(env)[provider]) {
+      return new Response("Connexion indisponible : fournisseur non configuré", {
+        status: 503, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" }
+      });
     }
     const redirect = env.AUTH_CALLBACK_URL || `${url.origin}/auth/callback`;
     const location = await demarrerOAuth(env, provider, redirect);

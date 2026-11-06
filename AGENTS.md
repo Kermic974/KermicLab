@@ -45,6 +45,7 @@ npm run build         # index du catalogue + hashes CSP des pages + site statiqu
 npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
 npm test              # tests unitaires (node:test) ; en CI (pages.yml), Playwright est installé et les tests de page (tests/dom/) sont exécutés, leur absence échoue
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
+npm run test:captures # mêmes tests + captures d'écran des parcours clés dans captures/ (documentation ; artefact « captures » en CI)
 npm run ci            # tout ce qui précède
 cd worker && npx wrangler dev   # Worker en local (http://localhost:8787)
 npx wrangler pages dev dist     # chat en local
@@ -57,6 +58,7 @@ npx wrangler pages dev dist     # chat en local
 - Aucun texte d'interface en dur : clé dans `web/i18n/fr.json` **et** dans toutes les autres langues (le lint vérifie la parité). Ajouter une langue = ajouter un fichier.
 - Modèles : Workers AI `@cf/meta/llama-3.3-70b-instruct-fp8-fast` pour les relances pédagogiques ; `claude-haiku-5-5` uniquement en repli (sortie JSON structurée) ; `claude-sonnet-5-5` pour préparer des maquettes candidates. Quota de 1 000 tokens générés par session, sources du catalogue et métadonnées en fin de réponse (ADR 0016). Abonnement au backlog ; accès gratuit provisoire.
 - Zéro secret dans le code : variables d'environnement, Cloudflare Secrets, GitHub Secrets ; documenter toute variable dans `.env.example`.
+- **Pseudonymisation imposée vers les LLM** : tout texte d'origine utilisateur envoyé à un modèle passe par `pseudonymiser()` (`worker/src/pseudonymisation.js`), appliqué à l'intérieur de `appelerWorkersAI` et `appelerClaude` (`worker/src/llm.js`), seules fonctions autorisées à appeler un fournisseur. Ne jamais appeler un modèle autrement ; le prompt système ne contient que du texte du serveur (jamais de donnée du navigateur). Aucune table de correspondance n'est conservée.
 - Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
 
 ## 5. Contrat d'une page HTML autonome
@@ -111,6 +113,7 @@ Quand une étape nécessite une action humaine (compte, credentials, paiement, v
 ## 9. Sécurité (à vérifier sur chaque contribution)
 
 - Aucun secret, aucune donnée personnelle, aucun journal contenant un message utilisateur.
+- Appels LLM : uniquement via `llm.js` (pseudonymisation imposée), message utilisateur hors du prompt système.
 - Pages HTML : pas de script externe, pas de ressource externe, pas d'appel réseau, pas d'`eval`.
 - Entrées utilisateur : taille bornée, modération, limitation de débit.
 - Dépendances : pas de vulnérabilité élevée ou critique.
