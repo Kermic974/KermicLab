@@ -61,7 +61,8 @@ Contexte de l'écran d'où vient l'idée (données) : ${JSON.stringify(contexte)
 }
 
 const LIEN = /(?:https?:\/\/|www\.|javascript:)/i;
-const texte = (v, max) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, max) : "");
+// Pas d'accent grave : le cadrage est publié dans un bloc de code de l'issue, qu'il ne doit pas pouvoir refermer.
+const texte = (v, max) => (typeof v === "string" ? v.replace(/`/g, "'").replace(/\s+/g, " ").trim().slice(0, max) : "");
 const sur = (v) => v && !LIEN.test(v) && analyser(v).ok;
 
 /** Valide un cadrage (sortie du modèle ou renvoyé par le navigateur) : bornes, zones connues, modération. */
