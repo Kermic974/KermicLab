@@ -162,8 +162,7 @@ test("chat : une question sur le sinus affiche la maquette dans le fil", async (
   await page.click("#ouvrir-chat");
   await page.locator("#fil li").first().waitFor();
   assert.match(await page.locator("#fil li").first().textContent(), /Kermiclab/);
-  assert.equal(await page.locator("#se-connecter").isVisible(), false);
-  assert.equal(await page.locator("#mon-compte").isVisible(), false);
+  assert.equal(await page.locator("#entree-famille").isVisible(), false);
   await page.fill("#question", "c'est quoi le sinus ?");
   await page.keyboard.press("Enter");
   const cadre = page.locator("li[data-maquette=trigo-cercle] iframe");

@@ -67,7 +67,7 @@ console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/
 async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
-  const modules = ["progression.js", "profil.js", "cercle.js", "trophees.js"];
+  const modules = ["progression.js", "profil.js", "comptes.js", "cercle.js", "trophees.js"];
   for (const fichier of [...modules, "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
   let app = appSource;
