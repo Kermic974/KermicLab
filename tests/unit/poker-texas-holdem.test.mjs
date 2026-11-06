@@ -205,6 +205,8 @@ test("conseil : ne reçoit que l'information visible et n'altère jamais la manc
   const conseil = M.conseiller(p.joueur.main, p.communes, 10, p.pot);
   assert.match(conseil, /10 jetons/);
   assert.match(conseil, /inconnues/);
+  assert.doesNotMatch(conseil, /miser|relancer/);
+  assert.match(M.conseiller(p.joueur.main, p.communes, 0, p.pot), /parler gratuitement/);
   assert.equal(JSON.stringify(p), avant);
   p.ordinateur.main = main("A♣ A♦");
   assert.equal(M.conseiller(p.joueur.main, p.communes, 10, p.pot), conseil);

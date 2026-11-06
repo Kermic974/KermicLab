@@ -123,6 +123,14 @@ test("trophées poker : pratique et leçons remontées, restaurées puis effacé
     assert.match(await carte.textContent(), /Premiers pas.*Obtenu/s);
     await carte.getByRole("button", { name: "Rouvrir la page" }).click();
     cadre = page.frameLocator("#bulle-cadre");
+    const stats = cadre.locator('[data-sortie="stats-jeu"]');
+    await stats.waitFor({ state: "visible" });
+    const etat = await cadre.locator("body").evaluate(() => window.kermiclab.academie.etat());
+    const texteStats = await stats.textContent();
+    assert.ok(etat.xp > 0);
+    assert.match(texteStats, new RegExp(`${etat.xp} XP`), "le bandeau Jouer reflète les XP restaurés avant interaction");
+    assert.match(texteStats, new RegExp(`${etat.compteurs.manches} manches terminées`), "le bandeau reflète les manches restaurées");
+    assert.match(texteStats, new RegExp(`${etat.parties.entrainement.victoires} victoires`), "le bandeau reflète les victoires restaurées");
     academie = cadre.locator("#panneau-academie");
     await cadre.locator("#onglet-academie").click();
     await academie.locator('[data-lecon="cinq-cartes"].faite').waitFor();

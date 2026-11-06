@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-XnmKlnnabcdiQaFGbjt/93gXh6fb4QYfIbwG/jorwtA=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-Ao1/u/B7wlkaiADmm3nGLDSHRoee0/jxsS0Rhv6OWW0=' 'sha256-9ZXcXuw8v7c6geam87w8ux3kXEEUGN2AuWnKgkrRHC0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRDLVTvV5uH2+EDhfPHxbGjHU8DL2v1+2Z+3t6upT0w=' 'sha256-XnmKlnnabcdiQaFGbjt/93gXh6fb4QYfIbwG/jorwtA=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-9ZXcXuw8v7c6geam87w8ux3kXEEUGN2AuWnKgkrRHC0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Mots fléchés – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -712,13 +712,13 @@ const VueAcademie = (() => {
    * - adaptateurs : { type: (outils) => ({ element, demarrer(exo), consigne?(exo), indice(exo), arreter?() }) }
    *   où outils = { reussir(), erreur(message?), retour(texte, classe) }
    */
-  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal }) {
+  function monter({ panneau, progression: P, stockage, cle = "academie", embleme, adaptateurs = {}, ouvrirOnglet, stockageDisponible = true, jour = jourLocal, apresRestauration = () => {} }) {
     const parcours = P.parcours;
     let etat = P.normaliser(stockage.lire(cle));
     let session = null, ex = null, confirmationEffacement = false;
     const sauver = () => { stockage.ecrire(cle, etat); publier(); };
     const publier = typeof Trophees === "undefined" ? () => {} : Trophees.monter({
-      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); },
+      restaurer(brut) { etat = P.normaliser(brut); afficherAccueil(); apresRestauration(); },
       resumer() {
         z.stockage.hidden = true;
         const lecons = parcours.grades.flatMap((g) => g.lecons);
