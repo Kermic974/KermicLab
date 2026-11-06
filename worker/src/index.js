@@ -14,6 +14,7 @@ import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
 import { claudeViaGatewayDisponible } from "./llm.js";
+import { pseudonymiser } from "./pseudonymisation.js";
 
 const TAILLE_MAX_PAR_DEFAUT = 500;
 const MAX_SUGGESTIONS = 4;
@@ -342,7 +343,7 @@ export function corpsIdee({ message, langue, contexte, cadrage = null }) {
     type: "idee",
     version: 1,
     donnees: {
-      message, langue, contexte,
+      message: pseudonymiser(String(message ?? "")), langue, contexte,
       cadrage: cadrage ? { ...cadrage, pistes: pistesFichiers(cadrage.zones, contexte) } : null
     }
   };
