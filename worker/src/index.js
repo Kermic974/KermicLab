@@ -14,10 +14,10 @@ import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
 import { pseudonymiser } from "./pseudonymisation.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
-import { appelerAliasGateway, claudeViaGatewayDisponible } from "./llm.js";
+import { appelerAliasGateway, appelerWorkersAI, claudeViaGatewayDisponible } from "./llm.js";
 import { configurationPublique, lireConfiguration, skillActif } from "./configuration.js";
 import {
-  HARNESS_DEFI, SCHEMA_DEFI, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
+  HARNESS_DEFI, SCHEMA_DEFI, codeErreurFournisseur, melangerChoix, perimetreDefi, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
   messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
 } from "./defi-llm.js";
 import {
@@ -469,7 +469,7 @@ async function traiterDefi(requete, env, ctx) {
   let corps;
   try { corps = await requete.json(); } catch { return { statut: 400, donnees: { defis: [] } }; }
   const langue = langueValide(corps?.langue);
-  const matiere = typeof corps?.matiere === "string" && /^[a-z-]{1,40}$/.test(corps.matiere) ? corps.matiere : null;
+  const perimetre = perimetreDefi(CATALOGUE, corps ?? {});
   const limite = generationsDefiParJour(env);
   const banque = (raison, quota = { limite, utilisees: 0, restantes: limite }) => {
     ctx.waitUntil(journaliser(env, { type: "defi", langue, routage: "banque", detail: raison }));
@@ -477,6 +477,9 @@ async function traiterDefi(requete, env, ctx) {
   };
   if (corps?.utiliserLlm !== true) return banque("ia-inactive");
   if (!defiIaPossible(env)) return banque("ia-indisponible");
+  // Tirage avant toute session ou réservation : un périmètre vide ne coûte ni génération ni cookie.
+  const tirages = tirerDefis(CATALOGUE, perimetre);
+  if (!tirages.length) return banque("perimetre-vide");
   let session, cookie;
   try {
     ({ session, cookie } = await sessionSansPage(requete, env, SESSION_DEFI));
@@ -498,30 +501,59 @@ async function traiterDefi(requete, env, ctx) {
     return avecCookie(banque("quota", { limite, utilisees: deja, restantes: Math.max(0, limite - deja) }));
   }
   const quota = { limite, utilisees, restantes: Math.max(0, limite - utilisees) };
-  const tirages = tirerDefis(CATALOGUE, { matiere });
-  let generation, defis = [];
+  const config = lireConfiguration(env);
+  const demande = {
+    system: promptDefi(langue), message: messageDefi(CATALOGUE, tirages, langue),
+    schema: SCHEMA_DEFI, maxTokens: config.MAX_TOKENS_DEFI
+  };
+  // L'alias (custom/haiku) d'abord, puis Workers AI (gratuit, sans clé) si l'alias échoue ou ne produit aucun défi
+  // valide. Les deux essais comptent pour une seule génération du quota.
+  const fournisseurs = [
+    { nom: "cloudflare-ai-gateway", modele: config.MODELE_DEFI, appeler: () => appelerAliasGateway(env, demande) },
+    { nom: "cloudflare-workers-ai", modele: config.MODELE_WORKERS_AI, appeler: () => appelerWorkersAI(env, demande) }
+  ];
+  const echecs = [];
+  let generation, fournisseur, defis = [];
   try {
-    generation = await appelerAliasGateway(env, {
-      system: promptDefi(langue), message: messageDefi(CATALOGUE, tirages, langue),
-      schema: SCHEMA_DEFI, maxTokens: lireConfiguration(env).MAX_TOKENS_DEFI
-    });
-    if (!generation.refus) defis = normaliserDefis(generation.contenu, tirages);
-  } catch {
-    console.error("llm défi fournisseur ou sortie invalide");
+    for (const candidat of fournisseurs) {
+      let essai;
+      try {
+        essai = await candidat.appeler();
+      } catch (e) {
+        const code = codeErreurFournisseur(e);
+        console.error("llm défi fournisseur échoué", candidat.nom, code);
+        echecs.push(`${candidat.nom}:${code}`);
+        continue;
+      }
+      let valides = [];
+      try {
+        if (!essai.refus) valides = normaliserDefis(essai.contenu, tirages);
+      } catch {
+        console.error("llm défi sortie invalide", candidat.nom);
+      }
+      if (!valides.length) { echecs.push(`${candidat.nom}:${essai.refus ? "refus" : "sortie-invalide"}`); continue; }
+      generation = essai; fournisseur = candidat; defis = valides;
+      break;
+    }
   } finally {
     await libererGenerationDefi(env, session.id).catch(() => console.error("llm libération défi indisponible"));
   }
-  if (!defis.length) return avecCookie(banque(generation ? "sortie-invalide" : "ia-indisponible", quota));
+  if (!defis.length) {
+    const raison = echecs.every((e) => /:(?:http-\d{3}|erreur)$/.test(e)) ? "ia-indisponible" : "sortie-invalide";
+    ctx.waitUntil(journaliser(env, { type: "erreur", langue, routage: "defi", detail: echecs.join(" ").slice(0, 200) }));
+    return avecCookie(banque(raison, quota));
+  }
   ctx.waitUntil(journaliser(env, { type: "defi", langue, routage: "ia", detail: `valides:${defis.length}` }));
   const origine = new URL(requete.url).origin;
   return avecCookie({
     statut: 200,
     donnees: {
       source: "ia",
-      defis: defis.map((d) => ({ ...d, url: `${origine}/maquettes/${encodeURIComponent(d.notion)}?lang=${langue}` })),
+      perimetre,
+      defis: defis.map((d) => melangerChoix(d)).map((d) => ({ ...d, url: `${origine}/maquettes/${encodeURIComponent(d.notion)}?lang=${langue}` })),
       quota,
       llm: {
-        fournisseur: "cloudflare-ai-gateway", modele: lireConfiguration(env).MODELE_DEFI, harness: HARNESS_DEFI,
+        fournisseur: fournisseur.nom, modele: fournisseur.modele, harness: HARNESS_DEFI, repli: echecs.length > 0, echecs,
         tokensSortie: Number.isSafeInteger(generation?.tokensSortie) ? generation.tokensSortie : null,
         pseudonymisation: { appliquee: true, remplacements: generation?.pseudonymisations ?? 0 }
       }

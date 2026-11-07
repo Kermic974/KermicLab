@@ -347,15 +347,36 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   assert.equal(await texte(page, '#config-modules [data-cle="MODELE_CAHIERS"] dd'), "custom/sonnet-5-5");
   assert.equal(await texte(page, '#config-modules [data-cle="MAX_TOKENS_CAHIERS"] dd'), "100000 (1000–128000)");
   assert.equal(await texte(page, '#config-modules [data-cle="LIMITE_TOKENS_SESSION"] dd'), "1000 (200–4000)");
-  assert.match(await texte(page, '#config-modules [data-skill="defi-express"] dd'), /Actif\s+defi-express-v1 · v1\.0\.0/);
+  assert.match(await texte(page, '#config-modules [data-skill="defi-express"] dd'), /Actif\s+defi-express-v2 · v1\.1\.0/);
 
   await lancerDefi(page);
+  // Configurateur : périmètre choisi avant la génération (niveau, matière, notion en cascade, types de défis).
+  await page.locator("#defi-config").waitFor();
+  assert.match(await texte(page, "#defi-source"), /Choisis ton périmètre/);
+  assert.equal(await page.inputValue("#defi-matiere"), "mathematiques", "dernière matière ouverte par défaut");
+  assert.deepEqual(await page.locator("#defi-niveau option").allTextContents(),
+    ["Tous les niveaux", "Collège", "Seconde", "Première", "Terminale"]);
+  await page.selectOption("#defi-niveau", "college");
+  assert.deepEqual(await page.locator("#defi-matiere option").allTextContents(),
+    ["Toutes les matières", "Maths", "Physique-chimie"], "matières du niveau choisi seulement (jeux exclus)");
+  assert.deepEqual(await page.locator("#defi-notion option").allTextContents(),
+    ["Toutes les notions", "Les fractions", "Le théorème de Pythagore"]);
+  assert.match(await texte(page, "#defi-config-resume"), /2 notion\(s\) dans ce périmètre · 2 défi/);
+  for (const c of await page.locator("#defi-config input[name=defi-format]").all()) await c.uncheck();
+  await page.click("#defi-lancer");
+  assert.match(await texte(page, "#defi-config-erreur"), /au moins un type/);
+  assert.equal(requetes.filter((r) => r.defi).length, 0, "rien n'est envoyé sans type de défi");
+  await page.check("#defi-config input[value=qcm]");
+  await page.check("#defi-config input[value=vrai-faux]");
+  await page.click("#defi-lancer");
   await page.locator("#defi-question").waitFor();
   assert.equal(await texte(page, "#defi-question"), "Défi inédit 1 ?");
   assert.match(await texte(page, "#defi-source"), /préparés par l’IA/);
   assert.match(await texte(page, "#defi .defi-etiquette"), /Question · Le théorème de Pythagore/);
   const envoi = requetes.find((r) => r.defi)?.defi;
-  assert.deepEqual(envoi, { langue: "fr", matiere: "mathematiques", utiliserLlm: true });
+  assert.deepEqual(envoi, { langue: "fr", niveau: "college", matiere: "mathematiques", notion: null, formats: ["qcm", "vrai-faux"], utiliserLlm: true });
+  assert.deepEqual(JSON.parse(await page.evaluate(() => localStorage.getItem("kermiclab:defi:perimetre"))),
+    { niveau: "college", matiere: "mathematiques", notion: "", formats: ["qcm", "vrai-faux"] });
   for (const bonne of [2, 0, 2, 2, 2]) {
     await page.locator("#defi .reponse").nth(bonne).click();
     assert.match(await texte(page, "#defi-retour"), /Correct !/);
@@ -367,7 +388,13 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
 
   // Recommencer : 3 défis inédits seulement, complétés par 2 questions fixes de la banque.
   await page.click("#defi .defi-suite .secondaire-bouton");
+  // Recommencer revient au configurateur, avec le périmètre mémorisé ; ici une seule notion.
+  await page.locator("#defi-config").waitFor();
+  assert.equal(await page.inputValue("#defi-niveau"), "college");
+  await page.selectOption("#defi-notion", "fractions");
+  await page.click("#defi-lancer");
   await page.locator("#defi-question").waitFor();
+  assert.equal(requetes.filter((r) => r.defi).at(-1).defi.notion, "fractions");
   for (let i = 0; i < 3; i++) {
     await page.locator("#defi .reponse").nth(0).click();
     await page.locator("#defi .defi-suite .bouton:not(.secondaire-bouton)").click();
@@ -382,6 +409,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   await lancerDefi(page);
   await page.locator("#defi-question").waitFor();
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.match(await texte(page, "#defi-source"), /tous tes défis inédits pour aujourd’hui/);
   assert.equal(requetes.filter((r) => r.defi).length, avant);
   assert.deepEqual(erreurs, []);
   await contexte.close();
@@ -394,7 +422,24 @@ test("configuration : sans IA activée, le réglage du défi invite à l'activer
   assert.match(await texte(page, "#defi-ia-etat"), /Active « Utiliser l’IA »/);
   await lancerDefi(page);
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.match(await texte(page, "#defi-source"), /Active « Utiliser l’IA »/);
   assert.equal(requetes.filter((r) => r.defi).length, 0, "aucun appel sans consentement IA");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("défi express : IA indisponible côté serveur, les questions fixes s'affichent avec la raison", async () => {
+  const { page, contexte, erreurs } = await demarrer({}, async (p) => {
+    await p.addInitScript(() => { try { sessionStorage.setItem("kermiclab:llm:actif", "true"); } catch { /* iframe sandboxée */ } });
+  }, {
+    defi: () => ({ source: "banque", raison: "ia-indisponible", defis: [], quota: { limite: 3, utilisees: 1, restantes: 2 } })
+  });
+  await choisirPseudo(page, "Lou");
+  await lancerDefi(page);
+  await page.click("#defi-lancer");
+  await page.locator("#defi-question").waitFor();
+  assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
+  assert.match(await texte(page, "#defi-source"), /l’IA ne peut pas préparer de défis pour le moment/);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

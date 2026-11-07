@@ -29,7 +29,7 @@ MAX_TOKENS_APPEL = "500"       # 100 à 1000, jamais plus que LIMITE_TOKENS_SESS
 # Défi express (ADR 0018) : alias de modèle AI Gateway et générations IA par session de 24 h.
 MODELE_DEFI = "custom/haiku"
 DEFI_GENERATIONS_JOUR = "3"    # 0 à 10
-MAX_TOKENS_DEFI = "1500"       # 500 à 3000
+MAX_TOKENS_DEFI = "2000"       # 500 à 3000 ; 2000 : place pour la vérification interne de chaque défi
 # Mes cahiers : alias de modèle AI Gateway, générations IA par session de 24 h et budget de sortie par génération.
 MODELE_CAHIERS = "custom/sonnet-5-5"
 CAHIERS_GENERATIONS_JOUR = "2" # 0 à 5

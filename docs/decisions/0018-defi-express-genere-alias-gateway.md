@@ -15,3 +15,21 @@
 - Limites : la validation ne prouve pas l'exactitude d'un fait généré ; l'ancrage sur le catalogue et le signalement réduisent le risque, une relecture pédagogique reste nécessaire. Le format exact de réponse du binding pour un alias (`choices[0].message.content` ou `response`) est géré dans les deux cas mais doit être vérifié en production. Supprimer le cookie crée une nouvelle session et donc un nouveau quota (comme ADR 0016).
 - English summary: the quick challenge now asks the AI Gateway model alias `custom/haiku` (through `kermiclab-gateway`, JSON Schema, pseudonymized, no cache/logs) for 5 challenges on catalogue topics and formats drawn at random by the server. Only server-side catalogue excerpts are sent. Each challenge is strictly validated and moderated; invalid ones are replaced by the fixed question bank, which also serves when AI is off, unconsented, over quota or failing. A separate D1 quota allows `DEFI_GENERATIONS_JOUR` (default 3) generations per 24-hour session; users can lower it in Settings. An R2 bank of validated challenges is planned for phase 2.
 - Références : [Model aliases](https://developers.cloudflare.com/ai-gateway/features/routing/model-aliases/), [binding Workers](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/), ADR 0016.
+
+## Complément — repli Workers AI et raison affichée (2026-11-06)
+
+En production, l'alias `custom/haiku` a été rejeté en HTTP 402 (`payment_defaulted` : aucun crédit de facturation unifiée ni clé fournisseur sur la gateway). Les élèves voyaient alors les questions fixes sans explication. Décisions :
+
+1. Si l'alias lève une erreur ou ne produit aucun défi valide, le même lot (mêmes tirages, même prompt, même schéma) est demandé à Workers AI (`MODELE_WORKERS_AI`, Llama 3.3, binding sans clé), comme pour le tuteur (ADR 0016). Les deux essais comptent pour une seule génération du quota. Les métadonnées `llm` indiquent le fournisseur réellement utilisé, `repli` et les codes d'échec.
+2. Les échecs sont journalisés par code court (`http-402`, `sortie-invalide`, `refus`), jamais par le message d'erreur, et remontés dans un KPI `erreur` / routage `defi`.
+3. L'écran du défi affiche la raison des questions fixes : IA non activée, défis inédits désactivés dans Configuration, quota du jour atteint, IA indisponible, ou sortie refusée par les vérifications.
+
+English: if the `custom/haiku` alias fails (e.g. HTTP 402, no gateway payment method) or yields no valid challenge, the Worker retries the same batch on Workers AI (one quota unit for both). Failures are logged as short codes only, and the challenge screen explains why fixed questions are shown.
+
+## Complément — configurateur du périmètre et fiabilité (2026-11-07)
+
+1. **Configurateur** : avant la génération, l'élève choisit niveau, matière et notion (listes en cascade limitées aux notions existantes, jeux exclus) et les types de défis. Le choix est mémorisé sur l'appareil ; par défaut, la dernière matière ouverte dans Éducation, tous niveaux et types. Sans IA possible (non activée, quota atteint, défis désactivés), le configurateur n'est pas proposé et les questions fixes s'affichent avec la raison.
+2. **Serveur** : `perimetreDefi` valide le corps (niveau et matière connus, notion du catalogue, formats parmi les quatre) et ignore toute valeur inconnue. Le tirage est restreint à ce périmètre ; une notion seule est reprise avec des formats variés. Un périmètre vide renvoie `perimetre-vide` avant toute session ou réservation : aucune génération n'est décomptée.
+3. **Fiabilité** : en production, Haiku a désigné 14 comme médiane de 10, 12, 12, 14, 18 (réponse : 12). Le schéma exige désormais un champ interne `verification` (calcul pas à pas ou fait de l'extrait) **avant** `bonne`, qui doit en être le résultat ; ce champ n'est jamais renvoyé au navigateur. Les choix (sauf vrai-faux) sont mélangés côté serveur : la bonne réponse n'est plus presque toujours en A. Prompt `defi-express-v2` ; `MAX_TOKENS_DEFI` passe à 2 000 dans `wrangler.toml` pour laisser la place à la vérification.
+
+English: a scope picker (level, subject, topic, challenge types) now precedes generation; the server validates the scope and an empty scope costs no quota. Each challenge must include a hidden `verification` step before the answer index, and choices are shuffled server-side.
