@@ -736,6 +736,10 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .fr-cartes strong { display: block; margin-bottom: 4px; }
 .fr-cartes span { color: var(--texte-2); font-size: .92rem; }
 .fr-encadre { margin: 16px 0; padding: 14px 18px; border-left: 4px solid var(--accent); border-radius: var(--rayon-petit); background: var(--accent-doux); color: var(--texte); }
+.fr-encadre > p { margin: 0; }
+.fr-encadre > p + p { margin-top: 8px; }
+.fr-suivi { margin: 10px 0 0; font-size: .92em; color: var(--doux); }
+.fr-suivi a { overflow-wrap: anywhere; }
 .fr-liste { padding-left: 20px; }
 .fr-liste li { margin-bottom: 8px; }
 .fr-non li::marker { content: "✕  "; color: var(--danger); font-weight: 800; }
