@@ -2059,7 +2059,7 @@ function rendreSemaine() {
 /* ---------- Défi express (5 défis, XP une fois par jour ; générés par l'IA si autorisé, ADR 0018) ---------- */
 
 const NB_DEFIS = 5;
-const defi = { index: 0, bonnes: 0, resultats: [], questions: [], source: "banque", raison: null, jeton: 0 };
+const defi = { index: 0, bonnes: 0, resultats: [], questions: [], source: "banque", raison: null, etape: null, jeton: 0 };
 
 /** Banque fixe (i18n) : sert sans IA et complète un lot généré incomplet. */
 const questionBanque = (q) => ({
@@ -2117,7 +2117,8 @@ const RAISONS_BANQUE = {
   desactive: "defiBanqueDesactive",
   quota: "defiBanqueQuota",
   "ia-indisponible": "defiBanqueIndisponible",
-  "sortie-invalide": "defiBanqueSortie"
+  "sortie-invalide": "defiBanqueSortie",
+  "perimetre-vide": "defiBanquePerimetre"
 };
 function raisonBanqueLocale() {
   if (!etat.llmDisponible || !etat.defiIa.ia || etat.defiIa.generationsParJour === 0) return "ia-indisponible";
@@ -2126,40 +2127,148 @@ function raisonBanqueLocale() {
   return defiIaRestantes() > 0 ? null : "quota";
 }
 
-async function ouvrirDefi() {
-  const jeton = ++defi.jeton;
+/* ---------- Configurateur du défi : périmètre choisi avant la génération ---------- */
+
+const FORMATS_DEFI = ["qcm", "vrai-faux", "situation", "intrus"];
+const CLE_DEFI_PERIMETRE = "kermiclab:defi:perimetre";
+const niveauDe = (n) => (NIVEAUX.includes(n.niveau) ? n.niveau : "autres");
+
+/** Périmètre mémorisé sur l'appareil ; par défaut la dernière matière ouverte dans Éducation, tous niveaux et formats. */
+function lirePerimetreDefi() {
+  let brut = null;
+  try { brut = JSON.parse(lireCle(preferences(), CLE_DEFI_PERIMETRE) || "null"); } catch { brut = null; }
+  const texte = (v) => (typeof v === "string" ? v : "");
+  const formats = Array.isArray(brut?.formats) ? FORMATS_DEFI.filter((f) => brut.formats.includes(f)) : [];
+  return {
+    niveau: texte(brut?.niveau), matiere: brut ? texte(brut.matiere) : (etat.matiere ?? ""), notion: texte(brut?.notion),
+    formats: formats.length ? formats : [...FORMATS_DEFI]
+  };
+}
+
+/** Notions du catalogue dans le périmètre (mêmes règles que le serveur : jeux exclus). */
+function notionsDefi({ niveau = "", matiere = "", notion = "" } = {}) {
+  return etat.notions.filter((n) => n.matiere !== "jeux"
+    && (!niveau || niveauDe(n) === niveau) && (!matiere || n.matiere === matiere) && (!notion || n.id === notion));
+}
+
+function remplirSelect(select, cleTous, options, valeur) {
+  const tous = element("option", { cle: cleTous, attributs: { value: "" } });
+  select.replaceChildren(tous, ...options.map(([v, texte]) => element("option", { texte, attributs: { value: v } })));
+  select.value = options.some(([v]) => v === valeur) ? valeur : "";
+}
+
+function afficherConfigurateurDefi() {
+  defi.etape = "config";
+  const p = lirePerimetreDefi();
+  const form = element("form", { classe: "defi-config", attributs: { id: "defi-config", novalidate: "" } });
+  const champ = (id, cle) => {
+    const bloc = element("div", { classe: "defi-config-champ" });
+    const select = element("select", { attributs: { id, name: id } });
+    bloc.append(element("label", { classe: "etiquette-champ", cle, attributs: { for: id } }), select);
+    form.append(bloc);
+    return select;
+  };
+  form.append(element("p", { classe: "doux", cle: "defiConfigIntro" }));
+  const niveau = champ("defi-niveau", "defiConfigNiveau");
+  const matiere = champ("defi-matiere", "defiConfigMatiere");
+  const notion = champ("defi-notion", "defiConfigNotion");
+  const formats = element("fieldset", { classe: "defi-config-formats", attributs: { "aria-describedby": "defi-config-erreur" } });
+  formats.append(element("legend", { classe: "etiquette-champ", cle: "defiConfigFormats" }));
+  for (const f of FORMATS_DEFI) {
+    const label = element("label");
+    const caseFormat = element("input", { attributs: { type: "checkbox", name: "defi-format", value: f } });
+    caseFormat.checked = p.formats.includes(f);
+    label.append(caseFormat, element("span", { cle: `defiFormat_${f}` }));
+    formats.append(label);
+  }
+  const resume = element("p", { classe: "doux petit", attributs: { id: "defi-config-resume", role: "status" } });
+  const erreur = element("p", { classe: "erreur-champ", attributs: { id: "defi-config-erreur", "aria-live": "assertive" } });
+  const lancer = element("button", { classe: "bouton", attributs: { type: "submit", id: "defi-lancer" } });
+  lancer.append(element("span", { cle: "defiLancer" }));
+  const actions = element("div", { classe: "defi-suite" });
+  actions.append(lancer);
+  form.append(formats, resume, erreur, actions);
+
+  const lire = () => ({
+    niveau: niveau.value, matiere: matiere.value, notion: notion.value,
+    formats: [...form.querySelectorAll("input[name=defi-format]:checked")].map((c) => c.value)
+  });
+  // Listes en cascade : matières du niveau choisi, notions du niveau et de la matière choisis.
+  const actualiser = (choix) => {
+    const niveaux = NIVEAUX.filter((v) => notionsDefi({ niveau: v }).length);
+    remplirSelect(niveau, "defiConfigTousNiveaux", niveaux.map((v) => [v, t(`niveau_${v}`)]), choix.niveau);
+    const matieres = [...new Set(notionsDefi({ niveau: niveau.value }).map((n) => n.matiere))].sort(ordreMatiere);
+    remplirSelect(matiere, "defiConfigToutesMatieres", matieres.map((v) => [v, t(`matiere_${v}`)]), choix.matiere);
+    const notions = notionsDefi({ niveau: niveau.value, matiere: matiere.value });
+    remplirSelect(notion, "defiConfigToutesNotions", notions.map((n) => [n.id, n.titre]), choix.notion);
+    const n = notionsDefi(lire()).length;
+    resume.textContent = t("defiConfigResume", { n, r: defiIaRestantes() });
+    erreur.textContent = "";
+    lancer.disabled = n === 0;
+  };
+  actualiser(p);
+  form.addEventListener("change", () => actualiser(lire()));
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const choix = lire();
+    if (!choix.formats.length) { erreur.textContent = t("defiConfigFormatsRequis"); return; }
+    if (!notionsDefi(choix).length) return;
+    ecrireCle(preferences(), CLE_DEFI_PERIMETRE, JSON.stringify(choix));
+    void lancerDefiIa(choix);
+  });
+  $("#defi-corps").replaceChildren(form);
+  rafraichirDefiTextes();
+  rafraichirReglageDefi();
+}
+
+/** Ouverture du défi : configurateur si l'IA peut préparer des défis inédits, sinon questions fixes avec la raison. */
+function ouvrirDefi() {
+  ++defi.jeton;
   defi.index = 0; defi.bonnes = 0; defi.resultats = [];
-  let generes = [];
   defi.source = "banque";
   defi.raison = raisonBanqueLocale();
-  if (defiIaPossible()) {
-    $("#defi-corps").replaceChildren(element("p", { classe: "defi-chargement doux", cle: "defiChargement", attributs: { role: "status" } }));
-    rafraichirDefiTextes();
-    try {
-      const r = await fetch(`${etat.config.apiUrl}/api/defi`, {
-        method: "POST", credentials: "include", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ langue: etat.langue, matiere: etat.matiere, utiliserLlm: true })
-      });
-      const d = await r.json();
-      if (jeton !== defi.jeton) return;
-      if (Number.isInteger(d.quota?.restantes)) etat.defiIa.restantesServeur = d.quota.restantes;
-      defi.raison = RAISONS_BANQUE[d.raison] ? d.raison : "ia-indisponible";
-      if (d.source === "ia" && Array.isArray(d.defis)) {
-        generes = d.defis.slice(0, NB_DEFIS).map(questionIa);
-        defi.source = "ia";
-        noterGenerationDefi();
-      }
-    } catch {
-      defi.raison = "ia-indisponible";
-      console.error("défi IA indisponible");
-    }
-    if (jeton !== defi.jeton) return;
-  }
+  if (defiIaPossible() && notionsDefi().length) { afficherConfigurateurDefi(); return; }
+  afficherQuestionsDefi([]);
+}
+
+function afficherQuestionsDefi(generes) {
+  defi.etape = "questions";
   const banque = [1, 2, 3, 4, 5].map(questionBanque);
   defi.questions = [...generes, ...banque.slice(0, NB_DEFIS - generes.length)];
   rendreQuestionDefi();
   rafraichirDefiTextes();
   rafraichirReglageDefi();
+}
+
+async function lancerDefiIa(perimetre) {
+  const jeton = ++defi.jeton;
+  let generes = [];
+  defi.etape = "chargement";
+  $("#defi-corps").replaceChildren(element("p", { classe: "defi-chargement doux", cle: "defiChargement", attributs: { role: "status" } }));
+  rafraichirDefiTextes();
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/defi`, {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        langue: etat.langue, niveau: perimetre.niveau || null, matiere: perimetre.matiere || null,
+        notion: perimetre.notion || null, formats: perimetre.formats, utiliserLlm: true
+      })
+    });
+    const d = await r.json();
+    if (jeton !== defi.jeton) return;
+    if (Number.isInteger(d.quota?.restantes)) etat.defiIa.restantesServeur = d.quota.restantes;
+    defi.raison = RAISONS_BANQUE[d.raison] ? d.raison : "ia-indisponible";
+    if (d.source === "ia" && Array.isArray(d.defis)) {
+      generes = d.defis.slice(0, NB_DEFIS).map(questionIa);
+      defi.source = "ia";
+      noterGenerationDefi();
+    }
+  } catch {
+    defi.raison = "ia-indisponible";
+    console.error("défi IA indisponible");
+  }
+  if (jeton !== defi.jeton) return;
+  afficherQuestionsDefi(generes);
 }
 
 function rafraichirDefiTextes() {
@@ -2169,7 +2278,8 @@ function rafraichirDefiTextes() {
   if (compteur) compteur.textContent = t("defiProgression", { n: defi.index + 1, m: defi.questions.length });
   const source = $("#defi-source");
   if (source) {
-    const cle = defi.source === "ia" ? "defiSourceIa" : RAISONS_BANQUE[defi.raison] ?? "defiSourceBanque";
+    const cle = defi.etape === "config" || defi.etape === "chargement" ? "defiConfigSource"
+      : defi.source === "ia" ? "defiSourceIa" : RAISONS_BANQUE[defi.raison] ?? "defiSourceBanque";
     source.textContent = t(cle);
   }
 }
@@ -2241,7 +2351,7 @@ function terminerDefi() {
     element("span", { classe: "pastille ok", ...(resultat.xpGagne ? { texte: t("xpGagne", { n: resultat.xpGagne }) } : { cle: "defiDejaFait" }) }));
   const actions = element("div", { classe: "defi-suite" });
   const recommencer = element("button", { classe: "bouton secondaire-bouton", cle: "defiRecommencer", attributs: { type: "button" } });
-  recommencer.addEventListener("click", () => { void ouvrirDefi(); });
+  recommencer.addEventListener("click", () => ouvrirDefi());
   const terminer = element("button", { classe: "bouton", cle: "defiTerminer", attributs: { type: "button" } });
   terminer.addEventListener("click", () => naviguer("education"));
   actions.append(recommencer, terminer);

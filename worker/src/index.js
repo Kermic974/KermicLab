@@ -17,7 +17,7 @@ import { intentionConversation } from "./conversation.js";
 import { appelerAliasGateway, appelerWorkersAI, claudeViaGatewayDisponible } from "./llm.js";
 import { configurationPublique, lireConfiguration, skillActif } from "./configuration.js";
 import {
-  HARNESS_DEFI, SCHEMA_DEFI, codeErreurFournisseur, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
+  HARNESS_DEFI, SCHEMA_DEFI, codeErreurFournisseur, melangerChoix, perimetreDefi, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
   messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
 } from "./defi-llm.js";
 
@@ -465,7 +465,7 @@ async function traiterDefi(requete, env, ctx) {
   let corps;
   try { corps = await requete.json(); } catch { return { statut: 400, donnees: { defis: [] } }; }
   const langue = langueValide(corps?.langue);
-  const matiere = typeof corps?.matiere === "string" && /^[a-z-]{1,40}$/.test(corps.matiere) ? corps.matiere : null;
+  const perimetre = perimetreDefi(CATALOGUE, corps ?? {});
   const limite = generationsDefiParJour(env);
   const banque = (raison, quota = { limite, utilisees: 0, restantes: limite }) => {
     ctx.waitUntil(journaliser(env, { type: "defi", langue, routage: "banque", detail: raison }));
@@ -473,6 +473,9 @@ async function traiterDefi(requete, env, ctx) {
   };
   if (corps?.utiliserLlm !== true) return banque("ia-inactive");
   if (!defiIaPossible(env)) return banque("ia-indisponible");
+  // Tirage avant toute session ou réservation : un périmètre vide ne coûte ni génération ni cookie.
+  const tirages = tirerDefis(CATALOGUE, perimetre);
+  if (!tirages.length) return banque("perimetre-vide");
   let session, cookie;
   try {
     ({ session, cookie } = await sessionSansPage(requete, env, SESSION_DEFI));
@@ -494,7 +497,6 @@ async function traiterDefi(requete, env, ctx) {
     return avecCookie(banque("quota", { limite, utilisees: deja, restantes: Math.max(0, limite - deja) }));
   }
   const quota = { limite, utilisees, restantes: Math.max(0, limite - utilisees) };
-  const tirages = tirerDefis(CATALOGUE, { matiere });
   const config = lireConfiguration(env);
   const demande = {
     system: promptDefi(langue), message: messageDefi(CATALOGUE, tirages, langue),
@@ -543,7 +545,8 @@ async function traiterDefi(requete, env, ctx) {
     statut: 200,
     donnees: {
       source: "ia",
-      defis: defis.map((d) => ({ ...d, url: `${origine}/maquettes/${encodeURIComponent(d.notion)}?lang=${langue}` })),
+      perimetre,
+      defis: defis.map((d) => melangerChoix(d)).map((d) => ({ ...d, url: `${origine}/maquettes/${encodeURIComponent(d.notion)}?lang=${langue}` })),
       quota,
       llm: {
         fournisseur: fournisseur.nom, modele: fournisseur.modele, harness: HARNESS_DEFI, repli: echecs.length > 0, echecs,

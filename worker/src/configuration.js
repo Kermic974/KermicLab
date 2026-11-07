@@ -13,7 +13,7 @@ export const MODULES = Object.freeze(["general", "tuteur", "defi"]);
 export const SKILLS = Object.freeze({
   tuteur: Object.freeze({ module: "tuteur", version: "1.0.0", prompt: "tuteur-catalogue-v1", perimetre: "catalogue-kermiclab" }),
   "cadrage-idee": Object.freeze({ module: "tuteur", version: "1.0.0", prompt: "cadrage-idee-v1", perimetre: "boite-a-idees" }),
-  "defi-express": Object.freeze({ module: "defi", version: "1.0.0", prompt: "defi-express-v1", perimetre: "catalogue-kermiclab" })
+  "defi-express": Object.freeze({ module: "defi", version: "1.1.0", prompt: "defi-express-v2", perimetre: "catalogue-kermiclab" })
 });
 
 const ALIAS_VALIDE = /^[A-Za-z0-9@][A-Za-z0-9@/._:-]{0,99}$/;

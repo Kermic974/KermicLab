@@ -46,7 +46,7 @@ test("skills : liste filtrée, identifiants inconnus ignorés", () => {
   assert.equal(skillActif({}, "defi-express"), true);
   assert.equal(skillActif({}, "inconnu"), false);
   assert.deepEqual(harnessSkill("defi-express"), {
-    nom: "KermicLab", version: "1.0.0", prompt: "defi-express-v1", perimetre: "catalogue-kermiclab", acces: "gratuit-provisoire"
+    nom: "KermicLab", version: "1.1.0", prompt: "defi-express-v2", perimetre: "catalogue-kermiclab", acces: "gratuit-provisoire"
   });
 });
 
