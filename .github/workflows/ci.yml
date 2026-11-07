@@ -168,7 +168,8 @@ jobs:
         if: steps.secrets.outputs.ok == 'true'
         env:
           KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'https://kermiclab-api.kermic.workers.dev' }}
-          KERMICLAB_SITE_URL: ${{ vars.KERMICLAB_SITE_URL || 'https://kermiclab.online' }}
+          # Adresse Pages de production (le déploiement publié) : le domaine personnalisé filtre les robots (HTTP 403 en CI).
+          KERMICLAB_SITE_URL: ${{ vars.KERMICLAB_SITE_URL || 'https://kermiclab.pages.dev' }}
         run: node scripts/deploiement.mjs fumee
       # Après un déploiement du Worker, tout échec (secrets, Pages, test de fumée) rétablit le Worker et le site de
       # l'instantané. Le job reste en échec : l'incident est visible dans Actions et notifié.

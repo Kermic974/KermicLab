@@ -3,13 +3,13 @@ import assert from "node:assert/strict";
 import { clientCloudflare, prendreInstantane, retablir, validerInstantane, testerFumee, fumeeAvecReprises } from "../../scripts/deploiement.mjs";
 
 // Sûreté du déploiement : instantané, test de fumée, retour arrière (issue #178). Aucun appel réseau réel.
-const API = "https://kermiclab-api.kermic.workers.dev", SITE = "https://kermiclab.online";
+const API = "https://kermiclab-api.kermic.workers.dev", SITE = "https://kermiclab.pages.dev";
 const reponse = (corps, status = 200) => new Response(typeof corps === "string" ? corps : JSON.stringify(corps), { status });
 
 function faussesApis(etat = {}) {
   const appels = [];
   const f = async (url, init = {}) => {
-    appels.push({ url, methode: init.method ?? "GET", corps: init.body && JSON.parse(init.body), auth: init.headers?.authorization });
+    appels.push({ url, methode: init.method ?? "GET", corps: init.body && JSON.parse(init.body), auth: init.headers?.authorization, ua: init.headers?.["user-agent"] });
     const u = new URL(url);
     if (u.pathname.endsWith("/workers/scripts/kermiclab-api/deployments") && (init.method ?? "GET") === "GET") {
       return reponse({ success: true, result: { deployments: [
@@ -17,7 +17,17 @@ function faussesApis(etat = {}) {
         { id: "courant", created_on: "2026-11-07T00:00:00Z", versions: [{ version_id: "v-courante", percentage: 100 }] }
       ] } });
     }
-    if (u.pathname.endsWith("/pages/projects/kermiclab/deployments")) return reponse({ success: true, result: [{ id: "pages-courant" }] });
+    if (u.pathname.endsWith("/pages/projects/kermiclab/deployments")) {
+      // Comme en production le 2026-11-07 : le plus récent est en échec, il ne peut pas servir de cible.
+      const deploie = (id, created_on, status = "success", extra = {}) =>
+        ({ id, created_on, environment: "production", is_skipped: false, latest_stage: { name: "deploy", status }, ...extra });
+      return reponse({ success: true, result: [
+        deploie("pages-en-echec", "2026-11-07T17:00:00Z", "failure"),
+        deploie("pages-ignore", "2026-11-07T16:59:00Z", "success", { is_skipped: true }),
+        deploie("pages-courant", "2026-11-07T16:50:00Z"),
+        deploie("pages-ancien", "2026-11-06T10:00:00Z")
+      ] });
+    }
     if (init.method === "POST") return etat.refus ? reponse({ success: false, errors: [{ code: 10000, message: "refusé" }] }, 403) : reponse({ success: true, result: {} });
     if (url === `${API}/api/sante`) return etat.santeKo ? reponse("", 502) : reponse({ ok: true, maquettes: 174 });
     if (url === `${API}/api/catalogue`) return reponse({ notions: [{ id: "fractions" }] });
@@ -29,7 +39,7 @@ function faussesApis(etat = {}) {
   return { f, appels };
 }
 
-test("instantané : déploiement courant du Worker (le plus récent) et déploiement Pages de production", async () => {
+test("instantané : déploiement courant du Worker et dernier déploiement Pages de production réussi (ni en échec, ni ignoré)", async () => {
   const { f, appels } = faussesApis();
   const cf = clientCloudflare({ jeton: "jeton-test", compte: "compte", fetch: f });
   assert.deepEqual(await prendreInstantane(cf, { worker: "kermiclab-api", projet: "kermiclab" }), {
@@ -66,6 +76,7 @@ test("test de fumée : réussi quand API, page servie, site et configuration ré
   const { f, appels } = faussesApis();
   assert.deepEqual(await testerFumee({ api: API, site: SITE, fetch: f }), []);
   assert.ok(appels.every((a) => a.methode === "GET"), "lectures seulement : aucun KPI écrit");
+  assert.ok(appels.every((a) => a.ua === "kermiclab-test-de-fumee (CI)"), "requêtes identifiées");
   assert.ok(!appels.some((a) => a.url.includes("/api/chat")));
 });
 

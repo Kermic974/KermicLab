@@ -27,14 +27,22 @@ export function clientCloudflare({ jeton, compte, fetch: f = fetch }) {
   };
 }
 
-/** Versions actuellement servies : déploiement courant du Worker (le plus récent) et déploiement Pages de production. */
+/**
+ * Versions actuellement servies : déploiement courant du Worker (le plus récent) et dernier déploiement Pages de
+ * production **réussi**. Un déploiement en échec, annulé ou ignoré ne peut pas servir de cible de retour arrière
+ * (Cloudflare : « You cannot rollback to a failed deployment »).
+ */
 export async function prendreInstantane(cf, { worker, projet }) {
   const { deployments = [] } = await cf("GET", `/workers/scripts/${worker}/deployments`);
   const courant = [...deployments].sort((a, b) => String(b.created_on).localeCompare(String(a.created_on)))[0];
-  const pages = await cf("GET", `/pages/projects/${projet}/deployments?env=production&per_page=1`);
+  const pages = await cf("GET", `/pages/projects/${projet}/deployments?env=production&per_page=25`);
+  const servi = [...(pages ?? [])]
+    .filter((d) => d.environment === "production" && !d.is_skipped &&
+      d.latest_stage?.name === "deploy" && d.latest_stage?.status === "success")
+    .sort((a, b) => String(b.created_on).localeCompare(String(a.created_on)))[0];
   return {
     worker: courant ? { nom: worker, versions: courant.versions.map(({ version_id, percentage }) => ({ version_id, percentage })) } : null,
-    pages: pages?.[0] ? { projet, deploiement: pages[0].id } : null
+    pages: servi ? { projet, deploiement: servi.id } : null
   };
 }
 
@@ -89,7 +97,7 @@ export async function testerFumee({ api, site, fetch: f = fetch }) {
   const echecs = [];
   const verifier = async (nom, url, controle) => {
     try {
-      const reponse = await f(url, { headers: { "cache-control": "no-cache" } });
+      const reponse = await f(url, { headers: { "cache-control": "no-cache", "user-agent": "kermiclab-test-de-fumee (CI)" } });
       if (!reponse.ok) { echecs.push(`${nom} : HTTP ${reponse.status}`); return; }
       const erreur = await controle(reponse);
       if (erreur) echecs.push(`${nom} : ${erreur}`);

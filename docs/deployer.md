@@ -29,7 +29,9 @@ Le job de déploiement, dans l'ordre :
    annulée : les migrations ne font que des ajouts compatibles avec la version précédente du Worker.
 
 Variables facultatives : `KERMICLAB_API_URL` (API testée, défaut `https://kermiclab-api.kermic.workers.dev`) et
-`KERMICLAB_SITE_URL` (site testé, défaut `https://kermiclab.online`).
+`KERMICLAB_SITE_URL` (site testé, défaut `https://kermiclab.pages.dev`, l'adresse Pages de production : le domaine
+personnalisé `kermiclab.online` filtre les robots et répond 403 aux machines de GitHub Actions). L'instantané retient le
+dernier déploiement Pages de production **réussi** (un déploiement en échec ne peut pas être une cible de retour arrière).
 
 ## Déploiement manuel de diagnostic
 
