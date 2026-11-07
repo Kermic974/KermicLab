@@ -17,7 +17,8 @@ Suivez [le guide de configuration Cloudflare](setup-cloudflare.md) pour créer e
 
 Le job de déploiement, dans l'ordre :
 
-1. prend un **instantané** des versions en production (Worker et Pages) avec `scripts/deploiement.mjs instantane` ;
+1. prend un **instantané** des versions en production (Worker et Pages) avec `scripts/deploiement.mjs instantane`,
+   transmis à l'étape de retour arrière par une sortie d'étape GitHub (jamais par un fichier) ;
 2. applique les **migrations D1** versionnées (`wrangler d1 migrations apply`, voir [`worker/migrations/README.md`](../worker/migrations/README.md)) ;
 3. déploie `worker/` avec Wrangler, pose les secrets du Worker, puis publie `dist/` sur Pages (projet `kermiclab` par défaut) ;
 4. lance le **test de fumée** (`scripts/deploiement.mjs fumee`) : `/api/sante`, `/api/catalogue`, une page servie, l'accueil

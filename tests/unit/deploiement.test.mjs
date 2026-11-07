@@ -107,3 +107,22 @@ test("instantané relu : validé strictement avant tout appel (noms attendus, UU
   ];
   for (const [instantane, message] of cas) assert.throws(() => validerInstantane(instantane, attendus), message);
 });
+
+test("retour (ligne de commande) : instantané reçu par variable d'environnement, validé avant tout appel réseau", async () => {
+  const { spawnSync } = await import("node:child_process");
+  const lancer = (INSTANTANE) => spawnSync(process.execPath, ["scripts/deploiement.mjs", "retour"], {
+    cwd: new URL("../..", import.meta.url).pathname, encoding: "utf8",
+    // Adresse d'API injoignable : un appel réseau ferait échouer autrement qu'attendu.
+    env: { PATH: process.env.PATH, CLOUDFLARE_API_TOKEN: "jeton-test", CLOUDFLARE_ACCOUNT_ID: "compte", ...(INSTANTANE !== undefined && { INSTANTANE }) }
+  });
+  const absent = lancer(undefined);
+  assert.notEqual(absent.status, 0);
+  assert.match(absent.stderr, /variable INSTANTANE absente/);
+  const piege = lancer(JSON.stringify({ worker: { nom: "../../zones", versions: [] } }));
+  assert.notEqual(piege.status, 0);
+  assert.match(piege.stderr, /Worker inattendu/);
+  assert.doesNotMatch(piege.stderr + piege.stdout, /jeton-test/, "le jeton n'apparaît jamais");
+  const vide = lancer(JSON.stringify({ worker: null, pages: null }));
+  assert.equal(vide.status, 0, vide.stderr);
+  assert.match(vide.stdout, /Instantané vide : rien à rétablir/);
+});

@@ -119,7 +119,7 @@ jobs:
         continue-on-error: true
         env:
           CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'kermiclab' }}
-        run: node scripts/deploiement.mjs instantane "$RUNNER_TEMP/instantane.json"
+        run: node scripts/deploiement.mjs instantane
       # Migrations D1 versionnées, ajout seulement (worker/migrations/README.md) : jamais annulées par le retour arrière.
       - name: Migrations D1
         if: steps.secrets.outputs.ok == 'true'
@@ -176,7 +176,9 @@ jobs:
         if: failure() && steps.instantane.outcome == 'success' && steps.worker.outcome == 'success'
         env:
           CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'kermiclab' }}
-        run: node scripts/deploiement.mjs retour "$RUNNER_TEMP/instantane.json"
+          # Sortie de l'étape « Instantané », passée par variable d'environnement (jamais interpolée dans le script).
+          INSTANTANE: ${{ steps.instantane.outputs.instantane }}
+        run: node scripts/deploiement.mjs retour
       - name: Instantané indisponible
         if: always() && steps.secrets.outputs.ok == 'true' && steps.instantane.outcome == 'failure'
         run: |
