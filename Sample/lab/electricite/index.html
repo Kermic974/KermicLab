@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L'établi de la cabane — circuits et loi d'Ohm</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "electricite",
+  "titre": "L'établi de la cabane",
+  "sujet": "electricite",
+  "version": "0.1.0",
+  "date": "2026-11-08",
+  "langue": "fr",
+  "onglets": ["application"]
+}
+</script>
+  <style>
+    @font-face {
+      font-family: "Fraunces";
+      src: url("fonts/fraunces.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Outfit";
+      src: url("fonts/outfit.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #14181f;
+      --panel: #1e242e;
+      --paper: #f6f1e7;
+      --ink: #1c1915;
+      --muted: #cfc6b8;
+      --muted-ink: #5e584e;
+      --line: #d9d0c2;
+      --amber: #e39b12;
+      --copper: #9a3412;
+      --radius: 16px;
+      --glow: 0;
+      color-scheme: dark;
+    }
+
+    @property --glow {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+
+    * { box-sizing: border-box; }
+    html { overflow-x: clip; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--paper);
+      font-family: "Outfit", "Liberation Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+      padding: 16px 16px calc(28px + env(safe-area-inset-bottom));
+    }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: 0.45; }
+    :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+    .sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .eviter {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 8px 12px;
+      z-index: 3;
+    }
+    .eviter:focus { top: 12px; }
+
+    .page { max-width: 1040px; margin: 0 auto; }
+    .sur {
+      margin: 0;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--amber);
+    }
+    h1 {
+      margin: 4px 0 0;
+      font-family: "Fraunces", "Liberation Serif", Georgia, serif;
+      font-weight: 560;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .sous { margin: 8px 0 0; color: var(--muted); max-width: 38rem; }
+
+    .missions {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin: 18px 0 8px;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .missions::-webkit-scrollbar { display: none; }
+    .mission, .mode, .action, .port {
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1px solid rgba(246, 241, 231, 0.28);
+      background: transparent;
+      color: var(--paper);
+      padding: 8px 12px;
+    }
+    .mission {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+    .mission[aria-pressed="true"] {
+      background: var(--amber);
+      color: var(--ink);
+      border-color: var(--amber);
+    }
+    .sceau {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      border: 1px solid currentColor;
+      display: inline-block;
+    }
+    .mission.fait .sceau { background: currentColor; }
+    #but {
+      margin: 0 0 14px;
+      color: var(--muted);
+      min-height: 1.4em;
+    }
+
+    .colonnes { display: grid; gap: 16px; }
+    @media (min-width: 960px) {
+      .colonnes { grid-template-columns: 1.2fr 0.8fr; align-items: start; }
+    }
+
+    .schema {
+      position: relative;
+      background:
+        radial-gradient(ellipse at 68% 42%, rgba(227, 155, 18, calc(var(--glow) * 0.55)), transparent 58%),
+        var(--panel);
+      border-radius: var(--radius);
+      aspect-ratio: 640 / 360;
+      transition: --glow 180ms ease;
+    }
+    .schema svg { width: 100%; height: 100%; display: block; }
+    .fil { fill: none; stroke: var(--paper); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .fil.actif { stroke: var(--amber); stroke-dasharray: 8 10; animation: defile 0.75s linear infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .fil.actif { animation: none; stroke-dasharray: none; }
+      .schema { transition: none; }
+    }
+    @keyframes defile { to { stroke-dashoffset: -36; } }
+    .etiq { fill: var(--muted); font-size: 20px; font-family: "Outfit", "Liberation Sans", sans-serif; }
+    .symbole { fill: none; stroke: var(--paper); stroke-width: 3; }
+    .symbole.absent { stroke-dasharray: 5 6; opacity: 0.45; }
+    .halo { pointer-events: none; }
+
+    .port {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(20, 24, 31, 0.2);
+      z-index: 2;
+    }
+    .port[hidden] { display: none; }
+    .port.choisie { background: var(--amber); color: var(--ink); border-color: var(--amber); }
+
+    #schema-texte, #formule, .note { margin: 10px 0 0; }
+    #schema-texte { color: var(--paper); }
+    #formule {
+      font-variant-numeric: tabular-nums;
+      color: var(--amber);
+    }
+    #btn-switch.action-clair {
+      margin-top: 12px;
+      background: var(--amber);
+      color: var(--ink);
+      border-color: var(--amber);
+    }
+    #statut {
+      margin: 8px 0 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 560;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+    .note { color: var(--muted); font-size: 0.92rem; }
+
+    .banc {
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    .mesures {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 0;
+    }
+    .mesures div {
+      background: #fffdf8;
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+    .mesures dt { font-size: 0.78rem; color: var(--muted-ink); }
+    .mesures dd {
+      margin: 2px 0 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .jauge {
+      height: 10px;
+      margin: 10px 0 12px;
+      background: #e4dccb;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .jauge span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--amber);
+    }
+    .jauge.chaud span, .jauge.coupe span { background: var(--copper); }
+    .dipoles { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 4px; }
+    .dipoles li { font-variant-numeric: tabular-nums; }
+
+    .modes, .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .modes { margin-bottom: 10px; }
+    .mode, .action {
+      border-color: var(--line);
+      color: var(--ink);
+      background: transparent;
+    }
+    .mode[aria-pressed="true"], .action.primaire {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--ink);
+    }
+    .reglage { display: grid; gap: 4px; margin: 12px 0; }
+    .reglage input { width: 100%; accent-color: var(--copper); height: 36px; }
+    details { margin-top: 16px; color: var(--muted); }
+    summary { cursor: pointer; color: var(--paper); min-height: 44px; display: flex; align-items: center; }
+    footer { margin-top: 8px; color: var(--muted); font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <a class="eviter" href="#actions">Aller aux commandes</a>
+  <div class="page">
+    <header>
+      <p class="sur">Physique-chimie · cycle 4</p>
+      <h1>L'établi de la cabane</h1>
+      <p class="sous">Une pile de 4,5 V, deux lampes, une résistance. Ferme la boucle, passe de la série à la dérivation, et surveille le fusible. Ici, tout est en basse tension.</p>
+    </header>
+
+    <p id="annonce" class="sr" aria-live="polite"></p>
+
+    <div class="missions" role="group" aria-label="Missions">
+      <button type="button" class="mission" data-mission="boucle" aria-pressed="true"><span class="sceau" aria-hidden="true"></span>Boucle</button>
+      <button type="button" class="mission" data-mission="serie" aria-pressed="false"><span class="sceau" aria-hidden="true"></span>Série</button>
+      <button type="button" class="mission" data-mission="derivation" aria-pressed="false"><span class="sceau" aria-hidden="true"></span>Dérivation</button>
+      <button type="button" class="mission" data-mission="ohm" aria-pressed="false"><span class="sceau" aria-hidden="true"></span>Loi d'Ohm</button>
+      <button type="button" class="mission" data-mission="fusible" aria-pressed="false"><span class="sceau" aria-hidden="true"></span>Fusible</button>
+    </div>
+    <p id="but">Ferme l'interrupteur pour allumer une seule lampe.</p>
+
+    <div class="colonnes">
+      <section aria-label="Schéma du circuit">
+        <div id="schema" class="schema">
+          <div id="dessin"></div>
+          <div id="bornes"></div>
+        </div>
+        <p id="schema-texte"></p>
+        <p id="formule"></p>
+        <p id="statut"></p>
+        <p class="note">Le trait ambre va du + vers le − : c'est le sens conventionnel du courant. Les lampes sont ici des résistances.</p>
+        <button type="button" class="action action-clair" id="btn-switch" aria-pressed="false">Fermer l'interrupteur</button>
+      </section>
+
+      <section class="banc" id="actions" aria-label="Mesures et commandes">
+        <dl class="mesures">
+          <div><dt>Intensité</dt><dd id="m-i">0 A</dd></div>
+          <div><dt>Pile</dt><dd id="m-u">4,5 V</dd></div>
+          <div><dt>Puissance</dt><dd id="m-p">0 W</dd></div>
+          <div><dt>Fusible</dt><dd id="m-f">0 %</dd></div>
+        </dl>
+        <div id="jauge" class="jauge" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Charge du fusible">
+          <span id="jauge-barre"></span>
+        </div>
+        <ul class="dipoles">
+          <li id="ligne-l1"></li>
+          <li id="ligne-l2"></li>
+          <li id="ligne-r"></li>
+        </ul>
+
+        <div class="modes" role="group" aria-label="Montage">
+          <button type="button" class="mode" data-mode="simple" aria-pressed="true">Une lampe</button>
+          <button type="button" class="mode" data-mode="serie" aria-pressed="false">Série</button>
+          <button type="button" class="mode" data-mode="derivation" aria-pressed="false">Dérivation</button>
+          <button type="button" class="mode" data-mode="ohm" aria-pressed="false">Loi d'Ohm</button>
+          <button type="button" class="mode" data-mode="libre" aria-pressed="false">Libre</button>
+        </div>
+        <div class="actions">
+          <button type="button" class="action" id="btn-l1">Dévisser la lampe rouge</button>
+          <button type="button" class="action" id="btn-l2">Revisser la lampe bleue</button>
+          <button type="button" class="action" id="btn-branche" hidden>Brancher la résistance en parallèle</button>
+          <button type="button" class="action" id="btn-fil" hidden>Annuler le dernier fil</button>
+          <button type="button" class="action" id="btn-fusible" disabled>Réarmer le fusible</button>
+          <button type="button" class="action primaire" id="btn-valider">Valider la mission</button>
+          <button type="button" class="action" id="btn-reset">Recommencer le montage</button>
+        </div>
+        <label class="reglage" for="curseur-r">
+          <span>Résistance <strong id="r-val">10 Ω</strong></span>
+          <input id="curseur-r" type="range" min="5" max="50" step="1" value="10" aria-valuemin="5" aria-valuemax="50">
+        </label>
+      </section>
+    </div>
+
+    <details>
+      <summary>Les nombres de cet établi</summary>
+      <p>Pile idéale de 4,5 V. Lampe rouge 15 Ω, lampe bleue 30 Ω, fusible 0,5 A. En série, I = 4,5 / 45 = 0,1 A, soit 1,5 V et 3 V. En dérivation, 0,3 A et 0,15 A, total 0,45 A : 90 % du fusible. Pour 0,15 A aux bornes de la seule résistance, R = 4,5 / 0,15 = 30 Ω.</p>
+    </details>
+    <footer>Simulation seulement. Aucun branchement secteur, et le court-circuit de la pile est refusé.</footer>
+  </div>
+
+  <script>
+    const E = 4.5;
+    const FUSE = 0.5;
+    const RL1 = 15;
+    const RL2 = 30;
+    const RW = 0.001;
+    const BUTS = {
+      boucle: "Ferme l'interrupteur pour allumer une seule lampe.",
+      serie: "Les deux lampes sont en série. Dévise-en une : tout s'éteint. Revisse-la, puis valide.",
+      derivation: "Retire une lampe : l'autre reste allumée. Remets-la, puis valide.",
+      ohm: "Règle la résistance pour obtenir 0,15 A. I = U / R.",
+      fusible: "Allume les deux lampes sans dépasser 0,5 A. Tu peux tenter la résistance en parallèle."
+    };
+    const PORTS = [
+      ["n0", 168, 78, "Borne après le fusible"],
+      ["sA", 248, 78, "Interrupteur, entrée"],
+      ["sB", 336, 78, "Interrupteur, sortie"],
+      ["l1a", 430, 150, "Lampe rouge, entrée"],
+      ["l1b", 560, 150, "Lampe rouge, sortie"],
+      ["l2a", 430, 230, "Lampe bleue, entrée"],
+      ["l2b", 560, 230, "Lampe bleue, sortie"],
+      ["rA", 248, 286, "Résistance, entrée"],
+      ["rB", 392, 286, "Résistance, sortie"],
+      ["gnd", 168, 312, "Borne moins de la pile"]
+    ];
+    const NOEUDS = ["n0", "sA", "sB", "l1a", "l1b", "l2a", "l2b", "rA", "rB"];
+
+    const $ = (id) => document.getElementById(id);
+    const schema = $("schema");
+    const dessin = $("dessin");
+    const bornes = $("bornes");
+
+    const state = {
+      mode: "simple",
+      interrupteur: false,
+      l1: true,
+      l2: false,
+      r: 10,
+      rheostatBranche: false,
+      fusibleSaute: false,
+      mission: "boucle",
+      tampons: {},
+      serieVue: false,
+      preuveSerie: false,
+      derivVue: false,
+      preuveDeriv: false,
+      fils: [],
+      borne: null,
+      flash: null,
+      derniere: ""
+    };
+
+    function nombreFr(x) {
+      if (x == null || !Number.isFinite(x)) return "—";
+      let s = x.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+      if (s === "-0") s = "0";
+      return s.replace(".", ",");
+    }
+
+    function ficheLampe(present, dans, i, R) {
+      const ai = dans ? Math.abs(i) : 0;
+      const p = dans ? R * ai * ai : 0;
+      let eclat = "retirée";
+      let k = 0;
+      if (present) {
+        if (p < 0.05) eclat = "éteinte";
+        else if (p < 0.2) { eclat = "faible"; k = 0.45; }
+        else if (p < 0.8) { eclat = "moyen"; k = 0.75; }
+        else { eclat = "fort"; k = 1; }
+      }
+      return { present, dans, i: ai, u: dans ? ai * R : null, p, eclat, k, r: R };
+    }
+
+    function ficheR(r, dans, i) {
+      const ai = dans ? Math.abs(i) : 0;
+      const p = dans ? r * ai * ai : 0;
+      return { dans, i: ai, u: dans ? ai * r : null, p, r };
+    }
+
+    function paquet(s, iPile, L1, L2, resistance, formule) {
+      return {
+        iPile,
+        pPile: E * iPile,
+        lampes: { L1, L2 },
+        resistance,
+        formule,
+        alt: alternative(s, iPile, L1, L2)
+      };
+    }
+
+    function alternative(s, iPile, L1, L2) {
+      if (s.fusibleSaute) return "Fusible sauté, courant coupé, lampes éteintes.";
+      const morceau = (nom, f) => {
+        if (!f.present) return nom + " retirée";
+        if (!f.dans) return nom + " éteinte";
+        return nom + " " + nombreFr(f.u) + " V, " + nombreFr(f.i) + " A, éclat " + f.eclat;
+      };
+      return "I = " + nombreFr(iPile) + " A. " + morceau("Lampe rouge", L1) + ". " + morceau("Lampe bleue", L2) + ".";
+    }
+
+    function ouvert(s, formule) {
+      return paquet(
+        s, 0,
+        ficheLampe(s.l1, false, 0, RL1),
+        ficheLampe(s.l2, false, 0, RL2),
+        ficheR(s.r, false, 0),
+        formule || "La boucle est coupée : I = 0 A."
+      );
+    }
+
+    function resultatCoupe(s) {
+      const r = ouvert(s, "Fusible sauté : I est coupé.");
+      r.alt = "Fusible sauté, courant coupé, lampes éteintes.";
+      return r;
+    }
+
+    function unionFind(noms) {
+      const p = {};
+      noms.forEach((n) => { p[n] = n; });
+      function find(a) {
+        while (p[a] !== a) { p[a] = p[p[a]]; a = p[a]; }
+        return a;
+      }
+      return {
+        find,
+        union(a, b) {
+          const ra = find(a);
+          const rb = find(b);
+          if (ra !== rb) p[rb] = ra;
+        },
+        same(a, b) { return find(a) === find(b); }
+      };
+    }
+
+    function estCourt(fils, ferme) {
+      const u = unionFind(["n0", "sA", "sB", "l1a", "l1b", "l2a", "l2b", "rA", "rB", "gnd"]);
+      fils.forEach(([a, b]) => u.union(a, b));
+      if (ferme) u.union("sA", "sB");
+      return u.same("n0", "gnd");
+    }
+
+    function gauss(G, Ivec) {
+      const n = Ivec.length;
+      const A = G.map((row, i) => row.concat(Ivec[i]));
+      for (let col = 0; col < n; col++) {
+        let pivot = col;
+        for (let r = col + 1; r < n; r++) {
+          if (Math.abs(A[r][col]) > Math.abs(A[pivot][col])) pivot = r;
+        }
+        if (Math.abs(A[pivot][col]) < 1e-12) {
+          for (let c = 0; c <= n; c++) A[col][c] = c === col ? 1 : 0;
+          continue;
+        }
+        if (pivot !== col) { const tmp = A[col]; A[col] = A[pivot]; A[pivot] = tmp; }
+        const div = A[col][col];
+        for (let c = col; c <= n; c++) A[col][c] /= div;
+        for (let r = 0; r < n; r++) {
+          if (r === col) continue;
+          const f = A[r][col];
+          if (!f) continue;
+          for (let c = col; c <= n; c++) A[r][c] -= f * A[col][c];
+        }
+      }
+      return A.map((row) => row[n]);
+    }
+
+    function resoudre(s) {
+      const liens = [["vp", "n0", RW]];
+      s.fils.forEach(([a, b]) => liens.push([a, b, RW]));
+      if (s.interrupteur) liens.push(["sA", "sB", RW]);
+      if (s.l1) liens.push(["l1a", "l1b", RL1]);
+      if (s.l2) liens.push(["l2a", "l2b", RL2]);
+      liens.push(["rA", "rB", s.r]);
+
+      const u = unionFind(NOEUDS.concat(["gnd", "vp"]));
+      u.union("vp", "gnd");
+      liens.forEach(([a, b]) => u.union(a, b));
+      const ref = u.find("gnd");
+      const actifs = NOEUDS.filter((n) => u.find(n) === ref);
+      const index = {};
+      actifs.forEach((n, i) => { index[n] = i; });
+      const n = actifs.length;
+      const G = Array.from({ length: n }, () => Array(n).fill(0));
+      const Ivec = Array(n).fill(0);
+      function stamp(a, b, R) {
+        const g = 1 / R;
+        const ia = a === "gnd" || a === "vp" ? a : index[a];
+        const ib = b === "gnd" || b === "vp" ? b : index[b];
+        if (ia === undefined || ib === undefined) return;
+        function acc(i, other) {
+          if (typeof i !== "number") return;
+          G[i][i] += g;
+          if (typeof other === "number") G[i][other] -= g;
+          else if (other === "vp") Ivec[i] += g * E;
+        }
+        acc(ia, ib);
+        acc(ib, ia);
+      }
+      liens.forEach(([a, b, R]) => stamp(a, b, R));
+      const V = n ? gauss(G, Ivec) : [];
+      const tension = (nom) => {
+        if (nom === "gnd") return 0;
+        if (nom === "vp") return E;
+        if (index[nom] === undefined) return null;
+        return V[index[nom]];
+      };
+      const courant = (a, b, R) => {
+        const va = tension(a);
+        const vb = tension(b);
+        if (va == null || vb == null) return 0;
+        return (va - vb) / R;
+      };
+      return {
+        iFuse: courant("vp", "n0", RW),
+        iL1: s.l1 ? courant("l1a", "l1b", RL1) : 0,
+        iL2: s.l2 ? courant("l2a", "l2b", RL2) : 0,
+        iR: courant("rA", "rB", s.r)
+      };
+    }
+
+    function calculerBrut(s) {
+      if (!s.interrupteur && s.mode !== "libre") return ouvert(s);
+      if (s.mode === "libre" && !s.interrupteur) {
+        /* le solver gère l'interrupteur ouvert */
+      }
+
+      if (s.mode === "simple" || s.mode === "serie") {
+        const parts = [];
+        if (s.mode === "serie") {
+          if (!s.l1 || !s.l2) return ouvert(s, "En série, si une lampe lâche, plus rien n'est alimenté.");
+          parts.push(RL1, RL2);
+        } else {
+          if (s.l1) parts.push(RL1);
+          if (s.l2) parts.push(RL2);
+          if (!parts.length) return ouvert(s, "Aucune lampe dans la boucle.");
+        }
+        if (!s.interrupteur) return ouvert(s);
+        const i = E / parts.reduce((a, b) => a + b, 0);
+        const L1 = ficheLampe(s.l1, s.l1, s.l1 ? i : 0, RL1);
+        const L2 = ficheLampe(s.l2, s.l2, s.l2 ? i : 0, RL2);
+        const formule = s.l1 && s.l2
+          ? nombreFr(L1.u) + " V + " + nombreFr(L2.u) + " V = 4,5 V · même I = " + nombreFr(i) + " A"
+          : "U = R × I → 4,5 V = " + nombreFr(s.l1 ? RL1 : RL2) + " Ω × " + nombreFr(i) + " A";
+        return paquet(s, i, L1, L2, ficheR(s.r, false, 0), formule);
+      }
+
+      if (s.mode === "derivation") {
+        if (!s.interrupteur) return ouvert(s);
+        const i1 = s.l1 ? E / RL1 : 0;
+        const i2 = s.l2 ? E / RL2 : 0;
+        const ir = s.rheostatBranche ? E / s.r : 0;
+        const i = i1 + i2 + ir;
+        const termes = [];
+        if (s.l1) termes.push(nombreFr(i1) + " A");
+        if (s.l2) termes.push(nombreFr(i2) + " A");
+        if (s.rheostatBranche) termes.push(nombreFr(ir) + " A");
+        const formule = termes.length
+          ? termes.join(" + ") + " = " + nombreFr(i) + " A · U = 4,5 V sur chaque branche"
+          : "Aucune branche fermée.";
+        return paquet(
+          s, i,
+          ficheLampe(s.l1, s.l1, i1, RL1),
+          ficheLampe(s.l2, s.l2, i2, RL2),
+          ficheR(s.r, s.rheostatBranche, ir),
+          formule
+        );
+      }
+
+      if (s.mode === "ohm") {
+        if (!s.interrupteur) return ouvert(s);
+        const i = E / s.r;
+        return paquet(
+          s, i,
+          ficheLampe(false, false, 0, RL1),
+          ficheLampe(false, false, 0, RL2),
+          ficheR(s.r, true, i),
+          "I = U / R → " + nombreFr(i) + " A = 4,5 V / " + nombreFr(s.r) + " Ω"
+        );
+      }
+
+      const sol = resoudre(s);
+      const iPile = Math.abs(sol.iFuse);
+      const i1 = Math.abs(sol.iL1);
+      const i2 = Math.abs(sol.iL2);
+      const ir = Math.abs(sol.iR);
+      const seuil = 1e-4;
+      return paquet(
+        s, iPile,
+        ficheLampe(s.l1, i1 > seuil, i1, RL1),
+        ficheLampe(s.l2, i2 > seuil, i2, RL2),
+        ficheR(s.r, ir > seuil, ir),
+        "Mode libre · I pile = " + nombreFr(iPile) + " A"
+      );
+    }
+
+    function evaluer() {
+      if (state.fusibleSaute) return resultatCoupe(state);
+      const r = calculerBrut(state);
+      if (r.iPile > FUSE + 1e-9) {
+        state.fusibleSaute = true;
+        state.flash = "Trop de courant : le fusible a sauté. I est coupé.";
+        return resultatCoupe(state);
+      }
+      return r;
+    }
+
+    function phrase(s, r) {
+      if (s.fusibleSaute) return "Trop de courant : le fusible a sauté. I est coupé. On ne fait jamais ça pour de vrai.";
+      if (!s.interrupteur && s.mode !== "libre") return "La boucle est coupée : I = 0 A.";
+      if (s.mode === "serie" && (!s.l1 || !s.l2)) return "En série, si une lampe lâche, plus rien n'est alimenté.";
+      if (s.mode === "derivation" && s.l1 && s.l2 && !s.rheostatBranche && r.iPile > 0) {
+        return "Deux chemins : la tension est la même, les intensités s'ajoutent.";
+      }
+      if (s.mode === "ohm" && Math.abs(r.iPile - 0.15) < 0.005) return "U = R × I, pile poil.";
+      if (s.mode === "libre") {
+        return s.borne
+          ? "Première borne choisie. Touche la seconde, ou Échap pour annuler."
+          : "Mode libre : touche deux bornes pour tendre un fil.";
+      }
+      if (r.iPile > 0) return "Le courant circule. Lis les mesures.";
+      return "La boucle est coupée : I = 0 A.";
+    }
+
+    function noterPreuves(r) {
+      if (state.fusibleSaute) return;
+      if (state.mode === "serie" && state.interrupteur) {
+        if (!state.l1 || !state.l2) state.serieVue = true;
+        if (state.serieVue && state.l1 && state.l2 && r.iPile > 0.05) state.preuveSerie = true;
+      }
+      if (state.mode === "derivation" && state.interrupteur && !state.rheostatBranche) {
+        const une = state.l1 !== state.l2;
+        const reste = (state.l1 && r.lampes.L1.i > 0.01) || (state.l2 && r.lampes.L2.i > 0.01);
+        if (une && reste) state.derivVue = true;
+        if (state.derivVue && state.l1 && state.l2 && r.lampes.L1.i > 0 && r.lampes.L2.i > 0) state.preuveDeriv = true;
+      }
+    }
+
+    const NS = "http://www.w3.org/2000/svg";
+    function sv(name, attrs, parent) {
+      const n = document.createElementNS(NS, name);
+      Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, String(v)));
+      parent.appendChild(n);
+      return n;
+    }
+    function texte(parent, x, y, str, ancre) {
+      const n = sv("text", { x, y, class: "etiq", "text-anchor": ancre || "middle" }, parent);
+      n.textContent = str;
+      return n;
+    }
+    function ligne(svg, x1, y1, x2, y2, actif, fleche) {
+      const attrs = { x1, y1, x2, y2, class: actif ? "fil actif" : "fil" };
+      if (fleche && actif) attrs["marker-end"] = "url(#sens)";
+      return sv("line", attrs, svg);
+    }
+    function pile(svg, x, y1, y2) {
+      const my = (y1 + y2) / 2;
+      ligne(svg, x, y1, x, my - 26, false);
+      sv("line", { x1: x - 18, y1: my - 26, x2: x + 18, y2: my - 26, class: "symbole" }, svg);
+      sv("line", { x1: x - 10, y1: my - 12, x2: x + 10, y2: my - 12, class: "symbole" }, svg);
+      ligne(svg, x, my - 12, x, y2, false);
+      texte(svg, x + 28, my - 22, "+", "start");
+      texte(svg, x + 28, my - 4, "−", "start");
+      texte(svg, x, y2 + 28, "4,5 V");
+    }
+    function fusible(svg, x, y, saute) {
+      sv("rect", {
+        x: x - 18, y: y - 12, width: 36, height: 24, rx: 3,
+        class: "symbole", fill: saute ? "none" : "#9a3412"
+      }, svg);
+      if (saute) texte(svg, x, y - 22, "sauté");
+    }
+    function interrupteur(svg, x1, x2, y, ferme, actif) {
+      sv("circle", { cx: x1, cy: y, r: 5, class: "symbole", fill: "#f6f1e7" }, svg);
+      if (ferme) ligne(svg, x1, y, x2, y, actif, true);
+      else sv("line", { x1, y1: y, x2: x2 - 8, y2: y - 28, class: "symbole" }, svg);
+    }
+    function lampe(svg, cx, cy, label, present, fiche, dessous) {
+      if (fiche.k > 0) {
+        sv("circle", { cx, cy, r: 26, class: "halo", fill: "#e39b12", opacity: 0.2 + 0.6 * fiche.k }, svg);
+      }
+      const cls = present ? "symbole" : "symbole absent";
+      sv("circle", { cx, cy, r: 28, class: cls }, svg);
+      if (label === "bleue") sv("circle", { cx, cy, r: 16, class: cls }, svg);
+      sv("line", { x1: cx - 16, y1: cy - 16, x2: cx + 16, y2: cy + 16, class: cls }, svg);
+      sv("line", { x1: cx - 16, y1: cy + 16, x2: cx + 16, y2: cy - 16, class: cls }, svg);
+      if (dessous === false) texte(svg, cx + 40, cy + 6, present ? label : "absente", "start");
+      else texte(svg, cx, cy + 46, present ? label : "absente");
+    }
+    function resistance(svg, x, y, large) {
+      sv("rect", { x: x - large / 2, y: y - 16, width: large, height: 32, class: "symbole" }, svg);
+      texte(svg, x, y + 40, "R");
+    }
+
+    function baseSvg() {
+      const svg = sv("svg", { viewBox: "0 0 640 360", role: "presentation" }, dessin);
+      svg.setAttribute("aria-hidden", "true");
+      const defs = sv("defs", {}, svg);
+      const marker = sv("marker", { id: "sens", markerWidth: 8, markerHeight: 8, refX: 6, refY: 4, orient: "auto" }, defs);
+      sv("path", { d: "M0 0 L8 4 L0 8 Z", fill: "#e39b12" }, marker);
+      return svg;
+    }
+
+    function dessinPreset(s, r) {
+      const svg = baseSvg();
+      const actif = r.iPile > 0.01 && !s.fusibleSaute;
+      const yT = 78;
+      const yB = 292;
+      pile(svg, 56, yT, yB);
+      if (s.mode === "derivation") {
+        ligne(svg, 56, yT, 110, yT, actif);
+        fusible(svg, 140, yT, s.fusibleSaute);
+        ligne(svg, 158, yT, 200, yT, actif);
+        interrupteur(svg, 200, 270, yT, s.interrupteur, actif);
+        ligne(svg, 270, yT, 360, yT, actif && s.l1);
+        ligne(svg, 270, yT, 520, yT, actif && (s.l1 || s.l2));
+        const a1 = actif && s.l1;
+        const a2 = actif && s.l2;
+        ligne(svg, 360, yT, 360, 150, a1);
+        lampe(svg, 360, 186, "rouge", s.l1, r.lampes.L1, false);
+        ligne(svg, 360, 222, 360, yB, a1);
+        ligne(svg, 520, yT, 520, 150, a2);
+        lampe(svg, 520, 186, "bleue", s.l2, r.lampes.L2, false);
+        ligne(svg, 520, 222, 520, yB, a2);
+        ligne(svg, 56, yB, 520, yB, actif);
+        if (s.rheostatBranche) {
+          resistance(svg, 180, 200, 70);
+          texte(svg, 180, 248, "en parallèle");
+        }
+        return;
+      }
+      ligne(svg, 56, yT, 110, yT, actif);
+      fusible(svg, 140, yT, s.fusibleSaute);
+      ligne(svg, 158, yT, 196, yT, actif);
+      interrupteur(svg, 196, 268, yT, s.interrupteur, actif);
+      if (s.mode === "ohm") {
+        ligne(svg, 268, yT, 340, yT, actif);
+        resistance(svg, 420, yT, 120);
+        texte(svg, 420, yT + 52, nombreFr(s.r) + " Ω");
+        ligne(svg, 480, yT, 590, yT, actif);
+        ligne(svg, 590, yT, 590, yB, actif);
+        ligne(svg, 56, yB, 590, yB, actif);
+        return;
+      }
+      if (s.mode === "simple" && !(s.l1 && s.l2)) {
+        const fiche = s.l1 ? r.lampes.L1 : r.lampes.L2;
+        const present = s.l1 || s.l2;
+        ligne(svg, 268, yT, 360, yT, actif);
+        lampe(svg, 430, yT, s.l2 && !s.l1 ? "bleue" : "rouge", present, fiche);
+        ligne(svg, 458, yT, 590, yT, actif);
+        ligne(svg, 590, yT, 590, yB, actif);
+        ligne(svg, 56, yB, 590, yB, actif);
+        return;
+      }
+      const a = actif && s.l1 && s.l2;
+      ligne(svg, 268, yT, 320, yT, a);
+      lampe(svg, 370, yT, "rouge", s.l1, r.lampes.L1);
+      ligne(svg, 398, yT, 450, yT, a && s.l1);
+      lampe(svg, 500, yT, "bleue", s.l2, r.lampes.L2);
+      ligne(svg, 528, yT, 590, yT, a);
+      ligne(svg, 590, yT, 590, yB, a);
+      ligne(svg, 56, yB, 590, yB, a);
+    }
+
+    function dessinLibre(s, r) {
+      const svg = baseSvg();
+      const pos = Object.fromEntries(PORTS.map(([id, x, y]) => [id, [x, y]]));
+      pile(svg, 100, 78, 312);
+      ligne(svg, 100, 312, 168, 312, false);
+      const lienFusion = !s.fusibleSaute && r.iPile > 0.01;
+      ligne(svg, 100, 78, 168, 78, lienFusion);
+      fusible(svg, 134, 78, s.fusibleSaute);
+      s.fils.forEach(([a, b]) => {
+        const pa = pos[a];
+        const pb = pos[b];
+        if (!pa || !pb) return;
+        ligne(svg, pa[0], pa[1], pb[0], pb[1], lienFusion);
+      });
+      interrupteur(svg, 248, 336, 78, s.interrupteur, lienFusion);
+      lampe(svg, 495, 150, "rouge", s.l1, r.lampes.L1);
+      lampe(svg, 495, 230, "bleue", s.l2, r.lampes.L2);
+      resistance(svg, 320, 286, 90);
+      if (state.borne && pos[state.borne]) {
+        const p = pos[state.borne];
+        sv("circle", { cx: p[0], cy: p[1], r: 16, fill: "none", stroke: "#e39b12", "stroke-width": 3 }, svg);
+      }
+    }
+
+    function ligneDipole(el, nom, fiche, extra) {
+      if (!fiche.present && fiche.eclat === "retirée") {
+        el.textContent = nom + " · retirée";
+        return;
+      }
+      if (!fiche.dans) {
+        el.textContent = nom + " · " + nombreFr(fiche.r) + " Ω · — · 0 A · éteinte";
+        return;
+      }
+      el.textContent = nom + " · " + nombreFr(fiche.r) + " Ω · " + nombreFr(fiche.u) + " V · " + nombreFr(fiche.i) + " A · éclat " + fiche.eclat;
+    }
+
+    function peindre(r) {
+      const p = r.lampes.L1.p + r.lampes.L2.p + r.resistance.p;
+      schema.style.setProperty("--glow", String(Math.min(1, p / 1.4)));
+      dessin.replaceChildren();
+      if (state.mode === "libre") dessinLibre(state, r);
+      else dessinPreset(state, r);
+      $("schema-texte").textContent = r.alt;
+      $("formule").textContent = r.formule;
+      $("m-i").textContent = state.fusibleSaute ? "coupé" : nombreFr(r.iPile) + " A";
+      $("m-u").textContent = "4,5 V";
+      $("m-p").textContent = state.fusibleSaute ? "0 W" : nombreFr(r.pPile) + " W";
+      const pct = state.fusibleSaute ? 100 : Math.max(0, Math.min(100, Math.round(100 * r.iPile / FUSE)));
+      $("m-f").textContent = state.fusibleSaute ? "coupé" : pct + " %";
+      $("jauge").setAttribute("aria-valuenow", String(pct));
+      $("jauge").setAttribute("aria-valuetext", state.fusibleSaute ? "Fusible coupé" : pct + " % du fusible");
+      $("jauge").classList.toggle("chaud", pct >= 85 && !state.fusibleSaute);
+      $("jauge").classList.toggle("coupe", state.fusibleSaute);
+      $("jauge-barre").style.width = pct + "%";
+      ligneDipole($("ligne-l1"), "Lampe rouge", r.lampes.L1, "15 Ω");
+      ligneDipole($("ligne-l2"), "Lampe bleue", r.lampes.L2, "30 Ω");
+      const fr = r.resistance;
+      $("ligne-r").textContent = fr.dans
+        ? "Résistance · " + nombreFr(fr.r) + " Ω · " + nombreFr(fr.u) + " V · " + nombreFr(fr.i) + " A"
+        : "Résistance · " + nombreFr(state.r) + " Ω · hors circuit";
+      $("r-val").textContent = nombreFr(state.r) + " Ω";
+      $("curseur-r").value = String(state.r);
+      const rActif = state.mode === "ohm" || state.mode === "libre" || state.rheostatBranche;
+      $("curseur-r").disabled = !rActif;
+      $("curseur-r").setAttribute("aria-valuetext", nombreFr(state.r) + " ohms" + (rActif ? "" : ", hors circuit"));
+      $("btn-switch").textContent = state.interrupteur ? "Ouvrir l'interrupteur" : "Fermer l'interrupteur";
+      $("btn-switch").setAttribute("aria-pressed", String(state.interrupteur));
+      $("btn-l1").textContent = state.l1 ? "Dévisser la lampe rouge" : "Revisser la lampe rouge";
+      $("btn-l2").textContent = state.l2 ? "Dévisser la lampe bleue" : "Revisser la lampe bleue";
+      $("btn-l1").disabled = state.mode === "ohm";
+      $("btn-l2").disabled = state.mode === "ohm";
+      const branche = $("btn-branche");
+      branche.hidden = state.mode !== "derivation";
+      branche.textContent = state.rheostatBranche ? "Retirer la résistance" : "Brancher la résistance en parallèle";
+      $("btn-fil").hidden = state.mode !== "libre";
+      $("btn-fil").disabled = state.fils.length === 0;
+      $("btn-fusible").disabled = !state.fusibleSaute;
+      document.querySelectorAll(".mode").forEach((b) => {
+        b.setAttribute("aria-pressed", String(b.dataset.mode === state.mode));
+      });
+      document.querySelectorAll(".mission").forEach((b) => {
+        b.setAttribute("aria-pressed", String(b.dataset.mission === state.mission));
+        b.classList.toggle("fait", !!state.tampons[b.dataset.mission]);
+      });
+      $("but").textContent = state.mission ? BUTS[state.mission] : "Choisis une mission, ou bricole librement.";
+      bornes.querySelectorAll(".port").forEach((b) => {
+        b.hidden = state.mode !== "libre";
+        b.classList.toggle("choisie", b.dataset.port === state.borne);
+        b.setAttribute("aria-pressed", String(b.dataset.port === state.borne));
+      });
+    }
+
+    function rendre(annoncer) {
+      const avant = state.fusibleSaute;
+      const r = evaluer();
+      if (!avant && state.fusibleSaute) annoncer = true;
+      noterPreuves(r);
+      peindre(r);
+      const texte = state.flash || phrase(state, r);
+      $("statut").textContent = texte;
+      if (annoncer && texte !== state.derniere) {
+        $("annonce").textContent = texte;
+        state.derniere = texte;
+      }
+      state.flash = null;
+    }
+
+    function fixerMode(mode) {
+      state.mode = mode;
+      state.rheostatBranche = false;
+      state.borne = null;
+      state.flash = null;
+      if (mode === "simple") { state.l1 = true; state.l2 = false; }
+      else if (mode === "serie" || mode === "derivation") { state.l1 = true; state.l2 = true; state.interrupteur = true; }
+      else if (mode === "ohm") { state.l1 = false; state.l2 = false; state.interrupteur = true; }
+      else if (mode === "libre") {
+        state.l1 = true;
+        state.l2 = true;
+        state.interrupteur = true;
+        state.fils = [["n0", "sA"], ["sB", "l1a"], ["l1b", "l2a"], ["l2b", "gnd"]];
+        if (estCourt(state.fils, true)) state.fils = [];
+      }
+      rendre(true);
+    }
+
+    function choisirMission(id) {
+      state.mission = id;
+      state.fusibleSaute = false;
+      state.rheostatBranche = false;
+      state.borne = null;
+      state.flash = null;
+      state.serieVue = false;
+      state.preuveSerie = false;
+      state.derivVue = false;
+      state.preuveDeriv = false;
+      if (id === "boucle") {
+        state.mode = "simple"; state.l1 = true; state.l2 = false; state.interrupteur = false;
+      } else if (id === "serie") {
+        state.mode = "serie"; state.l1 = true; state.l2 = true; state.interrupteur = true;
+      } else if (id === "derivation" || id === "fusible") {
+        state.mode = "derivation"; state.l1 = true; state.l2 = true; state.interrupteur = true;
+      } else if (id === "ohm") {
+        state.mode = "ohm"; state.l1 = false; state.l2 = false; state.interrupteur = true; state.r = 10;
+      }
+      rendre(true);
+    }
+
+    function valider() {
+      const r = evaluer();
+      const id = state.mission;
+      let ok = false;
+      let msg = "Choisis d'abord une mission.";
+      if (id === "boucle") {
+        const n = (state.l1 ? 1 : 0) + (state.l2 ? 1 : 0);
+        ok = state.mode === "simple" && state.interrupteur && !state.fusibleSaute && n === 1 && r.iPile > 0.01;
+        msg = ok ? "Boucle fermée : la lampe brille." : "Il faut une seule lampe, l'interrupteur fermé, et du courant.";
+      } else if (id === "serie") {
+        ok = state.preuveSerie && state.mode === "serie" && state.l1 && state.l2 && state.interrupteur && !state.fusibleSaute && r.iPile > 0.05;
+        msg = ok ? "En série, une lampe absente ouvre toute la boucle." : "Dévise une lampe (tout s'éteint), revisse-la, puis valide.";
+      } else if (id === "derivation") {
+        ok = state.preuveDeriv && state.mode === "derivation" && state.l1 && state.l2 && !state.rheostatBranche && !state.fusibleSaute && r.lampes.L1.i > 0 && r.lampes.L2.i > 0;
+        msg = ok ? "En dérivation, chaque lampe a son chemin." : "Retire une seule lampe (l'autre reste allumée), remets-la, puis valide.";
+      } else if (id === "ohm") {
+        ok = state.mode === "ohm" && state.interrupteur && !state.fusibleSaute && Math.abs(r.iPile - 0.15) < 0.005;
+        msg = ok ? nombreFr(state.r) + " Ω : I = 4,5 / " + nombreFr(state.r) + " = " + nombreFr(r.iPile) + " A." : "Cherche R tel que 4,5 / R vaut 0,15 A. Le curseur est là pour ça.";
+      } else if (id === "fusible") {
+        ok = state.mode === "derivation" && !state.rheostatBranche && state.l1 && state.l2 && state.interrupteur && !state.fusibleSaute && r.lampes.L1.dans && r.lampes.L2.dans && r.iPile <= FUSE;
+        msg = ok ? "0,45 A, soit 90 % du fusible. Une branche de plus et ça saute." : "Les deux lampes en dérivation, fusible intact. Retire la résistance si tu l'as ajoutée, puis réarme.";
+      }
+      if (ok) state.tampons[id] = true;
+      state.flash = msg;
+      rendre(true);
+    }
+
+    function basculerSwitch() {
+      const suivant = !state.interrupteur;
+      if (suivant && state.mode === "libre" && estCourt(state.fils, true)) {
+        state.flash = "Si tu fermes maintenant, la pile est en court-circuit. L'interrupteur reste ouvert.";
+        rendre(true);
+        return;
+      }
+      state.interrupteur = suivant;
+      state.flash = null;
+      rendre(true);
+    }
+
+    function choisirBorne(port) {
+      if (!state.borne) {
+        state.borne = port;
+        state.flash = null;
+        rendre(true);
+        return;
+      }
+      if (state.borne === port) {
+        state.borne = null;
+        state.flash = "Borne annulée.";
+        rendre(true);
+        return;
+      }
+      const a = state.borne;
+      const b = port;
+      state.borne = null;
+      if (state.fils.length >= 8) {
+        state.flash = "Huit fils maximum. Annule-en un.";
+        rendre(true);
+        return;
+      }
+      if (state.fils.some(([x, y]) => (x === a && y === b) || (x === b && y === a))) {
+        state.flash = "Ce fil est déjà là.";
+        rendre(true);
+        return;
+      }
+      const essai = state.fils.concat([[a, b]]);
+      if (estCourt(essai, state.interrupteur)) {
+        state.flash = "Relier les deux bornes de la pile sans récepteur, c'est un court-circuit. Le fil est refusé. On ne fait jamais ça pour de vrai.";
+        rendre(true);
+        return;
+      }
+      state.fils = essai;
+      state.flash = null;
+      rendre(true);
+    }
+
+    PORTS.forEach(([id, x, y, label]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "port";
+      b.dataset.port = id;
+      b.style.left = (100 * x / 640) + "%";
+      b.style.top = (100 * y / 360) + "%";
+      b.setAttribute("aria-label", label);
+      b.hidden = true;
+      b.addEventListener("click", () => choisirBorne(id));
+      bornes.appendChild(b);
+    });
+
+    document.querySelectorAll(".mode").forEach((b) => b.addEventListener("click", () => fixerMode(b.dataset.mode)));
+    document.querySelectorAll(".mission").forEach((b) => b.addEventListener("click", () => choisirMission(b.dataset.mission)));
+    $("btn-switch").addEventListener("click", basculerSwitch);
+    $("btn-l1").addEventListener("click", () => { state.l1 = !state.l1; state.flash = null; rendre(true); });
+    $("btn-l2").addEventListener("click", () => { state.l2 = !state.l2; state.flash = null; rendre(true); });
+    $("btn-branche").addEventListener("click", () => {
+      state.rheostatBranche = !state.rheostatBranche;
+      state.flash = null;
+      rendre(true);
+    });
+    $("btn-fil").addEventListener("click", () => {
+      state.fils = state.fils.slice(0, -1);
+      state.flash = "Dernier fil retiré.";
+      rendre(true);
+    });
+    $("btn-fusible").addEventListener("click", () => {
+      state.fusibleSaute = false;
+      const r = calculerBrut(state);
+      if (r.iPile > FUSE + 1e-9) {
+        state.fusibleSaute = true;
+        state.flash = "Toujours au-dessus de 0,5 A. Retire la résistance ou un récepteur, puis réarme.";
+      } else state.flash = "Fusible réarmé.";
+      rendre(true);
+    });
+    $("btn-valider").addEventListener("click", valider);
+    $("btn-reset").addEventListener("click", () => choisirMission(state.mission || "boucle"));
+    $("curseur-r").addEventListener("input", () => {
+      state.r = Number($("curseur-r").value);
+      state.flash = null;
+      rendre(false);
+    });
+    $("curseur-r").addEventListener("change", () => rendre(true));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && state.borne) {
+        state.borne = null;
+        state.flash = "Borne annulée.";
+        rendre(true);
+      }
+    });
+
+    rendre(true);
+  </script>
+</body>
+</html>
