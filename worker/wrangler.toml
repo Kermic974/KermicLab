@@ -43,6 +43,8 @@ AUTH_CALLBACK_URL = "https://kermiclab.online/auth/callback"
 binding = "DB"
 database_name = "kermiclab-kpi"
 database_id = "4b383c6e-8a00-4950-baf3-7951ac60c375"
+# Migrations versionnées (worker/migrations/, ajout seulement), appliquées par la CI avant le déploiement du Worker.
+migrations_dir = "migrations"
 
 # Stockage de fichiers (Cloudflare R2, privé). Organisation et règles : docs/decisions/0007-stockage-r2.md.
 [[r2_buckets]]

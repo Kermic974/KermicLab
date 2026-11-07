@@ -15,7 +15,20 @@ Suivez [le guide de configuration Cloudflare](setup-cloudflare.md) pour créer e
 3. Fusionnez le code après les contrôles requis, puis poussez sur `main`. La CI valide d’abord le projet ; le job de déploiement s’exécute uniquement après réussite sur `main`.
 4. Consultez **Actions → CI/CD → Déploiement Cloudflare**. Sans les deux secrets Cloudflare, le déploiement est ignoré avec un avertissement.
 
-Le job de déploiement applique `worker/schema.sql` à D1, déploie `worker/` avec Wrangler, puis publie `dist/` sur Pages. Le nom Pages par défaut est `kermiclab`.
+Le job de déploiement, dans l'ordre :
+
+1. prend un **instantané** des versions en production (Worker et Pages) avec `scripts/deploiement.mjs instantane` ;
+2. applique les **migrations D1** versionnées (`wrangler d1 migrations apply`, voir [`worker/migrations/README.md`](../worker/migrations/README.md)) ;
+3. déploie `worker/` avec Wrangler, pose les secrets du Worker, puis publie `dist/` sur Pages (projet `kermiclab` par défaut) ;
+4. lance le **test de fumée** (`scripts/deploiement.mjs fumee`) : `/api/sante`, `/api/catalogue`, une page servie, l'accueil
+   du site et sa `config.json`. Lectures seulement, aucun KPI écrit, cinq essais espacés de 15 s pour laisser la
+   propagation se faire ;
+5. en cas d'échec après le déploiement du Worker (secrets, Pages ou test de fumée), **retour arrière automatique** :
+   le Worker et le site reviennent aux versions de l'instantané et le job reste en échec. La base D1 n'est jamais
+   annulée : les migrations ne font que des ajouts compatibles avec la version précédente du Worker.
+
+Variables facultatives : `KERMICLAB_API_URL` (API testée, défaut `https://kermiclab-api.kermic.workers.dev`) et
+`KERMICLAB_SITE_URL` (site testé, défaut `https://kermiclab.online`).
 
 ## Déploiement manuel de diagnostic
 
@@ -25,7 +38,7 @@ Pour une intervention locale autorisée, installez les dépendances, connectez W
 npm ci
 npm run ci
 cd worker
-npx wrangler d1 execute kermiclab-kpi --remote --file=schema.sql
+npx wrangler d1 migrations apply kermiclab-kpi --remote
 npx wrangler deploy
 cd ..
 npm run build

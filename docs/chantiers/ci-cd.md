@@ -1,6 +1,6 @@
 # Chantier : CI/CD
 
-**Niveau actuel : 0 (vérifications GitHub + déploiement Cloudflare après vérifications)**
+**Niveau actuel : 2 (vérifications obligatoires, migrations versionnées, test de fumée et retour arrière automatique)**
 
 - `ci.yml`, job `verifier` : lint → build (index + CSP) → contrôle des pages → tests unitaires → tests Playwright.
   Ce job est un contrôle **obligatoire** de la protection de `main` (`scripts/configurer-github.sh`). Le contrat
@@ -15,9 +15,12 @@
 - Catalogue privé récupéré si `CATALOGUE_TOKEN` existe.
 - Prévisualisation de chaque PR par l'intégration Git Cloudflare Pages (les déploiements de production automatiques sont désactivés).
 
+- Déploiement sûr (#178) : instantané des versions en production, migrations D1 versionnées (`worker/migrations/`,
+  ajout seulement), test de fumée sans écriture de KPI, retour arrière automatique du Worker et du site en cas d'échec.
+  Détail : [docs/deployer.md](../deployer.md).
+
 Prochaines étapes :
-- Niveau 1 : migrations D1 versionnées, prévisualisations construites avec `npm run build`.
-- Niveau 2 : tests de fumée après déploiement (`/api/sante`, question « sinus »), retour arrière automatique.
+- Prévisualisations des PR construites avec `npm run build` (phase 5).
 
 ## Roadmap après fusion
 

@@ -111,15 +111,26 @@ jobs:
         env:
           # URL publique du Worker (sous-domaine workers.dev du compte) ; surchargeable par la variable GitHub.
           KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'https://kermiclab-api.kermic.workers.dev' }}
-      - name: Schéma D1 (idempotent)
+      # Versions en production avant déploiement, pour le retour arrière automatique (scripts/deploiement.mjs, #178).
+      # Un échec ici n'empêche pas de déployer : le retour arrière est alors simplement indisponible (avertissement).
+      - name: Instantané avant déploiement
+        id: instantane
+        if: steps.secrets.outputs.ok == 'true'
+        continue-on-error: true
+        env:
+          CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'kermiclab' }}
+        run: node scripts/deploiement.mjs instantane "$RUNNER_TEMP/instantane.json"
+      # Migrations D1 versionnées, ajout seulement (worker/migrations/README.md) : jamais annulées par le retour arrière.
+      - name: Migrations D1
         if: steps.secrets.outputs.ok == 'true'
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: worker
-          command: d1 execute kermiclab-kpi --remote --file=schema.sql
+          command: d1 migrations apply kermiclab-kpi --remote
       - name: Worker
+        id: worker
         if: steps.secrets.outputs.ok == 'true'
         uses: cloudflare/wrangler-action@v4
         with:
@@ -152,3 +163,21 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT || 'kermiclab' }} --branch=main
+      # Lectures seulement (aucun KPI écrit), avec reprises le temps de la propagation.
+      - name: Test de fumée
+        if: steps.secrets.outputs.ok == 'true'
+        env:
+          KERMICLAB_API_URL: ${{ vars.KERMICLAB_API_URL || 'https://kermiclab-api.kermic.workers.dev' }}
+          KERMICLAB_SITE_URL: ${{ vars.KERMICLAB_SITE_URL || 'https://kermiclab.online' }}
+        run: node scripts/deploiement.mjs fumee
+      # Après un déploiement du Worker, tout échec (secrets, Pages, test de fumée) rétablit le Worker et le site de
+      # l'instantané. Le job reste en échec : l'incident est visible dans Actions et notifié.
+      - name: Retour arrière automatique
+        if: failure() && steps.instantane.outcome == 'success' && steps.worker.outcome == 'success'
+        env:
+          CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'kermiclab' }}
+        run: node scripts/deploiement.mjs retour "$RUNNER_TEMP/instantane.json"
+      - name: Instantané indisponible
+        if: always() && steps.secrets.outputs.ok == 'true' && steps.instantane.outcome == 'failure'
+        run: |
+          echo "::warning::Instantané avant déploiement en échec (droits du jeton CLOUDFLARE_API_TOKEN ?) : pas de retour arrière automatique possible pour ce déploiement."

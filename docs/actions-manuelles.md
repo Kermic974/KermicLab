@@ -16,6 +16,12 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
   « KermicLab · … », chacun avec son épique et ses sous-issues. Relancer le script après l'ajout de nouvelles issues.
 - **Statut** : à faire
 
+## Déploiement sûr : migrations D1, test de fumée, retour arrière (issue #178)
+
+| # | Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|---|
+| 41 | Après la fusion, suivre le premier déploiement ; si l'étape « Instantané avant déploiement » avertit d'un échec, ajouter au jeton `CLOUDFLARE_API_TOKEN` les droits **Workers Scripts : Read** et **Cloudflare Pages : Read** (en plus des droits d'écriture déjà utilisés pour déployer) | Actions → CI/CD → Déploiement Cloudflare ; https://dash.cloudflare.com/profile/api-tokens | Sans lecture des déploiements, pas d'instantané, donc pas de retour arrière automatique. La première exécution des migrations applique `0001_schema_initial.sql` (uniquement des `CREATE … IF NOT EXISTS`) : elle ne modifie aucune donnée | Étapes « Instantané », « Migrations D1 » et « Test de fumée » vertes ; la console D1 contient la table `d1_migrations` avec `0001_schema_initial.sql` | à faire |
+
 ## Relecture pédagogique des notions (issue #176)
 
 | # | Action | Où | Pourquoi | Comment confirmer | Statut |
