@@ -9,18 +9,20 @@ before(async () => {
 });
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
-test("roadmap : acquis sourcés, pendu non livré et navigation complète sans JavaScript", async () => {
+test("roadmap : acquis sourcés, pendu intégré (#100) et navigation complète sans JavaScript", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, {
     javaScriptEnabled: false, viewport: { width: 1280, height: 900 }
   });
   await page.goto(`${serveur.url}/feuille-de-route.html`);
   assert.match(await page.locator(".fr-surtitre").textContent(), /version 3/);
-  assert.equal(await page.locator(".fr-chiffres dd").first().textContent(), "8");
+  assert.equal(await page.locator(".fr-chiffres dd").first().textContent(), "9");
   assert.ok(await page.locator("#synthese > p:not(.fr-encadre)").evaluate((element) =>
     element.clientWidth <= Number.parseFloat(getComputedStyle(element).maxWidth)), "paragraphes limités à une largeur confortable");
   assert.ok(await page.locator(".fr-gantt tbody td").first().evaluate((element) =>
     Number.parseFloat(getComputedStyle(element).fontSize) >= 14), "texte du Gantt lisible sans zoom");
-  assert.match(await page.locator("#livraisons").textContent(), /PR ouverte · non livrée/);
+  const livraisons = await page.locator("#livraisons").textContent();
+  assert.doesNotMatch(livraisons, /PR ouverte · non livrée/);
+  assert.match(livraisons, /Neuf jeux intégrés/);
   for (const numero of [80, 81, 82, 83, 84, 86, 88, 90, 92, 94, 95, 96, 97, 98, 99, 100]) {
     assert.equal(await page.locator(`#livraisons a[href="https://github.com/Kermic974/trigoLab/pull/${numero}"]`).count(), 1);
   }
