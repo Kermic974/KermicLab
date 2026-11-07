@@ -163,29 +163,69 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
   };
 }
 
+/** Au-delà de ce budget de sortie, l'appel passe en streaming : l'API d'Anthropic refuse (400) un appel simple. */
+export const SEUIL_STREAMING = 16000;
+
+/** Lit un flux SSE au format chat completions (ou Workers AI) et renvoie le texte complet, la fin et l'usage. */
+export async function lireFluxGateway(flux) {
+  const lecteur = flux.getReader();
+  const decodeur = new TextDecoder();
+  let tampon = "", contenu = "", fin = null, tokensSortie;
+  const traiter = (ligne) => {
+    const donnee = ligne.replace(/^data:\s*/, "").trim();
+    if (!ligne.startsWith("data:") || !donnee || donnee === "[DONE]") return;
+    let evenement;
+    try { evenement = JSON.parse(donnee); } catch { return; }
+    if (evenement.error) throw new Error(`flux ${evenement.error?.code ?? ""} ${evenement.error?.type ?? "erreur"}`);
+    const choix = evenement.choices?.[0];
+    contenu += choix?.delta?.content ?? choix?.message?.content ?? evenement.response ?? "";
+    if (choix?.finish_reason) fin = choix.finish_reason;
+    const sortie = evenement.usage?.completion_tokens;
+    if (Number.isSafeInteger(sortie)) tokensSortie = sortie;
+  };
+  for (;;) {
+    const { value, done } = await lecteur.read();
+    if (done) break;
+    tampon += decodeur.decode(value, { stream: true });
+    const lignes = tampon.split(/\r?\n/);
+    tampon = lignes.pop();
+    lignes.forEach(traiter);
+  }
+  traiter(tampon + decodeur.decode());
+  return { contenu, fin, tokensSortie };
+}
+
 /**
- * Appel d'un alias de modèle AI Gateway (`MODELE_DEFI` par défaut, `MODELE_CAHIERS` pour les cahiers) via le binding, format chat completions,
- * sortie JSON structurée. Même pseudonymisation imposée. Pas d'en-tête `cf-aig-max-attempts` : le repli
- * entre les modèles de l'alias est géré par la gateway.
+ * Appel d'un alias de modèle AI Gateway (`MODELE_DEFI` par défaut, `MODELE_CAHIERS` pour les cahiers) via le binding,
+ * format chat completions, sortie JSON structurée. Même pseudonymisation imposée. Pas d'en-tête `cf-aig-max-attempts` :
+ * le repli entre les modèles de l'alias est géré par la gateway. Au-delà de `SEUIL_STREAMING` tokens de sortie,
+ * la réponse est lue en streaming (exigence de l'API d'Anthropic pour les longues générations).
  */
 export async function appelerAliasGateway(env, { system, message: brut, schema, maxTokens, cleModele = "MODELE_DEFI", nomSchema = "defis" }) {
   if (!env.AI?.run) throw new Error("binding AI absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
+  const flux = maxTokens > SEUIL_STREAMING;
   const reponse = await env.AI.run(lireConfiguration(env)[cleModele], {
     messages: [
       { role: "system", content: system },
       { role: "user", content: message }
     ],
     max_tokens: maxTokens,
+    ...(flux ? { stream: true } : {}),
     response_format: { type: "json_schema", json_schema: { name: nomSchema, strict: true, schema } }
   }, {
     gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
     extraHeaders: { "cf-aig-skip-cache": "true", "cf-aig-collect-log": "false" }
   });
+  if (flux && typeof reponse?.getReader === "function") {
+    const { contenu, fin, tokensSortie } = await lireFluxGateway(reponse);
+    return { contenu, refus: fin === "content_filter", tronque: fin === "length", tokensSortie, pseudonymisations };
+  }
   const choix = reponse?.choices?.[0];
   return {
     contenu: choix?.message?.content ?? reponse?.response,
     refus: choix?.finish_reason === "content_filter",
+    tronque: choix?.finish_reason === "length",
     tokensSortie: reponse?.usage?.completion_tokens,
     pseudonymisations
   };

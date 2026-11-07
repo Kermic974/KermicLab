@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.17.0 · 2026-11-07</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/3150de14d66ecc58c47adf23db6c14132e401180" target="_blank" rel="noopener noreferrer" data-lien-actif>3150de1</a>.
+  <strong>Squelette v1.18.0 · 2026-11-07</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/ba9dbcfb4b85c9617c0920bd119a394d071142e5" target="_blank" rel="noopener noreferrer" data-lien-actif>ba9dbcf</a>.
   <a href="https://github.com/Kermic974/trigoLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -71,7 +71,7 @@
 <li><a href="#contributions">Squelette</a> ↔ <a href="https://kermiclab.online/#contributions" target="_blank" rel="noopener noreferrer" data-lien-actif>Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions</a></li>
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>4475f0de8cf5bffc704888719f805ea2d2bcab942b7ad978e73720e7440db69f</code><br>Empreinte du squelette hors cartouche : <code>4a723e76a12f05f5995e41555869788f5b80922aa8f3e73d2cde6501398a19b6</code></p>
+    <p>Empreinte des sources : <code>7f563a0b2f54d756b554ed0ce8c2d92f2d1be60feea9d21f4c847c5128bdf1f2</code><br>Empreinte du squelette hors cartouche : <code>e29623293ea6f38be3658df0a1d760ae383f6ae0c199e39417ada7c1325c41c6</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -119,7 +119,7 @@
           <label>Titre du cahier (gardé sur cet appareil)<input disabled placeholder="Cahier de vacances"></label>
           <label>Matière<select disabled><option>Maths</option></select></label> <label>Niveau<select disabled><option>Tous les niveaux</option></select></label>
           <fieldset><legend>Notions</legend><p>Choisis jusqu’à 6 notions du catalogue.</p><label><input type="checkbox" disabled checked> Les fractions</label> <label><input type="checkbox" disabled checked> Le théorème de Pythagore</label></fieldset>
-          <label>Longueur<select disabled><option>Court</option><option selected>Standard</option><option>Complet</option></select></label>
+          <label>Univers<select disabled><option>Espace</option></select></label> <label>Objectif<select disabled><option>Réviser</option></select></label> <label>Longueur<select disabled><option>Court</option><option selected>Standard</option><option>Complet</option></select></label>
           <label><input type="checkbox" disabled checked> ✨ Enrichir avec l’IA (explications et exercices rédigés à partir des notions)</label>
           <p>Il te reste 2 cahier(s) enrichi(s) par l’IA aujourd’hui (custom/sonnet-5-5). Seuls les identifiants des notions sont envoyés : ton titre et tes notes restent sur cet appareil.</p>
           <div class="actions"><button disabled>Fermer</button><button disabled>Construire le cahier</button></div>
@@ -127,7 +127,7 @@
         <article class="carte" data-source="web/index.html:lecture-cahier"><h3>Révisions de l'été</h3><p>Cahier de vacances · 7 nov. 2026 · Enrichi par l’IA (custom/sonnet-5-5)</p>
           <p>Un cahier pour réviser les fractions et Pythagore.</p><h4>Les fractions</h4><button disabled>Ouvrir la notion</button>
           <p><strong>EXPLICATION</strong> Une fraction représente une part d'un tout.</p><p><strong>À RETENIR</strong> On additionne des fractions au même dénominateur.</p>
-          <p><strong>EXERCICE</strong> Calcule 1/2 + 1/4.</p><details><summary>Voir la réponse</summary><p>3/4.</p></details>
+          <p><strong>📖 HISTOIRE</strong> La station Orion manque de carburant…</p><p><strong>✏️ EXERCICE · ★☆☆</strong> Calcule 1/2 + 1/4.</p><details><summary>Un indice ?</summary><p>Même dénominateur.</p></details><details><summary>Voir la réponse</summary><p>3/4.</p></details><label><input type="checkbox" disabled> Je l’ai réussi</label><p>1/8 exercice(s) réussi(s)</p>
           <label>Mes notes<textarea disabled></textarea></label>
           <p class="note">Repli : « L’IA n’a pas pu préparer ce cahier : il a été construit à partir du catalogue. » Le cahier catalogue présente une section par notion (Ouvrir la notion, Mes notes) ; le brouillon ajoute une page libre.</p></article>
         <p class="note">Les cahiers sont enregistrés dans le stockage de session sans consentement, puis transférés au stockage local si « Se souvenir de moi » est activé. Ils sont effacés avec les autres données de l'appareil.</p>

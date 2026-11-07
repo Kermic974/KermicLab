@@ -2187,7 +2187,10 @@ function brancherNavigation() {
 /* ---------- Mes cahiers : constructeur, enrichissement IA et lecture ---------- */
 
 const LONGUEURS_CAHIER = ["court", "standard", "complet"];
-const GENRES_BLOC = ["explication", "retenir", "exercice", "piste"];
+const GENRES_BLOC = ["histoire", "explication", "exemple", "retenir", "exercice", "defi", "piste", "bilan"];
+const UNIVERS_CAHIER = ["aucun", "aventure", "espace", "enquete", "sport", "nature", "cuisine", "jeux-video", "musique"];
+const OBJECTIFS_CAHIER = ["decouvrir", "reviser", "approfondir", "controle"];
+const AVEC_REPONSE = new Set(["exercice", "defi"]);
 const MAX_NOTIONS_CAHIER = 6;
 const TAILLE_NOTES = 5000;
 const constructeur = { type: null, envoi: false };
@@ -2199,14 +2202,22 @@ function cahierValide(c) {
   if (!c || typeof c.id !== "string" || !TYPES_CAHIERS.includes(c.type) || typeof c.creeLe !== "string" || Number.isNaN(Date.parse(c.creeLe))) return null;
   const sections = Array.isArray(c.sections) ? c.sections.slice(0, MAX_NOTIONS_CAHIER).filter((s) => s && typeof s.notion === "string").map((s) => ({
     notion: texteBorne(s.notion, 80), titre: texteBorne(s.titre, 120), notes: texteBorne(s.notes, TAILLE_NOTES),
-    blocs: (Array.isArray(s.blocs) ? s.blocs : []).slice(0, 16).filter((b) => b && GENRES_BLOC.includes(b.genre) && typeof b.texte === "string")
-      .map((b) => ({ genre: b.genre, texte: texteBorne(b.texte, 700), ...(typeof b.reponse === "string" ? { reponse: texteBorne(b.reponse, 700) } : {}) }))
+    blocs: (Array.isArray(s.blocs) ? s.blocs : []).slice(0, 20).filter((b) => b && GENRES_BLOC.includes(b.genre) && typeof b.texte === "string")
+      .map((b) => ({
+        genre: b.genre, texte: texteBorne(b.texte, 800),
+        ...(typeof b.titre === "string" && b.titre ? { titre: texteBorne(b.titre, 80) } : {}),
+        ...([1, 2, 3].includes(b.niveau) ? { niveau: b.niveau } : {}),
+        ...(typeof b.indice === "string" && b.indice ? { indice: texteBorne(b.indice, 300) } : {}),
+        ...(typeof b.reponse === "string" ? { reponse: texteBorne(b.reponse, 800) } : {}),
+        ...(b.reussi === true ? { reussi: true } : {})
+      }))
   })) : [];
   return {
     id: c.id, type: c.type, creeLe: c.creeLe, titre: texteBorne(c.titre, 60).trim() || t(`cahier_${c.type}`),
     source: c.source === "ia" ? "ia" : "catalogue", modele: texteBorne(c.modele, 100),
     longueur: LONGUEURS_CAHIER.includes(c.longueur) ? c.longueur : "standard",
-    introduction: texteBorne(c.introduction, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections
+    univers: UNIVERS_CAHIER.includes(c.univers) ? c.univers : "", objectif: OBJECTIFS_CAHIER.includes(c.objectif) ? c.objectif : "",
+    introduction: texteBorne(c.introduction, 500), conclusion: texteBorne(c.conclusion, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections
   };
 }
 
@@ -2226,7 +2237,9 @@ function rendreCahiers() {
     const carte = element("article", { classe: "carte cahier-enregistre" });
     const contenu = element("div", { classe: "cahier-infos" });
     const date = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe));
-    const details = [t(`cahier_${cahier.type}`), cahier.sections.length ? t("cahierNotionsCompte", { n: cahier.sections.length }) : null, date].filter(Boolean).join(" · ");
+    const { total, reussis } = bilanExercices(cahier);
+    const details = [t(`cahier_${cahier.type}`), cahier.sections.length ? t("cahierNotionsCompte", { n: cahier.sections.length }) : null,
+      total ? t("cahierProgression", { n: reussis, m: total }) : null, date].filter(Boolean).join(" · ");
     contenu.append(element("h4", { texte: cahier.titre }), element("p", { classe: "doux petit", texte: details }));
     if (cahier.source === "ia") contenu.append(element("span", { classe: "pastille ok", cle: "cahierBadgeIa" }));
     const actions = element("div", { classe: "cahier-actions" });
@@ -2314,6 +2327,10 @@ function ouvrirConstructeur(type) {
   $("#cahier-notions-aide").textContent = t(type === "brouillon" ? "cahierNotionsAideBrouillon" : "cahierNotionsAide", { n: MAX_NOTIONS_CAHIER });
   $("#cahier-longueur").replaceChildren(...LONGUEURS_CAHIER.map((l) => option(l, t(`cahierLongueur_${l}`))));
   $("#cahier-longueur").value = "standard";
+  $("#cahier-univers").replaceChildren(...UNIVERS_CAHIER.map((u) => option(u, t(`cahierUnivers_${u}`))));
+  $("#cahier-univers").value = "aucun";
+  $("#cahier-objectif").replaceChildren(...OBJECTIFS_CAHIER.map((o) => option(o, t(`cahierObjectif_${o}`))));
+  $("#cahier-objectif").value = "reviser";
   $("#cahier-notions").replaceChildren();
   remplirMatieresCahier();
   $("#cahier-niveau").value = "tous";
@@ -2340,10 +2357,13 @@ async function construireCahier(e) {
   const retour = $("#retour-cahier");
   if (!ids.length && type !== "brouillon") { retour.textContent = t("cahierChoisirNotion"); return; }
   const longueur = $("#cahier-longueur").value;
+  const univers = $("#cahier-univers").value;
+  const objectif = $("#cahier-objectif").value;
+  const titreChoisi = $("#cahier-titre").value.trim().slice(0, 60);
   const cahiers = cahiersEnregistres();
   const cahier = {
     id: window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`, type, creeLe: new Date().toISOString(),
-    titre: $("#cahier-titre").value.trim().slice(0, 60) || t(`cahier_${type}`), longueur,
+    titre: titreChoisi || t(`cahier_${type}`), longueur, univers, objectif,
     source: "catalogue", introduction: t(`cahierIntro_${type}`), notes: "", sections: sectionsCatalogue(ids)
   };
   let repli = false;
@@ -2355,7 +2375,7 @@ async function construireCahier(e) {
       // Seuls le type, la longueur, la langue et les identifiants publiés des notions partent : le titre reste ici.
       const r = await fetch(`${etat.config.apiUrl}/api/cahier`, {
         method: "POST", credentials: "include", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ type, longueur, langue: etat.langue, notions: ids, utiliserLlm: true })
+        body: JSON.stringify({ type, longueur, univers, objectif, langue: etat.langue, notions: ids, utiliserLlm: true })
       });
       const d = await r.json();
       if (Number.isInteger(d.quota?.restantes)) etat.cahiersIa.restantesServeur = d.quota.restantes;
@@ -2363,6 +2383,9 @@ async function construireCahier(e) {
         cahier.source = "ia";
         cahier.modele = typeof d.llm?.modele === "string" ? d.llm.modele : "";
         cahier.introduction = typeof d.cahier.introduction === "string" && d.cahier.introduction ? d.cahier.introduction : cahier.introduction;
+        cahier.conclusion = typeof d.cahier.conclusion === "string" ? d.cahier.conclusion : "";
+        // Le titre proposé par l'IA ne remplace jamais celui que l'élève a choisi.
+        if (!titreChoisi && typeof d.cahier.titre === "string" && d.cahier.titre) cahier.titre = d.cahier.titre;
         cahier.sections = d.cahier.sections.map((s) => ({ notion: s.notion, titre: s.titre, blocs: s.blocs, notes: "" }));
       } else repli = true;
     } catch {
@@ -2382,13 +2405,58 @@ async function construireCahier(e) {
 
 /* Lecture */
 
-function blocCahier(b) {
+const ICONES_GENRE = { histoire: "📖", explication: "💬", exemple: "💡", retenir: "📌", exercice: "✏️", defi: "🏆", piste: "🧭", bilan: "✅" };
+
+/** Exercices et défis d'un cahier : total et réussis (auto-évaluation gardée sur l'appareil). */
+function bilanExercices(cahier) {
+  const exercices = cahier.sections.flatMap((s) => s.blocs.filter((b) => AVEC_REPONSE.has(b.genre)));
+  return { total: exercices.length, reussis: exercices.filter((b) => b.reussi).length };
+}
+
+function rafraichirProgressionCahier(cahier) {
+  const zone = $("#lecture-progression");
+  const { total, reussis } = bilanExercices(cahier);
+  zone.hidden = total === 0;
+  if (!total) return;
+  zone.querySelector("span").textContent = t("cahierProgression", { n: reussis, m: total });
+  zone.querySelector("progress").max = total;
+  zone.querySelector("progress").value = reussis;
+}
+
+function blocCahier(b, cahierId, iSection, iBloc) {
   const bloc = element("div", { classe: `bloc-cahier bloc-${b.genre}` });
-  bloc.append(element("p", { classe: "bloc-genre petit", cle: `cahierGenre_${b.genre}` }), element("p", { texte: b.texte }));
-  if (b.genre === "exercice" && b.reponse) {
+  const tete = element("p", { classe: "bloc-genre petit" });
+  tete.append(element("span", { texte: `${ICONES_GENRE[b.genre] ?? ""} `, attributs: { "aria-hidden": "true" } }), element("span", { cle: `cahierGenre_${b.genre}` }));
+  if (b.niveau) tete.append(element("span", { classe: "bloc-niveau", texte: ` · ${"★".repeat(b.niveau)}${"☆".repeat(3 - b.niveau)}`, attributs: { "aria-label": t("cahierNiveauExercice", { n: b.niveau }) } }));
+  bloc.append(tete);
+  if (b.titre) bloc.append(element("p", { classe: "bloc-titre", texte: b.titre }));
+  bloc.append(element("p", { texte: b.texte }));
+  if (b.indice) {
+    const indice = element("details", { classe: "indice-cahier" });
+    indice.append(element("summary", { cle: "cahierIndice" }), element("p", { texte: b.indice }));
+    bloc.append(indice);
+  }
+  if (AVEC_REPONSE.has(b.genre) && b.reponse) {
     const details = element("details", { classe: "reponse-cahier" });
     details.append(element("summary", { cle: "cahierVoirReponse" }), element("p", { texte: b.reponse }));
     bloc.append(details);
+    const reussi = element("label", { classe: "reussi-cahier" });
+    const caseReussi = element("input", { attributs: { type: "checkbox" } });
+    caseReussi.checked = b.reussi === true;
+    caseReussi.addEventListener("change", () => {
+      const cahiers = cahiersEnregistres();
+      const c = cahiers.find((x) => x.id === cahierId);
+      const cible = c?.sections[iSection]?.blocs[iBloc];
+      if (!cible) return;
+      if (caseReussi.checked) cible.reussi = true; else delete cible.reussi;
+      enregistrerCahiers(cahiers);
+      bloc.classList.toggle("reussi", caseReussi.checked);
+      rafraichirProgressionCahier(c);
+      rendreCahiers();
+    });
+    bloc.classList.toggle("reussi", caseReussi.checked);
+    reussi.append(caseReussi, element("span", { cle: "cahierReussi" }));
+    bloc.append(reussi);
   }
   return bloc;
 }
@@ -2416,7 +2484,8 @@ function ouvrirLectureCahier(id, message = "") {
   $("#lecture-titre").textContent = cahier.titre;
   const date = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe));
   const source = cahier.source === "ia" ? t("cahierSourceIa", { modele: cahier.modele || "IA" }) : t("cahierSourceCatalogue");
-  $("#lecture-meta").textContent = [t(`cahier_${cahier.type}`), date, source].join(" · ");
+  const univers = cahier.univers && cahier.univers !== "aucun" ? t(`cahierUnivers_${cahier.univers}`) : null;
+  $("#lecture-meta").textContent = [t(`cahier_${cahier.type}`), univers, date, source].filter(Boolean).join(" · ");
   const corps = $("#lecture-corps");
   corps.replaceChildren();
   if (message) corps.append(element("p", { classe: "note-locale", texte: message, attributs: { role: "status" } }));
@@ -2430,10 +2499,12 @@ function ouvrirLectureCahier(id, message = "") {
       ouvrir.addEventListener("click", () => { $("#lecture-cahier").close(); ouvrirNotion(notionParId(s.notion)); });
       tete.append(ouvrir);
     }
-    section.append(tete, ...s.blocs.map(blocCahier), zoneNotes(cahier.id, i, s.notes));
+    section.append(tete, ...s.blocs.map((b, j) => blocCahier(b, cahier.id, i, j)), zoneNotes(cahier.id, i, s.notes));
     corps.append(section);
   });
+  if (cahier.conclusion) corps.append(element("p", { classe: "conclusion-cahier", texte: cahier.conclusion }));
   if (!cahier.sections.length || cahier.type === "brouillon") corps.append(zoneNotes(cahier.id, -1, cahier.notes));
+  rafraichirProgressionCahier(cahier);
   if (!$("#lecture-cahier").open) $("#lecture-cahier").showModal();
 }
 

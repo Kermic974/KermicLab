@@ -205,12 +205,14 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
       return {
         source: "ia",
         cahier: {
-          type: corps.type, longueur: corps.longueur, introduction: "Un cahier pour s'entraîner.",
+          type: corps.type, longueur: corps.longueur, univers: corps.univers, objectif: corps.objectif,
+          titre: "Mission Fractions", introduction: "Un cahier pour s'entraîner.", conclusion: "Mission accomplie !",
           sections: corps.notions.map((id) => ({
             notion: id, titre: id === "fractions" ? "Les fractions" : "Le théorème de Pythagore", url: `${api}/maquettes/${id}?lang=fr`,
             blocs: [
+              { genre: "histoire", texte: `Le vaisseau arrive près de ${id}.` },
               { genre: "explication", texte: `Rappel sur ${id}.` },
-              { genre: "exercice", texte: `Exercice 1 sur ${id}.`, reponse: `Solution de ${id}.` }
+              { genre: "exercice", niveau: 1, titre: "Premier pas", texte: `Exercice 1 sur ${id}.`, indice: "Regarde le dénominateur.", reponse: `Solution de ${id}.` }
             ]
           }))
         },
@@ -236,13 +238,23 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   await page.locator("#cahier-notions label", { hasText: "Les fractions" }).click();
   await page.locator("#cahier-notions label", { hasText: "Pythagore" }).click();
   await page.selectOption("#cahier-longueur", "complet");
+  await page.selectOption("#cahier-univers", "espace");
+  await page.selectOption("#cahier-objectif", "controle");
   await page.click("#construire-cahier");
   await page.locator("#lecture-cahier[open]").waitFor();
   const envoi = requetes.find((r) => r.cahier)?.cahier;
-  assert.deepEqual(envoi, { type: "exercices", longueur: "complet", langue: "fr", notions: ["fractions", "pythagore"], utiliserLlm: true },
+  assert.deepEqual(envoi, { type: "exercices", longueur: "complet", univers: "espace", objectif: "controle", langue: "fr", notions: ["fractions", "pythagore"], utiliserLlm: true },
     "le titre choisi par l'élève n'est jamais envoyé");
   assert.equal(await texte(page, "#lecture-titre"), "Révisions de Iris");
-  assert.match(await texte(page, "#lecture-meta"), /Cahier d'exercices · .* · Enrichi par l’IA \(custom\/sonnet-5-5\)/);
+  assert.match(await texte(page, "#lecture-meta"), /Cahier d'exercices · Espace · .* · Enrichi par l’IA \(custom\/sonnet-5-5\)/);
+  assert.match(await texte(page, "#lecture-corps .bloc-histoire >> nth=0"), /Le vaisseau arrive près de fractions/);
+  assert.match(await texte(page, "#lecture-corps .bloc-exercice >> nth=0"), /Premier pas/);
+  assert.equal(await texte(page, "#lecture-progression span"), "0/2 exercice(s) réussi(s)");
+  await page.locator("#lecture-corps .indice-cahier summary").first().click();
+  assert.equal(await texte(page, "#lecture-corps .indice-cahier p >> nth=0"), "Regarde le dénominateur.");
+  await page.locator("#lecture-corps .reussi-cahier").first().click();
+  assert.equal(await texte(page, "#lecture-progression span"), "1/2 exercice(s) réussi(s)");
+  assert.equal(await texte(page, "#lecture-corps .conclusion-cahier"), "Mission accomplie !");
   assert.deepEqual(await page.locator("#lecture-corps h3").allTextContents(), ["Les fractions", "Le théorème de Pythagore"]);
   assert.equal(await page.locator("#lecture-corps .reponse-cahier p").first().isVisible(), false, "la réponse est masquée");
   await page.locator("#lecture-corps .reponse-cahier summary").first().click();
@@ -251,6 +263,7 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   await page.click("#fermer-lecture");
   assert.equal(await texte(page, "#liste-cahiers .cahier-enregistre h4"), "Révisions de Iris");
   assert.match(await texte(page, "#liste-cahiers .cahier-enregistre"), /Enrichi par l’IA/);
+  assert.match(await texte(page, "#liste-cahiers .cahier-enregistre"), /1\/2 exercice\(s\) réussi\(s\)/);
   await page.getByRole("button", { name: "Ouvrir Révisions de Iris" }).click();
   assert.equal(await page.inputValue("#notes-0"), "J'ai trouvé 3/4.", "les notes sont gardées");
   await page.click("#fermer-lecture");
@@ -271,7 +284,7 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   // L'écran Configuration montre le module Mes cahiers et son skill.
   await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
   assert.equal(await texte(page, '#config-modules [data-cle="CAHIERS_GENERATIONS_JOUR"] dd'), "2 (0–5)");
-  assert.match(await texte(page, '#config-modules [data-skill="constructeur-cahier"] dd'), /Actif\s+constructeur-cahier-v1 · v1\.0\.0/);
+  assert.match(await texte(page, '#config-modules [data-skill="constructeur-cahier"] dd'), /Actif\s+constructeur-cahier-v2 · v2\.0\.0/);
   await page.setViewportSize({ width: 360, height: 740 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   assert.deepEqual(erreurs, []);
