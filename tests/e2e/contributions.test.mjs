@@ -267,6 +267,11 @@ test("édition ciblée sur mobile : panneau sous la page, menu Contributions dan
   await page.click("#contrib-demo-contributeur");
   const menuMobile = page.locator("#nav-mobile-contributions");
   await menuMobile.waitFor({ state: "visible" });
+  await page.setViewportSize({ width: 320, height: 740 });
+  const boutons = await page.locator(".nav-mobile-bouton:not([hidden])").evaluateAll((l) => l.map((n) => n.getBoundingClientRect()).map((r) => ({ l: r.width, h: r.height, d: r.right })));
+  assert.equal(boutons.length, 6, "cinq destinations + Contributions");
+  assert.ok(boutons.every((b) => b.l >= 44 && b.h >= 44 && b.d <= 320), "six entrées tactiles à 320 px");
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.click(".nav-mobile [data-nav=education]");
   await page.locator("#catalogue .accordeon-bouton", { hasText: "Collège" }).click();
   await page.locator("#edu-college .accordeon-bouton", { hasText: "Maths" }).click();
