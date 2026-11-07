@@ -30,3 +30,12 @@ CREATE TABLE IF NOT EXISTS defis_llm (
   en_cours INTEGER NOT NULL DEFAULT 0 CHECK (en_cours IN (0, 1))
 );
 CREATE INDEX IF NOT EXISTS idx_defis_llm_expiration ON defis_llm (expire_a);
+
+-- Quota du constructeur de cahiers enrichi par l'IA : générations par session de 24 h, sans aucun texte.
+CREATE TABLE IF NOT EXISTS cahiers_llm (
+  session_id TEXT PRIMARY KEY,
+  expire_a INTEGER NOT NULL,
+  generations INTEGER NOT NULL DEFAULT 0 CHECK (generations BETWEEN 0 AND 5),
+  en_cours INTEGER NOT NULL DEFAULT 0 CHECK (en_cours IN (0, 1))
+);
+CREATE INDEX IF NOT EXISTS idx_cahiers_llm_expiration ON cahiers_llm (expire_a);

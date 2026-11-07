@@ -18,7 +18,7 @@ crons = ["17 2 * * *"]
 [vars]
 # Général
 LLM_ACTIF = "true"
-SKILLS_ACTIFS = "tuteur,cadrage-idee,defi-express"
+SKILLS_ACTIFS = "tuteur,cadrage-idee,defi-express,constructeur-cahier"
 TAILLE_MAX_MESSAGE = "500"     # 50 à 2000
 LIMITE_PAR_MINUTE = "20"       # 1 à 120
 # Tuteur et boîte à idées (ADR 0016)
@@ -30,6 +30,10 @@ MAX_TOKENS_APPEL = "500"       # 100 à 1000, jamais plus que LIMITE_TOKENS_SESS
 MODELE_DEFI = "custom/haiku"
 DEFI_GENERATIONS_JOUR = "3"    # 0 à 10
 MAX_TOKENS_DEFI = "1500"       # 500 à 3000
+# Mes cahiers : alias de modèle AI Gateway, générations IA par session de 24 h et budget de sortie par génération.
+MODELE_CAHIERS = "custom/sonnet-5-5"
+CAHIERS_GENERATIONS_JOUR = "2" # 0 à 5
+MAX_TOKENS_CAHIERS = "100000"  # 1000 à 128000
 # Hors registre
 GITHUB_REPO = "kermic974/trigoLab"
 ORIGINES_AUTORISEES = "https://www.kermiclab.online,https://kermiclab.online,https://kermiclab.pages.dev,http://localhost:8788"

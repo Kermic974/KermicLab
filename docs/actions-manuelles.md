@@ -2,6 +2,16 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Mes cahiers : constructeur enrichi par l'IA (ADR 0019, ADR 0022)
+
+- **Fait** (2026-11-07) : alias de modèle `custom/sonnet-5-5` (`anthropic/claude-sonnet-5.5`) créé sur `kermiclab-gateway`
+  (confirmé par le propriétaire).
+- **À faire** : après fusion et déploiement (la CI applique `worker/schema.sql`, qui crée la table `cahiers_llm`),
+  vérifier dans Configuration le bloc « Mes cahiers » (alias, générations par jour, tokens max, skill « Constructeur de
+  cahiers »). Puis, avec « Utiliser l'IA » activé, créer un cahier d'exercices sur deux notions et vérifier qu'il s'ouvre
+  avec « Enrichi par l'IA (custom/sonnet-5-5) ». En cas de « construit à partir du catalogue », consulter les logs du
+  Worker (`llm cahier fournisseur ou sortie invalide`) et le journal de l'alias dans AI Gateway.
+
 ## Défi express généré par l'IA (ADR 0018)
 
 - **Fait** (2026-11-06) : alias de modèle `custom/haiku` créé sur `kermiclab-gateway` (confirmé par le propriétaire).

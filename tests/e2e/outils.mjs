@@ -68,7 +68,7 @@ export function defisIa(api, n = 5) {
   }));
 }
 
-export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false, llmActif = true, defi = null }) {
+export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, jeux = false, llmActif = true, defi = null, cahier = null }) {
   const requetes = [];
   await page.route(`${api}/auth/me`, (route) => route.fulfill({
     contentType: "application/json",
@@ -82,8 +82,8 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
   await page.route(`${api}/api/llm/status`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
     body: JSON.stringify({
-      actif: llmActif, defi: { ia: llmActif, generationsParJour: 3 },
-      skills: { tuteur: llmActif, "cadrage-idee": llmActif, "defi-express": llmActif },
+      actif: llmActif, defi: { ia: llmActif, generationsParJour: 3 }, cahiers: { ia: llmActif, generationsParJour: 2 },
+      skills: { tuteur: llmActif, "cadrage-idee": llmActif, "defi-express": llmActif, "constructeur-cahier": llmActif },
       configuration: configurationPublique({ LLM_ACTIF: String(llmActif), DEFI_GENERATIONS_JOUR: "3" })
     })
   }));
@@ -91,6 +91,16 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
     const corps = route.request().postDataJSON();
     requetes.push({ defi: corps });
     const reponse = defi ? defi(corps) : { source: "banque", raison: "ia-inactive", defis: [], quota: { limite: 3, utilisees: 0, restantes: 3 } };
+    return route.fulfill({
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": origine, "access-control-allow-credentials": "true" },
+      body: JSON.stringify(reponse)
+    });
+  });
+  await page.route(`${api}/api/cahier`, async (route) => {
+    const corps = route.request().postDataJSON();
+    requetes.push({ cahier: corps });
+    const reponse = cahier ? cahier(corps) : { source: "aucune", raison: "ia-inactive", cahier: null, quota: { limite: 2, utilisees: 0, restantes: 2 } };
     return route.fulfill({
       contentType: "application/json",
       headers: { "access-control-allow-origin": origine, "access-control-allow-credentials": "true" },

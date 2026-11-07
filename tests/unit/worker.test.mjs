@@ -360,7 +360,7 @@ test("configuration : un skill retiré de SKILLS_ACTIFS n'appelle aucun modèle"
 test("configuration publique : paramètres par module, sans secret", async () => {
   env.MODELE_DEFI = "custom/sonnet";
   const corps = await (await worker.fetch(new Request("https://api.kermiclab.test/api/llm/status"), env, ctx)).json();
-  assert.deepEqual(corps.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi"]);
+  assert.deepEqual(corps.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers"]);
   const defi = corps.configuration.modules.find((m) => m.id === "defi");
   assert.equal(defi.parametres.find((p) => p.cle === "MODELE_DEFI").valeur, "custom/sonnet");
   const texte = JSON.stringify(corps);
@@ -412,7 +412,8 @@ test("GET /api/llm/status expose la disponibilité effective et sans cache", asy
   const inactif = await lire();
   const corpsInactif = await inactif.json();
   assert.deepEqual(resumeStatut(corpsInactif), { actif: false, defi: { ia: false, generationsParJour: 3 } });
-  assert.deepEqual(corpsInactif.skills, { tuteur: false, "cadrage-idee": false, "defi-express": false });
+  assert.deepEqual(corpsInactif.skills, { tuteur: false, "cadrage-idee": false, "defi-express": false, "constructeur-cahier": false });
+  assert.deepEqual(corpsInactif.cahiers, { ia: false, generationsParJour: 2 });
   assert.equal(inactif.headers.get("cache-control"), "no-store");
   env.LLM_ACTIF = "true";
   delete env.LLM_SESSION_SECRET;

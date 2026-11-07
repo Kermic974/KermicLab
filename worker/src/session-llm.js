@@ -61,6 +61,7 @@ export async function definirContexteLlm(requete, env, maquetteId) {
 /** Session sans page (boîte à idées, défi express) : celle du tuteur si elle existe, sinon une nouvelle. */
 export const SESSION_SANS_PAGE = "boite-idees";
 export const SESSION_DEFI = "defi-express";
+export const SESSION_CAHIER = "cahiers";
 export async function sessionSansPage(requete, env, contexte) {
   const existante = await lireSessionLlm(requete, env);
   if (existante) return { session: existante };
