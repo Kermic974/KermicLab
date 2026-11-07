@@ -27,7 +27,7 @@ phrase secrète jamais stockée en ligne. Voir [ADR 0024](../decisions/0024-comp
 |---|---|
 | Écran « Mon compte » (`#compte`) : création, connexion locale, déconnexion, suppression | PR ouverte |
 | Synchronisation : activation, déverrouillage, envoi, récupération (chiffrement et pseudonymisation dans le navigateur) | PR ouverte |
-| Worker `/api/compte-local/` et schéma `worker/schema-compte-local.sql` | PR ouverte ; schéma et secret `COMPTES_LOCAUX_SECRET` à déposer (action 39) |
+| Worker `/api/compte-local/` et schéma `worker/schema-compte-local.sql` | PR ouverte ; secret `COMPTES_LOCAUX_SECRET` et tables D1 en place en production (2026-11-07) ; routes en ligne après fusion (action 39) |
 | Conservation : 365 jours sans lecture ni écriture, purge par le cron quotidien | Décidé le 2026-11-07 ; codé et testé |
 | Tests : règles et cryptographie (`tests/unit/compte-local.test.mjs`), Worker (`compte-local-worker.test.mjs`), parcours deux appareils (`tests/e2e/compte-local.test.mjs`) | PR ouverte |
 
