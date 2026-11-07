@@ -166,12 +166,6 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
 /** Au-delà de ce budget de sortie, l'appel passe en streaming : l'API d'Anthropic refuse (400) un appel simple. */
 export const SEUIL_STREAMING = 16000;
 
-/** Erreur d'un fournisseur réduite à son code HTTP (jamais de contenu) pour le journal et le diagnostic. */
-export function codeErreurFournisseur(erreur) {
-  const code = String(erreur?.message ?? "").match(/\b([45]\d\d)\b/)?.[1];
-  return code ? `fournisseur-${code}` : "fournisseur";
-}
-
 /** Lit un flux SSE au format chat completions (ou Workers AI) et renvoie le texte complet, la fin et l'usage. */
 export async function lireFluxGateway(flux) {
   const lecteur = flux.getReader();

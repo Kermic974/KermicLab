@@ -116,8 +116,8 @@ test("cahier : un petit budget reste un appel simple ; erreur du fournisseur ré
   env.AI = creerAlias({ erreur: new Error("AiError: 400 Bad Request: invalid_request_error") });
   env.CAHIERS_GENERATIONS_JOUR = "5";
   const r = await cahier(demande());
-  assert.equal(r.donnees.raison, "fournisseur-400");
-  assert.ok(env.DB.lignes.some((l) => l[0] === "cahier" && l[5] === "fournisseur-400"));
+  assert.equal(r.donnees.raison, "http-400");
+  assert.ok(env.DB.lignes.some((l) => l[0] === "cahier" && l[5] === "http-400"));
 });
 
 test("cahier : sortie tronquée (budget atteint) signalée sans contenu partiel", async () => {
@@ -208,7 +208,7 @@ test("cahier : sans IA consentie, demande invalide ou sortie inutilisable, l'int
 
 test("cahier : quota de générations par session, l'échec du fournisseur compte et libère la réservation", async () => {
   env.AI = creerAlias({ erreur: new Error("panne") });
-  assert.equal((await cahier(demande())).donnees.raison, "fournisseur");
+  assert.equal((await cahier(demande())).donnees.raison, "erreur");
   env.AI = creerAlias();
   const deuxieme = await cahier(demande());
   assert.equal(deuxieme.donnees.source, "ia");

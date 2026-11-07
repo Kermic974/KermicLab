@@ -14,11 +14,7 @@ import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
 import { pseudonymiser } from "./pseudonymisation.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
 import { intentionConversation } from "./conversation.js";
-<<<<<<< Updated upstream
 import { appelerAliasGateway, appelerWorkersAI, claudeViaGatewayDisponible } from "./llm.js";
-=======
-import { appelerAliasGateway, claudeViaGatewayDisponible, codeErreurFournisseur } from "./llm.js";
->>>>>>> Stashed changes
 import { configurationPublique, lireConfiguration, skillActif } from "./configuration.js";
 import {
   HARNESS_DEFI, SCHEMA_DEFI, codeErreurFournisseur, melangerChoix, perimetreDefi, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,

@@ -13,13 +13,8 @@ export const MODULES = Object.freeze(["general", "tuteur", "defi", "cahiers"]);
 export const SKILLS = Object.freeze({
   tuteur: Object.freeze({ module: "tuteur", version: "1.0.0", prompt: "tuteur-catalogue-v1", perimetre: "catalogue-kermiclab" }),
   "cadrage-idee": Object.freeze({ module: "tuteur", version: "1.0.0", prompt: "cadrage-idee-v1", perimetre: "boite-a-idees" }),
-<<<<<<< Updated upstream
   "defi-express": Object.freeze({ module: "defi", version: "1.1.0", prompt: "defi-express-v2", perimetre: "catalogue-kermiclab" }),
-  "constructeur-cahier": Object.freeze({ module: "cahiers", version: "1.0.0", prompt: "constructeur-cahier-v1", perimetre: "catalogue-kermiclab" })
-=======
-  "defi-express": Object.freeze({ module: "defi", version: "1.0.0", prompt: "defi-express-v1", perimetre: "catalogue-kermiclab" }),
   "constructeur-cahier": Object.freeze({ module: "cahiers", version: "2.0.0", prompt: "constructeur-cahier-v2", perimetre: "catalogue-kermiclab" })
->>>>>>> Stashed changes
 });
 
 const ALIAS_VALIDE = /^[A-Za-z0-9@][A-Za-z0-9@/._:-]{0,99}$/;
