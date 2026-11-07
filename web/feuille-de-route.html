@@ -14,7 +14,7 @@
 <p class="fr-retour"><a href="./">← KermicLab</a></p>
 
 <header class="fr-entete">
-  <p class="fr-surtitre">trigoLab → KermicLab · version 3 · <time datetime="2026-11-05">5 novembre 2026</time></p>
+  <p class="fr-surtitre">trigoLab → KermicLab · version 3.1 · <time datetime="2026-11-07">7 novembre 2026</time></p>
   <h1>Feuille de route</h1>
   <p class="fr-chapeau">Transformer un laboratoire de trigonométrie en une plateforme d'apprentissage multi-matières,
     personnalisée et familiale, <strong>sans renoncer à ce qui fait KermicLab</strong> : des pages déterministes,
@@ -47,17 +47,17 @@
 <section id="synthese" aria-labelledby="t-synthese">
 <h2 id="t-synthese">Synthèse</h2>
 <p>On ne repart pas de zéro : le catalogue, le gabarit de notion, le tableau de bord et le chat existent déjà.
-  Les PR fusionnées les 4 et 5 novembre ajoutent <strong>huit jeux autonomes</strong> et une
+  Les PR fusionnées les 4 et 5 novembre ajoutent <strong>neuf jeux autonomes</strong> et une
   <strong>Académie à modules partagés</strong>. Révisions espacées, conseils déterministes et progression détaillée
   fonctionnent déjà dans les jeux qui intègrent ces modules, mais pas encore à l'échelle des matières scolaires.
   La suite consiste à <strong>structurer</strong> (un référentiel de notions reliées par leurs prérequis),
   à <strong>personnaliser localement</strong> (parcours et cahier de vacances dans le navigateur, sans compte),
   puis seulement à <strong>ouvrir les comptes familles et le tuteur IA</strong>, chacun derrière un point de
   contrôle humain (juridique pour les comptes, budget pour l'IA).</p>
-<dl class="fr-chiffres" aria-label="Repères au 5 novembre 2026">
-  <div><dt>Jeux intégrés à main</dt><dd>8</dd></div>
+<dl class="fr-chiffres" aria-label="Repères au 7 novembre 2026">
+  <div><dt>Jeux intégrés à main</dt><dd>9</dd></div>
   <div><dt>Socle Académie partagé</dt><dd>1</dd></div>
-  <div><dt>Jeu en PR ouverte</dt><dd>1 <span>le pendu · #100</span></dd></div>
+  <div><dt>Projets suivis sur GitHub</dt><dd>9 <span>épiques #164 à #172</span></dd></div>
   <div><dt>Compte requis pour jouer</dt><dd>0</dd></div>
 </dl>
 <ol class="fr-cartes">
@@ -73,7 +73,7 @@
 
 <section id="livraisons" aria-labelledby="t-livraisons">
 <h2 id="t-livraisons">Livraisons récentes</h2>
-<p>État vérifié sur <code>main</code> et les PR au <time datetime="2026-11-05">5 novembre 2026</time>.
+<p>État vérifié sur <code>main</code> et les PR au <time datetime="2026-11-07">7 novembre 2026</time>.
   « Fusionné » signifie intégré au dépôt, pas validation pédagogique complète ni vérification du déploiement en production.</p>
 <ol class="fr-jalons">
   <li>
@@ -98,13 +98,12 @@
   </li>
   <li>
     <p class="fr-date"><time datetime="2026-11-05">5 novembre</time> · catalogue ludique</p>
-    <h3>Huit jeux intégrés, une proposition en attente</h3>
+    <h3>Neuf jeux intégrés</h3>
     <p>Poker Texas Hold'em à jetons fictifs <a href="https://github.com/Kermic974/trigoLab/pull/96">#96</a>,
       Mots croisés <a href="https://github.com/Kermic974/trigoLab/pull/97">#97</a>,
       Mots fléchés <a href="https://github.com/Kermic974/trigoLab/pull/98">#98</a>,
-      2048 <a href="https://github.com/Kermic974/trigoLab/pull/99">#99</a>.</p>
-    <p><span class="fr-etat partiel">PR ouverte · non livrée</span>
-      Pendu <a href="https://github.com/Kermic974/trigoLab/pull/100">#100</a> : à relire et valider avant fusion.</p>
+      2048 <a href="https://github.com/Kermic974/trigoLab/pull/99">#99</a>,
+      Pendu <a href="https://github.com/Kermic974/trigoLab/pull/100">#100</a> (cinq niveaux de 100 mots).</p>
   </li>
 </ol>
 <div class="fr-deux">
@@ -173,7 +172,7 @@
     <tr><td>Cercle trigonométrique</td><td><span class="fr-etat fait">v1.4</span> 3 méthodes, modes Explorer / Apprendre / Jouer</td><td>Mode Comparer (v1.5), hors ligne (v2.0)</td></tr>
     <tr><td>Routage déterministe et chat</td><td><span class="fr-etat fait">En ligne</span> zéro token sur le catalogue, repli sans clé API</td><td>Clé API avec plafond quand un budget existe (ADR 0006)</td></tr>
     <tr><td>Tableau de bord, pseudo, progression</td><td><span class="fr-etat fait">En ligne</span> local, session ou mémorisé (ADR 0012)</td><td>Notion de maîtrise et de révision, au-delà de « notion vue »</td></tr>
-    <tr><td>Catalogue de jeux autonomes</td><td><span class="fr-etat fait">Fusionné</span> Démineur, Échecs, Belote, Sudoku, Poker Texas Hold'em (jetons fictifs), Mots croisés, Mots fléchés, 2048</td><td>Consolider clavier, tactile et relecture des règles ; pendu en PR ouverte (#100), exclu des huit jeux livrés</td></tr>
+    <tr><td>Catalogue de jeux autonomes</td><td><span class="fr-etat fait">Fusionné</span> Démineur, Échecs, Belote, Sudoku, Poker Texas Hold'em (jetons fictifs), Mots croisés, Mots fléchés, 2048, Pendu</td><td>Consolider clavier, tactile et relecture des règles des neuf jeux</td></tr>
     <tr><td>Académie et gamification partagées</td><td><span class="fr-etat fait">Disponible</span> modules de progression et d'interface, exercices vérifiés par les moteurs, révisions et conseils locaux (#90, #92) ; remontée des résultats dans « Mes trophées »</td><td>Événements pédagogiques détaillés ; transposition aux notions scolaires après définition des compétences</td></tr>
     <tr><td>Comptes parent et profils élèves</td><td><span class="fr-etat partiel">Proposé</span> ADR 0010, code OAuth en place, désactivé</td><td>Validation juridique (RGPD, consentement des moins de 15 ans), AIPD</td></tr>
     <tr><td>KPI anonymes, sauvegardes</td><td><span class="fr-etat fait">En ligne</span> D1 + R2, ni IP ni texte</td><td>Indicateurs pédagogiques agrégés</td></tr>
@@ -218,7 +217,7 @@
   <li><a href="#phase-1"><strong>1 · Relier</strong><span>Prérequis et événements</span></a></li>
   <li><a href="#phase-2"><strong>2 · Personnaliser</strong><span>Parcours et cahier local</span></a></li>
 </ol>
-<p class="fr-encadre"><strong>Priorité immédiate :</strong> consolider les huit jeux et relire le pendu proposé,
+<p class="fr-encadre"><strong>Priorité immédiate :</strong> consolider les neuf jeux et relire leurs règles,
   puis étendre les instantanés de « Mes trophées » aux événements pédagogiques détaillés. Ni la fusion d'un jeu, ni ses badges ne valident
   à eux seuls les phases 0, 1 ou 2. La préparation juridique peut avancer en parallèle ; l'IA reste conditionnée au budget.</p>
 <p id="suivi-projets">Chaque ligne du Gantt est suivie par un projet GitHub : une épique, des sous-issues et un label
@@ -257,10 +256,9 @@
   <ul>
     <li>Protéger <code>main</code> : CI obligatoire avant fusion (action manuelle du propriétaire).</li>
     <li>Les tests navigateur couvrent déjà chaque notion du gabarit : les appliquer aussi aux pages écrites à la main
-      et au catalogue privé, et en faire un contrôle obligatoire de la PR. Les huit jeux ont déjà leurs tests moteur
+      et au catalogue privé, et en faire un contrôle obligatoire de la PR. Les neuf jeux ont déjà leurs tests moteur
       et navigateur : maintenir cette couverture et vérifier leurs parcours clavier et tactile.</li>
-    <li>Relire les règles et les leçons des jeux intégrés ; traiter la proposition de pendu (#100)
-      séparément, sans la compter comme livrée avant sa fusion.</li>
+    <li>Relire les règles et les leçons des neuf jeux intégrés, pendu compris (fusionné le 5 novembre, #100).</li>
     <li>Grille de relecture pédagogique (exactitude, progression collège → lycée, adaptation à l'âge) et statut
       « relue » dans chaque fiche, appliqués d'abord aux notions les plus consultées.</li>
     <li>Versions séparées : plateforme (<code>package.json</code>), notion (<code>fiche.md</code>), application du cercle.</li>
@@ -572,8 +570,10 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 
 <section id="revision" aria-labelledby="t-revision">
 <h2 id="t-revision">Notes de révision</h2>
-<h3>Suivi des projets · 7 novembre 2026</h3>
+<h3>Version 3.1 · 7 novembre 2026</h3>
 <ul class="fr-liste">
+  <li>Correction : le pendu (#100) a été fusionné le 5 novembre ; le catalogue compte neuf jeux intégrés.
+    Les repères, la frise, l'état des lieux, la phase 0 et le résumé anglais sont alignés.</li>
   <li>Chaque phase, la piste du cercle et la ligne « Catalogue, accueil, jeux » sont suivies par une épique GitHub
     (#164 à #172), des sous-issues et un label <code>projet:…</code>. Le lien est tenu par
     <code>.github/projets.json</code> et vérifié par un test ; le contenu stratégique de la version 3 est inchangé.</li>
@@ -610,9 +610,8 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 <hr>
 <section lang="en" aria-labelledby="t-en">
 <h2 id="t-en">Roadmap (English summary)</h2>
-<p>As of November 5, 2026, the merged baseline includes the student dashboard, eight standalone games and shared
-  Academy modules with local XP, badges, spaced review and deterministic advice. Hangman (#100) is still an open PR,
-  not a delivered game. “My trophies” locally displays compatible module snapshots in the dashboard, without syncing
+<p>As of November 7, 2026, the merged baseline includes the student dashboard, nine standalone games (Hangman, #100, included) and shared
+  Academy modules with local XP, badges, spaced review and deterministic advice. “My trophies” locally displays compatible module snapshots in the dashboard, without syncing
   separately opened pages. This does not establish school-subject mastery or complete the pedagogical event contract.
   The simplified Gantt shows dependencies, not delivery dates or completion percentages.</p>
 <p>KermicLab grows from trigoLab without a rewrite. Phase 0 makes quality enforceable (blocking CI on the existing
