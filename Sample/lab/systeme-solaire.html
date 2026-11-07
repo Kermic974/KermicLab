@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GgUN/bzEvNbIEqzlbYqZt2sz4IDeSjoCrgUQoui5Vto='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Le système solaire – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "systeme-solaire",
+  "titre": "Le système solaire",
+  "sujet": "sciences/systeme-solaire",
+  "version": "0.1.0",
+  "date": "2026-11-07",
+  "langue": "fr",
+  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+}
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #07080c;
+    --elev: #12141c;
+    --elev-2: #1b1e28;
+    --fg: #e8eaef;
+    --muted: #9aa3b2;
+    --faint: #6e7686;
+    --line: #2c3342;
+    --accent: #c5d0dc;
+    --accent-fg: #12141c;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.45 system-ui, sans-serif;
+    overflow: hidden;
+  }
+  button, [role="tab"] { font: inherit; color: inherit; cursor: pointer; }
+  button:disabled { cursor: default; }
+  button:focus-visible, [role="tab"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  header.haut {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: max(10px, env(safe-area-inset-top)) 14px 0;
+  }
+  header.haut h1 { margin: 0; font-size: 1.25rem; font-weight: 560; letter-spacing: -0.02em; }
+  header.haut p { margin: 0; color: var(--muted); font-size: 0.78rem; }
+  [role="tablist"] { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
+  [role="tab"] {
+    min-height: 44px;
+    border: 1px solid var(--line);
+    background: transparent;
+    border-radius: 10px;
+    padding: 0 14px;
+  }
+  [role="tab"][aria-selected="true"] { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+  main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .panneau { display: none; overflow: auto; padding: 4px 16px 24px; }
+  .panneau:not([hidden]) { display: block; }
+  #panneau-application:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .lecture h2 { font-size: 1.35rem; margin: 0.6rem 0; }
+  .lecture p, .lecture li { color: var(--fg); }
+  .lecture .note, .lecture .muted { color: var(--muted); }
+  details { border-top: 1px solid var(--line); padding: 8px 0; }
+  summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
+  .scene { position: relative; flex: 1; min-height: 0; background: #07080c; touch-action: none; }
+  canvas { display: block; width: 100%; height: 100%; }
+  .etiquettes { position: absolute; inset: 0; pointer-events: none; }
+  .etiquette {
+    position: absolute;
+    pointer-events: auto;
+    transform: translate(-50%, -120%);
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    font-size: 12px;
+    text-shadow: 0 1px 2px #000;
+    min-height: 32px;
+    padding: 4px 6px;
+  }
+  .etiquette[data-on="true"] { color: #fff; font-weight: 650; }
+  .barre, .dock {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 2;
+  }
+  .barre { top: 10px; justify-content: space-between; pointer-events: none; }
+  .barre > * { pointer-events: auto; }
+  .dock {
+    bottom: max(10px, env(safe-area-inset-bottom));
+    flex-direction: column;
+    align-items: stretch;
+    background: color-mix(in srgb, var(--elev) 92%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 10px;
+  }
+  .ligne { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .rail { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .bouton, .pastille {
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--elev-2);
+    padding: 0 12px;
+  }
+  .bouton.plein, .pastille[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+  .pastille { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+  .puce { width: 8px; height: 8px; border-radius: 99px; background: var(--c, #fff); }
+  label.vitesse { display: flex; flex: 1; min-width: 140px; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; }
+  label.vitesse input { flex: 1; accent-color: var(--accent); min-height: 44px; }
+  .carte, .dialogue {
+    background: var(--elev);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 14px;
+  }
+  .carte { position: absolute; z-index: 2; top: 62px; left: 12px; width: min(320px, calc(100% - 24px)); max-height: 38vh; overflow: auto; }
+  .carte[hidden], .dialogue[hidden], .voile[hidden] { display: none; }
+  .carte h2, .dialogue h2 { margin: 0; font-size: 1.35rem; }
+  .yeux { margin: 0; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .voile {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 12px;
+  }
+  .dialogue { width: min(520px, 100%); max-height: min(78vh, 40rem); overflow: auto; position: relative; }
+  .pas { display: flex; gap: 6px; margin: 10px 0; }
+  .pas i { flex: 1; height: 4px; border-radius: 99px; background: var(--elev-2); }
+  .pas i.on { background: var(--accent); }
+  .choix { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .choix button { text-align: left; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); padding: 8px 12px; }
+  .choix button.bonne { background: var(--accent); color: var(--accent-fg); }
+  .choix button.ratee { color: var(--muted); }
+  .pause-mot { position: absolute; top: 64px; right: 16px; z-index: 2; color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  #secours { padding: 16px; color: var(--muted); }
+  @media (min-width: 800px) {
+    .voile { align-items: center; }
+    .carte { max-height: 70vh; }
+  }
+</style>
+</head>
+<body>
+<header class="haut">
+  <h1>Le système solaire</h1>
+  <p>Cours · CM1 · CM2 · 6e</p>
+</header>
+<div role="tablist" id="onglets" aria-label="Parties du cours">
+  <button type="button" role="tab" id="onglet-explication" aria-controls="panneau-explication" aria-selected="false" tabindex="-1">Explication</button>
+  <button type="button" role="tab" id="onglet-application" aria-controls="panneau-application" aria-selected="true" tabindex="0">Ciel</button>
+  <button type="button" role="tab" id="onglet-mise-en-situation" aria-controls="panneau-mise-en-situation" aria-selected="false" tabindex="-1">Mission</button>
+</div>
+<main>
+  <section class="panneau lecture" id="panneau-explication" role="tabpanel" aria-labelledby="onglet-explication" hidden>
+    <p class="yeux">Cycle 3</p>
+    <h2>Voir, puis nommer</h2>
+    <p>Le Soleil est une étoile. Huit planètes tournent autour de lui, toutes dans le même sens. Le chemin s'appelle une orbite.</p>
+    <ol>
+      <li>Le Soleil produit sa lumière. Les planètes la renvoient.</li>
+      <li>Ordre : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune.</li>
+      <li>Le jour et la nuit : la Terre tourne sur elle-même en environ 24 heures. Ce tour est la rotation.</li>
+      <li>Une année : un tour autour du Soleil, environ 365 jours. Ce tour est la révolution.</li>
+      <li>La Lune n'est pas une planète. C'est le satellite de la Terre.</li>
+      <li>Plus une planète est loin, plus son tour est long.</li>
+    </ol>
+    <p class="note">Aide-mémoire : Mon Vieux, Tu M'as Jeté Sur Une Navette. C'est une béquille, pas une loi. L'été ne veut pas dire « plus près du Soleil » : la Terre est un peu penchée.</p>
+    <p class="note">Le ciel de l'onglet suivant est un modèle. Les tailles et les distances ne sont pas les vraies, et le temps est accéléré.</p>
+    <details open>
+      <summary>CM1 — voir et dire</summary>
+      <p>Le Soleil au centre, les planètes qui tournent. Sur la Terre en pause : une face claire, le jour, une face sombre, la nuit.</p>
+    </details>
+    <details>
+      <summary>CM2 — huit planètes, pas à l'échelle</summary>
+      <p>Quatre planètes rocheuses près du Soleil, quatre géantes plus loin. La Lune à part. Vénus est la plus chaude, pas Mercure.</p>
+    </details>
+    <details>
+      <summary>6e — rotation et révolution</summary>
+      <p>Rotation : tour sur soi-même, environ 24 h, jour et nuit. Révolution : tour autour du Soleil, environ 365 jours, une année. La lumière du Soleil met environ 8 minutes pour arriver jusqu'à la Terre.</p>
+    </details>
+  </section>
+  <section class="panneau" id="panneau-application" role="tabpanel" aria-labelledby="onglet-application">
+    <div class="scene" id="scene">
+      <canvas id="ciel" aria-hidden="true"></canvas>
+      <p id="secours" hidden>Ce navigateur ne peut pas afficher le modèle en volume. Les onglets Explication et Mission restent lisibles.</p>
+      <div class="etiquettes" id="etiquettes"></div>
+      <div class="barre">
+        <div>
+          <strong>Modèle accéléré</strong>
+          <p class="yeux" id="fil" style="text-transform:none;letter-spacing:0">Pas à l'échelle</p>
+        </div>
+        <div class="ligne">
+          <button type="button" class="bouton" id="pause" aria-pressed="false">Pause</button>
+          <button type="button" class="bouton plein" id="ouvrir-cours">Cours</button>
+        </div>
+      </div>
+      <p class="pause-mot" id="mot-pause" hidden>En pause</p>
+      <article class="carte" id="carte" hidden>
+        <p class="yeux" id="carte-type"></p>
+        <h2 id="carte-nom"></h2>
+        <p id="carte-ligne"></p>
+        <p id="carte-annee"></p>
+        <p class="note" id="carte-note"></p>
+        <p id="carte-jour" hidden>La face claire, tournée vers le Soleil, c'est le jour. La face sombre, c'est la nuit.</p>
+        <button type="button" class="bouton" id="carte-retour">Vue d'ensemble</button>
+      </article>
+      <div class="dock">
+        <div class="ligne">
+          <label class="vitesse">Vitesse
+            <input id="vitesse" type="range" min="0" max="100" value="38" aria-label="Vitesse de la simulation">
+          </label>
+          <button type="button" class="bouton plein" id="pistes" aria-pressed="true">Pistes</button>
+          <button type="button" class="bouton plein" id="noms" aria-pressed="true">Noms</button>
+          <button type="button" class="bouton" id="ensemble">Vue d'ensemble</button>
+        </div>
+        <div class="rail" id="rail"></div>
+      </div>
+      <div class="voile" id="voile-cours" hidden>
+        <div class="dialogue" role="dialog" aria-modal="true" aria-labelledby="cours-titre">
+          <p class="yeux" id="cours-kicker">Cours</p>
+          <h2 id="cours-titre"></h2>
+          <div class="pas" id="cours-pas"></div>
+          <p id="cours-texte"></p>
+          <p class="note" id="cours-indice"></p>
+          <div class="ligne">
+            <button type="button" class="bouton plein" id="cours-voir"></button>
+            <button type="button" class="bouton" id="cours-avant">Avant</button>
+            <button type="button" class="bouton" id="cours-suite">Suite</button>
+            <button type="button" class="bouton" id="cours-fermer">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="panneau lecture" id="panneau-mise-en-situation" role="tabpanel" aria-labelledby="onglet-mise-en-situation" hidden>
+    <p class="yeux">Mission observatoire</p>
+    <h2>Tu observes, tu ne changes rien</h2>
+    <ol>
+      <li>Retrouve les huit planètes dans l'ordre. La Lune ne compte pas.</li>
+      <li>Mets la Terre en pause. Montre le jour, puis la nuit.</li>
+      <li>Accélère. Mercure finit plusieurs tours, Neptune avance à peine. Elle est bien plus loin.</li>
+      <li>La planète aux anneaux est Saturne. Les anneaux sont faits de glace et de roche.</li>
+      <li>En été, la Terre n'est pas plus près du Soleil. Elle est penchée.</li>
+    </ol>
+    <h2>Cinq questions</h2>
+    <div id="quiz"></div>
+  </section>
+</main>
+<button type="button" id="connexion" hidden>Se connecter</button>
+<script>
+(() => {
+  const CONFIG = { connexionActive: false };
+  if (CONFIG.connexionActive) document.getElementById("connexion").hidden = false;
+
+  const stockage = {
+    local: {
+      lire(cle) { try { return localStorage.getItem(cle); } catch (e) { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem(cle, valeur); } catch (e) { /* appareil sans stockage */ } }
+    },
+    distant: { lire() { return null; }, ecrire() {} }
+  };
+
+  const onglets = [...document.querySelectorAll("[role=tab]")];
+  function montrer(id) {
+    for (const b of onglets) {
+      const on = b.id === "onglet-" + id;
+      b.setAttribute("aria-selected", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
+    }
+    for (const p of document.querySelectorAll(".panneau")) p.hidden = p.id !== "panneau-" + id;
+    if (id === "application") taille();
+  }
+  document.getElementById("onglets").addEventListener("keydown", (e) => {
+    const i = onglets.indexOf(document.activeElement);
+    if (i < 0) return;
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const n = (i + (e.key === "ArrowRight" ? 1 : -1) + onglets.length) % onglets.length;
+    montrer(onglets[n].id.replace("onglet-", ""));
+    onglets[n].focus();
+  });
+  for (const b of onglets) b.addEventListener("click", () => montrer(b.id.replace("onglet-", "")));
+
+  const registre = [];
+  function enregistrerOnglet(def) { registre.push({ actif: true, ...def }); }
+  enregistrerOnglet({ id: "explication", titre: "Explication", actif: true });
+  enregistrerOnglet({ id: "application", titre: "Ciel", actif: true });
+  enregistrerOnglet({ id: "mise-en-situation", titre: "Mission", actif: true });
+  enregistrerOnglet({ id: "self-test", titre: "Quiz", actif: false });
+
+  const CORPS = [
+    { id: "sun", nom: "Soleil", genre: "etoile", type: "Étoile", r: 2.55, orbite: 0, parent: null, vitesse: 0, spin: 0.15, phase: 0, tilt: 0, couleur: [1, 0.88, 0.66], annee: "Les planètes tournent autour de lui", ligne: "Une énorme boule de gaz très chaud. Il produit la lumière qui éclaire toutes les planètes.", note: "Sa lumière met environ 8 minutes pour arriver jusqu'à la Terre." },
+    { id: "mercury", nom: "Mercure", genre: "planete", type: "Planète rocheuse", r: 0.28, orbite: 6.6, parent: null, vitesse: 0.62, spin: 0.25, phase: 0.4, tilt: 0.01, couleur: [0.72, 0.69, 0.66], annee: "Environ 88 jours terrestres", ligne: "La plus proche du Soleil. Presque pas d'air : brûlante au soleil, glaciale à l'ombre.", note: "Dans ce modèle elle est agrandie, sinon on ne la verrait pas." },
+    { id: "venus", nom: "Vénus", genre: "planete", type: "Planète rocheuse", r: 0.46, orbite: 9.2, parent: null, vitesse: 0.42, spin: -0.08, phase: 1.7, tilt: 0.05, couleur: [0.9, 0.76, 0.48], annee: "Environ 225 jours terrestres", ligne: "Presque aussi grosse que la Terre, mais couverte de nuages très épais. C'est la planète la plus chaude.", note: "Elle tourne sur elle-même dans l'autre sens." },
+    { id: "earth", nom: "Terre", genre: "planete", type: "Planète rocheuse", r: 0.5, orbite: 12.2, parent: null, vitesse: 0.28, spin: 0.9, phase: 2.5, tilt: 23.4 * Math.PI / 180, couleur: [0.42, 0.64, 0.85], annee: "Environ 365 jours", ligne: "Notre maison. De l'eau liquide, de l'air, et la vie. Elle tourne sur elle-même en environ 24 heures : c'est un jour.", note: "Elle est un peu penchée. Ce n'est pas la distance au Soleil qui fait les saisons, c'est surtout cette inclinaison." },
+    { id: "moon", nom: "Lune", genre: "lune", type: "Satellite de la Terre", r: 0.16, orbite: 1.15, parent: "earth", vitesse: 2.1, spin: 2.1, phase: 0.2, tilt: 0.09, couleur: [0.84, 0.82, 0.8], annee: "Environ 27 jours autour de la Terre", ligne: "Ce n'est pas une planète. Elle tourne autour de la Terre, et la Terre l'emmène autour du Soleil.", note: "La face éclairée par le Soleil est le jour lunaire." },
+    { id: "mars", nom: "Mars", genre: "planete", type: "Planète rocheuse", r: 0.34, orbite: 15.6, parent: null, vitesse: 0.2, spin: 0.85, phase: 4.1, tilt: 0.44, couleur: [0.82, 0.48, 0.32], annee: "Environ 1 an et 11 mois", ligne: "La planète rouge, à cause de la rouille de son sol.", note: "Entre Mars et Jupiter, les petits points sont la ceinture d'astéroïdes." },
+    { id: "jupiter", nom: "Jupiter", genre: "planete", type: "Géante gazeuse", r: 1.32, orbite: 22.4, parent: null, vitesse: 0.11, spin: 1.6, phase: 0.9, tilt: 0.05, couleur: [0.88, 0.75, 0.6], annee: "Environ 12 années terrestres", ligne: "La plus grosse planète. La tache rouge est une tempête plus grande que la Terre.", note: "Un jour y dure environ 10 heures." },
+    { id: "saturn", nom: "Saturne", genre: "planete", type: "Géante gazeuse", r: 1.1, orbite: 29.2, parent: null, vitesse: 0.075, spin: 1.45, phase: 3.3, tilt: 26.7 * Math.PI / 180, couleur: [0.9, 0.83, 0.63], annee: "Environ 29 années terrestres", ligne: "Connue pour ses anneaux, faits de morceaux de glace et de roche.", note: "Les anneaux sont très larges, mais très fins." },
+    { id: "uranus", nom: "Uranus", genre: "planete", type: "Géante de glace", r: 0.74, orbite: 35.6, parent: null, vitesse: 0.05, spin: 0.7, phase: 5.2, tilt: 98 * Math.PI / 180, couleur: [0.72, 0.88, 0.89], annee: "Environ 84 années terrestres", ligne: "Bleu-vert et très froide. Elle roule presque sur son orbite.", note: "Son axe est sur le côté." },
+    { id: "neptune", nom: "Neptune", genre: "planete", type: "Géante de glace", r: 0.72, orbite: 42.2, parent: null, vitesse: 0.038, spin: 0.75, phase: 1.2, tilt: 0.49, couleur: [0.44, 0.56, 0.88], annee: "Environ 165 années terrestres", ligne: "La plus éloignée des huit planètes. Très froide, avec des vents très violents.", note: "Même accélérée, elle avance bien plus lentement que Mercure." }
+  ];
+  const PAR = Object.fromEntries(CORPS.map((c) => [c.id, c]));
+  const COURS = [
+    { titre: "Le Soleil", texte: "Au centre, une étoile. Elle produit sa lumière. Les planètes ne brillent pas toutes seules : elles renvoient la lumière du Soleil.", indice: "Huit planètes tournent autour de lui, toutes dans le même sens.", voir: "Voir le Soleil", focus: "sun", pause: false },
+    { titre: "Huit planètes", texte: "Dans l'ordre, en partant du Soleil : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune.", indice: "Aide-mémoire : Mon Vieux, Tu M'as Jeté Sur Une Navette. Pluton n'est pas la neuvième planète.", voir: "Voir l'ensemble", focus: null, pause: false },
+    { titre: "Jour et nuit", texte: "La Terre tourne sur elle-même en environ 24 heures. Ce tour s'appelle la rotation. La face tournée vers le Soleil, c'est le jour. L'autre face, c'est la nuit.", indice: "Le Soleil ne s'éteint pas. On est juste du côté qui n'est pas éclairé.", voir: "Mettre la Terre en pause", focus: "earth", pause: true },
+    { titre: "Une année", texte: "Une année, c'est le tour de la Terre autour du Soleil : environ 365 jours. Ce tour s'appelle la révolution.", indice: "L'été ne veut pas dire « plus près du Soleil ». La Terre est un peu penchée.", voir: "Suivre la Terre", focus: "earth", pause: false },
+    { titre: "La Lune", texte: "La Lune n'est pas une planète. C'est le satellite de la Terre : elle tourne autour d'elle.", indice: "Un tour de Lune autour de la Terre dure environ 27 jours.", voir: "Voir la Lune", focus: "moon", pause: false },
+    { titre: "Plus loin, plus long", texte: "Plus une planète est loin, plus son tour est long. Accélère : Mercure finit plusieurs tours pendant que Neptune avance à peine.", indice: "Entre Mars et Jupiter, des astéroïdes. Saturne a des anneaux de glace et de roche.", voir: "Comparer Neptune", focus: "neptune", pause: false }
+  ];
+  const QUIZ = [
+    { q: "Combien de planètes tournent autour du Soleil ?", choix: ["7", "8", "9", "12"], bonne: 1, pourquoi: "Il y a 8 planètes. Pluton est une planète naine." },
+    { q: "Comment s'appelle le chemin d'une planète autour du Soleil ?", choix: ["Une orbite", "Un cratère", "Une éclipse", "Un satellite"], bonne: 0, pourquoi: "L'orbite est le chemin suivi autour du Soleil." },
+    { q: "Pourquoi y a-t-il le jour et la nuit sur Terre ?", choix: ["La Terre tourne sur elle-même", "Le Soleil s'éteint la nuit", "La Lune cache le Soleil chaque soir", "La Terre s'arrête"], bonne: 0, pourquoi: "En environ 24 heures, la Terre montre une autre face au Soleil." },
+    { q: "Quelle planète a de grands anneaux ?", choix: ["Mars", "Vénus", "Saturne", "Mercure"], bonne: 2, pourquoi: "Les anneaux de Saturne sont faits de glace et de roche." },
+    { q: "Le Soleil est…", choix: ["une planète", "une étoile", "une lune", "une comète"], bonne: 1, pourquoi: "Le Soleil est une étoile : il produit sa propre lumière." }
+  ];
+
+  const pos = { x: 0, y: 0, z: 0 };
+  function placer(id, temps) {
+    const b = PAR[id];
+    if (b.parent) {
+      placer(b.parent, temps);
+      const a = b.phase + temps * b.vitesse;
+      pos.x += Math.cos(a) * b.orbite;
+      pos.z += Math.sin(a) * b.orbite;
+      return;
+    }
+    if (!b.orbite) { pos.x = 0; pos.y = 0; pos.z = 0; return; }
+    const a = b.phase + temps * b.vitesse;
+    pos.x = Math.cos(a) * b.orbite;
+    pos.y = 0;
+    pos.z = Math.sin(a) * b.orbite;
+  }
+
+  let temps = 0;
+  let pause = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let vitesseSim = 1;
+  let pistes = true;
+  let noms = true;
+  let selection = null;
+  let etape = 0;
+  let coursOuvert = false;
+
+  const pauseBtn = document.getElementById("pause");
+  const motPause = document.getElementById("mot-pause");
+  const fil = document.getElementById("fil");
+  function majPause() {
+    pauseBtn.textContent = pause ? "Lecture" : "Pause";
+    pauseBtn.setAttribute("aria-pressed", pause ? "true" : "false");
+    motPause.hidden = !pause;
+  }
+  pauseBtn.addEventListener("click", () => { pause = !pause; majPause(); });
+  majPause();
+  document.addEventListener("keydown", (e) => {
+    if (e.code !== "Space") return;
+    const t = e.target;
+    if (t && (t.closest("button, a, input, textarea, summary, [role=tab]"))) return;
+    e.preventDefault();
+    pause = !pause;
+    majPause();
+  });
+
+  function sliderVers(v) { return 0.25 * Math.pow(40, Math.min(100, Math.max(0, v)) / 100); }
+  document.getElementById("vitesse").addEventListener("input", (e) => { vitesseSim = sliderVers(Number(e.target.value)); });
+  vitesseSim = sliderVers(38);
+  document.getElementById("pistes").addEventListener("click", (e) => {
+    pistes = !pistes;
+    e.currentTarget.setAttribute("aria-pressed", pistes ? "true" : "false");
+    e.currentTarget.classList.toggle("plein", pistes);
+  });
+  document.getElementById("noms").addEventListener("click", (e) => {
+    noms = !noms;
+    e.currentTarget.setAttribute("aria-pressed", noms ? "true" : "false");
+    e.currentTarget.classList.toggle("plein", noms);
+    for (const el of document.querySelectorAll(".etiquette")) el.hidden = !noms;
+  });
+
+  const rail = document.getElementById("rail");
+  const etiquettes = document.getElementById("etiquettes");
+  for (const c of CORPS) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "pastille";
+    b.setAttribute("aria-pressed", "false");
+    const puce = document.createElement("span");
+    puce.className = "puce";
+    puce.style.setProperty("--c", "rgb(" + c.couleur.map((x) => Math.round(x * 255)).join(",") + ")");
+    b.append(puce, document.createTextNode(c.nom));
+    b.addEventListener("click", () => choisir(c.id));
+    rail.append(b);
+    const lab = document.createElement("button");
+    lab.type = "button";
+    lab.className = "etiquette";
+    lab.dataset.id = c.id;
+    lab.textContent = c.nom;
+    lab.addEventListener("click", () => choisir(c.id));
+    etiquettes.append(lab);
+  }
+
+  const carte = document.getElementById("carte");
+  let distCible = null;
+  function choisir(id) {
+    selection = id;
+    const c = id ? PAR[id] : null;
+    carte.hidden = !c;
+    if (c) {
+      document.getElementById("carte-type").textContent = c.type;
+      document.getElementById("carte-nom").textContent = c.nom;
+      document.getElementById("carte-ligne").textContent = c.ligne;
+      document.getElementById("carte-annee").textContent = c.annee;
+      document.getElementById("carte-note").textContent = c.note;
+      document.getElementById("carte-jour").hidden = id !== "earth";
+      distCible = Math.max(6, c.r * 8 + 4);
+    }
+    for (const b of rail.children) b.setAttribute("aria-pressed", b.textContent === (c && c.nom) ? "true" : "false");
+    for (const lab of etiquettes.children) lab.dataset.on = lab.dataset.id === id ? "true" : "false";
+    if (coursOuvert) fil.textContent = "Cours · " + (etape + 1) + "/" + COURS.length + " · " + COURS[etape].titre;
+  }
+  function ensemble() {
+    selection = null;
+    carte.hidden = true;
+    distCible = 78;
+    for (const b of rail.children) b.setAttribute("aria-pressed", "false");
+  }
+  document.getElementById("ensemble").addEventListener("click", ensemble);
+  document.getElementById("carte-retour").addEventListener("click", ensemble);
+
+  const voile = document.getElementById("voile-cours");
+  const pas = document.getElementById("cours-pas");
+  for (let i = 0; i < COURS.length; i++) {
+    const m = document.createElement("i");
+    pas.append(m);
+  }
+  function dessinerCours() {
+    const item = COURS[etape];
+    document.getElementById("cours-kicker").textContent = "Cours · CM1 · CM2 · 6e · " + (etape + 1) + "/" + COURS.length;
+    document.getElementById("cours-titre").textContent = item.titre;
+    document.getElementById("cours-texte").textContent = item.texte;
+    document.getElementById("cours-indice").textContent = item.indice;
+    document.getElementById("cours-voir").textContent = item.voir;
+    document.getElementById("cours-avant").disabled = etape === 0;
+    document.getElementById("cours-suite").textContent = etape === COURS.length - 1 ? "Quiz" : "Suite";
+    [...pas.children].forEach((m, i) => m.classList.toggle("on", i <= etape));
+    fil.textContent = "Cours · " + (etape + 1) + "/" + COURS.length + " · " + item.titre;
+  }
+  function ouvrirCours() { coursOuvert = true; voile.hidden = false; dessinerCours(); }
+  function fermerCours() { voile.hidden = true; }
+  document.getElementById("ouvrir-cours").addEventListener("click", ouvrirCours);
+  document.getElementById("cours-fermer").addEventListener("click", fermerCours);
+  voile.addEventListener("click", (e) => { if (e.target === voile) fermerCours(); });
+  document.getElementById("cours-avant").addEventListener("click", () => { if (etape > 0) { etape -= 1; dessinerCours(); } });
+  document.getElementById("cours-suite").addEventListener("click", () => {
+    if (etape < COURS.length - 1) { etape += 1; dessinerCours(); return; }
+    fermerCours();
+    montrer("mise-en-situation");
+    document.getElementById("quiz").scrollIntoView({ block: "start" });
+  });
+  document.getElementById("cours-voir").addEventListener("click", () => {
+    const item = COURS[etape];
+    coursOuvert = true;
+    pause = item.pause;
+    majPause();
+    if (item.focus) choisir(item.focus);
+    else ensemble();
+    fermerCours();
+    dessinerCours();
+  });
+
+  const quizRacine = document.getElementById("quiz");
+  const CLE = "systeme-solaire-best-v1";
+  let qIndex = 0, score = 0, choisi = null;
+  function quiz() {
+    quizRacine.replaceChildren();
+    if (qIndex >= QUIZ.length) {
+      const meilleur = Math.max(score, Number(stockage.local.lire(CLE) || 0));
+      stockage.local.ecrire(CLE, String(meilleur));
+      const p = document.createElement("p");
+      p.textContent = score + " / " + QUIZ.length + ". Meilleur score sur cet appareil : " + meilleur + ".";
+      const encore = document.createElement("button");
+      encore.type = "button";
+      encore.className = "bouton plein";
+      encore.textContent = "Recommencer";
+      encore.addEventListener("click", () => { qIndex = 0; score = 0; choisi = null; quiz(); });
+      quizRacine.append(p, encore);
+      return;
+    }
+    const q = QUIZ[qIndex];
+    const titre = document.createElement("p");
+    titre.textContent = (qIndex + 1) + " / " + QUIZ.length + " — " + q.q;
+    const boite = document.createElement("div");
+    boite.className = "choix";
+    q.choix.forEach((texte, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = texte;
+      b.addEventListener("click", () => {
+        if (choisi !== null) return;
+        choisi = i;
+        if (i === q.bonne) score += 1;
+        for (const autre of boite.children) autre.disabled = true;
+        boite.children[q.bonne].classList.add("bonne");
+        if (i !== q.bonne) b.classList.add("ratee");
+        const pourquoi = document.createElement("p");
+        pourquoi.className = "note";
+        pourquoi.textContent = q.pourquoi;
+        const suite = document.createElement("button");
+        suite.type = "button";
+        suite.className = "bouton plein";
+        suite.textContent = qIndex === QUIZ.length - 1 ? "Voir le score" : "Question suivante";
+        suite.addEventListener("click", () => { qIndex += 1; choisi = null; quiz(); });
+        quizRacine.append(pourquoi, suite);
+      });
+      boite.append(b);
+    });
+    quizRacine.append(titre, boite);
+  }
+  quiz();
+
+  const canvas = document.getElementById("ciel");
+  const gl = canvas.getContext("webgl", { antialias: true, alpha: false });
+  if (!gl) document.getElementById("secours").hidden = false;
+
+  function ident(o) { o.set([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]); return o; }
+  function mul(o, a, b) {
+    for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) {
+      o[c * 4 + r] = a[r] * b[c * 4] + a[4 + r] * b[c * 4 + 1] + a[8 + r] * b[c * 4 + 2] + a[12 + r] * b[c * 4 + 3];
+    }
+    return o;
+  }
+  function perspective(o, fovy, aspect, near, far) {
+    const f = 1 / Math.tan(fovy / 2);
+    o.fill(0);
+    o[0] = f / aspect; o[5] = f;
+    o[10] = (far + near) / (near - far); o[11] = -1;
+    o[14] = (2 * far * near) / (near - far);
+    return o;
+  }
+  function lookAt(o, ex, ey, ez, cx, cy, cz) {
+    let zx = ex - cx, zy = ey - cy, zz = ez - cz;
+    let len = Math.hypot(zx, zy, zz) || 1;
+    zx /= len; zy /= len; zz /= len;
+    let x0 = zz, x1 = 0, x2 = -zx;
+    len = Math.hypot(x0, x1, x2) || 1;
+    x0 /= len; x1 /= len; x2 /= len;
+    const y0 = zy * x2 - zz * x1, y1 = zz * x0 - zx * x2, y2 = zx * x1 - zy * x0;
+    o[0] = x0; o[1] = y0; o[2] = zx; o[3] = 0;
+    o[4] = x1; o[5] = y1; o[6] = zy; o[7] = 0;
+    o[8] = x2; o[9] = y2; o[10] = zz; o[11] = 0;
+    o[12] = -(x0 * ex + x1 * ey + x2 * ez);
+    o[13] = -(y0 * ex + y1 * ey + y2 * ez);
+    o[14] = -(zx * ex + zy * ey + zz * ez);
+    o[15] = 1;
+    return o;
+  }
+  function translation(o, x, y, z) { ident(o); o[12] = x; o[13] = y; o[14] = z; return o; }
+  function echelle(o, s) { ident(o); o[0] = o[5] = o[10] = s; return o; }
+  function rotY(o, a) {
+    const c = Math.cos(a), s = Math.sin(a);
+    ident(o);
+    o[0] = c; o[2] = -s; o[8] = s; o[10] = c;
+    return o;
+  }
+  function rotZ(o, a) {
+    const c = Math.cos(a), s = Math.sin(a);
+    ident(o);
+    o[0] = c; o[1] = s; o[4] = -s; o[5] = c;
+    return o;
+  }
+  function rotX(o, a) {
+    const c = Math.cos(a), s = Math.sin(a);
+    ident(o);
+    o[5] = c; o[6] = s; o[9] = -s; o[10] = c;
+    return o;
+  }
+
+  function shader(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  function programme(vs, fs) {
+    const p = gl.createProgram();
+    gl.attachShader(p, shader(gl.VERTEX_SHADER, vs));
+    gl.attachShader(p, shader(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    return p;
+  }
+
+  let prog, progLigne, sph, orbiteBuf = {}, anneau, etoiles, ceinture, halo, textures = {};
+  const cam = { yaw: 0.6, pitch: 0.42, dist: 78, x: 0, y: 4, z: 0 };
+  const P = new Float32Array(16), V = new Float32Array(16), VP = new Float32Array(16);
+  const M = new Float32Array(16), MVP = new Float32Array(16);
+  const T = new Float32Array(16), R = new Float32Array(16), S = new Float32Array(16);
+  const A = new Float32Array(16), B = new Float32Array(16);
+
+  function texture(id) {
+    const cnv = document.createElement("canvas");
+    cnv.width = 512; cnv.height = 256;
+    const ctx = cnv.getContext("2d");
+    const w = 512, h = 256;
+    const ellipse = (x, y, rx, ry, fill) => { ctx.fillStyle = fill; ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); ctx.fill(); };
+    if (id === "mercury") {
+      ctx.fillStyle = "#9a958e"; ctx.fillRect(0, 0, w, h);
+      for (let i = 0; i < 40; i++) ellipse((i * 97) % w, (i * 53) % h, 6 + (i % 5) * 4, 6 + (i % 4) * 3, i % 2 ? "#6e6a64" : "#c4bfb6");
+    } else if (id === "venus") {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, "#f0d7a0"); g.addColorStop(0.5, "#e2b86a"); g.addColorStop(1, "#c98d45");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(255,236,200,0.35)"; ctx.lineWidth = 8;
+      for (let i = 0; i < 6; i++) { ctx.beginPath(); ctx.moveTo(0, 30 + i * 36); ctx.bezierCurveTo(120, 10 + i * 36, 280, 70 + i * 28, 512, 24 + i * 40); ctx.stroke(); }
+    } else if (id === "earth") {
+      ctx.fillStyle = "#1f5f9a"; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = "#eef3f7"; ctx.fillRect(0, 0, w, 28); ctx.fillRect(0, h - 30, w, 30);
+      ellipse(120, 110, 70, 48, "#3f8f55"); ellipse(180, 150, 46, 34, "#2f7a45");
+      ellipse(300, 100, 54, 36, "#d2c48a"); ellipse(340, 150, 70, 40, "#3c8a50");
+      ellipse(430, 120, 28, 40, "#347848"); ellipse(70, 170, 24, 16, "#d8d2b0");
+      ellipse(200, 80, 50, 16, "rgba(255,255,255,0.33)"); ellipse(380, 70, 64, 14, "rgba(255,255,255,0.25)");
+    } else if (id === "moon") {
+      ctx.fillStyle = "#c8c4bc"; ctx.fillRect(0, 0, w, h);
+      for (let i = 0; i < 28; i++) ellipse((i * 80) % w, (i * 47) % h, 10 + (i % 6) * 3, 9 + (i % 4) * 3, "#8e8a84");
+    } else if (id === "mars") {
+      ctx.fillStyle = "#c45a32"; ctx.fillRect(0, 0, w, h);
+      ellipse(160, 120, 80, 40, "#9a3e24"); ellipse(320, 150, 90, 36, "#a84830");
+      ctx.fillStyle = "#f2efe6"; ctx.fillRect(0, 0, w, 18); ctx.fillRect(0, h - 16, w, 16);
+    } else if (id === "jupiter") {
+      ["#e7d2b0", "#c9844e", "#f3e6cf", "#a8643a", "#edd7b4", "#d7a36a", "#f7ecdc", "#b86e40"].forEach((color, i, bands) => {
+        ctx.fillStyle = color; ctx.fillRect(0, i * (h / bands.length), w, h / bands.length + 1);
+      });
+      ellipse(340, 150, 36, 22, "#c4523a");
+    } else if (id === "saturn") {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, "#f3e6c4"); g.addColorStop(1, "#c9a66a");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    } else if (id === "uranus") {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, "#d5f4f6"); g.addColorStop(1, "#7fd0d4");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    } else {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, "#8eacf0"); g.addColorStop(1, "#3556b0");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    }
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, cnv);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    return tex;
+  }
+
+  function preparer() {
+    if (!gl) return;
+    prog = programme(
+      "attribute vec3 aPos; attribute vec3 aNrm; attribute vec2 aUv; uniform mat4 uMvp; uniform mat4 uModel; varying vec3 vN; varying vec3 vW; varying vec2 vUv; void main(){ vec4 w = uModel * vec4(aPos,1.0); vW = w.xyz; vN = mat3(uModel) * aNrm; vUv = aUv; gl_Position = uMvp * vec4(aPos,1.0); }",
+      "precision mediump float; varying vec3 vN; varying vec3 vW; varying vec2 vUv; uniform vec3 uColor; uniform float uEmissive; uniform sampler2D uTex; uniform float uUseTex; void main(){ vec3 n = normalize(vN); vec3 l = normalize(-vW); float d = max(dot(n, l), 0.0); vec3 albedo = uUseTex > 0.5 ? texture2D(uTex, vUv).rgb : uColor; vec3 col = albedo * (uEmissive + (1.0 - uEmissive) * (0.16 + 0.84 * d)); gl_FragColor = vec4(col, 1.0); }"
+    );
+    progLigne = programme(
+      "attribute vec3 aPos; uniform mat4 uMvp; uniform float uTaille; void main(){ gl_Position = uMvp * vec4(aPos,1.0); gl_PointSize = uTaille; }",
+      "precision mediump float; uniform vec4 uColor; void main(){ gl_FragColor = uColor; }"
+    );
+    const lat = 28, lon = 40;
+    const positions = [], normales = [], uvs = [], indices = [];
+    for (let y = 0; y <= lat; y++) {
+      const v = y / lat, th = v * Math.PI;
+      for (let x = 0; x <= lon; x++) {
+        const u = x / lon, ph = u * Math.PI * 2;
+        const nx = Math.sin(th) * Math.cos(ph), ny = Math.cos(th), nz = Math.sin(th) * Math.sin(ph);
+        positions.push(nx, ny, nz); normales.push(nx, ny, nz); uvs.push(u, 1 - v);
+      }
+    }
+    for (let y = 0; y < lat; y++) for (let x = 0; x < lon; x++) {
+      const a = y * (lon + 1) + x, b = a + lon + 1;
+      indices.push(a, b, a + 1, b, b + 1, a + 1);
+    }
+    sph = { n: indices.length };
+    sph.pos = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, sph.pos); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    sph.nrm = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, sph.nrm); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normales), gl.STATIC_DRAW);
+    sph.uv = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, sph.uv); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(uvs), gl.STATIC_DRAW);
+    sph.idx = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sph.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+    for (const c of CORPS) if (c.id !== "sun") textures[c.id] = texture(c.id);
+    for (const c of CORPS) if (c.orbite && !c.parent) {
+      const n = 128, arr = new Float32Array((n + 1) * 3);
+      for (let i = 0; i <= n; i++) {
+        const a = (i / n) * Math.PI * 2;
+        arr[i * 3] = Math.cos(a) * c.orbite; arr[i * 3 + 2] = Math.sin(a) * c.orbite;
+      }
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, arr, gl.STATIC_DRAW);
+      orbiteBuf[c.id] = { buf, n: n + 1 };
+    }
+    const ring = [];
+    const seg = 96;
+    for (let i = 0; i <= seg; i++) {
+      const a = (i / seg) * Math.PI * 2;
+      ring.push(Math.cos(a) * 1.45, 0, Math.sin(a) * 1.45, Math.cos(a) * 2.35, 0, Math.sin(a) * 2.35);
+    }
+    anneau = { buf: gl.createBuffer(), n: (seg + 1) * 2 };
+    gl.bindBuffer(gl.ARRAY_BUFFER, anneau.buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(ring), gl.STATIC_DRAW);
+    const rand = (() => { let s = 42; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; })();
+    const et = new Float32Array(900);
+    for (let i = 0; i < 300; i++) {
+      const r = 80 + rand() * 160, th = rand() * Math.PI * 2, ph = Math.acos(2 * rand() - 1);
+      et[i * 3] = r * Math.sin(ph) * Math.cos(th);
+      et[i * 3 + 1] = r * Math.cos(ph);
+      et[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th);
+    }
+    etoiles = { buf: gl.createBuffer(), n: 300 };
+    gl.bindBuffer(gl.ARRAY_BUFFER, etoiles.buf);
+    gl.bufferData(gl.ARRAY_BUFFER, et, gl.STATIC_DRAW);
+    ceinture = { n: 160, graine: [], buf: gl.createBuffer(), data: new Float32Array(160 * 3) };
+    for (let i = 0; i < ceinture.n; i++) ceinture.graine.push({ a: (i / ceinture.n) * Math.PI * 2, r: 18.2 + rand() * 2.1, y: (rand() - 0.5) * 0.45, sp: 0.04 + rand() * 0.03 });
+    gl.bindBuffer(gl.ARRAY_BUFFER, ceinture.buf);
+    gl.bufferData(gl.ARRAY_BUFFER, ceinture.data, gl.DYNAMIC_DRAW);
+    const glow = document.createElement("canvas");
+    glow.width = glow.height = 128;
+    const gctx = glow.getContext("2d");
+    const grd = gctx.createRadialGradient(64, 64, 4, 64, 64, 62);
+    grd.addColorStop(0, "rgba(255,244,220,0.95)");
+    grd.addColorStop(0.35, "rgba(255,180,90,0.35)");
+    grd.addColorStop(1, "rgba(255,150,60,0)");
+    gctx.fillStyle = grd; gctx.fillRect(0, 0, 128, 128);
+    halo = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, halo);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, glow);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(0.027, 0.031, 0.047, 1);
+  }
+
+  function attacher(p, nom, buf, taille) {
+    const loc = gl.getAttribLocation(p, nom);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, taille, gl.FLOAT, false, 0, 0);
+  }
+  function modele(x, y, z, tilt, spin, rayon) {
+    translation(T, x, y, z);
+    rotZ(R, tilt);
+    mul(A, T, R);
+    rotY(R, spin);
+    mul(B, A, R);
+    echelle(S, rayon);
+    mul(M, B, S);
+  }
+  function dessinerSphere(emissive, couleur, tex) {
+    gl.useProgram(prog);
+    attacher(prog, "aPos", sph.pos, 3);
+    attacher(prog, "aNrm", sph.nrm, 3);
+    attacher(prog, "aUv", sph.uv, 2);
+    mul(MVP, VP, M);
+    gl.uniformMatrix4fv(gl.getUniformLocation(prog, "uMvp"), false, MVP);
+    gl.uniformMatrix4fv(gl.getUniformLocation(prog, "uModel"), false, M);
+    gl.uniform3fv(gl.getUniformLocation(prog, "uColor"), couleur);
+    gl.uniform1f(gl.getUniformLocation(prog, "uEmissive"), emissive);
+    gl.uniform1f(gl.getUniformLocation(prog, "uUseTex"), tex ? 1 : 0);
+    if (tex) { gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tex); gl.uniform1i(gl.getUniformLocation(prog, "uTex"), 0); }
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sph.idx);
+    gl.drawElements(gl.TRIANGLES, sph.n, gl.UNSIGNED_SHORT, 0);
+  }
+  function lignes(buf, n, mode, couleur, taille) {
+    gl.useProgram(progLigne);
+    attacher(progLigne, "aPos", buf, 3);
+    gl.uniformMatrix4fv(gl.getUniformLocation(progLigne, "uMvp"), false, VP);
+    gl.uniform4fv(gl.getUniformLocation(progLigne, "uColor"), couleur);
+    gl.uniform1f(gl.getUniformLocation(progLigne, "uTaille"), taille || 1);
+    gl.drawArrays(mode, 0, n);
+  }
+
+  let largeur = 1, hauteur = 1;
+  function taille() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    largeur = Math.max(1, rect.width);
+    hauteur = Math.max(1, rect.height);
+    canvas.width = Math.round(largeur * dpr);
+    canvas.height = Math.round(hauteur * dpr);
+    if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  new ResizeObserver(taille).observe(canvas.parentElement);
+
+  const pointeurs = new Map();
+  let geste = null;
+  canvas.addEventListener("pointerdown", (e) => {
+    canvas.setPointerCapture(e.pointerId);
+    pointeurs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    geste = { x: e.clientX, y: e.clientY, bouge: false, dist0: cam.dist };
+  });
+  canvas.addEventListener("pointermove", (e) => {
+    if (!pointeurs.has(e.pointerId)) return;
+    const avant = pointeurs.get(e.pointerId);
+    pointeurs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointeurs.size === 2) {
+      const pts = [...pointeurs.values()];
+      const d = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      if (!geste.pince) geste.pince = d;
+      cam.dist = Math.min(140, Math.max(6, geste.dist0 * (geste.pince / d)));
+      distCible = null;
+      return;
+    }
+    const dx = e.clientX - avant.x, dy = e.clientY - avant.y;
+    if (Math.hypot(e.clientX - geste.x, e.clientY - geste.y) > 6) geste.bouge = true;
+    cam.yaw -= dx * 0.005;
+    cam.pitch = Math.max(-1.15, Math.min(1.15, cam.pitch - dy * 0.005));
+  });
+  function finPointeur(e) {
+    pointeurs.delete(e.pointerId);
+    if (!geste || geste.bouge || pointeurs.size) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+    let meilleur = null, dist = 28;
+    for (const c of CORPS) {
+      placer(c.id, temps);
+      const ecran = projeter(pos.x, pos.y, pos.z);
+      if (!ecran) continue;
+      const d = Math.hypot(ecran.x - x, ecran.y - y);
+      if (d < dist) { dist = d; meilleur = c.id; }
+    }
+    if (meilleur) choisir(meilleur);
+  }
+  canvas.addEventListener("pointerup", finPointeur);
+  canvas.addEventListener("pointercancel", (e) => pointeurs.delete(e.pointerId));
+  canvas.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    cam.dist = Math.min(140, Math.max(6, cam.dist * (1 + e.deltaY * 0.001)));
+    distCible = null;
+  }, { passive: false });
+
+  function projeter(x, y, z) {
+    const v = mulVec(VP, x, y, z);
+    if (v[3] <= 0) return null;
+    return { x: (v[0] / v[3] * 0.5 + 0.5) * largeur, y: (-v[1] / v[3] * 0.5 + 0.5) * hauteur, z: v[2] / v[3] };
+  }
+  function mulVec(m, x, y, z) {
+    const w = m[3] * x + m[7] * y + m[11] * z + m[15];
+    return [
+      m[0] * x + m[4] * y + m[8] * z + m[12],
+      m[1] * x + m[5] * y + m[9] * z + m[13],
+      m[2] * x + m[6] * y + m[10] * z + m[14],
+      w
+    ];
+  }
+
+  let dernier = performance.now();
+  function image(now) {
+    const dt = Math.min(0.05, (now - dernier) / 1000);
+    dernier = now;
+    if (!pause) temps += dt * vitesseSim;
+    if (gl && !document.getElementById("panneau-application").hidden) {
+      let cibleX = 0, cibleY = 0, cibleZ = 0;
+      if (selection) {
+        placer(selection, temps);
+        cibleX = pos.x; cibleY = pos.y; cibleZ = pos.z;
+      }
+      cam.x += (cibleX - cam.x) * 0.08;
+      cam.y += (cibleY - cam.y) * 0.08;
+      cam.z += (cibleZ - cam.z) * 0.08;
+      if (distCible !== null) {
+        cam.dist += (distCible - cam.dist) * 0.08;
+        if (Math.abs(distCible - cam.dist) < 0.2) distCible = null;
+      }
+      const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+      const ex = cam.x + Math.cos(cam.yaw) * cp * cam.dist;
+      const ey = cam.y + sp * cam.dist;
+      const ez = cam.z + Math.sin(cam.yaw) * cp * cam.dist;
+      perspective(P, 0.7, largeur / hauteur, 0.08, 500);
+      lookAt(V, ex, ey, ez, cam.x, cam.y, cam.z);
+      mul(VP, P, V);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.disable(gl.DEPTH_TEST);
+      lignes(etoiles.buf, etoiles.n, gl.POINTS, [0.85, 0.88, 0.93, 0.9], 1.6);
+      if (pistes) for (const id of Object.keys(orbiteBuf)) lignes(orbiteBuf[id].buf, orbiteBuf[id].n, gl.LINE_STRIP, [0.72, 0.76, 0.82, 0.45], 1);
+      for (let i = 0; i < ceinture.n; i++) {
+        const g = ceinture.graine[i];
+        const a = g.a + temps * g.sp;
+        ceinture.data[i * 3] = Math.cos(a) * g.r;
+        ceinture.data[i * 3 + 1] = g.y;
+        ceinture.data[i * 3 + 2] = Math.sin(a) * g.r;
+      }
+      gl.bindBuffer(gl.ARRAY_BUFFER, ceinture.buf);
+      gl.bufferSubData(gl.ARRAY_BUFFER, 0, ceinture.data);
+      lignes(ceinture.buf, ceinture.n, gl.POINTS, [0.62, 0.58, 0.52, 0.9], 2.2);
+      gl.enable(gl.DEPTH_TEST);
+      for (const c of CORPS) {
+        placer(c.id, temps);
+        const x = pos.x, y = pos.y, z = pos.z;
+        modele(x, y, z, c.tilt, temps * c.spin, c.r);
+        dessinerSphere(c.id === "sun" ? 1 : 0, c.couleur, textures[c.id]);
+        if (c.id === "saturn") {
+          translation(T, x, y, z);
+          rotZ(R, c.tilt);
+          mul(A, T, R);
+          echelle(S, c.r);
+          mul(M, A, S);
+          gl.useProgram(progLigne);
+          attacher(progLigne, "aPos", anneau.buf, 3);
+          mul(MVP, VP, M);
+          gl.uniformMatrix4fv(gl.getUniformLocation(progLigne, "uMvp"), false, MVP);
+          gl.uniform4fv(gl.getUniformLocation(progLigne, "uColor"), [0.9, 0.82, 0.68, 0.85]);
+          gl.uniform1f(gl.getUniformLocation(progLigne, "uTaille"), 1);
+          gl.enable(gl.BLEND);
+          gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+          gl.depthMask(false);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, anneau.n);
+          gl.depthMask(true);
+          gl.disable(gl.BLEND);
+        }
+      }
+      if (noms) {
+        const places = [];
+        for (const c of CORPS) {
+          placer(c.id, temps);
+          const ecran = projeter(pos.x, pos.y + c.r + 0.35, pos.z);
+          const el = etiquettes.querySelector('[data-id="' + c.id + '"]');
+          if (!el) continue;
+          if (!ecran || ecran.z > 1) { el.style.opacity = "0"; continue; }
+          let y = ecran.y;
+          for (const autre of places) if (Math.abs(autre.x - ecran.x) < 54 && Math.abs(autre.y - y) < 18) y = autre.y - 18;
+          places.push({ x: ecran.x, y });
+          el.style.opacity = "1";
+          el.style.left = ecran.x + "px";
+          el.style.top = y + "px";
+        }
+      }
+    }
+    requestAnimationFrame(image);
+  }
+
+  preparer();
+  taille();
+  requestAnimationFrame(image);
+})();
+</script>
+</body>
+</html>
