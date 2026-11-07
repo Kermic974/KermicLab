@@ -37,6 +37,32 @@ export async function prendreInstantane(cf, { worker, projet }) {
   };
 }
 
+const NOM = /^[a-z0-9][a-z0-9-]{0,62}$/;
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * Valide un instantané relu depuis le disque avant tout appel : noms attendus (Worker et projet Pages de ce déploiement),
+ * identifiants au format UUID, pourcentages entre 0 et 100 dont la somme vaut 100. Rien d'autre n'est transmis.
+ */
+export function validerInstantane(instantane, { worker, projet }) {
+  const valide = { worker: null, pages: null };
+  if (instantane?.worker) {
+    const { nom, versions } = instantane.worker;
+    if (nom !== worker || !NOM.test(nom)) throw new Error(`instantané : Worker inattendu « ${nom} »`);
+    if (!Array.isArray(versions) || !versions.length || versions.some((v) => !UUID.test(v?.version_id) ||
+        typeof v.percentage !== "number" || v.percentage <= 0 || v.percentage > 100) ||
+        Math.abs(versions.reduce((t, v) => t + v.percentage, 0) - 100) > 1e-9) throw new Error("instantané : versions du Worker invalides");
+    valide.worker = { nom, versions: versions.map(({ version_id, percentage }) => ({ version_id, percentage })) };
+  }
+  if (instantane?.pages) {
+    const { projet: p, deploiement } = instantane.pages;
+    if (p !== projet || !NOM.test(p)) throw new Error(`instantané : projet Pages inattendu « ${p} »`);
+    if (!UUID.test(deploiement)) throw new Error("instantané : identifiant de déploiement Pages invalide");
+    valide.pages = { projet: p, deploiement };
+  }
+  return valide;
+}
+
 /** Rétablit l'instantané : redéploie les versions du Worker, puis restaure le déploiement Pages de production. */
 export async function retablir(cf, instantane) {
   const faits = [];
@@ -120,7 +146,8 @@ async function main() {
     await writeFile(fichier, `${JSON.stringify(instantane, null, 2)}\n`);
     console.log(`Instantané : ${JSON.stringify(instantane)}`);
   } else if (commande === "retour") {
-    const faits = await retablir(cf, JSON.parse(await readFile(fichier, "utf8")));
+    const attendus = { worker: process.env.KERMICLAB_WORKER ?? "kermiclab-api", projet: process.env.CLOUDFLARE_PAGES_PROJECT || "kermiclab" };
+    const faits = await retablir(cf, validerInstantane(JSON.parse(await readFile(fichier, "utf8")), attendus));
     console.log(faits.length ? `Retour arrière effectué : ${faits.join(" ; ")}` : "::warning::Instantané vide : rien à rétablir.");
   } else {
     throw new Error(`commande inconnue : ${commande}`);

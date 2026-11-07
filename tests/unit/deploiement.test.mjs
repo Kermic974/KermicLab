@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { clientCloudflare, prendreInstantane, retablir, testerFumee, fumeeAvecReprises } from "../../scripts/deploiement.mjs";
+import { clientCloudflare, prendreInstantane, retablir, validerInstantane, testerFumee, fumeeAvecReprises } from "../../scripts/deploiement.mjs";
 
 // Sûreté du déploiement : instantané, test de fumée, retour arrière (issue #178). Aucun appel réseau réel.
 const API = "https://kermiclab-api.kermic.workers.dev", SITE = "https://kermiclab.online";
@@ -85,4 +85,25 @@ test("test de fumée : reprises le temps de la propagation, puis échec définit
   const toujoursKo = faussesApis({ santeKo: true }).f;
   const echecs = await fumeeAvecReprises({ api: API, site: SITE, fetch: toujoursKo }, { essais: 3, dormir: async () => {} });
   assert.deepEqual(echecs, ["API santé : HTTP 502"]);
+});
+
+test("instantané relu : validé strictement avant tout appel (noms attendus, UUID, pourcentages)", () => {
+  const attendus = { worker: "kermiclab-api", projet: "kermiclab" };
+  const uuid = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f", uuid2 = "3f1c2b6a-9d4e-4c1a-8b7e-2a5d6c7e8f90";
+  const bon = { worker: { nom: "kermiclab-api", versions: [{ version_id: uuid, percentage: 100, extra: "ignoré" }] },
+    pages: { projet: "kermiclab", deploiement: uuid2 } };
+  assert.deepEqual(validerInstantane(bon, attendus), {
+    worker: { nom: "kermiclab-api", versions: [{ version_id: uuid, percentage: 100 }] }, pages: { projet: "kermiclab", deploiement: uuid2 }
+  });
+  assert.deepEqual(validerInstantane({ worker: null, pages: null }, attendus), { worker: null, pages: null });
+  const cas = [
+    [{ worker: { ...bon.worker, nom: "autre-worker" } }, /Worker inattendu/],
+    [{ worker: { ...bon.worker, nom: "../../zones" } }, /Worker inattendu/],
+    [{ worker: { nom: "kermiclab-api", versions: [{ version_id: "pas-un-uuid", percentage: 100 }] } }, /versions du Worker invalides/],
+    [{ worker: { nom: "kermiclab-api", versions: [{ version_id: uuid, percentage: 60 }] } }, /versions du Worker invalides/],
+    [{ worker: { nom: "kermiclab-api", versions: [] } }, /versions du Worker invalides/],
+    [{ pages: { projet: "autre", deploiement: uuid2 } }, /projet Pages inattendu/],
+    [{ pages: { projet: "kermiclab", deploiement: "x/../rollback" } }, /identifiant de déploiement Pages invalide/]
+  ];
+  for (const [instantane, message] of cas) assert.throws(() => validerInstantane(instantane, attendus), message);
 });
