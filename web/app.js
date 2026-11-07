@@ -1920,13 +1920,23 @@ function chiffresModule(m) {
 
 /**
  * Activité d'une notion d'après le contrat d'événements (ADR 0025, issue #182) : exercices tentés et réussis, dont après
- * un indice, ouvertures, notion terminée. Des faits locaux, distincts des étoiles et de toute maîtrise.
+ * un indice, ouvertures, notion terminée. Des faits locaux, distincts des étoiles. La maîtrise (issue #185) en est
+ * déduite par des règles déterministes (`evenements.maitriseNotion`).
  */
 function activiteNotion(id) {
-  const r = evenements.resumerNotion(etat.evenements?.notions?.[id]);
+  const n = etat.evenements?.notions?.[id];
+  const r = evenements.resumerNotion(n);
   if (!r || (!r.tentes && !r.ouvertures)) return null;
   const bloc = element("div", { classe: "trophee-activite", attributs: { "data-activite": id } });
   bloc.append(element("p", { classe: "doux petit", cle: "activiteTitre" }));
+  const m = evenements.maitriseNotion(n, progression.jourLocal());
+  const maitrise = element("p", { classe: `maitrise maitrise-${m.etat}`, attributs: { "data-maitrise": m.etat } });
+  maitrise.append(element("strong", { texte: `${t("maitriseTitre")} : ` }), document.createTextNode(t(`maitrise-${m.etat}`)));
+  if (m.revision) {
+    const date = new Date(`${m.revision}T00:00:00`).toLocaleDateString(etat.langue, { day: "numeric", month: "long" });
+    maitrise.append(element("span", { classe: "doux petit", texte: ` · ${t(m.etat === "a-revoir" ? "maitriseRevisionDue" : "maitriseRevision", { date })}` }));
+  }
+  bloc.append(maitrise);
   const liste = element("dl", { classe: "trophees-chiffres" });
   for (const [cle, valeur] of [["activiteReussis", `${r.reussis} / ${r.tentes}`], ["activiteApresIndice", r.apresIndice], ["activiteOuvertures", r.ouvertures]]) {
     if (cle !== "activiteOuvertures" && !r.tentes) continue;

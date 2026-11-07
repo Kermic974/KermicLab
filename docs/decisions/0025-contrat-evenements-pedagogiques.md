@@ -67,7 +67,7 @@ compte local (ADR 0024) : l'étendre demandera une décision.
 « Mes trophées » (écran Progression) ajoute à la carte de chaque notion ou lab un bloc **Activité** calculé à partir de
 l'agrégat : exercices réussis / tentés, réussis après un indice, ouvertures, et « Tous les exercices réussis » quand la
 page a émis `termine`. Ce sont des faits, distincts des étoiles du pont des trophées et de toute maîtrise (issue #185).
-Le bloc se met à jour dès qu'un événement arrive si l'écran est ouvert.
+Le bloc se met à jour dès qu'un événement arrive si l'écran est ouvert. La maîtrise (issue #185) est déduite de cet agrégat : voir `docs/progression.md`, « Maîtrise par notion ».
 
 ## Conséquences
 

@@ -128,6 +128,9 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     assert.match(texte, /Réussis après un indice\s*1/);
     assert.match(texte, /Ouvertures\s*1/);
     assert.doesNotMatch(texte, /Tous les exercices réussis/, "notion non terminée");
+    // Maîtrise (issue #185) : exercices tentés, notion pas encore validée en entier → « En cours ».
+    assert.equal(await activite.locator("[data-maitrise]").getAttribute("data-maitrise"), "en-cours");
+    assert.match(texte, /Maîtrise : En cours/);
     await activite.scrollIntoViewIfNeeded();
     await capturer(page, "trophees-activite-notion");
     assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
@@ -175,6 +178,9 @@ test("événements (ADR 0025) : le cercle, page écrite à la main, émet le con
     const activite = page.locator('[data-trophee-module="trigo-cercle"] [data-activite="trigo-cercle"]');
     await activite.waitFor();
     assert.match((await activite.textContent()).replace(/\s+/g, " "), /10 \/ 10.*Tous les exercices réussis/);
+    // Tous les exercices réussis lors de la visite → « Maîtrisée », première révision dans 7 jours (issue #185).
+    assert.equal(await activite.locator("[data-maitrise]").getAttribute("data-maitrise"), "maitrisee");
+    assert.match(await activite.locator("[data-maitrise]").textContent(), /Maîtrisée · prochaine révision le/);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
 });

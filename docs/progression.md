@@ -79,6 +79,31 @@ Divulgation progressive : chaque bloc n'apparaît que s'il a quelque chose de r�
 6. **Mes badges** : obtenus, les deux plus proches (« À portée »), modules réellement lancés. Voir
    `docs/gamification.md`.
 
+## Maîtrise par notion (issue #185)
+
+Calculée localement par `maitriseNotion(n, aujourdhui)` (`web/evenements.js`) à partir de l'agrégat du contrat
+d'événements (ADR 0025), sans IA ni serveur, et affichée dans la carte de la notion de « Mes trophées ». Règles
+déterministes, appliquées dans cet ordre :
+
+| # | Condition | État |
+|---|---|---|
+| 1 | aucune activité enregistrée | non commencée |
+| 2 | au moins une **validation** (tous les exercices réussis lors d'une visite : événement `termine`) et révision due | à revoir |
+| 2 bis | au moins une validation, révision pas encore due | maîtrisée |
+| 3 | au moins un exercice tenté (une réponse) | en cours |
+| 4 | page ouverte seulement (un indice lu sans réponse ne compte pas) | découverte |
+
+- **Révision due** : aujourd'hui ≥ dernière validation + intervalle. L'intervalle dépend du nombre de validations :
+  7 jours après la première, 30 après la deuxième, 90 ensuite (`INTERVALLES_REVISION`).
+- **Réviser** : refaire la page jusqu'à « tous les exercices réussis » un autre jour compte une nouvelle validation et
+  repousse la révision suivante ; le même jour, une seule validation est comptée.
+- Les réussites après indice restent un fait affiché à part : elles ne bloquent pas la maîtrise.
+- Stockage : champs `validations` et `derniereValidation` (date du jour seulement) de chaque notion, sous la clé
+  `kermiclab:evenements`, avec le même stockage et le même effacement que la progression. Un agrégat antérieur est relu
+  sans perte : une notion déjà terminée compte une validation, datée de son dernier jour d'activité.
+- Les révisions espacées des exercices (Leitner, issue #187) et la recommandation (issue #186) s'appuieront sur ces
+  états.
+
 ## Tests
 
 - `tests/unit/temps-actif.test.mjs` : règles du moteur (horloge manuelle, déterministe).

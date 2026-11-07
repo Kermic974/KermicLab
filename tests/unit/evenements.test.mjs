@@ -45,7 +45,7 @@ test("événements : agrégation par notion et par exercice (ouvertures, indices
   const etat = suite.reduce((e, x) => enregistrer(e, x, "2026-11-07"), avant);
   assert.deepEqual(avant, etatInitial(), "fonction pure : l'état reçu n'est pas modifié");
   assert.deepEqual(etat, { v: 1, notions: { pythagore: {
-    version: "1.2.0", ouvertures: 2, dernierJour: "2026-11-07", termine: true, exercices: {
+    version: "1.2.0", ouvertures: 2, dernierJour: "2026-11-07", termine: true, validations: 1, derniereValidation: "2026-11-07", exercices: {
       "app-1": { reponses: 2, reussi: true, indice: 1, apresIndice: true },
       "app-2": { reponses: 1, reussi: true, indice: 0, apresIndice: false }
     }
@@ -81,4 +81,52 @@ test("événements : résumé affichable d'une notion pour « Mes trophées » (
     ev("indice", { exercice: "app-4", rang: 1 }) // indice affiché sans réponse : pas un exercice tenté
   ].map((brut) => normaliserEvenement(brut, "pythagore")).reduce((e, x) => enregistrer(e, x, "2026-11-07"), etatInitial());
   assert.deepEqual(resumerNotion(etat.notions.pythagore), { ouvertures: 2, tentes: 3, reussis: 2, apresIndice: 1, termine: false });
+});
+
+test("maîtrise (issue #185) : règles déterministes, de « non commencée » à « à revoir »", async () => {
+  const { maitriseNotion, ETATS_MAITRISE, INTERVALLES_REVISION } = await import("../../web/evenements.js");
+  assert.deepEqual(ETATS_MAITRISE, ["non-commencee", "decouverte", "en-cours", "maitrisee", "a-revoir"]);
+  assert.deepEqual(INTERVALLES_REVISION, [7, 30, 90]);
+  const suite = (evts, jours) => evts.map((brut) => normaliserEvenement(brut, "pythagore"))
+    .reduce((e, x, i) => enregistrer(e, x, jours?.[i] ?? "2026-11-07"), etatInitial()).notions.pythagore;
+  assert.deepEqual(maitriseNotion(undefined, "2026-11-07"), { etat: "non-commencee", revision: null });
+  assert.equal(maitriseNotion(suite([ev("demarre")]), "2026-11-07").etat, "decouverte");
+  assert.equal(maitriseNotion(suite([ev("demarre"), ev("indice", { exercice: "app-1", rang: 1 })]), "2026-11-07").etat, "decouverte",
+    "un indice lu sans réponse n'est pas un exercice tenté");
+  assert.equal(maitriseNotion(suite([ev("demarre"), ev("reponse", { exercice: "app-1", correct: false, essai: 1 })]), "2026-11-07").etat, "en-cours");
+  const validee = suite([ev("demarre"), ev("reponse", { exercice: "app-1", correct: true, essai: 1 }), ev("termine")]);
+  assert.deepEqual(maitriseNotion(validee, "2026-11-07"), { etat: "maitrisee", revision: "2026-11-14" });
+  assert.deepEqual(maitriseNotion(validee, "2026-11-13"), { etat: "maitrisee", revision: "2026-11-14" });
+  assert.deepEqual(maitriseNotion(validee, "2026-11-14"), { etat: "a-revoir", revision: "2026-11-14" }, "révision due le 7e jour");
+});
+
+test("maîtrise : une révision réussie un autre jour allonge l'intervalle (7 → 30 → 90 jours), pas le même jour", () => {
+  return import("../../web/evenements.js").then(({ maitriseNotion }) => {
+    const valider = (e, jour) => [ev("demarre"), ev("termine")].map((b) => normaliserEvenement(b, "pythagore")).reduce((x, y) => enregistrer(x, y, jour), e);
+    let etat = valider(etatInitial(), "2026-11-07");
+    etat = valider(etat, "2026-11-07");
+    assert.equal(etat.notions.pythagore.validations, 1, "même jour : une seule validation");
+    etat = valider(etat, "2026-11-15");
+    assert.deepEqual(maitriseNotion(etat.notions.pythagore, "2026-11-20"), { etat: "maitrisee", revision: "2026-12-15" });
+    etat = valider(etat, "2026-12-16");
+    assert.deepEqual(maitriseNotion(etat.notions.pythagore, "2027-03-16"), { etat: "a-revoir", revision: "2027-03-16" });
+    etat = valider(etat, "2027-03-20");
+    assert.equal(maitriseNotion(etat.notions.pythagore, "2027-06-17").revision, "2027-06-18", "plafond de 90 jours");
+  });
+});
+
+test("maîtrise : un agrégat antérieur (sans validations) est relu sans perte ; des validations incohérentes sont refusées", () => {
+  const memoire = new Map();
+  const zone = { getItem: (k) => memoire.get(k) ?? null, setItem: (k, v) => memoire.set(k, v) };
+  const ancien = { version: "1.0.0", ouvertures: 1, dernierJour: "2026-11-05", termine: true, exercices: {} };
+  memoire.set(CLE_STOCKAGE, JSON.stringify({ v: 1, notions: {
+    pythagore: ancien, fractions: { ...ancien, termine: false },
+    thales: { ...ancien, validations: 2, derniereValidation: null }, angles: { ...ancien, validations: -1, derniereValidation: "2026-11-05" }
+  } }));
+  const relu = charger(zone).notions;
+  assert.deepEqual(Object.keys(relu).sort(), ["fractions", "pythagore"]);
+  assert.equal(relu.pythagore.validations, 1);
+  assert.equal(relu.pythagore.derniereValidation, "2026-11-05");
+  assert.equal(relu.fractions.validations, 0);
+  assert.equal(relu.fractions.derniereValidation, null);
 });
