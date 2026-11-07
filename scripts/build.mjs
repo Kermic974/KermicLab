@@ -61,6 +61,7 @@ const referentiel = indicateurReferentiel(catalogue.index.maquettes);
 console.log(`Référentiel : prérequis renseignés pour ${referentiel.avecPrerequis} notion(s) sur ${referentiel.notions}.`);
 const relecture = indicateurRelecture(catalogue.index.maquettes);
 console.log(`Relecture : ${relecture.relues} notion(s) relue(s) sur ${relecture.notions}, ${relecture.aRevoir} à revoir (version modifiée depuis la relecture).`);
+console.log(`Relecture des jeux : ${relecture.jeux.relus} jeu(x) relu(s) sur ${relecture.jeux.total}, ${relecture.jeux.aRevoir} à revoir.`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
 
 /**

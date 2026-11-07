@@ -73,3 +73,32 @@ L’onglet **Mes mots** réutilise ce dictionnaire ou une liste locale éditable
 des erreurs. Il exige l’orthographe exacte (accents et ligatures), mais accepte la casse et les variantes
 d’apostrophe. Aucun son ni service distant n’est nécessaire. Les listes enregistrées utilisent une clé locale
 séparée de l’Académie ; réponses et bilan ne sont jamais persistés ni envoyés au pont des trophées.
+
+## 4. Relecture des jeux intégrés
+
+Chaque jeu est relu par un adulte, sur téléphone et sur ordinateur, avec la
+[grille de relecture jeux-v1](chantiers/validation-maquettes.md#grille-de-relecture-jeux-v1) (feuille de route, phase 0 ;
+[issue #175](https://github.com/Kermic974/trigoLab/issues/175)). La relecture se trace dans le front matter de
+`fiche.md`, comme pour une notion, avec la grille des jeux :
+
+```yaml
+relue: 2026-11-08        # date de la relecture (AAAA-MM-JJ)
+relue-version: 1.1.0     # version du jeu relue (au plus `version`)
+relue-grille: jeux-v1    # grille des jeux (la grille v1 des notions est refusée pour un jeu)
+```
+
+Le build affiche « Relecture des jeux : N jeu(x) relu(s) sur 9 ». Un jeu corrigé change de `version` (voir AGENTS.md
+§6 ter) et compte « à revoir » jusqu'à sa nouvelle relecture. Les corrections faites pendant la relecture sont résumées
+ci-dessous ; la PR de relecture, validée par le CODEOWNER, trace qui a relu.
+
+| Jeu | Version | Relu le | Corrections |
+|---|---|---|---|
+| `2048` | 1.0.0 | à relire | — |
+| `belote` | 1.0.0 | à relire | — |
+| `demineur` | 1.1.0 | à relire | — |
+| `echecs` | 1.1.0 | à relire | — |
+| `mots-croises` | 1.0.0 | à relire | — |
+| `mots-fleches` | 1.0.0 | à relire | — |
+| `pendu` | 1.1.0 | à relire | — |
+| `poker-texas-holdem` | 1.1.0 | à relire | — |
+| `sudoku` | 1.0.0 | à relire | — |

@@ -2,6 +2,7 @@
 import { execFileSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { verifierDepot } from "./verifier-versions.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const ignores = new Set(["node_modules", ".git", "dist", ".wrangler", "generated", "catalogue-prive"]);
@@ -46,6 +47,11 @@ const indexHtml = await readFile(path.join(racine, "web/index.html"), "utf8");
 for (const [, cle] of indexHtml.matchAll(/data-i18n(?:-placeholder)?="([^"]+)"/g)) {
   if (!reference.includes(cle)) erreurs.push(`web/index.html: clé i18n inconnue « ${cle} »`);
 }
+
+// Versions de la plateforme, des notions et du cercle (AGENTS.md §6 ter).
+const versions = verifierDepot(racine);
+erreurs.push(...versions.erreurs);
+if (!versions.base) console.log("Versions : branche de base introuvable, évolutions non comparées.");
 
 if (erreurs.length) { console.error(erreurs.join("\n")); process.exit(1); }
 console.log(`Lint OK (${fichiers.length} fichiers, ${langues.length} langues).`);
