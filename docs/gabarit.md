@@ -70,8 +70,8 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
   ```
   Au moins une formule ou un point clé est requis.
 - **Niveaux** : au moins 2, du plus intuitif au plus formel (collège → lycée), avec le niveau scolaire dans `niveau`. Le premier est ouvert par défaut.
-- **Exercice `qcm`** : `question`, `choix` (≥ 2), `bonne` (indice à partir de 0), `explication` (affichée après la bonne réponse), `indice` optionnel (affiché après une erreur).
-- **Exercice `nombre`** : `question`, `reponse` (nombre), `indices` (≥ 1, affichés un par erreur), `solution`, et en option `unite`, `tolerance` (ex. `0.05` pour un arrondi au dixième), `fractionIrreductible: true` (l'élève doit écrire une fraction simplifiée, ex. `3/4`). L'élève peut écrire `3,5`, `3.5` ou `7/2`.
+- **Exercice `qcm`** : `question`, `choix` (≥ 2), `bonne` (indice à partir de 0), `explication` (affichée après la bonne réponse), `indice` optionnel (affiché après une erreur), et en option `erreurs` : `[{ "choix": 1, "message": "…" }]`, une explication ciblée pour une mauvaise réponse précise (elle remplace l'indice général pour ce choix).
+- **Exercice `nombre`** : `question`, `reponse` (nombre), `indices` (≥ 1, affichés un par erreur), `solution`, et en option `unite`, `tolerance` (ex. `0.05` pour un arrondi au dixième), `fractionIrreductible: true` (l'élève doit écrire une fraction simplifiée, ex. `3/4`), et `erreurs` : `[{ "reponse": 21, "tolerance": 0.05, "message": "…" }]`, les **erreurs fréquentes** (oubli du carré, de la racine, mauvais arrondi…). Une réponse qui correspond à une erreur fréquente reçoit son explication ciblée, suivie de l'indice suivant. Le build refuse une erreur qui recouvre la bonne réponse ou une autre erreur. L'élève peut écrire `3,5`, `3.5` ou `7/2`. Exemple : `catalogue/pythagore/contenu.json`.
 - **Figures** (`application.figure.type`) :
   - `pythagore` : `a`, `b` (côtés initiaux).
   - `fraction` : `numerateur`, `denominateur`.

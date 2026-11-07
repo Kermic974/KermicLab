@@ -97,6 +97,30 @@ test("gabarit : erreurs de contenu explicites", () => {
   casse((c) => { c.niveaux[0].paragraphes = ["fetch('https://exemple.test')"]; }, /contenu interdit/);
 });
 
+test("gabarit : erreurs fréquentes (notation déterministe, issue #182) validées au build", () => {
+  const base = () => ({
+    niveaux: [{ titre: "A", niveau: "6e", paragraphes: ["x"] }, { titre: "B", niveau: "5e", paragraphes: ["y"] }],
+    application: { exercices: Array.from({ length: 3 }, () => ({ type: "qcm", question: "q", choix: ["a", "b", "c"], bonne: 0, explication: "e" })) },
+    situation: { titre: "t", histoire: ["h"], conclusion: "c", etapes: Array.from({ length: 2 }, () => ({ type: "nombre", question: "q", reponse: 15, tolerance: 0.5, indices: ["i"], solution: "s" })) }
+  });
+  const avec = (modifier) => { const c = base(); modifier(c); return c; };
+  assert.doesNotThrow(() => validerContenu(avec((c) => {
+    c.application.exercices[0].erreurs = [{ choix: 1, message: "m" }, { choix: 2, message: "n" }];
+    c.situation.etapes[0].erreurs = [{ reponse: 21, message: "m" }, { reponse: 225, tolerance: 1, message: "n" }];
+  })));
+  const casse = (modifier, motif) => assert.throws(() => validerContenu(avec(modifier)), motif);
+  casse((c) => { c.application.exercices[0].erreurs = []; }, /liste non vide/);
+  casse((c) => { c.application.exercices[0].erreurs = [{ choix: 0, message: "m" }]; }, /mauvaise réponse/);
+  casse((c) => { c.application.exercices[0].erreurs = [{ choix: 3, message: "m" }]; }, /mauvaise réponse/);
+  casse((c) => { c.application.exercices[0].erreurs = [{ choix: 1, message: "m" }, { choix: 1, message: "n" }]; }, /déjà décrit/);
+  casse((c) => { c.application.exercices[0].erreurs = [{ choix: 1, message: " " }]; }, /« message » requis/);
+  casse((c) => { c.situation.etapes[0].erreurs = [{ reponse: 15.2, message: "m" }]; }, /recouvre la bonne réponse/);
+  casse((c) => { c.situation.etapes[0].erreurs = [{ reponse: 17, tolerance: 2, message: "m" }]; }, /recouvre la bonne réponse/);
+  casse((c) => { c.situation.etapes[0].erreurs = [{ reponse: 21, message: "m" }, { reponse: 21.5, tolerance: 1, message: "n" }]; }, /recouvre erreurs\[0\]/);
+  casse((c) => { c.situation.etapes[0].erreurs = [{ reponse: "21", message: "m" }]; }, /« reponse » doit être un nombre/);
+  casse((c) => { c.situation.etapes[0].erreurs = [{ reponse: 21, tolerance: -1, message: "m" }]; }, /« tolerance » invalide/);
+});
+
 test("gabarit : la page générée respecte le contrat et neutralise le HTML du contenu", async () => {
   const fiche = lireFrontMatter(await readFile(`${racine}catalogue/pythagore/fiche.md`, "utf8"));
   const contenu = await lireJson(`${racine}catalogue/pythagore/contenu.json`);

@@ -1,6 +1,6 @@
 # ADR 0025 — Contrat d'événements pédagogiques des pages (postMessage, v1)
 
-- Date : 2026-11-07 — Statut : **proposé** (à valider par le propriétaire)
+- Date : 2026-11-07 — Statut : **accepté** (validé par le propriétaire le 2026-11-07)
 - Feuille de route : phase 1, [issue #181](https://github.com/Kermic974/trigoLab/issues/181)
 - Contexte : une page autonome n'a pas de réseau (`connect-src 'none'`) et s'affiche dans une iframe isolée (origine
   opaque) du tableau de bord. Le pont « Mes trophées » (ADR 0015) ne transmet qu'un **instantané** (étoiles, XP) : il ne

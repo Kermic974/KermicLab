@@ -31,11 +31,35 @@ function validerExercice(ex, ou) {
     exiger(Array.isArray(ex.choix) && ex.choix.length >= 2 && ex.choix.every(texteNonVide), `${ou} : au moins 2 « choix » requis`);
     exiger(Number.isInteger(ex.bonne) && ex.bonne >= 0 && ex.bonne < ex.choix.length, `${ou} : « bonne » doit être l'indice d'un choix (0 à ${ex.choix.length - 1})`);
     exiger(texteNonVide(ex.explication), `${ou} : « explication » requise (elle s'affiche après la bonne réponse)`);
+    if (ex.erreurs !== undefined) {
+      exiger(Array.isArray(ex.erreurs) && ex.erreurs.length >= 1, `${ou} : « erreurs » doit être une liste non vide`);
+      const vus = new Set();
+      ex.erreurs.forEach((e, j) => {
+        exiger(Number.isInteger(e?.choix) && e.choix >= 0 && e.choix < ex.choix.length && e.choix !== ex.bonne,
+          `${ou} erreurs[${j}] : « choix » doit être l'indice d'une mauvaise réponse`);
+        exiger(!vus.has(e.choix), `${ou} erreurs[${j}] : choix ${e.choix} déjà décrit`);
+        exiger(texteNonVide(e.message), `${ou} erreurs[${j}] : « message » requis`);
+        vus.add(e.choix);
+      });
+    }
   } else {
     exiger(typeof ex.reponse === "number" && Number.isFinite(ex.reponse), `${ou} : « reponse » doit être un nombre`);
     exiger(ex.tolerance === undefined || (typeof ex.tolerance === "number" && ex.tolerance >= 0), `${ou} : « tolerance » invalide`);
     exiger(Array.isArray(ex.indices) && ex.indices.length >= 1 && ex.indices.every(texteNonVide), `${ou} : au moins un « indices » requis`);
     exiger(texteNonVide(ex.solution), `${ou} : « solution » requise`);
+    if (ex.erreurs !== undefined) {
+      exiger(Array.isArray(ex.erreurs) && ex.erreurs.length >= 1, `${ou} : « erreurs » doit être une liste non vide`);
+      const ecart = (e) => e.tolerance ?? 1e-9;
+      ex.erreurs.forEach((e, j) => {
+        exiger(typeof e?.reponse === "number" && Number.isFinite(e.reponse), `${ou} erreurs[${j}] : « reponse » doit être un nombre`);
+        exiger(e.tolerance === undefined || (typeof e.tolerance === "number" && e.tolerance >= 0), `${ou} erreurs[${j}] : « tolerance » invalide`);
+        exiger(texteNonVide(e.message), `${ou} erreurs[${j}] : « message » requis`);
+        // Une erreur fréquente ne doit jamais recouvrir la bonne réponse, ni une autre erreur décrite.
+        exiger(Math.abs(e.reponse - ex.reponse) > ecart(e) + (ex.tolerance ?? 1e-9), `${ou} erreurs[${j}] : recouvre la bonne réponse`);
+        ex.erreurs.slice(0, j).forEach((autre, k) => exiger(Math.abs(e.reponse - autre.reponse) > ecart(e) + ecart(autre),
+          `${ou} erreurs[${j}] : recouvre erreurs[${k}]`));
+      });
+    }
   }
 }
 

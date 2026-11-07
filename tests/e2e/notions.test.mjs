@@ -76,13 +76,20 @@ test("exercices : QCM, indices progressifs, étoiles mémorisées", async () => 
   assert.match(await page.locator("#etoiles").textContent(), /★ 0 \/ 10/);
   const qcm = page.locator("[data-exercice=app-1]");
   await qcm.getByRole("button", { name: "le plus petit côté" }).click();
-  assert.match(await qcm.locator(".retour").textContent(), /Pas tout à fait/);
+  assert.match(await qcm.locator(".retour").textContent(), /l'hypoténuse est au contraire le plus long/, "erreur fréquente du QCM : explication ciblée");
   await qcm.getByRole("button", { name: "le côté opposé à l'angle droit" }).click();
   assert.match(await qcm.locator(".retour").textContent(), /\+1 étoile/);
   const calcul = page.locator("[data-exercice=app-2]");
   await calcul.locator("input").fill("21");
   await calcul.getByRole("button", { name: "Valider" }).click();
-  assert.match(await calcul.locator(".retour").textContent(), /Indice : Calcule 9² \+ 12²/);
+  assert.match(await calcul.locator(".retour").textContent(), /^Tu as additionné 9 \+ 12\..*Indice : Calcule 9² \+ 12²/,
+    "erreur fréquente (21) : explication ciblée puis l'indice");
+  await calcul.locator("input").fill("225");
+  await calcul.locator("input").press("Enter");
+  assert.match(await calcul.locator(".retour").textContent(), /^225, c'est 9² \+ 12².*Indice : 9² \+ 12² = 81/, "deuxième erreur fréquente");
+  await calcul.locator("input").fill("17");
+  await calcul.locator("input").press("Enter");
+  assert.match(await calcul.locator(".retour").textContent(), /^Pas encore/, "erreur non décrite : message général");
   await calcul.locator("input").fill("15");
   await calcul.getByRole("button", { name: "Valider" }).click();
   assert.match(await calcul.locator(".retour").textContent(), /Exact/);
