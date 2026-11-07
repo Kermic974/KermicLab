@@ -15,6 +15,7 @@ test("défauts : sans variable, la configuration reprend les valeurs historiques
   assert.equal(c.MODELE_CHAT, "claude-haiku-5-5");
   assert.equal(c.MODELE_CAHIERS, "custom/sonnet-5-5");
   assert.equal(c.MAX_TOKENS_CAHIERS, 100000);
+  assert.equal(c.CAHIERS_GENERATIONS_JOUR, 2);
   assert.deepEqual(c.SKILLS_ACTIFS, Object.keys(SKILLS));
   assert.ok(Object.isFrozen(c));
 });

@@ -164,20 +164,20 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
 }
 
 /**
- * Appel d'un alias de modèle AI Gateway (`custom/haiku` par défaut) via le binding, format chat completions,
+ * Appel d'un alias de modèle AI Gateway (`MODELE_DEFI` par défaut, `MODELE_CAHIERS` pour les cahiers) via le binding, format chat completions,
  * sortie JSON structurée. Même pseudonymisation imposée. Pas d'en-tête `cf-aig-max-attempts` : le repli
  * entre les modèles de l'alias est géré par la gateway.
  */
-export async function appelerAliasGateway(env, { system, message: brut, schema, maxTokens }) {
+export async function appelerAliasGateway(env, { system, message: brut, schema, maxTokens, cleModele = "MODELE_DEFI", nomSchema = "defis" }) {
   if (!env.AI?.run) throw new Error("binding AI absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
-  const reponse = await env.AI.run(lireConfiguration(env).MODELE_DEFI, {
+  const reponse = await env.AI.run(lireConfiguration(env)[cleModele], {
     messages: [
       { role: "system", content: system },
       { role: "user", content: message }
     ],
     max_tokens: maxTokens,
-    response_format: { type: "json_schema", json_schema: { name: "defis", strict: true, schema } }
+    response_format: { type: "json_schema", json_schema: { name: nomSchema, strict: true, schema } }
   }, {
     gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
     extraHeaders: { "cf-aig-skip-cache": "true", "cf-aig-collect-log": "false" }

@@ -13,7 +13,8 @@ export const MODULES = Object.freeze(["general", "tuteur", "defi", "cahiers"]);
 export const SKILLS = Object.freeze({
   tuteur: Object.freeze({ module: "tuteur", version: "1.0.0", prompt: "tuteur-catalogue-v1", perimetre: "catalogue-kermiclab" }),
   "cadrage-idee": Object.freeze({ module: "tuteur", version: "1.0.0", prompt: "cadrage-idee-v1", perimetre: "boite-a-idees" }),
-  "defi-express": Object.freeze({ module: "defi", version: "1.0.0", prompt: "defi-express-v1", perimetre: "catalogue-kermiclab" })
+  "defi-express": Object.freeze({ module: "defi", version: "1.0.0", prompt: "defi-express-v1", perimetre: "catalogue-kermiclab" }),
+  "constructeur-cahier": Object.freeze({ module: "cahiers", version: "1.0.0", prompt: "constructeur-cahier-v1", perimetre: "catalogue-kermiclab" })
 });
 
 const ALIAS_VALIDE = /^[A-Za-z0-9@][A-Za-z0-9@/._:-]{0,99}$/;
@@ -36,6 +37,7 @@ export const PARAMETRES = Object.freeze([
   { cle: "MAX_TOKENS_DEFI", module: "defi", type: "entier", defaut: 1500, min: 500, max: 3000 },
   // Mes cahiers : alias AI Gateway Sonnet 5.5, budget de sortie large (plafond de 128 000 tokens du modèle).
   { cle: "MODELE_CAHIERS", module: "cahiers", type: "alias", defaut: "custom/sonnet-5-5" },
+  { cle: "CAHIERS_GENERATIONS_JOUR", module: "cahiers", type: "entier", defaut: 2, min: 0, max: 5 },
   { cle: "MAX_TOKENS_CAHIERS", module: "cahiers", type: "entier", defaut: 100000, min: 1000, max: 128000 }
 ].map((p) => Object.freeze(p)));
 

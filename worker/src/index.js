@@ -9,7 +9,7 @@ import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
-import { SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
+import { SESSION_CAHIER, SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
 import { pseudonymiser } from "./pseudonymisation.js";
 import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pistesFichiers, promptCadrage, validerCadrage } from "./cadrage-idee.js";
@@ -20,6 +20,10 @@ import {
   HARNESS_DEFI, SCHEMA_DEFI, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
   messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
 } from "./defi-llm.js";
+import {
+  HARNESS_CAHIER, SCHEMA_CAHIER, generationsCahierParJour, generationsCahierUtilisees, libererGenerationCahier,
+  lireDemandeCahier, messageCahier, normaliserCahier, promptCahier, purgerCahiersLlm, reserverGenerationCahier
+} from "./cahier-llm.js";
 
 const MAX_SUGGESTIONS = 4;
 
@@ -525,6 +529,81 @@ async function traiterDefi(requete, env, ctx) {
   });
 }
 
+const cahierIaPossible = (env) => llmActive(env) && skillActif(env, "constructeur-cahier") && !!env.DB && !!env.AI?.run
+  && typeof env.LLM_SESSION_SECRET === "string" && env.LLM_SESSION_SECRET.length >= 32;
+
+/**
+ * Constructeur de cahiers : contenu rédigé par l'alias `MODELE_CAHIERS` sur les notions choisies (identifiants du
+ * catalogue uniquement). Sans IA (désactivée, quota, panne), `cahier` est null et l'interface construit le cahier
+ * à partir du catalogue seul : la création d'un cahier marche toujours.
+ */
+async function traiterCahier(requete, env, ctx) {
+  let corps;
+  try { corps = await requete.json(); } catch { return { statut: 400, donnees: { source: "aucune", raison: "demande-invalide", cahier: null } }; }
+  const langue = langueValide(corps?.langue);
+  const limite = generationsCahierParJour(env);
+  const sansIa = (raison, quota = { limite, utilisees: 0, restantes: limite }, statut = 200) => {
+    ctx.waitUntil(journaliser(env, { type: "cahier", langue, routage: "catalogue", detail: raison }));
+    return { statut, donnees: { source: "aucune", raison, cahier: null, quota } };
+  };
+  const demande = lireDemandeCahier(CATALOGUE, corps);
+  if (!demande) return sansIa("demande-invalide", undefined, 400);
+  if (corps?.utiliserLlm !== true) return sansIa("ia-inactive");
+  if (!cahierIaPossible(env)) return sansIa("ia-indisponible");
+  let session, cookie;
+  try {
+    ({ session, cookie } = await sessionSansPage(requete, env, SESSION_CAHIER));
+  } catch {
+    console.error("llm session cahier indisponible");
+    return sansIa("ia-indisponible");
+  }
+  const avecCookie = (r) => ({ ...r, entetes: cookie ? { "set-cookie": cookie } : {} });
+  let utilisees;
+  try {
+    utilisees = await reserverGenerationCahier(env, session.id, limite);
+  } catch {
+    console.error("llm quota cahier indisponible");
+    return avecCookie(sansIa("ia-indisponible"));
+  }
+  if (utilisees === null) {
+    const deja = await generationsCahierUtilisees(env, session.id).catch(() => limite);
+    return avecCookie(sansIa("quota", { limite, utilisees: deja, restantes: Math.max(0, limite - deja) }));
+  }
+  const quota = { limite, utilisees, restantes: Math.max(0, limite - utilisees) };
+  const config = lireConfiguration(env);
+  let generation, cahier = null;
+  try {
+    generation = await appelerAliasGateway(env, {
+      system: promptCahier(langue, demande.type, demande.longueur), message: messageCahier(CATALOGUE, demande, langue),
+      schema: SCHEMA_CAHIER, maxTokens: config.MAX_TOKENS_CAHIERS, cleModele: "MODELE_CAHIERS", nomSchema: "cahier"
+    });
+    if (!generation.refus) cahier = normaliserCahier(generation.contenu, demande);
+  } catch {
+    console.error("llm cahier fournisseur ou sortie invalide");
+  } finally {
+    await libererGenerationCahier(env, session.id).catch(() => console.error("llm libération cahier indisponible"));
+  }
+  if (!cahier?.sections.length) return avecCookie(sansIa(generation ? "sortie-invalide" : "ia-indisponible", quota));
+  ctx.waitUntil(journaliser(env, { type: "cahier", langue, routage: "ia", detail: `${demande.type}:${cahier.sections.length}` }));
+  const origine = new URL(requete.url).origin;
+  return avecCookie({
+    statut: 200,
+    donnees: {
+      source: "ia",
+      cahier: {
+        type: demande.type, longueur: demande.longueur, introduction: cahier.introduction,
+        sections: cahier.sections.map((s) => ({ ...s, url: `${origine}/maquettes/${encodeURIComponent(s.notion)}?lang=${langue}` }))
+      },
+      quota,
+      llm: {
+        fournisseur: "cloudflare-ai-gateway", modele: config.MODELE_CAHIERS, harness: HARNESS_CAHIER,
+        tokensSortie: Number.isSafeInteger(generation?.tokensSortie) ? generation.tokensSortie : null,
+        pseudonymisation: { appliquee: true, remplacements: generation?.pseudonymisations ?? 0 }
+      }
+    }
+  });
+}
+
 // ---------- Auth helpers ----------
 async function lireCompteDepuisCookie(requete, env) {
   const cookie = requete.headers.get("cookie") || "";
@@ -578,8 +657,12 @@ export default {
       const actif = llmActive(env) && !!env.DB && typeof env.LLM_SESSION_SECRET === "string"
         && env.LLM_SESSION_SECRET.length >= 32 && (!!env.AI?.run || claudeViaGatewayDisponible(env));
       const defi = { ia: defiIaPossible(env), generationsParJour: generationsDefiParJour(env) };
-      const skills = { tuteur: actif && skillActif(env, "tuteur"), "cadrage-idee": actif && skillActif(env, "cadrage-idee"), "defi-express": defi.ia };
-      return json({ actif, defi, skills, configuration: configurationPublique(env) }, 200, { ...cors, "cache-control": "no-store" });
+      const cahiers = { ia: cahierIaPossible(env), generationsParJour: generationsCahierParJour(env) };
+      const skills = {
+        tuteur: actif && skillActif(env, "tuteur"), "cadrage-idee": actif && skillActif(env, "cadrage-idee"),
+        "defi-express": defi.ia, "constructeur-cahier": cahiers.ia
+      };
+      return json({ actif, defi, cahiers, skills, configuration: configurationPublique(env) }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {
       return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
@@ -595,7 +678,7 @@ export default {
     const page = url.pathname.match(/^\/maquettes\/([a-z0-9-]+)$/);
     if ((requete.method === "GET" || requete.method === "HEAD") && page) return servirPage(requete, env, page[1]);
 
-    if (requete.method === "POST" && ["/api/chat", "/api/support", "/api/idee", "/api/idee/cadrage", "/api/defi"].includes(url.pathname)) {
+    if (requete.method === "POST" && ["/api/chat", "/api/support", "/api/idee", "/api/idee/cadrage", "/api/defi", "/api/cahier"].includes(url.pathname)) {
       if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
         return json({ type: "refus", texte: messages("fr").inapproprie }, 403, {});
       }
@@ -606,7 +689,7 @@ export default {
         return json({ type: "refus", texte: messages("fr").tropDeDemandes }, 429, cors);
       }
       try {
-        const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee, "/api/defi": traiterDefi }[url.pathname];
+        const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee, "/api/defi": traiterDefi, "/api/cahier": traiterCahier }[url.pathname];
         const { statut, donnees, entetes = {} } = await traiter(requete, env, ctx);
         return json(donnees, statut, { ...cors, ...entetes });
       } catch (e) {
@@ -626,6 +709,8 @@ export default {
       .catch(() => console.error("purge sessions llm indisponible")));
     ctx.waitUntil(purgerDefisLlm(env, evenement.scheduledTime)
       .catch(() => console.error("purge défis llm indisponible")));
+    ctx.waitUntil(purgerCahiersLlm(env, evenement.scheduledTime)
+      .catch(() => console.error("purge cahiers llm indisponible")));
     ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
       .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
       .catch((e) => console.error("sauvegarde kpi", e?.message)));

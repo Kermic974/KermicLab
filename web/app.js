@@ -17,6 +17,7 @@ const etat = {
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {},
   ecran: "accueil", registre: experiences.creerRegistre([]), ouverts: new Set(), moteur: null, llmActif: false, llmDisponible: false,
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
+  cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
   configurationServeur: null, skills: {}
 };
@@ -1174,11 +1175,16 @@ async function chargerStatutLlm() {
     const maxDefi = statut.configuration?.modules?.flatMap((m) => m.parametres || [])
       .find((p) => p.cle === "DEFI_GENERATIONS_JOUR")?.max;
     etat.defiIa.generationsParJour = Number.isInteger(n) ? Math.max(0, Math.min(Number.isInteger(maxDefi) ? maxDefi : 10, n)) : 0;
+    etat.cahiersIa.ia = statut.cahiers?.ia === true;
+    etat.cahiersIa.generationsParJour = Number.isInteger(statut.cahiers?.generationsParJour) ? Math.max(0, Math.min(5, statut.cahiers.generationsParJour)) : 0;
+    const modele = statut.configuration?.modules?.flatMap((m) => m.parametres || []).find((p) => p.cle === "MODELE_CAHIERS")?.valeur;
+    etat.cahiersIa.modele = typeof modele === "string" ? modele : "";
     etat.skills = statut.skills && typeof statut.skills === "object" ? statut.skills : {};
     etat.configurationServeur = statut.configuration && Array.isArray(statut.configuration.modules) ? statut.configuration : false;
   } catch {
     etat.llmDisponible = false;
     etat.defiIa.ia = false;
+    etat.cahiersIa.ia = false;
     etat.skills = {};
     etat.configurationServeur = false;
     console.error("llm statut indisponible");
@@ -1724,50 +1730,275 @@ function brancherNavigation() {
   });
 }
 
+/* ---------- Mes cahiers : constructeur, enrichissement IA et lecture ---------- */
+
+const LONGUEURS_CAHIER = ["court", "standard", "complet"];
+const GENRES_BLOC = ["explication", "retenir", "exercice", "piste"];
+const MAX_NOTIONS_CAHIER = 6;
+const TAILLE_NOTES = 5000;
+const constructeur = { type: null, envoi: false };
+
+const texteBorne = (v, max) => (typeof v === "string" ? v.slice(0, max) : "");
+
+/** Relit un cahier stocké : seuls les champs connus, bornés, sont gardés (le stockage local n'est pas une source sûre). */
+function cahierValide(c) {
+  if (!c || typeof c.id !== "string" || !TYPES_CAHIERS.includes(c.type) || typeof c.creeLe !== "string" || Number.isNaN(Date.parse(c.creeLe))) return null;
+  const sections = Array.isArray(c.sections) ? c.sections.slice(0, MAX_NOTIONS_CAHIER).filter((s) => s && typeof s.notion === "string").map((s) => ({
+    notion: texteBorne(s.notion, 80), titre: texteBorne(s.titre, 120), notes: texteBorne(s.notes, TAILLE_NOTES),
+    blocs: (Array.isArray(s.blocs) ? s.blocs : []).slice(0, 16).filter((b) => b && GENRES_BLOC.includes(b.genre) && typeof b.texte === "string")
+      .map((b) => ({ genre: b.genre, texte: texteBorne(b.texte, 700), ...(typeof b.reponse === "string" ? { reponse: texteBorne(b.reponse, 700) } : {}) }))
+  })) : [];
+  return {
+    id: c.id, type: c.type, creeLe: c.creeLe, titre: texteBorne(c.titre, 60).trim() || t(`cahier_${c.type}`),
+    source: c.source === "ia" ? "ia" : "catalogue", modele: texteBorne(c.modele, 100),
+    longueur: LONGUEURS_CAHIER.includes(c.longueur) ? c.longueur : "standard",
+    introduction: texteBorne(c.introduction, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections
+  };
+}
+
 function cahiersEnregistres() {
   try {
     const cahiers = JSON.parse(lireCle(stockage(), CLE_CAHIERS) ?? "[]");
-    return Array.isArray(cahiers)
-      ? cahiers.filter((c) => c && typeof c.id === "string" && TYPES_CAHIERS.includes(c.type) && typeof c.creeLe === "string" && !Number.isNaN(Date.parse(c.creeLe)))
-      : [];
+    return Array.isArray(cahiers) ? cahiers.map(cahierValide).filter(Boolean) : [];
   } catch { return []; }
 }
+const enregistrerCahiers = (cahiers) => ecrireCle(stockage(), CLE_CAHIERS, JSON.stringify(cahiers));
 
 function rendreCahiers() {
   const liste = $("#liste-cahiers");
   if (!liste || !etat.textes.titre) return;
   const cahiers = cahiersEnregistres();
   liste.replaceChildren(...cahiers.map((cahier) => {
-    const titre = t(`cahier_${cahier.type}`);
     const carte = element("article", { classe: "carte cahier-enregistre" });
-    const contenu = element("div");
-    contenu.append(
-      element("h4", { texte: titre }),
-      element("p", { classe: "doux petit", texte: new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe)) })
-    );
-    const supprimer = element("button", { classe: "secondaire petit-bouton", cle: "cahierSupprimer", attributs: { type: "button", "data-supprimer-cahier": cahier.id } });
-    supprimer.setAttribute("aria-label", t("cahierSupprimer", { titre }));
-    carte.append(contenu, supprimer);
+    const contenu = element("div", { classe: "cahier-infos" });
+    const date = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe));
+    const details = [t(`cahier_${cahier.type}`), cahier.sections.length ? t("cahierNotionsCompte", { n: cahier.sections.length }) : null, date].filter(Boolean).join(" · ");
+    contenu.append(element("h4", { texte: cahier.titre }), element("p", { classe: "doux petit", texte: details }));
+    if (cahier.source === "ia") contenu.append(element("span", { classe: "pastille ok", cle: "cahierBadgeIa" }));
+    const actions = element("div", { classe: "cahier-actions" });
+    const ouvrir = element("button", { classe: "bouton petit-bouton", cle: "cahierOuvrir", attributs: { type: "button", "data-ouvrir-cahier": cahier.id } });
+    ouvrir.setAttribute("aria-label", t("cahierOuvrirNom", { titre: cahier.titre }));
+    const supprimer = element("button", { classe: "secondaire petit-bouton", cle: "cahierSupprimerBouton", attributs: { type: "button", "data-supprimer-cahier": cahier.id } });
+    supprimer.setAttribute("aria-label", t("cahierSupprimer", { titre: cahier.titre }));
+    actions.append(ouvrir, supprimer);
+    carte.append(contenu, actions);
     return carte;
   }));
   $("#cahiers-vide").hidden = cahiers.length > 0;
 }
 
-function brancherCahiers() {
-  document.querySelectorAll("[data-cahier-type]").forEach((bouton) => bouton.addEventListener("click", () => {
-    const type = bouton.dataset.cahierType;
-    if (!TYPES_CAHIERS.includes(type)) return;
-    const cahiers = cahiersEnregistres();
-    const id = window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`;
-    cahiers.unshift({ id, type, creeLe: new Date().toISOString() });
-    ecrireCle(stockage(), CLE_CAHIERS, JSON.stringify(cahiers));
-    rendreCahiers();
+/* Constructeur */
+
+const notionsCahier = () => etat.notions.filter((n) => matiereDe(n) !== "jeux");
+const cahierIaRestantes = () => etat.cahiersIa.restantesServeur ?? etat.cahiersIa.generationsParJour;
+const cahierIaPossible = () => etat.llmDisponible && etat.llmActif && etat.cahiersIa.ia && cahierIaRestantes() > 0;
+
+function option(valeur, texte) {
+  const o = document.createElement("option");
+  o.value = valeur; o.textContent = texte;
+  return o;
+}
+
+function remplirMatieresCahier() {
+  const select = $("#cahier-matiere");
+  const matieres = [...new Set(notionsCahier().map(matiereDe))].sort(ordreMatiere);
+  const actuelle = select.value || etat.matiere;
+  select.replaceChildren(...matieres.map((m) => option(m, t(`matiere_${m}`))));
+  select.value = matieres.includes(actuelle) ? actuelle : matieres[0] ?? "";
+}
+
+function remplirNiveauxCahier() {
+  const select = $("#cahier-niveau");
+  const actuel = select.value || "tous";
+  const niveaux = NIVEAUX.filter((niv) => notionsCahier().some((n) => matiereDe(n) === $("#cahier-matiere").value && (n.niveau || "autres") === niv));
+  select.replaceChildren(option("tous", t("cahierNiveauTous")), ...niveaux.map((niv) => option(niv, t(`niveau_${niv}`))));
+  select.value = actuel === "tous" || niveaux.includes(actuel) ? actuel : "tous";
+}
+
+function cochees() {
+  return [...document.querySelectorAll("#cahier-notions input:checked")].map((c) => c.value);
+}
+
+function limiterNotionsCahier() {
+  const pleines = cochees().length >= MAX_NOTIONS_CAHIER;
+  document.querySelectorAll("#cahier-notions input").forEach((c) => { c.disabled = pleines && !c.checked; });
+}
+
+function rendreNotionsCahier() {
+  const deja = new Set(cochees());
+  const matiere = $("#cahier-matiere").value;
+  const niveau = $("#cahier-niveau").value;
+  const notions = notionsCahier().filter((n) => matiereDe(n) === matiere && (niveau === "tous" || (n.niveau || "autres") === niveau));
+  const zone = $("#cahier-notions");
+  zone.replaceChildren(...notions.map((n) => {
+    const label = element("label", { classe: "cahier-notion" });
+    const case_ = element("input", { attributs: { type: "checkbox", value: n.id, name: "notions" } });
+    case_.checked = deja.has(n.id);
+    label.append(case_, element("span", { texte: n.titre }));
+    return label;
   }));
+  if (!notions.length) zone.append(element("p", { classe: "doux petit", cle: "cahierNotionsVide" }));
+  limiterNotionsCahier();
+}
+
+function rafraichirIaCahier() {
+  const caseIa = $("#cahier-ia");
+  const possible = cahierIaPossible();
+  caseIa.disabled = !possible;
+  if (!possible) caseIa.checked = false;
+  const cle = !etat.llmDisponible || !etat.cahiersIa.ia ? "cahierIaIndisponible"
+    : !etat.llmActif ? "cahierIaConsentement" : cahierIaRestantes() <= 0 ? "cahierIaQuota" : "cahierIaEtat";
+  $("#cahier-ia-etat").textContent = t(cle, { n: cahierIaRestantes(), modele: etat.cahiersIa.modele });
+}
+
+function ouvrirConstructeur(type) {
+  constructeur.type = type;
+  $("#constructeur-titre").textContent = t("constructeurTitre", { type: t(`cahier_${type}`) });
+  $("#constructeur-aide").textContent = t(`cahierConstructeur_${type}`);
+  $("#cahier-titre").value = "";
+  $("#cahier-titre").placeholder = t(`cahier_${type}`);
+  $("#cahier-notions-aide").textContent = t(type === "brouillon" ? "cahierNotionsAideBrouillon" : "cahierNotionsAide", { n: MAX_NOTIONS_CAHIER });
+  $("#cahier-longueur").replaceChildren(...LONGUEURS_CAHIER.map((l) => option(l, t(`cahierLongueur_${l}`))));
+  $("#cahier-longueur").value = "standard";
+  $("#cahier-notions").replaceChildren();
+  remplirMatieresCahier();
+  $("#cahier-niveau").value = "tous";
+  remplirNiveauxCahier();
+  rendreNotionsCahier();
+  $("#cahier-ia").checked = cahierIaPossible();
+  rafraichirIaCahier();
+  $("#retour-cahier").textContent = "";
+  $("#construire-cahier").disabled = false;
+  $("#constructeur-cahier").showModal();
+  $("#cahier-titre").focus();
+}
+
+/** Sans IA : le cahier est construit à partir du catalogue (une section par notion, à compléter par l'élève). */
+function sectionsCatalogue(ids) {
+  return ids.map((id) => ({ notion: id, titre: notionParId(id)?.titre ?? id, blocs: [], notes: "" }));
+}
+
+async function construireCahier(e) {
+  e.preventDefault();
+  if (constructeur.envoi) return;
+  const type = constructeur.type;
+  const ids = cochees();
+  const retour = $("#retour-cahier");
+  if (!ids.length && type !== "brouillon") { retour.textContent = t("cahierChoisirNotion"); return; }
+  const longueur = $("#cahier-longueur").value;
+  const cahiers = cahiersEnregistres();
+  const cahier = {
+    id: window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`, type, creeLe: new Date().toISOString(),
+    titre: $("#cahier-titre").value.trim().slice(0, 60) || t(`cahier_${type}`), longueur,
+    source: "catalogue", introduction: t(`cahierIntro_${type}`), notes: "", sections: sectionsCatalogue(ids)
+  };
+  let repli = false;
+  if ($("#cahier-ia").checked && cahierIaPossible() && ids.length) {
+    constructeur.envoi = true;
+    $("#construire-cahier").disabled = true;
+    retour.textContent = t("cahierPreparation");
+    try {
+      // Seuls le type, la longueur, la langue et les identifiants publiés des notions partent : le titre reste ici.
+      const r = await fetch(`${etat.config.apiUrl}/api/cahier`, {
+        method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ type, longueur, langue: etat.langue, notions: ids, utiliserLlm: true })
+      });
+      const d = await r.json();
+      if (Number.isInteger(d.quota?.restantes)) etat.cahiersIa.restantesServeur = d.quota.restantes;
+      if (d.source === "ia" && Array.isArray(d.cahier?.sections) && d.cahier.sections.length) {
+        cahier.source = "ia";
+        cahier.modele = typeof d.llm?.modele === "string" ? d.llm.modele : "";
+        cahier.introduction = typeof d.cahier.introduction === "string" && d.cahier.introduction ? d.cahier.introduction : cahier.introduction;
+        cahier.sections = d.cahier.sections.map((s) => ({ notion: s.notion, titre: s.titre, blocs: s.blocs, notes: "" }));
+      } else repli = true;
+    } catch {
+      console.error("cahier IA indisponible");
+      repli = true;
+    } finally {
+      constructeur.envoi = false;
+      $("#construire-cahier").disabled = false;
+    }
+  }
+  const propre = cahierValide(cahier);
+  enregistrerCahiers([propre, ...cahiers]);
+  rendreCahiers();
+  $("#constructeur-cahier").close();
+  ouvrirLectureCahier(propre.id, repli ? t("cahierIaRepli") : "");
+}
+
+/* Lecture */
+
+function blocCahier(b) {
+  const bloc = element("div", { classe: `bloc-cahier bloc-${b.genre}` });
+  bloc.append(element("p", { classe: "bloc-genre petit", cle: `cahierGenre_${b.genre}` }), element("p", { texte: b.texte }));
+  if (b.genre === "exercice" && b.reponse) {
+    const details = element("details", { classe: "reponse-cahier" });
+    details.append(element("summary", { cle: "cahierVoirReponse" }), element("p", { texte: b.reponse }));
+    bloc.append(details);
+  }
+  return bloc;
+}
+
+function zoneNotes(cahierId, indexSection, valeur) {
+  const id = `notes-${indexSection}`;
+  const zone = element("div", { classe: "notes-cahier" });
+  const label = element("label", { cle: indexSection < 0 ? "cahierPageLibre" : "cahierMesNotes", attributs: { for: id } });
+  const texte = element("textarea", { attributs: { id, rows: indexSection < 0 ? "10" : "4", maxlength: String(TAILLE_NOTES) } });
+  texte.value = valeur;
+  texte.addEventListener("input", () => {
+    const cahiers = cahiersEnregistres();
+    const c = cahiers.find((x) => x.id === cahierId);
+    if (!c) return;
+    if (indexSection < 0) c.notes = texte.value; else if (c.sections[indexSection]) c.sections[indexSection].notes = texte.value;
+    enregistrerCahiers(cahiers);
+  });
+  zone.append(label, texte);
+  return zone;
+}
+
+function ouvrirLectureCahier(id, message = "") {
+  const cahier = cahiersEnregistres().find((c) => c.id === id);
+  if (!cahier) return;
+  $("#lecture-titre").textContent = cahier.titre;
+  const date = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe));
+  const source = cahier.source === "ia" ? t("cahierSourceIa", { modele: cahier.modele || "IA" }) : t("cahierSourceCatalogue");
+  $("#lecture-meta").textContent = [t(`cahier_${cahier.type}`), date, source].join(" · ");
+  const corps = $("#lecture-corps");
+  corps.replaceChildren();
+  if (message) corps.append(element("p", { classe: "note-locale", texte: message, attributs: { role: "status" } }));
+  if (cahier.introduction) corps.append(element("p", { classe: "intro-cahier", texte: cahier.introduction }));
+  cahier.sections.forEach((s, i) => {
+    const section = element("section", { classe: "section-cahier" });
+    const tete = element("div", { classe: "tete-section-cahier" });
+    tete.append(element("h3", { texte: s.titre }));
+    if (notionParId(s.notion)) {
+      const ouvrir = element("button", { classe: "secondaire petit-bouton", cle: "cahierOuvrirNotion", attributs: { type: "button" } });
+      ouvrir.addEventListener("click", () => { $("#lecture-cahier").close(); ouvrirNotion(notionParId(s.notion)); });
+      tete.append(ouvrir);
+    }
+    section.append(tete, ...s.blocs.map(blocCahier), zoneNotes(cahier.id, i, s.notes));
+    corps.append(section);
+  });
+  if (!cahier.sections.length || cahier.type === "brouillon") corps.append(zoneNotes(cahier.id, -1, cahier.notes));
+  if (!$("#lecture-cahier").open) $("#lecture-cahier").showModal();
+}
+
+function brancherCahiers() {
+  document.querySelectorAll("[data-cahier-type]").forEach((b) => b.addEventListener("click", () => {
+    if (TYPES_CAHIERS.includes(b.dataset.cahierType)) ouvrirConstructeur(b.dataset.cahierType);
+  }));
+  $("#cahier-matiere").addEventListener("change", () => { remplirNiveauxCahier(); rendreNotionsCahier(); });
+  $("#cahier-niveau").addEventListener("change", rendreNotionsCahier);
+  $("#cahier-notions").addEventListener("change", limiterNotionsCahier);
+  $("#formulaire-cahier").addEventListener("submit", construireCahier);
+  brancherDialogue($("#constructeur-cahier"), $("#fermer-constructeur"));
+  brancherDialogue($("#lecture-cahier"), $("#fermer-lecture"));
   $("#liste-cahiers").addEventListener("click", (e) => {
+    const ouvrir = e.target.closest("[data-ouvrir-cahier]");
+    if (ouvrir) { ouvrirLectureCahier(ouvrir.dataset.ouvrirCahier); return; }
     const bouton = e.target.closest("[data-supprimer-cahier]");
     if (!bouton) return;
-    const cahiers = cahiersEnregistres().filter((c) => c.id !== bouton.dataset.supprimerCahier);
-    ecrireCle(stockage(), CLE_CAHIERS, JSON.stringify(cahiers));
+    enregistrerCahiers(cahiersEnregistres().filter((c) => c.id !== bouton.dataset.supprimerCahier));
     rendreCahiers();
   });
 }

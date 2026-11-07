@@ -606,6 +606,42 @@
   </form>
 </dialog>
 
+<dialog id="constructeur-cahier" data-sans-idees aria-labelledby="constructeur-titre" aria-describedby="constructeur-aide">
+  <form id="formulaire-cahier" class="formulaire-cahier" method="dialog">
+    <h2 id="constructeur-titre"></h2>
+    <p class="doux" id="constructeur-aide"></p>
+    <label for="cahier-titre" data-i18n="cahierTitreChamp"></label>
+    <input id="cahier-titre" type="text" maxlength="60" autocomplete="off">
+    <div class="constructeur-ligne">
+      <div><label for="cahier-matiere" data-i18n="cahierMatiereChamp"></label><select id="cahier-matiere"></select></div>
+      <div><label for="cahier-niveau" data-i18n="cahierNiveauChamp"></label><select id="cahier-niveau"></select></div>
+    </div>
+    <fieldset class="cahier-notions-bloc">
+      <legend data-i18n="cahierNotionsChamp"></legend>
+      <p class="doux petit" id="cahier-notions-aide"></p>
+      <div id="cahier-notions" class="cahier-notions"></div>
+    </fieldset>
+    <label for="cahier-longueur" data-i18n="cahierLongueurChamp"></label>
+    <select id="cahier-longueur"></select>
+    <label class="cahier-ia"><input type="checkbox" id="cahier-ia"> <span><span aria-hidden="true">✨ </span><span data-i18n="cahierIa"></span></span></label>
+    <p class="doux petit" id="cahier-ia-etat"></p>
+    <p id="retour-cahier" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="fermer-constructeur" data-i18n="fermer"></button>
+      <button type="submit" id="construire-cahier" data-i18n="cahierConstruire"></button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="lecture-cahier" class="lecture-cahier" data-sans-idees aria-labelledby="lecture-titre">
+  <div class="dialogue-entete">
+    <h2 id="lecture-titre"></h2>
+    <button type="button" class="secondaire" id="fermer-lecture" data-i18n="fermer"></button>
+  </div>
+  <p class="doux petit" id="lecture-meta"></p>
+  <div id="lecture-corps" class="lecture-corps"></div>
+</dialog>
+
 <!-- Cloudflare Web Analytics : mesure d'audience sans cookie ni donnée personnelle (voir confidentialite.html).
      Jeton public du site, non secret. Absent de /cercle/, qui ne fait aucun appel réseau. -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "6cfdbc8f1c9b4998bdfe36686babe04d"}'></script>
