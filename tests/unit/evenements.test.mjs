@@ -68,3 +68,17 @@ test("événements : relecture du stockage robuste, entrées invalides ignorées
   assert.deepEqual(charger(zone), etatInitial());
   assert.deepEqual(charger(null), etatInitial(), "stockage indisponible");
 });
+
+test("événements : résumé affichable d'une notion pour « Mes trophées » (issue #183)", async () => {
+  const { resumerNotion } = await import("../../web/evenements.js");
+  assert.equal(resumerNotion(undefined), null);
+  const etat = [
+    ev("demarre"), ev("demarre"),
+    ev("reponse", { exercice: "app-1", correct: false, essai: 1 }), ev("indice", { exercice: "app-1", rang: 1 }),
+    ev("reponse", { exercice: "app-1", correct: true, essai: 2 }),
+    ev("reponse", { exercice: "app-2", correct: true, essai: 1 }),
+    ev("reponse", { exercice: "app-3", correct: false, essai: 1 }),
+    ev("indice", { exercice: "app-4", rang: 1 }) // indice affiché sans réponse : pas un exercice tenté
+  ].map((brut) => normaliserEvenement(brut, "pythagore")).reduce((e, x) => enregistrer(e, x, "2026-11-07"), etatInitial());
+  assert.deepEqual(resumerNotion(etat.notions.pythagore), { ouvertures: 2, tentes: 3, reussis: 2, apresIndice: 1, termine: false });
+});

@@ -1873,6 +1873,8 @@ function rendreTrophees() {
       if (id === "mini-cercle") carte.append(element("p", { cle: "tropheesMiniLab" }));
       carte.append(chiffresModule(m));
       if (m.etoilesTotal) carte.append(element("progress", { attributs: { max: m.etoilesTotal, value: m.etoiles, "aria-label": t("tropheesEtoiles") } }));
+      const activite = activiteNotion(id);
+      if (activite) carte.append(activite);
       if (m.badges.length) {
         const details = element("details");
         details.open = ouverts.has(id);
@@ -1916,6 +1918,27 @@ function chiffresModule(m) {
   return chiffres;
 }
 
+/**
+ * Activité d'une notion d'après le contrat d'événements (ADR 0025, issue #183) : exercices tentés et réussis, dont après
+ * un indice, ouvertures, notion terminée. Des faits locaux, distincts des étoiles et de toute maîtrise.
+ */
+function activiteNotion(id) {
+  const r = evenements.resumerNotion(etat.evenements?.notions?.[id]);
+  if (!r || (!r.tentes && !r.ouvertures)) return null;
+  const bloc = element("div", { classe: "trophee-activite", attributs: { "data-activite": id } });
+  bloc.append(element("p", { classe: "doux petit", cle: "activiteTitre" }));
+  const liste = element("dl", { classe: "trophees-chiffres" });
+  for (const [cle, valeur] of [["activiteReussis", `${r.reussis} / ${r.tentes}`], ["activiteApresIndice", r.apresIndice], ["activiteOuvertures", r.ouvertures]]) {
+    if (cle !== "activiteOuvertures" && !r.tentes) continue;
+    const d = element("div");
+    d.append(element("dt", { texte: t(cle) }), element("dd", { texte: String(valeur) }));
+    liste.append(d);
+  }
+  bloc.append(liste);
+  if (r.termine) bloc.append(element("p", { classe: "badge obtenu", texte: `✓ ${t("activiteTerminee")}` }));
+  return bloc;
+}
+
 function brancherTrophees() {
   window.addEventListener("message", (e) => {
     // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
@@ -1945,6 +1968,7 @@ function brancherTrophees() {
       if (!ev) { console.warn("evenements : message invalide", id); return; }
       etat.evenements = evenements.enregistrer(etat.evenements, ev, progression.jourLocal());
       evenements.sauver(stockage(), etat.evenements);
+      if (etat.ecran === "progression") rendreProgression();
       return;
     }
     if (e.data?.module !== id) return;

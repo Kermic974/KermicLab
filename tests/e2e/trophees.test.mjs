@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 import { injecterOriginesParent } from "../../worker/src/origines-pages.js";
 
 let serveur, nav, api;
@@ -118,6 +118,19 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     const brut = await page.evaluate(() => sessionStorage.getItem("kermiclab:evenements"));
     assert.doesNotMatch(brut, /"12"|"15"|côté/, "aucune réponse saisie ni texte de la page n'est conservé");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:evenements")), null, "session seulement sans mémorisation");
+    // « Mes trophées » (issue #183) : l'activité de la notion apparaît dans sa carte, distincte des étoiles.
+    await page.click("#fermer-bulle");
+    await page.click(".barre-laterale [data-nav=progression]");
+    const activite = page.locator('#trophees-notions [data-trophee-module=pythagore] [data-activite=pythagore]');
+    await activite.waitFor();
+    const texte = (await activite.textContent()).replace(/\s+/g, " ");
+    assert.match(texte, /Exercices réussis \/ tentés\s*2 \/ 2/);
+    assert.match(texte, /Réussis après un indice\s*1/);
+    assert.match(texte, /Ouvertures\s*1/);
+    assert.doesNotMatch(texte, /Tous les exercices réussis/, "notion non terminée");
+    await activite.scrollIntoViewIfNeeded();
+    await capturer(page, "trophees-activite-notion");
+    assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
 });
@@ -157,6 +170,11 @@ test("événements (ADR 0025) : le cercle, page écrite à la main, émet le con
     assert.deepEqual(Object.keys(notion.exercices).sort(), Object.values(ID).sort());
     assert.ok(Object.values(notion.exercices).every((e) => e.reussi));
     assert.equal(notion.exercices[ID[premiere]].apresIndice, true, "la cible manquée est réussie après l'indice");
+    await page.click("#fermer-bulle");
+    await page.click(".barre-laterale [data-nav=progression]");
+    const activite = page.locator('[data-trophee-module="trigo-cercle"] [data-activite="trigo-cercle"]');
+    await activite.waitFor();
+    assert.match((await activite.textContent()).replace(/\s+/g, " "), /10 \/ 10.*Tous les exercices réussis/);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
 });
