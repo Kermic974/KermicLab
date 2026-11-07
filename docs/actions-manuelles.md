@@ -8,9 +8,8 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 - **Constaté** (2026-11-06) : en production, chaque appel à `custom/haiku` est rejeté par AI Gateway en **HTTP 402**
   (`rejection_reason: payment_defaulted`) : solde de facturation unifiée à 0 $, aucun rechargement, aucune clé
   fournisseur (BYOK) sur `kermiclab-gateway`. Depuis le correctif, le défi bascule sur Workers AI en attendant.
-- **À faire** : donner un moyen de paiement à l'alias, au choix : **A.** charger des crédits de facturation unifiée
-  (avec rechargement automatique et plafond de dépense si souhaité) ; **B.** enregistrer la clé Anthropic sur la
-  gateway (Provider keys) sous l'alias **`default`**, seul alias lu par le binding Workers.
+- **Fait** (2026-11-07) : crédits de facturation unifiée chargés sur AI Gateway ; `/api/defi` renvoie des défis
+  générés par `custom/haiku` (vérifié par un appel réel).
 - **Vérifier** : activer « Utiliser l'IA » dans Configuration, lancer le défi express ; le journal de la gateway doit
   montrer `custom/haiku` en statut 200 (et non plus 402), et « Détails » du défi le fournisseur `cloudflare-ai-gateway`.
 - **Où** : https://kermiclab.online/#defi et Cloudflare → AI → AI Gateway → Billing (option A) ou `kermiclab-gateway` → Provider keys (option B).
