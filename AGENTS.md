@@ -23,7 +23,7 @@ Principes non négociables :
 
 | Chemin | Rôle |
 |---|---|
-| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
+| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/api/contributions` (ADR 0023), `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
 | `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquettes publiques : `trigo-cercle` (écrite à la main) et les notions pilotes du gabarit (`pythagore`, `fractions`, `proportionnalite`). Les jeux (`demineur`, `echecs`, `belote`, matière `jeux`) sont écrits à la main avec un moteur testable (ADR 0013, guide `docs/jeux.md`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |
@@ -60,7 +60,7 @@ npx wrangler pages dev dist     # chat en local
 - **Paramètres configurables** : tout paramètre réglable d'un module (alias de modèle, budget de tokens min–max, quota, skill) est déclaré dans le registre `worker/src/configuration.js` (défaut, bornes, module) et lu via `lireConfiguration(env)` ; jamais de `env.X || défaut` ni de constante en dur ailleurs. Ajouter un paramètre = une entrée du registre, une ligne `[vars]` commentée dans `worker/wrangler.toml`, `.env.example` et les libellés `configParam_<CLÉ>` dans toutes les langues (ADR 0019).
 - Zéro secret dans le code : variables d'environnement, Cloudflare Secrets, GitHub Secrets ; documenter toute variable dans `.env.example`.
 - **Pseudonymisation imposée vers les LLM** : tout texte d'origine utilisateur envoyé à un modèle passe par `pseudonymiser()` (`worker/src/pseudonymisation.js`), appliqué à l'intérieur de `appelerWorkersAI` et `appelerClaude` (`worker/src/llm.js`), seules fonctions autorisées à appeler un fournisseur. Ne jamais appeler un modèle autrement ; le prompt système ne contient que du texte du serveur (jamais de donnée du navigateur). Aucune table de correspondance n'est conservée.
-- Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
+- Ne jamais stocker d'IP ni de texte de message dans D1 ni dans R2. Seule exception : les contributions au contenu (ADR 0023), textes pédagogiques destinés à publication, sans donnée personnelle (filtrée par le Worker). Les buckets R2 restent privés (pas d'URL publique `r2.dev`) ; organisation par préfixes, voir ADR 0007.
 
 ## 5. Contrat d'une page HTML autonome
 

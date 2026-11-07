@@ -29,6 +29,7 @@ const definitions = {
       ["profil-dialogue", "", "Profil : cliquer sur la carte du profil ou l'avatar mobile"],
       ["support", "", "Support : cliquer sur Signaler un problème"],
       ["famille", "#famille", "Espace famille : écran dédié, masqué tant que connexionActive vaut false"],
+      ["contributions", "#contributions", "Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions"],
       ["comptes", null, "Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false"]
     ]
   },

@@ -30,6 +30,9 @@ export async function supprimerCompte(env, compteId) {
   await db.batch([
     db.prepare("DELETE FROM progres WHERE eleve_id IN (SELECT id FROM eleves WHERE parent_id = ?)").bind(compteId),
     db.prepare("DELETE FROM eleves WHERE parent_id = ?").bind(compteId),
+    // Contributions (ADR 0023) : celles du compte sont effacées ; ses décisions de relecture restent, sans relecteur.
+    db.prepare("DELETE FROM contributions WHERE auteur_id = ?").bind(compteId),
+    db.prepare("UPDATE contributions SET relecteur_id = NULL WHERE relecteur_id = ?").bind(compteId),
     db.prepare("DELETE FROM sessions WHERE compte_id = ?").bind(compteId),
     db.prepare("DELETE FROM auth_providers WHERE compte_id = ?").bind(compteId),
     db.prepare("DELETE FROM comptes WHERE id = ?").bind(compteId)

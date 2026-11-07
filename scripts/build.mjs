@@ -30,6 +30,7 @@ for (const fichier of (await readdir(`${racine}dist`)).filter((f) => f.endsWith(
   const chemin = `${racine}dist/${fichier}`;
   await writeFile(chemin, ajouterBoiteIdees(await readFile(chemin, "utf8"), { page: fichier, version, externe: true }));
 }
+await ecrireContenus(`${racine}dist/contenus`, [`${racine}catalogue`, `${racine}catalogue-prive`], catalogue.index);
 await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTrophees(catalogue))}\n`);
 await versionnerRessources(`${racine}dist`);
 // Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).
@@ -67,7 +68,7 @@ console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/
 async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
-  const modules = ["progression.js", "profil.js", "comptes.js", "cercle.js", "trophees.js"];
+  const modules = ["progression.js", "profil.js", "comptes.js", "contributions.js", "cercle.js", "trophees.js"];
   for (const fichier of [...modules, "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
   let app = appSource;
@@ -83,4 +84,28 @@ async function versionnerRessources(dossier) {
     const html = source.replace(/(href|src)="(style\.css|app\.js)"/g, (tout, attribut, fichier) => `${attribut}="${fichier}?v=${versions[fichier]}"`);
     await writeFile(`${dossier}/${page}`, html);
   }
+}
+
+/**
+ * Contenus des notions du gabarit (`contenu.json`) pour le formulaire de contribution (ADR 0023) : `contenus/index.json`
+ * (id, titre, version) et `contenus/<id>.json`. Ce sont les textes déjà publiés dans les pages ; rien d'autre n'est copié.
+ */
+async function ecrireContenus(sortie, dossiers, index) {
+  await mkdir(sortie, { recursive: true });
+  const notions = [];
+  for (const dossier of dossiers) {
+    let noms;
+    try { noms = (await readdir(dossier)).sort(); } catch { continue; }
+    for (const nom of noms) {
+      const fiche = index.maquettes.find((m) => m.id === nom);
+      if (!fiche) continue;
+      // Lecture directe (sans vérification préalable de l'existence) : un dossier sans contenu.json est ignoré.
+      let source;
+      try { source = await readFile(`${dossier}/${nom}/contenu.json`, "utf8"); } catch (e) { if (e.code === "ENOENT" || e.code === "ENOTDIR") continue; throw e; }
+      await writeFile(`${sortie}/${nom}.json`, `${JSON.stringify(JSON.parse(source))}\n`);
+      notions.push({ id: nom, titre: fiche.titre, version: fiche.version });
+    }
+  }
+  notions.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
+  await writeFile(`${sortie}/index.json`, `${JSON.stringify({ notions })}\n`);
 }

@@ -29,3 +29,15 @@ export function analyser(texte) {
   }
   return { ok: true };
 }
+
+/**
+ * Données personnelles seulement (e-mail, téléphone, adresse, identité) : filtre des contributions au contenu (ADR 0023).
+ * Les sujets sensibles ne sont pas filtrés ici : une notion de SVT ou d'EMC peut légitimement les traiter, et chaque
+ * contribution est relue par un prof avant toute publication.
+ */
+export function donneesPersonnelles(texte) {
+  const brut = String(texte ?? "");
+  const n = normaliser(brut);
+  const trouve = MOTIFS_DONNEES_PERSONNELLES.find(({ motif, raison }) => motif.test(raison === "identite" ? n : brut));
+  return trouve ? trouve.raison : null;
+}

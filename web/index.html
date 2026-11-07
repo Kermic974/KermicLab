@@ -72,7 +72,7 @@
     <div class="enveloppe">
       <div class="bandeau-demo" id="bandeau-demo" role="status" hidden>
         <span class="bandeau-demo-pastille" aria-hidden="true" data-i18n="demoPastille"></span>
-        <span data-i18n="demoBandeau"></span>
+        <span id="bandeau-demo-texte" data-i18n="demoBandeau"></span>
         <button type="button" class="secondaire petit-bouton" id="quitter-demo" data-i18n="demoQuitter"></button>
       </div>
       <header class="entete" id="haut">
@@ -370,6 +370,7 @@
     <div class="actions">
       <button type="button" class="bouton" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n="profilModifier"></button>
       <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
+      <button id="entree-contributions" type="button" class="secondaire" data-nav="contributions" data-i18n="contribEntree" hidden></button>
     </div>
   </section>
   <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
@@ -464,6 +465,99 @@
     <p id="famille-enfant-texte"></p>
     <p class="doux petit" data-i18n="familleEnfantAide"></p>
     <button type="button" class="secondaire" id="quitter-mode-enfant" data-i18n="quitterModeEnfant"></button>
+  </div>
+</section>
+
+<!-- Contributions au contenu des notions (ADR 0023) : rôles contributeur et prof, scénario sans IA.
+     Accessible seulement si connexionActive (ou en démonstration ?demo=contributions). -->
+<section id="contributions" class="carte ecran-personnel" data-ecrans="contributions" aria-labelledby="contrib-titre" hidden>
+  <div class="dialogue-entete">
+    <h2 id="contrib-titre" data-i18n="contribTitre"></h2>
+    <button type="button" class="secondaire" data-nav="profil" data-i18n="retourProfil"></button>
+  </div>
+  <p id="contrib-etat" class="doux" role="status"></p>
+  <div id="contrib-invite" hidden>
+    <p data-i18n="contribInviteIntro"></p>
+    <ul class="famille-points">
+      <li data-i18n="contribInvitePoint1"></li>
+      <li data-i18n="contribInvitePoint2"></li>
+      <li data-i18n="contribInvitePoint3"></li>
+    </ul>
+    <p id="contrib-role-requis" class="note-locale" data-i18n="contribRoleRequis" hidden></p>
+    <div class="actions" id="contrib-demo-roles" hidden>
+      <button type="button" class="bouton" id="contrib-demo-contributeur" data-i18n="contribDemoContributeur"></button>
+      <button type="button" class="bouton" id="contrib-demo-prof" data-i18n="contribDemoProf"></button>
+    </div>
+    <button type="button" class="secondaire" id="essayer-demo-contrib" data-i18n="contribDemoEssayer"></button>
+  </div>
+  <div id="contrib-espace" hidden>
+    <div class="contrib-role">
+      <p><strong id="contrib-role-nom"></strong><span class="doux petit" id="contrib-role-aide"></span></p>
+      <button type="button" class="secondaire" id="contrib-deconnexion" data-i18n="familleDeconnexion"></button>
+    </div>
+
+    <section id="contrib-tableau" class="contrib-bloc" aria-labelledby="contrib-tableau-titre" hidden>
+      <h3 id="contrib-tableau-titre" data-i18n="contribTableauTitre"></h3>
+      <p class="doux petit" data-i18n="contribTableauAide"></p>
+      <ul id="contrib-compteurs" class="contrib-compteurs"></ul>
+      <div class="contrib-filtres">
+        <label><span class="etiquette-champ" data-i18n="contribFiltreStatut"></span>
+          <select id="contrib-filtre-statut"></select></label>
+        <label><span class="etiquette-champ" data-i18n="contribFiltreNotion"></span>
+          <select id="contrib-filtre-notion"></select></label>
+      </div>
+      <ol id="contrib-relecture" class="contrib-liste"></ol>
+      <p id="contrib-relecture-vide" class="doux" data-i18n="contribRelectureVide" hidden></p>
+    </section>
+
+    <details id="contrib-proposer" class="famille-ajout contrib-bloc">
+      <summary id="contrib-proposer-titre" data-i18n="contribProposer"></summary>
+      <form id="formulaire-contribution" class="formulaire-profil" novalidate>
+        <p id="contrib-edition" class="note-locale" hidden></p>
+        <label for="contrib-notion" class="etiquette-champ" data-i18n="contribNotionLabel"></label>
+        <select id="contrib-notion" aria-describedby="contrib-notion-erreur"></select>
+        <p id="contrib-notion-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label for="contrib-champ" class="etiquette-champ" data-i18n="contribChampLabel"></label>
+        <select id="contrib-champ" aria-describedby="contrib-champ-erreur" disabled></select>
+        <p id="contrib-champ-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <div id="contrib-actuel-bloc" hidden>
+          <p class="etiquette-champ" data-i18n="contribTexteActuel"></p>
+          <blockquote id="contrib-actuel" class="contrib-citation"></blockquote>
+        </div>
+        <fieldset class="tranches">
+          <legend class="etiquette-champ" data-i18n="contribNatureLabel"></legend>
+          <label><input type="radio" name="contrib-nature" value="modification" checked> <span data-i18n="contribNature_modification"></span></label>
+          <label><input type="radio" name="contrib-nature" value="ajout" id="contrib-nature-ajout" disabled> <span data-i18n="contribNature_ajout"></span></label>
+        </fieldset>
+        <p id="contrib-nature-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label for="contrib-type" class="etiquette-champ" data-i18n="contribTypeLabel"></label>
+        <select id="contrib-type"></select>
+        <p id="contrib-type-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label for="contrib-texte" class="etiquette-champ" data-i18n="contribTexteLabel"></label>
+        <textarea id="contrib-texte" rows="5" maxlength="2000" aria-describedby="contrib-texte-aide contrib-texte-erreur"></textarea>
+        <p id="contrib-texte-aide" class="doux petit" data-i18n="contribTexteAide"></p>
+        <p id="contrib-texte-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label for="contrib-motif" class="etiquette-champ" data-i18n="contribMotifLabel"></label>
+        <textarea id="contrib-motif" rows="2" maxlength="500" aria-describedby="contrib-motif-erreur"></textarea>
+        <p id="contrib-motif-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label class="case-memoire">
+          <input type="checkbox" id="contrib-charte" aria-describedby="contrib-charte-erreur">
+          <span><strong data-i18n="contribCharteTitre"></strong><span class="doux petit" data-i18n="contribCharteTexte"></span></span>
+        </label>
+        <p id="contrib-charte-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <p id="contrib-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <div class="actions">
+          <button type="submit" class="bouton" id="contrib-envoyer" data-i18n="contribEnvoyer"></button>
+          <button type="button" class="secondaire" id="contrib-annuler-edition" data-i18n="contribAnnulerEdition" hidden></button>
+        </div>
+      </form>
+    </details>
+
+    <section class="contrib-bloc" aria-labelledby="contrib-miennes-titre">
+      <h3 id="contrib-miennes-titre" data-i18n="contribMiennesTitre"></h3>
+      <ol id="contrib-miennes" class="contrib-liste"></ol>
+      <p id="contrib-miennes-vide" class="doux" data-i18n="contribMiennesVide" hidden></p>
+    </section>
   </div>
 </section>
 
