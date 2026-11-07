@@ -9,7 +9,7 @@ import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { estRouteContribution, gererApiContributions } from "./contributions.js";
-import { estRouteCompteLocal, gererApiCompteLocal, purgerSessionsLocales } from "./compte-local.js";
+import { estRouteCompteLocal, gererApiCompteLocal, purgerCompteLocal } from "./compte-local.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { SESSION_CAHIER, SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
@@ -776,8 +776,10 @@ export default {
       .catch(() => console.error("purge défis llm indisponible")));
     ctx.waitUntil(purgerCahiersLlm(env, evenement.scheduledTime)
       .catch(() => console.error("purge cahiers llm indisponible")));
-    ctx.waitUntil(purgerSessionsLocales(env, evenement.scheduledTime)
-      .catch(() => console.error("purge sessions compte local indisponible")));
+    // Compte local (ADR 0024) : sessions expirées et données pseudonymisées inactives depuis 365 jours ; compteurs seuls.
+    ctx.waitUntil(purgerCompteLocal(env, evenement.scheduledTime)
+      .then((r) => r && console.log("purge compte local", JSON.stringify(r)))
+      .catch(() => console.error("purge compte local indisponible")));
     ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
       .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
       .catch((e) => console.error("sauvegarde kpi", e?.message)));

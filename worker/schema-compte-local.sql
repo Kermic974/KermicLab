@@ -26,13 +26,15 @@ CREATE INDEX IF NOT EXISTS idx_sessions_locales_expiration ON sessions_locales (
 
 -- Données synchronisées, pseudonymisées : AUCUNE colonne ne relie une ligne à un compte. Le pseudonyme et le jeton
 -- d'écriture sont dérivés, dans le navigateur, d'une phrase secrète jamais transmise ; le contenu est chiffré
--- (AES-GCM) avec une clé qui ne quitte pas l'appareil. Mise à jour au jour près (pas de corrélation fine avec les
--- sessions).
+-- (AES-GCM) avec une clé qui ne quitte pas l'appareil. Dates au jour près (pas de corrélation fine avec les sessions).
+-- Conservation (ADR 0024) : une ligne ni lue ni écrite depuis 365 jours (`vu_le`) est effacée par le cron quotidien.
 CREATE TABLE IF NOT EXISTS donnees_pseudonymes (
   pseudonyme  TEXT PRIMARY KEY,
   jeton_hash  TEXT NOT NULL,
   version     INTEGER NOT NULL CHECK (version >= 1),
   iv          TEXT NOT NULL,
   chiffre     TEXT NOT NULL,
-  maj_le      TEXT NOT NULL DEFAULT (date('now'))
+  maj_le      TEXT NOT NULL DEFAULT (date('now')),
+  vu_le       TEXT NOT NULL DEFAULT (date('now'))
 );
+CREATE INDEX IF NOT EXISTS idx_donnees_pseudonymes_vu ON donnees_pseudonymes (vu_le);

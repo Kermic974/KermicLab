@@ -15,6 +15,9 @@ export const ITERATIONS_SERVEUR = 100000;
 export const DUREE_SESSION_S = 12 * 3600;
 export const ECHECS_AVANT_BLOCAGE = 10;
 export const DUREE_BLOCAGE_S = 15 * 60;
+/** Conservation des données pseudonymisées sans lecture ni écriture (décision du propriétaire, ADR 0024). Durée légale,
+ * pas un réglage d'exploitation : la modifier exige de mettre à jour l'ADR et la page de confidentialité. */
+export const CONSERVATION_JOURS = 365;
 const TAILLE_MAX_CORPS = TAILLE_MAX_CHIFFRE + 4096;
 const encodeur = new TextEncoder();
 
@@ -190,6 +193,8 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
     if (refus) return refus;
     // Rien sous ce pseudonyme : version 0 (pas un 404, c'est le cas normal d'une première activation).
     if (!ligne) return json({ version: 0 });
+    // Lecture = activité : repousse l'effacement des données inactives (date au jour près).
+    await env.DB.prepare("UPDATE donnees_pseudonymes SET vu_le = date('now') WHERE pseudonyme = ? AND vu_le <> date('now')").bind(corps.pseudonyme).run();
     return json({ version: ligne.version, iv: ligne.iv, chiffre: ligne.chiffre, maj: ligne.maj_le });
   }
 
@@ -219,7 +224,7 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
     }
     // Écriture conditionnelle : deux appareils simultanés ne s'écrasent pas.
     const { meta } = await env.DB.prepare(
-      "UPDATE donnees_pseudonymes SET version = version + 1, iv = ?, chiffre = ?, maj_le = date('now') WHERE pseudonyme = ? AND version = ?"
+      "UPDATE donnees_pseudonymes SET version = version + 1, iv = ?, chiffre = ?, maj_le = date('now'), vu_le = date('now') WHERE pseudonyme = ? AND version = ?"
     ).bind(corps.iv, corps.chiffre, corps.pseudonyme, attendue).run();
     if (!meta?.changes) return erreur("version-conflit", 409, { version: actuelle + 1 });
     return json({ version: attendue + 1 });
@@ -228,8 +233,17 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
   return erreur("introuvable", 404);
 }
 
-/** Cron : efface les sessions expirées. */
-export async function purgerSessionsLocales(env, instant = Date.now()) {
-  if (!compteLocalDisponible(env)) return;
-  await env.DB.prepare("DELETE FROM sessions_locales WHERE expire_a <= ?").bind(Math.floor(instant / 1000)).run();
+/**
+ * Cron quotidien : efface les sessions expirées et les données pseudonymisées ni lues ni écrites depuis
+ * CONSERVATION_JOURS jours (données orphelines d'une phrase oubliée ou d'un compte abandonné, ADR 0024).
+ * @returns {Promise<{ sessions: number, donnees: number } | null>}
+ */
+export async function purgerCompteLocal(env, instant = Date.now()) {
+  if (!compteLocalDisponible(env)) return null;
+  const limite = new Date(instant - CONSERVATION_JOURS * 86400000).toISOString().slice(0, 10);
+  const [sessions, donnees] = await env.DB.batch([
+    env.DB.prepare("DELETE FROM sessions_locales WHERE expire_a <= ?").bind(Math.floor(instant / 1000)),
+    env.DB.prepare("DELETE FROM donnees_pseudonymes WHERE vu_le < ?").bind(limite)
+  ]);
+  return { sessions: sessions?.meta?.changes ?? 0, donnees: donnees?.meta?.changes ?? 0 };
 }

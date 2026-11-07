@@ -1,7 +1,7 @@
 import { test, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import worker, { _reinitialiser } from "../../worker/src/index.js";
-import { gererApiCompteLocal, purgerSessionsLocales, ECHECS_AVANT_BLOCAGE } from "../../worker/src/compte-local.js";
+import { gererApiCompteLocal, purgerCompteLocal, ECHECS_AVANT_BLOCAGE, CONSERVATION_JOURS } from "../../worker/src/compte-local.js";
 import { chiffrer, deriverSecrets, sha256Hex } from "../../web/compte-local.js";
 import { creerD1Comptes } from "../helpers/d1-comptes.mjs";
 
@@ -82,7 +82,7 @@ test("données : session obligatoire, preuve de possession, pseudonyme sans lien
   assert.deepEqual(await (await ecrire(0)).json(), { version: 1 });
 
   const ligne = sqlite().prepare("SELECT * FROM donnees_pseudonymes").get();
-  assert.deepEqual(Object.keys(ligne).sort(), ["chiffre", "iv", "jeton_hash", "maj_le", "pseudonyme", "version"], "aucune colonne de compte");
+  assert.deepEqual(Object.keys(ligne).sort(), ["chiffre", "iv", "jeton_hash", "maj_le", "pseudonyme", "version", "vu_le"], "aucune colonne de compte");
   assert.equal(ligne.jeton_hash, await sha256Hex(s.jeton));
   assert.equal(ligne.chiffre.includes("Léa"), false);
 
@@ -133,7 +133,7 @@ test("déconnexion et purge : jeton révoqué, sessions expirées effacées", as
   assert.equal((await appel("deconnexion", { jeton })).status, 401);
   const { jeton: j2 } = await (await appel("connexion", { corps: { identifiant: "lea.martin", motDePasse: MDP } })).json();
   assert.ok(j2);
-  await purgerSessionsLocales(env, Date.now() + 13 * 3600 * 1000);
+  await purgerCompteLocal(env, Date.now() + 13 * 3600 * 1000);
   assert.equal(sqlite().prepare("SELECT count(*) AS n FROM sessions_locales").get().n, 0);
 });
 
@@ -156,4 +156,30 @@ test("Worker : CORS avec en-tête Authorization, origine inconnue refusée, base
   assert.equal(r.status, 503);
   assert.deepEqual(await r.json(), { erreur: "synchro-indisponible" });
   sansTables.DB.sqlite.close();
+});
+
+test("conservation : données ni lues ni écrites depuis 365 jours effacées, une lecture repousse l'échéance", async () => {
+  assert.equal(CONSERVATION_JOURS, 365);
+  const { jeton } = await (await inscrire()).json();
+  const s = await secretsRapides();
+  const boite = await chiffrer(s.cle, s.pseudonyme, { v: 1, donnees: {} });
+  await appel("donnees", { methode: "PUT", jeton, corps: { pseudonyme: s.pseudonyme, jeton: s.jeton, versionAttendue: 0, ...boite } });
+  const vieillir = (jours) => sqlite().prepare("UPDATE donnees_pseudonymes SET maj_le = date('now', ?), vu_le = date('now', ?)").run(`-${jours} days`, `-${jours} days`);
+  const nombre = () => sqlite().prepare("SELECT count(*) AS n FROM donnees_pseudonymes").get().n;
+
+  vieillir(365);
+  assert.deepEqual(await purgerCompteLocal(env), { sessions: 0, donnees: 0 }, "365 jours pile : conservée");
+  vieillir(400);
+  await appel("donnees/lire", { jeton, corps: { pseudonyme: s.pseudonyme, jeton: s.jeton } });
+  const ligne = sqlite().prepare("SELECT maj_le, vu_le FROM donnees_pseudonymes").get();
+  assert.equal(ligne.vu_le, new Date().toISOString().slice(0, 10), "lecture = activité");
+  assert.notEqual(ligne.maj_le, ligne.vu_le, "la date de mise à jour affichée reste celle de la dernière écriture");
+  assert.equal((await purgerCompteLocal(env)).donnees, 0);
+  assert.equal(nombre(), 1);
+
+  vieillir(366);
+  assert.deepEqual(await purgerCompteLocal(env), { sessions: 0, donnees: 1 }, "inactive depuis plus de 365 jours : effacée");
+  assert.equal(nombre(), 0);
+  env.COMPTES_LOCAUX_SECRET = "";
+  assert.equal(await purgerCompteLocal(env), null, "sans configuration, rien n'est touché");
 });

@@ -58,7 +58,8 @@ puis HKDF-SHA256 en trois secrets indépendants :
   Date de création **au jour près**.
 - `sessions_locales` : empreinte SHA-256 du jeton, compte, expiration ; purge quotidienne par le cron.
 - `donnees_pseudonymes` : pseudonyme, empreinte du jeton d'écriture, version, IV, contenu chiffré (350 000 caractères
-  base64 au plus), date de mise à jour au jour près. **Aucune colonne ne relie une ligne à un compte.**
+  base64 au plus), date de dernière écriture (`maj_le`) et de dernière lecture ou écriture (`vu_le`), au jour près.
+  **Aucune colonne ne relie une ligne à un compte.**
 - Une session est exigée pour lire ou écrire des données (le stockage reste réservé aux comptes inscrits), mais le lien
   session ↔ pseudonyme n'est **ni stocké ni journalisé**.
 - Anti force brute : 10 inscriptions ou connexions par minute et par IP (en mémoire, sans IP stockée) ; blocage de
@@ -77,9 +78,18 @@ puis HKDF-SHA256 en trois secrets indépendants :
   journal ne contient pseudonyme ni identifiant.
 - Le serveur voit l'identifiant en clair lors de la connexion : une phrase secrète faible pourrait être attaquée hors
   ligne par un serveur malveillant. D'où les 12 caractères minimum et 310 000 itérations.
-- Données orphelines (phrase oubliée, compte supprimé sans phrase) : conservées, illisibles. **Durée de conservation à
-  fixer** (point de contrôle juridique, chantier RGPD) ; une purge des pseudonymes inactifs est possible plus tard
-  grâce à `maj_le`.
+- Données orphelines (phrase oubliée, compte supprimé sans phrase) : conservées, illisibles, puis effacées selon la
+  règle de conservation (§ 4 bis).
+
+### 4 bis. Conservation (décision du propriétaire, 2026-11-07)
+
+- **365 jours sans activité** : le cron quotidien efface les données pseudonymisées ni lues ni écrites depuis plus de
+  365 jours (`vu_le`, constante `CONSERVATION_JOURS` de `worker/src/compte-local.js`). Une lecture ou un envoi compte
+  comme activité et repousse l'échéance ; la date affichée « mise à jour le » reste celle du dernier envoi (`maj_le`).
+- Effet sur les données orphelines : une phrase oubliée rend les données illisibles tout de suite et elles sont
+  effacées au plus tard 365 jours après la dernière synchronisation.
+- Sessions : effacées dès leur expiration (12 h), par le même cron. Le cron ne journalise que des compteurs.
+- Changer cette durée exige de mettre à jour cet ADR et la page de confidentialité.
 
 ### 5. Relation avec OAuth (ADR 0017)
 
@@ -90,7 +100,7 @@ s'il reste une option (adultes, appareils partagés) ou s'il est rattaché à un
 ## Conséquences
 
 - Nouveau secret Worker `COMPTES_LOCAUX_SECRET` et nouveau schéma `worker/schema-compte-local.sql` à appliquer :
-  actions manuelles 38 et 39. En attendant, l'écran affiche « synchronisation indisponible ».
+  action manuelle 39. En attendant, l'écran affiche « synchronisation indisponible ».
 - Aucune nouvelle dépendance : WebCrypto (navigateur et Workers) suffit.
 - Règles partagées entre l'interface et le Worker (`web/compte-local.js`), comme `web/profil.js` pour le pseudo.
 - Page de confidentialité mise à jour (compte facultatif, synchronisation pseudonymisée).
@@ -99,5 +109,7 @@ s'il reste une option (adultes, appareils partagés) ou s'il est rattaché à un
 
 ## Révision
 
-À valider par le propriétaire, avec la durée de conservation des données orphelines (chantier RGPD), avant d'appliquer
-le schéma et de déposer le secret en production.
+Durée de conservation fixée par le propriétaire le 2026-11-07 (365 jours sans activité). Le passage au statut
+« accepté » reste à confirmer par le propriétaire avant d'appliquer le schéma et de déposer le secret en production.
+Point ouvert : conservation des identifiants en ligne (`comptes_locaux`) d'un compte abandonné, qui ne contiennent
+aucune donnée de progression.
