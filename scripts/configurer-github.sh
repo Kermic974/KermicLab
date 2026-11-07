@@ -21,7 +21,7 @@ gh api -X PATCH "repos/$REPO" -F has_discussions=true >/dev/null
 echo "== Protection de main"
 gh api -X PUT "repos/$REPO/branches/main/protection" --input - <<'JSON'
 {
-  "required_status_checks": { "strict": true, "contexts": ["Lint, build, tests", "analyser", "Audit npm", "Scan des secrets"] },
+  "required_status_checks": { "strict": true, "contexts": ["Lint, build, tests", "analyser", "Revue des dépendances", "Scan des secrets"] },
   "enforce_admins": false,
   "required_pull_request_reviews": { "require_code_owner_reviews": true, "required_approving_review_count": 1, "dismiss_stale_reviews": true },
   "restrictions": null,
