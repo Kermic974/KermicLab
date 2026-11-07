@@ -765,7 +765,8 @@ function brancherCompte() {
 const CLE_DEMO_CONTRIB_ACTIVE = "kermiclab:demo-contributions:active";
 const contrib = {
   demo: false, etatDemo: null, chargee: false, erreur: false, miennes: [], relecture: [],
-  index: null, contenus: new Map(), filtre: { statut: "proposee", notion: "" }, edition: null
+  index: null, contenus: new Map(), filtre: { statut: "proposee", notion: "", matiere: "" }, edition: null,
+  bulle: { notion: null, cible: null }
 };
 const demoContribActive = () => contrib.demo === true;
 const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true;
@@ -854,6 +855,8 @@ async function contenuNotion(id) {
   return contrib.contenus.get(id);
 }
 const titreNotion = (id) => contrib.index?.find((n) => n.id === id)?.titre ?? id;
+const matiereNotion = (id) => contrib.index?.find((n) => n.id === id)?.matiere ?? "autres";
+const nomMatiere = (m) => (etat.textes[`matiere_${m}`] ? t(`matiere_${m}`) : t("matiere_autres"));
 const libelleChamp = (chemin) => contributions.libelleChemin(chemin, (cle) => t(cle));
 
 async function ouvrirContributions() {
@@ -890,6 +893,8 @@ function rafraichirContributions() {
   const compte = actif ? apiContrib.compte() : null;
   const role = compte?.role;
   $("#entree-contributions").hidden = !actif || !(demoContribActive() || contributions.peutContribuer(role));
+  // Menu « Contributions » de la navigation : seulement pour un rôle contributeur, prof ou admin.
+  for (const id of ["#nav-contributions", "#nav-mobile-contributions"]) $(id).hidden = !actif || !contributions.peutContribuer(role);
   if (!actif) return;
   const autorise = contributions.peutContribuer(role);
   $("#contrib-etat").textContent = !contrib.chargee ? t("familleChargement") : contrib.erreur ? t("familleErreur") : "";
@@ -926,16 +931,55 @@ function rendreTableau(compte) {
     return o;
   }));
   selStatut.value = contrib.filtre.statut;
-  const notions = [...new Set(contrib.relecture.map((c) => c.notion_id))].sort();
+  rendreParMatiere();
+  const matieres = [...new Set(contrib.relecture.map((c) => matiereNotion(c.notion_id)))].sort();
+  const selMatiere = $("#contrib-filtre-matiere");
+  const toutesMatieres = element("option", { cle: "contribFiltreToutesMatieres" });
+  toutesMatieres.value = "";
+  selMatiere.replaceChildren(toutesMatieres, ...matieres.map((m) => { const o = element("option", { texte: nomMatiere(m) }); o.value = m; return o; }));
+  if (!matieres.includes(contrib.filtre.matiere)) contrib.filtre.matiere = "";
+  selMatiere.value = contrib.filtre.matiere;
+  const notions = [...new Set(contrib.relecture
+    .filter((c) => !contrib.filtre.matiere || matiereNotion(c.notion_id) === contrib.filtre.matiere).map((c) => c.notion_id))].sort();
   const selNotion = $("#contrib-filtre-notion");
   const toutes = element("option", { cle: "contribFiltreToutes" });
   toutes.value = "";
   selNotion.replaceChildren(toutes, ...notions.map((id) => { const o = element("option", { texte: titreNotion(id) }); o.value = id; return o; }));
   if (!notions.includes(contrib.filtre.notion)) contrib.filtre.notion = "";
   selNotion.value = contrib.filtre.notion;
-  const visibles = contributions.filtrer(contrib.relecture, contrib.filtre);
+  const visibles = contributions.filtrer(contrib.relecture, contrib.filtre, matiereNotion);
   rendreListe($("#contrib-relecture"), visibles, { compte, mode: "relecture" });
   $("#contrib-relecture-vide").hidden = visibles.length > 0;
+}
+
+/** Synthèse matière par matière, puis notion par notion : un clic filtre la liste de relecture. */
+function rendreParMatiere() {
+  const groupes = contributions.grouperParMatiere(contrib.relecture, matiereNotion);
+  const filtrerSur = (matiere, notion = "") => {
+    Object.assign(contrib.filtre, { matiere, notion, statut: "tous" });
+    rafraichirContributions();
+    $("#contrib-relecture").scrollIntoView({ block: "start", behavior: "instant" });
+  };
+  $("#contrib-matieres").replaceChildren(...groupes.map((g) => {
+    const li = element("li", { classe: "contrib-matiere", attributs: { "data-matiere": g.matiere } });
+    const entete = element("div", { classe: "contrib-matiere-entete" });
+    const titre = element("button", { classe: "secondaire petit-bouton", texte: nomMatiere(g.matiere), attributs: { type: "button" } });
+    titre.addEventListener("click", () => filtrerSur(g.matiere));
+    entete.append(titre, element("span", { classe: "doux petit", texte: t("contribMatiereResume", {
+      relire: g.resume.proposee, reviser: g.resume.a_reviser, validees: g.resume.validee + g.resume.integree, total: g.resume.total
+    }) }));
+    const notions = element("ul");
+    notions.append(...g.notions.map((n) => {
+      const item = element("li");
+      const b = element("button", { classe: "secondaire petit-bouton", texte: t("contribNotionResume", { titre: titreNotion(n.id), relire: n.resume.proposee }), attributs: { type: "button" } });
+      b.addEventListener("click", () => filtrerSur(g.matiere, n.id));
+      item.append(b);
+      return item;
+    }));
+    li.append(entete, notions);
+    return li;
+  }));
+  $("#contrib-matieres-vide").hidden = groupes.length > 0;
 }
 
 /** Avant / après mot à mot : <del> pour le texte retiré, <ins> pour le texte ajouté. */
@@ -1191,6 +1235,168 @@ async function deconnecterContrib() {
   await chargerContributions();
 }
 
+/* ---------- Édition ciblée d'une notion dans la bulle (ADR 0023) ---------- */
+// Rôle contributeur ou prof : la bulle affiche, à côté de la page, les textes de la notion regroupés par onglet.
+// Chaque texte se modifie ou se complète sur place, avec l'aperçu avant / après, puis part en relecture.
+// La page elle-même n'est jamais modifiée : elle reste isolée (iframe sans même origine) et déterministe.
+const CLE_EDITION_OUVERTE = "kermiclab:edition-ouverte";
+const roleEdition = () => {
+  if (!contributionsActives()) return null;
+  const role = apiContrib.compte()?.role;
+  return contributions.peutContribuer(role) ? role : null;
+};
+/** Propositions connues pour afficher les compteurs : toutes pour un relecteur, les siennes sinon. */
+const contributionsConnues = () => (contributions.peutRelire(roleEdition()) ? contrib.relecture : contrib.miennes);
+
+async function preparerEdition(notionId) {
+  const bouton = $("#bulle-editer");
+  contrib.bulle = { notion: null, cible: null };
+  bouton.hidden = true;
+  $("#bulle-edition").hidden = true;
+  $("#bulle-lab").classList.remove("en-edition");
+  if (!roleEdition()) return;
+  const index = await indexContenus();
+  if (!index.some((n) => n.id === notionId) || $("#bulle-lab").dataset.notion !== notionId) return;
+  contrib.bulle.notion = notionId;
+  bouton.hidden = false;
+  const ouverte = lireCle(sessionPreferences(), CLE_EDITION_OUVERTE) !== "0";
+  basculerEdition(ouverte, { memoriser: false });
+  if (!contrib.chargee) await chargerContributions();
+  await contenuNotion(notionId);
+  rendreEdition();
+}
+
+function basculerEdition(ouverte, { memoriser = true } = {}) {
+  $("#bulle-editer").setAttribute("aria-pressed", String(ouverte));
+  $("#bulle-edition").hidden = !ouverte;
+  $("#bulle-lab").classList.toggle("en-edition", ouverte);
+  if (memoriser) ecrireCle(sessionPreferences(), CLE_EDITION_OUVERTE, ouverte ? "1" : "0");
+}
+
+function fermerEdition() {
+  contrib.bulle = { notion: null, cible: null };
+  $("#bulle-editer").hidden = true;
+  $("#bulle-edition").hidden = true;
+  $("#bulle-lab").classList.remove("en-edition");
+  $("#edition-formulaire").hidden = true;
+}
+
+function rendreEdition() {
+  const id = contrib.bulle.notion;
+  const contenu = id ? contrib.contenus.get(id) : null;
+  if (!contenu) { $("#edition-sections").replaceChildren(element("p", { classe: "doux", cle: "familleErreur" })); return; }
+  const groupes = contributions.champsParOnglet(contenu, contributionsConnues(), id);
+  const total = groupes.reduce((n, g) => n + g.champs.length, 0);
+  const enCours = groupes.reduce((n, g) => n + g.champs.reduce((m, c) => m + c.enCours, 0), 0);
+  $("#edition-resume").textContent = t(contributions.peutRelire(roleEdition()) ? "editionResumeProf" : "editionResume", { champs: total, n: enCours });
+  $("#edition-sections").replaceChildren(...groupes.map((g, i) => {
+    const section = element("details", { classe: "edition-section", attributs: { "data-onglet": g.onglet } });
+    if (i === 0) section.open = true;
+    const resume = element("summary");
+    const enCoursOnglet = g.champs.reduce((m, c) => m + c.enCours, 0);
+    resume.append(element("span", { cle: `editionOnglet_${g.onglet}` }),
+      element("span", { classe: "doux petit", texte: t("editionChamps", { n: g.champs.length }) + (enCoursOnglet ? ` · ${t("editionEnCours", { n: enCoursOnglet })}` : "") }));
+    const liste = element("ul", { classe: "edition-champs" });
+    liste.append(...g.champs.map((c) => {
+      const li = element("li", { classe: "edition-champ", attributs: { "data-chemin": c.chemin } });
+      const titre = element("p");
+      titre.append(element("strong", { texte: libelleChamp(c.chemin) }));
+      if (c.enCours) titre.append(document.createTextNode(" "), element("span", { classe: "edition-pastille", texte: t("editionEnCours", { n: c.enCours }) }));
+      const extrait = element("p", { classe: "doux", texte: c.valeur.length > 160 ? `${c.valeur.slice(0, 160)}…` : c.valeur });
+      const actions = element("div", { classe: "actions" });
+      const modifier = element("button", { classe: "bouton petit-bouton", cle: "contribModifier", attributs: { type: "button" } });
+      modifier.addEventListener("click", () => ouvrirFormulaireEdition(c, "modification"));
+      actions.append(modifier);
+      if (c.liste) {
+        const ajouter = element("button", { classe: "secondaire petit-bouton", cle: "editionAjouterApres", attributs: { type: "button" } });
+        ajouter.addEventListener("click", () => ouvrirFormulaireEdition(c, "ajout"));
+        actions.append(ajouter);
+      }
+      li.append(titre, extrait, actions);
+      return li;
+    }));
+    section.append(resume, liste);
+    return section;
+  }));
+}
+
+function ouvrirFormulaireEdition(champ, nature) {
+  contrib.bulle.cible = champ;
+  const form = $("#edition-formulaire");
+  form.reset();
+  form.hidden = false;
+  $("#edition-cible").textContent = `${titreNotion(contrib.bulle.notion)} · ${libelleChamp(champ.chemin)}`;
+  $("#edition-actuel").textContent = champ.valeur;
+  $("#edition-nature-ajout").disabled = !champ.liste;
+  document.querySelector(`input[name=edition-nature][value=${nature}]`).checked = true;
+  $("#edition-type").replaceChildren(...contributions.TYPES.map((ty) => { const o = element("option", { cle: `contribType_${ty}` }); o.value = ty; return o; }));
+  $("#edition-texte").value = nature === "modification" ? champ.valeur : "";
+  for (const id of ["texte", "motif", "charte"]) $(`#edition-${id}-erreur`).textContent = "";
+  $("#edition-erreur").textContent = "";
+  apercuEdition();
+  form.scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" });
+  $("#edition-texte").focus({ preventScroll: true });
+}
+
+function apercuEdition() {
+  const cible = contrib.bulle.cible;
+  if (!cible) return;
+  const nature = document.querySelector("input[name=edition-nature]:checked")?.value;
+  const c = { nature, texte_actuel: cible.valeur, texte_propose: $("#edition-texte").value };
+  $("#edition-apercu").replaceWith(Object.assign(blocDiff(c), { id: "edition-apercu" }));
+}
+
+async function envoyerEdition(e) {
+  e.preventDefault();
+  const cible = contrib.bulle.cible;
+  if (!cible) return;
+  const notion = contrib.bulle.notion;
+  const donnees = {
+    notion_id: notion, chemin: cible.chemin,
+    nature: document.querySelector("input[name=edition-nature]:checked")?.value,
+    type: $("#edition-type").value,
+    texte_actuel: cible.valeur,
+    texte_propose: $("#edition-texte").value,
+    motif: $("#edition-motif").value,
+    charte_version: $("#edition-charte").checked ? contributions.VERSION_CHARTE : null,
+    notion_version: contrib.index?.find((n) => n.id === notion)?.version ?? ""
+  };
+  const v = contributions.validerContribution(donnees);
+  const erreurs = v.ok ? {} : v.erreurs;
+  for (const nom of ["texte", "motif", "charte"]) {
+    $(`#edition-${nom}-erreur`).textContent = erreurs[nom] ? t(`contribErreur_${nom}_${erreurs[nom]}`) : "";
+  }
+  $("#edition-erreur").textContent = erreurs.nature ? t(`contribErreur_nature_${erreurs.nature}`) : erreurs.type ? t("contribErreur_type_invalide") : "";
+  if (!v.ok) return;
+  try {
+    await apiContrib.creer(donnees);
+    notifier(t("contribEnvoyee"), "📝");
+    $("#edition-formulaire").hidden = true;
+    contrib.bulle.cible = null;
+    await chargerContributions();
+    rendreEdition();
+    $(`.edition-champ[data-chemin="${CSS.escape(cible.chemin)}"] button`)?.focus();
+  } catch (err) {
+    $("#edition-erreur").textContent = messageErreurContrib(err);
+  }
+}
+
+function brancherEdition() {
+  $("#bulle-editer").addEventListener("click", (e) => basculerEdition(e.currentTarget.getAttribute("aria-pressed") !== "true"));
+  $("#edition-formulaire").addEventListener("submit", envoyerEdition);
+  $("#edition-texte").addEventListener("input", apercuEdition);
+  for (const r of document.querySelectorAll("input[name=edition-nature]")) r.addEventListener("change", apercuEdition);
+  $("#edition-annuler").addEventListener("click", () => { $("#edition-formulaire").hidden = true; contrib.bulle.cible = null; });
+  $("#edition-vers-contributions").addEventListener("click", () => {
+    const notion = contrib.bulle.notion;
+    $("#bulle-lab").addEventListener("close", () => {
+      if (notion && contributions.peutRelire(roleEdition())) Object.assign(contrib.filtre, { statut: "tous", matiere: matiereNotion(notion), notion });
+      naviguer("contributions");
+    }, { once: true });
+    $("#bulle-lab").close();
+  });
+}
+
 /*
  * TEMPORAIRE (issue #160) — à supprimer quand la gestion des comptes sera disponible.
  * « Tester les rôles » dans le Profil simule le rôle contributeur ou prof dans le navigateur (double de démonstration,
@@ -1238,6 +1444,8 @@ function brancherContributions() {
   $("#contrib-annuler-edition").addEventListener("click", finirEdition);
   $("#contrib-filtre-statut").addEventListener("change", (e) => { contrib.filtre.statut = e.currentTarget.value; rafraichirContributions(); });
   $("#contrib-filtre-notion").addEventListener("change", (e) => { contrib.filtre.notion = e.currentTarget.value; rafraichirContributions(); });
+  $("#contrib-filtre-matiere").addEventListener("change", (e) => { contrib.filtre.matiere = e.currentTarget.value; contrib.filtre.notion = ""; rafraichirContributions(); });
+  brancherEdition();
   if (demoContribActive()) void indexContenus().then(rafraichirContributions);
   rafraichirContributions();
 }
@@ -1884,6 +2092,7 @@ function ouvrirBulle(n, url) {
   bulle.dataset.notion = n.id;
   if (!bulle.open) bulle.showModal();
   $("#fermer-bulle").focus();
+  void preparerEdition(n.id);
 }
 
 function brancherBulle() {
@@ -1893,6 +2102,7 @@ function brancherBulle() {
   bulle.addEventListener("close", () => {
     const id = bulle.dataset.notion;
     $("#bulle-cadre").removeAttribute("src");
+    fermerEdition();
     delete $("#bulle-cadre").dataset.module;
     delete bulle.dataset.notion;
     etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
@@ -2472,7 +2682,7 @@ function rafraichirTheme() {
 /** Les 5 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
 const DESTINATIONS = ["accueil", "education", "jeux", "progression", "profil"];
 const ECRANS = [...DESTINATIONS, "defi", "compte"];
-const PARENTS = { defi: "education", famille: "profil", contributions: "profil", compte: "profil" };
+const PARENTS = { defi: "education", famille: "profil", compte: "profil" };
 /** Anciennes adresses (#notions, #labs, #badges…) : redirigées vers la destination qui les contient. */
 const ALIAS_ECRANS = { catalogue: "education", notions: "education", labs: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };

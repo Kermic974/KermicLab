@@ -14,6 +14,7 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 | Schéma : `comptes.role` contraint, table `contributions` (`worker/schema-comptes.sql`) | Présent, non appliqué en production |
 | Interface `#contributions` : formulaire contributeur, « Mes contributions », tableau de bord prof | Fait, masqué tant que `connexionActive = false` |
 | Démonstration `?demo=contributions` (rôles contributeur et prof simulés) | Fait, testé (`tests/e2e/contributions.test.mjs`) |
+| Édition ciblée dans la bulle d'une notion (textes par onglet, compteurs, aperçu) et menu « Contributions » avec synthèse par matière (ADR 0023 §6 bis) | Fait, testé (ordinateur et mobile) |
 | Contenus des notions pour le formulaire (`dist/contenus/`) | Générés par `npm run build` |
 | **Temporaire** : « Tester les rôles » dans le Profil (rôle simulé dans le navigateur, sans serveur) | Actif (`testRolesTemporaire`) ; à supprimer à l'ouverture des comptes, [issue #160](https://github.com/Kermic974/trigoLab/issues/160) |
 

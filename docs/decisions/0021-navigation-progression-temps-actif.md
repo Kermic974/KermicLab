@@ -47,3 +47,7 @@
   type/id discovery model derived from the catalogue; a non-destructive v2 progress schema; Progress grows with real
   usage and shows only launched modules. Time and discoveries never leave the device.
 - Références : ADR 0012, ADR 0013, ADR 0015, ADR 0017, `docs/progression.md`.
+
+## Complément (2026-11-07)
+
+Les comptes de rôle contributeur, prof ou admin voient une sixième entrée « Contributions » (barre latérale et barre du bas), décrite par l'ADR 0023 §6 bis. Les cinq destinations restent identiques pour tous les autres profils.

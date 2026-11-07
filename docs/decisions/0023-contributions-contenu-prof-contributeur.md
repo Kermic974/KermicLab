@@ -104,6 +104,23 @@ Codes d'erreur : `role-requis` (403), `contribution-invalide` (400, détails par
   `?demo=contributions` simule les deux rôles dans l'onglet (`web/demo-contributions.js`, mêmes règles et mêmes formes de
   réponse), sans OAuth ni appel au Worker, pour valider les écrans avant l'activation des comptes.
 
+### 6 bis. Édition ciblée et menu Contributions (2026-11-07)
+
+À la demande du propriétaire, le rôle contributeur ou prof change l'expérience globale :
+
+- **Édition ciblée dans la notion** : quand une notion du gabarit s'ouvre (bulle), le bouton « Proposer une modification »
+  affiche, à côté de la page, un panneau qui reprend **ses textes onglet par onglet** (Explication, Mémo, S'entraîner, Défi).
+  Chaque texte porte le nombre de propositions en cours (les siennes pour un contributeur, toutes pour un prof) et se
+  modifie ou se complète sur place, avec l'aperçu avant / après, le type, le motif et la charte. La page elle-même n'est
+  pas modifiée : elle reste isolée (iframe sans même origine, CSP sans réseau) et déterministe ; la proposition suit le
+  cycle du §3. Le panneau est ouvert par défaut (préférence de l'onglet) ; sur mobile il passe sous la page.
+- **Menu « Contributions »** dans la navigation (barre latérale et barre du bas), affiché **seulement** pour un rôle
+  contributeur, prof ou admin : c'est une sixième destination conditionnelle, qui ne change pas les cinq destinations de
+  l'ADR 0021 pour les autres profils. Il centralise les contributions de l'utilisateur et, pour un prof, le tableau de bord
+  avec une **synthèse matière par matière puis notion par notion** (à relire, à réviser, validées, total) et un filtre
+  par matière ; un clic sur une matière ou une notion filtre la liste. Depuis la bulle, « Voir toutes les contributions »
+  ouvre ce tableau filtré sur la notion.
+
 ### 7. Exception temporaire : « Tester les rôles » (à supprimer, issue #160)
 
 À la demande du propriétaire (2026-11-07), pour tester les écrans avant l'ouverture des comptes : le Profil affiche un

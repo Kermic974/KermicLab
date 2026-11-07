@@ -63,17 +63,19 @@ test("la feuille de route est publiée et accessible depuis Profil, entre « Con
   }
 });
 
-test("le lien de participation reste visible (barre latérale et Profil), hors des 5 destinations, et traduit", async () => {
+test("le lien de participation reste visible (barre latérale et Profil), hors des destinations, et traduit", async () => {
   const html = await readFile(`${racine}web/index.html`, "utf8");
   assert.equal((html.match(/https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc/g) ?? []).length, 2);
   const pied = html.slice(html.indexOf('<div class="barre-pied">'), html.indexOf("</aside>"));
   assert.match(pied, /class="nav-bouton nav-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
   const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("<!-- Espace famille"));
   assert.match(profil, /class="lien-profil" href="https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc" target="_blank" rel="noopener noreferrer"/);
-  // Les deux navigations ne contiennent que les 5 destinations, sans action secondaire.
+  // Les deux navigations ne contiennent que les 5 destinations, sans action secondaire, plus l'entrée « Contributions »
+  // réservée aux rôles contributeur, prof ou admin (ADR 0023 §6 bis), masquée par défaut.
   for (const classe of ["nav", "nav-mobile"]) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
-    assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), ["accueil", "education", "jeux", "progression", "profil"], classe);
+    assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), ["accueil", "education", "jeux", "progression", "profil", "contributions"], classe);
+    assert.match(bloc, /<button [^>]*data-nav="contributions"[^>]*\shidden>/, `${classe} : Contributions masquée par défaut`);
     assert.doesNotMatch(bloc, /<a\b/, `${classe} : aucun lien, seulement des destinations`);
   }
   for (const l of ["fr", "en"]) {

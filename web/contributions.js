@@ -187,10 +187,11 @@ export function resumer(contributions = []) {
   return resume;
 }
 
-/** Filtre du tableau de bord : statut (`tous` ou un statut) et notion (`""` pour toutes). */
-export function filtrer(contributions = [], { statut = "proposee", notion = "" } = {}) {
+/** Filtre du tableau de bord : statut (`tous` ou un statut), notion et matière (`""` pour toutes). */
+export function filtrer(contributions = [], { statut = "proposee", notion = "", matiere = "" } = {}, matiereDe = () => "autres") {
   return contributions
-    .filter((c) => (statut === "tous" || c.statut === statut) && (!notion || c.notion_id === notion))
+    .filter((c) => (statut === "tous" || c.statut === statut) && (!notion || c.notion_id === notion)
+      && (!matiere || (matiereDe(c.notion_id) || "autres") === matiere))
     .sort((a, b) => String(a.created_at).localeCompare(String(b.created_at)));
 }
 
@@ -261,4 +262,58 @@ export function normaliserContributions(liste) {
   return liste
     .filter((c) => c && typeof c.id === "string" && STATUTS.includes(c.statut) && cheminValide(c.chemin))
     .map((c) => Object.fromEntries(champs.map((k) => [k, c[k] ?? null])));
+}
+
+/* ---------- Édition ciblée et vue par matière ---------- */
+
+/** Onglet de la page où apparaît un champ : `explication` (intro, niveaux), `memo`, `application` ou `mise-en-situation`. */
+export function ongletDuChemin(chemin) {
+  const racine = String(chemin).split(".")[0];
+  return { intro: "explication", niveaux: "explication", memo: "memo", application: "application", situation: "mise-en-situation" }[racine]
+    ?? "explication";
+}
+export const ORDRE_ONGLETS = ["explication", "memo", "application", "mise-en-situation"];
+
+/**
+ * Champs éditables regroupés par onglet, dans l'ordre de la page, avec le nombre de propositions en cours sur chacun.
+ * @returns {{ onglet: string, champs: { chemin: string, valeur: string, liste: boolean, enCours: number }[] }[]}
+ */
+export function champsParOnglet(contenu, contributions = [], notionId = null) {
+  const enCours = compterEnCoursParChemin(contributions, notionId);
+  const groupes = new Map(ORDRE_ONGLETS.map((o) => [o, []]));
+  for (const c of champsEditables(contenu)) groupes.get(ongletDuChemin(c.chemin)).push({ ...c, enCours: enCours.get(c.chemin) ?? 0 });
+  return [...groupes].filter(([, champs]) => champs.length).map(([onglet, champs]) => ({ onglet, champs }));
+}
+
+/** Propositions en cours (à relire ou à réviser) par chemin, pour une notion. */
+export function compterEnCoursParChemin(contributions = [], notionId = null) {
+  const n = new Map();
+  for (const c of contributions) {
+    if (!c || (notionId && c.notion_id !== notionId) || !STATUTS_OUVERTS.includes(c.statut)) continue;
+    n.set(c.chemin, (n.get(c.chemin) ?? 0) + 1);
+  }
+  return n;
+}
+
+/**
+ * Synthèse matière par matière, puis notion par notion (tableau de bord du prof).
+ * `matiereDe(notionId)` donne la matière d'une notion (index des contenus) ; inconnue → « autres ».
+ * @returns {{ matiere: string, resume: object, notions: { id: string, resume: object }[] }[]}
+ */
+export function grouperParMatiere(contributions = [], matiereDe = () => "autres") {
+  const matieres = new Map();
+  for (const c of contributions) {
+    if (!c) continue;
+    const m = matiereDe(c.notion_id) || "autres";
+    if (!matieres.has(m)) matieres.set(m, new Map());
+    const notions = matieres.get(m);
+    if (!notions.has(c.notion_id)) notions.set(c.notion_id, []);
+    notions.get(c.notion_id).push(c);
+  }
+  return [...matieres].map(([matiere, notions]) => ({
+    matiere,
+    resume: resumer([...notions.values()].flat()),
+    notions: [...notions].map(([id, liste]) => ({ id, resume: resumer(liste) }))
+      .sort((a, b) => b.resume.proposee - a.resume.proposee || a.id.localeCompare(b.id))
+  })).sort((a, b) => b.resume.proposee - a.resume.proposee || a.matiere.localeCompare(b.matiere));
 }
