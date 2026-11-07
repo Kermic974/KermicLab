@@ -5,6 +5,15 @@ sujet: mathematiques/puissances
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - nombres-decimaux
+competences:
+  - calculer-une-puissance
+  - utiliser-les-puissances-de-10
+  - ecrire-en-notation-scientifique
+  - appliquer-les-regles-de-calcul-des-puissances
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

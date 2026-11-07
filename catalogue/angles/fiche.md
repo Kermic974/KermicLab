@@ -5,6 +5,14 @@ sujet: mathematiques/angles
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-3, cycle-4, seconde
+prerequis:
+competences:
+  - nommer-et-mesurer-un-angle
+  - utiliser-la-somme-des-angles-d-un-triangle
+  - reconnaitre-les-angles-formes-par-des-paralleles
+  - calculer-un-angle-manquant
+duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

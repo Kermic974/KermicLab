@@ -5,6 +5,15 @@ sujet: mathematiques/probabilites
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - fractions
+competences:
+  - calculer-une-probabilite
+  - utiliser-l-evenement-contraire
+  - construire-un-arbre-de-probabilites
+  - relier-frequence-et-probabilite
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

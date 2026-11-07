@@ -5,6 +5,15 @@ sujet: mathematiques/perimetres-aires
 version: 1.1.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-3, cycle-4, seconde
+prerequis:
+competences:
+  - calculer-le-perimetre-d-un-polygone
+  - calculer-l-aire-d-un-polygone
+  - calculer-perimetre-et-aire-d-un-disque
+  - convertir-des-unites-d-aire
+  - prevoir-l-effet-d-un-agrandissement-sur-une-aire
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

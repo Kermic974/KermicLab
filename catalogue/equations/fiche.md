@@ -5,6 +5,15 @@ sujet: mathematiques/equations
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - calcul-litteral
+competences:
+  - resoudre-une-equation-du-premier-degre
+  - mettre-un-probleme-en-equation
+  - resoudre-une-equation-produit-nul
+  - resoudre-une-inequation
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

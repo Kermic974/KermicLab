@@ -5,6 +5,15 @@ sujet: mathematiques/theoreme-de-thales
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - proportionnalite
+competences:
+  - calculer-une-longueur-avec-thales
+  - reconnaitre-la-configuration-papillon
+  - prouver-un-parallelisme-avec-la-reciproque
+  - utiliser-agrandissements-et-reductions
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

@@ -5,6 +5,15 @@ sujet: mathematiques/transformations
 version: 1.1.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-3, cycle-4, seconde
+prerequis:
+  - angles
+competences:
+  - construire-un-symetrique-par-symetrie-axiale
+  - construire-un-symetrique-par-symetrie-centrale
+  - reconnaitre-translations-et-rotations
+  - utiliser-une-homothetie
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

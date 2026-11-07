@@ -5,6 +5,15 @@ sujet: mathematiques/volumes
 version: 1.1.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-3, cycle-4
+prerequis:
+  - perimetres-aires
+competences:
+  - calculer-le-volume-d-un-pave
+  - convertir-volumes-et-contenances
+  - calculer-le-volume-d-un-prisme-et-d-un-cylindre
+  - calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

@@ -5,6 +5,14 @@ sujet: mathematiques/arithmetique
 version: 1.1.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+competences:
+  - utiliser-les-criteres-de-divisibilite
+  - reconnaitre-un-nombre-premier
+  - decomposer-en-facteurs-premiers
+  - rendre-une-fraction-irreductible
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
