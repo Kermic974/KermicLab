@@ -9,6 +9,7 @@ import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { estRouteContribution, gererApiContributions } from "./contributions.js";
+import { estRouteCompteLocal, gererApiCompteLocal, purgerSessionsLocales } from "./compte-local.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { SESSION_CAHIER, SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
@@ -31,6 +32,9 @@ const MAX_SUGGESTIONS = 4;
 const MAX_RELANCES = 3;
 const MOTS_ANGLAIS = /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i;
 let limiteur = null;
+let limiteurCompteLocal = null;
+/** Inscriptions et connexions au compte local par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
+const LIMITE_CONNEXIONS_COMPTE_LOCAL = 10;
 let clientClaude = null; // injecté par les tests ; sinon créé par llm.js
 
 function json(donnees, statut, cors) {
@@ -44,7 +48,7 @@ function enTetesCors(requete, env) {
   const origine = requete.headers.get("origin");
   const autorisees = String(env.ORIGINES_AUTORISEES || "").split(",").map((s) => s.trim()).filter(Boolean);
   if (origine && (autorisees.includes(origine) || autorisees.includes("*"))) {
-    return { "access-control-allow-origin": origine, "access-control-allow-methods": "GET, POST, PATCH, DELETE, OPTIONS", "access-control-allow-headers": "content-type", "access-control-allow-credentials": "true", vary: "origin" };
+    return { "access-control-allow-origin": origine, "access-control-allow-methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS", "access-control-allow-headers": "content-type, authorization", "access-control-allow-credentials": "true", vary: "origin" };
   }
   return {};
 }
@@ -669,6 +673,25 @@ export default {
       return authResponse;
     }
 
+    // Compte local et synchronisation pseudonymisée (ADR 0024) : jeton porteur, jamais de cookie.
+    if (estRouteCompteLocal(url.pathname)) {
+      let reponse;
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        reponse = json({ erreur: "origine-refusee" }, 403, {});
+      } else {
+        try {
+          limiteurCompteLocal ??= creerLimiteur({ maxParMinute: LIMITE_CONNEXIONS_COMPTE_LOCAL });
+          reponse = await gererApiCompteLocal(requete, env, { autoriser: limiteurCompteLocal, ip: requete.headers.get("cf-connecting-ip") || "inconnue" });
+        } catch {
+          // Tables absentes ou D1 indisponible : jamais de 500 ni de détail interne.
+          reponse = json({ erreur: "synchro-indisponible" }, 503, {});
+        }
+      }
+      const headers = new Headers(reponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(reponse.body, { status: reponse.status, headers });
+    }
+
     // Authenticated account API
     // Comptes famille (ADR 0017) : réservés au parent connecté ; 401 sans session valide.
     // Contributions au contenu (ADR 0023) : rôles contributeur, prof, admin ; mêmes garde-fous de session.
@@ -753,6 +776,8 @@ export default {
       .catch(() => console.error("purge défis llm indisponible")));
     ctx.waitUntil(purgerCahiersLlm(env, evenement.scheduledTime)
       .catch(() => console.error("purge cahiers llm indisponible")));
+    ctx.waitUntil(purgerSessionsLocales(env, evenement.scheduledTime)
+      .catch(() => console.error("purge sessions compte local indisponible")));
     ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
       .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
       .catch((e) => console.error("sauvegarde kpi", e?.message)));
@@ -760,4 +785,4 @@ export default {
 };
 
 /** Réinitialise l'état en mémoire (tests). */
-export function _reinitialiser({ client = null } = {}) { limiteur = null; clientClaude = client; }
+export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurCompteLocal = null; clientClaude = client; }

@@ -995,3 +995,10 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .test-roles { margin-top: 16px; padding: 12px 14px; border: 1px dashed var(--bord-fort); border-radius: var(--rayon-moyen); }
 .test-roles select { max-width: 100%; }
 .test-roles p { margin: 6px 0 0; }
+
+/* ---------- Mon compte (ADR 0024) ---------- */
+.compte-bloc { margin: 16px 0 0; }
+.regles-mdp { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 2px; }
+.regles-mdp li::before { content: "○ "; }
+.regles-mdp li[data-ok="true"] { color: var(--texte); }
+.regles-mdp li[data-ok="true"]::before { content: "✓ "; }

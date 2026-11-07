@@ -2,6 +2,13 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Compte local et synchronisation pseudonymisée (ADR 0024)
+
+| # | Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|---|
+| 38 | Valider l'ADR 0024 et fixer la durée de conservation des données pseudonymisées orphelines (phrase oubliée) | [ADR 0024](decisions/0024-compte-local-synchro-pseudonymisee.md) ; chantier RGPD | Point de contrôle humain et juridique : données en ligne conservées mais illisibles en cas d'oubli | Statut de l'ADR passé à « accepté » ; durée inscrite dans l'ADR et la page de confidentialité | à faire |
+| 39 | Créer le secret `COMPTES_LOCAUX_SECRET` (32 caractères aléatoires minimum, ex. `openssl rand -base64 48`) et appliquer `worker/schema-compte-local.sql` | `cd worker && npx wrangler secret put COMPTES_LOCAUX_SECRET` ; `npx wrangler d1 execute kermiclab-kpi --remote --file=schema-compte-local.sql` | Sans secret ni tables, la synchronisation répond « indisponible » (le compte local fonctionne). Le secret ne doit jamais changer : il sert aux empreintes des identifiants et mots de passe | `GET /api/compte-local/etat` renvoie `{"disponible":true}` ; dans « Mon compte », activer la synchronisation puis récupérer les données sur un second navigateur | à faire (après l'action 38) |
+
 ## Contributions au contenu : profils Prof et Contributeur (ADR 0023)
 
 | # | Action | Où | Pourquoi | Comment confirmer | Statut |
