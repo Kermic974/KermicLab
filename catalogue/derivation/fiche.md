@@ -5,6 +5,16 @@ sujet: mathematiques/derivation
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
+niveaux: premiere, terminale
+prerequis:
+  - fonctions-de-reference
+  - droites-et-systemes
+competences:
+  - calculer-un-nombre-derive
+  - utiliser-les-formules-de-derivation
+  - etudier-les-variations-d-une-fonction
+  - determiner-un-extremum
+duree: 45
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

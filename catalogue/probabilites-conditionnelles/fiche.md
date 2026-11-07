@@ -5,6 +5,15 @@ sujet: mathematiques/probabilites-conditionnelles
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
+niveaux: premiere, terminale
+prerequis:
+  - probabilites
+competences:
+  - calculer-une-probabilite-conditionnelle
+  - construire-un-arbre-pondere
+  - appliquer-la-formule-des-probabilites-totales
+  - tester-l-independance-de-deux-evenements
+duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

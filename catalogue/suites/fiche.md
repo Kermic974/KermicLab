@@ -5,6 +5,15 @@ sujet: mathematiques/suites
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
+niveaux: premiere, terminale
+prerequis:
+  - calcul-litteral
+competences:
+  - definir-une-suite-explicite-ou-recurrente
+  - utiliser-une-suite-arithmetique
+  - utiliser-une-suite-geometrique
+  - etudier-le-sens-de-variation-d-une-suite
+duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

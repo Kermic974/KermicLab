@@ -5,6 +5,16 @@ sujet: mathematiques/produit-scalaire
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
+niveaux: premiere
+prerequis:
+  - vecteurs
+  - trigo-cercle
+competences:
+  - calculer-un-produit-scalaire
+  - calculer-un-produit-scalaire-avec-les-coordonnees
+  - utiliser-la-formule-d-al-kashi
+  - determiner-un-vecteur-normal
+duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

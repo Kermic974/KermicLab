@@ -5,6 +5,16 @@ sujet: mathematiques/droites-et-systemes
 version: 1.0.0
 date: 2026-11-01
 niveau: seconde
+niveaux: seconde
+prerequis:
+  - fonctions-affines
+  - equations
+competences:
+  - determiner-l-equation-reduite-d-une-droite
+  - reconnaitre-des-droites-paralleles
+  - resoudre-un-systeme-de-deux-equations
+  - utiliser-une-equation-cartesienne
+duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
