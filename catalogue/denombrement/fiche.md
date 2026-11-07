@@ -5,6 +5,14 @@ sujet: mathematiques/denombrement
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
+niveaux: terminale
+prerequis:
+competences:
+  - denombrer-des-listes-avec-repetition
+  - denombrer-permutations-et-arrangements
+  - calculer-une-combinaison
+  - denombrer-les-parties-d-un-ensemble
+duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

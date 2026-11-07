@@ -5,6 +5,15 @@ sujet: mathematiques/integrales
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
+niveaux: terminale
+prerequis:
+  - derivation
+competences:
+  - determiner-une-primitive
+  - calculer-une-integrale
+  - calculer-une-valeur-moyenne
+  - calculer-une-aire-entre-deux-courbes
+duree: 45
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

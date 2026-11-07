@@ -5,6 +5,16 @@ sujet: mathematiques/limites-et-continuite
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
+niveaux: terminale
+prerequis:
+  - suites
+  - fonctions-de-reference
+competences:
+  - calculer-une-limite-en-l-infini
+  - lever-une-forme-indeterminee
+  - determiner-une-asymptote
+  - appliquer-le-theoreme-des-valeurs-intermediaires
+duree: 45
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

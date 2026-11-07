@@ -5,6 +5,16 @@ sujet: mathematiques/geometrie-dans-l-espace
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
+niveaux: terminale
+prerequis:
+  - produit-scalaire
+  - droites-et-systemes
+competences:
+  - calculer-dans-un-repere-de-l-espace
+  - ecrire-une-representation-parametrique-de-droite
+  - determiner-l-equation-cartesienne-d-un-plan
+  - calculer-un-projete-orthogonal
+duree: 45
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

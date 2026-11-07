@@ -5,6 +5,15 @@ sujet: mathematiques/recurrence
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
+niveaux: terminale
+prerequis:
+  - suites
+competences:
+  - rediger-une-demonstration-par-recurrence
+  - demontrer-une-formule-de-somme
+  - demontrer-une-divisibilite
+  - verifier-l-initialisation-et-l-heredite
+duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

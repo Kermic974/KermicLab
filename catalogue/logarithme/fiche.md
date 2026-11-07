@@ -5,6 +5,15 @@ sujet: mathematiques/logarithme
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
+niveaux: terminale
+prerequis:
+  - exponentielle
+competences:
+  - utiliser-la-definition-du-logarithme
+  - appliquer-les-proprietes-algebriques-du-logarithme
+  - etudier-la-fonction-logarithme
+  - resoudre-une-equation-avec-le-logarithme
+duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
