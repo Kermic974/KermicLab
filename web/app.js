@@ -1919,7 +1919,7 @@ function chiffresModule(m) {
 }
 
 /**
- * Activité d'une notion d'après le contrat d'événements (ADR 0025, issue #183) : exercices tentés et réussis, dont après
+ * Activité d'une notion d'après le contrat d'événements (ADR 0025, issue #182) : exercices tentés et réussis, dont après
  * un indice, ouvertures, notion terminée. Des faits locaux, distincts des étoiles et de toute maîtrise.
  */
 function activiteNotion(id) {

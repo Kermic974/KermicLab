@@ -62,7 +62,7 @@ compte local (ADR 0024) : l'étendre demandera une décision.
 - XP ludique, exercices réussis et maîtrise scolaire restent **distincts** : « Mes trophées » garde l'XP des jeux ;
   la maîtrise sera calculée à partir de ces événements (issue #185).
 
-### 5. Affichage (issue #183)
+### 5. Affichage (issue #182)
 
 « Mes trophées » (écran Progression) ajoute à la carte de chaque notion ou lab un bloc **Activité** calculé à partir de
 l'agrégat : exercices réussis / tentés, réussis après un indice, ouvertures, et « Tous les exercices réussis » quand la
