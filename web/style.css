@@ -1000,6 +1000,13 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .test-roles select { max-width: 100%; }
 .test-roles p { margin: 6px 0 0; }
 
+/* ---------- Mon compte (ADR 0024) ---------- */
+.compte-bloc { margin: 16px 0 0; }
+.regles-mdp { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 2px; }
+.regles-mdp li::before { content: "○ "; }
+.regles-mdp li[data-ok="true"] { color: var(--texte); }
+.regles-mdp li[data-ok="true"]::before { content: "✓ "; }
+
 /* ---------- Édition ciblée et menu Contributions (ADR 0023) ---------- */
 .nav-bouton[hidden], .nav-mobile-bouton[hidden] { display: none; }
 .bulle-corps { flex: 1; min-height: 0; display: flex; }

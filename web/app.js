@@ -4,6 +4,7 @@
 import * as progression from "./progression.js";
 import * as profil from "./profil.js";
 import * as comptes from "./comptes.js";
+import * as compteLocal from "./compte-local.js";
 import * as demoFamille from "./demo-famille.js";
 import * as contributions from "./contributions.js";
 import * as demoContrib from "./demo-contributions.js";
@@ -103,6 +104,7 @@ async function appliquerLangue(langue) {
   if (etat.ecran === "progression") rendreProgression();
   rafraichirDefiTextes();
   rafraichirFamille();
+  rafraichirCompte();
   rafraichirContributions();
   rendreCahiers();
 }
@@ -384,6 +386,377 @@ function brancherFamille() {
   $("#formulaire-enfant").addEventListener("submit", creerEnfant);
   $("#ouvrir-famille").addEventListener("click", () => { $("#dialogue-profil").close(); naviguer("famille"); });
   rafraichirFamille();
+}
+
+/* ---------- Mon compte (ADR 0024) ---------- */
+// Compte facultatif : identifiant + mot de passe, enregistré sur l'appareil (vérificateur PBKDF2, jamais le mot de
+// passe). La synchronisation, sur demande, envoie un instantané chiffré sous un pseudonyme dérivé d'une phrase secrète
+// qui ne quitte pas l'appareil. Aucun appel au Worker tant que l'utilisateur n'active pas ou n'utilise pas la synchro.
+const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS];
+const compteEtat = { enregistrement: null, session: null, occupe: false };
+const bornesCompte = {
+  min: compteLocal.IDENTIFIANT_MIN, max: compteLocal.IDENTIFIANT_MAX
+};
+
+function chargerCompte() {
+  const e = compteLocal.lireEnregistrement(lireCle(stockage(), compteLocal.CLE_COMPTE));
+  compteEtat.enregistrement = e;
+  const s = e ? compteLocal.lireSession(lireCle(sessionPreferences(), compteLocal.CLE_SESSION), e.identifiant) : null;
+  // Jeton de synchronisation expiré (12 h) : la synchronisation redevient verrouillée.
+  if (s?.synchro && !(s.synchro.expire > Date.now() / 1000)) s.synchro = null;
+  compteEtat.session = s;
+}
+
+function sauverCompte() {
+  const { enregistrement: e, session: s } = compteEtat;
+  if (e) ecrireCle(stockage(), compteLocal.CLE_COMPTE, JSON.stringify(e));
+  else effacerCle(stockage(), compteLocal.CLE_COMPTE);
+  if (s) ecrireCle(sessionPreferences(), compteLocal.CLE_SESSION, JSON.stringify(s));
+  else effacerCle(sessionPreferences(), compteLocal.CLE_SESSION);
+}
+
+async function apiCompte(route, { methode = "POST", corps, jeton } = {}) {
+  const r = await fetch(urlApi(`/api/compte-local/${route}`), {
+    method: methode, credentials: "omit", cache: "no-store",
+    headers: { ...(corps ? { "content-type": "application/json" } : {}), ...(jeton ? { authorization: `Bearer ${jeton}` } : {}) },
+    body: corps ? JSON.stringify(corps) : undefined
+  });
+  let donnees = null;
+  try { donnees = await r.json(); } catch { /* réponse vide (204) */ }
+  return { statut: r.status, donnees };
+}
+
+/** Affiche (ou efface) l'erreur d'un champ : `#id` et son message `#id-erreur`. */
+function erreurChamp(id, message, erreurId = `${id}-erreur`) {
+  const champ = $(`#${id}`);
+  if (message) champ.setAttribute("aria-invalid", "true"); else champ.removeAttribute("aria-invalid");
+  $(`#${erreurId}`).textContent = message;
+  if (message) champ.focus();
+  return !message;
+}
+
+function messageSynchro(cle, variables) {
+  $("#synchro-message").textContent = cle ? t(cle, variables) : "";
+}
+
+function marquerReglesMdp() {
+  const mdp = $("#compte-mdp").value;
+  const manquants = new Set(compteLocal.validerMotDePasse(mdp).manquants ?? []);
+  document.querySelectorAll("#compte-mdp-regles [data-regle]").forEach((li) => {
+    const ok = li.dataset.regle === "longueur" ? [...mdp].length >= compteLocal.MOT_DE_PASSE_MIN
+      : mdp.length > 0 && !manquants.has(li.dataset.regle);
+    li.dataset.ok = String(ok);
+  });
+}
+
+function rafraichirCompte() {
+  const { enregistrement: e, session: s } = compteEtat;
+  $("#compte-identifiant-aide").textContent = t("compteIdentifiantAide", bornesCompte);
+  $("#compte-mdp-regles [data-regle=longueur]").textContent = t("compteRegleLongueur", { min: compteLocal.MOT_DE_PASSE_MIN });
+  $("#synchro-phrase-aide").textContent = t("synchroPhraseAide", { min: compteLocal.PASSPHRASE_MIN });
+  $("#compte-memoire").hidden = etat.memoire;
+  $("#compte-creation").hidden = !!e;
+  $("#compte-connexion").hidden = !e || !!s;
+  $("#compte-ouvert").hidden = !e || !s;
+  if (e && !s) $("#compte-connexion-texte").textContent = t("compteConnexionTexte", { identifiant: e.identifiant });
+  if (!e || !s) return;
+  const active = !!e.synchro;
+  const deverrouillee = active && !!s.synchro;
+  $("#compte-ouvert-texte").textContent = t("compteConnecte", { identifiant: e.identifiant });
+  $("#synchro-statut").textContent = !active ? t("synchroInactive")
+    : !deverrouillee ? t("synchroVerrouillee")
+      : t("synchroActive", { version: e.synchro.version, maj: e.synchro.maj ? t("synchroMaj", { date: e.synchro.maj }) : "" });
+  $("#synchro-activation").hidden = active;
+  $("#synchro-deverrouillage").hidden = !active || deverrouillee;
+  $("#synchro-actions").hidden = !deverrouillee;
+  $("#compte-suppression-aide").textContent = t(!active ? "compteSuppressionAide" : deverrouillee ? "compteSuppressionAideSynchro" : "compteSuppressionAideVerrouille");
+}
+
+async function creerCompteLocal(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const id = compteLocal.validerIdentifiant($("#compte-identifiant").value);
+  if (!erreurChamp("compte-identifiant", id.ok ? "" : t(`compteIdentifiantErreur_${id.erreur}`, bornesCompte))) return;
+  const mdp = $("#compte-mdp").value;
+  const m = compteLocal.validerMotDePasse(mdp, { identifiant: id.identifiant });
+  const manquants = (m.manquants ?? []).map((f) => t(`compteFamille_${f}`)).join(", ");
+  if (!erreurChamp("compte-mdp", m.ok ? "" : t(`compteMdpErreur_${m.erreur}`, { min: compteLocal.MOT_DE_PASSE_MIN, max: compteLocal.MOT_DE_PASSE_MAX, manquants }))) return;
+  if (!erreurChamp("compte-mdp2", $("#compte-mdp2").value === mdp ? "" : t("compteMdpDifferents"))) return;
+  compteEtat.occupe = true;
+  try {
+    compteEtat.enregistrement = await compteLocal.creerEnregistrement(id.identifiant, mdp);
+    compteEtat.session = { identifiant: id.identifiant, synchro: null };
+    sauverCompte();
+  } finally {
+    compteEtat.occupe = false;
+  }
+  $("#formulaire-compte-creer").reset();
+  marquerReglesMdp();
+  rafraichirCompte();
+  notifier(t("compteCree"), "🔐");
+}
+
+async function connecterCompteLocal(ev) {
+  ev.preventDefault();
+  const e = compteEtat.enregistrement;
+  const mdp = $("#compte-connexion-mdp").value;
+  if (!erreurChamp("compte-connexion-mdp", mdp ? "" : t("compteMdpRequis"), "compte-connexion-erreur")) return;
+  if (!erreurChamp("compte-connexion-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"), "compte-connexion-erreur")) return;
+  compteEtat.session = { identifiant: e.identifiant, synchro: null };
+  sauverCompte();
+  $("#formulaire-compte-connexion").reset();
+  rafraichirCompte();
+  notifier(t("compteConnecte", { identifiant: e.identifiant }), "🔓");
+}
+
+function deconnecterCompteLocal() {
+  const jeton = compteEtat.session?.synchro?.jetonServeur;
+  if (jeton) void apiCompte("deconnexion", { jeton }).catch(() => {});
+  compteEtat.session = null;
+  sauverCompte();
+  messageSynchro("");
+  rafraichirCompte();
+  notifier(t("compteDeconnecte"), "👋");
+}
+
+/** Message d'une réponse d'erreur du serveur ; une session expirée reverrouille la synchronisation. */
+function erreurServeur({ statut, donnees }) {
+  if (statut === 401 && donnees?.erreur === "non-connecte" && compteEtat.session) {
+    compteEtat.session.synchro = null;
+    sauverCompte();
+    rafraichirCompte();
+    return "synchroSessionExpiree";
+  }
+  if (statut === 401) return "synchroIdentifiantsInvalides";
+  if (statut === 429) return "synchroTropDeTentatives";
+  if (statut === 503) return "synchroIndisponible";
+  return "synchroErreur";
+}
+
+const jourLocal = () => new Date().toISOString().slice(0, 10);
+const preuveSynchro = () => ({ pseudonyme: compteEtat.session.synchro.pseudonyme, jeton: compteEtat.session.synchro.jeton });
+
+/** Envoie l'instantané chiffré ; renvoie la clé du message à afficher. */
+async function envoyerInstantane() {
+  const { synchro } = compteEtat.session;
+  const e = compteEtat.enregistrement;
+  sauverSession();
+  const instant = compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES);
+  const boite = await compteLocal.chiffrer(synchro.cle, synchro.pseudonyme, instant);
+  const r = await apiCompte("donnees", { methode: "PUT", jeton: synchro.jetonServeur, corps: { ...preuveSynchro(), versionAttendue: e.synchro.version, ...boite } });
+  if (r.statut === 200) {
+    e.synchro.version = r.donnees.version;
+    e.synchro.maj = jourLocal();
+    sauverCompte();
+    return ["synchroEnvoyees", { version: r.donnees.version }];
+  }
+  if (r.statut === 409 && Number.isInteger(r.donnees?.version)) {
+    // Un autre appareil a écrit : un nouvel envoi remplacera sciemment sa version.
+    e.synchro.version = r.donnees.version;
+    sauverCompte();
+    return ["synchroConflit"];
+  }
+  return [erreurServeur(r)];
+}
+
+/** Connexion au serveur : inscription au premier usage, sinon connexion (même identifiant et mot de passe). */
+async function ouvrirSessionServeur(identifiant, motDePasse, { inscrire }) {
+  if (inscrire) {
+    const r = await apiCompte("inscription", { corps: { identifiant, motDePasse } });
+    if (r.statut === 201) return { ...r, nouveau: true };
+    if (r.statut !== 409) return r;
+  }
+  const r = await apiCompte("connexion", { corps: { identifiant, motDePasse } });
+  if (inscrire && r.statut === 401) return { statut: 409, donnees: { erreur: "identifiant-pris" } };
+  return { ...r, nouveau: false };
+}
+
+async function activerSynchro(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const e = compteEtat.enregistrement;
+  const mdp = $("#synchro-mdp").value;
+  const phrase = $("#synchro-phrase").value;
+  for (const id of ["synchro-mdp", "synchro-phrase", "synchro-phrase2", "synchro-compris"]) erreurChamp(id, "");
+  if (!erreurChamp("synchro-mdp", mdp ? "" : t("compteMdpRequis"))) return;
+  const p = compteLocal.validerPassphrase(phrase, { motDePasse: mdp });
+  if (!erreurChamp("synchro-phrase", p.ok ? "" : t(`synchroPhraseErreur_${p.erreur}`, { min: compteLocal.PASSPHRASE_MIN, max: compteLocal.PASSPHRASE_MAX }))) return;
+  if (!erreurChamp("synchro-phrase2", $("#synchro-phrase2").value === phrase ? "" : t("synchroPhrasesDifferentes"))) return;
+  if (!erreurChamp("synchro-compris", $("#synchro-compris").checked ? "" : t("synchroComprisRequis"))) return;
+  if (!erreurChamp("synchro-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"))) return;
+  compteEtat.occupe = true;
+  messageSynchro("synchroEnCours");
+  try {
+    const dispo = await apiCompte("etat", { methode: "GET" });
+    if (!dispo.donnees?.disponible) { messageSynchro("synchroIndisponible"); return; }
+    const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: true });
+    if (s.statut === 409) { messageSynchro("synchroIdentifiantPris"); return; }
+    if (!s.donnees?.jeton) { messageSynchro(erreurServeur(s)); return; }
+    const secrets = await compteLocal.deriverSecrets(phrase, e.identifiant);
+    compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, jetonServeur: s.donnees.jeton, expire: s.donnees.expire };
+    e.synchro = { empreinte: secrets.empreinte, version: 0, maj: null };
+    const lu = await apiCompte("donnees/lire", { jeton: s.donnees.jeton, corps: preuveSynchro() });
+    let message;
+    const trouve = lu.statut === 200 && lu.donnees?.version > 0;
+    if (trouve) {
+      e.synchro.version = lu.donnees.version;
+      e.synchro.maj = lu.donnees.maj ?? null;
+      message = ["synchroDonneesTrouvees"];
+    } else if (lu.statut === 200 && !s.nouveau) {
+      message = ["synchroAucuneDonnee"];
+    } else if (lu.statut === 200) {
+      sauverCompte();
+      const [cle, variables] = await envoyerInstantane();
+      message = cle === "synchroEnvoyees" ? ["synchroActivee", variables] : [cle, variables];
+    } else {
+      compteEtat.session.synchro = null;
+      e.synchro = null;
+      message = [erreurServeur(lu)];
+    }
+    sauverCompte();
+    $("#formulaire-synchro-activer").reset();
+    rafraichirCompte();
+    messageSynchro(...message);
+  } catch {
+    messageSynchro("synchroErreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+async function deverrouillerSynchro(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const e = compteEtat.enregistrement;
+  const mdp = $("#synchro-dv-mdp").value;
+  const phrase = $("#synchro-dv-phrase").value;
+  if (!erreurChamp("synchro-dv-mdp", mdp && phrase ? "" : t("compteMdpRequis"), "synchro-dv-erreur")) return;
+  if (!erreurChamp("synchro-dv-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"), "synchro-dv-erreur")) return;
+  compteEtat.occupe = true;
+  try {
+    const secrets = await compteLocal.deriverSecrets(phrase, e.identifiant);
+    // L'empreinte gardée sur l'appareil reconnaît une phrase mal saisie, sans rien demander au serveur.
+    if (!erreurChamp("synchro-dv-phrase", compteLocal.egalesTempsConstant(secrets.empreinte, e.synchro.empreinte) ? "" : t("synchroPhraseIncorrecte"), "synchro-dv-erreur")) return;
+    const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
+    if (!s.donnees?.jeton) { erreurChamp("synchro-dv-mdp", t(erreurServeur(s)), "synchro-dv-erreur"); return; }
+    compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, jetonServeur: s.donnees.jeton, expire: s.donnees.expire };
+    sauverCompte();
+    $("#formulaire-synchro-deverrouiller").reset();
+    rafraichirCompte();
+    messageSynchro("synchroDeverrouillee");
+  } catch {
+    erreurChamp("synchro-dv-mdp", t("synchroErreur"), "synchro-dv-erreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+async function envoyerSynchro() {
+  if (compteEtat.occupe) return;
+  compteEtat.occupe = true;
+  messageSynchro("synchroEnCours");
+  try {
+    messageSynchro(...await envoyerInstantane());
+    rafraichirCompte();
+  } catch {
+    messageSynchro("synchroErreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+async function recupererSynchro(ev) {
+  const bouton = ev.currentTarget;
+  // Confirmation en deux temps : la récupération remplace les données de l'appareil.
+  if (bouton.dataset.confirmer !== "1") {
+    bouton.dataset.confirmer = "1";
+    bouton.textContent = t("synchroRecupererConfirmer");
+    return;
+  }
+  delete bouton.dataset.confirmer;
+  bouton.textContent = t("synchroRecuperer");
+  if (compteEtat.occupe) return;
+  compteEtat.occupe = true;
+  messageSynchro("synchroEnCours");
+  try {
+    const { synchro } = compteEtat.session;
+    const lu = await apiCompte("donnees/lire", { jeton: synchro.jetonServeur, corps: preuveSynchro() });
+    if (lu.statut !== 200) { messageSynchro(erreurServeur(lu)); return; }
+    if (!(lu.donnees?.version > 0)) { messageSynchro("synchroAucuneDonnee"); return; }
+    let instant;
+    try { instant = await compteLocal.dechiffrer(synchro.cle, synchro.pseudonyme, lu.donnees); } catch { messageSynchro("synchroIllisible"); return; }
+    if (!compteLocal.restaurer(instant, CLES_SYNCHRONISEES, (cle, v) => ecrireCle(stockage(), cle, v), (cle) => effacerCle(stockage(), cle))) {
+      messageSynchro("synchroIllisible");
+      return;
+    }
+    const e = compteEtat.enregistrement;
+    e.synchro.version = lu.donnees.version;
+    e.synchro.maj = lu.donnees.maj ?? null;
+    sauverCompte();
+    // Les données restaurées (pseudo, progression, trophées, cahiers) sont relues au rechargement.
+    location.reload();
+  } catch {
+    messageSynchro("synchroErreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+const erreurSuppression = (message) => erreurChamp("compte-suppr-mdp", message, "compte-suppr-erreur");
+
+async function supprimerCompteLocal(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const e = compteEtat.enregistrement;
+  const mdp = $("#compte-suppr-mdp").value;
+  if (!erreurSuppression(mdp ? "" : t("compteMdpRequis"))) return;
+  if (!erreurSuppression(await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"))) return;
+  compteEtat.occupe = true;
+  try {
+    if (e.synchro) {
+      // Compte en ligne : données pseudonymisées d'abord (si la phrase est déverrouillée), puis identifiants.
+      const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
+      if (s.donnees?.jeton) {
+        if (compteEtat.session?.synchro) {
+          const r = await apiCompte("donnees/supprimer", { jeton: s.donnees.jeton, corps: preuveSynchro() });
+          if (r.statut !== 204) { erreurSuppression(t(erreurServeur(r))); return; }
+        }
+        const r = await apiCompte("compte/supprimer", { jeton: s.donnees.jeton, corps: { motDePasse: mdp } });
+        if (r.statut !== 204) { erreurSuppression(t(erreurServeur(r))); return; }
+      } else if (s.statut !== 401) {
+        // Serveur injoignable : rien n'est effacé, pour ne pas laisser un compte en ligne orphelin.
+        erreurSuppression(t(erreurServeur(s)));
+        return;
+      }
+    }
+    compteEtat.enregistrement = null;
+    compteEtat.session = null;
+    sauverCompte();
+    $("#formulaire-compte-supprimer").reset();
+    $("#compte-suppression").open = false;
+    messageSynchro("");
+    rafraichirCompte();
+    notifier(t("compteSupprime"), "🧹");
+  } catch {
+    erreurSuppression(t("synchroErreur"));
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+function brancherCompte() {
+  chargerCompte();
+  $("#formulaire-compte-creer").addEventListener("submit", creerCompteLocal);
+  $("#compte-mdp").addEventListener("input", marquerReglesMdp);
+  $("#formulaire-compte-connexion").addEventListener("submit", connecterCompteLocal);
+  $("#compte-deconnexion").addEventListener("click", deconnecterCompteLocal);
+  $("#formulaire-synchro-activer").addEventListener("submit", activerSynchro);
+  $("#formulaire-synchro-deverrouiller").addEventListener("submit", deverrouillerSynchro);
+  $("#synchro-envoyer").addEventListener("click", envoyerSynchro);
+  $("#synchro-recuperer").addEventListener("click", recupererSynchro);
+  $("#formulaire-compte-supprimer").addEventListener("submit", supprimerCompteLocal);
+  marquerReglesMdp();
+  rafraichirCompte();
 }
 
 /* ---------- Contributions au contenu des notions (ADR 0023) ---------- */
@@ -1897,7 +2270,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#famille"), $("#contributions"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#compte"), $("#famille"), $("#contributions"), $("#defi"), $("#progres"));
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -1925,6 +2298,7 @@ async function demarrer() {
   select.addEventListener("change", async () => { ecrirePreference(select.value); await appliquerLangue(select.value); });
 
   brancherProfil();
+  brancherCompte();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -2174,13 +2548,15 @@ function initialiserSession() {
 function changerMemoire(active) {
   const ancien = stockage();
   const cahiers = lireCle(ancien, CLE_CAHIERS);
+  const compte = lireCle(ancien, compteLocal.CLE_COMPTE);
   if (active) document.cookie = profil.cookieMemoire({ securise: cookieSecurise() });
   else document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
   etat.memoire = active;
-  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS]) effacerCle(ancien, cle);
+  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, compteLocal.CLE_COMPTE]) effacerCle(ancien, cle);
   if (!active) effacerCle(preferences(), progression.CLE_STOCKAGE);
   sauverSession();
   if (cahiers) ecrireCle(stockage(), CLE_CAHIERS, cahiers);
+  if (compte) ecrireCle(stockage(), compteLocal.CLE_COMPTE, compte);
 }
 
 function sauverSession() {
@@ -2251,7 +2627,7 @@ function brancherProfil() {
     }
     document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
     for (const zone of [preferences(), (() => { try { return window.sessionStorage; } catch { return null; } })()]) {
-      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS]) effacerCle(zone, cle);
+      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, compteLocal.CLE_COMPTE, compteLocal.CLE_SESSION]) effacerCle(zone, cle);
     }
     location.reload();
   });
@@ -2305,8 +2681,8 @@ function rafraichirTheme() {
 
 /** Les 5 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
 const DESTINATIONS = ["accueil", "education", "jeux", "progression", "profil"];
-const ECRANS = [...DESTINATIONS, "defi"];
-const PARENTS = { defi: "education", famille: "profil" };
+const ECRANS = [...DESTINATIONS, "defi", "compte"];
+const PARENTS = { defi: "education", famille: "profil", compte: "profil" };
 /** Anciennes adresses (#notions, #labs, #badges…) : redirigées vers la destination qui les contient. */
 const ALIAS_ECRANS = { catalogue: "education", notions: "education", labs: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };
@@ -2316,7 +2692,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", contributions: "contribTitre" }[etat.ecran]);
+    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", compte: "compteTitre", contributions: "contribTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : `${etat.ecran}Intro`);
 }
 
@@ -2336,6 +2712,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   if (etat.ecran === "defi" && changement) ouvrirDefi();
   if (etat.ecran === "progression") rendreProgression();
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
+  if (etat.ecran === "compte") rafraichirCompte();
   const ancre = ANCRES_ALIAS[cle] ? $(ANCRES_ALIAS[cle]) : null;
   if (ancre?.hidden && ancre.id === "ecran-cahiers") basculerAccordeonFixe(document.querySelector('[aria-controls="ecran-cahiers"]'), true);
   if (focus) {

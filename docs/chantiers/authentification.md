@@ -17,6 +17,20 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 | Schéma `worker/schema-comptes.sql` | Présent, non appliqué en production ; `eleves` gagne `consentement_version` et `consentement_at` (NOT NULL) |
 | Interface : Espace famille `#famille`, type de profil, formulaire enfant avec consentement | PR ouverte (remplace les dialogues provisoires « Mon compte » et « Consentement ») ; masquée tant que `connexionActive = false` |
 
+## Compte local en attendant OAuth (ADR 0024, 2026-11-07)
+
+Demande du propriétaire : authentification locale identifiant + mot de passe (sans email, sans réinitialisation, mot de
+passe complexe de 12 caractères minimum), compte facultatif, synchronisation facultative avec pseudonymisation par
+phrase secrète jamais stockée en ligne. Voir [ADR 0024](../decisions/0024-compte-local-synchro-pseudonymisee.md).
+
+| Élément | État |
+|---|---|
+| Écran « Mon compte » (`#compte`) : création, connexion locale, déconnexion, suppression | PR ouverte |
+| Synchronisation : activation, déverrouillage, envoi, récupération (chiffrement et pseudonymisation dans le navigateur) | PR ouverte |
+| Worker `/api/compte-local/` et schéma `worker/schema-compte-local.sql` | PR ouverte ; secret `COMPTES_LOCAUX_SECRET` et tables D1 en place en production (2026-11-07) ; routes en ligne après fusion (action 39) |
+| Conservation : 365 jours sans lecture ni écriture, purge par le cron quotidien | Décidé le 2026-11-07 ; codé et testé |
+| Tests : règles et cryptographie (`tests/unit/compte-local.test.mjs`), Worker (`compte-local-worker.test.mjs`), parcours deux appareils (`tests/e2e/compte-local.test.mjs`) | PR ouverte |
+
 ## Constats de l'audit
 
 1. `web/app.js` appelle `/auth/me` à chaque visite, même quand la connexion est désactivée.
