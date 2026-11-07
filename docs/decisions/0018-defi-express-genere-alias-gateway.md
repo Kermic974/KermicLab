@@ -25,3 +25,11 @@ En production, l'alias `custom/haiku` a été rejeté en HTTP 402 (`payment_defa
 3. L'écran du défi affiche la raison des questions fixes : IA non activée, défis inédits désactivés dans Configuration, quota du jour atteint, IA indisponible, ou sortie refusée par les vérifications.
 
 English: if the `custom/haiku` alias fails (e.g. HTTP 402, no gateway payment method) or yields no valid challenge, the Worker retries the same batch on Workers AI (one quota unit for both). Failures are logged as short codes only, and the challenge screen explains why fixed questions are shown.
+
+## Complément — configurateur du périmètre et fiabilité (2026-11-07)
+
+1. **Configurateur** : avant la génération, l'élève choisit niveau, matière et notion (listes en cascade limitées aux notions existantes, jeux exclus) et les types de défis. Le choix est mémorisé sur l'appareil ; par défaut, la dernière matière ouverte dans Éducation, tous niveaux et types. Sans IA possible (non activée, quota atteint, défis désactivés), le configurateur n'est pas proposé et les questions fixes s'affichent avec la raison.
+2. **Serveur** : `perimetreDefi` valide le corps (niveau et matière connus, notion du catalogue, formats parmi les quatre) et ignore toute valeur inconnue. Le tirage est restreint à ce périmètre ; une notion seule est reprise avec des formats variés. Un périmètre vide renvoie `perimetre-vide` avant toute session ou réservation : aucune génération n'est décomptée.
+3. **Fiabilité** : en production, Haiku a désigné 14 comme médiane de 10, 12, 12, 14, 18 (réponse : 12). Le schéma exige désormais un champ interne `verification` (calcul pas à pas ou fait de l'extrait) **avant** `bonne`, qui doit en être le résultat ; ce champ n'est jamais renvoyé au navigateur. Les choix (sauf vrai-faux) sont mélangés côté serveur : la bonne réponse n'est plus presque toujours en A. Prompt `defi-express-v2` ; `MAX_TOKENS_DEFI` passe à 2 000 dans `wrangler.toml` pour laisser la place à la vérification.
+
+English: a scope picker (level, subject, topic, challenge types) now precedes generation; the server validates the scope and an empty scope costs no quota. Each challenge must include a hidden `verification` step before the answer index, and choices are shuffled server-side.
