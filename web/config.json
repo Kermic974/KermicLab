@@ -1,5 +1,6 @@
 {
   "apiUrl": "https://kermiclab-api.kermic.workers.dev",
   "connexionActive": true,
-  "langues": ["fr", "en"]
+  "langues": ["fr", "en"],
+  "testRolesTemporaire": true
 }

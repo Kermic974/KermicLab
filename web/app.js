@@ -512,6 +512,7 @@ async function chargerContributions() {
 }
 
 function rafraichirContributions() {
+  synchroniserTestRoles();
   const actif = contributionsActives();
   const compte = actif ? apiContrib.compte() : null;
   const role = compte?.role;
@@ -815,6 +816,39 @@ async function deconnecterContrib() {
   }
   finirEdition();
   await chargerContributions();
+}
+
+/*
+ * TEMPORAIRE (issue #160) — à supprimer quand la gestion des comptes sera disponible.
+ * « Tester les rôles » dans le Profil simule le rôle contributeur ou prof dans le navigateur (double de démonstration,
+ * état gardé dans l'onglet) pour tester les écrans Contributions. Aucun rôle n'est attribué côté serveur : le Worker
+ * reste réservé aux rôles posés en base. Affiché seulement si `config.testRolesTemporaire` vaut true.
+ */
+function brancherTestRoles() {
+  const bloc = $("#test-roles");
+  bloc.hidden = etat.config?.testRolesTemporaire !== true;
+  if (bloc.hidden) return;
+  synchroniserTestRoles();
+  $("#test-roles-choix").addEventListener("change", (e) => choisirRoleTest(e.currentTarget.value));
+}
+
+function synchroniserTestRoles() {
+  const choix = $("#test-roles-choix");
+  if (choix) choix.value = demoContribActive() ? (contrib.etatDemo?.connecte ? contrib.etatDemo.role : "") : "";
+}
+
+function choisirRoleTest(role) {
+  if (!["contributeur", "prof"].includes(role)) { quitterDemo(); return; }
+  const suivant = demoContrib.connecter(demoContrib.lireEtat(lireCle(sessionPreferences(), demoContrib.CLE_DEMO)), role);
+  if (!demoContribActive()) {
+    // Premier choix : l'écran Contributions n'existe qu'après un rechargement en démonstration.
+    ecrireCle(sessionPreferences(), demoContrib.CLE_DEMO, JSON.stringify(suivant));
+    demarrerDemoContrib();
+    return;
+  }
+  sauverDemoContrib(suivant);
+  finirEdition();
+  naviguer("contributions"); // l'ouverture de l'écran recharge les contributions avec le nouveau rôle
 }
 
 function brancherContributions() {
@@ -1695,6 +1729,7 @@ async function demarrer() {
   $("#quitter-demo").addEventListener("click", quitterDemo);
   brancherFamille();
   brancherContributions();
+  brancherTestRoles();
   void verifierConnexion().then(rafraichirContributions);
 
   ajouterBienvenue();
