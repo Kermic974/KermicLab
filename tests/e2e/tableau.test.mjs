@@ -155,8 +155,14 @@ test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la 
   await page.locator("#ecran-cahiers").waitFor({ state: "visible" });
   assert.equal(await page.locator("#cahiers-vide").isVisible(), true);
 
+  // Chaque modèle ouvre le constructeur ; sans IA consentie, le cahier est construit à partir du catalogue.
   for (const type of ["brouillon", "fiches", "vacances"]) {
     await page.locator(`[data-cahier-type="${type}"]`).click();
+    await page.locator("#constructeur-cahier[open]").waitFor();
+    if (type !== "brouillon") await page.locator("#cahier-notions label", { hasText: "Les fractions" }).click();
+    await page.click("#construire-cahier");
+    await page.locator("#lecture-cahier[open]").waitFor();
+    await page.click("#fermer-lecture");
   }
   assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 3);
   assert.deepEqual(await page.locator("#liste-cahiers h4").allTextContents(), ["Cahier de vacances", "Fiches de notes", "Brouillon"]);
@@ -177,11 +183,96 @@ test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la 
   assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 3);
   await page.getByRole("button", { name: "Supprimer Cahier de vacances" }).click();
   assert.equal(await page.locator("#liste-cahiers .cahier-enregistre").count(), 2);
+  assert.equal(await page.locator("#liste-cahiers button", { hasText: "{titre}" }).count(), 0, "aucune variable non remplacée");
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator(".nav-mobile [data-nav=accueil]").click();
   await page.locator(".nav-mobile [data-nav=education]").click();
   assert.equal(await page.locator("#ecran-cahiers").isVisible(), true, "l'accordéon garde son état pendant la session");
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil, repli sur le catalogue", async () => {
+  let restantes = 2;
+  const { page, contexte, erreurs, requetes } = await demarrer({}, async (p) => {
+    await p.addInitScript(() => { try { sessionStorage.setItem("kermiclab:llm:actif", "true"); } catch { /* iframe sandboxée */ } });
+  }, {
+    cahier: (corps) => {
+      restantes -= 1;
+      if (restantes === 0) return { source: "aucune", raison: "sortie-invalide", cahier: null, quota: { limite: 2, utilisees: 2, restantes: 0 } };
+      return {
+        source: "ia",
+        cahier: {
+          type: corps.type, longueur: corps.longueur, introduction: "Un cahier pour s'entraîner.",
+          sections: corps.notions.map((id) => ({
+            notion: id, titre: id === "fractions" ? "Les fractions" : "Le théorème de Pythagore", url: `${api}/maquettes/${id}?lang=fr`,
+            blocs: [
+              { genre: "explication", texte: `Rappel sur ${id}.` },
+              { genre: "exercice", texte: `Exercice 1 sur ${id}.`, reponse: `Solution de ${id}.` }
+            ]
+          }))
+        },
+        quota: { limite: 2, utilisees: 2 - restantes, restantes },
+        llm: { fournisseur: "cloudflare-ai-gateway", modele: "custom/sonnet-5-5" }
+      };
+    }
+  });
+  await choisirPseudo(page, "Iris");
+  await page.locator(".barre-laterale [data-nav=education]").click();
+  await page.locator("[aria-controls=ecran-cahiers]").click();
+  await page.locator('[data-cahier-type="exercices"]').click();
+  await page.locator("#constructeur-cahier[open]").waitFor();
+  assert.equal(await texte(page, "#constructeur-titre"), "Construire : Cahier d'exercices");
+  assert.equal(await page.isChecked("#cahier-ia"), true, "l'IA est proposée quand elle est consentie");
+  assert.match(await texte(page, "#cahier-ia-etat"), /Il te reste 2 cahier\(s\).*custom\/sonnet-5-5/);
+  // Filtre par niveau : seules les notions du collège en maths.
+  await page.selectOption("#cahier-niveau", "college");
+  assert.deepEqual(await page.locator("#cahier-notions label").allTextContents(), ["Les fractions", "Le théorème de Pythagore"]);
+  await page.click("#construire-cahier");
+  assert.equal(await texte(page, "#retour-cahier"), "Choisis au moins une notion.");
+  await page.fill("#cahier-titre", "Révisions de Iris");
+  await page.locator("#cahier-notions label", { hasText: "Les fractions" }).click();
+  await page.locator("#cahier-notions label", { hasText: "Pythagore" }).click();
+  await page.selectOption("#cahier-longueur", "complet");
+  await page.click("#construire-cahier");
+  await page.locator("#lecture-cahier[open]").waitFor();
+  const envoi = requetes.find((r) => r.cahier)?.cahier;
+  assert.deepEqual(envoi, { type: "exercices", longueur: "complet", langue: "fr", notions: ["fractions", "pythagore"], utiliserLlm: true },
+    "le titre choisi par l'élève n'est jamais envoyé");
+  assert.equal(await texte(page, "#lecture-titre"), "Révisions de Iris");
+  assert.match(await texte(page, "#lecture-meta"), /Cahier d'exercices · .* · Enrichi par l’IA \(custom\/sonnet-5-5\)/);
+  assert.deepEqual(await page.locator("#lecture-corps h3").allTextContents(), ["Les fractions", "Le théorème de Pythagore"]);
+  assert.equal(await page.locator("#lecture-corps .reponse-cahier p").first().isVisible(), false, "la réponse est masquée");
+  await page.locator("#lecture-corps .reponse-cahier summary").first().click();
+  assert.equal(await texte(page, "#lecture-corps .reponse-cahier p >> nth=0"), "Solution de fractions.");
+  await page.fill("#notes-0", "J'ai trouvé 3/4.");
+  await page.click("#fermer-lecture");
+  assert.equal(await texte(page, "#liste-cahiers .cahier-enregistre h4"), "Révisions de Iris");
+  assert.match(await texte(page, "#liste-cahiers .cahier-enregistre"), /Enrichi par l’IA/);
+  await page.getByRole("button", { name: "Ouvrir Révisions de Iris" }).click();
+  assert.equal(await page.inputValue("#notes-0"), "J'ai trouvé 3/4.", "les notes sont gardées");
+  await page.click("#fermer-lecture");
+
+  // Échec de l'IA : le cahier est quand même construit à partir du catalogue, avec un message clair.
+  await page.locator('[data-cahier-type="fiches"]').click();
+  await page.locator("#cahier-notions label", { hasText: "Les fractions" }).click();
+  await page.click("#construire-cahier");
+  await page.locator("#lecture-cahier[open]").waitFor();
+  assert.match(await texte(page, "#lecture-corps"), /L’IA n’a pas pu préparer ce cahier/);
+  assert.match(await texte(page, "#lecture-meta"), /Construit à partir du catalogue/);
+  await page.click("#fermer-lecture");
+  await page.locator('[data-cahier-type="vacances"]').click();
+  assert.equal(await page.isDisabled("#cahier-ia"), true, "quota atteint");
+  assert.match(await texte(page, "#cahier-ia-etat"), /utilisé tes cahiers enrichis/);
+  await page.click("#fermer-constructeur");
+
+  // L'écran Configuration montre le module Mes cahiers et son skill.
+  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  assert.equal(await texte(page, '#config-modules [data-cle="CAHIERS_GENERATIONS_JOUR"] dd'), "2 (0–5)");
+  assert.match(await texte(page, '#config-modules [data-skill="constructeur-cahier"] dd'), /Actif\s+constructeur-cahier-v1 · v1\.0\.0/);
+  await page.setViewportSize({ width: 360, height: 740 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
   assert.deepEqual(erreurs, []);
   await contexte.close();
@@ -251,8 +342,10 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:defi:ia-par-jour")), "2");
   // Paramètres du site centralisés par module (ADR 0019) : alias, budgets min–max et skills.
   assert.deepEqual(await page.locator("#config-modules .config-module h4").allTextContents(),
-    ["Général", "Tuteur IA et boîte à idées", "Défi express"]);
+    ["Général", "Tuteur IA et boîte à idées", "Défi express", "Mes cahiers"]);
   assert.equal(await texte(page, '#config-modules [data-cle="MODELE_DEFI"] dd'), "custom/haiku");
+  assert.equal(await texte(page, '#config-modules [data-cle="MODELE_CAHIERS"] dd'), "custom/sonnet-5-5");
+  assert.equal(await texte(page, '#config-modules [data-cle="MAX_TOKENS_CAHIERS"] dd'), "100000 (1000–128000)");
   assert.equal(await texte(page, '#config-modules [data-cle="LIMITE_TOKENS_SESSION"] dd'), "1000 (200–4000)");
   assert.match(await texte(page, '#config-modules [data-skill="defi-express"] dd'), /Actif\s+defi-express-v2 · v1\.1\.0/);
 

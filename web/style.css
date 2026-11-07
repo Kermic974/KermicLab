@@ -416,7 +416,32 @@ form#formulaire button::after { content: "➜"; font-size: 1rem; }
 .type-cahier .bouton { margin-top: 4px; }
 .cahiers-enregistres { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
 .cahiers-enregistres .tete-section { margin: 0; }
-.cahier-enregistre { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; }
+.cahier-enregistre { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.cahier-infos { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+.cahier-infos h4 { overflow-wrap: anywhere; }
+.cahier-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.formulaire-cahier { display: flex; flex-direction: column; gap: 8px; }
+.formulaire-cahier input[type=text], .formulaire-cahier select { width: 100%; }
+.constructeur-ligne { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 10px; }
+.constructeur-ligne > div { display: flex; flex-direction: column; gap: 6px; }
+.cahier-notions-bloc { border: 1px solid var(--bord, #ddd); border-radius: 12px; padding: 10px 12px; margin: 0; min-width: 0; }
+.cahier-notions { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 6px; max-height: 220px; overflow-y: auto; margin-top: 6px; }
+.cahier-notion { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; }
+.cahier-ia { display: flex; align-items: flex-start; gap: 8px; margin-top: 6px; font-weight: 600; }
+dialog.lecture-cahier { width: min(760px, 100vw - 24px); }
+.lecture-corps { display: flex; flex-direction: column; gap: 14px; }
+.intro-cahier { font-size: 1.02rem; }
+.section-cahier { display: flex; flex-direction: column; gap: 10px; padding-top: 12px; border-top: 1px solid var(--bord, #ddd); }
+.tete-section-cahier { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tete-section-cahier h3 { margin: 0; }
+.bloc-cahier { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 10px; background: var(--fond-doux, rgba(127,127,127,.08)); }
+.bloc-cahier p { overflow-wrap: anywhere; white-space: pre-line; }
+.bloc-genre { font-weight: 700; color: var(--doux); text-transform: uppercase; letter-spacing: .04em; }
+.bloc-retenir { border-left: 4px solid var(--accent, #4f46e5); }
+.bloc-exercice { border-left: 4px solid var(--ok, #16a34a); }
+.reponse-cahier summary { cursor: pointer; font-weight: 600; }
+.notes-cahier { display: flex; flex-direction: column; gap: 6px; }
+.notes-cahier textarea { width: 100%; }
 .cahier-enregistre .doux { margin-top: 4px; }
 
 
