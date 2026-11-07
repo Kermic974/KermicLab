@@ -3,6 +3,11 @@
 **Niveau actuel : 0 (vérifications GitHub + déploiement Cloudflare après vérifications)**
 
 - `ci.yml`, job `verifier` : lint → build (index + CSP) → contrôle des pages → tests unitaires → tests Playwright.
+  Ce job est un contrôle **obligatoire** de la protection de `main` (`scripts/configurer-github.sh`). Le contrat
+  navigateur de **toutes les pages servies** (`tests/e2e/contrat-pages.test.mjs`) y est inclus : catalogue public et
+  privé, pages du gabarit et pages écrites à la main (cercle, jeux), chaque langue, telles que le Worker les sert —
+  onglets de base affichés, self-test inactif, navigation au clavier, aucune erreur ni violation CSP, aucun débordement
+  à 360 px, connexion masquée. Avec `CATALOGUE_TOKEN`, l'absence des pages privées fait échouer la CI.
 - `ci.yml`, job « Déploiement Cloudflare » (sur `main`, après `verifier`) : schéma D1, Worker `kermiclab-api`, secrets du Worker s'ils sont définis, puis `wrangler pages deploy dist` vers le projet Pages `kermiclab` (chat à la racine, application autonome sous `/cercle/`). ADR 0008.
 - `pages.yml` : validation de l'application autonome (`index.html` à jour avec `src/`, frontières entre agents, tests, structure).
 - `publication.yml` : tag et release à chaque nouvelle version.

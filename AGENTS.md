@@ -31,7 +31,7 @@ Principes non négociables :
 | `gabarit/jeux/` | Modules partagés des jeux (progression, Académie) recopiés dans chaque page par `npm run build` (ADR 0015, `docs/gamification.md`) |
 | `scripts/` | Build, lint, contrôle de sécurité des pages, configuration GitHub |
 | `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
-| `tests/e2e/` | Playwright : onglets, rendu mobile, chat |
+| `tests/e2e/` | Playwright : contrat navigateur de toutes les pages servies (`contrat-pages.test.mjs`, catalogue public et privé), onglets, rendu mobile, chat |
 | `docs/chantiers/` | Une fiche par chantier transverse (niveau de maturité, prochaines étapes) |
 | `docs/projets.md` | Projets GitHub de la feuille de route : épiques, sous-issues, labels `projet:*` / `horizon:*`, priorités. Source du lien : `.github/projets.json` (vérifié par `tests/unit/projets.test.mjs`) |
 | `docs/decisions/` | Journal des décisions (ADR courts) |
