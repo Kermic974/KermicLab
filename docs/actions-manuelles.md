@@ -16,6 +16,12 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
   « KermicLab · … », chacun avec son épique et ses sous-issues. Relancer le script après l'ajout de nouvelles issues.
 - **Statut** : à faire
 
+## Relecture pédagogique des notions (issue #176)
+
+| # | Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|---|
+| 40 | Valider la [grille de relecture v1](chantiers/validation-maquettes.md#grille-de-relecture-v1), puis relire les 20 notions les plus servies et tracer chaque relecture dans `fiche.md` (`relue`, `relue-version`, `relue-grille`) | Liste : `npx wrangler d1 execute kermiclab-kpi --remote --command "SELECT maquette_id, COUNT(*) AS n FROM evenements WHERE type = 'maquette_servie' GROUP BY maquette_id ORDER BY n DESC LIMIT 20;"` ; relecture sur le site, téléphone et ordinateur ; une PR par lot de notions relues | Public mineur : seule une relecture humaine garantit l'exactitude et l'adaptation à l'âge (condition de sortie de la phase 0) | Le build affiche « Relecture : 20 notion(s) relue(s) » ou plus ; l'issue #176 peut alors être fermée | à faire |
+
 ## Compte local et synchronisation pseudonymisée (ADR 0024)
 
 | # | Action | Où | Pourquoi | Comment confirmer | Statut |

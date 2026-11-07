@@ -26,6 +26,9 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
       CI avec le graphe des prérequis (issue #180).
     - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
     - `duree` : durée estimée en minutes, entier de 1 à 240.
+  - **Relecture pédagogique** : après une relecture humaine selon la grille publiée, ajouter `relue` (date), `relue-version`
+    et `relue-grille`, voir [validation des maquettes](chantiers/validation-maquettes.md#grille-de-relecture-v1). Ne jamais
+    les remplir sans relecture réelle.
 - `contenu.json` : le contenu (ci-dessous). **Ne crée pas `page.html`** : `npm run build` le génère.
 
 ## 2. Structure de `contenu.json`
