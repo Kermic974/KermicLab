@@ -5,6 +5,15 @@ sujet: mathematiques/vitesse
 version: 1.1.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - proportionnalite
+competences:
+  - calculer-vitesse-distance-et-duree
+  - convertir-une-duree-en-heures-decimales
+  - convertir-une-vitesse
+  - calculer-une-vitesse-moyenne
+duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

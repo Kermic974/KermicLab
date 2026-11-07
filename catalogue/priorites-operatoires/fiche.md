@@ -5,6 +5,14 @@ sujet: mathematiques/priorites-operatoires
 version: 1.1.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4
+prerequis:
+competences:
+  - appliquer-les-priorites-operatoires
+  - calculer-avec-des-parentheses
+  - calculer-une-expression-avec-des-puissances
+  - utiliser-la-calculatrice-correctement
+duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

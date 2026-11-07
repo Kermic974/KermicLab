@@ -5,6 +5,17 @@ sujet: mathematiques/calcul-litteral
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - nombres-relatifs
+  - priorites-operatoires
+competences:
+  - reduire-une-expression
+  - calculer-la-valeur-d-une-expression
+  - developper-une-expression
+  - factoriser-une-expression
+  - utiliser-les-identites-remarquables
+duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

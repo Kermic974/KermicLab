@@ -5,6 +5,14 @@ sujet: mathematiques/statistiques
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+competences:
+  - calculer-une-moyenne-et-une-etendue
+  - determiner-une-mediane
+  - calculer-des-frequences
+  - interpreter-quartiles-et-ecart-type
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

@@ -5,6 +5,16 @@ sujet: mathematiques/fonctions-affines
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-4, seconde
+prerequis:
+  - proportionnalite
+  - calcul-litteral
+competences:
+  - calculer-une-image-et-un-antecedent
+  - distinguer-fonction-lineaire-et-affine
+  - lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine
+  - etudier-le-sens-de-variation-et-le-signe
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
