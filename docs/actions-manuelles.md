@@ -2,6 +2,16 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Contributions au contenu : profils Prof et Contributeur (ADR 0023)
+
+| # | Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|---|
+| 35 | Valider l'ADR 0023 et attribuer les premiers rôles (après l'activation des comptes, ADR 0017) | [ADR 0023](decisions/0023-contributions-contenu-prof-contributeur.md) ; Cloudflare → D1 → base des comptes → console : `UPDATE comptes SET role = 'prof' WHERE id = '<id du compte>';` (l'identifiant est donné par `/auth/me` une fois connecté) | Un rôle n'est jamais auto-attribué ; contributeurs et profs sont des adultes connus du projet | Statut de l'ADR « accepté » ; le compte voit « Contribuer au contenu » dans Profil | à faire |
+| 36 | Valider la charte du contributeur (`charte-contributeur-v1` : exactitude, public mineur, aucune donnée personnelle, cession au projet) et la licence du contenu | Textes `contribCharteTitre` / `contribCharteTexte` de `web/i18n/fr.json` ; page de confidentialité | Point de contrôle juridique : droits sur les textes publiés, information des contributeurs | Texte validé ou corrigé (toute modification fait passer la version à `-v2`) ; confidentialité mise à jour | à faire |
+| 37 | Créer le label GitHub `contribution-validee` | [Labels du dépôt](https://github.com/Kermic974/trigoLab/labels) | Les validations ouvrent une issue portant ce label (le jeton `GITHUB_TOKEN` du Worker doit pouvoir créer des issues) | Une validation en production crée une issue étiquetée | à faire |
+
+Démonstration sans compte, pour relire les écrans : `https://kermiclab.online/?demo=contributions#contributions`.
+
 ## Mes cahiers : constructeur enrichi par l'IA (ADR 0019, ADR 0022)
 
 - **Fait** (2026-11-07) : alias de modèle `custom/sonnet-5-5` (`anthropic/claude-sonnet-5.5`) créé sur `kermiclab-gateway`

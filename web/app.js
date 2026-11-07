@@ -5,6 +5,8 @@ import * as progression from "./progression.js";
 import * as profil from "./profil.js";
 import * as comptes from "./comptes.js";
 import * as demoFamille from "./demo-famille.js";
+import * as contributions from "./contributions.js";
+import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 import * as experiences from "./experiences.js";
@@ -101,6 +103,7 @@ async function appliquerLangue(langue) {
   if (etat.ecran === "progression") rendreProgression();
   rafraichirDefiTextes();
   rafraichirFamille();
+  rafraichirContributions();
   rendreCahiers();
 }
 
@@ -137,7 +140,7 @@ function demarrerDemo() {
 }
 
 function quitterDemo() {
-  for (const cle of [CLE_DEMO_ACTIVE, demoFamille.CLE_DEMO]) effacerCle(sessionPreferences(), cle);
+  for (const cle of [CLE_DEMO_ACTIVE, demoFamille.CLE_DEMO, CLE_DEMO_CONTRIB_ACTIVE, demoContrib.CLE_DEMO]) effacerCle(sessionPreferences(), cle);
   if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF)?.startsWith("demo-")) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
   const url = new URL(location.href);
   url.searchParams.delete("demo");
@@ -381,6 +384,455 @@ function brancherFamille() {
   $("#formulaire-enfant").addEventListener("submit", creerEnfant);
   $("#ouvrir-famille").addEventListener("click", () => { $("#dialogue-profil").close(); naviguer("famille"); });
   rafraichirFamille();
+}
+
+/* ---------- Contributions au contenu des notions (ADR 0023) ---------- */
+// Rôles contributeur et prof, scénario sans IA. Rien n'est appelé côté Worker tant que `connexionActive` vaut false ;
+// `?demo=contributions` simule les deux rôles dans l'onglet (web/demo-contributions.js), sans OAuth ni réseau.
+const CLE_DEMO_CONTRIB_ACTIVE = "kermiclab:demo-contributions:active";
+const contrib = {
+  demo: false, etatDemo: null, chargee: false, erreur: false, miennes: [], relecture: [],
+  index: null, contenus: new Map(), filtre: { statut: "proposee", notion: "" }, edition: null
+};
+const demoContribActive = () => contrib.demo === true;
+const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true;
+
+function sauverDemoContrib(suivant) {
+  contrib.etatDemo = suivant;
+  ecrireCle(sessionPreferences(), demoContrib.CLE_DEMO, JSON.stringify(suivant));
+}
+
+function initialiserDemoContrib() {
+  const demandee = new URLSearchParams(location.search).get("demo") === demoContrib.PARAMETRE_DEMO;
+  if (demandee) ecrireCle(sessionPreferences(), CLE_DEMO_CONTRIB_ACTIVE, "1");
+  contrib.demo = demandee || lireCle(sessionPreferences(), CLE_DEMO_CONTRIB_ACTIVE) === "1";
+  if (!contrib.demo) return;
+  contrib.etatDemo = demoContrib.lireEtat(lireCle(sessionPreferences(), demoContrib.CLE_DEMO));
+  const texte = $("#bandeau-demo-texte");
+  texte.dataset.i18n = "demoBandeauContrib";
+  texte.textContent = t("demoBandeauContrib");
+  $("#bandeau-demo").hidden = false;
+}
+
+function demarrerDemoContrib() {
+  ecrireCle(sessionPreferences(), CLE_DEMO_CONTRIB_ACTIVE, "1");
+  const url = new URL(location.href);
+  url.searchParams.set("demo", demoContrib.PARAMETRE_DEMO);
+  url.hash = "contributions";
+  location.assign(url.href);
+}
+
+/** Erreur de l'API : code et détails par champ (mêmes codes que web/contributions.js). */
+class ErreurContrib extends Error {
+  constructor(code, details = {}) { super(code); this.code = code; this.details = details; }
+}
+async function reponseContrib(r) {
+  if (r.ok) return r.status === 204 ? null : r.json();
+  const j = await r.json().catch(() => ({}));
+  throw new ErreurContrib(j.erreur ?? `http-${r.status}`, j.details ?? {});
+}
+
+/** Accès aux contributions : le Worker, ou le double de démonstration (mêmes formes de réponse). */
+const apiContrib = {
+  compte() {
+    if (demoContribActive()) return demoContrib.moi(contrib.etatDemo).compte ?? null;
+    return etat.compte;
+  },
+  async lister(vue) {
+    if (demoContribActive()) return demoContrib.lister(contrib.etatDemo, vue);
+    return reponseContrib(await fetch(urlApi(`/api/contributions?vue=${vue}`), { credentials: "include" }));
+  },
+  async creer(donnees) {
+    if (demoContribActive()) {
+      const r = demoContrib.creer(contrib.etatDemo, donnees);
+      if (r.erreurs) throw new ErreurContrib(r.erreurs.quota ? "quota-atteint" : "contribution-invalide", r.erreurs);
+      sauverDemoContrib(r.etat);
+      return r.id;
+    }
+    return (await reponseContrib(await fetch(urlApi("/api/contributions"), {
+      method: "POST", credentials: "include", headers: { "content-type": "application/json" }, body: JSON.stringify(donnees)
+    }))).id;
+  },
+  async agir(id, corps) {
+    if (demoContribActive()) {
+      const r = demoContrib.agir(contrib.etatDemo, id, corps);
+      if (r.code) throw new ErreurContrib(r.code);
+      if (r.erreurs) throw new ErreurContrib("contribution-invalide", r.erreurs);
+      sauverDemoContrib(r.etat);
+      return r.contribution;
+    }
+    return reponseContrib(await fetch(urlApi(`/api/contributions/${encodeURIComponent(id)}`), {
+      method: "PATCH", credentials: "include", headers: { "content-type": "application/json" }, body: JSON.stringify(corps)
+    }));
+  }
+};
+
+/** Index et contenus des notions (dist/contenus/, générés par le build) : fichiers statiques, même origine. */
+async function indexContenus() {
+  if (!contrib.index) {
+    try { contrib.index = (await chargerJson("contenus/index.json")).notions ?? []; } catch { contrib.index = []; }
+  }
+  return contrib.index;
+}
+async function contenuNotion(id) {
+  if (!contrib.contenus.has(id)) {
+    try { contrib.contenus.set(id, await chargerJson(`contenus/${encodeURIComponent(id)}.json`)); } catch { return null; }
+  }
+  return contrib.contenus.get(id);
+}
+const titreNotion = (id) => contrib.index?.find((n) => n.id === id)?.titre ?? id;
+const libelleChamp = (chemin) => contributions.libelleChemin(chemin, (cle) => t(cle));
+
+async function ouvrirContributions() {
+  if (!contributionsActives()) return;
+  await chargerContributions();
+}
+
+async function chargerContributions() {
+  const compte = apiContrib.compte();
+  contrib.chargee = false;
+  rafraichirContributions();
+  try {
+    await indexContenus();
+    if (compte && contributions.peutContribuer(compte.role)) {
+      contrib.miennes = contributions.normaliserContributions(await apiContrib.lister("miennes"));
+      contrib.relecture = contributions.peutRelire(compte.role)
+        ? contributions.normaliserContributions(await apiContrib.lister("relecture")) : [];
+      await Promise.all([...new Set(contrib.relecture.filter((c) => contributions.STATUTS_OUVERTS.includes(c.statut)).map((c) => c.notion_id))].map(contenuNotion));
+    } else {
+      contrib.miennes = [];
+      contrib.relecture = [];
+    }
+    contrib.erreur = false;
+  } catch {
+    contrib.erreur = true;
+  }
+  contrib.chargee = true;
+  rafraichirContributions();
+}
+
+function rafraichirContributions() {
+  const actif = contributionsActives();
+  const compte = actif ? apiContrib.compte() : null;
+  const role = compte?.role;
+  $("#entree-contributions").hidden = !actif || !(demoContribActive() || contributions.peutContribuer(role));
+  if (!actif) return;
+  const autorise = contributions.peutContribuer(role);
+  $("#contrib-etat").textContent = !contrib.chargee ? t("familleChargement") : contrib.erreur ? t("familleErreur") : "";
+  $("#contrib-invite").hidden = autorise;
+  $("#contrib-role-requis").hidden = !compte || autorise;
+  $("#contrib-demo-roles").hidden = !demoContribActive();
+  $("#essayer-demo-contrib").hidden = demoContribActive();
+  $("#contrib-espace").hidden = !autorise;
+  if (!autorise) return;
+  $("#contrib-role-nom").textContent = t(`contribRole_${role}`) + (compte.demo ? ` · ${t("demoPastille")}` : "");
+  $("#contrib-role-aide").textContent = ` — ${t(contributions.peutRelire(role) ? "contribRoleAideProf" : "contribRoleAideContributeur")}`;
+  $("#contrib-tableau").hidden = !contributions.peutRelire(role);
+  if (contributions.peutRelire(role)) rendreTableau(compte);
+  rendreListe($("#contrib-miennes"), contrib.miennes, { compte, mode: "miennes" });
+  $("#contrib-miennes-vide").hidden = contrib.miennes.length > 0;
+  remplirOptionsFormulaire();
+}
+
+function rendreTableau(compte) {
+  const resume = contributions.resumer(contrib.relecture);
+  const statuts = ["proposee", "a_reviser", "validee", "integree", "refusee"];
+  $("#contrib-compteurs").replaceChildren(...statuts.map((s) => {
+    const li = element("li");
+    const b = element("button", { classe: `contrib-compteur statut-${s}`, attributs: { type: "button", "aria-pressed": String(contrib.filtre.statut === s) } });
+    b.append(element("strong", { texte: String(resume[s]) }), element("span", { cle: `contribStatut_${s}` }));
+    b.addEventListener("click", () => { contrib.filtre.statut = s; $("#contrib-filtre-statut").value = s; rafraichirContributions(); });
+    li.append(b);
+    return li;
+  }));
+  const selStatut = $("#contrib-filtre-statut");
+  selStatut.replaceChildren(...["proposee", ...statuts.slice(1), "tous"].map((s) => {
+    const o = element("option", { cle: s === "tous" ? "contribFiltreTous" : `contribStatut_${s}` });
+    o.value = s;
+    return o;
+  }));
+  selStatut.value = contrib.filtre.statut;
+  const notions = [...new Set(contrib.relecture.map((c) => c.notion_id))].sort();
+  const selNotion = $("#contrib-filtre-notion");
+  const toutes = element("option", { cle: "contribFiltreToutes" });
+  toutes.value = "";
+  selNotion.replaceChildren(toutes, ...notions.map((id) => { const o = element("option", { texte: titreNotion(id) }); o.value = id; return o; }));
+  if (!notions.includes(contrib.filtre.notion)) contrib.filtre.notion = "";
+  selNotion.value = contrib.filtre.notion;
+  const visibles = contributions.filtrer(contrib.relecture, contrib.filtre);
+  rendreListe($("#contrib-relecture"), visibles, { compte, mode: "relecture" });
+  $("#contrib-relecture-vide").hidden = visibles.length > 0;
+}
+
+/** Avant / après mot à mot : <del> pour le texte retiré, <ins> pour le texte ajouté. */
+function blocDiff(c) {
+  const bloc = element("p", { classe: "contrib-diff" });
+  const morceaux = c.nature === "ajout"
+    ? [{ type: "egal", texte: c.texte_actuel }, { type: "ajoute", texte: `\n${c.texte_propose}` }]
+    : contributions.diffMots(c.texte_actuel, c.texte_propose);
+  for (const m of morceaux) bloc.append(m.type === "egal" ? document.createTextNode(m.texte) : element(m.type === "retire" ? "del" : "ins", { texte: m.texte }));
+  return bloc;
+}
+
+function rendreListe(liste, items, { compte, mode }) {
+  liste.replaceChildren(...items.map((c) => {
+    const li = element("li", { classe: "contrib-item", attributs: { "data-id": c.id } });
+    const entete = element("div", { classe: "contrib-entete" });
+    const titre = element("span", { classe: "contrib-cible" });
+    titre.append(element("strong", { texte: titreNotion(c.notion_id) }), element("span", { classe: "doux petit", texte: ` · ${libelleChamp(c.chemin)}` }));
+    entete.append(titre, element("span", { classe: `contrib-statut statut-${c.statut}`, cle: `contribStatut_${c.statut}` }));
+    const meta = element("p", { classe: "doux petit contrib-meta" });
+    const auteur = c.auteur_id === compte?.id ? t("contribAuteurMoi") : t("contribAuteur", { code: contributions.codeAuteur(c.auteur_id) });
+    meta.textContent = [t(`contribType_${c.type}`), t(`contribNature_${c.nature}`), mode === "relecture" ? auteur : null,
+      c.created_at ? new Date(c.created_at).toLocaleDateString(etat.langue) : null].filter(Boolean).join(" · ");
+    li.append(entete, meta, blocDiff(c));
+    const motif = element("p", { classe: "petit" });
+    motif.append(element("strong", { cle: "contribMotif" }), document.createTextNode(` ${c.motif}`));
+    li.append(motif);
+    if (c.commentaire) {
+      const com = element("p", { classe: "petit contrib-commentaire" });
+      com.append(element("strong", { cle: "contribCommentaireRelecteur" }), document.createTextNode(` ${c.commentaire}`));
+      li.append(com);
+    }
+    if (c.issue_numero) li.append(element("p", { classe: "doux petit", texte: t("contribIssue", { n: c.issue_numero }) }));
+    if (mode === "relecture" && contributions.STATUTS_OUVERTS.includes(c.statut) && contributions.estObsolete(c, contrib.contenus.get(c.notion_id))) {
+      li.append(element("p", { classe: "note-locale petit", cle: "contribObsolete" }));
+    }
+    li.append(actionsContribution(c, compte, mode));
+    return li;
+  }));
+}
+
+function actionsContribution(c, compte, mode) {
+  const zone = element("div", { classe: "contrib-actions" });
+  const contexte = { compteId: compte?.id, role: compte?.role };
+  const possibles = contributions.actionsPossibles(c, contexte);
+  if (mode === "miennes") {
+    zone.classList.add("actions");
+    if (contributions.transition(c, "modifier", contexte).ok) {
+      const b = element("button", { classe: "bouton", cle: c.statut === "a_reviser" ? "contribCorriger" : "contribModifier", attributs: { type: "button" } });
+      b.addEventListener("click", () => editerContribution(c));
+      zone.append(b);
+    }
+    if (possibles.includes("retirer")) zone.append(boutonAction(c, "retirer", "secondaire"));
+    return zone;
+  }
+  const decisions = possibles.filter((a) => a !== "retirer");
+  if (!decisions.length) {
+    if (c.auteur_id === compte?.id && c.statut === "proposee") zone.append(element("p", { classe: "doux petit", cle: "contribQuatreYeux" }));
+    return zone;
+  }
+  let champ = null;
+  if (decisions.some((a) => ["valider", "refuser", "reviser"].includes(a))) {
+    const id = `contrib-com-${c.id}`;
+    zone.append(element("label", { classe: "etiquette-champ", cle: "contribCommentaireLabel", attributs: { for: id } }));
+    champ = element("textarea", { attributs: { id, rows: "2", maxlength: String(contributions.COMMENTAIRE_MAX) } });
+    zone.append(champ, element("p", { classe: "erreur-champ", attributs: { "aria-live": "assertive" } }));
+  }
+  const boutons = element("div", { classe: "actions" });
+  for (const a of decisions) boutons.append(boutonAction(c, a, a === "valider" || a === "integrer" ? "bouton" : a === "refuser" ? "danger" : "secondaire", champ));
+  zone.append(boutons);
+  return zone;
+}
+
+function boutonAction(c, action, classe, champ = null) {
+  const b = element("button", { classe, cle: `contribAction_${action}`, attributs: { type: "button" } });
+  b.addEventListener("click", async () => {
+    const erreurChamp = champ?.nextElementSibling;
+    const commentaire = champ?.value ?? "";
+    const verif = contributions.validerCommentaire(commentaire, action);
+    if (!verif.ok) {
+      if (erreurChamp) erreurChamp.textContent = t(`contribErreurCommentaire_${verif.erreur}`);
+      champ?.focus();
+      return;
+    }
+    b.disabled = true;
+    try {
+      const maj = await apiContrib.agir(c.id, { action, commentaire: verif.commentaire });
+      notifier(t(`contribFait_${action}`) + (maj?.issue === "indisponible" ? ` ${t("contribIssueIndisponible")}` : ""), "✅");
+      await chargerContributions();
+    } catch (e) {
+      b.disabled = false;
+      if (erreurChamp) erreurChamp.textContent = messageErreurContrib(e);
+      else $("#contrib-etat").textContent = messageErreurContrib(e);
+    }
+  });
+  return b;
+}
+
+function messageErreurContrib(e) {
+  const code = e?.code ?? "";
+  const connus = ["quota-atteint", "relecture-quatre-yeux", "statut-incompatible", "role-requis", "donnees-personnelles", "non-connecte"];
+  return t(connus.includes(code) ? `contribErreur_${code}` : "familleErreur", { n: contributions.MAX_OUVERTES_PAR_AUTEUR });
+}
+
+/* Formulaire : notion → champ → texte actuel ; ajout possible seulement pour un élément de liste. */
+function remplirOptionsFormulaire() {
+  const selNotion = $("#contrib-notion");
+  if (contrib.index && selNotion.options.length !== contrib.index.length + 1) {
+    const vide = element("option", { cle: "contribChoisirNotion" });
+    vide.value = "";
+    selNotion.replaceChildren(vide, ...contrib.index.map((n) => { const o = element("option", { texte: n.titre }); o.value = n.id; return o; }));
+  }
+  const selType = $("#contrib-type");
+  const valeur = selType.value;
+  selType.replaceChildren(...contributions.TYPES.map((ty) => { const o = element("option", { cle: `contribType_${ty}` }); o.value = ty; return o; }));
+  selType.value = valeur || contributions.TYPES[0];
+}
+
+async function choisirNotion() {
+  const id = $("#contrib-notion").value;
+  const selChamp = $("#contrib-champ");
+  selChamp.replaceChildren();
+  selChamp.disabled = true;
+  afficherTexteActuel();
+  if (!id) return;
+  const contenu = await contenuNotion(id);
+  const champs = contributions.champsEditables(contenu);
+  const vide = element("option", { cle: "contribChoisirChamp" });
+  vide.value = "";
+  const groupes = new Map();
+  for (const c of champs) {
+    if (!groupes.has(c.section)) groupes.set(c.section, element("optgroup", { attributs: { label: t(`champ_${c.section}`) } }));
+    const extrait = c.valeur.length > 60 ? `${c.valeur.slice(0, 60)}…` : c.valeur;
+    const o = element("option", { texte: `${libelleChamp(c.chemin)} — ${extrait}` });
+    o.value = c.chemin;
+    groupes.get(c.section).append(o);
+  }
+  selChamp.replaceChildren(vide, ...groupes.values());
+  selChamp.disabled = champs.length === 0;
+  $("#contrib-champ-erreur").textContent = champs.length ? "" : t("contribAucunChamp");
+}
+
+function afficherTexteActuel() {
+  const contenu = contrib.contenus.get($("#contrib-notion").value);
+  const chemin = $("#contrib-champ").value;
+  const valeur = contenu && chemin ? contributions.valeurAChemin(contenu, chemin) : null;
+  $("#contrib-actuel-bloc").hidden = typeof valeur !== "string";
+  $("#contrib-actuel").textContent = valeur ?? "";
+  const ajout = !!chemin && contributions.ajoutPossible(chemin);
+  $("#contrib-nature-ajout").disabled = !ajout;
+  if (!ajout) document.querySelector("input[name=contrib-nature][value=modification]").checked = true;
+  if (typeof valeur === "string" && !$("#contrib-texte").value) $("#contrib-texte").value = valeur;
+}
+
+function erreursContrib(erreurs = {}) {
+  const champs = { notion: "contrib-notion", chemin: "contrib-champ", nature: "contrib-nature", type: "contrib-type", texte: "contrib-texte", motif: "contrib-motif", charte: "contrib-charte" };
+  for (const [nom, id] of Object.entries(champs)) {
+    $(`#${id}-erreur`).textContent = erreurs[nom] ? t(`contribErreur_${nom}_${erreurs[nom]}`) : "";
+    $(`#${id}`)?.setAttribute("aria-invalid", String(!!erreurs[nom]));
+  }
+}
+
+function editerContribution(c) {
+  contrib.edition = c;
+  const form = $("#formulaire-contribution");
+  form.reset();
+  $("#contrib-proposer").open = true;
+  const selNotion = $("#contrib-notion");
+  selNotion.value = c.notion_id;
+  const selChamp = $("#contrib-champ");
+  const o = element("option", { texte: libelleChamp(c.chemin) });
+  o.value = c.chemin;
+  selChamp.replaceChildren(o);
+  selNotion.disabled = true;
+  selChamp.disabled = true;
+  $("#contrib-actuel-bloc").hidden = false;
+  $("#contrib-actuel").textContent = c.texte_actuel;
+  $("#contrib-nature-ajout").disabled = !contributions.ajoutPossible(c.chemin);
+  document.querySelector(`input[name=contrib-nature][value=${c.nature}]`).checked = true;
+  $("#contrib-type").value = c.type;
+  $("#contrib-texte").value = c.texte_propose;
+  $("#contrib-motif").value = c.motif;
+  $("#contrib-edition").hidden = false;
+  $("#contrib-edition").textContent = c.commentaire ? t("contribEditionAvecCommentaire", { commentaire: c.commentaire }) : t("contribEdition");
+  $("#contrib-annuler-edition").hidden = false;
+  $("#contrib-texte").focus();
+}
+
+function finirEdition() {
+  contrib.edition = null;
+  $("#formulaire-contribution").reset();
+  $("#contrib-notion").disabled = false;
+  $("#contrib-champ").replaceChildren();
+  $("#contrib-champ").disabled = true;
+  $("#contrib-actuel-bloc").hidden = true;
+  $("#contrib-edition").hidden = true;
+  $("#contrib-annuler-edition").hidden = true;
+  erreursContrib();
+  $("#contrib-erreur").textContent = "";
+}
+
+async function envoyerContribution(e) {
+  e.preventDefault();
+  const edition = contrib.edition;
+  const notion = edition?.notion_id ?? $("#contrib-notion").value;
+  const chemin = edition?.chemin ?? $("#contrib-champ").value;
+  const contenu = contrib.contenus.get(notion);
+  const donnees = {
+    notion_id: notion, chemin,
+    nature: document.querySelector("input[name=contrib-nature]:checked")?.value,
+    type: $("#contrib-type").value,
+    texte_actuel: edition?.texte_actuel ?? (contenu ? contributions.valeurAChemin(contenu, chemin) : ""),
+    texte_propose: $("#contrib-texte").value,
+    motif: $("#contrib-motif").value,
+    charte_version: $("#contrib-charte").checked ? contributions.VERSION_CHARTE : null,
+    notion_version: contrib.index?.find((n) => n.id === notion)?.version ?? ""
+  };
+  const v = contributions.validerContribution(donnees);
+  const erreurs = v.ok ? {} : { ...v.erreurs };
+  if (!notion) { erreurs.notion = "requise"; delete erreurs.chemin; }
+  else if (!chemin) erreurs.chemin = "requis";
+  erreursContrib(erreurs);
+  $("#contrib-erreur").textContent = "";
+  if (Object.keys(erreurs).length) return;
+  try {
+    if (edition) await apiContrib.agir(edition.id, { action: "modifier", ...donnees });
+    else await apiContrib.creer(donnees);
+    notifier(t(edition ? "contribFait_modifier" : "contribEnvoyee"), "📝");
+    finirEdition();
+    $("#contrib-proposer").open = false;
+    await chargerContributions();
+  } catch (err) {
+    if (err?.details && Object.keys(err.details).length && err.code !== "donnees-personnelles") erreursContrib(err.details);
+    $("#contrib-erreur").textContent = messageErreurContrib(err);
+  }
+}
+
+async function connecterDemoContrib(role) {
+  sauverDemoContrib(demoContrib.connecter(contrib.etatDemo, role));
+  notifier(t(`contribDemoConnecte_${role}`), "🟢");
+  finirEdition();
+  await chargerContributions();
+}
+
+async function deconnecterContrib() {
+  if (demoContribActive()) sauverDemoContrib(demoContrib.deconnecter(contrib.etatDemo));
+  else {
+    try { await apiFamille.deconnecter(); } catch { /* session déjà close */ }
+    etat.compte = null;
+    rafraichirFamille();
+  }
+  finirEdition();
+  await chargerContributions();
+}
+
+function brancherContributions() {
+  initialiserDemoContrib();
+  if (!contributionsActives()) return;
+  ECRANS.push("contributions");
+  $("#essayer-demo-contrib").addEventListener("click", demarrerDemoContrib);
+  $("#contrib-demo-contributeur").addEventListener("click", () => connecterDemoContrib("contributeur"));
+  $("#contrib-demo-prof").addEventListener("click", () => connecterDemoContrib("prof"));
+  $("#contrib-deconnexion").addEventListener("click", deconnecterContrib);
+  $("#contrib-notion").addEventListener("change", () => { $("#contrib-texte").value = ""; void choisirNotion(); });
+  $("#contrib-champ").addEventListener("change", () => { $("#contrib-texte").value = ""; afficherTexteActuel(); });
+  $("#formulaire-contribution").addEventListener("submit", envoyerContribution);
+  $("#contrib-annuler-edition").addEventListener("click", finirEdition);
+  $("#contrib-filtre-statut").addEventListener("change", (e) => { contrib.filtre.statut = e.currentTarget.value; rafraichirContributions(); });
+  $("#contrib-filtre-notion").addEventListener("change", (e) => { contrib.filtre.notion = e.currentTarget.value; rafraichirContributions(); });
+  if (demoContribActive()) void indexContenus().then(rafraichirContributions);
+  rafraichirContributions();
 }
 
 /* ---------- Construction du fil ---------- */
@@ -1201,7 +1653,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#famille"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#famille"), $("#contributions"), $("#defi"), $("#progres"));
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -1242,7 +1694,8 @@ async function demarrer() {
   initialiserDemo();
   $("#quitter-demo").addEventListener("click", quitterDemo);
   brancherFamille();
-  void verifierConnexion();
+  brancherContributions();
+  void verifierConnexion().then(rafraichirContributions);
 
   ajouterBienvenue();
   brancherTemps();
@@ -1608,7 +2061,7 @@ function rafraichirTheme() {
 /** Les 5 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
 const DESTINATIONS = ["accueil", "education", "jeux", "progression", "profil"];
 const ECRANS = [...DESTINATIONS, "defi"];
-const PARENTS = { defi: "education", famille: "profil" };
+const PARENTS = { defi: "education", famille: "profil", contributions: "profil" };
 /** Anciennes adresses (#notions, #labs, #badges…) : redirigées vers la destination qui les contient. */
 const ALIAS_ECRANS = { catalogue: "education", notions: "education", labs: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };
@@ -1618,7 +2071,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre" }[etat.ecran]);
+    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", contributions: "contribTitre" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : `${etat.ecran}Intro`);
 }
 
@@ -1637,6 +2090,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   decouvrirEnSilence("section", sectionDe(etat.ecran));
   if (etat.ecran === "defi" && changement) ouvrirDefi();
   if (etat.ecran === "progression") rendreProgression();
+  if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   const ancre = ANCRES_ALIAS[cle] ? $(ANCRES_ALIAS[cle]) : null;
   if (ancre?.hidden && ancre.id === "ecran-cahiers") basculerAccordeonFixe(document.querySelector('[aria-controls="ecran-cahiers"]'), true);
   if (focus) {
