@@ -57,7 +57,8 @@ compte local (ADR 0024) : l'étendre demandera une décision.
   `demarre`, `reponse` (QCM et nombres), `indice` (indice d'un QCM après la première erreur, indices gradués des
   nombres), `termine` (toutes les étoiles).
 - Pages écrites à la main : elles incluent le même module (`data-inclure="gabarit/jeux/evenements.js"`) et appellent
-  `Evenements.emettre(...)`. Le cercle trigonométrique sera la première (issue #184).
+  `Evenements.emettre(...)`. Le cercle trigonométrique est la première (issue #184) : chaque cible du défi est un exercice
+  `defi-1` à `defi-10` ; une cible manquée émet `reponse` (fausse) et `indice` ; les dix réussies émettent `termine`.
 - XP ludique, exercices réussis et maîtrise scolaire restent **distincts** : « Mes trophées » garde l'XP des jeux ;
   la maîtrise sera calculée à partir de ces événements (issue #185).
 
