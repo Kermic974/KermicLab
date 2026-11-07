@@ -595,6 +595,9 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .trophee-activite { margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed var(--bord); }
 .trophee-activite > p { margin: 0 0 6px; }
 .trophee-activite .badge.obtenu { display: inline-block; margin: 8px 0 0; }
+.trophee-activite .maitrise { margin: 0 0 8px; }
+.trophee-activite .maitrise-maitrisee strong { color: var(--succes); }
+.trophee-activite .maitrise-a-revoir strong { color: var(--chaud); }
 .trophee-module progress { width: 100%; }
 .trophee-module summary { cursor: pointer; margin: 12px 0; font-weight: 650; }
 .trophee-module > button { margin-top: 12px; }

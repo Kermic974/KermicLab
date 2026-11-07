@@ -50,11 +50,15 @@ export function normaliserEvenement(brut, notionAttendue) {
 export function enregistrer(etat, ev, jour) {
   const suivant = structuredClone(etat?.v === VERSION_CONTRAT && objet(etat.notions) ? etat : etatInitial());
   if (!suivant.notions[ev.notion] && Object.keys(suivant.notions).length >= MAX_NOTIONS) return suivant;
-  const n = suivant.notions[ev.notion] ??= { version: ev.version, ouvertures: 0, dernierJour: jour, termine: false, exercices: {} };
+  const n = suivant.notions[ev.notion] ??= { version: ev.version, ouvertures: 0, dernierJour: jour, termine: false, validations: 0, derniereValidation: null, exercices: {} };
   n.version = ev.version;
   n.dernierJour = jour;
   if (ev.evenement === "demarre") n.ouvertures = Math.min(n.ouvertures + 1, 1e6);
-  if (ev.evenement === "termine") n.termine = true;
+  if (ev.evenement === "termine") {
+    n.termine = true;
+    // Une validation par jour au plus : rouvrir et réussir la page le même jour ne compte pas comme une révision.
+    if (n.derniereValidation !== jour) { n.validations = Math.min((n.validations ?? 0) + 1, 1e6); n.derniereValidation = jour; }
+  }
   if (ev.exercice) {
     if (!n.exercices[ev.exercice] && Object.keys(n.exercices).length >= MAX_EXERCICES) return suivant;
     const e = n.exercices[ev.exercice] ??= { reponses: 0, reussi: false, indice: 0, apresIndice: false };
@@ -83,6 +87,38 @@ export function resumerNotion(n) {
   };
 }
 
+/**
+ * Maîtrise par notion (feuille de route, phase 2 ; issue #185), calculée localement à partir de l'agrégat, sans IA.
+ * Règles déterministes, dans cet ordre :
+ *   1. aucune activité                                   → « non-commencee »
+ *   2. au moins une validation (tous les exercices réussis lors d'une visite, événement `termine`) :
+ *        révision due (aujourd'hui ≥ dernière validation + intervalle) → « a-revoir », sinon → « maitrisee »
+ *   3. au moins un exercice tenté                        → « en-cours »
+ *   4. page ouverte seulement                            → « decouverte »
+ * L'intervalle grandit avec les validations réussies (7, puis 30, puis 90 jours) ; une révision réussie, c'est-à-dire
+ * une nouvelle validation un autre jour, repousse la suivante. Les réussites après indice restent un fait affiché à part.
+ */
+export const ETATS_MAITRISE = Object.freeze(["non-commencee", "decouverte", "en-cours", "maitrisee", "a-revoir"]);
+export const INTERVALLES_REVISION = Object.freeze([7, 30, 90]);
+
+export function ajouterJours(jour, n) {
+  const d = new Date(`${jour}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+export function maitriseNotion(n, aujourdhui) {
+  if (!n) return { etat: "non-commencee", revision: null };
+  if (n.validations > 0 && n.derniereValidation) {
+    const intervalle = INTERVALLES_REVISION[Math.min(n.validations, INTERVALLES_REVISION.length) - 1];
+    const revision = ajouterJours(n.derniereValidation, intervalle);
+    return { etat: aujourdhui >= revision ? "a-revoir" : "maitrisee", revision };
+  }
+  const tentes = Object.values(n.exercices ?? {}).some((e) => e.reponses > 0);
+  if (tentes) return { etat: "en-cours", revision: null };
+  return { etat: n.ouvertures > 0 ? "decouverte" : "non-commencee", revision: null };
+}
+
 /** Relit l'agrégat stocké en ne gardant que des entrées valides ; tout le reste est ignoré. */
 export function charger(stockage) {
   try {
@@ -98,7 +134,14 @@ export function charger(stockage) {
             !entier(e.indice, 0, 10) || typeof e.apresIndice !== "boolean") continue;
         exercices[ex] = { reponses: e.reponses, reussi: e.reussi, indice: e.indice, apresIndice: e.apresIndice };
       }
-      notions[id] = { version: n.version, ouvertures: n.ouvertures, dernierJour: n.dernierJour, termine: n.termine, exercices };
+      // Validations (issue #185) : absentes des agrégats antérieurs ; une notion déjà terminée compte une validation.
+      let validations = n.termine ? 1 : 0, derniereValidation = n.termine ? n.dernierJour : null;
+      if (n.validations !== undefined || n.derniereValidation !== undefined) {
+        const vOk = entier(n.validations, 0, 1e6), jOk = n.derniereValidation === null || JOUR.test(String(n.derniereValidation));
+        if (!vOk || !jOk || (n.validations > 0) !== (n.derniereValidation !== null)) continue;
+        validations = n.validations; derniereValidation = n.derniereValidation;
+      }
+      notions[id] = { version: n.version, ouvertures: n.ouvertures, dernierJour: n.dernierJour, termine: n.termine, validations, derniereValidation, exercices };
     }
     return { v: VERSION_CONTRAT, notions };
   } catch { return etatInitial(); }
