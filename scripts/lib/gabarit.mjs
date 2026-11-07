@@ -3,7 +3,7 @@
 import { existsSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 
-export const VERSION_GABARIT = "1.0.0";
+export const VERSION_GABARIT = "1.1.0";
 const racine = new URL("../..", import.meta.url).pathname;
 // Une figure = un fichier gabarit/figures/<type>.js (code inséré dans le moteur des seules pages qui l'utilisent)
 // et, si ses paramètres ont des contraintes, scripts/lib/figures/<type>.mjs qui exporte valider(conf, ou, outils).
@@ -82,6 +82,7 @@ async function lireGabarit() {
     style: (await readFile(`${racine}gabarit/style.css`, "utf8")).trimEnd(),
     moteur: (await readFile(`${racine}gabarit/moteur.js`, "utf8")).trimEnd(),
     trophees: (await readFile(`${racine}gabarit/jeux/trophees.js`, "utf8")).trimEnd(),
+    evenements: (await readFile(`${racine}gabarit/jeux/evenements.js`, "utf8")).trimEnd(),
     figures: new Map()
   };
   return fichiersGabarit;
@@ -106,7 +107,7 @@ export async function genererPage({ fiche, contenu, langue = "fr" }) {
   exiger(/^\d{4}-\d{2}-\d{2}$/.test(fiche.date ?? ""), `${fiche.id}/fiche.md : « date » (AAAA-MM-JJ) requise pour une page générée`);
   validerContenu(contenu, `${fiche.id}/contenu.json`);
   const gabarit = await lireGabarit();
-  const { page, style, trophees } = gabarit;
+  const { page, style, trophees, evenements } = gabarit;
   const moteur = await moteurAvecFigure(gabarit, contenu.application.figure?.type);
   const meta = {
     id: fiche.id, titre: fiche.titre, sujet: fiche.sujet, version: fiche.version, date: fiche.date, langue,
@@ -114,7 +115,7 @@ export async function genererPage({ fiche, contenu, langue = "fr" }) {
   };
   const valeurs = {
     ID: echapperHtml(fiche.id), TITRE: echapperHtml(fiche.titre), VERSION: echapperHtml(fiche.version), LANGUE: echapperHtml(langue),
-    META: JSON.stringify(meta, null, 2).replace(/</g, "\\u003c"), CONTENU: jsonDansScript(contenu), STYLE: style, MOTEUR: moteur, TROPHEES: trophees
+    META: JSON.stringify(meta, null, 2).replace(/</g, "\\u003c"), CONTENU: jsonDansScript(contenu), STYLE: style, MOTEUR: moteur, TROPHEES: trophees, EVENEMENTS: evenements
   };
   return page.replace(/\{\{([A-Z]+)\}\}/g, (tout, cle) => {
     if (!(cle in valeurs)) throw new Error(`gabarit : emplacement inconnu {{${cle}}}`);

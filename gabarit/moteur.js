@@ -90,6 +90,9 @@
     },
     resumer: () => ({ genre: "notions", etat: [...etoiles], etoiles: etoiles.size, etoilesTotal: totalExercices, badges: [] })
   });
+  // Contrat d'événements pédagogiques v1 (ADR 0025, gabarit/jeux/evenements.js) : sans effet hors du tableau de bord.
+  const signaler = typeof Evenements === "undefined" ? () => {} : Evenements.emettre;
+  signaler("demarre");
   const idsExercices = new Set([
     ...(C.application?.exercices ?? []).map((_, i) => `app-${i + 1}`),
     ...(C.situation?.etapes ?? []).map((_, i) => `defi-${i + 1}`)
@@ -104,6 +107,7 @@
     stockage.ecrire("etoiles", [...etoiles]);
     majEtoiles();
     publier();
+    if (etoiles.size === totalExercices) signaler("termine");
     compteur.classList.remove("brille"); void compteur.offsetWidth; compteur.classList.add("brille");
     return true;
   }
@@ -118,10 +122,13 @@
   function exerciceQcm(ex, id, surReussite) {
     const zone = retourZone();
     const choix = h("div", { classe: "choix", role: "group", "aria-label": "Réponses possibles" });
+    let essais = 0;
     ex.choix.forEach((libelle, i) => {
       const b = h("button", { type: "button", classe: "choix-bouton" }, riche(libelle));
       b.addEventListener("click", () => {
         if (choix.dataset.fini) return;
+        essais += 1;
+        signaler("reponse", { exercice: id, correct: i === ex.bonne, essai: essais });
         if (i === ex.bonne) {
           choix.dataset.fini = "1";
           b.classList.add("juste");
@@ -130,6 +137,7 @@
           surReussite?.();
         } else {
           b.classList.add("faux"); b.disabled = true;
+          if (ex.indice && essais === 1) signaler("indice", { exercice: id, rang: 1 });
           afficherRetour(zone, false, ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
         }
       });
@@ -141,32 +149,40 @@
   function exerciceNombre(ex, id, surReussite) {
     const zone = retourZone();
     const champ = h("input", { type: "text", inputmode: "decimal", autocomplete: "off", "aria-label": "Ta réponse", placeholder: ex.fractionIrreductible ? "ex. 3/4" : "ta réponse" });
-    const valider = h("button", { type: "submit", classe: "action" }, "Valider");
+    // Pas de soumission de formulaire : dans la bulle du tableau de bord, l'iframe est isolée sans « allow-forms »
+    // et le navigateur n'y déclenche jamais l'événement « submit ». Bouton et touche Entrée appellent soumettre().
+    const valider = h("button", { type: "button", classe: "action" }, "Valider");
     const solution = h("button", { type: "button", classe: "lien", hidden: true }, "Voir la solution");
     const form = h("form", { classe: "reponse" }, champ, ex.unite ? h("span", { classe: "unite" }, ex.unite) : null, valider);
-    let essais = 0, fini = false;
+    let essais = 0, tentatives = 0, fini = false;
     const terminer = (ok) => {
       fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true;
       const texte = ok ? `${gagner(id) ? "Exact, +1 étoile ! " : "Exact ! "}${ex.solution ?? ""}` : `Solution : ${ex.solution ?? nombreFr(ex.reponse)}`;
       afficherRetour(zone, ok, texte);
       if (ok) surReussite?.();
     };
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    function soumettre() {
       if (fini) return;
       const lu = lireNombre(champ.value);
       if (!lu) { afficherRetour(zone, false, ex.fractionIrreductible ? "Écris une fraction, par exemple 3/4." : "Écris un nombre, par exemple 12 ou 3,5."); return; }
       const juste = Math.abs(lu.valeur - ex.reponse) <= (ex.tolerance ?? 1e-9);
-      if (juste && ex.fractionIrreductible && (!lu.fraction || pgcd(lu.fraction[0], lu.fraction[1]) !== 1)) {
+      const nonSimplifiee = juste && ex.fractionIrreductible && (!lu.fraction || pgcd(lu.fraction[0], lu.fraction[1]) !== 1);
+      tentatives += 1;
+      signaler("reponse", { exercice: id, correct: juste && !nonSimplifiee, essai: tentatives });
+      if (nonSimplifiee) {
         afficherRetour(zone, false, "C'est la bonne valeur, mais la fraction n'est pas encore simplifiée au maximum !");
         return;
       }
       if (juste) { terminer(true); return; }
       essais += 1;
       const indices = ex.indices ?? [];
+      if (essais <= indices.length) signaler("indice", { exercice: id, rang: essais });
       afficherRetour(zone, false, essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.");
       if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
-    });
+    }
+    valider.addEventListener("click", soumettre);
+    champ.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); soumettre(); } });
+    form.addEventListener("submit", (e) => e.preventDefault());
     solution.addEventListener("click", () => terminer(false));
     return [form, solution, zone];
   }
