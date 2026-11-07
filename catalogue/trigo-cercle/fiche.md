@@ -2,9 +2,19 @@
 id: trigo-cercle
 titre: Le cercle trigonométrique
 sujet: mathematiques/trigonometrie
-version: 1.0.0
+version: 1.1.0
 date: 2026-10-31
 niveau: seconde
+niveaux: cycle-4, seconde, premiere, terminale
+prerequis:
+  - pythagore
+  - angles
+competences:
+  - relier-cosinus-et-sinus-au-cercle-unite
+  - utiliser-les-angles-remarquables
+  - convertir-degres-et-radians
+  - placer-un-angle-sur-le-cercle
+duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

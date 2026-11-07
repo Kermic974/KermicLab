@@ -122,6 +122,45 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
   } finally { await contexte.close(); }
 });
 
+test("événements (ADR 0025) : le cercle, page écrite à la main, émet le contrat jusqu'à « termine » (issue #184)", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  try {
+    const cadre = await ouvrirModule(page, "trigo-cercle");
+    const lire = () => page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements") ?? "null")?.notions?.["trigo-cercle"]);
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements") ?? "null")?.notions?.["trigo-cercle"]?.ouvertures === 1);
+    await cadre.locator("#onglet-mise-en-situation").click();
+    const defi = cadre.locator("#panneau-mise-en-situation");
+    await defi.waitFor({ state: "visible" });
+    // Même table que la page : libellé de la cible → angle en radians.
+    const CIBLES = { "30°": Math.PI / 6, "45°": Math.PI / 4, "60°": Math.PI / 3, "90°": Math.PI / 2, "120°": 2 * Math.PI / 3,
+      "π rad": Math.PI, "3π/2 rad": 3 * Math.PI / 2, "5π/6 rad": 5 * Math.PI / 6, "cos θ = 0,5 et sin θ > 0": Math.PI / 3, "sin θ = −1": 3 * Math.PI / 2 };
+    const ID = Object.fromEntries(Object.keys(CIBLES).map((libelle, i) => [libelle, `defi-${i + 1}`]));
+    const svg = defi.locator("svg[data-cercle=defi]");
+    const toucher = async (angle) => {
+      const b = await svg.boundingBox(); // viewBox -1,35 → 1,35, carré
+      await page.mouse.click(b.x + (0.9 * Math.cos(angle) + 1.35) / 2.7 * b.width, b.y + (-0.9 * Math.sin(angle) + 1.35) / 2.7 * b.height);
+    };
+    // Une cible manquée : réponse fausse et indice ; elle reste à réussir.
+    const premiere = (await defi.locator("[data-sortie=cible]").textContent()).trim();
+    await toucher(CIBLES[premiere] + Math.PI);
+    await defi.locator(".retour.ko").waitFor();
+    await page.waitForFunction((id) => JSON.parse(sessionStorage.getItem("kermiclab:evenements")).notions["trigo-cercle"].exercices[id]?.indice === 1, ID[premiere]);
+    // Puis toutes les cibles réussies, jusqu'à « termine ».
+    for (let tour = 0; tour < 300 && !(await lire())?.termine; tour++) {
+      await defi.locator("[data-action=nouveau-defi]").click();
+      await toucher(CIBLES[(await defi.locator("[data-sortie=cible]").textContent()).trim()]);
+      await defi.locator(".retour.ok").waitFor();
+    }
+    const notion = await lire();
+    assert.equal(notion.termine, true);
+    assert.equal(notion.version, "1.1.0");
+    assert.deepEqual(Object.keys(notion.exercices).sort(), Object.values(ID).sort());
+    assert.ok(Object.values(notion.exercices).every((e) => e.reussi));
+    assert.equal(notion.exercices[ID[premiere]].apresIndice, true, "la cible manquée est réussie après l'indice");
+    assert.deepEqual(erreurs, []);
+  } finally { await contexte.close(); }
+});
+
 test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaque", async () => {
   const { page, contexte, erreurs } = await demarrer();
   try {

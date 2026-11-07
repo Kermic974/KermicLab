@@ -98,7 +98,8 @@ Chaque page générée émet, sans rien à écrire dans `contenu.json`, les év�
 ([ADR 0025](decisions/0025-contrat-evenements-pedagogiques.md)) vers le tableau de bord : `demarre`, `reponse`, `indice`
 (indice d'un QCM après la première erreur, indices gradués d'un exercice « nombre ») et `termine`. Les identifiants
 d'exercice sont `app-N` (onglet S'entraîner) et `defi-N` (mise en situation). Une page écrite à la main inclut
-`gabarit/jeux/evenements.js` et appelle `Evenements.emettre(...)`.
+`gabarit/jeux/evenements.js` et appelle `Evenements.emettre(...)` : voir `catalogue/trigo-cercle/page.html`, page de
+référence (fiche avec niveaux, prérequis et compétences, défi qui émet le contrat).
 
 Dans la bulle du tableau de bord, l'iframe est isolée sans `allow-forms` : un composant d'exercice ne doit **jamais**
 compter sur l'événement `submit` d'un formulaire (il n'y est pas déclenché). Utiliser un bouton et la touche Entrée.

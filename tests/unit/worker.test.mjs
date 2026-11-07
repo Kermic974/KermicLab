@@ -448,7 +448,7 @@ test("origine non autorisée : refus avant toute session ou dépense LLM", async
 test("GET /maquettes/:id sert le fichier du catalogue tel quel", async () => {
   const r = await worker.fetch(new Request("https://api.kermiclab.test/maquettes/trigo-cercle?lang=fr"), env, ctx);
   assert.equal(r.status, 200);
-  assert.equal(r.headers.get("x-kermiclab-maquette"), "trigo-cercle@1.0.0");
+  assert.equal(r.headers.get("x-kermiclab-maquette"), "trigo-cercle@1.1.0");
   assert.match(r.headers.get("content-security-policy"), /frame-ancestors 'self' https:\/\/kermiclab\.pages\.dev/);
   assert.match(await r.text(), /"id": "trigo-cercle"/);
   const absent = await worker.fetch(new Request("https://api.kermiclab.test/maquettes/inconnue"), env, ctx);
