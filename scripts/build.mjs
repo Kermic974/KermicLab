@@ -40,7 +40,7 @@ const apiUrl = (process.env.KERMICLAB_API_URL ?? API_PAR_DEFAUT).replace(/\/$/, 
 await mkdir(`${racine}dist/cercle`, { recursive: true });
 await writeFile(`${racine}dist/cercle/index.html`, index);
 const langues = (await readdir(`${racine}web/i18n`)).filter((f) => f.endsWith(".json")).map((f) => f.replace(".json", "")).sort();
-await writeFile(`${racine}dist/config.json`, `${JSON.stringify({ apiUrl, langues, connexionActive: false }, null, 2)}\n`);
+await writeFile(`${racine}dist/config.json`, `${JSON.stringify({ apiUrl, langues, connexionActive: false, testRolesTemporaire: true }, null, 2)}\n`);
 const apiOrigine = apiUrl ? ` ${new URL(apiUrl).origin}` : "";
 await writeFile(`${racine}dist/_headers`, `/*
   Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; connect-src 'self'${apiOrigine} https://cloudflareinsights.com; frame-src 'self'${apiOrigine}; base-uri 'none'; form-action 'none'; frame-ancestors 'none'

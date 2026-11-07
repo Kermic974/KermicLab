@@ -978,3 +978,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .contrib-actions { margin-top: 8px; }
 .contrib-actions textarea { width: 100%; }
 #formulaire-contribution textarea { width: 100%; }
+
+/* TEMPORAIRE (issue #160) : option « Tester les rôles » du Profil. */
+.test-roles { margin-top: 16px; padding: 12px 14px; border: 1px dashed var(--bord-fort); border-radius: var(--rayon-moyen); }
+.test-roles select { max-width: 100%; }
+.test-roles p { margin: 6px 0 0; }

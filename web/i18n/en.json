@@ -705,5 +705,8 @@
   "champ_conclusion": "conclusion",
   "champ_formules": "formula",
   "champ_formule": "formula",
-  "champ_pointsCles": "key point"
+  "champ_pointsCles": "key point",
+  "testRolesLabel": "Try roles (temporary option)",
+  "testRolesAucun": "None (usual profile)",
+  "testRolesAide": "Simulates the contributor or teacher role on this device to test the Contributions screens until accounts open. Nothing is sent to the server; this option will be removed once accounts are available."
 }

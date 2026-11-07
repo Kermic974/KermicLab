@@ -372,6 +372,17 @@
       <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
       <button id="entree-contributions" type="button" class="secondaire" data-nav="contributions" data-i18n="contribEntree" hidden></button>
     </div>
+    <!-- TEMPORAIRE (issue #160) : rôles contributeur / prof simulés dans le navigateur pour tester les écrans, en attendant
+         la gestion des comptes. Affiché seulement si config.testRolesTemporaire ; aucun rôle n'est attribué côté serveur. -->
+    <div id="test-roles" class="test-roles" hidden>
+      <label for="test-roles-choix" class="etiquette-champ" data-i18n="testRolesLabel"></label>
+      <select id="test-roles-choix" aria-describedby="test-roles-aide">
+        <option value="" data-i18n="testRolesAucun"></option>
+        <option value="contributeur" data-i18n="contribRole_contributeur"></option>
+        <option value="prof" data-i18n="contribRole_prof"></option>
+      </select>
+      <p id="test-roles-aide" class="doux petit" data-i18n="testRolesAide"></p>
+    </div>
   </section>
   <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
   <div class="llm-controle">

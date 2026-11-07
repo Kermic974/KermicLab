@@ -104,6 +104,20 @@ Codes d'erreur : `role-requis` (403), `contribution-invalide` (400, détails par
   `?demo=contributions` simule les deux rôles dans l'onglet (`web/demo-contributions.js`, mêmes règles et mêmes formes de
   réponse), sans OAuth ni appel au Worker, pour valider les écrans avant l'activation des comptes.
 
+### 7. Exception temporaire : « Tester les rôles » (à supprimer, issue #160)
+
+À la demande du propriétaire (2026-11-07), pour tester les écrans avant l'ouverture des comptes : le Profil affiche un
+sélecteur « Tester les rôles (option temporaire) » (*Aucun / Contributeur / Prof*). Choisir un rôle ouvre l'écran
+Contributions avec ce rôle **simulé dans le navigateur** (double de démonstration, état gardé dans l'onglet, bandeau
+« Démo »). « Aucun » revient au profil habituel.
+
+- C'est une dérogation à la règle « un rôle n'est jamais auto-attribué » (§1), limitée à l'interface : **le Worker n'est
+  pas modifié**, aucun rôle n'est attribué ni accepté côté serveur, rien n'est envoyé.
+- Affichée seulement si `testRolesTemporaire` vaut `true` dans `config.json` (posé par `scripts/build.mjs`) : passer cette
+  valeur à `false` la désactive immédiatement.
+- **À supprimer** quand la gestion des comptes sera disponible : liste des fichiers et vérifications dans
+  [l'issue #160](https://github.com/Kermic974/trigoLab/issues/160).
+
 ## Hors périmètre (étapes suivantes)
 
 - **Avec IA** : pré-relecture (exactitude, niveau, ton) et préparation automatique de la PR d'intégration par un agent

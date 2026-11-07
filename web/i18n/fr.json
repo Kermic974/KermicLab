@@ -705,5 +705,8 @@
   "champ_conclusion": "conclusion",
   "champ_formules": "formule",
   "champ_formule": "formule",
-  "champ_pointsCles": "point clé"
+  "champ_pointsCles": "point clé",
+  "testRolesLabel": "Tester les rôles (option temporaire)",
+  "testRolesAucun": "Aucun (profil habituel)",
+  "testRolesAide": "Simule le rôle contributeur ou prof sur cet appareil pour tester les écrans Contributions, en attendant les comptes. Rien n'est envoyé au serveur ; cette option disparaîtra quand les comptes seront ouverts."
 }
