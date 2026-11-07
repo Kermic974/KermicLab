@@ -54,19 +54,36 @@ const Evenements = (() => {
   }
 
   if (!isole) {
-    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : null;
-    window.addEventListener("message", (e) => {
-      if (e.source !== window.parent || e.data?.type !== "kermiclab:evenements:ecouter" || e.data.v !== VERSION_CONTRAT ||
-          e.data.notion !== notion || origineParent) return;
-      let origine;
-      try { origine = new URL(e.origin); } catch { return; }
-      if (!["https:", "http:"].includes(origine.protocol) || origine.origin !== e.origin ||
-          (meta.parentOrigin && meta.parentOrigin !== e.origin) ||
-          (originesAutorisees && !originesAutorisees.includes(e.origin))) return;
-      origineParent = e.origin;
-      for (const ev of file.splice(0)) window.parent.postMessage(ev, origineParent);
-    });
-    window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, meta.parentOrigin || "*");
+    const estOrigineValide = (o) => {
+      try {
+        const u = new URL(o);
+        return ["https:", "http:"].includes(u.protocol) && u.origin === o;
+      } catch {
+        return false;
+      }
+    };
+
+    const originesAutorisees = new Set();
+    if (estOrigineValide(meta.parentOrigin)) originesAutorisees.add(meta.parentOrigin);
+    if (Array.isArray(meta.allowedParentOrigins)) {
+      for (const o of meta.allowedParentOrigins) {
+        if (estOrigineValide(o)) originesAutorisees.add(o);
+      }
+    }
+
+    if (originesAutorisees.size > 0) {
+      window.addEventListener("message", (e) => {
+        if (e.source !== window.parent || e.data?.type !== "kermiclab:evenements:ecouter" || e.data.v !== VERSION_CONTRAT ||
+            e.data.notion !== notion || origineParent) return;
+        let origine;
+        try { origine = new URL(e.origin); } catch { return; }
+        if (!["https:", "http:"].includes(origine.protocol) || origine.origin !== e.origin ||
+            !originesAutorisees.has(e.origin)) return;
+        origineParent = e.origin;
+        for (const ev of file.splice(0)) window.parent.postMessage(ev, origineParent);
+      });
+      window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, [...originesAutorisees][0]);
+    }
   }
 
   return Object.freeze({ emettre, construire, VERSION_CONTRAT });
