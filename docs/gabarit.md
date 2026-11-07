@@ -17,6 +17,15 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
   et **`niveau`** (`college`, `seconde`, `premiere` ou `terminale`) qui range la notion dans la barre de navigation du chat (sinon : « Autres notions »).
   - Chaque question d'exemple doit être routée vers la notion par les mots-clés (test de non-régression) : vérifie qu'un mot-clé n'est pas déjà utilisé par une autre notion.
   - Les questions servent aussi de **suggestions cliquables** dans le chat : écris-les comme un élève les poserait.
+  - **Référentiel (facultatif, recommandé)** : champs vérifiés par `npm run build` quand ils sont présents (feuille de route,
+    phase 1). Exemple : `catalogue/proportionnalite/fiche.md`.
+    - `niveaux` : parmi `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
+      avancé, d'après les niveaux réellement couverts par le contenu (`niveau` reste le rangement dans la navigation).
+    - `prerequis` : identifiants d'autres notions à maîtriser avant. `prerequis:` sans élément signifie « aucun prérequis »
+      (la notion compte alors comme renseignée). L'existence des identifiants et l'absence de cycle sont vérifiées par la
+      CI avec le graphe des prérequis (issue #180).
+    - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
+    - `duree` : durée estimée en minutes, entier de 1 à 240.
 - `contenu.json` : le contenu (ci-dessous). **Ne crée pas `page.html`** : `npm run build` le génère.
 
 ## 2. Structure de `contenu.json`

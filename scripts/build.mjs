@@ -2,7 +2,7 @@
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
-import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
+import { appliquerCsp, chargerCatalogue, indicateurReferentiel } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
 
@@ -57,6 +57,8 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 // sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
+const referentiel = indicateurReferentiel(catalogue.index.maquettes);
+console.log(`Référentiel : prérequis renseignés pour ${referentiel.avecPrerequis} notion(s) sur ${referentiel.notions}.`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
 
 /**
