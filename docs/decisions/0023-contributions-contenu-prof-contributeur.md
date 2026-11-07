@@ -1,6 +1,6 @@
 # ADR 0023 — Contributions au contenu des notions : profils Prof et Contributeur (scénario sans IA)
 
-- Date : 2026-11-07 — Statut : **proposé** (à valider par le propriétaire)
+- Date : 2026-11-07 — Statut : **accepté** (validé par le propriétaire le 2026-11-07)
 - Contexte : le catalogue s'enrichit aujourd'hui par issues `maquette-manquante` et PR préparées par des agents. Le
   propriétaire veut ouvrir la mise à jour du contenu à deux nouveaux profils d'utilisateur :
   - **Contributeur** : propose des mises à jour du contenu des notions ;
@@ -115,10 +115,11 @@ Codes d'erreur : `role-requis` (403), `contribution-invalide` (400, détails par
 ## Conséquences
 
 - Prérequis identiques à l'activation des comptes (ADR 0017 : domaine API même site, OAuth, schéma D1), plus
-  l'attribution des rôles, le label GitHub `contribution-validee` et la validation de la charte du contributeur
+  l'attribution des rôles, le label GitHub `contribution-validee` (créé par le workflow « Labels » depuis
+  `.github/labels.json`) et la validation de la charte du contributeur
   (cession des droits, licence du contenu) — **point de contrôle juridique**.
 - La page de confidentialité devra décrire les comptes contributeur et prof avant l'activation.
 
 ## Révision
 
-À valider par le propriétaire avant l'attribution du premier rôle contributeur ou prof.
+Accepté par le propriétaire le 2026-11-07. Prochain point de contrôle : charte du contributeur (action manuelle 36) avant l'attribution du premier rôle.

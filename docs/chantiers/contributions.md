@@ -21,7 +21,7 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 | Étape | Contenu | Statut |
 |---|---|---|
 | 1 | Scénario sans IA : rôles, proposition, relecture à quatre yeux, tableau de bord, issue de suivi, démo | Fait (PR en attente) |
-| 2 | Valider l'ADR 0023 et la charte du contributeur ; créer le label `contribution-validee` | Actions manuelles 35–37 |
+| 2 | ADR 0023 accepté (2026-11-07) ; label `contribution-validee` créé par le workflow « Labels » ; valider la charte du contributeur | Charte : action manuelle 36 |
 | 3 | Activation avec les comptes (ADR 0017) : schéma D1, attribution des premiers rôles, test du parcours réel | À faire |
 | 4 | Avec IA : pré-relecture par un agent et PR d'intégration préparée automatiquement, validation humaine conservée | Backlog |
 | 5 | Notifications aux auteurs, historique des décisions, rôles par matière, attribution des rôles dans l'interface | Backlog |
