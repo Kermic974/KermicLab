@@ -951,3 +951,42 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) {
   .chevron, .entree, .accordeon-bouton { transition: none; }
 }
+
+/* ---------- Contributions au contenu (ADR 0023) ---------- */
+.contrib-role { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-bottom: 8px; }
+.contrib-role p { margin: 0; }
+.contrib-bloc { margin-top: 16px; }
+.contrib-compteurs { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.contrib-compteur { display: inline-flex; align-items: baseline; gap: 6px; min-height: 40px; padding: 6px 12px; border: 1px solid var(--bord); border-radius: 999px; background: var(--surface-2); color: inherit; font: inherit; cursor: pointer; }
+.contrib-compteur[aria-pressed="true"] { border-color: currentColor; box-shadow: inset 0 0 0 1px currentColor; }
+.contrib-compteur strong { font-size: 1.1rem; }
+.contrib-filtres { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 12px; }
+.contrib-filtres label { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 200px; }
+.contrib-filtres select, #contrib-notion, #contrib-champ, #contrib-type { max-width: 100%; }
+.contrib-liste { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 12px; }
+.contrib-item { padding: 12px 14px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface-2); overflow-wrap: anywhere; }
+.contrib-item p { margin: 6px 0; }
+.contrib-entete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
+.contrib-cible { min-width: 0; }
+.contrib-statut { padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 700; border: 1px solid currentColor; white-space: nowrap; }
+.statut-proposee { color: #8a5a00; }
+.statut-a_reviser { color: #9a3412; }
+.statut-validee, .statut-integree { color: #166534; }
+.statut-refusee, .statut-retiree { color: #6b7280; }
+:root[data-theme="dark"] .statut-proposee { color: #f6c768; }
+:root[data-theme="dark"] .statut-a_reviser { color: #fdba74; }
+:root[data-theme="dark"] .statut-validee, :root[data-theme="dark"] .statut-integree { color: #86efac; }
+:root[data-theme="dark"] .statut-refusee, :root[data-theme="dark"] .statut-retiree { color: #c4c8cf; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .statut-proposee { color: #f6c768; }
+  :root:not([data-theme="light"]) .statut-a_reviser { color: #fdba74; }
+  :root:not([data-theme="light"]) .statut-validee, :root:not([data-theme="light"]) .statut-integree { color: #86efac; }
+  :root:not([data-theme="light"]) .statut-refusee, :root:not([data-theme="light"]) .statut-retiree { color: #c4c8cf; }
+}
+.contrib-diff, .contrib-citation { white-space: pre-wrap; padding: 8px 10px; border-left: 3px solid var(--bord); background: var(--surface); }
+.contrib-citation { margin: 4px 0 12px; }
+.contrib-diff del { background: var(--danger-doux); color: var(--texte); text-decoration: line-through; }
+.contrib-diff ins { background: var(--succes-doux); color: var(--texte); text-decoration: none; font-weight: 600; }
+.contrib-actions { margin-top: 8px; }
+.contrib-actions textarea { width: 100%; }
+#formulaire-contribution textarea { width: 100%; }

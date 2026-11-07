@@ -8,6 +8,7 @@ import { sauvegarderKpi, jourPrecedent } from "./sauvegarde.js";
 import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
+import { estRouteContribution, gererApiContributions } from "./contributions.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { SESSION_CAHIER, SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
@@ -43,7 +44,7 @@ function enTetesCors(requete, env) {
   const origine = requete.headers.get("origin");
   const autorisees = String(env.ORIGINES_AUTORISEES || "").split(",").map((s) => s.trim()).filter(Boolean);
   if (origine && (autorisees.includes(origine) || autorisees.includes("*"))) {
-    return { "access-control-allow-origin": origine, "access-control-allow-methods": "GET, POST, DELETE, OPTIONS", "access-control-allow-headers": "content-type", "access-control-allow-credentials": "true", vary: "origin" };
+    return { "access-control-allow-origin": origine, "access-control-allow-methods": "GET, POST, PATCH, DELETE, OPTIONS", "access-control-allow-headers": "content-type", "access-control-allow-credentials": "true", vary: "origin" };
   }
   return {};
 }
@@ -670,11 +671,15 @@ export default {
 
     // Authenticated account API
     // Comptes famille (ADR 0017) : réservés au parent connecté ; 401 sans session valide.
-    if (estRouteCompte(url.pathname)) {
+    // Contributions au contenu (ADR 0023) : rôles contributeur, prof, admin ; mêmes garde-fous de session.
+    const routeContribution = estRouteContribution(url.pathname);
+    if (estRouteCompte(url.pathname) || routeContribution) {
       let apiResponse;
       try {
         const compteId = await lireCompteDepuisCookie(requete, env);
-        apiResponse = compteId ? await gererApiCompte(requete, env, compteId) : json({ erreur: "non-connecte" }, 401, {});
+        apiResponse = !compteId ? json({ erreur: "non-connecte" }, 401, {})
+          : routeContribution ? await gererApiContributions(requete, env, compteId, { catalogue: CATALOGUE.index })
+            : await gererApiCompte(requete, env, compteId);
       } catch {
         // Tables des comptes absentes ou D1 indisponible : jamais de 500 ni de détail interne.
         apiResponse = json({ erreur: "comptes-indisponibles" }, 503, {});

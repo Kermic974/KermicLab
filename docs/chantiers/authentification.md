@@ -39,6 +39,7 @@ Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
 | 4 | Worker : session limitée au profil enfant choisi et refus côté serveur des opérations de gestion tant que le parent ne s'est pas réauthentifié ; tests d'appels directs aux API de gestion. L'appairage reste en phase D | À faire |
 | 5 | OAuth : liaison navigateur (`browser_binding`), URL de retour du site configurée et autorisée, test du parcours complet jusqu'à `#famille` ; choisir et tester une réauthentification vérifiable par fournisseur ou un facteur parent propre à l'application, avec test du déverrouillage | À faire |
 | 6 | Domaine API même site, `AUTH_CALLBACK_URL` identique à l'URL de rappel déclarée chez Google et Microsoft, redéploiement du Worker, application du schéma D1, secrets OAuth, page de confidentialité ; activation seulement après validation des tests et de la méthode de réauthentification | Actions manuelles |
+| 6 bis | Rôles `contributeur`, `prof`, `admin` sur `comptes.role` et contributions au contenu ([ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur.md), [chantier](contributions.md)) | Prêt, activé avec les comptes |
 | 7 | Phase D : code d'appairage d'un appareil enfant, tableau de bord parent, export | Backlog |
 
 ## Prérequis humains avant l'activation
