@@ -5,6 +5,16 @@ sujet: mathematiques/second-degre
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
+niveaux: premiere
+prerequis:
+  - fonctions-de-reference
+  - equations
+competences:
+  - ecrire-la-forme-canonique
+  - calculer-le-discriminant
+  - resoudre-une-equation-du-second-degre
+  - etudier-le-signe-d-un-trinome
+duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

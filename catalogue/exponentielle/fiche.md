@@ -5,6 +5,16 @@ sujet: mathematiques/exponentielle
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
+niveaux: premiere, terminale
+prerequis:
+  - derivation
+  - puissances
+competences:
+  - utiliser-la-definition-de-l-exponentielle
+  - appliquer-les-proprietes-algebriques-de-l-exponentielle
+  - etudier-la-fonction-exponentielle
+  - resoudre-une-equation-avec-l-exponentielle
+duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
