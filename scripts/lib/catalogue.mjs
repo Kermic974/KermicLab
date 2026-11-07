@@ -105,6 +105,41 @@ export function indicateurRelecture(maquettes) {
   return { notions: notions.length, relues, aRevoir: tracees.length - relues };
 }
 
+/**
+ * Graphe des prérequis (feuille de route, phase 1 ; issue #180), sur tout le catalogue chargé (public et privé) :
+ * chaque prérequis existe et est une notion (pas un jeu), aucun cycle, et un prérequis ne commence pas à un niveau
+ * plus avancé que la notion qui en dépend (vérifié quand les deux fiches renseignent `niveaux`).
+ * Renvoie la liste des erreurs (vide si le graphe est valide).
+ */
+export function verifierGraphePrerequis(maquettes) {
+  const parId = new Map(maquettes.map((m) => [m.id, m]));
+  const debut = (m) => (m.niveaux?.length ? NIVEAUX_SCOLAIRES.indexOf(m.niveaux[0]) : null);
+  const erreurs = [];
+  for (const m of maquettes) {
+    for (const p of m.prerequis ?? []) {
+      const cible = parId.get(p);
+      if (!cible) { erreurs.push(`${m.id} : prérequis « ${p} » inconnu`); continue; }
+      if (String(cible.sujet ?? "").startsWith("jeux/")) erreurs.push(`${m.id} : prérequis « ${p} » est un jeu, pas une notion`);
+      if (debut(cible) !== null && debut(m) !== null && debut(cible) > debut(m)) {
+        erreurs.push(`${m.id} : prérequis « ${p} » commence en ${cible.niveaux[0]}, après ${m.niveaux[0]}`);
+      }
+    }
+  }
+  // Cycles : parcours en profondeur (blanc → gris → noir) ; un arc vers un nœud gris ferme un cycle.
+  const etat = new Map();
+  const visiter = (id, chemin) => {
+    etat.set(id, "gris");
+    for (const p of parId.get(id)?.prerequis ?? []) {
+      if (!parId.has(p)) continue;
+      if (etat.get(p) === "gris") erreurs.push(`cycle de prérequis : ${[...chemin.slice(chemin.indexOf(p)), p].join(" → ")}`);
+      else if (!etat.has(p)) visiter(p, [...chemin, p]);
+    }
+    etat.set(id, "noir");
+  };
+  for (const m of maquettes) if (!etat.has(m.id)) visiter(m.id, [m.id]);
+  return erreurs;
+}
+
 /** Indicateur de la feuille de route : notions dont les prérequis sont renseignés (une liste vide compte). */
 export function indicateurReferentiel(maquettes) {
   const notions = maquettes.filter((m) => !String(m.sujet ?? "").startsWith("jeux/"));
@@ -227,5 +262,7 @@ export async function chargerCatalogue(dossiers) {
       });
     }
   }
+  const erreursGraphe = verifierGraphePrerequis(maquettes);
+  if (erreursGraphe.length) throw new Error(`graphe des prérequis invalide :\n- ${erreursGraphe.join("\n- ")}`);
   return { index: { maquettes }, pages, sources };
 }

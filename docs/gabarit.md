@@ -22,8 +22,10 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
     - `niveaux` : parmi `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
       avancé, d'après les niveaux réellement couverts par le contenu (`niveau` reste le rangement dans la navigation).
     - `prerequis` : identifiants d'autres notions à maîtriser avant. `prerequis:` sans élément signifie « aucun prérequis »
-      (la notion compte alors comme renseignée). L'existence des identifiants et l'absence de cycle sont vérifiées par la
-      CI avec le graphe des prérequis (issue #180).
+      (la notion compte alors comme renseignée). Le **graphe des prérequis** est vérifié à chaque build, sur le catalogue
+      public et privé : chaque prérequis existe et est une notion (pas un jeu), aucun cycle (le message donne le chemin,
+      par exemple `fractions → proportionnalite → fractions`), et un prérequis ne commence pas à un niveau plus avancé que
+      la notion (vérifié quand les deux fiches renseignent `niveaux`).
     - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
     - `duree` : durée estimée en minutes, entier de 1 à 240.
   - **Relecture pédagogique** : après une relecture humaine selon la grille publiée, ajouter `relue` (date), `relue-version`
