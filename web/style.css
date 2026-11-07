@@ -439,7 +439,19 @@ dialog.lecture-cahier { width: min(760px, 100vw - 24px); }
 .bloc-genre { font-weight: 700; color: var(--doux); text-transform: uppercase; letter-spacing: .04em; }
 .bloc-retenir { border-left: 4px solid var(--accent, #4f46e5); }
 .bloc-exercice { border-left: 4px solid var(--ok, #16a34a); }
-.reponse-cahier summary { cursor: pointer; font-weight: 600; }
+.reponse-cahier summary, .indice-cahier summary { cursor: pointer; font-weight: 600; }
+.bloc-titre { font-weight: 700; }
+.bloc-niveau { color: #b7791f; letter-spacing: .05em; }
+.bloc-histoire { background: linear-gradient(135deg, rgba(124, 58, 237, .10), rgba(79, 70, 229, .06)); border-left: 4px solid #7c3aed; font-style: italic; }
+.bloc-exemple { border-left: 4px solid #0ea5e9; }
+.bloc-defi { border-left: 4px solid #d97706; background: rgba(217, 119, 6, .08); }
+.bloc-bilan { border-left: 4px solid var(--ok, #16a34a); }
+.bloc-cahier.reussi { outline: 2px solid var(--ok, #16a34a); }
+.reussi-cahier { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-top: 4px; }
+.progression-cahier { display: flex; align-items: center; gap: 10px; margin: 4px 0 10px; font-weight: 600; }
+.progression-cahier[hidden] { display: none; }
+.progression-cahier progress { flex: 1; max-width: 260px; accent-color: var(--ok, #16a34a); }
+.conclusion-cahier { font-style: italic; padding-top: 10px; border-top: 1px solid var(--bord, #ddd); }
 .notes-cahier { display: flex; flex-direction: column; gap: 6px; }
 .notes-cahier textarea { width: 100%; }
 .cahier-enregistre .doux { margin-top: 4px; }

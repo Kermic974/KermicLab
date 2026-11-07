@@ -604,19 +604,23 @@ async function traiterCahier(requete, env, ctx) {
   }
   const quota = { limite, utilisees, restantes: Math.max(0, limite - utilisees) };
   const config = lireConfiguration(env);
-  let generation, cahier = null;
+  let generation, cahier = null, echec = null;
   try {
     generation = await appelerAliasGateway(env, {
-      system: promptCahier(langue, demande.type, demande.longueur), message: messageCahier(CATALOGUE, demande, langue),
+      system: promptCahier(langue), message: messageCahier(CATALOGUE, demande, langue),
       schema: SCHEMA_CAHIER, maxTokens: config.MAX_TOKENS_CAHIERS, cleModele: "MODELE_CAHIERS", nomSchema: "cahier"
     });
-    if (!generation.refus) cahier = normaliserCahier(generation.contenu, demande);
-  } catch {
-    console.error("llm cahier fournisseur ou sortie invalide");
+    if (generation.refus) echec = "refus";
+    else if (generation.tronque) echec = "sortie-tronquee";
+    else cahier = normaliserCahier(generation.contenu, demande);
+  } catch (e) {
+    // Seul le code HTTP du fournisseur est gardé (diagnostic sans contenu) ; sinon la sortie était illisible.
+    echec = generation ? "sortie-invalide" : codeErreurFournisseur(e);
+    console.error("llm cahier", echec);
   } finally {
     await libererGenerationCahier(env, session.id).catch(() => console.error("llm libération cahier indisponible"));
   }
-  if (!cahier?.sections.length) return avecCookie(sansIa(generation ? "sortie-invalide" : "ia-indisponible", quota));
+  if (!cahier?.sections.length) return avecCookie(sansIa(echec ?? "sortie-invalide", quota));
   ctx.waitUntil(journaliser(env, { type: "cahier", langue, routage: "ia", detail: `${demande.type}:${cahier.sections.length}` }));
   const origine = new URL(requete.url).origin;
   return avecCookie({
@@ -624,7 +628,8 @@ async function traiterCahier(requete, env, ctx) {
     donnees: {
       source: "ia",
       cahier: {
-        type: demande.type, longueur: demande.longueur, introduction: cahier.introduction,
+        type: demande.type, longueur: demande.longueur, univers: demande.univers, objectif: demande.objectif,
+        titre: cahier.titre, introduction: cahier.introduction, conclusion: cahier.conclusion,
         sections: cahier.sections.map((s) => ({ ...s, url: `${origine}/maquettes/${encodeURIComponent(s.notion)}?lang=${langue}` }))
       },
       quota,

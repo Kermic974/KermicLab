@@ -6,9 +6,9 @@
     "index.html": {
       "version": "1.18.0",
       "date": "2026-11-07",
-      "revision": "715f86c1e7bfeb68c1ddd475695cc24da9e0f687",
-      "squeletteSha256": "da1cc4d15cab0b314bfdcd3e623a25843fb927451827362b8d644e04b6a80fcc",
-      "sourcesSha256": "b9c0b5eb297db6d272170dcdd4cd9ebe018047f3b8b4f1178887c95e7123a770"
+      "revision": "ba9dbcfb4b85c9617c0920bd119a394d071142e5",
+      "squeletteSha256": "e29623293ea6f38be3658df0a1d760ae383f6ae0c199e39417ada7c1325c41c6",
+      "sourcesSha256": "7f563a0b2f54d756b554ed0ce8c2d92f2d1be60feea9d21f4c847c5128bdf1f2"
     },
     "notion.html": {
       "version": "1.14.0",
@@ -41,9 +41,9 @@
     "inventaire.html": {
       "version": "1.18.0",
       "date": "2026-11-07",
-      "revision": "715f86c1e7bfeb68c1ddd475695cc24da9e0f687",
-      "squeletteSha256": "6bb59100432678eb7182e54383ec678c28ddce421175886ecd7629846db65b54",
-      "sourcesSha256": "1db95f4bef784616d0169acf118cdedc31d1765494ac4059e833d7f9fac032af"
+      "revision": "ba9dbcfb4b85c9617c0920bd119a394d071142e5",
+      "squeletteSha256": "2825033237bcf31c9c74184c4ed7db6dc5a30aa32102b13f4a337fdde8bc893a",
+      "sourcesSha256": "a1ba5aa69c557a36f24a43e61f8c014efa87c52062e2488c627f39852fb106cf"
     }
   },
   "historique": [
@@ -1391,16 +1391,16 @@
         "index.html": {
           "version": "1.18.0",
           "date": "2026-11-07",
-          "revision": "715f86c1e7bfeb68c1ddd475695cc24da9e0f687",
-          "squeletteSha256": "da1cc4d15cab0b314bfdcd3e623a25843fb927451827362b8d644e04b6a80fcc",
-          "sourcesSha256": "b9c0b5eb297db6d272170dcdd4cd9ebe018047f3b8b4f1178887c95e7123a770"
+          "revision": "ba9dbcfb4b85c9617c0920bd119a394d071142e5",
+          "squeletteSha256": "e29623293ea6f38be3658df0a1d760ae383f6ae0c199e39417ada7c1325c41c6",
+          "sourcesSha256": "7f563a0b2f54d756b554ed0ce8c2d92f2d1be60feea9d21f4c847c5128bdf1f2"
         },
         "inventaire.html": {
           "version": "1.18.0",
           "date": "2026-11-07",
-          "revision": "715f86c1e7bfeb68c1ddd475695cc24da9e0f687",
-          "squeletteSha256": "6bb59100432678eb7182e54383ec678c28ddce421175886ecd7629846db65b54",
-          "sourcesSha256": "1db95f4bef784616d0169acf118cdedc31d1765494ac4059e833d7f9fac032af"
+          "revision": "ba9dbcfb4b85c9617c0920bd119a394d071142e5",
+          "squeletteSha256": "2825033237bcf31c9c74184c4ed7db6dc5a30aa32102b13f4a337fdde8bc893a",
+          "sourcesSha256": "a1ba5aa69c557a36f24a43e61f8c014efa87c52062e2488c627f39852fb106cf"
         }
       }
     }
