@@ -92,6 +92,22 @@ Une traduction manquante crée une issue `traduction-manquante` ; la version fra
    commit de `main` portant cette version) et la release GitHub, avec les notes du changelog. Les versions `0.x`
    sont publiées en pré-version. Aucun tag n'est créé à la main.
 
+## 6 ter. Trois versions, trois règles
+
+Trois numéros SemVer coexistent ; ils ne se confondent pas (issue #177). `npm run lint` vérifie ce qui peut l'être
+(`scripts/verifier-versions.mjs`), en comparant la branche à `origin/main` (ou `VERSIONS_BASE`).
+
+| Version | Où | Quand elle change | Vérifié par le lint |
+|---|---|---|---|
+| Plateforme | `version` de `package.json`, section du `CHANGELOG.md`, tag `vX.Y.Z` | à une publication (§6 bis), décidée par le propriétaire ; pas à chaque PR | SemVer ; section `## [X.Y.Z] — AAAA-MM-JJ` présente ; `## [Non publié]` présente |
+| Notion ou jeu | `version` de `catalogue/<id>/fiche.md`, reprise dans les métadonnées de la page | à chaque changement de contenu vu par l'élève : correctif (texte, erreur) → Z ; ajout (exercice, niveau, onglet) → Y ; refonte → X. Pas pour les seules métadonnées (référentiel, relecture, mots-clés) ni pour une page régénérée par le build | ne recule jamais ; `contenu.json` modifié → version supérieure ; page et métadonnées identiques (build) |
+| Application du cercle | `VERSION` de `src/ui/main.js`, archive `versions/vX.Y/standalone.html` | à chaque modification de `src/` ; archive régénérée par `python3 scripts/build-standalone.py --out versions/vX.Y/standalone.html` | `src/` modifié → VERSION supérieure ; archive de la version courante présente et à jour |
+
+Une notion dont la version change compte « à revoir » jusqu'à sa nouvelle relecture (`relue-version`). Les sections
+`[1.3.0]` et `[1.4.0]` du `CHANGELOG.md` sont historiques : elles décrivent l'application du cercle, pas la plateforme.
+Les pages écrites à la main (`page.html`) ne sont pas contrôlées automatiquement, car le build les régénère : leur
+auteur augmente lui-même la version de la fiche quand il change leur contenu.
+
 ## 7. Définition du « terminé »
 
 Une tâche est terminée quand : `npm run ci` passe, la documentation concernée (chantier, ADR, README) est à jour,

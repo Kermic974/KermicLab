@@ -67,7 +67,8 @@ export function lireReferentiel(fiche) {
  * Relecture pédagogique (feuille de route, phase 0 ; issue #176) : trace d'une relecture humaine selon la grille publiée
  * dans docs/chantiers/validation-maquettes.md. Les trois champs vont ensemble ; aucun nom de relecteur n'est stocké.
  */
-export const GRILLES_RELECTURE = ["v1"];
+export const GRILLES_RELECTURE = ["v1", "jeux-v1"];
+const estJeu = (m) => String(m.sujet ?? "").startsWith("jeux/");
 const SEMVER = /^(\d+)\.(\d+)\.(\d+)$/;
 const comparerVersions = (a, b) => {
   const [x, y] = [a, b].map((v) => v.match(SEMVER).slice(1).map(Number));
@@ -91,18 +92,26 @@ export function lireRelecture(fiche, { aujourdhui = new Date().toISOString().sli
   }
   const grille = String(fiche["relue-grille"]);
   if (!GRILLES_RELECTURE.includes(grille)) throw new Error(`relue-grille : « ${grille} » inconnue (attendu : ${GRILLES_RELECTURE.join(", ")})`);
+  // Un jeu se relit avec la grille des jeux (issue #175), une notion avec la grille pédagogique.
+  if (estJeu(fiche) !== grille.startsWith("jeux-")) {
+    throw new Error(`relue-grille : « ${grille} » ne convient pas à ${estJeu(fiche) ? "un jeu (grille jeux-v1)" : "une notion (grille v1)"}`);
+  }
   return { relecture: { date, version, grille } };
 }
 
 /**
  * Indicateur de la feuille de route : notions relues dans leur version actuelle ; « à revoir » si la notion a changé de
- * version depuis sa relecture. Les jeux ne sont pas des notions.
+ * version depuis sa relecture. Les jeux ne sont pas des notions : ils ont leur propre compte (issue #175).
  */
 export function indicateurRelecture(maquettes) {
-  const notions = maquettes.filter((m) => !String(m.sujet ?? "").startsWith("jeux/"));
-  const tracees = notions.filter((m) => m.relecture);
-  const relues = tracees.filter((m) => m.relecture.version === m.version).length;
-  return { notions: notions.length, relues, aRevoir: tracees.length - relues };
+  const compter = (liste) => {
+    const tracees = liste.filter((m) => m.relecture);
+    const relues = tracees.filter((m) => m.relecture.version === m.version).length;
+    return { relues, aRevoir: tracees.length - relues };
+  };
+  const notions = maquettes.filter((m) => !estJeu(m)), jeux = maquettes.filter(estJeu);
+  const n = compter(notions), j = compter(jeux);
+  return { notions: notions.length, relues: n.relues, aRevoir: n.aRevoir, jeux: { total: jeux.length, relus: j.relues, aRevoir: j.aRevoir } };
 }
 
 /**

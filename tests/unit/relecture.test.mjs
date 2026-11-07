@@ -23,7 +23,8 @@ test("relecture : champs incomplets ou invalides refusés", () => {
     [{ ...complete, relue: "2026-11-08" }, /futur/],
     [{ ...complete, "relue-version": "1.2" }, /X\.Y\.Z/],
     [{ ...complete, "relue-version": "1.3.0" }, /supérieure à la version/],
-    [{ ...complete, "relue-grille": "v9" }, /inconnue/]
+    [{ ...complete, "relue-grille": "v9" }, /inconnue/],
+    [{ ...complete, "relue-grille": "jeux-v1" }, /ne convient pas à une notion/]
   ];
   for (const [champs, message] of cas) assert.throws(() => valider(champs), message, JSON.stringify(champs));
 });
@@ -35,10 +36,27 @@ test("relecture : indicateur des notions relues et à revoir, jeux exclus", () =
     { id: "c", sujet: "mathematiques/c", version: "1.0.0" },
     { id: "echecs", sujet: "jeux/echecs", version: "1.0.0", relecture: { version: "1.0.0" } }
   ];
-  assert.deepEqual(indicateurRelecture(maquettes), { notions: 3, relues: 1, aRevoir: 1 });
+  assert.deepEqual(indicateurRelecture(maquettes), { notions: 3, relues: 1, aRevoir: 1, jeux: { total: 1, relus: 1, aRevoir: 0 } });
 });
 
 test("relecture : la grille publiée correspond aux versions acceptées", async () => {
   const doc = await readFile(`${racine}docs/chantiers/validation-maquettes.md`, "utf8");
   for (const grille of GRILLES_RELECTURE) assert.match(doc, new RegExp(`Grille de relecture ${grille}\\b`));
+});
+
+test("relecture des jeux (issue #175) : grille jeux-v1 obligatoire pour un jeu, refusée pour une notion", () => {
+  const jeu = { id: "sudoku", sujet: "jeux/sudoku", version: "1.0.0", relue: "2026-11-07", "relue-version": "1.0.0" };
+  assert.deepEqual(lireRelecture({ ...jeu, "relue-grille": "jeux-v1" }, options).relecture.grille, "jeux-v1");
+  assert.throws(() => lireRelecture({ ...jeu, "relue-grille": "v1" }, options), /ne convient pas à un jeu/);
+});
+
+test("relecture des jeux : chaque jeu du catalogue a sa ligne dans le suivi de docs/jeux.md", async () => {
+  const { readdir } = await import("node:fs/promises");
+  const doc = await readFile(`${racine}docs/jeux.md`, "utf8");
+  const suivi = doc.slice(doc.indexOf("## 4. Relecture"));
+  assert.ok(suivi.length > 20, "section « 4. Relecture » absente");
+  for (const id of await readdir(`${racine}catalogue`)) {
+    const fiche = await readFile(`${racine}catalogue/${id}/fiche.md`, "utf8").catch(() => "");
+    if (/^sujet:\s*jeux\//m.test(fiche)) assert.match(suivi, new RegExp(`\\| \`${id}\` \\|`), `${id} absent du suivi`);
+  }
 });
