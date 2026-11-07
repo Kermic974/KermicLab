@@ -34,7 +34,7 @@ démarrer tôt ; le code des comptes, lui, attend la validation.
 
 - Socle : [#173](https://github.com/Kermic974/trigoLab/issues/173) protéger `main` · [#174](https://github.com/Kermic974/trigoLab/issues/174) tests navigateur obligatoires · [#176](https://github.com/Kermic974/trigoLab/issues/176) grille de relecture et statut « relue ».
 - Référentiel : [#179](https://github.com/Kermic974/trigoLab/issues/179) champs de `fiche.md` · [#180](https://github.com/Kermic974/trigoLab/issues/180) graphe vérifié en CI · [#181](https://github.com/Kermic974/trigoLab/issues/181) contrat d'événements.
-- Catalogue et jeux : [#206](https://github.com/Kermic974/trigoLab/issues/206) statuer sur le pendu · [#207](https://github.com/Kermic974/trigoLab/issues/207) valider le poker.
+- Catalogue et jeux : [#207](https://github.com/Kermic974/trigoLab/issues/207) valider le poker.
 - Familles : [#195](https://github.com/Kermic974/trigoLab/issues/195) préparation juridique (en parallèle).
 
 ## Règles de suivi
