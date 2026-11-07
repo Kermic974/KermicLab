@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wOGOH28Wu3v/3GXfesaDDUShnyAotcaVOKH2BqxnnIE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>La cellule, unité du vivant – Kermiclab</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "la-cellule",
+  "titre": "La cellule, unité du vivant",
+  "sujet": "svt/la-cellule",
+  "version": "0.1.0",
+  "date": "2026-11-07",
+  "langue": "fr",
+  "onglets": ["explication", "application", "mise-en-situation"]
+}
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #100e0c;
+    --elev: #1b1814;
+    --elev-2: #262119;
+    --fg: #f4efe4;
+    --muted: #b7ab96;
+    --line: #3a332a;
+    --accent: #d6f25c;
+    --accent-fg: #1a1c0c;
+    --noyau: #8ec5ff;
+    --paroi: #e7c48a;
+    --vacuole: #7fd4d0;
+    --chloro: #b6e85a;
+    --mito: #ffb08f;
+    --adn: #f2c14e;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.45 "Avenir Next", "Segoe UI", sans-serif;
+    overflow: hidden;
+  }
+  h1, h2, h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+  button, [role="tab"] { font: inherit; color: inherit; touch-action: manipulation; }
+  button:disabled { cursor: default; }
+  button:focus-visible, [role="tab"]:focus-visible, .cible:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  header.haut {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: max(10px, env(safe-area-inset-top)) 14px 0;
+  }
+  header.haut h1 { margin: 0; font-size: 1.35rem; }
+  .yeux { margin: 0; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .tampons { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+  .tampons li {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .tampons li[data-on="true"] { background: var(--accent); color: var(--accent-fg); border-color: transparent; font-weight: 700; }
+  [role="tablist"].pages { display: flex; gap: 8px; padding: 10px 14px; overflow-x: auto; }
+  [role="tab"] {
+    min-height: 44px;
+    border: 1px solid var(--line);
+    background: transparent;
+    border-radius: 10px;
+    padding: 0 14px;
+    flex: none;
+  }
+  [role="tab"][aria-selected="true"] { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+  main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .panneau { overflow: auto; padding: 4px 16px 28px; }
+  [hidden] { display: none !important; }
+  .panneau:not([hidden]) { display: block; }
+  #panneau-application:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    padding: 0 0 max(8px, env(safe-area-inset-bottom));
+    overflow: hidden;
+  }
+  .lecture h2 { font-size: 1.35rem; margin: 0.4rem 0 0.5rem; }
+  .lecture p, .lecture li { color: var(--fg); }
+  .note { color: var(--muted); font-size: 0.92rem; }
+  details { border-top: 1px solid var(--line); padding: 4px 0; }
+  summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; gap: 8px; }
+  .niv { color: var(--muted); font-weight: 400; font-size: 0.8rem; }
+  .stations { display: flex; gap: 8px; padding: 0 14px; overflow-x: auto; }
+  .badge { margin: 8px 14px 0; color: var(--muted); font-size: 0.78rem; }
+  #scene { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 10px; }
+  #scene svg { width: min(100%, 560px); height: auto; max-height: 42vh; }
+  .echelle { margin: 0 14px; color: var(--muted); font-size: 0.78rem; min-height: 2.4em; }
+  .live { margin: 4px 14px; min-height: 2.6em; font-size: 0.95rem; }
+  .live:empty { min-height: 0; margin-top: 0; margin-bottom: 0; }
+  .live.alerte { color: var(--mito); }
+  .dock { overflow: auto; padding: 0 14px 8px; }
+  .rail, .ligne { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
+  .rail { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .bouton {
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--elev-2);
+    padding: 0 12px;
+    flex: none;
+  }
+  .bouton[aria-pressed="true"], .bouton.plein { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+  .bouton:disabled { opacity: 0.45; }
+  label.curseur { display: flex; flex: 1; min-width: 180px; gap: 8px; align-items: center; color: var(--muted); font-size: 0.85rem; }
+  label.curseur input { flex: 1; accent-color: var(--accent); min-height: 44px; }
+  .reste, .mesure, .pourquoi, .note-lycee { margin: 4px 0; color: var(--muted); font-size: 0.85rem; }
+  .cible:focus-visible { stroke: var(--accent); stroke-width: 2; }
+  .slots { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .slot {
+    width: 76px; height: 76px;
+    border: 1px dashed var(--line);
+    border-radius: 14px;
+    display: grid; place-items: center;
+    background: var(--elev);
+  }
+  .slot.on { border-style: solid; border-color: var(--accent); }
+  .slot svg { width: 64px; height: 64px; }
+  .statut { text-align: center; margin: 8px 0 0; font-weight: 700; }
+  .carte {
+    margin-top: 10px;
+    background: var(--elev);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 12px;
+    max-width: 420px;
+  }
+  .etape, .exercice {
+    background: var(--elev);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px;
+    margin: 10px 0;
+  }
+  .choix { display: flex; flex-direction: column; gap: 8px; }
+  .choix button { text-align: left; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); padding: 8px 12px; }
+  .choix button.bonne { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+  .choix button.ratee { color: var(--muted); }
+  .reponse { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .reponse input {
+    font: inherit; width: 7em; min-height: 44px; padding: 8px 10px;
+    border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg);
+  }
+  .retour { min-height: 1.3em; margin: 8px 0 0; font-weight: 650; }
+  .retour.ok { color: var(--accent); }
+  .retour.ko { color: var(--mito); }
+  @media (max-width: 560px) {
+    header.haut { flex-direction: column; align-items: flex-start; }
+    .tampons { justify-content: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  @media (max-height: 740px) { #scene svg { max-height: 30vh; } }
+</style>
+</head>
+<body>
+<header class="haut">
+  <div>
+    <p class="yeux">SVT · collège → seconde</p>
+    <h1>La cellule</h1>
+  </div>
+  <ul class="tampons" aria-label="Tampons du labo">
+    <li id="tampon-obs" data-on="false">Mise au point</li>
+    <li id="tampon-arch" data-on="false">Cellule allumée</li>
+    <li id="tampon-unite" data-on="false">Unité</li>
+  </ul>
+</header>
+<div role="tablist" class="pages" id="onglets" aria-label="Parties du lab">
+  <button type="button" role="tab" id="onglet-explication" aria-selected="false" tabindex="-1">Explication</button>
+  <button type="button" role="tab" id="onglet-application" aria-selected="true" tabindex="0">Labo</button>
+  <button type="button" role="tab" id="onglet-mise-en-situation" aria-selected="false" tabindex="-1">Défi</button>
+</div>
+<main>
+  <section class="panneau lecture" id="panneau-explication" hidden>
+    <p class="yeux">Notion</p>
+    <h2>L'unité du vivant</h2>
+    <p>Tous les êtres vivants sont faits de cellules. Une bactérie n'en a qu'une. Ton corps en compte des dizaines de milliers de milliards. Elles sont si petites qu'il faut un microscope : souvent 10 à 100 micromètres (µm).</p>
+    <details open>
+      <summary>Observer <span class="niv">6e / 5e</span></summary>
+      <p>Grossissement = oculaire × objectif. Un oculaire ×10 et un objectif ×40 donnent ×400.</p>
+      <p>Toute cellule a une membrane et un cytoplasme. La plupart ont un noyau. Les cellules végétales ont en plus une paroi, une grande vacuole et, dans les parties vertes, des chloroplastes.</p>
+    </details>
+    <details>
+      <summary>S'assembler <span class="niv">5e / 4e</span></summary>
+      <p>Chez les êtres à plusieurs cellules, elles se spécialisent : muscle, neurone, globule… Elles forment des tissus, puis des organes. Toute cellule vient d'une autre cellule.</p>
+    </details>
+    <details>
+      <summary>Noyau et ADN <span class="niv">3e</span></summary>
+      <p>Le noyau contient les chromosomes, faits d'ADN : le plan de fonctionnement. Les bactéries n'ont pas de noyau. Leur ADN est dans le cytoplasme.</p>
+      <p class="note">À retenir : membrane, cytoplasme, et souvent un noyau.</p>
+    </details>
+    <details>
+      <summary>Deux grands plans <span class="niv">seconde</span></summary>
+      <p>Eucaryotes : cellules à noyau (animaux, végétaux, champignons), avec des organites. Les mitochondries permettent d'utiliser l'énergie des nutriments. Les chloroplastes, dans les parties vertes, servent à la photosynthèse.</p>
+      <p>Procaryotes : les bactéries, sans noyau, environ 1 µm. Elles ont une paroi, mais d'une autre nature que la paroi végétale : ce labo ne la dessine pas.</p>
+    </details>
+    <p class="note">Le labo est un schéma. Les tailles suivent le modèle. Les formes sont simplifiées.</p>
+  </section>
+
+  <section class="panneau" id="panneau-application">
+    <div class="stations" role="tablist" aria-label="Stations du labo">
+      <button type="button" class="bouton" id="btn-oculaire" data-act="station" data-id="oculaire" role="tab" aria-selected="true">Oculaire</button>
+      <button type="button" class="bouton" id="btn-atelier" data-act="station" data-id="atelier" role="tab" aria-selected="false">Atelier</button>
+      <button type="button" class="bouton" id="btn-organisme" data-act="station" data-id="organisme" role="tab" aria-selected="false">Organisme</button>
+    </div>
+    <p class="badge">Schéma. Tailles et formes simplifiées.</p>
+    <div id="scene"></div>
+    <p class="echelle" id="echelle"></p>
+    <p class="live" id="live" aria-live="polite"></p>
+    <p class="live alerte" id="alerte" aria-live="assertive"></p>
+    <div class="dock" id="dock">
+      <div id="panel-oculaire">
+        <div class="rail" role="group" aria-label="Lames">
+          <button type="button" class="bouton" data-act="lame" data-id="oignon" id="btn-oignon">Oignon</button>
+          <button type="button" class="bouton" data-act="lame" data-id="joue" id="btn-joue">Joue</button>
+          <button type="button" class="bouton" data-act="lame" data-id="bacterie" id="btn-bacterie">Yaourt</button>
+          <button type="button" class="bouton" data-act="lame" data-id="liege" id="btn-liege">Liège</button>
+        </div>
+        <div class="rail" role="group" aria-label="Objectif, oculaire fixé à fois 10">
+          <button type="button" class="bouton" data-act="obj" data-id="4" id="btn-x4">Objectif ×4</button>
+          <button type="button" class="bouton" data-act="obj" data-id="10" id="btn-x10">×10</button>
+          <button type="button" class="bouton" data-act="obj" data-id="40" id="btn-x40">×40</button>
+        </div>
+        <div class="ligne">
+          <label class="curseur">Mise au point
+            <input id="range-net" type="range" min="0" max="100" value="28" aria-describedby="out-net">
+            <span id="out-net">floue</span>
+          </label>
+        </div>
+        <p class="mesure" id="mesure"></p>
+        <p class="reste" id="reste"></p>
+        <button type="button" class="bouton" id="btn-pas-chloro" data-act="pas-chloro">Pas de chloroplaste</button>
+      </div>
+      <div id="panel-atelier" hidden>
+        <div class="rail" role="group" aria-label="Châssis">
+          <button type="button" class="bouton" data-act="chassis" data-id="animale" id="btn-animale">Animale</button>
+          <button type="button" class="bouton" data-act="chassis" data-id="vegetale" id="btn-vegetale">Végétale</button>
+          <button type="button" class="bouton" data-act="chassis" data-id="procaryote" id="btn-procaryote">Bactérie</button>
+        </div>
+        <div class="rail" id="bloc-partie" hidden>
+          <button type="button" class="bouton" data-act="partie" data-id="verte" id="btn-verte">Partie verte</button>
+          <button type="button" class="bouton" data-act="partie" data-id="bulbe" id="btn-bulbe">Bulbe</button>
+        </div>
+        <div class="rail" role="group" aria-label="Profondeur du schéma">
+          <button type="button" class="bouton" data-act="profondeur" data-id="college" id="btn-college">Collège</button>
+          <button type="button" class="bouton" data-act="profondeur" data-id="lycee" id="btn-lycee">Lycée</button>
+        </div>
+        <div class="rail" id="bac" aria-label="Bac d'organites">
+          <button type="button" class="bouton" data-act="jeton" data-id="noyau" id="btn-noyau">Noyau N</button>
+          <button type="button" class="bouton" data-act="jeton" data-id="adn" id="btn-adn">ADN A</button>
+          <button type="button" class="bouton" data-act="jeton" data-id="paroi" id="btn-paroi">Paroi P</button>
+          <button type="button" class="bouton" data-act="jeton" data-id="vacuole" id="btn-vacuole">Vacuole V</button>
+          <button type="button" class="bouton" data-act="jeton" data-id="chloroplaste" id="btn-chloroplaste">Chloroplaste Ch</button>
+          <button type="button" class="bouton" data-act="jeton" data-id="mitochondrie" id="btn-mitochondrie">Mitochondrie M</button>
+        </div>
+        <div class="ligne" id="bloc-lumiere" hidden>
+          <label class="curseur">Lumière
+            <input id="range-lumiere" type="range" min="0" max="100" value="62">
+            <span id="out-lumiere">62</span>
+          </label>
+        </div>
+        <button type="button" class="bouton" id="btn-effort" data-act="effort" hidden>Effort du muscle</button>
+        <p class="note-lycee" id="note-lycee" hidden>Les mitochondries et les chloroplastes ont aussi un peu d'ADN. On ne le dessine pas ici.</p>
+      </div>
+      <div id="panel-organisme" hidden>
+        <div class="rail" role="group" aria-label="Missions">
+          <button type="button" class="bouton" data-act="mission" data-id="bacterie" id="btn-mbacterie">Une bactérie</button>
+          <button type="button" class="bouton" data-act="mission" data-id="feuille" id="btn-mfeuille">Feuille</button>
+          <button type="button" class="bouton" data-act="mission" data-id="muscle" id="btn-mmuscle">Muscle et nerf</button>
+        </div>
+        <div class="rail" id="bloc-forme" hidden>
+          <button type="button" class="bouton" data-act="forme" data-id="musculaire" id="btn-musculaire">Musculaire</button>
+          <button type="button" class="bouton" data-act="forme" data-id="neurone" id="btn-neurone">Neurone</button>
+        </div>
+        <div class="ligne">
+          <button type="button" class="bouton plein" id="btn-ajouter" data-act="ajouter">Nouvelle cellule</button>
+          <button type="button" class="bouton" data-act="virus">Poser un virus</button>
+          <button type="button" class="bouton" id="btn-globule" data-act="globule">Exception : globule</button>
+        </div>
+        <p class="pourquoi" id="pourquoi"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panneau lecture" id="panneau-mise-en-situation" hidden>
+    <p class="yeux">Au microscope</p>
+    <h2>Peau d'oignon</h2>
+    <p>En TP, tu observes un fin morceau de peau d'oignon, l'épiderme, coloré au bleu de méthylène. Oculaire ×10, objectif ×10. Tu peux t'aider de l'oculaire, lame Oignon.</p>
+    <article class="etape" id="etape-1" data-rep="100">
+      <h3>Le grossissement</h3>
+      <p>Quel est le grossissement utilisé ?</p>
+      <div class="reponse">
+        <input id="rep-1" inputmode="decimal" aria-label="Grossissement en fois">
+        <span>fois</span>
+        <button type="button" class="bouton plein" data-verif="1">Vérifier</button>
+      </div>
+      <p class="retour" id="ret-1" aria-live="polite"></p>
+    </article>
+    <article class="etape" id="etape-2" data-bonne="0" hidden>
+      <h3>Pas de vert</h3>
+      <p>Les cellules d'oignon n'ont pas de chloroplastes. Pourquoi ?</p>
+      <div class="choix">
+        <button type="button" data-qcm="2" data-i="0">L'oignon est un bulbe qui pousse sous terre, à l'abri de la lumière</button>
+        <button type="button" data-qcm="2" data-i="1">Ce sont des cellules animales</button>
+        <button type="button" data-qcm="2" data-i="2">Le colorant les a détruits</button>
+      </div>
+      <p class="retour" id="ret-2" aria-live="polite"></p>
+    </article>
+    <article class="etape" id="etape-3" data-rep="200" hidden>
+      <h3>La taille réelle</h3>
+      <p>Sur le dessin, une cellule mesure 20 mm au grossissement 100. Quelle est sa taille réelle, en µm ?</p>
+      <div class="reponse">
+        <input id="rep-3" inputmode="decimal" aria-label="Taille réelle en micromètres">
+        <span>µm</span>
+        <button type="button" class="bouton plein" data-verif="3">Vérifier</button>
+      </div>
+      <p class="retour" id="ret-3" aria-live="polite"></p>
+    </article>
+    <p class="note" id="conclusion" hidden>Bravo. Robert Hooke a observé les premières « cellules » en 1665, dans du liège, avec un microscope bien moins puissant. Le mot vient de cellula : petite chambre.</p>
+    <h2>Deux questions sur le labo</h2>
+    <article class="exercice" data-bonne="1" id="ex-chassis">
+      <p>Dans l'atelier, quel châssis accepte un chloroplaste ?</p>
+      <div class="choix">
+        <button type="button" data-qcm="chassis" data-i="0">La cellule de joue</button>
+        <button type="button" data-qcm="chassis" data-i="1">La cellule végétale d'une partie verte</button>
+        <button type="button" data-qcm="chassis" data-i="2">La bactérie</button>
+      </div>
+      <p class="retour" id="ret-chassis" aria-live="polite"></p>
+    </article>
+    <article class="exercice" data-bonne="0" id="ex-bulbe">
+      <p>Pourquoi la lame d'oignon peut s'allumer sans chloroplaste ?</p>
+      <div class="choix">
+        <button type="button" data-qcm="bulbe" data-i="0">C'est un bulbe, à l'abri de la lumière : pas de photosynthèse</button>
+        <button type="button" data-qcm="bulbe" data-i="1">L'oignon est fait de cellules animales</button>
+        <button type="button" data-qcm="bulbe" data-i="2">Le microscope efface le vert</button>
+      </div>
+      <p class="retour" id="ret-bulbe" aria-live="polite"></p>
+    </article>
+  </section>
+</main>
+<script id="lab">
+(() => {
+  const REQUIS = {
+    oignon: ["paroi", "membrane", "cytoplasme", "vacuole", "noyau", "pas-chloro"],
+    joue: ["membrane", "cytoplasme", "noyau"],
+    bacterie: ["membrane", "cytoplasme", "adn"]
+  };
+  const NOMS = {
+    paroi: "paroi", membrane: "membrane", cytoplasme: "cytoplasme", vacuole: "grande vacuole",
+    noyau: "noyau", adn: "ADN", chloroplaste: "chloroplaste", mitochondrie: "mitochondrie",
+    "pas-chloro": "absence de chloroplaste", amas: "amas"
+  };
+  const ROLES = {
+    membrane: "Membrane : elle délimite la cellule et contrôle certains échanges.",
+    cytoplasme: "Cytoplasme : le milieu intérieur, là où la cellule travaille.",
+    noyau: "Noyau : il contient l'ADN, le plan de fonctionnement.",
+    paroi: "Paroi : enveloppe rigide autour de la membrane, chez cette cellule végétale.",
+    vacuole: "Grande vacuole : elle stocke de l'eau et pousse le cytoplasme contre la paroi.",
+    adn: "ADN libre : chez la bactérie, le plan n'est pas enfermé dans un noyau.",
+    "pas-chloro": "Pas de chloroplaste : l'oignon est un bulbe, il pousse sans lumière."
+  };
+  const LAMES = {
+    oignon: "Épiderme d'oignon",
+    joue: "Cellule de joue",
+    bacterie: "Bactérie du yaourt",
+    liege: "Liège, Hooke 1665"
+  };
+  const TAILLE = { oignon: 200, joue: 20, bacterie: 1, liege: 40 };
+
+  const state = {
+    station: "oculaire",
+    lame: "oignon",
+    obj: 4,
+    net: 28,
+    vus: { oignon: {}, joue: {}, bacterie: {}, liege: {} },
+    chassis: "animale",
+    partie: "verte",
+    profondeur: "college",
+    placed: {},
+    lumiere: 62,
+    effort: false,
+    allumes: {},
+    mission: "bacterie",
+    forme: "musculaire",
+    copies: { bacterie: 0, feuille: 0, muscle: 0 },
+    missions: {},
+    globule: false,
+    message: "Trois stations. Choisis une lame, fais la mise au point, puis nomme ce que tu vois.",
+    alerte: false,
+    tampons: { obs: false, arch: false, unite: false },
+    dit: "",
+    ditAlerte: false
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const G = () => 10 * state.obj;
+  const champ = () => 280 * (40 / G());
+  const netteté = () => state.net >= 78;
+
+  function planValide() {
+    const p = state.placed;
+    const oui = (k) => !!p[k];
+    if (state.chassis === "animale") {
+      return oui("noyau") && oui("adn") && !oui("paroi") && !oui("chloroplaste") && !oui("vacuole");
+    }
+    if (state.chassis === "procaryote") {
+      return oui("adn") && !oui("noyau") && !oui("chloroplaste") && !oui("mitochondrie") && !oui("vacuole") && !oui("paroi");
+    }
+    const base = oui("noyau") && oui("adn") && oui("paroi") && oui("vacuole");
+    return state.partie === "verte" ? base && oui("chloroplaste") : base && !oui("chloroplaste");
+  }
+
+  function cleAllume() {
+    if (state.chassis === "vegetale") return state.partie === "verte" ? "vegetale-verte" : "vegetale-bulbe";
+    return state.chassis;
+  }
+
+  function lameFaite(id) {
+    return REQUIS[id].every((k) => state.vus[id][k]);
+  }
+
+  function troisLames() {
+    return ["oignon", "joue", "bacterie"].every(lameFaite);
+  }
+
+  function dire(message, alerte) {
+    state.message = message;
+    state.alerte = !!alerte;
+  }
+
+  function parler() {
+    if (state.message === state.dit && state.alerte === state.ditAlerte) return;
+    state.dit = state.message;
+    state.ditAlerte = state.alerte;
+    $("live").textContent = state.alerte ? "" : state.message;
+    $("alerte").textContent = state.alerte ? state.message : "";
+  }
+
+  function fmt(n) {
+    return n.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
+  }
+
+  function texteEchelle() {
+    if (state.station === "atelier") {
+      return "Même dessin, pas la même taille. Animale environ 20 µm · oignon environ 200 µm · bactérie environ 1 µm.";
+    }
+    if (state.station === "organisme") {
+      return "Toute cellule vient d'une cellule. Un virus n'est pas une cellule.";
+    }
+    const taille = TAILLE[state.lame];
+    const dessin = taille * G() / 1000;
+    return "×" + G() + " (oculaire ×10 × objectif ×" + state.obj + "). Sur le dessin : " + fmt(dessin) + " mm. Taille réelle : " + fmt(taille) + " µm.";
+  }
+
+  function raisonAjout() {
+    const m = state.mission;
+    const but = m === "feuille" ? 4 : m === "muscle" ? 2 : 1;
+    if (state.copies[m] >= but) {
+      return { ok: false, texte: m === "bacterie" ? "Une bactérie suffit : c'est déjà un être vivant." : "Cette mission est déjà complète." };
+    }
+    if (m === "bacterie" && !(state.chassis === "procaryote" && planValide())) {
+      return { ok: false, texte: "Toute cellule vient d'une cellule. Allume d'abord une bactérie dans l'atelier." };
+    }
+    if (m === "feuille" && !(state.chassis === "vegetale" && state.partie === "verte" && planValide())) {
+      return { ok: false, texte: "Allume d'abord une cellule végétale de partie verte, avec chloroplaste." };
+    }
+    if (m === "muscle" && !(state.chassis === "animale" && planValide())) {
+      return { ok: false, texte: "Allume d'abord une cellule animale : membrane, cytoplasme, noyau, ADN." };
+    }
+    const fins = {
+      bacterie: "Unicellulaire. Une seule cellule assure toutes les fonctions.",
+      feuille: "Un petit tissu. Même brique, travail de feuille.",
+      muscle: "La forme change. Membrane, cytoplasme et noyau restent."
+    };
+    const suites = {
+      bacterie: "Bactérie en place.",
+      feuille: "Une cellule de feuille de plus. Même plan.",
+      muscle: "Une cellule spécialisée. Le plan de base ne change pas."
+    };
+    const dernier = state.copies[m] + 1 >= but;
+    return { ok: true, texte: "Prête à dupliquer.", succes: dernier ? fins[m] : suites[m] };
+  }
+
+  function refusDe(id) {
+    const c = state.chassis;
+    if (c === "animale") {
+      if (id === "paroi") return "Pas de paroi rigide sur une cellule animale.";
+      if (id === "chloroplaste") return "Une joue ne fait pas de photosynthèse.";
+      if (id === "vacuole") return "Pas de grande vacuole dans ce schéma animal.";
+    }
+    if (c === "procaryote") {
+      if (id === "noyau") return "Chez une bactérie, l'ADN reste dans le cytoplasme.";
+      if (id === "chloroplaste" || id === "mitochondrie") return "Ces organites sont ceux des cellules à noyau.";
+      if (id === "vacuole") return "Pas de grande vacuole dans ce schéma de bactérie.";
+      if (id === "paroi") return "On ne dessine pas ici la paroi bactérienne : ce n'est pas une paroi végétale.";
+    }
+    if (c === "vegetale" && state.partie === "bulbe" && id === "chloroplaste") {
+      return "Un bulbe pousse à l'abri de la lumière : pas de chloroplaste sur cette lame.";
+    }
+    if (id === "adn" && c !== "procaryote" && !state.placed.noyau) {
+      return "Pose d'abord le noyau : dans ce schéma, l'ADN y entre.";
+    }
+    return "";
+  }
+
+  function phraseAllume(id) {
+    if (id === "mitochondrie") return "Mitochondrie en place : elle permet d'utiliser l'énergie des nutriments. Elle ne la fabrique pas.";
+    if (state.chassis === "animale") return "Cellule animale allumée. Membrane, cytoplasme, noyau : le plan commun.";
+    if (state.chassis === "procaryote") return "Bactérie allumée. Pas de noyau. Environ 1 µm, dessinée trop grande.";
+    if (state.partie === "bulbe") return "Cellule de bulbe allumée. Végétale, sans chloroplaste.";
+    return "Cellule de feuille allumée. Avec de la lumière, le schéma montre un point sucre. Pas une équation.";
+  }
+
+  function txt(x, y, s, color, size) {
+    return '<text x="' + x + '" y="' + y + '" text-anchor="middle" dominant-baseline="middle" fill="' + color + '" font-size="' + size + '" font-weight="700">' + s + "</text>";
+  }
+
+  function pad(x, y, id, label, r) {
+    return '<circle class="cible" data-act="nommer" data-id="' + id + '" tabindex="0" role="button" aria-label="' + label + '" cx="' + x + '" cy="' + y + '" r="' + r + '" fill="transparent"/>';
+  }
+
+  function onde(x, y) {
+    return '<path d="M ' + (x - 10) + " " + y + " Q " + (x - 5) + " " + (y - 8) + " " + x + " " + y + " T " + (x + 10) + " " + y + '" fill="none" stroke="#f2c14e" stroke-width="2"/>';
+  }
+
+  function sceneOculaire() {
+    const cx = 180, cy = 118, R = 100;
+    const k = (R * 2) / champ();
+    const sharp = netteté();
+    const std = Math.max(0, (78 - state.net) / 9);
+    const dans = (x, y) => (x - cx) ** 2 + (y - cy) ** 2 <= (R - 6) ** 2;
+    let dessin = "";
+    let hits = "";
+
+    function cellule(x, y, wUm, hUm, opts) {
+      const w = wUm * k, h = hUm * k;
+      const rx = Math.min(10, w / 5);
+      dessin += '<rect x="' + (x - w / 2) + '" y="' + (y - h / 2) + '" width="' + w + '" height="' + h + '" rx="' + rx + '" fill="' + opts.fill + '" stroke="' + opts.stroke + '" stroke-width="' + opts.sw + '"/>';
+    }
+
+    if (state.lame === "oignon") {
+      const w = 200 * k, h = 120 * k;
+      cellule(cx, cy, 200, 120, { fill: "#1a261c", stroke: "#e7c48a", sw: 4 });
+      dessin += '<rect x="' + (cx - w / 2 + 5) + '" y="' + (cy - h / 2 + 5) + '" width="' + (w - 10) + '" height="' + (h - 10) + '" rx="6" fill="none" stroke="#f4efe4" stroke-width="1.5"/>';
+      const vx = cx + 28 * k, vy = cy, vr = 36 * k;
+      dessin += '<ellipse cx="' + vx + '" cy="' + vy + '" rx="' + Math.max(vr, 1) + '" ry="' + Math.max(26 * k, 1) + '" fill="#14383a" stroke="#7fd4d0"/>';
+      const nx = cx - 40 * k, ny = cy - 8 * k, nr = Math.max(14 * k, 1);
+      dessin += '<circle cx="' + nx + '" cy="' + ny + '" r="' + nr + '" fill="#142033" stroke="#8ec5ff"/>';
+      if (nr > 8) dessin += txt(nx, ny, "N", "#8ec5ff", Math.min(14, nr));
+      if (vr > 8) dessin += txt(vx, vy, "V", "#7fd4d0", 12);
+      if (w > 40) dessin += txt(cx, cy + h / 2 - 14, "C", "#f4efe4", 12);
+      if (dans(cx, cy - h / 2)) hits += pad(cx, cy - h / 2 + 8, "paroi", "Paroi", 16);
+      if (dans(cx - w / 2 + 16, cy)) hits += pad(cx - w / 2 + 14, cy, "membrane", "Membrane", 16);
+      if (dans(cx, cy + h / 2 - 14)) hits += pad(cx, cy + h / 2 - 14, "cytoplasme", "Cytoplasme", 16);
+      if (dans(vx, vy)) hits += pad(vx, vy, "vacuole", "Grande vacuole", Math.max(16, Math.min(28, vr)));
+      if (dans(nx, ny)) hits += pad(nx, ny, "noyau", "Noyau", Math.max(16, Math.min(26, nr)));
+    } else if (state.lame === "joue") {
+      [[0, 0], [32, -16], [-28, 18], [18, 30], [-22, -26]].forEach((d, i) => {
+        const x = cx + d[0] * k, y = cy + d[1] * k, r = 10 * k;
+        dessin += '<circle cx="' + x + '" cy="' + y + '" r="' + Math.max(r, 0.8) + '" fill="#1c2a22" stroke="#f4efe4" stroke-width="1.5"/>';
+        if (i === 0) {
+          const nr = 4.5 * k;
+          dessin += '<circle cx="' + x + '" cy="' + y + '" r="' + Math.max(nr, 0.6) + '" fill="#142033" stroke="#8ec5ff"/>';
+          if (r > 14) {
+            dessin += txt(x, y - r * 0.15, "N", "#8ec5ff", 11);
+            hits += pad(x, y, "noyau", "Noyau", Math.max(18, r));
+            hits += pad(x, y - r - 6, "membrane", "Membrane", 14);
+            hits += pad(x + r + 4, y, "cytoplasme", "Cytoplasme", 14);
+          } else if (G() < 100) {
+            hits += pad(x, y, "amas", "Cellules de joue, encore petites", 20);
+          }
+        }
+      });
+    } else if (state.lame === "bacterie") {
+      [[0, 0], [4, 2], [-3, 1.5], [2, -3], [-5, -2], [6, -1], [-2, 4], [3, 5]].forEach((d, i) => {
+        const x = cx + d[0] * k * 8, y = cy + d[1] * k * 8;
+        const w = Math.max(1.6 * k, 0.8), h = Math.max(0.7 * k, 0.6);
+        dessin += '<rect x="' + (x - w / 2) + '" y="' + (y - h / 2) + '" width="' + w + '" height="' + h + '" rx="' + h / 2 + '" fill="#1c2a22" stroke="#f4efe4"/>';
+        if (i === 0 && G() >= 400) {
+          dessin += onde(x, y);
+          dessin += txt(x, y + 28, "1 µm", "#f4efe4", 12);
+          hits += pad(x, y, "adn", "ADN libre", 22);
+          hits += pad(x, y - 22, "membrane", "Membrane", 16);
+          hits += pad(x + 24, y + 16, "cytoplasme", "Cytoplasme", 16);
+        }
+      });
+      if (G() < 400) hits += pad(cx, cy, "amas", "Amas de bactéries, trop petit", 22);
+    } else {
+      for (let col = 0; col < 4; col++) {
+        for (let row = 0; row < 3; row++) {
+          const x = cx - 90 + col * 48, y = cy - 62 + row * 42;
+          dessin += '<rect x="' + x + '" y="' + y + '" width="44" height="38" fill="none" stroke="#e7c48a" stroke-width="3"/>';
+        }
+      }
+      hits += pad(cx, cy, "paroi", "Parois vides du liège", 28);
+      dessin += txt(cx, cy + 78, "cellula", "#e7c48a", 12);
+    }
+
+    const filtre = std > 0.2 ? ' filter="url(#flou)"' : "";
+    const barreUm = G() >= 400 ? 5 : G() >= 100 ? 20 : 50;
+    const barre = Math.max(8, Math.min(80, barreUm * (R * 2) / champ()));
+    return '<svg viewBox="0 0 360 250" aria-label="Oculaire, lame ' + LAMES[state.lame] + ', grossissement ' + G() + '">' +
+      '<defs><filter id="flou"><feGaussianBlur stdDeviation="' + std.toFixed(2) + '"/></filter></defs>' +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="' + (R + 12) + '" fill="#2a241c" stroke="#e7c48a" stroke-width="5"/>' +
+      '<clipPath id="oeil"><circle cx="' + cx + '" cy="' + cy + '" r="' + R + '"/></clipPath>' +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="#07110e"/>' +
+      '<g clip-path="url(#oeil)"' + filtre + '>' + dessin + "</g>" +
+      '<g clip-path="url(#oeil)">' + (sharp ? hits : hits.replaceAll('data-act="nommer"', 'data-act="flou"')) + "</g>" +
+      '<text x="' + (cx - 78) + '" y="' + (cy + R - 8) + '" fill="#b7ab96" font-size="11">' + barreUm + " µm</text>" +
+      '<line x1="' + (cx - 78) + '" y1="' + (cy + R - 14) + '" x2="' + (cx - 78 + barre) + '" y2="' + (cy + R - 14) + '" stroke="#f4efe4" stroke-width="2"/>' +
+      txt(cx, 18, "×" + G() + (sharp ? " · nette" : " · floue"), "#f4efe4", 14) +
+      '<text x="180" y="242" text-anchor="middle" fill="#b7ab96" font-size="12">' + LAMES[state.lame] + "</text></svg>";
+  }
+
+  function sceneAtelier() {
+    const on = planValide();
+    const p = state.placed;
+    let corps = "";
+    const titre = on ? "Allumée" : "En attente";
+    if (state.chassis === "animale") {
+      corps += '<ellipse cx="180" cy="120" rx="92" ry="64" fill="#1c2a22" stroke="#f4efe4" stroke-width="2"/>';
+      corps += txt(250, 150, "C", "#f4efe4", 12);
+      if (p.noyau) {
+        corps += '<circle cx="150" cy="116" r="26" fill="#142033" stroke="#8ec5ff" stroke-width="2"/>' + txt(150, 112, "N", "#8ec5ff", 14);
+        if (p.adn) corps += onde(150, 124) + txt(150, 136, "A", "#f2c14e", 10);
+      }
+      if (p.mitochondrie) {
+        corps += '<ellipse cx="214" cy="96" rx="16" ry="8" fill="#6a3224" stroke="#ffb08f"/>' + txt(214, 96, "M", "#ffb08f", 10);
+      }
+    } else if (state.chassis === "vegetale") {
+      if (p.paroi) corps += '<rect x="78" y="58" width="204" height="128" rx="16" fill="none" stroke="#e7c48a" stroke-width="6"/>' + txt(96, 74, "P", "#e7c48a", 12);
+      corps += '<rect x="90" y="70" width="180" height="104" rx="12" fill="#1a261c" stroke="#f4efe4" stroke-width="2"/>';
+      corps += txt(112, 154, "C", "#f4efe4", 12);
+      if (p.vacuole) corps += '<ellipse cx="214" cy="124" rx="48" ry="32" fill="#14383a" stroke="#7fd4d0"/>' + txt(214, 124, "V", "#7fd4d0", 14);
+      if (p.noyau) {
+        corps += '<circle cx="132" cy="112" r="22" fill="#142033" stroke="#8ec5ff" stroke-width="2"/>' + txt(132, 108, "N", "#8ec5ff", 13);
+        if (p.adn) corps += onde(132, 118);
+      }
+      if (p.chloroplaste) {
+        corps += '<ellipse cx="168" cy="150" rx="18" ry="8" transform="rotate(-20 168 150)" fill="#3d6b16" stroke="#b6e85a"/>' + txt(168, 150, "Ch", "#b6e85a", 10);
+        if (state.lumiere >= 55 && on) corps += '<circle cx="196" cy="92" r="8" fill="#d6f25c"/>' + txt(220, 92, "sucre", "#d6f25c", 11);
+      }
+      if (p.mitochondrie) corps += '<ellipse cx="250" cy="96" rx="14" ry="7" fill="#6a3224" stroke="#ffb08f"/>' + txt(250, 96, "M", "#ffb08f", 10);
+    } else {
+      corps += '<rect x="110" y="92" width="140" height="56" rx="28" fill="#1c2a22" stroke="#f4efe4" stroke-width="2"/>';
+      corps += txt(150, 120, "C", "#f4efe4", 12);
+      if (p.adn) corps += onde(190, 120) + txt(214, 120, "A", "#f2c14e", 12);
+      corps += txt(180, 168, "environ 1 µm, trop grande ici", "#b7ab96", 11);
+    }
+    if (state.effort && p.mitochondrie && on) corps += txt(180, 196, "effort", "#ffb08f", 12);
+    const legende = (p.chloroplaste && state.lumiere >= 55 && on) ? "Point sucre : schéma, pas une équation." : "";
+    return '<svg viewBox="0 0 360 220" aria-label="' + (on ? "Cellule allumée" : "Cellule en attente") + '">' +
+      txt(180, 22, titre, on ? "#d6f25c" : "#b7ab96", 14) + corps + "</svg>" +
+      (legende ? '<p class="note">' + legende + "</p>" : "");
+  }
+
+  function mini(mission) {
+    if (mission === "bacterie") {
+      return '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="22" width="48" height="20" rx="10" fill="#1c2a22" stroke="#f4efe4"/><text x="32" y="36" text-anchor="middle" fill="#f2c14e" font-size="11">A</text></svg>';
+    }
+    if (mission === "feuille") {
+      return '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="10" width="48" height="44" rx="6" fill="none" stroke="#e7c48a" stroke-width="3"/><rect x="14" y="16" width="36" height="32" rx="4" fill="#1a261c" stroke="#f4efe4"/><circle cx="26" cy="30" r="6" fill="#142033" stroke="#8ec5ff"/><text x="26" y="33" text-anchor="middle" fill="#8ec5ff" font-size="8">N</text><ellipse cx="40" cy="38" rx="7" ry="3" fill="#3d6b16" stroke="#b6e85a"/></svg>';
+    }
+    if (state.forme === "neurone") {
+      return '<svg viewBox="0 0 64 64" aria-hidden="true"><line x1="6" y1="32" x2="20" y2="32" stroke="#f4efe4"/><line x1="44" y1="32" x2="58" y2="18" stroke="#f4efe4"/><line x1="44" y1="32" x2="58" y2="46" stroke="#f4efe4"/><circle cx="32" cy="32" r="12" fill="#1c2a22" stroke="#f4efe4"/><text x="32" y="35" text-anchor="middle" fill="#8ec5ff" font-size="8">N</text></svg>';
+    }
+    return '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="24" width="52" height="16" rx="8" fill="#1c2a22" stroke="#f4efe4"/><text x="32" y="35" text-anchor="middle" fill="#8ec5ff" font-size="8">N</text></svg>';
+  }
+
+  function sceneOrganisme() {
+    const m = state.mission;
+    const n = m === "feuille" ? 4 : m === "muscle" ? 2 : 1;
+    const titre = m === "bacterie" ? "Un être, une cellule" : m === "feuille" ? "Quatre cellules, un tissu" : "Même plan, deux métiers";
+    let slots = "";
+    for (let i = 0; i < n; i++) {
+      const plein = i < state.copies[m];
+      slots += '<div class="slot' + (plein ? " on" : "") + '">' + (plein ? mini(m) : "") + "</div>";
+    }
+    const statut = state.missions[m] ? "Mission réussie" : "Mission en cours · " + state.copies[m] + " / " + n;
+    const glob = state.globule
+      ? '<article class="carte"><h3>Globule rouge de mammifère</h3><p>En mûrissant, il perd son noyau. Ce n\'est pas le plan de départ : c\'est une exception. Les oiseaux, eux, gardent le noyau.</p></article>'
+      : "";
+    return '<div><p class="yeux" style="text-align:center">' + titre + '</p><div class="slots">' + slots + '</div><p class="statut">' + statut + "</p>" + glob + "</div>";
+  }
+
+  function htmlScene() {
+    if (state.station === "oculaire") return sceneOculaire();
+    if (state.station === "atelier") return sceneAtelier();
+    return sceneOrganisme();
+  }
+
+  function resteTexte() {
+    if (state.lame === "liege") {
+      return state.vus.liege.paroi
+        ? "Tu as reconnu les cases vides. Hooke, 1665 : cellula, petite chambre."
+        : "Nomme les parois. Il n'y a plus de cellule vivante dedans.";
+    }
+    const manque = REQUIS[state.lame].filter((id) => !state.vus[state.lame][id]).map((id) => NOMS[id]);
+    if (!manque.length) return "Lame complète.";
+    const conseil = state.lame === "bacterie" ? " Objectif ×40." : state.lame === "joue" ? " Mieux à ×10 ou ×40." : " Bien visible à ×4 ou ×10.";
+    return "Encore : " + manque.join(", ") + "." + conseil;
+  }
+
+  function sync() {
+    ["oculaire", "atelier", "organisme"].forEach((id) => {
+      $("panel-" + id).hidden = state.station !== id;
+      $("btn-" + id).setAttribute("aria-selected", state.station === id ? "true" : "false");
+    });
+    ["oignon", "joue", "bacterie", "liege"].forEach((id) => {
+      $("btn-" + id).setAttribute("aria-pressed", state.lame === id ? "true" : "false");
+    });
+    $("btn-liege").disabled = !troisLames();
+    $("btn-liege").textContent = troisLames() ? "Liège" : "Liège · verrouillé";
+    [4, 10, 40].forEach((n) => {
+      $("btn-x" + n).setAttribute("aria-pressed", state.obj === n ? "true" : "false");
+    });
+    $("out-net").textContent = netteté() ? "nette" : "floue";
+    $("reste").textContent = resteTexte();
+    $("btn-pas-chloro").hidden = state.lame !== "oignon";
+    $("btn-pas-chloro").setAttribute("aria-pressed", state.vus.oignon["pas-chloro"] ? "true" : "false");
+
+    ["animale", "vegetale", "procaryote"].forEach((id) => {
+      $("btn-" + id).setAttribute("aria-pressed", state.chassis === id ? "true" : "false");
+    });
+    $("bloc-partie").hidden = state.chassis !== "vegetale";
+    $("btn-verte").setAttribute("aria-pressed", state.partie === "verte" ? "true" : "false");
+    $("btn-bulbe").setAttribute("aria-pressed", state.partie === "bulbe" ? "true" : "false");
+    $("btn-college").setAttribute("aria-pressed", state.profondeur === "college" ? "true" : "false");
+    $("btn-lycee").setAttribute("aria-pressed", state.profondeur === "lycee" ? "true" : "false");
+    $("btn-mitochondrie").hidden = state.profondeur !== "lycee";
+    $("note-lycee").hidden = state.profondeur !== "lycee";
+    ["noyau", "adn", "paroi", "vacuole", "chloroplaste", "mitochondrie"].forEach((id) => {
+      $("btn-" + id).setAttribute("aria-pressed", state.placed[id] ? "true" : "false");
+    });
+    const sucre = state.chassis === "vegetale" && state.partie === "verte" && state.placed.chloroplaste && planValide();
+    $("bloc-lumiere").hidden = !sucre;
+    $("out-lumiere").textContent = String(state.lumiere);
+    const effortOk = state.profondeur === "lycee" && state.placed.mitochondrie && planValide() && state.chassis !== "procaryote";
+    $("btn-effort").hidden = !effortOk;
+    $("btn-effort").setAttribute("aria-pressed", state.effort ? "true" : "false");
+
+    ["bacterie", "feuille", "muscle"].forEach((id) => {
+      $("btn-m" + id).setAttribute("aria-pressed", state.mission === id ? "true" : "false");
+    });
+    $("bloc-forme").hidden = state.mission !== "muscle";
+    $("btn-musculaire").setAttribute("aria-pressed", state.forme === "musculaire" ? "true" : "false");
+    $("btn-neurone").setAttribute("aria-pressed", state.forme === "neurone" ? "true" : "false");
+    const r = raisonAjout();
+    $("btn-ajouter").disabled = !r.ok;
+    $("pourquoi").textContent = r.texte;
+    $("btn-globule").setAttribute("aria-pressed", state.globule ? "true" : "false");
+    $("echelle").textContent = texteEchelle();
+  }
+
+  function majTampons() {
+    if (planValide()) state.allumes[cleAllume()] = true;
+    const next = {
+      obs: troisLames(),
+      arch: !!(state.allumes.animale && state.allumes["vegetale-verte"] && state.allumes.procaryote),
+      unite: !!(state.missions.bacterie && state.missions.feuille && state.missions.muscle)
+    };
+    const labels = { obs: "Mise au point", arch: "Cellule allumée", unite: "Unité du vivant" };
+    const ids = { obs: "tampon-obs", arch: "tampon-arch", unite: "tampon-unite" };
+    Object.keys(next).forEach((k) => {
+      const el = $(ids[k]);
+      el.dataset.on = next[k] ? "true" : "false";
+      el.setAttribute("aria-label", labels[k] + (next[k] ? ", obtenu" : ", pas encore"));
+      if (next[k] && !state.tampons[k]) {
+        dire(state.message + " Tampon " + labels[k] + ".", false);
+      }
+    });
+    state.tampons = next;
+  }
+
+  function render() {
+    $("scene").innerHTML = htmlScene();
+    majTampons();
+    sync();
+    parler();
+  }
+
+  function nommer(id) {
+    if (!netteté()) {
+      dire("Image floue. Tourne la mise au point jusqu'à « nette ».", true);
+      return;
+    }
+    if (id === "amas") {
+      dire(state.lame === "bacterie"
+        ? "Trop petit. Passe à l'objectif ×40 : une bactérie mesure environ 1 µm."
+        : "Encore petit. Passe à l'objectif ×10 pour voir le noyau.", true);
+      return;
+    }
+    if (state.lame === "liege" && id === "paroi") {
+      state.vus.liege.paroi = true;
+      dire("Des cases vides. En 1665, Hooke les appelle des cellules : de petites chambres.", false);
+      return;
+    }
+    if (!ROLES[id]) return;
+    state.vus[state.lame][id] = true;
+    dire(ROLES[id], false);
+  }
+
+  function poser(id) {
+    if (state.placed[id]) {
+      state.placed[id] = false;
+      if (id === "noyau") state.placed.adn = false;
+      state.effort = id === "mitochondrie" ? false : state.effort;
+      dire(id === "noyau" ? "Le noyau et l'ADN retournent dans le bac." : NOMS[id] + " retourne dans le bac.", false);
+      return;
+    }
+    const refus = refusDe(id);
+    if (refus) { dire(refus, true); return; }
+    state.placed[id] = true;
+    dire(planValide() ? phraseAllume(id) : NOMS[id] + " est en place.", false);
+  }
+
+  function agir(act, id) {
+    if (act === "station") {
+      state.station = id;
+      dire(id === "oculaire" ? "Oculaire. Une lame, la netteté, puis les noms." : id === "atelier" ? "Atelier. Membrane et cytoplasme sont déjà là." : "Organisme. On duplique, on ne crée pas à partir de rien.", false);
+    } else if (act === "lame") {
+      if (id === "liege" && !troisLames()) return;
+      state.lame = id;
+      dire(LAMES[id] + ". " + (id === "liege" ? "Bonus : les cases de Hooke." : "Fais la mise au point."), false);
+    } else if (act === "obj") {
+      state.obj = Number(id);
+      dire("Objectif ×" + id + ". Grossissement ×" + G() + ".", false);
+    } else if (act === "flou" || act === "nommer") {
+      nommer(id);
+    } else if (act === "pas-chloro") {
+      state.vus.oignon["pas-chloro"] = true;
+      dire(ROLES["pas-chloro"], false);
+    } else if (act === "chassis") {
+      state.chassis = id;
+      state.placed = {};
+      state.effort = false;
+      const noms = { animale: "animal", vegetale: "végétal", procaryote: "bactérie" };
+      dire("Châssis " + noms[id] + ". Le bac est vidé. Membrane et cytoplasme restent.", false);
+    } else if (act === "partie") {
+      state.partie = id;
+      if (id === "bulbe" && state.placed.chloroplaste) {
+        state.placed.chloroplaste = false;
+        dire("Le chloroplaste retourne dans le bac : un bulbe n'en a pas.", false);
+      } else {
+        dire(id === "verte" ? "Partie verte : il faut un chloroplaste pour allumer la cellule." : "Bulbe : paroi, vacuole, noyau, ADN. Pas de chloroplaste.", false);
+      }
+    } else if (act === "profondeur") {
+      state.profondeur = id;
+      if (id === "college" && state.placed.mitochondrie) {
+        state.placed.mitochondrie = false;
+        state.effort = false;
+        dire("Retour au schéma de collège. La mitochondrie sort du dessin.", false);
+      } else {
+        dire(id === "lycee" ? "Vue lycée : la mitochondrie entre dans le bac." : "Schéma de collège.", false);
+      }
+    } else if (act === "jeton") {
+      poser(id);
+    } else if (act === "effort") {
+      state.effort = !state.effort;
+      dire(state.effort ? "Effort : la mitochondrie permet d'utiliser l'énergie des nutriments." : "La cellule se repose.", false);
+    } else if (act === "mission") {
+      state.mission = id;
+      const phrases = {
+        bacterie: "Mission : un être fait d'une seule cellule.",
+        feuille: "Mission : quatre cellules vertes, le même plan.",
+        muscle: "Mission : deux cellules animales, muscle ou neurone."
+      };
+      dire(phrases[id], false);
+    } else if (act === "forme") {
+      state.forme = id;
+      dire(id === "neurone" ? "Neurone : une autre forme, le même plan." : "Cellule musculaire : allongée, même plan.", false);
+    } else if (act === "ajouter") {
+      const r = raisonAjout();
+      if (!r.ok) { dire(r.texte, true); }
+      else {
+        state.copies[state.mission] += 1;
+        const but = state.mission === "feuille" ? 4 : state.mission === "muscle" ? 2 : 1;
+        if (state.copies[state.mission] >= but) state.missions[state.mission] = true;
+        dire(r.succes, false);
+      }
+    } else if (act === "virus") {
+      dire("Un virus n'est pas une cellule : pas de membrane ni de cytoplasme à lui. On ne le pose pas.", true);
+    } else if (act === "globule") {
+      state.globule = !state.globule;
+      dire(state.globule ? "Exception, pas le modèle : le globule rouge de mammifère perd son noyau." : "Carte rangée.", false);
+    }
+    render();
+  }
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-act]");
+    if (!b || b.disabled) return;
+    agir(b.dataset.act, b.dataset.id || "");
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const b = e.target.closest("[data-act]");
+    if (!b || b.tagName === "BUTTON") return;
+    e.preventDefault();
+    agir(b.dataset.act, b.dataset.id || "");
+  });
+  $("range-net").addEventListener("input", (e) => {
+    state.net = Number(e.target.value);
+    render();
+  });
+  $("range-lumiere").addEventListener("input", (e) => {
+    state.lumiere = Number(e.target.value);
+    render();
+  });
+
+  const onglets = [...document.querySelectorAll("#onglets [role=tab]")];
+  function montrer(id) {
+    onglets.forEach((b) => {
+      const on = b.id === "onglet-" + id;
+      b.setAttribute("aria-selected", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
+    });
+    document.querySelectorAll("main .panneau").forEach((p) => {
+      p.hidden = p.id !== "panneau-" + id;
+    });
+  }
+  onglets.forEach((b) => b.addEventListener("click", () => montrer(b.id.replace("onglet-", ""))));
+  $("onglets").addEventListener("keydown", (e) => {
+    const i = onglets.indexOf(document.activeElement);
+    if (i < 0 || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+    e.preventDefault();
+    const n = (i + (e.key === "ArrowRight" ? 1 : -1) + onglets.length) % onglets.length;
+    montrer(onglets[n].id.replace("onglet-", ""));
+    onglets[n].focus();
+  });
+
+  function lireNombre(s) {
+    const t = String(s).trim().replace(/\s/g, "").replace(",", ".");
+    if (!/^-?\d+(\.\d+)?$/.test(t)) return null;
+    return Number(t);
+  }
+  const indices = {
+    1: { 20: "Tu as peut-être additionné. Multiplie : 10 × 10.", 10: "C'est l'oculaire ou l'objectif, pas le produit." },
+    3: { 0.2: "C'est encore en millimètres. × 1 000 pour les µm.", 20: "20 mm ÷ 100 = 0,2 mm. Passe ensuite en µm.", 2: "0,2 mm, ce n'est pas 2 µm." }
+  };
+  function ouvrirSuite(id) {
+    const suivant = { 1: "etape-2", 2: "etape-3" }[id];
+    if (suivant) $(suivant).hidden = false;
+    if (id === "3" || id === 3) $("conclusion").hidden = false;
+  }
+  document.getElementById("panneau-mise-en-situation").addEventListener("click", (e) => {
+    const verif = e.target.closest("[data-verif]");
+    if (verif) {
+      const id = verif.dataset.verif;
+      const art = $("etape-" + id);
+      const lu = lireNombre($("rep-" + id).value);
+      const bon = Number(art.dataset.rep);
+      const ret = $("ret-" + id);
+      if (lu === bon) {
+        ret.textContent = "Juste.";
+        ret.className = "retour ok";
+        verif.disabled = true;
+        ouvrirSuite(id);
+      } else {
+        const special = lu !== null && indices[id] && indices[id][lu];
+        ret.textContent = special || (id === "1" ? "Indice : oculaire × objectif." : "Indice : taille réelle = taille du dessin ÷ grossissement, puis passe en µm.");
+        ret.className = "retour ko";
+      }
+    }
+    const q = e.target.closest("[data-qcm]");
+    if (q) {
+      const cle = q.dataset.qcm;
+      const art = cle === "2" ? $("etape-2") : $("ex-" + cle);
+      const ret = $("ret-" + cle);
+      const bonne = art.dataset.bonne;
+      art.querySelectorAll("[data-qcm]").forEach((b) => { b.disabled = true; });
+      if (q.dataset.i === bonne) {
+        q.classList.add("bonne");
+        ret.textContent = cle === "2"
+          ? "Sans lumière, pas de photosynthèse. Ces cellules ont quand même une paroi."
+          : "Juste.";
+        ret.className = "retour ok";
+        if (cle === "2") ouvrirSuite("2");
+      } else {
+        q.classList.add("ratee");
+        ret.textContent = "Regarde encore le labo, puis réessaie.";
+        ret.className = "retour ko";
+        art.querySelectorAll("[data-qcm]").forEach((b) => { b.disabled = false; });
+      }
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
