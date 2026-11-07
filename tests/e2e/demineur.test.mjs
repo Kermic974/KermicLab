@@ -58,14 +58,20 @@ test("démineur : aucun appel réseau pendant une partie", async () => {
 test("démineur : premier clic toujours sûr, chronomètre lancé, partie en cours", async () => {
   const { page, contexte } = await ouvrir(nav, URL_PAGE());
   await page.goto(URL_PAGE());
-  for (let essai = 0; essai < 8; essai++) {
+  // Mines placées au hasard après le premier coup : l'ouverture en cascade peut parfois dévoiler toutes les cases sûres
+  // et gagner d'emblée. Seule la défaite est exclue ; le chronomètre est vérifié sur une partie restée en cours.
+  let enCours = false;
+  for (let essai = 0; essai < 8 || (!enCours && essai < 40); essai++) {
     await jeu(page).locator('[data-action="nouvelle-partie"]').click();
     assert.deepEqual(await mines(page), [], "aucune mine avant le premier coup");
     await caseJeu(page, (essai * 23) % 81).click();
-    assert.equal(await sortie(page, "statut").textContent(), "En cours", `essai ${essai}`);
+    const statut = await sortie(page, "statut").textContent();
+    assert.ok(["En cours", "Victoire 🎉"].includes(statut), `essai ${essai} : ${statut}`);
+    enCours = statut === "En cours";
     assert.equal((await mines(page)).length, 10);
     assert.equal(await caseJeu(page, (essai * 23) % 81).getAttribute("data-etat"), "vide");
   }
+  assert.ok(enCours, "une partie reste en cours après le premier coup");
   await page.waitForFunction(() => document.querySelector('#panneau-application [data-sortie="temps"]').textContent !== "0:00", null, { timeout: 3000 });
   await contexte.close();
 });
