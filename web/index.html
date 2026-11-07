@@ -621,8 +621,11 @@
       <p class="doux petit" id="cahier-notions-aide"></p>
       <div id="cahier-notions" class="cahier-notions"></div>
     </fieldset>
-    <label for="cahier-longueur" data-i18n="cahierLongueurChamp"></label>
-    <select id="cahier-longueur"></select>
+    <div class="constructeur-ligne">
+      <div><label for="cahier-univers" data-i18n="cahierUniversChamp"></label><select id="cahier-univers"></select></div>
+      <div><label for="cahier-objectif" data-i18n="cahierObjectifChamp"></label><select id="cahier-objectif"></select></div>
+      <div><label for="cahier-longueur" data-i18n="cahierLongueurChamp"></label><select id="cahier-longueur"></select></div>
+    </div>
     <label class="cahier-ia"><input type="checkbox" id="cahier-ia"> <span><span aria-hidden="true">✨ </span><span data-i18n="cahierIa"></span></span></label>
     <p class="doux petit" id="cahier-ia-etat"></p>
     <p id="retour-cahier" aria-live="polite"></p>
@@ -639,6 +642,7 @@
     <button type="button" class="secondaire" id="fermer-lecture" data-i18n="fermer"></button>
   </div>
   <p class="doux petit" id="lecture-meta"></p>
+  <p class="progression-cahier" id="lecture-progression" hidden><span></span><progress value="0" max="1"></progress></p>
   <div id="lecture-corps" class="lecture-corps"></div>
 </dialog>
 
