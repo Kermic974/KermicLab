@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-iSk35W6r7/O8uxSHG8C5cuaDIWDh6DjxhkhsqhMHxrM='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-asR7D7A6y2BK0gHM8X2FyIioCKsA5rYAPcZifm51oBY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les statistiques – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -20,7 +20,7 @@
     "mise-en-situation",
     "self-test"
   ],
-  "gabarit": "1.0.0"
+  "gabarit": "1.1.0"
 }
 </script>
 <script type="application/json" id="kermiclab-contenu">
@@ -451,6 +451,104 @@ const Trophees = (() => {
   return Object.freeze({ monter });
 })();
 </script>
+<script id="evenements" data-inclure="gabarit/jeux/evenements.js">
+// Contrat d'événements pédagogiques v1 (ADR 0025) : une page autonome n'a pas de réseau (connect-src 'none').
+// Elle signale ce qui se passe à la page qui l'affiche (tableau de bord), par postMessage, après une poignée de main,
+// et seulement à une origine déclarée dans ses métadonnées (`allowedParentOrigins`, écrite par le Worker à partir de
+// ORIGINES_AUTORISEES, ou `parentOrigin`). Sans origine déclarée, la page n'émet rien.
+//   page → parent  { type: "kermiclab:evenements:pret", v: 1, notion }            (envoyé à chaque origine autorisée)
+//   parent → page  { type: "kermiclab:evenements:ecouter", v: 1, notion }        (fixe l'origine du parent)
+//   page → parent  { type: "kermiclab:evenement", v: 1, notion, version, evenement, … }   vers cette origine seulement
+// Événements : demarre | indice (exercice, rang) | reponse (exercice, correct, essai) | termine.
+// Jamais de texte saisi par l'élève, ni d'horodatage précis : le parent date à la journée.
+const Evenements = (() => {
+  const VERSION_CONTRAT = 1;
+  const TYPES = ["demarre", "indice", "reponse", "termine"];
+  const ID = /^[a-z0-9][a-z0-9-]{0,39}$/;
+  const MAX_FILE = 50;
+  const isole = window.parent === window;
+  const meta = JSON.parse(document.getElementById("kermiclab-meta").textContent);
+  const notion = meta.id;
+  const file = [];
+  let origineParent = null;
+  let demarre = false;
+  let termine = false;
+
+  const entier = (v, max) => Number.isInteger(v) && v >= 1 && v <= max;
+  /** Construit un événement conforme au schéma v1, ou null : un événement invalide n'est jamais envoyé. */
+  function construire(evenement, donnees = {}) {
+    if (!TYPES.includes(evenement)) return null;
+    const ev = { type: "kermiclab:evenement", v: VERSION_CONTRAT, notion, version: meta.version, evenement };
+    if (evenement === "indice" || evenement === "reponse") {
+      if (!ID.test(String(donnees.exercice ?? ""))) return null;
+      ev.exercice = donnees.exercice;
+    }
+    if (evenement === "indice") {
+      if (!entier(donnees.rang, 10)) return null;
+      ev.rang = donnees.rang;
+    }
+    if (evenement === "reponse") {
+      if (typeof donnees.correct !== "boolean" || !entier(donnees.essai, 99)) return null;
+      ev.correct = donnees.correct;
+      ev.essai = donnees.essai;
+    }
+    return ev;
+  }
+
+  function envoyer(ev) {
+    if (origineParent) window.parent.postMessage(ev, origineParent);
+    else if (file.length < MAX_FILE) file.push(ev);
+  }
+
+  /** Émet un événement ; « demarre » et « termine » ne sont émis qu'une fois par ouverture de la page. */
+  function emettre(evenement, donnees) {
+    if (isole) return;
+    if (evenement === "demarre") { if (demarre) return; demarre = true; }
+    if (evenement === "termine") { if (termine) return; termine = true; }
+    const ev = construire(evenement, donnees);
+    if (ev) envoyer(ev);
+  }
+
+  if (!isole) {
+    const estOrigineValide = (o) => {
+      try {
+        const u = new URL(o);
+        return ["https:", "http:"].includes(u.protocol) && u.origin === o;
+      } catch {
+        return false;
+      }
+    };
+
+    const originesAutorisees = new Set();
+    if (estOrigineValide(meta.parentOrigin)) originesAutorisees.add(meta.parentOrigin);
+    if (Array.isArray(meta.allowedParentOrigins)) {
+      for (const o of meta.allowedParentOrigins) {
+        if (estOrigineValide(o)) originesAutorisees.add(o);
+      }
+    }
+
+    if (originesAutorisees.size > 0) {
+      window.addEventListener("message", (e) => {
+        if (e.source !== window.parent || e.data?.type !== "kermiclab:evenements:ecouter" || e.data.v !== VERSION_CONTRAT ||
+            e.data.notion !== notion || origineParent) return;
+        let origine;
+        try { origine = new URL(e.origin); } catch { return; }
+        if (!["https:", "http:"].includes(origine.protocol) || origine.origin !== e.origin ||
+            !originesAutorisees.has(e.origin)) return;
+        origineParent = e.origin;
+        for (const ev of file.splice(0)) window.parent.postMessage(ev, origineParent);
+      });
+      // Annonce à chaque origine autorisée : seule celle du parent réel la reçoit (les autres sont ignorées par le
+      // navigateur). Ainsi le tableau de bord fonctionne sur chacun de ses domaines, pas seulement le premier.
+      for (const origine of originesAutorisees) {
+        window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, origine);
+      }
+    }
+  }
+
+  return Object.freeze({ emettre, construire, VERSION_CONTRAT });
+})();
+</script>
 </head>
 <body>
 <header>
@@ -559,6 +657,9 @@ const Trophees = (() => {
     },
     resumer: () => ({ genre: "notions", etat: [...etoiles], etoiles: etoiles.size, etoilesTotal: totalExercices, badges: [] })
   });
+  // Contrat d'événements pédagogiques v1 (ADR 0025, gabarit/jeux/evenements.js) : sans effet hors du tableau de bord.
+  const signaler = typeof Evenements === "undefined" ? () => {} : Evenements.emettre;
+  signaler("demarre");
   const idsExercices = new Set([
     ...(C.application?.exercices ?? []).map((_, i) => `app-${i + 1}`),
     ...(C.situation?.etapes ?? []).map((_, i) => `defi-${i + 1}`)
@@ -573,6 +674,7 @@ const Trophees = (() => {
     stockage.ecrire("etoiles", [...etoiles]);
     majEtoiles();
     publier();
+    if (etoiles.size === totalExercices) signaler("termine");
     compteur.classList.remove("brille"); void compteur.offsetWidth; compteur.classList.add("brille");
     return true;
   }
@@ -587,10 +689,13 @@ const Trophees = (() => {
   function exerciceQcm(ex, id, surReussite) {
     const zone = retourZone();
     const choix = h("div", { classe: "choix", role: "group", "aria-label": "Réponses possibles" });
+    let essais = 0;
     ex.choix.forEach((libelle, i) => {
       const b = h("button", { type: "button", classe: "choix-bouton" }, riche(libelle));
       b.addEventListener("click", () => {
         if (choix.dataset.fini) return;
+        essais += 1;
+        signaler("reponse", { exercice: id, correct: i === ex.bonne, essai: essais });
         if (i === ex.bonne) {
           choix.dataset.fini = "1";
           b.classList.add("juste");
@@ -599,6 +704,7 @@ const Trophees = (() => {
           surReussite?.();
         } else {
           b.classList.add("faux"); b.disabled = true;
+          if (ex.indice && essais === 1) signaler("indice", { exercice: id, rang: 1 });
           afficherRetour(zone, false, ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
         }
       });
@@ -610,32 +716,40 @@ const Trophees = (() => {
   function exerciceNombre(ex, id, surReussite) {
     const zone = retourZone();
     const champ = h("input", { type: "text", inputmode: "decimal", autocomplete: "off", "aria-label": "Ta réponse", placeholder: ex.fractionIrreductible ? "ex. 3/4" : "ta réponse" });
-    const valider = h("button", { type: "submit", classe: "action" }, "Valider");
+    // Pas de soumission de formulaire : dans la bulle du tableau de bord, l'iframe est isolée sans « allow-forms »
+    // et le navigateur n'y déclenche jamais l'événement « submit ». Bouton et touche Entrée appellent soumettre().
+    const valider = h("button", { type: "button", classe: "action" }, "Valider");
     const solution = h("button", { type: "button", classe: "lien", hidden: true }, "Voir la solution");
     const form = h("form", { classe: "reponse" }, champ, ex.unite ? h("span", { classe: "unite" }, ex.unite) : null, valider);
-    let essais = 0, fini = false;
+    let essais = 0, tentatives = 0, fini = false;
     const terminer = (ok) => {
       fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true;
       const texte = ok ? `${gagner(id) ? "Exact, +1 étoile ! " : "Exact ! "}${ex.solution ?? ""}` : `Solution : ${ex.solution ?? nombreFr(ex.reponse)}`;
       afficherRetour(zone, ok, texte);
       if (ok) surReussite?.();
     };
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    function soumettre() {
       if (fini) return;
       const lu = lireNombre(champ.value);
       if (!lu) { afficherRetour(zone, false, ex.fractionIrreductible ? "Écris une fraction, par exemple 3/4." : "Écris un nombre, par exemple 12 ou 3,5."); return; }
       const juste = Math.abs(lu.valeur - ex.reponse) <= (ex.tolerance ?? 1e-9);
-      if (juste && ex.fractionIrreductible && (!lu.fraction || pgcd(lu.fraction[0], lu.fraction[1]) !== 1)) {
+      const nonSimplifiee = juste && ex.fractionIrreductible && (!lu.fraction || pgcd(lu.fraction[0], lu.fraction[1]) !== 1);
+      tentatives += 1;
+      signaler("reponse", { exercice: id, correct: juste && !nonSimplifiee, essai: tentatives });
+      if (nonSimplifiee) {
         afficherRetour(zone, false, "C'est la bonne valeur, mais la fraction n'est pas encore simplifiée au maximum !");
         return;
       }
       if (juste) { terminer(true); return; }
       essais += 1;
       const indices = ex.indices ?? [];
+      if (essais <= indices.length) signaler("indice", { exercice: id, rang: essais });
       afficherRetour(zone, false, essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.");
       if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
-    });
+    }
+    valider.addEventListener("click", soumettre);
+    champ.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); soumettre(); } });
+    form.addEventListener("submit", (e) => e.preventDefault());
     solution.addEventListener("click", () => terminer(false));
     return [form, solution, zone];
   }

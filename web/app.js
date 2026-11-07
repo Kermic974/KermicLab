@@ -10,6 +10,7 @@ import * as contributions from "./contributions.js";
 import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
+import * as evenements from "./evenements.js";
 import * as experiences from "./experiences.js";
 import { creerMoteurTemps } from "./temps-actif.js";
 
@@ -1932,6 +1933,20 @@ function brancherTrophees() {
       return;
     }
     const id = cadre.dataset.module;
+    // Contrat d'événements pédagogiques v1 (ADR 0025) : poignée de main, puis événements validés et agrégés localement.
+    if (e.data?.type === "kermiclab:evenements:pret") {
+      if (e.data.v === evenements.VERSION_CONTRAT && e.data.notion === id) {
+        cadre.contentWindow.postMessage({ type: "kermiclab:evenements:ecouter", v: evenements.VERSION_CONTRAT, notion: id }, "*");
+      }
+      return;
+    }
+    if (e.data?.type === "kermiclab:evenement") {
+      const ev = evenements.normaliserEvenement(e.data, id);
+      if (!ev) { console.warn("evenements : message invalide", id); return; }
+      etat.evenements = evenements.enregistrer(etat.evenements, ev, progression.jourLocal());
+      evenements.sauver(stockage(), etat.evenements);
+      return;
+    }
     if (e.data?.module !== id) return;
     if (e.data?.type === "kermiclab:trophees:pret") {
       cadre.contentWindow.postMessage({ type: "kermiclab:trophees:charger", module: id, etat: etat.trophees[id]?.etat ?? null }, "*");
@@ -2274,6 +2289,7 @@ async function demarrer() {
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
+  etat.evenements = evenements.charger(stockage());
   brancherTrophees();
   appliquerTheme(lireCle(preferences(), CLE_THEME));
   const select = $("#langue");
@@ -2552,7 +2568,7 @@ function changerMemoire(active) {
   if (active) document.cookie = profil.cookieMemoire({ securise: cookieSecurise() });
   else document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
   etat.memoire = active;
-  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, compteLocal.CLE_COMPTE]) effacerCle(ancien, cle);
+  for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, evenements.CLE_STOCKAGE, CLE_CAHIERS, compteLocal.CLE_COMPTE]) effacerCle(ancien, cle);
   if (!active) effacerCle(preferences(), progression.CLE_STOCKAGE);
   sauverSession();
   if (cahiers) ecrireCle(stockage(), CLE_CAHIERS, cahiers);
@@ -2563,6 +2579,7 @@ function sauverSession() {
   if (etat.pseudo) ecrireCle(stockage(), profil.CLE_PSEUDO, etat.pseudo);
   progression.sauver(stockage(), etat.progres);
   trophees.sauver(stockage(), etat.trophees);
+  evenements.sauver(stockage(), etat.evenements);
 }
 
 function messageErreurPseudo(erreur) {
@@ -2627,7 +2644,7 @@ function brancherProfil() {
     }
     document.cookie = profil.cookieEffacement({ securise: cookieSecurise() });
     for (const zone of [preferences(), (() => { try { return window.sessionStorage; } catch { return null; } })()]) {
-      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, compteLocal.CLE_COMPTE, compteLocal.CLE_SESSION]) effacerCle(zone, cle);
+      for (const cle of [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, evenements.CLE_STOCKAGE, CLE_CAHIERS, compteLocal.CLE_COMPTE, compteLocal.CLE_SESSION]) effacerCle(zone, cle);
     }
     location.reload();
   });

@@ -2,6 +2,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { injecterOriginesParent } from "../../worker/src/origines-pages.js";
 
 let serveur, nav, api;
 const modules = [
@@ -30,7 +31,9 @@ async function demarrer(options = {}) {
   }));
   await page.route(`${api}/maquettes/**`, async (r) => {
     const id = new URL(r.request().url()).pathname.split("/").at(-1);
-    await r.fulfill({ contentType: "text/html", body: await readFile(`${racine}catalogue/${id}/page.html`, "utf8") });
+    // Comme le Worker (servirPage) : origines autorisées du parent écrites dans les métadonnées servies (ADR 0025).
+    const html = await readFile(`${racine}catalogue/${id}/page.html`, "utf8");
+    await r.fulfill({ contentType: "text/html", body: injecterOriginesParent(html, [serveur.url]) });
   });
   await page.goto(serveur.url);
   await page.locator("#entree-education", { hasText: "notions" }).waitFor();
@@ -81,6 +84,40 @@ test("trophées : étoiles d'une notion remontées, restaurées et isolées de l
     await reprise.locator("#etoiles").filter({ hasText: "★ 1 / 10" }).waitFor();
     assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 25);
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
+    assert.deepEqual(erreurs, []);
+  } finally { await contexte.close(); }
+});
+
+test("événements (ADR 0025) : démarré, réponses, indice et réussite après indice agrégés localement, sans texte saisi", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  try {
+    const cadre = await ouvrirModule(page, "pythagore");
+    const lire = () => page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements") ?? "null"));
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements") ?? "null")?.notions?.pythagore?.ouvertures === 1);
+    await cadre.locator("#onglet-application").click();
+    const application = cadre.locator("#panneau-application");
+    await application.waitFor({ state: "visible" });
+    const qcm = application.locator("[data-exercice=app-1]");
+    await qcm.getByRole("button", { name: "le plus petit côté", exact: true }).click();
+    await qcm.getByRole("button", { name: "le côté opposé à l'angle droit", exact: true }).click();
+    const nombre = application.locator("[data-exercice=app-2]");
+    await nombre.locator("input").fill("12");
+    await nombre.getByRole("button", { name: "Valider" }).click();
+    // Dans la bulle (iframe isolée sans « allow-forms »), la réponse se valide sans soumission de formulaire.
+    await nombre.locator(".retour", { hasText: "Indice" }).waitFor();
+    await nombre.locator("input").fill("15");
+    await nombre.locator("input").press("Enter");
+    await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements")).notions.pythagore.exercices["app-2"]?.reussi);
+    const { notions } = await lire();
+    assert.deepEqual(notions.pythagore.exercices, {
+      "app-1": { reponses: 2, reussi: true, indice: 0, apresIndice: false },
+      "app-2": { reponses: 2, reussi: true, indice: 1, apresIndice: true }
+    });
+    assert.equal(notions.pythagore.termine, false);
+    assert.match(notions.pythagore.dernierJour, /^\d{4}-\d{2}-\d{2}$/);
+    const brut = await page.evaluate(() => sessionStorage.getItem("kermiclab:evenements"));
+    assert.doesNotMatch(brut, /"12"|"15"|côté/, "aucune réponse saisie ni texte de la page n'est conservé");
+    assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:evenements")), null, "session seulement sans mémorisation");
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
 });

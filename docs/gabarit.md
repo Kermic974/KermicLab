@@ -92,6 +92,17 @@ les limites des droits et les différences entre territoires. Les fiches indique
 relecture ; les pages restent autonomes, sans ressource externe. Distingue repère conventionnel,
 évolution progressive et application effective d'une loi.
 
+## 3 bis. Événements pédagogiques (automatiques)
+
+Chaque page générée émet, sans rien à écrire dans `contenu.json`, les événements du contrat v1
+([ADR 0025](decisions/0025-contrat-evenements-pedagogiques.md)) vers le tableau de bord : `demarre`, `reponse`, `indice`
+(indice d'un QCM après la première erreur, indices gradués d'un exercice « nombre ») et `termine`. Les identifiants
+d'exercice sont `app-N` (onglet S'entraîner) et `defi-N` (mise en situation). Une page écrite à la main inclut
+`gabarit/jeux/evenements.js` et appelle `Evenements.emettre(...)`.
+
+Dans la bulle du tableau de bord, l'iframe est isolée sans `allow-forms` : un composant d'exercice ne doit **jamais**
+compter sur l'événement `submit` d'un formulaire (il n'y est pas déclenché). Utiliser un bouton et la touche Entrée.
+
 ## 4. Ajouter un composant
 
 **Nouvelle figure** (ADR 0020) : chaque figure est un fichier à part, inséré par le build dans le moteur des seules pages qui l'utilisent.
