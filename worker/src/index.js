@@ -539,7 +539,7 @@ async function traiterDefi(requete, env, ctx) {
     await libererGenerationDefi(env, session.id).catch(() => console.error("llm libération défi indisponible"));
   }
   if (!defis.length) {
-    const raison = echecs.every((e) => /:http-|:erreur$/.test(e)) ? "ia-indisponible" : "sortie-invalide";
+    const raison = echecs.every((e) => /:(?:http-\d{3}|erreur)$/.test(e)) ? "ia-indisponible" : "sortie-invalide";
     ctx.waitUntil(journaliser(env, { type: "erreur", langue, routage: "defi", detail: echecs.join(" ").slice(0, 200) }));
     return avecCookie(banque(raison, quota));
   }
