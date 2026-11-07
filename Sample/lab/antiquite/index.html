@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Agora — L'Antiquité : Grèce et Rome</title>
+<script type="application/json" id="kermiclab-meta">
+{
+  "id": "antiquite",
+  "titre": "Agora",
+  "sujet": "histoire/antiquite-grece-rome",
+  "version": "0.1.0",
+  "date": "2026-11-08",
+  "langue": "fr",
+  "onglets": ["application"]
+}
+</script>
+<style>
+  :root {
+    --stone: #1b1612;
+    --stone-2: #2a231c;
+    --parchment: #f4ecd9;
+    --parchment-2: #e7dcc3;
+    --ink: #1c1612;
+    --muted: #5e564c;
+    --line: #d4c6ae;
+    --terra: #b85a2a;
+    --terra-ink: #fff8f3;
+    --sea: #1e6a72;
+    --sea-ink: #f3fbfb;
+    --gold: #a6843d;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+  body {
+    min-height: 100dvh;
+    background: var(--stone);
+    color: var(--parchment);
+    font: 16px/1.45 "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  }
+  button, input { font: inherit; }
+  button { min-height: 44px; overflow-wrap: anywhere; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .galerie { max-width: 720px; margin: 0 auto; padding: 12px 16px 32px; }
+  .entete { display: flex; justify-content: space-between; gap: 12px; align-items: flex-end; margin-bottom: 12px; }
+  h1 { font-size: 1.7rem; line-height: 1.1; margin: 0; font-weight: 650; letter-spacing: -0.02em; }
+  h1:focus { outline: none; }
+  .kicker { margin: 0 0 4px; font-family: system-ui, sans-serif; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #d7c4a4; }
+  .pieces {
+    margin: 0; min-width: 44px; text-align: center;
+    font-family: system-ui, sans-serif; font-size: .85rem; font-weight: 700;
+    border: 1px solid #4a3d32; border-radius: 999px; padding: 8px 12px; color: var(--parchment);
+  }
+  .carte {
+    background: var(--parchment); color: var(--ink);
+    border-radius: 18px; padding: 14px;
+  }
+  .intro { margin: 0 0 12px; font-size: 1.05rem; }
+  .liste { margin: 0 0 14px; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .liste li {
+    display: flex; gap: 10px; align-items: baseline;
+    background: var(--parchment-2); border-radius: 12px; padding: 10px 12px;
+  }
+  .num { font-family: system-ui, sans-serif; font-weight: 700; color: var(--terra); }
+  .principal, .second {
+    width: 100%; border-radius: 12px; border: 0; padding: 12px 14px; font-weight: 650;
+  }
+  .principal { background: #8a3e18; color: var(--terra-ink); }
+  .second { background: transparent; color: var(--ink); border: 1px solid var(--line); margin-top: 8px; }
+  .principal:disabled { opacity: .45; }
+  .rangee { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+  .choix, .tuile, .zone, .cran, .couche {
+    border: 1px solid var(--line); background: #fffdf8; color: var(--ink);
+    border-radius: 12px; padding: 10px 12px; text-align: left;
+  }
+  .choix[aria-pressed="true"], .tuile.choisie, .cran[aria-pressed="true"], .couche[aria-pressed="true"] {
+    border-color: var(--terra); box-shadow: inset 0 0 0 1px var(--terra);
+  }
+  .bac { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (min-width: 640px) { .bac { grid-template-columns: repeat(3, 1fr); } }
+  .tuile small, .choix small, .zone small { display: block; font-family: system-ui, sans-serif; color: var(--muted); font-size: .75rem; }
+  .plan {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "mur mur mur"
+      "grad haut haut"
+      "place place eau"
+      "parc parc eau";
+    gap: 8px;
+    background: #efe4cf;
+    border-radius: 16px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  .zone { position: static; min-height: 64px; height: auto; }
+  .zone.posee { background: rgba(184, 90, 42, .18); }
+  .z-mur { grid-area: mur; }
+  .z-haut { grid-area: haut; border-radius: 40% 40% 12px 12px; }
+  .z-grad { grid-area: grad; border-radius: 12px 12px 40% 40%; }
+  .z-place { grid-area: place; }
+  .z-parc { grid-area: parc; }
+  .z-eau { grid-area: eau; background: rgba(30, 106, 114, .16); }
+  .note {
+    background: #fffdf8; border-left: 4px solid var(--sea); border-radius: 10px;
+    padding: 10px 12px; margin: 10px 0 0;
+  }
+  #annonce {
+    background: #fffdf8; color: var(--ink);
+    border-left: 4px solid var(--sea); border-radius: 10px;
+    padding: 10px 12px; margin: 0 0 12px; min-height: 3.2em;
+  }
+  .annonce.ok { border-left-color: var(--terra); }
+  .annonce.non { border-left-color: #8d3a2a; }
+  .aide { margin: 10px 0 0; font-family: system-ui, sans-serif; font-size: .8rem; color: var(--muted); }
+  .grille {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin: 8px 0 12px;
+  }
+  .cell {
+    aspect-ratio: 1; border-radius: 10px; border: 1px dashed var(--line);
+    background: transparent; color: var(--ink); padding: 0; min-height: 44px;
+    font-family: system-ui, sans-serif; font-size: .68rem;
+  }
+  .cell.plein { background: var(--terra); color: var(--terra-ink); border-style: solid; }
+  .cell.fixe { border-style: solid; background: var(--parchment-2); cursor: default; }
+  .cell.vide { visibility: hidden; }
+  .voie {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin: 8px 0;
+  }
+  .borne { background: var(--parchment-2); border-radius: 12px; padding: 10px; text-align: center; font-size: .95rem; }
+  .jeton {
+    width: 28px; height: 28px; border-radius: 50%; margin: 0 auto 4px;
+    background: var(--gold); color: var(--ink);
+  }
+  .jeton.bouge { transform: translateX(0); }
+  .rail { display: flex; align-items: center; gap: 6px; min-height: 36px; }
+  .rail i, .rail-trait { flex: 1; height: 2px; background: var(--line); display: block; width: 36px; }
+  .reduit .jeton, .reduit .tuile, .reduit .zone { transition: none !important; }
+  .habitants { display: grid; gap: 8px; }
+  .frise { display: grid; gap: 8px; margin: 8px 0; }
+  @media (min-width: 640px) { .frise { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .slot { min-height: 72px; }
+  .carte-svg { width: 100%; height: auto; display: block; background: #d5e6e4; border-radius: 16px; }
+  .legende { margin: 8px 0; }
+  .mur { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; }
+  @media (min-width: 640px) { .mur { grid-template-columns: repeat(3, 1fr); } }
+  .objet { background: var(--parchment-2); border-radius: 12px; padding: 10px; min-height: 92px; }
+  .objet b { display: block; }
+  .objet span { font-family: system-ui, sans-serif; font-size: .78rem; color: var(--muted); }
+  .etoiles { font-family: system-ui, sans-serif; font-weight: 700; letter-spacing: .08em; }
+  .marque { display: inline-block; width: .9em; height: .9em; margin-right: 4px; vertical-align: -1px; border: 2px solid var(--gold); transform: rotate(45deg); }
+  .marque.on { background: var(--gold); }
+  .record { font-family: system-ui, sans-serif; font-size: .85rem; color: #d7c4a4; margin: 8px 0 0; }
+  .alerte { background: #f3d2cc; color: #3d1410; padding: 10px 12px; border-radius: 10px; margin-bottom: 10px; }
+  .progression { font-family: system-ui, sans-serif; font-size: .85rem; color: var(--muted); margin: 8px 0; }
+  .check { list-style: none; padding: 0; margin: 0 0 8px; font-family: system-ui, sans-serif; font-size: .92rem; }
+  .check li { padding: 4px 0; }
+  .fait { color: var(--terra); font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="galerie" class="galerie">
+  <p id="annonce" class="annonce" role="status" aria-live="polite"></p>
+  <div id="vue"></div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  var REDUIT = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (REDUIT) document.documentElement.classList.add("reduit");
+
+  var TUILES = [
+    { id: "theatre", slot: "gradins", nom: "Théâtre", piece: true,
+      bulle: "Un théâtre, c'est pour les spectacles de la cité, pas pour cet endroit.",
+      preciser: "Les spectacles prennent place sur les gradins.",
+      reussite: "Le théâtre est en place : la cité y donne ses spectacles." },
+    { id: "agora", slot: "place", nom: "Agora", piece: true,
+      bulle: "L'agora est la place du marché et des débats, pas ce lieu-là.",
+      preciser: "Cherche la place ouverte, au centre.",
+      reussite: "L'agora est la place : on y échange et on y débat." },
+    { id: "acropole", slot: "hauteur", nom: "Acropole", piece: true,
+      bulle: "L'acropole est un sanctuaire, pas cet endroit.",
+      preciser: "Le sanctuaire occupe la hauteur.",
+      reussite: "L'acropole est sur la hauteur : c'est le sanctuaire." },
+    { id: "port", slot: "eau", nom: "Port", piece: true,
+      bulle: "Le port sert aux échanges, au bord de l'eau.",
+      preciser: "Pose-le sur l'eau.",
+      reussite: "Le port relie la cité aux échanges maritimes." },
+    { id: "champs", slot: "parcelles", nom: "Champs", piece: false,
+      bulle: "Les champs nourrissent la cité. Ils ne sont pas à cet endroit.",
+      preciser: "Les parcelles sont hors du centre, en bas du plan.",
+      reussite: "Les champs nourrissent la cité. Elle n'est pas qu'une ville." },
+    { id: "muraille", slot: "rempart", nom: "Muraille", piece: false,
+      bulle: "La muraille protège la cité. Elle suit le rempart.",
+      preciser: "Le rempart barre le haut du plan.",
+      reussite: "La muraille est en place. Une cité a son territoire et sa défense." }
+  ];
+
+  var ZONES = [
+    { id: "rempart", nom: "Rempart", classe: "z-mur" },
+    { id: "hauteur", nom: "Hauteur", classe: "z-haut" },
+    { id: "gradins", nom: "Gradins", classe: "z-grad" },
+    { id: "place", nom: "Place", classe: "z-place" },
+    { id: "parcelles", nom: "Parcelles", classe: "z-parc" },
+    { id: "eau", nom: "Eau", classe: "z-eau" }
+  ];
+
+  var HABITANTS = [
+    { id: "citoyen", nom: "Citoyen", precis: "Homme adulte", vote: true,
+      texte: "Son caillou compte. À l'Assemblée, les citoyens débattent et votent." },
+    { id: "citoyenne", nom: "Citoyenne", precis: "Habitante de la cité", vote: false,
+      texte: "Elle habite la cité, mais elle ne vote pas. La parole politique est réservée aux citoyens hommes." },
+    { id: "meteque", nom: "Métèque", precis: "Étranger installé", vote: false,
+      texte: "Il peut travailler et payer des taxes, sans voter." },
+    { id: "esclave", nom: "Personne esclave", precis: "Privée de liberté", vote: false,
+      texte: "L'esclavage prive des personnes de tout droit politique. Ce n'est pas notre démocratie." },
+    { id: "enfant", nom: "Enfant", precis: "Fils de citoyen", vote: false,
+      texte: "Même fils de citoyen, un enfant ne siège pas à l'Assemblée." }
+  ];
+
+  var TRANCHEES = ["1,1", "2,1", "3,1", "3,0", "2,0", "1,0"];
+  var SOURCE = "0,1";
+  var VILLE = "4,0";
+
+  var EVENEMENTS = [
+    { id: "republique-509", nom: "République romaine", annee: -509, tick: "−509" },
+    { id: "athenes-ve", nom: "Démocratie à Athènes", annee: -450, tick: "Ve s. av. J.-C." },
+    { id: "auguste-27", nom: "Titre d'Auguste", annee: -27, tick: "−27" },
+    { id: "citoyennete-212", nom: "Citoyenneté élargie", annee: 212, tick: "212" },
+    { id: "occident-476", nom: "Fin de l'Empire d'Occident", annee: 476, tick: "476" }
+  ];
+
+  var PIECES = ["theatre", "agora", "acropole", "port", "caillou", "aqueduc", "route", "monnaie", "frise"];
+  var CLE = "agora-lab-v1";
+
+  function voisins(id) {
+    var p = id.split(",").map(Number);
+    return [[p[0] + 1, p[1]], [p[0] - 1, p[1]], [p[0], p[1] + 1], [p[0], p[1] - 1]]
+      .map(function (xy) { return xy[0] + "," + xy[1]; });
+  }
+
+  function aqueducValide(remplis) {
+    var noeuds = {};
+    noeuds[SOURCE] = true;
+    noeuds[VILLE] = true;
+    remplis.forEach(function (id) { noeuds[id] = true; });
+    function liens(id) {
+      return voisins(id).filter(function (n) { return noeuds[n]; });
+    }
+    var vu = {};
+    var prev = {};
+    var file = [SOURCE];
+    vu[SOURCE] = true;
+    while (file.length) {
+      var cur = file.shift();
+      if (cur === VILLE) break;
+      liens(cur).forEach(function (n) {
+        if (!vu[n]) { vu[n] = true; prev[n] = cur; file.push(n); }
+      });
+    }
+    if (!vu[VILLE]) return { ok: false, raison: "L'eau n'arrive pas encore jusqu'à la ville." };
+    var chemin = {};
+    var c = VILLE;
+    while (c) { chemin[c] = true; c = prev[c]; }
+    for (var i = 0; i < remplis.length; i++) {
+      if (!chemin[remplis[i]]) {
+        return { ok: false, raison: "Un tronçon ne mène nulle part. L'aqueduc ne doit pas avoir de branche morte." };
+      }
+    }
+    var ids = Object.keys(chemin);
+    var aretes = 0;
+    ids.forEach(function (n) {
+      voisins(n).forEach(function (m) {
+        if (chemin[m] && n < m) aretes++;
+      });
+    });
+    if (aretes !== ids.length - 1) {
+      return { ok: false, raison: "L'aqueduc fait une boucle. Un seul chemin, de la source à la ville." };
+    }
+    return { ok: true, raison: "L'eau arrive à la ville." };
+  }
+
+  function monnaieOk(regime, avers, legende) {
+    if (regime === "republique") return avers === "aucun" && legende === "spqr";
+    if (regime === "principat") return avers === "auguste" && legende === "auguste";
+    return false;
+  }
+
+  function etoilesDe(erreurs, indices) {
+    var p = erreurs + 2 * indices;
+    if (p <= 0) return 3;
+    if (p <= 2) return 2;
+    return 1;
+  }
+
+  function testsMoteur() {
+    var echecs = [];
+    function ok(nom, cond) { if (!cond) echecs.push(nom); }
+    ok("vote", HABITANTS.filter(function (h) { return h.vote; }).length === 1 && HABITANTS[0].vote);
+    ok("eau", aqueducValide(["1,1", "2,1", "3,1", "3,0"]).ok);
+    ok("eau2", aqueducValide(["1,1", "1,0", "2,0", "3,0"]).ok);
+    ok("coupe", !aqueducValide(["1,1", "3,0"]).ok);
+    ok("trop", !aqueducValide(TRANCHEES).ok);
+    ok("an0", EVENEMENTS.every(function (e) { return e.annee !== 0; }));
+    ok("ordre", EVENEMENTS.every(function (e, i, a) { return i === 0 || a[i - 1].annee < e.annee; }));
+    ok("avant-ve", -509 < -499);
+    ok("aug", monnaieOk("principat", "auguste", "auguste"));
+    ok("cesar", !monnaieOk("principat", "cesar", "auguste"));
+    ok("rep", monnaieOk("republique", "aucun", "spqr"));
+    ok("etoiles", etoilesDe(0, 0) === 3 && etoilesDe(1, 0) === 2 && etoilesDe(0, 1) === 2 && etoilesDe(3, 0) === 1);
+    return echecs;
+  }
+
+  var ECHECS = testsMoteur();
+
+  var etat = {
+    salle: "accueil",
+    selection: null,
+    place: {},
+    rates: {},
+    vus: {},
+    citoyen: false,
+    banniere: "",
+    tuyaux: [],
+    eauOk: false,
+    route: false,
+    regimes: [],
+    regime: null,
+    avers: null,
+    legende: null,
+    monnaieAuguste: false,
+    circule: false,
+    frise: {},
+    couche: "cites-ve",
+    couchesVues: {},
+    erreurs: 0,
+    indices: 0,
+    niveauIndice: {},
+    pieces: {},
+    record: 0,
+    modeLibre: false,
+    demarre: false,
+    termine: false
+  };
+
+  try {
+    var sauve = JSON.parse(localStorage.getItem(CLE) || "null");
+    if (sauve && sauve.etoiles) etat.record = sauve.etoiles;
+  } catch (e) { /* stockage indisponible */ }
+
+  function emettre(nom, detail) {
+    try {
+      window.dispatchEvent(new CustomEvent("kermiclab", { detail: Object.assign({ nom: nom }, detail || {}) }));
+    } catch (e) { /* pas d'écouteur */ }
+  }
+
+  function faute() {
+    if (!etat.modeLibre && !etat.termine) etat.erreurs++;
+  }
+
+  function annoncer(texte, ton) {
+    var n = document.getElementById("annonce");
+    if (!n) return;
+    n.className = "annonce" + (ton ? " " + ton : "");
+    if (n.textContent !== texte) {
+      n.textContent = texte;
+      if (texte && n.scrollIntoView) n.scrollIntoView({ block: "nearest" });
+    }
+  }
+
+  function piecesCompte() {
+    return PIECES.filter(function (id) { return etat.pieces[id]; }).length;
+  }
+
+  function tuileParId(id) { return TUILES.filter(function (t) { return t.id === id; })[0]; }
+
+  function citeOk() {
+    return TUILES.every(function (t) { return etat.place[t.slot] === t.id; });
+  }
+
+  function assembleeOk() {
+    return etat.citoyen && HABITANTS.every(function (h) { return h.vote || etat.vus[h.id]; });
+  }
+
+  function romeOk() {
+    return etat.eauOk && etat.route && etat.regimes.length === 3 && etat.monnaieAuguste && etat.circule;
+  }
+
+  function friseOk() {
+    return EVENEMENTS.every(function (e) { return etat.frise[e.id] === e.id; });
+  }
+
+  function cartesOk() {
+    return friseOk() && etat.couchesVues["cites-ve"] && etat.couchesVues["routes-empire"] && etat.couchesVues["partage-476"];
+  }
+
+  function majPiecesCite() {
+    TUILES.forEach(function (t) {
+      if (t.piece) etat.pieces[t.id] = etat.place[t.slot] === t.id;
+    });
+  }
+
+  function el(tag, attrs) {
+    var node = document.createElement(tag);
+    var opts = attrs || {};
+    Object.keys(opts).forEach(function (k) {
+      var v = opts[k];
+      if (k === "class") node.className = v;
+      else if (k.slice(0, 2) === "on" && typeof v === "function") node.addEventListener(k.slice(2).toLowerCase(), v);
+      else if (v !== false && v != null) node.setAttribute(k, v === true ? "" : String(v));
+    });
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c == null || c === false) continue;
+      if (Array.isArray(c)) c.forEach(function (x) { if (x) node.append(x.nodeType ? x : document.createTextNode(String(x))); });
+      else node.append(c.nodeType ? c : document.createTextNode(String(c)));
+    }
+    return node;
+  }
+
+  function boutonPrincipal(id, label, on, disabled) {
+    return el("button", { id: id, class: "principal", type: "button", onclick: on, disabled: !!disabled }, label);
+  }
+
+  function boutonSecond(id, label, on) {
+    return el("button", { id: id, class: "second", type: "button", onclick: on }, label);
+  }
+
+  function entete(kicker, titre) {
+    var n = piecesCompte();
+    return el("header", { class: "entete" },
+      el("div", {},
+        el("p", { class: "kicker" }, kicker),
+        el("h1", { id: "titre", tabindex: "-1" }, titre)
+      ),
+      el("p", { class: "pieces", "aria-label": n + " pièces sur 9" }, n + "/9")
+    );
+  }
+
+  function indice() {
+    if (!etat.modeLibre && !etat.termine) etat.indices++;
+    etat.niveauIndice[etat.salle] = (etat.niveauIndice[etat.salle] || 0) + 1;
+    emettre("indice", { salle: etat.salle });
+    annoncer(texteIndice(), "non");
+    render();
+  }
+
+  function texteIndice() {
+    var n = etat.niveauIndice[etat.salle] || 1;
+    if (etat.salle === "cite") {
+      if (n >= 2 && etat.selection) {
+        var t = tuileParId(etat.selection);
+        return t ? t.preciser : "Choisis un objet.";
+      }
+      return "Regarde la forme du lieu : gradins, hauteur, eau, parcelles, place, rempart.";
+    }
+    if (etat.salle === "assemblee") {
+      return "Un seul caillou reste : celui de l'homme adulte citoyen. Les autres vivent ici sans voter.";
+    }
+    if (etat.salle === "rome") {
+      return n >= 2
+        ? "Ordre du pouvoir : monarchie, République (509 av. J.-C.), puis Auguste en 27 av. J.-C. César n'est pas empereur."
+        : "L'aqueduc part de la source, à gauche, et doit toucher la ville sans trou ni boucle.";
+    }
+    return n >= 2
+      ? "−509 est juste avant le Ve siècle : c'est la République, pas Athènes."
+      : "Les nombres négatifs sont avant notre ère. Il n'y a pas d'année 0.";
+  }
+
+  function aller(salle) {
+    etat.salle = salle;
+    etat.selection = null;
+    if (salle === "cite" && !etat.demarre) {
+      etat.demarre = true;
+      emettre("demarre", { lab: "agora" });
+    }
+    if (salle === "cartes") etat.couchesVues[etat.couche] = true;
+    if (salle === "bilan") {
+      etat.termine = true;
+      etat.pieces.frise = true;
+      var n = etoilesDe(etat.erreurs, etat.indices);
+      etat.etoiles = n;
+      try {
+        var best = Math.max(n, etat.record || 0);
+        localStorage.setItem(CLE, JSON.stringify({ v: 1, etoiles: best }));
+        etat.record = best;
+      } catch (e) { /* stockage indisponible */ }
+      emettre("termine", { etoiles: n });
+    }
+    render();
+    var titre = document.getElementById("titre");
+    if (titre) titre.focus();
+  }
+
+  function choisirTuile(id) {
+    if (Object.keys(etat.place).some(function (s) { return etat.place[s] === id; })) {
+      Object.keys(etat.place).forEach(function (s) { if (etat.place[s] === id) delete etat.place[s]; });
+      majPiecesCite();
+    }
+    etat.selection = etat.selection === id ? null : id;
+    render();
+  }
+
+  function clicZone(slotId) {
+    if (!etat.selection) {
+      var occ = etat.place[slotId];
+      if (occ) {
+        delete etat.place[slotId];
+        majPiecesCite();
+        etat.selection = occ;
+        render();
+      }
+      return;
+    }
+    var tuile = tuileParId(etat.selection);
+    Object.keys(etat.place).forEach(function (s) { if (etat.place[s] === tuile.id) delete etat.place[s]; });
+    if (tuile.slot !== slotId) {
+      etat.rates[tuile.id] = (etat.rates[tuile.id] || 0) + 1;
+      faute();
+      emettre("reponse", { id: tuile.id, ok: false });
+      annoncer(etat.rates[tuile.id] >= 2 ? tuile.preciser : tuile.bulle, "non");
+      majPiecesCite();
+      render();
+      return;
+    }
+    etat.place[slotId] = tuile.id;
+    etat.selection = null;
+    majPiecesCite();
+    emettre("reponse", { id: tuile.id, ok: true });
+    annoncer(tuile.reussite, "ok");
+    render();
+  }
+
+  function deposer(habitant) {
+    etat.vus[habitant.id] = true;
+    if (habitant.vote) {
+      etat.citoyen = true;
+      if (assembleeOk()) etat.pieces.caillou = true;
+      emettre("reponse", { id: habitant.id, ok: true });
+      annoncer(habitant.texte, "ok");
+    } else {
+      etat.banniere = "Ce n'est pas notre démocratie : à Athènes, une partie des habitants n'a aucun droit politique.";
+      if (assembleeOk()) etat.pieces.caillou = true;
+      emettre("reponse", { id: habitant.id, ok: true, refus: true });
+      annoncer(habitant.texte, "non");
+    }
+    render();
+  }
+
+  function basculerTuyau(id) {
+    var i = etat.tuyaux.indexOf(id);
+    if (i >= 0) etat.tuyaux.splice(i, 1);
+    else etat.tuyaux.push(id);
+    etat.eauOk = false;
+    etat.pieces.aqueduc = false;
+    render();
+  }
+
+  function lacherEau() {
+    var r = aqueducValide(etat.tuyaux.slice());
+    if (!r.ok) {
+      faute();
+      emettre("reponse", { id: "aqueduc", ok: false });
+      annoncer(r.raison, "non");
+    } else {
+      etat.eauOk = true;
+      etat.pieces.aqueduc = true;
+      emettre("reponse", { id: "aqueduc", ok: true });
+      annoncer("L'eau arrive à la ville. Un aqueduc sert un besoin quotidien.", "ok");
+    }
+    render();
+  }
+
+  function poserRoute() {
+    etat.route = true;
+    etat.pieces.route = true;
+    emettre("reponse", { id: "route", ok: true });
+    annoncer("La voie relie Rome au port. Elle sert aux échanges, mais aussi à déplacer l'armée et à contrôler le territoire.", "ok");
+    render();
+  }
+
+  function choisirRegime(id) {
+    var ordre = ["monarchie", "republique", "principat"];
+    var textes = {
+      monarchie: "Avant 509 av. J.-C., Rome est une monarchie. 509 est un repère traditionnel, pas le récit d'une journée précise.",
+      republique: "Depuis 509 av. J.-C., des magistrats gouvernent avec le Sénat. Ce n'est pas une démocratie égalitaire.",
+      principat: "En 27 av. J.-C., Octave reçoit le titre d'Auguste : début du principat. Ce n'est pas le premier jour où il a du pouvoir. Jules César n'est pas le premier empereur."
+    };
+    if (etat.regimes.indexOf(id) >= 0) {
+      etat.regime = id;
+      if (id !== "principat") { etat.monnaieAuguste = false; etat.circule = false; etat.pieces.monnaie = false; }
+      annoncer(textes[id], "ok");
+      render();
+      return;
+    }
+    if (ordre.indexOf(id) === etat.regimes.length) {
+      etat.regimes.push(id);
+      etat.regime = id;
+      annoncer(textes[id], "ok");
+      emettre("reponse", { id: id, ok: true });
+    } else {
+      faute();
+      emettre("reponse", { id: id, ok: false });
+      annoncer("Suis l'ordre : monarchie, puis République, puis principat d'Auguste.", "non");
+    }
+    render();
+  }
+
+  function choisirFace(champ, id) {
+    etat[champ] = id;
+    etat.monnaieAuguste = false;
+    etat.circule = false;
+    etat.pieces.monnaie = false;
+    render();
+  }
+
+  function frapper() {
+    if (!etat.regime || etat.regime === "monarchie") {
+      annoncer("L'atelier s'ouvre avec la République ou le principat.", "non");
+      render();
+      return;
+    }
+    if (!etat.avers || !etat.legende) {
+      annoncer("Choisis un avers et une légende.", "non");
+      render();
+      return;
+    }
+    if (etat.avers === "cesar" || etat.legende === "cesar") {
+      faute();
+      emettre("reponse", { id: "monnaie", ok: false });
+      annoncer("Jules César n'est pas le premier empereur. Le principat commence avec Auguste, en 27 av. J.-C.", "non");
+      render();
+      return;
+    }
+    if (monnaieOk(etat.regime, etat.avers, etat.legende)) {
+      emettre("reponse", { id: "monnaie", ok: true });
+      if (etat.regime === "principat") {
+        etat.monnaieAuguste = true;
+        etat.pieces.monnaie = true;
+        annoncer("La pièce montre Auguste. Ce portrait diffuse une image du pouvoir, pas une photo de toute la société.", "ok");
+      } else {
+        annoncer("Juste pour la République : pas de portrait impérial. Pour la mission, passe au principat et frappe la monnaie d'Auguste.", "ok");
+      }
+    } else {
+      faute();
+      emettre("reponse", { id: "monnaie", ok: false });
+      annoncer(etat.regime === "principat"
+        ? "Sous Auguste, la monnaie porte son portrait et son titre."
+        : "Sous la République, pas de portrait d'empereur : la légende parle du Sénat et du peuple.", "non");
+    }
+    render();
+  }
+
+  function circuler() {
+    if (!etat.route || !etat.monnaieAuguste) return;
+    etat.circule = true;
+    annoncer(REDUIT
+      ? "La pièce circule le long de la voie : l'image d'Auguste voyage avec elle."
+      : "La pièce roule vers le port. Le pouvoir fait connaître son dirigeant.", "ok");
+    render();
+  }
+
+  function messageFrise(eventId, slotId) {
+    if (eventId === "athenes-ve" && slotId === "republique-509") {
+      return "−509 est juste avant le Ve siècle. C'est le repère traditionnel de la République romaine, pas le cœur de la démocratie athénienne.";
+    }
+    if (eventId === "occident-476" && slotId !== "occident-476") {
+      return "476 est après J.-C. Le dernier empereur d'Occident est déposé bien après Auguste.";
+    }
+    if (eventId === "auguste-27" && slotId === "occident-476") {
+      return "Auguste, c'est 27 avant J.-C. 476 est une autre époque.";
+    }
+    if (eventId === "republique-509" && slotId === "athenes-ve") {
+      return "La République est datée, traditionnellement, de 509 avant J.-C., juste avant le Ve siècle.";
+    }
+    if (eventId === "citoyennete-212" && slotId === "occident-476") {
+      return "212, c'est Caracalla : la citoyenneté s'élargit aux hommes libres. 476 vient après.";
+    }
+    return "Ce n'est pas la bonne date. Les nombres négatifs sont avant notre ère.";
+  }
+
+  function choisirRepere(id) {
+    Object.keys(etat.frise).forEach(function (s) { if (etat.frise[s] === id) delete etat.frise[s]; });
+    etat.selection = etat.selection === id ? null : id;
+    etat.pieces.frise = false;
+    render();
+  }
+
+  function clicFrise(slotId) {
+    if (!etat.selection) {
+      if (etat.frise[slotId]) {
+        delete etat.frise[slotId];
+        etat.pieces.frise = false;
+        render();
+      }
+      return;
+    }
+    var eventId = etat.selection;
+    if (eventId !== slotId) {
+      faute();
+      emettre("reponse", { id: eventId, ok: false });
+      annoncer(messageFrise(eventId, slotId), "non");
+      render();
+      return;
+    }
+    etat.frise[slotId] = eventId;
+    etat.selection = null;
+    if (friseOk()) etat.pieces.frise = cartesOk();
+    emettre("reponse", { id: eventId, ok: true });
+    var ev = EVENEMENTS.filter(function (e) { return e.id === eventId; })[0];
+    annoncer(ev.nom + " est en place.", "ok");
+    render();
+  }
+
+  function ouvrirCouche(id) {
+    etat.couche = id;
+    etat.couchesVues[id] = true;
+    if (friseOk() && cartesOk()) etat.pieces.frise = true;
+    var textes = {
+      "cites-ve": "Au Ve siècle av. J.-C., Athènes est une cité parmi d'autres. Sparte n'a pas la même Assemblée. Ce n'est pas la Grèce d'aujourd'hui.",
+      "routes-empire": "Routes et ports relient les villes. Ils servent aux échanges, et aussi au contrôle militaire.",
+      "partage-476": "En 476, le dernier empereur d'Occident est déposé. L'Empire d'Orient continue, jusqu'en 1453."
+    };
+    annoncer(textes[id], "ok");
+    render();
+  }
+
+  function rejouer() {
+    var record = etat.record;
+    etat.salle = "accueil";
+    etat.selection = null;
+    etat.place = {};
+    etat.rates = {};
+    etat.vus = {};
+    etat.citoyen = false;
+    etat.banniere = "";
+    etat.tuyaux = [];
+    etat.eauOk = false;
+    etat.route = false;
+    etat.regimes = [];
+    etat.regime = null;
+    etat.avers = null;
+    etat.legende = null;
+    etat.monnaieAuguste = false;
+    etat.circule = false;
+    etat.frise = {};
+    etat.couche = "cites-ve";
+    etat.couchesVues = {};
+    etat.erreurs = 0;
+    etat.indices = 0;
+    etat.niveauIndice = {};
+    etat.pieces = {};
+    etat.modeLibre = false;
+    etat.demarre = false;
+    etat.termine = false;
+    etat.record = record;
+    annoncer("");
+    render();
+  }
+
+  function svgTexte(x, y, texte, fill) {
+    var t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    t.setAttribute("x", x);
+    t.setAttribute("y", y);
+    t.setAttribute("fill", fill || "#1c1612");
+    t.setAttribute("font-size", "11");
+    t.setAttribute("font-family", "system-ui, sans-serif");
+    t.textContent = texte;
+    return t;
+  }
+
+  function carteDessin() {
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 320 200");
+    svg.setAttribute("class", "carte-svg");
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Schéma de la Méditerranée, sans frontières actuelles");
+    function shape(d, fill) {
+      var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", d);
+      p.setAttribute("fill", fill);
+      return p;
+    }
+    var mer = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+    mer.setAttribute("cx", "168"); mer.setAttribute("cy", "108");
+    mer.setAttribute("rx", "118"); mer.setAttribute("ry", "58");
+    mer.setAttribute("fill", "#1e6a72");
+    svg.append(shape("M0 0 H320 V200 H0 Z", "#d7ebe8"), mer);
+    var ouest = etat.couche === "partage-476" ? "#c4b49a" : "#f4ecd9";
+    svg.append(shape("M78 36 L112 52 L104 128 L74 156 L46 108 Z", ouest));
+    svg.append(shape("M198 44 L252 62 L238 124 L186 132 L176 78 Z", "#f4ecd9"));
+    svg.append(shape("M24 162 H296 V188 H24 Z", "#f4ecd9"));
+    svg.append(svgTexte(138, 112, "Méditerranée", "#f3fbfb"));
+    if (etat.couche === "cites-ve") {
+      svg.append(svgTexte(214, 78, "Athènes", "#1c1612"));
+      svg.append(svgTexte(188, 118, "Sparte", "#1c1612"));
+    } else if (etat.couche === "routes-empire") {
+      var route = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      route.setAttribute("x1", "86"); route.setAttribute("y1", "90");
+      route.setAttribute("x2", "220"); route.setAttribute("y2", "96");
+      route.setAttribute("stroke", "#b85a2a"); route.setAttribute("stroke-width", "2");
+      svg.append(route, svgTexte(70, 78, "Rome", "#1c1612"), svgTexte(214, 86, "port", "#1c1612"));
+    } else {
+      svg.append(svgTexte(52, 78, "Occident", "#1c1612"), svgTexte(206, 78, "Orient", "#1c1612"));
+      svg.append(svgTexte(200, 96, "continue", "#1e6a72"));
+    }
+    return svg;
+  }
+
+  function marqueEtoiles(n) {
+    var wrap = el("p", { class: "etoiles", "aria-label": n + " étoiles sur 3" });
+    for (var i = 1; i <= 3; i++) wrap.append(el("span", { class: "marque" + (i <= n ? " on" : ""), "aria-hidden": "true" }));
+    wrap.append(document.createTextNode(" " + n + " sur 3"));
+    return wrap;
+  }
+
+  function vueAccueil() {
+    return [
+      entete("Archives du musée", "Agora"),
+      el("div", { class: "carte" },
+        el("p", { class: "intro" }, "Tu es archiviste. Trois salles, des objets à poser. Si une pièce n'est pas à sa place, elle revient — avec une phrase, pas une note."),
+        el("ol", { class: "liste" },
+          el("li", {}, el("span", { class: "num" }, "1"), el("span", {}, "La cité — pierres, puis cailloux de vote")),
+          el("li", {}, el("span", { class: "num" }, "2"), el("span", {}, "Rome — l'eau, la voie, la monnaie")),
+          el("li", {}, el("span", { class: "num" }, "3"), el("span", {}, "La Méditerranée — trois cartes, une frise"))
+        ),
+        boutonPrincipal("commencer", "Entrer dans la salle 1", function () { aller("cite"); }),
+        etat.record ? boutonSecond("libre", "Mode libre", function () { etat.modeLibre = true; aller("cite"); }) : null,
+        etat.record ? el("p", { class: "record" }, "Record conservé sur cet appareil : " + etat.record + " sur 3") : null
+      )
+    ];
+  }
+
+  function vueCite() {
+    var plan = el("div", { class: "plan" });
+    ZONES.forEach(function (z) {
+      var pose = etat.place[z.id];
+      var tuile = pose ? tuileParId(pose) : null;
+      plan.append(el("button", {
+        id: "zone-" + z.id,
+        class: "zone " + z.classe + (pose ? " posee" : ""),
+        type: "button",
+        "aria-label": pose ? tuile.nom + " posé sur " + z.nom : "Lieu : " + z.nom,
+        onclick: function () { clicZone(z.id); }
+      }, tuile ? tuile.nom : z.nom, tuile ? el("small", {}, z.nom) : el("small", {}, "lieu")));
+    });
+    return [
+      entete("Salle 1", "La cité"),
+      el("div", { class: "carte" },
+        el("p", { class: "intro" }, "Une cité grecque n'est pas la Grèce d'aujourd'hui : une ville, sa campagne, ses lois. Pose chaque objet."),
+        plan,
+        el("div", { class: "bac" }, TUILES.filter(function (t) {
+          return !Object.keys(etat.place).some(function (s) { return etat.place[s] === t.id; });
+        }).map(function (t) {
+          return el("button", {
+            id: "tuile-" + t.id,
+            class: "tuile" + (etat.selection === t.id ? " choisie" : ""),
+            type: "button",
+            "aria-pressed": etat.selection === t.id ? "true" : "false",
+            onclick: function () { choisirTuile(t.id); }
+          }, t.nom);
+        })),
+        el("p", { class: "aide" }, "Choisis un objet, puis sa place. Au clavier : Tab, puis Entrée."),
+        boutonSecond("indice-cite", "Indice", indice),
+        citeOk() ? boutonPrincipal("suite-cite", "Salle suivante — l'Assemblée", function () { aller("assemblee"); }) : el("p", { class: "progression" }, "Objets placés : " + Object.keys(etat.place).length + " / 6")
+      )
+    ];
+  }
+
+  function vueAssemblee() {
+    return [
+      entete("Salle 1", "L'Assemblée"),
+      el("div", { class: "carte" },
+        el("p", { class: "intro" }, "Qui peut déposer un caillou ? Essaie les cinq habitants. Un refus n'est pas une erreur : c'est le droit de la cité."),
+        el("div", { class: "habitants" }, HABITANTS.map(function (h) {
+          var deja = h.vote ? etat.citoyen : etat.vus[h.id];
+          return el("button", {
+            id: "hab-" + h.id,
+            class: "choix",
+            type: "button",
+            "aria-pressed": deja ? "true" : "false",
+            onclick: function () { deposer(h); }
+          }, h.nom, el("small", {}, h.precis + (deja ? (h.vote ? " — caillou accepté" : " — caillou rendu") : "")));
+        })),
+        etat.banniere ? el("p", { class: "note" }, etat.banniere) : null,
+        boutonSecond("indice-ass", "Indice", indice),
+        el("div", { class: "rangee" },
+          boutonSecond("retour-cite", "Retour au plan", function () { aller("cite"); })
+        ),
+        assembleeOk() ? boutonPrincipal("suite-ass", "Salle suivante — Rome", function () { aller("rome"); }) : el("p", { class: "progression" }, "Habitants examinés : " + Object.keys(etat.vus).length + " / 5")
+      )
+    ];
+  }
+
+  function vueRome() {
+    var grille = el("div", { class: "grille" });
+    for (var r = 0; r <= 1; r++) {
+      for (var c = 0; c <= 4; c++) {
+        var id = c + "," + r;
+        if (id === SOURCE) grille.append(el("div", { class: "cell fixe" }, "Source"));
+        else if (id === VILLE) grille.append(el("div", { class: "cell fixe" }, "Ville"));
+        else if (TRANCHEES.indexOf(id) >= 0) {
+          var plein = etat.tuyaux.indexOf(id) >= 0;
+          grille.append(el("button", {
+            id: "tuyau-" + c + "-" + r,
+            class: "cell" + (plein ? " plein" : ""),
+            type: "button",
+            "aria-pressed": plein ? "true" : "false",
+            "aria-label": "Tronçon " + (plein ? "posé" : "vide"),
+            onclick: function (cid) { return function () { basculerTuyau(cid); }; }(id)
+          }, plein ? "eau" : ""));
+        } else grille.append(el("div", { class: "cell vide", "aria-hidden": "true" }));
+      }
+    }
+    var faces = [
+      ["avers", "auguste", "Portrait d'Auguste"],
+      ["avers", "cesar", "Jules César, « premier empereur »"],
+      ["avers", "aucun", "Pas de portrait impérial"],
+      ["legende", "auguste", "Légende : Auguste"],
+      ["legende", "cesar", "Légende : César empereur"],
+      ["legende", "spqr", "Sénat et peuple de Rome"]
+    ];
+    return [
+      entete("Salle 2", "Rome en chantier"),
+      el("div", { class: "carte" },
+        el("p", { class: "intro" }, "Relie la source à la ville, pose la voie, puis suis le pouvoir jusqu'à Auguste."),
+        el("ul", { class: "check" },
+          el("li", {}, el("span", { class: etat.eauOk ? "fait" : "" }, etat.eauOk ? "posé — " : "à faire — "), "Aqueduc"),
+          el("li", {}, el("span", { class: etat.route ? "fait" : "" }, etat.route ? "posé — " : "à faire — "), "Voie"),
+          el("li", {}, el("span", { class: etat.regimes.length === 3 ? "fait" : "" }, etat.regimes.length === 3 ? "posé — " : "à faire — "), "Jusqu'au principat"),
+          el("li", {}, el("span", { class: etat.circule ? "fait" : "" }, etat.circule ? "posé — " : "à faire — "), "Monnaie d'Auguste en circulation")
+        ),
+        grille,
+        boutonPrincipal("lacher", etat.eauOk ? "L'eau coule" : "Lâcher l'eau", lacherEau, etat.eauOk),
+        el("div", { class: "voie" },
+          el("div", { class: "borne" }, "Rome"),
+          el("div", {},
+            el("div", { class: "jeton" + (etat.circule && !REDUIT ? " bouge" : ""), style: etat.circule ? "transform:translateX(18px)" : "" }),
+            el("i", { class: "rail-trait" })
+          ),
+          el("div", { class: "borne" }, "Port")
+        ),
+        etat.route
+          ? el("p", { class: "note" }, "Voie posée. Échanges, armée, contrôle du territoire.")
+          : boutonSecond("poser-voie", "Poser la voie romaine", poserRoute),
+        el("div", { class: "rangee" },
+          el("button", { id: "reg-monarchie", class: "cran", type: "button", "aria-pressed": etat.regime === "monarchie" ? "true" : "false", onclick: function () { choisirRegime("monarchie"); } }, "Monarchie"),
+          el("button", { id: "reg-republique", class: "cran", type: "button", "aria-pressed": etat.regime === "republique" ? "true" : "false", onclick: function () { choisirRegime("republique"); } }, "République"),
+          el("button", { id: "reg-principat", class: "cran", type: "button", "aria-pressed": etat.regime === "principat" ? "true" : "false", onclick: function () { choisirRegime("principat"); } }, "Principat")
+        ),
+        etat.regime && etat.regime !== "monarchie" ? el("div", { class: "bac" }, faces.map(function (f) {
+          var champ = f[0], id = f[1];
+          return el("button", {
+            id: champ + "-" + id,
+            class: "choix",
+            type: "button",
+            "aria-pressed": etat[champ] === id ? "true" : "false",
+            onclick: function () { choisirFace(champ, id); }
+          }, f[2]);
+        })) : null,
+        etat.regime && etat.regime !== "monarchie" ? boutonSecond("frapper", "Frapper la monnaie", frapper) : null,
+        etat.monnaieAuguste && etat.route && !etat.circule ? boutonPrincipal("circuler", "Faire circuler la pièce", circuler) : null,
+        boutonSecond("indice-rome", "Indice", indice),
+        boutonSecond("retour-ass", "Retour à l'Assemblée", function () { aller("assemblee"); }),
+        romeOk() ? boutonPrincipal("suite-rome", "Salle suivante — la Méditerranée", function () { aller("cartes"); }) : null
+      )
+    ];
+  }
+
+  function vueCartes() {
+    var couches = [
+      ["cites-ve", "Cités grecques"],
+      ["routes-empire", "Routes romaines"],
+      ["partage-476", "476"]
+    ];
+    var vus = couches.filter(function (c) { return etat.couchesVues[c[0]]; }).length;
+    var poses = EVENEMENTS.filter(function (e) { return etat.frise[e.id] === e.id; }).length;
+    return [
+      entete("Salle 3", "Deux cartes, une frise"),
+      el("div", { class: "carte" },
+        el("p", { class: "intro" }, "Schéma, pas une carte précise : aucune frontière d'aujourd'hui. Ouvre les trois couches, puis range les repères."),
+        el("div", { class: "rangee" }, couches.map(function (c) {
+          return el("button", {
+            id: "couche-" + c[0],
+            class: "couche",
+            type: "button",
+            "aria-pressed": etat.couche === c[0] ? "true" : "false",
+            onclick: function () { ouvrirCouche(c[0]); }
+          }, c[1]);
+        })),
+        carteDessin(),
+        el("p", { class: "legende" }, etat.couche === "partage-476"
+          ? "L'Orient reste dessiné. 476 n'efface pas l'Empire romain d'Orient."
+          : "Les formes ne sont pas à l'échelle."),
+        el("div", { class: "frise" }, EVENEMENTS.map(function (e) {
+          var pose = etat.frise[e.id];
+          var nom = pose ? EVENEMENTS.filter(function (x) { return x.id === pose; })[0].nom : "Vide";
+          return el("button", {
+            id: "slot-" + e.id,
+            class: "tuile slot" + (pose ? " choisie" : ""),
+            type: "button",
+            onclick: function () { clicFrise(e.id); }
+          }, e.tick, el("small", {}, nom));
+        })),
+        el("p", { class: "aide" }, "Le changement d'ère n'est pas une année 0. −509 est juste avant le Ve siècle."),
+        el("div", { class: "bac" }, EVENEMENTS.filter(function (e) {
+          return Object.keys(etat.frise).every(function (s) { return etat.frise[s] !== e.id; });
+        }).map(function (e) {
+          return el("button", {
+            id: "repere-" + e.id,
+            class: "tuile" + (etat.selection === e.id ? " choisie" : ""),
+            type: "button",
+            "aria-pressed": etat.selection === e.id ? "true" : "false",
+            onclick: function () { choisirRepere(e.id); }
+          }, e.nom);
+        })),
+        boutonSecond("indice-cartes", "Indice", indice),
+        boutonSecond("retour-rome", "Retour à Rome", function () { aller("rome"); }),
+        cartesOk()
+          ? boutonPrincipal("finir", "Ouvrir le musée", function () { aller("bilan"); })
+          : el("p", { class: "progression" }, "Repères " + poses + "/5 · Cartes " + vus + "/3")
+      )
+    ];
+  }
+
+  function vueBilan() {
+    var n = etat.etoiles || etoilesDe(etat.erreurs, etat.indices);
+    var phrase = n === 3
+      ? "Musée complet, sans détour."
+      : n === 2
+        ? "Le musée est ouvert. Tu peux recommencer pour viser 3."
+        : "Tout est en place. Les indices et les écarts comptent : tu peux recommencer.";
+    var legendes = {
+      theatre: "Spectacles de la cité",
+      agora: "Marché et débats",
+      acropole: "Sanctuaire, sur la hauteur",
+      port: "Échanges",
+      caillou: "Seuls les citoyens votent",
+      aqueduc: "L'eau arrive à la ville",
+      route: "Échanges et contrôle",
+      monnaie: "Le portrait du pouvoir",
+      frise: "Ve s., Auguste, puis 476"
+    };
+    var noms = {
+      theatre: "Théâtre", agora: "Agora", acropole: "Acropole", port: "Port",
+      caillou: "Caillou", aqueduc: "Aqueduc", route: "Voie", monnaie: "Monnaie", frise: "Frise"
+    };
+    return [
+      entete("Le mur du musée", "Agora"),
+      el("div", { class: "carte" },
+        marqueEtoiles(n),
+        el("p", { class: "intro" }, phrase),
+        el("p", { class: "progression" }, "Écarts " + etat.erreurs + " · indices " + etat.indices + ". Record sur cet appareil : " + (etat.record || n) + " sur 3."),
+        el("div", { class: "mur" }, PIECES.map(function (id) {
+          return el("div", { class: "objet" }, el("b", {}, noms[id]), el("span", {}, legendes[id]));
+        })),
+        el("p", { class: "note" }, "Athènes au Ve siècle av. J.-C., Auguste en 27 av. J.-C., puis 476. Un repère situe. Il ne raconte pas tout."),
+        boutonPrincipal("rejouer", "Recommencer la mission", rejouer),
+        boutonSecond("libre-fin", "Continuer en mode libre", function () { etat.modeLibre = true; aller("cite"); })
+      )
+    ];
+  }
+
+  function render() {
+    var vue = document.getElementById("vue");
+    var vues = { accueil: vueAccueil, cite: vueCite, assemblee: vueAssemblee, rome: vueRome, cartes: vueCartes, bilan: vueBilan };
+    var nodes = ECHECS.length
+      ? [el("p", { class: "alerte" }, "Moteur en échec : " + ECHECS.join(", "))]
+      : [];
+    (vues[etat.salle] || vueAccueil)().forEach(function (n) { if (n) nodes.push(n); });
+    vue.replaceChildren.apply(vue, nodes);
+  }
+
+  window.__agora = {
+    tests: testsMoteur,
+    aqueducValide: aqueducValide,
+    monnaieOk: monnaieOk,
+    etoilesDe: etoilesDe,
+    etat: etat
+  };
+
+  annoncer("Agora. Trois salles pour la Grèce et Rome.");
+  render();
+})();
+</script>
+</body>
+</html>
