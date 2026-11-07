@@ -97,7 +97,7 @@ test("gabarit : erreurs de contenu explicites", () => {
   casse((c) => { c.niveaux[0].paragraphes = ["fetch('https://exemple.test')"]; }, /contenu interdit/);
 });
 
-test("gabarit : erreurs fréquentes (notation déterministe, issue #182) validées au build", () => {
+test("gabarit : erreurs fréquentes (notation déterministe, issue #183) validées au build", () => {
   const base = () => ({
     niveaux: [{ titre: "A", niveau: "6e", paragraphes: ["x"] }, { titre: "B", niveau: "5e", paragraphes: ["y"] }],
     application: { exercices: Array.from({ length: 3 }, () => ({ type: "qcm", question: "q", choix: ["a", "b", "c"], bonne: 0, explication: "e" })) },

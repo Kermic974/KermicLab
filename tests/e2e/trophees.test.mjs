@@ -118,7 +118,7 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     const brut = await page.evaluate(() => sessionStorage.getItem("kermiclab:evenements"));
     assert.doesNotMatch(brut, /"12"|"15"|côté/, "aucune réponse saisie ni texte de la page n'est conservé");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:evenements")), null, "session seulement sans mémorisation");
-    // « Mes trophées » (issue #183) : l'activité de la notion apparaît dans sa carte, distincte des étoiles.
+    // « Mes trophées » (issue #182) : l'activité de la notion apparaît dans sa carte, distincte des étoiles.
     await page.click("#fermer-bulle");
     await page.click(".barre-laterale [data-nav=progression]");
     const activite = page.locator('#trophees-notions [data-trophee-module=pythagore] [data-activite=pythagore]');

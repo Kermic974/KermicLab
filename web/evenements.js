@@ -68,7 +68,7 @@ export function enregistrer(etat, ev, jour) {
 }
 
 /**
- * Résumé affichable d'une notion (« Mes trophées », issue #183) : des faits, pas une maîtrise. Les exercices tentés sont
+ * Résumé affichable d'une notion (« Mes trophées », issue #182) : des faits, pas une maîtrise. Les exercices tentés sont
  * ceux qui ont reçu au moins une réponse ; les réussis après indice sont comptés à part. Renvoie null sans activité.
  */
 export function resumerNotion(n) {

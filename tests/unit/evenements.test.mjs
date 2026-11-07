@@ -69,7 +69,7 @@ test("événements : relecture du stockage robuste, entrées invalides ignorées
   assert.deepEqual(charger(null), etatInitial(), "stockage indisponible");
 });
 
-test("événements : résumé affichable d'une notion pour « Mes trophées » (issue #183)", async () => {
+test("événements : résumé affichable d'une notion pour « Mes trophées » (issue #182)", async () => {
   const { resumerNotion } = await import("../../web/evenements.js");
   assert.equal(resumerNotion(undefined), null);
   const etat = [
