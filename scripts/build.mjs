@@ -1,7 +1,7 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
-import { access, cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
@@ -97,11 +97,12 @@ async function ecrireContenus(sortie, dossiers, index) {
     let noms;
     try { noms = (await readdir(dossier)).sort(); } catch { continue; }
     for (const nom of noms) {
-      const fichier = `${dossier}/${nom}/contenu.json`;
-      try { await access(fichier); } catch { continue; }
       const fiche = index.maquettes.find((m) => m.id === nom);
       if (!fiche) continue;
-      await writeFile(`${sortie}/${nom}.json`, `${JSON.stringify(JSON.parse(await readFile(fichier, "utf8")))}\n`);
+      // Lecture directe (sans vérification préalable de l'existence) : un dossier sans contenu.json est ignoré.
+      let source;
+      try { source = await readFile(`${dossier}/${nom}/contenu.json`, "utf8"); } catch (e) { if (e.code === "ENOENT" || e.code === "ENOTDIR") continue; throw e; }
+      await writeFile(`${sortie}/${nom}.json`, `${JSON.stringify(JSON.parse(source))}\n`);
       notions.push({ id: nom, titre: fiche.titre, version: fiche.version });
     }
   }

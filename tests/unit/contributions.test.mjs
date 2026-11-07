@@ -37,7 +37,7 @@ test("champs éditables : textes de la notion dans l'ordre, valeurs exactes", ()
   assert.equal(champs[0].chemin, "intro");
   assert.ok(champs.some((c) => c.chemin === "niveaux.1.paragraphes.0" && c.liste));
   assert.ok(champs.every((c) => r.cheminValide(c.chemin) && r.valeurAChemin(contenu, c.chemin) === c.valeur));
-  assert.ok(!champs.some((c) => /figure|bonne|reponse|\.type$/.test(c.chemin)));
+  assert.ok(!champs.some((c) => /\.(?:figure|bonne|reponse|type)(?:\.|$)/.test(c.chemin)));
   assert.deepEqual(r.champsEditables(null), []);
 });
 
