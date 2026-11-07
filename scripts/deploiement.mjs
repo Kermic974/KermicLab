@@ -1,10 +1,11 @@
 // Sûreté du déploiement (feuille de route, phase 0 ; issue #178), appelée par le job « Déploiement Cloudflare » :
-//   node scripts/deploiement.mjs instantane <fichier>   avant le déploiement : versions en production du Worker et de Pages
-//   node scripts/deploiement.mjs fumee                  après : test de fumée de l'API et du site (sans écrire de KPI)
-//   node scripts/deploiement.mjs retour <fichier>       si le test échoue : rétablit les versions de l'instantané
+//   node scripts/deploiement.mjs instantane   avant le déploiement : versions en production du Worker et de Pages,
+//                                             publiées en sortie d'étape GitHub (`instantane`), jamais dans un fichier
+//   node scripts/deploiement.mjs fumee        après : test de fumée de l'API et du site (sans écrire de KPI)
+//   node scripts/deploiement.mjs retour       si le test échoue : rétablit l'instantané reçu dans la variable INSTANTANE
 // Les migrations D1 ne sont jamais annulées : elles doivent rester compatibles avec la version précédente du Worker
 // (ajouts seulement, voir worker/migrations/README.md), ce qui rend le retour arrière du Worker sûr.
-import { readFile, writeFile } from "node:fs/promises";
+import { appendFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
 const API_CLOUDFLARE = "https://api.cloudflare.com/client/v4";
@@ -26,14 +27,22 @@ export function clientCloudflare({ jeton, compte, fetch: f = fetch }) {
   };
 }
 
-/** Versions actuellement servies : déploiement courant du Worker (le plus récent) et déploiement Pages de production. */
+/**
+ * Versions actuellement servies : déploiement courant du Worker (le plus récent) et dernier déploiement Pages de
+ * production **réussi**. Un déploiement en échec, annulé ou ignoré ne peut pas servir de cible de retour arrière
+ * (Cloudflare : « You cannot rollback to a failed deployment »).
+ */
 export async function prendreInstantane(cf, { worker, projet }) {
   const { deployments = [] } = await cf("GET", `/workers/scripts/${worker}/deployments`);
   const courant = [...deployments].sort((a, b) => String(b.created_on).localeCompare(String(a.created_on)))[0];
-  const pages = await cf("GET", `/pages/projects/${projet}/deployments?env=production&per_page=1`);
+  const pages = await cf("GET", `/pages/projects/${projet}/deployments?env=production&per_page=25`);
+  const servi = [...(pages ?? [])]
+    .filter((d) => d.environment === "production" && !d.is_skipped &&
+      d.latest_stage?.name === "deploy" && d.latest_stage?.status === "success")
+    .sort((a, b) => String(b.created_on).localeCompare(String(a.created_on)))[0];
   return {
     worker: courant ? { nom: worker, versions: courant.versions.map(({ version_id, percentage }) => ({ version_id, percentage })) } : null,
-    pages: pages?.[0] ? { projet, deploiement: pages[0].id } : null
+    pages: servi ? { projet, deploiement: servi.id } : null
   };
 }
 
@@ -88,7 +97,7 @@ export async function testerFumee({ api, site, fetch: f = fetch }) {
   const echecs = [];
   const verifier = async (nom, url, controle) => {
     try {
-      const reponse = await f(url, { headers: { "cache-control": "no-cache" } });
+      const reponse = await f(url, { headers: { "cache-control": "no-cache", "user-agent": "kermiclab-test-de-fumee (CI)" } });
       if (!reponse.ok) { echecs.push(`${nom} : HTTP ${reponse.status}`); return; }
       const erreur = await controle(reponse);
       if (erreur) echecs.push(`${nom} : ${erreur}`);
@@ -124,7 +133,7 @@ export async function fumeeAvecReprises(options, { essais = 5, attente = 15000, 
 }
 
 async function main() {
-  const [commande, fichier] = process.argv.slice(2);
+  const [commande] = process.argv.slice(2);
   const sansFin = (u) => String(u ?? "").replace(/\/$/, "");
   if (commande === "fumee") {
     const api = sansFin(process.env.KERMICLAB_API_URL), site = sansFin(process.env.KERMICLAB_SITE_URL);
@@ -138,16 +147,17 @@ async function main() {
     return;
   }
   const cf = clientCloudflare({ jeton: process.env.CLOUDFLARE_API_TOKEN, compte: process.env.CLOUDFLARE_ACCOUNT_ID });
-  if (!fichier) throw new Error("fichier d'instantané requis");
   if (commande === "instantane") {
     const instantane = await prendreInstantane(cf, {
       worker: process.env.KERMICLAB_WORKER ?? "kermiclab-api", projet: process.env.CLOUDFLARE_PAGES_PROJECT || "kermiclab"
     });
-    await writeFile(fichier, `${JSON.stringify(instantane, null, 2)}\n`);
+    // Sortie d'étape sur une ligne (JSON compact) : transmise à l'étape de retour arrière par le workflow.
+    if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `instantane=${JSON.stringify(instantane)}\n`);
     console.log(`Instantané : ${JSON.stringify(instantane)}`);
   } else if (commande === "retour") {
     const attendus = { worker: process.env.KERMICLAB_WORKER ?? "kermiclab-api", projet: process.env.CLOUDFLARE_PAGES_PROJECT || "kermiclab" };
-    const faits = await retablir(cf, validerInstantane(JSON.parse(await readFile(fichier, "utf8")), attendus));
+    if (!process.env.INSTANTANE) throw new Error("variable INSTANTANE absente : rien à rétablir");
+    const faits = await retablir(cf, validerInstantane(JSON.parse(process.env.INSTANTANE), attendus));
     console.log(faits.length ? `Retour arrière effectué : ${faits.join(" ; ")}` : "::warning::Instantané vide : rien à rétablir.");
   } else {
     throw new Error(`commande inconnue : ${commande}`);
