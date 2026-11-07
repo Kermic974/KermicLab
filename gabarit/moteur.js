@@ -137,8 +137,10 @@
           surReussite?.();
         } else {
           b.classList.add("faux"); b.disabled = true;
+          // Erreur fréquente décrite pour ce choix : explication ciblée ; sinon l'indice général.
+          const ciblee = ex.erreurs?.find((e) => e.choix === i)?.message;
           if (ex.indice && essais === 1) signaler("indice", { exercice: id, rang: 1 });
-          afficherRetour(zone, false, ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
+          afficherRetour(zone, false, ciblee ?? ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
         }
       });
       choix.append(b);
@@ -176,8 +178,12 @@
       if (juste) { terminer(true); return; }
       essais += 1;
       const indices = ex.indices ?? [];
+      // Notation déterministe : une réponse fausse qui correspond à une erreur fréquente reçoit son explication ciblée,
+      // suivie de l'indice suivant (contenu.json, « erreurs » : réponse, tolérance, message).
+      const frequente = (ex.erreurs ?? []).find((e) => Math.abs(lu.valeur - e.reponse) <= (e.tolerance ?? 1e-9));
       if (essais <= indices.length) signaler("indice", { exercice: id, rang: essais });
-      afficherRetour(zone, false, essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.");
+      const suite = essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.";
+      afficherRetour(zone, false, frequente ? `${frequente.message} ${suite}` : suite);
       if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
     }
     valider.addEventListener("click", soumettre);

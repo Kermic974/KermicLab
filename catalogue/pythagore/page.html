@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-d59RO+52QYXZuodYorFXoqvGeSgzNXqShFazwwK2AP4='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-wQ8NClznSXGK/xWFump0DeCI+Cl19+luicwlDGXsvSk='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Le théorème de Pythagore – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "pythagore",
   "titre": "Le théorème de Pythagore",
   "sujet": "mathematiques/theoreme-de-pythagore",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -143,7 +143,17 @@
           "un des côtés de l'angle droit"
         ],
         "bonne": 0,
-        "explication": "L'hypoténuse fait face à l'angle droit, et c'est toujours le plus long côté."
+        "explication": "L'hypoténuse fait face à l'angle droit, et c'est toujours le plus long côté.",
+        "erreurs": [
+          {
+            "choix": 1,
+            "message": "Non : l'hypoténuse est au contraire le plus long des trois côtés."
+          },
+          {
+            "choix": 2,
+            "message": "Les deux côtés de l'angle droit forment l'angle droit ; l'hypoténuse est le troisième côté, celui qui lui fait face."
+          }
+        ]
       },
       {
         "type": "nombre",
@@ -155,7 +165,17 @@
           "Calcule 9² + 12².",
           "9² + 12² = 81 + 144 = 225. Quel nombre multiplié par lui-même donne 225 ?"
         ],
-        "solution": "9² + 12² = 81 + 144 = 225, et √225 = 15 cm."
+        "solution": "9² + 12² = 81 + 144 = 225, et √225 = 15 cm.",
+        "erreurs": [
+          {
+            "reponse": 21,
+            "message": "Tu as additionné 9 + 12. Le théorème additionne les carrés : 9² + 12²."
+          },
+          {
+            "reponse": 225,
+            "message": "225, c'est 9² + 12² : c'est le carré de l'hypoténuse. Il reste à prendre la racine carrée."
+          }
+        ]
       },
       {
         "type": "nombre",
@@ -167,7 +187,22 @@
           "Cette fois, on soustrait : 10² − 6².",
           "10² − 6² = 100 − 36 = 64."
         ],
-        "solution": "10² − 6² = 100 − 36 = 64, et √64 = 8 cm."
+        "solution": "10² − 6² = 100 − 36 = 64, et √64 = 8 cm.",
+        "erreurs": [
+          {
+            "reponse": 4,
+            "message": "Tu as calculé 10 − 6. Il faut soustraire les carrés : 10² − 6²."
+          },
+          {
+            "reponse": 64,
+            "message": "64, c'est le carré du côté cherché. Il reste à prendre la racine carrée : √64."
+          },
+          {
+            "reponse": 11.66,
+            "tolerance": 0.05,
+            "message": "Tu as additionné 10² + 6². Ici, on connaît l'hypoténuse : on soustrait le carré du côté connu."
+          }
+        ]
       },
       {
         "type": "nombre",
@@ -180,7 +215,22 @@
           "5² + 7² = 25 + 49 = 74.",
           "Utilise la touche √ de la calculatrice : √74 ≈ 8,602…"
         ],
-        "solution": "5² + 7² = 74, et √74 ≈ 8,6 cm (au dixième)."
+        "solution": "5² + 7² = 74, et √74 ≈ 8,6 cm (au dixième).",
+        "erreurs": [
+          {
+            "reponse": 12,
+            "message": "Tu as additionné 5 + 7. Additionne plutôt les carrés : 5² + 7²."
+          },
+          {
+            "reponse": 74,
+            "message": "74, c'est le carré de l'hypoténuse. Prends sa racine carrée avec la calculatrice."
+          },
+          {
+            "reponse": 8.7,
+            "tolerance": 0.01,
+            "message": "Attention à l'arrondi : √74 ≈ 8,602, donc 8,6 au dixième."
+          }
+        ]
       },
       {
         "type": "qcm",
@@ -522,7 +572,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Le théorème de Pythagore</h1>
-    <div class="meta">pythagore · v1.0.0</div>
+    <div class="meta">pythagore · v1.1.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
@@ -672,8 +722,10 @@ const Evenements = (() => {
           surReussite?.();
         } else {
           b.classList.add("faux"); b.disabled = true;
+          // Erreur fréquente décrite pour ce choix : explication ciblée ; sinon l'indice général.
+          const ciblee = ex.erreurs?.find((e) => e.choix === i)?.message;
           if (ex.indice && essais === 1) signaler("indice", { exercice: id, rang: 1 });
-          afficherRetour(zone, false, ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
+          afficherRetour(zone, false, ciblee ?? ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
         }
       });
       choix.append(b);
@@ -711,8 +763,12 @@ const Evenements = (() => {
       if (juste) { terminer(true); return; }
       essais += 1;
       const indices = ex.indices ?? [];
+      // Notation déterministe : une réponse fausse qui correspond à une erreur fréquente reçoit son explication ciblée,
+      // suivie de l'indice suivant (contenu.json, « erreurs » : réponse, tolérance, message).
+      const frequente = (ex.erreurs ?? []).find((e) => Math.abs(lu.valeur - e.reponse) <= (e.tolerance ?? 1e-9));
       if (essais <= indices.length) signaler("indice", { exercice: id, rang: essais });
-      afficherRetour(zone, false, essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.");
+      const suite = essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.";
+      afficherRetour(zone, false, frequente ? `${frequente.message} ${suite}` : suite);
       if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
     }
     valider.addEventListener("click", soumettre);
