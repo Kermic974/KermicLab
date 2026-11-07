@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 import { injecterOriginesParent } from "../../worker/src/origines-pages.js";
 
 let serveur, nav, api;
@@ -128,6 +128,8 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     assert.match(texte, /Réussis après un indice\s*1/);
     assert.match(texte, /Ouvertures\s*1/);
     assert.doesNotMatch(texte, /Tous les exercices réussis/, "notion non terminée");
+    await activite.scrollIntoViewIfNeeded();
+    await capturer(page, "trophees-activite-notion");
     assert.equal(await page.locator("#progres").evaluate((d) => d.scrollWidth <= d.clientWidth), true);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
