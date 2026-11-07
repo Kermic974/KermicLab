@@ -592,6 +592,9 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 #progres { max-width: 960px; }
 .trophee-module { border: 1px solid var(--bord); border-radius: 16px; padding: 16px; margin: 0; background: var(--surface); box-shadow: 0 4px 16px color-mix(in srgb, var(--texte) 6%, transparent); overflow-wrap: anywhere; }
 .trophee-module h4 { margin: 0 0 10px; }
+.trophee-activite { margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed var(--bord); }
+.trophee-activite > p { margin: 0 0 6px; }
+.trophee-activite .badge.obtenu { display: inline-block; margin: 8px 0 0; }
 .trophee-module progress { width: 100%; }
 .trophee-module summary { cursor: pointer; margin: 12px 0; font-weight: 650; }
 .trophee-module > button { margin-top: 12px; }

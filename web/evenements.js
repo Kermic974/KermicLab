@@ -67,6 +67,22 @@ export function enregistrer(etat, ev, jour) {
   return suivant;
 }
 
+/**
+ * Résumé affichable d'une notion (« Mes trophées », issue #183) : des faits, pas une maîtrise. Les exercices tentés sont
+ * ceux qui ont reçu au moins une réponse ; les réussis après indice sont comptés à part. Renvoie null sans activité.
+ */
+export function resumerNotion(n) {
+  if (!n) return null;
+  const exercices = Object.values(n.exercices ?? {});
+  const tentes = exercices.filter((e) => e.reponses > 0);
+  return {
+    ouvertures: n.ouvertures, tentes: tentes.length,
+    reussis: tentes.filter((e) => e.reussi).length,
+    apresIndice: tentes.filter((e) => e.reussi && e.apresIndice).length,
+    termine: n.termine
+  };
+}
+
 /** Relit l'agrégat stocké en ne gardant que des entrées valides ; tout le reste est ignoré. */
 export function charger(stockage) {
   try {
