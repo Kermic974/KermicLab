@@ -23,7 +23,7 @@ Principes non négociables :
 
 | Chemin | Rôle |
 |---|---|
-| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/api/contributions` (ADR 0023), `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
+| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/api/contributions` (ADR 0023), `/api/compte-local` (compte local et synchronisation pseudonymisée, ADR 0024), `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
 | `web/` | Interface de chat (Cloudflare Pages). Textes uniquement dans `web/i18n/<langue>.json` |
 | `catalogue/` | Maquettes publiques : `trigo-cercle` (écrite à la main) et les notions pilotes du gabarit (`pythagore`, `fractions`, `proportionnalite`). Les jeux (`demineur`, `echecs`, `belote`, matière `jeux`) sont écrits à la main avec un moteur testable (ADR 0013, guide `docs/jeux.md`). Les vraies maquettes vivent dans le dépôt privé `maquettes-catalogue`, récupéré par la CI dans `catalogue-prive/` |

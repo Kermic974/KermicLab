@@ -1,5 +1,5 @@
 # Worker Kermiclab. Le binding AI est fourni par Cloudflare ; les secrets
-# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN) se définissent avec `wrangler secret put`
+# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN, COMPTES_LOCAUX_SECRET) se définissent avec `wrangler secret put`
 # ou via la CI — jamais ici.
 name = "kermiclab-api"
 main = "src/index.js"
