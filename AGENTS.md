@@ -77,7 +77,7 @@ npx wrangler pages dev dist     # chat en local
 
 1. Partir d'une issue `maquette-manquante`.
 2. Créer une branche `maquette/<id>`.
-3. Dans le dépôt privé `maquettes-catalogue` (ou `catalogue/` pour un exemple public) : dossier `<id>/` avec `fiche.md` (front matter : `id`, `titre`, `sujet`, `version`, `date`, `langues`, `onglets`, `mots-cles`, `questions` ; référentiel facultatif : `niveaux`, `prerequis`, `competences`, `duree`, voir `docs/gabarit.md`) et soit **`contenu.json`** (gabarit commun, recommandé : `page.html` est généré par `npm run build`, voir `docs/gabarit.md`), soit `page.html` écrit à la main (+ `page.<langue>.html` pour les traductions).
+3. Dans le dépôt privé `maquettes-catalogue` (ou `catalogue/` pour un exemple public) : dossier `<id>/` avec `fiche.md` (front matter : `id`, `titre`, `sujet`, `version`, `date`, `langues`, `onglets`, `mots-cles`, `questions` ; référentiel facultatif : `niveaux`, `prerequis`, `competences`, `duree`, voir `docs/gabarit.md` ; relecture humaine : `relue`, `relue-version`, `relue-grille`, que seul un humain renseigne) et soit **`contenu.json`** (gabarit commun, recommandé : `page.html` est généré par `npm run build`, voir `docs/gabarit.md`), soit `page.html` écrit à la main (+ `page.<langue>.html` pour les traductions).
 4. `npm run ci` : les questions d'exemple doivent être routées vers l'ID (non-régression), la page doit passer `check:pages`.
 5. Pull request → revue IA de sécurité → **validation humaine du CODEOWNER** → fusion → déploiement automatique.
 

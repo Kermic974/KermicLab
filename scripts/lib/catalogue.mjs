@@ -63,6 +63,48 @@ export function lireReferentiel(fiche) {
   return ref;
 }
 
+/**
+ * Relecture pédagogique (feuille de route, phase 0 ; issue #176) : trace d'une relecture humaine selon la grille publiée
+ * dans docs/chantiers/validation-maquettes.md. Les trois champs vont ensemble ; aucun nom de relecteur n'est stocké.
+ */
+export const GRILLES_RELECTURE = ["v1"];
+const SEMVER = /^(\d+)\.(\d+)\.(\d+)$/;
+const comparerVersions = (a, b) => {
+  const [x, y] = [a, b].map((v) => v.match(SEMVER).slice(1).map(Number));
+  return x[0] - y[0] || x[1] - y[1] || x[2] - y[2];
+};
+
+/** Valide `relue` (date ISO), `relue-version` (version relue, au plus celle de la fiche) et `relue-grille`. */
+export function lireRelecture(fiche, { aujourdhui = new Date().toISOString().slice(0, 10) } = {}) {
+  const champs = ["relue", "relue-version", "relue-grille"];
+  const presents = champs.filter((c) => fiche[c] !== undefined);
+  if (!presents.length) return {};
+  if (presents.length !== champs.length) throw new Error(`relecture : ${champs.join(", ")} vont ensemble`);
+  const date = String(fiche.relue);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(`${date}T00:00:00Z`)) ||
+      new Date(`${date}T00:00:00Z`).toISOString().slice(0, 10) !== date) throw new Error("relue : date AAAA-MM-JJ attendue");
+  if (date > aujourdhui) throw new Error("relue : date dans le futur");
+  const version = String(fiche["relue-version"]);
+  if (!SEMVER.test(version)) throw new Error("relue-version : version X.Y.Z attendue");
+  if (SEMVER.test(String(fiche.version)) && comparerVersions(version, String(fiche.version)) > 0) {
+    throw new Error("relue-version : supérieure à la version de la fiche");
+  }
+  const grille = String(fiche["relue-grille"]);
+  if (!GRILLES_RELECTURE.includes(grille)) throw new Error(`relue-grille : « ${grille} » inconnue (attendu : ${GRILLES_RELECTURE.join(", ")})`);
+  return { relecture: { date, version, grille } };
+}
+
+/**
+ * Indicateur de la feuille de route : notions relues dans leur version actuelle ; « à revoir » si la notion a changé de
+ * version depuis sa relecture. Les jeux ne sont pas des notions.
+ */
+export function indicateurRelecture(maquettes) {
+  const notions = maquettes.filter((m) => !String(m.sujet ?? "").startsWith("jeux/"));
+  const tracees = notions.filter((m) => m.relecture);
+  const relues = tracees.filter((m) => m.relecture.version === m.version).length;
+  return { notions: notions.length, relues, aRevoir: tracees.length - relues };
+}
+
 /** Indicateur de la feuille de route : notions dont les prérequis sont renseignés (une liste vide compte). */
 export function indicateurReferentiel(maquettes) {
   const notions = maquettes.filter((m) => !String(m.sujet ?? "").startsWith("jeux/"));
@@ -151,7 +193,7 @@ export async function chargerCatalogue(dossiers) {
       }
       if (fiche.niveau && !NIVEAUX.includes(fiche.niveau)) throw new Error(`${rep}: niveau « ${fiche.niveau} » inconnu (attendu : ${NIVEAUX.join(", ")})`);
       let referentiel;
-      try { referentiel = lireReferentiel(fiche); } catch (e) { throw new Error(`${rep}: ${e.message}`); }
+      try { referentiel = { ...lireReferentiel(fiche), ...lireRelecture(fiche) }; } catch (e) { throw new Error(`${rep}: ${e.message}`); }
       if (pages[fiche.id]) throw new Error(`id en double : ${fiche.id}`);
       const langues = liste(fiche.langues);
       if (!langues.includes("fr")) throw new Error(`${rep}: la version française est obligatoire`);

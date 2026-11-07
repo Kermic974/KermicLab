@@ -2,7 +2,7 @@
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
-import { appliquerCsp, chargerCatalogue, indicateurReferentiel } from "./lib/catalogue.mjs";
+import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelecture } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
 
@@ -59,6 +59,8 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 const referentiel = indicateurReferentiel(catalogue.index.maquettes);
 console.log(`Référentiel : prérequis renseignés pour ${referentiel.avecPrerequis} notion(s) sur ${referentiel.notions}.`);
+const relecture = indicateurRelecture(catalogue.index.maquettes);
+console.log(`Relecture : ${relecture.relues} notion(s) relue(s) sur ${relecture.notions}, ${relecture.aRevoir} à revoir (version modifiée depuis la relecture).`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
 
 /**
