@@ -36,6 +36,7 @@
   <symbol id="i-cercle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12 17.5 6.5"/><circle cx="17.5" cy="6.5" r="1.6"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
   <symbol id="i-livre" viewBox="0 0 24 24"><path d="M12 5v15M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Z"/></symbol>
+  <symbol id="i-crayon" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></symbol>
 </svg>
 
 <a class="evitement" href="#contenu" data-i18n="allerAuContenu"></a>
@@ -57,6 +58,8 @@
       <button type="button" class="nav-bouton" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <button type="button" class="nav-bouton" data-nav="profil"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navProfil"></span></button>
+      <!-- Contributions (ADR 0023) : visible seulement pour un rôle contributeur, prof ou admin. -->
+      <button type="button" class="nav-bouton" data-nav="contributions" id="nav-contributions" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span class="nav-texte" data-i18n="navContributions"></span></button>
     </nav>
     <div class="barre-pied">
       <div class="nav-idees" data-boite-idees-hote></div>
@@ -334,6 +337,7 @@
   <button type="button" class="nav-mobile-bouton" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
 </nav>
 
 <div id="toasts" role="status" aria-live="polite"></div>
@@ -484,7 +488,6 @@
 <section id="contributions" class="carte ecran-personnel" data-ecrans="contributions" aria-labelledby="contrib-titre" hidden>
   <div class="dialogue-entete">
     <h2 id="contrib-titre" data-i18n="contribTitre"></h2>
-    <button type="button" class="secondaire" data-nav="profil" data-i18n="retourProfil"></button>
   </div>
   <p id="contrib-etat" class="doux" role="status"></p>
   <div id="contrib-invite" hidden>
@@ -511,7 +514,15 @@
       <h3 id="contrib-tableau-titre" data-i18n="contribTableauTitre"></h3>
       <p class="doux petit" data-i18n="contribTableauAide"></p>
       <ul id="contrib-compteurs" class="contrib-compteurs"></ul>
+      <details id="contrib-par-matiere" class="famille-ajout contrib-matieres" open>
+        <summary data-i18n="contribParMatiere"></summary>
+        <p class="doux petit" data-i18n="contribParMatiereAide"></p>
+        <ul id="contrib-matieres" class="contrib-matieres-liste"></ul>
+        <p id="contrib-matieres-vide" class="doux" data-i18n="contribRelectureVide" hidden></p>
+      </details>
       <div class="contrib-filtres">
+        <label><span class="etiquette-champ" data-i18n="contribFiltreMatiere"></span>
+          <select id="contrib-filtre-matiere"></select></label>
         <label><span class="etiquette-champ" data-i18n="contribFiltreStatut"></span>
           <select id="contrib-filtre-statut"></select></label>
         <label><span class="etiquette-champ" data-i18n="contribFiltreNotion"></span>
@@ -610,11 +621,53 @@
       <h2 id="bulle-titre"></h2>
     </div>
     <div class="bulle-actions">
+      <button type="button" class="secondaire petit-bouton" id="bulle-editer" aria-controls="bulle-edition" aria-pressed="false" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span data-i18n="editionBouton"></span></button>
       <a class="bouton-lien" id="bulle-plein-ecran" target="_blank" rel="noopener" data-i18n-title="ouvrirPage"><span data-i18n="pleinEcran"></span></a>
       <button type="button" class="fermer-croix" id="fermer-bulle"><span class="visuellement-cache" data-i18n="fermer"></span></button>
     </div>
   </div>
-  <iframe id="bulle-cadre" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" title=""></iframe>
+  <div class="bulle-corps">
+    <iframe id="bulle-cadre" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" title=""></iframe>
+    <!-- Édition ciblée (ADR 0023) : rôle contributeur ou prof ; champs de la notion regroupés par onglet. -->
+    <aside id="bulle-edition" class="bulle-edition" aria-labelledby="edition-titre" hidden>
+      <div class="edition-entete">
+        <h3 id="edition-titre" data-i18n="editionTitre"></h3>
+        <p class="doux petit" id="edition-resume" aria-live="polite"></p>
+      </div>
+      <p class="doux petit" data-i18n="editionAide"></p>
+      <div id="edition-sections"></div>
+      <form id="edition-formulaire" class="formulaire-profil edition-formulaire" novalidate hidden>
+        <p class="etiquette-champ" id="edition-cible"></p>
+        <blockquote id="edition-actuel" class="contrib-citation"></blockquote>
+        <fieldset class="tranches">
+          <legend class="etiquette-champ" data-i18n="contribNatureLabel"></legend>
+          <label><input type="radio" name="edition-nature" value="modification" checked> <span data-i18n="contribNature_modification"></span></label>
+          <label><input type="radio" name="edition-nature" value="ajout" id="edition-nature-ajout"> <span data-i18n="contribNature_ajout"></span></label>
+        </fieldset>
+        <label for="edition-type" class="etiquette-champ" data-i18n="contribTypeLabel"></label>
+        <select id="edition-type"></select>
+        <label for="edition-texte" class="etiquette-champ" data-i18n="contribTexteLabel"></label>
+        <textarea id="edition-texte" rows="6" maxlength="2000" aria-describedby="edition-texte-erreur"></textarea>
+        <p id="edition-texte-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <p class="etiquette-champ" data-i18n="editionApercu"></p>
+        <p id="edition-apercu" class="contrib-diff"></p>
+        <label for="edition-motif" class="etiquette-champ" data-i18n="contribMotifLabel"></label>
+        <textarea id="edition-motif" rows="2" maxlength="500" aria-describedby="edition-motif-erreur"></textarea>
+        <p id="edition-motif-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <label class="case-memoire">
+          <input type="checkbox" id="edition-charte" aria-describedby="edition-charte-erreur">
+          <span><strong data-i18n="contribCharteTitre"></strong><span class="doux petit" data-i18n="contribCharteTexte"></span></span>
+        </label>
+        <p id="edition-charte-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <p id="edition-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <div class="actions">
+          <button type="submit" class="bouton" data-i18n="contribEnvoyer"></button>
+          <button type="button" class="secondaire" id="edition-annuler" data-i18n="contribAnnulerEdition"></button>
+        </div>
+      </form>
+      <button type="button" class="secondaire" id="edition-vers-contributions" data-i18n="editionVoirToutes"></button>
+    </aside>
+  </div>
   <div class="bulle-pied">
     <span class="doux petit" data-i18n="bulleAide"></span>
     <button type="button" class="bouton doux-bouton" id="bulle-question"><span data-i18n="bulleQuestion"></span></button>

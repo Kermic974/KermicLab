@@ -190,3 +190,91 @@ test("option temporaire « Tester les rôles » : prof puis contributeur simulé
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("menu Contributions et édition ciblée : le prof propose depuis la notion ouverte, puis retrouve la proposition par matière", async () => {
+  const { page, contexte, erreurs, appels } = await demarrer({ url: "/?demo=contributions#accueil" });
+  // Sans rôle : ni menu Contributions ni édition dans la bulle.
+  assert.equal(await page.locator("#nav-contributions").isHidden(), true);
+  await page.goto(`${serveur.url}/?demo=contributions#contributions`);
+  await page.click("#contrib-demo-prof");
+  await page.locator("#contrib-tableau").waitFor({ state: "visible" });
+  const menu = page.locator("#nav-contributions");
+  await menu.waitFor({ state: "visible" });
+
+  // Synthèse par matière : Maths regroupe les propositions d'exemple.
+  const maths = page.locator("#contrib-matieres [data-matiere=mathematiques]");
+  await maths.waitFor();
+  assert.match(await maths.textContent(), /Maths/);
+  assert.match(await maths.textContent(), /Le théorème de Pythagore \(2 à relire\)/);
+
+  // Notion ouverte depuis Éducation : le panneau d'édition s'affiche à côté de la page.
+  await page.click(".barre-laterale [data-nav=education]");
+  await page.locator("#catalogue .accordeon-bouton", { hasText: "Collège" }).click();
+  await page.locator("#edu-college .accordeon-bouton", { hasText: "Maths" }).click();
+  await page.locator("#catalogue .notion", { hasText: "Pythagore" }).click();
+  await page.locator("#bulle-lab[open][data-notion=pythagore]").waitFor();
+  const panneau = page.locator("#bulle-edition");
+  await panneau.waitFor({ state: "visible" });
+  assert.equal(await page.locator("#bulle-editer").getAttribute("aria-pressed"), "true");
+  const onglets = await page.locator(".edition-section").evaluateAll((s) => s.map((x) => x.dataset.onglet));
+  assert.deepEqual(onglets, ["explication", "memo", "application", "mise-en-situation"]);
+  const intro = page.locator('.edition-champ[data-chemin="intro"]');
+  assert.match(await intro.locator(".edition-pastille").textContent(), /1 en cours/, "proposition d'exemple comptée sur ce champ");
+  await capturer(page, "contributions-edition-ciblee", { pleinePage: false });
+
+  // Ajout après un paragraphe, avec aperçu et validation (charte).
+  const paragraphe = page.locator('.edition-champ[data-chemin="niveaux.1.paragraphes.0"]');
+  await paragraphe.locator("button", { hasText: "Ajouter après" }).click();
+  await page.fill("#edition-texte", "Astuce : l'hypoténuse est toujours en face de l'angle droit.");
+  assert.match(await page.locator("#edition-apercu ins").textContent(), /Astuce/);
+  await page.fill("#edition-motif", "Repère utile pour les élèves.");
+  await page.click("#edition-formulaire button[type=submit]");
+  assert.match(await page.locator("#edition-charte-erreur").textContent(), /charte/);
+  await page.check("#edition-charte");
+  await page.click("#edition-formulaire button[type=submit]");
+  await page.locator("#edition-formulaire").waitFor({ state: "hidden" });
+  await paragraphe.locator(".edition-pastille", { hasText: "2 en cours" }).waitFor(); // une proposition d'exemple + la nouvelle
+
+  // Fermer le panneau puis le rouvrir ; aller aux contributions de la notion.
+  await page.click("#bulle-editer");
+  assert.equal(await panneau.isHidden(), true);
+  await page.click("#bulle-editer");
+  await page.click("#edition-vers-contributions");
+  await page.locator("#bulle-lab").waitFor({ state: "hidden" });
+  await page.locator("#contrib-tableau").waitFor({ state: "visible" });
+  assert.equal(await menu.getAttribute("aria-current"), "page", "Contributions est une destination de la navigation");
+  assert.equal(await page.locator("#contrib-filtre-matiere").inputValue(), "mathematiques");
+  assert.equal(await page.locator("#contrib-filtre-notion").inputValue(), "pythagore");
+  await page.locator("#contrib-relecture li", { hasText: "Astuce" }).waitFor();
+  assert.match(await maths.textContent(), /\(3 à relire\)/);
+
+  // Un contributeur voit le menu et l'édition, sans tableau de relecture.
+  await page.click("#contrib-deconnexion");
+  await page.click("#contrib-demo-contributeur");
+  await page.locator("#contrib-espace").waitFor({ state: "visible" });
+  assert.equal(await menu.isVisible(), true);
+  assert.equal(await page.locator("#contrib-tableau").isHidden(), true);
+  await page.click("#contrib-deconnexion");
+  await page.locator("#contrib-invite").waitFor({ state: "visible" });
+  assert.equal(await menu.isHidden(), true, "le menu disparaît sans rôle");
+  assert.deepEqual(appels, [], "aucun appel au Worker en démonstration");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("édition ciblée sur mobile : panneau sous la page, menu Contributions dans la barre du bas, sans débordement", async () => {
+  const { page, contexte, erreurs } = await demarrer({ url: "/?demo=contributions#contributions", viewport: { width: 390, height: 844 } });
+  await page.click("#contrib-demo-contributeur");
+  const menuMobile = page.locator("#nav-mobile-contributions");
+  await menuMobile.waitFor({ state: "visible" });
+  await page.click(".nav-mobile [data-nav=education]");
+  await page.locator("#catalogue .accordeon-bouton", { hasText: "Collège" }).click();
+  await page.locator("#edu-college .accordeon-bouton", { hasText: "Maths" }).click();
+  await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
+  await page.locator("#bulle-edition").waitFor({ state: "visible" });
+  const largeur = await page.evaluate(() => document.querySelector("#bulle-lab").scrollWidth);
+  assert.ok(largeur <= 390, `pas de débordement horizontal (${largeur})`);
+  await capturer(page, "contributions-edition-mobile");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
