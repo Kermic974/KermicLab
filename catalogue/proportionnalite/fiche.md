@@ -5,6 +5,16 @@ sujet: mathematiques/proportionnalite
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-3, cycle-4, seconde
+prerequis:
+  - fractions
+  - nombres-decimaux
+competences:
+  - reconnaitre-une-situation-de-proportionnalite
+  - utiliser-un-coefficient-de-proportionnalite
+  - calculer-une-quatrieme-proportionnelle
+  - appliquer-un-pourcentage
+duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:

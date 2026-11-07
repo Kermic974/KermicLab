@@ -5,6 +5,15 @@ sujet: mathematiques/fractions
 version: 1.0.0
 date: 2026-11-01
 niveau: college
+niveaux: cycle-3, cycle-4, seconde
+prerequis:
+competences:
+  - comprendre-une-fraction
+  - simplifier-une-fraction
+  - comparer-des-fractions
+  - additionner-des-fractions
+  - multiplier-des-fractions
+duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
 mots-cles:
