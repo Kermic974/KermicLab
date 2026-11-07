@@ -113,7 +113,22 @@
           <article class="carte"><h3>Cahier de vacances</h3><p>Prépare des révisions à ton rythme.</p><button disabled>Créer ce cahier</button></article>
           <article class="carte"><h3>Cahier d'exercices</h3><p>Garde tes exercices et tes entraînements ensemble.</p><button disabled>Créer ce cahier</button></article></div>
         <h3>Tes cahiers</h3><p>Ils restent sur cet appareil. Active « Se souvenir de moi » pour les retrouver après la session.</p>
-        <article class="carte"><h4>Cahier de vacances</h4><p>Créé le 6 nov. 2026</p><button disabled>Supprimer Cahier de vacances</button></article>
+        <article class="carte"><h4>Révisions de l'été</h4><p>Cahier de vacances · 2 notion(s) · 7 nov. 2026</p><span>Enrichi par l’IA</span><button disabled>Ouvrir</button><button disabled>Supprimer</button></article>
+        <article class="carte" data-source="web/index.html:constructeur-cahier"><h3>Construire : Cahier de vacances</h3><p>Une séance de révision par notion : rappel, points clés, exercices progressifs et un défi final.</p>
+          <label>Titre du cahier (gardé sur cet appareil)<input disabled placeholder="Cahier de vacances"></label>
+          <label>Matière<select disabled><option>Maths</option></select></label> <label>Niveau<select disabled><option>Tous les niveaux</option></select></label>
+          <fieldset><legend>Notions</legend><p>Choisis jusqu’à 6 notions du catalogue.</p><label><input type="checkbox" disabled checked> Les fractions</label> <label><input type="checkbox" disabled checked> Le théorème de Pythagore</label></fieldset>
+          <label>Longueur<select disabled><option>Court</option><option selected>Standard</option><option>Complet</option></select></label>
+          <label><input type="checkbox" disabled checked> ✨ Enrichir avec l’IA (explications et exercices rédigés à partir des notions)</label>
+          <p>Il te reste 2 cahier(s) enrichi(s) par l’IA aujourd’hui (custom/sonnet-5-5). Seuls les identifiants des notions sont envoyés : ton titre et tes notes restent sur cet appareil.</p>
+          <div class="actions"><button disabled>Fermer</button><button disabled>Construire le cahier</button></div>
+          <details><summary>Autres états</summary><p>Préparation : « L’IA prépare ton cahier… cela peut prendre une minute. » Sans notion : « Choisis au moins une notion. » (le brouillon accepte une page libre). IA non consentie, indisponible ou quota atteint : case désactivée et message ; le cahier est construit à partir du catalogue.</p></details></article>
+        <article class="carte" data-source="web/index.html:lecture-cahier"><h3>Révisions de l'été</h3><p>Cahier de vacances · 7 nov. 2026 · Enrichi par l’IA (custom/sonnet-5-5)</p>
+          <p>Un cahier pour réviser les fractions et Pythagore.</p><h4>Les fractions</h4><button disabled>Ouvrir la notion</button>
+          <p><strong>EXPLICATION</strong> Une fraction représente une part d'un tout.</p><p><strong>À RETENIR</strong> On additionne des fractions au même dénominateur.</p>
+          <p><strong>EXERCICE</strong> Calcule 1/2 + 1/4.</p><details><summary>Voir la réponse</summary><p>3/4.</p></details>
+          <label>Mes notes<textarea disabled></textarea></label>
+          <p class="note">Repli : « L’IA n’a pas pu préparer ce cahier : il a été construit à partir du catalogue. » Le cahier catalogue présente une section par notion (Ouvrir la notion, Mes notes) ; le brouillon ajoute une page libre.</p></article>
         <p class="note">Les cahiers sont enregistrés dans le stockage de session sans consentement, puis transférés au stockage local si « Se souvenir de moi » est activé. Ils sont effacés avec les autres données de l'appareil.</p>
       </section>
       <section class="ecran" id="accueil" data-ecran="accueil" data-vue-active="accueil" data-source="web/index.html:accueil">

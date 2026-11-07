@@ -58,7 +58,7 @@ export async function construireInventaire() {
     lignes.push(`<tr data-notion="${echapper(notion.id)}"><td><a href="${echapper(cible)}">${echapper(notion.titre)}</a><br><code>${echapper(notion.id)}</code><br><a data-lien-actif href="${echapper(active)}" target="_blank" rel="noopener noreferrer">Vue active</a> · <a data-lien-actif href="${echapper(source)}" target="_blank" rel="noopener noreferrer">Source main</a></td><td>${echapper(fr[`matiere_${matiere}`] ?? `${matiere} (libellé absent du site)`)}</td><td>${echapper(fr[`niveau_${notion.niveau}`])}</td><td>${echapper(notion.version)}</td><td>${echapper(onglets.join(" · "))}</td><td>${echapper(c?.application?.figure?.type ?? "—")}</td><td>${echapper(progression)}</td></tr>`);
   }
   const jeux = catalogue.index.maquettes.filter((n) => n.sujet.startsWith("jeux/")).length;
-  const liensDialogues = { "dialogue-pseudo": "premiere-visite", "dialogue-profil": "profil-dialogue", "bulle-lab": "bulle", defi: "defi", progres: "badges", signalement: "support", "dialogue-idee": "idees" };
+  const liensDialogues = { "dialogue-pseudo": "premiere-visite", "dialogue-profil": "profil-dialogue", "bulle-lab": "bulle", defi: "defi", progres: "badges", signalement: "support", "dialogue-idee": "idees", "constructeur-cahier": "cahiers", "lecture-cahier": "cahiers" };
   for (const id of dialogues) if (!liensDialogues[id]) throw new Error(`Inventaire UX : dialogue non représenté ${id}`);
   return `<!doctype html>
 <html lang="fr">
