@@ -25,12 +25,14 @@ Démonstration sans compte, pour relire les écrans : `https://kermiclab.online/
 ## Défi express généré par l'IA (ADR 0018)
 
 - **Fait** (2026-11-06) : alias de modèle `custom/haiku` créé sur `kermiclab-gateway` (confirmé par le propriétaire).
-- **À faire** : après le déploiement, activer « Utiliser l'IA » dans Configuration, lancer le défi express et vérifier
-  que cinq défis inédits s'affichent (et non les questions fixes sur le cercle). En cas de questions fixes, consulter
-  les logs du Worker (`llm défi fournisseur ou sortie invalide`) et le journal de l'alias dans AI Gateway : le format
-  de sortie du binding pour un alias n'est pas documenté. Vérifier aussi les crédits de facturation unifiée (ou la clé
-  enregistrée sous l'alias `default`).
-- **Où** : https://kermiclab.online/#defi et Cloudflare → AI → AI Gateway → `kermiclab-gateway` → Routing.
+- **Constaté** (2026-11-06) : en production, chaque appel à `custom/haiku` est rejeté par AI Gateway en **HTTP 402**
+  (`rejection_reason: payment_defaulted`) : solde de facturation unifiée à 0 $, aucun rechargement, aucune clé
+  fournisseur (BYOK) sur `kermiclab-gateway`. Depuis le correctif, le défi bascule sur Workers AI en attendant.
+- **Fait** (2026-11-07) : crédits de facturation unifiée chargés sur AI Gateway ; `/api/defi` renvoie des défis
+  générés par `custom/haiku` (vérifié par un appel réel).
+- **Vérifier** : activer « Utiliser l'IA » dans Configuration, lancer le défi express ; le journal de la gateway doit
+  montrer `custom/haiku` en statut 200 (et non plus 402), et « Détails » du défi le fournisseur `cloudflare-ai-gateway`.
+- **Où** : https://kermiclab.online/#defi et Cloudflare → AI → AI Gateway → Billing (option A) ou `kermiclab-gateway` → Provider keys (option B).
 - **Pourquoi** : le contenu généré est destiné à des mineurs ; relire un échantillon de défis (exactitude, ton).
 - **Comment confirmer** : défis inédits affichés, pastille « préparés par l'IA », signalements éventuels traités.
 

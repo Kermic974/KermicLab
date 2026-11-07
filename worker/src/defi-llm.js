@@ -17,6 +17,17 @@ const DUREE_QUOTA = 24 * 60 * 60;
 
 export const HARNESS_DEFI = harnessSkill("defi-express");
 
+/**
+ * Code d'erreur court d'un fournisseur (ex. « http-402 » pour une gateway sans moyen de paiement), pour les logs
+ * et les KPI. Le message d'erreur n'est jamais journalisé tel quel.
+ */
+export function codeErreurFournisseur(erreur) {
+  const statut = erreur?.status ?? erreur?.statusCode;
+  if (Number.isInteger(statut) && statut >= 400 && statut <= 599) return `http-${statut}`;
+  const trouve = String(erreur?.message ?? "").match(/\b([45]\d{2})\b/);
+  return trouve ? `http-${trouve[1]}` : "erreur";
+}
+
 /** Nombre de générations IA par session (24 h) : variable `DEFI_GENERATIONS_JOUR`, bornée (configuration.js). */
 export const generationsDefiParJour = (env) => lireConfiguration(env).DEFI_GENERATIONS_JOUR;
 
@@ -32,12 +43,14 @@ export const SCHEMA_DEFI = {
       items: {
         type: "object",
         additionalProperties: false,
-        required: ["notion", "format", "enonce", "choix", "bonne", "explication"],
+        // `verification` précède `bonne` : le modèle refait le calcul (ou cite le fait) avant de désigner la réponse.
+        required: ["notion", "format", "enonce", "choix", "verification", "bonne", "explication"],
         properties: {
           notion: { type: "string" },
           format: { type: "string", enum: [...FORMATS_DEFI] },
           enonce: { type: "string" },
           choix: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 3 },
+          verification: { type: "string" },
           bonne: { type: "integer", minimum: 0, maximum: 2 },
           explication: { type: "string" }
         }
@@ -49,22 +62,67 @@ export const SCHEMA_DEFI = {
 const entierAleatoire = (n, aleatoire) => Math.floor(aleatoire() * n);
 const aleatoireCrypto = () => crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32;
 
+export const NIVEAUX_DEFI = Object.freeze(["college", "seconde", "premiere", "terminale", "autres"]);
+const matiereDeMaquette = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
+const niveauDeMaquette = (m) => (NIVEAUX_DEFI.includes(m.niveau) ? m.niveau : "autres");
+
 /**
- * Tirage serveur : 5 notions distinctes (si possible) hors jeux, dans la matière demandée si elle existe,
- * et un format chacune. La variété ne dépend jamais du modèle.
+ * Périmètre choisi dans le configurateur du défi, validé : niveau et matière connus, notion du catalogue, formats
+ * parmi FORMATS_DEFI (tous si la liste est vide ou invalide). Une valeur inconnue est ignorée (= « tous »).
  */
-export function tirerDefis(catalogue, { matiere = null, aleatoire = aleatoireCrypto } = {}) {
-  const eligibles = catalogue.index.maquettes.filter((m) => !MATIERES_EXCLUES.has(m.sujet.split("/")[0])
-    && catalogue.pages[m.id]);
-  const parMatiere = matiere ? eligibles.filter((m) => m.sujet.split("/")[0] === matiere) : [];
-  const reserve = [...(parMatiere.length ? parMatiere : eligibles)];
+export function perimetreDefi(catalogue, brut = {}) {
+  const ids = new Set(catalogue.index.maquettes.map((m) => m.id));
+  const matieres = new Set(catalogue.index.maquettes.map(matiereDeMaquette));
+  const texte = (v) => (typeof v === "string" && /^[a-z0-9-]{1,60}$/.test(v) ? v : null);
+  const matiere = texte(brut.matiere);
+  const notion = texte(brut.notion);
+  const formats = Array.isArray(brut.formats) ? FORMATS_DEFI.filter((f) => brut.formats.includes(f)) : [];
+  return {
+    niveau: NIVEAUX_DEFI.includes(brut.niveau) ? brut.niveau : null,
+    matiere: matiere && matieres.has(matiere) && !MATIERES_EXCLUES.has(matiere) ? matiere : null,
+    notion: notion && ids.has(notion) ? notion : null,
+    formats: formats.length ? formats : [...FORMATS_DEFI]
+  };
+}
+
+/** Notions du catalogue dans le périmètre (hors jeux, avec une page publiée). */
+export function notionsDuPerimetre(catalogue, { niveau = null, matiere = null, notion = null } = {}) {
+  return catalogue.index.maquettes.filter((m) => !MATIERES_EXCLUES.has(matiereDeMaquette(m)) && catalogue.pages[m.id]
+    && (!notion || m.id === notion)
+    && (!matiere || matiereDeMaquette(m) === matiere)
+    && (!niveau || niveauDeMaquette(m) === niveau));
+}
+
+/**
+ * Tirage serveur : 5 notions du périmètre, distinctes tant que possible (une notion unique est reprise avec des
+ * formats variés), et un format chacune parmi ceux choisis. La variété ne dépend jamais du modèle.
+ * Renvoie [] si aucune notion ne correspond au périmètre.
+ */
+export function tirerDefis(catalogue, { niveau = null, matiere = null, notion = null, formats = FORMATS_DEFI, aleatoire = aleatoireCrypto } = {}) {
+  const eligibles = notionsDuPerimetre(catalogue, { niveau, matiere, notion });
+  const permis = formats.length ? formats : FORMATS_DEFI;
   const tirages = [];
+  let reserve = [];
+  let formatsReserve = [];
   while (tirages.length < NB_DEFIS && eligibles.length) {
-    const pioche = reserve.length ? reserve : [...(parMatiere.length ? parMatiere : eligibles)];
-    const [maquette] = pioche.splice(entierAleatoire(pioche.length, aleatoire), 1);
-    tirages.push({ maquette, format: FORMATS_DEFI[entierAleatoire(FORMATS_DEFI.length, aleatoire)] });
+    if (!reserve.length) reserve = [...eligibles];
+    if (!formatsReserve.length) formatsReserve = [...permis];
+    const [maquette] = reserve.splice(entierAleatoire(reserve.length, aleatoire), 1);
+    const [format] = formatsReserve.splice(entierAleatoire(formatsReserve.length, aleatoire), 1);
+    tirages.push({ maquette, format });
   }
   return tirages;
+}
+
+/** Mélange les choix (sauf vrai-faux, dont l'ordre est fixe) pour que la bonne réponse tombe au hasard. */
+export function melangerChoix(defi, aleatoire = aleatoireCrypto) {
+  if (defi.format === "vrai-faux") return defi;
+  const ordre = defi.choix.map((_, i) => i);
+  for (let i = ordre.length - 1; i > 0; i--) {
+    const j = entierAleatoire(i + 1, aleatoire);
+    [ordre[i], ordre[j]] = [ordre[j], ordre[i]];
+  }
+  return { ...defi, choix: ordre.map((i) => defi.choix[i]), bonne: ordre.indexOf(defi.bonne) };
 }
 
 export function promptDefi(langue) {
@@ -86,7 +144,8 @@ Ta tâche : rédiger exactement ${NB_DEFIS} défis, un par tirage, dans l'ordre 
   - "vrai-faux" : une affirmation ; choix exactement ["Vrai", "Faux"] (en anglais ["True", "False"]).
   - "situation" : un petit problème de la vie courante (2 phrases au plus), 3 choix dont un seul juste.
   - "intrus" : « Lequel ne… ? » ; 3 choix dont un seul est l'intrus, c'est la bonne réponse.
-- bonne : index (à partir de 0) du choix juste. Varie sa position d'un défi à l'autre.
+- verification : AVANT de choisir la bonne réponse, refais le calcul pas à pas ou recopie le fait de l'extrait qui tranche (200 caractères au plus). Ce champ n'est jamais montré à l'élève.
+- bonne : index (à partir de 0) du choix dont la valeur est exactement le résultat de verification. Relis : l'explication doit aboutir à ce même choix.
 - Choix courts (60 caractères au plus) et tous différents ; énoncé de 200 caractères au plus.
 - explication : 1 ou 2 phrases (240 caractères au plus) qui justifient la bonne réponse à partir de l'extrait.
 - Texte brut uniquement : pas de Markdown ni de LaTeX (écris « racine de 2 », « x² », « π »).`;

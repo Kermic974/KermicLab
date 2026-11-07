@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import worker, { _reinitialiser } from "../../worker/src/index.js";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import {
-  FORMATS_DEFI, NB_DEFIS, generationsDefiParJour, messageDefi, normaliserDefis, promptDefi, tirerDefis, validerDefi
+  FORMATS_DEFI, NB_DEFIS, SCHEMA_DEFI, codeErreurFournisseur, generationsDefiParJour, melangerChoix, messageDefi, normaliserDefis,
+  notionsDuPerimetre, perimetreDefi, promptDefi, tirerDefis, validerDefi
 } from "../../worker/src/defi-llm.js";
 import { creerD1Llm } from "../helpers/d1-llm.mjs";
 
@@ -79,7 +80,7 @@ test("défi : 5 défis générés par l'alias custom/haiku via kermiclab-gateway
     assert.ok(d.titre);
   }
   assert.equal(donnees.llm.modele, "custom/haiku");
-  assert.equal(donnees.llm.harness.prompt, "defi-express-v1");
+  assert.equal(donnees.llm.harness.prompt, "defi-express-v2");
   assert.equal(donnees.llm.pseudonymisation.appliquee, true);
   assert.deepEqual(donnees.quota, { limite: 3, utilisees: 1, restantes: 2 });
   assert.ok(env.DB.lignes.some((l) => l[0] === "defi" && l[4] === "ia"));
@@ -180,7 +181,8 @@ test("défi : tirage serveur hors jeux, notions distinctes, matière respectée 
   assert.equal(new Set(tirages.map((t) => t.maquette.id)).size, NB_DEFIS);
   const maths = tirerDefis(CATALOGUE, { matiere: "mathematiques", aleatoire });
   assert.ok(maths.every((t) => t.maquette.sujet.startsWith("mathematiques/")));
-  assert.ok(tirerDefis(CATALOGUE, { matiere: "inconnue", aleatoire }).length === NB_DEFIS, "matière inconnue : tout le catalogue");
+  assert.deepEqual(tirerDefis(CATALOGUE, { matiere: "inconnue", aleatoire }), [], "périmètre vide : aucun tirage");
+  assert.equal(perimetreDefi(CATALOGUE, { matiere: "inconnue" }).matiere, null, "matière inconnue ignorée à la validation");
   const formats = new Set(Array.from({ length: 20 }, () => tirerDefis(CATALOGUE, { aleatoire }).map((t) => t.format)).flat());
   assert.deepEqual([...formats].sort(), [...FORMATS_DEFI].sort());
 });
@@ -205,4 +207,87 @@ test("statut LLM : expose la génération du défi et son quota pour l'écran Co
   const r = await worker.fetch(new Request("https://api.kermiclab.test/api/llm/status", { headers: { origin: "https://kermiclab.pages.dev" } }), env, ctx);
   const donnees = await r.json();
   assert.deepEqual(donnees.defi, { ia: true, generationsParJour: 2 });
+});
+
+test("défi : alias refusé par la gateway (402) → repli Workers AI, défis toujours générés et code journalisé", async () => {
+  const alias = creerAlias();
+  const appels = [];
+  env.AI = {
+    run: async (modele, parametres, options) => {
+      appels.push({ modele, parametres, options });
+      if (modele === "custom/haiku") throw new Error("AiError: 402: Payment Required (payment_defaulted)");
+      const { choices } = await alias.run(modele, parametres, options);
+      // Workers AI renvoie `response`, éventuellement déjà analysé en objet.
+      return { response: JSON.parse(choices[0].message.content), usage: { completion_tokens: 700 } };
+    }
+  };
+  const { donnees } = await defi({ langue: "fr", utiliserLlm: true });
+  assert.equal(donnees.source, "ia");
+  assert.equal(donnees.defis.length, NB_DEFIS);
+  assert.deepEqual(appels.map((a) => a.modele), ["custom/haiku", "@cf/meta/llama-3.3-70b-instruct-fp8-fast"]);
+  assert.equal(appels[1].parametres.response_format.type, "json_schema");
+  assert.equal(donnees.llm.fournisseur, "cloudflare-workers-ai");
+  assert.equal(donnees.llm.repli, true);
+  assert.deepEqual(donnees.llm.echecs, ["cloudflare-ai-gateway:http-402"]);
+  assert.deepEqual(donnees.quota, { limite: 3, utilisees: 1, restantes: 2 }, "les deux essais comptent pour une génération");
+});
+
+test("défi : les deux fournisseurs échouent → banque fixe et KPI avec les codes, sans texte", async () => {
+  env.AI = creerAlias({ erreur: Object.assign(new Error("indisponible"), { status: 429 }) });
+  const { donnees } = await defi({ langue: "fr", utiliserLlm: true });
+  assert.equal(donnees.raison, "ia-indisponible");
+  const ligne = env.DB.lignes.find((l) => l[0] === "erreur" && l[4] === "defi");
+  assert.equal(ligne[5], "cloudflare-ai-gateway:http-429 cloudflare-workers-ai:http-429");
+  assert.equal(codeErreurFournisseur(new Error("3030: quelque chose")), "erreur");
+  assert.equal(codeErreurFournisseur(new Error("AiError: 402: Payment Required")), "http-402");
+});
+
+test("configurateur : périmètre validé (niveau, matière, notion, formats), valeurs inconnues ignorées", () => {
+  assert.deepEqual(perimetreDefi(CATALOGUE, { niveau: "seconde", matiere: "mathematiques", notion: "trigo-cercle", formats: ["qcm", "pirate"] }),
+    { niveau: "seconde", matiere: "mathematiques", notion: "trigo-cercle", formats: ["qcm"] });
+  assert.deepEqual(perimetreDefi(CATALOGUE, { niveau: "cm2", matiere: "jeux", notion: "../x", formats: "qcm" }),
+    { niveau: null, matiere: null, notion: null, formats: [...FORMATS_DEFI] });
+  const college = notionsDuPerimetre(CATALOGUE, { niveau: "college", matiere: "mathematiques" });
+  assert.ok(college.length > 0 && college.every((m) => m.niveau === "college" && m.sujet.startsWith("mathematiques/")));
+});
+
+test("configurateur : une seule notion → 5 défis sur cette notion avec des formats variés ; formats restreints respectés", () => {
+  const tirages = tirerDefis(CATALOGUE, { notion: "pythagore" });
+  assert.equal(tirages.length, NB_DEFIS);
+  assert.ok(tirages.every((t) => t.maquette.id === "pythagore"));
+  assert.ok(new Set(tirages.map((t) => t.format)).size >= 4, "chaque format avant d'en répéter un");
+  const vf = tirerDefis(CATALOGUE, { niveau: "college", formats: ["vrai-faux"] });
+  assert.ok(vf.every((t) => t.format === "vrai-faux" && t.maquette.niveau === "college"));
+});
+
+test("configurateur : /api/defi applique le périmètre envoyé ; périmètre vide → banque sans quota ni cookie", async () => {
+  const { donnees } = await defi({ langue: "fr", utiliserLlm: true, niveau: "college", matiere: "mathematiques", formats: ["qcm", "situation"] });
+  assert.equal(donnees.source, "ia");
+  assert.deepEqual(donnees.perimetre, { niveau: "college", matiere: "mathematiques", notion: null, formats: ["qcm", "situation"] });
+  const { tirages } = JSON.parse(env.AI.appels[0].parametres.messages[1].content);
+  assert.ok(tirages.every((t) => t.niveau === "college" && ["qcm", "situation"].includes(t.format)));
+  cookie = "";
+  const vide = await defi({ langue: "fr", utiliserLlm: true, niveau: "terminale", notion: "pythagore" });
+  assert.equal(vide.donnees.source, "banque");
+  assert.equal(vide.donnees.raison, "perimetre-vide");
+  assert.equal(cookie, "", "aucune session créée pour un périmètre vide");
+  assert.equal(env.AI.appels.length, 1);
+});
+
+test("fiabilité : vérification interne demandée avant la bonne réponse, jamais renvoyée ; choix mélangés", async () => {
+  const proprietes = Object.keys(SCHEMA_DEFI.properties.defis.items.properties);
+  assert.ok(proprietes.indexOf("verification") < proprietes.indexOf("bonne"));
+  assert.match(promptDefi("fr"), /AVANT de choisir la bonne réponse/);
+  env.AI = creerAlias({ alterer: (d) => ({ ...d, verification: "3² + 4² = 25 donc 5" }) });
+  const { donnees } = await defi({ langue: "fr", utiliserLlm: true });
+  assert.ok(donnees.defis.every((d) => !("verification" in d)));
+  // Mélange : la bonne réponse suit son texte ; vrai-faux garde l'ordre.
+  const d = { format: "qcm", choix: ["A", "B", "C"], bonne: 0 };
+  const positions = new Set(Array.from({ length: 40 }, () => melangerChoix(d)).map((m) => {
+    assert.equal(m.choix[m.bonne], "A");
+    return m.bonne;
+  }));
+  assert.equal(positions.size, 3);
+  const vf = { format: "vrai-faux", choix: ["Vrai", "Faux"], bonne: 1 };
+  assert.deepEqual(melangerChoix(vf), vf);
 });
