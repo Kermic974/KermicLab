@@ -1,0 +1,24 @@
+{
+  "depot": "Kermic974/trigoLab",
+  "roadmap": "web/feuille-de-route.html",
+  "projets": [
+    { "cle": "socle", "titre": "0 · Socle fiable", "ancre": "phase-0", "epic": 164, "horizon": "maintenant", "priorite": 1,
+      "chantiers": ["ci-cd.md", "securite.md", "validation-maquettes.md"] },
+    { "cle": "referentiel", "titre": "1 · Référentiel et contrat des labs", "ancre": "phase-1", "epic": 165, "horizon": "maintenant", "priorite": 2,
+      "chantiers": ["catalogue-maths.md", "labs-autres-matieres.md"] },
+    { "cle": "catalogue-jeux", "titre": "Catalogue, accueil et jeux", "ancre": "planning", "epic": 172, "horizon": "maintenant", "priorite": 3,
+      "chantiers": ["catalogue-maths.md", "catalogue-physique-chimie.md", "catalogue-svt.md", "support.md"] },
+    { "cle": "parcours", "titre": "2 · Parcours et cahier de vacances, sans compte", "ancre": "phase-2", "epic": 166, "horizon": "ensuite", "priorite": 4,
+      "chantiers": [] },
+    { "cle": "cercle", "titre": "Piste parallèle · Cercle trigonométrique", "ancre": "piste-cercle", "epic": 171, "horizon": "ensuite", "priorite": 5,
+      "chantiers": [] },
+    { "cle": "familles", "titre": "4 · Comptes et familles", "ancre": "phase-4", "epic": 168, "horizon": "sous-condition", "priorite": 6,
+      "chantiers": ["authentification.md", "rgpd.md", "juridique.md"] },
+    { "cle": "tuteur", "titre": "3 · Tuteur borné", "ancre": "phase-3", "epic": 167, "horizon": "sous-condition", "priorite": 7,
+      "chantiers": ["tva-paiement.md", "kpi.md"] },
+    { "cle": "fabrique", "titre": "5 · Fabrique de contenus", "ancre": "phase-5", "epic": 169, "horizon": "plus-tard", "priorite": 8,
+      "chantiers": ["contributions.md", "validation-maquettes.md", "kpi.md"] },
+    { "cle": "options", "titre": "6 · Options conditionnelles", "ancre": "phase-6", "epic": 170, "horizon": "sous-condition", "priorite": 9,
+      "chantiers": [] }
+  ]
+}

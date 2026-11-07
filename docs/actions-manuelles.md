@@ -2,6 +2,20 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Projets de la feuille de route (docs/projets.md)
+
+- **Fait par l'agent** (2026-11-07) : 9 épiques `[Projet] …` (#164 à #172), 35 sous-issues (#173 à #207) et rattachement
+  de #47, #121 et #160 ; labels `epic`, `projet:*` et `horizon:*` créés (couleurs et descriptions appliquées par le workflow
+  « Labels » à la fusion sur `main`).
+- **À faire** (facultatif) : créer les tableaux GitHub Projects (vue Kanban par projet). L'agent n'a pas accès à l'API
+  Projects (jeton limité au dépôt).
+- **Où** : sur votre poste, à la racine du dépôt : `gh auth refresh -s project` puis `bash scripts/configurer-projets.sh`.
+- **Pourquoi** : suivre l'avancement de chaque chantier en colonnes (À faire, En cours, Fait) ; les épiques et sous-issues
+  suffisent déjà au suivi sans tableau.
+- **Comment confirmer** : l'onglet [Projects](https://github.com/Kermic974/trigoLab/projects) du dépôt liste les 9 tableaux
+  « KermicLab · … », chacun avec son épique et ses sous-issues. Relancer le script après l'ajout de nouvelles issues.
+- **Statut** : à faire
+
 ## Compte local et synchronisation pseudonymisée (ADR 0024)
 
 | # | Action | Où | Pourquoi | Comment confirmer | Statut |

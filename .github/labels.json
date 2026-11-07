@@ -8,5 +8,19 @@
   { "name": "good first issue", "color": "7057ff", "description": "Bon point de départ pour contribuer" },
   { "name": "help wanted", "color": "008672", "description": "Aide bienvenue" },
   { "name": "sécurité", "color": "b60205", "description": "Sujet de sécurité" },
-  { "name": "dependencies", "color": "0366d6", "description": "Mise à jour de dépendances" }
+  { "name": "dependencies", "color": "0366d6", "description": "Mise à jour de dépendances" },
+  { "name": "epic", "color": "3e4b9e", "description": "Épique d'un projet de la feuille de route (docs/projets.md)" },
+  { "name": "projet:socle", "color": "c5def5", "description": "Projet 0 · Socle fiable (feuille de route, phase 0)" },
+  { "name": "projet:referentiel", "color": "c5def5", "description": "Projet 1 · Référentiel et contrat des labs (phase 1)" },
+  { "name": "projet:parcours", "color": "c5def5", "description": "Projet 2 · Parcours et cahier de vacances, sans compte (phase 2)" },
+  { "name": "projet:tuteur", "color": "c5def5", "description": "Projet 3 · Tuteur borné (phase 3)" },
+  { "name": "projet:familles", "color": "c5def5", "description": "Projet 4 · Comptes et familles (phase 4)" },
+  { "name": "projet:fabrique", "color": "c5def5", "description": "Projet 5 · Fabrique de contenus (phase 5)" },
+  { "name": "projet:options", "color": "c5def5", "description": "Projet 6 · Options conditionnelles (phase 6)" },
+  { "name": "projet:cercle", "color": "c5def5", "description": "Piste parallèle · Cercle trigonométrique (v1.5, v2.0)" },
+  { "name": "projet:catalogue-jeux", "color": "c5def5", "description": "Catalogue, accueil et jeux : consolidation continue" },
+  { "name": "horizon:maintenant", "color": "0e8a16", "description": "Feuille de route : à faire maintenant" },
+  { "name": "horizon:ensuite", "color": "fbca04", "description": "Feuille de route : après le socle (phases 0 et 1)" },
+  { "name": "horizon:plus-tard", "color": "d4c5f9", "description": "Feuille de route : après qualité et contrat stables" },
+  { "name": "horizon:sous-condition", "color": "e99695", "description": "Feuille de route : bloqué par un point de contrôle (budget, juridique, besoin prouvé)" }
 ]
