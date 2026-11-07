@@ -12,11 +12,18 @@
 
 ### 1. Protocole
 
+Une page ne parle qu'à une **origine déclarée** dans ses métadonnées : `allowedParentOrigins`, écrite par le Worker
+au moment de servir la page à partir de `ORIGINES_AUTORISEES` (les mêmes origines que l'en-tête `frame-ancestors`), ou
+`parentOrigin`. Le bloc de métadonnées est une donnée JSON : il n'entre pas dans les hashes CSP, la page reste intacte.
+**Sans origine déclarée, la page n'annonce rien, n'écoute rien et n'émet rien.** Une page copiée et réhébergée
+ailleurs ne peut donc pas transmettre ses événements à un site tiers (alerte de sécurité relevée sur la PR #220).
+Le pont des trophées applique déjà `allowedParentOrigins` quand il est présent : il devient strict de la même façon.
+
 Une poignée de main, puis des événements envoyés **uniquement à l'origine vérifiée du parent** :
 
 | Sens | Message |
 |---|---|
-| page → parent | `{ type: "kermiclab:evenements:pret", v: 1, notion }` (identifiant seul, avant de connaître l'origine) |
+| page → parent | `{ type: "kermiclab:evenements:pret", v: 1, notion }` (identifiant seul, envoyé à chaque origine autorisée : seule celle du parent réel le reçoit, jamais à `*`) |
 | parent → page | `{ type: "kermiclab:evenements:ecouter", v: 1, notion }` (fixe l'origine du parent ; mêmes contrôles que le pont des trophées : `http(s)`, `parentOrigin` et `allowedParentOrigins` des métadonnées) |
 | page → parent | `{ type: "kermiclab:evenement", v: 1, notion, version, evenement, … }` |
 

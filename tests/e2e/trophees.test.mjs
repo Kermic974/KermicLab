@@ -2,6 +2,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
+import { injecterOriginesParent } from "../../worker/src/origines-pages.js";
 
 let serveur, nav, api;
 const modules = [
@@ -30,7 +31,9 @@ async function demarrer(options = {}) {
   }));
   await page.route(`${api}/maquettes/**`, async (r) => {
     const id = new URL(r.request().url()).pathname.split("/").at(-1);
-    await r.fulfill({ contentType: "text/html", body: await readFile(`${racine}catalogue/${id}/page.html`, "utf8") });
+    // Comme le Worker (servirPage) : origines autorisées du parent écrites dans les métadonnées servies (ADR 0025).
+    const html = await readFile(`${racine}catalogue/${id}/page.html`, "utf8");
+    await r.fulfill({ contentType: "text/html", body: injecterOriginesParent(html, [serveur.url]) });
   });
   await page.goto(serveur.url);
   await page.locator("#entree-education", { hasText: "notions" }).waitFor();

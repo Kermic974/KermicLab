@@ -18,6 +18,7 @@ import { HARNESS_CADRAGE, SCHEMA_CADRAGE, enveloppeIdee, normaliserCadrage, pist
 import { intentionConversation } from "./conversation.js";
 import { appelerAliasGateway, appelerWorkersAI, claudeViaGatewayDisponible } from "./llm.js";
 import { configurationPublique, lireConfiguration, skillActif } from "./configuration.js";
+import { injecterOriginesParent, originesParent } from "./origines-pages.js";
 import {
   HARNESS_DEFI, SCHEMA_DEFI, codeErreurFournisseur, melangerChoix, perimetreDefi, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
   messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
@@ -448,7 +449,7 @@ function servirPage(requete, env, id) {
   if (!m) return new Response("Not found", { status: 404 });
   const demandee = langueValide(new URL(requete.url).searchParams.get("lang"));
   const langue = m.langues.includes(demandee) ? demandee : "fr";
-  const html = CATALOGUE.pages[id][langue];
+  const html = injecterOriginesParent(CATALOGUE.pages[id][langue], originesParent(env));
   const ancetres = ["'self'", ...String(env.ORIGINES_AUTORISEES || "").split(",").map((s) => s.trim()).filter((s) => s && s !== "*")].join(" ");
   return new Response(html, {
     headers: {

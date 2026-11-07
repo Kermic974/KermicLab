@@ -1,6 +1,8 @@
 // Contrat d'événements pédagogiques v1 (ADR 0025) : une page autonome n'a pas de réseau (connect-src 'none').
-// Elle signale ce qui se passe à la page qui l'affiche (tableau de bord), par postMessage, après une poignée de main :
-//   page → parent  { type: "kermiclab:evenements:pret", v: 1, notion }            (identifiant seul, origine inconnue)
+// Elle signale ce qui se passe à la page qui l'affiche (tableau de bord), par postMessage, après une poignée de main,
+// et seulement à une origine déclarée dans ses métadonnées (`allowedParentOrigins`, écrite par le Worker à partir de
+// ORIGINES_AUTORISEES, ou `parentOrigin`). Sans origine déclarée, la page n'émet rien.
+//   page → parent  { type: "kermiclab:evenements:pret", v: 1, notion }            (envoyé à chaque origine autorisée)
 //   parent → page  { type: "kermiclab:evenements:ecouter", v: 1, notion }        (fixe l'origine du parent)
 //   page → parent  { type: "kermiclab:evenement", v: 1, notion, version, evenement, … }   vers cette origine seulement
 // Événements : demarre | indice (exercice, rang) | reponse (exercice, correct, essai) | termine.
@@ -82,7 +84,11 @@ const Evenements = (() => {
         origineParent = e.origin;
         for (const ev of file.splice(0)) window.parent.postMessage(ev, origineParent);
       });
-      window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, [...originesAutorisees][0]);
+      // Annonce à chaque origine autorisée : seule celle du parent réel la reçoit (les autres sont ignorées par le
+      // navigateur). Ainsi le tableau de bord fonctionne sur chacun de ses domaines, pas seulement le premier.
+      for (const origine of originesAutorisees) {
+        window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, origine);
+      }
     }
   }
 

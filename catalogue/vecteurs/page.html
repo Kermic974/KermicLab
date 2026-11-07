@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-YIxzxcn+lcwapDSYRLe8K5gy2cVFFFTDs4DkfuISbpE=' 'sha256-asR7D7A6y2BK0gHM8X2FyIioCKsA5rYAPcZifm51oBY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-asR7D7A6y2BK0gHM8X2FyIioCKsA5rYAPcZifm51oBY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Les vecteurs – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -345,8 +345,10 @@ const Trophees = (() => {
 </script>
 <script id="evenements" data-inclure="gabarit/jeux/evenements.js">
 // Contrat d'événements pédagogiques v1 (ADR 0025) : une page autonome n'a pas de réseau (connect-src 'none').
-// Elle signale ce qui se passe à la page qui l'affiche (tableau de bord), par postMessage, après une poignée de main :
-//   page → parent  { type: "kermiclab:evenements:pret", v: 1, notion }            (identifiant seul, origine inconnue)
+// Elle signale ce qui se passe à la page qui l'affiche (tableau de bord), par postMessage, après une poignée de main,
+// et seulement à une origine déclarée dans ses métadonnées (`allowedParentOrigins`, écrite par le Worker à partir de
+// ORIGINES_AUTORISEES, ou `parentOrigin`). Sans origine déclarée, la page n'émet rien.
+//   page → parent  { type: "kermiclab:evenements:pret", v: 1, notion }            (envoyé à chaque origine autorisée)
 //   parent → page  { type: "kermiclab:evenements:ecouter", v: 1, notion }        (fixe l'origine du parent)
 //   page → parent  { type: "kermiclab:evenement", v: 1, notion, version, evenement, … }   vers cette origine seulement
 // Événements : demarre | indice (exercice, rang) | reponse (exercice, correct, essai) | termine.
@@ -400,19 +402,40 @@ const Evenements = (() => {
   }
 
   if (!isole) {
-    const originesAutorisees = Array.isArray(meta.allowedParentOrigins) ? meta.allowedParentOrigins : null;
-    window.addEventListener("message", (e) => {
-      if (e.source !== window.parent || e.data?.type !== "kermiclab:evenements:ecouter" || e.data.v !== VERSION_CONTRAT ||
-          e.data.notion !== notion || origineParent) return;
-      let origine;
-      try { origine = new URL(e.origin); } catch { return; }
-      if (!["https:", "http:"].includes(origine.protocol) || origine.origin !== e.origin ||
-          (meta.parentOrigin && meta.parentOrigin !== e.origin) ||
-          (originesAutorisees && !originesAutorisees.includes(e.origin))) return;
-      origineParent = e.origin;
-      for (const ev of file.splice(0)) window.parent.postMessage(ev, origineParent);
-    });
-    window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, meta.parentOrigin || "*");
+    const estOrigineValide = (o) => {
+      try {
+        const u = new URL(o);
+        return ["https:", "http:"].includes(u.protocol) && u.origin === o;
+      } catch {
+        return false;
+      }
+    };
+
+    const originesAutorisees = new Set();
+    if (estOrigineValide(meta.parentOrigin)) originesAutorisees.add(meta.parentOrigin);
+    if (Array.isArray(meta.allowedParentOrigins)) {
+      for (const o of meta.allowedParentOrigins) {
+        if (estOrigineValide(o)) originesAutorisees.add(o);
+      }
+    }
+
+    if (originesAutorisees.size > 0) {
+      window.addEventListener("message", (e) => {
+        if (e.source !== window.parent || e.data?.type !== "kermiclab:evenements:ecouter" || e.data.v !== VERSION_CONTRAT ||
+            e.data.notion !== notion || origineParent) return;
+        let origine;
+        try { origine = new URL(e.origin); } catch { return; }
+        if (!["https:", "http:"].includes(origine.protocol) || origine.origin !== e.origin ||
+            !originesAutorisees.has(e.origin)) return;
+        origineParent = e.origin;
+        for (const ev of file.splice(0)) window.parent.postMessage(ev, origineParent);
+      });
+      // Annonce à chaque origine autorisée : seule celle du parent réel la reçoit (les autres sont ignorées par le
+      // navigateur). Ainsi le tableau de bord fonctionne sur chacun de ses domaines, pas seulement le premier.
+      for (const origine of originesAutorisees) {
+        window.parent.postMessage({ type: "kermiclab:evenements:pret", v: VERSION_CONTRAT, notion }, origine);
+      }
+    }
   }
 
   return Object.freeze({ emettre, construire, VERSION_CONTRAT });
