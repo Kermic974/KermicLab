@@ -88,7 +88,7 @@ async function versionnerRessources(dossier) {
 
 /**
  * Contenus des notions du gabarit (`contenu.json`) pour le formulaire de contribution (ADR 0023) : `contenus/index.json`
- * (id, titre, version) et `contenus/<id>.json`. Ce sont les textes déjà publiés dans les pages ; rien d'autre n'est copié.
+ * (id, titre, version, matière) et `contenus/<id>.json`. Ce sont les textes déjà publiés dans les pages ; rien d'autre n'est copié.
  */
 async function ecrireContenus(sortie, dossiers, index) {
   await mkdir(sortie, { recursive: true });
@@ -103,7 +103,7 @@ async function ecrireContenus(sortie, dossiers, index) {
       let source;
       try { source = await readFile(`${dossier}/${nom}/contenu.json`, "utf8"); } catch (e) { if (e.code === "ENOENT" || e.code === "ENOTDIR") continue; throw e; }
       await writeFile(`${sortie}/${nom}.json`, `${JSON.stringify(JSON.parse(source))}\n`);
-      notions.push({ id: nom, titre: fiche.titre, version: fiche.version });
+      notions.push({ id: nom, titre: fiche.titre, version: fiche.version, matiere: String(fiche.sujet ?? "").split("/")[0] || "autres" });
     }
   }
   notions.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));

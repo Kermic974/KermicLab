@@ -156,3 +156,36 @@ test("démonstration : contributeur propose, prof relit et valide, mêmes règle
   assert.ok(validee.contribution.issue_numero);
   assert.equal(demo.lireEtat("{cassé").connecte, false);
 });
+
+test("édition ciblée : champs regroupés par onglet dans l'ordre de la page, propositions en cours par champ", () => {
+  const liste = [
+    { notion_id: "pythagore", chemin: "intro", statut: "proposee" },
+    { notion_id: "pythagore", chemin: "intro", statut: "a_reviser" },
+    { notion_id: "pythagore", chemin: "intro", statut: "validee" },
+    { notion_id: "fractions", chemin: "intro", statut: "proposee" }
+  ];
+  assert.equal(r.ongletDuChemin("niveaux.1.paragraphes.0"), "explication");
+  assert.equal(r.ongletDuChemin("situation.conclusion"), "mise-en-situation");
+  const groupes = r.champsParOnglet(contenu, liste, "pythagore");
+  assert.deepEqual(groupes.map((g) => g.onglet), ["explication", "memo", "application", "mise-en-situation"]);
+  assert.equal(groupes[0].champs.find((c) => c.chemin === "intro").enCours, 2, "validée et autre notion exclues");
+  assert.equal(groupes.flatMap((g) => g.champs).length, r.champsEditables(contenu).length);
+  assert.equal(r.compterEnCoursParChemin(liste).get("intro"), 3);
+});
+
+test("tableau de bord : synthèse par matière puis notion, filtre par matière", () => {
+  const matieres = { pythagore: "mathematiques", fractions: "mathematiques", photosynthese: "svt" };
+  const de = (id) => matieres[id];
+  const liste = [
+    { notion_id: "pythagore", statut: "proposee", created_at: "1" }, { notion_id: "pythagore", statut: "proposee", created_at: "2" },
+    { notion_id: "fractions", statut: "validee", created_at: "3" }, { notion_id: "photosynthese", statut: "proposee", created_at: "4" },
+    { notion_id: "inconnue", statut: "refusee", created_at: "5" }
+  ];
+  const g = r.grouperParMatiere(liste, de);
+  assert.deepEqual(g.map((x) => x.matiere), ["mathematiques", "svt", "autres"], "les matières les plus chargées d'abord");
+  assert.equal(g[0].resume.proposee, 2);
+  assert.equal(g[0].resume.total, 3);
+  assert.deepEqual(g[0].notions.map((n) => n.id), ["pythagore", "fractions"]);
+  assert.equal(r.filtrer(liste, { statut: "tous", matiere: "mathematiques" }, de).length, 3);
+  assert.equal(r.filtrer(liste, { statut: "tous", matiere: "autres" }, de).length, 1);
+});
