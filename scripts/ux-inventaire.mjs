@@ -54,7 +54,7 @@ export async function construireInventaire() {
         p.record === undefined ? "" : "record", `${p.badges.length} badges`].filter(Boolean).join(" · ");
     const matiere = notion.sujet.split("/")[0];
     const active = `${apiUrl}/maquettes/${encodeURIComponent(notion.id)}?lang=fr`;
-    const source = `https://github.com/Kermic974/trigoLab/blob/main/catalogue/${encodeURIComponent(notion.id)}/${c ? "contenu.json" : "page.html"}`;
+    const source = `https://github.com/Kermic974/KermicLab/blob/main/catalogue/${encodeURIComponent(notion.id)}/${c ? "contenu.json" : "page.html"}`;
     lignes.push(`<tr data-notion="${echapper(notion.id)}"><td><a href="${echapper(cible)}">${echapper(notion.titre)}</a><br><code>${echapper(notion.id)}</code><br><a data-lien-actif href="${echapper(active)}" target="_blank" rel="noopener noreferrer">Vue active</a> · <a data-lien-actif href="${echapper(source)}" target="_blank" rel="noopener noreferrer">Source main</a></td><td>${echapper(fr[`matiere_${matiere}`] ?? `${matiere} (libellé absent du site)`)}</td><td>${echapper(fr[`niveau_${notion.niveau}`])}</td><td>${echapper(notion.version)}</td><td>${echapper(onglets.join(" · "))}</td><td>${echapper(c?.application?.figure?.type ?? "—")}</td><td>${echapper(progression)}</td></tr>`);
   }
   const jeux = catalogue.index.maquettes.filter((n) => n.sujet.startsWith("jeux/")).length;

@@ -9,7 +9,7 @@ Rien n'est implémenté dans le MVP.
 
 ## Backlog : accès LLM conditionné à un abonnement
 
-Suivi : [issue #121](https://github.com/Kermic974/trigoLab/issues/121).
+Suivi : [issue #121](https://github.com/Kermic974/KermicLab/issues/121).
 
 L'accès LLM reste **gratuit provisoirement**, à la demande du propriétaire (2026-11-05). La possession d'une clé, le cookie technique de quota et `LLM_ACTIF` ne constituent pas une preuve d'abonnement.
 

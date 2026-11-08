@@ -133,7 +133,7 @@ Contributions avec ce rôle **simulé dans le navigateur** (double de démonstra
 - Affichée seulement si `testRolesTemporaire` vaut `true` dans `config.json` (posé par `scripts/build.mjs`) : passer cette
   valeur à `false` la désactive immédiatement.
 - **À supprimer** quand la gestion des comptes sera disponible : liste des fichiers et vérifications dans
-  [l'issue #160](https://github.com/Kermic974/trigoLab/issues/160).
+  [l'issue #160](https://github.com/Kermic974/KermicLab/issues/160).
 
 ## Hors périmètre (étapes suivantes)
 

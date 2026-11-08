@@ -3,7 +3,7 @@
 # À lancer par le propriétaire avec la CLI `gh` authentifiée (action manuelle, voir docs/actions-manuelles.md).
 # Ne modifie JAMAIS la visibilité du dépôt.
 set -euo pipefail
-REPO="${1:-kermic974/trigoLab}"
+REPO="${1:-kermic974/KermicLab}"
 
 echo "== Labels : gérés par .github/labels.json et le workflow « Labels » (création automatique sur main)"
 

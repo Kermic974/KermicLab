@@ -26,7 +26,7 @@ suitable for all ages.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported privately to the
-project owner through [GitHub private reporting](https://github.com/kermic974/trigoLab/security/advisories/new)
+project owner through [GitHub private reporting](https://github.com/kermic974/KermicLab/security/advisories/new)
 or via the owner's GitHub profile. All complaints will be reviewed and investigated promptly and fairly.
 Enforcement follows the Contributor Covenant Enforcement Guidelines (correction, warning, temporary ban,
 permanent ban).

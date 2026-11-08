@@ -16,7 +16,7 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 | Démonstration `?demo=contributions` (rôles contributeur et prof simulés) | Fait, testé (`tests/e2e/contributions.test.mjs`) |
 | Édition ciblée dans la bulle d'une notion (textes par onglet, compteurs, aperçu) et menu « Contributions » avec synthèse par matière (ADR 0023 §6 bis) | Fait, testé (ordinateur et mobile) |
 | Contenus des notions pour le formulaire (`dist/contenus/`) | Générés par `npm run build` |
-| **Temporaire** : « Tester les rôles » dans le Profil (rôle simulé dans le navigateur, sans serveur) | Actif (`testRolesTemporaire`) ; à supprimer à l'ouverture des comptes, [issue #160](https://github.com/Kermic974/trigoLab/issues/160) |
+| **Temporaire** : « Tester les rôles » dans le Profil (rôle simulé dans le navigateur, sans serveur) | Actif (`testRolesTemporaire`) ; à supprimer à l'ouverture des comptes, [issue #160](https://github.com/Kermic974/KermicLab/issues/160) |
 
 ## Plan
 
@@ -24,7 +24,7 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 |---|---|---|
 | 1 | Scénario sans IA : rôles, proposition, relecture à quatre yeux, tableau de bord, issue de suivi, démo | Fait (PR en attente) |
 | 2 | ADR 0023 accepté (2026-11-07) ; label `contribution-validee` créé par le workflow « Labels » ; valider la charte du contributeur | Charte : action manuelle 36 |
-| 3 | Activation avec les comptes (ADR 0017) : schéma D1, attribution des premiers rôles, test du parcours réel, **suppression de l'option temporaire « Tester les rôles »** ([issue #160](https://github.com/Kermic974/trigoLab/issues/160)) | À faire |
+| 3 | Activation avec les comptes (ADR 0017) : schéma D1, attribution des premiers rôles, test du parcours réel, **suppression de l'option temporaire « Tester les rôles »** ([issue #160](https://github.com/Kermic974/KermicLab/issues/160)) | À faire |
 | 4 | Avec IA : pré-relecture par un agent et PR d'intégration préparée automatiquement, validation humaine conservée | Backlog |
 | 5 | Notifications aux auteurs, historique des décisions, rôles par matière, attribution des rôles dans l'interface | Backlog |
 

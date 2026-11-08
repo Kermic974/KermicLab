@@ -61,7 +61,7 @@ beforeEach(() => {
   github = creerGitHub();
   globalThis.fetch = github.fetchFactice;
   env = {
-    DB: creerD1Llm(), GITHUB_TOKEN: "jeton-test", GITHUB_REPO: "kermic974/trigoLab",
+    DB: creerD1Llm(), GITHUB_TOKEN: "jeton-test", GITHUB_REPO: "kermic974/KermicLab",
     ANTHROPIC_API_KEY: "cle-test", AI_GATEWAY_TOKEN: "jeton-gateway-test", ORIGINES_AUTORISEES: "https://kermiclab.pages.dev",
     LLM_ACTIF: "true", LLM_SESSION_SECRET: "secret-factice-de-test-de-plus-de-32-caracteres",
     AI: {

@@ -78,7 +78,7 @@ séparée de l’Académie ; réponses et bilan ne sont jamais persistés ni env
 
 Chaque jeu est relu par un adulte, sur téléphone et sur ordinateur, avec la
 [grille de relecture jeux-v1](chantiers/validation-maquettes.md#grille-de-relecture-jeux-v1) (feuille de route, phase 0 ;
-[issue #175](https://github.com/Kermic974/trigoLab/issues/175)). La relecture se trace dans le front matter de
+[issue #175](https://github.com/Kermic974/KermicLab/issues/175)). La relecture se trace dans le front matter de
 `fiche.md`, comme pour une notion, avec la grille des jeux :
 
 ```yaml
