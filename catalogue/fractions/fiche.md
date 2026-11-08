@@ -2,7 +2,7 @@
 id: fractions
 titre: Les fractions
 sujet: mathematiques/fractions
-version: 1.0.0
+version: 1.1.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-3, cycle-4, seconde

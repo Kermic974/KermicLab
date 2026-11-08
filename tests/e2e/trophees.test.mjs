@@ -112,7 +112,8 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     // Carte de Leitner de chaque exercice réussi (issue #187) : réussi au 2e essai → boîte 1, révision le lendemain.
     const sansCarte = Object.fromEntries(Object.entries(notions.pythagore.exercices).map(([id, { boite, prochaine, ...faits }]) => [id, faits]));
     assert.deepEqual(sansCarte, {
-      "app-1": { reponses: 2, reussi: true, indice: 0, apresIndice: false },
+      // Indices gradués (issue #190) : l'erreur au QCM donne aussi son premier indice.
+      "app-1": { reponses: 2, reussi: true, indice: 1, apresIndice: true },
       "app-2": { reponses: 2, reussi: true, indice: 1, apresIndice: true }
     });
     for (const e of Object.values(notions.pythagore.exercices)) {
@@ -131,7 +132,7 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     await activite.waitFor();
     const texte = (await activite.textContent()).replace(/\s+/g, " ");
     assert.match(texte, /Exercices réussis \/ tentés\s*2 \/ 2/);
-    assert.match(texte, /Réussis après un indice\s*1/);
+    assert.match(texte, /Réussis après un indice\s*2/);
     assert.match(texte, /Ouvertures\s*1/);
     assert.doesNotMatch(texte, /Tous les exercices réussis/, "notion non terminée");
     // Maîtrise (issue #185) : exercices tentés, notion pas encore validée en entier → « En cours ».
