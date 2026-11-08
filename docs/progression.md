@@ -137,6 +137,23 @@ bord. Le build en publie une copie en module ES (`dist/progression-jeux.js`) ; i
 - Les révisions de notion (7, 30, 90 jours, « à revoir ») restent au niveau de la notion ; les cartes de Leitner
   travaillent exercice par exercice.
 
+## Changer d'appareil : export et import en fichier (issue #189)
+
+Écran Progression, carte « Changer d'appareil », toujours visible (même sans progression, pour importer sur un appareil
+neuf). Module pur `web/fichier-progression.js` ; rien n'est envoyé au serveur : le fichier reste chez l'utilisateur.
+
+- **Format** : `{ "format": "kermiclab-progression", "v": 1, "cree": "AAAA-MM-JJ", "donnees": { … } }`, JSON indenté,
+  fichier `kermiclab-progression-AAAA-MM-JJ.json`. Champs : `pseudo`, `progression`, `trophees`, `evenements` (activité,
+  maîtrise et cartes de révision) et `cahiers`, soit les clés du stockage local de l'appareil.
+- **Import** : le fichier est validé avant tout changement : taille (2 Mo au plus), JSON, format, version (une version
+  plus récente est refusée avec un message clair), date, aucun champ inconnu. Chaque champ passe ensuite par la fonction
+  de chargement de son module, qui écarte les entrées invalides. Un champ refusé fait refuser tout le fichier.
+- **Remplacement complet** après confirmation (« Remplacer ma progression ») : champs du fichier écrits, champs absents
+  effacés, puis la page se recharge. L'état en mémoire est abandonné juste avant, pour que l'enregistrement du temps actif
+  au départ de la page ne réécrive pas l'ancienne progression.
+- Ce fichier n'est pas la synchronisation du compte local (ADR 0024) : il contient aussi l'agrégat du contrat
+  d'événements (ADR 0025), puisqu'il ne quitte jamais l'appareil sans l'action de l'utilisateur.
+
 ## Tests
 
 - `tests/unit/temps-actif.test.mjs` : règles du moteur (horloge manuelle, déterministe).

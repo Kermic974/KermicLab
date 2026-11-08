@@ -280,6 +280,17 @@
           <h2 id="decouvertes-titre" data-i18n="progressionDecouvertes"></h2>
           <div id="decouvertes-liste" class="arbre"></div>
         </section>
+        <section class="carte fichier-progression" id="fichier-progression" aria-labelledby="fichier-titre">
+          <h2 id="fichier-titre" data-i18n="fichierTitre"></h2>
+          <p class="doux petit" data-i18n="fichierAide"></p>
+          <div class="fichier-actions">
+            <button type="button" class="bouton secondaire-bouton" id="exporter-progression" data-i18n="fichierExporter"></button>
+            <label class="bouton secondaire-bouton" for="importer-progression"><span data-i18n="fichierImporter"></span></label>
+            <input type="file" id="importer-progression" class="visuellement-cache" accept=".json,application/json">
+          </div>
+          <p id="fichier-etat" class="petit" role="status"></p>
+          <button type="button" class="bouton" id="confirmer-import" data-i18n="fichierRemplacer" hidden></button>
+        </section>
       </section>
 
       <footer class="pied">

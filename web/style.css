@@ -1046,3 +1046,9 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   #bulle-editer .ico { margin-right: 0; }
   .nav-mobile { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
 }
+
+/* Changer d'appareil : export et import de la progression (issue #189). */
+.fichier-progression h2 { margin: 0 0 4px; }
+.fichier-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.fichier-actions label.bouton { cursor: pointer; }
+.fichier-actions input:focus-visible + label, .fichier-actions label:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
