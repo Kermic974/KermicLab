@@ -681,7 +681,14 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
     if (a.matiere !== b.matiere) { assert.ok(matieres.indexOf(a.matiere) < matieres.indexOf(b.matiere)); continue; }
     assert.ok(ordre.indexOf(a.niveau) < ordre.indexOf(b.niveau) || (a.niveau === b.niveau && cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }) <= 0), `${a.id} puis ${b.id}`);
   }
-  assert.deepEqual(Object.keys(notions[0]).sort(), ["id", "matiere", "niveau", "titre", "version"]);
+  for (const n of notions) {
+    const facultatifs = Object.keys(n).filter((k) => !["id", "matiere", "niveau", "titre", "version"].includes(k));
+    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis"].includes(k)), `${n.id} : ${facultatifs}`);
+  }
+  // Référentiel (issue #186) : prérequis et niveaux exposés quand la fiche les renseigne, pour la recommandation.
+  const equations = notions.find((n) => n.id === "equations");
+  assert.deepEqual(equations.prerequis, ["calcul-litteral"]);
+  assert.deepEqual(equations.niveaux, ["cycle-4", "seconde"]);
   // Résumé facultatif (écran Jeux) : présent seulement quand la fiche le déclare, jamais inventé.
   const jeux = notions.filter((n) => n.matiere === "jeux");
   assert.ok(jeux.length >= 2);

@@ -11,6 +11,7 @@ import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 import * as evenements from "./evenements.js";
+import * as recommandation from "./recommandation.js";
 import * as experiences from "./experiences.js";
 import { creerMoteurTemps } from "./temps-actif.js";
 
@@ -3277,7 +3278,8 @@ function rendreReprendre() {
   const zone = $("#reprendre-contenu");
   const derniere = etat.progres.derniere;
   const n = derniere ? etat.registre.trouver(derniere.id) : null;
-  $("#reprendre").hidden = !n;
+  // Une seule prochaine action : une recommandation fondée sur la maîtrise (issue #186) passe avant « Reprendre ».
+  $("#reprendre").hidden = !n || Boolean(recommandationCourante());
   zone.replaceChildren();
   if (!n) return;
   if (n.type === "jeu") zone.append(element("span", { classe: "fil-ariane", cle: "navJeux" }));
@@ -3286,6 +3288,29 @@ function rendreReprendre() {
   const b = bouton("reprendreBouton", "i-lecture");
   b.addEventListener("click", () => ouvrirNotion(n));
   zone.append(b);
+}
+
+/**
+ * Recommandation déterministe (issue #186) : révision due, ou notion dont tous les prérequis sont maîtrisés, d'après la
+ * maîtrise locale (issue #185). null tant que rien n'est maîtrisé : l'accueil garde alors sa suggestion habituelle.
+ */
+function recommandationCourante() {
+  const derniere = notionParId(etat.progres?.derniereNotion);
+  const jour = progression.jourLocal();
+  return recommandation.recommander({
+    notions: etat.notions, matiere: derniere ? matiereDe(derniere) : undefined,
+    maitrise: (id) => evenements.maitriseNotion(etat.evenements?.notions?.[id], jour)
+  });
+}
+
+/** Raison affichée d'une recommandation, traduite (titres en liste naturelle, date lisible). */
+function texteRaison({ cle, variables }) {
+  if (cle === "recoPrerequis") {
+    const liste = new Intl.ListFormat(etat.langue, { type: "conjunction" }).format(variables.prerequis.map((p) => `« ${p} »`));
+    return t(cle, { prerequis: liste });
+  }
+  const date = new Date(`${variables.date}T00:00:00`).toLocaleDateString(etat.langue, { day: "numeric", month: "long" });
+  return t(cle, { titre: variables.titre, date });
 }
 
 /** Prochaine notion : même matière et même niveau que la dernière ouverte, sinon même matière, sinon le cercle trigo. */
@@ -3305,6 +3330,21 @@ function rendreSuggestion() {
   // Une seule prochaine action : la suggestion s'efface quand « Reprendre » est proposé.
   $("#suggestion").hidden = !$("#reprendre").hidden;
   zone.replaceChildren();
+  const reco = recommandationCourante();
+  if (reco) {
+    const revision = reco.raison.cle === "recoRevision";
+    zone.append(element("p", { texte: texteRaison(reco.raison), attributs: { "data-reco": reco.raison.cle } }));
+    const encart = element("div", { classe: "encart" });
+    encart.append(element("span", { classe: "sur-titre", cle: revision ? "recoRevisionSurTitre" : "suggestionActivite" }), element("h3", { texte: reco.notion.titre }));
+    const meta = element("p", { classe: "meta" });
+    meta.append(filAriane(reco.notion));
+    encart.append(meta);
+    const b = bouton(revision ? "recoReviser" : "commencer", "i-lecture");
+    b.addEventListener("click", () => ouvrirNotion(reco.notion));
+    encart.append(b);
+    zone.append(encart, element("p", { classe: "doux petit", cle: "recoNote" }));
+    return;
+  }
   const n = prochaineNotion();
   const derniere = notionParId(etat.progres.derniereNotion);
   if (!n) {

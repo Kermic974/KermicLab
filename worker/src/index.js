@@ -100,7 +100,12 @@ export const cleDeTri = (titre) => String(titre).replace(/^(?:(?:les|le|la|the)\
 export function listeCatalogue(index) {
   const rang = (liste, v) => { const i = liste.indexOf(v); return i < 0 ? liste.length : i; };
   return index.maquettes
-    .map((m) => ({ id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres", matiere: matiereDe(m), ...(m.resume ? { resume: m.resume } : {}) }))
+    .map((m) => ({
+      id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres", matiere: matiereDe(m),
+      ...(m.resume ? { resume: m.resume } : {}),
+      // Référentiel (issue #186) : niveaux et prérequis, seulement quand la fiche les renseigne ; sert la recommandation.
+      ...(m.niveaux ? { niveaux: m.niveaux } : {}), ...(m.prerequis ? { prerequis: m.prerequis } : {})
+    }))
     .sort((a, b) => rang(ORDRE_MATIERES, a.matiere) - rang(ORDRE_MATIERES, b.matiere) || a.matiere.localeCompare(b.matiere)
       || rang(ORDRE_NIVEAUX, a.niveau) - rang(ORDRE_NIVEAUX, b.niveau)
       || cleDeTri(a.titre).localeCompare(cleDeTri(b.titre), "fr", { sensitivity: "base" }));

@@ -115,7 +115,7 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
     body: JSON.stringify({ notions: [
       { id: "fractions", titre: "Les fractions", version: "1.0.0", niveau: "college" },
-      { id: "pythagore", titre: "Le théorème de Pythagore", version: "1.0.0", niveau: "college" },
+      { id: "pythagore", titre: "Le théorème de Pythagore", version: "1.0.0", niveau: "college", niveaux: ["cycle-4"], prerequis: ["fractions"] },
       { id: "trigo-cercle", titre: "Le cercle trigonométrique", version: "1.0.0", niveau: "seconde" },
       { id: "derivation", titre: "La dérivation", version: "1.0.0", niveau: "premiere" },
       { id: "electricite", titre: "Circuits électriques et loi d'Ohm", version: "1.0.0", niveau: "college", matiere: "physique-chimie" },

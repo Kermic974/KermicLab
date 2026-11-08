@@ -517,6 +517,45 @@ test("fenêtre de profil : changer de pseudo, retirer le cookie, puis tout effac
   await contexte.close();
 });
 
+test("recommandation (issue #186) : prérequis maîtrisés puis révision due, raison affichée, une seule prochaine action", async () => {
+  // Agrégat local du contrat d'événements : « Les fractions » validée il y a `jours` jours (ADR 0025, issue #185).
+  const ouvrirAvec = (jours) => demarrer({}, (p) => p.addInitScript((j) => {
+    try {
+      const d = new Date(); d.setDate(d.getDate() - j);
+      const jour = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      sessionStorage.setItem("kermiclab:evenements", JSON.stringify({ v: 1, notions: { fractions: {
+        version: "1.0.0", ouvertures: 1, dernierJour: jour, termine: true, validations: 1, derniereValidation: jour,
+        exercices: { "app-1": { reponses: 1, reussi: true, indice: 0, apresIndice: false } } } } }));
+    } catch { /* iframe sandboxée */ }
+  }, jours));
+  {
+    const { page, contexte, erreurs } = await ouvrirAvec(0);
+    await choisirPseudo(page, "Inès");
+    await catalogueCharge(page);
+    const suggestion = page.locator("#suggestion");
+    await suggestion.locator("[data-reco=recoPrerequis]").waitFor();
+    assert.match(await suggestion.textContent(), /Parce que tu maîtrises « Les fractions », tu es prêt pour cette notion\./);
+    assert.match(await suggestion.locator(".encart h3").textContent(), /Le théorème de Pythagore/);
+    assert.equal(await page.locator("#reprendre").isVisible(), false, "une seule prochaine action");
+    await suggestion.getByRole("button", { name: "Commencer" }).click();
+    await page.locator("#bulle-lab[open][data-notion=pythagore]").waitFor();
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  }
+  {
+    const { page, contexte, erreurs } = await ouvrirAvec(10);
+    await choisirPseudo(page, "Inès");
+    await catalogueCharge(page);
+    const suggestion = page.locator("#suggestion");
+    await suggestion.locator("[data-reco=recoRevision]").waitFor();
+    assert.match(await suggestion.textContent(), /Ta révision de « Les fractions » est prévue depuis le/);
+    assert.match(await suggestion.locator(".encart h3").textContent(), /Les fractions/);
+    assert.equal(await suggestion.getByRole("button", { name: "Réviser" }).isVisible(), true);
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  }
+});
+
 test("reprise : une progression d'une version précédente est proposée à la mémorisation", async () => {
   const ancienne = { questions: 3, xp: 30, notions: [], serie: 1, serieMax: 2, dernierJour: "2026-01-01", badges: ["premier-pas"] };
   const { page, contexte, erreurs } = await demarrer({}, (p) => p.addInitScript((a) => {

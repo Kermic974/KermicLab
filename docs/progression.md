@@ -104,6 +104,22 @@ déterministes, appliquées dans cet ordre :
 - Les révisions espacées des exercices (Leitner, issue #187) et la recommandation (issue #186) s'appuieront sur ces
   états.
 
+## Recommandation (issue #186)
+
+`recommander({ notions, maitrise, matiere })` (`web/recommandation.js`) propose **une** prochaine notion à l'accueil,
+avec sa raison, à partir du catalogue (`prerequis`, `niveaux`, exposés par `/api/catalogue`) et de la maîtrise locale.
+Fonction pure : mêmes données, même proposition. Règles, dans cet ordre :
+
+1. **Révision due** : la notion « à revoir » dont la révision est la plus ancienne (puis par identifiant). Raison :
+   « Ta révision de « … » est prévue depuis le … ». Bouton « Réviser ».
+2. **Prérequis maîtrisés** : une notion pas encore acquise dont tous les prérequis (au moins un) sont maîtrisés ou à
+   revoir. Départage : même matière que la dernière notion ouverte, puis niveau de début le plus jeune, puis ordre du
+   catalogue. Raison : « Parce que tu maîtrises « … » et « … », tu es prêt pour cette notion. »
+3. Sinon, aucune recommandation : l'accueil garde sa suggestion habituelle (même matière, notion pas encore ouverte).
+
+Une recommandation passe avant « Reprendre » : l'accueil ne montre qu'une prochaine action. Les jeux ne sont jamais
+proposés. Raisons traduites (fr, en) ; rien n'est envoyé au serveur.
+
 ## Tests
 
 - `tests/unit/temps-actif.test.mjs` : règles du moteur (horloge manuelle, déterministe).
