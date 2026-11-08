@@ -82,17 +82,28 @@ test("exercices : QCM, indices progressifs, étoiles mémorisées", async () => 
   const calcul = page.locator("[data-exercice=app-2]");
   await calcul.locator("input").fill("21");
   await calcul.getByRole("button", { name: "Valider" }).click();
-  assert.match(await calcul.locator(".retour").textContent(), /^Tu as additionné 9 \+ 12\..*Indice : Calcule 9² \+ 12²/,
-    "erreur fréquente (21) : explication ciblée puis l'indice");
+  // Indices gradués (issue #190) : un de plus à chaque erreur, du plus léger au plus précis, puis la solution.
+  assert.match(await calcul.locator(".retour").textContent(), /^Tu as additionné 9 \+ 12\..*Indice 1\/3 : Le théorème dit/,
+    "erreur fréquente (21) : explication ciblée puis le premier indice");
+  assert.equal(await calcul.getByRole("button", { name: "Voir la solution" }).isVisible(), false, "pas de solution avant le dernier indice");
   await calcul.locator("input").fill("225");
   await calcul.locator("input").press("Enter");
-  assert.match(await calcul.locator(".retour").textContent(), /^225, c'est 9² \+ 12².*Indice : 9² \+ 12² = 81/, "deuxième erreur fréquente");
+  assert.match(await calcul.locator(".retour").textContent(), /^225, c'est 9² \+ 12².*Indice 2\/3 : Calcule 9² \+ 12²/, "deuxième erreur fréquente");
   await calcul.locator("input").fill("17");
   await calcul.locator("input").press("Enter");
-  assert.match(await calcul.locator(".retour").textContent(), /^Pas encore/, "erreur non décrite : message général");
+  assert.match(await calcul.locator(".retour").textContent(), /^Indice 3\/3 : 9² \+ 12² = 81/, "erreur non décrite : indice suivant");
+  assert.equal(await calcul.getByRole("button", { name: "Voir la solution" }).isVisible(), true, "solution après le dernier indice");
+  assert.equal(await calcul.getByRole("button", { name: "Un indice ?" }).isVisible(), false, "plus d'indice à demander");
   await calcul.locator("input").fill("15");
   await calcul.getByRole("button", { name: "Valider" }).click();
   assert.match(await calcul.locator(".retour").textContent(), /Exact/);
+  // « Un indice ? » : l'élève peut demander les indices avant de répondre, un par un.
+  const autre = page.locator("[data-exercice=app-3]");
+  for (const [rang, debut] of [[1, "On cherche un côté"], [2, "Calcule 10² − 6²"], [3, "10² − 6² = 100 − 36 = 64"]]) {
+    await autre.getByRole("button", { name: "Un indice ?" }).click();
+    assert.match(await autre.locator(".retour").textContent(), new RegExp(`^Indice ${rang}/3 : ${debut}`));
+  }
+  assert.equal(await autre.getByRole("button", { name: "Un indice ?" }).isVisible(), false);
   assert.match(await page.locator("#etoiles").textContent(), /★ 2 \/ 10/);
   await page.reload();
   assert.match(await page.locator("#etoiles").textContent(), /★ 2 \/ 10/);

@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-wQ8NClznSXGK/xWFump0DeCI+Cl19+luicwlDGXsvSk='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-Kk+IG7j9zYAIPbbFjBsVdQEoVgy/aK+kaqY55DzPOt4='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Le théorème de Pythagore – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "pythagore",
   "titre": "Le théorème de Pythagore",
   "sujet": "mathematiques/theoreme-de-pythagore",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "date": "2026-11-01",
   "langue": "fr",
   "onglets": [
@@ -21,7 +21,7 @@
     "mise-en-situation",
     "self-test"
   ],
-  "gabarit": "1.1.0"
+  "gabarit": "1.2.0"
 }
 </script>
 <script type="application/json" id="kermiclab-contenu">
@@ -137,6 +137,11 @@
         "type": "qcm",
         "titre": "Vocabulaire",
         "question": "Dans un triangle rectangle, l'hypoténuse est…",
+        "indices": [
+          "Repère d'abord l'angle droit sur la figure.",
+          "L'hypoténuse ne touche pas l'angle droit : elle lui fait face.",
+          "C'est aussi toujours le plus long des trois côtés."
+        ],
         "choix": [
           "le côté opposé à l'angle droit",
           "le plus petit côté",
@@ -159,12 +164,13 @@
         "type": "nombre",
         "titre": "Calculer l'hypoténuse",
         "question": "Un triangle est rectangle. Les côtés de l'angle droit mesurent 9 cm et 12 cm. Combien mesure l'hypoténuse ?",
-        "reponse": 15,
-        "unite": "cm",
         "indices": [
+          "Le théorème dit : hypoténuse² = somme des carrés des deux autres côtés.",
           "Calcule 9² + 12².",
           "9² + 12² = 81 + 144 = 225. Quel nombre multiplié par lui-même donne 225 ?"
         ],
+        "reponse": 15,
+        "unite": "cm",
         "solution": "9² + 12² = 81 + 144 = 225, et √225 = 15 cm.",
         "erreurs": [
           {
@@ -181,12 +187,13 @@
         "type": "nombre",
         "titre": "Calculer un côté de l'angle droit",
         "question": "L'hypoténuse mesure 10 cm et un côté de l'angle droit mesure 6 cm. Combien mesure l'autre côté ?",
+        "indices": [
+          "On cherche un côté de l'angle droit, pas l'hypoténuse : on va soustraire.",
+          "Calcule 10² − 6².",
+          "10² − 6² = 100 − 36 = 64. Quel nombre multiplié par lui-même donne 64 ?"
+        ],
         "reponse": 8,
         "unite": "cm",
-        "indices": [
-          "Cette fois, on soustrait : 10² − 6².",
-          "10² − 6² = 100 − 36 = 64."
-        ],
         "solution": "10² − 6² = 100 − 36 = 64, et √64 = 8 cm.",
         "erreurs": [
           {
@@ -208,13 +215,14 @@
         "type": "nombre",
         "titre": "Avec un arrondi",
         "question": "Les côtés de l'angle droit mesurent 5 cm et 7 cm. Donne l'hypoténuse arrondie au dixième (par exemple 4,3).",
+        "indices": [
+          "Comme d'habitude : hypoténuse² = 5² + 7².",
+          "5² + 7² = 25 + 49 = 74.",
+          "Utilise la touche √ de la calculatrice : √74 ≈ 8,602… Il reste à arrondir au dixième."
+        ],
         "reponse": 8.6,
         "tolerance": 0.05,
         "unite": "cm",
-        "indices": [
-          "5² + 7² = 25 + 49 = 74.",
-          "Utilise la touche √ de la calculatrice : √74 ≈ 8,602…"
-        ],
         "solution": "5² + 7² = 74, et √74 ≈ 8,6 cm (au dixième).",
         "erreurs": [
           {
@@ -236,25 +244,33 @@
         "type": "qcm",
         "titre": "La réciproque",
         "question": "Un triangle a des côtés de 5 cm, 12 cm et 13 cm. Est-il rectangle ?",
+        "indices": [
+          "Avec la réciproque, on compare le carré du plus grand côté à la somme des carrés des deux autres.",
+          "Le plus grand côté mesure 13 cm : calcule 13², puis 5² + 12².",
+          "13² = 169 et 5² + 12² = 25 + 144. Les deux résultats sont-ils égaux ?"
+        ],
         "choix": [
           "Oui",
           "Non",
           "On ne peut pas savoir"
         ],
         "bonne": 0,
-        "indice": "Compare 13² avec 5² + 12².",
         "explication": "13² = 169 et 5² + 12² = 25 + 144 = 169 : d'après la réciproque du théorème de Pythagore, il est rectangle."
       },
       {
         "type": "qcm",
         "titre": "La contraposée",
         "question": "Un triangle a des côtés de 7 cm, 8 cm et 11 cm. Est-il rectangle ?",
+        "indices": [
+          "Compare le carré du plus grand côté à la somme des carrés des deux autres.",
+          "Calcule 11², puis 7² + 8².",
+          "11² = 121 et 7² + 8² = 49 + 64. Les deux résultats sont-ils égaux ?"
+        ],
         "choix": [
           "Oui",
           "Non"
         ],
         "bonne": 1,
-        "indice": "Compare 11² avec 7² + 8².",
         "explication": "11² = 121 mais 7² + 8² = 49 + 64 = 113 : ce n'est pas égal, donc le triangle n'est pas rectangle."
       }
     ]
@@ -270,32 +286,42 @@
         "type": "qcm",
         "titre": "Repérer l'hypoténuse",
         "question": "Dans ce triangle rectangle, quel côté est l'hypoténuse ?",
+        "indices": [
+          "Cherche où se trouve l'angle droit dans la situation.",
+          "L'angle droit est entre le mur et le sol.",
+          "Parmi le mur, le sol et l'échelle, lequel ne forme pas l'angle droit ?"
+        ],
         "choix": [
           "L'échelle",
           "Le mur",
           "Le sol entre le mur et le pied de l'échelle"
         ],
         "bonne": 0,
-        "indice": "L'angle droit est entre le mur et le sol. Quel côté lui fait face ?",
         "explication": "L'angle droit est au pied du mur : le côté qui lui fait face, c'est l'échelle."
       },
       {
         "type": "nombre",
         "titre": "La hauteur atteinte",
         "question": "À quelle hauteur le haut de l'échelle touche-t-il le mur ?",
+        "indices": [
+          "L'échelle (5 m) est l'hypoténuse : la hauteur est un côté de l'angle droit, on soustrait.",
+          "Hauteur² = 5² − 1,4².",
+          "5² − 1,4² = 25 − 1,96 = 23,04. Prends la racine carrée."
+        ],
         "reponse": 4.8,
         "tolerance": 0.001,
         "unite": "m",
-        "indices": [
-          "Hauteur² = 5² − 1,4².",
-          "5² − 1,4² = 25 − 1,96 = 23,04."
-        ],
         "solution": "h² = 5² − 1,4² = 25 − 1,96 = 23,04, donc h = √23,04 = 4,8 m."
       },
       {
         "type": "qcm",
         "titre": "Le chat est-il sauvé ?",
         "question": "La fenêtre du chat est à 4,5 m du sol. Le pompier peut-il l'atteindre en haut de l'échelle ?",
+        "indices": [
+          "Tu viens de calculer jusqu'où monte le haut de l'échelle.",
+          "Compare cette hauteur à celle de la fenêtre : 4,5 m.",
+          "Le haut de l'échelle arrive à 4,8 m du sol. Est-ce au moins 4,5 m ?"
+        ],
         "choix": [
           "Oui",
           "Non"
@@ -307,12 +333,13 @@
         "type": "nombre",
         "titre": "Par sécurité",
         "question": "Par sécurité, le chef demande d'écarter le pied de l'échelle à 3 m du mur. À quelle hauteur arrive-t-elle maintenant ?",
+        "indices": [
+          "L'échelle mesure toujours 5 m ; seul l'écart au mur change.",
+          "Hauteur² = 5² − 3².",
+          "5² − 3² = 25 − 9 = 16. Quel nombre multiplié par lui-même donne 16 ?"
+        ],
         "reponse": 4,
         "unite": "m",
-        "indices": [
-          "Hauteur² = 5² − 3².",
-          "5² − 3² = 25 − 9 = 16."
-        ],
         "solution": "h² = 25 − 9 = 16, donc h = 4 m : trop bas pour la fenêtre ! Tu reconnais le triplet 3, 4, 5."
       }
     ],
@@ -429,6 +456,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 @keyframes brille { 40% { transform: scale(1.15); } }
 @keyframes apparait { from { opacity: 0; transform: translateY(6px); } }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+.exercice .indice-bouton:not([hidden]) { display: block; }
 </style>
 <script id="trophees" data-inclure="gabarit/jeux/trophees.js">
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
@@ -572,7 +600,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Le théorème de Pythagore</h1>
-    <div class="meta">pythagore · v1.1.0</div>
+    <div class="meta">pythagore · v1.2.0</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
@@ -704,8 +732,28 @@ const Evenements = (() => {
     zone.replaceChildren(riche(texte));
   }
 
+  /**
+   * Indices gradués sans IA (issue #190) : 1 à 3 indices, du plus léger au plus précis, donnés un par un, à la demande
+   * (« Un indice ? ») ou après une erreur. Chaque indice donné émet l'événement « indice » avec son rang (ADR 0025).
+   */
+  function indicesGradues(ex, id, zone) {
+    const liste = Array.isArray(ex.indices) ? ex.indices : ex.indice ? [ex.indice] : [];
+    let donnes = 0;
+    const bouton = h("button", { type: "button", classe: "lien indice-bouton", hidden: !liste.length }, "Un indice ?");
+    const suivant = () => {
+      if (donnes >= liste.length) return null;
+      donnes += 1;
+      signaler("indice", { exercice: id, rang: donnes });
+      if (donnes >= liste.length) bouton.hidden = true;
+      return `Indice ${donnes}${liste.length > 1 ? `/${liste.length}` : ""} : ${liste[donnes - 1]}`;
+    };
+    bouton.addEventListener("click", () => { const texte = suivant(); if (texte) afficherRetour(zone, false, texte); });
+    return { bouton, suivant, tous: () => donnes >= liste.length, fin: () => { bouton.hidden = true; } };
+  }
+
   function exerciceQcm(ex, id, surReussite) {
     const zone = retourZone();
+    const indices = indicesGradues(ex, id, zone);
     const choix = h("div", { classe: "choix", role: "group", "aria-label": "Réponses possibles" });
     let essais = 0;
     ex.choix.forEach((libelle, i) => {
@@ -718,19 +766,20 @@ const Evenements = (() => {
           choix.dataset.fini = "1";
           b.classList.add("juste");
           choix.querySelectorAll("button").forEach((x) => { x.disabled = true; });
+          indices.fin();
           afficherRetour(zone, true, `${gagner(id) ? "Bravo, +1 étoile ! " : "Bravo ! "}${ex.explication ?? ""}`);
           surReussite?.();
         } else {
           b.classList.add("faux"); b.disabled = true;
-          // Erreur fréquente décrite pour ce choix : explication ciblée ; sinon l'indice général.
+          // Erreur fréquente décrite pour ce choix : explication ciblée, puis l'indice gradué suivant.
           const ciblee = ex.erreurs?.find((e) => e.choix === i)?.message;
-          if (ex.indice && essais === 1) signaler("indice", { exercice: id, rang: 1 });
-          afficherRetour(zone, false, ciblee ?? ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
+          const indice = indices.suivant();
+          afficherRetour(zone, false, [ciblee, indice].filter(Boolean).join(" ") || "Pas tout à fait. Relis bien l'énoncé et réessaie !");
         }
       });
       choix.append(b);
     });
-    return [choix, zone];
+    return [choix, indices.bouton, zone];
   }
 
   function exerciceNombre(ex, id, surReussite) {
@@ -741,9 +790,10 @@ const Evenements = (() => {
     const valider = h("button", { type: "button", classe: "action" }, "Valider");
     const solution = h("button", { type: "button", classe: "lien", hidden: true }, "Voir la solution");
     const form = h("form", { classe: "reponse" }, champ, ex.unite ? h("span", { classe: "unite" }, ex.unite) : null, valider);
+    const indices = indicesGradues(ex, id, zone);
     let essais = 0, tentatives = 0, fini = false;
     const terminer = (ok) => {
-      fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true;
+      fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true; indices.fin();
       const texte = ok ? `${gagner(id) ? "Exact, +1 étoile ! " : "Exact ! "}${ex.solution ?? ""}` : `Solution : ${ex.solution ?? nombreFr(ex.reponse)}`;
       afficherRetour(zone, ok, texte);
       if (ok) surReussite?.();
@@ -762,20 +812,19 @@ const Evenements = (() => {
       }
       if (juste) { terminer(true); return; }
       essais += 1;
-      const indices = ex.indices ?? [];
       // Notation déterministe : une réponse fausse qui correspond à une erreur fréquente reçoit son explication ciblée,
-      // suivie de l'indice suivant (contenu.json, « erreurs » : réponse, tolérance, message).
+      // suivie de l'indice gradué suivant (contenu.json, « erreurs » : réponse, tolérance, message).
       const frequente = (ex.erreurs ?? []).find((e) => Math.abs(lu.valeur - e.reponse) <= (e.tolerance ?? 1e-9));
-      if (essais <= indices.length) signaler("indice", { exercice: id, rang: essais });
-      const suite = essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.";
+      const suite = indices.suivant() ?? "Pas encore. Tu peux réessayer ou voir la solution.";
       afficherRetour(zone, false, frequente ? `${frequente.message} ${suite}` : suite);
-      if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
+      // La solution n'apparaît qu'une fois tous les indices donnés.
+      if (indices.tous()) solution.hidden = false;
     }
     valider.addEventListener("click", soumettre);
     champ.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); soumettre(); } });
     form.addEventListener("submit", (e) => e.preventDefault());
     solution.addEventListener("click", () => terminer(false));
-    return [form, solution, zone];
+    return [form, indices.bouton, solution, zone];
   }
 
   const TYPES_EXERCICE = { qcm: exerciceQcm, nombre: exerciceNombre };

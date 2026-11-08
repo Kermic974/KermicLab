@@ -2,7 +2,7 @@
 id: pythagore
 titre: Le théorème de Pythagore
 sujet: mathematiques/theoreme-de-pythagore
-version: 1.1.0
+version: 1.2.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-4, seconde, premiere

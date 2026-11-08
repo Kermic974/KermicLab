@@ -63,6 +63,7 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 const referentiel = indicateurReferentiel(catalogue.index.maquettes);
 console.log(`Référentiel : prérequis renseignés pour ${referentiel.avecPrerequis} notion(s) sur ${referentiel.notions}.`);
+console.log(`Indices gradués : ${catalogue.indices.avecIndice} exercice(s) sur ${catalogue.indices.exercices} ont au moins un indice, ${catalogue.indices.complets} en ont 3.`);
 const relecture = indicateurRelecture(catalogue.index.maquettes);
 console.log(`Relecture : ${relecture.relues} notion(s) relue(s) sur ${relecture.notions}, ${relecture.aRevoir} à revoir (version modifiée depuis la relecture).`);
 console.log(`Relecture des jeux : ${relecture.jeux.relus} jeu(x) relu(s) sur ${relecture.jeux.total}, ${relecture.jeux.aRevoir} à revoir.`);

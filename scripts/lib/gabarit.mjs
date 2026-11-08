@@ -3,7 +3,7 @@
 import { existsSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 
-export const VERSION_GABARIT = "1.1.0";
+export const VERSION_GABARIT = "1.2.0";
 const racine = new URL("../..", import.meta.url).pathname;
 // Une figure = un fichier gabarit/figures/<type>.js (code inséré dans le moteur des seules pages qui l'utilisent)
 // et, si ses paramètres ont des contraintes, scripts/lib/figures/<type>.mjs qui exporte valider(conf, ou, outils).
@@ -23,6 +23,33 @@ function exiger(condition, message) {
 }
 const texteNonVide = (v) => typeof v === "string" && v.trim().length > 0;
 
+/**
+ * Indices gradués sans IA (feuille de route, phase 3 ; issue #190) : 1 à 3 indices par exercice, du plus léger au plus
+ * précis, affichés un par un (à la demande ou après une erreur). Ils sont la réponse par défaut, et le repli quand l'IA
+ * est indisponible. Un QCM peut encore n'avoir qu'un « indice » (ancien format), compté comme un seul indice gradué.
+ */
+export const MAX_INDICES = 3;
+export const indicesDe = (ex) => (Array.isArray(ex?.indices) ? ex.indices : ex?.indice ? [ex.indice] : []);
+
+function validerIndices(ex, ou, { obligatoire }) {
+  if (ex.indices === undefined) { exiger(!obligatoire, `${ou} : au moins un « indices » requis`); return; }
+  exiger(!obligatoire || (Array.isArray(ex.indices) && ex.indices.length > 0), `${ou} : au moins un « indices » requis`);
+  exiger(Array.isArray(ex.indices) && ex.indices.length >= 1 && ex.indices.every(texteNonVide),
+    `${ou} : « indices » doit être une liste de 1 à ${MAX_INDICES} textes`);
+  exiger(ex.indices.length <= MAX_INDICES, `${ou} : ${MAX_INDICES} « indices » au plus (du plus léger au plus précis)`);
+  exiger(new Set(ex.indices.map((i) => i.trim())).size === ex.indices.length, `${ou} : deux « indices » identiques`);
+}
+
+/** Couverture des indices gradués d'un contenu : exercices, exercices avec au moins un indice, avec 3 indices. */
+export function compterIndices(contenu) {
+  const exercices = [...(contenu?.application?.exercices ?? []), ...(contenu?.situation?.etapes ?? [])];
+  return {
+    exercices: exercices.length,
+    avecIndice: exercices.filter((ex) => indicesDe(ex).length > 0).length,
+    complets: exercices.filter((ex) => indicesDe(ex).length === MAX_INDICES).length
+  };
+}
+
 function validerExercice(ex, ou) {
   exiger(ex && typeof ex === "object", `${ou} : exercice invalide`);
   exiger(TYPES_EXERCICE.includes(ex.type), `${ou} : type « ${ex.type} » inconnu (attendu : ${TYPES_EXERCICE.join(", ")})`);
@@ -31,6 +58,9 @@ function validerExercice(ex, ou) {
     exiger(Array.isArray(ex.choix) && ex.choix.length >= 2 && ex.choix.every(texteNonVide), `${ou} : au moins 2 « choix » requis`);
     exiger(Number.isInteger(ex.bonne) && ex.bonne >= 0 && ex.bonne < ex.choix.length, `${ou} : « bonne » doit être l'indice d'un choix (0 à ${ex.choix.length - 1})`);
     exiger(texteNonVide(ex.explication), `${ou} : « explication » requise (elle s'affiche après la bonne réponse)`);
+    exiger(ex.indice === undefined || texteNonVide(ex.indice), `${ou} : « indice » vide`);
+    exiger(ex.indice === undefined || ex.indices === undefined, `${ou} : « indice » et « indices » ensemble (garder « indices »)`);
+    validerIndices(ex, ou, { obligatoire: false });
     if (ex.erreurs !== undefined) {
       exiger(Array.isArray(ex.erreurs) && ex.erreurs.length >= 1, `${ou} : « erreurs » doit être une liste non vide`);
       const vus = new Set();
@@ -45,7 +75,7 @@ function validerExercice(ex, ou) {
   } else {
     exiger(typeof ex.reponse === "number" && Number.isFinite(ex.reponse), `${ou} : « reponse » doit être un nombre`);
     exiger(ex.tolerance === undefined || (typeof ex.tolerance === "number" && ex.tolerance >= 0), `${ou} : « tolerance » invalide`);
-    exiger(Array.isArray(ex.indices) && ex.indices.length >= 1 && ex.indices.every(texteNonVide), `${ou} : au moins un « indices » requis`);
+    validerIndices(ex, ou, { obligatoire: true });
     exiger(texteNonVide(ex.solution), `${ou} : « solution » requise`);
     if (ex.erreurs !== undefined) {
       exiger(Array.isArray(ex.erreurs) && ex.erreurs.length >= 1, `${ou} : « erreurs » doit être une liste non vide`);

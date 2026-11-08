@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
-import { genererPage } from "./gabarit.mjs";
+import { genererPage, compterIndices } from "./gabarit.mjs";
 import { preparerPageServie } from "./idees.mjs";
 
 /** Analyse le front matter d'une fiche (sous-ensemble YAML : `cle: valeur`, `cle:` + `  - item`). */
@@ -218,6 +218,13 @@ export async function inclureModules(html, racine = racineDepot) {
 
 /** Charge toutes les maquettes des dossiers donnés (dépôt public + éventuel dépôt privé). */
 export async function chargerCatalogue(dossiers) {
+  // Couverture des indices gradués (issue #190), sur les notions du gabarit (une fois par contenu, langue française).
+  const indices = { exercices: 0, avecIndice: 0, complets: 0 };
+  const vus = new WeakSet();
+  const noterIndices = (contenu) => {
+    if (!vus.has(contenu)) { vus.add(contenu); for (const [k, v] of Object.entries(compterIndices(contenu))) indices[k] += v; }
+    return contenu;
+  };
   const maquettes = [];
   const pages = {};
   const sources = [];
@@ -245,7 +252,7 @@ export async function chargerCatalogue(dossiers) {
       // Notion décrite par un contenu (gabarit commun) : la page française est générée, puis comparée au fichier committé.
       const contenuJson = path.join(rep, "contenu.json");
       const generee = (await existe(contenuJson))
-        ? appliquerCsp(await genererPage({ fiche, contenu: JSON.parse(await readFile(contenuJson, "utf8")) }))
+        ? appliquerCsp(await genererPage({ fiche, contenu: noterIndices(JSON.parse(await readFile(contenuJson, "utf8"))) }))
         : null;
       for (const langue of langues) {
         const fichier = path.join(rep, langue === "fr" ? "page.html" : `page.${langue}.html`);
@@ -273,5 +280,5 @@ export async function chargerCatalogue(dossiers) {
   }
   const erreursGraphe = verifierGraphePrerequis(maquettes);
   if (erreursGraphe.length) throw new Error(`graphe des prérequis invalide :\n- ${erreursGraphe.join("\n- ")}`);
-  return { index: { maquettes }, pages, sources };
+  return { index: { maquettes }, pages, sources, indices };
 }

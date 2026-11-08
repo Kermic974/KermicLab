@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-HZ3XskxvTq5Rn/5zhjT51PUMtZGXtoBuUgHNJn1y8Wo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-ZLJvfDeagUrBJ7FHhQn/64LvPgQVZRDNgblJn6X2Y1w=' 'sha256-0jwKK1yB+3sGl20eic1VPbMH9DeEjkaI7vyPr+83//M='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Réfraction et lentilles – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -20,7 +20,7 @@
     "mise-en-situation",
     "self-test"
   ],
-  "gabarit": "1.1.0"
+  "gabarit": "1.2.0"
 }
 </script>
 <script type="application/json" id="kermiclab-contenu">
@@ -326,6 +326,7 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 @keyframes brille { 40% { transform: scale(1.15); } }
 @keyframes apparait { from { opacity: 0; transform: translateY(6px); } }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+.exercice .indice-bouton:not([hidden]) { display: block; }
 </style>
 <script id="trophees" data-inclure="gabarit/jeux/trophees.js">
 // Pont local des pages autonomes : aucun réseau, et aucun accès au stockage du parent.
@@ -601,8 +602,28 @@ const Evenements = (() => {
     zone.replaceChildren(riche(texte));
   }
 
+  /**
+   * Indices gradués sans IA (issue #190) : 1 à 3 indices, du plus léger au plus précis, donnés un par un, à la demande
+   * (« Un indice ? ») ou après une erreur. Chaque indice donné émet l'événement « indice » avec son rang (ADR 0025).
+   */
+  function indicesGradues(ex, id, zone) {
+    const liste = Array.isArray(ex.indices) ? ex.indices : ex.indice ? [ex.indice] : [];
+    let donnes = 0;
+    const bouton = h("button", { type: "button", classe: "lien indice-bouton", hidden: !liste.length }, "Un indice ?");
+    const suivant = () => {
+      if (donnes >= liste.length) return null;
+      donnes += 1;
+      signaler("indice", { exercice: id, rang: donnes });
+      if (donnes >= liste.length) bouton.hidden = true;
+      return `Indice ${donnes}${liste.length > 1 ? `/${liste.length}` : ""} : ${liste[donnes - 1]}`;
+    };
+    bouton.addEventListener("click", () => { const texte = suivant(); if (texte) afficherRetour(zone, false, texte); });
+    return { bouton, suivant, tous: () => donnes >= liste.length, fin: () => { bouton.hidden = true; } };
+  }
+
   function exerciceQcm(ex, id, surReussite) {
     const zone = retourZone();
+    const indices = indicesGradues(ex, id, zone);
     const choix = h("div", { classe: "choix", role: "group", "aria-label": "Réponses possibles" });
     let essais = 0;
     ex.choix.forEach((libelle, i) => {
@@ -615,19 +636,20 @@ const Evenements = (() => {
           choix.dataset.fini = "1";
           b.classList.add("juste");
           choix.querySelectorAll("button").forEach((x) => { x.disabled = true; });
+          indices.fin();
           afficherRetour(zone, true, `${gagner(id) ? "Bravo, +1 étoile ! " : "Bravo ! "}${ex.explication ?? ""}`);
           surReussite?.();
         } else {
           b.classList.add("faux"); b.disabled = true;
-          // Erreur fréquente décrite pour ce choix : explication ciblée ; sinon l'indice général.
+          // Erreur fréquente décrite pour ce choix : explication ciblée, puis l'indice gradué suivant.
           const ciblee = ex.erreurs?.find((e) => e.choix === i)?.message;
-          if (ex.indice && essais === 1) signaler("indice", { exercice: id, rang: 1 });
-          afficherRetour(zone, false, ciblee ?? ex.indice ?? "Pas tout à fait. Relis bien l'énoncé et réessaie !");
+          const indice = indices.suivant();
+          afficherRetour(zone, false, [ciblee, indice].filter(Boolean).join(" ") || "Pas tout à fait. Relis bien l'énoncé et réessaie !");
         }
       });
       choix.append(b);
     });
-    return [choix, zone];
+    return [choix, indices.bouton, zone];
   }
 
   function exerciceNombre(ex, id, surReussite) {
@@ -638,9 +660,10 @@ const Evenements = (() => {
     const valider = h("button", { type: "button", classe: "action" }, "Valider");
     const solution = h("button", { type: "button", classe: "lien", hidden: true }, "Voir la solution");
     const form = h("form", { classe: "reponse" }, champ, ex.unite ? h("span", { classe: "unite" }, ex.unite) : null, valider);
+    const indices = indicesGradues(ex, id, zone);
     let essais = 0, tentatives = 0, fini = false;
     const terminer = (ok) => {
-      fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true;
+      fini = true; champ.disabled = true; valider.disabled = true; solution.hidden = true; indices.fin();
       const texte = ok ? `${gagner(id) ? "Exact, +1 étoile ! " : "Exact ! "}${ex.solution ?? ""}` : `Solution : ${ex.solution ?? nombreFr(ex.reponse)}`;
       afficherRetour(zone, ok, texte);
       if (ok) surReussite?.();
@@ -659,20 +682,19 @@ const Evenements = (() => {
       }
       if (juste) { terminer(true); return; }
       essais += 1;
-      const indices = ex.indices ?? [];
       // Notation déterministe : une réponse fausse qui correspond à une erreur fréquente reçoit son explication ciblée,
-      // suivie de l'indice suivant (contenu.json, « erreurs » : réponse, tolérance, message).
+      // suivie de l'indice gradué suivant (contenu.json, « erreurs » : réponse, tolérance, message).
       const frequente = (ex.erreurs ?? []).find((e) => Math.abs(lu.valeur - e.reponse) <= (e.tolerance ?? 1e-9));
-      if (essais <= indices.length) signaler("indice", { exercice: id, rang: essais });
-      const suite = essais <= indices.length ? `Indice : ${indices[essais - 1]}` : "Pas encore. Tu peux réessayer ou voir la solution.";
+      const suite = indices.suivant() ?? "Pas encore. Tu peux réessayer ou voir la solution.";
       afficherRetour(zone, false, frequente ? `${frequente.message} ${suite}` : suite);
-      if (essais >= Math.max(indices.length, 1)) solution.hidden = false;
+      // La solution n'apparaît qu'une fois tous les indices donnés.
+      if (indices.tous()) solution.hidden = false;
     }
     valider.addEventListener("click", soumettre);
     champ.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); soumettre(); } });
     form.addEventListener("submit", (e) => e.preventDefault());
     solution.addEventListener("click", () => terminer(false));
-    return [form, solution, zone];
+    return [form, indices.bouton, solution, zone];
   }
 
   const TYPES_EXERCICE = { qcm: exerciceQcm, nombre: exerciceNombre };

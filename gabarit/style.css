@@ -106,3 +106,4 @@ footer { max-width: 760px; margin: 0 auto; padding: 16px; color: var(--doux); fo
 @keyframes brille { 40% { transform: scale(1.15); } }
 @keyframes apparait { from { opacity: 0; transform: translateY(6px); } }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+.exercice .indice-bouton:not([hidden]) { display: block; }
