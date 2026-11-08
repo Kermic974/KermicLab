@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-0EH0DpCTZyHa6x0Ele7vpIkK9Vwr2AZ3ckN/br9x7BU=' 'sha256-xT15HHz45VJ1PvlkrB8rn7zgVkI3fCkDqH2qtjOdf6o=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-hOlbfzyOfViZPcPbEcFeXCpe3d8G7zTo831vlHnZVoE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-0EH0DpCTZyHa6x0Ele7vpIkK9Vwr2AZ3ckN/br9x7BU=' 'sha256-jtRmbMEX5+6QuUjVIbcKG9Z+la7SyMFz/v+xEPu4X5U=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-hOlbfzyOfViZPcPbEcFeXCpe3d8G7zTo831vlHnZVoE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Poker Texas Hold'em – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -661,6 +661,19 @@ const ProgressionJeux = (() => {
   const copie = (e) => JSON.parse(JSON.stringify(e));
   const exoId = (lecon, k) => `${lecon.id}/${k}`;
   const etoiles = ({ erreurs, indices }) => { const p = erreurs + 2 * indices; return p === 0 ? 3 : p <= 2 ? 2 : 1; };
+  /* ---------- Boîtes de Leitner, partagées par les jeux et par les exercices des notions (issue #187) ---------- */
+  /** Carte suivante : première réussite → boîte 1 ; réussite parfaite → boîte suivante ; sinon retour en boîte 1. */
+  function planifierCarte(carte, parfait, jour) {
+    const boite = !carte ? 1 : parfait ? Math.min(INTERVALLES.length, carte.boite + 1) : 1;
+    return { boite, prochaine: ajouterJours(jour, INTERVALLES[boite - 1]) };
+  }
+  /** Identifiants des cartes dues à `jour`, de la plus en retard à la plus récente (puis la boîte la plus basse). */
+  function cartesDues(cartes, jour) {
+    return Object.entries(cartes)
+      .filter(([, c]) => c.prochaine <= jour)
+      .sort(([, a], [, b]) => a.prochaine.localeCompare(b.prochaine) || a.boite - b.boite)
+      .map(([id]) => id);
+  }
   /** Petit hachage déterministe : le même défi pour tout le monde le même jour, sans hasard ni réseau. */
   const hacher = (texte) => [...texte].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7);
 
@@ -808,9 +821,7 @@ const ProgressionJeux = (() => {
       e.xp += gain; gains.xp += gain;
       const t = e.themes[info.lecon.theme] ?? { essais: 0, premiers: 0 };
       e.themes[info.lecon.theme] = { essais: t.essais + 1, premiers: t.premiers + (parfait ? 1 : 0) };
-      const carte = e.cartes[id];
-      const boite = !carte ? 1 : parfait ? Math.min(INTERVALLES.length, carte.boite + 1) : 1;
-      e.cartes[id] = { boite, prochaine: ajouterJours(jour, INTERVALLES[boite - 1]) };
+      e.cartes[id] = planifierCarte(e.cartes[id], parfait, jour);
       if (revision) e.revisions += 1;
       compterActivite(e, jour, gains);
       return cloturer(e, etat, gains);
@@ -860,12 +871,7 @@ const ProgressionJeux = (() => {
     }
 
     /* ---------- Lectures ---------- */
-    function revisionsDues(etat, jour) {
-      return Object.entries(etat.cartes)
-        .filter(([, c]) => c.prochaine <= jour)
-        .sort(([, a], [, b]) => a.prochaine.localeCompare(b.prochaine) || a.boite - b.boite)
-        .map(([id]) => id);
-    }
+    const revisionsDues = (etat, jour) => cartesDues(etat.cartes, jour);
     function forces(etat) {
       return Object.entries(parcours.themes).map(([id, nom]) => {
         const t = etat.themes[id] ?? { essais: 0, premiers: 0 };
@@ -934,7 +940,7 @@ const ProgressionJeux = (() => {
     return { niveau: n, xpDansNiveau: xp - debut, xpPourNiveau: fin - debut };
   }
 
-  return Object.freeze({ XP, INTERVALLES, OBJECTIFS, ajouterJours, exoId, etoiles, niveau, creer });
+  return Object.freeze({ XP, INTERVALLES, OBJECTIFS, ajouterJours, exoId, etoiles, niveau, creer, planifierCarte, cartesDues });
 })();
 </script>
 <script id="academie-jeux" data-inclure="gabarit/jeux/academie.js">

@@ -109,10 +109,16 @@ test("événements (ADR 0025) : démarré, réponses, indice et réussite après
     await nombre.locator("input").press("Enter");
     await page.waitForFunction(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements")).notions.pythagore.exercices["app-2"]?.reussi);
     const { notions } = await lire();
-    assert.deepEqual(notions.pythagore.exercices, {
+    // Carte de Leitner de chaque exercice réussi (issue #187) : réussi au 2e essai → boîte 1, révision le lendemain.
+    const sansCarte = Object.fromEntries(Object.entries(notions.pythagore.exercices).map(([id, { boite, prochaine, ...faits }]) => [id, faits]));
+    assert.deepEqual(sansCarte, {
       "app-1": { reponses: 2, reussi: true, indice: 0, apresIndice: false },
       "app-2": { reponses: 2, reussi: true, indice: 1, apresIndice: true }
     });
+    for (const e of Object.values(notions.pythagore.exercices)) {
+      assert.equal(e.boite, 1);
+      assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(e.prochaine) && e.prochaine > notions.pythagore.dernierJour, "révision le lendemain");
+    }
     assert.equal(notions.pythagore.termine, false);
     assert.match(notions.pythagore.dernierJour, /^\d{4}-\d{2}-\d{2}$/);
     const brut = await page.evaluate(() => sessionStorage.getItem("kermiclab:evenements"));

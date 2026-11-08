@@ -120,6 +120,23 @@ Fonction pure : mêmes données, même proposition. Règles, dans cet ordre :
 Une recommandation passe avant « Reprendre » : l'accueil ne montre qu'une prochaine action. Les jeux ne sont jamais
 proposés. Raisons traduites (fr, en) ; rien n'est envoyé au serveur.
 
+## Révisions des exercices et défi express (issue #187)
+
+Les exercices des notions réutilisent les boîtes de Leitner de l'Académie : **une seule source**,
+`gabarit/jeux/progression.js` (ADR 0015), dont `planifierCarte` et `cartesDues` servent aux jeux comme au tableau de
+bord. Le build en publie une copie en module ES (`dist/progression-jeux.js`) ; il n'existe pas de second moteur.
+
+- **Carte d'un exercice** : à chaque réponse juste reçue par le contrat d'événements, la carte de l'exercice est
+  planifiée. Réussi du premier coup → boîte suivante ; réussi après plusieurs essais → boîte 1. Intervalles du module
+  partagé : 1, 2, 4, 8, 16 jours. Une réponse fausse ne crée ni ne modifie de carte. Stockage : champs `boite` et
+  `prochaine` de l'exercice dans `kermiclab:evenements` (une carte invalide est écartée, les faits de l'exercice restent).
+- **Défi express** : jusqu'à 3 révisions dues, les plus en retard d'abord, ouvrent le défi parmi ses 5 questions
+  (étiquette « Révision · titre de la notion »). Seuls les QCM sont repris, lus dans `dist/contenus/<id>.json`
+  (exercices `app-N` de l'onglet Application, étapes `defi-N` de la mise en situation). Une réponse juste fait avancer
+  la carte, une réponse fausse la remet en boîte 1. Le reste du défi est inchangé (questions fixes ou générées).
+- Les révisions de notion (7, 30, 90 jours, « à revoir ») restent au niveau de la notion ; les cartes de Leitner
+  travaillent exercice par exercice.
+
 ## Tests
 
 - `tests/unit/temps-actif.test.mjs` : règles du moteur (horloge manuelle, déterministe).

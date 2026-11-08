@@ -334,6 +334,34 @@ test("défi express : correction immédiate, 5 XP par bonne réponse une fois pa
   await contexte.close();
 });
 
+test("défi express : les révisions dues des notions passent en premier (Leitner, issue #187)", async () => {
+  // Carte de Leitner de l'exercice app-1 de Pythagore, due hier (agrégat local du contrat d'événements, ADR 0025).
+  const { page, contexte, erreurs } = await demarrer({}, (p) => p.addInitScript(() => {
+    try {
+      const jour = (k) => { const d = new Date(); d.setDate(d.getDate() + k); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+      sessionStorage.setItem("kermiclab:evenements", JSON.stringify({ v: 1, notions: { pythagore: {
+        version: "1.1.0", ouvertures: 1, dernierJour: jour(-3), termine: false, validations: 0, derniereValidation: null,
+        exercices: { "app-1": { reponses: 1, reussi: true, indice: 0, apresIndice: false, boite: 2, prochaine: jour(-1) } } } } }));
+    } catch { /* iframe sandboxée */ }
+  }));
+  await choisirPseudo(page, "Sam");
+  await catalogueCharge(page);
+  await lancerDefi(page);
+  const etiquette = page.locator("#defi .defi-etiquette");
+  await etiquette.locator("[data-revision=pythagore]").waitFor();
+  assert.match(await etiquette.textContent(), /Révision · .*Le théorème de Pythagore/);
+  assert.equal(await texte(page, "#defi-question"), "Dans un triangle rectangle, l'hypoténuse est…");
+  assert.match(await texte(page, "#defi .defi-haut"), /Question 1\/5/, "la révision prend une place parmi les 5 questions");
+  await page.locator("#defi .reponse", { hasText: "le côté opposé à l'angle droit" }).click();
+  assert.match(await texte(page, "#defi-retour"), /Correct !/);
+  const carte = await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:evenements")).notions.pythagore.exercices["app-1"]);
+  assert.equal(carte.boite, 3, "réussie : boîte suivante, révision repoussée");
+  await page.locator("#defi .defi-suite .bouton:not(.secondaire-bouton)").click();
+  assert.equal(await page.locator("#defi .defi-etiquette [data-revision]").count(), 0, "puis les questions habituelles");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complété par la banque, quota réglé dans Configuration", async () => {
   let restantes = 3;
   const { page, contexte, erreurs, requetes } = await demarrer({}, async (p) => {

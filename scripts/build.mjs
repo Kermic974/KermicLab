@@ -26,6 +26,10 @@ await writeFile(`${racine}worker/src/generated/catalogue-index.json`, `${JSON.st
 
 await rm(`${racine}dist`, { recursive: true, force: true });
 await cp(`${racine}web`, `${racine}dist`, { recursive: true });
+// Module partagé des jeux (révisions de Leitner, ADR 0015) servi aussi au tableau de bord comme module ES (issue #187) :
+// une seule source, gabarit/jeux/progression.js, pas de second moteur.
+await writeFile(`${racine}dist/progression-jeux.js`,
+  `${await readFile(`${racine}gabarit/jeux/progression.js`, "utf8")}\nexport { ProgressionJeux };\n`);
 for (const fichier of (await readdir(`${racine}dist`)).filter((f) => f.endsWith(".html"))) {
   const chemin = `${racine}dist/${fichier}`;
   await writeFile(chemin, ajouterBoiteIdees(await readFile(chemin, "utf8"), { page: fichier, version, externe: true }));
@@ -73,7 +77,7 @@ console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/
 async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
-  const modules = ["progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "experiences.js", "temps-actif.js"];
+  const modules = ["progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "progression-jeux.js", "experiences.js", "temps-actif.js"];
   for (const fichier of [...modules, "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
   let app = appSource;
