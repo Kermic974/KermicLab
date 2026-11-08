@@ -13,6 +13,7 @@ import * as trophees from "./trophees.js";
 import * as evenements from "./evenements.js";
 import * as recommandation from "./recommandation.js";
 import * as fichierProgression from "./fichier-progression.js";
+import * as vacances from "./cahier-vacances.js";
 // Module partagé des jeux (boîtes de Leitner, ADR 0015), produit par le build depuis gabarit/jeux/progression.js.
 import { ProgressionJeux } from "./progression-jeux.js";
 import * as experiences from "./experiences.js";
@@ -2940,7 +2941,8 @@ const texteBorne = (v, max) => (typeof v === "string" ? v.slice(0, max) : "");
 /** Relit un cahier stocké : seuls les champs connus, bornés, sont gardés (le stockage local n'est pas une source sûre). */
 function cahierValide(c) {
   if (!c || typeof c.id !== "string" || !TYPES_CAHIERS.includes(c.type) || typeof c.creeLe !== "string" || Number.isNaN(Date.parse(c.creeLe))) return null;
-  const sections = Array.isArray(c.sections) ? c.sections.slice(0, MAX_NOTIONS_CAHIER).filter((s) => s && typeof s.notion === "string").map((s) => ({
+  const maxSections = c.type === "vacances" && c.plan ? vacances.MAX_NOTIONS : MAX_NOTIONS_CAHIER;
+  const sections = Array.isArray(c.sections) ? c.sections.slice(0, maxSections).filter((s) => s && typeof s.notion === "string").map((s) => ({
     notion: texteBorne(s.notion, 80), titre: texteBorne(s.titre, 120), notes: texteBorne(s.notes, TAILLE_NOTES),
     blocs: (Array.isArray(s.blocs) ? s.blocs : []).slice(0, 20).filter((b) => b && GENRES_BLOC.includes(b.genre) && typeof b.texte === "string")
       .map((b) => ({
@@ -2957,7 +2959,9 @@ function cahierValide(c) {
     source: c.source === "ia" ? "ia" : "catalogue", modele: texteBorne(c.modele, 100),
     longueur: LONGUEURS_CAHIER.includes(c.longueur) ? c.longueur : "standard",
     univers: UNIVERS_CAHIER.includes(c.univers) ? c.univers : "", objectif: OBJECTIFS_CAHIER.includes(c.objectif) ? c.objectif : "",
-    introduction: texteBorne(c.introduction, 500), conclusion: texteBorne(c.conclusion, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections
+    introduction: texteBorne(c.introduction, 500), conclusion: texteBorne(c.conclusion, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections,
+    // Planning du cahier de vacances (issue #188), relu strictement ; un plan invalide est simplement ignoré.
+    ...(c.type === "vacances" && vacances.validerPlan(c.plan) ? { plan: vacances.validerPlan(c.plan) } : {})
   };
 }
 
@@ -2978,7 +2982,9 @@ function rendreCahiers() {
     const contenu = element("div", { classe: "cahier-infos" });
     const date = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe));
     const { total, reussis } = bilanExercices(cahier);
-    const details = [t(`cahier_${cahier.type}`), cahier.sections.length ? t("cahierNotionsCompte", { n: cahier.sections.length }) : null,
+    const avancement = cahier.plan ? vacances.planning(cahier.plan, progression.jourLocal()) : null;
+    const details = [t(`cahier_${cahier.type}`), avancement ? t("vacancesAvancement", { n: avancement.faites, m: avancement.total })
+      : cahier.sections.length ? t("cahierNotionsCompte", { n: cahier.sections.length }) : null,
       total ? t("cahierProgression", { n: reussis, m: total }) : null, date].filter(Boolean).join(" · ");
     contenu.append(element("h4", { texte: cahier.titre }), element("p", { classe: "doux petit", texte: details }));
     if (cahier.source === "ia") contenu.append(element("span", { classe: "pastille ok", cle: "cahierBadgeIa" }));
@@ -3230,6 +3236,7 @@ function ouvrirLectureCahier(id, message = "") {
   corps.replaceChildren();
   if (message) corps.append(element("p", { classe: "note-locale", texte: message, attributs: { role: "status" } }));
   if (cahier.introduction) corps.append(element("p", { classe: "intro-cahier", texte: cahier.introduction }));
+  if (cahier.plan) corps.append(planningVacances(cahier));
   cahier.sections.forEach((s, i) => {
     const section = element("section", { classe: "section-cahier" });
     const tete = element("div", { classe: "tete-section-cahier" });
@@ -3248,10 +3255,209 @@ function ouvrirLectureCahier(id, message = "") {
   if (!$("#lecture-cahier").open) $("#lecture-cahier").showModal();
 }
 
+/* ---------- Cahier de vacances : réglages, diagnostic court, planning jour par jour (issue #188) ---------- */
+
+const constructeurVacances = { etape: "reglages", ordre: [], acquises: [], questions: [] };
+const dateLisible = (jour, options = { weekday: "long", day: "numeric", month: "long" }) =>
+  new Date(`${jour}T00:00:00`).toLocaleDateString(etat.langue, options);
+const maitriseDe = (id) => evenements.maitriseNotion(etat.evenements?.notions?.[id], progression.jourLocal()).etat;
+
+function lireReglagesVacances() {
+  return {
+    matiere: $("#vacances-matiere").value, niveau: $("#vacances-niveau").value,
+    debut: $("#vacances-debut").value, fin: $("#vacances-fin").value, rythme: Number($("#vacances-rythme").value)
+  };
+}
+
+/** Résumé en direct : nombre de notions et de séances, ou ce qui empêche de continuer. */
+function actualiserReglagesVacances() {
+  const r = lireReglagesVacances();
+  const ordre = vacances.ordonnerNotions(etat.notions, r);
+  const seances = vacances.joursActifs(r.debut, r.fin, r.rythme).length;
+  const duree = r.debut && r.fin ? (Date.parse(r.fin) - Date.parse(r.debut)) / 86400000 : -1;
+  const erreur = !ordre.length ? "vacancesErreurNotions" : duree < 0 ? "vacancesErreurDates"
+    : duree > vacances.DUREE_MAX_JOURS ? "vacancesErreurDuree" : !seances ? "vacancesErreurSeances" : null;
+  $("#vacances-resume").textContent = erreur ? "" : t("vacancesResume", { n: ordre.length, s: seances });
+  $("#vacances-retour").textContent = erreur ? t(erreur, { n: vacances.DUREE_MAX_JOURS }) : "";
+  $("#vacances-suivant").disabled = Boolean(erreur);
+  return { ...r, ordre, erreur };
+}
+
+function remplirNiveauxVacances() {
+  const choix = vacances.choixPossibles(etat.notions);
+  const niveaux = choix[$("#vacances-matiere").value] ?? [];
+  const avant = $("#vacances-niveau").value;
+  $("#vacances-niveau").replaceChildren(...niveaux.map((n) => option(n, t(`vacancesNiveau_${n}`))));
+  if (niveaux.includes(avant)) $("#vacances-niveau").value = avant;
+}
+
+function ouvrirConstructeurVacances() {
+  constructeurVacances.etape = "reglages";
+  const choix = vacances.choixPossibles(etat.notions);
+  const matieres = Object.keys(choix).sort(ordreMatiere);
+  $("#vacances-matiere").replaceChildren(...matieres.map((m) => option(m, t(`matiere_${m}`))));
+  remplirNiveauxVacances();
+  const jour = progression.jourLocal();
+  $("#vacances-debut").value = jour;
+  $("#vacances-fin").value = vacances.ajouterJours(jour, 27);
+  $("#vacances-rythme").replaceChildren(...[3, 5, 7].map((n) => option(String(n), t("vacancesRythmeChoix", { n }))));
+  $("#vacances-rythme").value = "5";
+  $("#vacances-nom").value = "";
+  $("#vacances-nom").placeholder = t("cahier_vacances");
+  $("#vacances-reglages").hidden = false;
+  $("#vacances-diagnostic").hidden = true;
+  $("#vacances-suivant").textContent = t("vacancesContinuer");
+  actualiserReglagesVacances();
+  $("#constructeur-vacances").showModal();
+  $("#vacances-matiere").focus();
+}
+
+/** Diagnostic court : un QCM publié par notion, pour les premières notions du parcours (dist/contenus/, même origine). */
+async function questionsDiagnosticVacances(ids) {
+  const questions = [];
+  for (const notion of ids) {
+    if (!contenusDefi.has(notion)) {
+      try { contenusDefi.set(notion, await chargerJson(`contenus/${encodeURIComponent(notion)}.json`)); } catch { contenusDefi.set(notion, null); }
+    }
+    const exercices = contenusDefi.get(notion)?.application?.exercices ?? [];
+    const rang = exercices.findIndex((_, i) => exerciceDuContenu(contenusDefi.get(notion), `app-${i + 1}`));
+    if (rang >= 0) questions.push({ notion, ...exerciceDuContenu(contenusDefi.get(notion), `app-${rang + 1}`) });
+  }
+  return questions;
+}
+
+function afficherDiagnosticVacances(questions) {
+  constructeurVacances.etape = "diagnostic";
+  constructeurVacances.questions = questions;
+  $("#vacances-questions").replaceChildren(...questions.map((q, i) => {
+    const bloc = element("fieldset", { classe: "vacances-question", attributs: { "data-diagnostic": q.notion } });
+    bloc.append(element("legend", { texte: `${notionParId(q.notion)?.titre ?? q.notion} · ${q.question}` }));
+    q.choix.forEach((c, j) => {
+      const label = element("label");
+      label.append(element("input", { attributs: { type: "radio", name: `diagnostic-${i}`, value: String(j) } }), element("span", { texte: c }));
+      bloc.append(label);
+    });
+    const jeNeSaisPas = element("label");
+    jeNeSaisPas.append(element("input", { attributs: { type: "radio", name: `diagnostic-${i}`, value: "-1" } }), element("span", { cle: "vacancesJeNeSaisPas" }));
+    bloc.append(jeNeSaisPas);
+    return bloc;
+  }));
+  $("#vacances-reglages").hidden = true;
+  $("#vacances-diagnostic").hidden = false;
+  $("#vacances-retour").textContent = "";
+  $("#vacances-suivant").textContent = t("vacancesCreer");
+  $("#vacances-questions input")?.focus();
+}
+
+function creerCahierVacances() {
+  const r = lireReglagesVacances();
+  // Diagnostic : une bonne réponse = notion déjà acquise, qui sort du planning (aucune note, aucune trace ailleurs).
+  const reussies = constructeurVacances.questions.filter((q, i) => Number($(`input[name="diagnostic-${i}"]:checked`)?.value) === q.bonne).map((q) => q.notion);
+  const plan = vacances.creerPlan({ ...r, ordre: constructeurVacances.ordre, acquises: [...constructeurVacances.acquises, ...reussies] });
+  const cahiers = cahiersEnregistres();
+  const cahier = cahierValide({
+    id: window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`, type: "vacances", creeLe: new Date().toISOString(),
+    titre: $("#vacances-nom").value.trim().slice(0, 60) || t("cahier_vacances"), source: "catalogue", longueur: "standard",
+    introduction: t("cahierIntro_vacances"), notes: "", sections: sectionsCatalogue(plan.notions), plan
+  });
+  enregistrerCahiers([cahier, ...cahiers]);
+  rendreCahiers();
+  $("#constructeur-vacances").close();
+  ouvrirLectureCahier(cahier.id, reussies.length ? t("vacancesDejaAcquises", { n: plan.acquises.length }) : "");
+}
+
+function brancherVacances() {
+  $("#vacances-matiere").addEventListener("change", () => { remplirNiveauxVacances(); actualiserReglagesVacances(); });
+  for (const id of ["#vacances-niveau", "#vacances-debut", "#vacances-fin", "#vacances-rythme"]) $(id).addEventListener("change", actualiserReglagesVacances);
+  brancherDialogue($("#constructeur-vacances"), $("#fermer-vacances"));
+  // Cahier libre, sans planning : l'ancien constructeur (sections par notion, enrichissement IA possible) reste disponible.
+  $("#vacances-libre").addEventListener("click", () => { $("#constructeur-vacances").close(); ouvrirConstructeur("vacances"); });
+  $("#formulaire-vacances").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (constructeurVacances.etape === "diagnostic") { creerCahierVacances(); return; }
+    const r = actualiserReglagesVacances();
+    if (r.erreur) return;
+    constructeurVacances.ordre = r.ordre;
+    // Notions déjà maîtrisées sur cet appareil (issue #185) : acquises d'office, pas de question inutile.
+    constructeurVacances.acquises = r.ordre.filter((id) => ["maitrisee", "a-revoir"].includes(maitriseDe(id)));
+    $("#vacances-suivant").disabled = true;
+    const questions = await questionsDiagnosticVacances(vacances.notionsDiagnostic(r.ordre, constructeurVacances.acquises));
+    $("#vacances-suivant").disabled = false;
+    if (!questions.length) { constructeurVacances.questions = []; creerCahierVacances(); return; }
+    afficherDiagnosticVacances(questions);
+  });
+}
+
+/** Les cinq étapes de la journée type (20 à 30 minutes), pour la notion du jour. */
+function journeeVacances(cahier, notion) {
+  const n = notionParId(notion);
+  const etapes = element("ol", { classe: "vacances-etapes" });
+  const etape = (cle, ...contenu) => { const li = element("li"); li.append(element("strong", { cle }), ...contenu); etapes.append(li); };
+  const dues = evenements.revisionsDues(etat.evenements, progression.jourLocal(), ProgressionJeux.cartesDues).length;
+  const reviser = element("button", { classe: "secondaire petit-bouton", cle: dues ? "vacancesReviserBouton" : "vacancesDefiBouton", attributs: { type: "button" } });
+  reviser.addEventListener("click", () => { $("#lecture-cahier").close(); naviguer("defi"); });
+  etape("vacancesEtapeRevision", element("span", { classe: "doux petit", texte: ` ${t(dues ? "vacancesRevisionsDues" : "vacancesRevisionsAucune", { n: dues })} ` }), reviser);
+  const ouvrir = element("button", { classe: "bouton petit-bouton", cle: "cahierOuvrirNotion", attributs: { type: "button", "data-vacances-ouvrir": notion } });
+  ouvrir.addEventListener("click", () => { $("#lecture-cahier").close(); if (n) ouvrirNotion(n); });
+  etape("vacancesEtapeNotion", element("span", { texte: ` ${n?.titre ?? notion} ` }), ouvrir);
+  etape("vacancesEtapeManipulation", element("span", { classe: "doux petit", texte: ` ${t("vacancesManipulationAide")}` }));
+  etape("vacancesEtapeExercices", element("span", { classe: "doux petit", texte: ` ${t("maitriseTitre")} : ${t(`maitrise-${maitriseDe(notion)}`)}` }));
+  const terminer = element("button", { classe: "bouton petit-bouton", cle: "vacancesTerminer", attributs: { type: "button", "data-vacances-terminer": notion } });
+  terminer.addEventListener("click", () => {
+    const cahiers = cahiersEnregistres();
+    const c = cahiers.find((x) => x.id === cahier.id);
+    if (!c?.plan) return;
+    c.plan = vacances.terminerJournee(c.plan, notion, progression.jourLocal());
+    enregistrerCahiers(cahiers);
+    rendreCahiers();
+    ouvrirLectureCahier(cahier.id, t("vacancesBravo"));
+  });
+  etape("vacancesEtapeBilan", element("span", { classe: "doux petit", texte: ` ${t("vacancesBilanAide")} ` }), terminer);
+  return etapes;
+}
+
+/** Planning du cahier de vacances, recalculé à chaque ouverture à partir d'aujourd'hui. */
+function planningVacances(cahier) {
+  const jour = progression.jourLocal();
+  const p = vacances.planning(cahier.plan, jour);
+  const bloc = element("section", { classe: "carte planning-vacances", attributs: { "data-planning": p.etat, "aria-labelledby": "planning-titre" } });
+  bloc.append(element("h3", { cle: "vacancesAujourdhui", attributs: { id: "planning-titre" } }));
+  const resume = [t("vacancesAvancement", { n: p.faites, m: p.total }), t("vacancesPeriode", { debut: dateLisible(cahier.plan.debut, { day: "numeric", month: "long" }), fin: dateLisible(cahier.plan.fin, { day: "numeric", month: "long" }) }),
+    t("vacancesRythmeChoix", { n: cahier.plan.rythme })];
+  bloc.append(element("p", { classe: "doux petit", texte: resume.join(" · ") }));
+  const a = p.aujourdhui;
+  if (p.etat === "termine") bloc.append(element("p", { classe: "badge obtenu", texte: `✓ ${t("vacancesTermine")}` }));
+  else if (p.etat === "periode-finie") bloc.append(element("p", { texte: t("vacancesPeriodeFinie", { n: p.restantes }) }));
+  else if (a?.type === "notion") {
+    bloc.append(element("p", { classe: "vacances-du-jour", texte: t("vacancesNotionDuJour", { titre: notionParId(a.notion)?.titre ?? a.notion }) }), journeeVacances(cahier, a.notion));
+  } else if (a?.type === "revision") {
+    const reviser = element("button", { classe: "bouton petit-bouton", cle: "vacancesDefiBouton", attributs: { type: "button" } });
+    reviser.addEventListener("click", () => { $("#lecture-cahier").close(); naviguer("defi"); });
+    bloc.append(element("p", { cle: "vacancesJourRevision" }), reviser);
+  } else {
+    const cle = a?.type === "faite" ? "vacancesJourFait" : a?.type === "avant" ? "vacancesAvant" : "vacancesRepos";
+    bloc.append(element("p", { texte: t(cle, { date: a?.prochain ? dateLisible(a.prochain) : "" }) }));
+  }
+  if (p.horsPlanning) bloc.append(element("p", { classe: "doux petit", texte: t("vacancesHorsPlanning", { n: p.horsPlanning }) }));
+  const suite = p.jours.filter((j) => j.date !== jour || a?.type !== "notion").slice(0, 7);
+  if (suite.length) {
+    bloc.append(element("h4", { cle: "vacancesProchainsJours" }));
+    const liste = element("ul", { classe: "vacances-jours" });
+    for (const j of suite) {
+      liste.append(element("li", { texte: `${dateLisible(j.date, { weekday: "short", day: "numeric", month: "short" })} · ${j.type === "notion" ? notionParId(j.notion)?.titre ?? j.notion : t("vacancesJourneeRevision")}` }));
+    }
+    bloc.append(liste);
+  }
+  bloc.append(element("p", { classe: "doux petit", cle: "vacancesSansPenalite" }));
+  return bloc;
+}
+
 function brancherCahiers() {
   document.querySelectorAll("[data-cahier-type]").forEach((b) => b.addEventListener("click", () => {
-    if (TYPES_CAHIERS.includes(b.dataset.cahierType)) ouvrirConstructeur(b.dataset.cahierType);
+    if (b.dataset.cahierType === "vacances") ouvrirConstructeurVacances();
+    else if (TYPES_CAHIERS.includes(b.dataset.cahierType)) ouvrirConstructeur(b.dataset.cahierType);
   }));
+  brancherVacances();
   $("#cahier-matiere").addEventListener("change", () => { remplirNiveauxCahier(); rendreNotionsCahier(); });
   $("#cahier-niveau").addEventListener("change", rendreNotionsCahier);
   $("#cahier-notions").addEventListener("change", limiterNotionsCahier);

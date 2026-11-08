@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.30.0 · 2026-11-08</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/b4a8c7cffbf6d25ac131bd04897451e4a1284a9c" target="_blank" rel="noopener noreferrer" data-lien-actif>b4a8c7c</a>.
+  <strong>Squelette v1.31.1 · 2026-11-08</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/trigoLab/tree/9b7309e9d72cf5dcac16cdcf310e8434fa05f699" target="_blank" rel="noopener noreferrer" data-lien-actif>9b7309e</a>.
   <a href="https://github.com/Kermic974/trigoLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/trigoLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -72,7 +72,7 @@
 <li><a href="#contributions">Squelette</a> ↔ <a href="https://kermiclab.online/#contributions" target="_blank" rel="noopener noreferrer" data-lien-actif>Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions</a></li>
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/trigoLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/trigoLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>e5dd6d9c0cdd89af83ba8d6fc13018c4cf8acdf30be2d20fe2a2e1eb8d134ad2</code><br>Empreinte du squelette hors cartouche : <code>295a3f57d185df21a6d4f21ef81989b5c6a1637324b894d56dc74dceb4bee017</code></p>
+    <p>Empreinte des sources : <code>31a30e7726bd92323ad442d6599513223ce778bdd3ea76aee44452d885093548</code><br>Empreinte du squelette hors cartouche : <code>2678d7bb1ca01645be89a7098282e353b5a49ca00df6ca124ff82bd2b40c4591</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -126,6 +126,12 @@
           <p>Il te reste 2 cahier(s) enrichi(s) par l’IA aujourd’hui (custom/sonnet-5-5). Seuls les identifiants des notions sont envoyés : ton titre et tes notes restent sur cet appareil.</p>
           <div class="actions"><button disabled>Fermer</button><button disabled>Construire le cahier</button></div>
           <details><summary>Autres états</summary><p>Préparation : « L’IA prépare ton cahier… cela peut prendre une minute. » Sans notion : « Choisis au moins une notion. » (le brouillon accepte une page libre). IA non consentie, indisponible ou quota atteint : case désactivée et message ; le cahier est construit à partir du catalogue.</p></details></article>
+        <article class="carte" data-source="web/index.html:constructeur-vacances"><h3>Mon cahier de vacances</h3><p>Choisis ta matière, ton niveau, ta période et ton rythme. Un diagnostic court adapte ensuite ton planning : une notion par séance de 20 à 30 minutes.</p>
+          <label>Matière<select disabled><option>Maths</option></select></label> <label>Niveau<select disabled><option>Cycle 4 (5e à 3e)</option></select></label>
+          <label>Début<input disabled value="2026-07-06"></label> <label>Fin<input disabled value="2026-08-02"></label> <label>Rythme<select disabled><option>5 jours par semaine</option></select></label>
+          <p>14 notion(s) à travailler, 20 séance(s) prévues sur la période.</p><p><button disabled>Préférer un cahier libre, sans planning (enrichissement par l'IA possible)</button></p>
+          <div class="actions"><button disabled>Fermer</button><button disabled>Continuer vers le diagnostic</button></div>
+          <details><summary>Diagnostic et planning</summary><p>Diagnostic : un QCM par notion pour les 5 premières, avec « Je ne sais pas encore » ; une bonne réponse sort la notion du planning. Planning (lecture du cahier) : « Aujourd'hui · Notion du jour », journée type en 5 étapes (révision courte, notion du jour, manipulation, exercices notés, mini-bilan « Terminer ma journée »), prochaines séances. Un jour manqué décale simplement la suite, sans pénalité.</p></details></article>
         <article class="carte" data-source="web/index.html:lecture-cahier"><h3>Révisions de l'été</h3><p>Cahier de vacances · 7 nov. 2026 · Enrichi par l’IA (custom/sonnet-5-5)</p>
           <p>Un cahier pour réviser les fractions et Pythagore.</p><h4>Les fractions</h4><button disabled>Ouvrir la notion</button>
           <p><strong>EXPLICATION</strong> Une fraction représente une part d'un tout.</p><p><strong>À RETENIR</strong> On additionne des fractions au même dénominateur.</p>
