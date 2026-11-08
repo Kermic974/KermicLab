@@ -12,6 +12,8 @@ import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 import * as evenements from "./evenements.js";
 import * as recommandation from "./recommandation.js";
+// Module partagé des jeux (boîtes de Leitner, ADR 0015), produit par le build depuis gabarit/jeux/progression.js.
+import { ProgressionJeux } from "./progression-jeux.js";
 import * as experiences from "./experiences.js";
 import { creerMoteurTemps } from "./temps-actif.js";
 
@@ -1977,7 +1979,7 @@ function brancherTrophees() {
     if (e.data?.type === "kermiclab:evenement") {
       const ev = evenements.normaliserEvenement(e.data, id);
       if (!ev) { console.warn("evenements : message invalide", id); return; }
-      etat.evenements = evenements.enregistrer(etat.evenements, ev, progression.jourLocal());
+      etat.evenements = evenements.enregistrer(etat.evenements, ev, progression.jourLocal(), { planifier: ProgressionJeux.planifierCarte });
       evenements.sauver(stockage(), etat.evenements);
       if (etat.ecran === "progression") rendreProgression();
       return;
@@ -3697,13 +3699,54 @@ function ouvrirDefi() {
   defi.source = "banque";
   defi.raison = raisonBanqueLocale();
   if (defiIaPossible() && notionsDefi().length) { afficherConfigurateurDefi(); return; }
-  afficherQuestionsDefi([]);
+  void afficherQuestionsDefi([]);
 }
 
-function afficherQuestionsDefi(generes) {
+/* ---------- Révisions des notions dans le défi express (issue #187) ---------- */
+
+const MAX_REVISIONS_DEFI = 3;
+const contenusDefi = new Map();
+
+/** Exercice QCM d'une notion d'après son identifiant d'événement : app-N (onglet application), defi-N (mise en situation). */
+function exerciceDuContenu(contenu, exercice) {
+  const [, genre, rang] = exercice.match(/^(app|defi)-(\d+)$/) ?? [];
+  if (!genre) return null;
+  const liste = genre === "app" ? contenu?.application?.exercices : contenu?.situation?.etapes;
+  const ex = liste?.[Number(rang) - 1];
+  const valide = ex?.type === "qcm" && Array.isArray(ex.choix) && ex.choix.length >= 2 && ex.choix.length <= 5
+    && ex.choix.every((c) => typeof c === "string") && Number.isInteger(ex.bonne) && ex.bonne >= 0 && ex.bonne < ex.choix.length;
+  return valide ? ex : null;
+}
+
+/**
+ * Révisions dues des notions (cartes de Leitner du module partagé), transformées en questions du défi. Seuls les QCM
+ * sont repris (le défi n'a pas de saisie de nombre) ; contenus lus dans dist/contenus/, même origine, mis en cache.
+ */
+async function questionsRevisionDefi() {
+  const dues = evenements.revisionsDues(etat.evenements, progression.jourLocal(), ProgressionJeux.cartesDues);
+  const questions = [];
+  for (const { notion, exercice } of dues) {
+    if (questions.length >= MAX_REVISIONS_DEFI) break;
+    if (!contenusDefi.has(notion)) {
+      try { contenusDefi.set(notion, await chargerJson(`contenus/${encodeURIComponent(notion)}.json`)); } catch { contenusDefi.set(notion, null); }
+    }
+    const ex = exerciceDuContenu(contenusDefi.get(notion), exercice);
+    if (!ex) continue;
+    questions.push({
+      format: "qcm", revision: { notion, exercice }, notion, titre: notionParId(notion)?.titre ?? notion,
+      enonce: { texte: ex.question }, explication: { texte: ex.explication ?? "" }, choix: ex.choix.map((c) => ({ texte: c })), bonne: ex.bonne
+    });
+  }
+  return questions;
+}
+
+async function afficherQuestionsDefi(generes) {
+  const jeton = defi.jeton;
+  const revisions = await questionsRevisionDefi();
+  if (jeton !== defi.jeton) return;
   defi.etape = "questions";
   const banque = [1, 2, 3, 4, 5].map(questionBanque);
-  defi.questions = [...generes, ...banque.slice(0, NB_DEFIS - generes.length)];
+  defi.questions = [...revisions, ...generes, ...banque].slice(0, NB_DEFIS);
   rendreQuestionDefi();
   rafraichirDefiTextes();
   rafraichirReglageDefi();
@@ -3737,7 +3780,7 @@ async function lancerDefiIa(perimetre) {
     console.error("défi IA indisponible");
   }
   if (jeton !== defi.jeton) return;
-  afficherQuestionsDefi(generes);
+  void afficherQuestionsDefi(generes);
 }
 
 function rafraichirDefiTextes() {
@@ -3768,13 +3811,14 @@ function rendreQuestionDefi() {
   const haut = element("div", { classe: "defi-haut" });
   haut.append(pointsDefi(), element("span", { classe: "doux petit math", texte: t("defiProgression", { n: defi.index + 1, m: defi.questions.length }) }));
   const etiquette = element("p", { classe: "defi-etiquette doux petit" });
+  if (item.revision) etiquette.append(element("span", { classe: "defi-revision", cle: "defiRevision", attributs: { "data-revision": item.revision.notion } }), document.createTextNode(" · "));
   etiquette.append(element("span", { cle: `defiFormat_${item.format}` }));
   if (item.titre) etiquette.append(element("span", { texte: ` · ${item.titre}` }));
   const question = element("p", { classe: "defi-question", ...item.enonce, attributs: { id: "defi-question" } });
   const reponses = element("div", { classe: "reponses", attributs: { role: "group", "aria-labelledby": "defi-question" } });
   item.choix.forEach((c, i) => {
     const b = element("button", { classe: "reponse", attributs: { type: "button" } });
-    b.append(element("span", { classe: "lettre", texte: "ABC"[i], attributs: { "aria-hidden": "true" } }), element("span", c));
+    b.append(element("span", { classe: "lettre", texte: "ABCDE"[i], attributs: { "aria-hidden": "true" } }), element("span", c));
     b.addEventListener("click", () => repondreDefi(i));
     reponses.append(b);
   });
@@ -3786,6 +3830,11 @@ function repondreDefi(choix) {
   const juste = choix === item.bonne;
   defi.resultats[defi.index] = juste;
   if (juste) defi.bonnes += 1;
+  if (item.revision) {
+    // Révision d'un exercice de notion : sa carte de Leitner est replanifiée (juste → boîte suivante, faux → boîte 1).
+    etat.evenements = evenements.reviser(etat.evenements, { ...item.revision, correct: juste, jour: progression.jourLocal(), planifier: ProgressionJeux.planifierCarte });
+    evenements.sauver(stockage(), etat.evenements);
+  }
   document.querySelectorAll("#defi .reponse").forEach((b, i) => {
     b.disabled = true;
     b.classList.add(i === item.bonne ? "juste" : i === choix ? "faux" : "estompee");

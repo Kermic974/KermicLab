@@ -47,7 +47,7 @@ export function normaliserEvenement(brut, notionAttendue) {
  * Ajoute un événement validé à l'agrégat local (fonction pure). Par notion : version vue, ouvertures, dernier jour,
  * terminée ; par exercice : réponses, réussi, rang d'indice le plus élevé, réussi après un indice.
  */
-export function enregistrer(etat, ev, jour) {
+export function enregistrer(etat, ev, jour, { planifier } = {}) {
   const suivant = structuredClone(etat?.v === VERSION_CONTRAT && objet(etat.notions) ? etat : etatInitial());
   if (!suivant.notions[ev.notion] && Object.keys(suivant.notions).length >= MAX_NOTIONS) return suivant;
   const n = suivant.notions[ev.notion] ??= { version: ev.version, ouvertures: 0, dernierJour: jour, termine: false, validations: 0, derniereValidation: null, exercices: {} };
@@ -66,9 +66,35 @@ export function enregistrer(etat, ev, jour) {
     if (ev.evenement === "reponse") {
       e.reponses = Math.min(e.reponses + 1, 1e6);
       if (ev.correct && !e.reussi) { e.reussi = true; e.apresIndice = e.indice > 0; }
+      // Carte de Leitner (issue #187), planifiée par le module partagé des jeux : réussi du premier coup → boîte suivante.
+      if (ev.correct && planifier) Object.assign(e, carte(planifier(carteDe(e), ev.essai === 1, jour)));
     }
   }
   return suivant;
+}
+
+const carteDe = (e) => (e?.boite ? { boite: e.boite, prochaine: e.prochaine } : undefined);
+const carte = ({ boite, prochaine }) => ({ boite, prochaine });
+
+/**
+ * Révision d'un exercice depuis le défi express (issue #187) : une seule réponse, juste ou fausse, replanifie sa carte
+ * avec le module partagé (juste → boîte suivante, faux → boîte 1). Fonction pure ; exercice sans carte : inchangé.
+ */
+export function reviser(etat, { notion, exercice, correct, jour, planifier }) {
+  const e = etat?.notions?.[notion]?.exercices?.[exercice];
+  if (!carteDe(e)) return etat;
+  const suivant = structuredClone(etat);
+  Object.assign(suivant.notions[notion].exercices[exercice], carte(planifier(carteDe(e), correct === true, jour)));
+  return suivant;
+}
+
+/** Exercices des notions dont la révision est due, dans l'ordre du module partagé (`cartesDues`). */
+export function revisionsDues(etat, jour, cartesDues) {
+  const cartes = {};
+  for (const [notion, n] of Object.entries(etat?.notions ?? {})) {
+    for (const [exercice, e] of Object.entries(n.exercices ?? {})) if (carteDe(e)) cartes[`${notion}/${exercice}`] = carteDe(e);
+  }
+  return cartesDues(cartes, jour).map((id) => { const [notion, exercice] = id.split("/"); return { notion, exercice }; });
 }
 
 /**
@@ -133,6 +159,11 @@ export function charger(stockage) {
         if (!ID_EXERCICE.test(ex) || !objet(e) || !entier(e.reponses, 0, 1e6) || typeof e.reussi !== "boolean" ||
             !entier(e.indice, 0, 10) || typeof e.apresIndice !== "boolean") continue;
         exercices[ex] = { reponses: e.reponses, reussi: e.reussi, indice: e.indice, apresIndice: e.apresIndice };
+        // Carte de Leitner facultative (issue #187) : boîte et date de la prochaine révision vont ensemble.
+        if (e.boite !== undefined || e.prochaine !== undefined) {
+          if (!entier(e.boite, 1, 10) || !JOUR.test(String(e.prochaine))) continue;
+          Object.assign(exercices[ex], { boite: e.boite, prochaine: e.prochaine });
+        }
       }
       // Validations (issue #185) : absentes des agrégats antérieurs ; une notion déjà terminée compte une validation.
       let validations = n.termine ? 1 : 0, derniereValidation = n.termine ? n.dernierJour : null;
