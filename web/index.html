@@ -919,6 +919,37 @@
   </form>
 </dialog>
 
+<dialog id="constructeur-vacances" data-sans-idees aria-labelledby="vacances-titre" aria-describedby="vacances-aide">
+  <form id="formulaire-vacances" class="formulaire-cahier" method="dialog" novalidate>
+    <h2 id="vacances-titre" data-i18n="vacancesTitre"></h2>
+    <p class="doux" id="vacances-aide" data-i18n="vacancesAide"></p>
+    <div id="vacances-reglages">
+      <label for="vacances-nom" data-i18n="cahierTitreChamp"></label>
+      <input id="vacances-nom" type="text" maxlength="60" autocomplete="off">
+      <div class="constructeur-ligne">
+        <div><label for="vacances-matiere" data-i18n="cahierMatiereChamp"></label><select id="vacances-matiere"></select></div>
+        <div><label for="vacances-niveau" data-i18n="vacancesNiveau"></label><select id="vacances-niveau"></select></div>
+      </div>
+      <div class="constructeur-ligne">
+        <div><label for="vacances-debut" data-i18n="vacancesDebut"></label><input id="vacances-debut" type="date"></div>
+        <div><label for="vacances-fin" data-i18n="vacancesFin"></label><input id="vacances-fin" type="date"></div>
+        <div><label for="vacances-rythme" data-i18n="vacancesRythme"></label><select id="vacances-rythme"></select></div>
+      </div>
+      <p class="doux petit" id="vacances-resume" role="status"></p>
+      <p class="doux petit"><button type="button" class="lien" id="vacances-libre" data-i18n="vacancesLibre"></button></p>
+    </div>
+    <div id="vacances-diagnostic" hidden>
+      <p data-i18n="vacancesDiagnosticIntro"></p>
+      <div id="vacances-questions" class="vacances-questions"></div>
+    </div>
+    <p id="vacances-retour" class="erreur-champ" aria-live="assertive"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="fermer-vacances" data-i18n="fermer"></button>
+      <button type="submit" id="vacances-suivant" data-i18n="vacancesContinuer"></button>
+    </div>
+  </form>
+</dialog>
+
 <dialog id="lecture-cahier" class="lecture-cahier" data-sans-idees aria-labelledby="lecture-titre">
   <div class="dialogue-entete">
     <h2 id="lecture-titre"></h2>

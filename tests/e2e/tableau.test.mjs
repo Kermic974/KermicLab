@@ -158,6 +158,8 @@ test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la 
   // Chaque modèle ouvre le constructeur ; sans IA consentie, le cahier est construit à partir du catalogue.
   for (const type of ["brouillon", "fiches", "vacances"]) {
     await page.locator(`[data-cahier-type="${type}"]`).click();
+    // Cahier de vacances : parcours guidé (issue #188) ; le cahier libre reste accessible depuis ce parcours.
+    if (type === "vacances") await page.click("#vacances-libre");
     await page.locator("#constructeur-cahier[open]").waitFor();
     if (type !== "brouillon") await page.locator("#cahier-notions label", { hasText: "Les fractions" }).click();
     await page.click("#construire-cahier");
@@ -277,6 +279,7 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   assert.match(await texte(page, "#lecture-meta"), /Construit à partir du catalogue/);
   await page.click("#fermer-lecture");
   await page.locator('[data-cahier-type="vacances"]').click();
+  await page.click("#vacances-libre");
   assert.equal(await page.isDisabled("#cahier-ia"), true, "quota atteint");
   assert.match(await texte(page, "#cahier-ia-etat"), /utilisé tes cahiers enrichis/);
   await page.click("#fermer-constructeur");
@@ -582,6 +585,78 @@ test("recommandation (issue #186) : prérequis maîtrisés puis révision due, r
     assert.deepEqual(erreurs, []);
     await contexte.close();
   }
+});
+
+test("cahier de vacances (issue #188) : réglages, diagnostic court, planning jour par jour et journée type", async () => {
+  // Catalogue avec le référentiel (niveaux, prérequis) ; les QCM du diagnostic viennent des vrais contenus publiés.
+  const notions = [
+    { id: "fractions", titre: "Les fractions", niveau: "college", niveaux: ["cycle-3", "cycle-4"], prerequis: [] },
+    { id: "pythagore", titre: "Le théorème de Pythagore", niveau: "college", niveaux: ["cycle-4"], prerequis: ["fractions"] },
+    { id: "thales", titre: "Le théorème de Thalès", niveau: "college", niveaux: ["cycle-4"], prerequis: [] }
+  ].map((n) => ({ matiere: "mathematiques", version: "1.0.0", ...n }));
+  const { page, contexte, erreurs } = await demarrer({}, (p) => p.route(`${api}/api/catalogue`, (r) => r.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ notions })
+  })));
+  await choisirPseudo(page, "Inès");
+  await page.locator(".barre-laterale [data-nav=education]").click();
+  await page.locator("[aria-controls=ecran-cahiers]").click();
+  await page.locator('[data-cahier-type="vacances"]').click();
+  await page.locator("#constructeur-vacances[open]").waitFor();
+  assert.deepEqual(await page.locator("#vacances-matiere option").allTextContents(), ["Maths"]);
+  assert.deepEqual(await page.locator("#vacances-niveau option").allTextContents(), ["Cycle 3 (CM1 à 6e)", "Cycle 4 (5e à 3e)"]);
+  await page.selectOption("#vacances-niveau", "cycle-4");
+  await page.selectOption("#vacances-rythme", "7");
+  assert.match(await texte(page, "#vacances-resume"), /3 notion\(s\) à travailler, 28 séance\(s\)/);
+  // Une fin avant le début est refusée avec une raison.
+  const debut = await page.inputValue("#vacances-debut");
+  const finParDefaut = await page.inputValue("#vacances-fin");
+  await page.fill("#vacances-fin", "2000-01-01");
+  await page.locator("#vacances-fin").dispatchEvent("change");
+  assert.match(await texte(page, "#vacances-retour"), /date de fin doit venir après/);
+  assert.equal(await page.isDisabled("#vacances-suivant"), true);
+  await page.fill("#vacances-fin", debut.replace(/^(\d{4})/, (a) => String(Number(a) + 1)).slice(0, 4) + debut.slice(4));
+  await page.locator("#vacances-fin").dispatchEvent("change");
+  assert.match(await texte(page, "#vacances-retour"), /120 jours au plus/);
+  await page.fill("#vacances-fin", finParDefaut);
+  await page.locator("#vacances-fin").dispatchEvent("change");
+  assert.equal(await page.isDisabled("#vacances-suivant"), false);
+  await page.fill("#vacances-nom", "Mon été");
+  await page.click("#vacances-suivant");
+
+  // Diagnostic court : un QCM par notion ; Pythagore réussi sort du planning, le reste « je ne sais pas encore ».
+  await page.locator("#vacances-diagnostic:not([hidden])").waitFor();
+  assert.equal(await page.locator(".vacances-question").count(), 3);
+  await page.locator('[data-diagnostic="pythagore"] label', { hasText: "le côté opposé à l'angle droit" }).click();
+  await page.locator('[data-diagnostic="fractions"] label', { hasText: "Je ne sais pas encore" }).click();
+  await page.locator('[data-diagnostic="thales"] label', { hasText: "le triangle soit rectangle" }).click();
+  await page.click("#vacances-suivant");
+
+  // Planning : séance du jour = première notion restante, dans l'ordre d'apprentissage, avec la journée type.
+  await page.locator("#lecture-cahier[open]").waitFor();
+  assert.match(await texte(page, "#lecture-corps"), /1 notion\(s\) déjà acquise\(s\)/);
+  const planning = page.locator(".planning-vacances");
+  assert.equal(await planning.getAttribute("data-planning"), "en-cours");
+  assert.match(await planning.textContent(), /0 \/ 2 notion\(s\) travaillée\(s\)/);
+  assert.match(await planning.textContent(), /Notion du jour : Les fractions/);
+  assert.equal(await planning.locator(".vacances-etapes li").count(), 5, "révision, notion, manipulation, exercices, mini-bilan");
+  assert.match(await planning.textContent(), /un jour manqué décale simplement la suite, sans pénalité/);
+  await planning.locator("[data-vacances-terminer=fractions]").click();
+  await page.locator(".planning-vacances .vacances-jours").waitFor();
+  assert.match(await texte(page, "#lecture-corps"), /Journée terminée, bravo/);
+  assert.match(await texte(page, ".planning-vacances"), /Séance du jour terminée/);
+  assert.match(await texte(page, ".planning-vacances .vacances-jours li:first-child"), /Le théorème de Thalès/, "la suite commence demain");
+  assert.match(await texte(page, ".planning-vacances .vacances-jours li:nth-child(2)"), /Révision/, "puis des journées de révision");
+  const cahier = await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:cahiers"))[0]);
+  assert.equal(cahier.titre, "Mon été");
+  assert.deepEqual(cahier.plan.notions, ["fractions", "thales"]);
+  assert.deepEqual(cahier.plan.acquises, ["pythagore"]);
+  assert.deepEqual(Object.keys(cahier.plan.faites), ["fractions"]);
+  await page.click("#fermer-lecture");
+  assert.match(await texte(page, "#liste-cahiers .cahier-enregistre"), /1 \/ 2 notion\(s\) travaillée\(s\)/);
+  await page.setViewportSize({ width: 360, height: 740 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
 });
 
 test("changer d'appareil (issue #189) : export dans un fichier, import sur un autre navigateur, fichier invalide refusé", async () => {

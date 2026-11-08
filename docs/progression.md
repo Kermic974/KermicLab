@@ -154,6 +154,30 @@ neuf). Module pur `web/fichier-progression.js` ; rien n'est envoyé au serveur :
 - Ce fichier n'est pas la synchronisation du compte local (ADR 0024) : il contient aussi l'agrégat du contrat
   d'événements (ADR 0025), puisqu'il ne quitte jamais l'appareil sans l'action de l'utilisateur.
 
+## Cahier de vacances (issue #188)
+
+« Mes cahiers » → « Cahier de vacances » ouvre un parcours guidé ; le cahier libre (sections par notion, enrichissement
+par l'IA possible) reste accessible depuis ce parcours. Module pur `web/cahier-vacances.js` ; tout reste dans le
+navigateur.
+
+1. **Réglages** : matière et niveau proposés d'après le référentiel (notions qui renseignent `niveaux`), période (au
+   plus 120 jours) et rythme (3, 5 ou 7 jours par semaine : lundi-mercredi-vendredi, lundi au vendredi, tous les jours).
+2. **Ordre d'apprentissage** : les notions de la matière qui couvrent le niveau, chaque prérequis avant la notion qui en
+   dépend (tri topologique), puis le niveau de début le plus jeune, puis l'ordre du catalogue.
+3. **Diagnostic court** : un QCM publié (`dist/contenus/`) pour chacune des 5 premières notions du parcours, avec
+   « Je ne sais pas encore ». Une bonne réponse, ou une notion déjà maîtrisée sur l'appareil (issue #185), sort la notion
+   du planning. Ce n'est pas une note : rien n'est conservé à part la liste des notions acquises.
+4. **Planning** : une notion par jour de séance, recalculé à chaque ouverture **à partir d'aujourd'hui**. Les jours
+   passés ne comptent pas : un jour manqué décale simplement la suite, sans rattrapage, sans pénalité ni message de
+   retard. Les jours de séance en trop deviennent des journées de révision (défi express) ; les notions qui ne tiennent
+   pas dans la période sont signalées, sans reproche.
+5. **Journée type** (20 à 30 minutes) : révision courte (révisions dues dans le défi express, issue #187), notion du
+   jour, manipulation dans la page, exercices notés (état de maîtrise affiché), mini-bilan avec « Terminer ma journée ».
+
+Stockage : le plan (`plan` : matière, niveau, période, rythme, notions, acquises, journées faites) est rangé dans le
+cahier, sous `kermiclab:cahiers`, relu strictement (`validerPlan`). Il suit donc la synchronisation du compte local
+(ADR 0024) et l'export en fichier (issue #189).
+
 ## Tests
 
 - `tests/unit/temps-actif.test.mjs` : règles du moteur (horloge manuelle, déterministe).
