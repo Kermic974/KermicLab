@@ -1,13 +1,13 @@
 {
-  "version": "1.31.0",
+  "version": "1.31.1",
   "site": "https://kermiclab.online/",
   "api": "https://kermiclab-api.kermic.workers.dev",
   "artefacts": {
     "index.html": {
-      "version": "1.31.0",
+      "version": "1.31.1",
       "date": "2026-11-08",
       "revision": "9b7309e9d72cf5dcac16cdcf310e8434fa05f699",
-      "squeletteSha256": "295a3f57d185df21a6d4f21ef81989b5c6a1637324b894d56dc74dceb4bee017",
+      "squeletteSha256": "2678d7bb1ca01645be89a7098282e353b5a49ca00df6ca124ff82bd2b40c4591",
       "sourcesSha256": "31a30e7726bd92323ad442d6599513223ce778bdd3ea76aee44452d885093548"
     },
     "notion.html": {
@@ -2127,6 +2127,23 @@
           "revision": "e6186fdc47d1f77332f5de8691deb247cbfae550",
           "squeletteSha256": "4cc79083b9a603449e62de24a12066a44ab04d27ec404e9391151d5d85238f29",
           "sourcesSha256": "79c4b29be4a61ea4fa96dfcf5decdebedc77d36d3b3ef48f34c8b07f059c268b"
+        }
+      }
+    },
+    {
+      "version": "1.31.1",
+      "date": "2026-11-08",
+      "modifies": [
+        "index.html"
+      ],
+      "precedente": "1.31.0",
+      "artefacts": {
+        "index.html": {
+          "version": "1.31.1",
+          "date": "2026-11-08",
+          "revision": "9b7309e9d72cf5dcac16cdcf310e8434fa05f699",
+          "squeletteSha256": "2678d7bb1ca01645be89a7098282e353b5a49ca00df6ca124ff82bd2b40c4591",
+          "sourcesSha256": "31a30e7726bd92323ad442d6599513223ce778bdd3ea76aee44452d885093548"
         }
       }
     }
