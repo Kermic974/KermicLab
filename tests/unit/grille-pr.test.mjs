@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { lireGrille, notionsModifiees, verifierGrille, CRITERES, TITRE_SECTION } from "../../scripts/verifier-grille-pr.mjs";
+import { lireGrille, notionsModifiees, verifierGrille, sansCommentaires, CRITERES, TITRE_SECTION } from "../../scripts/verifier-grille-pr.mjs";
 
 // Grille de relecture dans les PR de notion (feuille de route, phase 5 ; issue #202).
 const racine = new URL("../..", import.meta.url).pathname;
@@ -39,4 +39,13 @@ test("verdict : grille exigée seulement si une notion change, et alors entière
   // Une case cochée dans un commentaire HTML ne compte pas.
   const cachee = modele.replace("## Relecture pédagogique", "## Relecture pédagogique\n<!-- - [x] 1. Exactitude -->");
   assert.equal(lireGrille(cachee)["Exactitude"], false);
+});
+
+test("commentaires HTML : retirés jusqu'à stabilité ; un commentaire non fermé court jusqu'à la fin", () => {
+  assert.equal(sansCommentaires("a<!-- x -->b"), "ab");
+  assert.equal(sansCommentaires("a<!<!-- -->-- - [x] 1. Exactitude -->b"), "ab", "commentaire reconstitué après un premier retrait");
+  assert.equal(sansCommentaires("a <!-- - [x] 1. Exactitude"), "a ", "commentaire jamais fermé");
+  for (const corps of ["<!<!---->--", "<!-- <!-- -->", "x<!--"]) assert.ok(!sansCommentaires(corps).includes("<!--"), corps);
+  const piege = modele.replace("- [ ] 1. Exactitude", "<!<!-- -->-- - [x] 1. Exactitude -->\n- [ ] 1. Exactitude");
+  assert.equal(lireGrille(piege)["Exactitude"], false);
 });

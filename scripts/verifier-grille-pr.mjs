@@ -12,9 +12,21 @@ export const TITRE_SECTION = "Relecture pédagogique";
 export const CRITERES = ["Exactitude", "Progression", "Adaptation à l'âge", "Exercices", "Neutralité et sources", "Données personnelles", "Aperçu"];
 const versionFiche = (texte) => texte?.match(/^version:\s*["']?([^\s"']+)/m)?.[1] ?? null;
 
+/**
+ * Retire les commentaires HTML du corps de la PR, comme GitHub à l'affichage : une case cochée dans un commentaire ne
+ * compte pas. Le retrait est répété jusqu'à stabilité (commentaires imbriqués), et un commentaire jamais fermé court
+ * jusqu'à la fin du texte : il ne reste donc aucun « <!-- » dans le résultat.
+ */
+export function sansCommentaires(corps) {
+  let texte = String(corps ?? ""), avant;
+  do { avant = texte; texte = texte.replace(/<!--[\s\S]*?-->/g, ""); } while (texte !== avant);
+  const ouvert = texte.indexOf("<!--");
+  return ouvert < 0 ? texte : texte.slice(0, ouvert);
+}
+
 /** Cases de la section « Relecture pédagogique » du corps de la PR : critère → cochée (true) ou non (false). */
 export function lireGrille(corps) {
-  const texte = String(corps ?? "").replace(/<!--[\s\S]*?-->/g, "");
+  const texte = sansCommentaires(corps);
   const debut = texte.search(new RegExp(`^##\\s+${TITRE_SECTION}`, "m"));
   if (debut < 0) return null;
   const suite = texte.slice(debut).split(/\n(?=##\s)/)[0];
