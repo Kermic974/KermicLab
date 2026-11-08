@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-depot="${1:-${GITHUB_REPOSITORY:-kermic974/trigoLab}}"
+depot="${1:-${GITHUB_REPOSITORY:-kermic974/KermicLab}}"
 
 if ! command -v gh >/dev/null 2>&1; then
   echo "Erreur : installez GitHub CLI (gh) pour vérifier les secrets du dépôt." >&2

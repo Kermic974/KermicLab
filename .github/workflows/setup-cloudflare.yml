@@ -48,7 +48,7 @@ jobs:
           if [[ "$erreurs" -ne 0 ]]; then
             {
               echo "## Configuration Cloudflare"
-              echo "Vérification en échec. Consultez [le guide de configuration](https://github.com/kermic974/trigoLab/blob/main/docs/setup-cloudflare.md)."
+              echo "Vérification en échec. Consultez [le guide de configuration](https://github.com/kermic974/KermicLab/blob/main/docs/setup-cloudflare.md)."
             } >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi

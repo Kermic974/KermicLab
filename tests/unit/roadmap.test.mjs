@@ -13,7 +13,7 @@ const pr = (number, options = {}) => ({
   number, title: `PR ${number}`, merged_at: "2026-11-05T05:00:00Z",
   merge_commit_sha: sha, base: { ref: "main" }, head: { ref: `feature/${number}` }, ...options
 });
-const donnees = { prs: [pr(1)], runs, sha, depot: "Kermic974/trigoLab", total: 180, jeux: 9 };
+const donnees = { prs: [pr(1)], runs, sha, depot: "Kermic974/KermicLab", total: 180, jeux: 9 };
 
 test("roadmap : trois succès sur le même SHA, la bonne branche et un push sont obligatoires", () => {
   assert.deepEqual(validations({ workflow_runs: runs }, sha), runs);
@@ -50,7 +50,7 @@ test("roadmap : HTML échappé, URL canonique et conservation exacte du contenu 
   assert.ok(resultat.startsWith(`avant${DEBUT}`));
   assert.ok(resultat.endsWith(`${FIN}après`));
   assert.match(resultat, /&lt;script&gt;alert\(&quot;x&quot;\)&lt;\/script&gt; &amp; texte/);
-  assert.match(resultat, /(?:^|[^A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-])https:\/\/github\.com\/Kermic974\/trigoLab\/pull\/7(?:$|[^A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-])/);
+  assert.match(resultat, /(?:^|[^A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-])https:\/\/github\.com\/Kermic974\/KermicLab\/pull\/7(?:$|[^A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-])/);
   assert.match(resultat, /180 pages, dont 9 jeux/);
   assert.equal(actualiser(resultat, { ...donnees, prs: [pr(7, { title: '<script>alert("x")</script> & texte' })] }), resultat);
 });

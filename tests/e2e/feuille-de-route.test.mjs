@@ -24,7 +24,7 @@ test("roadmap : acquis sourcés, pendu intégré (#100) et navigation complète 
   assert.doesNotMatch(livraisons, /PR ouverte · non livrée/);
   assert.match(livraisons, /Neuf jeux intégrés/);
   for (const numero of [80, 81, 82, 83, 84, 86, 88, 90, 92, 94, 95, 96, 97, 98, 99, 100]) {
-    assert.equal(await page.locator(`#livraisons a[href="https://github.com/Kermic974/trigoLab/pull/${numero}"]`).count(), 1);
+    assert.equal(await page.locator(`#livraisons a[href="https://github.com/Kermic974/KermicLab/pull/${numero}"]`).count(), 1);
   }
   const ancres = await page.locator('a[href^="#"]').evaluateAll((liens) =>
     liens.map((lien) => lien.getAttribute("href").slice(1)));

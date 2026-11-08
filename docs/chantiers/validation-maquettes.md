@@ -6,7 +6,7 @@ Processus (voir AGENTS.md §6) : issue `maquette-manquante` → branche → maqu
 
 Fait : contrat navigateur générique de chaque page servie, catalogue privé compris (`tests/e2e/contrat-pages.test.mjs`, #174).
 
-Fait : grille intégrée à la revue des PR de notion ([issue #202](https://github.com/Kermic974/trigoLab/issues/202)). Le modèle de PR porte la section « Relecture pédagogique » (les 6 critères de la grille v1, plus l'ouverture de l'aperçu Cloudflare Pages, sur téléphone et ordinateur). Le contrôle « Grille de relecture » (`.github/workflows/relecture-pr.yml`, `scripts/verifier-grille-pr.mjs`) échoue tant qu'une case reste vide, **seulement** si la PR change une notion : `contenu.json` modifié, nouvelle notion ou version de fiche augmentée. Une PR qui ne fait que régénérer des pages (moteur, CSP) n'est pas concernée. Il est relancé quand le corps de la PR est modifié : le relecteur coche les cases, le contrôle passe au vert.
+Fait : grille intégrée à la revue des PR de notion ([issue #202](https://github.com/Kermic974/KermicLab/issues/202)). Le modèle de PR porte la section « Relecture pédagogique » (les 6 critères de la grille v1, plus l'ouverture de l'aperçu Cloudflare Pages, sur téléphone et ordinateur). Le contrôle « Grille de relecture » (`.github/workflows/relecture-pr.yml`, `scripts/verifier-grille-pr.mjs`) échoue tant qu'une case reste vide, **seulement** si la PR change une notion : `contenu.json` modifié, nouvelle notion ou version de fiche augmentée. Une PR qui ne fait que régénérer des pages (moteur, CSP) n'est pas concernée. Il est relancé quand le corps de la PR est modifié : le relecteur coche les cases, le contrôle passe au vert.
 
 Prochaines étapes :
 - Relire d'abord les 20 notions les plus servies (requête « Maquettes les plus servies » de [`kpi.md`](kpi.md)), avec la grille ci-dessous.
@@ -41,7 +41,7 @@ la feuille de route : « Relecture : N notion(s) relue(s) sur M, K à revoir ».
 
 ## Grille de relecture jeux-v1
 
-Relecture humaine d'un jeu intégré ([issue #175](https://github.com/Kermic974/trigoLab/issues/175)), par un adulte,
+Relecture humaine d'un jeu intégré ([issue #175](https://github.com/Kermic974/KermicLab/issues/175)), par un adulte,
 en jouant au moins une partie sur téléphone et une sur ordinateur. Suivi par jeu : [`docs/jeux.md`](../jeux.md#4-relecture-des-jeux-intégrés).
 
 | # | Critère | Ce qu'on vérifie |

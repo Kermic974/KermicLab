@@ -9,7 +9,7 @@ import { normaliserSource, verifierReference } from "./ux-sources.mjs";
 
 const racine = fileURLToPath(new URL("../", import.meta.url));
 const dossier = path.join(racine, "docs/ux");
-const depot = "https://github.com/Kermic974/trigoLab";
+const depot = "https://github.com/Kermic974/KermicLab";
 const site = "https://kermiclab.online/";
 const definitions = {
   "index.html": {
