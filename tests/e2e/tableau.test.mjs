@@ -584,6 +584,50 @@ test("recommandation (issue #186) : prérequis maîtrisés puis révision due, r
   }
 });
 
+test("changer d'appareil (issue #189) : export dans un fichier, import sur un autre navigateur, fichier invalide refusé", async () => {
+  const { readFile: lire } = await import("node:fs/promises");
+  // Appareil 1 : une notion ouverte, puis export.
+  const premier = await demarrer();
+  await choisirPseudo(premier.page, "Nina");
+  await catalogueCharge(premier.page);
+  await premier.page.locator("#suggestion button").click();
+  await premier.page.locator("#bulle-lab[open][data-notion=trigo-cercle]").waitFor();
+  await premier.page.click("#fermer-bulle");
+  await premier.page.click(".barre-laterale [data-nav=progression]");
+  const [telechargement] = await Promise.all([premier.page.waitForEvent("download"), premier.page.click("#exporter-progression")]);
+  assert.match(telechargement.suggestedFilename(), /^kermiclab-progression-\d{4}-\d{2}-\d{2}\.json$/);
+  // Le fichier téléchargé disparaît avec le contexte du navigateur : on garde son contenu.
+  const octets = await lire(await telechargement.path());
+  const fichier = JSON.parse(octets.toString("utf8"));
+  assert.equal(fichier.format, "kermiclab-progression");
+  assert.equal(fichier.donnees.pseudo, "Nina");
+  assert.deepEqual(fichier.donnees.progression.notions, ["trigo-cercle"]);
+  assert.match(await texte(premier.page, "#fichier-etat"), /Fichier enregistré/);
+  assert.deepEqual(premier.erreurs, []);
+  await premier.contexte.close();
+
+  // Appareil 2 : un autre élève de passage, puis import du fichier.
+  const second = await demarrer();
+  const { page } = second;
+  await choisirPseudo(page, "Zoé");
+  await catalogueCharge(page);
+  await page.click(".barre-laterale [data-nav=progression]");
+  await page.setInputFiles("#importer-progression", { name: "faux.json", mimeType: "application/json", buffer: Buffer.from('{"format":"autre"}') });
+  await page.locator("#fichier-etat", { hasText: "pas une sauvegarde" }).waitFor();
+  assert.equal(await page.locator("#confirmer-import").isVisible(), false, "rien à confirmer pour un fichier refusé");
+  await page.setInputFiles("#importer-progression", { name: telechargement.suggestedFilename(), mimeType: "application/json", buffer: octets });
+  await page.locator("#fichier-etat", { hasText: "prêt" }).waitFor();
+  assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:pseudo")), "Zoé", "rien n'est remplacé avant la confirmation");
+  await Promise.all([page.waitForEvent("load"), page.click("#confirmer-import")]);
+  // Rechargée sur l'écran Progression : la progression importée est relue par chaque module.
+  await page.locator(".barre-laterale [data-profil=pseudo]", { hasText: "Nina" }).waitFor();
+  assert.equal(await page.locator("#dialogue-pseudo").evaluate((d) => d.open), false);
+  assert.equal(await texte(page, ".barre-laterale [data-profil=pseudo]"), "Nina");
+  assert.deepEqual(JSON.parse(await page.evaluate(() => sessionStorage.getItem("kermiclab:progression"))).notions, ["trigo-cercle"]);
+  assert.deepEqual(second.erreurs, []);
+  await second.contexte.close();
+});
+
 test("reprise : une progression d'une version précédente est proposée à la mémorisation", async () => {
   const ancienne = { questions: 3, xp: 30, notions: [], serie: 1, serieMax: 2, dernierJour: "2026-01-01", badges: ["premier-pas"] };
   const { page, contexte, erreurs } = await demarrer({}, (p) => p.addInitScript((a) => {

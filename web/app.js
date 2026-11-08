@@ -12,6 +12,7 @@ import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 import * as evenements from "./evenements.js";
 import * as recommandation from "./recommandation.js";
+import * as fichierProgression from "./fichier-progression.js";
 // Module partagé des jeux (boîtes de Leitner, ADR 0015), produit par le build depuis gabarit/jeux/progression.js.
 import { ProgressionJeux } from "./progression-jeux.js";
 import * as experiences from "./experiences.js";
@@ -1952,6 +1953,68 @@ function activiteNotion(id) {
   return bloc;
 }
 
+/* ---------- Export et import de la progression en fichier (issue #189) ---------- */
+
+/** Clé de stockage de chaque champ du fichier de progression. */
+const CLES_FICHIER = {
+  pseudo: profil.CLE_PSEUDO, progression: progression.CLE_STOCKAGE, trophees: trophees.CLE_STOCKAGE,
+  evenements: evenements.CLE_STOCKAGE, cahiers: CLE_CAHIERS
+};
+const estObjet = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+/** Zone de stockage en mémoire qui ne contient qu'une valeur : réutilise les fonctions de chargement de chaque module. */
+const zoneUnique = (cle, valeur) => ({ getItem: (k) => (k === cle ? JSON.stringify(valeur) : null), setItem: () => {} });
+const NORMALISEURS_FICHIER = {
+  pseudo: (v) => { const r = typeof v === "string" ? profil.validerPseudo(v) : { ok: false }; return r.ok ? r.pseudo : null; },
+  progression: (v) => (estObjet(v) ? progression.charger(zoneUnique(progression.CLE_STOCKAGE, v)) : null),
+  trophees: (v) => (estObjet(v) ? trophees.charger(zoneUnique(trophees.CLE_STOCKAGE, v)) : null),
+  evenements: (v) => (estObjet(v) && v.v === evenements.VERSION_CONTRAT ? evenements.charger(zoneUnique(evenements.CLE_STOCKAGE, v)) : null),
+  cahiers: (v) => (Array.isArray(v) ? v.slice(0, 50).map(cahierValide).filter(Boolean) : null)
+};
+
+function brancherFichierProgression() {
+  const etatFichier = $("#fichier-etat"), confirmer = $("#confirmer-import"), choix = $("#importer-progression");
+  let enAttente = null;
+  $("#exporter-progression").addEventListener("click", () => {
+    const jour = progression.jourLocal();
+    const contenu = fichierProgression.exporter({ lire: (champ) => lireCle(stockage(), CLES_FICHIER[champ]), jour });
+    const url = URL.createObjectURL(new Blob([fichierProgression.texteFichier(contenu)], { type: "application/json" }));
+    const lien = element("a", { attributs: { href: url, download: fichierProgression.nomFichier(jour) } });
+    document.body.append(lien);
+    lien.click();
+    lien.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+    etatFichier.textContent = t("fichierExporte");
+  });
+  choix.addEventListener("change", async () => {
+    const fichier = choix.files?.[0];
+    choix.value = "";
+    enAttente = null;
+    confirmer.hidden = true;
+    if (!fichier) return;
+    const texte = fichier.size > fichierProgression.TAILLE_MAX ? null : await fichier.text();
+    const lu = fichierProgression.lireFichier(texte, { normaliser: NORMALISEURS_FICHIER });
+    if (!lu.ok) { etatFichier.textContent = t(`fichierErreur_${lu.erreur}`); return; }
+    enAttente = lu.valeurs;
+    const date = new Date(`${lu.cree}T00:00:00`).toLocaleDateString(etat.langue, { day: "numeric", month: "long", year: "numeric" });
+    etatFichier.textContent = t("fichierPret", { date });
+    confirmer.hidden = false;
+    confirmer.focus();
+  });
+  confirmer.addEventListener("click", () => {
+    if (!enAttente) return;
+    // Remplacement complet, puis rechargement : chaque module relit son état avec ses propres contrôles. L'état en
+    // mémoire est d'abord abandonné : sinon l'enregistrement du temps actif au départ de la page (« pagehide »)
+    // réécrirait l'ancienne progression par-dessus celle du fichier.
+    etat.progres = null;
+    etat.moteur = null;
+    fichierProgression.appliquer(enAttente, {
+      ecrire: (champ, valeur) => ecrireCle(stockage(), CLES_FICHIER[champ], valeur),
+      effacer: (champ) => effacerCle(stockage(), CLES_FICHIER[champ])
+    });
+    location.reload();
+  });
+}
+
 function brancherTrophees() {
   window.addEventListener("message", (e) => {
     // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
@@ -2328,6 +2391,7 @@ async function demarrer() {
   etat.trophees = trophees.charger(stockage());
   etat.evenements = evenements.charger(stockage());
   brancherTrophees();
+  brancherFichierProgression();
   appliquerTheme(lireCle(preferences(), CLE_THEME));
   const select = $("#langue");
   for (const l of etat.config.langues) {
@@ -2810,12 +2874,12 @@ const INTERVALLE_ENREGISTREMENT_MS = 15_000;
 function brancherTemps() {
   etat.moteur = creerMoteurTemps({ visible: !document.hidden });
   etat.moteur.contexte({ section: sectionDe(etat.ecran) });
-  const signal = () => etat.moteur.signal();
+  const signal = () => etat.moteur?.signal();
   for (const evenement of ["pointerdown", "keydown", "touchstart", "wheel"]) {
     document.addEventListener(evenement, signal, { capture: true, passive: true });
   }
   document.addEventListener("visibilitychange", () => {
-    etat.moteur.visibilite(!document.hidden);
+    etat.moteur?.visibilite(!document.hidden);
     if (document.hidden) enregistrerTemps();
   });
   window.addEventListener("pagehide", enregistrerTemps);
