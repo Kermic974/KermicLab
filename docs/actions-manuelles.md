@@ -22,6 +22,12 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 |---|---|---|---|---|---|
 | 41 | Après la fusion, suivre le premier déploiement ; si l'étape « Instantané avant déploiement » avertit d'un échec, ajouter au jeton `CLOUDFLARE_API_TOKEN` les droits **Workers Scripts : Read** et **Cloudflare Pages : Read** (en plus des droits d'écriture déjà utilisés pour déployer) | Actions → CI/CD → Déploiement Cloudflare ; https://dash.cloudflare.com/profile/api-tokens | Sans lecture des déploiements, pas d'instantané, donc pas de retour arrière automatique. La première exécution des migrations applique `0001_schema_initial.sql` (uniquement des `CREATE … IF NOT EXISTS`) : elle ne modifie aucune donnée | Étapes « Instantané », « Migrations D1 » et « Test de fumée » vertes ; la console D1 contient la table `d1_migrations` avec `0001_schema_initial.sql` | fait (2026-11-07) : après #218, run [42396707935](https://github.com/Kermic974/trigoLab/actions/runs/42396707935) entièrement vert — instantané (droits de lecture du jeton suffisants), migrations, Worker, Pages et test de fumée ; aucun retour arrière nécessaire. Le premier déploiement (#217) avait révélé deux défauts, corrigés par #218 |
 
+## Grille de relecture dans les PR de notion (issue #202)
+
+| # | Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|---|
+| 43 | Ajouter le contrôle « Grille de relecture » aux contrôles obligatoires de la protection de `main` ; à chaque PR de notion, ouvrir l'aperçu Cloudflare Pages puis cocher la section « Relecture pédagogique » | GitHub → Settings → Branches → règle de `main` → « Require status checks » ; corps de chaque PR de notion | Sans contrôle obligatoire, une PR de notion pourrait être fusionnée avec sa grille vide | Une PR qui modifie un `contenu.json` reste bloquée tant qu'une case de la grille est vide, puis passe au vert une fois tout coché | à faire |
+
 ## Relecture des jeux intégrés (issue #175)
 
 | # | Action | Où | Pourquoi | Comment confirmer | Statut |
