@@ -32,9 +32,10 @@ démarrer tôt ; le code des comptes, lui, attend la validation.
 
 ## Tâches à démarrer maintenant
 
-- Socle : [#173](https://github.com/Kermic974/KermicLab/issues/173) protéger `main` · [#174](https://github.com/Kermic974/KermicLab/issues/174) tests navigateur obligatoires · [#176](https://github.com/Kermic974/KermicLab/issues/176) grille de relecture et statut « relue ».
+- Socle : [#173](https://github.com/Kermic974/KermicLab/issues/173) protéger `main` · [#174](https://github.com/Kermic974/KermicLab/issues/174) tests navigateur obligatoires · [#176](https://github.com/Kermic974/KermicLab/issues/176) grille de relecture et statut « relue » · [#260](https://github.com/Kermic974/KermicLab/issues/260) audit SEO et indexation · [#261](https://github.com/Kermic974/KermicLab/issues/261) tests de fumée post-déploiement · [#263](https://github.com/Kermic974/KermicLab/issues/263) audit WCAG 2.2 AA.
 - Référentiel : [#179](https://github.com/Kermic974/KermicLab/issues/179) champs de `fiche.md` · [#180](https://github.com/Kermic974/KermicLab/issues/180) graphe vérifié en CI · [#181](https://github.com/Kermic974/KermicLab/issues/181) contrat d'événements.
 - Catalogue et jeux : [#207](https://github.com/Kermic974/KermicLab/issues/207) valider le poker.
+- Tuteur : [#262](https://github.com/Kermic974/KermicLab/issues/262) jeu d'évaluation pédagogique IA (sous réserve du point de contrôle budget de #167).
 - Familles : [#195](https://github.com/Kermic974/KermicLab/issues/195) préparation juridique (en parallèle).
 
 ## Règles de suivi
