@@ -64,7 +64,7 @@ let markdown = `<!-- AUTO-GENERATED: do not edit by hand; run node scripts/synch
 
 > **Source de vérité :** issues et labels GitHub de [Kermic974/KermicLab](https://github.com/${repo}/issues).
 > **Généré le :** ${generatedAt} (UTC) · **Ouvertes :** ${open.length} · **Fermées :** ${closed.length}.
-> Les horizons sont des priorités, pas des statuts d'avancement. Le statut reste « à qualifier » tant qu'aucun label \\`statut:*\\` ou \\`status:*\\` n'est défini sur l'issue.
+> Les horizons sont des priorités, pas des statuts d'avancement. Le statut reste « à qualifier » tant qu'aucun label \`statut:*\` ou \`status:*\` n'est défini sur l'issue.
 
 ## Synthèse
 
@@ -98,18 +98,18 @@ ${closed.length > 30 ? `\n\n_${closed.length-30} autres issues fermées non affi
 
 ## Règles de synchronisation
 
-1. Les labels \\`horizon:maintenant\\`, \\`horizon:ensuite\\`, \\`horizon:sous-condition\\` et \\`horizon:plus-tard\\` déterminent la colonne.
+1. Les labels \`horizon:maintenant\`, \`horizon:ensuite\`, \`horizon:sous-condition\` et \`horizon:plus-tard\` déterminent la colonne.
 2. Une issue sans label d'horizon apparaît dans **À classer**.
 3. Les issues ouvertes et fermées sont récupérées depuis l'API GitHub ; les pull requests sont exclues.
-4. Le statut d'avancement n'est jamais déduit de l'horizon. Pour afficher un statut, utiliser un label \\`statut:backlog\\`, \\`statut:pret\\`, \\`statut:en-cours\\`, \\`statut:en-revue\\` ou \\`statut:termine\\`.
+4. Le statut d'avancement n'est jamais déduit de l'horizon. Pour afficher un statut, utiliser un label \`statut:backlog\`, \`statut:pret\`, \`statut:en-cours\`, \`statut:en-revue\` ou \`statut:termine\`.
 5. Les responsables, jalons et dépendances affichés sont ceux présents dans les métadonnées GitHub au moment de la génération.
 6. La synchronisation est en lecture seule : elle ne modifie ni les issues, ni leurs labels, ni le tableau GitHub Projects global.
 
 ## Mise à jour manuelle
 
-\\`\\`\\`bash
+\`\`\`bash
 GH_TOKEN=... node scripts/synchroniser-kanban.mjs
-\\`\\`\\`
+\`\`\`
 
 Le workflow **Synchronisation du Kanban** régénère ce document chaque semaine et à chaque changement d'issue. Il ouvre ou actualise une PR de synchronisation ; aucune fusion automatique n'est effectuée.
 `;
