@@ -35,17 +35,20 @@ jobs:
         run: |
           git diff --check
           grep -q "AUTO-GENERATED" docs/pilotage-kanban.md
+          grep -q "AUTO-GENERATED" docs/pilotage-kanban.html
       - name: Proposer la synchronisation
         uses: peter-evans/create-pull-request@v8.1.1
         with:
           token: ${{ github.token }}
           branch: automatisation/synchronisation-kanban
           delete-branch: true
-          add-paths: docs/pilotage-kanban.md
+          add-paths: |
+            docs/pilotage-kanban.md
+            docs/pilotage-kanban.html
           commit-message: "docs: synchroniser la vue Kanban des issues"
           title: "docs: synchroniser le Kanban de pilotage"
           body: |
-            Mise à jour automatique de docs/pilotage-kanban.md depuis les issues et labels GitHub.
+            Mise à jour automatique des vues Markdown et HTML depuis les issues et labels GitHub.
 
             - Source de vérité : issues du dépôt.
             - Lecture seule : aucune issue ni aucun Project n'est modifié.
