@@ -136,7 +136,7 @@ const htmlClosed = closed.map(issue => ({
 }));
 const htmlData = JSON.stringify({ issues: htmlIssues, closed: htmlClosed, generatedAt, repo })
   .replaceAll("<", "\\u003c").replaceAll(">", "\\u003e").replaceAll("&", "\\u0026");
-const html = `<!doctype html>
+const html = `<!-- AUTO-GENERATED: do not edit by hand; run node scripts/synchroniser-kanban.mjs -->\n<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
