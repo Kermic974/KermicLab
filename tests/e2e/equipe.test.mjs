@@ -19,7 +19,8 @@ test("équipe : six agents, texte fidèle, ancres et aucun débordement, sans Ja
   await page.goto(`${serveur.url}/equipe.html`);
   assert.equal(await page.locator("h1").textContent(), "L'équipe");
   assert.match(await page.locator(".fr-chapeau").textContent(), /Les agents Grok au service de la solution KermicLab/);
-  assert.match(await page.locator(".fr-encadre").textContent(), /agents d'intelligence artificielle/);
+  assert.match(await page.locator(".fr-encadre").textContent(), /Les six membres de l'équipe présentés ici sont des agents d'intelligence artificielle\. Ils travaillent/);
+  assert.match(await page.locator("#ines-grok").textContent(), /Auditrice d'agents/);
   assert.equal(await page.locator(".carte-agent").count(), 6);
   for (const nom of NOMS) assert.equal(await page.getByRole("heading", { name: nom, level: 2 }).count(), 1);
   const ancres = await page.locator('a[href^="#"]').evaluateAll((liens) => liens.map((lien) => lien.getAttribute("href").slice(1)));

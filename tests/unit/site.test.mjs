@@ -64,10 +64,9 @@ test("la feuille de route est publiée et accessible depuis Profil, entre « Con
 });
 
 test("la page L'équipe est publiée et accessible depuis la barre latérale, le Profil et le pied de page", async () => {
-  const [html, page, redirections] = await Promise.all([
+  const [html, page] = await Promise.all([
     readFile(`${racine}web/index.html`, "utf8"),
-    readFile(`${racine}dist/equipe.html`, "utf8"),
-    readFile(`${racine}dist/_redirects`, "utf8")
+    readFile(`${racine}dist/equipe.html`, "utf8")
   ]);
   const laterale = html.slice(html.indexOf('<aside class="barre-laterale"'), html.indexOf("</aside>"));
   assert.match(laterale, /<a class="nav-bouton" href="equipe\.html">[\s\S]*?data-i18n="navEquipe"/);
@@ -78,11 +77,13 @@ test("la page L'équipe est publiée et accessible depuis la barre latérale, le
   assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
   assert.match(page, /src="boite-idees\.js\?v=[0-9a-f]{10}"/);
   assert.doesNotMatch(page, /<script(?! type="(?:application\/json|module)")|<style|style="|<img\b|https?:\/\/|eval\(/);
-  assert.match(page, /Les six personnes présentées ici sont des agents d'intelligence artificielle/);
+  assert.match(page, /Les six membres de l'équipe présentés ici sont des agents d'intelligence artificielle\. Ils travaillent/);
+  assert.match(page, /The six team members presented here are artificial-intelligence agents/);
+  assert.match(page, /Auditrice d'agents/);
+  assert.doesNotMatch(page, /Auditeur d'agents/);
   for (const nom of ["Émile Grok", "Inès Grok", "Chloé Grok", "Paul Grok", "Hugo Grok", "Manon Grok"]) {
     assert.match(page, new RegExp(`<h2 id="nom-[a-z]+">${nom}</h2>`));
   }
-  assert.match(redirections, /^\/equipe\s+\/equipe\.html\s+200$/m);
   for (const l of ["fr", "en"]) {
     const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
     assert.ok(textes.navEquipe, `clé « navEquipe » absente de ${l}.json`);

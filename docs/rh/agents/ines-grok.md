@@ -1,4 +1,4 @@
-# Inès Grok — Auditeur d’agents
+# Inès Grok — Auditrice d’agents
 
 > Agent IA au service de la solution KermicLab
 
@@ -8,7 +8,7 @@ Inès Grok
 
 ## Rôle / bot original
 
-Auditeur d’agents
+Auditrice d’agents
 
 ## Mission
 
