@@ -1,14 +1,14 @@
 {
-  "version": "1.34.0",
+  "version": "1.34.1",
   "site": "https://kermiclab.online/",
   "api": "https://kermiclab-api.kermic.workers.dev",
   "artefacts": {
     "index.html": {
-      "version": "1.34.0",
+      "version": "1.34.1",
       "date": "2026-11-11",
-      "revision": "46be27fc92a0b5b60f3ef8f7b29a41892f8554a3",
+      "revision": "95c912055cd98c02472195c2167e383c04acfb63",
       "squeletteSha256": "e669bb78c4163c75b64da7478c687d67345ba2ccc6a57afd38f91d7a8bc25f01",
-      "sourcesSha256": "60ef2a82c961878d59a4ced4f8293bd31fe405a1d267bf65f8d022bcb27ea6c2"
+      "sourcesSha256": "9f2d6c429336341e2bb9fe2fcecf14b4fad1ba642f62a1a09fa8a9a365f50c23"
     },
     "notion.html": {
       "version": "1.33.1",
@@ -32,18 +32,18 @@
       "sourcesSha256": "d93e4e7e59c02cf07913a318ec9f08ecc1f7f0e412e2b73f12b4e58b32e5a8f4"
     },
     "editorial.html": {
-      "version": "1.34.0",
+      "version": "1.34.1",
       "date": "2026-11-11",
-      "revision": "46be27fc92a0b5b60f3ef8f7b29a41892f8554a3",
-      "squeletteSha256": "b3c429600e4f6998a3364bfce014f269c32f8baf53bc6525b620d10c3ddc4247",
-      "sourcesSha256": "c4de37ef954e32eada32950db3559b750c70cac7f20fb77beaa50e3ffd5a2d1c"
+      "revision": "95c912055cd98c02472195c2167e383c04acfb63",
+      "squeletteSha256": "1da3891837666b43d4e05f38b4d2b4ea097ec7f625febb5191d158c8c52e1aec",
+      "sourcesSha256": "ead2b3eeabb58bb80a50b97341d55b9e5da61b34c8909340068002f9f5febad2"
     },
     "inventaire.html": {
-      "version": "1.34.0",
+      "version": "1.34.1",
       "date": "2026-11-11",
-      "revision": "46be27fc92a0b5b60f3ef8f7b29a41892f8554a3",
-      "squeletteSha256": "ee074b2845f05984f874e9579d97b9cc768719d74af1942cf96eb18256b2deb6",
-      "sourcesSha256": "5befcf425bd73ee4be7ddbeaf7356e518cabbc701491125874ac1f21a16a1a38"
+      "revision": "95c912055cd98c02472195c2167e383c04acfb63",
+      "squeletteSha256": "19ad01819dbf76d01b179ab64195b0424d20086f77dd07c6d0435f1e30ebdac3",
+      "sourcesSha256": "221572a0243d04ba0dc18347d873cf6fce34699d87f7e1b19ee2a23851761e61"
     }
   },
   "historique": [
@@ -2308,6 +2308,39 @@
           "revision": "46be27fc92a0b5b60f3ef8f7b29a41892f8554a3",
           "squeletteSha256": "ee074b2845f05984f874e9579d97b9cc768719d74af1942cf96eb18256b2deb6",
           "sourcesSha256": "5befcf425bd73ee4be7ddbeaf7356e518cabbc701491125874ac1f21a16a1a38"
+        }
+      }
+    },
+    {
+      "version": "1.34.1",
+      "date": "2026-11-11",
+      "modifies": [
+        "index.html",
+        "editorial.html",
+        "inventaire.html"
+      ],
+      "precedente": "1.34.0",
+      "artefacts": {
+        "index.html": {
+          "version": "1.34.1",
+          "date": "2026-11-11",
+          "revision": "95c912055cd98c02472195c2167e383c04acfb63",
+          "squeletteSha256": "e669bb78c4163c75b64da7478c687d67345ba2ccc6a57afd38f91d7a8bc25f01",
+          "sourcesSha256": "9f2d6c429336341e2bb9fe2fcecf14b4fad1ba642f62a1a09fa8a9a365f50c23"
+        },
+        "editorial.html": {
+          "version": "1.34.1",
+          "date": "2026-11-11",
+          "revision": "95c912055cd98c02472195c2167e383c04acfb63",
+          "squeletteSha256": "1da3891837666b43d4e05f38b4d2b4ea097ec7f625febb5191d158c8c52e1aec",
+          "sourcesSha256": "ead2b3eeabb58bb80a50b97341d55b9e5da61b34c8909340068002f9f5febad2"
+        },
+        "inventaire.html": {
+          "version": "1.34.1",
+          "date": "2026-11-11",
+          "revision": "95c912055cd98c02472195c2167e383c04acfb63",
+          "squeletteSha256": "19ad01819dbf76d01b179ab64195b0424d20086f77dd07c6d0435f1e30ebdac3",
+          "sourcesSha256": "221572a0243d04ba0dc18347d873cf6fce34699d87f7e1b19ee2a23851761e61"
         }
       }
     }
