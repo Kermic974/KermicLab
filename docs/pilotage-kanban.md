@@ -2,7 +2,7 @@
 # Kanban de pilotage KermicLab
 
 > **Source de vérité :** issues et labels GitHub de [Kermic974/KermicLab](https://github.com/Kermic974/KermicLab/issues).
-> **Généré le :** 2026-11-11T00:07:12.336Z (UTC) · **Ouvertes :** 0 · **Fermées :** 0.
+> **Généré le :** 2026-11-11T07:12:36.816Z (UTC) · **Ouvertes :** 0 · **Fermées :** 0.
 > Les horizons sont des priorités, pas des statuts d'avancement. Le statut reste « à qualifier » tant qu'aucun label `statut:*` ou `status:*` n'est défini sur l'issue.
 
 ## Synthèse
