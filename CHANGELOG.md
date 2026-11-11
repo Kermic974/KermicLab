@@ -64,6 +64,9 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Le Worker accepte les origines `www.kermiclab.online` et `kermiclab.online`.
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
+### Corrigé
+- **Démarrage local du Worker** : le préambule des textes non fiables n'est plus un export nommé du point d'entrée. `wrangler dev` refusait de démarrer (`PREAMBULE_NON_FIABLE` n'est pas un handler). Le texte publié dans les issues est inchangé. / The untrusted-data preamble is no longer a named export, so local `wrangler dev` starts again.
+
 ### Supprimé
 - **SVT : doublons de collège réconciliés** (lot S2 du plan des labs, décision du CODEOWNER) : `cellule`, `ecosystemes`, `biodiversite`, `genetique-adn`, `nutrition-digestion`, `volcanisme` et `tectonique-plaques` sont fusionnées dans `la-cellule`, `ecosystemes-et-biodiversite`, `genetique-et-heredite`, `nutrition-et-digestion` et `seismes-et-volcans` (v1.1.0), qui reprennent leurs mots-clés, questions d'exemple et exercices non redondants. Les questions de ces fiches sont routées vers la notion conservée ; les anciennes URL `/maquettes/<id>` ne sont plus servies. / Merged seven duplicate middle-school biology pages into their fuller counterparts.
 
