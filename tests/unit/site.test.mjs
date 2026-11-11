@@ -63,6 +63,37 @@ test("la feuille de route est publiée et accessible depuis Profil, entre « Con
   }
 });
 
+test("la page L'équipe est publiée à /equipe et liée hors des destinations de navigation", async () => {
+  const [html, page, redirects] = await Promise.all([
+    readFile(`${racine}web/index.html`, "utf8"),
+    readFile(`${racine}dist/equipe.html`, "utf8"),
+    readFile(`${racine}dist/_redirects`, "utf8")
+  ]);
+  assert.match(redirects, /^\/equipe\/ \/equipe 301$/m);
+  assert.match(redirects, /^\/equipe \/equipe\.html 200$/m);
+  const piedBarre = html.slice(html.indexOf('<div class="barre-pied">'), html.indexOf("</aside>"));
+  assert.match(piedBarre, /<a class="nav-bouton" href="equipe\.html">/);
+  const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("</section>\n\n<!-- Espace famille"));
+  assert.match(profil, /<a class="lien-profil" href="equipe\.html">/);
+  const pied = html.slice(html.indexOf('<footer class="pied">'), html.indexOf("</footer>"));
+  assert.match(pied, /<a href="equipe\.html" data-i18n="navEquipe">/);
+  assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
+  assert.match(page, /<h1>L'équipe<\/h1>/);
+  for (const nom of ["Émile Grok", "Inès Grok", "Chloé Grok", "Paul Grok", "Hugo Grok", "Manon Grok"]) {
+    assert.match(page, new RegExp(`<h2>${nom}</h2>`));
+  }
+  for (const nom of ["ChatGPT", "Gemini", "M365 Copilot", "Claude Code", "GitHub Copilot", "Symphony by Wix"]) {
+    assert.match(page, new RegExp(`<h3>${nom}</h3>`));
+  }
+  assert.match(page, /n'est pas encore approuvé/);
+  assert.match(page, /<title>L'équipe de KermicLab : agents Grok et autres intelligences artificielles<\/title>/);
+  assert.doesNotMatch(page, /<script(?! type="(?:application\/json|module)")|<style|style=|fonts\.googleapis|fonts\.gstatic/);
+  for (const l of ["fr", "en"]) {
+    const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
+    assert.ok(textes.navEquipe, `clé « navEquipe » absente de ${l}.json`);
+  }
+});
+
 test("le lien de participation reste visible (barre latérale et Profil), hors des destinations, et traduit", async () => {
   const html = await readFile(`${racine}web/index.html`, "utf8");
   assert.equal((html.match(/https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc/g) ?? []).length, 2);

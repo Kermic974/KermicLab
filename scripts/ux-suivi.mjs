@@ -50,8 +50,8 @@ const definitions = {
       .map((id) => [`jeu-${id}`, `maquette:${id}`, id])
   },
   "editorial.html": {
-    sources: ["web/feuille-de-route.html", "web/confidentialite.html", "web/mentions-legales.html", "scripts/roadmap.mjs"],
-    vues: ["feuille-de-route", "confidentialite", "mentions-legales"].map((id) => [id, `${id}.html`, id])
+    sources: ["web/feuille-de-route.html", "web/confidentialite.html", "web/mentions-legales.html", "web/equipe.html", "scripts/roadmap.mjs"],
+    vues: ["feuille-de-route", "confidentialite", "mentions-legales", "equipe"].map((id) => [id, `${id}.html`, id])
   },
   "inventaire.html": {
     sources: ["web", "catalogue", "gabarit", "src", "scripts/ux-inventaire.mjs", "scripts/ux-sources.mjs", "scripts/roadmap.mjs"],
