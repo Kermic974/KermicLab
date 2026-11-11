@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  # GET /repos/{owner}/{repo}/issues exige issues:read (en-tête X-Accepted-Github-Permissions).
+  # Sans cette permission, GitHub répond 200 en ne renvoyant que les pull requests
+  # (le jeton a pull-requests:write). Le générateur les exclut et le Kanban sort vide.
+  issues: read
 
 concurrency:
   group: synchronisation-kanban
