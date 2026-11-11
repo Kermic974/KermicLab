@@ -12,3 +12,5 @@ Cette page indexe les fiches de poste des agents Grok. Chaque fiche présente le
 | Manon Grok | KermicLab Veille Marché | Réaliser la veille concurrentielle et de marché pour KermicLab (solutions éducatives interactives, curriculum français CM1/CM2/6e et au-delà). | [Manon Grok — KermicLab Veille Marché](manon-grok.md) |
 
 La version Notion est la page [RH/Agents](https://app.notion.com/p/4150c40cec288199900ec3b4d2031d24).
+
+La présentation destinée au public du site est la page [`/equipe`](../../web/equipe.html) (`www.kermiclab.online/equipe`). Elle reprend les missions et les compétences, dans une formulation adaptée aux enfants, aux parents et aux enseignants.

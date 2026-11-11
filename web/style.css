@@ -693,6 +693,34 @@ main.prose h1 { margin: 8px 0 16px; }
 main.prose h2 { margin: 24px 0 8px; }
 main.prose p, main.prose ul { margin: 0 0 12px; }
 
+/* ---------- L'équipe (page publique, claire comme sombre) ---------- */
+main.equipe { max-width: 960px; }
+.equipe h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -.03em; color: #17354a; }
+.equipe-filet { display: block; width: 64px; height: 4px; margin: 14px 0 18px; border-radius: 2px; background: #2ba8a2; }
+.equipe-chapo { max-width: 44rem; margin: 0 0 8px; padding: 14px 16px; border-radius: 14px; background: #d5f2f2; color: #17354a; font-size: 1.12rem; line-height: 1.55; }
+.equipe-cartes { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.equipe-cartes li { margin: 0; padding: 16px 18px; border: 1px solid #c4dede; border-radius: 14px; background: var(--surface); box-shadow: var(--ombre); }
+.equipe-cartes h2, .equipe-cartes h3, .equipe-cartes h4 { margin: 0 0 6px; font-size: 1.25rem; font-weight: 800; }
+.equipe-cartes p { margin: 0 0 10px; }
+.equipe-cartes p:last-child { margin-bottom: 0; color: var(--texte-2); }
+.equipe-cartes strong { color: #146a65; }
+.equipe-suite, .equipe-anglais { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--bord); }
+.equipe-suite > h2, .equipe-anglais > h2, .equipe-anglais > h3 { margin-top: 0; }
+.equipe-note { margin: 0 0 1rem; padding: 12px 14px; border-left: 4px solid #2ba8a2; border-radius: 10px; background: var(--surface); }
+@media (min-width: 720px) { .equipe-cartes { grid-template-columns: 1fr 1fr; } }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .equipe h1,
+  :root:not([data-theme="light"]) .equipe-chapo { color: var(--texte); }
+  :root:not([data-theme="light"]) .equipe-chapo { background: var(--surface-2); }
+  :root:not([data-theme="light"]) .equipe-cartes li { border-color: var(--bord); }
+  :root:not([data-theme="light"]) .equipe-cartes strong { color: #7ee0d8; }
+}
+:root[data-theme="dark"] .equipe h1,
+:root[data-theme="dark"] .equipe-chapo { color: var(--texte); }
+:root[data-theme="dark"] .equipe-chapo { background: var(--surface-2); }
+:root[data-theme="dark"] .equipe-cartes li { border-color: var(--bord); }
+:root[data-theme="dark"] .equipe-cartes strong { color: #7ee0d8; }
+
 /* ---------- Feuille de route (page de texte enrichie, sans script) ---------- */
 a.nav-bouton { text-decoration: none; }
 /* Boîte à idées (composant partagé web/boite-idees.*) : couleurs du tableau de bord, clair comme sombre. */
