@@ -817,6 +817,25 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .fr-phase details, .fr-tableau, .fr-cartes li { box-shadow: none; break-inside: avoid; }
 }
 
+/* Page L'équipe : une carte par agent. Le portrait est une initiale, en attendant une image locale. */
+.equipe .fr-sommaire a { display: inline-flex; align-items: center; min-height: 44px; }
+.eq-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; margin: 20px 0 8px; padding: 0; list-style: none; }
+.eq-grille > li { display: flex; min-width: 0; }
+.carte-agent { display: flex; flex-direction: column; flex: 1; min-width: 0; padding: 16px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface); box-shadow: var(--ombre); scroll-margin-top: 16px; }
+.agent-entete { display: flex; align-items: center; gap: 12px; }
+.agent-portrait { display: grid; place-items: center; width: 56px; height: 56px; margin: 0; border-radius: 50%; background: linear-gradient(135deg, #3141bd, #6c43d0); color: #fff; font-size: 1.35rem; font-weight: 800; line-height: 1; flex: none; }
+.equipe .carte-agent h2 { margin: 0; font-size: 1.15rem; }
+.carte-agent dl { margin: 4px 0 0; }
+.carte-agent dt { margin: 12px 0 4px; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--doux); }
+.carte-agent dd { margin: 0; color: var(--texte-2); }
+.carte-agent dd p { margin: 0; }
+.carte-agent ul { margin: 0; padding-left: 1.15rem; }
+.carte-agent li + li { margin-top: 2px; }
+@media print {
+  .carte-agent { box-shadow: none; break-inside: avoid; }
+  .agent-portrait { background: none; color: inherit; border: 2px solid currentColor; }
+}
+
 /* ---------- Animations ---------- */
 @keyframes apparait { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes rebond { 0%, 80%, 100% { transform: translateY(0); opacity: .4; } 40% { transform: translateY(-5px); opacity: 1; } }

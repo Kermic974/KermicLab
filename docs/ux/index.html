@@ -89,8 +89,8 @@
         <a href="#profil" data-nav="profil">Profil</a>
         <a href="#contributions" data-nav="contributions">Contributions (rôle contributeur, prof ou admin seulement)</a>
       </nav>
-      <p>Boîte à idées · Je participe · E · Explorateur · Niveau 2</p>
-      <p class="note">Cinq destinations, une seule marquée « page courante » (aria-current). Sur mobile : la même barre basse de cinq entrées (Accueil, Éducation, Jeux, Progrès, Profil), sans action secondaire. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #labs, #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
+      <p>Boîte à idées · <a href="editorial.html#equipe">L'équipe</a> · Je participe · E · Explorateur · Niveau 2</p>
+      <p class="note">Cinq destinations, une seule marquée « page courante » (aria-current). Sur mobile : la même barre basse de cinq entrées (Accueil, Éducation, Jeux, Progrès, Profil), sans action secondaire. L'équipe est un lien vers la page éditoriale (pied de la barre latérale, pied de page et aide du Profil), hors de ces cinq destinations. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #labs, #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
     </aside>
     <main>
       <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" data-source="web/index.html:dialogue-pseudo">
@@ -202,7 +202,7 @@
         <h2>Configuration</h2><label><input type="checkbox" role="switch" disabled> Utiliser l'IA</label>
         <article class="carte" data-ecran="configuration-defi"><h3>Défi express</h3><label>Défis inédits préparés par l’IA<select disabled><option>Désactivé (questions fixes)</option><option>1 par jour</option><option>2 par jour</option><option selected>3 par jour</option></select></label><p>Il te reste 3 défi(s) inédit(s) aujourd’hui ; ensuite, les questions fixes prennent le relais.</p><p>Variantes : « Active « Utiliser l’IA » dans Configuration pour recevoir des défis inédits. », « Le défi express utilise les questions fixes. », indisponible sur ce site. Plafond donné par le serveur (3 par session de 24 h), réglage mémorisé sur l'appareil.</p></article>
         <p>Paramètres du site : vue en lecture seule de la configuration du Worker (ADR 0019).</p>
-        <h2>Aide et informations</h2><nav aria-label="Aide"><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="#support" data-nav="aide">Signaler un problème</a><a href="#participer">Je participe</a><a href="editorial.html#confidentialite">Confidentialité</a></nav>
+        <h2>Aide et informations</h2><nav aria-label="Aide"><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="editorial.html#equipe">L'équipe</a><a href="#support" data-nav="aide">Signaler un problème</a><a href="#participer">Je participe</a><a href="editorial.html#confidentialite">Confidentialité</a></nav>
       </section>
       <section class="ecran" id="profil-dialogue" data-ecran="dialogue-profil" data-source="web/index.html:dialogue-profil">
         <h2>Ton profil</h2><a href="#accueil">Fermer</a><p>Fenêtre séparée, ouverte par la carte du profil ou l'avatar mobile, sans changer l'écran courant. Échap ferme cette fenêtre et le focus revient au déclencheur.</p><label>Ton pseudo<input value="Explorateur" disabled></label><button disabled>Enregistrer</button><label><input type="checkbox" disabled> Se souvenir de moi sur cet appareil</label><p>Ton pseudo et tes progrès sont gardés pour cette session seulement : ils s'effacent quand tu fermes l'onglet.</p><button disabled>Effacer mes données</button><p>Supprime le pseudo, la progression et le cookie de cet appareil.</p>
@@ -242,7 +242,7 @@
         </article>
       </section>
       <section class="ecran" id="informations" data-ecran="informations" data-source="web/index.html:pied">
-        <span class="repere">S12 · Pied de page et notifications</span><h2>Informations et liens</h2><nav aria-label="Pied de page"><a href="cercle.html">Application : le cercle trigonométrique</a><a href="editorial.html#confidentialite">Confidentialité</a><a href="editorial.html#mentions-legales">Mentions légales</a><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="#support">Signaler un problème</a></nav>
+        <span class="repere">S12 · Pied de page et notifications</span><h2>Informations et liens</h2><nav aria-label="Pied de page"><a href="cercle.html">Application : le cercle trigonométrique</a><a href="editorial.html#confidentialite">Confidentialité</a><a href="editorial.html#mentions-legales">Mentions légales</a><a href="editorial.html#feuille-de-route">Feuille de route</a><a href="editorial.html#equipe">L'équipe</a><a href="#support">Signaler un problème</a></nav>
         <article id="participer" class="carte" data-ecran="participer"><h3>Je participe</h3><p>Sur le site : lien externe avec cœur vers la collecte onparticipe.fr/c/yDvp6lpc (pied de la barre latérale et écran Profil, hors des 5 destinations). Aucun écran interne ni paiement simulé ici.</p></article>
         <details data-source="web/app.js:notifications"><summary>Notifications transitoires</summary><p>Bienvenue, Explorateur ! · Pseudo enregistré · +n XP · Nouvelle notion découverte ! · Badge débloqué : nom · Niveau n atteint, bravo !</p></details>
       </section>
