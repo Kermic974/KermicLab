@@ -34,6 +34,7 @@ Principes non négociables :
 | `tests/unit/` | Routage, modération, Worker (doubles de test pour D1, GitHub, Claude) |
 | `tests/e2e/` | Playwright : contrat navigateur de toutes les pages servies (`contrat-pages.test.mjs`, catalogue public et privé), onglets, rendu mobile, chat |
 | `docs/chantiers/` | Une fiche par chantier transverse (niveau de maturité, prochaines étapes) |
+| `docs/rh/agents/` | Fiches de poste des agents Grok au service de KermicLab (index : `docs/rh/agents/README.md`) |
 | `docs/projets.md` | Projets GitHub de la feuille de route : épiques, sous-issues, labels `projet:*` / `horizon:*`, priorités. Source du lien : `.github/projets.json` (vérifié par `tests/unit/projets.test.mjs`) |
 | `docs/decisions/` | Journal des décisions (ADR courts) |
 | `docs/actions-manuelles.md` | Actions humaines requises et leur statut |
