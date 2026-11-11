@@ -69,8 +69,7 @@ test("la page L'équipe est publiée à /equipe et liée hors des destinations d
     readFile(`${racine}dist/equipe.html`, "utf8"),
     readFile(`${racine}dist/_redirects`, "utf8")
   ]);
-  assert.match(redirects, /^\/equipe\/ \/equipe 301$/m);
-  assert.match(redirects, /^\/equipe \/equipe\.html 200$/m);
+  assert.doesNotMatch(redirects, /\/equipe/);
   const piedBarre = html.slice(html.indexOf('<div class="barre-pied">'), html.indexOf("</aside>"));
   assert.match(piedBarre, /<a class="nav-bouton" href="equipe\.html">/);
   const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("</section>\n\n<!-- Espace famille"));

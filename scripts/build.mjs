@@ -56,8 +56,9 @@ await writeFile(`${racine}dist/_headers`, `/*
   ! Content-Security-Policy
 `);
 // L'ancienne maquette /dashboard/ est devenue l'accueil : les liens existants y mènent.
-// /equipe sert equipe.html sans changer l'adresse ; la barre oblique finale revient à cette adresse.
-await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 301\n/equipe/ /equipe 301\n/equipe /equipe.html 200\n");
+// Ne pas réécrire /equipe vers equipe.html : Pages sert déjà chaque page.html à l'adresse sans
+// extension et renvoie l'adresse avec extension vers elle. Une réécriture 200 boucle (308).
+await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 301\n");
 // L'application autonome porte sa propre CSP (meta, hashes des scripts et styles en ligne) : celle du chat,
 // sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
 
