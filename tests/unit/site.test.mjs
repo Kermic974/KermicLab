@@ -63,7 +63,7 @@ test("la feuille de route est publiée et accessible depuis Profil, entre « Con
   }
 });
 
-test("la page L'équipe est publiée à /equipe et liée hors des destinations de navigation", async () => {
+test("la page L'équipe est publiée et liée hors des destinations de navigation", async () => {
   const [html, page, redirects] = await Promise.all([
     readFile(`${racine}web/index.html`, "utf8"),
     readFile(`${racine}dist/equipe.html`, "utf8"),
@@ -78,6 +78,10 @@ test("la page L'équipe est publiée à /equipe et liée hors des destinations d
   assert.match(pied, /<a href="equipe\.html" data-i18n="navEquipe">/);
   assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
   assert.match(page, /<h1>L'équipe<\/h1>/);
+  assert.match(page, /Les six membres de l'équipe présentés ici sont des agents d'intelligence artificielle\. Ils travaillent/);
+  assert.match(page, /The six team members presented here are artificial intelligence agents/);
+  assert.match(page, /Auditrice d'agents/);
+  assert.doesNotMatch(page, /Auditeur d'agents/);
   for (const nom of ["Émile Grok", "Inès Grok", "Chloé Grok", "Paul Grok", "Hugo Grok", "Manon Grok"]) {
     assert.match(page, new RegExp(`<h2>${nom}</h2>`));
   }
