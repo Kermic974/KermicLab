@@ -1,6 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { servir, navigateur, ouvrir, racine } from "./outils.mjs";
+import { readFile } from "node:fs/promises";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab } from "./outils.mjs";
 
 let serveur, nav;
 before(async () => {
@@ -33,6 +34,9 @@ test("équipe : six agents, texte fidèle, ancres et aucun débordement, sans Ja
 });
 
 async function entrer(page) {
+  const api = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8")).apiUrl || serveur.url;
+  await simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette: "<!doctype html><title>maquette</title>" });
+  await page.goto(serveur.url);
   const pseudo = page.locator("#dialogue-pseudo");
   await pseudo.waitFor({ state: "visible" });
   await page.fill("#pseudo", "Visiteur");
@@ -42,7 +46,6 @@ async function entrer(page) {
 
 test("équipe : le lien de la barre latérale ouvre la page", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 1280, height: 900 }, locale: "fr-FR" });
-  await page.goto(serveur.url);
   await entrer(page);
   await page.locator('.barre-laterale a[href="equipe.html"]').click();
   await page.waitForURL(/equipe\.html$/);
@@ -55,7 +58,6 @@ test("équipe : le pied de page ouvre la page sur mobile", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, {
     viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, locale: "fr-FR"
   });
-  await page.goto(serveur.url);
   await entrer(page);
   const lien = page.locator('footer.pied a[href="equipe.html"]');
   await lien.evaluate((element) => element.scrollIntoView({ block: "center" }));
