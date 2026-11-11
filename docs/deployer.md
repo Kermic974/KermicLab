@@ -42,7 +42,7 @@ Le projet Cloudflare Pages `kermiclab` peut être publié de deux façons :
 
 Le fichier `wrangler.toml` à la racine du dépôt est un garde-fou pour le projet Pages uniquement (`name = "kermiclab"`, `pages_build_output_dir = "./dist"`). Il ne remplace pas `worker/wrangler.toml`. Comme `dist/` n'est pas versionné, un déploiement Git sans commande de build échoue (dossier de sortie introuvable) et laisse en ligne le dernier déploiement réussi. La commande `wrangler pages deploy dist` de la CI reste valable : l'argument `dist` est conservé s'il est fourni.
 
-Ce garde-fou ne dispense pas de l'action 21 dans [`actions-manuelles.md`](actions-manuelles.md) : dans le tableau de bord (Workers & Pages → kermiclab → Settings → Builds), désactiver les déploiements automatiques de production de l'intégration Git, ou régler la commande de build sur `npm run build` avec `dist` comme dossier de sortie. Cette action avait été marquée faite le 31 octobre 2026, mais l'intégration Git était de nouveau active le 11 novembre.
+Ce garde-fou ne dispense pas de l'action 21 dans [`actions-manuelles.md`](actions-manuelles.md) : dans le tableau de bord (Workers & Pages → kermiclab → Settings → Builds), désactiver les déploiements automatiques de production de l'intégration Git, ou régler la commande de build sur `npm run build` avec `dist` comme dossier de sortie. Cette action avait été marquée faite le 31 octobre 2026, mais l'intégration Git était de nouveau active le 11 novembre. Refaite le 11 novembre 2026 : les déploiements de production Git sont désactivés (seule la CI publie la production) et les prévisualisations se construisent avec `npm run build` dans `dist`.
 
 ## Déploiement manuel de diagnostic
 
