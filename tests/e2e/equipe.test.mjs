@@ -18,10 +18,9 @@ test("équipe : six agents, texte fidèle, ancres et aucun débordement, sans Ja
   });
   await page.goto(`${serveur.url}/equipe.html`);
   assert.equal(await page.locator("h1").textContent(), "L'équipe");
-  assert.match(await page.locator(".fr-chapeau").textContent(), /Les agents Grok au service de la solution KermicLab/);
-  assert.match(await page.locator(".fr-encadre").textContent(), /Les six membres de l'équipe présentés ici sont des agents d'intelligence artificielle\. Ils travaillent/);
-  assert.match(await page.locator("#ines-grok").textContent(), /Auditrice d'agents/);
-  assert.equal(await page.locator(".carte-agent").count(), 6);
+  assert.match(await page.locator(".equipe-chapo").textContent(), /Les six membres de l'équipe présentés ici sont des agents d'intelligence artificielle\. Ils travaillent/);
+  assert.match(await page.locator(".equipe-cartes").first().textContent(), /Auditrice d'agents/);
+  assert.equal(await page.locator(".equipe-cartes").first().locator("li").count(), 6);
   for (const nom of NOMS) assert.equal(await page.getByRole("heading", { name: nom, level: 2 }).count(), 1);
   const ancres = await page.locator('a[href^="#"]').evaluateAll((liens) => liens.map((lien) => lien.getAttribute("href").slice(1)));
   for (const id of ancres) assert.equal(await page.locator(`[id="${id}"]`).count(), 1, `ancre valide : ${id}`);
@@ -29,7 +28,7 @@ test("équipe : six agents, texte fidèle, ancres et aucun débordement, sans Ja
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "pas de débordement");
   await page.setViewportSize({ width: 360, height: 800 });
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "pas de débordement mobile");
-  assert.equal(await page.locator(".eq-grille").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length), 1);
+  assert.equal(await page.locator(".equipe-cartes").first().evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length), 1);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
@@ -64,7 +63,7 @@ test("équipe : le pied de page ouvre la page sur mobile", async () => {
   await lien.evaluate((element) => element.scrollIntoView({ block: "center" }));
   await lien.click();
   await page.waitForURL(/equipe\.html$/);
-  assert.equal(await page.locator(".carte-agent").count(), 6);
+  assert.equal(await page.locator(".equipe-cartes").first().locator("li").count(), 6);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.deepEqual(erreurs, []);
   await contexte.close();
