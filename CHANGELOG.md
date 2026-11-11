@@ -68,6 +68,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - Base D1 `kermiclab-kpi` créée et reliée au Worker.
 
 ### Corrigé
+- **Garde-fou du déploiement Pages** : un `wrangler.toml` à la racine fixe `pages_build_output_dir = "./dist"` pour le projet `kermiclab`. Sans `npm run build`, `dist/` n'existe pas dans le dépôt : l'intégration Git de Cloudflare échoue au lieu de publier l'`index.html` racine (l'ancienne page « trigoLab · Cercle trigonométrique », incident du 11 novembre après la fusion de la #274). La CI continue de publier `dist/` avec `wrangler pages deploy dist`. Ce fichier ne remplace pas le Worker (`worker/wrangler.toml`). Il reste à désactiver, dans le tableau de bord, les déploiements automatiques de production de l'intégration Git (action 21, déjà marquée faite le 31 octobre mais de nouveau active). / Root wrangler.toml stops Git-connected Pages from publishing the unbuilt repo root.
 - **Démarrage local du Worker** : le préambule des textes non fiables n'est plus un export nommé du point d'entrée. `wrangler dev` refusait de démarrer (`PREAMBULE_NON_FIABLE` n'est pas un handler). Le texte publié dans les issues est inchangé. / The untrusted-data preamble is no longer a named export, so local `wrangler dev` starts again.
 
 ### Supprimé

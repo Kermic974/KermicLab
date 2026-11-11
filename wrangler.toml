@@ -1,0 +1,25 @@
+# Garde-fou du projet Cloudflare Pages « kermiclab ».
+# Ce fichier n'est pas celui du Worker : la configuration du Worker reste dans
+# worker/wrangler.toml (la CI et le déploiement manuel s'y exécutent depuis worker/).
+#
+# Pourquoi : l'intégration Git de Cloudflare peut publier la racine du dépôt
+# (dont l'index.html autonome « trigoLab · Cercle trigonométrique ») sans lancer
+# `npm run build`. Le dossier `dist/` n'est pas versionné. Sans commande de
+# build, un déploiement Git qui vise `dist` échoue (dossier de sortie introuvable)
+# et laisse en ligne le dernier déploiement réussi, au lieu d'écraser le site
+# avec la mauvaise page.
+#
+# Une fois ce fichier utilisé par un déploiement, il devient la source de vérité
+# pour les champs qu'il contient (documentation Cloudflare : Pages Functions,
+# wrangler configuration). Ne pas y ajouter de bindings, de variables ou de clé
+# `main` : le site Pages est statique ; l'API est le Worker séparé.
+#
+# La commande de build n'est pas définie ici. Le vrai correctif, dans le
+# tableau de bord Cloudflare (Workers & Pages → kermiclab → Settings → Builds),
+# reste de désactiver les déploiements automatiques de production de
+# l'intégration Git, ou de régler la commande de build sur `npm run build`
+# avec `dist` comme dossier de sortie.
+
+name = "kermiclab"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-01"
