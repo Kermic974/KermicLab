@@ -25,7 +25,7 @@ async function brouillon(lien) {
 
 test("boîte à idées : pages publiques, mobile et application hors ligne", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 360, height: 740 } });
-  for (const fichier of ["feuille-de-route.html", "confidentialite.html", "mentions-legales.html"]) {
+  for (const fichier of ["feuille-de-route.html", "confidentialite.html", "mentions-legales.html", "equipe.html"]) {
     await page.goto(`${serveur.url}/${fichier}?secret=NE_PAS_TRANSMETTRE#prive`);
     const lien = page.locator("body > .boite-idees");
     const corps = await brouillon(lien);
