@@ -33,6 +33,17 @@ Variables facultatives : `KERMICLAB_API_URL` (API testée, défaut `https://kerm
 personnalisé `kermiclab.online` filtre les robots et répond 403 aux machines de GitHub Actions). L'instantané retient le
 dernier déploiement Pages de production **réussi** (un déploiement en échec ne peut pas être une cible de retour arrière).
 
+## Deux déployeurs sur le même projet Pages
+
+Le projet Cloudflare Pages `kermiclab` peut être publié de deux façons :
+
+1. **GitHub Actions** (chemin prévu, ADR 0008) : après le lint, le build et les tests, le job « Déploiement Cloudflare » exécute `wrangler pages deploy dist --project-name=kermiclab --branch=main`.
+2. **L'intégration Git de Cloudflare** : un push ou une fusion sur `main` déclenche un déploiement dès que le commit arrive, souvent **sans** `npm run build`. Si le dossier de sortie est la racine du dépôt, Cloudflare publie l'`index.html` autonome (« trigoLab · Cercle trigonométrique ») à la place du site. Le 11 novembre 2026, après la fusion de la [#274](https://github.com/Kermic974/KermicLab/pull/274), ce déploiement a précédé la CI d'environ sept minutes.
+
+Le fichier `wrangler.toml` à la racine du dépôt est un garde-fou pour le projet Pages uniquement (`name = "kermiclab"`, `pages_build_output_dir = "./dist"`). Il ne remplace pas `worker/wrangler.toml`. Comme `dist/` n'est pas versionné, un déploiement Git sans commande de build échoue (dossier de sortie introuvable) et laisse en ligne le dernier déploiement réussi. La commande `wrangler pages deploy dist` de la CI reste valable : l'argument `dist` est conservé s'il est fourni.
+
+Ce garde-fou ne dispense pas de l'action 21 dans [`actions-manuelles.md`](actions-manuelles.md) : dans le tableau de bord (Workers & Pages → kermiclab → Settings → Builds), désactiver les déploiements automatiques de production de l'intégration Git, ou régler la commande de build sur `npm run build` avec `dist` comme dossier de sortie. Cette action avait été marquée faite le 31 octobre 2026, mais l'intégration Git était de nouveau active le 11 novembre.
+
 ## Déploiement manuel de diagnostic
 
 Pour une intervention locale autorisée, installez les dépendances, connectez Wrangler au compte approprié et lancez les commandes depuis la racine :
