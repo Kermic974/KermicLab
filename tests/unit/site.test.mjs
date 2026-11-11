@@ -82,7 +82,11 @@ test("la page L'équipe est publiée à /equipe et liée hors des destinations d
   for (const nom of ["Émile Grok", "Inès Grok", "Chloé Grok", "Paul Grok", "Hugo Grok", "Manon Grok"]) {
     assert.match(page, new RegExp(`<h2>${nom}</h2>`));
   }
-  assert.match(page, /<title>L'équipe, les agents Grok au service de KermicLab<\/title>/);
+  for (const nom of ["ChatGPT", "Gemini", "M365 Copilot", "Claude Code", "GitHub Copilot", "Symphony by Wix"]) {
+    assert.match(page, new RegExp(`<h3>${nom}</h3>`));
+  }
+  assert.match(page, /n'est pas encore approuvé/);
+  assert.match(page, /<title>L'équipe de KermicLab : agents Grok et autres intelligences artificielles<\/title>/);
   assert.doesNotMatch(page, /<script(?! type="(?:application\/json|module)")|<style|style=|fonts\.googleapis|fonts\.gstatic/);
   for (const l of ["fr", "en"]) {
     const textes = JSON.parse(await readFile(`${racine}web/i18n/${l}.json`, "utf8"));
