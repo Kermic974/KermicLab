@@ -2,23 +2,23 @@
 # Kanban de pilotage KermicLab
 
 > **Source de vérité :** issues et labels GitHub de [Kermic974/KermicLab](https://github.com/Kermic974/KermicLab/issues).
-> **Généré le :** 2026-11-11T12:02:56.274Z (UTC) · **Ouvertes :** 55 · **Fermées :** 40.
+> **Généré le :** 2026-11-13T03:36:35.359Z (UTC) · **Ouvertes :** 70 · **Fermées :** 40.
 > Les horizons sont des priorités, pas des statuts d'avancement. Le statut reste « à qualifier » tant qu'aucun label `statut:*` ou `status:*` n'est défini sur l'issue.
 
 ## Synthèse
 
 | Colonne | Issues ouvertes |
 |---|---:|
-| À faire maintenant | 18 |
-| À faire ensuite | 16 |
+| À faire maintenant | 23 |
+| À faire ensuite | 19 |
 | Sous condition | 15 |
-| Plus tard | 6 |
-| À classer | 0 |
-| **Total** | **55** |
+| Plus tard | 7 |
+| À classer | 6 |
+| **Total** | **70** |
 
 ## Tableau Kanban
 
-### À faire maintenant — 18
+### À faire maintenant — 23
 
 _Priorité immédiate._
 
@@ -40,9 +40,14 @@ _Priorité immédiate._
 - [#281 — Blog : circuit de conformité avant validation](https://github.com/Kermic974/KermicLab/issues/281) · à qualifier (pas de statut explicite) · blog · responsable : non assignée
 - [#282 — Blog : documenter l'objectif et le circuit dans Notion](https://github.com/Kermic974/KermicLab/issues/282) · à qualifier (pas de statut explicite) · blog · responsable : non assignée
 - [#284 — CI : environnement Cursor et déclenchement unique de la roadmap](https://github.com/Kermic974/KermicLab/issues/284) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#286 — [SEO] Clarifier l’architecture canonique entre kermiclab.com et kermiclab.online](https://github.com/Kermic974/KermicLab/issues/286) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#287 — [SEO] Vérifier disponibilité HTTP et redirections www/non-www](https://github.com/Kermic974/KermicLab/issues/287) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#288 — [SEO] Vérifier robots.txt, sitemap XML et directives d’exploration](https://github.com/Kermic974/KermicLab/issues/288) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#289 — [SEO] Auditer les URL canoniques et l’indexabilité des pages prioritaires](https://github.com/Kermic974/KermicLab/issues/289) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#293 — [SEO] Établir la baseline Search Console et le suivi des requêtes](https://github.com/Kermic974/KermicLab/issues/293) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
 
 
-### À faire ensuite — 16
+### À faire ensuite — 19
 
 _Après les prérequis._
 
@@ -62,6 +67,9 @@ _Après les prérequis._
 - [#256 — [Référentiel] S4 · Projection V0 et migration pilote](https://github.com/Kermic974/KermicLab/issues/256) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
 - [#257 — [Référentiel] S4 · Migration incrémentale par discipline (suivi)](https://github.com/Kermic974/KermicLab/issues/257) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
 - [#283 — Blog : article hebdomadaire sur les tendances EdTech](https://github.com/Kermic974/KermicLab/issues/283) · à qualifier (pas de statut explicite) · blog · responsable : non assignée
+- [#290 — [SEO] Optimiser les titles, meta descriptions, H1 et métadonnées sociales](https://github.com/Kermic974/KermicLab/issues/290) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#291 — [SEO] Mesurer les performances mobiles et les Core Web Vitals](https://github.com/Kermic974/KermicLab/issues/291) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
+- [#292 — [SEO] Construire les pages thématiques et renforcer le maillage interne](https://github.com/Kermic974/KermicLab/issues/292) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
 
 
 ### Sous condition — 15
@@ -85,7 +93,7 @@ _Budget, validation ou prérequis à lever._
 - [#262 — [IA] Construire un jeu d’évaluation continu de la qualité pédagogique et des garde-fous](https://github.com/Kermic974/KermicLab/issues/262) · à qualifier (pas de statut explicite) · tuteur · responsable : non assignée
 
 
-### Plus tard — 6
+### Plus tard — 7
 
 _Évolutions différées._
 
@@ -95,11 +103,17 @@ _Évolutions différées._
 - [#203 — [Fabrique] Traductions (anglais d'abord) avec le même circuit de validation](https://github.com/Kermic974/KermicLab/issues/203) · à qualifier (pas de statut explicite) · fabrique · responsable : non assignée
 - [#204 — [Fabrique] Indicateurs pédagogiques agrégés et délai demande → notion publiée](https://github.com/Kermic974/KermicLab/issues/204) · à qualifier (pas de statut explicite) · fabrique · responsable : non assignée
 - [#205 — [Cercle] v2.0 : fonctionnement hors ligne de l'application du cercle](https://github.com/Kermic974/KermicLab/issues/205) · à qualifier (pas de statut explicite) · cercle · responsable : non assignée
+- [#294 — [SEO] Développer l’autorité du domaine et les backlinks qualifiés](https://github.com/Kermic974/KermicLab/issues/294) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
 
 
-### À classer — 0
+### À classer — 6
 
-_Aucune issue._
+- [#302 — Problème liste user](https://github.com/Kermic974/KermicLab/issues/302) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#301 — [idee] Ajouter un système de récompense pour les utilisateurs](https://github.com/Kermic974/KermicLab/issues/301) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#300 — [idee] Afficher la liste des utilisateurs](https://github.com/Kermic974/KermicLab/issues/300) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#299 — [idee] index.html 2026-11-13T03:27](https://github.com/Kermic974/KermicLab/issues/299) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#298 — [idee] equipe.html 2026-11-13T03:23](https://github.com/Kermic974/KermicLab/issues/298) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#297 — [idee] equipe.html 2026-11-13T03:22](https://github.com/Kermic974/KermicLab/issues/297) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 
 ## Issues terminées
 
