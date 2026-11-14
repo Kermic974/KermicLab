@@ -41,7 +41,7 @@ jobs:
           grep -q "AUTO-GENERATED" docs/pilotage-kanban.md
           grep -q "AUTO-GENERATED" docs/pilotage-kanban.html
       - name: Proposer la synchronisation
-        uses: peter-evans/create-pull-request@v8.1.1
+        uses: peter-evans/create-pull-request@v8.1.3
         with:
           token: ${{ github.token }}
           branch: automatisation/synchronisation-kanban
