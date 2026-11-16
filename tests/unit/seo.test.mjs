@@ -31,3 +31,11 @@ test("ajoute une canonical unique et des métadonnées sociales fidèles au titl
   assert.match(resultat, /property="og:description" content="Une page utile\."/);
   assert.equal((resultat.match(/rel="canonical"/g) ?? []).length, 1);
 });
+
+test("l’accueil reçoit un title, une description et un H1 présents dès le HTML statique", () => {
+  const html = '<html><head><title>KermicLab</title><meta name="description" content="Description générique"></head><body><h1 id="salut" tabindex="-1"></h1></body></html>';
+  const resultat = appliquerMetadonnees(html, "/");
+  assert.match(resultat, /<title>KermicLab — apprendre par l’interaction<\/title>/);
+  assert.match(resultat, /name="description" content="Découvrez des notions, des jeux et des activités interactives pour apprendre en explorant, à votre rythme\."/);
+  assert.match(resultat, /<h1 id="salut" tabindex="-1">Apprendre en explorant<\/h1>/);
+});
