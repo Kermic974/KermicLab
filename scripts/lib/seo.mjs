@@ -58,6 +58,11 @@ function definirMeta(html, attribut, cle, valeur) {
 
 /** Ajoute ou remplace canonical, Open Graph et Twitter à partir des balises réelles de chaque page. */
 export function appliquerMetadonnees(html, route, originen = ORIGINE_PUBLIQUE) {
+  if (route === "/") {
+    html = html.replace(/<title>[^]*?<\\/title>/i, "<title>KermicLab — apprendre par l’interaction</title>");
+    html = html.replace(/<meta\\s+name=["']description["'][^>]*>/i, '<meta name="description" content="Découvrez des notions, des jeux et des activités interactives pour apprendre en explorant, à votre rythme.">');
+    html = html.replace('<h1 id="salut" tabindex="-1"></h1>', '<h1 id="salut" tabindex="-1">Apprendre en explorant</h1>');
+  }
   const canonique = `${originen.replace(/\/$/, "")}${route}`;
   const { titre, description } = titreEtDescription(html);
   const titreSocial = titre.replace(/\s+[–—-]\s+Blog KermicLab$/i, "");
