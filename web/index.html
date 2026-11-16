@@ -86,6 +86,7 @@
           <p id="accroche"></p>
         </div>
         <div class="actions">
+          <button type="button" class="bouton" id="ouvrir-connexion" data-nav="compte" data-i18n="compteSeConnecter"></button>
           <button id="ouvrir-progres" type="button" class="pastille-progres" aria-controls="progres">
             <span class="visuellement-cache" data-i18n="monProgres"></span>
             <span class="pastille-serie" aria-hidden="true"><span class="icone-flamme">🔥</span><span id="pastille-serie"></span></span>
@@ -467,6 +468,12 @@
   </div>
   <p id="compte-memoire" class="note-locale" data-i18n="compteMemoireSession" hidden></p>
 
+  <p data-i18n="connexionInvitation"></p>
+  <nav class="actions" data-i18n-aria="connexionAutres">
+    <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionMicrosoft"></button>
+    <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionGoogle"></button>
+    <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionApple"></button>
+  </nav>
   <div id="compte-creation" hidden>
     <p data-i18n="compteExplication"></p>
     <ul class="famille-points">
@@ -493,6 +500,8 @@
       <input id="compte-mdp2" type="password" maxlength="128" autocomplete="new-password" aria-describedby="compte-mdp2-erreur">
       <p id="compte-mdp2-erreur" class="erreur-champ" aria-live="assertive"></p>
       <p class="note-locale" data-i18n="compteAvertissementOubli"></p>
+      <label id="liaison-creer"><input type="checkbox" id="liaison-creer-d1"> <span data-i18n="connexionLier"></span></label>
+      <p id="liaison-creer-etat" class="erreur-champ" role="status"></p>
       <button type="submit" class="bouton" data-i18n="compteCreer"></button>
     </form>
     <p class="doux petit" data-i18n="compteAutreAppareil"></p>
@@ -504,6 +513,8 @@
       <label for="compte-connexion-mdp" class="etiquette-champ" data-i18n="compteMdpLabel"></label>
       <input id="compte-connexion-mdp" type="password" maxlength="128" autocomplete="current-password" aria-describedby="compte-connexion-erreur">
       <p id="compte-connexion-erreur" class="erreur-champ" aria-live="assertive"></p>
+      <label id="liaison-ouvrir"><input type="checkbox" id="liaison-ouvrir-d1"> <span data-i18n="connexionLier"></span></label>
+      <p id="liaison-ouvrir-etat" class="erreur-champ" role="status"></p>
       <button type="submit" class="bouton" data-i18n="compteSeConnecter"></button>
     </form>
   </div>
@@ -571,6 +582,12 @@
   </div>
 </section>
 
+<section id="connexion-en-cours" class="carte ecran-personnel" data-ecrans="connexion-en-cours" aria-labelledby="connexion-en-cours-titre" hidden>
+  <h2 id="connexion-en-cours-titre" data-i18n="connexionEnCours"></h2>
+  <p data-i18n="connexionEnCoursAide"></p>
+  <button type="button" class="bouton" data-nav="compte" data-i18n="connexionRetour"></button>
+</section>
+
 <!-- Espace famille (ADR 0017) : accessible seulement si connexionActive ; un compte parent crée les profils enfants. -->
 <section id="famille" class="carte ecran-personnel" data-ecrans="famille" aria-labelledby="famille-titre" hidden>
   <div class="dialogue-entete">
@@ -588,6 +605,7 @@
     <div class="actions">
       <button type="button" class="bouton" id="connexion-google" data-i18n="connexionGoogle"></button>
       <button type="button" class="bouton" id="connexion-microsoft" data-i18n="connexionMicrosoft"></button>
+      <button type="button" class="bouton" data-nav="connexion-en-cours" data-i18n="connexionApple"></button>
     </div>
     <p class="doux petit" id="famille-demo-note" data-i18n="demoInviteNote" hidden></p>
     <p class="note-locale" data-i18n="familleInviteLocal"></p>

@@ -149,17 +149,14 @@ test("démonstration (green card) : parcours parent → enfant sans OAuth ni app
   await contexte.close();
 });
 
-test("connexion réelle : fournisseur non configuré → message et proposition de démonstration, sans redirection", async () => {
+test("connexion famille : les fournisseurs ouvrent l'écran d'attente sur le site", async () => {
   const { page, contexte } = await demarrer({ connexion: true });
-  await page.route(`${api}/auth/fournisseurs`, (r) => r.fulfill({ contentType: "application/json", headers: cors(), body: JSON.stringify({ google: false, microsoft: false }) }));
   await page.goto(`${serveur.url}/#famille`);
   await page.locator("#famille-invite").waitFor({ state: "visible" });
   await page.click("#connexion-google");
-  await page.locator("#famille-etat", { hasText: "pas encore ouverte" }).waitFor();
-  await capturer(page, "famille-connexion-indisponible");
+  await page.locator("#connexion-en-cours-titre").waitFor();
   assert.equal(new URL(page.url()).pathname, "/");
-  await page.click("#essayer-demo");
-  await page.locator("#bandeau-demo").waitFor({ state: "visible" });
-  assert.match(page.url(), /demo=famille/);
+  assert.equal(new URL(page.url()).hash, "#connexion-en-cours");
+  await capturer(page, "famille-connexion-en-cours");
   await contexte.close();
 });

@@ -1,11 +1,17 @@
 # Chantier : Authentification (OAuth) et comptes famille
 
-**Niveau actuel : 1 (fondations en préparation, connexion désactivée)**
+**Niveau actuel : 1 (connexion par identifiant disponible sur choix, OAuth en préparation)**
 
 Décision du propriétaire (2026-11-01) : chantier OAuth mis en backlog. Reprise le 2026-11-06 pour préparer l'interface :
 **un compte parent est nécessaire pour créer un compte enfant ; à défaut, l'enfant utilise un profil local.**
 Parcours cible : [ADR 0017](../decisions/0017-parcours-comptes-famille.md). Modèle de données : [ADR 0010](../decisions/0010-comptes-parent-eleves.md).
 Profil local : [ADR 0012](../decisions/0012-tableau-de-bord-pseudo-cookie.md).
+
+## Parcours de connexion en ligne
+
+Le bouton **Se connecter** mène à l'écran de compte. L'option de liaison en ligne utilise les routes existantes du Worker : inscription dans `comptes_locaux`, puis vérification auprès de D1 à chaque nouvelle ouverture du compte lié. Elle ne transfère ni la progression ni le profil local ; la synchronisation chiffrée reste facultative. L'écran Utilisateurs du back-office relit D1 toutes les 30 secondes lorsqu'il est visible, hors modification en cours.
+
+Les boutons Microsoft, Google et Apple mènent à un écran d'attente. L'activation OAuth reste soumise aux prérequis ci-dessous ; Apple nécessite aussi une intégration Worker dédiée.
 
 ## État au 2026-11-06
 
