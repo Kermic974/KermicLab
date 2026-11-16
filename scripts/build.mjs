@@ -6,6 +6,7 @@ import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelect
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
 import { articlesPublies, chargerArticles, construireBlog } from "./lib/blog.mjs";
+import { genererSeoStatique } from "./lib/seo.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -76,6 +77,9 @@ await writeFile(`${racine}dist/_headers`, `/*
 await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 301\n");
 // L'application autonome porte sa propre CSP (meta, hashes des scripts et styles en ligne) : celle du chat,
 // sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
+
+// Génère les métadonnées des pages publiées, le fichier robots.txt et le sitemap XML.
+await genererSeoStatique(`${racine}dist`);
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 const referentiel = indicateurReferentiel(catalogue.index.maquettes);
