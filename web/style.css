@@ -655,7 +655,11 @@ dialog.bulle-lab[open] { display: flex; }
 .bulle-pied .bouton { min-height: 40px; }
 
 /* Défi express */
-#defi, #profil { max-width: 760px; }
+#defi, #profil, #compte { max-width: 760px; }
+.navigation-personnelle { margin-bottom: 16px; }
+.navigation-personnelle [aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); }
+#compte-options-connexion { margin-bottom: 16px; }
+#compte-options-connexion > p { margin: 0 0 10px; }
 .defi-haut { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
 .defi-points { display: flex; gap: 6px; }
 .defi-points i { width: 28px; height: 6px; border-radius: 99px; background: var(--bord); }

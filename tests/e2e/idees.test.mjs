@@ -60,7 +60,8 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
   const ouvrirVue = async (vue) => {
     if (vue === "defi") { await page.locator('.barre-laterale [data-nav="education"]').click(); await page.click("#lancer-defi"); return; }
     if (vue === "aide") { await page.locator('.barre-laterale [data-nav="apropos"]').click(); await page.click('#apropos [data-nav="aide"]'); return; }
-    await page.locator(`.barre-laterale [data-nav="${vue}"]`).first().click();
+    const entree = vue === "profil" ? ".barre-pied .profil-carte[data-action=profil]" : `.barre-laterale [data-nav="${vue}"]`;
+    await page.locator(entree).first().click();
   };
   for (const vue of ["education", "jeux", "defi", "progression", "profil", "aide"]) {
     await ouvrirVue(vue);

@@ -402,6 +402,11 @@
 
 <!-- Configuration : la route #profil reste compatible. -->
 <!-- Écran Profil : tout ce qui concerne l'élève se modifie ici, sans fenêtre séparée. Ce qui parle du site est dans « À propos ». -->
+<nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte" data-i18n-aria="profilCompte" hidden>
+  <button type="button" class="secondaire" data-nav="profil" data-i18n="navProfil"></button>
+  <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteTitre"></button>
+</nav>
+
 <section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="identite-titre" hidden>
   <section class="profil-identite" aria-labelledby="identite-titre">
     <h2 id="identite-titre" data-i18n="profilIdentite"></h2>
@@ -432,7 +437,6 @@
   <section class="profil-bloc" aria-labelledby="profil-compte-titre">
     <h2 id="profil-compte-titre" data-i18n="profilCompte"></h2>
     <div class="actions">
-      <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteEntree"></button>
       <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
       <button id="entree-contributions" type="button" class="secondaire" data-nav="contributions" data-i18n="contribEntree" hidden></button>
       <!-- Back-office (ADR 0026) : lien affiché seulement si le rôle du compte connecté a une permission d'administration
@@ -506,19 +510,17 @@
 
 <!-- Mon compte (ADR 0024) : facultatif, créé sur l'appareil (identifiant + mot de passe, sans email ni réinitialisation).
      Synchronisation sur demande : données pseudonymisées et chiffrées avec une phrase secrète jamais envoyée. -->
-<section id="compte" class="carte ecran-personnel" data-ecrans="compte" aria-labelledby="compte-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="compte-titre" data-i18n="compteTitre"></h2>
-    <button type="button" class="secondaire" data-nav="profil" data-i18n="retourProfil"></button>
-  </div>
+<section id="compte" class="carte ecran-personnel" data-ecrans="compte" aria-labelledby="salut" hidden>
   <p id="compte-memoire" class="note-locale" data-i18n="compteMemoireSession" hidden></p>
 
-  <p data-i18n="connexionInvitation"></p>
-  <nav class="actions" data-i18n-aria="connexionAutres">
-    <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionMicrosoft"></button>
-    <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionGoogle"></button>
-    <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionApple"></button>
-  </nav>
+  <div id="compte-options-connexion">
+    <p data-i18n="connexionInvitation"></p>
+    <nav class="actions" data-i18n-aria="connexionAutres">
+      <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionMicrosoft"></button>
+      <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionGoogle"></button>
+      <button type="button" class="secondaire" data-nav="connexion-en-cours" data-i18n="connexionApple"></button>
+    </nav>
+  </div>
   <div id="compte-creation" hidden>
     <p data-i18n="compteExplication"></p>
     <ul class="famille-points">
