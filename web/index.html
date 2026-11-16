@@ -104,6 +104,11 @@
 
       <p class="avertissement" role="note" data-i18n="avertissement"></p>
 
+      <nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte" data-i18n-aria="profilCompte" hidden>
+        <button type="button" class="secondaire" data-nav="profil" data-i18n="navProfil"></button>
+        <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteTitre"></button>
+      </nav>
+
       <section class="accueil-depart" id="accueil" data-ecrans="accueil" aria-labelledby="depart-titre">
         <h2 id="depart-titre" class="visuellement-cache" data-i18n="departTitre"></h2>
         <!-- La question au centre : même envoi que le chat, qui s'ouvre sur la réponse. -->
@@ -402,11 +407,6 @@
 
 <!-- Configuration : la route #profil reste compatible. -->
 <!-- Écran Profil : tout ce qui concerne l'élève se modifie ici, sans fenêtre séparée. Ce qui parle du site est dans « À propos ». -->
-<nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte" data-i18n-aria="profilCompte" hidden>
-  <button type="button" class="secondaire" data-nav="profil" data-i18n="navProfil"></button>
-  <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteTitre"></button>
-</nav>
-
 <section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="identite-titre" hidden>
   <section class="profil-identite" aria-labelledby="identite-titre">
     <h2 id="identite-titre" data-i18n="profilIdentite"></h2>
