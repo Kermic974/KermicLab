@@ -22,7 +22,7 @@ export function routeDepuisFichier(fichier) {
 }
 
 export function genererRobotsTxt(originen = ORIGINE_PUBLIQUE) {
-  return `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${originen.replace(/\/$/, "")}/sitemap.xml\n`;
+  return `User-agent: *\nAllow: /\nSitemap: ${originen.replace(/\/$/, "")}/sitemap.xml\n`;
 }
 
 export function genererSitemapXml(routes, originen = ORIGINE_PUBLIQUE) {
