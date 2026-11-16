@@ -1,6 +1,6 @@
 # ADR 0028 — Adoption des contrats du référentiel S4
 
-**Statut : en attente de revue et de fusion.** D1 à D8 ont été approuvées pour le pilote public le 17 novembre 2026. Les choix complémentaires sur l’historique, les niveaux de validation et la projection restent à préciser. [#243](https://github.com/Kermic974/KermicLab/issues/243)
+**Statut : en attente de revue et de fusion.** D1 à D8 ont été approuvées pour le pilote public le 17 novembre 2026. Les règles complémentaires sur l’historique, les niveaux de validation et la projection sont également approuvées. [#243](https://github.com/Kermic974/KermicLab/issues/243)
 
 ## Contexte
 
@@ -51,12 +51,24 @@ Exemples destinés aux fixtures :
 | ID Relation | `relation.mathematiques.fractions-prerequis` | `relation.mathematiques` |
 | ID CurriculumMapping | `curriculum-mapping.mathematiques.fractions-cycle-4` | `stage.mathematiques.fractions-cycle-4` comme ID de mapping |
 
-### Historique et projection
+## Règles complémentaires approuvées
 
-Proposer Git comme source de révisions. Tester sur une base et une tête connues avec un historique disponible en CI. Le WARNING pour une cible devenue `deprecated` exige une preuve que la référence existait avant la dépréciation. Confirmer le traitement d’un historique indisponible et d’une révision qui conserve son statut. Fixer aussi le découpage des niveaux 1 et 2 avant de figer les fixtures. [#251](https://github.com/Kermic974/KermicLab/issues/251) · [#254](https://github.com/Kermic974/KermicLab/issues/254)
+### Historique Git
 
-Pour la projection V0, proposer une correspondance explicite entre IDs canoniques et slugs, un Curriculum désigné, le rejet des correspondances ambiguës, le dédoublonnage après conversion et la conservation de l’ordre V0 du pilote. Comparer la recommandation et le cahier de vacances avant et après. [#256](https://github.com/Kermic974/KermicLab/issues/256)
+Identifier les objets par leur ID canonique, indépendamment du chemin du fichier. Utiliser l’historique de `main` pour les révisions publiées et comparer l’état candidat au dernier état de `main` dont il dérive. Une modification du contenu canonique exige une version strictement supérieure. Une révision peut conserver son statut. Les autres changements de statut suivent S4.2.
+
+Une référence vers une cible `deprecated` reçoit un WARNING historique lorsque Git montre qu’elle existait avant la dépréciation et qu’elle n’a pas été supprimée puis recréée. Une référence ajoutée dans le même changement que la dépréciation ou après reçoit un ERROR. Si l’historique nécessaire est indisponible, le contrôle émet un ERROR dédié. Les fixtures couvrent ces cas et la conservation du statut avec incrément de version. [#251](https://github.com/Kermic974/KermicLab/issues/251)
+
+### Niveaux 1 et 2
+
+Le niveau 1 vérifie la lecture des fichiers canoniques et la syntaxe JSON. En cas d’échec, émettre un diagnostic et poursuivre sur les autres fichiers. Le niveau 2 sélectionne le schéma de l’objet et le valide avec Ajv, y compris les champs obligatoires, les types, les formats d’ID, les valeurs autorisées et les cardinalités. Les objets rejetés à ce niveau ne servent pas aux contrôles des références et du graphe. Prévoir une fixture JSON tronquée et une fixture JSON syntaxiquement valide mais non conforme au schéma. [#254](https://github.com/Kermic974/KermicLab/issues/254)
+
+### Projection V0
+
+La configuration de migration relie le slug de chaque fiche migrée à son ID canonique, désigne un seul Curriculum de projection et associe les MicroSkills aux slugs de compétence V0. Elle fixe aussi l’ordre de référence des prérequis et des compétences.
+
+Pour les fiches migrées, le build dérive `prerequis` des Relations `requires` sortantes, `competences` des Relations `teaches` sortantes et `niveaux` des codes de Stage des CurriculumMappings du Curriculum désigné. Le pilote inclut les objets et liens en `draft`. Une correspondance manquante ou ambiguë bloque la génération. Après conversion et dédoublonnage, les niveaux suivent l’ordre scolaire V0 et les prérequis et compétences suivent leurs ordres de référence. `check:pages` compare la projection attendue à la fiche, y compris l’ordre des listes et la distinction entre champ absent et liste vide. Le pilote vérifie que la recommandation et le cahier de vacances donnent les mêmes résultats avant et après migration. [#256](https://github.com/Kermic974/KermicLab/issues/256)
 
 ## Passage au lot technique
 
-Finaliser les règles complémentaires ci-dessus, puis fusionner cet ADR après revue humaine et clôturer #243. Enchaîner primitives et schémas (#245–#249), validateurs et rapport (#250–#254), contrôle CI (#255), projection et pilote (#256), puis extension par discipline (#257).
+Fusionner cet ADR après revue humaine et CI verte, puis clôturer #243. Enchaîner primitives et schémas (#245–#249), validateurs et rapport (#250–#254), contrôle CI (#255), projection et pilote (#256), puis extension par discipline (#257).
