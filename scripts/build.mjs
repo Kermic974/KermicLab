@@ -5,7 +5,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelecture } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
-import { construireBlog } from "./lib/blog.mjs";
+import { articlesPublies, chargerArticles, construireBlog } from "./lib/blog.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -41,6 +41,17 @@ await versionnerRessources(`${racine}dist`);
 // Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine
 // de dist/. Une page par dossier (blog/<slug>/index.html) : Pages la sert à /blog/<slug>/ sans réécriture.
 const blog = await construireBlog(`${racine}blog`, `${racine}dist/blog`);
+// Inventaire des articles publiés, lu par le back-office (ADR 0026) : titre, auteur et date, déjà publics.
+await writeFile(`${racine}dist/blog/index.json`, `${JSON.stringify({
+  articles: articlesPublies(await chargerArticles(`${racine}blog`)).map(({ slug, titre, auteur, date }) => ({ slug, titre, auteur, date }))
+})}\n`);
+// Back-office : même empreinte de contenu que le site pour ses propres fichiers (cache du navigateur).
+{
+  const empreinte = async (fichier) => createHash("sha256").update(await readFile(`${racine}dist/${fichier}`)).digest("hex").slice(0, 10);
+  const versions = { "admin.css": await empreinte("admin/admin.css"), "admin.js": await empreinte("admin/admin.js"), "../style.css": await empreinte("style.css") };
+  const page = `${racine}dist/admin/index.html`;
+  await writeFile(page, (await readFile(page, "utf8")).replace(/(href|src)="(admin\.css|admin\.js|\.\.\/style\.css)"/g, (tout, attribut, fichier) => `${attribut}="${fichier}?v=${versions[fichier]}"`));
+}
 // Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).
 const API_PAR_DEFAUT = "https://kermiclab-api.kermic.workers.dev";
 const apiUrl = (process.env.KERMICLAB_API_URL ?? API_PAR_DEFAUT).replace(/\/$/, "");
@@ -85,7 +96,7 @@ console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/
 async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
-  const modules = ["progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "fichier-progression.js", "cahier-vacances.js", "progression-jeux.js", "experiences.js", "temps-actif.js"];
+  const modules = ["progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "fichier-progression.js", "cahier-vacances.js", "progression-jeux.js", "experiences.js", "temps-actif.js", "theme.js"];
   for (const fichier of [...modules, "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
   let app = appSource;

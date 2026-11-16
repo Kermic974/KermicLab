@@ -1,0 +1,87 @@
+/* Back-office KermicLab (ADR 0026) : reprend les variables de style.css (clair, sombre, charte graphique). */
+.admin { min-height: 100vh; }
+.admin-connexion { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+.admin-carte { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.admin-connexion .admin-carte { width: min(100%, 440px); }
+.admin-connexion input { min-height: 44px; }
+
+.admin-application { display: grid; grid-template-columns: 232px minmax(0, 1fr); grid-template-rows: auto 1fr; min-height: 100vh; }
+.admin-entete { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 12px 20px; background: var(--surface); border-bottom: 1px solid var(--bord); }
+.admin-marque { font-weight: 760; font-size: 18px; color: var(--texte); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; }
+.admin-marque .admin-nom span { color: var(--accent); }
+.admin-marque small { font-weight: 600; font-size: 13px; color: var(--doux); }
+.admin-etat { flex: 1 1 240px; display: flex; flex-wrap: wrap; gap: 6px; }
+.admin-nav { display: flex; flex-direction: column; gap: 2px; padding: 12px; background: var(--surface); border-right: 1px solid var(--bord); }
+.admin-nav button { justify-content: flex-start; text-align: left; min-height: 44px; padding: 0 12px; background: none; color: var(--texte-2); font-weight: 600; border-radius: var(--rayon-petit); }
+.admin-nav button:hover { background: var(--accent-doux); }
+.admin-nav button[aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); }
+.admin-contenu { padding: 24px clamp(16px, 3vw, 32px) 64px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.admin-contenu > h1 { font-size: 26px; font-weight: 760; letter-spacing: -.02em; }
+#ecran { display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
+
+.admin-message { padding: 10px 14px; border-radius: var(--rayon-petit); background: var(--succes-doux); color: var(--succes); font-weight: 600; }
+.admin-message.erreur { background: var(--danger-doux); color: var(--danger); }
+.admin-bandeau { padding: 12px 16px; border-radius: var(--rayon-moyen); background: var(--alerte-fond); border: 1px solid var(--alerte-bord); color: var(--alerte); }
+.admin-bandeau.ok { background: var(--succes-doux); border-color: transparent; color: var(--succes); }
+.admin-bandeau.danger { background: var(--danger-doux); border-color: transparent; color: var(--danger); }
+
+.admin-bloc { padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.admin-bloc > h2 { font-size: 18px; font-weight: 720; }
+.admin-bloc > h3 { font-size: 15px; font-weight: 700; margin-top: 4px; }
+.admin-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.admin-tuile { padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+.admin-tuile strong { font-size: 24px; font-weight: 760; font-variant-numeric: tabular-nums; }
+.admin-tuile span { color: var(--doux); font-size: .85rem; }
+
+.admin-defilement { overflow-x: auto; }
+.admin table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.admin caption { text-align: left; color: var(--doux); font-size: .85rem; padding-bottom: 6px; }
+.admin th, .admin td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--bord); vertical-align: middle; }
+.admin th { color: var(--doux); font-weight: 650; font-size: .8rem; white-space: nowrap; }
+.admin td.nombre, .admin th.nombre { text-align: right; font-variant-numeric: tabular-nums; }
+.admin td code, .admin-code { font-family: var(--police-math); font-size: .85em; white-space: nowrap; }
+.admin meter { width: 120px; height: 10px; vertical-align: middle; }
+
+.admin-pastille { display: inline-flex; align-items: center; min-height: 24px; padding: 0 10px; border-radius: 999px; font-size: .78rem; font-weight: 700; background: var(--surface-2); color: var(--texte-2); border: 1px solid var(--bord); white-space: nowrap; }
+.admin-pastille.ok { background: var(--succes-doux); color: var(--succes); border-color: transparent; }
+.admin-pastille.attention { background: var(--chaud-doux); color: var(--chaud); border-color: transparent; }
+.admin-pastille.danger { background: var(--danger-doux); color: var(--danger); border-color: transparent; }
+.admin-pastille.accent { background: var(--accent-doux); color: var(--accent-doux-texte); border-color: transparent; }
+.admin-pastilles { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.admin-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.admin-champ { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.admin-champ > span, .admin-champ > label { font-weight: 650; font-size: .85rem; }
+.admin input[type="text"], .admin input[type="number"], .admin input[type="search"], .admin select, .admin textarea {
+  min-height: 40px; padding: 8px 10px; border-radius: var(--rayon-petit); border: 1px solid var(--bord-fort); background: var(--surface); max-width: 100%;
+}
+.admin input[type="number"] { width: 120px; }
+.admin textarea { width: 100%; min-height: 110px; resize: vertical; }
+.admin input[type="color"] { width: 56px; height: 44px; padding: 2px; border-radius: var(--rayon-petit); border: 1px solid var(--bord-fort); background: var(--surface); }
+.admin input[type="checkbox"], .admin input[type="radio"] { width: 18px; height: 18px; accent-color: var(--accent); }
+.admin fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.admin-cases { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px 14px; }
+.admin-cases label { display: flex; align-items: center; gap: 8px; min-height: 32px; }
+.admin-parametre { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr); gap: 6px 16px; padding: 10px 0; border-bottom: 1px solid var(--bord); align-items: start; }
+.admin-parametre:last-of-type { border-bottom: 0; }
+.admin-parametre .doux { font-size: .8rem; }
+
+.admin-themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.admin-theme { display: flex; align-items: center; gap: 10px; padding: 12px; border: 2px solid var(--bord); border-radius: var(--rayon-moyen); cursor: pointer; }
+.admin-theme:has(input:checked) { border-color: var(--accent); background: var(--accent-doux); }
+.admin-pastille-couleur { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--bord-fort); flex: none; background: var(--echantillon, transparent); }
+.admin-apercus { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.admin-apercu { padding: 16px; border-radius: var(--rayon-moyen); border: 1px solid var(--bord); display: flex; flex-direction: column; gap: 10px; background: var(--apercu-surface); color: var(--apercu-texte); }
+.admin-apercu .faux-bouton { align-self: flex-start; padding: 10px 16px; border-radius: 12px; font-weight: 700; background: var(--accent); color: var(--accent-texte); }
+.admin-apercu .faux-doux { align-self: flex-start; padding: 6px 12px; border-radius: 999px; font-weight: 600; background: var(--accent-doux); color: var(--accent-doux-texte); }
+.admin-apercu .faux-lab { align-self: flex-start; padding: 6px 12px; border-radius: 999px; font-weight: 600; background: var(--lab-doux); color: var(--lab); border: 1px solid var(--lab-bord); }
+.admin-apercu .faux-lien { color: var(--accent); font-weight: 600; text-decoration: underline; }
+
+.admin pre { margin: 0; padding: 12px; border-radius: var(--rayon-petit); background: var(--surface-2); border: 1px solid var(--bord); overflow: auto; max-height: 360px; font-size: .8rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+@media (max-width: 860px) {
+  .admin-application { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr; }
+  .admin-nav { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--bord); padding: 8px 12px; }
+  .admin-nav button { white-space: nowrap; flex: none; }
+  .admin-parametre { grid-template-columns: minmax(0, 1fr); }
+}

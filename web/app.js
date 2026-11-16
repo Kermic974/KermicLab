@@ -18,6 +18,7 @@ import * as vacances from "./cahier-vacances.js";
 import { ProgressionJeux } from "./progression-jeux.js";
 import * as experiences from "./experiences.js";
 import { creerMoteurTemps } from "./temps-actif.js";
+import * as charte from "./theme.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
@@ -2399,6 +2400,7 @@ async function demarrer() {
   brancherTrophees();
   brancherFichierProgression();
   appliquerTheme(lireCle(preferences(), CLE_THEME));
+  void chargerCharte();
   const select = $("#langue");
   for (const l of etat.config.langues) {
     const o = document.createElement("option");
@@ -2791,6 +2793,27 @@ function ouvrirProfil() {
 }
 
 /* ---------- Thème ---------- */
+
+const CLE_CHARTE = "kermiclab:charte";
+
+/**
+ * Charte graphique choisie dans le back-office (ADR 0026) : la dernière connue est appliquée tout de suite (gardée
+ * pour l'onglet), puis celle du serveur. Sans réponse, le site garde ses couleurs d'origine.
+ */
+async function chargerCharte() {
+  const appliquer = (theme) => {
+    const v = charte.validerTheme(theme);
+    if (v.ok) charte.appliquerTheme(v.theme);
+    return v.ok;
+  };
+  try { appliquer(JSON.parse(sessionStorage.getItem(CLE_CHARTE))); } catch { /* aucune charte gardée */ }
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/theme`);
+    if (!r.ok) return;
+    const { theme } = await r.json();
+    if (appliquer(theme)) sessionStorage.setItem(CLE_CHARTE, JSON.stringify(theme));
+  } catch { /* hors ligne ou stockage indisponible : couleurs d'origine */ }
+}
 
 function themeSombre() {
   const choix = document.documentElement.dataset.theme;

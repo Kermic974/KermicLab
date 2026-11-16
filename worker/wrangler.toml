@@ -1,5 +1,5 @@
 # Worker Kermiclab. Le binding AI est fourni par Cloudflare ; les secrets
-# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN, COMPTES_LOCAUX_SECRET) se définissent avec `wrangler secret put`
+# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN, COMPTES_LOCAUX_SECRET, BACKOFFICE_JETON) se définissent avec `wrangler secret put`
 # ou via la CI — jamais ici.
 name = "kermiclab-api"
 main = "src/index.js"
@@ -34,6 +34,17 @@ MAX_TOKENS_DEFI = "2000"       # 500 à 3000 ; 2000 : place pour la vérificatio
 MODELE_CAHIERS = "custom/sonnet-5-5"
 CAHIERS_GENERATIONS_JOUR = "2" # 0 à 5
 MAX_TOKENS_CAHIERS = "100000"  # 1000 à 128000
+# Back-office (ADR 0026) : ces valeurs se règlent aussi à chaud dans /admin/ (écran Harness), dans les mêmes bornes.
+CONTROLE_ACCES_ACTIF = "false"        # bêta : rôles et stratégies préparés, toutes les fonctionnalités ouvertes à tous
+GARDE_FOUS_ACTIFS = "false"           # bêta : profils classés, aucune restriction appliquée
+SEUIL_SURVEILLANCE = "3"              # 1 à 50 : score de déviance sur 7 jours
+SEUIL_RESTRICTION = "9"               # 2 à 200 : IA coupée pour le profil (si garde-fous actifs)
+SEUIL_CONSO_ELEVEE = "100"            # 10 à 2000 requêtes par jour
+SEUIL_SURCONSOMMATION = "300"         # 20 à 5000 requêtes par jour
+CONSERVATION_SIGNAUX_JOURS = "30"     # 7 à 90
+CONSERVATION_TELEMETRIE_JOURS = "90"  # 7 à 365
+# INSTRUCTIONS_TUTEUR, INSTRUCTIONS_CADRAGE, INSTRUCTIONS_DEFI, INSTRUCTIONS_CAHIERS : instructions complémentaires
+# des harness (2000 caractères), vides par défaut, saisies dans le back-office.
 # Hors registre
 GITHUB_REPO = "kermic974/KermicLab"
 ORIGINES_AUTORISEES = "https://www.kermiclab.online,https://kermiclab.online,https://kermiclab.pages.dev,http://localhost:8788"

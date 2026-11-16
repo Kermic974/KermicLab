@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f4f5fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f1f" media="(prefers-color-scheme: dark)">
+<title>Back-office · KermicLab</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<!-- Connexion : clé partagée pendant la bêta (ADR 0026). La clé reste dans l'onglet (sessionStorage). -->
+<main id="connexion" class="admin-connexion" hidden>
+  <form id="formulaire-cle" class="carte admin-carte" novalidate>
+    <h1>Back-office KermicLab</h1>
+    <p class="doux">Espace réservé à l'équipe pendant la phase de test. Saisis la clé d'accès du back-office.</p>
+    <label for="cle" class="etiquette-champ">Clé d'accès</label>
+    <input id="cle" type="password" autocomplete="off" required aria-describedby="cle-erreur">
+    <p id="cle-erreur" class="erreur-champ" aria-live="assertive"></p>
+    <button type="submit" class="bouton">Ouvrir le back-office</button>
+    <p class="doux petit">La clé n'est gardée que dans cet onglet et s'efface à sa fermeture. <a href="../">Retour au site</a></p>
+  </form>
+</main>
+
+<div id="application" class="admin-application" hidden>
+  <header class="admin-entete">
+    <a class="admin-marque" href="../"><span class="admin-nom">Kermic<span>Lab</span></span><small>Back-office</small></a>
+    <p class="admin-etat" id="etat-general" role="status"></p>
+    <button type="button" class="secondaire petit-bouton" id="deconnexion">Fermer la session</button>
+  </header>
+  <nav class="admin-nav" aria-label="Sections du back-office" id="navigation"></nav>
+  <main id="contenu" class="admin-contenu" tabindex="-1">
+    <h1 id="titre-ecran" tabindex="-1"></h1>
+    <p id="intro-ecran" class="doux"></p>
+    <p id="message" class="admin-message" role="status" aria-live="polite" hidden></p>
+    <div id="ecran"></div>
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
