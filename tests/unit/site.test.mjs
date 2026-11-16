@@ -71,9 +71,13 @@ test("la page L'équipe est publiée et liée hors des destinations de navigatio
   ]);
   assert.doesNotMatch(redirects, /\/equipe/);
   const piedBarre = html.slice(html.indexOf('<div class="barre-pied">'), html.indexOf("</aside>"));
-  assert.match(piedBarre, /<a class="nav-bouton" href="equipe\.html">/);
-  const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("</section>\n\n<!-- Espace famille"));
-  assert.match(profil, /<a class="lien-profil" href="equipe\.html">/);
+  // La barre latérale mène à « À propos », sous-écran de Profil, qui porte le lien vers l'équipe (ADR 0021, complément).
+  assert.match(piedBarre, /<button type="button" class="nav-bouton" data-nav="apropos">/);
+  assert.doesNotMatch(piedBarre, /equipe\.html/);
+  const apropos = html.slice(html.indexOf('<section id="apropos"'), html.indexOf("<!-- Mon compte"));
+  assert.match(apropos, /<a class="lien-profil" href="equipe\.html">/);
+  const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf('<section id="apropos"'));
+  assert.doesNotMatch(profil, /equipe\.html|<dialog/);
   const pied = html.slice(html.indexOf('<footer class="pied">'), html.indexOf("</footer>"));
   assert.match(pied, /<a href="equipe\.html" data-i18n="navEquipe">/);
   assert.match(page, /href="style\.css\?v=[0-9a-f]{10}"/);
