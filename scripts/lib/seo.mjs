@@ -37,25 +37,32 @@ function echapperAttribut(valeur) {
 }
 
 function titreEtDescription(html) {
-  const titre = html.match(/<title>([^]*?)<\\/title>/i)?.[1]?.trim() || "KermicLab";
-  const description = html.match(/<meta\\s+name=["']description["']\\s+content=["']([^"']*)["'][^>]*>/i)?.[1]?.trim() || titre;
+  const titre = html.match(/<title>([^]*?)<\/title>/i)?.[1]?.trim() || "KermicLab";
+  const description = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["'][^>]*>/i)?.[1]?.trim() || titre;
   return { titre, description };
 }
 
 function definirMeta(html, attribut, cle, valeur) {
-  const balise = new RegExp(`<meta\\s+${attribut}=["']${cle}["'][^>]*>`, "i");
-  const contenu = `content="${echapperAttribut(valeur)}"`;
-  if (balise.test(html)) return html.replace(balise, (ancien) => /\\scontent=["'][^"']*["']/i.test(ancien) ? ancien.replace(/content=["'][^"']*["']/i, contenu) : ancien.replace(/\\s*\\/?>(?=$)/, ` ${contenu}>`));
-  return html.replace("</head>", `<meta ${attribut}="${cle}" ${contenu}>\n</head>`);
+  const motif = new RegExp("<meta\\s+" + attribut + "=[\\"']" + cle + "[\\"'][^>]*>", "i");
+  const contenu = 'content="' + echapperAttribut(valeur) + '"';
+  if (motif.test(html)) {
+    return html.replace(motif, (ancien) => {
+      const contenuExistant = /\scontent=["'][^"']*["']/i;
+      return contenuExistant.test(ancien)
+        ? ancien.replace(/content=["'][^"']*["']/i, contenu)
+        : ancien.replace(/\s*\/?>$/, " " + contenu + ">");
+    });
+  }
+  return html.replace("</head>", '<meta ' + attribut + '="' + cle + '" ' + contenu + '>\n</head>');
 }
 
 /** Ajoute ou remplace canonical, Open Graph et Twitter à partir des balises réelles de chaque page. */
 export function appliquerMetadonnees(html, route, originen = ORIGINE_PUBLIQUE) {
   const canonique = `${originen.replace(/\/$/, "")}${route}`;
   const { titre, description } = titreEtDescription(html);
-  const titreSocial = titre.replace(/\\s+[–—-]\\s+Blog KermicLab$/i, "");
+  const titreSocial = titre.replace(/\s+[–—-]\s+Blog KermicLab$/i, "");
   const lienCanonique = `<link rel="canonical" href="${echapperAttribut(canonique)}">`;
-  let resultat = /<link\\s+rel=["']canonical["'][^>]*>/i.test(html)
+  let resultat = /<link\s+rel=["']canonical["'][^>]*>/i.test(html)
     ? html.replace(/<link\\s+rel=["']canonical["'][^>]*>/i, lienCanonique)
     : html.replace("</head>", `${lienCanonique}\n</head>`);
   for (const [cle, valeur] of [["og:type", "website"], ["og:title", titreSocial], ["og:description", description], ["og:url", canonique], ["twitter:title", titreSocial], ["twitter:description", description]]) {
