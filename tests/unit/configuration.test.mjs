@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  MODULES, PARAMETRES, SKILLS, configurationPublique, harnessSkill, lireConfiguration, parametre, skillActif
+  MODULES, MODULES_ADMIN, PARAMETRES, SKILLS, configurationAdmin, configurationPublique, harnessSkill, lireConfiguration, parametre, skillActif
 } from "../../worker/src/configuration.js";
 
 test("défauts : sans variable, la configuration reprend les valeurs historiques", () => {
@@ -56,10 +56,33 @@ test("skills : liste filtrée, identifiants inconnus ignorés", () => {
 });
 
 test("vue publique : chaque paramètre appartient à un module affiché, skills inactifs si LLM coupé", () => {
-  assert.ok(PARAMETRES.every((p) => MODULES.includes(p.module)));
+  assert.ok(PARAMETRES.every((p) => (p.prive ? [...MODULES, ...MODULES_ADMIN] : MODULES).includes(p.module)));
   assert.ok(Object.values(SKILLS).every((s) => MODULES.includes(s.module)));
   const vue = configurationPublique({ LLM_ACTIF: "false" });
-  assert.equal(vue.modules.flatMap((m) => m.parametres).length, PARAMETRES.length);
+  assert.equal(vue.modules.flatMap((m) => m.parametres).length, PARAMETRES.filter((p) => !p.prive).length);
   assert.ok(vue.modules.flatMap((m) => m.skills).every((s) => s.actif === false));
   assert.ok(configurationPublique({ LLM_ACTIF: "true" }).modules.flatMap((m) => m.skills).every((s) => s.actif));
+});
+
+test("paramètres privés (ADR 0026) : absents de la vue publique, présents dans la vue du back-office", () => {
+  const publics = configurationPublique({}).modules.flatMap((m) => m.parametres.map((p) => p.cle));
+  const prives = PARAMETRES.filter((p) => p.prive).map((p) => p.cle);
+  assert.ok(prives.length > 0);
+  assert.ok(prives.every((cle) => !publics.includes(cle)), "ni seuil de sécurité ni instruction de harness côté public");
+  assert.deepEqual(configurationPublique({}).modules.map((m) => m.id), MODULES);
+  const admin = configurationAdmin({}).modules;
+  assert.deepEqual(admin.map((m) => m.id), [...MODULES, ...MODULES_ADMIN]);
+  assert.equal(admin.flatMap((m) => m.parametres).length, PARAMETRES.length);
+});
+
+test("paramètres du back-office : défauts sûrs pendant la bêta, seuils cohérents, texte borné et nettoyé", () => {
+  const c = lireConfiguration({});
+  assert.equal(c.CONTROLE_ACCES_ACTIF, false, "contrôle d'accès préparé, non appliqué");
+  assert.equal(c.GARDE_FOUS_ACTIFS, false, "garde-fous en observation");
+  assert.equal(c.INSTRUCTIONS_TUTEUR, "");
+  const incoherent = lireConfiguration({ SEUIL_SURVEILLANCE: "20", SEUIL_RESTRICTION: "5", SEUIL_CONSO_ELEVEE: "500", SEUIL_SURCONSOMMATION: "50" });
+  assert.equal(incoherent.SEUIL_RESTRICTION, 20, "la restriction n'arrive jamais avant la surveillance");
+  assert.equal(incoherent.SEUIL_SURCONSOMMATION, 500);
+  assert.equal(lireConfiguration({ INSTRUCTIONS_DEFI: `  Sois bref.\u0000\u0007 ${"x".repeat(5000)}` }).INSTRUCTIONS_DEFI.length, 2000);
+  assert.equal(lireConfiguration({ INSTRUCTIONS_DEFI: "Ligne 1\nLigne 2\u0000" }).INSTRUCTIONS_DEFI, "Ligne 1\nLigne 2");
 });

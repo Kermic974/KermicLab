@@ -31,7 +31,8 @@ const definitions = {
       ["compte", "#compte", "Mon compte (facultatif) : compte sur l'appareil et synchronisation pseudonymisée (ADR 0024)"],
       ["famille", "#famille", "Espace famille : écran dédié, masqué tant que connexionActive vaut false"],
       ["contributions", "#contributions", "Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions"],
-      ["comptes", null, "Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false"]
+      ["comptes", null, "Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false"],
+      ["backoffice", "admin/", "Back-office : page séparée /admin/, clé partagée, dix écrans (ADR 0026)"]
     ]
   },
   "notion.html": {

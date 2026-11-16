@@ -33,6 +33,10 @@ export async function ouvrir(nav, url, options = {}) {
   const page = await contexte.newPage();
   // Mesure d'audience Cloudflare : neutralisée dans les tests (pas de réseau, pas de comptage).
   await page.route("https://static.cloudflareinsights.com/**", (r) => r.fulfill({ contentType: "text/javascript", body: "" }));
+  // Charte graphique (ADR 0026) : charte d'origine par défaut ; un test peut redéfinir cette route après coup.
+  await page.route(/\/api\/theme$/, (r) => r.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ theme: { id: "indigo" } })
+  }));
   const erreurs = [];
   page.on("console", (m) => { if (m.type() === "error") erreurs.push(m.text()); });
   page.on("pageerror", (e) => erreurs.push(e.message));

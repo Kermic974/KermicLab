@@ -5,6 +5,10 @@
 
 /** Modules fonctionnels, dans l'ordre d'affichage de l'écran Configuration. */
 export const MODULES = Object.freeze(["general", "tuteur", "defi", "cahiers"]);
+/** Modules réservés au back-office (ADR 0026) : jamais exposés par `/api/llm/status`. */
+export const MODULES_ADMIN = Object.freeze(["acces", "securite"]);
+/** Taille maximale des instructions complémentaires d'un harness (caractères). */
+export const TAILLE_MAX_INSTRUCTIONS = 2000;
 
 /**
  * Skills LLM : une consigne système versionnée par module, activable séparément via `SKILLS_ACTIFS`.
@@ -21,7 +25,8 @@ const ALIAS_VALIDE = /^[A-Za-z0-9@][A-Za-z0-9@/._:-]{0,99}$/;
 
 /**
  * Registre des paramètres. `type` : booleen, entier (bornes `min`/`max`), alias (identifiant de modèle ou alias
- * AI Gateway), liste (identifiants séparés par des virgules, parmi `valeurs`).
+ * AI Gateway), liste (identifiants séparés par des virgules, parmi `valeurs`), texte (texte libre du serveur, borné
+ * à `max` caractères). `prive` : réservé au back-office, absent de la vue publique.
  */
 export const PARAMETRES = Object.freeze([
   { cle: "LLM_ACTIF", module: "general", type: "booleen", defaut: false },
@@ -38,7 +43,22 @@ export const PARAMETRES = Object.freeze([
   // Mes cahiers : alias AI Gateway Sonnet 5.5, budget de sortie large (plafond de 128 000 tokens du modèle).
   { cle: "MODELE_CAHIERS", module: "cahiers", type: "alias", defaut: "custom/sonnet-5-5" },
   { cle: "CAHIERS_GENERATIONS_JOUR", module: "cahiers", type: "entier", defaut: 2, min: 0, max: 5 },
-  { cle: "MAX_TOKENS_CAHIERS", module: "cahiers", type: "entier", defaut: 100000, min: 1000, max: 128000 }
+  { cle: "MAX_TOKENS_CAHIERS", module: "cahiers", type: "entier", defaut: 100000, min: 1000, max: 128000 },
+  // Instructions complémentaires des harness (ADR 0026) : ajoutées après le socle de sécurité, qui reste dans le code.
+  { cle: "INSTRUCTIONS_TUTEUR", module: "tuteur", type: "texte", defaut: "", max: TAILLE_MAX_INSTRUCTIONS, prive: true },
+  { cle: "INSTRUCTIONS_CADRAGE", module: "tuteur", type: "texte", defaut: "", max: TAILLE_MAX_INSTRUCTIONS, prive: true },
+  { cle: "INSTRUCTIONS_DEFI", module: "defi", type: "texte", defaut: "", max: TAILLE_MAX_INSTRUCTIONS, prive: true },
+  { cle: "INSTRUCTIONS_CAHIERS", module: "cahiers", type: "texte", defaut: "", max: TAILLE_MAX_INSTRUCTIONS, prive: true },
+  // Rôles et stratégies d'accès (ADR 0026) : préparés, non appliqués pendant la bêta.
+  { cle: "CONTROLE_ACCES_ACTIF", module: "acces", type: "booleen", defaut: false, prive: true },
+  // Garde-fous comportementaux (ADR 0026) : observation seule tant que GARDE_FOUS_ACTIFS vaut false.
+  { cle: "GARDE_FOUS_ACTIFS", module: "securite", type: "booleen", defaut: false, prive: true },
+  { cle: "SEUIL_SURVEILLANCE", module: "securite", type: "entier", defaut: 3, min: 1, max: 50, prive: true },
+  { cle: "SEUIL_RESTRICTION", module: "securite", type: "entier", defaut: 9, min: 2, max: 200, prive: true },
+  { cle: "SEUIL_CONSO_ELEVEE", module: "securite", type: "entier", defaut: 100, min: 10, max: 2000, prive: true },
+  { cle: "SEUIL_SURCONSOMMATION", module: "securite", type: "entier", defaut: 300, min: 20, max: 5000, prive: true },
+  { cle: "CONSERVATION_SIGNAUX_JOURS", module: "securite", type: "entier", defaut: 30, min: 7, max: 90, prive: true },
+  { cle: "CONSERVATION_TELEMETRIE_JOURS", module: "securite", type: "entier", defaut: 90, min: 7, max: 365, prive: true }
 ].map((p) => Object.freeze(p)));
 
 const PAR_CLE = new Map(PARAMETRES.map((p) => [p.cle, p]));
@@ -65,6 +85,9 @@ function interpreter(p, brut) {
       return ALIAS_VALIDE.test(texte) ? texte : p.defaut;
     case "liste":
       return [...new Set(texte.split(",").map((v) => v.trim()).filter((v) => p.valeurs.includes(v)))];
+    case "texte":
+      // Caractères de contrôle retirés (sauf saut de ligne et tabulation), longueur bornée.
+      return texte.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "").slice(0, p.max);
     default:
       return p.defaut;
   }
@@ -76,6 +99,9 @@ export function lireConfiguration(env = {}) {
   for (const p of PARAMETRES) config[p.cle] = interpreter(p, env?.[p.cle]);
   // Un appel ne peut jamais réserver plus que le budget de la session.
   config.MAX_TOKENS_APPEL = Math.min(config.MAX_TOKENS_APPEL, config.LIMITE_TOKENS_SESSION);
+  // La restriction ne peut pas arriver avant la surveillance, ni la surconsommation avant la consommation élevée.
+  config.SEUIL_RESTRICTION = Math.max(config.SEUIL_RESTRICTION, config.SEUIL_SURVEILLANCE);
+  config.SEUIL_SURCONSOMMATION = Math.max(config.SEUIL_SURCONSOMMATION, config.SEUIL_CONSO_ELEVEE);
   return Object.freeze(config);
 }
 
@@ -98,13 +124,28 @@ export function harnessSkill(id) {
  * pour chaque module, ses paramètres (valeur effective, défaut, bornes) et ses skills (actif ou non).
  */
 export function configurationPublique(env = {}) {
+  return vueConfiguration(env, MODULES, (p) => !p.prive);
+}
+
+/** Vue complète du back-office (ADR 0026) : tous les modules, paramètres privés compris. Jamais de secret. */
+export function configurationAdmin(env = {}) {
+  return vueConfiguration(env, [...MODULES, ...MODULES_ADMIN], () => true);
+}
+
+/** Paramètre du registre (ou `undefined`) et valeur interprétée d'une saisie : sert à valider un réglage à chaud. */
+export const parametreDuRegistre = (cle) => PAR_CLE.get(cle);
+export const interpreterValeur = (cle, brut) => interpreter(PAR_CLE.get(cle), brut);
+
+function vueConfiguration(env, modules, garder) {
   const config = lireConfiguration(env);
   return {
-    modules: MODULES.map((id) => ({
+    modules: modules.map((id) => ({
       id,
-      parametres: PARAMETRES.filter((p) => p.module === id).map((p) => ({
+      parametres: PARAMETRES.filter((p) => p.module === id && garder(p)).map((p) => ({
         cle: p.cle, type: p.type, valeur: config[p.cle], defaut: p.defaut,
-        ...(p.type === "entier" ? { min: p.min, max: p.cle === "MAX_TOKENS_APPEL" ? Math.min(p.max, config.LIMITE_TOKENS_SESSION) : p.max } : {})
+        ...(p.type === "entier" ? { min: p.min, max: p.cle === "MAX_TOKENS_APPEL" ? Math.min(p.max, config.LIMITE_TOKENS_SESSION) : p.max } : {}),
+        ...(p.type === "texte" ? { max: p.max } : {}),
+        ...(p.type === "liste" ? { valeurs: p.valeurs } : {})
       })),
       skills: Object.entries(SKILLS).filter(([, s]) => s.module === id).map(([skill, s]) => ({
         id: skill, prompt: s.prompt, version: s.version, actif: config.LLM_ACTIF && config.SKILLS_ACTIFS.includes(skill)

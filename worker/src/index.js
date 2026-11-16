@@ -19,6 +19,11 @@ import { intentionConversation } from "./conversation.js";
 import { appelerAliasGateway, appelerWorkersAI, claudeViaGatewayDisponible } from "./llm.js";
 import { configurationPublique, lireConfiguration, skillActif } from "./configuration.js";
 import { injecterOriginesParent, originesParent } from "./origines-pages.js";
+import { analyserRequete } from "./analyse-requete.js";
+import { actualiserProfil, enregistrerActivite, etatProfil, profilDeLaRequete } from "./comportement.js";
+import { chargerReglages, envAvecReglages, indexVisible, invaliderReglages, reglagesDe } from "./reglages.js";
+import { estRouteAdmin, gererApiAdmin, purgerBackoffice } from "./backoffice.js";
+import { parcoursPublies } from "./contenus.js";
 import {
   HARNESS_DEFI, SCHEMA_DEFI, codeErreurFournisseur, melangerChoix, perimetreDefi, generationsDefiParJour, generationsDefiUtilisees, libererGenerationDefi,
   messageDefi, normaliserDefis, promptDefi, purgerDefisLlm, reserverGenerationDefi, tirerDefis
@@ -33,7 +38,11 @@ const MAX_SUGGESTIONS = 4;
 const MAX_RELANCES = 3;
 const MOTS_ANGLAIS = /\b(what|how|why|which|explain|is|are|the|does|do|can)\b/i;
 let limiteur = null;
+let limiteurMax = null;
 let limiteurCompteLocal = null;
+let limiteurAdmin = null;
+/** Essais de clé du back-office par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
+const LIMITE_ESSAIS_ADMIN = 10;
 /** Inscriptions et connexions au compte local par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
 const LIMITE_CONNEXIONS_COMPTE_LOCAL = 10;
 let clientClaude = null; // injecté par les tests ; sinon créé par llm.js
@@ -58,8 +67,22 @@ function langueValide(l) {
   return LANGUES.includes(l) ? l : "fr";
 }
 
-function maquetteParId(id) {
-  return CATALOGUE.index.maquettes.find((m) => m.id === id);
+const CATALOGUES = new WeakMap();
+/**
+ * Catalogue de la requête : celui du build, sans les contenus masqués depuis le back-office (ADR 0026).
+ * Sans contenu masqué, c'est le catalogue du build lui-même.
+ */
+function catalogueDe(env) {
+  const reglages = reglagesDe(env);
+  const index = indexVisible(CATALOGUE.index, reglages);
+  if (index === CATALOGUE.index) return CATALOGUE;
+  let catalogue = CATALOGUES.get(index);
+  if (!catalogue) CATALOGUES.set(index, catalogue = { ...CATALOGUE, index });
+  return catalogue;
+}
+
+function maquetteParId(env, id) {
+  return catalogueDe(env).index.maquettes.find((m) => m.id === id);
 }
 
 /** Langue (approximative) d'une question d'exemple du catalogue : les fiches ne l'indiquent pas. */
@@ -97,12 +120,14 @@ const matiereDe = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
 export const cleDeTri = (titre) => String(titre).replace(/^(?:(?:les|le|la|the)\s+|l['’]\s*)/i, "");
 
 /** Liste du catalogue pour la barre de navigation : par niveau scolaire, puis par titre (sans article). */
-export function listeCatalogue(index) {
+export function listeCatalogue(index, enAvant = new Set()) {
   const rang = (liste, v) => { const i = liste.indexOf(v); return i < 0 ? liste.length : i; };
   return index.maquettes
     .map((m) => ({
       id: m.id, titre: m.titre, version: m.version, niveau: m.niveau ?? "autres", matiere: matiereDe(m),
       ...(m.resume ? { resume: m.resume } : {}),
+      // Mise en avant décidée dans le back-office (ADR 0026).
+      ...(enAvant.has(m.id) ? { enAvant: true } : {}),
       // Référentiel (issue #186) : niveaux et prérequis, seulement quand la fiche les renseigne ; sert la recommandation.
       ...(m.niveaux ? { niveaux: m.niveaux } : {}), ...(m.prerequis ? { prerequis: m.prerequis } : {})
     }))
@@ -115,12 +140,13 @@ export function listeCatalogue(index) {
 const jourCourant = () => Math.floor(Date.now() / 86400000);
 
 /** Réponse quand aucune page ne correspond et qu'aucun modèle ne peut répondre : on oriente vers ce qui existe. */
-function reponseHorsCatalogue(langue) {
-  const maquettes = CATALOGUE.index.maquettes;
+function reponseHorsCatalogue(env, langue) {
+  const index = catalogueDe(env).index;
+  const maquettes = index.maquettes;
   const decalage = jourCourant();
   const exemples = [...maquettes].sort((a, b) => a.id.localeCompare(b.id));
   const titres = Array.from({ length: Math.min(3, exemples.length) }, (_, i) => exemples[(decalage + i) % exemples.length].titre);
-  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres, maquettes.length), suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage }) };
+  return { type: "hors-catalogue", texte: messages(langue).horsCatalogue(titres, maquettes.length), suggestions: suggestionsCatalogue(index, langue, { decalage }) };
 }
 
 /**
@@ -165,20 +191,21 @@ function urlMaquette(requete, id, langue) {
 
 /** Réponse "maquette servie" + signalement éventuel d'une traduction manquante. */
 async function servirMaquette(requete, env, ctx, { id, langue, question, routage }) {
-  const m = maquetteParId(id);
+  const m = maquetteParId(env, id);
   const traduite = m.langues.includes(langue);
   ctx.waitUntil(journaliser(env, { type: "maquette_servie", maquetteId: id, sujet: m.sujet, langue, routage }));
   if (!traduite) {
     ctx.waitUntil(creerOuCommenterIssue(env, {
       label: "traduction-manquante", sujet: `${id} (${langue})`,
       corps: `La maquette \`${id}\` a été demandée en \`${langue}\` mais cette traduction n'existe pas.\n\nIssue créée automatiquement par le Worker Kermiclab.`,
-      commentaire: commentaireDemande({ question, langue })
+      // Pseudonymisée avant toute publication sur GitHub (système externe), comme avant tout envoi à un modèle.
+      commentaire: commentaireDemande({ question: pseudonymiser(question).texte, langue })
     }).catch((e) => console.error("issue traduction", e.message)));
   }
   const t = messages(langue);
   return {
     type: "maquette",
-    suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { exclure: id, max: MAX_RELANCES }),
+    suggestions: suggestionsCatalogue(catalogueDe(env).index, langue, { exclure: id, max: MAX_RELANCES }),
     texte: traduite ? t.maquette(m.titre) : `${t.traductionManquante} ${t.maquette(m.titre)}`,
     maquette: { id: m.id, titre: m.titre, version: m.version, langue: traduite ? langue : "fr", url: urlMaquette(requete, m.id, traduite ? langue : "fr") }
   };
@@ -209,7 +236,7 @@ async function traiterChat(requete, env, ctx) {
   }
 
   // 1. Routage déterministe par mots-clés (zéro token).
-  const idLocal = routerLocal(message, CATALOGUE.index);
+  const idLocal = routerLocal(message, catalogueDe(env).index);
   if (idLocal) {
     const donnees = await servirMaquette(requete, env, ctx, { id: idLocal, langue, question: message, routage: "mots-cles" });
     let cookie;
@@ -236,7 +263,7 @@ async function traiterChat(requete, env, ctx) {
   const intention = intentionConversation(message);
   if (intention) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "conversation", detail: intention }));
-    return { statut: 200, donnees: reponseConversation(intention, langue) };
+    return { statut: 200, donnees: reponseConversation(intention, langue, { index: catalogueDe(env).index }) };
   }
 
   // Seules des relances fermées sur une page déjà servie sont admises : un ID ou
@@ -244,11 +271,11 @@ async function traiterChat(requete, env, ctx) {
   const suivi = questionDeSuivi(message);
   if (!suivi) {
     ctx.waitUntil(journaliser(env, { type: "refus", langue, detail: "hors-perimetre-llm" }));
-    return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
+    return { statut: 200, donnees: { ...reponseHorsCatalogue(env, langue), texte: t().perimetreLlm } };
   }
   if (!utiliserLlm || !tuteurActif || (!env.AI?.run && !claudeViaGatewayDisponible(env))) {
     ctx.waitUntil(journaliser(env, { type: "reponse", langue, routage: "sans-modele" }));
-    return { statut: 200, donnees: reponseHorsCatalogue(langue) };
+    return { statut: 200, donnees: reponseHorsCatalogue(env, langue) };
   }
   let reponse;
   let source;
@@ -257,8 +284,8 @@ async function traiterChat(requete, env, ctx) {
     if (!session) {
       return { statut: 428, donnees: { type: "refus", texte: t().sessionLlmRequise } };
     }
-    source = sourceContexte(CATALOGUE, session.maquette_id, langue, new URL(requete.url).origin);
-    if (!source) return { statut: 200, donnees: { ...reponseHorsCatalogue(langue), texte: t().perimetreLlm } };
+    source = sourceContexte(catalogueDe(env), session.maquette_id, langue, new URL(requete.url).origin);
+    if (!source) return { statut: 200, donnees: { ...reponseHorsCatalogue(env, langue), texte: t().perimetreLlm } };
     reponse = await interrogerTuteur(env, session, { message: `${suivi} (${langue})`, source }, clientClaude);
   } catch {
     console.error("llm contrôle de quota ou fournisseur indisponible");
@@ -433,7 +460,8 @@ async function traiterCadrageIdee(requete, env) {
     const ouverte = await sessionPourIdee(requete, env);
     cookie = ouverte.cookie;
     reponse = await interrogerFournisseurs(env, ouverte.session, {
-      system: promptCadrage(langue), message: enveloppeIdee(message, contexte), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage
+      system: promptCadrage(langue), message: enveloppeIdee(message, contexte), schema: SCHEMA_CADRAGE, normaliser: normaliserCadrage,
+      skill: "cadrage-idee"
     }, clientClaude, HARNESS_CADRAGE);
   } catch {
     console.error("llm cadrage indisponible");
@@ -450,7 +478,7 @@ async function traiterCadrageIdee(requete, env) {
 }
 
 function servirPage(requete, env, id) {
-  const m = maquetteParId(id);
+  const m = maquetteParId(env, id);
   if (!m) return new Response("Not found", { status: 404 });
   const demandee = langueValide(new URL(requete.url).searchParams.get("lang"));
   const langue = m.langues.includes(demandee) ? demandee : "fr";
@@ -480,7 +508,7 @@ async function traiterDefi(requete, env, ctx) {
   let corps;
   try { corps = await requete.json(); } catch { return { statut: 400, donnees: { defis: [] } }; }
   const langue = langueValide(corps?.langue);
-  const perimetre = perimetreDefi(CATALOGUE, corps ?? {});
+  const perimetre = perimetreDefi(catalogueDe(env), corps ?? {});
   const limite = generationsDefiParJour(env);
   const banque = (raison, quota = { limite, utilisees: 0, restantes: limite }) => {
     ctx.waitUntil(journaliser(env, { type: "defi", langue, routage: "banque", detail: raison }));
@@ -489,7 +517,7 @@ async function traiterDefi(requete, env, ctx) {
   if (corps?.utiliserLlm !== true) return banque("ia-inactive");
   if (!defiIaPossible(env)) return banque("ia-indisponible");
   // Tirage avant toute session ou réservation : un périmètre vide ne coûte ni génération ni cookie.
-  const tirages = tirerDefis(CATALOGUE, perimetre);
+  const tirages = tirerDefis(catalogueDe(env), perimetre);
   if (!tirages.length) return banque("perimetre-vide");
   let session, cookie;
   try {
@@ -514,14 +542,14 @@ async function traiterDefi(requete, env, ctx) {
   const quota = { limite, utilisees, restantes: Math.max(0, limite - utilisees) };
   const config = lireConfiguration(env);
   const demande = {
-    system: promptDefi(langue), message: messageDefi(CATALOGUE, tirages, langue),
+    system: promptDefi(langue), message: messageDefi(catalogueDe(env), tirages, langue),
     schema: SCHEMA_DEFI, maxTokens: config.MAX_TOKENS_DEFI
   };
   // L'alias (custom/haiku) d'abord, puis Workers AI (gratuit, sans clé) si l'alias échoue ou ne produit aucun défi
   // valide. Les deux essais comptent pour une seule génération du quota.
   const fournisseurs = [
     { nom: "cloudflare-ai-gateway", modele: config.MODELE_DEFI, appeler: () => appelerAliasGateway(env, demande) },
-    { nom: "cloudflare-workers-ai", modele: config.MODELE_WORKERS_AI, appeler: () => appelerWorkersAI(env, demande) }
+    { nom: "cloudflare-workers-ai", modele: config.MODELE_WORKERS_AI, appeler: () => appelerWorkersAI(env, { ...demande, skill: "defi-express" }) }
   ];
   const echecs = [];
   let generation, fournisseur, defis = [];
@@ -589,7 +617,7 @@ async function traiterCahier(requete, env, ctx) {
     ctx.waitUntil(journaliser(env, { type: "cahier", langue, routage: "catalogue", detail: raison }));
     return { statut, donnees: { source: "aucune", raison, cahier: null, quota } };
   };
-  const demande = lireDemandeCahier(CATALOGUE, corps);
+  const demande = lireDemandeCahier(catalogueDe(env), corps);
   if (!demande) return sansIa("demande-invalide", undefined, 400);
   if (corps?.utiliserLlm !== true) return sansIa("ia-inactive");
   if (!cahierIaPossible(env)) return sansIa("ia-indisponible");
@@ -617,7 +645,7 @@ async function traiterCahier(requete, env, ctx) {
   let generation, cahier = null, echec = null;
   try {
     generation = await appelerAliasGateway(env, {
-      system: promptCahier(langue), message: messageCahier(CATALOGUE, demande, langue),
+      system: promptCahier(langue), message: messageCahier(catalogueDe(env), demande, langue),
       schema: SCHEMA_CAHIER, maxTokens: config.MAX_TOKENS_CAHIERS, cleModele: "MODELE_CAHIERS", nomSchema: "cahier"
     });
     if (generation.refus) echec = "refus";
@@ -661,11 +689,40 @@ async function lireCompteDepuisCookie(requete, env) {
   return lireSession(env, match[1]);
 }
 
+/** Modules des routes POST, pour les compteurs de signaux. */
+const MODULES_ROUTES = { "/api/chat": "chat", "/api/support": "support", "/api/idee": "idee", "/api/idee/cadrage": "cadrage-idee", "/api/defi": "defi", "/api/cahier": "cahier" };
+
+/**
+ * Catégories de signal d'une requête POST (ADR 0026). Le message est analysé comme une saisie d'utilisateur ; les
+ * autres chaînes du corps (contexte, cadrage renvoyé par le navigateur…) comme un contenu, vecteur d'injection
+ * indirecte. Seules les catégories sortent d'ici : le texte n'est ni journalisé ni stocké.
+ */
+export async function categoriesDeLaRequete(requete) {
+  let corps;
+  try { corps = JSON.parse((await requete.clone().text()).slice(0, 64 * 1024)); } catch { return []; }
+  if (!corps || typeof corps !== "object") return [];
+  const autres = [];
+  const parcourir = (valeur, profondeur) => {
+    if (autres.length > 200 || profondeur > 6) return;
+    if (typeof valeur === "string") autres.push(valeur);
+    else if (valeur && typeof valeur === "object") Object.values(valeur).forEach((v) => parcourir(v, profondeur + 1));
+  };
+  const { message, ...reste } = corps;
+  parcourir(reste, 0);
+  const categories = new Set(typeof message === "string" ? analyserRequete(message).categories : []);
+  for (const c of analyserRequete(autres.join("\n").slice(0, 8000), { origine: "contenu" }).categories) {
+    if (c === "injection-indirecte") categories.add(c);
+  }
+  return [...categories];
+}
+
 export default {
-  async fetch(requete, env, ctx) {
+  async fetch(requete, envDeploiement, ctx) {
     const url = new URL(requete.url);
-    const cors = enTetesCors(requete, env);
+    const cors = enTetesCors(requete, envDeploiement);
     if (requete.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
+    // Réglages du back-office (ADR 0026) : paramètres surchargés et contenus masqués, lus au plus toutes les 15 s.
+    let env = envAvecReglages(envDeploiement, await chargerReglages(envDeploiement));
 
     // Auth routes
     const authResponse = await gererAuth(requete, env);
@@ -698,6 +755,25 @@ export default {
       return new Response(reponse.body, { status: reponse.status, headers });
     }
 
+    // Back-office (ADR 0026) : clé partagée pendant la bêta, fermé si la clé n'est pas configurée.
+    if (estRouteAdmin(url.pathname)) {
+      let reponse;
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        reponse = json({ erreur: "origine-refusee" }, 403, {});
+      } else {
+        try {
+          limiteurAdmin ??= creerLimiteur({ maxParMinute: LIMITE_ESSAIS_ADMIN });
+          reponse = await gererApiAdmin(requete, envDeploiement, { index: CATALOGUE.index, autoriser: limiteurAdmin, ip: requete.headers.get("cf-connecting-ip") || "inconnue" });
+        } catch {
+          // Tables absentes (migration 0002 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
+          reponse = json({ erreur: "back-office-indisponible" }, 503, {});
+        }
+      }
+      const headers = new Headers(reponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(reponse.body, { status: reponse.status, headers });
+    }
+
     // Authenticated account API
     // Comptes famille (ADR 0017) : réservés au parent connecté ; 401 sans session valide.
     // Contributions au contenu (ADR 0023) : rôles contributeur, prof, admin ; mêmes garde-fous de session.
@@ -707,7 +783,7 @@ export default {
       try {
         const compteId = await lireCompteDepuisCookie(requete, env);
         apiResponse = !compteId ? json({ erreur: "non-connecte" }, 401, {})
-          : routeContribution ? await gererApiContributions(requete, env, compteId, { catalogue: CATALOGUE.index })
+          : routeContribution ? await gererApiContributions(requete, env, compteId, { catalogue: catalogueDe(env).index })
             : await gererApiCompte(requete, env, compteId);
       } catch {
         // Tables des comptes absentes ou D1 indisponible : jamais de 500 ni de détail interne.
@@ -719,7 +795,7 @@ export default {
     }
 
     if (requete.method === "GET" && url.pathname === "/api/sante") {
-      return json({ ok: true, maquettes: CATALOGUE.index.maquettes.length }, 200, cors);
+      return json({ ok: true, maquettes: catalogueDe(env).index.maquettes.length }, 200, cors);
     }
     if (requete.method === "GET" && url.pathname === "/api/llm/status") {
       if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
@@ -736,14 +812,28 @@ export default {
       return json({ actif, defi, cahiers, skills, configuration: configurationPublique(env) }, 200, { ...cors, "cache-control": "no-store" });
     }
     if (requete.method === "GET" && url.pathname === "/api/catalogue") {
-      return new Response(JSON.stringify({ notions: listeCatalogue(CATALOGUE.index) }), {
+      return new Response(JSON.stringify({ notions: listeCatalogue(catalogueDe(env).index, reglagesDe(env).enAvant) }), {
         headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
       });
     }
     if (requete.method === "GET" && url.pathname === "/api/suggestions") {
       const langue = langueValide(url.searchParams.get("lang"));
-      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(CATALOGUE.index, langue, { decalage: jourCourant() }) }), {
+      return new Response(JSON.stringify({ suggestions: suggestionsCatalogue(catalogueDe(env).index, langue, { decalage: jourCourant() }) }), {
         headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=300", ...cors }
+      });
+    }
+    // Charte graphique choisie dans le back-office (ADR 0026) : le site l'applique au chargement.
+    if (requete.method === "GET" && url.pathname === "/api/theme") {
+      return new Response(JSON.stringify({ theme: reglagesDe(env).theme }), {
+        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60", ...cors }
+      });
+    }
+    // Parcours publiés depuis le back-office : listes ordonnées de contenus du catalogue.
+    if (requete.method === "GET" && url.pathname === "/api/parcours") {
+      let parcours = [];
+      try { if (env.DB) parcours = await parcoursPublies(env, catalogueDe(env).index); } catch { /* migration 0002 non appliquée */ }
+      return new Response(JSON.stringify({ parcours }), {
+        headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60", ...cors }
       });
     }
     const page = url.pathname.match(/^\/maquettes\/([a-z0-9-]+)$/);
@@ -753,11 +843,28 @@ export default {
       if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
         return json({ type: "refus", texte: messages("fr").inapproprie }, 403, {});
       }
-      limiteur ??= creerLimiteur({ maxParMinute: lireConfiguration(env).LIMITE_PAR_MINUTE });
+      // Le limiteur suit la valeur du paramètre : une modification à chaud le recrée.
+      const maxParMinute = lireConfiguration(env).LIMITE_PAR_MINUTE;
+      if (!limiteur || limiteurMax !== maxParMinute) { limiteur = creerLimiteur({ maxParMinute }); limiteurMax = maxParMinute; }
       const ip = requete.headers.get("cf-connecting-ip") || "inconnue";
       if (!limiteur(ip)) {
         ctx.waitUntil(journaliser(env, { type: "refus", detail: "limite-debit" }));
         return json({ type: "refus", texte: messages("fr").tropDeDemandes }, 429, cors);
+      }
+      // Signaux de sécurité et analyse comportementale (ADR 0026) : catégories et compteurs seulement, jamais de texte.
+      const profil = await profilDeLaRequete(requete, env);
+      const categories = await categoriesDeLaRequete(requete);
+      ctx.waitUntil(enregistrerActivite(env, { profil, module: MODULES_ROUTES[url.pathname], categories })
+        .then(() => actualiserProfil(env, profil)));
+      // Garde-fous : appliqués seulement si GARDE_FOUS_ACTIFS (observation seule pendant la bêta).
+      if (lireConfiguration(env).GARDE_FOUS_ACTIFS) {
+        const etat = await etatProfil(env, profil);
+        // Suspendu : plus de demande, sauf le signalement d'un problème. Restreint : le catalogue reste, l'IA est coupée.
+        if (etat === "suspendu" && url.pathname !== "/api/support") {
+          ctx.waitUntil(journaliser(env, { type: "refus", detail: "profil-suspendu" }));
+          return json({ type: "refus", ok: false, texte: messages("fr").profilSuspendu }, 403, cors);
+        }
+        if (etat === "restreint") env = envAvecReglages(envDeploiement, reglagesDe(env), { LLM_ACTIF: "false" });
       }
       try {
         const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee, "/api/defi": traiterDefi, "/api/cahier": traiterCahier }[url.pathname];
@@ -786,6 +893,10 @@ export default {
     ctx.waitUntil(purgerCompteLocal(env, evenement.scheduledTime)
       .then((r) => r && console.log("purge compte local", JSON.stringify(r)))
       .catch(() => console.error("purge compte local indisponible")));
+    // Back-office (ADR 0026) : signaux de sécurité, états expirés et télémétrie au-delà de leur durée de conservation.
+    ctx.waitUntil(chargerReglages(env).then((reglages) => purgerBackoffice(envAvecReglages(env, reglages), evenement.scheduledTime))
+      .then((r) => r && console.log("purge back-office", JSON.stringify(r)))
+      .catch(() => console.error("purge back-office indisponible")));
     ctx.waitUntil(sauvegarderKpi(env, jourPrecedent(evenement.scheduledTime))
       .then((r) => console.log("sauvegarde kpi", JSON.stringify(r)))
       .catch((e) => console.error("sauvegarde kpi", e?.message)));
@@ -793,4 +904,4 @@ export default {
 };
 
 /** Réinitialise l'état en mémoire (tests). */
-export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurCompteLocal = null; clientClaude = client; }
+export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; clientClaude = client; invaliderReglages(); }
