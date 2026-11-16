@@ -12,7 +12,7 @@ export function echapperXml(valeur) {
 export function routeDepuisFichier(fichier) {
   const chemin = String(fichier).replace(/\\/g, "/").replace(/^\/+/, "");
   const segments = chemin.split("/");
-  if (segments.includes("admin") || chemin.toLowerCase() === "404.html" || !chemin.toLowerCase().endsWith(".html")) return null;
+  if (segments.includes("admin") || segments.at(-1).toLowerCase() === "404.html" || !chemin.toLowerCase().endsWith(".html")) return null;
   if (segments.at(-1).toLowerCase() === "index.html") {
     segments.pop();
     return `/${segments.length ? `${segments.join("/")}/` : ""}`;
@@ -43,7 +43,7 @@ function titreEtDescription(html) {
 }
 
 function definirMeta(html, attribut, cle, valeur) {
-  const motif = new RegExp("<meta\\s+" + attribut + "=[\\"']" + cle + "[\\"'][^>]*>", "i");
+  const motif = new RegExp("<meta\\s+" + attribut + "=[\"']" + cle + "[\"'][^>]*>", "i");
   const contenu = 'content="' + echapperAttribut(valeur) + '"';
   if (motif.test(html)) {
     return html.replace(motif, (ancien) => {
@@ -65,8 +65,11 @@ export function appliquerMetadonnees(html, route, originen = ORIGINE_PUBLIQUE) {
   let resultat = html.includes('rel="canonical"')
     ? html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, lienCanonique)
     : html.replace("</head>", lienCanonique + "\n</head>");
-  for (const [cle, valeur] of [["og:type", "website"], ["og:title", titreSocial], ["og:description", description], ["og:url", canonique], ["twitter:title", titreSocial], ["twitter:description", description]]) {
+  for (const [cle, valeur] of [["og:type", "website"], ["og:title", titreSocial], ["og:description", description], ["og:url", canonique]]) {
     resultat = definirMeta(resultat, "property", cle, valeur);
+  }
+  for (const [cle, valeur] of [["twitter:title", titreSocial], ["twitter:description", description], ["twitter:card", "summary"]]) {
+    resultat = definirMeta(resultat, "name", cle, valeur);
   }
   resultat = definirMeta(resultat, "name", "twitter:card", "summary");
   return resultat;
