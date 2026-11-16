@@ -17,7 +17,7 @@ Principes non négociables :
 - **Agnostique de l'agent** : tout le pilotage est en Markdown dans ce dépôt.
 - **Maintenance par IA, contrôle humain** : les agents préparent ; le propriétaire valide aux points de contrôle.
 - **CI/CD obligatoire** : rien n'est fusionné sans CI verte.
-- **Public mineur** : aucune donnée personnelle collectée, modération des entrées et des sorties.
+- **Public mineur** : aucune donnée personnelle collectée, modération des entrées et des sorties. Seule exception : Google Analytics, chargé uniquement après accord explicite du visiteur (`web/audience.js`, ADR 0027), jamais dans les pages du catalogue.
 
 ## 2. Carte du dépôt
 

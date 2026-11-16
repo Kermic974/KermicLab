@@ -8,6 +8,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 - La question citée dans une issue `traduction-manquante` est pseudonymisée avant publication sur GitHub, comme les idées et les signalements. / The question quoted in a missing-translation issue is now pseudonymised.
 
 ### Ajouté
+- **Google Analytics 4 soumis au consentement** ([ADR 0027](docs/decisions/0027-google-analytics-consentement.md)) : sur le tableau de bord et la page Confidentialité, un bandeau propose « Refuser » ou « Accepter » ; rien n'est chargé ni déposé sans accord, le choix se modifie depuis le pied de page et la page Confidentialité, et un refus efface les cookies de Google Analytics. Signaux publicitaires désactivés ; les pages des notions et des jeux ne chargent jamais Google Analytics. Identifiant de mesure défini au build (`scripts/build.mjs`, vide pour désactiver). / Consent-gated Google Analytics 4: nothing loads without opt-in, ad signals disabled, never on concept or game pages.
 - **Front piloté par le back-office** (ADR 0026) : l'accueil affiche « À la une » (contenus mis en avant) et les **parcours** publiés, avec leur avancement calculé sur l'appareil ; les deux sections restent masquées s'il n'y a rien. Dans Éducation, **« Ma classe »** ouvre directement le niveau choisi et le retient. / The home screen now shows featured content and learning paths set in the back office; Education remembers the chosen school level.
 
 ### Modifié
