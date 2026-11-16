@@ -1,6 +1,6 @@
 # ADR 0028 — Adoption des contrats du référentiel S4
 
-**Statut : proposé.** Décisions D1 à D8 à valider par le propriétaire dans [#243](https://github.com/Kermic974/KermicLab/issues/243).
+**Statut : proposé.** D4 est approuvée pour le pilote. Les autres décisions restent à valider dans [#243](https://github.com/Kermic974/KermicLab/issues/243).
 
 ## Contexte
 
@@ -13,26 +13,43 @@ Les fiches du catalogue fournissent actuellement les métadonnées V0 au Worker,
 | D1 — Sources | Versionner les textes lisibles avec version et lien d’origine dans `docs/referentiel/normes/`. | Inventaire des sources faisant foi et règles approuvées explicitement si le texte d’origine reste indisponible. |
 | D2 — Source canonique | Stocker les objets JSON dans `referentiel/`. Le build projette `prerequis`, `niveaux` et `competences` sur les fiches migrées. `check:pages` compare la projection sans modifier la fiche. | Valider l’emplacement et la responsabilité de chaque artefact. |
 | D3 — Outil | JSON Schema 2020-12 et Ajv en dépendance de développement. JavaScript pour références, graphes et historique. | Valider le choix et rattacher les diagnostics de structure aux identifiants stables de règles. |
-| D4 — Contrats | Compléter la table ci-dessous à partir des textes D1 ou d’un arbitrage explicite. | Valeurs, champs et cardinalités par contrat. Un exemple accepté et un exemple rejeté par forme. |
+| D4 — Contrats | Approuvée pour le pilote public. | Appliquer le contrat et les exemples ci-dessous. |
 | D5 — Niveau des prérequis | Signaler le prérequis plus avancé comme WARNING éditorial dans S4. Conserver le contrôle V0 pendant la transition. | Valider la sévérité et documenter les cas de transition. |
 | D6 — Périmètre | Piloter sur le catalogue public, avec fermeture transitive des références. | Décider quand intégrer le catalogue privé et comment vérifier sa compatibilité. |
 | D7 — Tickets antérieurs | Garder #179 et #180 clos comme références des comportements V0 déjà livrés. | Confirmer leur rôle dans les critères de non-régression du pilote. |
 | D8 — Vocabulaire | « Fiche » désigne la page du catalogue et « Notion » l’objet canonique. | Confirmer la terminologie dans le guide de contribution. |
 
-### D4 — Table de décision
+### D4 — Contrat approuvé pour le pilote public
 
-| Contrat | Provenance et preuve à confirmer | Autres décisions |
+Ces décisions ont été validées le 17 novembre 2026. Elles fixent les valeurs manquantes pour le pilote à partir des contraintes documentées dans [S4.7](https://app.notion.com/p/41a0c40cec2881ea9aa6f8e6dc356460), [#245](https://github.com/Kermic974/KermicLab/issues/245) et [#249](https://github.com/Kermic974/KermicLab/issues/249).
+
+| Contrat | `provenance` | `evidence` | Autre règle D4 |
+| --- | --- | --- | --- |
+| Notion | Facultative | Facultative | — |
+| MicroSkill | Facultative | Facultative | — |
+| Skill | Facultative | Facultative | — |
+| Relation | Facultative | Facultative | ID `relation.<discipline>.<slug-stable>` |
+| Curriculum | Facultative | Facultative | `jurisdiction` vaut `FR` pour le pilote |
+| Stage | Facultative | Facultative | `stageType` vaut `cycle` ou `grade` selon le code |
+| Domain | Facultative | Facultative | — |
+| CurriculumMapping | Obligatoire | Facultative | ID `curriculum-mapping.<discipline>.<slug-stable>` |
+
+- `provenance` est un objet fermé avec les champs obligatoires `type` et `ref`. Les types admis sont `official`, `editorial` et `legacy-v0`. `ref` est une chaîne non vide qui identifie la source documentaire.
+- `evidence`, si présent, est un tableau d’au moins un objet fermé. Chaque objet exige `ref` et `excerpt`, deux chaînes non vides. La référence localise la source et l’extrait justifie l’assertion. Les données apprenant sont exclues.
+- Le champ `code` du Stage précise le niveau. `cycle-3` et `cycle-4` correspondent à `cycle`. `seconde`, `premiere` et `terminale` correspondent à `grade`.
+- Les segments `discipline` et `slug-stable` respectent les primitives de S4.1. Le slug est attribué à la création puis conservé entre révisions. L’unicité métier d’une Relation ou d’un placement est contrôlée séparément.
+
+Exemples destinés aux fixtures :
+
+| Règle | Accepté | Rejeté |
 | --- | --- | --- |
-| Notion | Présence, variantes de provenance et cardinalité des preuves | — |
-| MicroSkill | Présence, variantes de provenance et cardinalité des preuves | — |
-| Skill | Présence, variantes de provenance et cardinalité des preuves | — |
-| Relation | Présence, variantes de provenance et cardinalité des preuves | Format d’ID exact |
-| Curriculum | Présence, variantes de provenance et cardinalité des preuves | Valeurs de `jurisdiction` |
-| Stage | Présence, variantes de provenance et cardinalité des preuves | Valeurs de `stageType` |
-| Domain | Présence, variantes de provenance et cardinalité des preuves | — |
-| CurriculumMapping | Provenance structurée requise selon #249. Confirmer variantes, champs et cardinalité des preuves. | Format d’ID exact |
-
-Points d’appui documentés : une provenance sous forme de chaîne est rejetée et une provenance valide est structurée avec `type`. La preuve doit suivre une structure unique. Les valeurs et bornes exactes restent à retrouver dans S4.7 ou à approuver. [S4.7](https://app.notion.com/p/41a0c40cec2881ea9aa6f8e6dc356460) · [#245](https://github.com/Kermic974/KermicLab/issues/245) · [#249](https://github.com/Kermic974/KermicLab/issues/249)
+| Provenance | `{"type":"legacy-v0","ref":"catalogue/fractions/fiche.md"}` | `"catalogue/fractions/fiche.md"`, type inconnu ou référence vide |
+| Présence de la provenance | Omission sur une Notion | Omission sur un CurriculumMapping |
+| Preuve | `[{"ref":"source-exemple#fractions","excerpt":"Comparer deux fractions de même dénominateur."}]` | Objet seul, tableau vide, extrait vide ou entrée avec données apprenant |
+| Juridiction | `FR` | `DE` pour le pilote |
+| Étape | `cycle-4` avec `cycle` ou `seconde` avec `grade` | `cycle-4` avec `grade` |
+| ID Relation | `relation.mathematiques.fractions-prerequis` | `relation.mathematiques` |
+| ID CurriculumMapping | `curriculum-mapping.mathematiques.fractions-cycle-4` | `stage.mathematiques.fractions-cycle-4` comme ID de mapping |
 
 ### Historique et projection
 
