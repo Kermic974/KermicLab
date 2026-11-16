@@ -1,23 +1,23 @@
 # ADR 0028 — Adoption des contrats du référentiel S4
 
-**Statut : proposé.** D4 est approuvée pour le pilote. Les autres décisions restent à valider dans [#243](https://github.com/Kermic974/KermicLab/issues/243).
+**Statut : en attente de revue et de fusion.** D1 à D8 ont été approuvées pour le pilote public le 17 novembre 2026. Les choix complémentaires sur l’historique, les niveaux de validation et la projection restent à préciser. [#243](https://github.com/Kermic974/KermicLab/issues/243)
 
 ## Contexte
 
 Les fiches du catalogue fournissent actuellement les métadonnées V0 au Worker, à la recommandation et au cahier de vacances. [S4](https://app.notion.com/p/41a0c40cec288177b682c2f5a06dbf3c) et [S5](https://app.notion.com/p/41a0c40cec28810d9d6cda3a622c249f) décrivent la cible et la projection. Les exports binaires de Notion et la reconstruction lisible ont une provenance différente. L’audit de référence est dans [audit-gap.md](../referentiel/audit-gap.md).
 
-## Propositions à valider
+## Décisions approuvées
 
-| Décision | Proposition | À consigner avant fusion |
-| --- | --- | --- |
-| D1 — Sources | Versionner les textes lisibles avec version et lien d’origine dans `docs/referentiel/normes/`. | Inventaire des sources faisant foi et règles approuvées explicitement si le texte d’origine reste indisponible. |
-| D2 — Source canonique | Stocker les objets JSON dans `referentiel/`. Le build projette `prerequis`, `niveaux` et `competences` sur les fiches migrées. `check:pages` compare la projection sans modifier la fiche. | Valider l’emplacement et la responsabilité de chaque artefact. |
-| D3 — Outil | JSON Schema 2020-12 et Ajv en dépendance de développement. JavaScript pour références, graphes et historique. | Valider le choix et rattacher les diagnostics de structure aux identifiants stables de règles. |
-| D4 — Contrats | Approuvée pour le pilote public. | Appliquer le contrat et les exemples ci-dessous. |
-| D5 — Niveau des prérequis | Signaler le prérequis plus avancé comme WARNING éditorial dans S4. Conserver le contrôle V0 pendant la transition. | Valider la sévérité et documenter les cas de transition. |
-| D6 — Périmètre | Piloter sur le catalogue public, avec fermeture transitive des références. | Décider quand intégrer le catalogue privé et comment vérifier sa compatibilité. |
-| D7 — Tickets antérieurs | Garder #179 et #180 clos comme références des comportements V0 déjà livrés. | Confirmer leur rôle dans les critères de non-régression du pilote. |
-| D8 — Vocabulaire | « Fiche » désigne la page du catalogue et « Notion » l’objet canonique. | Confirmer la terminologie dans le guide de contribution. |
+| Décision | Choix approuvé pour le pilote |
+| --- | --- |
+| D1 — Sources | Versionner les textes normatifs lisibles dans `docs/referentiel/normes/`, avec leur version et leur provenance. Pour une règle dont l’original reste illisible, identifier dans l’ADR la décision approuvée qui fait foi. |
+| D2 — Source canonique | Stocker les objets JSON dans `referentiel/`. Le build projette `prerequis`, `niveaux` et `competences` sur les fiches migrées. `check:pages` compare la projection sans modifier la fiche. |
+| D3 — Outil | Utiliser JSON Schema 2020-12 et Ajv comme dépendance de développement pour la structure. Utiliser JavaScript pour les références, les graphes et l’historique. Relier les diagnostics à des identifiants de règle stables. |
+| D4 — Contrats | Appliquer le contrat et les exemples ci-dessous. |
+| D5 — Niveau des prérequis | Signaler un prérequis plus avancé par un WARNING éditorial dans S4. Conserver le contrôle V0 pendant la transition. |
+| D6 — Périmètre | Piloter sur le catalogue public, avec fermeture transitive des références. |
+| D7 — Tickets antérieurs | Garder #179 et #180 clos comme références des comportements V0 à préserver. |
+| D8 — Vocabulaire | « Fiche » désigne la page du catalogue et « Notion » l’objet canonique. |
 
 ### D4 — Contrat approuvé pour le pilote public
 
@@ -59,4 +59,4 @@ Pour la projection V0, proposer une correspondance explicite entre IDs canonique
 
 ## Passage au lot technique
 
-Fusionner cet ADR après arbitrage et revue humaine, puis clôturer #243. Enchaîner primitives et schémas (#245–#249), validateurs et rapport (#250–#254), contrôle CI (#255), projection et pilote (#256), puis extension par discipline (#257).
+Finaliser les règles complémentaires ci-dessus, puis fusionner cet ADR après revue humaine et clôturer #243. Enchaîner primitives et schémas (#245–#249), validateurs et rapport (#250–#254), contrôle CI (#255), projection et pilote (#256), puis extension par discipline (#257).
