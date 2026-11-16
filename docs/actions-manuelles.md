@@ -2,6 +2,15 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Publication programmée du blog, test de fumée, environnement Cursor (issues #312, #261, #284)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Vérifier la première exécution quotidienne après la fusion | [Actions → CI/CD](https://github.com/Kermic974/KermicLab/actions/workflows/ci.yml), exécutions de type « schedule » (vers 6 h, La Réunion) | Une exécution planifiée ne peut pas être essayée avant la fusion sur `main` ; GitHub peut la retarder | Le job « Blog à publier aujourd'hui ? » affiche « blog à jour » ou la liste des articles à publier ; le jour d'un article programmé, il apparaît sur `/blog/` | à faire |
+| Savoir que les articles déjà en ligne et datés dans le futur seront retirés jusqu'à leur date | `blog/` (articles `validé` datés après le jour de la fusion) | Avant ce changement, tout article validé sortait dès la fusion ; au premier déploiement, ceux dont la date n'est pas arrivée disparaissent du site puis reviennent à leur date | Décision assumée, ou date des articles concernés ramenée au jour de la fusion | à faire |
+| Essayer l'environnement Cursor | Cursor → agent en arrière-plan sur le dépôt ; `.cursor/environment.json` | Le fichier n'a pas pu être essayé hors de Cursor | `npm run ci` passe dans l'agent Cursor | à faire |
+| Réglages laissés au propriétaire par l'issue #284 | Jeton des PR de la roadmap, protection de `main`, réglage de build Cloudflare (`npm run build`, sortie `dist`) | Hors de portée d'un agent | Réglages vérifiés | à faire |
+
 ## Back-office (ADR 0026)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { clientCloudflare, prendreInstantane, retablir, validerInstantane, testerFumee, fumeeAvecReprises } from "../../scripts/deploiement.mjs";
+import { clientCloudflare, prendreInstantane, retablir, validerInstantane, testerFumee, fumeeAvecReprises, rapportFumee } from "../../scripts/deploiement.mjs";
 
 // Sûreté du déploiement : instantané, test de fumée, retour arrière (issue #178). Aucun appel réseau réel.
 const API = "https://kermiclab-api.kermic.workers.dev", SITE = "https://kermiclab.pages.dev";
@@ -32,7 +32,13 @@ function faussesApis(etat = {}) {
     if (url === `${API}/api/sante`) return etat.santeKo ? reponse("", 502) : reponse({ ok: true, maquettes: 174 });
     if (url === `${API}/api/catalogue`) return reponse({ notions: [{ id: "fractions" }] });
     if (url === `${API}/maquettes/trigo-cercle?lang=fr`) return reponse('<script type="application/json" id="kermiclab-meta">{}</script>');
-    if (url === `${SITE}/`) return reponse("<title>KermicLab</title>");
+    if (url === `${API}/api/suggestions?lang=fr`) return reponse({ suggestions: ["C'est quoi le sinus ?"] });
+    if (url === `${API}/api/llm/status`) return reponse({ actif: false, defi: { ia: false } });
+    if (url === `${SITE}/`) return reponse('<title>KermicLab</title><link rel="stylesheet" href="style.css?v=0123456789"><script type="module" src="app.js?v=abcdef0123"></script>');
+    if (url === `${SITE}/app.js?v=abcdef0123`) return reponse(etat.appVide ? "" : "export {};");
+    if (url === `${SITE}/style.css?v=0123456789`) return reponse("body{}");
+    if (url === `${SITE}/i18n/fr.json`) return reponse({ application: "Application" });
+    if (url === `${SITE}/blog/`) return etat.blogKo ? reponse("introuvable", 404) : reponse("<h1>Blog</h1>");
     if (url === `${SITE}/config.json`) return reponse({ apiUrl: etat.apiUrl ?? API });
     return reponse("introuvable", 404);
   };
@@ -78,6 +84,38 @@ test("test de fumée : réussi quand API, page servie, site et configuration ré
   assert.ok(appels.every((a) => a.methode === "GET"), "lectures seulement : aucun KPI écrit");
   assert.ok(appels.every((a) => a.ua === "kermiclab-test-de-fumee (CI)"), "requêtes identifiées");
   assert.ok(!appels.some((a) => a.url.includes("/api/chat")));
+});
+
+test("test de fumée : ressources de la page d'accueil, blog et état de l'IA contrôlés sans appel à un modèle", async () => {
+  const { f, appels } = faussesApis();
+  const rapport = [];
+  let t = 0;
+  assert.deepEqual(await testerFumee({ api: API, site: SITE, fetch: f, rapport, horloge: () => (t += 5) }), []);
+  assert.deepEqual(rapport.map((l) => l.etape), [
+    "API santé", "API catalogue", "API suggestions du chat", "API état de l'IA et du défi", "Page servie", "Site",
+    "Ressource app.js", "Ressource style.css", "Configuration du site", "Textes du site", "Blog"
+  ]);
+  assert.ok(rapport.every((l) => l.statut === "200" && l.dureeMs === 5 && l.diagnostic === ""));
+  assert.ok(appels.some((a) => a.url === `${SITE}/app.js?v=abcdef0123`), "la ressource est demandée avec son empreinte");
+  assert.ok(!appels.some((a) => /\/api\/(chat|defi|cahier|support|idee)/.test(a.url)), "aucune route qui écrit ou appelle un modèle");
+});
+
+test("test de fumée : rapport par étape (route, statut, durée, diagnostic borné), sans corps de réponse", async () => {
+  const { f } = faussesApis({ blogKo: true, appVide: true });
+  const rapport = [];
+  const echecs = await testerFumee({ api: API, site: SITE, fetch: f, rapport, horloge: () => 0 });
+  assert.deepEqual(echecs, ["Ressource app.js : fichier vide", "Blog : HTTP 404"]);
+  const texte = rapportFumee(rapport);
+  assert.match(texte, /\*\*2 contrôle\(s\) en échec sur 11\.\*\*/);
+  assert.match(texte, /\| ❌ \| Blog \| `https:\/\/kermiclab\.pages\.dev\/blog\/` \| 404 \| 0 ms \| HTTP 404 \|/);
+  assert.match(texte, /\| ✅ \| API santé \| `https:\/\/kermiclab-api\.kermic\.workers\.dev\/api\/sante` \| 200 \| 0 ms \| — \|/);
+  assert.doesNotMatch(texte, /introuvable|export \{\}/, "les corps de réponse ne sont jamais recopiés");
+  // Un diagnostic long (réponse inattendue) est borné à 200 caractères.
+  const bavard = async (url, init) => (url.endsWith("/api/sante") ? reponse({ ok: false, detail: "x".repeat(1000) }) : f(url, init));
+  const long = [];
+  await testerFumee({ api: API, site: SITE, fetch: bavard, rapport: long });
+  assert.equal(long[0].diagnostic.length, 200);
+  assert.match(rapportFumee([{ etape: "a|b", route: "u", statut: "200", dureeMs: 1, diagnostic: "" }]), /a\\\|b/);
 });
 
 test("test de fumée : chaque échec est nommé", async () => {

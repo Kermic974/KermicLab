@@ -21,6 +21,13 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: echo "ok=$([ -n "$ANTHROPIC_API_KEY" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      # Revue ignorée : avertissement visible dans l'exécution et dans son résumé (issue #284).
+      - name: Revue IA ignorée (clé absente)
+        if: steps.cle.outputs.ok != 'true'
+        run: |
+          echo "::warning::Revue de sécurité par IA ignorée : secret ANTHROPIC_API_KEY absent. Seule la revue humaine du CODEOWNER s'applique à cette PR."
+          echo "### ⚠️ Revue de sécurité par IA ignorée" >> "$GITHUB_STEP_SUMMARY"
+          echo "Le secret \`ANTHROPIC_API_KEY\` est absent : aucune revue automatique n'a été faite. Seule la revue humaine du CODEOWNER s'applique." >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/checkout@v7
         if: steps.cle.outputs.ok == 'true'
         with:
@@ -34,3 +41,15 @@ jobs:
             secrets exposés, injections, scripts ou ressources externes dans les pages HTML, CSP,
             appels réseau hors liste blanche, collecte de données personnelles (public mineur),
             dépendances ajoutées. Publie un seul commentaire de synthèse en français, classé par gravité.
+
+  # PR d'un fork : pas d'accès aux secrets, donc pas de revue IA. L'avertissement rend cette absence visible.
+  ignoree:
+    name: Revue IA ignorée (fork)
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - run: |
+          echo "::warning::Revue de sécurité par IA ignorée : PR issue d'un fork (pas d'accès aux secrets). Seule la revue humaine du CODEOWNER s'applique."
+          echo "### ⚠️ Revue de sécurité par IA ignorée" >> "$GITHUB_STEP_SUMMARY"
+          echo "PR issue d'un fork : aucune revue automatique n'a été faite. Seule la revue humaine du CODEOWNER s'applique." >> "$GITHUB_STEP_SUMMARY"
