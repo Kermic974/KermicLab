@@ -9,17 +9,33 @@
 <body>
 <main class="prose">
 <h1>Confidentialité</h1>
-<p>Kermiclab ne demande aucune donnée d'identité dans le chat. Il n'y a ni publicité ni suivi publicitaire. Un cookie technique anonyme limite l'utilisation de l'IA ; la mémorisation de ton profil sur l'appareil reste au choix.</p>
+<p>Kermiclab ne demande aucune donnée d'identité dans le chat. Il n'y a ni publicité ni suivi publicitaire. La mesure d'audience Google Analytics n'est activée que si tu l'acceptes. Un cookie technique anonyme limite l'utilisation de l'IA ; la mémorisation de ton profil sur l'appareil reste au choix.</p>
 <h2>Ce que nous enregistrons</h2>
 <ul>
   <li>Des statistiques anonymes : nombre de demandes, pages servies, sujets sans page, refus (avec leur seule raison, par exemple « donnée personnelle détectée »), langue choisie.</li>
   <li>Aucune adresse IP, aucun texte de message n'est stocké dans ces statistiques.</li>
   <li>Quand une question porte sur une notion sans page, la question (filtrée) peut être copiée dans une demande de création de page publique, sans aucune information sur la personne.</li>
   <li>Mesure d'audience Cloudflare Web Analytics, sans cookie.</li>
+  <li>Mesure d'audience Google Analytics, <strong>seulement si tu l'acceptes</strong> : voir « Mesure d'audience Google Analytics » plus bas.</li>
   <li>Pour la sécurité du site et la protection des plus jeunes : chaque question est analysée automatiquement avant d'être traitée (donnée personnelle, contenu inadapté, tentative de détourner l'assistant). <strong>Seule la catégorie du résultat est comptée</strong>, par jour ; le texte de la question n'est ni journalisé ni conservé. Si une session IA ou un compte est ouvert, ces compteurs sont rattachés à un pseudonyme technique (une empreinte, jamais ton pseudo ni une adresse IP) ; sinon ils sont comptés pour tous les visiteurs ensemble. Ils sont effacés au bout de 30 jours. Un usage manifestement abusif peut conduire à mettre l'assistant en pause pour ce pseudonyme ; les pages du catalogue restent accessibles et « Signaler un problème » reste ouvert.</li>
   <li>Pour suivre les coûts et la qualité de l'IA : le nombre d'appels, de tokens et la durée des réponses, additionnés par heure et par modèle, sans aucun identifiant ni texte, gardés 90 jours.</li>
   <li>Pour le quota IA uniquement : un identifiant aléatoire de session, sa date d'expiration, l'identifiant de la dernière page ouverte et un compteur de tokens. Aucun pseudo, adresse IP, texte de question ni réponse n'est enregistré avec ce compteur.</li>
 </ul>
+<h2 id="mesure-audience">Mesure d'audience Google Analytics</h2>
+<p>Pour savoir quelles parties du site sont utiles, Kermiclab peut utiliser Google Analytics. <strong>Rien n'est activé sans ton accord</strong> : à ta première visite, un bandeau te propose « Refuser » ou « Accepter », et sans réponse rien n'est envoyé. Si tu as moins de 15 ans, fais ce choix avec un parent.</p>
+<ul>
+  <li><strong>Si tu acceptes</strong>, Google dépose les cookies <code>_ga</code> et <code>_ga_…</code> (un identifiant aléatoire de navigateur, gardé jusqu'à 13 mois) et reçoit les pages du site ouvertes, le type d'appareil et de navigateur, la langue et une localisation approximative déduite de ton adresse IP, que Google n'enregistre pas. Ces données sont traitées par Google (Google Ireland Limited) et peuvent être transférées aux États-Unis.</li>
+  <li>Kermiclab n'envoie à Google ni ton pseudo, ni tes questions, ni ta progression. Les signaux publicitaires et la personnalisation des annonces sont désactivés : ces statistiques ne servent pas à la publicité.</li>
+  <li>La mesure ne concerne que le tableau de bord et cette page. Les pages des notions et des jeux, et l'application du cercle, ne chargent jamais Google Analytics.</li>
+  <li><strong>Si tu refuses</strong>, aucun script de Google n'est chargé et aucun cookie n'est déposé. Seul ton choix est gardé sur l'appareil (<code>kermiclab_audience</code>), sans identifiant.</li>
+</ul>
+<p>
+  <span data-audience-etat="accepte" hidden>Ton choix actuel : <strong>mesure acceptée</strong>.</span>
+  <span data-audience-etat="refuse" hidden>Ton choix actuel : <strong>mesure refusée</strong>.</span>
+  <span data-audience-etat="aucun" hidden>Tu n'as pas encore fait de choix : rien n'est envoyé.</span>
+  <button type="button" class="lien" data-audience-gerer hidden>Changer mon choix</button>
+</p>
+<p>Refuser après avoir accepté arrête la mesure et efface les cookies de Google Analytics de ce navigateur.</p>
 <h2>Dans ton navigateur</h2>
 <p>Au premier lancement, tu choisis un <strong>pseudo</strong> (pas ton vrai nom). Ton pseudo, tes scores et ta progression (série de jours, niveau, badges, notions explorées, activité de la semaine) restent dans ton navigateur : ils ne sont jamais envoyés à Kermiclab.</p>
 <p>La page « Progression » compte aussi ton <strong>temps actif</strong> : des durées (au total, par écran et par notion ou jeu), comptées seulement quand la page est visible et que tu interagis, avec une pause après une minute sans action. Elle retient les <strong>expériences découvertes</strong> (identifiants des écrans, matières, notions et jeux ouverts, date de première ouverture et nombre d'ouvertures). Ni ce que tu tapes, ni tes clics, ni ta position ne sont enregistrés ; une page ouverte dans le tableau de bord signale seulement « quelqu'un interagit », sans aucun contenu. Ces données restent dans ton navigateur, suivent le même choix de mémorisation et d'effacement, et ne sont jamais envoyées : aucun appel réseau ne sert à mesurer le temps. Avec un profil enfant géré par un parent, seule la liste des notions explorées est synchronisée, comme avant.</p>
@@ -53,10 +69,21 @@ Une page ouverte séparément garde sa propre progression, non synchronisée ave
 These pages remain isolated and share only local progress (counters, identifiers and dates), never with the server.
 Results follow the profile's remember/erase choice. Separately opened pages keep their own progress and do not sync.</p>
 <p lang="en">An account is optional. A “My account” account is saved on your device (a username, no email, and a password fingerprint, never the password). Nothing is sent until you turn on sync. With sync, the server keeps fingerprints of your username and password and a copy of your nickname, progress, trophies and workbooks <strong>encrypted on your device</strong>, stored under a <strong>pseudonym</strong> derived from your <strong>secret phrase</strong>, with no link to your account. The secret phrase is never sent or stored online: if you forget it, your online data stays stored but nobody can read it. No IP address is stored; dates are kept to the day. Online data that has been neither read nor sent for more than <strong>365 days</strong> is deleted automatically, including data whose secret phrase was forgotten.</p>
+<p lang="en"><strong>Google Analytics</strong> is loaded only if you accept it in the banner shown on your first visit; refusing is the default and loads nothing. If you are under 15, make this choice with a parent. When accepted, Google sets the <code>_ga</code> cookies (a random browser identifier, kept up to 13 months) and receives the site pages opened, device and browser type, language and an approximate location derived from your IP address, which Google does not store. Data is processed by Google (Google Ireland Limited) and may be transferred to the United States. Kermiclab never sends your nickname, questions or progress; advertising signals and ad personalisation are disabled. Concept and game pages never load Google Analytics. You can change your choice at any time with “Changer mon choix” above or “Audience measurement” at the bottom of the site; refusing stops the measurement and deletes the Google Analytics cookies.</p>
 <p lang="en">Kermiclab does not request identity data in the chat and has no ads or advertising tracking. Anonymous statistics contain no IP address or message text. Your nickname, scores and progress stay in your browser: for the current tab by default, or in local storage when you select “Remember me”, using the functional local cookie <code>kermiclab_memoire=1</code>. You can remove local profile data from the “Profile” screen (“Edit my profile”).</p>
 <p lang="en">When you turn on “Use AI” and open a concept through chat, a signed, HttpOnly technical session cookie, <code>__Host-kermiclab_llm</code>, identifies the quota session. It normally ends when the browser closes; session restoration may retain it, but the server enforces an absolute 24-hour expiry. The server stores only a random session identifier, expiry, published page identifier and token counters, never a nickname, IP or conversation. Expired records are purged daily (up to approximately 48 hours of technical retention). Blocking this cookie disables AI, not catalogue access.</p>
 <p lang="en">Only the proposed follow-ups on a previously opened KermicLab page can use Cloudflare Workers AI, with optional Anthropic fallback on failure. The individual “Use AI” choice is off by default; the administrator can disable AI globally in Cloudflare. The model receives a canonical follow-up and a page excerpt, not conversation history. Out-of-scope requests never call a model. In the idea box, “Prepare with AI” also sends your idea and the screen it comes from, under the same setting and quota. Before anything reaches a model, the server always replaces personal data found in the text (name after “my name is”, place, school, email or postal address, phone number, link, numeric identifier) with tokens such as <code>[PRENOM_1]</code> or <code>[EMAIL_1]</code>; no mapping is kept. The same applies to the text of an idea or a report before it is published as a GitHub issue. Each session allows at most 1,000 generated tokens across all attempts and providers, excluding input tokens; unknown usage is charged conservatively. Source links and one-line descriptions, the actual model and harness metadata appear at the end of the reply. Access is temporarily free; subscription gating is planned but not implemented. Never share personal information.</p>
 <p><a href="./">← Kermiclab</a></p>
 </main>
+<aside id="bandeau-audience" class="bandeau-audience" aria-labelledby="audience-titre" hidden>
+  <h2 id="audience-titre">Mesure d'audience</h2>
+  <p>Acceptes-tu que Kermiclab utilise Google Analytics pour compter les visites ? Google dépose alors des cookies. Ton pseudo, tes questions et ta progression ne sont jamais envoyés. Moins de 15 ans ? Choisis avec un parent.</p>
+  <p class="petit" lang="en">Do you allow Kermiclab to use Google Analytics to count visits? Google then sets cookies. Your nickname, questions and progress are never sent.</p>
+  <div class="bandeau-audience-actions">
+    <button type="button" class="bouton" data-audience-choix="refuse">Refuser <span lang="en">/ Refuse</span></button>
+    <button type="button" class="bouton" data-audience-choix="accepte">Accepter <span lang="en">/ Accept</span></button>
+  </div>
+</aside>
+<script type="module" src="audience.js"></script>
 </body>
 </html>
