@@ -247,6 +247,27 @@
         <article id="participer" class="carte" data-ecran="participer"><h3>Je participe</h3><p>Sur le site : lien externe avec cœur vers la collecte onparticipe.fr/c/yDvp6lpc (pied de la barre latérale et écran Profil, hors des 5 destinations). Aucun écran interne ni paiement simulé ici.</p></article>
         <details data-source="web/app.js:notifications"><summary>Notifications transitoires</summary><p>Bienvenue, Explorateur ! · Pseudo enregistré · +n XP · Nouvelle notion découverte ! · Badge débloqué : nom · Niveau n atteint, bravo !</p></details>
       </section>
+      <section class="ecran" id="backoffice" data-ecran="backoffice" data-vue-active="backoffice" data-source="web/admin/index.html">
+        <span class="repere">S12 · Back-office (ADR 0026) : page séparée /admin/, hors du parcours des élèves</span><h2>Back-office KermicLab</h2>
+        <p>Espace réservé à l'équipe pendant la phase de test. Saisis la clé d'accès du back-office.</p>
+        <label>Clé d'accès<input type="password" disabled></label><button disabled>Ouvrir le back-office</button>
+        <p class="note">Sans clé valide, rien n'est affiché. La clé reste dans l'onglet et s'efface à sa fermeture. Interface en français seulement. Aucun lien ne mène au back-office depuis le site.</p>
+        <nav aria-label="Sections du back-office"><a href="#backoffice">Vue d'ensemble</a> · <a href="#backoffice">Utilisateurs</a> · <a href="#backoffice">Rôles et accès</a> · <a href="#backoffice">Sécurité</a> · <a href="#backoffice">Données personnelles</a> · <a href="#backoffice">Télémétrie</a> · <a href="#backoffice">Charte graphique</a> · <a href="#backoffice">Contenus</a> · <a href="#backoffice">Harness</a> · <a href="#backoffice">Journal</a></nav>
+        <details><summary>Les dix écrans</summary>
+          <p>En-tête permanent : « Bêta : accès pour tous » (contrôle d'accès inactif) et « Garde-fous en observation », puis « Fermer la session ».</p>
+          <p>Vue d'ensemble : comptes, contenus, questions, appels aux modèles, tokens et signaux sur 7 jours ; état du site ; profils à regarder.</p>
+          <p>Utilisateurs : type, identifiant court, rôle, niveau, état de sécurité, dates ; « Enregistrer », « Exporter les données », « Supprimer » (confirmation). Aucun e-mail, aucun nom, aucune adresse IP.</p>
+          <p>Rôles et accès : rôles système et personnalisés, permissions cochées, une stratégie par fonctionnalité (tous, rôles ou niveaux choisis, fermée), simulateur « aujourd'hui » et « si le contrôle était activé ».</p>
+          <p>Sécurité : signaux par catégorie et par module, profils pseudonymes classés (comportements, score, état, décision avec durée), banc d'essai qui montre les catégories détectées et le texte pseudonymisé sans rien enregistrer.</p>
+          <p>Données personnelles : contrôle de non-conservation par table, registre des traitements (finalité, contenu, nature des données, conservation, volume), purge à la demande.</p>
+          <p>Télémétrie : période de 7, 30 ou 90 jours ; appels, tokens entrants et sortants, durée moyenne ; par modèle, par module, par jour ; requêtes, routages et refus.</p>
+          <p>Charte graphique : Indigo, Lagon, Bougainvillier ou couleurs personnalisées ; aperçu clair et sombre ; « Appliquer au site ».</p>
+          <p>Contenus : catalogue en ligne (recherche, type, « En ligne », « Mis en avant »), brouillons et parcours (modifier, proposer en revue, publier un parcours, archiver), articles de blog publiés.</p>
+          <p>Harness : par module, paramètres dans leurs bornes, skills, instructions complémentaires ; « Réglé ici » et retour à la valeur du déploiement ; niveaux de souscription.</p>
+          <p>Journal : date, acteur, action, cible.</p>
+        </details>
+        <details><summary>États</summary><p>Clé refusée : « Clé d'accès refusée. » Trop d'essais : « Trop d'essais. Attends une minute. » Serveur non configuré ou migration absente : bandeau d'erreur dans l'écran. Écriture réussie : message vert en tête d'écran ; refusée : message rouge avec la raison (hors bornes, donnée personnelle, consigne dissimulée, contraire au socle de sécurité).</p></details>
+      </section>
     </main>
   </div>
   <footer><p>Base Canvas autonome · aucune donnée enregistrée. Consulter l'inventaire pour les sources et la couverture exacte.</p></footer>

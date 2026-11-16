@@ -2,6 +2,17 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Back-office (ADR 0026)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'ADR 0026 (back-office) | `docs/decisions/0026-back-office.md` | Clé partagée, réglages à chaud, analyse des requêtes, profils pseudonymes, instructions complémentaires des harness : décisions d'architecture et de vie privée | Passer le statut de l'ADR à « accepté » | à faire |
+| Créer le secret `BACKOFFICE_JETON` (32 caractères aléatoires au moins) | `cd worker && npx wrangler secret put BACKOFFICE_JETON`, ou Cloudflare → Workers → kermiclab-api → Settings → Variables and Secrets | Sans ce secret, le back-office reste fermé (503). Ne le donner qu'aux personnes qui administrent le site | Ouvrir `https://kermiclab.online/admin/`, saisir la clé : la vue d'ensemble s'affiche | à faire |
+| Vérifier que la migration `0002_backoffice.sql` est appliquée | Job « Déploiement Cloudflare » après la fusion sur `main` | Les tables du back-office sont créées par la CI ; sans elles, le site fonctionne comme avant et le back-office affiche « Migration 0002 à appliquer » | Dans `/admin/`, l'en-tête n'affiche pas « Migration 0002 à appliquer » | à faire |
+| Relire la page Confidentialité mise à jour | `web/confidentialite.html` | Deux traitements sont ajoutés : compteurs de sécurité par pseudonyme (30 jours) et télémétrie des modèles (90 jours). Validation juridique du texte et de la base légale pour un public mineur | Texte validé, ou corrections demandées | à faire |
+| Décider quand activer les garde-fous | `/admin/` → Harness → Sécurité et garde-fous | Ils sont en observation : les profils sont classés sans restriction, le temps de mesurer les faux positifs | `GARDE_FOUS_ACTIFS` activé, bandeau « Garde-fous appliqués » dans l'écran Sécurité | à faire |
+| Décider quand activer le contrôle d'accès par rôle | `/admin/` → Harness → Rôles et accès | Préparé, non appliqué : il faut d'abord ouvrir les comptes et brancher la décision d'accès sur les routes (chantier back-office, étape 2) | Décision notée dans `docs/chantiers/back-office.md` | reporté |
+
 ## Projets de la feuille de route (docs/projets.md)
 
 - **Fait par l'agent** (2026-11-07) : 9 épiques `[Projet] …` (#164 à #172), 35 sous-issues (#173 à #207) et rattachement
