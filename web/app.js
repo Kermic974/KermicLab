@@ -1534,13 +1534,18 @@ function ajouterBienvenue() {
   rafraichirBienvenue();
 }
 
+/** Questions d'exemple sous le champ de l'accueil : les mêmes que dans le fil. */
+const questionsExemple = () => etat.suggestions.length ? etat.suggestions : ["suggestion1", "suggestion2", "suggestion3", "suggestion4"].map((c) => t(c));
+
 function rafraichirBienvenue() {
+  const accueil = $("#puces-accueil");
+  if (accueil) remplirPuces(accueil, questionsExemple());
   const n = $("#texte-bienvenue");
   if (!n || !etat.progres) return;
   const serie = progression.serieCourante(etat.progres);
   n.textContent = etat.progres.questions > 0 && serie > 0 ? t("bienvenueRetour", { n: serie }) : t("bienvenue");
   const puces = $("#puces-bienvenue");
-  if (puces) remplirPuces(puces, etat.suggestions.length ? etat.suggestions : ["suggestion1", "suggestion2", "suggestion3", "suggestion4"].map((c) => t(c)));
+  if (puces) remplirPuces(puces, questionsExemple());
 }
 
 /**
@@ -2461,6 +2466,18 @@ async function demarrer() {
   champ.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#formulaire").requestSubmit(); }
   });
+
+  // Accueil : la question part dans le même fil que le chat, qui s'ouvre pour montrer la réponse.
+  $("#formulaire-accueil").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const saisie = $("#question-accueil");
+    const q = saisie.value.trim();
+    if (!q || etat.envoiEnCours) return;
+    saisie.value = "";
+    ouvrirChat();
+    envoyer(q);
+  });
+  $("#puces-accueil").addEventListener("click", (e) => { if (e.target.closest(".puce")) ouvrirChat(); });
 
   $("#ouvrir-progres").addEventListener("click", ouvrirProgres);
 

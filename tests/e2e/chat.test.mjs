@@ -82,6 +82,32 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   await contexte.close();
 });
 
+test("accueil : la question saisie ou choisie part dans le fil du chat, qui s'ouvre sur la réponse", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  const requetes = await simulerApi(page);
+  await page.goto(serveur.url);
+  const panneau = page.locator("#panneau-chat");
+  await page.locator("#puces-accueil .puce", { hasText: "C'est quoi le sinus ?" }).waitFor();
+  assert.match(await page.locator("#question-accueil-titre").textContent(), /comprendre/);
+  assert.equal(await panneau.isVisible(), false);
+  await page.fill("#question-accueil", "   ");
+  await page.press("#question-accueil", "Enter");
+  assert.equal(await panneau.isVisible(), false, "une question vide n'ouvre rien");
+  await page.fill("#question-accueil", "bonjour");
+  await page.press("#question-accueil", "Enter");
+  await page.locator("#fil li", { hasText: "Réponse simple." }).waitFor();
+  assert.equal(await panneau.isVisible(), true);
+  assert.equal(await page.inputValue("#question-accueil"), "", "le champ de l'accueil est vidé");
+  assert.equal(await page.locator("#fil .moi").count(), 1);
+  await page.click("#fermer-chat");
+  await page.locator("#puces-accueil .puce", { hasText: "C'est quoi le sinus ?" }).click();
+  await page.locator("#fil .carte-maquette").waitFor();
+  assert.equal(await panneau.isVisible(), true, "une question d'exemple ouvre aussi le chat");
+  assert.equal(requetes.length, 2);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("avatar mobile : panneau borné à l’écran, saisie visible et fil défilant au-dessus de la navigation", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, {
     locale: "fr-FR", viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true
