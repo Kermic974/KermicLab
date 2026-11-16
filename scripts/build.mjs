@@ -6,7 +6,7 @@ import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelect
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
 import { articlesPublies, chargerArticles, construireBlog } from "./lib/blog.mjs";
-import { genererSeoStatique } from "./lib/seo.mjs";
+import { appliquerMetadonnees, genererSeoStatique } from "./lib/seo.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -16,8 +16,9 @@ const { sources, ...catalogue } = await chargerCatalogue([`${racine}catalogue`, 
 for (const s of sources) if (!s.aJour) { await writeFile(s.fichier, s.html); console.log(`CSP mise à jour : ${s.fichier}`); }
 const fichierIndex = `${racine}index.html`;
 const sourceIndex = await readFile(fichierIndex, "utf8");
-const index = appliquerCsp(sourceIndex, { styles: true });
-if (sourceIndex !== index) { await writeFile(fichierIndex, index); console.log(`CSP mise à jour : ${fichierIndex}`); }
+const indexCsp = appliquerCsp(sourceIndex, { styles: true });
+const index = appliquerMetadonnees(indexCsp, "/cercle/");
+if (sourceIndex !== index) { await writeFile(fichierIndex, index); console.log(`Index HTML statique mis à jour : ${fichierIndex}`); }
 
 await mkdir(`${racine}worker/src/generated`, { recursive: true });
 await writeFile(
