@@ -44,10 +44,11 @@ async function entrer(page) {
   await pseudo.waitFor({ state: "hidden" });
 }
 
-test("équipe : le lien de la barre latérale ouvre la page", async () => {
+test("équipe : « À propos », dans la barre latérale, mène à la page", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 1280, height: 900 }, locale: "fr-FR" });
   await entrer(page);
-  await page.locator('.barre-laterale a[href="equipe.html"]').click();
+  await page.locator('.barre-laterale [data-nav="apropos"]').click();
+  await page.locator('#apropos a[href="equipe.html"]').click();
   await page.waitForURL(/equipe\.html$/);
   assert.equal(await page.locator("h1").textContent(), "L'équipe");
   assert.deepEqual(erreurs, []);

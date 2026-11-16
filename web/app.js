@@ -254,6 +254,9 @@ function rafraichirFamille() {
   const actif = connexionActive();
   $("#entree-famille").hidden = !actif;
   $("#type-profil").hidden = !actif;
+  // Lien vers le back-office : seulement si le Worker dit que le rôle du compte connecté a une permission
+  // d'administration. Les comptes de démonstration ne l'ont jamais. Le lien n'ouvre aucun droit (clé demandée).
+  $("#entree-backoffice").hidden = !(actif && !demoActive() && etat.compte?.backOffice === true);
   if (!actif) return;
   const mode = modeFamille();
   const enfant = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
@@ -393,7 +396,7 @@ function brancherFamille() {
   $("#deconnexion").addEventListener("click", deconnecterParent);
   $("#quitter-mode-enfant").addEventListener("click", deconnecterParent);
   $("#formulaire-enfant").addEventListener("submit", creerEnfant);
-  $("#ouvrir-famille").addEventListener("click", () => { $("#dialogue-profil").close(); naviguer("famille"); });
+  $("#ouvrir-famille").addEventListener("click", () => naviguer("famille"));
   rafraichirFamille();
 }
 
@@ -2480,7 +2483,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#compte"), $("#famille"), $("#contributions"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#famille"), $("#contributions"), $("#defi"), $("#progres"));
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -2807,8 +2810,6 @@ function demanderPseudo() {
 }
 
 function brancherProfil() {
-  document.querySelectorAll("[data-ouvrir-profil]").forEach((bouton) => bouton.addEventListener("click", ouvrirProfil));
-  brancherDialogue($("#dialogue-profil"), $("#fermer-profil"));
   $("#formulaire-pseudo").addEventListener("submit", (e) => {
     e.preventDefault();
     const champ = $("#pseudo");
@@ -2822,6 +2823,7 @@ function brancherProfil() {
     else sauverSession();
     etat.reprise = false;
     $("#dialogue-pseudo").close();
+    remplirProfil();
     rafraichirTableau();
     notifier(t("pseudoBienvenue", { pseudo: etat.pseudo }), "👋");
     $(etat.ecran === "accueil" ? "#ouvrir-chat" : "#salut").focus({ preventScroll: true });
@@ -2871,14 +2873,13 @@ function rafraichirEtatMemoire() {
   $("#profil-etat-memoire").textContent = t(etat.memoire ? "progressionMemoire" : "progressionSession");
 }
 
-function ouvrirProfil() {
+/** Remet l'écran Profil dans l'état enregistré : pseudo, mémorisation, bouton d'effacement non armé. */
+function remplirProfil() {
   $("#profil-pseudo").value = etat.pseudo ?? "";
   $("#profil-pseudo").removeAttribute("aria-invalid");
   $("#profil-erreur").textContent = "";
   rafraichirEtatMemoire();
   reinitialiserEffacement();
-  $("#dialogue-profil").showModal();
-  $("#profil-pseudo").focus();
 }
 
 /* ---------- Thème ---------- */
@@ -2929,8 +2930,8 @@ function rafraichirTheme() {
 
 /** Les 5 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
 const DESTINATIONS = ["accueil", "education", "jeux", "progression", "profil"];
-const ECRANS = [...DESTINATIONS, "defi", "compte"];
-const PARENTS = { defi: "education", famille: "profil", compte: "profil" };
+const ECRANS = [...DESTINATIONS, "defi", "compte", "apropos"];
+const PARENTS = { defi: "education", famille: "profil", compte: "profil", apropos: "profil" };
 /** Anciennes adresses (#notions, #labs, #badges…) : redirigées vers la destination qui les contient. */
 const ALIAS_ECRANS = { catalogue: "education", notions: "education", labs: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };
@@ -2940,7 +2941,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", compte: "compteTitre", contributions: "contribTitre" }[etat.ecran]);
+    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", compte: "compteTitre", contributions: "contribTitre", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : `${etat.ecran}Intro`);
 }
 
@@ -2961,6 +2962,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   if (etat.ecran === "progression") rendreProgression();
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   if (etat.ecran === "compte") rafraichirCompte();
+  if (etat.ecran === "profil" && changement) remplirProfil();
   const ancre = ANCRES_ALIAS[cle] ? $(ANCRES_ALIAS[cle]) : null;
   if (ancre?.hidden && ancre.id === "ecran-cahiers") basculerAccordeonFixe(document.querySelector('[aria-controls="ecran-cahiers"]'), true);
   if (focus) {

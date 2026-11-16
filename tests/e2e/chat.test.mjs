@@ -174,8 +174,8 @@ test("chat replié : une réponse en cours arrive sans rouvrir le panneau ni dé
   assert.equal(await page.evaluate(() => scrollY), position);
   await page.click("#ouvrir-chat");
   assert.equal(await page.locator("#fil li", { hasText: "Réponse différée." }).isVisible(), true);
-  await page.click(".barre-laterale [data-nav=profil]");
-  await page.click("#profil [data-nav=aide]");
+  await page.click(".barre-laterale [data-nav=apropos]");
+  await page.click("#apropos [data-nav=aide]");
   await page.keyboard.press("Escape");
   assert.equal(await page.locator("#signalement").isVisible(), false);
   assert.equal(await page.locator("#panneau-chat").isVisible(), true, "Échap respecte la priorité du dialogue modal");
@@ -646,7 +646,7 @@ test("navigation : défi (sous Éducation), Profil et Progression remplacent l'a
   assert.equal(await page.locator("#defi").isVisible(), false);
   assert.equal(await page.locator("#configuration-titre").textContent(), "Configuration");
   assert.equal(await page.locator("#llm-actif").isVisible(), true);
-  assert.equal(await page.locator("#dialogue-profil").isVisible(), false);
+  assert.equal(await page.locator("#profil-pseudo").isVisible(), true, "le pseudo se modifie dans l'écran, sans fenêtre");
   await page.locator(".barre-laterale [data-nav=progression]").click();
   assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   assert.equal(await page.locator("#profil").isVisible(), false);
