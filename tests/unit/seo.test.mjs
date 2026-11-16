@@ -12,8 +12,8 @@ test("mappe les fichiers HTML vers les routes Cloudflare Pages", () => {
   assert.equal(routeDepuisFichier("404.html"), null);
 });
 
-test("robots.txt référence le sitemap et exclut le back-office", () => {
-  assert.equal(genererRobotsTxt(ORIGINE), `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${ORIGINE}/sitemap.xml\n`);
+test("robots.txt référence le sitemap sans bloquer les pages noindex", () => {
+  assert.equal(genererRobotsTxt(ORIGINE), `User-agent: *\nAllow: /\nSitemap: ${ORIGINE}/sitemap.xml\n`);
 });
 
 test("le sitemap XML est déterministe, échappé et sans doublons", () => {
