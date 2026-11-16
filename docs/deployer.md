@@ -21,8 +21,8 @@ Le job de déploiement, dans l'ordre :
    transmis à l'étape de retour arrière par une sortie d'étape GitHub (jamais par un fichier) ;
 2. applique les **migrations D1** versionnées (`wrangler d1 migrations apply`, voir [`worker/migrations/README.md`](../worker/migrations/README.md)) ;
 3. déploie `worker/` avec Wrangler, pose les secrets du Worker, puis publie `dist/` sur Pages (projet `kermiclab` par défaut) ;
-4. lance le **test de fumée** (`scripts/deploiement.mjs fumee`) : `/api/sante`, `/api/catalogue`, une page servie, l'accueil
-   du site et sa `config.json`. Lectures seulement, aucun KPI écrit, cinq essais espacés de 15 s pour laisser la
+4. lance le **test de fumée** (`scripts/deploiement.mjs fumee`) : onze contrôles (API, page servie, accueil du site et
+   ses ressources, `config.json`, textes, blog ; détail et rapport dans [chantiers/ci-cd.md](chantiers/ci-cd.md)). Lectures seulement, aucun KPI écrit, cinq essais espacés de 15 s pour laisser la
    propagation se faire ;
 5. en cas d'échec après le déploiement du Worker (secrets, Pages ou test de fumée), **retour arrière automatique** :
    le Worker et le site reviennent aux versions de l'instantané et le job reste en échec. La base D1 n'est jamais

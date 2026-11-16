@@ -5,7 +5,7 @@ import { mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import {
-  AUTEURS, articlesPublies, construireBlog, echapper, enLigne, lireArticle, lireEntete, markdownEnHtml,
+  AUTEURS, articlesPublies, construireBlog, estProgramme, jourDePublication, echapper, enLigne, lireArticle, lireEntete, markdownEnHtml,
   pageArticle, pageAuteurs, pageListe, retirerTitreDouble, slugDepuisFichier, validerEntete
 } from "../../scripts/lib/blog.mjs";
 
@@ -137,12 +137,54 @@ test("construction : brouillons hors de dist, README ignoré, une page par artic
     await writeFile(path.join(dossier, "2026-11-16-publie.md"), article(VALIDE, "Publié."));
     await writeFile(path.join(dossier, "2026-11-17-brouillon.md"), article({ ...VALIDE, statut: "brouillon" }, "SECRET-BROUILLON"));
     const resultat = await construireBlog(dossier, sortie, { feuilleDeStyle: "body{}" });
-    assert.deepEqual(resultat, { publies: ["2026-11-16-publie"], ignores: ["2026-11-17-brouillon"] });
+    assert.deepEqual(resultat, { publies: ["2026-11-16-publie"], programmes: [], ignores: ["2026-11-17-brouillon"] });
     assert.deepEqual((await readdir(sortie)).sort(), ["2026-11-16-publie", "auteurs", "blog.css", "index.html"]);
     const liste = await readFile(path.join(sortie, "index.html"), "utf8");
     assert.doesNotMatch(liste, /brouillon/);
     assert.match(liste, /href="\/blog\/blog\.css\?v=[a-f0-9]{10}"/);
     assert.match(await readFile(path.join(sortie, "2026-11-16-publie", "index.html"), "utf8"), /<p>Publié\.<\/p>/);
+  } finally {
+    await rm(dossier, { recursive: true, force: true });
+  }
+});
+
+test("publication programmée : jour de La Réunion, ou jour imposé pour un build reproductible", () => {
+  // 20:30 UTC le 16 : il est déjà 00:30 le 17 à La Réunion (UTC+4).
+  assert.equal(jourDePublication(new Date("2026-11-16T20:30:00Z"), {}), "2026-11-17");
+  assert.equal(jourDePublication(new Date("2026-11-16T19:59:00Z"), {}), "2026-11-16");
+  assert.equal(jourDePublication(new Date("2026-11-16T20:30:00Z"), { KERMICLAB_BLOG_JOUR: "2026-12-01" }), "2026-12-01");
+  assert.throws(() => jourDePublication(new Date(), { KERMICLAB_BLOG_JOUR: "demain" }), /KERMICLAB_BLOG_JOUR invalide/);
+});
+
+test("publication programmée : un article validé daté dans le futur attend sa date, sans jour tout est publié", () => {
+  const lire = (nom, entete) => lireArticle(article(entete), nom);
+  const articles = [
+    lire("2026-11-16-a.md", { ...VALIDE, titre: "A" }),
+    lire("2026-11-17-b.md", { ...VALIDE, titre: "B", date: "2026-11-17" }),
+    lire("2026-11-22-c.md", { ...VALIDE, titre: "C", date: "2026-11-22" }),
+    lire("2026-11-30-d.md", { ...VALIDE, titre: "D", date: "2026-11-30", statut: "brouillon" })
+  ];
+  assert.deepEqual(articlesPublies(articles, { jour: "2026-11-16" }).map((a) => a.titre), ["A"]);
+  assert.deepEqual(articlesPublies(articles, { jour: "2026-11-17" }).map((a) => a.titre), ["B", "A"], "publié le jour même");
+  assert.deepEqual(articlesPublies(articles, { jour: "2026-12-01" }).map((a) => a.titre), ["C", "B", "A"], "un brouillon ne sort jamais");
+  assert.deepEqual(articlesPublies(articles).map((a) => a.titre), ["C", "B", "A"]);
+  assert.equal(estProgramme(articles[2], "2026-11-21"), true);
+  assert.equal(estProgramme(articles[3], "2026-11-21"), false, "un brouillon n'est pas programmé : il est ignoré");
+});
+
+test("publication programmée : l'article en attente n'est écrit nulle part dans le site construit", async () => {
+  const dossier = await mkdtemp(path.join(tmpdir(), "blog-programme-"));
+  const sortie = path.join(dossier, "dist");
+  try {
+    await writeFile(path.join(dossier, "2026-11-16-publie.md"), article(VALIDE, "Publié."));
+    await writeFile(path.join(dossier, "2026-11-22-attente.md"), article({ ...VALIDE, titre: "TITRE-EN-ATTENTE", date: "2026-11-22" }, "TEXTE-EN-ATTENTE"));
+    const avant = await construireBlog(dossier, sortie, { feuilleDeStyle: "body{}", jour: "2026-11-21" });
+    assert.deepEqual(avant, { publies: ["2026-11-16-publie"], programmes: ["2026-11-22-attente"], ignores: [] });
+    assert.deepEqual((await readdir(sortie)).sort(), ["2026-11-16-publie", "auteurs", "blog.css", "index.html"]);
+    assert.doesNotMatch(await readFile(path.join(sortie, "index.html"), "utf8"), /EN-ATTENTE|2026-11-22/);
+    const apres = await construireBlog(dossier, sortie, { feuilleDeStyle: "body{}", jour: "2026-11-22" });
+    assert.deepEqual(apres.publies, ["2026-11-22-attente", "2026-11-16-publie"]);
+    assert.match(await readFile(path.join(sortie, "2026-11-22-attente", "index.html"), "utf8"), /TEXTE-EN-ATTENTE/);
   } finally {
     await rm(dossier, { recursive: true, force: true });
   }

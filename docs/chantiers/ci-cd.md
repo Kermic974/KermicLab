@@ -9,9 +9,18 @@
   onglets de base affichés, self-test inactif, navigation au clavier, aucune erreur ni violation CSP, aucun débordement
   à 360 px, connexion masquée. Avec `CATALOGUE_TOKEN`, l'absence des pages privées fait échouer la CI.
 - `ci.yml`, job « Déploiement Cloudflare » (sur `main`, après `verifier`) : schéma D1, Worker `kermiclab-api`, secrets du Worker s'ils sont définis, puis `wrangler pages deploy dist` vers le projet Pages `kermiclab` (chat à la racine, application autonome sous `/cercle/`). ADR 0008.
+- `ci.yml`, exécution quotidienne (02:07 UTC, 06:07 à La Réunion ; issue #312) : le job « Blog à publier
+  aujourd'hui ? » compare les articles publiables ce jour-là avec `/blog/index.json` du site en ligne
+  (`scripts/blog-programme.mjs`, lecture seule, sans secret). Sans écart, l'exécution s'arrête là ; sinon elle suit le
+  chemin normal : `verifier`, puis déploiement, test de fumée et retour arrière. Si la liste en ligne est illisible,
+  le déploiement a lieu par précaution.
 - `pages.yml` : validation de l'application autonome (`index.html` à jour avec `src/`, frontières entre agents, tests, structure).
 - `publication.yml` : tag et release à chaque nouvelle version.
 - `roadmap.yml` : propose une mise à jour factuelle de la roadmap après validation de `main` (voir ci-dessous).
+- `revue-ia.yml` : revue de sécurité par IA de chaque PR. Quand elle est ignorée (secret `ANTHROPIC_API_KEY` absent,
+  ou PR d'un fork), un avertissement apparaît dans l'exécution et dans son résumé : l'absence de revue n'est plus
+  silencieuse.
+- `.cursor/environment.json` : même environnement que la CI pour les agents Cursor (AGENTS.md §6 quater).
 - Catalogue privé récupéré si `CATALOGUE_TOKEN` existe.
 - Prévisualisation de chaque PR par l'intégration Git Cloudflare Pages (les déploiements de production automatiques sont désactivés).
 
@@ -19,13 +28,50 @@
   ajout seulement), test de fumée sans écriture de KPI, retour arrière automatique du Worker et du site en cas d'échec.
   Détail : [docs/deployer.md](../deployer.md).
 
+## Test de fumée après déploiement (#178, #261)
+
+Dernière étape du job « Déploiement Cloudflare » : `node scripts/deploiement.mjs fumee`. Onze contrôles, tous en
+lecture :
+
+| Contrôle | Route | Réussi si |
+|---|---|---|
+| API santé | `/api/sante` | `ok` vrai et au moins une page au catalogue |
+| API catalogue | `/api/catalogue` | liste des notions non vide |
+| API suggestions du chat | `/api/suggestions?lang=fr` | liste présente |
+| API état de l'IA et du défi | `/api/llm/status` | champs `actif` et `defi.ia` présents |
+| Page servie | `/maquettes/trigo-cercle?lang=fr` | métadonnées `kermiclab-meta` présentes |
+| Site | `/` | titre KermicLab |
+| Ressources | `app.js` et `style.css`, à l'adresse (avec empreinte) citée par la page d'accueil | fichier non vide |
+| Configuration du site | `/config.json` | `apiUrl` égale à l'API testée |
+| Textes du site | `/i18n/fr.json` | JSON non vide |
+| Blog | `/blog/` | titre présent |
+
+- **Sans coût ni écriture** : aucune requête vers `/api/chat`, `/api/defi`, `/api/cahier`, `/api/support` ni
+  `/api/idee`. Aucun modèle n'est appelé, aucun KPI n'est écrit, aucune donnée personnelle n'est utilisée.
+- **Limites** : le chat, la génération d'un défi et le compte local ne sont pas parcourus de bout en bout (ils
+  écriraient des KPI ou coûteraient des tokens, et il n'existe pas d'environnement de test dédié) ; seuls leur état
+  et leurs données de départ sont vérifiés. Le site est testé à l'adresse Pages (`kermiclab.pages.dev`), car le
+  domaine personnalisé répond 403 aux machines de GitHub Actions.
+- **Seuils** : chaque contrôle doit répondre en HTTP 2xx avec le contenu attendu ; cinq tentatives espacées de
+  15 secondes laissent le temps au déploiement de se propager. Aucun seuil de durée : les durées sont relevées pour
+  le diagnostic.
+- **Rapport** : le résumé de l'étape (onglet « Summary » de l'exécution) liste pour chaque contrôle l'étape, la route,
+  le statut HTTP, la durée et le diagnostic ; le journal reprend les mêmes lignes. Le diagnostic est borné à
+  200 caractères et ne recopie jamais un corps de réponse ; ni secret, ni IP, ni texte d'utilisateur.
+- **En cas d'échec** : le job échoue (visible dans Actions, notification GitHub) et le retour arrière automatique
+  rétablit le Worker et le site de l'instantané ; la base D1 n'est jamais annulée (#178). Pour diagnostiquer : lire le
+  rapport, rejouer la route en échec avec `curl`, corriger sur une branche, puis refusionner. Aucun autre
+  retour arrière automatique n'est ajouté.
+
 Prochaines étapes :
 - Prévisualisations des PR construites avec `npm run build` (phase 5).
 
 ## Roadmap après fusion
 
-Le workflow `roadmap.yml` écoute la fin des workflows CI/CD, validation de l'application autonome et sécurité.
-Il ignore les exécutions de PR, les forks et les échecs. Il charge uniquement `main`, jamais une branche ou un
+Le workflow `roadmap.yml` écoute la fin du seul workflow CI/CD (issue #284 : un déclenchement par fusion au lieu de
+trois). Il ignore les exécutions de PR, les exécutions quotidiennes, les forks et les échecs. Si la validation de
+l'application autonome ou la sécurité se termine après CI/CD, aucune proposition n'est faite pour ce commit : la
+fusion suivante la rattrape, ou un lancement manuel. Il charge uniquement `main`, jamais une branche ou un
 artefact fourni par l'événement. `scripts/roadmap.mjs` exige les trois dernières validations **réussies sur le
 même commit de main** ; une validation en attente, annulée ou échouée empêche toute proposition.
 Les réexécutions sont prises en compte : un ancien succès ne masque pas un nouvel échec.

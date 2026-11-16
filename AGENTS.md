@@ -113,6 +113,13 @@ Une notion dont la version change compte « à revoir » jusqu'à sa nouvelle re
 Les pages écrites à la main (`page.html`) ne sont pas contrôlées automatiquement, car le build les régénère : leur
 auteur augmente lui-même la version de la fiche quand il change leur contenu.
 
+## 6 quater. Environnement Cursor
+
+`.cursor/environment.json` reproduit la CI pour les agents Cursor : image Node 22 (`.cursor/Dockerfile`), `npm ci`,
+`npm ci --prefix worker`, Playwright 1.63.0 avec Chromium. Avant toute PR, lancer `npm run ci` (même contrôle que le
+job « Lint, build, tests ») ; ne pas réinstaller une autre version de Playwright. Si la version de Node ou de
+Playwright change dans `.github/workflows/ci.yml`, la reporter dans `.cursor/` (un test le vérifie).
+
 ## 7. Définition du « terminé »
 
 Une tâche est terminée quand : `npm run ci` passe, la documentation concernée (chantier, ADR, README) est à jour,

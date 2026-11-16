@@ -2,7 +2,9 @@ name: Actualisation de la roadmap
 
 on:
   workflow_run:
-    workflows: ["CI/CD", "Validation de l'application autonome", "Sécurité des contributions"]
+    # Un seul déclencheur (issue #284) : la fin de CI/CD, le plus long des trois workflows. scripts/roadmap.mjs
+    # exige toujours les trois validations réussies sur le même commit ; sinon, relancer à la main (workflow_dispatch).
+    workflows: ["CI/CD"]
     types: [completed]
     branches: [main]
   workflow_dispatch:
