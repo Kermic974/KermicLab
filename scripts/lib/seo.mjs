@@ -62,9 +62,9 @@ export function appliquerMetadonnees(html, route, originen = ORIGINE_PUBLIQUE) {
   const { titre, description } = titreEtDescription(html);
   const titreSocial = titre.replace(/\s+[–—-]\s+Blog KermicLab$/i, "");
   const lienCanonique = `<link rel="canonical" href="${echapperAttribut(canonique)}">`;
-  let resultat = /<link\s+rel=["']canonical["'][^>]*>/i.test(html)
-    ? html.replace(/<link\\s+rel=["']canonical["'][^>]*>/i, lienCanonique)
-    : html.replace("</head>", `${lienCanonique}\n</head>`);
+  let resultat = html.includes('rel="canonical"')
+    ? html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, lienCanonique)
+    : html.replace("</head>", lienCanonique + "\n</head>");
   for (const [cle, valeur] of [["og:type", "website"], ["og:title", titreSocial], ["og:description", description], ["og:url", canonique], ["twitter:title", titreSocial], ["twitter:description", description]]) {
     resultat = definirMeta(resultat, "property", cle, valeur);
   }
