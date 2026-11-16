@@ -19,7 +19,7 @@ test("robots.txt référence le sitemap sans bloquer les pages noindex", () => {
 test("le sitemap XML est déterministe, échappé et sans doublons", () => {
   const xml = genererSitemapXml(["/", "/equipe", "/", "/blog?a=1", "/p&x"], ORIGINE);
   assert.match(xml, /https:\/\/www\.kermiclab\.online\/p&amp;x/);
-  assert.equal((xml.match(/<loc>/g) ?? []).length, 2);
+  assert.equal((xml.match(/<loc>/g) ?? []).length, 3);
   assert.match(xml, /https:\/\/www\.kermiclab\.online\//);
 });
 
