@@ -161,7 +161,8 @@ export async function testerFumee({ api, site, fetch: f = fetch, rapport = [], h
 
 /** Rapport du test de fumée en Markdown (résumé de l'étape GitHub) : étape, route, statut, durée, diagnostic. */
 export function rapportFumee(rapport) {
-  const cellule = (t) => String(t).replace(/\|/g, "\\|");
+  // Barre oblique inverse d'abord, puis barre verticale : un « \| » reçu ne peut pas fermer la cellule du tableau.
+  const cellule = (t) => String(t).replace(/[\\|]/g, "\\$&");
   const lignes = rapport.map((l) => `| ${l.diagnostic ? "❌" : "✅"} | ${cellule(l.etape)} | \`${cellule(l.route)}\` | ${l.statut} | ${l.dureeMs} ms | ${cellule(l.diagnostic || "—")} |`);
   const echecs = rapport.filter((l) => l.diagnostic).length;
   return [

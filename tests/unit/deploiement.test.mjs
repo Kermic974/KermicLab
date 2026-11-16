@@ -116,6 +116,9 @@ test("test de fumée : rapport par étape (route, statut, durée, diagnostic bor
   await testerFumee({ api: API, site: SITE, fetch: bavard, rapport: long });
   assert.equal(long[0].diagnostic.length, 200);
   assert.match(rapportFumee([{ etape: "a|b", route: "u", statut: "200", dureeMs: 1, diagnostic: "" }]), /a\\\|b/);
+  // Une barre oblique inverse est échappée elle aussi : « \| » ne peut pas fermer la cellule.
+  const piege = rapportFumee([{ etape: "x", route: "u", statut: "500", dureeMs: 1, diagnostic: "a\\|b" }]);
+  assert.ok(piege.includes("| a\\\\\\|b |"), piege);
 });
 
 test("test de fumée : chaque échec est nommé", async () => {
