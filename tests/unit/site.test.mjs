@@ -108,11 +108,15 @@ test("le lien de participation reste visible (barre latérale et Profil), hors d
   assert.match(pied, /class="nav-bouton nav-participer"[^>]*target="_blank" rel="noopener noreferrer"/);
   const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("<!-- Espace famille"));
   assert.match(profil, /class="lien-profil" href="https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc" target="_blank" rel="noopener noreferrer"/);
-  // Les deux navigations ne contiennent que les 5 destinations, sans action secondaire, plus l'entrée « Contributions »
-  // réservée aux rôles contributeur, prof ou admin (ADR 0023 §6 bis), masquée par défaut.
-  for (const classe of ["nav", "nav-mobile"]) {
+  assert.match(pied, /<button[^>]*class="profil-carte"[^>]*data-action="profil"/);
+  // Contributions reste réservée aux rôles autorisés (ADR 0023 §6 bis).
+  const destinations = {
+    nav: ["accueil", "education", "jeux", "progression", "contributions"],
+    "nav-mobile": ["accueil", "education", "jeux", "progression", "profil", "contributions"],
+  };
+  for (const [classe, attendues] of Object.entries(destinations)) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
-    assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), ["accueil", "education", "jeux", "progression", "profil", "contributions"], classe);
+    assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), attendues, classe);
     assert.match(bloc, /<button [^>]*data-nav="contributions"[^>]*\shidden>/, `${classe} : Contributions masquée par défaut`);
     assert.doesNotMatch(bloc, /<a\b/, `${classe} : aucun lien, seulement des destinations`);
   }

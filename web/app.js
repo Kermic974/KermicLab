@@ -463,6 +463,7 @@ function rafraichirCompte() {
   const lie = e?.serveur === true || !!e?.synchro;
   $("#ouvrir-connexion").dataset.i18n = s ? "compteTitre" : "compteSeConnecter";
   $("#ouvrir-connexion").textContent = t($("#ouvrir-connexion").dataset.i18n);
+  $("#compte-options-connexion").hidden = !!s;
   $("#liaison-ouvrir").hidden = lie;
   $("#compte-creation").hidden = !!e;
   $("#compte-connexion").hidden = !e || !!s;
@@ -2988,6 +2989,11 @@ function afficherEcran(cle, { focus = true } = {}) {
     zone.hidden = !zone.dataset.ecrans.split(" ").includes(etat.ecran);
   });
   marquerNavigation(sectionDe(etat.ecran));
+  $("#ouvrir-connexion").hidden = !$("#navigation-personnelle").hidden;
+  for (const bouton of $("#navigation-personnelle").querySelectorAll("[data-nav]")) {
+    if (bouton.dataset.nav === ecran) bouton.setAttribute("aria-current", "page");
+    else bouton.removeAttribute("aria-current");
+  }
   rafraichirEntete();
   etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
   decouvrirEnSilence("section", sectionDe(etat.ecran));
@@ -3012,8 +3018,8 @@ function naviguer(cle) {
 
 /** Une seule destination est marquée « page courante » ; un sous-écran marque sa destination. */
 function marquerNavigation(cle) {
-  document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav]").forEach((b) => {
-    if (b.dataset.nav === cle) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+  document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]").forEach((b) => {
+    if ((b.dataset.nav ?? b.dataset.action) === cle) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
 }
 

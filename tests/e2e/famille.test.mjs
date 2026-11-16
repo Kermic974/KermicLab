@@ -69,7 +69,7 @@ test("connexion désactivée : aucun appel aux comptes, Espace famille et type d
 test("sans compte parent : profil local complet et invitation réservée au parent", async () => {
   const { page, contexte, erreurs } = await demarrer({ connexion: true });
   // L'Espace famille fait partie du compte : il est proposé dans l'écran Profil.
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   await page.locator("#entree-famille").waitFor();
   assert.equal(await page.locator("#type-profil-nom").textContent(), "Profil local, sur cet appareil");
   assert.match(await page.locator("#type-profil-aide").textContent(), /demande à un parent/);
@@ -84,7 +84,7 @@ test("sans compte parent : profil local complet et invitation réservée au pare
 
 test("parent connecté : création d'un profil enfant avec consentement obligatoire, puis mode enfant", async () => {
   const { page, contexte, erreurs, enfants } = await demarrer({ connexion: true, connecte: true });
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   await page.click("#entree-famille");
   await page.locator("#famille-parent").waitFor();
   assert.equal(await page.locator("#famille-vide").isVisible(), true);
@@ -113,13 +113,13 @@ test("lien du back-office : affiché seulement si le Worker indique une permissi
   // Parent : le Worker répond backOffice = false ; un rôle « admin » annoncé par le navigateur ne suffit pas.
   for (const compte of [{ id: "p1", role: "parent", backOffice: false }, { id: "p2", role: "admin" }, { id: "p3", role: "admin", backOffice: "true" }]) {
     const { page, contexte } = await demarrer({ connexion: true, connecte: true, compte });
-    await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+    await page.click(".barre-laterale .profil-carte[data-action=profil]");
     await page.locator("#entree-famille").waitFor();
     assert.equal(await page.locator("#entree-backoffice").isHidden(), true, JSON.stringify(compte));
     await contexte.close();
   }
   const { page, contexte, erreurs } = await demarrer({ connexion: true, connecte: true, compte: { id: "a1", role: "admin", backOffice: true } });
-  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   const lien = page.locator("#entree-backoffice");
   await lien.waitFor();
   assert.equal(await lien.textContent(), "Ouvrir le back-office");

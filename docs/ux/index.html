@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.40.0 · 2026-11-16</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/16d52adbeb0ab12d98707613f2d5cf3403fec59a" target="_blank" rel="noopener noreferrer" data-lien-actif>16d52ad</a>.
+  <strong>Squelette v1.41.1 · 2026-11-16</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/ef7c33904b469e14e2c06188ca46dc95d68d4220" target="_blank" rel="noopener noreferrer" data-lien-actif>ef7c339</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -73,7 +73,7 @@
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, dix écrans (ADR 0026)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>d55a948349620d9d4e61d9a0c5da20ce224432320ed8abc74c74ea0f1cfc6ce1</code><br>Empreinte du squelette hors cartouche : <code>d53604203a3db79da3675a36e3b999cee8950288e87e91aebcfcbeccfc9700cf</code></p>
+    <p>Empreinte des sources : <code>1f695188cd6e3d31c8213cf7ce3b09fa03e1197ebd1c377f7094ddf988308f64</code><br>Empreinte du squelette hors cartouche : <code>5d5099d505822983879fd9afd31c57d9746b38abc4b70d086c819a6bca26d93d</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -87,11 +87,10 @@
         <a href="#catalogue" data-nav="education">Éducation</a>
         <a href="#jeux" data-nav="jeux">Jeux</a>
         <a href="#progression" data-nav="progression">Progression</a>
-        <a href="#profil" data-nav="profil">Profil</a>
         <a href="#contributions" data-nav="contributions">Contributions (rôle contributeur, prof ou admin seulement)</a>
       </nav>
-      <p>Boîte à idées · <a href="editorial.html#equipe">L'équipe</a> · Je participe · E · Explorateur · Niveau 2</p>
-      <p class="note">Cinq destinations, une seule marquée « page courante » (aria-current). Sur mobile : la même barre basse de cinq entrées (Accueil, Éducation, Jeux, Progrès, Profil), sans action secondaire. L'équipe est un lien secondaire du pied de barre, pas une sixième destination. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #labs, #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
+      <p>Boîte à idées · <a href="editorial.html#equipe">L'équipe</a> · Je participe · <a href="#profil" data-nav="profil">E · Explorateur · Niveau 2</a></p>
+      <p class="note">Les vues Profil et Mon compte partagent la m&ecirc;me navigation. Quatre entrées dans la navigation latérale et une carte de compte donnant accès au Profil. Une seule destination visible est marquée « page courante » (aria-current). Sur mobile : une barre basse de cinq entrées (Accueil, Éducation, Jeux, Progrès, Profil), sans action secondaire. L'équipe est un lien secondaire du pied de barre, pas une sixième destination. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #labs, #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
     </aside>
     <main>
       <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" data-source="web/index.html:dialogue-pseudo">

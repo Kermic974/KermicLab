@@ -106,7 +106,7 @@ test("Profil : les réglages techniques sont repliés ; les choix de l'élève r
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   await preparer(page);
   await page.goto(serveur.url);
-  await page.click('.barre-laterale .nav-bouton[data-nav="profil"]');
+  await page.click('.barre-laterale .profil-carte[data-action=profil]');
   await page.locator("#config-modules .config-module").first().waitFor({ state: "attached" });
   assert.equal(await page.locator("#llm-actif").isVisible(), true);
   assert.equal(await page.locator("#config-serveur").isVisible(), false, "les détails techniques ne sont plus dans le profil");
