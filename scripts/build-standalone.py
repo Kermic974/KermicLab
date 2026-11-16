@@ -119,7 +119,7 @@ def standalone():
     html = html.replace("<!-- @SCRIPT -->", "<script>\n" + "".join(parts) + "</script>")
     html = ajouter_idees(html)
     html = ajouter_metadonnees_seo(html)
-    return html.replace("<!doctype html>\\n", "<!doctype html>\\n" + BANNER, 1)
+    return html.replace("<!doctype html>\n", "<!doctype html>\n" + BANNER, 1)
 
 
 def ajouter_metadonnees_seo(html):
