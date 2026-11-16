@@ -1,15 +1,19 @@
 // Contrôle de sécurité des pages HTML du catalogue : CSP stricte à jour, aucun script ou ressource externe,
 // aucun appel réseau, métadonnées et onglets de base présents.
-import { chargerCatalogue, lireMetaHtml } from "./lib/catalogue.mjs";
+import { readFile } from "node:fs/promises";
+import { appliquerCsp, chargerCatalogue, lireMetaHtml } from "./lib/catalogue.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { sources, pages } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 const publiees = Object.entries(pages).flatMap(([id, traductions]) =>
   Object.entries(traductions).map(([langue, html]) => ({ fichier: `Worker/${id}/${langue}`, aJour: true, html })));
+const fichierPilote = `${racine}Sample/lab/systeme-solaire.html`;
+const htmlPilote = await readFile(fichierPilote, "utf8");
+const pilotes = [{ fichier: fichierPilote, aJour: htmlPilote === appliquerCsp(htmlPilote), html: htmlPilote }];
 const ONGLETS_DE_BASE = ["explication", "application", "mise-en-situation"];
 const erreurs = [];
 
-for (const { fichier, aJour, html } of [...sources, ...publiees]) {
+for (const { fichier, aJour, html } of [...sources, ...publiees, ...pilotes]) {
   const err = (m) => erreurs.push(`${fichier.replace(racine, "")}: ${m}`);
   if (!aJour) err("page obsolète (hashes CSP ou page générée depuis contenu.json) — lancer `npm run build` et committer");
   const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]*)"/)?.[1];
@@ -32,4 +36,4 @@ for (const { fichier, aJour, html } of [...sources, ...publiees]) {
 }
 
 if (erreurs.length) { console.error(erreurs.join("\n")); process.exit(1); }
-console.log(`Pages OK (${sources.length} sources, ${publiees.length} publiées).`);
+console.log(`Pages OK (${sources.length} sources, ${publiees.length} publiées, ${pilotes.length} pilote).`);
