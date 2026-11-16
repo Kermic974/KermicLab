@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s4/curriculum-mapping.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "object",
+    "curriculum",
+    "stage",
+    "role",
+    "status",
+    "version",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "primitives.schema.json#/$defs/curriculum-mapping"
+    },
+    "type": {
+      "const": "curriculum-mapping"
+    },
+    "object": {
+      "$ref": "primitives.schema.json#/$defs/objet"
+    },
+    "curriculum": {
+      "$ref": "primitives.schema.json#/$defs/curriculum"
+    },
+    "stage": {
+      "$ref": "primitives.schema.json#/$defs/stage"
+    },
+    "domain": {
+      "$ref": "primitives.schema.json#/$defs/domain"
+    },
+    "role": {
+      "enum": [
+        "introduced",
+        "reinforced",
+        "consolidated",
+        "deepened",
+        "mobilized"
+      ]
+    },
+    "status": {
+      "$ref": "primitives.schema.json#/$defs/statut"
+    },
+    "version": {
+      "$ref": "primitives.schema.json#/$defs/version"
+    },
+    "replacedBy": {
+      "$ref": "primitives.schema.json#/$defs/curriculum-mapping"
+    },
+    "provenance": {
+      "$ref": "primitives.schema.json#/$defs/provenance"
+    },
+    "evidence": {
+      "$ref": "primitives.schema.json#/$defs/evidence"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "replacedBy": {}
+        },
+        "required": [
+          "replacedBy"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        }
+      }
+    }
+  ]
+}

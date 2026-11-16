@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s4/primitives.schema.json",
+  "$defs": {
+    "texte": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(?:notion|microskill|skill|relation|curriculum|stage|domain|curriculum-mapping)\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])"
+    },
+    "objet": {
+      "type": "string",
+      "pattern": "^(?:notion|microskill|skill)\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])"
+    },
+    "statut": {
+      "enum": [
+        "draft",
+        "review",
+        "validated",
+        "deprecated"
+      ]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ref"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "official",
+            "editorial",
+            "legacy-v0"
+          ]
+        },
+        "ref": {
+          "$ref": "#/$defs/texte"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ref",
+          "excerpt"
+        ],
+        "properties": {
+          "ref": {
+            "$ref": "#/$defs/texte"
+          },
+          "excerpt": {
+            "$ref": "#/$defs/texte"
+          }
+        }
+      }
+    },
+    "notion": {
+      "type": "string",
+      "pattern": "^notion\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])",
+      "not": {
+        "pattern": "\\.(?:cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
+      }
+    },
+    "microskill": {
+      "type": "string",
+      "pattern": "^microskill\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])",
+      "not": {
+        "pattern": "\\.(?:cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
+      }
+    },
+    "skill": {
+      "type": "string",
+      "pattern": "^skill\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])",
+      "not": {
+        "pattern": "\\.(?:cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
+      }
+    },
+    "relation": {
+      "type": "string",
+      "pattern": "^relation\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?![\\s\\S])"
+    },
+    "curriculum": {
+      "type": "string",
+      "pattern": "^curriculum\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])"
+    },
+    "stage": {
+      "type": "string",
+      "pattern": "^stage\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])"
+    },
+    "domain": {
+      "type": "string",
+      "pattern": "^domain\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])"
+    },
+    "curriculum-mapping": {
+      "type": "string",
+      "pattern": "^curriculum-mapping\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?![\\s\\S])"
+    }
+  }
+}

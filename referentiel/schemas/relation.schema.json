@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s4/relation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "source",
+    "target",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "primitives.schema.json#/$defs/relation"
+    },
+    "type": {
+      "enum": [
+        "teaches",
+        "contributesTo",
+        "requires",
+        "supports",
+        "extends",
+        "relatedTo",
+        "equivalentTo"
+      ]
+    },
+    "source": {
+      "$ref": "primitives.schema.json#/$defs/objet"
+    },
+    "target": {
+      "$ref": "primitives.schema.json#/$defs/objet"
+    },
+    "rationale": {
+      "$ref": "primitives.schema.json#/$defs/texte"
+    },
+    "status": {
+      "$ref": "primitives.schema.json#/$defs/statut"
+    },
+    "version": {
+      "$ref": "primitives.schema.json#/$defs/version"
+    },
+    "replacedBy": {
+      "$ref": "primitives.schema.json#/$defs/relation"
+    },
+    "provenance": {
+      "$ref": "primitives.schema.json#/$defs/provenance"
+    },
+    "evidence": {
+      "$ref": "primitives.schema.json#/$defs/evidence"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "replacedBy": {}
+        },
+        "required": [
+          "replacedBy"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "enum": [
+              "requires",
+              "extends",
+              "equivalentTo"
+            ]
+          },
+          "status": {
+            "const": "validated"
+          }
+        },
+        "required": [
+          "type",
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "rationale"
+        ]
+      }
+    }
+  ]
+}

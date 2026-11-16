@@ -1,0 +1,981 @@
+[
+  {
+    "name": "notion-valide",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": null
+  },
+  {
+    "name": "notion-champ-inconnu",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "notion-version-invalide",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 0,
+      "label": "Fractions"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "microskill-valide",
+    "contrat": "microskill",
+    "objet": {
+      "id": "microskill.mathematiques.comparer-fractions",
+      "type": "microskill",
+      "status": "draft",
+      "version": 1,
+      "label": "Comparer des fractions"
+    },
+    "rule": null
+  },
+  {
+    "name": "microskill-champ-inconnu",
+    "contrat": "microskill",
+    "objet": {
+      "id": "microskill.mathematiques.comparer-fractions",
+      "type": "microskill",
+      "status": "draft",
+      "version": 1,
+      "label": "Comparer des fractions",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "microskill-version-invalide",
+    "contrat": "microskill",
+    "objet": {
+      "id": "microskill.mathematiques.comparer-fractions",
+      "type": "microskill",
+      "status": "draft",
+      "version": 0,
+      "label": "Comparer des fractions"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "skill-valide",
+    "contrat": "skill",
+    "objet": {
+      "id": "skill.mathematiques.nombres-rationnels",
+      "type": "skill",
+      "status": "draft",
+      "version": 1,
+      "label": "Raisonner sur les nombres rationnels"
+    },
+    "rule": null
+  },
+  {
+    "name": "skill-champ-inconnu",
+    "contrat": "skill",
+    "objet": {
+      "id": "skill.mathematiques.nombres-rationnels",
+      "type": "skill",
+      "status": "draft",
+      "version": 1,
+      "label": "Raisonner sur les nombres rationnels",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "skill-version-invalide",
+    "contrat": "skill",
+    "objet": {
+      "id": "skill.mathematiques.nombres-rationnels",
+      "type": "skill",
+      "status": "draft",
+      "version": 0,
+      "label": "Raisonner sur les nombres rationnels"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "relation-valide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "requires",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-champ-inconnu",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "requires",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "relation-version-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "requires",
+      "status": "draft",
+      "version": 0,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "curriculum-valide",
+    "contrat": "curriculum",
+    "objet": {
+      "id": "curriculum.mathematiques.fr",
+      "type": "curriculum",
+      "status": "draft",
+      "version": 1,
+      "jurisdiction": "FR",
+      "authority": "Éducation nationale",
+      "title": "Programme français",
+      "curriculumVersion": "2025"
+    },
+    "rule": null
+  },
+  {
+    "name": "curriculum-champ-inconnu",
+    "contrat": "curriculum",
+    "objet": {
+      "id": "curriculum.mathematiques.fr",
+      "type": "curriculum",
+      "status": "draft",
+      "version": 1,
+      "jurisdiction": "FR",
+      "authority": "Éducation nationale",
+      "title": "Programme français",
+      "curriculumVersion": "2025",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "curriculum-version-invalide",
+    "contrat": "curriculum",
+    "objet": {
+      "id": "curriculum.mathematiques.fr",
+      "type": "curriculum",
+      "status": "draft",
+      "version": 0,
+      "jurisdiction": "FR",
+      "authority": "Éducation nationale",
+      "title": "Programme français",
+      "curriculumVersion": "2025"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "stage-valide",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-4",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "cycle",
+      "code": "cycle-4",
+      "label": "Cycle 4"
+    },
+    "rule": null
+  },
+  {
+    "name": "stage-champ-inconnu",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-4",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "cycle",
+      "code": "cycle-4",
+      "label": "Cycle 4",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "stage-version-invalide",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-4",
+      "type": "stage",
+      "status": "draft",
+      "version": 0,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "cycle",
+      "code": "cycle-4",
+      "label": "Cycle 4"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "domain-valide",
+    "contrat": "domain",
+    "objet": {
+      "id": "domain.mathematiques.nombres",
+      "type": "domain",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "label": "Nombres"
+    },
+    "rule": null
+  },
+  {
+    "name": "domain-champ-inconnu",
+    "contrat": "domain",
+    "objet": {
+      "id": "domain.mathematiques.nombres",
+      "type": "domain",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "label": "Nombres",
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "domain-version-invalide",
+    "contrat": "domain",
+    "objet": {
+      "id": "domain.mathematiques.nombres",
+      "type": "domain",
+      "status": "draft",
+      "version": 0,
+      "curriculum": "curriculum.mathematiques.fr",
+      "label": "Nombres"
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "curriculum-mapping-valide",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "curriculum-mapping.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 1,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "introduced",
+      "provenance": {
+        "type": "legacy-v0",
+        "ref": "catalogue/fractions/fiche.md"
+      }
+    },
+    "rule": null
+  },
+  {
+    "name": "curriculum-mapping-champ-inconnu",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "curriculum-mapping.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 1,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "introduced",
+      "provenance": {
+        "type": "legacy-v0",
+        "ref": "catalogue/fractions/fiche.md"
+      },
+      "apprenant": "exemple synthétique"
+    },
+    "rule": "S4-SCHEMA-CHAMP"
+  },
+  {
+    "name": "curriculum-mapping-version-invalide",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "curriculum-mapping.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 0,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "introduced",
+      "provenance": {
+        "type": "legacy-v0",
+        "ref": "catalogue/fractions/fiche.md"
+      }
+    },
+    "rule": "S4-VERSION"
+  },
+  {
+    "name": "relation-teaches",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "teaches",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "microskill.mathematiques.comparer-fractions"
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-teaches-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "teaches",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "relation-contributesTo",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "contributesTo",
+      "status": "validated",
+      "version": 1,
+      "source": "microskill.mathematiques.comparer-fractions",
+      "target": "skill.mathematiques.nombres-rationnels"
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-contributesTo-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "contributesTo",
+      "status": "draft",
+      "version": 1,
+      "source": "microskill.mathematiques.comparer-fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "relation-requires",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "requires",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division",
+      "rationale": "Justification pédagogique de fixture."
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-requires-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "requires",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "relation-supports",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "supports",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-supports-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "supports",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "relation-extends",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "extends",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division",
+      "rationale": "Justification pédagogique de fixture."
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-extends-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "extends",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "relation-relatedTo",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "relatedTo",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-relatedTo-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "relatedTo",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "relation-equivalentTo",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "equivalentTo",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division",
+      "rationale": "Justification pédagogique de fixture."
+    },
+    "rule": null
+  },
+  {
+    "name": "relation-equivalentTo-cible-invalide",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "equivalentTo",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "cible"
+    },
+    "rule": "S4-REFERENCE-FORMAT"
+  },
+  {
+    "name": "requires-sans-rationale",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "requires",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": "S4-RELATION-RATIONALE"
+  },
+  {
+    "name": "extends-sans-rationale",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "extends",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": "S4-RELATION-RATIONALE"
+  },
+  {
+    "name": "equivalentTo-sans-rationale",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions-prerequis",
+      "type": "equivalentTo",
+      "status": "validated",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": "S4-RELATION-RATIONALE"
+  },
+  {
+    "name": "statut-review",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "review",
+      "version": 2,
+      "label": "Fractions"
+    },
+    "rule": null
+  },
+  {
+    "name": "statut-validated",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "validated",
+      "version": 2,
+      "label": "Fractions"
+    },
+    "rule": null
+  },
+  {
+    "name": "statut-deprecated",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "deprecated",
+      "version": 2,
+      "label": "Fractions"
+    },
+    "rule": null
+  },
+  {
+    "name": "statut-active",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "active",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-STATUT"
+  },
+  {
+    "name": "statut-retired",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "retired",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-STATUT"
+  },
+  {
+    "name": "id-\"notion.mathematiques.fractions.cycle-4\"",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions.cycle-4",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-ID"
+  },
+  {
+    "name": "id-\"notion.mathematiques.fráctións\"",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fráctións",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-ID"
+  },
+  {
+    "name": "id-\"notion.mathematiques.fractions--simples\"",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions--simples",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-ID"
+  },
+  {
+    "name": "id-\"notion.mathematiques.fractions\\n\"",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions\n",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-ID"
+  },
+  {
+    "name": "relation-id-trop-long",
+    "contrat": "relation",
+    "objet": {
+      "id": "relation.mathematiques.fractions.prerequis",
+      "type": "requires",
+      "status": "draft",
+      "version": 1,
+      "source": "notion.mathematiques.fractions",
+      "target": "notion.mathematiques.division"
+    },
+    "rule": "S4-ID"
+  },
+  {
+    "name": "mapping-id-mauvais-namespace",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "stage.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 1,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "introduced",
+      "provenance": {
+        "type": "legacy-v0",
+        "ref": "catalogue/fractions/fiche.md"
+      }
+    },
+    "rule": "S4-ID"
+  },
+  {
+    "name": "notion-sans-label",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1
+    },
+    "rule": "S4-SCHEMA-REQUIS"
+  },
+  {
+    "name": "mapping-sans-provenance",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "curriculum-mapping.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 1,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "introduced"
+    },
+    "rule": "S4-PROVENANCE"
+  },
+  {
+    "name": "mapping-provenance-chaine",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "curriculum-mapping.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 1,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "introduced",
+      "provenance": "archive"
+    },
+    "rule": "S4-PROVENANCE"
+  },
+  {
+    "name": "provenance-type-inconnu",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "provenance": {
+        "type": "source",
+        "ref": "archive"
+      }
+    },
+    "rule": "S4-PROVENANCE"
+  },
+  {
+    "name": "preuve-valide",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "evidence": [
+        {
+          "ref": "source-exemple#fractions",
+          "excerpt": "Comparer deux fractions de même dénominateur."
+        }
+      ]
+    },
+    "rule": null
+  },
+  {
+    "name": "preuve-[]",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "evidence": []
+    },
+    "rule": "S4-EVIDENCE"
+  },
+  {
+    "name": "preuve-{\"ref\":\"archive\",\"excerpt\":\"Exemple\"}",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "evidence": {
+        "ref": "archive",
+        "excerpt": "Exemple"
+      }
+    },
+    "rule": "S4-EVIDENCE"
+  },
+  {
+    "name": "preuve-[{\"ref\":\"archive\",\"excerpt\":\"\"}]",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "evidence": [
+        {
+          "ref": "archive",
+          "excerpt": ""
+        }
+      ]
+    },
+    "rule": "S4-EVIDENCE"
+  },
+  {
+    "name": "preuve-[{\"ref\":\"archive\",\"excerpt\":\"Exemple\",\"apprenant\":\"exemple synthétique\"}]",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "evidence": [
+        {
+          "ref": "archive",
+          "excerpt": "Exemple",
+          "apprenant": "exemple synthétique"
+        }
+      ]
+    },
+    "rule": "S4-EVIDENCE"
+  },
+  {
+    "name": "stage-grade-valide",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-4",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "grade",
+      "code": "seconde",
+      "label": "Cycle 4"
+    },
+    "rule": null
+  },
+  {
+    "name": "stage-incoherent",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-4",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "grade",
+      "code": "cycle-4",
+      "label": "Cycle 4"
+    },
+    "rule": "S4-STAGE-CODE"
+  },
+  {
+    "name": "stage-type-inconnu",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-4",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "annee",
+      "code": "seconde",
+      "label": "Cycle 4"
+    },
+    "rule": "S4-STAGE-TYPE"
+  },
+  {
+    "name": "juridiction-hors-pilote",
+    "contrat": "curriculum",
+    "objet": {
+      "id": "curriculum.mathematiques.fr",
+      "type": "curriculum",
+      "status": "draft",
+      "version": 1,
+      "jurisdiction": "DE",
+      "authority": "Éducation nationale",
+      "title": "Programme français",
+      "curriculumVersion": "2025"
+    },
+    "rule": "S4-JURIDICTION"
+  },
+  {
+    "name": "revisions-confondues",
+    "contrat": "curriculum",
+    "objet": {
+      "id": "curriculum.mathematiques.fr",
+      "type": "curriculum",
+      "status": "draft",
+      "version": 1,
+      "jurisdiction": "FR",
+      "authority": "Éducation nationale",
+      "title": "Programme français",
+      "curriculumVersion": 1
+    },
+    "rule": "S4-CURRICULUM-VERSION"
+  },
+  {
+    "name": "mapping-role-inconnu",
+    "contrat": "curriculum-mapping",
+    "objet": {
+      "id": "curriculum-mapping.mathematiques.fractions-cycle-4",
+      "type": "curriculum-mapping",
+      "status": "draft",
+      "version": 1,
+      "object": "notion.mathematiques.fractions",
+      "curriculum": "curriculum.mathematiques.fr",
+      "stage": "stage.mathematiques.cycle-4",
+      "role": "covered",
+      "provenance": {
+        "type": "legacy-v0",
+        "ref": "catalogue/fractions/fiche.md"
+      }
+    },
+    "rule": "S4-MAPPING-ROLE"
+  },
+  {
+    "name": "remplacement-deprecated",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "deprecated",
+      "version": 1,
+      "label": "Fractions",
+      "replacedBy": "notion.mathematiques.fractions-equivalentes"
+    },
+    "rule": null
+  },
+  {
+    "name": "remplacement-draft",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions",
+      "replacedBy": "notion.mathematiques.fractions-equivalentes"
+    },
+    "rule": "S4-REMPLACEMENT-STATUT"
+  },
+  {
+    "name": "forme-libelle",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": ""
+    },
+    "rule": "S4-SCHEMA-FORME"
+  }
+]

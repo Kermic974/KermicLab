@@ -40,3 +40,11 @@ Proposition à examiner : versionner le texte normatif lisible avec son numéro 
 La PR a été préparée sur `main` à `e741aa1d4d7e44b4d97515fea4c9277b465f5077`. La [comparaison avec la base de l’audit](https://github.com/Kermic974/KermicLab/compare/b1de38a4582310e549cbcb8eb7dbc79deeb89b56...e741aa1d4d7e44b4d97515fea4c9277b465f5077) montre cinq commits supplémentaires. Aucun fichier de catalogue, script du référentiel ou workflow CI n’est modifié par cet écart. Les décomptes du catalogue public et la description du flux de validation restent applicables. Les évolutions d’authentification relèvent du périmètre applicatif.
 
 La référence Ubuntu/Node 22 sera relevée sur le job « Lint, build, tests » de la PR documentaire. Ce job exécute les étapes de validation du dépôt. Les résultats Windows ci-dessus restent distincts. L’accès au catalogue privé et l’état effectif de la protection de branche doivent être vérifiés pour conclure sur leur couverture.
+
+### Résultats de référence
+
+La [CI finale de la PR documentaire #327](https://github.com/Kermic974/KermicLab/actions/runs/43965113967) a réussi sur Ubuntu avec Node 22, au commit `ebfc82bc9c28af72435f05187d4307567b930eac`. Le workflow a exécuté l’installation racine et Worker, le lint, le build, le contrôle des pages et des empreintes CSP, les tests unitaires et les tests navigateur. Le catalogue privé et le déploiement ont été ignorés sur cette exécution de PR. Les workflows de sécurité des contributions et CodeQL ont également réussi.
+
+L’API GitHub indique `protected: false` pour `main` au commit `118bd96c5c33eda56952c16dd7491b8383757f8e` et ne liste aucun contrôle obligatoire dans la protection de branche retournée. Cette réponse ne suffit pas à exclure les règles configurées hors de cette protection. La revue humaine et la vérification de la CI avant fusion restent des étapes du processus de contribution.
+
+D6 limite le pilote au catalogue public. Le travail se poursuit avec les primitives et les huit schémas, puis avec la validation des références et des graphes avant le contrôle CI et la projection V0.

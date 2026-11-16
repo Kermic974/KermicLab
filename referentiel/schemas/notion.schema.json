@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s4/notion.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "label",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "primitives.schema.json#/$defs/notion"
+    },
+    "type": {
+      "const": "notion"
+    },
+    "label": {
+      "$ref": "primitives.schema.json#/$defs/texte"
+    },
+    "status": {
+      "$ref": "primitives.schema.json#/$defs/statut"
+    },
+    "version": {
+      "$ref": "primitives.schema.json#/$defs/version"
+    },
+    "replacedBy": {
+      "$ref": "primitives.schema.json#/$defs/notion"
+    },
+    "provenance": {
+      "$ref": "primitives.schema.json#/$defs/provenance"
+    },
+    "evidence": {
+      "$ref": "primitives.schema.json#/$defs/evidence"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "replacedBy": {}
+        },
+        "required": [
+          "replacedBy"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        }
+      }
+    }
+  ]
+}
