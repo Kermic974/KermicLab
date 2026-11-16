@@ -177,7 +177,6 @@ test("Mes cahiers : créer, retrouver et supprimer des modèles gardés dans la 
   await page.uncheck("#profil-memoriser");
   assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:cahiers")).length), 3);
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:cahiers")), null);
-  await page.click("#fermer-profil");
 
   await page.goto(`${serveur.url}/#cahiers`);
   await page.reload();
@@ -488,14 +487,15 @@ test("défi express : IA indisponible côté serveur, les questions fixes s'affi
   await contexte.close();
 });
 
-test("configuration : seul le switch IA est affiché, le profil reste dans une fenêtre séparée", async () => {
+test("configuration : un seul interrupteur (l'IA), dans l'écran Profil où le pseudo se modifie aussi", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Léo");
   await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
   assert.equal(await texte(page, "#salut"), "Profil");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
-  assert.equal(await page.locator("#profil input").count(), 1);
-  assert.equal(await page.locator("#profil form").count(), 0);
+  assert.equal(await page.locator("#profil input[role=switch]").count(), 1);
+  assert.deepEqual(await page.locator("#profil input").evaluateAll((l) => l.map((n) => n.id)), ["profil-pseudo", "profil-memoriser", "llm-actif"]);
+  assert.deepEqual(await page.locator("#profil form").evaluateAll((l) => l.map((n) => n.id)), ["formulaire-profil"], "seul le pseudo passe par un formulaire");
   assert.equal(await page.locator("#panneau-chat [role=switch]").count(), 0);
   const interrupteur = page.locator("#profil [role=switch]");
   assert.equal(await interrupteur.isChecked(), false);
@@ -508,13 +508,13 @@ test("configuration : seul le switch IA est affiché, le profil reste dans une f
   assert.equal(await interrupteur.isChecked(), true);
   await interrupteur.uncheck();
   assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:llm:actif")), "false");
+  // La carte du profil mène au même écran que l'entrée « Profil » : plus de fenêtre séparée.
+  await page.click(".barre-laterale [data-nav=accueil]");
   await page.click(".barre-laterale .profil-carte");
-  await page.locator("#dialogue-profil[open]").waitFor();
+  await page.locator("#profil").waitFor();
   assert.equal(new URL(page.url()).hash, "#profil");
-  await page.keyboard.press("Escape");
-  assert.equal(await page.locator("#dialogue-profil").isVisible(), false);
-  assert.equal(await page.locator("#profil").isVisible(), true);
-  assert.equal(await page.locator(".barre-laterale .profil-carte").evaluate((n) => n === document.activeElement), true);
+  assert.equal(await page.locator("dialog[open]").count(), 0);
+  assert.equal(await page.locator('.barre-laterale .nav-bouton[data-nav="profil"]').getAttribute("aria-current"), "page");
   await page.selectOption("#langue", "en");
   await page.waitForFunction(() => document.documentElement.lang === "en");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
@@ -523,17 +523,17 @@ test("configuration : seul le switch IA est affiché, le profil reste dans une f
   await contexte.close();
 });
 
-test("fenêtre de profil : changer de pseudo, retirer le cookie, puis tout effacer avec confirmation", async () => {
+test("écran Profil : changer de pseudo, retirer le cookie, puis tout effacer avec confirmation", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Ana", { memoriser: true });
   await page.click(".barre-laterale .profil-carte");
-  assert.equal(await page.locator("#dialogue-profil").isVisible(), true);
+  await page.locator("#profil").waitFor();
   assert.equal(await page.inputValue("#profil-pseudo"), "Ana");
   assert.equal(await page.isChecked("#profil-memoriser"), true);
   await page.fill("#profil-pseudo", "Ana B");
   await page.click("#formulaire-profil button[type=submit]");
   assert.equal(await texte(page, ".barre-laterale [data-profil=pseudo]"), "Ana B");
-  assert.equal(await texte(page, "#salut"), "Bonjour Ana B 👋");
+  assert.equal(await texte(page, "#profil .identite-textes strong"), "Ana B");
   assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:pseudo")), "Ana B");
   await page.uncheck("#profil-memoriser");
   assert.deepEqual(await contexte.cookies(), []);
@@ -751,11 +751,15 @@ test("mobile : navigation inférieure, mini-lab utilisable dans Éducation, aucu
   await page.locator("#profil").waitFor();
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
   assert.match(await texte(page, "#profil .identite-textes"), /Inès/, "l'identité reste lisible sur mobile");
-  assert.equal(await page.locator("#profil .lien-profil", { hasText: "Feuille de route" }).isVisible(), true);
-  await page.click(".profil-mobile[data-ouvrir-profil]");
-  await page.locator("#dialogue-profil[open]").waitFor();
-  await page.click("#fermer-profil");
-  assert.equal(await page.locator("#profil").isVisible(), true, "fermer le profil conserve l'écran courant");
+  // « À propos » regroupe ce qui parle du site ; l'avatar mobile ramène à l'écran Profil.
+  await page.click("#profil [data-nav=apropos]");
+  await page.locator("#apropos").waitFor();
+  assert.equal(await texte(page, "#salut"), "À propos");
+  assert.equal(await page.locator("#apropos .lien-profil", { hasText: "Feuille de route" }).isVisible(), true);
+  assert.equal(await page.locator(".nav-mobile [data-nav=profil]").getAttribute("aria-current"), "page", "À propos est un sous-écran de Profil");
+  await page.click(".profil-mobile");
+  await page.locator("#profil").waitFor();
+  assert.equal(await page.locator("#profil-pseudo").isVisible(), true);
   await page.click(".nav-mobile [data-nav=accueil]");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);

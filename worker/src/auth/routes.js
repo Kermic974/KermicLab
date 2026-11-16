@@ -1,4 +1,5 @@
 import { demarrerOAuth, terminerOAuth } from "./oauth.js";
+import { roleAccedeAuBackOffice } from "../roles.js";
 import { creerSession, lireSession, supprimerSession, cookieSession, cookieSessionVide } from "./session.js";
 
 async function hashEmail(email) {
@@ -91,7 +92,8 @@ export async function gererAuth(request, env) {
       "SELECT id, role, created_at FROM comptes WHERE id = ?"
     ).bind(compteId).first();
 
-    return Response.json({ connecte: true, compte });
+    // `backOffice` : le rôle a une permission d'administration (lien du profil). N'ouvre aucun droit côté serveur.
+    return Response.json({ connecte: true, compte: compte && { ...compte, backOffice: await roleAccedeAuBackOffice(env, compte.role) } });
   }
 
   if (path === "/auth/logout" && request.method === "POST") {

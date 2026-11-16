@@ -106,11 +106,15 @@ test("Profil : les réglages techniques sont repliés ; les choix de l'élève r
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   await preparer(page);
   await page.goto(serveur.url);
-  await page.click('.barre-laterale [data-nav="profil"]');
+  await page.click('.barre-laterale .nav-bouton[data-nav="profil"]');
   await page.locator("#config-modules .config-module").first().waitFor({ state: "attached" });
+  assert.equal(await page.locator("#llm-actif").isVisible(), true);
+  assert.equal(await page.locator("#config-serveur").isVisible(), false, "les détails techniques ne sont plus dans le profil");
+  // Ils sont rangés dans « À propos », toujours repliés.
+  await page.click('.barre-laterale [data-nav="apropos"]');
+  await page.locator("#apropos").waitFor();
   assert.equal(await page.locator("#config-serveur").evaluate((d) => d.open), false);
   assert.equal(await page.locator("#config-modules").isVisible(), false, "ni modèle ni budget de tokens affiché d'emblée");
-  assert.equal(await page.locator("#llm-actif").isVisible(), true);
   await page.click("#config-serveur > summary");
   assert.equal(await page.locator('#config-modules [data-cle="MODELE_CHAT"]').isVisible(), true);
   assert.deepEqual(erreurs, []);

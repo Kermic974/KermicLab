@@ -51,3 +51,22 @@
 ## Complément (2026-11-07)
 
 Les comptes de rôle contributeur, prof ou admin voient une sixième entrée « Contributions » (barre latérale et barre du bas), décrite par l'ADR 0023 §6 bis. Les cinq destinations restent identiques pour tous les autres profils.
+
+## Complément (2026-11-16) : écran Profil unique et « À propos »
+
+- **Un seul écran Profil.** La fenêtre « Ton profil » est supprimée : la carte du profil (barre latérale) et l'avatar
+  mobile mènent à l'écran Profil, comme l'entrée « Profil » de la navigation. Le pseudo, « Se souvenir de moi », le
+  type de profil et l'effacement des données s'y modifient sur place. L'écran est découpé en quatre blocs : Identité,
+  Compte et accès, Configuration, Mes données (choix de la mesure d'audience, ADR 0027, et effacement). La fenêtre du
+  premier lancement (choix du pseudo) est inchangée.
+- **« À propos »** (`#apropos`) regroupe ce qui parle du site et non de l'élève : feuille de route, équipe, blog,
+  participer, confidentialité, mentions légales, signaler un problème et les détails techniques de l'IA (lecture
+  seule). C'est un **sous-écran de Profil**, pas une sixième destination : les cinq destinations restent identiques
+  sur ordinateur et sur mobile. On l'ouvre depuis le bas de la barre latérale (à la place de « L'équipe »), le pied de
+  page et le bas de l'écran Profil. « Je participe » garde son bouton dans la barre latérale.
+- **Lien vers le back-office** : affiché dans « Compte et accès » seulement si le Worker indique, dans `/auth/me`
+  (`compte.backOffice`), que le rôle du compte connecté a au moins une permission `admin.*` (`worker/src/roles.js`,
+  rôles système ou surchargés dans le back-office). Le navigateur ne déduit rien du nom du rôle ; un compte de
+  démonstration ne l'obtient jamais. Le lien n'ouvre aucun droit : le back-office reste fermé sans sa clé
+  (ADR 0026). Tant que `connexionActive` vaut false, il n'apparaît chez personne.
+

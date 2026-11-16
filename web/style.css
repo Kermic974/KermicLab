@@ -1130,3 +1130,9 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .bandeau-audience p { margin: 0 0 8px; }
 .bandeau-audience-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .bandeau-audience-actions .bouton { flex: 1 1 140px; }
+
+/* Écran Profil : blocs séparés (identité, compte, réglages, données), puis lien vers « À propos ». */
+.profil-bloc { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--bord); }
+.profil-bloc > h2 { margin-top: 0; }
+.profil-identite .formulaire-profil, .profil-identite .case-memoire { max-width: 520px; }
+.profil-apropos { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid var(--bord); }
