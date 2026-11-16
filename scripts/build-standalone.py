@@ -118,8 +118,25 @@ def standalone():
     html = template().replace("<!-- @STYLES -->", "<style>\n" + CSS.read_text(encoding="utf-8") + "</style>")
     html = html.replace("<!-- @SCRIPT -->", "<script>\n" + "".join(parts) + "</script>")
     html = ajouter_idees(html)
+    html = ajouter_metadonnees_seo(html)
     return html.replace("<!doctype html>\n", "<!doctype html>\n" + BANNER, 1)
 
+
+def ajouter_metadonnees_seo(html):
+    titre = "<title>trigoLab · Cercle trigonométrique</title>"
+    metadonnees = """<title>Cercle trigonométrique interactif — KermicLab</title>
+<link rel="canonical" href="https://www.kermiclab.online/cercle/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Cercle trigonométrique interactif — KermicLab">
+<meta property="og:description" content="Cercle trigonométrique interactif : angle, radians, cosinus, sinus et tangente synchronisés, valeurs exactes aux angles remarquables.">
+<meta property="og:url" content="https://www.kermiclab.online/cercle/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cercle trigonométrique interactif — KermicLab">
+<meta name="twitter:description" content="Cercle trigonométrique interactif : angle, radians, cosinus, sinus et tangente synchronisés, valeurs exactes aux angles remarquables.">"""
+    if html.count(titre) != 1:
+        raise BuildError("titre du cercle introuvable ou dupliqué pour les métadonnées SEO")
+    return html.replace(titre, metadonnees, 1)
 
 def ajouter_idees(html):
     textes = {}
