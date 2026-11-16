@@ -59,7 +59,7 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
   // Les 5 destinations, le défi (sous Éducation) et « Signaler un problème » (dans Profil).
   const ouvrirVue = async (vue) => {
     if (vue === "defi") { await page.locator('.barre-laterale [data-nav="education"]').click(); await page.click("#lancer-defi"); return; }
-    if (vue === "aide") { await page.locator('.barre-laterale [data-nav="profil"]').click(); await page.click('#profil [data-nav="aide"]'); return; }
+    if (vue === "aide") { await page.locator('.barre-laterale [data-nav="apropos"]').click(); await page.click('#apropos [data-nav="aide"]'); return; }
     await page.locator(`.barre-laterale [data-nav="${vue}"]`).first().click();
   };
   for (const vue of ["education", "jeux", "defi", "progression", "profil", "aide"]) {

@@ -64,9 +64,9 @@
     </nav>
     <div class="barre-pied">
       <div class="nav-idees" data-boite-idees-hote></div>
-      <a class="nav-bouton" href="equipe.html"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span class="nav-texte" data-i18n="navEquipe"></span></a>
+      <button type="button" class="nav-bouton" data-nav="apropos"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="navAPropos"></span></button>
       <a class="nav-bouton nav-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span class="nav-texte" data-i18n="navParticiper"></span></a>
-      <button type="button" class="profil-carte" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n-aria="profilTitre">
+      <button type="button" class="profil-carte" data-action="profil" data-i18n-aria="profilTitre">
         <span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span>
         <span class="profil-textes"><span class="profil-nom" data-profil="pseudo"></span><span class="profil-meta" data-profil="niveau"></span></span>
       </button>
@@ -96,7 +96,7 @@
             </span>
           </button>
           <button type="button" class="bouton-icone" id="bascule-theme" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-lune"/></svg></button>
-          <button type="button" class="profil-carte profil-mobile" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n-aria="profilTitre"><span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span></button>
+          <button type="button" class="profil-carte profil-mobile" data-action="profil" data-i18n-aria="profilTitre"><span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span></button>
           <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
             <select id="langue"></select>
           </label>
@@ -323,6 +323,7 @@
         <a href="mentions-legales.html" data-i18n="mentionsLegales"></a>
         <a href="feuille-de-route.html" data-i18n="navFeuilleDeRoute"></a>
         <a href="equipe.html" data-i18n="navEquipe"></a>
+        <button type="button" class="lien" data-nav="apropos" data-i18n="navAPropos"></button>
         <button type="button" id="ouvrir-signalement" class="lien" data-i18n="signaler"></button>
         <button type="button" class="lien" data-audience-gerer data-i18n="audienceGerer" hidden></button>
       </footer>
@@ -401,6 +402,7 @@
 </dialog>
 
 <!-- Configuration : la route #profil reste compatible. -->
+<!-- Écran Profil : tout ce qui concerne l'élève se modifie ici, sans fenêtre séparée. Ce qui parle du site est dans « À propos ». -->
 <section id="profil" class="carte ecran-personnel" data-ecrans="profil" aria-labelledby="identite-titre" hidden>
   <section class="profil-identite" aria-labelledby="identite-titre">
     <h2 id="identite-titre" data-i18n="profilIdentite"></h2>
@@ -408,11 +410,35 @@
       <span class="avatar-profil grand" data-profil="initiale" aria-hidden="true"></span>
       <span class="identite-textes"><strong data-profil="pseudo"></strong><span class="doux" data-profil="niveau"></span></span>
     </div>
+    <form id="formulaire-profil" class="formulaire-profil" novalidate>
+      <label for="profil-pseudo" class="etiquette-champ" data-i18n="pseudoLabel"></label>
+      <div class="champ-ligne">
+        <input id="profil-pseudo" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="profil-erreur">
+        <button type="submit" class="bouton" data-i18n="enregistrer"></button>
+      </div>
+      <p id="profil-erreur" class="erreur-champ" aria-live="assertive"></p>
+    </form>
+    <label class="case-memoire">
+      <input type="checkbox" id="profil-memoriser">
+      <span><strong data-i18n="memoriserLabel"></strong><span class="doux petit" data-i18n="memoriserAide"></span></span>
+    </label>
+    <p class="doux petit" id="profil-etat-memoire"></p>
+    <section class="type-profil" id="type-profil" aria-labelledby="type-profil-titre" hidden>
+      <h3 id="type-profil-titre" data-i18n="typeProfilTitre"></h3>
+      <p><strong id="type-profil-nom"></strong></p>
+      <p class="doux petit" id="type-profil-aide"></p>
+      <button type="button" class="secondaire" id="ouvrir-famille" data-i18n="familleOuvrir"></button>
+    </section>
+  </section>
+  <section class="profil-bloc" aria-labelledby="profil-compte-titre">
+    <h2 id="profil-compte-titre" data-i18n="profilCompte"></h2>
     <div class="actions">
-      <button type="button" class="bouton" data-ouvrir-profil aria-haspopup="dialog" aria-controls="dialogue-profil" data-i18n="profilModifier"></button>
       <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteEntree"></button>
       <button id="entree-famille" type="button" class="secondaire" data-nav="famille" data-i18n="familleEntree" hidden></button>
       <button id="entree-contributions" type="button" class="secondaire" data-nav="contributions" data-i18n="contribEntree" hidden></button>
+      <!-- Back-office (ADR 0026) : lien affiché seulement si le rôle du compte connecté a une permission d'administration
+           (réponse du Worker). Le lien n'ouvre aucun droit : le back-office demande toujours sa clé. -->
+      <a id="entree-backoffice" class="bouton-lien" href="admin/" data-i18n="profilBackOffice" hidden></a>
     </div>
     <!-- TEMPORAIRE (issue #160) : rôles contributeur / prof simulés dans le navigateur pour tester les écrans, en attendant
          la gestion des comptes. Affiché seulement si config.testRolesTemporaire ; aucun rôle n'est attribué côté serveur. -->
@@ -426,21 +452,49 @@
       <p id="test-roles-aide" class="doux petit" data-i18n="testRolesAide"></p>
     </div>
   </section>
-  <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
-  <div class="llm-controle">
-    <label class="llm-interrupteur" for="llm-actif">
-      <span data-i18n="llmToggleLabel"></span>
-      <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
-      <span class="llm-piste" aria-hidden="true"></span>
-    </label>
-    <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
+  <section class="profil-bloc" aria-labelledby="configuration-titre">
+    <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
+    <div class="llm-controle">
+      <label class="llm-interrupteur" for="llm-actif">
+        <span data-i18n="llmToggleLabel"></span>
+        <input id="llm-actif" type="checkbox" role="switch" aria-describedby="llm-etat" disabled>
+        <span class="llm-piste" aria-hidden="true"></span>
+      </label>
+      <span id="llm-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></span>
+    </div>
+    <div class="defi-reglage">
+      <h3 data-i18n="defiIaTitre"></h3>
+      <label for="defi-ia-par-jour" class="etiquette-champ" data-i18n="defiIaReglage"></label>
+      <select id="defi-ia-par-jour" aria-describedby="defi-ia-etat" disabled></select>
+      <span id="defi-ia-etat" class="doux petit" aria-live="polite"></span>
+    </div>
+  </section>
+  <section class="profil-bloc" aria-labelledby="profil-donnees-titre">
+    <h2 id="profil-donnees-titre" data-i18n="profilDonnees"></h2>
+    <p><button type="button" class="secondaire" data-audience-gerer data-i18n="audienceGerer" hidden></button></p>
+    <div class="zone-effacement">
+      <button type="button" class="danger" id="effacer-donnees" data-i18n="effacerDonnees"></button>
+      <p class="doux petit" id="effacer-aide" data-i18n="effacerAide"></p>
+    </div>
+  </section>
+  <p class="profil-apropos"><button type="button" class="lien-fleche" data-nav="apropos"><span data-i18n="aproposTitre"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button></p>
+</section>
+
+<!-- À propos : ce qui concerne le site et non l'élève. Sous-écran de Profil, ouvert depuis la barre latérale et le pied de page. -->
+<section id="apropos" class="carte ecran-personnel" data-ecrans="apropos" aria-labelledby="apropos-titre" hidden>
+  <div class="dialogue-entete">
+    <h2 id="apropos-titre" data-i18n="aproposTitre"></h2>
+    <button type="button" class="secondaire" data-nav="profil" data-i18n="retourProfil"></button>
   </div>
-  <div class="defi-reglage">
-    <h3 data-i18n="defiIaTitre"></h3>
-    <label for="defi-ia-par-jour" class="etiquette-champ" data-i18n="defiIaReglage"></label>
-    <select id="defi-ia-par-jour" aria-describedby="defi-ia-etat" disabled></select>
-    <span id="defi-ia-etat" class="doux petit" aria-live="polite"></span>
-  </div>
+  <ul class="liens-profil">
+    <li><a class="lien-profil" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="navFeuilleDeRoute"></span></a></li>
+    <li><a class="lien-profil" href="equipe.html"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span data-i18n="navEquipe"></span></a></li>
+    <li><a class="lien-profil" href="blog/"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span data-i18n="navBlog"></span></a></li>
+    <li><a class="lien-profil" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span data-i18n="navParticiper"></span></a></li>
+    <li><a class="lien-profil" href="confidentialite.html"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="confidentialite"></span></a></li>
+    <li><a class="lien-profil" href="mentions-legales.html"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="mentionsLegales"></span></a></li>
+    <li><button type="button" class="lien-profil" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="signaler"></span></button></li>
+  </ul>
   <!-- Paramètres du site (ADR 0019) : vue en lecture seule de la configuration centralisée du Worker. -->
   <!-- Repliés par défaut : ces réglages techniques se gèrent dans le back-office (ADR 0026), pas dans le profil. -->
   <details class="config-serveur" id="config-serveur">
@@ -449,14 +503,6 @@
     <div id="config-modules" class="config-modules"></div>
     <p id="config-serveur-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></p>
   </details>
-  <h2 data-i18n="profilAide"></h2>
-  <ul class="liens-profil">
-    <li><a class="lien-profil" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="navFeuilleDeRoute"></span></a></li>
-    <li><a class="lien-profil" href="equipe.html"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span data-i18n="navEquipe"></span></a></li>
-    <li><button type="button" class="lien-profil" data-nav="aide"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="signaler"></span></button></li>
-    <li><a class="lien-profil" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span data-i18n="navParticiper"></span></a></li>
-    <li><a class="lien-profil" href="confidentialite.html"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span data-i18n="confidentialite"></span></a></li>
-  </ul>
 </section>
 
 <!-- Mon compte (ADR 0024) : facultatif, créé sur l'appareil (identifiant + mot de passe, sans email ni réinitialisation).
@@ -584,7 +630,6 @@
 
 <section id="connexion-en-cours" class="carte ecran-personnel" data-ecrans="connexion-en-cours" aria-labelledby="connexion-en-cours-titre" hidden>
   <h2 id="connexion-en-cours-titre" data-i18n="connexionEnCours"></h2>
-  <p data-i18n="connexionEnCoursAide"></p>
   <button type="button" class="bouton" data-nav="compte" data-i18n="connexionRetour"></button>
 </section>
 
@@ -753,35 +798,6 @@
   </div>
 </section>
 
-<dialog id="dialogue-profil" aria-labelledby="profil-titre">
-  <div class="dialogue-entete">
-    <h2 id="profil-titre" data-i18n="profilTitre"></h2>
-    <button type="button" class="secondaire" id="fermer-profil" data-i18n="fermer"></button>
-  </div>
-  <form id="formulaire-profil" class="formulaire-profil" novalidate>
-    <label for="profil-pseudo" class="etiquette-champ" data-i18n="pseudoLabel"></label>
-    <div class="champ-ligne">
-      <input id="profil-pseudo" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="profil-erreur">
-      <button type="submit" class="bouton" data-i18n="enregistrer"></button>
-    </div>
-    <p id="profil-erreur" class="erreur-champ" aria-live="assertive"></p>
-  </form>
-  <label class="case-memoire">
-    <input type="checkbox" id="profil-memoriser">
-    <span><strong data-i18n="memoriserLabel"></strong><span class="doux petit" data-i18n="memoriserAide"></span></span>
-  </label>
-  <p class="doux petit" id="profil-etat-memoire"></p>
-  <section class="type-profil" id="type-profil" aria-labelledby="type-profil-titre" hidden>
-    <h3 id="type-profil-titre" data-i18n="typeProfilTitre"></h3>
-    <p><strong id="type-profil-nom"></strong></p>
-    <p class="doux petit" id="type-profil-aide"></p>
-    <button type="button" class="secondaire" id="ouvrir-famille" data-i18n="familleOuvrir"></button>
-  </section>
-  <div class="zone-effacement">
-    <button type="button" class="danger" id="effacer-donnees" data-i18n="effacerDonnees"></button>
-    <p class="doux petit" id="effacer-aide" data-i18n="effacerAide"></p>
-  </div>
-</dialog>
 
 <!-- Bulle : page interactive ouverte depuis le tableau de bord (hors du fil du chat) -->
 <dialog id="bulle-lab" class="bulle-lab" aria-labelledby="bulle-titre">

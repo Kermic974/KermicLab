@@ -58,6 +58,18 @@ export async function listerRoles(env) {
   return roles;
 }
 
+/**
+ * Le rôle donne-t-il accès à au moins un écran du back-office ? Sert seulement à afficher un lien dans le profil :
+ * le back-office reste fermé sans sa clé (ADR 0026). Si la table `roles` est absente, les rôles système s'appliquent.
+ */
+export async function roleAccedeAuBackOffice(env, role) {
+  if (typeof role !== "string") return false;
+  let permissions;
+  try { permissions = (await listerRoles(env)).find((r) => r.id === role)?.permissions; }
+  catch { permissions = ROLES_SYSTEME[role]?.permissions; }
+  return (permissions ?? []).some((p) => PERMISSIONS_ADMIN.includes(p));
+}
+
 /** Stratégies effectives : une par fonctionnalité, « tous » par défaut. */
 export async function listerStrategies(env) {
   const { results } = await env.DB.prepare("SELECT fonctionnalite, mode, roles, niveaux FROM strategies_acces").bind().all();

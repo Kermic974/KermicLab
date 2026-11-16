@@ -2,13 +2,15 @@ import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { lireConfiguration } from "../../worker/src/configuration.js";
 import {
-  FONCTIONNALITES, PERMISSIONS, ROLES_SYSTEME, accesAutorise, listerRoles, listerStrategies, validerRole, validerStrategie
+  FONCTIONNALITES, PERMISSIONS, ROLES_SYSTEME, accesAutorise, listerRoles, listerStrategies, roleAccedeAuBackOffice,
+  validerRole, validerStrategie
 } from "../../worker/src/roles.js";
 import {
   PLAFONDS_SCHEMA, chargerReglages, ecrireEtatContenu, ecrireNiveaux, ecrireParametre, ecrireTheme, envAvecReglages,
   indexVisible, invaliderReglages, reglagesDe, validerNiveaux, validerParametre
 } from "../../worker/src/reglages.js";
 import { CONTRASTE_MIN, THEMES, contraste, cssTheme, deriverVariables, validerTheme } from "../../web/theme.js";
+import { gererAuth } from "../../worker/src/auth/routes.js";
 import { creerD1Complet } from "../helpers/d1-complet.mjs";
 
 let env;
@@ -36,6 +38,42 @@ test("rôles : surcharge d'un rôle système et rôle personnalisé, permissions
   assert.deepEqual(roles.find((r) => r.id === "parent").permissions, ["chat"]);
   assert.equal(roles.find((r) => r.id === "parent").modifie, true);
   assert.deepEqual(roles.at(-1), { id: "moderateur", systeme: false, libelle: "Modérateur", description: "Relit les signalements", permissions: ["admin.securite", "chat"], modifie: true });
+});
+
+test("lien du back-office : seulement pour un rôle qui a une permission d'administration", async () => {
+  assert.equal(await roleAccedeAuBackOffice(env, "admin"), true);
+  for (const role of ["visiteur", "parent", "contributeur", "prof", "beta-testeur", "inconnu", undefined, null, 42]) {
+    assert.equal(await roleAccedeAuBackOffice(env, role), false, String(role));
+  }
+  // Les rôles suivent le back-office : une permission d'administration ajoutée ou retirée change la réponse.
+  const inserer = (id, permissions) => env.DB.sqlite.prepare("INSERT INTO roles (id, libelle, description, permissions) VALUES (?, ?, '', ?)").run(id, id, JSON.stringify(permissions));
+  inserer("moderateur", ["chat", "admin.securite"]);
+  inserer("admin", ["chat"]);
+  assert.equal(await roleAccedeAuBackOffice(env, "moderateur"), true);
+  assert.equal(await roleAccedeAuBackOffice(env, "admin"), false, "rôle admin privé de ses permissions d'administration");
+  // Table `roles` absente (migration 0002 non appliquée) : les rôles système s'appliquent, sans erreur.
+  const sansTable = { DB: { prepare() { throw new Error("no such table: roles"); } } };
+  assert.equal(await roleAccedeAuBackOffice(sansTable, "admin"), true);
+  assert.equal(await roleAccedeAuBackOffice(sansTable, "prof"), false);
+  assert.equal(await roleAccedeAuBackOffice(sansTable, "moderateur"), false);
+});
+
+test("/auth/me : le compte porte `backOffice`, calculé par le serveur à partir du rôle", async () => {
+  const sql = env.DB.sqlite;
+  const ouvrir = (id, role) => {
+    sql.prepare("INSERT INTO comptes (id, email_hash, role) VALUES (?, ?, ?)").run(id, `hash-${id}`, role);
+    sql.prepare("INSERT INTO sessions (id, compte_id, expires_at) VALUES (?, ?, datetime('now', '+1 day'))").run(`s-${id}`, id);
+  };
+  ouvrir("a1", "admin");
+  ouvrir("p1", "parent");
+  const moi = async (session) => (await gererAuth(new Request("https://api.test/auth/me", { headers: session ? { cookie: `session=${session}` } : {} }), env));
+  const admin = await (await moi("s-a1")).json();
+  assert.equal(admin.connecte, true);
+  assert.deepEqual({ id: admin.compte.id, role: admin.compte.role, backOffice: admin.compte.backOffice }, { id: "a1", role: "admin", backOffice: true });
+  assert.equal((await (await moi("s-p1")).json()).compte.backOffice, false);
+  const anonyme = await moi();
+  assert.equal(anonyme.status, 401);
+  assert.deepEqual(await anonyme.json(), { connecte: false });
 });
 
 test("stratégies : « tous » par défaut pour chaque fonctionnalité", async () => {
