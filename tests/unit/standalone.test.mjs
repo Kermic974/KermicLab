@@ -6,7 +6,7 @@ const page = await readFile(new URL("../../index.html", import.meta.url), "utf8"
 
 test("l’application autonome reste un fichier HTML accessible", () => {
   assert.match(page, /^<!doctype html>/i);
-  assert.match(page, /<title>trigoLab · Cercle trigonométrique<\/title>/);
+  assert.match(page, /<title>Cercle trigonométrique interactif — KermicLab<\/title>/);
   assert.match(page, /<svg\b[^>]*role="slider"/);
   assert.match(page, /<input id="range" type="range"/);
   assert.match(page, /aria-live="polite"/);
@@ -14,6 +14,7 @@ test("l’application autonome reste un fichier HTML accessible", () => {
 });
 
 test("l’application autonome ne dépend d’aucune ressource externe", () => {
-  assert.doesNotMatch(page, /<(?:script|link|img|iframe)\b[^>]*(?:src|href)\s*=/i);
+  const sansCanonical = page.replace(/<link rel="canonical" href="[^"]+">/g, "");
+  assert.doesNotMatch(sansCanonical, /<(?:script|link|img|iframe)\b[^>]*(?:src|href)\s*=/i);
   assert.doesNotMatch(page, /\b(?:fetch|XMLHttpRequest|eval)\s*\(/);
 });
