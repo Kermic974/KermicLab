@@ -29,10 +29,15 @@ export async function navigateur() {
 
 /** Ouvre une page en collectant les erreurs console (dont violations CSP). */
 export async function ouvrir(nav, url, options = {}) {
-  const contexte = await nav.newContext(options);
+  const { audience = "refuse", ...optionsContexte } = options;
+  const contexte = await nav.newContext(optionsContexte);
   const page = await contexte.newPage();
   // Mesure d'audience Cloudflare : neutralisée dans les tests (pas de réseau, pas de comptage).
   await page.route("https://static.cloudflareinsights.com/**", (r) => r.fulfill({ contentType: "text/javascript", body: "" }));
+  // Google Analytics (ADR 0027) : jamais joint dans les tests. Le bandeau de consentement est écarté par un refus
+  // déjà enregistré, sauf pour le test qui le vérifie (`options.audience === null`).
+  await page.route(/^https:\/\/[^/]*(googletagmanager|google-analytics|analytics\.google)\.com\//, (r) => r.fulfill({ contentType: "text/javascript", body: "" }));
+  if (audience !== null) await contexte.addInitScript((choix) => { try { localStorage.setItem("kermiclab_audience", choix); } catch { /* stockage indisponible */ } }, audience);
   // Charte graphique (ADR 0026) : charte d'origine par défaut ; un test peut redéfinir cette route après coup.
   await page.route(/\/api\/theme$/, (r) => r.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ theme: { id: "indigo" } })

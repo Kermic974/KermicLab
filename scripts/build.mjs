@@ -62,10 +62,18 @@ const apiUrl = (process.env.KERMICLAB_API_URL ?? API_PAR_DEFAUT).replace(/\/$/, 
 await mkdir(`${racine}dist/cercle`, { recursive: true });
 await writeFile(`${racine}dist/cercle/index.html`, index);
 const langues = (await readdir(`${racine}web/i18n`)).filter((f) => f.endsWith(".json")).map((f) => f.replace(".json", "")).sort();
-await writeFile(`${racine}dist/config.json`, `${JSON.stringify({ apiUrl, langues, connexionActive: false, testRolesTemporaire: true }, null, 2)}\n`);
+// Google Analytics 4, soumis au consentement (ADR 0027, web/audience.js). L'identifiant de mesure est public.
+// KERMICLAB_GA_ID permet d'en changer ; vide, la mesure est désactivée (ni bandeau, ni origine Google dans la CSP).
+const GA_PAR_DEFAUT = "G-7ZGW294NN8";
+const mesureGoogle = (process.env.KERMICLAB_GA_ID ?? GA_PAR_DEFAUT).trim();
+if (mesureGoogle && !/^G-[A-Z0-9]{6,12}$/.test(mesureGoogle)) throw new Error(`KERMICLAB_GA_ID invalide : « ${mesureGoogle} » (attendu : G-XXXXXXXXXX)`);
+await writeFile(`${racine}dist/config.json`, `${JSON.stringify({ apiUrl, langues, connexionActive: false, testRolesTemporaire: true, mesureGoogle }, null, 2)}\n`);
 const apiOrigine = apiUrl ? ` ${new URL(apiUrl).origin}` : "";
+const ga = mesureGoogle
+  ? { script: " https://*.googletagmanager.com", img: " https://*.google-analytics.com https://*.googletagmanager.com", connect: " https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com" }
+  : { script: "", img: "", connect: "" };
 await writeFile(`${racine}dist/_headers`, `/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; connect-src 'self'${apiOrigine} https://cloudflareinsights.com; frame-src 'self'${apiOrigine}; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com${ga.script}; style-src 'self'; img-src 'self' data:${ga.img}; connect-src 'self'${apiOrigine} https://cloudflareinsights.com${ga.connect}; frame-src 'self'${apiOrigine}; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=()
@@ -103,7 +111,7 @@ async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
   const modules = ["progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "fichier-progression.js", "cahier-vacances.js", "progression-jeux.js", "experiences.js", "temps-actif.js", "theme.js", "parcours.js"];
-  for (const fichier of [...modules, "style.css"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
+  for (const fichier of [...modules, "style.css", "audience.js"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
   let app = appSource;
   for (const module of modules) {
@@ -115,7 +123,7 @@ async function versionnerRessources(dossier) {
   versions["app.js"] = empreinte(app);
   for (const page of (await readdir(dossier)).filter((f) => f.endsWith(".html"))) {
     const source = await readFile(`${dossier}/${page}`, "utf8");
-    const html = source.replace(/(href|src)="(style\.css|app\.js)"/g, (tout, attribut, fichier) => `${attribut}="${fichier}?v=${versions[fichier]}"`);
+    const html = source.replace(/(href|src)="(style\.css|app\.js|audience\.js)"/g, (tout, attribut, fichier) => `${attribut}="${fichier}?v=${versions[fichier]}"`);
     await writeFile(`${dossier}/${page}`, html);
   }
 }

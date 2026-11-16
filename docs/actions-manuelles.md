@@ -11,6 +11,14 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 | Essayer l'environnement Cursor | Cursor → agent en arrière-plan sur le dépôt ; `.cursor/environment.json` | Le fichier n'a pas pu être essayé hors de Cursor | `npm run ci` passe dans l'agent Cursor | à faire |
 | Réglages laissés au propriétaire par l'issue #284 | Jeton des PR de la roadmap, protection de `main`, réglage de build Cloudflare (`npm run build`, sortie `dist`) | Hors de portée d'un agent | Réglages vérifiés | à faire |
 
+## Google Analytics soumis au consentement (ADR 0027)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'ADR 0027 et le texte de la page Confidentialité — [issue #320](https://github.com/Kermic974/KermicLab/issues/320) | `docs/decisions/0027-google-analytics-consentement.md` ; `web/confidentialite.html` (section « Mesure d'audience Google Analytics ») | Exception au principe « aucune donnée personnelle collectée » : cookies et données de navigation traités par Google pour les visiteurs qui acceptent. Validation juridique à prévoir : consentement des mineurs de moins de 15 ans (accord conjoint d'un parent), transfert hors UE, registre des traitements | Statut de l'ADR passé à « accepté » ; texte validé ou corrigé | à faire |
+| Régler la propriété GA4 `G-7ZGW294NN8` — [issue #321](https://github.com/Kermic974/KermicLab/issues/321) | [Google Analytics](https://analytics.google.com/) → Administration : « Collecte de données » (signaux Google désactivés), « Conservation des données » (2 mois), « Paramètres de partage des données du compte » (tout décocher), pas d'association Google Ads ; accepter l'avenant relatif au traitement des données | Le code désactive déjà les signaux publicitaires ; ces réglages côté Google ne se font que dans le compte du propriétaire | Réglages visibles dans l'administration GA4 | à faire |
+| Vérifier la mesure en production après la fusion — [issue #322](https://github.com/Kermic974/KermicLab/issues/322) | `https://www.kermiclab.online/` en navigation privée : sans réponse puis après « Refuser », aucune requête vers `googletagmanager.com` (outils du navigateur, onglet Réseau) ; après « Accepter », la visite apparaît dans GA4 → Rapports → Temps réel | La session de travail n'a pas accès au compte Google ni au site déployé | Visite visible en temps réel après accord, aucune requête Google après refus | à faire |
+
 ## Back-office (ADR 0026)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
