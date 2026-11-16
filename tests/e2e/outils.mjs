@@ -37,6 +37,10 @@ export async function ouvrir(nav, url, options = {}) {
   await page.route(/\/api\/theme$/, (r) => r.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ theme: { id: "indigo" } })
   }));
+  // Parcours publiés depuis le back-office : aucun par défaut ; un test peut redéfinir cette route après coup.
+  await page.route(/\/api\/parcours$/, (r) => r.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ parcours: [] })
+  }));
   const erreurs = [];
   page.on("console", (m) => { if (m.type() === "error") erreurs.push(m.text()); });
   page.on("pageerror", (e) => erreurs.push(e.message));

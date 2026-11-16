@@ -39,6 +39,6 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
 2. Ouvrir les comptes : remplacer la clé partagée par les permissions `admin.*`, puis brancher `accesAutorise()` sur
    les routes et activer `CONTROLE_ACCES_ACTIF`.
 3. Nouvelle table de quota pour appliquer les niveaux de souscription au-delà de 1 000 tokens par session.
-4. Côté site : afficher les parcours et les contenus mis en avant ; étendre la charte aux pages de notion et au blog.
+4. Côté site : parcours, contenus mis en avant et « Ma classe » sont en place (`web/parcours.js`) ; reste à étendre la charte aux pages de notion et au blog.
 5. Contenus : créer la PR (branche et fichier) depuis un brouillon au lieu d'une issue ; type « lab » au catalogue.
 6. Analyse : classification par un modèle en complément des motifs, sur le texte pseudonymisé, sans conservation.

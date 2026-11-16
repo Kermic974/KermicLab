@@ -125,7 +125,8 @@
 - Les labs ne sont pas un type distinct du catalogue : ils n'apparaissent que comme brouillons.
 - Les règles d'analyse sont des motifs : elles signalent, elles ne prouvent pas. Les garde-fous restent en observation
   tant que leurs faux positifs ne sont pas mesurés.
-- Le site ne propose pas encore les parcours ni la mise en avant aux élèves : l'API les expose, l'interface suivra.
+- Le site affiche les parcours et les contenus mis en avant sur l'accueil (`web/parcours.js`) ; un contenu mis en avant
+  n'est pas encore signalé dans la liste d'Éducation.
 
 ## Conséquences
 

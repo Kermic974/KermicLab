@@ -165,6 +165,25 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 
 /* ---------- Accueil : une prochaine action, deux entrées, un aperçu ---------- */
 .accueil-depart { display: flex; flex-direction: column; gap: 18px; }
+.a-la-une, .parcours { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.a-la-une h3, .parcours > h3 { font-size: 16px; font-weight: 720; }
+.une-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.une-entree { width: 100%; min-height: 64px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; padding: 12px 14px; border-radius: var(--rayon-moyen); background: var(--accent-doux); color: var(--accent-doux-texte); border: 1px solid transparent; }
+.une-entree:hover { background: var(--accent-doux); border-color: var(--accent); }
+.une-titre { font-weight: 700; }
+.parcours-liste { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.parcours-carte { display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface-2); min-width: 0; }
+.parcours-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.parcours-tete h4 { margin: 0; font-size: 1rem; font-weight: 720; }
+.parcours-carte progress { width: 100%; height: 6px; }
+.parcours-etapes { margin: 0; padding: 0 0 0 22px; display: flex; flex-direction: column; gap: 2px; }
+.parcours-etapes .notion[aria-current="step"] { background: var(--accent-doux); color: var(--accent-doux-texte); font-weight: 700; }
+.parcours-carte > .bouton, .parcours-carte > .pastille { align-self: flex-start; }
+.ma-classe { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 4px; }
+.ma-classe-titre { font-size: .78rem; font-weight: 700; color: var(--doux); text-transform: uppercase; letter-spacing: .05em; margin-right: 4px; }
+.ma-classe .puce { min-height: 40px; }
+.ma-classe .puce[aria-pressed="true"] { background: var(--accent); color: var(--accent-texte); }
+details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
 .entrees-accueil { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .entree { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 84px; padding: 18px 20px; color: var(--texte); text-align: left; font-weight: 400; }
 .entree:hover { background: var(--surface-2); border-color: var(--bord-fort); }
@@ -543,7 +562,8 @@ input[type="range"]:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px var(
 .pied a:hover, .pied button.lien:hover { color: var(--accent); background: none; }
 
 /* ---------- Notifications ---------- */
-#toasts { position: fixed; left: 50%; top: 20px; transform: translateX(-50%); z-index: 70; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; width: calc(100% - 32px); max-width: 420px; }
+/* Ordinateur : en haut à droite, hors du titre de l'écran. Mobile : centré en haut (règle plus bas). */
+#toasts { position: fixed; right: 24px; top: 84px; z-index: 70; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; pointer-events: none; width: calc(100% - 32px); max-width: 420px; }
 .toast { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 14px; background: var(--texte); color: var(--fond); box-shadow: var(--ombre-forte); font-weight: 600; animation: toast-entre .35s cubic-bezier(.2,.9,.3,1.3) both; }
 .toast-icone { font-size: 1.3rem; }
 .toast.sortie { animation: toast-sort .4s ease forwards; }
@@ -931,7 +951,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .carte-maquette iframe { height: 65vh; min-height: 380px; }
   .reprendre, .suggestion, .semaine, .entree, .outil, #bloc-matieres, #decouvertes { padding: 18px; }
   .barres { gap: 6px; }
-  #toasts { top: 12px; }
+  #toasts { top: 12px; right: auto; left: 50%; transform: translateX(-50%); align-items: center; }
   .nav-mobile {
     display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; z-index: 50; left: 0; right: 0; bottom: 0;
     background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);

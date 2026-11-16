@@ -16,8 +16,8 @@ const definitions = {
     sources: ["web", "catalogue", "gabarit/jeux/trophees.js", "scripts/lib/trophees.mjs", "scripts/roadmap.mjs"],
     vues: [
       ["premiere-visite", "", "Première visite : nouveau navigateur, dialogue de pseudo"],
-      ["accueil", "#accueil", "Accueil : la question, une prochaine action, deux entrées, aperçu compact"],
-      ["catalogue", "#education", "Éducation : Niveau › Matière › Notions et outils (défi, Lab du cercle, cahiers)"],
+      ["accueil", "#accueil", "Accueil : la question, une prochaine action, À la une et parcours, deux entrées, aperçu compact"],
+      ["catalogue", "#education", "Éducation : Ma classe, Niveau › Matière › Notions et outils (défi, Lab du cercle, cahiers)"],
       ["jeux", "#jeux", "Jeux : cartes, résumé et recherche"],
       ["progression", "#progression", "Progression : tableau de bord personnel et Mes badges"],
       ["cahiers", "#cahiers", "Mes cahiers : outil d'Éducation, ouvert directement par #cahiers"],
