@@ -478,7 +478,7 @@ function rafraichirCompte() {
   $("#synchro-activation").hidden = active;
   $("#synchro-deverrouillage").hidden = !active || deverrouillee;
   $("#synchro-actions").hidden = !deverrouillee;
-  $("#compte-suppression-aide").textContent = t(!active ? "compteSuppressionAide" : deverrouillee ? "compteSuppressionAideSynchro" : "compteSuppressionAideVerrouille");
+  $("#compte-suppression-aide").textContent = t(!active ? (lie ? "connexionSuppression" : "compteSuppressionAide") : deverrouillee ? "compteSuppressionAideSynchro" : "compteSuppressionAideVerrouille");
 }
 
 /** Vérifie les identifiants côté D1 sans activer le transfert de progression. */
