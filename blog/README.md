@@ -30,7 +30,7 @@ resume: "Une phrase qui présente l'article (facultatif)."
 |---|---|---|
 | `titre` | oui | titre de la page (seul `h1`) |
 | `auteur` | oui | nom et rôle de l'agent ; la page l'affiche toujours précédé de la mention « Auteur IA » |
-| `date` | oui | date de publication, `AAAA-MM-JJ` ; la liste va du plus récent au plus ancien |
+| `date` | oui | date de publication, `AAAA-MM-JJ` ; la liste va du plus récent au plus ancien. Un article validé daté dans le futur attend cette date (voir « Publication programmée ») |
 | `statut` | oui | `brouillon` ou `validé` (validé par Mickael). **Seuls les articles `validé` sont générés** ; tout autre statut reste hors du site |
 | `jour` | non | repère du calendrier éditorial (`J1`, `J2`…) affiché au-dessus du titre |
 | `resume` | non | description de la page et chapeau dans la liste |
@@ -56,3 +56,15 @@ affiché comme du texte, jamais interprété. Pas d'image pour l'instant (à ajo
 
 Code : `scripts/lib/blog.mjs` (en-tête, Markdown → HTML, pages), appelé par `scripts/build.mjs`.
 Tests : `tests/unit/blog.test.mjs`.
+
+## Publication programmée
+
+Un article `validé` dont la `date` est dans le futur peut être fusionné à l'avance : il reste hors du site (ni page,
+ni ligne dans la liste, ni entrée dans `/blog/index.json`) jusqu'à sa date, **heure de La Réunion**.
+
+- Chaque jour vers 6 h (La Réunion), la CI compare les articles publiables ce jour-là avec ceux du site en ligne.
+  S'il y a un écart, elle construit et déploie le site ; sinon elle s'arrête sans rien déployer.
+- L'heure n'est pas garantie à la minute : GitHub peut retarder une exécution planifiée. Pour publier tout de suite,
+  lancer le workflow « CI/CD » à la main (Actions → CI/CD → Run workflow).
+- Une fusion sur `main` déploie aussi le site : un article dont la date est arrivée sort alors sans attendre 6 h.
+- En local, `KERMICLAB_BLOG_JOUR=2026-11-22 npm run build` construit le site tel qu'il sera ce jour-là.

@@ -5,7 +5,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelecture } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
-import { articlesPublies, chargerArticles, construireBlog } from "./lib/blog.mjs";
+import { articlesPublies, chargerArticles, construireBlog, jourDePublication } from "./lib/blog.mjs";
 import { genererSeoStatique } from "./lib/seo.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
@@ -41,10 +41,12 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
 await versionnerRessources(`${racine}dist`);
 // Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine
 // de dist/. Une page par dossier (blog/<slug>/index.html) : Pages la sert à /blog/<slug>/ sans réécriture.
-const blog = await construireBlog(`${racine}blog`, `${racine}dist/blog`);
+// Publication programmée (issue #312) : un article validé daté dans le futur attend sa date (heure de La Réunion).
+const jourBlog = jourDePublication();
+const blog = await construireBlog(`${racine}blog`, `${racine}dist/blog`, { jour: jourBlog });
 // Inventaire des articles publiés, lu par le back-office (ADR 0026) : titre, auteur et date, déjà publics.
 await writeFile(`${racine}dist/blog/index.json`, `${JSON.stringify({
-  articles: articlesPublies(await chargerArticles(`${racine}blog`)).map(({ slug, titre, auteur, date }) => ({ slug, titre, auteur, date }))
+  articles: articlesPublies(await chargerArticles(`${racine}blog`), { jour: jourBlog }).map(({ slug, titre, auteur, date }) => ({ slug, titre, auteur, date }))
 })}\n`);
 // Back-office : même empreinte de contenu que le site pour ses propres fichiers (cache du navigateur).
 {
@@ -96,7 +98,7 @@ console.log(`Indices gradués : ${catalogue.indices.avecIndice} exercice(s) sur 
 const relecture = indicateurRelecture(catalogue.index.maquettes);
 console.log(`Relecture : ${relecture.relues} notion(s) relue(s) sur ${relecture.notions}, ${relecture.aRevoir} à revoir (version modifiée depuis la relecture).`);
 console.log(`Relecture des jeux : ${relecture.jeux.relus} jeu(x) relu(s) sur ${relecture.jeux.total}, ${relecture.jeux.aRevoir} à revoir.`);
-console.log(`Blog : ${blog.publies.length} article(s) publié(s) sous /blog/${blog.ignores.length ? `, ${blog.ignores.length} non validé(s) ignoré(s)` : ""}.`);
+console.log(`Blog : ${blog.publies.length} article(s) publié(s) sous /blog/ au ${jourBlog}${blog.programmes.length ? `, ${blog.programmes.length} programmé(s)` : ""}${blog.ignores.length ? `, ${blog.ignores.length} non validé(s) ignoré(s)` : ""}.`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
 
 /**

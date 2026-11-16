@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Publication programmée du blog (issue #312) : chaque jour à 02:07 UTC, soit 06:07 à La Réunion.
+  # L'exécution s'arrête après le job « programme » si aucun article n'arrive à sa date.
+  schedule:
+    - cron: "7 2 * * *"
 
 permissions:
   contents: read
@@ -14,8 +18,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Exécution quotidienne seulement : compare les articles publiables aujourd'hui avec ceux du site en ligne.
+  # Lecture seule, sans secret ; les autres déclencheurs (push, PR, lancement manuel) ignorent ce job.
+  programme:
+    name: Blog à publier aujourd'hui ?
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      a_publier: ${{ steps.decision.outputs.a_publier }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - id: decision
+        env:
+          KERMICLAB_SITE_URL: ${{ vars.KERMICLAB_SITE_URL || 'https://kermiclab.pages.dev' }}
+        run: node scripts/blog-programme.mjs
+
   verifier:
     name: Lint, build, tests
+    needs: programme
+    # « programme » est ignoré hors exécution quotidienne : always() évite que ce job le soit aussi.
+    if: always() && (github.event_name != 'schedule' || needs.programme.outputs.a_publier == 'true')
     runs-on: ubuntu-latest
     env:
       CATALOGUE_TOKEN: ${{ secrets.CATALOGUE_TOKEN }}
@@ -71,7 +96,11 @@ jobs:
   deployer:
     name: Déploiement Cloudflare
     needs: verifier
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    # always() : « verifier » dépend d'un job ignoré hors exécution quotidienne ; son succès est exigé explicitement.
+    if: >-
+      always() && needs.verifier.result == 'success' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') &&
+      github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     env:

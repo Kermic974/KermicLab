@@ -89,19 +89,34 @@ export async function retablir(cf, instantane) {
   return faits;
 }
 
+/** Diagnostic borné et sur une ligne : jamais un corps de réponse entier dans le journal. */
+const expurger = (texte) => String(texte).replace(/\s+/g, " ").slice(0, 200);
+
 /**
- * Test de fumée : uniquement des lectures qui n'écrivent aucun KPI (ni /api/chat, ni journalisation).
- * Renvoie la liste des échecs (vide si tout va bien).
+ * Test de fumée (issues #178 et #261) : uniquement des lectures qui n'écrivent aucun KPI et n'appellent aucun modèle
+ * (ni /api/chat, ni /api/defi, ni /api/cahier, ni journalisation). Renvoie la liste des échecs (vide si tout va bien).
+ * `rapport`, s'il est fourni, reçoit une ligne par contrôle : { etape, route, statut, dureeMs, diagnostic }.
  */
-export async function testerFumee({ api, site, fetch: f = fetch }) {
+export async function testerFumee({ api, site, fetch: f = fetch, rapport = [], horloge = () => Date.now() }) {
   const echecs = [];
-  const verifier = async (nom, url, controle) => {
+  rapport.length = 0;
+  const verifier = async (etape, url, controle) => {
+    const debut = horloge();
+    const ligne = { etape, route: url, statut: "—", dureeMs: 0, diagnostic: "" };
+    let resultat;
     try {
       const reponse = await f(url, { headers: { "cache-control": "no-cache", "user-agent": "kermiclab-test-de-fumee (CI)" } });
-      if (!reponse.ok) { echecs.push(`${nom} : HTTP ${reponse.status}`); return; }
-      const erreur = await controle(reponse);
-      if (erreur) echecs.push(`${nom} : ${erreur}`);
-    } catch (e) { echecs.push(`${nom} : ${e.message}`); }
+      ligne.statut = String(reponse.status);
+      if (!reponse.ok) ligne.diagnostic = `HTTP ${reponse.status}`;
+      else {
+        const sortie = await controle(reponse);
+        if (typeof sortie === "string") ligne.diagnostic = expurger(sortie); else resultat = sortie;
+      }
+    } catch (e) { ligne.diagnostic = expurger(e.message); }
+    ligne.dureeMs = horloge() - debut;
+    rapport.push(ligne);
+    if (ligne.diagnostic) echecs.push(`${etape} : ${ligne.diagnostic}`);
+    return resultat;
   };
   await verifier("API santé", `${api}/api/sante`, async (r) => {
     const d = await r.json();
@@ -111,14 +126,55 @@ export async function testerFumee({ api, site, fetch: f = fetch }) {
     const d = await r.json();
     return Array.isArray(d.notions) && d.notions.length > 0 ? null : "catalogue vide";
   });
+  // Chat : questions d'exemple servies par le catalogue (aucun message envoyé, aucun modèle appelé).
+  await verifier("API suggestions du chat", `${api}/api/suggestions?lang=fr`, async (r) => {
+    const d = await r.json();
+    return Array.isArray(d.suggestions) ? null : "liste des suggestions absente";
+  });
+  // IA et défi express : état seulement. Générer un défi appellerait un modèle : volontairement non testé.
+  await verifier("API état de l'IA et du défi", `${api}/api/llm/status`, async (r) => {
+    const d = await r.json();
+    return typeof d.actif === "boolean" && typeof d.defi?.ia === "boolean" ? null : "état de l'IA ou du défi absent";
+  });
   await verifier("Page servie", `${api}/maquettes/trigo-cercle?lang=fr`, async (r) =>
     (await r.text()).includes('id="kermiclab-meta"') ? null : "métadonnées absentes");
-  await verifier("Site", `${site}/`, async (r) => (/<title>KermicLab/.test(await r.text()) ? null : "titre absent"));
+  const ressources = await verifier("Site", `${site}/`, async (r) => {
+    const html = await r.text();
+    if (!/<title>KermicLab/.test(html)) return "titre absent";
+    // Ressources essentielles telles que la page les référence (avec leur empreinte de contenu).
+    return ["app.js", "style.css"].map((nom) => html.match(new RegExp(`(?:src|href)="(${nom.replace(".", "\\.")}(?:\\?v=[0-9a-f]+)?)"`))?.[1] ?? nom);
+  });
+  for (const ressource of ressources ?? []) {
+    await verifier(`Ressource ${ressource.split("?")[0]}`, `${site}/${ressource}`, async (r) => ((await r.text()).trim() ? null : "fichier vide"));
+  }
   await verifier("Configuration du site", `${site}/config.json`, async (r) => {
     const d = await r.json();
     return d.apiUrl === api ? null : `apiUrl ${d.apiUrl} ≠ ${api}`;
   });
+  await verifier("Textes du site", `${site}/i18n/fr.json`, async (r) => {
+    const d = await r.json();
+    return d && typeof d === "object" && Object.keys(d).length > 0 ? null : "textes absents";
+  });
+  await verifier("Blog", `${site}/blog/`, async (r) => (/<h1>/.test(await r.text()) ? null : "titre absent"));
   return echecs;
+}
+
+/** Rapport du test de fumée en Markdown (résumé de l'étape GitHub) : étape, route, statut, durée, diagnostic. */
+export function rapportFumee(rapport) {
+  // Barre oblique inverse d'abord, puis barre verticale : un « \| » reçu ne peut pas fermer la cellule du tableau.
+  const cellule = (t) => String(t).replace(/[\\|]/g, "\\$&");
+  const lignes = rapport.map((l) => `| ${l.diagnostic ? "❌" : "✅"} | ${cellule(l.etape)} | \`${cellule(l.route)}\` | ${l.statut} | ${l.dureeMs} ms | ${cellule(l.diagnostic || "—")} |`);
+  const echecs = rapport.filter((l) => l.diagnostic).length;
+  return [
+    "### Test de fumée après déploiement",
+    "",
+    echecs ? `**${echecs} contrôle(s) en échec sur ${rapport.length}.**` : `${rapport.length} contrôles réussis.`,
+    "",
+    "| | Étape | Route | Statut | Durée | Diagnostic |",
+    "|---|---|---|---|---|---|",
+    ...lignes,
+    ""
+  ].join("\n");
 }
 
 /** Répète le test de fumée (propagation du déploiement) avant de conclure à un échec. */
@@ -138,12 +194,16 @@ async function main() {
   if (commande === "fumee") {
     const api = sansFin(process.env.KERMICLAB_API_URL), site = sansFin(process.env.KERMICLAB_SITE_URL);
     if (!api || !site) throw new Error("KERMICLAB_API_URL et KERMICLAB_SITE_URL sont requis");
-    const echecs = await fumeeAvecReprises({ api, site });
+    // Le rapport décrit la dernière tentative ; il est publié dans le résumé de l'étape, réussite ou échec.
+    const rapport = [];
+    const echecs = await fumeeAvecReprises({ api, site, rapport });
+    if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, rapportFumee(rapport));
+    for (const l of rapport) console.log(`${l.diagnostic ? "ÉCHEC" : "ok"} · ${l.etape} · ${l.route} · ${l.statut} · ${l.dureeMs} ms${l.diagnostic ? ` · ${l.diagnostic}` : ""}`);
     if (echecs.length) {
       for (const e of echecs) console.log(`::error::Test de fumée : ${e}`);
       process.exit(1);
     }
-    console.log("Test de fumée réussi : API, page servie, site et configuration.");
+    console.log(`Test de fumée réussi : ${rapport.length} contrôles (API, page servie, site, ressources, blog).`);
     return;
   }
   const cf = clientCloudflare({ jeton: process.env.CLOUDFLARE_API_TOKEN, compte: process.env.CLOUDFLARE_ACCOUNT_ID });

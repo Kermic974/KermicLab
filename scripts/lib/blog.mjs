@@ -169,9 +169,32 @@ export function lireArticle(source, fichier) {
   return { slug, fichier, publie, ...entete, corps };
 }
 
-/** Articles publiés seulement (statut « validé »), du plus récent au plus ancien. */
-export function articlesPublies(articles) {
-  return articles.filter((a) => a.publie).sort((a, b) => b.date.localeCompare(a.date) || a.titre.localeCompare(b.titre, "fr"));
+/** Fuseau de référence de la publication programmée : un article sort à sa date, heure de La Réunion. */
+export const FUSEAU_PUBLICATION = "Indian/Reunion";
+
+/**
+ * Jour de publication (`AAAA-MM-JJ`) : `KERMICLAB_BLOG_JOUR` s'il est renseigné (build reproductible, tests),
+ * sinon la date du jour à La Réunion. Une valeur mal formée est refusée plutôt qu'ignorée.
+ */
+export function jourDePublication(maintenant = new Date(), env = process.env) {
+  const impose = env.KERMICLAB_BLOG_JOUR;
+  if (impose) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(impose)) throw new Error(`KERMICLAB_BLOG_JOUR invalide : « ${impose} » (attendu : AAAA-MM-JJ)`);
+    return impose;
+  }
+  // Le format « en-CA » donne directement AAAA-MM-JJ.
+  return new Intl.DateTimeFormat("en-CA", { timeZone: FUSEAU_PUBLICATION, year: "numeric", month: "2-digit", day: "2-digit" }).format(maintenant);
+}
+
+/** Article validé dont la date est postérieure à `jour` : fusionné à l'avance, il attend sa date (issue #312). */
+export const estProgramme = (article, jour) => Boolean(article.publie && jour && article.date > jour);
+
+/**
+ * Articles publiés seulement (statut « validé »), du plus récent au plus ancien. Avec `jour`, les articles datés
+ * après ce jour sont écartés : ils sortiront au premier build fait à leur date ou après.
+ */
+export function articlesPublies(articles, { jour } = {}) {
+  return articles.filter((a) => a.publie && !estProgramme(a, jour)).sort((a, b) => b.date.localeCompare(a.date) || a.titre.localeCompare(b.titre, "fr"));
 }
 
 /** Date lisible en français, sans dépendre du fuseau de la machine de build. */
@@ -279,11 +302,12 @@ export async function chargerArticles(dossier) {
 /**
  * Construit le blog dans `sortie` : `index.html` (liste), `<slug>/index.html` (un dossier par article, servi à
  * `/blog/<slug>/` sans réécriture `_redirects`), `auteurs/index.html` et `blog.css`. Seuls les articles validés
- * sont écrits. Renvoie la liste des adresses publiées.
+ * sont écrits ; avec `jour`, ceux datés après ce jour restent hors du site (`programmes`). Renvoie les adresses
+ * publiées, programmées et ignorées.
  */
-export async function construireBlog(dossier, sortie, { feuilleDeStyle } = {}) {
+export async function construireBlog(dossier, sortie, { feuilleDeStyle, jour } = {}) {
   const articles = await chargerArticles(dossier);
-  const publies = articlesPublies(articles);
+  const publies = articlesPublies(articles, { jour });
   const style = feuilleDeStyle ?? await readFile(`${dossier}/blog.css`, "utf8");
   const css = `/blog/blog.css?v=${createHash("sha256").update(style).digest("hex").slice(0, 10)}`;
   await mkdir(`${sortie}/auteurs`, { recursive: true });
@@ -294,5 +318,9 @@ export async function construireBlog(dossier, sortie, { feuilleDeStyle } = {}) {
     await mkdir(`${sortie}/${a.slug}`, { recursive: true });
     await writeFile(`${sortie}/${a.slug}/index.html`, pageArticle(a, { css }));
   }
-  return { publies: publies.map((a) => a.slug), ignores: articles.filter((a) => !a.publie).map((a) => a.slug) };
+  return {
+    publies: publies.map((a) => a.slug),
+    programmes: articles.filter((a) => estProgramme(a, jour)).map((a) => a.slug).sort(),
+    ignores: articles.filter((a) => !a.publie).map((a) => a.slug)
+  };
 }
