@@ -5,6 +5,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelecture } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
+import { construireBlog } from "./lib/blog.mjs";
 
 const racine = new URL("..", import.meta.url).pathname;
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -37,6 +38,9 @@ for (const fichier of (await readdir(`${racine}dist`)).filter((f) => f.endsWith(
 await ecrireContenus(`${racine}dist/contenus`, [`${racine}catalogue`, `${racine}catalogue-prive`], catalogue.index);
 await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTrophees(catalogue))}\n`);
 await versionnerRessources(`${racine}dist`);
+// Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine
+// de dist/. Une page par dossier (blog/<slug>/index.html) : Pages la sert à /blog/<slug>/ sans réécriture.
+const blog = await construireBlog(`${racine}blog`, `${racine}dist/blog`);
 // Le chat (Pages) appelle l'API du Worker kermiclab-api ; KERMICLAB_API_URL permet de pointer ailleurs (CI, local).
 const API_PAR_DEFAUT = "https://kermiclab-api.kermic.workers.dev";
 const apiUrl = (process.env.KERMICLAB_API_URL ?? API_PAR_DEFAUT).replace(/\/$/, "");
@@ -69,6 +73,7 @@ console.log(`Indices gradués : ${catalogue.indices.avecIndice} exercice(s) sur 
 const relecture = indicateurRelecture(catalogue.index.maquettes);
 console.log(`Relecture : ${relecture.relues} notion(s) relue(s) sur ${relecture.notions}, ${relecture.aRevoir} à revoir (version modifiée depuis la relecture).`);
 console.log(`Relecture des jeux : ${relecture.jeux.relus} jeu(x) relu(s) sur ${relecture.jeux.total}, ${relecture.jeux.aRevoir} à revoir.`);
+console.log(`Blog : ${blog.publies.length} article(s) publié(s) sous /blog/${blog.ignores.length ? `, ${blog.ignores.length} non validé(s) ignoré(s)` : ""}.`);
 console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
 
 /**
