@@ -19,6 +19,7 @@ import { ProgressionJeux } from "./progression-jeux.js";
 import * as experiences from "./experiences.js";
 import { creerMoteurTemps } from "./temps-actif.js";
 import * as charte from "./theme.js";
+import * as parcours from "./parcours.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
@@ -34,6 +35,7 @@ const etat = {
 const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
 const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
+const CLE_CLASSE = "kermiclab:classe";
 const CLE_THEME = "kermiclab:theme";
 const CLE_CAHIERS = "kermiclab:cahiers";
 const TYPES_CAHIERS = ["brouillon", "fiches", "vacances", "exercices"];
@@ -2086,8 +2088,93 @@ async function chargerCatalogue() {
   const reclasse = progression.reclasser(etat.progres, etat.registre.typeDe);
   if (reclasse !== etat.progres) { etat.progres = reclasse; progression.sauver(stockage(), etat.progres); }
   $("#catalogue-indisponible").hidden = etat.notions.length > 0;
+  etat.classe = parcours.classeValide(lireCle(preferences(), CLE_CLASSE), niveauxDuCatalogue());
   rendreCatalogue();
   rafraichirTableau();
+}
+
+/** Niveaux scolaires présents au catalogue, dans l'ordre d'affichage. */
+const niveauxDuCatalogue = () => experiences.arbreEducation(etat.registre, MATIERES).map((n) => n.niveau);
+
+/** Parcours publiés depuis le back-office (ADR 0026) ; sans réponse, la section reste masquée. */
+async function chargerParcours() {
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/parcours`);
+    etat.parcours = r.ok ? (await r.json()).parcours : [];
+  } catch {
+    etat.parcours = [];
+  }
+  rendrePilotes();
+}
+
+/** Accueil : contenus mis en avant et parcours, tous deux décidés dans le back-office. */
+function rendrePilotes() {
+  if (!etat.progres || !etat.textes.titre || !etat.registre) return;
+  const ouverts = new Set([...etat.progres.notions, ...Object.keys(etat.progres.decouvertes?.jeu ?? {})]);
+  const enAvant = parcours.contenusEnAvant(etat.notions);
+  $("#a-la-une").hidden = !enAvant.length;
+  $("#une-liste").replaceChildren(...enAvant.map((n) => {
+    const bouton = element("button", { classe: "une-entree", attributs: { type: "button", "data-une": n.id } });
+    const type = etat.registre.typeDe(n.id) === "jeu" ? t("navJeux") : t(`matiere_${matiereDe(n)}`);
+    bouton.append(element("span", { classe: "une-titre", texte: n.titre }), element("span", { classe: "doux petit", texte: type }));
+    if (ouverts.has(n.id)) bouton.append(element("span", { classe: "visuellement-cache", texte: ` (${t("notionExploree")})` }));
+    bouton.addEventListener("click", () => ouvrirNotion(notionParId(n.id) ?? n));
+    const li = element("li");
+    li.append(bouton);
+    return li;
+  }));
+
+  const liste = parcours.parcoursAffichables(etat.parcours, (id) => etat.registre.trouver(id));
+  $("#parcours").hidden = !liste.length;
+  $("#parcours-liste").replaceChildren(...liste.map((p) => {
+    const a = parcours.avancement(p, ouverts);
+    const bloc = element("article", { classe: "parcours-carte", attributs: { "data-parcours": p.id } });
+    const tete = element("div", { classe: "parcours-tete" });
+    tete.append(element("h4", { texte: p.titre }), element("span", { classe: "doux petit", texte: t("parcoursEtapes", { n: a.faites, m: a.total }) }));
+    const jauge = element("progress", { attributs: { max: String(a.total), value: String(a.faites), "aria-label": t("parcoursEtapes", { n: a.faites, m: a.total }) } });
+    bloc.append(tete);
+    if (p.description) bloc.append(element("p", { classe: "doux", texte: p.description }));
+    bloc.append(jauge);
+    const etapes = element("ol", { classe: "parcours-etapes" });
+    etapes.append(...p.etapes.map((e) => {
+      const fait = ouverts.has(e.id);
+      const bouton = element("button", { classe: `notion${fait ? " exploree" : ""}`, attributs: { type: "button", "data-etape": e.id } });
+      bouton.append(element("span", { texte: e.titre }));
+      if (fait) bouton.append(element("span", { classe: "coche", texte: "✓", attributs: { "aria-hidden": "true" } }), element("span", { classe: "visuellement-cache", texte: ` (${t("notionExploree")})` }));
+      if (a.suivante?.id === e.id) bouton.setAttribute("aria-current", "step");
+      bouton.addEventListener("click", () => ouvrirNotion(notionParId(e.id) ?? e));
+      const li = element("li");
+      li.append(bouton);
+      return li;
+    }));
+    bloc.append(etapes);
+    if (a.termine) bloc.append(element("p", { classe: "pastille ok", cle: "parcoursTermine" }));
+    else {
+      const suite = element("button", { classe: "bouton", attributs: { type: "button", "data-parcours-suite": a.suivante.id } });
+      suite.append(element("span", { cle: a.faites ? "parcoursContinuer" : "parcoursCommencer" }), element("span", { classe: "visuellement-cache", texte: ` : ${a.suivante.titre}` }));
+      suite.addEventListener("click", () => ouvrirNotion(notionParId(a.suivante.id) ?? a.suivante));
+      bloc.append(suite);
+    }
+    return bloc;
+  }));
+}
+
+/** Éducation, « Ma classe » : un bouton par niveau ; le niveau choisi s'ouvre d'emblée et reste retenu. */
+function rendreMaClasse(niveaux) {
+  const barre = $("#ma-classe");
+  barre.hidden = niveaux.length < 2;
+  barre.replaceChildren(element("span", { classe: "ma-classe-titre", cle: "maClasseTitre" }), ...niveaux.map((niveau) => {
+    const bouton = element("button", { classe: "puce", texte: t(`niveau_${niveau}`), attributs: { type: "button", "data-classe": niveau, "aria-pressed": String(etat.classe === niveau) } });
+    bouton.addEventListener("click", () => {
+      etat.classe = etat.classe === niveau ? null : niveau;
+      ecrireCle(preferences(), CLE_CLASSE, etat.classe ?? "");
+      // Le choix remplace l'ouverture manuelle des niveaux : seul le niveau choisi reste ouvert.
+      for (const n of niveaux) etat.ouverts.delete(`edu-${n}`);
+      rendreCatalogue();
+      document.querySelector(`[data-classe="${CSS.escape(niveau)}"]`)?.focus({ preventScroll: true });
+    });
+    return bouton;
+  }));
 }
 
 const matiereDe = (n) => n.matiere || "mathematiques";
@@ -2145,6 +2232,7 @@ function rendreCatalogue() {
   const filtre = sansAccents($("#recherche-notion").value.trim());
   const explorees = new Set(etat.progres.notions);
   const arbre = experiences.arbreEducation(etat.registre, MATIERES);
+  rendreMaClasse(arbre.map((n) => n.niveau));
   liste.replaceChildren();
   let affichees = 0;
   for (const { niveau, matieres } of arbre) {
@@ -2156,7 +2244,7 @@ function rendreCatalogue() {
     affichees += total;
     // Une recherche ouvre les groupes qui contiennent un résultat, sans modifier l'état retenu.
     liste.append(accordeon({
-      id: `edu-${niveau}`, niveauTitre: 3, titre: t(`niveau_${niveau}`), detail: t("compteNotions", { n: total }), ouvert: Boolean(filtre),
+      id: `edu-${niveau}`, niveauTitre: 3, titre: t(`niveau_${niveau}`), detail: t("compteNotions", { n: total }), ouvert: Boolean(filtre) || etat.classe === niveau,
       remplir: (panneau) => panneau.append(...retenues.map(({ matiere, notions }) => accordeon({
         id: `edu-${niveau}-${matiere}`, niveauTitre: 4, titre: t(`matiere_${matiere}`), ouvert: Boolean(filtre),
         detail: t("exploreesSur", { n: notions.filter((n) => explorees.has(n.id)).length, m: notions.length }),
@@ -2444,6 +2532,7 @@ async function demarrer() {
   ajouterBienvenue();
   brancherTemps();
   await chargerCatalogue();
+  void chargerParcours();
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
   $("#recherche-jeu").addEventListener("input", rendreJeux);
   document.addEventListener("keydown", (e) => {
@@ -3541,6 +3630,7 @@ function rafraichirTableau() {
   rendreSuggestion();
   rendreEntrees();
   rendreApercu();
+  rendrePilotes();
   rendreCahiers();
   rendreJeux();
   if (etat.ecran === "progression") rendreProgression();

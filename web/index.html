@@ -127,6 +127,15 @@
           </div>
           <div id="suggestion-contenu" class="suggestion-contenu"></div>
         </section>
+        <!-- Pilotés depuis le back-office (ADR 0026) : contenus mis en avant et parcours publiés. Masqués s'il n'y en a pas. -->
+        <section class="carte a-la-une" id="a-la-une" aria-labelledby="une-titre" hidden>
+          <h3 id="une-titre" data-i18n="uneTitre"></h3>
+          <ul id="une-liste" class="une-liste"></ul>
+        </section>
+        <section class="carte parcours" id="parcours" aria-labelledby="parcours-titre" hidden>
+          <h3 id="parcours-titre" data-i18n="parcoursTitre"></h3>
+          <div id="parcours-liste" class="parcours-liste"></div>
+        </section>
         <div class="entrees-accueil">
           <button type="button" class="carte entree" data-nav="education">
             <span class="entree-ico" aria-hidden="true"><svg class="ico"><use href="#i-livre"/></svg></span>
@@ -152,6 +161,8 @@
         </div>
         <label class="visuellement-cache" for="recherche-notion" data-i18n="rechercherNotion"></label>
         <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
+        <!-- Ma classe : le niveau choisi s'ouvre directement, ici et aux visites suivantes. -->
+        <div class="ma-classe" id="ma-classe" role="group" data-i18n-aria="maClasseTitre" hidden></div>
         <div id="catalogue-liste" class="arbre"></div>
         <p id="catalogue-vide" class="doux" data-i18n="aucuneNotion" hidden></p>
         <p id="catalogue-indisponible" class="doux" data-i18n="catalogueIndisponible" hidden></p>
@@ -429,12 +440,13 @@
     <span id="defi-ia-etat" class="doux petit" aria-live="polite"></span>
   </div>
   <!-- Paramètres du site (ADR 0019) : vue en lecture seule de la configuration centralisée du Worker. -->
-  <div class="config-serveur" aria-labelledby="config-serveur-titre">
-    <h3 id="config-serveur-titre" data-i18n="configServeurTitre"></h3>
+  <!-- Repliés par défaut : ces réglages techniques se gèrent dans le back-office (ADR 0026), pas dans le profil. -->
+  <details class="config-serveur" id="config-serveur">
+    <summary id="config-serveur-titre" data-i18n="configServeurTitre"></summary>
     <p class="doux petit" data-i18n="configServeurAide"></p>
     <div id="config-modules" class="config-modules"></div>
     <p id="config-serveur-etat" class="doux petit" aria-live="polite" data-i18n="llmStatutChargement"></p>
-  </div>
+  </details>
   <h2 data-i18n="profilAide"></h2>
   <ul class="liens-profil">
     <li><a class="lien-profil" href="feuille-de-route.html"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="navFeuilleDeRoute"></span></a></li>
