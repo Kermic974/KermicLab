@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s4/curriculum.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "jurisdiction",
+    "authority",
+    "title",
+    "curriculumVersion",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "primitives.schema.json#/$defs/curriculum"
+    },
+    "type": {
+      "const": "curriculum"
+    },
+    "jurisdiction": {
+      "const": "FR"
+    },
+    "authority": {
+      "$ref": "primitives.schema.json#/$defs/texte"
+    },
+    "title": {
+      "$ref": "primitives.schema.json#/$defs/texte"
+    },
+    "curriculumVersion": {
+      "$ref": "primitives.schema.json#/$defs/texte"
+    },
+    "status": {
+      "$ref": "primitives.schema.json#/$defs/statut"
+    },
+    "version": {
+      "$ref": "primitives.schema.json#/$defs/version"
+    },
+    "replacedBy": {
+      "$ref": "primitives.schema.json#/$defs/curriculum"
+    },
+    "provenance": {
+      "$ref": "primitives.schema.json#/$defs/provenance"
+    },
+    "evidence": {
+      "$ref": "primitives.schema.json#/$defs/evidence"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "replacedBy": {}
+        },
+        "required": [
+          "replacedBy"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        }
+      }
+    }
+  ]
+}
