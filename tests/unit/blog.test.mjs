@@ -48,7 +48,8 @@ test("adresse : nom de fichier en minuscules, chiffres et tirets ; « auteurs »
 test("échappement : aucune balise HTML de l'article n'est interprétée", () => {
   assert.equal(echapper(`<a href="x">'&'</a>`), "&lt;a href=&quot;x&quot;&gt;&#39;&amp;&#39;&lt;/a&gt;");
   const html = markdownEnHtml(`<script>alert(1)</script>\n\n<img src=x onerror=alert(1)>\n\n# <b>titre</b>\n\n- <i>x</i>`);
-  assert.doesNotMatch(html, /<script|<img|<b>|<i>/);
+  // Test sans expression régulière sur les balises (alerte CodeQL js/bad-tag-filter) : comparaison en minuscules.
+  for (const balise of ["<script", "<img", "<b>", "<i>"]) assert.ok(!html.toLowerCase().includes(balise), balise);
   assert.match(html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
 });
 
