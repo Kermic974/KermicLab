@@ -284,7 +284,7 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   await page.click("#fermer-constructeur");
 
   // L'écran Configuration montre le module Mes cahiers et son skill.
-  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   assert.equal(await texte(page, '#config-modules [data-cle="CAHIERS_GENERATIONS_JOUR"] dd'), "2 (0–5)");
   assert.match(await texte(page, '#config-modules [data-skill="constructeur-cahier"] dd'), /Actif\s+constructeur-cahier-v2 · v2\.0\.0/);
   await page.setViewportSize({ width: 360, height: 740 });
@@ -376,7 +376,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   });
   await choisirPseudo(page, "Ana");
   // Configuration : réglage du défi, plafonné par le serveur (3 par jour), mémorisé sur l'appareil.
-  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   assert.deepEqual(await page.locator("#defi-ia-par-jour option").allTextContents(),
     ["Désactivé (questions fixes)", "1 par jour", "2 par jour", "3 par jour"]);
   assert.equal(await page.inputValue("#defi-ia-par-jour"), "3");
@@ -446,7 +446,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
   assert.equal(await page.locator("#defi-retour button", { hasText: "Revoir la notion" }).count(), 0);
 
   // Réglage à 2 par jour : la troisième ouverture n'appelle plus l'IA.
-  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   assert.match(await texte(page, "#defi-ia-etat"), /Il te reste 0 défi/);
   const avant = requetes.filter((r) => r.defi).length;
   await lancerDefi(page);
@@ -461,7 +461,7 @@ test("défi express IA : 5 défis inédits via /api/defi, lot incomplet complét
 test("configuration : sans IA activée, le réglage du défi invite à l'activer et le défi reste sur la banque", async () => {
   const { page, contexte, erreurs, requetes } = await demarrer();
   await choisirPseudo(page, "Noé");
-  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   assert.match(await texte(page, "#defi-ia-etat"), /Active « Utiliser l’IA »/);
   await lancerDefi(page);
   assert.equal(await texte(page, "#defi-question"), "Combien vaut cos(0°) ?");
@@ -490,7 +490,7 @@ test("défi express : IA indisponible côté serveur, les questions fixes s'affi
 test("configuration : un seul interrupteur (l'IA), dans l'écran Profil où le pseudo se modifie aussi", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Léo");
-  await page.click(".barre-laterale .nav-bouton[data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   assert.equal(await texte(page, "#salut"), "Profil");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
   assert.equal(await page.locator("#profil input[role=switch]").count(), 1);
@@ -514,7 +514,7 @@ test("configuration : un seul interrupteur (l'IA), dans l'écran Profil où le p
   await page.locator("#profil").waitFor();
   assert.equal(new URL(page.url()).hash, "#profil");
   assert.equal(await page.locator("dialog[open]").count(), 0);
-  assert.equal(await page.locator('.barre-laterale .nav-bouton[data-nav="profil"]').getAttribute("aria-current"), "page");
+  assert.equal(await page.locator('.barre-laterale .profil-carte[data-action=profil]').getAttribute("aria-current"), "page");
   await page.selectOption("#langue", "en");
   await page.waitForFunction(() => document.documentElement.lang === "en");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");

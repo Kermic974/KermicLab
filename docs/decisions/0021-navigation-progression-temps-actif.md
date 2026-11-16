@@ -8,8 +8,8 @@
   une progression qui grandit avec l'usage, un temps actif fiable et un modèle de découverte générique (aucune
   logique propre à un jeu).
 - Décision :
-  1. **Cinq destinations**, identiques sur la barre latérale et la barre mobile (pas de menu hamburger : chaque
-     destination reste à un geste), une seule marquée `aria-current="page"`. Le défi express est un sous-écran
+  1. **Cinq destinations** accessibles en un geste. Profil s'ouvre via la carte de compte en bas de la barre
+     latérale ; la barre mobile conserve son onglet Profil. Une seule destination visible est marquée `aria-current="page"`. Le défi express est un sous-écran
      d'Éducation, l'Espace famille un sous-écran de Profil. Les anciennes adresses (`#labs`, `#notions`,
      `#catalogue`, `#cahiers`, `#badges`) sont redirigées vers leur destination.
   2. **Éducation** construit l'arbre Niveau › Matière › Notions à partir des seules métadonnées du catalogue

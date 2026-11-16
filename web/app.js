@@ -3012,8 +3012,8 @@ function naviguer(cle) {
 
 /** Une seule destination est marquée « page courante » ; un sous-écran marque sa destination. */
 function marquerNavigation(cle) {
-  document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav]").forEach((b) => {
-    if (b.dataset.nav === cle) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+  document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]").forEach((b) => {
+    if ((b.dataset.nav ?? b.dataset.action) === cle) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
 }
 

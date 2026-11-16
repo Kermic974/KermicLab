@@ -232,7 +232,7 @@ test("boîte à idées : l'IA prépare le cadrage de l'issue, relu puis joint à
   assert.equal(await preparer.isDisabled(), true, "l'IA reste un opt-in");
   assert.match(await page.locator("#idee-ia-aide").textContent(), /Active l’IA/);
   await page.click("#fermer-idee");
-  await page.locator('.barre-laterale [data-nav="profil"]').click();
+  await page.locator('.barre-laterale .profil-carte[data-action=profil]').click();
   await page.locator("#llm-actif").check();
   await page.locator(".nav-idees > .boite-idees").click();
   assert.equal(await preparer.isDisabled(), false);

@@ -144,7 +144,7 @@ test("Worker simulé : un parent n'a pas accès, un contributeur envoie une prop
   await parent.contexte.close();
 
   const { page, contexte, erreurs, envoyees } = await demarrer({ connexion: true, role: "contributeur", viewport: { width: 390, height: 844 } });
-  await page.click(".nav-mobile [data-nav=profil], .barre-laterale [data-nav=profil] >> visible=true");
+  await page.click(".nav-mobile [data-nav=profil], .barre-laterale .profil-carte[data-action=profil] >> visible=true");
   await page.click("#entree-contributions");
   await page.locator("#contrib-espace").waitFor({ state: "visible" });
   await proposer(page);
@@ -164,7 +164,7 @@ test("Worker simulé : un parent n'a pas accès, un contributeur envoie une prop
 test("option temporaire « Tester les rôles » : prof puis contributeur simulés depuis le Profil, sans appel au Worker", async () => {
   assert.equal(config.testRolesTemporaire, true, "option activée dans le site construit");
   const { page, contexte, erreurs, appels } = await demarrer();
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   await page.locator("#test-roles").waitFor({ state: "visible" });
   assert.equal(await page.locator("#test-roles-choix").inputValue(), "");
   await page.selectOption("#test-roles-choix", "prof");
@@ -173,7 +173,7 @@ test("option temporaire « Tester les rôles » : prof puis contributeur simulé
   assert.match(await page.locator("#contrib-role-nom").textContent(), /Prof/);
   await capturer(page, "contributions-test-roles-prof");
 
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   assert.equal(await page.locator("#test-roles-choix").inputValue(), "prof", "le rôle simulé est affiché dans le Profil");
   await page.selectOption("#test-roles-choix", "contributeur");
   await page.waitForURL(/#contributions/);
@@ -181,7 +181,7 @@ test("option temporaire « Tester les rôles » : prof puis contributeur simulé
   await page.locator("#contrib-role-nom", { hasText: "Contributeur" }).waitFor();
   assert.equal(await page.locator("#contrib-tableau").isHidden(), true);
 
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   await page.selectOption("#test-roles-choix", "");
   await page.waitForURL((url) => !url.search.includes("demo"));
   await page.locator("#salut").waitFor();

@@ -46,7 +46,7 @@ async function appareil(pseudo) {
 const cors = () => ({ "access-control-allow-origin": serveur.url, "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "GET, POST, PUT" });
 
 async function creerCompte(page) {
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   await page.click("#entree-compte");
   await page.locator("#compte-creation").waitFor();
   await page.fill("#compte-identifiant", IDENTIFIANT);
@@ -69,7 +69,7 @@ test("compte facultatif : site utilisable sans compte, aucun appel tant que la s
   const { page, contexte, erreurs } = await appareil("Léa");
   const appels = [];
   page.on("request", (r) => { if (r.url().includes("/api/compte-local/")) appels.push(r.url()); });
-  await page.click(".barre-laterale [data-nav=profil]");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
   await page.click("#entree-compte");
   await page.locator("#compte-creation").waitFor();
   assert.match(await page.locator("#compte-creation").textContent(), /sans compte/);

@@ -23,7 +23,7 @@ async function simulerApi(page, { pseudo = "Testeur", jeux = false, llmActif = t
 
 async function ouvrirConfiguration(page) {
   if (await page.locator("#panneau-chat").isVisible()) await page.click("#fermer-chat");
-  await page.locator("[data-nav=profil]:visible").first().click();
+  await page.locator(".nav-mobile [data-nav=profil]:visible, .barre-laterale .profil-carte[data-action=profil]:visible").first().click();
 }
 
 test("avatar : chat replié, accessible au clavier sur chaque écran, conversation et brouillon conservés", async () => {
@@ -52,7 +52,7 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   assert.equal(await avatar.evaluate((n) => n === document.activeElement), true);
   assert.equal(await avatar.getAttribute("aria-expanded"), "false");
   for (const ecran of ["education", "jeux", "progression", "profil"]) {
-    await page.click(`.barre-laterale [data-nav="${ecran}"]`);
+    await page.click(ecran === "profil" ? ".barre-laterale .profil-carte[data-action=profil]" : `.barre-laterale [data-nav="${ecran}"]`);
     await avatar.click();
     assert.equal(new URL(page.url()).hash, `#${ecran}`, "ouvrir le chat ne change pas d’écran");
     assert.equal(await panneau.isVisible(), true);
@@ -523,12 +523,12 @@ test("Éducation : Niveau > Matière > Notions en accordéons fermés, recherche
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-test("navigation : 5 destinations séparées, jeux absents d'Éducation, retour arrière", async () => {
+test("navigation : 4 entrées latérales, jeux absents d'Éducation, retour arrière", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const destinations = page.locator(".barre-laterale nav [data-nav]:not([hidden])") // sans rôle : l'entrée Contributions reste masquée (ADR 0023);
-  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "jeux", "progression", "profil"]);
+  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "jeux", "progression"]);
   assert.equal(await page.locator(".barre-laterale [aria-current=page]").count(), 1);
   const education = page.locator(".barre-laterale [data-nav=education]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
@@ -641,7 +641,7 @@ test("navigation : défi (sous Éducation), Profil et Progression remplacent l'a
   await page.waitForFunction(() => document.querySelector("#salut").textContent === "Quick challenge");
   assert.match(await page.locator("#defi-retour").textContent(), /Correct/);
   assert.ok((await page.locator("#defi .reponse").first().isDisabled()), "changer de langue ne permet pas de répondre deux fois");
-  await page.locator(".barre-laterale .nav-bouton[data-nav=profil]").click();
+  await page.locator(".barre-laterale .profil-carte[data-action=profil]").click();
   assert.equal(await page.locator("#profil").isVisible(), true);
   assert.equal(await page.locator("#defi").isVisible(), false);
   assert.equal(await page.locator("#configuration-titre").textContent(), "Configuration");
