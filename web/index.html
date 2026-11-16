@@ -106,6 +106,16 @@
 
       <section class="accueil-depart" id="accueil" data-ecrans="accueil" aria-labelledby="depart-titre">
         <h2 id="depart-titre" class="visuellement-cache" data-i18n="departTitre"></h2>
+        <!-- La question au centre : même envoi que le chat, qui s'ouvre sur la réponse. -->
+        <section class="carte question-accueil" aria-labelledby="question-accueil-titre">
+          <h3 id="question-accueil-titre" data-i18n="questionAccueilTitre"></h3>
+          <form id="formulaire-accueil" autocomplete="off">
+            <label for="question-accueil" class="visuellement-cache" data-i18n="placeholder"></label>
+            <input id="question-accueil" type="text" maxlength="500" required data-i18n-placeholder="placeholder">
+            <button type="submit" data-i18n="envoyer"></button>
+          </form>
+          <div class="puces" id="puces-accueil"></div>
+        </section>
         <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre" hidden>
           <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-lecture"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
           <div id="reprendre-contenu" class="reprendre-contenu"></div>

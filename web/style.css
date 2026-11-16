@@ -389,6 +389,14 @@ form#formulaire button { border-radius: 13px; display: inline-flex; align-items:
 form#formulaire button::after { content: "➜"; font-size: 1rem; }
 
 .colonne { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.question-accueil { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.question-accueil h3 { font-size: 24px; font-weight: 760; letter-spacing: -.02em; line-height: 1.2; }
+form#formulaire-accueil { display: flex; gap: 8px; align-items: center; background: var(--surface-2); border: 2px solid var(--accent); border-radius: 18px; padding: 6px; }
+form#formulaire-accueil:focus-within { box-shadow: 0 0 0 3px var(--accent-doux); }
+form#formulaire-accueil input { flex: 1; min-width: 0; min-height: 44px; border: 0; background: transparent; padding: 10px 12px; font-size: 1.05rem; }
+form#formulaire-accueil input:focus-visible { outline: none; }
+form#formulaire-accueil button { min-height: 44px; border-radius: 13px; display: inline-flex; align-items: center; gap: 6px; }
+form#formulaire-accueil button::after { content: "➜"; font-size: 1rem; }
 .reprendre { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
 .reprendre-contenu { display: flex; flex-direction: column; gap: 12px; }
 .reprendre h3 { font-size: 21px; font-weight: 760; letter-spacing: -.02em; }
