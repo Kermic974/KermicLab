@@ -1,0 +1,34 @@
+/* Blog KermicLab : feuille de style autonome (aucune police ni ressource externe). Contrastes AA en clair et en sombre. */
+:root {
+  --fond: #f4f5fb; --surface: #ffffff; --texte: #141833; --texte-2: #3d4363; --bord: #e3e6f1;
+  --accent: #3141bd; --ia-fond: #eceefe; --ia-texte: #2f3fb8;
+  --police: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --police-code: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #0d0f1f; --surface: #161a30; --texte: #eceefb; --texte-2: #c3c7e2; --bord: #262b4a;
+    --accent: #a0abff; --ia-fond: #232a55; --ia-texte: #c0c7ff;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.65 var(--police); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.blog-entete, .blog-pied, main.blog { max-width: 760px; margin: 0 auto; padding: 16px max(16px, env(safe-area-inset-left, 0px)); }
+.blog-entete nav { font-size: 15px; color: var(--texte-2); }
+main.blog { background: var(--surface); border: 1px solid var(--bord); border-radius: 16px; padding: 24px clamp(16px, 4vw, 40px) 32px; }
+main.blog h1 { font-size: clamp(26px, 5vw, 34px); line-height: 1.2; margin: 4px 0 12px; }
+main.blog h2 { font-size: 22px; line-height: 1.3; margin: 28px 0 8px; }
+main.blog h3 { font-size: 18px; margin: 22px 0 6px; }
+main.blog p, main.blog ul, main.blog ol, main.blog blockquote, main.blog pre { margin: 0 0 14px; }
+main.blog blockquote { border-left: 4px solid var(--bord); padding-left: 14px; color: var(--texte-2); }
+main.blog code { font-family: var(--police-code); font-size: .92em; }
+main.blog pre { overflow-x: auto; background: var(--fond); border: 1px solid var(--bord); border-radius: 10px; padding: 12px; }
+.blog-auteur, .blog-avertissement { background: var(--ia-fond); color: var(--ia-texte); border-radius: 10px; padding: 8px 12px; font-size: 15px; }
+.blog-jour { margin: 0; font-size: 14px; font-weight: 600; color: var(--texte-2); text-transform: uppercase; letter-spacing: .04em; }
+.blog-liste { list-style: none; padding: 0; }
+.blog-liste > li { border-top: 1px solid var(--bord); padding-top: 8px; }
+.blog-liste h2 { margin-top: 12px; }
+.blog-pied { font-size: 14px; color: var(--texte-2); padding-bottom: 40px; }
