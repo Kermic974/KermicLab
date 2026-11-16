@@ -1,0 +1,22 @@
+{
+  "fixture": "004-donnee-apprenant",
+  "description": "Document hors des 8 contrats (donnée apprenant).",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "eleve.fr.anonyme-42",
+      "type": "eleve",
+      "progression": 3
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-SEP-001",
+        "severity": "ERROR",
+        "location": "document:0"
+      }
+    ]
+  }
+}

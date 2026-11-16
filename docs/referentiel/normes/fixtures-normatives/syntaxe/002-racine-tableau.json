@@ -1,0 +1,20 @@
+{
+  "fixture": "002-racine-tableau",
+  "description": "La racine est un tableau.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "raw": "[]"
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-SYN-002",
+        "severity": "ERROR",
+        "location": "document:0"
+      }
+    ]
+  }
+}

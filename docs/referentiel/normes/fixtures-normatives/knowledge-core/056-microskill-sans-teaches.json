@@ -1,0 +1,26 @@
+{
+  "fixture": "056-microskill-sans-teaches",
+  "description": "MicroSkill `validated` sans Relation `teaches`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "microskill.mathematiques.calculer-l-hypotenuse",
+      "type": "microskill",
+      "label": {
+        "fr": "Calculer la longueur de l'hypoténuse"
+      },
+      "status": "validated",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-KC-005",
+        "severity": "ERROR",
+        "objectId": "microskill.mathematiques.calculer-l-hypotenuse"
+      }
+    ]
+  }
+}

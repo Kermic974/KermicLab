@@ -1,0 +1,39 @@
+{
+  "fixture": "050-autre-discipline",
+  "description": "Remplacement vers une autre discipline : WARNING.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "deprecated",
+      "version": 1,
+      "replacedBy": "notion.physique-chimie.theoreme-de-pythagore"
+    },
+    {
+      "id": "notion.physique-chimie.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "validated",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "PASS_WITH_WARNINGS",
+    "issues": [
+      {
+        "rule": "S4-RB-008",
+        "severity": "WARNING",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/replacedBy"
+      }
+    ]
+  }
+}

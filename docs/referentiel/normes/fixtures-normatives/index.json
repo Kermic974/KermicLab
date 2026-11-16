@@ -1,0 +1,862 @@
+[
+  {
+    "fichier": "syntaxe/001-json-invalide.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SYN-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "syntaxe/002-racine-tableau.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SYN-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "syntaxe/003-cle-dupliquee.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SYN-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "syntaxe/004-donnee-apprenant.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SEP-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "syntaxe/005-propriete-non-declaree.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SEP-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "syntaxe/006-evidence-sur-notion.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SEP-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "syntaxe/007-version-de-specification.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-SEP-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/008-notion-minimale.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/009-majuscule.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/010-double-tiret.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/011-deux-segments.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/012-trop-long.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/013-type-incoherent.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/014-discipline-inconnue.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/015-terme-de-niveau.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-ID-011"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/016-seconde-guerre-mondiale.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/017-doublon.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-009"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/018-relation-discipline.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/019-identite-relation-modifiee.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-010"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/020-statut-inconnu.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "cycle-de-vie/021-statut-active.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "cycle-de-vie/022-statut-retired.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "cycle-de-vie/023-review-vers-validated.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/024-review-vers-draft.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/025-validated-vers-deprecated.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/026-saut-draft-validated.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-003"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/027-nouvel-objet-validated.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-004"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/028-deprecated-modifie.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-005"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/029-suppression-validated.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-LIFE-006"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "cycle-de-vie/030-suppression-draft.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": true
+  },
+  {
+    "fichier": "versions/031-version-zero.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "versions/032-version-chaine.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "versions/033-nouvel-objet-version-2.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-002"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "versions/034-modification-sans-increment.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-003"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "versions/035-saut-de-version.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-003"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "versions/036-statut-sans-increment.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-003"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "versions/037-recul.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-004"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "versions/038-increment-sans-modification.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-VER-005"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "references/039-cible-absente.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REF-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "references/040-mauvais-contrat.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REF-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "references/041-nouvelle-vers-deprecated.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REF-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "references/042-historique-vers-deprecated.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-REF-004"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "references/043-validated-vers-draft.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REF-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/044-sur-objet-non-deprecated.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-RB-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/045-vers-soi-meme.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-RB-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/046-cible-absente.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-RB-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/047-cible-non-validated.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-RB-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/048-autre-namespace.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-RB-005",
+      "S4-KC-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/049-valide.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/050-autre-discipline.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-RB-008"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/051-chaine-historique-non-terminee.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-RB-007"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "knowledge-core/052-libelle-absent.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-KC-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/053-libelle-sans-fr.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-KC-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/054-corpus-brouillon-complet.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/055-gates-satisfaites.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/056-microskill-sans-teaches.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-KC-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/057-skill-sans-contribution.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-KC-006"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/058-skill-une-contribution.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-KC-007"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/059-requires-brouillon.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "relations/060-source-egale-cible.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/061-matrice-teaches-n-n.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/062-matrice-contributes-n-s.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/063-rationale-manquant.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/064-symetrique-non-canonique.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/065-doublon.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-006"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/066-cycle-requires.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-007"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/067-cycle-extends.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-008"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/068-cycle-supports.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-REL-009"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/069-cycle-hors-deprecated.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "relations/070-equivalent-durable.json",
+    "verdict": "PASS_WITH_WARNINGS",
+    "regles": [
+      "S4-REL-010"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/071-evidence-objet.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-EVID-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/072-evidence-sans-locator.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-EVID-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/073-graphe-complet.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/074-juridiction-invalide.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/075-edition-invalide.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/076-provenance-non-institutionnelle.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-014"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/077-edition-en-double.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/078-stagetype-inconnu.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/079-code-incoherent.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-006"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/080-parent-autre-curriculum.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-007"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/081-cycle-avec-parent.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-008"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/082-ordre-en-double.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-010"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/083-domaine-autre-curriculum.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-012"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/084-domaines-en-cycle.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-013"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/085-valide.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "mapping/086-domaine-absent-distinct.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "mapping/087-validated-avec-evidence.json",
+    "verdict": "PASS",
+    "regles": [],
+    "base": false
+  },
+  {
+    "fichier": "mapping/088-role-inconnu.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/089-provenance-absente.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/090-validated-sans-evidence.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/091-objet-hors-knowledge-core.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/092-stage-autre-curriculum.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-005"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/093-domaine-autre-curriculum.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-006"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/094-projection-en-double.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-007"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "mapping/095-role-modifie.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-MAP-008"
+    ],
+    "base": true
+  },
+  {
+    "fichier": "mapping/096-identifiant-hors-juridiction.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-008"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "provenance/097-chaine.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-PROV-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "provenance/098-type-inconnu.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-PROV-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "provenance/099-reference-manquante.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-PROV-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "provenance/100-champ-interdit.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-PROV-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "provenance/101-derive-de-absent.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-PROV-004"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/102-curriculum-juridiction-id.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-006"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "identifiants/103-stage-hors-curriculum.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-ID-007"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/104-microskill-sans-libelle.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-KC-002"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "knowledge-core/105-skill-sans-statut.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-KC-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/106-type-inconnu.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/107-rationale-sans-fr.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-REL-011"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "relations/108-evidence-trop-longue.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-EVID-003"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/109-autorite-absente.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-001"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "curriculum/110-domaine-sans-libelle.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-CUR-011"
+    ],
+    "base": false
+  },
+  {
+    "fichier": "replaced-by/111-cycle-de-remplacement.json",
+    "verdict": "FAIL",
+    "regles": [
+      "S4-RB-004",
+      "S4-RB-006"
+    ],
+    "base": false
+  }
+]

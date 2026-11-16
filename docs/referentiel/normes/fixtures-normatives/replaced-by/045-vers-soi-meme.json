@@ -1,0 +1,29 @@
+{
+  "fixture": "045-vers-soi-meme",
+  "description": "`replacedBy` vers soi-même.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "deprecated",
+      "version": 1,
+      "replacedBy": "notion.mathematiques.theoreme-de-pythagore"
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-RB-002",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/replacedBy"
+      }
+    ]
+  }
+}

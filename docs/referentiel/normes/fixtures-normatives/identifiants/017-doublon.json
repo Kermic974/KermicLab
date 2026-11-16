@@ -1,0 +1,37 @@
+{
+  "fixture": "017-doublon",
+  "description": "Deux documents ont le même `id`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Pythagore"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-ID-009",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "document:1"
+      }
+    ]
+  }
+}

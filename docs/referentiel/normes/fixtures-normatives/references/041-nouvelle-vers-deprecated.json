@@ -1,0 +1,45 @@
+{
+  "fixture": "041-nouvelle-vers-deprecated",
+  "description": "Nouvelle Relation vers une Notion `deprecated` (sans base, toute référence est nouvelle).",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "notion.mathematiques.carre-d-un-nombre",
+      "type": "notion",
+      "label": {
+        "fr": "Carré d'un nombre"
+      },
+      "status": "deprecated",
+      "version": 1
+    },
+    {
+      "id": "relation.mathematiques.pythagore-requiert-carres",
+      "type": "requires",
+      "source": "notion.mathematiques.theoreme-de-pythagore",
+      "target": "notion.mathematiques.carre-d-un-nombre",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-REF-003",
+        "severity": "ERROR",
+        "objectId": "relation.mathematiques.pythagore-requiert-carres",
+        "location": "/target"
+      }
+    ]
+  }
+}

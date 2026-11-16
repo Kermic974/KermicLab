@@ -1,0 +1,31 @@
+{
+  "fixture": "109-autorite-absente",
+  "description": "Curriculum sans `authority`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "curriculum.fr.mathematiques-cycle-4-2020",
+      "type": "curriculum",
+      "jurisdiction": "fr",
+      "title": "Programme de mathématiques du cycle 4",
+      "curriculumVersion": "2020",
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "institutional",
+        "reference": "BO n° 31 du 30 juillet 2020"
+      }
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-CUR-001",
+        "severity": "ERROR",
+        "objectId": "curriculum.fr.mathematiques-cycle-4-2020",
+        "location": "/authority"
+      }
+    ]
+  }
+}

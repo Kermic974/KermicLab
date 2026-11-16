@@ -1,0 +1,45 @@
+{
+  "fixture": "064-symetrique-non-canonique",
+  "description": "`relatedTo` avec `source > target`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "notion.mathematiques.carre-d-un-nombre",
+      "type": "notion",
+      "label": {
+        "fr": "Carré d'un nombre"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "relation.mathematiques.pythagore-lie-carres",
+      "type": "relatedTo",
+      "source": "notion.mathematiques.theoreme-de-pythagore",
+      "target": "notion.mathematiques.carre-d-un-nombre",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-REL-005",
+        "severity": "ERROR",
+        "objectId": "relation.mathematiques.pythagore-lie-carres",
+        "location": "/source"
+      }
+    ]
+  }
+}

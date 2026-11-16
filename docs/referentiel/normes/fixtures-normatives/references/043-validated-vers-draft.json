@@ -1,0 +1,48 @@
+{
+  "fixture": "043-validated-vers-draft",
+  "description": "Depuis une Relation `validated`, la cible doit être `validated`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "validated",
+      "version": 1
+    },
+    {
+      "id": "notion.mathematiques.carre-d-un-nombre",
+      "type": "notion",
+      "label": {
+        "fr": "Carré d'un nombre"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "relation.mathematiques.pythagore-requiert-carres",
+      "type": "requires",
+      "source": "notion.mathematiques.theoreme-de-pythagore",
+      "target": "notion.mathematiques.carre-d-un-nombre",
+      "status": "validated",
+      "version": 1,
+      "rationale": {
+        "fr": "On calcule des carrés pour appliquer le théorème."
+      }
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-REF-005",
+        "severity": "ERROR",
+        "objectId": "relation.mathematiques.pythagore-requiert-carres",
+        "location": "/target"
+      }
+    ]
+  }
+}

@@ -1,0 +1,687 @@
+{
+  "baseline": "kermiclab",
+  "version": "1.2.0",
+  "date": "2026-11-09",
+  "fichiers": [
+    {
+      "chemin": "AUTHORITY_INDEX.md",
+      "octets": 3337,
+      "sha256": "0bb42c323da676cc7f2512956a7784f81e9a2760d4922b692d2c02f491393315"
+    },
+    {
+      "chemin": "CHANGELOG.md",
+      "octets": 3453,
+      "sha256": "fd1ec2f3017369eaf105992126d8488098073a333230a352e975c2759fa653d0"
+    },
+    {
+      "chemin": "DECISION_FINALE_1.2.0.md",
+      "octets": 7528,
+      "sha256": "326df7e5687b18ac55dde56b11bca9faacd78e8a6c3295c173657926ded3d990"
+    },
+    {
+      "chemin": "README.md",
+      "octets": 3795,
+      "sha256": "682a2d6bb74d00988538af501cf6f6d0f6c227221738f8ed224cf4dca05eb8b8"
+    },
+    {
+      "chemin": "fixtures-normatives/README.md",
+      "octets": 2506,
+      "sha256": "15dfd78935aaa47687f508a2f6d46ef7cb150f3946dde88a3958260dcbe246a7"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/073-graphe-complet.json",
+      "octets": 2425,
+      "sha256": "2c35916ca0aa53d4f065faec68353355b0466d9e405cbf77dd053ea1f2376a48"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/074-juridiction-invalide.json",
+      "octets": 830,
+      "sha256": "5fe6983c093a93f8ceee58628c1805848d928b436d53c84b67e18d7008c07ec5"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/075-edition-invalide.json",
+      "octets": 851,
+      "sha256": "e24f1e78c982b34e9826f705cd18da2753844a8e4060a5568a45cc557b7f6cef"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/076-provenance-non-institutionnelle.json",
+      "octets": 792,
+      "sha256": "adcf27b97e3648cc4b0f4f707634e7eb90c076bd96b9d777bb6f12770e5893cf"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/077-edition-en-double.json",
+      "octets": 1216,
+      "sha256": "33ae2e02d7dd2bba08fde39a8725682ecb1d55a77926e6391892b5cebf3880f0"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/078-stagetype-inconnu.json",
+      "octets": 1149,
+      "sha256": "1acd4e145b9b872fe9e860999dca196adaaad8dde12fbe4ccc9c9194b57d44be"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/079-code-incoherent.json",
+      "octets": 1159,
+      "sha256": "d270a187bc441b4328ef0aaef357e5194a7374bcbcd047feb912d356a24d7b59"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/080-parent-autre-curriculum.json",
+      "octets": 2434,
+      "sha256": "ae3cd38f0e398362e2d3ab0f55a1dd2e65cfec7d0b21a44a2049c3ddca778021"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/081-cycle-avec-parent.json",
+      "octets": 1532,
+      "sha256": "ce2fb9be588ca5fd970ccee13214a101dca03f8d70cb13dbccf21e3c144c6cf8"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/082-ordre-en-double.json",
+      "octets": 1955,
+      "sha256": "285cf4b7bbbd598a5d444aebea10755b1e21cf22cb94f365811a56e970f40f0e"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/083-domaine-autre-curriculum.json",
+      "octets": 1948,
+      "sha256": "e38f0362273f97ad7858d7f6e286436576d842d6fc4a718a2773680a773131b2"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/084-domaines-en-cycle.json",
+      "octets": 1557,
+      "sha256": "e67b86cbd39cfb1acc7810054b883ad26a6f7926e3977b19bd432b92368befb3"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/109-autorite-absente.json",
+      "octets": 760,
+      "sha256": "db3321b721f7ee8e30ea0c9e0cf87bb908ec4f0af75ac6ee5c2b8e3d3cd24edb"
+    },
+    {
+      "chemin": "fixtures-normatives/curriculum/110-domaine-sans-libelle.json",
+      "octets": 1044,
+      "sha256": "fc97d3d2239c30d4835cde1eb9c3b12c24fa763f7d37ed2a8aaa7bdca75379bb"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/020-statut-inconnu.json",
+      "octets": 623,
+      "sha256": "b49a4a174734474cc48f235eaae5a4bba6272c023011a1e43a3200297589ced9"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/021-statut-active.json",
+      "octets": 618,
+      "sha256": "2bdbeaa0a119c9a6765581862147ca0c3f0a54dd5812d98b40d5c0c7c8d037cd"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/022-statut-retired.json",
+      "octets": 621,
+      "sha256": "2795ad8778c97739f73be392e363a25e04518383509de2a052e2fe4323ce3175"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/023-review-vers-validated.json",
+      "octets": 722,
+      "sha256": "f9ff045eb86722d22f05f45db388c10c88239c32fea1003cb92565395afcf631"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/024-review-vers-draft.json",
+      "octets": 712,
+      "sha256": "bfadb7e7b02b38cae81c85bf54d1167208e810c00a31ca24a91242e062f4af5c"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/025-validated-vers-deprecated.json",
+      "octets": 727,
+      "sha256": "8b854ffbec6146853b35e83af50bbc4d4c47023313a6b66dfa81976d5da4825f"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/026-saut-draft-validated.json",
+      "octets": 919,
+      "sha256": "95b2f5a4c86ec8379f1ab1ff4158fa9a953183e4294228f2551a8530febb6852"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/027-nouvel-objet-validated.json",
+      "octets": 663,
+      "sha256": "4460cef8516db1fa914713126a0225d26c760fd2ad5f4fbae23c6150540f0797"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/028-deprecated-modifie.json",
+      "octets": 826,
+      "sha256": "910fcaf290148d0ea48ad7c448244d5560a429142639c8df08c7a6c14faeb78f"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/029-suppression-validated.json",
+      "octets": 632,
+      "sha256": "1907194ce3821cdea0b8ed68b23c05c4a1011f934f615b2f79b8506e94d9d46c"
+    },
+    {
+      "chemin": "fixtures-normatives/cycle-de-vie/030-suppression-draft.json",
+      "octets": 469,
+      "sha256": "b5e3b6c50c1130d352dfac43a5d4c1ba69db43567c80cf486e36a223d2768ca8"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/008-notion-minimale.json",
+      "octets": 442,
+      "sha256": "0b342a4c342a9f632bef27614621fc85693e7bf448fddda01a50906737188cb9"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/009-majuscule.json",
+      "octets": 586,
+      "sha256": "4f214e19dae8ba28771a979e2cbd6a52e777dd6309ca91a805b4cb23bba3f24d"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/010-double-tiret.json",
+      "octets": 596,
+      "sha256": "b2cf25b9063aad022b457ed36ba3f28156acbd6a97a353d0193a73b4c9ec6941"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/011-deux-segments.json",
+      "octets": 610,
+      "sha256": "9cfcb3c7580307355b5eb3fde72cf95ee8840d5c5a7b3e10f69e770a95269dcf"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/012-trop-long.json",
+      "octets": 881,
+      "sha256": "1511d2a301974796e9c3abf33080d30faa777993ea104d75bbc0d65b52278b85"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/013-type-incoherent.json",
+      "octets": 622,
+      "sha256": "a66a0b507c965d5cff49d339921396ff923fda0667bf0de285937f89a20197f9"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/014-discipline-inconnue.json",
+      "octets": 576,
+      "sha256": "df618a856539d0ea8ef585f95cb9e19cac4dabcca7d04f1f11b790688d1164ca"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/015-terme-de-niveau.json",
+      "octets": 603,
+      "sha256": "27bd94468d87f5d1ee3bc7152a5331deeaf0d00f392d1f35a50d888ea399d7d6"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/016-seconde-guerre-mondiale.json",
+      "octets": 449,
+      "sha256": "40412b02e0714d73c397c537df1e641352be2fb0eb774f3214b7468ba1a23cab"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/017-doublon.json",
+      "octets": 813,
+      "sha256": "17bff38e10b3d21eb2110a7235c323002b87260df45f198b2177523828456cdf"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/018-relation-discipline.json",
+      "octets": 1133,
+      "sha256": "fcc6bc4769c820864e50624b641468479fab2b6e4eb11a40fbab9c1c6bda81df"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/019-identite-relation-modifiee.json",
+      "octets": 2208,
+      "sha256": "f94b98a52a925164257c9f40794fd101ca52bf17d590371997f11dd7bc5c6b1c"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/102-curriculum-juridiction-id.json",
+      "octets": 842,
+      "sha256": "a4fe3b4937fce7ede378b05979860505067d56e1034c6a3683990ba4f2b00a1d"
+    },
+    {
+      "chemin": "fixtures-normatives/identifiants/103-stage-hors-curriculum.json",
+      "octets": 1156,
+      "sha256": "64033c8574fe5d2f5590ea7e73a5fb4a08177af2992897816315f6834c98552d"
+    },
+    {
+      "chemin": "fixtures-normatives/index.json",
+      "octets": 16277,
+      "sha256": "84501bd811c885005d47447bdfe723697daab7fd32e9b1160d8c5a094969497f"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/052-libelle-absent.json",
+      "octets": 506,
+      "sha256": "9d5517efe1ba3341b6a1be4042e1bf2e42624616e13a3b0dad7e1dd99aad5023"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/053-libelle-sans-fr.json",
+      "octets": 575,
+      "sha256": "554200d42ef33e43690116ef784ba0039c652e15d41ca6b1b056715440464215"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/054-corpus-brouillon-complet.json",
+      "octets": 4381,
+      "sha256": "82cdab9998c3304dd6dfb22cd201041fdd7bf4de35db19ce735490bc9b4a0763"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/055-gates-satisfaites.json",
+      "octets": 2388,
+      "sha256": "d984e263814406552f1df8bb420a266f218f30a484ac014c10f3beba5d58efc9"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/056-microskill-sans-teaches.json",
+      "octets": 611,
+      "sha256": "9d6ca03849c77e3d055405539b1db44da29c5c5892bf15246a5783f4982f22a7"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/057-skill-sans-contribution.json",
+      "octets": 646,
+      "sha256": "f4daaad48ca2416b884ac9b942feff7957fe5cbe08fc223ff2da09303d9d631c"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/058-skill-une-contribution.json",
+      "octets": 1734,
+      "sha256": "51a290cbe691f2f6f116af6f7b372cce5a9123c3ef6755acd03a55eca2750906"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/104-microskill-sans-libelle.json",
+      "octets": 534,
+      "sha256": "dd67b0e44cae5f3cbedce6db71ea0e8fdad4bdf6248fa61906a12be2cf98e795"
+    },
+    {
+      "chemin": "fixtures-normatives/knowledge-core/105-skill-sans-statut.json",
+      "octets": 614,
+      "sha256": "b0845647b7c8fade5807c45c7e3c5dbaf7f3d647b7efd3f0f568be3463198e39"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/085-valide.json",
+      "octets": 2839,
+      "sha256": "7cb245aedaa3981b17bb708fa0219923c34cff549237dbb9196ddf06f66cdc42"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/086-domaine-absent-distinct.json",
+      "octets": 3386,
+      "sha256": "17b320d3df17bbddc221244a789edfd056da07b9c5863ca88a2424e87141f9fc"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/087-validated-avec-evidence.json",
+      "octets": 3241,
+      "sha256": "b65773d98fa807a559b8d93f0ee63f385f7182c0926d3c0d00acff63f883c48a"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/088-role-inconnu.json",
+      "octets": 3027,
+      "sha256": "55e761dc8a022b421917886f8218052f16382b92266c48afd9d0569d2b385b7a"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/089-provenance-absente.json",
+      "octets": 2919,
+      "sha256": "26516ac7a062374ebac24e03ee87d1664633d393d8cdae319e1906d49212bdb5"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/090-validated-sans-evidence.json",
+      "octets": 3082,
+      "sha256": "be558adf99104595af8a5f9a61ad4618b4d3e3302caf5f4e4af5ba10f6abe0e5"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/091-objet-hors-knowledge-core.json",
+      "octets": 2810,
+      "sha256": "81803cc8a1199407e6428a68ecab1f3162198d54467d18afc6f695d27ddb1b6f"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/092-stage-autre-curriculum.json",
+      "octets": 3856,
+      "sha256": "01353ae066716f96a24478ea1d4da38175e2f99f41910cadb5b1a3dd1ed36959"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/093-domaine-autre-curriculum.json",
+      "octets": 3788,
+      "sha256": "0f176981da1927f184ae5f9bd6b65dc2592f85e1ed12c3ce86dd6b9f1dd533ad"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/094-projection-en-double.json",
+      "octets": 3580,
+      "sha256": "ed7f4501f0c7601da68524b3ae4f526657e8efa22bce02a54ba911ebb1a7f395"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/095-role-modifie.json",
+      "octets": 5711,
+      "sha256": "a98c7a82be1a69a0fad86efa7f6316eebaf3df0e752abf28f4c997cf2ad59479"
+    },
+    {
+      "chemin": "fixtures-normatives/mapping/096-identifiant-hors-juridiction.json",
+      "octets": 3064,
+      "sha256": "5f1bf7b57946585fae23671bfee064ced35e1a18670a1a4e65a92ab402896278"
+    },
+    {
+      "chemin": "fixtures-normatives/provenance/097-chaine.json",
+      "octets": 2953,
+      "sha256": "32b3a62a71f63f46b89aa5966289d9f1d33e2fe09e9fb399271fdf2cba69eccd"
+    },
+    {
+      "chemin": "fixtures-normatives/provenance/098-type-inconnu.json",
+      "octets": 2987,
+      "sha256": "b07463085510ffab5d0a4eae36110be56da4d773bdaf9fb531529fa10ddc8a01"
+    },
+    {
+      "chemin": "fixtures-normatives/provenance/099-reference-manquante.json",
+      "octets": 2994,
+      "sha256": "b4fc2dba24d36c629d9ac69c6733aeb401857fb300c0d205d7e8c8c147f82998"
+    },
+    {
+      "chemin": "fixtures-normatives/provenance/100-champ-interdit.json",
+      "octets": 1179,
+      "sha256": "a99c2e86d85a7c752e605187baa21467c4a2264ee88ddac7d58f42d873cf42ec"
+    },
+    {
+      "chemin": "fixtures-normatives/provenance/101-derive-de-absent.json",
+      "octets": 792,
+      "sha256": "75be67116aa9fc2b3a98b16d7713448baa36ac4f133bd9a24f8e88360e542d79"
+    },
+    {
+      "chemin": "fixtures-normatives/references/039-cible-absente.json",
+      "octets": 882,
+      "sha256": "9025d85ecc743db8916c681708b277bfeaa60e86214a1ddfc1edb584f7e91e44"
+    },
+    {
+      "chemin": "fixtures-normatives/references/040-mauvais-contrat.json",
+      "octets": 1461,
+      "sha256": "915d1490213e28e6160ba48d6db5ae545340aef85d576f75d20c5ce1acba9aa1"
+    },
+    {
+      "chemin": "fixtures-normatives/references/041-nouvelle-vers-deprecated.json",
+      "octets": 1169,
+      "sha256": "98b28d80b6fede6e5fad68e4ed8b6a8ef28199f22fe124f5f5cff754a84d839d"
+    },
+    {
+      "chemin": "fixtures-normatives/references/042-historique-vers-deprecated.json",
+      "octets": 1875,
+      "sha256": "73d00642a8bc2e791f38078ce413ceee00ca95b4c2e9f58964c1d1ec4c2d0eab"
+    },
+    {
+      "chemin": "fixtures-normatives/references/043-validated-vers-draft.json",
+      "octets": 1241,
+      "sha256": "6cdb988c86c015fea2fc4651d2a9694b6ad55c13049d7d5ffba44630255e9763"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/059-requires-brouillon.json",
+      "octets": 936,
+      "sha256": "567a194f9621103c4565a2ca6891e4b925807d265ad0745c3c774bdae19f17a3"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/060-source-egale-cible.json",
+      "octets": 893,
+      "sha256": "033cffe83789690d731afceae50d5d3c4e492f2ca613ec05f9e3e3f5ff75b96a"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/061-matrice-teaches-n-n.json",
+      "octets": 1065,
+      "sha256": "e46a2596bd5450b9ad913f674381fc097437e21b31c21c5ed6c487f08dd4501e"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/062-matrice-contributes-n-s.json",
+      "octets": 1145,
+      "sha256": "dddd7334d0b3db3dec20c207d0bddebf66ed1a330bb3c2652d2eeb38a8d6c3bc"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/063-rationale-manquant.json",
+      "octets": 1122,
+      "sha256": "2397588c061ccb4df1075db012a656db51e45ff08f8717432334ddf0bd4fb13e"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/064-symetrique-non-canonique.json",
+      "octets": 1099,
+      "sha256": "1907ad513afa5d67ac8d67129d47e69577c23cfa43cee1dfee6646ac0e15f3cb"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/065-doublon.json",
+      "octets": 1312,
+      "sha256": "841da6fac75a798bba1133c549335c0aadead1f185a15bb8601e4e2acddb926b"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/066-cycle-requires.json",
+      "octets": 1316,
+      "sha256": "7823db9bf4b452ff1bdc305972242a888dad8973905eab4f2b91b0fef2108c04"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/067-cycle-extends.json",
+      "octets": 1264,
+      "sha256": "f1012bea2fe1def29ecef927b8512216142795b81e3a2a13efef9f61715b4a6e"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/068-cycle-supports.json",
+      "octets": 1291,
+      "sha256": "c9d098cf8b965745d1e12612b2e294e2e69c133eb26ec9d202e91eefcf32d509"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/069-cycle-hors-deprecated.json",
+      "octets": 1326,
+      "sha256": "77c3ee1140d24745386437e2ea6e2209c6f60a6283d046938de15504a21c852c"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/070-equivalent-durable.json",
+      "octets": 1234,
+      "sha256": "37400d12146a1c1bb69c316edee7df3f971967fb25e896a6472c1c61ee7c0b23"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/071-evidence-objet.json",
+      "octets": 1405,
+      "sha256": "f08ab5d8ea73798ef8da81db0b23da3a0929c2b8e75ea736895324ef27b27ebb"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/072-evidence-sans-locator.json",
+      "octets": 1364,
+      "sha256": "3a5e1214f79606fc15ada0a8ffb9519ad83c310460893c209fe9d09ee007bfdd"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/106-type-inconnu.json",
+      "octets": 1144,
+      "sha256": "6f270ed5f2febe77360527bb2d71eb120a9288e4574bd237dd6c01f76c063401"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/107-rationale-sans-fr.json",
+      "octets": 1162,
+      "sha256": "79e8c8a24ed99b812262313fd90867a7954251e880df2c364f266b037dc1c10f"
+    },
+    {
+      "chemin": "fixtures-normatives/relations/108-evidence-trop-longue.json",
+      "octets": 2966,
+      "sha256": "2bac12c8fcbaf49af2b4b0daf9b1b806c44a31da63710af8de8f1af1d0a77d79"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/044-sur-objet-non-deprecated.json",
+      "octets": 895,
+      "sha256": "17913e3d6d8583317d51fcf5e41208df8b0a230db45a5ac03d78efac84bebc3c"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/045-vers-soi-meme.json",
+      "octets": 695,
+      "sha256": "0e4d9ad49ff0a521c32188e23f3742962c917a4e97d93e402bcf0f8fad111024"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/046-cible-absente.json",
+      "octets": 691,
+      "sha256": "ced04233b8f871bd9dff3a16562c0976ca0f3bb0b88fb7bcb0dbefe09c8cc47f"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/047-cible-non-validated.json",
+      "octets": 896,
+      "sha256": "15f7a12f69daec16f963e286d74303825d323c51696ee89736e846826f148b4e"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/048-autre-namespace.json",
+      "octets": 1094,
+      "sha256": "7dd20888c7e93e9258e477c9bf7dd9989ead27609f131a1b0bc6243797efb175"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/049-valide.json",
+      "octets": 735,
+      "sha256": "1a94740892890fb0c1e6d207a7c94a0a9c49d70a56beffc6fef50d8fdc2e96fe"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/050-autre-discipline.json",
+      "octets": 985,
+      "sha256": "0846038442f21578a27fb77804807de0a62c1a2edd70fbac93cb0075500977d9"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/051-chaine-historique-non-terminee.json",
+      "octets": 1479,
+      "sha256": "c4627dacfbaa1d2fba12b381a8461bb90ad211e2971676fbf560e7729d3738c4"
+    },
+    {
+      "chemin": "fixtures-normatives/replaced-by/111-cycle-de-remplacement.json",
+      "octets": 1363,
+      "sha256": "75b532dd6000bb28b4b42b4bdddd55295d50c2e73aa2e86e6ccb3249aeb0a432"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/001-json-invalide.json",
+      "octets": 386,
+      "sha256": "f276ddb10724fe7ac969b6ef8aa9b235567e8db178f48d862cab0d915ef02da4"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/002-racine-tableau.json",
+      "octets": 345,
+      "sha256": "1ead981df0af3a53a26d3ee536f582d36a9134b3666818d24bfeffa82b59da8e"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/003-cle-dupliquee.json",
+      "octets": 516,
+      "sha256": "9963b3d8b0d3f9b01ea9e4a8ffd476a8e4253796d51811040fcf4954dbed9259"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/004-donnee-apprenant.json",
+      "octets": 434,
+      "sha256": "ff13a6f6a8bf1cde26de5be89b0825cb6135c497585d34445ef982772e98cdd3"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/005-propriete-non-declaree.json",
+      "octets": 750,
+      "sha256": "40c24c029506271d1374d25959f619a01e9025cdcad6948a5cb759c8af3a1de5"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/006-evidence-sur-notion.json",
+      "octets": 970,
+      "sha256": "00d6445527ec4e541ad8a6b899eb850fcb7f3970d422036dd2c8f994adc7ea32"
+    },
+    {
+      "chemin": "fixtures-normatives/syntaxe/007-version-de-specification.json",
+      "octets": 635,
+      "sha256": "2b500e1a36fd22f0ef020af7944c6ea64ece4dfd46aec4ae082febc6d88e9a27"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/031-version-zero.json",
+      "octets": 610,
+      "sha256": "bd5ca787f939dc275051eca7d351d01eab9c28a2108f400b5c9df5cbb54de9d6"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/032-version-chaine.json",
+      "octets": 623,
+      "sha256": "925d9417eb390c86feeb0daffaa77cde93754a5543b2720be868ccd60bdd45be"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/033-nouvel-objet-version-2.json",
+      "octets": 648,
+      "sha256": "e09fdd6095514e7fc4200d740c61da8d017a42e40c17807fbfd8cd680f965ec4"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/034-modification-sans-increment.json",
+      "octets": 857,
+      "sha256": "735ca4ebccf218e66b2e6b90f8a56713658aeb599263edb9ff609e554f20c51f"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/035-saut-de-version.json",
+      "octets": 814,
+      "sha256": "3fc43211fed8ce0b486ff5327d90366ff83f0e2e8e43895a382a56ac4c80fa07"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/036-statut-sans-increment.json",
+      "octets": 903,
+      "sha256": "d0489d79e3667f7f98e6b3eb6c0afa4ccaa362ab35a35ec523687ff279ad225f"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/037-recul.json",
+      "octets": 811,
+      "sha256": "5ffb2a1bf32abd2d9ec278d987cc7b2ec0cfb9e7c65b9b4fd79d97cd4107a160"
+    },
+    {
+      "chemin": "fixtures-normatives/versions/038-increment-sans-modification.json",
+      "octets": 902,
+      "sha256": "4e4c3acb293ceb4b042d67b3dd3bb3b0c77d1584cb7dc698af2f07c8ed26636a"
+    },
+    {
+      "chemin": "registres/CONFLICTS.md",
+      "octets": 2458,
+      "sha256": "fdf523ff915f0c036bc0564f159d66d34d0f16d1bcd5fa354190f561a866e5b4"
+    },
+    {
+      "chemin": "registres/DECISIONS.md",
+      "octets": 4823,
+      "sha256": "03ceaf786daa9b5b9219802cdf2dc175c2de2d6f53c417dc8b67256582dac910"
+    },
+    {
+      "chemin": "registres/GATES.md",
+      "octets": 3614,
+      "sha256": "127c060ed2a326d8080f40751c4a5069f393663bf2392ed3959494cb6531efff"
+    },
+    {
+      "chemin": "registres/OPEN.md",
+      "octets": 2809,
+      "sha256": "760f6a42c281b1541c1397112dcede9bde0d1601bb809554d3a174d8416ee0b6"
+    },
+    {
+      "chemin": "registres/RULE_CATALOG.csv",
+      "octets": 12720,
+      "sha256": "d136aa597f0f2df3003c7e475c920ea8ed1282865f4306fd624d97e4fab474f5"
+    },
+    {
+      "chemin": "sections/S1_vision_perimetre.md",
+      "octets": 2545,
+      "sha256": "c9a0c9c57daa085551237b309de36b1b4f35bf15a113701a64aa8b14a25121d3"
+    },
+    {
+      "chemin": "sections/S2_notion_microskill_skill.md",
+      "octets": 2473,
+      "sha256": "aae1445539596b079e8cab59628fecbd33527981b1ad39db59a2078d96b94d6d"
+    },
+    {
+      "chemin": "sections/S3.1_knowledge_graph_relations.md",
+      "octets": 2788,
+      "sha256": "35081db8ca002bb7a701310029d4ca71c883aeef7ec39f0240d69c2bd455abc9"
+    },
+    {
+      "chemin": "sections/S3.2_curriculum_graph.md",
+      "octets": 2350,
+      "sha256": "0f45e26b4d474ff9dcd06ae3fe03086ff30635e48b2fbfbb0d6be52b36c46bd5"
+    },
+    {
+      "chemin": "sections/S3_synthese.md",
+      "octets": 727,
+      "sha256": "af24034685cf4a8d4adb0f1294526a0f573e74e32c014d7333c9bd044c353bd7"
+    },
+    {
+      "chemin": "sections/S4.1_identifiants_namespaces.md",
+      "octets": 4847,
+      "sha256": "f5c788bd07bda63054a09ec7389727c9b50aa4668aabd12bb35b0049f65b99a7"
+    },
+    {
+      "chemin": "sections/S4.2_cycle_de_vie_versionnement.md",
+      "octets": 10487,
+      "sha256": "e20c25755c7e0cd9bf1a7d06222f3d69694a829a7be250b6c860e4db9661e40a"
+    },
+    {
+      "chemin": "sections/S4.3_knowledge_core.md",
+      "octets": 3246,
+      "sha256": "cd7a8b01ef65f676398c6ec4240551a3291d81d09c1de8ab61faa81c19acee1c"
+    },
+    {
+      "chemin": "sections/S4.4_relation.md",
+      "octets": 3931,
+      "sha256": "a41d20e01eb4db97bdbf310574459067061a34ff044117d9dba1a84225f10e60"
+    },
+    {
+      "chemin": "sections/S4.5_curriculum_stage_domain.md",
+      "octets": 6641,
+      "sha256": "482b5a54195e667629e064128a36f75d93890ec9a3b9ea633c382dbfc2a53415"
+    },
+    {
+      "chemin": "sections/S4.6_curriculum_mapping.md",
+      "octets": 3955,
+      "sha256": "2e6512592d450ea44ba4216f402ba80d09782e29cc50264dffde7b78666207b4"
+    },
+    {
+      "chemin": "sections/S4.7_provenance_evidence.md",
+      "octets": 4990,
+      "sha256": "a19999061c9f5cf7b6c6f1713a7aad74e65b718dec0b3655e7d45ff04259181e"
+    },
+    {
+      "chemin": "sections/S4.8_validation_rapport.md",
+      "octets": 8501,
+      "sha256": "02ffc31ceeb5f1330219e49bb7f788f3d9e5f9b52122ded2e726c58bdd53a123"
+    },
+    {
+      "chemin": "sections/S4_synthese.md",
+      "octets": 2249,
+      "sha256": "0930141992499f7dc71456e68412c49127eb60f8cecbdbd885258bb473394495"
+    }
+  ]
+}

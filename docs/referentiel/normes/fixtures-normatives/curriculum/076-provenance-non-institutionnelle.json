@@ -1,0 +1,31 @@
+{
+  "fixture": "076-provenance-non-institutionnelle",
+  "description": "Curriculum de provenance éditoriale.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "curriculum.fr.mathematiques-cycle-4-2020",
+      "type": "curriculum",
+      "jurisdiction": "fr",
+      "authority": "Ministère de l'Éducation nationale",
+      "title": "Programme de mathématiques du cycle 4",
+      "curriculumVersion": "2020",
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "editorial"
+      }
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-CUR-014",
+        "severity": "ERROR",
+        "objectId": "curriculum.fr.mathematiques-cycle-4-2020",
+        "location": "/provenance/type"
+      }
+    ]
+  }
+}

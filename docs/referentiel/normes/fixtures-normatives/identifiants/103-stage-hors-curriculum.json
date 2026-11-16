@@ -1,0 +1,45 @@
+{
+  "fixture": "103-stage-hors-curriculum",
+  "description": "Segments 2 et 3 du Stage différents de ceux de son Curriculum.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "curriculum.fr.mathematiques-cycle-4-2020",
+      "type": "curriculum",
+      "jurisdiction": "fr",
+      "authority": "Ministère de l'Éducation nationale",
+      "title": "Programme de mathématiques du cycle 4",
+      "curriculumVersion": "2020",
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "institutional",
+        "reference": "BO n° 31 du 30 juillet 2020"
+      }
+    },
+    {
+      "id": "stage.fr.autre-programme.cycle-4",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "stageType": "cycle",
+      "code": "cycle-4",
+      "label": {
+        "fr": "Cycle 4"
+      },
+      "order": 1,
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-ID-007",
+        "severity": "ERROR",
+        "objectId": "stage.fr.autre-programme.cycle-4",
+        "location": "/id"
+      }
+    ]
+  }
+}

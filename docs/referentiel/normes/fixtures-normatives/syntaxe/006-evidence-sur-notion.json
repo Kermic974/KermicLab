@@ -1,0 +1,36 @@
+{
+  "fixture": "006-evidence-sur-notion",
+  "description": "`evidence` n'est pas déclaré pour une Notion.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1,
+      "evidence": [
+        {
+          "kind": "programme-excerpt",
+          "reference": "Programme de mathématiques du cycle 4, BO n° 31 du 30 juillet 2020",
+          "locator": "Espace et géométrie, repères annuels, 4e",
+          "excerpt": "Le théorème de Pythagore est introduit en 4e."
+        }
+      ]
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-SEP-002",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/evidence"
+      }
+    ]
+  }
+}

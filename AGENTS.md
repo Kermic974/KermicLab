@@ -36,6 +36,7 @@ Principes non négociables :
 | `docs/chantiers/` | Une fiche par chantier transverse (niveau de maturité, prochaines étapes) |
 | `docs/projets.md` | Projets GitHub de la feuille de route : épiques, sous-issues, labels `projet:*` / `horizon:*`, priorités. Source du lien : `.github/projets.json` (vérifié par `tests/unit/projets.test.mjs`) |
 | `docs/decisions/` | Journal des décisions (ADR courts) |
+| `docs/referentiel/` | Référentiel canonique S4 : baseline normative 1.2.0 (`normes/`), décision finale, audit, historique des sources. Intégration : ADR 0026 |
 | `docs/actions-manuelles.md` | Actions humaines requises et leur statut |
 
 ## 3. Commandes

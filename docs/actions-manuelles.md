@@ -2,6 +2,12 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Référentiel canonique S4 (ADR 0026)
+
+| # | Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|---|
+| 44 | Verser les textes primaires S1, S2, S3.1, S3.2, S4.1 à S4.8 et l'audit transversal v1.1.1 (OPEN-C01) ; trancher ensuite OPEN-C03 (sens de `supports` et `extends`), OPEN-C04 (disciplines) et OPEN-C05 (codes de Stage) | `docs/referentiel/historique/` (textes) ; `docs/referentiel/normes/registres/OPEN.md` | Les sections de la baseline 1.2.0 sont reconstruites ; un texte primaire de rang supérieur peut rendre une règle [P] obsolète (correction ciblée par Rule ID) | Chaque texte figure dans `AUTHORITY_INDEX.md` ; chaque règle contredite est marquée OBSOLETE dans `registres/CONFLICTS.md` | à faire (non bloquant) |
+
 ## Projets de la feuille de route (docs/projets.md)
 
 - **Fait par l'agent** (2026-11-07) : 9 épiques `[Projet] …` (#164 à #172), 35 sous-issues (#173 à #207) et rattachement

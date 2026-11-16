@@ -1,0 +1,29 @@
+{
+  "fixture": "033-nouvel-objet-version-2",
+  "description": "Un objet nouveau commence à 1.",
+  "specificationVersion": "1.2.0",
+  "base": [],
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 2
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-VER-002",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/version"
+      }
+    ]
+  }
+}

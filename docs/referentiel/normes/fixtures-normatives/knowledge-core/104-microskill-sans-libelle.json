@@ -1,0 +1,24 @@
+{
+  "fixture": "104-microskill-sans-libelle",
+  "description": "MicroSkill sans `label`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "microskill.mathematiques.calculer-l-hypotenuse",
+      "type": "microskill",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-KC-002",
+        "severity": "ERROR",
+        "objectId": "microskill.mathematiques.calculer-l-hypotenuse",
+        "location": "/label"
+      }
+    ]
+  }
+}

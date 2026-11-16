@@ -1,0 +1,28 @@
+{
+  "fixture": "020-statut-inconnu",
+  "description": "Statut hors vocabulaire.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "published",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-LIFE-001",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/status"
+      }
+    ]
+  }
+}

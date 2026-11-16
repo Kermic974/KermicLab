@@ -1,0 +1,96 @@
+{
+  "package": "kermiclab-agent-handoff",
+  "version": "1.1.2-handoff",
+  "files": [
+    {
+      "path": "00-start-here/AGENT_INSTRUCTIONS.md",
+      "sha256": "5580b375aff28c82b7ae38f80dea801c9b0fc444bbfcc5dc3d30956032d7d7f1",
+      "bytes": 1977
+    },
+    {
+      "path": "00-start-here/README.md",
+      "sha256": "3451eefa535b9345f0eedda3d9e8ebbab90454cdc7df59f943911186755d1a03",
+      "bytes": 1196
+    },
+    {
+      "path": "01-normative-baseline/AUTHORITY_AND_DECISIONS.md",
+      "sha256": "b1c0f80e601d246aa44bff3200f2ae7f538e4fbe6ebbfa3a4981555eec201dcc",
+      "bytes": 1467
+    },
+    {
+      "path": "01-normative-baseline/IDENTIFIERS_AND_LIFECYCLE.md",
+      "sha256": "85ecea52e1fe47c1bfb3644a32ff103085bc405e03dfc02f19d4fac49ebd068d",
+      "bytes": 1222
+    },
+    {
+      "path": "01-normative-baseline/RELATION_MATRIX.md",
+      "sha256": "2bd80db2c0be2a7a0ee29c8b3648d662c836ecc4c7d46258974f0fc868cd42f6",
+      "bytes": 761
+    },
+    {
+      "path": "01-normative-baseline/S4_CANONICAL_CONTRACTS.md",
+      "sha256": "892ab0067526b0593c8bdf5a00281c1b27834d41f80f561a07d3c416622cd8ee",
+      "bytes": 1670
+    },
+    {
+      "path": "01-normative-baseline/VALIDATION_RULES.md",
+      "sha256": "cd8c2c7e8e1dc486a9e33432b6ab7de7c1fd659ee8d1edd5494ae7d012773b60",
+      "bytes": 1041
+    },
+    {
+      "path": "02-implementation-plan/EXECUTION_PLAN.md",
+      "sha256": "3003e0653340e60355a8ab6c5f327c1ae5afbc3fa8f310104a2373f362260d10",
+      "bytes": 1519
+    },
+    {
+      "path": "02-implementation-plan/PR_STRATEGY.md",
+      "sha256": "e00c32d097051eb74d716abc75affd4431f6c9dc48d63c866b829dcafd140177",
+      "bytes": 606
+    },
+    {
+      "path": "02-implementation-plan/REPOSITORY_AUDIT.md",
+      "sha256": "a2823de2d49d88ccfcf1cfa54b24ab361dcfdf2fd2ec0f84a107f201666f52d7",
+      "bytes": 869
+    },
+    {
+      "path": "03-agent-prompts/MASTER_PROMPT.md",
+      "sha256": "7b63447e359092609d9f77b78df63919b77b68851611e4568e4c7b11e017cbd1",
+      "bytes": 1129
+    },
+    {
+      "path": "03-agent-prompts/PHASE_PROMPTS.md",
+      "sha256": "edb1864e34ba41f80eecfcff5ecd03c6c2d3011d72bf0d980d1b150c945799fb",
+      "bytes": 848
+    },
+    {
+      "path": "04-templates/PR_PLAN.md",
+      "sha256": "aaebf04d99828c9e1fa7ce2d1c4e755399ae80dae329cff3dec63584156514cc",
+      "bytes": 234
+    },
+    {
+      "path": "04-templates/REPOSITORY_GAP_MATRIX.md",
+      "sha256": "b402c3c3918509fc7866ea139383c610d4a3fa778a782350df60b63903383506",
+      "bytes": 310
+    },
+    {
+      "path": "04-templates/RULE_CATALOG.csv",
+      "sha256": "330d672702d7404cd439bcb048d1d0bb6d7a15c4120d8230f2db6bee535b9433",
+      "bytes": 88
+    },
+    {
+      "path": "04-templates/VALIDATION_REPORT.json",
+      "sha256": "d3af0440c11f65a1bd61b1523dcc260a73b3a45b251f4bece011004d6fd3a960",
+      "bytes": 267
+    },
+    {
+      "path": "05-checklists/DEFINITION_OF_DONE.md",
+      "sha256": "fad1f898e98f3ffbc7ca8b02974dd77de81c875bd653062fa2827a62063c4c3d",
+      "bytes": 879
+    },
+    {
+      "path": "05-checklists/SECURITY_AND_CI.md",
+      "sha256": "1e73ee0caa60515bba40d1b87f6a18689f5ce7edc119543585d87dad25856903",
+      "bytes": 537
+    }
+  ]
+}

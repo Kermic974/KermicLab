@@ -1,0 +1,29 @@
+{
+  "fixture": "046-cible-absente",
+  "description": "`replacedBy` vers un objet absent.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "deprecated",
+      "version": 1,
+      "replacedBy": "notion.mathematiques.inexistante"
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-RB-003",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/replacedBy"
+      }
+    ]
+  }
+}

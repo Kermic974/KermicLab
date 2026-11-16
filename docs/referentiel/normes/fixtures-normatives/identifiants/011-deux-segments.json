@@ -1,0 +1,28 @@
+{
+  "fixture": "011-deux-segments",
+  "description": "Deux segments seulement ; les règles dépendantes ne sont pas évaluées.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-ID-001",
+        "severity": "ERROR",
+        "objectId": "notion.pythagore",
+        "location": "/id"
+      }
+    ]
+  }
+}

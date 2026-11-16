@@ -1,0 +1,28 @@
+{
+  "fixture": "014-discipline-inconnue",
+  "description": "Discipline hors liste.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.musique.solfege",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-ID-004",
+        "severity": "ERROR",
+        "objectId": "notion.musique.solfege",
+        "location": "/id"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "fixture": "016-seconde-guerre-mondiale",
+  "description": "« seconde » n'est pas dans la liste des termes de niveau.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.histoire.seconde-guerre-mondiale",
+      "type": "notion",
+      "label": {
+        "fr": "La Seconde Guerre mondiale"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "PASS",
+    "issues": []
+  }
+}

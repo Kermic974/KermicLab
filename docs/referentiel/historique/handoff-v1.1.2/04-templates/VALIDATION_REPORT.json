@@ -1,0 +1,15 @@
+{
+  "specificationVersion": "1.1.2",
+  "verdict": "PASS|FAIL",
+  "errors": 0,
+  "warnings": 0,
+  "issues": [
+    {
+      "rule": "S4-EXAMPLE-001",
+      "severity": "ERROR|WARNING",
+      "message": "...",
+      "objectId": "...",
+      "location": "..."
+    }
+  ]
+}

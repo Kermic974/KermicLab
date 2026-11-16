@@ -1,0 +1,29 @@
+{
+  "fixture": "027-nouvel-objet-validated",
+  "description": "Un objet nouveau ne naît pas `validated`.",
+  "specificationVersion": "1.2.0",
+  "base": [],
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "validated",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-LIFE-004",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/status"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "fixture": "101-derive-de-absent",
+  "description": "`derivedFrom` désigne un objet absent.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "derived",
+        "derivedFrom": [
+          "notion.mathematiques.inexistante"
+        ]
+      }
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-PROV-004",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/provenance/derivedFrom/0"
+      }
+    ]
+  }
+}

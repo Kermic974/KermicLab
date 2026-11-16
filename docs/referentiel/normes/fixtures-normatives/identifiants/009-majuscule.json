@@ -1,0 +1,28 @@
+{
+  "fixture": "009-majuscule",
+  "description": "Majuscule dans un segment.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.Pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-ID-001",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.Pythagore",
+        "location": "/id"
+      }
+    ]
+  }
+}

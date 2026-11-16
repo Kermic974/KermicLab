@@ -1,0 +1,33 @@
+{
+  "fixture": "025-validated-vers-deprecated",
+  "description": "Dépréciation sans successeur.",
+  "specificationVersion": "1.2.0",
+  "base": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "validated",
+      "version": 1
+    }
+  ],
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "deprecated",
+      "version": 2
+    }
+  ],
+  "expected": {
+    "verdict": "PASS",
+    "issues": []
+  }
+}

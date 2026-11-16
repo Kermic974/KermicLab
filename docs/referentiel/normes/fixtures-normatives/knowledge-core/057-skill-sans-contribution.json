@@ -1,0 +1,26 @@
+{
+  "fixture": "057-skill-sans-contribution",
+  "description": "Skill `validated` sans Relation `contributesTo`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "skill.mathematiques.resoudre-un-probleme-de-triangle-rectangle",
+      "type": "skill",
+      "label": {
+        "fr": "Résoudre un problème de triangle rectangle"
+      },
+      "status": "validated",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-KC-006",
+        "severity": "ERROR",
+        "objectId": "skill.mathematiques.resoudre-un-probleme-de-triangle-rectangle"
+      }
+    ]
+  }
+}

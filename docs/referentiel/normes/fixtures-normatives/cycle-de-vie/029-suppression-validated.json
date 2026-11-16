@@ -1,0 +1,28 @@
+{
+  "fixture": "029-suppression-validated",
+  "description": "Un objet `validated` de la base disparaît.",
+  "specificationVersion": "1.2.0",
+  "base": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "validated",
+      "version": 1
+    }
+  ],
+  "candidate": [],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-LIFE-006",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore"
+      }
+    ]
+  }
+}

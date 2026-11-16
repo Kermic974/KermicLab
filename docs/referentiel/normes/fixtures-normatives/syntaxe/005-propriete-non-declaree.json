@@ -1,0 +1,31 @@
+{
+  "fixture": "005-propriete-non-declaree",
+  "description": "Une Notion porte des prérequis : relation stockée dans le nœud.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1,
+      "prerequis": [
+        "notion.mathematiques.carre-d-un-nombre"
+      ]
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-SEP-002",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/prerequis"
+      }
+    ]
+  }
+}

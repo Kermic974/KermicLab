@@ -1,0 +1,20 @@
+{
+  "fixture": "003-cle-dupliquee",
+  "description": "Clé `status` présente deux fois.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "raw": "{\"id\":\"notion.mathematiques.racine-carree\",\"type\":\"notion\",\"label\":{\"fr\":\"Racine carrée\"},\"status\":\"draft\",\"status\":\"validated\",\"version\":1}"
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-SYN-003",
+        "severity": "ERROR",
+        "location": "document:0"
+      }
+    ]
+  }
+}

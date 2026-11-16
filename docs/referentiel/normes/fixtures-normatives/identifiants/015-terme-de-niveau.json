@@ -1,0 +1,27 @@
+{
+  "fixture": "015-terme-de-niveau",
+  "description": "Le chemin contient « cycle-3 » : WARNING lexical.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.fractions-cycle-3",
+      "type": "notion",
+      "label": {
+        "fr": "Racine carrée"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "PASS_WITH_WARNINGS",
+    "issues": [
+      {
+        "rule": "S4-ID-011",
+        "severity": "WARNING",
+        "objectId": "notion.mathematiques.fractions-cycle-3",
+        "location": "/id"
+      }
+    ]
+  }
+}

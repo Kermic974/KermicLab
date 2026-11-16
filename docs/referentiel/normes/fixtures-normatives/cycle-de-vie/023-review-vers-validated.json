@@ -1,0 +1,33 @@
+{
+  "fixture": "023-review-vers-validated",
+  "description": "Transition autorisée, version +1.",
+  "specificationVersion": "1.2.0",
+  "base": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "review",
+      "version": 1
+    }
+  ],
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "validated",
+      "version": 2
+    }
+  ],
+  "expected": {
+    "verdict": "PASS",
+    "issues": []
+  }
+}

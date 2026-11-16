@@ -1,0 +1,27 @@
+{
+  "fixture": "053-libelle-sans-fr",
+  "description": "`label` sans clé `fr`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-KC-004",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore",
+        "location": "/label"
+      }
+    ]
+  }
+}

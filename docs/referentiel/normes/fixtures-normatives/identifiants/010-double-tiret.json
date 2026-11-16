@@ -1,0 +1,28 @@
+{
+  "fixture": "010-double-tiret",
+  "description": "Double tiret.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme--pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-ID-001",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme--pythagore",
+        "location": "/id"
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "fixture": "080-parent-autre-curriculum",
+  "description": "Le parent d'un Stage appartient à un autre Curriculum.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "curriculum.fr.mathematiques-cycle-4-2020",
+      "type": "curriculum",
+      "jurisdiction": "fr",
+      "authority": "Ministère de l'Éducation nationale",
+      "title": "Programme de mathématiques du cycle 4",
+      "curriculumVersion": "2020",
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "institutional",
+        "reference": "BO n° 31 du 30 juillet 2020"
+      }
+    },
+    {
+      "id": "curriculum.fr.mathematiques-seconde-2019",
+      "type": "curriculum",
+      "jurisdiction": "fr",
+      "authority": "Ministère de l'Éducation nationale",
+      "title": "Programme de mathématiques de seconde générale et technologique",
+      "curriculumVersion": "2019",
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "institutional",
+        "reference": "BO spécial n° 1 du 22 janvier 2019"
+      }
+    },
+    {
+      "id": "stage.fr.mathematiques-seconde-2019.cycle-4",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-seconde-2019",
+      "stageType": "cycle",
+      "code": "cycle-4",
+      "label": {
+        "fr": "Cycle 4"
+      },
+      "order": 1,
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "stage.fr.mathematiques-seconde-2019.seconde",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-seconde-2019",
+      "stageType": "classe",
+      "code": "seconde",
+      "label": {
+        "fr": "Seconde"
+      },
+      "order": 1,
+      "status": "draft",
+      "version": 1,
+      "parent": "stage.fr.mathematiques-seconde-2019.cycle-4"
+    },
+    {
+      "id": "stage.fr.mathematiques-cycle-4-2020.cinquieme",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "stageType": "classe",
+      "code": "cinquieme",
+      "label": {
+        "fr": "Cinquième"
+      },
+      "order": 1,
+      "parent": "stage.fr.mathematiques-seconde-2019.cycle-4",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-CUR-007",
+        "severity": "ERROR",
+        "objectId": "stage.fr.mathematiques-cycle-4-2020.cinquieme",
+        "location": "/parent"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+rule_id,section,niveau,severite,origine,description,fixtures
+S4-ID-001,S4.1,2,ERROR,B,L'id respecte la forme générale (§1).,identifiants/009-majuscule.json identifiants/010-double-tiret.json identifiants/011-deux-segments.json
+S4-ID-002,S4.1,2,ERROR,P,L'id fait au plus 160 caractères.,identifiants/012-trop-long.json
+S4-ID-003,S4.1,2,ERROR,B,"Hors Relation, type est égal au namespace de l'id (le namespace inconnu relève de S4-SEP-001).",identifiants/013-type-incoherent.json
+S4-ID-004,S4.1,2,ERROR,P,Knowledge Core : le 2e segment appartient à la liste des disciplines (§4).,identifiants/014-discipline-inconnue.json
+S4-ID-005,S4.1,2,ERROR,P,Relation : le 2e segment de l'id est la discipline de la source (2e segment de source).,identifiants/018-relation-discipline.json
+S4-ID-006,S4.1,2,ERROR,P,Curriculum : exactement 3 segments ; le 2e segment est égal à jurisdiction.,identifiants/102-curriculum-juridiction-id.json
+S4-ID-007,S4.1,2,ERROR,P,Stage et Domain : exactement 4 segments ; les segments 2 et 3 sont égaux aux segments 2 et 3 de leur champ curriculum.,identifiants/103-stage-hors-curriculum.json
+S4-ID-008,S4.1,2,ERROR,P,CurriculumMapping : exactement 3 segments ; le 2e segment est égal au 2e segment de son champ curriculum.,mapping/096-identifiant-hors-juridiction.json
+S4-ID-009,S4.1,4,ERROR,B,Un id est unique dans le corpus.,identifiants/017-doublon.json
+S4-ID-010,S4.1,4,ERROR,B,Les champs d'identité d'un objet existant ne changent pas (liste par contrat en S4.3 à S4.6) : les modifier exige un nouvel id.,identifiants/019-identite-relation-modifiee.json
+S4-ID-011,S4.1,2,WARNING,P,"Knowledge Core : un segment du chemin contient un terme de niveau scolaire (cp, ce1, ce2, cm1, cm2, 6e à 3e, sixieme à troisieme, terminale, college, lycee, ou cycle suivi d'un chiffre), comme mot séparé par des tirets.",identifiants/015-terme-de-niveau.json
+S4-LIFE-001,S4.2,2,ERROR,B,"status ∈ {draft, review, validated, deprecated}.",cycle-de-vie/020-statut-inconnu.json
+S4-LIFE-002,S4.2,2,ERROR,B,"status vaut active ou retired (ancien cycle, message dédié).",cycle-de-vie/021-statut-active.json cycle-de-vie/022-statut-retired.json
+S4-LIFE-003,S4.2,4,ERROR,B,Une transition base → candidate est l'une des 4 transitions autorisées.,cycle-de-vie/026-saut-draft-validated.json
+S4-LIFE-004,S4.2,4,ERROR,P,Un objet nouveau a le statut draft ou review.,cycle-de-vie/027-nouvel-objet-validated.json
+S4-LIFE-005,S4.2,4,ERROR,P,Un objet deprecated dans la base est strictement identique dans la candidate (état terminal et figé).,cycle-de-vie/028-deprecated-modifie.json
+S4-LIFE-006,S4.2,4,ERROR,P,Un objet validated ou deprecated dans la base est encore présent.,cycle-de-vie/029-suppression-validated.json
+S4-VER-001,S4.2,2,ERROR,B,version est un entier ≥ 1.,versions/031-version-zero.json versions/032-version-chaine.json
+S4-VER-002,S4.2,4,ERROR,P,Un objet nouveau a version = 1.,versions/033-nouvel-objet-version-2.json
+S4-VER-003,S4.2,4,ERROR,P,Un objet modifié a version = version(base) + 1.,versions/034-modification-sans-increment.json versions/035-saut-de-version.json versions/036-statut-sans-increment.json
+S4-VER-004,S4.2,4,ERROR,B,version ne recule jamais.,versions/037-recul.json
+S4-VER-005,S4.2,4,ERROR,P,Un objet non modifié garde la version de la base.,versions/038-increment-sans-modification.json
+S4-REF-001,S4.2,3,ERROR,B,Toute référence désigne un objet existant du corpus.,references/039-cible-absente.json
+S4-REF-002,S4.2,3,ERROR,B,La cible d'une référence est du contrat attendu pour ce champ.,references/040-mauvais-contrat.json
+S4-REF-003,S4.2,3,ERROR,B,Une nouvelle référence ne cible pas un objet deprecated.,references/041-nouvelle-vers-deprecated.json
+S4-REF-004,S4.2,3,WARNING,B,Une référence historique cible un objet devenu deprecated.,references/042-historique-vers-deprecated.json
+S4-REF-005,S4.2,3,ERROR,B,"Depuis un objet validated, une nouvelle référence cible un objet validated.",references/043-validated-vers-draft.json
+S4-RB-001,S4.2,2,ERROR,B,replacedBy n'est présent que si status = deprecated.,replaced-by/044-sur-objet-non-deprecated.json
+S4-RB-002,S4.2,2,ERROR,B,replacedBy est différent de id.,replaced-by/045-vers-soi-meme.json
+S4-RB-003,S4.2,3,ERROR,B,La cible de replacedBy existe.,replaced-by/046-cible-absente.json
+S4-RB-004,S4.2,3,ERROR,B,Une nouvelle valeur de replacedBy cible un objet validated.,replaced-by/047-cible-non-validated.json replaced-by/111-cycle-de-remplacement.json
+S4-RB-005,S4.2,3,ERROR,B,La cible de replacedBy a le même namespace que la source.,replaced-by/048-autre-namespace.json
+S4-RB-006,S4.2,4,ERROR,B,Les chaînes replacedBy sont acycliques.,replaced-by/111-cycle-de-remplacement.json
+S4-RB-007,S4.2,4,WARNING,P,Une chaîne replacedBy historique se termine sur un objet non validated.,replaced-by/051-chaine-historique-non-terminee.json
+S4-RB-008,S4.2,3,WARNING,P,Knowledge Core : la cible de replacedBy est d'une autre discipline.,replaced-by/050-autre-discipline.json
+S4-KC-001,S4.3,2,ERROR,B,"Une Notion respecte son contrat : champs obligatoires présents, types des champs (la valeur de type relève de S4-ID-003).",knowledge-core/052-libelle-absent.json
+S4-KC-002,S4.3,2,ERROR,B,Une MicroSkill respecte son contrat (même règle que S4-KC-001).,knowledge-core/104-microskill-sans-libelle.json
+S4-KC-003,S4.3,2,ERROR,B,Une Skill respecte son contrat (même règle que S4-KC-001).,knowledge-core/105-skill-sans-statut.json
+S4-KC-004,S4.3,2,ERROR,P,"label et description sont des LocalizedText valides (clé fr présente, clés ISO 639-1, longueurs).",knowledge-core/053-libelle-sans-fr.json
+S4-KC-005,S4.3,4,ERROR,B,Une MicroSkill validated est la cible d'au moins une Relation teaches validated dont la source est une Notion validated.,replaced-by/048-autre-namespace.json knowledge-core/056-microskill-sans-teaches.json
+S4-KC-006,S4.3,4,ERROR,B,Une Skill validated est la cible d'au moins une Relation contributesTo validated dont la source est une MicroSkill validated.,knowledge-core/057-skill-sans-contribution.json
+S4-KC-007,S4.3,4,WARNING,P,"Une Skill validated ne reçoit la contribution que d'une seule MicroSkill (frontière MicroSkill / Skill, S2 §4).",knowledge-core/058-skill-une-contribution.json
+S4-REL-001,S4.4,2,ERROR,B,"Une Relation respecte son contrat (champs, type parmi les 7 valeurs).",relations/106-type-inconnu.json
+S4-REL-002,S4.4,2,ERROR,B,source ≠ target.,relations/060-source-egale-cible.json
+S4-REL-003,S4.4,2,ERROR,B,"Le couple (namespace de source, namespace de target) est autorisé pour ce type par la matrice.",relations/061-matrice-teaches-n-n.json relations/062-matrice-contributes-n-s.json
+S4-REL-004,S4.4,2,ERROR,B,"rationale est présent pour requires, extends, equivalentTo dès que status ∈ {validated, deprecated}.",relations/063-rationale-manquant.json
+S4-REL-005,S4.4,2,ERROR,B,"Pour relatedTo et equivalentTo, source < target (ordre ASCII).",relations/064-symetrique-non-canonique.json
+S4-REL-006,S4.4,4,ERROR,B,Deux Relations n'ont pas la même relationKey.,relations/065-doublon.json
+S4-REL-007,S4.4,4,ERROR,B,Le graphe requires (hors deprecated) est acyclique.,relations/066-cycle-requires.json
+S4-REL-008,S4.4,4,ERROR,B,Le graphe extends (hors deprecated) est acyclique.,relations/067-cycle-extends.json
+S4-REL-009,S4.4,4,WARNING,B,Le graphe supports (hors deprecated) contient un cycle.,relations/068-cycle-supports.json
+S4-REL-010,S4.4,4,WARNING,B,Une Relation equivalentTo est durable (§5).,relations/070-equivalent-durable.json
+S4-REL-011,S4.4,2,ERROR,P,"rationale, s'il est présent, est un LocalizedText valide.",relations/107-rationale-sans-fr.json
+S4-CUR-001,S4.5,2,ERROR,B,Un Curriculum respecte son contrat.,curriculum/109-autorite-absente.json
+S4-CUR-002,S4.5,2,ERROR,P,jurisdiction respecte ^[a-z]{2}$.,curriculum/074-juridiction-invalide.json
+S4-CUR-003,S4.5,2,ERROR,P,curriculumVersion respecte ^[0-9]{4}(-[a-z0-9]+)*$.,curriculum/075-edition-invalide.json
+S4-CUR-004,S4.5,4,ERROR,P,"(jurisdiction, authority, title, curriculumVersion) est unique parmi les Curricula.",curriculum/077-edition-en-double.json
+S4-CUR-005,S4.5,2,ERROR,B,"Un Stage respecte son contrat ; stageType ∈ {cycle, classe}.",curriculum/078-stagetype-inconnu.json
+S4-CUR-006,S4.5,2,ERROR,P,code est égal au 4e segment de l'id du Stage.,curriculum/079-code-incoherent.json
+S4-CUR-007,S4.5,3,ERROR,P,Le parent d'un Stage appartient au même Curriculum.,curriculum/080-parent-autre-curriculum.json
+S4-CUR-008,S4.5,3,ERROR,P,Le parent d'un Stage classe est un Stage cycle ; un Stage cycle n'a pas de parent.,curriculum/081-cycle-avec-parent.json
+S4-CUR-009,S4.5,4,ERROR,D,"code est unique parmi les Stages d'un même Curriculum (garanti par construction par S4-ID-007, S4-ID-009 et S4-CUR-006 ; conservé comme invariant).",
+S4-CUR-010,S4.5,4,ERROR,P,"order est unique parmi les Stages de même curriculum, même parent et même stageType.",curriculum/082-ordre-en-double.json
+S4-CUR-011,S4.5,2,ERROR,B,Un Domain respecte son contrat.,curriculum/110-domaine-sans-libelle.json
+S4-CUR-012,S4.5,3,ERROR,P,Le parent d'un Domain appartient au même Curriculum.,curriculum/083-domaine-autre-curriculum.json
+S4-CUR-013,S4.5,4,ERROR,P,La hiérarchie des Domains est acyclique.,curriculum/084-domaines-en-cycle.json
+S4-CUR-014,S4.5,2,ERROR,P,Un Curriculum porte une provenance de type = institutional.,curriculum/076-provenance-non-institutionnelle.json
+S4-MAP-001,S4.6,2,ERROR,B,Un CurriculumMapping respecte son contrat ; role parmi les 5 valeurs.,mapping/088-role-inconnu.json
+S4-MAP-002,S4.6,2,ERROR,B,provenance est présente.,mapping/089-provenance-absente.json
+S4-MAP-003,S4.6,2,ERROR,P,"evidence contient au moins un élément quand status ∈ {validated, deprecated}.",mapping/090-validated-sans-evidence.json
+S4-MAP-004,S4.6,3,ERROR,B,"object désigne une Notion, une MicroSkill ou une Skill.",mapping/091-objet-hors-knowledge-core.json
+S4-MAP-005,S4.6,3,ERROR,D,Le stage appartient au curriculum du mapping.,mapping/092-stage-autre-curriculum.json
+S4-MAP-006,S4.6,3,ERROR,D,"Le domain, s'il est présent, appartient au curriculum du mapping.",mapping/093-domaine-autre-curriculum.json
+S4-MAP-007,S4.6,4,ERROR,B,projectionKey est unique parmi tous les CurriculumMappings.,mapping/094-projection-en-double.json
+S4-MAP-008,S4.6,4,ERROR,B,Les champs de la clé d'un mapping existant ne changent pas (cas particulier de S4-ID-010).,mapping/095-role-modifie.json
+S4-PROV-001,S4.7,2,ERROR,B,"provenance est un objet, jamais une chaîne.",provenance/097-chaine.json
+S4-PROV-002,S4.7,2,ERROR,P,provenance respecte sa structure fermée ; type parmi les 4 valeurs.,provenance/098-type-inconnu.json
+S4-PROV-003,S4.7,2,ERROR,P,Les champs conditionnels de provenance sont présents pour leur type et absents pour les autres.,provenance/099-reference-manquante.json provenance/100-champ-interdit.json
+S4-PROV-004,S4.7,3,ERROR,P,"Chaque derivedFrom désigne un objet existant du corpus (référence, S4.2 §5).",provenance/101-derive-de-absent.json
+S4-EVID-001,S4.7,2,ERROR,B,"evidence est un tableau, jamais un objet seul.",relations/071-evidence-objet.json
+S4-EVID-002,S4.7,2,ERROR,P,Chaque élément d'evidence respecte la structure EvidenceItem ; locator est présent si kind = programme-excerpt.,relations/072-evidence-sans-locator.json
+S4-EVID-003,S4.7,2,ERROR,P,"evidence contient au plus 20 éléments, sans doublon.",relations/108-evidence-trop-longue.json
+S4-SYN-001,S4.8,1,ERROR,P,"Le document est du JSON valide, encodé en UTF-8 sans BOM.",syntaxe/001-json-invalide.json
+S4-SYN-002,S4.8,1,ERROR,P,La racine du document est un objet.,syntaxe/002-racine-tableau.json
+S4-SYN-003,S4.8,1,ERROR,P,Aucun objet JSON ne contient deux fois la même clé.,syntaxe/003-cle-dupliquee.json
+S4-SEP-001,S4.8,1,ERROR,B,Le document a un id dont le namespace désigne l'un des 8 contrats ; aucun autre type de document dans le corpus.,syntaxe/004-donnee-apprenant.json
+S4-SEP-002,S4.8,2,ERROR,B,Aucune propriété non déclarée par le contrat ou par la structure embarquée (contrats fermés).,syntaxe/005-propriete-non-declaree.json syntaxe/006-evidence-sur-notion.json
+S4-SEP-003,S4.8,4,ERROR,P,Le manifeste du corpus déclare une specificationVersion prise en charge.,syntaxe/007-version-de-specification.json
+S4-RPT-001,S4.8,V,ERROR,P,"Chaque issue du rapport porte rule, severity, message, et objectId et location quand ils sont disponibles.",
+S4-RPT-002,S4.8,V,ERROR,B,"Le verdict est PASS, PASS_WITH_WARNINGS ou FAIL, selon les comptes d'ERROR et de WARNING.",
+S4-RPT-003,S4.8,V,ERROR,P,Deux exécutions sur le même corpus et la même base produisent un rapport identique octet pour octet (ordre §4).,
+S4-RPT-004,S4.8,V,ERROR,P,Le code de sortie suit §4.,

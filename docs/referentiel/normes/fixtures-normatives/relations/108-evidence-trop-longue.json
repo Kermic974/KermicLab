@@ -1,0 +1,131 @@
+{
+  "fixture": "108-evidence-trop-longue",
+  "description": "21 éléments d'`evidence`.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "notion.mathematiques.carre-d-un-nombre",
+      "type": "notion",
+      "label": {
+        "fr": "Carré d'un nombre"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "relation.mathematiques.pythagore-requiert-carres",
+      "type": "requires",
+      "source": "notion.mathematiques.theoreme-de-pythagore",
+      "target": "notion.mathematiques.carre-d-un-nombre",
+      "status": "draft",
+      "version": 1,
+      "evidence": [
+        {
+          "kind": "document",
+          "reference": "Document 1"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 2"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 3"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 4"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 5"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 6"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 7"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 8"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 9"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 10"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 11"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 12"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 13"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 14"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 15"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 16"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 17"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 18"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 19"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 20"
+        },
+        {
+          "kind": "document",
+          "reference": "Document 21"
+        }
+      ]
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-EVID-003",
+        "severity": "ERROR",
+        "objectId": "relation.mathematiques.pythagore-requiert-carres",
+        "location": "/evidence"
+      }
+    ]
+  }
+}

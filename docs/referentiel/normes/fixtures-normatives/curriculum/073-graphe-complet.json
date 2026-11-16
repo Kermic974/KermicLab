@@ -1,0 +1,87 @@
+{
+  "fixture": "073-graphe-complet",
+  "description": "Curriculum, cycle, deux classes, domaine et sous-domaine.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "curriculum.fr.mathematiques-cycle-4-2020",
+      "type": "curriculum",
+      "jurisdiction": "fr",
+      "authority": "Ministère de l'Éducation nationale",
+      "title": "Programme de mathématiques du cycle 4",
+      "curriculumVersion": "2020",
+      "status": "draft",
+      "version": 1,
+      "provenance": {
+        "type": "institutional",
+        "reference": "BO n° 31 du 30 juillet 2020"
+      }
+    },
+    {
+      "id": "stage.fr.mathematiques-cycle-4-2020.cycle-4",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "stageType": "cycle",
+      "code": "cycle-4",
+      "label": {
+        "fr": "Cycle 4"
+      },
+      "order": 1,
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "stage.fr.mathematiques-cycle-4-2020.cinquieme",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "stageType": "classe",
+      "code": "cinquieme",
+      "label": {
+        "fr": "Cinquième"
+      },
+      "order": 1,
+      "parent": "stage.fr.mathematiques-cycle-4-2020.cycle-4",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "stage.fr.mathematiques-cycle-4-2020.quatrieme",
+      "type": "stage",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "stageType": "classe",
+      "code": "quatrieme",
+      "label": {
+        "fr": "Quatrième"
+      },
+      "order": 2,
+      "parent": "stage.fr.mathematiques-cycle-4-2020.cycle-4",
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "domain.fr.mathematiques-cycle-4-2020.espace-et-geometrie",
+      "type": "domain",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "label": {
+        "fr": "Espace et géométrie"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "domain.fr.mathematiques-cycle-4-2020.theoreme-de-pythagore",
+      "type": "domain",
+      "curriculum": "curriculum.fr.mathematiques-cycle-4-2020",
+      "label": {
+        "fr": "Théorème de Pythagore"
+      },
+      "parent": "domain.fr.mathematiques-cycle-4-2020.espace-et-geometrie",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "PASS",
+    "issues": []
+  }
+}

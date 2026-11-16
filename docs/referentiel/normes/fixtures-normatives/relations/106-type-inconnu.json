@@ -1,0 +1,45 @@
+{
+  "fixture": "106-type-inconnu",
+  "description": "Type de relation hors vocabulaire ; les règles dépendantes ne sont pas évaluées.",
+  "specificationVersion": "1.2.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "notion.mathematiques.carre-d-un-nombre",
+      "type": "notion",
+      "label": {
+        "fr": "Carré d'un nombre"
+      },
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "relation.mathematiques.pythagore-requiert-carres",
+      "type": "dependsOn",
+      "source": "notion.mathematiques.theoreme-de-pythagore",
+      "target": "notion.mathematiques.carre-d-un-nombre",
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-REL-001",
+        "severity": "ERROR",
+        "objectId": "relation.mathematiques.pythagore-requiert-carres",
+        "location": "/type"
+      }
+    ]
+  }
+}

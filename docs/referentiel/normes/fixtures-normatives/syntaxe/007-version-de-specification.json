@@ -1,0 +1,27 @@
+{
+  "fixture": "007-version-de-specification",
+  "description": "Le manifeste déclare une version de spécification non prise en charge.",
+  "specificationVersion": "9.0.0",
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-SEP-003",
+        "severity": "ERROR",
+        "location": "corpus.json/specificationVersion"
+      }
+    ]
+  }
+}

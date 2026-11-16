@@ -1,0 +1,38 @@
+{
+  "fixture": "028-deprecated-modifie",
+  "description": "Un objet `deprecated` est figé.",
+  "specificationVersion": "1.2.0",
+  "base": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Théorème de Pythagore",
+        "en": "Pythagorean theorem"
+      },
+      "status": "deprecated",
+      "version": 3
+    }
+  ],
+  "candidate": [
+    {
+      "id": "notion.mathematiques.theoreme-de-pythagore",
+      "type": "notion",
+      "label": {
+        "fr": "Pythagore (ancien)"
+      },
+      "status": "deprecated",
+      "version": 4
+    }
+  ],
+  "expected": {
+    "verdict": "FAIL",
+    "issues": [
+      {
+        "rule": "S4-LIFE-005",
+        "severity": "ERROR",
+        "objectId": "notion.mathematiques.theoreme-de-pythagore"
+      }
+    ]
+  }
+}
