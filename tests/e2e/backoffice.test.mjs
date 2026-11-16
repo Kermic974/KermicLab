@@ -211,3 +211,21 @@ test("back-office mobile : navigation et écrans sans débordement horizontal", 
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("la liste Utilisateurs affiche automatiquement un nouveau compte D1", async () => {
+  const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  try {
+    await page.clock.install();
+    await brancherWorker(page);
+    await entrer(page);
+    await aller(page, "utilisateurs");
+    const id = "00000000-0000-4000-8000-000000000002";
+    const ligne = page.locator(`code[title="${id}"]`);
+    assert.equal(await ligne.count(), 0);
+    env.DB.sqlite.prepare("INSERT INTO comptes (id, email_hash) VALUES (?, ?)").run(id, "autre-empreinte");
+    await page.clock.runFor(30_000);
+    await ligne.waitFor();
+  } finally {
+    await contexte.close();
+  }
+});

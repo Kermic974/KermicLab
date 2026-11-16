@@ -2,6 +2,12 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Fournisseurs de connexion
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Préparer les applications Microsoft, Google et Apple et déposer les secrets côté Worker | Consoles des fournisseurs et [chantier Authentification](chantiers/authentification.md) | Les boutons affichent un écran d'attente jusqu'à la configuration et à la validation du parcours OAuth | Confirmer l'inscription des applications et les URL de rappel, sans communiquer les secrets dans un ticket | à faire |
+
 ## Publication programmée du blog, test de fumée, environnement Cursor (issues #312, #261, #284)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |

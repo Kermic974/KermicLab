@@ -188,3 +188,36 @@ test("synchronisation : données pseudonymisées et chiffrées, récupérées su
   await a.contexte.close();
   await b.contexte.close();
 });
+
+test("connexion en ligne : fournisseurs en attente, identité D1 stable sans synchronisation", async () => {
+  const { page, contexte } = await appareil("Nina");
+  try {
+    await page.click("#ouvrir-connexion");
+    for (const fournisseur of ["Microsoft", "Google", "Apple"]) {
+      await page.locator("#compte nav").getByRole("button", { name: new RegExp(fournisseur) }).click();
+      await page.locator("#connexion-en-cours-titre").waitFor();
+      assert.equal(new URL(page.url()).hash, "#connexion-en-cours");
+      await page.locator("#connexion-en-cours button").click();
+    }
+    const identifiant = "nina.d1";
+    await page.fill("#compte-identifiant", identifiant);
+    await page.fill("#compte-mdp", MDP);
+    await page.fill("#compte-mdp2", MDP);
+    await page.check("#liaison-creer-d1");
+    await page.click("#formulaire-compte-creer button[type=submit]");
+    await page.getByText(`Connecté au compte en ligne : ${identifiant}.`, { exact: true }).waitFor();
+    const ids = () => env.DB.sqlite.prepare("SELECT id FROM comptes_locaux ORDER BY id").all().map((c) => c.id);
+    const avant = ids();
+    assert.ok(avant.length > 0);
+    await page.click("#compte-deconnexion");
+    await page.fill("#compte-connexion-mdp", MDP);
+    const verification = page.waitForResponse((r) => r.url().endsWith("/api/compte-local/connexion") && r.status() === 200);
+    await page.click("#formulaire-compte-connexion button[type=submit]");
+    await verification;
+    await page.getByText(`Connecté au compte en ligne : ${identifiant}.`, { exact: true }).waitFor();
+    assert.deepEqual(ids(), avant);
+    assert.equal(await page.locator("#synchro-actions").isVisible(), false);
+  } finally {
+    await contexte.close();
+  }
+});

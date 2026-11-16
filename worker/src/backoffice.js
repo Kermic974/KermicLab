@@ -79,8 +79,8 @@ async function noter(env, action, cible = "") {
 async function listerUtilisateurs(env) {
   const [comptes, locaux, attributions, etats] = await Promise.all([
     tenter(() => toutes(env, `SELECT c.id, c.role, c.created_at, c.last_login_at, c.consent_version,
-      (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ORDER BY c.created_at DESC LIMIT 200`), []),
-    tenter(() => toutes(env, "SELECT id, cree_le, bloque_jusqua FROM comptes_locaux ORDER BY cree_le DESC LIMIT 200"), []),
+      (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ORDER BY c.created_at DESC, c.rowid DESC LIMIT 200`), []),
+    tenter(() => toutes(env, "SELECT id, cree_le, bloque_jusqua FROM comptes_locaux ORDER BY cree_le DESC, rowid DESC LIMIT 200"), []),
     tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), []),
     tenter(() => toutes(env, "SELECT profil, etat, expire_le FROM profils_securite"), [])
   ]);

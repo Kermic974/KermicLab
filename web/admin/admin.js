@@ -143,12 +143,20 @@ async function ecranApercu() {
   ];
 }
 
+let instantaneUtilisateurs;
 async function ecranUtilisateurs() {
-  const { utilisateurs, roles, niveaux } = await api("GET", "/utilisateurs");
+  const donnees = await api("GET", "/utilisateurs");
+  return rendreUtilisateurs(donnees);
+}
+
+function rendreUtilisateurs(donnees) {
+  instantaneUtilisateurs = JSON.stringify(donnees);
+  const { utilisateurs, roles, niveaux } = donnees;
   const zoneExport = h("pre", { hidden: true, tabindex: "0", "aria-label": "Données exportées" });
   const ligneActions = (u) => {
     const role = selecteur(roles.map((r) => [r.id, r.libelle]), u.role, { "aria-label": `Rôle du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` });
     const niveau = selecteur(niveaux.map((n) => [n, n]), u.niveau, { "aria-label": `Niveau du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` });
+    for (const champ of [role, niveau]) champ.dataset.valeurInitiale = champ.value;
     return { role, niveau };
   };
   const lignes = utilisateurs.map((u) => ({ ...u, champs: ligneActions(u) }));
@@ -635,7 +643,27 @@ const ECRANS = {
 };
 let ecranCourant = "apercu";
 
+let affichage = 0;
+let miseAJourUtilisateurs = false;
+
+async function actualiserUtilisateurs() {
+  const zone = $("#ecran");
+  const version = affichage;
+  const disponible = () => affichage === version && ecranCourant === "utilisateurs" && !$("#application").hidden
+    && !document.hidden && !zone.hasAttribute("aria-busy") && !zone.contains(document.activeElement)
+    && !zone.querySelector("pre:not([hidden])")
+    && ![...zone.querySelectorAll("select[data-valeur-initiale]")].some((champ) => champ.value !== champ.dataset.valeurInitiale);
+  if (miseAJourUtilisateurs || !disponible()) return;
+  miseAJourUtilisateurs = true;
+  try {
+    const donnees = await api("GET", "/utilisateurs");
+    if (disponible() && JSON.stringify(donnees) !== instantaneUtilisateurs) zone.replaceChildren(...rendreUtilisateurs(donnees));
+  } catch { /* Le dernier résultat reste visible ; le prochain cycle réessaie. */ }
+  finally { miseAJourUtilisateurs = false; }
+}
+
 async function afficher(cle, { garderMessage = false } = {}) {
+  const version = ++affichage;
   ecranCourant = Object.hasOwn(ECRANS, cle) ? cle : "apercu";
   const ecran = ECRANS[ecranCourant];
   if (location.hash.slice(1) !== ecranCourant) history.replaceState(null, "", `#${ecranCourant}`);
@@ -647,11 +675,12 @@ async function afficher(cle, { garderMessage = false } = {}) {
   const zone = $("#ecran");
   zone.setAttribute("aria-busy", "true");
   try {
-    zone.replaceChildren(...(await ecran.rendre()));
+    const contenu = await ecran.rendre();
+    if (version === affichage) zone.replaceChildren(...contenu);
   } catch (e) {
-    if (e.statut !== 401) zone.replaceChildren(h("p", { class: "admin-bandeau danger", text: messageErreur(e) }));
+    if (version === affichage && e.statut !== 401) zone.replaceChildren(h("p", { class: "admin-bandeau danger", text: messageErreur(e) }));
   }
-  zone.removeAttribute("aria-busy");
+  if (version === affichage) zone.removeAttribute("aria-busy");
 }
 
 // ---------- Session ----------
@@ -685,6 +714,8 @@ async function demarrer() {
 
   $("#navigation").replaceChildren(...Object.entries(ECRANS).map(([cle, e]) => h("button", { type: "button", "data-ecran": cle, onclick: () => { afficher(cle); $("#titre-ecran").focus({ preventScroll: true }); } }, e.titre)));
   $("#deconnexion").addEventListener("click", fermerSession);
+  setInterval(actualiserUtilisateurs, 30_000);
+  document.addEventListener("visibilitychange", actualiserUtilisateurs);
   window.addEventListener("hashchange", () => { if (!$("#application").hidden && location.hash.slice(1) !== ecranCourant) afficher(location.hash.slice(1)); });
   $("#formulaire-cle").addEventListener("submit", async (e) => {
     e.preventDefault();
