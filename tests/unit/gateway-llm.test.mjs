@@ -31,7 +31,7 @@ test("Workers AI : gateway obligatoire, pas de cache ni de journal, un seul essa
     return { response: "réponse", usage: { completion_tokens: 42 } };
   } } }, contexte);
   assert.equal(appels, 1);
-  assert.deepEqual(resultat, { contenu: "réponse", tokensSortie: 42, pseudonymisations: 0 });
+  assert.deepEqual(resultat, { contenu: "réponse", tokensEntree: undefined, tokensSortie: 42, pseudonymisations: 0 });
 });
 
 test("Workers AI : une erreur gateway ne déclenche jamais d'appel direct", async () => {
@@ -64,7 +64,7 @@ test("SDK Anthropic : la vraie requête HTTP cible uniquement la gateway authent
       usage: { input_tokens: 10, output_tokens: 42 }
     });
   };
-  assert.deepEqual(await routerAvecClaude(envClaude(), contexte), { contenu: "réponse", refus: false, tokensSortie: 42, pseudonymisations: 0 });
+  assert.deepEqual(await routerAvecClaude(envClaude(), contexte), { contenu: "réponse", refus: false, tokensEntree: 10, tokensSortie: 42, pseudonymisations: 0 });
   assert.equal(appels, 1);
 });
 

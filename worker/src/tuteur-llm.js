@@ -32,7 +32,8 @@ export async function interrogerFournisseurs(env, session, demande, clientClaude
     let generation;
     try {
       generation = await fournisseur.appeler({
-        system: demande.system, message: demande.message, schema: demande.schema, maxTokens: reservation.reservation
+        system: demande.system, message: demande.message, schema: demande.schema, maxTokens: reservation.reservation,
+        skill: demande.skill ?? "tuteur"
       });
     } catch {
       console.error("llm appel fournisseur échoué", fournisseur.nom);

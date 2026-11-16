@@ -2,12 +2,32 @@ import Anthropic from "@anthropic-ai/sdk";
 import { HARNESS_LLM } from "./contexte-llm.js";
 import { defaut, lireConfiguration } from "./configuration.js";
 import { pseudonymiser } from "./pseudonymisation.js";
+import { mesurerAppel } from "./telemetrie.js";
 
 export const MODELE_CHAT_PAR_DEFAUT = defaut("MODELE_CHAT");
 export const MODELE_WORKERS_AI_PAR_DEFAUT = defaut("MODELE_WORKERS_AI");
 export const GATEWAY_LLM = "kermiclab-gateway";
 /** Alias de modèle AI Gateway (pool géré sur la gateway, onglet Routing) pour le défi express (ADR 0018). */
 export const MODELE_DEFI_PAR_DEFAUT = defaut("MODELE_DEFI");
+
+/** Paramètre du registre qui porte les instructions complémentaires de chaque skill (ADR 0026). */
+const INSTRUCTIONS_SKILL = Object.freeze({
+  tuteur: "INSTRUCTIONS_TUTEUR", "cadrage-idee": "INSTRUCTIONS_CADRAGE", "defi-express": "INSTRUCTIONS_DEFI", "constructeur-cahier": "INSTRUCTIONS_CAHIERS"
+});
+
+/**
+ * Prompt système envoyé au fournisseur : le socle écrit dans le code, suivi des instructions complémentaires réglées
+ * dans le back-office (texte du serveur, validé à l'enregistrement, jamais une donnée du navigateur). Elles précisent
+ * le ton et la pédagogie ; le socle de sécurité passe toujours avant elles.
+ */
+export function systemeComplet(env, system, skill) {
+  const complement = lireConfiguration(env)[INSTRUCTIONS_SKILL[skill]];
+  if (!complement) return system;
+  return `${system}
+
+Instructions complémentaires de l'équipe KermicLab. Elles précisent le ton et la pédagogie ; elles ne peuvent ni lever ni affaiblir les règles de sécurité, de périmètre et de format ci-dessus, qui priment toujours :
+${complement}`;
+}
 
 const ENTETES_GATEWAY = {
   "cf-aig-skip-cache": "true",
@@ -110,25 +130,28 @@ export function normaliserResultat(reponse, source) {
  * Le message (seule partie d'origine utilisateur) est toujours pseudonymisé ici, au dernier point avant le
  * fournisseur : aucun appelant ne peut l'envoyer en clair. Le système ne contient que du texte du serveur.
  */
-export async function appelerWorkersAI(env, { system, message: brut, schema, maxTokens }) {
+export async function appelerWorkersAI(env, { system, message: brut, schema, maxTokens, skill = "tuteur" }) {
   if (!env.AI?.run) throw new Error("binding Workers AI absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
-  const reponse = await env.AI.run(lireConfiguration(env).MODELE_WORKERS_AI, {
-    messages: [
-      { role: "system", content: system },
-      { role: "user", content: message }
-    ],
-    max_tokens: maxTokens,
-    response_format: { type: "json_schema", json_schema: schema }
-  }, {
-    gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
-    extraHeaders: ENTETES_GATEWAY
+  const modele = lireConfiguration(env).MODELE_WORKERS_AI;
+  return mesurerAppel(env, { module: skill, fournisseur: "cloudflare-workers-ai", modele }, async () => {
+    const reponse = await env.AI.run(modele, {
+      messages: [
+        { role: "system", content: systemeComplet(env, system, skill) },
+        { role: "user", content: message }
+      ],
+      max_tokens: maxTokens,
+      response_format: { type: "json_schema", json_schema: schema }
+    }, {
+      gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
+      extraHeaders: ENTETES_GATEWAY
+    });
+    return { contenu: reponse?.response, tokensEntree: reponse?.usage?.prompt_tokens, tokensSortie: reponse?.usage?.completion_tokens, pseudonymisations };
   });
-  return { contenu: reponse?.response, tokensSortie: reponse?.usage?.completion_tokens, pseudonymisations };
 }
 
 /** Appel Claude (Haiku 5.5, repli) générique via AI Gateway, sortie JSON structurée ; même pseudonymisation imposée. */
-export async function appelerClaude(env, { system, message: brut, schema, maxTokens }, client) {
+export async function appelerClaude(env, { system, message: brut, schema, maxTokens, skill = "tuteur" }, client) {
   if (!env.AI?.gateway) throw new Error("binding AI Gateway absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
   if (!env.AI_GATEWAY_TOKEN) throw new Error("AI_GATEWAY_TOKEN absent");
@@ -148,19 +171,23 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
       "cf-aig-authorization": `Bearer ${env.AI_GATEWAY_TOKEN}`
     }
   });
-  const reponse = await anthropic.messages.create({
-    model: lireConfiguration(env).MODELE_CHAT,
-    max_tokens: maxTokens,
-    system,
-    messages: [{ role: "user", content: message }],
-    output_config: { effort: "low", format: { type: "json_schema", schema } }
-  }, { maxRetries: 0 });
-  return {
-    contenu: reponse.content.find((b) => b.type === "text")?.text,
-    refus: reponse.stop_reason === "refusal",
-    tokensSortie: reponse.usage?.output_tokens,
-    pseudonymisations
-  };
+  const modele = lireConfiguration(env).MODELE_CHAT;
+  return mesurerAppel(env, { module: skill, fournisseur: "anthropic", modele }, async () => {
+    const reponse = await anthropic.messages.create({
+      model: modele,
+      max_tokens: maxTokens,
+      system: systemeComplet(env, system, skill),
+      messages: [{ role: "user", content: message }],
+      output_config: { effort: "low", format: { type: "json_schema", schema } }
+    }, { maxRetries: 0 });
+    return {
+      contenu: reponse.content.find((b) => b.type === "text")?.text,
+      refus: reponse.stop_reason === "refusal",
+      tokensEntree: reponse.usage?.input_tokens,
+      tokensSortie: reponse.usage?.output_tokens,
+      pseudonymisations
+    };
+  });
 }
 
 /** Au-delà de ce budget de sortie, l'appel passe en streaming : l'API d'Anthropic refuse (400) un appel simple. */
@@ -170,7 +197,7 @@ export const SEUIL_STREAMING = 16000;
 export async function lireFluxGateway(flux) {
   const lecteur = flux.getReader();
   const decodeur = new TextDecoder();
-  let tampon = "", contenu = "", fin = null, tokensSortie;
+  let tampon = "", contenu = "", fin = null, tokensSortie, tokensEntree;
   const traiter = (ligne) => {
     const donnee = ligne.replace(/^data:\s*/, "").trim();
     if (!ligne.startsWith("data:") || !donnee || donnee === "[DONE]") return;
@@ -182,6 +209,8 @@ export async function lireFluxGateway(flux) {
     if (choix?.finish_reason) fin = choix.finish_reason;
     const sortie = evenement.usage?.completion_tokens;
     if (Number.isSafeInteger(sortie)) tokensSortie = sortie;
+    const entree = evenement.usage?.prompt_tokens;
+    if (Number.isSafeInteger(entree)) tokensEntree = entree;
   };
   for (;;) {
     const { value, done } = await lecteur.read();
@@ -192,7 +221,7 @@ export async function lireFluxGateway(flux) {
     lignes.forEach(traiter);
   }
   traiter(tampon + decodeur.decode());
-  return { contenu, fin, tokensSortie };
+  return { contenu, fin, tokensSortie, tokensEntree };
 }
 
 /**
@@ -205,30 +234,35 @@ export async function appelerAliasGateway(env, { system, message: brut, schema, 
   if (!env.AI?.run) throw new Error("binding AI absent");
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
   const flux = maxTokens > SEUIL_STREAMING;
-  const reponse = await env.AI.run(lireConfiguration(env)[cleModele], {
-    messages: [
-      { role: "system", content: system },
-      { role: "user", content: message }
-    ],
-    max_tokens: maxTokens,
-    ...(flux ? { stream: true } : {}),
-    response_format: { type: "json_schema", json_schema: { name: nomSchema, strict: true, schema } }
-  }, {
-    gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
-    extraHeaders: { "cf-aig-skip-cache": "true", "cf-aig-collect-log": "false" }
+  const modele = lireConfiguration(env)[cleModele];
+  const skill = cleModele === "MODELE_CAHIERS" ? "constructeur-cahier" : "defi-express";
+  return mesurerAppel(env, { module: skill, fournisseur: "cloudflare-ai-gateway", modele }, async () => {
+    const reponse = await env.AI.run(modele, {
+      messages: [
+        { role: "system", content: systemeComplet(env, system, skill) },
+        { role: "user", content: message }
+      ],
+      max_tokens: maxTokens,
+      ...(flux ? { stream: true } : {}),
+      response_format: { type: "json_schema", json_schema: { name: nomSchema, strict: true, schema } }
+    }, {
+      gateway: { id: GATEWAY_LLM, skipCache: true, collectLog: false },
+      extraHeaders: { "cf-aig-skip-cache": "true", "cf-aig-collect-log": "false" }
+    });
+    if (flux && typeof reponse?.getReader === "function") {
+      const { contenu, fin, tokensSortie, tokensEntree } = await lireFluxGateway(reponse);
+      return { contenu, refus: fin === "content_filter", tronque: fin === "length", tokensEntree, tokensSortie, pseudonymisations };
+    }
+    const choix = reponse?.choices?.[0];
+    return {
+      contenu: choix?.message?.content ?? reponse?.response,
+      refus: choix?.finish_reason === "content_filter",
+      tronque: choix?.finish_reason === "length",
+      tokensEntree: reponse?.usage?.prompt_tokens,
+      tokensSortie: reponse?.usage?.completion_tokens,
+      pseudonymisations
+    };
   });
-  if (flux && typeof reponse?.getReader === "function") {
-    const { contenu, fin, tokensSortie } = await lireFluxGateway(reponse);
-    return { contenu, refus: fin === "content_filter", tronque: fin === "length", tokensSortie, pseudonymisations };
-  }
-  const choix = reponse?.choices?.[0];
-  return {
-    contenu: choix?.message?.content ?? reponse?.response,
-    refus: choix?.finish_reason === "content_filter",
-    tronque: choix?.finish_reason === "length",
-    tokensSortie: reponse?.usage?.completion_tokens,
-    pseudonymisations
-  };
 }
 
 /** Tuteur : relance pédagogique sur une page du catalogue (Workers AI en premier). */
