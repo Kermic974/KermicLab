@@ -369,17 +369,43 @@ test("Labs : le Lab du système solaire est publié, s'ouvre depuis sa carte et 
   assert.match(await page.locator('link[rel="canonical"]').getAttribute("href"), /\/labs\/systeme-solaire\/$/);
   const meta = JSON.parse(await page.locator("#kermiclab-meta").textContent());
   assert.equal(meta.id, "systeme-solaire");
-  assert.equal(meta.version, "1.0.0");
+  assert.equal(meta.version, "1.1.0");
   assert.doesNotMatch(await page.locator("header.haut").textContent(), /prévisualisation/i);
-  // Parcours textuel complet, avec ou sans WebGL : explication, puis les cinq questions de la mission.
+  assert.deepEqual(await page.locator("[role=tab]").allTextContents(), ["Explication", "Ciel", "Mission", "Fiche", "À retenir"]);
+  // Ciel : le texte (fiche de l'astre) se masque pour voir les planètes, puis revient.
+  await page.locator("#rail button", { hasText: "Terre" }).click();
+  assert.equal(await page.locator("#carte").isVisible(), true);
+  await page.click("#texte");
+  assert.equal(await page.locator("#carte").isVisible(), false);
+  assert.equal(await page.locator("#texte").textContent(), "Afficher le texte");
+  await page.click("#texte");
+  assert.equal(await page.locator("#carte").isVisible(), true);
+  // Gamification locale : la Terre en pause donne le badge « Jour et nuit ».
+  await page.click("#pause");
+  await page.locator("#toast", { hasText: "Jour et nuit" }).waitFor();
+  // Parcours textuel complet, avec ou sans WebGL : explications détaillées, fiche, points à retenir, quiz.
   await page.click("#onglet-explication");
+  assert.equal(await page.locator("#panneau-explication details").count(), 6);
+  for (const resume of await page.locator("#panneau-explication summary").all()) await resume.click();
+  assert.equal(await page.locator("#panneau-explication .retenir").count(), 6);
   assert.match(await page.locator("#panneau-explication").textContent(), /Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune/);
+  await page.click("#onglet-fiche");
+  assert.equal(await page.locator("#panneau-fiche tbody tr").count(), 8);
+  await page.click("#onglet-memo");
+  assert.match(await page.locator("#panneau-memo").textContent(), /inclinaison de l'axe/);
   await page.click("#onglet-mise-en-situation");
   for (let i = 0; i < 5; i += 1) {
     await page.locator("#quiz .choix button").first().click();
     await page.locator("#quiz button", { hasText: /Question suivante|Voir le score/ }).click();
   }
   assert.match(await page.locator("#quiz").textContent(), /\d \/ 5\./);
+  // Badges « Jour et nuit » et « Lecteur » : 40 XP au moins ; la progression reste après rechargement.
+  const jauge = await page.locator("#jauge").textContent();
+  assert.match(jauge, /^★ 2 \/ 5 · \d+ XP$/);
+  await page.reload();
+  assert.equal(await page.locator("#jauge").textContent(), jauge);
+  await page.click("#onglet-mise-en-situation");
+  assert.equal(await page.locator("#objectifs li.fait").count(), 2);
   assert.deepEqual(reseau, []);
   assert.deepEqual(erreurs, []);
   await contexte.close();
