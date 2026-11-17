@@ -537,12 +537,12 @@ test("Éducation : Niveau > Matière > Notions en accordéons fermés, recherche
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-test("navigation : 4 entrées latérales, jeux absents d'Éducation, retour arrière", async () => {
+test("navigation : 5 entrées latérales, jeux absents d'Éducation, retour arrière", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const destinations = page.locator(".barre-laterale nav [data-nav]:not([hidden])") // sans rôle : l'entrée Contributions reste masquée (ADR 0023);
-  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "jeux", "progression"]);
+  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "jeux", "progression"]);
   assert.equal(await page.locator(".barre-laterale [aria-current=page]").count(), 1);
   const education = page.locator(".barre-laterale [data-nav=education]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
@@ -552,10 +552,18 @@ test("navigation : 4 entrées latérales, jeux absents d'Éducation, retour arri
   assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
   assert.equal(await education.getAttribute("aria-current"), "page");
   assert.equal(await page.locator("#salut").evaluate((n) => n === document.activeElement), true, "le focus suit le changement d'écran");
-  // Le Lab du cercle et ses trois modes restent accessibles depuis Éducation.
-  assert.deepEqual(await page.locator("#catalogue .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
+  // Éducation ne lance plus le Lab du cercle : sa carte renvoie vers la section Labs, qui porte les trois modes.
+  assert.equal(await page.locator("#catalogue .outil a").count(), 0);
+  await page.click("#rebond-labs");
+  assert.equal(await page.locator("#ecran-labs").isVisible(), true);
+  assert.equal(await page.locator("#catalogue").isVisible(), false);
+  assert.equal(await page.locator(".barre-laterale [data-nav=labs]").getAttribute("aria-current"), "page");
+  assert.equal(await page.locator("#salut").textContent(), "Labs");
+  assert.deepEqual(await page.locator("#ecran-labs .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
   ]);
+  await page.click("#ecran-labs [data-nav=education]");
+  assert.equal(await page.locator("#catalogue").isVisible(), true);
   await page.fill("#recherche-notion", "echecs");
   assert.equal(await page.locator("#catalogue-vide").isVisible(), true, "un jeu n'est pas une notion scolaire");
   await page.fill("#recherche-notion", "");
@@ -596,20 +604,21 @@ test("navigation : 4 entrées latérales, jeux absents d'Éducation, retour arri
 test("navigation : liens directs, rechargement, historique et traduction des écrans", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   await simulerApi(page, { jeux: true });
-  // Ancienne adresse #labs : redirigée vers Éducation, qui contient le Lab du cercle.
+  // Lien direct #labs : la section Labs, qui contient le Lab du cercle.
   await page.goto(`${serveur.url}/#labs`);
-  await page.locator("#catalogue").waitFor();
-  assert.equal(await page.locator(".barre-laterale [data-nav=education]").getAttribute("aria-current"), "page");
+  await page.locator("#ecran-labs").waitFor();
+  assert.equal(await page.locator(".barre-laterale [data-nav=labs]").getAttribute("aria-current"), "page");
+  assert.equal(await page.locator("#catalogue").isVisible(), false);
   assert.equal(await page.locator("#accueil").isVisible(), false);
   await page.locator(".evitement").focus();
   await page.keyboard.press("Enter");
   await page.waitForFunction(() => location.hash === "#contenu");
-  assert.equal(await page.locator("#catalogue").isVisible(), true, "le lien d'évitement ne change pas d'écran");
+  assert.equal(await page.locator("#ecran-labs").isVisible(), true, "le lien d'évitement ne change pas d'écran");
   await page.goBack();
   await page.locator(".barre-laterale [data-nav=jeux]").click();
   assert.equal(new URL(page.url()).hash, "#jeux");
   await page.goBack();
-  await page.locator("#catalogue").waitFor();
+  await page.locator("#ecran-labs").waitFor();
   await page.goForward();
   await page.locator("#ecran-jeux").waitFor();
   await page.reload();
@@ -637,7 +646,8 @@ test("jeux : états vides explicites sans bloquer Éducation", async () => {
   assert.match(await page.locator("#jeux-vide").textContent(), /catalogue/i);
   await page.locator(".barre-laterale [data-nav=education]").click();
   assert.equal(await page.locator("#catalogue-indisponible").isVisible(), true);
-  assert.equal(await page.locator("#catalogue .outil a").count(), 3, "le Lab du cercle reste accessible hors ligne");
+  await page.locator(".barre-laterale [data-nav=labs]").click();
+  assert.equal(await page.locator("#ecran-labs .outil a").count(), 3, "le Lab du cercle reste accessible hors ligne");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
@@ -692,7 +702,7 @@ test("Éducation mobile : depuis la navigation du bas, une colonne, sans débord
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
-test("navigation mobile : 5 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
+test("navigation mobile : 6 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 740 }, isMobile: true });
   await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
@@ -703,17 +713,20 @@ test("navigation mobile : 5 destinations tactiles, libellés visibles, sans déb
   await page.locator(".nav-mobile [data-nav=education]").click();
   assert.equal(await page.locator("#catalogue").isVisible(), true);
   assert.equal(await page.locator("#ecran-jeux").isVisible(), false);
+  await page.locator(".nav-mobile [data-nav=labs]").click();
+  assert.equal(await page.locator("#ecran-labs").isVisible(), true);
+  assert.equal(await page.locator("#catalogue").isVisible(), false);
   await page.locator(".nav-mobile [data-nav=progression]").click();
   assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   await page.locator(".nav-mobile [data-nav=accueil]").click();
   assert.equal(await page.locator("#accueil").isVisible(), true);
-  assert.deepEqual(await page.locator(".nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Éducation", "Jeux", "Progrès", "Profil"]);
+  assert.deepEqual(await page.locator(".nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Éducation", "Labs", "Jeux", "Progrès", "Profil"]);
   assert.deepEqual(await page.locator(".nav-mobile [aria-current=page]").allTextContents(), ["Accueil"]);
   const boutons = await page.locator(".nav-mobile-bouton:not([hidden])").evaluateAll((elements) => elements.map((n) => {
     const r = n.getBoundingClientRect();
     return { largeur: r.width, hauteur: r.height, droite: r.right, bas: r.bottom };
   }));
-  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les cinq entrées restent visibles et tactiles");
+  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les six entrées restent visibles et tactiles");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();

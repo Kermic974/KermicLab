@@ -1172,6 +1172,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   #bulle-editer .ico { margin-right: 0; }
   .nav-mobile { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
 }
+/* Six destinations (sept avec Contributions) : libellés resserrés sur les écrans les plus étroits. */
+@media (max-width: 380px) { .nav-mobile-bouton { font-size: 10px; letter-spacing: -.01em; } }
 
 /* Changer d'appareil : export et import de la progression (issue #189). */
 .fichier-progression h2 { margin: 0 0 4px; }

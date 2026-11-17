@@ -50,13 +50,14 @@
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
   <strong>Squelette v1.43.0 · 2026-11-17</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/fbb34c25390a79b29bef498ec8904432da66cb0f" target="_blank" rel="noopener noreferrer" data-lien-actif>fbb34c2</a>.
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/5fbe41e9f526cd6620dffb474816d8982b68cc69" target="_blank" rel="noopener noreferrer" data-lien-actif>5fbe41e</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
     <ul><li><a href="#premiere-visite">Squelette</a> ↔ <a href="https://kermiclab.online/" target="_blank" rel="noopener noreferrer" data-lien-actif>Première visite : nouveau navigateur, dialogue de pseudo</a></li>
 <li><a href="#accueil">Squelette</a> ↔ <a href="https://kermiclab.online/#accueil" target="_blank" rel="noopener noreferrer" data-lien-actif>Accueil : la question, une prochaine action, À la une et parcours, deux entrées, aperçu compact</a></li>
-<li><a href="#catalogue">Squelette</a> ↔ <a href="https://kermiclab.online/#education" target="_blank" rel="noopener noreferrer" data-lien-actif>Éducation : Ma classe, Niveau › Matière › Notions et outils (défi, Lab du cercle, cahiers)</a></li>
+<li><a href="#catalogue">Squelette</a> ↔ <a href="https://kermiclab.online/#education" target="_blank" rel="noopener noreferrer" data-lien-actif>Éducation : Ma classe, Niveau › Matière › Notions et outils (défi, renvoi vers les Labs, cahiers)</a></li>
+<li><a href="#labs">Squelette</a> ↔ <a href="https://kermiclab.online/#labs" target="_blank" rel="noopener noreferrer" data-lien-actif>Labs : Lab du cercle, ses trois modes et le mini-lab</a></li>
 <li><a href="#jeux">Squelette</a> ↔ <a href="https://kermiclab.online/#jeux" target="_blank" rel="noopener noreferrer" data-lien-actif>Jeux : cartes, résumé et recherche</a></li>
 <li><a href="#progression">Squelette</a> ↔ <a href="https://kermiclab.online/#progression" target="_blank" rel="noopener noreferrer" data-lien-actif>Progression : tableau de bord personnel et Mes badges</a></li>
 <li><a href="#cahiers">Squelette</a> ↔ <a href="https://kermiclab.online/#cahiers" target="_blank" rel="noopener noreferrer" data-lien-actif>Mes cahiers : outil d&#39;Éducation, ouvert directement par #cahiers</a></li>
@@ -73,7 +74,7 @@
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, dix écrans (ADR 0026)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>99486183812d12b08148813f3940765ca0044bf2fbb5a4e1be2107aeeab4241c</code><br>Empreinte du squelette hors cartouche : <code>61670a8e790cc3acc3a45d2a01fad4fb5677a9c1519082cba8b99407364e4225</code></p>
+    <p>Empreinte des sources : <code>b2b10031286e16e651ba4c28d442c82cab167e73508d4f3ef4f438749a4d3e6e</code><br>Empreinte du squelette hors cartouche : <code>0ca93c2b9bc559651991f10f8d274024b8d5120e523a916b7fc710a3da0d6f1b</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -85,12 +86,13 @@
       <nav aria-label="Navigation principale">
         <a href="#accueil" data-nav="accueil">Accueil</a>
         <a href="#catalogue" data-nav="education">Éducation</a>
+        <a href="#labs" data-nav="labs">Labs</a>
         <a href="#jeux" data-nav="jeux">Jeux</a>
         <a href="#progression" data-nav="progression">Progression</a>
         <a href="#contributions" data-nav="contributions">Contributions (rôle contributeur, prof ou admin seulement)</a>
       </nav>
       <p>Boîte à idées · <a href="editorial.html#equipe">L'équipe</a> · Je participe · <a href="#profil" data-nav="profil">E · Explorateur · Niveau 2</a></p>
-      <p class="note">Les vues Profil et Mon compte partagent la m&ecirc;me navigation. Quatre entrées dans la navigation latérale et une carte de compte donnant accès au Profil. Une seule destination visible est marquée « page courante » (aria-current). Sur mobile : une barre basse de cinq entrées (Accueil, Éducation, Jeux, Progrès, Profil), sans action secondaire. L'équipe est un lien secondaire du pied de barre, pas une sixième destination. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #labs, #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
+      <p class="note">Les vues Profil et Mon compte partagent la m&ecirc;me navigation. Cinq entrées dans la navigation latérale et une carte de compte donnant accès au Profil. Une seule destination visible est marquée « page courante » (aria-current). Sur mobile : une barre basse de six entrées (Accueil, Éducation, Labs, Jeux, Progrès, Profil), sans action secondaire. L'équipe est un lien secondaire du pied de barre, pas une destination supplémentaire. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
     </aside>
     <main>
       <section class="ecran" id="premiere-visite" data-ecran="premiere-visite" data-source="web/index.html:dialogue-pseudo">
@@ -163,10 +165,15 @@
         <p class="note">Accordéons : un vrai bouton par titre (h3 niveau, h4 matière) avec aria-expanded et aria-controls, chevron qui pivote (sans animation si prefers-reduced-motion), rien d'ouvert par défaut, sauf le niveau choisi dans « Ma classe » (un bouton par niveau au-dessus de la liste ; le choix est retenu, un second appui le retire) ; la recherche ouvre les groupes concernés. Les associations Niveau › Matière viennent des métadonnées du catalogue (niveau, sujet), sans classement codé en dur. Les jeux n'y figurent pas.</p>
         <h3>Pour s'entraîner</h3>
         <div class="grille"><article class="carte"><h4>Défi express</h4><p>5 questions · ≈ 3 min · +25 XP</p><a href="#defi" data-nav="defi">Lancer le défi</a></article>
-          <article class="carte"><h4>Le cercle trigonométrique</h4><p>Fais tourner le point sur le cercle et observe sinus et cosinus.</p><nav aria-label="Modes du Lab cercle"><a href="cercle.html#explorer">Commencer le Lab</a><a href="cercle.html#apprendre">Manipuler</a><a href="cercle.html#jouer">S'entraîner</a></nav>
-            <details><summary>▸ Mini-lab : cercle trigonométrique</summary><svg viewBox="0 0 220 220" role="img" aria-label="Cercle fixe à 90 degrés"><path d="M10 110H210M110 10V210" stroke="#aaa"/><circle cx="110" cy="110" r="85" fill="none" stroke="#333" stroke-width="2"/><path d="M110 110V25" stroke="#333" stroke-width="2"/><circle cx="110" cy="25" r="5" fill="#333"/></svg><label>Angle θ<input type="range" min="0" max="360" value="90" disabled></label><p>θ = 90° · sin = 1 · cos = 0</p><a class="bouton" href="notion.html#cercle-catalogue">Ouvrir la page complète</a><p class="note">Deux étoiles : trois angles distincts, puis sin(θ) = 1.</p></details></article>
+          <article class="carte"><h4>Le cercle trigonométrique</h4><p>Fais tourner le point sur le cercle et observe sinus et cosinus.</p><a href="#labs" data-nav="labs">Voir dans les Labs →</a><p class="note">Renvoi vers la section Labs : aucun accès direct au Lab depuis Éducation.</p></article>
           <article class="carte"><h4>Mes cahiers</h4><p>Choisis un modèle pour créer un cahier gardé dans ce navigateur.</p><a href="#cahiers">▸ Ouvrir mes cahiers</a></article></div>
-        <details><summary>Recherche et erreurs</summary><p>Recherche sans accents sur toutes les matières. Sans résultat : « Aucune notion ne correspond à ta recherche. » Catalogue indisponible : « Le catalogue n'a pas pu être chargé. Tu peux quand même poser une question. » ; le Lab du cercle reste accessible.</p></details>
+        <details><summary>Recherche et erreurs</summary><p>Recherche sans accents sur toutes les matières. Sans résultat : « Aucune notion ne correspond à ta recherche. » Catalogue indisponible : « Le catalogue n'a pas pu être chargé. Tu peux quand même poser une question. » ; le Lab du cercle reste accessible depuis la section Labs.</p></details>
+      </section>
+      <section class="ecran" id="labs" data-ecran="labs" data-vue-active="labs" data-source="web/index.html:ecran-labs">
+        <span class="repere">S04 bis · Labs (#labs)</span><h2>Choisis ton Lab</h2><p>Un Lab interactif par matière, construit autour d'une notion à explorer.</p><a href="#catalogue" data-nav="education">Consulter les Notions →</a>
+        <div class="grille">
+          <article class="carte"><h4>Le cercle trigonométrique</h4><p>Fais tourner le point sur le cercle et observe sinus et cosinus.</p><nav aria-label="Modes du Lab cercle"><a href="cercle.html#explorer">Commencer le Lab</a><a href="cercle.html#apprendre">Manipuler</a><a href="cercle.html#jouer">S'entraîner</a></nav>
+            <details><summary>▸ Mini-lab : cercle trigonométrique</summary><svg viewBox="0 0 220 220" role="img" aria-label="Cercle fixe à 90 degrés"><path d="M10 110H210M110 10V210" stroke="#aaa"/><circle cx="110" cy="110" r="85" fill="none" stroke="#333" stroke-width="2"/><path d="M110 110V25" stroke="#333" stroke-width="2"/><circle cx="110" cy="25" r="5" fill="#333"/></svg><label>Angle θ<input type="range" min="0" max="360" value="90" disabled></label><p>θ = 90° · sin = 1 · cos = 0</p><a class="bouton" href="notion.html#cercle-catalogue">Ouvrir la page complète</a><p class="note">Deux étoiles : trois angles distincts, puis sin(θ) = 1.</p></details></article></div>
       </section>
       <section class="ecran" id="conversation" data-ecran="conversation" data-source="web/app.js:chat">
         <span class="repere">S05 · Fil de conversation</span><h2>Pose ta question</h2>

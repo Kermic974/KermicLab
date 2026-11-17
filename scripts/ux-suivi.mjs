@@ -17,7 +17,8 @@ const definitions = {
     vues: [
       ["premiere-visite", "", "Première visite : nouveau navigateur, dialogue de pseudo"],
       ["accueil", "#accueil", "Accueil : la question, une prochaine action, À la une et parcours, deux entrées, aperçu compact"],
-      ["catalogue", "#education", "Éducation : Ma classe, Niveau › Matière › Notions et outils (défi, Lab du cercle, cahiers)"],
+      ["catalogue", "#education", "Éducation : Ma classe, Niveau › Matière › Notions et outils (défi, renvoi vers les Labs, cahiers)"],
+      ["labs", "#labs", "Labs : Lab du cercle, ses trois modes et le mini-lab"],
       ["jeux", "#jeux", "Jeux : cartes, résumé et recherche"],
       ["progression", "#progression", "Progression : tableau de bord personnel et Mes badges"],
       ["cahiers", "#cahiers", "Mes cahiers : outil d'Éducation, ouvert directement par #cahiers"],

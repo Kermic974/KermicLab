@@ -278,7 +278,7 @@ test("trophées poker : pratique et leçons remontées, restaurées puis effacé
 test("trophées : mini-lab, mémorisation choisie, langue et effacement global sur mobile", async () => {
   const { page, contexte, erreurs } = await demarrer({ viewport: { width: 360, height: 740 }, isMobile: true });
   try {
-    await page.click(".nav-mobile [data-nav=education]");
+    await page.click(".nav-mobile [data-nav=labs]");
     await page.click("[aria-controls=minilab]");
     for (const angle of [30, 45, 90]) await page.locator(`#minilab [data-angles] button`).filter({ hasText: new RegExp(`^${angle}°$`) }).click();
     await page.click("#ouvrir-progres");
