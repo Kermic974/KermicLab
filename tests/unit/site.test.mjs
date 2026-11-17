@@ -109,15 +109,18 @@ test("le lien de participation reste visible (barre latérale et Profil), hors d
   const profil = html.slice(html.indexOf('<section id="profil"'), html.indexOf("<!-- Espace famille"));
   assert.match(profil, /class="lien-profil" href="https:\/\/www\.onparticipe\.fr\/c\/yDvp6lpc" target="_blank" rel="noopener noreferrer"/);
   assert.match(pied, /<button[^>]*class="profil-carte"[^>]*data-action="profil"/);
-  // Contributions reste réservée aux rôles autorisés (ADR 0023 §6 bis).
+  // Contributions reste réservée aux rôles autorisés (ADR 0023 §6 bis) ; Mes classes et Mes élèves au rôle Professeur (ADR 0030).
   const destinations = {
-    nav: ["accueil", "education", "labs", "jeux", "progression", "contributions"],
-    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "contributions"],
+    nav: ["accueil", "education", "labs", "jeux", "progression", "contributions", "classes", "eleves"],
+    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "contributions", "classes"],
   };
   for (const [classe, attendues] of Object.entries(destinations)) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
     assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), attendues, classe);
     assert.match(bloc, /<button [^>]*data-nav="contributions"[^>]*\shidden>/, `${classe} : Contributions masquée par défaut`);
+    for (const reserve of ["classes", "eleves"].filter((d) => attendues.includes(d))) {
+      assert.match(bloc, new RegExp(`<button [^>]*data-nav="${reserve}"[^>]*\\shidden>`), `${classe} : ${reserve} masqué par défaut`);
+    }
     assert.doesNotMatch(bloc, /<a\b/, `${classe} : aucun lien, seulement des destinations`);
   }
   for (const l of ["fr", "en"]) {

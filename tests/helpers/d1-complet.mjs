@@ -1,7 +1,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { readFileSync } from "node:fs";
 
-const SCHEMAS = ["schema.sql", "schema-comptes.sql", "schema-compte-local.sql", "schema-backoffice.sql", "schema-famille.sql"];
+const SCHEMAS = ["schema.sql", "schema-comptes.sql", "schema-compte-local.sql", "schema-backoffice.sql", "schema-famille.sql", "schema-professeur.sql"];
 
 /** D1 factice sur SQLite avec tous les schémas de référence (KPI, comptes, compte local, back-office). */
 export function creerD1Complet() {

@@ -1262,3 +1262,20 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (max-width: 640px) {
   .ef-enfant .stats-progression, #ef-chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ---------- Expérience Professeur (ADR 0030) ---------- */
+.prof-onglets { margin: 0 0 14px; }
+.prof-onglets [aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); border-color: transparent; }
+.prof-resume { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 14px; margin: 0 0 16px; }
+.prof-resume p { margin: 0; }
+.prof-cases { border: 0; padding: 0; margin: 4px 0 10px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.prof-cases legend { margin-bottom: 6px; }
+.prof-case { display: inline-flex; align-items: center; gap: 6px; }
+.formulaire-prof { max-width: 560px; }
+.prof-invitations { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.prof-invitations:empty { display: none; }
+.prof-lien { display: grid; gap: 6px; padding: 14px 16px; margin: 0 0 18px; border: 2px solid var(--accent); }
+.prof-lien h3 { margin: 0; }
+.prof-lien input { min-width: 0; flex: 1; }
+.prof-filtre { display: grid; gap: 4px; max-width: 320px; margin: 0 0 16px; }
+.prof-classe .actions select { max-width: 160px; }

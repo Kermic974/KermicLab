@@ -5,7 +5,7 @@ import { readdir, readFile } from "node:fs/promises";
 
 // Migrations D1 versionnées (feuille de route, phase 0 ; issue #178). Règles : worker/migrations/README.md.
 const dossier = new URL("../../worker/migrations/", import.meta.url);
-const SCHEMAS = ["schema.sql", "schema-comptes.sql", "schema-compte-local.sql", "schema-backoffice.sql", "schema-famille.sql"];
+const SCHEMAS = ["schema.sql", "schema-comptes.sql", "schema-compte-local.sql", "schema-backoffice.sql", "schema-famille.sql", "schema-professeur.sql"];
 const fichiers = (await readdir(dossier)).filter((f) => f.endsWith(".sql")).sort();
 const migrations = await Promise.all(fichiers.map(async (f) => ({ f, sql: await readFile(new URL(f, dossier), "utf8") })));
 const schemas = await Promise.all(SCHEMAS.map((f) => readFile(new URL(`../../worker/${f}`, import.meta.url), "utf8")));
