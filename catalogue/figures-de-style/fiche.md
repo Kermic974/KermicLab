@@ -19,6 +19,9 @@ questions:
   - Quelle est la différence entre une comparaison et une métaphore ?
   - Comment reconnaître une personnification ?
   - Qu'est-ce qu'une anaphore dans un texte ?
+prerequis:
+niveaux: cycle-4
+competences: francais-figures-de-style-action-1, francais-figures-de-style-action-2
 ---
 
 # Les figures de style

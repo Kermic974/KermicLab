@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.accords",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "label": "Appliquer les accords grammaticaux"
+}

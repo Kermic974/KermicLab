@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.roman",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "label": "Analyser un récit romanesque"
+}
