@@ -21,14 +21,14 @@
     <nav aria-label="Atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.41.1 · 2026-11-16</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/ef7c33904b469e14e2c06188ca46dc95d68d4220" target="_blank" rel="noopener noreferrer" data-lien-actif>ef7c339</a>.
+  <strong>Squelette v1.42.0 · 2026-11-17</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/3d3143deecbdfcc531a4757916181eea61ca9e1b" target="_blank" rel="noopener noreferrer" data-lien-actif>3d3143d</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/inventaire.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
     <ul><li><a href="https://kermiclab.online/" target="_blank" rel="noopener noreferrer" data-lien-actif>Site actif : point d&#39;entrée de tous les parcours</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/src" target="_blank" rel="noopener noreferrer" data-lien-actif>src</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/ux-inventaire.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/ux-inventaire.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/ux-sources.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/ux-sources.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>17386e2d59c4f03ba8a7c4c616b0f194fc85672212f8735b00671afccdbc20ca</code><br>Empreinte du squelette hors cartouche : <code>1db6a771392b4e273b11e93244cb58fda308d4e9fca72f1e20963a62ca1c02af</code></p>
+    <p>Empreinte des sources : <code>127cc40db89e04eac69be2aa637d6e36817c86a090964803bd071e05eb1bc8c0</code><br>Empreinte du squelette hors cartouche : <code>0ddd05b10207246f2c4acc5a7ae21f65335f8ac21728617ca4f64b1e5dde0a3f</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -38,7 +38,7 @@
     <section data-ecran="inventaire-perimetre"><h2>Périmètre et traçabilité</h2>
       <p>174 pages publiques : 164 notions du gabarit, une notion cercle écrite à la main et 9 jeux ; plus l'application /cercle/, le tableau de bord et quatre pages éditoriales.</p>
       <p>174 modules compatibles avec Mes badges (écran Progression), dont le mini-cercle d'Éducation ; seuls les modules lancés sur l'appareil y sont affichés. Les badges d'exploration du tableau de bord sont distincts des badges de jeux.</p>
-      <p>Empreinte SHA-256 de web/, catalogue/, gabarit/, src/ et du générateur de roadmap : <code data-empreinte>bbf6f0e8c9decba7d0e772b227f9adbf675d57ebc6e208946c7aece8366a6786</code>. Seul le contenu factuel entre les marqueurs roadmap:auto est exclu ; son générateur et le reste de la page restent suivis.</p>
+      <p>Empreinte SHA-256 de web/, catalogue/, gabarit/, src/ et du générateur de roadmap : <code data-empreinte>6c2748c7b9b0bc4fb852153033a21be1e433e8577e46209bf3b64d76d2293b1f</code>. Seul le contenu factuel entre les marqueurs roadmap:auto est exclu ; son générateur et le reste de la page restent suivis.</p>
       <p>Le catalogue privé et le déploiement effectif ne sont pas vérifiés. Les contenus pédagogiques sont représentés par leur gabarit, pas recopiés intégralement. Les options masquées ne sont pas déclarées actives. Les états clair/sombre et français/anglais partagent les mêmes structures ; l'atelier est figé en français.</p>
       <p>Régénérer et versionner : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Les tests détectent une dérive des sources, des squelettes, des dialogues, de la navigation et des onglets des jeux ; relire les squelettes manuels avant de valider une nouvelle version.</p>
     </section>
