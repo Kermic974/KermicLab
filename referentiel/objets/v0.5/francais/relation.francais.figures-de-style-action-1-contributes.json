@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.figures-de-style-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-de-style/contenu.json"
+  },
+  "source": "microskill.francais.figures-de-style-action-1",
+  "target": "skill.francais.figures-de-style"
+}

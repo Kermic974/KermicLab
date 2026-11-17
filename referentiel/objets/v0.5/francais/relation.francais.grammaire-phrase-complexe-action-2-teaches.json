@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.grammaire-phrase-complexe-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "notion.francais.grammaire-phrase-complexe",
+  "target": "microskill.francais.grammaire-phrase-complexe-action-2"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.theatre",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "label": "Analyser une scène de théâtre"
+}
