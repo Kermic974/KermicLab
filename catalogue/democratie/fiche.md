@@ -15,6 +15,9 @@ questions:
   - c'est quoi la démocratie ?
   - Pourquoi la démocratie protège-t-elle les minorités ?
   - what is democracy?
+prerequis:
+niveaux: cycle-4
+competences: emc-democratie-action-1, emc-democratie-action-2
 ---
 
 # La démocratie

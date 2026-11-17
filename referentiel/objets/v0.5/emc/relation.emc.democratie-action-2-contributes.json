@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.democratie-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "microskill.emc.democratie-action-2",
+  "target": "skill.emc.democratie"
+}
