@@ -5,6 +5,7 @@
 import * as regles from "../../web/contributions.js";
 import { donneesPersonnelles } from "./moderation.js";
 import { creerOuCommenterIssue } from "./github.js";
+import { ROLES_SYSTEME, listerRoles } from "./roles.js";
 
 export const LABEL_ISSUE = "contribution-validee";
 export const MAX_LISTE = 200;
@@ -73,16 +74,62 @@ async function lireRole(env, compteId) {
   return ligne?.role ?? null;
 }
 
-const lireUne = (env, id) => env.DB.prepare(`SELECT ${COLONNES} FROM contributions WHERE id = ?`).bind(id).first();
+/**
+ * Tables des contributions : `contributions` pour les comptes OAuth (ADR 0023, clé étrangère vers `comptes`) et
+ * `contributions_locales` pour les comptes locaux (migration 0006), mêmes colonnes. Liste fermée : jamais un nom
+ * venu de la requête.
+ */
+export const TABLES_CONTRIBUTIONS = Object.freeze(["contributions", "contributions_locales"]);
+
+/**
+ * Rôle de contribution (`contributeur`, `prof`, `admin` ou null) d'un rôle du back-office, d'après ses permissions
+ * effectives : `contributions.relire` → prof (admin pour l'administrateur, qui peut décider sur ses propres
+ * propositions), `contributions.proposer` → contributeur.
+ */
+export function roleDeContribution(role, permissions = []) {
+  if (role === "admin") return "admin";
+  if (permissions.includes("contributions.relire")) return "prof";
+  if (permissions.includes("contributions.proposer")) return "contributeur";
+  return null;
+}
+
+/** Rôle de contribution d'un compte local (rôle attribué dans le back-office ; « visiteur » sans attribution). */
+export async function roleContributionCompteLocal(env, compteId) {
+  let role = "visiteur";
+  try {
+    role = (await env.DB.prepare("SELECT role_id FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?")
+      .bind(compteId).first())?.role_id ?? "visiteur";
+  } catch { /* table absente : visiteur */ }
+  let permissions;
+  try { permissions = (await listerRoles(env)).find((r) => r.id === role)?.permissions; } catch { permissions = ROLES_SYSTEME[role]?.permissions; }
+  return roleDeContribution(role, permissions ?? []);
+}
+
+/** Lot d'effacement des contributions d'un compte local (suppression du compte) ; vide si la table manque. */
+export async function effacementContributionsLocales(env, compteId) {
+  let existe = false;
+  try {
+    existe = !!(await env.DB.prepare("SELECT 1 AS ok FROM sqlite_master WHERE type = 'table' AND name = 'contributions_locales'").bind().first());
+  } catch { existe = false; }
+  if (!existe) return [];
+  return [
+    env.DB.prepare("DELETE FROM contributions_locales WHERE auteur_id = ?").bind(compteId),
+    env.DB.prepare("UPDATE contributions_locales SET relecteur_id = NULL WHERE relecteur_id = ?").bind(compteId)
+  ];
+}
 
 /**
  * Traite une route de contribution pour le compte `compteId` (déjà authentifié).
  * @param {{ catalogue?: { maquettes: { id: string, version: string }[] }, fetchImpl?: typeof fetch }} options
  */
-export async function gererApiContributions(requete, env, compteId, { catalogue = { maquettes: [] }, fetchImpl = fetch } = {}) {
+export async function gererApiContributions(requete, env, compteId, {
+  catalogue = { maquettes: [] }, fetchImpl = fetch, table = "contributions", role: roleDonne
+} = {}) {
+  if (!TABLES_CONTRIBUTIONS.includes(table)) throw new Error("table-inconnue");
   const { pathname: chemin, searchParams } = new URL(requete.url);
   const methode = requete.method;
-  const role = await lireRole(env, compteId);
+  const role = roleDonne === undefined ? await lireRole(env, compteId) : roleDonne;
+  const lireUne = (env, id) => env.DB.prepare(`SELECT ${COLONNES} FROM ${table} WHERE id = ?`).bind(id).first();
   if (!regles.peutContribuer(role)) return erreur("role-requis", 403);
 
   if (chemin === "/api/contributions" && methode === "GET") {
@@ -90,13 +137,13 @@ export async function gererApiContributions(requete, env, compteId, { catalogue 
     if (vue === "relecture") {
       if (!regles.peutRelire(role)) return erreur("role-requis", 403);
       const { results } = await env.DB.prepare(
-        `SELECT ${COLONNES} FROM contributions WHERE statut != 'retiree' ORDER BY created_at DESC, id LIMIT ?`
+        `SELECT ${COLONNES} FROM ${table} WHERE statut != 'retiree' ORDER BY created_at DESC, id LIMIT ?`
       ).bind(MAX_LISTE).all();
       return json(results ?? []);
     }
     if (vue !== "miennes") return erreur("vue-inconnue", 400);
     const { results } = await env.DB.prepare(
-      `SELECT ${COLONNES} FROM contributions WHERE auteur_id = ? ORDER BY created_at DESC, id LIMIT ?`
+      `SELECT ${COLONNES} FROM ${table} WHERE auteur_id = ? ORDER BY created_at DESC, id LIMIT ?`
     ).bind(compteId, MAX_LISTE).all();
     return json(results ?? []);
   }
@@ -111,13 +158,13 @@ export async function gererApiContributions(requete, env, compteId, { catalogue 
     const refus = filtrerDonneesPersonnelles({ texte: v.contribution.texte_propose, motif: v.contribution.motif });
     if (refus) return refus;
     const { n } = await env.DB.prepare(
-      "SELECT count(*) AS n FROM contributions WHERE auteur_id = ? AND statut IN ('proposee', 'a_reviser')"
+      `SELECT count(*) AS n FROM ${table} WHERE auteur_id = ? AND statut IN ('proposee', 'a_reviser')`
     ).bind(compteId).first();
     if (n >= regles.MAX_OUVERTES_PAR_AUTEUR) return erreur("quota-atteint", 409);
     const id = crypto.randomUUID();
     const c = v.contribution;
     await env.DB.prepare(`
-      INSERT INTO contributions (id, auteur_id, notion_id, notion_version, chemin, nature, type, texte_actuel, texte_propose, motif, charte_version)
+      INSERT INTO ${table} (id, auteur_id, notion_id, notion_version, chemin, nature, type, texte_actuel, texte_propose, motif, charte_version)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(id, compteId, c.notion_id, String(notion.version), c.chemin, c.nature, c.type, c.texte_actuel, c.texte_propose, c.motif, c.charte_version).run();
     return json({ id }, 201);
@@ -141,7 +188,7 @@ export async function gererApiContributions(requete, env, compteId, { catalogue 
       const refus = filtrerDonneesPersonnelles({ texte: v.contribution.texte_propose, motif: v.contribution.motif });
       if (refus) return refus;
       await env.DB.prepare(`
-        UPDATE contributions SET statut = ?, nature = ?, type = ?, texte_propose = ?, motif = ?, charte_version = ?,
+        UPDATE ${table} SET statut = ?, nature = ?, type = ?, texte_propose = ?, motif = ?, charte_version = ?,
           updated_at = datetime('now') WHERE id = ? AND statut = ?
       `).bind(tr.vers, v.contribution.nature, v.contribution.type, v.contribution.texte_propose, v.contribution.motif,
         v.contribution.charte_version, actuelle.id, actuelle.statut).run();
@@ -149,7 +196,7 @@ export async function gererApiContributions(requete, env, compteId, { catalogue 
     }
 
     if (corps.action === "retirer") {
-      await env.DB.prepare("UPDATE contributions SET statut = ?, updated_at = datetime('now') WHERE id = ? AND statut = ?")
+      await env.DB.prepare(`UPDATE ${table} SET statut = ?, updated_at = datetime('now') WHERE id = ? AND statut = ?`)
         .bind(tr.vers, actuelle.id, actuelle.statut).run();
       return json(await lireUne(env, actuelle.id));
     }
@@ -161,7 +208,7 @@ export async function gererApiContributions(requete, env, compteId, { catalogue 
     const garde = corps.action === "integrer" ? "" : ", commentaire = ?, relecteur_id = ?, decided_at = datetime('now')";
     const valeurs = corps.action === "integrer" ? [] : [com.commentaire || null, compteId];
     const { meta } = await env.DB.prepare(
-      `UPDATE contributions SET statut = ?, updated_at = datetime('now')${garde} WHERE id = ? AND statut = ?`
+      `UPDATE ${table} SET statut = ?, updated_at = datetime('now')${garde} WHERE id = ? AND statut = ?`
     ).bind(tr.vers, ...valeurs, actuelle.id, actuelle.statut).run();
     if (!meta?.changes) return erreur("statut-incompatible", 409);
 
@@ -175,7 +222,7 @@ export async function gererApiContributions(requete, env, compteId, { catalogue 
           corps: corpsIssueContribution({ ...actuelle, commentaire: com.commentaire })
         }, fetchImpl);
         issue = r.action;
-        if (r.numero) await env.DB.prepare("UPDATE contributions SET issue_numero = ? WHERE id = ?").bind(r.numero, actuelle.id).run();
+        if (r.numero) await env.DB.prepare(`UPDATE ${table} SET issue_numero = ? WHERE id = ?`).bind(r.numero, actuelle.id).run();
       } catch {
         console.error("github issue contribution indisponible");
         issue = "indisponible";
