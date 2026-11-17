@@ -20,6 +20,7 @@ import {
 } from "../../web/professeur.js";
 import { compteDeSession } from "./compte-local.js";
 import { listerRoles, ROLES_SYSTEME } from "./roles.js";
+import { roleContributionCompteLocal } from "./contributions.js";
 import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
 import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
@@ -480,7 +481,10 @@ export async function gererApiProfesseur(requete, env, { catalogue, iaCahier = f
     const role = await roleDuCompte(env, moi);
     const professeur = await rolePermetProfesseur(env, role);
     return json({
-      role, professeur, profil: professeur ? await profilDe(env, moi) : null,
+      // `id` : identifiant du compte (le sien), pour reconnaître ses propres contributions ; `contribution` : rôle de
+      // contribution déduit des permissions (ADR 0023 §6 ter), null sans permission de proposer.
+      id: moi, role, professeur, contribution: await roleContributionCompteLocal(env, moi),
+      profil: professeur ? await profilDe(env, moi) : null,
       professeurs: await compter(env, "SELECT count(*) AS n FROM professeurs_eleves WHERE eleve_id = ?", moi)
     });
   }

@@ -27,6 +27,7 @@ export const REGISTRE = Object.freeze([
   { table: "sessions", finalite: "Session de connexion", contenu: "Identifiant aléatoire, expiration", donnees: "pseudonyme", conservation: "30 jours" },
   { table: "oauth_states", finalite: "Sécurité de la connexion", contenu: "États temporaires", donnees: "aucune", conservation: "Quelques minutes" },
   { table: "contributions", finalite: "Contributions au contenu", contenu: "Textes pédagogiques proposés, sans donnée personnelle (filtrés)", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
+  { table: "contributions_locales", finalite: "Contributions au contenu des comptes locaux", contenu: "Textes pédagogiques proposés, sans donnée personnelle (filtrés)", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
   { table: "comptes_locaux", finalite: "Compte facultatif sur l'appareil", contenu: "Empreinte HMAC de l'identifiant, mot de passe haché", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
   { table: "sessions_locales", finalite: "Session de synchronisation", contenu: "Empreinte du jeton", donnees: "pseudonyme", conservation: "12 heures" },
   { table: "donnees_pseudonymes", finalite: "Synchronisation chiffrée", contenu: "Données chiffrées dans le navigateur, illisibles par le serveur", donnees: "pseudonyme", conservation: "365 jours sans lecture ni écriture" },
@@ -34,6 +35,8 @@ export const REGISTRE = Object.freeze([
   { table: "familles_invitations", finalite: "Invitation d'un parent par un compte solo", contenu: "Empreinte SHA-256 du code, compte, expiration", donnees: "pseudonyme", conservation: "48 heures", controle: true },
   { table: "familles_bilans", finalite: "Suivi de la progression par le parent", contenu: "Compteurs, dates au jour près et identifiants du catalogue ; aucun texte libre", donnees: "pseudonyme", conservation: "Jusqu'au détachement ou à la suppression du compte" },
   { table: "familles_cahiers", finalite: "Cahiers assignés par le parent", contenu: "Demande (listes fermées), contenu pédagogique rédigé par l'IA et modéré, calibrage, avancement", donnees: "pseudonyme", conservation: "Jusqu'à la suppression par le parent ou du compte" },
+  { table: "familles_activites", finalite: "Défis, évaluations et objectifs donnés par le parent", contenu: "Type, enfant ou famille, notions du catalogue, nombre de questions, objectif, libellé court du parent, échéance", donnees: "pseudonyme", conservation: "Jusqu'à la suppression par le parent, le détachement ou la suppression d'un compte" },
+  { table: "familles_resultats", finalite: "Résultats des enfants aux activités de la famille", contenu: "Questions réussies, total, meilleur score, essais, durée ; aucune réponse", donnees: "pseudonyme", conservation: "Jusqu'à la suppression de l'activité, le détachement ou la suppression d'un compte", controle: true },
   { table: "familles_consommations", finalite: "Consommations d'IA de la famille", contenu: "Appels et tokens générés par compte, jour et module", donnees: "pseudonyme", conservation: "90 jours", controle: true },
   { table: "professeurs_profils", finalite: "Expérience Professeur : profil affiché aux élèves (ADR 0030)", contenu: "Nom affiché choisi par le professeur, matières et niveaux (listes fermées)", donnees: "minimale", conservation: "Jusqu'à la suppression du compte" },
   { table: "professeurs_classes", finalite: "Classes du professeur", contenu: "Nom court de la classe, matière, niveau", donnees: "pseudonyme", conservation: "Jusqu'à la suppression par le professeur ou du compte" },
@@ -52,7 +55,7 @@ export const REGISTRE = Object.freeze([
 ].map((t) => Object.freeze(t)));
 
 /** Tables dont le texte est destiné à publication : contrôlées elles aussi, sans limite de longueur. */
-const TABLES_EDITORIALES = ["contributions", "contenus_brouillons"];
+const TABLES_EDITORIALES = ["contributions", "contributions_locales", "contenus_brouillons"];
 const MAX_LIGNES = 2000;
 const IDENTIFIANT_TECHNIQUE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$|^[0-9a-f]{16,64}$/;
 

@@ -6,6 +6,7 @@
 //   jamais. Aucune table ne relie un pseudonyme à un compte et rien n'est journalisé (ni pseudonyme ni identifiant).
 import { effacementFamille } from "./famille-donnees.js";
 import { effacementProfesseur } from "./professeur-donnees.js";
+import { effacementContributionsLocales } from "./contributions.js";
 import {
   FORMAT_CHIFFRE, FORMAT_IV, FORMAT_JETON, FORMAT_PSEUDONYME, TAILLE_MAX_CHIFFRE,
   depuisBase64, egalesTempsConstant, sha256Hex, validerIdentifiant, validerMotDePasse, versBase64, versBase64Url, versHex
@@ -145,11 +146,12 @@ export async function remplacerMotDePasse(env, compteId, motDePasse) {
   ]);
 }
 
-/** Efface un compte local, ses sessions et tout ce qui le rattache à une famille (ADR 0029) ou à des classes (ADR 0030). */
+/** Efface un compte local, ses sessions, ses contributions (ADR 0023) et ce qui le rattache à une famille (ADR 0029) ou à des classes (ADR 0030). */
 export async function effacerCompteLocal(env, compteId) {
   await env.DB.batch([
     ...(await effacementFamille(env, compteId)),
     ...(await effacementProfesseur(env, compteId)),
+    ...(await effacementContributionsLocales(env, compteId)),
     env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(compteId),
     env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(compteId)
   ]);
