@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.puissances-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "object": "notion.mathematiques.puissances",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced",
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/puissances/fiche.md"
+  }
+}

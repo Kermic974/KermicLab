@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.proportionnalite-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "object": "notion.mathematiques.proportionnalite",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "reinforced",
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/proportionnalite/fiche.md"
+  }
+}

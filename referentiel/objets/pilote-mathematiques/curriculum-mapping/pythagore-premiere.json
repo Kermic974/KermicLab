@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.pythagore-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "object": "notion.mathematiques.pythagore",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced",
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/pythagore/fiche.md"
+  }
+}

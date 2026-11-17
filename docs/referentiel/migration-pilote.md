@@ -15,7 +15,7 @@ Base V0 : `07e919c8c6ae9faa2fa303680a30e343a980221f`. Périmètre : cercle trigo
 | `puissances` | `nombres-decimaux` | cycle-4, seconde | 4 |
 | `nombres-decimaux` | Liste vide | cycle-3, cycle-4, seconde | 4 |
 
-La V0 ne fournit pas de rôle curriculaire. Les 24 placements restent à créer après le choix humain du rôle par niveau. La projection est activée lors de l’ajout des placements afin de vérifier les trois champs ensemble.
+La V0 ne fournit pas de rôle curriculaire. Décision humaine du 17 novembre 2026 : `introduced` au premier niveau renseigné de chaque fiche, `reinforced` aux suivants. Les 24 placements sont en `draft`, avec la fiche V0 comme provenance. La configuration active la projection pour les huit fiches.
 
 ## Journal des objets
 
@@ -111,8 +111,34 @@ Les objets ci-dessous sont ajoutés en `draft`, version canonique 1. Les relatio
 | `catalogue/nombres-decimaux/fiche.md` · `competences` → `calculer-avec-des-decimaux` | `microskill.mathematiques.calculer-avec-des-decimaux` | `microskill` |
 | `catalogue/nombres-decimaux/fiche.md` · rattachement de `calculer-avec-des-decimaux` | `relation.mathematiques.nombres-decimaux-teaches-calculer-avec-des-decimaux` | `teaches` |
 
+| `catalogue/trigo-cercle/fiche.md` · `niveaux` → `cycle-4` et rôle validé `introduced` | `curriculum-mapping.mathematiques.trigo-cercle-cycle-4` | `curriculum-mapping` |
+| `catalogue/trigo-cercle/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.trigo-cercle-seconde` | `curriculum-mapping` |
+| `catalogue/trigo-cercle/fiche.md` · `niveaux` → `premiere` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.trigo-cercle-premiere` | `curriculum-mapping` |
+| `catalogue/trigo-cercle/fiche.md` · `niveaux` → `terminale` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.trigo-cercle-terminale` | `curriculum-mapping` |
+| `catalogue/pythagore/fiche.md` · `niveaux` → `cycle-4` et rôle validé `introduced` | `curriculum-mapping.mathematiques.pythagore-cycle-4` | `curriculum-mapping` |
+| `catalogue/pythagore/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.pythagore-seconde` | `curriculum-mapping` |
+| `catalogue/pythagore/fiche.md` · `niveaux` → `premiere` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.pythagore-premiere` | `curriculum-mapping` |
+| `catalogue/fractions/fiche.md` · `niveaux` → `cycle-3` et rôle validé `introduced` | `curriculum-mapping.mathematiques.fractions-cycle-3` | `curriculum-mapping` |
+| `catalogue/fractions/fiche.md` · `niveaux` → `cycle-4` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.fractions-cycle-4` | `curriculum-mapping` |
+| `catalogue/fractions/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.fractions-seconde` | `curriculum-mapping` |
+| `catalogue/proportionnalite/fiche.md` · `niveaux` → `cycle-3` et rôle validé `introduced` | `curriculum-mapping.mathematiques.proportionnalite-cycle-3` | `curriculum-mapping` |
+| `catalogue/proportionnalite/fiche.md` · `niveaux` → `cycle-4` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.proportionnalite-cycle-4` | `curriculum-mapping` |
+| `catalogue/proportionnalite/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.proportionnalite-seconde` | `curriculum-mapping` |
+| `catalogue/angles/fiche.md` · `niveaux` → `cycle-3` et rôle validé `introduced` | `curriculum-mapping.mathematiques.angles-cycle-3` | `curriculum-mapping` |
+| `catalogue/angles/fiche.md` · `niveaux` → `cycle-4` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.angles-cycle-4` | `curriculum-mapping` |
+| `catalogue/angles/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.angles-seconde` | `curriculum-mapping` |
+| `catalogue/perimetres-aires/fiche.md` · `niveaux` → `cycle-3` et rôle validé `introduced` | `curriculum-mapping.mathematiques.perimetres-aires-cycle-3` | `curriculum-mapping` |
+| `catalogue/perimetres-aires/fiche.md` · `niveaux` → `cycle-4` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.perimetres-aires-cycle-4` | `curriculum-mapping` |
+| `catalogue/perimetres-aires/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.perimetres-aires-seconde` | `curriculum-mapping` |
+| `catalogue/puissances/fiche.md` · `niveaux` → `cycle-4` et rôle validé `introduced` | `curriculum-mapping.mathematiques.puissances-cycle-4` | `curriculum-mapping` |
+| `catalogue/puissances/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.puissances-seconde` | `curriculum-mapping` |
+| `catalogue/nombres-decimaux/fiche.md` · `niveaux` → `cycle-3` et rôle validé `introduced` | `curriculum-mapping.mathematiques.nombres-decimaux-cycle-3` | `curriculum-mapping` |
+| `catalogue/nombres-decimaux/fiche.md` · `niveaux` → `cycle-4` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.nombres-decimaux-cycle-4` | `curriculum-mapping` |
+| `catalogue/nombres-decimaux/fiche.md` · `niveaux` → `seconde` et rôle validé `reinforced` | `curriculum-mapping.mathematiques.nombres-decimaux-seconde` | `curriculum-mapping` |
+
 ## Qualification et retour arrière
 
-- Vérification du corpus préparatoire sur la base ci-dessus : `node scripts/check-referentiel.mjs --json` a donné `PASS`, zéro erreur et zéro avertissement.
-- Après choix des rôles, créer les placements en brouillon et la configuration de projection. Comparer les métadonnées et les résultats réels de recommandation et de cahier de vacances. Vérifier que le build ne modifie pas les fiches du pilote quand les champs concordent.
-- Avant fusion, rejouer le retour arrière par revert sur une branche de test et comparer à la base V0. Joindre les résultats et le run CI à la PR.
+- Le validateur S4 donne `PASS`, zéro erreur et zéro avertissement pour les 111 objets. Le contrôle et le mode écriture de la projection ne signalent aucun changement de fiche. Le diff du catalogue est vide.
+- Sur les 174 fiches publiques, les métadonnées V0 sont identiques avant et après le passage du générateur. Comparaison par appels aux consommateurs réels : 256 états de maîtrise des huit notions pilotes pour la recommandation et cinq parcours du cahier (choix des niveaux, ordre des notions, diagnostic et planning). Les résultats sont identiques.
+- Retour arrière rejoué par `git revert` d’un commit local contenant les objets et la configuration, depuis la base V0. L’arbre Git revient à l’identique. Les 256 recommandations et cinq parcours restent identiques avec la projection désactivée.
+- La CI Ubuntu de la PR vérifie le build, le contrôle des pages, le référentiel et les suites existantes avant fusion.
