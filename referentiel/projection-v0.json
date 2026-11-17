@@ -126,7 +126,19 @@
     "litterature-didees": "notion.francais.litterature-didees",
     "poesie": "notion.francais.poesie",
     "roman": "notion.francais.roman",
-    "theatre": "notion.francais.theatre"
+    "theatre": "notion.francais.theatre",
+    "citoyennete": "notion.emc.citoyennete",
+    "democratie": "notion.emc.democratie",
+    "discrimination": "notion.emc.discrimination",
+    "droits-de-lhomme": "notion.emc.droits-de-lhomme",
+    "egalite": "notion.emc.egalite",
+    "engagement-civique": "notion.emc.engagement-civique",
+    "etat-de-droit": "notion.emc.etat-de-droit",
+    "fraternite": "notion.emc.fraternite",
+    "interet-general": "notion.emc.interet-general",
+    "justice": "notion.emc.justice",
+    "laicite": "notion.emc.laicite",
+    "liberte": "notion.emc.liberte"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -454,7 +466,31 @@
     "microskill.francais.roman-action-1": "francais-roman-action-1",
     "microskill.francais.roman-action-2": "francais-roman-action-2",
     "microskill.francais.theatre-action-1": "francais-theatre-action-1",
-    "microskill.francais.theatre-action-2": "francais-theatre-action-2"
+    "microskill.francais.theatre-action-2": "francais-theatre-action-2",
+    "microskill.emc.citoyennete-action-1": "emc-citoyennete-action-1",
+    "microskill.emc.citoyennete-action-2": "emc-citoyennete-action-2",
+    "microskill.emc.democratie-action-1": "emc-democratie-action-1",
+    "microskill.emc.democratie-action-2": "emc-democratie-action-2",
+    "microskill.emc.discrimination-action-1": "emc-discrimination-action-1",
+    "microskill.emc.discrimination-action-2": "emc-discrimination-action-2",
+    "microskill.emc.droits-de-lhomme-action-1": "emc-droits-de-lhomme-action-1",
+    "microskill.emc.droits-de-lhomme-action-2": "emc-droits-de-lhomme-action-2",
+    "microskill.emc.egalite-action-1": "emc-egalite-action-1",
+    "microskill.emc.egalite-action-2": "emc-egalite-action-2",
+    "microskill.emc.engagement-civique-action-1": "emc-engagement-civique-action-1",
+    "microskill.emc.engagement-civique-action-2": "emc-engagement-civique-action-2",
+    "microskill.emc.etat-de-droit-action-1": "emc-etat-de-droit-action-1",
+    "microskill.emc.etat-de-droit-action-2": "emc-etat-de-droit-action-2",
+    "microskill.emc.fraternite-action-1": "emc-fraternite-action-1",
+    "microskill.emc.fraternite-action-2": "emc-fraternite-action-2",
+    "microskill.emc.interet-general-action-1": "emc-interet-general-action-1",
+    "microskill.emc.interet-general-action-2": "emc-interet-general-action-2",
+    "microskill.emc.justice-action-1": "emc-justice-action-1",
+    "microskill.emc.justice-action-2": "emc-justice-action-2",
+    "microskill.emc.laicite-action-1": "emc-laicite-action-1",
+    "microskill.emc.laicite-action-2": "emc-laicite-action-2",
+    "microskill.emc.liberte-action-1": "emc-liberte-action-1",
+    "microskill.emc.liberte-action-2": "emc-liberte-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -1490,6 +1526,90 @@
       "competences": [
         "francais-theatre-action-1",
         "francais-theatre-action-2"
+      ]
+    },
+    "citoyennete": {
+      "prerequis": [],
+      "competences": [
+        "emc-citoyennete-action-1",
+        "emc-citoyennete-action-2"
+      ]
+    },
+    "democratie": {
+      "prerequis": [],
+      "competences": [
+        "emc-democratie-action-1",
+        "emc-democratie-action-2"
+      ]
+    },
+    "discrimination": {
+      "prerequis": [],
+      "competences": [
+        "emc-discrimination-action-1",
+        "emc-discrimination-action-2"
+      ]
+    },
+    "droits-de-lhomme": {
+      "prerequis": [],
+      "competences": [
+        "emc-droits-de-lhomme-action-1",
+        "emc-droits-de-lhomme-action-2"
+      ]
+    },
+    "egalite": {
+      "prerequis": [],
+      "competences": [
+        "emc-egalite-action-1",
+        "emc-egalite-action-2"
+      ]
+    },
+    "engagement-civique": {
+      "prerequis": [],
+      "competences": [
+        "emc-engagement-civique-action-1",
+        "emc-engagement-civique-action-2"
+      ]
+    },
+    "etat-de-droit": {
+      "prerequis": [],
+      "competences": [
+        "emc-etat-de-droit-action-1",
+        "emc-etat-de-droit-action-2"
+      ]
+    },
+    "fraternite": {
+      "prerequis": [],
+      "competences": [
+        "emc-fraternite-action-1",
+        "emc-fraternite-action-2"
+      ]
+    },
+    "interet-general": {
+      "prerequis": [],
+      "competences": [
+        "emc-interet-general-action-1",
+        "emc-interet-general-action-2"
+      ]
+    },
+    "justice": {
+      "prerequis": [],
+      "competences": [
+        "emc-justice-action-1",
+        "emc-justice-action-2"
+      ]
+    },
+    "laicite": {
+      "prerequis": [],
+      "competences": [
+        "emc-laicite-action-1",
+        "emc-laicite-action-2"
+      ]
+    },
+    "liberte": {
+      "prerequis": [],
+      "competences": [
+        "emc-liberte-action-1",
+        "emc-liberte-action-2"
       ]
     }
   }

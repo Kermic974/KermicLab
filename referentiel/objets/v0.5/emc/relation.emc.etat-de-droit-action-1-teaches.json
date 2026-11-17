@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.etat-de-droit-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "notion.emc.etat-de-droit",
+  "target": "microskill.emc.etat-de-droit-action-1"
+}

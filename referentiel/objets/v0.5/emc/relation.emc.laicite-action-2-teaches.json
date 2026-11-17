@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.laicite-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "notion.emc.laicite",
+  "target": "microskill.emc.laicite-action-2"
+}

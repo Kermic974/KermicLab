@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.discrimination-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "microskill.emc.discrimination-action-2",
+  "target": "skill.emc.discrimination"
+}

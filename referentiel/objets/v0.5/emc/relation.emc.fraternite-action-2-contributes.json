@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.fraternite-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "microskill.emc.fraternite-action-2",
+  "target": "skill.emc.fraternite"
+}

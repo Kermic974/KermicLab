@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.droits-de-lhomme-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "microskill.emc.droits-de-lhomme-action-2",
+  "target": "skill.emc.droits-de-lhomme"
+}

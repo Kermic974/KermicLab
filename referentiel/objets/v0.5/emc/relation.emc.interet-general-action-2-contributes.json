@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.interet-general-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "microskill.emc.interet-general-action-2",
+  "target": "skill.emc.interet-general"
+}
