@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.trigo-cercle-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "object": "notion.mathematiques.trigo-cercle",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced",
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/trigo-cercle/fiche.md"
+  }
+}

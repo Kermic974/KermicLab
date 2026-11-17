@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.angles-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "object": "notion.mathematiques.angles",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced",
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/angles/fiche.md"
+  }
+}
