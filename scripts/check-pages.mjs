@@ -3,7 +3,14 @@
 import { readFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue, lireMetaHtml } from "./lib/catalogue.mjs";
 
+import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
+
 const racine = new URL("..", import.meta.url).pathname;
+const fichesObsoletes = await synchroniserProjectionV0(racine);
+if (fichesObsoletes.length) {
+  console.error(fichesObsoletes.map(fiche => fiche + ": projection S4 obsolète — lancer npm run build").join("\n"));
+  process.exit(1);
+}
 const { sources, pages } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 const publiees = Object.entries(pages).flatMap(([id, traductions]) =>
   Object.entries(traductions).map(([langue, html]) => ({ fichier: `Worker/${id}/${langue}`, aJour: true, html })));
