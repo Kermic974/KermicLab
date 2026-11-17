@@ -1507,10 +1507,31 @@ function element(balise, { classe, texte, cle, attributs } = {}) {
 }
 
 function defiler(li, bloc = "end") {
-  if (!$("#panneau-chat").hidden) li.scrollIntoView({ behavior: mouvementReduit() ? "auto" : "smooth", block: bloc });
+  // Le fil est visible dans le panneau flottant ou incrusté dans l'accueil.
+  if ($("#fil").offsetParent !== null) li.scrollIntoView({ behavior: mouvementReduit() ? "auto" : "smooth", block: bloc });
+}
+
+/**
+ * Accueil : le fil (unique) quitte le panneau flottant et s'affiche sous le champ de l'accueil.
+ * Le panneau flottant se referme ; il reprend le fil à sa prochaine ouverture (`ouvrirChat`).
+ */
+function incrusterFil() {
+  const hote = $("#fil-accueil");
+  fermerChat();
+  if (!hote.contains($("#fil"))) hote.prepend($("#fil"));
+  hote.hidden = false;
+}
+
+/** Le fil revient dans le panneau flottant (déplacer une page incrustée la recharge). */
+function rendreFilAuChat() {
+  const fil = $("#fil");
+  const panneau = $("#panneau-chat");
+  if (!panneau.contains(fil)) panneau.insertBefore(fil, panneau.querySelector(".zone-saisie"));
+  $("#fil-accueil").hidden = true;
 }
 
 function ouvrirChat() {
+  rendreFilAuChat();
   $("#panneau-chat").hidden = false;
   $("#ouvrir-chat").setAttribute("aria-expanded", "true");
   $("#question").focus({ preventScroll: true });
@@ -1596,6 +1617,12 @@ function nouvelleConversation() {
   if (etat.envoiEnCours) return;
   $("#fil").replaceChildren();
   ajouterBienvenue();
+  if (!$("#fil-accueil").hidden) {
+    // Fil incrusté dans l'accueil : il se replie, la saisie de l'accueil reprend la main.
+    $("#fil-accueil").hidden = true;
+    $("#question-accueil").focus({ preventScroll: true });
+    return;
+  }
   const champ = $("#question");
   champ.value = "";
   champ.style.height = "auto";
@@ -2375,6 +2402,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
   const bouton = $("#formulaire button");
   bouton.disabled = true;
   $("#nouvelle-conversation").disabled = true;
+  $("#nouvelle-conversation-accueil").disabled = true;
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/chat`, {
       method: "POST",
@@ -2400,6 +2428,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
   } finally {
     bouton.disabled = false;
     $("#nouvelle-conversation").disabled = false;
+    $("#nouvelle-conversation-accueil").disabled = false;
     etat.envoiEnCours = false;
     document.body.classList.remove("occupe");
   }
@@ -2595,17 +2624,19 @@ async function demarrer() {
     if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#formulaire").requestSubmit(); }
   });
 
-  // Accueil : la question part dans le même fil que le chat, qui s'ouvre pour montrer la réponse.
+  // Accueil : la question part dans le même fil que le chat, incrusté sous le champ (le panneau flottant reste fermé).
   $("#formulaire-accueil").addEventListener("submit", (e) => {
     e.preventDefault();
     const saisie = $("#question-accueil");
     const q = saisie.value.trim();
     if (!q || etat.envoiEnCours) return;
     saisie.value = "";
-    ouvrirChat();
+    incrusterFil();
     envoyer(q);
   });
-  $("#puces-accueil").addEventListener("click", (e) => { if (e.target.closest(".puce")) ouvrirChat(); });
+  // En capture : le fil est en place avant que la puce n'envoie sa question.
+  $("#puces-accueil").addEventListener("click", (e) => { if (e.target.closest(".puce") && !etat.envoiEnCours) incrusterFil(); }, { capture: true });
+  $("#nouvelle-conversation-accueil").addEventListener("click", nouvelleConversation);
 
   $("#ouvrir-progres").addEventListener("click", ouvrirProgres);
 

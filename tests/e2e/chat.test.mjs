@@ -82,28 +82,42 @@ test("avatar : chat replié, accessible au clavier sur chaque écran, conversati
   await contexte.close();
 });
 
-test("accueil : la question saisie ou choisie part dans le fil du chat, qui s'ouvre sur la réponse", async () => {
+test("accueil : la question saisie ou choisie obtient sa réponse incrustée dans l'accueil, sans ouvrir le panneau du chat", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   const requetes = await simulerApi(page);
   await page.goto(serveur.url);
   const panneau = page.locator("#panneau-chat");
+  const incruste = page.locator("#fil-accueil");
   await page.locator("#puces-accueil .puce", { hasText: "C'est quoi le sinus ?" }).waitFor();
   assert.match(await page.locator("#question-accueil-titre").textContent(), /comprendre/);
-  assert.equal(await panneau.isVisible(), false);
+  assert.equal(await incruste.isVisible(), false);
   await page.fill("#question-accueil", "   ");
   await page.press("#question-accueil", "Enter");
-  assert.equal(await panneau.isVisible(), false, "une question vide n'ouvre rien");
+  assert.equal(await incruste.isVisible(), false, "une question vide n'affiche rien");
   await page.fill("#question-accueil", "bonjour");
   await page.press("#question-accueil", "Enter");
-  await page.locator("#fil li", { hasText: "Réponse simple." }).waitFor();
-  assert.equal(await panneau.isVisible(), true);
+  await page.locator("#fil-accueil #fil li", { hasText: "Réponse simple." }).waitFor();
+  assert.equal(await panneau.isVisible(), false, "le panneau flottant reste fermé");
   assert.equal(await page.inputValue("#question-accueil"), "", "le champ de l'accueil est vidé");
   assert.equal(await page.locator("#fil .moi").count(), 1);
-  await page.click("#fermer-chat");
+  assert.equal(await page.locator("#fil .bienvenue").isVisible(), false, "le message de bienvenue du panneau n'est pas répété");
   await page.locator("#puces-accueil .puce", { hasText: "C'est quoi le sinus ?" }).click();
-  await page.locator("#fil .carte-maquette").waitFor();
-  assert.equal(await panneau.isVisible(), true, "une question d'exemple ouvre aussi le chat");
+  await page.locator("#fil-accueil #fil .carte-maquette iframe").waitFor();
+  assert.equal(await panneau.isVisible(), false, "une question d'exemple reste aussi dans l'accueil");
   assert.equal(requetes.length, 2);
+
+  // Le panneau flottant reprend le même fil à son ouverture, puis l'accueil le reprend à la question suivante.
+  await page.click("#ouvrir-chat");
+  assert.equal(await page.locator("#panneau-chat #fil .moi").count(), 2);
+  assert.equal(await incruste.isVisible(), false);
+  await page.fill("#question-accueil", "bonjour");
+  await page.press("#question-accueil", "Enter");
+  await page.locator("#fil-accueil #fil .moi").nth(2).waitFor();
+  assert.equal(await panneau.isVisible(), false);
+
+  await page.click("#nouvelle-conversation-accueil");
+  assert.equal(await incruste.isVisible(), false, "« Nouvelle » replie le fil de l'accueil");
+  assert.equal(await page.locator("#fil .moi").count(), 0);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

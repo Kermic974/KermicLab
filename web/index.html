@@ -112,7 +112,7 @@
 
       <section class="accueil-depart" id="accueil" data-ecrans="accueil" aria-labelledby="depart-titre">
         <h2 id="depart-titre" class="visuellement-cache" data-i18n="departTitre"></h2>
-        <!-- La question au centre : même envoi que le chat, qui s'ouvre sur la réponse. -->
+        <!-- La question au centre : même fil que le chat, incrusté ici sous le champ (le panneau flottant ne s'ouvre pas). -->
         <section class="carte question-accueil" aria-labelledby="question-accueil-titre">
           <h3 id="question-accueil-titre" data-i18n="questionAccueilTitre"></h3>
           <form id="formulaire-accueil" autocomplete="off">
@@ -121,6 +121,9 @@
             <button type="submit" data-i18n="envoyer"></button>
           </form>
           <div class="puces" id="puces-accueil"></div>
+          <div class="fil-accueil" id="fil-accueil" hidden>
+            <button type="button" class="secondaire petit-bouton" id="nouvelle-conversation-accueil" data-i18n="chatNouvelleCourt" data-i18n-aria="chatNouvelle"></button>
+          </div>
         </section>
         <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre" hidden>
           <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-lecture"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
