@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.droites-et-systemes-contributes-resoudre-un-systeme-de-deux-equations",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/droites-et-systemes/fiche.md"
+  },
+  "source": "microskill.mathematiques.resoudre-un-systeme-de-deux-equations",
+  "target": "skill.mathematiques.droites-et-systemes"
+}

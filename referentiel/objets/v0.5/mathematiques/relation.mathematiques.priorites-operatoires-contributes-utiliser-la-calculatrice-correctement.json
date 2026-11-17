@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.priorites-operatoires-contributes-utiliser-la-calculatrice-correctement",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/priorites-operatoires/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-la-calculatrice-correctement",
+  "target": "skill.mathematiques.priorites-operatoires"
+}

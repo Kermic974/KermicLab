@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-contributes-calculer-un-produit-scalaire-avec-les-coordonnees",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/produit-scalaire/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-un-produit-scalaire-avec-les-coordonnees",
+  "target": "skill.mathematiques.produit-scalaire"
+}

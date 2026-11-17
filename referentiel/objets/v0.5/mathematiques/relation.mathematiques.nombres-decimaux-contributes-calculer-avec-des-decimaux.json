@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-contributes-calculer-avec-des-decimaux",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/nombres-decimaux/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-avec-des-decimaux",
+  "target": "skill.mathematiques.nombres-decimaux"
+}

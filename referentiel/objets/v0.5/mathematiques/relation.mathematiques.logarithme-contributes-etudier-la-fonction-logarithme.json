@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-contributes-etudier-la-fonction-logarithme",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "microskill.mathematiques.etudier-la-fonction-logarithme",
+  "target": "skill.mathematiques.logarithme"
+}

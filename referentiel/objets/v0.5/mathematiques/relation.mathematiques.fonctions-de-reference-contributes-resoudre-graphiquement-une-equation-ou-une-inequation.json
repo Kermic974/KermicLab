@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fonctions-de-reference-contributes-resoudre-graphiquement-une-equation-ou-une-inequation",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-de-reference/fiche.md"
+  },
+  "source": "microskill.mathematiques.resoudre-graphiquement-une-equation-ou-une-inequation",
+  "target": "skill.mathematiques.fonctions-de-reference"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vecteurs-contributes-utiliser-la-relation-de-chasles",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vecteurs/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-la-relation-de-chasles",
+  "target": "skill.mathematiques.vecteurs"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-contributes-utiliser-la-formule-d-al-kashi",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/produit-scalaire/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-la-formule-d-al-kashi",
+  "target": "skill.mathematiques.produit-scalaire"
+}

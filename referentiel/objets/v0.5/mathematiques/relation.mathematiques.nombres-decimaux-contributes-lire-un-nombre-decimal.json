@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-contributes-lire-un-nombre-decimal",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/nombres-decimaux/fiche.md"
+  },
+  "source": "microskill.mathematiques.lire-un-nombre-decimal",
+  "target": "skill.mathematiques.nombres-decimaux"
+}

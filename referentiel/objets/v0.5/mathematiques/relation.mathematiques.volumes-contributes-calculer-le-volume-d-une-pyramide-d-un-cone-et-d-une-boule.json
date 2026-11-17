@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.volumes-contributes-calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/volumes/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule",
+  "target": "skill.mathematiques.volumes"
+}

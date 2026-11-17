@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vitesse-teaches-calculer-une-vitesse-moyenne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vitesse/fiche.md"
+  },
+  "source": "notion.mathematiques.vitesse",
+  "target": "microskill.mathematiques.calculer-une-vitesse-moyenne"
+}

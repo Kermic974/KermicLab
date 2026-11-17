@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.derivation-teaches-etudier-les-variations-d-une-fonction",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/derivation/fiche.md"
+  },
+  "source": "notion.mathematiques.derivation",
+  "target": "microskill.mathematiques.etudier-les-variations-d-une-fonction"
+}

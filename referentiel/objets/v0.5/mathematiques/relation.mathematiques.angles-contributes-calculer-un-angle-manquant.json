@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.angles-contributes-calculer-un-angle-manquant",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/angles/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-un-angle-manquant",
+  "target": "skill.mathematiques.angles"
+}

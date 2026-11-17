@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.integrales-teaches-calculer-une-valeur-moyenne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/integrales/fiche.md"
+  },
+  "source": "notion.mathematiques.integrales",
+  "target": "microskill.mathematiques.calculer-une-valeur-moyenne"
+}

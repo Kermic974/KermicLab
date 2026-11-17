@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.puissances-contributes-utiliser-les-puissances-de-10",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/puissances/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-les-puissances-de-10",
+  "target": "skill.mathematiques.puissances"
+}

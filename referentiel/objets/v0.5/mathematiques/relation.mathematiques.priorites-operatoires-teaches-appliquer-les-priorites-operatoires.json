@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.priorites-operatoires-teaches-appliquer-les-priorites-operatoires",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/priorites-operatoires/fiche.md"
+  },
+  "source": "notion.mathematiques.priorites-operatoires",
+  "target": "microskill.mathematiques.appliquer-les-priorites-operatoires"
+}

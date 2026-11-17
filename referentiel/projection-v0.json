@@ -8,7 +8,35 @@
     "angles": "notion.mathematiques.angles",
     "perimetres-aires": "notion.mathematiques.perimetres-aires",
     "puissances": "notion.mathematiques.puissances",
-    "nombres-decimaux": "notion.mathematiques.nombres-decimaux"
+    "nombres-decimaux": "notion.mathematiques.nombres-decimaux",
+    "arithmetique": "notion.mathematiques.arithmetique",
+    "calcul-litteral": "notion.mathematiques.calcul-litteral",
+    "denombrement": "notion.mathematiques.denombrement",
+    "derivation": "notion.mathematiques.derivation",
+    "droites-et-systemes": "notion.mathematiques.droites-et-systemes",
+    "equations": "notion.mathematiques.equations",
+    "exponentielle": "notion.mathematiques.exponentielle",
+    "fonctions-affines": "notion.mathematiques.fonctions-affines",
+    "fonctions-de-reference": "notion.mathematiques.fonctions-de-reference",
+    "geometrie-dans-l-espace": "notion.mathematiques.geometrie-dans-l-espace",
+    "integrales": "notion.mathematiques.integrales",
+    "limites-et-continuite": "notion.mathematiques.limites-et-continuite",
+    "logarithme": "notion.mathematiques.logarithme",
+    "loi-binomiale": "notion.mathematiques.loi-binomiale",
+    "nombres-relatifs": "notion.mathematiques.nombres-relatifs",
+    "priorites-operatoires": "notion.mathematiques.priorites-operatoires",
+    "probabilites": "notion.mathematiques.probabilites",
+    "probabilites-conditionnelles": "notion.mathematiques.probabilites-conditionnelles",
+    "produit-scalaire": "notion.mathematiques.produit-scalaire",
+    "recurrence": "notion.mathematiques.recurrence",
+    "second-degre": "notion.mathematiques.second-degre",
+    "statistiques": "notion.mathematiques.statistiques",
+    "suites": "notion.mathematiques.suites",
+    "thales": "notion.mathematiques.thales",
+    "transformations": "notion.mathematiques.transformations",
+    "vecteurs": "notion.mathematiques.vecteurs",
+    "vitesse": "notion.mathematiques.vitesse",
+    "volumes": "notion.mathematiques.volumes"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -43,7 +71,120 @@
     "microskill.mathematiques.lire-un-nombre-decimal": "lire-un-nombre-decimal",
     "microskill.mathematiques.comparer-des-decimaux": "comparer-des-decimaux",
     "microskill.mathematiques.arrondir-un-decimal": "arrondir-un-decimal",
-    "microskill.mathematiques.calculer-avec-des-decimaux": "calculer-avec-des-decimaux"
+    "microskill.mathematiques.calculer-avec-des-decimaux": "calculer-avec-des-decimaux",
+    "microskill.mathematiques.additionner-et-soustraire-des-relatifs": "additionner-et-soustraire-des-relatifs",
+    "microskill.mathematiques.appliquer-la-formule-des-probabilites-totales": "appliquer-la-formule-des-probabilites-totales",
+    "microskill.mathematiques.appliquer-le-theoreme-des-valeurs-intermediaires": "appliquer-le-theoreme-des-valeurs-intermediaires",
+    "microskill.mathematiques.appliquer-les-priorites-operatoires": "appliquer-les-priorites-operatoires",
+    "microskill.mathematiques.appliquer-les-proprietes-algebriques-de-l-exponentielle": "appliquer-les-proprietes-algebriques-de-l-exponentielle",
+    "microskill.mathematiques.appliquer-les-proprietes-algebriques-du-logarithme": "appliquer-les-proprietes-algebriques-du-logarithme",
+    "microskill.mathematiques.calculer-avec-des-parentheses": "calculer-avec-des-parentheses",
+    "microskill.mathematiques.calculer-dans-un-repere-de-l-espace": "calculer-dans-un-repere-de-l-espace",
+    "microskill.mathematiques.calculer-des-frequences": "calculer-des-frequences",
+    "microskill.mathematiques.calculer-esperance-variance-et-ecart-type": "calculer-esperance-variance-et-ecart-type",
+    "microskill.mathematiques.calculer-la-valeur-d-une-expression": "calculer-la-valeur-d-une-expression",
+    "microskill.mathematiques.calculer-le-discriminant": "calculer-le-discriminant",
+    "microskill.mathematiques.calculer-le-volume-d-un-pave": "calculer-le-volume-d-un-pave",
+    "microskill.mathematiques.calculer-le-volume-d-un-prisme-et-d-un-cylindre": "calculer-le-volume-d-un-prisme-et-d-un-cylindre",
+    "microskill.mathematiques.calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule": "calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule",
+    "microskill.mathematiques.calculer-les-coordonnees-d-un-vecteur": "calculer-les-coordonnees-d-un-vecteur",
+    "microskill.mathematiques.calculer-un-nombre-derive": "calculer-un-nombre-derive",
+    "microskill.mathematiques.calculer-un-produit-scalaire": "calculer-un-produit-scalaire",
+    "microskill.mathematiques.calculer-un-produit-scalaire-avec-les-coordonnees": "calculer-un-produit-scalaire-avec-les-coordonnees",
+    "microskill.mathematiques.calculer-un-projete-orthogonal": "calculer-un-projete-orthogonal",
+    "microskill.mathematiques.calculer-une-aire-entre-deux-courbes": "calculer-une-aire-entre-deux-courbes",
+    "microskill.mathematiques.calculer-une-combinaison": "calculer-une-combinaison",
+    "microskill.mathematiques.calculer-une-expression-avec-des-puissances": "calculer-une-expression-avec-des-puissances",
+    "microskill.mathematiques.calculer-une-image-et-un-antecedent": "calculer-une-image-et-un-antecedent",
+    "microskill.mathematiques.calculer-une-integrale": "calculer-une-integrale",
+    "microskill.mathematiques.calculer-une-limite-en-l-infini": "calculer-une-limite-en-l-infini",
+    "microskill.mathematiques.calculer-une-longueur-avec-thales": "calculer-une-longueur-avec-thales",
+    "microskill.mathematiques.calculer-une-moyenne-et-une-etendue": "calculer-une-moyenne-et-une-etendue",
+    "microskill.mathematiques.calculer-une-probabilite": "calculer-une-probabilite",
+    "microskill.mathematiques.calculer-une-probabilite-binomiale": "calculer-une-probabilite-binomiale",
+    "microskill.mathematiques.calculer-une-probabilite-conditionnelle": "calculer-une-probabilite-conditionnelle",
+    "microskill.mathematiques.calculer-une-valeur-moyenne": "calculer-une-valeur-moyenne",
+    "microskill.mathematiques.calculer-une-vitesse-moyenne": "calculer-une-vitesse-moyenne",
+    "microskill.mathematiques.calculer-vitesse-distance-et-duree": "calculer-vitesse-distance-et-duree",
+    "microskill.mathematiques.construire-un-arbre-de-probabilites": "construire-un-arbre-de-probabilites",
+    "microskill.mathematiques.construire-un-arbre-pondere": "construire-un-arbre-pondere",
+    "microskill.mathematiques.construire-un-symetrique-par-symetrie-axiale": "construire-un-symetrique-par-symetrie-axiale",
+    "microskill.mathematiques.construire-un-symetrique-par-symetrie-centrale": "construire-un-symetrique-par-symetrie-centrale",
+    "microskill.mathematiques.convertir-une-duree-en-heures-decimales": "convertir-une-duree-en-heures-decimales",
+    "microskill.mathematiques.convertir-une-vitesse": "convertir-une-vitesse",
+    "microskill.mathematiques.convertir-volumes-et-contenances": "convertir-volumes-et-contenances",
+    "microskill.mathematiques.decomposer-en-facteurs-premiers": "decomposer-en-facteurs-premiers",
+    "microskill.mathematiques.definir-une-suite-explicite-ou-recurrente": "definir-une-suite-explicite-ou-recurrente",
+    "microskill.mathematiques.demontrer-une-divisibilite": "demontrer-une-divisibilite",
+    "microskill.mathematiques.demontrer-une-formule-de-somme": "demontrer-une-formule-de-somme",
+    "microskill.mathematiques.denombrer-des-listes-avec-repetition": "denombrer-des-listes-avec-repetition",
+    "microskill.mathematiques.denombrer-les-parties-d-un-ensemble": "denombrer-les-parties-d-un-ensemble",
+    "microskill.mathematiques.denombrer-permutations-et-arrangements": "denombrer-permutations-et-arrangements",
+    "microskill.mathematiques.determiner-l-equation-cartesienne-d-un-plan": "determiner-l-equation-cartesienne-d-un-plan",
+    "microskill.mathematiques.determiner-l-equation-reduite-d-une-droite": "determiner-l-equation-reduite-d-une-droite",
+    "microskill.mathematiques.determiner-un-extremum": "determiner-un-extremum",
+    "microskill.mathematiques.determiner-un-vecteur-normal": "determiner-un-vecteur-normal",
+    "microskill.mathematiques.determiner-une-asymptote": "determiner-une-asymptote",
+    "microskill.mathematiques.determiner-une-mediane": "determiner-une-mediane",
+    "microskill.mathematiques.determiner-une-primitive": "determiner-une-primitive",
+    "microskill.mathematiques.developper-une-expression": "developper-une-expression",
+    "microskill.mathematiques.distinguer-fonction-lineaire-et-affine": "distinguer-fonction-lineaire-et-affine",
+    "microskill.mathematiques.ecrire-la-forme-canonique": "ecrire-la-forme-canonique",
+    "microskill.mathematiques.ecrire-une-representation-parametrique-de-droite": "ecrire-une-representation-parametrique-de-droite",
+    "microskill.mathematiques.etudier-la-fonction-carre": "etudier-la-fonction-carre",
+    "microskill.mathematiques.etudier-la-fonction-exponentielle": "etudier-la-fonction-exponentielle",
+    "microskill.mathematiques.etudier-la-fonction-inverse": "etudier-la-fonction-inverse",
+    "microskill.mathematiques.etudier-la-fonction-logarithme": "etudier-la-fonction-logarithme",
+    "microskill.mathematiques.etudier-le-sens-de-variation-d-une-suite": "etudier-le-sens-de-variation-d-une-suite",
+    "microskill.mathematiques.etudier-le-sens-de-variation-et-le-signe": "etudier-le-sens-de-variation-et-le-signe",
+    "microskill.mathematiques.etudier-le-signe-d-un-trinome": "etudier-le-signe-d-un-trinome",
+    "microskill.mathematiques.etudier-les-variations-d-une-fonction": "etudier-les-variations-d-une-fonction",
+    "microskill.mathematiques.factoriser-une-expression": "factoriser-une-expression",
+    "microskill.mathematiques.interpreter-quartiles-et-ecart-type": "interpreter-quartiles-et-ecart-type",
+    "microskill.mathematiques.interpreter-un-echantillonnage": "interpreter-un-echantillonnage",
+    "microskill.mathematiques.lever-une-forme-indeterminee": "lever-une-forme-indeterminee",
+    "microskill.mathematiques.lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine": "lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine",
+    "microskill.mathematiques.mettre-un-probleme-en-equation": "mettre-un-probleme-en-equation",
+    "microskill.mathematiques.multiplier-et-diviser-des-relatifs": "multiplier-et-diviser-des-relatifs",
+    "microskill.mathematiques.prouver-un-parallelisme-avec-la-reciproque": "prouver-un-parallelisme-avec-la-reciproque",
+    "microskill.mathematiques.reconnaitre-des-droites-paralleles": "reconnaitre-des-droites-paralleles",
+    "microskill.mathematiques.reconnaitre-la-configuration-papillon": "reconnaitre-la-configuration-papillon",
+    "microskill.mathematiques.reconnaitre-translations-et-rotations": "reconnaitre-translations-et-rotations",
+    "microskill.mathematiques.reconnaitre-un-nombre-premier": "reconnaitre-un-nombre-premier",
+    "microskill.mathematiques.reconnaitre-un-schema-de-bernoulli": "reconnaitre-un-schema-de-bernoulli",
+    "microskill.mathematiques.rediger-une-demonstration-par-recurrence": "rediger-une-demonstration-par-recurrence",
+    "microskill.mathematiques.reduire-une-expression": "reduire-une-expression",
+    "microskill.mathematiques.relier-frequence-et-probabilite": "relier-frequence-et-probabilite",
+    "microskill.mathematiques.rendre-une-fraction-irreductible": "rendre-une-fraction-irreductible",
+    "microskill.mathematiques.reperer-et-comparer-des-relatifs": "reperer-et-comparer-des-relatifs",
+    "microskill.mathematiques.representer-un-vecteur": "representer-un-vecteur",
+    "microskill.mathematiques.resoudre-graphiquement-une-equation-ou-une-inequation": "resoudre-graphiquement-une-equation-ou-une-inequation",
+    "microskill.mathematiques.resoudre-un-systeme-de-deux-equations": "resoudre-un-systeme-de-deux-equations",
+    "microskill.mathematiques.resoudre-une-equation-avec-l-exponentielle": "resoudre-une-equation-avec-l-exponentielle",
+    "microskill.mathematiques.resoudre-une-equation-avec-le-logarithme": "resoudre-une-equation-avec-le-logarithme",
+    "microskill.mathematiques.resoudre-une-equation-du-premier-degre": "resoudre-une-equation-du-premier-degre",
+    "microskill.mathematiques.resoudre-une-equation-du-second-degre": "resoudre-une-equation-du-second-degre",
+    "microskill.mathematiques.resoudre-une-equation-produit-nul": "resoudre-une-equation-produit-nul",
+    "microskill.mathematiques.resoudre-une-inequation": "resoudre-une-inequation",
+    "microskill.mathematiques.tester-l-independance-de-deux-evenements": "tester-l-independance-de-deux-evenements",
+    "microskill.mathematiques.tester-la-colinearite": "tester-la-colinearite",
+    "microskill.mathematiques.utiliser-agrandissements-et-reductions": "utiliser-agrandissements-et-reductions",
+    "microskill.mathematiques.utiliser-l-evenement-contraire": "utiliser-l-evenement-contraire",
+    "microskill.mathematiques.utiliser-la-calculatrice-correctement": "utiliser-la-calculatrice-correctement",
+    "microskill.mathematiques.utiliser-la-definition-de-l-exponentielle": "utiliser-la-definition-de-l-exponentielle",
+    "microskill.mathematiques.utiliser-la-definition-du-logarithme": "utiliser-la-definition-du-logarithme",
+    "microskill.mathematiques.utiliser-la-formule-d-al-kashi": "utiliser-la-formule-d-al-kashi",
+    "microskill.mathematiques.utiliser-la-relation-de-chasles": "utiliser-la-relation-de-chasles",
+    "microskill.mathematiques.utiliser-la-valeur-absolue": "utiliser-la-valeur-absolue",
+    "microskill.mathematiques.utiliser-les-criteres-de-divisibilite": "utiliser-les-criteres-de-divisibilite",
+    "microskill.mathematiques.utiliser-les-formules-de-derivation": "utiliser-les-formules-de-derivation",
+    "microskill.mathematiques.utiliser-les-identites-remarquables": "utiliser-les-identites-remarquables",
+    "microskill.mathematiques.utiliser-racine-carree-et-cube": "utiliser-racine-carree-et-cube",
+    "microskill.mathematiques.utiliser-une-equation-cartesienne": "utiliser-une-equation-cartesienne",
+    "microskill.mathematiques.utiliser-une-homothetie": "utiliser-une-homothetie",
+    "microskill.mathematiques.utiliser-une-suite-arithmetique": "utiliser-une-suite-arithmetique",
+    "microskill.mathematiques.utiliser-une-suite-geometrique": "utiliser-une-suite-geometrique",
+    "microskill.mathematiques.verifier-l-initialisation-et-l-heredite": "verifier-l-initialisation-et-l-heredite"
   },
   "fiches": {
     "trigo-cercle": {
@@ -128,6 +269,313 @@
         "comparer-des-decimaux",
         "arrondir-un-decimal",
         "calculer-avec-des-decimaux"
+      ]
+    },
+    "arithmetique": {
+      "prerequis": [],
+      "competences": [
+        "utiliser-les-criteres-de-divisibilite",
+        "reconnaitre-un-nombre-premier",
+        "decomposer-en-facteurs-premiers",
+        "rendre-une-fraction-irreductible"
+      ]
+    },
+    "calcul-litteral": {
+      "prerequis": [
+        "nombres-relatifs",
+        "priorites-operatoires"
+      ],
+      "competences": [
+        "reduire-une-expression",
+        "calculer-la-valeur-d-une-expression",
+        "developper-une-expression",
+        "factoriser-une-expression",
+        "utiliser-les-identites-remarquables"
+      ]
+    },
+    "denombrement": {
+      "prerequis": [],
+      "competences": [
+        "denombrer-des-listes-avec-repetition",
+        "denombrer-permutations-et-arrangements",
+        "calculer-une-combinaison",
+        "denombrer-les-parties-d-un-ensemble"
+      ]
+    },
+    "derivation": {
+      "prerequis": [
+        "fonctions-de-reference",
+        "droites-et-systemes"
+      ],
+      "competences": [
+        "calculer-un-nombre-derive",
+        "utiliser-les-formules-de-derivation",
+        "etudier-les-variations-d-une-fonction",
+        "determiner-un-extremum"
+      ]
+    },
+    "droites-et-systemes": {
+      "prerequis": [
+        "fonctions-affines",
+        "equations"
+      ],
+      "competences": [
+        "determiner-l-equation-reduite-d-une-droite",
+        "reconnaitre-des-droites-paralleles",
+        "resoudre-un-systeme-de-deux-equations",
+        "utiliser-une-equation-cartesienne"
+      ]
+    },
+    "equations": {
+      "prerequis": [
+        "calcul-litteral"
+      ],
+      "competences": [
+        "resoudre-une-equation-du-premier-degre",
+        "mettre-un-probleme-en-equation",
+        "resoudre-une-equation-produit-nul",
+        "resoudre-une-inequation"
+      ]
+    },
+    "exponentielle": {
+      "prerequis": [
+        "derivation",
+        "puissances"
+      ],
+      "competences": [
+        "utiliser-la-definition-de-l-exponentielle",
+        "appliquer-les-proprietes-algebriques-de-l-exponentielle",
+        "etudier-la-fonction-exponentielle",
+        "resoudre-une-equation-avec-l-exponentielle"
+      ]
+    },
+    "fonctions-affines": {
+      "prerequis": [
+        "proportionnalite",
+        "calcul-litteral"
+      ],
+      "competences": [
+        "calculer-une-image-et-un-antecedent",
+        "distinguer-fonction-lineaire-et-affine",
+        "lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine",
+        "etudier-le-sens-de-variation-et-le-signe"
+      ]
+    },
+    "fonctions-de-reference": {
+      "prerequis": [
+        "fonctions-affines"
+      ],
+      "competences": [
+        "etudier-la-fonction-carre",
+        "etudier-la-fonction-inverse",
+        "utiliser-racine-carree-et-cube",
+        "resoudre-graphiquement-une-equation-ou-une-inequation"
+      ]
+    },
+    "geometrie-dans-l-espace": {
+      "prerequis": [
+        "produit-scalaire",
+        "droites-et-systemes"
+      ],
+      "competences": [
+        "calculer-dans-un-repere-de-l-espace",
+        "ecrire-une-representation-parametrique-de-droite",
+        "determiner-l-equation-cartesienne-d-un-plan",
+        "calculer-un-projete-orthogonal"
+      ]
+    },
+    "integrales": {
+      "prerequis": [
+        "derivation"
+      ],
+      "competences": [
+        "determiner-une-primitive",
+        "calculer-une-integrale",
+        "calculer-une-valeur-moyenne",
+        "calculer-une-aire-entre-deux-courbes"
+      ]
+    },
+    "limites-et-continuite": {
+      "prerequis": [
+        "suites",
+        "fonctions-de-reference"
+      ],
+      "competences": [
+        "calculer-une-limite-en-l-infini",
+        "lever-une-forme-indeterminee",
+        "determiner-une-asymptote",
+        "appliquer-le-theoreme-des-valeurs-intermediaires"
+      ]
+    },
+    "logarithme": {
+      "prerequis": [
+        "exponentielle"
+      ],
+      "competences": [
+        "utiliser-la-definition-du-logarithme",
+        "appliquer-les-proprietes-algebriques-du-logarithme",
+        "etudier-la-fonction-logarithme",
+        "resoudre-une-equation-avec-le-logarithme"
+      ]
+    },
+    "loi-binomiale": {
+      "prerequis": [
+        "probabilites-conditionnelles",
+        "denombrement"
+      ],
+      "competences": [
+        "reconnaitre-un-schema-de-bernoulli",
+        "calculer-une-probabilite-binomiale",
+        "calculer-esperance-variance-et-ecart-type",
+        "interpreter-un-echantillonnage"
+      ]
+    },
+    "nombres-relatifs": {
+      "prerequis": [],
+      "competences": [
+        "reperer-et-comparer-des-relatifs",
+        "additionner-et-soustraire-des-relatifs",
+        "multiplier-et-diviser-des-relatifs",
+        "utiliser-la-valeur-absolue"
+      ]
+    },
+    "priorites-operatoires": {
+      "prerequis": [],
+      "competences": [
+        "appliquer-les-priorites-operatoires",
+        "calculer-avec-des-parentheses",
+        "calculer-une-expression-avec-des-puissances",
+        "utiliser-la-calculatrice-correctement"
+      ]
+    },
+    "probabilites": {
+      "prerequis": [
+        "fractions"
+      ],
+      "competences": [
+        "calculer-une-probabilite",
+        "utiliser-l-evenement-contraire",
+        "construire-un-arbre-de-probabilites",
+        "relier-frequence-et-probabilite"
+      ]
+    },
+    "probabilites-conditionnelles": {
+      "prerequis": [
+        "probabilites"
+      ],
+      "competences": [
+        "calculer-une-probabilite-conditionnelle",
+        "construire-un-arbre-pondere",
+        "appliquer-la-formule-des-probabilites-totales",
+        "tester-l-independance-de-deux-evenements"
+      ]
+    },
+    "produit-scalaire": {
+      "prerequis": [
+        "vecteurs",
+        "trigo-cercle"
+      ],
+      "competences": [
+        "calculer-un-produit-scalaire",
+        "calculer-un-produit-scalaire-avec-les-coordonnees",
+        "utiliser-la-formule-d-al-kashi",
+        "determiner-un-vecteur-normal"
+      ]
+    },
+    "recurrence": {
+      "prerequis": [
+        "suites"
+      ],
+      "competences": [
+        "rediger-une-demonstration-par-recurrence",
+        "demontrer-une-formule-de-somme",
+        "demontrer-une-divisibilite",
+        "verifier-l-initialisation-et-l-heredite"
+      ]
+    },
+    "second-degre": {
+      "prerequis": [
+        "fonctions-de-reference",
+        "equations"
+      ],
+      "competences": [
+        "ecrire-la-forme-canonique",
+        "calculer-le-discriminant",
+        "resoudre-une-equation-du-second-degre",
+        "etudier-le-signe-d-un-trinome"
+      ]
+    },
+    "statistiques": {
+      "prerequis": [],
+      "competences": [
+        "calculer-une-moyenne-et-une-etendue",
+        "determiner-une-mediane",
+        "calculer-des-frequences",
+        "interpreter-quartiles-et-ecart-type"
+      ]
+    },
+    "suites": {
+      "prerequis": [
+        "calcul-litteral"
+      ],
+      "competences": [
+        "definir-une-suite-explicite-ou-recurrente",
+        "utiliser-une-suite-arithmetique",
+        "utiliser-une-suite-geometrique",
+        "etudier-le-sens-de-variation-d-une-suite"
+      ]
+    },
+    "thales": {
+      "prerequis": [
+        "proportionnalite"
+      ],
+      "competences": [
+        "calculer-une-longueur-avec-thales",
+        "reconnaitre-la-configuration-papillon",
+        "prouver-un-parallelisme-avec-la-reciproque",
+        "utiliser-agrandissements-et-reductions"
+      ]
+    },
+    "transformations": {
+      "prerequis": [
+        "angles"
+      ],
+      "competences": [
+        "construire-un-symetrique-par-symetrie-axiale",
+        "construire-un-symetrique-par-symetrie-centrale",
+        "reconnaitre-translations-et-rotations",
+        "utiliser-une-homothetie"
+      ]
+    },
+    "vecteurs": {
+      "prerequis": [],
+      "competences": [
+        "representer-un-vecteur",
+        "utiliser-la-relation-de-chasles",
+        "calculer-les-coordonnees-d-un-vecteur",
+        "tester-la-colinearite"
+      ]
+    },
+    "vitesse": {
+      "prerequis": [
+        "proportionnalite"
+      ],
+      "competences": [
+        "calculer-vitesse-distance-et-duree",
+        "convertir-une-duree-en-heures-decimales",
+        "convertir-une-vitesse",
+        "calculer-une-vitesse-moyenne"
+      ]
+    },
+    "volumes": {
+      "prerequis": [
+        "perimetres-aires"
+      ],
+      "competences": [
+        "calculer-le-volume-d-un-pave",
+        "convertir-volumes-et-contenances",
+        "calculer-le-volume-d-un-prisme-et-d-un-cylindre",
+        "calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule"
       ]
     }
   }

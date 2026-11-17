@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-teaches-etudier-la-fonction-logarithme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "notion.mathematiques.logarithme",
+  "target": "microskill.mathematiques.etudier-la-fonction-logarithme"
+}

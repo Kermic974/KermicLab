@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-teaches-denombrer-des-listes-avec-repetition",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "notion.mathematiques.denombrement",
+  "target": "microskill.mathematiques.denombrer-des-listes-avec-repetition"
+}

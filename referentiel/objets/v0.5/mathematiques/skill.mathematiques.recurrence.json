@@ -1,0 +1,11 @@
+{
+  "id": "skill.mathematiques.recurrence",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/recurrence/fiche.md"
+  },
+  "label": "Construire une preuve par récurrence"
+}

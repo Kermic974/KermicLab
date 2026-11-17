@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.suites-teaches-utiliser-une-suite-geometrique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/suites/fiche.md"
+  },
+  "source": "notion.mathematiques.suites",
+  "target": "microskill.mathematiques.utiliser-une-suite-geometrique"
+}

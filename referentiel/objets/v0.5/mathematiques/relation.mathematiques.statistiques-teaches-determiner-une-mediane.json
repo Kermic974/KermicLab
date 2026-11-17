@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.statistiques-teaches-determiner-une-mediane",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/statistiques/fiche.md"
+  },
+  "source": "notion.mathematiques.statistiques",
+  "target": "microskill.mathematiques.determiner-une-mediane"
+}

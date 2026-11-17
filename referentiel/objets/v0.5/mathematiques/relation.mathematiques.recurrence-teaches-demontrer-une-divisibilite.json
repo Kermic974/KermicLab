@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.recurrence-teaches-demontrer-une-divisibilite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/recurrence/fiche.md"
+  },
+  "source": "notion.mathematiques.recurrence",
+  "target": "microskill.mathematiques.demontrer-une-divisibilite"
+}

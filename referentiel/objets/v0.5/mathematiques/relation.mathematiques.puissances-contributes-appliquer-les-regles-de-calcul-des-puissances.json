@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.puissances-contributes-appliquer-les-regles-de-calcul-des-puissances",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/puissances/fiche.md"
+  },
+  "source": "microskill.mathematiques.appliquer-les-regles-de-calcul-des-puissances",
+  "target": "skill.mathematiques.puissances"
+}

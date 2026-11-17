@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fonctions-affines-contributes-calculer-une-image-et-un-antecedent",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-affines/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-image-et-un-antecedent",
+  "target": "skill.mathematiques.fonctions-affines"
+}

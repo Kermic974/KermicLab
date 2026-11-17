@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.angles-contributes-utiliser-la-somme-des-angles-d-un-triangle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/angles/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-la-somme-des-angles-d-un-triangle",
+  "target": "skill.mathematiques.angles"
+}

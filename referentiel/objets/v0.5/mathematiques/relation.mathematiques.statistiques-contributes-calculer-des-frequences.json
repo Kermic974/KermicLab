@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.statistiques-contributes-calculer-des-frequences",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/statistiques/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-des-frequences",
+  "target": "skill.mathematiques.statistiques"
+}

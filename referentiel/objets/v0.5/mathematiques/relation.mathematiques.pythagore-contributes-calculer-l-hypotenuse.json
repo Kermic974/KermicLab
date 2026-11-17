@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.pythagore-contributes-calculer-l-hypotenuse",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/pythagore/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-l-hypotenuse",
+  "target": "skill.mathematiques.pythagore"
+}

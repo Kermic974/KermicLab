@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.volumes-teaches-calculer-le-volume-d-un-prisme-et-d-un-cylindre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/volumes/fiche.md"
+  },
+  "source": "notion.mathematiques.volumes",
+  "target": "microskill.mathematiques.calculer-le-volume-d-un-prisme-et-d-un-cylindre"
+}

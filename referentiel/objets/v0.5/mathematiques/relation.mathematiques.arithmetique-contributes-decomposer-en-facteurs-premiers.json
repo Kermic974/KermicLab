@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.arithmetique-contributes-decomposer-en-facteurs-premiers",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/arithmetique/fiche.md"
+  },
+  "source": "microskill.mathematiques.decomposer-en-facteurs-premiers",
+  "target": "skill.mathematiques.arithmetique"
+}

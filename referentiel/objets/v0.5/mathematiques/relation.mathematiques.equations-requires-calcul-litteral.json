@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.equations-requires-calcul-litteral",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/equations/fiche.md"
+  },
+  "source": "notion.mathematiques.equations",
+  "target": "notion.mathematiques.calcul-litteral"
+}

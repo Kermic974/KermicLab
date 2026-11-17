@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.volumes-requires-perimetres-aires",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/volumes/fiche.md"
+  },
+  "source": "notion.mathematiques.volumes",
+  "target": "notion.mathematiques.perimetres-aires"
+}

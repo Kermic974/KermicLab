@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.puissances-contributes-calculer-une-puissance",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/puissances/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-puissance",
+  "target": "skill.mathematiques.puissances"
+}

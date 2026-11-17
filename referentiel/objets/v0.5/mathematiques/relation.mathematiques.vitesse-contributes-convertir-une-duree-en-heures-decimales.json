@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vitesse-contributes-convertir-une-duree-en-heures-decimales",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vitesse/fiche.md"
+  },
+  "source": "microskill.mathematiques.convertir-une-duree-en-heures-decimales",
+  "target": "skill.mathematiques.vitesse"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.loi-binomiale-teaches-reconnaitre-un-schema-de-bernoulli",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/loi-binomiale/fiche.md"
+  },
+  "source": "notion.mathematiques.loi-binomiale",
+  "target": "microskill.mathematiques.reconnaitre-un-schema-de-bernoulli"
+}
