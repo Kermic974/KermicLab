@@ -594,8 +594,10 @@ test("configuration : un seul interrupteur (l'IA), dans l'écran Profil où le p
   assert.equal(await texte(page, "#salut"), "Profil");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
   assert.equal(await page.locator("#profil input[role=switch]").count(), 1);
-  assert.deepEqual(await page.locator("#profil input").evaluateAll((l) => l.map((n) => n.id)), ["profil-pseudo", "profil-memoriser", "llm-actif"]);
-  assert.deepEqual(await page.locator("#profil form").evaluateAll((l) => l.map((n) => n.id)), ["formulaire-profil"], "seul le pseudo passe par un formulaire");
+  // Le bloc « Profil professeur » (ADR 0030) n'apparaît que pour le rôle Professeur : il reste masqué ici.
+  assert.equal(await page.locator("#profil-prof").isHidden(), true);
+  assert.deepEqual(await page.locator("#profil input:not(#profil-prof input)").evaluateAll((l) => l.map((n) => n.id)), ["profil-pseudo", "profil-memoriser", "llm-actif"]);
+  assert.deepEqual(await page.locator("#profil form:not(#profil-prof form)").evaluateAll((l) => l.map((n) => n.id)), ["formulaire-profil"], "seul le pseudo passe par un formulaire");
   assert.equal(await page.locator("#panneau-chat [role=switch]").count(), 0);
   const interrupteur = page.locator("#profil [role=switch]");
   assert.equal(await interrupteur.isChecked(), false);

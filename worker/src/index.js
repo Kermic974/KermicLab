@@ -11,6 +11,7 @@ import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { estRouteContribution, gererApiContributions } from "./contributions.js";
 import { estRouteCompteLocal, gererApiCompteLocal, purgerCompteLocal } from "./compte-local.js";
 import { estRouteFamille, gererApiFamille, noterConsommationDeRequete, purgerFamille } from "./famille.js";
+import { estRouteProfesseur, gererApiProfesseur, purgerProfesseur } from "./professeur.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { SESSION_CAHIER, SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
@@ -43,8 +44,11 @@ let limiteurMax = null;
 let limiteurCompteLocal = null;
 let limiteurAdmin = null;
 let limiteurFamille = null;
+let limiteurProfesseur = null;
 /** Codes d'invitation et créations de comptes enfants par IP et par minute (anti force brute, en mémoire). */
 const LIMITE_FAMILLE = 10;
+/** Essais de codes d'invitation de professeur par minute et par IP (en mémoire, ADR 0030). */
+const LIMITE_PROFESSEUR = 20;
 /** Essais de clé du back-office par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
 const LIMITE_ESSAIS_ADMIN = 10;
 /** Inscriptions et connexions au compte local par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
@@ -781,6 +785,27 @@ export default {
       return new Response(reponse.body, { status: reponse.status, headers });
     }
 
+    // Expérience Professeur (ADR 0030) : même session porteuse du compte local, jamais de cookie.
+    if (estRouteProfesseur(url.pathname)) {
+      let reponse;
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        reponse = json({ erreur: "origine-refusee" }, 403, {});
+      } else {
+        try {
+          limiteurProfesseur ??= creerLimiteur({ maxParMinute: LIMITE_PROFESSEUR });
+          reponse = await gererApiProfesseur(requete, env, {
+            catalogue: catalogueDe(env), autoriser: limiteurProfesseur, ip: requete.headers.get("cf-connecting-ip") || "inconnue"
+          });
+        } catch {
+          // Tables absentes (migration 0004 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
+          reponse = json({ erreur: "professeur-indisponible" }, 503, {});
+        }
+      }
+      const headers = new Headers(reponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(reponse.body, { status: reponse.status, headers });
+    }
+
     // Back-office (ADR 0026) : clé partagée pendant la bêta, fermé si la clé n'est pas configurée.
     if (estRouteAdmin(url.pathname)) {
       let reponse;
@@ -930,6 +955,10 @@ export default {
     ctx.waitUntil(purgerFamille(env, evenement.scheduledTime)
       .then((r) => r && console.log("purge famille", JSON.stringify(r)))
       .catch(() => console.error("purge famille indisponible")));
+    // Expérience Professeur (ADR 0030) : liens d'invitation expirés ou épuisés.
+    ctx.waitUntil(purgerProfesseur(env, evenement.scheduledTime)
+      .then((r) => r && console.log("purge professeur", JSON.stringify(r)))
+      .catch(() => console.error("purge professeur indisponible")));
     // Back-office (ADR 0026) : signaux de sécurité, états expirés et télémétrie au-delà de leur durée de conservation.
     ctx.waitUntil(chargerReglages(env).then((reglages) => purgerBackoffice(envAvecReglages(env, reglages), evenement.scheduledTime))
       .then((r) => r && console.log("purge back-office", JSON.stringify(r)))
@@ -941,4 +970,4 @@ export default {
 };
 
 /** Réinitialise l'état en mémoire (tests). */
-export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; limiteurFamille = null; clientClaude = client; invaliderReglages(); }
+export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; limiteurFamille = null; limiteurProfesseur = null; clientClaude = client; invaliderReglages(); }

@@ -168,6 +168,13 @@ async function exporterUtilisateur(env, type, id) {
       cahiers: await tenter(() => toutes(env, "SELECT id, parent_id, enfant_id, demande, statut, calibrage, reussis, total, cree_le, maj_le FROM familles_cahiers WHERE enfant_id = ? OR parent_id = ?", id, id), []),
       consommations: await tenter(() => toutes(env, "SELECT jour, module, appels, tokens FROM familles_consommations WHERE compte_id = ? ORDER BY jour", id), [])
     };
+    // Expérience Professeur (ADR 0030) : profil, classes, affiliations (comme professeur ou comme élève) et bilan.
+    donnees.professeur = {
+      profil: await tenter(() => env.DB.prepare("SELECT nom_affiche, matieres, niveaux, maj_le FROM professeurs_profils WHERE compte_id = ?").bind(id).first(), null),
+      classes: await tenter(() => toutes(env, "SELECT id, nom, matiere, niveau, cree_le FROM professeurs_classes WHERE prof_id = ?", id), []),
+      affiliations: await tenter(() => toutes(env, "SELECT prof_id, eleve_id, classe_id, pseudo, accord_version, rejoint_le FROM professeurs_eleves WHERE prof_id = ? OR eleve_id = ?", id, id), []),
+      bilan: await tenter(() => env.DB.prepare("SELECT bilan, maj_le FROM professeurs_bilans WHERE eleve_id = ?").bind(id).first(), null)
+    };
   }
   donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
   donnees.securite = profil ? {

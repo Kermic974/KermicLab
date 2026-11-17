@@ -7,6 +7,8 @@ import * as comptes from "./comptes.js";
 import * as compteLocal from "./compte-local.js";
 import * as familleModule from "./famille.js";
 import * as demoFamille from "./demo-famille.js";
+import * as professeur from "./professeur.js";
+import * as demoProf from "./demo-professeur.js";
 import * as contributions from "./contributions.js";
 import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
@@ -152,7 +154,7 @@ function demarrerDemo() {
 }
 
 function quitterDemo() {
-  for (const cle of [CLE_DEMO_ACTIVE, demoFamille.CLE_DEMO, CLE_DEMO_CONTRIB_ACTIVE, demoContrib.CLE_DEMO]) effacerCle(sessionPreferences(), cle);
+  for (const cle of [CLE_DEMO_ACTIVE, demoFamille.CLE_DEMO, CLE_DEMO_CONTRIB_ACTIVE, demoContrib.CLE_DEMO, demoProf.CLE_DEMO]) effacerCle(sessionPreferences(), cle);
   if (lireCle(stockage(), comptes.CLE_ENFANT_ACTIF)?.startsWith("demo-")) effacerCle(stockage(), comptes.CLE_ENFANT_ACTIF);
   const url = new URL(location.href);
   url.searchParams.delete("demo");
@@ -865,6 +867,7 @@ function oublierFamille() {
   rafraichirFamilleCompte();
   rendreCahiersFamille();
   if (etat.ecran === "espace-famille") rendreEspaceFamille();
+  oublierProf();
 }
 
 /** Message d'erreur de l'API famille (codes connus, sinon générique). */
@@ -895,6 +898,7 @@ async function chargerFamille() {
     await chargerMesCahiers();
     planifierBilanFamille({ immediat: true });
   }
+  await chargerProf();
 }
 
 function rafraichirFamilleCompte() {
@@ -960,15 +964,25 @@ function bilanDeLAppareil() {
   });
 }
 
+/** Un bilan part vers la famille (enfant rattaché) et vers les professeurs suivis (ADR 0030), jamais ailleurs. */
+const bilanAttendu = () => !!familleEtat.moi?.enfant || profEtat.mesProfs.length > 0;
+
 async function envoyerBilanFamille() {
-  if (!familleEtat.moi?.enfant || !jetonFamille()) return;
+  if (!bilanAttendu() || !jetonFamille()) return;
   familleEtat.dernierBilan = Date.now();
-  try { await apiFamilleLocale("bilan", { methode: "PUT", corps: { bilan: bilanDeLAppareil() } }); } catch { /* nouvel essai au prochain changement */ }
+  const bilan = bilanDeLAppareil();
+  if (familleEtat.moi?.enfant) {
+    try { await apiFamilleLocale("bilan", { methode: "PUT", corps: { bilan } }); } catch { /* nouvel essai au prochain changement */ }
+  }
+  if (profEtat.mesProfs.length) {
+    // Le professeur ne reçoit ni badges ni cahiers de la famille.
+    try { await apiProf("bilan", { methode: "PUT", corps: { bilan: { ...bilan, badges: [], cahiers: [] } }, reel: true }); } catch { /* idem */ }
+  }
 }
 
 /** Envoi groupé : au plus un bilan par minute, tout de suite à la connexion ou quand l'onglet est masqué. */
 function planifierBilanFamille({ immediat = false } = {}) {
-  if (!familleEtat.moi?.enfant) return;
+  if (!bilanAttendu()) return;
   clearTimeout(familleEtat.minuteurBilan);
   const attente = immediat ? 0 : Math.max(0, DELAI_BILAN_MS - (Date.now() - familleEtat.dernierBilan));
   familleEtat.minuteurBilan = setTimeout(() => void envoyerBilanFamille(), attente);
@@ -1433,8 +1447,539 @@ function brancherFamilleLocale() {
   $("#cahier-type-famille").addEventListener("change", (e) => { constructeur.type = e.target.value; });
   $("#constructeur-cahier").addEventListener("close", () => { constructeur.enfant = null; basculerModeFamilleConstructeur(); });
   brancherEspaceFamille();
-  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && familleEtat.moi?.enfant) void envoyerBilanFamille(); });
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && bilanAttendu()) void envoyerBilanFamille(); });
   void chargerFamille();
+}
+
+/* ---------- Expérience Professeur (ADR 0030) ---------- */
+// Réservée au rôle Professeur (permission `professeur`, attribuée dans le back-office) : profil (nom affiché, matières,
+// niveaux), « Mes classes » (classes, liens d'invitation) et « Mes élèves » (suivi des élèves affiliés). Elle complète
+// l'expérience Contributeur (relecture et décisions, ADR 0023). Côté élève : rejoindre un professeur par un lien ou un
+// code, avec accord explicite, et quitter. « Tester les rôles → Professeur » utilise le double web/demo-professeur.js.
+const profEtat = { moi: null, classes: null, eleves: null, mesProfs: [], filtre: "tous", lien: null, adhesion: null, occupe: false };
+const CLE_REJOINDRE = "kermiclab:rejoindre";
+const profDemo = () => demoContribActive() && contrib.etatDemo?.connecte === true && contrib.etatDemo.role === "prof";
+const profActif = () => profDemo() || profEtat.moi?.professeur === true;
+const codeEnAttente = () => lireCle(sessionPreferences(), CLE_REJOINDRE);
+
+function etatDemoProf() {
+  const notions = etat.registre?.deType("notion").filter((e) => e.matiere === "mathematiques").map((e) => e.id) ?? [];
+  return demoProf.lireEtat(lireCle(sessionPreferences(), demoProf.CLE_DEMO), { aujourdhui: progression.jourLocal(), notions });
+}
+const moiProf = () => (profDemo() ? { professeur: true, profil: etatDemoProf().profil } : profEtat.moi);
+
+/** API du professeur ; `reel` force le Worker (routes de l'élève, jamais simulées). */
+async function apiProf(route, { methode = "GET", corps, reel = false } = {}) {
+  if (!reel && profDemo()) {
+    const r = demoProf.traiter(etatDemoProf(), methode, route, corps ?? {});
+    ecrireCle(sessionPreferences(), demoProf.CLE_DEMO, JSON.stringify(r.etat));
+    return { statut: r.statut, donnees: r.donnees };
+  }
+  const jeton = jetonFamille();
+  if (!jeton) return { statut: 401, donnees: { erreur: "non-connecte" } };
+  const r = await fetch(urlApi(`/api/professeur/${route}`), {
+    method: methode, credentials: "omit", cache: "no-store",
+    headers: { authorization: `Bearer ${jeton}`, ...(corps ? { "content-type": "application/json" } : {}) },
+    body: corps ? JSON.stringify(corps) : undefined
+  });
+  let donnees = null;
+  try { donnees = await r.json(); } catch { /* 204 */ }
+  return { statut: r.status, donnees };
+}
+
+function messageProf(r) {
+  const code = r?.donnees?.erreur;
+  if (typeof code === "string" && etat.textes[`profErreur_${code}`]) return t(`profErreur_${code}`, { max: professeur.MAX_PROFS_ELEVE });
+  if (typeof code === "string" && code.startsWith("pseudo-")) return t(`pseudoErreur_${code.slice(7)}`, { min: profil.PSEUDO_MIN, max: profil.PSEUDO_MAX });
+  if (r?.statut === 401) return t("efErreur_session");
+  if (r?.statut === 503) return t("efErreur_indisponible");
+  if (r?.statut === 429) return t("synchroTropDeTentatives");
+  return t("efErreur_generique");
+}
+
+const libelleMatiere = (m) => t(`matiere_${m}`);
+const libelleNiveau = (n) => t(`profNiveau_${n}`);
+const dateCourte = (jour) => (jour ? new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${String(jour).slice(0, 10)}T12:00:00Z`)) : "");
+const dateHeure = (secondes) => new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium", timeStyle: "short" }).format(new Date(secondes * 1000));
+
+/** Situation du compte connecté : professeur (rôle) et professeurs suivis (élève). Appelé après chargerFamille. */
+async function chargerProf() {
+  if (!jetonFamille()) { oublierProf(); return; }
+  try {
+    const [moi, mes] = await Promise.all([apiProf("moi", { reel: true }), apiProf("mes-professeurs", { reel: true })]);
+    profEtat.moi = moi.statut === 200 ? moi.donnees : null;
+    profEtat.mesProfs = mes.statut === 200 && Array.isArray(mes.donnees?.professeurs) ? mes.donnees.professeurs : [];
+  } catch {
+    profEtat.moi = null;
+    profEtat.mesProfs = [];
+  }
+  rafraichirProfNav();
+  rendreMesProfs();
+  if (profEtat.mesProfs.length) planifierBilanFamille({ immediat: true });
+  const code = codeEnAttente();
+  if (code) void ouvrirAdhesion(code);
+}
+
+function oublierProf() {
+  Object.assign(profEtat, { moi: null, classes: null, eleves: null, mesProfs: [], lien: null });
+  rafraichirProfNav();
+  rendreMesProfs();
+}
+
+function rafraichirProfNav() {
+  const actif = profActif();
+  for (const id of ["#nav-classes", "#nav-eleves", "#nav-mobile-classes"]) $(id).hidden = !actif;
+  $("#profil-prof").hidden = !actif;
+  const contribVisible = !$("#nav-contributions").hidden;
+  document.querySelectorAll("[data-prof-contrib]").forEach((b) => { b.hidden = !contribVisible; });
+  if (actif && etat.ecran === "profil") remplirProfilProf();
+}
+
+/* Profil du professeur */
+
+function remplirProfilProf() {
+  const p = moiProf()?.profil;
+  $("#prof-nom").value = p?.nomAffiche ?? "";
+  document.querySelectorAll("#prof-matieres input").forEach((c) => { c.checked = !!p?.matieres.includes(c.value); });
+  document.querySelectorAll("#prof-niveaux input").forEach((c) => { c.checked = !!p?.niveaux.includes(c.value); });
+  $("#prof-profil-erreur").textContent = "";
+}
+
+function casesProf(zone, valeurs, libelle, nom) {
+  for (const v of valeurs) {
+    const label = element("label", { classe: "prof-case" });
+    label.append(element("input", { attributs: { type: "checkbox", name: nom, value: v } }), element("span", { texte: libelle(v) }));
+    zone.append(label);
+  }
+}
+
+async function enregistrerProfilProf(ev) {
+  ev.preventDefault();
+  if (profEtat.occupe) return;
+  const coches = (zone) => [...document.querySelectorAll(`${zone} input:checked`)].map((c) => c.value);
+  const corps = { nomAffiche: $("#prof-nom").value, matieres: coches("#prof-matieres"), niveaux: coches("#prof-niveaux") };
+  const v = professeur.validerProfilProf(corps);
+  if (!v.ok) { $("#prof-profil-erreur").textContent = t(`profErreur_${v.code}`, { min: professeur.NOM_AFFICHE_MIN, max: professeur.NOM_AFFICHE_MAX }); return; }
+  profEtat.occupe = true;
+  $("#prof-profil-erreur").textContent = t("synchroEnCours");
+  try {
+    const r = await apiProf("profil", { methode: "PUT", corps: v.profil });
+    if (r.statut !== 200) { $("#prof-profil-erreur").textContent = messageProf(r); return; }
+    if (profEtat.moi) profEtat.moi.profil = r.donnees.profil;
+    $("#prof-profil-erreur").textContent = "";
+    notifier(t("profProfilEnregistre"), "🧑‍🏫");
+  } catch {
+    $("#prof-profil-erreur").textContent = t("efErreur_generique");
+  } finally {
+    profEtat.occupe = false;
+  }
+}
+
+/* Mes classes */
+
+const etatEcranProf = () => {
+  if (profActif()) return "";
+  return t(!jetonFamille() ? "profConnexionRequise" : "profRoleRequis");
+};
+
+async function ouvrirClasses() {
+  if (!profActif()) { profEtat.classes = null; rendreClasses(); return; }
+  $("#classes-etat").textContent = t("efChargement");
+  try {
+    const r = await apiProf("classes");
+    profEtat.classes = r.statut === 200 ? r.donnees : null;
+    $("#classes-etat").textContent = r.statut === 200 ? "" : messageProf(r);
+  } catch {
+    profEtat.classes = null;
+    $("#classes-etat").textContent = t("efErreur_generique");
+  }
+  rendreClasses();
+}
+
+function selectDuree(attributs = {}) {
+  const s = element("select", { attributs: { "aria-label": t("profDuree"), ...attributs } });
+  for (const n of professeur.DUREES_INVITATION_JOURS) s.append(option(String(n), t("profDureeJours", { n })));
+  s.value = String(professeur.DUREE_INVITATION_DEFAUT);
+  return s;
+}
+
+function ligneInvitation(i) {
+  const li = element("li", { classe: "ef-cahier" });
+  const usage = i.mode === "classe" ? t("profLienUtilise", { n: i.utilisations, max: i.max }) : t("profLienUnique");
+  li.append(element("span", { texte: `${t("profLienActif")} · ${t("profLienExpire", { date: dateHeure(i.expire) })} · ${usage}` }),
+    element("button", { classe: "secondaire petit-bouton", cle: "profRevoquer", attributs: { type: "button", "data-prof-revoquer": i.id } }));
+  return li;
+}
+
+function rendreClasses() {
+  const donnees = profEtat.classes;
+  if (!donnees) {
+    $("#classes-contenu").hidden = true;
+    if (!$("#classes-etat").textContent || !profActif()) $("#classes-etat").textContent = etatEcranProf();
+    return;
+  }
+  $("#classes-contenu").hidden = false;
+  const p = moiProf()?.profil;
+  $("#classes-profil").textContent = p
+    ? t("profResume", { nom: p.nomAffiche, matieres: p.matieres.map(libelleMatiere).join(", "), niveaux: p.niveaux.map(libelleNiveau).join(", ") })
+    : t("profProfilManquant");
+  $("#classe-matiere").replaceChildren(...(p?.matieres ?? []).map((m) => option(m, libelleMatiere(m))));
+  $("#classe-niveau").replaceChildren(...(p?.niveaux ?? []).map((n) => option(n, libelleNiveau(n))));
+  $("#classes-ajout").hidden = !p || donnees.classes.length >= donnees.limites.classes;
+  $("#classes-vide").hidden = donnees.classes.length > 0;
+  $("#classes-liste").replaceChildren(...donnees.classes.map((c) => carteClasse(c, donnees)));
+  $("#classes-particuliers").textContent = t("profParticuliersResume", { n: donnees.particuliers });
+  $("#particulier-lien").disabled = !p;
+  $("#particulier-invitations").replaceChildren(...donnees.invitations.filter((i) => i.mode === "particulier").map(ligneInvitation));
+  rendreLienCree();
+}
+
+function carteClasse(c, donnees) {
+  const carte = element("article", { classe: "carte ef-enfant prof-classe", attributs: { "data-classe": c.id } });
+  const tete = element("div", { classe: "ef-enfant-tete" });
+  const nom = element("div", { classe: "famille-enfant-nom" });
+  nom.append(element("h4", { texte: c.nom }), element("span", { classe: "doux petit", texte: `${libelleMatiere(c.matiere)} · ${libelleNiveau(c.niveau)}` }));
+  tete.append(nom, element("span", { classe: `pastille ${c.eleves ? "ok" : "neutre"}`, texte: t("profEffectif", { n: c.eleves, max: donnees.limites.elevesParClasse }) }));
+  carte.append(tete);
+  const invitations = donnees.invitations.filter((i) => i.classeId === c.id);
+  if (invitations.length) {
+    const ul = element("ul", { classe: "prof-invitations" });
+    ul.append(...invitations.map(ligneInvitation));
+    carte.append(ul);
+  }
+  const actions = element("div", { classe: "actions" });
+  actions.append(selectDuree({ "data-duree-classe": c.id }),
+    element("button", { classe: "bouton petit-bouton", cle: "profLienClasse", attributs: { type: "button", "data-classe-lien": c.id } }),
+    element("button", { classe: "secondaire petit-bouton", cle: "profVoirEleves", attributs: { type: "button", "data-classe-eleves": c.id } }));
+  carte.append(actions);
+  // Modifier, supprimer.
+  const gestion = element("details", { classe: "famille-ajout ef-gestion" });
+  gestion.append(element("summary", { cle: "profGererClasse" }));
+  const corps = element("div", { classe: "ef-gestion-corps" });
+  const form = element("form", { classe: "formulaire-profil", attributs: { "data-classe-modifier": c.id, novalidate: "" } });
+  const id = c.id.slice(-8);
+  form.append(champ(`classe-nom-${id}`, "profClasseNom", { type: "text", maxlength: "30", value: c.nom, name: "nom" }));
+  const p = moiProf()?.profil;
+  const matiere = element("select", { attributs: { name: "matiere", "aria-label": t("profMatiere") } });
+  for (const m of new Set([...(p?.matieres ?? []), c.matiere])) matiere.append(option(m, libelleMatiere(m)));
+  matiere.value = c.matiere;
+  const niveau = element("select", { attributs: { name: "niveau", "aria-label": t("profNiveau") } });
+  for (const n of new Set([...(p?.niveaux ?? []), c.niveau])) niveau.append(option(n, libelleNiveau(n)));
+  niveau.value = c.niveau;
+  form.append(matiere, niveau, element("button", { classe: "secondaire petit-bouton", cle: "efEnregistrer", attributs: { type: "submit" } }));
+  const sortie = element("div", { classe: "actions" });
+  sortie.append(element("p", { classe: "doux petit", cle: "profSupprimerClasseAide" }),
+    element("button", { classe: "danger petit-bouton", cle: "profSupprimerClasse", attributs: { type: "button", "data-classe-supprimer": c.id } }));
+  corps.append(form, sortie, element("p", { classe: "erreur-champ", attributs: { role: "status", "data-classe-message": c.id } }));
+  gestion.append(corps);
+  carte.append(gestion);
+  return carte;
+}
+
+function rendreLienCree() {
+  const l = profEtat.lien;
+  $("#classes-lien").hidden = !l;
+  if (!l) return;
+  const classe = profEtat.classes?.classes.find((c) => c.id === l.classeId);
+  $("#classes-lien-url").value = professeur.lienInvitation(location.origin, l.code);
+  $("#classes-lien-code").textContent = professeur.afficherCodeProf(l.code);
+  $("#classes-lien-aide").textContent = t(l.mode === "classe" ? "profLienAideClasse" : "profLienAideParticulier", { classe: classe?.nom ?? "", date: dateHeure(l.expire) });
+  $("#classes-lien-simuler").hidden = !profDemo();
+}
+
+async function actionProf(route, corps, { message, succes, recharger = ouvrirClasses } = {}) {
+  if (profEtat.occupe) return null;
+  profEtat.occupe = true;
+  if (message) message(t("synchroEnCours"));
+  try {
+    const r = await apiProf(route, { methode: "POST", corps: corps ?? {} });
+    if (r.statut >= 300) { if (message) message(messageProf(r)); else notifier(messageProf(r), "⚠️"); return null; }
+    if (succes) notifier(succes, "🧑‍🏫");
+    profEtat.occupe = false;
+    await recharger();
+    return r;
+  } catch {
+    if (message) message(t("efErreur_generique"));
+    return null;
+  } finally {
+    profEtat.occupe = false;
+  }
+}
+
+async function creerLien(mode, classeId, dureeJours) {
+  const r = await actionProf("invitations", { mode, classeId, dureeJours });
+  if (!r) return;
+  profEtat.lien = r.donnees;
+  rendreLienCree();
+  $("#classes-lien").scrollIntoView({ block: "nearest" });
+  $("#classes-lien-url").select();
+}
+
+async function creerClasse(ev) {
+  ev.preventDefault();
+  const corps = { nom: $("#classe-nom").value, matiere: $("#classe-matiere").value, niveau: $("#classe-niveau").value };
+  const v = professeur.validerClasse(corps, moiProf()?.profil);
+  if (!v.ok) { $("#classe-erreur").textContent = t(`profErreur_${v.code}`, { max: professeur.NOM_CLASSE_MAX }); return; }
+  const r = await actionProf("classes", v.classe, { message: (m) => { $("#classe-erreur").textContent = m; }, succes: t("profClasseCreee", { nom: v.classe.nom }) });
+  if (!r) return;
+  $("#formulaire-classe").reset();
+  $("#classe-erreur").textContent = "";
+  $("#classes-ajout").open = false;
+}
+
+function brancherClasses() {
+  $("#formulaire-classe").addEventListener("submit", creerClasse);
+  $("#classes-actualiser").addEventListener("click", () => void ouvrirClasses());
+  $("#particulier-duree").replaceWith(selectDuree({ id: "particulier-duree" }));
+  $("#particulier-lien").addEventListener("click", () => void creerLien("particulier", null, Number($("#particulier-duree").value)));
+  $("#classes-lien-fermer").addEventListener("click", () => { profEtat.lien = null; rendreLienCree(); });
+  $("#classes-lien-copier").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText($("#classes-lien-url").value); notifier(t("profLienCopie"), "📋"); }
+    catch { $("#classes-lien-url").select(); }
+  });
+  $("#classes-lien-simuler").addEventListener("click", async () => {
+    const r = await actionProf(`demo/simuler/${profEtat.lien?.id}`, {});
+    if (r) notifier(t("profDemoInscrit", { pseudo: r.donnees.pseudo }), "🎒");
+  });
+  const zone = $("#classes");
+  zone.addEventListener("click", (ev) => {
+    const b = ev.target.closest("button");
+    if (!b) return;
+    if (b.dataset.classeLien) void creerLien("classe", b.dataset.classeLien, Number(document.querySelector(`[data-duree-classe="${b.dataset.classeLien}"]`)?.value));
+    else if (b.dataset.classeEleves) { profEtat.filtre = b.dataset.classeEleves; naviguer("eleves"); }
+    else if (b.dataset.profRevoquer) void actionProf(`invitations/${b.dataset.profRevoquer}/revoquer`, {}, { succes: t("profLienRevoque") });
+    else if (b.dataset.classeSupprimer) {
+      // Confirmation en deux temps : les élèves de la classe ne sont plus suivis.
+      if (b.dataset.confirmer !== "1") { b.dataset.confirmer = "1"; b.textContent = t("profSupprimerClasseConfirmer"); return; }
+      const id = b.dataset.classeSupprimer;
+      void actionProf(`classes/${id}/supprimer`, {}, { succes: t("profClasseSupprimee") });
+    }
+  });
+  zone.addEventListener("submit", (ev) => {
+    const f = ev.target;
+    if (!f.dataset.classeModifier) return;
+    ev.preventDefault();
+    const id = f.dataset.classeModifier;
+    const message = (m) => { const p = document.querySelector(`[data-classe-message="${id}"]`); if (p) p.textContent = m; };
+    void actionProf(`classes/${id}/modifier`, Object.fromEntries(new FormData(f)), { message, succes: t("efModifie") });
+  });
+}
+
+/* Mes élèves */
+
+async function ouvrirEleves() {
+  if (!profActif()) { profEtat.eleves = null; rendreEleves(); return; }
+  $("#eleves-etat").textContent = t("efChargement");
+  try {
+    const r = await apiProf("eleves");
+    profEtat.eleves = r.statut === 200 ? r.donnees : null;
+    $("#eleves-etat").textContent = r.statut === 200 ? "" : messageProf(r);
+  } catch {
+    profEtat.eleves = null;
+    $("#eleves-etat").textContent = t("efErreur_generique");
+  }
+  rendreEleves();
+}
+
+const nomClasse = (id) => profEtat.eleves?.classes.find((c) => c.id === id)?.nom ?? t("profParticulier");
+
+function rendreEleves() {
+  const donnees = profEtat.eleves;
+  if (!donnees) {
+    $("#eleves-contenu").hidden = true;
+    if (!$("#eleves-etat").textContent || !profActif()) $("#eleves-etat").textContent = etatEcranProf();
+    return;
+  }
+  $("#eleves-contenu").hidden = false;
+  const filtre = $("#eleves-filtre");
+  filtre.replaceChildren(option("tous", t("profTousEleves")), ...donnees.classes.map((c) => option(c.id, c.nom)), option("particulier", t("profParticuliers")));
+  if (![...filtre.options].some((o) => o.value === profEtat.filtre)) profEtat.filtre = "tous";
+  filtre.value = profEtat.filtre;
+  const liste = professeur.filtrerEleves(donnees.eleves, profEtat.filtre);
+  const jour = progression.jourLocal();
+  const s = professeur.syntheseEleves(liste, jour);
+  $("#eleves-chiffres").replaceChildren(
+    chiffre(t("profChiffreEleves"), s.eleves), chiffre(t("profChiffreActifs"), s.actifs),
+    chiffre(t("efChiffreTemps"), formatMinutes(s.minutes)), chiffre(t("profChiffreARevoir"), s.aRevoir)
+  );
+  const aRevoir = professeur.notionsARevoir(liste).map((n) => `${notionParId(n.id)?.titre ?? n.id} (${n.n})`);
+  $("#eleves-a-revoir").textContent = aRevoir.length ? t("profARevoirGroupe", { liste: aRevoir.join(", ") }) : "";
+  const pseudoDe = (id) => liste.find((e) => e.id === id)?.pseudo ?? "";
+  $("#eleves-alertes").replaceChildren(...s.alertes.map((a) => element("li", { texte: t(`profAlerte_${a.type}`, { pseudo: pseudoDe(a.eleve), n: a.n ?? a.jours ?? "" }) })));
+  $("#eleves-vide").hidden = liste.length > 0;
+  $("#eleves-liste").replaceChildren(...liste.map(carteEleve));
+}
+
+function carteEleve(e) {
+  const carte = element("article", { classe: "carte ef-enfant", attributs: { "data-eleve": e.id } });
+  const tete = element("div", { classe: "ef-enfant-tete" });
+  const nom = element("div", { classe: "famille-enfant-nom" });
+  nom.append(element("h4", { texte: e.pseudo }), element("span", { classe: "doux petit", texte: `${nomClasse(e.classeId)} · ${t("profDepuis", { date: dateCourte(e.rejointLe) })}` }));
+  tete.append(nom);
+  const b = e.bilan;
+  const jour = progression.jourLocal();
+  if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
+  else {
+    const vu = b.dernierJour ? familleModule.ecartJours(b.dernierJour, jour) : null;
+    tete.append(element("span", { classe: `pastille ${vu !== null && vu < familleModule.JOURS_INACTIVITE ? "ok" : "en-cours"}`, texte: vu === null ? t("efJamaisActif") : vu === 0 ? t("efActifAujourdhui") : t("efActifIlYa", { n: vu }) }));
+  }
+  carte.append(tete);
+  if (b) {
+    const sem = familleModule.semaineBilan(b, jour);
+    const rep = familleModule.repartitionNotions(b);
+    const stats = element("dl", { classe: "stats stats-progression" });
+    stats.append(chiffre(t("niveauLong", { n: "" }).trim(), b.niveau), chiffre(t("efSerie"), b.serie), chiffre(t("efXpSemaine"), sem.xp), chiffre(t("efTempsSemaine"), formatMinutes(sem.minutes)));
+    carte.append(stats, barresSemaine(b, jour));
+    carte.append(element("p", { classe: "doux petit", texte: t("efNotionsResume", { maitrisees: rep.maitrisee, encours: rep["en-cours"], arevoir: rep["a-revoir"], decouvertes: rep.decouverte }) }));
+    const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id).slice(0, 5);
+    if (aRevoir.length) carte.append(element("p", { classe: "petit", texte: t("efARevoirListe", { liste: aRevoir.join(", ") }) }));
+  }
+  const gestion = element("details", { classe: "famille-ajout ef-gestion" });
+  gestion.append(element("summary", { cle: "profGererEleve" }));
+  const corps = element("div", { classe: "ef-gestion-corps" });
+  const form = element("form", { classe: "formulaire-profil", attributs: { "data-eleve-deplacer": e.id, novalidate: "" } });
+  const cible = element("select", { attributs: { name: "classeId", "aria-label": t("profDeplacerVers") } });
+  cible.append(...(profEtat.eleves?.classes ?? []).map((c) => option(c.id, c.nom)), option("", t("profParticulier")));
+  cible.value = e.classeId ?? "";
+  form.append(element("label", { classe: "etiquette-champ", cle: "profDeplacerVers" }), cible,
+    element("button", { classe: "secondaire petit-bouton", cle: "profDeplacer", attributs: { type: "submit" } }));
+  const sortie = element("div", { classe: "actions" });
+  sortie.append(element("p", { classe: "doux petit", cle: "profRetirerAide" }),
+    element("button", { classe: "danger petit-bouton", cle: "profRetirer", attributs: { type: "button", "data-eleve-retirer": e.id } }));
+  corps.append(form, sortie, element("p", { classe: "erreur-champ", attributs: { role: "status", "data-eleve-message": e.id } }));
+  gestion.append(corps);
+  carte.append(gestion);
+  return carte;
+}
+
+function brancherEleves() {
+  $("#eleves-actualiser").addEventListener("click", () => void ouvrirEleves());
+  $("#eleves-filtre").addEventListener("change", (e) => { profEtat.filtre = e.currentTarget.value; rendreEleves(); });
+  const zone = $("#eleves-liste");
+  const message = (id) => (m) => { const p = document.querySelector(`[data-eleve-message="${id}"]`); if (p) p.textContent = m; };
+  zone.addEventListener("submit", (ev) => {
+    const f = ev.target;
+    if (!f.dataset.eleveDeplacer) return;
+    ev.preventDefault();
+    const id = f.dataset.eleveDeplacer;
+    const classeId = new FormData(f).get("classeId") || null;
+    void actionProf(`eleves/${id}/deplacer`, { classeId }, { message: message(id), succes: t("profEleveDeplace"), recharger: ouvrirEleves });
+  });
+  zone.addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-eleve-retirer]");
+    if (!b) return;
+    if (b.dataset.confirmer !== "1") { b.dataset.confirmer = "1"; b.textContent = t("profRetirerConfirmer"); return; }
+    const id = b.dataset.eleveRetirer;
+    void actionProf(`eleves/${id}/retirer`, {}, { message: message(id), succes: t("profEleveRetire"), recharger: ouvrirEleves });
+  });
+}
+
+/* Côté élève : mes professeurs, rejoindre par un lien ou un code */
+
+/** Un lien d'invitation ouvert (`?rejoindre=CODE`) : le code est gardé pour l'onglet et retiré de l'adresse. */
+function capturerInvitationProf() {
+  const url = new URL(location.href);
+  if (!url.searchParams.has("rejoindre")) return;
+  const code = professeur.normaliserCodeProf(url.searchParams.get("rejoindre"));
+  url.searchParams.delete("rejoindre");
+  history.replaceState(null, "", url.href);
+  if (code) ecrireCle(sessionPreferences(), CLE_REJOINDRE, code);
+}
+
+function rendreMesProfs() {
+  const lie = !!jetonFamille();
+  const attente = !!codeEnAttente();
+  $("#prof-compte").hidden = !lie;
+  $("#prof-compte-attente").hidden = lie || !attente;
+  $("#formulaire-code-prof").hidden = !lie;
+  $("#mes-profs-vide").hidden = !lie || profEtat.mesProfs.length > 0;
+  $("#mes-profs").replaceChildren(...profEtat.mesProfs.map((p) => {
+    const li = element("li", { classe: "ef-cahier" });
+    const ou = p.classe ? `${p.classe.nom} · ${libelleMatiere(p.classe.matiere)}` : `${t("profParticulier")} · ${p.matieres.map(libelleMatiere).join(", ")}`;
+    li.append(element("span", { texte: `${p.professeur} — ${ou} · ${t("mesProfsPseudo", { pseudo: p.pseudo })}` }),
+      element("button", { classe: "secondaire petit-bouton", cle: "mesProfsQuitter", attributs: { type: "button", "data-quitter-prof": p.id } }));
+    return li;
+  }));
+}
+
+async function ouvrirAdhesion(code) {
+  if (!jetonFamille()) { rendreMesProfs(); return; }
+  if (profEtat.adhesion || $("#dialogue-rejoindre").open) return;
+  let r;
+  try { r = await apiProf(`invitation/${code}`, { reel: true }); } catch { r = { statut: 0 }; }
+  effacerCle(sessionPreferences(), CLE_REJOINDRE);
+  rendreMesProfs();
+  if (r.statut !== 200 || r.donnees?.soiMeme) {
+    naviguer("compte");
+    $("#code-prof-erreur").textContent = r.donnees?.soiMeme ? t("profErreur_propre-invitation") : messageProf(r);
+    return;
+  }
+  const d = r.donnees;
+  profEtat.adhesion = { code };
+  $("#rejoindre-resume").textContent = d.classe
+    ? t("rejoindreResumeClasse", { prof: d.professeur, classe: d.classe.nom, matiere: libelleMatiere(d.classe.matiere), niveau: libelleNiveau(d.classe.niveau) })
+    : t("rejoindreResumeParticulier", { prof: d.professeur, matieres: d.matieres.map(libelleMatiere).join(", ") });
+  if (d.deja) $("#rejoindre-resume").textContent += ` ${t("rejoindreDeja")}`;
+  $("#rejoindre-pseudo").value = etat.pseudo ?? "";
+  $("#rejoindre-accord").checked = false;
+  $("#rejoindre-erreur").textContent = "";
+  $("#dialogue-rejoindre").showModal();
+}
+
+async function validerAdhesion(ev) {
+  ev.preventDefault();
+  const a = profEtat.adhesion;
+  if (!a || profEtat.occupe) return;
+  const pseudo = profil.validerPseudo($("#rejoindre-pseudo").value);
+  if (!pseudo.ok) { $("#rejoindre-erreur").textContent = t(`pseudoErreur_${pseudo.erreur}`, { min: profil.PSEUDO_MIN, max: profil.PSEUDO_MAX }); return; }
+  if (!$("#rejoindre-accord").checked) { $("#rejoindre-erreur").textContent = t("profErreur_accord-requis"); return; }
+  profEtat.occupe = true;
+  $("#rejoindre-valider").disabled = true;
+  try {
+    const r = await apiProf("rejoindre", { methode: "POST", corps: { code: a.code, pseudo: pseudo.pseudo, accord: professeur.VERSION_ACCORD_ELEVE }, reel: true });
+    if (r.statut !== 201) { $("#rejoindre-erreur").textContent = messageProf(r); return; }
+    profEtat.adhesion = null;
+    $("#dialogue-rejoindre").close();
+    notifier(t("rejoindreOk", { prof: r.donnees.professeur }), "🎒");
+    profEtat.occupe = false;
+    await chargerProf();
+  } catch {
+    $("#rejoindre-erreur").textContent = t("efErreur_generique");
+  } finally {
+    profEtat.occupe = false;
+    $("#rejoindre-valider").disabled = false;
+  }
+}
+
+function brancherProfesseur() {
+  ECRANS.push("classes", "eleves");
+  casesProf($("#prof-matieres"), professeur.MATIERES_PROF, libelleMatiere, "matieres");
+  casesProf($("#prof-niveaux"), professeur.NIVEAUX_PROF, libelleNiveau, "niveaux");
+  $("#formulaire-profil-prof").addEventListener("submit", enregistrerProfilProf);
+  brancherClasses();
+  brancherEleves();
+  $("#formulaire-code-prof").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const code = professeur.normaliserCodeProf($("#code-prof").value);
+    $("#code-prof-erreur").textContent = code ? "" : t("profErreur_code-invalide");
+    if (code) { $("#code-prof").value = ""; void ouvrirAdhesion(code); }
+  });
+  $("#formulaire-rejoindre").addEventListener("submit", validerAdhesion);
+  $("#rejoindre-annuler").addEventListener("click", () => $("#dialogue-rejoindre").close());
+  $("#dialogue-rejoindre").addEventListener("close", () => { profEtat.adhesion = null; });
+  $("#mes-profs").addEventListener("click", async (ev) => {
+    const b = ev.target.closest("[data-quitter-prof]");
+    if (!b || profEtat.occupe) return;
+    if (b.dataset.confirmer !== "1") { b.dataset.confirmer = "1"; b.textContent = t("mesProfsQuitterConfirmer"); return; }
+    const r = await apiProf(`mes-professeurs/${b.dataset.quitterProf}/quitter`, { methode: "POST", corps: {}, reel: true }).catch(() => ({ statut: 0 }));
+    if (r.statut !== 204) { $("#code-prof-erreur").textContent = messageProf(r); return; }
+    notifier(t("mesProfsQuitte"), "👋");
+    await chargerProf();
+  });
+  rafraichirProfNav();
+  rendreMesProfs();
+  // Lien ouvert sans compte lié : l'élève est guidé vers « Mon compte » ; l'adhésion reprend après la connexion.
+  if (codeEnAttente() && !jetonFamille()) setTimeout(() => naviguer("compte"), 0);
 }
 
 /* ---------- Contributions au contenu des notions (ADR 0023) ---------- */
@@ -1574,6 +2119,7 @@ function rafraichirContributions() {
   $("#entree-contributions").hidden = !actif || !(demoContribActive() || contributions.peutContribuer(role));
   // Menu « Contributions » de la navigation : seulement pour un rôle contributeur, prof ou admin.
   for (const id of ["#nav-contributions", "#nav-mobile-contributions"]) $(id).hidden = !actif || !contributions.peutContribuer(role);
+  rafraichirProfNav(); // Expérience Professeur (ADR 0030) : le rôle simulé ou réel change aussi ces menus.
   if (!actif) return;
   const autorise = contributions.peutContribuer(role);
   $("#contrib-etat").textContent = !contrib.chargee ? t("familleChargement") : contrib.erreur ? t("familleErreur") : "";
@@ -3314,7 +3860,8 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#espace-famille"), $("#contributions"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#espace-famille"), $("#contributions"), $("#classes"), $("#eleves"), $("#defi"), $("#progres"));
+  capturerInvitationProf();
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -3361,6 +3908,7 @@ async function demarrer() {
   $("#quitter-demo").addEventListener("click", quitterDemo);
   brancherFamille();
   brancherContributions();
+  brancherProfesseur();
   brancherTestRoles();
   void verifierConnexion().then(rafraichirContributions);
 
@@ -3775,7 +4323,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", apropos: "navAPropos" }[etat.ecran]);
+    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
 }
 
@@ -3790,7 +4338,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   });
   marquerNavigation(sectionDe(etat.ecran));
   $("#ouvrir-connexion").hidden = !$("#navigation-personnelle").hidden;
-  for (const bouton of $("#navigation-personnelle").querySelectorAll("[data-nav]")) {
+  for (const bouton of document.querySelectorAll("#navigation-personnelle [data-nav], .prof-onglets [data-nav]")) {
     if (bouton.dataset.nav === ecran) bouton.setAttribute("aria-current", "page");
     else bouton.removeAttribute("aria-current");
   }
@@ -3803,6 +4351,9 @@ function afficherEcran(cle, { focus = true } = {}) {
   if (etat.ecran === "compte") rafraichirCompte();
   if (etat.ecran === "espace-famille" && changement) void ouvrirEspaceFamille();
   if (etat.ecran === "profil" && changement) remplirProfil();
+  if (etat.ecran === "classes" && changement) void ouvrirClasses();
+  if (etat.ecran === "eleves" && changement) void ouvrirEleves();
+  if (etat.ecran === "profil" && changement && profActif()) remplirProfilProf();
   const ancre = ANCRES_ALIAS[cle] ? $(ANCRES_ALIAS[cle]) : null;
   if (ancre?.hidden && ancre.id === "ecran-cahiers") basculerAccordeonFixe(document.querySelector('[aria-controls="ecran-cahiers"]'), true);
   if (focus) {
