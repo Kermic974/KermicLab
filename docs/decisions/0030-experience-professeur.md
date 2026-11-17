@@ -54,7 +54,8 @@ classe ou un lien. Il se règle dans l'écran Profil (bloc « Profil professeur 
   dans « Mon compte → Mes professeurs ».
 - Il voit le nom du professeur, la classe, la matière et le niveau, et **ce qui sera partagé** ; il choisit le nom sous
   lequel il apparaît (règles du pseudo, prérempli avec son pseudo) et coche l'**accord** versionné
-  (`partage-prof-v1`). Le Worker refuse sans accord.
+  (`partage-prof-v1`). Le Worker refuse sans accord. **Aucun accord parental n'est requis**, quel que soit l'âge de
+  l'élève (décision du propriétaire du 2026-11-17, §8).
 - Un lien par professeur et par élève : rejoindre une autre classe du même professeur change seulement la classe.
   Au plus 10 professeurs par élève. Un professeur ne peut pas utiliser son propre lien.
 - L'élève **quitte** un professeur à tout moment (Mon compte) ; le professeur peut **retirer** un élève ou le
@@ -94,20 +95,33 @@ classe ou un lien. Il se règle dans l'écran Profil (bloc « Profil professeur 
 | `POST invitations`, `POST invitations/:id/revoquer` | Professeur | liens d'invitation |
 | `GET eleves`, `POST eleves/:id/(deplacer\|retirer)` | Professeur | suivi des élèves |
 
+### 8. Accord parental : non requis (décision du 2026-11-17)
+
+Le propriétaire a tranché le point de contrôle ouvert par cet ADR : l'élève rejoint un professeur **sur son seul
+accord**, y compris s'il a moins de 15 ans ; aucun accord d'un parent (Espace famille) n'est demandé. Ce qui encadre ce
+choix :
+
+- l'élève voit, avant d'accepter, qui l'invite et exactement ce qui est partagé, et peut quitter à tout moment ;
+- le partage est limité aux compteurs et à la maîtrise des notions de la matière du professeur : jamais les questions
+  posées, les badges ni les cahiers ;
+- le rôle Professeur n'est attribué que par le propriétaire (back-office) ;
+- le texte d'accord et la page de confidentialité restent soumis à la relecture juridique avant une ouverture au-delà de
+  la bêta (action manuelle, [issue #357](https://github.com/Kermic974/KermicLab/issues/357)).
+
 ## Conséquences
 
 - Le bilan d'un élève, souvent mineur, devient lisible par un adulte qui n'est pas son parent, **sur l'accord du seul
-  élève**. C'est le point de contrôle principal : faut-il, pour un élève de moins de 15 ans, l'accord d'un parent
-  (Espace famille) en plus ? À trancher par le propriétaire avant l'ouverture au-delà de la bêta (action manuelle).
+  élève**, sans accord parental (§8).
 - Le nom affiché du professeur est une donnée personnelle d'adulte, choisie par lui et montrée à ses élèves.
 - Les comptes OAuth (ADR 0017) ne sont pas concernés tant qu'ils ne sont pas activés.
 
 ## Pistes (non livrées)
 
 Assigner des cahiers ou des notions à une classe (comme l'Espace famille) ; objectifs de classe ; export du suivi ;
-co-enseignement (plusieurs professeurs par classe) ; accord parental pour les moins de 15 ans ; filtre du tableau de
+co-enseignement (plusieurs professeurs par classe) ; filtre du tableau de
 bord des contributions sur les matières du professeur.
 
 ## Révision
 
-À valider par le propriétaire avant toute ouverture au-delà de la bêta.
+- 2026-11-17 : accord parental non requis (§8), décision du propriétaire.
+- Reste à valider par le propriétaire avant toute ouverture au-delà de la bêta.

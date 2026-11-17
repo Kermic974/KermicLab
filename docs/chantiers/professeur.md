@@ -16,14 +16,15 @@ Décision : [ADR 0030](../decisions/0030-experience-professeur.md). Complète le
 | Migration `0004_professeur.sql`, registre des traitements, effacement en cascade, export | Fait ; migration appliquée au prochain déploiement |
 | Interface : Profil professeur, « Mes classes », « Mes élèves », Mon compte → Mes professeurs, dialogue d'adhésion | Fait, testé de bout en bout avec le vrai Worker (`tests/e2e/professeur.test.mjs`) |
 | Démonstration par « Tester les rôles → Prof » (`web/demo-professeur.js`) | Fait, testé (mobile) |
-| Validation de l'ADR 0030, accord parental éventuel pour les moins de 15 ans | Actions manuelles |
+| Accord parental pour les moins de 15 ans | Non requis (décision du 2026-11-17, ADR 0030 §8) |
+| Validation de l'ADR 0030, relecture juridique du texte d'accord | Actions manuelles |
 
 ## Plan
 
 | Étape | Contenu | Statut |
 |---|---|---|
-| 1 | Profil, classes, liens d'invitation, adhésion avec accord, suivi filtré par matière, démo | Fait (PR en attente) |
-| 2 | Validation de l'ADR 0030 ; décision sur l'accord parental (moins de 15 ans) ; attribution des premiers rôles Professeur | À faire (propriétaire) |
+| 1 | Profil, classes, liens d'invitation, adhésion avec accord, suivi filtré par matière, démo | Fait ([PR #355](https://github.com/Kermic974/KermicLab/pull/355), fusionnée) |
+| 2 | Validation de l'ADR 0030 (accord parental : non requis, décidé le 2026-11-17) ; attribution des premiers rôles Professeur | À faire (propriétaire) |
 | 3 | Assigner des notions ou des cahiers à une classe ; objectifs de classe | Backlog |
 | 4 | Filtre du tableau de bord des contributions sur les matières du professeur ; co-enseignement ; export du suivi | Backlog |
 
