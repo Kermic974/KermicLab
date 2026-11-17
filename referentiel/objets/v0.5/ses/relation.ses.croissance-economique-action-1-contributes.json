@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.croissance-economique-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croissance-economique/contenu.json"
+  },
+  "source": "microskill.ses.croissance-economique-action-1",
+  "target": "skill.ses.croissance-economique"
+}

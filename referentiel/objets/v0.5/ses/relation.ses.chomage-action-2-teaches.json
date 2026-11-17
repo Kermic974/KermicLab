@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.chomage-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "notion.ses.chomage",
+  "target": "microskill.ses.chomage-action-2"
+}

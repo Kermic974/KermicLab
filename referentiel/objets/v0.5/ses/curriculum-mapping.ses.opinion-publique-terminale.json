@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.ses.opinion-publique-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "object": "notion.ses.opinion-publique",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

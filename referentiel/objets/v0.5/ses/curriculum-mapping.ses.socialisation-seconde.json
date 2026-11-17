@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.ses.socialisation-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "object": "notion.ses.socialisation",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.socialisation-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "source": "notion.ses.socialisation",
+  "target": "microskill.ses.socialisation-action-1"
+}
