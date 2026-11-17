@@ -339,7 +339,7 @@ test("Labs : le Lab du cercle, ses trois modes et le mini-lab replié ; Éducati
   assert.equal(await page.locator("#rebond-labs").textContent(), "Voir dans les Labs");
   await page.click("#rebond-labs");
   assert.equal(await page.evaluate(() => location.hash), "#labs");
-  assert.deepEqual(await page.locator(".outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
+  assert.deepEqual(await page.locator("#lab-cercle a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
   ]);
   const bascule = page.locator("[aria-controls=minilab]");
@@ -353,6 +353,38 @@ test("Labs : le Lab du cercle, ses trois modes et le mini-lab replié ; Éducati
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+test("Labs : le Lab du système solaire est publié, s'ouvre depuis sa carte et fonctionne hors ligne", async () => {
+  const { page, contexte, erreurs } = await demarrer();
+  await choisirPseudo(page, "Lina");
+  await page.click(".barre-laterale [data-nav=labs]");
+  const carte = page.locator("#lab-systeme-solaire");
+  assert.equal(await carte.locator("h3").textContent(), "Le système solaire");
+  assert.equal(await carte.locator("a").textContent(), "Ouvrir le Lab");
+  const reseau = [];
+  page.on("request", (r) => { if (!r.url().startsWith(serveur.url)) reseau.push(r.url()); });
+  await carte.locator("a").click();
+  await page.waitForURL(`${serveur.url}/labs/systeme-solaire/`);
+  // Page autonome publiée : indexable, métadonnées du contrat, aucune requête hors du site.
+  assert.equal(await page.locator('meta[name="robots"]').count(), 0);
+  assert.match(await page.locator('link[rel="canonical"]').getAttribute("href"), /\/labs\/systeme-solaire\/$/);
+  const meta = JSON.parse(await page.locator("#kermiclab-meta").textContent());
+  assert.equal(meta.id, "systeme-solaire");
+  assert.equal(meta.version, "1.0.0");
+  assert.doesNotMatch(await page.locator("header.haut").textContent(), /prévisualisation/i);
+  // Parcours textuel complet, avec ou sans WebGL : explication, puis les cinq questions de la mission.
+  await page.click("#onglet-explication");
+  assert.match(await page.locator("#panneau-explication").textContent(), /Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune/);
+  await page.click("#onglet-mise-en-situation");
+  for (let i = 0; i < 5; i += 1) {
+    await page.locator("#quiz .choix button").first().click();
+    await page.locator("#quiz button", { hasText: /Question suivante|Voir le score/ }).click();
+  }
+  assert.match(await page.locator("#quiz").textContent(), /\d \/ 5\./);
+  assert.deepEqual(reseau, []);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("défi express : correction immédiate, 5 XP par bonne réponse une fois par jour", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Sam");

@@ -8,6 +8,13 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 |---|---|---|---|---|
 | Préparer les applications Microsoft, Google et Apple et déposer les secrets côté Worker | Consoles des fournisseurs et [chantier Authentification](chantiers/authentification.md) | Les boutons affichent un écran d'attente jusqu'à la configuration et à la validation du parcours OAuth | Confirmer l'inscription des applications et les URL de rappel, sans communiquer les secrets dans un ticket | à faire |
 
+## Lab « Le système solaire » publié
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Faire relire le lab par une personne compétente en sciences (grille v1) | `Sample/lab/systeme-solaire.html`, ou `https://kermiclab.online/labs/systeme-solaire/` après déploiement ; grille de `docs/chantiers/validation-maquettes.md` | Public mineur : les faits ont été vérifiés par l'agent, mais aucune relecture humaine n'a encore eu lieu | Relecture consignée dans `Sample/lab/systeme-solaire.md` (date, relecteur, corrections éventuelles) | à faire |
+| Vérifier le lab en ligne sur téléphone et sur ordinateur | `https://kermiclab.online/#labs`, carte « Le système solaire » | Le rendu WebGL dépend de l'appareil ; les tests tournent en Chromium sans GPU | Le ciel s'affiche et tourne, ou le message de secours apparaît et les onglets Explication et Mission restent lisibles | à faire |
+
 ## Publication programmée du blog, test de fumée, environnement Cursor (issues #312, #261, #284)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
