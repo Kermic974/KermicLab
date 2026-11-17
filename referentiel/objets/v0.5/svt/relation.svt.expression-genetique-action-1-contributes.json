@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expression-genetique-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/expression-genetique/contenu.json"
+  },
+  "source": "microskill.svt.expression-genetique-action-1",
+  "target": "skill.svt.expression-genetique"
+}

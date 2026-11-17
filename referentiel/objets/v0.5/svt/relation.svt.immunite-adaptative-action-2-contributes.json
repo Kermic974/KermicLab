@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.immunite-adaptative-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/immunite-adaptative/contenu.json"
+  },
+  "source": "microskill.svt.immunite-adaptative-action-2",
+  "target": "skill.svt.immunite-adaptative"
+}

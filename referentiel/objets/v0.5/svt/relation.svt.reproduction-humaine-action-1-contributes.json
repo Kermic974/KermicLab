@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reproduction-humaine-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "microskill.svt.reproduction-humaine-action-1",
+  "target": "skill.svt.reproduction-humaine"
+}

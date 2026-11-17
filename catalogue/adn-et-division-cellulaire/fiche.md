@@ -26,6 +26,9 @@ questions:
   - je ne comprends pas la mitose
   - c'est quoi le cycle cellulaire ?
   - what is mitosis?
+prerequis:
+niveaux: premiere
+competences: svt-adn-et-division-cellulaire-action-1, svt-adn-et-division-cellulaire-action-2
 ---
 
 # L'ADN, sa réplication et la mitose

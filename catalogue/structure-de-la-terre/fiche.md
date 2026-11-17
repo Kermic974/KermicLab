@@ -28,6 +28,9 @@ questions:
   - je ne comprends pas la différence entre croûte continentale et océanique
   - c'est quoi la lithosphère ?
   - what is inside the earth?
+prerequis:
+niveaux: premiere
+competences: svt-structure-de-la-terre-action-1, svt-structure-de-la-terre-action-2
 ---
 
 # La structure interne de la Terre

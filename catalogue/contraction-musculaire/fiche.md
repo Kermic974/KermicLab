@@ -25,6 +25,9 @@ questions:
   - je ne comprends pas les muscles antagonistes
   - d'où vient l'énergie de la contraction musculaire ?
   - how do muscles contract?
+prerequis:
+niveaux: terminale
+competences: svt-contraction-musculaire-action-1, svt-contraction-musculaire-action-2
 ---
 
 # La contraction musculaire

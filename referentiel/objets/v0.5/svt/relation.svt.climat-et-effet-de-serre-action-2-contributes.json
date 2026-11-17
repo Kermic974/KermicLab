@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.climat-et-effet-de-serre-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "source": "microskill.svt.climat-et-effet-de-serre-action-2",
+  "target": "skill.svt.climat-et-effet-de-serre"
+}

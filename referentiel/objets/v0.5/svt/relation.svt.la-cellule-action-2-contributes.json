@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.la-cellule-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "microskill.svt.la-cellule-action-2",
+  "target": "skill.svt.la-cellule"
+}

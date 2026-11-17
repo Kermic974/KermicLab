@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.metabolisme-et-enzymes-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "microskill.svt.metabolisme-et-enzymes-action-1",
+  "target": "skill.svt.metabolisme-et-enzymes"
+}

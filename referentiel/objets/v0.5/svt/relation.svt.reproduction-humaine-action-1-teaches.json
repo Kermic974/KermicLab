@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reproduction-humaine-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "notion.svt.reproduction-humaine",
+  "target": "microskill.svt.reproduction-humaine-action-1"
+}

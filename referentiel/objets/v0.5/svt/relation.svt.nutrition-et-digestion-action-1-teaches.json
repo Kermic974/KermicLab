@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.nutrition-et-digestion-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-digestion/contenu.json"
+  },
+  "source": "notion.svt.nutrition-et-digestion",
+  "target": "microskill.svt.nutrition-et-digestion-action-1"
+}

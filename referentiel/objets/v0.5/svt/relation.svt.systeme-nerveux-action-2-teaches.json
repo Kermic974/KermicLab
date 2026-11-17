@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.systeme-nerveux-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "notion.svt.systeme-nerveux",
+  "target": "microskill.svt.systeme-nerveux-action-2"
+}

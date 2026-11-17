@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.contraction-musculaire-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "notion.svt.contraction-musculaire",
+  "target": "microskill.svt.contraction-musculaire-action-2"
+}

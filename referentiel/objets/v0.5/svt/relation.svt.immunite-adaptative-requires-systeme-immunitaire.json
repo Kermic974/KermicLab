@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.immunite-adaptative-requires-systeme-immunitaire",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/immunite-adaptative/contenu.json"
+  },
+  "source": "notion.svt.immunite-adaptative",
+  "target": "notion.svt.systeme-immunitaire",
+  "rationale": "La fiche approfondit la réponse adaptative déjà distinguée de l’innée."
+}

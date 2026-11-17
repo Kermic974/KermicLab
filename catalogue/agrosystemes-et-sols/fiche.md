@@ -30,6 +30,9 @@ questions:
   - je ne comprends pas pourquoi on utilise des engrais
   - c'est quoi l'agroécologie ?
   - how is soil formed?
+prerequis:
+niveaux: seconde
+competences: svt-agrosystemes-et-sols-action-1, svt-agrosystemes-et-sols-action-2
 ---
 
 # Agrosystèmes et sols

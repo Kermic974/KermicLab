@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.adn-et-division-cellulaire-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "microskill.svt.adn-et-division-cellulaire-action-2",
+  "target": "skill.svt.adn-et-division-cellulaire"
+}

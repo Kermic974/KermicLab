@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.glycemie-et-diabete-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "notion.svt.glycemie-et-diabete",
+  "target": "microskill.svt.glycemie-et-diabete-action-1"
+}

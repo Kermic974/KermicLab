@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.histoire-de-la-terre-et-datation-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "source": "notion.svt.histoire-de-la-terre-et-datation",
+  "target": "microskill.svt.histoire-de-la-terre-et-datation-action-2"
+}

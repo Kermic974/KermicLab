@@ -28,6 +28,9 @@ questions:
   - je ne comprends pas le rôle de la chlorophylle
   - comment mettre en évidence l'amidon dans une feuille
   - what is photosynthesis?
+prerequis:
+niveaux: cycle-3, cycle-4, seconde, premiere
+competences: svt-photosynthese-action-1, svt-photosynthese-action-2
 ---
 
 # La photosynthèse et les besoins des plantes
