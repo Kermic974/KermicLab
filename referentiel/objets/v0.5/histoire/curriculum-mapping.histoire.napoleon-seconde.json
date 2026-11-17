@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.napoleon-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "object": "notion.histoire.napoleon",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

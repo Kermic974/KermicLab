@@ -17,6 +17,9 @@ questions:
   - Quelles sont les causes de la décolonisation ?
   - Comment se déroule l'indépendance de l'Inde ?
   - Quels sont les enjeux de mémoire de la guerre d'Algérie ?
+prerequis:
+niveaux: cycle-4, terminale
+competences: his-decolonisation-action-1, his-decolonisation-action-2
 ---
 
 # La décolonisation

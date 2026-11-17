@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.monde-depuis-1990-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-depuis-1990/contenu.json"
+  },
+  "object": "notion.histoire.monde-depuis-1990",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

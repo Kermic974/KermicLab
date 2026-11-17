@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.temps-modernes-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "microskill.histoire.temps-modernes-action-2",
+  "target": "skill.histoire.temps-modernes"
+}

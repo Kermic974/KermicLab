@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.moyen-age-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "notion.histoire.moyen-age",
+  "target": "microskill.histoire.moyen-age-action-1"
+}

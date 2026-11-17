@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.revolution-francaise-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "object": "notion.histoire.revolution-francaise",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

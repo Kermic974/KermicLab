@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.napoleon-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "microskill.histoire.napoleon-action-2",
+  "target": "skill.histoire.napoleon"
+}

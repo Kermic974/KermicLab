@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "microskill.histoire.antiquite-action-1"
+}

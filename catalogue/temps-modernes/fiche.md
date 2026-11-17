@@ -19,6 +19,9 @@ questions:
   - C'est quoi la monarchie absolue ?
   - Pourquoi l'édit de Nantes est-il important ?
   - Quelles conséquences a le voyage de Christophe Colomb ?
+prerequis:
+niveaux: cycle-4, seconde
+competences: his-temps-modernes-action-1, his-temps-modernes-action-2
 ---
 
 # Les Temps modernes
