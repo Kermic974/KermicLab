@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.41.1 · 2026-11-16</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/ef7c33904b469e14e2c06188ca46dc95d68d4220" target="_blank" rel="noopener noreferrer" data-lien-actif>ef7c339</a>.
+  <strong>Squelette v1.42.0 · 2026-11-17</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/3d3143deecbdfcc531a4757916181eea61ca9e1b" target="_blank" rel="noopener noreferrer" data-lien-actif>3d3143d</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -73,7 +73,7 @@
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, dix écrans (ADR 0026)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>1f695188cd6e3d31c8213cf7ce3b09fa03e1197ebd1c377f7094ddf988308f64</code><br>Empreinte du squelette hors cartouche : <code>5d5099d505822983879fd9afd31c57d9746b38abc4b70d086c819a6bca26d93d</code></p>
+    <p>Empreinte des sources : <code>fac67a612c3cad71d705043b0ffc9884d636b46ad6b9ca21b042dee1c15facab</code><br>Empreinte du squelette hors cartouche : <code>1b92b6248926c2d9371398416a81f9ef43c0ccd6ff4924c10ab21c67cffa47e1</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -133,10 +133,14 @@
           <div class="actions"><button disabled>Fermer</button><button disabled>Continuer vers le diagnostic</button></div>
           <details><summary>Diagnostic et planning</summary><p>Diagnostic : un QCM par notion pour les 5 premières, avec « Je ne sais pas encore » ; une bonne réponse sort la notion du planning. Planning (lecture du cahier) : « Aujourd'hui · Notion du jour », journée type en 5 étapes (révision courte, notion du jour, manipulation, exercices notés, mini-bilan « Terminer ma journée »), prochaines séances. Un jour manqué décale simplement la suite, sans pénalité.</p></details></article>
         <article class="carte" data-source="web/index.html:lecture-cahier"><h3>Révisions de l'été</h3><p>Cahier de vacances · 7 nov. 2026 · Enrichi par l’IA (custom/sonnet-5-5)</p>
+          <p>1/8 exercice(s) réussi(s)</p><progress value="1" max="8" aria-label="Exercices réussis (fictif)"></progress>
+          <nav aria-label="Chapitres du cahier"><button disabled>Accueil</button> <button disabled>1 Les fractions</button> <button disabled>2 Le théorème de Pythagore</button> <button disabled>Bilan</button></nav>
+          <p class="note">Vue plein cadre, une étape affichée à la fois : accueil (introduction, sommaire « Au programme » ou planning des vacances), puis chaque bloc d'un chapitre, ses notes, et le bilan (score, « Reprendre les exercices restants », conclusion). Les pastilles ouvrent un chapitre et se cochent quand tous ses exercices sont réussis. Un cahier commencé rouvre sur le premier exercice à refaire.</p>
           <p>Un cahier pour réviser les fractions et Pythagore.</p><h4>Les fractions</h4><button disabled>Ouvrir la notion</button>
           <p><strong>EXPLICATION</strong> Une fraction représente une part d'un tout.</p><p><strong>À RETENIR</strong> On additionne des fractions au même dénominateur.</p>
-          <p><strong>📖 HISTOIRE</strong> La station Orion manque de carburant…</p><p><strong>✏️ EXERCICE · ★☆☆</strong> Calcule 1/2 + 1/4.</p><details><summary>Un indice ?</summary><p>Même dénominateur.</p></details><details><summary>Voir la réponse</summary><p>3/4.</p></details><label><input type="checkbox" disabled> Je l’ai réussi</label><p>1/8 exercice(s) réussi(s)</p>
+          <p><strong>📖 HISTOIRE</strong> La station Orion manque de carburant…</p><p><strong>✏️ EXERCICE · ★☆☆</strong> Calcule 1/2 + 1/4.</p><details><summary>Un indice ?</summary><p>Même dénominateur.</p></details><details><summary>Voir la réponse</summary><p>3/4.</p></details><label><input type="checkbox" disabled> Je l’ai réussi</label>
           <label>Mes notes<textarea disabled></textarea></label>
+          <p><button disabled>Précédent</button> Étape 4 sur 12 <button disabled>Continuer</button> <span class="note">« Commencer » à la première étape, « Terminer » à la dernière ; flèches gauche et droite du clavier.</span></p>
           <p class="note">Repli : « L’IA n’a pas pu préparer ce cahier : il a été construit à partir du catalogue. » Le cahier catalogue présente une section par notion (Ouvrir la notion, Mes notes) ; le brouillon ajoute une page libre.</p></article>
         <p class="note">Les cahiers sont enregistrés dans le stockage de session sans consentement, puis transférés au stockage local si « Se souvenir de moi » est activé. Ils sont effacés avec les autres données de l'appareil.</p>
       </section>

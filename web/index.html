@@ -1012,14 +1012,26 @@
   </form>
 </dialog>
 
+<!-- Lecture d'un cahier : vue plein cadre, une étape à la fois (chapitres en haut, navigation en bas). -->
 <dialog id="lecture-cahier" class="lecture-cahier" data-sans-idees aria-labelledby="lecture-titre">
-  <div class="dialogue-entete">
-    <h2 id="lecture-titre"></h2>
+  <header class="lecture-entete">
+    <div class="lecture-titres">
+      <h2 id="lecture-titre"></h2>
+      <p class="doux petit" id="lecture-meta"></p>
+    </div>
     <button type="button" class="secondaire" id="fermer-lecture" data-i18n="fermer"></button>
-  </div>
-  <p class="doux petit" id="lecture-meta"></p>
-  <p class="progression-cahier" id="lecture-progression" hidden><span></span><progress value="0" max="1"></progress></p>
+    <p class="progression-cahier" id="lecture-progression" hidden><span></span><progress value="0" max="1"></progress></p>
+  </header>
+  <nav id="lecture-chapitres" class="lecture-chapitres" data-i18n-aria="cahierChapitres" hidden></nav>
   <div id="lecture-corps" class="lecture-corps"></div>
+  <footer id="lecture-pied" class="lecture-pied" hidden>
+    <button type="button" class="secondaire" id="lecture-precedent" data-i18n="cahierEtapePrecedente"></button>
+    <div class="lecture-position">
+      <span id="lecture-position" class="petit" aria-live="polite"></span>
+      <progress id="lecture-avancee" value="0" max="1" aria-hidden="true"></progress>
+    </div>
+    <button type="button" id="lecture-suivant" data-i18n="cahierEtapeSuivante"></button>
+  </footer>
 </dialog>
 
 <!-- Google Analytics 4 : chargé seulement après accord dans ce bandeau (ADR 0027, voir confidentialite.html). -->

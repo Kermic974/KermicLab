@@ -455,13 +455,72 @@ form#formulaire-accueil button::after { content: "➜"; font-size: 1rem; }
 .cahier-notions { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 6px; max-height: 220px; overflow-y: auto; margin-top: 6px; }
 .cahier-notion { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; }
 .cahier-ia { display: flex; align-items: flex-start; gap: 8px; margin-top: 6px; font-weight: 600; }
-dialog.lecture-cahier { width: min(760px, 100vw - 24px); }
-.lecture-corps { display: flex; flex-direction: column; gap: 14px; }
-.intro-cahier { font-size: 1.02rem; }
-.section-cahier { display: flex; flex-direction: column; gap: 10px; padding-top: 12px; border-top: 1px solid var(--bord, #ddd); }
+/* Lecture d'un cahier : vue plein cadre, une étape à la fois. */
+dialog.lecture-cahier {
+  width: 100vw; height: 100dvh; max-width: 100vw; max-height: none; margin: 0; padding: 0; border: 0; border-radius: 0;
+  display: none; flex-direction: column; overflow: hidden; background: var(--fond);
+}
+dialog.lecture-cahier[open] { display: flex; animation-name: lecture-entre; }
+.lecture-entete, .lecture-chapitres, .lecture-corps, .lecture-pied { --marge-lecture: max(16px, calc((100% - 760px) / 2)); padding-inline: var(--marge-lecture); }
+.lecture-entete {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 12px; flex: none;
+  padding-top: max(14px, env(safe-area-inset-top, 0px)); padding-bottom: 12px; background: var(--surface); border-bottom: 1px solid var(--bord);
+}
+.lecture-titres h2 { overflow-wrap: anywhere; }
+.lecture-entete .progression-cahier { grid-column: 1 / -1; margin: 0; font-size: .9rem; }
+.lecture-chapitres { display: flex; gap: 8px; flex: none; overflow-x: auto; padding-block: 10px; background: var(--surface); border-bottom: 1px solid var(--bord); scrollbar-width: thin; }
+.pastille-chapitre {
+  display: inline-flex; align-items: center; gap: 8px; flex: none; max-width: 240px; padding: 6px 12px 6px 6px; border-radius: 999px;
+  background: var(--surface-2); color: var(--texte-2); border: 1px solid var(--bord); font-weight: 600; font-size: .88rem;
+}
+.pastille-chapitre:hover { background: var(--accent-doux); color: var(--accent-doux-texte); }
+.pastille-chapitre[aria-current="step"] { background: var(--accent); color: var(--accent-texte); border-color: var(--accent); }
+.pastille-titre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 6px; }
+.pastille-numero { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--surface); color: var(--texte); border: 1px solid var(--bord); font-size: .8rem; }
+.pastille-numero + .pastille-titre { padding-left: 0; }
+.pastille-chapitre.fait .pastille-numero { background: var(--ok, #16a34a); border-color: transparent; color: #fff; font-size: 0; }
+.pastille-chapitre.fait .pastille-numero::before { content: "✓"; font-size: .85rem; }
+.lecture-corps { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding-block: 22px; font-size: 1.05rem; line-height: 1.6; }
+.lecture-pied {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; flex: none;
+  padding-top: 12px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--surface); border-top: 1px solid var(--bord);
+}
+.lecture-pied button { min-height: 44px; min-width: 112px; }
+.lecture-position { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; color: var(--doux); font-weight: 600; }
+.lecture-position progress { width: min(100%, 260px); height: 6px; }
+#lecture-suivant.invite { animation: invite-suite 1.1s ease-in-out 2; }
+.etape-cahier { animation: etape-entre .28s ease both; }
+.accueil-cahier, .bilan-cahier { display: flex; flex-direction: column; gap: 14px; }
+.intro-cahier { font-size: 1.15rem; }
+.sommaire-cahier { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; counter-reset: chapitre; }
+.sommaire-cahier li { counter-increment: chapitre; }
+.sommaire-cahier button { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 14px; background: var(--surface); border-color: var(--bord); color: var(--texte); }
+.sommaire-cahier button::before { content: counter(chapitre); display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-doux); color: var(--accent-doux-texte); font-weight: 700; font-size: .9rem; }
+.sommaire-cahier button:hover { background: var(--accent-doux); border-color: var(--accent); }
+.sommaire-titre { flex: 1; min-width: 0; font-weight: 650; overflow-wrap: anywhere; }
+.bilan-cahier { align-items: center; text-align: center; padding-top: 12px; }
+.bilan-cahier .notes-cahier, .bilan-cahier .conclusion-cahier { align-self: stretch; text-align: left; }
+.bilan-score { font-size: 3rem; font-weight: 800; line-height: 1; color: var(--ok, #16a34a); }
+.bilan-message { font-size: 1.15rem; font-weight: 650; }
+.section-cahier { display: flex; flex-direction: column; gap: 14px; }
+.section-cahier .bloc-cahier { padding: 18px 20px; gap: 8px; border-radius: 16px; }
+.section-cahier .bloc-titre { font-size: 1.2rem; }
+.section-cahier .notes-cahier { padding: 18px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--bord); font-weight: 600; }
+.section-cahier .notes-cahier textarea { min-height: 180px; font-weight: 400; }
+.bloc-cahier.reussi .reussi-cahier { color: var(--ok, #16a34a); }
+@keyframes lecture-entre { from { opacity: 0; } to { opacity: 1; } }
+@keyframes etape-entre { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+@keyframes invite-suite { 50% { transform: scale(1.06); box-shadow: 0 0 0 6px var(--accent-doux); } }
+@media (max-width: 560px) {
+  .lecture-pied { gap: 8px; }
+  .lecture-pied button { min-width: 0; padding-inline: 14px; }
+  .lecture-position progress { display: none; }
+  .lecture-corps { padding-block: 16px; font-size: 1rem; }
+  .section-cahier .bloc-cahier, .section-cahier .notes-cahier { padding: 14px; }
+}
 .tete-section-cahier { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 .tete-section-cahier h3 { margin: 0; }
-.bloc-cahier { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 10px; background: var(--fond-doux, rgba(127,127,127,.08)); }
+.bloc-cahier { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 10px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--bord); }
 .bloc-cahier p { overflow-wrap: anywhere; white-space: pre-line; }
 .bloc-genre { font-weight: 700; color: var(--doux); text-transform: uppercase; letter-spacing: .04em; }
 .bloc-retenir { border-left: 4px solid var(--accent, #4f46e5); }
