@@ -1724,10 +1724,10 @@ function referencesLlm(sources, llm) {
 }
 
 /** Écrans que l'assistant peut proposer d'ouvrir (liste fermée : la réponse du serveur ne choisit rien d'autre). */
-const ACTIONS_ECRANS = { jeux: "navJeux", labs: "navEducation", notions: "navEducation", progression: "navProgression", badges: "mesBadges", defi: "navDefi" };
+const ACTIONS_ECRANS = { jeux: "navJeux", labs: "navLabs", notions: "navEducation", progression: "navProgression", badges: "mesBadges", defi: "navDefi" };
 
 function actionsEcrans(actions) {
-  // Deux actions qui mènent au même écran (labs et notions → Éducation) n'en font qu'une.
+  // Deux actions qui mènent au même écran (notions → Éducation) n'en font qu'une.
   const vus = new Set();
   const valides = (Array.isArray(actions) ? actions : []).filter((a) => Object.hasOwn(ACTIONS_ECRANS, a))
     .filter((a) => { const cible = ACTIONS_ECRANS[a]; if (vus.has(cible)) return false; vus.add(cible); return true; }).slice(0, 3);
@@ -2962,12 +2962,12 @@ function rafraichirTheme() {
 
 /* ---------- Navigation ---------- */
 
-/** Les 5 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
-const DESTINATIONS = ["accueil", "education", "jeux", "progression", "profil"];
+/** Les 6 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
+const DESTINATIONS = ["accueil", "education", "labs", "jeux", "progression", "profil"];
 const ECRANS = [...DESTINATIONS, "defi", "compte", "apropos", "connexion-en-cours"];
 const PARENTS = { defi: "education", famille: "profil", compte: "profil", apropos: "profil", "connexion-en-cours": "profil" };
-/** Anciennes adresses (#notions, #labs, #badges…) : redirigées vers la destination qui les contient. */
-const ALIAS_ECRANS = { catalogue: "education", notions: "education", labs: "education", cahiers: "education", badges: "progression" };
+/** Anciennes adresses (#notions, #badges…) : redirigées vers la destination qui les contient. */
+const ALIAS_ECRANS = { catalogue: "education", notions: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };
 const sectionDe = (ecran) => PARENTS[ecran] ?? ecran;
 
@@ -2975,7 +2975,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", apropos: "navAPropos" }[etat.ecran]);
+    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
 }
 

@@ -56,6 +56,7 @@
     <nav class="nav" data-i18n-aria="sections">
       <button type="button" class="nav-bouton" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
       <button type="button" class="nav-bouton" data-nav="education" id="ouvrir-catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navEducation"></span></button>
+      <button type="button" class="nav-bouton" data-nav="labs"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
       <button type="button" class="nav-bouton" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <!-- Contributions (ADR 0023) : visible seulement pour un rôle contributeur, prof ou admin. -->
@@ -185,29 +186,8 @@
               <h3 data-i18n="labCercleTitre"></h3>
               <p class="doux" data-i18n="labCercleDescription"></p>
               <div class="outil-actions">
-                <a class="bouton lab" href="cercle/?mode=explore" data-i18n="parcoursV3Action"></a>
-                <a class="lien-mode" href="cercle/?mode=learn" data-i18n="parcoursV3Manipuler"></a>
-                <a class="lien-mode" href="cercle/?mode=play" data-i18n="parcoursV3Entrainement"></a>
-                <button type="button" class="accordeon-bouton secondaire" data-accordeon-fixe aria-expanded="false" aria-controls="minilab"><svg class="ico chevron" aria-hidden="true"><use href="#i-chevron"/></svg><span data-i18n="minilabTitre"></span></button>
+                <button type="button" class="bouton lab" data-nav="labs" id="rebond-labs"><span data-i18n="labsRebond"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
               </div>
-              <section class="minilab" id="minilab" aria-labelledby="minilab-titre" hidden>
-                <div class="minilab-tete">
-                  <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
-                  <span class="doux petit" data-i18n="minilabAide"></span>
-                </div>
-                <div class="cercle-hote" data-cercle></div>
-                <div class="curseur-ligne">
-                  <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
-                  <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
-                  <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
-                </div>
-                <dl class="lectures" aria-live="polite">
-                  <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
-                  <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
-                  <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
-                </dl>
-                <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
-              </section>
             </article>
             <article class="carte outil">
               <h3 data-i18n="navCahiers"></h3>
@@ -249,6 +229,44 @@
             </section>
           </section>
         </section>
+      </section>
+
+      <section id="ecran-labs" class="ecran" data-ecrans="labs" aria-labelledby="labs-titre" hidden>
+        <div class="tete-section">
+          <h2 id="labs-titre" data-i18n="labsDisponibles"></h2>
+          <button type="button" class="lien-fleche" data-nav="education"><span data-i18n="labsVoirNotions"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+        </div>
+        <p class="doux" data-i18n="labsSeparation"></p>
+        <div class="liste-outils">
+        <article class="carte outil" id="lab-cercle">
+          <h3 data-i18n="labCercleTitre"></h3>
+          <p class="doux" data-i18n="labCercleDescription"></p>
+          <div class="outil-actions">
+            <a class="bouton lab" href="cercle/?mode=explore" data-i18n="parcoursV3Action"></a>
+            <a class="lien-mode" href="cercle/?mode=learn" data-i18n="parcoursV3Manipuler"></a>
+            <a class="lien-mode" href="cercle/?mode=play" data-i18n="parcoursV3Entrainement"></a>
+            <button type="button" class="accordeon-bouton secondaire" data-accordeon-fixe aria-expanded="false" aria-controls="minilab"><svg class="ico chevron" aria-hidden="true"><use href="#i-chevron"/></svg><span data-i18n="minilabTitre"></span></button>
+          </div>
+          <section class="minilab" id="minilab" aria-labelledby="minilab-titre" hidden>
+            <div class="minilab-tete">
+              <span class="sur-titre" id="minilab-titre" data-i18n="minilabTitre"></span>
+              <span class="doux petit" data-i18n="minilabAide"></span>
+            </div>
+            <div class="cercle-hote" data-cercle></div>
+            <div class="curseur-ligne">
+              <label for="angle-minilab"><span data-i18n="minilabAngle"></span><span class="math"><span data-sortie="deg"></span>°</span></label>
+              <input type="range" id="angle-minilab" min="0" max="360" step="1" value="40">
+              <div class="angles" role="group" data-i18n-aria="minilabRemarquables" data-angles></div>
+            </div>
+            <dl class="lectures" aria-live="polite">
+              <div class="lecture"><dt><i class="puce-couleur lab"></i>θ =</dt><dd data-sortie="theta"></dd><span class="exacte" data-sortie="rad"></span></div>
+              <div class="lecture"><dt><i class="puce-couleur sin"></i>sin(θ) =</dt><dd data-sortie="sin"></dd><span class="exacte" data-sortie="sinx"></span></div>
+              <div class="lecture"><dt><i class="puce-couleur cos"></i>cos(θ) =</dt><dd data-sortie="cos"></dd><span class="exacte" data-sortie="cosx"></span></div>
+            </dl>
+            <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+          </section>
+        </article>
+        </div>
       </section>
 
       <section id="ecran-jeux" class="ecran" data-ecrans="jeux" aria-labelledby="jeux-titre" hidden>
@@ -376,6 +394,7 @@
 <nav class="nav-mobile" data-i18n-aria="navigationMobile">
   <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="education"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navEducation"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="labs"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg></span><span data-i18n="navLabs"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>

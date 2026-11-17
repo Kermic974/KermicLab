@@ -293,10 +293,14 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   await contexte.close();
 });
 
-test("Éducation : le Lab du cercle, ses trois modes et le mini-lab replié", async () => {
+test("Labs : le Lab du cercle, ses trois modes et le mini-lab replié ; Éducation y renvoie", async () => {
   const { page, contexte, erreurs } = await demarrer();
   await choisirPseudo(page, "Lina");
   await page.click(".barre-laterale [data-nav=education]");
+  assert.equal(await page.locator("#minilab").isVisible(), false);
+  assert.equal(await page.locator("#rebond-labs").textContent(), "Voir dans les Labs");
+  await page.click("#rebond-labs");
+  assert.equal(await page.evaluate(() => location.hash), "#labs");
   assert.deepEqual(await page.locator(".outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
   ]);
@@ -735,13 +739,13 @@ test("thème : bascule clair/sombre mémorisée comme préférence d'affichage",
   await contexte.close();
 });
 
-test("mobile : navigation inférieure, mini-lab utilisable dans Éducation, aucun défilement horizontal", async () => {
+test("mobile : navigation inférieure, mini-lab utilisable dans Labs, aucun défilement horizontal", async () => {
   const { page, contexte, erreurs } = await demarrer({ viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true });
   await choisirPseudo(page, "Inès");
   assert.equal(await page.locator(".barre-laterale").isVisible(), false);
   assert.equal(await page.locator(".nav-mobile").isVisible(), true);
   assert.equal(await page.locator("#suggestion").isVisible(), true);
-  await page.click(".nav-mobile [data-nav=education]");
+  await page.click(".nav-mobile [data-nav=labs]");
   await page.click("[aria-controls=minilab]");
   await page.locator("#angle-minilab").fill("90");
   assert.equal(await texte(page, '#minilab [data-sortie="sin"]'), "1,000");

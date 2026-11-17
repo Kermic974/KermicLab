@@ -11,7 +11,7 @@ Tout est calculé et conservé sur l'appareil ; rien n'est mesuré par le résea
 | `web/progression.js` | Schéma de progression (v2), migration, événements (`enregistrerNotion`, `enregistrerExperience`, `decouvrir`, `ajouterTemps`, `reclasser`…), badges. |
 | `web/experiences.js` | Registre dérivé du catalogue : type d'une expérience, arbre Éducation, compteurs, progression par matière, expériences découvertes, durées. |
 | `web/signal-activite.js` | Signal d'activité des pages ouvertes en bulle, injecté au service (`scripts/lib/idees.mjs`, `preparerPageServie`). |
-| `web/app.js` | Branchement : interactions, visibilité, messages des iframes, enregistrement périodique, rendu des 5 destinations. |
+| `web/app.js` | Branchement : interactions, visibilité, messages des iframes, enregistrement périodique, rendu des 6 destinations. |
 
 ## Temps actif
 
