@@ -1444,7 +1444,8 @@ const CLE_DEMO_CONTRIB_ACTIVE = "kermiclab:demo-contributions:active";
 const contrib = {
   demo: false, etatDemo: null, chargee: false, erreur: false, miennes: [], relecture: [],
   index: null, contenus: new Map(), filtre: { statut: "proposee", notion: "", matiere: "" }, edition: null,
-  bulle: { notion: null, cible: null }
+  bulle: { notion: null, cible: null, viser: null },
+  suivi: { statut: "tous", notion: "" }
 };
 const demoContribActive = () => contrib.demo === true;
 const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true;
@@ -1586,9 +1587,66 @@ function rafraichirContributions() {
   $("#contrib-role-aide").textContent = ` — ${t(contributions.peutRelire(role) ? "contribRoleAideProf" : "contribRoleAideContributeur")}`;
   $("#contrib-tableau").hidden = !contributions.peutRelire(role);
   if (contributions.peutRelire(role)) rendreTableau(compte);
-  rendreListe($("#contrib-miennes"), contrib.miennes, { compte, mode: "miennes" });
-  $("#contrib-miennes-vide").hidden = contrib.miennes.length > 0;
+  rendreSuivi(compte);
   remplirOptionsFormulaire();
+}
+
+/** Suivi de ses contributions : synthèse, action attendue, compteurs et filtres, frise de chaque proposition. */
+function rendreSuivi(compte) {
+  const s = contributions.suiviAuteur(contrib.miennes);
+  const tuiles = [
+    ["contribSuiviEnCours", t("contribSuiviSurMax", { n: s.ouvertes, max: contributions.MAX_OUVERTES_PAR_AUTEUR })],
+    ["contribSuiviACorriger", String(s.aCorriger)],
+    ["contribSuiviAcceptees", String(s.acceptees)],
+    ["contribSuiviIntegrees", String(s.resume.integree)],
+    ["contribSuiviTaux", s.taux === null ? "—" : `${s.taux} %`]
+  ];
+  $("#contrib-suivi-synthese").replaceChildren(...tuiles.map(([cle, valeur]) => {
+    const bloc = element("div", { classe: "contrib-suivi-tuile" });
+    bloc.append(element("dt", { cle }), element("dd", { texte: valeur }));
+    return bloc;
+  }));
+  $("#contrib-suivi-alerte").hidden = s.aCorriger === 0;
+  $("#contrib-suivi-alerte-texte").textContent = t("contribSuiviAlerte", { n: s.aCorriger });
+
+  const statuts = ["tous", "proposee", "a_reviser", "validee", "integree", "refusee", "retiree"];
+  const nombre = (st) => (st === "tous" ? s.resume.total : s.resume[st]);
+  $("#contrib-suivi-compteurs").replaceChildren(...statuts.filter((st) => st === "tous" || nombre(st) > 0).map((st) => {
+    const li = element("li");
+    const b = element("button", { classe: `contrib-compteur statut-${st}`, attributs: { type: "button", "aria-pressed": String(contrib.suivi.statut === st), "data-statut": st } });
+    b.append(element("strong", { texte: String(nombre(st)) }), element("span", { cle: st === "tous" ? "contribFiltreTous" : `contribStatut_${st}` }));
+    b.addEventListener("click", () => { contrib.suivi.statut = st; rafraichirContributions(); });
+    li.append(b);
+    return li;
+  }));
+  if (contrib.suivi.statut !== "tous" && !nombre(contrib.suivi.statut)) contrib.suivi.statut = "tous";
+  $("#contrib-suivi-outils").hidden = contrib.miennes.length === 0;
+  const notions = [...new Set(contrib.miennes.map((c) => c.notion_id))].sort((a, b) => titreNotion(a).localeCompare(titreNotion(b)));
+  const toutes = element("option", { cle: "contribFiltreToutes" });
+  toutes.value = "";
+  $("#contrib-suivi-notion").replaceChildren(toutes, ...notions.map((id) => { const o = element("option", { texte: titreNotion(id) }); o.value = id; return o; }));
+  if (!notions.includes(contrib.suivi.notion)) contrib.suivi.notion = "";
+  $("#contrib-suivi-notion").value = contrib.suivi.notion;
+
+  const visibles = contributions.trierSuivi(contributions.filtrer(contrib.miennes, contrib.suivi));
+  rendreListe($("#contrib-miennes"), visibles, { compte, mode: "miennes" });
+  $("#contrib-miennes-vide").hidden = contrib.miennes.length > 0;
+  $("#contrib-miennes-filtre-vide").hidden = contrib.miennes.length === 0 || visibles.length > 0;
+}
+
+/** Frise de suivi : envoyée → relue → validée → intégrée, avec les dates connues. */
+function friseSuivi(c) {
+  const frise = element("ol", { classe: "contrib-frise", attributs: { "aria-label": t("contribSuiviFrise") } });
+  frise.append(...contributions.etapesSuivi(c).map((e) => {
+    const cle = e.statut ? `contribEtape_${e.etape}_${e.statut}` : `contribEtape_${e.etape}`;
+    const li = element("li", { classe: `etape-${e.etat}`, attributs: { "data-etape": e.etape, "data-etat": e.etat } });
+    li.append(element("span", { classe: "contrib-frise-point", attributs: { "aria-hidden": "true" } }), element("span", { cle: etat.textes[cle] ? cle : `contribEtape_${e.etape}` }));
+    if (e.date) li.append(element("span", { classe: "doux petit", texte: new Date(e.date).toLocaleDateString(etat.langue) }));
+    li.append(element("span", { classe: "visuellement-cache", cle: `contribEtat_${e.etat}` }));
+    if (e.etat === "courant" || e.etat === "action") li.setAttribute("aria-current", "step");
+    return li;
+  }));
+  return frise;
 }
 
 function rendreTableau(compte) {
@@ -1681,7 +1739,9 @@ function rendreListe(liste, items, { compte, mode }) {
     const auteur = c.auteur_id === compte?.id ? t("contribAuteurMoi") : t("contribAuteur", { code: contributions.codeAuteur(c.auteur_id) });
     meta.textContent = [t(`contribType_${c.type}`), t(`contribNature_${c.nature}`), mode === "relecture" ? auteur : null,
       c.created_at ? new Date(c.created_at).toLocaleDateString(etat.langue) : null].filter(Boolean).join(" · ");
-    li.append(entete, meta, blocDiff(c));
+    li.append(entete, meta);
+    if (mode === "miennes") li.append(friseSuivi(c));
+    li.append(blocDiff(c));
     const motif = element("p", { classe: "petit" });
     motif.append(element("strong", { cle: "contribMotif" }), document.createTextNode(` ${c.motif}`));
     li.append(motif);
@@ -1694,7 +1754,15 @@ function rendreListe(liste, items, { compte, mode }) {
     if (mode === "relecture" && contributions.STATUTS_OUVERTS.includes(c.statut) && contributions.estObsolete(c, contrib.contenus.get(c.notion_id))) {
       li.append(element("p", { classe: "note-locale petit", cle: "contribObsolete" }));
     }
-    li.append(actionsContribution(c, compte, mode));
+    const actions = actionsContribution(c, compte, mode);
+    // Retrouver le texte dans la notion, volet d'édition ouvert (seulement pour une notion du gabarit encore publiée).
+    if (contrib.index?.some((n) => n.id === c.notion_id)) {
+      const voir = element("button", { classe: "secondaire petit-bouton contrib-voir", cle: "contribVoirNotion", attributs: { type: "button" } });
+      voir.addEventListener("click", () => ouvrirNotionEnEdition(c.notion_id, c.chemin));
+      const rangee = actions.classList.contains("actions") ? actions : actions.querySelector(".actions");
+      if (rangee) rangee.append(voir); else { actions.classList.add("actions"); actions.append(voir); }
+    }
+    li.append(actions);
     return li;
   }));
 }
@@ -1928,7 +1996,8 @@ const contributionsConnues = () => (contributions.peutRelire(roleEdition()) ? co
 
 async function preparerEdition(notionId) {
   const bouton = $("#bulle-editer");
-  contrib.bulle = { notion: null, cible: null };
+  const viser = contrib.bulle.viser;
+  contrib.bulle = { notion: null, cible: null, viser: null };
   bouton.hidden = true;
   $("#bulle-edition").hidden = true;
   $("#bulle-lab").classList.remove("en-edition");
@@ -1937,26 +2006,52 @@ async function preparerEdition(notionId) {
   if (!index.some((n) => n.id === notionId) || $("#bulle-lab").dataset.notion !== notionId) return;
   contrib.bulle.notion = notionId;
   bouton.hidden = false;
-  const ouverte = lireCle(sessionPreferences(), CLE_EDITION_OUVERTE) !== "0";
-  basculerEdition(ouverte, { memoriser: false });
+  // Volet affiché à la demande : fermé par défaut pour laisser toute la place à la page ; le choix est retenu dans
+  // l'onglet. Ouvert d'office quand on vient du suivi (« Voir dans la notion ») pour viser un texte précis.
+  const ouverte = !!viser || lireCle(sessionPreferences(), CLE_EDITION_OUVERTE) === "1";
+  basculerEdition(ouverte, { memoriser: false, focus: false });
   if (!contrib.chargee) await chargerContributions();
   await contenuNotion(notionId);
   rendreEdition();
+  if (viser) viserChamp(viser);
 }
 
-function basculerEdition(ouverte, { memoriser = true } = {}) {
-  $("#bulle-editer").setAttribute("aria-pressed", String(ouverte));
+function basculerEdition(ouverte, { memoriser = true, focus = true } = {}) {
+  const bouton = $("#bulle-editer");
+  bouton.setAttribute("aria-expanded", String(ouverte));
   $("#bulle-edition").hidden = !ouverte;
   $("#bulle-lab").classList.toggle("en-edition", ouverte);
   if (memoriser) ecrireCle(sessionPreferences(), CLE_EDITION_OUVERTE, ouverte ? "1" : "0");
+  if (!focus) return;
+  if (ouverte) $("#edition-fermer").focus({ preventScroll: true });
+  else bouton.focus({ preventScroll: true });
 }
 
 function fermerEdition() {
-  contrib.bulle = { notion: null, cible: null };
+  contrib.bulle = { notion: null, cible: null, viser: null };
   $("#bulle-editer").hidden = true;
   $("#bulle-edition").hidden = true;
   $("#bulle-lab").classList.remove("en-edition");
   $("#edition-formulaire").hidden = true;
+}
+
+/** Ouvre une notion dans la bulle, volet d'édition ouvert sur un texte (depuis le suivi des contributions). */
+function ouvrirNotionEnEdition(notionId, chemin) {
+  const n = notionParId(notionId) ?? { id: notionId, titre: titreNotion(notionId) };
+  contrib.bulle.viser = chemin;
+  const url = `${etat.config.apiUrl}/maquettes/${encodeURIComponent(n.id)}?lang=${encodeURIComponent(etat.langue)}`;
+  ouvrirBulle(n, url);
+}
+
+/** Déplie l'onglet du texte visé, le fait défiler dans le volet et le met en évidence. */
+function viserChamp(chemin) {
+  const champ = document.querySelector(`.edition-champ[data-chemin="${CSS.escape(chemin)}"]`);
+  if (!champ) return;
+  champ.closest("details").open = true;
+  for (const c of document.querySelectorAll(".edition-champ.vise")) c.classList.remove("vise");
+  champ.classList.add("vise");
+  champ.scrollIntoView({ block: "center", behavior: mouvementReduit() ? "auto" : "smooth" });
+  champ.querySelector("button")?.focus({ preventScroll: true });
 }
 
 function rendreEdition() {
@@ -1967,6 +2062,11 @@ function rendreEdition() {
   const total = groupes.reduce((n, g) => n + g.champs.length, 0);
   const enCours = groupes.reduce((n, g) => n + g.champs.reduce((m, c) => m + c.enCours, 0), 0);
   $("#edition-resume").textContent = t(contributions.peutRelire(roleEdition()) ? "editionResumeProf" : "editionResume", { champs: total, n: enCours });
+  const compteur = $("#bulle-editer-compteur");
+  compteur.hidden = enCours === 0;
+  compteur.textContent = String(enCours);
+  compteur.title = t("editionEnCours", { n: enCours });
+  rendreSuiviNotion(id);
   $("#edition-sections").replaceChildren(...groupes.map((g, i) => {
     const section = element("details", { classe: "edition-section", attributs: { "data-onglet": g.onglet } });
     if (i === 0) section.open = true;
@@ -1980,7 +2080,7 @@ function rendreEdition() {
       const titre = element("p");
       titre.append(element("strong", { texte: libelleChamp(c.chemin) }));
       if (c.enCours) titre.append(document.createTextNode(" "), element("span", { classe: "edition-pastille", texte: t("editionEnCours", { n: c.enCours }) }));
-      const extrait = element("p", { classe: "doux", texte: c.valeur.length > 160 ? `${c.valeur.slice(0, 160)}…` : c.valeur });
+      const extrait = element("p", { classe: "doux", texte: contributions.extrait(c.valeur) });
       const actions = element("div", { classe: "actions" });
       const modifier = element("button", { classe: "bouton petit-bouton", cle: "contribModifier", attributs: { type: "button" } });
       modifier.addEventListener("click", () => ouvrirFormulaireEdition(c, "modification"));
@@ -1995,6 +2095,24 @@ function rendreEdition() {
     }));
     section.append(resume, liste);
     return section;
+  }));
+}
+
+/** Dans le volet : propositions déjà faites sur cette notion (les siennes ; toutes pour un prof), avec leur statut. */
+function rendreSuiviNotion(id) {
+  const liste = contributions.trierSuivi(contributionsConnues().filter((c) => c.notion_id === id));
+  const bloc = $("#edition-suivi");
+  bloc.hidden = liste.length === 0;
+  if (!liste.length) return;
+  const s = contributions.suiviAuteur(liste);
+  $("#edition-suivi-resume").textContent = t("editionSuiviResume", { total: liste.length, ouvertes: s.ouvertes, acceptees: s.acceptees });
+  $("#edition-suivi-liste").replaceChildren(...liste.map((c) => {
+    const li = element("li", { classe: "edition-suivi-item", attributs: { "data-id": c.id } });
+    const lien = element("button", { classe: "lien-bouton", texte: libelleChamp(c.chemin), attributs: { type: "button" } });
+    lien.addEventListener("click", () => viserChamp(c.chemin));
+    li.append(lien, element("span", { classe: `contrib-statut statut-${c.statut}`, cle: `contribStatut_${c.statut}` }));
+    if (c.commentaire && c.statut === "a_reviser") li.append(element("p", { classe: "petit contrib-commentaire", texte: c.commentaire }));
+    return li;
   }));
 }
 
@@ -2060,7 +2178,16 @@ async function envoyerEdition(e) {
 }
 
 function brancherEdition() {
-  $("#bulle-editer").addEventListener("click", (e) => basculerEdition(e.currentTarget.getAttribute("aria-pressed") !== "true"));
+  $("#bulle-editer").addEventListener("click", (e) => basculerEdition(e.currentTarget.getAttribute("aria-expanded") !== "true"));
+  $("#edition-fermer").addEventListener("click", () => basculerEdition(false));
+  // Échap dans le volet ferme le volet seulement, pas la bulle.
+  $("#bulle-edition").addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (!$("#edition-formulaire").hidden) { $("#edition-formulaire").hidden = true; contrib.bulle.cible = null; return; }
+    basculerEdition(false);
+  });
   $("#edition-formulaire").addEventListener("submit", envoyerEdition);
   $("#edition-texte").addEventListener("input", apercuEdition);
   for (const r of document.querySelectorAll("input[name=edition-nature]")) r.addEventListener("change", apercuEdition);
@@ -2069,6 +2196,7 @@ function brancherEdition() {
     const notion = contrib.bulle.notion;
     $("#bulle-lab").addEventListener("close", () => {
       if (notion && contributions.peutRelire(roleEdition())) Object.assign(contrib.filtre, { statut: "tous", matiere: matiereNotion(notion), notion });
+      if (notion) Object.assign(contrib.suivi, { statut: "tous", notion });
       naviguer("contributions");
     }, { once: true });
     $("#bulle-lab").close();
@@ -2122,6 +2250,12 @@ function brancherContributions() {
   $("#contrib-annuler-edition").addEventListener("click", finirEdition);
   $("#contrib-filtre-statut").addEventListener("change", (e) => { contrib.filtre.statut = e.currentTarget.value; rafraichirContributions(); });
   $("#contrib-filtre-notion").addEventListener("change", (e) => { contrib.filtre.notion = e.currentTarget.value; rafraichirContributions(); });
+  $("#contrib-suivi-notion").addEventListener("change", (e) => { contrib.suivi.notion = e.currentTarget.value; rafraichirContributions(); });
+  $("#contrib-suivi-alerte-voir").addEventListener("click", () => {
+    Object.assign(contrib.suivi, { statut: "a_reviser", notion: "" });
+    rafraichirContributions();
+    $("#contrib-miennes").scrollIntoView({ block: "start", behavior: "instant" });
+  });
   $("#contrib-filtre-matiere").addEventListener("change", (e) => { contrib.filtre.matiere = e.currentTarget.value; contrib.filtre.notion = ""; rafraichirContributions(); });
   brancherEdition();
   if (demoContribActive()) void indexContenus().then(rafraichirContributions);

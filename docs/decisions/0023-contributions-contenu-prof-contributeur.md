@@ -113,7 +113,20 @@ Codes d'erreur : `role-requis` (403), `contribution-invalide` (400, détails par
   Chaque texte porte le nombre de propositions en cours (les siennes pour un contributeur, toutes pour un prof) et se
   modifie ou se complète sur place, avec l'aperçu avant / après, le type, le motif et la charte. La page elle-même n'est
   pas modifiée : elle reste isolée (iframe sans même origine, CSP sans réseau) et déterministe ; la proposition suit le
-  cycle du §3. Le panneau est ouvert par défaut (préférence de l'onglet) ; sur mobile il passe sous la page.
+  cycle du §3. Sur mobile, le panneau passe sous la page.
+- **Volet à la demande** (2026-11-17) : le panneau est **fermé par défaut** pour laisser toute la place à la page. Le
+  bouton « Proposer une modification » l'ouvre et le ferme (`aria-expanded`), avec une pastille indiquant le nombre de
+  propositions en cours sur la notion ; le volet se ferme aussi par sa croix ou par Échap (la bulle reste ouverte). Le
+  choix est retenu dans l'onglet. En tête du volet, « Suivi sur cette notion » liste les propositions déjà faites
+  (les siennes ; toutes pour un prof) avec leur statut ; un clic mène au texte concerné. Les extraits sont affichés sans
+  marques Markdown.
+- **Suivi des contributions** (2026-11-17) : « Suivi de mes contributions » remplace la simple liste « Mes
+  contributions » : synthèse (en cours sur le quota de 20, à corriger, acceptées, publiées, taux d'acceptation), alerte
+  quand une proposition attend une correction, pastilles par statut et filtre par notion, ordre « à corriger d'abord puis
+  plus récentes », et pour chaque proposition une **frise** Envoyée → Relue → Validée → Publiée (révision demandée,
+  refusée ou retirée signalées à l'étape concernée, avec les dates connues). « Voir dans la notion » ouvre la notion,
+  volet ouvert sur le texte visé (aussi depuis le tableau de bord du prof). Aucune donnée nouvelle : tout est calculé à
+  partir des champs existants (`statut`, `created_at`, `decided_at`, `updated_at`) par `web/contributions.js`.
 - **Menu « Contributions »** dans la navigation (barre latérale et barre du bas), affiché **seulement** pour un rôle
   contributeur, prof ou admin : c'est une sixième destination conditionnelle, qui ne change pas les cinq destinations de
   l'ADR 0021 pour les autres profils. Il centralise les contributions de l'utilisateur et, pour un prof, le tableau de bord

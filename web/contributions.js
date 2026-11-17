@@ -317,3 +317,59 @@ export function grouperParMatiere(contributions = [], matiereDe = () => "autres"
       .sort((a, b) => b.resume.proposee - a.resume.proposee || a.id.localeCompare(b.id))
   })).sort((a, b) => b.resume.proposee - a.resume.proposee || a.matiere.localeCompare(b.matiere));
 }
+
+/* ---------- Suivi des contributions (auteur) ---------- */
+
+/** Étapes du suivi d'une proposition, dans l'ordre : envoyée → relue → validée → intégrée (publiée par une PR). */
+export const ETAPES_SUIVI = ["envoyee", "relue", "validee", "integree"];
+
+/**
+ * Frise de suivi d'une contribution : état de chaque étape et date connue.
+ * États : `fait`, `courant` (en attente), `action` (l'auteur doit corriger), `arrete` (refusée ou retirée), `a_venir`.
+ * @returns {{ etape: string, etat: string, date: string | null, statut?: string }[]}
+ */
+export function etapesSuivi(c = {}) {
+  const decision = c.decided_at ?? null;
+  const etats = {
+    proposee: [["fait", c.created_at], ["courant", null], ["a_venir"], ["a_venir"]],
+    a_reviser: [["fait", c.created_at], ["action", decision], ["a_venir"], ["a_venir"]],
+    validee: [["fait", c.created_at], ["fait", decision], ["fait", decision], ["courant", null]],
+    integree: [["fait", c.created_at], ["fait", decision], ["fait", decision], ["fait", c.updated_at]],
+    refusee: [["fait", c.created_at], ["fait", decision], ["arrete", decision], ["a_venir"]],
+    retiree: [["fait", c.created_at], ["arrete", c.updated_at], ["a_venir"], ["a_venir"]]
+  }[c.statut] ?? [["fait", c.created_at], ["a_venir"], ["a_venir"], ["a_venir"]];
+  return ETAPES_SUIVI.map((etape, i) => {
+    const [etat, date = null] = etats[i];
+    return etat === "arrete" || etat === "action" ? { etape, etat, date: date ?? null, statut: c.statut } : { etape, etat, date: date ?? null };
+  });
+}
+
+/**
+ * Synthèse du suivi pour un auteur : compteurs par statut, propositions en cours (quota), à corriger, acceptées.
+ * `taux` : part des propositions décidées qui ont été acceptées (null tant qu'aucune n'est décidée).
+ */
+export function suiviAuteur(miennes = []) {
+  const resume = resumer(miennes);
+  const ouvertes = resume.proposee + resume.a_reviser;
+  const acceptees = resume.validee + resume.integree;
+  const decidees = acceptees + resume.refusee;
+  return {
+    resume, ouvertes, aCorriger: resume.a_reviser, acceptees,
+    restantes: Math.max(0, MAX_OUVERTES_PAR_AUTEUR - ouvertes),
+    taux: decidees ? Math.round((acceptees / decidees) * 100) : null
+  };
+}
+
+/** Ordre du suivi : d'abord ce qui attend l'auteur (à réviser), puis les plus récemment mises à jour. */
+export function trierSuivi(contributions = []) {
+  const priorite = (c) => (c.statut === "a_reviser" ? 0 : 1);
+  return [...contributions].sort((a, b) => priorite(a) - priorite(b)
+    || String(b.updated_at ?? b.created_at ?? "").localeCompare(String(a.updated_at ?? a.created_at ?? "")));
+}
+
+/** Extrait lisible d'un texte de notion (marques `**gras**`, `*italique*` et `` `code` `` retirées), borné à `max` caractères. */
+export function extrait(texte, max = 160) {
+  const brut = String(texte ?? "").replace(/\*\*(.+?)\*\*/g, "$1").replace(/(^|[^*])\*([^*\s][^*]*?)\*/g, "$1$2").replace(/`([^`]+)`/g, "$1")
+    .replace(/\s+/g, " ").trim();
+  return brut.length > max ? `${brut.slice(0, max - 1).trimEnd()}…` : brut;
+}
