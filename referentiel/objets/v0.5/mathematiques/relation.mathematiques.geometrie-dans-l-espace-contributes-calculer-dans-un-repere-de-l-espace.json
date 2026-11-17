@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.geometrie-dans-l-espace-contributes-calculer-dans-un-repere-de-l-espace",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/geometrie-dans-l-espace/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-dans-un-repere-de-l-espace",
+  "target": "skill.mathematiques.geometrie-dans-l-espace"
+}

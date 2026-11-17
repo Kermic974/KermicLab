@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-conditionnelles-contributes-appliquer-la-formule-des-probabilites-totales",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites-conditionnelles/fiche.md"
+  },
+  "source": "microskill.mathematiques.appliquer-la-formule-des-probabilites-totales",
+  "target": "skill.mathematiques.probabilites-conditionnelles"
+}

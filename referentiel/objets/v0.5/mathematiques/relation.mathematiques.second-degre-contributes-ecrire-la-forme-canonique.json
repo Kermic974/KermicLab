@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.second-degre-contributes-ecrire-la-forme-canonique",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/second-degre/fiche.md"
+  },
+  "source": "microskill.mathematiques.ecrire-la-forme-canonique",
+  "target": "skill.mathematiques.second-degre"
+}

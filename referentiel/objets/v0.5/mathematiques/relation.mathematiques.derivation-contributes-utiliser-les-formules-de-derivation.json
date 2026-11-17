@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.derivation-contributes-utiliser-les-formules-de-derivation",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/derivation/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-les-formules-de-derivation",
+  "target": "skill.mathematiques.derivation"
+}

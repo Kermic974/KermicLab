@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vecteurs-teaches-tester-la-colinearite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vecteurs/fiche.md"
+  },
+  "source": "notion.mathematiques.vecteurs",
+  "target": "microskill.mathematiques.tester-la-colinearite"
+}

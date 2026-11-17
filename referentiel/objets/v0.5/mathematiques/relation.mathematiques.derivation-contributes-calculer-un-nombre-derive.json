@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.derivation-contributes-calculer-un-nombre-derive",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/derivation/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-un-nombre-derive",
+  "target": "skill.mathematiques.derivation"
+}

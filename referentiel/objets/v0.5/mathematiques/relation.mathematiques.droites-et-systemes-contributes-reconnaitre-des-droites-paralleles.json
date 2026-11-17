@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.droites-et-systemes-contributes-reconnaitre-des-droites-paralleles",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/droites-et-systemes/fiche.md"
+  },
+  "source": "microskill.mathematiques.reconnaitre-des-droites-paralleles",
+  "target": "skill.mathematiques.droites-et-systemes"
+}

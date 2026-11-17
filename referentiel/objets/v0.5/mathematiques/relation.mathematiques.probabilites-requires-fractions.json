@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-requires-fractions",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites/fiche.md"
+  },
+  "source": "notion.mathematiques.probabilites",
+  "target": "notion.mathematiques.fractions"
+}

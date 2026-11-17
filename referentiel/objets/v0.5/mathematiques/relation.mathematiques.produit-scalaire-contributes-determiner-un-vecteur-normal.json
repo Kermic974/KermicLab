@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-contributes-determiner-un-vecteur-normal",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/produit-scalaire/fiche.md"
+  },
+  "source": "microskill.mathematiques.determiner-un-vecteur-normal",
+  "target": "skill.mathematiques.produit-scalaire"
+}

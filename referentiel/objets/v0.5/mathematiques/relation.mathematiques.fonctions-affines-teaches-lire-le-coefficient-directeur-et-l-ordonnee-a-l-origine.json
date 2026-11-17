@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fonctions-affines-teaches-lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-affines/fiche.md"
+  },
+  "source": "notion.mathematiques.fonctions-affines",
+  "target": "microskill.mathematiques.lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine"
+}

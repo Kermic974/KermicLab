@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fonctions-affines-teaches-etudier-le-sens-de-variation-et-le-signe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-affines/fiche.md"
+  },
+  "source": "notion.mathematiques.fonctions-affines",
+  "target": "microskill.mathematiques.etudier-le-sens-de-variation-et-le-signe"
+}

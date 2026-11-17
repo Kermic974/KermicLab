@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.transformations-requires-angles",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/transformations/fiche.md"
+  },
+  "source": "notion.mathematiques.transformations",
+  "target": "notion.mathematiques.angles"
+}

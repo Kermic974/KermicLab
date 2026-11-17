@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-conditionnelles-contributes-tester-l-independance-de-deux-evenements",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites-conditionnelles/fiche.md"
+  },
+  "source": "microskill.mathematiques.tester-l-independance-de-deux-evenements",
+  "target": "skill.mathematiques.probabilites-conditionnelles"
+}

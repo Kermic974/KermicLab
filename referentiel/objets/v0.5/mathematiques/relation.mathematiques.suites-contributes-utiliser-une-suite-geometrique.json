@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.suites-contributes-utiliser-une-suite-geometrique",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/suites/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-une-suite-geometrique",
+  "target": "skill.mathematiques.suites"
+}

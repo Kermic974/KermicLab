@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.angles-contributes-reconnaitre-les-angles-formes-par-des-paralleles",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/angles/fiche.md"
+  },
+  "source": "microskill.mathematiques.reconnaitre-les-angles-formes-par-des-paralleles",
+  "target": "skill.mathematiques.angles"
+}

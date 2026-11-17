@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.derivation-contributes-determiner-un-extremum",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/derivation/fiche.md"
+  },
+  "source": "microskill.mathematiques.determiner-un-extremum",
+  "target": "skill.mathematiques.derivation"
+}

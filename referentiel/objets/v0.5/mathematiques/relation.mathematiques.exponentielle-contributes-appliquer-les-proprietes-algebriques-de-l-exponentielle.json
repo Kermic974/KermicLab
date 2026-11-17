@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.exponentielle-contributes-appliquer-les-proprietes-algebriques-de-l-exponentielle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/exponentielle/fiche.md"
+  },
+  "source": "microskill.mathematiques.appliquer-les-proprietes-algebriques-de-l-exponentielle",
+  "target": "skill.mathematiques.exponentielle"
+}

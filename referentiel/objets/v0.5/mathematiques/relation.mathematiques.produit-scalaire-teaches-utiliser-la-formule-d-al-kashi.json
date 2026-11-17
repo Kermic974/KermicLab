@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-teaches-utiliser-la-formule-d-al-kashi",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/produit-scalaire/fiche.md"
+  },
+  "source": "notion.mathematiques.produit-scalaire",
+  "target": "microskill.mathematiques.utiliser-la-formule-d-al-kashi"
+}

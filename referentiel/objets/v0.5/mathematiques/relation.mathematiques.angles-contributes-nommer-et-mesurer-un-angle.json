@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.angles-contributes-nommer-et-mesurer-un-angle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/angles/fiche.md"
+  },
+  "source": "microskill.mathematiques.nommer-et-mesurer-un-angle",
+  "target": "skill.mathematiques.angles"
+}

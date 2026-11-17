@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.proportionnalite-contributes-calculer-une-quatrieme-proportionnelle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/proportionnalite/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-quatrieme-proportionnelle",
+  "target": "skill.mathematiques.proportionnalite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-litteral-requires-priorites-operatoires",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/calcul-litteral/fiche.md"
+  },
+  "source": "notion.mathematiques.calcul-litteral",
+  "target": "notion.mathematiques.priorites-operatoires"
+}

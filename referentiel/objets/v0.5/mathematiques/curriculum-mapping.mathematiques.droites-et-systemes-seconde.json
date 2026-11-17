@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.droites-et-systemes-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/droites-et-systemes/fiche.md"
+  },
+  "object": "notion.mathematiques.droites-et-systemes",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

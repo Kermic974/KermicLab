@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.volumes-contributes-convertir-volumes-et-contenances",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/volumes/fiche.md"
+  },
+  "source": "microskill.mathematiques.convertir-volumes-et-contenances",
+  "target": "skill.mathematiques.volumes"
+}

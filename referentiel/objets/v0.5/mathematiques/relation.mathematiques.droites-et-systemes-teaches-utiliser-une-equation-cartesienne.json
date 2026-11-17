@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.droites-et-systemes-teaches-utiliser-une-equation-cartesienne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/droites-et-systemes/fiche.md"
+  },
+  "source": "notion.mathematiques.droites-et-systemes",
+  "target": "microskill.mathematiques.utiliser-une-equation-cartesienne"
+}

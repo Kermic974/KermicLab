@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.limites-et-continuite-contributes-calculer-une-limite-en-l-infini",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/limites-et-continuite/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-limite-en-l-infini",
+  "target": "skill.mathematiques.limites-et-continuite"
+}

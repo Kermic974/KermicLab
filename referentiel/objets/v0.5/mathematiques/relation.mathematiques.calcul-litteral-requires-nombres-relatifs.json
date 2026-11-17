@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-litteral-requires-nombres-relatifs",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/calcul-litteral/fiche.md"
+  },
+  "source": "notion.mathematiques.calcul-litteral",
+  "target": "notion.mathematiques.nombres-relatifs"
+}

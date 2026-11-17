@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.loi-binomiale-contributes-interpreter-un-echantillonnage",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/loi-binomiale/fiche.md"
+  },
+  "source": "microskill.mathematiques.interpreter-un-echantillonnage",
+  "target": "skill.mathematiques.loi-binomiale"
+}

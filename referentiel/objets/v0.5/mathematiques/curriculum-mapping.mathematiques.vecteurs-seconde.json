@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.vecteurs-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vecteurs/fiche.md"
+  },
+  "object": "notion.mathematiques.vecteurs",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

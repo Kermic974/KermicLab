@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.perimetres-aires-contributes-calculer-le-perimetre-d-un-polygone",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/perimetres-aires/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-le-perimetre-d-un-polygone",
+  "target": "skill.mathematiques.perimetres-aires"
+}

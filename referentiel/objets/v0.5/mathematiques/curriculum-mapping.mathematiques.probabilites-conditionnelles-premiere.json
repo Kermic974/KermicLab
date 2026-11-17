@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.probabilites-conditionnelles-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites-conditionnelles/fiche.md"
+  },
+  "object": "notion.mathematiques.probabilites-conditionnelles",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fonctions-de-reference-contributes-etudier-la-fonction-carre",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-de-reference/fiche.md"
+  },
+  "source": "microskill.mathematiques.etudier-la-fonction-carre",
+  "target": "skill.mathematiques.fonctions-de-reference"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.pythagore-contributes-calculer-un-cote-de-l-angle-droit",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/pythagore/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-un-cote-de-l-angle-droit",
+  "target": "skill.mathematiques.pythagore"
+}

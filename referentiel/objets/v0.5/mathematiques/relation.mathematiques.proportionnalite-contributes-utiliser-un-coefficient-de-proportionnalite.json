@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.proportionnalite-contributes-utiliser-un-coefficient-de-proportionnalite",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/proportionnalite/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-un-coefficient-de-proportionnalite",
+  "target": "skill.mathematiques.proportionnalite"
+}

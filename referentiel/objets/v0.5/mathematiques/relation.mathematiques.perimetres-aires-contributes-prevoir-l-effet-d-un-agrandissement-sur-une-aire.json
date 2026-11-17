@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.perimetres-aires-contributes-prevoir-l-effet-d-un-agrandissement-sur-une-aire",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/perimetres-aires/fiche.md"
+  },
+  "source": "microskill.mathematiques.prevoir-l-effet-d-un-agrandissement-sur-une-aire",
+  "target": "skill.mathematiques.perimetres-aires"
+}

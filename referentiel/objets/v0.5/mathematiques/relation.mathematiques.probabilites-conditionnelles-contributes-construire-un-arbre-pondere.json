@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-conditionnelles-contributes-construire-un-arbre-pondere",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites-conditionnelles/fiche.md"
+  },
+  "source": "microskill.mathematiques.construire-un-arbre-pondere",
+  "target": "skill.mathematiques.probabilites-conditionnelles"
+}

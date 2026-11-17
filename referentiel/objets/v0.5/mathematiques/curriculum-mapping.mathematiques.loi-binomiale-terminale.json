@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.loi-binomiale-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/loi-binomiale/fiche.md"
+  },
+  "object": "notion.mathematiques.loi-binomiale",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

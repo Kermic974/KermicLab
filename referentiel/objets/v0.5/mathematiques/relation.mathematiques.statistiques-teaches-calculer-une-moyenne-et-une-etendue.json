@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.statistiques-teaches-calculer-une-moyenne-et-une-etendue",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/statistiques/fiche.md"
+  },
+  "source": "notion.mathematiques.statistiques",
+  "target": "microskill.mathematiques.calculer-une-moyenne-et-une-etendue"
+}

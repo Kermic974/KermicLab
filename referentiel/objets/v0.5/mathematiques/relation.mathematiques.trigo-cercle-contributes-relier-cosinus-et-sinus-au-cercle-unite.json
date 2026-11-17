@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.trigo-cercle-contributes-relier-cosinus-et-sinus-au-cercle-unite",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/trigo-cercle/fiche.md"
+  },
+  "source": "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite",
+  "target": "skill.mathematiques.trigo-cercle"
+}
