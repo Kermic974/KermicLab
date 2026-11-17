@@ -93,7 +93,7 @@ et futurs) et suit l'engagement et la performance de ses enfants. Le moteur est 
   chaque activité, et enfants à suivre (retards, score moyen sous 50 %) ajoutés aux points d'attention.
 - Côté enfant, les activités de la famille rejoignent le bloc « Travail donné » de l'accueil (avec celles des
   professeurs) : même quiz, même correction sur place.
-- **Données** : migration `0006_famille_activites.sql` (`familles_activites`, `familles_resultats`, colonne `groupe` de
+- **Données** : migration `0007_famille_activites.sql` (`familles_activites`, `familles_resultats`, colonne `groupe` de
   `familles_cahiers`), décrites dans le registre. Détacher un enfant efface ses résultats et les activités qui lui étaient
   données ; supprimer un compte parent efface ses activités.
 

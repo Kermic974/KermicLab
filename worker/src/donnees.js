@@ -27,6 +27,7 @@ export const REGISTRE = Object.freeze([
   { table: "sessions", finalite: "Session de connexion", contenu: "Identifiant aléatoire, expiration", donnees: "pseudonyme", conservation: "30 jours" },
   { table: "oauth_states", finalite: "Sécurité de la connexion", contenu: "États temporaires", donnees: "aucune", conservation: "Quelques minutes" },
   { table: "contributions", finalite: "Contributions au contenu", contenu: "Textes pédagogiques proposés, sans donnée personnelle (filtrés)", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
+  { table: "contributions_locales", finalite: "Contributions au contenu des comptes locaux", contenu: "Textes pédagogiques proposés, sans donnée personnelle (filtrés)", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
   { table: "comptes_locaux", finalite: "Compte facultatif sur l'appareil", contenu: "Empreinte HMAC de l'identifiant, mot de passe haché", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
   { table: "sessions_locales", finalite: "Session de synchronisation", contenu: "Empreinte du jeton", donnees: "pseudonyme", conservation: "12 heures" },
   { table: "donnees_pseudonymes", finalite: "Synchronisation chiffrée", contenu: "Données chiffrées dans le navigateur, illisibles par le serveur", donnees: "pseudonyme", conservation: "365 jours sans lecture ni écriture" },
@@ -54,7 +55,7 @@ export const REGISTRE = Object.freeze([
 ].map((t) => Object.freeze(t)));
 
 /** Tables dont le texte est destiné à publication : contrôlées elles aussi, sans limite de longueur. */
-const TABLES_EDITORIALES = ["contributions", "contenus_brouillons"];
+const TABLES_EDITORIALES = ["contributions", "contributions_locales", "contenus_brouillons"];
 const MAX_LIGNES = 2000;
 const IDENTIFIANT_TECHNIQUE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$|^[0-9a-f]{16,64}$/;
 

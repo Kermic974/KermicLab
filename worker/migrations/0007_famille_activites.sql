@@ -1,4 +1,4 @@
--- Migration 0006 : activités des parents et résultats des enfants, cahiers assignés à toute la famille (ADR 0029 §8).
+-- Migration 0007 : activités des parents et résultats des enfants, cahiers assignés à toute la famille (ADR 0029 §8).
 -- Ajouts seulement. Schéma de référence : worker/schema-famille.sql.
 
 -- Activités données par un parent (ADR 0029 §8) : défi, évaluation (5 à 40 questions) ou objectif, pour un enfant

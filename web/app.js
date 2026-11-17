@@ -908,6 +908,11 @@ function rafraichirFamilleCompte() {
   const lie = !!jetonFamille();
   $("#entree-espace-famille").hidden = !m?.parent;
   $("#famille-ouvrir-espace").hidden = !m?.parent;
+  // Lien rapide de la navigation : l'Espace famille pour un parent, le bloc Famille de « Mon compte » sinon.
+  const navFamille = $("#nav-famille");
+  navFamille.hidden = !lie || !m;
+  navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
+  marquerNavigation(sectionDe(etat.ecran));
   $("#famille-compte-solo").hidden = !m || !!m.parent || !!m.enfant;
   $("#famille-compte-statut").textContent = !lie ? t("fcNonLie")
     : !m ? t("fcIndisponible")
@@ -1441,6 +1446,11 @@ async function assignerCahierFamille({ type, ids, longueur, univers, objectif })
 
 function brancherFamilleLocale() {
   ECRANS.push("espace-famille");
+  // « Ma famille » sans rôle parent : « Mon compte », bloc Famille (situation, invitation d'un parent).
+  $("#nav-famille").addEventListener("click", (e) => {
+    if (e.currentTarget.dataset.nav !== "compte") return;
+    requestAnimationFrame(() => $("#famille-compte").scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" }));
+  });
   $("#famille-inviter").addEventListener("click", inviterParent);
   $("#famille-annuler-invitation").addEventListener("click", annulerInvitation);
   $("#liste-cahiers-famille").addEventListener("click", (e) => {
@@ -1519,7 +1529,7 @@ async function chargerProf() {
     profEtat.moi = null;
     profEtat.mesProfs = [];
   }
-  rafraichirProfNav();
+  actualiserContributionsLocales();
   rendreMesProfs();
   await chargerMesActivites();
   if (profEtat.mesProfs.length) planifierBilanFamille({ immediat: true });
@@ -1530,9 +1540,24 @@ async function chargerProf() {
 function oublierProf() {
   Object.assign(profEtat, { moi: null, classes: null, eleves: null, activites: null, mesProfs: [], lien: null });
   activitesEtat.mesActivites = [];
-  rafraichirProfNav();
+  actualiserContributionsLocales();
   rendreMesProfs();
   rendreActivitesEleve();
+}
+
+/**
+ * Le rôle du compte local vient d'être lu (ou oublié) : menus Contributions et Professeur à jour, contributions
+ * rechargées pour ce compte, et ouverture de l'écran demandé par l'adresse (#contributions) s'il devient accessible.
+ */
+function actualiserContributionsLocales() {
+  const cle = roleContribLocal() ? `${profEtat.moi.id}:${roleContribLocal()}` : null;
+  if (cle !== contrib.compteLocal) {
+    contrib.compteLocal = cle;
+    Object.assign(contrib, { chargee: false, miennes: [], relecture: [] });
+  }
+  rafraichirContributions();
+  if (location.hash === "#contributions" && etat.ecran !== "contributions" && contributionsActives()) afficherEcran("contributions", { focus: false });
+  else if (etat.ecran === "contributions" && contributionsActives() && !contrib.chargee) void chargerContributions();
 }
 
 function rafraichirProfNav() {
@@ -2671,7 +2696,16 @@ const contrib = {
   suivi: { statut: "tous", notion: "" }
 };
 const demoContribActive = () => contrib.demo === true;
-const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true;
+/**
+ * Compte local connecté dont le rôle (attribué dans le back-office) permet de contribuer (ADR 0023 §6 ter) :
+ * `contributeur`, `prof` ou `admin`, donné par `GET /api/professeur/moi`. Null sinon (démonstration comprise).
+ */
+const roleContribLocal = () => {
+  if (demoContribActive() || !jetonFamille()) return null;
+  const role = profEtat.moi?.contribution;
+  return contributions.peutContribuer(role) && typeof profEtat.moi?.id === "string" ? role : null;
+};
+const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true || roleContribLocal() !== null;
 
 function sauverDemoContrib(suivant) {
   contrib.etatDemo = suivant;
@@ -2708,15 +2742,24 @@ async function reponseContrib(r) {
   throw new ErreurContrib(j.erreur ?? `http-${r.status}`, j.details ?? {});
 }
 
+/** Requête vers `/api/contributions` : jeton du compte local (en-tête), sinon cookie de la session OAuth. */
+function initContrib({ method = "GET", body } = {}) {
+  const headers = body === undefined ? {} : { "content-type": "application/json" };
+  if (roleContribLocal()) return { method, body, headers: { ...headers, authorization: `Bearer ${jetonFamille()}` } };
+  return { method, body, headers, credentials: "include" };
+}
+
 /** Accès aux contributions : le Worker, ou le double de démonstration (mêmes formes de réponse). */
 const apiContrib = {
   compte() {
     if (demoContribActive()) return demoContrib.moi(contrib.etatDemo).compte ?? null;
+    const local = roleContribLocal();
+    if (local) return { id: profEtat.moi.id, role: local, local: true };
     return etat.compte;
   },
   async lister(vue) {
     if (demoContribActive()) return demoContrib.lister(contrib.etatDemo, vue);
-    return reponseContrib(await fetch(urlApi(`/api/contributions?vue=${vue}`), { credentials: "include" }));
+    return reponseContrib(await fetch(urlApi(`/api/contributions?vue=${vue}`), initContrib()));
   },
   async creer(donnees) {
     if (demoContribActive()) {
@@ -2725,9 +2768,7 @@ const apiContrib = {
       sauverDemoContrib(r.etat);
       return r.id;
     }
-    return (await reponseContrib(await fetch(urlApi("/api/contributions"), {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" }, body: JSON.stringify(donnees)
-    }))).id;
+    return (await reponseContrib(await fetch(urlApi("/api/contributions"), initContrib({ method: "POST", body: JSON.stringify(donnees) })))).id;
   },
   async agir(id, corps) {
     if (demoContribActive()) {
@@ -2737,9 +2778,7 @@ const apiContrib = {
       sauverDemoContrib(r.etat);
       return r.contribution;
     }
-    return reponseContrib(await fetch(urlApi(`/api/contributions/${encodeURIComponent(id)}`), {
-      method: "PATCH", credentials: "include", headers: { "content-type": "application/json" }, body: JSON.stringify(corps)
-    }));
+    return reponseContrib(await fetch(urlApi(`/api/contributions/${encodeURIComponent(id)}`), initContrib({ method: "PATCH", body: JSON.stringify(corps) })));
   }
 };
 
@@ -2806,6 +2845,8 @@ function rafraichirContributions() {
   $("#contrib-demo-roles").hidden = !demoContribActive();
   $("#essayer-demo-contrib").hidden = demoContribActive();
   $("#contrib-espace").hidden = !autorise;
+  // Compte local : la connexion se gère dans « Mon compte », pas depuis cet écran.
+  $("#contrib-deconnexion").hidden = compte?.local === true;
   if (!autorise) return;
   $("#contrib-role-nom").textContent = t(`contribRole_${role}`) + (compte.demo ? ` · ${t("demoPastille")}` : "");
   $("#contrib-role-aide").textContent = ` — ${t(contributions.peutRelire(role) ? "contribRoleAideProf" : "contribRoleAideContributeur")}`;
@@ -3462,7 +3503,8 @@ function choisirRoleTest(role) {
 
 function brancherContributions() {
   initialiserDemoContrib();
-  if (!contributionsActives()) return;
+  // Écran toujours déclaré : un compte local peut obtenir son rôle après le démarrage (chargerProf). Tant que les
+  // contributions ne sont pas actives, l'écran renvoie vers l'accueil (afficherEcran).
   ECRANS.push("contributions");
   $("#essayer-demo-contrib").addEventListener("click", demarrerDemoContrib);
   $("#contrib-demo-contributeur").addEventListener("click", () => connecterDemoContrib("contributeur"));
@@ -5007,7 +5049,7 @@ function rafraichirEntete() {
 
 function afficherEcran(cle, { focus = true } = {}) {
   const demande = ALIAS_ECRANS[cle] ?? cle;
-  const ecran = ECRANS.includes(demande) ? demande : "accueil";
+  const ecran = ECRANS.includes(demande) && (demande !== "contributions" || contributionsActives()) ? demande : "accueil";
   const changement = ecran !== etat.ecran;
   etat.ecran = ecran;
   if (changement && $("#bulle-lab").open) $("#bulle-lab").close();
@@ -5049,8 +5091,12 @@ function naviguer(cle) {
 
 /** Une seule destination est marquée « page courante » ; un sous-écran marque sa destination. */
 function marquerNavigation(cle) {
+  // « Ma famille » mène à l'Espace famille (sous-écran du Profil) : il est la page courante quand cet écran est affiché.
+  const famille = $("#nav-famille");
+  const surFamille = !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
   document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]").forEach((b) => {
-    if ((b.dataset.nav ?? b.dataset.action) === cle) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+    const courant = b === famille ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cle;
+    if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
 }
 

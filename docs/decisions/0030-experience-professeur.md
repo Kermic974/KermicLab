@@ -1,6 +1,6 @@
 # ADR 0030 — Expérience Professeur : profil, « Mes classes », « Mes élèves »
 
-- Date : 2026-11-17 — Statut : **proposé** (à valider par le propriétaire)
+- Date : 2026-11-17 — Statut : **accepté** (validé par le propriétaire le 2026-11-17)
 - Contexte : l'ADR 0023 a créé les profils Contributeur et Prof pour les contributions au contenu ; le rôle système
   `prof` (« Professeur », ADR 0026) relit et décide déjà des contributions. Le propriétaire demande que le Professeur
   dispose d'une **expérience** complète, qui complète celle du Contributeur : un profil configurant ses matières et ses
@@ -166,4 +166,5 @@ par classe) ; filtre du tableau de bord des contributions sur les matières du p
 
 - 2026-11-17 : accord parental non requis (§8), décision du propriétaire.
 - 2026-11-17 : activités (défis, évaluations de 5 à 40 questions, cahiers, objectifs) et tableau de bord (§9).
-- Reste à valider par le propriétaire avant toute ouverture au-delà de la bêta.
+- 2026-11-17 : ADR accepté par le propriétaire. La relecture juridique du texte d'accord de l'élève et de la page de
+  confidentialité reste à faire avant toute ouverture au-delà de la bêta ([issue #357](https://github.com/Kermic974/KermicLab/issues/357)).

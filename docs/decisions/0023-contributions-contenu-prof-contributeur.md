@@ -134,6 +134,24 @@ Codes d'erreur : `role-requis` (403), `contribution-invalide` (400, détails par
   par matière ; un clic sur une matière ou une notion filtre la liste. Depuis la bulle, « Voir toutes les contributions »
   ouvre ce tableau filtré sur la notion.
 
+### 6 ter. Comptes locaux (2026-11-17)
+
+Les comptes OAuth ne sont pas encore ouverts ; les rôles sont attribués aux **comptes locaux** dans le back-office
+(ADR 0026, table `attributions_roles`). À la demande du propriétaire, le module Contributions leur est ouvert :
+
+- **Rôle de contribution** déduit des permissions effectives du rôle : `contributions.relire` → prof (relecture à
+  quatre yeux), `contributions.proposer` → contributeur ; le rôle `admin` garde le droit de décider sur ses propres
+  propositions. `GET /api/professeur/moi` renvoie ce rôle (`contribution`) et l'identifiant du compte (`id`) pour que
+  l'interface reconnaisse ses propres propositions.
+- **API** : mêmes routes `/api/contributions`, avec la session porteuse du compte local (`Authorization: Bearer`) ;
+  sans cet en-tête, la session OAuth (cookie) s'applique comme avant. Mêmes règles, mêmes codes d'erreur.
+- **Données** : table `contributions_locales` (migration additive `0006_contributions_comptes_locaux.sql`), mêmes
+  colonnes que `contributions`, sans clé étrangère vers `comptes`. La suppression du compte local efface ses
+  propositions et retire son identifiant des décisions qu'il a prises (comme §4).
+- **Interface** : le menu « Contributions » (barre latérale et barre du bas), l'édition ciblée dans les notions et le
+  suivi apparaissent dès que le rôle est lu ; la connexion se gère dans « Mon compte » (pas de bouton « Se
+  déconnecter » dans l'écran). Les écrans « Mes classes » et « Mes élèves » retrouvent leur lien vers Contributions.
+
 ### 7. Exception temporaire : « Tester les rôles » (à supprimer, issue #160)
 
 À la demande du propriétaire (2026-11-07), pour tester les écrans avant l'ouverture des comptes : le Profil affiche un
