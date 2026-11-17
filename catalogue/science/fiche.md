@@ -15,6 +15,9 @@ questions:
   - c'est quoi la science en philosophie ?
   - Que signifie la falsifiabilité ?
   - Qu'est-ce qu'un paradigme scientifique ?
+prerequis:
+niveaux: terminale
+competences: philosophie-science-action-1, philosophie-science-action-2
 ---
 
 # La science

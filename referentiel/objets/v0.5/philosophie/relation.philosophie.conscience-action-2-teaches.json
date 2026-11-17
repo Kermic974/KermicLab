@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.conscience-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "notion.philosophie.conscience",
+  "target": "microskill.philosophie.conscience-action-2"
+}
