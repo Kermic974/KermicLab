@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-mymxNLZ9TTaPZq8eHYq8reP57+RDOSQhIDWbXx1yTls='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-OvT0t7nYRbB3+SglNo/shON4P2ys7EzFJ4zTghuBieU='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Lab interactif du système solaire : le Soleil, les huit planètes dans l’ordre, le jour, la nuit et l’année, avec un modèle à manipuler et cinq questions.">
 <title>Le système solaire – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
@@ -11,10 +11,10 @@
   "id": "systeme-solaire",
   "titre": "Le système solaire",
   "sujet": "sciences/systeme-solaire",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-17",
   "langue": "fr",
-  "onglets": ["explication", "application", "mise-en-situation", "self-test"]
+  "onglets": ["explication", "application", "mise-en-situation", "fiche", "memo", "self-test"]
 }
 </script>
 <style>
@@ -159,6 +159,38 @@
   .choix button.ratee { color: var(--muted); }
   .pause-mot { position: absolute; top: 64px; right: 16px; z-index: 2; color: var(--muted); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
   #secours { padding: 16px; color: var(--muted); }
+  /* Explications détaillées, fiche et points à retenir */
+  .lecture { max-width: 46rem; }
+  .lecture h3 { font-size: 1.05rem; margin: 1rem 0 0.4rem; }
+  .niveau { color: var(--muted); font-size: 0.8rem; margin-left: 8px; }
+  .retenir, .exemple { border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; margin: 10px 0; background: var(--elev); }
+  .retenir { border-left: 4px solid var(--accent); }
+  .retenir strong, .exemple strong { display: block; margin-bottom: 4px; }
+  .tableau { overflow-x: auto; margin: 10px 0; }
+  table { border-collapse: collapse; min-width: 34rem; font-size: 0.9rem; }
+  th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  dl.lexique dt { font-weight: 650; margin-top: 8px; }
+  dl.lexique dd { margin: 2px 0 0; color: var(--fg); }
+  /* Progression : XP, étoiles et badges, gardés sur l'appareil */
+  .jauge { color: var(--accent); font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+  .progression { border: 1px solid var(--line); border-radius: 18px; padding: 12px 14px; background: var(--elev); margin: 8px 0 16px; }
+  .progression h2 { margin: 0 0 4px; font-size: 1.1rem; }
+  .progression progress { width: 100%; height: 10px; accent-color: var(--accent); }
+  .objectifs { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+  .objectifs li { display: flex; gap: 10px; align-items: flex-start; }
+  .objectifs .etat { flex: none; width: 1.4em; text-align: center; color: var(--faint); }
+  .objectifs li.fait .etat { color: var(--accent); }
+  .objectifs li.fait strong { color: var(--accent); }
+  .lien { background: none; border: 0; padding: 8px 0; color: var(--muted); text-decoration: underline; min-height: 44px; }
+  .toast { position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 10; background: var(--accent); color: var(--accent-fg); border-radius: 12px; padding: 10px 16px; font-weight: 600; max-width: calc(100% - 32px); }
+  .toast[hidden] { display: none; }
+  @media print {
+    body { display: block; height: auto; background: #fff; color: #000; }
+    header.haut, [role="tablist"], .panneau:not(#panneau-fiche), .imprimer, .toast { display: none !important; }
+    #panneau-fiche { display: block !important; overflow: visible; }
+    th, td, .retenir, .exemple { border-color: #999; color: #000; background: #fff; }
+  }
   @media (min-width: 800px) {
     .voile { align-items: center; }
     .carte { max-height: 70vh; }
@@ -169,38 +201,63 @@
 <header class="haut">
   <h1>Le système solaire</h1>
   <p>Lab · CM1 · CM2 · 6e</p>
+  <p class="jauge" id="jauge" aria-live="polite"></p>
 </header>
 <div role="tablist" id="onglets" aria-label="Parties du lab">
   <button type="button" role="tab" id="onglet-explication" aria-controls="panneau-explication" aria-selected="false" tabindex="-1">Explication</button>
   <button type="button" role="tab" id="onglet-application" aria-controls="panneau-application" aria-selected="true" tabindex="0">Ciel</button>
   <button type="button" role="tab" id="onglet-mise-en-situation" aria-controls="panneau-mise-en-situation" aria-selected="false" tabindex="-1">Mission</button>
+  <button type="button" role="tab" id="onglet-fiche" aria-controls="panneau-fiche" aria-selected="false" tabindex="-1">Fiche</button>
+  <button type="button" role="tab" id="onglet-memo" aria-controls="panneau-memo" aria-selected="false" tabindex="-1">À retenir</button>
 </div>
 <main>
   <section class="panneau lecture" id="panneau-explication" role="tabpanel" aria-labelledby="onglet-explication" hidden>
-    <p class="yeux">Cycle 3</p>
-    <h2>Voir, puis nommer</h2>
-    <p>Le Soleil est une étoile. Huit planètes tournent autour de lui, toutes dans le même sens. Le chemin s'appelle une orbite.</p>
-    <ol>
-      <li>Le Soleil produit sa lumière. Les planètes la renvoient.</li>
-      <li>Ordre : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune.</li>
-      <li>Le jour et la nuit : la Terre tourne sur elle-même en environ 24 heures. Ce tour est la rotation.</li>
-      <li>Une année : un tour autour du Soleil, environ 365 jours. Ce tour est la révolution.</li>
-      <li>La Lune n'est pas une planète. C'est le satellite de la Terre.</li>
-      <li>Plus une planète est loin, plus son tour est long.</li>
-    </ol>
-    <p class="note">Aide-mémoire : Mon Vieux, Tu M'as Jeté Sur Une Navette. C'est une béquille, pas une loi. L'été ne veut pas dire « plus près du Soleil » : la Terre est un peu penchée.</p>
-    <p class="note">Le ciel de l'onglet suivant est un modèle. Les tailles et les distances ne sont pas les vraies, et le temps est accéléré.</p>
-    <details open>
-      <summary>CM1 — voir et dire</summary>
-      <p>Le Soleil au centre, les planètes qui tournent. Sur la Terre en pause : une face claire, le jour, une face sombre, la nuit.</p>
+    <p class="yeux">Cycle 3 · explications détaillées</p>
+    <h2>Voir, puis comprendre</h2>
+    <p>Ouvre les parties dans l'ordre que tu veux, de la plus simple à la plus avancée. Chaque partie se termine par l'essentiel « À retenir ». Le ciel de l'onglet suivant est un modèle : les tailles et les distances ne sont pas les vraies, et le temps est accéléré.</p>
+    <details data-partie="soleil">
+      <summary>Le Soleil, une étoile <span class="niveau">CM1</span></summary>
+      <p>Le Soleil est une <strong>étoile</strong> : une énorme boule de gaz très chaud qui produit sa propre lumière et sa propre chaleur. C'est l'étoile la plus proche de nous.</p>
+      <p>Autour de lui tournent huit <strong>planètes</strong>. Une planète ne produit pas de lumière : elle renvoie celle du Soleil, comme un miroir un peu terne. Le chemin qu'elle suit autour du Soleil s'appelle son <strong>orbite</strong>. Toutes les planètes tournent autour du Soleil dans le même sens.</p>
+      <div class="exemple"><strong>Exemple</strong>La nuit, Vénus brille souvent très fort dans le ciel. Pourtant, ce n'est pas une étoile : elle renvoie simplement la lumière du Soleil.</div>
+      <div class="retenir"><strong>À retenir</strong>Le Soleil est une étoile : il produit sa lumière. Les planètes tournent autour de lui sur leur orbite et renvoient sa lumière.</div>
     </details>
-    <details>
-      <summary>CM2 — huit planètes, pas à l'échelle</summary>
-      <p>Quatre planètes rocheuses près du Soleil, quatre géantes plus loin. La Lune à part. Vénus est la plus chaude, pas Mercure.</p>
+    <details data-partie="planetes">
+      <summary>Huit planètes, deux familles <span class="niveau">CM2</span></summary>
+      <p>Dans l'ordre, en partant du Soleil : <strong>Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune</strong>. Aide-mémoire : « Mon Vieux, Tu M'as Jeté Sur Une Navette ».</p>
+      <p>Les quatre premières sont des <strong>planètes rocheuses</strong> : petites, avec un sol solide, proches du Soleil. Les quatre suivantes sont des <strong>planètes géantes</strong> : Jupiter et Saturne sont faites surtout de gaz, Uranus et Neptune sont des géantes de glace. Entre Mars et Jupiter se trouve la <strong>ceinture d'astéroïdes</strong>, faite de très nombreux petits corps rocheux.</p>
+      <p>Les tailles sont très différentes : Jupiter, la plus grosse, est environ 11 fois plus large que la Terre. Pluton n'est plus comptée parmi les planètes depuis 2006 : c'est une <strong>planète naine</strong>.</p>
+      <div class="exemple"><strong>Piège</strong>Vénus est la planète la plus chaude, pas Mercure, la plus proche du Soleil : ses nuages très épais retiennent la chaleur.</div>
+      <div class="retenir"><strong>À retenir</strong>Huit planètes : quatre rocheuses près du Soleil (Mercure, Vénus, Terre, Mars), quatre géantes plus loin (Jupiter, Saturne, Uranus, Neptune).</div>
     </details>
-    <details>
-      <summary>6e — rotation et révolution</summary>
-      <p>Rotation : tour sur soi-même, environ 24 h, jour et nuit. Révolution : tour autour du Soleil, environ 365 jours, une année. La lumière du Soleil met environ 8 minutes pour arriver jusqu'à la Terre.</p>
+    <details data-partie="rotation">
+      <summary>La rotation : le jour et la nuit <span class="niveau">6e</span></summary>
+      <p>La Terre tourne sur elle-même autour d'un axe qui passe par les pôles Nord et Sud. Ce mouvement s'appelle la <strong>rotation</strong>. Un tour dure environ <strong>24 heures</strong> : c'est une journée.</p>
+      <p>À chaque instant, la moitié de la Terre tournée vers le Soleil est éclairée : il y fait <strong>jour</strong>. L'autre moitié est dans l'ombre : il y fait <strong>nuit</strong>. Comme la Terre tourne, chaque lieu passe du côté éclairé au côté sombre, puis revient.</p>
+      <p>La Terre tourne d'ouest en est. Vu depuis la Terre, le Soleil semble donc se lever à l'est et se coucher à l'ouest : c'est la Terre qui bouge, pas le Soleil.</p>
+      <div class="exemple"><strong>Exemple</strong>Quand il est midi en France métropolitaine, il fait déjà nuit en Australie : ce pays est de l'autre côté de la Terre, dans la moitié qui n'est pas éclairée.</div>
+      <div class="retenir"><strong>À retenir</strong>Rotation : la Terre fait un tour sur elle-même en environ 24 heures. La moitié tournée vers le Soleil est dans le jour, l'autre dans la nuit.</div>
+    </details>
+    <details data-partie="revolution">
+      <summary>La révolution : l'année et les saisons <span class="niveau">6e</span></summary>
+      <p>La Terre tourne aussi autour du Soleil. Ce mouvement s'appelle la <strong>révolution</strong>. Un tour complet dure environ <strong>365 jours et un quart</strong> : c'est une année. Le quart de jour en trop est rattrapé tous les quatre ans par un 29 février : c'est l'année bissextile.</p>
+      <p>L'axe de la Terre est penché d'environ 23° et garde toujours la même direction pendant le tour. Pendant une partie de l'année, l'hémisphère Nord est penché vers le Soleil : les rayons y arrivent plus droit et les journées sont plus longues, c'est l'<strong>été</strong>. Six mois plus tard, c'est l'hémisphère Sud qui est penché vers le Soleil.</p>
+      <p>Les saisons ne viennent pas de la distance au Soleil : la Terre en est même un peu plus proche début janvier, en plein hiver pour la France métropolitaine.</p>
+      <div class="exemple"><strong>Exemple</strong>En juillet, c'est l'été en France métropolitaine et l'hiver austral à La Réunion ou en Australie, qui sont dans l'hémisphère Sud.</div>
+      <div class="retenir"><strong>À retenir</strong>Révolution : un tour autour du Soleil en environ 365 jours, une année. Les saisons viennent de l'inclinaison de l'axe de la Terre, pas de sa distance au Soleil.</div>
+    </details>
+    <details data-partie="lune">
+      <summary>La Lune, satellite de la Terre <span class="niveau">6e</span></summary>
+      <p>La Lune n'est pas une planète : c'est le <strong>satellite naturel</strong> de la Terre. Elle tourne autour de la Terre en environ <strong>27 jours</strong>, et la Terre l'emmène avec elle autour du Soleil.</p>
+      <p>Comme les planètes, la Lune ne produit pas de lumière : on voit la partie éclairée par le Soleil. Selon sa position, on en voit une part plus ou moins grande : ce sont les <strong>phases</strong> de la Lune (nouvelle lune, croissant, premier quartier, pleine lune…). Le cycle complet des phases dure environ 29 jours et demi.</p>
+      <div class="retenir"><strong>À retenir</strong>La Lune est le satellite de la Terre. Elle renvoie la lumière du Soleil ; ses phases dépendent de la partie éclairée que l'on voit depuis la Terre.</div>
+    </details>
+    <details data-partie="distances">
+      <summary>Pour aller plus loin : les distances <span class="niveau">6e</span></summary>
+      <p>La Terre est à environ <strong>150 millions de kilomètres</strong> du Soleil. Les astronomes appellent cette distance une <strong>unité astronomique</strong>. La lumière du Soleil met environ 8 minutes pour la parcourir.</p>
+      <p>Neptune est environ 30 fois plus loin : la lumière du Soleil met à peu près 4 heures pour l'atteindre. Plus une planète est loin du Soleil, plus son orbite est longue et plus elle avance lentement : Mercure fait le tour en 88 jours, Neptune en environ 165 ans.</p>
+      <div class="exemple"><strong>Dans le modèle</strong>Accélère le temps dans l'onglet « Ciel » : Mercure enchaîne les tours pendant que Neptune avance à peine.</div>
+      <div class="retenir"><strong>À retenir</strong>Plus une planète est loin du Soleil, plus son année est longue. Les distances réelles sont immenses : le modèle n'est pas à l'échelle.</div>
     </details>
   </section>
   <section class="panneau" id="panneau-application" role="tabpanel" aria-labelledby="onglet-application">
@@ -214,6 +271,7 @@
           <p class="yeux" id="fil" style="text-transform:none;letter-spacing:0">Pas à l'échelle</p>
         </div>
         <div class="ligne">
+          <button type="button" class="bouton" id="texte" aria-controls="carte voile-cours">Masquer le texte</button>
           <button type="button" class="bouton" id="pause" aria-pressed="false">Pause</button>
           <button type="button" class="bouton plein" id="ouvrir-cours">Cours</button>
         </div>
@@ -257,6 +315,15 @@
     </div>
   </section>
   <section class="panneau lecture" id="panneau-mise-en-situation" role="tabpanel" aria-labelledby="onglet-mise-en-situation" hidden>
+    <section class="progression" aria-labelledby="progression-titre">
+      <p class="yeux" id="niveau-nom"></p>
+      <h2 id="progression-titre">Ta progression</h2>
+      <progress id="xp-barre" max="200" value="0" aria-label="Points d'expérience"></progress>
+      <p id="xp-texte"></p>
+      <ul class="objectifs" id="objectifs"></ul>
+      <p class="note">Ta progression reste sur cet appareil. Aucune donnée n'est envoyée.</p>
+      <button type="button" class="lien" id="effacer">Effacer ma progression</button>
+    </section>
     <p class="yeux">Mission observatoire</p>
     <h2>Tu observes, tu ne changes rien</h2>
     <ol>
@@ -269,7 +336,69 @@
     <h2>Cinq questions</h2>
     <div id="quiz"></div>
   </section>
+  <section class="panneau lecture" id="panneau-fiche" role="tabpanel" aria-labelledby="onglet-fiche" hidden>
+    <p class="yeux">Fiche de lecture</p>
+    <h2>Le système solaire en fiche</h2>
+    <p>La fiche d'identité des huit planètes, puis le vocabulaire du lab. Les valeurs sont arrondies.</p>
+    <button type="button" class="bouton imprimer" id="imprimer">Imprimer la fiche</button>
+    <h3>Fiche d'identité des planètes</h3>
+    <div class="tableau">
+      <table>
+        <caption class="note">Dans l'ordre, du plus proche au plus éloigné du Soleil.</caption>
+        <thead><tr><th scope="col">Planète</th><th scope="col">Famille</th><th scope="col">Un tour du Soleil (année)</th><th scope="col">Un tour sur elle-même</th><th scope="col">À noter</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Mercure</th><td>Rocheuse</td><td>88 jours</td><td>59 jours</td><td>La plus proche du Soleil, presque sans air.</td></tr>
+          <tr><th scope="row">Vénus</th><td>Rocheuse</td><td>225 jours</td><td>243 jours, dans l'autre sens</td><td>La plus chaude, sous des nuages épais.</td></tr>
+          <tr><th scope="row">Terre</th><td>Rocheuse</td><td>365 jours</td><td>24 heures</td><td>Eau liquide, air et vie ; un satellite, la Lune.</td></tr>
+          <tr><th scope="row">Mars</th><td>Rocheuse</td><td>687 jours (près de 2 ans)</td><td>24 heures 37 minutes</td><td>La planète rouge : son sol contient de la rouille.</td></tr>
+          <tr><th scope="row">Jupiter</th><td>Géante gazeuse</td><td>12 ans</td><td>10 heures</td><td>La plus grosse ; la Grande Tache rouge est une tempête.</td></tr>
+          <tr><th scope="row">Saturne</th><td>Géante gazeuse</td><td>29 ans</td><td>10 heures et demie</td><td>De grands anneaux de glace et de roche.</td></tr>
+          <tr><th scope="row">Uranus</th><td>Géante de glace</td><td>84 ans</td><td>17 heures</td><td>Son axe est couché : elle roule sur son orbite.</td></tr>
+          <tr><th scope="row">Neptune</th><td>Géante de glace</td><td>165 ans</td><td>16 heures</td><td>La plus éloignée, avec des vents très violents.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Vocabulaire</h3>
+    <dl class="lexique">
+      <dt>Étoile</dt><dd>Astre qui produit sa propre lumière, comme le Soleil.</dd>
+      <dt>Planète</dt><dd>Gros astre qui tourne autour d'une étoile et renvoie sa lumière.</dd>
+      <dt>Satellite</dt><dd>Astre qui tourne autour d'une planète. La Lune est le satellite naturel de la Terre.</dd>
+      <dt>Orbite</dt><dd>Chemin suivi par un astre qui tourne autour d'un autre.</dd>
+      <dt>Rotation</dt><dd>Tour d'un astre sur lui-même. Pour la Terre : environ 24 heures, le jour et la nuit.</dd>
+      <dt>Révolution</dt><dd>Tour d'un astre autour d'un autre. Pour la Terre : environ 365 jours, une année.</dd>
+      <dt>Axe</dt><dd>Ligne imaginaire autour de laquelle un astre tourne sur lui-même. Celui de la Terre est penché.</dd>
+      <dt>Hémisphère</dt><dd>Moitié de la Terre, au nord ou au sud de l'équateur.</dd>
+      <dt>Astéroïde</dt><dd>Petit corps rocheux ; beaucoup tournent entre Mars et Jupiter.</dd>
+      <dt>Planète naine</dt><dd>Astre plus petit qu'une planète, comme Pluton.</dd>
+      <dt>Unité astronomique</dt><dd>Distance moyenne entre la Terre et le Soleil : environ 150 millions de kilomètres.</dd>
+    </dl>
+    <p class="note">Sources des valeurs : fiches de données planétaires de la NASA et éphémérides de l'IMCCE (Observatoire de Paris), arrondies pour le cycle 3.</p>
+  </section>
+  <section class="panneau lecture" id="panneau-memo" role="tabpanel" aria-labelledby="onglet-memo" hidden>
+    <p class="yeux">Points à retenir</p>
+    <h2>L'essentiel en un coup d'œil</h2>
+    <ul>
+      <li>Le <strong>Soleil</strong> est une étoile : il produit sa lumière et sa chaleur.</li>
+      <li><strong>Huit planètes</strong> tournent autour de lui, dans le même sens, sur leur orbite.</li>
+      <li>Dans l'ordre : <strong>Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune</strong>.</li>
+      <li>Quatre planètes <strong>rocheuses</strong> près du Soleil, quatre <strong>géantes</strong> plus loin.</li>
+      <li><strong>Rotation</strong> : la Terre tourne sur elle-même en environ 24 heures, d'où le jour et la nuit.</li>
+      <li><strong>Révolution</strong> : la Terre tourne autour du Soleil en environ 365 jours, une année.</li>
+      <li>Les <strong>saisons</strong> viennent de l'inclinaison de l'axe de la Terre, pas de sa distance au Soleil.</li>
+      <li>La <strong>Lune</strong> est le satellite de la Terre : elle en fait le tour en environ 27 jours.</li>
+      <li>Plus une planète est <strong>loin</strong> du Soleil, plus son année est <strong>longue</strong>.</li>
+    </ul>
+    <h3>Erreurs fréquentes</h3>
+    <ul>
+      <li>« Le Soleil tourne autour de la Terre. » Non : c'est la Terre qui tourne sur elle-même et autour du Soleil.</li>
+      <li>« En été, la Terre est plus près du Soleil. » Non : les saisons viennent de l'inclinaison de son axe.</li>
+      <li>« La Lune est une planète. » Non : c'est un satellite, elle tourne autour de la Terre.</li>
+      <li>« Mercure est la planète la plus chaude. » Non : c'est Vénus, à cause de ses nuages épais.</li>
+      <li>« Pluton est la neuvième planète. » Non : depuis 2006, c'est une planète naine.</li>
+    </ul>
+  </section>
 </main>
+<p class="toast" id="toast" role="status" hidden></p>
 <script>
 (() => {
   const onglets = [...document.querySelectorAll("[role=tab]")];
@@ -298,7 +427,112 @@
   enregistrerOnglet({ id: "explication", titre: "Explication", actif: true });
   enregistrerOnglet({ id: "application", titre: "Ciel", actif: true });
   enregistrerOnglet({ id: "mise-en-situation", titre: "Mission", actif: true });
+  enregistrerOnglet({ id: "fiche", titre: "Fiche", actif: true });
+  enregistrerOnglet({ id: "memo", titre: "À retenir", actif: true });
   enregistrerOnglet({ id: "self-test", titre: "Quiz", actif: false });
+
+  /* Stockage abstrait : local (actif) / distant (stub). Seuls des identifiants d'objectifs et un score sont gardés. */
+  const Stockage = {
+    local: {
+      lire(cle) { try { return JSON.parse(localStorage.getItem("kermiclab:systeme-solaire:" + cle)); } catch { return null; } },
+      ecrire(cle, valeur) { try { localStorage.setItem("kermiclab:systeme-solaire:" + cle, JSON.stringify(valeur)); } catch { /* stockage indisponible */ } },
+      effacer(cle) { try { localStorage.removeItem("kermiclab:systeme-solaire:" + cle); } catch { /* stockage indisponible */ } }
+    },
+    distant: { lire() { return null; }, ecrire() { /* non activé */ }, effacer() { /* non activé */ } }
+  };
+  const stockage = Stockage.local;
+
+  /* Gamification : cinq objectifs (une étoile chacun), des points d'expérience et quatre niveaux. */
+  const OBJECTIFS = [
+    { id: "explorateur", titre: "Explorateur", consigne: "Dans le Ciel, ouvre la fiche de chacune des huit planètes.", xp: 30 },
+    { id: "jour-nuit", titre: "Jour et nuit", consigne: "Choisis la Terre, puis mets le modèle en pause pour voir le jour et la nuit.", xp: 20 },
+    { id: "cours", titre: "Cours suivi", consigne: "Suis le cours du Ciel jusqu'à sa dernière étape.", xp: 30 },
+    { id: "lecteur", titre: "Lecteur", consigne: "Ouvre les six parties de l'explication détaillée.", xp: 20 },
+    { id: "astronome", titre: "Astronome", consigne: "Réponds juste aux cinq questions du quiz.", xp: 50 }
+  ];
+  const XP_PAR_BONNE_REPONSE = 10;
+  const XP_MAX = OBJECTIFS.reduce((t, o) => t + o.xp, 0) + 5 * XP_PAR_BONNE_REPONSE;
+  const NIVEAUX = [[0, "Premiers pas"], [60, "Œil du ciel"], [120, "Explorateur du ciel"], [180, "Astronome"]];
+  const PLANETES = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
+  const PARTIES = ["soleil", "planetes", "rotation", "revolution", "lune", "distances"];
+  function charger() {
+    const brut = stockage.lire("progression");
+    const liste = (v, permis) => Array.isArray(v) ? [...new Set(v.filter((x) => permis.includes(x)))] : [];
+    return {
+      faits: liste(brut && brut.faits, OBJECTIFS.map((o) => o.id)),
+      planetes: liste(brut && brut.planetes, PLANETES),
+      parties: liste(brut && brut.parties, PARTIES),
+      meilleur: Number.isInteger(brut && brut.meilleur) ? Math.min(5, Math.max(0, brut.meilleur)) : 0
+    };
+  }
+  let suivi = charger();
+  const xpTotal = () => OBJECTIFS.filter((o) => suivi.faits.includes(o.id)).reduce((t, o) => t + o.xp, 0) + suivi.meilleur * XP_PAR_BONNE_REPONSE;
+  const toast = document.getElementById("toast");
+  let minuteurToast = 0;
+  function annoncer(texte) {
+    toast.textContent = texte;
+    toast.hidden = false;
+    clearTimeout(minuteurToast);
+    minuteurToast = setTimeout(() => { toast.hidden = true; }, 3500);
+  }
+  function majProgression() {
+    const xp = xpTotal();
+    const niveau = NIVEAUX.filter(([seuil]) => xp >= seuil).pop()[1];
+    document.getElementById("jauge").textContent = "★ " + suivi.faits.length + " / " + OBJECTIFS.length + " · " + xp + " XP";
+    document.getElementById("niveau-nom").textContent = "Niveau : " + niveau;
+    const barre = document.getElementById("xp-barre");
+    barre.max = XP_MAX;
+    barre.value = xp;
+    document.getElementById("xp-texte").textContent = xp + " XP sur " + XP_MAX + " · " + suivi.faits.length + " badge(s) sur " + OBJECTIFS.length + " · meilleur score au quiz : " + suivi.meilleur + " / 5";
+    const liste = document.getElementById("objectifs");
+    liste.replaceChildren();
+    for (const o of OBJECTIFS) {
+      const fait = suivi.faits.includes(o.id);
+      const li = document.createElement("li");
+      li.className = fait ? "fait" : "";
+      li.dataset.objectif = o.id;
+      const etat = document.createElement("span");
+      etat.className = "etat";
+      etat.setAttribute("aria-hidden", "true");
+      etat.textContent = fait ? "★" : "☆";
+      const texte = document.createElement("span");
+      const titre = document.createElement("strong");
+      titre.textContent = o.titre + " · +" + o.xp + " XP" + (fait ? " · obtenu" : "");
+      const consigne = document.createElement("span");
+      consigne.textContent = " — " + o.consigne;
+      if (o.id === "explorateur" && !fait) consigne.textContent += " (" + suivi.planetes.length + " / 8)";
+      if (o.id === "lecteur" && !fait) consigne.textContent += " (" + suivi.parties.length + " / 6)";
+      texte.append(titre, consigne);
+      li.append(etat, texte);
+      liste.append(li);
+    }
+  }
+  function sauver() { stockage.ecrire("progression", suivi); majProgression(); }
+  function reussir(id) {
+    if (suivi.faits.includes(id)) return;
+    const o = OBJECTIFS.find((x) => x.id === id);
+    suivi.faits.push(id);
+    sauver();
+    annoncer("Badge « " + o.titre + " » obtenu : +" + o.xp + " XP");
+  }
+  function noter(cle, valeur, total, objectif) {
+    if (suivi[cle].includes(valeur)) return;
+    suivi[cle].push(valeur);
+    sauver();
+    if (suivi[cle].length >= total) reussir(objectif);
+  }
+  document.getElementById("effacer").addEventListener("click", () => {
+    if (!window.confirm("Effacer ta progression dans ce lab ?")) return;
+    stockage.effacer("progression");
+    suivi = charger();
+    majProgression();
+    annoncer("Progression effacée");
+  });
+  for (const d of document.querySelectorAll("details[data-partie]")) {
+    d.addEventListener("toggle", () => { if (d.open) noter("parties", d.dataset.partie, PARTIES.length, "lecteur"); });
+  }
+  document.getElementById("imprimer").addEventListener("click", () => window.print());
+  majProgression();
 
   const CORPS = [
     { id: "sun", nom: "Soleil", genre: "etoile", type: "Étoile", r: 2.55, orbite: 0, parent: null, vitesse: 0, spin: 0.15, phase: 0, tilt: 0, couleur: [1, 0.88, 0.66], annee: "Les planètes tournent autour de lui", ligne: "Une énorme boule de gaz très chaud. Il produit la lumière qui éclaire toutes les planètes.", note: "Sa lumière met environ 8 minutes pour arriver jusqu'à la Terre." },
@@ -354,6 +588,8 @@
   let selection = null;
   let etape = 0;
   let coursOuvert = false;
+  let coursAffiche = false;
+  let texteVisible = true;
 
   const pauseBtn = document.getElementById("pause");
   const motPause = document.getElementById("mot-pause");
@@ -363,7 +599,8 @@
     pauseBtn.setAttribute("aria-pressed", pause ? "true" : "false");
     motPause.hidden = !pause;
   }
-  pauseBtn.addEventListener("click", () => { pause = !pause; majPause(); });
+  function verifierJourNuit() { if (pause && selection === "earth") reussir("jour-nuit"); }
+  pauseBtn.addEventListener("click", () => { pause = !pause; majPause(); verifierJourNuit(); });
   majPause();
   document.addEventListener("keydown", (e) => {
     if (e.code !== "Space") return;
@@ -372,6 +609,7 @@
     e.preventDefault();
     pause = !pause;
     majPause();
+    verifierJourNuit();
   });
 
   function sliderVers(v) { return 0.25 * Math.pow(40, Math.min(100, Math.max(0, v)) / 100); }
@@ -416,7 +654,8 @@
   function choisir(id) {
     selection = id;
     const c = id ? PAR[id] : null;
-    carte.hidden = !c;
+    carte.hidden = !c || !texteVisible;
+    if (c && c.genre === "planete") noter("planetes", id, PLANETES.length, "explorateur");
     if (c) {
       document.getElementById("carte-type").textContent = c.type;
       document.getElementById("carte-nom").textContent = c.nom;
@@ -429,6 +668,7 @@
     for (const b of rail.children) b.setAttribute("aria-pressed", b.textContent === (c && c.nom) ? "true" : "false");
     for (const lab of etiquettes.children) lab.dataset.on = lab.dataset.id === id ? "true" : "false";
     if (coursOuvert) fil.textContent = "Cours · " + (etape + 1) + "/" + COURS.length + " · " + COURS[etape].titre;
+    verifierJourNuit();
   }
   function ensemble() {
     selection = null;
@@ -456,9 +696,19 @@
     document.getElementById("cours-suite").textContent = etape === COURS.length - 1 ? "Quiz" : "Suite";
     [...pas.children].forEach((m, i) => m.classList.toggle("on", i <= etape));
     fil.textContent = "Cours · " + (etape + 1) + "/" + COURS.length + " · " + item.titre;
+    if (etape === COURS.length - 1) reussir("cours");
   }
-  function ouvrirCours() { coursOuvert = true; voile.hidden = false; dessinerCours(); }
-  function fermerCours() { voile.hidden = true; }
+  /* Afficher / masquer le texte : sur téléphone, la fiche d'un astre et le cours cachent les planètes. */
+  const texteBtn = document.getElementById("texte");
+  function majTexte() {
+    texteBtn.textContent = texteVisible ? "Masquer le texte" : "Afficher le texte";
+    texteBtn.classList.toggle("plein", !texteVisible);
+    carte.hidden = !selection || !texteVisible;
+    voile.hidden = !coursAffiche || !texteVisible;
+  }
+  texteBtn.addEventListener("click", () => { texteVisible = !texteVisible; majTexte(); });
+  function ouvrirCours() { coursOuvert = true; coursAffiche = true; texteVisible = true; majTexte(); dessinerCours(); }
+  function fermerCours() { coursAffiche = false; majTexte(); }
   document.getElementById("ouvrir-cours").addEventListener("click", ouvrirCours);
   document.getElementById("cours-fermer").addEventListener("click", fermerCours);
   voile.addEventListener("click", (e) => { if (e.target === voile) fermerCours(); });
@@ -485,6 +735,13 @@
   function quiz() {
     quizRacine.replaceChildren();
     if (qIndex >= QUIZ.length) {
+      if (score > suivi.meilleur) {
+        const gain = (score - suivi.meilleur) * XP_PAR_BONNE_REPONSE;
+        suivi.meilleur = score;
+        sauver();
+        annoncer("Nouveau record au quiz : +" + gain + " XP");
+      }
+      if (score === QUIZ.length) reussir("astronome");
       const p = document.createElement("p");
       p.textContent = score + " / " + QUIZ.length + ".";
       const encore = document.createElement("button");
