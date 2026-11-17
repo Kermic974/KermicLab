@@ -1279,3 +1279,13 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .prof-lien input { min-width: 0; flex: 1; }
 .prof-filtre { display: grid; gap: 4px; max-width: 320px; margin: 0 0 16px; }
 .prof-classe .actions select { max-width: 160px; }
+
+/* Activités du professeur et tableau de bord (ADR 0030 §9) */
+.activite-notions { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 4px 14px; max-height: 260px; overflow: auto; padding: 6px 2px; }
+.activite-carte .stats { margin: 0; }
+.activites-eleve h3 { margin: 0 0 10px; }
+.activite-eleve .bloc { display: block; }
+.vacances-question[data-correct="false"] { border-color: var(--danger, #c0392b); }
+.vacances-question[data-correct="true"] { border-color: var(--succes); }
+.bonne-reponse { font-weight: 700; color: var(--succes); }
+.quiz-retour { font-weight: 600; }

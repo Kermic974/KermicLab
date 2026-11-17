@@ -173,7 +173,9 @@ async function exporterUtilisateur(env, type, id) {
       profil: await tenter(() => env.DB.prepare("SELECT nom_affiche, matieres, niveaux, maj_le FROM professeurs_profils WHERE compte_id = ?").bind(id).first(), null),
       classes: await tenter(() => toutes(env, "SELECT id, nom, matiere, niveau, cree_le FROM professeurs_classes WHERE prof_id = ?", id), []),
       affiliations: await tenter(() => toutes(env, "SELECT prof_id, eleve_id, classe_id, pseudo, accord_version, rejoint_le FROM professeurs_eleves WHERE prof_id = ? OR eleve_id = ?", id, id), []),
-      bilan: await tenter(() => env.DB.prepare("SELECT bilan, maj_le FROM professeurs_bilans WHERE eleve_id = ?").bind(id).first(), null)
+      bilan: await tenter(() => env.DB.prepare("SELECT bilan, maj_le FROM professeurs_bilans WHERE eleve_id = ?").bind(id).first(), null),
+      activites: await tenter(() => toutes(env, "SELECT id, type, classe_id, eleve_id, parametres, echeance, statut, cree_le FROM professeurs_activites WHERE prof_id = ? OR eleve_id = ?", id, id), []),
+      resultats: await tenter(() => toutes(env, "SELECT activite_id, reussis, total, meilleur, tentatives, duree_s, termine, debut_le, maj_le FROM professeurs_resultats WHERE eleve_id = ?", id), [])
     };
   }
   donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);

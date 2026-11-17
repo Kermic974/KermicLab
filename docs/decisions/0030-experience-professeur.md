@@ -54,7 +54,8 @@ classe ou un lien. Il se règle dans l'écran Profil (bloc « Profil professeur 
   dans « Mon compte → Mes professeurs ».
 - Il voit le nom du professeur, la classe, la matière et le niveau, et **ce qui sera partagé** ; il choisit le nom sous
   lequel il apparaît (règles du pseudo, prérempli avec son pseudo) et coche l'**accord** versionné
-  (`partage-prof-v1`). Le Worker refuse sans accord.
+  (`partage-prof-v1`). Le Worker refuse sans accord. **Aucun accord parental n'est requis**, quel que soit l'âge de
+  l'élève (décision du propriétaire du 2026-11-17, §8).
 - Un lien par professeur et par élève : rejoindre une autre classe du même professeur change seulement la classe.
   Au plus 10 professeurs par élève. Un professeur ne peut pas utiliser son propre lien.
 - L'élève **quitte** un professeur à tout moment (Mon compte) ; le professeur peut **retirer** un élève ou le
@@ -94,20 +95,75 @@ classe ou un lien. Il se règle dans l'écran Profil (bloc « Profil professeur 
 | `POST invitations`, `POST invitations/:id/revoquer` | Professeur | liens d'invitation |
 | `GET eleves`, `POST eleves/:id/(deplacer\|retirer)` | Professeur | suivi des élèves |
 
+### 8. Accord parental : non requis (décision du 2026-11-17)
+
+Le propriétaire a tranché le point de contrôle ouvert par cet ADR : l'élève rejoint un professeur **sur son seul
+accord**, y compris s'il a moins de 15 ans ; aucun accord d'un parent (Espace famille) n'est demandé. Ce qui encadre ce
+choix :
+
+- l'élève voit, avant d'accepter, qui l'invite et exactement ce qui est partagé, et peut quitter à tout moment ;
+- le partage est limité aux compteurs et à la maîtrise des notions de la matière du professeur : jamais les questions
+  posées, les badges ni les cahiers ;
+- le rôle Professeur n'est attribué que par le propriétaire (back-office) ;
+- le texte d'accord et la page de confidentialité restent soumis à la relecture juridique avant une ouverture au-delà de
+  la bêta (action manuelle, [issue #357](https://github.com/Kermic974/KermicLab/issues/357)).
+
+### 9. Activités et tableau de bord (complément du 2026-11-17)
+
+À la demande du propriétaire, le professeur donne des **activités** à un élève ou à **toute une classe** (élèves
+présents et futurs), et suit leur usage dans un **tableau de bord**.
+
+| Activité | Contenu | Résultat remonté |
+|---|---|---|
+| **Défi** | 5 questions tirées des QCM publiés des notions choisies ; l'élève peut rejouer | meilleur score, nombre d'essais, durée |
+| **Évaluation** | de **5 à 40 questions** (borne vérifiée par le Worker), même tirage ; **une seule tentative** : le premier résultat terminé fait foi | score, durée |
+| **Cahier** | types exercices, fiches ou vacances (comme l'Espace famille), construit à partir du catalogue ou **rédigé par l'IA** (`MODELE_CAHIERS`, quota `CAHIERS_GENERATIONS_JOUR` par professeur et par jour) ; copié dans « Mes cahiers » de l'élève | exercices réussis / total |
+| **Objectif** | mesuré sans rien demander à l'élève : minutes actives ou XP sur 7 jours, notions choisies maîtrisées, activités terminées | calculé à partir du bilan (§6) et des résultats |
+
+- Chaque activité porte 1 à 10 notions des **matières du profil**, un titre court facultatif (mêmes règles que le nom
+  d'une classe) et une échéance facultative (6 mois au plus). Au plus 60 activités en cours par professeur.
+- **Questions reproductibles** : le tirage est fait dans le navigateur de l'élève, avec l'identifiant de l'activité
+  comme graine, dans les QCM publiés du catalogue (`dist/contenus/`) ; tous les élèves d'une classe reçoivent donc les
+  mêmes questions, en alternant les notions. S'il y a moins de QCM publiés que demandé, le quiz est plus court et le
+  professeur en est averti à la création.
+- **Rien de ce que l'élève coche ne quitte son appareil** : seuls des compteurs remontent (`PUT /api/professeur/resultats` :
+  réussies, total, durée, terminé), bornés par `validerResultat`. Le score est calculé sur l'appareil de l'élève
+  (comme l'avancement des cahiers de l'Espace famille) : c'est un outil de suivi, pas un examen surveillé.
+- **Tableau de bord** (écran `#suivi`, entrée « Tableau de bord » de la navigation, entrée « Prof » sur mobile), filtrable
+  par classe, calculé dans le navigateur du professeur (`tableauDeBord`) :
+  - engagement : élèves actifs sur 7 jours, temps moyen par élève, activités terminées (taux), retards ;
+  - performance : score moyen aux évaluations et aux défis, part des notions maîtrisées, notions à revoir ;
+  - tableau par classe, détail de chaque activité (terminés / attendus, score moyen, retards, puis élève par élève) ;
+  - élèves à suivre : aucune activité partagée, inactif depuis 7 jours, activités en retard, score moyen sous 50 %.
+- « Mes élèves » affiche aussi les activités et l'avancement de chaque élève ; « Donner une activité » est proposé depuis
+  le tableau de bord, la carte d'une classe et la carte d'un élève.
+- Côté élève, un bloc « Travail donné par tes professeurs » apparaît sur l'accueil (statut, échéance, Commencer /
+  Continuer / Rejouer).
+- **Données** : migration `0005_professeur_activites.sql` (`professeurs_activites`, `professeurs_resultats`,
+  `professeurs_consommations`), décrites dans le registre des traitements. Quand l'élève quitte un professeur ou en est
+  retiré, ses résultats et ses activités personnelles sont effacés ; supprimer une classe efface ses activités ;
+  supprimer un compte efface tout. Les compteurs d'IA sont purgés après 90 jours.
+
+| Méthode et route | Qui | Effet |
+|---|---|---|
+| `GET activites`, `POST activites`, `POST activites/:id/(archiver\|supprimer)` | Professeur | activités et résultats de ses élèves |
+| `GET mes-activites`, `PUT resultats` | élève | activités de sa classe et les siennes ; envoi des compteurs |
+
 ## Conséquences
 
 - Le bilan d'un élève, souvent mineur, devient lisible par un adulte qui n'est pas son parent, **sur l'accord du seul
-  élève**. C'est le point de contrôle principal : faut-il, pour un élève de moins de 15 ans, l'accord d'un parent
-  (Espace famille) en plus ? À trancher par le propriétaire avant l'ouverture au-delà de la bêta (action manuelle).
+  élève**, sans accord parental (§8).
 - Le nom affiché du professeur est une donnée personnelle d'adulte, choisie par lui et montrée à ses élèves.
 - Les comptes OAuth (ADR 0017) ne sont pas concernés tant qu'ils ne sont pas activés.
 
 ## Pistes (non livrées)
 
-Assigner des cahiers ou des notions à une classe (comme l'Espace famille) ; objectifs de classe ; export du suivi ;
-co-enseignement (plusieurs professeurs par classe) ; accord parental pour les moins de 15 ans ; filtre du tableau de
-bord des contributions sur les matières du professeur.
+Défis et évaluations rédigés par l'IA (aujourd'hui : QCM publiés du catalogue seulement) ; questions à saisie
+numérique ; export du suivi (CSV, PDF) ; historique des scores dans le temps ; co-enseignement (plusieurs professeurs
+par classe) ; filtre du tableau de bord des contributions sur les matières du professeur.
 
 ## Révision
 
-À valider par le propriétaire avant toute ouverture au-delà de la bêta.
+- 2026-11-17 : accord parental non requis (§8), décision du propriétaire.
+- 2026-11-17 : activités (défis, évaluations de 5 à 40 questions, cahiers, objectifs) et tableau de bord (§9).
+- Reste à valider par le propriétaire avant toute ouverture au-delà de la bêta.

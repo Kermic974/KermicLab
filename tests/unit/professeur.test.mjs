@@ -107,3 +107,83 @@ test("synthèse : effectif, actifs, alertes, notions à revoir et filtres", () =
   assert.deepEqual(filtrerEleves(eleves, "c1").map((e) => e.id), ["a", "b"]);
   assert.equal(filtrerEleves(eleves, "tous").length, 3);
 });
+
+// ---------- Activités (ADR 0030 §9) ----------
+import {
+  QUESTIONS_EVALUATION_MAX, avancementObjectif, construireQuiz, elevesCibles, indicateursActivite, scoreResultat, tableauDeBord,
+  validerActivite, validerResultat
+} from "../../web/professeur.js";
+
+const matiereDeTest = (id) => ({ pythagore: "mathematiques", fractions: "mathematiques", cellule: "svt", revolution: "histoire" })[id] ?? null;
+const ctx = { profil, matiereDe: matiereDeTest, aujourdhui: "2026-11-17" };
+
+test("activité : défi à 5 questions, évaluation de 5 à 40, cahier, objectif ; notions du profil seulement", () => {
+  const defi = validerActivite({ type: "defi", cible: { classeId: "c1" }, notions: ["pythagore", "pythagore"], nbQuestions: 30 }, ctx);
+  assert.deepEqual(defi.activite, { type: "defi", cible: { classeId: "c1", eleveId: null }, notions: ["pythagore"], libelle: null, echeance: null, nbQuestions: 5 });
+  assert.equal(validerActivite({ type: "evaluation", cible: { eleveId: "e1" }, notions: ["cellule"], nbQuestions: QUESTIONS_EVALUATION_MAX }, ctx).ok, true);
+  assert.equal(validerActivite({ type: "evaluation", cible: { eleveId: "e1" }, notions: ["revolution"], nbQuestions: 10 }, ctx).code, "notion-hors-profil");
+  assert.equal(validerActivite({ type: "evaluation", cible: { eleveId: "e1" }, notions: ["cellule"], nbQuestions: 7.5 }, ctx).code, "nb-questions-invalide");
+  assert.equal(validerActivite({ type: "defi", cible: { eleveId: "e1" }, notions: ["cellule"], libelle: "prof@ecole.fr" }, ctx).code, "libelle-caracteres");
+  assert.equal(validerActivite({ type: "defi", cible: { eleveId: "e1" }, notions: ["cellule"], echeance: "2027-12-01" }, ctx).code, "echeance-invalide");
+  assert.equal(validerActivite({ type: "defi", cible: { eleveId: "e1" }, notions: ["cellule"], echeance: "2026-11-30" }, ctx).activite.echeance, "2026-11-30");
+  const cahier = validerActivite({ type: "cahier", cible: { eleveId: "e1" }, notions: ["fractions"], cahier: { type: "fiches", univers: "lune", ia: "oui" } }, ctx).activite.cahier;
+  assert.deepEqual(cahier, { type: "fiches", longueur: "standard", univers: "aucun", objectif: "reviser", ia: false });
+  // Objectif « notions » : la valeur est le nombre de notions choisies ; les autres mesures n'ont pas de notions.
+  assert.deepEqual(validerActivite({ type: "objectif", cible: { eleveId: "e1" }, notions: ["pythagore", "fractions"], objectif: { mesure: "notions", valeur: 99 } }, ctx).activite.objectif, { mesure: "notions", valeur: 2 });
+  const temps = validerActivite({ type: "objectif", cible: { eleveId: "e1" }, notions: ["pythagore"], objectif: { mesure: "temps", valeur: 90 } }, ctx).activite;
+  assert.deepEqual([temps.objectif, temps.notions], [{ mesure: "temps", valeur: 90 }, []]);
+  assert.equal(validerActivite({ type: "objectif", cible: { eleveId: "e1" }, objectif: { mesure: "xp", valeur: 1 } }, ctx).code, "objectif-invalide");
+  assert.equal(validerActivite({ type: "defi", cible: { eleveId: "e1" }, notions: ["cellule"] }, { ...ctx, profil: null }).code, "profil-requis");
+});
+
+test("résultat : compteurs bornés, rien d'autre", () => {
+  assert.deepEqual(validerResultat({ activite: "a-1", reussis: 12, total: 10, dureeS: -3, termine: true, reponses: ["x"] }),
+    { activite: "a-1", total: 10, reussis: 10, dureeS: 0, termine: true });
+  assert.equal(validerResultat({ activite: "<script>" }), null);
+});
+
+test("quiz : tirage reproductible par activité, notions alternées, plafonné par la banque", () => {
+  const banque = { pythagore: [1, 2, 3, 4].map((n) => ({ question: `p${n}` })), fractions: [1, 2].map((n) => ({ question: `f${n}` })) };
+  const a = construireQuiz("act-1", banque, 5);
+  assert.deepEqual(construireQuiz("act-1", banque, 5), a, "même graine, mêmes questions");
+  assert.equal(a.length, 5);
+  assert.deepEqual(a.slice(0, 4).map((q) => q.notion), ["pythagore", "fractions", "pythagore", "fractions"]);
+  assert.equal(construireQuiz("act-1", banque, 40).length, 6);
+  assert.notDeepEqual(construireQuiz("act-2", banque, 6).map((q) => q.question), construireQuiz("act-1", banque, 6).map((q) => q.question));
+});
+
+const jour = "2026-11-17";
+const bilanActif = (min, notions = {}) => ({ v: 1, jour, xp: 50, niveau: 2, serie: 1, questions: 0, tempsMin: min, dernierJour: jour, badges: [], cahiers: [], jours: [{ jour, xp: 30, min, q: 0 }], notions });
+
+test("indicateurs et tableau de bord : engagement, performance, retards, élèves à suivre", () => {
+  const eleves = [
+    { id: "a", classeId: "c1", bilan: bilanActif(40, { pythagore: { etat: "maitrisee", tentes: 2, reussis: 2 } }) },
+    { id: "b", classeId: "c1", bilan: null },
+    { id: "c", classeId: null, bilan: bilanActif(10, { fractions: { etat: "a-revoir", tentes: 1, reussis: 0 } }) }
+  ];
+  const classes = [{ id: "c1", nom: "4e B", matiere: "mathematiques", niveau: "4e" }];
+  const activites = [
+    { id: "ev", type: "evaluation", classeId: "c1", eleveId: null, parametres: { notions: ["pythagore"], nbQuestions: 10 }, echeance: "2026-11-10", statut: "active" },
+    { id: "de", type: "defi", classeId: null, eleveId: "c", parametres: { notions: ["fractions"], nbQuestions: 5 }, echeance: null, statut: "active" },
+    { id: "ob", type: "objectif", classeId: "c1", eleveId: null, parametres: { notions: [], objectif: { mesure: "temps", valeur: 30 } }, echeance: null, statut: "active" },
+    { id: "ar", type: "defi", classeId: "c1", eleveId: null, parametres: { notions: ["pythagore"] }, echeance: null, statut: "archivee" }
+  ];
+  const resultats = [
+    { activite: "ev", eleve: "a", reussis: 8, total: 10, meilleur: 8, termine: true },
+    { activite: "de", eleve: "c", reussis: 1, total: 5, meilleur: 2, termine: true }
+  ];
+  assert.deepEqual(elevesCibles(activites[0], eleves).map((e) => e.id), ["a", "b"]);
+  assert.equal(scoreResultat(activites[1], resultats[1]), 40, "défi : meilleur essai");
+  assert.deepEqual(indicateursActivite(activites[0], { eleves, resultats, aujourdhui: jour }),
+    { attendus: 2, commences: 1, termines: 1, retard: 1, completion: 50, score: 80 });
+  assert.deepEqual(avancementObjectif(activites[2], { bilan: eleves[0].bilan }, jour), { valeur: 40, cible: 30, atteint: true });
+
+  const t = tableauDeBord({ eleves, classes, activites, resultats }, jour);
+  assert.equal(t.activites.length, 3, "les activités archivées sont exclues");
+  assert.deepEqual(
+    { eleves: t.global.eleves, actifs: t.global.actifs, attendus: t.global.attendus, termines: t.global.termines, retard: t.global.retard, scoreEvaluations: t.global.scoreEvaluations, scoreDefis: t.global.scoreDefis, maitrise: t.global.maitrise },
+    { eleves: 3, actifs: 2, attendus: 5, termines: 3, retard: 1, scoreEvaluations: 80, scoreDefis: 40, maitrise: 50 }
+  );
+  assert.deepEqual(t.parClasse.map((c) => [c.id, c.eleves, c.completion]), [["c1", 2, 50], ["particulier", 1, 100]]);
+  assert.deepEqual(t.aSuivre.map((s) => `${s.eleve}:${s.raisons.join("+")}`), ["b:jamais+retard", "c:score"]);
+});

@@ -14,12 +14,15 @@ import { validerPseudo } from "../../web/profil.js";
 import { sha256Hex } from "../../web/compte-local.js";
 import { validerBilan } from "../../web/famille.js";
 import {
-  MAX_CLASSES, MAX_ELEVES_CLASSE, MAX_ELEVES_PROF, MAX_INVITATIONS_ACTIVES, MAX_PROFS_ELEVE, VERSION_ACCORD_ELEVE,
-  bilanPourProfesseur, lireProfilProf, matieresSuivies, normaliserCodeProf, tirerCodeProf, validerAdhesion, validerClasse,
-  validerDemandeInvitation, validerProfilProf
+  MAX_ACTIVITES_ACTIVES, MAX_CLASSES, MAX_ELEVES_CLASSE, MAX_ELEVES_PROF, MAX_INVITATIONS_ACTIVES, MAX_PROFS_ELEVE, VERSION_ACCORD_ELEVE,
+  bilanPourProfesseur, lireProfilProf, matieresSuivies, normaliserCodeProf, parametresActivite, tirerCodeProf, validerActivite,
+  validerAdhesion, validerClasse, validerDemandeInvitation, validerProfilProf, validerResultat
 } from "../../web/professeur.js";
 import { compteDeSession } from "./compte-local.js";
 import { listerRoles, ROLES_SYSTEME } from "./roles.js";
+import { lireConfiguration } from "./configuration.js";
+import { appelerAliasGateway } from "./llm.js";
+import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
 
 export const PREFIXE = "/api/professeur/";
 const TAILLE_MAX_CORPS = 64 * 1024;
@@ -32,6 +35,7 @@ const json = (donnees, statut = 200) => new Response(JSON.stringify(donnees), {
 const erreur = (code, statut, extra = {}) => json({ erreur: code, ...extra }, statut);
 const vide = () => new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
 const maintenant = () => Math.floor(Date.now() / 1000);
+const jourUtc = (instant = Date.now()) => new Date(instant).toISOString().slice(0, 10);
 const lireJson = (texte, defaut = null) => { try { return JSON.parse(texte); } catch { return defaut; } };
 
 export const estRouteProfesseur = (chemin) => chemin.startsWith(PREFIXE);
@@ -71,9 +75,19 @@ const compter = async (env, sql, ...valeurs) => (await env.DB.prepare(sql).bind(
 
 /** Matière d'une notion du catalogue (premier segment du sujet), null si la notion est inconnue. */
 const matiereDe = (catalogue) => {
-  const parId = new Map((catalogue?.index?.maquettes ?? []).map((m) => [m.id, String(m.sujet ?? "").split("/")[0] || null]));
+  const parId = new Map((catalogue?.index?.maquettes ?? []).filter((m) => !catalogue.pages || catalogue.pages[m.id])
+    .map((m) => [m.id, String(m.sujet ?? "").split("/")[0] || null]));
   return (id) => parId.get(id) ?? null;
 };
+
+/**
+ * Efface ce qui rattachait un élève aux activités d'un professeur (il le quitte ou en est retiré) : ses résultats et
+ * les activités qui lui étaient données personnellement.
+ */
+const effacerLienActivites = (env, profId, eleveId) => [
+  env.DB.prepare("DELETE FROM professeurs_resultats WHERE eleve_id = ? AND activite_id IN (SELECT id FROM professeurs_activites WHERE prof_id = ?)").bind(eleveId, profId),
+  env.DB.prepare("DELETE FROM professeurs_activites WHERE prof_id = ? AND eleve_id = ?").bind(profId, eleveId)
+];
 
 // ---------- Côté élève (tout compte local connecté) ----------
 
@@ -146,8 +160,11 @@ async function mesProfesseurs(env, moi) {
 }
 
 async function quitter(env, moi, profId) {
-  const { meta } = await env.DB.prepare("DELETE FROM professeurs_eleves WHERE prof_id = ? AND eleve_id = ?").bind(profId, moi).run();
-  if (!(meta?.changes > 0)) return erreur("introuvable", 404);
+  if (!(await env.DB.prepare("SELECT 1 AS ok FROM professeurs_eleves WHERE prof_id = ? AND eleve_id = ?").bind(profId, moi).first())) return erreur("introuvable", 404);
+  await env.DB.batch([
+    ...effacerLienActivites(env, profId, moi),
+    env.DB.prepare("DELETE FROM professeurs_eleves WHERE prof_id = ? AND eleve_id = ?").bind(profId, moi)
+  ]);
   if (!(await compter(env, "SELECT count(*) AS n FROM professeurs_eleves WHERE eleve_id = ?", moi))) {
     await env.DB.prepare("DELETE FROM professeurs_bilans WHERE eleve_id = ?").bind(moi).run();
   }
@@ -220,6 +237,8 @@ async function supprimerClasse(env, moi, id) {
   if (!(await classeDuProf(env, moi, id))) return erreur("introuvable", 404);
   // Les élèves de la classe ne sont plus suivis (ils pourront rejoindre une autre classe par un nouveau lien).
   await env.DB.batch([
+    env.DB.prepare("DELETE FROM professeurs_resultats WHERE activite_id IN (SELECT id FROM professeurs_activites WHERE classe_id = ?)").bind(id),
+    env.DB.prepare("DELETE FROM professeurs_activites WHERE classe_id = ?").bind(id),
     env.DB.prepare("DELETE FROM professeurs_invitations WHERE classe_id = ?").bind(id),
     env.DB.prepare("DELETE FROM professeurs_eleves WHERE classe_id = ? AND prof_id = ?").bind(id, moi),
     env.DB.prepare("DELETE FROM professeurs_bilans WHERE eleve_id NOT IN (SELECT eleve_id FROM professeurs_eleves)").bind(),
@@ -292,17 +311,159 @@ async function deplacerEleve(env, moi, id, corps) {
 async function retirerEleve(env, moi, id) {
   if (!(await eleveDuProf(env, moi, id))) return erreur("introuvable", 404);
   await env.DB.batch([
+    ...effacerLienActivites(env, moi, id),
     env.DB.prepare("DELETE FROM professeurs_eleves WHERE prof_id = ? AND eleve_id = ?").bind(moi, id),
     env.DB.prepare("DELETE FROM professeurs_bilans WHERE eleve_id = ? AND eleve_id NOT IN (SELECT eleve_id FROM professeurs_eleves)").bind(id)
   ]);
   return vide();
 }
 
+// ---------- Activités (ADR 0030 §9) ----------
+
+const activitePublique = (l) => ({
+  id: l.id, type: l.type, classeId: l.classe_id, eleveId: l.eleve_id, parametres: lireJson(l.parametres, {}),
+  echeance: l.echeance, statut: l.statut, creeLe: l.cree_le, source: l.contenu ? "ia" : "catalogue"
+});
+const resultatPublic = (r) => ({
+  activite: r.activite_id, eleve: r.eleve_id, reussis: r.reussis, total: r.total, meilleur: r.meilleur, tentatives: r.tentatives,
+  dureeS: r.duree_s, termine: r.termine === 1, debutLe: r.debut_le, majLe: r.maj_le
+});
+
+/** Cahiers rédigés par l'IA aujourd'hui pour ce professeur (plafond : CAHIERS_GENERATIONS_JOUR). */
+async function quotaCahiersProf(env, moi, iaCahier) {
+  const limite = iaCahier ? lireConfiguration(env).CAHIERS_GENERATIONS_JOUR : 0;
+  const ligne = await env.DB.prepare("SELECT appels FROM professeurs_consommations WHERE prof_id = ? AND jour = ?").bind(moi, jourUtc()).first();
+  const utilisees = ligne?.appels ?? 0;
+  return { ia: iaCahier, limite, utilisees, restantes: Math.max(0, limite - utilisees) };
+}
+
+/** Rédige le cahier par l'IA (même constructeur que « Mes cahiers », ADR 0022) ; null et la raison sinon. */
+async function genererCahierProf(env, moi, catalogue, activite, { iaCahier, langue }) {
+  const demande = lireDemandeCahier(catalogue, { ...activite.cahier, notions: activite.notions });
+  if (!demande) return { cahier: null, raison: "demande-invalide" };
+  if (!activite.cahier.ia) return { cahier: null, raison: "ia-inactive" };
+  if (!iaCahier) return { cahier: null, raison: "ia-indisponible" };
+  const { limite } = await quotaCahiersProf(env, moi, iaCahier);
+  const { meta } = await env.DB.prepare(`INSERT INTO professeurs_consommations (prof_id, jour, appels, tokens) VALUES (?, ?, 1, 0)
+    ON CONFLICT (prof_id, jour) DO UPDATE SET appels = appels + 1 WHERE appels < ?`).bind(moi, jourUtc(), limite).run();
+  if (!(meta?.changes > 0)) return { cahier: null, raison: "quota" };
+  let cahier = null, raison = "sortie-invalide", tokens = 0;
+  try {
+    const generation = await appelerAliasGateway(env, {
+      system: promptCahier(langue), message: messageCahier(catalogue, demande, langue),
+      schema: SCHEMA_CAHIER, maxTokens: lireConfiguration(env).MAX_TOKENS_CAHIERS, cleModele: "MODELE_CAHIERS", nomSchema: "cahier"
+    });
+    tokens = Number.isSafeInteger(generation?.tokensSortie) ? generation.tokensSortie : 0;
+    if (generation.refus) raison = "refus";
+    else if (generation.tronque) raison = "sortie-tronquee";
+    else {
+      const brut = normaliserCahier(generation.contenu, demande);
+      if (brut.sections.length) { cahier = brut; raison = null; }
+    }
+  } catch {
+    console.error("llm cahier professeur");
+  }
+  if (tokens) await env.DB.prepare("UPDATE professeurs_consommations SET tokens = tokens + ? WHERE prof_id = ? AND jour = ?").bind(tokens, moi, jourUtc()).run();
+  return { cahier, raison };
+}
+
+async function creerActivite(env, moi, corps, { catalogue, iaCahier }) {
+  const r = validerActivite(corps, { profil: await profilDe(env, moi), matiereDe: matiereDe(catalogue), aujourdhui: jourUtc() });
+  if (!r.ok) return erreur(r.code, r.code === "profil-requis" ? 409 : 400);
+  const a = r.activite;
+  if (a.cible.classeId && !(await classeDuProf(env, moi, a.cible.classeId))) return erreur("introuvable", 404);
+  if (a.cible.eleveId && !(await eleveDuProf(env, moi, a.cible.eleveId))) return erreur("introuvable", 404);
+  if ((await compter(env, "SELECT count(*) AS n FROM professeurs_activites WHERE prof_id = ? AND statut = 'active'", moi)) >= MAX_ACTIVITES_ACTIVES) {
+    return erreur("quota-activites", 409);
+  }
+  let contenu = null, raison = null;
+  if (a.type === "cahier") {
+    const g = await genererCahierProf(env, moi, catalogue, a, { iaCahier, langue: corps?.langue === "en" ? "en" : "fr" });
+    contenu = g.cahier;
+    raison = g.raison;
+  }
+  const id = crypto.randomUUID();
+  await env.DB.prepare("INSERT INTO professeurs_activites (id, prof_id, type, classe_id, eleve_id, parametres, contenu, echeance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+    .bind(id, moi, a.type, a.cible.classeId, a.cible.eleveId, JSON.stringify(parametresActivite(a)), contenu ? JSON.stringify(contenu) : null, a.echeance).run();
+  return json({
+    id, type: a.type, source: contenu ? "ia" : "catalogue", raison,
+    ...(a.type === "cahier" ? { quota: await quotaCahiersProf(env, moi, iaCahier) } : {})
+  }, 201);
+}
+
+async function activites(env, moi, { iaCahier }) {
+  const [{ results: lignes }, { results: res }] = await Promise.all([
+    env.DB.prepare("SELECT * FROM professeurs_activites WHERE prof_id = ? ORDER BY cree_le DESC, rowid DESC LIMIT 200").bind(moi).all(),
+    env.DB.prepare(`SELECT r.* FROM professeurs_resultats r JOIN professeurs_activites a ON a.id = r.activite_id
+      JOIN professeurs_eleves e ON e.prof_id = a.prof_id AND e.eleve_id = r.eleve_id WHERE a.prof_id = ?`).bind(moi).all()
+  ]);
+  return json({
+    activites: (lignes ?? []).map(activitePublique), resultats: (res ?? []).map(resultatPublic),
+    limites: { activites: MAX_ACTIVITES_ACTIVES }, cahiersIa: await quotaCahiersProf(env, moi, iaCahier)
+  });
+}
+
+async function changerActivite(env, moi, id, action) {
+  if (!(await env.DB.prepare("SELECT id FROM professeurs_activites WHERE id = ? AND prof_id = ?").bind(id, moi).first())) return erreur("introuvable", 404);
+  if (action === "archiver") await env.DB.prepare("UPDATE professeurs_activites SET statut = 'archivee' WHERE id = ?").bind(id).run();
+  else {
+    await env.DB.batch([
+      env.DB.prepare("DELETE FROM professeurs_resultats WHERE activite_id = ?").bind(id),
+      env.DB.prepare("DELETE FROM professeurs_activites WHERE id = ?").bind(id)
+    ]);
+  }
+  return vide();
+}
+
+/** Activités actives données à l'élève par ses professeurs (personnellement ou à sa classe), avec son résultat. */
+async function lignesMesActivites(env, moi) {
+  const { results } = await env.DB.prepare(`SELECT a.*, p.nom_affiche FROM professeurs_activites a
+    JOIN professeurs_eleves e ON e.prof_id = a.prof_id AND e.eleve_id = ?
+    LEFT JOIN professeurs_profils p ON p.compte_id = a.prof_id
+    WHERE a.statut = 'active' AND (a.eleve_id = e.eleve_id OR (a.classe_id IS NOT NULL AND a.classe_id = e.classe_id))
+    ORDER BY a.cree_le DESC, a.rowid DESC LIMIT 100`).bind(moi).all();
+  return results ?? [];
+}
+
+async function mesActivites(env, moi) {
+  const lignes = await lignesMesActivites(env, moi);
+  const { results: res } = await env.DB.prepare("SELECT * FROM professeurs_resultats WHERE eleve_id = ?").bind(moi).all();
+  const resultat = new Map((res ?? []).map((r) => [r.activite_id, resultatPublic(r)]));
+  return json({
+    activites: lignes.map((l) => ({
+      ...activitePublique(l), professeur: l.nom_affiche ?? "", contenu: lireJson(l.contenu, null), resultat: resultat.get(l.id) ?? null
+    }))
+  });
+}
+
+async function enregistrerResultats(env, moi, corps) {
+  const liste = (Array.isArray(corps?.resultats) ? corps.resultats : []).slice(0, 50).map(validerResultat).filter(Boolean);
+  if (!liste.length) return erreur("resultats-invalides", 400);
+  const miennes = new Map((await lignesMesActivites(env, moi)).map((l) => [l.id, l]));
+  const refuses = [];
+  for (const r of liste) {
+    const a = miennes.get(r.activite);
+    if (!a || a.type === "objectif") { refuses.push({ activite: r.activite, raison: "introuvable" }); continue; }
+    const avant = await env.DB.prepare("SELECT termine FROM professeurs_resultats WHERE activite_id = ? AND eleve_id = ?").bind(a.id, moi).first();
+    // Une évaluation ne se passe qu'une fois : le premier résultat terminé fait foi.
+    if (a.type === "evaluation" && avant?.termine === 1) { refuses.push({ activite: a.id, raison: "deja-terminee" }); continue; }
+    const termine = a.type === "cahier" ? r.total > 0 && r.reussis >= r.total : r.termine;
+    const essai = a.type === "defi" && r.termine ? 1 : 0;
+    await env.DB.prepare(`INSERT INTO professeurs_resultats (activite_id, eleve_id, reussis, total, meilleur, tentatives, duree_s, termine)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT (activite_id, eleve_id) DO UPDATE SET reussis = excluded.reussis, total = excluded.total,
+        meilleur = max(meilleur, excluded.meilleur), tentatives = tentatives + excluded.tentatives,
+        duree_s = duree_s + excluded.duree_s, termine = max(termine, excluded.termine), maj_le = datetime('now')`)
+      .bind(a.id, moi, r.reussis, r.total, r.termine ? r.reussis : 0, essai, r.dureeS, termine ? 1 : 0).run();
+  }
+  return json({ enregistres: liste.length - refuses.length, refuses });
+}
+
 /**
  * Traite une route `/api/professeur/…`.
  * @param {{ catalogue: object, autoriser?: (cle: string) => boolean, ip?: string }} options
  */
-export async function gererApiProfesseur(requete, env, { catalogue, autoriser = () => true, ip = "inconnue" } = {}) {
+export async function gererApiProfesseur(requete, env, { catalogue, iaCahier = false, autoriser = () => true, ip = "inconnue" } = {}) {
   if (!env.DB) return erreur("professeur-indisponible", 503);
   const { pathname } = new URL(requete.url);
   const route = pathname.slice(PREFIXE.length);
@@ -335,6 +496,8 @@ export async function gererApiProfesseur(requete, env, { catalogue, autoriser = 
   if (est("GET", "mes-professeurs")) return mesProfesseurs(env, moi);
   if (methode === "POST" && (m = route.match(new RegExp(`^mes-professeurs/(${UUID})/quitter$`)))) return quitter(env, moi, m[1]);
   if (est("PUT", "bilan")) return enregistrerBilan(env, moi, corps);
+  if (est("GET", "mes-activites")) return mesActivites(env, moi);
+  if (est("PUT", "resultats")) return enregistrerResultats(env, moi, corps);
 
   // Routes du professeur : rôle Professeur exigé (permission `professeur`).
   if (!(await rolePermetProfesseur(env, await roleDuCompte(env, moi)))) return erreur("role-professeur-requis", 403);
@@ -347,19 +510,23 @@ export async function gererApiProfesseur(requete, env, { catalogue, autoriser = 
   if (est("POST", "invitations")) return creerInvitation(env, moi, corps);
   if (methode === "POST" && (m = route.match(new RegExp(`^invitations/(${UUID})/revoquer$`)))) return revoquerInvitation(env, moi, m[1]);
   if (est("GET", "eleves")) return eleves(env, moi, catalogue);
+  if (est("GET", "activites")) return activites(env, moi, { iaCahier });
+  if (est("POST", "activites")) return creerActivite(env, moi, corps, { catalogue, iaCahier });
+  if (methode === "POST" && (m = route.match(new RegExp(`^activites/(${UUID})/(archiver|supprimer)$`)))) return changerActivite(env, moi, m[1], m[2]);
   if (methode === "POST" && (m = route.match(new RegExp(`^eleves/(${UUID})/(deplacer|retirer)$`)))) {
     return m[2] === "deplacer" ? deplacerEleve(env, moi, m[1], corps) : retirerEleve(env, moi, m[1]);
   }
   return erreur("introuvable", 404);
 }
 
-/** Cron quotidien : liens d'invitation expirés ou épuisés. */
+/** Cron quotidien : liens d'invitation expirés ou épuisés ; compteurs d'IA de plus de 90 jours. */
 export async function purgerProfesseur(env, instant = Date.now()) {
   if (!env.DB) return null;
   try {
     const { meta } = await env.DB.prepare("DELETE FROM professeurs_invitations WHERE expire_a <= ? OR utilisations >= utilisations_max")
       .bind(Math.floor(instant / 1000)).run();
-    return { invitations: meta?.changes ?? 0 };
+    const conso = await env.DB.prepare("DELETE FROM professeurs_consommations WHERE jour < ?").bind(jourUtc(instant - 90 * 86400000)).run().catch(() => null);
+    return { invitations: meta?.changes ?? 0, consommations: conso?.meta?.changes ?? 0 };
   } catch {
     return null;
   }

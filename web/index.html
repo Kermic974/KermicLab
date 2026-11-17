@@ -62,6 +62,7 @@
       <!-- Contributions (ADR 0023) : visible seulement pour un rôle contributeur, prof ou admin. -->
       <button type="button" class="nav-bouton" data-nav="contributions" id="nav-contributions" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span class="nav-texte" data-i18n="navContributions"></span></button>
       <!-- Expérience Professeur (ADR 0030) : visible seulement pour le rôle Professeur. -->
+      <button type="button" class="nav-bouton" data-nav="suivi" id="nav-suivi" hidden><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navSuivi"></span></button>
       <button type="button" class="nav-bouton" data-nav="classes" id="nav-classes" hidden><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span class="nav-texte" data-i18n="navClasses"></span></button>
       <button type="button" class="nav-bouton" data-nav="eleves" id="nav-eleves" hidden><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navEleves"></span></button>
     </nav>
@@ -132,6 +133,11 @@
         <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre" hidden>
           <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-lecture"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
           <div id="reprendre-contenu" class="reprendre-contenu"></div>
+        </section>
+        <!-- Travail donné par les professeurs (ADR 0030 §9) : visible seulement pour un élève qui a des activités. -->
+        <section class="carte activites-eleve" id="activites-eleve" aria-labelledby="activites-eleve-titre" hidden>
+          <h3 id="activites-eleve-titre" data-i18n="actEleveTitre"></h3>
+          <ul id="activites-eleve-liste" class="prof-invitations"></ul>
         </section>
         <section class="carte suggestion" id="suggestion" aria-labelledby="suggestion-titre">
           <div class="suggestion-entete">
@@ -417,7 +423,7 @@
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="classes" id="nav-mobile-classes" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navClassesCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="suivi" id="nav-mobile-suivi" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navSuiviCourt"></span></button>
 </nav>
 
 <div id="toasts" role="status" aria-live="polite"></div>
@@ -853,10 +859,57 @@
   </div>
 </section>
 
+<!-- Expérience Professeur (ADR 0030 §9) : tableau de bord du professeur, indicateurs d'engagement et de performance,
+     activités données (défis, évaluations, cahiers, objectifs) et élèves à suivre. -->
+<section id="suivi" class="carte ecran-personnel" data-ecrans="suivi" aria-labelledby="suivi-titre" hidden>
+  <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
+    <button type="button" class="secondaire" data-nav="suivi" data-i18n="navSuivi"></button>
+    <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
+    <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
+    <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
+  </nav>
+  <div class="dialogue-entete">
+    <h2 id="suivi-titre" data-i18n="navSuivi"></h2>
+    <div class="actions">
+      <button type="button" class="bouton" id="suivi-activite" data-i18n="actDonner"></button>
+      <button type="button" class="secondaire" id="suivi-actualiser" data-i18n="efActualiser"></button>
+    </div>
+  </div>
+  <p id="suivi-etat" class="doux" role="status" aria-live="polite"></p>
+  <div id="suivi-contenu" hidden>
+    <label class="prof-filtre"><span class="etiquette-champ" data-i18n="profFiltreClasse"></span>
+      <select id="suivi-filtre"></select></label>
+    <section class="ef-bloc" aria-labelledby="suivi-engagement-titre">
+      <h3 id="suivi-engagement-titre" data-i18n="suiviEngagement"></h3>
+      <dl id="suivi-engagement" class="chiffres"></dl>
+    </section>
+    <section class="ef-bloc" aria-labelledby="suivi-performance-titre">
+      <h3 id="suivi-performance-titre" data-i18n="suiviPerformance"></h3>
+      <dl id="suivi-performance" class="chiffres"></dl>
+      <p id="suivi-a-revoir" class="petit"></p>
+    </section>
+    <section class="ef-bloc" aria-labelledby="suivi-classes-titre">
+      <h3 id="suivi-classes-titre" data-i18n="suiviParClasse"></h3>
+      <div class="ef-tableau-defilant"><table id="suivi-classes" class="ef-conso"></table></div>
+    </section>
+    <section class="ef-bloc" aria-labelledby="suivi-activites-titre">
+      <h3 id="suivi-activites-titre" data-i18n="suiviActivites"></h3>
+      <p id="suivi-activites-vide" class="doux" data-i18n="suiviAucuneActivite" hidden></p>
+      <div id="suivi-activites" class="ef-enfants"></div>
+    </section>
+    <section class="ef-bloc" aria-labelledby="suivi-a-suivre-titre">
+      <h3 id="suivi-a-suivre-titre" data-i18n="suiviASuivre"></h3>
+      <p id="suivi-a-suivre-vide" class="doux" data-i18n="suiviPersonneASuivre" hidden></p>
+      <ul id="suivi-a-suivre" class="ef-alertes"></ul>
+    </section>
+  </div>
+</section>
+
 <!-- Expérience Professeur (ADR 0030) : « Mes classes ». Données lues par l'API /api/professeur/ avec la session du compte
      local, ou par le double de démonstration (« Tester les rôles → Professeur »). -->
 <section id="classes" class="carte ecran-personnel" data-ecrans="classes" aria-labelledby="classes-titre" hidden>
   <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
+    <button type="button" class="secondaire" data-nav="suivi" data-i18n="navSuivi"></button>
     <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
     <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
     <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
@@ -920,6 +973,7 @@
 <!-- Expérience Professeur (ADR 0030) : « Mes élèves », suivi des élèves affiliés (classes et cours particuliers). -->
 <section id="eleves" class="carte ecran-personnel" data-ecrans="eleves" aria-labelledby="eleves-titre" hidden>
   <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
+    <button type="button" class="secondaire" data-nav="suivi" data-i18n="navSuivi"></button>
     <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
     <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
     <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
@@ -1254,6 +1308,75 @@
     <div class="actions">
       <button type="button" class="secondaire" id="fermer-constructeur" data-i18n="fermer"></button>
       <button type="submit" id="construire-cahier" data-i18n="cahierConstruire"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Donner une activité (ADR 0030 §9) : défi, évaluation (5 à 40 questions), cahier ou objectif, à un élève ou à une classe. -->
+<dialog id="dialogue-activite" data-sans-idees aria-labelledby="activite-titre">
+  <form id="formulaire-activite" class="formulaire-cahier formulaire-prof" method="dialog" novalidate>
+    <h2 id="activite-titre" data-i18n="actDonner"></h2>
+    <label for="activite-cible" class="etiquette-champ" data-i18n="actPour"></label>
+    <select id="activite-cible"></select>
+    <fieldset class="ef-mode" id="activite-types">
+      <legend class="etiquette-champ" data-i18n="actType"></legend>
+      <label><input type="radio" name="activite-type" value="defi" checked> <span data-i18n="actType_defi"></span></label>
+      <label><input type="radio" name="activite-type" value="evaluation"> <span data-i18n="actType_evaluation"></span></label>
+      <label><input type="radio" name="activite-type" value="cahier"> <span data-i18n="actType_cahier"></span></label>
+      <label><input type="radio" name="activite-type" value="objectif"> <span data-i18n="actType_objectif"></span></label>
+    </fieldset>
+    <p id="activite-type-aide" class="doux petit"></p>
+    <div id="activite-zone-evaluation" hidden>
+      <label for="activite-nb" class="etiquette-champ" data-i18n="actNbQuestions"></label>
+      <input id="activite-nb" type="number" min="5" max="40" step="1" value="10" inputmode="numeric">
+    </div>
+    <div id="activite-zone-cahier" hidden>
+      <label for="activite-cahier-type" class="etiquette-champ" data-i18n="efCahierType"></label>
+      <select id="activite-cahier-type"></select>
+      <label for="activite-cahier-longueur" class="etiquette-champ" data-i18n="cahierLongueurChamp"></label>
+      <select id="activite-cahier-longueur"></select>
+      <label for="activite-cahier-univers" class="etiquette-champ" data-i18n="cahierUniversChamp"></label>
+      <select id="activite-cahier-univers"></select>
+      <label for="activite-cahier-objectif" class="etiquette-champ" data-i18n="cahierObjectifChamp"></label>
+      <select id="activite-cahier-objectif"></select>
+      <label class="case-memoire"><input type="checkbox" id="activite-cahier-ia"><span><strong data-i18n="actCahierIa"></strong><span class="doux petit" id="activite-cahier-ia-aide"></span></span></label>
+    </div>
+    <div id="activite-zone-objectif" hidden>
+      <label for="activite-mesure" class="etiquette-champ" data-i18n="actMesure"></label>
+      <select id="activite-mesure"></select>
+      <div id="activite-zone-valeur">
+        <label for="activite-valeur" class="etiquette-champ" id="activite-valeur-label"></label>
+        <input id="activite-valeur" type="number" step="1" inputmode="numeric">
+      </div>
+    </div>
+    <div id="activite-zone-notions">
+      <label for="activite-matiere" class="etiquette-champ" data-i18n="actNotions"></label>
+      <select id="activite-matiere"></select>
+      <p id="activite-notions-aide" class="doux petit"></p>
+      <div id="activite-notions" class="activite-notions"></div>
+    </div>
+    <label for="activite-libelle" class="etiquette-champ" data-i18n="actLibelle"></label>
+    <input id="activite-libelle" type="text" maxlength="60" autocomplete="off" spellcheck="false">
+    <label for="activite-echeance" class="etiquette-champ" data-i18n="actEcheance"></label>
+    <input id="activite-echeance" type="date">
+    <p id="activite-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="activite-annuler" data-i18n="profAnnuler"></button>
+      <button type="submit" class="bouton" id="activite-valider" data-i18n="actDonnerBouton"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Défi ou évaluation donné par un professeur (ADR 0030 §9) : QCM publiés du catalogue ; seul le score est envoyé. -->
+<dialog id="dialogue-quiz" data-sans-idees aria-labelledby="quiz-titre" aria-describedby="quiz-aide">
+  <form id="formulaire-quiz" class="formulaire-cahier" method="dialog" novalidate>
+    <h2 id="quiz-titre"></h2>
+    <p class="doux" id="quiz-aide"></p>
+    <div id="quiz-questions" class="vacances-questions"></div>
+    <p id="quiz-retour" class="quiz-retour" role="status" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="quiz-fermer" data-i18n="fermer"></button>
+      <button type="submit" class="bouton" id="quiz-valider" data-i18n="quizValider"></button>
     </div>
   </form>
 </dialog>

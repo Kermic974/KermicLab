@@ -977,6 +977,7 @@ async function envoyerBilanFamille() {
   if (profEtat.mesProfs.length) {
     // Le professeur ne reçoit ni badges ni cahiers de la famille.
     try { await apiProf("bilan", { methode: "PUT", corps: { bilan: { ...bilan, badges: [], cahiers: [] } }, reel: true }); } catch { /* idem */ }
+    await envoyerResultatsCahiersProf();
   }
 }
 
@@ -1456,7 +1457,7 @@ function brancherFamilleLocale() {
 // niveaux), « Mes classes » (classes, liens d'invitation) et « Mes élèves » (suivi des élèves affiliés). Elle complète
 // l'expérience Contributeur (relecture et décisions, ADR 0023). Côté élève : rejoindre un professeur par un lien ou un
 // code, avec accord explicite, et quitter. « Tester les rôles → Professeur » utilise le double web/demo-professeur.js.
-const profEtat = { moi: null, classes: null, eleves: null, mesProfs: [], filtre: "tous", lien: null, adhesion: null, occupe: false };
+const profEtat = { moi: null, classes: null, eleves: null, activites: null, mesProfs: [], filtre: "tous", filtreSuivi: "tous", lien: null, adhesion: null, occupe: false };
 const CLE_REJOINDRE = "kermiclab:rejoindre";
 const profDemo = () => demoContribActive() && contrib.etatDemo?.connecte === true && contrib.etatDemo.role === "prof";
 const profActif = () => profDemo() || profEtat.moi?.professeur === true;
@@ -1471,7 +1472,7 @@ const moiProf = () => (profDemo() ? { professeur: true, profil: etatDemoProf().p
 /** API du professeur ; `reel` force le Worker (routes de l'élève, jamais simulées). */
 async function apiProf(route, { methode = "GET", corps, reel = false } = {}) {
   if (!reel && profDemo()) {
-    const r = demoProf.traiter(etatDemoProf(), methode, route, corps ?? {});
+    const r = demoProf.traiter(etatDemoProf(), methode, route, corps ?? {}, { matiereDe: (id) => notionParId(id)?.matiere ?? null });
     ecrireCle(sessionPreferences(), demoProf.CLE_DEMO, JSON.stringify(r.etat));
     return { statut: r.statut, donnees: r.donnees };
   }
@@ -1515,20 +1516,23 @@ async function chargerProf() {
   }
   rafraichirProfNav();
   rendreMesProfs();
+  await chargerMesActivites();
   if (profEtat.mesProfs.length) planifierBilanFamille({ immediat: true });
   const code = codeEnAttente();
   if (code) void ouvrirAdhesion(code);
 }
 
 function oublierProf() {
-  Object.assign(profEtat, { moi: null, classes: null, eleves: null, mesProfs: [], lien: null });
+  Object.assign(profEtat, { moi: null, classes: null, eleves: null, activites: null, mesProfs: [], lien: null });
+  activitesEtat.mesActivites = [];
   rafraichirProfNav();
   rendreMesProfs();
+  rendreActivitesEleve();
 }
 
 function rafraichirProfNav() {
   const actif = profActif();
-  for (const id of ["#nav-classes", "#nav-eleves", "#nav-mobile-classes"]) $(id).hidden = !actif;
+  for (const id of ["#nav-suivi", "#nav-classes", "#nav-eleves", "#nav-mobile-suivi"]) $(id).hidden = !actif;
   $("#profil-prof").hidden = !actif;
   const contribVisible = !$("#nav-contributions").hidden;
   document.querySelectorAll("[data-prof-contrib]").forEach((b) => { b.hidden = !contribVisible; });
@@ -1650,7 +1654,8 @@ function carteClasse(c, donnees) {
   const actions = element("div", { classe: "actions" });
   actions.append(selectDuree({ "data-duree-classe": c.id }),
     element("button", { classe: "bouton petit-bouton", cle: "profLienClasse", attributs: { type: "button", "data-classe-lien": c.id } }),
-    element("button", { classe: "secondaire petit-bouton", cle: "profVoirEleves", attributs: { type: "button", "data-classe-eleves": c.id } }));
+    element("button", { classe: "secondaire petit-bouton", cle: "profVoirEleves", attributs: { type: "button", "data-classe-eleves": c.id } }),
+    element("button", { classe: "secondaire petit-bouton", cle: "actDonnerClasse", attributs: { type: "button", "data-activite-classe": c.id } }));
   carte.append(actions);
   // Modifier, supprimer.
   const gestion = element("details", { classe: "famille-ajout ef-gestion" });
@@ -1771,7 +1776,7 @@ async function ouvrirEleves() {
   if (!profActif()) { profEtat.eleves = null; rendreEleves(); return; }
   $("#eleves-etat").textContent = t("efChargement");
   try {
-    const r = await apiProf("eleves");
+    const [r] = await Promise.all([apiProf("eleves"), chargerActivitesProf()]);
     profEtat.eleves = r.statut === 200 ? r.donnees : null;
     $("#eleves-etat").textContent = r.statut === 200 ? "" : messageProf(r);
   } catch {
@@ -1834,6 +1839,11 @@ function carteEleve(e) {
     const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id).slice(0, 5);
     if (aRevoir.length) carte.append(element("p", { classe: "petit", texte: t("efARevoirListe", { liste: aRevoir.join(", ") }) }));
   }
+  const activitesBloc = activitesDeLEleve(e);
+  if (activitesBloc) carte.append(activitesBloc);
+  const agir = element("div", { classe: "actions" });
+  agir.append(element("button", { classe: "bouton petit-bouton", cle: "actDonner", attributs: { type: "button", "data-activite-eleve": e.id } }));
+  carte.append(agir);
   const gestion = element("details", { classe: "famille-ajout ef-gestion" });
   gestion.append(element("summary", { cle: "profGererEleve" }));
   const corps = element("div", { classe: "ef-gestion-corps" });
@@ -1958,6 +1968,7 @@ function brancherProfesseur() {
   $("#formulaire-profil-prof").addEventListener("submit", enregistrerProfilProf);
   brancherClasses();
   brancherEleves();
+  brancherActivitesProf();
   $("#formulaire-code-prof").addEventListener("submit", (ev) => {
     ev.preventDefault();
     const code = professeur.normaliserCodeProf($("#code-prof").value);
@@ -1980,6 +1991,487 @@ function brancherProfesseur() {
   rendreMesProfs();
   // Lien ouvert sans compte lié : l'élève est guidé vers « Mon compte » ; l'adhésion reprend après la connexion.
   if (codeEnAttente() && !jetonFamille()) setTimeout(() => naviguer("compte"), 0);
+}
+
+/* ---------- Activités du professeur et tableau de bord (ADR 0030 §9) ---------- */
+// Le professeur donne des défis (5 questions), des évaluations (5 à 40 questions), des cahiers et des objectifs à un
+// élève ou à toute une classe. Les questions sont des QCM publiés du catalogue, tirés de façon reproductible ; l'appareil
+// de l'élève n'envoie que des compteurs (réussies, total, durée). Le tableau de bord est calculé dans le navigateur.
+const activitesEtat = { cible: null, quiz: null, mesActivites: [], minuteur: null, debut: 0 };
+
+const titreActivite = (a) => a.parametres?.libelle
+  || [t(`actType_${a.type}`), (a.parametres?.notions ?? []).slice(0, 2).map((id) => notionParId(id)?.titre ?? id).join(", ")].filter(Boolean).join(" · ");
+const cibleActivite = (a, classes, eleves) => (a.eleveId
+  ? eleves.find((e) => e.id === a.eleveId)?.pseudo ?? "—"
+  : t("actCibleClasse", { classe: classes.find((c) => c.id === a.classeId)?.nom ?? "—" }));
+const pct = (v) => (v === null || v === undefined ? "—" : `${v} %`);
+
+/** Élèves, classes, activités et résultats du professeur (le tableau de bord et « Mes élèves » s'en servent). */
+async function chargerActivitesProf() {
+  try {
+    const r = await apiProf("activites");
+    profEtat.activites = r.statut === 200 ? r.donnees : null;
+  } catch {
+    profEtat.activites = null;
+  }
+}
+
+async function ouvrirTableauProf() {
+  if (!profActif()) { profEtat.eleves = null; rendreTableauProf(); return; }
+  $("#suivi-etat").textContent = t("efChargement");
+  try {
+    const [r] = await Promise.all([apiProf("eleves"), chargerActivitesProf()]);
+    profEtat.eleves = r.statut === 200 ? r.donnees : null;
+    $("#suivi-etat").textContent = r.statut === 200 ? "" : messageProf(r);
+  } catch {
+    profEtat.eleves = null;
+    $("#suivi-etat").textContent = t("efErreur_generique");
+  }
+  rendreTableauProf();
+}
+
+function rendreTableauProf() {
+  const d = profEtat.eleves;
+  if (!d || !profEtat.activites) {
+    $("#suivi-contenu").hidden = true;
+    if (!$("#suivi-etat").textContent || !profActif()) $("#suivi-etat").textContent = etatEcranProf();
+    return;
+  }
+  $("#suivi-contenu").hidden = false;
+  const filtre = $("#suivi-filtre");
+  filtre.replaceChildren(option("tous", t("suiviToutes")), ...d.classes.map((c) => option(c.id, c.nom)), option("particulier", t("profParticuliers")));
+  if (![...filtre.options].some((o) => o.value === profEtat.filtreSuivi)) profEtat.filtreSuivi = "tous";
+  filtre.value = profEtat.filtreSuivi;
+  const eleves = professeur.filtrerEleves(d.eleves, profEtat.filtreSuivi);
+  const ids = new Set(eleves.map((e) => e.id));
+  const activites = profEtat.activites.activites.filter((a) => profEtat.filtreSuivi === "tous" || professeur.elevesCibles(a, eleves).length);
+  const jour = progression.jourLocal();
+  const tb = professeur.tableauDeBord({ eleves, classes: d.classes, activites, resultats: profEtat.activites.resultats.filter((r) => ids.has(r.eleve)) }, jour);
+  const g = tb.global;
+  $("#suivi-engagement").replaceChildren(
+    chiffre(t("suiviActifs"), `${g.actifs} / ${g.eleves}`), chiffre(t("suiviTempsMoyen"), formatMinutes(g.minutesMoyennes)),
+    chiffre(t("suiviCompletion"), pct(g.completion)), chiffre(t("suiviRetards"), g.retard)
+  );
+  $("#suivi-performance").replaceChildren(
+    chiffre(t("suiviScoreEvaluations"), pct(g.scoreEvaluations)), chiffre(t("suiviScoreDefis"), pct(g.scoreDefis)),
+    chiffre(t("suiviMaitrise"), pct(g.maitrise)), chiffre(t("profChiffreARevoir"), g.aRevoir)
+  );
+  const aRevoir = professeur.notionsARevoir(eleves).map((n) => `${notionParId(n.id)?.titre ?? n.id} (${n.n})`);
+  $("#suivi-a-revoir").textContent = aRevoir.length ? t("profARevoirGroupe", { liste: aRevoir.join(", ") }) : "";
+  // Par classe.
+  const ligne = (cellules, entete = false) => {
+    const tr = element("tr");
+    cellules.forEach((c, i) => tr.append(element(entete || i === 0 ? "th" : "td", { texte: String(c), attributs: entete ? { scope: "col" } : i === 0 ? { scope: "row" } : {} })));
+    return tr;
+  };
+  const thead = element("thead");
+  thead.append(ligne([t("profFiltreClasse"), t("profChiffreEleves"), t("suiviActifs"), t("suiviTempsMoyen"), t("suiviCompletion"), t("suiviScoreEvaluations"), t("suiviMaitrise")], true));
+  const tbody = element("tbody");
+  for (const c of tb.parClasse.filter((x) => profEtat.filtreSuivi === "tous" || x.id === profEtat.filtreSuivi)) {
+    tbody.append(ligne([c.nom ?? t("profParticuliers"), c.eleves, `${c.actifs} (${pct(c.tauxActifs)})`, formatMinutes(c.minutesMoyennes), pct(c.completion), pct(c.scoreEvaluations), pct(c.maitrise)]));
+  }
+  $("#suivi-classes").replaceChildren(element("caption", { classe: "visuellement-cache", cle: "suiviParClasse" }), thead, tbody);
+  // Activités.
+  $("#suivi-activites-vide").hidden = tb.activites.length > 0;
+  $("#suivi-activites").replaceChildren(...tb.activites.map((a) => carteActivite(a, { eleves, classes: d.classes, jour })));
+  // Élèves à suivre.
+  const pseudo = (id) => eleves.find((e) => e.id === id)?.pseudo ?? "";
+  $("#suivi-a-suivre-vide").hidden = tb.aSuivre.length > 0;
+  $("#suivi-a-suivre").replaceChildren(...tb.aSuivre.map((s) => element("li", {
+    texte: `${pseudo(s.eleve)} : ${s.raisons.map((r) => t(`suiviRaison_${r}`, { n: s.retard, score: s.score ?? "" })).join(" · ")}`
+  })));
+}
+
+/** Détail d'une activité : indicateurs, puis une ligne par élève ciblé (statut, score, essais, durée). */
+function carteActivite(a, { eleves, classes, jour }) {
+  const carte = element("article", { classe: "carte ef-enfant activite-carte", attributs: { "data-activite": a.id } });
+  const tete = element("div", { classe: "ef-enfant-tete" });
+  const nom = element("div", { classe: "famille-enfant-nom" });
+  const details = [t(`actType_${a.type}`), cibleActivite(a, classes, eleves),
+    a.parametres?.nbQuestions ? t("actQuestions", { n: a.parametres.nbQuestions }) : null,
+    a.type === "objectif" ? t(`actObjectif_${a.parametres.objectif.mesure}`, { n: a.parametres.objectif.valeur }) : null,
+    a.echeance ? t("actPourLe", { date: dateCourte(a.echeance) }) : null, a.source === "ia" ? t("actSourceIa") : null].filter(Boolean).join(" · ");
+  nom.append(element("h4", { texte: titreActivite(a) }), element("span", { classe: "doux petit", texte: details }));
+  const i = a.indicateurs;
+  tete.append(nom, element("span", { classe: `pastille ${i.completion === 100 ? "ok" : i.retard ? "en-cours" : "neutre"}`, texte: t("actTermines", { n: i.termines, m: i.attendus }) }));
+  carte.append(tete);
+  const stats = element("dl", { classe: "stats stats-progression" });
+  stats.append(chiffre(t("suiviCompletion"), pct(i.completion)), chiffre(t("actCommences"), i.commences),
+    chiffre(t("actScoreMoyen"), pct(i.score)), chiffre(t("suiviRetards"), i.retard));
+  carte.append(stats);
+  // Détail par élève.
+  const det = element("details", { classe: "famille-ajout ef-gestion" });
+  det.append(element("summary", { cle: "actDetail" }));
+  const ul = element("ul", { classe: "prof-invitations" });
+  const res = profEtat.activites?.resultats ?? [];
+  const terminees = (id) => res.filter((r) => r.eleve === id && r.termine).length;
+  for (const e of professeur.elevesCibles(a, eleves)) {
+    const r = res.find((x) => x.activite === a.id && x.eleve === e.id);
+    ul.append(element("li", { classe: "ef-cahier", texte: `${e.pseudo} — ${statutEleveActivite(a, r, { bilan: e.bilan, terminees: terminees(e.id) }, jour)}` }));
+  }
+  det.append(ul);
+  carte.append(det);
+  const actions = element("div", { classe: "actions" });
+  actions.append(element("button", { classe: "secondaire petit-bouton", cle: "efArchiver", attributs: { type: "button", "data-activite-archiver": a.id } }),
+    element("button", { classe: "danger petit-bouton", cle: "actSupprimer", attributs: { type: "button", "data-activite-supprimer": a.id } }));
+  carte.append(actions);
+  return carte;
+}
+
+/** Statut lisible d'un élève sur une activité (vu par le professeur). */
+function statutEleveActivite(a, r, suivi, jour) {
+  if (a.type === "objectif") {
+    const o = professeur.avancementObjectif(a, suivi, jour);
+    return t(o.atteint ? "actObjectifAtteint" : "actObjectifEnCours", { n: o.valeur, m: o.cible });
+  }
+  if (!r) return t(a.echeance && a.echeance < jour ? "actEnRetard" : "actAFaire");
+  const score = professeur.scoreResultat(a, r);
+  const parts = [t(r.termine ? "actTermine" : "actEnCours")];
+  if (r.total) parts.push(t("cahierProgression", { n: a.type === "defi" ? Math.max(r.meilleur, r.reussis) : r.reussis, m: r.total }));
+  if (score !== null && r.termine) parts.push(pct(score));
+  if (a.type === "defi" && r.tentatives > 1) parts.push(t("actEssais", { n: r.tentatives }));
+  if (r.dureeS) parts.push(formatMinutes(Math.max(1, Math.round(r.dureeS / 60))));
+  return parts.join(" · ");
+}
+
+/* Dialogue « Donner une activité » */
+
+const notionsDuProfil = () => {
+  const p = moiProf()?.profil;
+  return (etat.registre?.deType("notion") ?? []).filter((n) => p?.matieres.includes(n.matiere));
+};
+
+function ouvrirDialogueActivite({ classeId = null, eleveId = null } = {}) {
+  const p = moiProf()?.profil;
+  if (!p) { notifier(t("profProfilManquant"), "⚠️"); return; }
+  const classes = profEtat.eleves?.classes ?? profEtat.classes?.classes ?? [];
+  const eleves = profEtat.eleves?.eleves ?? [];
+  const cible = $("#activite-cible");
+  cible.replaceChildren(
+    ...classes.map((c) => option(`classe:${c.id}`, t("actCibleClasse", { classe: c.nom }))),
+    ...eleves.map((e) => option(`eleve:${e.id}`, t("actCibleEleve", { pseudo: e.pseudo, classe: nomClasse(e.classeId) })))
+  );
+  if (!cible.options.length) { notifier(t("actAucuneCible"), "⚠️"); return; }
+  cible.value = eleveId ? `eleve:${eleveId}` : classeId ? `classe:${classeId}` : cible.options[0].value;
+  $("#formulaire-activite").reset();
+  cible.value = eleveId ? `eleve:${eleveId}` : classeId ? `classe:${classeId}` : cible.options[0].value;
+  $("#activite-matiere").replaceChildren(...p.matieres.map((m) => option(m, libelleMatiere(m))));
+  const classe = classes.find((c) => c.id === (classeId ?? eleves.find((e) => e.id === eleveId)?.classeId));
+  if (classe) $("#activite-matiere").value = classe.matiere;
+  activitesEtat.niveau = classe ? professeur.niveauCatalogue(classe.niveau) : null;
+  const quota = profEtat.activites?.cahiersIa;
+  $("#activite-cahier-ia").disabled = !quota?.ia || !quota.restantes;
+  $("#activite-cahier-ia-aide").textContent = quota?.ia ? t("actCahierIaAide", { n: quota.restantes, m: quota.limite }) : t("actCahierIaIndisponible");
+  $("#activite-erreur").textContent = "";
+  basculerTypeActivite();
+  $("#dialogue-activite").showModal();
+}
+
+function basculerTypeActivite() {
+  const type = new FormData($("#formulaire-activite")).get("activite-type") ?? "defi";
+  const mesure = $("#activite-mesure").value;
+  $("#activite-type-aide").textContent = t(`actAide_${type}`, { min: professeur.QUESTIONS_EVALUATION_MIN, max: professeur.QUESTIONS_EVALUATION_MAX });
+  $("#activite-zone-evaluation").hidden = type !== "evaluation";
+  $("#activite-zone-cahier").hidden = type !== "cahier";
+  $("#activite-zone-objectif").hidden = type !== "objectif";
+  $("#activite-zone-notions").hidden = type === "objectif" && mesure !== "notions";
+  $("#activite-zone-valeur").hidden = mesure === "notions";
+  const [min, max] = professeur.BORNES_OBJECTIF[mesure] ?? [1, 100];
+  Object.assign($("#activite-valeur"), { min, max });
+  if (!$("#activite-valeur").value) $("#activite-valeur").value = String(mesure === "temps" ? 60 : mesure === "xp" ? 200 : 3);
+  $("#activite-valeur-label").textContent = t(`actValeur_${mesure}`);
+  rendreNotionsActivite();
+}
+
+function rendreNotionsActivite() {
+  const matiere = $("#activite-matiere").value;
+  const deja = new Set([...document.querySelectorAll("#activite-notions input:checked")].map((c) => c.value));
+  const rang = (n) => (n.niveau === activitesEtat.niveau ? 0 : 1);
+  const liste = notionsDuProfil().filter((n) => n.matiere === matiere).sort((a, b) => rang(a) - rang(b) || a.titre.localeCompare(b.titre, etat.langue));
+  $("#activite-notions-aide").textContent = t("actNotionsAide", { max: professeur.MAX_NOTIONS_ACTIVITE });
+  $("#activite-notions").replaceChildren(...liste.map((n) => {
+    const label = element("label", { classe: "prof-case" });
+    label.append(element("input", { attributs: { type: "checkbox", value: n.id, ...(deja.has(n.id) ? { checked: "" } : {}) } }),
+      element("span", { texte: `${n.titre} · ${t(`niveau_${n.niveau}`)}` }));
+    return label;
+  }));
+}
+
+/** QCM publiés des notions (dist/contenus/, même origine, mis en cache) : { notion: [QCM] }. */
+async function banqueQuestions(notions) {
+  const banque = {};
+  for (const notion of notions) {
+    if (!contenusDefi.has(notion)) {
+      try { contenusDefi.set(notion, await chargerJson(`contenus/${encodeURIComponent(notion)}.json`)); } catch { contenusDefi.set(notion, null); }
+    }
+    const c = contenusDefi.get(notion);
+    const qs = [];
+    (c?.application?.exercices ?? []).forEach((_, i) => { const ex = exerciceDuContenu(c, `app-${i + 1}`); if (ex) qs.push(ex); });
+    (c?.situation?.etapes ?? []).forEach((_, i) => { const ex = exerciceDuContenu(c, `defi-${i + 1}`); if (ex) qs.push(ex); });
+    banque[notion] = qs;
+  }
+  return banque;
+}
+
+async function validerDialogueActivite(ev) {
+  ev.preventDefault();
+  if (profEtat.occupe) return;
+  const type = new FormData($("#formulaire-activite")).get("activite-type");
+  const [genre, id] = $("#activite-cible").value.split(":");
+  const notions = [...document.querySelectorAll("#activite-notions input:checked")].map((c) => c.value);
+  const mesure = $("#activite-mesure").value;
+  const corps = {
+    type, cible: genre === "classe" ? { classeId: id } : { eleveId: id }, notions: type === "objectif" && mesure !== "notions" ? [] : notions,
+    libelle: $("#activite-libelle").value.trim() || null, echeance: $("#activite-echeance").value || null, langue: etat.langue,
+    ...(type === "evaluation" ? { nbQuestions: Number($("#activite-nb").value) } : {}),
+    ...(type === "cahier" ? { cahier: { type: $("#activite-cahier-type").value, longueur: $("#activite-cahier-longueur").value, univers: $("#activite-cahier-univers").value, objectif: $("#activite-cahier-objectif").value, ia: $("#activite-cahier-ia").checked } } : {}),
+    ...(type === "objectif" ? { objectif: { mesure, valeur: Number($("#activite-valeur").value) } } : {})
+  };
+  const p = moiProf()?.profil;
+  const matiereDe = (n) => notionParId(n)?.matiere ?? null;
+  const v = professeur.validerActivite(corps, { profil: p, matiereDe, aujourdhui: progression.jourLocal() });
+  const erreurDialogue = (m) => { $("#activite-erreur").textContent = m; };
+  if (!v.ok) { erreurDialogue(t(`actErreur_${v.code}`, { max: professeur.MAX_NOTIONS_ACTIVITE, min: professeur.QUESTIONS_EVALUATION_MIN, maxq: professeur.QUESTIONS_EVALUATION_MAX })); return; }
+  // Défi ou évaluation : le catalogue doit avoir des QCM publiés pour ces notions.
+  let disponibles = null;
+  if (["defi", "evaluation"].includes(type)) {
+    const banque = await banqueQuestions(notions);
+    disponibles = Object.values(banque).reduce((s, l) => s + l.length, 0);
+    if (!disponibles) { erreurDialogue(t("actErreur_sans-questions")); return; }
+  }
+  profEtat.occupe = true;
+  $("#activite-valider").disabled = true;
+  erreurDialogue(t(type === "cahier" && corps.cahier.ia ? "cahierPreparation" : "synchroEnCours"));
+  try {
+    const r = await apiProf("activites", { methode: "POST", corps });
+    if (r.statut !== 201) { erreurDialogue(messageProf(r)); return; }
+    $("#dialogue-activite").close();
+    const demande = corps.nbQuestions ?? (type === "defi" ? professeur.QUESTIONS_DEFI : 0);
+    notifier(disponibles !== null && disponibles < demande ? t("actDonneeMoinsQuestions", { n: disponibles }) : t("actDonnee"), "🧑‍🏫");
+    profEtat.occupe = false;
+    await rechargerEcranProf();
+  } catch {
+    erreurDialogue(t("efErreur_generique"));
+  } finally {
+    profEtat.occupe = false;
+    $("#activite-valider").disabled = false;
+  }
+}
+
+async function rechargerEcranProf() {
+  if (etat.ecran === "suivi") await ouvrirTableauProf();
+  else if (etat.ecran === "eleves") { await chargerActivitesProf(); await ouvrirEleves(); }
+  else if (etat.ecran === "classes") { await chargerActivitesProf(); await ouvrirClasses(); }
+}
+
+/** Activités d'un élève dans sa carte « Mes élèves ». */
+function activitesDeLEleve(e) {
+  const d = profEtat.activites;
+  if (!d) return null;
+  const siennes = d.activites.filter((a) => a.statut !== "archivee" && professeur.elevesCibles(a, [e]).length);
+  const bloc = element("div", { classe: "ef-cahiers" });
+  bloc.append(element("h5", { cle: "actActivitesEleve" }));
+  if (!siennes.length) bloc.append(element("p", { classe: "doux petit", cle: "actAucunePourEleve" }));
+  const jour = progression.jourLocal();
+  const terminees = d.resultats.filter((r) => r.eleve === e.id && r.termine).length;
+  for (const a of siennes) {
+    const r = d.resultats.find((x) => x.activite === a.id && x.eleve === e.id);
+    bloc.append(element("div", { classe: "ef-cahier", texte: `${titreActivite(a)} — ${statutEleveActivite(a, r, { bilan: e.bilan, terminees }, jour)}` }));
+  }
+  return bloc;
+}
+
+function brancherActivitesProf() {
+  ECRANS.push("suivi");
+  $("#suivi-actualiser").addEventListener("click", () => void ouvrirTableauProf());
+  $("#suivi-activite").addEventListener("click", () => ouvrirDialogueActivite());
+  $("#suivi-filtre").addEventListener("change", (e) => { profEtat.filtreSuivi = e.currentTarget.value; rendreTableauProf(); });
+  $("#suivi-activites").addEventListener("click", (ev) => {
+    const b = ev.target.closest("button");
+    if (!b) return;
+    if (b.dataset.activiteArchiver) void actionProf(`activites/${b.dataset.activiteArchiver}/archiver`, {}, { succes: t("actArchivee"), recharger: ouvrirTableauProf });
+    else if (b.dataset.activiteSupprimer) {
+      if (b.dataset.confirmer !== "1") { b.dataset.confirmer = "1"; b.textContent = t("actSupprimerConfirmer"); return; }
+      void actionProf(`activites/${b.dataset.activiteSupprimer}/supprimer`, {}, { succes: t("actSupprimee"), recharger: ouvrirTableauProf });
+    }
+  });
+  document.addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-activite-classe], [data-activite-eleve]");
+    if (b) ouvrirDialogueActivite({ classeId: b.dataset.activiteClasse ?? null, eleveId: b.dataset.activiteEleve ?? null });
+  });
+  // Réglages du dialogue : mêmes listes que le constructeur de cahiers.
+  $("#activite-cahier-type").replaceChildren(...professeur.TYPES_CAHIER_PROF.map((ty) => option(ty, t(`cahier_${ty}`))));
+  $("#activite-cahier-longueur").replaceChildren(...professeur.LONGUEURS_CAHIER_PROF.map((l) => option(l, t(`cahierLongueur_${l}`))));
+  $("#activite-cahier-univers").replaceChildren(...professeur.UNIVERS_CAHIER_PROF.map((u) => option(u, t(`cahierUnivers_${u}`))));
+  $("#activite-cahier-objectif").replaceChildren(...professeur.OBJECTIFS_CAHIER_PROF.map((o) => option(o, t(`cahierObjectif_${o}`))));
+  $("#activite-cahier-longueur").value = "standard";
+  $("#activite-cahier-objectif").value = "reviser";
+  $("#activite-mesure").replaceChildren(...professeur.MESURES_OBJECTIF.map((m) => option(m, t(`actMesure_${m}`))));
+  $("#activite-types").addEventListener("change", basculerTypeActivite);
+  $("#activite-mesure").addEventListener("change", () => { $("#activite-valeur").value = ""; basculerTypeActivite(); });
+  $("#activite-matiere").addEventListener("change", rendreNotionsActivite);
+  $("#formulaire-activite").addEventListener("submit", validerDialogueActivite);
+  $("#activite-annuler").addEventListener("click", () => $("#dialogue-activite").close());
+  brancherActivitesEleve();
+}
+
+/* Côté élève : travail donné par les professeurs */
+
+async function chargerMesActivites() {
+  if (!jetonFamille() || !profEtat.mesProfs.length) { activitesEtat.mesActivites = []; rendreActivitesEleve(); return; }
+  try {
+    const r = await apiProf("mes-activites", { reel: true });
+    activitesEtat.mesActivites = r.statut === 200 && Array.isArray(r.donnees?.activites) ? r.donnees.activites : [];
+  } catch {
+    activitesEtat.mesActivites = [];
+  }
+  rendreActivitesEleve();
+}
+
+const cahierLocalProf = (id) => cahiersEnregistres().find((c) => c.prof === id) ?? null;
+
+/** Objectif côté élève : même calcul que chez le professeur, à partir de la progression de l'appareil. */
+function avancementObjectifLocal(a) {
+  const bilan = bilanDeLAppareil();
+  const terminees = activitesEtat.mesActivites.filter((x) => x.resultat?.termine).length;
+  return professeur.avancementObjectif(a, { bilan, terminees }, progression.jourLocal());
+}
+
+function rendreActivitesEleve() {
+  const liste = activitesEtat.mesActivites;
+  const zone = $("#activites-eleve");
+  if (!zone) return;
+  zone.hidden = !liste.length;
+  const jour = progression.jourLocal();
+  $("#activites-eleve-liste").replaceChildren(...liste.map((a) => {
+    const li = element("li", { classe: "ef-cahier activite-eleve" });
+    const textes = element("span");
+    const r = a.resultat;
+    let statut;
+    if (a.type === "objectif") {
+      const o = avancementObjectifLocal(a);
+      statut = t(o.atteint ? "actObjectifAtteint" : "actObjectifEnCours", { n: o.valeur, m: o.cible });
+    } else if (r?.termine) {
+      statut = [t("actTermine"), r.total ? t("cahierProgression", { n: a.type === "defi" ? Math.max(r.meilleur, r.reussis) : r.reussis, m: r.total }) : null].filter(Boolean).join(" · ");
+    } else statut = t(r ? "actEnCours" : a.echeance && a.echeance < jour ? "actEnRetard" : "actAFaire");
+    const quoi = [t(`actType_${a.type}`), a.type === "objectif" ? t(`actObjectif_${a.parametres.objectif.mesure}`, { n: a.parametres.objectif.valeur }) : null,
+      a.parametres?.nbQuestions ? t("actQuestions", { n: a.parametres.nbQuestions }) : null, a.professeur,
+      a.echeance ? t("actPourLe", { date: dateCourte(a.echeance) }) : null].filter(Boolean).join(" · ");
+    textes.append(element("strong", { texte: titreActivite(a) }), element("span", { classe: "doux petit bloc", texte: `${quoi} — ${statut}` }));
+    li.append(textes);
+    if (a.type !== "objectif" && !(a.type === "evaluation" && r?.termine)) {
+      const cle = a.type === "cahier" ? "cahierOuvrir" : a.type === "defi" && r?.termine ? "actRejouer" : r ? "actContinuer" : "actCommencer";
+      li.append(element("button", { classe: "bouton petit-bouton", cle, attributs: { type: "button", "data-mon-activite": a.id } }));
+    }
+    return li;
+  }));
+}
+
+async function ouvrirMonActivite(id) {
+  const a = activitesEtat.mesActivites.find((x) => x.id === id);
+  if (!a) return;
+  if (a.type === "cahier") {
+    let local = cahierLocalProf(a.id);
+    if (!local) {
+      const p = a.parametres ?? {};
+      const sections = a.contenu?.sections?.length
+        ? a.contenu.sections.map((s) => ({ notion: s.notion, titre: s.titre, blocs: s.blocs, notes: "" }))
+        : sectionsCatalogue(p.notions ?? []);
+      const cahiers = cahiersEnregistres();
+      local = cahierValide({
+        id: window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`, prof: a.id, type: p.cahier?.type ?? "exercices",
+        creeLe: new Date().toISOString(), titre: (a.contenu?.titre || titreActivite(a)).slice(0, 60), source: a.contenu ? "ia" : "catalogue",
+        longueur: p.cahier?.longueur, univers: p.cahier?.univers, objectif: p.cahier?.objectif,
+        introduction: a.contenu?.introduction || t(`cahierIntro_${p.cahier?.type ?? "exercices"}`), conclusion: a.contenu?.conclusion ?? "", notes: "", sections
+      });
+      if (!local) return;
+      enregistrerCahiers([local, ...cahiers]);
+      rendreCahiers();
+    }
+    ouvrirLectureCahier(local.id, t("actCahierDuProf", { prof: a.professeur }));
+    planifierResultatsProf();
+    return;
+  }
+  // Défi ou évaluation : QCM publiés du catalogue, tirés avec l'identifiant de l'activité.
+  const banque = await banqueQuestions(a.parametres?.notions ?? []);
+  const questions = professeur.construireQuiz(a.id, banque, a.parametres?.nbQuestions ?? professeur.QUESTIONS_DEFI);
+  activitesEtat.quiz = { activite: a, questions, corrige: false };
+  activitesEtat.debut = Date.now();
+  $("#quiz-titre").textContent = titreActivite(a);
+  $("#quiz-aide").textContent = t(a.type === "evaluation" ? "quizAideEvaluation" : "quizAideDefi", { n: questions.length, prof: a.professeur });
+  $("#quiz-questions").replaceChildren(...questions.map((q, i) => {
+    const bloc = element("fieldset", { classe: "vacances-question", attributs: { "data-quiz": String(i) } });
+    bloc.append(element("legend", { texte: `${i + 1}. ${notionParId(q.notion)?.titre ?? q.notion} · ${q.question}` }));
+    q.choix.forEach((choix, j) => {
+      const label = element("label");
+      label.append(element("input", { attributs: { type: "radio", name: `quiz-${i}`, value: String(j) } }), element("span", { texte: choix }));
+      bloc.append(label);
+    });
+    return bloc;
+  }));
+  if (!questions.length) $("#quiz-questions").append(element("p", { classe: "doux", cle: "quizSansQuestion" }));
+  $("#quiz-retour").textContent = "";
+  $("#quiz-valider").hidden = !questions.length;
+  $("#quiz-valider").disabled = false;
+  $("#dialogue-quiz").showModal();
+}
+
+async function validerQuiz(ev) {
+  ev.preventDefault();
+  const q = activitesEtat.quiz;
+  if (!q || q.corrige) { $("#dialogue-quiz").close(); return; }
+  const reponses = q.questions.map((_, i) => $(`input[name="quiz-${i}"]:checked`));
+  const manquantes = reponses.filter((r) => !r).length;
+  if (manquantes && q.activite.type === "evaluation" && q.confirmer !== true) {
+    q.confirmer = true;
+    $("#quiz-retour").textContent = t("quizManquantes", { n: manquantes });
+    return;
+  }
+  const reussis = q.questions.filter((x, i) => Number(reponses[i]?.value) === x.bonne).length;
+  // Correction affichée sur place ; rien de ce qui a été coché ne quitte l'appareil.
+  q.questions.forEach((x, i) => {
+    const bloc = document.querySelector(`[data-quiz="${i}"]`);
+    bloc.dataset.correct = String(Number(reponses[i]?.value) === x.bonne);
+    bloc.querySelectorAll("input").forEach((inp) => { inp.disabled = true; if (Number(inp.value) === x.bonne) inp.parentElement.classList.add("bonne-reponse"); });
+  });
+  q.corrige = true;
+  $("#quiz-valider").textContent = t("fermer");
+  $("#quiz-retour").textContent = t("quizResultat", { n: reussis, m: q.questions.length });
+  const dureeS = Math.min(86400, Math.round((Date.now() - activitesEtat.debut) / 1000));
+  try {
+    const r = await apiProf("resultats", { methode: "PUT", reel: true, corps: { resultats: [{ activite: q.activite.id, reussis, total: q.questions.length, dureeS, termine: true }] } });
+    if (r.statut !== 200 || r.donnees?.refuses?.length) $("#quiz-retour").textContent += ` ${t("quizNonEnvoye")}`;
+  } catch {
+    $("#quiz-retour").textContent += ` ${t("quizNonEnvoye")}`;
+  }
+  await chargerMesActivites();
+}
+
+/** Avancement des cahiers donnés par un professeur : envoyé avec le bilan (au plus une fois par minute). */
+async function envoyerResultatsCahiersProf() {
+  const resultats = cahiersEnregistres().filter((c) => c.prof && activitesEtat.mesActivites.some((a) => a.id === c.prof))
+    .map((c) => ({ activite: c.prof, ...bilanExercices(c), dureeS: 0, termine: false }))
+    .filter((r) => r.total > 0);
+  if (!resultats.length) return;
+  try { await apiProf("resultats", { methode: "PUT", reel: true, corps: { resultats } }); } catch { /* nouvel essai au prochain envoi */ }
+}
+
+function planifierResultatsProf() {
+  clearTimeout(activitesEtat.minuteur);
+  activitesEtat.minuteur = setTimeout(() => void envoyerResultatsCahiersProf(), 5000);
+}
+
+function brancherActivitesEleve() {
+  $("#activites-eleve-liste").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-mon-activite]");
+    if (b) void ouvrirMonActivite(b.dataset.monActivite);
+  });
+  $("#formulaire-quiz").addEventListener("submit", validerQuiz);
+  $("#quiz-fermer").addEventListener("click", () => $("#dialogue-quiz").close());
+  $("#dialogue-quiz").addEventListener("close", () => {
+    activitesEtat.quiz = null;
+    $("#quiz-valider").textContent = t("quizValider");
+  });
 }
 
 /* ---------- Contributions au contenu des notions (ADR 0023) ---------- */
@@ -3860,7 +4352,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#espace-famille"), $("#contributions"), $("#classes"), $("#eleves"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#espace-famille"), $("#contributions"), $("#suivi"), $("#classes"), $("#eleves"), $("#defi"), $("#progres"));
   capturerInvitationProf();
   etat.config = await chargerJson("config.json");
   initialiserSession();
@@ -4323,7 +4815,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
+    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
 }
 
@@ -4351,6 +4843,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   if (etat.ecran === "compte") rafraichirCompte();
   if (etat.ecran === "espace-famille" && changement) void ouvrirEspaceFamille();
   if (etat.ecran === "profil" && changement) remplirProfil();
+  if (etat.ecran === "suivi" && changement) void ouvrirTableauProf();
   if (etat.ecran === "classes" && changement) void ouvrirClasses();
   if (etat.ecran === "eleves" && changement) void ouvrirEleves();
   if (etat.ecran === "profil" && changement && profActif()) remplirProfilProf();
@@ -4484,6 +4977,8 @@ function cahierValide(c) {
     introduction: texteBorne(c.introduction, 500), conclusion: texteBorne(c.conclusion, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections,
     // Cahier assigné par la famille (ADR 0029) : identifiant du cahier côté serveur, pour l'avancement envoyé au parent.
     ...(typeof c.famille === "string" && /^[0-9a-f-]{36}$/.test(c.famille) ? { famille: c.famille } : {}),
+    // Cahier donné par un professeur (ADR 0030 §9) : identifiant de l'activité, pour l'avancement envoyé au professeur.
+    ...(typeof c.prof === "string" && /^[0-9a-z-]{1,64}$/.test(c.prof) ? { prof: c.prof } : {}),
     // Planning du cahier de vacances (issue #188), relu strictement ; un plan invalide est simplement ignoré.
     ...(c.type === "vacances" && vacances.validerPlan(c.plan) ? { plan: vacances.validerPlan(c.plan) } : {})
   };
@@ -4691,6 +5186,7 @@ function bilanExercices(cahier) {
 
 function rafraichirProgressionCahier(cahier) {
   if (cahier.famille) planifierBilanFamille();
+  if (cahier.prof) planifierResultatsProf();
   const zone = $("#lecture-progression");
   const { total, reussis } = bilanExercices(cahier);
   zone.hidden = total === 0;

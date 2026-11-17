@@ -12,12 +12,15 @@ export async function tablesProfesseur(env) {
 
 /**
  * Instructions (à exécuter dans un même lot) qui effacent tout ce qui rattache un compte à l'expérience Professeur,
- * qu'il soit professeur ou élève : profil, classes, invitations, affiliations et bilan. Les comptes des élèves d'un
+ * qu'il soit professeur ou élève : profil, classes, invitations, affiliations, bilan, activités, résultats et compteurs d'IA. Les comptes des élèves d'un
  * professeur supprimé ne sont pas effacés ; leur bilan l'est s'ils n'ont plus aucun professeur.
  */
 export function instructionsEffacementProfesseur(env, compteId) {
   const db = env.DB;
   return [
+    db.prepare("DELETE FROM professeurs_resultats WHERE eleve_id = ? OR activite_id IN (SELECT id FROM professeurs_activites WHERE prof_id = ?)").bind(compteId, compteId),
+    db.prepare("DELETE FROM professeurs_activites WHERE prof_id = ? OR eleve_id = ?").bind(compteId, compteId),
+    db.prepare("DELETE FROM professeurs_consommations WHERE prof_id = ?").bind(compteId),
     db.prepare("DELETE FROM professeurs_bilans WHERE eleve_id = ?").bind(compteId),
     db.prepare("DELETE FROM professeurs_eleves WHERE eleve_id = ? OR prof_id = ?").bind(compteId, compteId),
     db.prepare("DELETE FROM professeurs_bilans WHERE eleve_id NOT IN (SELECT eleve_id FROM professeurs_eleves)").bind(),
