@@ -26,6 +26,9 @@ questions:
   - je ne comprends pas les conversions d'énergie
   - quelles sont les énergies renouvelables ?
   - what is kinetic energy?
+prerequis:
+niveaux: cycle-4, seconde
+competences: pc-energie-action-1, pc-energie-action-2
 ---
 
 # L'énergie et ses conversions

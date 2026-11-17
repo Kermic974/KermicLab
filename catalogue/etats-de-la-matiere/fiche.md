@@ -28,6 +28,9 @@ questions:
   - je ne comprends pas les changements d'état
   - à quelle température l'eau entre en ébullition ?
   - what are the states of matter?
+prerequis:
+niveaux: cycle-4, seconde
+competences: pc-etats-de-la-matiere-action-1, pc-etats-de-la-matiere-action-2
 ---
 
 # Les états de la matière

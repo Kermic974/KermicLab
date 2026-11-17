@@ -33,6 +33,9 @@ questions:
   - je ne comprends pas la différence entre mélange homogène et hétérogène
   - comment séparer un mélange par filtration
   - what is density?
+prerequis:
+niveaux: cycle-4, seconde
+competences: pc-masse-volumique-et-melanges-action-1, pc-masse-volumique-et-melanges-action-2
 ---
 
 # Masse volumique, mélanges et solutions

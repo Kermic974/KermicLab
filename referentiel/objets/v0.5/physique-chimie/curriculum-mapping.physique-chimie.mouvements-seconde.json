@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.mouvements-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvements/contenu.json"
+  },
+  "object": "notion.physique-chimie.mouvements",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

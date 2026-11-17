@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.absorbance-et-dosages-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/absorbance-et-dosages/contenu.json"
+  },
+  "source": "microskill.physique-chimie.absorbance-et-dosages-action-1",
+  "target": "skill.physique-chimie.absorbance-et-dosages"
+}

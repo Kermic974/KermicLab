@@ -27,6 +27,9 @@ questions:
   - je ne comprends pas l'équivalence d'un titrage
   - comment faire un dosage par étalonnage
   - what is a titration?
+prerequis:
+niveaux: premiere, terminale
+competences: pc-absorbance-et-dosages-action-1, pc-absorbance-et-dosages-action-2
 ---
 
 # Absorbance et dosages

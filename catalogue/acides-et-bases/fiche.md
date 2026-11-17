@@ -25,6 +25,9 @@ questions:
   - je ne comprends pas la différence entre acide et basique
   - c'est quoi un pKa ?
   - what is an acid?
+prerequis:
+niveaux: cycle-4, seconde, premiere, terminale
+competences: pc-acides-et-bases-action-1, pc-acides-et-bases-action-2
 ---
 
 # Acides, bases et pH

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie/contenu.json"
+  },
+  "source": "microskill.physique-chimie.energie-action-1",
+  "target": "skill.physique-chimie.energie"
+}

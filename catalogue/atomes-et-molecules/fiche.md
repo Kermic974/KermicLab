@@ -32,6 +32,9 @@ questions:
   - je ne comprends pas les transformations chimiques
   - comment équilibrer une équation de réaction
   - what is an atom?
+prerequis:
+niveaux: cycle-4, seconde
+competences: pc-atomes-et-molecules-action-1, pc-atomes-et-molecules-action-2
 ---
 
 # Atomes, molécules et transformations chimiques

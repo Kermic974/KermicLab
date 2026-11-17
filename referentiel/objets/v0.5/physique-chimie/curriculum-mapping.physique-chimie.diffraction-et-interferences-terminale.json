@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.diffraction-et-interferences-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/diffraction-et-interferences/contenu.json"
+  },
+  "object": "notion.physique-chimie.diffraction-et-interferences",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

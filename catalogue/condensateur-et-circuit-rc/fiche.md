@@ -24,6 +24,9 @@ questions:
   - je ne comprends pas la charge d'un condensateur
   - à quoi sert un condensateur ?
   - what is a capacitor?
+prerequis: electricite
+niveaux: terminale
+competences: pc-condensateur-et-circuit-rc-action-1, pc-condensateur-et-circuit-rc-action-2
 ---
 
 # Le condensateur et le circuit RC

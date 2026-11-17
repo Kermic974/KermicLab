@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.lois-de-newton-requires-forces-et-poids",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-newton/contenu.json"
+  },
+  "source": "notion.physique-chimie.lois-de-newton",
+  "target": "notion.physique-chimie.forces-et-poids",
+  "rationale": "La deuxième loi exige d’établir le bilan des forces."
+}

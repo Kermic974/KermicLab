@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.atomes-et-molecules-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/atomes-et-molecules/contenu.json"
+  },
+  "source": "notion.physique-chimie.atomes-et-molecules",
+  "target": "microskill.physique-chimie.atomes-et-molecules-action-2"
+}

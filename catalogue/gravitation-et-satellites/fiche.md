@@ -26,6 +26,9 @@ questions:
   - je ne comprends pas le satellite géostationnaire
   - pourquoi la Lune ne tombe pas sur la Terre ?
   - how do satellites stay in orbit?
+prerequis: forces-et-poids
+niveaux: terminale
+competences: pc-gravitation-et-satellites-action-1, pc-gravitation-et-satellites-action-2
 ---
 
 # Gravitation, satellites et lois de Kepler

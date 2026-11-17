@@ -28,6 +28,9 @@ questions:
   - je ne comprends pas les électrons de valence
   - c'est quoi un isotope ?
   - how does the periodic table work?
+prerequis:
+niveaux: seconde
+competences: pc-tableau-periodique-action-1, pc-tableau-periodique-action-2
 ---
 
 # L'atome et le tableau périodique

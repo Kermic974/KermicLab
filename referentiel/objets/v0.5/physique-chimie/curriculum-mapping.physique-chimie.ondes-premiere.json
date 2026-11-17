@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.ondes-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ondes/contenu.json"
+  },
+  "object": "notion.physique-chimie.ondes",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced"
+}
