@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.ses.justice-sociale-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "object": "notion.ses.justice-sociale",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

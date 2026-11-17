@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mondialisation-commerce-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "notion.ses.mondialisation-commerce",
+  "target": "microskill.ses.mondialisation-commerce-action-1"
+}

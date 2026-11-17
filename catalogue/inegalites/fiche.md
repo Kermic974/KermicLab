@@ -20,6 +20,9 @@ questions:
   - quelle est la différence entre revenu et patrimoine ?
   - comment les inégalités se cumulent-elles ?
   - comment mesurer les inégalités ?
+prerequis:
+niveaux: seconde, premiere
+competences: ses-inegalites-action-1, ses-inegalites-action-2
 ---
 
 # Les inégalités économiques et sociales

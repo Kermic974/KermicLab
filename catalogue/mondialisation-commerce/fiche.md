@@ -20,6 +20,9 @@ questions:
   - qu'est-ce qu'un avantage comparatif dans le commerce international ?
   - comment le commerce international organise-t-il une chaîne de valeur mondiale ?
   - quels sont les effets du commerce international ?
+prerequis:
+niveaux: premiere, terminale
+competences: ses-mondialisation-commerce-action-1, ses-mondialisation-commerce-action-2
 ---
 
 # Mondialisation et commerce international

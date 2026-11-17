@@ -1,0 +1,11 @@
+{
+  "id": "skill.ses.opinion-publique",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "label": "Interpréter une mesure de l’opinion publique"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.monnaie-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "microskill.ses.monnaie-action-2",
+  "target": "skill.ses.monnaie"
+}

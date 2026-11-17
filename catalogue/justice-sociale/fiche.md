@@ -21,6 +21,9 @@ questions:
   - quelle différence entre égalité et équité dans le débat sur la justice sociale ?
   - comment la justice sociale mobilise-t-elle la redistribution pour réduire les inégalités ?
   - quels objectifs la protection sociale poursuit-elle pour la justice sociale ?
+prerequis:
+niveaux: terminale
+competences: ses-justice-sociale-action-1, ses-justice-sociale-action-2
 ---
 
 # La justice sociale

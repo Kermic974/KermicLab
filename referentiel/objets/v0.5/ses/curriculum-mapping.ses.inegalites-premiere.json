@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.ses.inegalites-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "object": "notion.ses.inegalites",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced"
+}

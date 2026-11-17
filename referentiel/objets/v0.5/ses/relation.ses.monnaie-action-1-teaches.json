@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.monnaie-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "notion.ses.monnaie",
+  "target": "microskill.ses.monnaie-action-1"
+}

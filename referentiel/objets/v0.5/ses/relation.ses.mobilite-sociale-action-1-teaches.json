@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mobilite-sociale-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilite-sociale/contenu.json"
+  },
+  "source": "notion.ses.mobilite-sociale",
+  "target": "microskill.ses.mobilite-sociale-action-1"
+}
