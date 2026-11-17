@@ -248,3 +248,7 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Relire le texte d'accord de l'élève et la section « Professeurs et élèves » de la page de confidentialité | `web/i18n/fr.json` (`rejoindrePartage`, `rejoindreAccordTitre`), `web/confidentialite.html` | Validation juridique (action 14) avant une ouverture au-delà de la bêta | Relecture notée dans `docs/chantiers/rgpd.md` | [issue #357](https://github.com/Kermic974/KermicLab/issues/357) — à faire |
 | Attribuer le rôle « Professeur » au premier compte professeur | Back-office `/admin/` → Utilisateurs → compte local (lié en ligne) → rôle `prof` | Aucun rôle n'est attribué automatiquement ; l'expérience est réservée au rôle Professeur | Après rechargement, les menus « Mes classes » et « Mes élèves » apparaissent | [issue #358](https://github.com/Kermic974/KermicLab/issues/358) — à faire (après le déploiement de la migration 0004) |
 
+
+## Vues Ma famille — 17 novembre 2026
+
+- À faire : revue du CODEOWNER et fusion de la PR après CI verte, puis déploiement automatique.

@@ -22,6 +22,7 @@ import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
 import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
 import { MATIERES_PROF, parametresActivite, validerActivite, validerResultat } from "../../web/professeur.js";
+import { activitesPourEleve } from "./professeur.js";
 
 export const PREFIXE = "/api/famille/";
 const TAILLE_MAX_CORPS = 64 * 1024;
@@ -269,6 +270,11 @@ async function tableau(env, parentId, { quotaCahiers }) {
     id: l.enfant_id, prenom: l.prenom, trancheAge: l.tranche_age, origine: l.origine, lieLe: l.lie_le,
     bilan: bilanDe.get(l.enfant_id)?.bilan ?? null, bilanMaj: bilanDe.get(l.enfant_id)?.maj ?? null,
     cahiers: (cahiers ?? []).filter((c) => c.enfant_id === l.enfant_id).map((c) => cahierPublic(c))
+  }));
+  // Uniquement les enfants rattachés au parent authentifié, jamais un identifiant fourni par le navigateur.
+  await Promise.all(enfants.map(async (enfant) => {
+    const { activites } = await activitesPourEleve(env, enfant.id, { inclureContenu: false });
+    enfant.activitesProfesseurs = activites;
   }));
   const depuis = jourUtc(Date.now() - (JOURS_CONSOMMATIONS - 1) * 86400000);
   const membres = [parentId, ...enfants.map((e) => e.id)];

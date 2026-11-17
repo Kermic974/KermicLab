@@ -118,3 +118,11 @@ export PDF du bilan ; demande de détachement par un adolescent de 15 à 17 ans.
 ## Révision
 
 À valider par le propriétaire avant toute ouverture au-delà de la bêta.
+
+## Consultation par enfant et travaux des professeurs
+
+« View as » filtre les synthèses, comparatifs, cartes et travaux des enfants cochés (tous par défaut).
+La sélection reste en mémoire dans la session parent et ne modifie aucun compte ni destinataire.
+« Donné par Professeur » regroupe les activités scolaires actives par enfant et professeur, avec échéance et avancement, en lecture seule.
+Le serveur réutilise le lecteur des activités de l’élève, uniquement pour les enfants rattachés au parent authentifié.
+Les contenus des cahiers et les données des autres élèves ne sont pas transmis. Aucun changement de schéma.

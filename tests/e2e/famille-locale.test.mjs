@@ -170,6 +170,39 @@ test("famille : invitation d'un compte solo, cahier assigné avec calibrage, bil
   assert.match(await parent.page.locator("#ef-performance").textContent(), /\d+ %/);
   await capturer(parent.page, "espace-famille-tableau-de-bord", { pleinePage: true });
 
+  // Deux enfants et des travaux scolaires distincts pour vérifier la sélection multiple.
+  const db = env.DB.sqlite;
+  const lien = db.prepare("SELECT * FROM familles_liens").get();
+  db.prepare("INSERT INTO familles_liens (enfant_id, parent_id, prenom, tranche_age, consentement_version, origine) VALUES ('enfant-test-2', ?, 'Lila', '11-14', 'v1', 'creation')").run(lien.parent_id);
+  db.prepare("INSERT INTO professeurs_profils (compte_id, nom_affiche, matieres, niveaux) VALUES ('prof-test', 'Prof Test', '[]', '[]')").run();
+  for (const [id, nom] of [[lien.enfant_id, 'Fractions de Noé'], ['enfant-test-2', 'Calcul de Lila']]) {
+    db.prepare("INSERT INTO professeurs_eleves (prof_id, eleve_id, pseudo, accord_version) VALUES ('prof-test', ?, 'Pseudo', 'v1')").run(id);
+    db.prepare("INSERT INTO professeurs_activites (id, prof_id, type, eleve_id, parametres) VALUES (?, 'prof-test', 'defi', ?, ?)").run('travail-'+id, id, JSON.stringify({ libelle: nom, notions: ['fractions'] }));
+  }
+  await parent.page.click("#ef-actualiser");
+  await parent.page.locator("#ef-selection-enfants input").nth(1).waitFor();
+  assert.match(await parent.page.locator("#ef-professeurs").textContent(), /Fractions de Noé/);
+  assert.match(await parent.page.locator("#ef-professeurs").textContent(), /Calcul de Lila/);
+  await capturer(parent.page, "ma-famille-professeurs", { pleinePage: true });
+  await parent.page.locator("#ef-selection-enfants input").nth(1).uncheck();
+  assert.doesNotMatch(await parent.page.locator("#ef-professeurs").textContent(), /Lila/);
+  assert.match(await parent.page.locator("#ef-professeurs").textContent(), /Noé/);
+
+  // View as filtre le suivi sans changer de session et conserve la sélection à l’actualisation.
+  const selection = parent.page.locator("#ef-selection-enfants input").first();
+  assert.equal(await selection.isChecked(), true);
+  await selection.uncheck();
+  assert.equal(await parent.page.locator("#ef-selection-vide").isVisible(), true);
+  assert.equal(await parent.page.locator("#ef-enfants > article").count(), 0);
+  assert.doesNotMatch(await parent.page.locator("#ef-comparatif tbody").textContent(), /Noé/);
+  assert.equal(await parent.page.locator("#ef-activites > article").count(), 0);
+  await parent.page.click("#ef-actualiser");
+  await parent.page.waitForFunction(() => document.querySelector("#ef-etat").textContent === "");
+  assert.equal(await selection.isChecked(), false);
+  await selection.check();
+  assert.match(await parent.page.locator("#ef-comparatif tbody").textContent(), /Noé/);
+  assert.match(await parent.page.locator("#ef-professeurs-titre").textContent(), /Donné par Professeur/);
+
   // Rien de ce qui est stocké ne contient le pseudo de l'enfant ni son identifiant.
   const bilan = env.DB.sqlite.prepare("SELECT bilan FROM familles_bilans").get().bilan;
   assert.equal(/Noé|noe\.k/.test(bilan), false);
