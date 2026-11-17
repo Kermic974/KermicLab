@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.monde-depuis-1990-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-depuis-1990/contenu.json"
+  },
+  "source": "notion.histoire.monde-depuis-1990",
+  "target": "microskill.histoire.monde-depuis-1990-action-2"
+}

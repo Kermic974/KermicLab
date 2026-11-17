@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.antiquite-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "object": "notion.histoire.antiquite",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

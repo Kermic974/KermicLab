@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.guerre-froide-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "object": "notion.histoire.guerre-froide",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

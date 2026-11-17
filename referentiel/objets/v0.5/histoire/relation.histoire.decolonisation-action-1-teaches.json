@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decolonisation-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "notion.histoire.decolonisation",
+  "target": "microskill.histoire.decolonisation-action-1"
+}

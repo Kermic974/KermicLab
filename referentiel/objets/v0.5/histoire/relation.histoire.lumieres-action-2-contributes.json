@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.lumieres-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "microskill.histoire.lumieres-action-2",
+  "target": "skill.histoire.lumieres"
+}

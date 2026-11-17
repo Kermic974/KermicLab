@@ -18,6 +18,9 @@ questions:
   - Pourquoi Gutenberg change-t-il la diffusion des livres ?
   - Qui est Léonard de Vinci ?
   - Que défend l'humanisme ?
+prerequis:
+niveaux: cycle-4, seconde
+competences: his-renaissance-action-1, his-renaissance-action-2
 ---
 
 # La Renaissance

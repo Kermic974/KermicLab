@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolution-francaise-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "microskill.histoire.revolution-francaise-action-2",
+  "target": "skill.histoire.revolution-francaise"
+}

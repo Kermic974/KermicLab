@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "microskill.histoire.antiquite-action-1",
+  "target": "skill.histoire.antiquite"
+}

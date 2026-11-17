@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.totalitarismes-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "notion.histoire.totalitarismes",
+  "target": "microskill.histoire.totalitarismes-action-2"
+}

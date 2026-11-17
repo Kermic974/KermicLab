@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.revolution-industrielle-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "object": "notion.histoire.revolution-industrielle",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced"
+}

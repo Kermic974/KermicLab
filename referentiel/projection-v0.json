@@ -83,7 +83,23 @@
     "seismes-et-volcans": "notion.svt.seismes-et-volcans",
     "structure-de-la-terre": "notion.svt.structure-de-la-terre",
     "systeme-immunitaire": "notion.svt.systeme-immunitaire",
-    "systeme-nerveux": "notion.svt.systeme-nerveux"
+    "systeme-nerveux": "notion.svt.systeme-nerveux",
+    "antiquite": "notion.histoire.antiquite",
+    "construction-europeenne": "notion.histoire.construction-europeenne",
+    "decolonisation": "notion.histoire.decolonisation",
+    "guerre-froide": "notion.histoire.guerre-froide",
+    "lumieres": "notion.histoire.lumieres",
+    "monde-depuis-1990": "notion.histoire.monde-depuis-1990",
+    "moyen-age": "notion.histoire.moyen-age",
+    "napoleon": "notion.histoire.napoleon",
+    "premiere-guerre-mondiale": "notion.histoire.premiere-guerre-mondiale",
+    "renaissance": "notion.histoire.renaissance",
+    "revolution-francaise": "notion.histoire.revolution-francaise",
+    "revolution-industrielle": "notion.histoire.revolution-industrielle",
+    "seconde-guerre-mondiale": "notion.histoire.seconde-guerre-mondiale",
+    "temps-modernes": "notion.histoire.temps-modernes",
+    "totalitarismes": "notion.histoire.totalitarismes",
+    "ve-republique": "notion.histoire.ve-republique"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -325,7 +341,39 @@
     "microskill.svt.systeme-immunitaire-action-1": "svt-systeme-immunitaire-action-1",
     "microskill.svt.systeme-immunitaire-action-2": "svt-systeme-immunitaire-action-2",
     "microskill.svt.systeme-nerveux-action-1": "svt-systeme-nerveux-action-1",
-    "microskill.svt.systeme-nerveux-action-2": "svt-systeme-nerveux-action-2"
+    "microskill.svt.systeme-nerveux-action-2": "svt-systeme-nerveux-action-2",
+    "microskill.histoire.antiquite-action-1": "his-antiquite-action-1",
+    "microskill.histoire.antiquite-action-2": "his-antiquite-action-2",
+    "microskill.histoire.construction-europeenne-action-1": "his-construction-europeenne-action-1",
+    "microskill.histoire.construction-europeenne-action-2": "his-construction-europeenne-action-2",
+    "microskill.histoire.decolonisation-action-1": "his-decolonisation-action-1",
+    "microskill.histoire.decolonisation-action-2": "his-decolonisation-action-2",
+    "microskill.histoire.guerre-froide-action-1": "his-guerre-froide-action-1",
+    "microskill.histoire.guerre-froide-action-2": "his-guerre-froide-action-2",
+    "microskill.histoire.lumieres-action-1": "his-lumieres-action-1",
+    "microskill.histoire.lumieres-action-2": "his-lumieres-action-2",
+    "microskill.histoire.monde-depuis-1990-action-1": "his-monde-depuis-1990-action-1",
+    "microskill.histoire.monde-depuis-1990-action-2": "his-monde-depuis-1990-action-2",
+    "microskill.histoire.moyen-age-action-1": "his-moyen-age-action-1",
+    "microskill.histoire.moyen-age-action-2": "his-moyen-age-action-2",
+    "microskill.histoire.napoleon-action-1": "his-napoleon-action-1",
+    "microskill.histoire.napoleon-action-2": "his-napoleon-action-2",
+    "microskill.histoire.premiere-guerre-mondiale-action-1": "his-premiere-guerre-mondiale-action-1",
+    "microskill.histoire.premiere-guerre-mondiale-action-2": "his-premiere-guerre-mondiale-action-2",
+    "microskill.histoire.renaissance-action-1": "his-renaissance-action-1",
+    "microskill.histoire.renaissance-action-2": "his-renaissance-action-2",
+    "microskill.histoire.revolution-francaise-action-1": "his-revolution-francaise-action-1",
+    "microskill.histoire.revolution-francaise-action-2": "his-revolution-francaise-action-2",
+    "microskill.histoire.revolution-industrielle-action-1": "his-revolution-industrielle-action-1",
+    "microskill.histoire.revolution-industrielle-action-2": "his-revolution-industrielle-action-2",
+    "microskill.histoire.seconde-guerre-mondiale-action-1": "his-seconde-guerre-mondiale-action-1",
+    "microskill.histoire.seconde-guerre-mondiale-action-2": "his-seconde-guerre-mondiale-action-2",
+    "microskill.histoire.temps-modernes-action-1": "his-temps-modernes-action-1",
+    "microskill.histoire.temps-modernes-action-2": "his-temps-modernes-action-2",
+    "microskill.histoire.totalitarismes-action-1": "his-totalitarismes-action-1",
+    "microskill.histoire.totalitarismes-action-2": "his-totalitarismes-action-2",
+    "microskill.histoire.ve-republique-action-1": "his-ve-republique-action-1",
+    "microskill.histoire.ve-republique-action-2": "his-ve-republique-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -1060,6 +1108,118 @@
       "competences": [
         "svt-systeme-nerveux-action-1",
         "svt-systeme-nerveux-action-2"
+      ]
+    },
+    "antiquite": {
+      "prerequis": [],
+      "competences": [
+        "his-antiquite-action-1",
+        "his-antiquite-action-2"
+      ]
+    },
+    "construction-europeenne": {
+      "prerequis": [],
+      "competences": [
+        "his-construction-europeenne-action-1",
+        "his-construction-europeenne-action-2"
+      ]
+    },
+    "decolonisation": {
+      "prerequis": [],
+      "competences": [
+        "his-decolonisation-action-1",
+        "his-decolonisation-action-2"
+      ]
+    },
+    "guerre-froide": {
+      "prerequis": [],
+      "competences": [
+        "his-guerre-froide-action-1",
+        "his-guerre-froide-action-2"
+      ]
+    },
+    "lumieres": {
+      "prerequis": [],
+      "competences": [
+        "his-lumieres-action-1",
+        "his-lumieres-action-2"
+      ]
+    },
+    "monde-depuis-1990": {
+      "prerequis": [],
+      "competences": [
+        "his-monde-depuis-1990-action-1",
+        "his-monde-depuis-1990-action-2"
+      ]
+    },
+    "moyen-age": {
+      "prerequis": [],
+      "competences": [
+        "his-moyen-age-action-1",
+        "his-moyen-age-action-2"
+      ]
+    },
+    "napoleon": {
+      "prerequis": [],
+      "competences": [
+        "his-napoleon-action-1",
+        "his-napoleon-action-2"
+      ]
+    },
+    "premiere-guerre-mondiale": {
+      "prerequis": [],
+      "competences": [
+        "his-premiere-guerre-mondiale-action-1",
+        "his-premiere-guerre-mondiale-action-2"
+      ]
+    },
+    "renaissance": {
+      "prerequis": [],
+      "competences": [
+        "his-renaissance-action-1",
+        "his-renaissance-action-2"
+      ]
+    },
+    "revolution-francaise": {
+      "prerequis": [],
+      "competences": [
+        "his-revolution-francaise-action-1",
+        "his-revolution-francaise-action-2"
+      ]
+    },
+    "revolution-industrielle": {
+      "prerequis": [],
+      "competences": [
+        "his-revolution-industrielle-action-1",
+        "his-revolution-industrielle-action-2"
+      ]
+    },
+    "seconde-guerre-mondiale": {
+      "prerequis": [],
+      "competences": [
+        "his-seconde-guerre-mondiale-action-1",
+        "his-seconde-guerre-mondiale-action-2"
+      ]
+    },
+    "temps-modernes": {
+      "prerequis": [],
+      "competences": [
+        "his-temps-modernes-action-1",
+        "his-temps-modernes-action-2"
+      ]
+    },
+    "totalitarismes": {
+      "prerequis": [],
+      "competences": [
+        "his-totalitarismes-action-1",
+        "his-totalitarismes-action-2"
+      ]
+    },
+    "ve-republique": {
+      "prerequis": [],
+      "competences": [
+        "his-ve-republique-action-1",
+        "his-ve-republique-action-2"
       ]
     }
   }
