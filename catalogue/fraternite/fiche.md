@@ -14,6 +14,9 @@ questions:
   - c'est quoi la fraternité ?
   - Comment vivre la fraternité en classe ?
   - what is brotherhood?
+prerequis:
+niveaux: cycle-4
+competences: emc-fraternite-action-1, emc-fraternite-action-2
 ---
 
 # La fraternité

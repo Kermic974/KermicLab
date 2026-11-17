@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.discrimination-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "notion.emc.discrimination",
+  "target": "microskill.emc.discrimination-action-2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.democratie-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "notion.emc.democratie",
+  "target": "microskill.emc.democratie-action-1"
+}

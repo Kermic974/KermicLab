@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.liberte-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "notion.emc.liberte",
+  "target": "microskill.emc.liberte-action-1"
+}

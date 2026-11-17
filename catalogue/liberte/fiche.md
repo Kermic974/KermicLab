@@ -15,6 +15,9 @@ questions:
   - c'est quoi la liberté ?
   - Quelles sont les limites de la liberté d'expression ?
   - what is freedom?
+prerequis:
+niveaux: cycle-4
+competences: emc-liberte-action-1, emc-liberte-action-2
 ---
 
 # La liberté

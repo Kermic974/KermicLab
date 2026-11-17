@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.egalite-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "microskill.emc.egalite-action-2",
+  "target": "skill.emc.egalite"
+}

@@ -15,6 +15,9 @@ questions:
   - c'est quoi l'engagement civique ?
   - Comment préparer un projet d'engagement citoyen ?
   - what is civic engagement?
+prerequis:
+niveaux: cycle-4
+competences: emc-engagement-civique-action-1, emc-engagement-civique-action-2
 ---
 
 # L'engagement civique

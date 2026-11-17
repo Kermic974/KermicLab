@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.citoyennete-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyennete/contenu.json"
+  },
+  "source": "microskill.emc.citoyennete-action-1",
+  "target": "skill.emc.citoyennete"
+}
