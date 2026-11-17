@@ -12,4 +12,6 @@ Les fichiers texte versionnés utilisent LF. Le fichier `.gitattributes` rend ce
 
 Le rapport canonique complet sur Windows est PASS, avec zéro erreur et zéro avertissement. Deux builds successifs produisent exactement les mêmes 732 fichiers du catalogue, du site et du Worker, avec un diff vide sur les pages du catalogue et `index.html`. Le serveur navigateur normalise ses chemins avant de vérifier leur appartenance au dossier servi. Les 11 tests ciblés des jeux concernés passent.
 
-La qualification finale doit relever les tests navigateur Windows complets, la CI Ubuntu et le contrôle du catalogue public après déploiement. Les révisions et résultats seront consignés ici avant clôture.
+La suite navigateur complète de Windows sur le code de `c51d689` compte 537 tests, dont 536 réussis, zéro échec et un test ignoré lié à l’absence du catalogue privé. Les contrôles UX et la navigation des jeux sont inclus dans cette exécution.
+
+La qualification finale doit relever la CI Ubuntu de la tête finale et le contrôle du catalogue public après déploiement. Les révisions et résultats seront consignés ici avant clôture.
