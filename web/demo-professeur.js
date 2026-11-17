@@ -3,8 +3,8 @@
 // objet sérialisable conservé par l'appelant (sessionStorage). Activée par « Tester les rôles → Professeur ».
 // Rien n'est envoyé au serveur ; les élèves sont fictifs. `demo/simuler` fait rejoindre un élève fictif par un lien.
 import {
-  MAX_CLASSES, MAX_ELEVES_CLASSE, MAX_ELEVES_PROF, MAX_INVITATIONS_ACTIVES, tirerCodeProf, validerClasse,
-  validerDemandeInvitation, validerProfilProf
+  MAX_ACTIVITES_ACTIVES, MAX_CLASSES, MAX_ELEVES_CLASSE, MAX_ELEVES_PROF, MAX_INVITATIONS_ACTIVES, parametresActivite, tirerCodeProf,
+  validerActivite, validerClasse, validerDemandeInvitation, validerProfilProf
 } from "./professeur.js";
 
 export const CLE_DEMO = "kermiclab:demo-professeur";
@@ -31,9 +31,21 @@ export function etatInitial({ aujourdhui = new Date().toISOString().slice(0, 10)
     id: `demo-eleve-${i + 1}`, pseudo, classeId: i < 3 ? classe.id : null, rejointLe: jourDecale(aujourdhui, 10 - i),
     bilan: bilanFictif(aujourdhui, i, notions.slice(i % 2, (i % 2) + 4))
   }));
+  // Trois activités d'exemple et quelques résultats, pour que le tableau de bord ne soit pas vide.
+  const activites = notions.length ? [
+    { id: "demo-activite-1", type: "evaluation", classeId: classe.id, eleveId: null, parametres: { notions: notions.slice(0, 2), libelle: null, nbQuestions: 10 }, echeance: jourDecale(aujourdhui, 2), statut: "active", creeLe: `${jourDecale(aujourdhui, 6)} 09:00:00`, source: "catalogue" },
+    { id: "demo-activite-2", type: "defi", classeId: classe.id, eleveId: null, parametres: { notions: notions.slice(1, 3), libelle: null, nbQuestions: 5 }, echeance: null, statut: "active", creeLe: `${jourDecale(aujourdhui, 3)} 09:00:00`, source: "catalogue" },
+    { id: "demo-activite-3", type: "objectif", classeId: null, eleveId: eleves[3].id, parametres: { notions: [], libelle: null, objectif: { mesure: "temps", valeur: 60 } }, echeance: null, statut: "active", creeLe: `${jourDecale(aujourdhui, 1)} 09:00:00`, source: "catalogue" }
+  ] : [];
+  const resultats = activites.length ? [
+    { activite: "demo-activite-1", eleve: eleves[0].id, reussis: 8, total: 10, meilleur: 8, tentatives: 0, dureeS: 720, termine: true },
+    { activite: "demo-activite-1", eleve: eleves[1].id, reussis: 4, total: 10, meilleur: 4, tentatives: 0, dureeS: 540, termine: true },
+    { activite: "demo-activite-2", eleve: eleves[0].id, reussis: 5, total: 5, meilleur: 5, tentatives: 2, dureeS: 200, termine: true },
+    { activite: "demo-activite-2", eleve: eleves[2].id, reussis: 2, total: 5, meilleur: 2, tentatives: 1, dureeS: 150, termine: true }
+  ] : [];
   return {
     v: 1, profil: { nomAffiche: "M. Martin", matieres: ["mathematiques"], niveaux: ["4e", "3e"] },
-    classes: [classe], invitations: [], eleves, compteur: 0, notions
+    classes: [classe], invitations: [], eleves, compteur: 0, notions, activites, resultats
   };
 }
 
@@ -54,7 +66,7 @@ const erreur = (etat, code, statut) => reponse(etat, statut, { erreur: code });
  * Traite une requête de démonstration comme le Worker.
  * @returns {{ etat: object, statut: number, donnees: object | null }}
  */
-export function traiter(etat, methode, route, corps = {}, { maintenant = Date.now(), aleatoire = (n) => Uint8Array.from({ length: n }, () => Math.floor(Math.random() * 256)) } = {}) {
+export function traiter(etat, methode, route, corps = {}, { maintenant = Date.now(), aleatoire = (n) => Uint8Array.from({ length: n }, () => Math.floor(Math.random() * 256)), matiereDe = () => null } = {}) {
   const s = Math.floor(maintenant / 1000);
   const actives = (e) => e.invitations.filter((i) => i.expire > s && i.utilisations < i.max);
   const est = (m, r) => methode === m && route === r;
@@ -118,6 +130,35 @@ export function traiter(etat, methode, route, corps = {}, { maintenant = Date.no
     if (cible && !etat.classes.some((c) => c.id === cible)) return erreur(etat, "introuvable", 404);
     if (cible && eleve.classeId !== cible && etat.eleves.filter((e) => e.classeId === cible).length >= MAX_ELEVES_CLASSE) return erreur(etat, "classe-complete", 409);
     return reponse({ ...etat, eleves: etat.eleves.map((e) => (e.id === eleve.id ? { ...e, classeId: cible } : e)) }, 200, { id: eleve.id, classeId: cible });
+  }
+  // Activités (ADR 0030 §9).
+  etat = { activites: [], resultats: [], ...etat };
+  if (est("GET", "activites")) {
+    const ids = new Set(etat.eleves.map((e) => e.id));
+    return reponse(etat, 200, {
+      activites: etat.activites, resultats: etat.resultats.filter((r) => ids.has(r.eleve)),
+      limites: { activites: MAX_ACTIVITES_ACTIVES }, cahiersIa: { ia: false, limite: 0, utilisees: 0, restantes: 0 }
+    });
+  }
+  if (est("POST", "activites")) {
+    const r = validerActivite(corps, { profil: etat.profil, matiereDe, aujourdhui: new Date(maintenant).toISOString().slice(0, 10) });
+    if (!r.ok) return erreur(etat, r.code, r.code === "profil-requis" ? 409 : 400);
+    const a = r.activite;
+    if (a.cible.classeId && !etat.classes.some((c) => c.id === a.cible.classeId)) return erreur(etat, "introuvable", 404);
+    if (a.cible.eleveId && !etat.eleves.some((e) => e.id === a.cible.eleveId)) return erreur(etat, "introuvable", 404);
+    if (etat.activites.filter((x) => x.statut === "active").length >= MAX_ACTIVITES_ACTIVES) return erreur(etat, "quota-activites", 409);
+    const id = `demo-activite-n${etat.compteur + 1}`;
+    const activite = {
+      id, type: a.type, classeId: a.cible.classeId, eleveId: a.cible.eleveId, parametres: parametresActivite(a), echeance: a.echeance,
+      statut: "active", creeLe: new Date(maintenant).toISOString().replace("T", " ").slice(0, 19), source: "catalogue"
+    };
+    return reponse({ ...etat, compteur: etat.compteur + 1, activites: [activite, ...etat.activites] }, 201,
+      { id, type: a.type, source: "catalogue", raison: a.type === "cahier" ? (a.cahier.ia ? "ia-indisponible" : "ia-inactive") : null });
+  }
+  if (methode === "POST" && (m = route.match(/^activites\/([a-z0-9-]+)\/(archiver|supprimer)$/))) {
+    if (!etat.activites.some((a) => a.id === m[1])) return erreur(etat, "introuvable", 404);
+    if (m[2] === "archiver") return reponse({ ...etat, activites: etat.activites.map((a) => (a.id === m[1] ? { ...a, statut: "archivee" } : a)) }, 204);
+    return reponse({ ...etat, activites: etat.activites.filter((a) => a.id !== m[1]), resultats: etat.resultats.filter((r) => r.activite !== m[1]) }, 204);
   }
   // Démonstration seulement : un élève fictif rejoint par le lien (le parcours réel se fait depuis le compte de l'élève).
   if (methode === "POST" && (m = route.match(/^demo\/simuler\/([a-z0-9-]+)$/))) {

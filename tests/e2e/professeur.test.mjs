@@ -161,8 +161,11 @@ test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et
   await page.click("#formulaire-pseudo button[type=submit]");
   await page.click("#contrib-demo-prof");
   await page.locator("#contrib-tableau").waitFor({ state: "visible" });
-  await page.locator("#nav-mobile-classes").waitFor();
-  await page.click("#nav-mobile-classes");
+  // Sur mobile, l'entrée Professeur ouvre le tableau de bord ; Mes classes est dans la sous-navigation.
+  await page.locator("#nav-mobile-suivi").waitFor();
+  await page.click("#nav-mobile-suivi");
+  await page.locator("#suivi-contenu").waitFor();
+  await page.click('#suivi .prof-onglets [data-nav="classes"]');
   const carte = page.locator(".prof-classe").first();
   await carte.waitFor();
   assert.match(await carte.textContent(), /4e B/);
@@ -181,6 +184,107 @@ test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et
   const largeur = await page.evaluate(() => document.documentElement.scrollWidth);
   assert.ok(largeur <= 390, `pas de défilement horizontal sur mobile (${largeur})`);
   assert.deepEqual(appelsProf, [], "la démonstration n'appelle pas le Worker");
+  assert.deepEqual(erreurs, []);
+  await session.contexte.close();
+});
+
+// ---------- Activités et tableau de bord (ADR 0030 §9) ----------
+
+test("activités : le professeur donne une évaluation à la classe, l'élève la passe, le tableau de bord affiche le score", async () => {
+  const prof = await appareil("Prof2");
+  await creerCompteLie(prof.page, "mme.diallo", "Grand-Hibou-77");
+  const profId = env.DB.sqlite.prepare("SELECT id FROM comptes_locaux ORDER BY rowid DESC").get().id;
+  env.DB.sqlite.prepare("INSERT INTO attributions_roles (type_compte, compte_id, role_id) VALUES ('compte-local', ?, 'prof')").run(profId);
+  await prof.page.reload();
+  // Profil et classe, puis un lien.
+  await prof.page.click(".barre-laterale .profil-carte[data-action=profil]");
+  await prof.page.locator("#profil-prof").waitFor();
+  await prof.page.fill("#prof-nom", "Mme Diallo");
+  await prof.page.check('#prof-matieres input[value="mathematiques"]');
+  await prof.page.check('#prof-niveaux input[value="4e"]');
+  await prof.page.click("#formulaire-profil-prof button[type=submit]");
+  await prof.page.waitForFunction(() => document.querySelector("#prof-profil-erreur").textContent === "");
+  await prof.page.click("#nav-classes");
+  await prof.page.click("#classes-ajout summary");
+  await prof.page.fill("#classe-nom", "4e A");
+  await prof.page.click("#formulaire-classe button[type=submit]");
+  const carte = prof.page.locator(".prof-classe").first();
+  await carte.waitFor();
+  await carte.locator("[data-classe-lien]").click();
+  await prof.page.locator("#classes-lien").waitFor();
+  const lien = await prof.page.locator("#classes-lien-url").inputValue();
+
+  const eleve = await appareil("Inès");
+  await creerCompteLie(eleve.page, "ines.eleve", "Petit-Renard-42");
+  await eleve.page.goto(lien);
+  await eleve.page.locator("#dialogue-rejoindre[open]").waitFor();
+  await eleve.page.check("#rejoindre-accord");
+  await eleve.page.click("#rejoindre-valider");
+  await eleve.page.locator("#mes-profs li").waitFor({ state: "attached" });
+
+  // Évaluation de 5 questions pour toute la classe, depuis la carte de la classe.
+  await prof.page.click("#nav-classes");
+  await carte.locator("[data-activite-classe]").click();
+  await prof.page.locator("#dialogue-activite[open]").waitFor();
+  await prof.page.check('input[name="activite-type"][value="evaluation"]');
+  await prof.page.fill("#activite-nb", "3");
+  await prof.page.check('#activite-notions input[value="pythagore"]');
+  await prof.page.click("#activite-valider");
+  assert.match(await prof.page.locator("#activite-erreur").textContent(), /5 à 40/);
+  await prof.page.fill("#activite-nb", "5");
+  await prof.page.fill("#activite-libelle", "Contrôle Pythagore");
+  await prof.page.click("#activite-valider");
+  await prof.page.locator("#dialogue-activite").waitFor({ state: "hidden" });
+
+  // L'élève la voit sur l'accueil et la passe.
+  await eleve.page.reload();
+  await eleve.page.locator("#activites-eleve").waitFor();
+  assert.match(await eleve.page.locator("#activites-eleve").textContent(), /Contrôle Pythagore.*Évaluation.*5 questions.*Mme Diallo.*à faire/s);
+  await eleve.page.click("[data-mon-activite]");
+  await eleve.page.locator("#dialogue-quiz[open]").waitFor();
+  assert.equal(await eleve.page.locator("#quiz-questions fieldset").count(), 5);
+  for (let i = 0; i < 5; i++) await eleve.page.locator(`input[name="quiz-${i}"]`).first().check();
+  await eleve.page.click("#quiz-valider");
+  await eleve.page.waitForFunction(() => /bonne\(s\) réponse\(s\) sur 5/.test(document.querySelector("#quiz-retour").textContent));
+  await eleve.page.click("#quiz-valider");
+  await eleve.page.locator("#dialogue-quiz").waitFor({ state: "hidden" });
+  await eleve.page.locator("#activites-eleve", { hasText: "terminé" }).waitFor();
+  assert.equal(await eleve.page.locator("[data-mon-activite]").count(), 0, "une évaluation ne se repasse pas");
+
+  // Le tableau de bord du professeur.
+  await prof.page.click("#nav-suivi");
+  const activite = prof.page.locator(".activite-carte").first();
+  await activite.waitFor();
+  assert.match(await activite.textContent(), /Contrôle Pythagore.*1 \/ 1 terminé/s);
+  assert.match(await prof.page.locator("#suivi-engagement").textContent(), /0 \/ 1.*élèves actifs.*100 %.*activités terminées/s);
+  assert.match(await prof.page.locator("#suivi-performance").textContent(), /\d+ %.*score moyen aux évaluations/s);
+  await capturer(prof.page, "professeur-tableau-de-bord", { pleinePage: true });
+  for (const p of [prof, eleve]) {
+    assert.deepEqual(p.erreurs, []);
+    await p.contexte.close();
+  }
+});
+
+test("activités (démo) : tableau de bord rempli et défi donné à la classe, sans appel au Worker", async () => {
+  const session = await appareil(null);
+  const { page, erreurs, appelsProf } = session;
+  await page.goto(`${serveur.url}/?demo=contributions#contributions`);
+  await page.locator("#dialogue-pseudo[open]").waitFor();
+  await page.fill("#pseudo", "Démo");
+  await page.click("#formulaire-pseudo button[type=submit]");
+  await page.click("#contrib-demo-prof");
+  await page.locator("#nav-suivi").waitFor();
+  await page.click("#nav-suivi");
+  await page.locator("#suivi-contenu").waitFor();
+  assert.equal(await page.locator(".activite-carte").count(), 3);
+  assert.match(await page.locator("#suivi-performance").textContent(), /60 %.*score moyen aux évaluations/s);
+  await page.click("#suivi-activite");
+  await page.locator("#dialogue-activite[open]").waitFor();
+  await page.locator("#activite-notions input").first().check();
+  await page.click("#activite-valider");
+  await page.locator("#dialogue-activite").waitFor({ state: "hidden" });
+  await page.waitForFunction(() => document.querySelectorAll(".activite-carte").length === 4);
+  assert.deepEqual(appelsProf, []);
   assert.deepEqual(erreurs, []);
   await session.contexte.close();
 });

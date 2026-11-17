@@ -32,6 +32,8 @@ const definitions = {
       ["compte", "#compte", "Mon compte (facultatif) : compte sur l'appareil et synchronisation pseudonymisée (ADR 0024)"],
       ["famille", "#famille", "Espace famille : écran dédié, masqué tant que connexionActive vaut false"],
       ["espace-famille", "#espace-famille", "Espace famille des comptes locaux (ADR 0029) : tableau de bord du parent, cahiers assignés, consommations"],
+      ["suivi", "#suivi", "Tableau de bord du professeur (ADR 0030 §9) : engagement, performance, activités, élèves à suivre"],
+      ["activites-eleve", "", "Accueil d'un élève : travail donné par ses professeurs, défis et évaluations"],
       ["classes", "#classes", "Mes classes (rôle Professeur, ADR 0030) : profil professeur, classes, liens d'invitation"],
       ["eleves", "#eleves", "Mes élèves (rôle Professeur, ADR 0030) : suivi des élèves affiliés"],
       ["rejoindre", "", "Rejoindre un professeur : lien ou code d'invitation ouvert par un élève connecté"],
