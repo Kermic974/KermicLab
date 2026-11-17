@@ -31,6 +31,7 @@ const definitions = {
       ["support", "", "Support : cliquer sur Signaler un problème"],
       ["compte", "#compte", "Mon compte (facultatif) : compte sur l'appareil et synchronisation pseudonymisée (ADR 0024)"],
       ["famille", "#famille", "Espace famille : écran dédié, masqué tant que connexionActive vaut false"],
+      ["espace-famille", "#espace-famille", "Espace famille des comptes locaux (ADR 0029) : tableau de bord du parent, cahiers assignés, consommations"],
       ["contributions", "#contributions", "Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions"],
       ["comptes", null, "Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false"],
       ["backoffice", "admin/", "Back-office : page séparée /admin/, clé partagée, dix écrans (ADR 0026)"]

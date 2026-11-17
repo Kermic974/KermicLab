@@ -98,8 +98,13 @@ test("instantané : seules les clés synchronisées sont copiées et restaurées
 test("session : liée à l'identifiant, secrets de synchronisation vérifiés", async () => {
   const s = await deriverSecrets("le chat dort sur le toit", "lea.martin", RAPIDE);
   const synchro = { pseudonyme: s.pseudonyme, jeton: s.jeton, cle: s.cle, jetonServeur: "x".repeat(43) };
-  assert.deepEqual(lireSession(JSON.stringify({ identifiant: "lea.martin", synchro }), "lea.martin"), { identifiant: "lea.martin", synchro });
+  assert.deepEqual(lireSession(JSON.stringify({ identifiant: "lea.martin", synchro }), "lea.martin"), { identifiant: "lea.martin", synchro, serveur: null });
   assert.equal(lireSession(JSON.stringify({ identifiant: "tom" }), "lea.martin"), null);
-  assert.deepEqual(lireSession(JSON.stringify({ identifiant: "lea.martin", synchro: { pseudonyme: "x" } }), "lea.martin"), { identifiant: "lea.martin", synchro: null });
+  assert.deepEqual(lireSession(JSON.stringify({ identifiant: "lea.martin", synchro: { pseudonyme: "x" } }), "lea.martin"), { identifiant: "lea.martin", synchro: null, serveur: null });
+  // Session serveur de l'Espace famille (ADR 0029) : gardée seulement si le jeton est bien formé et non expiré.
+  const serveur = { jeton: "y".repeat(43), expire: Math.floor(Date.now() / 1000) + 3600 };
+  assert.deepEqual(lireSession(JSON.stringify({ identifiant: "lea.martin", serveur }), "lea.martin").serveur, serveur);
+  assert.equal(lireSession(JSON.stringify({ identifiant: "lea.martin", serveur: { ...serveur, expire: 1 } }), "lea.martin").serveur, null);
+  assert.equal(lireSession(JSON.stringify({ identifiant: "lea.martin", serveur: { ...serveur, jeton: "court" } }), "lea.martin").serveur, null);
   assert.equal(lireSession("{", "lea.martin"), null);
 });

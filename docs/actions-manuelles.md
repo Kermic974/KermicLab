@@ -230,3 +230,13 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 |---|---|---|---|---|
 | Confirmer les liens vers les vues actives | Cartouche de suivi de chacun des six fichiers dans `docs/ux/` ; `https://kermiclab.online/` et API définie dans `web/config.json` | Les liens proviennent de la configuration du projet ; leur résolution DNS échoue depuis l'environnement de travail au 5 novembre 2026. La version locale du catalogue ne certifie pas la version déployée | Ouvrir les liens depuis un navigateur connecté ; vérifier les trois modes du cercle, les pages éditoriales et les pages du catalogue ; ouvrir les dialogues via les actions précisées dans les cartouches | à faire |
 | Autoriser les workflows de la PR #119 | [Actions de la PR #119](https://github.com/Kermic974/KermicLab/pull/119/checks) | Le run CI/CD après correction est en `action_required`, sans job exécuté ; `npm run ci` passe localement (285 tests) | Autoriser les workflows puis vérifier que le job « Lint, build, tests » passe au vert | à faire |
+
+## Espace famille des comptes locaux (ADR 0029)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'ADR 0029 (bilan clair, consentement, conservation des consommations 90 jours) | `docs/decisions/0029-espace-famille-comptes-locaux.md` | Point de contrôle humain : données d'enfants mineurs lisibles par le parent | ADR passé au statut « accepté » | à faire |
+| Attribuer le rôle « parent » à ton compte parent | Back-office `/admin/` → Utilisateurs → compte local → rôle `parent` | Seul un compte au rôle parent ouvre l'Espace famille ; aucun rôle n'est attribué automatiquement | Dans « Mon compte », la rubrique Famille affiche « Tu as le rôle parent » et le bouton « Ouvrir l'Espace famille » | à faire |
+| Rattacher le compte de ton fils | Sur son appareil : Mon compte → Famille → « Inviter un parent » ; sur le tien : Espace famille → Ajouter un enfant → code | Le compte solo créé le 2026-11-17 garde sa progression | Son prénom apparaît dans l'Espace famille ; après sa prochaine connexion, son bilan s'affiche | à faire |
+| Relire le texte de consentement parental et la page de confidentialité | `web/i18n/fr.json` (`consentementTexte`), `web/confidentialite.html` | Validation juridique (action 14) avant une ouverture au-delà de la bêta | Relecture notée dans `docs/chantiers/rgpd.md` | à faire |
+

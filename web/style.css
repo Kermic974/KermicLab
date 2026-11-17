@@ -722,7 +722,7 @@ dialog.bulle-lab[open] { display: flex; }
 .bulle-pied .bouton { min-height: 40px; }
 
 /* Défi express */
-#defi, #profil, #compte { max-width: 760px; }
+#defi, #profil, #compte, #espace-famille { max-width: 760px; }
 .navigation-personnelle [aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); }
 #compte-options-connexion { margin-bottom: 16px; }
 #compte-options-connexion > p { margin: 0 0 10px; }
@@ -1208,3 +1208,32 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .profil-bloc > h2 { margin-top: 0; }
 .profil-identite .formulaire-profil, .profil-identite .case-memoire { max-width: 520px; }
 .profil-apropos { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid var(--bord); }
+
+/* ---------- Espace famille des comptes locaux (ADR 0029) ---------- */
+.code-invitation { font-size: 28px; font-weight: 800; letter-spacing: .12em; font-variant-numeric: tabular-nums; margin: 10px 0 4px; user-select: all; }
+.ef-bloc { margin: 0 0 22px; }
+.ef-bloc > h3 { margin: 0 0 10px; }
+.ef-alertes { margin: 0; padding-left: 20px; display: grid; gap: 4px; color: var(--texte-2); }
+.ef-alertes:empty { display: none; }
+.ef-enfants { display: grid; gap: 14px; margin: 0 0 14px; }
+.ef-enfant { display: grid; gap: 10px; padding: 14px 16px; }
+.ef-enfant h4, .ef-enfant h5 { margin: 0; }
+.ef-enfant .stats { margin: 0; }
+.ef-enfant-tete { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ef-semaine { display: grid; grid-template-columns: repeat(7, 1fr); align-items: end; gap: 6px; height: 48px; padding: 4px 0; }
+.ef-barre { display: block; height: max(3px, var(--h, 0%)); border-radius: 4px 4px 0 0; background: var(--accent); opacity: .85; }
+.ef-cahiers { display: grid; gap: 6px; }
+.ef-cahier { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border: 1px solid var(--bord); border-radius: var(--rayon-moyen); background: var(--surface-2); overflow-wrap: anywhere; }
+.ef-gestion { margin: 0; }
+.ef-gestion-corps { display: grid; gap: 14px; padding-top: 8px; }
+.ef-gestion-corps form { display: grid; gap: 6px; }
+.ef-mode { border: 0; padding: 0; margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.ef-tableau-defilant { overflow-x: auto; max-width: 100%; }
+.ef-conso { border-collapse: collapse; width: 100%; font-size: 14px; }
+.ef-conso th, .ef-conso td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--bord); white-space: nowrap; }
+.ef-conso tbody tr:last-child th, .ef-conso tbody tr:last-child td { font-weight: 700; border-bottom: 0; }
+.cahiers-famille { margin: 0 0 16px; }
+.cahiers-famille > h5 { margin: 0 0 8px; font-size: 1rem; }
+@media (max-width: 640px) {
+  .ef-enfant .stats-progression, #ef-chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

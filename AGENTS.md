@@ -23,7 +23,7 @@ Principes non négociables :
 
 | Chemin | Rôle |
 |---|---|
-| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/api/contributions` (ADR 0023), `/api/compte-local` (compte local et synchronisation pseudonymisée, ADR 0024), `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
+| `worker/` | Cloudflare Worker : API `/api/chat`, `/api/support`, `/api/contributions` (ADR 0023), `/api/compte-local` (compte local et synchronisation pseudonymisée, ADR 0024), `/api/famille` (Espace famille des comptes locaux, ADR 0029), `/maquettes/:id`, routage, modération, issues GitHub, KPI D1, stockage R2 (`env.DONNEES`) |
 | `worker/src/backoffice.js`, `web/admin/` | Back-office (ADR 0026, `docs/chantiers/back-office.md`) : API `/api/admin/` protégée par la clé `BACKOFFICE_JETON` et interface `/admin/`. Rôles et stratégies (`roles.js`, préparés, non appliqués tant que `CONTROLE_ACCES_ACTIF` vaut false), réglages à chaud (`reglages.js`), analyse des requêtes (`analyse-requete.js`), comportement des profils et garde-fous (`comportement.js`), télémétrie (`telemetrie.js`), registre et contrôle de non-conservation (`donnees.js`), contenus (`contenus.js`), charte (`web/theme.js`) |
 | `worker/migrations/` | Migrations D1 versionnées, ajout seulement, appliquées au déploiement (règles : `worker/migrations/README.md`). Les `worker/schema*.sql` restent le schéma de référence des tests |
 | `worker/src/generated/` | Généré par `npm run build` (index + pages du catalogue). Ne pas modifier, non versionné |
