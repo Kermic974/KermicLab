@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.moyen-age-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "microskill.histoire.moyen-age-action-1",
+  "target": "skill.histoire.moyen-age"
+}

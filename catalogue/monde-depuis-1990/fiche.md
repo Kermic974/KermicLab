@@ -17,6 +17,9 @@ questions:
   - Comment le monde depuis 1990 se transforme-t-il ?
   - Quels sont les acteurs du monde contemporain ?
   - Que signifie un monde multipolaire ?
+prerequis:
+niveaux: cycle-4, terminale
+competences: his-monde-depuis-1990-action-1, his-monde-depuis-1990-action-2
 ---
 
 # Le monde depuis 1990

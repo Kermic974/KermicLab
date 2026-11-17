@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.ve-republique-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "notion.histoire.ve-republique",
+  "target": "microskill.histoire.ve-republique-action-1"
+}

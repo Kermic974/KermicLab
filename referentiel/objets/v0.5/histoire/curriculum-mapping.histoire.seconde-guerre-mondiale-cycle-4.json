@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.seconde-guerre-mondiale-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seconde-guerre-mondiale/contenu.json"
+  },
+  "object": "notion.histoire.seconde-guerre-mondiale",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced"
+}

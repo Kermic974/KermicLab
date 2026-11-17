@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.renaissance-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "notion.histoire.renaissance",
+  "target": "microskill.histoire.renaissance-action-2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerre-froide-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide",
+  "target": "microskill.histoire.guerre-froide-action-2"
+}

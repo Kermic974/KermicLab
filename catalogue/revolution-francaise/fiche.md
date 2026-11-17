@@ -20,6 +20,9 @@ questions:
   - Que change la prise de la Bastille ?
   - Qui compose le tiers état ?
   - Que réclame Olympe de Gouges pour les femmes ?
+prerequis:
+niveaux: cycle-4, seconde
+competences: his-revolution-francaise-action-1, his-revolution-francaise-action-2
 ---
 
 # La Révolution française

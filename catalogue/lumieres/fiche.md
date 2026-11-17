@@ -21,6 +21,9 @@ questions:
   - Pourquoi Diderot prépare-t-il une Encyclopédie ?
   - Que propose Montesquieu pour limiter le pouvoir ?
   - Comment Voltaire défend-il la tolérance ?
+prerequis:
+niveaux: cycle-4, seconde
+competences: his-lumieres-action-1, his-lumieres-action-2
 ---
 
 # Les Lumières

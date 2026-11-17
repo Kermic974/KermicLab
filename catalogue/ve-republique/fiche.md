@@ -18,6 +18,9 @@ questions:
   - Pourquoi la Ve République est-elle créée ?
   - Comment fonctionne la Cinquième République ?
   - Que signifie la cohabitation ?
+prerequis:
+niveaux: cycle-4, terminale
+competences: his-ve-republique-action-1, his-ve-republique-action-2
 ---
 
 # La Ve République
