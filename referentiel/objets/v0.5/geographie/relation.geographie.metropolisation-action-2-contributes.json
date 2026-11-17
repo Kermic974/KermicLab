@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.metropolisation-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "microskill.geographie.metropolisation-action-2",
+  "target": "skill.geographie.metropolisation"
+}

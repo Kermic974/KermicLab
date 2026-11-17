@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.risques-naturels-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "notion.geographie.risques-naturels",
+  "target": "microskill.geographie.risques-naturels-action-1"
+}

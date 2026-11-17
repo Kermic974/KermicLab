@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.espaces-ruraux-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "official",
+    "ref": "https://eduscol.education.gouv.fr/sites/default/files/document/ra16c3higegeo6eth2habiterespacefaibledensite616738pdf-77154.pdf"
+  },
+  "object": "notion.geographie.espaces-ruraux",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

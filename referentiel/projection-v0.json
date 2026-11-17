@@ -99,7 +99,24 @@
     "seconde-guerre-mondiale": "notion.histoire.seconde-guerre-mondiale",
     "temps-modernes": "notion.histoire.temps-modernes",
     "totalitarismes": "notion.histoire.totalitarismes",
-    "ve-republique": "notion.histoire.ve-republique"
+    "ve-republique": "notion.histoire.ve-republique",
+    "afrique-australe": "notion.geographie.afrique-australe",
+    "changement-climatique": "notion.geographie.changement-climatique",
+    "dynamiques-territoriales": "notion.geographie.dynamiques-territoriales",
+    "espaces-productifs": "notion.geographie.espaces-productifs",
+    "espaces-ruraux": "notion.geographie.espaces-ruraux",
+    "france-regions": "notion.geographie.france-regions",
+    "france-territoires": "notion.geographie.france-territoires",
+    "mers-oceans": "notion.geographie.mers-oceans",
+    "metropolisation": "notion.geographie.metropolisation",
+    "migrations": "notion.geographie.migrations",
+    "mobilites": "notion.geographie.mobilites",
+    "mondialisation": "notion.geographie.mondialisation",
+    "ressources": "notion.geographie.ressources",
+    "risques-naturels": "notion.geographie.risques-naturels",
+    "tourisme": "notion.geographie.tourisme",
+    "union-europeenne": "notion.geographie.union-europeenne",
+    "urbanisation": "notion.geographie.urbanisation"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -373,7 +390,41 @@
     "microskill.histoire.totalitarismes-action-1": "his-totalitarismes-action-1",
     "microskill.histoire.totalitarismes-action-2": "his-totalitarismes-action-2",
     "microskill.histoire.ve-republique-action-1": "his-ve-republique-action-1",
-    "microskill.histoire.ve-republique-action-2": "his-ve-republique-action-2"
+    "microskill.histoire.ve-republique-action-2": "his-ve-republique-action-2",
+    "microskill.geographie.afrique-australe-action-1": "geographie-afrique-australe-action-1",
+    "microskill.geographie.afrique-australe-action-2": "geographie-afrique-australe-action-2",
+    "microskill.geographie.changement-climatique-action-1": "geographie-changement-climatique-action-1",
+    "microskill.geographie.changement-climatique-action-2": "geographie-changement-climatique-action-2",
+    "microskill.geographie.dynamiques-territoriales-action-1": "geographie-dynamiques-territoriales-action-1",
+    "microskill.geographie.dynamiques-territoriales-action-2": "geographie-dynamiques-territoriales-action-2",
+    "microskill.geographie.espaces-productifs-action-1": "geographie-espaces-productifs-action-1",
+    "microskill.geographie.espaces-productifs-action-2": "geographie-espaces-productifs-action-2",
+    "microskill.geographie.espaces-ruraux-action-1": "geographie-espaces-ruraux-action-1",
+    "microskill.geographie.espaces-ruraux-action-2": "geographie-espaces-ruraux-action-2",
+    "microskill.geographie.france-regions-action-1": "geographie-france-regions-action-1",
+    "microskill.geographie.france-regions-action-2": "geographie-france-regions-action-2",
+    "microskill.geographie.france-territoires-action-1": "geographie-france-territoires-action-1",
+    "microskill.geographie.france-territoires-action-2": "geographie-france-territoires-action-2",
+    "microskill.geographie.mers-oceans-action-1": "geographie-mers-oceans-action-1",
+    "microskill.geographie.mers-oceans-action-2": "geographie-mers-oceans-action-2",
+    "microskill.geographie.metropolisation-action-1": "geographie-metropolisation-action-1",
+    "microskill.geographie.metropolisation-action-2": "geographie-metropolisation-action-2",
+    "microskill.geographie.migrations-action-1": "geographie-migrations-action-1",
+    "microskill.geographie.migrations-action-2": "geographie-migrations-action-2",
+    "microskill.geographie.mobilites-action-1": "geographie-mobilites-action-1",
+    "microskill.geographie.mobilites-action-2": "geographie-mobilites-action-2",
+    "microskill.geographie.mondialisation-action-1": "geographie-mondialisation-action-1",
+    "microskill.geographie.mondialisation-action-2": "geographie-mondialisation-action-2",
+    "microskill.geographie.ressources-action-1": "geographie-ressources-action-1",
+    "microskill.geographie.ressources-action-2": "geographie-ressources-action-2",
+    "microskill.geographie.risques-naturels-action-1": "geographie-risques-naturels-action-1",
+    "microskill.geographie.risques-naturels-action-2": "geographie-risques-naturels-action-2",
+    "microskill.geographie.tourisme-action-1": "geographie-tourisme-action-1",
+    "microskill.geographie.tourisme-action-2": "geographie-tourisme-action-2",
+    "microskill.geographie.union-europeenne-action-1": "geographie-union-europeenne-action-1",
+    "microskill.geographie.union-europeenne-action-2": "geographie-union-europeenne-action-2",
+    "microskill.geographie.urbanisation-action-1": "geographie-urbanisation-action-1",
+    "microskill.geographie.urbanisation-action-2": "geographie-urbanisation-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -1220,6 +1271,125 @@
       "competences": [
         "his-ve-republique-action-1",
         "his-ve-republique-action-2"
+      ]
+    },
+    "afrique-australe": {
+      "prerequis": [],
+      "competences": [
+        "geographie-afrique-australe-action-1",
+        "geographie-afrique-australe-action-2"
+      ]
+    },
+    "changement-climatique": {
+      "prerequis": [],
+      "competences": [
+        "geographie-changement-climatique-action-1",
+        "geographie-changement-climatique-action-2"
+      ]
+    },
+    "dynamiques-territoriales": {
+      "prerequis": [],
+      "competences": [
+        "geographie-dynamiques-territoriales-action-1",
+        "geographie-dynamiques-territoriales-action-2"
+      ]
+    },
+    "espaces-productifs": {
+      "prerequis": [],
+      "competences": [
+        "geographie-espaces-productifs-action-1",
+        "geographie-espaces-productifs-action-2"
+      ]
+    },
+    "espaces-ruraux": {
+      "prerequis": [],
+      "competences": [
+        "geographie-espaces-ruraux-action-1",
+        "geographie-espaces-ruraux-action-2"
+      ]
+    },
+    "france-regions": {
+      "prerequis": [],
+      "competences": [
+        "geographie-france-regions-action-1",
+        "geographie-france-regions-action-2"
+      ]
+    },
+    "france-territoires": {
+      "prerequis": [],
+      "competences": [
+        "geographie-france-territoires-action-1",
+        "geographie-france-territoires-action-2"
+      ]
+    },
+    "mers-oceans": {
+      "prerequis": [],
+      "competences": [
+        "geographie-mers-oceans-action-1",
+        "geographie-mers-oceans-action-2"
+      ]
+    },
+    "metropolisation": {
+      "prerequis": [],
+      "competences": [
+        "geographie-metropolisation-action-1",
+        "geographie-metropolisation-action-2"
+      ]
+    },
+    "migrations": {
+      "prerequis": [],
+      "competences": [
+        "geographie-migrations-action-1",
+        "geographie-migrations-action-2"
+      ]
+    },
+    "mobilites": {
+      "prerequis": [],
+      "competences": [
+        "geographie-mobilites-action-1",
+        "geographie-mobilites-action-2"
+      ]
+    },
+    "mondialisation": {
+      "prerequis": [],
+      "competences": [
+        "geographie-mondialisation-action-1",
+        "geographie-mondialisation-action-2"
+      ]
+    },
+    "ressources": {
+      "prerequis": [],
+      "competences": [
+        "geographie-ressources-action-1",
+        "geographie-ressources-action-2"
+      ]
+    },
+    "risques-naturels": {
+      "prerequis": [],
+      "competences": [
+        "geographie-risques-naturels-action-1",
+        "geographie-risques-naturels-action-2"
+      ]
+    },
+    "tourisme": {
+      "prerequis": [],
+      "competences": [
+        "geographie-tourisme-action-1",
+        "geographie-tourisme-action-2"
+      ]
+    },
+    "union-europeenne": {
+      "prerequis": [],
+      "competences": [
+        "geographie-union-europeenne-action-1",
+        "geographie-union-europeenne-action-2"
+      ]
+    },
+    "urbanisation": {
+      "prerequis": [],
+      "competences": [
+        "geographie-urbanisation-action-1",
+        "geographie-urbanisation-action-2"
       ]
     }
   }

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mobilites-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "notion.geographie.mobilites",
+  "target": "microskill.geographie.mobilites-action-2"
+}
