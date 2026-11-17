@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.temps-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "source": "microskill.philosophie.temps-action-2",
+  "target": "skill.philosophie.temps"
+}

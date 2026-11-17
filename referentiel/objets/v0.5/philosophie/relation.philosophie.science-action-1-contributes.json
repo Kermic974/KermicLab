@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.science-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science/contenu.json"
+  },
+  "source": "microskill.philosophie.science-action-1",
+  "target": "skill.philosophie.science"
+}

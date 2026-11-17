@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.nature-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature/contenu.json"
+  },
+  "source": "microskill.philosophie.nature-action-2",
+  "target": "skill.philosophie.nature"
+}

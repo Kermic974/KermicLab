@@ -148,7 +148,24 @@
     "mondialisation-commerce": "notion.ses.mondialisation-commerce",
     "monnaie": "notion.ses.monnaie",
     "opinion-publique": "notion.ses.opinion-publique",
-    "socialisation": "notion.ses.socialisation"
+    "socialisation": "notion.ses.socialisation",
+    "art": "notion.philosophie.art",
+    "bonheur": "notion.philosophie.bonheur",
+    "conscience": "notion.philosophie.conscience",
+    "devoir": "notion.philosophie.devoir",
+    "etat": "notion.philosophie.etat",
+    "inconscient": "notion.philosophie.inconscient",
+    "justice-philosophie": "notion.philosophie.justice-philosophie",
+    "langage": "notion.philosophie.langage",
+    "liberte-philosophie": "notion.philosophie.liberte-philosophie",
+    "nature": "notion.philosophie.nature",
+    "raison": "notion.philosophie.raison",
+    "religion": "notion.philosophie.religion",
+    "science": "notion.philosophie.science",
+    "technique": "notion.philosophie.technique",
+    "temps": "notion.philosophie.temps",
+    "travail": "notion.philosophie.travail",
+    "verite": "notion.philosophie.verite"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -520,7 +537,41 @@
     "microskill.ses.opinion-publique-action-1": "ses-opinion-publique-action-1",
     "microskill.ses.opinion-publique-action-2": "ses-opinion-publique-action-2",
     "microskill.ses.socialisation-action-1": "ses-socialisation-action-1",
-    "microskill.ses.socialisation-action-2": "ses-socialisation-action-2"
+    "microskill.ses.socialisation-action-2": "ses-socialisation-action-2",
+    "microskill.philosophie.art-action-1": "philosophie-art-action-1",
+    "microskill.philosophie.art-action-2": "philosophie-art-action-2",
+    "microskill.philosophie.bonheur-action-1": "philosophie-bonheur-action-1",
+    "microskill.philosophie.bonheur-action-2": "philosophie-bonheur-action-2",
+    "microskill.philosophie.conscience-action-1": "philosophie-conscience-action-1",
+    "microskill.philosophie.conscience-action-2": "philosophie-conscience-action-2",
+    "microskill.philosophie.devoir-action-1": "philosophie-devoir-action-1",
+    "microskill.philosophie.devoir-action-2": "philosophie-devoir-action-2",
+    "microskill.philosophie.etat-action-1": "philosophie-etat-action-1",
+    "microskill.philosophie.etat-action-2": "philosophie-etat-action-2",
+    "microskill.philosophie.inconscient-action-1": "philosophie-inconscient-action-1",
+    "microskill.philosophie.inconscient-action-2": "philosophie-inconscient-action-2",
+    "microskill.philosophie.justice-philosophie-action-1": "philosophie-justice-philosophie-action-1",
+    "microskill.philosophie.justice-philosophie-action-2": "philosophie-justice-philosophie-action-2",
+    "microskill.philosophie.langage-action-1": "philosophie-langage-action-1",
+    "microskill.philosophie.langage-action-2": "philosophie-langage-action-2",
+    "microskill.philosophie.liberte-philosophie-action-1": "philosophie-liberte-philosophie-action-1",
+    "microskill.philosophie.liberte-philosophie-action-2": "philosophie-liberte-philosophie-action-2",
+    "microskill.philosophie.nature-action-1": "philosophie-nature-action-1",
+    "microskill.philosophie.nature-action-2": "philosophie-nature-action-2",
+    "microskill.philosophie.raison-action-1": "philosophie-raison-action-1",
+    "microskill.philosophie.raison-action-2": "philosophie-raison-action-2",
+    "microskill.philosophie.religion-action-1": "philosophie-religion-action-1",
+    "microskill.philosophie.religion-action-2": "philosophie-religion-action-2",
+    "microskill.philosophie.science-action-1": "philosophie-science-action-1",
+    "microskill.philosophie.science-action-2": "philosophie-science-action-2",
+    "microskill.philosophie.technique-action-1": "philosophie-technique-action-1",
+    "microskill.philosophie.technique-action-2": "philosophie-technique-action-2",
+    "microskill.philosophie.temps-action-1": "philosophie-temps-action-1",
+    "microskill.philosophie.temps-action-2": "philosophie-temps-action-2",
+    "microskill.philosophie.travail-action-1": "philosophie-travail-action-1",
+    "microskill.philosophie.travail-action-2": "philosophie-travail-action-2",
+    "microskill.philosophie.verite-action-1": "philosophie-verite-action-1",
+    "microskill.philosophie.verite-action-2": "philosophie-verite-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -1710,6 +1761,125 @@
       "competences": [
         "ses-socialisation-action-1",
         "ses-socialisation-action-2"
+      ]
+    },
+    "art": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-art-action-1",
+        "philosophie-art-action-2"
+      ]
+    },
+    "bonheur": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-bonheur-action-1",
+        "philosophie-bonheur-action-2"
+      ]
+    },
+    "conscience": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-conscience-action-1",
+        "philosophie-conscience-action-2"
+      ]
+    },
+    "devoir": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-devoir-action-1",
+        "philosophie-devoir-action-2"
+      ]
+    },
+    "etat": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-etat-action-1",
+        "philosophie-etat-action-2"
+      ]
+    },
+    "inconscient": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-inconscient-action-1",
+        "philosophie-inconscient-action-2"
+      ]
+    },
+    "justice-philosophie": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-justice-philosophie-action-1",
+        "philosophie-justice-philosophie-action-2"
+      ]
+    },
+    "langage": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-langage-action-1",
+        "philosophie-langage-action-2"
+      ]
+    },
+    "liberte-philosophie": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-liberte-philosophie-action-1",
+        "philosophie-liberte-philosophie-action-2"
+      ]
+    },
+    "nature": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-nature-action-1",
+        "philosophie-nature-action-2"
+      ]
+    },
+    "raison": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-raison-action-1",
+        "philosophie-raison-action-2"
+      ]
+    },
+    "religion": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-religion-action-1",
+        "philosophie-religion-action-2"
+      ]
+    },
+    "science": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-science-action-1",
+        "philosophie-science-action-2"
+      ]
+    },
+    "technique": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-technique-action-1",
+        "philosophie-technique-action-2"
+      ]
+    },
+    "temps": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-temps-action-1",
+        "philosophie-temps-action-2"
+      ]
+    },
+    "travail": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-travail-action-1",
+        "philosophie-travail-action-2"
+      ]
+    },
+    "verite": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-verite-action-1",
+        "philosophie-verite-action-2"
       ]
     }
   }

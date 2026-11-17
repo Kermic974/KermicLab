@@ -20,6 +20,9 @@ questions:
   - Que propose Freud avec la psychanalyse ?
   - Qu'est-ce que le refoulement ?
   - what is the unconscious?
+prerequis:
+niveaux: terminale
+competences: philosophie-inconscient-action-1, philosophie-inconscient-action-2
 ---
 
 # L'inconscient

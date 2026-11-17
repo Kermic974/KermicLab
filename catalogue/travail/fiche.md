@@ -19,6 +19,9 @@ questions:
   - Le travail permet-il de devenir plus libre ?
   - Que signifie l'aliénation du travail chez Marx ?
   - what is human work in philosophy?
+prerequis:
+niveaux: terminale
+competences: philosophie-travail-action-1, philosophie-travail-action-2
 ---
 
 # Le travail

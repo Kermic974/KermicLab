@@ -15,6 +15,9 @@ questions:
   - c'est quoi la raison en philosophie ?
   - Comment comprendre le rationalisme ?
   - Quelle place l'empirisme donne-t-il à l'expérience ?
+prerequis:
+niveaux: terminale
+competences: philosophie-raison-action-1, philosophie-raison-action-2
 ---
 
 # La raison

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.raison-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "notion.philosophie.raison",
+  "target": "microskill.philosophie.raison-action-2"
+}

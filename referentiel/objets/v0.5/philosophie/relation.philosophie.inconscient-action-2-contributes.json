@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.inconscient-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inconscient/contenu.json"
+  },
+  "source": "microskill.philosophie.inconscient-action-2",
+  "target": "skill.philosophie.inconscient"
+}
