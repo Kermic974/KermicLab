@@ -21,6 +21,7 @@ import { listerRoles, ROLES_SYSTEME } from "./roles.js";
 import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
 import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
+import { MATIERES_PROF, parametresActivite, validerActivite, validerResultat } from "../../web/professeur.js";
 
 export const PREFIXE = "/api/famille/";
 const TAILLE_MAX_CORPS = 64 * 1024;
@@ -275,8 +276,10 @@ async function tableau(env, parentId, { quotaCahiers }) {
     `SELECT compte_id AS compte, jour, module, appels, tokens FROM familles_consommations
      WHERE jour >= ? AND compte_id IN (${membres.map(() => "?").join(", ")}) ORDER BY jour`
   ).bind(depuis, ...membres).all();
+  const { activites, resultats } = await activitesDuParent(env, parentId);
   return json({
     parent: parentId, enfants, maxEnfants: MAX_ENFANTS_FAMILLE,
+    activites, resultats, limites: { activites: MAX_ACTIVITES_FAMILLE },
     consommations: { depuis, jours: JOURS_CONSOMMATIONS, lignes: conso ?? [] },
     cahiersIa: quotaCahiers
   });
@@ -299,10 +302,21 @@ async function reserverCahierFamille(env, parentId, limite) {
 }
 
 async function assignerCahier(env, parentId, corps, { catalogue, iaCahier }) {
-  const enfantId = String(corps?.enfantId ?? "");
-  if (!(await enfantDuParent(env, parentId, enfantId))) return erreur("introuvable", 404);
-  const actifs = await env.DB.prepare("SELECT count(*) AS n FROM familles_cahiers WHERE enfant_id = ? AND statut IN ('assigne', 'en-cours')").bind(enfantId).first();
-  if ((actifs?.n ?? 0) >= 10) return erreur("trop-de-cahiers", 409);
+  // Un enfant, ou toute la famille (corps.famille === true) : une seule génération, une copie par enfant.
+  let enfants;
+  if (corps?.famille === true) {
+    const { results } = await env.DB.prepare("SELECT enfant_id FROM familles_liens WHERE parent_id = ?").bind(parentId).all();
+    enfants = (results ?? []).map((l) => l.enfant_id);
+    if (!enfants.length) return erreur("aucun-enfant", 409);
+  } else {
+    const enfantId = String(corps?.enfantId ?? "");
+    if (!(await enfantDuParent(env, parentId, enfantId))) return erreur("introuvable", 404);
+    enfants = [enfantId];
+  }
+  for (const enfantId of enfants) {
+    const actifs = await env.DB.prepare("SELECT count(*) AS n FROM familles_cahiers WHERE enfant_id = ? AND statut IN ('assigne', 'en-cours')").bind(enfantId).first();
+    if ((actifs?.n ?? 0) >= 10) return erreur("trop-de-cahiers", 409);
+  }
   const demande = lireDemandeCahier(catalogue, corps);
   if (!demande) return erreur("demande-invalide", 400);
   const langue = corps?.langue === "en" ? "en" : "fr";
@@ -339,10 +353,11 @@ async function assignerCahier(env, parentId, corps, { catalogue, iaCahier }) {
       }
     }
   }
-  const id = crypto.randomUUID();
-  await env.DB.prepare("INSERT INTO familles_cahiers (id, parent_id, enfant_id, demande, cahier) VALUES (?, ?, ?, ?, ?)")
-    .bind(id, parentId, enfantId, JSON.stringify(resumeDemande), cahier ? JSON.stringify(cahier) : null).run();
-  return json({ id, source: cahier ? "ia" : "catalogue", raison, quota: await quotaCahiersFamille(env, parentId, iaCahier) }, 201);
+  const groupe = enfants.length > 1 || corps?.famille === true ? crypto.randomUUID() : null;
+  const ids = enfants.map(() => crypto.randomUUID());
+  await env.DB.batch(enfants.map((enfantId, i) => env.DB.prepare("INSERT INTO familles_cahiers (id, parent_id, enfant_id, demande, cahier, groupe) VALUES (?, ?, ?, ?, ?, ?)")
+    .bind(ids[i], parentId, enfantId, JSON.stringify(resumeDemande), cahier ? JSON.stringify(cahier) : null, groupe)));
+  return json({ id: ids[0], ids, groupe, source: cahier ? "ia" : "catalogue", raison, quota: await quotaCahiersFamille(env, parentId, iaCahier) }, 201);
 }
 
 async function changerCahier(env, parentId, id, action) {
@@ -351,6 +366,116 @@ async function changerCahier(env, parentId, id, action) {
   if (action === "supprimer") await env.DB.prepare("DELETE FROM familles_cahiers WHERE id = ?").bind(id).run();
   else await env.DB.prepare("UPDATE familles_cahiers SET statut = 'archive', maj_le = datetime('now') WHERE id = ?").bind(id).run();
   return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
+}
+
+// ---------- Activités de la famille (ADR 0029 §8) ----------
+// Défis, évaluations (5 à 40 questions) et objectifs, pour un enfant ou toute la famille. Mêmes règles et même moteur
+// que les activités d'un professeur (web/professeur.js) : le parent n'est pas limité à des matières.
+
+/** Activités en cours au plus par parent. */
+export const MAX_ACTIVITES_FAMILLE = 60;
+export const TYPES_ACTIVITE_FAMILLE = Object.freeze(["defi", "evaluation", "objectif"]);
+/** Cible « toute la famille » : la cible d'une classe dans le moteur commun. */
+export const CIBLE_FAMILLE = "famille";
+const PROFIL_PARENT = Object.freeze({ matieres: MATIERES_PROF });
+
+const matiereDuCatalogue = (catalogue) => {
+  const parId = new Map((catalogue?.index?.maquettes ?? []).filter((m) => !catalogue.pages || catalogue.pages[m.id])
+    .map((m) => [m.id, String(m.sujet ?? "").split("/")[0] || null]));
+  return (id) => parId.get(id) ?? null;
+};
+
+/** Demande d'activité du parent, validée : cible `{ famille: true }` ou `{ enfantId }`. */
+export function validerActiviteFamille(corps, { catalogue, aujourdhui }) {
+  if (!TYPES_ACTIVITE_FAMILLE.includes(corps?.type)) return { ok: false, code: "type-invalide" };
+  const toute = corps?.cible?.famille === true;
+  const enfantId = !toute && corps?.cible?.enfantId ? String(corps.cible.enfantId) : null;
+  const cible = toute ? { classeId: CIBLE_FAMILLE } : enfantId ? { eleveId: enfantId } : {};
+  return validerActivite({ ...corps, cible }, { profil: PROFIL_PARENT, matiereDe: matiereDuCatalogue(catalogue), aujourdhui });
+}
+
+const activiteFamillePublique = (l) => ({
+  id: l.id, type: l.type, enfantId: l.enfant_id, famille: !l.enfant_id,
+  // Champs du moteur commun : la famille joue le rôle d'une classe.
+  classeId: l.enfant_id ? null : CIBLE_FAMILLE, eleveId: l.enfant_id,
+  parametres: lireJson(l.parametres, {}), echeance: l.echeance, statut: l.statut, creeLe: l.cree_le
+});
+const resultatFamillePublic = (r) => ({
+  activite: r.activite_id, eleve: r.enfant_id, reussis: r.reussis, total: r.total, meilleur: r.meilleur, tentatives: r.tentatives,
+  dureeS: r.duree_s, termine: r.termine === 1, debutLe: r.debut_le, majLe: r.maj_le
+});
+
+async function creerActiviteFamille(env, parentId, corps, { catalogue }) {
+  const v = validerActiviteFamille(corps, { catalogue, aujourdhui: jourUtc() });
+  if (!v.ok) return erreur(v.code, 400);
+  const a = v.activite;
+  if (a.cible.eleveId && !(await enfantDuParent(env, parentId, a.cible.eleveId))) return erreur("introuvable", 404);
+  if (!a.cible.eleveId && (await nombreEnfants(env, parentId)) === 0) return erreur("aucun-enfant", 409);
+  const actives = await env.DB.prepare("SELECT count(*) AS n FROM familles_activites WHERE parent_id = ? AND statut = 'active'").bind(parentId).first();
+  if ((actives?.n ?? 0) >= MAX_ACTIVITES_FAMILLE) return erreur("quota-activites", 409);
+  const id = crypto.randomUUID();
+  await env.DB.prepare("INSERT INTO familles_activites (id, parent_id, type, enfant_id, parametres, echeance) VALUES (?, ?, ?, ?, ?, ?)")
+    .bind(id, parentId, a.type, a.cible.eleveId, JSON.stringify(parametresActivite(a)), a.echeance).run();
+  return json({ id }, 201);
+}
+
+/** Activités du parent et résultats de ses enfants (pour le tableau de bord). */
+async function activitesDuParent(env, parentId) {
+  const [{ results: lignes }, { results: res }] = await Promise.all([
+    env.DB.prepare("SELECT * FROM familles_activites WHERE parent_id = ? ORDER BY cree_le DESC, rowid DESC LIMIT 200").bind(parentId).all(),
+    env.DB.prepare(`SELECT r.* FROM familles_resultats r JOIN familles_activites a ON a.id = r.activite_id
+      WHERE a.parent_id = ? AND r.enfant_id IN (SELECT enfant_id FROM familles_liens WHERE parent_id = ?)`).bind(parentId, parentId).all()
+  ]);
+  return { activites: (lignes ?? []).map(activiteFamillePublique), resultats: (res ?? []).map(resultatFamillePublic) };
+}
+
+async function changerActiviteFamille(env, parentId, id, action) {
+  if (!(await env.DB.prepare("SELECT id FROM familles_activites WHERE id = ? AND parent_id = ?").bind(id, parentId).first())) return erreur("introuvable", 404);
+  if (action === "archiver") await env.DB.prepare("UPDATE familles_activites SET statut = 'archivee' WHERE id = ?").bind(id).run();
+  else {
+    await env.DB.batch([
+      env.DB.prepare("DELETE FROM familles_resultats WHERE activite_id = ?").bind(id),
+      env.DB.prepare("DELETE FROM familles_activites WHERE id = ?").bind(id)
+    ]);
+  }
+  return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
+}
+
+/** Activités actives d'un enfant : les siennes et celles de toute sa famille. */
+async function lignesActivitesEnfant(env, enfantId) {
+  const lien = await lienEnfant(env, enfantId);
+  if (!lien) return [];
+  const { results } = await env.DB.prepare(`SELECT * FROM familles_activites WHERE parent_id = ? AND statut = 'active'
+    AND (enfant_id = ? OR enfant_id IS NULL) ORDER BY cree_le DESC, rowid DESC LIMIT 100`).bind(lien.parent_id, enfantId).all();
+  return results ?? [];
+}
+
+async function mesActivitesFamille(env, enfantId) {
+  const lignes = await lignesActivitesEnfant(env, enfantId);
+  const { results: res } = await env.DB.prepare("SELECT * FROM familles_resultats WHERE enfant_id = ?").bind(enfantId).all();
+  const resultat = new Map((res ?? []).map((r) => [r.activite_id, resultatFamillePublic(r)]));
+  return json({ activites: lignes.map((l) => ({ ...activiteFamillePublique(l), resultat: resultat.get(l.id) ?? null })) });
+}
+
+async function enregistrerResultatsFamille(env, enfantId, corps) {
+  const liste = (Array.isArray(corps?.resultats) ? corps.resultats : []).slice(0, 50).map(validerResultat).filter(Boolean);
+  if (!liste.length) return erreur("resultats-invalides", 400);
+  const miennes = new Map((await lignesActivitesEnfant(env, enfantId)).map((l) => [l.id, l]));
+  const refuses = [];
+  for (const r of liste) {
+    const a = miennes.get(r.activite);
+    if (!a || a.type === "objectif") { refuses.push({ activite: r.activite, raison: "introuvable" }); continue; }
+    const avant = await env.DB.prepare("SELECT termine FROM familles_resultats WHERE activite_id = ? AND enfant_id = ?").bind(a.id, enfantId).first();
+    // Une évaluation ne se passe qu'une fois : le premier résultat terminé fait foi.
+    if (a.type === "evaluation" && avant?.termine === 1) { refuses.push({ activite: a.id, raison: "deja-terminee" }); continue; }
+    await env.DB.prepare(`INSERT INTO familles_resultats (activite_id, enfant_id, reussis, total, meilleur, tentatives, duree_s, termine)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT (activite_id, enfant_id) DO UPDATE SET reussis = excluded.reussis, total = excluded.total,
+        meilleur = max(meilleur, excluded.meilleur), tentatives = tentatives + excluded.tentatives,
+        duree_s = duree_s + excluded.duree_s, termine = max(termine, excluded.termine), maj_le = datetime('now')`)
+      .bind(a.id, enfantId, r.reussis, r.total, r.termine ? r.reussis : 0, a.type === "defi" && r.termine ? 1 : 0, r.dureeS, r.termine ? 1 : 0).run();
+  }
+  return json({ enregistres: liste.length - refuses.length, refuses });
 }
 
 /**
@@ -386,6 +511,8 @@ export async function gererApiFamille(requete, env, { catalogue, iaCahier = fals
   if (est("PUT", "bilan")) return enregistrerBilan(env, moi, corps);
   if (est("GET", "mes-cahiers")) return mesCahiers(env, moi);
   if (methode === "POST" && (m = route.match(new RegExp(`^mes-cahiers/(${UUID})/calibrage$`)))) return calibrerCahier(env, moi, m[1], corps);
+  if (est("GET", "mes-activites")) return mesActivitesFamille(env, moi);
+  if (est("PUT", "resultats")) return enregistrerResultatsFamille(env, moi, corps);
 
   // Routes du parent.
   const { reponse: refus } = await exigerParent(env, moi);
@@ -408,6 +535,8 @@ export async function gererApiFamille(requete, env, { catalogue, iaCahier = fals
     return supprimerEnfant(env, moi, id, corps);
   }
   if (est("POST", "cahiers")) return assignerCahier(env, moi, corps, { catalogue, iaCahier });
+  if (est("POST", "activites")) return creerActiviteFamille(env, moi, corps, { catalogue });
+  if (methode === "POST" && (m = route.match(new RegExp(`^activites/(${UUID})/(archiver|supprimer)$`)))) return changerActiviteFamille(env, moi, m[1], m[2]);
   if (methode === "POST" && (m = route.match(new RegExp(`^cahiers/(${UUID})/(archiver|supprimer)$`)))) return changerCahier(env, moi, m[1], m[2]);
   return erreur("introuvable", 404);
 }
