@@ -15,6 +15,9 @@ questions:
   - c'est quoi le langage en philosophie ?
   - Quelle différence entre signifiant et signifié ?
   - Qu'est-ce qu'un acte de parole ?
+prerequis:
+niveaux: terminale
+competences: philosophie-langage-action-1, philosophie-langage-action-2
 ---
 
 # Le langage

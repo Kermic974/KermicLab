@@ -18,6 +18,9 @@ questions:
   - Quelle différence entre nature et culture ?
   - Que signifie l'état de nature chez Rousseau ?
   - what is nature in philosophy?
+prerequis:
+niveaux: terminale
+competences: philosophie-nature-action-1, philosophie-nature-action-2
 ---
 
 # La nature

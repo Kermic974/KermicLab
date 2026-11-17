@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.justice-philosophie-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.justice-philosophie-action-2",
+  "target": "skill.philosophie.justice-philosophie"
+}

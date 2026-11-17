@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.etat-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "notion.philosophie.etat",
+  "target": "microskill.philosophie.etat-action-2"
+}

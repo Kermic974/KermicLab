@@ -19,6 +19,9 @@ questions:
   - Pourquoi le temps semble-t-il passer plus vite quand on joue ?
   - Que dit Bergson de la durée vécue ?
   - what is time in philosophy?
+prerequis:
+niveaux: terminale
+competences: philosophie-temps-action-1, philosophie-temps-action-2
 ---
 
 # Le temps

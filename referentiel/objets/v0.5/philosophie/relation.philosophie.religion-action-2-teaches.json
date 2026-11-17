@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.religion-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/religion/contenu.json"
+  },
+  "source": "notion.philosophie.religion",
+  "target": "microskill.philosophie.religion-action-2"
+}

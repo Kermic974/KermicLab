@@ -15,6 +15,9 @@ questions:
   - c'est quoi la technique en philosophie ?
   - Pourquoi un savoir-faire ne se réduit-il pas à un outil ?
   - Que signifie le principe responsabilité ?
+prerequis:
+niveaux: terminale
+competences: philosophie-technique-action-1, philosophie-technique-action-2
 ---
 
 # La technique

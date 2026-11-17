@@ -16,6 +16,9 @@ questions:
   - c'est quoi la liberté en philosophie ?
   - Sommes-nous dotés d'un libre arbitre ?
   - Que signifie l'autonomie morale ?
+prerequis:
+niveaux: terminale
+competences: philosophie-liberte-philosophie-action-1, philosophie-liberte-philosophie-action-2
 ---
 
 # La liberté

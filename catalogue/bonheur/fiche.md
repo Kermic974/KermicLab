@@ -19,6 +19,9 @@ questions:
   - Être heureux, est-ce satisfaire tous ses désirs ?
   - Que dit Épicure du bonheur ?
   - what is happiness?
+prerequis:
+niveaux: terminale
+competences: philosophie-bonheur-action-1, philosophie-bonheur-action-2
 ---
 
 # Le bonheur

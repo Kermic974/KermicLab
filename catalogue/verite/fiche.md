@@ -15,6 +15,9 @@ questions:
   - c'est quoi la vérité en philosophie ?
   - Quelle différence entre croire et savoir ?
   - À quoi sert le doute méthodique ?
+prerequis:
+niveaux: terminale
+competences: philosophie-verite-action-1, philosophie-verite-action-2
 ---
 
 # La vérité

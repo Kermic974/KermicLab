@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.art-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/art/contenu.json"
+  },
+  "source": "microskill.philosophie.art-action-2",
+  "target": "skill.philosophie.art"
+}

@@ -15,6 +15,9 @@ questions:
   - c'est quoi l'État en philosophie ?
   - Que signifie la souveraineté ?
   - À quoi sert le contrat social ?
+prerequis:
+niveaux: terminale
+competences: philosophie-etat-action-1, philosophie-etat-action-2
 ---
 
 # L'État

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.science-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science/contenu.json"
+  },
+  "object": "notion.philosophie.science",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}
