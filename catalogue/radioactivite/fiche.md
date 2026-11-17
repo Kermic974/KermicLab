@@ -26,6 +26,9 @@ questions:
   - je ne comprends pas la demi-vie
   - c'est quoi une désintégration alpha ?
   - what is radioactivity?
+prerequis:
+niveaux: terminale
+competences: pc-radioactivite-action-1, pc-radioactivite-action-2
 ---
 
 # La radioactivité

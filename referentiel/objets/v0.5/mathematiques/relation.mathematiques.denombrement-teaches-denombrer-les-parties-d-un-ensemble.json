@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-teaches-denombrer-les-parties-d-un-ensemble",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "notion.mathematiques.denombrement",
+  "target": "microskill.mathematiques.denombrer-les-parties-d-un-ensemble"
+}

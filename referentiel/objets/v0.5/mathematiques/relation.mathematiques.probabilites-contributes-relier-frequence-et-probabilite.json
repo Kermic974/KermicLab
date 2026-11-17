@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-contributes-relier-frequence-et-probabilite",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites/fiche.md"
+  },
+  "source": "microskill.mathematiques.relier-frequence-et-probabilite",
+  "target": "skill.mathematiques.probabilites"
+}

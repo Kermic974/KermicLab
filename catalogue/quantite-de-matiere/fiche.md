@@ -25,6 +25,9 @@ questions:
   - je ne comprends pas la quantité de matière
   - comment faire une dilution
   - what is a mole in chemistry?
+prerequis:
+niveaux: seconde
+competences: pc-quantite-de-matiere-action-1, pc-quantite-de-matiere-action-2
 ---
 
 # La quantité de matière (la mole)

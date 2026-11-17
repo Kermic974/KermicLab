@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.second-degre-contributes-calculer-le-discriminant",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/second-degre/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-le-discriminant",
+  "target": "skill.mathematiques.second-degre"
+}

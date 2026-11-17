@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-conditionnelles-teaches-calculer-une-probabilite-conditionnelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites-conditionnelles/fiche.md"
+  },
+  "source": "notion.mathematiques.probabilites-conditionnelles",
+  "target": "microskill.mathematiques.calculer-une-probabilite-conditionnelle"
+}

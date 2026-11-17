@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.equations-contributes-resoudre-une-equation-du-premier-degre",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/equations/fiche.md"
+  },
+  "source": "microskill.mathematiques.resoudre-une-equation-du-premier-degre",
+  "target": "skill.mathematiques.equations"
+}

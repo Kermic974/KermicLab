@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.suites-contributes-definir-une-suite-explicite-ou-recurrente",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/suites/fiche.md"
+  },
+  "source": "microskill.mathematiques.definir-une-suite-explicite-ou-recurrente",
+  "target": "skill.mathematiques.suites"
+}

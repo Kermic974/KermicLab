@@ -1,0 +1,11 @@
+{
+  "id": "skill.mathematiques.arithmetique",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/arithmetique/fiche.md"
+  },
+  "label": "Résoudre des problèmes de divisibilité"
+}

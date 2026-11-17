@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-teaches-calculer-une-combinaison",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "notion.mathematiques.denombrement",
+  "target": "microskill.mathematiques.calculer-une-combinaison"
+}

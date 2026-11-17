@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.calcul-litteral-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/calcul-litteral/fiche.md"
+  },
+  "object": "notion.mathematiques.calcul-litteral",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

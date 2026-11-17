@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-litteral-teaches-calculer-la-valeur-d-une-expression",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/calcul-litteral/fiche.md"
+  },
+  "source": "notion.mathematiques.calcul-litteral",
+  "target": "microskill.mathematiques.calculer-la-valeur-d-une-expression"
+}

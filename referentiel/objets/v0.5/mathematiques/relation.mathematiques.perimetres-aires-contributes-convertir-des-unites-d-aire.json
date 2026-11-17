@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.perimetres-aires-contributes-convertir-des-unites-d-aire",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/perimetres-aires/fiche.md"
+  },
+  "source": "microskill.mathematiques.convertir-des-unites-d-aire",
+  "target": "skill.mathematiques.perimetres-aires"
+}

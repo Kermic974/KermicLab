@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.second-degre-requires-fonctions-de-reference",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/second-degre/fiche.md"
+  },
+  "source": "notion.mathematiques.second-degre",
+  "target": "notion.mathematiques.fonctions-de-reference"
+}

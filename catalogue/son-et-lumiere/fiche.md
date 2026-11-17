@@ -32,6 +32,9 @@ questions:
   - je ne comprends pas la fréquence d'un son
   - c'est quoi une année-lumière ?
   - how does sound travel?
+prerequis:
+niveaux: cycle-4, seconde
+competences: pc-son-et-lumiere-action-1, pc-son-et-lumiere-action-2
 ---
 
 # Signaux sonores et lumineux

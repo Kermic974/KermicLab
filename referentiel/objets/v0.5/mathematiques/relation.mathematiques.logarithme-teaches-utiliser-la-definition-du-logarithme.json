@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-teaches-utiliser-la-definition-du-logarithme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "notion.mathematiques.logarithme",
+  "target": "microskill.mathematiques.utiliser-la-definition-du-logarithme"
+}

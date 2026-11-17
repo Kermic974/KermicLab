@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.arithmetique-contributes-rendre-une-fraction-irreductible",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/arithmetique/fiche.md"
+  },
+  "source": "microskill.mathematiques.rendre-une-fraction-irreductible",
+  "target": "skill.mathematiques.arithmetique"
+}

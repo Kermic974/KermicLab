@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.arithmetique-contributes-utiliser-les-criteres-de-divisibilite",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/arithmetique/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-les-criteres-de-divisibilite",
+  "target": "skill.mathematiques.arithmetique"
+}

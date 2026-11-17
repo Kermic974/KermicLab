@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.masse-volumique-et-melanges-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-volumique-et-melanges/contenu.json"
+  },
+  "object": "notion.physique-chimie.masse-volumique-et-melanges",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

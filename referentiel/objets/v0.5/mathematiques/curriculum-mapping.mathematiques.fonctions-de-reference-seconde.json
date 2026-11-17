@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.fonctions-de-reference-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-de-reference/fiche.md"
+  },
+  "object": "notion.mathematiques.fonctions-de-reference",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

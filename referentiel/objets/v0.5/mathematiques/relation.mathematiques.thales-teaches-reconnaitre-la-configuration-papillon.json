@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.thales-teaches-reconnaitre-la-configuration-papillon",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/thales/fiche.md"
+  },
+  "source": "notion.mathematiques.thales",
+  "target": "microskill.mathematiques.reconnaitre-la-configuration-papillon"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.recurrence-requires-suites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/recurrence/fiche.md"
+  },
+  "source": "notion.mathematiques.recurrence",
+  "target": "notion.mathematiques.suites"
+}

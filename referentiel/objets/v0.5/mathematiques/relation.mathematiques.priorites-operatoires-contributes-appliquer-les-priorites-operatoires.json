@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.priorites-operatoires-contributes-appliquer-les-priorites-operatoires",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/priorites-operatoires/fiche.md"
+  },
+  "source": "microskill.mathematiques.appliquer-les-priorites-operatoires",
+  "target": "skill.mathematiques.priorites-operatoires"
+}

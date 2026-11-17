@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.produit-scalaire-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/produit-scalaire/fiche.md"
+  },
+  "object": "notion.mathematiques.produit-scalaire",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

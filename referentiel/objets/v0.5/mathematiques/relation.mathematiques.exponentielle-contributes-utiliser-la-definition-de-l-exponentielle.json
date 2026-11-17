@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.exponentielle-contributes-utiliser-la-definition-de-l-exponentielle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/exponentielle/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-la-definition-de-l-exponentielle",
+  "target": "skill.mathematiques.exponentielle"
+}

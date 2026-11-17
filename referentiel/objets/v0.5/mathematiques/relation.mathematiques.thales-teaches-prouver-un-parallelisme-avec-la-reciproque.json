@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.thales-teaches-prouver-un-parallelisme-avec-la-reciproque",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/thales/fiche.md"
+  },
+  "source": "notion.mathematiques.thales",
+  "target": "microskill.mathematiques.prouver-un-parallelisme-avec-la-reciproque"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.exponentielle-teaches-etudier-la-fonction-exponentielle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/exponentielle/fiche.md"
+  },
+  "source": "notion.mathematiques.exponentielle",
+  "target": "microskill.mathematiques.etudier-la-fonction-exponentielle"
+}

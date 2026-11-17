@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-requires-exponentielle",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "notion.mathematiques.logarithme",
+  "target": "notion.mathematiques.exponentielle"
+}

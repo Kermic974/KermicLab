@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-mecanique-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-mecanique/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-mecanique",
+  "target": "microskill.physique-chimie.energie-mecanique-action-1"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.limites-et-continuite-contributes-appliquer-le-theoreme-des-valeurs-intermediaires",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/limites-et-continuite/fiche.md"
+  },
+  "source": "microskill.mathematiques.appliquer-le-theoreme-des-valeurs-intermediaires",
+  "target": "skill.mathematiques.limites-et-continuite"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.suites-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/suites/fiche.md"
+  },
+  "object": "notion.mathematiques.suites",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

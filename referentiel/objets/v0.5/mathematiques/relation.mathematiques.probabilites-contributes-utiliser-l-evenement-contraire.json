@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-contributes-utiliser-l-evenement-contraire",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-l-evenement-contraire",
+  "target": "skill.mathematiques.probabilites"
+}

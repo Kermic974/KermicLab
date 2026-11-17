@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.priorites-operatoires-contributes-calculer-avec-des-parentheses",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/priorites-operatoires/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-avec-des-parentheses",
+  "target": "skill.mathematiques.priorites-operatoires"
+}

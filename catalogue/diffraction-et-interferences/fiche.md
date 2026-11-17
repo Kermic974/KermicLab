@@ -24,6 +24,9 @@ questions:
   - je ne comprends pas les interférences
   - comment mesurer la longueur d'onde d'un laser
   - what is diffraction?
+prerequis:
+niveaux: terminale
+competences: pc-diffraction-et-interferences-action-1, pc-diffraction-et-interferences-action-2
 ---
 
 # Diffraction et interférences
