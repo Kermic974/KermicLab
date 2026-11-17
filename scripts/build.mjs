@@ -1,7 +1,7 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
-import { appendFile, cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelecture } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
@@ -83,6 +83,9 @@ await writeFile(`${racine}dist/_headers`, `/*
 
 /cercle/*
   ! Content-Security-Policy
+
+/labs/*
+  ! Content-Security-Policy
 `);
 // L'ancienne maquette /dashboard/ est devenue l'accueil : les liens existants y mènent.
 // Ne pas réécrire /equipe vers equipe.html : Pages sert déjà chaque page.html à l'adresse sans
@@ -91,18 +94,16 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 // L'application autonome porte sa propre CSP (meta, hashes des scripts et styles en ligne) : celle du chat,
 // sans 'unsafe-inline', la bloquerait ; on la retire donc pour /cercle/*.
 
+// Labs publiés hors catalogue (page autonome, CSP propre en meta, contrôlée par check:pages) : /labs/<id>/.
+// Écrits avant la génération SEO pour recevoir l'adresse canonique et figurer dans le sitemap.
+const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }];
+for (const lab of LABS_PUBLIES) {
+  await mkdir(`${racine}dist/labs/${lab.id}`, { recursive: true });
+  await writeFile(`${racine}dist/labs/${lab.id}/index.html`, appliquerCsp(await readFile(`${racine}${lab.source}`, "utf8")));
+}
+
 // Génère les métadonnées des pages publiées, le fichier robots.txt et le sitemap XML.
 await genererSeoStatique(`${racine}dist`);
-
-// Le lab en revue est disponible uniquement pour les builds demandant cette prévisualisation.
-if (process.argv.includes("--preview-labs")) {
-  const dossier = `${racine}dist/preview/labs/systeme-solaire`;
-  const source = await readFile(`${racine}Sample/lab/systeme-solaire.html`, "utf8");
-  await mkdir(dossier, { recursive: true });
-  await writeFile(`${dossier}/index.html`, appliquerCsp(source));
-  await appendFile(`${racine}dist/_headers`, `\n/preview/labs/*\n  ! Content-Security-Policy\n  X-Robots-Tag: noindex, nofollow\n`);
-  console.log("Prévisualisation : /preview/labs/systeme-solaire/");
-}
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 const referentiel = indicateurReferentiel(catalogue.index.maquettes);
@@ -112,7 +113,7 @@ const relecture = indicateurRelecture(catalogue.index.maquettes);
 console.log(`Relecture : ${relecture.relues} notion(s) relue(s) sur ${relecture.notions}, ${relecture.aRevoir} à revoir (version modifiée depuis la relecture).`);
 console.log(`Relecture des jeux : ${relecture.jeux.relus} jeu(x) relu(s) sur ${relecture.jeux.total}, ${relecture.jeux.aRevoir} à revoir.`);
 console.log(`Blog : ${blog.publies.length} article(s) publié(s) sous /blog/ au ${jourBlog}${blog.programmes.length ? `, ${blog.programmes.length} programmé(s)` : ""}${blog.ignores.length ? `, ${blog.ignores.length} non validé(s) ignoré(s)` : ""}.`);
-console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/ ; API ${apiUrl || "même origine"})`);
+console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/, labs sous /labs/ ; API ${apiUrl || "même origine"})`);
 
 /**
  * Ajoute l'empreinte du contenu aux URL des CSS et JS du chat (`style.css?v=…`). Cloudflare Pages les met en cache

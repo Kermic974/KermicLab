@@ -560,7 +560,7 @@ test("navigation : 5 entrées latérales, jeux absents d'Éducation, retour arri
   assert.equal(await page.locator(".barre-laterale [data-nav=labs]").getAttribute("aria-current"), "page");
   assert.equal(await page.locator("#salut").textContent(), "Labs");
   assert.deepEqual(await page.locator("#ecran-labs .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
-    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play"
+    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play", "labs/systeme-solaire/"
   ]);
   await page.click("#ecran-labs [data-nav=education]");
   assert.equal(await page.locator("#catalogue").isVisible(), true);
@@ -647,7 +647,8 @@ test("jeux : états vides explicites sans bloquer Éducation", async () => {
   await page.locator(".barre-laterale [data-nav=education]").click();
   assert.equal(await page.locator("#catalogue-indisponible").isVisible(), true);
   await page.locator(".barre-laterale [data-nav=labs]").click();
-  assert.equal(await page.locator("#ecran-labs .outil a").count(), 3, "le Lab du cercle reste accessible hors ligne");
+  assert.equal(await page.locator("#lab-cercle a").count(), 3, "le Lab du cercle reste accessible hors ligne");
+  assert.equal(await page.locator("#lab-systeme-solaire a").getAttribute("href"), "labs/systeme-solaire/", "le Lab du système solaire aussi");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
