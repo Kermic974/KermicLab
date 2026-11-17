@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.fraternite-action-2-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "notion.emc.fraternite",
+  "target": "microskill.emc.fraternite-action-2"
+}

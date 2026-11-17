@@ -1,0 +1,11 @@
+{
+  "id": "skill.geographie.risques-naturels",
+  "type": "skill",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "label": "Analyser le risque naturel dans un territoire"
+}

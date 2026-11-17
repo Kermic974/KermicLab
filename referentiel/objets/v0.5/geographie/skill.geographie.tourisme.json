@@ -1,0 +1,11 @@
+{
+  "id": "skill.geographie.tourisme",
+  "type": "skill",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "label": "Analyser les effets territoriaux du tourisme"
+}

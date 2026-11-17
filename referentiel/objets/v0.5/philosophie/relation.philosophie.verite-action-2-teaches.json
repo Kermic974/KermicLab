@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.verite-action-2-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verite/contenu.json"
+  },
+  "source": "notion.philosophie.verite",
+  "target": "microskill.philosophie.verite-action-2"
+}

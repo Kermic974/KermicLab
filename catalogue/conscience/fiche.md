@@ -19,6 +19,9 @@ questions:
   - Que signifie le cogito de Descartes ?
   - Quelle différence entre conscience et conscience morale ?
   - what is consciousness?
+prerequis:
+niveaux: terminale
+competences: philosophie-conscience-action-1, philosophie-conscience-action-2
 ---
 
 # La conscience

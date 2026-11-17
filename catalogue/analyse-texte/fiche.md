@@ -19,6 +19,9 @@ questions:
   - Quelle est la différence entre l'auteur et le narrateur ?
   - Comment repérer le point de vue narratif dans un récit ?
   - À quoi sert un champ lexical dans un texte ?
+prerequis:
+niveaux: cycle-4
+competences: francais-analyse-texte-action-1, francais-analyse-texte-action-2
 ---
 
 # Analyser un texte

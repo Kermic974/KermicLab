@@ -19,6 +19,9 @@ questions:
   - À quoi sert l'incipit d'un roman ?
   - Qui raconte l'histoire d'un roman : l'auteur ou une voix du récit ?
   - Comment présenter un personnage de roman ?
+prerequis:
+niveaux: cycle-4
+competences: francais-roman-action-1, francais-roman-action-2
 ---
 
 # Le roman

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.liberte-philosophie-terminale",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte-philosophie/contenu.json"
+  },
+  "object": "notion.philosophie.liberte-philosophie",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

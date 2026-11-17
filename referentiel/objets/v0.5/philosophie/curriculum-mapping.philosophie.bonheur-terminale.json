@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.bonheur-terminale",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "object": "notion.philosophie.bonheur",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

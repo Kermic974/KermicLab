@@ -16,6 +16,9 @@ questions:
   - C'est quoi les risques naturels ?
   - Comment distinguer un aléa naturel et un risque ?
   - Comment réduire la vulnérabilité aux risques ?
+prerequis:
+niveaux: cycle-4
+competences: geographie-risques-naturels-action-1, geographie-risques-naturels-action-2
 ---
 
 # Les risques naturels

@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.poesie",
+  "type": "skill",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "label": "Interpréter un poème"
+}

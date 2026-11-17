@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.emc.droits-de-lhomme-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "official",
+    "ref": "https://www.education.gouv.fr/l-enseignement-moral-et-civique-emc-415043"
+  },
+  "object": "notion.emc.droits-de-lhomme",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced"
+}

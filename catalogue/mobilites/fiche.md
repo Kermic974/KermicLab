@@ -16,6 +16,9 @@ questions:
   - C'est quoi les mobilités ?
   - Comment organiser les déplacements quotidiens ?
   - À quoi sert l'intermodalité ?
+prerequis:
+niveaux: cycle-4
+competences: geographie-mobilites-action-1, geographie-mobilites-action-2
 ---
 
 # Les mobilités

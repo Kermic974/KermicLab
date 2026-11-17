@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyse-texte-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "microskill.francais.analyse-texte-action-2",
+  "target": "skill.francais.analyse-texte"
+}

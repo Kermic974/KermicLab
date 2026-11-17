@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.liberte-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "microskill.emc.liberte-action-2",
+  "target": "skill.emc.liberte"
+}

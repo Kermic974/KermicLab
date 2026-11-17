@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.langage-terminale",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langage/contenu.json"
+  },
+  "object": "notion.philosophie.langage",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

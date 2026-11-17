@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.engagement-civique-action-2-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "microskill.emc.engagement-civique-action-2"
+}

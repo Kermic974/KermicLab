@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-regions-action-1-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "microskill.geographie.france-regions-action-1",
+  "target": "skill.geographie.france-regions"
+}

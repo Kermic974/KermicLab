@@ -16,6 +16,9 @@ questions:
   - C'est quoi les espaces ruraux ?
   - Pourquoi la ruralité est-elle diverse ?
   - Que signifie la multifonctionnalité rurale ?
+prerequis:
+niveaux: cycle-3, premiere
+competences: geographie-espaces-ruraux-action-1, geographie-espaces-ruraux-action-2
 ---
 
 # Les espaces ruraux

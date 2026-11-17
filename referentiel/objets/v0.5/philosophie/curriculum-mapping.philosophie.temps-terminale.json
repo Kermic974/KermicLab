@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.temps-terminale",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "object": "notion.philosophie.temps",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

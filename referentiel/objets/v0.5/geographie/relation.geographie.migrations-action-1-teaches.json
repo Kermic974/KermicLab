@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.migrations-action-1-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "notion.geographie.migrations",
+  "target": "microskill.geographie.migrations-action-1"
+}

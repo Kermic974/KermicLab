@@ -19,6 +19,9 @@ questions:
   - Comment faire l'accord de l'adjectif dans « des fleurs rouges » ?
   - Comment appliquer l'accord du participe passé avec être ?
   - Comment retrouver le sujet pour l'accord sujet-verbe ?
+prerequis:
+niveaux: cycle-4
+competences: francais-accords-action-1, francais-accords-action-2
 ---
 
 # Les accords dans la phrase

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.opinion-publique-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "microskill.ses.opinion-publique-action-2",
+  "target": "skill.ses.opinion-publique"
+}
