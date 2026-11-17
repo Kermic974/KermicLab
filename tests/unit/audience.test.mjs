@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 // Mesure d'audience Google Analytics soumise au consentement (ADR 0027) : logique pure de web/audience.js.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import * as Audience from "../../web/audience.js";
 
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const stockage = (initial = {}) => {
   const donnees = { ...initial };
   return { getItem: (c) => donnees[c] ?? null, setItem: (c, v) => { donnees[c] = String(v); }, donnees };

@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -12,7 +13,7 @@ const notions = [
   "citoyennete", "democratie", "interet-general", "droits-de-lhomme",
   "discrimination", "engagement-civique"
 ];
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 
 test("EMC : le libellé de matière est traduit dans chaque langue du chat", async () => {
   for (const langue of ["fr", "en"]) {

@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 // Contrôle de sécurité des pages HTML du catalogue : CSP stricte à jour, aucun script ou ressource externe,
 // aucun appel réseau, métadonnées et onglets de base présents.
 import { readFile } from "node:fs/promises";
@@ -5,7 +6,7 @@ import { appliquerCsp, chargerCatalogue, lireMetaHtml } from "./lib/catalogue.mj
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 
-const racine = new URL("..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("..", import.meta.url));
 const fichesObsoletes = await synchroniserProjectionV0(racine);
 if (fichesObsoletes.length) {
   console.error(fichesObsoletes.map(fiche => fiche + ": projection S4 obsolète — lancer npm run build").join("\n"));

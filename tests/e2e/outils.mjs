@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -52,7 +53,7 @@ export async function ouvrir(nav, url, options = {}) {
   return { page, contexte, erreurs };
 }
 
-export const racine = new URL("../..", import.meta.url).pathname;
+export const racine = fileURLToPath(new URL("../..", import.meta.url));
 
 /**
  * Capture d'écran pour la documentation, uniquement si KERMICLAB_CAPTURES désigne un dossier

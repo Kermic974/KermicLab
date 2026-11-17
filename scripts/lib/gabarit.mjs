@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 // Génération des pages du catalogue à partir du gabarit commun (gabarit/) et d'un contenu de notion (contenu.json).
 // La page produite respecte le contrat d'une page autonome (AGENTS.md §5) ; ses hashes CSP sont posés par appliquerCsp.
 import { existsSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 
 export const VERSION_GABARIT = "1.2.0";
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 // Une figure = un fichier gabarit/figures/<type>.js (code inséré dans le moteur des seules pages qui l'utilisent)
 // et, si ses paramètres ont des contraintes, scripts/lib/figures/<type>.mjs qui exporte valider(conf, ou, outils).
 export const TYPES_FIGURE = (await readdir(`${racine}gabarit/figures`)).filter((f) => /^[a-z][a-z0-9-]*\.js$/.test(f)).map((f) => f.slice(0, -3)).sort();
