@@ -10,6 +10,7 @@ import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { estRouteContribution, gererApiContributions } from "./contributions.js";
 import { estRouteCompteLocal, gererApiCompteLocal, purgerCompteLocal } from "./compte-local.js";
+import { estRouteFamille, gererApiFamille, noterConsommationDeRequete, purgerFamille } from "./famille.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
 import { SESSION_CAHIER, SESSION_DEFI, definirContexteLlm, lireSessionLlm, llmActive, purgerSessionsLlm, sessionPourIdee, sessionSansPage } from "./session-llm.js";
 import { interrogerFournisseurs, interrogerTuteur } from "./tuteur-llm.js";
@@ -41,6 +42,9 @@ let limiteur = null;
 let limiteurMax = null;
 let limiteurCompteLocal = null;
 let limiteurAdmin = null;
+let limiteurFamille = null;
+/** Codes d'invitation et créations de comptes enfants par IP et par minute (anti force brute, en mémoire). */
+const LIMITE_FAMILLE = 10;
 /** Essais de clé du back-office par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
 const LIMITE_ESSAIS_ADMIN = 10;
 /** Inscriptions et connexions au compte local par IP et par minute (anti force brute, en mémoire, sans IP stockée). */
@@ -755,6 +759,28 @@ export default {
       return new Response(reponse.body, { status: reponse.status, headers });
     }
 
+    // Espace famille des comptes locaux (ADR 0029) : même session porteuse, jamais de cookie.
+    if (estRouteFamille(url.pathname)) {
+      let reponse;
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        reponse = json({ erreur: "origine-refusee" }, 403, {});
+      } else {
+        try {
+          limiteurFamille ??= creerLimiteur({ maxParMinute: LIMITE_FAMILLE });
+          reponse = await gererApiFamille(requete, env, {
+            catalogue: catalogueDe(env), iaCahier: cahierIaPossible(env),
+            autoriser: limiteurFamille, ip: requete.headers.get("cf-connecting-ip") || "inconnue"
+          });
+        } catch {
+          // Tables absentes (migration 0003 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
+          reponse = json({ erreur: "famille-indisponible" }, 503, {});
+        }
+      }
+      const headers = new Headers(reponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(reponse.body, { status: reponse.status, headers });
+    }
+
     // Back-office (ADR 0026) : clé partagée pendant la bêta, fermé si la clé n'est pas configurée.
     if (estRouteAdmin(url.pathname)) {
       let reponse;
@@ -869,6 +895,13 @@ export default {
       try {
         const traiter = { "/api/chat": traiterChat, "/api/support": traiterSupport, "/api/idee": traiterIdee, "/api/idee/cadrage": traiterCadrageIdee, "/api/defi": traiterDefi, "/api/cahier": traiterCahier }[url.pathname];
         const { statut, donnees, entetes = {} } = await traiter(requete, env, ctx);
+        // Consommation d'IA d'un membre d'une famille (ADR 0029) : compteurs seulement, si la réponse vient d'un modèle.
+        if (donnees?.llm && typeof donnees.llm === "object") {
+          const entier = (v) => (Number.isSafeInteger(v) && v > 0 ? v : 0);
+          const tokens = entier(donnees.llm.tokensSortie)
+            || (Array.isArray(donnees.llm.appels) ? donnees.llm.appels.reduce((n, a) => n + entier(a?.tokensSortie), 0) : 0);
+          ctx.waitUntil(noterConsommationDeRequete(requete, env, MODULES_ROUTES[url.pathname], { appels: 1, tokens }).catch(() => {}));
+        }
         return json(donnees, statut, { ...cors, ...entetes });
       } catch (e) {
         console.error("erreur", e?.message);
@@ -893,6 +926,10 @@ export default {
     ctx.waitUntil(purgerCompteLocal(env, evenement.scheduledTime)
       .then((r) => r && console.log("purge compte local", JSON.stringify(r)))
       .catch(() => console.error("purge compte local indisponible")));
+    // Espace famille (ADR 0029) : invitations expirées et consommations de plus de 90 jours ; compteurs seuls.
+    ctx.waitUntil(purgerFamille(env, evenement.scheduledTime)
+      .then((r) => r && console.log("purge famille", JSON.stringify(r)))
+      .catch(() => console.error("purge famille indisponible")));
     // Back-office (ADR 0026) : signaux de sécurité, états expirés et télémétrie au-delà de leur durée de conservation.
     ctx.waitUntil(chargerReglages(env).then((reglages) => purgerBackoffice(envAvecReglages(env, reglages), evenement.scheduledTime))
       .then((r) => r && console.log("purge back-office", JSON.stringify(r)))
@@ -904,4 +941,4 @@ export default {
 };
 
 /** Réinitialise l'état en mémoire (tests). */
-export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; clientClaude = client; invaliderReglages(); }
+export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; limiteurFamille = null; clientClaude = client; invaliderReglages(); }

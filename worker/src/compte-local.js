@@ -4,6 +4,7 @@
 //   ni de CSRF) ; l'identifiant n'est gardé que sous forme d'empreinte HMAC ;
 // - stocke des instantanés chiffrés sous un pseudonyme dérivé, dans le navigateur, d'une phrase secrète qu'il ne voit
 //   jamais. Aucune table ne relie un pseudonyme à un compte et rien n'est journalisé (ni pseudonyme ni identifiant).
+import { effacementFamille } from "./famille-donnees.js";
 import {
   FORMAT_CHIFFRE, FORMAT_IV, FORMAT_JETON, FORMAT_PSEUDONYME, TAILLE_MAX_CHIFFRE,
   depuisBase64, egalesTempsConstant, sha256Hex, validerIdentifiant, validerMotDePasse, versBase64, versBase64Url, versHex
@@ -103,6 +104,55 @@ async function authentifier(env, identifiant, motDePasse) {
   return { ok: true, compteId: ligne.id };
 }
 
+/**
+ * Inscrit un compte (identifiant et mot de passe déjà lus) : sert à l'inscription et à la création d'un compte enfant
+ * par son parent (ADR 0029).
+ * @returns {Promise<{ ok: true, id: string } | { ok: false, code: string, statut: number }>}
+ */
+export async function inscrireCompte(env, identifiant, motDePasse) {
+  const m = validerMotDePasse(motDePasse, { identifiant });
+  if (!m.ok) return { ok: false, code: `mot-de-passe-${m.erreur}`, statut: 400 };
+  const empreinte = await empreinteIdentifiant(env, identifiant);
+  if (await env.DB.prepare("SELECT 1 FROM comptes_locaux WHERE identifiant_hmac = ?").bind(empreinte).first()) {
+    return { ok: false, code: "identifiant-pris", statut: 409 };
+  }
+  const sel = crypto.getRandomValues(new Uint8Array(16));
+  const id = crypto.randomUUID();
+  await env.DB.prepare("INSERT INTO comptes_locaux (id, identifiant_hmac, mdp_sel, mdp_hash, mdp_iterations) VALUES (?, ?, ?, ?, ?)")
+    .bind(id, empreinte, versBase64(sel), await hacherMotDePasse(env, motDePasse, sel), ITERATIONS_SERVEUR).run();
+  return { ok: true, id };
+}
+
+/** Le mot de passe donné est-il celui du compte ? (réauthentification avant une action sensible) */
+export async function motDePasseDuCompte(env, compteId, motDePasse) {
+  if (typeof motDePasse !== "string" || !motDePasse) return false;
+  const ligne = await env.DB.prepare("SELECT mdp_sel, mdp_hash, mdp_iterations FROM comptes_locaux WHERE id = ?").bind(compteId).first();
+  if (!ligne) return false;
+  return egalesTempsConstant(await hacherMotDePasse(env, motDePasse, depuisBase64(ligne.mdp_sel), ligne.mdp_iterations), ligne.mdp_hash);
+}
+
+/**
+ * Remplace le mot de passe d'un compte (choisi par le parent pour son enfant, ADR 0029) et ferme ses sessions.
+ * L'identifiant n'étant connu que par son empreinte, le sel et le hachage sont recalculés sans lui.
+ */
+export async function remplacerMotDePasse(env, compteId, motDePasse) {
+  const sel = crypto.getRandomValues(new Uint8Array(16));
+  await env.DB.batch([
+    env.DB.prepare("UPDATE comptes_locaux SET mdp_sel = ?, mdp_hash = ?, mdp_iterations = ?, echecs = 0, bloque_jusqua = 0 WHERE id = ?")
+      .bind(versBase64(sel), await hacherMotDePasse(env, motDePasse, sel), ITERATIONS_SERVEUR, compteId),
+    env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(compteId)
+  ]);
+}
+
+/** Efface un compte local, ses sessions et tout ce qui le rattache à une famille (ADR 0029). */
+export async function effacerCompteLocal(env, compteId) {
+  await env.DB.batch([
+    ...(await effacementFamille(env, compteId)),
+    env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(compteId),
+    env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(compteId)
+  ]);
+}
+
 function identifiants(corps) {
   const id = validerIdentifiant(corps.identifiant);
   if (!id.ok) return { ok: false, code: `identifiant-${id.erreur}` };
@@ -146,17 +196,9 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
       const a = await authentifier(env, v.identifiant, v.motDePasse);
       return a.ok ? ouvrirSession(env, a.compteId) : erreur(a.code, a.statut);
     }
-    const m = validerMotDePasse(v.motDePasse, { identifiant: v.identifiant });
-    if (!m.ok) return erreur(`mot-de-passe-${m.erreur}`, 400);
-    const empreinte = await empreinteIdentifiant(env, v.identifiant);
-    if (await env.DB.prepare("SELECT 1 FROM comptes_locaux WHERE identifiant_hmac = ?").bind(empreinte).first()) {
-      return erreur("identifiant-pris", 409);
-    }
-    const sel = crypto.getRandomValues(new Uint8Array(16));
-    const id = crypto.randomUUID();
-    await env.DB.prepare("INSERT INTO comptes_locaux (id, identifiant_hmac, mdp_sel, mdp_hash, mdp_iterations) VALUES (?, ?, ?, ?, ?)")
-      .bind(id, empreinte, versBase64(sel), await hacherMotDePasse(env, v.motDePasse, sel), ITERATIONS_SERVEUR).run();
-    const r = await ouvrirSession(env, id);
+    const inscrit = await inscrireCompte(env, v.identifiant, v.motDePasse);
+    if (!inscrit.ok) return erreur(inscrit.code, inscrit.statut);
+    const r = await ouvrirSession(env, inscrit.id);
     return new Response(r.body, { status: 201, headers: r.headers });
   }
 
@@ -179,10 +221,7 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
     if (!ligne || typeof corps.motDePasse !== "string") return erreur("identifiants-invalides", 401);
     const calcule = await hacherMotDePasse(env, corps.motDePasse, depuisBase64(ligne.mdp_sel), ligne.mdp_iterations);
     if (!egalesTempsConstant(calcule, ligne.mdp_hash)) return erreur("identifiants-invalides", 401);
-    await env.DB.batch([
-      env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(session.compteId),
-      env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(session.compteId)
-    ]);
+    await effacerCompteLocal(env, session.compteId);
     return vide();
   }
 

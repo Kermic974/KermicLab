@@ -5,6 +5,7 @@ import * as progression from "./progression.js";
 import * as profil from "./profil.js";
 import * as comptes from "./comptes.js";
 import * as compteLocal from "./compte-local.js";
+import * as familleModule from "./famille.js";
 import * as demoFamille from "./demo-famille.js";
 import * as contributions from "./contributions.js";
 import * as demoContrib from "./demo-contributions.js";
@@ -469,6 +470,7 @@ function rafraichirCompte() {
   $("#compte-connexion").hidden = !e || !!s;
   $("#compte-ouvert").hidden = !e || !s;
   if (e && !s) $("#compte-connexion-texte").textContent = t("compteConnexionTexte", { identifiant: e.identifiant });
+  rafraichirFamilleCompte();
   if (!e || !s) return;
   const active = !!e.synchro;
   const deverrouillee = active && !!s.synchro;
@@ -482,22 +484,25 @@ function rafraichirCompte() {
   $("#compte-suppression-aide").textContent = t(!active ? (lie ? "connexionSuppression" : "compteSuppressionAide") : deverrouillee ? "compteSuppressionAideSynchro" : "compteSuppressionAideVerrouille");
 }
 
-/** Vérifie les identifiants côté D1 sans activer le transfert de progression. */
+/**
+ * Vérifie les identifiants côté D1 sans activer le transfert de progression. La session ouverte est gardée pour
+ * l'onglet (Espace famille, ADR 0029) : elle ne transporte aucune progression chiffrée.
+ * @returns {Promise<{ jeton: string, expire: number } | null>}
+ */
 async function verifierCompteEnLigne(identifiant, motDePasse, { inscrire, cible }) {
   const statut = $(cible);
   statut.textContent = t("synchroEnCours");
   try {
     const r = await ouvrirSessionServeur(identifiant, motDePasse, { inscrire });
     if (r.donnees?.jeton) {
-      void apiCompte("deconnexion", { jeton: r.donnees.jeton }).catch(() => {});
       statut.textContent = "";
-      return true;
+      return { jeton: r.donnees.jeton, expire: r.donnees.expire };
     }
     statut.textContent = t(r.statut === 409 ? "synchroIdentifiantPris" : erreurServeur(r));
   } catch {
     statut.textContent = t("synchroErreur");
   }
-  return false;
+  return null;
 }
 
 async function creerCompteLocal(ev) {
@@ -513,13 +518,15 @@ async function creerCompteLocal(ev) {
   compteEtat.occupe = true;
   try {
     const enregistrement = await compteLocal.creerEnregistrement(id.identifiant, mdp);
+    let serveur = null;
     if ($("#liaison-creer-d1").checked) {
-      if (!await verifierCompteEnLigne(id.identifiant, mdp, { inscrire: true, cible: "#liaison-creer-etat" })) return;
+      serveur = await verifierCompteEnLigne(id.identifiant, mdp, { inscrire: true, cible: "#liaison-creer-etat" });
+      if (!serveur) return;
       enregistrement.serveur = true;
     }
     $("#liaison-creer-etat").textContent = "";
     compteEtat.enregistrement = enregistrement;
-    compteEtat.session = { identifiant: id.identifiant, synchro: null };
+    compteEtat.session = { identifiant: id.identifiant, synchro: null, serveur };
     sauverCompte();
   } finally {
     compteEtat.occupe = false;
@@ -527,6 +534,7 @@ async function creerCompteLocal(ev) {
   $("#formulaire-compte-creer").reset();
   marquerReglesMdp();
   rafraichirCompte();
+  void chargerFamille();
   notifier(t("compteCree"), "🔐");
 }
 
@@ -538,28 +546,39 @@ async function connecterCompteLocal(ev) {
   if (!erreurChamp("compte-connexion-mdp", mdp ? "" : t("compteMdpRequis"), "compte-connexion-erreur")) return;
   compteEtat.occupe = true;
   try {
-    if (!erreurChamp("compte-connexion-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"), "compte-connexion-erreur")) return;
     const lie = e.serveur === true || !!e.synchro;
-    if (lie || $("#liaison-ouvrir-d1").checked) {
-      if (!await verifierCompteEnLigne(e.identifiant, mdp, { inscrire: !lie, cible: "#liaison-ouvrir-etat" })) return;
+    let serveur = null;
+    if (!await compteLocal.verifierMotDePasse(mdp, e)) {
+      // Mot de passe changé par le parent (ADR 0029) : le serveur fait foi pour un compte lié ; le vérificateur de
+      // l'appareil est alors recalculé (la phrase secrète de synchronisation ne dépend pas du mot de passe).
+      serveur = lie ? await verifierCompteEnLigne(e.identifiant, mdp, { inscrire: false, cible: "#liaison-ouvrir-etat" }) : null;
+      if (!erreurChamp("compte-connexion-mdp", serveur ? "" : t("compteMdpIncorrect"), "compte-connexion-erreur")) return;
+      const nouveau = await compteLocal.creerEnregistrement(e.identifiant, mdp);
+      Object.assign(e, { verificateur: nouveau.verificateur, sel: nouveau.sel, iterations: nouveau.iterations });
+    } else if (lie || $("#liaison-ouvrir-d1").checked) {
+      serveur = await verifierCompteEnLigne(e.identifiant, mdp, { inscrire: !lie, cible: "#liaison-ouvrir-etat" });
+      if (!serveur) return;
       e.serveur = true;
     }
     $("#liaison-ouvrir-etat").textContent = "";
-    compteEtat.session = { identifiant: e.identifiant, synchro: null };
+    compteEtat.session = { identifiant: e.identifiant, synchro: null, serveur };
     sauverCompte();
   } finally {
     compteEtat.occupe = false;
   }
   $("#formulaire-compte-connexion").reset();
   rafraichirCompte();
+  void chargerFamille();
   notifier(t("compteConnecte", { identifiant: e.identifiant }), "🔓");
 }
 
 function deconnecterCompteLocal() {
-  const jeton = compteEtat.session?.synchro?.jetonServeur;
-  if (jeton) void apiCompte("deconnexion", { jeton }).catch(() => {});
+  for (const jeton of new Set([compteEtat.session?.synchro?.jetonServeur, compteEtat.session?.serveur?.jeton].filter(Boolean))) {
+    void apiCompte("deconnexion", { jeton }).catch(() => {});
+  }
   compteEtat.session = null;
   sauverCompte();
+  oublierFamille();
   messageSynchro("");
   rafraichirCompte();
   notifier(t("compteDeconnecte"), "👋");
@@ -803,6 +822,619 @@ function brancherCompte() {
   $("#formulaire-compte-supprimer").addEventListener("submit", supprimerCompteLocal);
   marquerReglesMdp();
   rafraichirCompte();
+}
+
+/* ---------- Espace famille des comptes locaux (ADR 0029) ---------- */
+// Le compte local lié au serveur garde une session pour l'onglet. Un compte solo invite son parent par un code ; un
+// compte parent (rôle attribué dans le back-office) voit le tableau de bord Famille. L'appareil d'un enfant envoie un
+// bilan clair et borné (compteurs et identifiants du catalogue) et reçoit les cahiers assignés par son parent.
+const familleEtat = { moi: null, tableau: null, mesCahiers: [], occupe: false, minuteurBilan: null, dernierBilan: 0, ouverts: new Set() };
+const DELAI_BILAN_MS = 60_000;
+
+const jetonFamille = () => {
+  const s = compteEtat.session?.serveur;
+  return s && s.expire > Date.now() / 1000 ? s.jeton : null;
+};
+/** Membre d'une famille : ses consommations d'IA sont comptées (en-tête Authorization sur les routes d'IA). */
+const enteteFamille = () => {
+  const jeton = jetonFamille();
+  const m = familleEtat.moi;
+  return jeton && m && (m.enfant || m.enfants > 0) ? { authorization: `Bearer ${jeton}` } : {};
+};
+
+async function apiFamilleLocale(route, { methode = "GET", corps } = {}) {
+  const jeton = jetonFamille();
+  if (!jeton) return { statut: 401, donnees: { erreur: "non-connecte" } };
+  const r = await fetch(urlApi(`/api/famille/${route}`), {
+    method: methode, credentials: "omit", cache: "no-store",
+    headers: { authorization: `Bearer ${jeton}`, ...(corps ? { "content-type": "application/json" } : {}) },
+    body: corps ? JSON.stringify(corps) : undefined
+  });
+  let donnees = null;
+  try { donnees = await r.json(); } catch { /* 204 */ }
+  if (r.status === 401 && compteEtat.session) {
+    compteEtat.session.serveur = null;
+    sauverCompte();
+  }
+  return { statut: r.status, donnees };
+}
+
+function oublierFamille() {
+  Object.assign(familleEtat, { moi: null, tableau: null, mesCahiers: [] });
+  clearTimeout(familleEtat.minuteurBilan);
+  rafraichirFamilleCompte();
+  rendreCahiersFamille();
+  if (etat.ecran === "espace-famille") rendreEspaceFamille();
+}
+
+/** Message d'erreur de l'API famille (codes connus, sinon générique). */
+function messageFamille(r) {
+  const code = r?.donnees?.erreur;
+  if (r?.statut === 401 && code === "reauthentification") return t("efErreur_reauthentification");
+  if (r?.statut === 401) return t("efErreur_session");
+  if (r?.statut === 503) return t("efErreur_indisponible");
+  if (r?.statut === 429) return t("synchroTropDeTentatives");
+  if (typeof code === "string" && etat.textes[`efErreur_${code}`]) return t(`efErreur_${code}`);
+  if (typeof code === "string" && code.startsWith("prenom-")) return t(`pseudoErreur_${code.slice(7)}`, { min: profil.PSEUDO_MIN, max: profil.PSEUDO_MAX });
+  if (typeof code === "string" && code.startsWith("identifiant-") && etat.textes[`compteIdentifiantErreur_${code.slice(12)}`]) return t(`compteIdentifiantErreur_${code.slice(12)}`, bornesCompte);
+  if (typeof code === "string" && code.startsWith("mot-de-passe-")) return t("efErreur_motDePasse", { min: compteLocal.MOT_DE_PASSE_MIN });
+  return t("efErreur_generique");
+}
+
+/** Situation du compte dans sa famille ; charge ensuite les cahiers assignés (enfant) et envoie le bilan. */
+async function chargerFamille() {
+  if (!jetonFamille()) { oublierFamille(); return; }
+  try {
+    const r = await apiFamilleLocale("moi");
+    familleEtat.moi = r.statut === 200 ? r.donnees : null;
+  } catch {
+    familleEtat.moi = null;
+  }
+  rafraichirFamilleCompte();
+  if (familleEtat.moi?.enfant) {
+    await chargerMesCahiers();
+    planifierBilanFamille({ immediat: true });
+  }
+}
+
+function rafraichirFamilleCompte() {
+  const m = familleEtat.moi;
+  const lie = !!jetonFamille();
+  $("#entree-espace-famille").hidden = !m?.parent;
+  $("#famille-ouvrir-espace").hidden = !m?.parent;
+  $("#famille-compte-solo").hidden = !m || !!m.parent || !!m.enfant;
+  $("#famille-compte-statut").textContent = !lie ? t("fcNonLie")
+    : !m ? t("fcIndisponible")
+      : m.enfant ? t("fcEnfant", { prenom: m.enfant.prenom })
+        : m.parent ? t("fcParent", { n: m.enfants })
+          : t("fcSolo");
+  const invitation = m?.invitation;
+  if (!invitation) $("#famille-code-zone").hidden = true;
+  $("#famille-inviter").hidden = !!invitation && !$("#famille-code-zone").hidden;
+}
+
+async function inviterParent() {
+  if (familleEtat.occupe) return;
+  familleEtat.occupe = true;
+  $("#famille-compte-message").textContent = t("synchroEnCours");
+  try {
+    const r = await apiFamilleLocale("invitation", { methode: "POST", corps: {} });
+    if (r.statut !== 201) { $("#famille-compte-message").textContent = messageFamille(r); return; }
+    $("#famille-code").textContent = familleModule.afficherCode(r.donnees.code);
+    const expire = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium", timeStyle: "short" }).format(new Date(r.donnees.expire * 1000));
+    $("#famille-code-aide").textContent = t("fcCodeAide", { date: expire });
+    $("#famille-code-zone").hidden = false;
+    $("#famille-inviter").hidden = true;
+    $("#famille-compte-message").textContent = "";
+  } catch {
+    $("#famille-compte-message").textContent = t("efErreur_generique");
+  } finally {
+    familleEtat.occupe = false;
+  }
+}
+
+async function annulerInvitation() {
+  try { await apiFamilleLocale("invitation/annuler", { methode: "POST", corps: {} }); } catch { /* sans effet */ }
+  $("#famille-code-zone").hidden = true;
+  $("#famille-inviter").hidden = false;
+  $("#famille-code").textContent = "";
+}
+
+/* Bilan envoyé par l'appareil de l'enfant */
+
+function bilanDeLAppareil() {
+  const p = etat.progres ?? progression.etatInitial();
+  const jour = progression.jourLocal();
+  const notions = {};
+  for (const [id, n] of Object.entries(etat.evenements?.notions ?? {})) {
+    const maitrise = evenements.maitriseNotion(n, jour).etat;
+    if (!familleModule.ETATS_NOTION.includes(maitrise)) continue;
+    const r = evenements.resumerNotion(n);
+    notions[id] = { etat: maitrise, tentes: r?.tentes ?? 0, reussis: r?.reussis ?? 0 };
+  }
+  for (const id of p.notions) notions[id] ??= { etat: "decouverte", tentes: 0, reussis: 0 };
+  const cahiers = cahiersEnregistres().filter((c) => c.famille).map((c) => ({ famille: c.famille, ...bilanExercices(c) }));
+  return familleModule.construireBilan(p, {
+    jour, niveau: progression.niveau(p).niveau, serie: progression.serieCourante(p, jour),
+    semaine: progression.activite(p, jour, familleModule.JOURS_BILAN), notions, cahiers
+  });
+}
+
+async function envoyerBilanFamille() {
+  if (!familleEtat.moi?.enfant || !jetonFamille()) return;
+  familleEtat.dernierBilan = Date.now();
+  try { await apiFamilleLocale("bilan", { methode: "PUT", corps: { bilan: bilanDeLAppareil() } }); } catch { /* nouvel essai au prochain changement */ }
+}
+
+/** Envoi groupé : au plus un bilan par minute, tout de suite à la connexion ou quand l'onglet est masqué. */
+function planifierBilanFamille({ immediat = false } = {}) {
+  if (!familleEtat.moi?.enfant) return;
+  clearTimeout(familleEtat.minuteurBilan);
+  const attente = immediat ? 0 : Math.max(0, DELAI_BILAN_MS - (Date.now() - familleEtat.dernierBilan));
+  familleEtat.minuteurBilan = setTimeout(() => void envoyerBilanFamille(), attente);
+}
+
+/* Cahiers assignés : côté enfant */
+
+async function chargerMesCahiers() {
+  try {
+    const r = await apiFamilleLocale("mes-cahiers");
+    familleEtat.mesCahiers = r.statut === 200 && Array.isArray(r.donnees?.cahiers) ? r.donnees.cahiers : [];
+  } catch {
+    familleEtat.mesCahiers = [];
+  }
+  // Un cahier déjà calibré sur un autre appareil est importé ici directement.
+  for (const c of familleEtat.mesCahiers) if (c.statut !== "assigne" && c.calibrage) importerCahierFamille(c, c.calibrage);
+  rendreCahiersFamille();
+}
+
+const titreCahierFamille = (c) => c.titre || t(`cahier_${c.demande?.type}`) || t("cfSansTitre");
+const cahierLocalFamille = (id) => cahiersEnregistres().find((c) => c.famille === id) ?? null;
+
+/** Copie un cahier assigné dans « Mes cahiers », calibrage appliqué ; il garde le lien vers la famille. */
+function importerCahierFamille(c, calibrage) {
+  if (cahierLocalFamille(c.id)) return cahierLocalFamille(c.id);
+  const d = c.demande ?? {};
+  const notions = Array.isArray(d.notions) ? d.notions : [];
+  const sections = c.cahier?.sections?.length
+    ? c.cahier.sections.map((s) => ({ notion: s.notion, titre: s.titre, blocs: s.blocs, notes: "" }))
+    : sectionsCatalogue(notions);
+  const calibre = familleModule.appliquerCalibrage({ sections }, calibrage ?? {});
+  const cahiers = cahiersEnregistres();
+  const local = cahierValide({
+    id: window.crypto?.randomUUID?.() ?? `${Date.now()}-${cahiers.length}`, famille: c.id, type: d.type, creeLe: c.creeLe ? new Date(`${c.creeLe.replace(" ", "T")}Z`).toISOString() : new Date().toISOString(),
+    titre: titreCahierFamille(c), source: c.cahier ? "ia" : "catalogue", longueur: d.longueur, univers: d.univers, objectif: d.objectif,
+    introduction: c.cahier?.introduction || t(`cahierIntro_${d.type}`), conclusion: c.cahier?.conclusion ?? "", notes: "",
+    sections: calibre.sections.map(({ acquise, ...s }) => s)
+  });
+  if (!local) return null;
+  enregistrerCahiers([local, ...cahiers]);
+  rendreCahiers();
+  return local;
+}
+
+function rendreCahiersFamille() {
+  const zone = $("#cahiers-famille");
+  if (!zone || !etat.textes.titre) return;
+  const liste = familleEtat.mesCahiers;
+  zone.hidden = !liste.length;
+  $("#liste-cahiers-famille").replaceChildren(...liste.map((c) => {
+    const carte = element("article", { classe: "carte cahier-enregistre cahier-famille" });
+    const infos = element("div", { classe: "cahier-infos" });
+    const local = cahierLocalFamille(c.id);
+    const avancement = local ? bilanExercices(local) : null;
+    const details = [t(`cahier_${c.demande?.type}`), t("cahierNotionsCompte", { n: c.demande?.notions?.length ?? 0 }),
+      avancement?.total ? t("cahierProgression", { n: avancement.reussis, m: avancement.total }) : null].filter(Boolean).join(" · ");
+    infos.append(element("h4", { texte: titreCahierFamille(c) }), element("p", { classe: "doux petit", texte: details }),
+      element("span", { classe: `pastille ${c.statut === "assigne" ? "pri" : c.statut === "termine" ? "ok" : "en-cours"}`, cle: `cfStatut_${c.statut}` }));
+    const action = element("button", { classe: "bouton petit-bouton", cle: c.statut === "assigne" ? "cfCommencer" : "cahierOuvrir", attributs: { type: "button", "data-cahier-famille": c.id } });
+    const actions = element("div", { classe: "cahier-actions" });
+    actions.append(action);
+    carte.append(infos, actions);
+    return carte;
+  }));
+}
+
+const calibrageEtat = { cahier: null, questions: [] };
+
+async function commencerCahierFamille(id) {
+  const c = familleEtat.mesCahiers.find((x) => x.id === id);
+  if (!c) return;
+  if (c.statut !== "assigne") {
+    const local = importerCahierFamille(c, c.calibrage);
+    if (local) ouvrirLectureCahier(local.id);
+    return;
+  }
+  calibrageEtat.cahier = c;
+  calibrageEtat.questions = await questionsDiagnosticVacances(c.demande?.notions ?? []);
+  $("#calibrage-questions").replaceChildren(...calibrageEtat.questions.map((q, i) => {
+    const bloc = element("fieldset", { classe: "vacances-question" });
+    bloc.append(element("legend", { texte: `${notionParId(q.notion)?.titre ?? q.notion} · ${q.question}` }));
+    q.choix.forEach((choix, j) => {
+      const label = element("label");
+      label.append(element("input", { attributs: { type: "radio", name: `calibrage-${i}`, value: String(j) } }), element("span", { texte: choix }));
+      bloc.append(label);
+    });
+    const jeNeSaisPas = element("label");
+    jeNeSaisPas.append(element("input", { attributs: { type: "radio", name: `calibrage-${i}`, value: "-1" } }), element("span", { cle: "vacancesJeNeSaisPas" }));
+    bloc.append(jeNeSaisPas);
+    return bloc;
+  }));
+  if (!calibrageEtat.questions.length) $("#calibrage-questions").append(element("p", { classe: "doux", cle: "calibrageSansQuestion" }));
+  $("#calibrage-retour").textContent = "";
+  $("#calibrage-valider").disabled = false;
+  $("#calibrage-cahier").showModal();
+  $("#calibrage-questions input")?.focus();
+}
+
+async function validerCalibrage(e) {
+  e.preventDefault();
+  const c = calibrageEtat.cahier;
+  if (!c || familleEtat.occupe) return;
+  // Une bonne réponse = notion acquise : elle passe en approfondissement, à la fin du cahier.
+  const resultats = Object.fromEntries(calibrageEtat.questions.map((q, i) => [q.notion, Number($(`input[name="calibrage-${i}"]:checked`)?.value) === q.bonne]));
+  familleEtat.occupe = true;
+  $("#calibrage-valider").disabled = true;
+  try {
+    const r = await apiFamilleLocale(`mes-cahiers/${c.id}/calibrage`, { methode: "POST", corps: { resultats } });
+    if (r.statut !== 200 && r.statut !== 409) { $("#calibrage-retour").textContent = messageFamille(r); return; }
+    const calibrage = r.donnees?.calibrage ?? resultats;
+    Object.assign(c, { statut: "en-cours", calibrage });
+    const local = importerCahierFamille(c, calibrage);
+    $("#calibrage-cahier").close();
+    rendreCahiersFamille();
+    const acquises = Object.values(calibrage).filter(Boolean).length;
+    if (local) ouvrirLectureCahier(local.id, acquises ? t("calibrageResultat", { n: acquises }) : t("calibrageTout"));
+    planifierBilanFamille({ immediat: true });
+  } catch {
+    $("#calibrage-retour").textContent = t("efErreur_generique");
+  } finally {
+    familleEtat.occupe = false;
+    $("#calibrage-valider").disabled = false;
+  }
+}
+
+/* Espace famille : côté parent */
+
+async function ouvrirEspaceFamille() {
+  if (!familleEtat.moi && jetonFamille()) await chargerFamille();
+  await chargerTableauFamille();
+}
+
+async function chargerTableauFamille() {
+  if (!familleEtat.moi?.parent) { familleEtat.tableau = null; rendreEspaceFamille(); return; }
+  $("#ef-etat").textContent = t("efChargement");
+  try {
+    const r = await apiFamilleLocale("tableau");
+    familleEtat.tableau = r.statut === 200 ? r.donnees : null;
+    $("#ef-etat").textContent = r.statut === 200 ? "" : messageFamille(r);
+  } catch {
+    familleEtat.tableau = null;
+    $("#ef-etat").textContent = t("efErreur_generique");
+  }
+  rendreEspaceFamille();
+}
+
+/** Durée compacte pour les tuiles : « 0 min », « 45 min », « 2 h 05 ». */
+const formatMinutes = (min) => (min < 60 ? t("efMinutes", { n: min }) : t("efHeures", { h: Math.floor(min / 60), m: String(min % 60).padStart(2, "0") }));
+
+function chiffre(dt, dd) {
+  const div = element("div");
+  div.append(element("dd", { texte: String(dd) }), element("dt", { texte: dt }));
+  return div;
+}
+
+function rendreEspaceFamille() {
+  const tableau = familleEtat.tableau;
+  const m = familleEtat.moi;
+  if (!tableau) {
+    $("#ef-contenu").hidden = true;
+    if (!$("#ef-etat").textContent || !m?.parent) {
+      $("#ef-etat").textContent = !jetonFamille() ? t("efConnexionRequise") : m && !m.parent ? t(m.enfant ? "efCompteEnfant" : "efRoleRequis") : "";
+    }
+    return;
+  }
+  $("#ef-contenu").hidden = false;
+  const jour = progression.jourLocal();
+  const s = familleModule.syntheseFamille(tableau.enfants, jour);
+  $("#ef-chiffres").replaceChildren(
+    chiffre(t("efChiffreEnfants"), s.enfants), chiffre(t("efChiffreXp"), s.xp),
+    chiffre(t("efChiffreTemps"), formatMinutes(s.minutes)), chiffre(t("efChiffreCahiers"), s.cahiersEnCours)
+  );
+  const prenomDe = (id) => tableau.enfants.find((e) => e.id === id)?.prenom ?? "";
+  $("#ef-alertes").replaceChildren(...s.alertes.map((a) => element("li", { texte: t(`efAlerte_${a.type}`, { prenom: prenomDe(a.enfant), n: a.n ?? a.jours ?? "" }) })));
+  $("#ef-vide").hidden = tableau.enfants.length > 0;
+  $("#ef-enfants").replaceChildren(...tableau.enfants.map(carteEnfant));
+  $("#ef-ajout").hidden = tableau.enfants.length >= tableau.maxEnfants;
+  rendreConsommations(tableau);
+}
+
+function barresSemaine(bilan, jour) {
+  const conteneur = element("div", { classe: "ef-semaine", attributs: { role: "img" } });
+  const jours = [];
+  for (let i = 6; i >= 0; i--) jours.push(familleModule.ecartJours("1970-01-01", jour) - i);
+  const parJour = new Map((bilan?.jours ?? []).map((j) => [familleModule.ecartJours("1970-01-01", j.jour), j]));
+  const max = Math.max(1, ...jours.map((d) => parJour.get(d)?.min ?? 0));
+  const resume = [];
+  for (const d of jours) {
+    const min = parJour.get(d)?.min ?? 0;
+    const date = new Date(d * 86400000);
+    const nom = date.toLocaleDateString(etat.langue, { weekday: "short", timeZone: "UTC" });
+    resume.push(`${nom} ${min} min`);
+    const barre = element("span", { classe: "ef-barre", attributs: { "aria-hidden": "true", title: `${nom} : ${min} min` } });
+    barre.style.setProperty("--h", `${Math.round((min / max) * 100)}%`);
+    conteneur.append(barre);
+  }
+  conteneur.setAttribute("aria-label", t("efSemaineAria", { detail: resume.join(", ") }));
+  return conteneur;
+}
+
+function carteEnfant(e) {
+  const carte = element("article", { classe: "carte ef-enfant", attributs: { "data-enfant": e.id } });
+  const tete = element("div", { classe: "ef-enfant-tete" });
+  const nom = element("div", { classe: "famille-enfant-nom" });
+  nom.append(element("h4", { texte: e.prenom }), element("span", { classe: "doux petit", texte: `${t(`tranche_${e.trancheAge}`)} · ${t(e.origine === "invitation" ? "efOrigineInvitation" : "efOrigineCreation")}` }));
+  tete.append(nom);
+  const b = e.bilan;
+  const jour = progression.jourLocal();
+  if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
+  else {
+    const vu = b.dernierJour ? familleModule.ecartJours(b.dernierJour, jour) : null;
+    tete.append(element("span", { classe: `pastille ${vu !== null && vu < familleModule.JOURS_INACTIVITE ? "ok" : "en-cours"}`, texte: vu === null ? t("efJamaisActif") : vu === 0 ? t("efActifAujourdhui") : t("efActifIlYa", { n: vu }) }));
+  }
+  carte.append(tete);
+  if (b) {
+    const sem = familleModule.semaineBilan(b, jour);
+    const rep = familleModule.repartitionNotions(b);
+    const stats = element("dl", { classe: "stats stats-progression" });
+    stats.append(chiffre(t("niveauLong", { n: "" }).trim(), b.niveau), chiffre(t("efSerie"), b.serie), chiffre(t("efXpSemaine"), sem.xp), chiffre(t("efTempsSemaine"), formatMinutes(sem.minutes)));
+    carte.append(stats, barresSemaine(b, jour));
+    carte.append(element("p", { classe: "doux petit", texte: t("efNotionsResume", { maitrisees: rep.maitrisee, encours: rep["en-cours"], arevoir: rep["a-revoir"], decouvertes: rep.decouverte }) }));
+    const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id).slice(0, 5);
+    if (aRevoir.length) carte.append(element("p", { classe: "petit", texte: t("efARevoirListe", { liste: aRevoir.join(", ") }) }));
+  }
+  // Cahiers assignés.
+  const cahiers = element("div", { classe: "ef-cahiers" });
+  cahiers.append(element("h5", { cle: "efCahiersAssignes" }));
+  if (!e.cahiers.length) cahiers.append(element("p", { classe: "doux petit", cle: "efAucunCahier" }));
+  for (const c of e.cahiers) {
+    const ligne = element("div", { classe: "ef-cahier" });
+    const texte = [titreCahierFamille(c), t(`cfStatut_${c.statut}`), c.total ? t("cahierProgression", { n: c.reussis, m: c.total }) : null,
+      c.calibrage ? t("efCalibrage", { n: Object.values(c.calibrage).filter(Boolean).length, m: Object.keys(c.calibrage).length }) : null].filter(Boolean).join(" · ");
+    ligne.append(element("span", { texte }));
+    const archiver = element("button", { classe: "secondaire petit-bouton", cle: "efArchiver", attributs: { type: "button", "data-ef-archiver": c.id } });
+    ligne.append(archiver);
+    cahiers.append(ligne);
+  }
+  carte.append(cahiers);
+  // Actions.
+  const actions = element("div", { classe: "actions" });
+  actions.append(element("button", { classe: "bouton petit-bouton", cle: "efAssigner", attributs: { type: "button", "data-ef-assigner": e.id } }));
+  carte.append(actions);
+  const gestion = element("details", { classe: "famille-ajout ef-gestion" });
+  if (familleEtat.ouverts.has(e.id)) gestion.open = true;
+  gestion.addEventListener("toggle", () => { if (gestion.open) familleEtat.ouverts.add(e.id); else familleEtat.ouverts.delete(e.id); });
+  gestion.append(element("summary", { cle: "efGerer" }), formulaireGestion(e));
+  carte.append(gestion);
+  return carte;
+}
+
+function champ(id, cle, attributs = {}) {
+  const frag = document.createDocumentFragment();
+  frag.append(element("label", { classe: "etiquette-champ", cle, attributs: { for: id } }), element("input", { attributs: { id, ...attributs } }));
+  return frag;
+}
+
+function formulaireGestion(e) {
+  const zone = element("div", { classe: "ef-gestion-corps" });
+  const id = e.id.slice(0, 8);
+  // Modifier le profil.
+  const modif = element("form", { classe: "formulaire-profil", attributs: { "data-ef-modifier": e.id, novalidate: "" } });
+  modif.append(champ(`ef-prenom-${id}`, "enfantPrenomLabel", { type: "text", maxlength: "20", value: e.prenom, name: "prenom" }));
+  const tranche = element("select", { attributs: { name: "trancheAge", "aria-label": t("enfantTrancheLabel") } });
+  for (const tr of comptes.TRANCHES_AGE) tranche.append(option(tr, t(`tranche_${tr}`)));
+  tranche.value = e.trancheAge;
+  modif.append(tranche, element("button", { classe: "secondaire petit-bouton", cle: "efEnregistrer", attributs: { type: "submit" } }));
+  // Nouveau mot de passe (mot de passe du parent redemandé).
+  const mdp = element("form", { classe: "formulaire-profil", attributs: { "data-ef-mdp": e.id, novalidate: "" } });
+  mdp.append(element("p", { classe: "doux petit", cle: "efMdpResetAide" }),
+    champ(`ef-nmdp-${id}`, "efNouveauMdp", { type: "password", maxlength: "128", autocomplete: "new-password", name: "motDePasse" }),
+    champ(`ef-pmdp-${id}`, "efMdpParent", { type: "password", maxlength: "128", autocomplete: "current-password", name: "motDePasseParent" }),
+    element("button", { classe: "secondaire petit-bouton", cle: "efChangerMdp", attributs: { type: "submit" } }));
+  // Détacher, supprimer.
+  const sortir = element("form", { classe: "formulaire-profil", attributs: { "data-ef-supprimer": e.id, novalidate: "" } });
+  sortir.append(element("p", { classe: "doux petit", cle: "efSortieAide" }),
+    champ(`ef-smdp-${id}`, "efMdpParent", { type: "password", maxlength: "128", autocomplete: "current-password", name: "motDePasseParent" }));
+  const boutons = element("div", { classe: "actions" });
+  boutons.append(element("button", { classe: "secondaire petit-bouton", cle: "efDetacher", attributs: { type: "button", "data-ef-detacher": e.id } }),
+    element("button", { classe: "danger petit-bouton", cle: "efSupprimer", attributs: { type: "submit" } }));
+  sortir.append(boutons);
+  zone.append(modif, mdp, sortir, element("p", { classe: "erreur-champ", attributs: { role: "status", "data-ef-message": e.id } }));
+  return zone;
+}
+
+const messageEnfant = (id, texte) => { const p = document.querySelector(`[data-ef-message="${id}"]`); if (p) p.textContent = texte; };
+
+async function actionEnfant(id, route, corps, { succes, confirmer } = {}) {
+  if (familleEtat.occupe) return;
+  familleEtat.occupe = true;
+  messageEnfant(id, t("synchroEnCours"));
+  try {
+    const r = await apiFamilleLocale(`enfants/${id}/${route}`, { methode: "POST", corps: corps ?? {} });
+    if (r.statut >= 300) { messageEnfant(id, messageFamille(r)); return; }
+    if (succes) notifier(succes, "👪");
+    await chargerTableauFamille();
+    if (confirmer) messageEnfant(id, confirmer);
+  } catch {
+    messageEnfant(id, t("efErreur_generique"));
+  } finally {
+    familleEtat.occupe = false;
+  }
+}
+
+function brancherEspaceFamille() {
+  const zone = $("#ef-enfants");
+  zone.addEventListener("submit", (ev) => {
+    const f = ev.target;
+    ev.preventDefault();
+    const donnees = Object.fromEntries(new FormData(f));
+    if (f.dataset.efModifier) void actionEnfant(f.dataset.efModifier, "modifier", donnees, { succes: t("efModifie") });
+    else if (f.dataset.efMdp) {
+      const v = compteLocal.validerMotDePasse(donnees.motDePasse);
+      if (!v.ok) { messageEnfant(f.dataset.efMdp, t("efErreur_motDePasse", { min: compteLocal.MOT_DE_PASSE_MIN })); return; }
+      void actionEnfant(f.dataset.efMdp, "mot-de-passe", donnees, { confirmer: t("efMdpChange") });
+    } else if (f.dataset.efSupprimer) {
+      const bouton = f.querySelector("button[type=submit]");
+      // Confirmation en deux temps : le compte de l'enfant et ses données en ligne sont effacés.
+      if (bouton.dataset.confirmer !== "1") { bouton.dataset.confirmer = "1"; bouton.textContent = t("efSupprimerConfirmer"); return; }
+      void actionEnfant(f.dataset.efSupprimer, "supprimer", donnees, { succes: t("efSupprime") });
+    }
+  });
+  zone.addEventListener("click", (ev) => {
+    const detacher = ev.target.closest("[data-ef-detacher]");
+    if (detacher) {
+      if (detacher.dataset.confirmer !== "1") { detacher.dataset.confirmer = "1"; detacher.textContent = t("efDetacherConfirmer"); return; }
+      void actionEnfant(detacher.dataset.efDetacher, "detacher", {}, { succes: t("efDetache") });
+      return;
+    }
+    const archiver = ev.target.closest("[data-ef-archiver]");
+    if (archiver) {
+      void apiFamilleLocale(`cahiers/${archiver.dataset.efArchiver}/archiver`, { methode: "POST", corps: {} }).then(chargerTableauFamille).catch(() => {});
+      return;
+    }
+    const assigner = ev.target.closest("[data-ef-assigner]");
+    if (assigner) ouvrirConstructeurFamille(assigner.dataset.efAssigner);
+  });
+  for (const radio of document.querySelectorAll('input[name="ef-mode"]')) {
+    radio.addEventListener("change", () => {
+      const creation = document.querySelector('input[name="ef-mode"]:checked')?.value === "creation";
+      $("#ef-ajout-code").hidden = creation;
+      $("#ef-ajout-creation").hidden = !creation;
+    });
+  }
+  $("#ef-formulaire-ajout").addEventListener("submit", ajouterEnfantFamille);
+  $("#ef-actualiser").addEventListener("click", () => void ouvrirEspaceFamille());
+}
+
+async function ajouterEnfantFamille(ev) {
+  ev.preventDefault();
+  if (familleEtat.occupe) return;
+  const creation = document.querySelector('input[name="ef-mode"]:checked')?.value === "creation";
+  const erreurAjout = (texte) => { $("#ef-ajout-erreur").textContent = texte; return false; };
+  const prenom = profil.validerPseudo($("#ef-prenom").value);
+  if (!prenom.ok) return erreurAjout(t(`pseudoErreur_${prenom.erreur}`, { min: profil.PSEUDO_MIN, max: profil.PSEUDO_MAX }));
+  const trancheAge = document.querySelector('input[name="ef-tranche"]:checked')?.value;
+  if (!trancheAge) return erreurAjout(t("enfantTrancheErreur"));
+  if (!$("#ef-consentement").checked) return erreurAjout(t("consentementErreur"));
+  const corps = { prenom: prenom.pseudo, trancheAge, consentement: comptes.VERSION_CONSENTEMENT };
+  if (creation) {
+    const id = compteLocal.validerIdentifiant($("#ef-identifiant").value);
+    if (!id.ok) return erreurAjout(t(`compteIdentifiantErreur_${id.erreur}`, bornesCompte));
+    const mdp = $("#ef-mdp").value;
+    if (!compteLocal.validerMotDePasse(mdp, { identifiant: id.identifiant }).ok) return erreurAjout(t("efErreur_motDePasse", { min: compteLocal.MOT_DE_PASSE_MIN }));
+    Object.assign(corps, { identifiant: id.identifiant, motDePasse: mdp });
+  } else {
+    const code = familleModule.normaliserCode($("#ef-code").value);
+    if (!code) return erreurAjout(t("efErreur_code-invalide"));
+    corps.code = code;
+  }
+  familleEtat.occupe = true;
+  erreurAjout(t("synchroEnCours"));
+  try {
+    const r = await apiFamilleLocale(creation ? "enfants" : "rejoindre", { methode: "POST", corps });
+    if (r.statut !== 201) { erreurAjout(messageFamille(r)); return; }
+    erreurAjout("");
+    $("#ef-formulaire-ajout").reset();
+    $("#ef-ajout").open = false;
+    notifier(t(creation ? "efEnfantCree" : "efEnfantRejoint", { prenom: r.donnees.prenom }), "👪");
+    familleEtat.occupe = false;
+    await chargerTableauFamille();
+  } catch {
+    erreurAjout(t("efErreur_generique"));
+  } finally {
+    familleEtat.occupe = false;
+  }
+}
+
+function rendreConsommations(tableau) {
+  const membres = [tableau.parent, ...tableau.enfants.map((e) => e.id)];
+  const nomDe = (id) => (id === tableau.parent ? t("efMoi") : tableau.enfants.find((e) => e.id === id)?.prenom ?? "");
+  const { parMembre, total } = familleModule.resumerConsommations(tableau.consommations.lignes, membres);
+  const modules = familleModule.MODULES_CONSOMMATION.filter((m) => total.modules[m]);
+  $("#ef-conso-aide").textContent = t("efConsommationsAide", { n: tableau.consommations.jours, restantes: tableau.cahiersIa?.restantes ?? 0, limite: tableau.cahiersIa?.limite ?? 0 });
+  const table = $("#ef-conso");
+  const ligne = (cellules, entete = false) => {
+    const tr = element("tr");
+    cellules.forEach((c, i) => tr.append(element(entete || i === 0 ? "th" : "td", { texte: String(c), attributs: entete ? { scope: "col" } : i === 0 ? { scope: "row" } : {} })));
+    return tr;
+  };
+  const fmt = (m) => (m ? t("efConsoCellule", { appels: m.appels, tokens: new Intl.NumberFormat(etat.langue).format(m.tokens) }) : "—");
+  const thead = element("thead");
+  thead.append(ligne([t("efMembre"), ...modules.map((m) => t(`efModule_${m}`)), t("efTotal")], true));
+  const tbody = element("tbody");
+  for (const id of membres) tbody.append(ligne([nomDe(id), ...modules.map((m) => fmt(parMembre[id].modules[m])), fmt(parMembre[id].appels ? parMembre[id] : null)]));
+  tbody.append(ligne([t("efTotal"), ...modules.map((m) => fmt(total.modules[m])), fmt(total.appels ? total : null)]));
+  table.replaceChildren(element("caption", { classe: "visuellement-cache", cle: "efConsommations" }), thead, tbody);
+}
+
+/* Constructeur de cahier en mode famille : même dialogue, destination l'enfant choisi. */
+
+function ouvrirConstructeurFamille(enfantId) {
+  const enfant = familleEtat.tableau?.enfants.find((e) => e.id === enfantId);
+  if (!enfant) return;
+  constructeur.enfant = enfant;
+  const select = $("#cahier-type-famille");
+  select.replaceChildren(...TYPES_CAHIERS.filter((ty) => ty !== "brouillon").map((ty) => option(ty, t(`cahier_${ty}`))));
+  select.value = "exercices";
+  ouvrirConstructeur("exercices");
+}
+
+function basculerModeFamilleConstructeur() {
+  const enfant = constructeur.enfant;
+  $("#cahier-famille-zone").hidden = !enfant;
+  $("#cahier-titre-zone").hidden = !!enfant;
+  if (enfant) $("#cahier-famille-pour").textContent = t("efCahierPour", { prenom: enfant.prenom });
+}
+
+async function assignerCahierFamille({ type, ids, longueur, univers, objectif }) {
+  const enfant = constructeur.enfant;
+  const retour = $("#retour-cahier");
+  if (!ids.length) { retour.textContent = t("cahierChoisirNotion"); return; }
+  constructeur.envoi = true;
+  $("#construire-cahier").disabled = true;
+  retour.textContent = t($("#cahier-ia").checked ? "cahierPreparation" : "synchroEnCours");
+  try {
+    const r = await apiFamilleLocale("cahiers", {
+      methode: "POST",
+      corps: { enfantId: enfant.id, type, notions: ids, longueur, univers, objectif, langue: etat.langue, utiliserLlm: $("#cahier-ia").checked }
+    });
+    if (r.statut !== 201) { retour.textContent = messageFamille(r); return; }
+    $("#constructeur-cahier").close();
+    notifier(t(r.donnees.source === "ia" ? "efCahierAssigneIa" : "efCahierAssigne", { prenom: enfant.prenom }), "📒");
+    await chargerTableauFamille();
+  } catch {
+    retour.textContent = t("efErreur_generique");
+  } finally {
+    constructeur.envoi = false;
+    $("#construire-cahier").disabled = false;
+  }
+}
+
+function brancherFamilleLocale() {
+  ECRANS.push("espace-famille");
+  $("#famille-inviter").addEventListener("click", inviterParent);
+  $("#famille-annuler-invitation").addEventListener("click", annulerInvitation);
+  $("#liste-cahiers-famille").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-cahier-famille]");
+    if (b) void commencerCahierFamille(b.dataset.cahierFamille);
+  });
+  $("#formulaire-calibrage").addEventListener("submit", validerCalibrage);
+  brancherDialogue($("#calibrage-cahier"), $("#fermer-calibrage"));
+  $("#cahier-type-famille").addEventListener("change", (e) => { constructeur.type = e.target.value; });
+  $("#constructeur-cahier").addEventListener("close", () => { constructeur.enfant = null; basculerModeFamilleConstructeur(); });
+  brancherEspaceFamille();
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && familleEtat.moi?.enfant) void envoyerBilanFamille(); });
+  void chargerFamille();
 }
 
 /* ---------- Contributions au contenu des notions (ADR 0023) ---------- */
@@ -1886,6 +2518,8 @@ function appliquerResultat(resultat) {
   if (resultat.niveauGagne) notifier(t("niveauGagne", { n: progression.niveau(etat.progres).niveau }), "⭐");
   // Synchronise si un profil enfant est actif sur l'appareil (ADR 0017).
   void synchroniserProgression();
+  // Compte enfant d'une famille (ADR 0029) : bilan groupé envoyé au parent.
+  planifierBilanFamille();
   if (resultat.nouvelleNotion) rendreCatalogue();
   rafraichirTableau();
 }
@@ -2407,7 +3041,7 @@ async function envoyer(question, { dejaAffichee = false } = {}) {
     const r = await fetch(`${etat.config.apiUrl}/api/chat`, {
       method: "POST",
       credentials: "include",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", ...enteteFamille() },
       body: JSON.stringify({ message: question, langue: etat.langue, utiliserLlm: etat.llmDisponible && etat.llmActif })
     });
     const donnees = await r.json();
@@ -2546,7 +3180,7 @@ function brancherDialogue(dialogue, boutonFermer) {
 }
 
 async function demarrer() {
-  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#contributions"), $("#defi"), $("#progres"));
+  $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#espace-famille"), $("#contributions"), $("#defi"), $("#progres"));
   etat.config = await chargerJson("config.json");
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
@@ -2578,6 +3212,7 @@ async function demarrer() {
 
   brancherProfil();
   brancherCompte();
+  brancherFamilleLocale();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -2759,7 +3394,7 @@ async function preparerIdee() {
   const contexteDemande = JSON.stringify(etat.ideeContexte ?? {});
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/idee/cadrage`, {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      method: "POST", credentials: "include", headers: { "content-type": "application/json", ...enteteFamille() },
       body: JSON.stringify({ message, langue: etat.langue, contexte: etat.ideeContexte ?? {}, utiliserLlm: true })
     });
     const d = await r.json();
@@ -2996,7 +3631,7 @@ function rafraichirTheme() {
 /** Les 6 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
 const DESTINATIONS = ["accueil", "education", "labs", "jeux", "progression", "profil"];
 const ECRANS = [...DESTINATIONS, "defi", "compte", "apropos", "connexion-en-cours"];
-const PARENTS = { defi: "education", famille: "profil", compte: "profil", apropos: "profil", "connexion-en-cours": "profil" };
+const PARENTS = { defi: "education", famille: "profil", "espace-famille": "profil", compte: "profil", apropos: "profil", "connexion-en-cours": "profil" };
 /** Anciennes adresses (#notions, #badges…) : redirigées vers la destination qui les contient. */
 const ALIAS_ECRANS = { catalogue: "education", notions: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };
@@ -3006,7 +3641,7 @@ function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", apropos: "navAPropos" }[etat.ecran]);
+    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
 }
 
@@ -3032,6 +3667,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   if (etat.ecran === "progression") rendreProgression();
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   if (etat.ecran === "compte") rafraichirCompte();
+  if (etat.ecran === "espace-famille" && changement) void ouvrirEspaceFamille();
   if (etat.ecran === "profil" && changement) remplirProfil();
   const ancre = ANCRES_ALIAS[cle] ? $(ANCRES_ALIAS[cle]) : null;
   if (ancre?.hidden && ancre.id === "ecran-cahiers") basculerAccordeonFixe(document.querySelector('[aria-controls="ecran-cahiers"]'), true);
@@ -3135,7 +3771,7 @@ const OBJECTIFS_CAHIER = ["decouvrir", "reviser", "approfondir", "controle"];
 const AVEC_REPONSE = new Set(["exercice", "defi"]);
 const MAX_NOTIONS_CAHIER = 6;
 const TAILLE_NOTES = 5000;
-const constructeur = { type: null, envoi: false };
+const constructeur = { type: null, envoi: false, enfant: null };
 
 const texteBorne = (v, max) => (typeof v === "string" ? v.slice(0, max) : "");
 
@@ -3161,6 +3797,8 @@ function cahierValide(c) {
     longueur: LONGUEURS_CAHIER.includes(c.longueur) ? c.longueur : "standard",
     univers: UNIVERS_CAHIER.includes(c.univers) ? c.univers : "", objectif: OBJECTIFS_CAHIER.includes(c.objectif) ? c.objectif : "",
     introduction: texteBorne(c.introduction, 500), conclusion: texteBorne(c.conclusion, 400), notes: texteBorne(c.notes, TAILLE_NOTES), sections,
+    // Cahier assigné par la famille (ADR 0029) : identifiant du cahier côté serveur, pour l'avancement envoyé au parent.
+    ...(typeof c.famille === "string" && /^[0-9a-f-]{36}$/.test(c.famille) ? { famille: c.famille } : {}),
     // Planning du cahier de vacances (issue #188), relu strictement ; un plan invalide est simplement ignoré.
     ...(c.type === "vacances" && vacances.validerPlan(c.plan) ? { plan: vacances.validerPlan(c.plan) } : {})
   };
@@ -3199,13 +3837,17 @@ function rendreCahiers() {
     return carte;
   }));
   $("#cahiers-vide").hidden = cahiers.length > 0;
+  rendreCahiersFamille();
 }
 
 /* Constructeur */
 
 const notionsCahier = () => etat.notions.filter((n) => matiereDe(n) !== "jeux");
-const cahierIaRestantes = () => etat.cahiersIa.restantesServeur ?? etat.cahiersIa.generationsParJour;
-const cahierIaPossible = () => etat.llmDisponible && etat.llmActif && etat.cahiersIa.ia && cahierIaRestantes() > 0;
+// En mode famille (cahier assigné à un enfant, ADR 0029), le quota est celui du parent, compté par le serveur.
+const cahierIaRestantes = () => (constructeur.enfant ? familleEtat.tableau?.cahiersIa?.restantes ?? 0
+  : etat.cahiersIa.restantesServeur ?? etat.cahiersIa.generationsParJour);
+const cahierIaDisponible = () => (constructeur.enfant ? familleEtat.tableau?.cahiersIa?.ia === true : etat.llmDisponible && etat.cahiersIa.ia);
+const cahierIaPossible = () => cahierIaDisponible() && etat.llmActif && cahierIaRestantes() > 0;
 
 function option(valeur, texte) {
   const o = document.createElement("option");
@@ -3260,14 +3902,15 @@ function rafraichirIaCahier() {
   const possible = cahierIaPossible();
   caseIa.disabled = !possible;
   if (!possible) caseIa.checked = false;
-  const cle = !etat.llmDisponible || !etat.cahiersIa.ia ? "cahierIaIndisponible"
+  const cle = !cahierIaDisponible() ? "cahierIaIndisponible"
     : !etat.llmActif ? "cahierIaConsentement" : cahierIaRestantes() <= 0 ? "cahierIaQuota" : "cahierIaEtat";
   $("#cahier-ia-etat").textContent = t(cle, { n: cahierIaRestantes(), modele: etat.cahiersIa.modele });
 }
 
 function ouvrirConstructeur(type) {
   constructeur.type = type;
-  $("#constructeur-titre").textContent = t("constructeurTitre", { type: t(`cahier_${type}`) });
+  basculerModeFamilleConstructeur();
+  $("#constructeur-titre").textContent = t(constructeur.enfant ? "efConstructeurTitre" : "constructeurTitre", { type: t(`cahier_${type}`), prenom: constructeur.enfant?.prenom ?? "" });
   $("#constructeur-aide").textContent = t(`cahierConstructeur_${type}`);
   $("#cahier-titre").value = "";
   $("#cahier-titre").placeholder = t(`cahier_${type}`);
@@ -3288,7 +3931,7 @@ function ouvrirConstructeur(type) {
   $("#retour-cahier").textContent = "";
   $("#construire-cahier").disabled = false;
   $("#constructeur-cahier").showModal();
-  $("#cahier-titre").focus();
+  (constructeur.enfant ? $("#cahier-type-famille") : $("#cahier-titre")).focus();
 }
 
 /** Sans IA : le cahier est construit à partir du catalogue (une section par notion, à compléter par l'élève). */
@@ -3306,6 +3949,7 @@ async function construireCahier(e) {
   const longueur = $("#cahier-longueur").value;
   const univers = $("#cahier-univers").value;
   const objectif = $("#cahier-objectif").value;
+  if (constructeur.enfant) { await assignerCahierFamille({ type, ids, longueur, univers, objectif }); return; }
   const titreChoisi = $("#cahier-titre").value.trim().slice(0, 60);
   const cahiers = cahiersEnregistres();
   const cahier = {
@@ -3321,7 +3965,7 @@ async function construireCahier(e) {
     try {
       // Seuls le type, la longueur, la langue et les identifiants publiés des notions partent : le titre reste ici.
       const r = await fetch(`${etat.config.apiUrl}/api/cahier`, {
-        method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+        method: "POST", credentials: "include", headers: { "content-type": "application/json", ...enteteFamille() },
         body: JSON.stringify({ type, longueur, univers, objectif, langue: etat.langue, notions: ids, utiliserLlm: true })
       });
       const d = await r.json();
@@ -3361,6 +4005,7 @@ function bilanExercices(cahier) {
 }
 
 function rafraichirProgressionCahier(cahier) {
+  if (cahier.famille) planifierBilanFamille();
   const zone = $("#lecture-progression");
   const { total, reussis } = bilanExercices(cahier);
   zone.hidden = total === 0;
@@ -4367,7 +5012,7 @@ async function lancerDefiIa(perimetre) {
   rafraichirDefiTextes();
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/defi`, {
-      method: "POST", credentials: "include", headers: { "content-type": "application/json" },
+      method: "POST", credentials: "include", headers: { "content-type": "application/json", ...enteteFamille() },
       body: JSON.stringify({
         langue: etat.langue, niveau: perimetre.niveau || null, matiere: perimetre.matiere || null,
         notion: perimetre.notion || null, formats: perimetre.formats, utiliserLlm: true
