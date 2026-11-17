@@ -1,6 +1,6 @@
 # ADR 0028 — Adoption des contrats du référentiel S4
 
-**Statut : en attente de revue et de fusion.** D1 à D8 ont été approuvées pour le pilote public le 17 novembre 2026. Les règles complémentaires sur l’historique, les niveaux de validation et la projection sont également approuvées. [#243](https://github.com/Kermic974/KermicLab/issues/243)
+**Statut adopté et fusionné dans la PR #327.** D1 à D8 ont été approuvées pour le pilote public le 17 novembre 2026. Les règles complémentaires sur l’historique, les niveaux de validation et la projection sont également approuvées. [#243](https://github.com/Kermic974/KermicLab/issues/243)
 
 ## Contexte
 

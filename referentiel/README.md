@@ -1,6 +1,6 @@
 # Contrats du référentiel S4
 
-Les huit schémas JSON Schema 2020-12 partagent les définitions de `schemas/primitives.schema.json`. Les contrats de forme sont ceux de l’[ADR 0028](../docs/decisions/0028-adoption-contrats-s4.md). `RULE_CATALOG.csv` relie les règles de niveau 2 à leurs fixtures et à leurs tests.
+Les huit schémas JSON Schema 2020-12 partagent les définitions de `schemas/primitives.schema.json`. Les contrats de forme sont ceux de l’[ADR 0028](../docs/decisions/0028-adoption-contrats-s4.md). `RULE_CATALOG.csv` relie les règles de structure et d’intégrité à leurs fixtures et à leurs tests. La [proposition S5 v1.0.0](../docs/referentiel/normes/S5-v1.0.0.md) consolide les responsabilités des sources et des artefacts et décrit les contrôles à compléter.
 
 Pour les vérifier, installer les dépendances puis exécuter `node --test tests/unit/referentiel-schemas.test.mjs`. Ces tests font aussi partie de `npm test`.
 
@@ -23,7 +23,7 @@ Le fichier `referentiel/projection-v0.json` active la projection pour les seules
 
 Le build lit les Relations sortantes et les placements du Curriculum désigné. Les brouillons participent à la projection et les liens ou placements dépréciés sont ignorés. Les niveaux suivent l’ordre V0 et les autres listes suivent l’ordre déclaré, après conversion en slugs et dédoublonnage. Une liste déclarée doit contenir exactement les slugs calculés. Une incohérence bloque le build.
 
-`npm run build` met à jour les champs générés. `npm run check:pages` signale les valeurs ou l’ordre obsolètes sans modifier les fiches. La migration du corpus pilote et la qualification des résultats des consommateurs restent suivies dans #256.
+`npm run build` met à jour les champs générés. `npm run check:pages` signale les valeurs ou l’ordre obsolètes sans modifier les fiches. Le pilote #256 et les neuf lots #257 ont été qualifiés. Le [bilan S4 v0.5](../docs/referentiel/bilan-s4-v0.5.md) relie les journaux aux preuves.
 
 ## Création des lots v0.5
 
