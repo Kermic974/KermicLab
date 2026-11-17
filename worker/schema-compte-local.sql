@@ -38,3 +38,28 @@ CREATE TABLE IF NOT EXISTS donnees_pseudonymes (
   vu_le       TEXT NOT NULL DEFAULT (date('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_donnees_pseudonymes_vu ON donnees_pseudonymes (vu_le);
+
+-- Contributions au contenu des comptes locaux (ADR 0023 §6 ter, migration 0005).
+CREATE TABLE IF NOT EXISTS contributions_locales (
+  id              TEXT PRIMARY KEY,
+  auteur_id       TEXT NOT NULL,             -- compte local auteur
+  notion_id       TEXT NOT NULL,
+  notion_version  TEXT NOT NULL,
+  chemin          TEXT NOT NULL,             -- champ du contenu.json, ex. niveaux.1.paragraphes.0
+  nature          TEXT NOT NULL CHECK (nature IN ('modification', 'ajout')),
+  type            TEXT NOT NULL,             -- correction | clarification | exemple | orthographe | autre
+  texte_actuel    TEXT NOT NULL,             -- texte du champ au moment de la proposition
+  texte_propose   TEXT NOT NULL,
+  motif           TEXT NOT NULL,
+  charte_version  TEXT NOT NULL,             -- charte du contributeur acceptée
+  statut          TEXT NOT NULL DEFAULT 'proposee'
+                  CHECK (statut IN ('proposee', 'a_reviser', 'validee', 'refusee', 'retiree', 'integree')),
+  relecteur_id    TEXT,                      -- compte local relecteur (NULL après sa suppression)
+  commentaire     TEXT,                      -- commentaire du relecteur
+  issue_numero    INTEGER,                   -- issue GitHub « contribution-validee »
+  created_at      TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at      TEXT NOT NULL DEFAULT (datetime('now')),
+  decided_at      TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_contributions_locales_statut ON contributions_locales (statut, created_at);
+CREATE INDEX IF NOT EXISTS idx_contributions_locales_auteur ON contributions_locales (auteur_id, statut);

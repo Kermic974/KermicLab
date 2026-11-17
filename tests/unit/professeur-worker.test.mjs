@@ -64,10 +64,13 @@ test("professeur : session obligatoire, rôle Professeur exigé pour les routes 
   assert.equal((await prof("moi", { methode: "GET" })).statut, 401);
   const jeton = await inscrire("simple.visiteur");
   const moi = await prof("moi", { methode: "GET", jeton });
-  assert.deepEqual(moi.donnees, { role: "visiteur", professeur: false, profil: null, professeurs: 0 });
+  const { id, ...reste } = moi.donnees;
+  assert.match(id, /^[0-9a-f-]{36}$/, "identifiant du compte, pour reconnaître ses contributions");
+  assert.deepEqual(reste, { role: "visiteur", professeur: false, contribution: null, profil: null, professeurs: 0 });
   assert.equal((await prof("classes", { methode: "GET", jeton })).donnees.erreur, "role-professeur-requis");
-  // Un contributeur ou un parent n'a pas l'expérience Professeur.
+  // Un contributeur ou un parent n'a pas l'expérience Professeur ; le contributeur peut proposer (ADR 0023 §6 ter).
   await donnerRole(jeton, "contributeur");
+  assert.equal((await prof("moi", { methode: "GET", jeton })).donnees.contribution, "contributeur");
   assert.equal((await prof("profil", { methode: "PUT", jeton, corps: PROFIL })).statut, 403);
 });
 
