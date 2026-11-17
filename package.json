@@ -12,6 +12,7 @@
     "build": "node scripts/build.mjs",
     "lint": "node scripts/lint.mjs",
     "check:pages": "node scripts/check-pages.mjs",
+    "check:referentiel": "node scripts/check-referentiel.mjs",
     "test": "node --test \"tests/unit/*.test.mjs\"",
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
     "test:captures": "KERMICLAB_CAPTURES=captures node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",

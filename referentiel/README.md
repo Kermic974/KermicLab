@@ -4,4 +4,10 @@ Les huit schémas JSON Schema 2020-12 partagent les définitions de `schemas/pri
 
 Pour les vérifier, installer les dépendances puis exécuter `node --test tests/unit/referentiel-schemas.test.mjs`. Ces tests font aussi partie de `npm test`.
 
-Les références existantes, le cycle de vie entre versions et l’intégrité du graphe relèvent des niveaux suivants. Cela inclut la matrice Notion/MicroSkill/Skill des Relations, la canonicalisation des liens symétriques, les cycles, les liens requis pour valider une MicroSkill ou une Skill, la cohérence des hiérarchies curriculaires et l’unicité des placements indépendamment de leur version.
+## Validation du corpus canonique
+
+Déposer un objet JSON par fichier sous `referentiel/objets/`. Exécuter `npm run check:referentiel` depuis la racine. Ajouter `-- --json` après la commande npm pour obtenir le rapport machine. Les avertissements laissent un code de sortie nul. Les erreurs donnent un code de sortie 1.
+
+Pour un corpus non vide, utiliser un clone complet disposant de `origin/main`. Les révisions publiées viennent du premier parent de main à la base commune avec HEAD. L’état de travail fournit la révision candidate. Le catalogue V0 ne fait pas partie du corpus canonique.
+
+La commande est disponible séparément. Son ajout comme contrôle obligatoire en CI et le contrôle de projection des fiches V0 sont suivis dans #255 et #256.
