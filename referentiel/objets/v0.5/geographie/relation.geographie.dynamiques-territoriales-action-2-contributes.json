@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "microskill.geographie.dynamiques-territoriales-action-2",
+  "target": "skill.geographie.dynamiques-territoriales"
+}

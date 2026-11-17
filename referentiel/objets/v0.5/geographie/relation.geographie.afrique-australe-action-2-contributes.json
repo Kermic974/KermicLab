@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.afrique-australe-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "source": "microskill.geographie.afrique-australe-action-2",
+  "target": "skill.geographie.afrique-australe"
+}

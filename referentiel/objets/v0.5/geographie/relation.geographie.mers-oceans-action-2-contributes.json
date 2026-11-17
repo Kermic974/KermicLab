@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mers-oceans-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "microskill.geographie.mers-oceans-action-2",
+  "target": "skill.geographie.mers-oceans"
+}

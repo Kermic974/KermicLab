@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.dynamiques-territoriales-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "object": "notion.geographie.dynamiques-territoriales",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

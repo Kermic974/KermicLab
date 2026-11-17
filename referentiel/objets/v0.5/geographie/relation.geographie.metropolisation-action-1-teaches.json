@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.metropolisation-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "notion.geographie.metropolisation",
+  "target": "microskill.geographie.metropolisation-action-1"
+}

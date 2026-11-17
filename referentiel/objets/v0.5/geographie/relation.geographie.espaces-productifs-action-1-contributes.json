@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.espaces-productifs-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "microskill.geographie.espaces-productifs-action-1",
+  "target": "skill.geographie.espaces-productifs"
+}

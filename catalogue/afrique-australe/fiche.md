@@ -17,6 +17,9 @@ questions:
   - C'est quoi l'Afrique australe ?
   - Comment le corridor de Maputo relie-t-il les territoires ?
   - Quelles inégalités observe-t-on en Afrique du Sud ?
+prerequis:
+niveaux: cycle-4, seconde, premiere, terminale
+competences: geographie-afrique-australe-action-1, geographie-afrique-australe-action-2
 ---
 
 # L'Afrique australe : réseaux et contrastes
