@@ -59,7 +59,31 @@
     "refraction-et-lentilles": "notion.physique-chimie.refraction-et-lentilles",
     "son-et-lumiere": "notion.physique-chimie.son-et-lumiere",
     "tableau-periodique": "notion.physique-chimie.tableau-periodique",
-    "thermodynamique": "notion.physique-chimie.thermodynamique"
+    "thermodynamique": "notion.physique-chimie.thermodynamique",
+    "adn-et-division-cellulaire": "notion.svt.adn-et-division-cellulaire",
+    "agrosystemes-et-sols": "notion.svt.agrosystemes-et-sols",
+    "climat-et-effet-de-serre": "notion.svt.climat-et-effet-de-serre",
+    "contraction-musculaire": "notion.svt.contraction-musculaire",
+    "ecosystemes-et-biodiversite": "notion.svt.ecosystemes-et-biodiversite",
+    "evolution": "notion.svt.evolution",
+    "evolution-et-selection-naturelle": "notion.svt.evolution-et-selection-naturelle",
+    "expression-genetique": "notion.svt.expression-genetique",
+    "genetique-et-heredite": "notion.svt.genetique-et-heredite",
+    "glycemie-et-diabete": "notion.svt.glycemie-et-diabete",
+    "histoire-de-la-terre-et-datation": "notion.svt.histoire-de-la-terre-et-datation",
+    "immunite-adaptative": "notion.svt.immunite-adaptative",
+    "la-cellule": "notion.svt.la-cellule",
+    "meiose-et-brassage-genetique": "notion.svt.meiose-et-brassage-genetique",
+    "metabolisme-et-enzymes": "notion.svt.metabolisme-et-enzymes",
+    "mutations-et-variabilite": "notion.svt.mutations-et-variabilite",
+    "nutrition-et-digestion": "notion.svt.nutrition-et-digestion",
+    "photosynthese": "notion.svt.photosynthese",
+    "reproduction-humaine": "notion.svt.reproduction-humaine",
+    "respiration-et-circulation": "notion.svt.respiration-et-circulation",
+    "seismes-et-volcans": "notion.svt.seismes-et-volcans",
+    "structure-de-la-terre": "notion.svt.structure-de-la-terre",
+    "systeme-immunitaire": "notion.svt.systeme-immunitaire",
+    "systeme-nerveux": "notion.svt.systeme-nerveux"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -253,7 +277,55 @@
     "microskill.physique-chimie.tableau-periodique-action-1": "pc-tableau-periodique-action-1",
     "microskill.physique-chimie.tableau-periodique-action-2": "pc-tableau-periodique-action-2",
     "microskill.physique-chimie.thermodynamique-action-1": "pc-thermodynamique-action-1",
-    "microskill.physique-chimie.thermodynamique-action-2": "pc-thermodynamique-action-2"
+    "microskill.physique-chimie.thermodynamique-action-2": "pc-thermodynamique-action-2",
+    "microskill.svt.adn-et-division-cellulaire-action-1": "svt-adn-et-division-cellulaire-action-1",
+    "microskill.svt.adn-et-division-cellulaire-action-2": "svt-adn-et-division-cellulaire-action-2",
+    "microskill.svt.agrosystemes-et-sols-action-1": "svt-agrosystemes-et-sols-action-1",
+    "microskill.svt.agrosystemes-et-sols-action-2": "svt-agrosystemes-et-sols-action-2",
+    "microskill.svt.climat-et-effet-de-serre-action-1": "svt-climat-et-effet-de-serre-action-1",
+    "microskill.svt.climat-et-effet-de-serre-action-2": "svt-climat-et-effet-de-serre-action-2",
+    "microskill.svt.contraction-musculaire-action-1": "svt-contraction-musculaire-action-1",
+    "microskill.svt.contraction-musculaire-action-2": "svt-contraction-musculaire-action-2",
+    "microskill.svt.ecosystemes-et-biodiversite-action-1": "svt-ecosystemes-et-biodiversite-action-1",
+    "microskill.svt.ecosystemes-et-biodiversite-action-2": "svt-ecosystemes-et-biodiversite-action-2",
+    "microskill.svt.evolution-action-1": "svt-evolution-action-1",
+    "microskill.svt.evolution-action-2": "svt-evolution-action-2",
+    "microskill.svt.evolution-et-selection-naturelle-action-1": "svt-evolution-et-selection-naturelle-action-1",
+    "microskill.svt.evolution-et-selection-naturelle-action-2": "svt-evolution-et-selection-naturelle-action-2",
+    "microskill.svt.expression-genetique-action-1": "svt-expression-genetique-action-1",
+    "microskill.svt.expression-genetique-action-2": "svt-expression-genetique-action-2",
+    "microskill.svt.genetique-et-heredite-action-1": "svt-genetique-et-heredite-action-1",
+    "microskill.svt.genetique-et-heredite-action-2": "svt-genetique-et-heredite-action-2",
+    "microskill.svt.glycemie-et-diabete-action-1": "svt-glycemie-et-diabete-action-1",
+    "microskill.svt.glycemie-et-diabete-action-2": "svt-glycemie-et-diabete-action-2",
+    "microskill.svt.histoire-de-la-terre-et-datation-action-1": "svt-histoire-de-la-terre-et-datation-action-1",
+    "microskill.svt.histoire-de-la-terre-et-datation-action-2": "svt-histoire-de-la-terre-et-datation-action-2",
+    "microskill.svt.immunite-adaptative-action-1": "svt-immunite-adaptative-action-1",
+    "microskill.svt.immunite-adaptative-action-2": "svt-immunite-adaptative-action-2",
+    "microskill.svt.la-cellule-action-1": "svt-la-cellule-action-1",
+    "microskill.svt.la-cellule-action-2": "svt-la-cellule-action-2",
+    "microskill.svt.meiose-et-brassage-genetique-action-1": "svt-meiose-et-brassage-genetique-action-1",
+    "microskill.svt.meiose-et-brassage-genetique-action-2": "svt-meiose-et-brassage-genetique-action-2",
+    "microskill.svt.metabolisme-et-enzymes-action-1": "svt-metabolisme-et-enzymes-action-1",
+    "microskill.svt.metabolisme-et-enzymes-action-2": "svt-metabolisme-et-enzymes-action-2",
+    "microskill.svt.mutations-et-variabilite-action-1": "svt-mutations-et-variabilite-action-1",
+    "microskill.svt.mutations-et-variabilite-action-2": "svt-mutations-et-variabilite-action-2",
+    "microskill.svt.nutrition-et-digestion-action-1": "svt-nutrition-et-digestion-action-1",
+    "microskill.svt.nutrition-et-digestion-action-2": "svt-nutrition-et-digestion-action-2",
+    "microskill.svt.photosynthese-action-1": "svt-photosynthese-action-1",
+    "microskill.svt.photosynthese-action-2": "svt-photosynthese-action-2",
+    "microskill.svt.reproduction-humaine-action-1": "svt-reproduction-humaine-action-1",
+    "microskill.svt.reproduction-humaine-action-2": "svt-reproduction-humaine-action-2",
+    "microskill.svt.respiration-et-circulation-action-1": "svt-respiration-et-circulation-action-1",
+    "microskill.svt.respiration-et-circulation-action-2": "svt-respiration-et-circulation-action-2",
+    "microskill.svt.seismes-et-volcans-action-1": "svt-seismes-et-volcans-action-1",
+    "microskill.svt.seismes-et-volcans-action-2": "svt-seismes-et-volcans-action-2",
+    "microskill.svt.structure-de-la-terre-action-1": "svt-structure-de-la-terre-action-1",
+    "microskill.svt.structure-de-la-terre-action-2": "svt-structure-de-la-terre-action-2",
+    "microskill.svt.systeme-immunitaire-action-1": "svt-systeme-immunitaire-action-1",
+    "microskill.svt.systeme-immunitaire-action-2": "svt-systeme-immunitaire-action-2",
+    "microskill.svt.systeme-nerveux-action-1": "svt-systeme-nerveux-action-1",
+    "microskill.svt.systeme-nerveux-action-2": "svt-systeme-nerveux-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -814,6 +886,180 @@
       "competences": [
         "pc-thermodynamique-action-1",
         "pc-thermodynamique-action-2"
+      ]
+    },
+    "adn-et-division-cellulaire": {
+      "prerequis": [],
+      "competences": [
+        "svt-adn-et-division-cellulaire-action-1",
+        "svt-adn-et-division-cellulaire-action-2"
+      ]
+    },
+    "agrosystemes-et-sols": {
+      "prerequis": [],
+      "competences": [
+        "svt-agrosystemes-et-sols-action-1",
+        "svt-agrosystemes-et-sols-action-2"
+      ]
+    },
+    "climat-et-effet-de-serre": {
+      "prerequis": [],
+      "competences": [
+        "svt-climat-et-effet-de-serre-action-1",
+        "svt-climat-et-effet-de-serre-action-2"
+      ]
+    },
+    "contraction-musculaire": {
+      "prerequis": [],
+      "competences": [
+        "svt-contraction-musculaire-action-1",
+        "svt-contraction-musculaire-action-2"
+      ]
+    },
+    "ecosystemes-et-biodiversite": {
+      "prerequis": [],
+      "competences": [
+        "svt-ecosystemes-et-biodiversite-action-1",
+        "svt-ecosystemes-et-biodiversite-action-2"
+      ]
+    },
+    "evolution": {
+      "prerequis": [],
+      "competences": [
+        "svt-evolution-action-1",
+        "svt-evolution-action-2"
+      ]
+    },
+    "evolution-et-selection-naturelle": {
+      "prerequis": [],
+      "competences": [
+        "svt-evolution-et-selection-naturelle-action-1",
+        "svt-evolution-et-selection-naturelle-action-2"
+      ]
+    },
+    "expression-genetique": {
+      "prerequis": [
+        "adn-et-division-cellulaire"
+      ],
+      "competences": [
+        "svt-expression-genetique-action-1",
+        "svt-expression-genetique-action-2"
+      ]
+    },
+    "genetique-et-heredite": {
+      "prerequis": [],
+      "competences": [
+        "svt-genetique-et-heredite-action-1",
+        "svt-genetique-et-heredite-action-2"
+      ]
+    },
+    "glycemie-et-diabete": {
+      "prerequis": [],
+      "competences": [
+        "svt-glycemie-et-diabete-action-1",
+        "svt-glycemie-et-diabete-action-2"
+      ]
+    },
+    "histoire-de-la-terre-et-datation": {
+      "prerequis": [],
+      "competences": [
+        "svt-histoire-de-la-terre-et-datation-action-1",
+        "svt-histoire-de-la-terre-et-datation-action-2"
+      ]
+    },
+    "immunite-adaptative": {
+      "prerequis": [
+        "systeme-immunitaire"
+      ],
+      "competences": [
+        "svt-immunite-adaptative-action-1",
+        "svt-immunite-adaptative-action-2"
+      ]
+    },
+    "la-cellule": {
+      "prerequis": [],
+      "competences": [
+        "svt-la-cellule-action-1",
+        "svt-la-cellule-action-2"
+      ]
+    },
+    "meiose-et-brassage-genetique": {
+      "prerequis": [
+        "genetique-et-heredite"
+      ],
+      "competences": [
+        "svt-meiose-et-brassage-genetique-action-1",
+        "svt-meiose-et-brassage-genetique-action-2"
+      ]
+    },
+    "metabolisme-et-enzymes": {
+      "prerequis": [],
+      "competences": [
+        "svt-metabolisme-et-enzymes-action-1",
+        "svt-metabolisme-et-enzymes-action-2"
+      ]
+    },
+    "mutations-et-variabilite": {
+      "prerequis": [],
+      "competences": [
+        "svt-mutations-et-variabilite-action-1",
+        "svt-mutations-et-variabilite-action-2"
+      ]
+    },
+    "nutrition-et-digestion": {
+      "prerequis": [],
+      "competences": [
+        "svt-nutrition-et-digestion-action-1",
+        "svt-nutrition-et-digestion-action-2"
+      ]
+    },
+    "photosynthese": {
+      "prerequis": [],
+      "competences": [
+        "svt-photosynthese-action-1",
+        "svt-photosynthese-action-2"
+      ]
+    },
+    "reproduction-humaine": {
+      "prerequis": [],
+      "competences": [
+        "svt-reproduction-humaine-action-1",
+        "svt-reproduction-humaine-action-2"
+      ]
+    },
+    "respiration-et-circulation": {
+      "prerequis": [],
+      "competences": [
+        "svt-respiration-et-circulation-action-1",
+        "svt-respiration-et-circulation-action-2"
+      ]
+    },
+    "seismes-et-volcans": {
+      "prerequis": [],
+      "competences": [
+        "svt-seismes-et-volcans-action-1",
+        "svt-seismes-et-volcans-action-2"
+      ]
+    },
+    "structure-de-la-terre": {
+      "prerequis": [],
+      "competences": [
+        "svt-structure-de-la-terre-action-1",
+        "svt-structure-de-la-terre-action-2"
+      ]
+    },
+    "systeme-immunitaire": {
+      "prerequis": [],
+      "competences": [
+        "svt-systeme-immunitaire-action-1",
+        "svt-systeme-immunitaire-action-2"
+      ]
+    },
+    "systeme-nerveux": {
+      "prerequis": [],
+      "competences": [
+        "svt-systeme-nerveux-action-1",
+        "svt-systeme-nerveux-action-2"
       ]
     }
   }

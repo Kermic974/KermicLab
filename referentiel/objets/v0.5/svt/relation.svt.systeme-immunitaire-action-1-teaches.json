@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.systeme-immunitaire-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-immunitaire/contenu.json"
+  },
+  "source": "notion.svt.systeme-immunitaire",
+  "target": "microskill.svt.systeme-immunitaire-action-1"
+}

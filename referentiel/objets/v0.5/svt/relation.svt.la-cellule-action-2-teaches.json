@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.la-cellule-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "notion.svt.la-cellule",
+  "target": "microskill.svt.la-cellule-action-2"
+}

@@ -32,6 +32,9 @@ questions:
   - je ne comprends pas le code génétique
   - à quoi sert l'ARN messager ?
   - how does protein synthesis work?
+prerequis: adn-et-division-cellulaire
+niveaux: premiere
+competences: svt-expression-genetique-action-1, svt-expression-genetique-action-2
 ---
 
 # L'expression des gènes

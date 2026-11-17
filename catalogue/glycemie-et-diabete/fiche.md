@@ -25,6 +25,9 @@ questions:
   - je ne comprends pas le rôle de l'insuline
   - quelle est la différence entre diabète de type 1 et de type 2 ?
   - what is diabetes?
+prerequis:
+niveaux: terminale
+competences: svt-glycemie-et-diabete-action-1, svt-glycemie-et-diabete-action-2
 ---
 
 # Glycémie et diabète

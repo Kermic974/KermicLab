@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.structure-de-la-terre-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "notion.svt.structure-de-la-terre",
+  "target": "microskill.svt.structure-de-la-terre-action-1"
+}

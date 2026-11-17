@@ -29,6 +29,9 @@ questions:
   - je ne comprends pas le principe de superposition
   - à quoi sert un fossile stratigraphique ?
   - how old is the earth?
+prerequis:
+niveaux: terminale
+competences: svt-histoire-de-la-terre-et-datation-action-1, svt-histoire-de-la-terre-et-datation-action-2
 ---
 
 # Histoire de la Terre et datation

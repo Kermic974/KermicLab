@@ -31,6 +31,9 @@ questions:
   - je ne comprends pas le rôle des synapses
   - comment le cerveau commande-t-il les muscles ?
   - how do neurons work?
+prerequis:
+niveaux: premiere, terminale
+competences: svt-systeme-nerveux-action-1, svt-systeme-nerveux-action-2
 ---
 
 # Le système nerveux et les réflexes

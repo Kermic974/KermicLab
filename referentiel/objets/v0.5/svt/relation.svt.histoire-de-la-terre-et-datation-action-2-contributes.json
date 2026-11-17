@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.histoire-de-la-terre-et-datation-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "source": "microskill.svt.histoire-de-la-terre-et-datation-action-2",
+  "target": "skill.svt.histoire-de-la-terre-et-datation"
+}

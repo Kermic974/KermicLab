@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.ecosystemes-et-biodiversite-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "notion.svt.ecosystemes-et-biodiversite",
+  "target": "microskill.svt.ecosystemes-et-biodiversite-action-1"
+}

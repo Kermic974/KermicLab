@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "microskill.svt.evolution-action-2",
+  "target": "skill.svt.evolution"
+}

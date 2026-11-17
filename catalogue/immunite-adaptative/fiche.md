@@ -27,6 +27,9 @@ questions:
   - je ne comprends pas la sélection clonale
   - pourquoi le VIH affaiblit-il les défenses ?
   - what is adaptive immunity?
+prerequis: systeme-immunitaire
+niveaux: terminale
+competences: svt-immunite-adaptative-action-1, svt-immunite-adaptative-action-2
 ---
 
 # L'immunité adaptative

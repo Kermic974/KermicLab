@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-et-selection-naturelle-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "notion.svt.evolution-et-selection-naturelle",
+  "target": "microskill.svt.evolution-et-selection-naturelle-action-2"
+}

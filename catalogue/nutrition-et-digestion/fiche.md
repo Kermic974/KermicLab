@@ -36,6 +36,9 @@ questions:
   - quelle est la différence entre un aliment et un nutriment ?
   - où les nutriments passent-ils dans le sang ?
   - à quoi sert une alimentation variée ?
+prerequis:
+niveaux: cycle-4, seconde
+competences: svt-nutrition-et-digestion-action-1, svt-nutrition-et-digestion-action-2
 ---
 
 # Nutrition et digestion

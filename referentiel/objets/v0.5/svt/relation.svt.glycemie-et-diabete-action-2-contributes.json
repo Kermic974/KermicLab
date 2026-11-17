@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.glycemie-et-diabete-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "microskill.svt.glycemie-et-diabete-action-2",
+  "target": "skill.svt.glycemie-et-diabete"
+}

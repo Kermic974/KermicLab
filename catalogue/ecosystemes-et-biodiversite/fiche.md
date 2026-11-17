@@ -44,6 +44,9 @@ questions:
   - comment mesure-t-on la diversité du vivant ?
   - pourquoi les pollinisateurs sont-ils importants ?
   - comment protéger la biodiversité près de chez moi ?
+prerequis:
+niveaux: cycle-3, cycle-4, seconde
+competences: svt-ecosystemes-et-biodiversite-action-1, svt-ecosystemes-et-biodiversite-action-2
 ---
 
 # Écosystèmes et biodiversité

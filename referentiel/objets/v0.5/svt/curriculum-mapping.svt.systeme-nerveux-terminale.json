@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.systeme-nerveux-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "object": "notion.svt.systeme-nerveux",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

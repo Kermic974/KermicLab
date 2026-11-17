@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.systeme-immunitaire-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-immunitaire/contenu.json"
+  },
+  "source": "microskill.svt.systeme-immunitaire-action-1",
+  "target": "skill.svt.systeme-immunitaire"
+}

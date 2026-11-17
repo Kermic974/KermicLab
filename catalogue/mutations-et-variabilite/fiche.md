@@ -26,6 +26,9 @@ questions:
   - je ne comprends pas la drépanocytose
   - comment une mutation crée-t-elle un nouvel allèle ?
   - what is a genetic mutation?
+prerequis:
+niveaux: premiere
+competences: svt-mutations-et-variabilite-action-1, svt-mutations-et-variabilite-action-2
 ---
 
 # Mutations et variabilité génétique

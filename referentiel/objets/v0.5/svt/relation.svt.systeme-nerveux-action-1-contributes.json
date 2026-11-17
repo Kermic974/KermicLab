@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.systeme-nerveux-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "microskill.svt.systeme-nerveux-action-1",
+  "target": "skill.svt.systeme-nerveux"
+}

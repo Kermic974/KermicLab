@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.nutrition-et-digestion-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-digestion/contenu.json"
+  },
+  "source": "microskill.svt.nutrition-et-digestion-action-1",
+  "target": "skill.svt.nutrition-et-digestion"
+}

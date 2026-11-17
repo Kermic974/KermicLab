@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.ecosystemes-et-biodiversite-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "microskill.svt.ecosystemes-et-biodiversite-action-1",
+  "target": "skill.svt.ecosystemes-et-biodiversite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.photosynthese-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "notion.svt.photosynthese",
+  "target": "microskill.svt.photosynthese-action-2"
+}

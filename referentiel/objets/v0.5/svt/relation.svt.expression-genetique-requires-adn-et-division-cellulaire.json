@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.expression-genetique-requires-adn-et-division-cellulaire",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/expression-genetique/contenu.json"
+  },
+  "source": "notion.svt.expression-genetique",
+  "target": "notion.svt.adn-et-division-cellulaire",
+  "rationale": "La transcription utilise l’ADN comme matrice."
+}

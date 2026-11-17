@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.seismes-et-volcans-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "object": "notion.svt.seismes-et-volcans",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced"
+}

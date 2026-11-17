@@ -27,6 +27,9 @@ questions:
   - je ne comprends pas comment on connaît les climats du passé
   - quels sont les gaz à effet de serre ?
   - what is climate change?
+prerequis:
+niveaux: terminale
+competences: svt-climat-et-effet-de-serre-action-1, svt-climat-et-effet-de-serre-action-2
 ---
 
 # Climat et effet de serre

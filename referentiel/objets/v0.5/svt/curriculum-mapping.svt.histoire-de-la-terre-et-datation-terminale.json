@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.histoire-de-la-terre-et-datation-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "object": "notion.svt.histoire-de-la-terre-et-datation",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

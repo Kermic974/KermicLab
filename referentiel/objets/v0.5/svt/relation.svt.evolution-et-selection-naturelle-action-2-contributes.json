@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-et-selection-naturelle-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "microskill.svt.evolution-et-selection-naturelle-action-2",
+  "target": "skill.svt.evolution-et-selection-naturelle"
+}

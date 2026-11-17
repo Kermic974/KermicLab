@@ -34,6 +34,9 @@ questions:
   - comment les organites coopèrent-ils pour faire fonctionner une cellule ?
   - à quoi sert le noyau dans une cellule ?
   - comment les cellules construisent-elles un organisme ?
+prerequis:
+niveaux: cycle-3, cycle-4, seconde
+competences: svt-la-cellule-action-1, svt-la-cellule-action-2
 ---
 
 # La cellule, unité du vivant

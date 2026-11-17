@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.meiose-et-brassage-genetique-requires-genetique-et-heredite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meiose-et-brassage-genetique/contenu.json"
+  },
+  "source": "notion.svt.meiose-et-brassage-genetique",
+  "target": "notion.svt.genetique-et-heredite",
+  "rationale": "Le brassage mobilise le vocabulaire des chromosomes et des allèles."
+}

@@ -30,6 +30,9 @@ questions:
   - je ne comprends pas les échanges gazeux dans les poumons
   - pourquoi le cœur bat plus vite pendant un effort ?
   - how does blood circulation work?
+prerequis:
+niveaux: cycle-4, seconde
+competences: svt-respiration-et-circulation-action-1, svt-respiration-et-circulation-action-2
 ---
 
 # Respiration et circulation sanguine

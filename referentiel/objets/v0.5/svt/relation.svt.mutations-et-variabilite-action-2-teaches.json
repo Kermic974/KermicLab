@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.mutations-et-variabilite-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "notion.svt.mutations-et-variabilite",
+  "target": "microskill.svt.mutations-et-variabilite-action-2"
+}

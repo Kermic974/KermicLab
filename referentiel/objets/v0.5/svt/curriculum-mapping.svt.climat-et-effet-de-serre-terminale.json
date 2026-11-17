@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.climat-et-effet-de-serre-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "object": "notion.svt.climat-et-effet-de-serre",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

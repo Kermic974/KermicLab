@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "notion.svt.evolution",
+  "target": "microskill.svt.evolution-action-2"
+}

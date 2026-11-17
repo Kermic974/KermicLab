@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.mutations-et-variabilite-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "microskill.svt.mutations-et-variabilite-action-1",
+  "target": "skill.svt.mutations-et-variabilite"
+}

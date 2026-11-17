@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.respiration-et-circulation-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-et-circulation/contenu.json"
+  },
+  "source": "microskill.svt.respiration-et-circulation-action-2",
+  "target": "skill.svt.respiration-et-circulation"
+}

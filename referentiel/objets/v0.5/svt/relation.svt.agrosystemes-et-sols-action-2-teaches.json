@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.agrosystemes-et-sols-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "notion.svt.agrosystemes-et-sols",
+  "target": "microskill.svt.agrosystemes-et-sols-action-2"
+}
