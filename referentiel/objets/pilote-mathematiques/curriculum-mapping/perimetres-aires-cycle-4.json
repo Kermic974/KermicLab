@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.perimetres-aires-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "object": "notion.mathematiques.perimetres-aires",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "reinforced",
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/perimetres-aires/fiche.md"
+  }
+}

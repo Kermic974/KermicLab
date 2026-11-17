@@ -1,0 +1,134 @@
+{
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "notions": {
+    "trigo-cercle": "notion.mathematiques.trigo-cercle",
+    "pythagore": "notion.mathematiques.pythagore",
+    "fractions": "notion.mathematiques.fractions",
+    "proportionnalite": "notion.mathematiques.proportionnalite",
+    "angles": "notion.mathematiques.angles",
+    "perimetres-aires": "notion.mathematiques.perimetres-aires",
+    "puissances": "notion.mathematiques.puissances",
+    "nombres-decimaux": "notion.mathematiques.nombres-decimaux"
+  },
+  "competences": {
+    "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
+    "microskill.mathematiques.utiliser-les-angles-remarquables": "utiliser-les-angles-remarquables",
+    "microskill.mathematiques.convertir-degres-et-radians": "convertir-degres-et-radians",
+    "microskill.mathematiques.placer-un-angle-sur-le-cercle": "placer-un-angle-sur-le-cercle",
+    "microskill.mathematiques.calculer-l-hypotenuse": "calculer-l-hypotenuse",
+    "microskill.mathematiques.calculer-un-cote-de-l-angle-droit": "calculer-un-cote-de-l-angle-droit",
+    "microskill.mathematiques.prouver-qu-un-triangle-est-rectangle": "prouver-qu-un-triangle-est-rectangle",
+    "microskill.mathematiques.comprendre-une-fraction": "comprendre-une-fraction",
+    "microskill.mathematiques.simplifier-une-fraction": "simplifier-une-fraction",
+    "microskill.mathematiques.comparer-des-fractions": "comparer-des-fractions",
+    "microskill.mathematiques.additionner-des-fractions": "additionner-des-fractions",
+    "microskill.mathematiques.multiplier-des-fractions": "multiplier-des-fractions",
+    "microskill.mathematiques.reconnaitre-une-situation-de-proportionnalite": "reconnaitre-une-situation-de-proportionnalite",
+    "microskill.mathematiques.utiliser-un-coefficient-de-proportionnalite": "utiliser-un-coefficient-de-proportionnalite",
+    "microskill.mathematiques.calculer-une-quatrieme-proportionnelle": "calculer-une-quatrieme-proportionnelle",
+    "microskill.mathematiques.appliquer-un-pourcentage": "appliquer-un-pourcentage",
+    "microskill.mathematiques.nommer-et-mesurer-un-angle": "nommer-et-mesurer-un-angle",
+    "microskill.mathematiques.utiliser-la-somme-des-angles-d-un-triangle": "utiliser-la-somme-des-angles-d-un-triangle",
+    "microskill.mathematiques.reconnaitre-les-angles-formes-par-des-paralleles": "reconnaitre-les-angles-formes-par-des-paralleles",
+    "microskill.mathematiques.calculer-un-angle-manquant": "calculer-un-angle-manquant",
+    "microskill.mathematiques.calculer-le-perimetre-d-un-polygone": "calculer-le-perimetre-d-un-polygone",
+    "microskill.mathematiques.calculer-l-aire-d-un-polygone": "calculer-l-aire-d-un-polygone",
+    "microskill.mathematiques.calculer-perimetre-et-aire-d-un-disque": "calculer-perimetre-et-aire-d-un-disque",
+    "microskill.mathematiques.convertir-des-unites-d-aire": "convertir-des-unites-d-aire",
+    "microskill.mathematiques.prevoir-l-effet-d-un-agrandissement-sur-une-aire": "prevoir-l-effet-d-un-agrandissement-sur-une-aire",
+    "microskill.mathematiques.calculer-une-puissance": "calculer-une-puissance",
+    "microskill.mathematiques.utiliser-les-puissances-de-10": "utiliser-les-puissances-de-10",
+    "microskill.mathematiques.ecrire-en-notation-scientifique": "ecrire-en-notation-scientifique",
+    "microskill.mathematiques.appliquer-les-regles-de-calcul-des-puissances": "appliquer-les-regles-de-calcul-des-puissances",
+    "microskill.mathematiques.lire-un-nombre-decimal": "lire-un-nombre-decimal",
+    "microskill.mathematiques.comparer-des-decimaux": "comparer-des-decimaux",
+    "microskill.mathematiques.arrondir-un-decimal": "arrondir-un-decimal",
+    "microskill.mathematiques.calculer-avec-des-decimaux": "calculer-avec-des-decimaux"
+  },
+  "fiches": {
+    "trigo-cercle": {
+      "prerequis": [
+        "pythagore",
+        "angles"
+      ],
+      "competences": [
+        "relier-cosinus-et-sinus-au-cercle-unite",
+        "utiliser-les-angles-remarquables",
+        "convertir-degres-et-radians",
+        "placer-un-angle-sur-le-cercle"
+      ]
+    },
+    "pythagore": {
+      "prerequis": [
+        "perimetres-aires",
+        "puissances"
+      ],
+      "competences": [
+        "calculer-l-hypotenuse",
+        "calculer-un-cote-de-l-angle-droit",
+        "prouver-qu-un-triangle-est-rectangle"
+      ]
+    },
+    "fractions": {
+      "prerequis": [],
+      "competences": [
+        "comprendre-une-fraction",
+        "simplifier-une-fraction",
+        "comparer-des-fractions",
+        "additionner-des-fractions",
+        "multiplier-des-fractions"
+      ]
+    },
+    "proportionnalite": {
+      "prerequis": [
+        "fractions",
+        "nombres-decimaux"
+      ],
+      "competences": [
+        "reconnaitre-une-situation-de-proportionnalite",
+        "utiliser-un-coefficient-de-proportionnalite",
+        "calculer-une-quatrieme-proportionnelle",
+        "appliquer-un-pourcentage"
+      ]
+    },
+    "angles": {
+      "prerequis": [],
+      "competences": [
+        "nommer-et-mesurer-un-angle",
+        "utiliser-la-somme-des-angles-d-un-triangle",
+        "reconnaitre-les-angles-formes-par-des-paralleles",
+        "calculer-un-angle-manquant"
+      ]
+    },
+    "perimetres-aires": {
+      "prerequis": [],
+      "competences": [
+        "calculer-le-perimetre-d-un-polygone",
+        "calculer-l-aire-d-un-polygone",
+        "calculer-perimetre-et-aire-d-un-disque",
+        "convertir-des-unites-d-aire",
+        "prevoir-l-effet-d-un-agrandissement-sur-une-aire"
+      ]
+    },
+    "puissances": {
+      "prerequis": [
+        "nombres-decimaux"
+      ],
+      "competences": [
+        "calculer-une-puissance",
+        "utiliser-les-puissances-de-10",
+        "ecrire-en-notation-scientifique",
+        "appliquer-les-regles-de-calcul-des-puissances"
+      ]
+    },
+    "nombres-decimaux": {
+      "prerequis": [],
+      "competences": [
+        "lire-un-nombre-decimal",
+        "comparer-des-decimaux",
+        "arrondir-un-decimal",
+        "calculer-avec-des-decimaux"
+      ]
+    }
+  }
+}
