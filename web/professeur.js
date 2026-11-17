@@ -204,3 +204,272 @@ export function filtrerEleves(eleves, filtre) {
   if (filtre === "particulier") return liste.filter((e) => !e.classeId);
   return liste.filter((e) => e.classeId === filtre);
 }
+
+/* ---------- Activités données par le professeur (ADR 0030 §9) ---------- */
+// Défis, évaluations, cahiers et objectifs, donnés à un élève ou à toute une classe. Les questions des défis et des
+// évaluations sont des QCM publiés du catalogue (dist/contenus/), tirés de façon reproductible : chaque élève de la
+// classe reçoit les mêmes questions, et rien de saisi par l'élève ne quitte son appareil (seul le score remonte).
+
+export const TYPES_ACTIVITE = Object.freeze(["defi", "evaluation", "cahier", "objectif"]);
+export const QUESTIONS_DEFI = 5;
+export const QUESTIONS_EVALUATION_MIN = 5;
+export const QUESTIONS_EVALUATION_MAX = 40;
+export const MAX_NOTIONS_ACTIVITE = 10;
+export const MAX_ACTIVITES_ACTIVES = 60;
+export const ECHEANCE_MAX_JOURS = 180;
+export const LIBELLE_ACTIVITE_MAX = 60;
+/** Cahiers que le professeur peut donner : mêmes types que l'Espace famille (le brouillon reste personnel). */
+export const TYPES_CAHIER_PROF = Object.freeze(["exercices", "fiches", "vacances"]);
+export const LONGUEURS_CAHIER_PROF = Object.freeze(["court", "standard", "complet"]);
+export const UNIVERS_CAHIER_PROF = Object.freeze(["aucun", "aventure", "espace", "enquete", "sport", "nature", "cuisine", "jeux-video", "musique"]);
+export const OBJECTIFS_CAHIER_PROF = Object.freeze(["decouvrir", "reviser", "approfondir", "controle"]);
+/**
+ * Objectifs mesurables à partir du bilan et des résultats, sans rien demander à l'élève :
+ * minutes actives et XP sur les 7 derniers jours, notions choisies maîtrisées, activités du professeur terminées.
+ */
+export const MESURES_OBJECTIF = Object.freeze(["temps", "xp", "notions", "activites"]);
+export const BORNES_OBJECTIF = Object.freeze({ temps: [10, 1200], xp: [10, 5000], notions: [1, MAX_NOTIONS_ACTIVITE], activites: [1, 20] });
+/** Score en dessous duquel un résultat est signalé dans le tableau de bord (pourcentage). */
+export const SEUIL_SCORE_FAIBLE = 50;
+
+const JOUR_ISO = /^\d{4}-\d{2}-\d{2}$/;
+const ID_NOTION = /^[a-z0-9][a-z0-9-]{0,79}$/;
+const decalerJour = (jour, n) => new Date(Date.parse(`${jour}T00:00:00Z`) + n * 86400000).toISOString().slice(0, 10);
+const parmiListe = (liste, valeur, defaut) => (liste.includes(valeur) ? valeur : defaut);
+
+/**
+ * Demande d'activité du professeur. `matiereDe(id)` donne la matière d'une notion du catalogue (null si elle n'existe
+ * pas ou n'est pas une notion) ; seules les notions des matières du profil sont acceptées.
+ * @returns {{ ok: true, activite: object } | { ok: false, code: string }}
+ */
+export function validerActivite(corps, { profil, matiereDe, aujourdhui }) {
+  if (!profil) return { ok: false, code: "profil-requis" };
+  const type = TYPES_ACTIVITE.includes(corps?.type) ? corps.type : null;
+  if (!type) return { ok: false, code: "type-invalide" };
+  const classeId = corps?.cible?.classeId ? String(corps.cible.classeId) : null;
+  const eleveId = corps?.cible?.eleveId ? String(corps.cible.eleveId) : null;
+  if (!classeId === !eleveId) return { ok: false, code: "cible-invalide" };
+  if (![classeId, eleveId].filter(Boolean).every((v) => /^[0-9a-z-]{1,64}$/.test(v))) return { ok: false, code: "cible-invalide" };
+
+  const brutes = Array.isArray(corps?.notions) ? corps.notions : [];
+  const notions = [...new Set(brutes.filter((id) => typeof id === "string" && ID_NOTION.test(id)))];
+  if (notions.length > MAX_NOTIONS_ACTIVITE) return { ok: false, code: "trop-de-notions" };
+  if (notions.some((id) => !profil.matieres.includes(matiereDe(id)))) return { ok: false, code: "notion-hors-profil" };
+  const besoinNotions = type !== "objectif" || corps?.objectif?.mesure === "notions";
+  if (besoinNotions && !notions.length) return { ok: false, code: "notions-requises" };
+
+  let libelle = null;
+  if (corps?.libelle !== undefined && corps.libelle !== null && String(corps.libelle).trim()) {
+    const l = texteCourt(corps.libelle, { min: 1, max: LIBELLE_ACTIVITE_MAX });
+    if (!l.ok) return { ok: false, code: `libelle-${l.erreur}` };
+    libelle = l.texte;
+  }
+  let echeance = null;
+  if (corps?.echeance) {
+    if (!JOUR_ISO.test(corps.echeance) || Number.isNaN(Date.parse(`${corps.echeance}T00:00:00Z`))) return { ok: false, code: "echeance-invalide" };
+    if (corps.echeance < aujourdhui || corps.echeance > decalerJour(aujourdhui, ECHEANCE_MAX_JOURS)) return { ok: false, code: "echeance-invalide" };
+    echeance = corps.echeance;
+  }
+
+  const activite = { type, cible: { classeId, eleveId }, notions, libelle, echeance };
+  if (type === "defi") activite.nbQuestions = QUESTIONS_DEFI;
+  if (type === "evaluation") {
+    const n = corps?.nbQuestions;
+    if (!Number.isInteger(n) || n < QUESTIONS_EVALUATION_MIN || n > QUESTIONS_EVALUATION_MAX) return { ok: false, code: "nb-questions-invalide" };
+    activite.nbQuestions = n;
+  }
+  if (type === "cahier") {
+    const c = corps?.cahier ?? {};
+    if (!TYPES_CAHIER_PROF.includes(c.type)) return { ok: false, code: "cahier-invalide" };
+    activite.cahier = {
+      type: c.type, longueur: parmiListe(LONGUEURS_CAHIER_PROF, c.longueur, "standard"),
+      univers: parmiListe(UNIVERS_CAHIER_PROF, c.univers, "aucun"), objectif: parmiListe(OBJECTIFS_CAHIER_PROF, c.objectif, "reviser"),
+      ia: c.ia === true
+    };
+  }
+  if (type === "objectif") {
+    const mesure = MESURES_OBJECTIF.includes(corps?.objectif?.mesure) ? corps.objectif.mesure : null;
+    if (!mesure) return { ok: false, code: "objectif-invalide" };
+    const valeur = mesure === "notions" ? notions.length : corps?.objectif?.valeur;
+    const [min, max] = BORNES_OBJECTIF[mesure];
+    if (!Number.isInteger(valeur) || valeur < min || valeur > max) return { ok: false, code: "objectif-invalide" };
+    activite.objectif = { mesure, valeur };
+    if (mesure !== "notions") activite.notions = [];
+  }
+  return { ok: true, activite };
+}
+
+/** Paramètres gardés en base pour une activité validée (JSON), sans la cible ni l'échéance (colonnes à part). */
+export const parametresActivite = (a) => ({
+  notions: a.notions, libelle: a.libelle,
+  ...(a.nbQuestions ? { nbQuestions: a.nbQuestions } : {}), ...(a.cahier ? { cahier: a.cahier } : {}), ...(a.objectif ? { objectif: a.objectif } : {})
+});
+
+/**
+ * Résultat envoyé par l'appareil de l'élève : compteurs bornés seulement (aucune réponse donnée, aucun texte).
+ * @returns {{ activite: string, reussis: number, total: number, dureeS: number, termine: boolean } | null}
+ */
+export function validerResultat(brut) {
+  if (!brut || typeof brut !== "object" || typeof brut.activite !== "string" || !/^[0-9a-z-]{1,64}$/.test(brut.activite)) return null;
+  const entierBorne = (v, max) => (Number.isInteger(v) && v >= 0 ? Math.min(v, max) : 0);
+  const total = entierBorne(brut.total, 500);
+  return {
+    activite: brut.activite, total, reussis: Math.min(entierBorne(brut.reussis, 500), total),
+    dureeS: entierBorne(brut.dureeS, 86400), termine: brut.termine === true
+  };
+}
+
+/** Générateur pseudo-aléatoire reproductible (mulberry32) à partir d'une chaîne. */
+function generateur(graine) {
+  let h = 1779033703 ^ String(graine).length;
+  for (const c of String(graine)) { h = Math.imul(h ^ c.charCodeAt(0), 3432918353); h = (h << 13) | (h >>> 19); }
+  let a = h >>> 0;
+  return () => {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/**
+ * Questions d'un défi ou d'une évaluation : tirage reproductible (graine = identifiant de l'activité) dans les QCM
+ * publiés des notions choisies, en alternant les notions. Moins de questions que demandé si le catalogue n'en a pas
+ * assez. `banque` : { notion: [{ question, choix, bonne, ... }] } dans l'ordre des notions de l'activité.
+ */
+export function construireQuiz(graine, banque, nbQuestions) {
+  const aleatoire = generateur(graine);
+  const melanger = (liste) => {
+    const l = [...liste];
+    for (let i = l.length - 1; i > 0; i--) { const j = Math.floor(aleatoire() * (i + 1)); [l[i], l[j]] = [l[j], l[i]]; }
+    return l;
+  };
+  const files = Object.entries(banque ?? {}).map(([notion, qs]) => melanger((qs ?? []).map((q) => ({ notion, ...q }))));
+  const questions = [];
+  while (questions.length < nbQuestions && files.some((f) => f.length)) {
+    for (const f of files) if (f.length && questions.length < nbQuestions) questions.push(f.shift());
+  }
+  return questions;
+}
+
+/** Élèves concernés par une activité : ceux de la classe ciblée, ou l'élève ciblé. */
+export function elevesCibles(activite, eleves) {
+  const liste = Array.isArray(eleves) ? eleves : [];
+  return activite.eleveId ? liste.filter((e) => e.id === activite.eleveId) : liste.filter((e) => e.classeId === activite.classeId);
+}
+
+const pourcent = (n, d) => (d > 0 ? Math.round((100 * n) / d) : null);
+
+/** Score d'un résultat en pourcentage (meilleur essai pour un défi), null s'il n'y en a pas. */
+export function scoreResultat(activite, r) {
+  if (!r || !r.total) return null;
+  return pourcent(activite.type === "defi" ? Math.max(r.meilleur ?? 0, r.reussis) : r.reussis, r.total);
+}
+
+/**
+ * Avancement d'un objectif pour un élève. `bilan` : bilan vu par le professeur ; `terminees` : nombre d'activités du
+ * professeur terminées par l'élève. Les mesures « temps » et « xp » portent sur les 7 derniers jours.
+ * @returns {{ valeur: number, cible: number, atteint: boolean }}
+ */
+export function avancementObjectif(activite, { bilan, terminees = 0 }, aujourdhui) {
+  const { mesure, valeur: cible } = activite.parametres.objectif;
+  let valeur = 0;
+  if (mesure === "temps") valeur = semaineBilan(bilan, aujourdhui).minutes;
+  else if (mesure === "xp") valeur = semaineBilan(bilan, aujourdhui).xp;
+  else if (mesure === "notions") valeur = activite.parametres.notions.filter((id) => bilan?.notions?.[id]?.etat === "maitrisee").length;
+  else valeur = terminees;
+  return { valeur, cible, atteint: valeur >= cible };
+}
+
+/**
+ * Indicateurs d'une activité sur les élèves ciblés : attendus, commencés, terminés (objectif : atteint), taux de
+ * complétion, score moyen (défis et évaluations), élèves en retard (échéance passée, non terminé).
+ */
+export function indicateursActivite(activite, { eleves, resultats, aujourdhui, terminees = () => 0 }) {
+  const cibles = elevesCibles(activite, eleves);
+  const deLActivite = new Map((resultats ?? []).filter((r) => r.activite === activite.id).map((r) => [r.eleve, r]));
+  let commences = 0, termines = 0, retard = 0;
+  const scores = [];
+  for (const e of cibles) {
+    const r = deLActivite.get(e.id);
+    const fini = activite.type === "objectif"
+      ? avancementObjectif(activite, { bilan: e.bilan, terminees: terminees(e.id) }, aujourdhui).atteint
+      : !!r?.termine;
+    if (r || fini) commences += 1;
+    if (fini) termines += 1;
+    else if (activite.echeance && activite.echeance < aujourdhui) retard += 1;
+    const s = ["defi", "evaluation"].includes(activite.type) && r?.termine ? scoreResultat(activite, r) : null;
+    if (s !== null) scores.push(s);
+  }
+  return {
+    attendus: cibles.length, commences, termines, retard,
+    completion: pourcent(termines, cibles.length),
+    score: scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null
+  };
+}
+
+/**
+ * Tableau de bord du professeur, calculé dans son navigateur : engagement (actifs sur 7 jours, temps moyen,
+ * complétion des activités, retards), performance (scores moyens des évaluations et des défis, part des notions
+ * maîtrisées, notions à revoir), puis indicateurs par classe, par activité et élèves à suivre.
+ */
+export function tableauDeBord({ eleves = [], classes = [], activites = [], resultats = [] }, aujourdhui) {
+  const actives = activites.filter((a) => a.statut !== "archivee");
+  const terminePar = new Map();
+  for (const r of resultats) if (r.termine) terminePar.set(r.eleve, (terminePar.get(r.eleve) ?? 0) + 1);
+  const terminees = (id) => terminePar.get(id) ?? 0;
+  const parActivite = actives.map((a) => ({ ...a, indicateurs: indicateursActivite(a, { eleves, resultats, aujourdhui, terminees }) }));
+
+  const groupe = (liste, filtreActivite) => {
+    const s = syntheseEleves(liste, aujourdhui);
+    const ids = new Set(liste.map((e) => e.id));
+    let attendus = 0, termines = 0, retard = 0;
+    const scoresEval = [], scoresDefi = [];
+    for (const a of parActivite.filter(filtreActivite)) {
+      for (const e of elevesCibles(a, liste)) {
+        if (!ids.has(e.id)) continue;
+        attendus += 1;
+        const r = resultats.find((x) => x.activite === a.id && x.eleve === e.id);
+        const fini = a.type === "objectif" ? avancementObjectif(a, { bilan: e.bilan, terminees: terminees(e.id) }, aujourdhui).atteint : !!r?.termine;
+        if (fini) termines += 1;
+        else if (a.echeance && a.echeance < aujourdhui) retard += 1;
+        const sc = r?.termine ? scoreResultat(a, r) : null;
+        if (sc !== null && a.type === "evaluation") scoresEval.push(sc);
+        if (sc !== null && a.type === "defi") scoresDefi.push(sc);
+      }
+    }
+    let vues = 0, maitrisees = 0;
+    for (const e of liste) for (const n of Object.values(e.bilan?.notions ?? {})) { vues += 1; if (n.etat === "maitrisee") maitrisees += 1; }
+    const moyenne = (l) => (l.length ? Math.round(l.reduce((a, b) => a + b, 0) / l.length) : null);
+    return {
+      eleves: s.eleves, actifs: s.actifs, tauxActifs: pourcent(s.actifs, s.eleves),
+      minutesMoyennes: s.eleves ? Math.round(s.minutes / s.eleves) : 0,
+      attendus, termines, completion: pourcent(termines, attendus), retard,
+      scoreEvaluations: moyenne(scoresEval), scoreDefis: moyenne(scoresDefi),
+      maitrise: pourcent(maitrisees, vues), aRevoir: s.aRevoir
+    };
+  };
+
+  const global = groupe(eleves, () => true);
+  const parClasse = [...classes.map((c) => ({ id: c.id, nom: c.nom, matiere: c.matiere, niveau: c.niveau, ...groupe(eleves.filter((e) => e.classeId === c.id), () => true) })),
+    ...(eleves.some((e) => !e.classeId) ? [{ id: "particulier", nom: null, ...groupe(eleves.filter((e) => !e.classeId), () => true) }] : [])];
+
+  // Élèves à suivre : inactifs, en retard, ou score moyen faible.
+  const aSuivre = [];
+  for (const e of eleves) {
+    const raisons = [];
+    const derniere = e.bilan?.dernierJour;
+    if (!derniere) raisons.push("jamais");
+    else if (ecartJours(derniere, aujourdhui) >= JOURS_INACTIVITE) raisons.push("inactif");
+    const siens = parActivite.filter((a) => elevesCibles(a, [e]).length);
+    const enRetard = siens.filter((a) => a.echeance && a.echeance < aujourdhui && a.type !== "objectif"
+      && !resultats.some((r) => r.activite === a.id && r.eleve === e.id && r.termine)).length;
+    if (enRetard) raisons.push("retard");
+    const scores = siens.filter((a) => ["defi", "evaluation"].includes(a.type))
+      .map((a) => scoreResultat(a, resultats.find((r) => r.activite === a.id && r.eleve === e.id && r.termine))).filter((v) => v !== null);
+    const moyenne = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
+    if (moyenne !== null && moyenne < SEUIL_SCORE_FAIBLE) raisons.push("score");
+    if (raisons.length) aSuivre.push({ eleve: e.id, raisons, retard: enRetard, score: moyenne });
+  }
+  return { global, parClasse, activites: parActivite, aSuivre };
+}

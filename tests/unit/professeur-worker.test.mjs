@@ -188,7 +188,7 @@ test("professeur : supprimer une classe détache ses élèves ; supprimer le com
 test("professeur : la purge quotidienne retire les liens expirés ou épuisés", async () => {
   const { jeton, classe } = await professeurAvecClasse();
   await lien(jeton, { mode: "classe", classeId: classe.id, dureeJours: 1 });
-  assert.deepEqual(await purgerProfesseur(env, Date.now() + 2 * 86400000), { invitations: 1 });
+  assert.deepEqual(await purgerProfesseur(env, Date.now() + 2 * 86400000), { invitations: 1, consommations: 0 });
 });
 
 test("non-conservation : aucun texte inattendu d'une requête professeur ou élève n'est gardé", async () => {
@@ -204,4 +204,119 @@ test("non-conservation : aucun texte inattendu d'une requête professeur ou él�
   await prof("bilan", { methode: "PUT", jeton: eleve, corps: { bilan: { jour: "2026-11-17", question: CANARI, notions: { [CANARI]: { etat: "maitrisee" } } } } });
   const fuite = env.DB.toutLeTexte().find(({ valeur }) => /CANARI-PROF|zorglub|98 76/i.test(valeur));
   assert.equal(fuite, undefined, `retrouvé dans ${fuite?.table}`);
+});
+
+// ---------- Activités (ADR 0030 §9) ----------
+
+async function classeAvecDeuxEleves() {
+  const { jeton, classe, profId } = await professeurAvecClasse();
+  const inv = await lien(jeton, { mode: "classe", classeId: classe.id });
+  const a = await inscrire("eleve.alix");
+  const b = await inscrire("eleve.bao");
+  await rejoindre(a, inv.code, "Alix");
+  await rejoindre(b, inv.code, "Bao");
+  const ids = (await prof("eleves", { methode: "GET", jeton })).donnees.eleves.map((e) => e.id);
+  return { jeton, classe, profId, a, b, ids };
+}
+const activite = (jeton, corps) => prof("activites", { jeton, corps });
+
+test("activités : validation (type, cible, notions du profil, 5 à 40 questions, objectif, échéance)", async () => {
+  const { jeton, classe, ids } = await classeAvecDeuxEleves();
+  const cible = { classeId: classe.id };
+  assert.equal((await activite(jeton, { type: "quiz", cible, notions: [MATHS] })).donnees.erreur, "type-invalide");
+  assert.equal((await activite(jeton, { type: "defi", cible: {}, notions: [MATHS] })).donnees.erreur, "cible-invalide");
+  assert.equal((await activite(jeton, { type: "defi", cible: { classeId: classe.id, eleveId: ids[0] }, notions: [MATHS] })).donnees.erreur, "cible-invalide");
+  assert.equal((await activite(jeton, { type: "defi", cible, notions: [] })).donnees.erreur, "notions-requises");
+  assert.equal((await activite(jeton, { type: "defi", cible, notions: [AUTRE] })).donnees.erreur, "notion-hors-profil");
+  assert.equal((await activite(jeton, { type: "evaluation", cible, notions: [MATHS], nbQuestions: 4 })).donnees.erreur, "nb-questions-invalide");
+  assert.equal((await activite(jeton, { type: "evaluation", cible, notions: [MATHS], nbQuestions: 41 })).donnees.erreur, "nb-questions-invalide");
+  assert.equal((await activite(jeton, { type: "objectif", cible, objectif: { mesure: "temps", valeur: 5 } })).donnees.erreur, "objectif-invalide");
+  assert.equal((await activite(jeton, { type: "defi", cible, notions: [MATHS], echeance: "2000-01-01" })).donnees.erreur, "echeance-invalide");
+  assert.equal((await activite(jeton, { type: "cahier", cible, notions: [MATHS], cahier: { type: "brouillon" } })).donnees.erreur, "cahier-invalide");
+  assert.equal((await activite(jeton, { type: "defi", cible: { eleveId: "00000000-0000-4000-8000-000000000000" }, notions: [MATHS] })).statut, 404);
+  const ok = await activite(jeton, { type: "evaluation", cible, notions: [MATHS], nbQuestions: 40, libelle: "Contrôle du chapitre 3" });
+  assert.equal(ok.statut, 201, JSON.stringify(ok.donnees));
+  const obj = await activite(jeton, { type: "objectif", cible: { eleveId: ids[0] }, objectif: { mesure: "temps", valeur: 60 } });
+  assert.equal(obj.statut, 201);
+  const cahier = await activite(jeton, { type: "cahier", cible, notions: [MATHS], cahier: { type: "exercices", ia: true } });
+  assert.equal(cahier.donnees.source, "catalogue");
+  assert.equal(cahier.donnees.raison, "ia-indisponible");
+  const liste = (await prof("activites", { methode: "GET", jeton })).donnees;
+  assert.deepEqual(liste.activites.map((x) => x.type).sort(), ["cahier", "evaluation", "objectif"]);
+  assert.equal(liste.activites.find((x) => x.type === "evaluation").parametres.nbQuestions, 40);
+  // Un élève n'a pas accès aux routes du professeur.
+  assert.equal((await activite((await inscrire("intrus.x")), { type: "defi", cible, notions: [MATHS] })).statut, 403);
+});
+
+test("activités : l'élève voit celles de sa classe et les siennes, envoie ses résultats ; une évaluation ne se repasse pas", async () => {
+  const { jeton, classe, a, b, ids } = await classeAvecDeuxEleves();
+  const defi = (await activite(jeton, { type: "defi", cible: { classeId: classe.id }, notions: [MATHS] })).donnees.id;
+  const evalA = (await activite(jeton, { type: "evaluation", cible: { eleveId: ids.find(Boolean) }, notions: [MATHS], nbQuestions: 10 })).donnees.id;
+  const vuesA = (await prof("mes-activites", { methode: "GET", jeton: a })).donnees.activites;
+  const vuesB = (await prof("mes-activites", { methode: "GET", jeton: b })).donnees.activites;
+  // ids est trié par pseudo : Alix d'abord.
+  assert.deepEqual(vuesA.map((x) => x.type).sort(), ["defi", "evaluation"]);
+  assert.deepEqual(vuesB.map((x) => x.type), ["defi"]);
+  assert.equal(vuesA[0].professeur, "M. Martin");
+
+  const envoyer = (jet, resultats) => prof("resultats", { methode: "PUT", jeton: jet, corps: { resultats } });
+  assert.equal((await envoyer(a, [{ activite: defi, reussis: 2, total: 5, dureeS: 60, termine: true }])).donnees.enregistres, 1);
+  await envoyer(a, [{ activite: defi, reussis: 4, total: 5, dureeS: 50, termine: true }]);
+  await envoyer(a, [{ activite: evalA, reussis: 7, total: 10, dureeS: 600, termine: true }]);
+  const second = await envoyer(a, [{ activite: evalA, reussis: 10, total: 10, termine: true }]);
+  assert.deepEqual(second.donnees.refuses, [{ activite: evalA, raison: "deja-terminee" }]);
+  // B ne peut pas répondre à l'évaluation de A.
+  assert.deepEqual((await envoyer(b, [{ activite: evalA, reussis: 10, total: 10, termine: true }])).donnees.refuses, [{ activite: evalA, raison: "introuvable" }]);
+
+  const { resultats } = (await prof("activites", { methode: "GET", jeton })).donnees;
+  const rDefi = resultats.find((r) => r.activite === defi);
+  assert.equal(rDefi.tentatives, 2);
+  assert.equal(rDefi.meilleur, 4);
+  assert.equal(rDefi.dureeS, 110);
+  assert.equal(resultats.find((r) => r.activite === evalA).reussis, 7);
+  assert.equal(resultats.length, 2);
+
+  // Archivée : l'activité disparaît chez l'élève ; supprimée : ses résultats aussi.
+  assert.equal((await prof(`activites/${defi}/archiver`, { jeton })).statut, 204);
+  assert.deepEqual((await prof("mes-activites", { methode: "GET", jeton: b })).donnees.activites, []);
+  assert.equal((await prof(`activites/${evalA}/supprimer`, { jeton })).statut, 204);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_resultats WHERE activite_id = ?").get(evalA).n, 0);
+});
+
+test("activités : quitter, retirer, supprimer la classe ou le compte effacent activités et résultats liés", async () => {
+  const { jeton, classe, profId, a, ids } = await classeAvecDeuxEleves();
+  const perso = (await activite(jeton, { type: "defi", cible: { eleveId: ids[0] }, notions: [MATHS] })).donnees.id;
+  const deClasse = (await activite(jeton, { type: "defi", cible: { classeId: classe.id }, notions: [MATHS] })).donnees.id;
+  await prof("resultats", { methode: "PUT", jeton: a, corps: { resultats: [{ activite: perso, reussis: 1, total: 5, termine: true }, { activite: deClasse, reussis: 3, total: 5, termine: true }] } });
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_resultats").get().n, 2);
+  assert.equal((await prof(`mes-professeurs/${profId}/quitter`, { jeton: a })).statut, 204);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_resultats").get().n, 0);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_activites WHERE id = ?").get(perso).n, 0, "activité personnelle effacée");
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_activites WHERE id = ?").get(deClasse).n, 1, "activité de classe gardée");
+  assert.equal((await prof(`classes/${classe.id}/supprimer`, { jeton })).statut, 204);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_activites").get().n, 0);
+  await prof("classes", { jeton, corps: { nom: "3e C", matiere: "mathematiques", niveau: "3e" } });
+  await activite(jeton, { type: "objectif", cible: { eleveId: ids[1] }, objectif: { mesure: "xp", valeur: 100 } });
+  await appeler("/api/compte-local/compte/supprimer", { jeton, corps: { motDePasse: MDP } });
+  for (const table of ["professeurs_activites", "professeurs_resultats", "professeurs_consommations"]) {
+    assert.equal(sql().prepare(`SELECT count(*) AS n FROM ${table}`).get().n, 0, table);
+  }
+});
+
+test("activités : cahier rédigé par l'IA sous quota du professeur", async () => {
+  env.LLM_ACTIF = "true";
+  env.LLM_SESSION_SECRET = "secret-factice-de-test-de-plus-de-32-caracteres";
+  env.AI = { run: async (_m, parametres) => {
+    const { notions: liste, plan } = JSON.parse(parametres.messages[1].content);
+    const bloc = (c, i) => ({ creneau: c.creneau, titre: `T${c.creneau}`, texte: `${c.genre} ${i}.`, indice: ["exercice", "defi"].includes(c.genre) ? "Indice." : "", reponse: ["exercice", "defi"].includes(c.genre) ? "Réponse." : "" });
+    return { choices: [{ message: { content: JSON.stringify({ titre: "Mission", introduction: "Bonjour.", sections: liste.map((n) => ({ notion: n.notion, blocs: plan.map(bloc) })), conclusion: "Bravo." }) }, finish_reason: "stop" }], usage: { completion_tokens: 900 } };
+  } };
+  const { jeton, classe, a } = await classeAvecDeuxEleves();
+  const r = await activite(jeton, { type: "cahier", cible: { classeId: classe.id }, notions: [MATHS], cahier: { type: "exercices", ia: true } });
+  assert.equal(r.statut, 201, JSON.stringify(r.donnees));
+  assert.equal(r.donnees.source, "ia");
+  assert.equal(r.donnees.quota.utilisees, 1);
+  const vue = (await prof("mes-activites", { methode: "GET", jeton: a })).donnees.activites[0];
+  assert.equal(vue.contenu.titre, "Mission");
+  assert.equal(sql().prepare("SELECT tokens FROM professeurs_consommations").get().tokens, 900);
 });

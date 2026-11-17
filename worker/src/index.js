@@ -794,7 +794,7 @@ export default {
         try {
           limiteurProfesseur ??= creerLimiteur({ maxParMinute: LIMITE_PROFESSEUR });
           reponse = await gererApiProfesseur(requete, env, {
-            catalogue: catalogueDe(env), autoriser: limiteurProfesseur, ip: requete.headers.get("cf-connecting-ip") || "inconnue"
+            catalogue: catalogueDe(env), iaCahier: cahierIaPossible(env), autoriser: limiteurProfesseur, ip: requete.headers.get("cf-connecting-ip") || "inconnue"
           });
         } catch {
           // Tables absentes (migration 0004 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
