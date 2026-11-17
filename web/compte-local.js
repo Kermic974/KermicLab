@@ -230,7 +230,10 @@ export function lireSession(texte, identifiant) {
     const y = s.synchro;
     const synchro = y && FORMAT_PSEUDONYME.test(y.pseudonyme) && FORMAT_JETON.test(y.jeton) && typeof y.cle === "string"
       && typeof y.jetonServeur === "string" ? y : null;
-    return { identifiant, synchro };
+    // Session ouverte sur le serveur pour un compte lié (Espace famille, ADR 0029) : jeton porteur et expiration.
+    const v = s.serveur;
+    const serveur = v && FORMAT_JETON.test(v.jeton) && Number.isFinite(v.expire) && v.expire > Date.now() / 1000 ? { jeton: v.jeton, expire: v.expire } : null;
+    return { identifiant, synchro, serveur };
   } catch {
     return null;
   }

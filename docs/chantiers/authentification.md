@@ -37,6 +37,19 @@ phrase secrète jamais stockée en ligne. Voir [ADR 0024](../decisions/0024-comp
 | Conservation : 365 jours sans lecture ni écriture, purge par le cron quotidien | Décidé le 2026-11-07 ; codé et testé |
 | Tests : règles et cryptographie (`tests/unit/compte-local.test.mjs`), Worker (`compte-local-worker.test.mjs`), parcours deux appareils (`tests/e2e/compte-local.test.mjs`) | PR ouverte |
 
+## Espace famille des comptes locaux (ADR 0029, 2026-11-17)
+
+Demande du propriétaire : rôle parent sur les comptes locaux, invitation d'un parent par un compte solo, tableau de bord
+Famille, gestion des comptes enfants, cahiers assignés avec calibrage, consommations. Voir
+[ADR 0029](../decisions/0029-espace-famille-comptes-locaux.md).
+
+| Élément | État |
+|---|---|
+| Worker `/api/famille/` (`worker/src/famille.js`), migration `0003_famille.sql` | PR ouverte ; tests `tests/unit/famille-worker.test.mjs` |
+| Règles partagées (`web/famille.js`) : codes, bilan, synthèse, calibrage, consommations | PR ouverte ; tests `tests/unit/famille.test.mjs` |
+| Interface : rubrique Famille de « Mon compte », écran `#espace-famille`, cahiers assignés et calibrage | PR ouverte ; parcours `tests/e2e/famille-locale.test.mjs` |
+| Rôle parent du propriétaire, rattachement du compte de son fils | Actions manuelles (`docs/actions-manuelles.md`) |
+
 ## Constats de l'audit
 
 1. `web/app.js` appelle `/auth/me` à chaque visite, même quand la connexion est désactivée.

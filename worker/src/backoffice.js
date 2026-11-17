@@ -22,6 +22,7 @@ import {
   LABEL_PROPOSITION, STATUTS_BROUILLON, TYPES_BROUILLON, corpsIssueBrouillon, inventaireCatalogue, validerBrouillon, versBrouillon
 } from "./contenus.js";
 import { supprimerCompte } from "./comptes.js";
+import { effacerCompteLocal } from "./compte-local.js";
 import { creerOuCommenterIssue } from "./github.js";
 import { THEMES, THEME_PERSONNALISE, contraste, couleursTheme, deriverVariables, validerTheme } from "../../web/theme.js";
 
@@ -77,13 +78,18 @@ async function noter(env, action, cible = "") {
 // ---------- Utilisateurs ----------
 
 async function listerUtilisateurs(env) {
-  const [comptes, locaux, attributions, etats] = await Promise.all([
+  const [comptes, locaux, attributions, etats, liens] = await Promise.all([
     tenter(() => toutes(env, `SELECT c.id, c.role, c.created_at, c.last_login_at, c.consent_version,
       (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ORDER BY c.created_at DESC, c.rowid DESC LIMIT 200`), []),
     tenter(() => toutes(env, "SELECT id, cree_le, bloque_jusqua FROM comptes_locaux ORDER BY cree_le DESC, rowid DESC LIMIT 200"), []),
     tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), []),
-    tenter(() => toutes(env, "SELECT profil, etat, expire_le FROM profils_securite"), [])
+    tenter(() => toutes(env, "SELECT profil, etat, expire_le FROM profils_securite"), []),
+    tenter(() => toutes(env, "SELECT enfant_id, parent_id FROM familles_liens"), [])
   ]);
+  // Espace famille (ADR 0029) : rôle de chaque compte local dans sa famille, sans le prénom de l'enfant.
+  const parentDe = new Map(liens.map((l) => [l.enfant_id, l.parent_id]));
+  const enfantsDe = new Map();
+  for (const l of liens) enfantsDe.set(l.parent_id, (enfantsDe.get(l.parent_id) ?? 0) + 1);
   const attribution = new Map(attributions.map((a) => [`${a.type_compte}:${a.compte_id}`, a]));
   const aujourdhui = jourDe(Date.now());
   const etat = new Map(etats.filter((e) => !e.expire_le || e.expire_le >= aujourdhui).map((e) => [e.profil, e.etat]));
@@ -98,7 +104,8 @@ async function listerUtilisateurs(env) {
   }
   const maintenant = Math.floor(Date.now() / 1000);
   for (const c of locaux) {
-    utilisateurs.push({ ...(await decrire("compte-local", c.id, ROLE_PAR_DEFAUT)), creeLe: c.cree_le, bloque: c.bloque_jusqua > maintenant });
+    utilisateurs.push({ ...(await decrire("compte-local", c.id, ROLE_PAR_DEFAUT)), creeLe: c.cree_le, bloque: c.bloque_jusqua > maintenant,
+      famille: parentDe.has(c.id) ? { role: "enfant", parent: parentDe.get(c.id) } : enfantsDe.has(c.id) ? { role: "parent", enfants: enfantsDe.get(c.id) } : null });
   }
   return utilisateurs;
 }
@@ -128,10 +135,8 @@ async function supprimerUtilisateur(env, type, id) {
   if (type === "compte") await supprimerCompte(env, id);
   else {
     // Les données synchronisées ne sont reliées à aucun compte (ADR 0024) : elles expirent seules, illisibles.
-    await env.DB.batch([
-      env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(id),
-      env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(id)
-    ]);
+    // Famille (ADR 0029) : liens, bilans, cahiers et consommations effacés avec le compte.
+    await effacerCompteLocal(env, id);
   }
   await env.DB.prepare("DELETE FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).run();
   if (profil) {
@@ -156,6 +161,13 @@ async function exporterUtilisateur(env, type, id) {
   } else {
     donnees.compte = await env.DB.prepare("SELECT id, cree_le FROM comptes_locaux WHERE id = ?").bind(id).first();
     donnees.note = "Les données synchronisées sont chiffrées dans le navigateur et ne sont reliées à aucun compte : le serveur ne peut ni les lire ni les retrouver.";
+    // Espace famille (ADR 0029) : liens, bilans, cahiers assignés et consommations du compte.
+    donnees.famille = {
+      liens: await tenter(() => toutes(env, "SELECT enfant_id, parent_id, prenom, tranche_age, consentement_version, consentement_le, origine, lie_le FROM familles_liens WHERE enfant_id = ? OR parent_id = ?", id, id), []),
+      bilan: await tenter(() => env.DB.prepare("SELECT bilan, maj_le FROM familles_bilans WHERE enfant_id = ?").bind(id).first(), null),
+      cahiers: await tenter(() => toutes(env, "SELECT id, parent_id, enfant_id, demande, statut, calibrage, reussis, total, cree_le, maj_le FROM familles_cahiers WHERE enfant_id = ? OR parent_id = ?", id, id), []),
+      consommations: await tenter(() => toutes(env, "SELECT jour, module, appels, tokens FROM familles_consommations WHERE compte_id = ? ORDER BY jour", id), [])
+    };
   }
   donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
   donnees.securite = profil ? {

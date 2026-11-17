@@ -6,9 +6,9 @@
     "index.html": {
       "version": "1.47.0",
       "date": "2026-11-17",
-      "revision": "55c900f985a85293d6d9dc1d00baadf11160beda",
-      "squeletteSha256": "2a6e4e84c355d2a837ccaeb84ba52801d958540fbb4eab75b11807a67ace37be",
-      "sourcesSha256": "8898278a75df0c3be0bef4ae845fab4fe579d20ed71bcfd673b695cb34a40d9d"
+      "revision": "403e679b24c28d8842d6876a7645213e50f41637",
+      "squeletteSha256": "ba82c1178b1acc2659b9fad924f6501fa539ec48f28cb6bb66c45cf917e48ee2",
+      "sourcesSha256": "d239fe4206c5f84e8c1c5d232369ba0c9b88c5e5ae136713120a1d8c76ce3df8"
     },
     "notion.html": {
       "version": "1.47.0",
@@ -32,18 +32,18 @@
       "sourcesSha256": "747dbe2ec8767a17136c3259dc621ebfb4867888f51c51cff18f9be8c8efaa66"
     },
     "editorial.html": {
-      "version": "1.40.0",
-      "date": "2026-11-16",
-      "revision": "16d52adbeb0ab12d98707613f2d5cf3403fec59a",
+      "version": "1.46.0",
+      "date": "2026-11-17",
+      "revision": "c9c8c4ed5a9df8f631c815bd854531355d8a5664",
       "squeletteSha256": "daf6ae6b5b8c374d624a417246e616d0fe9909878e6297796a65b24cbe298aa4",
-      "sourcesSha256": "64fa9cbd5be6f101c5db02820ce9e246676029fdf9a3e42ccaf7dcc113c5027e"
+      "sourcesSha256": "f254f219c87b19979656306045ddeed6a1a83dcad690d755db745962c5024152"
     },
     "inventaire.html": {
       "version": "1.47.0",
       "date": "2026-11-17",
-      "revision": "55c900f985a85293d6d9dc1d00baadf11160beda",
-      "squeletteSha256": "d123c541a63e8d8cbe6f383c730db3b64756134e6245d4c91422c10114cb74fd",
-      "sourcesSha256": "3853a9e7c29bad46608f0fe157e73c403cdea941b3ae1af9ee838fad82d8f634"
+      "revision": "403e679b24c28d8842d6876a7645213e50f41637",
+      "squeletteSha256": "b961f7d909f11d73fd0e24e94a0efcaafc178e71998b4208b8f522fa79321051",
+      "sourcesSha256": "d634791b74cbeb531f3d99ff310d334cfaa957605a6114a6d7931d172ab0de9a"
     }
   },
   "historique": [
@@ -2741,6 +2741,7 @@
         "index.html",
         "notion.html",
         "jeux.html",
+        "editorial.html",
         "inventaire.html"
       ],
       "precedente": "1.45.0",
@@ -2766,12 +2767,44 @@
           "squeletteSha256": "826f52843a3733997ca40c86bb164ad7be933516293ab5fe8823965073cb1086",
           "sourcesSha256": "daf76f5d8efe8ce51c5747c9b7c9678ed3b7212593710f7f4e1d18c6e6aec72c"
         },
+        "editorial.html": {
+          "version": "1.46.0",
+          "date": "2026-11-17",
+          "revision": "c9c8c4ed5a9df8f631c815bd854531355d8a5664",
+          "squeletteSha256": "daf6ae6b5b8c374d624a417246e616d0fe9909878e6297796a65b24cbe298aa4",
+          "sourcesSha256": "f254f219c87b19979656306045ddeed6a1a83dcad690d755db745962c5024152"
+        },
         "inventaire.html": {
           "version": "1.46.0",
           "date": "2026-11-17",
-          "revision": "e4be30a53386ba8a2047503f7fd4524a3feeedd1",
-          "squeletteSha256": "645d7ed89bc97a28849ca896d9eb407ae798cba49c631f1cc3cbd41d02ff1871",
-          "sourcesSha256": "0e939d5688a5caa805ddf55c48ec45b21e83fc15289722dabd3a6a86b5e6288b"
+          "revision": "c9c8c4ed5a9df8f631c815bd854531355d8a5664",
+          "squeletteSha256": "ad3d12fb2d795ac599ed52f7ad1bfcd4b64b38aee70c0a01b458cf4e9b194762",
+          "sourcesSha256": "aac8b26a0819f6c4f45555d748ff02f00e389f2cf5c5a6fba41cc00cb4f94b46"
+        }
+      }
+    },
+    {
+      "version": "1.47.0",
+      "date": "2026-11-17",
+      "modifies": [
+        "index.html",
+        "inventaire.html"
+      ],
+      "precedente": "1.46.0",
+      "artefacts": {
+        "index.html": {
+          "version": "1.47.0",
+          "date": "2026-11-17",
+          "revision": "403e679b24c28d8842d6876a7645213e50f41637",
+          "squeletteSha256": "ba82c1178b1acc2659b9fad924f6501fa539ec48f28cb6bb66c45cf917e48ee2",
+          "sourcesSha256": "d239fe4206c5f84e8c1c5d232369ba0c9b88c5e5ae136713120a1d8c76ce3df8"
+        },
+        "inventaire.html": {
+          "version": "1.47.0",
+          "date": "2026-11-17",
+          "revision": "403e679b24c28d8842d6876a7645213e50f41637",
+          "squeletteSha256": "b961f7d909f11d73fd0e24e94a0efcaafc178e71998b4208b8f522fa79321051",
+          "sourcesSha256": "d634791b74cbeb531f3d99ff310d334cfaa957605a6114a6d7931d172ab0de9a"
         }
       }
     },

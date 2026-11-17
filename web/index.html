@@ -105,9 +105,10 @@
 
       <p class="avertissement" role="note" data-i18n="avertissement"></p>
 
-      <nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte" data-i18n-aria="profilCompte" hidden>
+      <nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte espace-famille" data-i18n-aria="profilCompte" hidden>
         <button type="button" class="secondaire" data-nav="profil" data-i18n="navProfil"></button>
         <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteTitre"></button>
+        <button id="entree-espace-famille" type="button" class="secondaire" data-nav="espace-famille" data-i18n="efTitre" hidden></button>
       </nav>
 
       <section class="accueil-depart" id="accueil" data-ecrans="accueil" aria-labelledby="depart-titre">
@@ -227,6 +228,10 @@
             <section class="cahiers-enregistres" aria-labelledby="cahiers-personnels-titre">
               <h4 id="cahiers-personnels-titre" data-i18n="cahiersPersonnels"></h4>
               <p class="doux petit" data-i18n="cahiersStockage"></p>
+              <div id="cahiers-famille" class="cahiers-famille" hidden>
+                <h5 data-i18n="cfTitre"></h5>
+                <div id="liste-cahiers-famille" class="grille-cahiers" aria-live="polite"></div>
+              </div>
               <p id="cahiers-vide" class="doux" data-i18n="cahiersVides"></p>
               <div id="liste-cahiers" class="grille-cahiers" aria-live="polite"></div>
             </section>
@@ -642,6 +647,22 @@
       </div>
       <p id="synchro-message" class="doux" role="status" aria-live="polite"></p>
     </section>
+    <!-- Famille (ADR 0029) : un compte solo invite son parent ; un parent ouvre l'Espace famille. -->
+    <section class="compte-bloc" id="famille-compte" aria-labelledby="famille-compte-titre">
+      <h3 id="famille-compte-titre" data-i18n="fcTitre"></h3>
+      <p id="famille-compte-statut" class="doux"></p>
+      <div id="famille-compte-solo" hidden>
+        <p class="doux petit" data-i18n="fcInviterAide"></p>
+        <button type="button" class="secondaire" id="famille-inviter" data-i18n="fcInviter"></button>
+        <div id="famille-code-zone" hidden>
+          <p class="code-invitation" id="famille-code" aria-live="polite"></p>
+          <p class="doux petit" id="famille-code-aide"></p>
+          <button type="button" class="secondaire petit-bouton" id="famille-annuler-invitation" data-i18n="fcAnnulerInvitation"></button>
+        </div>
+      </div>
+      <button type="button" class="bouton" id="famille-ouvrir-espace" data-nav="espace-famille" data-i18n="fcOuvrirEspace" hidden></button>
+      <p id="famille-compte-message" class="doux" role="status" aria-live="polite"></p>
+    </section>
     <div class="zone-effacement">
       <button type="button" class="secondaire" id="compte-deconnexion" data-i18n="compteDeconnexion"></button>
       <details id="compte-suppression" class="famille-ajout">
@@ -725,6 +746,72 @@
     <p id="famille-enfant-texte"></p>
     <p class="doux petit" data-i18n="familleEnfantAide"></p>
     <button type="button" class="secondaire" id="quitter-mode-enfant" data-i18n="quitterModeEnfant"></button>
+  </div>
+</section>
+
+<!-- Espace famille des comptes locaux (ADR 0029) : tableau de bord du parent, gestion des enfants, cahiers assignés,
+     consommations. Données lues par l'API /api/famille/ avec la session du compte local. -->
+<section id="espace-famille" class="carte ecran-personnel" data-ecrans="espace-famille" aria-labelledby="ef-titre" hidden>
+  <div class="dialogue-entete">
+    <h2 id="ef-titre" data-i18n="efTitre"></h2>
+    <button type="button" class="secondaire" id="ef-actualiser" data-i18n="efActualiser"></button>
+  </div>
+  <p id="ef-etat" class="doux" role="status" aria-live="polite"></p>
+  <div id="ef-contenu" hidden>
+    <section class="ef-bloc" aria-labelledby="ef-synthese-titre">
+      <h3 id="ef-synthese-titre" data-i18n="efSynthese"></h3>
+      <dl id="ef-chiffres" class="chiffres"></dl>
+      <ul id="ef-alertes" class="ef-alertes"></ul>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-enfants-titre">
+      <h3 id="ef-enfants-titre" data-i18n="efEnfants"></h3>
+      <p id="ef-vide" class="doux" data-i18n="efAucunEnfant" hidden></p>
+      <div id="ef-enfants" class="ef-enfants"></div>
+      <details id="ef-ajout" class="famille-ajout">
+        <summary data-i18n="efAjouter"></summary>
+        <p class="doux petit" data-i18n="efAjouterAide"></p>
+        <fieldset class="ef-mode">
+          <legend class="etiquette-champ" data-i18n="efAjoutMode"></legend>
+          <label><input type="radio" name="ef-mode" value="code" checked> <span data-i18n="efModeCode"></span></label>
+          <label><input type="radio" name="ef-mode" value="creation"> <span data-i18n="efModeCreation"></span></label>
+        </fieldset>
+        <form id="ef-formulaire-ajout" class="formulaire-profil" novalidate>
+          <div id="ef-ajout-code">
+            <label for="ef-code" class="etiquette-champ" data-i18n="efCodeLabel"></label>
+            <input id="ef-code" type="text" maxlength="9" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="ef-code-aide">
+            <p id="ef-code-aide" class="doux petit" data-i18n="efCodeAide"></p>
+          </div>
+          <div id="ef-ajout-creation" hidden>
+            <label for="ef-identifiant" class="etiquette-champ" data-i18n="compteIdentifiantLabel"></label>
+            <input id="ef-identifiant" type="text" maxlength="32" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="ef-identifiant-aide">
+            <p id="ef-identifiant-aide" class="doux petit" data-i18n="efIdentifiantAide"></p>
+            <label for="ef-mdp" class="etiquette-champ" data-i18n="efMdpEnfant"></label>
+            <input id="ef-mdp" type="password" maxlength="128" autocomplete="new-password" aria-describedby="ef-mdp-aide">
+            <p id="ef-mdp-aide" class="doux petit" data-i18n="efMdpAide"></p>
+          </div>
+          <label for="ef-prenom" class="etiquette-champ" data-i18n="enfantPrenomLabel"></label>
+          <input id="ef-prenom" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="ef-prenom-aide">
+          <p id="ef-prenom-aide" class="doux petit" data-i18n="enfantPrenomAide"></p>
+          <fieldset class="tranches">
+            <legend class="etiquette-champ" data-i18n="enfantTrancheLabel"></legend>
+            <label><input type="radio" name="ef-tranche" value="6-10"> <span data-i18n="tranche_6-10"></span></label>
+            <label><input type="radio" name="ef-tranche" value="11-14"> <span data-i18n="tranche_11-14"></span></label>
+            <label><input type="radio" name="ef-tranche" value="15-17"> <span data-i18n="tranche_15-17"></span></label>
+          </fieldset>
+          <label class="case-memoire">
+            <input type="checkbox" id="ef-consentement">
+            <span><strong data-i18n="consentementTitre"></strong><span class="doux petit" data-i18n="consentementTexte"></span></span>
+          </label>
+          <p id="ef-ajout-erreur" class="erreur-champ" aria-live="assertive"></p>
+          <button type="submit" class="bouton" id="ef-ajouter-bouton" data-i18n="efAjouterBouton"></button>
+        </form>
+      </details>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-conso-titre">
+      <h3 id="ef-conso-titre" data-i18n="efConsommations"></h3>
+      <p class="doux petit" id="ef-conso-aide"></p>
+      <div class="ef-tableau-defilant"><table id="ef-conso" class="ef-conso"></table></div>
+    </section>
   </div>
 </section>
 
@@ -984,8 +1071,15 @@
   <form id="formulaire-cahier" class="formulaire-cahier" method="dialog">
     <h2 id="constructeur-titre"></h2>
     <p class="doux" id="constructeur-aide"></p>
-    <label for="cahier-titre" data-i18n="cahierTitreChamp"></label>
-    <input id="cahier-titre" type="text" maxlength="60" autocomplete="off">
+    <div id="cahier-famille-zone" hidden>
+      <p class="note-locale" id="cahier-famille-pour"></p>
+      <label for="cahier-type-famille" data-i18n="efCahierType"></label>
+      <select id="cahier-type-famille"></select>
+    </div>
+    <div id="cahier-titre-zone">
+      <label for="cahier-titre" data-i18n="cahierTitreChamp"></label>
+      <input id="cahier-titre" type="text" maxlength="60" autocomplete="off">
+    </div>
     <div class="constructeur-ligne">
       <div><label for="cahier-matiere" data-i18n="cahierMatiereChamp"></label><select id="cahier-matiere"></select></div>
       <div><label for="cahier-niveau" data-i18n="cahierNiveauChamp"></label><select id="cahier-niveau"></select></div>
@@ -1006,6 +1100,20 @@
     <div class="actions">
       <button type="button" class="secondaire" id="fermer-constructeur" data-i18n="fermer"></button>
       <button type="submit" id="construire-cahier" data-i18n="cahierConstruire"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Questionnaire de calibrage d'un cahier assigné par la famille (ADR 0029) : une question par notion. -->
+<dialog id="calibrage-cahier" data-sans-idees aria-labelledby="calibrage-titre" aria-describedby="calibrage-aide">
+  <form id="formulaire-calibrage" class="formulaire-cahier" method="dialog" novalidate>
+    <h2 id="calibrage-titre" data-i18n="calibrageTitre"></h2>
+    <p class="doux" id="calibrage-aide" data-i18n="calibrageAide"></p>
+    <div id="calibrage-questions" class="vacances-questions"></div>
+    <p id="calibrage-retour" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="fermer-calibrage" data-i18n="fermer"></button>
+      <button type="submit" id="calibrage-valider" data-i18n="calibrageValider"></button>
     </div>
   </form>
 </dialog>
