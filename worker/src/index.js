@@ -8,8 +8,8 @@ import { sauvegarderKpi, jourPrecedent } from "./sauvegarde.js";
 import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
-import { estRouteContribution, gererApiContributions } from "./contributions.js";
-import { estRouteCompteLocal, gererApiCompteLocal, purgerCompteLocal } from "./compte-local.js";
+import { estRouteContribution, gererApiContributions, roleContributionCompteLocal } from "./contributions.js";
+import { compteDeSession, estRouteCompteLocal, gererApiCompteLocal, purgerCompteLocal } from "./compte-local.js";
 import { estRouteFamille, gererApiFamille, noterConsommationDeRequete, purgerFamille } from "./famille.js";
 import { estRouteProfesseur, gererApiProfesseur, purgerProfesseur } from "./professeur.js";
 import { questionDeSuivi, relancesContexte, sourceContexte } from "./contexte-llm.js";
@@ -829,6 +829,28 @@ export default {
     // Comptes famille (ADR 0017) : réservés au parent connecté ; 401 sans session valide.
     // Contributions au contenu (ADR 0023) : rôles contributeur, prof, admin ; mêmes garde-fous de session.
     const routeContribution = estRouteContribution(url.pathname);
+    // Compte local (ADR 0023 §6 ter) : session porteuse (Authorization: Bearer), rôle attribué dans le back-office,
+    // propositions dans `contributions_locales`. Sans en-tête, la session OAuth (cookie) s'applique comme avant.
+    if (routeContribution && requete.headers.has("authorization")) {
+      let reponse;
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        reponse = json({ erreur: "origine-refusee" }, 403, {});
+      } else {
+        try {
+          const session = env.DB ? await compteDeSession(requete, env) : null;
+          reponse = !session ? json({ erreur: "non-connecte" }, 401, {})
+            : await gererApiContributions(requete, env, session.compteId, {
+              catalogue: catalogueDe(env).index, table: "contributions_locales", role: await roleContributionCompteLocal(env, session.compteId)
+            });
+        } catch {
+          // Table absente (migration 0006 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
+          reponse = json({ erreur: "contributions-indisponibles" }, 503, {});
+        }
+      }
+      const headers = new Headers(reponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(reponse.body, { status: reponse.status, headers });
+    }
     if (estRouteCompte(url.pathname) || routeContribution) {
       let apiResponse;
       try {

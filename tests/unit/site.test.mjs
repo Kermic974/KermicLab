@@ -112,14 +112,16 @@ test("le lien de participation reste visible (barre latérale et Profil), hors d
   assert.match(pied, /<button[^>]*class="profil-carte"[^>]*data-action="profil"/);
   // Contributions reste réservée aux rôles autorisés (ADR 0023 §6 bis) ; Tableau de bord, Mes classes et Mes élèves au rôle Professeur (ADR 0030).
   const destinations = {
-    nav: ["accueil", "education", "labs", "jeux", "progression", "contributions", "suivi", "classes", "eleves"],
-    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "contributions", "suivi"],
+    // « Ma famille » (barre latérale) : lien rapide vers « Mon compte » ou l'Espace famille, masqué sans compte local lié.
+    nav: ["accueil", "education", "labs", "jeux", "progression", "compte", "contributions", "suivi", "classes", "eleves"],
+    // Barre du bas : « Ma famille », Contributions et Suivi, regroupées sous « Plus » (sans data-nav) quand il y en a plusieurs.
+    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "compte", "contributions", "suivi"],
   };
   for (const [classe, attendues] of Object.entries(destinations)) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
     assert.deepEqual([...bloc.matchAll(/data-nav="([a-z]+)"/g)].map((m) => m[1]), attendues, classe);
     assert.match(bloc, /<button [^>]*data-nav="contributions"[^>]*\shidden>/, `${classe} : Contributions masquée par défaut`);
-    for (const reserve of ["suivi", "classes", "eleves"].filter((d) => attendues.includes(d))) {
+    for (const reserve of ["compte", "suivi", "classes", "eleves"].filter((d) => attendues.includes(d))) {
       assert.match(bloc, new RegExp(`<button [^>]*data-nav="${reserve}"[^>]*\\shidden>`), `${classe} : ${reserve} masqué par défaut`);
     }
     assert.doesNotMatch(bloc, /<a\b/, `${classe} : aucun lien, seulement des destinations`);

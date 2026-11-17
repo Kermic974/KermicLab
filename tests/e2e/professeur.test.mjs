@@ -161,9 +161,25 @@ test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et
   await page.click("#formulaire-pseudo button[type=submit]");
   await page.click("#contrib-demo-prof");
   await page.locator("#contrib-tableau").waitFor({ state: "visible" });
-  // Sur mobile, l'entrée Professeur ouvre le tableau de bord ; Mes classes est dans la sous-navigation.
-  await page.locator("#nav-mobile-suivi").waitFor();
+  // Sur mobile, Contributions et Suivi sont regroupées sous « Plus » : 7 entrées tactiles à 320 px.
+  const plus = page.locator("#nav-mobile-plus");
+  await plus.waitFor();
+  await page.setViewportSize({ width: 320, height: 740 });
+  const barre = await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").evaluateAll((l) => l.map((n) => n.getBoundingClientRect()).map((r) => ({ l: r.width, h: r.height, d: r.right })));
+  assert.equal(barre.length, 7, "six destinations + Plus");
+  assert.ok(barre.every((b) => b.l >= 44 && b.h >= 44 && b.d <= 320), "sept entrées tactiles à 320 px");
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.locator("#nav-mobile-autres").isHidden(), true);
+  await plus.click();
+  assert.equal(await plus.getAttribute("aria-expanded"), "true");
+  assert.deepEqual(await page.locator("#nav-mobile-autres .nav-mobile-bouton:visible").allTextContents(), ["Contrib.", "Prof"]);
+  await page.keyboard.press("Escape");
+  assert.equal(await page.locator("#nav-mobile-autres").isHidden(), true, "Échap referme le panneau");
+  // L'entrée Professeur ouvre le tableau de bord ; Mes classes est dans la sous-navigation.
+  await plus.click();
   await page.click("#nav-mobile-suivi");
+  assert.equal(await page.locator("#nav-mobile-autres").isHidden(), true, "un choix referme le panneau");
+  assert.equal(await plus.getAttribute("aria-current"), "page", "Plus porte la page courante");
   await page.locator("#suivi-contenu").waitFor();
   await page.click('#suivi .prof-onglets [data-nav="classes"]');
   const carte = page.locator(".prof-classe").first();

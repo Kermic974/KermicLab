@@ -37,6 +37,8 @@
   <symbol id="i-cercle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 12 17.5 6.5"/><circle cx="17.5" cy="6.5" r="1.6"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
   <symbol id="i-livre" viewBox="0 0 24 24"><path d="M12 5v15M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1Z"/></symbol>
+  <symbol id="i-famille" viewBox="0 0 24 24"><circle cx="7" cy="6.5" r="2.2"/><circle cx="17" cy="6.5" r="2.2"/><circle cx="12" cy="12.5" r="1.7"/><path d="M3 19.5v-4a4 4 0 0 1 7-2.6M21 19.5v-4a4 4 0 0 0-7-2.6M9 20.5v-1.5a3 3 0 0 1 6 0v1.5"/></symbol>
+  <symbol id="i-points" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/></symbol>
   <symbol id="i-crayon" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></symbol>
 </svg>
 
@@ -59,6 +61,8 @@
       <button type="button" class="nav-bouton" data-nav="labs"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
       <button type="button" class="nav-bouton" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
+      <!-- Lien rapide « Ma famille » : compte local lié ; parent → Espace famille, sinon le bloc Famille de Mon compte. -->
+      <button type="button" class="nav-bouton" data-nav="compte" id="nav-famille" hidden><svg class="ico" aria-hidden="true"><use href="#i-famille"/></svg><span class="nav-texte" data-i18n="navFamille"></span></button>
       <!-- Contributions (ADR 0023) : visible seulement pour un rôle contributeur, prof ou admin. -->
       <button type="button" class="nav-bouton" data-nav="contributions" id="nav-contributions" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span class="nav-texte" data-i18n="navContributions"></span></button>
       <!-- Expérience Professeur (ADR 0030) : visible seulement pour le rôle Professeur. -->
@@ -422,9 +426,14 @@
   <button type="button" class="nav-mobile-bouton" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
+  <!-- Entrées liées au compte ou au rôle (Ma famille, Contributions, Suivi) : dans la barre s'il y en a une seule, sinon
+       regroupées sous « Plus » pour garder 7 entrées tactiles de 44 px à 320 px de large (web/app.js, agencerNavMobile). -->
+  <button type="button" class="nav-mobile-bouton" data-nav="compte" id="nav-mobile-famille" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-famille"/></svg></span><span data-i18n="navFamilleCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="suivi" id="nav-mobile-suivi" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navSuiviCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" id="nav-mobile-plus" aria-expanded="false" aria-controls="nav-mobile-autres" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-points"/></svg></span><span data-i18n="navPlus"></span></button>
 </nav>
+<div id="nav-mobile-autres" class="nav-mobile-autres" data-i18n-aria="navPlusTitre" role="group" hidden></div>
 
 <div id="toasts" role="status" aria-live="polite"></div>
 
@@ -806,6 +815,28 @@
       <h3 id="ef-synthese-titre" data-i18n="efSynthese"></h3>
       <dl id="ef-chiffres" class="chiffres"></dl>
       <ul id="ef-alertes" class="ef-alertes"></ul>
+    </section>
+    <!-- Tableau de bord du parent (ADR 0029 §8) : engagement et performance, comparatif par enfant, activités données. -->
+    <section class="ef-bloc" aria-labelledby="ef-engagement-titre">
+      <div class="dialogue-entete">
+        <h3 id="ef-engagement-titre" data-i18n="suiviEngagement"></h3>
+        <button type="button" class="bouton petit-bouton" id="ef-donner-activite" data-i18n="actDonner"></button>
+      </div>
+      <dl id="ef-engagement" class="chiffres"></dl>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-performance-titre">
+      <h3 id="ef-performance-titre" data-i18n="suiviPerformance"></h3>
+      <dl id="ef-performance" class="chiffres"></dl>
+      <p id="ef-a-revoir" class="doux petit"></p>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-comparatif-titre">
+      <h3 id="ef-comparatif-titre" data-i18n="efComparatif"></h3>
+      <div class="ef-tableau-defilant"><table id="ef-comparatif" class="ef-conso"></table></div>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-activites-titre">
+      <h3 id="ef-activites-titre" data-i18n="efActivites"></h3>
+      <p id="ef-activites-vide" class="doux" data-i18n="efAucuneActivite"></p>
+      <div id="ef-activites" class="ef-enfants"></div>
     </section>
     <section class="ef-bloc" aria-labelledby="ef-enfants-titre">
       <h3 id="ef-enfants-titre" data-i18n="efEnfants"></h3>
