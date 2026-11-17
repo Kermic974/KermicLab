@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.devoir-action-2-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devoir/contenu.json"
+  },
+  "source": "notion.philosophie.devoir",
+  "target": "microskill.philosophie.devoir-action-2"
+}

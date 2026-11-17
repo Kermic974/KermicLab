@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.afrique-australe-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "object": "notion.geographie.afrique-australe",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced"
+}

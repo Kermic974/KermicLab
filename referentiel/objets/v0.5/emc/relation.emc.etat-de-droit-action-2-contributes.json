@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.etat-de-droit-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "microskill.emc.etat-de-droit-action-2",
+  "target": "skill.emc.etat-de-droit"
+}

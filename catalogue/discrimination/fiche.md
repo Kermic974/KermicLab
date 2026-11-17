@@ -15,6 +15,9 @@ questions:
   - c'est quoi une discrimination ?
   - Comment réagir à une discrimination ?
   - what is discrimination?
+prerequis:
+niveaux: cycle-4
+competences: emc-discrimination-action-1, emc-discrimination-action-2
 ---
 
 # La discrimination

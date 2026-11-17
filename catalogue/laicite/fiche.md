@@ -15,6 +15,9 @@ questions:
   - c'est quoi la laïcité ?
   - Que garantit la laïcité à l'école publique ?
   - what is laicism?
+prerequis:
+niveaux: cycle-4
+competences: emc-laicite-action-1, emc-laicite-action-2
 ---
 
 # La laïcité

@@ -99,7 +99,73 @@
     "seconde-guerre-mondiale": "notion.histoire.seconde-guerre-mondiale",
     "temps-modernes": "notion.histoire.temps-modernes",
     "totalitarismes": "notion.histoire.totalitarismes",
-    "ve-republique": "notion.histoire.ve-republique"
+    "ve-republique": "notion.histoire.ve-republique",
+    "afrique-australe": "notion.geographie.afrique-australe",
+    "changement-climatique": "notion.geographie.changement-climatique",
+    "dynamiques-territoriales": "notion.geographie.dynamiques-territoriales",
+    "espaces-productifs": "notion.geographie.espaces-productifs",
+    "espaces-ruraux": "notion.geographie.espaces-ruraux",
+    "france-regions": "notion.geographie.france-regions",
+    "france-territoires": "notion.geographie.france-territoires",
+    "mers-oceans": "notion.geographie.mers-oceans",
+    "metropolisation": "notion.geographie.metropolisation",
+    "migrations": "notion.geographie.migrations",
+    "mobilites": "notion.geographie.mobilites",
+    "mondialisation": "notion.geographie.mondialisation",
+    "ressources": "notion.geographie.ressources",
+    "risques-naturels": "notion.geographie.risques-naturels",
+    "tourisme": "notion.geographie.tourisme",
+    "union-europeenne": "notion.geographie.union-europeenne",
+    "urbanisation": "notion.geographie.urbanisation",
+    "accords": "notion.francais.accords",
+    "analyse-texte": "notion.francais.analyse-texte",
+    "argumentation": "notion.francais.argumentation",
+    "conjugaison-temps": "notion.francais.conjugaison-temps",
+    "figures-de-style": "notion.francais.figures-de-style",
+    "grammaire-phrase-complexe": "notion.francais.grammaire-phrase-complexe",
+    "litterature-didees": "notion.francais.litterature-didees",
+    "poesie": "notion.francais.poesie",
+    "roman": "notion.francais.roman",
+    "theatre": "notion.francais.theatre",
+    "citoyennete": "notion.emc.citoyennete",
+    "democratie": "notion.emc.democratie",
+    "discrimination": "notion.emc.discrimination",
+    "droits-de-lhomme": "notion.emc.droits-de-lhomme",
+    "egalite": "notion.emc.egalite",
+    "engagement-civique": "notion.emc.engagement-civique",
+    "etat-de-droit": "notion.emc.etat-de-droit",
+    "fraternite": "notion.emc.fraternite",
+    "interet-general": "notion.emc.interet-general",
+    "justice": "notion.emc.justice",
+    "laicite": "notion.emc.laicite",
+    "liberte": "notion.emc.liberte",
+    "chomage": "notion.ses.chomage",
+    "croissance-economique": "notion.ses.croissance-economique",
+    "inegalites": "notion.ses.inegalites",
+    "justice-sociale": "notion.ses.justice-sociale",
+    "marche-concurrentiel": "notion.ses.marche-concurrentiel",
+    "mobilite-sociale": "notion.ses.mobilite-sociale",
+    "mondialisation-commerce": "notion.ses.mondialisation-commerce",
+    "monnaie": "notion.ses.monnaie",
+    "opinion-publique": "notion.ses.opinion-publique",
+    "socialisation": "notion.ses.socialisation",
+    "art": "notion.philosophie.art",
+    "bonheur": "notion.philosophie.bonheur",
+    "conscience": "notion.philosophie.conscience",
+    "devoir": "notion.philosophie.devoir",
+    "etat": "notion.philosophie.etat",
+    "inconscient": "notion.philosophie.inconscient",
+    "justice-philosophie": "notion.philosophie.justice-philosophie",
+    "langage": "notion.philosophie.langage",
+    "liberte-philosophie": "notion.philosophie.liberte-philosophie",
+    "nature": "notion.philosophie.nature",
+    "raison": "notion.philosophie.raison",
+    "religion": "notion.philosophie.religion",
+    "science": "notion.philosophie.science",
+    "technique": "notion.philosophie.technique",
+    "temps": "notion.philosophie.temps",
+    "travail": "notion.philosophie.travail",
+    "verite": "notion.philosophie.verite"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -373,7 +439,139 @@
     "microskill.histoire.totalitarismes-action-1": "his-totalitarismes-action-1",
     "microskill.histoire.totalitarismes-action-2": "his-totalitarismes-action-2",
     "microskill.histoire.ve-republique-action-1": "his-ve-republique-action-1",
-    "microskill.histoire.ve-republique-action-2": "his-ve-republique-action-2"
+    "microskill.histoire.ve-republique-action-2": "his-ve-republique-action-2",
+    "microskill.geographie.afrique-australe-action-1": "geographie-afrique-australe-action-1",
+    "microskill.geographie.afrique-australe-action-2": "geographie-afrique-australe-action-2",
+    "microskill.geographie.changement-climatique-action-1": "geographie-changement-climatique-action-1",
+    "microskill.geographie.changement-climatique-action-2": "geographie-changement-climatique-action-2",
+    "microskill.geographie.dynamiques-territoriales-action-1": "geographie-dynamiques-territoriales-action-1",
+    "microskill.geographie.dynamiques-territoriales-action-2": "geographie-dynamiques-territoriales-action-2",
+    "microskill.geographie.espaces-productifs-action-1": "geographie-espaces-productifs-action-1",
+    "microskill.geographie.espaces-productifs-action-2": "geographie-espaces-productifs-action-2",
+    "microskill.geographie.espaces-ruraux-action-1": "geographie-espaces-ruraux-action-1",
+    "microskill.geographie.espaces-ruraux-action-2": "geographie-espaces-ruraux-action-2",
+    "microskill.geographie.france-regions-action-1": "geographie-france-regions-action-1",
+    "microskill.geographie.france-regions-action-2": "geographie-france-regions-action-2",
+    "microskill.geographie.france-territoires-action-1": "geographie-france-territoires-action-1",
+    "microskill.geographie.france-territoires-action-2": "geographie-france-territoires-action-2",
+    "microskill.geographie.mers-oceans-action-1": "geographie-mers-oceans-action-1",
+    "microskill.geographie.mers-oceans-action-2": "geographie-mers-oceans-action-2",
+    "microskill.geographie.metropolisation-action-1": "geographie-metropolisation-action-1",
+    "microskill.geographie.metropolisation-action-2": "geographie-metropolisation-action-2",
+    "microskill.geographie.migrations-action-1": "geographie-migrations-action-1",
+    "microskill.geographie.migrations-action-2": "geographie-migrations-action-2",
+    "microskill.geographie.mobilites-action-1": "geographie-mobilites-action-1",
+    "microskill.geographie.mobilites-action-2": "geographie-mobilites-action-2",
+    "microskill.geographie.mondialisation-action-1": "geographie-mondialisation-action-1",
+    "microskill.geographie.mondialisation-action-2": "geographie-mondialisation-action-2",
+    "microskill.geographie.ressources-action-1": "geographie-ressources-action-1",
+    "microskill.geographie.ressources-action-2": "geographie-ressources-action-2",
+    "microskill.geographie.risques-naturels-action-1": "geographie-risques-naturels-action-1",
+    "microskill.geographie.risques-naturels-action-2": "geographie-risques-naturels-action-2",
+    "microskill.geographie.tourisme-action-1": "geographie-tourisme-action-1",
+    "microskill.geographie.tourisme-action-2": "geographie-tourisme-action-2",
+    "microskill.geographie.union-europeenne-action-1": "geographie-union-europeenne-action-1",
+    "microskill.geographie.union-europeenne-action-2": "geographie-union-europeenne-action-2",
+    "microskill.geographie.urbanisation-action-1": "geographie-urbanisation-action-1",
+    "microskill.geographie.urbanisation-action-2": "geographie-urbanisation-action-2",
+    "microskill.francais.accords-action-1": "francais-accords-action-1",
+    "microskill.francais.accords-action-2": "francais-accords-action-2",
+    "microskill.francais.analyse-texte-action-1": "francais-analyse-texte-action-1",
+    "microskill.francais.analyse-texte-action-2": "francais-analyse-texte-action-2",
+    "microskill.francais.argumentation-action-1": "francais-argumentation-action-1",
+    "microskill.francais.argumentation-action-2": "francais-argumentation-action-2",
+    "microskill.francais.conjugaison-temps-action-1": "francais-conjugaison-temps-action-1",
+    "microskill.francais.conjugaison-temps-action-2": "francais-conjugaison-temps-action-2",
+    "microskill.francais.figures-de-style-action-1": "francais-figures-de-style-action-1",
+    "microskill.francais.figures-de-style-action-2": "francais-figures-de-style-action-2",
+    "microskill.francais.grammaire-phrase-complexe-action-1": "francais-grammaire-phrase-complexe-action-1",
+    "microskill.francais.grammaire-phrase-complexe-action-2": "francais-grammaire-phrase-complexe-action-2",
+    "microskill.francais.litterature-didees-action-1": "francais-litterature-didees-action-1",
+    "microskill.francais.litterature-didees-action-2": "francais-litterature-didees-action-2",
+    "microskill.francais.poesie-action-1": "francais-poesie-action-1",
+    "microskill.francais.poesie-action-2": "francais-poesie-action-2",
+    "microskill.francais.roman-action-1": "francais-roman-action-1",
+    "microskill.francais.roman-action-2": "francais-roman-action-2",
+    "microskill.francais.theatre-action-1": "francais-theatre-action-1",
+    "microskill.francais.theatre-action-2": "francais-theatre-action-2",
+    "microskill.emc.citoyennete-action-1": "emc-citoyennete-action-1",
+    "microskill.emc.citoyennete-action-2": "emc-citoyennete-action-2",
+    "microskill.emc.democratie-action-1": "emc-democratie-action-1",
+    "microskill.emc.democratie-action-2": "emc-democratie-action-2",
+    "microskill.emc.discrimination-action-1": "emc-discrimination-action-1",
+    "microskill.emc.discrimination-action-2": "emc-discrimination-action-2",
+    "microskill.emc.droits-de-lhomme-action-1": "emc-droits-de-lhomme-action-1",
+    "microskill.emc.droits-de-lhomme-action-2": "emc-droits-de-lhomme-action-2",
+    "microskill.emc.egalite-action-1": "emc-egalite-action-1",
+    "microskill.emc.egalite-action-2": "emc-egalite-action-2",
+    "microskill.emc.engagement-civique-action-1": "emc-engagement-civique-action-1",
+    "microskill.emc.engagement-civique-action-2": "emc-engagement-civique-action-2",
+    "microskill.emc.etat-de-droit-action-1": "emc-etat-de-droit-action-1",
+    "microskill.emc.etat-de-droit-action-2": "emc-etat-de-droit-action-2",
+    "microskill.emc.fraternite-action-1": "emc-fraternite-action-1",
+    "microskill.emc.fraternite-action-2": "emc-fraternite-action-2",
+    "microskill.emc.interet-general-action-1": "emc-interet-general-action-1",
+    "microskill.emc.interet-general-action-2": "emc-interet-general-action-2",
+    "microskill.emc.justice-action-1": "emc-justice-action-1",
+    "microskill.emc.justice-action-2": "emc-justice-action-2",
+    "microskill.emc.laicite-action-1": "emc-laicite-action-1",
+    "microskill.emc.laicite-action-2": "emc-laicite-action-2",
+    "microskill.emc.liberte-action-1": "emc-liberte-action-1",
+    "microskill.emc.liberte-action-2": "emc-liberte-action-2",
+    "microskill.ses.chomage-action-1": "ses-chomage-action-1",
+    "microskill.ses.chomage-action-2": "ses-chomage-action-2",
+    "microskill.ses.croissance-economique-action-1": "ses-croissance-economique-action-1",
+    "microskill.ses.croissance-economique-action-2": "ses-croissance-economique-action-2",
+    "microskill.ses.inegalites-action-1": "ses-inegalites-action-1",
+    "microskill.ses.inegalites-action-2": "ses-inegalites-action-2",
+    "microskill.ses.justice-sociale-action-1": "ses-justice-sociale-action-1",
+    "microskill.ses.justice-sociale-action-2": "ses-justice-sociale-action-2",
+    "microskill.ses.marche-concurrentiel-action-1": "ses-marche-concurrentiel-action-1",
+    "microskill.ses.marche-concurrentiel-action-2": "ses-marche-concurrentiel-action-2",
+    "microskill.ses.mobilite-sociale-action-1": "ses-mobilite-sociale-action-1",
+    "microskill.ses.mobilite-sociale-action-2": "ses-mobilite-sociale-action-2",
+    "microskill.ses.mondialisation-commerce-action-1": "ses-mondialisation-commerce-action-1",
+    "microskill.ses.mondialisation-commerce-action-2": "ses-mondialisation-commerce-action-2",
+    "microskill.ses.monnaie-action-1": "ses-monnaie-action-1",
+    "microskill.ses.monnaie-action-2": "ses-monnaie-action-2",
+    "microskill.ses.opinion-publique-action-1": "ses-opinion-publique-action-1",
+    "microskill.ses.opinion-publique-action-2": "ses-opinion-publique-action-2",
+    "microskill.ses.socialisation-action-1": "ses-socialisation-action-1",
+    "microskill.ses.socialisation-action-2": "ses-socialisation-action-2",
+    "microskill.philosophie.art-action-1": "philosophie-art-action-1",
+    "microskill.philosophie.art-action-2": "philosophie-art-action-2",
+    "microskill.philosophie.bonheur-action-1": "philosophie-bonheur-action-1",
+    "microskill.philosophie.bonheur-action-2": "philosophie-bonheur-action-2",
+    "microskill.philosophie.conscience-action-1": "philosophie-conscience-action-1",
+    "microskill.philosophie.conscience-action-2": "philosophie-conscience-action-2",
+    "microskill.philosophie.devoir-action-1": "philosophie-devoir-action-1",
+    "microskill.philosophie.devoir-action-2": "philosophie-devoir-action-2",
+    "microskill.philosophie.etat-action-1": "philosophie-etat-action-1",
+    "microskill.philosophie.etat-action-2": "philosophie-etat-action-2",
+    "microskill.philosophie.inconscient-action-1": "philosophie-inconscient-action-1",
+    "microskill.philosophie.inconscient-action-2": "philosophie-inconscient-action-2",
+    "microskill.philosophie.justice-philosophie-action-1": "philosophie-justice-philosophie-action-1",
+    "microskill.philosophie.justice-philosophie-action-2": "philosophie-justice-philosophie-action-2",
+    "microskill.philosophie.langage-action-1": "philosophie-langage-action-1",
+    "microskill.philosophie.langage-action-2": "philosophie-langage-action-2",
+    "microskill.philosophie.liberte-philosophie-action-1": "philosophie-liberte-philosophie-action-1",
+    "microskill.philosophie.liberte-philosophie-action-2": "philosophie-liberte-philosophie-action-2",
+    "microskill.philosophie.nature-action-1": "philosophie-nature-action-1",
+    "microskill.philosophie.nature-action-2": "philosophie-nature-action-2",
+    "microskill.philosophie.raison-action-1": "philosophie-raison-action-1",
+    "microskill.philosophie.raison-action-2": "philosophie-raison-action-2",
+    "microskill.philosophie.religion-action-1": "philosophie-religion-action-1",
+    "microskill.philosophie.religion-action-2": "philosophie-religion-action-2",
+    "microskill.philosophie.science-action-1": "philosophie-science-action-1",
+    "microskill.philosophie.science-action-2": "philosophie-science-action-2",
+    "microskill.philosophie.technique-action-1": "philosophie-technique-action-1",
+    "microskill.philosophie.technique-action-2": "philosophie-technique-action-2",
+    "microskill.philosophie.temps-action-1": "philosophie-temps-action-1",
+    "microskill.philosophie.temps-action-2": "philosophie-temps-action-2",
+    "microskill.philosophie.travail-action-1": "philosophie-travail-action-1",
+    "microskill.philosophie.travail-action-2": "philosophie-travail-action-2",
+    "microskill.philosophie.verite-action-1": "philosophie-verite-action-1",
+    "microskill.philosophie.verite-action-2": "philosophie-verite-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -1220,6 +1418,468 @@
       "competences": [
         "his-ve-republique-action-1",
         "his-ve-republique-action-2"
+      ]
+    },
+    "afrique-australe": {
+      "prerequis": [],
+      "competences": [
+        "geographie-afrique-australe-action-1",
+        "geographie-afrique-australe-action-2"
+      ]
+    },
+    "changement-climatique": {
+      "prerequis": [],
+      "competences": [
+        "geographie-changement-climatique-action-1",
+        "geographie-changement-climatique-action-2"
+      ]
+    },
+    "dynamiques-territoriales": {
+      "prerequis": [],
+      "competences": [
+        "geographie-dynamiques-territoriales-action-1",
+        "geographie-dynamiques-territoriales-action-2"
+      ]
+    },
+    "espaces-productifs": {
+      "prerequis": [],
+      "competences": [
+        "geographie-espaces-productifs-action-1",
+        "geographie-espaces-productifs-action-2"
+      ]
+    },
+    "espaces-ruraux": {
+      "prerequis": [],
+      "competences": [
+        "geographie-espaces-ruraux-action-1",
+        "geographie-espaces-ruraux-action-2"
+      ]
+    },
+    "france-regions": {
+      "prerequis": [],
+      "competences": [
+        "geographie-france-regions-action-1",
+        "geographie-france-regions-action-2"
+      ]
+    },
+    "france-territoires": {
+      "prerequis": [],
+      "competences": [
+        "geographie-france-territoires-action-1",
+        "geographie-france-territoires-action-2"
+      ]
+    },
+    "mers-oceans": {
+      "prerequis": [],
+      "competences": [
+        "geographie-mers-oceans-action-1",
+        "geographie-mers-oceans-action-2"
+      ]
+    },
+    "metropolisation": {
+      "prerequis": [],
+      "competences": [
+        "geographie-metropolisation-action-1",
+        "geographie-metropolisation-action-2"
+      ]
+    },
+    "migrations": {
+      "prerequis": [],
+      "competences": [
+        "geographie-migrations-action-1",
+        "geographie-migrations-action-2"
+      ]
+    },
+    "mobilites": {
+      "prerequis": [],
+      "competences": [
+        "geographie-mobilites-action-1",
+        "geographie-mobilites-action-2"
+      ]
+    },
+    "mondialisation": {
+      "prerequis": [],
+      "competences": [
+        "geographie-mondialisation-action-1",
+        "geographie-mondialisation-action-2"
+      ]
+    },
+    "ressources": {
+      "prerequis": [],
+      "competences": [
+        "geographie-ressources-action-1",
+        "geographie-ressources-action-2"
+      ]
+    },
+    "risques-naturels": {
+      "prerequis": [],
+      "competences": [
+        "geographie-risques-naturels-action-1",
+        "geographie-risques-naturels-action-2"
+      ]
+    },
+    "tourisme": {
+      "prerequis": [],
+      "competences": [
+        "geographie-tourisme-action-1",
+        "geographie-tourisme-action-2"
+      ]
+    },
+    "union-europeenne": {
+      "prerequis": [],
+      "competences": [
+        "geographie-union-europeenne-action-1",
+        "geographie-union-europeenne-action-2"
+      ]
+    },
+    "urbanisation": {
+      "prerequis": [],
+      "competences": [
+        "geographie-urbanisation-action-1",
+        "geographie-urbanisation-action-2"
+      ]
+    },
+    "accords": {
+      "prerequis": [],
+      "competences": [
+        "francais-accords-action-1",
+        "francais-accords-action-2"
+      ]
+    },
+    "analyse-texte": {
+      "prerequis": [],
+      "competences": [
+        "francais-analyse-texte-action-1",
+        "francais-analyse-texte-action-2"
+      ]
+    },
+    "argumentation": {
+      "prerequis": [],
+      "competences": [
+        "francais-argumentation-action-1",
+        "francais-argumentation-action-2"
+      ]
+    },
+    "conjugaison-temps": {
+      "prerequis": [],
+      "competences": [
+        "francais-conjugaison-temps-action-1",
+        "francais-conjugaison-temps-action-2"
+      ]
+    },
+    "figures-de-style": {
+      "prerequis": [],
+      "competences": [
+        "francais-figures-de-style-action-1",
+        "francais-figures-de-style-action-2"
+      ]
+    },
+    "grammaire-phrase-complexe": {
+      "prerequis": [],
+      "competences": [
+        "francais-grammaire-phrase-complexe-action-1",
+        "francais-grammaire-phrase-complexe-action-2"
+      ]
+    },
+    "litterature-didees": {
+      "prerequis": [],
+      "competences": [
+        "francais-litterature-didees-action-1",
+        "francais-litterature-didees-action-2"
+      ]
+    },
+    "poesie": {
+      "prerequis": [],
+      "competences": [
+        "francais-poesie-action-1",
+        "francais-poesie-action-2"
+      ]
+    },
+    "roman": {
+      "prerequis": [],
+      "competences": [
+        "francais-roman-action-1",
+        "francais-roman-action-2"
+      ]
+    },
+    "theatre": {
+      "prerequis": [],
+      "competences": [
+        "francais-theatre-action-1",
+        "francais-theatre-action-2"
+      ]
+    },
+    "citoyennete": {
+      "prerequis": [],
+      "competences": [
+        "emc-citoyennete-action-1",
+        "emc-citoyennete-action-2"
+      ]
+    },
+    "democratie": {
+      "prerequis": [],
+      "competences": [
+        "emc-democratie-action-1",
+        "emc-democratie-action-2"
+      ]
+    },
+    "discrimination": {
+      "prerequis": [],
+      "competences": [
+        "emc-discrimination-action-1",
+        "emc-discrimination-action-2"
+      ]
+    },
+    "droits-de-lhomme": {
+      "prerequis": [],
+      "competences": [
+        "emc-droits-de-lhomme-action-1",
+        "emc-droits-de-lhomme-action-2"
+      ]
+    },
+    "egalite": {
+      "prerequis": [],
+      "competences": [
+        "emc-egalite-action-1",
+        "emc-egalite-action-2"
+      ]
+    },
+    "engagement-civique": {
+      "prerequis": [],
+      "competences": [
+        "emc-engagement-civique-action-1",
+        "emc-engagement-civique-action-2"
+      ]
+    },
+    "etat-de-droit": {
+      "prerequis": [],
+      "competences": [
+        "emc-etat-de-droit-action-1",
+        "emc-etat-de-droit-action-2"
+      ]
+    },
+    "fraternite": {
+      "prerequis": [],
+      "competences": [
+        "emc-fraternite-action-1",
+        "emc-fraternite-action-2"
+      ]
+    },
+    "interet-general": {
+      "prerequis": [],
+      "competences": [
+        "emc-interet-general-action-1",
+        "emc-interet-general-action-2"
+      ]
+    },
+    "justice": {
+      "prerequis": [],
+      "competences": [
+        "emc-justice-action-1",
+        "emc-justice-action-2"
+      ]
+    },
+    "laicite": {
+      "prerequis": [],
+      "competences": [
+        "emc-laicite-action-1",
+        "emc-laicite-action-2"
+      ]
+    },
+    "liberte": {
+      "prerequis": [],
+      "competences": [
+        "emc-liberte-action-1",
+        "emc-liberte-action-2"
+      ]
+    },
+    "chomage": {
+      "prerequis": [],
+      "competences": [
+        "ses-chomage-action-1",
+        "ses-chomage-action-2"
+      ]
+    },
+    "croissance-economique": {
+      "prerequis": [],
+      "competences": [
+        "ses-croissance-economique-action-1",
+        "ses-croissance-economique-action-2"
+      ]
+    },
+    "inegalites": {
+      "prerequis": [],
+      "competences": [
+        "ses-inegalites-action-1",
+        "ses-inegalites-action-2"
+      ]
+    },
+    "justice-sociale": {
+      "prerequis": [],
+      "competences": [
+        "ses-justice-sociale-action-1",
+        "ses-justice-sociale-action-2"
+      ]
+    },
+    "marche-concurrentiel": {
+      "prerequis": [],
+      "competences": [
+        "ses-marche-concurrentiel-action-1",
+        "ses-marche-concurrentiel-action-2"
+      ]
+    },
+    "mobilite-sociale": {
+      "prerequis": [],
+      "competences": [
+        "ses-mobilite-sociale-action-1",
+        "ses-mobilite-sociale-action-2"
+      ]
+    },
+    "mondialisation-commerce": {
+      "prerequis": [],
+      "competences": [
+        "ses-mondialisation-commerce-action-1",
+        "ses-mondialisation-commerce-action-2"
+      ]
+    },
+    "monnaie": {
+      "prerequis": [],
+      "competences": [
+        "ses-monnaie-action-1",
+        "ses-monnaie-action-2"
+      ]
+    },
+    "opinion-publique": {
+      "prerequis": [],
+      "competences": [
+        "ses-opinion-publique-action-1",
+        "ses-opinion-publique-action-2"
+      ]
+    },
+    "socialisation": {
+      "prerequis": [],
+      "competences": [
+        "ses-socialisation-action-1",
+        "ses-socialisation-action-2"
+      ]
+    },
+    "art": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-art-action-1",
+        "philosophie-art-action-2"
+      ]
+    },
+    "bonheur": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-bonheur-action-1",
+        "philosophie-bonheur-action-2"
+      ]
+    },
+    "conscience": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-conscience-action-1",
+        "philosophie-conscience-action-2"
+      ]
+    },
+    "devoir": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-devoir-action-1",
+        "philosophie-devoir-action-2"
+      ]
+    },
+    "etat": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-etat-action-1",
+        "philosophie-etat-action-2"
+      ]
+    },
+    "inconscient": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-inconscient-action-1",
+        "philosophie-inconscient-action-2"
+      ]
+    },
+    "justice-philosophie": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-justice-philosophie-action-1",
+        "philosophie-justice-philosophie-action-2"
+      ]
+    },
+    "langage": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-langage-action-1",
+        "philosophie-langage-action-2"
+      ]
+    },
+    "liberte-philosophie": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-liberte-philosophie-action-1",
+        "philosophie-liberte-philosophie-action-2"
+      ]
+    },
+    "nature": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-nature-action-1",
+        "philosophie-nature-action-2"
+      ]
+    },
+    "raison": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-raison-action-1",
+        "philosophie-raison-action-2"
+      ]
+    },
+    "religion": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-religion-action-1",
+        "philosophie-religion-action-2"
+      ]
+    },
+    "science": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-science-action-1",
+        "philosophie-science-action-2"
+      ]
+    },
+    "technique": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-technique-action-1",
+        "philosophie-technique-action-2"
+      ]
+    },
+    "temps": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-temps-action-1",
+        "philosophie-temps-action-2"
+      ]
+    },
+    "travail": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-travail-action-1",
+        "philosophie-travail-action-2"
+      ]
+    },
+    "verite": {
+      "prerequis": [],
+      "competences": [
+        "philosophie-verite-action-1",
+        "philosophie-verite-action-2"
       ]
     }
   }

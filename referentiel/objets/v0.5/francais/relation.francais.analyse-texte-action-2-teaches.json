@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyse-texte-action-2-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "microskill.francais.analyse-texte-action-2"
+}

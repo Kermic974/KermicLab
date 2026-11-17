@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.verite-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verite/contenu.json"
+  },
+  "source": "microskill.philosophie.verite-action-2",
+  "target": "skill.philosophie.verite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.technique-action-2-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/technique/contenu.json"
+  },
+  "source": "notion.philosophie.technique",
+  "target": "microskill.philosophie.technique-action-2"
+}

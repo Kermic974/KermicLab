@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.ressources-cycle-4",
+  "type": "curriculum-mapping",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "official",
+    "ref": "https://eduscol.education.gouv.fr/5730/ressources-d-accompagnement-du-programme-d-histoire-geographie-au-cycle-4"
+  },
+  "object": "notion.geographie.ressources",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-4",
+  "role": "introduced"
+}

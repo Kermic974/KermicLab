@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.ressources-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ressources/contenu.json"
+  },
+  "source": "microskill.geographie.ressources-action-2",
+  "target": "skill.geographie.ressources"
+}

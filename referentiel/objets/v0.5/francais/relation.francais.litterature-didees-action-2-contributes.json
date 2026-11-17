@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.litterature-didees-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "microskill.francais.litterature-didees-action-2",
+  "target": "skill.francais.litterature-didees"
+}

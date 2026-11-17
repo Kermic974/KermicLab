@@ -17,6 +17,9 @@ questions:
   - c'est quoi la justice en philosophie ?
   - Quelle différence entre égalité et équité ?
   - Comment fonctionne le voile d'ignorance ?
+prerequis:
+niveaux: terminale
+competences: philosophie-justice-philosophie-action-1, philosophie-justice-philosophie-action-2
 ---
 
 # La justice

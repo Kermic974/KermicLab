@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.technique-action-1-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/technique/contenu.json"
+  },
+  "source": "microskill.philosophie.technique-action-1",
+  "target": "skill.philosophie.technique"
+}

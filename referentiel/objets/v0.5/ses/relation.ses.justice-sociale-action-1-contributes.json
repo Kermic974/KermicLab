@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.justice-sociale-action-1-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "microskill.ses.justice-sociale-action-1",
+  "target": "skill.ses.justice-sociale"
+}

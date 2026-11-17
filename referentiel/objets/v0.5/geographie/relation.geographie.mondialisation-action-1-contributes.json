@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-action-1-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "microskill.geographie.mondialisation-action-1",
+  "target": "skill.geographie.mondialisation"
+}

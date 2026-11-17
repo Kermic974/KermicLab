@@ -19,6 +19,9 @@ questions:
   - Quelle différence entre foi et raison ?
   - Comment Durkheim définit-il la religion ?
   - what is religion?
+prerequis:
+niveaux: terminale
+competences: philosophie-religion-action-1, philosophie-religion-action-2
 ---
 
 # La religion

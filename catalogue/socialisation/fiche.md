@@ -20,6 +20,9 @@ questions:
   - comment la socialisation transmet-elle les normes et les valeurs ?
   - dans la socialisation, quelle différence entre norme et valeur ?
   - comment la socialisation évolue-t-elle au cours de la vie ?
+prerequis:
+niveaux: seconde, premiere
+competences: ses-socialisation-action-1, ses-socialisation-action-2
 ---
 
 # La socialisation

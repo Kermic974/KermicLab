@@ -19,6 +19,9 @@ questions:
   - Comment reconnaître une réplique de théâtre ?
   - À quoi sert un aparté dans une pièce ?
   - Comment un monologue fait-il avancer une scène théâtrale ?
+prerequis:
+niveaux: cycle-4
+competences: francais-theatre-action-1, francais-theatre-action-2
 ---
 
 # Le théâtre

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.tourisme-action-1-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "microskill.geographie.tourisme-action-1"
+}

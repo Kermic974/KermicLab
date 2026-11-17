@@ -15,6 +15,9 @@ questions:
   - C'est quoi la métropolisation ?
   - Comment la métropolisation transforme les villes ?
   - À quoi servent les fonctions métropolitaines ?
+prerequis:
+niveaux: cycle-4
+competences: geographie-metropolisation-action-1, geographie-metropolisation-action-2
 ---
 
 # La métropolisation

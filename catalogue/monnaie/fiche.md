@@ -20,6 +20,9 @@ questions:
   - quelle est la différence entre monnaie scripturale et billets ?
   - comment les banques créent-elles de la monnaie ?
   - qui crée la monnaie ?
+prerequis:
+niveaux: seconde, premiere
+competences: ses-monnaie-action-1, ses-monnaie-action-2
 ---
 
 # La monnaie

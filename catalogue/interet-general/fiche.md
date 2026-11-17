@@ -15,6 +15,9 @@ questions:
   - c'est quoi l'intérêt général ?
   - Comment distinguer l'intérêt général d'un intérêt particulier ?
   - what is the public interest?
+prerequis:
+niveaux: cycle-4
+competences: emc-interet-general-action-1, emc-interet-general-action-2
 ---
 
 # L'intérêt général

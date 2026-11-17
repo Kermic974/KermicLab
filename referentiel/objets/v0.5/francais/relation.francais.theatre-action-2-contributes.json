@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.theatre-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "source": "microskill.francais.theatre-action-2",
+  "target": "skill.francais.theatre"
+}

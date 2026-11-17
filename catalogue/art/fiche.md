@@ -19,6 +19,9 @@ questions:
   - L'art doit-il imiter la réalité ?
   - Pourquoi nos jugements de goût sont-ils différents ?
   - what is art?
+prerequis:
+niveaux: terminale
+competences: philosophie-art-action-1, philosophie-art-action-2
 ---
 
 # L'art

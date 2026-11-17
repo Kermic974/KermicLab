@@ -15,6 +15,9 @@ questions:
   - c'est quoi le devoir en philosophie ?
   - Quelle différence entre obligation morale et contrainte ?
   - Comment comprendre l'impératif catégorique ?
+prerequis:
+niveaux: terminale
+competences: philosophie-devoir-action-1, philosophie-devoir-action-2
 ---
 
 # Le devoir

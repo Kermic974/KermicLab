@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.temps-action-1-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "source": "notion.philosophie.temps",
+  "target": "microskill.philosophie.temps-action-1"
+}

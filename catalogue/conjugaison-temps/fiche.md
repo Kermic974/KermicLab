@@ -19,6 +19,9 @@ questions:
   - Comment conjuguer le futur simple ?
   - Comment choisir un temps verbal pour raconter une habitude passée ?
   - Comment choisir un temps verbal pour un récit ?
+prerequis:
+niveaux: cycle-3, cycle-4
+competences: francais-conjugaison-temps-action-1, francais-conjugaison-temps-action-2
 ---
 
 # Les temps de la conjugaison

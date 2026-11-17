@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mondialisation-commerce-action-1-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "microskill.ses.mondialisation-commerce-action-1",
+  "target": "skill.ses.mondialisation-commerce"
+}

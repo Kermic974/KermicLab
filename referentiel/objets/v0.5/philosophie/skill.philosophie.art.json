@@ -1,0 +1,11 @@
+{
+  "id": "skill.philosophie.art",
+  "type": "skill",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/art/contenu.json"
+  },
+  "label": "Analyser les critères d’un jugement esthétique"
+}

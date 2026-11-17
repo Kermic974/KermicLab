@@ -20,6 +20,9 @@ questions:
   - comment mesure-t-on la croissance économique ?
   - quelle est la différence entre PIB nominal et PIB réel pour mesurer la croissance économique ?
   - quels facteurs favorisent la croissance économique ?
+prerequis:
+niveaux: seconde, premiere
+competences: ses-croissance-economique-action-1, ses-croissance-economique-action-2
 ---
 
 # La croissance économique

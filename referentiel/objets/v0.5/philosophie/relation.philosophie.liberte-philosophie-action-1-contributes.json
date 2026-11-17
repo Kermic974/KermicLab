@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.liberte-philosophie-action-1-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.liberte-philosophie-action-1",
+  "target": "skill.philosophie.liberte-philosophie"
+}

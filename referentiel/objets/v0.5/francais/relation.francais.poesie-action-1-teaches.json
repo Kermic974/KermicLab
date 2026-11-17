@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poesie-action-1-teaches",
+  "type": "teaches",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "notion.francais.poesie",
+  "target": "microskill.francais.poesie-action-1"
+}

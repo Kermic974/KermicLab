@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.marche-concurrentiel-action-2-contributes",
+  "type": "contributesTo",
+  "status": "review",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/marche-concurrentiel/contenu.json"
+  },
+  "source": "microskill.ses.marche-concurrentiel-action-2",
+  "target": "skill.ses.marche-concurrentiel"
+}
