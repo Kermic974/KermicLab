@@ -3337,6 +3337,8 @@ function rafraichirProgressionCahier(cahier) {
   zone.querySelector("span").textContent = t("cahierProgression", { n: reussis, m: total });
   zone.querySelector("progress").max = total;
   zone.querySelector("progress").value = reussis;
+  actualiserChapitresCahier();
+  actualiserBilanCahier(total, reussis);
 }
 
 function blocCahier(b, cahierId, iSection, iBloc) {
@@ -3367,6 +3369,7 @@ function blocCahier(b, cahierId, iSection, iBloc) {
       if (caseReussi.checked) cible.reussi = true; else delete cible.reussi;
       enregistrerCahiers(cahiers);
       bloc.classList.toggle("reussi", caseReussi.checked);
+      $("#lecture-suivant").classList.toggle("invite", caseReussi.checked);
       rafraichirProgressionCahier(c);
       rendreCahiers();
     });
@@ -3394,9 +3397,63 @@ function zoneNotes(cahierId, indexSection, valeur) {
   return zone;
 }
 
+/* Lecture pas à pas : le cahier entier est dans la page, une seule étape est affichée à la fois. */
+
+const lecture = { id: null, etapes: [], chapitres: [], index: 0, bilan: null };
+const casesReussi = (zone) => [...zone.querySelectorAll(".reussi-cahier input")];
+
+/** Pastilles des chapitres : chapitre courant, chapitres dont tous les exercices sont réussis. */
+function actualiserChapitresCahier() {
+  const courant = lecture.etapes[lecture.index]?.chapitre;
+  lecture.chapitres.forEach((c, i) => {
+    const cases = c.section ? casesReussi(c.section) : [];
+    const fait = cases.length > 0 && cases.every((x) => x.checked);
+    c.bouton.classList.toggle("fait", fait);
+    c.bouton.setAttribute("aria-label", fait ? t("cahierChapitreTermine", { titre: c.titre }) : c.titre);
+    if (i === courant) c.bouton.setAttribute("aria-current", "step"); else c.bouton.removeAttribute("aria-current");
+  });
+}
+
+/** Dernière étape : score, encouragement et raccourci vers le premier exercice à reprendre. */
+function actualiserBilanCahier(total, reussis) {
+  if (!lecture.bilan) return;
+  const { score, message, reprendre } = lecture.bilan;
+  score.hidden = total === 0;
+  score.textContent = `${reussis}/${total}`;
+  message.textContent = !total ? t("cahierBilanFin") : reussis === total ? t("cahierBilanBravo") : t("cahierBilanEncore", { n: total - reussis });
+  reprendre.hidden = !total || reussis === total;
+}
+
+const premiereEtapeARefaire = () => lecture.etapes.findIndex((e) => casesReussi(e.el).some((x) => !x.checked));
+
+function afficherEtapeCahier(index) {
+  const n = lecture.etapes.length;
+  if (!n) return;
+  lecture.index = Math.max(0, Math.min(index, n - 1));
+  const courante = lecture.etapes[lecture.index];
+  lecture.etapes.forEach((e, i) => { e.el.hidden = i !== lecture.index; });
+  lecture.chapitres.forEach((c) => { if (c.section) c.section.hidden = c.section !== courante.el.parentElement; });
+  $("#lecture-precedent").disabled = lecture.index === 0;
+  const suivant = $("#lecture-suivant");
+  const cle = lecture.index === n - 1 ? "cahierEtapeTerminer" : lecture.index === 0 ? "cahierEtapeCommencer" : "cahierEtapeSuivante";
+  suivant.dataset.i18n = cle;
+  suivant.textContent = t(cle);
+  suivant.classList.remove("invite");
+  $("#lecture-position").textContent = t("cahierEtapePosition", { n: lecture.index + 1, m: n });
+  $("#lecture-avancee").max = Math.max(1, n - 1);
+  $("#lecture-avancee").value = lecture.index;
+  actualiserChapitresCahier();
+  $("#lecture-corps").scrollTop = 0;
+  const pastille = lecture.chapitres[courante.chapitre]?.bouton;
+  const rail = $("#lecture-chapitres");
+  if (pastille && !rail.hidden) rail.scrollLeft = pastille.offsetLeft - (rail.clientWidth - pastille.offsetWidth) / 2;
+}
+
 function ouvrirLectureCahier(id, message = "") {
   const cahier = cahiersEnregistres().find((c) => c.id === id);
   if (!cahier) return;
+  const dialogue = $("#lecture-cahier");
+  const dejaOuvert = dialogue.open && lecture.id === id;
   $("#lecture-titre").textContent = cahier.titre;
   const date = new Intl.DateTimeFormat(etat.langue, { dateStyle: "medium" }).format(new Date(cahier.creeLe));
   const source = cahier.source === "ia" ? t("cahierSourceIa", { modele: cahier.modele || "IA" }) : t("cahierSourceCatalogue");
@@ -3404,25 +3461,103 @@ function ouvrirLectureCahier(id, message = "") {
   $("#lecture-meta").textContent = [t(`cahier_${cahier.type}`), univers, date, source].filter(Boolean).join(" · ");
   const corps = $("#lecture-corps");
   corps.replaceChildren();
-  if (message) corps.append(element("p", { classe: "note-locale", texte: message, attributs: { role: "status" } }));
-  if (cahier.introduction) corps.append(element("p", { classe: "intro-cahier", texte: cahier.introduction }));
-  if (cahier.plan) corps.append(planningVacances(cahier));
+  const etapes = [];
+  const chapitres = [];
+  const chapitre = (titre, section = null) => { chapitres.push({ titre, section }); };
+  const etape = (el) => { el.classList.add("etape-cahier"); etapes.push({ el, chapitre: chapitres.length - 1 }); return el; };
+  const { total } = bilanExercices(cahier);
+  const pageLibre = !cahier.sections.length || cahier.type === "brouillon";
+  const avecBilan = cahier.sections.length > 0 && (Boolean(cahier.conclusion) || total > 0 || pageLibre);
+
+  // Accueil : message éventuel, introduction, puis le planning (vacances) ou le sommaire.
+  chapitre(t("cahierChapitreAccueil"));
+  const accueil = etape(element("div", { classe: "accueil-cahier" }));
+  if (message) accueil.append(element("p", { classe: "note-locale", texte: message, attributs: { role: "status" } }));
+  if (cahier.introduction) accueil.append(element("p", { classe: "intro-cahier", texte: cahier.introduction }));
+  if (cahier.plan) accueil.append(planningVacances(cahier));
+  else if (cahier.sections.length > 1) {
+    accueil.append(element("p", { classe: "bloc-genre petit", cle: "cahierSommaire" }));
+    const sommaire = element("ol", { classe: "sommaire-cahier" });
+    cahier.sections.forEach((s, i) => {
+      const li = element("li");
+      const aller = element("button", { classe: "secondaire", attributs: { type: "button" } });
+      const exercices = s.blocs.filter((b) => AVEC_REPONSE.has(b.genre)).length;
+      aller.append(element("span", { classe: "sommaire-titre", texte: s.titre }));
+      if (exercices) aller.append(element("span", { classe: "doux petit", texte: t("cahierSommaireExercices", { n: exercices }) }));
+      aller.addEventListener("click", () => afficherEtapeCahier(etapes.findIndex((e) => e.chapitre === i + 1)));
+      li.append(aller);
+      sommaire.append(li);
+    });
+    accueil.append(sommaire);
+  }
+  if (pageLibre && !avecBilan) accueil.append(zoneNotes(cahier.id, -1, cahier.notes));
+  corps.append(accueil);
+
+  // Un chapitre par notion : chaque bloc est une étape, les notes ferment le chapitre.
   cahier.sections.forEach((s, i) => {
     const section = element("section", { classe: "section-cahier" });
     const tete = element("div", { classe: "tete-section-cahier" });
     tete.append(element("h3", { texte: s.titre }));
     if (notionParId(s.notion)) {
       const ouvrir = element("button", { classe: "secondaire petit-bouton", cle: "cahierOuvrirNotion", attributs: { type: "button" } });
-      ouvrir.addEventListener("click", () => { $("#lecture-cahier").close(); ouvrirNotion(notionParId(s.notion)); });
+      ouvrir.addEventListener("click", () => { dialogue.close(); ouvrirNotion(notionParId(s.notion)); });
       tete.append(ouvrir);
     }
-    section.append(tete, ...s.blocs.map((b, j) => blocCahier(b, cahier.id, i, j)), zoneNotes(cahier.id, i, s.notes));
+    chapitre(s.titre, section);
+    section.append(tete, ...s.blocs.map((b, j) => etape(blocCahier(b, cahier.id, i, j))), etape(zoneNotes(cahier.id, i, s.notes)));
     corps.append(section);
   });
-  if (cahier.conclusion) corps.append(element("p", { classe: "conclusion-cahier", texte: cahier.conclusion }));
-  if (!cahier.sections.length || cahier.type === "brouillon") corps.append(zoneNotes(cahier.id, -1, cahier.notes));
+
+  lecture.bilan = null;
+  if (avecBilan) {
+    chapitre(t("cahierChapitreBilan"));
+    const bilan = etape(element("div", { classe: "bilan-cahier" }));
+    const score = element("p", { classe: "bilan-score", attributs: { "aria-hidden": "true" } });
+    const messageBilan = element("p", { classe: "bilan-message" });
+    const reprendre = element("button", { classe: "secondaire", cle: "cahierBilanReprendre", attributs: { type: "button" } });
+    reprendre.addEventListener("click", () => { const i = premiereEtapeARefaire(); if (i >= 0) afficherEtapeCahier(i); });
+    bilan.append(score, messageBilan, reprendre);
+    if (cahier.conclusion) bilan.append(element("p", { classe: "conclusion-cahier", texte: cahier.conclusion }));
+    if (pageLibre) bilan.append(zoneNotes(cahier.id, -1, cahier.notes));
+    corps.append(bilan);
+    lecture.bilan = { score, message: messageBilan, reprendre };
+  }
+
+  // Pastilles des chapitres : accès direct à la première étape de chacun.
+  const rail = $("#lecture-chapitres");
+  rail.replaceChildren(...chapitres.map((c, i) => {
+    c.bouton = element("button", { classe: "pastille-chapitre", attributs: { type: "button" } });
+    if (c.section) c.bouton.append(element("span", { classe: "pastille-numero", texte: String(i), attributs: { "aria-hidden": "true" } }));
+    c.bouton.append(element("span", { classe: "pastille-titre", texte: c.titre }));
+    c.bouton.addEventListener("click", () => afficherEtapeCahier(etapes.findIndex((e) => e.chapitre === i)));
+    return c.bouton;
+  }));
+  rail.hidden = chapitres.length < 2;
+  $("#lecture-pied").hidden = etapes.length < 2;
+
+  const { reussis } = bilanExercices(cahier);
+  const reprise = dejaOuvert ? lecture.index : 0;
+  Object.assign(lecture, { id, etapes, chapitres });
   rafraichirProgressionCahier(cahier);
-  if (!$("#lecture-cahier").open) $("#lecture-cahier").showModal();
+  // Un cahier commencé rouvre sur le premier exercice qui reste à réussir.
+  const aRefaire = !dejaOuvert && reussis > 0 ? premiereEtapeARefaire() : -1;
+  if (!dialogue.open) dialogue.showModal();
+  afficherEtapeCahier(aRefaire >= 0 ? aRefaire : reprise);
+}
+
+function brancherLectureCahier() {
+  const dialogue = $("#lecture-cahier");
+  brancherDialogue(dialogue, $("#fermer-lecture"));
+  $("#lecture-precedent").addEventListener("click", () => afficherEtapeCahier(lecture.index - 1));
+  $("#lecture-suivant").addEventListener("click", () => {
+    if (lecture.index >= lecture.etapes.length - 1) dialogue.close(); else afficherEtapeCahier(lecture.index + 1);
+  });
+  // Flèches gauche et droite : étape précédente ou suivante, sauf pendant la saisie.
+  dialogue.addEventListener("keydown", (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.target.closest("textarea, input, select, [contenteditable]")) return;
+    if (e.key === "ArrowRight" && lecture.index < lecture.etapes.length - 1) afficherEtapeCahier(lecture.index + 1);
+    else if (e.key === "ArrowLeft" && lecture.index > 0) afficherEtapeCahier(lecture.index - 1);
+  });
 }
 
 /* ---------- Cahier de vacances : réglages, diagnostic court, planning jour par jour (issue #188) ---------- */
@@ -3633,7 +3768,7 @@ function brancherCahiers() {
   $("#cahier-notions").addEventListener("change", limiterNotionsCahier);
   $("#formulaire-cahier").addEventListener("submit", construireCahier);
   brancherDialogue($("#constructeur-cahier"), $("#fermer-constructeur"));
-  brancherDialogue($("#lecture-cahier"), $("#fermer-lecture"));
+  brancherLectureCahier();
   $("#liste-cahiers").addEventListener("click", (e) => {
     const ouvrir = e.target.closest("[data-ouvrir-cahier]");
     if (ouvrir) { ouvrirLectureCahier(ouvrir.dataset.ouvrirCahier); return; }
