@@ -8,8 +8,11 @@ import { ajouterBoiteIdees } from "./lib/idees.mjs";
 import { articlesPublies, chargerArticles, construireBlog, jourDePublication } from "./lib/blog.mjs";
 import { genererSeoStatique } from "./lib/seo.mjs";
 
+import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
+
 const racine = new URL("..", import.meta.url).pathname;
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
+for (const fiche of await synchroniserProjectionV0(racine, { ecrire: true })) console.log("Projection S4 mise à jour : " + fiche);
 const { sources, ...catalogue } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 
 // Les pages sources restent lisibles hors ligne : on y réécrit les hashes CSP à jour.
