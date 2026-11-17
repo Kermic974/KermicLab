@@ -111,8 +111,8 @@ test("le lien de participation reste visible (barre latérale et Profil), hors d
   assert.match(pied, /<button[^>]*class="profil-carte"[^>]*data-action="profil"/);
   // Contributions reste réservée aux rôles autorisés (ADR 0023 §6 bis).
   const destinations = {
-    nav: ["accueil", "education", "jeux", "progression", "contributions"],
-    "nav-mobile": ["accueil", "education", "jeux", "progression", "profil", "contributions"],
+    nav: ["accueil", "education", "labs", "jeux", "progression", "contributions"],
+    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "contributions"],
   };
   for (const [classe, attendues] of Object.entries(destinations)) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];

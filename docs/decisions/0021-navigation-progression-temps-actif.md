@@ -70,3 +70,14 @@ Les comptes de rôle contributeur, prof ou admin voient une sixième entrée « 
   démonstration ne l'obtient jamais. Le lien n'ouvre aucun droit : le back-office reste fermé sans sa clé
   (ADR 0026). Tant que `connexionActive` vaut false, il n'apparaît chez personne.
 
+## Complément (2026-11-17) : Labs redevient une destination
+
+À la demande du propriétaire, les Labs ont leur propre entrée de navigation (`#labs`), entre Éducation et Jeux, sur
+ordinateur et sur mobile : la navigation compte désormais **six destinations** (sept avec Contributions pour les
+rôles concernés). L'écran Labs porte la carte du cercle trigonométrique (ses trois modes et le mini-lab) et un lien
+« Consulter les Notions ». Dans Éducation, la carte du cercle ne lance plus rien : son bouton « Voir dans les Labs »
+renvoie vers la section Labs. L'adresse `#labs` n'est plus un alias d'Éducation ; l'action « labs » proposée par
+l'assistant ouvre la section Labs. Les libellés de la barre mobile sont resserrés sous 380 px pour tenir à 320 px.
+
+English summary: Labs is a navigation destination again (six destinations); the Education card for the unit circle
+now only links to the Labs section, which hosts the Lab's three modes and the mini-lab.

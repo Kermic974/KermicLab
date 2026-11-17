@@ -56,14 +56,14 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
   await page.click("#ouvrir-chat");
   await page.fill("#question", "Conversation privée à ne pas transmettre");
   await page.click("#fermer-chat");
-  // Les 5 destinations, le défi (sous Éducation) et « Signaler un problème » (dans Profil).
+  // Les destinations, le défi (sous Éducation) et « Signaler un problème » (dans Profil).
   const ouvrirVue = async (vue) => {
     if (vue === "defi") { await page.locator('.barre-laterale [data-nav="education"]').click(); await page.click("#lancer-defi"); return; }
     if (vue === "aide") { await page.locator('.barre-laterale [data-nav="apropos"]').click(); await page.click('#apropos [data-nav="aide"]'); return; }
     const entree = vue === "profil" ? ".barre-pied .profil-carte[data-action=profil]" : `.barre-laterale [data-nav="${vue}"]`;
     await page.locator(entree).first().click();
   };
-  for (const vue of ["education", "jeux", "defi", "progression", "profil", "aide"]) {
+  for (const vue of ["education", "labs", "jeux", "defi", "progression", "profil", "aide"]) {
     await ouvrirVue(vue);
     const ouvert = page.locator("dialog[open]").last();
     // Le formulaire de signalement (comme celui des idées) n'embarque pas de boîte à idées.
@@ -71,7 +71,7 @@ test("boîte à idées : dialogues, navigation, langues et aucune donnée de l'�
     if (vue === "aide") assert.equal(await ouvert.locator(".boite-idees").count(), 0);
     const corps = await brouillon(lien);
     assert.doesNotMatch(corps, /PseudoSecret|Conversation privée/);
-    if (vue === "education" || vue === "jeux") assert.match(corps, new RegExp(`navigation: ${vue}`));
+    if (vue === "education" || vue === "labs" || vue === "jeux") assert.match(corps, new RegExp(`navigation: ${vue}`));
     if (vue === "defi") assert.match(corps, /navigation: education/, "le défi est rattaché à Éducation");
     if (vue === "jeux") {
       await page.locator('.barre-laterale [data-nav="education"]').click();
