@@ -28,3 +28,9 @@ Le build lit les Relations sortantes et les placements du Curriculum désigné. 
 ## Création des lots v0.5
 
 Voir [le guide de génération](generation-v0.5.md) et [l’inventaire public](inventaire-v0.5.json).
+
+## Contrôle des artefacts S5
+
+`npm run check:artefacts` vérifie le catalogue CSV, l’index `sources-normatives.json`, les fichiers cités et les fixtures nommées. `npm run check:artefacts -- --json` produit le rapport déterministe. La CI conserve `validation-artefacts.json` comme artefact. Le code de sortie vaut 1 pour un rapport en erreur et 2 pour une invocation invalide.
+
+Les tests du référentiel vérifient que chaque preuve citée exerce le diagnostic et la sévérité déclarés. Une référence vers un scénario JavaScript utilise son nom explicite après `#`. Une référence JSON utilise le champ `name` du cas. Les références multiples sont séparées par ` | `. L’index des sources associe chaque section S4 à sa page lisible et à la décision d’adoption.
