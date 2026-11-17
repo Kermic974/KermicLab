@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GgUN/bzEvNbIEqzlbYqZt2sz4IDeSjoCrgUQoui5Vto='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-mymxNLZ9TTaPZq8eHYq8reP57+RDOSQhIDWbXx1yTls='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex, nofollow">
 <title>Le système solaire – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
@@ -167,9 +168,9 @@
 <body>
 <header class="haut">
   <h1>Le système solaire</h1>
-  <p>Cours · CM1 · CM2 · 6e</p>
+  <p>Lab en prévisualisation · CM1 · CM2 · 6e</p>
 </header>
-<div role="tablist" id="onglets" aria-label="Parties du cours">
+<div role="tablist" id="onglets" aria-label="Parties du lab">
   <button type="button" role="tab" id="onglet-explication" aria-controls="panneau-explication" aria-selected="false" tabindex="-1">Explication</button>
   <button type="button" role="tab" id="onglet-application" aria-controls="panneau-application" aria-selected="true" tabindex="0">Ciel</button>
   <button type="button" role="tab" id="onglet-mise-en-situation" aria-controls="panneau-mise-en-situation" aria-selected="false" tabindex="-1">Mission</button>
@@ -269,20 +270,8 @@
     <div id="quiz"></div>
   </section>
 </main>
-<button type="button" id="connexion" hidden>Se connecter</button>
 <script>
 (() => {
-  const CONFIG = { connexionActive: false };
-  if (CONFIG.connexionActive) document.getElementById("connexion").hidden = false;
-
-  const stockage = {
-    local: {
-      lire(cle) { try { return localStorage.getItem(cle); } catch (e) { return null; } },
-      ecrire(cle, valeur) { try { localStorage.setItem(cle, valeur); } catch (e) { /* appareil sans stockage */ } }
-    },
-    distant: { lire() { return null; }, ecrire() {} }
-  };
-
   const onglets = [...document.querySelectorAll("[role=tab]")];
   function montrer(id) {
     for (const b of onglets) {
@@ -492,15 +481,12 @@
   });
 
   const quizRacine = document.getElementById("quiz");
-  const CLE = "systeme-solaire-best-v1";
   let qIndex = 0, score = 0, choisi = null;
   function quiz() {
     quizRacine.replaceChildren();
     if (qIndex >= QUIZ.length) {
-      const meilleur = Math.max(score, Number(stockage.local.lire(CLE) || 0));
-      stockage.local.ecrire(CLE, String(meilleur));
       const p = document.createElement("p");
-      p.textContent = score + " / " + QUIZ.length + ". Meilleur score sur cet appareil : " + meilleur + ".";
+      p.textContent = score + " / " + QUIZ.length + ".";
       const encore = document.createElement("button");
       encore.type = "button";
       encore.className = "bouton plein";

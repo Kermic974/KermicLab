@@ -1,7 +1,7 @@
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
-import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { appendFile, cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelecture } from "./lib/catalogue.mjs";
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
@@ -90,6 +90,16 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 
 // Génère les métadonnées des pages publiées, le fichier robots.txt et le sitemap XML.
 await genererSeoStatique(`${racine}dist`);
+
+// Le lab en revue est disponible uniquement pour les builds demandant cette prévisualisation.
+if (process.argv.includes("--preview-labs")) {
+  const dossier = `${racine}dist/preview/labs/systeme-solaire`;
+  const source = await readFile(`${racine}Sample/lab/systeme-solaire.html`, "utf8");
+  await mkdir(dossier, { recursive: true });
+  await writeFile(`${dossier}/index.html`, appliquerCsp(source));
+  await appendFile(`${racine}dist/_headers`, `\n/preview/labs/*\n  ! Content-Security-Policy\n  X-Robots-Tag: noindex, nofollow\n`);
+  console.log("Prévisualisation : /preview/labs/systeme-solaire/");
+}
 
 console.log(`Catalogue : ${catalogue.index.maquettes.map((m) => `${m.id}@${m.version}`).join(", ")}`);
 const referentiel = indicateurReferentiel(catalogue.index.maquettes);
