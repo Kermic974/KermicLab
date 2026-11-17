@@ -5,7 +5,7 @@
 Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur.md). Dépend du chantier
 [Authentification](authentification.md) (OAuth, sessions, domaine API).
 
-## État au 2026-11-07
+## État au 2026-11-17
 
 | Élément | État |
 |---|---|
@@ -15,6 +15,8 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 | Interface `#contributions` : formulaire contributeur, « Mes contributions », tableau de bord prof | Fait, masqué tant que `connexionActive = false` |
 | Démonstration `?demo=contributions` (rôles contributeur et prof simulés) | Fait, testé (`tests/e2e/contributions.test.mjs`) |
 | Édition ciblée dans la bulle d'une notion (textes par onglet, compteurs, aperçu) et menu « Contributions » avec synthèse par matière (ADR 0023 §6 bis) | Fait, testé (ordinateur et mobile) |
+| Volet d'édition ciblée à la demande (fermé par défaut, bouton, croix, Échap, pastille des propositions en cours, suivi de la notion) | Fait, testé (2026-11-17) |
+| Suivi des contributions : synthèse, alerte « à corriger », pastilles et filtre par notion, frise Envoyée → Relue → Validée → Publiée, « Voir dans la notion » | Fait, testé (2026-11-17) |
 | Contenus des notions pour le formulaire (`dist/contenus/`) | Générés par `npm run build` |
 | **Temporaire** : « Tester les rôles » dans le Profil (rôle simulé dans le navigateur, sans serveur) | Actif (`testRolesTemporaire`) ; à supprimer à l'ouverture des comptes, [issue #160](https://github.com/Kermic974/KermicLab/issues/160) |
 

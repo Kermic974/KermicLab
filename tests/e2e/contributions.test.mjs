@@ -207,16 +207,27 @@ test("menu Contributions et édition ciblée : le prof propose depuis la notion 
   assert.match(await maths.textContent(), /Maths/);
   assert.match(await maths.textContent(), /Le théorème de Pythagore \(2 à relire\)/);
 
-  // Notion ouverte depuis Éducation : le panneau d'édition s'affiche à côté de la page.
+  // Notion ouverte depuis Éducation : le volet d'édition est fermé par défaut et s'ouvre à la demande.
   await page.click(".barre-laterale [data-nav=education]");
   await page.locator("#catalogue .accordeon-bouton", { hasText: "Collège" }).click();
   await page.locator("#edu-college .accordeon-bouton", { hasText: "Maths" }).click();
   await page.locator("#catalogue .notion", { hasText: "Pythagore" }).click();
   await page.locator("#bulle-lab[open][data-notion=pythagore]").waitFor();
   const panneau = page.locator("#bulle-edition");
+  const bascule = page.locator("#bulle-editer");
+  await bascule.waitFor({ state: "visible" });
+  await page.locator("#bulle-editer-compteur", { hasText: "2" }).waitFor({ state: "attached" });
+  assert.equal(await panneau.isHidden(), true, "volet fermé par défaut");
+  assert.equal(await bascule.getAttribute("aria-expanded"), "false");
+  await bascule.click();
   await panneau.waitFor({ state: "visible" });
-  assert.equal(await page.locator("#bulle-editer").getAttribute("aria-pressed"), "true");
-  const onglets = await page.locator(".edition-section").evaluateAll((s) => s.map((x) => x.dataset.onglet));
+  assert.equal(await bascule.getAttribute("aria-expanded"), "true");
+  assert.equal(await page.evaluate(() => document.activeElement?.id), "edition-fermer", "le focus passe dans le volet");
+  // Le volet résume les propositions déjà faites sur la notion.
+  assert.match(await page.locator("#edition-suivi").textContent(), /2 proposition\(s\), 2 en cours/);
+  // Extraits lisibles : sans marques Markdown.
+  assert.doesNotMatch(await page.locator('.edition-champ[data-chemin="niveaux.1.paragraphes.0"] p.doux').textContent(), /\*\*/);
+  const onglets = await page.locator(".edition-section[data-onglet]").evaluateAll((s) => s.map((x) => x.dataset.onglet));
   assert.deepEqual(onglets, ["explication", "memo", "application", "mise-en-situation"]);
   const intro = page.locator('.edition-champ[data-chemin="intro"]');
   assert.match(await intro.locator(".edition-pastille").textContent(), /1 en cours/, "proposition d'exemple comptée sur ce champ");
@@ -235,9 +246,14 @@ test("menu Contributions et édition ciblée : le prof propose depuis la notion 
   await page.locator("#edition-formulaire").waitFor({ state: "hidden" });
   await paragraphe.locator(".edition-pastille", { hasText: "2 en cours" }).waitFor(); // une proposition d'exemple + la nouvelle
 
-  // Fermer le panneau puis le rouvrir ; aller aux contributions de la notion.
-  await page.click("#bulle-editer");
+  // Fermer le volet (croix, puis Échap qui ne ferme pas la bulle) et le rouvrir ; aller aux contributions de la notion.
+  await page.click("#edition-fermer");
   assert.equal(await panneau.isHidden(), true);
+  assert.equal(await page.evaluate(() => document.activeElement?.id), "bulle-editer", "le focus revient au bouton");
+  await page.click("#bulle-editer");
+  await page.keyboard.press("Escape");
+  assert.equal(await panneau.isHidden(), true, "Échap ferme le volet");
+  assert.equal(await page.locator("#bulle-lab[open]").count(), 1, "la bulle reste ouverte");
   await page.click("#bulle-editer");
   await page.click("#edition-vers-contributions");
   await page.locator("#bulle-lab").waitFor({ state: "hidden" });
@@ -276,10 +292,58 @@ test("édition ciblée sur mobile : panneau sous la page, menu Contributions dan
   await page.locator("#catalogue .accordeon-bouton", { hasText: "Collège" }).click();
   await page.locator("#edu-college .accordeon-bouton", { hasText: "Maths" }).click();
   await page.locator("#catalogue .notion", { hasText: "Les fractions" }).click();
+  await page.locator("#bulle-editer").waitFor({ state: "visible" });
+  await page.click("#bulle-editer");
   await page.locator("#bulle-edition").waitFor({ state: "visible" });
   const largeur = await page.evaluate(() => document.querySelector("#bulle-lab").scrollWidth);
   assert.ok(largeur <= 390, `pas de débordement horizontal (${largeur})`);
   await capturer(page, "contributions-edition-mobile");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("suivi des contributions : synthèse, correction attendue, frise et retour au texte dans la notion", async () => {
+  const { page, contexte, erreurs, appels } = await demarrer({ url: "/?demo=contributions#contributions" });
+  await page.click("#contrib-demo-contributeur");
+  await page.locator("#contrib-espace").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#contrib-suivi-outils").isHidden(), true, "pas de synthèse sans proposition");
+  await proposer(page);
+  assert.match(await page.locator("#contrib-suivi-synthese").textContent(), /En cours\s*1 \/ 20/);
+  await page.locator("#contrib-miennes li").first().waitFor();
+
+  // Le prof demande une révision.
+  await page.click("#contrib-deconnexion");
+  await page.click("#contrib-demo-prof");
+  const carte = page.locator("#contrib-relecture li", { hasText: "intuition !" });
+  await carte.locator("textarea").fill("Ajoute un exemple chiffré.");
+  await carte.locator("button", { hasText: "Demander une révision" }).click();
+  await page.locator(".contrib-compteur.statut-a_reviser strong", { hasText: "1" }).waitFor();
+
+  // Le contributeur voit l'action attendue, la frise et peut filtrer.
+  await page.click("#contrib-deconnexion");
+  await page.click("#contrib-demo-contributeur");
+  const alerte = page.locator("#contrib-suivi-alerte");
+  await alerte.waitFor({ state: "visible" });
+  assert.match(await alerte.textContent(), /1 proposition\(s\) attend/);
+  assert.match(await page.locator("#contrib-suivi-synthese").textContent(), /À corriger\s*1/);
+  const item = page.locator("#contrib-miennes li").first();
+  const etats = await item.locator(".contrib-frise li").evaluateAll((l) => l.map((e) => e.dataset.etat));
+  assert.deepEqual(etats, ["fait", "action", "a_venir", "a_venir"]);
+  assert.match(await item.locator(".contrib-frise").textContent(), /Révision demandée/);
+  await page.click("#contrib-suivi-alerte-voir");
+  assert.equal(await page.locator('#contrib-suivi-compteurs [data-statut="a_reviser"]').getAttribute("aria-pressed"), "true");
+  await page.locator('#contrib-suivi-compteurs [data-statut="validee"]').waitFor({ state: "detached" });
+  await page.locator('#contrib-suivi-compteurs [data-statut="tous"]').click();
+  await capturer(page, "contributions-suivi", { pleinePage: true });
+
+  // « Voir dans la notion » : bulle ouverte, volet ouvert sur le texte visé.
+  await item.locator("button", { hasText: "Voir dans la notion" }).click();
+  await page.locator("#bulle-lab[open][data-notion=pythagore]").waitFor();
+  await page.locator("#bulle-edition").waitFor({ state: "visible" });
+  await page.locator('.edition-champ.vise[data-chemin="intro"]').waitFor();
+  assert.match(await page.locator("#edition-suivi").textContent(), /À réviser/);
+  assert.match(await page.locator("#edition-suivi").textContent(), /Ajoute un exemple chiffré/);
+  assert.deepEqual(appels, []);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
