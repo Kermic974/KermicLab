@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.50.0 · 2026-11-17</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/29dea987ac034c29c9e8ce14c171b0420d47bfa6" target="_blank" rel="noopener noreferrer" data-lien-actif>29dea98</a>.
+  <strong>Squelette v1.51.0 · 2026-11-17</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/a1e19242e28f8191f7994b5e070e024aca421299" target="_blank" rel="noopener noreferrer" data-lien-actif>a1e1924</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -71,11 +71,14 @@
 <li><a href="#compte">Squelette</a> ↔ <a href="https://kermiclab.online/#compte" target="_blank" rel="noopener noreferrer" data-lien-actif>Mon compte (facultatif) : compte sur l&#39;appareil et synchronisation pseudonymisée (ADR 0024)</a></li>
 <li><a href="#famille">Squelette</a> ↔ <a href="https://kermiclab.online/#famille" target="_blank" rel="noopener noreferrer" data-lien-actif>Espace famille : écran dédié, masqué tant que connexionActive vaut false</a></li>
 <li><a href="#espace-famille">Squelette</a> ↔ <a href="https://kermiclab.online/#espace-famille" target="_blank" rel="noopener noreferrer" data-lien-actif>Espace famille des comptes locaux (ADR 0029) : tableau de bord du parent, cahiers assignés, consommations</a></li>
+<li><a href="#classes">Squelette</a> ↔ <a href="https://kermiclab.online/#classes" target="_blank" rel="noopener noreferrer" data-lien-actif>Mes classes (rôle Professeur, ADR 0030) : profil professeur, classes, liens d&#39;invitation</a></li>
+<li><a href="#eleves">Squelette</a> ↔ <a href="https://kermiclab.online/#eleves" target="_blank" rel="noopener noreferrer" data-lien-actif>Mes élèves (rôle Professeur, ADR 0030) : suivi des élèves affiliés</a></li>
+<li><a href="#rejoindre">Squelette</a> ↔ <a href="https://kermiclab.online/" target="_blank" rel="noopener noreferrer" data-lien-actif>Rejoindre un professeur : lien ou code d&#39;invitation ouvert par un élève connecté</a></li>
 <li><a href="#contributions">Squelette</a> ↔ <a href="https://kermiclab.online/#contributions" target="_blank" rel="noopener noreferrer" data-lien-actif>Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions</a></li>
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, dix écrans (ADR 0026)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>0cd4f8c5fed5cbe347e147f28b81a09a43430413f6923a6204f712e823aa1228</code><br>Empreinte du squelette hors cartouche : <code>78ca1b7b90f8f71d9b4ecc90fe3f59fcabeb2d7e19b2282a99ccba863a369e88</code></p>
+    <p>Empreinte des sources : <code>3e23064b096b33cb48a07f9eb98f1d00612c307d3cf2c93c22e558a0c69598bc</code><br>Empreinte du squelette hors cartouche : <code>64f64f366c37754535ba6556b0f67298412b770512704de6dc4b9ac69d1f0518</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
