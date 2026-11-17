@@ -1,4 +1,4 @@
-import { readFile, stat } from "node:fs/promises";
+import { open } from "node:fs/promises";
 import { resolve, relative, isAbsolute, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { lireCsv } from "./lib/csv.mjs";
@@ -10,8 +10,13 @@ export async function verifierArtefacts(racine = process.cwd()) {
     const chemin = resolve(racine, nom);
     const relatif = relative(resolve(racine), chemin);
     if (isAbsolute(relatif) || relatif === ".." || relatif.startsWith(".." + sep)) throw new Error("Chemin hors dépôt");
-    if (!(await stat(chemin)).isFile()) throw new Error("Fichier attendu");
-    return readFile(chemin, "utf8");
+    const fichier = await open(chemin, "r");
+    try {
+      if (!(await fichier.stat()).isFile()) throw new Error("Fichier attendu");
+      return await fichier.readFile("utf8");
+    } finally {
+      await fichier.close();
+    }
   };
   let lignes, sources;
   try {
