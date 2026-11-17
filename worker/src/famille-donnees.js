@@ -12,7 +12,7 @@ export async function tablesFamille(env) {
 
 /**
  * Instructions (à exécuter dans un même lot) qui effacent tout ce qui rattache un compte à une famille, qu'il en soit
- * le parent ou l'enfant : liens, invitation, bilan, cahiers assignés ou reçus, consommations. Les comptes des enfants
+ * le parent ou l'enfant : liens, invitation, bilan, cahiers et activités assignés ou reçus, résultats, consommations. Les comptes des enfants
  * d'un parent supprimé ne sont pas effacés : ils redeviennent des comptes solo.
  */
 export function instructionsEffacementFamille(env, compteId) {
@@ -21,6 +21,9 @@ export function instructionsEffacementFamille(env, compteId) {
     db.prepare("DELETE FROM familles_bilans WHERE enfant_id = ?").bind(compteId),
     db.prepare("DELETE FROM familles_bilans WHERE enfant_id IN (SELECT enfant_id FROM familles_liens WHERE parent_id = ?)").bind(compteId),
     db.prepare("DELETE FROM familles_cahiers WHERE enfant_id = ? OR parent_id = ?").bind(compteId, compteId),
+    // Activités (ADR 0029 §8) : résultats de l'enfant, activités qui lui étaient données ou que le parent a données.
+    db.prepare("DELETE FROM familles_resultats WHERE enfant_id = ? OR activite_id IN (SELECT id FROM familles_activites WHERE parent_id = ? OR enfant_id = ?)").bind(compteId, compteId, compteId),
+    db.prepare("DELETE FROM familles_activites WHERE parent_id = ? OR enfant_id = ?").bind(compteId, compteId),
     db.prepare("DELETE FROM familles_invitations WHERE enfant_id = ?").bind(compteId),
     db.prepare("DELETE FROM familles_consommations WHERE compte_id = ?").bind(compteId),
     db.prepare("DELETE FROM familles_liens WHERE enfant_id = ? OR parent_id = ?").bind(compteId, compteId)

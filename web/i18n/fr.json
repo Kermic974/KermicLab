@@ -1371,5 +1371,20 @@
   "quizNonEnvoye": "(Le score n'a pas pu être envoyé.)",
   "quizSansQuestion": "Aucune question publiée pour ces notions pour l'instant.",
   "actSupprimer": "Supprimer",
-  "suiviRaison_jamais": "aucune activité partagée pour l'instant"
+  "suiviRaison_jamais": "aucune activité partagée pour l'instant",
+  "efComparatif": "Comparatif des enfants (7 derniers jours)",
+  "efActivites": "Activités données",
+  "efAucuneActivite": "Aucune activité pour l'instant : « Donner une activité » propose défis, évaluations, objectifs et cahiers, pour un enfant ou toute la famille.",
+  "efActifs": "enfants actifs",
+  "efTempsMoyen": "temps moyen par enfant",
+  "efJoursActifs": "jours actifs",
+  "efObjectifs": "objectifs atteints",
+  "actCibleFamille": "Toute la famille",
+  "actCibleEnfant": "{prenom}",
+  "actTaFamille": "ta famille",
+  "actEleveTitreFamille": "Travail donné par ta famille",
+  "actEleveTitreTous": "Travail donné par ta famille et tes professeurs",
+  "efErreur_aucun-enfant": "Ajoute d'abord un enfant à ta famille.",
+  "efErreur_quota-activites": "Tu as déjà 60 activités en cours : archive-en avant d'en donner d'autres.",
+  "efDetailParEnfant": "Détail par enfant"
 }

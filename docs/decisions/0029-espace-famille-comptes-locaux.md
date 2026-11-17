@@ -6,6 +6,7 @@
   demande, pour les comptes locaux : un rôle parent qui gère les comptes de ses enfants ; un compte solo qui invite son
   parent sans perdre sa progression ; un tableau de bord Famille (synthèse et détail par enfant) ; la génération et
   l'affectation de cahiers, précédés d'un questionnaire de calibrage ; le suivi des consommations de la famille.
+- Complément du 2026-11-17 (§8) : activités du parent (défis, évaluations de 5 à 40 questions, objectifs, cahiers), pour un enfant ou toute la famille, et tableau de bord d'engagement et de performance.
 - Choix du propriétaire (2026-11-17) : **bilan famille en clair** (le parent lit la progression, le serveur peut
   l'agréger), **l'enfant garde ses identifiants** (le parent peut les réinitialiser), livraison complète en une PR.
 
@@ -70,6 +71,38 @@ manquent. Migration `0003_famille.sql` (schéma de référence `worker/schema-fa
 registre des traitements. Effacement en cascade à la suppression d'un compte (par son titulaire ou le back-office),
 export du droit d'accès complété. L'interface garde la session serveur du compte lié pour l'onglet (`sessionStorage`).
 
+### 8. Activités et tableau de bord du parent (complément du 2026-11-17)
+
+À la demande du propriétaire, le parent donne des **activités** à un enfant ou à **toute la famille** (enfants présents
+et futurs) et suit l'engagement et la performance de ses enfants. Le moteur est celui du professeur (ADR 0030 §9,
+`web/professeur.js`) : la famille y joue le rôle d'une classe, l'enfant celui d'un élève.
+
+| Activité | Contenu | Résultat remonté |
+|---|---|---|
+| **Défi** | 5 QCM publiés du catalogue, tirés de façon reproductible (graine = identifiant de l'activité) ; rejouable | meilleur score, essais, durée |
+| **Évaluation** | de **5 à 40 questions** (borne vérifiée par le Worker), une seule tentative | score, durée |
+| **Objectif** | minutes actives ou XP sur 7 jours, notions choisies maîtrisées, activités terminées ; mesuré sans rien demander à l'enfant | calculé à partir du bilan (§4) et des résultats |
+| **Cahier** | exercices, fiches ou vacances, catalogue ou IA ; pour toute la famille, **une seule génération** et une copie par enfant (même `groupe`) ; calibrage de l'enfant (§5) | avancement (§5) |
+
+- Le parent n'est pas limité à des matières ; 1 à 10 notions par activité, titre court facultatif, échéance facultative
+  (6 mois au plus), 60 activités en cours au plus. Aucun texte de l'enfant ne remonte : seuls des compteurs
+  (`PUT /api/famille/resultats`, bornés par `validerResultat`).
+- **Tableau de bord** (Espace famille) : engagement sur 7 jours (enfants actifs, temps moyen, activités terminées,
+  retards), performance (scores moyens aux évaluations et aux défis, part des notions maîtrisées, notions à revoir),
+  **comparatif par enfant** (jours actifs, temps, XP, série, complétion, scores, maîtrise, objectifs atteints), détail de
+  chaque activité, et enfants à suivre (retards, score moyen sous 50 %) ajoutés aux points d'attention.
+- Côté enfant, les activités de la famille rejoignent le bloc « Travail donné » de l'accueil (avec celles des
+  professeurs) : même quiz, même correction sur place.
+- **Données** : migration `0006_famille_activites.sql` (`familles_activites`, `familles_resultats`, colonne `groupe` de
+  `familles_cahiers`), décrites dans le registre. Détacher un enfant efface ses résultats et les activités qui lui étaient
+  données ; supprimer un compte parent efface ses activités.
+
+| Méthode et route | Qui | Effet |
+|---|---|---|
+| `POST activites`, `POST activites/:id/(archiver\|supprimer)` ; activités et résultats dans `GET tableau` | parent | activités de la famille |
+| `POST cahiers` avec `famille: true` | parent | cahier pour toute la famille |
+| `GET mes-activites`, `PUT resultats` | enfant | ses activités et celles de toute la famille ; envoi des compteurs |
+
 ## Conséquences
 
 - Le bilan est une donnée d'enfant **lisible par le serveur** : c'est un choix assumé (le parent doit la lire), limité aux
@@ -78,7 +111,7 @@ export du droit d'accès complété. L'interface garde la session serveur du com
 
 ## Pistes (non livrées)
 
-Plafond quotidien d'IA par enfant fixé par le parent ; plages horaires ; objectifs hebdomadaires et récompenses ;
+Plafond quotidien d'IA par enfant fixé par le parent ; plages horaires ; récompenses liées aux objectifs ; défis et évaluations rédigés par l'IA ; historique des scores dans le temps ;
 résumé hebdomadaire ; recommandations de notions à assigner d'après les notions à revoir ; second parent (co-gestion) ;
 export PDF du bilan ; demande de détachement par un adolescent de 15 à 17 ans.
 
