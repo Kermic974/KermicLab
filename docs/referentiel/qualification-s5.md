@@ -8,6 +8,8 @@ Environnement local Node 22.23.5, dépendances verrouillées et catalogue public
 
 Les conversions de fichiers utilisent `fileURLToPath`. La lecture de l’historique utilise `git -c core.longpaths=true` pour chaque commande. Les tests de régression exécutent les mêmes contrôles sur Ubuntu en CI.
 
+Les fichiers texte versionnés utilisent LF. Le fichier `.gitattributes` rend cette convention explicite pour les checkouts Windows et Linux, afin que les empreintes de sources UX soient reproductibles indépendamment de la configuration globale Git.
+
 Le rapport canonique complet sur Windows est PASS, avec zéro erreur et zéro avertissement. Deux builds successifs produisent exactement les mêmes 732 fichiers du catalogue, du site et du Worker, avec un diff vide sur les pages du catalogue et `index.html`. Le serveur navigateur normalise ses chemins avant de vérifier leur appartenance au dossier servi. Les 11 tests ciblés des jeux concernés passent.
 
 La qualification finale doit relever les tests navigateur Windows complets, la CI Ubuntu et le contrôle du catalogue public après déploiement. Les révisions et résultats seront consignés ici avant clôture.
