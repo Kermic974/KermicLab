@@ -20,6 +20,9 @@ questions:
   - comment calcule-t-on le taux de chômage ?
   - quelle est la différence entre chômage et inactivité ?
   - pourquoi y a-t-il du chômage ?
+prerequis:
+niveaux: seconde, premiere
+competences: ses-chomage-action-1, ses-chomage-action-2
 ---
 
 # Le chômage

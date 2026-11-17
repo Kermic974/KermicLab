@@ -138,7 +138,17 @@
     "interet-general": "notion.emc.interet-general",
     "justice": "notion.emc.justice",
     "laicite": "notion.emc.laicite",
-    "liberte": "notion.emc.liberte"
+    "liberte": "notion.emc.liberte",
+    "chomage": "notion.ses.chomage",
+    "croissance-economique": "notion.ses.croissance-economique",
+    "inegalites": "notion.ses.inegalites",
+    "justice-sociale": "notion.ses.justice-sociale",
+    "marche-concurrentiel": "notion.ses.marche-concurrentiel",
+    "mobilite-sociale": "notion.ses.mobilite-sociale",
+    "mondialisation-commerce": "notion.ses.mondialisation-commerce",
+    "monnaie": "notion.ses.monnaie",
+    "opinion-publique": "notion.ses.opinion-publique",
+    "socialisation": "notion.ses.socialisation"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -490,7 +500,27 @@
     "microskill.emc.laicite-action-1": "emc-laicite-action-1",
     "microskill.emc.laicite-action-2": "emc-laicite-action-2",
     "microskill.emc.liberte-action-1": "emc-liberte-action-1",
-    "microskill.emc.liberte-action-2": "emc-liberte-action-2"
+    "microskill.emc.liberte-action-2": "emc-liberte-action-2",
+    "microskill.ses.chomage-action-1": "ses-chomage-action-1",
+    "microskill.ses.chomage-action-2": "ses-chomage-action-2",
+    "microskill.ses.croissance-economique-action-1": "ses-croissance-economique-action-1",
+    "microskill.ses.croissance-economique-action-2": "ses-croissance-economique-action-2",
+    "microskill.ses.inegalites-action-1": "ses-inegalites-action-1",
+    "microskill.ses.inegalites-action-2": "ses-inegalites-action-2",
+    "microskill.ses.justice-sociale-action-1": "ses-justice-sociale-action-1",
+    "microskill.ses.justice-sociale-action-2": "ses-justice-sociale-action-2",
+    "microskill.ses.marche-concurrentiel-action-1": "ses-marche-concurrentiel-action-1",
+    "microskill.ses.marche-concurrentiel-action-2": "ses-marche-concurrentiel-action-2",
+    "microskill.ses.mobilite-sociale-action-1": "ses-mobilite-sociale-action-1",
+    "microskill.ses.mobilite-sociale-action-2": "ses-mobilite-sociale-action-2",
+    "microskill.ses.mondialisation-commerce-action-1": "ses-mondialisation-commerce-action-1",
+    "microskill.ses.mondialisation-commerce-action-2": "ses-mondialisation-commerce-action-2",
+    "microskill.ses.monnaie-action-1": "ses-monnaie-action-1",
+    "microskill.ses.monnaie-action-2": "ses-monnaie-action-2",
+    "microskill.ses.opinion-publique-action-1": "ses-opinion-publique-action-1",
+    "microskill.ses.opinion-publique-action-2": "ses-opinion-publique-action-2",
+    "microskill.ses.socialisation-action-1": "ses-socialisation-action-1",
+    "microskill.ses.socialisation-action-2": "ses-socialisation-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -1610,6 +1640,76 @@
       "competences": [
         "emc-liberte-action-1",
         "emc-liberte-action-2"
+      ]
+    },
+    "chomage": {
+      "prerequis": [],
+      "competences": [
+        "ses-chomage-action-1",
+        "ses-chomage-action-2"
+      ]
+    },
+    "croissance-economique": {
+      "prerequis": [],
+      "competences": [
+        "ses-croissance-economique-action-1",
+        "ses-croissance-economique-action-2"
+      ]
+    },
+    "inegalites": {
+      "prerequis": [],
+      "competences": [
+        "ses-inegalites-action-1",
+        "ses-inegalites-action-2"
+      ]
+    },
+    "justice-sociale": {
+      "prerequis": [],
+      "competences": [
+        "ses-justice-sociale-action-1",
+        "ses-justice-sociale-action-2"
+      ]
+    },
+    "marche-concurrentiel": {
+      "prerequis": [],
+      "competences": [
+        "ses-marche-concurrentiel-action-1",
+        "ses-marche-concurrentiel-action-2"
+      ]
+    },
+    "mobilite-sociale": {
+      "prerequis": [],
+      "competences": [
+        "ses-mobilite-sociale-action-1",
+        "ses-mobilite-sociale-action-2"
+      ]
+    },
+    "mondialisation-commerce": {
+      "prerequis": [],
+      "competences": [
+        "ses-mondialisation-commerce-action-1",
+        "ses-mondialisation-commerce-action-2"
+      ]
+    },
+    "monnaie": {
+      "prerequis": [],
+      "competences": [
+        "ses-monnaie-action-1",
+        "ses-monnaie-action-2"
+      ]
+    },
+    "opinion-publique": {
+      "prerequis": [],
+      "competences": [
+        "ses-opinion-publique-action-1",
+        "ses-opinion-publique-action-2"
+      ]
+    },
+    "socialisation": {
+      "prerequis": [],
+      "competences": [
+        "ses-socialisation-action-1",
+        "ses-socialisation-action-2"
       ]
     }
   }

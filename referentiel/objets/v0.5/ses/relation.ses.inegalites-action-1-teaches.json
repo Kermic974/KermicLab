@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.inegalites-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "notion.ses.inegalites",
+  "target": "microskill.ses.inegalites-action-1"
+}

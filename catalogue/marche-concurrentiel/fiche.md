@@ -20,6 +20,9 @@ questions:
   - comment l'offre et la demande déterminent-elles le prix sur un marché concurrentiel ?
   - pourquoi existe-t-il de la concurrence entre entreprises sur un marché ?
   - comment se forme le prix d'équilibre sur un marché concurrentiel ?
+prerequis:
+niveaux: seconde, premiere
+competences: ses-marche-concurrentiel-action-1, ses-marche-concurrentiel-action-2
 ---
 
 # Le marché concurrentiel

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.inegalites-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "microskill.ses.inegalites-action-2",
+  "target": "skill.ses.inegalites"
+}
