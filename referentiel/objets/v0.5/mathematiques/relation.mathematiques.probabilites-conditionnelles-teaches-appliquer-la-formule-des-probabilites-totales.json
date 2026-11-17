@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.probabilites-conditionnelles-teaches-appliquer-la-formule-des-probabilites-totales",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/probabilites-conditionnelles/fiche.md"
+  },
+  "source": "notion.mathematiques.probabilites-conditionnelles",
+  "target": "microskill.mathematiques.appliquer-la-formule-des-probabilites-totales"
+}

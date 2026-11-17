@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.statistiques-contributes-determiner-une-mediane",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/statistiques/fiche.md"
+  },
+  "source": "microskill.mathematiques.determiner-une-mediane",
+  "target": "skill.mathematiques.statistiques"
+}

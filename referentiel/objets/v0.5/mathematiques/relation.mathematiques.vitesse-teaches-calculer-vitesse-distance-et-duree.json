@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vitesse-teaches-calculer-vitesse-distance-et-duree",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vitesse/fiche.md"
+  },
+  "source": "notion.mathematiques.vitesse",
+  "target": "microskill.mathematiques.calculer-vitesse-distance-et-duree"
+}

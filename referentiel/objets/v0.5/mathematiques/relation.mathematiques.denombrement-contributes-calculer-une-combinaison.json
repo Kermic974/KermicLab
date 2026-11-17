@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-contributes-calculer-une-combinaison",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-combinaison",
+  "target": "skill.mathematiques.denombrement"
+}

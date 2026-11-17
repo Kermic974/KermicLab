@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.logarithme-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "object": "notion.mathematiques.logarithme",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

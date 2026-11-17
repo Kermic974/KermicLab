@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.droites-et-systemes-teaches-reconnaitre-des-droites-paralleles",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/droites-et-systemes/fiche.md"
+  },
+  "source": "notion.mathematiques.droites-et-systemes",
+  "target": "microskill.mathematiques.reconnaitre-des-droites-paralleles"
+}

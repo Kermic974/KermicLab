@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.integrales-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/integrales/fiche.md"
+  },
+  "object": "notion.mathematiques.integrales",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

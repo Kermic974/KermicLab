@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fractions-contributes-comparer-des-fractions",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fractions/fiche.md"
+  },
+  "source": "microskill.mathematiques.comparer-des-fractions",
+  "target": "skill.mathematiques.fractions"
+}

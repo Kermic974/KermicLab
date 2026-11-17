@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.statistiques-contributes-interpreter-quartiles-et-ecart-type",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/statistiques/fiche.md"
+  },
+  "source": "microskill.mathematiques.interpreter-quartiles-et-ecart-type",
+  "target": "skill.mathematiques.statistiques"
+}

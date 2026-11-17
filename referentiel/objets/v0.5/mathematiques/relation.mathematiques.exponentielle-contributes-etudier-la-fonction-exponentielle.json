@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.exponentielle-contributes-etudier-la-fonction-exponentielle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/exponentielle/fiche.md"
+  },
+  "source": "microskill.mathematiques.etudier-la-fonction-exponentielle",
+  "target": "skill.mathematiques.exponentielle"
+}

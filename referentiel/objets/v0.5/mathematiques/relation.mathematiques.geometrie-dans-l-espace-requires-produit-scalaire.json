@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.geometrie-dans-l-espace-requires-produit-scalaire",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/geometrie-dans-l-espace/fiche.md"
+  },
+  "source": "notion.mathematiques.geometrie-dans-l-espace",
+  "target": "notion.mathematiques.produit-scalaire"
+}

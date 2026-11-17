@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-contributes-comparer-des-decimaux",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/nombres-decimaux/fiche.md"
+  },
+  "source": "microskill.mathematiques.comparer-des-decimaux",
+  "target": "skill.mathematiques.nombres-decimaux"
+}

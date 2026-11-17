@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-litteral-contributes-utiliser-les-identites-remarquables",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/calcul-litteral/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-les-identites-remarquables",
+  "target": "skill.mathematiques.calcul-litteral"
+}

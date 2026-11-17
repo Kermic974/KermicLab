@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.integrales-contributes-calculer-une-valeur-moyenne",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/integrales/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-valeur-moyenne",
+  "target": "skill.mathematiques.integrales"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.arithmetique-contributes-reconnaitre-un-nombre-premier",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/arithmetique/fiche.md"
+  },
+  "source": "microskill.mathematiques.reconnaitre-un-nombre-premier",
+  "target": "skill.mathematiques.arithmetique"
+}

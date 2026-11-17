@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vecteurs-contributes-calculer-les-coordonnees-d-un-vecteur",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vecteurs/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-les-coordonnees-d-un-vecteur",
+  "target": "skill.mathematiques.vecteurs"
+}

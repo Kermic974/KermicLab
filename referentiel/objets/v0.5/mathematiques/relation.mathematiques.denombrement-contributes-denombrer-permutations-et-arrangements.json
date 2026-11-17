@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-contributes-denombrer-permutations-et-arrangements",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "microskill.mathematiques.denombrer-permutations-et-arrangements",
+  "target": "skill.mathematiques.denombrement"
+}

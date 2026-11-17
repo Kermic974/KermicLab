@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-contributes-arrondir-un-decimal",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/nombres-decimaux/fiche.md"
+  },
+  "source": "microskill.mathematiques.arrondir-un-decimal",
+  "target": "skill.mathematiques.nombres-decimaux"
+}

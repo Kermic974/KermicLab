@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vitesse-requires-proportionnalite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vitesse/fiche.md"
+  },
+  "source": "notion.mathematiques.vitesse",
+  "target": "notion.mathematiques.proportionnalite"
+}

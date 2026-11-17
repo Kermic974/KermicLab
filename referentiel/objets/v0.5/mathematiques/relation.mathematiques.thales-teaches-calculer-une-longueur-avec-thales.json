@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.thales-teaches-calculer-une-longueur-avec-thales",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/thales/fiche.md"
+  },
+  "source": "notion.mathematiques.thales",
+  "target": "microskill.mathematiques.calculer-une-longueur-avec-thales"
+}

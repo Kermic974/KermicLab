@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.equations-teaches-resoudre-une-equation-produit-nul",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/equations/fiche.md"
+  },
+  "source": "notion.mathematiques.equations",
+  "target": "microskill.mathematiques.resoudre-une-equation-produit-nul"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-contributes-appliquer-les-proprietes-algebriques-du-logarithme",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "microskill.mathematiques.appliquer-les-proprietes-algebriques-du-logarithme",
+  "target": "skill.mathematiques.logarithme"
+}

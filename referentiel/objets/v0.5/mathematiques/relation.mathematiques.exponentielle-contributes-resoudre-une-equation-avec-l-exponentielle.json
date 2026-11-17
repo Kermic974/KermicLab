@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.exponentielle-contributes-resoudre-une-equation-avec-l-exponentielle",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/exponentielle/fiche.md"
+  },
+  "source": "microskill.mathematiques.resoudre-une-equation-avec-l-exponentielle",
+  "target": "skill.mathematiques.exponentielle"
+}

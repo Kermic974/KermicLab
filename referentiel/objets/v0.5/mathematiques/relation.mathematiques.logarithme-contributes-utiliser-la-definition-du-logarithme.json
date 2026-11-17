@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-contributes-utiliser-la-definition-du-logarithme",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "microskill.mathematiques.utiliser-la-definition-du-logarithme",
+  "target": "skill.mathematiques.logarithme"
+}

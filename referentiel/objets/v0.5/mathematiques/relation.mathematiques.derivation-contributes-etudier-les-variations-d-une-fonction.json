@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.derivation-contributes-etudier-les-variations-d-une-fonction",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/derivation/fiche.md"
+  },
+  "source": "microskill.mathematiques.etudier-les-variations-d-une-fonction",
+  "target": "skill.mathematiques.derivation"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.recurrence-contributes-demontrer-une-formule-de-somme",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/recurrence/fiche.md"
+  },
+  "source": "microskill.mathematiques.demontrer-une-formule-de-somme",
+  "target": "skill.mathematiques.recurrence"
+}

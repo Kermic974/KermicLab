@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-contributes-denombrer-les-parties-d-un-ensemble",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "microskill.mathematiques.denombrer-les-parties-d-un-ensemble",
+  "target": "skill.mathematiques.denombrement"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vitesse-contributes-calculer-vitesse-distance-et-duree",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vitesse/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-vitesse-distance-et-duree",
+  "target": "skill.mathematiques.vitesse"
+}

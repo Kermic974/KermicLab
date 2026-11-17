@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.integrales-contributes-determiner-une-primitive",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/integrales/fiche.md"
+  },
+  "source": "microskill.mathematiques.determiner-une-primitive",
+  "target": "skill.mathematiques.integrales"
+}

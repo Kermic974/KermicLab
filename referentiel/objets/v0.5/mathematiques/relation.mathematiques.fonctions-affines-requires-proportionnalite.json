@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fonctions-affines-requires-proportionnalite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/fonctions-affines/fiche.md"
+  },
+  "source": "notion.mathematiques.fonctions-affines",
+  "target": "notion.mathematiques.proportionnalite"
+}

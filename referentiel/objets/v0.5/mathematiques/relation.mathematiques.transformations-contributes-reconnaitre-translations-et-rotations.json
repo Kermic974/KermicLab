@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.transformations-contributes-reconnaitre-translations-et-rotations",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/transformations/fiche.md"
+  },
+  "source": "microskill.mathematiques.reconnaitre-translations-et-rotations",
+  "target": "skill.mathematiques.transformations"
+}

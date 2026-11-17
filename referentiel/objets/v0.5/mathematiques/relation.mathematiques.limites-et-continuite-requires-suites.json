@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.limites-et-continuite-requires-suites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/limites-et-continuite/fiche.md"
+  },
+  "source": "notion.mathematiques.limites-et-continuite",
+  "target": "notion.mathematiques.suites"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.logarithme-contributes-resoudre-une-equation-avec-le-logarithme",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/logarithme/fiche.md"
+  },
+  "source": "microskill.mathematiques.resoudre-une-equation-avec-le-logarithme",
+  "target": "skill.mathematiques.logarithme"
+}

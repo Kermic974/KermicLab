@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.denombrement-teaches-denombrer-permutations-et-arrangements",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "source": "notion.mathematiques.denombrement",
+  "target": "microskill.mathematiques.denombrer-permutations-et-arrangements"
+}

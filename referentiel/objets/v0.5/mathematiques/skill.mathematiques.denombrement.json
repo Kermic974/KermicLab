@@ -1,0 +1,11 @@
+{
+  "id": "skill.mathematiques.denombrement",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/denombrement/fiche.md"
+  },
+  "label": "Compter les issues d’une situation combinatoire"
+}

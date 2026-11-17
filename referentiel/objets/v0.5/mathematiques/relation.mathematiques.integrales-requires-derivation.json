@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.integrales-requires-derivation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/integrales/fiche.md"
+  },
+  "source": "notion.mathematiques.integrales",
+  "target": "notion.mathematiques.derivation"
+}

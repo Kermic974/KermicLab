@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.exponentielle-teaches-resoudre-une-equation-avec-l-exponentielle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/exponentielle/fiche.md"
+  },
+  "source": "notion.mathematiques.exponentielle",
+  "target": "microskill.mathematiques.resoudre-une-equation-avec-l-exponentielle"
+}

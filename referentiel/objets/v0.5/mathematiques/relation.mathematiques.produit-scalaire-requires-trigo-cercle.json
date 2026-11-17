@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-requires-trigo-cercle",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/produit-scalaire/fiche.md"
+  },
+  "source": "notion.mathematiques.produit-scalaire",
+  "target": "notion.mathematiques.trigo-cercle"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.vitesse-teaches-convertir-une-vitesse",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/vitesse/fiche.md"
+  },
+  "source": "notion.mathematiques.vitesse",
+  "target": "microskill.mathematiques.convertir-une-vitesse"
+}

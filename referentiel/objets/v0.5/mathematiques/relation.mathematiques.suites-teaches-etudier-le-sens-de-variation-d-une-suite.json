@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.suites-teaches-etudier-le-sens-de-variation-d-une-suite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/suites/fiche.md"
+  },
+  "source": "notion.mathematiques.suites",
+  "target": "microskill.mathematiques.etudier-le-sens-de-variation-d-une-suite"
+}

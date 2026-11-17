@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.recurrence-contributes-rediger-une-demonstration-par-recurrence",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/recurrence/fiche.md"
+  },
+  "source": "microskill.mathematiques.rediger-une-demonstration-par-recurrence",
+  "target": "skill.mathematiques.recurrence"
+}

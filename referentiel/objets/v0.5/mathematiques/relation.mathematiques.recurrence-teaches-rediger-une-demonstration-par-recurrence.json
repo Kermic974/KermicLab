@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.recurrence-teaches-rediger-une-demonstration-par-recurrence",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/recurrence/fiche.md"
+  },
+  "source": "notion.mathematiques.recurrence",
+  "target": "microskill.mathematiques.rediger-une-demonstration-par-recurrence"
+}

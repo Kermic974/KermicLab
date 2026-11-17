@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.thales-contributes-calculer-une-longueur-avec-thales",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "legacy-v0",
+    "ref": "catalogue/thales/fiche.md"
+  },
+  "source": "microskill.mathematiques.calculer-une-longueur-avec-thales",
+  "target": "skill.mathematiques.thales"
+}
