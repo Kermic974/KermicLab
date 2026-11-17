@@ -1038,10 +1038,25 @@
       </form>
     </details>
 
-    <section class="contrib-bloc" aria-labelledby="contrib-miennes-titre">
+    <section id="contrib-suivi" class="contrib-bloc" aria-labelledby="contrib-miennes-titre">
       <h3 id="contrib-miennes-titre" data-i18n="contribMiennesTitre"></h3>
+      <p class="doux petit" data-i18n="contribSuiviAide"></p>
+      <!-- Synthèse du suivi : en cours (quota), à corriger, acceptées, taux d'acceptation. -->
+      <div id="contrib-suivi-outils">
+      <dl id="contrib-suivi-synthese" class="contrib-suivi-synthese"></dl>
+      <p id="contrib-suivi-alerte" class="note-locale contrib-suivi-alerte" hidden>
+        <span id="contrib-suivi-alerte-texte"></span>
+        <button type="button" class="bouton petit-bouton" id="contrib-suivi-alerte-voir" data-i18n="contribSuiviAlerteVoir"></button>
+      </p>
+      <ul id="contrib-suivi-compteurs" class="contrib-compteurs"></ul>
+      <div class="contrib-filtres">
+        <label><span class="etiquette-champ" data-i18n="contribFiltreNotion"></span>
+          <select id="contrib-suivi-notion"></select></label>
+      </div>
+      </div>
       <ol id="contrib-miennes" class="contrib-liste"></ol>
       <p id="contrib-miennes-vide" class="doux" data-i18n="contribMiennesVide" hidden></p>
+      <p id="contrib-miennes-filtre-vide" class="doux" data-i18n="contribSuiviFiltreVide" hidden></p>
     </section>
   </div>
 </section>
@@ -1055,7 +1070,7 @@
       <h2 id="bulle-titre"></h2>
     </div>
     <div class="bulle-actions">
-      <button type="button" class="secondaire petit-bouton" id="bulle-editer" aria-controls="bulle-edition" aria-pressed="false" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span data-i18n="editionBouton"></span></button>
+      <button type="button" class="secondaire petit-bouton" id="bulle-editer" aria-controls="bulle-edition" aria-expanded="false" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span data-i18n="editionBouton"></span><span class="edition-compteur" id="bulle-editer-compteur" hidden></span></button>
       <a class="bouton-lien" id="bulle-plein-ecran" target="_blank" rel="noopener" data-i18n-title="ouvrirPage"><span data-i18n="pleinEcran"></span></a>
       <button type="button" class="fermer-croix" id="fermer-bulle"><span class="visuellement-cache" data-i18n="fermer"></span></button>
     </div>
@@ -1065,10 +1080,18 @@
     <!-- Édition ciblée (ADR 0023) : rôle contributeur ou prof ; champs de la notion regroupés par onglet. -->
     <aside id="bulle-edition" class="bulle-edition" aria-labelledby="edition-titre" hidden>
       <div class="edition-entete">
-        <h3 id="edition-titre" data-i18n="editionTitre"></h3>
-        <p class="doux petit" id="edition-resume" aria-live="polite"></p>
+        <div>
+          <h3 id="edition-titre" data-i18n="editionTitre"></h3>
+          <p class="doux petit" id="edition-resume" aria-live="polite"></p>
+        </div>
+        <button type="button" class="fermer-croix" id="edition-fermer" aria-controls="bulle-edition"><span class="visuellement-cache" data-i18n="editionFermer"></span></button>
       </div>
       <p class="doux petit" data-i18n="editionAide"></p>
+      <!-- Suivi des propositions sur cette notion (les siennes ; toutes pour un prof). -->
+      <details id="edition-suivi" class="edition-section edition-suivi" hidden>
+        <summary><span data-i18n="editionSuiviTitre"></span><span class="doux petit" id="edition-suivi-resume"></span></summary>
+        <ol id="edition-suivi-liste" class="edition-suivi-liste"></ol>
+      </details>
       <div id="edition-sections"></div>
       <form id="edition-formulaire" class="formulaire-profil edition-formulaire" novalidate hidden>
         <p class="etiquette-champ" id="edition-cible"></p>

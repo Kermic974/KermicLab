@@ -189,3 +189,45 @@ test("tableau de bord : synthèse par matière puis notion, filtre par matière"
   assert.equal(r.filtrer(liste, { statut: "tous", matiere: "mathematiques" }, de).length, 3);
   assert.equal(r.filtrer(liste, { statut: "tous", matiere: "autres" }, de).length, 1);
 });
+
+test("suivi : frise envoyée → relue → validée → intégrée selon le statut", () => {
+  const base = { created_at: "2026-11-01T08:00:00Z", decided_at: "2026-11-02T08:00:00Z", updated_at: "2026-11-03T08:00:00Z" };
+  const etats = (statut) => r.etapesSuivi({ ...base, statut }).map((e) => e.etat);
+  assert.deepEqual(r.etapesSuivi({ ...base, statut: "proposee" }).map((e) => e.etape), r.ETAPES_SUIVI);
+  assert.deepEqual(etats("proposee"), ["fait", "courant", "a_venir", "a_venir"]);
+  assert.deepEqual(etats("a_reviser"), ["fait", "action", "a_venir", "a_venir"]);
+  assert.deepEqual(etats("validee"), ["fait", "fait", "fait", "courant"]);
+  assert.deepEqual(etats("integree"), ["fait", "fait", "fait", "fait"]);
+  assert.deepEqual(etats("refusee"), ["fait", "fait", "arrete", "a_venir"]);
+  assert.deepEqual(etats("retiree"), ["fait", "arrete", "a_venir", "a_venir"]);
+  const integree = r.etapesSuivi({ ...base, statut: "integree" });
+  assert.equal(integree[0].date, base.created_at);
+  assert.equal(integree[2].date, base.decided_at);
+  assert.equal(integree[3].date, base.updated_at);
+  assert.equal(r.etapesSuivi({ ...base, statut: "refusee" })[2].statut, "refusee");
+  assert.equal(r.etapesSuivi({ ...base, statut: "proposee" })[1].date, null);
+});
+
+test("suivi : synthèse de l'auteur (quota restant, à corriger, taux d'acceptation) et ordre d'affichage", () => {
+  const liste = [
+    { id: "a", statut: "proposee", updated_at: "2026-11-05" }, { id: "b", statut: "a_reviser", updated_at: "2026-11-01" },
+    { id: "c", statut: "validee", updated_at: "2026-11-04" }, { id: "d", statut: "integree", updated_at: "2026-11-02" },
+    { id: "e", statut: "refusee", updated_at: "2026-11-03" }, { id: "f", statut: "retiree", updated_at: "2026-11-06" }
+  ];
+  const s = r.suiviAuteur(liste);
+  assert.equal(s.ouvertes, 2);
+  assert.equal(s.aCorriger, 1);
+  assert.equal(s.acceptees, 2);
+  assert.equal(s.restantes, r.MAX_OUVERTES_PAR_AUTEUR - 2);
+  assert.equal(s.taux, 67);
+  assert.equal(s.resume.total, 6);
+  assert.equal(r.suiviAuteur([]).taux, null);
+  assert.deepEqual(r.trierSuivi(liste).map((c) => c.id), ["b", "f", "a", "c", "e", "d"]);
+});
+
+test("extrait : marques Markdown retirées, texte borné", () => {
+  assert.equal(r.extrait("Un **angle** mesure l'*ouverture* en `degrés`."), "Un angle mesure l'ouverture en degrés.");
+  assert.equal(r.extrait("2 * 3 * 4"), "2 * 3 * 4");
+  const long = r.extrait("mot ".repeat(100), 20);
+  assert.ok(long.length <= 20 && long.endsWith("…"));
+});
