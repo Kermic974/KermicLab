@@ -816,6 +816,28 @@
       <dl id="ef-chiffres" class="chiffres"></dl>
       <ul id="ef-alertes" class="ef-alertes"></ul>
     </section>
+    <!-- Tableau de bord du parent (ADR 0029 §8) : engagement et performance, comparatif par enfant, activités données. -->
+    <section class="ef-bloc" aria-labelledby="ef-engagement-titre">
+      <div class="dialogue-entete">
+        <h3 id="ef-engagement-titre" data-i18n="suiviEngagement"></h3>
+        <button type="button" class="bouton petit-bouton" id="ef-donner-activite" data-i18n="actDonner"></button>
+      </div>
+      <dl id="ef-engagement" class="chiffres"></dl>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-performance-titre">
+      <h3 id="ef-performance-titre" data-i18n="suiviPerformance"></h3>
+      <dl id="ef-performance" class="chiffres"></dl>
+      <p id="ef-a-revoir" class="doux petit"></p>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-comparatif-titre">
+      <h3 id="ef-comparatif-titre" data-i18n="efComparatif"></h3>
+      <div class="ef-tableau-defilant"><table id="ef-comparatif" class="ef-conso"></table></div>
+    </section>
+    <section class="ef-bloc" aria-labelledby="ef-activites-titre">
+      <h3 id="ef-activites-titre" data-i18n="efActivites"></h3>
+      <p id="ef-activites-vide" class="doux" data-i18n="efAucuneActivite"></p>
+      <div id="ef-activites" class="ef-enfants"></div>
+    </section>
     <section class="ef-bloc" aria-labelledby="ef-enfants-titre">
       <h3 id="ef-enfants-titre" data-i18n="efEnfants"></h3>
       <p id="ef-vide" class="doux" data-i18n="efAucunEnfant" hidden></p>
