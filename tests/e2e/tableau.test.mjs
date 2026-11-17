@@ -31,6 +31,12 @@ async function choisirPseudo(page, pseudo, { memoriser = false } = {}) {
 }
 
 const texte = (page, s) => page.locator(s).textContent();
+/** Cahier en lecture pas à pas : avance d'étape en étape jusqu'à ce que l'élément soit affiché. */
+async function avancerJusqua(page, s) {
+  const cible = page.locator(s).first();
+  for (let i = 0; i < 40 && !(await cible.isVisible()); i += 1) await page.click("#lecture-suivant");
+  assert.equal(await cible.isVisible(), true, `étape affichée : ${s}`);
+}
 /** Attend la fin du chargement du catalogue (entrée Éducation de l'accueil renseignée). */
 const catalogueCharge = (page) => page.locator("#entree-education", { hasText: "notions" }).waitFor();
 /** Le défi express est un outil d'Éducation. */
@@ -251,22 +257,54 @@ test("Mes cahiers : constructeur enrichi par l'IA, notes gardées sur l'appareil
   assert.match(await texte(page, "#lecture-corps .bloc-histoire >> nth=0"), /Le vaisseau arrive près de fractions/);
   assert.match(await texte(page, "#lecture-corps .bloc-exercice >> nth=0"), /Premier pas/);
   assert.equal(await texte(page, "#lecture-progression span"), "0/2 exercice(s) réussi(s)");
+  // Lecture plein cadre, une étape à la fois : accueil et sommaire, puis chaque bloc, les notes et le bilan.
+  assert.equal(await page.evaluate(() => { const r = document.querySelector("#lecture-cahier").getBoundingClientRect(); return r.width === innerWidth && r.height === innerHeight; }), true, "plein cadre");
+  assert.equal(await page.locator("#lecture-corps .etape-cahier:visible").count(), 1, "une seule étape affichée");
+  assert.match(await texte(page, "#lecture-position"), /^Étape 1 sur \d+$/);
+  assert.equal(await page.isDisabled("#lecture-precedent"), true);
+  assert.equal(await texte(page, "#lecture-suivant"), "Commencer");
+  assert.deepEqual(await page.locator("#lecture-chapitres .pastille-titre").allTextContents(), ["Accueil", "Les fractions", "Le théorème de Pythagore", "Bilan"]);
+  assert.equal(await texte(page, "#lecture-chapitres [aria-current=step]"), "Accueil");
+  assert.deepEqual(await page.locator(".sommaire-cahier .sommaire-titre").allTextContents(), ["Les fractions", "Le théorème de Pythagore"]);
+  await page.click("#lecture-suivant");
+  assert.match(await texte(page, "#lecture-position"), /^Étape 2 sur /);
+  assert.equal(await texte(page, "#lecture-suivant"), "Continuer");
+  assert.equal(await texte(page, "#lecture-chapitres [aria-current=step]"), "1Les fractions");
+  assert.equal(await page.locator("#lecture-corps .etape-cahier:visible").count(), 1);
+  await page.keyboard.press("ArrowLeft");
+  assert.match(await texte(page, "#lecture-position"), /^Étape 1 sur /, "les flèches du clavier changent d'étape");
+  await page.locator(".sommaire-cahier button").nth(1).click();
+  assert.equal(await texte(page, "#lecture-chapitres [aria-current=step]"), "2Le théorème de Pythagore", "le sommaire ouvre un chapitre");
+  await page.locator("#lecture-chapitres .pastille-chapitre").nth(1).click();
+  assert.match(await texte(page, "#lecture-position"), /^Étape 2 sur /, "une pastille ouvre son chapitre");
+  await avancerJusqua(page, "#lecture-corps .indice-cahier summary");
   await page.locator("#lecture-corps .indice-cahier summary").first().click();
   assert.equal(await texte(page, "#lecture-corps .indice-cahier p >> nth=0"), "Regarde le dénominateur.");
+  await avancerJusqua(page, "#lecture-corps .reussi-cahier");
   await page.locator("#lecture-corps .reussi-cahier").first().click();
   assert.equal(await texte(page, "#lecture-progression span"), "1/2 exercice(s) réussi(s)");
   assert.equal(await texte(page, "#lecture-corps .conclusion-cahier"), "Mission accomplie !");
   assert.deepEqual(await page.locator("#lecture-corps h3").allTextContents(), ["Les fractions", "Le théorème de Pythagore"]);
   assert.equal(await page.locator("#lecture-corps .reponse-cahier p").first().isVisible(), false, "la réponse est masquée");
+  await avancerJusqua(page, "#lecture-corps .reponse-cahier summary");
   await page.locator("#lecture-corps .reponse-cahier summary").first().click();
   assert.equal(await texte(page, "#lecture-corps .reponse-cahier p >> nth=0"), "Solution de fractions.");
+  await avancerJusqua(page, "#notes-0");
   await page.fill("#notes-0", "J'ai trouvé 3/4.");
+  // Dernière étape : le bilan compte les exercices réussis et propose de reprendre ceux qui restent.
+  await avancerJusqua(page, ".bilan-cahier");
+  assert.equal(await texte(page, ".bilan-score"), "1/2");
+  assert.match(await texte(page, ".bilan-message"), /Il te reste 1 exercice\(s\) à réussir/);
+  assert.equal(await texte(page, "#lecture-suivant"), "Terminer");
+  await page.click(".bilan-cahier button");
+  assert.equal(await page.locator("#lecture-corps .reussi-cahier input:visible").isChecked(), false, "retour au premier exercice à refaire");
   await page.click("#fermer-lecture");
   assert.equal(await texte(page, "#liste-cahiers .cahier-enregistre h4"), "Révisions de Iris");
   assert.match(await texte(page, "#liste-cahiers .cahier-enregistre"), /Enrichi par l’IA/);
   assert.match(await texte(page, "#liste-cahiers .cahier-enregistre"), /1\/2 exercice\(s\) réussi\(s\)/);
   await page.getByRole("button", { name: "Ouvrir Révisions de Iris" }).click();
   assert.equal(await page.inputValue("#notes-0"), "J'ai trouvé 3/4.", "les notes sont gardées");
+  assert.equal(await page.locator("#lecture-corps .reussi-cahier input:visible").isChecked(), false, "un cahier commencé rouvre sur l'exercice à refaire");
   await page.click("#fermer-lecture");
 
   // Échec de l'IA : le cahier est quand même construit à partir du catalogue, avec un message clair.
