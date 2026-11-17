@@ -48,6 +48,7 @@ npm ci                # dépendances
 npm run lint          # syntaxe JS, JSON, parité i18n, secrets évidents
 npm run build         # index du catalogue + hashes CSP des pages + site statique dist/
 npm run check:pages   # contrôle de sécurité des pages HTML du catalogue
+npm run check:referentiel # contrôle S4 des objets canoniques, WARNING non bloquants
 npm test              # tests unitaires (node:test) ; en CI (pages.yml), Playwright est installé et les tests de page (tests/dom/) sont exécutés, leur absence échoue
 npm run test:e2e      # tests navigateur (Playwright + Chromium)
 npm run test:captures # mêmes tests + captures d'écran des parcours clés dans captures/ (documentation ; artefact « captures » en CI)

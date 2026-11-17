@@ -10,4 +10,4 @@ Déposer un objet JSON par fichier sous `referentiel/objets/`. Exécuter `npm ru
 
 Pour un corpus non vide, utiliser un clone complet disposant de `origin/main`. Les révisions publiées viennent du premier parent de main à la base commune avec HEAD. L’état de travail fournit la révision candidate. Le catalogue V0 ne fait pas partie du corpus canonique.
 
-La commande est disponible séparément. Son ajout comme contrôle obligatoire en CI et le contrôle de projection des fiches V0 sont suivis dans #255 et #256.
+La commande fait partie de `npm run ci` et du workflow CI/CD. Le job affiche le JSON et conserve le rapport `validation-referentiel` en artefact, y compris en cas d’erreur. Les avertissements restent visibles sans bloquer. La vérification de la projection des fiches V0 est suivie dans #256.
