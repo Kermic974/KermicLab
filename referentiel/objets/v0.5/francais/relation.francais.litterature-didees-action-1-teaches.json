@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.litterature-didees-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "notion.francais.litterature-didees",
+  "target": "microskill.francais.litterature-didees-action-1"
+}

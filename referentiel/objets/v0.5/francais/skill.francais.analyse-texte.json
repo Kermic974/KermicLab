@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.analyse-texte",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "label": "Interpréter un texte à partir d’indices"
+}

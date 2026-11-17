@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.grammaire-phrase-complexe-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "microskill.francais.grammaire-phrase-complexe-action-1",
+  "target": "skill.francais.grammaire-phrase-complexe"
+}
