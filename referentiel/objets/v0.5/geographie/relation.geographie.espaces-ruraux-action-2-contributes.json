@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.espaces-ruraux-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-ruraux/contenu.json"
+  },
+  "source": "microskill.geographie.espaces-ruraux-action-2",
+  "target": "skill.geographie.espaces-ruraux"
+}

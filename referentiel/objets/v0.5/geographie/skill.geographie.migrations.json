@@ -1,0 +1,11 @@
+{
+  "id": "skill.geographie.migrations",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "label": "Analyser des migrations à plusieurs échelles"
+}

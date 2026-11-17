@@ -16,6 +16,9 @@ questions:
   - C'est quoi les ressources naturelles ?
   - Les ressources renouvelables sont-elles illimitées ?
   - Comment organiser la gestion de l'eau ?
+prerequis:
+niveaux: cycle-4
+competences: geographie-ressources-action-1, geographie-ressources-action-2
 ---
 
 # Les ressources et leur gestion

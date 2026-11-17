@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.union-europeenne-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/union-europeenne/contenu.json"
+  },
+  "source": "microskill.geographie.union-europeenne-action-1",
+  "target": "skill.geographie.union-europeenne"
+}

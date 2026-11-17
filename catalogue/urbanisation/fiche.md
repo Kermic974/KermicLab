@@ -15,6 +15,9 @@ questions:
   - C'est quoi l'urbanisation ?
   - Pourquoi l'étalement urbain progresse ?
   - Comment comprendre la périurbanisation ?
+prerequis:
+niveaux: cycle-4
+competences: geographie-urbanisation-action-1, geographie-urbanisation-action-2
 ---
 
 # L'urbanisation

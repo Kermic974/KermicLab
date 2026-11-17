@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-territoires-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-territoires/contenu.json"
+  },
+  "source": "notion.geographie.france-territoires",
+  "target": "microskill.geographie.france-territoires-action-2"
+}

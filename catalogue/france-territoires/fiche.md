@@ -16,6 +16,9 @@ questions:
   - Comment comprendre les territoires français ?
   - C'est quoi l'aménagement du territoire français ?
   - Comment relier la France métropole et outre-mer ?
+prerequis:
+niveaux: cycle-4
+competences: geographie-france-territoires-action-1, geographie-france-territoires-action-2
 ---
 
 # La France et ses territoires

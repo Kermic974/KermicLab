@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.mers-oceans-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "object": "notion.geographie.mers-oceans",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

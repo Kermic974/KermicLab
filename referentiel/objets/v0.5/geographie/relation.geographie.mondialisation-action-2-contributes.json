@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "microskill.geographie.mondialisation-action-2",
+  "target": "skill.geographie.mondialisation"
+}

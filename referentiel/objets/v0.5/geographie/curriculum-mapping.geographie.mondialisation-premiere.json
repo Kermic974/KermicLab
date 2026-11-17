@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.mondialisation-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "object": "notion.geographie.mondialisation",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced"
+}

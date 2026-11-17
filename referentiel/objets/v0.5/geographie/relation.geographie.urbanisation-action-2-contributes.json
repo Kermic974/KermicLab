@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.urbanisation-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "microskill.geographie.urbanisation-action-2",
+  "target": "skill.geographie.urbanisation"
+}

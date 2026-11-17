@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.espaces-productifs-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "notion.geographie.espaces-productifs",
+  "target": "microskill.geographie.espaces-productifs-action-2"
+}

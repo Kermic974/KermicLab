@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "notion.geographie.mondialisation",
+  "target": "microskill.geographie.mondialisation-action-1"
+}

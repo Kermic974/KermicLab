@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-regions-action-1-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "notion.geographie.france-regions",
+  "target": "microskill.geographie.france-regions-action-1"
+}
