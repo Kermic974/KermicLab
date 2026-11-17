@@ -113,7 +113,8 @@ test("le lien de participation reste visible (barre latérale et Profil), hors d
   const destinations = {
     // « Ma famille » (barre latérale) : lien rapide vers « Mon compte » ou l'Espace famille, masqué sans compte local lié.
     nav: ["accueil", "education", "labs", "jeux", "progression", "compte", "contributions", "suivi", "classes", "eleves"],
-    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "contributions", "suivi"],
+    // Barre du bas : « Ma famille », Contributions et Suivi, regroupées sous « Plus » (sans data-nav) quand il y en a plusieurs.
+    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "compte", "contributions", "suivi"],
   };
   for (const [classe, attendues] of Object.entries(destinations)) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
