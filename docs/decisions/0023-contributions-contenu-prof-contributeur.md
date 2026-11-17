@@ -145,7 +145,7 @@ Les comptes OAuth ne sont pas encore ouverts ; les rôles sont attribués aux **
   l'interface reconnaisse ses propres propositions.
 - **API** : mêmes routes `/api/contributions`, avec la session porteuse du compte local (`Authorization: Bearer`) ;
   sans cet en-tête, la session OAuth (cookie) s'applique comme avant. Mêmes règles, mêmes codes d'erreur.
-- **Données** : table `contributions_locales` (migration additive `0005_contributions_comptes_locaux.sql`), mêmes
+- **Données** : table `contributions_locales` (migration additive `0006_contributions_comptes_locaux.sql`), mêmes
   colonnes que `contributions`, sans clé étrangère vers `comptes`. La suppression du compte local efface ses
   propositions et retire son identifiant des décisions qu'il a prises (comme §4).
 - **Interface** : le menu « Contributions » (barre latérale et barre du bas), l'édition ciblée dans les notions et le

@@ -1,4 +1,4 @@
--- Migration 0005 : contributions au contenu des comptes locaux (ADR 0023 §6 ter). Uniquement des CREATE … IF NOT EXISTS.
+-- Migration 0006 : contributions au contenu des comptes locaux (ADR 0023 §6 ter). Uniquement des CREATE … IF NOT EXISTS.
 -- Mêmes colonnes que `contributions` (comptes OAuth), sans clé étrangère vers `comptes` : l'auteur et le relecteur sont
 -- des comptes locaux (`comptes_locaux.id`), effacés avec le compte (worker/src/contributions.js).
 -- Schéma de référence : worker/schema-compte-local.sql.

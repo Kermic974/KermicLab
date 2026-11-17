@@ -1535,7 +1535,7 @@ async function chargerProf() {
 function oublierProf() {
   Object.assign(profEtat, { moi: null, classes: null, eleves: null, activites: null, mesProfs: [], lien: null });
   activitesEtat.mesActivites = [];
-  rafraichirProfNav();
+  actualiserContributionsLocales();
   rendreMesProfs();
   rendreActivitesEleve();
 }

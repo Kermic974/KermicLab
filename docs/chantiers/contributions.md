@@ -17,7 +17,7 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 | Édition ciblée dans la bulle d'une notion (textes par onglet, compteurs, aperçu) et menu « Contributions » avec synthèse par matière (ADR 0023 §6 bis) | Fait, testé (ordinateur et mobile) |
 | Volet d'édition ciblée à la demande (fermé par défaut, bouton, croix, Échap, pastille des propositions en cours, suivi de la notion) | Fait, testé (2026-11-17) |
 | Suivi des contributions : synthèse, alerte « à corriger », pastilles et filtre par notion, frise Envoyée → Relue → Validée → Publiée, « Voir dans la notion » | Fait, testé (2026-11-17) |
-| Comptes locaux (ADR 0023 §6 ter) : rôle du back-office → menu Contributions, API avec la session porteuse, table `contributions_locales` (migration 0005), effacement avec le compte | Fait, testé (2026-11-17) |
+| Comptes locaux (ADR 0023 §6 ter) : rôle du back-office → menu Contributions, API avec la session porteuse, table `contributions_locales` (migration 0006), effacement avec le compte | Fait, testé (2026-11-17) |
 | Contenus des notions pour le formulaire (`dist/contenus/`) | Générés par `npm run build` |
 | **Temporaire** : « Tester les rôles » dans le Profil (rôle simulé dans le navigateur, sans serveur) | Actif (`testRolesTemporaire`) ; à supprimer à l'ouverture des comptes, [issue #160](https://github.com/Kermic974/KermicLab/issues/160) |
 

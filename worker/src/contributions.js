@@ -76,7 +76,7 @@ async function lireRole(env, compteId) {
 
 /**
  * Tables des contributions : `contributions` pour les comptes OAuth (ADR 0023, clé étrangère vers `comptes`) et
- * `contributions_locales` pour les comptes locaux (migration 0005), mêmes colonnes. Liste fermée : jamais un nom
+ * `contributions_locales` pour les comptes locaux (migration 0006), mêmes colonnes. Liste fermée : jamais un nom
  * venu de la requête.
  */
 export const TABLES_CONTRIBUTIONS = Object.freeze(["contributions", "contributions_locales"]);

@@ -843,7 +843,7 @@ export default {
               catalogue: catalogueDe(env).index, table: "contributions_locales", role: await roleContributionCompteLocal(env, session.compteId)
             });
         } catch {
-          // Table absente (migration 0005 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
+          // Table absente (migration 0006 non appliquée) ou D1 indisponible : jamais de 500 ni de détail interne.
           reponse = json({ erreur: "contributions-indisponibles" }, 503, {});
         }
       }

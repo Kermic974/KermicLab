@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS donnees_pseudonymes (
 );
 CREATE INDEX IF NOT EXISTS idx_donnees_pseudonymes_vu ON donnees_pseudonymes (vu_le);
 
--- Contributions au contenu des comptes locaux (ADR 0023 §6 ter, migration 0005).
+-- Contributions au contenu des comptes locaux (ADR 0023 §6 ter, migration 0006).
 CREATE TABLE IF NOT EXISTS contributions_locales (
   id              TEXT PRIMARY KEY,
   auteur_id       TEXT NOT NULL,             -- compte local auteur

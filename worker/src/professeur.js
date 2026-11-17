@@ -20,6 +20,7 @@ import {
 } from "../../web/professeur.js";
 import { compteDeSession } from "./compte-local.js";
 import { listerRoles, ROLES_SYSTEME } from "./roles.js";
+import { roleContributionCompteLocal } from "./contributions.js";
 import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
 import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
