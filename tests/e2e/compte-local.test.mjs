@@ -35,6 +35,11 @@ async function appareil(pseudo) {
     const reponse = await gererApiCompteLocal(new Request(r.url(), { method: r.method(), headers: r.headers(), body: corps }), env);
     return route.fulfill({ status: reponse.status, headers: { ...Object.fromEntries(reponse.headers), ...cors() }, body: await reponse.text() });
   });
+  // Espace famille (ADR 0029) : hors du périmètre de ce test, un compte solo sans rôle parent.
+  await page.route(`${api}/api/famille/**`, (route) => route.fulfill({
+    status: 200, contentType: "application/json", headers: cors(),
+    body: JSON.stringify({ role: "visiteur", parent: false, enfants: 0, enfant: null, invitation: null })
+  }));
   await page.goto(serveur.url);
   await page.locator("#dialogue-pseudo[open]").waitFor();
   await page.fill("#pseudo", pseudo);
