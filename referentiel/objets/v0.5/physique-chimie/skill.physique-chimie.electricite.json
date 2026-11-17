@@ -1,0 +1,11 @@
+{
+  "id": "skill.physique-chimie.electricite",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite/contenu.json"
+  },
+  "label": "Analyser un circuit électrique simple"
+}

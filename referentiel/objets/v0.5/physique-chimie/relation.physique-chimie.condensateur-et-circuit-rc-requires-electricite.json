@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.condensateur-et-circuit-rc-requires-electricite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/condensateur-et-circuit-rc/contenu.json"
+  },
+  "source": "notion.physique-chimie.condensateur-et-circuit-rc",
+  "target": "notion.physique-chimie.electricite",
+  "rationale": "La modélisation du circuit mobilise tension, courant et résistance."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.tableau-periodique-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableau-periodique/contenu.json"
+  },
+  "source": "microskill.physique-chimie.tableau-periodique-action-2",
+  "target": "skill.physique-chimie.tableau-periodique"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "skill.physique-chimie.thermodynamique",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thermodynamique/contenu.json"
+  },
+  "label": "Analyser le bilan énergétique d’un système thermique"
+}

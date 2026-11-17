@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.atomes-et-molecules-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/atomes-et-molecules/contenu.json"
+  },
+  "object": "notion.physique-chimie.atomes-et-molecules",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "reinforced"
+}

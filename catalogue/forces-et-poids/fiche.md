@@ -28,6 +28,9 @@ questions:
   - je ne comprends pas la gravitation
   - c'est quoi une action mécanique ?
   - what is the difference between mass and weight?
+prerequis:
+niveaux: cycle-4, seconde, premiere
+competences: pc-forces-et-poids-action-1, pc-forces-et-poids-action-2
 ---
 
 # Forces, poids et gravitation

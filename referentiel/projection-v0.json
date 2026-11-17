@@ -36,7 +36,30 @@
     "transformations": "notion.mathematiques.transformations",
     "vecteurs": "notion.mathematiques.vecteurs",
     "vitesse": "notion.mathematiques.vitesse",
-    "volumes": "notion.mathematiques.volumes"
+    "volumes": "notion.mathematiques.volumes",
+    "absorbance-et-dosages": "notion.physique-chimie.absorbance-et-dosages",
+    "acides-et-bases": "notion.physique-chimie.acides-et-bases",
+    "atomes-et-molecules": "notion.physique-chimie.atomes-et-molecules",
+    "cinetique-chimique": "notion.physique-chimie.cinetique-chimique",
+    "condensateur-et-circuit-rc": "notion.physique-chimie.condensateur-et-circuit-rc",
+    "diffraction-et-interferences": "notion.physique-chimie.diffraction-et-interferences",
+    "electricite": "notion.physique-chimie.electricite",
+    "energie": "notion.physique-chimie.energie",
+    "energie-mecanique": "notion.physique-chimie.energie-mecanique",
+    "etats-de-la-matiere": "notion.physique-chimie.etats-de-la-matiere",
+    "forces-et-poids": "notion.physique-chimie.forces-et-poids",
+    "gravitation-et-satellites": "notion.physique-chimie.gravitation-et-satellites",
+    "lois-de-newton": "notion.physique-chimie.lois-de-newton",
+    "masse-volumique-et-melanges": "notion.physique-chimie.masse-volumique-et-melanges",
+    "mouvements": "notion.physique-chimie.mouvements",
+    "ondes": "notion.physique-chimie.ondes",
+    "oxydoreduction": "notion.physique-chimie.oxydoreduction",
+    "quantite-de-matiere": "notion.physique-chimie.quantite-de-matiere",
+    "radioactivite": "notion.physique-chimie.radioactivite",
+    "refraction-et-lentilles": "notion.physique-chimie.refraction-et-lentilles",
+    "son-et-lumiere": "notion.physique-chimie.son-et-lumiere",
+    "tableau-periodique": "notion.physique-chimie.tableau-periodique",
+    "thermodynamique": "notion.physique-chimie.thermodynamique"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -184,7 +207,53 @@
     "microskill.mathematiques.utiliser-une-homothetie": "utiliser-une-homothetie",
     "microskill.mathematiques.utiliser-une-suite-arithmetique": "utiliser-une-suite-arithmetique",
     "microskill.mathematiques.utiliser-une-suite-geometrique": "utiliser-une-suite-geometrique",
-    "microskill.mathematiques.verifier-l-initialisation-et-l-heredite": "verifier-l-initialisation-et-l-heredite"
+    "microskill.mathematiques.verifier-l-initialisation-et-l-heredite": "verifier-l-initialisation-et-l-heredite",
+    "microskill.physique-chimie.absorbance-et-dosages-action-1": "pc-absorbance-et-dosages-action-1",
+    "microskill.physique-chimie.absorbance-et-dosages-action-2": "pc-absorbance-et-dosages-action-2",
+    "microskill.physique-chimie.acides-et-bases-action-1": "pc-acides-et-bases-action-1",
+    "microskill.physique-chimie.acides-et-bases-action-2": "pc-acides-et-bases-action-2",
+    "microskill.physique-chimie.atomes-et-molecules-action-1": "pc-atomes-et-molecules-action-1",
+    "microskill.physique-chimie.atomes-et-molecules-action-2": "pc-atomes-et-molecules-action-2",
+    "microskill.physique-chimie.cinetique-chimique-action-1": "pc-cinetique-chimique-action-1",
+    "microskill.physique-chimie.cinetique-chimique-action-2": "pc-cinetique-chimique-action-2",
+    "microskill.physique-chimie.condensateur-et-circuit-rc-action-1": "pc-condensateur-et-circuit-rc-action-1",
+    "microskill.physique-chimie.condensateur-et-circuit-rc-action-2": "pc-condensateur-et-circuit-rc-action-2",
+    "microskill.physique-chimie.diffraction-et-interferences-action-1": "pc-diffraction-et-interferences-action-1",
+    "microskill.physique-chimie.diffraction-et-interferences-action-2": "pc-diffraction-et-interferences-action-2",
+    "microskill.physique-chimie.electricite-action-1": "pc-electricite-action-1",
+    "microskill.physique-chimie.electricite-action-2": "pc-electricite-action-2",
+    "microskill.physique-chimie.energie-action-1": "pc-energie-action-1",
+    "microskill.physique-chimie.energie-action-2": "pc-energie-action-2",
+    "microskill.physique-chimie.energie-mecanique-action-1": "pc-energie-mecanique-action-1",
+    "microskill.physique-chimie.energie-mecanique-action-2": "pc-energie-mecanique-action-2",
+    "microskill.physique-chimie.etats-de-la-matiere-action-1": "pc-etats-de-la-matiere-action-1",
+    "microskill.physique-chimie.etats-de-la-matiere-action-2": "pc-etats-de-la-matiere-action-2",
+    "microskill.physique-chimie.forces-et-poids-action-1": "pc-forces-et-poids-action-1",
+    "microskill.physique-chimie.forces-et-poids-action-2": "pc-forces-et-poids-action-2",
+    "microskill.physique-chimie.gravitation-et-satellites-action-1": "pc-gravitation-et-satellites-action-1",
+    "microskill.physique-chimie.gravitation-et-satellites-action-2": "pc-gravitation-et-satellites-action-2",
+    "microskill.physique-chimie.lois-de-newton-action-1": "pc-lois-de-newton-action-1",
+    "microskill.physique-chimie.lois-de-newton-action-2": "pc-lois-de-newton-action-2",
+    "microskill.physique-chimie.masse-volumique-et-melanges-action-1": "pc-masse-volumique-et-melanges-action-1",
+    "microskill.physique-chimie.masse-volumique-et-melanges-action-2": "pc-masse-volumique-et-melanges-action-2",
+    "microskill.physique-chimie.mouvements-action-1": "pc-mouvements-action-1",
+    "microskill.physique-chimie.mouvements-action-2": "pc-mouvements-action-2",
+    "microskill.physique-chimie.ondes-action-1": "pc-ondes-action-1",
+    "microskill.physique-chimie.ondes-action-2": "pc-ondes-action-2",
+    "microskill.physique-chimie.oxydoreduction-action-1": "pc-oxydoreduction-action-1",
+    "microskill.physique-chimie.oxydoreduction-action-2": "pc-oxydoreduction-action-2",
+    "microskill.physique-chimie.quantite-de-matiere-action-1": "pc-quantite-de-matiere-action-1",
+    "microskill.physique-chimie.quantite-de-matiere-action-2": "pc-quantite-de-matiere-action-2",
+    "microskill.physique-chimie.radioactivite-action-1": "pc-radioactivite-action-1",
+    "microskill.physique-chimie.radioactivite-action-2": "pc-radioactivite-action-2",
+    "microskill.physique-chimie.refraction-et-lentilles-action-1": "pc-refraction-et-lentilles-action-1",
+    "microskill.physique-chimie.refraction-et-lentilles-action-2": "pc-refraction-et-lentilles-action-2",
+    "microskill.physique-chimie.son-et-lumiere-action-1": "pc-son-et-lumiere-action-1",
+    "microskill.physique-chimie.son-et-lumiere-action-2": "pc-son-et-lumiere-action-2",
+    "microskill.physique-chimie.tableau-periodique-action-1": "pc-tableau-periodique-action-1",
+    "microskill.physique-chimie.tableau-periodique-action-2": "pc-tableau-periodique-action-2",
+    "microskill.physique-chimie.thermodynamique-action-1": "pc-thermodynamique-action-1",
+    "microskill.physique-chimie.thermodynamique-action-2": "pc-thermodynamique-action-2"
   },
   "fiches": {
     "trigo-cercle": {
@@ -576,6 +645,175 @@
         "convertir-volumes-et-contenances",
         "calculer-le-volume-d-un-prisme-et-d-un-cylindre",
         "calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule"
+      ]
+    },
+    "absorbance-et-dosages": {
+      "prerequis": [],
+      "competences": [
+        "pc-absorbance-et-dosages-action-1",
+        "pc-absorbance-et-dosages-action-2"
+      ]
+    },
+    "acides-et-bases": {
+      "prerequis": [],
+      "competences": [
+        "pc-acides-et-bases-action-1",
+        "pc-acides-et-bases-action-2"
+      ]
+    },
+    "atomes-et-molecules": {
+      "prerequis": [],
+      "competences": [
+        "pc-atomes-et-molecules-action-1",
+        "pc-atomes-et-molecules-action-2"
+      ]
+    },
+    "cinetique-chimique": {
+      "prerequis": [
+        "quantite-de-matiere"
+      ],
+      "competences": [
+        "pc-cinetique-chimique-action-1",
+        "pc-cinetique-chimique-action-2"
+      ]
+    },
+    "condensateur-et-circuit-rc": {
+      "prerequis": [
+        "electricite"
+      ],
+      "competences": [
+        "pc-condensateur-et-circuit-rc-action-1",
+        "pc-condensateur-et-circuit-rc-action-2"
+      ]
+    },
+    "diffraction-et-interferences": {
+      "prerequis": [],
+      "competences": [
+        "pc-diffraction-et-interferences-action-1",
+        "pc-diffraction-et-interferences-action-2"
+      ]
+    },
+    "electricite": {
+      "prerequis": [],
+      "competences": [
+        "pc-electricite-action-1",
+        "pc-electricite-action-2"
+      ]
+    },
+    "energie": {
+      "prerequis": [],
+      "competences": [
+        "pc-energie-action-1",
+        "pc-energie-action-2"
+      ]
+    },
+    "energie-mecanique": {
+      "prerequis": [],
+      "competences": [
+        "pc-energie-mecanique-action-1",
+        "pc-energie-mecanique-action-2"
+      ]
+    },
+    "etats-de-la-matiere": {
+      "prerequis": [],
+      "competences": [
+        "pc-etats-de-la-matiere-action-1",
+        "pc-etats-de-la-matiere-action-2"
+      ]
+    },
+    "forces-et-poids": {
+      "prerequis": [],
+      "competences": [
+        "pc-forces-et-poids-action-1",
+        "pc-forces-et-poids-action-2"
+      ]
+    },
+    "gravitation-et-satellites": {
+      "prerequis": [
+        "forces-et-poids"
+      ],
+      "competences": [
+        "pc-gravitation-et-satellites-action-1",
+        "pc-gravitation-et-satellites-action-2"
+      ]
+    },
+    "lois-de-newton": {
+      "prerequis": [
+        "forces-et-poids"
+      ],
+      "competences": [
+        "pc-lois-de-newton-action-1",
+        "pc-lois-de-newton-action-2"
+      ]
+    },
+    "masse-volumique-et-melanges": {
+      "prerequis": [],
+      "competences": [
+        "pc-masse-volumique-et-melanges-action-1",
+        "pc-masse-volumique-et-melanges-action-2"
+      ]
+    },
+    "mouvements": {
+      "prerequis": [],
+      "competences": [
+        "pc-mouvements-action-1",
+        "pc-mouvements-action-2"
+      ]
+    },
+    "ondes": {
+      "prerequis": [],
+      "competences": [
+        "pc-ondes-action-1",
+        "pc-ondes-action-2"
+      ]
+    },
+    "oxydoreduction": {
+      "prerequis": [],
+      "competences": [
+        "pc-oxydoreduction-action-1",
+        "pc-oxydoreduction-action-2"
+      ]
+    },
+    "quantite-de-matiere": {
+      "prerequis": [],
+      "competences": [
+        "pc-quantite-de-matiere-action-1",
+        "pc-quantite-de-matiere-action-2"
+      ]
+    },
+    "radioactivite": {
+      "prerequis": [],
+      "competences": [
+        "pc-radioactivite-action-1",
+        "pc-radioactivite-action-2"
+      ]
+    },
+    "refraction-et-lentilles": {
+      "prerequis": [],
+      "competences": [
+        "pc-refraction-et-lentilles-action-1",
+        "pc-refraction-et-lentilles-action-2"
+      ]
+    },
+    "son-et-lumiere": {
+      "prerequis": [],
+      "competences": [
+        "pc-son-et-lumiere-action-1",
+        "pc-son-et-lumiere-action-2"
+      ]
+    },
+    "tableau-periodique": {
+      "prerequis": [],
+      "competences": [
+        "pc-tableau-periodique-action-1",
+        "pc-tableau-periodique-action-2"
+      ]
+    },
+    "thermodynamique": {
+      "prerequis": [],
+      "competences": [
+        "pc-thermodynamique-action-1",
+        "pc-thermodynamique-action-2"
       ]
     }
   }

@@ -30,6 +30,9 @@ questions:
   - je ne comprends pas la distance focale d'une lentille
   - pourquoi y a-t-il un arc-en-ciel ?
   - how does a lens work?
+prerequis:
+niveaux: seconde, premiere
+competences: pc-refraction-et-lentilles-action-1, pc-refraction-et-lentilles-action-2
 ---
 
 # Réfraction et lentilles
