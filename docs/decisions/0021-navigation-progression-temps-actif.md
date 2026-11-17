@@ -81,3 +81,15 @@ l'assistant ouvre la section Labs. Les libellés de la barre mobile sont resserr
 
 English summary: Labs is a navigation destination again (six destinations); the Education card for the unit circle
 now only links to the Labs section, which hosts the Lab's three modes and the mini-lab.
+
+## Complément (2026-11-17) : entrées liées au compte et « Plus » sur mobile
+
+Trois entrées s'ajoutent aux six destinations selon le compte et le rôle : « Ma famille » (compte local lié : Espace
+famille pour un parent, sinon le bloc Famille de « Mon compte »), « Contributions » (rôle contributeur, prof ou admin,
+ADR 0023) et « Suivi » (rôle Professeur, ADR 0030). Dans la barre latérale, elles s'affichent toutes. Dans la barre du
+bas, au-delà de **sept entrées**, une entrée passerait sous 44 px à 320 px de large : une seule entrée liée au compte
+reste dans la barre ; à partir de deux, elles sont regroupées sous **« Plus »** (septième entrée), qui ouvre un panneau
+au-dessus de la barre (Échap, un clic ailleurs ou un choix le referment) et porte la page courante quand elle s'y trouve.
+
+English summary: account- and role-based entries (My family, Contributions, Teacher) are always in the sidebar; on
+mobile, two or more of them are grouped under a "More" entry so the bottom bar keeps seven 44 px targets at 320 px.

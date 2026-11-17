@@ -909,9 +909,10 @@ function rafraichirFamilleCompte() {
   $("#entree-espace-famille").hidden = !m?.parent;
   $("#famille-ouvrir-espace").hidden = !m?.parent;
   // Lien rapide de la navigation : l'Espace famille pour un parent, le bloc Famille de « Mon compte » sinon.
-  const navFamille = $("#nav-famille");
-  navFamille.hidden = !lie || !m;
-  navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
+  for (const navFamille of [$("#nav-famille"), $("#nav-mobile-famille")]) {
+    navFamille.hidden = !lie || !m;
+    navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
+  }
   marquerNavigation(sectionDe(etat.ecran));
   $("#famille-compte-solo").hidden = !m || !!m.parent || !!m.enfant;
   $("#famille-compte-statut").textContent = !lie ? t("fcNonLie")
@@ -1447,10 +1448,12 @@ async function assignerCahierFamille({ type, ids, longueur, univers, objectif })
 function brancherFamilleLocale() {
   ECRANS.push("espace-famille");
   // « Ma famille » sans rôle parent : « Mon compte », bloc Famille (situation, invitation d'un parent).
-  $("#nav-famille").addEventListener("click", (e) => {
-    if (e.currentTarget.dataset.nav !== "compte") return;
-    requestAnimationFrame(() => $("#famille-compte").scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" }));
-  });
+  for (const lien of [$("#nav-famille"), $("#nav-mobile-famille")]) {
+    lien.addEventListener("click", (e) => {
+      if (e.currentTarget.dataset.nav !== "compte") return;
+      requestAnimationFrame(() => $("#famille-compte").scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" }));
+    });
+  }
   $("#famille-inviter").addEventListener("click", inviterParent);
   $("#famille-annuler-invitation").addEventListener("click", annulerInvitation);
   $("#liste-cahiers-famille").addEventListener("click", (e) => {
@@ -4614,6 +4617,7 @@ async function demarrer() {
   brancherProfil();
   brancherCompte();
   brancherFamilleLocale();
+  brancherNavMobile();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -5092,12 +5096,63 @@ function naviguer(cle) {
 /** Une seule destination est marquée « page courante » ; un sous-écran marque sa destination. */
 function marquerNavigation(cle) {
   // « Ma famille » mène à l'Espace famille (sous-écran du Profil) : il est la page courante quand cet écran est affiché.
-  const famille = $("#nav-famille");
-  const surFamille = !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
+  const familles = [$("#nav-famille"), $("#nav-mobile-famille")];
+  const surFamille = !familles[0].hidden && etat.ecran === "espace-famille" && familles[0].dataset.nav === "espace-famille";
   document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]").forEach((b) => {
-    const courant = b === famille ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cle;
+    const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cle;
     if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
+  // « Plus » porte la page courante quand elle est l'une des entrées qu'il regroupe.
+  const plus = $("#nav-mobile-plus");
+  if ($("#nav-mobile-autres [aria-current]")) plus.setAttribute("aria-current", "page"); else plus.removeAttribute("aria-current");
+}
+
+/* ---------- Barre du bas (mobile) : entrées liées au compte ou au rôle ---------- */
+// Six destinations fixes ; au-delà, les entrées « Ma famille », « Contributions » et « Suivi » (affichées selon le compte
+// et le rôle) iraient sous 44 px à 320 px de large. Une seule visible : elle reste dans la barre. Deux ou plus : elles
+// passent dans le panneau « Plus », ouvert au-dessus de la barre.
+const NAV_MOBILE_EXTRAS = ["#nav-mobile-famille", "#nav-mobile-contributions", "#nav-mobile-suivi"];
+
+function agencerNavMobile() {
+  const barre = $(".nav-mobile");
+  const panneau = $("#nav-mobile-autres");
+  const plus = $("#nav-mobile-plus");
+  const extras = NAV_MOBILE_EXTRAS.map((id) => $(id));
+  const regrouper = extras.filter((b) => !b.hidden).length > 1;
+  for (const b of extras) (regrouper ? panneau : barre).insertBefore(b, regrouper ? null : plus);
+  plus.hidden = !regrouper;
+  if (!regrouper) fermerNavMobilePlus({ focus: false });
+  marquerNavigation(sectionDe(etat.ecran));
+}
+
+function fermerNavMobilePlus({ focus = true } = {}) {
+  const plus = $("#nav-mobile-plus");
+  if (plus.getAttribute("aria-expanded") !== "true") return;
+  plus.setAttribute("aria-expanded", "false");
+  $("#nav-mobile-autres").hidden = true;
+  if (focus) plus.focus({ preventScroll: true });
+}
+
+function brancherNavMobile() {
+  const plus = $("#nav-mobile-plus");
+  const panneau = $("#nav-mobile-autres");
+  plus.addEventListener("click", () => {
+    const ouvrir = plus.getAttribute("aria-expanded") !== "true";
+    if (!ouvrir) { fermerNavMobilePlus(); return; }
+    plus.setAttribute("aria-expanded", "true");
+    panneau.hidden = false;
+    panneau.querySelector(".nav-mobile-bouton:not([hidden])")?.focus({ preventScroll: true });
+  });
+  // Un choix dans le panneau, un clic ailleurs ou Échap le referment.
+  panneau.addEventListener("click", (e) => { if (e.target.closest("[data-nav]")) fermerNavMobilePlus({ focus: false }); });
+  document.addEventListener("click", (e) => {
+    if (!panneau.hidden && !panneau.contains(e.target) && !plus.contains(e.target)) fermerNavMobilePlus({ focus: false });
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panneau.hidden) fermerNavMobilePlus(); });
+  // Les entrées s'affichent ou se masquent selon le compte et le rôle (plusieurs modules) : on suit leur attribut hidden.
+  const observateur = new MutationObserver(agencerNavMobile);
+  for (const id of NAV_MOBILE_EXTRAS) observateur.observe($(id), { attributes: true, attributeFilter: ["hidden"] });
+  agencerNavMobile();
 }
 
 /** Accordéons écrits dans la page (mini-lab, cahiers) : même comportement que ceux de l'arbre Éducation. */
