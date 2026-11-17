@@ -40,6 +40,11 @@ async function appareil(pseudo) {
     status: 200, contentType: "application/json", headers: cors(),
     body: JSON.stringify({ role: "visiteur", parent: false, enfants: 0, enfant: null, invitation: null })
   }));
+  // Expérience Professeur (ADR 0030) : hors du périmètre, un compte sans rôle Professeur qui ne suit aucun professeur.
+  await page.route(`${api}/api/professeur/**`, (route) => route.fulfill({
+    status: 200, contentType: "application/json", headers: cors(),
+    body: JSON.stringify({ role: "visiteur", professeur: false, profil: null, professeurs: 0 })
+  }));
   await page.goto(serveur.url);
   await page.locator("#dialogue-pseudo[open]").waitFor();
   await page.fill("#pseudo", pseudo);

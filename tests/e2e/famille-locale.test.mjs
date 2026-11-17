@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 import { gererApiCompteLocal } from "../../worker/src/compte-local.js";
 import { gererApiFamille } from "../../worker/src/famille.js";
+import { gererApiProfesseur } from "../../worker/src/professeur.js";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import { creerD1Complet } from "../helpers/d1-complet.mjs";
 
@@ -34,6 +35,7 @@ async function appareil(pseudo) {
   };
   await page.route(`${api}/api/compte-local/**`, relayer((req) => gererApiCompteLocal(req, env)));
   await page.route(`${api}/api/famille/**`, relayer((req) => gererApiFamille(req, env, { catalogue: CATALOGUE })));
+  await page.route(`${api}/api/professeur/**`, relayer((req) => gererApiProfesseur(req, env, { catalogue: CATALOGUE })));
   await page.goto(serveur.url);
   await page.locator("#dialogue-pseudo[open]").waitFor();
   await page.fill("#pseudo", pseudo);

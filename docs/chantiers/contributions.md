@@ -27,6 +27,7 @@ Décision : [ADR 0023](../decisions/0023-contributions-contenu-prof-contributeur
 | 3 | Activation avec les comptes (ADR 0017) : schéma D1, attribution des premiers rôles, test du parcours réel, **suppression de l'option temporaire « Tester les rôles »** ([issue #160](https://github.com/Kermic974/KermicLab/issues/160)) | À faire |
 | 4 | Avec IA : pré-relecture par un agent et PR d'intégration préparée automatiquement, validation humaine conservée | Backlog |
 | 5 | Notifications aux auteurs, historique des décisions, rôles par matière, attribution des rôles dans l'interface | Backlog |
+| — | Expérience Professeur (profil avec matières et niveaux, Mes classes, Mes élèves) : chantier [Professeur](professeur.md), ADR 0030 | Fait (PR en attente) |
 
 ## Intégrer une contribution validée (processus)
 

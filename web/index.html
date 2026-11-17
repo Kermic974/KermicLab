@@ -61,6 +61,9 @@
       <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <!-- Contributions (ADR 0023) : visible seulement pour un rôle contributeur, prof ou admin. -->
       <button type="button" class="nav-bouton" data-nav="contributions" id="nav-contributions" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span class="nav-texte" data-i18n="navContributions"></span></button>
+      <!-- Expérience Professeur (ADR 0030) : visible seulement pour le rôle Professeur. -->
+      <button type="button" class="nav-bouton" data-nav="classes" id="nav-classes" hidden><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span class="nav-texte" data-i18n="navClasses"></span></button>
+      <button type="button" class="nav-bouton" data-nav="eleves" id="nav-eleves" hidden><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navEleves"></span></button>
     </nav>
     <div class="barre-pied">
       <div class="nav-idees" data-boite-idees-hote></div>
@@ -414,6 +417,7 @@
   <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav="classes" id="nav-mobile-classes" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navClassesCourt"></span></button>
 </nav>
 
 <div id="toasts" role="status" aria-live="polite"></div>
@@ -489,6 +493,24 @@
       <p id="test-roles-aide" class="doux petit" data-i18n="testRolesAide"></p>
     </div>
   </section>
+  <!-- Profil du professeur (ADR 0030) : nom affiché aux élèves, matières et niveaux enseignés. Rôle Professeur seulement. -->
+  <section class="profil-bloc" id="profil-prof" aria-labelledby="profil-prof-titre" hidden>
+    <h2 id="profil-prof-titre" data-i18n="profProfilTitre"></h2>
+    <p class="doux petit" data-i18n="profProfilAide"></p>
+    <form id="formulaire-profil-prof" class="formulaire-profil formulaire-prof" novalidate>
+      <label for="prof-nom" class="etiquette-champ" data-i18n="profNomLabel"></label>
+      <input id="prof-nom" type="text" maxlength="40" autocomplete="off" spellcheck="false" aria-describedby="prof-nom-aide">
+      <p id="prof-nom-aide" class="doux petit" data-i18n="profNomAide"></p>
+      <fieldset class="prof-cases" id="prof-matieres">
+        <legend class="etiquette-champ" data-i18n="profMatieresLabel"></legend>
+      </fieldset>
+      <fieldset class="prof-cases" id="prof-niveaux">
+        <legend class="etiquette-champ" data-i18n="profNiveauxLabel"></legend>
+      </fieldset>
+      <p id="prof-profil-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
+      <button type="submit" class="bouton" data-i18n="enregistrer"></button>
+    </form>
+  </section>
   <section class="profil-bloc" aria-labelledby="configuration-titre">
     <h2 id="configuration-titre" data-i18n="configurationTitre"></h2>
     <div class="llm-controle">
@@ -546,6 +568,8 @@
      Synchronisation sur demande : données pseudonymisées et chiffrées avec une phrase secrète jamais envoyée. -->
 <section id="compte" class="carte ecran-personnel" data-ecrans="compte" aria-labelledby="salut" hidden>
   <p id="compte-memoire" class="note-locale" data-i18n="compteMemoireSession" hidden></p>
+  <!-- Lien d'invitation d'un professeur ouvert sans compte lié (ADR 0030) : l'adhésion reprend après la connexion. -->
+  <p id="prof-compte-attente" class="note-locale" data-i18n="mesProfsAttente" hidden></p>
 
   <div id="compte-options-connexion">
     <p data-i18n="connexionInvitation"></p>
@@ -662,6 +686,20 @@
       </div>
       <button type="button" class="bouton" id="famille-ouvrir-espace" data-nav="espace-famille" data-i18n="fcOuvrirEspace" hidden></button>
       <p id="famille-compte-message" class="doux" role="status" aria-live="polite"></p>
+    </section>
+    <!-- Mes professeurs (ADR 0030) : rejoindre une classe ou des cours particuliers par un lien ou un code, quitter. -->
+    <section class="compte-bloc" id="prof-compte" aria-labelledby="prof-compte-titre">
+      <h3 id="prof-compte-titre" data-i18n="mesProfsTitre"></h3>
+      <ul id="mes-profs" class="prof-invitations"></ul>
+      <p id="mes-profs-vide" class="doux petit" data-i18n="mesProfsVide"></p>
+      <form id="formulaire-code-prof" class="formulaire-profil" novalidate>
+        <label for="code-prof" class="etiquette-champ" data-i18n="mesProfsCodeLabel"></label>
+        <div class="champ-ligne">
+          <input id="code-prof" type="text" maxlength="200" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="code-prof-erreur">
+          <button type="submit" class="secondaire" data-i18n="mesProfsRejoindre"></button>
+        </div>
+        <p id="code-prof-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
+      </form>
     </section>
     <div class="zone-effacement">
       <button type="button" class="secondaire" id="compte-deconnexion" data-i18n="compteDeconnexion"></button>
@@ -811,6 +849,99 @@
       <h3 id="ef-conso-titre" data-i18n="efConsommations"></h3>
       <p class="doux petit" id="ef-conso-aide"></p>
       <div class="ef-tableau-defilant"><table id="ef-conso" class="ef-conso"></table></div>
+    </section>
+  </div>
+</section>
+
+<!-- Expérience Professeur (ADR 0030) : « Mes classes ». Données lues par l'API /api/professeur/ avec la session du compte
+     local, ou par le double de démonstration (« Tester les rôles → Professeur »). -->
+<section id="classes" class="carte ecran-personnel" data-ecrans="classes" aria-labelledby="classes-titre" hidden>
+  <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
+    <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
+    <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
+    <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
+  </nav>
+  <div class="dialogue-entete">
+    <h2 id="classes-titre" data-i18n="navClasses"></h2>
+    <button type="button" class="secondaire" id="classes-actualiser" data-i18n="efActualiser"></button>
+  </div>
+  <p id="classes-etat" class="doux" role="status" aria-live="polite"></p>
+  <div id="classes-contenu" hidden>
+    <div class="prof-resume">
+      <p id="classes-profil" class="doux"></p>
+      <button type="button" class="lien-fleche" data-nav="profil"><span data-i18n="profModifierProfil"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+    </div>
+    <div id="classes-lien" class="prof-lien carte" role="region" aria-labelledby="classes-lien-titre" hidden>
+      <h3 id="classes-lien-titre" data-i18n="profLienTitre"></h3>
+      <p class="doux petit" id="classes-lien-aide"></p>
+      <div class="champ-ligne">
+        <input id="classes-lien-url" type="text" readonly aria-labelledby="classes-lien-titre">
+        <button type="button" class="bouton" id="classes-lien-copier" data-i18n="profCopier"></button>
+      </div>
+      <p class="code-invitation" id="classes-lien-code"></p>
+      <p class="doux petit" data-i18n="profLienUneFois"></p>
+      <div class="actions">
+        <button type="button" class="secondaire petit-bouton" id="classes-lien-simuler" data-i18n="profDemoSimuler" hidden></button>
+        <button type="button" class="secondaire petit-bouton" id="classes-lien-fermer" data-i18n="fermer"></button>
+      </div>
+    </div>
+    <section class="ef-bloc" aria-labelledby="classes-liste-titre">
+      <h3 id="classes-liste-titre" data-i18n="profMesClasses"></h3>
+      <p id="classes-vide" class="doux" data-i18n="profAucuneClasse" hidden></p>
+      <div id="classes-liste" class="ef-enfants"></div>
+      <details id="classes-ajout" class="famille-ajout">
+        <summary data-i18n="profNouvelleClasse"></summary>
+        <form id="formulaire-classe" class="formulaire-profil formulaire-prof" novalidate>
+          <label for="classe-nom" class="etiquette-champ" data-i18n="profClasseNom"></label>
+          <input id="classe-nom" type="text" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="classe-nom-aide">
+          <p id="classe-nom-aide" class="doux petit" data-i18n="profClasseNomAide"></p>
+          <label for="classe-matiere" class="etiquette-champ" data-i18n="profMatiere"></label>
+          <select id="classe-matiere"></select>
+          <label for="classe-niveau" class="etiquette-champ" data-i18n="profNiveau"></label>
+          <select id="classe-niveau"></select>
+          <p id="classe-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
+          <button type="submit" class="bouton" data-i18n="profCreerClasse"></button>
+        </form>
+      </details>
+    </section>
+    <section class="ef-bloc" aria-labelledby="classes-particuliers-titre">
+      <h3 id="classes-particuliers-titre" data-i18n="profParticuliers"></h3>
+      <p class="doux" id="classes-particuliers"></p>
+      <div class="actions">
+        <label class="prof-duree"><span class="visuellement-cache" data-i18n="profDuree"></span>
+          <select id="particulier-duree" data-prof-duree></select></label>
+        <button type="button" class="bouton petit-bouton" id="particulier-lien" data-i18n="profLienParticulier"></button>
+      </div>
+      <ul id="particulier-invitations" class="prof-invitations"></ul>
+    </section>
+  </div>
+</section>
+
+<!-- Expérience Professeur (ADR 0030) : « Mes élèves », suivi des élèves affiliés (classes et cours particuliers). -->
+<section id="eleves" class="carte ecran-personnel" data-ecrans="eleves" aria-labelledby="eleves-titre" hidden>
+  <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
+    <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
+    <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
+    <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
+  </nav>
+  <div class="dialogue-entete">
+    <h2 id="eleves-titre" data-i18n="navEleves"></h2>
+    <button type="button" class="secondaire" id="eleves-actualiser" data-i18n="efActualiser"></button>
+  </div>
+  <p id="eleves-etat" class="doux" role="status" aria-live="polite"></p>
+  <div id="eleves-contenu" hidden>
+    <label class="prof-filtre"><span class="etiquette-champ" data-i18n="profFiltreClasse"></span>
+      <select id="eleves-filtre"></select></label>
+    <section class="ef-bloc" aria-labelledby="eleves-synthese-titre">
+      <h3 id="eleves-synthese-titre" data-i18n="efSynthese"></h3>
+      <dl id="eleves-chiffres" class="chiffres"></dl>
+      <p id="eleves-a-revoir" class="petit"></p>
+      <ul id="eleves-alertes" class="ef-alertes"></ul>
+    </section>
+    <section class="ef-bloc" aria-labelledby="eleves-liste-titre">
+      <h3 id="eleves-liste-titre" data-i18n="profListeEleves"></h3>
+      <p id="eleves-vide" class="doux" data-i18n="profAucunEleve" hidden></p>
+      <div id="eleves-liste" class="ef-enfants"></div>
     </section>
   </div>
 </section>
@@ -1100,6 +1231,27 @@
     <div class="actions">
       <button type="button" class="secondaire" id="fermer-constructeur" data-i18n="fermer"></button>
       <button type="submit" id="construire-cahier" data-i18n="cahierConstruire"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Rejoindre un professeur (ADR 0030) : l'élève voit qui l'invite et ce qui est partagé, choisit son pseudo et accepte. -->
+<dialog id="dialogue-rejoindre" data-sans-idees aria-labelledby="rejoindre-titre" aria-describedby="rejoindre-resume">
+  <form id="formulaire-rejoindre" class="formulaire-profil" method="dialog" novalidate>
+    <h2 id="rejoindre-titre" data-i18n="rejoindreTitre"></h2>
+    <p id="rejoindre-resume"></p>
+    <p class="doux petit" data-i18n="rejoindrePartage"></p>
+    <label for="rejoindre-pseudo" class="etiquette-champ" data-i18n="rejoindrePseudo"></label>
+    <input id="rejoindre-pseudo" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="rejoindre-pseudo-aide">
+    <p id="rejoindre-pseudo-aide" class="doux petit" data-i18n="rejoindrePseudoAide"></p>
+    <label class="case-memoire">
+      <input type="checkbox" id="rejoindre-accord">
+      <span><strong data-i18n="rejoindreAccordTitre"></strong><span class="doux petit" data-i18n="rejoindreAccordTexte"></span></span>
+    </label>
+    <p id="rejoindre-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" class="secondaire" id="rejoindre-annuler" data-i18n="profAnnuler"></button>
+      <button type="submit" class="bouton" id="rejoindre-valider" data-i18n="mesProfsRejoindre"></button>
     </div>
   </form>
 </dialog>

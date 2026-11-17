@@ -5,7 +5,7 @@ import { lireConfiguration } from "./configuration.js";
 /** Fonctionnalités du site soumises à une stratégie d'accès. */
 export const FONCTIONNALITES = Object.freeze([
   "chat", "ia.tuteur", "ia.defi", "ia.cahiers", "ia.idees", "jeux", "cahiers", "defi",
-  "contributions.proposer", "contributions.relire", "famille", "synchronisation"
+  "contributions.proposer", "contributions.relire", "famille", "synchronisation", "professeur"
 ]);
 
 /** Permissions d'administration : une par écran du back-office. */
@@ -23,7 +23,7 @@ export const ROLES_SYSTEME = Object.freeze({
   "beta-testeur": { libelle: "Bêta-testeur", description: "Compte invité pendant la phase de test.", permissions: [...BASE, "famille", "contributions.proposer"] },
   parent: { libelle: "Parent", description: "Compte famille : profils des enfants et progression.", permissions: [...BASE, "famille"] },
   contributeur: { libelle: "Contributeur", description: "Propose des corrections et des ajouts de contenu.", permissions: [...BASE, "famille", "contributions.proposer"] },
-  prof: { libelle: "Professeur", description: "Relit et valide les contributions.", permissions: [...BASE, "famille", "contributions.proposer", "contributions.relire"] },
+  prof: { libelle: "Professeur", description: "Relit et valide les contributions, gère ses classes et suit ses élèves.", permissions: [...BASE, "famille", "contributions.proposer", "contributions.relire", "professeur"] },
   admin: { libelle: "Administrateur", description: "Accès complet, back-office compris.", permissions: [...PERMISSIONS] }
 });
 export const ROLE_PAR_DEFAUT = "visiteur";
