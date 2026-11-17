@@ -67,6 +67,16 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run check:pages
+      - name: Valider le référentiel canonique
+        shell: bash
+        run: |
+          npm run --silent check:referentiel -- --json | tee validation-referentiel.json
+      - name: Conserver le rapport du référentiel
+        if: ${{ always() && hashFiles('validation-referentiel.json') != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: validation-referentiel
+          path: validation-referentiel.json
       - name: Les hashes CSP des pages sont à jour
         run: git diff --exit-code -- catalogue/ index.html
       - run: npm test
