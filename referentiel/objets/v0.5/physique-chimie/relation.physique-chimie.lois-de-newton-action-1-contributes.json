@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.lois-de-newton-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-newton/contenu.json"
+  },
+  "source": "microskill.physique-chimie.lois-de-newton-action-1",
+  "target": "skill.physique-chimie.lois-de-newton"
+}

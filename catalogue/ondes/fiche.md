@@ -27,6 +27,9 @@ questions:
   - je ne comprends pas la célérité d'une onde
   - quelle est la différence entre période et longueur d'onde ?
   - what is a wavelength?
+prerequis:
+niveaux: seconde, premiere, terminale
+competences: pc-ondes-action-1, pc-ondes-action-2
 ---
 
 # Les ondes mécaniques

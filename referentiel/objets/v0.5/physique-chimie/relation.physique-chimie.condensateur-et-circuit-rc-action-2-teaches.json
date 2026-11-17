@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.condensateur-et-circuit-rc-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/condensateur-et-circuit-rc/contenu.json"
+  },
+  "source": "notion.physique-chimie.condensateur-et-circuit-rc",
+  "target": "microskill.physique-chimie.condensateur-et-circuit-rc-action-2"
+}

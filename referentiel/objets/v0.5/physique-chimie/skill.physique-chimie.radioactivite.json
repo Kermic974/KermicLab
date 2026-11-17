@@ -1,0 +1,11 @@
+{
+  "id": "skill.physique-chimie.radioactivite",
+  "type": "skill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/radioactivite/contenu.json"
+  },
+  "label": "Interpréter la décroissance radioactive"
+}

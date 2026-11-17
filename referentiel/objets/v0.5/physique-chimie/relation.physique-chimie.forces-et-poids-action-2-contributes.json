@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.forces-et-poids-action-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/forces-et-poids/contenu.json"
+  },
+  "source": "microskill.physique-chimie.forces-et-poids-action-2",
+  "target": "skill.physique-chimie.forces-et-poids"
+}

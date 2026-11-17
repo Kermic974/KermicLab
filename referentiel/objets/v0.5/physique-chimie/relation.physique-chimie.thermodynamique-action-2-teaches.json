@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.thermodynamique-action-2-teaches",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thermodynamique/contenu.json"
+  },
+  "source": "notion.physique-chimie.thermodynamique",
+  "target": "microskill.physique-chimie.thermodynamique-action-2"
+}

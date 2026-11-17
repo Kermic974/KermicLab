@@ -26,6 +26,9 @@ questions:
   - je ne comprends pas le principe d'inertie
   - c'est quoi une chronophotographie ?
   - what is a frame of reference in motion?
+prerequis:
+niveaux: cycle-4, seconde
+competences: pc-mouvements-action-1, pc-mouvements-action-2
 ---
 
 # Mouvements et référentiels

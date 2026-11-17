@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.son-et-lumiere-action-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/son-et-lumiere/contenu.json"
+  },
+  "source": "microskill.physique-chimie.son-et-lumiere-action-1",
+  "target": "skill.physique-chimie.son-et-lumiere"
+}

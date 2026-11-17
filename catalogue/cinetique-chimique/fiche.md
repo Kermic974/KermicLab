@@ -27,6 +27,9 @@ questions:
   - je ne comprends pas le temps de demi-réaction
   - à quoi sert un catalyseur ?
   - what affects the rate of a reaction?
+prerequis: quantite-de-matiere
+niveaux: terminale
+competences: pc-cinetique-chimique-action-1, pc-cinetique-chimique-action-2
 ---
 
 # La cinétique chimique

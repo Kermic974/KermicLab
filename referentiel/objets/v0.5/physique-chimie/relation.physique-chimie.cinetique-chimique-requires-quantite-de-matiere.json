@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.cinetique-chimique-requires-quantite-de-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cinetique-chimique/contenu.json"
+  },
+  "source": "notion.physique-chimie.cinetique-chimique",
+  "target": "notion.physique-chimie.quantite-de-matiere",
+  "rationale": "La définition de la vitesse utilise la variation d’une quantité de matière."
+}

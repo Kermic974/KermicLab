@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.condensateur-et-circuit-rc-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/condensateur-et-circuit-rc/contenu.json"
+  },
+  "object": "notion.physique-chimie.condensateur-et-circuit-rc",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

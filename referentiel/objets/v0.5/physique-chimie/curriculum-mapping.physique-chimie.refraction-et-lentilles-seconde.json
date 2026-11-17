@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.refraction-et-lentilles-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/refraction-et-lentilles/contenu.json"
+  },
+  "object": "notion.physique-chimie.refraction-et-lentilles",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}
