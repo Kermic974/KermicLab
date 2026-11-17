@@ -24,3 +24,7 @@ Le fichier `referentiel/projection-v0.json` active la projection pour les seules
 Le build lit les Relations sortantes et les placements du Curriculum désigné. Les brouillons participent à la projection et les liens ou placements dépréciés sont ignorés. Les niveaux suivent l’ordre V0 et les autres listes suivent l’ordre déclaré, après conversion en slugs et dédoublonnage. Une liste déclarée doit contenir exactement les slugs calculés. Une incohérence bloque le build.
 
 `npm run build` met à jour les champs générés. `npm run check:pages` signale les valeurs ou l’ordre obsolètes sans modifier les fiches. La migration du corpus pilote et la qualification des résultats des consommateurs restent suivies dans #256.
+
+## Création des lots v0.5
+
+Voir [le guide de génération](generation-v0.5.md) et [l’inventaire public](inventaire-v0.5.json).
