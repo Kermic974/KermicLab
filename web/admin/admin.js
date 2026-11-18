@@ -205,11 +205,22 @@ function rendreUtilisateurs(donnees) {
   const zoneExport = h("pre", { hidden: true, tabindex: "0", "aria-label": "Données exportées" });
   const zoneMotDePasse = h("div", { hidden: true, tabindex: "-1", class: "admin-bandeau zone-mot-de-passe", role: "status", "aria-label": "Mot de passe provisoire" });
   const ligneActions = (u) => {
-    const role = selecteur(roles.map((r) => [r.id, r.libelle]), u.role, { "aria-label": `Rôle du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` });
+    // Rôles cumulatifs (ADR 0034) : plusieurs rôles cochés ; le rôle apporté par la souscription s'y ajoute.
+    const choisis = u.roles ?? [u.role];
+    const cases = roles.map((r) => h("input", { type: "checkbox", value: r.id, checked: choisis.includes(r.id), "data-role-compte": r.id }));
+    const resume = h("summary", { text: choisis.map((id) => roles.find((r) => r.id === id)?.libelle ?? id).join(" + ") });
+    const role = h("details", { class: "admin-roles", "aria-label": `Rôles du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` }, resume,
+      h("fieldset", { class: "admin-cases" }, h("legend", { class: "visuellement-cache", text: "Rôles cumulés" }), cases.map((c) => h("label", {}, c, roles.find((r) => r.id === c.value).libelle))),
+      u.roleOffre && !choisis.includes(u.roleOffre) ? h("p", { class: "doux petit", text: `+ ${roles.find((r) => r.id === u.roleOffre)?.libelle ?? u.roleOffre} (apporté par la souscription)` }) : null);
+    role.addEventListener("change", () => {
+      const liste = cases.filter((c) => c.checked).map((c) => roles.find((r) => r.id === c.value).libelle);
+      resume.textContent = liste.length ? liste.join(" + ") : "Aucun rôle coché";
+    });
     const niveau = selecteur(niveaux.map((n) => [n, n]), u.niveau, { "aria-label": `Niveau du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` });
-    for (const champ of [role, niveau]) champ.dataset.valeurInitiale = champ.value;
-    return { role, niveau };
+    niveau.dataset.valeurInitiale = niveau.value;
+    return { role, cases, niveau };
   };
+  const rolesCoches = (u) => u.champs.cases.filter((c) => c.checked).map((c) => c.value);
   const lignes = utilisateurs.map((u) => ({ ...u, champs: ligneActions(u) }));
   return [
     h("p", { class: "admin-bandeau ok", text: "Aucun e-mail, aucun nom, aucune adresse IP n'est affiché ici : la base n'en contient pas. Un compte est identifié par un identifiant aléatoire." }),
@@ -218,14 +229,18 @@ function rendreUtilisateurs(donnees) {
     bloc("Comptes", tableau(`${utilisateurs.length} compte(s)`, [
       { titre: "Type", cellule: (u) => lib("comptes", u.type) },
       { titre: "Identifiant", cellule: (u) => h("code", { text: rechercheUtilisateur ? u.id : u.id.slice(0, 8), title: u.id }) },
-      { titre: "Rôle", cellule: (u) => u.champs.role },
+      { titre: "Rôles (cumulés)", cellule: (u) => u.champs.role },
       { titre: "Niveau", cellule: (u) => u.champs.niveau },
       { titre: "Sécurité", cellule: (u) => pastille(lib("etats", u.etat), tonEtat[u.etat]) },
       { titre: "Créé le", cellule: (u) => dateCourte(u.creeLe) },
       { titre: "Dernière connexion", cellule: (u) => (u.type === "compte" ? dateCourte(u.derniereConnexion) : u.bloque ? "bloqué (essais)" : u.provisoire ? "mot de passe provisoire" : "—") },
       { titre: "Enfants", nombre: true, cellule: (u) => (u.type === "compte" ? nombre(u.enfants) : "—") },
       { titre: "Actions", cellule: (u) => h("div", { class: "admin-ligne" },
-        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => agir(() => api("PATCH", `/utilisateurs/${u.type}/${u.id}`, { role: u.champs.role.value, niveau: u.champs.niveau.value }), "Rôle et niveau enregistrés.") }, "Enregistrer"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => {
+          const choisis = rolesCoches(u);
+          if (!choisis.length) { annoncer("Coche au moins un rôle.", { erreur: true }); return; }
+          agir(() => api("PATCH", `/utilisateurs/${u.type}/${u.id}`, { roles: choisis, niveau: u.champs.niveau.value }), "Rôles et niveau enregistrés.");
+        } }, "Enregistrer"),
         h("button", { type: "button", class: "secondaire petit-bouton", onclick: async () => {
           try {
             zoneExport.textContent = JSON.stringify(await api("GET", `/utilisateurs/${u.type}/${u.id}/export`), null, 2);
@@ -285,12 +300,15 @@ async function ecranRoles() {
   }
 
   // Simulateur
-  const roleSimule = selecteur(roles.map((r) => [r.id, r.libelle]), "visiteur", { id: "simulation-role" });
+  // Rôles cumulés (ADR 0034) : plusieurs rôles cochés ; le rôle de la souscription simulée s'y ajoute.
+  const rolesSimules = roles.map((r) => h("input", { type: "checkbox", value: r.id, checked: r.id === "visiteur", "data-simulation-role": r.id }));
+  const roleSimule = h("fieldset", { class: "admin-cases", id: "simulation-role" }, h("legend", { class: "visuellement-cache", text: "Rôles cumulés" }),
+    rolesSimules.map((c) => h("label", {}, c, roles.find((r) => r.id === c.value).libelle)));
   const niveauSimule = selecteur(niveaux.map((n) => [n, n]), "gratuit", { id: "simulation-niveau" });
   const resultat = h("div", {});
   const simuler = async () => {
     try {
-      const { decisions } = await api("POST", "/strategies/simuler", { role: roleSimule.value, niveau: niveauSimule.value });
+      const { decisions } = await api("POST", "/strategies/simuler", { roles: rolesSimules.filter((c) => c.checked).map((c) => c.value), niveau: niveauSimule.value });
       const decision = (d) => pastille(`${d.autorise ? "Autorisé" : "Refusé"} · ${lib("raisons", d.raison)}`, d.autorise ? "ok" : "danger");
       resultat.replaceChildren(tableau("Décision par fonctionnalité", [
         { titre: "Fonctionnalité", cellule: (d) => lib("fonctionnalites", d.fonctionnalite) },
@@ -332,9 +350,9 @@ async function ecranRoles() {
         { titre: "", cellule: (s) => h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => agir(() => api("PUT", `/strategies/${s.fonctionnalite}`, { mode: s.mode.value, roles: coches(s.roles), niveaux: coches(s.niveaux) }), "Stratégie enregistrée.") }, "Enregistrer") }
       ], lignes)),
     bloc("Simulateur",
-      h("p", { class: "doux", text: "Vérifie ce qu'un rôle pourrait faire avant d'activer le contrôle d'accès." }),
+      h("p", { class: "doux", text: "Vérifie ce qu'un compte pourrait faire avant d'activer le contrôle d'accès. Les rôles se cumulent : un compte reçoit l'union de leurs permissions, plus le rôle apporté par sa souscription." }),
       h("div", { class: "admin-ligne" },
-        h("label", { class: "admin-champ" }, h("span", { text: "Rôle" }), roleSimule),
+        h("div", { class: "admin-champ" }, h("span", { text: "Rôles" }), roleSimule),
         h("label", { class: "admin-champ" }, h("span", { text: "Niveau" }), niveauSimule),
         h("button", { type: "button", class: "bouton", onclick: simuler }, "Simuler")),
       resultat)

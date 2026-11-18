@@ -28,6 +28,7 @@ import {
 import { supprimerCompte } from "./comptes.js";
 import { effacerCompteLocal, genererMotDePasseProvisoire, remplacerMotDePasse } from "./compte-local.js";
 import { donneesCompteLocal } from "./compte-local-acces.js";
+import { cumulerRoles, ecrireAttribution, rolesManuels } from "./attributions.js";
 import { creerOuCommenterIssue } from "./github.js";
 import { THEMES, THEME_PERSONNALISE, contraste, couleursTheme, deriverVariables, validerTheme } from "../../web/theme.js";
 
@@ -90,7 +91,8 @@ async function listerUtilisateurs(env, { id = null } = {}) {
     tenter(() => toutes(env, `SELECT c.id, c.role, c.created_at, c.last_login_at, c.consent_version,
       (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ${filtre} ORDER BY c.created_at DESC, c.rowid DESC LIMIT 200`, ...valeurs), []),
     tenter(() => toutes(env, `SELECT c.id, c.cree_le, c.bloque_jusqua, c.mdp_provisoire FROM comptes_locaux c ${filtre} ORDER BY c.cree_le DESC, c.rowid DESC LIMIT 200`, ...valeurs), []),
-    tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), []),
+    tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, roles, niveau FROM attributions_roles"), null)
+      .then((l) => l ?? tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), [])),
     tenter(() => toutes(env, "SELECT profil, etat, expire_le FROM profils_securite"), []),
     tenter(() => toutes(env, "SELECT enfant_id, parent_id FROM familles_liens"), [])
   ]);
@@ -101,10 +103,15 @@ async function listerUtilisateurs(env, { id = null } = {}) {
   const attribution = new Map(attributions.map((a) => [`${a.type_compte}:${a.compte_id}`, a]));
   const aujourdhui = jourDe(Date.now());
   const etat = new Map(etats.filter((e) => !e.expire_le || e.expire_le >= aujourdhui).map((e) => [e.profil, e.etat]));
+  const reglages = await chargerReglages(env);
   const decrire = async (type, id, roleInitial) => {
     const a = attribution.get(`${type}:${id}`);
     const profil = await profilDuCompte(env, type, id);
-    return { type, id, role: a?.role_id ?? roleInitial, niveau: a?.niveau ?? NIVEAU_PAR_DEFAUT, profil, etat: etat.get(profil) ?? "normal" };
+    // Rôles cumulatifs (ADR 0034) : rôles attribués à la main, plus le rôle apporté par la souscription.
+    const roles = rolesManuels(a ?? { role_id: roleInitial });
+    const niveau = a?.niveau ?? NIVEAU_PAR_DEFAUT;
+    const roleOffre = reglages.souscriptions.find((s) => s.id === niveau)?.role ?? null;
+    return { type, id, role: roles[0], roles, roleOffre, rolesEffectifs: cumulerRoles(roles, roleOffre), niveau, profil, etat: etat.get(profil) ?? "normal" };
   };
   const utilisateurs = [];
   for (const c of comptes) {
@@ -121,19 +128,23 @@ async function listerUtilisateurs(env, { id = null } = {}) {
 const TABLE_COMPTE = { compte: "comptes", "compte-local": "comptes_locaux" };
 const compteExiste = async (env, type, id) => !!(await tenter(() => env.DB.prepare(`SELECT 1 FROM ${TABLE_COMPTE[type]} WHERE id = ?`).bind(id).first(), null));
 
+/**
+ * Rôles (cumulatifs, ADR 0034) et souscription d'un compte. `roles` : liste de rôles (au moins un) ; `role` (un seul
+ * rôle) reste accepté pour les clients précédents.
+ */
 async function modifierUtilisateur(env, type, id, corps, reglages) {
   if (!(await compteExiste(env, type, id))) return erreur("introuvable", 404);
-  const roles = await listerRoles(env);
-  const role = String(corps?.role ?? "");
+  const connus = (await listerRoles(env)).map((r) => r.id);
+  const demandes = Array.isArray(corps?.roles) ? corps.roles.map(String) : [String(corps?.role ?? "")];
+  const roles = [...new Set(demandes)];
+  if (!roles.length || roles.length > 8 || !roles.every((r) => connus.includes(r))) return erreur("role-inconnu", 400);
   const niveau = String(corps?.niveau ?? NIVEAU_PAR_DEFAUT);
-  if (!roles.some((r) => r.id === role)) return erreur("role-inconnu", 400);
   if (niveau !== NIVEAU_PAR_DEFAUT && !reglages.niveaux.some((n) => n.id === niveau)) return erreur("niveau-inconnu", 400);
-  await env.DB.prepare(`INSERT INTO attributions_roles (type_compte, compte_id, role_id, niveau, maj_le) VALUES (?, ?, ?, ?, datetime('now'))
-    ON CONFLICT (type_compte, compte_id) DO UPDATE SET role_id = excluded.role_id, niveau = excluded.niveau, maj_le = excluded.maj_le`)
-    .bind(type, id, role, niveau).run();
-  // La colonne historique `comptes.role` reste alignée quand le rôle fait partie de ses valeurs permises (ADR 0023).
-  if (type === "compte" && ROLES_HISTORIQUES.includes(role)) await env.DB.prepare("UPDATE comptes SET role = ? WHERE id = ?").bind(role, id).run();
-  await noter(env, "utilisateur.role", `${type}:${id}:${role}:${niveau}`);
+  await ecrireAttribution(env, type, id, { roles, niveau });
+  // La colonne historique `comptes.role` reste alignée sur le premier rôle permis par sa contrainte (ADR 0023).
+  const historique = roles.find((r) => ROLES_HISTORIQUES.includes(r));
+  if (type === "compte" && historique) await env.DB.prepare("UPDATE comptes SET role = ? WHERE id = ?").bind(historique, id).run();
+  await noter(env, "utilisateur.role", `${type}:${id}:${roles.join("+")}:${niveau}`);
   return json({ ok: true });
 }
 
@@ -513,7 +524,9 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     const c = await corps();
     if (c.erreur) return c.erreur;
     const [strategies, roles] = await Promise.all([listerStrategies(env), listerRoles(env)]);
-    const sujet = { role: String(c.corps.role ?? ROLE_PAR_DEFAUT), niveau: String(c.corps.niveau ?? NIVEAU_PAR_DEFAUT) };
+    // Un ou plusieurs rôles cumulés (ADR 0034) ; le rôle de la souscription s'y ajoute dans la décision.
+    const rolesSimules = (Array.isArray(c.corps.roles) && c.corps.roles.length ? c.corps.roles : [c.corps.role ?? ROLE_PAR_DEFAUT]).map(String).slice(0, 8);
+    const sujet = { role: rolesSimules[0], roles: rolesSimules, niveau: String(c.corps.niveau ?? NIVEAU_PAR_DEFAUT) };
     // Simulation : la décision telle qu'elle serait rendue contrôle activé, à côté de la décision en vigueur.
     const actif = Object.create(envEffectif);
     actif.CONTROLE_ACCES_ACTIF = "true";

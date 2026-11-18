@@ -19,7 +19,7 @@ import {
   validerAdhesion, validerClasse, validerDemandeInvitation, validerProfilProf, validerResultat
 } from "../../web/professeur.js";
 import { compteDeSession } from "./compte-local.js";
-import { listerRoles, ROLES_SYSTEME } from "./roles.js";
+import { attributionDuCompte } from "./attributions.js";
 import { roleContributionCompteLocal } from "./contributions.js";
 import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
@@ -51,22 +51,14 @@ async function lireCorps(requete) {
   return { corps };
 }
 
-/** Rôle attribué au compte local (back-office) ; « visiteur » sans attribution ou si la table manque. */
-async function roleDuCompte(env, compteId) {
-  try {
-    const a = await env.DB.prepare("SELECT role_id FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?").bind(compteId).first();
-    return a?.role_id ?? "visiteur";
-  } catch {
-    return "visiteur";
-  }
-}
+/**
+ * Rôles cumulés du compte local (ADR 0034) : rôles attribués dans le back-office et rôle de sa souscription.
+ * « visiteur » sans attribution ou si la table manque.
+ */
+const roleDuCompte = (env, compteId) => attributionDuCompte(env, "compte-local", compteId);
 
-/** Le rôle donne-t-il la permission `professeur` ? Rôles effectifs (surcharges du back-office comprises). */
-async function rolePermetProfesseur(env, role) {
-  let permissions;
-  try { permissions = (await listerRoles(env)).find((r) => r.id === role)?.permissions; } catch { permissions = ROLES_SYSTEME[role]?.permissions; }
-  return (permissions ?? []).includes("professeur");
-}
+/** L'un des rôles cumulés donne-t-il la permission `professeur` ? Rôles effectifs (surcharges du back-office comprises). */
+const rolePermetProfesseur = (env, attribution) => attribution.permissions.includes("professeur");
 
 const profilDe = async (env, compteId) => lireProfilProf(
   await env.DB.prepare("SELECT nom_affiche, matieres, niveaux FROM professeurs_profils WHERE compte_id = ?").bind(compteId).first()
@@ -478,12 +470,13 @@ export async function gererApiProfesseur(requete, env, { catalogue, iaCahier = f
   let m;
 
   if (est("GET", "moi")) {
-    const role = await roleDuCompte(env, moi);
-    const professeur = await rolePermetProfesseur(env, role);
+    const attribution = await roleDuCompte(env, moi);
+    const professeur = rolePermetProfesseur(env, attribution);
+    const role = attribution.roles[0];
     return json({
       // `id` : identifiant du compte (le sien), pour reconnaître ses propres contributions ; `contribution` : rôle de
       // contribution déduit des permissions (ADR 0023 §6 ter), null sans permission de proposer.
-      id: moi, role, professeur, contribution: await roleContributionCompteLocal(env, moi),
+      id: moi, role, roles: attribution.roles, professeur, contribution: await roleContributionCompteLocal(env, moi),
       profil: professeur ? await profilDe(env, moi) : null,
       professeurs: await compter(env, "SELECT count(*) AS n FROM professeurs_eleves WHERE eleve_id = ?", moi)
     });
@@ -504,7 +497,7 @@ export async function gererApiProfesseur(requete, env, { catalogue, iaCahier = f
   if (est("PUT", "resultats")) return enregistrerResultats(env, moi, corps);
 
   // Routes du professeur : rôle Professeur exigé (permission `professeur`).
-  if (!(await rolePermetProfesseur(env, await roleDuCompte(env, moi)))) return erreur("role-professeur-requis", 403);
+  if (!rolePermetProfesseur(env, await roleDuCompte(env, moi))) return erreur("role-professeur-requis", 403);
   if (est("PUT", "profil")) return enregistrerProfil(env, moi, corps);
   if (est("GET", "classes")) return classes(env, moi);
   if (est("POST", "classes")) return creerClasse(env, moi, corps);

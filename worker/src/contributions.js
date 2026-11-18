@@ -5,7 +5,7 @@
 import * as regles from "../../web/contributions.js";
 import { donneesPersonnelles } from "./moderation.js";
 import { creerOuCommenterIssue } from "./github.js";
-import { ROLES_SYSTEME, listerRoles } from "./roles.js";
+import { attributionDuCompte } from "./attributions.js";
 
 export const LABEL_ISSUE = "contribution-validee";
 export const MAX_LISTE = 200;
@@ -93,16 +93,13 @@ export function roleDeContribution(role, permissions = []) {
   return null;
 }
 
-/** Rôle de contribution d'un compte local (rôle attribué dans le back-office ; « visiteur » sans attribution). */
+/**
+ * Rôle de contribution d'un compte local : déduit des permissions cumulées de ses rôles (attribués dans le back-office
+ * et rôle de sa souscription, ADR 0034) ; « admin » si l'un d'eux est administrateur.
+ */
 export async function roleContributionCompteLocal(env, compteId) {
-  let role = "visiteur";
-  try {
-    role = (await env.DB.prepare("SELECT role_id FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?")
-      .bind(compteId).first())?.role_id ?? "visiteur";
-  } catch { /* table absente : visiteur */ }
-  let permissions;
-  try { permissions = (await listerRoles(env)).find((r) => r.id === role)?.permissions; } catch { permissions = ROLES_SYSTEME[role]?.permissions; }
-  return roleDeContribution(role, permissions ?? []);
+  const { roles, permissions } = await attributionDuCompte(env, "compte-local", compteId);
+  return roleDeContribution(roles.includes("admin") ? "admin" : roles[0], permissions);
 }
 
 /** Lot d'effacement des contributions d'un compte local (suppression du compte) ; vide si la table manque. */
