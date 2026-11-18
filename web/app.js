@@ -3963,8 +3963,18 @@ function brancherTrophees() {
     if (e.data?.type === "kermiclab:evenement") {
       const ev = evenements.normaliserEvenement(e.data, id);
       if (!ev) { console.warn("evenements : message invalide", id); return; }
-      etat.evenements = evenements.enregistrer(etat.evenements, ev, progression.jourLocal(), { planifier: ProgressionJeux.planifierCarte });
+      const avant = etat.evenements;
+      etat.evenements = evenements.enregistrer(avant, ev, progression.jourLocal(), { planifier: ProgressionJeux.planifierCarte });
       evenements.sauver(stockage(), etat.evenements);
+      // L'XP récompense l'apprentissage : exercice réussi la première fois, notion validée ou révisée.
+      const gains = evenements.gainsApprentissage(avant, etat.evenements, ev);
+      const resultat = progression.enregistrerApprentissage(etat.progres, gains, progression.jourLocal());
+      if (resultat.xpGagne) appliquerResultat(resultat);
+      // Notion validée la première fois : proposer un jeu qui la fait travailler, s'il en existe un.
+      if (gains.validation === "premiere") {
+        const jeu = etat.registre?.jeuxDeLaNotion(id)[0];
+        if (jeu) notifier(t("jeuPourNotion", { jeu: jeu.titre }), "🎲");
+      }
       if (etat.ecran === "progression") rendreProgression();
       return;
     }
@@ -5734,6 +5744,19 @@ function rendreJeux() {
     const carte = element("article", { classe: "carte jeu-carte" });
     carte.append(element("h3", { texte: jeu.titre }));
     if (jeu.resume) carte.append(element("p", { classe: "doux", texte: jeu.resume }));
+    // Lien Jeux ↔ Éducation : les notions que ce jeu fait travailler, ouvrables d'un geste.
+    const liees = etat.registre.notionsDuJeu(jeu.id);
+    if (liees.length) {
+      const ligne = element("p", { classe: "jeu-notions doux" });
+      ligne.append(element("span", { cle: "jeuNotionsLiees" }), " ");
+      liees.forEach((n, i) => {
+        if (i) ligne.append(", ");
+        const lien = element("button", { classe: "lien-bouton", texte: n.titre, attributs: { type: "button", "data-notion-liee": n.id } });
+        lien.addEventListener("click", () => ouvrirNotion(n));
+        ligne.append(lien);
+      });
+      carte.append(ligne);
+    }
     // « Reprendre » seulement si une partie est réellement enregistrée sur cet appareil.
     const partie = Boolean(etat.trophees[jeu.id]);
     if (progression.estDecouverte(etat.progres, "jeu", jeu.id)) carte.append(element("span", { classe: "pastille ok", cle: "jeuDejaLance" }));

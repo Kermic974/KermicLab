@@ -73,6 +73,28 @@ export function enregistrer(etat, ev, jour, { planifier } = {}) {
   return suivant;
 }
 
+/**
+ * Gains d'apprentissage d'un événement (recommandation « l'XP récompense l'apprentissage ») : compare l'agrégat avant et
+ * après l'événement. Fonction pure ; rien n'est gagné deux fois pour le même fait :
+ *   - exercice : `premier-coup` ou `apres-essais` à la première réussite d'un exercice seulement ;
+ *   - validation : `premiere` (notion terminée la première fois) ou `revision` (nouvelle validation un autre jour).
+ */
+export function gainsApprentissage(avant, apres, ev) {
+  const gains = { exercice: null, validation: null };
+  if (!ev || !apres) return gains;
+  const nAvant = avant?.notions?.[ev.notion];
+  const nApres = apres.notions?.[ev.notion];
+  if (!nApres) return gains;
+  if (ev.evenement === "reponse" && ev.correct && ev.exercice) {
+    const eAvant = nAvant?.exercices?.[ev.exercice];
+    if (!eAvant?.reussi && nApres.exercices?.[ev.exercice]?.reussi) gains.exercice = ev.essai === 1 ? "premier-coup" : "apres-essais";
+  }
+  if (ev.evenement === "termine" && (nApres.validations ?? 0) > (nAvant?.validations ?? 0)) {
+    gains.validation = (nAvant?.validations ?? 0) === 0 ? "premiere" : "revision";
+  }
+  return gains;
+}
+
 const carteDe = (e) => (e?.boite ? { boite: e.boite, prochaine: e.prochaine } : undefined);
 const carte = ({ boite, prochaine }) => ({ boite, prochaine });
 

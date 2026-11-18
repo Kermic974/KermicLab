@@ -683,8 +683,11 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   }
   for (const n of notions) {
     const facultatifs = Object.keys(n).filter((k) => !["id", "matiere", "niveau", "titre", "version"].includes(k));
-    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis"].includes(k)), `${n.id} : ${facultatifs}`);
+    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees"].includes(k)), `${n.id} : ${facultatifs}`);
   }
+  // Jeux reliés aux notions (ADR 0031) : seulement sur un jeu qui les déclare.
+  assert.deepEqual(notions.find((n) => n.id === "2048")?.notionsLiees, ["puissances"]);
+  assert.ok(notions.filter((n) => n.notionsLiees).every((n) => n.matiere === "jeux"));
   // Référentiel (issue #186) : prérequis et niveaux exposés quand la fiche les renseigne, pour la recommandation.
   const equations = notions.find((n) => n.id === "equations");
   assert.deepEqual(equations.prerequis, ["calcul-litteral"]);

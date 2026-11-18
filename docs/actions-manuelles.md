@@ -2,6 +2,13 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Gamification unifiée (ADR 0031)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Choisir si la maîtrise et les cartes de révision suivent la synchronisation du compte local | [ADR 0031 §5](decisions/0031-gamification-unifiee.md) | Décision sur des données d'élèves (public mineur) : statu quo, agrégat complet pseudonymisé (recommandé) ou état de maîtrise seul | Option choisie consignée dans l'ADR 0031 ; un agent la met ensuite en œuvre | à faire |
+| Relire les prérequis ajoutés hors mathématiques et compléter ceux du catalogue privé | 51 `catalogue/*/fiche.md` publiques ; dépôt `maquettes-catalogue` | Liens pédagogiques proposés par un agent : une personne compétente doit les confirmer | Prérequis relus, corrigés si besoin ; ceux du catalogue privé ajoutés | à faire |
+
 ## Fournisseurs de connexion
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |

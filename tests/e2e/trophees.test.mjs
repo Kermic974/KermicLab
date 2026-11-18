@@ -64,7 +64,7 @@ async function ouvrirModule(page, id) {
   return cadre;
 }
 
-test("trophées : étoiles d'une notion remontées, restaurées et isolées de l'XP d'exploration", async () => {
+test("trophées : étoiles d'une notion remontées, restaurées et qui rapportent l'XP d'apprentissage", async () => {
   const { page, contexte, erreurs } = await demarrer();
   try {
     const cadre = await ouvrirModule(page, "pythagore");
@@ -82,7 +82,7 @@ test("trophées : étoiles d'une notion remontées, restaurées et isolées de l
     await page.reload();
     const reprise = await ouvrirModule(page, "pythagore");
     await reprise.locator("#etoiles").filter({ hasText: "★ 1 / 10" }).waitFor();
-    assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 25);
+    assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 20, "10 XP d'exploration + 10 XP pour un exercice réussi du premier coup (ADR 0031)");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }

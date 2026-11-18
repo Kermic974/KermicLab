@@ -19,6 +19,8 @@ validation du CODEOWNER.
 - `fiche.md` : front matter habituel avec **`sujet: jeux/<id>`** (matière « Jeux »), sans `niveau`, `langues: fr`,
   `onglets: explication, application, mise-en-situation`, des `mots-cles` propres au jeu (vérifier qu'ils ne routent pas
   déjà vers une autre page) et des `questions` comme un joueur les poserait (« je veux jouer au … »).
+  Facultatif : `notions-liees` (6 au plus), les notions du catalogue que le jeu fait travailler ; elles s'affichent sur
+  la carte du jeu et le jeu est proposé quand l'élève valide l'une d'elles (ADR 0031).
 - `page.html` écrit à la main, en partant de `catalogue/demineur/page.html` : en-tête, `kermiclab-meta`, CSP (les hashes
   sont recalculés par `npm run build`), socle des onglets, stockage abstrait, bouton « Se connecter » masqué.
 

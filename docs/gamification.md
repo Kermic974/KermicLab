@@ -3,6 +3,31 @@
 Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (progression gardée dans la page) et
 [ADR 0015](decisions/0015-modules-partages-des-jeux.md) (modules partagés). Code : `gabarit/jeux/`.
 
+## Vocabulaire (ADR 0031)
+
+| Terme | Sens unique |
+|---|---|
+| **XP** | Points du tableau de bord : questions, exploration, exercices réussis, notions validées, défi express. Un seul niveau global. |
+| **Points de jeu** | XP interne d'une Académie de jeu (« XP » dans la page du jeu). Jamais additionnés à l'XP ni entre jeux ; le tableau de bord les affiche sous ce nom. |
+| **Maîtrise** | Seul indicateur scolaire, par notion (`docs/progression.md`). |
+| **Étoiles** | Notion : une par exercice réussi. Académie : 1 à 3 par leçon. |
+| **Défi express** / **Défi du jour** | Défi du tableau de bord / exercice quotidien d'une Académie. |
+
+### XP du tableau de bord
+
+| Action | XP |
+|---|---|
+| Question posée au chat | 10 |
+| Première ouverture d'une notion ou d'un jeu | 10 |
+| Exercice d'une notion réussi la première fois : du premier coup / après plusieurs essais | 10 / 5 |
+| Notion validée la première fois (tous les exercices réussis) | 30 |
+| Révision réussie (nouvelle validation un autre jour) | 15 |
+| Défi express (une fois par jour) | 5 par bonne réponse |
+
+Les gains d'exercice viennent du contrat d'événements (ADR 0025) : seules les pages ouvertes dans le tableau de bord en
+rapportent, et chaque fait ne rapporte qu'une fois. Un jeu peut déclarer `notions-liees` : la carte du jeu affiche
+« Fait travailler : … » et le jeu est proposé quand l'élève valide l'une de ces notions.
+
 ## Synthèse
 
 L'interface commune de l'Académie, utilisée par les Échecs, le Démineur, la Belote, les Mots fléchés et le Poker Texas Hold'em, propose un parcours
@@ -82,7 +107,7 @@ Sandboxed pages exchange bounded, source-checked local snapshots with the dashbo
 progress follows the profile's session/remember/erase choice. XP scales remain separate. Standalone pages retain
 their independent storage and do not sync with the dashboard.
 
-### Gains d'XP
+### Points de jeu de l'Académie
 
 | Action | XP |
 |---|---|

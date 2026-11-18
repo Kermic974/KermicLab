@@ -81,6 +81,17 @@ export function verifierGraphePrerequis(maquettes) {
       }
     }
   }
+  // Notions liées d'un jeu : seulement sur un jeu, vers des notions connues (pas vers un autre jeu).
+  const estJeu = (m) => String(m.sujet ?? "").startsWith("jeux/");
+  for (const m of maquettes) {
+    if (!m.notionsLiees) continue;
+    if (!estJeu(m)) { erreurs.push(`${m.id} : « notions-liees » est réservé aux jeux`); continue; }
+    for (const id of m.notionsLiees) {
+      const cible = parId.get(id);
+      if (!cible) erreurs.push(`${m.id} : notion liée « ${id} » inconnue`);
+      else if (estJeu(cible)) erreurs.push(`${m.id} : notion liée « ${id} » est un jeu, pas une notion`);
+    }
+  }
   // Cycles : parcours en profondeur (blanc → gris → noir) ; un arc vers un nœud gris ferme un cycle.
   const etat = new Map();
   const visiter = (id, chemin) => {

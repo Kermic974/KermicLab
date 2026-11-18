@@ -104,6 +104,13 @@ déterministes, appliquées dans cet ordre :
 - Les révisions espacées des exercices (Leitner, issue #187) et la recommandation (issue #186) s'appuieront sur ces
   états.
 
+## XP d'apprentissage (ADR 0031)
+
+À chaque événement reçu, `gainsApprentissage(avant, apres, ev)` (`web/evenements.js`) compare l'agrégat avant et après :
+première réussite d'un exercice (`premier-coup` ou `apres-essais`), première validation de la notion (`premiere`) ou
+nouvelle validation un autre jour (`revision`). `enregistrerApprentissage` (`web/progression.js`) ajoute l'XP
+correspondante (`XP_APPRENTISSAGE`) et compte le jour comme actif. Barème : `docs/gamification.md`.
+
 ## Recommandation (issue #186)
 
 `recommander({ notions, maitrise, matiere })` (`web/recommandation.js`) propose **une** prochaine notion à l'accueil,
