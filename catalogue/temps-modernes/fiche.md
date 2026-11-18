@@ -21,6 +21,7 @@ questions:
   - Quelles conséquences a le voyage de Christophe Colomb ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e
 competences: his-temps-modernes-action-1, his-temps-modernes-action-2
 ---
 

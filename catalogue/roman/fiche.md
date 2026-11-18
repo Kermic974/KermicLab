@@ -21,6 +21,7 @@ questions:
   - Comment présenter un personnage de roman ?
 prerequis:
 niveaux: cycle-4
+classes: 4e, 3e
 competences: francais-roman-action-1, francais-roman-action-2
 ---
 

@@ -20,6 +20,7 @@ questions:
   - Comment fonctionne la cohésion européenne ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 3e
 competences: geographie-union-europeenne-action-1, geographie-union-europeenne-action-2
 ---
 

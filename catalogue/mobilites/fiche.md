@@ -18,6 +18,7 @@ questions:
   - À quoi sert l'intermodalité ?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: geographie-mobilites-action-1, geographie-mobilites-action-2
 ---
 

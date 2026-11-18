@@ -32,6 +32,7 @@ questions:
   - how does blood circulation work?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e
 competences: svt-respiration-et-circulation-action-1, svt-respiration-et-circulation-action-2
 ---
 

@@ -7,8 +7,13 @@
 
 /** Catégorie du catalogue qui regroupe les jeux (sujet « jeux/<id> » dans la fiche). */
 export const CATEGORIE_JEUX = "jeux";
-/** Ordre d'affichage des niveaux scolaires ; un niveau inconnu est rangé à la fin, jamais perdu. */
-export const ORDRE_NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
+/** Classes du collège, qui découpent « Collège » dans l'écran Éducation quand la fiche les renseigne. */
+export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
+/**
+ * Ordre d'affichage des niveaux scolaires ; un niveau inconnu est rangé à la fin, jamais perdu. « college » ne garde
+ * que les notions sans classe renseignée (catalogue privé non classé, par exemple).
+ */
+export const ORDRE_NIVEAUX = [...CLASSES_COLLEGE, "college", "seconde", "premiere", "terminale", "autres"];
 
 export const typeDeCatalogue = (entree) => (entree?.matiere === CATEGORIE_JEUX ? "jeu" : "notion");
 
@@ -22,6 +27,8 @@ export function creerRegistre(catalogue) {
       niveau: typeof n.niveau === "string" && n.niveau ? n.niveau : "autres",
       matiere: typeof n.matiere === "string" && n.matiere ? n.matiere : "autres",
       ...(typeof n.resume === "string" && n.resume ? { resume: n.resume } : {}),
+      ...(n.niveau === "college" && Array.isArray(n.classes) && n.classes.some((c) => CLASSES_COLLEGE.includes(c))
+        ? { classes: CLASSES_COLLEGE.filter((c) => n.classes.includes(c)) } : {}),
       // Jeux : notions qu'ils font travailler (identifiants du catalogue, bornés).
       ...(Array.isArray(n.notionsLiees) && n.notionsLiees.length
         ? { notionsLiees: n.notionsLiees.filter((id) => typeof id === "string" && id).slice(0, 6) } : {})
@@ -51,10 +58,13 @@ export function arbreEducation(registre, ordreMatieres = []) {
   const rangMatiere = (m) => { const i = ordreMatieres.indexOf(m); return i < 0 ? ordreMatieres.length : i; };
   const niveaux = new Map();
   for (const e of registre.deType("notion")) {
-    if (!niveaux.has(e.niveau)) niveaux.set(e.niveau, new Map());
-    const matieres = niveaux.get(e.niveau);
-    if (!matieres.has(e.matiere)) matieres.set(e.matiere, []);
-    matieres.get(e.matiere).push(e);
+    // Une notion de collège apparaît dans chacune de ses classes (6e à 3e) ; sans classe, sous « Collège ».
+    for (const niveau of e.classes ?? [e.niveau]) {
+      if (!niveaux.has(niveau)) niveaux.set(niveau, new Map());
+      const matieres = niveaux.get(niveau);
+      if (!matieres.has(e.matiere)) matieres.set(e.matiere, []);
+      matieres.get(e.matiere).push(e);
+    }
   }
   return [...niveaux]
     .sort(([a], [b]) => rangNiveau(a) - rangNiveau(b) || a.localeCompare(b))

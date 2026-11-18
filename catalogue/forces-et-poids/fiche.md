@@ -30,6 +30,7 @@ questions:
   - what is the difference between mass and weight?
 prerequis:
 niveaux: cycle-4, seconde, premiere
+classes: 3e
 competences: pc-forces-et-poids-action-1, pc-forces-et-poids-action-2
 ---
 

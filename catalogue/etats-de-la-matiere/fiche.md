@@ -30,6 +30,7 @@ questions:
   - what are the states of matter?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e
 competences: pc-etats-de-la-matiere-action-1, pc-etats-de-la-matiere-action-2
 ---
 

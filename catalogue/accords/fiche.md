@@ -21,6 +21,7 @@ questions:
   - Comment retrouver le sujet pour l'accord sujet-verbe ?
 prerequis:
 niveaux: cycle-4
+classes: 5e, 4e
 competences: francais-accords-action-1, francais-accords-action-2
 ---
 

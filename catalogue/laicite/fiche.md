@@ -17,6 +17,7 @@ questions:
   - what is laicism?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: emc-laicite-action-1, emc-laicite-action-2
 ---
 

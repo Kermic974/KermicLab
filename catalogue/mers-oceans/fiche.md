@@ -23,6 +23,7 @@ questions:
   - Pourquoi les routes maritimes sont-elles importantes ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 4e
 competences: geographie-mers-oceans-action-1, geographie-mers-oceans-action-2
 ---
 

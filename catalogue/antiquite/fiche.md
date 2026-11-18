@@ -22,6 +22,7 @@ questions:
   - Pourquoi 476 est-il un repère de l'Antiquité ?
 prerequis:
 niveaux: cycle-3, seconde
+classes: 6e
 competences: his-antiquite-action-1, his-antiquite-action-2
 ---
 

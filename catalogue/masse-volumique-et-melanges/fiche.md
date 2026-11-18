@@ -35,6 +35,7 @@ questions:
   - what is density?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e, 4e
 competences: pc-masse-volumique-et-melanges-action-1, pc-masse-volumique-et-melanges-action-2
 ---
 

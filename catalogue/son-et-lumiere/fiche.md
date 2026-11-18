@@ -34,6 +34,7 @@ questions:
   - how does sound travel?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e
 competences: pc-son-et-lumiere-action-1, pc-son-et-lumiere-action-2
 ---
 

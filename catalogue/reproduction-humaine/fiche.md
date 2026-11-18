@@ -36,6 +36,7 @@ questions:
   - what is fertilisation in human reproduction?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: svt-reproduction-humaine-action-1, svt-reproduction-humaine-action-2
 ---
 

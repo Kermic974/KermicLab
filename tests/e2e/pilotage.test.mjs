@@ -14,8 +14,8 @@ before(async () => {
 after(async () => { await nav?.close(); await serveur?.fermer(); });
 
 const CATALOGUE = [
-  { id: "fractions", titre: "Les fractions", niveau: "college", enAvant: true },
-  { id: "pythagore", titre: "Le théorème de Pythagore", niveau: "college" },
+  { id: "fractions", titre: "Les fractions", niveau: "college", classes: ["6e", "5e"], enAvant: true },
+  { id: "pythagore", titre: "Le théorème de Pythagore", niveau: "college", classes: ["4e"] },
   { id: "trigo-cercle", titre: "Le cercle trigonométrique", niveau: "seconde", enAvant: true },
   { id: "derivation", titre: "La dérivation", niveau: "premiere" }
 ].map((n) => ({ matiere: "mathematiques", version: "1.0.0", ...n }));
@@ -70,18 +70,18 @@ test("accueil : sans contenu mis en avant ni parcours, les deux sections restent
   await contexte.close();
 });
 
-test("Éducation : « Ma classe » ouvre le niveau choisi, le retient, et se retire d'un second appui", async () => {
+test("Éducation : « Ma classe » propose les classes du collège, ouvre le niveau choisi, le retient, et se retire d'un second appui", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   await preparer(page);
   await page.goto(serveur.url);
   await page.click('.barre-laterale [data-nav="education"]');
   const ouvert = (niveau) => page.locator(`[aria-controls="edu-${niveau}"]`).getAttribute("aria-expanded");
-  assert.deepEqual(await page.locator("#ma-classe [data-classe]").allTextContents(), ["Collège", "Seconde", "Première"]);
-  assert.deepEqual([await ouvert("college"), await ouvert("seconde")], ["false", "false"], "rien d'ouvert sans choix");
+  assert.deepEqual(await page.locator("#ma-classe [data-classe]").allTextContents(), ["6e", "5e", "4e", "Seconde", "Première"]);
+  assert.deepEqual([await ouvert("4e"), await ouvert("seconde")], ["false", "false"], "rien d'ouvert sans choix");
 
   await page.click('#ma-classe [data-classe="seconde"]');
   assert.equal(await page.locator('#ma-classe [data-classe="seconde"]').getAttribute("aria-pressed"), "true");
-  assert.deepEqual([await ouvert("college"), await ouvert("seconde")], ["false", "true"]);
+  assert.deepEqual([await ouvert("4e"), await ouvert("seconde")], ["false", "true"]);
   assert.equal(await page.evaluate(() => document.activeElement?.dataset.classe), "seconde", "le focus reste sur le choix");
   await capturer(page, "education-ma-classe");
 
@@ -93,11 +93,19 @@ test("Éducation : « Ma classe » ouvre le niveau choisi, le retient, et se ret
   assert.equal(await ouvert("seconde"), "true");
   assert.equal(await page.locator('#ma-classe [data-classe="seconde"]').getAttribute("aria-pressed"), "true");
 
-  await page.click('#ma-classe [data-classe="college"]');
-  assert.deepEqual([await ouvert("college"), await ouvert("seconde")], ["true", "false"], "un seul niveau ouvert par le choix");
-  await page.click('#ma-classe [data-classe="college"]');
+  await page.click('#ma-classe [data-classe="5e"]');
+  assert.deepEqual([await ouvert("5e"), await ouvert("seconde")], ["true", "false"], "un seul niveau ouvert par le choix");
+  // Une notion enseignée sur plusieurs classes apparaît dans chacune.
+  const notionsDe = async (classe) => {
+    await page.click(`[aria-controls="edu-${classe}-mathematiques"]`);
+    return page.locator(`#edu-${classe}-mathematiques [data-notion]`).evaluateAll((l) => l.map((x) => x.dataset.notion));
+  };
+  assert.deepEqual(await notionsDe("5e"), ["fractions"]);
+  await page.click('#ma-classe [data-classe="6e"]');
+  assert.deepEqual(await notionsDe("6e"), ["fractions"]);
+  await page.click('#ma-classe [data-classe="6e"]');
   assert.equal(await page.locator('#ma-classe [aria-pressed="true"]').count(), 0);
-  assert.equal(await ouvert("college"), "false");
+  assert.equal(await ouvert("6e"), "false");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

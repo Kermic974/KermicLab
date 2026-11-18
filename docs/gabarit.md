@@ -21,6 +21,10 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
     phase 1). Exemple : `catalogue/proportionnalite/fiche.md`.
     - `niveaux` : parmi `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
       avancé, d'après les niveaux réellement couverts par le contenu (`niveau` reste le rangement dans la navigation).
+    - `classes` (notions de niveau `college` seulement) : parmi `6e`, `5e`, `4e`, `3e`, sans doublon, de la 6e à la 3e.
+      Elles découpent « Collège » dans l'écran Éducation (barre « Ma classe ») ; une notion apparaît dans chacune de ses
+      classes. La 6e exige `cycle-3` dans `niveaux`, les 5e, 4e et 3e exigent `cycle-4`. Sans `classes`, la notion reste
+      sous « Collège ». Métadonnée seulement : la version de la fiche ne change pas.
     - `prerequis` : identifiants d'autres notions à maîtriser avant. `prerequis:` sans élément signifie « aucun prérequis »
       (la notion compte alors comme renseignée). Le **graphe des prérequis** est vérifié à chaque build, sur le catalogue
       public et privé : chaque prérequis existe et est une notion (pas un jeu), aucun cycle (le message donne le chemin,

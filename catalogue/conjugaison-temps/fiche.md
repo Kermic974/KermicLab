@@ -21,6 +21,7 @@ questions:
   - Comment choisir un temps verbal pour un récit ?
 prerequis:
 niveaux: cycle-3, cycle-4
+classes: 6e, 5e
 competences: francais-conjugaison-temps-action-1, francais-conjugaison-temps-action-2
 ---
 

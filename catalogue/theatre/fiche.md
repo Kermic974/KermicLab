@@ -21,6 +21,7 @@ questions:
   - Comment un monologue fait-il avancer une scène théâtrale ?
 prerequis:
 niveaux: cycle-4
+classes: 5e, 4e, 3e
 competences: francais-theatre-action-1, francais-theatre-action-2
 ---
 
