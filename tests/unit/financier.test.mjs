@@ -69,3 +69,12 @@ test("offres pressenties : Gratuit, Solo, Parent, Professeur, toutes valides et 
   assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], prix: { mode: "gratuit" } }, { roles }).code, "mode-prix-invalide");
   assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], limites: { ...SOUSCRIPTIONS_PAR_DEFAUT[1].limites, elevesMax: 5000 } }, { roles }).code, "hors-bornes:elevesMax");
 });
+
+test("offres pressenties payantes : rentables avec les hypothèses par défaut, au mois comme à l'année", () => {
+  const generation = { defi: 1500, cahiers: 100000 };
+  for (const s of SOUSCRIPTIONS_PAR_DEFAUT.filter((x) => x.id !== "gratuit")) {
+    const e = estimerSouscription(s, FINANCES_PAR_DEFAUT, generation);
+    assert.ok(e.marge > 0, `${s.id} : marge mensuelle ${e.marge}`);
+    assert.ok(e.margeAnnuelle > 0, `${s.id} : marge annuelle ${e.margeAnnuelle}`);
+  }
+});
