@@ -32,11 +32,15 @@ démarrer tôt ; le code des comptes, lui, attend la validation.
 
 ## Tâches à démarrer maintenant
 
-- Socle : [#173](https://github.com/Kermic974/KermicLab/issues/173) protéger `main` · [#174](https://github.com/Kermic974/KermicLab/issues/174) tests navigateur obligatoires · [#176](https://github.com/Kermic974/KermicLab/issues/176) grille de relecture et statut « relue » · [#260](https://github.com/Kermic974/KermicLab/issues/260) audit SEO et indexation · [#261](https://github.com/Kermic974/KermicLab/issues/261) tests de fumée post-déploiement · [#263](https://github.com/Kermic974/KermicLab/issues/263) audit WCAG 2.2 AA.
-- Référentiel : [#179](https://github.com/Kermic974/KermicLab/issues/179) champs de `fiche.md` · [#180](https://github.com/Kermic974/KermicLab/issues/180) graphe vérifié en CI · [#181](https://github.com/Kermic974/KermicLab/issues/181) contrat d'événements.
+État au 18 novembre 2026 (feuille de route v4.0) : les épiques #165 (phase 1) et #166 (phase 2) sont fermées ; les
+comptes locaux, l'Espace famille et l'expérience Professeur sont en ligne en bêta, avant le point de contrôle juridique
+de la phase 4.
+
+- Socle : [#176](https://github.com/Kermic974/KermicLab/issues/176) relire les 20 notions les plus servies (0 relue sur 165) · [#175](https://github.com/Kermic974/KermicLab/issues/175) relire les neuf jeux (0 sur 9) · [#263](https://github.com/Kermic974/KermicLab/issues/263) audit WCAG 2.2 AA · [#260](https://github.com/Kermic974/KermicLab/issues/260) audit SEO et indexation.
+- Familles : [#195](https://github.com/Kermic974/KermicLab/issues/195) préparation juridique · [#387](https://github.com/Kermic974/KermicLab/issues/387) vérification d'identité avant réinitialisation · réconcilier #196 à #200 avec les comptes locaux livrés.
+- Référentiel : [#384](https://github.com/Kermic974/KermicLab/issues/384) validateur et migration des expériences S6.
 - Catalogue et jeux : [#207](https://github.com/Kermic974/KermicLab/issues/207) valider le poker.
-- Tuteur : [#262](https://github.com/Kermic974/KermicLab/issues/262) jeu d'évaluation pédagogique IA (sous réserve du point de contrôle budget de #167).
-- Familles : [#195](https://github.com/Kermic974/KermicLab/issues/195) préparation juridique (en parallèle).
+- Tuteur : indices par lots (789 exercices sur 1 331 en ont au moins un) · [#262](https://github.com/Kermic974/KermicLab/issues/262) jeu d'évaluation pédagogique IA (sous réserve du point de contrôle budget de #167).
 
 ## Règles de suivi
 
