@@ -1,3 +1,4 @@
+import { normaliserSuivi } from "./suivi-jeux.js";
 // Contrat d'événements pédagogiques v1 (ADR 0025), côté tableau de bord : validation stricte des messages reçus des
 // pages (gabarit/jeux/evenements.js) et agrégation locale par notion. Rien n'est envoyé au serveur ; aucun texte libre,
 // aucun horodatage précis (date du jour seulement). Les jeux et leur XP restent dans « Mes trophées » (trophees.js).
@@ -196,7 +197,7 @@ export function charger(stockage) {
       }
       notions[id] = { version: n.version, ouvertures: n.ouvertures, dernierJour: n.dernierJour, termine: n.termine, validations, derniereValidation, exercices };
     }
-    return { v: VERSION_CONTRAT, notions };
+    return { v: VERSION_CONTRAT, notions, ...(brut.jeux ? { jeux: normaliserSuivi(brut.jeux) } : {}) };
   } catch { return etatInitial(); }
 }
 

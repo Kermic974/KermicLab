@@ -220,6 +220,7 @@ export async function chargerCatalogue(dossiers) {
         let page = langue === "fr" && generee ? generee : await inclureModules(source);
         const pont = `<script id="trophees" data-inclure="gabarit/jeux/trophees.js"></script>`;
         if (!page.includes('id="trophees"')) page = page.replace("</head>", `${pont}\n</head>`);
+        if (estJeu(fiche) && classificationJeu(fiche.id) && !page.includes('id="suivi-jeux"')) page = page.replace('</head>', '<script id="suivi-jeux" data-inclure="gabarit/jeux/suivi.js"></script>\n</head>');
         const html = appliquerCsp(await inclureModules(page));
         sources.push({ fichier, aJour: source === html, html });
         const meta = lireMetaHtml(html);
