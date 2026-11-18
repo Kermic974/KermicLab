@@ -21,7 +21,10 @@ export function creerRegistre(catalogue) {
       titre: typeof n.titre === "string" && n.titre ? n.titre : n.id,
       niveau: typeof n.niveau === "string" && n.niveau ? n.niveau : "autres",
       matiere: typeof n.matiere === "string" && n.matiere ? n.matiere : "autres",
-      ...(typeof n.resume === "string" && n.resume ? { resume: n.resume } : {})
+      ...(typeof n.resume === "string" && n.resume ? { resume: n.resume } : {}),
+      // Jeux : notions qu'ils font travailler (identifiants du catalogue, bornés).
+      ...(Array.isArray(n.notionsLiees) && n.notionsLiees.length
+        ? { notionsLiees: n.notionsLiees.filter((id) => typeof id === "string" && id).slice(0, 6) } : {})
     }));
   const parId = new Map(entrees.map((e) => [e.id, e]));
   return {
@@ -30,7 +33,11 @@ export function creerRegistre(catalogue) {
     trouver: (id) => parId.get(id),
     /** Type d'un identifiant du catalogue, null s'il est inconnu (utile à la migration : on ne devine rien). */
     typeDe: (id) => parId.get(id)?.type ?? null,
-    deType: (type) => entrees.filter((e) => e.type === type)
+    deType: (type) => entrees.filter((e) => e.type === type),
+    /** Notions qu'un jeu fait travailler, limitées à celles présentes au catalogue. */
+    notionsDuJeu: (id) => (parId.get(id)?.notionsLiees ?? []).map((n) => parId.get(n)).filter((e) => e?.type === "notion"),
+    /** Jeux qui font travailler une notion (lien inverse), dans l'ordre du catalogue. */
+    jeuxDeLaNotion: (id) => entrees.filter((e) => e.type === "jeu" && e.notionsLiees?.includes(id))
   };
 }
 

@@ -3,6 +3,31 @@
 Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (progression gardée dans la page) et
 [ADR 0015](decisions/0015-modules-partages-des-jeux.md) (modules partagés). Code : `gabarit/jeux/`.
 
+## Vocabulaire (ADR 0032)
+
+| Terme | Sens unique |
+|---|---|
+| **XP** | Points du tableau de bord : questions, exploration, exercices réussis, notions validées, défi express. Un seul niveau global. |
+| **Points de jeu** | Points internes d'une Académie de jeu, sous ce nom dans le tableau de bord (encore « XP » dans les pages des jeux, renommées par une PR séparée). Jamais additionnés à l'XP ni entre jeux. |
+| **Maîtrise** | Seul indicateur scolaire, par notion (`docs/progression.md`). |
+| **Étoiles** | Notion : une par exercice réussi. Académie : 1 à 3 par leçon. |
+| **Défi express** / **Défi du jour** | Défi quotidien du tableau de bord (XP) / exercice quotidien d'une Académie (points de jeu ; « défi de l'Académie » après la PR séparée). |
+
+### XP du tableau de bord
+
+| Action | XP |
+|---|---|
+| Question posée au chat | 10 |
+| Première ouverture d'une notion ou d'un jeu | 10 |
+| Exercice d'une notion réussi la première fois : du premier coup / après plusieurs essais | 10 / 5 |
+| Notion validée la première fois (tous les exercices réussis) | 30 |
+| Révision réussie (nouvelle validation un autre jour) | 15 |
+| Défi express (une fois par jour) | 5 par bonne réponse |
+
+Les gains d'exercice viennent du contrat d'événements (ADR 0025) : seules les pages ouvertes dans le tableau de bord en
+rapportent, et chaque fait ne rapporte qu'une fois. Un jeu peut déclarer `notions-liees` : la carte du jeu affiche
+« Fait travailler : … » et le jeu est proposé quand l'élève valide l'une de ces notions.
+
 ## Synthèse
 
 L'interface commune de l'Académie, utilisée par les Échecs, le Démineur, la Belote, les Mots fléchés et le Poker Texas Hold'em, propose un parcours
@@ -21,7 +46,7 @@ Ce qui motive le joueur :
 | Badges | Une vingtaine par jeu, avec leur avancement visible (« 3 / 10 révisions »). |
 | Série et objectif du jour | Jours d'affilée, et un objectif quotidien choisi (1, 3 ou 5 exercices). |
 | Révisions espacées | Chaque stratégie apprise revient de plus en plus tard si elle est réussie, dès le lendemain sinon. |
-| Défi du jour | Un exercice, le même pour tous le même jour, avec un bonus d'XP. |
+| Défi du jour | Un exercice, le même pour tous le même jour, avec un bonus de points de jeu. |
 | Conseil personnalisé | Réviser, retravailler le point faible, avancer, viser 3 étoiles, ou aller jouer. |
 | Parties | Les parties jouées (victoires, records de temps au Démineur) rapportent de l'XP et des badges. |
 
@@ -82,7 +107,7 @@ Sandboxed pages exchange bounded, source-checked local snapshots with the dashbo
 progress follows the profile's session/remember/erase choice. XP scales remain separate. Standalone pages retain
 their independent storage and do not sync with the dashboard.
 
-### Gains d'XP
+### Points de jeu de l'Académie
 
 | Action | XP |
 |---|---|

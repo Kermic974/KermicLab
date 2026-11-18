@@ -14,7 +14,13 @@
 
 export const CLE_STOCKAGE = "kermiclab:progression";
 export const XP_QUESTION = 10;
-export const XP_NOTION = 25;
+/** Première ouverture d'une notion ou d'un jeu : bonus d'exploration, volontairement inférieur aux gains d'apprentissage. */
+export const XP_NOTION = 10;
+/** Gains d'apprentissage (contrat d'événements, ADR 0025) : chaque fait ne rapporte qu'une fois (web/evenements.js). */
+export const XP_APPRENTISSAGE = Object.freeze({
+  exercice: Object.freeze({ "premier-coup": 10, "apres-essais": 5 }),
+  validation: Object.freeze({ premiere: 30, revision: 15 })
+});
 export const XP_PAR_NIVEAU = 100;
 /** Défi express : XP par bonne réponse, une seule fois par jour. */
 export const XP_DEFI_BONNE = 5;
@@ -289,6 +295,17 @@ export function fusionnerNotionsDistantes(avant, ids) {
 /** Forme attendue par /api/progres (POST) : { notions: { id: {} } }. Le temps et les découvertes restent locaux. */
 export function pourSynchronisation(p) {
   return { notions: Object.fromEntries(p.notions.map((id) => [id, {}])) };
+}
+
+/**
+ * Gains d'apprentissage d'une notion (résultat de `gainsApprentissage`) : XP de l'exercice réussi et de la notion
+ * validée. Compte comme un jour actif (série). Sans gain, la progression est inchangée.
+ */
+export function enregistrerApprentissage(avant, gains, jour = jourLocal()) {
+  const xp = (XP_APPRENTISSAGE.exercice[gains?.exercice] ?? 0) + (XP_APPRENTISSAGE.validation[gains?.validation] ?? 0);
+  if (!xp) return { p: avant, nouveaux: [], niveauGagne: false, xpGagne: 0, nouvelleNotion: false };
+  const p = { ...avecSerie(avant, jour), xp: avant.xp + xp, jours: ajouterAuJour(avant.jours, jour, { xp }) };
+  return { ...avecNiveau(avant, attribuerBadges(p)), xpGagne: xp, nouvelleNotion: false };
 }
 
 /** Défi express terminé : XP par bonne réponse, une seule fois par jour ; compte comme un jour actif. */
