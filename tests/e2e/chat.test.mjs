@@ -23,7 +23,7 @@ async function simulerApi(page, { pseudo = "Testeur", jeux = false, llmActif = t
 
 async function ouvrirConfiguration(page) {
   if (await page.locator("#panneau-chat").isVisible()) await page.click("#fermer-chat");
-  await page.locator(".nav-mobile [data-nav=profil]:visible, .barre-laterale .profil-carte[data-action=profil]:visible").first().click();
+  await page.locator(".profil-carte[data-action=profil]:visible").first().click();
 }
 
 test("avatar : chat replié, accessible au clavier sur chaque écran, conversation et brouillon conservés", async () => {
@@ -537,12 +537,12 @@ test("Éducation : Niveau > Matière > Notions en accordéons fermés, recherche
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-test("navigation : 5 entrées latérales, jeux absents d'Éducation, retour arrière", async () => {
+test("navigation : 6 entrées latérales, « Mon tableau de bord » sous l'Accueil, jeux absents d'Éducation, retour arrière", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const destinations = page.locator(".barre-laterale nav [data-nav]:not([hidden])") // sans rôle : l'entrée Contributions reste masquée (ADR 0023);
-  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "jeux", "progression"]);
+  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
   assert.equal(await page.locator(".barre-laterale [aria-current=page]").count(), 1);
   const education = page.locator(".barre-laterale [data-nav=education]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
@@ -721,9 +721,9 @@ test("navigation mobile : 6 destinations tactiles, libellés visibles, sans déb
   assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   await page.locator(".nav-mobile [data-nav=accueil]").click();
   assert.equal(await page.locator("#accueil").isVisible(), true);
-  assert.deepEqual(await page.locator(".nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Éducation", "Labs", "Jeux", "Progrès", "Profil"]);
+  assert.deepEqual(await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Tableau", "Éducation", "Labs", "Jeux", "Progrès"]);
   assert.deepEqual(await page.locator(".nav-mobile [aria-current=page]").allTextContents(), ["Accueil"]);
-  const boutons = await page.locator(".nav-mobile-bouton:not([hidden])").evaluateAll((elements) => elements.map((n) => {
+  const boutons = await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").evaluateAll((elements) => elements.map((n) => {
     const r = n.getBoundingClientRect();
     return { largeur: r.width, hauteur: r.height, droite: r.right, bas: r.bottom };
   }));

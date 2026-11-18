@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer, NAVIGATION_RACCOURCIS, surchargerConfig } from "./outils.mjs";
 import { compteDeSession, gererApiCompteLocal } from "../../worker/src/compte-local.js";
 import { gererApiFamille } from "../../worker/src/famille.js";
 import { gererApiProfesseur } from "../../worker/src/professeur.js";
@@ -29,6 +29,7 @@ async function appareil(pseudo) {
   const { page } = session;
   const cookies = [];
   await simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, llmActif: false });
+  await surchargerConfig(page, serveur.url, { navigation: NAVIGATION_RACCOURCIS });
   const relayer = (traiter) => async (route) => {
     const r = route.request();
     if (r.method() === "OPTIONS") return route.fulfill({ status: 204, headers: cors() });
