@@ -16,6 +16,7 @@ questions:
   - what is equality?
 prerequis:
 niveaux: cycle-4
+classes: 5e
 competences: emc-egalite-action-1, emc-egalite-action-2
 ---
 

@@ -36,6 +36,7 @@ questions:
   - comment les cellules construisent-elles un organisme ?
 prerequis:
 niveaux: cycle-3, cycle-4, seconde
+classes: 6e, 5e
 competences: svt-la-cellule-action-1, svt-la-cellule-action-2
 ---
 

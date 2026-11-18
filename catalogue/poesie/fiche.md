@@ -21,6 +21,7 @@ questions:
   - Comment comprendre le rythme d'un poème ?
 prerequis:
 niveaux: cycle-4
+classes: 5e, 4e, 3e
 competences: francais-poesie-action-1, francais-poesie-action-2
 ---
 

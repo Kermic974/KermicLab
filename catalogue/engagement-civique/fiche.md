@@ -17,6 +17,7 @@ questions:
   - what is civic engagement?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: emc-engagement-civique-action-1, emc-engagement-civique-action-2
 ---
 

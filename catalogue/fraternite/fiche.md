@@ -16,6 +16,7 @@ questions:
   - what is brotherhood?
 prerequis:
 niveaux: cycle-4
+classes: 5e
 competences: emc-fraternite-action-1, emc-fraternite-action-2
 ---
 

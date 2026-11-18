@@ -30,6 +30,7 @@ questions:
   - what is photosynthesis?
 prerequis:
 niveaux: cycle-3, cycle-4, seconde, premiere
+classes: 6e, 5e
 competences: svt-photosynthese-action-1, svt-photosynthese-action-2
 ---
 

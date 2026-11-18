@@ -20,6 +20,7 @@ questions:
   - Pourquoi une reconversion industrielle transforme-t-elle un territoire ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 3e
 competences: geographie-espaces-productifs-action-1, geographie-espaces-productifs-action-2
 ---
 

@@ -6,6 +6,7 @@ version: 1.0.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-3, cycle-4, seconde
+classes: 6e, 5e
 prerequis:
 competences:
   - nommer-et-mesurer-un-angle

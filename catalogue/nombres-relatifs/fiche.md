@@ -6,6 +6,7 @@ version: 1.0.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-4, seconde
+classes: 5e, 4e
 prerequis:
 competences:
   - reperer-et-comparer-des-relatifs

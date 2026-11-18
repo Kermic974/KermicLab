@@ -22,6 +22,7 @@ questions:
   - pourquoi les bactéries deviennent-elles résistantes aux antibiotiques ?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: svt-evolution-action-1, svt-evolution-action-2
 ---
 

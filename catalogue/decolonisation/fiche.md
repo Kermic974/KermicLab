@@ -19,6 +19,7 @@ questions:
   - Quels sont les enjeux de mémoire de la guerre d'Algérie ?
 prerequis:
 niveaux: cycle-4, terminale
+classes: 3e
 competences: his-decolonisation-action-1, his-decolonisation-action-2
 ---
 

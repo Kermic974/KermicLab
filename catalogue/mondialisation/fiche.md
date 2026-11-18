@@ -20,6 +20,7 @@ questions:
   - Quel est le rôle des firmes transnationales ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 4e
 competences: geographie-mondialisation-action-1, geographie-mondialisation-action-2
 ---
 

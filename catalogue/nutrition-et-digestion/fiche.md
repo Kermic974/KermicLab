@@ -38,6 +38,7 @@ questions:
   - à quoi sert une alimentation variée ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e
 competences: svt-nutrition-et-digestion-action-1, svt-nutrition-et-digestion-action-2
 ---
 

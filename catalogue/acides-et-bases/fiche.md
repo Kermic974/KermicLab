@@ -27,6 +27,7 @@ questions:
   - what is an acid?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 3e
 competences: pc-acides-et-bases-action-1, pc-acides-et-bases-action-2
 ---
 

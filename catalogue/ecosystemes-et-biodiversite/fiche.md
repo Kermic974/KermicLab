@@ -46,6 +46,7 @@ questions:
   - comment protéger la biodiversité près de chez moi ?
 prerequis:
 niveaux: cycle-3, cycle-4, seconde
+classes: 6e, 5e
 competences: svt-ecosystemes-et-biodiversite-action-1, svt-ecosystemes-et-biodiversite-action-2
 ---
 

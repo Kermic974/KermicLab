@@ -22,6 +22,7 @@ questions:
   - Comment l'industrialisation transforme-t-elle les villes ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e
 competences: his-revolution-industrielle-action-1, his-revolution-industrielle-action-2
 ---
 

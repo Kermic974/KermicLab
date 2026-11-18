@@ -21,6 +21,7 @@ questions:
   - Le Moyen Âge est-il une période sans inventions ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e
 competences: his-moyen-age-action-1, his-moyen-age-action-2
 ---
 

@@ -18,6 +18,7 @@ questions:
   - Pourquoi étudier les migrations internationales ?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: geographie-migrations-action-1, geographie-migrations-action-2
 ---
 

@@ -41,6 +41,7 @@ questions:
   - how does a vaccine work?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: svt-systeme-immunitaire-action-1, svt-systeme-immunitaire-action-2
 ---
 

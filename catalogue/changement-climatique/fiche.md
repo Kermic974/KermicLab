@@ -18,6 +18,7 @@ questions:
   - Quelle différence entre adaptation climatique et atténuation climatique ?
 prerequis:
 niveaux: cycle-4
+classes: 5e
 competences: geographie-changement-climatique-action-1, geographie-changement-climatique-action-2
 ---
 

@@ -6,6 +6,7 @@ version: 1.0.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-4, seconde
+classes: 4e, 3e
 prerequis:
   - calcul-litteral
 competences:

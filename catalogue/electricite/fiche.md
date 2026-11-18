@@ -33,6 +33,7 @@ questions:
   - what is ohm's law?
 prerequis:
 niveaux: cycle-4
+classes: 5e, 4e
 competences: pc-electricite-action-1, pc-electricite-action-2
 ---
 

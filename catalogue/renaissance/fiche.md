@@ -20,6 +20,7 @@ questions:
   - Que défend l'humanisme ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e
 competences: his-renaissance-action-1, his-renaissance-action-2
 ---
 

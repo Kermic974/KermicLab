@@ -17,6 +17,7 @@ questions:
   - what is discrimination?
 prerequis:
 niveaux: cycle-4
+classes: 5e
 competences: emc-discrimination-action-1, emc-discrimination-action-2
 ---
 

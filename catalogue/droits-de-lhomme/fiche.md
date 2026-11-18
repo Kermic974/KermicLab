@@ -18,6 +18,7 @@ questions:
   - what are human rights?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: emc-droits-de-lhomme-action-1, emc-droits-de-lhomme-action-2
 ---
 

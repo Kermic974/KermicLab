@@ -55,6 +55,7 @@ questions:
   - comment une faille transformante provoque-t-elle un séisme ?
 prerequis:
 niveaux: cycle-4, seconde, premiere
+classes: 4e
 competences: svt-seismes-et-volcans-action-1, svt-seismes-et-volcans-action-2
 ---
 

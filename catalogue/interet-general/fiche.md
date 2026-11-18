@@ -17,6 +17,7 @@ questions:
   - what is the public interest?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: emc-interet-general-action-1, emc-interet-general-action-2
 ---
 

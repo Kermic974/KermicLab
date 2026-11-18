@@ -18,6 +18,7 @@ questions:
   - Comment réduire la vulnérabilité aux risques ?
 prerequis:
 niveaux: cycle-4
+classes: 5e
 competences: geographie-risques-naturels-action-1, geographie-risques-naturels-action-2
 ---
 

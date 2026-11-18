@@ -18,6 +18,7 @@ questions:
   - what is citizenship?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: emc-citoyennete-action-1, emc-citoyennete-action-2
 ---
 

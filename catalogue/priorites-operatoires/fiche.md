@@ -6,6 +6,7 @@ version: 1.1.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-4
+classes: 5e
 prerequis:
 competences:
   - appliquer-les-priorites-operatoires

@@ -17,6 +17,7 @@ questions:
   - Comment comprendre la périurbanisation ?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: geographie-urbanisation-action-1, geographie-urbanisation-action-2
 ---
 

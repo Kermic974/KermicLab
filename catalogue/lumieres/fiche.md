@@ -23,6 +23,7 @@ questions:
   - Comment Voltaire défend-il la tolérance ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e
 competences: his-lumieres-action-1, his-lumieres-action-2
 ---
 

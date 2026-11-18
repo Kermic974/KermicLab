@@ -23,6 +23,21 @@ test("référentiel : champs valides normalisés (listes YAML ou séparées par 
   assert.deepEqual(NIVEAUX_SCOLAIRES, ["cycle-3", "cycle-4", "seconde", "premiere", "terminale"]);
 });
 
+test("référentiel : classes du collège (6e à 3e), cohérentes avec le niveau et les cycles", () => {
+  assert.deepEqual(valider({ niveau: "college", niveaux: "cycle-3, cycle-4", classes: "6e, 5e" }), { niveaux: ["cycle-3", "cycle-4"], classes: ["6e", "5e"] });
+  assert.deepEqual(valider({ niveau: "college", classes: ["4e"] }), { classes: ["4e"] }, "sans niveaux : seule la liste est contrôlée");
+  const cas = [
+    [{ niveau: "college", classes: [] }, /classes.*vide/],
+    [{ niveau: "seconde", classes: "3e" }, /réservé.*college/],
+    [{ niveau: "college", classes: "CM2" }, /inconnue/],
+    [{ niveau: "college", classes: "4e, 5e" }, /de la 6e à la 3e/],
+    [{ niveau: "college", classes: "5e, 5e" }, /sans doublon/],
+    [{ niveau: "college", niveaux: "cycle-4", classes: "6e" }, /cycle-3/],
+    [{ niveau: "college", niveaux: "cycle-3", classes: "6e, 5e" }, /cycle-4/]
+  ];
+  for (const [champs, motif] of cas) assert.throws(() => valider(champs), motif, JSON.stringify(champs));
+});
+
 test("référentiel : formats invalides refusés avec un message explicite", () => {
   const cas = [
     [{ prerequis: ["Nombres Décimaux"] }, /identifiant/],

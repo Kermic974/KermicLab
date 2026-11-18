@@ -138,6 +138,8 @@ export function listeCatalogue(index, enAvant = new Set()) {
       ...(enAvant.has(m.id) ? { enAvant: true } : {}),
       // Référentiel (issue #186) : niveaux et prérequis, seulement quand la fiche les renseigne ; sert la recommandation.
       ...(m.niveaux ? { niveaux: m.niveaux } : {}), ...(m.prerequis ? { prerequis: m.prerequis } : {}),
+      // Classes du collège (6e à 3e) : découpent « Collège » dans l'écran Éducation.
+      ...(m.classes ? { classes: m.classes } : {}),
       // Jeux : notions qu'ils font travailler (lien Jeux ↔ Éducation).
       ...(m.notionsLiees ? { notionsLiees: m.notionsLiees } : {})
     }))

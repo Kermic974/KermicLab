@@ -19,6 +19,7 @@ questions:
   - Quels sont les enjeux de la crise de Cuba ?
 prerequis:
 niveaux: cycle-4, terminale
+classes: 3e
 competences: his-guerre-froide-action-1, his-guerre-froide-action-2
 ---
 

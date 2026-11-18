@@ -22,6 +22,12 @@ export const liste = (v) => (Array.isArray(v) ? v : String(v ?? "").split(",").m
  * présents. `niveaux` suit les cycles et classes du programme, plus fin que `niveau` (barre de navigation).
  */
 export const NIVEAUX_SCOLAIRES = ["cycle-3", "cycle-4", "seconde", "premiere", "terminale"];
+/**
+ * Classes du collège (champ facultatif `classes`), du plus jeune au plus avancé : elles découpent « Collège » dans
+ * l'écran Éducation. La 6e appartient au cycle 3, les 5e, 4e et 3e au cycle 4 : une classe exige son cycle dans `niveaux`.
+ */
+export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
+const CYCLE_DE_CLASSE = { "6e": "cycle-3", "5e": "cycle-4", "4e": "cycle-4", "3e": "cycle-4" };
 const IDENTIFIANT = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const DUREE_MAX = 240;
 
@@ -54,6 +60,18 @@ export function lireReferentiel(fiche) {
     const rangs = niveaux.map((n) => NIVEAUX_SCOLAIRES.indexOf(n));
     if (rangs.some((r, i) => i && r <= rangs[i - 1])) throw new Error("niveaux : sans doublon, du plus jeune au plus avancé");
     ref.niveaux = niveaux;
+  }
+  if (fiche.classes !== undefined) {
+    const classes = liste(fiche.classes);
+    if (!classes.length) throw new Error("champ « classes » vide");
+    if (fiche.niveau !== "college") throw new Error("classes : réservé aux notions de niveau « college »");
+    for (const c of classes) if (!CLASSES_COLLEGE.includes(c)) throw new Error(`classes : « ${c} » inconnue (attendu : ${CLASSES_COLLEGE.join(", ")})`);
+    const rangs = classes.map((c) => CLASSES_COLLEGE.indexOf(c));
+    if (rangs.some((r, i) => i && r <= rangs[i - 1])) throw new Error("classes : sans doublon, de la 6e à la 3e");
+    for (const c of classes) {
+      if (ref.niveaux && !ref.niveaux.includes(CYCLE_DE_CLASSE[c])) throw new Error(`classes : « ${c} » demande « ${CYCLE_DE_CLASSE[c]} » dans niveaux`);
+    }
+    ref.classes = classes;
   }
   if (fiche.duree !== undefined) {
     const duree = Number(fiche.duree);

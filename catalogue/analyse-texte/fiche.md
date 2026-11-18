@@ -21,6 +21,7 @@ questions:
   - À quoi sert un champ lexical dans un texte ?
 prerequis:
 niveaux: cycle-4
+classes: 5e, 4e, 3e
 competences: francais-analyse-texte-action-1, francais-analyse-texte-action-2
 ---
 
