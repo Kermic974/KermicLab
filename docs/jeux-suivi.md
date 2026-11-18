@@ -37,7 +37,7 @@ Local details group attempts by activity and mode. Reports show the latest playe
 - Completion: completed non-abandoned attempts / started attempts. Draws count as completed.
 - Success: successful / assessable completed attempts. Draws, abandoned and pending attempts are excluded.
 - Autonomy: successes without observed errors or hints / successes with observable errors. Unobservable autonomy is shown as not measured.
-- Consolidation: successful / completed reviews. Progression uses actual acquired lessons or grades and the adapter's real total.
+- Consolidation: reviews completed without errors or hints / completed reviews. Progression uses actual acquired lessons or grades and the adapter's real total.
 - Active time comes from the existing inactivity-aware timer, cumulative across versions; its scope is explicitly labelled.
 - Game points, global XP and academic mastery remain separate. Client-reported results are not server-certified assessments.
 

@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Jeux par lots** (ADR 0033 proposé) : documentation et catégorisation des neuf jeux, suivi v2 des tentatives, KPI locaux et bilans Jeux bornés dans les espaces Famille/Professeur, filtrés côté serveur par cibles explicites et matières. Les performances ludiques ne créent aucune maîtrise scolaire. / Nine games documented and classified, versioned attempt tracking, local KPIs and bounded tutor reports with server-side subject filtering.
+
 - **Navigation : « Mon tableau de bord » et ordre configurable** (ADR 0031) : nouvelle entrée « Mon tableau de bord », sous l'Accueil par défaut, qui regroupe Profil, Mon compte, Espace famille, Contributions et l'espace Professeur (Suivi de classe, Mes classes, Mes élèves) en vues choisies par une barre de filtres commune, selon le rôle ; l'ordre des entrées de la barre latérale et de la barre du bas se règle par la clé `navigation` de `web/config.json`. / "My dashboard" navigation entry grouping personal views behind filters; navigation order configurable in `web/config.json`.
 - Ma famille : filtre « View as » par cases à cocher et consultation en lecture seule des travaux donnés par les professeurs.
 

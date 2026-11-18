@@ -320,3 +320,25 @@ test("activités : cahier rédigé par l'IA sous quota du professeur", async () 
   assert.equal(vue.contenu.titre, "Mission");
   assert.equal(sql().prepare("SELECT tokens FROM professeurs_consommations").get().tokens, 900);
 });
+
+test("Jeux : le Worker filtre les bilans avant transmission aux professeurs et garde les permissions", async () => {
+  const { jeton, classe } = await professeurAvecClasse();
+  const eleve = await inscrire("eleve.jeux");
+  const invitation = await lien(jeton, { mode: "classe", classeId: classe.id });
+  assert.equal((await rejoindre(eleve, invitation.code)).statut, 201);
+  const jour = new Date().toISOString().slice(0, 10);
+  const k = { version: "1.0.1", commencees: 1, terminees: 1, evaluables: 1, reussies: 1, abandons: 0,
+    enCours: 0, autonomieEvaluables: 0, autonomes: 0, avecAide: 0, joursActifs: 1, revisions: 0, revisionsReussies: 0, tempsMin: 2 };
+  assert.equal((await prof("bilan", { methode: "PUT", jeton: eleve, corps: { bilan: { jour,
+    jeux: { v: 1, jour, jeux: { "2048": k, sudoku: { ...k, texte: "ne-pas-conserver" } } } } } })).statut, 204);
+  const liste = await prof("eleves", { methode: "GET", jeton });
+  assert.deepEqual(Object.keys(liste.donnees.eleves[0].bilan.jeux.jeux), ["2048"]);
+  assert.ok(!JSON.stringify(liste.donnees).includes("sudoku"));
+  const stocke = sql().prepare("SELECT bilan FROM professeurs_bilans").get().bilan;
+  assert.ok(!stocke.includes("ne-pas-conserver"));
+  const autre = await inscrire("autre.prof.jeux");
+  assert.equal((await prof("eleves", { methode: "GET", jeton: autre })).statut, 403);
+  const eleveId = await compteIdDeJeton(eleve);
+  assert.equal((await prof(`eleves/${eleveId}/retirer`, { jeton, corps: {} })).statut, 204);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM professeurs_bilans").get().n, 0);
+});

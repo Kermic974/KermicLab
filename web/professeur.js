@@ -1,3 +1,4 @@
+import { jeuPourMatieres } from "./contrat-jeux.js";
 // Expérience Professeur (ADR 0030) : logique pure, sans accès au DOM ni au réseau, partagée avec le Worker et la
 // démonstration. Un compte local dont le rôle donne la permission `professeur` configure ses matières et ses niveaux,
 // gère ses classes et suit ses élèves. Un élève rejoint une classe (ou des cours particuliers) par un lien
@@ -154,7 +155,8 @@ export function bilanPourProfesseur(brut, matieres, matiereDe) {
   const bilan = validerBilan(brut);
   if (!bilan) return null;
   const notions = Object.fromEntries(Object.entries(bilan.notions).filter(([id]) => matieres.includes(matiereDe(id))));
-  return { ...bilan, notions, badges: [], cahiers: [] };
+  const jeux = bilan.jeux ? { ...bilan.jeux, jeux: Object.fromEntries(Object.entries(bilan.jeux.jeux).filter(([id]) => jeuPourMatieres(id, matieres, matiereDe))) } : null;
+  return { ...bilan, notions, badges: [], cahiers: [], ...(jeux ? { jeux } : {}) };
 }
 
 /** Matières suivies pour un élève : celle de sa classe, sinon toutes celles du professeur. */

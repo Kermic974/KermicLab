@@ -41,7 +41,7 @@ Le détail local affiche les tentatives par activité et mode. Les tuteurs reço
 - Engagement : commencées, en cours, abandons, jours actifs ; temps actif cumulé mesuré par le moteur existant, avec arrêt en cas d'inactivité.
 - Complétion : terminées / commencées ; réussite : réussies / terminées évaluables.
 - Autonomie : sans erreur ni aide parmi les réussites observables ; absence de mesure indiquée explicitement.
-- Consolidation : révisions réussies / réalisées ; progression : leçons ou grades acquis / total lorsque l'adaptateur fournit réellement ces nombres.
+- Consolidation : révisions réussies sans erreur ni aide / réalisées ; progression : leçons ou grades acquis / total lorsque l'adaptateur fournit réellement ces nombres.
 - Points propres aux jeux, XP globaux et maîtrise scolaire restent séparés. Les comptes sont déclarés par l'appareil, sans certification serveur.
 
 ## Partage et accès

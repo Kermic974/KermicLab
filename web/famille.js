@@ -1,3 +1,4 @@
+import { normaliserBilanJeux } from "./suivi-jeux.js";
 // Espace famille des comptes locaux (ADR 0029) : logique pure, sans accès au DOM ni au réseau, partagée avec le Worker.
 // Un compte local qui a le rôle parent rattache des comptes enfants (invitation envoyée par un compte solo ou création
 // par le parent), suit leur progression (bilan clair et borné : compteurs et identifiants du catalogue, jamais de texte
@@ -67,7 +68,7 @@ export function validerProfilEnfant(corps, { validerPrenom, tranches, versionCon
  * @param {object} p progression normalisée (web/progression.js)
  * @param {object} options `notions` : { id: { etat, tentes, reussis } } ; `semaine` : activité par jour ; `niveau`.
  */
-export function construireBilan(p, { jour, niveau = 1, serie = 0, semaine = [], notions = {}, cahiers = [] } = {}) {
+export function construireBilan(p, { jour, niveau = 1, serie = 0, semaine = [], notions = {}, cahiers = [], jeux } = {}) {
   return validerBilan({
     v: VERSION_BILAN, jour,
     xp: p?.xp, niveau, serie, serieMax: p?.serieMax, questions: p?.questions,
@@ -75,7 +76,7 @@ export function construireBilan(p, { jour, niveau = 1, serie = 0, semaine = [], 
     dernierJour: p?.dernierJour ?? null,
     badges: p?.badges ?? [],
     jours: semaine.map((j) => ({ jour: j.jour, xp: j.xp, min: Math.round((j.s ?? 0) / 60000), q: j.q })),
-    notions, cahiers
+    notions, cahiers, ...(jeux ? { jeux } : {})
   });
 }
 
@@ -107,7 +108,7 @@ export function validerBilan(brut) {
     tempsMin: entier(brut.tempsMin, 10_000_000),
     dernierJour: JOUR.test(brut.dernierJour ?? "") ? brut.dernierJour : null,
     badges: [...new Set((Array.isArray(brut.badges) ? brut.badges : []).filter((b) => typeof b === "string" && ID.test(b)))].slice(0, 30),
-    jours, notions, cahiers
+    jours, notions, cahiers, ...(normaliserBilanJeux(brut.jeux) ? { jeux: normaliserBilanJeux(brut.jeux) } : {})
   };
 }
 

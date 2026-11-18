@@ -53,8 +53,10 @@ export function normaliserSuivi(brut) {
       typeof t.version === "string" && SEMVER.test(t.version) && typeof t.activite === "string" && ID.test(t.activite) && JEUX[id].activites.includes(t.mode) && jourValide(t.jour) &&
       entier(t.sequence, 100000) && entier(t.reponses, 100000) && entier(t.erreurs, t.reponses) && entier(t.indices, 100000) &&
       [null, "reussite", "echec", "abandon", "neutre"].includes(t.resultat) && !!vus.add(t.id))
-      .map((t) => Object.fromEntries(["id", "version", "activite", "mode", "jour", "sequence", "reponses", "erreurs", "indices", "resultat"].map((k) => [k, t[k]])));
-    for (const t of tentatives) { const source = n.tentatives.find((x) => x.id === t.id); t.jours = [...new Set((Array.isArray(source.jours) ? source.jours : [t.jour]).filter(jourValide))].sort().slice(-7); }
+      .map((t) => ({
+        ...Object.fromEntries(["id", "version", "activite", "mode", "jour", "sequence", "reponses", "erreurs", "indices", "resultat"].map((k) => [k, t[k]])),
+        jours: [...new Set((Array.isArray(t.jours) ? t.jours : [t.jour]).filter(jourValide))].sort().slice(-7)
+      }));
     if (tentatives.length) resultat[id] = { tentatives };
   }
   return resultat;
@@ -76,7 +78,7 @@ export function indicateursJeu(n, jour, { version, mode, activite } = {}) {
     autonomieEvaluables: autonomie.length, autonomes: autonomie.filter((t) => !t.erreurs && !t.indices).length,
     avecAide: reussies.filter((t) => t.indices > 0).length, joursActifs: jours.size,
     revisions: ts.filter((t) => t.mode === "revision" && t.resultat !== null && t.resultat !== "abandon").length,
-    revisionsReussies: reussies.filter((t) => t.mode === "revision").length };
+    revisionsReussies: reussies.filter((t) => t.mode === "revision" && !t.erreurs && !t.indices).length };
 }
 // Validation commune navigateur/serveur : aucun identifiant de tentative, réponse ou cible fournie par le client.
 export function normaliserBilanJeux(brut) {

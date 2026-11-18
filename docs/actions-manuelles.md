@@ -2,6 +2,13 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Jeux par lots (ADR 0033)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire et accepter l’extension applicative de suivi et de partage | [ADR 0033](decisions/0033-suivi-jeux.md) | Proposition préparée, sans validation normative de S6–S9 | Revue du propriétaire avant fusion | à faire |
+| Relire les neuf jeux sur ordinateur et téléphone, et qualifier leurs cibles pédagogiques | [Inventaire](jeux-suivi.fr.md), fiches du catalogue | Aucun agent ne renseigne une relecture humaine ; seuls les liens explicites qualifiés ouvrent le suivi professeur | Marqueurs de relecture renseignés par un adulte et cibles revues | à faire |
+
 ## Gamification unifiée (ADR 0032)
 
 Suivi : [issue #381](https://github.com/Kermic974/KermicLab/issues/381) (validation de l'ADR) et [issue #382](https://github.com/Kermic974/KermicLab/issues/382) (relecture des liens pédagogiques).

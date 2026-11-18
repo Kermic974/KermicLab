@@ -14,6 +14,8 @@ import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
 import * as evenements from "./evenements.js";
+import * as suiviJeux from "./suivi-jeux.js";
+import * as contratJeux from "./contrat-jeux.js";
 import * as recommandation from "./recommandation.js";
 import * as fichierProgression from "./fichier-progression.js";
 import * as vacances from "./cahier-vacances.js";
@@ -964,6 +966,7 @@ function bilanDeLAppareil() {
   const jour = progression.jourLocal();
   const notions = {};
   for (const [id, n] of Object.entries(etat.evenements?.notions ?? {})) {
+    if (etat.registre?.typeDe(id) !== "notion") continue;
     const maitrise = evenements.maitriseNotion(n, jour).etat;
     if (!familleModule.ETATS_NOTION.includes(maitrise)) continue;
     const r = evenements.resumerNotion(n);
@@ -973,7 +976,8 @@ function bilanDeLAppareil() {
   const cahiers = cahiersEnregistres().filter((c) => c.famille).map((c) => ({ famille: c.famille, ...bilanExercices(c) }));
   return familleModule.construireBilan(p, {
     jour, niveau: progression.niveau(p).niveau, serie: progression.serieCourante(p, jour),
-    semaine: progression.activite(p, jour, familleModule.JOURS_BILAN), notions, cahiers
+    semaine: progression.activite(p, jour, familleModule.JOURS_BILAN), notions, cahiers,
+    jeux: suiviJeux.construireBilanJeux(etat.evenements?.jeux, jour, p, etat.trophees)
   });
 }
 
@@ -1254,7 +1258,7 @@ function carteEnfant(e) {
     const rep = familleModule.repartitionNotions(b);
     const stats = element("dl", { classe: "stats stats-progression" });
     stats.append(chiffre(t("niveauLong", { n: "" }).trim(), b.niveau), chiffre(t("efSerie"), b.serie), chiffre(t("efXpSemaine"), sem.xp), chiffre(t("efTempsSemaine"), formatMinutes(sem.minutes)));
-    carte.append(stats, barresSemaine(b, jour));
+    carte.append(stats, barresSemaine(b, jour), blocBilanJeux(b));
     carte.append(element("p", { classe: "doux petit", texte: t("efNotionsResume", { maitrisees: rep.maitrisee, encours: rep["en-cours"], arevoir: rep["a-revoir"], decouvertes: rep.decouverte }) }));
     const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id).slice(0, 5);
     if (aRevoir.length) carte.append(element("p", { classe: "petit", texte: t("efARevoirListe", { liste: aRevoir.join(", ") }) }));
@@ -4040,6 +4044,7 @@ function rendreTrophees() {
       carte.append(element("h4", { texte: id === "mini-cercle" ? t("minilabTitre") : notion?.titre ?? id }));
       if (id === "mini-cercle") carte.append(element("p", { cle: "tropheesMiniLab" }));
       carte.append(chiffresModule(m));
+      if (m.genre === "jeux") carte.append(blocSuiviJeu(id));
       if (m.etoilesTotal) carte.append(element("progress", { attributs: { max: m.etoilesTotal, value: m.etoiles, "aria-label": t("tropheesEtoiles") } }));
       const activite = activiteNotion(id);
       if (activite) carte.append(activite);
@@ -4180,6 +4185,20 @@ function brancherFichierProgression() {
 }
 
 function brancherTrophees() {
+  const tentativesCadres = new Map();
+  const interrompre = (cadre) => {
+    const ids = tentativesCadres.get(cadre);
+    if (!ids) return;
+    for (const n of Object.values(etat.evenements?.jeux ?? {})) for (const t of n.tentatives) {
+      if (ids.has(t.id) && t.resultat === null) t.resultat = "abandon";
+    }
+    tentativesCadres.delete(cadre);
+    if (etat.evenements) evenements.sauver(stockage(), etat.evenements);
+    planifierBilanFamille();
+  };
+  new MutationObserver(() => {
+    for (const cadre of tentativesCadres.keys()) if (!cadre.isConnected) interrompre(cadre);
+  }).observe(document.body, { childList: true, subtree: true });
   window.addEventListener("message", (e) => {
     // Une iframe sandboxée a une origine opaque (« null ») : l'identité de la fenêtre fait foi.
     const cadre = [...document.querySelectorAll("iframe[data-module]")].find((c) => c.contentWindow === e.source);
@@ -4198,12 +4217,33 @@ function brancherTrophees() {
     const id = cadre.dataset.module;
     // Contrat d'événements pédagogiques v1 (ADR 0025) : poignée de main, puis événements validés et agrégés localement.
     if (e.data?.type === "kermiclab:evenements:pret") {
-      if (e.data.v === evenements.VERSION_CONTRAT && e.data.notion === id) {
+      if (e.data.v === suiviJeux.VERSION && e.data.notion === id && contratJeux.jeuConnu(id)) {
+        interrompre(cadre);
+        cadre.contentWindow.postMessage({ type: "kermiclab:evenements:ecouter", v: suiviJeux.VERSION, notion: id }, "*");
+      } else if (e.data.v === evenements.VERSION_CONTRAT && e.data.notion === id) {
         cadre.contentWindow.postMessage({ type: "kermiclab:evenements:ecouter", v: evenements.VERSION_CONTRAT, notion: id }, "*");
       }
       return;
     }
     if (e.data?.type === "kermiclab:evenement") {
+      if (e.data.v === suiviJeux.VERSION) {
+        const ev = suiviJeux.normaliserEvenementJeu(e.data, id);
+        if (!ev || etat.registre?.typeDe(id) !== "jeu") return;
+        etat.evenements ??= evenements.etatInitial();
+        etat.evenements.jeux = suiviJeux.enregistrerJeu(etat.evenements.jeux, ev, progression.jourLocal());
+        if (!tentativesCadres.has(cadre)) tentativesCadres.set(cadre, new Set());
+        if (ev.evenement === "demarre") {
+          const ids = tentativesCadres.get(cadre);
+          if (ids.size < 64) ids.add(ev.tentative);
+        }
+        if (ev.evenement === "efface") tentativesCadres.get(cadre).clear();
+        if (ev.evenement === "termine") tentativesCadres.get(cadre).delete(ev.tentative);
+        evenements.sauver(stockage(), etat.evenements);
+        planifierBilanFamille();
+        if (etat.ecran === "progression") rendreProgression();
+        return;
+      }
+      if (etat.registre?.typeDe(id) === "jeu") return;
       const ev = evenements.normaliserEvenement(e.data, id);
       if (!ev) { console.warn("evenements : message invalide", id); return; }
       const avant = etat.evenements;
@@ -4654,6 +4694,7 @@ async function demarrer() {
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
   etat.evenements = evenements.charger(stockage());
+  for (const id of Object.keys(etat.evenements.jeux ?? {})) etat.evenements.jeux = suiviJeux.interrompreJeu(etat.evenements.jeux, id);
   brancherTrophees();
   brancherFichierProgression();
   appliquerTheme(lireCle(preferences(), CLE_THEME));
@@ -4707,6 +4748,7 @@ async function demarrer() {
   void chargerParcours();
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
   $("#recherche-jeu").addEventListener("input", rendreJeux);
+  $("#famille-jeu").addEventListener("change", rendreJeux);
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape" || document.querySelector("dialog[open]")) return;
     if (!$("#panneau-chat").hidden) {
@@ -6068,7 +6110,9 @@ function rendreJeux() {
   if (!etat.progres || !etat.textes.titre) return;
   const jeux = etat.registre.deType("jeu");
   const filtre = sansAccents($("#recherche-jeu").value.trim());
-  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre));
+  const famille = $("#famille-jeu").value;
+  const selection = jeux.filter((n) => (!famille || n.classification?.famille === famille) &&
+    sansAccents(n.titre).includes(filtre));
   const grille = $("#grille-jeux");
   grille.replaceChildren();
   $("#jeux-compteur").textContent = jeux.length ? t("jeuxCompteur", { n: selection.length, m: jeux.length }) : "";
@@ -6077,6 +6121,7 @@ function rendreJeux() {
   for (const jeu of selection) {
     const carte = element("article", { classe: "carte jeu-carte" });
     carte.append(element("h3", { texte: jeu.titre }));
+    if (jeu.classification) carte.append(element("span", { classe: "doux petit", texte: t(`jeuFamille_${jeu.classification.famille}`) }));
     if (jeu.resume) carte.append(element("p", { classe: "doux", texte: jeu.resume }));
     // Lien Jeux ↔ Éducation : les notions que ce jeu fait travailler, ouvrables d'un geste.
     const liees = etat.registre.notionsDuJeu(jeu.id);
@@ -6293,6 +6338,60 @@ function rendreDecouvertes() {
   }
 }
 
+function chiffresSuiviJeu(k) {
+  const dl = element("dl", { classe: "trophees-chiffres" });
+  const ratio = (n, d) => d ? `${n} / ${d} (${Math.round(100 * n / d)} %)` : t("jeuNonMesure");
+  for (const [cle, valeur] of [
+    ["jeuTentatives", k.commencees], ["jeuCompletion", ratio(k.terminees, k.commencees)],
+    ["jeuReussite", ratio(k.reussies, k.evaluables)], ["jeuAutonomie", ratio(k.autonomes, k.autonomieEvaluables)],
+    ["jeuAvecAide", k.avecAide], ["jeuAbandons", k.abandons], ["jeuEnCours", k.enCours],
+    ["jeuJoursActifs", `${k.joursActifs} / 7`], ["jeuRevisions", ratio(k.revisionsReussies, k.revisions)]
+  ]) {
+    const ligne = element("div");
+    ligne.append(element("dt", { cle }), element("dd", { texte: String(valeur) }));
+    dl.append(ligne);
+  }
+  return dl;
+}
+
+function blocSuiviJeu(id) {
+  const section = element("details", { attributs: { "data-suivi-jeu": id } });
+  section.append(element("summary", { cle: "jeuSuivi" }));
+  const n = etat.evenements?.jeux?.[id];
+  const version = n?.tentatives.at(-1)?.version;
+  if (!version) { section.append(element("p", { cle: "jeuNonMesure" })); return section; }
+  const jour = progression.jourLocal();
+  section.append(element("p", { classe: "doux petit", texte: t("jeuFenetre", { version }) }),
+    chiffresSuiviJeu(suiviJeux.indicateursJeu({ ...n, jeu: id }, jour, { version })));
+  const groupes = new Map(n.tentatives.filter((t) => t.version === version).map((t) => [`${t.mode}:${t.activite}`, t]));
+  for (const { mode, activite } of groupes.values()) {
+    const detail = element("details");
+    detail.append(element("summary", { texte: `${t(`jeuMode_${mode}`)} · ${activite}` }),
+      chiffresSuiviJeu(suiviJeux.indicateursJeu(n, jour, { version, mode, activite })));
+    section.append(detail);
+  }
+  section.append(element("p", { classe: "doux petit", cle: "jeuPasMaitrise" }));
+  return section;
+}
+
+function blocBilanJeux(bilan) {
+  const section = element("details", { attributs: { "data-bilan-jeux": "" } });
+  section.append(element("summary", { cle: "jeuSuivi" }));
+  const b = bilan?.jeux;
+  if (!b || !Object.keys(b.jeux).length) { section.append(element("p", { cle: "jeuNonMesure" })); return section; }
+  section.append(element("p", { classe: "doux petit", texte: t("jeuBilanDate", { jour: b.jour }) }));
+  for (const [id, k] of Object.entries(b.jeux)) {
+    const detail = element("details");
+    detail.append(element("summary", { texte: notionParId(id)?.titre ?? id }),
+      element("p", { classe: "doux petit", texte: t("jeuFenetre", { version: k.version }) }), chiffresSuiviJeu(k),
+      element("p", { texte: t("jeuTempsCumule", { min: k.tempsMin }) }));
+    detail.append(element("p", { texte: k.total > 0 ? t("jeuAcquis", { n: k.acquis, m: k.total }) : t("jeuNonMesure") }));
+    section.append(detail);
+  }
+  section.append(element("p", { classe: "doux petit", cle: "jeuPasMaitrise" }));
+  return section;
+}
+
 function ligneExperience(x) {
   const li = element("li", { classe: "experience", attributs: { "data-type": x.type } });
   li.append(element("strong", { texte: x.titre }));
@@ -6302,6 +6401,7 @@ function ligneExperience(x) {
   ].filter(Boolean);
   if (stats.length) li.append(element("span", { classe: "doux petit", texte: stats.join(" · ") }));
   // Statistiques propres au module (victoires, record, grades…), seulement s'il en a transmis.
+  if (x.type === "jeu") li.append(blocSuiviJeu(x.id));
   const module = etat.trophees[x.id];
   if (module) li.append(chiffresModule(module));
   const n = etat.registre.trouver(x.id);

@@ -314,7 +314,16 @@
         </div>
         <label for="recherche-jeu" class="visuellement-cache" data-i18n="rechercherJeu"></label>
         <input id="recherche-jeu" type="search" autocomplete="off" data-i18n-placeholder="rechercherJeu">
-        <div id="grille-jeux" class="grille-jeux"></div>
+        <label for="famille-jeu" data-i18n="jeuFamille"></label>
+          <select id="famille-jeu">
+            <option value="" data-i18n="jeuToutesFamilles"></option>
+            <option value="logique" data-i18n="jeuFamille_logique"></option>
+            <option value="nombres" data-i18n="jeuFamille_nombres"></option>
+            <option value="langage" data-i18n="jeuFamille_langage"></option>
+            <option value="strategie" data-i18n="jeuFamille_strategie"></option>
+            <option value="cartes" data-i18n="jeuFamille_cartes"></option>
+          </select>
+          <div id="grille-jeux" class="grille-jeux"></div>
         <p id="jeux-vide" class="doux" hidden></p>
       </section>
 

@@ -60,11 +60,31 @@ test("Jeux : persistance dans l'enveloppe v1 et coexistence avec les événement
   evenements.sauver(stockage, { ...evenements.etatInitial(), jeux });
   const e = evenements.charger(stockage);
   assert.deepEqual(e.jeux, jeux);
+  assert.deepEqual(suivi.normaliserSuivi({ "2048": { tentatives: [null, ...jeux["2048"].tentatives] } }), jeux);
   const scolaire = evenements.enregistrer(e, { notion: "pythagore", version: "1.0.0", evenement: "termine" }, jour);
   assert.deepEqual(scolaire.jeux, jeux);
   assert.equal(evenements.maitriseNotion(scolaire.notions["2048"], jour).etat, "non-commencee");
   assert.deepEqual(suivi.normaliserSuivi({ inconnu: jeux["2048"] }), {});
   assert.deepEqual(evenements.charger({ getItem: () => '{"v":1,"notions":{}}' }), evenements.etatInitial());
+});
+
+test("Bilans : bornes, absence de texte et filtrage professeur avant calcul des totaux Jeux", () => {
+  let jeux = enregistrer({}, message("demarre", 0));
+  jeux = enregistrer(jeux, message("termine", 1, { resultat: "reussite" }));
+  const partage = suivi.construireBilanJeux(jeux, jour, {}, {});
+  partage.jeux.sudoku = { ...partage.jeux["2048"], texte: "secret" };
+  const b = construireBilan({}, { jour, jeux: partage });
+  assert.ok(b.jeux.jeux.sudoku);
+  assert.ok(!JSON.stringify(b).includes("secret"));
+  const maths = bilanPourProfesseur(b, ["mathematiques"], (id) => id === "puissances" ? "mathematiques" : null);
+  assert.deepEqual(Object.keys(maths.jeux.jeux), ["2048"]);
+  const francais = bilanPourProfesseur(b, ["francais"], () => "mathematiques");
+  assert.deepEqual(francais.jeux.jeux, {});
+  const catalogueRetire = bilanPourProfesseur(b, ["mathematiques"], () => null);
+  assert.deepEqual(catalogueRetire.jeux.jeux, {});
+  const invalide = structuredClone(b); invalide.jeux.jeux["2048"].reussies = 65;
+  assert.equal(validerBilan(invalide).jeux.jeux["2048"], undefined);
+  assert.equal(suivi.normaliserBilanJeux({ v: 1, jour: "2026-02-30", jeux: {} }), null);
 });
 
 test("Pont : origine déclarée, fenêtre parente, poignée de main, tentative paresseuse et aucune liste de mots", async () => {
@@ -95,4 +115,15 @@ test("Pont : origine déclarée, fenêtre parente, poignée de main, tentative p
   assert.deepEqual(p.messages.slice(1).map(({ ev }) => ev.evenement), ["demarre", "reponse", "termine"]);
   assert.ok(p.messages.every((m) => m.origine === "https://ecole.test"));
   for (const { ev } of p.messages.slice(1)) assert.ok(suivi.normaliserEvenementJeu(ev, "pendu"));
+});
+
+test("Révision : une correction après erreur ne devient pas une réactivation sans aide", () => {
+  let e = {};
+  const ev = (type, sequence, extra = {}) => message(type, sequence, { notion: "echecs", mode: "revision", activite: "valeurs/0", ...extra });
+  e = enregistrer(e, ev("demarre", 0));
+  e = enregistrer(e, ev("reponse", 1, { correct: false }));
+  e = enregistrer(e, ev("reponse", 2, { correct: true }));
+  e = enregistrer(e, ev("termine", 3, { resultat: "reussite" }));
+  const k = suivi.indicateursJeu(e.echecs, jour);
+  assert.equal(k.revisions, 1); assert.equal(k.revisionsReussies, 0); assert.equal(k.autonomes, 0);
 });

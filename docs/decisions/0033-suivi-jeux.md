@@ -36,7 +36,7 @@ Conservation : **64 dernières tentatives par jeu**, avec les sept derniers jour
 - Complétion : terminées hors abandon / commencées. Une partie nulle est terminée.
 - Réussite : réussies / terminées évaluables (réussite ou échec). Abandons, nulles et tentatives en cours exclus du dénominateur.
 - Autonomie : réussites sans erreur ni aide / réussites dont les erreurs sont observables. Non mesurée pour les parties sans correction observable (notamment 2048, échecs, belote, poker).
-- Consolidation : révisions réussies / réalisées ; les tentatives abandonnées n'en font pas partie.
+- Consolidation : révisions réussies sans erreur ni aide / réalisées ; les tentatives abandonnées n'en font pas partie.
 - Jours actifs : jours distincts des sept derniers jours, dans la fenêtre conservée. Les dates futures ne comptent pas.
 - Aucun dénominateur : « Non mesuré », sans pourcentage fabriqué.
 
