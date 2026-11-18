@@ -8,10 +8,10 @@ Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (
 | Terme | Sens unique |
 |---|---|
 | **XP** | Points du tableau de bord : questions, exploration, exercices réussis, notions validées, défi express. Un seul niveau global. |
-| **Points de jeu** | Points internes d'une Académie de jeu, sous ce nom dans le tableau de bord (encore « XP » dans les pages des jeux, renommées par une PR séparée). Jamais additionnés à l'XP ni entre jeux. |
+| **Points de jeu** | Points internes d'une Académie de jeu, sous ce nom dans les pages des jeux comme dans le tableau de bord. Jamais additionnés à l'XP ni entre jeux. |
 | **Maîtrise** | Seul indicateur scolaire, par notion (`docs/progression.md`). |
 | **Étoiles** | Notion : une par exercice réussi. Académie : 1 à 3 par leçon. |
-| **Défi express** / **Défi du jour** | Défi quotidien du tableau de bord (XP) / exercice quotidien d'une Académie (points de jeu ; « défi de l'Académie » après la PR séparée). |
+| **Défi express** / **Défi de l'Académie** | Défi quotidien du tableau de bord (XP) / exercice quotidien d'une Académie (points de jeu). |
 
 ### XP du tableau de bord
 
@@ -40,13 +40,13 @@ Ce qui motive le joueur :
 
 | Mécanisme | En une phrase |
 |---|---|
-| XP et niveaux | Chaque réussite rapporte de l'XP ; les niveaux demandent de plus en plus d'XP (100, 300, 600…). |
+| Points de jeu et niveaux | Chaque réussite rapporte des points de jeu ; les niveaux en demandent de plus en plus (100, 300, 600…). Ils ne s'ajoutent jamais à l'XP du tableau de bord. |
 | Grades et emblèmes | Terminer un grade ouvre le suivant et un nouvel emblème à choisir. |
 | Étoiles | 1 à 3 par leçon, selon les erreurs et les indices : on peut refaire une leçon pour s'améliorer. |
 | Badges | Une vingtaine par jeu, avec leur avancement visible (« 3 / 10 révisions »). |
 | Série et objectif du jour | Jours d'affilée, et un objectif quotidien choisi (1, 3 ou 5 exercices). |
 | Révisions espacées | Chaque stratégie apprise revient de plus en plus tard si elle est réussie, dès le lendemain sinon. |
-| Défi du jour | Un exercice, le même pour tous le même jour, avec un bonus de points de jeu. |
+| Défi de l'Académie | Un exercice, le même pour tous le même jour, avec un bonus de points de jeu (distinct du défi express du tableau de bord). |
 | Conseil personnalisé | Réviser, retravailler le point faible, avancer, viser 3 étoiles, ou aller jouer. |
 | Parties | Les parties jouées (victoires, records de temps au Démineur) rapportent de l'XP et des badges. |
 
@@ -117,7 +117,7 @@ their independent storage and do not sync with the dashboard.
 | Leçon terminée (la première fois) | 30 |
 | Révision réussie du premier coup (sinon 1) | 5 |
 | Objectif du jour atteint | 20 |
-| Défi du jour réussi | 15 |
+| Défi de l'Académie réussi | 15 |
 | Partie (selon le jeu et le niveau) | défini dans le parcours : par exemple 50 pour une victoire contre l'ordinateur Facile, 200 pour une victoire au Démineur Expert |
 
 Le niveau *n* commence à 50 × *n* × (*n* − 1) XP.

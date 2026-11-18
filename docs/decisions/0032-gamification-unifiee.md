@@ -66,7 +66,7 @@ de l'Académie.
 
 **Mise en œuvre en deux temps.** Le tableau de bord affiche déjà « Points de jeu » et « Niveau de jeu » (cette PR). Le
 renommage dans les pages des jeux (module partagé `gabarit/jeux/academie.js`, textes propres à la Belote, au Démineur,
-aux Échecs et au Poker) fait l'objet d'une PR séparée : il change le contenu vu par l'élève dans six jeux, qui passent
+aux Échecs et au Poker) fait l'objet d'une PR séparée (#383) : il change le contenu vu par l'élève dans six jeux, qui passent
 en version corrective et demandent leur propre relecture humaine. Les identifiants internes (`xp`, `XP.defi`) ne
 changent pas : les progressions enregistrées restent lisibles.
 

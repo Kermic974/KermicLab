@@ -7,8 +7,8 @@ notions-liees:
   - probabilites
   - denombrement
   - probabilites-conditionnelles
-version: 1.1.0
-date: 2026-11-05
+version: 1.1.1
+date: 2026-11-18
 langues: fr
 onglets: explication, application, academie, mise-en-situation
 mots-cles:
