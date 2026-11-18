@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Correctif — menus par rôle d'un compte synchronisé** : un compte local synchronisé par clé, sans « Lier mon compte », ne chargeait jamais ses rôles (session en ligne ignorée) ; un administrateur ne voyait ni Contributions, ni Professeur, ni Famille. La session de synchronisation fait désormais foi, et les rôles sont relus après l'activation, la reprise ou le déverrouillage de la synchronisation. / Role-gated navigation now loads for accounts signed in through key sync.
+
 - **S6 — schémas et fixtures** : onze contrats d’expériences fermés, primitives et socle commun JSON Schema 2020-12, chargeur Ajv réutilisant les cibles S4 et tests des références de sources, variantes et frontières S7–S9. Adoption #385 consignée ; les contrôles métier et la migration suivent dans les PR liées à #384. / Closed experience schemas and fixtures; semantic validation and corpus migration follow separately.
 
 - **S6 — proposition d’adoption** : contrats des expériences pédagogiques, arbitrages D6-1 à D6-7, audit du corpus public et chaîne de seize PR vers main (ADR 0033, #384). Aucun nouveau comportement apprenant à cette étape. / Proposed experience contracts, public-source audit and linked delivery plan; no learner-facing change.
