@@ -13,9 +13,13 @@ import {
   listerStrategies, validerRole, validerStrategie
 } from "./roles.js";
 import {
-  LIMITES_NIVEAU, NIVEAU_PAR_DEFAUT, PLAFONDS_SCHEMA, chargerReglages, clesSurchargees, ecrireEtatContenu, ecrireNiveaux,
-  ecrireParametre, ecrireTheme, envAvecReglages, validerNiveaux, validerParametre
+  NIVEAU_PAR_DEFAUT, PLAFONDS_SCHEMA, chargerReglages, clesSurchargees, ecrireEtatContenu, ecrireFinances, ecrireParametre,
+  ecrireSouscriptions, ecrireTheme, envAvecReglages, validerParametre
 } from "./reglages.js";
+import {
+  FINANCES_PAR_DEFAUT, MAX_SOUSCRIPTIONS, SOUSCRIPTION_GRATUITE, bornesLimites, decrireSouscription, validerFinances, validerSouscription
+} from "./souscriptions.js";
+import { BORNES_FINANCES, DEVISES, MODULES_COUT } from "../../web/admin/financier.js";
 import { REGISTRE, controlerNonConservation, volumes } from "./donnees.js";
 import { purgerTelemetrie, syntheseTelemetrie } from "./telemetrie.js";
 import {
@@ -354,13 +358,54 @@ function etatHarness(envEffectif, reglages) {
     configuration: configurationAdmin(envEffectif),
     surcharges: clesSurchargees(reglages),
     plafondsSchema: PLAFONDS_SCHEMA,
-    skills: Object.entries(SKILLS).map(([id, s]) => ({ id, module: s.module, version: s.version, prompt: s.prompt, perimetre: s.perimetre, actif: config.LLM_ACTIF && config.SKILLS_ACTIFS.includes(id) })),
-    niveaux: [
-      { id: NIVEAU_PAR_DEFAUT, libelle: "Gratuit", applique: true, ...Object.fromEntries(Object.entries(LIMITES_NIVEAU).map(([champ, cle]) => [champ, config[cle]])) },
-      ...reglages.niveaux.map((n) => ({ ...n, applique: false }))
-    ],
-    bornesNiveaux: Object.fromEntries(Object.entries(LIMITES_NIVEAU).map(([champ, cle]) => { const p = parametreDuRegistre(cle); return [champ, { min: p.min, max: p.max }]; }))
+    skills: Object.entries(SKILLS).map(([id, s]) => ({ id, module: s.module, version: s.version, prompt: s.prompt, perimetre: s.perimetre, actif: config.LLM_ACTIF && config.SKILLS_ACTIFS.includes(id) }))
   };
+}
+
+// ---------- Souscriptions et financier (ADR 0031) ----------
+
+async function etatSouscriptions(env, envEffectif, reglages) {
+  const config = lireConfiguration(envEffectif);
+  const attributions = await tenter(() => toutes(env, "SELECT niveau, count(*) AS n FROM attributions_roles GROUP BY niveau"), []);
+  const comptes = new Map(attributions.map((a) => [a.niveau, a.n]));
+  return {
+    controleActif: config.CONTROLE_ACCES_ACTIF,
+    parDefaut: reglages.souscriptionsParDefaut,
+    souscriptions: reglages.souscriptions.map((s) => ({ ...decrireSouscription(s, envEffectif, reglages.finances), comptes: comptes.get(s.id) ?? 0 })),
+    finances: reglages.finances,
+    financesParDefaut: FINANCES_PAR_DEFAUT,
+    roles: (await listerRoles(env)).map(({ id, libelle, permissions }) => ({ id, libelle, permissions: permissions.filter((p) => FONCTIONNALITES.includes(p)) })),
+    fonctionnalites: FONCTIONNALITES,
+    bornes: { limites: bornesLimites(), finances: BORNES_FINANCES },
+    plafondsSchema: PLAFONDS_SCHEMA,
+    tokensParGeneration: { defi: config.MAX_TOKENS_DEFI, cahiers: config.MAX_TOKENS_CAHIERS },
+    modulesCout: MODULES_COUT,
+    devises: DEVISES,
+    max: MAX_SOUSCRIPTIONS
+  };
+}
+
+async function enregistrerSouscription(env, id, corps, reglages) {
+  const roles = (await listerRoles(env)).map((r) => r.id);
+  const v = validerSouscription(id, corps, { roles });
+  if (!v.ok) return erreur(v.code, 400);
+  const liste = reglages.souscriptions.filter((s) => s.id !== id);
+  const position = reglages.souscriptions.findIndex((s) => s.id === id);
+  if (position < 0 && liste.length >= MAX_SOUSCRIPTIONS) return erreur("trop-de-souscriptions", 409);
+  liste.splice(position < 0 ? liste.length : position, 0, v.souscription);
+  await ecrireSouscriptions(env, liste);
+  await noter(env, position < 0 ? "souscription.creation" : "souscription.modification", id);
+  return json({ ok: true }, position < 0 ? 201 : 200);
+}
+
+async function supprimerSouscription(env, id, reglages) {
+  if (id === SOUSCRIPTION_GRATUITE) return erreur("souscription-gratuite", 409);
+  if (!reglages.souscriptions.some((s) => s.id === id)) return erreur("introuvable", 404);
+  const utilise = await env.DB.prepare("SELECT count(*) AS n FROM attributions_roles WHERE niveau = ?").bind(id).first();
+  if (utilise?.n) return erreur("niveau-attribue", 409);
+  await ecrireSouscriptions(env, reglages.souscriptions.filter((s) => s.id !== id));
+  await noter(env, "souscription.suppression", id);
+  return json({ ok: true });
 }
 
 async function modifierParametres(env, corps) {
@@ -445,6 +490,7 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
       if (!Object.hasOwn(ROLES_SYSTEME, m[1])) {
         const utilise = await env.DB.prepare("SELECT count(*) AS n FROM attributions_roles WHERE role_id = ?").bind(m[1]).first();
         if (utilise?.n) return erreur("role-attribue", 409);
+        if (reglages.souscriptions.some((s) => s.role === m[1])) return erreur("role-dans-souscription", 409);
       }
       await env.DB.prepare("DELETE FROM roles WHERE id = ?").bind(m[1]).run();
       await noter(env, "role.suppression", m[1]);
@@ -468,8 +514,8 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
       ...sujet,
       decisions: FONCTIONNALITES.map((fonctionnalite) => ({
         fonctionnalite,
-        enVigueur: accesAutorise(envEffectif, { fonctionnalite, ...sujet }, { strategies, roles }),
-        siControleActif: accesAutorise(actif, { fonctionnalite, ...sujet }, { strategies, roles })
+        enVigueur: accesAutorise(envEffectif, { fonctionnalite, ...sujet }, { strategies, roles, souscriptions: reglages.souscriptions }),
+        siControleActif: accesAutorise(actif, { fonctionnalite, ...sujet }, { strategies, roles, souscriptions: reglages.souscriptions })
       }))
     });
   }
@@ -540,18 +586,25 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
 
   if (est("GET", "/harness")) return json(etatHarness(envEffectif, reglages));
   if (est("PUT", "/harness/parametres")) { const c = await corps(); return c.erreur ?? modifierParametres(env, c.corps); }
-  if (est("PUT", "/harness/niveaux")) {
+
+  if (est("GET", "/souscriptions")) return json(await etatSouscriptions(env, envEffectif, reglages));
+  if ((m = chemin.match(/^\/souscriptions\/([a-z][a-z0-9-]{1,20})$/))) {
+    if (methode === "PUT") { const c = await corps(); return c.erreur ?? enregistrerSouscription(env, m[1], c.corps, reglages); }
+    if (methode === "DELETE") return supprimerSouscription(env, m[1], reglages);
+    return erreur("methode-non-autorisee", 405);
+  }
+  if (est("PUT", "/finances")) {
     const c = await corps();
     if (c.erreur) return c.erreur;
-    const v = validerNiveaux(c.corps.niveaux);
-    if (!v.ok) return erreur(v.code, 400);
-    const retires = reglages.niveaux.filter((n) => !v.niveaux.some((x) => x.id === n.id)).map((n) => n.id);
-    if (retires.length) {
-      const utilise = await env.DB.prepare(`SELECT count(*) AS n FROM attributions_roles WHERE niveau IN (${retires.map(() => "?").join(", ")})`).bind(...retires).first();
-      if (utilise?.n) return erreur("niveau-attribue", 409);
+    if (c.corps.reinitialiser === true) {
+      await ecrireFinances(env, null);
+      await noter(env, "finances.reinitialisation");
+      return json({ ok: true });
     }
-    await ecrireNiveaux(env, v.niveaux);
-    await noter(env, "niveaux.enregistrement", v.niveaux.map((n) => n.id).join(","));
+    const v = validerFinances(c.corps.finances);
+    if (!v.ok) return erreur(v.code, 400);
+    await ecrireFinances(env, v.finances);
+    await noter(env, "finances.enregistrement");
     return json({ ok: true });
   }
 
