@@ -65,7 +65,7 @@ export const SOUSCRIPTIONS_PAR_DEFAUT = Object.freeze([
     statut: "projet", role: "parent", fonctionnalites: [...BASE, ...IA, "famille"],
     limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 8, cahiersJour: 1, cahiersMois: 5, enfantsMax: 4, classesMax: 0, elevesMax: 0 },
     usage: { joursActifsMois: 15, tauxUtilisation: 30 },
-    prix: { mode: "prix", prixMensuelHT: 14.99, margeCible: 60, remiseAnnuelle: 17 }
+    prix: { mode: "prix", prixMensuelHT: 7.99, margeCible: 60, remiseAnnuelle: 17 }
   },
   {
     id: "professeur", libelle: "Professeur", description: "Un enseignant : classes, liens d'invitation, suivi des élèves et relecture des contributions.",
