@@ -104,7 +104,7 @@ déterministes, appliquées dans cet ordre :
 - Les révisions espacées des exercices (Leitner, issue #187) et la recommandation (issue #186) s'appuieront sur ces
   états.
 
-## XP d'apprentissage (ADR 0031)
+## XP d'apprentissage (ADR 0032)
 
 À chaque événement reçu, `gainsApprentissage(avant, apres, ev)` (`web/evenements.js`) compare l'agrégat avant et après :
 première réussite d'un exercice (`premier-coup` ou `apres-essais`), première validation de la notion (`premiere`) ou
@@ -158,7 +158,7 @@ neuf). Module pur `web/fichier-progression.js` ; rien n'est envoyé au serveur :
 - **Remplacement complet** après confirmation (« Remplacer ma progression ») : champs du fichier écrits, champs absents
   effacés, puis la page se recharge. L'état en mémoire est abandonné juste avant, pour que l'enregistrement du temps actif
   au départ de la page ne réécrive pas l'ancienne progression.
-- Ce fichier n'est pas la synchronisation du compte local (ADR 0024). Depuis l'ADR 0031 §5, les deux contiennent
+- Ce fichier n'est pas la synchronisation du compte local (ADR 0024). Depuis l'ADR 0032 §5, les deux contiennent
   l'agrégat du contrat d'événements (ADR 0025) ; dans la synchronisation, il est chiffré sur l'appareil et facultatif.
 
 ## Cahier de vacances (issue #188)

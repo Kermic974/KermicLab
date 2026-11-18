@@ -401,7 +401,7 @@ function brancherFamille() {
 // Compte facultatif : identifiant + mot de passe, enregistré sur l'appareil (vérificateur PBKDF2, jamais le mot de
 // passe). La synchronisation, sur demande, envoie un instantané chiffré sous un pseudonyme dérivé d'une phrase secrète
 // qui ne quitte pas l'appareil. La liaison du compte au serveur peut aussi être choisie sans synchronisation.
-// ADR 0031 §5 : l'agrégat du contrat d'événements (maîtrise, cartes de révision) suit aussi l'instantané chiffré. Clé
+// ADR 0032 §5 : l'agrégat du contrat d'événements (maîtrise, cartes de révision) suit aussi l'instantané chiffré. Clé
 // facultative : écartée si l'instantané devient trop grand, et jamais effacée par un instantané qui ne la contient pas.
 const CLES_FACULTATIVES = [evenements.CLE_STOCKAGE];
 const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, ...CLES_FACULTATIVES];

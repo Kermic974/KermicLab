@@ -121,7 +121,7 @@ test("accueil : une seule prochaine action, deux entrées, aperçu après usage 
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-test("Jeux : les notions liées (ADR 0031) s'affichent sur la carte et s'ouvrent d'un geste", async () => {
+test("Jeux : les notions liées (ADR 0032) s'affichent sur la carte et s'ouvrent d'un geste", async () => {
   const { page, contexte, erreurs } = await demarrer({}, null, { jeux: [
     { id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux", notionsLiees: ["trigo-cercle", "inconnue"] },
     { id: "sudoku", titre: "Le Sudoku", version: "1.0.0", niveau: "autres", matiere: "jeux" }

@@ -1,4 +1,4 @@
-# ADR 0031 — Gamification unifiée : XP d'apprentissage, jeux reliés aux notions, vocabulaire
+# ADR 0032 — Gamification unifiée : XP d'apprentissage, jeux reliés aux notions, vocabulaire
 
 - Date : 2026-11-18 — Statut : **proposé** (à valider par le propriétaire)
 - Contexte : l'analyse de la gamification (session du 2026-11-17) relève trois systèmes qui cohabitent sans se

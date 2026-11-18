@@ -6,7 +6,7 @@ import { creerRegistre } from "../../web/experiences.js";
 import { verifierGraphePrerequis } from "../../scripts/lib/catalogue.mjs";
 import { lireReferentiel } from "../../scripts/lib/fiche-catalogue.mjs";
 
-// Gamification unifiée (ADR 0031) : l'XP récompense l'apprentissage, les jeux sont reliés aux notions.
+// Gamification unifiée (ADR 0032) : l'XP récompense l'apprentissage, les jeux sont reliés aux notions.
 const J1 = "2026-11-18";
 const J2 = "2026-11-25";
 const ev = (evenement, donnees = {}) => ({ type: "kermiclab:evenement", v: 1, notion: "pythagore", version: "1.0.0", evenement, ...donnees });
@@ -82,7 +82,7 @@ test("build : notions-liees lu, borné et réservé aux jeux vers des notions co
     ["poker : notion liée « absente » inconnue", "poker : notion liée « belote » est un jeu, pas une notion"]);
 });
 
-test("synchronisation (ADR 0031 §5) : l'agrégat est facultatif, allégé s'il est trop grand, jamais effacé par un ancien instantané", async () => {
+test("synchronisation (ADR 0032 §5) : l'agrégat est facultatif, allégé s'il est trop grand, jamais effacé par un ancien instantané", async () => {
   const { instantane, restaurer, alleger, TAILLE_MAX_INSTANTANE } = await import("../../web/compte-local.js");
   const cles = ["kermiclab:progression", "kermiclab:evenements"];
   const facultatives = ["kermiclab:evenements"];

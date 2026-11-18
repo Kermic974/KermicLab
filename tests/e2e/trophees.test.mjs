@@ -82,7 +82,7 @@ test("trophées : étoiles d'une notion remontées, restaurées et qui rapporten
     await page.reload();
     const reprise = await ouvrirModule(page, "pythagore");
     await reprise.locator("#etoiles").filter({ hasText: "★ 1 / 10" }).waitFor();
-    assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 20, "10 XP d'exploration + 10 XP pour un exercice réussi du premier coup (ADR 0031)");
+    assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 20, "10 XP d'exploration + 10 XP pour un exercice réussi du premier coup (ADR 0032)");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }

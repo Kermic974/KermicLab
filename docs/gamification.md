@@ -3,7 +3,7 @@
 Décisions : [ADR 0014](decisions/0014-academie-echecs-gamification-locale.md) (progression gardée dans la page) et
 [ADR 0015](decisions/0015-modules-partages-des-jeux.md) (modules partagés). Code : `gabarit/jeux/`.
 
-## Vocabulaire (ADR 0031)
+## Vocabulaire (ADR 0032)
 
 | Terme | Sens unique |
 |---|---|

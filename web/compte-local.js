@@ -208,7 +208,7 @@ export async function dechiffrer(cleBase64, pseudonyme, { iv, chiffre }) {
 export const TAILLE_MAX_INSTANTANE = 250000;
 
 /**
- * Allège un instantané trop grand en retirant, dans l'ordre, les clés facultatives (ADR 0031 : l'agrégat du contrat
+ * Allège un instantané trop grand en retirant, dans l'ordre, les clés facultatives (ADR 0032 : l'agrégat du contrat
  * d'événements). Fonction pure ; les clés indispensables ne sont jamais retirées.
  */
 export function alleger(instant, facultatives = [], max = TAILLE_MAX_INSTANTANE) {
