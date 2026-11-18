@@ -16,7 +16,8 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
 | Télémétrie | Tokens entrants et sortants, modèles, durée, requêtes, refus | `worker/src/telemetrie.js` |
 | Charte graphique | Trois thèmes ou couleurs personnalisées, aperçu clair et sombre | `web/theme.js` |
 | Contenus | Inventaire, masquage et mise en avant à chaud, parcours, brouillons envoyés en revue | `worker/src/contenus.js` |
-| Harness | Modèles, budgets, quotas, skills, instructions complémentaires, niveaux de souscription | `worker/src/reglages.js`, `configuration.js` |
+| Souscriptions | Offres composées d'un rôle, de fonctionnalités et de limites ; sous-module financier (coût de revient, prix ↔ marge, seuil de rentabilité) — [ADR 0031](../decisions/0031-souscriptions-financier.md) | `worker/src/souscriptions.js`, `web/admin/financier.js` |
+| Harness | Modèles, budgets, quotas, skills, instructions complémentaires (limites de l'offre « Gratuit ») | `worker/src/reglages.js`, `configuration.js` |
 | Journal | Trace des actions (action et cible, jamais le contenu) | table `journal_admin` |
 
 ## Réglages par défaut pendant la bêta
@@ -29,7 +30,8 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
 
 - `tests/unit/backoffice.test.mjs` : accès, utilisateurs, rôles, signaux, garde-fous, télémétrie, charte, contenus,
   harness, et le test de non-conservation (requêtes piégées sur toutes les routes, aucune trace dans aucune table).
-- `tests/unit/analyse-requete.test.mjs`, `comportement.test.mjs`, `roles-reglages.test.mjs`.
+- `tests/unit/analyse-requete.test.mjs`, `comportement.test.mjs`, `roles-reglages.test.mjs`, `financier.test.mjs`
+  (calculs du sous-module financier vérifiés à la main, offres pressenties).
 - `tests/e2e/backoffice.test.mjs` : l'interface dans un navigateur, sous la CSP du site, contre le vrai code du Worker.
 
 ## Prochaines étapes
@@ -38,7 +40,9 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
    garde-fous.
 2. Ouvrir les comptes : remplacer la clé partagée par les permissions `admin.*`, puis brancher `accesAutorise()` sur
    les routes et activer `CONTROLE_ACCES_ACTIF`.
-3. Nouvelle table de quota pour appliquer les niveaux de souscription au-delà de 1 000 tokens par session.
+3. Nouvelle table de quota pour appliquer les limites des souscriptions (au-delà de 1 000 tokens par session, défis et
+   cahiers par compte), puis brancher les limites de structure (enfants, classes, élèves) dans l'Espace famille et
+   l'expérience Professeur. Valider les prix des offres avec le chantier TVA et paiement.
 4. Côté site : parcours, contenus mis en avant et « Ma classe » sont en place (`web/parcours.js`) ; reste à étendre la charte aux pages de notion et au blog.
 5. Contenus : créer la PR (branche et fichier) depuis un brouillon au lieu d'une issue ; type « lab » au catalogue.
 6. Analyse : classification par un modèle en complément des motifs, sur le texte pseudonymisé, sans conservation.

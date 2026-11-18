@@ -68,7 +68,7 @@ const aller = async (page, ecran) => {
   await page.locator("#ecran[aria-busy]").waitFor({ state: "detached" });
 };
 
-test("back-office : clé refusée puis acceptée, dix écrans sans erreur ni violation de la CSP", async () => {
+test("back-office : clé refusée puis acceptée, onze écrans sans erreur ni violation de la CSP", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   await brancherWorker(page);
   await page.goto(`${serveur.url}/admin/`);
@@ -87,7 +87,7 @@ test("back-office : clé refusée puis acceptée, dix écrans sans erreur ni vio
   const attendus = {
     utilisateurs: /Aucun e-mail, aucun nom, aucune adresse IP/, roles: /Contrôle d'accès inactif/, securite: /Garde-fous en observation/,
     donnees: /aucune donnée personnelle détectée/, telemetrie: /Télémétrie anonyme/, theme: /Trois thèmes au choix/,
-    contenus: /Catalogue en ligne/, harness: /socle de sécurité/, journal: /Journal des actions/, apercu: /État du site/
+    contenus: /Catalogue en ligne/, souscriptions: /Offres pressenties/, harness: /socle de sécurité/, journal: /Journal des actions/, apercu: /État du site/
   };
   for (const [ecran, texte] of Object.entries(attendus)) {
     await aller(page, ecran);
@@ -154,6 +154,59 @@ test("back-office : rôle d'un compte, banc d'essai, décision sur un profil, pa
   const journal = await page.locator("#ecran").textContent();
   for (const action of ["utilisateur.role", "securite.profil", "parametre.modification", "contenu.brouillon.creation"]) assert.match(journal, new RegExp(action.replace(".", "\\.")));
   // Les refus attendus (400) sont notés par la console du navigateur ; aucune autre erreur n'est admise.
+  assert.deepEqual(erreurs.filter((e) => !/status of 400/.test(e)), []);
+  await contexte.close();
+});
+
+test("souscriptions : composer une offre, prix calculé depuis la marge puis marge depuis le prix", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await brancherWorker(page);
+  await entrer(page);
+  await aller(page, "souscriptions");
+  const comparaison = page.locator(".admin-bloc", { hasText: "Vue comparée" });
+  for (const offre of ["Gratuit", "Solo", "Parent", "Professeur"]) assert.equal(await comparaison.locator("tbody tr", { hasText: offre }).count(), 1, offre);
+
+  // Professeur : marge visée de 60 %, le prix est calculé.
+  await comparaison.locator("tbody tr", { hasText: "Professeur" }).locator("button", { hasText: "Composer" }).click();
+  assert.equal(await page.locator("#souscription-mode-marge").isChecked(), true);
+  assert.equal(await page.locator("#souscription-prix").isDisabled(), true);
+  const prixCalcule = Number(await page.locator("#souscription-prix").inputValue());
+  assert.ok(prixCalcule > 0);
+  assert.match(await page.locator(".admin-financier").textContent(), /6\d(,\d)?\s%taux de marge/);
+
+  // L'inverse : on fixe un prix, la marge est recalculée immédiatement.
+  await page.locator("#ecran button", { hasText: "Fixer ce prix de vente" }).click();
+  assert.equal(await page.locator("#souscription-mode-prix").isChecked(), true);
+  await page.fill("#souscription-prix", "1");
+  await page.locator(".admin-financier .admin-bandeau", { hasText: "coûterait plus qu'il ne rapporte" }).waitFor();
+  await page.fill("#souscription-prix", "19.90");
+  await page.check('[data-fonctionnalite="famille"]');
+  assert.match(await page.locator("#ecran").textContent(), /Toutes les fonctionnalités cochées sont permises par le rôle/);
+  await capturer(page, "backoffice-souscriptions", { pleinePage: true });
+  await page.locator("#ecran button", { hasText: "Enregistrer la souscription" }).click();
+  await page.locator("#message", { hasText: "Souscription enregistrée." }).waitFor();
+  const enregistrees = JSON.parse(env.DB.sqlite.prepare("SELECT valeur FROM reglages WHERE cle = 'souscriptions'").get().valeur);
+  const prof = enregistrees.find((s) => s.id === "professeur");
+  assert.deepEqual([prof.prix.mode, prof.prix.prixMensuelHT], ["prix", 19.9]);
+  assert.ok(prof.fonctionnalites.includes("famille"));
+
+  // Nouvelle offre : rôle visiteur, une fonctionnalité hors du rôle est signalée.
+  await page.selectOption("#souscription-choisie", "");
+  await page.fill("#souscription-id", "ecole");
+  await page.fill("#souscription-libelle", "École");
+  await page.check('[data-fonctionnalite="professeur"]');
+  await page.locator("#ecran p", { hasText: "Hors des permissions du rôle" }).waitFor();
+  await page.fill('[data-limite="tokensSession"]', "9000");
+  await page.locator("#ecran button", { hasText: "Enregistrer la souscription" }).click();
+  await page.locator("#message.erreur", { hasText: "tokens par session" }).waitFor();
+
+  // Hypothèses : un coût fixe plus élevé relève le coût de revient de toutes les offres, avant même d'enregistrer.
+  const coutAvant = await comparaison.locator("tbody tr", { hasText: "Gratuit" }).locator("td").nth(2).textContent();
+  await page.fill('[data-finance="coutsFixesMensuels"]', "3000");
+  assert.notEqual(await comparaison.locator("tbody tr", { hasText: "Gratuit" }).locator("td").nth(2).textContent(), coutAvant);
+  await page.locator("#ecran button", { hasText: "Enregistrer les hypothèses" }).click();
+  await page.locator("#message", { hasText: "Hypothèses financières enregistrées." }).waitFor();
+  assert.equal(JSON.parse(env.DB.sqlite.prepare("SELECT valeur FROM reglages WHERE cle = 'finances'").get().valeur).coutsFixesMensuels, 3000);
   assert.deepEqual(erreurs.filter((e) => !/status of 400/.test(e)), []);
   await contexte.close();
 });

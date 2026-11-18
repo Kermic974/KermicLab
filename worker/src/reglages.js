@@ -1,9 +1,12 @@
 // Réglages modifiables à chaud depuis le back-office (ADR 0026) : surcharges des paramètres du registre
-// (configuration.js), charte graphique, niveaux de souscription et état de publication des contenus.
+// (configuration.js), charte graphique, souscriptions et hypothèses financières (ADR 0031), état des contenus.
 // Tout est validé et borné avant écriture ; une valeur stockée devenue invalide est ignorée (le défaut s'applique).
 // Les réglages sont lus au plus une fois toutes les 15 secondes par isolat.
 import { PARAMETRES, parametreDuRegistre } from "./configuration.js";
 import { THEME_PAR_DEFAUT, validerTheme } from "../../web/theme.js";
+import {
+  FINANCES_PAR_DEFAUT, SOUSCRIPTIONS_PAR_DEFAUT, depuisNiveaux, niveauxDe, validerFinances, validerListe
+} from "./souscriptions.js";
 
 const DUREE_CACHE = 15000;
 const ALIAS_VALIDE = /^[A-Za-z0-9@][A-Za-z0-9@/._:-]{0,99}$/;
@@ -17,14 +20,15 @@ export const NIVEAU_PAR_DEFAUT = "gratuit";
  */
 export const PLAFONDS_SCHEMA = Object.freeze({ LIMITE_TOKENS_SESSION: 1000, MAX_TOKENS_APPEL: 500 });
 
-/** Limites portées par un niveau de souscription, et paramètre du registre qui en donne les bornes. */
+/** Limites des anciens niveaux de souscription (clé `niveaux`, ADR 0026), repris en souscriptions (ADR 0031). */
 export const LIMITES_NIVEAU = Object.freeze({
   tokensSession: "LIMITE_TOKENS_SESSION", tokensAppel: "MAX_TOKENS_APPEL", defisJour: "DEFI_GENERATIONS_JOUR", cahiersJour: "CAHIERS_GENERATIONS_JOUR"
 });
 
 const VIDE = Object.freeze({
-  parametres: Object.freeze({}), theme: Object.freeze({ id: THEME_PAR_DEFAUT }), niveaux: Object.freeze([]),
-  masques: new Set(), enAvant: new Set()
+  parametres: Object.freeze({}), theme: Object.freeze({ id: THEME_PAR_DEFAUT }),
+  souscriptions: SOUSCRIPTIONS_PAR_DEFAUT, souscriptionsParDefaut: true, niveaux: Object.freeze(niveauxDe(SOUSCRIPTIONS_PAR_DEFAUT)),
+  finances: FINANCES_PAR_DEFAUT, masques: new Set(), enAvant: new Set()
 });
 
 let cache = null;
@@ -69,7 +73,7 @@ export function validerParametre(cle, brut) {
 
 const borne = (cle) => { const p = parametreDuRegistre(cle); return { min: p.min, max: p.max }; };
 
-/** Valide la liste des niveaux de souscription payants (le niveau « gratuit » est celui du registre). */
+/** Valide une liste d'anciens niveaux (clé `niveaux`) : relue seulement pour la reprise en souscriptions. */
 export function validerNiveaux(liste) {
   if (!Array.isArray(liste) || liste.length > MAX_NIVEAUX) return { ok: false, code: "liste-invalide" };
   const niveaux = [];
@@ -92,7 +96,7 @@ export function validerNiveaux(liste) {
 
 function interpreterLignes(lignes, etats) {
   const parametres = {};
-  let theme = VIDE.theme, niveaux = VIDE.niveaux;
+  let theme = VIDE.theme, finances = VIDE.finances, souscriptions = null, anciensNiveaux = null;
   for (const { cle, valeur } of lignes) {
     if (cle.startsWith("param:")) {
       const v = validerParametre(cle.slice(6), valeur);
@@ -102,11 +106,20 @@ function interpreterLignes(lignes, etats) {
       if (v.ok) theme = v.theme;
     } else if (cle === "niveaux") {
       const v = validerNiveaux(lireJson(valeur));
-      if (v.ok) niveaux = v.niveaux;
+      if (v.ok && v.niveaux.length) anciensNiveaux = v.niveaux;
+    } else if (cle === "souscriptions") {
+      const v = validerListe(lireJson(valeur));
+      if (v.ok) souscriptions = v.souscriptions;
+    } else if (cle === "finances") {
+      const v = validerFinances(lireJson(valeur));
+      if (v.ok) finances = v.finances;
     }
   }
+  // Les souscriptions enregistrées priment ; à défaut, reprise des anciens niveaux, puis offres pressenties.
+  const parDefaut = !souscriptions && !anciensNiveaux;
+  souscriptions ??= anciensNiveaux ? depuisNiveaux(anciensNiveaux) : SOUSCRIPTIONS_PAR_DEFAUT;
   return {
-    parametres, theme, niveaux,
+    parametres, theme, souscriptions, souscriptionsParDefaut: parDefaut, niveaux: niveauxDe(souscriptions), finances,
     masques: new Set(etats.filter((e) => !e.en_ligne).map((e) => e.id)),
     enAvant: new Set(etats.filter((e) => e.en_avant).map((e) => e.id))
   };
@@ -156,7 +169,13 @@ async function ecrire(env, cle, valeur) {
 /** Enregistre (ou retire, avec `null`) la surcharge d'un paramètre déjà validé par `validerParametre`. */
 export const ecrireParametre = (env, cle, valeur) => ecrire(env, `param:${cle}`, valeur);
 export const ecrireTheme = (env, theme) => ecrire(env, "theme", theme.id === THEME_PAR_DEFAUT ? null : JSON.stringify(theme));
-export const ecrireNiveaux = (env, niveaux) => ecrire(env, "niveaux", niveaux.length ? JSON.stringify(niveaux) : null);
+/** Enregistre la liste complète des souscriptions (déjà validée) ; la clé historique `niveaux` est retirée. */
+export async function ecrireSouscriptions(env, souscriptions) {
+  await ecrire(env, "souscriptions", JSON.stringify(souscriptions));
+  await ecrire(env, "niveaux", null);
+}
+/** Enregistre les hypothèses financières (déjà validées), ou les retire avec `null`. */
+export const ecrireFinances = (env, finances) => ecrire(env, "finances", finances === null ? null : JSON.stringify(finances));
 
 /** Masque ou remet en ligne un contenu du catalogue, et le met en avant ou non. */
 export async function ecrireEtatContenu(env, id, { enLigne, enAvant }) {

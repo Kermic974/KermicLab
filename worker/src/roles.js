@@ -91,15 +91,19 @@ export function validerStrategie(fonctionnalite, corps, { roles = [], niveaux = 
 /**
  * Décision d'accès à une fonctionnalité. Fonction pure.
  * Pendant la bêta (`CONTROLE_ACCES_ACTIF` à false), l'accès est toujours accordé : « réglage = tous les utilisateurs ».
+ * Contrôle activé : permission du rôle, puis fonctionnalités de la souscription du compte, puis stratégie.
  * @returns {{ autorise: boolean, raison: string }}
  */
-export function accesAutorise(env, { fonctionnalite, role = ROLE_PAR_DEFAUT, niveau = "gratuit" }, { strategies = [], roles = [] } = {}) {
+export function accesAutorise(env, { fonctionnalite, role = ROLE_PAR_DEFAUT, niveau = "gratuit" }, { strategies = [], roles = [], souscriptions = [] } = {}) {
   if (!lireConfiguration(env).CONTROLE_ACCES_ACTIF) return { autorise: true, raison: "controle-inactif" };
   const strategie = strategies.find((s) => s.fonctionnalite === fonctionnalite) ?? { mode: "tous", roles: [], niveaux: [] };
   if (strategie.mode === "personne") return { autorise: false, raison: "fonctionnalite-fermee" };
   const definition = roles.find((r) => r.id === role);
   if (!definition) return { autorise: false, raison: "role-inconnu" };
   if (!definition.permissions.includes(fonctionnalite)) return { autorise: false, raison: "permission-absente" };
+  // Souscription (ADR 0031) : le rôle dit ce qu'un utilisateur peut faire, l'offre ce qu'elle inclut. Les deux comptent.
+  const offre = souscriptions.find((s) => s.id === niveau);
+  if (offre && !offre.fonctionnalites.includes(fonctionnalite)) return { autorise: false, raison: "hors-souscription" };
   if (strategie.mode === "tous") return { autorise: true, raison: "ouverte-a-tous" };
   const parRole = strategie.roles.includes(role);
   const parNiveau = strategie.niveaux.includes(niveau);

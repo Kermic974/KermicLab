@@ -85,3 +85,8 @@
   .admin-nav button { white-space: nowrap; flex: none; }
   .admin-parametre { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Souscriptions (ADR 0031) : résultat du sous-module financier. */
+.admin-financier { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: var(--rayon-moyen); background: var(--surface-2); border: 1px solid var(--bord); }
+.admin-financier .admin-tuile strong { font-size: 20px; }
+.admin-cases label.admin-champ { flex-direction: column; align-items: flex-start; }
