@@ -7,8 +7,9 @@
 import { effacementFamille } from "./famille-donnees.js";
 import { effacementProfesseur } from "./professeur-donnees.js";
 import { effacementContributionsLocales } from "./contributions.js";
+import { donneesCompteLocal } from "./compte-local-acces.js";
 import {
-  FORMAT_CHIFFRE, FORMAT_IV, FORMAT_JETON, FORMAT_PSEUDONYME, TAILLE_MAX_CHIFFRE,
+  DUREE_APPAIRAGE_S, FAMILLES, FORMAT_BOITE, FORMAT_CHIFFRE, FORMAT_IV, FORMAT_JETON, FORMAT_PSEUDONYME, TAILLE_MAX_APPAIRAGE, TAILLE_MAX_CHIFFRE,
   depuisBase64, egalesTempsConstant, sha256Hex, validerIdentifiant, validerMotDePasse, versBase64, versBase64Url, versHex
 } from "../../web/compte-local.js";
 
@@ -69,27 +70,33 @@ async function lireCorps(requete) {
   }
 }
 
-async function ouvrirSession(env, compteId) {
+async function ouvrirSession(env, compteId, { provisoire = false } = {}) {
   const jeton = versBase64Url(crypto.getRandomValues(new Uint8Array(32)));
   const expire = maintenant() + DUREE_SESSION_S;
   await env.DB.prepare("INSERT INTO sessions_locales (jeton_hash, compte_id, expire_a) VALUES (?, ?, ?)")
     .bind(await sha256Hex(jeton), compteId, expire).run();
-  return json({ jeton, expire });
+  // `provisoire` : mot de passe donné par le back-office, à remplacer (route `mot-de-passe`) avant tout autre usage.
+  return json(provisoire ? { jeton, expire, provisoire: true } : { jeton, expire });
 }
 
-/** Compte de la session porteuse (`Authorization: Bearer …`), ou null. */
-export async function compteDeSession(requete, env) {
+/**
+ * Compte de la session porteuse (`Authorization: Bearer …`), ou null. Un compte au mot de passe provisoire (donné par le
+ * back-office) n'a pas de session utilisable tant qu'il ne l'a pas remplacé, sauf pour les routes qui le permettent
+ * (`provisoireAccepte` : changer le mot de passe, se déconnecter, consulter ses données).
+ */
+export async function compteDeSession(requete, env, { provisoireAccepte = false } = {}) {
   const jeton = (requete.headers.get("authorization") || "").match(/^Bearer ([A-Za-z0-9_-]{43})$/)?.[1];
   if (!jeton) return null;
-  const ligne = await env.DB.prepare("SELECT compte_id FROM sessions_locales WHERE jeton_hash = ? AND expire_a > ?")
-    .bind(await sha256Hex(jeton), maintenant()).first();
-  return ligne ? { compteId: ligne.compte_id, jeton } : null;
+  const ligne = await env.DB.prepare(`SELECT s.compte_id, c.mdp_provisoire FROM sessions_locales s JOIN comptes_locaux c ON c.id = s.compte_id
+    WHERE s.jeton_hash = ? AND s.expire_a > ?`).bind(await sha256Hex(jeton), maintenant()).first();
+  if (!ligne || (ligne.mdp_provisoire === 1 && !provisoireAccepte)) return null;
+  return { compteId: ligne.compte_id, jeton, provisoire: ligne.mdp_provisoire === 1 };
 }
 
 /** Vérifie identifiant et mot de passe ; compte les échecs et bloque temporairement après trop d'essais. */
 async function authentifier(env, identifiant, motDePasse) {
   const ligne = await env.DB.prepare(
-    "SELECT id, mdp_sel, mdp_hash, mdp_iterations, echecs, bloque_jusqua FROM comptes_locaux WHERE identifiant_hmac = ?"
+    "SELECT id, mdp_sel, mdp_hash, mdp_iterations, echecs, bloque_jusqua, mdp_provisoire FROM comptes_locaux WHERE identifiant_hmac = ?"
   ).bind(await empreinteIdentifiant(env, identifiant)).first();
   // Compte inconnu : même calcul pour un temps de réponse comparable (pas d'énumération par le temps).
   const calcule = await hacherMotDePasse(env, motDePasse, ligne ? depuisBase64(ligne.mdp_sel) : new Uint8Array(16), ligne?.mdp_iterations ?? ITERATIONS_SERVEUR);
@@ -103,7 +110,7 @@ async function authentifier(env, identifiant, motDePasse) {
     return { ok: false, code: "identifiants-invalides", statut: 401 };
   }
   if (ligne.echecs) await env.DB.prepare("UPDATE comptes_locaux SET echecs = 0 WHERE id = ?").bind(ligne.id).run();
-  return { ok: true, compteId: ligne.id };
+  return { ok: true, compteId: ligne.id, provisoire: ligne.mdp_provisoire === 1 };
 }
 
 /**
@@ -134,16 +141,51 @@ export async function motDePasseDuCompte(env, compteId, motDePasse) {
 }
 
 /**
- * Remplace le mot de passe d'un compte (choisi par le parent pour son enfant, ADR 0029) et ferme ses sessions.
- * L'identifiant n'étant connu que par son empreinte, le sel et le hachage sont recalculés sans lui.
+ * Remplace le mot de passe d'un compte (choisi par le parent pour son enfant, ADR 0029 ; provisoire, donné par le
+ * back-office ; ou changé par l'utilisateur) et ferme ses sessions. L'identifiant n'étant connu que par son
+ * empreinte, le sel et le hachage sont recalculés sans lui.
  */
-export async function remplacerMotDePasse(env, compteId, motDePasse) {
+export async function remplacerMotDePasse(env, compteId, motDePasse, { provisoire = false } = {}) {
   const sel = crypto.getRandomValues(new Uint8Array(16));
   await env.DB.batch([
-    env.DB.prepare("UPDATE comptes_locaux SET mdp_sel = ?, mdp_hash = ?, mdp_iterations = ?, echecs = 0, bloque_jusqua = 0 WHERE id = ?")
-      .bind(versBase64(sel), await hacherMotDePasse(env, motDePasse, sel), ITERATIONS_SERVEUR, compteId),
+    env.DB.prepare("UPDATE comptes_locaux SET mdp_sel = ?, mdp_hash = ?, mdp_iterations = ?, echecs = 0, bloque_jusqua = 0, mdp_provisoire = ? WHERE id = ?")
+      .bind(versBase64(sel), await hacherMotDePasse(env, motDePasse, sel), ITERATIONS_SERVEUR, provisoire ? 1 : 0, compteId),
     env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(compteId)
   ]);
+}
+
+/** Caractères du mot de passe provisoire : sans caractères ambigus (0/O, 1/l/I) pour une dictée au téléphone. */
+const JEUX_PROVISOIRE = ["abcdefghjkmnpqrstuvwxyz", "ABCDEFGHJKLMNPQRSTUVWXYZ", "23456789", "-_.!?@#%+="];
+export const LONGUEUR_PROVISOIRE = 16;
+
+/**
+ * Entier aléatoire uniforme dans [0, n[ (n ≤ 256) : échantillonnage par rejet sur un octet masqué à la puissance de deux
+ * supérieure, sans modulo (un modulo sur un tirage cryptographique introduit un biais).
+ */
+function entierAleatoire(n) {
+  let masque = 1;
+  while (masque < n) masque <<= 1;
+  masque -= 1;
+  for (;;) {
+    const v = crypto.getRandomValues(new Uint8Array(1))[0] & masque;
+    if (v < n) return v;
+  }
+}
+
+/** Mot de passe provisoire aléatoire (tirage sans biais), conforme aux règles du compte local (ADR 0024). */
+export function genererMotDePasseProvisoire() {
+  const tirer = (jeu) => jeu[entierAleatoire(jeu.length)];
+  const tous = JEUX_PROVISOIRE.join("");
+  for (;;) {
+    const mdp = Array.from({ length: LONGUEUR_PROVISOIRE }, (_, i) => tirer(i < JEUX_PROVISOIRE.length ? JEUX_PROVISOIRE[i] : tous));
+    // Mélange de Fisher-Yates, pour que les familles imposées ne soient pas toujours en tête.
+    for (let i = mdp.length - 1; i > 0; i--) {
+      const j = entierAleatoire(i + 1);
+      [mdp[i], mdp[j]] = [mdp[j], mdp[i]];
+    }
+    const texte = mdp.join("");
+    if (FAMILLES.every((f) => f.test(texte))) return texte;
+  }
 }
 
 /** Efface un compte local, ses sessions, ses contributions (ADR 0023) et ce qui le rattache à une famille (ADR 0029) ou à des classes (ADR 0030). */
@@ -153,6 +195,7 @@ export async function effacerCompteLocal(env, compteId) {
     ...(await effacementProfesseur(env, compteId)),
     ...(await effacementContributionsLocales(env, compteId)),
     env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(compteId),
+    env.DB.prepare("DELETE FROM appairages WHERE compte_id = ?").bind(compteId),
     env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(compteId)
   ]);
 }
@@ -178,6 +221,53 @@ async function ligneDonnees(env, corps) {
 }
 
 /**
+ * Changement de mot de passe par l'utilisateur, obligatoire après une réinitialisation par le back-office. L'ancien
+ * mot de passe (ou le provisoire) est redemandé ; l'identifiant, envoyé pour appliquer la règle « sans l'identifiant »,
+ * doit correspondre à l'empreinte du compte. Toutes les sessions sont fermées, une nouvelle est ouverte.
+ */
+async function changerMotDePasse(env, session, corps) {
+  const id = validerIdentifiant(corps.identifiant);
+  const ligne = await env.DB.prepare("SELECT identifiant_hmac FROM comptes_locaux WHERE id = ?").bind(session.compteId).first();
+  if (!id.ok || !ligne || !egalesTempsConstant(await empreinteIdentifiant(env, id.identifiant), ligne.identifiant_hmac)) return erreur("identifiants-invalides", 401);
+  if (!(await motDePasseDuCompte(env, session.compteId, corps.motDePasse))) return erreur("identifiants-invalides", 401);
+  if (typeof corps.nouveau !== "string") return erreur("mot-de-passe-court", 400);
+  const v = validerMotDePasse(corps.nouveau, { identifiant: id.identifiant });
+  if (!v.ok) return erreur(`mot-de-passe-${v.erreur}`, 400);
+  if (corps.nouveau.normalize("NFC") === String(corps.motDePasse).normalize("NFC")) return erreur("mot-de-passe-identique", 400);
+  await remplacerMotDePasse(env, session.compteId, corps.nouveau);
+  return ouvrirSession(env, session.compteId);
+}
+
+/**
+ * Dépose la clé de synchronisation, chiffrée de bout en bout par le code d'appairage (dans le navigateur), pour un autre
+ * appareil du même compte. Une seule boîte par compte (la précédente est remplacée), DUREE_APPAIRAGE_S secondes au plus.
+ */
+async function deposerAppairage(env, session, corps) {
+  if (!FORMAT_BOITE.test(corps.boite) || !FORMAT_JETON.test(corps.jeton)) return erreur("preuve-invalide", 400);
+  if (!FORMAT_IV.test(corps.iv) || typeof corps.chiffre !== "string" || !FORMAT_CHIFFRE.test(corps.chiffre)) return erreur("donnees-invalides", 400);
+  if (corps.chiffre.length > TAILLE_MAX_APPAIRAGE) return erreur("donnees-trop-grandes", 413);
+  const expire = maintenant() + DUREE_APPAIRAGE_S;
+  await env.DB.batch([
+    env.DB.prepare("DELETE FROM appairages WHERE compte_id = ? OR boite = ?").bind(session.compteId, corps.boite),
+    env.DB.prepare("INSERT INTO appairages (boite, compte_id, jeton_hash, iv, chiffre, expire_a) VALUES (?, ?, ?, ?, ?, ?)")
+      .bind(corps.boite, session.compteId, await sha256Hex(corps.jeton), corps.iv, corps.chiffre, expire)
+  ]);
+  return json({ expire });
+}
+
+/** Retire la boîte d'appairage : même compte, code valable, une seule lecture (la boîte est effacée). */
+async function lireAppairage(env, session, corps) {
+  if (!FORMAT_BOITE.test(corps.boite) || !FORMAT_JETON.test(corps.jeton)) return erreur("preuve-invalide", 400);
+  const ligne = await env.DB.prepare("SELECT jeton_hash, iv, chiffre FROM appairages WHERE boite = ? AND compte_id = ? AND expire_a > ?")
+    .bind(corps.boite, session.compteId, maintenant()).first();
+  if (!ligne || !egalesTempsConstant(await sha256Hex(corps.jeton), ligne.jeton_hash)) return erreur("appairage-introuvable", 404);
+  const { meta } = await env.DB.prepare("DELETE FROM appairages WHERE boite = ?").bind(corps.boite).run();
+  // Deux lectures simultanées : une seule obtient la boîte.
+  if (!meta?.changes) return erreur("appairage-introuvable", 404);
+  return json({ iv: ligne.iv, chiffre: ligne.chiffre });
+}
+
+/**
  * Traite une route `/api/compte-local/…`.
  * @param {{ autoriser?: (cle: string) => boolean, ip?: string }} options limitation de débit des connexions (en mémoire).
  */
@@ -188,6 +278,14 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
 
   if (route === "etat" && methode === "GET") return json({ disponible: compteLocalDisponible(env) });
   if (!compteLocalDisponible(env)) return erreur("synchro-indisponible", 503);
+
+  // Droit d'accès en libre-service (ADR 0024 §3 ter) : ce que la base contient sur le compte de la session, dont son
+  // identifiant unique, à communiquer au support pour toute demande (réinitialisation, export, suppression).
+  if (route === "moi" && methode === "GET") {
+    const session = await compteDeSession(requete, env, { provisoireAccepte: true });
+    if (!session) return erreur("non-connecte", 401);
+    return json(await donneesCompteLocal(env, session.compteId));
+  }
   if (methode !== "POST" && methode !== "PUT") return erreur("methode-non-autorisee", 405);
 
   if (route === "inscription" || route === "connexion") {
@@ -198,7 +296,7 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
     if (!v.ok) return erreur(v.code, 400);
     if (route === "connexion") {
       const a = await authentifier(env, v.identifiant, v.motDePasse);
-      return a.ok ? ouvrirSession(env, a.compteId) : erreur(a.code, a.statut);
+      return a.ok ? ouvrirSession(env, a.compteId, { provisoire: a.provisoire }) : erreur(a.code, a.statut);
     }
     const inscrit = await inscrireCompte(env, v.identifiant, v.motDePasse);
     if (!inscrit.ok) return erreur(inscrit.code, inscrit.statut);
@@ -207,16 +305,28 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
   }
 
   // Routes suivantes : session porteuse obligatoire (limite l'usage du stockage aux comptes inscrits).
-  const session = await compteDeSession(requete, env);
-  if (!session) return erreur("non-connecte", 401);
+  const ouverte = await compteDeSession(requete, env, { provisoireAccepte: true });
+  if (!ouverte) return erreur("non-connecte", 401);
 
   if (route === "deconnexion") {
-    await env.DB.prepare("DELETE FROM sessions_locales WHERE jeton_hash = ?").bind(await sha256Hex(session.jeton)).run();
+    await env.DB.prepare("DELETE FROM sessions_locales WHERE jeton_hash = ?").bind(await sha256Hex(ouverte.jeton)).run();
     return vide();
   }
 
   const { corps, reponse } = await lireCorps(requete);
   if (reponse) return reponse;
+
+  if (route === "mot-de-passe") return changerMotDePasse(env, ouverte, corps);
+  // Mot de passe provisoire (back-office) : rien d'autre tant qu'il n'est pas remplacé.
+  if (ouverte.provisoire) return erreur("mot-de-passe-provisoire", 403);
+  const session = ouverte;
+
+  if (route === "appairage" && methode === "PUT") return deposerAppairage(env, session, corps);
+  if (route === "appairage/lire") {
+    // Même limite que les connexions : un code d'appairage ne se devine pas par essais répétés.
+    if (!autoriser(`compte-local:${ip}`)) return erreur("trop-de-tentatives", 429);
+    return lireAppairage(env, session, corps);
+  }
 
   if (route === "compte/supprimer") {
     // Mot de passe redemandé : une session volée ne suffit pas pour effacer le compte. Les données pseudonymisées
@@ -279,14 +389,16 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
 /**
  * Cron quotidien : efface les sessions expirées et les données pseudonymisées ni lues ni écrites depuis
  * CONSERVATION_JOURS jours (données orphelines d'une phrase oubliée ou d'un compte abandonné, ADR 0024).
- * @returns {Promise<{ sessions: number, donnees: number } | null>}
+ * Efface aussi les boîtes d'appairage expirées.
+ * @returns {Promise<{ sessions: number, donnees: number, appairages: number } | null>}
  */
 export async function purgerCompteLocal(env, instant = Date.now()) {
   if (!compteLocalDisponible(env)) return null;
   const limite = new Date(instant - CONSERVATION_JOURS * 86400000).toISOString().slice(0, 10);
-  const [sessions, donnees] = await env.DB.batch([
+  const [sessions, donnees, appairages] = await env.DB.batch([
     env.DB.prepare("DELETE FROM sessions_locales WHERE expire_a <= ?").bind(Math.floor(instant / 1000)),
-    env.DB.prepare("DELETE FROM donnees_pseudonymes WHERE vu_le < ?").bind(limite)
+    env.DB.prepare("DELETE FROM donnees_pseudonymes WHERE vu_le < ?").bind(limite),
+    env.DB.prepare("DELETE FROM appairages WHERE expire_a <= ?").bind(Math.floor(instant / 1000))
   ]);
-  return { sessions: sessions?.meta?.changes ?? 0, donnees: donnees?.meta?.changes ?? 0 };
+  return { sessions: sessions?.meta?.changes ?? 0, donnees: donnees?.meta?.changes ?? 0, appairages: appairages?.meta?.changes ?? 0 };
 }

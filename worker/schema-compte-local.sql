@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS comptes_locaux (
   mdp_iterations    INTEGER NOT NULL,
   echecs            INTEGER NOT NULL DEFAULT 0,
   bloque_jusqua     INTEGER NOT NULL DEFAULT 0,
-  cree_le           TEXT NOT NULL DEFAULT (date('now'))
+  cree_le           TEXT NOT NULL DEFAULT (date('now')),
+  -- Mot de passe provisoire donné par le back-office (migration 0008) : à changer avant tout autre usage du compte.
+  mdp_provisoire    INTEGER NOT NULL DEFAULT 0
 );
 
 -- Sessions de synchronisation (jeton porteur, 12 h). Seule l'empreinte SHA-256 du jeton est gardée.
@@ -38,6 +40,19 @@ CREATE TABLE IF NOT EXISTS donnees_pseudonymes (
   vu_le       TEXT NOT NULL DEFAULT (date('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_donnees_pseudonymes_vu ON donnees_pseudonymes (vu_le);
+
+-- Boîtes d'appairage (ADR 0024 §2 bis, migration 0008) : la clé de synchronisation, chiffrée de bout en bout par un code
+-- à usage unique que le serveur ne voit jamais, en transit d'un appareil à un autre du même compte. 10 minutes au plus,
+-- effacée à la première lecture ; une seule boîte par compte.
+CREATE TABLE IF NOT EXISTS appairages (
+  boite       TEXT PRIMARY KEY,
+  compte_id   TEXT NOT NULL UNIQUE,
+  jeton_hash  TEXT NOT NULL,
+  iv          TEXT NOT NULL,
+  chiffre     TEXT NOT NULL,
+  expire_a    INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_appairages_expiration ON appairages (expire_a);
 
 -- Contributions au contenu des comptes locaux (ADR 0023 §6 ter, migration 0006).
 CREATE TABLE IF NOT EXISTS contributions_locales (

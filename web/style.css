@@ -1246,6 +1246,13 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 
 /* ---------- Espace famille des comptes locaux (ADR 0029) ---------- */
 .code-invitation { font-size: 28px; font-weight: 800; letter-spacing: .12em; font-variant-numeric: tabular-nums; margin: 10px 0 4px; user-select: all; }
+/* Kit de récupération (ADR 0024 §2 bis) : 56 caractères, coupés proprement sur mobile. */
+.code-invitation.code-cle { font-size: 16px; letter-spacing: .06em; font-family: ui-monospace, monospace; word-break: break-all; }
+/* Ce que Kermiclab sait de moi (ADR 0024 §3 ter). */
+.moi-liste { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); gap: 4px 12px; margin: 10px 0; }
+.moi-liste dt { font-weight: 700; }
+.moi-liste dd { margin: 0; overflow-wrap: anywhere; }
+.moi-json { max-height: 320px; overflow: auto; font-size: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .ef-bloc { margin: 0 0 22px; }
 .ef-bloc > h3 { margin: 0 0 10px; }
 .ef-alertes { margin: 0; padding-left: 20px; display: grid; gap: 4px; color: var(--texte-2); }

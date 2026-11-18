@@ -131,6 +131,29 @@ test("utilisateurs : liste sans e-mail, rôle et niveau, export des données, su
   ]);
 });
 
+test("utilisateurs : réinitialisation du mot de passe d'un compte local, provisoire, rendu une seule fois", async () => {
+  env.DB.sqlite.exec(`
+    INSERT INTO comptes_locaux (id, identifiant_hmac, mdp_sel, mdp_hash, mdp_iterations, echecs, bloque_jusqua) VALUES ('${UUID(3)}', 'hmac', 'sel', 'hash', 1000, 4, 9999999999);
+    INSERT INTO sessions_locales (jeton_hash, compte_id, expire_a) VALUES ('empreinte', '${UUID(3)}', 9999999999);
+  `);
+  env.COMPTES_LOCAUX_SECRET = "c".repeat(40);
+  assert.equal((await admin("GET", `/utilisateurs/compte-local/${UUID(3)}/mot-de-passe`)).statut, 405);
+  assert.equal((await admin("POST", `/utilisateurs/compte-local/${UUID(9)}/mot-de-passe`)).statut, 404);
+  const r = await admin("POST", `/utilisateurs/compte-local/${UUID(3)}/mot-de-passe`);
+  assert.equal(r.statut, 200);
+  assert.match(r.donnees.motDePasse, /^.{16}$/);
+  const ligne = env.DB.sqlite.prepare("SELECT * FROM comptes_locaux").get();
+  assert.deepEqual([ligne.mdp_provisoire, ligne.echecs, ligne.bloque_jusqua], [1, 0, 0], "provisoire, blocage levé");
+  assert.notEqual(ligne.mdp_hash, "hash");
+  assert.equal(JSON.stringify(ligne).includes(r.donnees.motDePasse), false, "jamais stocké en clair");
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM sessions_locales").get().n, 0, "sessions fermées");
+  assert.deepEqual(journal(), [`utilisateur.mot-de-passe compte-local:${UUID(3)}`], "journalisé sans le mot de passe");
+
+  const exportation = await admin("GET", `/utilisateurs/compte-local/${UUID(3)}/export`);
+  assert.equal(exportation.donnees.compte.mot_de_passe_provisoire, true);
+  assert.match(exportation.donnees.note, /chiffrées dans le navigateur/);
+});
+
 // ---------- Rôles et stratégies ----------
 
 test("rôles et stratégies : préparés et administrables, sans effet tant que le contrôle est inactif", async () => {

@@ -156,15 +156,54 @@ async function ecranApercu() {
 }
 
 let instantaneUtilisateurs;
+/** Recherche par identifiant unique (donné par l'utilisateur depuis « Ce que Kermiclab sait de moi », ADR 0024 §3 ter). */
+let rechercheUtilisateur = "";
+const FORMAT_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 async function ecranUtilisateurs() {
-  const donnees = await api("GET", "/utilisateurs");
+  const donnees = await api("GET", rechercheUtilisateur ? `/utilisateurs?id=${rechercheUtilisateur}` : "/utilisateurs");
   return rendreUtilisateurs(donnees);
+}
+
+function rechercheParIdentifiant() {
+  const champ = h("input", { type: "search", id: "recherche-utilisateur", value: rechercheUtilisateur, placeholder: "00000000-0000-4000-8000-000000000000", spellcheck: "false", autocomplete: "off", "aria-describedby": "recherche-utilisateur-aide" });
+  const chercher = (valeur) => {
+    const id = valeur.trim().toLowerCase();
+    if (id && !FORMAT_UUID.test(id)) { annoncer("Identifiant unique invalide : 36 caractères, au format affiché dans « Ce que Kermiclab sait de moi ».", { erreur: true }); return; }
+    rechercheUtilisateur = id;
+    void afficher(ecranCourant);
+  };
+  return h("form", { class: "admin-ligne", onsubmit: (ev) => { ev.preventDefault(); chercher(champ.value); } },
+    h("label", { for: "recherche-utilisateur", text: "Identifiant unique" }), champ,
+    h("button", { type: "submit", class: "secondaire petit-bouton" }, "Rechercher"),
+    rechercheUtilisateur ? h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => chercher("") }, "Tout afficher") : null,
+    h("p", { id: "recherche-utilisateur-aide", class: "doux petit", text: "L'utilisateur trouve cet identifiant dans Mon compte → « Ce que Kermiclab sait de moi ». Ne demandez jamais son mot de passe ni sa clé de récupération." }));
+}
+
+/**
+ * Réinitialisation du mot de passe d'un compte local : le mot de passe provisoire n'est affiché qu'une fois, à
+ * transmettre à l'utilisateur, qui devra le changer à sa prochaine connexion. Ses données synchronisées restent
+ * chiffrées par une clé que le back-office ne connaît pas.
+ */
+async function reinitialiserMotDePasse(u, zone) {
+  if (!confirm(`Réinitialiser le mot de passe du compte ${u.id} ?\n\nUn mot de passe provisoire sera affiché une seule fois. Les sessions du compte seront fermées et l'utilisateur devra choisir un nouveau mot de passe à sa prochaine connexion. Vérifiez d'abord que la demande vient bien du titulaire du compte.`)) return;
+  try {
+    const { motDePasse } = await api("POST", `/utilisateurs/compte-local/${u.id}/mot-de-passe`);
+    zone.replaceChildren(
+      h("p", { text: `Mot de passe provisoire du compte ${u.id} (affiché une seule fois, jamais enregistré en clair ni journalisé) :` }),
+      h("p", { class: "code-provisoire" }, h("code", { text: motDePasse })),
+      h("p", { class: "doux petit", text: "Transmettez-le à l'utilisateur par un canal sûr. À sa connexion, il devra en choisir un nouveau ; s'il synchronise ses données, il les retrouvera avec un code d'appairage ou son kit de récupération." }),
+      h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { zone.replaceChildren(); zone.hidden = true; } }, "Masquer"));
+    zone.hidden = false;
+    zone.focus();
+    annoncer("Mot de passe réinitialisé. La réinitialisation est notée au journal (sans le mot de passe).");
+  } catch (e) { annoncer(messageErreur(e), { erreur: true }); }
 }
 
 function rendreUtilisateurs(donnees) {
   instantaneUtilisateurs = JSON.stringify(donnees);
   const { utilisateurs, roles, niveaux } = donnees;
   const zoneExport = h("pre", { hidden: true, tabindex: "0", "aria-label": "Données exportées" });
+  const zoneMotDePasse = h("div", { hidden: true, tabindex: "-1", class: "admin-bandeau zone-mot-de-passe", role: "status", "aria-label": "Mot de passe provisoire" });
   const ligneActions = (u) => {
     const role = selecteur(roles.map((r) => [r.id, r.libelle]), u.role, { "aria-label": `Rôle du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` });
     const niveau = selecteur(niveaux.map((n) => [n, n]), u.niveau, { "aria-label": `Niveau du ${lib("comptes", u.type)} ${u.id.slice(0, 8)}` });
@@ -174,14 +213,16 @@ function rendreUtilisateurs(donnees) {
   const lignes = utilisateurs.map((u) => ({ ...u, champs: ligneActions(u) }));
   return [
     h("p", { class: "admin-bandeau ok", text: "Aucun e-mail, aucun nom, aucune adresse IP n'est affiché ici : la base n'en contient pas. Un compte est identifié par un identifiant aléatoire." }),
+    rechercheParIdentifiant(),
+    zoneMotDePasse,
     bloc("Comptes", tableau(`${utilisateurs.length} compte(s)`, [
       { titre: "Type", cellule: (u) => lib("comptes", u.type) },
-      { titre: "Identifiant", cellule: (u) => h("code", { text: u.id.slice(0, 8), title: u.id }) },
+      { titre: "Identifiant", cellule: (u) => h("code", { text: rechercheUtilisateur ? u.id : u.id.slice(0, 8), title: u.id }) },
       { titre: "Rôle", cellule: (u) => u.champs.role },
       { titre: "Niveau", cellule: (u) => u.champs.niveau },
       { titre: "Sécurité", cellule: (u) => pastille(lib("etats", u.etat), tonEtat[u.etat]) },
       { titre: "Créé le", cellule: (u) => dateCourte(u.creeLe) },
-      { titre: "Dernière connexion", cellule: (u) => (u.type === "compte" ? dateCourte(u.derniereConnexion) : u.bloque ? "bloqué (essais)" : "—") },
+      { titre: "Dernière connexion", cellule: (u) => (u.type === "compte" ? dateCourte(u.derniereConnexion) : u.bloque ? "bloqué (essais)" : u.provisoire ? "mot de passe provisoire" : "—") },
       { titre: "Enfants", nombre: true, cellule: (u) => (u.type === "compte" ? nombre(u.enfants) : "—") },
       { titre: "Actions", cellule: (u) => h("div", { class: "admin-ligne" },
         h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => agir(() => api("PATCH", `/utilisateurs/${u.type}/${u.id}`, { role: u.champs.role.value, niveau: u.champs.niveau.value }), "Rôle et niveau enregistrés.") }, "Enregistrer"),
@@ -193,10 +234,11 @@ function rendreUtilisateurs(donnees) {
             annoncer("Export affiché sous le tableau. L'export est noté au journal.");
           } catch (e) { annoncer(messageErreur(e), { erreur: true }); }
         } }, "Exporter les données"),
+        u.type === "compte-local" ? h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => reinitialiserMotDePasse(u, zoneMotDePasse) }, "Réinitialiser le mot de passe") : null,
         h("button", { type: "button", class: "danger petit-bouton", onclick: () => {
           if (confirm(`Supprimer définitivement ce ${lib("comptes", u.type).toLowerCase()} et toutes ses données ?`)) agir(() => api("DELETE", `/utilisateurs/${u.type}/${u.id}`), "Compte supprimé avec ses données.");
         } }, "Supprimer")) }
-    ], lignes, "Aucun compte pour le moment : les visiteurs utilisent un pseudo gardé dans leur navigateur."), zoneExport)
+    ], lignes, rechercheUtilisateur ? "Aucun compte avec cet identifiant unique." : "Aucun compte pour le moment : les visiteurs utilisent un pseudo gardé dans leur navigateur."), zoneExport)
   ];
 }
 
@@ -910,8 +952,10 @@ async function actualiserUtilisateurs() {
   if (miseAJourUtilisateurs || !disponible()) return;
   miseAJourUtilisateurs = true;
   try {
-    const donnees = await api("GET", "/utilisateurs");
-    if (disponible() && JSON.stringify(donnees) !== instantaneUtilisateurs) zone.replaceChildren(...rendreUtilisateurs(donnees));
+    const donnees = await api("GET", rechercheUtilisateur ? `/utilisateurs?id=${rechercheUtilisateur}` : "/utilisateurs");
+    // Un mot de passe provisoire affiché (une seule fois) n'est jamais effacé par la mise à jour automatique.
+    const motDePasseAffiche = !!zone.querySelector(".zone-mot-de-passe:not([hidden])");
+    if (disponible() && !motDePasseAffiche && JSON.stringify(donnees) !== instantaneUtilisateurs) zone.replaceChildren(...rendreUtilisateurs(donnees));
   } catch { /* Le dernier résultat reste visible ; le prochain cycle réessaie. */ }
   finally { miseAJourUtilisateurs = false; }
 }

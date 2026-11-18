@@ -399,16 +399,22 @@ function brancherFamille() {
 
 /* ---------- Mon compte (ADR 0024) ---------- */
 // Compte facultatif : identifiant + mot de passe, enregistré sur l'appareil (vérificateur PBKDF2, jamais le mot de
-// passe). La synchronisation, sur demande, envoie un instantané chiffré sous un pseudonyme dérivé d'une phrase secrète
-// qui ne quitte pas l'appareil. La liaison du compte au serveur peut aussi être choisie sans synchronisation.
+// passe). La synchronisation, sur demande, envoie un instantané chiffré sous un pseudonyme dérivé d'une clé de
+// synchronisation aléatoire (256 bits) créée sur l'appareil : rien à mémoriser. La clé reste sur l'appareil sous une
+// enveloppe chiffrée par le mot de passe, passe à un autre appareil par un code d'appairage à usage unique (chiffré de
+// bout en bout) ou par le kit de récupération (§2 bis). Les comptes qui utilisent encore une phrase secrète (v1)
+// gardent leur accès et peuvent passer à la clé. La liaison du compte au serveur peut aussi être choisie seule.
 // ADR 0032 §5 : l'agrégat du contrat d'événements (maîtrise, cartes de révision) suit aussi l'instantané chiffré. Clé
 // facultative : écartée si l'instantané devient trop grand, et jamais effacée par un instantané qui ne la contient pas.
 const CLES_FACULTATIVES = [evenements.CLE_STOCKAGE];
 const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, ...CLES_FACULTATIVES];
-const compteEtat = { enregistrement: null, session: null, occupe: false };
+// `provisoire` : mot de passe donné par le support, gardé en mémoire seulement le temps de le remplacer.
+const compteEtat = { enregistrement: null, session: null, occupe: false, provisoire: null, minuteurAppairage: null };
 const bornesCompte = {
   min: compteLocal.IDENTIFIANT_MIN, max: compteLocal.IDENTIFIANT_MAX
 };
+const modeCle = (e) => e?.synchro?.mode === compteLocal.MODE_CLE;
+const estLie = (e) => e?.serveur === true || !!e?.synchro;
 
 function chargerCompte() {
   const e = compteLocal.lireEnregistrement(lireCle(stockage(), compteLocal.CLE_COMPTE));
@@ -438,6 +444,15 @@ async function apiCompte(route, { methode = "POST", corps, jeton } = {}) {
   return { statut: r.status, donnees };
 }
 
+/** Jeton de session serveur encore valable de l'onglet (compte lié ou synchronisation), ou null. */
+function jetonCompte() {
+  const s = compteEtat.session;
+  const maintenant = Date.now() / 1000;
+  if (s?.serveur?.expire > maintenant) return s.serveur.jeton;
+  if (s?.synchro?.expire > maintenant) return s.synchro.jetonServeur;
+  return null;
+}
+
 /** Affiche (ou efface) l'erreur d'un champ : `#id` et son message `#id-erreur`. */
 function erreurChamp(id, message, erreurId = `${id}-erreur`) {
   const champ = $(`#${id}`);
@@ -461,39 +476,65 @@ function marquerReglesMdp() {
   });
 }
 
+/** Message d'erreur d'un nouveau mot de passe (règles partagées avec le Worker), ou "". */
+function erreurNouveauMdp(mdp, identifiant) {
+  const m = compteLocal.validerMotDePasse(mdp, { identifiant });
+  const manquants = (m.manquants ?? []).map((f) => t(`compteFamille_${f}`)).join(", ");
+  return m.ok ? "" : t(`compteMdpErreur_${m.erreur}`, { min: compteLocal.MOT_DE_PASSE_MIN, max: compteLocal.MOT_DE_PASSE_MAX, manquants });
+}
+
+function masquerZonesSynchro() {
+  clearTimeout(compteEtat.minuteurAppairage);
+  $("#synchro-appairage-zone").hidden = true;
+  $("#synchro-kit-zone").hidden = true;
+  $("#synchro-code").textContent = "";
+  $("#synchro-cle-recuperation").textContent = "";
+}
+
 function rafraichirCompte() {
-  const { enregistrement: e, session: s } = compteEtat;
+  const { enregistrement: e, session: s, provisoire } = compteEtat;
   $("#compte-identifiant-aide").textContent = t("compteIdentifiantAide", bornesCompte);
   $("#compte-mdp-regles [data-regle=longueur]").textContent = t("compteRegleLongueur", { min: compteLocal.MOT_DE_PASSE_MIN });
-  $("#synchro-phrase-aide").textContent = t("synchroPhraseAide", { min: compteLocal.PASSPHRASE_MIN });
   $("#compte-memoire").hidden = etat.memoire;
-  const lie = e?.serveur === true || !!e?.synchro;
+  const lie = estLie(e);
   $("#ouvrir-connexion").dataset.i18n = s ? "compteTitre" : "compteSeConnecter";
   $("#ouvrir-connexion").textContent = t($("#ouvrir-connexion").dataset.i18n);
-  $("#compte-options-connexion").hidden = !!s;
+  $("#compte-options-connexion").hidden = !!s || !!provisoire;
   $("#liaison-ouvrir").hidden = lie;
-  $("#compte-creation").hidden = !!e;
-  $("#compte-connexion").hidden = !e || !!s;
-  $("#compte-ouvert").hidden = !e || !s;
+  $("#compte-provisoire").hidden = !provisoire;
+  $("#compte-creation").hidden = !!e || !!provisoire;
+  $("#compte-connexion").hidden = !e || !!s || !!provisoire;
+  $("#compte-ouvert").hidden = !e || !s || !!provisoire;
   if (e && !s) $("#compte-connexion-texte").textContent = t("compteConnexionTexte", { identifiant: e.identifiant });
   rafraichirFamilleCompte();
-  if (!e || !s) return;
+  if (!e || !s) { masquerZonesSynchro(); return; }
   const active = !!e.synchro;
+  const cle = modeCle(e);
   const deverrouillee = active && !!s.synchro;
   $("#compte-ouvert-texte").textContent = t(lie ? "connexionLiee" : "compteConnecte", { identifiant: e.identifiant });
   $("#synchro-statut").textContent = !active ? t("synchroInactive")
-    : !deverrouillee ? t("synchroVerrouillee")
-      : t("synchroActive", { version: e.synchro.version, maj: e.synchro.maj ? t("synchroMaj", { date: e.synchro.maj }) : "" });
+    : !deverrouillee ? t(cle ? "synchroVerrouilleeCle" : "synchroVerrouillee")
+      : t(cle ? "synchroActiveCle" : "synchroActive", { version: e.synchro.version, maj: e.synchro.maj ? t("synchroMaj", { date: e.synchro.maj }) : "" });
   $("#synchro-activation").hidden = active;
   $("#synchro-deverrouillage").hidden = !active || deverrouillee;
+  // Déverrouillage : phrase (v1) ; clé dont l'enveloppe s'ouvre avec le mot de passe ; clé à ressaisir (mot de passe
+  // réinitialisé, l'ancienne enveloppe ne s'ouvre plus) par un code d'appairage ou le kit de récupération.
+  const secretRequis = !cle || !e.synchro?.enveloppe;
+  $("#synchro-dv-aide").textContent = t(!cle ? "synchroDeverrouillerAide" : secretRequis ? "synchroDeverrouillerAideSansCle" : "synchroDeverrouillerAideCle");
+  $("#synchro-dv-phrase-label").textContent = t(cle ? "synchroSecretCleLabel" : "synchroPhraseLabel");
+  $("#synchro-dv-secret").hidden = !secretRequis;
   $("#synchro-actions").hidden = !deverrouillee;
+  $("#synchro-actions-cle").hidden = !(deverrouillee && cle && s.synchro.cleSynchro);
+  $("#synchro-migration").hidden = !deverrouillee || cle;
+  if (!deverrouillee) masquerZonesSynchro();
   $("#compte-suppression-aide").textContent = t(!active ? (lie ? "connexionSuppression" : "compteSuppressionAide") : deverrouillee ? "compteSuppressionAideSynchro" : "compteSuppressionAideVerrouille");
 }
 
 /**
  * Vérifie les identifiants côté D1 sans activer le transfert de progression. La session ouverte est gardée pour
- * l'onglet (Espace famille, ADR 0029) : elle ne transporte aucune progression chiffrée.
- * @returns {Promise<{ jeton: string, expire: number } | null>}
+ * l'onglet (Espace famille, ADR 0029) : elle ne transporte aucune progression chiffrée. `provisoire` : mot de passe
+ * donné par le support, à remplacer avant tout autre usage.
+ * @returns {Promise<{ jeton: string, expire: number, provisoire: boolean } | null>}
  */
 async function verifierCompteEnLigne(identifiant, motDePasse, { inscrire, cible }) {
   const statut = $(cible);
@@ -502,7 +543,7 @@ async function verifierCompteEnLigne(identifiant, motDePasse, { inscrire, cible 
     const r = await ouvrirSessionServeur(identifiant, motDePasse, { inscrire });
     if (r.donnees?.jeton) {
       statut.textContent = "";
-      return { jeton: r.donnees.jeton, expire: r.donnees.expire };
+      return { jeton: r.donnees.jeton, expire: r.donnees.expire, provisoire: r.donnees.provisoire === true };
     }
     statut.textContent = t(r.statut === 409 ? "synchroIdentifiantPris" : erreurServeur(r));
   } catch {
@@ -511,15 +552,22 @@ async function verifierCompteEnLigne(identifiant, motDePasse, { inscrire, cible 
   return null;
 }
 
+/** Mot de passe provisoire reconnu par le serveur : l'écran demande d'en choisir un nouveau avant toute autre chose. */
+function entrerModeProvisoire(identifiant, motDePasse, serveur) {
+  compteEtat.provisoire = { identifiant, motDePasse, jeton: serveur.jeton };
+  compteEtat.session = null;
+  sauverCompte();
+  rafraichirCompte();
+  $("#provisoire-mdp").focus();
+}
+
 async function creerCompteLocal(ev) {
   ev.preventDefault();
   if (compteEtat.occupe) return;
   const id = compteLocal.validerIdentifiant($("#compte-identifiant").value);
   if (!erreurChamp("compte-identifiant", id.ok ? "" : t(`compteIdentifiantErreur_${id.erreur}`, bornesCompte))) return;
   const mdp = $("#compte-mdp").value;
-  const m = compteLocal.validerMotDePasse(mdp, { identifiant: id.identifiant });
-  const manquants = (m.manquants ?? []).map((f) => t(`compteFamille_${f}`)).join(", ");
-  if (!erreurChamp("compte-mdp", m.ok ? "" : t(`compteMdpErreur_${m.erreur}`, { min: compteLocal.MOT_DE_PASSE_MIN, max: compteLocal.MOT_DE_PASSE_MAX, manquants }))) return;
+  if (!erreurChamp("compte-mdp", erreurNouveauMdp(mdp, id.identifiant))) return;
   if (!erreurChamp("compte-mdp2", $("#compte-mdp2").value === mdp ? "" : t("compteMdpDifferents"))) return;
   compteEtat.occupe = true;
   try {
@@ -528,11 +576,18 @@ async function creerCompteLocal(ev) {
     if ($("#liaison-creer-d1").checked) {
       serveur = await verifierCompteEnLigne(id.identifiant, mdp, { inscrire: true, cible: "#liaison-creer-etat" });
       if (!serveur) return;
+      if (serveur.provisoire) {
+        // Nouvel appareil d'un compte réinitialisé par le support : le compte de l'appareil sera créé avec le
+        // nouveau mot de passe.
+        $("#formulaire-compte-creer").reset();
+        entrerModeProvisoire(id.identifiant, mdp, serveur);
+        return;
+      }
       enregistrement.serveur = true;
     }
     $("#liaison-creer-etat").textContent = "";
     compteEtat.enregistrement = enregistrement;
-    compteEtat.session = { identifiant: id.identifiant, synchro: null, serveur };
+    compteEtat.session = { identifiant: id.identifiant, synchro: null, serveur: serveur && { jeton: serveur.jeton, expire: serveur.expire } };
     sauverCompte();
   } finally {
     compteEtat.occupe = false;
@@ -552,22 +607,37 @@ async function connecterCompteLocal(ev) {
   if (!erreurChamp("compte-connexion-mdp", mdp ? "" : t("compteMdpRequis"), "compte-connexion-erreur")) return;
   compteEtat.occupe = true;
   try {
-    const lie = e.serveur === true || !!e.synchro;
+    const lie = estLie(e);
     let serveur = null;
     if (!await compteLocal.verifierMotDePasse(mdp, e)) {
-      // Mot de passe changé par le parent (ADR 0029) : le serveur fait foi pour un compte lié ; le vérificateur de
-      // l'appareil est alors recalculé (la phrase secrète de synchronisation ne dépend pas du mot de passe).
+      // Mot de passe changé par le parent (ADR 0029) ou réinitialisé par le support : le serveur fait foi pour un
+      // compte lié ; le vérificateur de l'appareil est alors recalculé. L'enveloppe de la clé de synchronisation,
+      // fermée par l'ancien mot de passe, ne s'ouvre plus : la clé se ressaisit (code d'appairage ou kit).
       serveur = lie ? await verifierCompteEnLigne(e.identifiant, mdp, { inscrire: false, cible: "#liaison-ouvrir-etat" }) : null;
       if (!erreurChamp("compte-connexion-mdp", serveur ? "" : t("compteMdpIncorrect"), "compte-connexion-erreur")) return;
+      if (serveur.provisoire) {
+        $("#formulaire-compte-connexion").reset();
+        entrerModeProvisoire(e.identifiant, mdp, serveur);
+        return;
+      }
       const nouveau = await compteLocal.creerEnregistrement(e.identifiant, mdp);
       Object.assign(e, { verificateur: nouveau.verificateur, sel: nouveau.sel, iterations: nouveau.iterations });
+      if (modeCle(e) && !await compteLocal.ouvrirEnveloppe(e.synchro.enveloppe, mdp, e.identifiant)) e.synchro.enveloppe = null;
     } else if (lie || $("#liaison-ouvrir-d1").checked) {
       serveur = await verifierCompteEnLigne(e.identifiant, mdp, { inscrire: !lie, cible: "#liaison-ouvrir-etat" });
       if (!serveur) return;
+      if (serveur.provisoire) {
+        $("#formulaire-compte-connexion").reset();
+        entrerModeProvisoire(e.identifiant, mdp, serveur);
+        return;
+      }
       e.serveur = true;
     }
     $("#liaison-ouvrir-etat").textContent = "";
-    compteEtat.session = { identifiant: e.identifiant, synchro: null, serveur };
+    compteEtat.session = { identifiant: e.identifiant, synchro: null, serveur: serveur && { jeton: serveur.jeton, expire: serveur.expire } };
+    // Clé de synchronisation : déverrouillée d'office par le mot de passe, rien d'autre à saisir.
+    const cle = serveur && modeCle(e) ? await compteLocal.ouvrirEnveloppe(e.synchro.enveloppe, mdp, e.identifiant) : null;
+    if (cle) await ouvrirSynchroCle(cle, serveur.jeton, serveur.expire);
     sauverCompte();
   } finally {
     compteEtat.occupe = false;
@@ -578,13 +648,104 @@ async function connecterCompteLocal(ev) {
   notifier(t("compteConnecte", { identifiant: e.identifiant }), "🔓");
 }
 
+/**
+ * Change le mot de passe sur le serveur (route `mot-de-passe`) ; toutes les sessions y sont fermées et une nouvelle
+ * est ouverte. @returns {Promise<{ jeton: string, expire: number } | string>} la session, ou la clé du message d'erreur.
+ */
+async function changerMotDePasseServeur(jeton, identifiant, actuel, nouveau) {
+  const r = await apiCompte("mot-de-passe", { jeton, corps: { identifiant, motDePasse: actuel, nouveau } });
+  if (r.statut === 200 && r.donnees?.jeton) return { jeton: r.donnees.jeton, expire: r.donnees.expire };
+  if (r.statut === 400 && r.donnees?.erreur === "mot-de-passe-identique") return "compteMdpIdentique";
+  if (r.statut === 400) return "efErreur_motDePasse";
+  return erreurServeur(r);
+}
+
+/** Mot de passe provisoire (support) remplacé par un mot de passe choisi : le compte de l'appareil est mis à jour. */
+async function remplacerMdpProvisoire(ev) {
+  ev.preventDefault();
+  const p = compteEtat.provisoire;
+  if (compteEtat.occupe || !p) return;
+  const nouveau = $("#provisoire-mdp").value;
+  if (!erreurChamp("provisoire-mdp", erreurNouveauMdp(nouveau, p.identifiant))) return;
+  if (!erreurChamp("provisoire-mdp2", $("#provisoire-mdp2").value === nouveau ? "" : t("compteMdpDifferents"))) return;
+  compteEtat.occupe = true;
+  try {
+    const r = await changerMotDePasseServeur(p.jeton, p.identifiant, p.motDePasse, nouveau);
+    if (typeof r === "string") { erreurChamp("provisoire-mdp", t(r, { min: compteLocal.MOT_DE_PASSE_MIN })); return; }
+    const nouvel = await compteLocal.creerEnregistrement(p.identifiant, nouveau);
+    const e = compteEtat.enregistrement?.identifiant === p.identifiant ? compteEtat.enregistrement : nouvel;
+    Object.assign(e, { verificateur: nouvel.verificateur, sel: nouvel.sel, iterations: nouvel.iterations, serveur: true });
+    // L'enveloppe fermée par l'ancien mot de passe (oublié) ne s'ouvrira plus : la clé se ressaisit.
+    if (modeCle(e)) e.synchro.enveloppe = null;
+    compteEtat.enregistrement = e;
+    compteEtat.session = { identifiant: p.identifiant, synchro: null, serveur: r };
+    compteEtat.provisoire = null;
+    sauverCompte();
+    $("#formulaire-compte-provisoire").reset();
+    rafraichirCompte();
+    void chargerFamille();
+    notifier(t("compteMdpChange"), "🔐");
+  } catch {
+    erreurChamp("provisoire-mdp", t("synchroErreur"));
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+/** Changement de mot de passe d'un compte ouvert : sur le serveur si le compte est lié, puis sur l'appareil. */
+async function changerMotDePasse(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const e = compteEtat.enregistrement;
+  const actuel = $("#compte-mdp-actuel").value;
+  const nouveau = $("#compte-mdp-nouveau").value;
+  for (const id of ["compte-mdp-actuel", "compte-mdp-nouveau", "compte-mdp-nouveau2"]) erreurChamp(id, "");
+  if (!erreurChamp("compte-mdp-actuel", actuel ? "" : t("compteMdpRequis"))) return;
+  if (!erreurChamp("compte-mdp-nouveau", erreurNouveauMdp(nouveau, e.identifiant))) return;
+  if (!erreurChamp("compte-mdp-nouveau", nouveau !== actuel ? "" : t("compteMdpIdentique"))) return;
+  if (!erreurChamp("compte-mdp-nouveau2", $("#compte-mdp-nouveau2").value === nouveau ? "" : t("compteMdpDifferents"))) return;
+  if (!erreurChamp("compte-mdp-actuel", await compteLocal.verifierMotDePasse(actuel, e) ? "" : t("compteMdpIncorrect"))) return;
+  compteEtat.occupe = true;
+  try {
+    const s = compteEtat.session;
+    if (estLie(e)) {
+      let jeton = jetonCompte();
+      if (!jeton) {
+        const o = await ouvrirSessionServeur(e.identifiant, actuel, { inscrire: false });
+        if (!o.donnees?.jeton) { erreurChamp("compte-mdp-actuel", t(erreurServeur(o))); return; }
+        jeton = o.donnees.jeton;
+      }
+      const r = await changerMotDePasseServeur(jeton, e.identifiant, actuel, nouveau);
+      if (typeof r === "string") { erreurChamp("compte-mdp-nouveau", t(r, { min: compteLocal.MOT_DE_PASSE_MIN })); return; }
+      // Les anciennes sessions sont fermées par le serveur : la nouvelle sert au compte lié et à la synchronisation.
+      s.serveur = r;
+      if (s.synchro) Object.assign(s.synchro, { jetonServeur: r.jeton, expire: r.expire });
+    }
+    const cle = modeCle(e) ? s.synchro?.cleSynchro ?? await compteLocal.ouvrirEnveloppe(e.synchro.enveloppe, actuel, e.identifiant) : null;
+    const nouvel = await compteLocal.creerEnregistrement(e.identifiant, nouveau);
+    Object.assign(e, { verificateur: nouvel.verificateur, sel: nouvel.sel, iterations: nouvel.iterations });
+    if (cle) e.synchro.enveloppe = await compteLocal.envelopperCle(cle, nouveau, e.identifiant);
+    sauverCompte();
+    $("#formulaire-compte-mdp").reset();
+    $("#compte-changer-mdp").open = false;
+    rafraichirCompte();
+    notifier(t("compteMdpChange"), "🔐");
+  } catch {
+    erreurChamp("compte-mdp-actuel", t("synchroErreur"));
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
 function deconnecterCompteLocal() {
-  for (const jeton of new Set([compteEtat.session?.synchro?.jetonServeur, compteEtat.session?.serveur?.jeton].filter(Boolean))) {
+  for (const jeton of new Set([compteEtat.session?.synchro?.jetonServeur, compteEtat.session?.serveur?.jeton, compteEtat.provisoire?.jeton].filter(Boolean))) {
     void apiCompte("deconnexion", { jeton }).catch(() => {});
   }
   compteEtat.session = null;
+  compteEtat.provisoire = null;
   sauverCompte();
   oublierFamille();
+  oublierMoi();
   messageSynchro("");
   rafraichirCompte();
   notifier(t("compteDeconnecte"), "👋");
@@ -599,6 +760,7 @@ function erreurServeur({ statut, donnees }) {
     return "synchroSessionExpiree";
   }
   if (statut === 401) return "synchroIdentifiantsInvalides";
+  if (statut === 403 && donnees?.erreur === "mot-de-passe-provisoire") return "compteProvisoireRequis";
   if (statut === 429) return "synchroTropDeTentatives";
   if (statut === 503) return "synchroIndisponible";
   return "synchroErreur";
@@ -606,6 +768,48 @@ function erreurServeur({ statut, donnees }) {
 
 const jourLocal = () => new Date().toISOString().slice(0, 10);
 const preuveSynchro = () => ({ pseudonyme: compteEtat.session.synchro.pseudonyme, jeton: compteEtat.session.synchro.jeton });
+
+/** Déverrouille la synchronisation de l'onglet avec la clé (v2) : secrets dérivés, gardés pour l'onglet seulement. */
+async function ouvrirSynchroCle(cle, jetonServeur, expire) {
+  const secrets = await compteLocal.deriverSecretsCle(cle, compteEtat.enregistrement.identifiant);
+  compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, cleSynchro: cle, jetonServeur, expire };
+  return secrets;
+}
+
+/**
+ * Reconnaît le secret saisi pour retrouver ou déverrouiller la synchronisation : code d'appairage (16 caractères),
+ * clé de récupération (56 caractères), sinon phrase secrète de l'ancienne méthode (si `phraseAdmise`).
+ * @returns {Promise<{ type: "code", code: string } | { type: "cle", cle: string } | { type: "phrase", phrase: string } | { erreur: string }>}
+ */
+async function classerSecret(texte, { phraseAdmise }) {
+  const propre = String(texte ?? "").toUpperCase().replace(/[\s-]/g, "");
+  const base32 = /^[0-9A-Z]+$/.test(propre);
+  if (base32 && propre.length === 16) {
+    const code = compteLocal.lireCodeAppairage(propre);
+    if (code) return { type: "code", code };
+  }
+  if (base32 && propre.length >= 50 && propre.length <= 62) {
+    const r = await compteLocal.lireCleRecuperation(propre);
+    return r.ok ? { type: "cle", cle: r.cle } : { erreur: r.erreur === "controle" ? "synchroCleFaute" : "synchroCleFormat" };
+  }
+  if (!phraseAdmise) return { erreur: "synchroSecretInconnu" };
+  const p = compteLocal.validerPassphrase(texte);
+  return p.ok ? { type: "phrase", phrase: texte } : { erreur: "synchroSecretInconnu" };
+}
+
+/** Clé de synchronisation obtenue d'un code d'appairage (boîte chiffrée de bout en bout, retirée une seule fois). */
+async function cleDepuisAppairage(code, jetonServeur) {
+  const a = await compteLocal.deriverAppairage(code, compteEtat.enregistrement.identifiant);
+  const r = await apiCompte("appairage/lire", { jeton: jetonServeur, corps: { boite: a.boite, jeton: a.jeton } });
+  if (r.statut === 404) return { erreur: "synchroCodeInvalide" };
+  if (r.statut !== 200) return { erreur: erreurServeur(r) };
+  try {
+    const contenu = await compteLocal.dechiffrer(a.cle, a.boite, r.donnees);
+    return compteLocal.FORMAT_CLE_SYNCHRO.test(contenu?.cle) ? { cle: contenu.cle } : { erreur: "synchroCodeInvalide" };
+  } catch {
+    return { erreur: "synchroCodeInvalide" };
+  }
+}
 
 /** Envoie l'instantané chiffré ; renvoie la clé du message à afficher. */
 async function envoyerInstantane() {
@@ -642,17 +846,14 @@ async function ouvrirSessionServeur(identifiant, motDePasse, { inscrire }) {
   return { ...r, nouveau: false };
 }
 
+/** Activation : une clé de synchronisation neuve est créée sur l'appareil, puis le kit de récupération est affiché. */
 async function activerSynchro(ev) {
   ev.preventDefault();
   if (compteEtat.occupe) return;
   const e = compteEtat.enregistrement;
   const mdp = $("#synchro-mdp").value;
-  const phrase = $("#synchro-phrase").value;
-  for (const id of ["synchro-mdp", "synchro-phrase", "synchro-phrase2", "synchro-compris"]) erreurChamp(id, "");
+  for (const id of ["synchro-mdp", "synchro-compris"]) erreurChamp(id, "");
   if (!erreurChamp("synchro-mdp", mdp ? "" : t("compteMdpRequis"))) return;
-  const p = compteLocal.validerPassphrase(phrase, { motDePasse: mdp });
-  if (!erreurChamp("synchro-phrase", p.ok ? "" : t(`synchroPhraseErreur_${p.erreur}`, { min: compteLocal.PASSPHRASE_MIN, max: compteLocal.PASSPHRASE_MAX }))) return;
-  if (!erreurChamp("synchro-phrase2", $("#synchro-phrase2").value === phrase ? "" : t("synchroPhrasesDifferentes"))) return;
   if (!erreurChamp("synchro-compris", $("#synchro-compris").checked ? "" : t("synchroComprisRequis"))) return;
   if (!erreurChamp("synchro-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"))) return;
   compteEtat.occupe = true;
@@ -663,34 +864,85 @@ async function activerSynchro(ev) {
     const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: true });
     if (s.statut === 409) { messageSynchro("synchroIdentifiantPris"); return; }
     if (!s.donnees?.jeton) { messageSynchro(erreurServeur(s)); return; }
-    const secrets = await compteLocal.deriverSecrets(phrase, e.identifiant);
-    compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, jetonServeur: s.donnees.jeton, expire: s.donnees.expire };
-    e.synchro = { empreinte: secrets.empreinte, version: 0, maj: null };
-    const lu = await apiCompte("donnees/lire", { jeton: s.donnees.jeton, corps: preuveSynchro() });
-    let message;
-    const trouve = lu.statut === 200 && lu.donnees?.version > 0;
-    if (trouve) {
-      e.synchro.version = lu.donnees.version;
-      e.synchro.maj = lu.donnees.maj ?? null;
-      message = ["synchroDonneesTrouvees"];
-    } else if (lu.statut === 200 && !s.nouveau) {
-      message = ["synchroAucuneDonnee"];
-    } else if (lu.statut === 200) {
-      sauverCompte();
-      const [cle, variables] = await envoyerInstantane();
-      message = cle === "synchroEnvoyees" ? ["synchroActivee", variables] : [cle, variables];
-    } else {
+    const cle = compteLocal.genererCleSynchro();
+    const secrets = await ouvrirSynchroCle(cle, s.donnees.jeton, s.donnees.expire);
+    e.synchro = { mode: compteLocal.MODE_CLE, empreinte: secrets.empreinte, version: 0, maj: null, enveloppe: await compteLocal.envelopperCle(cle, mdp, e.identifiant) };
+    sauverCompte();
+    // Clé neuve : rien n'existe encore sous ce pseudonyme, l'instantané part directement.
+    const [cleMessage, variables] = await envoyerInstantane();
+    if (cleMessage !== "synchroEnvoyees") {
       compteEtat.session.synchro = null;
       e.synchro = null;
-      message = [erreurServeur(lu)];
+      sauverCompte();
+      messageSynchro(cleMessage, variables);
+      return;
     }
-    sauverCompte();
     $("#formulaire-synchro-activer").reset();
     rafraichirCompte();
-    messageSynchro(...message);
+    await afficherKit();
+    messageSynchro("synchroActiveeCle");
   } catch {
     messageSynchro("synchroErreur");
   } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+/**
+ * Retrouver ses données sur cet appareil : code d'appairage affiché sur un autre appareil, clé du kit de récupération
+ * ou phrase secrète de l'ancienne méthode. Rien n'est créé en ligne : la synchronisation reprend celle qui existe.
+ */
+async function retrouverSynchro(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const e = compteEtat.enregistrement;
+  const mdp = $("#synchro-rt-mdp").value;
+  const erreur = (cle) => erreurChamp(cle?.champ ?? "synchro-rt-secret", cle ? t(cle.message ?? cle) : "", "synchro-rt-erreur");
+  erreur(null);
+  if (!mdp) return erreur({ champ: "synchro-rt-mdp", message: "compteMdpRequis" });
+  if (!await compteLocal.verifierMotDePasse(mdp, e)) return erreur({ champ: "synchro-rt-mdp", message: "compteMdpIncorrect" });
+  const secret = await classerSecret($("#synchro-rt-secret").value, { phraseAdmise: true });
+  if (secret.erreur) return erreur(secret.erreur);
+  compteEtat.occupe = true;
+  try {
+    const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
+    if (!s.donnees?.jeton) return erreur({ champ: "synchro-rt-mdp", message: erreurServeur(s) });
+    let cle = secret.cle ?? null;
+    if (secret.type === "code") {
+      const r = await cleDepuisAppairage(secret.code, s.donnees.jeton);
+      if (r.erreur) return erreur(r.erreur);
+      cle = r.cle;
+    }
+    let secrets;
+    if (cle) {
+      secrets = await ouvrirSynchroCle(cle, s.donnees.jeton, s.donnees.expire);
+      e.synchro = { mode: compteLocal.MODE_CLE, empreinte: secrets.empreinte, version: 0, maj: null, enveloppe: await compteLocal.envelopperCle(cle, mdp, e.identifiant) };
+    } else {
+      secrets = await compteLocal.deriverSecrets(secret.phrase, e.identifiant);
+      compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, jetonServeur: s.donnees.jeton, expire: s.donnees.expire };
+      e.synchro = { empreinte: secrets.empreinte, version: 0, maj: null };
+    }
+    const lu = await apiCompte("donnees/lire", { jeton: s.donnees.jeton, corps: preuveSynchro() });
+    const trouve = lu.statut === 200 && lu.donnees?.version > 0;
+    // Phrase (ancienne méthode) sans données : aucune nouvelle synchronisation par phrase, on propose la clé.
+    if (lu.statut !== 200 || (!trouve && !cle)) {
+      compteEtat.session.synchro = null;
+      e.synchro = null;
+      return erreur(lu.statut !== 200 ? erreurServeur(lu) : "synchroAucuneDonneePhrase");
+    }
+    if (trouve) {
+      e.synchro.version = lu.donnees.version;
+      e.synchro.maj = lu.donnees.maj ?? null;
+    }
+    sauverCompte();
+    $("#formulaire-synchro-retrouver").reset();
+    $("#synchro-retrouver").open = false;
+    rafraichirCompte();
+    messageSynchro(trouve ? (cle ? "synchroDonneesTrouveesCle" : "synchroDonneesTrouvees") : "synchroAucuneDonneeCle");
+  } catch {
+    erreur("synchroErreur");
+  } finally {
+    if (!compteEtat.session?.synchro) sauverCompte();
     compteEtat.occupe = false;
   }
 }
@@ -700,17 +952,41 @@ async function deverrouillerSynchro(ev) {
   if (compteEtat.occupe) return;
   const e = compteEtat.enregistrement;
   const mdp = $("#synchro-dv-mdp").value;
-  const phrase = $("#synchro-dv-phrase").value;
-  if (!erreurChamp("synchro-dv-mdp", mdp && phrase ? "" : t("compteMdpRequis"), "synchro-dv-erreur")) return;
+  const saisie = $("#synchro-dv-phrase").value;
+  const cleMode = modeCle(e);
+  const secretRequis = !cleMode || !e.synchro.enveloppe;
+  if (!erreurChamp("synchro-dv-mdp", mdp && (saisie || !secretRequis) ? "" : t("compteMdpRequis"), "synchro-dv-erreur")) return;
   if (!erreurChamp("synchro-dv-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"), "synchro-dv-erreur")) return;
   compteEtat.occupe = true;
   try {
-    const secrets = await compteLocal.deriverSecrets(phrase, e.identifiant);
-    // L'empreinte gardée sur l'appareil reconnaît une phrase mal saisie, sans rien demander au serveur.
-    if (!erreurChamp("synchro-dv-phrase", compteLocal.egalesTempsConstant(secrets.empreinte, e.synchro.empreinte) ? "" : t("synchroPhraseIncorrecte"), "synchro-dv-erreur")) return;
-    const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
-    if (!s.donnees?.jeton) { erreurChamp("synchro-dv-mdp", t(erreurServeur(s)), "synchro-dv-erreur"); return; }
-    compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, jetonServeur: s.donnees.jeton, expire: s.donnees.expire };
+    if (!cleMode) {
+      const secrets = await compteLocal.deriverSecrets(saisie, e.identifiant);
+      // L'empreinte gardée sur l'appareil reconnaît une phrase mal saisie, sans rien demander au serveur.
+      if (!erreurChamp("synchro-dv-phrase", compteLocal.egalesTempsConstant(secrets.empreinte, e.synchro.empreinte) ? "" : t("synchroPhraseIncorrecte"), "synchro-dv-erreur")) return;
+      const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
+      if (!s.donnees?.jeton) { erreurChamp("synchro-dv-mdp", t(erreurServeur(s)), "synchro-dv-erreur"); return; }
+      compteEtat.session.synchro = { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, cle: secrets.cle, jetonServeur: s.donnees.jeton, expire: s.donnees.expire };
+    } else {
+      let cle = secretRequis ? null : await compteLocal.ouvrirEnveloppe(e.synchro.enveloppe, mdp, e.identifiant);
+      const secret = cle ? null : await classerSecret(saisie, { phraseAdmise: false });
+      if (secret?.erreur) {
+        if (!secretRequis) { e.synchro.enveloppe = null; rafraichirCompte(); }
+        erreurChamp(secretRequis ? "synchro-dv-phrase" : "synchro-dv-mdp", t(saisie ? secret.erreur : "synchroDeverrouillerAideSansCle"), "synchro-dv-erreur");
+        return;
+      }
+      const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
+      if (!s.donnees?.jeton) { erreurChamp("synchro-dv-mdp", t(erreurServeur(s)), "synchro-dv-erreur"); return; }
+      if (secret?.type === "code") {
+        const r = await cleDepuisAppairage(secret.code, s.donnees.jeton);
+        if (r.erreur) { erreurChamp("synchro-dv-phrase", t(r.erreur), "synchro-dv-erreur"); return; }
+        cle = r.cle;
+      } else if (secret) cle = secret.cle;
+      const secrets = await compteLocal.deriverSecretsCle(cle, e.identifiant);
+      if (!erreurChamp("synchro-dv-phrase", compteLocal.egalesTempsConstant(secrets.empreinte, e.synchro.empreinte) ? "" : t("synchroCleIncorrecte"), "synchro-dv-erreur")) return;
+      await ouvrirSynchroCle(cle, s.donnees.jeton, s.donnees.expire);
+      // Clé ressaisie : nouvelle enveloppe fermée par le mot de passe actuel.
+      if (secret) e.synchro.enveloppe = await compteLocal.envelopperCle(cle, mdp, e.identifiant);
+    }
     sauverCompte();
     $("#formulaire-synchro-deverrouiller").reset();
     rafraichirCompte();
@@ -720,6 +996,95 @@ async function deverrouillerSynchro(ev) {
   } finally {
     compteEtat.occupe = false;
   }
+}
+
+/**
+ * Passage de la phrase secrète (v1) à une clé de synchronisation : la copie en ligne (ou, à défaut, celle de
+ * l'appareil) est chiffrée sous le nouveau pseudonyme, puis l'ancienne copie est effacée.
+ */
+async function migrerSynchro(ev) {
+  ev.preventDefault();
+  if (compteEtat.occupe) return;
+  const e = compteEtat.enregistrement;
+  const mdp = $("#synchro-mg-mdp").value;
+  if (!erreurChamp("synchro-mg-mdp", mdp ? "" : t("compteMdpRequis"))) return;
+  if (!erreurChamp("synchro-mg-mdp", await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"))) return;
+  compteEtat.occupe = true;
+  messageSynchro("synchroEnCours");
+  try {
+    const ancienne = compteEtat.session.synchro;
+    const lu = await apiCompte("donnees/lire", { jeton: ancienne.jetonServeur, corps: preuveSynchro() });
+    if (lu.statut !== 200) { messageSynchro(erreurServeur(lu)); return; }
+    let instant = compteLocal.alleger(compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES), CLES_FACULTATIVES);
+    if (lu.donnees?.version > 0) {
+      try { instant = await compteLocal.dechiffrer(ancienne.cle, ancienne.pseudonyme, lu.donnees); } catch { messageSynchro("synchroIllisible"); return; }
+    }
+    const cle = compteLocal.genererCleSynchro();
+    const secrets = await compteLocal.deriverSecretsCle(cle, e.identifiant);
+    const boite = await compteLocal.chiffrer(secrets.cle, secrets.pseudonyme, instant);
+    const r = await apiCompte("donnees", { methode: "PUT", jeton: ancienne.jetonServeur, corps: { pseudonyme: secrets.pseudonyme, jeton: secrets.jeton, versionAttendue: 0, ...boite } });
+    if (r.statut !== 200) { messageSynchro(erreurServeur(r)); return; }
+    await apiCompte("donnees/supprimer", { jeton: ancienne.jetonServeur, corps: preuveSynchro() });
+    await ouvrirSynchroCle(cle, ancienne.jetonServeur, ancienne.expire);
+    e.synchro = { mode: compteLocal.MODE_CLE, empreinte: secrets.empreinte, version: r.donnees.version, maj: jourLocal(), enveloppe: await compteLocal.envelopperCle(cle, mdp, e.identifiant) };
+    sauverCompte();
+    $("#formulaire-synchro-migrer").reset();
+    $("#synchro-migration").open = false;
+    rafraichirCompte();
+    await afficherKit();
+    messageSynchro("synchroMigree");
+  } catch {
+    messageSynchro("synchroErreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+/** Code d'appairage : la clé part chiffrée de bout en bout vers un autre appareil du même compte (10 minutes, une fois). */
+async function appairerAppareil() {
+  if (compteEtat.occupe) return;
+  const synchro = compteEtat.session?.synchro;
+  if (!synchro?.cleSynchro) return;
+  compteEtat.occupe = true;
+  try {
+    const code = compteLocal.genererCodeAppairage();
+    const a = await compteLocal.deriverAppairage(code, compteEtat.enregistrement.identifiant);
+    const boite = await compteLocal.chiffrer(a.cle, a.boite, { v: 1, cle: synchro.cleSynchro });
+    const r = await apiCompte("appairage", { methode: "PUT", jeton: synchro.jetonServeur, corps: { boite: a.boite, jeton: a.jeton, ...boite } });
+    if (r.statut !== 200) { messageSynchro(erreurServeur(r)); return; }
+    const fin = new Date(r.donnees.expire * 1000);
+    $("#synchro-code").textContent = code;
+    $("#synchro-code-aide").textContent = t("synchroAppairageAide", { heure: fin.toLocaleTimeString(etat.langue, { hour: "2-digit", minute: "2-digit" }) });
+    $("#synchro-appairage-zone").hidden = false;
+    clearTimeout(compteEtat.minuteurAppairage);
+    compteEtat.minuteurAppairage = setTimeout(() => { $("#synchro-appairage-zone").hidden = true; $("#synchro-code").textContent = ""; }, Math.max(0, fin - Date.now()));
+    messageSynchro("");
+  } catch {
+    messageSynchro("synchroErreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
+/** Kit de récupération : la clé, lisible et vérifiable (somme de contrôle), à garder hors de l'appareil. */
+async function afficherKit() {
+  const cle = compteEtat.session?.synchro?.cleSynchro;
+  if (!cle) return;
+  $("#synchro-cle-recuperation").textContent = await compteLocal.formaterCleRecuperation(cle);
+  $("#synchro-kit-zone").hidden = false;
+}
+
+function telechargerTexte(texte, nom, type = "text/plain") {
+  const url = URL.createObjectURL(new Blob([texte], { type: `${type};charset=utf-8` }));
+  const lien = element("a", { attributs: { href: url, download: nom } });
+  document.body.append(lien);
+  lien.click();
+  lien.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+async function copier(texte) {
+  try { await navigator.clipboard.writeText(texte); notifier(t("copie"), "📋"); } catch { /* presse-papiers refusé : le texte reste sélectionnable */ }
 }
 
 async function envoyerSynchro() {
@@ -773,6 +1138,52 @@ async function recupererSynchro(ev) {
   }
 }
 
+/* ---------- Ce que Kermiclab sait de moi (ADR 0024 §3 ter) ---------- */
+// Droit d'accès en libre-service : le serveur renvoie exactement ce que verrait l'administrateur (export du
+// back-office), dont l'identifiant unique du compte, à donner au support pour une demande (réinitialisation, etc.).
+let moiDonnees = null;
+
+function oublierMoi() {
+  moiDonnees = null;
+  $("#moi-zone").hidden = true;
+  $("#moi-details").hidden = true;
+  $("#moi-copier").hidden = true;
+  $("#moi-json").textContent = "";
+  $("#moi-message").textContent = "";
+}
+
+async function afficherMoi() {
+  const e = compteEtat.enregistrement;
+  if (!e || compteEtat.occupe) return;
+  oublierMoi();
+  $("#moi-identifiant").textContent = t("moiIdentifiantValeur", { identifiant: e.identifiant });
+  $("#moi-synchro").textContent = !e.synchro ? t("moiSynchroAucune") : t(modeCle(e) ? "moiSynchroCle" : "moiSynchroPhrase");
+  for (const id of ["moi-id", "moi-cree", "moi-role", "moi-sessions"]) $(`#${id}`).textContent = "—";
+  $("#moi-zone").hidden = false;
+  if (!estLie(e)) { $("#moi-message").textContent = t("moiLocal"); return; }
+  const jeton = jetonCompte();
+  if (!jeton) { $("#moi-message").textContent = t("moiSessionExpiree"); return; }
+  compteEtat.occupe = true;
+  $("#moi-message").textContent = t("synchroEnCours");
+  try {
+    const r = await apiCompte("moi", { methode: "GET", jeton });
+    if (r.statut !== 200) { $("#moi-message").textContent = t(r.statut === 401 ? "moiSessionExpiree" : erreurServeur(r)); return; }
+    moiDonnees = r.donnees;
+    $("#moi-id").textContent = moiDonnees.id;
+    $("#moi-copier").hidden = false;
+    $("#moi-cree").textContent = moiDonnees.compte?.cree_le ?? "—";
+    $("#moi-role").textContent = moiDonnees.attribution?.role_id ?? t("moiRoleParDefaut");
+    $("#moi-sessions").textContent = String(moiDonnees.compte?.sessions_actives ?? 0);
+    $("#moi-json").textContent = JSON.stringify(moiDonnees, null, 2);
+    $("#moi-details").hidden = false;
+    $("#moi-message").textContent = t("moiSupport");
+  } catch {
+    $("#moi-message").textContent = t("synchroErreur");
+  } finally {
+    compteEtat.occupe = false;
+  }
+}
+
 const erreurSuppression = (message) => erreurChamp("compte-suppr-mdp", message, "compte-suppr-erreur");
 
 async function supprimerCompteLocal(ev) {
@@ -784,8 +1195,8 @@ async function supprimerCompteLocal(ev) {
   if (!erreurSuppression(await compteLocal.verifierMotDePasse(mdp, e) ? "" : t("compteMdpIncorrect"))) return;
   compteEtat.occupe = true;
   try {
-    if (e.serveur === true || e.synchro) {
-      // Compte en ligne : données pseudonymisées d'abord (si la phrase est déverrouillée), puis identifiants.
+    if (estLie(e)) {
+      // Compte en ligne : données pseudonymisées d'abord (si la synchronisation est déverrouillée), puis identifiants.
       const s = await ouvrirSessionServeur(e.identifiant, mdp, { inscrire: false });
       if (s.donnees?.jeton) {
         if (compteEtat.session?.synchro) {
@@ -803,6 +1214,7 @@ async function supprimerCompteLocal(ev) {
     compteEtat.enregistrement = null;
     compteEtat.session = null;
     sauverCompte();
+    oublierMoi();
     $("#formulaire-compte-supprimer").reset();
     $("#compte-suppression").open = false;
     messageSynchro("");
@@ -820,11 +1232,29 @@ function brancherCompte() {
   $("#formulaire-compte-creer").addEventListener("submit", creerCompteLocal);
   $("#compte-mdp").addEventListener("input", marquerReglesMdp);
   $("#formulaire-compte-connexion").addEventListener("submit", connecterCompteLocal);
+  $("#formulaire-compte-provisoire").addEventListener("submit", remplacerMdpProvisoire);
+  $("#formulaire-compte-mdp").addEventListener("submit", changerMotDePasse);
   $("#compte-deconnexion").addEventListener("click", deconnecterCompteLocal);
   $("#formulaire-synchro-activer").addEventListener("submit", activerSynchro);
+  $("#formulaire-synchro-retrouver").addEventListener("submit", retrouverSynchro);
   $("#formulaire-synchro-deverrouiller").addEventListener("submit", deverrouillerSynchro);
+  $("#formulaire-synchro-migrer").addEventListener("submit", migrerSynchro);
   $("#synchro-envoyer").addEventListener("click", envoyerSynchro);
   $("#synchro-recuperer").addEventListener("click", recupererSynchro);
+  $("#synchro-appairer").addEventListener("click", appairerAppareil);
+  $("#synchro-kit").addEventListener("click", () => {
+    if ($("#synchro-kit-zone").hidden) void afficherKit(); else masquerZonesSynchro();
+  });
+  $("#synchro-kit-copier").addEventListener("click", () => copier($("#synchro-cle-recuperation").textContent));
+  $("#synchro-kit-telecharger").addEventListener("click", () => {
+    const identifiant = compteEtat.enregistrement.identifiant;
+    telechargerTexte(t("synchroKitFichier", { identifiant, cle: $("#synchro-cle-recuperation").textContent, date: jourLocal() }), `kermiclab-kit-recuperation-${identifiant}.txt`);
+  });
+  $("#moi-afficher").addEventListener("click", afficherMoi);
+  $("#moi-copier").addEventListener("click", () => copier($("#moi-id").textContent));
+  $("#moi-telecharger").addEventListener("click", () => {
+    if (moiDonnees) telechargerTexte(JSON.stringify(moiDonnees, null, 2), `kermiclab-mes-donnees-${jourLocal()}.json`, "application/json");
+  });
   $("#formulaire-compte-supprimer").addEventListener("submit", supprimerCompteLocal);
   marquerReglesMdp();
   rafraichirCompte();

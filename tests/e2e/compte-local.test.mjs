@@ -2,7 +2,8 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
-import { gererApiCompteLocal } from "../../worker/src/compte-local.js";
+import { gererApiCompteLocal, genererMotDePasseProvisoire, remplacerMotDePasse } from "../../worker/src/compte-local.js";
+import { chiffrer, deriverSecrets } from "../../web/compte-local.js";
 import { creerD1Comptes } from "../helpers/d1-comptes.mjs";
 
 // Mon compte (ADR 0024) : compte facultatif sur l'appareil, puis synchronisation pseudonymisée entre deux appareils.
@@ -66,13 +67,12 @@ async function creerCompte(page) {
   await page.locator("#compte-ouvert").waitFor();
 }
 
-async function activerSynchro(page, phrase = PHRASE) {
-  await page.fill("#synchro-mdp", MDP);
-  await page.fill("#synchro-phrase", phrase);
-  await page.fill("#synchro-phrase2", phrase);
-  await page.check("#synchro-compris");
-  await page.click("#formulaire-synchro-activer button[type=submit]");
-  await page.locator("#synchro-actions").waitFor();
+/** Retrouve la synchronisation d'un autre appareil : code d'appairage, clé de récupération ou phrase (ancienne méthode). */
+async function retrouverSynchro(page, secret) {
+  await page.click("#synchro-retrouver summary");
+  await page.fill("#synchro-rt-mdp", MDP);
+  await page.fill("#synchro-rt-secret", secret);
+  await page.click("#formulaire-synchro-retrouver button[type=submit]");
 }
 
 test("compte facultatif : site utilisable sans compte, aucun appel tant que la synchronisation n'est pas activée", async () => {
@@ -129,61 +129,72 @@ test("compte facultatif : site utilisable sans compte, aucun appel tant que la s
   await contexte.close();
 });
 
-test("synchronisation : données pseudonymisées et chiffrées, récupérées sur un autre appareil avec la phrase secrète", async () => {
-  // Appareil 1 : création, activation, envoi.
+test("synchronisation par clé : rien à mémoriser, appairage chiffré de bout en bout, kit de récupération", async () => {
+  // Appareil 1 : création, activation par une clé de synchronisation créée sur l'appareil.
   const a = await appareil("Léa");
   await creerCompte(a.page);
   await a.page.fill("#synchro-mdp", MDP);
-  await a.page.fill("#synchro-phrase", "court");
-  await a.page.click("#formulaire-synchro-activer button[type=submit]");
-  assert.match(await a.page.locator("#synchro-phrase-erreur").textContent(), /au moins 12 caractères/);
-  await a.page.fill("#synchro-phrase", MDP);
-  await a.page.click("#formulaire-synchro-activer button[type=submit]");
-  assert.match(await a.page.locator("#synchro-phrase-erreur").textContent(), /différente de ton mot de passe/);
-  await a.page.fill("#synchro-phrase", PHRASE);
-  await a.page.fill("#synchro-phrase2", PHRASE);
   await a.page.click("#formulaire-synchro-activer button[type=submit]");
   assert.match(await a.page.locator("#synchro-compris-erreur").textContent(), /Coche la case/);
   await a.page.check("#synchro-compris");
   await a.page.click("#formulaire-synchro-activer button[type=submit]");
   await a.page.locator("#synchro-actions").waitFor();
   assert.match(await a.page.locator("#synchro-message").textContent(), /Synchronisation activée/);
+  await a.page.locator("#synchro-kit-zone").waitFor();
+  const kit = await a.page.locator("#synchro-cle-recuperation").textContent();
+  assert.match(kit, /^([0-9A-HJKMNP-TV-Z]{4}-){13}[0-9A-HJKMNP-TV-Z]{4}$/, "kit de récupération affiché après l'activation");
   await capturer(a.page, "compte-local-synchro-active");
 
-  // Ce que le serveur a reçu et garde : ni phrase secrète, ni identifiant en clair, ni pseudo lisible.
-  assert.ok(corpsEnvoyes.length > 0);
-  assert.equal(corpsEnvoyes.some((c) => c.includes(PHRASE)), false, "la phrase secrète n'est jamais envoyée");
+  // Ce que l'appareil et le serveur gardent : ni clé en clair, ni identifiant, ni pseudo lisible.
+  const enregistrement = await a.page.evaluate(() => localStorage.getItem("kermiclab:compte-local"));
+  assert.equal(enregistrement.includes(kit.replace(/-/g, "")), false);
+  assert.match(enregistrement, /"mode":"cle".*"enveloppe"/, "clé gardée sous une enveloppe chiffrée par le mot de passe");
+  assert.equal(corpsEnvoyes.some((c) => c.includes(kit) || c.includes(kit.replace(/-/g, ""))), false, "la clé n'est jamais envoyée");
   const donnees = env.DB.sqlite.prepare("SELECT * FROM donnees_pseudonymes").all();
   assert.equal(donnees.length, 1);
   assert.equal(JSON.stringify(donnees).includes("Léa") || JSON.stringify(donnees).includes(IDENTIFIANT), false);
   assert.equal(JSON.stringify(env.DB.sqlite.prepare("SELECT * FROM comptes_locaux").all()).includes(IDENTIFIANT), false);
 
-  // Appareil 2 : même identifiant et mot de passe, autre pseudo local ; la phrase secrète retrouve les données.
+  // Appareil 2 : même identifiant et mot de passe ; le code d'appairage de l'appareil 1 transmet la clé.
+  await a.page.click("#synchro-appairer");
+  await a.page.locator("#synchro-appairage-zone").waitFor();
+  const code = await a.page.locator("#synchro-code").textContent();
+  assert.match(code, /^[0-9A-HJKMNP-TV-Z]{4}(-[0-9A-HJKMNP-TV-Z]{4}){3}$/);
+  assert.match(await a.page.locator("#synchro-code-aide").textContent(), /une seule fois/);
+  const boite = env.DB.sqlite.prepare("SELECT * FROM appairages").get();
+  assert.equal(JSON.stringify(boite).includes(code), false, "le serveur ne voit pas le code");
   const b = await appareil("Tom");
   await creerCompte(b.page);
-  await activerSynchro(b.page);
+  await retrouverSynchro(b.page, code.toLowerCase().replace(/-/g, " "));
+  await b.page.locator("#synchro-actions").waitFor();
   assert.match(await b.page.locator("#synchro-message").textContent(), /Des données en ligne ont été trouvées/);
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM appairages").get().n, 0, "code à usage unique");
   await b.page.click("#synchro-recuperer");
   assert.equal(await b.page.locator("#synchro-recuperer").textContent(), "Remplacer les données de cet appareil ?");
   await Promise.all([b.page.waitForEvent("load"), b.page.click("#synchro-recuperer")]);
   await b.page.locator("#salut").waitFor();
   assert.equal(await b.page.evaluate(() => localStorage.getItem("kermiclab:pseudo")), "Léa", "pseudo de l'appareil 1 récupéré");
 
-  // Appareil 1, nouvel onglet : synchronisation verrouillée ; une phrase erronée est reconnue sur l'appareil.
+  // Appareil 3 : le kit de récupération ; une faute de frappe est reconnue sans appel au serveur.
+  const c = await appareil("Zoé");
+  await creerCompte(c.page);
+  const faute = kit.slice(0, 7) + (kit[7] === "A" ? "B" : "A") + kit.slice(8);
+  const avant = corpsEnvoyes.length;
+  await retrouverSynchro(c.page, faute);
+  await c.page.locator("#synchro-rt-erreur:not(:empty)").waitFor();
+  assert.match(await c.page.locator("#synchro-rt-erreur").textContent(), /faute de frappe/);
+  assert.equal(corpsEnvoyes.length, avant, "rien n'est demandé au serveur pour une clé erronée");
+  await c.page.fill("#synchro-rt-secret", kit);
+  await c.page.click("#formulaire-synchro-retrouver button[type=submit]");
+  await c.page.locator("#synchro-actions").waitFor();
+  assert.match(await c.page.locator("#synchro-message").textContent(), /Des données en ligne ont été trouvées/);
+
+  // Appareil 1, nouvel onglet : le mot de passe suffit, la synchronisation est déverrouillée d'office.
   await a.page.click("#compte-deconnexion");
   await a.page.fill("#compte-connexion-mdp", MDP);
   await a.page.click("#formulaire-compte-connexion button[type=submit]");
-  await a.page.locator("#synchro-deverrouillage").waitFor();
-  const avant = corpsEnvoyes.length;
-  await a.page.fill("#synchro-dv-mdp", MDP);
-  await a.page.fill("#synchro-dv-phrase", "une phrase oubliée");
-  await a.page.click("#formulaire-synchro-deverrouiller button[type=submit]");
-  await a.page.locator("#synchro-dv-erreur:not(:empty)").waitFor();
-  assert.match(await a.page.locator("#synchro-dv-erreur").textContent(), /n'est pas la phrase secrète/);
-  assert.equal(corpsEnvoyes.length, avant, "rien n'est demandé au serveur pour une phrase erronée");
-  await a.page.fill("#synchro-dv-phrase", PHRASE);
-  await a.page.click("#formulaire-synchro-deverrouiller button[type=submit]");
   await a.page.locator("#synchro-actions").waitFor();
+  assert.match(await a.page.locator("#synchro-statut").textContent(), /clé de synchronisation/);
 
   // Suppression : données en ligne puis compte en ligne effacés.
   await a.page.click("#compte-suppression summary");
@@ -194,9 +205,104 @@ test("synchronisation : données pseudonymisées et chiffrées, récupérées su
   assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM comptes_locaux").get().n, 0);
   assert.deepEqual(a.erreurs, []);
   // Seule erreur attendue : le 409 de l'inscription (identifiant déjà en ligne), suivi de la connexion.
-  assert.deepEqual(b.erreurs.filter((e) => !/status of 409/.test(e)), []);
-  await a.contexte.close();
-  await b.contexte.close();
+  for (const x of [b, c]) assert.deepEqual(x.erreurs.filter((e) => !/status of 409/.test(e)), []);
+  for (const x of [a, b, c]) await x.contexte.close();
+});
+
+test("phrase secrète (ancienne méthode) : données retrouvées, puis remplacées par une clé", async () => {
+  // Données synchronisées avant la clé : écrites sous le pseudonyme dérivé de la phrase.
+  const identifiant = "ancien.compte";
+  const appelApi = async (route, corps, jeton) => (await gererApiCompteLocal(new Request(`https://api.test/api/compte-local/${route}`, {
+    method: route === "donnees" ? "PUT" : "POST", headers: { "content-type": "application/json", ...(jeton ? { authorization: `Bearer ${jeton}` } : {}) }, body: JSON.stringify(corps)
+  }), env)).json();
+  const { jeton } = await appelApi("inscription", { identifiant, motDePasse: MDP });
+  const s = await deriverSecrets(PHRASE, identifiant);
+  const boite = await chiffrer(s.cle, s.pseudonyme, { v: 1, donnees: { "kermiclab:pseudo": "Ancien" } });
+  await appelApi("donnees", { pseudonyme: s.pseudonyme, jeton: s.jeton, versionAttendue: 0, ...boite }, jeton);
+
+  const { page, contexte, erreurs } = await appareil("Neuf");
+  try {
+    await page.click(".barre-laterale .profil-carte[data-action=profil]");
+    await page.click("#entree-compte");
+    await page.fill("#compte-identifiant", identifiant);
+    await page.fill("#compte-mdp", MDP);
+    await page.fill("#compte-mdp2", MDP);
+    await page.click("#formulaire-compte-creer button[type=submit]");
+    await page.locator("#compte-ouvert").waitFor();
+    await retrouverSynchro(page, "une phrase oubliée");
+    await page.locator("#synchro-rt-erreur:not(:empty)").waitFor();
+    assert.match(await page.locator("#synchro-rt-erreur").textContent(), /Aucune donnée en ligne avec cette phrase/);
+    await page.fill("#synchro-rt-secret", PHRASE);
+    await page.click("#formulaire-synchro-retrouver button[type=submit]");
+    await page.locator("#synchro-actions").waitFor();
+    assert.equal(await page.locator("#synchro-actions-cle").isVisible(), false, "pas d'appairage avec une phrase");
+
+    await page.click("#synchro-migration summary");
+    await page.fill("#synchro-mg-mdp", MDP);
+    await page.click("#formulaire-synchro-migrer button[type=submit]");
+    await page.locator("#synchro-kit-zone").waitFor();
+    assert.match(await page.locator("#synchro-message").textContent(), /remplacée par une clé/);
+    const lignes = env.DB.sqlite.prepare("SELECT pseudonyme, version FROM donnees_pseudonymes").all();
+    assert.equal(lignes.length, 1, "ancienne copie effacée");
+    assert.notEqual(lignes[0].pseudonyme, s.pseudonyme);
+    assert.equal(await page.locator("#synchro-actions-cle").isVisible(), true);
+    assert.deepEqual(erreurs.filter((e) => !/status of (409|404)/.test(e)), []);
+  } finally {
+    await contexte.close();
+  }
+});
+
+test("support : mot de passe provisoire à remplacer, identifiant unique dans « Ce que Kermiclab sait de moi »", async () => {
+  const identifiant = "sam.oubli";
+  const { page, contexte } = await appareil("Sam");
+  try {
+    await page.click(".barre-laterale .profil-carte[data-action=profil]");
+    await page.click("#entree-compte");
+    await page.fill("#compte-identifiant", identifiant);
+    await page.fill("#compte-mdp", MDP);
+    await page.fill("#compte-mdp2", MDP);
+    await page.check("#liaison-creer-d1");
+    await page.click("#formulaire-compte-creer button[type=submit]");
+    await page.locator("#compte-ouvert").waitFor();
+
+    // Libre-service : l'identifiant unique affiché est celui de la base, sans identifiant de connexion côté serveur.
+    await page.click("#moi-afficher");
+    await page.locator("#moi-id:not(:text('—'))").waitFor();
+    const id = await page.locator("#moi-id").textContent();
+    const ligne = env.DB.sqlite.prepare("SELECT id FROM comptes_locaux WHERE id = ?").get(id);
+    assert.ok(ligne, "identifiant unique du compte en ligne");
+    assert.match(await page.locator("#moi-identifiant").textContent(), /empreinte/);
+    assert.equal(await page.locator("#moi-details").isHidden(), false);
+    await capturer(page, "compte-local-moi");
+
+    // Le support réinitialise le mot de passe (back-office) : sessions fermées, mot de passe provisoire.
+    const provisoire = genererMotDePasseProvisoire();
+    await remplacerMotDePasse(env, id, provisoire, { provisoire: true });
+    await page.click("#compte-deconnexion");
+    await page.fill("#compte-connexion-mdp", provisoire);
+    await page.click("#formulaire-compte-connexion button[type=submit]");
+    await page.locator("#compte-provisoire").waitFor();
+    assert.equal(await page.locator("#compte-ouvert").isHidden(), true, "rien d'autre avant le changement");
+    await page.fill("#provisoire-mdp", provisoire);
+    await page.fill("#provisoire-mdp2", provisoire);
+    await page.click("#formulaire-compte-provisoire button[type=submit]");
+    await page.locator("#provisoire-mdp-erreur:not(:empty)").waitFor();
+    assert.match(await page.locator("#provisoire-mdp-erreur").textContent(), /différent/);
+    const nouveau = "Nouveau-Depart-21";
+    await page.fill("#provisoire-mdp", nouveau);
+    await page.fill("#provisoire-mdp2", nouveau);
+    await page.click("#formulaire-compte-provisoire button[type=submit]");
+    await page.locator("#compte-ouvert").waitFor();
+    assert.equal(env.DB.sqlite.prepare("SELECT mdp_provisoire FROM comptes_locaux WHERE id = ?").get(id).mdp_provisoire, 0);
+
+    // Le nouveau mot de passe sert ensuite, sur l'appareil comme en ligne.
+    await page.click("#compte-deconnexion");
+    await page.fill("#compte-connexion-mdp", nouveau);
+    await page.click("#formulaire-compte-connexion button[type=submit]");
+    await page.getByText(`Connecté au compte en ligne : ${identifiant}.`, { exact: true }).waitFor();
+  } finally {
+    await contexte.close();
+  }
 });
 
 test("connexion en ligne : fournisseurs en attente, identité D1 stable sans synchronisation", async () => {

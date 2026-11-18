@@ -592,8 +592,9 @@
   </details>
 </section>
 
-<!-- Mon compte (ADR 0024) : facultatif, créé sur l'appareil (identifiant + mot de passe, sans email ni réinitialisation).
-     Synchronisation sur demande : données pseudonymisées et chiffrées avec une phrase secrète jamais envoyée. -->
+<!-- Mon compte (ADR 0024) : facultatif, créé sur l'appareil (identifiant + mot de passe, sans email ; réinitialisation
+     par le support seulement, sur l'identifiant unique du compte). Synchronisation sur demande : données pseudonymisées et
+     chiffrées avec une clé de synchronisation créée sur l'appareil, jamais envoyée en clair. -->
 <section id="compte" class="carte ecran-personnel" data-ecrans="compte" aria-labelledby="salut" hidden>
   <p id="compte-memoire" class="note-locale" data-i18n="compteMemoireSession" hidden></p>
   <!-- Lien d'invitation d'un professeur ouvert sans compte lié (ADR 0030) : l'adhésion reprend après la connexion. -->
@@ -652,6 +653,20 @@
     </form>
   </div>
 
+  <!-- Mot de passe provisoire donné par le support (ADR 0024 §3 bis) : à remplacer avant tout autre usage du compte. -->
+  <div id="compte-provisoire" hidden>
+    <p class="note-locale" data-i18n="compteProvisoireTexte"></p>
+    <form id="formulaire-compte-provisoire" class="formulaire-profil" novalidate>
+      <label for="provisoire-mdp" class="etiquette-champ" data-i18n="compteMdpNouveau"></label>
+      <input id="provisoire-mdp" type="password" maxlength="128" autocomplete="new-password" aria-describedby="provisoire-mdp-erreur">
+      <p id="provisoire-mdp-erreur" class="erreur-champ" aria-live="assertive"></p>
+      <label for="provisoire-mdp2" class="etiquette-champ" data-i18n="compteMdpConfirmation"></label>
+      <input id="provisoire-mdp2" type="password" maxlength="128" autocomplete="new-password" aria-describedby="provisoire-mdp2-erreur">
+      <p id="provisoire-mdp2-erreur" class="erreur-champ" aria-live="assertive"></p>
+      <button type="submit" class="bouton" data-i18n="compteMdpChanger"></button>
+    </form>
+  </div>
+
   <div id="compte-ouvert" hidden>
     <p id="compte-ouvert-texte"></p>
     <section class="compte-bloc" aria-labelledby="synchro-titre">
@@ -663,17 +678,11 @@
           <li data-i18n="synchroPoint2"></li>
           <li data-i18n="synchroPoint3"></li>
         </ul>
+        <!-- Clé de synchronisation (ADR 0024 §2 bis) : secret aléatoire de 256 bits créé ici, rien à mémoriser. -->
         <form id="formulaire-synchro-activer" class="formulaire-profil" novalidate>
           <label for="synchro-mdp" class="etiquette-champ" data-i18n="compteMdpLabel"></label>
           <input id="synchro-mdp" type="password" maxlength="128" autocomplete="current-password" aria-describedby="synchro-mdp-erreur">
           <p id="synchro-mdp-erreur" class="erreur-champ" aria-live="assertive"></p>
-          <label for="synchro-phrase" class="etiquette-champ" data-i18n="synchroPhraseLabel"></label>
-          <input id="synchro-phrase" type="password" maxlength="256" autocomplete="off" aria-describedby="synchro-phrase-aide synchro-phrase-erreur">
-          <p id="synchro-phrase-aide" class="doux petit" data-i18n="synchroPhraseAide"></p>
-          <p id="synchro-phrase-erreur" class="erreur-champ" aria-live="assertive"></p>
-          <label for="synchro-phrase2" class="etiquette-champ" data-i18n="synchroPhraseConfirmation"></label>
-          <input id="synchro-phrase2" type="password" maxlength="256" autocomplete="off" aria-describedby="synchro-phrase2-erreur">
-          <p id="synchro-phrase2-erreur" class="erreur-champ" aria-live="assertive"></p>
           <label class="case-memoire">
             <input type="checkbox" id="synchro-compris" aria-describedby="synchro-compris-erreur">
             <span><strong data-i18n="synchroComprisTitre"></strong><span class="doux petit" data-i18n="synchroComprisTexte"></span></span>
@@ -681,21 +690,66 @@
           <p id="synchro-compris-erreur" class="erreur-champ" aria-live="assertive"></p>
           <button type="submit" class="bouton" data-i18n="synchroActiver"></button>
         </form>
+        <details id="synchro-retrouver" class="famille-ajout">
+          <summary data-i18n="synchroRetrouverTitre"></summary>
+          <p class="doux petit" data-i18n="synchroRetrouverAide"></p>
+          <form id="formulaire-synchro-retrouver" class="formulaire-profil" novalidate>
+            <label for="synchro-rt-mdp" class="etiquette-champ" data-i18n="compteMdpLabel"></label>
+            <input id="synchro-rt-mdp" type="password" maxlength="128" autocomplete="current-password" aria-describedby="synchro-rt-erreur">
+            <label for="synchro-rt-secret" class="etiquette-champ" data-i18n="synchroSecretLabel"></label>
+            <input id="synchro-rt-secret" type="password" maxlength="256" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="synchro-rt-aide synchro-rt-erreur">
+            <p id="synchro-rt-aide" class="doux petit" data-i18n="synchroSecretAide"></p>
+            <p id="synchro-rt-erreur" class="erreur-champ" aria-live="assertive"></p>
+            <button type="submit" class="bouton" data-i18n="synchroRetrouver"></button>
+          </form>
+        </details>
       </div>
       <div id="synchro-deverrouillage" hidden>
-        <p class="doux petit" data-i18n="synchroDeverrouillerAide"></p>
+        <p id="synchro-dv-aide" class="doux petit"></p>
         <form id="formulaire-synchro-deverrouiller" class="formulaire-profil" novalidate>
           <label for="synchro-dv-mdp" class="etiquette-champ" data-i18n="compteMdpLabel"></label>
           <input id="synchro-dv-mdp" type="password" maxlength="128" autocomplete="current-password" aria-describedby="synchro-dv-erreur">
-          <label for="synchro-dv-phrase" class="etiquette-champ" data-i18n="synchroPhraseLabel"></label>
-          <input id="synchro-dv-phrase" type="password" maxlength="256" autocomplete="off" aria-describedby="synchro-dv-erreur">
+          <div id="synchro-dv-secret">
+            <label for="synchro-dv-phrase" class="etiquette-champ" id="synchro-dv-phrase-label"></label>
+            <input id="synchro-dv-phrase" type="password" maxlength="256" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="synchro-dv-erreur">
+          </div>
           <p id="synchro-dv-erreur" class="erreur-champ" aria-live="assertive"></p>
           <button type="submit" class="bouton" data-i18n="synchroDeverrouiller"></button>
         </form>
       </div>
-      <div id="synchro-actions" class="actions" hidden>
-        <button type="button" class="bouton" id="synchro-envoyer" data-i18n="synchroEnvoyer"></button>
-        <button type="button" class="secondaire" id="synchro-recuperer" data-i18n="synchroRecuperer"></button>
+      <div id="synchro-actions" hidden>
+        <div class="actions">
+          <button type="button" class="bouton" id="synchro-envoyer" data-i18n="synchroEnvoyer"></button>
+          <button type="button" class="secondaire" id="synchro-recuperer" data-i18n="synchroRecuperer"></button>
+        </div>
+        <div class="actions" id="synchro-actions-cle">
+          <button type="button" class="secondaire" id="synchro-appairer" data-i18n="synchroAppairer"></button>
+          <button type="button" class="secondaire" id="synchro-kit" data-i18n="synchroKit"></button>
+        </div>
+        <!-- Code d'appairage : la clé part chiffrée de bout en bout vers l'autre appareil, le serveur ne voit pas le code. -->
+        <div id="synchro-appairage-zone" hidden>
+          <p class="code-invitation" id="synchro-code" aria-live="polite"></p>
+          <p class="doux petit" id="synchro-code-aide"></p>
+        </div>
+        <div id="synchro-kit-zone" hidden>
+          <p class="note-locale" data-i18n="synchroKitAide"></p>
+          <p class="code-invitation code-cle" id="synchro-cle-recuperation"></p>
+          <div class="actions">
+            <button type="button" class="secondaire petit-bouton" id="synchro-kit-copier" data-i18n="synchroKitCopier"></button>
+            <button type="button" class="secondaire petit-bouton" id="synchro-kit-telecharger" data-i18n="synchroKitTelecharger"></button>
+          </div>
+        </div>
+        <!-- Ancienne méthode (phrase secrète, protocole v1) : passage à la clé, données reprises puis l'ancienne copie effacée. -->
+        <details id="synchro-migration" class="famille-ajout" hidden>
+          <summary data-i18n="synchroMigrerTitre"></summary>
+          <form id="formulaire-synchro-migrer" class="formulaire-profil" novalidate>
+            <p class="doux petit" data-i18n="synchroMigrerAide"></p>
+            <label for="synchro-mg-mdp" class="etiquette-champ" data-i18n="compteMdpLabel"></label>
+            <input id="synchro-mg-mdp" type="password" maxlength="128" autocomplete="current-password" aria-describedby="synchro-mg-mdp-erreur">
+            <p id="synchro-mg-mdp-erreur" class="erreur-champ" aria-live="assertive"></p>
+            <button type="submit" class="bouton" data-i18n="synchroMigrer"></button>
+          </form>
+        </details>
       </div>
       <p id="synchro-message" class="doux" role="status" aria-live="polite"></p>
     </section>
@@ -729,8 +783,52 @@
         <p id="code-prof-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
       </form>
     </section>
+    <!-- Ce que Kermiclab sait de moi (ADR 0024 §3 ter) : droit d'accès en libre-service et identifiant unique du compte,
+         à donner au support pour toute demande. Rien n'est demandé au serveur tant que le bouton n'est pas utilisé. -->
+    <section class="compte-bloc" id="compte-moi" aria-labelledby="moi-titre">
+      <h3 id="moi-titre" data-i18n="moiTitre"></h3>
+      <p class="doux petit" data-i18n="moiAide"></p>
+      <button type="button" class="secondaire" id="moi-afficher" data-i18n="moiAfficher"></button>
+      <div id="moi-zone" hidden>
+        <dl class="moi-liste">
+          <dt data-i18n="moiId"></dt>
+          <dd><code id="moi-id"></code> <button type="button" class="secondaire petit-bouton" id="moi-copier" data-i18n="moiCopier" hidden></button></dd>
+          <dt data-i18n="moiIdentifiant"></dt>
+          <dd id="moi-identifiant"></dd>
+          <dt data-i18n="moiCree"></dt>
+          <dd id="moi-cree"></dd>
+          <dt data-i18n="moiRole"></dt>
+          <dd id="moi-role"></dd>
+          <dt data-i18n="moiSessions"></dt>
+          <dd id="moi-sessions"></dd>
+          <dt data-i18n="moiSynchro"></dt>
+          <dd id="moi-synchro"></dd>
+        </dl>
+        <details id="moi-details" class="famille-ajout" hidden>
+          <summary data-i18n="moiToutVoir"></summary>
+          <pre id="moi-json" class="moi-json"></pre>
+          <button type="button" class="secondaire petit-bouton" id="moi-telecharger" data-i18n="moiTelecharger"></button>
+        </details>
+      </div>
+      <p id="moi-message" class="doux" role="status" aria-live="polite"></p>
+    </section>
     <div class="zone-effacement">
       <button type="button" class="secondaire" id="compte-deconnexion" data-i18n="compteDeconnexion"></button>
+      <details id="compte-changer-mdp" class="famille-ajout">
+        <summary data-i18n="compteMdpChangerTitre"></summary>
+        <form id="formulaire-compte-mdp" class="formulaire-profil" novalidate>
+          <label for="compte-mdp-actuel" class="etiquette-champ" data-i18n="compteMdpActuel"></label>
+          <input id="compte-mdp-actuel" type="password" maxlength="128" autocomplete="current-password" aria-describedby="compte-mdp-actuel-erreur">
+          <p id="compte-mdp-actuel-erreur" class="erreur-champ" aria-live="assertive"></p>
+          <label for="compte-mdp-nouveau" class="etiquette-champ" data-i18n="compteMdpNouveau"></label>
+          <input id="compte-mdp-nouveau" type="password" maxlength="128" autocomplete="new-password" aria-describedby="compte-mdp-nouveau-erreur">
+          <p id="compte-mdp-nouveau-erreur" class="erreur-champ" aria-live="assertive"></p>
+          <label for="compte-mdp-nouveau2" class="etiquette-champ" data-i18n="compteMdpConfirmation"></label>
+          <input id="compte-mdp-nouveau2" type="password" maxlength="128" autocomplete="new-password" aria-describedby="compte-mdp-nouveau2-erreur">
+          <p id="compte-mdp-nouveau2-erreur" class="erreur-champ" aria-live="assertive"></p>
+          <button type="submit" class="bouton" data-i18n="compteMdpChanger"></button>
+        </form>
+      </details>
       <details id="compte-suppression" class="famille-ajout">
         <summary data-i18n="compteSupprimer"></summary>
         <form id="formulaire-compte-supprimer" class="formulaire-profil" novalidate>
