@@ -5,7 +5,7 @@ resume: Fais glisser les tuiles, fusionne les mêmes nombres et atteins la tuile
 sujet: jeux/2048
 notions-liees:
   - puissances
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-05
 langues: fr
 onglets: explication, application, academie, mise-en-situation

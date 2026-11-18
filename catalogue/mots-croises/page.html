@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-GLd9pRk4X2bKJLO/WYgG1Y/IzYdM6qlg/UuLVQAf+Ms=' 'sha256-/q1gx97A+ps1+KUZh/kcm93eQ1ey/SQ6fWA8d3vCQSQ='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-GLd9pRk4X2bKJLO/WYgG1Y/IzYdM6qlg/UuLVQAf+Ms=' 'sha256-6J1aF4iMny8VwRltsVOrR7U0I6fJ2ZH9t4KLd+bbDbc='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Mots croisés – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "mots-croises",
   "titre": "Mots croisés",
   "sujet": "jeux/mots-croises",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-04",
   "langue": "fr",
   "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
@@ -468,7 +468,8 @@ const MoteurMotsCroises = (() => {
       if (focaliser) elements.find((x) => x.ligne === caseActive.ligne && x.colonne === caseActive.colonne)?.element.focus();
     }
     function verifier() {
-      const bilan = M.verifier(etapes[rang].grille, saisie); erreurs = bilan.erreurs;
+      if (terminee) return;
+      const bilan = M.verifier(etapes[rang].grille, saisie); erreurs = bilan.erreurs; SuiviJeux.reponse(bilan.resolu);
       if (bilan.resolu) terminer();
       else {
         afficher();
@@ -476,6 +477,8 @@ const MoteurMotsCroises = (() => {
       }
     }
     function terminer() {
+      if (terminee) return;
+      SuiviJeux.terminer("reussite");
       terminee = true;
       if (!progression.terminees.includes(etapes[rang].id)) progression.terminees.push(etapes[rang].id);
       if (rang === progression.ouvert && progression.ouvert < etapes.length - 1) progression.ouvert++;
@@ -485,6 +488,7 @@ const MoteurMotsCroises = (() => {
     }
     function saisir(lettre) {
       if (terminee) return;
+      SuiviJeux.agir();
       const { ligne, colonne } = caseActive;
       saisie[ligne][colonne] = lettre || "";
       erreurs = [];
@@ -494,6 +498,7 @@ const MoteurMotsCroises = (() => {
       if (M.verifier(etapes[rang].grille, saisie).resolu) verifier();
     }
     function demarrer(i) {
+      SuiviJeux.preparer(`grille-${etapes[i].id}`);
       rang = i; const definition = etapes[rang].grille;
       saisie = Array.from({ length: definition.lignes }, () => Array(definition.colonnes).fill(""));
       motActif = definition.mots[1]; caseActive = motActif.cases[0]; erreurs = []; terminee = false;
@@ -505,6 +510,7 @@ const MoteurMotsCroises = (() => {
       if (terminee) return;
       const indice = M.prochainIndice(etapes[rang].grille, saisie, motActif);
       if (!indice) { annoncer("Ce mot est déjà rempli."); return; }
+      SuiviJeux.indice();
       saisie[indice.ligne][indice.colonne] = indice.lettre;
       caseActive = indice;
       afficher(true); annoncer(`Indice : la lettre ${indice.lettre}.`, "ok");

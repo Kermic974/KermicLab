@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-IpR2zTyOVuh2b/KLhZIMHjjK5r0TB+bgrbs5lbIQT2E=' 'sha256-kSWHX77VKwqaQmGZ8gJfkbmlHi+Wnf81n6kiA6F2Hs0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-IpR2zTyOVuh2b/KLhZIMHjjK5r0TB+bgrbs5lbIQT2E=' 'sha256-DQW+fXcUJQnCQuCI+KeEQDIi3l/FBj0SlE36gFHfFZ4='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>2048 – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "2048",
   "titre": "2048",
   "sujet": "jeux/2048",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-05",
   "langue": "fr",
   "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
@@ -368,6 +368,7 @@ const Moteur2048 = (() => {
       objectif.textContent = `${M.NIVEAUX[rang].nom} : atteins la tuile ${M.NIVEAUX[rang].cible}.`;
     }
     function demarrer(i = rang) {
+      SuiviJeux.preparer(`tuile-${M.NIVEAUX[i].cible}`);
       rang = i; partie = M.creerPartie(); gagne = false;
       afficher(); annoncer("À toi de jouer : utilise les flèches ou glisse sur le plateau.");
     }
@@ -381,15 +382,16 @@ const Moteur2048 = (() => {
     }
     function agir(direction) {
       if (!partie || partie.terminee) return;
+      SuiviJeux.agir();
       const resultat = M.deplacer(partie, direction);
       if (!resultat.deplace && !resultat.terminee) return;
       majProgression(); afficher();
       const max = Math.max(...partie.grille);
       if (!gagne && max >= M.NIVEAUX[rang].cible) {
-        gagne = true;
+        gagne = true; SuiviJeux.terminer("reussite");
         const prochain = progression.debloque > rang ? ` Grade ${M.NIVEAUX[progression.debloque].nom} débloqué !` : "";
         annoncer(`Bravo ! Objectif ${M.NIVEAUX[rang].cible} atteint !${prochain}`, "ok");
-      } else if (resultat.terminee) annoncer("Plus de déplacement possible. Lance une nouvelle partie !");
+      } else if (resultat.terminee) { SuiviJeux.terminer("echec"); annoncer("Plus de déplacement possible. Lance une nouvelle partie !"); }
       else if (resultat.fusionne) annoncer(`Fusion ! +${resultat.fusionne} points.`, "ok");
       else if (resultat.deplace) annoncer("Bien joué, une nouvelle tuile est apparue.");
     }

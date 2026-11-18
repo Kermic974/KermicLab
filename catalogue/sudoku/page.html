@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-BqFuLcRrKZGTOVX2gIz/hlhB/2G/KEuW+ec/Ni9NK6g='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-gscMMHwrkGjD5G92E/NEsiKauuyIaWHBZZaFbBmU3S0=' 'sha256-660wlKcZaiqLGpazPubM+jWP1viOAqEcPVSbWCT2oEw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Sudoku – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "sudoku",
   "titre": "Sudoku",
   "sujet": "jeux/sudoku",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-04",
   "langue": "fr",
   "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
@@ -432,6 +432,8 @@ const MoteurSudoku = (() => {
     }
     function annoncer(texte, classe = "") { sortie(message, texte); message.className = `message ${classe}`; }
     function terminer() {
+      if (terminee) return;
+      SuiviJeux.terminer("reussite");
       terminee = true;
       if (rang === M.ETAPES.length - 1) progression.termine = true;
       if (rang === progression.ouvert && progression.ouvert < M.ETAPES.length - 1) progression.ouvert++;
@@ -442,9 +444,10 @@ const MoteurSudoku = (() => {
     }
     function saisir(n) {
       if (terminee || selection < 0) { annoncer("Choisis d'abord une case vide."); return; }
+      SuiviJeux.agir();
       const resultat = M.placer(partie, selection, n);
       if (resultat === "fixe") { annoncer("Ce chiffre était déjà donné : choisis une case vide."); return; }
-      if (resultat === "conflit") { annoncer("Ce chiffre est déjà présent dans la ligne, la colonne ou le carré."); return; }
+      if (resultat === "conflit") { SuiviJeux.reponse(false); annoncer("Ce chiffre est déjà présent dans la ligne, la colonne ou le carré."); return; }
       if (resultat !== "ok") return;
       erreurs = [];
       const bilan = M.verifier(partie);
@@ -454,6 +457,7 @@ const MoteurSudoku = (() => {
       else annoncer("Case effacée.");
     }
     function demarrer(i) {
+      SuiviJeux.preparer(`grille-${M.ETAPES[i].id}`);
       rang = i; partie = M.creerPartie(M.ETAPES[rang].id); selection = partie.depart.findIndex((n) => !n);
       erreurs = []; terminee = false;
       sortie(objectif, `${M.ETAPES[rang].icone} ${M.ETAPES[rang].nom} — ${M.ETAPES[rang].conseil}`);
@@ -464,11 +468,13 @@ const MoteurSudoku = (() => {
       if (terminee) return;
       const i = M.revelerIndice(partie);
       if (i === null) { annoncer("Il n'y a plus de case vide à révéler."); return; }
+      SuiviJeux.indice();
       selection = i; afficher(); annoncer(`Indice : la ligne ${Math.floor(i / 9) + 1}, colonne ${i % 9 + 1} contient ${partie.grille[i]}.`, "ok");
       if (M.verifier(partie).resolu) terminer();
     });
     p.querySelector('[data-action="verifier"]').addEventListener("click", () => {
       const bilan = M.verifier(partie); erreurs = bilan.erreurs; afficher();
+      if (!terminee) SuiviJeux.reponse(bilan.resolu);
       if (bilan.resolu) terminer();
       else annoncer(bilan.erreurs.length ? `${bilan.erreurs.length} chiffre${bilan.erreurs.length > 1 ? "s" : ""} à corriger.` : `${bilan.vides.length} case${bilan.vides.length > 1 ? "s" : ""} encore vide${bilan.vides.length > 1 ? "s" : ""}.`, bilan.erreurs.length ? "ko" : "");
     });
