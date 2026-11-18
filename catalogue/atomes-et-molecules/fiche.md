@@ -34,6 +34,7 @@ questions:
   - what is an atom?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e, 3e
 competences: pc-atomes-et-molecules-action-1, pc-atomes-et-molecules-action-2
 ---
 

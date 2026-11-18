@@ -18,6 +18,7 @@ questions:
   - Que signifie la multifonctionnalité rurale ?
 prerequis:
 niveaux: cycle-3, premiere
+classes: 6e
 competences: geographie-espaces-ruraux-action-1, geographie-espaces-ruraux-action-2
 ---
 

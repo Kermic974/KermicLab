@@ -17,6 +17,7 @@ questions:
   - À quoi servent les fonctions métropolitaines ?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: geographie-metropolisation-action-1, geographie-metropolisation-action-2
 ---
 

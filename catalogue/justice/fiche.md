@@ -16,6 +16,7 @@ questions:
   - what is justice?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: emc-justice-action-1, emc-justice-action-2
 ---
 

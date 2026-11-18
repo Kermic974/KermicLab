@@ -19,6 +19,7 @@ questions:
   - Comment l'aménagement du territoire peut-il réduire les inégalités ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 3e
 competences: geographie-dynamiques-territoriales-action-1, geographie-dynamiques-territoriales-action-2
 ---
 

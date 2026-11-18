@@ -28,6 +28,7 @@ questions:
   - what is kinetic energy?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 5e, 3e
 competences: pc-energie-action-1, pc-energie-action-2
 ---
 

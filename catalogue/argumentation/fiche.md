@@ -21,6 +21,7 @@ questions:
   - À quoi sert un connecteur logique dans une argumentation ?
 prerequis:
 niveaux: cycle-4
+classes: 4e, 3e
 competences: francais-argumentation-action-1, francais-argumentation-action-2
 ---
 

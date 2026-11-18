@@ -19,6 +19,7 @@ questions:
   - Quelles inégalités observe-t-on en Afrique du Sud ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 4e
 competences: geographie-afrique-australe-action-1, geographie-afrique-australe-action-2
 ---
 

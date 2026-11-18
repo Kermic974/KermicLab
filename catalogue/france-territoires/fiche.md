@@ -18,6 +18,7 @@ questions:
   - Comment relier la France métropole et outre-mer ?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: geographie-france-territoires-action-1, geographie-france-territoires-action-2
 ---
 

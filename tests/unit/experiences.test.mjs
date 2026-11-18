@@ -39,6 +39,21 @@ test("Éducation : arbre Niveau > Matière > Notions issu des métadonnées, san
   assert.deepEqual(E.arbreEducation(E.creerRegistre([]), ORDRE), []);
 });
 
+test("Éducation : les classes du collège (6e à 3e) découpent « Collège » ; une notion sans classe y reste", () => {
+  const reg = E.creerRegistre([
+    { id: "fractions", titre: "Les fractions", niveau: "college", matiere: "mathematiques", classes: ["5e", "6e", "CM2"] },
+    { id: "pythagore", titre: "Pythagore", niveau: "college", matiere: "mathematiques", classes: ["4e"] },
+    { id: "privee", titre: "Non classée", niveau: "college", matiere: "mathematiques" },
+    { id: "derive", titre: "Dérivation", niveau: "premiere", matiere: "mathematiques", classes: ["3e"] }
+  ]);
+  assert.deepEqual(reg.trouver("fractions").classes, ["6e", "5e"], "ordre du collège, valeurs inconnues écartées");
+  assert.equal("classes" in reg.trouver("derive"), false, "les classes ne valent que pour le collège");
+  const arbre = E.arbreEducation(reg, ORDRE);
+  assert.deepEqual(arbre.map((n) => [n.niveau, n.matieres.flatMap((m) => m.notions.map((x) => x.id))]), [
+    ["6e", ["fractions"]], ["5e", ["fractions"]], ["4e", ["pythagore"]], ["college", ["privee"]], ["premiere", ["derive"]]
+  ]);
+});
+
 test("compteurs : état vide → zéros, jamais NaN, null ni undefined", () => {
   const c = E.compteurs(P.etatInitial(), registre);
   assert.deepEqual(c, { tempsActif: 0, notions: 0, matieres: 0, jeux: 0, questions: 0, badges: 0 });

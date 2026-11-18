@@ -22,6 +22,7 @@ questions:
   - C'est quoi le surtourisme ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 4e
 competences: geographie-tourisme-action-1, geographie-tourisme-action-2
 ---
 

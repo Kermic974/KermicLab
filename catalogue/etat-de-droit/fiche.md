@@ -16,6 +16,7 @@ questions:
   - what is the rule of law?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: emc-etat-de-droit-action-1, emc-etat-de-droit-action-2
 ---
 

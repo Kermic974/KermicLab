@@ -21,6 +21,7 @@ questions:
   - Quels défis rencontrent les régions d'outre-mer ?
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
+classes: 3e
 competences: geographie-france-regions-action-1, geographie-france-regions-action-2
 ---
 

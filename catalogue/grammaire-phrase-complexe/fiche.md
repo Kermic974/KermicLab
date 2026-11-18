@@ -21,6 +21,7 @@ questions:
   - À quoi sert une proposition subordonnée ?
 prerequis:
 niveaux: cycle-4
+classes: 4e, 3e
 competences: francais-grammaire-phrase-complexe-action-1, francais-grammaire-phrase-complexe-action-2
 ---
 

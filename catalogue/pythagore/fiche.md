@@ -6,6 +6,7 @@ version: 1.2.0
 date: 2026-11-01
 niveau: college
 niveaux: cycle-4, seconde, premiere
+classes: 4e
 prerequis:
   - perimetres-aires
   - puissances

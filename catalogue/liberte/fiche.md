@@ -17,6 +17,7 @@ questions:
   - what is freedom?
 prerequis:
 niveaux: cycle-4
+classes: 4e
 competences: emc-liberte-action-1, emc-liberte-action-2
 ---
 

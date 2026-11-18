@@ -19,6 +19,7 @@ questions:
   - Que signifie un monde multipolaire ?
 prerequis:
 niveaux: cycle-4, terminale
+classes: 3e
 competences: his-monde-depuis-1990-action-1, his-monde-depuis-1990-action-2
 ---
 

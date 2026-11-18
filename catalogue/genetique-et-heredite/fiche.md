@@ -44,6 +44,7 @@ questions:
   - est-ce que l'ADN détermine tout chez une personne ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 3e
 competences: svt-genetique-et-heredite-action-1, svt-genetique-et-heredite-action-2
 ---
 

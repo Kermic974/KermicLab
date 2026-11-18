@@ -18,6 +18,7 @@ questions:
   - Comment organiser la gestion de l'eau ?
 prerequis:
 niveaux: cycle-4
+classes: 5e
 competences: geographie-ressources-action-1, geographie-ressources-action-2
 ---
 

@@ -21,6 +21,7 @@ questions:
   - Pourquoi Waterloo marque-t-il la fin du Premier Empire ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e
 competences: his-napoleon-action-1, his-napoleon-action-2
 ---
 

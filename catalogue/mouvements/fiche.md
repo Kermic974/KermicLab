@@ -28,6 +28,7 @@ questions:
   - what is a frame of reference in motion?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e
 competences: pc-mouvements-action-1, pc-mouvements-action-2
 ---
 

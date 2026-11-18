@@ -20,6 +20,7 @@ questions:
   - Comment fonctionne la propagande du fascisme ?
 prerequis:
 niveaux: cycle-4, terminale
+classes: 3e
 competences: his-totalitarismes-action-1, his-totalitarismes-action-2
 ---
 

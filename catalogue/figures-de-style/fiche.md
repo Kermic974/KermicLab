@@ -21,6 +21,7 @@ questions:
   - Qu'est-ce qu'une anaphore dans un texte ?
 prerequis:
 niveaux: cycle-4
+classes: 5e, 4e, 3e
 competences: francais-figures-de-style-action-1, francais-figures-de-style-action-2
 ---
 

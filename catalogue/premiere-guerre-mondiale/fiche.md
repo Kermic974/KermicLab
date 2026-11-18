@@ -19,6 +19,7 @@ questions:
   - Que commémore-t-on de la guerre de 14-18 ?
 prerequis:
 niveaux: cycle-4, premiere
+classes: 3e
 competences: his-premiere-guerre-mondiale-action-1, his-premiere-guerre-mondiale-action-2
 ---
 

@@ -22,6 +22,7 @@ questions:
   - Que réclame Olympe de Gouges pour les femmes ?
 prerequis:
 niveaux: cycle-4, seconde
+classes: 4e
 competences: his-revolution-francaise-action-1, his-revolution-francaise-action-2
 ---
 

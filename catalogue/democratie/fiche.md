@@ -17,6 +17,7 @@ questions:
   - what is democracy?
 prerequis:
 niveaux: cycle-4
+classes: 3e
 competences: emc-democratie-action-1, emc-democratie-action-2
 ---
 
