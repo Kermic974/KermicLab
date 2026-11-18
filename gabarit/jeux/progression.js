@@ -91,7 +91,7 @@ const ProgressionJeux = (() => {
       { id: "memoire", icone: "🧠", nom: "Mémoire d'éléphant", description: "Fais 10 révisions.", avance: (e) => [e.revisions, 10] },
       { id: "bibliotheque", icone: "📚", nom: "Bibliothèque", description: "Maîtrise 10 stratégies (révisées plusieurs fois avec succès).",
         avance: (e) => [Object.values(e.cartes).filter((c) => c.boite >= 4).length, 10] },
-      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis de l'Académie.", avance: (e) => [e.defis.length, 3] }
+      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis du jour.", avance: (e) => [e.defis.length, 3] }
     ];
     function versBadge({ id, icone, nom, description, condition: c }) {
       let avance;
@@ -276,7 +276,7 @@ const ProgressionJeux = (() => {
     function reglesXP() {
       const regles = [
         ["Exercice réussi du premier coup", XP.parfait], ["Exercice réussi après une erreur", XP.reussi], ["Exercice réussi avec un indice", XP.avecIndice],
-        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi de l'Académie réussi", XP.defi]
+        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi du jour réussi", XP.defi]
       ];
       for (const [, n] of Object.entries(NIVEAUX_PARTIE)) {
         for (const [r, xp] of Object.entries(n.xp)) regles.push([`Partie ${n.nom} : ${{ victoire: "victoire", nulle: "nulle", defaite: "défaite" }[r]}`, xp]);

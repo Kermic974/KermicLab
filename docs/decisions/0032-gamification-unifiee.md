@@ -62,10 +62,13 @@ fonctionnent donc aussi dans ces matières. Ce sont des métadonnées : la versi
 | **Défi de l'Académie** | Exercice quotidien d'une Académie de jeu (anciennement « défi du jour »), qui rapporte des points de jeu. |
 
 Les deux défis quotidiens ne se confondent plus : un seul s'appelle « défi » côté tableau de bord, l'autre porte le nom
-de l'Académie. Le module partagé `gabarit/jeux/academie.js` et les textes propres aux jeux (Belote, Démineur, Échecs,
-Poker) sont renommés ; les six jeux concernés passent en version corrective (Belote 1.0.1, Démineur 1.1.1, Échecs 1.1.1,
-Mots fléchés 1.0.1, Pendu 1.1.1, Poker 1.1.1). Les identifiants internes (`xp`, `XP.defi`) ne changent pas : les
-progressions enregistrées restent lisibles.
+de l'Académie.
+
+**Mise en œuvre en deux temps.** Le tableau de bord affiche déjà « Points de jeu » et « Niveau de jeu » (cette PR). Le
+renommage dans les pages des jeux (module partagé `gabarit/jeux/academie.js`, textes propres à la Belote, au Démineur,
+aux Échecs et au Poker) fait l'objet d'une PR séparée : il change le contenu vu par l'élève dans six jeux, qui passent
+en version corrective et demandent leur propre relecture humaine. Les identifiants internes (`xp`, `XP.defi`) ne
+changent pas : les progressions enregistrées restent lisibles.
 
 ### 5. Synchronisation de la maîtrise
 
@@ -99,7 +102,8 @@ Pour revenir à l'option 1, il suffit de retirer la clé de `CLES_FACULTATIVES`.
   successful review) more than exploration (first opening lowered from 25 to 10 XP); games may declare
   `notions-liees`, shown on game cards and suggested when a concept is first mastered; 51 non-maths public concepts now
   declare prerequisites; a single glossary separates XP, game points and mastery
-  (now game points in the game pages too; the Academy's daily challenge is renamed "Academy challenge"); the
+  (game points on the dashboard now; renaming inside the game pages, including the "Academy challenge", ships in a
+  separate PR); the
   mastery aggregate now joins the encrypted local-account snapshot (optional key, trimmed when too large, never erased
   by an older snapshot).
 - Références : ADR 0014, 0015, 0021, 0024, 0025, 0029, 0030 ; `docs/gamification.md`, `docs/progression.md`.

@@ -224,7 +224,7 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
     await cadre.locator("#onglet-academie").click();
     await cadre.locator("#onglet-academie[aria-selected=true]").waitFor();
     await academie.waitFor({ state: "visible" });
-    await academie.locator('[data-sortie="niveau"]').filter({ hasText: "70 points de jeu" }).waitFor();
+    await academie.locator('[data-sortie="niveau"]').filter({ hasText: "70 XP" }).waitFor();
     await academie.locator('[data-action="detail"]').click();
     await academie.locator('[data-action="effacer"]').click();
     await academie.locator('[data-action="effacer"]').click();
@@ -260,7 +260,7 @@ test("trophées poker : pratique et leçons remontées, restaurées puis effacé
     const etat = await cadre.locator("body").evaluate(() => window.kermiclab.academie.etat());
     const texteStats = await stats.textContent();
     assert.ok(etat.xp > 0);
-    assert.match(texteStats, new RegExp(`${etat.xp} points de jeu`), "le bandeau Jouer reflète les XP restaurés avant interaction");
+    assert.match(texteStats, new RegExp(`${etat.xp} XP`), "le bandeau Jouer reflète les XP restaurés avant interaction");
     assert.match(texteStats, new RegExp(`${etat.compteurs.manches} manches terminées`), "le bandeau reflète les manches restaurées");
     assert.match(texteStats, new RegExp(`${etat.parties.entrainement.victoires} victoires`), "le bandeau reflète les victoires restaurées");
     academie = cadre.locator("#panneau-academie");

@@ -99,7 +99,7 @@ const VueAcademie = (() => {
     z.dForces = el("ul", { classe: "forces" }); z.dParties = el("ul", { classe: "parties", "data-sortie": "parties" });
     z.dReglages = el("div");
     vues.detail.append(retourDetail, z.detailTitre,
-      section("⬆️ Niveau et points de jeu", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner des points de jeu ?" }), z.dRegles)),
+      section("⬆️ Niveau et XP", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner de l'XP ?" }), z.dRegles)),
       section("🎖️ Grades", el("p", { classe: "doux", texte: "Chaque grade obtenu ouvre le suivant et un nouvel emblème." }), z.dGrades),
       section("🏅 Badges", z.dBadges),
       section("🔥 Régularité", z.dRegularite, z.dActivite),
@@ -132,7 +132,7 @@ const VueAcademie = (() => {
     function appliquer({ etat: nouvel, gains }) {
       etat = nouvel; sauver();
       const morceaux = [];
-      if (gains.xp) morceaux.push(`+${gains.xp} points de jeu`);
+      if (gains.xp) morceaux.push(`+${gains.xp} XP`);
       if (gains.record) morceaux.push("⏱️ Nouveau record");
       if (gains.objectif) morceaux.push("🎯 Objectif du jour atteint");
       if (gains.niveauApres > gains.niveauAvant) morceaux.push(`⬆️ Niveau ${gains.niveauApres} !`);
@@ -155,7 +155,7 @@ const VueAcademie = (() => {
       const j = jour(), niv = P.niveau(etat.xp), grades = P.gradesObtenus(etat), tous = P.badges(etat);
       z.embleme.replaceChildren(embleme(etat.embleme));
       z.titre.textContent = P.titre(etat);
-      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} points de jeu · encore ${niv.xpPourNiveau - niv.xpDansNiveau} pour le niveau ${niv.niveau + 1}`;
+      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} XP · encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}`;
       z.barre.replaceChildren(barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"));
       const aujourdhui = etat.jours[j] ?? 0, serie = P.serieActuelle(etat, j);
       z.chips.replaceChildren(...[
@@ -171,7 +171,7 @@ const VueAcademie = (() => {
       const dues = P.revisionsDues(etat, j);
       z.reviser.textContent = `🧠 Révisions (${dues.length})`; z.reviser.disabled = dues.length === 0;
       const defi = P.defiDuJour(etat, j);
-      z.defi.textContent = defi?.fait ? "⚡ Défi de l'Académie relevé ✓" : `⚡ Défi de l'Académie (+${ProgressionJeux.XP.defi} points de jeu)`;
+      z.defi.textContent = defi?.fait ? "⚡ Défi du jour relevé ✓" : `⚡ Défi du jour (+${ProgressionJeux.XP.defi} XP)`;
       z.defi.disabled = !defi || defi.fait;
       // Prochain badge : celui qui est le plus près d'être gagné.
       const prochain = tous.filter((b) => !b.obtenu).sort((a, b) => b.actuel / b.cible - a.actuel / a.cible)[0];
@@ -202,10 +202,10 @@ const VueAcademie = (() => {
     function afficherDetail() {
       const j = jour(), niv = P.niveau(etat.xp), obtenus = P.gradesObtenus(etat);
       z.dNiveau.replaceChildren(
-        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} points de jeu au total · ${P.titre(etat)}` })),
+        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} XP au total · ${P.titre(etat)}` })),
         barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"),
-        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} points de jeu : encore ${niv.xpPourNiveau - niv.xpDansNiveau} pour le niveau ${niv.niveau + 1}.` }));
-      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp}` })))));
+        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} XP : encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}.` }));
+      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp} XP` })))));
       z.dGrades.replaceChildren(...parcours.grades.map((g, gi) => {
         const faites = g.lecons.filter((l) => etat.lecons[l.id]).length;
         const statut = gi < obtenus ? "✓ obtenu" : gi === obtenus ? `en cours : ${faites} / ${g.lecons.length} leçons` : "🔒 à venir";
@@ -300,10 +300,10 @@ const VueAcademie = (() => {
     function demarrerSession(mode, file, lecon = null) {
       session = { mode, file, lecon, rang: 0, erreurs: 0, indices: 0 };
       const grade = lecon && P.lecons.get(lecon.id).grade;
-      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi de l'Académie" : "Révisions espacées";
-      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi de l'Académie" : "🧠 Tes révisions";
+      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi du jour" : "Révisions espacées";
+      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi du jour" : "🧠 Tes révisions";
       z.sTexte.textContent = mode === "lecon" ? lecon.texte
-        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} points de jeu de plus !`
+        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} XP de plus !`
         : "Retrouve la bonne réponse sans aide. Chaque réussite repousse la prochaine révision : c'est comme ça qu'on retient pour toujours.";
       z.zoneRetenir.hidden = mode !== "lecon";
       z.retenir.textContent = lecon?.retenir ?? "";
