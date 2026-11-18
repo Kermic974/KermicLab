@@ -131,6 +131,16 @@ Démonstration sans compte, pour relire les écrans : `https://kermiclab.online/
   avec « Enrichi par l'IA (custom/sonnet-5-5) ». En cas de « construit à partir du catalogue », consulter les logs du
   Worker (`llm cahier fournisseur ou sortie invalide`) et le journal de l'alias dans AI Gateway.
 
+## Assistant IA de l'écran Utilisateurs (ADR 0035)
+
+- **À faire** : après fusion et déploiement, ouvrir `/admin/` → Utilisateurs → « Assistant IA » sur un compte de test,
+  écrire « exporte ses données » puis « passe-le en surveillé 7 jours » et vérifier que les actions proposées
+  s'appliquent d'un clic. Aucun nouvel alias : l'assistant réutilise `custom/haiku` (déjà créé, crédits chargés).
+- **Où** : https://kermiclab.online/admin/ et Cloudflare → AI → AI Gateway → `kermiclab-gateway` → Logs.
+- **Pourquoi** : valider le comportement réel de Haiku sur des consignes d'administration avant usage courant.
+- **Comment confirmer** : journal de la gateway en statut 200 sur `custom/haiku`, ligne `assistant.proposition` dans
+  l'écran Journal, module `assistant-utilisateurs` dans Télémétrie.
+
 ## Défi express généré par l'IA (ADR 0018)
 
 - **Fait** (2026-11-06) : alias de modèle `custom/haiku` créé sur `kermiclab-gateway` (confirmé par le propriétaire).
