@@ -1,6 +1,6 @@
 # Livraison S6 — PR liées
 
-Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384). Contrat : [S6 v1.0.0 proposé](../referentiel/normes/S6-v1.0.0.md). Point de départ : [audit du réel](audit-s6.md).
+Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384). Contrat : [S6 v1.0.0 adopté par #385](../referentiel/normes/S6-v1.0.0.md). Point de départ : [audit du réel](audit-s6.md).
 
 Toutes les PR ciblent `main`. Chaque description contient le suivi, la dépendance précédente, le périmètre du diff, les preuves et le retour arrière. La PR 01 doit être adoptée avant l’implémentation technique ; les suivantes sont préparées après fusion de leur dépendance. Avant chaque revue : synchroniser avec `origin/main`, vérifier base et diff, puis `npm run ci`. Les fusions relèvent du propriétaire (AGENTS.md).
 

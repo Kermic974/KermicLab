@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s6/manipulation.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "manipulation"
+        },
+        "actions": {
+          "$ref": "primitives.schema.json#/$defs/source"
+        },
+        "constraints": {
+          "$ref": "primitives.schema.json#/$defs/source"
+        }
+      },
+      "required": [
+        "type",
+        "sources",
+        "actions",
+        "constraints"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s6/quiz.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "quiz"
+        }
+      },
+      "required": [
+        "type",
+        "components"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}

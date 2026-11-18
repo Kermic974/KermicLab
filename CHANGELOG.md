@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **S6 — schémas et fixtures** : onze contrats d’expériences fermés, primitives et socle commun JSON Schema 2020-12, chargeur Ajv réutilisant les cibles S4 et tests des références de sources, variantes et frontières S7–S9. Adoption #385 consignée ; les contrôles métier et la migration suivent dans les PR liées à #384. / Closed experience schemas and fixtures; semantic validation and corpus migration follow separately.
+
 - **S6 — proposition d’adoption** : contrats des expériences pédagogiques, arbitrages D6-1 à D6-7, audit du corpus public et chaîne de seize PR vers main (ADR 0033, #384). Aucun nouveau comportement apprenant à cette étape. / Proposed experience contracts, public-source audit and linked delivery plan; no learner-facing change.
 
 - **Navigation : « Mon tableau de bord » et ordre configurable** (ADR 0031) : nouvelle entrée « Mon tableau de bord », sous l'Accueil par défaut, qui regroupe Profil, Mon compte, Espace famille, Contributions et l'espace Professeur (Suivi de classe, Mes classes, Mes élèves) en vues choisies par une barre de filtres commune, selon le rôle ; l'ordre des entrées de la barre latérale et de la barre du bas se règle par la clé `navigation` de `web/config.json`. / "My dashboard" navigation entry grouping personal views behind filters; navigation order configurable in `web/config.json`.
