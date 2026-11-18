@@ -114,10 +114,26 @@ test("accueil : une seule prochaine action, deux entrées, aperçu après usage 
   assert.equal(await texte(page, '[data-compteur="compteurMatieres"] dd'), "1");
   assert.equal(await page.locator('[data-compteur="compteurJeux"]').count(), 0, "un compteur nul n'est pas affiché");
   assert.equal(await texte(page, "#progression-matieres"), "Maths1 / 4 explorées");
-  assert.match(await texte(page, "#chiffres-semaine"), /Questions posées0Notions découvertes1XP gagnés\+25 XP/);
+  assert.match(await texte(page, "#chiffres-semaine"), /Questions posées0Notions découvertes1XP gagnés\+10 XP/);
   assert.equal(await page.locator("#graphique-semaine .baton.aujourdhui").count(), 1);
   assert.equal(await page.locator("#semaine-vide").isVisible(), false);
   assert.equal(await page.evaluate(() => /NaN|undefined|null/.test(document.querySelector("#ecran-progression").textContent)), false);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+test("Jeux : les notions liées (ADR 0032) s'affichent sur la carte et s'ouvrent d'un geste", async () => {
+  const { page, contexte, erreurs } = await demarrer({}, null, { jeux: [
+    { id: "echecs", titre: "Les échecs", version: "1.0.0", niveau: "autres", matiere: "jeux", notionsLiees: ["trigo-cercle", "inconnue"] },
+    { id: "sudoku", titre: "Le Sudoku", version: "1.0.0", niveau: "autres", matiere: "jeux" }
+  ] });
+  await choisirPseudo(page, "Lina");
+  await catalogueCharge(page);
+  await page.locator(".entree[data-nav=jeux]").click();
+  await page.locator("#ecran-jeux").waitFor({ state: "visible" });
+  assert.deepEqual(await page.locator("#grille-jeux .jeu-notions").allTextContents(), ["Fait travailler : Le cercle trigonométrique"],
+    "seulement les notions présentes au catalogue, et seulement sur le jeu qui les déclare");
+  await page.click("[data-notion-liee=trigo-cercle]");
+  await page.locator("#bulle-lab[open][data-notion=trigo-cercle]").waitFor();
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

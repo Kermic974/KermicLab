@@ -3,6 +3,8 @@ id: demineur
 titre: Démineur
 resume: Révèle toutes les cases sans mine en lisant les chiffres, de la petite grille à la grille experte.
 sujet: jeux/demineur
+notions-liees:
+  - probabilites
 version: 1.1.1
 date: 2026-11-18
 langues: fr

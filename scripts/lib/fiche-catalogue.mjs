@@ -38,6 +38,15 @@ export function lireReferentiel(fiche) {
     if (champ === "prerequis" && valeurs.includes(fiche.id)) throw new Error("prerequis : une notion ne peut pas être son propre prérequis");
     ref[champ] = valeurs;
   }
+  // Jeux : notions que le jeu fait travailler (facultatif) ; vérifié par verifierGraphePrerequis (notions connues).
+  if (fiche["notions-liees"] !== undefined) {
+    const valeurs = liste(fiche["notions-liees"]);
+    if (!valeurs.length) throw new Error("champ « notions-liees » vide");
+    for (const v of valeurs) if (!IDENTIFIANT.test(v)) throw new Error(`notions-liees : « ${v} » n'est pas un identifiant (minuscules, chiffres, tirets)`);
+    if (new Set(valeurs).size !== valeurs.length) throw new Error("notions-liees : doublon");
+    if (valeurs.length > 6) throw new Error("notions-liees : 6 notions au plus");
+    ref.notionsLiees = valeurs;
+  }
   if (fiche.niveaux !== undefined) {
     const niveaux = liste(fiche.niveaux);
     if (!niveaux.length) throw new Error("champ « niveaux » vide");

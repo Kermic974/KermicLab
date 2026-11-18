@@ -137,7 +137,9 @@ export function listeCatalogue(index, enAvant = new Set()) {
       // Mise en avant décidée dans le back-office (ADR 0026).
       ...(enAvant.has(m.id) ? { enAvant: true } : {}),
       // Référentiel (issue #186) : niveaux et prérequis, seulement quand la fiche les renseigne ; sert la recommandation.
-      ...(m.niveaux ? { niveaux: m.niveaux } : {}), ...(m.prerequis ? { prerequis: m.prerequis } : {})
+      ...(m.niveaux ? { niveaux: m.niveaux } : {}), ...(m.prerequis ? { prerequis: m.prerequis } : {}),
+      // Jeux : notions qu'ils font travailler (lien Jeux ↔ Éducation).
+      ...(m.notionsLiees ? { notionsLiees: m.notionsLiees } : {})
     }))
     .sort((a, b) => rang(ORDRE_MATIERES, a.matiere) - rang(ORDRE_MATIERES, b.matiere) || a.matiere.localeCompare(b.matiere)
       || rang(ORDRE_NIVEAUX, a.niveau) - rang(ORDRE_NIVEAUX, b.niveau)
