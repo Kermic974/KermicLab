@@ -811,6 +811,17 @@
   </div>
   <p id="ef-etat" class="doux" role="status" aria-live="polite"></p>
   <div id="ef-contenu" hidden>
+    <fieldset class="ef-bloc" id="ef-vue-enfants">
+      <legend data-i18n="efViewAs"></legend>
+      <p class="doux petit" data-i18n="efViewAsAide"></p>
+      <div id="ef-selection-enfants" class="actions"></div>
+      <p id="ef-selection-vide" class="doux" data-i18n="efSelectionVide" hidden></p>
+    </fieldset>
+    <section class="ef-bloc" aria-labelledby="ef-professeurs-titre">
+      <h3 id="ef-professeurs-titre" data-i18n="efDonneProfesseur"></h3>
+      <p id="ef-professeurs-vide" class="doux" data-i18n="efProfesseursVide"></p>
+      <div id="ef-professeurs" class="ef-enfants"></div>
+    </section>
     <section class="ef-bloc" aria-labelledby="ef-synthese-titre">
       <h3 id="ef-synthese-titre" data-i18n="efSynthese"></h3>
       <dl id="ef-chiffres" class="chiffres"></dl>
