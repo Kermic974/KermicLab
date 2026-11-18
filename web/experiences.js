@@ -17,6 +17,7 @@ export function creerRegistre(catalogue) {
     .filter((n) => n && typeof n.id === "string" && n.id)
     .map((n) => ({
       type: typeDeCatalogue(n),
+      ...(n.classification ? { classification: structuredClone(n.classification) } : {}),
       id: n.id,
       titre: typeof n.titre === "string" && n.titre ? n.titre : n.id,
       niveau: typeof n.niveau === "string" && n.niveau ? n.niveau : "autres",

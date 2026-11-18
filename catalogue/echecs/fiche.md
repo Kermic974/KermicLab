@@ -47,3 +47,5 @@ Moteur validé par perft sur cinq positions de référence (`tests/unit/echecs.t
 
 Relecture humaine : jouer une partie contre l'ordinateur et une à deux, sur ordinateur et sur téléphone ; résoudre les énigmes ;
 relire chaque leçon de l'Académie (exactitude des explications : public mineur).
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

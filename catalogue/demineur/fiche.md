@@ -42,3 +42,5 @@ Moteur pur (`<script id="moteur-demineur">`, sans DOM, hasard injectable) testé
 `tests/unit/demineur.test.mjs` ; interface testée dans `tests/e2e/demineur.test.mjs`.
 
 Relecture humaine : jouer une partie par niveau sur ordinateur et sur téléphone, et résoudre les énigmes.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

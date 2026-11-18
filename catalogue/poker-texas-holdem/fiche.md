@@ -55,3 +55,5 @@ daily goals and dashboard trophies. Practice chips have no monetary value.
 
 Le moteur est pur et testé dans `tests/unit/poker-texas-holdem.test.mjs` ; l’interface est vérifiée dans
 `tests/e2e/poker-texas-holdem.test.mjs`.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

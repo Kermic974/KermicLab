@@ -1,3 +1,4 @@
+import { classificationJeu } from "../../web/contrat-jeux.js";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
@@ -233,6 +234,7 @@ export async function chargerCatalogue(dossiers) {
         onglets: liste(fiche.onglets), motsCles: liste(fiche["mots-cles"]), questions: liste(fiche.questions),
         niveau: fiche.niveau ?? "autres",
         ...referentiel,
+        ...(estJeu(fiche) && classificationJeu(fiche.id) ? { classification: classificationJeu(fiche.id) } : {}),
         ...(fiche.resume ? { resume: fiche.resume } : {})
       });
     }

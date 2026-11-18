@@ -104,3 +104,7 @@ ci-dessous ; la PR de relecture, validée par le CODEOWNER, trace qui a relu.
 | `pendu` | 1.1.0 | à relire | — |
 | `poker-texas-holdem` | 1.1.0 | à relire | — |
 | `sudoku` | 1.0.0 | à relire | — |
+
+## Suivi par lots
+
+Voir l’[inventaire et les KPI des neuf jeux](jeux-suivi.fr.md) ([English](jeux-suivi.md)) et l’[ADR 0033 proposé](decisions/0033-suivi-jeux.md). Les cibles canoniques du suivi ne se déduisent pas des liens historiques de navigation.

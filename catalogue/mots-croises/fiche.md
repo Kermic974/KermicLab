@@ -29,3 +29,5 @@ Un jeu de mots croisés autour des mathématiques, avec cinq grilles à débloqu
 - **Jouer** : choisis une définition, puis remplis les cases au clavier ou avec les lettres tactiles.
 - **Progresser** : utilise les indices si besoin, vérifie tes réponses et ouvre le grade suivant.
 - **Hors ligne** : la progression reste sur cet appareil, sans compte ni donnée personnelle.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

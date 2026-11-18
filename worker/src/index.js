@@ -139,7 +139,8 @@ export function listeCatalogue(index, enAvant = new Set()) {
       // Référentiel (issue #186) : niveaux et prérequis, seulement quand la fiche les renseigne ; sert la recommandation.
       ...(m.niveaux ? { niveaux: m.niveaux } : {}), ...(m.prerequis ? { prerequis: m.prerequis } : {}),
       // Jeux : notions qu'ils font travailler (lien Jeux ↔ Éducation).
-      ...(m.notionsLiees ? { notionsLiees: m.notionsLiees } : {})
+      ...(m.notionsLiees ? { notionsLiees: m.notionsLiees } : {}),
+      ...(m.classification ? { classification: m.classification } : {})
     }))
     .sort((a, b) => rang(ORDRE_MATIERES, a.matiere) - rang(ORDRE_MATIERES, b.matiere) || a.matiere.localeCompare(b.matiere)
       || rang(ORDRE_NIVEAUX, a.niveau) - rang(ORDRE_NIVEAUX, b.niveau)

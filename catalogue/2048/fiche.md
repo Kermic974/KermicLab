@@ -34,3 +34,5 @@ Fais glisser les tuiles dans une grille, fusionne les mêmes nombres et atteins 
 
 Le moteur est pur et testé dans `tests/unit/2048.test.mjs` ; l’interface est vérifiée dans
 `tests/e2e/2048.test.mjs`.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

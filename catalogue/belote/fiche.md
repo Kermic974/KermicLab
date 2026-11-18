@@ -46,3 +46,5 @@ Moteur pur (`<script id="moteur-belote">`) testé dans `tests/unit/belote.test.m
 `tests/e2e/belote.test.mjs`.
 
 Relecture humaine : jouer une partie complète sur ordinateur et sur téléphone ; relire les 15 leçons.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

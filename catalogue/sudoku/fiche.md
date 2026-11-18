@@ -33,3 +33,5 @@ Une page autonome pour apprendre et jouer au Sudoku, du premier chiffre jusqu'au
 
 Le moteur est pur et testé dans `tests/unit/sudoku.test.mjs` ; l'interface est testée dans
 `tests/e2e/sudoku.test.mjs`.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

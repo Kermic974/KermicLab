@@ -33,3 +33,5 @@ Une grille interactive pour apprendre à trouver les mots à partir d’indices 
 
 Le moteur est pur et testé dans `tests/unit/mots-fleches.test.mjs` ; l’interface est vérifiée dans
 `tests/e2e/mots-fleches.test.mjs`.
+
+Suivi applicatif proposé : [inventaire, contrat et limites](../../docs/jeux-suivi.fr.md) (ADR 0033).

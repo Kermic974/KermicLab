@@ -683,8 +683,10 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   }
   for (const n of notions) {
     const facultatifs = Object.keys(n).filter((k) => !["id", "matiere", "niveau", "titre", "version"].includes(k));
-    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees"].includes(k)), `${n.id} : ${facultatifs}`);
+    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees", "classification"].includes(k)), `${n.id} : ${facultatifs}`);
   }
+  assert.equal(notions.find((n) => n.id === "2048").classification.famille, "nombres");
+  assert.ok(notions.filter((n) => n.classification).every((n) => n.matiere === "jeux" && n.classification.statut === "review"));
   // Jeux reliés aux notions (ADR 0032) : seulement sur un jeu qui les déclare.
   assert.deepEqual(notions.find((n) => n.id === "2048")?.notionsLiees, ["puissances"]);
   assert.ok(notions.filter((n) => n.notionsLiees).every((n) => n.matiere === "jeux"));
