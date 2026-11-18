@@ -129,3 +129,29 @@ test("compte local au rôle Professeur : menu Contributions, proposition envoyé
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("compte synchronisé par clé, sans « Lier mon compte » : ses rôles ouvrent les menus Contributions et Professeur", async () => {
+  // Régression : la synchronisation ouvre une session en ligne (le compte passe pour lié), mais seuls les comptes
+  // cochés « Lier mon compte » chargeaient leurs rôles. Un administrateur synchronisé ne voyait aucun menu réservé.
+  const { page, contexte, erreurs } = await appareil("Admin");
+  await page.click(".barre-laterale .profil-carte[data-action=profil]");
+  await page.click("#entree-compte");
+  await page.locator("#compte-creation").waitFor();
+  await page.fill("#compte-identifiant", "a.synchro");
+  await page.fill("#compte-mdp", "Grand-Hibou-77");
+  await page.fill("#compte-mdp2", "Grand-Hibou-77");
+  await page.click("#formulaire-compte-creer button[type=submit]");
+  await page.locator("#compte-ouvert").waitFor();
+  await page.fill("#synchro-mdp", "Grand-Hibou-77");
+  await page.check("#synchro-compris");
+  await page.click("#formulaire-synchro-activer button[type=submit]");
+  await page.locator("#synchro-actions").waitFor();
+  const id = env.DB.sqlite.prepare("SELECT id FROM comptes_locaux ORDER BY rowid DESC").get().id;
+  env.DB.sqlite.prepare("INSERT INTO attributions_roles (type_compte, compte_id, role_id) VALUES ('compte-local', ?, 'admin')").run(id);
+  await page.reload();
+  await page.locator("#nav-contributions").waitFor();
+  await page.locator("#nav-suivi").waitFor();
+  assert.equal(await page.locator("#nav-famille").isVisible(), true, "lien Ma famille du compte en ligne");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});

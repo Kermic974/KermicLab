@@ -884,6 +884,7 @@ async function activerSynchro(ev) {
     }
     $("#formulaire-synchro-activer").reset();
     rafraichirCompte();
+    void chargerFamille(); // session en ligne ouverte : rôles (Famille, Contributions, Professeur) à charger
     await afficherKit();
     messageSynchro("synchroActiveeCle");
   } catch {
@@ -943,6 +944,7 @@ async function retrouverSynchro(ev) {
     $("#formulaire-synchro-retrouver").reset();
     $("#synchro-retrouver").open = false;
     rafraichirCompte();
+    void chargerFamille();
     messageSynchro(trouve ? (cle ? "synchroDonneesTrouveesCle" : "synchroDonneesTrouvees") : "synchroAucuneDonneeCle");
   } catch {
     erreur("synchroErreur");
@@ -995,6 +997,7 @@ async function deverrouillerSynchro(ev) {
     sauverCompte();
     $("#formulaire-synchro-deverrouiller").reset();
     rafraichirCompte();
+    void chargerFamille();
     messageSynchro("synchroDeverrouillee");
   } catch {
     erreurChamp("synchro-dv-mdp", t("synchroErreur"), "synchro-dv-erreur");
@@ -1364,10 +1367,10 @@ function brancherCompte() {
 const familleEtat = { moi: null, tableau: null, mesCahiers: [], occupe: false, minuteurBilan: null, dernierBilan: 0, ouverts: new Set(), enfantsMasques: new Set() };
 const DELAI_BILAN_MS = 60_000;
 
-const jetonFamille = () => {
-  const s = compteEtat.session?.serveur;
-  return s && s.expire > Date.now() / 1000 ? s.jeton : null;
-};
+// Toute session ouverte sur le compte en ligne fait foi : « Lier mon compte » ou synchronisation (même compte, même
+// table de sessions côté Worker). Sans le repli sur la synchronisation, un compte synchronisé passait pour lié
+// (`estLie`) sans jamais charger ses rôles : menus Famille, Contributions et Professeur restaient masqués.
+const jetonFamille = () => jetonCompte();
 /** Membre d'une famille : ses consommations d'IA sont comptées (en-tête Authorization sur les routes d'IA). */
 const enteteFamille = () => {
   const jeton = jetonFamille();
@@ -1387,6 +1390,7 @@ async function apiFamilleLocale(route, { methode = "GET", corps } = {}) {
   try { donnees = await r.json(); } catch { /* 204 */ }
   if (r.status === 401 && compteEtat.session) {
     compteEtat.session.serveur = null;
+    if (donnees?.erreur === "non-connecte") compteEtat.session.synchro = null;
     sauverCompte();
   }
   return { statut: r.status, donnees };
