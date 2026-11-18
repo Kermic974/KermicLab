@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-0EH0DpCTZyHa6x0Ele7vpIkK9Vwr2AZ3ckN/br9x7BU=' 'sha256-jtRmbMEX5+6QuUjVIbcKG9Z+la7SyMFz/v+xEPu4X5U=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-hOlbfzyOfViZPcPbEcFeXCpe3d8G7zTo831vlHnZVoE='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-0EH0DpCTZyHa6x0Ele7vpIkK9Vwr2AZ3ckN/br9x7BU=' 'sha256-M6D3UFKVfphNWyGjVYrzXoSnzag6hPYyDi4M2c+ohH8=' 'sha256-bhQRtKFzC0LK0BqAa12Mtnlz2q69f8Ofj3LlGK6tn9U=' 'sha256-xpoOwP4VP2geeRTi6rmNAnLAw1WmsPIp9BhDNhE4tlo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Poker Texas Hold'em – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "poker-texas-holdem",
   "titre": "Poker Texas Hold'em",
   "sujet": "jeux/poker-texas-holdem",
-  "version": "1.1.0",
-  "date": "2026-11-05",
+  "version": "1.1.1",
+  "date": "2026-11-18",
   "langue": "fr",
   "onglets": ["explication", "application", "academie", "mise-en-situation", "self-test"]
 }
@@ -247,7 +247,7 @@ button.danger { border-color: var(--alerte); color: var(--alerte); }
         {
           "id": "incertitude", "titre": "Jouer sans certitude", "theme": "strategie",
           "texte": "Tu ne connais pas les cartes adverses. Une bonne décision peut perdre une manche : le hasard reste présent. Les conseils de cette table décrivent ta main visible, pas une prédiction.",
-          "retenir": "Entraîne-toi à expliquer tes décisions. Les jetons et les XP ne valent pas d'argent ; fais des pauses.",
+          "retenir": "Entraîne-toi à expliquer tes décisions. Les jetons et les points de jeu ne valent pas d'argent ; fais des pauses.",
           "exercices": [
             { "type": "qcm", "question": "Un conseil indique que tu as une paire. Est-ce une victoire garantie ?", "choix": ["Oui", "Non, la main adverse est inconnue"], "bonne": 1, "explication": "Une paire peut être battue. Le conseil n'a pas accès aux cartes privées adverses." },
             { "type": "qcm", "question": "Après plusieurs manches perdues, quelle attitude est raisonnable ?", "choix": ["Faire une pause et revoir les règles", "Relancer chaque main pour tout récupérer"], "bonne": 0, "explication": "Aucune série de pertes ne garantit un gain futur. Prends le temps de réfléchir ou de faire une pause." }
@@ -371,7 +371,7 @@ const Trophees = (() => {
       <p>À ton tour, tu peux <strong>te coucher</strong> (abandonner la manche), <strong>suivre</strong> (payer la mise à égaler), <strong>parler</strong> (ne rien miser si personne n'a misé), ou <strong>relancer</strong>. Sur cette table d'entraînement simplifiée, tu parles toujours en premier. Tu peux miser ou relancer de 20 jetons ; l'ordinateur suit ou se couche, sans surrelancer. Ce n'est pas une simulation complète de tournoi.</p>
       <p>Si un joueur n'a plus de jetons, sa mise non suivie est rendue et les cartes restantes sont révélées. Si une pile est trop petite pour les blindes de la manche suivante, le bouton propose explicitement une nouvelle session à 1 000 jetons chacun.</p>
       <h2>Apprendre et progresser</h2>
-      <p>L'Académie propose 3 grades, 6 leçons, des étoiles, des badges, des révisions et un défi du jour. Une manche terminée rapporte 40 XP pour une victoire, 10 pour une égalité et 5 pour une défaite. Les jetons ne sont pas de l'XP et n'ont aucune valeur monétaire.</p>
+      <p>L'Académie propose 3 grades, 6 leçons, des étoiles, des badges, des révisions et un défi de l'Académie. Une manche terminée rapporte 40 points de jeu pour une victoire, 10 pour une égalité et 5 pour une défaite. Les jetons ne sont pas de l'XP et n'ont aucune valeur monétaire.</p>
     </article>
     <article class="carte">
       <h2>Les combinaisons, de la plus forte à la plus faible</h2>
@@ -403,7 +403,7 @@ const Trophees = (() => {
       </div>
       <p class="reponse" data-sortie="reponse-defi" aria-live="polite"></p>
       <button class="secondaire" data-action="autre-defi">Défi suivant</button>
-      <p class="doux">Pour gagner des étoiles et de l'XP avec ces exercices, ouvre l'Académie.</p>
+      <p class="doux">Pour gagner des étoiles et des points de jeu avec ces exercices, ouvre l'Académie.</p>
     </article>
   </section>
 </main>
@@ -731,7 +731,7 @@ const ProgressionJeux = (() => {
       { id: "memoire", icone: "🧠", nom: "Mémoire d'éléphant", description: "Fais 10 révisions.", avance: (e) => [e.revisions, 10] },
       { id: "bibliotheque", icone: "📚", nom: "Bibliothèque", description: "Maîtrise 10 stratégies (révisées plusieurs fois avec succès).",
         avance: (e) => [Object.values(e.cartes).filter((c) => c.boite >= 4).length, 10] },
-      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis du jour.", avance: (e) => [e.defis.length, 3] }
+      { id: "defis", icone: "⚡", nom: "Défis relevés", description: "Réussis 3 défis de l'Académie.", avance: (e) => [e.defis.length, 3] }
     ];
     function versBadge({ id, icone, nom, description, condition: c }) {
       let avance;
@@ -916,7 +916,7 @@ const ProgressionJeux = (() => {
     function reglesXP() {
       const regles = [
         ["Exercice réussi du premier coup", XP.parfait], ["Exercice réussi après une erreur", XP.reussi], ["Exercice réussi avec un indice", XP.avecIndice],
-        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi du jour réussi", XP.defi]
+        ["Leçon terminée (la première fois)", XP.lecon], ["Révision réussie du premier coup", XP.revision], ["Objectif du jour atteint", XP.objectif], ["Défi de l'Académie réussi", XP.defi]
       ];
       for (const [, n] of Object.entries(NIVEAUX_PARTIE)) {
         for (const [r, xp] of Object.entries(n.xp)) regles.push([`Partie ${n.nom} : ${{ victoire: "victoire", nulle: "nulle", defaite: "défaite" }[r]}`, xp]);
@@ -1045,7 +1045,7 @@ const VueAcademie = (() => {
     z.dForces = el("ul", { classe: "forces" }); z.dParties = el("ul", { classe: "parties", "data-sortie": "parties" });
     z.dReglages = el("div");
     vues.detail.append(retourDetail, z.detailTitre,
-      section("⬆️ Niveau et XP", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner de l'XP ?" }), z.dRegles)),
+      section("⬆️ Niveau et points de jeu", z.dNiveau, el("details", {}, el("summary", { texte: "Comment gagner des points de jeu ?" }), z.dRegles)),
       section("🎖️ Grades", el("p", { classe: "doux", texte: "Chaque grade obtenu ouvre le suivant et un nouvel emblème." }), z.dGrades),
       section("🏅 Badges", z.dBadges),
       section("🔥 Régularité", z.dRegularite, z.dActivite),
@@ -1078,7 +1078,7 @@ const VueAcademie = (() => {
     function appliquer({ etat: nouvel, gains }) {
       etat = nouvel; sauver();
       const morceaux = [];
-      if (gains.xp) morceaux.push(`+${gains.xp} XP`);
+      if (gains.xp) morceaux.push(`+${gains.xp} points de jeu`);
       if (gains.record) morceaux.push("⏱️ Nouveau record");
       if (gains.objectif) morceaux.push("🎯 Objectif du jour atteint");
       if (gains.niveauApres > gains.niveauAvant) morceaux.push(`⬆️ Niveau ${gains.niveauApres} !`);
@@ -1101,7 +1101,7 @@ const VueAcademie = (() => {
       const j = jour(), niv = P.niveau(etat.xp), grades = P.gradesObtenus(etat), tous = P.badges(etat);
       z.embleme.replaceChildren(embleme(etat.embleme));
       z.titre.textContent = P.titre(etat);
-      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} XP · encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}`;
+      z.niveau.textContent = `Niveau ${niv.niveau} · ${etat.xp} points de jeu · encore ${niv.xpPourNiveau - niv.xpDansNiveau} pour le niveau ${niv.niveau + 1}`;
       z.barre.replaceChildren(barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"));
       const aujourdhui = etat.jours[j] ?? 0, serie = P.serieActuelle(etat, j);
       z.chips.replaceChildren(...[
@@ -1117,7 +1117,7 @@ const VueAcademie = (() => {
       const dues = P.revisionsDues(etat, j);
       z.reviser.textContent = `🧠 Révisions (${dues.length})`; z.reviser.disabled = dues.length === 0;
       const defi = P.defiDuJour(etat, j);
-      z.defi.textContent = defi?.fait ? "⚡ Défi du jour relevé ✓" : `⚡ Défi du jour (+${ProgressionJeux.XP.defi} XP)`;
+      z.defi.textContent = defi?.fait ? "⚡ Défi de l'Académie relevé ✓" : `⚡ Défi de l'Académie (+${ProgressionJeux.XP.defi} points de jeu)`;
       z.defi.disabled = !defi || defi.fait;
       // Prochain badge : celui qui est le plus près d'être gagné.
       const prochain = tous.filter((b) => !b.obtenu).sort((a, b) => b.actuel / b.cible - a.actuel / a.cible)[0];
@@ -1148,10 +1148,10 @@ const VueAcademie = (() => {
     function afficherDetail() {
       const j = jour(), niv = P.niveau(etat.xp), obtenus = P.gradesObtenus(etat);
       z.dNiveau.replaceChildren(
-        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} XP au total · ${P.titre(etat)}` })),
+        el("p", {}, el("strong", { texte: `Niveau ${niv.niveau}` }), el("span", { texte: ` · ${etat.xp} points de jeu au total · ${P.titre(etat)}` })),
         barre(niv.xpDansNiveau, niv.xpPourNiveau, "Progression vers le niveau suivant"),
-        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} XP : encore ${niv.xpPourNiveau - niv.xpDansNiveau} XP pour le niveau ${niv.niveau + 1}.` }));
-      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp} XP` })))));
+        el("p", { classe: "doux", texte: `${niv.xpDansNiveau} / ${niv.xpPourNiveau} points de jeu : encore ${niv.xpPourNiveau - niv.xpDansNiveau} pour le niveau ${niv.niveau + 1}.` }));
+      z.dRegles.replaceChildren(el("tbody", {}, ...P.reglesXP().map((r) => el("tr", {}, el("td", { texte: r.texte }), el("td", { texte: `+${r.xp}` })))));
       z.dGrades.replaceChildren(...parcours.grades.map((g, gi) => {
         const faites = g.lecons.filter((l) => etat.lecons[l.id]).length;
         const statut = gi < obtenus ? "✓ obtenu" : gi === obtenus ? `en cours : ${faites} / ${g.lecons.length} leçons` : "🔒 à venir";
@@ -1246,10 +1246,10 @@ const VueAcademie = (() => {
     function demarrerSession(mode, file, lecon = null) {
       session = { mode, file, lecon, rang: 0, erreurs: 0, indices: 0 };
       const grade = lecon && P.lecons.get(lecon.id).grade;
-      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi du jour" : "Révisions espacées";
-      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi du jour" : "🧠 Tes révisions";
+      z.fil.textContent = mode === "lecon" ? `Grade ${grade.nom} · ${parcours.themes[lecon.theme]}` : mode === "defi" ? "Défi de l'Académie" : "Révisions espacées";
+      z.sTitre.textContent = mode === "lecon" ? lecon.titre : mode === "defi" ? "⚡ Le défi de l'Académie" : "🧠 Tes révisions";
       z.sTexte.textContent = mode === "lecon" ? lecon.texte
-        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} XP de plus !`
+        : mode === "defi" ? `Un exercice tiré du parcours, le même pour tout le monde aujourd'hui. Réussis-le pour gagner ${ProgressionJeux.XP.defi} points de jeu de plus !`
         : "Retrouve la bonne réponse sans aide. Chaque réussite repousse la prochaine révision : c'est comme ça qu'on retient pour toujours.";
       z.zoneRetenir.hidden = mode !== "lecon";
       z.retenir.textContent = lecon?.retenir ?? "";
@@ -1424,7 +1424,7 @@ const VueAcademie = (() => {
   function afficherStats() {
     const etat = academie.etat(), parties = etat.parties.entrainement;
     sortie("stats-jeu").replaceChildren(...[
-      `${etat.xp} XP · niveau ${PROGRESSION.niveau(etat.xp).niveau}`,
+      `${etat.xp} points de jeu · niveau ${PROGRESSION.niveau(etat.xp).niveau}`,
       `${etat.compteurs.manches} manches terminées`,
       `${parties.victoires} victoires · ${parties.nulles} égalités`
     ].map((texte) => Object.assign(document.createElement("li"), { textContent: texte })));
@@ -1523,7 +1523,7 @@ const VueAcademie = (() => {
         const resultat = { joueur: "victoire", ordinateur: "defaite", egalite: "nulle" }[partie.resultat.gagnant];
         const gains = academie.enregistrerPartie({ resultat, niveau: "entrainement" });
         academie.compter({ manches: 1, abattages: partie.resultat.scoreJoueur ? 1 : 0 });
-        recompense = `+${gains.xp} XP · manche enregistrée dans ton Académie.${gains.objectif ? " Objectif quotidien atteint (+20 XP inclus)." : ""}`;
+        recompense = `+${gains.xp} points de jeu · manche enregistrée dans ton Académie.${gains.objectif ? " Objectif quotidien atteint (+20 points de jeu inclus)." : ""}`;
       }
       afficher();
       if (partie.statut === "terminee") sortie("bilan-titre").focus();

@@ -35,7 +35,7 @@ test("Texas Hold'em : jouer une manche et afficher les deux mains à l'abattage"
   const pratique = await page.evaluate(() => window.kermiclab.academie.etat());
   assert.equal(pratique.compteurs.manches, 1);
   assert.equal(pratique.compteurs.abattages, 1);
-  assert.match(await page.locator('[data-sortie="recompense"]').textContent(), /\+\d+ XP/);
+  assert.match(await page.locator('[data-sortie="recompense"]').textContent(), /\+\d+ points de jeu/);
   for (const id of ["academie", "application", "academie", "application"]) await page.click(`#onglet-${id}`);
   assert.equal(await page.evaluate(() => window.kermiclab.academie.etat().xp), pratique.xp, "revoir la table ne redonne pas d'XP");
   await page.locator('[data-action="nouvelle"]').click();

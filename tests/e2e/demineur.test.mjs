@@ -325,7 +325,7 @@ test("démineur : une victoire nourrit l'Académie (XP, record, badges) et l'ind
     if (positions.includes(i) || (await caseJeu(page, i).getAttribute("data-etat")) !== "cachee") continue;
     await caseJeu(page, i).click();
   }
-  assert.match(await sortie(page, "message").textContent(), /\(\+30 XP à l'Académie\)/);
+  assert.match(await sortie(page, "message").textContent(), /\(\+30 points de jeu à l'Académie\)/);
   const etat = await etatA(page);
   assert.equal(etat.parties.debutant.victoires, 1);
   assert.ok(Number.isInteger(etat.parties.debutant.meilleur));
@@ -346,7 +346,7 @@ test("académie : page « Ma progression » complète, et effacement en deux tem
   await academie(page).locator('[data-vue="session"] [data-action="retour"]').click();
   await academie(page).locator('[data-action="detail"]').click();
   assert.equal(await page.evaluate(() => document.activeElement.dataset.sortie), "detail-titre", "le focus suit la page");
-  assert.match(await sortieA(page, "detail-niveau").textContent(), /Niveau 1 · 20 XP au total/);
+  assert.match(await sortieA(page, "detail-niveau").textContent(), /Niveau 1 · 20 points de jeu au total/);
   assert.ok(await academie(page).locator(".regles-xp tr").count() >= 10, "règles d'XP expliquées");
   assert.equal(await academie(page).locator('[data-sortie="badges"] li').count(), 16);
   assert.equal(await academie(page).locator('[data-sortie="activite"] li').count(), 7);

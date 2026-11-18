@@ -3,8 +3,8 @@ id: belote
 titre: Belote
 resume: La belote à quatre, en équipe avec l'ordinateur : enchères, atout, belote-rebelote et points.
 sujet: jeux/belote
-version: 1.0.0
-date: 2026-11-04
+version: 1.0.1
+date: 2026-11-18
 langues: fr
 onglets: explication, application, academie, mise-en-situation
 mots-cles:
