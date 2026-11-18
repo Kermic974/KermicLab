@@ -30,6 +30,25 @@ export const FORMAT_JETON = /^[A-Za-z0-9_-]{43}$/;
 export const FORMAT_IV = /^[A-Za-z0-9+/]{16}$/;
 export const FORMAT_CHIFFRE = /^[A-Za-z0-9+/]+={0,2}$/;
 
+/* Clé de synchronisation (protocole v2) : remplace la phrase secrète à mémoriser par un secret aléatoire de 256 bits,
+ * créé dans le navigateur, gardé sur l'appareil sous une enveloppe chiffrée par le mot de passe, transmis à un autre
+ * appareil par un code d'appairage à usage unique (chiffrement de bout en bout) ou par le kit de récupération. */
+export const MODE_CLE = "cle";
+export const SEL_PSEUDONYMISATION_V2 = "kermiclab:pseudonymisation:v2:";
+export const SEL_ENVELOPPE = "kermiclab:enveloppe:v1:";
+export const SEL_APPAIRAGE = "kermiclab:appairage:v1:";
+/** Octets de la clé de synchronisation et de la somme de contrôle du kit de récupération. */
+export const OCTETS_CLE_SYNCHRO = 32;
+const OCTETS_CONTROLE = 3;
+/** Code d'appairage : 80 bits aléatoires (16 caractères), valable DUREE_APPAIRAGE_S secondes, à usage unique. */
+export const OCTETS_APPAIRAGE = 10;
+export const DUREE_APPAIRAGE_S = 600;
+/** PBKDF2 du code d'appairage : en plus de ses 80 bits, ralentit un serveur malveillant qui tenterait de le deviner. */
+export const ITERATIONS_APPAIRAGE = 100000;
+export const FORMAT_CLE_SYNCHRO = /^[A-Za-z0-9+/]{43}=$/;
+export const FORMAT_BOITE = /^[0-9a-f]{64}$/;
+export const TAILLE_MAX_APPAIRAGE = 1024;
+
 const encodeur = new TextEncoder();
 const normaliser = (texte) => String(texte ?? "").normalize("NFC");
 
@@ -118,9 +137,9 @@ async function pbkdf2(secret, sel, iterations, bits = 256) {
   return new Uint8Array(await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt: typeof sel === "string" ? encodeur.encode(sel) : sel, iterations }, cle, bits));
 }
 
-async function hkdf(maitre, info, bits = 256) {
+async function hkdf(maitre, info, bits = 256, sel = new Uint8Array(32)) {
   const cle = await crypto.subtle.importKey("raw", maitre, "HKDF", false, ["deriveBits"]);
-  return new Uint8Array(await crypto.subtle.deriveBits({ name: "HKDF", hash: "SHA-256", salt: new Uint8Array(32), info: encodeur.encode(info) }, cle, bits));
+  return new Uint8Array(await crypto.subtle.deriveBits({ name: "HKDF", hash: "SHA-256", salt: typeof sel === "string" ? encodeur.encode(sel) : sel, info: encodeur.encode(info) }, cle, bits));
 }
 
 export async function sha256Hex(texte) {
@@ -157,7 +176,11 @@ export function lireEnregistrement(texte) {
     if (!enregistrementValide(e)) return null;
     const s = e.synchro;
     const synchro = s && typeof s === "object" && typeof s.empreinte === "string" && Number.isInteger(s.version) && s.version >= 0
-      ? { empreinte: s.empreinte, version: s.version, maj: typeof s.maj === "string" ? s.maj : null }
+      ? {
+        empreinte: s.empreinte, version: s.version, maj: typeof s.maj === "string" ? s.maj : null,
+        // Clé de synchronisation (protocole v2) : enveloppe chiffrée par le mot de passe, absente pour une phrase (v1).
+        ...(s.mode === MODE_CLE ? { mode: MODE_CLE, enveloppe: enveloppeValide(s.enveloppe) ? s.enveloppe : null } : {})
+      }
       : null;
     return { ...e, synchro };
   } catch {
@@ -229,7 +252,7 @@ export function lireSession(texte, identifiant) {
     if (!s || s.identifiant !== identifiant) return null;
     const y = s.synchro;
     const synchro = y && FORMAT_PSEUDONYME.test(y.pseudonyme) && FORMAT_JETON.test(y.jeton) && typeof y.cle === "string"
-      && typeof y.jetonServeur === "string" ? y : null;
+      && typeof y.jetonServeur === "string" && (y.cleSynchro === undefined || FORMAT_CLE_SYNCHRO.test(y.cleSynchro)) ? y : null;
     // Session ouverte sur le serveur pour un compte lié (Espace famille, ADR 0029) : jeton porteur et expiration.
     const v = s.serveur;
     const serveur = v && FORMAT_JETON.test(v.jeton) && Number.isFinite(v.expire) && v.expire > Date.now() / 1000 ? { jeton: v.jeton, expire: v.expire } : null;
@@ -237,4 +260,136 @@ export function lireSession(texte, identifiant) {
   } catch {
     return null;
   }
+}
+
+/* ---------- Clé de synchronisation (protocole v2) ---------- */
+
+// Base 32 de Crockford : sans I, L, O, U ; la saisie tolère minuscules, espaces, tirets, O pour 0, I et L pour 1.
+const ALPHABET_32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+
+export function versBase32(octets) {
+  let bits = 0, valeur = 0, sortie = "";
+  for (const o of new Uint8Array(octets)) {
+    valeur = (valeur << 8) | o;
+    bits += 8;
+    while (bits >= 5) { sortie += ALPHABET_32[(valeur >>> (bits - 5)) & 31]; bits -= 5; }
+  }
+  if (bits > 0) sortie += ALPHABET_32[(valeur << (5 - bits)) & 31];
+  return sortie;
+}
+
+/** Décode `n` octets d'un texte en base 32 de Crockford ; null si le texte n'a pas la bonne forme. */
+export function depuisBase32(texte, n) {
+  const propre = String(texte ?? "").toUpperCase().replace(/[\s-]/g, "").replace(/O/g, "0").replace(/[IL]/g, "1");
+  if (propre.length !== Math.ceil((n * 8) / 5) || /[^0-9A-HJKMNP-TV-Z]/.test(propre)) return null;
+  const octets = new Uint8Array(n);
+  let bits = 0, valeur = 0, i = 0;
+  for (const c of propre) {
+    valeur = ((valeur << 5) | ALPHABET_32.indexOf(c)) & 0xffff;
+    bits += 5;
+    if (bits >= 8) { if (i < n) octets[i++] = (valeur >>> (bits - 8)) & 255; bits -= 8; }
+  }
+  return octets;
+}
+
+const grouper = (texte) => texte.match(/.{1,4}/g).join("-");
+
+/** Nouvelle clé de synchronisation : 256 bits aléatoires (base64). */
+export function genererCleSynchro() {
+  return versBase64(crypto.getRandomValues(new Uint8Array(OCTETS_CLE_SYNCHRO)));
+}
+
+async function controle(octets) {
+  return new Uint8Array(await crypto.subtle.digest("SHA-256", octets)).slice(0, OCTETS_CONTROLE);
+}
+
+/** Kit de récupération : la clé et une somme de contrôle, en groupes de 4 caractères (56 caractères). */
+export async function formaterCleRecuperation(cleBase64) {
+  const cle = depuisBase64(cleBase64);
+  const tout = new Uint8Array(OCTETS_CLE_SYNCHRO + OCTETS_CONTROLE);
+  tout.set(cle);
+  tout.set(await controle(cle), OCTETS_CLE_SYNCHRO);
+  return grouper(versBase32(tout));
+}
+
+/**
+ * Lit une clé de récupération saisie ou collée ; la somme de contrôle détecte une faute de frappe.
+ * @returns {Promise<{ ok: true, cle: string } | { ok: false, erreur: "format" | "controle" }>}
+ */
+export async function lireCleRecuperation(texte) {
+  const tout = depuisBase32(texte, OCTETS_CLE_SYNCHRO + OCTETS_CONTROLE);
+  if (!tout) return { ok: false, erreur: "format" };
+  const cle = tout.slice(0, OCTETS_CLE_SYNCHRO);
+  if (!egalesTempsConstant(versHex(await controle(cle)), versHex(tout.slice(OCTETS_CLE_SYNCHRO)))) return { ok: false, erreur: "controle" };
+  return { ok: true, cle: versBase64(cle) };
+}
+
+/**
+ * Secrets de synchronisation dérivés de la clé (protocole v2) : même rôle que `deriverSecrets`, sans étirement
+ * (la clé a déjà 256 bits d'entropie). L'identifiant sert de sel, les pseudonymes v1 et v2 sont indépendants.
+ */
+export async function deriverSecretsCle(cleBase64, identifiant) {
+  const maitre = depuisBase64(cleBase64);
+  const sel = `${SEL_PSEUDONYMISATION_V2}${identifiant}`;
+  const [pseudo, jeton, cle] = await Promise.all([hkdf(maitre, "pseudonyme", 256, sel), hkdf(maitre, "jeton-ecriture", 256, sel), hkdf(maitre, "chiffrement", 256, sel)]);
+  const pseudonyme = versHex(pseudo);
+  return { pseudonyme, jeton: versBase64Url(jeton), cle: versBase64(cle), empreinte: (await sha256Hex(`empreinte:${pseudonyme}`)).slice(0, 16) };
+}
+
+export function enveloppeValide(e) {
+  return !!e && typeof e === "object" && typeof e.sel === "string" && FORMAT_IV.test(e.iv) && typeof e.chiffre === "string"
+    && FORMAT_CHIFFRE.test(e.chiffre) && Number.isInteger(e.iterations) && e.iterations >= 100000 && e.iterations <= 10000000;
+}
+
+async function cleEnveloppe(motDePasse, identifiant, sel, iterations, usages) {
+  const octets = await pbkdf2(normaliser(motDePasse), new Uint8Array([...encodeur.encode(`${SEL_ENVELOPPE}${identifiant}:`), ...sel]), iterations);
+  return crypto.subtle.importKey("raw", octets, "AES-GCM", false, usages);
+}
+
+/**
+ * Garde la clé sur l'appareil sous une enveloppe chiffrée par le mot de passe (PBKDF2 au sel distinct de celui du
+ * vérificateur, AES-GCM avec l'identifiant en données associées). L'enveloppe ne quitte jamais l'appareil.
+ */
+export async function envelopperCle(cleBase64, motDePasse, identifiant, { iterations = ITERATIONS_NAVIGATEUR } = {}) {
+  const sel = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const chiffre = await crypto.subtle.encrypt({ name: "AES-GCM", iv, additionalData: encodeur.encode(identifiant) },
+    await cleEnveloppe(motDePasse, identifiant, sel, iterations, ["encrypt"]), depuisBase64(cleBase64));
+  return { sel: versBase64(sel), iterations, iv: versBase64(iv), chiffre: versBase64(chiffre) };
+}
+
+/** Ouvre l'enveloppe ; null si le mot de passe n'est pas celui qui l'a fermée (mot de passe réinitialisé, par exemple). */
+export async function ouvrirEnveloppe(enveloppe, motDePasse, identifiant) {
+  if (!enveloppeValide(enveloppe)) return null;
+  try {
+    const clair = await crypto.subtle.decrypt({ name: "AES-GCM", iv: depuisBase64(enveloppe.iv), additionalData: encodeur.encode(identifiant) },
+      await cleEnveloppe(motDePasse, identifiant, depuisBase64(enveloppe.sel), enveloppe.iterations, ["decrypt"]), depuisBase64(enveloppe.chiffre));
+    return clair.byteLength === OCTETS_CLE_SYNCHRO ? versBase64(clair) : null;
+  } catch {
+    return null;
+  }
+}
+
+/* ---------- Appairage d'un autre appareil (communication par secret partagé) ---------- */
+
+/** Code d'appairage à usage unique, affiché sur l'appareil qui a la clé et saisi sur le nouvel appareil. */
+export function genererCodeAppairage() {
+  return grouper(versBase32(crypto.getRandomValues(new Uint8Array(OCTETS_APPAIRAGE))));
+}
+
+/** Code saisi, normalisé (tolère minuscules, espaces et confusions O/0, I/1) ; null s'il est mal formé. */
+export function lireCodeAppairage(texte) {
+  const octets = depuisBase32(texte, OCTETS_APPAIRAGE);
+  return octets ? grouper(versBase32(octets)) : null;
+}
+
+/**
+ * Secrets d'une boîte d'appairage, dérivés du code et de l'identifiant (les deux appareils les calculent seuls) :
+ * `boite` (adresse de dépôt), `jeton` (preuve de possession, le serveur n'en garde que l'empreinte), `cle` (AES-GCM,
+ * jamais envoyée). Le serveur ne voit ni le code ni la clé de synchronisation : chiffrement de bout en bout.
+ */
+export async function deriverAppairage(code, identifiant, { iterations = ITERATIONS_APPAIRAGE } = {}) {
+  const maitre = await pbkdf2(String(code), `${SEL_APPAIRAGE}${identifiant}`, iterations);
+  const [boite, jeton, cle] = await Promise.all([hkdf(maitre, "boite"), hkdf(maitre, "jeton"), hkdf(maitre, "chiffrement")]);
+  return { boite: versHex(boite), jeton: versBase64Url(jeton), cle: versBase64(cle) };
 }

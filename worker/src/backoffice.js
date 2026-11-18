@@ -26,7 +26,8 @@ import {
   LABEL_PROPOSITION, STATUTS_BROUILLON, TYPES_BROUILLON, corpsIssueBrouillon, inventaireCatalogue, validerBrouillon, versBrouillon
 } from "./contenus.js";
 import { supprimerCompte } from "./comptes.js";
-import { effacerCompteLocal } from "./compte-local.js";
+import { effacerCompteLocal, genererMotDePasseProvisoire, remplacerMotDePasse } from "./compte-local.js";
+import { donneesCompteLocal } from "./compte-local-acces.js";
 import { creerOuCommenterIssue } from "./github.js";
 import { THEMES, THEME_PERSONNALISE, contraste, couleursTheme, deriverVariables, validerTheme } from "../../web/theme.js";
 
@@ -151,37 +152,35 @@ async function supprimerUtilisateur(env, type, id) {
   return json({ ok: true });
 }
 
+/**
+ * Réinitialisation du mot de passe d'un compte local (ADR 0024 §3 bis) : le serveur tire un mot de passe provisoire,
+ * le renvoie une seule fois (jamais journalisé ni stocké en clair), ferme les sessions du compte et lève son blocage.
+ * Le compte doit le remplacer avant tout autre usage. La clé de synchronisation n'est pas touchée : l'administrateur
+ * n'obtient aucun accès aux données synchronisées, qui restent chiffrées par un secret qu'il ne connaît pas.
+ */
+async function reinitialiserMotDePasse(env, id) {
+  if (!(await compteExiste(env, "compte-local", id))) return erreur("introuvable", 404);
+  const motDePasse = genererMotDePasseProvisoire();
+  await remplacerMotDePasse(env, id, motDePasse, { provisoire: true });
+  await noter(env, "utilisateur.mot-de-passe", `compte-local:${id}`);
+  return json({ ok: true, motDePasse });
+}
+
 /** Droit d'accès : tout ce que la base contient sur un compte, tel quel. */
 async function exporterUtilisateur(env, type, id) {
   if (!(await compteExiste(env, type, id))) return erreur("introuvable", 404);
+  if (type === "compte-local") {
+    // Même contenu que le libre-service « Ce que Kermiclab sait de moi » (ADR 0024 §3 ter).
+    await noter(env, "utilisateur.export", `${type}:${id}`);
+    return json(await donneesCompteLocal(env, id));
+  }
   const profil = await profilDuCompte(env, type, id);
   const donnees = { type, id, exporteLe: new Date().toISOString() };
-  if (type === "compte") {
-    donnees.compte = await env.DB.prepare("SELECT id, role, created_at, last_login_at, consent_at, consent_version FROM comptes WHERE id = ?").bind(id).first();
-    donnees.fournisseurs = (await toutes(env, "SELECT provider FROM auth_providers WHERE compte_id = ?", id)).map((f) => f.provider);
-    donnees.enfants = await toutes(env, "SELECT id, prenom_affiche, age_tranche, langue, consentement_version, consentement_at, created_at FROM eleves WHERE parent_id = ?", id);
-    donnees.progression = await toutes(env, "SELECT eleve_id, notion_id, score, etoiles, completed_at, updated_at FROM progres WHERE eleve_id IN (SELECT id FROM eleves WHERE parent_id = ?)", id);
-    donnees.contributions = await tenter(() => toutes(env, "SELECT id, notion_id, chemin, nature, type, texte_propose, motif, statut, created_at FROM contributions WHERE auteur_id = ?", id), []);
-  } else {
-    donnees.compte = await env.DB.prepare("SELECT id, cree_le FROM comptes_locaux WHERE id = ?").bind(id).first();
-    donnees.note = "Les données synchronisées sont chiffrées dans le navigateur et ne sont reliées à aucun compte : le serveur ne peut ni les lire ni les retrouver.";
-    // Espace famille (ADR 0029) : liens, bilans, cahiers assignés et consommations du compte.
-    donnees.famille = {
-      liens: await tenter(() => toutes(env, "SELECT enfant_id, parent_id, prenom, tranche_age, consentement_version, consentement_le, origine, lie_le FROM familles_liens WHERE enfant_id = ? OR parent_id = ?", id, id), []),
-      bilan: await tenter(() => env.DB.prepare("SELECT bilan, maj_le FROM familles_bilans WHERE enfant_id = ?").bind(id).first(), null),
-      cahiers: await tenter(() => toutes(env, "SELECT id, parent_id, enfant_id, demande, statut, calibrage, reussis, total, cree_le, maj_le FROM familles_cahiers WHERE enfant_id = ? OR parent_id = ?", id, id), []),
-      consommations: await tenter(() => toutes(env, "SELECT jour, module, appels, tokens FROM familles_consommations WHERE compte_id = ? ORDER BY jour", id), [])
-    };
-    // Expérience Professeur (ADR 0030) : profil, classes, affiliations (comme professeur ou comme élève) et bilan.
-    donnees.professeur = {
-      profil: await tenter(() => env.DB.prepare("SELECT nom_affiche, matieres, niveaux, maj_le FROM professeurs_profils WHERE compte_id = ?").bind(id).first(), null),
-      classes: await tenter(() => toutes(env, "SELECT id, nom, matiere, niveau, cree_le FROM professeurs_classes WHERE prof_id = ?", id), []),
-      affiliations: await tenter(() => toutes(env, "SELECT prof_id, eleve_id, classe_id, pseudo, accord_version, rejoint_le FROM professeurs_eleves WHERE prof_id = ? OR eleve_id = ?", id, id), []),
-      bilan: await tenter(() => env.DB.prepare("SELECT bilan, maj_le FROM professeurs_bilans WHERE eleve_id = ?").bind(id).first(), null),
-      activites: await tenter(() => toutes(env, "SELECT id, type, classe_id, eleve_id, parametres, echeance, statut, cree_le FROM professeurs_activites WHERE prof_id = ? OR eleve_id = ?", id, id), []),
-      resultats: await tenter(() => toutes(env, "SELECT activite_id, reussis, total, meilleur, tentatives, duree_s, termine, debut_le, maj_le FROM professeurs_resultats WHERE eleve_id = ?", id), [])
-    };
-  }
+  donnees.compte = await env.DB.prepare("SELECT id, role, created_at, last_login_at, consent_at, consent_version FROM comptes WHERE id = ?").bind(id).first();
+  donnees.fournisseurs = (await toutes(env, "SELECT provider FROM auth_providers WHERE compte_id = ?", id)).map((f) => f.provider);
+  donnees.enfants = await toutes(env, "SELECT id, prenom_affiche, age_tranche, langue, consentement_version, consentement_at, created_at FROM eleves WHERE parent_id = ?", id);
+  donnees.progression = await toutes(env, "SELECT eleve_id, notion_id, score, etoiles, completed_at, updated_at FROM progres WHERE eleve_id IN (SELECT id FROM eleves WHERE parent_id = ?)", id);
+  donnees.contributions = await tenter(() => toutes(env, "SELECT id, notion_id, chemin, nature, type, texte_propose, motif, statut, created_at FROM contributions WHERE auteur_id = ?", id), []);
   donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
   donnees.securite = profil ? {
     etat: await tenter(() => env.DB.prepare("SELECT etat, motifs, decide_par, maj_le, expire_le FROM profils_securite WHERE profil = ?").bind(profil).first(), null),
@@ -461,6 +460,9 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
 
   if (est("GET", "/utilisateurs")) {
     return json({ utilisateurs: await listerUtilisateurs(env), roles: await listerRoles(env), niveaux: [NIVEAU_PAR_DEFAUT, ...reglages.niveaux.map((n) => n.id)] });
+  }
+  if ((m = chemin.match(new RegExp(`^/utilisateurs/compte-local/(${UUID})/mot-de-passe$`)))) {
+    return methode === "POST" ? reinitialiserMotDePasse(env, m[1]) : erreur("methode-non-autorisee", 405);
   }
   if ((m = chemin.match(new RegExp(`^/utilisateurs/(compte|compte-local)/(${UUID})(/export)?$`)))) {
     const [, type, id, exporter] = m;

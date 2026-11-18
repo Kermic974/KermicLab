@@ -1,8 +1,12 @@
 import { test, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import worker, { _reinitialiser } from "../../worker/src/index.js";
-import { gererApiCompteLocal, purgerCompteLocal, ECHECS_AVANT_BLOCAGE, CONSERVATION_JOURS } from "../../worker/src/compte-local.js";
-import { chiffrer, deriverSecrets, sha256Hex } from "../../web/compte-local.js";
+import {
+  gererApiCompteLocal, purgerCompteLocal, compteDeSession, genererMotDePasseProvisoire, remplacerMotDePasse, ECHECS_AVANT_BLOCAGE, CONSERVATION_JOURS
+} from "../../worker/src/compte-local.js";
+import {
+  chiffrer, dechiffrer, deriverAppairage, deriverSecrets, genererCleSynchro, genererCodeAppairage, sha256Hex, validerMotDePasse
+} from "../../web/compte-local.js";
 import { creerD1Comptes } from "../helpers/d1-comptes.mjs";
 
 // Compte local et synchronisation pseudonymisée côté Worker (ADR 0024) : l'interface n'est jamais la seule protection.
@@ -137,6 +141,80 @@ test("déconnexion et purge : jeton révoqué, sessions expirées effacées", as
   assert.equal(sqlite().prepare("SELECT count(*) AS n FROM sessions_locales").get().n, 0);
 });
 
+test("mot de passe provisoire (back-office) : session restreinte jusqu'au changement, conforme aux règles", async () => {
+  for (let i = 0; i < 50; i++) assert.equal(validerMotDePasse(genererMotDePasseProvisoire()).ok, true, "toujours conforme aux règles");
+  await inscrire();
+  const id = sqlite().prepare("SELECT id FROM comptes_locaux").get().id;
+  const provisoire = genererMotDePasseProvisoire();
+  await remplacerMotDePasse(env, id, provisoire, { provisoire: true });
+  assert.equal(sqlite().prepare("SELECT count(*) AS n FROM sessions_locales").get().n, 0, "sessions fermées");
+  assert.equal((await appel("connexion", { corps: { identifiant: "lea.martin", motDePasse: MDP } })).status, 401, "l'ancien mot de passe ne sert plus");
+
+  const ouverte = await (await appel("connexion", { corps: { identifiant: "lea.martin", motDePasse: provisoire } })).json();
+  assert.equal(ouverte.provisoire, true);
+  const s = await secretsRapides();
+  const lire = (jeton) => appel("donnees/lire", { jeton, corps: { pseudonyme: s.pseudonyme, jeton: s.jeton } });
+  assert.deepEqual(await (await lire(ouverte.jeton)).json(), { erreur: "mot-de-passe-provisoire" });
+  const requete = new Request("https://api.test/", { headers: { authorization: `Bearer ${ouverte.jeton}` } });
+  assert.equal(await compteDeSession(requete, env), null, "Espace famille, Professeur, contributions : session refusée");
+  assert.equal((await appel("moi", { methode: "GET", jeton: ouverte.jeton })).status, 200, "ses données restent consultables");
+
+  const changer = (corps) => appel("mot-de-passe", { jeton: ouverte.jeton, corps: { identifiant: "lea.martin", motDePasse: provisoire, ...corps } });
+  assert.equal((await changer({ identifiant: "quelquun", nouveau: "Nouveau-Secret-77" })).status, 401, "identifiant d'un autre compte");
+  assert.equal((await changer({ motDePasse: MDP, nouveau: "Nouveau-Secret-77" })).status, 401, "mot de passe actuel exigé");
+  assert.deepEqual(await (await changer({ nouveau: "faible" })).json(), { erreur: "mot-de-passe-court" });
+  assert.deepEqual(await (await changer({ nouveau: "Lea.Martin-Secret-7" })).json(), { erreur: "mot-de-passe-identifiant" });
+  assert.deepEqual(await (await changer({ nouveau: provisoire })).json(), { erreur: "mot-de-passe-identique" });
+  const change = await changer({ nouveau: "Nouveau-Secret-77" });
+  assert.equal(change.status, 200);
+  const { jeton, provisoire: encore } = await change.json();
+  assert.equal(encore, undefined);
+  assert.equal(sqlite().prepare("SELECT mdp_provisoire FROM comptes_locaux").get().mdp_provisoire, 0);
+  assert.equal((await lire(ouverte.jeton)).status, 401, "la session provisoire est fermée");
+  assert.equal((await lire(jeton)).status, 200);
+  assert.equal((await appel("connexion", { corps: { identifiant: "lea.martin", motDePasse: "Nouveau-Secret-77" } })).status, 200);
+});
+
+test("moi : identifiant unique et données du compte, sans secret ni identifiant de connexion", async () => {
+  const { jeton } = await (await inscrire()).json();
+  assert.equal((await appel("moi", { methode: "GET" })).status, 401);
+  const moi = await (await appel("moi", { methode: "GET", jeton })).json();
+  const { id, cree_le: creeLe } = sqlite().prepare("SELECT id, cree_le FROM comptes_locaux").get();
+  assert.equal(moi.id, id);
+  assert.deepEqual(moi.compte, { id, cree_le: creeLe, mot_de_passe_provisoire: false, sessions_actives: 1 });
+  assert.match(moi.note, /chiffrées dans le navigateur/);
+  assert.doesNotMatch(JSON.stringify(moi), /lea|identifiant_hmac|mdp_hash|mdp_sel/, "ni identifiant de connexion ni secret");
+});
+
+test("appairage : clé chiffrée de bout en bout, même compte, usage unique, 10 minutes", async () => {
+  const { jeton } = await (await inscrire()).json();
+  const { jeton: autre } = await (await inscrire("tom.dupont")).json();
+  const code = genererCodeAppairage();
+  const a = await deriverAppairage(code, "lea.martin");
+  const cleSynchro = genererCleSynchro();
+  const boite = await chiffrer(a.cle, a.boite, { v: 1, cle: cleSynchro });
+  const deposer = (j = jeton, extra = {}) => appel("appairage", { methode: "PUT", jeton: j, corps: { boite: a.boite, jeton: a.jeton, ...boite, ...extra } });
+  const retirer = (j = jeton, preuve = a.jeton) => appel("appairage/lire", { jeton: j, corps: { boite: a.boite, jeton: preuve } });
+
+  assert.equal((await deposer(null)).status, 401);
+  assert.equal((await deposer(jeton, { chiffre: "A".repeat(2000) })).status, 413);
+  assert.equal((await deposer()).status, 200);
+  const ligne = sqlite().prepare("SELECT * FROM appairages").get();
+  assert.equal(JSON.stringify(ligne).includes(cleSynchro) || JSON.stringify(ligne).includes(code), false, "ni la clé ni le code");
+  assert.ok(ligne.expire_a <= Date.now() / 1000 + 600);
+
+  assert.equal((await retirer(autre)).status, 404, "un autre compte ne retire pas la boîte, même avec le code");
+  assert.equal((await retirer(jeton, (await deriverAppairage(genererCodeAppairage(), "lea.martin")).jeton)).status, 404);
+  const lu = await (await retirer()).json();
+  assert.deepEqual(await dechiffrer(a.cle, a.boite, lu), { v: 1, cle: cleSynchro });
+  assert.equal((await retirer()).status, 404, "usage unique");
+
+  await deposer();
+  await deposer();
+  assert.equal(sqlite().prepare("SELECT count(*) AS n FROM appairages").get().n, 1, "une seule boîte par compte");
+  assert.equal((await purgerCompteLocal(env, Date.now() + 601 * 1000)).appairages, 1, "expirée, effacée par le cron");
+});
+
 test("Worker : CORS avec en-tête Authorization, origine inconnue refusée, base absente en 503", async () => {
   _reinitialiser();
   const preflight = await worker.fetch(new Request("https://api.test/api/compte-local/connexion", { method: "OPTIONS", headers: { origin: ORIGINE } }), env, {});
@@ -168,7 +246,7 @@ test("conservation : données ni lues ni écrites depuis 365 jours effacées, un
   const nombre = () => sqlite().prepare("SELECT count(*) AS n FROM donnees_pseudonymes").get().n;
 
   vieillir(365);
-  assert.deepEqual(await purgerCompteLocal(env), { sessions: 0, donnees: 0 }, "365 jours pile : conservée");
+  assert.deepEqual(await purgerCompteLocal(env), { sessions: 0, donnees: 0, appairages: 0 }, "365 jours pile : conservée");
   vieillir(400);
   await appel("donnees/lire", { jeton, corps: { pseudonyme: s.pseudonyme, jeton: s.jeton } });
   const ligne = sqlite().prepare("SELECT maj_le, vu_le FROM donnees_pseudonymes").get();
@@ -178,7 +256,7 @@ test("conservation : données ni lues ni écrites depuis 365 jours effacées, un
   assert.equal(nombre(), 1);
 
   vieillir(366);
-  assert.deepEqual(await purgerCompteLocal(env), { sessions: 0, donnees: 1 }, "inactive depuis plus de 365 jours : effacée");
+  assert.deepEqual(await purgerCompteLocal(env), { sessions: 0, donnees: 1, appairages: 0 }, "inactive depuis plus de 365 jours : effacée");
   assert.equal(nombre(), 0);
   env.COMPTES_LOCAUX_SECRET = "";
   assert.equal(await purgerCompteLocal(env), null, "sans configuration, rien n'est touché");

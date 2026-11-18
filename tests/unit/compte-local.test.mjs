@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import * as cl from "../../web/compte-local.js";
 import {
   validerIdentifiant, validerMotDePasse, validerPassphrase, creerEnregistrement, verifierMotDePasse, lireEnregistrement,
   deriverSecrets, chiffrer, dechiffrer, instantane, restaurer, lireSession, FORMAT_PSEUDONYME, FORMAT_JETON, FORMAT_IV,
@@ -107,4 +108,50 @@ test("session : liée à l'identifiant, secrets de synchronisation vérifiés", 
   assert.equal(lireSession(JSON.stringify({ identifiant: "lea.martin", serveur: { ...serveur, expire: 1 } }), "lea.martin").serveur, null);
   assert.equal(lireSession(JSON.stringify({ identifiant: "lea.martin", serveur: { ...serveur, jeton: "court" } }), "lea.martin").serveur, null);
   assert.equal(lireSession("{", "lea.martin"), null);
+});
+
+test("clé de synchronisation (v2) : 256 bits, kit de récupération avec somme de contrôle, saisie tolérante", async () => {
+  const cle = cl.genererCleSynchro();
+  assert.match(cle, cl.FORMAT_CLE_SYNCHRO);
+  assert.notEqual(cle, cl.genererCleSynchro());
+  const kit = await cl.formaterCleRecuperation(cle);
+  assert.match(kit, /^([0-9A-HJKMNP-TV-Z]{4}-){13}[0-9A-HJKMNP-TV-Z]{4}$/, "56 caractères en groupes de 4");
+  assert.deepEqual(await cl.lireCleRecuperation(` ${kit.toLowerCase().replace(/-/g, " ")} `), { ok: true, cle });
+  const faute = kit.slice(0, 7) + (kit[7] === "A" ? "B" : "A") + kit.slice(8);
+  assert.deepEqual(await cl.lireCleRecuperation(faute), { ok: false, erreur: "controle" }, "faute de frappe détectée");
+  assert.deepEqual(await cl.lireCleRecuperation("trop court"), { ok: false, erreur: "format" });
+});
+
+test("clé de synchronisation : secrets indépendants de la phrase (v1), salés par l'identifiant", async () => {
+  const cle = cl.genererCleSynchro();
+  const a = await cl.deriverSecretsCle(cle, "lea.martin");
+  assert.deepEqual(a, await cl.deriverSecretsCle(cle, "lea.martin"), "déterministe");
+  assert.match(a.pseudonyme, cl.FORMAT_PSEUDONYME);
+  assert.match(a.jeton, cl.FORMAT_JETON);
+  assert.notEqual(a.pseudonyme, (await cl.deriverSecretsCle(cle, "tom.dupont")).pseudonyme);
+  assert.notEqual(a.pseudonyme, (await cl.deriverSecretsCle(cl.genererCleSynchro(), "lea.martin")).pseudonyme);
+});
+
+test("enveloppe : la clé gardée sur l'appareil ne s'ouvre qu'avec le mot de passe et le bon identifiant", async () => {
+  const cle = cl.genererCleSynchro();
+  const enveloppe = await cl.envelopperCle(cle, "Correct-Cheval-9", "lea.martin", { iterations: 100000 });
+  assert.equal(cl.enveloppeValide(enveloppe), true);
+  assert.equal(JSON.stringify(enveloppe).includes(cle), false);
+  assert.equal(await cl.ouvrirEnveloppe(enveloppe, "Correct-Cheval-9", "lea.martin"), cle);
+  assert.equal(await cl.ouvrirEnveloppe(enveloppe, "Correct-Cheval-8", "lea.martin"), null);
+  assert.equal(await cl.ouvrirEnveloppe(enveloppe, "Correct-Cheval-9", "tom.dupont"), null);
+  const e = cl.lireEnregistrement(JSON.stringify({ ...(await cl.creerEnregistrement("lea.martin", "Correct-Cheval-9", { iterations: 100000 })),
+    synchro: { mode: "cle", empreinte: "abc", version: 2, maj: null, enveloppe } }));
+  assert.deepEqual(e.synchro, { mode: "cle", empreinte: "abc", version: 2, maj: null, enveloppe }, "mode et enveloppe conservés");
+});
+
+test("code d'appairage : 80 bits lisibles, saisie tolérante, secrets propres au compte", async () => {
+  const code = cl.genererCodeAppairage();
+  assert.match(code, /^[0-9A-HJKMNP-TV-Z]{4}(-[0-9A-HJKMNP-TV-Z]{4}){3}$/);
+  assert.equal(cl.lireCodeAppairage(code.toLowerCase().replace(/-/g, "")), code);
+  assert.equal(cl.lireCodeAppairage("ABC"), null);
+  const a = await cl.deriverAppairage(code, "lea.martin", { iterations: 1000 });
+  assert.match(a.boite, cl.FORMAT_BOITE);
+  assert.match(a.jeton, cl.FORMAT_JETON);
+  assert.notEqual(a.boite, (await cl.deriverAppairage(code, "tom.dupont", { iterations: 1000 })).boite);
 });
