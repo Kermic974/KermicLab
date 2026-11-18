@@ -4044,7 +4044,6 @@ function rendreTrophees() {
       carte.append(element("h4", { texte: id === "mini-cercle" ? t("minilabTitre") : notion?.titre ?? id }));
       if (id === "mini-cercle") carte.append(element("p", { cle: "tropheesMiniLab" }));
       carte.append(chiffresModule(m));
-      if (m.genre === "jeux") carte.append(blocSuiviJeu(id));
       if (m.etoilesTotal) carte.append(element("progress", { attributs: { max: m.etoilesTotal, value: m.etoiles, "aria-label": t("tropheesEtoiles") } }));
       const activite = activiteNotion(id);
       if (activite) carte.append(activite);
