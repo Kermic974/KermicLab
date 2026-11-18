@@ -21,7 +21,8 @@
   L'administrateur a toutes les permissions et voit donc aussi l'expérience ; le back-office peut retirer `professeur`
   à un rôle.
 - L'expérience Contributeur reste inchangée (propositions, ADR 0023) ; le Professeur y garde la relecture à quatre yeux.
-  Les écrans « Mes classes » et « Mes élèves » portent une sous-navigation vers « Contributions » quand ce menu existe.
+  Les écrans « Mes classes » et « Mes élèves » portent une sous-navigation vers « Contributions » quand ce menu existe
+  (remplacée par la barre de filtres de « Mon tableau de bord », ADR 0031).
 
 ### 2. Profil du professeur
 

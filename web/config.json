@@ -2,6 +2,7 @@
   "apiUrl": "https://kermiclab-api.kermic.workers.dev",
   "connexionActive": true,
   "langues": ["fr", "en"],
+  "navigation": ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"],
   "mesureGoogle": "G-7ZGW294NN8",
   "testRolesTemporaire": true
 }

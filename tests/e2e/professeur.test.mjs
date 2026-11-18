@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer, NAVIGATION_RACCOURCIS, surchargerConfig } from "./outils.mjs";
 import { gererApiCompteLocal } from "../../worker/src/compte-local.js";
 import { gererApiFamille } from "../../worker/src/famille.js";
 import { gererApiProfesseur } from "../../worker/src/professeur.js";
@@ -23,11 +23,12 @@ after(async () => { await nav?.close(); await serveur?.fermer(); env?.DB.sqlite.
 
 const cors = () => ({ "access-control-allow-origin": serveur.url, "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "GET, POST, PUT" });
 
-async function appareil(pseudo, { viewport = { width: 1280, height: 900 } } = {}) {
+async function appareil(pseudo, { viewport = { width: 1280, height: 900 }, raccourcis = true } = {}) {
   const session = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport });
   const { page } = session;
   const appelsProf = [];
   await simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette, llmActif: false });
+  if (raccourcis) await surchargerConfig(page, serveur.url, { navigation: NAVIGATION_RACCOURCIS });
   const relayer = (traiter) => async (route) => {
     const r = route.request();
     if (r.method() === "OPTIONS") return route.fulfill({ status: 204, headers: cors() });
@@ -181,7 +182,7 @@ test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et
   assert.equal(await page.locator("#nav-mobile-autres").isHidden(), true, "un choix referme le panneau");
   assert.equal(await plus.getAttribute("aria-current"), "page", "Plus porte la page courante");
   await page.locator("#suivi-contenu").waitFor();
-  await page.click('#suivi .prof-onglets [data-nav="classes"]');
+  await page.click('#navigation-personnelle [data-nav="classes"]');
   const carte = page.locator(".prof-classe").first();
   await carte.waitFor();
   assert.match(await carte.textContent(), /4e B/);
@@ -200,6 +201,40 @@ test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et
   const largeur = await page.evaluate(() => document.documentElement.scrollWidth);
   assert.ok(largeur <= 390, `pas de défilement horizontal sur mobile (${largeur})`);
   assert.deepEqual(appelsProf, [], "la démonstration n'appelle pas le Worker");
+  assert.deepEqual(erreurs, []);
+  await session.contexte.close();
+});
+
+test("Mon tableau de bord (ordre par défaut) : sous l'Accueil, vues du professeur filtrées, sans raccourcis de rôle", async () => {
+  const session = await appareil(null, { raccourcis: false });
+  const { page, erreurs, appelsProf } = session;
+  await page.goto(`${serveur.url}/?demo=contributions#contributions`);
+  await page.locator("#dialogue-pseudo[open]").waitFor();
+  await page.fill("#pseudo", "Démo");
+  await page.click("#formulaire-pseudo button[type=submit]");
+  await page.click("#contrib-demo-prof");
+  await page.locator("#contrib-tableau").waitFor({ state: "visible" });
+  // Barre latérale : six entrées, « Mon tableau de bord » en deuxième ; Ma famille, Contributions et Professeur n'y sont plus.
+  const entrees = page.locator(".barre-laterale nav [data-nav]:not([hidden])");
+  assert.deepEqual(await entrees.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
+  const tdb = page.locator('.barre-laterale [data-nav="tableau-de-bord"]');
+  assert.equal(await tdb.getAttribute("aria-current"), "page", "Contributions est une vue du tableau de bord");
+  // Les filtres : les vues proposées suivent le rôle.
+  const filtres = page.locator("#navigation-personnelle [data-nav]:visible");
+  assert.deepEqual(await filtres.allTextContents(), ["Profil", "Mon compte", "Contributions", "Suivi de classe", "Mes classes", "Mes élèves"]);
+  assert.equal(await page.locator('#navigation-personnelle [data-nav="contributions"]').getAttribute("aria-current"), "page");
+  await page.click('#navigation-personnelle [data-nav="classes"]');
+  await page.locator(".prof-classe").first().waitFor();
+  assert.equal(new URL(page.url()).hash, "#classes");
+  assert.equal(await tdb.getAttribute("aria-current"), "page");
+  assert.equal(await page.locator('#navigation-personnelle [data-nav="classes"]').getAttribute("aria-current"), "page");
+  // Revenir par la navigation rouvre la dernière vue consultée.
+  await page.click('.barre-laterale [data-nav="accueil"]');
+  await tdb.click();
+  await page.locator("#classes").waitFor({ state: "visible" });
+  assert.equal(new URL(page.url()).hash, "#classes");
+  await capturer(page, "tableau-de-bord-filtres");
+  assert.deepEqual(appelsProf, []);
   assert.deepEqual(erreurs, []);
   await session.contexte.close();
 });
