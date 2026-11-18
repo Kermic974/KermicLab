@@ -1,5 +1,6 @@
 # Worker Kermiclab. Le binding AI est fourni par Cloudflare ; les secrets
-# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN, COMPTES_LOCAUX_SECRET, BACKOFFICE_JETON) se définissent avec `wrangler secret put`
+# (LLM_SESSION_SECRET, ANTHROPIC_API_KEY, GITHUB_TOKEN, COMPTES_LOCAUX_SECRET, BACKOFFICE_JETON, CLOUDFLARE_TARIFS_TOKEN et
+# CLOUDFLARE_ACCOUNT_ID pour les tarifs du catalogue de modèles, ADR 0034) se définissent avec `wrangler secret put`
 # ou via la CI — jamais ici.
 name = "kermiclab-api"
 main = "src/index.js"
@@ -36,6 +37,7 @@ CAHIERS_GENERATIONS_JOUR = "2" # 0 à 5
 MAX_TOKENS_CAHIERS = "100000"  # 1000 à 128000
 # Back-office (ADR 0026) : ces valeurs se règlent aussi à chaud dans /admin/ (écran Harness), dans les mêmes bornes.
 CONTROLE_ACCES_ACTIF = "false"        # bêta : rôles et stratégies préparés, toutes les fonctionnalités ouvertes à tous
+SOUSCRIPTIONS_LIBRE_CHOIX = "true"    # phase de développement (ADR 0034) : changement de souscription sans paiement, offres en projet comprises
 GARDE_FOUS_ACTIFS = "false"           # bêta : profils classés, aucune restriction appliquée
 SEUIL_SURVEILLANCE = "3"              # 1 à 50 : score de déviance sur 7 jours
 SEUIL_RESTRICTION = "9"               # 2 à 200 : IA coupée pour le profil (si garde-fous actifs)

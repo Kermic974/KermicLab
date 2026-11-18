@@ -490,10 +490,14 @@ test("souscriptions : offres pressenties, composition, bornes, attribution et su
   assert.equal(enregistree.estimation.prixMensuelHT, 9.99);
   assert.ok((await admin("GET", "/utilisateurs")).donnees.niveaux.includes("premium"), "la souscription devient un niveau attribuable");
 
-  // « Gratuit » : limites de consommation du registre, prix nul, jamais supprimé.
-  assert.equal((await admin("PUT", "/souscriptions/gratuit", { ...etat.souscriptions[0], limites: { tokensSession: 4000 }, prix: { mode: "prix", prixMensuelHT: 5, margeCible: 0, remiseAnnuelle: 0 } })).statut, 200);
+  // « Gratuit » (ADR 0034) : tous les champs modifiables ; ses limites de consommation sont écrites dans le registre
+  // (Harness), avec ses bornes (plafond de la table de quota compris). Jamais supprimé.
+  const gratuitBrut = { ...etat.souscriptions[0], limites: { ...etat.souscriptions[0].limites, tokensSession: 4000 }, prix: { mode: "prix", prixMensuelHT: 0, margeCible: 0, remiseAnnuelle: 0, prixAnnuelHT: 0 } };
+  assert.deepEqual((await admin("PUT", "/souscriptions/gratuit", gratuitBrut)).donnees, { erreur: "hors-bornes:tokensSession" }, "au-delà du plafond de la table de quota");
+  assert.equal((await admin("PUT", "/souscriptions/gratuit", { ...gratuitBrut, limites: { ...gratuitBrut.limites, tokensSession: 800 }, prix: { ...gratuitBrut.prix, prixMensuelHT: 1.5 } })).statut, 200);
   const gratuite = (await admin("GET", "/souscriptions")).donnees.souscriptions[0];
-  assert.deepEqual([gratuite.limites.tokensSession, gratuite.prix.prixMensuelHT], [1000, 0]);
+  assert.deepEqual([gratuite.limites.tokensSession, gratuite.prix.prixMensuelHT], [800, 1.5]);
+  assert.equal(env.DB.sqlite.prepare("SELECT valeur FROM reglages WHERE cle = 'param:LIMITE_TOKENS_SESSION'").get()?.valeur, "800", "écrite dans le registre");
   assert.equal((await admin("DELETE", "/souscriptions/gratuit")).donnees.erreur, "souscription-gratuite");
 
   env.DB.sqlite.exec(`INSERT INTO comptes (id, email_hash) VALUES ('${UUID(1)}', 'h')`);
@@ -517,7 +521,7 @@ test("souscriptions : offres pressenties, composition, bornes, attribution et su
 test("finances : hypothèses validées, enregistrées, rétablies ; estimation recalculée", async () => {
   const etat = (await admin("GET", "/souscriptions")).donnees;
   assert.deepEqual(etat.finances, etat.financesParDefaut);
-  const finances = { ...etat.finances, devise: "EUR", coutsFixesMensuels: 0, modeles: { ...etat.finances.modeles, cahiers: { entree: 0, sortie: 0, ratio: 0 } } };
+  const finances = { ...etat.finances, devise: "EUR", coutsFixes: [], modeles: { ...etat.finances.modeles, cahiers: { entree: 0, sortie: 0, ratio: 0 } } };
   assert.equal((await admin("PUT", "/finances", { finances: { ...finances, devise: "XYZ" } })).donnees.erreur, "devise-invalide");
   assert.equal((await admin("PUT", "/finances", { finances: { ...finances, tauxTva: 80 } })).donnees.erreur, "hors-bornes:tauxTva");
   assert.equal((await admin("PUT", "/finances", { finances: { ...finances, modeles: { tuteur: { entree: 1, sortie: 1, ratio: 1 } } } })).donnees.erreur, "hors-bornes:prix-defi");

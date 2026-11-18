@@ -17,7 +17,7 @@ import {
   ecrireSouscriptions, ecrireTheme, envAvecReglages, validerParametre
 } from "./reglages.js";
 import {
-  FINANCES_PAR_DEFAUT, MAX_SOUSCRIPTIONS, SOUSCRIPTION_GRATUITE, bornesLimites, decrireSouscription, validerFinances, validerSouscription
+  FINANCES_PAR_DEFAUT, LIMITES_CONSOMMATION, MAX_SOUSCRIPTIONS, SOUSCRIPTION_GRATUITE, bornesLimites, decrireSouscription, validerFinances, validerSouscription
 } from "./souscriptions.js";
 import { BORNES_FINANCES, DEVISES, MODULES_COUT } from "../../web/admin/financier.js";
 import { REGISTRE, controlerNonConservation, volumes } from "./donnees.js";
@@ -29,6 +29,7 @@ import { supprimerCompte } from "./comptes.js";
 import { effacerCompteLocal, genererMotDePasseProvisoire, remplacerMotDePasse } from "./compte-local.js";
 import { donneesCompteLocal } from "./compte-local-acces.js";
 import { cumulerRoles, ecrireAttribution, rolesManuels } from "./attributions.js";
+import { chargerTarifsCloudflare, mesuresTelemetrie, tarifsCloudflareDisponibles } from "./tarifs-cloudflare.js";
 import { creerOuCommenterIssue } from "./github.js";
 import { THEMES, THEME_PERSONNALISE, contraste, couleursTheme, deriverVariables, validerTheme } from "../../web/theme.js";
 
@@ -158,6 +159,7 @@ async function supprimerUtilisateur(env, type, id) {
     await effacerCompteLocal(env, id);
   }
   await env.DB.prepare("DELETE FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).run();
+  await tenter(() => env.DB.prepare("DELETE FROM souscriptions_changements WHERE type_compte = ? AND compte_id = ?").bind(type, id).run());
   if (profil) {
     await env.DB.prepare("DELETE FROM signaux_securite WHERE profil = ?").bind(profil).run();
     await env.DB.prepare("DELETE FROM profils_securite WHERE profil = ?").bind(profil).run();
@@ -195,7 +197,8 @@ async function exporterUtilisateur(env, type, id) {
   donnees.enfants = await toutes(env, "SELECT id, prenom_affiche, age_tranche, langue, consentement_version, consentement_at, created_at FROM eleves WHERE parent_id = ?", id);
   donnees.progression = await toutes(env, "SELECT eleve_id, notion_id, score, etoiles, completed_at, updated_at FROM progres WHERE eleve_id IN (SELECT id FROM eleves WHERE parent_id = ?)", id);
   donnees.contributions = await tenter(() => toutes(env, "SELECT id, notion_id, chemin, nature, type, texte_propose, motif, statut, created_at FROM contributions WHERE auteur_id = ?", id), []);
-  donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
+  donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, roles, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
+  donnees.souscriptions = await tenter(() => toutes(env, "SELECT de, vers, paiement, change_le FROM souscriptions_changements WHERE type_compte = ? AND compte_id = ? ORDER BY id", type, id), []);
   donnees.securite = profil ? {
     etat: await tenter(() => env.DB.prepare("SELECT etat, motifs, decide_par, maj_le, expire_le FROM profils_securite WHERE profil = ?").bind(profil).first(), null),
     compteurs: await tenter(() => toutes(env, "SELECT jour, categorie, module, n FROM signaux_securite WHERE profil = ? ORDER BY jour", profil), [])
@@ -394,7 +397,10 @@ async function etatSouscriptions(env, envEffectif, reglages) {
     tokensParGeneration: { defi: config.MAX_TOKENS_DEFI, cahiers: config.MAX_TOKENS_CAHIERS },
     modulesCout: MODULES_COUT,
     devises: DEVISES,
-    max: MAX_SOUSCRIPTIONS
+    max: MAX_SOUSCRIPTIONS,
+    // ADR 0034 : chargement des tarifs du catalogue Cloudflare possible ? Consommation mesurée sur 30 jours.
+    tarifsCloudflare: tarifsCloudflareDisponibles(env),
+    telemetrie: await mesuresTelemetrie(env, 30)
   };
 }
 
@@ -402,6 +408,19 @@ async function enregistrerSouscription(env, id, corps, reglages) {
   const roles = (await listerRoles(env)).map((r) => r.id);
   const v = validerSouscription(id, corps, { roles });
   if (!v.ok) return erreur(v.code, 400);
+  if (id === SOUSCRIPTION_GRATUITE) {
+    // « Gratuit » (ADR 0034) : ses limites de consommation sont les paramètres du registre, appliqués à tous ; elles y
+    // sont écrites, avec les mêmes bornes que dans Harness (plafonds de la table de quota compris).
+    const ecritures = [];
+    for (const [champ, cle] of Object.entries(LIMITES_CONSOMMATION)) {
+      if (v.souscription.limites[champ] === undefined) continue;
+      const p = validerParametre(cle, v.souscription.limites[champ]);
+      if (!p.ok) return erreur(`hors-bornes:${champ}`, 400);
+      ecritures.push([cle, p.valeur]);
+      delete v.souscription.limites[champ];
+    }
+    for (const [cle, valeur] of ecritures) await ecrireParametre(env, cle, valeur);
+  }
   const liste = reglages.souscriptions.filter((s) => s.id !== id);
   const position = reglages.souscriptions.findIndex((s) => s.id === id);
   if (position < 0 && liste.length >= MAX_SOUSCRIPTIONS) return erreur("trop-de-souscriptions", 409);
@@ -506,7 +525,8 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     if (methode === "DELETE") {
       // Rôle système : seule sa surcharge est retirée. Rôle personnalisé encore attribué : refus.
       if (!Object.hasOwn(ROLES_SYSTEME, m[1])) {
-        const utilise = await env.DB.prepare("SELECT count(*) AS n FROM attributions_roles WHERE role_id = ?").bind(m[1]).first();
+        // Rôle attribué, seul ou cumulé (ADR 0034).
+        const utilise = await env.DB.prepare("SELECT count(*) AS n FROM attributions_roles WHERE role_id = ? OR roles LIKE ?").bind(m[1], `%"${m[1]}"%`).first();
         if (utilise?.n) return erreur("role-attribue", 409);
         if (reglages.souscriptions.some((s) => s.role === m[1])) return erreur("role-dans-souscription", 409);
       }
@@ -612,6 +632,15 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     if (methode === "PUT") { const c = await corps(); return c.erreur ?? enregistrerSouscription(env, m[1], c.corps, reglages); }
     if (methode === "DELETE") return supprimerSouscription(env, m[1], reglages);
     return erreur("methode-non-autorisee", 405);
+  }
+  if (est("POST", "/finances/tarifs-cloudflare")) {
+    // Aperçu seulement : les tarifs chargés remplissent le formulaire ; « Enregistrer les hypothèses » les garde.
+    if (!tarifsCloudflareDisponibles(env)) return erreur("tarifs-cloudflare-non-configures", 503);
+    const c = await corps();
+    if (c.erreur) return c.erreur;
+    const resultat = await chargerTarifsCloudflare(env, c.corps?.modeles ?? {}, { fetchImpl: fetchImpl ?? fetch });
+    await noter(env, "finances.tarifs-cloudflare");
+    return json(resultat);
   }
   if (est("PUT", "/finances")) {
     const c = await corps();
