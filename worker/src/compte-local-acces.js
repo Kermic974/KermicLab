@@ -45,7 +45,10 @@ export async function donneesCompteLocal(env, id) {
     },
     // Contributions au contenu (ADR 0023 §6 ter).
     contributions: await liste(env, "SELECT id, notion_id, chemin, nature, type, texte_propose, motif, statut, created_at FROM contributions_locales WHERE auteur_id = ?", id),
-    attribution: await une(env, "SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?", id),
+    attribution: await une(env, "SELECT role_id, roles, niveau, maj_le FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?", id)
+      ?? await une(env, "SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?", id),
+    // Changements de souscription (ADR 0034) : niveaux, mode de paiement, date au jour près.
+    souscriptions: await liste(env, "SELECT de, vers, paiement, change_le FROM souscriptions_changements WHERE type_compte = 'compte-local' AND compte_id = ? ORDER BY id", id),
     securite: profil ? {
       etat: await une(env, "SELECT etat, motifs, decide_par, maj_le, expire_le FROM profils_securite WHERE profil = ?", profil),
       compteurs: await liste(env, "SELECT jour, categorie, module, n FROM signaux_securite WHERE profil = ? ORDER BY jour", profil)

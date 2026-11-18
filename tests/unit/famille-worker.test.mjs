@@ -84,7 +84,7 @@ test("accès : session porteuse obligatoire, origine contrôlée, rôle parent e
   const r = await worker.fetch(new Request("https://api.test/api/famille/moi", { headers: { origin: "https://ailleurs.example", authorization: `Bearer ${solo}` } }), env, ctx);
   assert.equal(r.status, 403);
   const moi = await idDe(solo);
-  assert.deepEqual(moi, { role: "visiteur", parent: false, enfants: 0, enfant: null, invitation: null });
+  assert.deepEqual(moi, { role: "visiteur", roles: ["visiteur"], parent: false, enfants: 0, enfant: null, invitation: null });
   for (const [route, methode] of [["tableau", "GET"], ["rejoindre", "POST"], ["enfants", "POST"], ["cahiers", "POST"]]) {
     const refus = await famille(route, { methode, jeton: solo, corps: methode === "POST" ? {} : undefined });
     assert.equal(refus.statut, 403, route);

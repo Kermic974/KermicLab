@@ -507,6 +507,10 @@ function rafraichirCompte() {
   $("#compte-ouvert").hidden = !e || !s || !!provisoire;
   if (e && !s) $("#compte-connexion-texte").textContent = t("compteConnexionTexte", { identifiant: e.identifiant });
   rafraichirFamilleCompte();
+  // Mon abonnement (ADR 0034) : compte lié au serveur, session en ligne ouverte.
+  const enLigne = !!e && !!s && estLie(e) && !!jetonCompte();
+  $("#compte-souscription").hidden = !enLigne;
+  if (enLigne) void chargerSouscription();
   if (!e || !s) { masquerZonesSynchro(); return; }
   const active = !!e.synchro;
   const cle = modeCle(e);
@@ -746,6 +750,7 @@ function deconnecterCompteLocal() {
   sauverCompte();
   oublierFamille();
   oublierMoi();
+  oublierSouscription();
   messageSynchro("");
   rafraichirCompte();
   notifier(t("compteDeconnecte"), "👋");
@@ -1142,6 +1147,98 @@ async function recupererSynchro(ev) {
 // Droit d'accès en libre-service : le serveur renvoie exactement ce que verrait l'administrateur (export du
 // back-office), dont l'identifiant unique du compte, à donner au support pour une demande (réinitialisation, etc.).
 let moiDonnees = null;
+
+/* ---------- Mon abonnement (ADR 0034) ---------- */
+// Niveau de souscription du compte en ligne et rôles cumulés ; changement de niveau à la demande. Le paiement viendra
+// plus tard : en phase de développement, il est considéré comme acquis (le serveur le note « dev »).
+const souscriptionEtat = { donnees: null, jeton: null, occupe: false };
+
+const prixLisible = (montant, devise) => new Intl.NumberFormat(etat.langue, { style: "currency", currency: devise }).format(montant);
+
+function oublierSouscription() {
+  souscriptionEtat.donnees = null;
+  souscriptionEtat.jeton = null;
+  $("#souscription-offres").replaceChildren();
+  $("#souscription-message").textContent = "";
+}
+
+async function chargerSouscription({ forcer = false } = {}) {
+  const jeton = jetonCompte();
+  if (!jeton || souscriptionEtat.occupe) return;
+  if (!forcer && souscriptionEtat.jeton === jeton) return;
+  souscriptionEtat.jeton = jeton;
+  souscriptionEtat.occupe = true;
+  try {
+    const r = await apiCompte("souscription", { methode: "GET", jeton });
+    if (r.statut !== 200) { $("#souscription-message").textContent = t(erreurServeur(r)); return; }
+    souscriptionEtat.donnees = r.donnees;
+    rendreSouscription();
+  } catch {
+    $("#souscription-message").textContent = t("synchroErreur");
+  } finally {
+    souscriptionEtat.occupe = false;
+  }
+}
+
+/** Prix d'une offre pour l'utilisateur : TTC par mois, ou « Gratuit ». */
+const prixOffre = (o) => (o.prix.mensuelTTC > 0 ? t("abonnementPrixMois", { prix: prixLisible(o.prix.mensuelTTC, o.prix.devise) }) : t("abonnementGratuit"));
+
+function rendreSouscription() {
+  const d = souscriptionEtat.donnees;
+  if (!d) return;
+  $("#souscription-actuelle").textContent = t("abonnementActuel", { offre: d.actuelle.libelle, prix: prixOffre(d.actuelle) });
+  $("#souscription-roles").textContent = t("abonnementRoles", { roles: d.roles.map((r) => r.libelle).join(" + ") });
+  $("#souscription-dev").hidden = d.paiement !== "dev";
+  $("#souscription-offres").replaceChildren(...d.offres.map((o) => {
+    const actuelle = o.id === d.niveau;
+    const bouton = element("button", { classe: actuelle ? "secondaire" : "bouton", cle: actuelle ? "abonnementEnCours" : "abonnementChoisir", attributs: { type: "button", "data-offre": o.id } });
+    bouton.disabled = actuelle;
+    bouton.addEventListener("click", () => choisirSouscription(o, bouton));
+    const l = o.limites;
+    const li = element("li", { attributs: { "data-actuelle": String(actuelle) } });
+    li.append(
+      element("strong", { texte: o.libelle }),
+      ...(o.description ? [element("span", { classe: "doux petit", texte: o.description })] : []),
+      element("span", { classe: "offre-prix", texte: o.prix.annuelTTC > 0 ? `${prixOffre(o)} · ${t("abonnementPrixAn", { prix: prixLisible(o.prix.annuelTTC, o.prix.devise) })}` : prixOffre(o) }),
+      element("span", { classe: "doux petit", texte: t("abonnementLimites", { tokens: l.tokensSession ?? 0, defis: l.defisJour ?? 0, cahiers: l.cahiersJour ?? 0 }) }),
+      element("span", { classe: "doux petit", texte: t("abonnementRole", { role: o.roleLibelle }) }),
+      bouton);
+    return li;
+  }));
+}
+
+/** Changement de niveau : confirmation en deux temps, puis le serveur applique (paiement acquis en phase de dev). */
+async function choisirSouscription(offre, bouton) {
+  if (bouton.dataset.confirmer !== "1") {
+    document.querySelectorAll("#souscription-offres [data-confirmer]").forEach((b) => { delete b.dataset.confirmer; b.textContent = t("abonnementChoisir"); });
+    bouton.dataset.confirmer = "1";
+    bouton.textContent = t("abonnementConfirmer", { offre: offre.libelle, prix: prixOffre(offre) });
+    return;
+  }
+  delete bouton.dataset.confirmer;
+  const jeton = jetonCompte();
+  if (!jeton || souscriptionEtat.occupe) return;
+  souscriptionEtat.occupe = true;
+  $("#souscription-message").textContent = t("synchroEnCours");
+  try {
+    const r = await apiCompte("souscription", { jeton, corps: { niveau: offre.id } });
+    if (r.statut === 200) {
+      souscriptionEtat.donnees = r.donnees;
+      rendreSouscription();
+      $("#souscription-changer").open = false;
+      $("#souscription-message").textContent = t("abonnementChange", { offre: r.donnees.actuelle.libelle });
+      notifier(t("abonnementChange", { offre: r.donnees.actuelle.libelle }), "⭐");
+      // Le rôle de la nouvelle offre se cumule : Espace famille et Professeur se mettent à jour.
+      void chargerFamille();
+      return;
+    }
+    $("#souscription-message").textContent = t(r.statut === 402 ? "abonnementPaiementRequis" : r.statut === 404 ? "abonnementIndisponible" : erreurServeur(r));
+  } catch {
+    $("#souscription-message").textContent = t("synchroErreur");
+  } finally {
+    souscriptionEtat.occupe = false;
+  }
+}
 
 function oublierMoi() {
   moiDonnees = null;

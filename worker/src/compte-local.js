@@ -8,6 +8,7 @@ import { effacementFamille } from "./famille-donnees.js";
 import { effacementProfesseur } from "./professeur-donnees.js";
 import { effacementContributionsLocales } from "./contributions.js";
 import { donneesCompteLocal } from "./compte-local-acces.js";
+import { changerSouscriptionCompte, etatSouscriptionCompte } from "./souscription-compte.js";
 import {
   DUREE_APPAIRAGE_S, FAMILLES, FORMAT_BOITE, FORMAT_CHIFFRE, FORMAT_IV, FORMAT_JETON, FORMAT_PSEUDONYME, TAILLE_MAX_APPAIRAGE, TAILLE_MAX_CHIFFRE,
   depuisBase64, egalesTempsConstant, sha256Hex, validerIdentifiant, validerMotDePasse, versBase64, versBase64Url, versHex
@@ -198,6 +199,10 @@ export async function effacerCompteLocal(env, compteId) {
     env.DB.prepare("DELETE FROM appairages WHERE compte_id = ?").bind(compteId),
     env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(compteId)
   ]);
+  // Rôles, souscription et historique des changements (ADR 0034) : tables du back-office, peut-être absentes.
+  for (const table of ["attributions_roles", "souscriptions_changements"]) {
+    await env.DB.prepare(`DELETE FROM ${table} WHERE type_compte = 'compte-local' AND compte_id = ?`).bind(compteId).run().catch(() => {});
+  }
 }
 
 function identifiants(corps) {
@@ -286,6 +291,12 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
     if (!session) return erreur("non-connecte", 401);
     return json(await donneesCompteLocal(env, session.compteId));
   }
+  // Souscription du compte (ADR 0034) : niveau, offres proposées ; changement à la demande (paiement acquis en dev).
+  if (route === "souscription" && methode === "GET") {
+    const session = await compteDeSession(requete, env);
+    if (!session) return erreur("non-connecte", 401);
+    return json(await etatSouscriptionCompte(env, session.compteId));
+  }
   if (methode !== "POST" && methode !== "PUT") return erreur("methode-non-autorisee", 405);
 
   if (route === "inscription" || route === "connexion") {
@@ -322,6 +333,10 @@ export async function gererApiCompteLocal(requete, env, { autoriser = () => true
   const session = ouverte;
 
   if (route === "appairage" && methode === "PUT") return deposerAppairage(env, session, corps);
+  if (route === "souscription" && methode === "POST") {
+    const r = await changerSouscriptionCompte(env, session.compteId, corps);
+    return json(r.corps, r.statut);
+  }
   if (route === "appairage/lire") {
     // Même limite que les connexions : un code d'appairage ne se devine pas par essais répétés.
     if (!autoriser(`compte-local:${ip}`)) return erreur("trop-de-tentatives", 429);

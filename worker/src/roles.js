@@ -63,11 +63,12 @@ export async function listerRoles(env) {
  * le back-office reste fermé sans sa clé (ADR 0026). Si la table `roles` est absente, les rôles système s'appliquent.
  */
 export async function roleAccedeAuBackOffice(env, role) {
-  if (typeof role !== "string") return false;
-  let permissions;
-  try { permissions = (await listerRoles(env)).find((r) => r.id === role)?.permissions; }
-  catch { permissions = ROLES_SYSTEME[role]?.permissions; }
-  return (permissions ?? []).some((p) => PERMISSIONS_ADMIN.includes(p));
+  // Un rôle ou plusieurs rôles cumulés (ADR 0034).
+  const liste = (Array.isArray(role) ? role : [role]).filter((r) => typeof r === "string");
+  if (!liste.length) return false;
+  let definitions = null;
+  try { definitions = await listerRoles(env); } catch { definitions = null; }
+  return liste.some((id) => (definitions?.find((r) => r.id === id)?.permissions ?? ROLES_SYSTEME[id]?.permissions ?? []).some((p) => PERMISSIONS_ADMIN.includes(p)));
 }
 
 /** Stratégies effectives : une par fonctionnalité, « tous » par défaut. */
@@ -91,21 +92,24 @@ export function validerStrategie(fonctionnalite, corps, { roles = [], niveaux = 
 /**
  * Décision d'accès à une fonctionnalité. Fonction pure.
  * Pendant la bêta (`CONTROLE_ACCES_ACTIF` à false), l'accès est toujours accordé : « réglage = tous les utilisateurs ».
- * Contrôle activé : permission du rôle, puis fonctionnalités de la souscription du compte, puis stratégie.
+ * Contrôle activé : permission de l'un des rôles cumulés (ADR 0034 : rôles manuels + rôle de la souscription), puis
+ * fonctionnalités de la souscription du compte, puis stratégie. `role` (un seul rôle) reste accepté.
  * @returns {{ autorise: boolean, raison: string }}
  */
-export function accesAutorise(env, { fonctionnalite, role = ROLE_PAR_DEFAUT, niveau = "gratuit" }, { strategies = [], roles = [], souscriptions = [] } = {}) {
+export function accesAutorise(env, { fonctionnalite, role = ROLE_PAR_DEFAUT, roles: rolesCompte, niveau = "gratuit" }, { strategies = [], roles = [], souscriptions = [] } = {}) {
   if (!lireConfiguration(env).CONTROLE_ACCES_ACTIF) return { autorise: true, raison: "controle-inactif" };
   const strategie = strategies.find((s) => s.fonctionnalite === fonctionnalite) ?? { mode: "tous", roles: [], niveaux: [] };
   if (strategie.mode === "personne") return { autorise: false, raison: "fonctionnalite-fermee" };
-  const definition = roles.find((r) => r.id === role);
-  if (!definition) return { autorise: false, raison: "role-inconnu" };
-  if (!definition.permissions.includes(fonctionnalite)) return { autorise: false, raison: "permission-absente" };
-  // Souscription (ADR 0031) : le rôle dit ce qu'un utilisateur peut faire, l'offre ce qu'elle inclut. Les deux comptent.
   const offre = souscriptions.find((s) => s.id === niveau);
+  // Rôles du compte : ceux donnés, plus le rôle de sa souscription (cumul).
+  const ids = [...new Set([...(Array.isArray(rolesCompte) && rolesCompte.length ? rolesCompte : [role]), ...(offre?.role ? [offre.role] : [])])];
+  const definitions = ids.map((id) => roles.find((r) => r.id === id)).filter(Boolean);
+  if (!definitions.length) return { autorise: false, raison: "role-inconnu" };
+  if (!definitions.some((d) => d.permissions.includes(fonctionnalite))) return { autorise: false, raison: "permission-absente" };
+  // Souscription (ADR 0031) : les rôles disent ce qu'un utilisateur peut faire, l'offre ce qu'elle inclut. Les deux comptent.
   if (offre && !offre.fonctionnalites.includes(fonctionnalite)) return { autorise: false, raison: "hors-souscription" };
   if (strategie.mode === "tous") return { autorise: true, raison: "ouverte-a-tous" };
-  const parRole = strategie.roles.includes(role);
+  const parRole = ids.some((id) => strategie.roles.includes(id));
   const parNiveau = strategie.niveaux.includes(niveau);
   return parRole || parNiveau ? { autorise: true, raison: parRole ? "role-autorise" : "niveau-autorise" } : { autorise: false, raison: "strategie" };
 }

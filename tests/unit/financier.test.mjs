@@ -90,3 +90,43 @@ test("offres pressenties payantes : rentables avec les hypothèses par défaut, 
     assert.ok(e.margeAnnuelle > 0, `${s.id} : marge annuelle ${e.margeAnnuelle}`);
   }
 });
+
+// ---------- Coûts affinés (ADR 0034) ----------
+import { coutParToken, taillesGeneration } from "../../web/admin/financier.js";
+
+test("coût par token : entrée lue en cache au prix du cache, puis frais de plateforme", () => {
+  const base = { entree: 2, sortie: 10, cache: 0.2, ratio: 1, partCache: 0, fraisPlateforme: 0 };
+  assert.equal(coutParToken(base) * 1e6, 12);
+  assert.equal(Math.round(coutParToken({ ...base, partCache: 50 }) * 1e6 * 1000) / 1000, 11.1, "10 + 1 × (0,5 × 2 + 0,5 × 0,2)");
+  assert.equal(Math.round(coutParToken({ ...base, fraisPlateforme: 5 }) * 1e6 * 1000) / 1000, 12.6, "+ 5 % Unified Billing");
+  assert.equal(coutParToken({ entree: 1, sortie: 1, ratio: 0 }) * 1e6, 1, "hypothèses anciennes : sans cache ni frais");
+});
+
+test("taille d'une génération : moyenne saisie, sinon le maximum du registre", () => {
+  const f = JSON.parse(JSON.stringify(FINANCES_PAR_DEFAUT));
+  assert.deepEqual(taillesGeneration(f, { defi: 1500, cahiers: 100000 }), { defi: 1500, cahiers: 100000 });
+  f.modeles.cahiers.tokensParAppel = 12000;
+  assert.deepEqual(taillesGeneration(f, { defi: 1500, cahiers: 100000 }), { defi: 1500, cahiers: 12000 });
+  const offre = { limites: { tokensSession: 0, tokensAppel: 0, defisJour: 0, cahiersJour: 1, cahiersMois: 0 }, usage: { joursActifsMois: 10, tauxUtilisation: 100 }, prix: { mode: "prix", prixMensuelHT: 0, margeCible: 0, remiseAnnuelle: 0 } };
+  assert.equal(estimerSouscription(offre, f, { defi: 1500, cahiers: 100000 }).coutVariable.parModule.cahiers.tokensMoisPlafond, 120000);
+});
+
+test("coûts fixes détaillés et hypothèses anciennes reprises sans perte", () => {
+  const ancien = { ...JSON.parse(JSON.stringify(FINANCES_PAR_DEFAUT)), coutsFixes: undefined, coutsFixesMensuels: 42, tarifs: undefined };
+  for (const m of Object.values(ancien.modeles)) { delete m.cache; delete m.partCache; delete m.fraisPlateforme; delete m.tokensParAppel; delete m.modele; }
+  const v = validerFinances(ancien);
+  assert.equal(v.ok, true);
+  assert.deepEqual(v.finances.coutsFixes, [{ libelle: "Coûts fixes", montant: 42 }]);
+  assert.equal(v.finances.modeles.defi.modele, "anthropic/claude-haiku-5.5", "modèle par défaut");
+  const postes = validerFinances({ ...FINANCES_PAR_DEFAUT, coutsFixes: [{ libelle: "Workers", montant: 5 }, { libelle: "Domaine", montant: 1.25 }] });
+  assert.equal(postes.finances.coutsFixesMensuels, 6.25);
+  assert.equal(validerFinances({ ...FINANCES_PAR_DEFAUT, coutsFixes: [{ libelle: "", montant: 5 }] }).code, "libelle-requis:coutsFixes");
+  assert.equal(validerFinances({ ...FINANCES_PAR_DEFAUT, modeles: { ...FINANCES_PAR_DEFAUT.modeles, defi: { ...FINANCES_PAR_DEFAUT.modeles.defi, partCache: 120 } } }).code, "hors-bornes:partCache-defi");
+  assert.equal(validerFinances({ ...FINANCES_PAR_DEFAUT, modeles: { ...FINANCES_PAR_DEFAUT.modeles, defi: { ...FINANCES_PAR_DEFAUT.modeles.defi, modele: "x y" } } }).code, "modele-invalide:defi");
+});
+
+test("prix annuel saisi : remplace la remise, remise effective calculée", () => {
+  const offre = { limites: { tokensSession: 0, tokensAppel: 0, defisJour: 0, cahiersJour: 0, cahiersMois: 0 }, usage: { joursActifsMois: 0, tauxUtilisation: 0 }, prix: { mode: "prix", prixMensuelHT: 10, margeCible: 0, remiseAnnuelle: 50, prixAnnuelHT: 96 } };
+  const e = estimerSouscription(offre, FINANCES_PAR_DEFAUT, { defi: 0, cahiers: 0 });
+  assert.deepEqual([e.prixAnnuelHT, e.prixAnnuelSaisi, e.remiseEffective], [96, true, 20]);
+});

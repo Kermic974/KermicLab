@@ -783,6 +783,19 @@
         <p id="code-prof-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
       </form>
     </section>
+    <!-- Mon abonnement (ADR 0034) : niveau de souscription du compte en ligne, rôles cumulés, changement à la demande.
+         Phase de développement : le paiement est considéré comme acquis. Rien n'est demandé avant l'ouverture du bloc. -->
+    <section class="compte-bloc" id="compte-souscription" aria-labelledby="souscription-titre" hidden>
+      <h3 id="souscription-titre" data-i18n="abonnementTitre"></h3>
+      <p id="souscription-actuelle" class="doux"></p>
+      <p id="souscription-roles" class="doux petit"></p>
+      <p id="souscription-dev" class="note-locale" data-i18n="abonnementDev" hidden></p>
+      <details id="souscription-changer" class="famille-ajout">
+        <summary data-i18n="abonnementChanger"></summary>
+        <ul id="souscription-offres" class="offres-souscription"></ul>
+      </details>
+      <p id="souscription-message" class="doux" role="status" aria-live="polite"></p>
+    </section>
     <!-- Ce que Kermiclab sait de moi (ADR 0024 §3 ter) : droit d'accès en libre-service et identifiant unique du compte,
          à donner au support pour toute demande. Rien n'est demandé au serveur tant que le bouton n'est pas utilisé. -->
     <section class="compte-bloc" id="compte-moi" aria-labelledby="moi-titre">

@@ -12,14 +12,31 @@ CREATE TABLE IF NOT EXISTS roles (
 );
 
 -- Rôle et niveau de souscription d'un compte (compte famille ou compte local). Sans ligne : rôle par défaut.
+-- `roles` (migration 0009, ADR 0034) : rôles attribués à la main, cumulatifs, en liste JSON ; `role_id` en reste le
+-- premier. Le rôle de la souscription (`niveau`) s'y ajoute à la lecture.
 CREATE TABLE IF NOT EXISTS attributions_roles (
   type_compte  TEXT NOT NULL CHECK (type_compte IN ('compte', 'compte-local')),
   compte_id    TEXT NOT NULL,
   role_id      TEXT NOT NULL,
   niveau       TEXT NOT NULL DEFAULT 'gratuit',
   maj_le       TEXT NOT NULL DEFAULT (datetime('now')),
+  roles        TEXT NOT NULL DEFAULT '[]',
   PRIMARY KEY (type_compte, compte_id)
 );
+
+-- Changements de souscription demandés par un compte (ADR 0034) : niveau quitté, niveau choisi, mode de paiement
+-- (« dev » : phase de développement, paiement considéré comme acquis). Date au jour près ; aucun montant ni moyen de
+-- paiement.
+CREATE TABLE IF NOT EXISTS souscriptions_changements (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  type_compte  TEXT NOT NULL CHECK (type_compte IN ('compte', 'compte-local')),
+  compte_id    TEXT NOT NULL,
+  de           TEXT NOT NULL,
+  vers         TEXT NOT NULL,
+  paiement     TEXT NOT NULL CHECK (paiement IN ('dev', 'gratuit', 'paye')),
+  change_le    TEXT NOT NULL DEFAULT (date('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_souscriptions_changements_compte ON souscriptions_changements (type_compte, compte_id);
 
 -- Stratégie d'accès d'une fonctionnalité : ouverte à tous, réservée à des rôles ou niveaux, ou fermée.
 -- Sans ligne : « tous ». Appliquée seulement quand CONTROLE_ACCES_ACTIF vaut true (false pendant la bêta).

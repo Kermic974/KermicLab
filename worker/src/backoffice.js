@@ -17,7 +17,7 @@ import {
   ecrireSouscriptions, ecrireTheme, envAvecReglages, validerParametre
 } from "./reglages.js";
 import {
-  FINANCES_PAR_DEFAUT, MAX_SOUSCRIPTIONS, SOUSCRIPTION_GRATUITE, bornesLimites, decrireSouscription, validerFinances, validerSouscription
+  FINANCES_PAR_DEFAUT, LIMITES_CONSOMMATION, MAX_SOUSCRIPTIONS, SOUSCRIPTION_GRATUITE, bornesLimites, decrireSouscription, validerFinances, validerSouscription
 } from "./souscriptions.js";
 import { BORNES_FINANCES, DEVISES, MODULES_COUT } from "../../web/admin/financier.js";
 import { REGISTRE, controlerNonConservation, volumes } from "./donnees.js";
@@ -28,6 +28,8 @@ import {
 import { supprimerCompte } from "./comptes.js";
 import { effacerCompteLocal, genererMotDePasseProvisoire, remplacerMotDePasse } from "./compte-local.js";
 import { donneesCompteLocal } from "./compte-local-acces.js";
+import { cumulerRoles, ecrireAttribution, rolesManuels } from "./attributions.js";
+import { chargerTarifsCloudflare, mesuresTelemetrie, tarifsCloudflareDisponibles } from "./tarifs-cloudflare.js";
 import { creerOuCommenterIssue } from "./github.js";
 import { THEMES, THEME_PERSONNALISE, contraste, couleursTheme, deriverVariables, validerTheme } from "../../web/theme.js";
 
@@ -90,7 +92,8 @@ async function listerUtilisateurs(env, { id = null } = {}) {
     tenter(() => toutes(env, `SELECT c.id, c.role, c.created_at, c.last_login_at, c.consent_version,
       (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ${filtre} ORDER BY c.created_at DESC, c.rowid DESC LIMIT 200`, ...valeurs), []),
     tenter(() => toutes(env, `SELECT c.id, c.cree_le, c.bloque_jusqua, c.mdp_provisoire FROM comptes_locaux c ${filtre} ORDER BY c.cree_le DESC, c.rowid DESC LIMIT 200`, ...valeurs), []),
-    tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), []),
+    tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, roles, niveau FROM attributions_roles"), null)
+      .then((l) => l ?? tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), [])),
     tenter(() => toutes(env, "SELECT profil, etat, expire_le FROM profils_securite"), []),
     tenter(() => toutes(env, "SELECT enfant_id, parent_id FROM familles_liens"), [])
   ]);
@@ -101,10 +104,15 @@ async function listerUtilisateurs(env, { id = null } = {}) {
   const attribution = new Map(attributions.map((a) => [`${a.type_compte}:${a.compte_id}`, a]));
   const aujourdhui = jourDe(Date.now());
   const etat = new Map(etats.filter((e) => !e.expire_le || e.expire_le >= aujourdhui).map((e) => [e.profil, e.etat]));
+  const reglages = await chargerReglages(env);
   const decrire = async (type, id, roleInitial) => {
     const a = attribution.get(`${type}:${id}`);
     const profil = await profilDuCompte(env, type, id);
-    return { type, id, role: a?.role_id ?? roleInitial, niveau: a?.niveau ?? NIVEAU_PAR_DEFAUT, profil, etat: etat.get(profil) ?? "normal" };
+    // Rôles cumulatifs (ADR 0034) : rôles attribués à la main, plus le rôle apporté par la souscription.
+    const roles = rolesManuels(a ?? { role_id: roleInitial });
+    const niveau = a?.niveau ?? NIVEAU_PAR_DEFAUT;
+    const roleOffre = reglages.souscriptions.find((s) => s.id === niveau)?.role ?? null;
+    return { type, id, role: roles[0], roles, roleOffre, rolesEffectifs: cumulerRoles(roles, roleOffre), niveau, profil, etat: etat.get(profil) ?? "normal" };
   };
   const utilisateurs = [];
   for (const c of comptes) {
@@ -121,19 +129,23 @@ async function listerUtilisateurs(env, { id = null } = {}) {
 const TABLE_COMPTE = { compte: "comptes", "compte-local": "comptes_locaux" };
 const compteExiste = async (env, type, id) => !!(await tenter(() => env.DB.prepare(`SELECT 1 FROM ${TABLE_COMPTE[type]} WHERE id = ?`).bind(id).first(), null));
 
+/**
+ * Rôles (cumulatifs, ADR 0034) et souscription d'un compte. `roles` : liste de rôles (au moins un) ; `role` (un seul
+ * rôle) reste accepté pour les clients précédents.
+ */
 async function modifierUtilisateur(env, type, id, corps, reglages) {
   if (!(await compteExiste(env, type, id))) return erreur("introuvable", 404);
-  const roles = await listerRoles(env);
-  const role = String(corps?.role ?? "");
+  const connus = (await listerRoles(env)).map((r) => r.id);
+  const demandes = Array.isArray(corps?.roles) ? corps.roles.map(String) : [String(corps?.role ?? "")];
+  const roles = [...new Set(demandes)];
+  if (!roles.length || roles.length > 8 || !roles.every((r) => connus.includes(r))) return erreur("role-inconnu", 400);
   const niveau = String(corps?.niveau ?? NIVEAU_PAR_DEFAUT);
-  if (!roles.some((r) => r.id === role)) return erreur("role-inconnu", 400);
   if (niveau !== NIVEAU_PAR_DEFAUT && !reglages.niveaux.some((n) => n.id === niveau)) return erreur("niveau-inconnu", 400);
-  await env.DB.prepare(`INSERT INTO attributions_roles (type_compte, compte_id, role_id, niveau, maj_le) VALUES (?, ?, ?, ?, datetime('now'))
-    ON CONFLICT (type_compte, compte_id) DO UPDATE SET role_id = excluded.role_id, niveau = excluded.niveau, maj_le = excluded.maj_le`)
-    .bind(type, id, role, niveau).run();
-  // La colonne historique `comptes.role` reste alignée quand le rôle fait partie de ses valeurs permises (ADR 0023).
-  if (type === "compte" && ROLES_HISTORIQUES.includes(role)) await env.DB.prepare("UPDATE comptes SET role = ? WHERE id = ?").bind(role, id).run();
-  await noter(env, "utilisateur.role", `${type}:${id}:${role}:${niveau}`);
+  await ecrireAttribution(env, type, id, { roles, niveau });
+  // La colonne historique `comptes.role` reste alignée sur le premier rôle permis par sa contrainte (ADR 0023).
+  const historique = roles.find((r) => ROLES_HISTORIQUES.includes(r));
+  if (type === "compte" && historique) await env.DB.prepare("UPDATE comptes SET role = ? WHERE id = ?").bind(historique, id).run();
+  await noter(env, "utilisateur.role", `${type}:${id}:${roles.join("+")}:${niveau}`);
   return json({ ok: true });
 }
 
@@ -147,6 +159,7 @@ async function supprimerUtilisateur(env, type, id) {
     await effacerCompteLocal(env, id);
   }
   await env.DB.prepare("DELETE FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).run();
+  await tenter(() => env.DB.prepare("DELETE FROM souscriptions_changements WHERE type_compte = ? AND compte_id = ?").bind(type, id).run());
   if (profil) {
     await env.DB.prepare("DELETE FROM signaux_securite WHERE profil = ?").bind(profil).run();
     await env.DB.prepare("DELETE FROM profils_securite WHERE profil = ?").bind(profil).run();
@@ -184,7 +197,8 @@ async function exporterUtilisateur(env, type, id) {
   donnees.enfants = await toutes(env, "SELECT id, prenom_affiche, age_tranche, langue, consentement_version, consentement_at, created_at FROM eleves WHERE parent_id = ?", id);
   donnees.progression = await toutes(env, "SELECT eleve_id, notion_id, score, etoiles, completed_at, updated_at FROM progres WHERE eleve_id IN (SELECT id FROM eleves WHERE parent_id = ?)", id);
   donnees.contributions = await tenter(() => toutes(env, "SELECT id, notion_id, chemin, nature, type, texte_propose, motif, statut, created_at FROM contributions WHERE auteur_id = ?", id), []);
-  donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
+  donnees.attribution = await tenter(() => env.DB.prepare("SELECT role_id, roles, niveau, maj_le FROM attributions_roles WHERE type_compte = ? AND compte_id = ?").bind(type, id).first(), null);
+  donnees.souscriptions = await tenter(() => toutes(env, "SELECT de, vers, paiement, change_le FROM souscriptions_changements WHERE type_compte = ? AND compte_id = ? ORDER BY id", type, id), []);
   donnees.securite = profil ? {
     etat: await tenter(() => env.DB.prepare("SELECT etat, motifs, decide_par, maj_le, expire_le FROM profils_securite WHERE profil = ?").bind(profil).first(), null),
     compteurs: await tenter(() => toutes(env, "SELECT jour, categorie, module, n FROM signaux_securite WHERE profil = ? ORDER BY jour", profil), [])
@@ -383,7 +397,10 @@ async function etatSouscriptions(env, envEffectif, reglages) {
     tokensParGeneration: { defi: config.MAX_TOKENS_DEFI, cahiers: config.MAX_TOKENS_CAHIERS },
     modulesCout: MODULES_COUT,
     devises: DEVISES,
-    max: MAX_SOUSCRIPTIONS
+    max: MAX_SOUSCRIPTIONS,
+    // ADR 0034 : chargement des tarifs du catalogue Cloudflare possible ? Consommation mesurée sur 30 jours.
+    tarifsCloudflare: tarifsCloudflareDisponibles(env),
+    telemetrie: await mesuresTelemetrie(env, 30)
   };
 }
 
@@ -391,6 +408,19 @@ async function enregistrerSouscription(env, id, corps, reglages) {
   const roles = (await listerRoles(env)).map((r) => r.id);
   const v = validerSouscription(id, corps, { roles });
   if (!v.ok) return erreur(v.code, 400);
+  if (id === SOUSCRIPTION_GRATUITE) {
+    // « Gratuit » (ADR 0034) : ses limites de consommation sont les paramètres du registre, appliqués à tous ; elles y
+    // sont écrites, avec les mêmes bornes que dans Harness (plafonds de la table de quota compris).
+    const ecritures = [];
+    for (const [champ, cle] of Object.entries(LIMITES_CONSOMMATION)) {
+      if (v.souscription.limites[champ] === undefined) continue;
+      const p = validerParametre(cle, v.souscription.limites[champ]);
+      if (!p.ok) return erreur(`hors-bornes:${champ}`, 400);
+      ecritures.push([cle, p.valeur]);
+      delete v.souscription.limites[champ];
+    }
+    for (const [cle, valeur] of ecritures) await ecrireParametre(env, cle, valeur);
+  }
   const liste = reglages.souscriptions.filter((s) => s.id !== id);
   const position = reglages.souscriptions.findIndex((s) => s.id === id);
   if (position < 0 && liste.length >= MAX_SOUSCRIPTIONS) return erreur("trop-de-souscriptions", 409);
@@ -495,7 +525,8 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     if (methode === "DELETE") {
       // Rôle système : seule sa surcharge est retirée. Rôle personnalisé encore attribué : refus.
       if (!Object.hasOwn(ROLES_SYSTEME, m[1])) {
-        const utilise = await env.DB.prepare("SELECT count(*) AS n FROM attributions_roles WHERE role_id = ?").bind(m[1]).first();
+        // Rôle attribué, seul ou cumulé (ADR 0034).
+        const utilise = await env.DB.prepare("SELECT count(*) AS n FROM attributions_roles WHERE role_id = ? OR roles LIKE ?").bind(m[1], `%"${m[1]}"%`).first();
         if (utilise?.n) return erreur("role-attribue", 409);
         if (reglages.souscriptions.some((s) => s.role === m[1])) return erreur("role-dans-souscription", 409);
       }
@@ -513,7 +544,9 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     const c = await corps();
     if (c.erreur) return c.erreur;
     const [strategies, roles] = await Promise.all([listerStrategies(env), listerRoles(env)]);
-    const sujet = { role: String(c.corps.role ?? ROLE_PAR_DEFAUT), niveau: String(c.corps.niveau ?? NIVEAU_PAR_DEFAUT) };
+    // Un ou plusieurs rôles cumulés (ADR 0034) ; le rôle de la souscription s'y ajoute dans la décision.
+    const rolesSimules = (Array.isArray(c.corps.roles) && c.corps.roles.length ? c.corps.roles : [c.corps.role ?? ROLE_PAR_DEFAUT]).map(String).slice(0, 8);
+    const sujet = { role: rolesSimules[0], roles: rolesSimules, niveau: String(c.corps.niveau ?? NIVEAU_PAR_DEFAUT) };
     // Simulation : la décision telle qu'elle serait rendue contrôle activé, à côté de la décision en vigueur.
     const actif = Object.create(envEffectif);
     actif.CONTROLE_ACCES_ACTIF = "true";
@@ -599,6 +632,15 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     if (methode === "PUT") { const c = await corps(); return c.erreur ?? enregistrerSouscription(env, m[1], c.corps, reglages); }
     if (methode === "DELETE") return supprimerSouscription(env, m[1], reglages);
     return erreur("methode-non-autorisee", 405);
+  }
+  if (est("POST", "/finances/tarifs-cloudflare")) {
+    // Aperçu seulement : les tarifs chargés remplissent le formulaire ; « Enregistrer les hypothèses » les garde.
+    if (!tarifsCloudflareDisponibles(env)) return erreur("tarifs-cloudflare-non-configures", 503);
+    const c = await corps();
+    if (c.erreur) return c.erreur;
+    const resultat = await chargerTarifsCloudflare(env, c.corps?.modeles ?? {}, { fetchImpl: fetchImpl ?? fetch });
+    await noter(env, "finances.tarifs-cloudflare");
+    return json(resultat);
   }
   if (est("PUT", "/finances")) {
     const c = await corps();

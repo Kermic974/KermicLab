@@ -51,6 +51,9 @@ export const PARAMETRES = Object.freeze([
   { cle: "INSTRUCTIONS_CAHIERS", module: "cahiers", type: "texte", defaut: "", max: TAILLE_MAX_INSTRUCTIONS, prive: true },
   // Rôles et stratégies d'accès (ADR 0026) : préparés, non appliqués pendant la bêta.
   { cle: "CONTROLE_ACCES_ACTIF", module: "acces", type: "booleen", defaut: false, prive: true },
+  // Phase de développement (ADR 0034) : un compte change de souscription depuis « Mon compte » sans paiement (paiement
+  // considéré comme acquis), offres « en projet » comprises. À passer à false à l'ouverture du paiement.
+  { cle: "SOUSCRIPTIONS_LIBRE_CHOIX", module: "acces", type: "booleen", defaut: true, prive: true },
   // Garde-fous comportementaux (ADR 0026) : observation seule tant que GARDE_FOUS_ACTIFS vaut false.
   { cle: "GARDE_FOUS_ACTIFS", module: "securite", type: "booleen", defaut: false, prive: true },
   { cle: "SEUIL_SURVEILLANCE", module: "securite", type: "entier", defaut: 3, min: 1, max: 50, prive: true },

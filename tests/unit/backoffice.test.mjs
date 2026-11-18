@@ -490,10 +490,14 @@ test("souscriptions : offres pressenties, composition, bornes, attribution et su
   assert.equal(enregistree.estimation.prixMensuelHT, 9.99);
   assert.ok((await admin("GET", "/utilisateurs")).donnees.niveaux.includes("premium"), "la souscription devient un niveau attribuable");
 
-  // « Gratuit » : limites de consommation du registre, prix nul, jamais supprimé.
-  assert.equal((await admin("PUT", "/souscriptions/gratuit", { ...etat.souscriptions[0], limites: { tokensSession: 4000 }, prix: { mode: "prix", prixMensuelHT: 5, margeCible: 0, remiseAnnuelle: 0 } })).statut, 200);
+  // « Gratuit » (ADR 0034) : tous les champs modifiables ; ses limites de consommation sont écrites dans le registre
+  // (Harness), avec ses bornes (plafond de la table de quota compris). Jamais supprimé.
+  const gratuitBrut = { ...etat.souscriptions[0], limites: { ...etat.souscriptions[0].limites, tokensSession: 4000 }, prix: { mode: "prix", prixMensuelHT: 0, margeCible: 0, remiseAnnuelle: 0, prixAnnuelHT: 0 } };
+  assert.deepEqual((await admin("PUT", "/souscriptions/gratuit", gratuitBrut)).donnees, { erreur: "hors-bornes:tokensSession" }, "au-delà du plafond de la table de quota");
+  assert.equal((await admin("PUT", "/souscriptions/gratuit", { ...gratuitBrut, limites: { ...gratuitBrut.limites, tokensSession: 800 }, prix: { ...gratuitBrut.prix, prixMensuelHT: 1.5 } })).statut, 200);
   const gratuite = (await admin("GET", "/souscriptions")).donnees.souscriptions[0];
-  assert.deepEqual([gratuite.limites.tokensSession, gratuite.prix.prixMensuelHT], [1000, 0]);
+  assert.deepEqual([gratuite.limites.tokensSession, gratuite.prix.prixMensuelHT], [800, 1.5]);
+  assert.equal(env.DB.sqlite.prepare("SELECT valeur FROM reglages WHERE cle = 'param:LIMITE_TOKENS_SESSION'").get()?.valeur, "800", "écrite dans le registre");
   assert.equal((await admin("DELETE", "/souscriptions/gratuit")).donnees.erreur, "souscription-gratuite");
 
   env.DB.sqlite.exec(`INSERT INTO comptes (id, email_hash) VALUES ('${UUID(1)}', 'h')`);
@@ -517,7 +521,7 @@ test("souscriptions : offres pressenties, composition, bornes, attribution et su
 test("finances : hypothèses validées, enregistrées, rétablies ; estimation recalculée", async () => {
   const etat = (await admin("GET", "/souscriptions")).donnees;
   assert.deepEqual(etat.finances, etat.financesParDefaut);
-  const finances = { ...etat.finances, devise: "EUR", coutsFixesMensuels: 0, modeles: { ...etat.finances.modeles, cahiers: { entree: 0, sortie: 0, ratio: 0 } } };
+  const finances = { ...etat.finances, devise: "EUR", coutsFixes: [], modeles: { ...etat.finances.modeles, cahiers: { entree: 0, sortie: 0, ratio: 0 } } };
   assert.equal((await admin("PUT", "/finances", { finances: { ...finances, devise: "XYZ" } })).donnees.erreur, "devise-invalide");
   assert.equal((await admin("PUT", "/finances", { finances: { ...finances, tauxTva: 80 } })).donnees.erreur, "hors-bornes:tauxTva");
   assert.equal((await admin("PUT", "/finances", { finances: { ...finances, modeles: { tuteur: { entree: 1, sortie: 1, ratio: 1 } } } })).donnees.erreur, "hors-bornes:prix-defi");
@@ -531,6 +535,27 @@ test("finances : hypothèses validées, enregistrées, rétablies ; estimation r
   assert.equal((await admin("PUT", "/finances", { reinitialiser: true })).statut, 200);
   assert.deepEqual((await admin("GET", "/souscriptions")).donnees.finances, etat.financesParDefaut);
   assert.ok(journal().includes("finances.enregistrement") && journal().includes("finances.reinitialisation"));
+});
+
+test("tarifs Cloudflare : fermé sans configuration, aperçu sans enregistrement ; télémétrie mesurée exposée", async () => {
+  const etat = (await admin("GET", "/souscriptions")).donnees;
+  assert.equal(etat.tarifsCloudflare, false);
+  assert.deepEqual(Object.keys(etat.telemetrie.mesures), ["tuteur", "defi", "cahiers"]);
+  const modeles = { tuteur: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", defi: "anthropic/claude-haiku-5.5", cahiers: "anthropic/claude-sonnet-5.5" };
+  assert.deepEqual((await admin("POST", "/finances/tarifs-cloudflare", { modeles })).donnees, { erreur: "tarifs-cloudflare-non-configures" });
+  Object.assign(env, { CLOUDFLARE_ACCOUNT_ID: "0123456789abcdef0123456789abcdef", CLOUDFLARE_TARIFS_TOKEN: "jeton-de-lecture-workers-ai" });
+  const appels = [];
+  globalThis.fetch = async (url) => {
+    appels.push(String(url));
+    return Response.json({ data: [{ id: "anthropic/claude-haiku-5.5", pricing: { prompt: "0.0000002", completion: "0.000001" } }] });
+  };
+  const r = await admin("POST", "/finances/tarifs-cloudflare", { modeles });
+  assert.equal(r.statut, 200);
+  assert.deepEqual(r.donnees.modeles.defi, { modele: "anthropic/claude-haiku-5.5", entree: 0.2, sortie: 1, cache: null });
+  assert.equal(r.donnees.modeles.cahiers.erreur, "modele-introuvable");
+  assert.equal(appels.length, 3);
+  assert.deepEqual((await admin("GET", "/souscriptions")).donnees.finances, etat.finances, "rien n'est enregistré sans l'administrateur");
+  assert.ok(journal().includes("finances.tarifs-cloudflare"));
 });
 
 test("sans migration 0002 : le site fonctionne comme avant, le back-office répond indisponible", async () => {

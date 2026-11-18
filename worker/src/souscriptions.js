@@ -81,8 +81,9 @@ const entierDans = (v, [min, max]) => Number.isInteger(v) && v >= min && v <= ma
 const decimalDans = (v, [min, max]) => Number.isFinite(v) && v >= min && v <= max;
 
 /**
- * Valide une souscription. `roles` : identifiants de rôles existants. Pour « gratuit », les limites de consommation
- * sont celles du registre (réglées dans Harness) et le prix vaut 0 : les valeurs saisies sont ignorées.
+ * Valide une souscription. `roles` : identifiants de rôles existants. Tous les champs sont modifiables (ADR 0034),
+ * « gratuit » compris : ses limites de consommation, facultatives à la relecture, sont celles du registre (Harness) ;
+ * saisies dans « Souscriptions », elles y sont écrites (une seule source). Son prix reste normalement 0.
  * @returns {{ ok: true, souscription } | { ok: false, code: string }}
  */
 export function validerSouscription(id, brut, { roles = [] } = {}) {
@@ -98,12 +99,12 @@ export function validerSouscription(id, brut, { roles = [] } = {}) {
   const fonctionnalites = [...new Set((Array.isArray(brut?.fonctionnalites) ? brut.fonctionnalites : []).filter((f) => FONCTIONNALITES.includes(f)))];
 
   const limites = {};
-  if (!gratuite) {
-    for (const champ of Object.keys(LIMITES_CONSOMMATION)) {
-      const v = nombre(brut?.limites?.[champ]);
-      if (!entierDans(v, bornesConsommation(champ))) return { ok: false, code: `hors-bornes:${champ}` };
-      limites[champ] = v;
-    }
+  for (const champ of Object.keys(LIMITES_CONSOMMATION)) {
+    // « gratuit » : limite facultative (à défaut, celle du registre).
+    if (gratuite && (brut?.limites?.[champ] === undefined || brut?.limites?.[champ] === null)) continue;
+    const v = nombre(brut?.limites?.[champ]);
+    if (!entierDans(v, bornesConsommation(champ))) return { ok: false, code: `hors-bornes:${champ}` };
+    limites[champ] = v;
   }
   for (const [champ, bornes] of Object.entries({ ...LIMITES_MENSUELLES, ...LIMITES_STRUCTURE })) {
     const v = nombre(brut?.limites?.[champ] ?? 0);
@@ -120,13 +121,13 @@ export function validerSouscription(id, brut, { roles = [] } = {}) {
 
   const mode = MODES_PRIX.includes(brut?.prix?.mode) ? brut.prix.mode : null;
   if (!mode) return { ok: false, code: "mode-prix-invalide" };
-  const prix = { mode: gratuite ? "prix" : mode };
-  for (const champ of ["prixMensuelHT", "margeCible", "remiseAnnuelle"]) {
+  const prix = { mode };
+  // `prixAnnuelHT` : prix annuel saisi directement ; 0 = douze mois moins la remise annuelle.
+  for (const champ of ["prixMensuelHT", "margeCible", "remiseAnnuelle", "prixAnnuelHT"]) {
     const v = nombre(brut?.prix?.[champ] ?? 0);
     if (!decimalDans(v, BORNES_FINANCES[champ])) return { ok: false, code: `hors-bornes:${champ}` };
     prix[champ] = Math.round(v * 100) / 100;
   }
-  if (gratuite) Object.assign(prix, { prixMensuelHT: 0, margeCible: 0, remiseAnnuelle: 0 });
 
   return { ok: true, souscription: { id, libelle, description: texteCourt(brut?.description, 200), statut, role, fonctionnalites, limites, usage, prix } };
 }
@@ -158,10 +159,13 @@ export function depuisNiveaux(niveaux) {
   }))];
 }
 
-/** Limites effectives : pour « gratuit », les limites de consommation viennent du registre (configuration en vigueur). */
+/**
+ * Limites effectives : pour « gratuit », les limites de consommation viennent du registre (configuration en vigueur),
+ * où « Souscriptions » les écrit.
+ */
 export function limitesEffectives(souscription, config) {
   if (souscription.id !== SOUSCRIPTION_GRATUITE) return souscription.limites;
-  return { ...Object.fromEntries(Object.entries(LIMITES_CONSOMMATION).map(([champ, cle]) => [champ, config[cle]])), ...souscription.limites };
+  return { ...souscription.limites, ...Object.fromEntries(Object.entries(LIMITES_CONSOMMATION).map(([champ, cle]) => [champ, config[cle]])) };
 }
 
 /** Souscription prête à afficher : limites effectives et estimation financière. */

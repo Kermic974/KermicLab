@@ -17,7 +17,7 @@ import {
 } from "../../web/famille.js";
 import { compteDeSession, effacerCompteLocal, inscrireCompte, motDePasseDuCompte, remplacerMotDePasse } from "./compte-local.js";
 import { instructionsEffacementFamille } from "./famille-donnees.js";
-import { listerRoles, ROLES_SYSTEME } from "./roles.js";
+import { attributionDuCompte } from "./attributions.js";
 import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
 import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
@@ -51,22 +51,14 @@ async function lireCorps(requete) {
   return { corps };
 }
 
-/** Rôle attribué au compte local (back-office) ; « visiteur » sans attribution ou si la table manque. */
-async function roleDuCompte(env, compteId) {
-  try {
-    const a = await env.DB.prepare("SELECT role_id FROM attributions_roles WHERE type_compte = 'compte-local' AND compte_id = ?").bind(compteId).first();
-    return a?.role_id ?? "visiteur";
-  } catch {
-    return "visiteur";
-  }
-}
+/**
+ * Rôles cumulés du compte local (ADR 0034) : rôles attribués dans le back-office et rôle de sa souscription.
+ * « visiteur » sans attribution ou si la table manque.
+ */
+const roleDuCompte = (env, compteId) => attributionDuCompte(env, "compte-local", compteId);
 
-/** Le rôle donne-t-il la permission `famille` ? Rôles effectifs (surcharges du back-office comprises). */
-async function rolePermetFamille(env, role) {
-  let permissions;
-  try { permissions = (await listerRoles(env)).find((r) => r.id === role)?.permissions; } catch { permissions = ROLES_SYSTEME[role]?.permissions; }
-  return (permissions ?? []).includes("famille");
-}
+/** L'un des rôles cumulés donne-t-il la permission `famille` ? Rôles effectifs (surcharges du back-office comprises). */
+const rolePermetFamille = (env, attribution) => attribution.permissions.includes("famille");
 
 const lienEnfant = (env, enfantId) => env.DB.prepare(
   "SELECT enfant_id, parent_id, prenom, tranche_age, origine, lie_le FROM familles_liens WHERE enfant_id = ?"
@@ -79,8 +71,8 @@ async function situation(env, compteId) {
     roleDuCompte(env, compteId), lienEnfant(env, compteId), nombreEnfants(env, compteId),
     env.DB.prepare("SELECT expire_a FROM familles_invitations WHERE enfant_id = ? AND expire_a > ?").bind(compteId, maintenant()).first()
   ]);
-  const parent = !lien && await rolePermetFamille(env, role);
-  return { role, parent, lien, enfants, invitation };
+  const parent = !lien && rolePermetFamille(env, role);
+  return { role: role.roles[0], roles: role.roles, parent, lien, enfants, invitation };
 }
 
 /** Un compte membre d'une famille (parent avec au moins un enfant, ou enfant rattaché) ? */
@@ -504,7 +496,7 @@ export async function gererApiFamille(requete, env, { catalogue, iaCahier = fals
   if (est("GET", "moi")) {
     const s = await situation(env, moi);
     return json({
-      role: s.role, parent: s.parent, enfants: s.enfants,
+      role: s.role, roles: s.roles, parent: s.parent, enfants: s.enfants,
       enfant: s.lien ? { prenom: s.lien.prenom, trancheAge: s.lien.tranche_age, lieLe: s.lien.lie_le } : null,
       invitation: s.invitation ? { expire: s.invitation.expire_a } : null
     });
