@@ -1,7 +1,7 @@
 # ADR 0033 — Adoption des contrats S6 et migration des expériences
 
 - Date : 2026-11-18.
-- Statut : proposé pour adoption par la PR documentaire ; arbitrages de périmètre confirmés par le propriétaire dans le chat.
+- Statut : adopté par la [PR #385](https://github.com/Kermic974/KermicLab/pull/385), fusionnée le 18 novembre 2026 à `8eb022e92405def7cc80cd05d5b92beca86c3cf6` ; arbitrages de périmètre confirmés par le propriétaire dans le chat.
 - Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384).
 
 ## Contexte

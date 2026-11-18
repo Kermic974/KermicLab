@@ -1,0 +1,558 @@
+[
+  {
+    "name": "F-SCHEMA-EXPLANATION-STATE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-EXPLANATION-IDENTITY-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-EXAMPLE-STATE-ERROR",
+    "base": "F-SCHEMA-EXAMPLE-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-EXAMPLE-IDENTITY-ERROR",
+    "base": "F-SCHEMA-EXAMPLE-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-STATE-ERROR",
+    "base": "F-SCHEMA-EXERCISE-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-IDENTITY-ERROR",
+    "base": "F-SCHEMA-EXERCISE-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-QUIZ-STATE-ERROR",
+    "base": "F-SCHEMA-QUIZ-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-QUIZ-IDENTITY-ERROR",
+    "base": "F-SCHEMA-QUIZ-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-GUIDED-ACTIVITY-STATE-ERROR",
+    "base": "F-SCHEMA-GUIDED-ACTIVITY-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-GUIDED-ACTIVITY-IDENTITY-ERROR",
+    "base": "F-SCHEMA-GUIDED-ACTIVITY-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-VISUALIZATION-STATE-ERROR",
+    "base": "F-SCHEMA-VISUALIZATION-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-VISUALIZATION-IDENTITY-ERROR",
+    "base": "F-SCHEMA-VISUALIZATION-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-MANIPULATION-STATE-ERROR",
+    "base": "F-SCHEMA-MANIPULATION-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-MANIPULATION-IDENTITY-ERROR",
+    "base": "F-SCHEMA-MANIPULATION-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-LAB-STATE-ERROR",
+    "base": "F-SCHEMA-LAB-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-LAB-IDENTITY-ERROR",
+    "base": "F-SCHEMA-LAB-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-MISSION-STATE-ERROR",
+    "base": "F-SCHEMA-MISSION-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-MISSION-IDENTITY-ERROR",
+    "base": "F-SCHEMA-MISSION-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-REMEDIATION-STATE-ERROR",
+    "base": "F-SCHEMA-REMEDIATION-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-REMEDIATION-IDENTITY-ERROR",
+    "base": "F-SCHEMA-REMEDIATION-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-DEEPENING-RESOURCE-STATE-ERROR",
+    "base": "F-SCHEMA-DEEPENING-RESOURCE-VALID",
+    "pointer": "/learnerState",
+    "value": {
+      "score": 1
+    },
+    "keyword": "unevaluatedProperties"
+  },
+  {
+    "name": "F-SCHEMA-DEEPENING-RESOURCE-IDENTITY-ERROR",
+    "base": "F-SCHEMA-DEEPENING-RESOURCE-VALID",
+    "pointer": "/id",
+    "value": "notion.mathematiques.fixture",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-id",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/id",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-type",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/type",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-version",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/version",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-status",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/status",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-label",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/label",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-description",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/description",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-objective",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/objective",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-targets",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/targets",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REQUIRED-provenance",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/provenance",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-VERSION-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/version",
+    "value": "1.0.0",
+    "keyword": "type"
+  },
+  {
+    "name": "F-SCHEMA-VERSION-ZERO-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/version",
+    "value": 0,
+    "keyword": "minimum"
+  },
+  {
+    "name": "F-SCHEMA-LABEL-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/label",
+    "value": "   ",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-STATUS-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/status",
+    "value": "published",
+    "keyword": "enum"
+  },
+  {
+    "name": "F-SCHEMA-TARGET-EMPTY-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/targets",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-TARGET-TYPE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/targets/0",
+    "value": "curriculum.mathematiques.test",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-TARGET-DUPLICATE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/targets",
+    "value": [
+      "notion.mathematiques.pythagore",
+      "notion.mathematiques.pythagore"
+    ],
+    "keyword": "uniqueItems"
+  },
+  {
+    "name": "F-SCHEMA-PATH-TRAVERSAL-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/path",
+    "value": "catalogue/../pythagore/contenu.json",
+    "keyword": "not"
+  },
+  {
+    "name": "F-SCHEMA-PATH-WINDOWS-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/path",
+    "value": "C:\\contenu.json",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-PATH-URL-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/path",
+    "value": "https://exemple.invalid/contenu.json",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-PATH-BACKSLASH-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/path",
+    "value": "catalogue\\pythagore\\contenu.json",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-ANCHOR-POSITION-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/anchor",
+    "value": "/niveaux/0",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-FORMAT-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/format",
+    "value": "eval",
+    "keyword": "enum"
+  },
+  {
+    "name": "F-SCHEMA-FORMAT-PATH-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/path",
+    "value": "catalogue/pythagore/page.html",
+    "keyword": "pattern"
+  },
+  {
+    "name": "F-SCHEMA-SOURCE-STATE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources/0/answer",
+    "value": "réponse élève",
+    "keyword": "additionalProperties"
+  },
+  {
+    "name": "F-SCHEMA-SOURCE-EMPTY-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/sources",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-DURATION-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/durationMinutes",
+    "value": 0,
+    "keyword": "exclusiveMinimum"
+  },
+  {
+    "name": "F-SCHEMA-VARIANT-PARTIAL-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/priority",
+    "value": 1,
+    "keyword": "dependentRequired"
+  },
+  {
+    "name": "F-SCHEMA-PROVENANCE-STATE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/provenance/session",
+    "value": "session",
+    "keyword": "additionalProperties"
+  },
+  {
+    "name": "F-SCHEMA-PROVENANCE-MIGRATION-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/provenance/type",
+    "value": "legacy-v0",
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REVIEW-STATE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/review",
+    "value": {
+      "learnerId": "x"
+    },
+    "keyword": "additionalProperties"
+  },
+  {
+    "name": "F-SCHEMA-ACCESSIBILITY-STATE-ERROR",
+    "base": "F-SCHEMA-EXPLANATION-VALID",
+    "pointer": "/accessibility",
+    "value": {
+      "modalities": [
+        "visual"
+      ],
+      "alternatives": [],
+      "disability": "inféré"
+    },
+    "keyword": "additionalProperties"
+  },
+  {
+    "name": "F-SCHEMA-QUIZ-COMPOSITION-ERROR",
+    "base": "F-SCHEMA-QUIZ-VALID",
+    "pointer": "/components",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-GUIDED-ACTIVITY-COMPOSITION-ERROR",
+    "base": "F-SCHEMA-GUIDED-ACTIVITY-VALID",
+    "pointer": "/components",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-LAB-COMPOSITION-ERROR",
+    "base": "F-SCHEMA-LAB-VALID",
+    "pointer": "/components",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-MISSION-COMPOSITION-ERROR",
+    "base": "F-SCHEMA-MISSION-VALID",
+    "pointer": "/components",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-REMEDIATION-COMPOSITION-ERROR",
+    "base": "F-SCHEMA-REMEDIATION-VALID",
+    "pointer": "/components",
+    "value": [],
+    "keyword": "minItems"
+  },
+  {
+    "name": "F-SCHEMA-EXAMPLE-COMPOSITION-ERROR",
+    "base": "F-SCHEMA-EXAMPLE-VALID",
+    "pointer": "/components",
+    "value": [
+      {
+        "id": "experience.mathematiques.exercice-pythagore",
+        "version": 1
+      }
+    ],
+    "keyword": "false schema"
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-FORMAT-ERROR",
+    "base": "F-SCHEMA-EXERCISE-VALID",
+    "pointer": "/task/format",
+    "value": "free-text",
+    "keyword": "enum"
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-ANSWER-ERROR",
+    "base": "F-SCHEMA-EXERCISE-VALID",
+    "pointer": "/task/expected",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-ACTION-ERROR",
+    "base": "F-SCHEMA-EXERCISE-VALID",
+    "pointer": "/task/format",
+    "value": "action",
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-STUDENT-ANSWER-ERROR",
+    "base": "F-SCHEMA-EXERCISE-VALID",
+    "pointer": "/task/studentAnswer",
+    "value": "texte saisi",
+    "keyword": "additionalProperties"
+  },
+  {
+    "name": "F-SCHEMA-VARIANT-SENSITIVE-ERROR",
+    "base": "F-SCHEMA-VARIANT-VALID",
+    "pointer": "/applicability/diagnosis",
+    "value": "profil inféré",
+    "keyword": "additionalProperties"
+  },
+  {
+    "name": "F-SCHEMA-VARIANT-UNKNOWN-CONTEXT-ERROR",
+    "base": "F-SCHEMA-VARIANT-VALID",
+    "pointer": "/applicability/navigation",
+    "value": "automatic",
+    "keyword": "enum"
+  },
+  {
+    "name": "F-SCHEMA-VARIANT-NEGATIVE-PRIORITY-ERROR",
+    "base": "F-SCHEMA-VARIANT-VALID",
+    "pointer": "/priority",
+    "value": -1,
+    "keyword": "minimum"
+  },
+  {
+    "name": "F-SCHEMA-VARIANT-BASE-VERSION-ERROR",
+    "base": "F-SCHEMA-VARIANT-VALID",
+    "pointer": "/variantOf/version",
+    "value": 0,
+    "keyword": "minimum"
+  },
+  {
+    "name": "F-SCHEMA-LAB-REQUIRED-limits",
+    "base": "F-SCHEMA-LAB-VALID",
+    "pointer": "/limits",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-LAB-REQUIRED-parameters",
+    "base": "F-SCHEMA-LAB-VALID",
+    "pointer": "/parameters",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-LAB-REQUIRED-interactions",
+    "base": "F-SCHEMA-LAB-VALID",
+    "pointer": "/interactions",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-MISSION-REQUIRED-successCriteria",
+    "base": "F-SCHEMA-MISSION-VALID",
+    "pointer": "/successCriteria",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-MANIPULATION-REQUIRED-actions",
+    "base": "F-SCHEMA-MANIPULATION-VALID",
+    "pointer": "/actions",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-MANIPULATION-REQUIRED-constraints",
+    "base": "F-SCHEMA-MANIPULATION-VALID",
+    "pointer": "/constraints",
+    "remove": true,
+    "keyword": "required"
+  },
+  {
+    "name": "F-SCHEMA-REMEDIATION-REQUIRED-rationale",
+    "base": "F-SCHEMA-REMEDIATION-VALID",
+    "pointer": "/rationale",
+    "remove": true,
+    "keyword": "required"
+  }
+]

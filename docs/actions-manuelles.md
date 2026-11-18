@@ -8,7 +8,7 @@ Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384).
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
-| Relire et fusionner la PR d’adoption S6 après CI verte | [Norme proposée](referentiel/normes/S6-v1.0.0.md), [ADR 0033](decisions/0033-adoption-contrats-s6.md), PR liée au suivi #384 | AGENTS.md exige la validation humaine ; le plan place cette adoption avant l’implémentation technique | Confirmer la fusion ; la PR des schémas peut alors démarrer | à faire |
+| Relire et fusionner la PR d’adoption S6 après CI verte | [PR #385](https://github.com/Kermic974/KermicLab/pull/385), [norme](referentiel/normes/S6-v1.0.0.md), [ADR 0033](decisions/0033-adoption-contrats-s6.md) | AGENTS.md exige la validation humaine ; le plan place cette adoption avant l’implémentation technique | Fusion constatée le 18 novembre 2026 à `8eb022e9`, CI verte ; PR des schémas débloquée | fait |
 
 ## Gamification unifiée (ADR 0032)
 

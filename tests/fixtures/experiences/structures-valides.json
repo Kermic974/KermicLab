@@ -1,0 +1,509 @@
+[
+  {
+    "name": "F-SCHEMA-EXPLANATION-VALID",
+    "contract": "explanation",
+    "object": {
+      "id": "experience.mathematiques.fixture-explanation",
+      "type": "explanation",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture explanation",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-EXAMPLE-VALID",
+    "contract": "example",
+    "object": {
+      "id": "experience.mathematiques.fixture-example",
+      "type": "example",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture example",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-EXERCISE-VALID",
+    "contract": "exercise",
+    "object": {
+      "id": "experience.mathematiques.fixture-exercise",
+      "type": "exercise",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture exercise",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "task": {
+        "format": "qcm",
+        "prompt": {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        },
+        "expected": {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      }
+    }
+  },
+  {
+    "name": "F-SCHEMA-QUIZ-VALID",
+    "contract": "quiz",
+    "object": {
+      "id": "experience.mathematiques.fixture-quiz",
+      "type": "quiz",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture quiz",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "components": [
+        {
+          "id": "experience.mathematiques.exercice-pythagore",
+          "version": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-GUIDED-ACTIVITY-VALID",
+    "contract": "guided-activity",
+    "object": {
+      "id": "experience.mathematiques.fixture-guided-activity",
+      "type": "guided-activity",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture guided-activity",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "components": [
+        {
+          "id": "experience.mathematiques.exercice-pythagore",
+          "version": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-VISUALIZATION-VALID",
+    "contract": "visualization",
+    "object": {
+      "id": "experience.mathematiques.fixture-visualization",
+      "type": "visualization",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture visualization",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-MANIPULATION-VALID",
+    "contract": "manipulation",
+    "object": {
+      "id": "experience.mathematiques.fixture-manipulation",
+      "type": "manipulation",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture manipulation",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "actions": {
+        "path": "catalogue/pythagore/contenu.json",
+        "anchor": "explication-pythagore",
+        "format": "catalogue-json"
+      },
+      "constraints": {
+        "path": "catalogue/pythagore/contenu.json",
+        "anchor": "explication-pythagore",
+        "format": "catalogue-json"
+      }
+    }
+  },
+  {
+    "name": "F-SCHEMA-LAB-VALID",
+    "contract": "lab",
+    "object": {
+      "id": "experience.mathematiques.fixture-lab",
+      "type": "lab",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture lab",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "components": [
+        {
+          "id": "experience.mathematiques.exercice-pythagore",
+          "version": 1
+        }
+      ],
+      "parameters": {
+        "path": "catalogue/pythagore/contenu.json",
+        "anchor": "explication-pythagore",
+        "format": "catalogue-json"
+      },
+      "interactions": {
+        "path": "catalogue/pythagore/contenu.json",
+        "anchor": "explication-pythagore",
+        "format": "catalogue-json"
+      },
+      "limits": {
+        "path": "catalogue/pythagore/contenu.json",
+        "anchor": "explication-pythagore",
+        "format": "catalogue-json"
+      }
+    }
+  },
+  {
+    "name": "F-SCHEMA-MISSION-VALID",
+    "contract": "mission",
+    "object": {
+      "id": "experience.mathematiques.fixture-mission",
+      "type": "mission",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture mission",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "components": [
+        {
+          "id": "experience.mathematiques.exercice-pythagore",
+          "version": 1
+        }
+      ],
+      "successCriteria": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-REMEDIATION-VALID",
+    "contract": "remediation",
+    "object": {
+      "id": "experience.mathematiques.fixture-remediation",
+      "type": "remediation",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture remediation",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "components": [
+        {
+          "id": "experience.mathematiques.exercice-pythagore",
+          "version": 1
+        }
+      ],
+      "rationale": "Revoir le repérage de l’angle droit."
+    }
+  },
+  {
+    "name": "F-SCHEMA-DEEPENING-RESOURCE-VALID",
+    "contract": "deepening-resource",
+    "object": {
+      "id": "experience.mathematiques.fixture-deepening-resource",
+      "type": "deepening-resource",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture deepening-resource",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ]
+    }
+  },
+  {
+    "name": "F-SCHEMA-VARIANT-VALID",
+    "contract": "explanation",
+    "object": {
+      "id": "experience.mathematiques.variante-pythagore",
+      "type": "explanation",
+      "version": 1,
+      "status": "draft",
+      "label": "Fixture explanation",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "editorial",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ],
+      "variantOf": {
+        "id": "experience.mathematiques.fixture-explanation",
+        "version": 1
+      },
+      "applicability": {
+        "navigation": "keyboard"
+      },
+      "priority": 10
+    }
+  },
+  {
+    "name": "F-SCHEMA-MIGRATION-VALID",
+    "contract": "explanation",
+    "object": {
+      "id": "experience.mathematiques.fixture-explanation",
+      "type": "explanation",
+      "version": 1,
+      "status": "review",
+      "label": "Fixture explanation",
+      "description": "Exemple synthétique de contrat, sans attestation humaine.",
+      "objective": "Identifier un triangle rectangle.",
+      "targets": [
+        "notion.mathematiques.pythagore"
+      ],
+      "provenance": {
+        "type": "legacy-v0",
+        "references": [
+          {
+            "path": "docs/referentiel/normes/S6-v1.0.0.md",
+            "anchor": "s6-2"
+          }
+        ],
+        "migration": {
+          "slug": "pythagore",
+          "revision": "123d3338ea7f5111fa446bf4378557c58ac9fbad",
+          "sourcePaths": [
+            "catalogue/pythagore/contenu.json"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "path": "catalogue/pythagore/contenu.json",
+          "anchor": "explication-pythagore",
+          "format": "catalogue-json"
+        }
+      ]
+    }
+  }
+]

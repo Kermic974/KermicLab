@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s6/mission.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "mission"
+        },
+        "successCriteria": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "primitives.schema.json#/$defs/source"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "components",
+        "sources",
+        "successCriteria"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}

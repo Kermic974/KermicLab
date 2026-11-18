@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s6/common.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "version",
+    "status",
+    "label",
+    "description",
+    "objective",
+    "targets",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "primitives.schema.json#/$defs/id"
+    },
+    "type": {
+      "enum": [
+        "explanation",
+        "example",
+        "exercise",
+        "quiz",
+        "guided-activity",
+        "visualization",
+        "manipulation",
+        "lab",
+        "mission",
+        "remediation",
+        "deepening-resource"
+      ]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "review",
+        "validated",
+        "deprecated"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://schemas.kermiclab.online/s4/primitives.schema.json#/$defs/objet"
+      }
+    },
+    "provenance": {
+      "$ref": "primitives.schema.json#/$defs/provenance"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "primitives.schema.json#/$defs/source"
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "primitives.schema.json#/$defs/reference"
+      }
+    },
+    "durationMinutes": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "difficulty": {
+      "enum": [
+        "introductory",
+        "intermediate",
+        "advanced"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "primitives.schema.json#/$defs/documentRef"
+      }
+    },
+    "review": {
+      "$ref": "primitives.schema.json#/$defs/review"
+    },
+    "accessibility": {
+      "$ref": "primitives.schema.json#/$defs/accessibility"
+    },
+    "variantOf": {
+      "$ref": "primitives.schema.json#/$defs/reference"
+    },
+    "applicability": {
+      "$ref": "primitives.schema.json#/$defs/applicability"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "sources"
+      ]
+    },
+    {
+      "required": [
+        "components"
+      ]
+    }
+  ],
+  "dependentRequired": {
+    "variantOf": [
+      "applicability",
+      "priority"
+    ],
+    "applicability": [
+      "variantOf",
+      "priority"
+    ],
+    "priority": [
+      "variantOf",
+      "applicability"
+    ]
+  }
+}
