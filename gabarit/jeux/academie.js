@@ -264,7 +264,7 @@ const VueAcademie = (() => {
       const effacer = el("button", { type: "button", classe: "secondaire danger", "data-action": "effacer", texte: confirmationEffacement ? "Confirmer : tout effacer" : "🗑️ Effacer ma progression" });
       effacer.addEventListener("click", () => {
         if (!confirmationEffacement) { confirmationEffacement = true; afficherReglages(); z.dReglages.querySelector('[data-action="effacer"]').focus(); return; }
-        confirmationEffacement = false; etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
+        confirmationEffacement = false; if (typeof SuiviJeux !== "undefined") SuiviJeux.effacer(); etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
       });
       z.dReglages.replaceChildren(objectif, emblemes,
         el("label", { classe: "case-a-cocher" }, libre, "Je connais déjà les bases : ouvrir toutes les leçons"),
@@ -277,6 +277,7 @@ const VueAcademie = (() => {
       reussir: () => terminerExercice(),
       erreur: (message) => {
         ex.erreurs += 1;
+        if (typeof SuiviJeux !== "undefined") { SuiviJeux.reponse(false, "academie"); if (ex.erreurs >= 2) SuiviJeux.indice("academie"); }
         retour(message ?? (ex.erreurs >= 2 ? `Pas tout à fait. Indice : ${ex.exo.indice ?? "relis bien la question."}` : "Pas tout à fait : essaie encore !"), "ko");
       },
       retour: (texte, classe = "") => retour(texte, classe)
@@ -317,6 +318,7 @@ const VueAcademie = (() => {
       const id = session.file[session.rang], { exo, lecon } = P.exercices.get(id);
       session.adaptateur?.arreter?.();
       ex = { id, exo, lecon, erreurs: 0, indice: false, fini: false };
+      if (typeof SuiviJeux !== "undefined") SuiviJeux.preparer(id, session.mode, "academie");
       z.progression.textContent = `${session.mode === "lecon" ? "Exercice" : `${lecon.titre} ·`} ${session.rang + 1} / ${session.file.length}`;
       retour("", "");
       z.suivant.hidden = true; z.indice.hidden = false; z.indice.disabled = false;
@@ -354,6 +356,7 @@ const VueAcademie = (() => {
     z.indice.addEventListener("click", () => {
       if (!ex || ex.fini) return;
       ex.indice = true; z.indice.disabled = true;
+      if (typeof SuiviJeux !== "undefined") SuiviJeux.indice("academie");
       if (ex.exo.type === "qcm") {
         const faux = [...z.qcm.querySelectorAll("button:not(:disabled)")].find((b) => Number(b.dataset.choix) !== ex.exo.bonne);
         if (faux) { faux.disabled = true; faux.dataset.etat = "retire"; faux.textContent = `— ${faux.textContent}`; }
@@ -367,6 +370,7 @@ const VueAcademie = (() => {
     function terminerExercice() {
       if (ex.fini) return;
       ex.fini = true;
+      if (typeof SuiviJeux !== "undefined") { SuiviJeux.reponse(true, "academie"); SuiviJeux.terminer("reussite", "academie"); }
       const j = jour();
       session.erreurs += ex.erreurs; session.indices += ex.indice ? 1 : 0;
       appliquer(P.enregistrerExercice(etat, { id: ex.id, erreurs: ex.erreurs, indice: ex.indice, jour: j, revision: session.mode === "revision" }));
@@ -410,13 +414,14 @@ const VueAcademie = (() => {
     z.reviser.addEventListener("click", reviser);
     z.defi.addEventListener("click", () => { const d = P.defiDuJour(etat, jour()); if (d && !d.fait) demarrerSession("defi", [d.id]); });
     boutonDetail.addEventListener("click", () => { confirmationEffacement = false; montrer("detail"); });
-    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => montrer("accueil"));
+    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => { if (typeof SuiviJeux !== "undefined") SuiviJeux.abandonner("academie"); montrer("accueil"); });
 
     afficherAccueil();
     return {
       etat: () => etat,
       /** Partie terminée dans l'onglet « Jouer » : enregistrée ici, et les gains sont renvoyés pour être affichés. */
       enregistrerPartie(partie) {
+        if (typeof SuiviJeux !== "undefined") SuiviJeux.terminer({ victoire: "reussite", defaite: "echec", nulle: "neutre" }[partie.resultat]);
         const g = appliquer(P.enregistrerPartie(etat, { ...partie, jour: jour() }));
         if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
         return g;

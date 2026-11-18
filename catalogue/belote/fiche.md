@@ -6,7 +6,7 @@ sujet: jeux/belote
 notions-liees:
   - probabilites
   - denombrement
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-04
 langues: fr
 onglets: explication, application, academie, mise-en-situation

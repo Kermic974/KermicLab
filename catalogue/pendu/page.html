@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-/Di+zRLt51DcjkttOzjVvD9lXEwM+d+act7XY4Hzlao=' 'sha256-AmWLGse4RTTtCmfZNeKljDUhCMZ6uzkuWR7kHmg1nBQ=' 'sha256-jtRmbMEX5+6QuUjVIbcKG9Z+la7SyMFz/v+xEPu4X5U=' 'sha256-tiCqjHVAMWX3s20tF0KydQvxOXDw1OwAtNbi4PamcJ8=' 'sha256-m7rSLsrQqKMy+StcqNAuO1GzgXUhoggaRj1CLLwsKeo='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YzVCiZ0pfp3vwg62cxAcryI8PlHdwwsfE+YOr4B7i0c=' 'sha256-qVCZlP7XuwQ3eWBcVzZtshMWo7fMa6S9qi5JnCsBkiQ=' 'sha256-/Di+zRLt51DcjkttOzjVvD9lXEwM+d+act7XY4Hzlao=' 'sha256-AmWLGse4RTTtCmfZNeKljDUhCMZ6uzkuWR7kHmg1nBQ=' 'sha256-jtRmbMEX5+6QuUjVIbcKG9Z+la7SyMFz/v+xEPu4X5U=' 'sha256-KE9iAOSAHiemP86FAc8oExTz0AIKUtp6BFzHc+BXyL4=' 'sha256-3WxMqFj0fslmwRek7oFaRQa452404yJlhsyyQUhEqxI='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Le pendu – Kermiclab</title>
 <script type="application/json" id="kermiclab-meta">
 {
   "id": "pendu",
   "titre": "Le pendu",
   "sujet": "jeux/pendu",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "date": "2026-11-05",
   "langue": "fr",
   "onglets": ["explication", "application", "academie", "orthographe", "mise-en-situation", "self-test"]
@@ -1411,7 +1411,7 @@ const VueAcademie = (() => {
       const effacer = el("button", { type: "button", classe: "secondaire danger", "data-action": "effacer", texte: confirmationEffacement ? "Confirmer : tout effacer" : "🗑️ Effacer ma progression" });
       effacer.addEventListener("click", () => {
         if (!confirmationEffacement) { confirmationEffacement = true; afficherReglages(); z.dReglages.querySelector('[data-action="effacer"]').focus(); return; }
-        confirmationEffacement = false; etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
+        confirmationEffacement = false; if (typeof SuiviJeux !== "undefined") SuiviJeux.effacer(); etat = P.etatInitial(); sauver(); toast.textContent = "Progression effacée : nouveau départ !"; afficherDetail();
       });
       z.dReglages.replaceChildren(objectif, emblemes,
         el("label", { classe: "case-a-cocher" }, libre, "Je connais déjà les bases : ouvrir toutes les leçons"),
@@ -1424,6 +1424,7 @@ const VueAcademie = (() => {
       reussir: () => terminerExercice(),
       erreur: (message) => {
         ex.erreurs += 1;
+        if (typeof SuiviJeux !== "undefined") { SuiviJeux.reponse(false, "academie"); if (ex.erreurs >= 2) SuiviJeux.indice("academie"); }
         retour(message ?? (ex.erreurs >= 2 ? `Pas tout à fait. Indice : ${ex.exo.indice ?? "relis bien la question."}` : "Pas tout à fait : essaie encore !"), "ko");
       },
       retour: (texte, classe = "") => retour(texte, classe)
@@ -1464,6 +1465,7 @@ const VueAcademie = (() => {
       const id = session.file[session.rang], { exo, lecon } = P.exercices.get(id);
       session.adaptateur?.arreter?.();
       ex = { id, exo, lecon, erreurs: 0, indice: false, fini: false };
+      if (typeof SuiviJeux !== "undefined") SuiviJeux.preparer(id, session.mode, "academie");
       z.progression.textContent = `${session.mode === "lecon" ? "Exercice" : `${lecon.titre} ·`} ${session.rang + 1} / ${session.file.length}`;
       retour("", "");
       z.suivant.hidden = true; z.indice.hidden = false; z.indice.disabled = false;
@@ -1501,6 +1503,7 @@ const VueAcademie = (() => {
     z.indice.addEventListener("click", () => {
       if (!ex || ex.fini) return;
       ex.indice = true; z.indice.disabled = true;
+      if (typeof SuiviJeux !== "undefined") SuiviJeux.indice("academie");
       if (ex.exo.type === "qcm") {
         const faux = [...z.qcm.querySelectorAll("button:not(:disabled)")].find((b) => Number(b.dataset.choix) !== ex.exo.bonne);
         if (faux) { faux.disabled = true; faux.dataset.etat = "retire"; faux.textContent = `— ${faux.textContent}`; }
@@ -1514,6 +1517,7 @@ const VueAcademie = (() => {
     function terminerExercice() {
       if (ex.fini) return;
       ex.fini = true;
+      if (typeof SuiviJeux !== "undefined") { SuiviJeux.reponse(true, "academie"); SuiviJeux.terminer("reussite", "academie"); }
       const j = jour();
       session.erreurs += ex.erreurs; session.indices += ex.indice ? 1 : 0;
       appliquer(P.enregistrerExercice(etat, { id: ex.id, erreurs: ex.erreurs, indice: ex.indice, jour: j, revision: session.mode === "revision" }));
@@ -1557,13 +1561,14 @@ const VueAcademie = (() => {
     z.reviser.addEventListener("click", reviser);
     z.defi.addEventListener("click", () => { const d = P.defiDuJour(etat, jour()); if (d && !d.fait) demarrerSession("defi", [d.id]); });
     boutonDetail.addEventListener("click", () => { confirmationEffacement = false; montrer("detail"); });
-    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => montrer("accueil"));
+    for (const b of [retourDetail, retourSession, bRetour]) b.addEventListener("click", () => { if (typeof SuiviJeux !== "undefined") SuiviJeux.abandonner("academie"); montrer("accueil"); });
 
     afficherAccueil();
     return {
       etat: () => etat,
       /** Partie terminée dans l'onglet « Jouer » : enregistrée ici, et les gains sont renvoyés pour être affichés. */
       enregistrerPartie(partie) {
+        if (typeof SuiviJeux !== "undefined") SuiviJeux.terminer({ victoire: "reussite", defaite: "echec", nulle: "neutre" }[partie.resultat]);
         const g = appliquer(P.enregistrerPartie(etat, { ...partie, jour: jour() }));
         if (!session) { if (vues.detail.hidden) afficherAccueil(); else afficherDetail(); }
         return g;
@@ -1677,11 +1682,13 @@ const VueAcademie = (() => {
     function saisir(lettre) {
       const resultat = M.jouerLettre(partie, lettre);
       if (resultat === "invalide" || resultat === "deja-jouee" || resultat === "terminee") return;
+      SuiviJeux.reponse(["trouve", "victoire"].includes(resultat));
       if (resultat === "victoire" || resultat === "defaite") { terminer(); return; }
       afficher();
       annoncer(resultat === "trouve" ? "Bien joué, cette lettre est dans le mot !" : "Cette lettre n’est pas dans le mot.", resultat === "trouve" ? "ok" : "ko");
     }
     function demarrer(i, nouveauMot = false) {
+      SuiviJeux.preparer(`mot-${M.NIVEAUX[i].id}`);
       rang = i;
       const id = M.NIVEAUX[i].id;
       partie = M.creerPartie(id, dictionnaire, Math.random, derniersMots.get(id));
@@ -1691,7 +1698,7 @@ const VueAcademie = (() => {
       afficher(); annoncer(nouveauMot ? "Nouveau mot ! À toi de jouer." : "Choisis une lettre au clavier ou à l’écran.");
     }
     p.querySelector('[data-action="nouvelle"]').addEventListener("click", () => demarrer(rang, true));
-    p.querySelector('[data-action="indice"]').addEventListener("click", () => annoncer(`Indice : ${M.revelerIndice(partie)}`));
+    p.querySelector('[data-action="indice"]').addEventListener("click", () => { if (!partie.terminee) SuiviJeux.indice(); annoncer(`Indice : ${M.revelerIndice(partie)}`); });
     boutonSuivant.addEventListener("click", () => demarrer(Math.min(rang + 1, progression.ouvert)));
     document.addEventListener("keydown", (e) => {
       if (!M.normaliserLettre(e.key) || e.ctrlKey || e.altKey || e.metaKey || e.isComposing || p.hidden) return;
@@ -1748,11 +1755,13 @@ const VueAcademie = (() => {
       } else if (repondre) reponse.focus();
     }
     function demarrer(mots) {
+      SuiviJeux.preparer("mes-mots", "orthographe", "orthographe");
       session = O.creerSession(mots);
       zone("editeur").hidden = true; zone("bilan-mots").hidden = true; zone("test-mots").hidden = false;
       afficherMot();
     }
     function modifier() {
+      SuiviJeux.abandonner("orthographe");
       session = null;
       zone("editeur").hidden = false; zone("bilan-mots").hidden = true; zone("test-mots").hidden = true;
       texte("mot-a-retenir").textContent = ""; texte("definition-mot").textContent = "";
@@ -1765,6 +1774,7 @@ const VueAcademie = (() => {
         texte("correction-mot").textContent = "Écris une réponse, ou choisis « Je ne sais pas »."; reponse.focus(); return;
       }
       const resultat = O.repondre(session, passer ? "" : reponse.value);
+      SuiviJeux.reponse(resultat.juste, "orthographe");
       const notice = notices.get(O.normaliser(resultat.mot));
       afficherMot();
       texte("correction-mot").textContent = `${resultat.juste ? "✓ Bien écrit !" : "À retravailler :"} ${resultat.mot}.${notice ? ` ${notice.indice}. ${notice.repere}` : " Observe chaque lettre avant de réessayer."}`;
@@ -1797,6 +1807,7 @@ const VueAcademie = (() => {
       if (session.phase !== "termine") { afficherMot(); return; }
       zone("test-mots").hidden = true; zone("bilan-mots").hidden = false;
       const bilan = O.bilan(session);
+      SuiviJeux.terminer(bilan.justes === bilan.total ? "reussite" : "echec", "orthographe");
       texte("bilan-mots").textContent = `${bilan.justes} / ${bilan.total} mots bien écrits`;
       texte("details-mots").replaceChildren(...session.resultats.map((r) => {
         const li = document.createElement("li");
