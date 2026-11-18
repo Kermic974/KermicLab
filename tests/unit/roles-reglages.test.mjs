@@ -188,7 +188,7 @@ test("anciens niveaux repris en souscriptions ; les souscriptions enregistrées 
   env.DB.sqlite.prepare("INSERT INTO reglages (cle, valeur) VALUES ('niveaux', ?)").run(JSON.stringify([niveau]));
   let reglages = await chargerReglages(env);
   assert.deepEqual(reglages.niveaux, [{ id: "famille", libelle: "Famille" }]);
-  assert.deepEqual(reglages.souscriptions[1].limites, { ...niveau.limites, tokensSession: 1000, tokensAppel: 500, defisJour: 6, cahiersJour: 3, enfantsMax: 0, classesMax: 0, elevesMax: 0 });
+  assert.deepEqual(reglages.souscriptions[1].limites, { ...niveau.limites, tokensSession: 1000, tokensAppel: 500, defisJour: 6, cahiersJour: 3, cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 });
   assert.equal(reglages.souscriptionsParDefaut, false);
   await ecrireSouscriptions(env, reglages.souscriptions.slice(0, 1));
   reglages = await chargerReglages(env);

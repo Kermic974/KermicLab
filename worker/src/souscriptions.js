@@ -21,6 +21,12 @@ export const LIMITES_CONSOMMATION = Object.freeze({
  * l'expérience Professeur. 0 = non inclus.
  */
 export const LIMITES_STRUCTURE = Object.freeze({ enfantsMax: [0, 10], classesMax: [0, 30], elevesMax: [0, 1000] });
+/**
+ * Plafonds mensuels, en plus des limites par jour : `cahiersMois` borne le nombre de cahiers IA sur un mois
+ * (« 1 par jour, 5 par mois »). 0 = sans plafond mensuel. Déclarés par l'offre et comptés par l'estimation financière ;
+ * pas encore appliqués (nouvelle table de quota, ADR 0031).
+ */
+export const LIMITES_MENSUELLES = Object.freeze({ cahiersMois: [0, 155] });
 
 const ID_SOUSCRIPTION = /^[a-z][a-z0-9-]{1,20}$/;
 const texteCourt = (v, max) => String(v ?? "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, max);
@@ -30,6 +36,7 @@ const bornesConsommation = (champ) => { const p = parametreDuRegistre(LIMITES_CO
 export function bornesLimites() {
   return {
     ...Object.fromEntries(Object.keys(LIMITES_CONSOMMATION).map((c) => [c, bornesConsommation(c)])),
+    ...LIMITES_MENSUELLES,
     ...LIMITES_STRUCTURE
   };
 }
@@ -42,28 +49,28 @@ export const SOUSCRIPTIONS_PAR_DEFAUT = Object.freeze([
   {
     id: SOUSCRIPTION_GRATUITE, libelle: "Gratuit", description: "Découverte : catalogue, jeux et tuteur IA dans la limite du quota gratuit.",
     statut: "projet", role: "visiteur", fonctionnalites: BASE,
-    limites: { enfantsMax: 0, classesMax: 0, elevesMax: 0 },
+    limites: { cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
     usage: { joursActifsMois: 6, tauxUtilisation: 40 },
     prix: { mode: "prix", prixMensuelHT: 0, margeCible: 0, remiseAnnuelle: 0 }
   },
   {
     id: "solo", libelle: "Solo", description: "Un apprenant : tuteur IA étendu, défis et cahiers générés.",
     statut: "projet", role: "visiteur", fonctionnalites: [...BASE, ...IA],
-    limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 5, cahiersJour: 1, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
+    limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 5, cahiersJour: 1, cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
     usage: { joursActifsMois: 12, tauxUtilisation: 30 },
     prix: { mode: "prix", prixMensuelHT: 4.99, margeCible: 60, remiseAnnuelle: 17 }
   },
   {
     id: "parent", libelle: "Parent", description: "Une famille : Espace famille, profils des enfants, suivi et cahiers assignés.",
     statut: "projet", role: "parent", fonctionnalites: [...BASE, ...IA, "famille"],
-    limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 8, cahiersJour: 2, enfantsMax: 4, classesMax: 0, elevesMax: 0 },
+    limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 8, cahiersJour: 1, cahiersMois: 5, enfantsMax: 4, classesMax: 0, elevesMax: 0 },
     usage: { joursActifsMois: 15, tauxUtilisation: 30 },
     prix: { mode: "prix", prixMensuelHT: 14.99, margeCible: 60, remiseAnnuelle: 17 }
   },
   {
     id: "professeur", libelle: "Professeur", description: "Un enseignant : classes, liens d'invitation, suivi des élèves et relecture des contributions.",
     statut: "projet", role: "prof", fonctionnalites: [...BASE, ...IA, "professeur", "contributions.proposer", "contributions.relire"],
-    limites: { tokensSession: 4000, tokensAppel: 1000, defisJour: 10, cahiersJour: 3, enfantsMax: 0, classesMax: 8, elevesMax: 240 },
+    limites: { tokensSession: 4000, tokensAppel: 1000, defisJour: 10, cahiersJour: 3, cahiersMois: 0, enfantsMax: 0, classesMax: 8, elevesMax: 240 },
     usage: { joursActifsMois: 18, tauxUtilisation: 30 },
     prix: { mode: "marge", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 17 }
   }
@@ -98,7 +105,7 @@ export function validerSouscription(id, brut, { roles = [] } = {}) {
       limites[champ] = v;
     }
   }
-  for (const [champ, bornes] of Object.entries(LIMITES_STRUCTURE)) {
+  for (const [champ, bornes] of Object.entries({ ...LIMITES_MENSUELLES, ...LIMITES_STRUCTURE })) {
     const v = nombre(brut?.limites?.[champ] ?? 0);
     if (!entierDans(v, bornes)) return { ok: false, code: `hors-bornes:${champ}` };
     limites[champ] = v;
@@ -145,7 +152,7 @@ export function depuisNiveaux(niveaux) {
   const gratuite = SOUSCRIPTIONS_PAR_DEFAUT[0];
   return [gratuite, ...niveaux.map((n) => ({
     id: n.id, libelle: n.libelle, description: "", statut: "projet", role: "visiteur", fonctionnalites: [...FONCTIONNALITES],
-    limites: { tokensSession: n.tokensSession, tokensAppel: n.tokensAppel, defisJour: n.defisJour, cahiersJour: n.cahiersJour, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
+    limites: { tokensSession: n.tokensSession, tokensAppel: n.tokensAppel, defisJour: n.defisJour, cahiersJour: n.cahiersJour, cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
     usage: { joursActifsMois: 12, tauxUtilisation: 50 },
     prix: { mode: "prix", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 0 }
   }))];

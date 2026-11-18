@@ -445,7 +445,7 @@ test("souscriptions : offres pressenties, composition, bornes, attribution et su
   assert.equal(etat.parDefaut, true);
   assert.equal(etat.controleActif, false);
   assert.deepEqual(etat.souscriptions.map((s) => [s.id, s.role, s.statut]), [["gratuit", "visiteur", "projet"], ["solo", "visiteur", "projet"], ["parent", "parent", "projet"], ["professeur", "prof", "projet"]]);
-  assert.deepEqual(etat.souscriptions[0].limites, { tokensSession: 1000, tokensAppel: 500, defisJour: 3, cahiersJour: 2, enfantsMax: 0, classesMax: 0, elevesMax: 0 });
+  assert.deepEqual(etat.souscriptions[0].limites, { tokensSession: 1000, tokensAppel: 500, defisJour: 3, cahiersJour: 2, cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 });
   assert.equal(etat.souscriptions[0].estimation.prixMensuelHT, 0);
   assert.ok(etat.souscriptions[0].estimation.marge < 0, "le gratuit coûte : marge négative");
   const prof = etat.souscriptions[3];

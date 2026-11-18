@@ -82,7 +82,7 @@ function annoncer(texte, { erreur = false } = {}) {
   zone.hidden = !texte;
 }
 const CHAMPS_BORNES = {
-  tokensSession: "tokens par session", tokensAppel: "tokens par réponse", defisJour: "défis IA par jour", cahiersJour: "cahiers IA par jour", enfantsMax: "enfants rattachés",
+  tokensSession: "tokens par session", tokensAppel: "tokens par réponse", defisJour: "défis IA par jour", cahiersJour: "cahiers IA par jour", cahiersMois: "cahiers IA par mois", enfantsMax: "enfants rattachés",
   classesMax: "classes", elevesMax: "élèves suivis", joursActifsMois: "jours d'usage par mois", tauxUtilisation: "part du quota consommée", prixMensuelHT: "prix mensuel HT",
   margeCible: "marge visée", remiseAnnuelle: "remise annuelle", tauxTva: "TVA", coutsFixesMensuels: "coûts fixes", utilisateursEstimes: "utilisateurs estimés",
   fraisPaiementPourcent: "frais de paiement (%)", fraisPaiementFixe: "frais de paiement fixes"
@@ -620,7 +620,7 @@ const monnaie = (n, devise, decimales = 2) => (n === null || n === undefined ? "
   : new Intl.NumberFormat("fr-FR", { style: "currency", currency: devise, minimumFractionDigits: decimales, maximumFractionDigits: decimales }).format(n));
 const pourcentage = (n) => (n === null || n === undefined ? "—" : `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n)} %`);
 const LIMITES_LIBELLES = {
-  tokensSession: "Tokens par session", tokensAppel: "Tokens par réponse", defisJour: "Défis IA par jour", cahiersJour: "Cahiers IA par jour",
+  tokensSession: "Tokens par session", tokensAppel: "Tokens par réponse", defisJour: "Défis IA par jour", cahiersJour: "Cahiers IA par jour", cahiersMois: "Cahiers IA par mois (0 = sans plafond)",
   enfantsMax: "Enfants rattachés", classesMax: "Classes", elevesMax: "Élèves suivis"
 };
 const STATUTS_SOUSCRIPTION = { projet: "En projet", active: "Active" };
@@ -632,6 +632,7 @@ async function ecranSouscriptions() {
   const finances = copie(etat.finances);
   const bornes = etat.bornes;
   const consommation = ["tokensSession", "tokensAppel", "defisJour", "cahiersJour"];
+  const mensuel = ["cahiersMois"];
   const structure = ["enfantsMax", "classesMax", "elevesMax"];
   const estimer = (s) => estimerSouscription(s, finances, etat.tokensParGeneration);
   const nombreSaisi = (valeur) => (valeur === "" ? NaN : Number(valeur));
@@ -641,7 +642,7 @@ async function ecranSouscriptions() {
   const dessinerComparaison = () => comparaison.replaceChildren(tableau(`${etat.souscriptions.length} souscription(s), en ${finances.devise} hors taxes, par abonné et par mois`, [
     { titre: "Offre", cellule: (s) => h("div", { class: "admin-champ" }, h("div", { class: "admin-ligne" }, h("strong", { text: s.libelle }), pastille(STATUTS_SOUSCRIPTION[s.statut], s.statut === "active" ? "ok" : "")),
       h("span", { class: "doux petit", text: `Rôle ${etat.roles.find((r) => r.id === s.role)?.libelle ?? s.role} · ${s.fonctionnalites.length} fonctionnalité(s) sur ${etat.fonctionnalites.length}` })) },
-    { titre: "Tokens · défis · cahiers / jour", nombre: true, cellule: (s) => `${nombre(s.limites.tokensSession)} · ${nombre(s.limites.defisJour)} · ${nombre(s.limites.cahiersJour)}` },
+    { titre: "Tokens · défis · cahiers / jour", nombre: true, cellule: (s) => `${nombre(s.limites.tokensSession)} · ${nombre(s.limites.defisJour)} · ${nombre(s.limites.cahiersJour)}${s.limites.cahiersMois > 0 ? ` (${nombre(s.limites.cahiersMois)} / mois)` : ""}` },
     { titre: "Coût de revient", nombre: true, cellule: (s) => monnaie(estimer(s).coutRevient, finances.devise) },
     { titre: "Prix HT", nombre: true, cellule: (s) => monnaie(estimer(s).prixMensuelHT, finances.devise) },
     { titre: "Marge", nombre: true, cellule: (s) => monnaie(estimer(s).marge, finances.devise) },
@@ -660,7 +661,7 @@ async function ecranSouscriptions() {
   const role = selecteur(etat.roles.map((r) => [r.id, r.libelle]), "visiteur", { id: "souscription-role" });
   const cases = etat.fonctionnalites.map((f) => h("input", { type: "checkbox", value: f, "data-fonctionnalite": f }));
   const horsRole = h("p", { class: "doux petit", "aria-live": "polite" });
-  const champsLimites = Object.fromEntries([...consommation, ...structure].map((c) => [c, h("input", { type: "number", min: bornes.limites[c][0], max: bornes.limites[c][1], step: "1", "data-limite": c, "aria-label": LIMITES_LIBELLES[c] })]));
+  const champsLimites = Object.fromEntries([...consommation, ...mensuel, ...structure].map((c) => [c, h("input", { type: "number", min: bornes.limites[c][0], max: bornes.limites[c][1], step: "1", "data-limite": c, "aria-label": LIMITES_LIBELLES[c] })]));
   const noteLimites = h("p", { class: "doux petit", "aria-live": "polite" });
   const joursActifs = h("input", { type: "number", id: "souscription-jours", min: bornes.finances.joursActifsMois[0], max: bornes.finances.joursActifsMois[1], step: "1" });
   const tauxUtilisation = h("input", { type: "number", id: "souscription-taux", min: 0, max: 100, step: "1" });
@@ -693,7 +694,7 @@ async function ecranSouscriptions() {
     noteLimites.textContent = [
       gratuite ? "« Gratuit » reprend les limites de consommation du registre : elles se règlent dans « Harness »." : "",
       auDela ? `Au-delà de ${nombre(etat.plafondsSchema.LIMITE_TOKENS_SESSION)} tokens par session (ou ${nombre(etat.plafondsSchema.MAX_TOKENS_APPEL)} par réponse), la limite demandera la nouvelle table de quota avant d'être appliquée.` : "",
-      "Les limites de structure (enfants, classes, élèves) sont déclarées par l'offre et pas encore appliquées."
+      "Le plafond mensuel de cahiers et les limites de structure (enfants, classes, élèves) sont déclarés par l'offre et comptés dans l'estimation, pas encore appliqués."
     ].filter(Boolean).join(" ");
     const mode = s.prix.mode;
     prixHT.disabled = gratuite || mode === "marge";

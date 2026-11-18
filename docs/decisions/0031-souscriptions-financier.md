@@ -18,7 +18,7 @@
 | `id`, `libelle`, `description`, `statut` | `projet` ou `active` ; l'identifiant est aussi le **niveau** attribué aux comptes (`attributions_roles.niveau`) |
 | `role` | rôle attribué aux abonnés (rôle système ou personnalisé) |
 | `fonctionnalites` | fonctionnalités incluses, parmi celles du registre des permissions (`FONCTIONNALITES`) |
-| `limites` | consommation (tokens par session et par réponse, défis et cahiers IA par jour), bornées par le registre (ADR 0019) ; structure (enfants, classes, élèves), déclarées |
+| `limites` | consommation (tokens par session et par réponse, défis et cahiers IA par jour), bornées par le registre (ADR 0019) ; plafond mensuel de cahiers IA (`cahiersMois`, 0 = sans plafond) ; structure (enfants, classes, élèves), déclarées |
 | `usage` | hypothèse d'usage : jours actifs par mois, part du quota consommée |
 | `prix` | mode `prix` (prix HT fourni → marge calculée) ou `marge` (marge visée → prix calculé), remise annuelle |
 
@@ -43,7 +43,8 @@ l'interface (recalcul immédiat pendant la saisie).
 
 - **Coût variable** par module : jours actifs × volume quotidien × (prix de sortie + ratio entrée/sortie × prix
   d'entrée) / 1 000 000. Volume : tokens par session (tuteur) ; défis ou cahiers par jour × taille d'une génération
-  (`MAX_TOKENS_DEFI`, `MAX_TOKENS_CAHIERS`). « Au plafond » : tout le quota ; « estimé » : × part consommée.
+  (`MAX_TOKENS_DEFI`, `MAX_TOKENS_CAHIERS`) ; les cahiers du mois sont bornés par `cahiersMois` (Parent : 1 par jour,
+  5 par mois). « Au plafond » : tout le quota ; « estimé » : × part consommée.
 - **Coût de revient** = coût variable estimé + coûts fixes mensuels / utilisateurs actifs estimés.
 - **Marge** = prix HT − coût de revient − frais de paiement (pourcentage + fixe) ; taux = marge / prix HT.
 - **Marge visée → prix** : P = (coût de revient + frais fixe) / (1 − marge − frais %), arrondi au centime supérieur ;
@@ -58,8 +59,8 @@ l'interface (recalcul immédiat pendant la saisie).
 - Estimations sur hypothèses, pas une comptabilité : ni amortissement, ni impôts, ni coût d'acquisition marketing.
 - Les cahiers enrichis (jusqu'à 100 000 tokens par génération sur Sonnet 5.5) dominent le coût : la part consommée
   et la taille réelle des générations doivent être mesurées dans la télémétrie avant de fixer les prix.
-- Aucune limite n'est appliquée : au-delà de 1 000 tokens par session, il faut la nouvelle table de quota (ADR 0026,
-  « Limites ») ; les limites de structure ne sont pas encore lues par l'Espace famille ni par l'expérience Professeur.
+- Aucune limite n'est appliquée : au-delà de 1 000 tokens par session, ou pour un plafond mensuel de cahiers, il faut
+  la nouvelle table de quota (ADR 0026, « Limites ») ; les limites de structure ne sont pas encore lues par l'Espace famille ni par l'expérience Professeur.
 - Une seule devise pour tous les montants ; pas de conversion.
 
 ## Conséquences

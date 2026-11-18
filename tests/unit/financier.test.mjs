@@ -48,6 +48,15 @@ test("défis et cahiers : volume = générations par jour × taille d'une géné
   assert.equal(e.coutVariable.parModule.cahiers.plafond, 10.2, "10 × 100 000 × (10 + 0,2 × 1) / 1 M");
 });
 
+test("cahiers : plafond mensuel (1 par jour, 5 par mois) ; 0 = sans plafond", () => {
+  const prix = { ...finances, coutsFixesMensuels: 0, modeles: { tuteur: { entree: 0, sortie: 0, ratio: 0 }, defi: { entree: 0, sortie: 0, ratio: 0 }, cahiers: { entree: 0, sortie: 10, ratio: 0 } } };
+  const avec = (cahiersMois, joursActifsMois = 15) => estimerSouscription({ ...offre(), usage: { joursActifsMois, tauxUtilisation: 100 },
+    limites: { tokensSession: 1000, tokensAppel: 500, defisJour: 0, cahiersJour: 1, cahiersMois } }, prix, generation).coutVariable.parModule.cahiers;
+  assert.deepEqual([avec(5).tokensMoisPlafond, avec(5).plafond], [500000, 5], "15 jours × 1 par jour, ramené à 5 par mois");
+  assert.equal(avec(0).tokensMoisPlafond, 1500000, "sans plafond mensuel : 15 cahiers");
+  assert.equal(avec(5, 3).tokensMoisPlafond, 300000, "3 jours actifs : 3 cahiers, sous le plafond");
+});
+
 test("hypothèses : défauts valides, bornes refusées", () => {
   assert.deepEqual(validerFinances(FINANCES_PAR_DEFAUT), { ok: true, finances: JSON.parse(JSON.stringify(FINANCES_PAR_DEFAUT)) });
   assert.equal(validerFinances({ ...FINANCES_PAR_DEFAUT, utilisateursEstimes: 0 }).code, "hors-bornes:utilisateursEstimes");
@@ -68,6 +77,9 @@ test("offres pressenties : Gratuit, Solo, Parent, Professeur, toutes valides et 
   assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], statut: "vendue" }, { roles }).code, "statut-invalide");
   assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], prix: { mode: "gratuit" } }, { roles }).code, "mode-prix-invalide");
   assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], limites: { ...SOUSCRIPTIONS_PAR_DEFAUT[1].limites, elevesMax: 5000 } }, { roles }).code, "hors-bornes:elevesMax");
+  assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], limites: { ...SOUSCRIPTIONS_PAR_DEFAUT[1].limites, cahiersMois: 200 } }, { roles }).code, "hors-bornes:cahiersMois");
+  const parent = SOUSCRIPTIONS_PAR_DEFAUT.find((x) => x.id === "parent");
+  assert.deepEqual([parent.limites.cahiersJour, parent.limites.cahiersMois], [1, 5], "Parent : 1 cahier IA par jour, 5 par mois");
 });
 
 test("offres pressenties payantes : rentables avec les hypothèses par défaut, au mois comme à l'année", () => {

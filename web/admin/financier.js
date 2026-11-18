@@ -68,22 +68,24 @@ export function validerFinances(brut) {
 const coutParToken = ({ entree, sortie, ratio }) => (sortie + ratio * entree) / 1e6;
 
 /**
- * Coût variable mensuel d'un abonné. Les plafonds viennent des limites de la souscription ; `tokensParGeneration`
+ * Coût variable mensuel d'un abonné (les cahiers tiennent compte du plafond mensuel `cahiersMois`). Les plafonds viennent des limites de la souscription ; `tokensParGeneration`
  * donne la taille maximale d'une génération de défi et de cahier (paramètres MAX_TOKENS_* du registre).
  * - « au plafond » : chaque jour actif consomme tout le quota ;
  * - « estimé » : le plafond multiplié par le taux d'utilisation.
  */
 export function coutVariable({ limites, usage }, finances, tokensParGeneration) {
   const jours = usage.joursActifsMois;
-  const volumes = {
-    tuteur: limites.tokensSession,
-    defi: limites.defisJour * tokensParGeneration.defi,
-    cahiers: limites.cahiersJour * tokensParGeneration.cahiers
+  // Cahiers : limite par jour, bornée par le plafond mensuel s'il existe (`cahiersMois`, 0 = sans plafond).
+  const cahiersMois = limites.cahiersMois > 0 ? Math.min(jours * limites.cahiersJour, limites.cahiersMois) : jours * limites.cahiersJour;
+  const tokensParMois = {
+    tuteur: jours * limites.tokensSession,
+    defi: jours * limites.defisJour * tokensParGeneration.defi,
+    cahiers: cahiersMois * tokensParGeneration.cahiers
   };
   const parModule = {};
   let plafond = 0;
   for (const module of Object.keys(MODULES_COUT)) {
-    const tokensMois = jours * volumes[module];
+    const tokensMois = tokensParMois[module];
     const cout = tokensMois * coutParToken(finances.modeles[module]);
     plafond += cout;
     parModule[module] = { tokensMoisPlafond: tokensMois, plafond: arrondi(cout, 4), estime: arrondi(cout * usage.tauxUtilisation / 100, 4) };
