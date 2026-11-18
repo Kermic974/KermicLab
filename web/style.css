@@ -1304,3 +1304,10 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .vacances-question[data-correct="true"] { border-color: var(--succes); }
 .bonne-reponse { font-weight: 700; color: var(--succes); }
 .quiz-retour { font-weight: 600; }
+
+/* Mon abonnement (ADR 0034) : offres proposées, l'offre en cours mise en avant. */
+.offres-souscription { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
+.offres-souscription li { border: 1px solid var(--bord); border-radius: 12px; padding: 12px; display: grid; gap: 6px; }
+.offres-souscription li[data-actuelle="true"] { border-color: var(--accent); }
+.offres-souscription li[data-actuelle="true"] { border-width: 2px; border-style: solid; }
+.offres-souscription .offre-prix { font-weight: 700; }

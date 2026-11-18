@@ -23,13 +23,16 @@
 | `prix` | mode `prix` (prix HT fourni → marge calculée) ou `marge` (marge visée → prix calculé), remise annuelle |
 
 - **Gratuit** est permanent : ses limites de consommation sont celles du registre (réglées dans Harness), son prix vaut 0.
-  Sa marge est négative : c'est le coût d'acquisition d'un utilisateur gratuit.
+  Sa marge est négative : c'est le coût d'acquisition d'un utilisateur gratuit. Révisé par l'ADR 0034 : tous ses champs
+  sont modifiables dans « Souscriptions », ses limites de consommation y sont écrites dans le registre.
 - Les offres pressenties sont proposées tant que rien n'est enregistré ; huit offres au plus.
 - Stockage dans `reglages` (clés `souscriptions` et `finances`) : réglages à chaud, validés et bornés, sans migration.
   Les anciens niveaux (clé `niveaux`) sont repris automatiquement, puis la clé est retirée au premier enregistrement.
 - Une offre attribuée à un compte ne se supprime pas ; un rôle personnalisé utilisé par une offre non plus.
 
 ### 2. Décision d'accès : le rôle **et** l'offre
+
+(Rôles cumulatifs depuis l'ADR 0034 : « le rôle » se lit « l'un des rôles du compte, rôle de l'offre compris ».)
 
 Une fois `CONTROLE_ACCES_ACTIF` activé, `accesAutorise()` exige que la fonctionnalité soit permise par le rôle, puis
 incluse dans la souscription du compte (raison `hors-souscription`), puis la stratégie. L'offre restreint, elle n'ajoute

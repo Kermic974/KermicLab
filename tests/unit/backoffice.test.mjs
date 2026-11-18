@@ -537,6 +537,27 @@ test("finances : hypothèses validées, enregistrées, rétablies ; estimation r
   assert.ok(journal().includes("finances.enregistrement") && journal().includes("finances.reinitialisation"));
 });
 
+test("tarifs Cloudflare : fermé sans configuration, aperçu sans enregistrement ; télémétrie mesurée exposée", async () => {
+  const etat = (await admin("GET", "/souscriptions")).donnees;
+  assert.equal(etat.tarifsCloudflare, false);
+  assert.deepEqual(Object.keys(etat.telemetrie.mesures), ["tuteur", "defi", "cahiers"]);
+  const modeles = { tuteur: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", defi: "anthropic/claude-haiku-5.5", cahiers: "anthropic/claude-sonnet-5.5" };
+  assert.deepEqual((await admin("POST", "/finances/tarifs-cloudflare", { modeles })).donnees, { erreur: "tarifs-cloudflare-non-configures" });
+  Object.assign(env, { CLOUDFLARE_ACCOUNT_ID: "0123456789abcdef0123456789abcdef", CLOUDFLARE_TARIFS_TOKEN: "jeton-de-lecture-workers-ai" });
+  const appels = [];
+  globalThis.fetch = async (url) => {
+    appels.push(String(url));
+    return Response.json({ data: [{ id: "anthropic/claude-haiku-5.5", pricing: { prompt: "0.0000002", completion: "0.000001" } }] });
+  };
+  const r = await admin("POST", "/finances/tarifs-cloudflare", { modeles });
+  assert.equal(r.statut, 200);
+  assert.deepEqual(r.donnees.modeles.defi, { modele: "anthropic/claude-haiku-5.5", entree: 0.2, sortie: 1, cache: null });
+  assert.equal(r.donnees.modeles.cahiers.erreur, "modele-introuvable");
+  assert.equal(appels.length, 3);
+  assert.deepEqual((await admin("GET", "/souscriptions")).donnees.finances, etat.finances, "rien n'est enregistré sans l'administrateur");
+  assert.ok(journal().includes("finances.tarifs-cloudflare"));
+});
+
 test("sans migration 0002 : le site fonctionne comme avant, le back-office répond indisponible", async () => {
   for (const table of ["reglages", "contenus_etats", "signaux_securite", "telemetrie_llm", "profils_securite", "roles", "journal_admin"]) env.DB.sqlite.exec(`DROP TABLE ${table}`);
   _reinitialiser();

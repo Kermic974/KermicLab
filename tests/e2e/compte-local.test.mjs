@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 import { gererApiCompteLocal, genererMotDePasseProvisoire, remplacerMotDePasse } from "../../worker/src/compte-local.js";
 import { chiffrer, deriverSecrets } from "../../web/compte-local.js";
-import { creerD1Comptes } from "../helpers/d1-comptes.mjs";
+import { creerD1Complet } from "../helpers/d1-complet.mjs";
 
 // Mon compte (ADR 0024) : compte facultatif sur l'appareil, puis synchronisation pseudonymisée entre deux appareils.
 // Le vrai code du Worker répond (D1 en mémoire) : le test vérifie aussi ce que le serveur voit et garde.
@@ -15,7 +15,7 @@ before(async () => {
   nav = await navigateur();
   htmlMaquette = await readFile(`${racine}catalogue/trigo-cercle/page.html`, "utf8");
   api = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8")).apiUrl || serveur.url;
-  env = { DB: creerD1Comptes("schema-compte-local.sql"), COMPTES_LOCAUX_SECRET: "e".repeat(40) };
+  env = { DB: creerD1Complet(), COMPTES_LOCAUX_SECRET: "e".repeat(40) };
 });
 after(async () => { await nav?.close(); await serveur?.fermer(); env?.DB.sqlite.close(); });
 
@@ -333,6 +333,42 @@ test("connexion en ligne : fournisseurs en attente, identité D1 stable sans syn
     await page.getByText(`Connecté au compte en ligne : ${identifiant}.`, { exact: true }).waitFor();
     assert.deepEqual(ids(), avant);
     assert.equal(await page.locator("#synchro-actions").isVisible(), false);
+  } finally {
+    await contexte.close();
+  }
+});
+
+test("mon abonnement : niveau et rôles affichés, changement de niveau à la demande (paiement acquis en phase de dev)", async () => {
+  const identifiant = "eva.abo";
+  const { page, contexte, erreurs } = await appareil("Eva");
+  try {
+    await page.click(".barre-laterale .profil-carte[data-action=profil]");
+    await page.click("#entree-compte");
+    await page.fill("#compte-identifiant", identifiant);
+    await page.fill("#compte-mdp", MDP);
+    await page.fill("#compte-mdp2", MDP);
+    await page.check("#liaison-creer-d1");
+    await page.click("#formulaire-compte-creer button[type=submit]");
+    await page.locator("#compte-souscription").waitFor();
+    await page.locator("#souscription-actuelle:not(:empty)").waitFor();
+    assert.equal(await page.locator("#souscription-actuelle").textContent(), "Niveau actuel : Gratuit (gratuit).");
+    assert.match(await page.locator("#souscription-roles").textContent(), /Visiteur/);
+    assert.equal(await page.locator("#souscription-dev").isVisible(), true, "phase de développement signalée");
+
+    await page.click("#souscription-changer summary");
+    const parent = page.locator("#souscription-offres li", { hasText: "Parent" });
+    assert.match(await parent.textContent(), /TTC par mois/);
+    await parent.locator("button").click();
+    assert.match(await parent.locator("button").textContent(), /Confirmer : passer à Parent/);
+    await parent.locator("button").click();
+    await page.locator("#souscription-message", { hasText: "Ton abonnement est maintenant : Parent." }).waitFor();
+    assert.match(await page.locator("#souscription-actuelle").textContent(), /^Niveau actuel : Parent \(/);
+    assert.match(await page.locator("#souscription-roles").textContent(), /Parent/, "le rôle de l'offre se cumule");
+    const id = env.DB.sqlite.prepare("SELECT id FROM comptes_locaux ORDER BY rowid DESC").get().id;
+    assert.equal(env.DB.sqlite.prepare("SELECT niveau FROM attributions_roles WHERE compte_id = ?").get(id).niveau, "parent");
+    assert.deepEqual({ ...env.DB.sqlite.prepare("SELECT de, vers, paiement FROM souscriptions_changements WHERE compte_id = ?").get(id) }, { de: "gratuit", vers: "parent", paiement: "dev" });
+    await capturer(page, "compte-local-abonnement");
+    assert.deepEqual(erreurs, []);
   } finally {
     await contexte.close();
   }

@@ -1460,5 +1460,21 @@
   "moiLocal": "Ton compte n'existe que sur cet appareil : Kermiclab ne garde rien sur toi.",
   "moiSessionExpiree": "Ta session en ligne a expiré : déconnecte-toi puis reconnecte-toi pour afficher tes données.",
   "moiSupport": "Pour toute demande au support, donne l'identifiant unique ci-dessus (jamais ton mot de passe ni ta clé de récupération).",
-  "configParam_SOUSCRIPTIONS_LIBRE_CHOIX": "Changement de souscription libre (phase de développement, sans paiement)"
+  "configParam_SOUSCRIPTIONS_LIBRE_CHOIX": "Changement de souscription libre (phase de développement, sans paiement)",
+  "abonnementTitre": "Mon abonnement",
+  "abonnementActuel": "Niveau actuel : {offre} ({prix}).",
+  "abonnementRoles": "Rôles du compte : {roles}. Les rôles se cumulent : ton abonnement ajoute le sien à ceux donnés par Kermiclab.",
+  "abonnementDev": "Phase de développement : le paiement n'est pas encore en place. Changer de niveau est immédiat et gratuit pour l'instant.",
+  "abonnementChanger": "Changer de niveau",
+  "abonnementPrixMois": "{prix} TTC par mois",
+  "abonnementPrixAn": "{prix} TTC par an",
+  "abonnementGratuit": "gratuit",
+  "abonnementLimites": "Tuteur : {tokens} tokens par session · défis IA : {defis} par jour · cahiers IA : {cahiers} par jour",
+  "abonnementRole": "Rôle apporté : {role}",
+  "abonnementChoisir": "Choisir cette offre",
+  "abonnementEnCours": "Offre actuelle",
+  "abonnementConfirmer": "Confirmer : passer à {offre} ({prix}) ?",
+  "abonnementChange": "Ton abonnement est maintenant : {offre}.",
+  "abonnementPaiementRequis": "Cette offre sera disponible avec le paiement en ligne, bientôt.",
+  "abonnementIndisponible": "Cette offre n'est plus proposée. Recharge la page."
 }

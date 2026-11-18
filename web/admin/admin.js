@@ -687,6 +687,12 @@ const STATUTS_SOUSCRIPTION = { projet: "En projet", active: "Active" };
 const copie = (o) => JSON.parse(JSON.stringify(o));
 const tonMarge = (taux) => (taux === null ? "" : taux < 0 ? "danger" : taux < 30 ? "attention" : "ok");
 
+/** Erreurs du chargement des tarifs Cloudflare, par modèle. */
+const LIB_ERREURS_TARIFS = {
+  "modele-invalide": "identifiant de modèle invalide", "modele-introuvable": "modèle absent du catalogue Cloudflare",
+  "cloudflare-injoignable": "Cloudflare injoignable", "http-401": "jeton refusé", "http-403": "jeton sans la permission Workers AI Read"
+};
+
 async function ecranSouscriptions() {
   const etat = await api("GET", "/souscriptions");
   const finances = copie(etat.finances);
@@ -729,6 +735,8 @@ async function ecranSouscriptions() {
   const prixHT = h("input", { type: "number", id: "souscription-prix", min: 0, max: bornes.finances.prixMensuelHT[1], step: "0.01" });
   const margeCible = h("input", { type: "number", id: "souscription-marge", min: bornes.finances.margeCible[0], max: bornes.finances.margeCible[1], step: "0.5" });
   const remise = h("input", { type: "number", id: "souscription-remise", min: 0, max: bornes.finances.remiseAnnuelle[1], step: "1" });
+  // Prix annuel saisi directement (ADR 0034) ; 0 = douze mois moins la remise.
+  const prixAnnuel = h("input", { type: "number", id: "souscription-prix-annuel", min: 0, max: bornes.finances.prixAnnuelHT[1], step: "0.01" });
   const resultat = h("div", { class: "admin-financier", "aria-live": "polite" });
   const supprimer = h("button", { type: "button", class: "danger" }, "Supprimer cette souscription");
   const fixer = h("button", { type: "button", class: "secondaire petit-bouton" }, "Fixer ce prix de vente");
@@ -739,7 +747,7 @@ async function ecranSouscriptions() {
     fonctionnalites: cases.filter((c) => c.checked).map((c) => c.value),
     limites: Object.fromEntries(Object.entries(champsLimites).map(([c, champ]) => [c, nombreSaisi(champ.value)])),
     usage: { joursActifsMois: nombreSaisi(joursActifs.value), tauxUtilisation: nombreSaisi(tauxUtilisation.value) },
-    prix: { mode: modes.find((m) => m.checked)?.value ?? "prix", prixMensuelHT: nombreSaisi(prixHT.value), margeCible: nombreSaisi(margeCible.value), remiseAnnuelle: nombreSaisi(remise.value) }
+    prix: { mode: modes.find((m) => m.checked)?.value ?? "prix", prixMensuelHT: nombreSaisi(prixHT.value), margeCible: nombreSaisi(margeCible.value), remiseAnnuelle: nombreSaisi(remise.value), prixAnnuelHT: nombreSaisi(prixAnnuel.value || "0") }
   });
 
   const recalculer = () => {
@@ -752,16 +760,16 @@ async function ecranSouscriptions() {
       : "Toutes les fonctionnalités cochées sont permises par le rôle.";
     const auDela = s.limites.tokensSession > etat.plafondsSchema.LIMITE_TOKENS_SESSION || s.limites.tokensAppel > etat.plafondsSchema.MAX_TOKENS_APPEL;
     noteLimites.textContent = [
-      gratuite ? "« Gratuit » reprend les limites de consommation du registre : elles se règlent dans « Harness »." : "",
+      gratuite ? "« Gratuit » : ses limites de consommation sont celles appliquées à tous ; les enregistrer ici met aussi à jour « Harness » (même registre)." : "",
       auDela ? `Au-delà de ${nombre(etat.plafondsSchema.LIMITE_TOKENS_SESSION)} tokens par session (ou ${nombre(etat.plafondsSchema.MAX_TOKENS_APPEL)} par réponse), la limite demandera la nouvelle table de quota avant d'être appliquée.` : "",
       "Le plafond mensuel de cahiers et les limites de structure (enfants, classes, élèves) sont déclarés par l'offre et comptés dans l'estimation, pas encore appliqués."
     ].filter(Boolean).join(" ");
+    // Tous les champs restent modifiables (ADR 0034) ; seul le champ calculé par le mode choisi est en lecture seule.
     const mode = s.prix.mode;
-    prixHT.disabled = gratuite || mode === "marge";
-    margeCible.disabled = gratuite || mode === "prix";
-    remise.disabled = gratuite;
-    modes.forEach((m) => { m.disabled = gratuite; });
-    const valide = [...Object.values(s.limites), ...Object.values(s.usage), s.prix.prixMensuelHT, s.prix.margeCible, s.prix.remiseAnnuelle].every(Number.isFinite);
+    prixHT.readOnly = mode === "marge";
+    margeCible.readOnly = mode === "prix";
+    remise.readOnly = s.prix.prixAnnuelHT > 0;
+    const valide = [...Object.values(s.limites), ...Object.values(s.usage), s.prix.prixMensuelHT, s.prix.margeCible, s.prix.remiseAnnuelle, s.prix.prixAnnuelHT].every(Number.isFinite);
     if (!valide) { resultat.replaceChildren(h("p", { class: "doux", text: "Complète les nombres pour voir l'estimation." })); fixer.hidden = true; return; }
     const e = estimer(s);
     const d = finances.devise;
@@ -778,6 +786,7 @@ async function ecranSouscriptions() {
       tableau("Coût variable par module (tokens d'entrée compris)", [
         { titre: "Module", cellule: (l) => l.libelle },
         { titre: "Tokens générés / mois au plafond", nombre: true, cellule: (l) => nombre(l.tokensMoisPlafond) },
+        { titre: "Coût / million générés (entrée, cache et frais compris)", nombre: true, cellule: (l) => monnaie(l.coutMillion, d, 4) },
         { titre: "Au plafond", nombre: true, cellule: (l) => monnaie(l.plafond, d, 4) },
         { titre: `Estimé (${s.usage.tauxUtilisation} %)`, nombre: true, cellule: (l) => monnaie(l.estime, d, 4) }
       ], Object.entries(e.coutVariable.parModule).map(([m, l]) => ({ ...l, libelle: etat.modulesCout[m].libelle }))),
@@ -790,7 +799,7 @@ async function ecranSouscriptions() {
         ["Frais de paiement", monnaie(e.fraisPaiement, d, 4)],
         ["Coefficient (prix / coût de revient)", e.coefficient === null ? "—" : `× ${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(e.coefficient)}`],
         [`Prix TTC / mois (TVA ${finances.tauxTva} %)`, monnaie(e.prixMensuelTTC, d)],
-        [`Prix annuel HT (remise ${s.prix.remiseAnnuelle} %)`, monnaie(e.prixAnnuelHT, d)],
+        [e.prixAnnuelSaisi ? `Prix annuel HT (saisi, remise effective ${e.remiseEffective} %)` : `Prix annuel HT (remise ${s.prix.remiseAnnuelle} %)`, monnaie(e.prixAnnuelHT, d)],
         ["Prix annuel TTC", monnaie(e.prixAnnuelTTC, d)],
         ["Marge annuelle / abonné", monnaie(e.margeAnnuelle, d)],
         ["Coût de revient si tout le quota est consommé", monnaie(e.coutRevientPlafond, d, 4)],
@@ -812,10 +821,7 @@ async function ecranSouscriptions() {
     const fonctionnalites = s?.fonctionnalites ?? etat.roles.find((r) => r.id === role.value)?.permissions ?? [];
     cases.forEach((c) => { c.checked = fonctionnalites.includes(c.value); });
     const modele = s ?? etat.souscriptions.find((x) => x.id === "gratuit");
-    for (const [c, champ] of Object.entries(champsLimites)) {
-      champ.value = String(modele.limites[c] ?? 0);
-      champ.disabled = s?.id === "gratuit" && consommation.includes(c);
-    }
+    for (const [c, champ] of Object.entries(champsLimites)) champ.value = String(modele.limites[c] ?? 0);
     joursActifs.value = String(s?.usage.joursActifsMois ?? 12);
     tauxUtilisation.value = String(s?.usage.tauxUtilisation ?? 50);
     const prix = s?.prix ?? { mode: "marge", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 0 };
@@ -823,6 +829,7 @@ async function ecranSouscriptions() {
     prixHT.value = String(prix.prixMensuelHT);
     margeCible.value = String(prix.margeCible);
     remise.value = String(prix.remiseAnnuelle);
+    prixAnnuel.value = String(prix.prixAnnuelHT ?? 0);
     supprimer.hidden = !s || s.id === "gratuit";
     recalculer();
   };
@@ -873,6 +880,7 @@ async function ecranSouscriptions() {
       h("label", { class: "admin-champ" }, h("span", { text: `Prix mensuel HT (${finances.devise})` }), prixHT),
       h("label", { class: "admin-champ" }, h("span", { text: "Marge visée (% du prix HT)" }), margeCible),
       h("label", { class: "admin-champ" }, h("span", { text: "Remise sur l'abonnement annuel (%)" }), remise),
+      h("label", { class: "admin-champ" }, h("span", { text: `Prix annuel HT (${finances.devise}, 0 = selon la remise)` }), prixAnnuel),
       fixer),
     resultat,
     h("div", { class: "admin-ligne" },
@@ -882,41 +890,112 @@ async function ecranSouscriptions() {
       } }, "Enregistrer la souscription"),
       supprimer));
 
-  // Hypothèses financières communes à toutes les offres.
+  // Hypothèses financières communes à toutes les offres (ADR 0031, affinées par l'ADR 0034).
   const devise = selecteur(etat.devises.map((x) => [x, x]), finances.devise, { id: "finances-devise" });
   const champFinance = (cle, props = {}) => h("input", { type: "number", value: finances[cle], "data-finance": cle, min: bornes.finances[cle][0], max: bornes.finances[cle][1], step: "any", ...props });
   const hypotheses = [
-    ["tauxTva", "TVA (%)"], ["coutsFixesMensuels", "Coûts fixes mensuels (hébergement, domaine, outils)"], ["utilisateursEstimes", "Utilisateurs actifs estimés (répartition des coûts fixes)"],
+    ["tauxTva", "TVA (%)"], ["utilisateursEstimes", "Utilisateurs actifs estimés (répartition des coûts fixes)"],
     ["fraisPaiementPourcent", "Frais de paiement (% du montant)"], ["fraisPaiementFixe", "Frais de paiement fixes (par transaction)"]
   ].map(([cle, texte]) => ({ cle, texte, champ: champFinance(cle) }));
-  const prixModeles = Object.keys(etat.modulesCout).map((module) => ({
-    module,
-    champs: ["entree", "sortie", "ratio"].map((cle) => h("input", { type: "number", value: finances.modeles[module][cle], min: 0, max: cle === "ratio" ? bornes.finances.ratio[1] : bornes.finances.prixMillion[1], step: "any", "data-modele": `${module}.${cle}`,
-      "aria-label": `${etat.modulesCout[module].libelle} : ${cle === "ratio" ? "tokens d'entrée par token généré" : `prix par million de tokens ${cle === "entree" ? "en entrée" : "en sortie"}`}` }))
-  }));
+
+  // Coûts fixes : postes mensuels détaillés, ajoutés ou retirés librement.
+  const postes = h("div", { class: "admin-champ" });
+  const totalFixes = h("p", { class: "doux petit", "aria-live": "polite" });
+  const ligneFixe = (p = { libelle: "", montant: 0 }) => {
+    const libellePoste = h("input", { type: "text", value: p.libelle, maxlength: "40", "data-poste": "libelle", "aria-label": "Poste de coût fixe" });
+    const montant = h("input", { type: "number", value: p.montant, min: 0, max: bornes.finances.posteFixe[1], step: "any", "data-poste": "montant", "aria-label": "Montant mensuel" });
+    const ligne = h("div", { class: "admin-ligne", "data-poste-fixe": "" }, libellePoste, montant,
+      h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { ligne.remove(); lireFinances(); } }, "Retirer"));
+    return ligne;
+  };
+  postes.append(...(finances.coutsFixes ?? []).map(ligneFixe));
+  const ajouterPoste = h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { postes.append(ligneFixe()); postes.lastChild.querySelector("input").focus(); } }, "Ajouter un poste");
+
+  // Modèles : identifiant au catalogue Cloudflare, prix, cache, frais de plateforme, taille moyenne d'une génération.
+  const CHAMPS_MODELE = [
+    ["entree", "Entrée / M", "prixMillion"], ["sortie", "Sortie / M", "prixMillion"], ["cache", "Entrée en cache / M", "prixMillion"],
+    ["ratio", "Tokens d'entrée par token généré", "ratio"], ["partCache", "Part de l'entrée en cache (%)", "partCache"],
+    ["fraisPlateforme", "Frais de plateforme (%)", "fraisPlateforme"], ["tokensParAppel", "Tokens par génération (0 = maximum du registre)", "tokensParAppel"]
+  ];
+  const mesures = etat.telemetrie?.mesures ?? {};
+  const prixModeles = Object.keys(etat.modulesCout).map((module) => {
+    const m = finances.modeles[module];
+    const modele = h("input", { type: "text", value: m.modele ?? "", maxlength: "100", size: "28", spellcheck: "false", "data-modele": `${module}.modele`, "aria-label": `${etat.modulesCout[module].libelle} : modèle au catalogue Cloudflare` });
+    const champs = Object.fromEntries(CHAMPS_MODELE.map(([cle, texte, borne]) => [cle, h("input", { type: "number", value: m[cle] ?? 0, min: bornes.finances[borne][0], max: bornes.finances[borne][1], step: "any", "data-modele": `${module}.${cle}`,
+      "aria-label": `${etat.modulesCout[module].libelle} : ${texte}` })]));
+    if (module === "tuteur") champs.tokensParAppel.disabled = true;
+    return { module, modele, champs, etat: h("span", { class: "doux petit", "aria-live": "polite" }) };
+  });
   const lireFinances = () => {
     finances.devise = devise.value;
     for (const { cle, champ } of hypotheses) finances[cle] = nombreSaisi(champ.value);
-    for (const { module, champs } of prixModeles) ["entree", "sortie", "ratio"].forEach((cle, i) => { finances.modeles[module][cle] = nombreSaisi(champs[i].value); });
-    const valides = [...hypotheses.map((x) => finances[x.cle]), ...prixModeles.flatMap((m) => Object.values(finances.modeles[m.module]))].every(Number.isFinite) && finances.utilisateursEstimes >= 1;
+    finances.coutsFixes = [...postes.querySelectorAll("[data-poste-fixe]")].map((l) => ({ libelle: l.querySelector("[data-poste=libelle]").value, montant: nombreSaisi(l.querySelector("[data-poste=montant]").value) }));
+    finances.coutsFixesMensuels = finances.coutsFixes.reduce((t, p) => t + (Number.isFinite(p.montant) ? p.montant : 0), 0);
+    totalFixes.textContent = `Total des coûts fixes : ${monnaie(finances.coutsFixesMensuels, finances.devise)} par mois.`;
+    for (const { module, modele, champs } of prixModeles) {
+      finances.modeles[module].modele = modele.value.trim();
+      for (const [cle] of CHAMPS_MODELE) finances.modeles[module][cle] = nombreSaisi(champs[cle].value);
+    }
+    const valides = [...hypotheses.map((x) => finances[x.cle]), ...finances.coutsFixes.map((p) => p.montant), ...prixModeles.flatMap((m) => CHAMPS_MODELE.map(([c]) => finances.modeles[m.module][c]))].every(Number.isFinite) && finances.utilisateursEstimes >= 1;
     if (valides) { dessinerComparaison(); recalculer(); }
   };
+
+  // Tarifs exposés par Cloudflare (catalogue de modèles commun à AI Gateway et Workers AI).
+  const etatTarifs = h("p", { class: "doux petit", "aria-live": "polite", text: finances.tarifs?.chargeLe ? `Tarifs chargés depuis Cloudflare le ${dateCourte(finances.tarifs.chargeLe)}.` : "Tarifs saisis à la main (relevés publics du 18 novembre 2026)." });
+  const chargerTarifs = h("button", { type: "button", class: "secondaire", disabled: !etat.tarifsCloudflare, onclick: async () => {
+    lireFinances();
+    chargerTarifs.disabled = true;
+    try {
+      const r = await api("POST", "/finances/tarifs-cloudflare", { modeles: Object.fromEntries(prixModeles.map((m) => [m.module, m.modele.value.trim()])) });
+      let charges = 0;
+      for (const m of prixModeles) {
+        const t = r.modeles[m.module];
+        if (t?.erreur) { m.etat.textContent = `Non chargé : ${LIB_ERREURS_TARIFS[t.erreur] ?? t.erreur}.`; continue; }
+        m.champs.entree.value = String(t.entree);
+        m.champs.sortie.value = String(t.sortie);
+        if (t.cache !== null && t.cache !== undefined) m.champs.cache.value = String(t.cache);
+        m.etat.textContent = "Chargé depuis Cloudflare.";
+        charges += 1;
+      }
+      if (charges) finances.tarifs = { source: "cloudflare", chargeLe: r.chargeLe };
+      etatTarifs.textContent = charges ? `Tarifs chargés depuis Cloudflare le ${dateCourte(r.chargeLe)} (${charges} modèle(s)). Vérifie-les puis enregistre les hypothèses.` : "Aucun tarif chargé : vérifie les identifiants des modèles.";
+      lireFinances();
+    } catch (e) { annoncer(messageErreur(e), { erreur: true }); }
+    finally { chargerTarifs.disabled = !etat.tarifsCloudflare; }
+  } }, "Charger les tarifs Cloudflare (AI Gateway)");
+
   const blocFinances = bloc("Hypothèses financières",
-    h("p", { class: "doux", text: "Communes à toutes les souscriptions. Les prix des modèles sont des tarifs publics relevés le 18 novembre 2026 : vérifie-les avant toute décision. La saisie met l'estimation à jour tout de suite ; « Enregistrer » la garde pour tout le monde." }),
+    h("p", { class: "doux", text: "Communes à toutes les souscriptions. La saisie met l'estimation à jour tout de suite ; « Enregistrer » la garde pour tout le monde." }),
     h("div", { class: "admin-ligne" }, h("label", { class: "admin-champ" }, h("span", { text: "Devise des montants" }), devise)),
     h("div", { class: "admin-cases" }, hypotheses.map(({ texte, champ }) => h("label", { class: "admin-champ" }, h("span", { text: texte }), champ))),
-    tableau("Prix des modèles par million de tokens", [
-      { titre: "Module", cellule: (l) => etat.modulesCout[l.module].libelle },
-      { titre: "Entrée", cellule: (l) => l.champs[0] },
-      { titre: "Sortie", cellule: (l) => l.champs[1] },
-      { titre: "Tokens d'entrée par token généré", cellule: (l) => l.champs[2] }
+    h("h3", { text: "Coûts fixes mensuels" }),
+    postes, h("div", { class: "admin-ligne" }, ajouterPoste), totalFixes,
+    h("h3", { text: "Modèles et tarifs" }),
+    h("div", { class: "admin-ligne" }, chargerTarifs),
+    etatTarifs,
+    etat.tarifsCloudflare ? null : h("p", { class: "admin-bandeau", text: "Chargement des tarifs indisponible : le Worker attend CLOUDFLARE_ACCOUNT_ID et un jeton CLOUDFLARE_TARIFS_TOKEN en lecture seule (action manuelle)." }),
+    tableau("Prix par million de tokens et hypothèses de consommation", [
+      { titre: "Module", cellule: (l) => h("div", { class: "admin-champ" }, h("strong", { text: etat.modulesCout[l.module].libelle }), l.modele, l.etat) },
+      ...CHAMPS_MODELE.map(([cle, texte]) => ({ titre: texte, cellule: (l) => l.champs[cle] })),
+      { titre: "Mesuré (30 jours)", cellule: (l) => {
+        const mesure = mesures[l.module];
+        if (!mesure?.appels) return h("span", { class: "doux petit", text: "Aucun appel mesuré" });
+        return h("div", { class: "admin-champ" },
+          h("span", { class: "petit", text: `${nombre(mesure.appels)} appel(s) · ${nombre(mesure.tokensParAppel)} tokens générés / appel · ratio ${mesure.ratio}` }),
+          h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => {
+            l.champs.ratio.value = String(mesure.ratio);
+            if (l.module !== "tuteur") l.champs.tokensParAppel.value = String(mesure.tokensParAppel);
+            lireFinances();
+          } }, "Reprendre la mesure"));
+      } }
     ], prixModeles),
-    h("p", { class: "doux petit", text: `Taille d'une génération (registre) : défi ${nombre(etat.tokensParGeneration.defi)} tokens, cahier ${nombre(etat.tokensParGeneration.cahiers)} tokens.` }),
+    h("p", { class: "doux petit", text: `Taille maximale d'une génération (registre) : défi ${nombre(etat.tokensParGeneration.defi)} tokens, cahier ${nombre(etat.tokensParGeneration.cahiers)} tokens. Le tuteur consomme le budget de tokens de la session.` }),
     h("div", { class: "admin-ligne" },
-      h("button", { type: "button", class: "bouton", onclick: () => agir(() => api("PUT", "/finances", { finances }), "Hypothèses financières enregistrées.") }, "Enregistrer les hypothèses"),
+      h("button", { type: "button", class: "bouton", onclick: () => { lireFinances(); agir(() => api("PUT", "/finances", { finances }), "Hypothèses financières enregistrées."); } }, "Enregistrer les hypothèses"),
       h("button", { type: "button", class: "secondaire", onclick: () => agir(() => api("PUT", "/finances", { reinitialiser: true }), "Hypothèses par défaut rétablies.") }, "Rétablir les valeurs par défaut")));
   blocFinances.addEventListener("input", lireFinances);
   blocFinances.addEventListener("change", lireFinances);
+  lireFinances();
 
   dessinerComparaison();
   remplir();

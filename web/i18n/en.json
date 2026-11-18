@@ -1460,5 +1460,21 @@
   "moiLocal": "Your account only exists on this device: Kermiclab keeps nothing about you.",
   "moiSessionExpiree": "Your online session expired: sign out and sign in again to show your data.",
   "moiSupport": "For any support request, give the unique ID above (never your password or recovery key).",
-  "configParam_SOUSCRIPTIONS_LIBRE_CHOIX": "Free subscription switching (development phase, no payment)"
+  "configParam_SOUSCRIPTIONS_LIBRE_CHOIX": "Free subscription switching (development phase, no payment)",
+  "abonnementTitre": "My subscription",
+  "abonnementActuel": "Current level: {offre} ({prix}).",
+  "abonnementRoles": "Account roles: {roles}. Roles add up: your subscription adds its own role to those given by Kermiclab.",
+  "abonnementDev": "Development phase: payment is not in place yet. Changing level is immediate and free for now.",
+  "abonnementChanger": "Change level",
+  "abonnementPrixMois": "{prix} incl. VAT per month",
+  "abonnementPrixAn": "{prix} incl. VAT per year",
+  "abonnementGratuit": "free",
+  "abonnementLimites": "Tutor: {tokens} tokens per session · AI challenges: {defis} per day · AI workbooks: {cahiers} per day",
+  "abonnementRole": "Role included: {role}",
+  "abonnementChoisir": "Choose this plan",
+  "abonnementEnCours": "Current plan",
+  "abonnementConfirmer": "Confirm: switch to {offre} ({prix})?",
+  "abonnementChange": "Your subscription is now: {offre}.",
+  "abonnementPaiementRequis": "This plan will be available with online payment, soon.",
+  "abonnementIndisponible": "This plan is no longer offered. Reload the page."
 }
