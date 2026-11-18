@@ -1,9 +1,10 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { chargerCatalogue, verifierGraphePrerequis } from "../../scripts/lib/catalogue.mjs";
 
 // Graphe des prérequis vérifié en CI (feuille de route, phase 1 ; issue #180).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const notion = (id, prerequis, niveaux) => ({ id, sujet: `mathematiques/${id}`, ...(prerequis && { prerequis }), ...(niveaux && { niveaux }) });
 
 test("graphe : un graphe sans erreur est accepté, prérequis vides ou absents compris", () => {

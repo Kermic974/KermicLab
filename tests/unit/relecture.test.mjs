@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { lireRelecture, indicateurRelecture, GRILLES_RELECTURE } from "../../scripts/lib/catalogue.mjs";
 
 // Relecture pédagogique tracée dans fiche.md (feuille de route, phase 0 ; issue #176).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const options = { aujourdhui: "2026-11-07" };
 const valider = (champs) => lireRelecture({ id: "fractions", version: "1.2.0", ...champs }, options);
 const complete = { relue: "2026-11-07", "relue-version": "1.2.0", "relue-grille": "v1" };

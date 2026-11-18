@@ -4,7 +4,7 @@ import { cp, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 import { navigateur, racine } from "./outils.mjs";
 import { chargerCatalogue } from "../../scripts/lib/catalogue.mjs";
 import { construireInventaire } from "../../scripts/ux-inventaire.mjs";
@@ -188,7 +188,7 @@ test("les squelettes UX restent autonomes, navigables hors ligne et lisibles sur
     await page.getByRole("link", { name: "Page de notion", exact: true }).click();
     assert.equal(new URL(page.url()).pathname, new URL("notion.html", dossier).pathname);
 
-    const catalogue = await chargerCatalogue([new URL("catalogue/", pathToFileURL(racine)).pathname]);
+    const catalogue = await chargerCatalogue([fileURLToPath(new URL("catalogue/", pathToFileURL(racine)))]);
     await page.goto(new URL("inventaire.html", dossier).href);
     assert.deepEqual((await page.locator("[data-notion]").evaluateAll((e) => e.map((n) => n.dataset.notion))).sort(),
       catalogue.index.maquettes.map((n) => n.id).sort(), "chaque page publique inventoriée exactement une fois");

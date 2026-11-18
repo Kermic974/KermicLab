@@ -17,6 +17,7 @@
   <symbol id="i-jeu" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="3"/><path d="M8 9v5M5.5 11.5h5"/><circle cx="15.5" cy="10" r=".8"/><circle cx="18" cy="13" r=".8"/></symbol>
   <symbol id="i-eclair" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
   <symbol id="i-graphique" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></symbol>
+  <symbol id="i-tableau" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="9" rx="1.5"/><rect x="13" y="4" width="7" height="5" rx="1.5"/><rect x="13" y="11" width="7" height="9" rx="1.5"/><rect x="4" y="15" width="7" height="5" rx="1.5"/></symbol>
   <symbol id="i-trophee" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8.5 20.5h7M10 17h4v3.5h-4z"/></symbol>
   <symbol id="i-reglages" viewBox="0 0 24 24"><path d="M4 7h9M18 7h2M4 17h3M11 17h9"/><circle cx="15.5" cy="7" r="2.3"/><circle cx="8.5" cy="17" r="2.3"/></symbol>
   <symbol id="i-route" viewBox="0 0 24 24"><path d="M4 6.5 9 4l6 2.5L20 4v13.5L15 20l-6-2.5L4 20z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
@@ -55,20 +56,23 @@
         <span class="marque-slogan" data-i18n="slogan"></span>
       </span>
     </a>
-    <nav class="nav" data-i18n-aria="sections">
-      <button type="button" class="nav-bouton" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
-      <button type="button" class="nav-bouton" data-nav="education" id="ouvrir-catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navEducation"></span></button>
-      <button type="button" class="nav-bouton" data-nav="labs"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
-      <button type="button" class="nav-bouton" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
-      <button type="button" class="nav-bouton" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
+    <!-- Ordre des entrées : clé « navigation » de config.json (web/navigation.js). -->
+    <nav class="nav" data-nav-groupe="barre" data-i18n-aria="sections">
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="accueil" data-nav="accueil" aria-current="page"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg><span class="nav-texte" data-i18n="navAccueil"></span></button>
+      <!-- Mon tableau de bord : profil, compte, famille, contributions et espace professeur, en vues filtrables. -->
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="tableau-de-bord" data-nav="tableau-de-bord"><svg class="ico" aria-hidden="true"><use href="#i-tableau"/></svg><span class="nav-texte" data-i18n="navTableauDeBord"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="education" data-nav="education" id="ouvrir-catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navEducation"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="labs" data-nav="labs"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="jeux" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="progression" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <!-- Lien rapide « Ma famille » : compte local lié ; parent → Espace famille, sinon le bloc Famille de Mon compte. -->
-      <button type="button" class="nav-bouton" data-nav="compte" id="nav-famille" hidden><svg class="ico" aria-hidden="true"><use href="#i-famille"/></svg><span class="nav-texte" data-i18n="navFamille"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="famille" data-nav="compte" id="nav-famille" hidden><svg class="ico" aria-hidden="true"><use href="#i-famille"/></svg><span class="nav-texte" data-i18n="navFamille"></span></button>
       <!-- Contributions (ADR 0023) : visible seulement pour un rôle contributeur, prof ou admin. -->
-      <button type="button" class="nav-bouton" data-nav="contributions" id="nav-contributions" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span class="nav-texte" data-i18n="navContributions"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="contributions" data-nav="contributions" id="nav-contributions" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span class="nav-texte" data-i18n="navContributions"></span></button>
       <!-- Expérience Professeur (ADR 0030) : visible seulement pour le rôle Professeur. -->
-      <button type="button" class="nav-bouton" data-nav="suivi" id="nav-suivi" hidden><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navSuivi"></span></button>
-      <button type="button" class="nav-bouton" data-nav="classes" id="nav-classes" hidden><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span class="nav-texte" data-i18n="navClasses"></span></button>
-      <button type="button" class="nav-bouton" data-nav="eleves" id="nav-eleves" hidden><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navEleves"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="suivi" data-nav="suivi" id="nav-suivi" hidden><svg class="ico" aria-hidden="true"><use href="#i-boussole"/></svg><span class="nav-texte" data-i18n="navSuivi"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="classes" data-nav="classes" id="nav-classes" hidden><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span class="nav-texte" data-i18n="navClasses"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="eleves" data-nav="eleves" id="nav-eleves" hidden><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navEleves"></span></button>
     </nav>
     <div class="barre-pied">
       <div class="nav-idees" data-boite-idees-hote></div>
@@ -113,10 +117,16 @@
 
       <p class="avertissement" role="note" data-i18n="avertissement"></p>
 
-      <nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte espace-famille" data-i18n-aria="profilCompte" hidden>
+      <!-- Mon tableau de bord : une barre de filtres commune à toutes ses vues ; chaque vue n'apparaît que si le compte
+           ou le rôle y donne accès (Espace famille : parent ; Contributions : contributeur ; vues Professeur : prof). -->
+      <nav id="navigation-personnelle" class="navigation-personnelle actions" data-ecrans="profil compte famille espace-famille contributions suivi classes eleves connexion-en-cours" data-i18n-aria="tdbVues" hidden>
         <button type="button" class="secondaire" data-nav="profil" data-i18n="navProfil"></button>
         <button id="entree-compte" type="button" class="secondaire" data-nav="compte" data-i18n="compteTitre"></button>
         <button id="entree-espace-famille" type="button" class="secondaire" data-nav="espace-famille" data-i18n="efTitre" hidden></button>
+        <button type="button" class="secondaire" data-nav="contributions" data-tdb-contrib data-i18n="navContributions" hidden></button>
+        <button type="button" class="secondaire" data-nav="suivi" data-tdb-prof data-i18n="navSuivi" hidden></button>
+        <button type="button" class="secondaire" data-nav="classes" data-tdb-prof data-i18n="navClasses" hidden></button>
+        <button type="button" class="secondaire" data-nav="eleves" data-tdb-prof data-i18n="navEleves" hidden></button>
       </nav>
 
       <section class="accueil-depart" id="accueil" data-ecrans="accueil" aria-labelledby="depart-titre">
@@ -419,21 +429,24 @@
   </div>
 </section>
 
-<nav class="nav-mobile" data-i18n-aria="navigationMobile">
-  <button type="button" class="nav-mobile-bouton" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="education"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navEducation"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="labs"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg></span><span data-i18n="navLabs"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
+<nav class="nav-mobile" data-nav-groupe="mobile" data-i18n-aria="navigationMobile">
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="accueil" data-nav="accueil" aria-current="page"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-maison"/></svg></span><span data-i18n="navAccueil"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="tableau-de-bord" data-nav="tableau-de-bord"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-tableau"/></svg></span><span data-i18n="navTableauDeBordCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="education" data-nav="education"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navEducation"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="labs" data-nav="labs"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg></span><span data-i18n="navLabs"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="jeux" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="progression" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="profil" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>
   <!-- Entrées liées au compte ou au rôle (Ma famille, Contributions, Suivi) : dans la barre s'il y en a une seule, sinon
        regroupées sous « Plus » pour garder 7 entrées tactiles de 44 px à 320 px de large (web/app.js, agencerNavMobile). -->
-  <button type="button" class="nav-mobile-bouton" data-nav="compte" id="nav-mobile-famille" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-famille"/></svg></span><span data-i18n="navFamilleCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
-  <button type="button" class="nav-mobile-bouton" data-nav="suivi" id="nav-mobile-suivi" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navSuiviCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="famille" data-nav="compte" id="nav-mobile-famille" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-famille"/></svg></span><span data-i18n="navFamilleCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="contributions" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="suivi" data-nav="suivi" id="nav-mobile-suivi" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navSuiviCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" id="nav-mobile-plus" aria-expanded="false" aria-controls="nav-mobile-autres" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-points"/></svg></span><span data-i18n="navPlus"></span></button>
 </nav>
 <div id="nav-mobile-autres" class="nav-mobile-autres" data-i18n-aria="navPlusTitre" role="group" hidden></div>
+<!-- Entrées retirées de la navigation par la configuration : conservées (le code les met à jour), jamais affichées. -->
+<div id="nav-reserve" hidden></div>
 
 <div id="toasts" role="status" aria-live="polite"></div>
 
@@ -904,12 +917,6 @@
 <!-- Expérience Professeur (ADR 0030 §9) : tableau de bord du professeur, indicateurs d'engagement et de performance,
      activités données (défis, évaluations, cahiers, objectifs) et élèves à suivre. -->
 <section id="suivi" class="carte ecran-personnel" data-ecrans="suivi" aria-labelledby="suivi-titre" hidden>
-  <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
-    <button type="button" class="secondaire" data-nav="suivi" data-i18n="navSuivi"></button>
-    <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
-    <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
-    <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
-  </nav>
   <div class="dialogue-entete">
     <h2 id="suivi-titre" data-i18n="navSuivi"></h2>
     <div class="actions">
@@ -950,12 +957,6 @@
 <!-- Expérience Professeur (ADR 0030) : « Mes classes ». Données lues par l'API /api/professeur/ avec la session du compte
      local, ou par le double de démonstration (« Tester les rôles → Professeur »). -->
 <section id="classes" class="carte ecran-personnel" data-ecrans="classes" aria-labelledby="classes-titre" hidden>
-  <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
-    <button type="button" class="secondaire" data-nav="suivi" data-i18n="navSuivi"></button>
-    <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
-    <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
-    <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
-  </nav>
   <div class="dialogue-entete">
     <h2 id="classes-titre" data-i18n="navClasses"></h2>
     <button type="button" class="secondaire" id="classes-actualiser" data-i18n="efActualiser"></button>
@@ -1014,12 +1015,6 @@
 
 <!-- Expérience Professeur (ADR 0030) : « Mes élèves », suivi des élèves affiliés (classes et cours particuliers). -->
 <section id="eleves" class="carte ecran-personnel" data-ecrans="eleves" aria-labelledby="eleves-titre" hidden>
-  <nav class="navigation-personnelle actions prof-onglets" data-i18n-aria="profEspace">
-    <button type="button" class="secondaire" data-nav="suivi" data-i18n="navSuivi"></button>
-    <button type="button" class="secondaire" data-nav="classes" data-i18n="navClasses"></button>
-    <button type="button" class="secondaire" data-nav="eleves" data-i18n="navEleves"></button>
-    <button type="button" class="secondaire" data-nav="contributions" data-prof-contrib data-i18n="navContributions" hidden></button>
-  </nav>
   <div class="dialogue-entete">
     <h2 id="eleves-titre" data-i18n="navEleves"></h2>
     <button type="button" class="secondaire" id="eleves-actualiser" data-i18n="efActualiser"></button>

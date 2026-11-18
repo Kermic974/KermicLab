@@ -1,9 +1,10 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 // Ces tests lisent dist/ : ils supposent `npm run build` (déjà lancé par `npm run ci` avant `npm test`).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 
 test("dist/ publie l'application autonome sous /cercle/, identique à index.html", async () => {
   const [source, publie] = await Promise.all([

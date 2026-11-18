@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { verifierPlateforme, verifierCercle, verifierEvolutions, verifierDepot } from "../../scripts/verifier-versions.mjs";
 
 // Trois versions distinctes : plateforme, notion, application du cercle (AGENTS.md §6 ter ; issue #177).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const changelog = "# Journal\n\n## [Non publié]\n\n## [0.0.2] — 2026-11-08\n\n## [0.0.1] — 2026-10-31\n";
 const cercle = (v) => `const VERSION = '${v}';`;
 const fiche = (v) => `---\nid: x\nversion: ${v}\n---\n`;

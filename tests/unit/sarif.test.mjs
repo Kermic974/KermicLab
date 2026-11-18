@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
@@ -5,7 +6,7 @@ import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
-const script = new URL("../../scripts/verifier-sarif.mjs", import.meta.url).pathname;
+const script = fileURLToPath(new URL("../../scripts/verifier-sarif.mjs", import.meta.url));
 
 function verifier(sarif) {
   const dossier = mkdtempSync(path.join(tmpdir(), "sarif-"));

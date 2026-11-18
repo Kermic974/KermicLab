@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { validerContenu, compterIndices, indicesDe, MAX_INDICES } from "../../scripts/lib/gabarit.mjs";
 
 // Indices gradués sans IA (feuille de route, phase 3 ; issue #190).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const base = () => ({
   niveaux: [{ titre: "A", niveau: "6e", paragraphes: ["x"] }, { titre: "B", niveau: "5e", paragraphes: ["y"] }],
   application: { exercices: Array.from({ length: 3 }, () => ({ type: "qcm", question: "q", choix: ["a", "b", "c"], bonne: 0, explication: "e" })) },

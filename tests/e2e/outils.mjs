@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -11,9 +12,11 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", "
 
 /** Petit serveur statique pour les tests de rendu. */
 export async function servir(dossier, { headers = {} } = {}) {
+  dossier = path.resolve(dossier);
   const serveur = createServer(async (req, res) => {
     const chemin = path.join(dossier, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
-    if (!chemin.startsWith(dossier)) { res.writeHead(403).end(); return; }
+    const relatif = path.relative(dossier, chemin);
+    if (path.isAbsolute(relatif) || relatif === ".." || relatif.startsWith(".." + path.sep)) { res.writeHead(403).end(); return; }
     try {
       const contenu = await readFile(chemin);
       res.writeHead(200, { "content-type": TYPES[path.extname(chemin)] ?? "application/octet-stream", ...headers }).end(contenu);
@@ -52,7 +55,7 @@ export async function ouvrir(nav, url, options = {}) {
   return { page, contexte, erreurs };
 }
 
-export const racine = new URL("../..", import.meta.url).pathname;
+export const racine = fileURLToPath(new URL("../..", import.meta.url));
 
 /**
  * Capture d'écran pour la documentation, uniquement si KERMICLAB_CAPTURES désigne un dossier
@@ -151,4 +154,17 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
     });
   });
   return requetes;
+}
+
+/**
+ * Ordre de navigation « raccourcis » (web/config.json, clé navigation) : la disposition d'avant « Mon tableau de bord »,
+ * avec Profil et les entrées liées au rôle (Ma famille, Contributions, Professeur) directement dans les barres.
+ * Sert aux tests de ces raccourcis et prouve que l'ordre se règle par la configuration.
+ */
+export const NAVIGATION_RACCOURCIS = ["accueil", "education", "labs", "jeux", "progression", "profil", "famille", "contributions", "suivi", "classes", "eleves"];
+
+/** Sert config.json avec des clés surchargées (ex. { navigation: NAVIGATION_RACCOURCIS }). */
+export async function surchargerConfig(page, origine, surcharge) {
+  const base = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8"));
+  await page.route(`${origine}/config.json`, (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({ ...base, ...surcharge }) }));
 }

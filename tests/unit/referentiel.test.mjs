@@ -1,9 +1,10 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { chargerCatalogue, lireReferentiel, indicateurReferentiel, NIVEAUX_SCOLAIRES } from "../../scripts/lib/catalogue.mjs";
 
 // Référentiel des notions (feuille de route, phase 1 ; issue #179) : champs facultatifs de fiche.md.
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const valider = (champs) => lireReferentiel({ id: "fractions", ...champs });
 
 test("référentiel : champs absents → rien, la fiche reste valide", () => {

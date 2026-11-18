@@ -5,7 +5,7 @@
 // Un site injoignable ou une liste illisible valent « à publier » : le déploiement, protégé par son test de fumée
 // et son retour arrière, est sans effet si rien n'a changé.
 import { appendFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 import { articlesPublies, chargerArticles, jourDePublication } from "./lib/blog.mjs";
 
 /** Adresses présentes d'un seul côté : à ajouter au site, ou à en retirer (article dépublié ou renommé). */
@@ -37,7 +37,7 @@ export async function deciderPublication({ dossier, site, jour, fetch: f }) {
 }
 
 async function main() {
-  const racine = new URL("..", import.meta.url).pathname;
+  const racine = fileURLToPath(new URL("..", import.meta.url));
   const site = String(process.env.KERMICLAB_SITE_URL ?? "").replace(/\/$/, "");
   if (!site) throw new Error("KERMICLAB_SITE_URL est requis");
   const { aPublier, motif } = await deciderPublication({ dossier: `${racine}blog`, site, jour: jourDePublication() });
