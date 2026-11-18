@@ -14,7 +14,7 @@
 <p class="fr-retour"><a href="./">← KermicLab</a></p>
 
 <header class="fr-entete">
-  <p class="fr-surtitre">trigoLab → KermicLab · version 3.3 · <time datetime="2026-11-08">8 novembre 2026</time></p>
+  <p class="fr-surtitre">trigoLab → KermicLab · version 4.0 · <time datetime="2026-11-18">18 novembre 2026</time></p>
   <h1>Feuille de route</h1>
   <p class="fr-chapeau">Transformer un laboratoire de trigonométrie en une plateforme d'apprentissage multi-matières,
     personnalisée et familiale, <strong>sans renoncer à ce qui fait KermicLab</strong> : des pages déterministes,
@@ -46,38 +46,41 @@
 
 <section id="synthese" aria-labelledby="t-synthese">
 <h2 id="t-synthese">Synthèse</h2>
-<p>On ne repart pas de zéro : le catalogue, le gabarit de notion, le tableau de bord et le chat existent déjà.
-  Les PR fusionnées les 4 et 5 novembre ajoutent <strong>neuf jeux autonomes</strong> et une
-  <strong>Académie à modules partagés</strong>. Le 7 novembre, le <strong>socle technique</strong> (CI bloquante,
-  déploiement surveillé) et le <strong>contrat des labs</strong> (référentiel, événements pédagogiques, exercices notés)
-  sont livrés. Le 8 novembre, la <strong>phase 2</strong> l'est aussi : maîtrise par notion, recommandation expliquée,
-  révisions espacées des exercices, export de la progression et <strong>cahier de vacances</strong> local, sans compte.
-  Les indices gradués sans IA ouvrent la phase 3.
-  La suite consiste à <strong>structurer</strong> (un référentiel de notions reliées par leurs prérequis),
-  à <strong>personnaliser localement</strong> (parcours et cahier de vacances dans le navigateur, sans compte),
-  puis seulement à <strong>ouvrir les comptes familles et le tuteur IA</strong>, chacun derrière un point de
-  contrôle humain (juridique pour les comptes, budget pour l'IA).</p>
-<dl class="fr-chiffres" aria-label="Repères au 7 novembre 2026">
+<p>Depuis la version 3.3 du 8 novembre, le dépôt a beaucoup avancé, mais pas dans l'ordre prévu. Trois blocs
+  ont été livrés : le <strong>référentiel canonique S4 à S6</strong> (1 873 objets en release candidate, validation
+  bloquante en CI, prérequis renseignés pour les 165 notions publiques), les <strong>comptes locaux et leurs rôles</strong>
+  (synchronisation chiffrée, Espace famille, expérience Professeur, contributions, back-office et souscriptions) et une
+  <strong>refonte de l'expérience</strong> (question au centre de l'accueil, « Mon tableau de bord », section Labs,
+  gamification unifiée).</p>
+<p>Deux conditions restent ouvertes, et elles sont désormais <strong>les vraies priorités</strong>. La relecture humaine
+  n'a pas commencé : <strong>0 notion relue sur 165, 0 jeu sur 9</strong>, alors que c'est la condition de sortie de la
+  phase 0. Et le code des familles a <strong>devancé son point de contrôle juridique</strong> : les comptes locaux,
+  l'Espace famille et l'expérience Professeur sont en ligne en bêta, mais la préparation juridique
+  (<a href="https://github.com/Kermic974/KermicLab/issues/195">#195</a>) et la validation de leurs ADR restent à faire.
+  La suite consiste donc à <strong>consolider</strong> plutôt qu'à ouvrir de nouveaux chantiers.</p>
+<dl class="fr-chiffres" aria-label="Repères au 18 novembre 2026">
   <div><dt>Jeux intégrés à main</dt><dd>9</dd></div>
-  <div><dt>Socle Académie partagé</dt><dd>1</dd></div>
-  <div><dt>Projets suivis sur GitHub</dt><dd>9 <span>épiques #164 à #172</span></dd></div>
+  <div><dt>Notions avec prérequis</dt><dd>165 <span>sur 165 publiques (36 le 8 novembre)</span></dd></div>
+  <div><dt>Objets canoniques S4</dt><dd>1 873 <span>release candidate, 9 matières</span></dd></div>
+  <div><dt>Notions relues par un humain</dt><dd>0 <span>sur 165 · condition de la phase 0</span></dd></div>
   <div><dt>Compte requis pour jouer</dt><dd>0</dd></div>
 </dl>
 <ol class="fr-cartes">
-  <li><strong>Fiabiliser</strong><span>Une CI qui bloque vraiment et une relecture pédagogique tracée des 170+ notions.</span></li>
-  <li><strong>Structurer</strong><span>Prérequis, compétences et niveaux décrits dans chaque notion, vérifiés par la CI.</span></li>
-  <li><strong>Relier et personnaliser</strong><span>Capitaliser sur l'Académie, puis relier les notions au tableau de bord et au cahier de vacances.</span></li>
-  <li><strong>Accompagner</strong><span>Comptes familles et tuteur IA, quand le cadre juridique et le budget sont en place.</span></li>
+  <li><strong>Relire</strong><span>Lever la seule condition ouverte de la phase 0 : relecture humaine des notions les plus servies et des neuf jeux.</span></li>
+  <li><strong>Régulariser</strong><span>Valider les ADR des comptes (0024, 0029, 0031, 0032, 0034) et mener la préparation juridique avant toute ouverture large.</span></li>
+  <li><strong>Migrer</strong><span>Brancher les expériences sur les contrats S6 (#384) sans réécrire les contenus.</span></li>
+  <li><strong>Accompagner</strong><span>Indices complets, puis tuteur IA dans le cadre budgétaire des souscriptions.</span></li>
 </ol>
 <p class="fr-encadre"><strong>Principe directeur.</strong> KermicLab doit rester entièrement utilisable sans IA et
-  sans compte. L'IA améliore l'accompagnement ; le compte permet de retrouver sa progression ailleurs. Aucun des deux
-  n'est indispensable pour apprendre.</p>
+  sans compte. L'IA améliore l'accompagnement ; le compte permet de retrouver sa progression ailleurs et d'être suivi
+  par un parent ou un professeur. Aucun des deux n'est indispensable pour apprendre.</p>
 </section>
 
 <section id="livraisons" aria-labelledby="t-livraisons">
 <h2 id="t-livraisons">Livraisons récentes</h2>
-<p>État vérifié sur <code>main</code> et les PR au <time datetime="2026-11-07">7 novembre 2026</time>.
-  « Fusionné » signifie intégré au dépôt, pas validation pédagogique complète ni vérification du déploiement en production.</p>
+<p>État vérifié sur <code>main</code> et les PR au <time datetime="2026-11-18">18 novembre 2026</time>.
+  « Fusionné » signifie intégré au dépôt, pas validation pédagogique complète, ni validation juridique, ni vérification
+  du déploiement en production.</p>
 <ol class="fr-jalons">
   <li>
     <p class="fr-date"><time datetime="2026-11-03">3 novembre</time> · accueil</p>
@@ -117,7 +120,8 @@
       référentiel et graphe des prérequis <a href="https://github.com/Kermic974/KermicLab/pull/214">#214</a> <a href="https://github.com/Kermic974/KermicLab/pull/216">#216</a>,
       contrat d'événements (ADR 0025) <a href="https://github.com/Kermic974/KermicLab/pull/220">#220</a>,
       erreurs fréquentes <a href="https://github.com/Kermic974/KermicLab/pull/221">#221</a>, cercle de référence <a href="https://github.com/Kermic974/KermicLab/pull/222">#222</a>,
-      activité dans « Mes trophées » <a href="https://github.com/Kermic974/KermicLab/pull/223">#223</a>.</p>
+      activité dans « Mes trophées » <a href="https://github.com/Kermic974/KermicLab/pull/223">#223</a>,
+      compte local facultatif (ADR 0024) <a href="https://github.com/Kermic974/KermicLab/pull/209">#209</a>.</p>
   </li>
   <li>
     <p class="fr-date"><time datetime="2026-11-08">8 novembre</time> · parcours sans compte</p>
@@ -125,17 +129,59 @@
     <p>Référentiel des 36 notions de maths <a href="https://github.com/Kermic974/KermicLab/pull/233">#233</a> <a href="https://github.com/Kermic974/KermicLab/pull/234">#234</a>,
       maîtrise par notion <a href="https://github.com/Kermic974/KermicLab/pull/235">#235</a>, recommandation expliquée <a href="https://github.com/Kermic974/KermicLab/pull/236">#236</a>,
       révisions dans le défi express <a href="https://github.com/Kermic974/KermicLab/pull/237">#237</a>, export et import de la progression <a href="https://github.com/Kermic974/KermicLab/pull/238">#238</a>,
-      cahier de vacances <a href="https://github.com/Kermic974/KermicLab/pull/239">#239</a>, indices gradués sans IA <a href="https://github.com/Kermic974/KermicLab/pull/240">#240</a>.</p>
+      cahier de vacances <a href="https://github.com/Kermic974/KermicLab/pull/239">#239</a>, indices gradués sans IA <a href="https://github.com/Kermic974/KermicLab/pull/240">#240</a>,
+      grille de relecture exigée dans les PR de notion <a href="https://github.com/Kermic974/KermicLab/pull/241">#241</a>.</p>
+  </li>
+  <li>
+    <p class="fr-date"><time datetime="2026-11-11">10 et 11 novembre</time> · pilotage</p>
+    <h3>Kanban, gouvernance des IA et équipe</h3>
+    <p>Kanban de pilotage synchronisé <a href="https://github.com/Kermic974/KermicLab/pull/265">#265</a>,
+      issues qualité (SEO, fumée, WCAG, évaluation IA) rattachées aux projets <a href="https://github.com/Kermic974/KermicLab/pull/264">#264</a>,
+      revue du contrat de répartition des rôles IA V0.9 <a href="https://github.com/Kermic974/KermicLab/pull/270">#270</a>,
+      page L'équipe <a href="https://github.com/Kermic974/KermicLab/pull/274">#274</a>,
+      garde-fou contre la publication d'une racine non construite <a href="https://github.com/Kermic974/KermicLab/pull/285">#285</a>.</p>
+  </li>
+  <li>
+    <p class="fr-date"><time datetime="2026-11-16">16 novembre</time> · exploitation et accueil</p>
+    <h3>Back-office, blog et SEO</h3>
+    <p>Back-office : utilisateurs, sécurité, données, contenus, charte, harness (ADR 0026) <a href="https://github.com/Kermic974/KermicLab/pull/310">#310</a>,
+      question au centre de l'accueil <a href="https://github.com/Kermic974/KermicLab/pull/309">#309</a>,
+      « À la une », parcours publiés et « Ma classe » <a href="https://github.com/Kermic974/KermicLab/pull/317">#317</a>,
+      blog <code>/blog</code> <a href="https://github.com/Kermic974/KermicLab/pull/307">#307</a> et publication programmée, test de fumée complété <a href="https://github.com/Kermic974/KermicLab/pull/323">#323</a>,
+      socle SEO <a href="https://github.com/Kermic974/KermicLab/pull/318">#318</a>,
+      profil en un écran et « À propos » <a href="https://github.com/Kermic974/KermicLab/pull/324">#324</a>.</p>
+  </li>
+  <li>
+    <p class="fr-date"><time datetime="2026-11-17">17 novembre</time> · référentiel et rôles</p>
+    <h3>Référentiel S4 sur neuf matières, familles et professeurs</h3>
+    <p>Contrats S4 adoptés (ADR 0028) <a href="https://github.com/Kermic974/KermicLab/pull/327">#327</a>, schémas <a href="https://github.com/Kermic974/KermicLab/pull/328">#328</a>,
+      validation bloquante en CI <a href="https://github.com/Kermic974/KermicLab/pull/332">#332</a> <a href="https://github.com/Kermic974/KermicLab/pull/333">#333</a>,
+      activation par matière <a href="https://github.com/Kermic974/KermicLab/pull/349">#349</a> à <a href="https://github.com/Kermic974/KermicLab/pull/364">#364</a>,
+      1 873 objets canoniques en release candidate <a href="https://github.com/Kermic974/KermicLab/pull/368">#368</a> ;
+      Espace famille des comptes locaux (ADR 0029) <a href="https://github.com/Kermic974/KermicLab/pull/352">#352</a> <a href="https://github.com/Kermic974/KermicLab/pull/372">#372</a>,
+      expérience Professeur (ADR 0030, acceptée) <a href="https://github.com/Kermic974/KermicLab/pull/355">#355</a> <a href="https://github.com/Kermic974/KermicLab/pull/365">#365</a>,
+      suivi des contributions <a href="https://github.com/Kermic974/KermicLab/pull/354">#354</a> <a href="https://github.com/Kermic974/KermicLab/pull/370">#370</a> ;
+      section Labs <a href="https://github.com/Kermic974/KermicLab/pull/335">#335</a> et lab « Le système solaire » <a href="https://github.com/Kermic974/KermicLab/pull/338">#338</a> <a href="https://github.com/Kermic974/KermicLab/pull/351">#351</a>,
+      cahiers en plein cadre <a href="https://github.com/Kermic974/KermicLab/pull/331">#331</a>, réponse incrustée sous la question <a href="https://github.com/Kermic974/KermicLab/pull/334">#334</a>.</p>
+  </li>
+  <li>
+    <p class="fr-date"><time datetime="2026-11-18">18 novembre</time> · consolidation</p>
+    <h3>S5 qualifié, S6 adopté, gamification unifiée, souscriptions</h3>
+    <p>Artefacts S5 vérifiés et reproductibles sous Windows et Linux <a href="https://github.com/Kermic974/KermicLab/pull/374">#374</a> <a href="https://github.com/Kermic974/KermicLab/pull/375">#375</a> <a href="https://github.com/Kermic974/KermicLab/pull/377">#377</a>,
+      contrats S6 adoptés (ADR 0033) <a href="https://github.com/Kermic974/KermicLab/pull/385">#385</a> et schémas des onze familles d'expériences <a href="https://github.com/Kermic974/KermicLab/pull/389">#389</a> ;
+      gamification unifiée (ADR 0032) <a href="https://github.com/Kermic974/KermicLab/pull/380">#380</a> <a href="https://github.com/Kermic974/KermicLab/pull/383">#383</a>,
+      « Mon tableau de bord » <a href="https://github.com/Kermic974/KermicLab/pull/378">#378</a>,
+      clé de synchronisation, appairage et « Ce que Kermiclab sait de moi » <a href="https://github.com/Kermic974/KermicLab/pull/386">#386</a>,
+      souscriptions et estimation des coûts (ADR 0031) <a href="https://github.com/Kermic974/KermicLab/pull/379">#379</a>, rôles cumulatifs et « Mon abonnement » (ADR 0034) <a href="https://github.com/Kermic974/KermicLab/pull/391">#391</a>.</p>
   </li>
 </ol>
 <div class="fr-deux">
-  <div><h3>Acquis réutilisable</h3><p>XP, grades, étoiles, badges, objectif du jour, défi quotidien,
-    révisions Leitner, conseil explicable et page « Ma progression » : le socle existe dans
-    <code>gabarit/jeux/</code> (ADR 0014 et 0015).</p></div>
-  <div><h3>Prochaine jonction</h3><p>La maîtrise scolaire est maintenant calculée par notion, à partir des exercices
-    réussis, et nourrit la recommandation, les révisions et le cahier de vacances. Elle reste distincte de l'XP des jeux :
-    <strong>XP de jeu ≠ maîtrise d'une notion</strong>. La suite : étendre le référentiel et les indices aux autres
-    matières, puis le tuteur IA quand un budget existe.</p></div>
+  <div><h3>Acquis réutilisable</h3><p>Référentiel canonique validé en CI, contrat d'événements, maîtrise par notion,
+    révisions Leitner, recommandation expliquée et cahier de vacances locaux ; côté serveur, un seul Worker avec comptes
+    locaux, rôles cumulatifs, back-office et télémétrie sans texte ni IP.</p></div>
+  <div><h3>Ce qui n'est pas acquis</h3><p>Aucune relecture humaine des contenus. Huit ADR déjà en ligne (0024, 0026, 0027, 0029, les deux 0031, 0032
+    et 0034) sont encore « proposées ». Le contrôle d'accès par rôle et les garde-fous sont <strong>préparés mais non
+    appliqués</strong>, et aucune souscription n'est facturée : la plateforme reste une bêta ouverte.</p></div>
 </div>
 </section>
 
@@ -182,35 +228,39 @@
 
 <section id="acquis" aria-labelledby="t-acquis">
 <h2 id="t-acquis">Où en est-on vraiment</h2>
-<p>La première version de cette feuille de route décrivait un projet « centré sur la trigonométrie ». Le dépôt
-  est en réalité plus avancé : plusieurs étapes prévues pour plus tard sont déjà faites, et la roadmap doit partir
-  de là.</p>
+<p>État des capacités au 18 novembre, chiffres tirés du build (<code>npm run build</code>) et des issues GitHub.
+  « En ligne » ne vaut pas validation pédagogique ou juridique.</p>
 <div class="fr-tableau">
 <table>
   <thead><tr><th scope="col">Capacité</th><th scope="col">État</th><th scope="col">Ce qu'il reste</th></tr></thead>
   <tbody>
-    <tr><td>Catalogue multi-matières</td><td><span class="fr-etat fait">En ligne</span> 170+ notions : maths, physique-chimie, SVT, histoire, géographie, EMC, philosophie, français, SES</td><td>Relecture pédagogique systématique ; référentiel rempli pour les 36 notions de mathématiques ; indices gradués complets pour 2 notions pilotes ; autres matières à suivre</td></tr>
-    <tr><td>Gabarit de notion (<code>contenu.json</code> → page)</td><td><span class="fr-etat fait">En ligne</span> ADR 0011 ; contrat d'événements (ADR 0025), exercices notés avec erreurs fréquentes</td><td>Faire émettre les événements par les autres pages écrites à la main</td></tr>
-    <tr><td>Cercle trigonométrique</td><td><span class="fr-etat fait">v1.4</span> 3 méthodes, modes Explorer / Apprendre / Jouer</td><td>Mode Comparer (v1.5), hors ligne (v2.0)</td></tr>
-    <tr><td>Routage déterministe et chat</td><td><span class="fr-etat fait">En ligne</span> zéro token sur le catalogue, repli sans clé API</td><td>Clé API avec plafond quand un budget existe (ADR 0006)</td></tr>
-    <tr><td>Tableau de bord, pseudo, progression</td><td><span class="fr-etat fait">En ligne</span> local, session ou mémorisé (ADR 0012) ; maîtrise par notion, recommandation expliquée, cahier de vacances, export en fichier</td><td>Synchroniser la progression sur un compte familial, après validation juridique (phase 4)</td></tr>
-    <tr><td>Catalogue de jeux autonomes</td><td><span class="fr-etat fait">Fusionné</span> Démineur, Échecs, Belote, Sudoku, Poker Texas Hold'em (jetons fictifs), Mots croisés, Mots fléchés, 2048, Pendu</td><td>Consolider clavier, tactile et relecture des règles des neuf jeux</td></tr>
-    <tr><td>Académie et gamification partagées</td><td><span class="fr-etat fait">Disponible</span> modules de progression et d'interface, exercices vérifiés par les moteurs, révisions et conseils locaux (#90, #92) ; remontée des résultats dans « Mes trophées » ; mêmes révisions Leitner pour les exercices des notions (#237)</td><td>Badge de fin de cahier de vacances ; diagnostic au-delà des QCM</td></tr>
-    <tr><td>Comptes parent et profils élèves</td><td><span class="fr-etat partiel">Proposé</span> ADR 0010, code OAuth en place, désactivé</td><td>Validation juridique (RGPD, consentement des moins de 15 ans), AIPD</td></tr>
-    <tr><td>KPI anonymes, sauvegardes</td><td><span class="fr-etat fait">En ligne</span> D1 + R2, ni IP ni texte</td><td>Indicateurs pédagogiques agrégés</td></tr>
-    <tr><td>Contrôle qualité des pages</td><td><span class="fr-etat partiel">Technique : fait</span> sécurité (<code>check:pages</code>), routage, tests navigateur de toutes les pages servies, CI bloquante ; grille de relecture v1 et statut « relue » ; versions vérifiées par le lint ; grille cochée dans chaque PR de notion</td><td>Relire les notions les plus consultées : aucune n'est encore marquée « relue » (#176)</td></tr>
+    <tr><td>Catalogue multi-matières</td><td><span class="fr-etat fait">En ligne</span> 174 pages publiques : 165 notions (maths, physique-chimie, SVT, histoire, géographie, EMC, philosophie, français, SES) et 9 jeux ; lab « Le système solaire »</td><td>Relecture pédagogique : 0 notion relue sur 165 (#176) ; relecture scientifique du lab</td></tr>
+    <tr><td>Référentiel canonique S4 → S6</td><td><span class="fr-etat fait">Release candidate</span> 1 873 objets S4 sur 9 matières, validation bloquante en CI, projection sur les fiches ; artefacts S5 qualifiés ; contrats S6 adoptés et schémas fusionnés (ADR 0028, 0033)</td><td>Validateur et migration des expériences S6 en statut <code>review</code> (#384) ; relecture des 51 prérequis ajoutés hors mathématiques</td></tr>
+    <tr><td>Gabarit de notion et exercices</td><td><span class="fr-etat fait">En ligne</span> contrat d'événements (ADR 0025), exercices notés, erreurs fréquentes ; indices : 789 exercices sur 1 331 en ont au moins un, 20 en ont trois</td><td>Compléter les indices par lots relus ; faire émettre les événements par les pages écrites à la main</td></tr>
+    <tr><td>Parcours sans compte</td><td><span class="fr-etat fait">En ligne</span> maîtrise par notion, recommandation expliquée, révisions, cahier de vacances, export en fichier ; gamification unifiée (ADR 0032, proposée) : l'XP récompense la réussite</td><td>Valider l'ADR 0032 ; diagnostic au-delà des QCM</td></tr>
+    <tr><td>Cercle trigonométrique</td><td><span class="fr-etat fait">v1.4</span> 3 méthodes, modes Explorer / Apprendre / Jouer, page de référence du contrat</td><td>Mode Comparer (v1.5), hors ligne (v2.0)</td></tr>
+    <tr><td>Routage déterministe, chat et IA</td><td><span class="fr-etat fait">En ligne</span> zéro token sur le catalogue ; chat Workers AI sous quota, défi express et « Mes cahiers » générés via AI Gateway, pseudonymisation imposée</td><td>Tuteur socratique (#191 à #194), plafond de dépense global</td></tr>
+    <tr><td>Catalogue de jeux autonomes</td><td><span class="fr-etat fait">Fusionné</span> 9 jeux, 6 Académies (« points de jeu »), 4 jeux reliés à des notions</td><td>Relecture humaine des règles : 0 jeu relu sur 9 (#175)</td></tr>
+    <tr><td>Comptes locaux et synchronisation</td><td><span class="fr-etat partiel">Bêta</span> identifiant + mot de passe sans email, synchronisation chiffrée par une clé de l'appareil, appairage, kit de récupération, « Ce que Kermiclab sait de moi » (ADR 0024, proposée)</td><td>Valider l'ADR 0024 et la procédure de vérification d'identité avant réinitialisation (#387)</td></tr>
+    <tr><td>Espace famille et Professeur</td><td><span class="fr-etat partiel">Bêta</span> parent qui gère jusqu'à 6 enfants avec consentement versionné, activités et tableau de bord (ADR 0029, proposée) ; classes, invitations, activités et suivi des élèves (ADR 0030, acceptée)</td><td>Préparation juridique (#195), AIPD, validation de l'ADR 0029 avant une ouverture au-delà de la bêta</td></tr>
+    <tr><td>Comptes OAuth (Google, Microsoft, Apple)</td><td><span class="fr-etat partiel">En attente</span> code en place (ADR 0010, 0017), écran d'attente</td><td>Inscription des applications chez les fournisseurs, validation juridique</td></tr>
+    <tr><td>Back-office, rôles et souscriptions</td><td><span class="fr-etat partiel">Préparé</span> back-office (ADR 0026), rôles cumulatifs, offres Gratuit / Solo / Parent / Professeur et estimation des coûts (ADR 0031, 0034) ; contrôle d'accès et garde-fous <strong>non appliqués</strong>, aucun paiement</td><td>Valider les ADR, créer le secret <code>BACKOFFICE_JETON</code>, décider de l'activation des garde-fous</td></tr>
+    <tr><td>Contrôle qualité et exploitation</td><td><span class="fr-etat fait">Technique : fait</span> CI bloquante, tests navigateur de toutes les pages, versions vérifiées, grille exigée dans les PR de notion, test de fumée en onze contrôles et retour arrière, SEO, Kanban</td><td>Rendre le contrôle « Grille de relecture » obligatoire dans la protection de <code>main</code></td></tr>
+    <tr><td>KPI, audience, sauvegardes</td><td><span class="fr-etat fait">En ligne</span> KPI D1 + R2 sans IP ni texte, télémétrie des modèles agrégée ; Google Analytics seulement après accord (ADR 0027, proposée)</td><td>Valider l'ADR 0027 et le texte de confidentialité ; indicateurs pédagogiques agrégés</td></tr>
   </tbody>
 </table>
 </div>
-<p><strong>Conséquence :</strong> le risque principal n'est plus de « généraliser la trigonométrie », mais de garantir
-  la <strong>qualité</strong> d'un catalogue déjà large, destiné à des mineurs, et de lui donner une
-  <strong>structure</strong> (prérequis, maîtrise) pour que la personnalisation soit possible.</p>
+<p><strong>Conséquence :</strong> le risque principal n'est plus le manque de fonctionnalités mais leur
+  <strong>avance sur les points de contrôle humains</strong>. Le catalogue s'adresse à des mineurs sans avoir été relu,
+  et des données de comptes d'enfants existent en bêta avant la validation juridique. Les deux prochaines semaines
+  doivent servir à lever ces deux conditions, pas à élargir le périmètre.</p>
 </section>
 
 <section id="planning" aria-labelledby="t-planning">
 <h2 id="t-planning">Gantt simplifié : l'ordre, pas des dates promises</h2>
-<p id="aide-gantt">Les colonnes sont des horizons de dépendance, pas des durées. Acquis au 8 novembre. Une barre indique où se situe
-  le travail ; elle ne représente pas un pourcentage d'avancement. Les phases 0 et 1 sont livrées côté technique ; la relecture humaine des notions les plus consultées reste à faire.</p>
+<p id="aide-gantt">Les colonnes sont des horizons de dépendance, pas des durées. Acquis au 18 novembre. Une barre indique où se situe
+  le travail ; elle ne représente pas un pourcentage d'avancement. Les phases 1 et 2 sont livrées ; la phase 0 attend
+  la relecture humaine ; la phase 4 a été construite en bêta avant son point de contrôle juridique.</p>
 <ul class="fr-legende" aria-label="Légende du Gantt">
   <li><span class="fr-barre fait">✓ Acquis</span></li>
   <li><span class="fr-barre priorite">→ Priorité</span></li>
@@ -220,31 +270,34 @@
 <div class="fr-tableau fr-gantt" role="region" aria-label="Gantt des chantiers, défilement horizontal" tabindex="0">
 <table aria-describedby="aide-gantt">
   <caption>Du socle livré aux options conditionnelles</caption>
-  <thead><tr><th scope="col">Chantier</th><th scope="col">Acquis au 08/11</th><th scope="col">Maintenant</th><th scope="col">Après le socle</th><th scope="col">Après validation</th></tr></thead>
+  <thead><tr><th scope="col">Chantier</th><th scope="col">Acquis au 18/11</th><th scope="col">Maintenant</th><th scope="col">Après le socle</th><th scope="col">Après validation</th></tr></thead>
   <tbody>
-    <tr><th scope="row"><a href="#livraisons">Catalogue, accueil, jeux</a></th><td><span class="fr-barre fait">✓ Intégrés</span></td><td colspan="3">Consolidation continue, sans nouvelle dépendance aux comptes</td></tr>
-    <tr><th scope="row"><a href="#phase-0">0 · Qualité</a></th><td><span class="fr-barre fait">✓ CI bloquante, déploiement surveillé</span></td><td colspan="2"><span class="fr-barre priorite">→ Relire les notions les plus consultées</span></td><td>Contrôle continu</td></tr>
-    <tr><th scope="row"><a href="#phase-1">1 · Référentiel et événements</a></th><td><span class="fr-barre fait">✓ Contrat v1, référentiel des maths</span></td><td colspan="2">Étendre le référentiel aux autres matières</td><td>Contrat stable</td></tr>
-    <tr><th scope="row"><a href="#phase-2">2 · Parcours locaux</a></th><td><span class="fr-barre fait">✓ Maîtrise, révisions, cahier de vacances</span></td><td colspan="2">Badge de fin, diagnostic élargi</td><td>Sans compte</td></tr>
-    <tr><th scope="row"><a href="#phase-3">3 · Tuteur borné</a></th><td>Indices gradués : outillage et 2 pilotes</td><td colspan="2"><span class="fr-barre priorite">→ Indices pour toutes les notions, par lots</span></td><td><span class="fr-barre controle">◇ IA : budget + évaluations</span></td></tr>
-    <tr><th scope="row"><a href="#phase-4">4 · Familles</a></th><td>OAuth désactivé</td><td colspan="2"><span class="fr-barre controle">◇ Préparation juridique en parallèle</span></td><td><span class="fr-barre controle">◇ AIPD + consentement</span></td></tr>
-    <tr><th scope="row"><a href="#phase-5">5 · Fabrique</a></th><td>Build, gabarits, grille dans les PR</td><td>Aperçu de chaque PR</td><td colspan="2"><span class="fr-barre suite">○ Industrialiser après qualité et contrat stables</span></td></tr>
-    <tr><th scope="row"><a href="#phase-6">6 · Options</a></th><td colspan="3">Hors ligne, recherche, enseignants : pas d'engagement de livraison</td><td><span class="fr-barre controle">◇ Besoin mesuré</span></td></tr>
+    <tr><th scope="row"><a href="#livraisons">Catalogue, accueil, jeux</a></th><td><span class="fr-barre fait">✓ 174 pages, Labs, accueil refondu</span></td><td colspan="3">Consolidation continue, sans nouvelle dépendance aux comptes</td></tr>
+    <tr><th scope="row"><a href="#phase-0">0 · Qualité</a></th><td><span class="fr-barre fait">✓ CI, fumée, retour arrière</span></td><td colspan="2"><span class="fr-barre priorite">→ Relire notions et jeux (0/165, 0/9)</span></td><td>Contrôle continu</td></tr>
+    <tr><th scope="row"><a href="#phase-1">1 · Référentiel et événements</a></th><td><span class="fr-barre fait">✓ S4 release candidate, S5, contrats S6</span></td><td colspan="2"><span class="fr-barre priorite">→ Migration S6 des expériences (#384)</span></td><td>S4 et S6 en <code>validated</code></td></tr>
+    <tr><th scope="row"><a href="#phase-2">2 · Parcours locaux</a></th><td><span class="fr-barre fait">✓ Maîtrise, révisions, cahier, XP unifiée</span></td><td colspan="2">Diagnostic élargi, cahiers par matière</td><td>Sans compte</td></tr>
+    <tr><th scope="row"><a href="#phase-3">3 · Tuteur borné</a></th><td>Indices : 789/1 331 exercices ; IA de chat sous quota</td><td colspan="2">Indices complets, par lots</td><td><span class="fr-barre controle">◇ Tuteur IA : budget + évaluations</span></td></tr>
+    <tr><th scope="row"><a href="#phase-4">4 · Familles</a></th><td>Comptes locaux, famille, professeur en bêta</td><td colspan="2"><span class="fr-barre priorite">→ Préparation juridique (#195), ADR à valider</span></td><td><span class="fr-barre controle">◇ AIPD + ouverture large, OAuth</span></td></tr>
+    <tr><th scope="row"><a href="#phase-5">5 · Fabrique</a></th><td>Contributions suivies, back-office des contenus, grille dans les PR</td><td>Mesurer le délai demande → notion</td><td colspan="2"><span class="fr-barre suite">○ Notions candidates par IA après relecture en place</span></td></tr>
+    <tr><th scope="row"><a href="#phase-6">6 · Options</a></th><td colspan="3">Espace enseignant livré en avance ; hors ligne, recherche sémantique : pas d'engagement</td><td><span class="fr-barre controle">◇ Besoin mesuré</span></td></tr>
   </tbody>
 </table>
 </div>
-<ol class="fr-flux" aria-label="Chemin critique des parcours sans compte">
-  <li><a href="#livraisons"><strong>Acquis</strong><span>Pages + jeux + Académie</span></a></li>
-  <li><a href="#phase-0"><strong>0 · Fiabiliser</strong><span>Qualité et relecture</span></a></li>
-  <li><a href="#phase-1"><strong>1 · Relier</strong><span>Prérequis et événements</span></a></li>
-  <li><a href="#phase-2"><strong>2 · Personnaliser</strong><span>Parcours et cahier local</span></a></li>
+<ol class="fr-flux" aria-label="Chemin critique avant toute ouverture large">
+  <li><a href="#livraisons"><strong>Acquis</strong><span>Pages, référentiel, comptes en bêta</span></a></li>
+  <li><a href="#phase-0"><strong>0 · Relire</strong><span>Notions les plus servies, jeux</span></a></li>
+  <li><a href="#phase-4"><strong>4 · Régulariser</strong><span>Juridique, ADR, contrôle d'accès</span></a></li>
+  <li><a href="#phase-3"><strong>3 · Accompagner</strong><span>Indices puis tuteur sous budget</span></a></li>
 </ol>
-<p class="fr-encadre"><strong>Priorité immédiate :</strong> la relecture humaine des notions les plus consultées
-  (<a href="https://github.com/Kermic974/KermicLab/issues/176">#176</a>) et des neuf jeux (<a href="https://github.com/Kermic974/KermicLab/issues/175">#175</a>), seule condition encore
-  ouverte de la phase 0. Ensuite : indices gradués et référentiel pour les autres notions, par lots relus. Ni la fusion d'un jeu, ni ses badges ne valident une phase. La préparation juridique peut avancer en parallèle ; l'IA reste conditionnée au budget.</p>
+<p class="fr-encadre"><strong>Priorité immédiate :</strong> la relecture humaine des 20 notions les plus servies
+  (<a href="https://github.com/Kermic974/KermicLab/issues/176">#176</a>) et des neuf jeux (<a href="https://github.com/Kermic974/KermicLab/issues/175">#175</a>),
+  puis la validation des ADR des comptes et la préparation juridique (#195). En attendant, aucune nouvelle fonction
+  qui collecte des données d'enfants, et aucune ouverture des comptes au-delà de la bêta. Le travail technique peut
+  continuer sur la migration S6 (#384) et les indices, qui ne touchent pas aux données.</p>
 <p id="suivi-projets">Chaque ligne du Gantt est suivie par un projet GitHub : une épique, des sous-issues et un label
   <code>projet:…</code>, ordonnés par priorité dans le <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/projets.md">registre des projets</a>
-  (<a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+is%3Aopen+label%3Aepic">épiques ouvertes</a>).</p>
+  (<a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+is%3Aopen+label%3Aepic">épiques ouvertes</a>).
+  Les épiques des phases 1 (#165) et 2 (#166) sont fermées.</p>
 <p class="fr-suivi" data-projet="catalogue-jeux"><strong>Suivi :</strong> <a href="https://github.com/Kermic974/KermicLab/issues/172">épique #172</a>
     · <a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+label%3Aprojet%3Acatalogue-jeux">tickets <code>projet:catalogue-jeux</code></a></p>
 </section>
@@ -255,9 +308,10 @@
   <li><strong>Déterminisme d'abord.</strong> Une question couverte par le catalogue donne toujours la même page, sans
     appel à un modèle. Les recommandations suivent la même règle : mêmes données, même proposition, avec la raison affichée.</li>
   <li><strong>Local d'abord.</strong> Tout ce qui peut fonctionner dans le navigateur (progression, maîtrise, parcours,
-    cahier de vacances) y fonctionne. Le serveur ne sert qu'à synchroniser, et seulement avec un compte.</li>
+    cahier de vacances) y fonctionne. Le serveur ne sert qu'à synchroniser, chiffré, et seulement avec un compte.</li>
   <li><strong>Points de contrôle humains.</strong> Juridique avant les comptes, budget avant l'IA, relecture avant
-    publication d'une notion. Une phase ne démarre pas tant que son point de contrôle n'est pas levé ; les autres avancent.</li>
+    publication d'une notion. Du code peut être prêt avant son point de contrôle ; il reste alors en bêta, désactivé ou
+    non appliqué, jusqu'à ce que le point soit levé.</li>
   <li><strong>Une phase = une condition de sortie mesurable.</strong> Pas de date imposée : l'ordre et les critères
     comptent plus que le calendrier.</li>
   <li><strong>Pas de complexité anticipée.</strong> Un seul Worker, D1 et R2 tant que le besoin ne prouve pas le contraire.</li>
@@ -266,31 +320,28 @@
 
 <section id="phases" aria-labelledby="t-phases">
 <h2 id="t-phases">Les phases</h2>
-<p>Les phases sont ordonnées par dépendance. Les phases 2 et 3 peuvent avancer en parallèle de la préparation
-  juridique de la phase 4, qui prend du temps et ne dépend pas du code.</p>
+<p>Les phases sont ordonnées par dépendance. Les phases 1 et 2 sont livrées ; la phase 0 attend sa relecture humaine ;
+  la phase 4 a été construite en bêta et attend sa validation juridique.</p>
 
 <ol class="fr-phases">
 <li class="fr-phase" id="phase-0">
   <details open>
-  <summary><span class="fr-num">0</span><span class="fr-titre-phase">Socle fiable</span><span class="fr-horizon maintenant">Technique livrée · relecture en cours</span></summary>
+  <summary><span class="fr-num">0</span><span class="fr-titre-phase">Socle fiable</span><span class="fr-horizon maintenant">Priorité · relecture humaine</span></summary>
   <div class="fr-corps">
-  <p><span class="fr-etat fait">Livré le 7 novembre</span> CI bloquante sur <code>main</code>, tests navigateur de
-    toutes les pages servies, migrations D1, test de fumée et retour arrière automatique, grille de relecture v1.
-    Reste la relecture humaine des notions les plus consultées (#176).</p>
-  <p><strong>Objectif :</strong> pouvoir tout faire évoluer sans casser ce qui est en ligne.</p>
+  <p><span class="fr-etat fait">Technique livrée</span> CI bloquante, tests navigateur de toutes les pages servies,
+    migrations D1 (9 à ce jour), test de fumée en onze contrôles et retour arrière automatique, versions séparées et
+    vérifiées, grilles de relecture <code>v1</code> et <code>jeux-v1</code>.
+    <span class="fr-etat partiel">Ouvert</span> relecture humaine : 0 notion sur 165 et 0 jeu sur 9.</p>
+  <p><strong>Objectif :</strong> pouvoir tout faire évoluer sans casser ce qui est en ligne, et ne servir à des enfants
+    que des contenus relus.</p>
   <ul>
-    <li>Protéger <code>main</code> : CI obligatoire avant fusion (action manuelle du propriétaire).</li>
-    <li>Les tests navigateur couvrent déjà chaque notion du gabarit : les appliquer aussi aux pages écrites à la main
-      et au catalogue privé, et en faire un contrôle obligatoire de la PR. Les neuf jeux ont déjà leurs tests moteur
-      et navigateur : maintenir cette couverture et vérifier leurs parcours clavier et tactile.</li>
-    <li>Relire les règles et les leçons des neuf jeux intégrés, pendu compris (fusionné le 5 novembre, #100).</li>
-    <li>Grille de relecture pédagogique (exactitude, progression collège → lycée, adaptation à l'âge) et statut
-      « relue » dans chaque fiche, appliqués d'abord aux notions les plus consultées.</li>
-    <li>Versions séparées : plateforme (<code>package.json</code>), notion (<code>fiche.md</code>), application du cercle.</li>
-    <li>Migrations D1 versionnées et test de fumée après déploiement, avec retour arrière.</li>
+    <li>Relire les 20 notions les plus servies avec la grille v1 et tracer la relecture dans <code>fiche.md</code> (#176).</li>
+    <li>Relire les règles, les Académies et les conseils des neuf jeux avec la grille <code>jeux-v1</code> (#175).</li>
+    <li>Rendre le contrôle « Grille de relecture » obligatoire dans la protection de <code>main</code>.</li>
+    <li>Audits ouverts : accessibilité WCAG 2.2 AA (#263), indexation (#260).</li>
   </ul>
   <p class="fr-sortie"><strong>Condition de sortie :</strong> une PR qui casse une page du catalogue est bloquée par la CI ;
-    un déploiement raté est détecté et annulé automatiquement ; les notions les plus consultées sont marquées « relues ».</p>
+    un déploiement raté est détecté et annulé automatiquement ; les notions les plus consultées et les neuf jeux sont marqués « relus ».</p>
   <p class="fr-suivi" data-projet="socle"><strong>Suivi :</strong> <a href="https://github.com/Kermic974/KermicLab/issues/164">épique #164</a>
     · <a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+label%3Aprojet%3Asocle">tickets <code>projet:socle</code></a></p>
   </div>
@@ -299,28 +350,24 @@
 
 <li class="fr-phase" id="phase-1">
   <details open>
-  <summary><span class="fr-num">1</span><span class="fr-titre-phase">Référentiel et contrat des labs</span><span class="fr-horizon plus-tard">Livrée</span></summary>
+  <summary><span class="fr-num">1</span><span class="fr-titre-phase">Référentiel et contrat des labs</span><span class="fr-horizon maintenant">Livrée · prolongée par S4 à S6</span></summary>
   <div class="fr-corps">
-  <p><span class="fr-etat fait">Livré le 7 novembre</span> champs du référentiel et graphe des prérequis vérifiés à
-    chaque build, contrat d'événements v1 (ADR 0025), exercices notés avec erreurs fréquentes, cercle trigonométrique
-    conforme de bout en bout, activité affichée dans « Mes trophées ». Remplir le référentiel au-delà des 5 notions
-    pilotes est suivi en phase 2 (#227).</p>
-  <p><strong>Objectif :</strong> décrire chaque notion de façon structurée, pour qu'un programme puisse raisonner dessus.</p>
+  <p><span class="fr-etat fait">Livré le 7 novembre</span> champs du référentiel, graphe des prérequis vérifié à chaque
+    build, contrat d'événements v1 (ADR 0025), exercices notés avec erreurs fréquentes, cercle conforme de bout en bout.</p>
+  <p><span class="fr-etat fait">Prolongé les 17 et 18 novembre</span> référentiel canonique <strong>S4 v0.5</strong> :
+    contrats adoptés (ADR 0028), schémas JSON, validation des références, de l'historique et des graphes bloquante en CI,
+    activation dans les neuf matières et 1 873 objets en release candidate ; prérequis projetés sur les 165 notions.
+    <strong>S5</strong> : artefacts normatifs vérifiés, reproductibles sous Windows et Linux.
+    <strong>S6</strong> : contrats des expériences adoptés (ADR 0033) et schémas des onze familles fusionnés.</p>
+  <p><strong>Objectif :</strong> décrire chaque notion et chaque expérience de façon structurée, pour qu'un programme
+    puisse raisonner dessus sans réécrire les contenus.</p>
   <ul>
-    <li>Champs ajoutés à <code>fiche.md</code> : <code>prerequis</code>, <code>competences</code>,
-      <code>niveaux</code> normalisés (cycle 3, cycle 4, seconde, première, terminale), <code>duree</code> estimée.</li>
-    <li>Graphe de prérequis vérifié en CI : identifiants existants, aucun cycle, niveaux cohérents.</li>
-    <li>Contrat d'événements des pages : une page autonome n'a pas d'accès réseau (<code>connect-src 'none'</code>) ;
-      elle signale <em>démarré</em>, <em>indice demandé</em>, <em>réponse</em>, <em>terminé</em> à la page qui
-      l'affiche par <code>postMessage</code>, avec un schéma versionné. C'est la page d'accueil qui enregistre.</li>
-    <li>Compléter le pont local d'instantanés de « Mes trophées » par ce contrat pédagogique, sans transférer tout le stockage du navigateur.
-      Réutiliser les modules de <code>gabarit/jeux/</code> quand ils conviennent, tout en séparant XP ludique,
-      exercices réussis et maîtrise scolaire.</li>
-    <li>Exercices du gabarit notés de façon déterministe (réponse attendue, tolérance, erreur fréquente associée).</li>
-    <li>Le cercle trigonométrique devient la première page conforme de bout en bout : il sert de référence.</li>
+    <li>Validateur métier S6, puis migration des 165 notions, 9 jeux et du lab en statut <code>review</code> (#384).</li>
+    <li>Faire relire par une personne compétente les 51 chaînes de prérequis ajoutées hors mathématiques.</li>
+    <li>Passer S4 puis S6 de <code>review</code> à <code>validated</code> seulement après revue humaine (ADR 0033, D6-3 et D6-7).</li>
   </ul>
   <p class="fr-sortie"><strong>Condition de sortie :</strong> ajouter une notion, avec ses prérequis et ses exercices notés,
-    se fait par un dossier et une CI verte, sans toucher au code de la plateforme.</p>
+    se fait par un dossier et une CI verte, sans toucher au code de la plateforme. Remplie ; la migration S6 en est le prolongement.</p>
   <p class="fr-suivi" data-projet="referentiel"><strong>Suivi :</strong> <a href="https://github.com/Kermic974/KermicLab/issues/165">épique #165</a>
     · <a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+label%3Aprojet%3Areferentiel">tickets <code>projet:referentiel</code></a></p>
   </div>
@@ -333,21 +380,17 @@
   <div class="fr-corps">
   <p><strong>Objectif :</strong> une vraie personnalisation, entièrement dans le navigateur, donc sans enjeu de données.</p>
   <p><span class="fr-etat fait">Livré le 8 novembre</span> maîtrise par notion (#185), recommandation expliquée
-    (#186), révisions Leitner des exercices dans le défi express, avec le moteur de l'Académie (#187), export et
-    import de la progression (#189), cahier de vacances avec diagnostic et planning (#188). La condition de sortie est
-    remplie pour les mathématiques ; les autres matières suivront avec leur référentiel.</p>
+    (#186), révisions Leitner des exercices dans le défi express (#187), export et import de la progression (#189),
+    cahier de vacances avec diagnostic et planning (#188). Épique fermée le 11 novembre.</p>
+  <p><span class="fr-etat fait">Complété le 18 novembre</span> gamification unifiée (ADR 0032, proposée) : l'XP
+    récompense la réussite d'un exercice ou d'une notion plutôt que l'ouverture d'une page ; les jeux déclarent les
+    notions qu'ils font travailler ; les Académies parlent de « points de jeu », distincts de l'XP d'apprentissage.</p>
   <ul>
-    <li>Maîtrise par notion : <em>non commencée → découverte → en cours → maîtrisée</em>, puis <em>à revoir</em>
-      quand la révision est due.</li>
-    <li>Recommandation déterministe : prochaine notion dont les prérequis sont maîtrisés, ou révision due.
-      Chaque proposition affiche sa raison (« parce que tu maîtrises les fractions »).</li>
-    <li>Étendre les révisions Leitner de l'Académie aux exercices scolaires et les brancher sur le défi express existant.</li>
-    <li>Cahier de vacances : niveau, période, rythme → diagnostic court → planning jour par jour. Une absence
-      recalcule le planning sans pénalité ni message culpabilisant.</li>
-    <li>Export et import de la progression en fichier, pour changer d'appareil sans compte.</li>
+    <li>Les prérequis couvrent désormais toutes les matières : le cahier de vacances et la recommandation peuvent les utiliser au-delà des mathématiques.</li>
+    <li>Diagnostic au-delà des QCM, badge de fin de cahier.</li>
   </ul>
   <p class="fr-sortie"><strong>Condition de sortie :</strong> un élève peut suivre un cahier de vacances complet sur
-    une matière et un niveau, sans compte et sans qu'aucune donnée le concernant ne quitte son navigateur.</p>
+    une matière et un niveau, sans compte et sans qu'aucune donnée le concernant ne quitte son navigateur. Remplie.</p>
   <div class="fr-tableau">
   <table>
     <caption>Une journée type du cahier de vacances (20 à 30 minutes)</caption>
@@ -369,20 +412,21 @@
 
 <li class="fr-phase" id="phase-3">
   <details>
-  <summary><span class="fr-num">3</span><span class="fr-titre-phase">Tuteur borné</span><span class="fr-horizon maintenant">Indices en cours · IA après budget</span></summary>
+  <summary><span class="fr-num">3</span><span class="fr-titre-phase">Tuteur borné</span><span class="fr-horizon ensuite">Indices en cours · tuteur IA après budget</span></summary>
   <div class="fr-corps">
-  <p><span class="fr-etat partiel">Commencé le 8 novembre</span> indices gradués sans IA : jusqu'à 3 par exercice,
-    validés par le build, donnés un par un (#190) ; complets pour 2 notions pilotes, le reste par lots.</p>
+  <p><span class="fr-etat partiel">En cours</span> indices gradués sans IA (#190) : 789 exercices sur 1 331 ont au
+    moins un indice, 20 en ont trois. L'IA existe déjà ailleurs, sous quota et pseudonymisée (chat Workers AI, défi
+    express, « Mes cahiers ») ; le <strong>tuteur socratique</strong> (#191 à #194) n'est pas commencé. Le module
+    Souscriptions (ADR 0031, 0034) donne désormais un cadre pour chiffrer son coût par abonné.</p>
   <p><strong>Objectif :</strong> aider l'élève bloqué, sans lui donner la réponse et sans devenir la source de vérité.</p>
   <ul>
-    <li><strong>D'abord sans IA :</strong> indices gradués rédigés dans <code>contenu.json</code> (3 niveaux par exercice).
+    <li><strong>D'abord sans IA :</strong> trois indices par exercice dans <code>contenu.json</code>, par lots relus.
       Ils restent la réponse par défaut et le repli quand l'IA est indisponible.</li>
-    <li><strong>Puis avec IA</strong>, une fois la clé API et son plafond de dépense en place : reformulation et dialogue
+    <li><strong>Puis avec IA</strong>, une fois le plafond de dépense en place : reformulation et dialogue
       socratique, avec le contexte de la notion, de l'exercice, de l'erreur et des indices déjà donnés.</li>
     <li>Actions limitées : reformuler, questionner, donner l'indice suivant, ouvrir une page du catalogue.</li>
-    <li>Jeu de dialogues de référence évalué automatiquement (exactitude, ne donne pas la réponse, ton adapté à l'âge,
-      aucune donnée personnelle demandée, résistance aux injections).</li>
-    <li>Budget quotidien global, coupe-circuit, aucun texte de conversation conservé.</li>
+    <li>Jeu de dialogues de référence évalué automatiquement (#193, #262).</li>
+    <li>Budget quotidien global, coupe-circuit, aucun texte de conversation conservé (#194).</li>
   </ul>
   <p class="fr-sortie"><strong>Condition de sortie :</strong> le jeu d'évaluation passe en CI, le coût par session aidée
     est mesuré et sous le plafond, et couper l'IA ne casse aucun parcours.</p>
@@ -393,21 +437,30 @@
 </li>
 
 <li class="fr-phase" id="phase-4">
-  <details>
-  <summary><span class="fr-num">4</span><span class="fr-titre-phase">Comptes et familles</span><span class="fr-horizon plus-tard">Après validation juridique</span></summary>
+  <details open>
+  <summary><span class="fr-num">4</span><span class="fr-titre-phase">Comptes et familles</span><span class="fr-horizon maintenant">Bêta en ligne · validation juridique ouverte</span></summary>
   <div class="fr-corps">
-  <p><strong>Objectif :</strong> retrouver sa progression sur plusieurs appareils et permettre au parent d'accompagner.</p>
+  <p><span class="fr-etat partiel">Bêta livrée du 7 au 18 novembre</span> les comptes OAuth attendant les
+    fournisseurs, le propriétaire a choisi des <strong>comptes locaux</strong> (identifiant + mot de passe, sans email) :
+    synchronisation chiffrée par une clé gardée sur l'appareil, appairage et kit de récupération (ADR 0024) ; Espace
+    famille avec consentement parental versionné, jusqu'à 6 enfants, activités et tableau de bord (ADR 0029) ; expérience
+    Professeur (ADR 0030) ; rôles cumulatifs et « Mon abonnement » (ADR 0034) ; « Ce que Kermiclab sait de moi » et
+    suppression du compte.</p>
+  <p><span class="fr-etat partiel">Ouvert</span> la préparation juridique (#195) n'est pas faite, aucune AIPD n'est
+    validée et les ADR 0024, 0029 et 0034 sont encore « proposées ». Les sous-issues #196 à #200, écrites pour le
+    parcours OAuth, sont à réconcilier avec ce qui a été livré.</p>
+  <p><strong>Objectif :</strong> retrouver sa progression sur plusieurs appareils et permettre au parent ou au
+    professeur d'accompagner, dans un cadre juridique validé.</p>
   <ul>
-    <li>Préalable, à lancer dès maintenant en parallèle : RGPD niveau 1, AIPD, texte de consentement parental
-      pour les moins de 15 ans, validation juridique.</li>
-    <li>Compte parent (OAuth déjà codé), profils élèves sans connexion autonome, tranche d'âge plutôt que date de naissance (ADR 0010).</li>
-    <li>Consentement versionné et révocable, stocké avec sa version.</li>
-    <li>Synchronisation de la progression locale, sur action explicite (« enregistrer ma progression dans le compte »).</li>
-    <li>Tableau de bord parent agrégé : notions travaillées, difficultés persistantes, suggestions d'accompagnement.</li>
-    <li>Export et suppression du compte en un geste, effacement en cascade.</li>
+    <li>Préparation juridique : RGPD, AIPD, texte de consentement parental pour les moins de 15 ans, base légale du suivi par un professeur.</li>
+    <li>Valider les ADR 0024, 0029 et 0034, et la procédure de vérification d'identité avant une réinitialisation de mot de passe (#387).</li>
+    <li>Réconcilier les sous-issues #196 à #200 avec les comptes locaux, et fermer celles déjà couvertes.</li>
+    <li>Activer le contrôle d'accès par rôle (<code>CONTROLE_ACCES_ACTIF</code>) une fois les rôles attribués et testés.</li>
+    <li>Plus tard : comptes OAuth, quand les applications des fournisseurs sont inscrites.</li>
   </ul>
   <p class="fr-sortie"><strong>Condition de sortie :</strong> AIPD validée, parcours complet testé (création, consentement,
-    synchronisation, export, suppression) et aucune donnée d'enfant accessible sans le compte parent.</p>
+    synchronisation, export, suppression) et aucune donnée d'enfant accessible sans le compte parent. Jusque-là, les
+    comptes restent une bêta.</p>
   <p class="fr-suivi" data-projet="familles"><strong>Suivi :</strong> <a href="https://github.com/Kermic974/KermicLab/issues/168">épique #168</a>
     · <a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+label%3Aprojet%3Afamilles">tickets <code>projet:familles</code></a></p>
   </div>
@@ -416,14 +469,15 @@
 
 <li class="fr-phase" id="phase-5">
   <details>
-  <summary><span class="fr-num">5</span><span class="fr-titre-phase">Fabrique de contenus</span><span class="fr-horizon plus-tard">Plus tard</span></summary>
+  <summary><span class="fr-num">5</span><span class="fr-titre-phase">Fabrique de contenus</span><span class="fr-horizon plus-tard">Amorcée</span></summary>
   <div class="fr-corps">
-  <p><span class="fr-etat partiel">Amorcé</span> chaque PR a son aperçu Cloudflare Pages, et une PR de notion ne passe
-    la CI qu'avec sa grille de relecture cochée (#202).</p>
+  <p><span class="fr-etat partiel">Amorcé</span> chaque PR a son aperçu Cloudflare Pages et une PR de notion ne passe
+    la CI qu'avec sa grille cochée (#202). Les contributions des contributeurs et professeurs ont un suivi complet
+    (Envoyée → Relue → Validée → Publiée) et le back-office gère les contenus à chaud (masquage, mise en avant, parcours,
+    brouillons envoyés en revue).</p>
   <p><strong>Objectif :</strong> produire et maintenir des notions de qualité plus vite que le catalogue ne grandit.</p>
   <ul>
     <li>Préparation de notions candidates par IA à partir des issues <code>maquette-manquante</code>, relecture humaine obligatoire.</li>
-    <li>Prévisualisation de chaque PR de notion, grille de relecture intégrée à la revue.</li>
     <li>Traductions (anglais d'abord) avec le même circuit de validation.</li>
     <li>Indicateurs pédagogiques agrégés : où les élèves bloquent, quels indices servent, quelles notions sont abandonnées.</li>
   </ul>
@@ -441,11 +495,12 @@
   <div class="fr-corps">
   <p>Chaque option a un <strong>déclencheur</strong> : on ne la lance pas avant.</p>
   <ul>
+    <li><strong>Espace enseignant et classes</strong> — <span class="fr-etat partiel">livré en avance</span> avec
+      l'expérience Professeur (ADR 0030) ; il partage la condition juridique de la phase 4.</li>
     <li><strong>Application hors ligne (PWA)</strong> — quand une part significative des visites vient du mobile avec
       reprise de session. Déjà prévue pour le cercle (v2.0).</li>
     <li><strong>Recherche sémantique</strong> — quand le routage par mots-clés laisse trop de questions sans page
       alors qu'une notion existe.</li>
-    <li><strong>Espace enseignant et classes</strong> — après les familles, et après un nouvel avis juridique.</li>
     <li><strong>Personnalisation statistique</strong> — seulement si les données agrégées montrent un gain sur le moteur déterministe.</li>
     <li><strong>Application native</strong> — seulement si la PWA ne suffit pas.</li>
   </ul>
@@ -458,8 +513,8 @@
 
 <div class="fr-encadre" id="piste-cercle">
 <p><strong>Piste parallèle — cercle trigonométrique.</strong> v1.5 : mode Comparer (deux méthodes
-  côte à côte, résultat commun vérifié). v2.0 : hors ligne. Ces versions servent aussi de banc d'essai au contrat
-  d'événements de la phase 1.</p>
+  côte à côte, résultat commun vérifié). v2.0 : hors ligne. Le cercle est désormais rangé dans la section Labs, à côté
+  du lab « Le système solaire ».</p>
   <p class="fr-suivi" data-projet="cercle"><strong>Suivi :</strong> <a href="https://github.com/Kermic974/KermicLab/issues/171">épique #171</a>
     · <a href="https://github.com/Kermic974/KermicLab/issues?q=is%3Aissue+label%3Aprojet%3Acercle">tickets <code>projet:cercle</code></a></p>
 </div>
@@ -469,16 +524,17 @@
 <h2 id="t-pedagogie">Modèle pédagogique</h2>
 <pre class="fr-schema" aria-label="Arborescence du référentiel">Matière
 └── Domaine
-    └── Notion (une page, collège → lycée)
+    └── Notion (objet canonique S4 ; une fiche, collège → lycée)
         ├── niveaux dépliables (intuition → formel)
         ├── prérequis        → autres notions
         ├── compétences
         ├── exercices notés  → erreurs fréquentes → indices gradués
-        ├── page interactive → événements (postMessage)
+        ├── expériences S6   → page interactive, jeu, lab (événements postMessage)
         └── mise en situation</pre>
-<p>La notion reste l'unité : une page autonome couvrant plusieurs niveaux, comme aujourd'hui. On n'introduit pas de
-  niveau « chapitre » tant qu'il n'apporte rien au parcours.</p>
-<p><strong>Exemple de fiche enrichie</strong> (les nouveaux champs sont facultatifs, la CI les vérifie quand ils sont présents) :</p>
+<p>La notion reste l'unité. Depuis S4, « Notion » désigne l'objet canonique de <code>referentiel/</code> et « Fiche »
+  la page du catalogue qui en reçoit la projection (ADR 0028, D8). On n'introduit pas de niveau « chapitre » tant
+  qu'il n'apporte rien au parcours.</p>
+<p><strong>Exemple de fiche enrichie</strong> (les champs du référentiel sont projetés par le build et vérifiés par la CI) :</p>
 <pre class="fr-code"><code>id: fractions
 titre: Les fractions
 sujet: maths/nombres
@@ -498,7 +554,7 @@ duree: 20</code></pre>
       <li>La notion, l'exercice et le niveau visé</li>
       <li>Le contenu validé de la page</li>
       <li>L'erreur commise et les indices déjà donnés</li>
-      <li>Une tranche d'âge, jamais d'identité</li>
+      <li>Une tranche d'âge, jamais d'identité ; tout texte de l'élève passe par la pseudonymisation</li>
     </ul>
   </div>
   <div>
@@ -511,19 +567,22 @@ duree: 20</code></pre>
     </ul>
   </div>
 </div>
-<p>Modèle utilisé : celui du chat (rapide et économique), avec modération en entrée et en sortie, plafond de dépense
-  global et coupe-circuit. Le choix d'un modèle plus puissant ne se fait que sur mesure, à partir du jeu d'évaluation.</p>
+<p>Modèle utilisé : celui du chat (Workers AI, rapide et économique), avec analyse des requêtes en entrée, modération en
+  sortie, plafond de dépense global et coupe-circuit. Le choix d'un modèle plus puissant ne se fait que sur mesure, à
+  partir du jeu d'évaluation et du coût estimé par le module Souscriptions.</p>
 </section>
 
 <section id="familles" aria-labelledby="t-familles">
 <h2 id="t-familles">Familles et données</h2>
 <ul class="fr-liste">
-  <li><strong>Collecter le minimum :</strong> pseudo ou prénom affiché, tranche d'âge, langue. Pas de nom de famille,
-    pas de date de naissance, pas d'école.</li>
-  <li><strong>Privé par défaut,</strong> sans publicité ni revente, sans classement entre enfants.</li>
-  <li><strong>Le parent voit des tendances, pas une surveillance :</strong> notions travaillées et difficultés, pas le
-    détail minute par minute ni les échanges avec le tuteur.</li>
-  <li><strong>Consentement versionné et révocable ;</strong> export et suppression accessibles en un geste.</li>
+  <li><strong>Collecter le minimum :</strong> identifiant sans email, prénom ou surnom choisi par le parent, tranche
+    d'âge. Pas de nom de famille, pas de date de naissance, pas d'école.</li>
+  <li><strong>Chiffré par défaut :</strong> la progression synchronisée est chiffrée par une clé qui ne quitte pas les
+    appareils de l'utilisateur. Seul le bilan famille, choisi par le propriétaire, est lisible par le parent.</li>
+  <li><strong>Privé,</strong> sans publicité ni revente, sans classement entre enfants.</li>
+  <li><strong>Le parent et le professeur voient des tendances, pas une surveillance :</strong> notions travaillées,
+    difficultés, compteurs d'activités ; le professeur ne voit que les notions de sa matière, et l'élève peut quitter une classe à tout moment.</li>
+  <li><strong>Consentement versionné et révocable ;</strong> « Ce que Kermiclab sait de moi », export et suppression accessibles en un geste.</li>
   <li><strong>Séparation stricte</strong> entre KPI anonymes et données de compte : aucune clé ne relie les deux.</li>
 </ul>
 </section>
@@ -534,24 +593,28 @@ duree: 20</code></pre>
 <pre class="fr-schema" aria-label="Schéma d'architecture">Navigateur : tableau de bord + pages autonomes (iframe isolée)
    │  progression, maîtrise, parcours  → stockage local
    │  événements des pages             → postMessage → tableau de bord
+   │  synchronisation (facultative)    → chiffrée sur l'appareil
    ▼
-Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
+Worker unique : catalogue · routage · chat · comptes locaux · famille · professeur · back-office · KPI
    │
-   ├── Git    sources des notions, schémas, historique
+   ├── Git    référentiel S4–S6, sources des notions, schémas, historique
    ├── R2     pages publiées, sauvegardes, exports
-   └── D1     KPI anonymes · comptes, profils, consentements, progression synchronisée</pre>
+   └── D1     KPI anonymes · comptes, rôles, familles, classes, souscriptions, télémétrie agrégée</pre>
 <div class="fr-tableau">
 <table>
-  <caption>Tables à ajouter (noms en français, comme le reste du code)</caption>
-  <thead><tr><th scope="col">Phase</th><th scope="col">Tables</th></tr></thead>
+  <caption>Migrations D1 appliquées au déploiement (noms en français)</caption>
+  <thead><tr><th scope="col">Migration</th><th scope="col">Tables</th></tr></thead>
   <tbody>
-    <tr><td>4 — comptes (ADR 0010)</td><td><code>comptes</code>, <code>eleves</code>, <code>consentements</code></td></tr>
-    <tr><td>4 — progression synchronisée</td><td><code>maitrises</code>, <code>revisions</code>, <code>parcours</code>, <code>tentatives</code> (résultat seulement, jamais de texte libre)</td></tr>
-    <tr><td>4 — traçabilité</td><td><code>journal_acces</code> (actions sur les données d'un enfant)</td></tr>
+    <tr><td>0001 — schéma initial</td><td>KPI, sessions et quotas des modèles, comptes OAuth (désactivés), comptes locaux, données pseudonymisées</td></tr>
+    <tr><td>0002 — back-office</td><td><code>roles</code>, <code>attributions_roles</code>, <code>strategies_acces</code>, <code>reglages</code>, <code>journal_admin</code>, <code>telemetrie_llm</code>, <code>signaux_securite</code>, <code>profils_securite</code>, contenus</td></tr>
+    <tr><td>0003, 0007 — famille</td><td><code>familles_liens</code>, invitations, bilans, cahiers, consommations, activités et résultats</td></tr>
+    <tr><td>0004, 0005 — professeur</td><td>profils, classes, invitations, élèves, bilans, activités, résultats, consommations</td></tr>
+    <tr><td>0006, 0008, 0009</td><td><code>contributions_locales</code>, <code>appairages</code>, rôles cumulés et <code>souscriptions_changements</code></td></tr>
   </tbody>
 </table>
 </div>
-<p>Avant la phase 4, aucune nouvelle table n'est nécessaire : le référentiel vit dans Git, la progression dans le navigateur.</p>
+<p>Toute nouvelle table est décrite dans le registre de <code>worker/src/donnees.js</code> ; un test vérifie qu'aucun
+  texte de message ni aucune IP n'y est conservé.</p>
 </section>
 
 <section id="mesure" aria-labelledby="t-mesure">
@@ -559,15 +622,15 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 <p>Des indicateurs agrégés et anonymes uniquement, déjà compatibles avec les KPI actuels.</p>
 <div class="fr-tableau">
 <table>
-  <thead><tr><th scope="col">Indicateur</th><th scope="col">Pourquoi</th><th scope="col">Phase</th></tr></thead>
+  <thead><tr><th scope="col">Indicateur</th><th scope="col">Pourquoi</th><th scope="col">Au 18 novembre</th></tr></thead>
   <tbody>
-    <tr><td>Part des questions servies par le catalogue</td><td>Couverture, coût en tokens</td><td>Déjà mesuré</td></tr>
-    <tr><td>Notions marquées « relues »</td><td>Qualité du contenu</td><td>0</td></tr>
-    <tr><td>Notions avec prérequis renseignés</td><td>Structure du référentiel</td><td>1</td></tr>
-    <tr><td>Exercices réussis après un indice</td><td>Efficacité des indices</td><td>2–3</td></tr>
-    <tr><td>Journées de cahier de vacances terminées</td><td>Engagement</td><td>2</td></tr>
-    <tr><td>Coût IA par session aidée</td><td>Soutenabilité</td><td>3</td></tr>
-    <tr><td>Délai demande → notion publiée</td><td>Capacité de production</td><td>5</td></tr>
+    <tr><td>Part des questions servies par le catalogue</td><td>Couverture, coût en tokens</td><td>Mesuré (KPI D1)</td></tr>
+    <tr><td>Notions et jeux marqués « relus »</td><td>Qualité du contenu</td><td>0/165 · 0/9</td></tr>
+    <tr><td>Notions avec prérequis renseignés</td><td>Structure du référentiel</td><td>165/165</td></tr>
+    <tr><td>Exercices avec au moins un indice</td><td>Préparation du tuteur</td><td>789/1 331 (20 avec 3 indices)</td></tr>
+    <tr><td>Exercices réussis après un indice</td><td>Efficacité des indices</td><td>Compté localement, pas encore agrégé</td></tr>
+    <tr><td>Coût IA par session et par abonné</td><td>Soutenabilité</td><td>Télémétrie horaire ; estimation dans le back-office</td></tr>
+    <tr><td>Délai demande → notion publiée</td><td>Capacité de production</td><td>Non mesuré</td></tr>
   </tbody>
 </table>
 </div>
@@ -579,11 +642,13 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 <table>
   <thead><tr><th scope="col">Risque</th><th scope="col">Effet</th><th scope="col">Parade</th></tr></thead>
   <tbody>
-    <tr><td>Erreur de contenu dans une notion</td><td>Un enfant apprend une chose fausse</td><td>Grille de relecture, signalement en un clic, version de notion corrigeable vite</td></tr>
-    <tr><td>Comptes ouverts sans cadre juridique</td><td>Non-conformité, perte de confiance</td><td>Phase 4 bloquée tant que l'AIPD n'est pas validée</td></tr>
-    <tr><td>Coût de l'IA hors de contrôle</td><td>Arrêt du service</td><td>Plafond de dépense, coupe-circuit, repli déterministe</td></tr>
+    <tr><td>Erreur de contenu dans une notion jamais relue</td><td>Un enfant apprend une chose fausse</td><td>Relecture des 20 notions les plus servies en priorité, signalement en un clic, version corrigeable vite</td></tr>
+    <tr><td>Comptes d'enfants ouverts avant la validation juridique</td><td>Non-conformité, perte de confiance</td><td>Bêta assumée, données chiffrées, collecte minimale ; préparation juridique (#195) avant toute ouverture large</td></tr>
+    <tr><td>Fonctionnalités livrées plus vite que leurs décisions</td><td>Huit ADR « proposées » déjà en ligne</td><td>Revue des ADR par le propriétaire avant de nouveaux chantiers sur les comptes</td></tr>
+    <tr><td>Réinitialisation de mot de passe sans vérification d'identité</td><td>Prise de contrôle d'un compte</td><td>Procédure de vérification à définir (#387) ; données synchronisées restées chiffrées</td></tr>
+    <tr><td>Coût de l'IA hors de contrôle</td><td>Arrêt du service</td><td>Quotas par session, télémétrie, estimation par souscription, coupe-circuit, repli déterministe</td></tr>
     <tr><td>Tuteur qui donne la réponse ou dérive</td><td>Apprentissage court-circuité</td><td>Jeu d'évaluation en CI, actions limitées</td></tr>
-    <tr><td>Catalogue qui grandit plus vite que la relecture</td><td>Qualité inégale</td><td>Priorité à la qualité sur le volume ; statut « relue » par notion</td></tr>
+    <tr><td>Catalogue et référentiel qui grandissent plus vite que la relecture</td><td>Qualité inégale</td><td>S4 et S6 restent en <code>review</code> sans revue humaine ; priorité à la qualité sur le volume</td></tr>
     <tr><td>Recommandations opaques</td><td>Élève ou parent perdu</td><td>Raison affichée pour chaque proposition</td></tr>
   </tbody>
 </table>
@@ -597,42 +662,41 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
   <li>Pas d'application native avant que la version web hors ligne ait montré ses limites.</li>
   <li>Pas d'apprentissage automatique sur les données des enfants pour personnaliser.</li>
   <li>Pas de classement entre élèves, pas de notifications culpabilisantes.</li>
-  <li>Pas de compte enfant autonome au démarrage.</li>
+  <li>Pas de paiement tant que les offres et le cadre juridique ne sont pas validés.</li>
   <li>Pas de publicité.</li>
 </ul>
 </section>
 
 <section id="revision" aria-labelledby="t-revision">
 <h2 id="t-revision">Notes de révision</h2>
+<h3>Version 4.0 · 18 novembre 2026</h3>
+<ul class="fr-liste">
+  <li>Réécriture à partir des PR fusionnées du 10 au 18 novembre (#264 à #391) et des chiffres du build : synthèse,
+    repères, quatre nouveaux jalons, état des lieux, Gantt, chemin critique, phases, architecture, mesure, risques et
+    résumé anglais.</li>
+  <li>Phase 1 prolongée par le référentiel S4 à S6 ; phase 4 passée en « bêta en ligne, validation juridique
+    ouverte » ; espace enseignant noté « livré en avance » dans les options ; le compte enfant autonome, désormais
+    possible sous un parent, sort de « Ce qu'on ne fait pas ».</li>
+  <li>Priorités recentrées sur les points de contrôle humains : relecture (#175, #176), ADR des comptes et préparation juridique (#195).</li>
+</ul>
 <h3>Version 3.3 · 8 novembre 2026</h3>
 <ul class="fr-liste">
   <li>Phase 2 livrée (PR #233 à #239) ; phase 3 commencée avec les indices gradués sans IA (#240) ; phase 5 amorcée
     avec la grille de relecture vérifiée dans les PR de notion (#202).</li>
-  <li>Ajout du jalon du 8 novembre ; état des lieux, Gantt, priorité immédiate et résumé anglais mis à jour.</li>
 </ul>
 <h3>Version 3.2 · 7 novembre 2026</h3>
 <ul class="fr-liste">
   <li>Phase 1 livrée (épique #165 fermée) et phase 0 livrée côté technique ; seule la relecture humaine des notions
-    les plus consultées reste ouverte (#176). La phase 2 passe à « Maintenant ».</li>
-  <li>Ajout du jalon du 7 novembre (PR #213 à #223), mise à jour de l'état des lieux, du Gantt, de la priorité
-    immédiate et du résumé anglais.</li>
+    les plus consultées reste ouverte (#176).</li>
 </ul>
 <h3>Version 3.1 · 7 novembre 2026</h3>
 <ul class="fr-liste">
-  <li>Correction : le pendu (#100) a été fusionné le 5 novembre ; le catalogue compte neuf jeux intégrés.
-    Les repères, la frise, l'état des lieux, la phase 0 et le résumé anglais sont alignés.</li>
-  <li>Chaque phase, la piste du cercle et la ligne « Catalogue, accueil, jeux » sont suivies par une épique GitHub
-    (#164 à #172), des sous-issues et un label <code>projet:…</code>. Le lien est tenu par
-    <code>.github/projets.json</code> et vérifié par un test ; le contenu stratégique de la version 3 est inchangé.</li>
+  <li>Le pendu (#100) compté parmi les neuf jeux intégrés ; chaque phase reliée à une épique GitHub (#164 à #172) par
+    <code>.github/projets.json</code>.</li>
 </ul>
 <h3>Version 3 · 5 novembre 2026</h3>
 <ul class="fr-liste">
-  <li>État actualisé à partir des PR fusionnées #80–84, #86, #88, #90, #92 et #94–99 :
-    accueil, huit jeux et Académie partagée. La PR #100 (pendu) reste explicitement non livrée.</li>
-  <li>Ajout de repères chiffrés, d'une frise des livraisons, d'un Gantt par horizons et d'un chemin critique navigable,
-    sans calendrier ni pourcentage inventé.</li>
-  <li>Phases 0–2 précisées : capitaliser sur les tests et la progression des jeux, puis relier l'Académie au tableau
-    de bord ; ne pas confondre gamification existante et parcours scolaires achevés.</li>
+  <li>Repères chiffrés, frise des livraisons, Gantt par horizons et chemin critique, sans calendrier ni pourcentage inventé.</li>
 </ul>
 <h3>Version 2 · 3 novembre 2026</h3>
 <p>La révision précédente corrigeait la proposition initiale « trigoLab → KermicLab » sur les points suivants.</p>
@@ -657,24 +721,19 @@ Worker unique : catalogue · routage · chat / tuteur · comptes · KPI
 <hr>
 <section lang="en" aria-labelledby="t-en">
 <h2 id="t-en">Roadmap (English summary)</h2>
-<p>As of November 8, 2026, the merged baseline includes the student dashboard, nine standalone games (Hangman, #100, included) and shared
-  Academy modules with local XP, badges, spaced review and deterministic advice. “My trophies” locally displays compatible module snapshots in the dashboard, without syncing
-  separately opened pages. Phase 1 is delivered: concept metadata with a CI-checked prerequisite graph, a versioned
-  pedagogical event contract (ADR 0025), deterministic graded exercises and per-concept activity in “My trophies”.
-  Phase 0 is delivered on the technical side (blocking CI, smoke test and automatic rollback); human review of the
-  most-viewed concepts is still pending. Phase 2 is delivered (November 8): per-concept mastery, explained
-  recommendations, spaced review of exercises, progress export to a file and a local holiday workbook, all without an
-  account. Phase 3 has started with graded hints that need no AI.
-  The simplified Gantt shows dependencies, not delivery dates or completion percentages.</p>
-<p>KermicLab grows from trigoLab without a rewrite. Phase 0 makes quality enforceable (blocking CI on the existing
-  browser tests, tracked pedagogical review). Phase 1 adds structure: prerequisites and skills in each concept, checked
-  by CI, and a versioned <code>postMessage</code> event contract for interactive pages. Phase 2 brings learning paths,
-  spaced review and a holiday workbook that run entirely in the browser, with no account, reusing the Academy where
-  appropriate rather than duplicating it. Phase 3 adds a bounded AI
-  tutor once an API budget with a spending cap exists, always backed by written hints. Phase 4 opens parent accounts
-  and child profiles only after legal validation and a DPIA. Later phases cover a content pipeline and options
-  (offline app, semantic search, teacher spaces) that start only when a measured need triggers them. KermicLab must
-  always work without AI and without an account.</p>
+<p>As of November 18, 2026 (version 4.0), the public catalogue has 174 pages: 165 concepts across nine subjects and
+  nine games, plus a solar-system lab. Phases 1 and 2 are delivered. Phase 1 has been extended by a canonical knowledge
+  base (S4: 1,873 objects in release candidate, CI-enforced validation, prerequisites for all 165 concepts), qualified
+  S5 artefacts and adopted S6 experience contracts; migrating experiences to S6 is next (#384). Learning paths, spaced
+  review and the holiday workbook still run entirely in the browser, and XP now rewards solved exercises rather than
+  page visits.</p>
+<p>Two human checkpoints are now the real priorities. No concept or game has been reviewed by a person yet (0/165,
+  0/9), which is phase 0's exit condition. Local accounts with encrypted sync, a family space, a teacher experience,
+  cumulative roles and subscriptions have shipped as a beta ahead of their legal checkpoint: the legal preparation
+  (#195), a DPIA and the related ADRs are still pending, so accounts stay in beta, role-based access control is
+  prepared but not enforced, and nothing is billed. Graded hints cover 789 of 1,331 exercises; the Socratic AI tutor
+  has not started and remains conditional on a spending cap. KermicLab must always work without AI and without an
+  account. The simplified Gantt shows dependencies, not delivery dates or completion percentages.</p>
 </section>
 
 <p class="fr-retour"><a href="./">← KermicLab</a></p>

@@ -14,10 +14,10 @@ test("roadmap : acquis sourcés, pendu intégré (#100) et navigation complète 
     javaScriptEnabled: false, viewport: { width: 1280, height: 900 }
   });
   await page.goto(`${serveur.url}/feuille-de-route.html`);
-  assert.match(await page.locator(".fr-surtitre").textContent(), /version 3/);
+  assert.match(await page.locator(".fr-surtitre").textContent(), /version 4/);
   assert.equal(await page.locator(".fr-chiffres dd").first().textContent(), "9");
-  assert.ok(await page.locator("#synthese > p:not(.fr-encadre)").evaluate((element) =>
-    element.clientWidth <= Number.parseFloat(getComputedStyle(element).maxWidth)), "paragraphes limités à une largeur confortable");
+  assert.ok((await page.locator("#synthese > p:not(.fr-encadre)").evaluateAll((elements) => elements.map((element) =>
+    element.clientWidth <= Number.parseFloat(getComputedStyle(element).maxWidth)))).every(Boolean), "paragraphes limités à une largeur confortable");
   assert.ok(await page.locator(".fr-gantt tbody td").first().evaluate((element) =>
     Number.parseFloat(getComputedStyle(element).fontSize) >= 14), "texte du Gantt lisible sans zoom");
   const livraisons = await page.locator("#livraisons").textContent();
