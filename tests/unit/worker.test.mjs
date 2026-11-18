@@ -683,8 +683,11 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   }
   for (const n of notions) {
     const facultatifs = Object.keys(n).filter((k) => !["id", "matiere", "niveau", "titre", "version"].includes(k));
-    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees"].includes(k)), `${n.id} : ${facultatifs}`);
+    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees", "classes"].includes(k)), `${n.id} : ${facultatifs}`);
   }
+  // Classes du collège (6e à 3e) : seulement sur une notion de collège, pour découper « Collège » dans Éducation.
+  assert.deepEqual(notions.find((n) => n.id === "pythagore")?.classes, ["4e"]);
+  assert.ok(notions.filter((n) => n.classes).every((n) => n.niveau === "college"));
   // Jeux reliés aux notions (ADR 0032) : seulement sur un jeu qui les déclare.
   assert.deepEqual(notions.find((n) => n.id === "2048")?.notionsLiees, ["puissances"]);
   assert.ok(notions.filter((n) => n.notionsLiees).every((n) => n.matiere === "jeux"));
