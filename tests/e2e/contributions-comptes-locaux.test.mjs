@@ -110,6 +110,21 @@ test("compte local au rôle Professeur : menu Contributions, proposition envoyé
   await page.locator("#espace-famille").waitFor({ state: "visible" });
   assert.equal(await page.evaluate(() => location.hash), "#espace-famille");
   assert.equal(await page.locator("#nav-famille").getAttribute("aria-current"), "page");
+
+  // Barre du bas (mobile) : Famille, Contributions et Prof regroupées sous « Plus », qui porte la page courante.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.click(".nav-mobile [data-nav=accueil]");
+  const plus = page.locator("#nav-mobile-plus");
+  await plus.waitFor();
+  await plus.click();
+  assert.deepEqual(await page.locator("#nav-mobile-autres .nav-mobile-bouton:visible").allTextContents(), ["Famille", "Contrib.", "Prof"]);
+  await capturer(page, "navigation-mobile-plus");
+  await page.click("#nav-mobile-famille");
+  await page.locator("#espace-famille").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#nav-mobile-famille").getAttribute("aria-current"), "page");
+  assert.equal(await plus.getAttribute("aria-current"), "page");
+  const largeur = await page.evaluate(() => document.documentElement.scrollWidth);
+  assert.ok(largeur <= 390, `pas de défilement horizontal (${largeur})`);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

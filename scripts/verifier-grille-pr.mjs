@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 // Grille de relecture dans les PR de notion (feuille de route, phase 5 ; issue #202). Une PR qui ajoute une notion ou en
 // change le contenu doit avoir la section « Relecture pédagogique » de son modèle entièrement cochée avant validation
 // (grille v1, docs/chantiers/validation-maquettes.md, plus l'ouverture de l'aperçu Cloudflare Pages). Une PR qui ne
@@ -64,7 +65,7 @@ export function verifierGrille({ corps, notions }) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const racine = new URL("..", import.meta.url).pathname;
+  const racine = fileURLToPath(new URL("..", import.meta.url));
   const base = process.env.GRILLE_BASE || "origin/main";
   const git = (...args) => execFileSync("git", args, { cwd: racine, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
   const modifies = git("diff", "--name-only", `${base}...HEAD`).split("\n").filter(Boolean);

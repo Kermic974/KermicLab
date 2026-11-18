@@ -426,15 +426,15 @@ async function lignesMesActivites(env, moi) {
   return results ?? [];
 }
 
-async function mesActivites(env, moi) {
+export async function activitesPourEleve(env, moi, { inclureContenu = true } = {}) {
   const lignes = await lignesMesActivites(env, moi);
   const { results: res } = await env.DB.prepare("SELECT * FROM professeurs_resultats WHERE eleve_id = ?").bind(moi).all();
   const resultat = new Map((res ?? []).map((r) => [r.activite_id, resultatPublic(r)]));
-  return json({
+  return {
     activites: lignes.map((l) => ({
-      ...activitePublique(l), professeur: l.nom_affiche ?? "", contenu: lireJson(l.contenu, null), resultat: resultat.get(l.id) ?? null
+      ...activitePublique(l), professeur: l.nom_affiche ?? "", ...(inclureContenu ? { contenu: lireJson(l.contenu, null) } : {}), resultat: resultat.get(l.id) ?? null
     }))
-  });
+  };
 }
 
 async function enregistrerResultats(env, moi, corps) {
@@ -500,7 +500,7 @@ export async function gererApiProfesseur(requete, env, { catalogue, iaCahier = f
   if (est("GET", "mes-professeurs")) return mesProfesseurs(env, moi);
   if (methode === "POST" && (m = route.match(new RegExp(`^mes-professeurs/(${UUID})/quitter$`)))) return quitter(env, moi, m[1]);
   if (est("PUT", "bilan")) return enregistrerBilan(env, moi, corps);
-  if (est("GET", "mes-activites")) return mesActivites(env, moi);
+  if (est("GET", "mes-activites")) return json(await activitesPourEleve(env, moi));
   if (est("PUT", "resultats")) return enregistrerResultats(env, moi, corps);
 
   // Routes du professeur : rôle Professeur exigé (permission `professeur`).

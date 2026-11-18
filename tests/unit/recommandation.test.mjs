@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { recommander } from "../../web/recommandation.js";
 
 // Recommandation déterministe (feuille de route, phase 2 ; issue #186).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const notions = [
   { id: "fractions", titre: "Les fractions", matiere: "mathematiques", niveaux: ["cycle-3", "cycle-4"], prerequis: [] },
   { id: "nombres-decimaux", titre: "Les nombres décimaux", matiere: "mathematiques", niveaux: ["cycle-3"], prerequis: [] },

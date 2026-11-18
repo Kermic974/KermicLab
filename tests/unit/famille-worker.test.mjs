@@ -249,3 +249,98 @@ test("suppression d'un compte local : les données de famille partent avec lui",
   for (const table of ["familles_liens", "familles_consommations"]) assert.equal(sql().prepare(`SELECT count(*) AS n FROM ${table}`).get().n, 0, table);
   assert.equal(sql().prepare("SELECT count(*) AS n FROM comptes_locaux WHERE id = ?").get(enfantId).n, 1, "l'enfant redevient solo");
 });
+
+test("activités : défi, évaluation de 5 à 40 questions et objectif, pour un enfant ou toute la famille", async () => {
+  const { parent, enfant, enfantId, parentId } = await parentEtEnfant();
+  const lou = await famille("enfants", { jeton: parent, corps: { ...profil, prenom: "Lou", identifiant: "lou.kermic", motDePasse: MDP_ENFANT } });
+  const jetonLou = (await appeler("/api/compte-local/connexion", { corps: { identifiant: "lou.kermic", motDePasse: MDP_ENFANT } })).donnees.jeton;
+  const deux = notions.slice(0, 2);
+  // Bornes du nombre de questions, notions requises, cible vérifiée.
+  for (const nb of [4, 41, 7.5]) {
+    assert.equal((await famille("activites", { jeton: parent, corps: { type: "evaluation", cible: { famille: true }, notions: deux, nbQuestions: nb } })).donnees.erreur, "nb-questions-invalide", String(nb));
+  }
+  assert.equal((await famille("activites", { jeton: parent, corps: { type: "defi", cible: { famille: true }, notions: [] } })).donnees.erreur, "notions-requises");
+  assert.equal((await famille("activites", { jeton: parent, corps: { type: "defi", cible: {}, notions: deux } })).donnees.erreur, "cible-invalide");
+  const autre = await inscrire("autre.parent");
+  donnerRole(await compteIdDeJeton(autre));
+  assert.equal((await famille("activites", { jeton: autre, corps: { type: "defi", cible: { enfantId }, notions: deux } })).statut, 404, "pas l'enfant d'un autre parent");
+  assert.equal((await famille("activites", { jeton: autre, corps: { type: "defi", cible: { famille: true }, notions: deux } })).donnees.erreur, "aucun-enfant");
+  // Enfant seul (le solo n'a pas accès aux routes du parent).
+  assert.equal((await famille("activites", { jeton: enfant, corps: { type: "defi", cible: { famille: true }, notions: deux } })).statut, 403);
+
+  const evaluation = await famille("activites", { jeton: parent, corps: { type: "evaluation", cible: { famille: true }, notions: deux, nbQuestions: 40, libelle: "Bilan du trimestre" } });
+  assert.equal(evaluation.statut, 201);
+  const defi = await famille("activites", { jeton: parent, corps: { type: "defi", cible: { enfantId }, notions: deux } });
+  const objectif = await famille("activites", { jeton: parent, corps: { type: "objectif", cible: { famille: true }, objectif: { mesure: "temps", valeur: 60 } } });
+  assert.equal(objectif.statut, 201);
+
+  // Noé voit les trois, Lou seulement celles de toute la famille.
+  const deNoe = (await famille("mes-activites", { methode: "GET", jeton: enfant })).donnees.activites;
+  const deLou = (await famille("mes-activites", { methode: "GET", jeton: jetonLou })).donnees.activites;
+  assert.equal(deNoe.length, 3);
+  assert.deepEqual(deLou.map((a) => a.type).sort(), ["evaluation", "objectif"]);
+  assert.equal(deLou.find((a) => a.type === "evaluation").parametres.nbQuestions, 40);
+
+  // Résultats : compteurs seulement ; une évaluation ne compte qu'une fois ; un défi se rejoue (meilleur score).
+  const envoyer = (jeton, resultats) => famille("resultats", { methode: "PUT", jeton, corps: { resultats } });
+  assert.equal((await envoyer(enfant, [{ activite: evaluation.donnees.id, reussis: 30, total: 40, dureeS: 900, termine: true }])).donnees.enregistres, 1);
+  assert.equal((await envoyer(enfant, [{ activite: evaluation.donnees.id, reussis: 40, total: 40, termine: true }])).donnees.refuses[0].raison, "deja-terminee");
+  await envoyer(enfant, [{ activite: defi.donnees.id, reussis: 2, total: 5, dureeS: 60, termine: true }]);
+  await envoyer(enfant, [{ activite: defi.donnees.id, reussis: 5, total: 5, dureeS: 40, termine: true }]);
+  assert.equal((await envoyer(jetonLou, [{ activite: defi.donnees.id, reussis: 5, total: 5, termine: true }])).donnees.refuses[0].raison, "introuvable", "défi donné à Noé seulement");
+  assert.equal((await envoyer(enfant, [{ activite: objectif.donnees.id, reussis: 1, total: 1, termine: true }])).donnees.refuses[0].raison, "introuvable", "un objectif se mesure, il ne s'envoie pas");
+
+  const { donnees } = await famille("tableau", { methode: "GET", jeton: parent });
+  assert.equal(donnees.activites.length, 3);
+  const rDefi = donnees.resultats.find((r) => r.activite === defi.donnees.id);
+  assert.deepEqual([rDefi.meilleur, rDefi.tentatives, rDefi.dureeS], [5, 2, 100]);
+  assert.equal(donnees.resultats.find((r) => r.activite === evaluation.donnees.id).reussis, 30);
+
+  // Archiver : l'activité disparaît chez l'enfant ; supprimer efface aussi les résultats.
+  assert.equal((await famille(`activites/${objectif.donnees.id}/archiver`, { jeton: parent })).statut, 204);
+  assert.equal((await famille("mes-activites", { methode: "GET", jeton: jetonLou })).donnees.activites.length, 1);
+  assert.equal((await famille(`activites/${defi.donnees.id}/supprimer`, { jeton: parent })).statut, 204);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM familles_resultats WHERE activite_id = ?").get(defi.donnees.id).n, 0);
+
+  // Détacher Noé efface ses résultats ; supprimer le parent efface ses activités.
+  await famille(`enfants/${enfantId}/detacher`, { jeton: parent });
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM familles_resultats WHERE enfant_id = ?").get(enfantId).n, 0);
+  assert.equal((await appeler("/api/compte-local/compte/supprimer", { jeton: parent, corps: { motDePasse: MDP } })).statut, 204);
+  assert.equal(sql().prepare("SELECT count(*) AS n FROM familles_activites WHERE parent_id = ?").get(parentId).n, 0);
+  assert.ok(lou.statut === 201);
+});
+
+test("cahier pour toute la famille : une génération, une copie par enfant, même groupe", async () => {
+  const { parent, enfant } = await parentEtEnfant();
+  await famille("enfants", { jeton: parent, corps: { ...profil, prenom: "Lou", identifiant: "lou.kermic", motDePasse: MDP_ENFANT } });
+  const r = await famille("cahiers", { jeton: parent, corps: { famille: true, type: "fiches", notions: notions.slice(0, 1), utiliserLlm: true } });
+  assert.equal(r.statut, 201, JSON.stringify(r.donnees));
+  assert.equal(r.donnees.ids.length, 2);
+  assert.equal(env.AI.appels.length, 1, "une seule génération pour toute la famille");
+  const lignes = sql().prepare("SELECT groupe FROM familles_cahiers").all();
+  assert.equal(new Set(lignes.map((l) => l.groupe)).size, 1);
+  assert.ok(lignes[0].groupe);
+  assert.equal((await famille("mes-cahiers", { methode: "GET", jeton: enfant })).donnees.cahiers.length, 1);
+});
+
+test("tableau parent : travaux du professeur limités aux enfants liés et à leurs activités actives", async () => {
+  const { parent, enfantId } = await parentEtEnfant();
+  const db = sql();
+  db.prepare("INSERT INTO professeurs_profils (compte_id, nom_affiche, matieres, niveaux) VALUES ('prof-test', 'Prof Test', '[]', '[]')").run();
+  for (const id of [enfantId, 'autre-eleve']) db.prepare("INSERT INTO professeurs_eleves (prof_id, eleve_id, classe_id, pseudo, accord_version) VALUES ('prof-test', ?, 'classe-test', 'Pseudo', 'v1')").run(id);
+  const ajouter = (id, eleve, classe, statut = 'active') => db.prepare("INSERT INTO professeurs_activites (id, prof_id, type, classe_id, eleve_id, parametres, contenu, statut) VALUES (?, 'prof-test', 'defi', ?, ?, '{}', 'contenu-prive', ?)").run(id, classe, eleve, statut);
+  ajouter('personnel', enfantId, null);
+  ajouter('collectif', null, 'classe-test');
+  ajouter('autrui', 'autre-eleve', null);
+  ajouter('archive', enfantId, null, 'archivee');
+  ajouter('autre-classe', null, 'classe-autre');
+  db.prepare("INSERT INTO professeurs_resultats (activite_id, eleve_id, reussis, total, termine) VALUES ('collectif', ?, 3, 5, 1)").run(enfantId);
+  db.prepare("INSERT INTO professeurs_resultats (activite_id, eleve_id, reussis, total, termine) VALUES ('collectif', 'autre-eleve', 5, 5, 1)").run();
+  const r = await famille('tableau', { methode: 'GET', jeton: parent });
+  assert.equal(r.statut, 200);
+  const travaux = r.donnees.enfants[0].activitesProfesseurs;
+  assert.deepEqual(travaux.map((a) => a.id).sort(), ['collectif', 'personnel']);
+  assert.ok(travaux.every((a) => a.professeur === 'Prof Test' && !('contenu' in a)));
+  assert.equal(travaux.find((a) => a.id === 'collectif').resultat.reussis, 3);
+  assert.equal(JSON.stringify(travaux).includes('autre-eleve'), false);
+});

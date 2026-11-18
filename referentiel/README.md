@@ -1,6 +1,6 @@
 # Contrats du référentiel S4
 
-Les huit schémas JSON Schema 2020-12 partagent les définitions de `schemas/primitives.schema.json`. Les contrats de forme sont ceux de l’[ADR 0028](../docs/decisions/0028-adoption-contrats-s4.md). `RULE_CATALOG.csv` relie les règles de structure et d’intégrité à leurs fixtures et à leurs tests. La [proposition S5 v1.0.0](../docs/referentiel/normes/S5-v1.0.0.md) consolide les responsabilités des sources et des artefacts et décrit les contrôles à compléter.
+Les huit schémas JSON Schema 2020-12 partagent les définitions de `schemas/primitives.schema.json`. Les contrats de forme sont ceux de l’[ADR 0028](../docs/decisions/0028-adoption-contrats-s4.md). `RULE_CATALOG.csv` relie les règles de structure et d’intégrité à leurs fixtures et à leurs tests. [S5 v1.0.0](../docs/referentiel/normes/S5-v1.0.0.md), adoptée par la PR #369, consolide les responsabilités des sources et des artefacts.
 
 Pour les vérifier, installer les dépendances puis exécuter `node --test tests/unit/referentiel-schemas.test.mjs`. Ces tests font aussi partie de `npm test`.
 
@@ -28,3 +28,9 @@ Le build lit les Relations sortantes et les placements du Curriculum désigné. 
 ## Création des lots v0.5
 
 Voir [le guide de génération](generation-v0.5.md) et [l’inventaire public](inventaire-v0.5.json).
+
+## Contrôle des artefacts S5
+
+`npm run check:artefacts` vérifie le catalogue CSV, l’index `sources-normatives.json`, les fichiers cités et les fixtures nommées. `npm run check:artefacts -- --json` produit le rapport déterministe. La CI conserve `validation-artefacts.json` comme artefact. Le code de sortie vaut 1 pour un rapport en erreur et 2 pour une invocation invalide.
+
+Les tests du référentiel vérifient que chaque preuve citée exerce le diagnostic et la sévérité déclarés. Une référence vers un scénario JavaScript utilise son nom explicite après `#`. Une référence JSON utilise le champ `name` du cas. Les références multiples sont séparées par ` | `. L’index des sources associe chaque section S4 à sa page lisible et à la décision d’adoption.

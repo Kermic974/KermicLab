@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 // Blog (issue #277) : en-tête, conversion Markdown sûre, pages générées, exclusion des articles non validés.
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -9,7 +10,7 @@ import {
   pageArticle, pageAuteurs, pageListe, retirerTitreDouble, slugDepuisFichier, validerEntete
 } from "../../scripts/lib/blog.mjs";
 
-const racine = new URL("../../", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../../", import.meta.url));
 const article = (entete, corps = "Texte.") => `---\n${Object.entries(entete).map(([k, v]) => `${k}: ${v}`).join("\n")}\n---\n${corps}\n`;
 const VALIDE = { titre: '"Un titre"', auteur: '"Chloé Grok, rédactrice en chef (assistante IA)"', date: "2026-11-16", statut: "validé" };
 

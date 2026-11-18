@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 // Publication programmée du blog (issue #312) : décision quotidienne de construire et déployer. Aucun appel réseau réel.
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -7,7 +8,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import { articlesEnLigne, deciderPublication, ecartPublication } from "../../scripts/blog-programme.mjs";
 
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const SITE = "https://kermiclab.pages.dev";
 const article = (date) => `---\ntitre: Article du ${date}\nauteur: Émile Grok\ndate: ${date}\nstatut: validé\n---\n\nTexte.\n`;
 const enLigne = (slugs, status = 200) => async (url, init) => {

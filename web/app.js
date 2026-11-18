@@ -833,7 +833,7 @@ function brancherCompte() {
 // Le compte local lié au serveur garde une session pour l'onglet. Un compte solo invite son parent par un code ; un
 // compte parent (rôle attribué dans le back-office) voit le tableau de bord Famille. L'appareil d'un enfant envoie un
 // bilan clair et borné (compteurs et identifiants du catalogue) et reçoit les cahiers assignés par son parent.
-const familleEtat = { moi: null, tableau: null, mesCahiers: [], occupe: false, minuteurBilan: null, dernierBilan: 0, ouverts: new Set() };
+const familleEtat = { moi: null, tableau: null, mesCahiers: [], occupe: false, minuteurBilan: null, dernierBilan: 0, ouverts: new Set(), enfantsMasques: new Set() };
 const DELAI_BILAN_MS = 60_000;
 
 const jetonFamille = () => {
@@ -866,6 +866,7 @@ async function apiFamilleLocale(route, { methode = "GET", corps } = {}) {
 
 function oublierFamille() {
   Object.assign(familleEtat, { moi: null, tableau: null, mesCahiers: [] });
+  familleEtat.enfantsMasques.clear();
   clearTimeout(familleEtat.minuteurBilan);
   rafraichirFamilleCompte();
   rendreCahiersFamille();
@@ -881,6 +882,8 @@ function messageFamille(r) {
   if (r?.statut === 503) return t("efErreur_indisponible");
   if (r?.statut === 429) return t("synchroTropDeTentatives");
   if (typeof code === "string" && etat.textes[`efErreur_${code}`]) return t(`efErreur_${code}`);
+  // Refus des activités (ADR 0029 §8) : mêmes codes et mêmes textes que pour un professeur.
+  if (typeof code === "string" && etat.textes[`actErreur_${code}`]) return t(`actErreur_${code}`, { max: professeur.MAX_NOTIONS_ACTIVITE, min: professeur.QUESTIONS_EVALUATION_MIN, maxq: professeur.QUESTIONS_EVALUATION_MAX });
   if (typeof code === "string" && code.startsWith("prenom-")) return t(`pseudoErreur_${code.slice(7)}`, { min: profil.PSEUDO_MIN, max: profil.PSEUDO_MAX });
   if (typeof code === "string" && code.startsWith("identifiant-") && etat.textes[`compteIdentifiantErreur_${code.slice(12)}`]) return t(`compteIdentifiantErreur_${code.slice(12)}`, bornesCompte);
   if (typeof code === "string" && code.startsWith("mot-de-passe-")) return t("efErreur_motDePasse", { min: compteLocal.MOT_DE_PASSE_MIN });
@@ -910,9 +913,10 @@ function rafraichirFamilleCompte() {
   $("#entree-espace-famille").hidden = !m?.parent;
   $("#famille-ouvrir-espace").hidden = !m?.parent;
   // Lien rapide de la navigation : l'Espace famille pour un parent, le bloc Famille de « Mon compte » sinon.
-  const navFamille = $("#nav-famille");
-  navFamille.hidden = !lie || !m;
-  navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
+  for (const navFamille of [$("#nav-famille"), $("#nav-mobile-famille")]) {
+    navFamille.hidden = !lie || !m;
+    navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
+  }
   marquerNavigation(sectionDe(etat.ecran));
   $("#famille-compte-solo").hidden = !m || !!m.parent || !!m.enfant;
   $("#famille-compte-statut").textContent = !lie ? t("fcNonLie")
@@ -1148,7 +1152,8 @@ function chiffre(dt, dd) {
 }
 
 function rendreEspaceFamille() {
-  const tableau = familleEtat.tableau;
+  const complet = familleEtat.tableau;
+  const tableau = complet && { ...complet, enfants: complet.enfants.filter((e) => !familleEtat.enfantsMasques.has(e.id)) };
   const m = familleEtat.moi;
   if (!tableau) {
     $("#ef-contenu").hidden = true;
@@ -1159,6 +1164,8 @@ function rendreEspaceFamille() {
   }
   $("#ef-contenu").hidden = false;
   const jour = progression.jourLocal();
+  rendreSelectionEnfants(complet);
+  rendreTravailProfesseurs(tableau);
   const s = familleModule.syntheseFamille(tableau.enfants, jour);
   $("#ef-chiffres").replaceChildren(
     chiffre(t("efChiffreEnfants"), s.enfants), chiffre(t("efChiffreXp"), s.xp),
@@ -1166,10 +1173,45 @@ function rendreEspaceFamille() {
   );
   const prenomDe = (id) => tableau.enfants.find((e) => e.id === id)?.prenom ?? "";
   $("#ef-alertes").replaceChildren(...s.alertes.map((a) => element("li", { texte: t(`efAlerte_${a.type}`, { prenom: prenomDe(a.enfant), n: a.n ?? a.jours ?? "" }) })));
-  $("#ef-vide").hidden = tableau.enfants.length > 0;
+  $("#ef-vide").hidden = complet.enfants.length > 0;
   $("#ef-enfants").replaceChildren(...tableau.enfants.map(carteEnfant));
-  $("#ef-ajout").hidden = tableau.enfants.length >= tableau.maxEnfants;
+  $("#ef-ajout").hidden = complet.enfants.length >= complet.maxEnfants;
+  rendreTableauFamille(tableau);
   rendreConsommations(tableau);
+}
+
+/** Filtre de consultation : ne change ni la session ni les destinataires des activités. */
+function rendreSelectionEnfants(tableau) {
+  $("#ef-selection-enfants").replaceChildren(...tableau.enfants.map((e) => {
+    const label = element("label", { classe: "prof-case" });
+    const caseEnfant = element("input", { attributs: { type: "checkbox", value: e.id } });
+    caseEnfant.checked = !familleEtat.enfantsMasques.has(e.id);
+    label.append(caseEnfant, element("span", { texte: e.prenom }));
+    return label;
+  }));
+  $("#ef-selection-vide").hidden = !tableau.enfants.length || tableau.enfants.some((e) => !familleEtat.enfantsMasques.has(e.id));
+}
+
+/** Lecture seule des travaux scolaires, regroupés par enfant et professeur. */
+function rendreTravailProfesseurs(tableau) {
+  const cartes = [];
+  const jour = progression.jourLocal();
+  for (const enfant of tableau.enfants) {
+    const activites = enfant.activitesProfesseurs ?? [];
+    for (const nom of new Set(activites.map((a) => a.professeur))) {
+      const carte = element("article", { classe: "carte ef-enfant" });
+      carte.append(element("h4", { texte: enfant.prenom + " · " + (nom || t("efProfesseur")) }));
+      const terminees = activites.filter((a) => a.resultat?.termine).length;
+      for (const a of activites.filter((a) => a.professeur === nom)) {
+        const detail = [titreActivite(a), a.echeance ? t("actPourLe", { date: dateCourte(a.echeance) }) : null,
+          statutEleveActivite(a, a.resultat, { bilan: enfant.bilan, terminees }, jour)].filter(Boolean).join(" · ");
+        carte.append(element("p", { texte: detail }));
+      }
+      cartes.push(carte);
+    }
+  }
+  $("#ef-professeurs").replaceChildren(...cartes);
+  $("#ef-professeurs-vide").hidden = cartes.length > 0;
 }
 
 function barresSemaine(bilan, jour) {
@@ -1232,8 +1274,9 @@ function carteEnfant(e) {
   carte.append(cahiers);
   // Actions.
   const actions = element("div", { classe: "actions" });
-  actions.append(element("button", { classe: "bouton petit-bouton", cle: "efAssigner", attributs: { type: "button", "data-ef-assigner": e.id } }));
-  carte.append(actions);
+  actions.append(element("button", { classe: "bouton petit-bouton", cle: "actDonner", attributs: { type: "button", "data-ef-activite": e.id } }),
+    element("button", { classe: "secondaire petit-bouton", cle: "efAssigner", attributs: { type: "button", "data-ef-assigner": e.id } }));
+  carte.append(activitesDeLEnfant(e, familleEtat.tableau ?? { activites: [], resultats: [] }), actions);
   const gestion = element("details", { classe: "famille-ajout ef-gestion" });
   if (familleEtat.ouverts.has(e.id)) gestion.open = true;
   gestion.addEventListener("toggle", () => { if (gestion.open) familleEtat.ouverts.add(e.id); else familleEtat.ouverts.delete(e.id); });
@@ -1446,10 +1489,12 @@ async function assignerCahierFamille({ type, ids, longueur, univers, objectif })
 function brancherFamilleLocale() {
   ECRANS.push("espace-famille");
   // « Ma famille » sans rôle parent : « Mon compte », bloc Famille (situation, invitation d'un parent).
-  $("#nav-famille").addEventListener("click", (e) => {
-    if (e.currentTarget.dataset.nav !== "compte") return;
-    requestAnimationFrame(() => $("#famille-compte").scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" }));
-  });
+  for (const lien of [$("#nav-famille"), $("#nav-mobile-famille")]) {
+    lien.addEventListener("click", (e) => {
+      if (e.currentTarget.dataset.nav !== "compte") return;
+      requestAnimationFrame(() => $("#famille-compte").scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" }));
+    });
+  }
   $("#famille-inviter").addEventListener("click", inviterParent);
   $("#famille-annuler-invitation").addEventListener("click", annulerInvitation);
   $("#liste-cahiers-famille").addEventListener("click", (e) => {
@@ -1461,6 +1506,7 @@ function brancherFamilleLocale() {
   $("#cahier-type-famille").addEventListener("change", (e) => { constructeur.type = e.target.value; });
   $("#constructeur-cahier").addEventListener("close", () => { constructeur.enfant = null; basculerModeFamilleConstructeur(); });
   brancherEspaceFamille();
+  brancherActivitesFamille();
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && bilanAttendu()) void envoyerBilanFamille(); });
   void chargerFamille();
 }
@@ -2025,13 +2071,15 @@ function brancherProfesseur() {
 // Le professeur donne des défis (5 questions), des évaluations (5 à 40 questions), des cahiers et des objectifs à un
 // élève ou à toute une classe. Les questions sont des QCM publiés du catalogue, tirés de façon reproductible ; l'appareil
 // de l'élève n'envoie que des compteurs (réussies, total, durée). Le tableau de bord est calculé dans le navigateur.
-const activitesEtat = { cible: null, quiz: null, mesActivites: [], minuteur: null, debut: 0 };
+// `mode` : « prof » ou « famille » (le dialogue « Donner une activité » sert aux deux, ADR 0029 §8).
+const activitesEtat = { cible: null, quiz: null, mesActivites: [], minuteur: null, debut: 0, mode: "prof" };
 
 const titreActivite = (a) => a.parametres?.libelle
   || [t(`actType_${a.type}`), (a.parametres?.notions ?? []).slice(0, 2).map((id) => notionParId(id)?.titre ?? id).join(", ")].filter(Boolean).join(" · ");
 const cibleActivite = (a, classes, eleves) => (a.eleveId
   ? eleves.find((e) => e.id === a.eleveId)?.pseudo ?? "—"
-  : t("actCibleClasse", { classe: classes.find((c) => c.id === a.classeId)?.nom ?? "—" }));
+  : a.classeId === "famille" ? t("actCibleFamille")
+    : t("actCibleClasse", { classe: classes.find((c) => c.id === a.classeId)?.nom ?? "—" }));
 const pct = (v) => (v === null || v === undefined ? "—" : `${v} %`);
 
 /** Élèves, classes, activités et résultats du professeur (le tableau de bord et « Mes élèves » s'en servent). */
@@ -2111,7 +2159,7 @@ function rendreTableauProf() {
 }
 
 /** Détail d'une activité : indicateurs, puis une ligne par élève ciblé (statut, score, essais, durée). */
-function carteActivite(a, { eleves, classes, jour }) {
+function carteActivite(a, { eleves, classes, jour, resultats = profEtat.activites?.resultats ?? [], cleDetail = "actDetail" }) {
   const carte = element("article", { classe: "carte ef-enfant activite-carte", attributs: { "data-activite": a.id } });
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
@@ -2129,9 +2177,9 @@ function carteActivite(a, { eleves, classes, jour }) {
   carte.append(stats);
   // Détail par élève.
   const det = element("details", { classe: "famille-ajout ef-gestion" });
-  det.append(element("summary", { cle: "actDetail" }));
+  det.append(element("summary", { cle: cleDetail }));
   const ul = element("ul", { classe: "prof-invitations" });
-  const res = profEtat.activites?.resultats ?? [];
+  const res = resultats;
   const terminees = (id) => res.filter((r) => r.eleve === id && r.termine).length;
   for (const e of professeur.elevesCibles(a, eleves)) {
     const r = res.find((x) => x.activite === a.id && x.eleve === e.id);
@@ -2165,11 +2213,13 @@ function statutEleveActivite(a, r, suivi, jour) {
 /* Dialogue « Donner une activité » */
 
 const notionsDuProfil = () => {
-  const p = moiProf()?.profil;
-  return (etat.registre?.deType("notion") ?? []).filter((n) => p?.matieres.includes(n.matiere));
+  const matieres = activitesEtat.mode === "famille" ? professeur.MATIERES_PROF : moiProf()?.profil?.matieres;
+  return (etat.registre?.deType("notion") ?? []).filter((n) => matieres?.includes(n.matiere));
 };
 
 function ouvrirDialogueActivite({ classeId = null, eleveId = null } = {}) {
+  activitesEtat.mode = "prof";
+  $("#activite-types").querySelector('input[value="cahier"]').closest("label").hidden = false;
   const p = moiProf()?.profil;
   if (!p) { notifier(t("profProfilManquant"), "⚠️"); return; }
   const classes = profEtat.eleves?.classes ?? profEtat.classes?.classes ?? [];
@@ -2243,6 +2293,7 @@ async function banqueQuestions(notions) {
 
 async function validerDialogueActivite(ev) {
   ev.preventDefault();
+  if (activitesEtat.mode === "famille") { await validerActiviteFamille(); return; }
   if (profEtat.occupe) return;
   const type = new FormData($("#formulaire-activite")).get("activite-type");
   const [genre, id] = $("#activite-cible").value.split(":");
@@ -2346,13 +2397,23 @@ function brancherActivitesProf() {
 /* Côté élève : travail donné par les professeurs */
 
 async function chargerMesActivites() {
-  if (!jetonFamille() || !profEtat.mesProfs.length) { activitesEtat.mesActivites = []; rendreActivitesEleve(); return; }
-  try {
-    const r = await apiProf("mes-activites", { reel: true });
-    activitesEtat.mesActivites = r.statut === 200 && Array.isArray(r.donnees?.activites) ? r.donnees.activites : [];
-  } catch {
-    activitesEtat.mesActivites = [];
+  const avecProfs = !!jetonFamille() && profEtat.mesProfs.length > 0;
+  // Activités données par le parent (ADR 0029 §8) : même bloc, même quiz, autre route d'envoi des résultats.
+  const avecFamille = !!jetonFamille() && !!familleEtat.moi?.enfant;
+  const liste = [];
+  if (avecProfs) {
+    try {
+      const r = await apiProf("mes-activites", { reel: true });
+      if (r.statut === 200 && Array.isArray(r.donnees?.activites)) liste.push(...r.donnees.activites.map((a) => ({ ...a, origine: "prof" })));
+    } catch { /* bloc vide */ }
   }
+  if (avecFamille) {
+    try {
+      const r = await apiFamilleLocale("mes-activites");
+      if (r.statut === 200 && Array.isArray(r.donnees?.activites)) liste.push(...r.donnees.activites.map((a) => ({ ...a, origine: "famille", professeur: t("actTaFamille") })));
+    } catch { /* bloc vide */ }
+  }
+  activitesEtat.mesActivites = liste;
   rendreActivitesEleve();
 }
 
@@ -2361,7 +2422,7 @@ const cahierLocalProf = (id) => cahiersEnregistres().find((c) => c.prof === id) 
 /** Objectif côté élève : même calcul que chez le professeur, à partir de la progression de l'appareil. */
 function avancementObjectifLocal(a) {
   const bilan = bilanDeLAppareil();
-  const terminees = activitesEtat.mesActivites.filter((x) => x.resultat?.termine).length;
+  const terminees = activitesEtat.mesActivites.filter((x) => x.origine === a.origine && x.resultat?.termine).length;
   return professeur.avancementObjectif(a, { bilan, terminees }, progression.jourLocal());
 }
 
@@ -2370,6 +2431,8 @@ function rendreActivitesEleve() {
   const zone = $("#activites-eleve");
   if (!zone) return;
   zone.hidden = !liste.length;
+  const origines = new Set(liste.map((a) => a.origine));
+  $("#activites-eleve-titre").textContent = t(origines.size > 1 ? "actEleveTitreTous" : origines.has("famille") ? "actEleveTitreFamille" : "actEleveTitre");
   const jour = progression.jourLocal();
   $("#activites-eleve-liste").replaceChildren(...liste.map((a) => {
     const li = element("li", { classe: "ef-cahier activite-eleve" });
@@ -2467,7 +2530,9 @@ async function validerQuiz(ev) {
   $("#quiz-retour").textContent = t("quizResultat", { n: reussis, m: q.questions.length });
   const dureeS = Math.min(86400, Math.round((Date.now() - activitesEtat.debut) / 1000));
   try {
-    const r = await apiProf("resultats", { methode: "PUT", reel: true, corps: { resultats: [{ activite: q.activite.id, reussis, total: q.questions.length, dureeS, termine: true }] } });
+    const corps = { resultats: [{ activite: q.activite.id, reussis, total: q.questions.length, dureeS, termine: true }] };
+    const r = q.activite.origine === "famille" ? await apiFamilleLocale("resultats", { methode: "PUT", corps })
+      : await apiProf("resultats", { methode: "PUT", reel: true, corps });
     if (r.statut !== 200 || r.donnees?.refuses?.length) $("#quiz-retour").textContent += ` ${t("quizNonEnvoye")}`;
   } catch {
     $("#quiz-retour").textContent += ` ${t("quizNonEnvoye")}`;
@@ -2477,7 +2542,7 @@ async function validerQuiz(ev) {
 
 /** Avancement des cahiers donnés par un professeur : envoyé avec le bilan (au plus une fois par minute). */
 async function envoyerResultatsCahiersProf() {
-  const resultats = cahiersEnregistres().filter((c) => c.prof && activitesEtat.mesActivites.some((a) => a.id === c.prof))
+  const resultats = cahiersEnregistres().filter((c) => c.prof && activitesEtat.mesActivites.some((a) => a.id === c.prof && a.origine === "prof"))
     .map((c) => ({ activite: c.prof, ...bilanExercices(c), dureeS: 0, termine: false }))
     .filter((r) => r.total > 0);
   if (!resultats.length) return;
@@ -2500,6 +2565,178 @@ function brancherActivitesEleve() {
     activitesEtat.quiz = null;
     $("#quiz-valider").textContent = t("quizValider");
   });
+}
+
+/* ---------- Activités et tableau de bord du parent (ADR 0029 §8) ---------- */
+// Même dialogue et même moteur que le professeur : défis (5 questions), évaluations (5 à 40), objectifs et cahiers,
+// pour un enfant ou toute la famille. Les cahiers passent par /api/famille/cahiers (calibrage de l'enfant).
+
+/** Enfants vus par le moteur commun : la famille joue le rôle d'une classe. */
+const enfantsCommeEleves = (tableau) => (tableau?.enfants ?? []).map((e) => ({ id: e.id, pseudo: e.prenom, classeId: "famille", bilan: e.bilan }));
+
+function ouvrirDialogueActiviteFamille({ enfantId = null } = {}) {
+  const tableau = familleEtat.tableau;
+  if (!tableau?.enfants.length) { notifier(t("actAucuneCible"), "⚠️"); return; }
+  activitesEtat.mode = "famille";
+  activitesEtat.niveau = null;
+  $("#formulaire-activite").reset();
+  $("#activite-cible").replaceChildren(option("famille", t("actCibleFamille")),
+    ...tableau.enfants.map((e) => option(`enfant:${e.id}`, t("actCibleEnfant", { prenom: e.prenom }))));
+  $("#activite-cible").value = enfantId ? `enfant:${enfantId}` : "famille";
+  const matieres = professeur.MATIERES_PROF.filter((m) => notionsDuProfil().some((n) => n.matiere === m));
+  $("#activite-matiere").replaceChildren(...matieres.map((m) => option(m, libelleMatiere(m))));
+  const quota = tableau.cahiersIa;
+  $("#activite-cahier-ia").disabled = !quota?.ia || !quota.restantes;
+  $("#activite-cahier-ia-aide").textContent = quota?.ia ? t("actCahierIaAide", { n: quota.restantes, m: quota.limite }) : t("actCahierIaIndisponible");
+  $("#activite-erreur").textContent = "";
+  basculerTypeActivite();
+  $("#dialogue-activite").showModal();
+}
+
+async function validerActiviteFamille() {
+  if (familleEtat.occupe) return;
+  const type = new FormData($("#formulaire-activite")).get("activite-type");
+  const cibleBrute = $("#activite-cible").value;
+  const cible = cibleBrute === "famille" ? { famille: true } : { enfantId: cibleBrute.slice(7) };
+  const notions = [...document.querySelectorAll("#activite-notions input:checked")].map((c) => c.value);
+  const mesure = $("#activite-mesure").value;
+  const erreurDialogue = (m) => { $("#activite-erreur").textContent = m; };
+  const corps = {
+    type, cible, notions: type === "objectif" && mesure !== "notions" ? [] : notions,
+    libelle: $("#activite-libelle").value.trim() || null, echeance: $("#activite-echeance").value || null, langue: etat.langue,
+    ...(type === "evaluation" ? { nbQuestions: Number($("#activite-nb").value) } : {}),
+    ...(type === "cahier" ? { cahier: { type: $("#activite-cahier-type").value, longueur: $("#activite-cahier-longueur").value, univers: $("#activite-cahier-univers").value, objectif: $("#activite-cahier-objectif").value, ia: $("#activite-cahier-ia").checked } } : {}),
+    ...(type === "objectif" ? { objectif: { mesure, valeur: Number($("#activite-valeur").value) } } : {})
+  };
+  // Mêmes règles que le Worker : la famille est une « classe », l'enfant un « élève ».
+  const v = professeur.validerActivite({ ...corps, cible: cible.famille ? { classeId: "famille" } : { eleveId: cible.enfantId } },
+    { profil: { matieres: professeur.MATIERES_PROF }, matiereDe: (n) => notionParId(n)?.matiere ?? null, aujourdhui: progression.jourLocal() });
+  if (!v.ok) { erreurDialogue(t(`actErreur_${v.code}`, { max: professeur.MAX_NOTIONS_ACTIVITE, min: professeur.QUESTIONS_EVALUATION_MIN, maxq: professeur.QUESTIONS_EVALUATION_MAX })); return; }
+  let disponibles = null;
+  if (["defi", "evaluation"].includes(type)) {
+    const banque = await banqueQuestions(notions);
+    disponibles = Object.values(banque).reduce((n, l) => n + l.length, 0);
+    if (!disponibles) { erreurDialogue(t("actErreur_sans-questions")); return; }
+  }
+  familleEtat.occupe = true;
+  $("#activite-valider").disabled = true;
+  erreurDialogue(t(type === "cahier" && corps.cahier.ia ? "cahierPreparation" : "synchroEnCours"));
+  try {
+    const r = type === "cahier"
+      ? await apiFamilleLocale("cahiers", { methode: "POST", corps: {
+        ...(cible.famille ? { famille: true } : { enfantId: cible.enfantId }), type: corps.cahier.type, notions: v.activite.notions,
+        longueur: corps.cahier.longueur, univers: corps.cahier.univers, objectif: corps.cahier.objectif, langue: etat.langue, utiliserLlm: corps.cahier.ia
+      } })
+      : await apiFamilleLocale("activites", { methode: "POST", corps });
+    if (r.statut !== 201) { erreurDialogue(messageFamille(r)); return; }
+    $("#dialogue-activite").close();
+    const demande = corps.nbQuestions ?? (type === "defi" ? professeur.QUESTIONS_DEFI : 0);
+    notifier(disponibles !== null && disponibles < demande ? t("actDonneeMoinsQuestions", { n: disponibles }) : t("actDonnee"), "👪");
+    familleEtat.occupe = false;
+    await chargerTableauFamille();
+  } catch {
+    erreurDialogue(t("efErreur_generique"));
+  } finally {
+    familleEtat.occupe = false;
+    $("#activite-valider").disabled = false;
+  }
+}
+
+/**
+ * Tableau de bord du parent : engagement et performance de la famille (moteur du professeur), comparatif par enfant,
+ * puis le détail de chaque activité donnée.
+ */
+function rendreTableauFamille(tableau) {
+  const eleves = enfantsCommeEleves(tableau);
+  const jour = progression.jourLocal();
+  const activites = (tableau.activites ?? []).filter((a) => professeur.elevesCibles(a, eleves).length);
+  const ids = new Set(eleves.map((e) => e.id));
+  const resultats = (tableau.resultats ?? []).filter((r) => ids.has(r.eleve));
+  const tb = professeur.tableauDeBord({ eleves, classes: [], activites, resultats }, jour);
+  const g = tb.global;
+  $("#ef-engagement").replaceChildren(
+    chiffre(t("efActifs"), `${g.actifs} / ${g.eleves}`), chiffre(t("efTempsMoyen"), formatMinutes(g.minutesMoyennes)),
+    chiffre(t("suiviCompletion"), pct(g.completion)), chiffre(t("suiviRetards"), g.retard)
+  );
+  $("#ef-performance").replaceChildren(
+    chiffre(t("suiviScoreEvaluations"), pct(g.scoreEvaluations)), chiffre(t("suiviScoreDefis"), pct(g.scoreDefis)),
+    chiffre(t("suiviMaitrise"), pct(g.maitrise)), chiffre(t("profChiffreARevoir"), g.aRevoir)
+  );
+  const aRevoir = professeur.notionsARevoir(eleves).map((n) => `${notionParId(n.id)?.titre ?? n.id} (${n.n})`);
+  $("#ef-a-revoir").textContent = aRevoir.length ? t("profARevoirGroupe", { liste: aRevoir.join(", ") }) : "";
+  // Comparatif : une ligne par enfant, mêmes indicateurs, calculés sur ses seules activités.
+  const ligne = (cellules, entete = false) => {
+    const tr = element("tr");
+    cellules.forEach((c, i) => tr.append(element(entete || i === 0 ? "th" : "td", { texte: String(c), attributs: entete ? { scope: "col" } : i === 0 ? { scope: "row" } : {} })));
+    return tr;
+  };
+  const thead = element("thead");
+  thead.append(ligne([t("efMembre"), t("efJoursActifs"), t("efTempsSemaine"), t("efXpSemaine"), t("efSerie"), t("suiviCompletion"), t("suiviScoreEvaluations"), t("suiviScoreDefis"), t("suiviMaitrise"), t("efObjectifs")], true));
+  const tbody = element("tbody");
+  for (const e of eleves) {
+    const un = professeur.tableauDeBord({ eleves: [e], classes: [], activites, resultats: resultats.filter((r) => r.eleve === e.id) }, jour).global;
+    const sem = familleModule.semaineBilan(e.bilan, jour);
+    const objectifs = activites.filter((a) => a.type === "objectif" && a.statut !== "archivee" && professeur.elevesCibles(a, [e]).length);
+    const terminees = resultats.filter((r) => r.eleve === e.id && r.termine).length;
+    const atteints = objectifs.filter((a) => professeur.avancementObjectif(a, { bilan: e.bilan, terminees }, jour).atteint).length;
+    tbody.append(ligne([e.pseudo, `${sem.joursActifs} / 7`, formatMinutes(sem.minutes), sem.xp, e.bilan?.serie ?? 0,
+      pct(un.completion), pct(un.scoreEvaluations), pct(un.scoreDefis), pct(un.maitrise), objectifs.length ? `${atteints} / ${objectifs.length}` : "—"]));
+  }
+  $("#ef-comparatif").replaceChildren(element("caption", { classe: "visuellement-cache", cle: "efComparatif" }), thead, tbody);
+  // Activités données, puis enfants à suivre ajoutés aux points d'attention.
+  $("#ef-activites-vide").hidden = tb.activites.length > 0;
+  $("#ef-activites").replaceChildren(...tb.activites.map((a) => carteActivite(a, { eleves, classes: [], jour, resultats, cleDetail: "efDetailParEnfant" })));
+  const prenom = (id) => eleves.find((e) => e.id === id)?.pseudo ?? "";
+  for (const s of tb.aSuivre) {
+    const raisons = s.raisons.filter((r) => ["retard", "score"].includes(r));
+    if (raisons.length) $("#ef-alertes").append(element("li", { texte: `${prenom(s.eleve)} : ${raisons.map((r) => t(`suiviRaison_${r}`, { n: s.retard, score: s.score ?? "" })).join(" · ")}` }));
+  }
+}
+
+/** Activités d'un enfant dans sa carte : statut de chacune (même présentation que chez le professeur). */
+function activitesDeLEnfant(e, tableau) {
+  const eleve = { id: e.id, pseudo: e.prenom, classeId: "famille", bilan: e.bilan };
+  const siennes = (tableau.activites ?? []).filter((a) => a.statut !== "archivee" && professeur.elevesCibles(a, [eleve]).length);
+  const bloc = element("div", { classe: "ef-cahiers" });
+  bloc.append(element("h5", { cle: "actActivitesEleve" }));
+  if (!siennes.length) bloc.append(element("p", { classe: "doux petit", cle: "actAucunePourEleve" }));
+  const jour = progression.jourLocal();
+  const resultats = tableau.resultats ?? [];
+  const terminees = resultats.filter((r) => r.eleve === e.id && r.termine).length;
+  for (const a of siennes) {
+    const r = resultats.find((x) => x.activite === a.id && x.eleve === e.id);
+    bloc.append(element("div", { classe: "ef-cahier", texte: `${titreActivite(a)} — ${statutEleveActivite(a, r, { bilan: e.bilan, terminees }, jour)}` }));
+  }
+  return bloc;
+}
+
+function brancherActivitesFamille() {
+  $("#ef-selection-enfants").addEventListener("change", (ev) => {
+    const caseEnfant = ev.target.closest('input[type="checkbox"]');
+    if (!caseEnfant) return;
+    if (caseEnfant.checked) familleEtat.enfantsMasques.delete(caseEnfant.value);
+    else familleEtat.enfantsMasques.add(caseEnfant.value);
+    const id = caseEnfant.value;
+    rendreEspaceFamille();
+    [...$("#ef-selection-enfants").querySelectorAll("input")].find((c) => c.value === id)?.focus();
+  });
+  $("#ef-donner-activite").addEventListener("click", () => ouvrirDialogueActiviteFamille());
+  $("#ef-enfants").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-ef-activite]");
+    if (b) ouvrirDialogueActiviteFamille({ enfantId: b.dataset.efActivite });
+  });
+  $("#ef-activites").addEventListener("click", (ev) => {
+    const b = ev.target.closest("button");
+    if (!b || familleEtat.occupe) return;
+    const id = b.dataset.activiteArchiver ?? b.dataset.activiteSupprimer;
+    if (!id) return;
+    if (b.dataset.activiteSupprimer && b.dataset.confirmer !== "1") { b.dataset.confirmer = "1"; b.textContent = t("actSupprimerConfirmer"); return; }
+    void apiFamilleLocale(`activites/${id}/${b.dataset.activiteArchiver ? "archiver" : "supprimer"}`, { methode: "POST", corps: {} })
+      .then(() => { notifier(t(b.dataset.activiteArchiver ? "actArchivee" : "actSupprimee"), "👪"); return chargerTableauFamille(); })
+      .catch(() => notifier(t("efErreur_generique"), "⚠️"));
+  });
+  // Le type « cahier » du dialogue reste visible en mode famille ; le mode professeur le rétablit à l'ouverture.
+  $("#dialogue-activite").addEventListener("close", () => { activitesEtat.mode = "prof"; });
 }
 
 /* ---------- Contributions au contenu des notions (ADR 0023) ---------- */
@@ -4441,6 +4678,7 @@ async function demarrer() {
   brancherProfil();
   brancherCompte();
   brancherFamilleLocale();
+  brancherNavMobile();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -4919,12 +5157,63 @@ function naviguer(cle) {
 /** Une seule destination est marquée « page courante » ; un sous-écran marque sa destination. */
 function marquerNavigation(cle) {
   // « Ma famille » mène à l'Espace famille (sous-écran du Profil) : il est la page courante quand cet écran est affiché.
-  const famille = $("#nav-famille");
-  const surFamille = !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
+  const familles = [$("#nav-famille"), $("#nav-mobile-famille")];
+  const surFamille = !familles[0].hidden && etat.ecran === "espace-famille" && familles[0].dataset.nav === "espace-famille";
   document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]").forEach((b) => {
-    const courant = b === famille ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cle;
+    const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cle;
     if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
+  // « Plus » porte la page courante quand elle est l'une des entrées qu'il regroupe.
+  const plus = $("#nav-mobile-plus");
+  if ($("#nav-mobile-autres [aria-current]")) plus.setAttribute("aria-current", "page"); else plus.removeAttribute("aria-current");
+}
+
+/* ---------- Barre du bas (mobile) : entrées liées au compte ou au rôle ---------- */
+// Six destinations fixes ; au-delà, les entrées « Ma famille », « Contributions » et « Suivi » (affichées selon le compte
+// et le rôle) iraient sous 44 px à 320 px de large. Une seule visible : elle reste dans la barre. Deux ou plus : elles
+// passent dans le panneau « Plus », ouvert au-dessus de la barre.
+const NAV_MOBILE_EXTRAS = ["#nav-mobile-famille", "#nav-mobile-contributions", "#nav-mobile-suivi"];
+
+function agencerNavMobile() {
+  const barre = $(".nav-mobile");
+  const panneau = $("#nav-mobile-autres");
+  const plus = $("#nav-mobile-plus");
+  const extras = NAV_MOBILE_EXTRAS.map((id) => $(id));
+  const regrouper = extras.filter((b) => !b.hidden).length > 1;
+  for (const b of extras) (regrouper ? panneau : barre).insertBefore(b, regrouper ? null : plus);
+  plus.hidden = !regrouper;
+  if (!regrouper) fermerNavMobilePlus({ focus: false });
+  marquerNavigation(sectionDe(etat.ecran));
+}
+
+function fermerNavMobilePlus({ focus = true } = {}) {
+  const plus = $("#nav-mobile-plus");
+  if (plus.getAttribute("aria-expanded") !== "true") return;
+  plus.setAttribute("aria-expanded", "false");
+  $("#nav-mobile-autres").hidden = true;
+  if (focus) plus.focus({ preventScroll: true });
+}
+
+function brancherNavMobile() {
+  const plus = $("#nav-mobile-plus");
+  const panneau = $("#nav-mobile-autres");
+  plus.addEventListener("click", () => {
+    const ouvrir = plus.getAttribute("aria-expanded") !== "true";
+    if (!ouvrir) { fermerNavMobilePlus(); return; }
+    plus.setAttribute("aria-expanded", "true");
+    panneau.hidden = false;
+    panneau.querySelector(".nav-mobile-bouton:not([hidden])")?.focus({ preventScroll: true });
+  });
+  // Un choix dans le panneau, un clic ailleurs ou Échap le referment.
+  panneau.addEventListener("click", (e) => { if (e.target.closest("[data-nav]")) fermerNavMobilePlus({ focus: false }); });
+  document.addEventListener("click", (e) => {
+    if (!panneau.hidden && !panneau.contains(e.target) && !plus.contains(e.target)) fermerNavMobilePlus({ focus: false });
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panneau.hidden) fermerNavMobilePlus(); });
+  // Les entrées s'affichent ou se masquent selon le compte et le rôle (plusieurs modules) : on suit leur attribut hidden.
+  const observateur = new MutationObserver(agencerNavMobile);
+  for (const id of NAV_MOBILE_EXTRAS) observateur.observe($(id), { attributes: true, attributeFilter: ["hidden"] });
+  agencerNavMobile();
 }
 
 /** Accordéons écrits dans la page (mini-lab, cahiers) : même comportement que ceux de l'arbre Éducation. */

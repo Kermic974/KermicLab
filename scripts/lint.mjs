@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 // Lint léger sans dépendance : syntaxe JS, JSON valides, parité des clés i18n, absence de secrets évidents.
 import { execFileSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { verifierDepot } from "./verifier-versions.mjs";
 
-const racine = new URL("..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("..", import.meta.url));
 const ignores = new Set(["node_modules", ".git", "dist", ".wrangler", "generated", "catalogue-prive"]);
 const erreurs = [];
 

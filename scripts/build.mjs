@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
 import { createHash } from "node:crypto";
@@ -10,7 +11,7 @@ import { genererSeoStatique } from "./lib/seo.mjs";
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 
-const racine = new URL("..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
 for (const fiche of await synchroniserProjectionV0(racine, { ecrire: true })) console.log("Projection S4 mise à jour : " + fiche);
 const { sources, ...catalogue } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);

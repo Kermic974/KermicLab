@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -11,9 +12,11 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", "
 
 /** Petit serveur statique pour les tests de rendu. */
 export async function servir(dossier, { headers = {} } = {}) {
+  dossier = path.resolve(dossier);
   const serveur = createServer(async (req, res) => {
     const chemin = path.join(dossier, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
-    if (!chemin.startsWith(dossier)) { res.writeHead(403).end(); return; }
+    const relatif = path.relative(dossier, chemin);
+    if (path.isAbsolute(relatif) || relatif === ".." || relatif.startsWith(".." + path.sep)) { res.writeHead(403).end(); return; }
     try {
       const contenu = await readFile(chemin);
       res.writeHead(200, { "content-type": TYPES[path.extname(chemin)] ?? "application/octet-stream", ...headers }).end(contenu);
@@ -52,7 +55,7 @@ export async function ouvrir(nav, url, options = {}) {
   return { page, contexte, erreurs };
 }
 
-export const racine = new URL("../..", import.meta.url).pathname;
+export const racine = fileURLToPath(new URL("../..", import.meta.url));
 
 /**
  * Capture d'écran pour la documentation, uniquement si KERMICLAB_CAPTURES désigne un dossier

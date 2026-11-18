@@ -8,6 +8,9 @@ import { fileURLToPath } from "node:url";
 import { verifierReferentiel } from "../../scripts/check-referentiel.mjs";
 import { verifierIntegrite } from "../../scripts/lib/referentiel-integrite.mjs";
 import { lireHistorique } from "../../scripts/lib/referentiel-historique.mjs";
+import { verifierCouverture } from "../preuves-referentiel.mjs";
+
+const couverture = verifierCouverture("tests/unit/referentiel-integrite.test.mjs");
 
 const notion = (nom, extra = {}) => ({ id: "notion.maths." + nom, type: "notion", label: nom, status: "draft", version: 1, ...extra });
 const lien = (nom, type, s, t, extra = {}) => ({ id: "relation.maths." + nom, type, source: s.id, target: t.id, status: "draft", version: 1, ...extra });
@@ -38,10 +41,12 @@ async function espace(t, objets) {
 
 async function rapport(t, objets, historique = []) {
   const { cwd } = await espace(t, objets);
-  return verifierReferentiel(cwd, async () => {
+  const resultat = await verifierReferentiel(cwd, async () => {
     if (!historique) throw new Error("Historique indisponible");
     return historique;
   });
+  couverture(resultat.issues, t.name);
+  return resultat;
 }
 
 const signalements = r => new Set(r.issues.map(i => i.rule));
@@ -113,6 +118,7 @@ test("historique Git réel et WARNING pour référence antérieure", async t => 
   git("update-ref", "refs/remotes/origin/main", "HEAD");
   assert.equal((await lireHistorique(cwd)).length, 2);
   const r = await verifierReferentiel(cwd);
+  couverture(r.issues, t.name);
   assert.deepEqual([r.verdict, r.errors, r.warnings], ["PASS", 0, 1]);
   assert.deepEqual(signalements(r), new Set(["S4-REFERENCE-HISTORIQUE"]));
 });
@@ -134,7 +140,10 @@ test("commande JSON stable, codes de sortie PASS et FAIL", async t => {
 test("type de cible incompatible dans l’index de références", () => {
   const relation = lien("incompatible", "requires", a, p);
   const issues = [];
-  verifierIntegrite([a, p, relation].map(objet => ({ objet })), [], (_entree, regle) => issues.push(regle));
+  verifierIntegrite([a, p, relation].map(objet => ({ objet })), [], (_entree, regle, _message, severity = "ERROR") => {
+    couverture([{ rule: regle, severity }], "type de cible incompatible dans l’index de références");
+    issues.push(regle);
+  });
   assert.ok(issues.includes("S4-REFERENCE-TYPE"));
 });
 
@@ -142,4 +151,21 @@ test("équivalence entre objets validés", async t => {
   const r = await rapport(t, [av, bv, lien("equivalence", "equivalentTo", av, bv, { status: "validated", rationale: "Exemple" })]);
   assert.equal(r.verdict, "PASS");
   assert.deepEqual(signalements(r), new Set(["S4-RELATION-EQUIVALENCE"]));
+});
+
+test("historique Git avec un chemin long et un dépôt incomplet", async t => {
+  const { cwd, dossier } = await espace(t, []);
+  await writeFile(join(dossier, "objet-" + "x".repeat(210) + ".json"), JSON.stringify(a));
+  const git = (...args) => execFileSync("git", ["-c", "core.longpaths=true", ...args],
+    { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  git("init", "-q");
+  git("config", "user.name", "Tests S5");
+  git("config", "user.email", "tests@example.invalid");
+  git("add", ".");
+  git("-c", "commit.gpgsign=false", "commit", "-qm", "Objet avec chemin long");
+  git("update-ref", "refs/remotes/origin/main", "HEAD");
+  const historique = await lireHistorique(cwd);
+  assert.deepEqual(historique.map(etat => [...etat.values()]), [[a]]);
+  await writeFile(join(cwd, ".git", "shallow"), git("rev-parse", "HEAD") + "\n");
+  await assert.rejects(lireHistorique(cwd), /Historique Git incomplet/);
 });
