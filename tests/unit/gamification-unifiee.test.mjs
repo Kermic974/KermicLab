@@ -81,3 +81,23 @@ test("build : notions-liees lu, borné et réservé aux jeux vers des notions co
   assert.deepEqual(verifierGraphePrerequis([{ id: "poker", sujet: "jeux/poker", notionsLiees: ["absente", "belote"] }, { id: "belote", sujet: "jeux/belote" }]),
     ["poker : notion liée « absente » inconnue", "poker : notion liée « belote » est un jeu, pas une notion"]);
 });
+
+test("synchronisation (ADR 0031 §5) : l'agrégat est facultatif, allégé s'il est trop grand, jamais effacé par un ancien instantané", async () => {
+  const { instantane, restaurer, alleger, TAILLE_MAX_INSTANTANE } = await import("../../web/compte-local.js");
+  const cles = ["kermiclab:progression", "kermiclab:evenements"];
+  const facultatives = ["kermiclab:evenements"];
+  const zone = new Map([["kermiclab:progression", "{}"], ["kermiclab:evenements", "{\"v\":1}"]]);
+  const inst = instantane((c) => zone.get(c) ?? null, cles);
+  assert.deepEqual(alleger(inst, facultatives), inst, "un instantané qui tient est inchangé");
+  const gros = { v: 1, donnees: { "kermiclab:progression": "{}", "kermiclab:evenements": "x".repeat(TAILLE_MAX_INSTANTANE) } };
+  assert.deepEqual(Object.keys(alleger(gros, facultatives).donnees), ["kermiclab:progression"], "l'agrégat est écarté, la progression reste");
+  const enorme = { v: 1, donnees: { "kermiclab:progression": "x".repeat(TAILLE_MAX_INSTANTANE) } };
+  assert.ok(alleger(enorme, facultatives).donnees["kermiclab:progression"], "une clé indispensable n'est jamais retirée");
+
+  const ecrits = new Map(); const effaces = [];
+  assert.ok(restaurer({ v: 1, donnees: { "kermiclab:progression": "{\"xp\":5}" } }, cles, (c, v) => ecrits.set(c, v), (c) => effaces.push(c), facultatives));
+  assert.deepEqual([...ecrits.keys()], ["kermiclab:progression"]);
+  assert.deepEqual(effaces, [], "un ancien instantané sans agrégat garde la maîtrise locale");
+  restaurer({ v: 1, donnees: {} }, cles, () => {}, (c) => effaces.push(c), facultatives);
+  assert.deepEqual(effaces, ["kermiclab:progression"], "une clé indispensable absente reste effacée");
+});

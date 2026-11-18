@@ -400,7 +400,10 @@ function brancherFamille() {
 // Compte facultatif : identifiant + mot de passe, enregistré sur l'appareil (vérificateur PBKDF2, jamais le mot de
 // passe). La synchronisation, sur demande, envoie un instantané chiffré sous un pseudonyme dérivé d'une phrase secrète
 // qui ne quitte pas l'appareil. La liaison du compte au serveur peut aussi être choisie sans synchronisation.
-const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS];
+// ADR 0031 §5 : l'agrégat du contrat d'événements (maîtrise, cartes de révision) suit aussi l'instantané chiffré. Clé
+// facultative : écartée si l'instantané devient trop grand, et jamais effacée par un instantané qui ne la contient pas.
+const CLES_FACULTATIVES = [evenements.CLE_STOCKAGE];
+const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, ...CLES_FACULTATIVES];
 const compteEtat = { enregistrement: null, session: null, occupe: false };
 const bornesCompte = {
   min: compteLocal.IDENTIFIANT_MIN, max: compteLocal.IDENTIFIANT_MAX
@@ -608,7 +611,7 @@ async function envoyerInstantane() {
   const { synchro } = compteEtat.session;
   const e = compteEtat.enregistrement;
   sauverSession();
-  const instant = compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES);
+  const instant = compteLocal.alleger(compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES), CLES_FACULTATIVES);
   const boite = await compteLocal.chiffrer(synchro.cle, synchro.pseudonyme, instant);
   const r = await apiCompte("donnees", { methode: "PUT", jeton: synchro.jetonServeur, corps: { ...preuveSynchro(), versionAttendue: e.synchro.version, ...boite } });
   if (r.statut === 200) {
@@ -752,7 +755,7 @@ async function recupererSynchro(ev) {
     if (!(lu.donnees?.version > 0)) { messageSynchro("synchroAucuneDonnee"); return; }
     let instant;
     try { instant = await compteLocal.dechiffrer(synchro.cle, synchro.pseudonyme, lu.donnees); } catch { messageSynchro("synchroIllisible"); return; }
-    if (!compteLocal.restaurer(instant, CLES_SYNCHRONISEES, (cle, v) => ecrireCle(stockage(), cle, v), (cle) => effacerCle(stockage(), cle))) {
+    if (!compteLocal.restaurer(instant, CLES_SYNCHRONISEES, (cle, v) => ecrireCle(stockage(), cle, v), (cle) => effacerCle(stockage(), cle), CLES_FACULTATIVES)) {
       messageSynchro("synchroIllisible");
       return;
     }
@@ -760,7 +763,7 @@ async function recupererSynchro(ev) {
     e.synchro.version = lu.donnees.version;
     e.synchro.maj = lu.donnees.maj ?? null;
     sauverCompte();
-    // Les données restaurées (pseudo, progression, trophées, cahiers) sont relues au rechargement.
+    // Les données restaurées (pseudo, progression, trophées, cahiers, maîtrise) sont relues au rechargement.
     location.reload();
   } catch {
     messageSynchro("synchroErreur");

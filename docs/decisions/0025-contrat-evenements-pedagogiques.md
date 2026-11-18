@@ -49,7 +49,7 @@ refuser le message. Un changement de schéma incrémente `v` ; le parent ignore 
 terminée ; par exercice : nombre de réponses, réussi, rang d'indice le plus élevé, réussi après un indice. Clé
 `kermiclab:evenements`, avec le même stockage que la progression (session, ou appareil si « Se souvenir de moi »),
 et le même effacement. **Rien n'est envoyé au serveur**, et ces données ne font pas partie de la synchronisation du
-compte local (ADR 0024) : l'étendre demandera une décision.
+compte local (ADR 0024) : l'étendre demandera une décision. *Complément : l'ADR 0031 §5 l'ajoute à l'instantané chiffré du compte local (clé facultative).*
 
 ### 4. Émetteurs
 

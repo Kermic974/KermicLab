@@ -55,28 +55,40 @@ fonctionnent donc aussi dans ces matières. Ce sont des métadonnées : la versi
 | Terme | Sens unique |
 |---|---|
 | **XP** | Points du tableau de bord (questions, exploration, exercices réussis, notions validées, défi express). Un seul niveau global, tous les 100 XP. |
-| **Points de jeu** | XP interne d'une Académie de jeu. Jamais additionnés à l'XP ni entre jeux. Le tableau de bord les affiche sous ce nom (« Points de jeu », « Niveau de jeu »). |
+| **Points de jeu** | Points internes d'une Académie de jeu. Jamais additionnés à l'XP ni entre jeux. Même nom dans les pages des jeux (« +20 points de jeu », « Niveau 2 · 140 points de jeu ») et dans le tableau de bord (« Points de jeu », « Niveau de jeu »). |
 | **Maîtrise** | Seul indicateur scolaire : état d'une notion (non commencée, découverte, en cours, maîtrisée, à revoir). |
 | **Étoiles** | Notion : une par exercice réussi. Académie : 1 à 3 par leçon, selon les erreurs et les indices. |
-| **Défi express** | Défi du tableau de bord (5 questions, révisions dues comprises). |
-| **Défi du jour** | Exercice quotidien d'une Académie de jeu. |
+| **Défi express** | Seul défi quotidien du tableau de bord (5 questions, révisions dues comprises), qui rapporte de l'XP. |
+| **Défi de l'Académie** | Exercice quotidien d'une Académie de jeu (anciennement « défi du jour »), qui rapporte des points de jeu. |
 
-Les pages des jeux gardent leur libellé « XP » à l'intérieur de l'Académie (changer leur texte imposerait une nouvelle
-version des neuf jeux) ; le renommage dans les pages est laissé à une prochaine version de l'Académie.
+Les deux défis quotidiens ne se confondent plus : un seul s'appelle « défi » côté tableau de bord, l'autre porte le nom
+de l'Académie. Le module partagé `gabarit/jeux/academie.js` et les textes propres aux jeux (Belote, Démineur, Échecs,
+Poker) sont renommés ; les six jeux concernés passent en version corrective (Belote 1.0.1, Démineur 1.1.1, Échecs 1.1.1,
+Mots fléchés 1.0.1, Pendu 1.1.1, Poker 1.1.1). Les identifiants internes (`xp`, `XP.defi`) ne changent pas : les
+progressions enregistrées restent lisibles.
 
-### 5. Synchronisation de la maîtrise : décision laissée au propriétaire
+### 5. Synchronisation de la maîtrise
 
-L'agrégat du contrat d'événements (`kermiclab:evenements` : maîtrise, cartes de révision) ne suit pas la
-synchronisation du compte local (ADR 0024 et ADR 0025 §3). Seuls l'état de maîtrise par notion et des compteurs en
-sortent aujourd'hui, dans le bilan famille ou professeur (ADR 0029, 0030). Options :
+L'agrégat du contrat d'événements (`kermiclab:evenements` : maîtrise, cartes de révision) ne suivait pas la
+synchronisation du compte local (ADR 0024 ; ADR 0025 §3 : « l'étendre demandera une décision »). C'était la seule donnée
+de progression perdue en changeant d'appareil. Options étudiées :
 
-1. **Statu quo** : la maîtrise reste sur l'appareil ; l'export en fichier (issue #189) suffit pour changer d'appareil.
-2. **Synchroniser l'agrégat**, pseudonymisé comme le reste (ADR 0024) : identifiants de notions et d'exercices,
-   compteurs, dates au jour près ; aucun texte. Recommandé : c'est la seule donnée de progression qui se perd
-   aujourd'hui en changeant d'appareil, et elle ne contient rien de personnel.
-3. **Synchroniser seulement l'état de maîtrise** par notion (sans les cartes de révision).
+1. statu quo (l'export en fichier, issue #189, suffit) ;
+2. **synchroniser l'agrégat** dans l'instantané chiffré du compte local ;
+3. synchroniser seulement l'état de maîtrise par notion.
 
-Aucune option n'est mise en œuvre tant que le propriétaire n'a pas choisi (`docs/actions-manuelles.md`).
+**Option 2 retenue et mise en œuvre**, sous réserve de la validation de cette ADR par le propriétaire :
+
+- L'agrégat rejoint l'instantané **chiffré sur l'appareil** (AES-GCM, clé dérivée de la phrase secrète, ADR 0024) : le
+  serveur ne reçoit qu'un chiffré sous pseudonyme, comme pour la progression et les cahiers. Le contenu ne contient que
+  des identifiants du catalogue, des compteurs et des dates au jour près, jamais de texte saisi.
+- Clé **facultative** (`CLES_FACULTATIVES`, `web/app.js`) : `alleger` (`web/compte-local.js`) la retire si l'instantané
+  dépasse `TAILLE_MAX_INSTANTANE` (250 000 caractères avant chiffrement, sous la limite du serveur) ; `restaurer` garde
+  la maîtrise locale quand l'instantané lu n'en contient pas (instantané antérieur ou allégé) au lieu de l'effacer.
+- À la restauration, l'agrégat est relu par `evenements.charger`, qui écarte toute entrée invalide.
+- Le bilan famille et professeur (ADR 0029, 0030) est inchangé : il ne contient toujours que l'état de maîtrise.
+
+Pour revenir à l'option 1, il suffit de retirer la clé de `CLES_FACULTATIVES`.
 
 ## Conséquences
 
@@ -86,6 +98,8 @@ Aucune option n'est mise en œuvre tant que le propriétaire n'a pas choisi (`do
 - English summary: global XP now rewards learning (first success of an exercise, first validation of a concept,
   successful review) more than exploration (first opening lowered from 25 to 10 XP); games may declare
   `notions-liees`, shown on game cards and suggested when a concept is first mastered; 51 non-maths public concepts now
-  declare prerequisites; a single glossary separates XP, game points and mastery; syncing the mastery aggregate is left
-  to the owner.
+  declare prerequisites; a single glossary separates XP, game points and mastery
+  (now game points in the game pages too; the Academy's daily challenge is renamed "Academy challenge"); the
+  mastery aggregate now joins the encrypted local-account snapshot (optional key, trimmed when too large, never erased
+  by an older snapshot).
 - Références : ADR 0014, 0015, 0021, 0024, 0025, 0029, 0030 ; `docs/gamification.md`, `docs/progression.md`.

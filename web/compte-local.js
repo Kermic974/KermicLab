@@ -201,7 +201,26 @@ export async function dechiffrer(cleBase64, pseudonyme, { iv, chiffre }) {
 
 /* ---------- Instantanés des données de l'appareil ---------- */
 
-/** Copie, sous forme de texte, les clés de stockage synchronisées (pseudo, progression, trophées, cahiers). */
+/**
+ * Taille maximale (JSON) d'un instantané avant chiffrement : le chiffré en base64 (≈ × 1,37, plus l'IV et l'étiquette)
+ * reste sous TAILLE_MAX_CHIFFRE, la limite acceptée par le serveur.
+ */
+export const TAILLE_MAX_INSTANTANE = 250000;
+
+/**
+ * Allège un instantané trop grand en retirant, dans l'ordre, les clés facultatives (ADR 0031 : l'agrégat du contrat
+ * d'événements). Fonction pure ; les clés indispensables ne sont jamais retirées.
+ */
+export function alleger(instant, facultatives = [], max = TAILLE_MAX_INSTANTANE) {
+  const donnees = { ...instant.donnees };
+  for (const cle of facultatives) {
+    if (JSON.stringify({ ...instant, donnees }).length <= max) break;
+    delete donnees[cle];
+  }
+  return { ...instant, donnees };
+}
+
+/** Copie, sous forme de texte, les clés de stockage synchronisées (pseudo, progression, trophées, cahiers, maîtrise). */
 export function instantane(lire, cles) {
   const donnees = {};
   for (const cle of cles) {
@@ -211,13 +230,16 @@ export function instantane(lire, cles) {
   return { v: 1, donnees };
 }
 
-/** Restaure un instantané : seules les clés attendues sont écrites, les autres sont ignorées. */
-export function restaurer(instant, cles, ecrire, effacer) {
+/**
+ * Restaure un instantané : seules les clés attendues sont écrites, les autres sont ignorées. Une clé absente est
+ * effacée, sauf une clé `facultatives` (ajoutée après coup ou retirée par `alleger`) : la valeur locale est gardée.
+ */
+export function restaurer(instant, cles, ecrire, effacer, facultatives = []) {
   if (!instant || instant.v !== 1 || !instant.donnees || typeof instant.donnees !== "object") return false;
   for (const cle of cles) {
     const valeur = instant.donnees[cle];
     if (typeof valeur === "string") ecrire(cle, valeur);
-    else effacer(cle);
+    else if (!facultatives.includes(cle)) effacer(cle);
   }
   return true;
 }

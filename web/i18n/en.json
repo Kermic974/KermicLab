@@ -948,7 +948,7 @@
   "synchroActive": "On (version {version}{maj}).",
   "synchroMaj": ", updated on {date}",
   "synchroVerrouillee": "On, locked: enter your password and secret phrase to sync.",
-  "synchroPoint1": "Your data (nickname, progress, trophies, workbooks) is encrypted on your device before it is sent.",
+  "synchroPoint1": "Your data (nickname, progress, trophies, workbooks, concept mastery) is encrypted on your device before it is sent.",
   "synchroPoint2": "Online, it is stored under a pseudonym computed from your secret phrase, with no link to your account.",
   "synchroPoint3": "Your secret phrase is never sent or saved online. If you forget it, your online data is lost to you: it stays stored, but nobody can read it any more.",
   "synchroPhraseLabel": "Secret phrase",
