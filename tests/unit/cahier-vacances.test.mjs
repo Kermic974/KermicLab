@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -105,7 +106,7 @@ test("plan stocké : relu strictement (champs connus, dates valides, période bo
 });
 
 test("cahier de vacances : textes traduits en français et en anglais", async () => {
-  const racine = new URL("../..", import.meta.url).pathname;
+  const racine = fileURLToPath(new URL("../..", import.meta.url));
   const fr = JSON.parse(await readFile(`${racine}web/i18n/fr.json`, "utf8"));
   const en = JSON.parse(await readFile(`${racine}web/i18n/en.json`, "utf8"));
   const cles = Object.keys(fr).filter((k) => k.startsWith("vacances"));
