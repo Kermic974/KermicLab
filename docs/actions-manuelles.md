@@ -4,6 +4,8 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 
 ## Gamification unifiée (ADR 0031)
 
+Suivi : [issue #381](https://github.com/Kermic974/KermicLab/issues/381) (validation de l'ADR) et [issue #382](https://github.com/Kermic974/KermicLab/issues/382) (relecture des liens pédagogiques).
+
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
 | Valider l'ADR 0031, dont la synchronisation de la maîtrise (option 2, mise en œuvre) | [ADR 0031 §5](decisions/0031-gamification-unifiee.md) | Données d'élèves (public mineur) : l'agrégat de maîtrise rejoint l'instantané chiffré du compte local | ADR passée au statut accepté ; sinon retirer la clé de `CLES_FACULTATIVES` (`web/app.js`) | à faire |
