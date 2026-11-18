@@ -31,6 +31,7 @@ import { donneesCompteLocal } from "./compte-local-acces.js";
 import { cumulerRoles, ecrireAttribution, rolesManuels } from "./attributions.js";
 import { chargerTarifsCloudflare, mesuresTelemetrie, tarifsCloudflareDisponibles } from "./tarifs-cloudflare.js";
 import { creerOuCommenterIssue } from "./github.js";
+import { TAILLE_MAX_CONSIGNE, proposerActions } from "./assistant-utilisateurs.js";
 import { THEMES, THEME_PERSONNALISE, contraste, couleursTheme, deriverVariables, validerTheme } from "../../web/theme.js";
 
 export const PREFIXE_ADMIN = "/api/admin";
@@ -205,6 +206,30 @@ async function exporterUtilisateur(env, type, id) {
   } : null;
   await noter(env, "utilisateur.export", `${type}:${id}`);
   return json(donnees);
+}
+
+/**
+ * Assistant IA (ADR 0035) : propose des actions sur un compte à partir d'une consigne de l'administrateur. Rien n'est
+ * exécuté ici ; la consigne n'est ni stockée ni journalisée (seulement les actions proposées).
+ */
+async function assistantUtilisateur(env, envEffectif, type, id, corps, reglages) {
+  const config = lireConfiguration(envEffectif);
+  if (!config.LLM_ACTIF || !config.ASSISTANT_UTILISATEURS_ACTIF) return erreur("assistant-desactive", 503);
+  if (typeof env.AI?.run !== "function") return erreur("assistant-indisponible", 503);
+  const consigne = typeof corps?.consigne === "string" ? corps.consigne.trim() : "";
+  if (!consigne || consigne.length > TAILLE_MAX_CONSIGNE) return erreur("consigne-invalide", 400);
+  const compte = (await listerUtilisateurs(env, { id })).find((u) => u.type === type);
+  if (!compte) return erreur("introuvable", 404);
+  const roles = (await listerRoles(env)).map(({ id: r, libelle }) => ({ id: r, libelle }));
+  const niveaux = [NIVEAU_PAR_DEFAUT, ...reglages.niveaux.map((n) => n.id)];
+  let plan;
+  try {
+    plan = await proposerActions(envEffectif, { compte, consigne, roles, niveaux, etats: ETATS, maxTokens: config.MAX_TOKENS_ASSISTANT });
+  } catch (e) {
+    return erreur(e?.code ?? "assistant-indisponible", 502);
+  }
+  await noter(env, "assistant.proposition", `${type}:${id}:${plan.actions.map((a) => a.action).join("+") || "aucune"}`);
+  return json({ ...plan, modele: config.MODELE_ASSISTANT });
 }
 
 // ---------- Sécurité ----------
@@ -495,6 +520,11 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
     const id = url.searchParams.get("id");
     if (id !== null && !new RegExp(`^${UUID}$`).test(id)) return erreur("identifiant-invalide", 400);
     return json({ utilisateurs: await listerUtilisateurs(env, { id }), roles: await listerRoles(env), niveaux: [NIVEAU_PAR_DEFAUT, ...reglages.niveaux.map((n) => n.id)] });
+  }
+  if ((m = chemin.match(new RegExp(`^/utilisateurs/(compte|compte-local)/(${UUID})/assistant$`)))) {
+    if (methode !== "POST") return erreur("methode-non-autorisee", 405);
+    const c = await corps();
+    return c.erreur ?? assistantUtilisateur(env, envEffectif, m[1], m[2], c.corps, reglages);
   }
   if ((m = chemin.match(new RegExp(`^/utilisateurs/compte-local/(${UUID})/mot-de-passe$`)))) {
     return methode === "POST" ? reinitialiserMotDePasse(env, m[1]) : erreur("methode-non-autorisee", 405);

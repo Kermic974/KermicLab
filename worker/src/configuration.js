@@ -6,7 +6,7 @@
 /** Modules fonctionnels, dans l'ordre d'affichage de l'écran Configuration. */
 export const MODULES = Object.freeze(["general", "tuteur", "defi", "cahiers"]);
 /** Modules réservés au back-office (ADR 0026) : jamais exposés par `/api/llm/status`. */
-export const MODULES_ADMIN = Object.freeze(["acces", "securite"]);
+export const MODULES_ADMIN = Object.freeze(["acces", "securite", "assistant"]);
 /** Taille maximale des instructions complémentaires d'un harness (caractères). */
 export const TAILLE_MAX_INSTRUCTIONS = 2000;
 
@@ -61,7 +61,11 @@ export const PARAMETRES = Object.freeze([
   { cle: "SEUIL_CONSO_ELEVEE", module: "securite", type: "entier", defaut: 100, min: 10, max: 2000, prive: true },
   { cle: "SEUIL_SURCONSOMMATION", module: "securite", type: "entier", defaut: 300, min: 20, max: 5000, prive: true },
   { cle: "CONSERVATION_SIGNAUX_JOURS", module: "securite", type: "entier", defaut: 30, min: 7, max: 90, prive: true },
-  { cle: "CONSERVATION_TELEMETRIE_JOURS", module: "securite", type: "entier", defaut: 90, min: 7, max: 365, prive: true }
+  { cle: "CONSERVATION_TELEMETRIE_JOURS", module: "securite", type: "entier", defaut: 90, min: 7, max: 365, prive: true },
+  // Assistant IA de l'écran Utilisateurs (ADR 0035) : propose des actions sur un compte, l'administrateur les applique.
+  { cle: "ASSISTANT_UTILISATEURS_ACTIF", module: "assistant", type: "booleen", defaut: true, prive: true },
+  { cle: "MODELE_ASSISTANT", module: "assistant", type: "alias", defaut: "custom/haiku", prive: true },
+  { cle: "MAX_TOKENS_ASSISTANT", module: "assistant", type: "entier", defaut: 2000, min: 500, max: 4000, prive: true }
 ].map((p) => Object.freeze(p)));
 
 const PAR_CLE = new Map(PARAMETRES.map((p) => [p.cle, p]));
