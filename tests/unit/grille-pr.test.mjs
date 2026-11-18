@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { lireGrille, notionsModifiees, verifierGrille, sansCommentaires, CRITERES, TITRE_SECTION } from "../../scripts/verifier-grille-pr.mjs";
 
 // Grille de relecture dans les PR de notion (feuille de route, phase 5 ; issue #202).
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const modele = await readFile(`${racine}.github/pull_request_template.md`, "utf8");
 const cocher = (texte) => texte.replace(/- \[ \]/g, "- [x]");
 const fiche = (v) => `---\nid: x\nversion: ${v}\n---\n`;

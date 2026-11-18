@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
@@ -138,7 +139,7 @@ export function appliquerCsp(html, { styles = false } = {}) {
 
 async function existe(p) { try { await stat(p); return true; } catch { return false; } }
 
-const racineDepot = path.resolve(new URL("../..", import.meta.url).pathname);
+const racineDepot = path.resolve(fileURLToPath(new URL("../..", import.meta.url)));
 /** Seuls les modules partagés des jeux peuvent être inclus (pas de chemin arbitraire). */
 const INCLUSION_AUTORISEE = /^gabarit\/jeux\/[a-z0-9-]+\.(js|css)$/;
 

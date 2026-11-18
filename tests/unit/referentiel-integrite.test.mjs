@@ -152,3 +152,20 @@ test("équivalence entre objets validés", async t => {
   assert.equal(r.verdict, "PASS");
   assert.deepEqual(signalements(r), new Set(["S4-RELATION-EQUIVALENCE"]));
 });
+
+test("historique Git avec un chemin long et un dépôt incomplet", async t => {
+  const { cwd, dossier } = await espace(t, []);
+  await writeFile(join(dossier, "objet-" + "x".repeat(210) + ".json"), JSON.stringify(a));
+  const git = (...args) => execFileSync("git", ["-c", "core.longpaths=true", ...args],
+    { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  git("init", "-q");
+  git("config", "user.name", "Tests S5");
+  git("config", "user.email", "tests@example.invalid");
+  git("add", ".");
+  git("-c", "commit.gpgsign=false", "commit", "-qm", "Objet avec chemin long");
+  git("update-ref", "refs/remotes/origin/main", "HEAD");
+  const historique = await lireHistorique(cwd);
+  assert.deepEqual(historique.map(etat => [...etat.values()]), [[a]]);
+  await writeFile(join(cwd, ".git", "shallow"), git("rev-parse", "HEAD") + "\n");
+  await assert.rejects(lireHistorique(cwd), /Historique Git incomplet/);
+});

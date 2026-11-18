@@ -1,10 +1,11 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import { genererPage, TYPES_FIGURE, validerContenu } from "../../scripts/lib/gabarit.mjs";
 import { lireFrontMatter, lireMetaHtml, scriptsEnLigne } from "../../scripts/lib/catalogue.mjs";
 
-const racine = new URL("../..", import.meta.url).pathname;
+const racine = fileURLToPath(new URL("../..", import.meta.url));
 const lireJson = async (f) => JSON.parse(await readFile(f, "utf8"));
 
 /** Notions du catalogue public décrites par un contenu.json. */

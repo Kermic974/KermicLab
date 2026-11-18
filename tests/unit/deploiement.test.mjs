@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { clientCloudflare, prendreInstantane, retablir, validerInstantane, testerFumee, fumeeAvecReprises, rapportFumee } from "../../scripts/deploiement.mjs";
@@ -163,7 +164,7 @@ test("instantané relu : validé strictement avant tout appel (noms attendus, UU
 test("retour (ligne de commande) : instantané reçu par variable d'environnement, validé avant tout appel réseau", async () => {
   const { spawnSync } = await import("node:child_process");
   const lancer = (INSTANTANE) => spawnSync(process.execPath, ["scripts/deploiement.mjs", "retour"], {
-    cwd: new URL("../..", import.meta.url).pathname, encoding: "utf8",
+    cwd: fileURLToPath(new URL("../..", import.meta.url)), encoding: "utf8",
     // Adresse d'API injoignable : un appel réseau ferait échouer autrement qu'attendu.
     env: { PATH: process.env.PATH, CLOUDFLARE_API_TOKEN: "jeton-test", CLOUDFLARE_ACCOUNT_ID: "compte", ...(INSTANTANE !== undefined && { INSTANTANE }) }
   });
