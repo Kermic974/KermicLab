@@ -6,7 +6,7 @@ import {
   validerRole, validerStrategie
 } from "../../worker/src/roles.js";
 import {
-  PLAFONDS_SCHEMA, chargerReglages, ecrireEtatContenu, ecrireNiveaux, ecrireParametre, ecrireTheme, envAvecReglages,
+  PLAFONDS_SCHEMA, chargerReglages, ecrireEtatContenu, ecrireParametre, ecrireSouscriptions, ecrireTheme, envAvecReglages,
   indexVisible, invaliderReglages, reglagesDe, validerNiveaux, validerParametre
 } from "../../worker/src/reglages.js";
 import { CONTRASTE_MIN, THEMES, contraste, cssTheme, deriverVariables, validerTheme } from "../../web/theme.js";
@@ -111,6 +111,18 @@ test("contrôle activé (préparé) : permission du rôle, puis stratégie par r
   assert.deepEqual(decide({ fonctionnalite: "chat", role: "fantome" }), { autorise: false, raison: "role-inconnu" });
 });
 
+test("contrôle activé (préparé) : la souscription du compte restreint les permissions du rôle", async () => {
+  const actif = { CONTROLE_ACCES_ACTIF: "true" };
+  const roles = await listerRoles(env);
+  const souscriptions = [{ id: "gratuit", fonctionnalites: ["chat", "jeux"] }, { id: "parent", fonctionnalites: ["chat", "jeux", "famille", "ia.cahiers"] }];
+  const decide = (sujet) => accesAutorise(actif, sujet, { strategies: [], roles, souscriptions });
+  assert.deepEqual(decide({ fonctionnalite: "ia.cahiers", role: "parent", niveau: "gratuit" }), { autorise: false, raison: "hors-souscription" });
+  assert.deepEqual(decide({ fonctionnalite: "ia.cahiers", role: "parent", niveau: "parent" }), { autorise: true, raison: "ouverte-a-tous" });
+  assert.deepEqual(decide({ fonctionnalite: "famille", role: "visiteur", niveau: "parent" }), { autorise: false, raison: "permission-absente" }, "l'offre n'ajoute rien au rôle");
+  assert.deepEqual(decide({ fonctionnalite: "ia.cahiers", role: "parent", niveau: "inconnu" }), { autorise: true, raison: "ouverte-a-tous" }, "sans souscription connue, seul le rôle compte");
+  assert.deepEqual(accesAutorise({}, { fonctionnalite: "ia.cahiers", role: "parent", niveau: "gratuit" }, { roles, souscriptions }), { autorise: true, raison: "controle-inactif" });
+});
+
 // ---------- Réglages à chaud ----------
 
 test("paramètres : validation stricte, bornes du registre et plafonds du schéma", () => {
@@ -152,7 +164,8 @@ test("réglages : une valeur stockée devenue invalide est ignorée ; sans table
   const reglages = await chargerReglages(env);
   assert.deepEqual(reglages.parametres, {});
   assert.deepEqual(reglages.theme, { id: "indigo" });
-  assert.deepEqual(reglages.niveaux, []);
+  assert.deepEqual(reglages.niveaux.map((n) => n.id), ["solo", "parent", "professeur"], "liste illisible : offres pressenties");
+  assert.equal(reglages.souscriptionsParDefaut, true);
   invaliderReglages();
   const sansTable = await chargerReglages({ DB: { prepare: () => { throw new Error("no such table"); } } });
   assert.deepEqual(sansTable.parametres, {});
@@ -170,14 +183,24 @@ test("niveaux de souscription : bornes du registre, identifiants uniques, « gra
   assert.equal(validerNiveaux("premium").code, "liste-invalide");
 });
 
-test("niveaux, thème et contenus masqués : écrits puis relus", async () => {
+test("anciens niveaux repris en souscriptions ; les souscriptions enregistrées priment", async () => {
   const niveau = { id: "famille", libelle: "Famille", tokensSession: 1000, tokensAppel: 500, defisJour: 6, cahiersJour: 3 };
-  await ecrireNiveaux(env, [niveau]);
+  env.DB.sqlite.prepare("INSERT INTO reglages (cle, valeur) VALUES ('niveaux', ?)").run(JSON.stringify([niveau]));
+  let reglages = await chargerReglages(env);
+  assert.deepEqual(reglages.niveaux, [{ id: "famille", libelle: "Famille" }]);
+  assert.deepEqual(reglages.souscriptions[1].limites, { ...niveau.limites, tokensSession: 1000, tokensAppel: 500, defisJour: 6, cahiersJour: 3, enfantsMax: 0, classesMax: 0, elevesMax: 0 });
+  assert.equal(reglages.souscriptionsParDefaut, false);
+  await ecrireSouscriptions(env, reglages.souscriptions.slice(0, 1));
+  reglages = await chargerReglages(env);
+  assert.deepEqual(reglages.souscriptions.map((s) => s.id), ["gratuit"]);
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM reglages WHERE cle = 'niveaux'").get().n, 0, "la clé historique est retirée");
+});
+
+test("thème et contenus masqués : écrits puis relus", async () => {
   await ecrireTheme(env, { id: "lagon" });
   await ecrireEtatContenu(env, "pythagore", { enLigne: false, enAvant: false });
   await ecrireEtatContenu(env, "fractions", { enLigne: true, enAvant: true });
   const reglages = await chargerReglages(env);
-  assert.deepEqual(reglages.niveaux, [niveau]);
   assert.deepEqual(reglages.theme, { id: "lagon" });
   const index = { maquettes: [{ id: "pythagore" }, { id: "fractions" }, { id: "angles" }] };
   assert.deepEqual(indexVisible(index, reglages).maquettes.map((m) => m.id), ["fractions", "angles"]);

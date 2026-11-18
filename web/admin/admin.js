@@ -1,6 +1,7 @@
 // Back-office KermicLab (ADR 0026). Interface en français seulement, comme le blog : outil interne de l'équipe.
 // Tout le contenu est construit par le DOM (jamais innerHTML) ; aucune donnée n'est gardée hors de l'onglet.
 import { THEME_PERSONNALISE, deriverVariables } from "../theme.js";
+import { estimerSouscription } from "./financier.js";
 
 const CLE_SESSION = "kermiclab:admin:cle";
 const $ = (s) => document.querySelector(s);
@@ -31,11 +32,12 @@ const LIBELLES = {
   statuts: { brouillon: "Brouillon", propose: "Proposé en revue", publie: "Publié", archive: "Archivé" },
   comptes: { compte: "Compte famille", "compte-local": "Compte local" },
   donnees: { aucune: "Aucune donnée personnelle", pseudonyme: "Pseudonyme", minimale: "Donnée personnelle minimale" },
-  raisons: { "controle-inactif": "contrôle inactif", "ouverte-a-tous": "ouverte à tous", "role-autorise": "rôle autorisé", "niveau-autorise": "niveau autorisé", "permission-absente": "le rôle n'a pas cette permission", strategie: "réservée à d'autres rôles", "fonctionnalite-fermee": "fonctionnalité fermée", "role-inconnu": "rôle inconnu" },
+  raisons: { "controle-inactif": "contrôle inactif", "ouverte-a-tous": "ouverte à tous", "role-autorise": "rôle autorisé", "niveau-autorise": "niveau autorisé", "permission-absente": "le rôle n'a pas cette permission", strategie: "réservée à d'autres rôles", "hors-souscription": "non incluse dans la souscription", "fonctionnalite-fermee": "fonctionnalité fermée", "role-inconnu": "rôle inconnu" },
   erreurs: {
     "cle-invalide": "Clé d'accès refusée.", "trop-de-tentatives": "Trop d'essais. Attends une minute.", "back-office-non-configure": "Le back-office n'est pas configuré sur ce serveur (secret BACKOFFICE_JETON absent).",
     "back-office-indisponible": "Le back-office est indisponible : la migration 0002 n'est peut-être pas appliquée.", "origine-refusee": "Cette adresse n'est pas autorisée à appeler l'API.",
-    "role-inconnu": "Ce rôle n'existe pas.", "niveau-inconnu": "Ce niveau n'existe pas.", "role-attribue": "Ce rôle est encore attribué à un compte.", "niveau-attribue": "Ce niveau est encore attribué à un compte.",
+    "role-inconnu": "Ce rôle n'existe pas.", "niveau-inconnu": "Ce niveau n'existe pas.", "role-dans-souscription": "Ce rôle est utilisé par une souscription : change d'abord son rôle.",
+    "souscription-gratuite": "La souscription « Gratuit » est permanente : elle ne se supprime pas.", "trop-de-souscriptions": "Huit souscriptions au plus.", "statut-invalide": "Statut invalide.", "mode-prix-invalide": "Mode de calcul du prix invalide.", "devise-invalide": "Devise invalide.", "role-attribue": "Ce rôle est encore attribué à un compte.", "niveau-attribue": "Ce niveau est encore attribué à un compte.",
     "identifiant-invalide": "Identifiant invalide : minuscules, chiffres et tirets.", "libelle-requis": "Le libellé est obligatoire.", "valeurs-refusees": "Certaines valeurs sont refusées : rien n'a été enregistré.",
     "hors-bornes": "hors des bornes permises", "alias-invalide": "identifiant de modèle invalide", "trop-long": "texte trop long", "booleen-attendu": "oui ou non attendu", "valeur-inconnue": "valeur inconnue", "parametre-inconnu": "paramètre inconnu",
     "donnees-personnelles": "Le texte contient une donnée personnelle (e-mail, téléphone, adresse, identité) : retire-la.", "contraire-au-socle": "Ce texte chercherait à lever le socle de sécurité : il est refusé.",
@@ -79,7 +81,17 @@ function annoncer(texte, { erreur = false } = {}) {
   zone.classList.toggle("erreur", erreur);
   zone.hidden = !texte;
 }
+const CHAMPS_BORNES = {
+  tokensSession: "tokens par session", tokensAppel: "tokens par réponse", defisJour: "défis IA par jour", cahiersJour: "cahiers IA par jour", enfantsMax: "enfants rattachés",
+  classesMax: "classes", elevesMax: "élèves suivis", joursActifsMois: "jours d'usage par mois", tauxUtilisation: "part du quota consommée", prixMensuelHT: "prix mensuel HT",
+  margeCible: "marge visée", remiseAnnuelle: "remise annuelle", tauxTva: "TVA", coutsFixesMensuels: "coûts fixes", utilisateursEstimes: "utilisateurs estimés",
+  fraisPaiementPourcent: "frais de paiement (%)", fraisPaiementFixe: "frais de paiement fixes"
+};
 const messageErreur = (e) => {
+  if (String(e.code).startsWith("hors-bornes:")) {
+    const champ = e.code.slice(12);
+    return `Valeur hors des bornes permises : ${CHAMPS_BORNES[champ] ?? champ.replace(/^(prix|ratio)-/, "$1 du module ")}.`;
+  }
   const base = lib("erreurs", e.code);
   if (!e.details || typeof e.details !== "object" || Array.isArray(e.details.motifs)) return base;
   return `${base} ${Object.entries(e.details).map(([cle, code]) => `${libellesParametres[`configParam_${cle}`] ?? cle} : ${lib("erreurs", String(code).split(":")[0])}`).join(" ; ")}`;
@@ -189,8 +201,9 @@ function rendreUtilisateurs(donnees) {
 }
 
 async function ecranRoles() {
-  const [{ roles, permissions, controleActif }, { strategies }, harness] = await Promise.all([api("GET", "/roles"), api("GET", "/strategies"), api("GET", "/harness")]);
-  const niveaux = harness.niveaux.map((n) => n.id);
+  const [{ roles, permissions, controleActif }, { strategies }, offres] = await Promise.all([api("GET", "/roles"), api("GET", "/strategies"), api("GET", "/souscriptions")]);
+  // Les niveaux sont les souscriptions (ADR 0031).
+  const niveaux = offres.souscriptions.map((s) => s.id);
   const toutes = [...permissions.fonctionnalites, ...permissions.administration];
 
   // Éditeur de rôle
@@ -592,29 +605,268 @@ async function ecranHarness() {
       champ(p))),
     h("div", { class: "admin-ligne" }, h("button", { type: "button", class: "bouton", onclick: () => enregistrer(m.parametres.map((p) => p.cle)) }, "Enregistrer ce module"))));
 
-  // Niveaux de souscription
-  const bornes = etat.bornesNiveaux;
-  const champs = ["tokensSession", "tokensAppel", "defisJour", "cahiersJour"];
-  const lignes = etat.niveaux.filter((n) => !n.applique).map((n) => ({ ...n }));
-  const zone = h("div", {});
-  const dessiner = () => zone.replaceChildren(tableau("Limites par niveau", [
-    { titre: "Identifiant", cellule: (n) => (n.applique ? h("code", { text: n.id }) : h("input", { type: "text", value: n.id, maxlength: "21", "aria-label": "Identifiant du niveau", oninput: (e) => { n.id = e.target.value.trim(); } })) },
-    { titre: "Libellé", cellule: (n) => (n.applique ? n.libelle : h("input", { type: "text", value: n.libelle, maxlength: "40", "aria-label": "Libellé du niveau", oninput: (e) => { n.libelle = e.target.value; } })) },
-    ...champs.map((c, i) => ({ titre: ["Tokens par session", "Tokens par réponse", "Défis IA par jour", "Cahiers IA par jour"][i], nombre: true,
-      cellule: (n) => (n.applique ? nombre(n[c]) : h("input", { type: "number", min: bornes[c].min, max: bornes[c].max, value: n[c], "aria-label": `${c} du niveau`, oninput: (e) => { n[c] = Number(e.target.value); } })) })),
-    { titre: "", cellule: (n) => (n.applique ? pastille("Appliqué à tous", "ok") : h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { lignes.splice(lignes.indexOf(n), 1); dessiner(); } }, "Retirer")) }
-  ], [etat.niveaux[0], ...lignes]));
-  dessiner();
-
   return [
     h("p", { class: "admin-bandeau", text: "Les valeurs réglées ici remplacent celles du déploiement, dans les bornes du registre. Le socle de sécurité de chaque harness reste dans le code : il ne se modifie pas ici." }),
     ...modules,
-    bloc("Niveaux de souscription",
-      h("p", { class: "doux", text: "Le niveau « gratuit » reprend les paramètres ci-dessus et s'applique à tout le monde pendant la bêta. Les autres niveaux sont préparés ; ils seront appliqués avec le contrôle d'accès." }),
-      zone,
-      h("div", { class: "admin-ligne" },
-        h("button", { type: "button", class: "secondaire", onclick: () => { lignes.push({ id: "", libelle: "", ...Object.fromEntries(champs.map((c) => [c, etat.niveaux[0][c]])) }); dessiner(); } }, "Ajouter un niveau"),
-        h("button", { type: "button", class: "bouton", onclick: () => agir(() => api("PUT", "/harness/niveaux", { niveaux: lignes.map(({ id, libelle, ...limites }) => ({ id, libelle, ...Object.fromEntries(champs.map((c) => [c, limites[c]])) })) }), "Niveaux enregistrés.") }, "Enregistrer les niveaux")))
+    bloc("Souscriptions",
+      h("p", { class: "doux", text: "Les paramètres ci-dessus sont les limites de la souscription « Gratuit ». Les autres offres (rôle, fonctionnalités, limites, coût et prix) se composent dans l'écran « Souscriptions »." }),
+      h("div", { class: "admin-ligne" }, h("button", { type: "button", class: "secondaire", onclick: () => afficher("souscriptions") }, "Ouvrir les souscriptions")))
+  ];
+}
+
+// ---------- Souscriptions et financier (ADR 0031) ----------
+
+const monnaie = (n, devise, decimales = 2) => (n === null || n === undefined ? "—"
+  : new Intl.NumberFormat("fr-FR", { style: "currency", currency: devise, minimumFractionDigits: decimales, maximumFractionDigits: decimales }).format(n));
+const pourcentage = (n) => (n === null || n === undefined ? "—" : `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n)} %`);
+const LIMITES_LIBELLES = {
+  tokensSession: "Tokens par session", tokensAppel: "Tokens par réponse", defisJour: "Défis IA par jour", cahiersJour: "Cahiers IA par jour",
+  enfantsMax: "Enfants rattachés", classesMax: "Classes", elevesMax: "Élèves suivis"
+};
+const STATUTS_SOUSCRIPTION = { projet: "En projet", active: "Active" };
+const copie = (o) => JSON.parse(JSON.stringify(o));
+const tonMarge = (taux) => (taux === null ? "" : taux < 0 ? "danger" : taux < 30 ? "attention" : "ok");
+
+async function ecranSouscriptions() {
+  const etat = await api("GET", "/souscriptions");
+  const finances = copie(etat.finances);
+  const bornes = etat.bornes;
+  const consommation = ["tokensSession", "tokensAppel", "defisJour", "cahiersJour"];
+  const structure = ["enfantsMax", "classesMax", "elevesMax"];
+  const estimer = (s) => estimerSouscription(s, finances, etat.tokensParGeneration);
+  const nombreSaisi = (valeur) => (valeur === "" ? NaN : Number(valeur));
+
+  // Vue comparée : recalculée à chaque changement d'hypothèse.
+  const comparaison = h("div", {});
+  const dessinerComparaison = () => comparaison.replaceChildren(tableau(`${etat.souscriptions.length} souscription(s), en ${finances.devise} hors taxes, par abonné et par mois`, [
+    { titre: "Offre", cellule: (s) => h("div", { class: "admin-champ" }, h("div", { class: "admin-ligne" }, h("strong", { text: s.libelle }), pastille(STATUTS_SOUSCRIPTION[s.statut], s.statut === "active" ? "ok" : "")),
+      h("span", { class: "doux petit", text: `Rôle ${etat.roles.find((r) => r.id === s.role)?.libelle ?? s.role} · ${s.fonctionnalites.length} fonctionnalité(s) sur ${etat.fonctionnalites.length}` })) },
+    { titre: "Tokens · défis · cahiers / jour", nombre: true, cellule: (s) => `${nombre(s.limites.tokensSession)} · ${nombre(s.limites.defisJour)} · ${nombre(s.limites.cahiersJour)}` },
+    { titre: "Coût de revient", nombre: true, cellule: (s) => monnaie(estimer(s).coutRevient, finances.devise) },
+    { titre: "Prix HT", nombre: true, cellule: (s) => monnaie(estimer(s).prixMensuelHT, finances.devise) },
+    { titre: "Marge", nombre: true, cellule: (s) => monnaie(estimer(s).marge, finances.devise) },
+    { titre: "Taux de marge", cellule: (s) => { const e = estimer(s); return e.tauxMarge === null ? (e.marge < 0 ? pastille("Coût d'acquisition", "attention") : "—") : pastille(pourcentage(e.tauxMarge), tonMarge(e.tauxMarge)); } },
+    { titre: "Comptes", nombre: true, cellule: (s) => nombre(s.comptes) },
+    { titre: "", cellule: (s) => h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { choix.value = s.id; remplir(); editeur.scrollIntoView({ block: "start" }); libelle.focus({ preventScroll: true }); } }, "Composer") }
+  ], etat.souscriptions));
+
+  // Éditeur : une souscription en cours de composition.
+  let courante;
+  const choix = selecteur([...etat.souscriptions.map((s) => [s.id, s.libelle]), ["", "Nouvelle souscription…"]], etat.souscriptions[0].id, { id: "souscription-choisie" });
+  const identifiant = h("input", { type: "text", id: "souscription-id", maxlength: "21", autocomplete: "off" });
+  const libelle = h("input", { type: "text", id: "souscription-libelle", maxlength: "40", autocomplete: "off" });
+  const description = h("input", { type: "text", id: "souscription-description", maxlength: "200", autocomplete: "off", size: "60" });
+  const statut = selecteur(Object.entries(STATUTS_SOUSCRIPTION), "projet", { id: "souscription-statut" });
+  const role = selecteur(etat.roles.map((r) => [r.id, r.libelle]), "visiteur", { id: "souscription-role" });
+  const cases = etat.fonctionnalites.map((f) => h("input", { type: "checkbox", value: f, "data-fonctionnalite": f }));
+  const horsRole = h("p", { class: "doux petit", "aria-live": "polite" });
+  const champsLimites = Object.fromEntries([...consommation, ...structure].map((c) => [c, h("input", { type: "number", min: bornes.limites[c][0], max: bornes.limites[c][1], step: "1", "data-limite": c, "aria-label": LIMITES_LIBELLES[c] })]));
+  const noteLimites = h("p", { class: "doux petit", "aria-live": "polite" });
+  const joursActifs = h("input", { type: "number", id: "souscription-jours", min: bornes.finances.joursActifsMois[0], max: bornes.finances.joursActifsMois[1], step: "1" });
+  const tauxUtilisation = h("input", { type: "number", id: "souscription-taux", min: 0, max: 100, step: "1" });
+  const modes = ["prix", "marge"].map((m) => h("input", { type: "radio", name: "souscription-mode", value: m, id: `souscription-mode-${m}` }));
+  const prixHT = h("input", { type: "number", id: "souscription-prix", min: 0, max: bornes.finances.prixMensuelHT[1], step: "0.01" });
+  const margeCible = h("input", { type: "number", id: "souscription-marge", min: bornes.finances.margeCible[0], max: bornes.finances.margeCible[1], step: "0.5" });
+  const remise = h("input", { type: "number", id: "souscription-remise", min: 0, max: bornes.finances.remiseAnnuelle[1], step: "1" });
+  const resultat = h("div", { class: "admin-financier", "aria-live": "polite" });
+  const supprimer = h("button", { type: "button", class: "danger" }, "Supprimer cette souscription");
+  const fixer = h("button", { type: "button", class: "secondaire petit-bouton" }, "Fixer ce prix de vente");
+  const editeur = bloc("Composer une souscription");
+
+  const lire = () => ({
+    id: identifiant.value.trim(), libelle: libelle.value, description: description.value, statut: statut.value, role: role.value,
+    fonctionnalites: cases.filter((c) => c.checked).map((c) => c.value),
+    limites: Object.fromEntries(Object.entries(champsLimites).map(([c, champ]) => [c, nombreSaisi(champ.value)])),
+    usage: { joursActifsMois: nombreSaisi(joursActifs.value), tauxUtilisation: nombreSaisi(tauxUtilisation.value) },
+    prix: { mode: modes.find((m) => m.checked)?.value ?? "prix", prixMensuelHT: nombreSaisi(prixHT.value), margeCible: nombreSaisi(margeCible.value), remiseAnnuelle: nombreSaisi(remise.value) }
+  });
+
+  const recalculer = () => {
+    const s = lire();
+    const gratuite = s.id === "gratuit";
+    const permissions = etat.roles.find((r) => r.id === s.role)?.permissions ?? [];
+    const exclues = s.fonctionnalites.filter((f) => !permissions.includes(f));
+    horsRole.textContent = exclues.length
+      ? `Hors des permissions du rôle, donc refusées une fois le contrôle activé : ${exclues.map((f) => lib("fonctionnalites", f)).join(", ")}.`
+      : "Toutes les fonctionnalités cochées sont permises par le rôle.";
+    const auDela = s.limites.tokensSession > etat.plafondsSchema.LIMITE_TOKENS_SESSION || s.limites.tokensAppel > etat.plafondsSchema.MAX_TOKENS_APPEL;
+    noteLimites.textContent = [
+      gratuite ? "« Gratuit » reprend les limites de consommation du registre : elles se règlent dans « Harness »." : "",
+      auDela ? `Au-delà de ${nombre(etat.plafondsSchema.LIMITE_TOKENS_SESSION)} tokens par session (ou ${nombre(etat.plafondsSchema.MAX_TOKENS_APPEL)} par réponse), la limite demandera la nouvelle table de quota avant d'être appliquée.` : "",
+      "Les limites de structure (enfants, classes, élèves) sont déclarées par l'offre et pas encore appliquées."
+    ].filter(Boolean).join(" ");
+    const mode = s.prix.mode;
+    prixHT.disabled = gratuite || mode === "marge";
+    margeCible.disabled = gratuite || mode === "prix";
+    remise.disabled = gratuite;
+    modes.forEach((m) => { m.disabled = gratuite; });
+    const valide = [...Object.values(s.limites), ...Object.values(s.usage), s.prix.prixMensuelHT, s.prix.margeCible, s.prix.remiseAnnuelle].every(Number.isFinite);
+    if (!valide) { resultat.replaceChildren(h("p", { class: "doux", text: "Complète les nombres pour voir l'estimation." })); fixer.hidden = true; return; }
+    const e = estimer(s);
+    const d = finances.devise;
+    fixer.hidden = mode !== "marge" || !e.atteignable;
+    if (mode === "marge") prixHT.value = String(e.prixMensuelHT);
+    resultat.replaceChildren(...[
+      e.atteignable ? null : h("p", { class: "admin-bandeau danger", text: "Marge visée impossible : avec les frais de paiement, elle dépasse 100 % du prix. Baisse la marge visée." }),
+      h("div", { class: "admin-grille" },
+        tuile(monnaie(e.coutRevient, d), "coût de revient estimé / mois"),
+        tuile(monnaie(e.prixMensuelHT, d), `prix HT / mois${mode === "marge" ? " (calculé)" : ""}`),
+        tuile(monnaie(e.marge, d), "marge / abonné / mois"),
+        tuile(pourcentage(e.tauxMarge), "taux de marge (sur le prix HT)"),
+        tuile(e.seuilRentabilite === null ? "—" : nombre(e.seuilRentabilite), "abonnés pour couvrir les coûts fixes")),
+      tableau("Coût variable par module (tokens d'entrée compris)", [
+        { titre: "Module", cellule: (l) => l.libelle },
+        { titre: "Tokens générés / mois au plafond", nombre: true, cellule: (l) => nombre(l.tokensMoisPlafond) },
+        { titre: "Au plafond", nombre: true, cellule: (l) => monnaie(l.plafond, d, 4) },
+        { titre: `Estimé (${s.usage.tauxUtilisation} %)`, nombre: true, cellule: (l) => monnaie(l.estime, d, 4) }
+      ], Object.entries(e.coutVariable.parModule).map(([m, l]) => ({ ...l, libelle: etat.modulesCout[m].libelle }))),
+      tableau("Détail", [
+        { titre: "Poste", cellule: (l) => l[0] },
+        { titre: "Montant", nombre: true, cellule: (l) => l[1] }
+      ], [
+        ["Coût variable estimé", monnaie(e.coutVariable.estime, d, 4)],
+        ["Part des coûts fixes", monnaie(e.partFixe, d, 4)],
+        ["Frais de paiement", monnaie(e.fraisPaiement, d, 4)],
+        ["Coefficient (prix / coût de revient)", e.coefficient === null ? "—" : `× ${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(e.coefficient)}`],
+        [`Prix TTC / mois (TVA ${finances.tauxTva} %)`, monnaie(e.prixMensuelTTC, d)],
+        [`Prix annuel HT (remise ${s.prix.remiseAnnuelle} %)`, monnaie(e.prixAnnuelHT, d)],
+        ["Prix annuel TTC", monnaie(e.prixAnnuelTTC, d)],
+        ["Marge annuelle / abonné", monnaie(e.margeAnnuelle, d)],
+        ["Coût de revient si tout le quota est consommé", monnaie(e.coutRevientPlafond, d, 4)],
+        ["Marge si tout le quota est consommé", monnaie(e.margeAuPlafond, d, 4)]
+      ]),
+      e.margeAuPlafond < 0 && e.prixMensuelHT > 0 ? h("p", { class: "admin-bandeau", text: "Un abonné qui consomme tout son quota coûterait plus qu'il ne rapporte : baisse les limites ou relève le prix." }) : null
+    ].filter(Boolean));
+  };
+
+  const remplir = () => {
+    const s = etat.souscriptions.find((x) => x.id === choix.value);
+    courante = s;
+    identifiant.value = s?.id ?? "";
+    identifiant.disabled = !!s;
+    libelle.value = s?.libelle ?? "";
+    description.value = s?.description ?? "";
+    statut.value = s?.statut ?? "projet";
+    role.value = s?.role ?? "visiteur";
+    const fonctionnalites = s?.fonctionnalites ?? etat.roles.find((r) => r.id === role.value)?.permissions ?? [];
+    cases.forEach((c) => { c.checked = fonctionnalites.includes(c.value); });
+    const modele = s ?? etat.souscriptions.find((x) => x.id === "gratuit");
+    for (const [c, champ] of Object.entries(champsLimites)) {
+      champ.value = String(modele.limites[c] ?? 0);
+      champ.disabled = s?.id === "gratuit" && consommation.includes(c);
+    }
+    joursActifs.value = String(s?.usage.joursActifsMois ?? 12);
+    tauxUtilisation.value = String(s?.usage.tauxUtilisation ?? 50);
+    const prix = s?.prix ?? { mode: "marge", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 0 };
+    modes.forEach((m) => { m.checked = m.value === prix.mode; });
+    prixHT.value = String(prix.prixMensuelHT);
+    margeCible.value = String(prix.margeCible);
+    remise.value = String(prix.remiseAnnuelle);
+    supprimer.hidden = !s || s.id === "gratuit";
+    recalculer();
+  };
+
+  choix.addEventListener("change", remplir);
+  editeur.addEventListener("input", (e) => { if (e.target !== choix) recalculer(); });
+  editeur.addEventListener("change", (e) => { if (e.target !== choix) recalculer(); });
+  fixer.addEventListener("click", () => {
+    modes.forEach((m) => { m.checked = m.value === "prix"; });
+    recalculer();
+    annoncer("Prix de vente fixé : la marge se calcule désormais à partir de ce prix. Pense à enregistrer.");
+  });
+  supprimer.addEventListener("click", () => {
+    if (confirm(`Supprimer la souscription « ${courante.libelle} » ?`)) agir(() => api("DELETE", `/souscriptions/${courante.id}`), "Souscription supprimée.");
+  });
+  const reprendreRole = () => {
+    const permissions = etat.roles.find((r) => r.id === role.value)?.permissions ?? [];
+    cases.forEach((c) => { c.checked = permissions.includes(c.value); });
+    recalculer();
+  };
+
+  editeur.append(
+    h("div", { class: "admin-ligne" },
+      h("label", { class: "admin-champ" }, h("span", { text: "Souscription" }), choix),
+      h("label", { class: "admin-champ" }, h("span", { text: "Identifiant" }), identifiant),
+      h("label", { class: "admin-champ" }, h("span", { text: "Libellé" }), libelle),
+      h("label", { class: "admin-champ" }, h("span", { text: "Statut" }), statut)),
+    h("label", { class: "admin-champ" }, h("span", { text: "Description" }), description),
+    h("h3", { text: "Rôle et fonctionnalités" }),
+    h("div", { class: "admin-ligne" },
+      h("label", { class: "admin-champ" }, h("span", { text: "Rôle attribué aux abonnés" }), role),
+      h("button", { type: "button", class: "secondaire petit-bouton", onclick: reprendreRole }, "Reprendre les permissions du rôle")),
+    h("fieldset", { class: "admin-cases" }, h("legend", { class: "visuellement-cache", text: "Fonctionnalités incluses" }),
+      cases.map((c) => h("label", {}, c, lib("fonctionnalites", c.value)))),
+    horsRole,
+    h("h3", { text: "Limites de consommation et de structure" }),
+    h("div", { class: "admin-cases" }, Object.entries(champsLimites).map(([c, champ]) => h("label", { class: "admin-champ" },
+      h("span", { text: LIMITES_LIBELLES[c] }), champ, h("span", { class: "doux petit", text: `de ${nombre(bornes.limites[c][0])} à ${nombre(bornes.limites[c][1])}` })))),
+    noteLimites,
+    h("h3", { text: "Financier" }),
+    h("div", { class: "admin-ligne" },
+      h("label", { class: "admin-champ" }, h("span", { text: "Jours d'usage par mois" }), joursActifs),
+      h("label", { class: "admin-champ" }, h("span", { text: "Part du quota consommée (%)" }), tauxUtilisation)),
+    h("fieldset", { class: "admin-ligne" }, h("legend", { class: "visuellement-cache", text: "Mode de calcul du prix" }),
+      h("label", { class: "admin-ligne" }, modes[0], "Je fixe le prix de vente : la marge est calculée"),
+      h("label", { class: "admin-ligne" }, modes[1], "Je vise une marge : le prix est calculé")),
+    h("div", { class: "admin-ligne" },
+      h("label", { class: "admin-champ" }, h("span", { text: `Prix mensuel HT (${finances.devise})` }), prixHT),
+      h("label", { class: "admin-champ" }, h("span", { text: "Marge visée (% du prix HT)" }), margeCible),
+      h("label", { class: "admin-champ" }, h("span", { text: "Remise sur l'abonnement annuel (%)" }), remise),
+      fixer),
+    resultat,
+    h("div", { class: "admin-ligne" },
+      h("button", { type: "button", class: "bouton", onclick: () => {
+        const s = lire();
+        agir(() => api("PUT", `/souscriptions/${encodeURIComponent(s.id)}`, s), "Souscription enregistrée.");
+      } }, "Enregistrer la souscription"),
+      supprimer));
+
+  // Hypothèses financières communes à toutes les offres.
+  const devise = selecteur(etat.devises.map((x) => [x, x]), finances.devise, { id: "finances-devise" });
+  const champFinance = (cle, props = {}) => h("input", { type: "number", value: finances[cle], "data-finance": cle, min: bornes.finances[cle][0], max: bornes.finances[cle][1], step: "any", ...props });
+  const hypotheses = [
+    ["tauxTva", "TVA (%)"], ["coutsFixesMensuels", "Coûts fixes mensuels (hébergement, domaine, outils)"], ["utilisateursEstimes", "Utilisateurs actifs estimés (répartition des coûts fixes)"],
+    ["fraisPaiementPourcent", "Frais de paiement (% du montant)"], ["fraisPaiementFixe", "Frais de paiement fixes (par transaction)"]
+  ].map(([cle, texte]) => ({ cle, texte, champ: champFinance(cle) }));
+  const prixModeles = Object.keys(etat.modulesCout).map((module) => ({
+    module,
+    champs: ["entree", "sortie", "ratio"].map((cle) => h("input", { type: "number", value: finances.modeles[module][cle], min: 0, max: cle === "ratio" ? bornes.finances.ratio[1] : bornes.finances.prixMillion[1], step: "any", "data-modele": `${module}.${cle}`,
+      "aria-label": `${etat.modulesCout[module].libelle} : ${cle === "ratio" ? "tokens d'entrée par token généré" : `prix par million de tokens ${cle === "entree" ? "en entrée" : "en sortie"}`}` }))
+  }));
+  const lireFinances = () => {
+    finances.devise = devise.value;
+    for (const { cle, champ } of hypotheses) finances[cle] = nombreSaisi(champ.value);
+    for (const { module, champs } of prixModeles) ["entree", "sortie", "ratio"].forEach((cle, i) => { finances.modeles[module][cle] = nombreSaisi(champs[i].value); });
+    const valides = [...hypotheses.map((x) => finances[x.cle]), ...prixModeles.flatMap((m) => Object.values(finances.modeles[m.module]))].every(Number.isFinite) && finances.utilisateursEstimes >= 1;
+    if (valides) { dessinerComparaison(); recalculer(); }
+  };
+  const blocFinances = bloc("Hypothèses financières",
+    h("p", { class: "doux", text: "Communes à toutes les souscriptions. Les prix des modèles sont des tarifs publics relevés le 18 novembre 2026 : vérifie-les avant toute décision. La saisie met l'estimation à jour tout de suite ; « Enregistrer » la garde pour tout le monde." }),
+    h("div", { class: "admin-ligne" }, h("label", { class: "admin-champ" }, h("span", { text: "Devise des montants" }), devise)),
+    h("div", { class: "admin-cases" }, hypotheses.map(({ texte, champ }) => h("label", { class: "admin-champ" }, h("span", { text: texte }), champ))),
+    tableau("Prix des modèles par million de tokens", [
+      { titre: "Module", cellule: (l) => etat.modulesCout[l.module].libelle },
+      { titre: "Entrée", cellule: (l) => l.champs[0] },
+      { titre: "Sortie", cellule: (l) => l.champs[1] },
+      { titre: "Tokens d'entrée par token généré", cellule: (l) => l.champs[2] }
+    ], prixModeles),
+    h("p", { class: "doux petit", text: `Taille d'une génération (registre) : défi ${nombre(etat.tokensParGeneration.defi)} tokens, cahier ${nombre(etat.tokensParGeneration.cahiers)} tokens.` }),
+    h("div", { class: "admin-ligne" },
+      h("button", { type: "button", class: "bouton", onclick: () => agir(() => api("PUT", "/finances", { finances }), "Hypothèses financières enregistrées.") }, "Enregistrer les hypothèses"),
+      h("button", { type: "button", class: "secondaire", onclick: () => agir(() => api("PUT", "/finances", { reinitialiser: true }), "Hypothèses par défaut rétablies.") }, "Rétablir les valeurs par défaut")));
+  blocFinances.addEventListener("input", lireFinances);
+  blocFinances.addEventListener("change", lireFinances);
+
+  dessinerComparaison();
+  remplir();
+  return [
+    h("p", { class: `admin-bandeau${etat.controleActif ? " ok" : ""}`, text: etat.controleActif
+      ? "Le contrôle d'accès est activé : la souscription d'un compte limite ses fonctionnalités."
+      : "Contrôle d'accès inactif : pendant la bêta, aucune souscription ne limite le site et rien n'est facturé. Les offres sont composées et chiffrées ici, prêtes pour l'ouverture des comptes." }),
+    etat.parDefaut ? h("p", { class: "admin-bandeau", text: "Offres pressenties (Gratuit, Solo, Parent, Professeur), pas encore enregistrées : ajuste-les puis enregistre chacune pour la valider." }) : null,
+    bloc("Vue comparée", comparaison),
+    editeur,
+    blocFinances
   ];
 }
 
@@ -638,7 +890,8 @@ const ECRANS = {
   telemetrie: { titre: "Télémétrie", intro: "Tokens, modèles et requêtes, en compteurs anonymes.", rendre: ecranTelemetrie },
   theme: { titre: "Charte graphique", intro: "Les couleurs du site.", rendre: ecranTheme },
   contenus: { titre: "Contenus", intro: "Blog, cours, parcours, labs et jeux.", rendre: ecranContenus },
-  harness: { titre: "Harness", intro: "Modèles, budgets de tokens, quotas, instructions et niveaux de souscription.", rendre: ecranHarness },
+  souscriptions: { titre: "Souscriptions", intro: "Composer les offres à partir des rôles, des fonctionnalités et des limites, et en estimer le coût et la marge.", rendre: ecranSouscriptions },
+  harness: { titre: "Harness", intro: "Modèles, budgets de tokens, quotas et instructions.", rendre: ecranHarness },
   journal: { titre: "Journal", intro: "La trace des actions du back-office.", rendre: ecranJournal }
 };
 let ecranCourant = "apercu";

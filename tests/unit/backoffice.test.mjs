@@ -144,7 +144,7 @@ test("rôles et stratégies : préparés et administrables, sans effet tant que 
   const strategies = (await admin("GET", "/strategies")).donnees.strategies;
   assert.deepEqual(strategies.find((s) => s.fonctionnalite === "ia.cahiers"), { fonctionnalite: "ia.cahiers", mode: "roles", roles: ["prof", "moderateur"], niveaux: [] });
 
-  const simulation = (await admin("POST", "/strategies/simuler", { role: "parent" })).donnees.decisions.find((d) => d.fonctionnalite === "ia.cahiers");
+  const simulation = (await admin("POST", "/strategies/simuler", { role: "parent", niveau: "parent" })).donnees.decisions.find((d) => d.fonctionnalite === "ia.cahiers");
   assert.deepEqual(simulation.enVigueur, { autorise: true, raison: "controle-inactif" }, "bêta : tous les utilisateurs");
   assert.deepEqual(simulation.siControleActif, { autorise: false, raison: "strategie" });
 
@@ -396,7 +396,6 @@ test("harness : modèles, budgets et quotas modifiés à chaud, dans les bornes,
   assert.deepEqual(harness.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers", "acces", "securite"]);
   assert.deepEqual(harness.surcharges, []);
   assert.deepEqual(harness.skills.map((s) => s.id), ["tuteur", "cadrage-idee", "defi-express", "constructeur-cahier"]);
-  assert.deepEqual(harness.niveaux, [{ id: "gratuit", libelle: "Gratuit", applique: true, tokensSession: 1000, tokensAppel: 500, defisJour: 3, cahiersJour: 2 }]);
 
   const refus = await admin("PUT", "/harness/parametres", { valeurs: { MAX_TOKENS_APPEL: 300, LIMITE_TOKENS_SESSION: 5000, MODELE_CHAT: "pas un alias", SECRET_INCONNU: "x" } });
   assert.equal(refus.statut, 400);
@@ -406,7 +405,8 @@ test("harness : modèles, budgets et quotas modifiés à chaud, dans les bornes,
   assert.equal((await admin("PUT", "/harness/parametres", { valeurs: { MAX_TOKENS_APPEL: 300, MODELE_WORKERS_AI: "@cf/meta/autre-modele", DEFI_GENERATIONS_JOUR: 5 } })).statut, 200);
   const apres = (await admin("GET", "/harness")).donnees;
   assert.deepEqual(apres.surcharges, ["MODELE_WORKERS_AI", "MAX_TOKENS_APPEL", "DEFI_GENERATIONS_JOUR"]);
-  assert.equal(apres.niveaux[0].defisJour, 5);
+  const gratuite = (await admin("GET", "/souscriptions")).donnees.souscriptions[0];
+  assert.equal(gratuite.limites.defisJour, 5, "« Gratuit » suit les limites du registre réglées à chaud");
   const statut = await publique("/api/llm/status");
   assert.equal(statut.defi.generationsParJour, 5, "la valeur réglée à chaud est celle du site");
   assert.ok(!JSON.stringify(statut).includes("SEUIL_") && !JSON.stringify(statut).includes("INSTRUCTIONS_"), "paramètres privés absents de la vue publique");
@@ -440,16 +440,74 @@ test("harness : instructions complémentaires ajoutées après le socle, refusé
   assert.doesNotMatch(journal().join("\n"), /La Réunion/);
 });
 
-test("niveaux de souscription : préparés, bornés, non appliqués pendant la bêta", async () => {
-  const premium = { id: "premium", libelle: "Premium", tokensSession: 4000, tokensAppel: 1000, defisJour: 10, cahiersJour: 5 };
-  assert.equal((await admin("PUT", "/harness/niveaux", { niveaux: [{ ...premium, tokensSession: 9000 }] })).donnees.erreur, "hors-bornes:tokensSession");
-  assert.equal((await admin("PUT", "/harness/niveaux", { niveaux: [premium] })).statut, 200);
-  const niveaux = (await admin("GET", "/harness")).donnees.niveaux;
-  assert.deepEqual(niveaux.map((n) => [n.id, n.applique]), [["gratuit", true], ["premium", false]]);
+test("souscriptions : offres pressenties, composition, bornes, attribution et suppression protégées", async () => {
+  const etat = (await admin("GET", "/souscriptions")).donnees;
+  assert.equal(etat.parDefaut, true);
+  assert.equal(etat.controleActif, false);
+  assert.deepEqual(etat.souscriptions.map((s) => [s.id, s.role, s.statut]), [["gratuit", "visiteur", "projet"], ["solo", "visiteur", "projet"], ["parent", "parent", "projet"], ["professeur", "prof", "projet"]]);
+  assert.deepEqual(etat.souscriptions[0].limites, { tokensSession: 1000, tokensAppel: 500, defisJour: 3, cahiersJour: 2, enfantsMax: 0, classesMax: 0, elevesMax: 0 });
+  assert.equal(etat.souscriptions[0].estimation.prixMensuelHT, 0);
+  assert.ok(etat.souscriptions[0].estimation.marge < 0, "le gratuit coûte : marge négative");
+  const prof = etat.souscriptions[3];
+  assert.equal(prof.prix.mode, "marge");
+  assert.ok(Math.abs(prof.estimation.tauxMarge - 60) < 0.5, "prix calculé pour la marge visée");
+  assert.deepEqual(etat.tokensParGeneration, { defi: 1500, cahiers: 100000 });
+
+  const premium = { libelle: "Premium", statut: "projet", role: "parent", fonctionnalites: ["chat", "famille", "inconnue"],
+    limites: { tokensSession: 4000, tokensAppel: 1000, defisJour: 10, cahiersJour: 5, enfantsMax: 6 }, usage: { joursActifsMois: 20, tauxUtilisation: 50 },
+    prix: { mode: "prix", prixMensuelHT: 9.99, margeCible: 0, remiseAnnuelle: 20 } };
+  assert.equal((await admin("PUT", "/souscriptions/premium", { ...premium, limites: { ...premium.limites, tokensSession: 9000 } })).donnees.erreur, "hors-bornes:tokensSession");
+  assert.equal((await admin("PUT", "/souscriptions/premium", { ...premium, role: "fantome" })).donnees.erreur, "role-inconnu");
+  assert.equal((await admin("PUT", "/souscriptions/premium", { ...premium, usage: { joursActifsMois: 40, tauxUtilisation: 50 } })).donnees.erreur, "hors-bornes:joursActifsMois");
+  assert.equal((await admin("PUT", "/souscriptions/premium", premium)).statut, 201);
+  const apres = (await admin("GET", "/souscriptions")).donnees;
+  assert.equal(apres.parDefaut, false, "enregistrer une offre valide la liste");
+  const enregistree = apres.souscriptions.find((s) => s.id === "premium");
+  assert.deepEqual(enregistree.fonctionnalites, ["chat", "famille"], "fonctionnalités inconnues retirées");
+  assert.equal(enregistree.estimation.prixMensuelHT, 9.99);
+  assert.ok((await admin("GET", "/utilisateurs")).donnees.niveaux.includes("premium"), "la souscription devient un niveau attribuable");
+
+  // « Gratuit » : limites de consommation du registre, prix nul, jamais supprimé.
+  assert.equal((await admin("PUT", "/souscriptions/gratuit", { ...etat.souscriptions[0], limites: { tokensSession: 4000 }, prix: { mode: "prix", prixMensuelHT: 5, margeCible: 0, remiseAnnuelle: 0 } })).statut, 200);
+  const gratuite = (await admin("GET", "/souscriptions")).donnees.souscriptions[0];
+  assert.deepEqual([gratuite.limites.tokensSession, gratuite.prix.prixMensuelHT], [1000, 0]);
+  assert.equal((await admin("DELETE", "/souscriptions/gratuit")).donnees.erreur, "souscription-gratuite");
+
   env.DB.sqlite.exec(`INSERT INTO comptes (id, email_hash) VALUES ('${UUID(1)}', 'h')`);
   assert.equal((await admin("PATCH", `/utilisateurs/compte/${UUID(1)}`, { role: "parent", niveau: "premium" })).statut, 200);
-  assert.equal((await admin("PUT", "/harness/niveaux", { niveaux: [] })).donnees.erreur, "niveau-attribue");
-  assert.equal((await publique("/api/llm/status")).defi.generationsParJour, 3, "le niveau gratuit du registre reste le seul appliqué");
+  assert.equal((await admin("DELETE", "/souscriptions/premium")).donnees.erreur, "niveau-attribue");
+  assert.equal((await admin("DELETE", "/souscriptions/solo")).statut, 200);
+  assert.equal((await admin("DELETE", "/souscriptions/solo")).statut, 404);
+  assert.equal((await publique("/api/llm/status")).defi.generationsParJour, 3, "aucune souscription n'est appliquée pendant la bêta");
+
+  // Un rôle personnalisé utilisé par une souscription ne se supprime pas.
+  assert.equal((await admin("PUT", "/roles/tuteur-prive", { libelle: "Tuteur privé", permissions: ["chat"] })).statut, 200);
+  assert.equal((await admin("PUT", "/souscriptions/premium", { ...premium, role: "tuteur-prive" })).statut, 200);
+  assert.equal((await admin("DELETE", "/roles/tuteur-prive")).donnees.erreur, "role-dans-souscription");
+
+  // Simulateur : la souscription compte quand le contrôle serait activé.
+  const { decisions } = (await admin("POST", "/strategies/simuler", { role: "parent", niveau: "gratuit" })).donnees;
+  assert.deepEqual(decisions.find((d) => d.fonctionnalite === "famille").siControleActif, { autorise: false, raison: "hors-souscription" });
+  assert.ok(journal().includes("souscription.creation premium") && journal().includes("souscription.suppression solo"));
+});
+
+test("finances : hypothèses validées, enregistrées, rétablies ; estimation recalculée", async () => {
+  const etat = (await admin("GET", "/souscriptions")).donnees;
+  assert.deepEqual(etat.finances, etat.financesParDefaut);
+  const finances = { ...etat.finances, devise: "EUR", coutsFixesMensuels: 0, modeles: { ...etat.finances.modeles, cahiers: { entree: 0, sortie: 0, ratio: 0 } } };
+  assert.equal((await admin("PUT", "/finances", { finances: { ...finances, devise: "XYZ" } })).donnees.erreur, "devise-invalide");
+  assert.equal((await admin("PUT", "/finances", { finances: { ...finances, tauxTva: 80 } })).donnees.erreur, "hors-bornes:tauxTva");
+  assert.equal((await admin("PUT", "/finances", { finances: { ...finances, modeles: { tuteur: { entree: 1, sortie: 1, ratio: 1 } } } })).donnees.erreur, "hors-bornes:prix-defi");
+  assert.equal((await admin("PUT", "/finances", { finances })).statut, 200);
+  const apres = (await admin("GET", "/souscriptions")).donnees;
+  assert.equal(apres.finances.devise, "EUR");
+  const solo = apres.souscriptions.find((s) => s.id === "solo");
+  assert.equal(solo.estimation.devise, "EUR");
+  assert.equal(solo.estimation.coutVariable.parModule.cahiers.plafond, 0);
+  assert.equal(solo.estimation.partFixe, 0);
+  assert.equal((await admin("PUT", "/finances", { reinitialiser: true })).statut, 200);
+  assert.deepEqual((await admin("GET", "/souscriptions")).donnees.finances, etat.financesParDefaut);
+  assert.ok(journal().includes("finances.enregistrement") && journal().includes("finances.reinitialisation"));
 });
 
 test("sans migration 0002 : le site fonctionne comme avant, le back-office répond indisponible", async () => {

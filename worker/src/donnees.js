@@ -47,9 +47,9 @@ export const REGISTRE = Object.freeze([
   { table: "professeurs_resultats", finalite: "Suivi des activités par le professeur", contenu: "Questions réussies, total, meilleur essai, nombre d'essais, durée, fin ; aucune réponse ni texte", donnees: "pseudonyme", conservation: "Jusqu'au départ de l'élève, à la suppression de l'activité ou d'un des comptes", controle: true },
   { table: "professeurs_consommations", finalite: "Quota de cahiers rédigés par l'IA pour un professeur", contenu: "Appels et tokens générés par professeur et par jour", donnees: "pseudonyme", conservation: "90 jours", controle: true },
   { table: "roles", finalite: "Rôles", contenu: "Libellés et permissions", donnees: "aucune", conservation: "Sans limite" },
-  { table: "attributions_roles", finalite: "Rôle et niveau d'un compte", contenu: "Identifiant de compte, rôle, niveau", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
+  { table: "attributions_roles", finalite: "Rôle et souscription d'un compte", contenu: "Identifiant de compte, rôle, souscription (niveau)", donnees: "pseudonyme", conservation: "Jusqu'à la suppression du compte" },
   { table: "strategies_acces", finalite: "Stratégies d'accès", contenu: "Fonctionnalité, mode, rôles", donnees: "aucune", conservation: "Sans limite" },
-  { table: "reglages", finalite: "Réglages du site", contenu: "Paramètres, charte graphique, niveaux", donnees: "aucune", conservation: "Sans limite" },
+  { table: "reglages", finalite: "Réglages du site", contenu: "Paramètres, charte graphique, souscriptions et hypothèses financières (ADR 0031)", donnees: "aucune", conservation: "Sans limite" },
   { table: "contenus_etats", finalite: "Publication des contenus", contenu: "Contenu masqué ou mis en avant", donnees: "aucune", conservation: "Sans limite" },
   { table: "contenus_brouillons", finalite: "Brouillons éditoriaux", contenu: "Textes destinés à publication, sans donnée personnelle (filtrés)", donnees: "aucune", conservation: "Jusqu'à l'archivage" }
 ].map((t) => Object.freeze(t)));
