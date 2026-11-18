@@ -158,21 +158,29 @@ export async function remplacerMotDePasse(env, compteId, motDePasse, { provisoir
 const JEUX_PROVISOIRE = ["abcdefghjkmnpqrstuvwxyz", "ABCDEFGHJKLMNPQRSTUVWXYZ", "23456789", "-_.!?@#%+="];
 export const LONGUEUR_PROVISOIRE = 16;
 
+/**
+ * Entier aléatoire uniforme dans [0, n[ (n ≤ 256) : échantillonnage par rejet sur un octet masqué à la puissance de deux
+ * supérieure, sans modulo (un modulo sur un tirage cryptographique introduit un biais).
+ */
+function entierAleatoire(n) {
+  let masque = 1;
+  while (masque < n) masque <<= 1;
+  masque -= 1;
+  for (;;) {
+    const v = crypto.getRandomValues(new Uint8Array(1))[0] & masque;
+    if (v < n) return v;
+  }
+}
+
 /** Mot de passe provisoire aléatoire (tirage sans biais), conforme aux règles du compte local (ADR 0024). */
 export function genererMotDePasseProvisoire() {
-  const tirer = (jeu) => {
-    const limite = 256 - (256 % jeu.length);
-    for (;;) {
-      const [o] = crypto.getRandomValues(new Uint8Array(1));
-      if (o < limite) return jeu[o % jeu.length];
-    }
-  };
+  const tirer = (jeu) => jeu[entierAleatoire(jeu.length)];
   const tous = JEUX_PROVISOIRE.join("");
   for (;;) {
     const mdp = Array.from({ length: LONGUEUR_PROVISOIRE }, (_, i) => tirer(i < JEUX_PROVISOIRE.length ? JEUX_PROVISOIRE[i] : tous));
     // Mélange de Fisher-Yates, pour que les familles imposées ne soient pas toujours en tête.
     for (let i = mdp.length - 1; i > 0; i--) {
-      const j = Number(crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1));
+      const j = entierAleatoire(i + 1);
       [mdp[i], mdp[j]] = [mdp[j], mdp[i]];
     }
     const texte = mdp.join("");
