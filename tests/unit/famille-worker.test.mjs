@@ -322,3 +322,25 @@ test("cahier pour toute la famille : une génération, une copie par enfant, mê
   assert.ok(lignes[0].groupe);
   assert.equal((await famille("mes-cahiers", { methode: "GET", jeton: enfant })).donnees.cahiers.length, 1);
 });
+
+test("tableau parent : travaux du professeur limités aux enfants liés et à leurs activités actives", async () => {
+  const { parent, enfantId } = await parentEtEnfant();
+  const db = sql();
+  db.prepare("INSERT INTO professeurs_profils (compte_id, nom_affiche, matieres, niveaux) VALUES ('prof-test', 'Prof Test', '[]', '[]')").run();
+  for (const id of [enfantId, 'autre-eleve']) db.prepare("INSERT INTO professeurs_eleves (prof_id, eleve_id, classe_id, pseudo, accord_version) VALUES ('prof-test', ?, 'classe-test', 'Pseudo', 'v1')").run(id);
+  const ajouter = (id, eleve, classe, statut = 'active') => db.prepare("INSERT INTO professeurs_activites (id, prof_id, type, classe_id, eleve_id, parametres, contenu, statut) VALUES (?, 'prof-test', 'defi', ?, ?, '{}', 'contenu-prive', ?)").run(id, classe, eleve, statut);
+  ajouter('personnel', enfantId, null);
+  ajouter('collectif', null, 'classe-test');
+  ajouter('autrui', 'autre-eleve', null);
+  ajouter('archive', enfantId, null, 'archivee');
+  ajouter('autre-classe', null, 'classe-autre');
+  db.prepare("INSERT INTO professeurs_resultats (activite_id, eleve_id, reussis, total, termine) VALUES ('collectif', ?, 3, 5, 1)").run(enfantId);
+  db.prepare("INSERT INTO professeurs_resultats (activite_id, eleve_id, reussis, total, termine) VALUES ('collectif', 'autre-eleve', 5, 5, 1)").run();
+  const r = await famille('tableau', { methode: 'GET', jeton: parent });
+  assert.equal(r.statut, 200);
+  const travaux = r.donnees.enfants[0].activitesProfesseurs;
+  assert.deepEqual(travaux.map((a) => a.id).sort(), ['collectif', 'personnel']);
+  assert.ok(travaux.every((a) => a.professeur === 'Prof Test' && !('contenu' in a)));
+  assert.equal(travaux.find((a) => a.id === 'collectif').resultat.reussis, 3);
+  assert.equal(JSON.stringify(travaux).includes('autre-eleve'), false);
+});

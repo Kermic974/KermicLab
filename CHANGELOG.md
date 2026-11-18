@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- Ma famille : filtre « View as » par cases à cocher et consultation en lecture seule des travaux donnés par les professeurs.
+
 ### Sécurité
 - La question citée dans une issue `traduction-manquante` est pseudonymisée avant publication sur GitHub, comme les idées et les signalements. / The question quoted in a missing-translation issue is now pseudonymised.
 

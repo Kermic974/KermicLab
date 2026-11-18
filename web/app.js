@@ -830,7 +830,7 @@ function brancherCompte() {
 // Le compte local lié au serveur garde une session pour l'onglet. Un compte solo invite son parent par un code ; un
 // compte parent (rôle attribué dans le back-office) voit le tableau de bord Famille. L'appareil d'un enfant envoie un
 // bilan clair et borné (compteurs et identifiants du catalogue) et reçoit les cahiers assignés par son parent.
-const familleEtat = { moi: null, tableau: null, mesCahiers: [], occupe: false, minuteurBilan: null, dernierBilan: 0, ouverts: new Set() };
+const familleEtat = { moi: null, tableau: null, mesCahiers: [], occupe: false, minuteurBilan: null, dernierBilan: 0, ouverts: new Set(), enfantsMasques: new Set() };
 const DELAI_BILAN_MS = 60_000;
 
 const jetonFamille = () => {
@@ -863,6 +863,7 @@ async function apiFamilleLocale(route, { methode = "GET", corps } = {}) {
 
 function oublierFamille() {
   Object.assign(familleEtat, { moi: null, tableau: null, mesCahiers: [] });
+  familleEtat.enfantsMasques.clear();
   clearTimeout(familleEtat.minuteurBilan);
   rafraichirFamilleCompte();
   rendreCahiersFamille();
@@ -1148,7 +1149,8 @@ function chiffre(dt, dd) {
 }
 
 function rendreEspaceFamille() {
-  const tableau = familleEtat.tableau;
+  const complet = familleEtat.tableau;
+  const tableau = complet && { ...complet, enfants: complet.enfants.filter((e) => !familleEtat.enfantsMasques.has(e.id)) };
   const m = familleEtat.moi;
   if (!tableau) {
     $("#ef-contenu").hidden = true;
@@ -1159,6 +1161,8 @@ function rendreEspaceFamille() {
   }
   $("#ef-contenu").hidden = false;
   const jour = progression.jourLocal();
+  rendreSelectionEnfants(complet);
+  rendreTravailProfesseurs(tableau);
   const s = familleModule.syntheseFamille(tableau.enfants, jour);
   $("#ef-chiffres").replaceChildren(
     chiffre(t("efChiffreEnfants"), s.enfants), chiffre(t("efChiffreXp"), s.xp),
@@ -1166,11 +1170,45 @@ function rendreEspaceFamille() {
   );
   const prenomDe = (id) => tableau.enfants.find((e) => e.id === id)?.prenom ?? "";
   $("#ef-alertes").replaceChildren(...s.alertes.map((a) => element("li", { texte: t(`efAlerte_${a.type}`, { prenom: prenomDe(a.enfant), n: a.n ?? a.jours ?? "" }) })));
-  $("#ef-vide").hidden = tableau.enfants.length > 0;
+  $("#ef-vide").hidden = complet.enfants.length > 0;
   $("#ef-enfants").replaceChildren(...tableau.enfants.map(carteEnfant));
-  $("#ef-ajout").hidden = tableau.enfants.length >= tableau.maxEnfants;
+  $("#ef-ajout").hidden = complet.enfants.length >= complet.maxEnfants;
   rendreTableauFamille(tableau);
   rendreConsommations(tableau);
+}
+
+/** Filtre de consultation : ne change ni la session ni les destinataires des activités. */
+function rendreSelectionEnfants(tableau) {
+  $("#ef-selection-enfants").replaceChildren(...tableau.enfants.map((e) => {
+    const label = element("label", { classe: "prof-case" });
+    const caseEnfant = element("input", { attributs: { type: "checkbox", value: e.id } });
+    caseEnfant.checked = !familleEtat.enfantsMasques.has(e.id);
+    label.append(caseEnfant, element("span", { texte: e.prenom }));
+    return label;
+  }));
+  $("#ef-selection-vide").hidden = !tableau.enfants.length || tableau.enfants.some((e) => !familleEtat.enfantsMasques.has(e.id));
+}
+
+/** Lecture seule des travaux scolaires, regroupés par enfant et professeur. */
+function rendreTravailProfesseurs(tableau) {
+  const cartes = [];
+  const jour = progression.jourLocal();
+  for (const enfant of tableau.enfants) {
+    const activites = enfant.activitesProfesseurs ?? [];
+    for (const nom of new Set(activites.map((a) => a.professeur))) {
+      const carte = element("article", { classe: "carte ef-enfant" });
+      carte.append(element("h4", { texte: enfant.prenom + " · " + (nom || t("efProfesseur")) }));
+      const terminees = activites.filter((a) => a.resultat?.termine).length;
+      for (const a of activites.filter((a) => a.professeur === nom)) {
+        const detail = [titreActivite(a), a.echeance ? t("actPourLe", { date: dateCourte(a.echeance) }) : null,
+          statutEleveActivite(a, a.resultat, { bilan: enfant.bilan, terminees }, jour)].filter(Boolean).join(" · ");
+        carte.append(element("p", { texte: detail }));
+      }
+      cartes.push(carte);
+    }
+  }
+  $("#ef-professeurs").replaceChildren(...cartes);
+  $("#ef-professeurs-vide").hidden = cartes.length > 0;
 }
 
 function barresSemaine(bilan, jour) {
@@ -2608,8 +2646,9 @@ async function validerActiviteFamille() {
 function rendreTableauFamille(tableau) {
   const eleves = enfantsCommeEleves(tableau);
   const jour = progression.jourLocal();
-  const activites = tableau.activites ?? [];
-  const resultats = tableau.resultats ?? [];
+  const activites = (tableau.activites ?? []).filter((a) => professeur.elevesCibles(a, eleves).length);
+  const ids = new Set(eleves.map((e) => e.id));
+  const resultats = (tableau.resultats ?? []).filter((r) => ids.has(r.eleve));
   const tb = professeur.tableauDeBord({ eleves, classes: [], activites, resultats }, jour);
   const g = tb.global;
   $("#ef-engagement").replaceChildren(
@@ -2669,6 +2708,15 @@ function activitesDeLEnfant(e, tableau) {
 }
 
 function brancherActivitesFamille() {
+  $("#ef-selection-enfants").addEventListener("change", (ev) => {
+    const caseEnfant = ev.target.closest('input[type="checkbox"]');
+    if (!caseEnfant) return;
+    if (caseEnfant.checked) familleEtat.enfantsMasques.delete(caseEnfant.value);
+    else familleEtat.enfantsMasques.add(caseEnfant.value);
+    const id = caseEnfant.value;
+    rendreEspaceFamille();
+    [...$("#ef-selection-enfants").querySelectorAll("input")].find((c) => c.value === id)?.focus();
+  });
   $("#ef-donner-activite").addEventListener("click", () => ouvrirDialogueActiviteFamille());
   $("#ef-enfants").addEventListener("click", (ev) => {
     const b = ev.target.closest("[data-ef-activite]");
