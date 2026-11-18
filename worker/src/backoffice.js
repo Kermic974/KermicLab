@@ -82,11 +82,14 @@ async function noter(env, action, cible = "") {
 
 // ---------- Utilisateurs ----------
 
-async function listerUtilisateurs(env) {
+/** Comptes (200 plus récents de chaque type), ou le seul compte dont l'identifiant unique est `id` (recherche du support). */
+async function listerUtilisateurs(env, { id = null } = {}) {
+  const filtre = id ? "WHERE c.id = ?" : "";
+  const valeurs = id ? [id] : [];
   const [comptes, locaux, attributions, etats, liens] = await Promise.all([
     tenter(() => toutes(env, `SELECT c.id, c.role, c.created_at, c.last_login_at, c.consent_version,
-      (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ORDER BY c.created_at DESC, c.rowid DESC LIMIT 200`), []),
-    tenter(() => toutes(env, "SELECT id, cree_le, bloque_jusqua FROM comptes_locaux ORDER BY cree_le DESC, rowid DESC LIMIT 200"), []),
+      (SELECT count(*) FROM eleves e WHERE e.parent_id = c.id) AS enfants FROM comptes c ${filtre} ORDER BY c.created_at DESC, c.rowid DESC LIMIT 200`, ...valeurs), []),
+    tenter(() => toutes(env, `SELECT c.id, c.cree_le, c.bloque_jusqua, c.mdp_provisoire FROM comptes_locaux c ${filtre} ORDER BY c.cree_le DESC, c.rowid DESC LIMIT 200`, ...valeurs), []),
     tenter(() => toutes(env, "SELECT type_compte, compte_id, role_id, niveau FROM attributions_roles"), []),
     tenter(() => toutes(env, "SELECT profil, etat, expire_le FROM profils_securite"), []),
     tenter(() => toutes(env, "SELECT enfant_id, parent_id FROM familles_liens"), [])
@@ -109,7 +112,7 @@ async function listerUtilisateurs(env) {
   }
   const maintenant = Math.floor(Date.now() / 1000);
   for (const c of locaux) {
-    utilisateurs.push({ ...(await decrire("compte-local", c.id, ROLE_PAR_DEFAUT)), creeLe: c.cree_le, bloque: c.bloque_jusqua > maintenant,
+    utilisateurs.push({ ...(await decrire("compte-local", c.id, ROLE_PAR_DEFAUT)), creeLe: c.cree_le, bloque: c.bloque_jusqua > maintenant, provisoire: c.mdp_provisoire === 1,
       famille: parentDe.has(c.id) ? { role: "enfant", parent: parentDe.get(c.id) } : enfantsDe.has(c.id) ? { role: "parent", enfants: enfantsDe.get(c.id) } : null });
   }
   return utilisateurs;
@@ -459,7 +462,9 @@ export async function gererApiAdmin(requete, env, { index, autoriser = () => tru
   }
 
   if (est("GET", "/utilisateurs")) {
-    return json({ utilisateurs: await listerUtilisateurs(env), roles: await listerRoles(env), niveaux: [NIVEAU_PAR_DEFAUT, ...reglages.niveaux.map((n) => n.id)] });
+    const id = url.searchParams.get("id");
+    if (id !== null && !new RegExp(`^${UUID}$`).test(id)) return erreur("identifiant-invalide", 400);
+    return json({ utilisateurs: await listerUtilisateurs(env, { id }), roles: await listerRoles(env), niveaux: [NIVEAU_PAR_DEFAUT, ...reglages.niveaux.map((n) => n.id)] });
   }
   if ((m = chemin.match(new RegExp(`^/utilisateurs/compte-local/(${UUID})/mot-de-passe$`)))) {
     return methode === "POST" ? reinitialiserMotDePasse(env, m[1]) : erreur("methode-non-autorisee", 405);

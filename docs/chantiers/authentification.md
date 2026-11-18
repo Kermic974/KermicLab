@@ -28,6 +28,11 @@ Les boutons Microsoft, Google et Apple mènent à un écran d'attente. L'activat
 Demande du propriétaire : authentification locale identifiant + mot de passe (sans email, sans réinitialisation, mot de
 passe complexe de 12 caractères minimum), compte facultatif, synchronisation facultative avec pseudonymisation par
 phrase secrète jamais stockée en ligne. Voir [ADR 0024](../decisions/0024-compte-local-synchro-pseudonymisee.md).
+Depuis le 2026-11-18 (§2 bis à §3 ter) : la phrase secrète est remplacée par une **clé de synchronisation** aléatoire
+(256 bits) gardée sur l'appareil sous une enveloppe chiffrée par le mot de passe, transmise à un autre appareil par un
+**code d'appairage** à usage unique chiffré de bout en bout ou par le **kit de récupération** ; le back-office
+**réinitialise le mot de passe** d'un compte local (mot de passe provisoire à changer) retrouvé par son **identifiant
+unique**, que l'utilisateur lit dans « Ce que Kermiclab sait de moi » (droit d'accès en libre-service).
 
 | Élément | État |
 |---|---|

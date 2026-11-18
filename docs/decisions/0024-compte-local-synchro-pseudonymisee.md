@@ -48,6 +48,43 @@ puis HKDF-SHA256 en trois secrets indépendants :
   avec la même phrase : les données sont retrouvées et « Récupérer » les charge (confirmation en deux temps).
 - Concurrence : écriture conditionnelle à la version (`409 version-conflit`), l'interface propose de récupérer d'abord.
 
+### 2 bis. Clé de synchronisation et appairage (révision du 2026-11-18)
+
+Demande du propriétaire : la phrase secrète est difficile à retenir ; la remplacer par un secret transmis entre
+appareils, sans baisser le niveau de sécurité. Protocole v2 (`web/compte-local.js`) :
+
+- **Clé** : 256 bits aléatoires (`crypto.getRandomValues`) tirés à l'activation. Secrets dérivés par HKDF-SHA256, sel
+  `"kermiclab:pseudonymisation:v2:" + identifiant` : mêmes `pseudonyme`, `jeton` d'écriture et clé AES-GCM qu'en v1,
+  dans un espace de pseudonymes distinct. Pas d'étirement : l'entropie est déjà maximale.
+- **Sur l'appareil** : la clé est gardée sous une **enveloppe** AES-GCM dont la clé vient de PBKDF2-SHA256 (310 000
+  itérations) du mot de passe, avec un sel aléatoire distinct de celui du vérificateur et l'identifiant en données
+  associées. Le mot de passe déverrouille la synchronisation à la connexion : rien d'autre à saisir.
+- **Appairage** (« Ajouter un appareil ») : l'appareil déverrouillé tire un **code** de 80 bits (16 caractères en base 32
+  de Crockford, saisie tolérante), en dérive par PBKDF2 (100 000 itérations, sel `"kermiclab:appairage:v1:" +
+  identifiant`) puis HKDF une adresse de **boîte**, un jeton et une clé AES-GCM, et dépose la clé de synchronisation
+  chiffrée (`PUT /api/compte-local/appairage`). Le nouvel appareil, connecté au **même compte**, saisit le code et retire
+  la boîte (`POST appairage/lire`). Le serveur ne voit ni le code ni la clé ; la boîte est liée au compte, unique par
+  compte, effacée à la première lecture et au plus tard après 10 minutes (cron), retraits limités par IP.
+- **Kit de récupération** : la clé et 3 octets de somme de contrôle SHA-256, 56 caractères en groupes de 4, copiable et
+  téléchargeable. Il remplace la phrase pour le cas où tous les appareils sont perdus.
+- **Ancienne méthode** : un compte à phrase secrète garde son accès (retrouver, déverrouiller) mais ne peut plus en créer ;
+  « Remplacer par une clé » reprend la copie en ligne (ou celle de l'appareil) sous le pseudonyme v2 puis efface
+  l'ancienne. Ses autres appareils passent alors par un code d'appairage.
+
+Niveau de sécurité comparé à la phrase :
+
+| Menace | Phrase (v1) | Clé (v2) |
+|---|---|---|
+| Serveur malveillant qui tente de deviner le secret hors ligne (il connaît l'identifiant) | phrase de 12 caractères minimum, souvent 40 à 60 bits, 310 000 itérations | impossible : 256 bits aléatoires |
+| Serveur malveillant pendant un appairage | sans objet | code de 80 bits + 100 000 itérations, boîte de 10 minutes au plus, liée au compte |
+| Vol du stockage de l'appareil | empreinte courte de la phrase | enveloppe : il faut le mot de passe (même barrière que le vérificateur local, qui protège déjà le compte et coexiste avec les données locales en clair) |
+| Lecture par un administrateur du back-office | aucune | aucune : la réinitialisation du mot de passe ne touche pas la clé |
+| Oubli | phrase oubliée = données perdues | kit perdu et aucun appareil = données perdues |
+
+Limite assumée : un mot de passe changé par un parent (ADR 0029) ou réinitialisé par le support n'ouvre plus l'ancienne
+enveloppe ; la clé se ressaisit sur cet appareil par un code d'appairage ou le kit (l'enveloppe est alors refermée avec
+le nouveau mot de passe).
+
 ### 3. Serveur (`worker/src/compte-local.js`, `worker/schema-compte-local.sql`)
 
 - Routes `/api/compte-local/` : `etat` (GET), `inscription`, `connexion`, `deconnexion`, `compte/supprimer`,
@@ -69,6 +106,31 @@ puis HKDF-SHA256 en trois secrets indépendants :
   l'interface les efface d'abord avec la phrase secrète ; sans elle, elles restent stockées, illisibles (l'interface le dit).
 - Sans `COMPTES_LOCAUX_SECRET` (32 caractères min.) ou sans tables : `503 synchro-indisponible`, le compte local reste
   utilisable.
+
+### 3 bis. Réinitialisation du mot de passe par le support (révision du 2026-11-18)
+
+- Back-office → Utilisateurs : recherche d'un compte par son **identifiant unique** (`GET /api/admin/utilisateurs?id=`)
+  et « Réinitialiser le mot de passe » (`POST /api/admin/utilisateurs/compte-local/:id/mot-de-passe`). Le Worker tire un
+  mot de passe provisoire de 16 caractères conforme aux règles (sans caractères ambigus), le renvoie **une seule fois**,
+  ne le journalise pas (`journal_admin` : `utilisateur.mot-de-passe` et la cible), ferme les sessions et lève le blocage.
+- Colonne `comptes_locaux.mdp_provisoire` (migration 0008) : tant qu'elle vaut 1, une session ne sert qu'à changer le
+  mot de passe (`POST /api/compte-local/mot-de-passe`), se déconnecter ou consulter ses données ; toutes les autres routes
+  (synchronisation, Espace famille, Professeur, contributions) refusent la session (`compteDeSession`).
+- `mot-de-passe` redemande le mot de passe actuel (ou le provisoire) et l'identifiant, vérifié contre son empreinte
+  HMAC (règle « sans l'identifiant »), refuse le même mot de passe, ferme toutes les sessions et en ouvre une nouvelle.
+  La même route sert au changement en libre-service dans « Mon compte ».
+- Le contrôle de l'identité du demandeur reste une procédure humaine du support (action manuelle 44). La réinitialisation
+  ne donne aucun accès aux données synchronisées.
+
+### 3 ter. Ce que Kermiclab sait de moi (révision du 2026-11-18)
+
+- `GET /api/compte-local/moi` (session porteuse) renvoie exactement l'export du back-office pour ce compte
+  (`worker/src/compte-local-acces.js`, une seule fonction pour les deux) : identifiant unique, date de création, mot de
+  passe provisoire ou non, sessions ouvertes, famille, professeurs, contributions, rôle, compteurs de sécurité.
+- L'écran « Mon compte » l'affiche sur demande (rien n'est appelé avant le clic), avec copie de l'identifiant unique et
+  téléchargement JSON. L'identifiant de connexion n'est montré que depuis l'appareil : le serveur n'en a qu'une empreinte.
+- L'identifiant unique est la seule donnée à communiquer au support ; l'écran rappelle de ne jamais donner son mot de
+  passe ni sa clé de récupération.
 
 ### 4. Ce que cette pseudonymisation garantit, et ses limites
 
@@ -108,6 +170,9 @@ s'il reste une option (adultes, appareils partagés) ou s'il est rattaché à un
   (nouvelle version de protocole).
 
 ## Révision
+
+2026-11-18 : clé de synchronisation et appairage (§2 bis), réinitialisation par le support (§3 bis), droit d'accès en
+libre-service (§3 ter), migration D1 `0008`, table `appairages` décrite dans le registre des traitements.
 
 Durée de conservation fixée par le propriétaire le 2026-11-07 (365 jours sans activité). Le passage au statut
 « accepté » reste à confirmer par le propriétaire avant d'appliquer le schéma et de déposer le secret en production.

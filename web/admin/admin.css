@@ -90,3 +90,6 @@
 .admin-financier { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: var(--rayon-moyen); background: var(--surface-2); border: 1px solid var(--bord); }
 .admin-financier .admin-tuile strong { font-size: 20px; }
 .admin-cases label.admin-champ { flex-direction: column; align-items: flex-start; }
+
+/* Mot de passe provisoire d'un compte local (ADR 0024 §3 bis) : affiché une seule fois, sélectionnable. */
+.code-provisoire code { font-size: 1.3em; letter-spacing: .08em; user-select: all; overflow-wrap: anywhere; }
