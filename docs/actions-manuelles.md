@@ -2,6 +2,23 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Adoption S6 (ADR 0033)
+
+Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire et fusionner la PR d’adoption S6 après CI verte | [Norme proposée](referentiel/normes/S6-v1.0.0.md), [ADR 0033](decisions/0033-adoption-contrats-s6.md), PR liée au suivi #384 | AGENTS.md exige la validation humaine ; le plan place cette adoption avant l’implémentation technique | Confirmer la fusion ; la PR des schémas peut alors démarrer | à faire |
+
+## Gamification unifiée (ADR 0032)
+
+Suivi : [issue #381](https://github.com/Kermic974/KermicLab/issues/381) (validation de l'ADR) et [issue #382](https://github.com/Kermic974/KermicLab/issues/382) (relecture des liens pédagogiques).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'ADR 0032, dont la synchronisation de la maîtrise (option 2, mise en œuvre) | [ADR 0032 §5](decisions/0032-gamification-unifiee.md) | Données d'élèves (public mineur) : l'agrégat de maîtrise rejoint l'instantané chiffré du compte local | ADR passée au statut accepté ; sinon retirer la clé de `CLES_FACULTATIVES` (`web/app.js`) | à faire |
+| Relire les prérequis ajoutés hors mathématiques et compléter ceux du catalogue privé | 51 `catalogue/*/fiche.md` publiques ; dépôt `maquettes-catalogue` | Liens pédagogiques proposés par un agent : une personne compétente doit les confirmer | Prérequis relus, corrigés si besoin ; ceux du catalogue privé ajoutés | à faire |
+
 ## Fournisseurs de connexion
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |

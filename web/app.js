@@ -404,7 +404,10 @@ function brancherFamille() {
 // enveloppe chiffrée par le mot de passe, passe à un autre appareil par un code d'appairage à usage unique (chiffré de
 // bout en bout) ou par le kit de récupération (§2 bis). Les comptes qui utilisent encore une phrase secrète (v1)
 // gardent leur accès et peuvent passer à la clé. La liaison du compte au serveur peut aussi être choisie seule.
-const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS];
+// ADR 0032 §5 : l'agrégat du contrat d'événements (maîtrise, cartes de révision) suit aussi l'instantané chiffré. Clé
+// facultative : écartée si l'instantané devient trop grand, et jamais effacée par un instantané qui ne la contient pas.
+const CLES_FACULTATIVES = [evenements.CLE_STOCKAGE];
+const CLES_SYNCHRONISEES = [profil.CLE_PSEUDO, progression.CLE_STOCKAGE, trophees.CLE_STOCKAGE, CLE_CAHIERS, ...CLES_FACULTATIVES];
 // `provisoire` : mot de passe donné par le support, gardé en mémoire seulement le temps de le remplacer.
 const compteEtat = { enregistrement: null, session: null, occupe: false, provisoire: null, minuteurAppairage: null };
 const bornesCompte = {
@@ -813,7 +816,7 @@ async function envoyerInstantane() {
   const { synchro } = compteEtat.session;
   const e = compteEtat.enregistrement;
   sauverSession();
-  const instant = compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES);
+  const instant = compteLocal.alleger(compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES), CLES_FACULTATIVES);
   const boite = await compteLocal.chiffrer(synchro.cle, synchro.pseudonyme, instant);
   const r = await apiCompte("donnees", { methode: "PUT", jeton: synchro.jetonServeur, corps: { ...preuveSynchro(), versionAttendue: e.synchro.version, ...boite } });
   if (r.statut === 200) {
@@ -1012,7 +1015,7 @@ async function migrerSynchro(ev) {
     const ancienne = compteEtat.session.synchro;
     const lu = await apiCompte("donnees/lire", { jeton: ancienne.jetonServeur, corps: preuveSynchro() });
     if (lu.statut !== 200) { messageSynchro(erreurServeur(lu)); return; }
-    let instant = compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES);
+    let instant = compteLocal.alleger(compteLocal.instantane((cle) => lireCle(stockage(), cle), CLES_SYNCHRONISEES), CLES_FACULTATIVES);
     if (lu.donnees?.version > 0) {
       try { instant = await compteLocal.dechiffrer(ancienne.cle, ancienne.pseudonyme, lu.donnees); } catch { messageSynchro("synchroIllisible"); return; }
     }
@@ -1118,7 +1121,7 @@ async function recupererSynchro(ev) {
     if (!(lu.donnees?.version > 0)) { messageSynchro("synchroAucuneDonnee"); return; }
     let instant;
     try { instant = await compteLocal.dechiffrer(synchro.cle, synchro.pseudonyme, lu.donnees); } catch { messageSynchro("synchroIllisible"); return; }
-    if (!compteLocal.restaurer(instant, CLES_SYNCHRONISEES, (cle, v) => ecrireCle(stockage(), cle, v), (cle) => effacerCle(stockage(), cle))) {
+    if (!compteLocal.restaurer(instant, CLES_SYNCHRONISEES, (cle, v) => ecrireCle(stockage(), cle, v), (cle) => effacerCle(stockage(), cle), CLES_FACULTATIVES)) {
       messageSynchro("synchroIllisible");
       return;
     }
@@ -1126,7 +1129,7 @@ async function recupererSynchro(ev) {
     e.synchro.version = lu.donnees.version;
     e.synchro.maj = lu.donnees.maj ?? null;
     sauverCompte();
-    // Les données restaurées (pseudo, progression, trophées, cahiers) sont relues au rechargement.
+    // Les données restaurées (pseudo, progression, trophées, cahiers, maîtrise) sont relues au rechargement.
     location.reload();
   } catch {
     messageSynchro("synchroErreur");
@@ -4633,8 +4636,18 @@ function brancherTrophees() {
     if (e.data?.type === "kermiclab:evenement") {
       const ev = evenements.normaliserEvenement(e.data, id);
       if (!ev) { console.warn("evenements : message invalide", id); return; }
-      etat.evenements = evenements.enregistrer(etat.evenements, ev, progression.jourLocal(), { planifier: ProgressionJeux.planifierCarte });
+      const avant = etat.evenements;
+      etat.evenements = evenements.enregistrer(avant, ev, progression.jourLocal(), { planifier: ProgressionJeux.planifierCarte });
       evenements.sauver(stockage(), etat.evenements);
+      // L'XP récompense l'apprentissage : exercice réussi la première fois, notion validée ou révisée.
+      const gains = evenements.gainsApprentissage(avant, etat.evenements, ev);
+      const resultat = progression.enregistrerApprentissage(etat.progres, gains, progression.jourLocal());
+      if (resultat.xpGagne) appliquerResultat(resultat);
+      // Notion validée la première fois : proposer un jeu qui la fait travailler, s'il en existe un.
+      if (gains.validation === "premiere") {
+        const jeu = etat.registre?.jeuxDeLaNotion(id)[0];
+        if (jeu) notifier(t("jeuPourNotion", { jeu: jeu.titre }), "🎲");
+      }
       if (etat.ecran === "progression") rendreProgression();
       return;
     }
@@ -6495,6 +6508,19 @@ function rendreJeux() {
     const carte = element("article", { classe: "carte jeu-carte" });
     carte.append(element("h3", { texte: jeu.titre }));
     if (jeu.resume) carte.append(element("p", { classe: "doux", texte: jeu.resume }));
+    // Lien Jeux ↔ Éducation : les notions que ce jeu fait travailler, ouvrables d'un geste.
+    const liees = etat.registre.notionsDuJeu(jeu.id);
+    if (liees.length) {
+      const ligne = element("p", { classe: "jeu-notions doux" });
+      ligne.append(element("span", { cle: "jeuNotionsLiees" }), " ");
+      liees.forEach((n, i) => {
+        if (i) ligne.append(", ");
+        const lien = element("button", { classe: "lien-bouton", texte: n.titre, attributs: { type: "button", "data-notion-liee": n.id } });
+        lien.addEventListener("click", () => ouvrirNotion(n));
+        ligne.append(lien);
+      });
+      carte.append(ligne);
+    }
     // « Reprendre » seulement si une partie est réellement enregistrée sur cet appareil.
     const partie = Boolean(etat.trophees[jeu.id]);
     if (progression.estDecouverte(etat.progres, "jeu", jeu.id)) carte.append(element("span", { classe: "pastille ok", cle: "jeuDejaLance" }));

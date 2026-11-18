@@ -33,10 +33,10 @@ test("progression : une notion ne rapporte qu'une fois et le niveau monte tous l
   assert.equal(r.xpGagne, 0);
   let p = r.p;
   let monte = false;
-  for (let i = 0; i < 8; i += 1) { const q = P.enregistrerQuestion(p, "2026-11-01"); monte ||= q.niveauGagne; p = q.p; }
-  assert.equal(p.xp, 105);
+  for (let i = 0; i < 10; i += 1) { const q = P.enregistrerQuestion(p, "2026-11-01"); monte ||= q.niveauGagne; p = q.p; }
+  assert.equal(p.xp, P.XP_NOTION + 10 * P.XP_QUESTION);
   assert.ok(monte);
-  assert.deepEqual(P.niveau(p), { niveau: 2, xpDansNiveau: 5, xpParNiveau: 100 });
+  assert.deepEqual(P.niveau(p), { niveau: 2, xpDansNiveau: p.xp - 100, xpParNiveau: 100 });
 });
 
 test("progression : un stockage corrompu ou indisponible n'empêche pas de démarrer", () => {

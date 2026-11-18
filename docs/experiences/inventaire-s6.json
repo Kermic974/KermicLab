@@ -1,0 +1,2663 @@
+{
+  "revision": "123d3338ea7f5111fa446bf4378557c58ac9fbad",
+  "normalisation": "UTF-8, CRLF remplacé par LF avant SHA-256",
+  "compteurs": {
+    "fiches": 174,
+    "notions": 165,
+    "jeux": 9,
+    "json": 164,
+    "niveaux": 631,
+    "exemples": 295,
+    "exercicesApplication": 819,
+    "exercicesSituation": 512,
+    "qcm": 823,
+    "nombre": 508,
+    "figures": 9
+  },
+  "familles": {
+    "jeux": 9,
+    "physique-chimie": 23,
+    "francais": 10,
+    "svt": 24,
+    "geographie": 17,
+    "mathematiques": 36,
+    "histoire": 16,
+    "philosophie": 17,
+    "ses": 10,
+    "emc": 12
+  },
+  "sources": [
+    {
+      "id": "2048",
+      "famille": "jeux",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/2048/fiche.md",
+          "sha256LF": "d1b4f1d1cb4d74521b41d550542d797d4717d91444fad9f4a013e9d90be44975"
+        },
+        {
+          "chemin": "catalogue/2048/page.html",
+          "sha256LF": "0ea4100e0b67293928eedc54b5912f497d43f477c1edce31781d26f0338b644e"
+        }
+      ]
+    },
+    {
+      "id": "absorbance-et-dosages",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/absorbance-et-dosages/fiche.md",
+          "sha256LF": "64532cc1638e044dc6e5b5fdcf6a3123a9363e6d45625d0cf2ecbe1ce8c04204"
+        },
+        {
+          "chemin": "catalogue/absorbance-et-dosages/contenu.json",
+          "sha256LF": "5f5dba11a455c4b1d5b46bdddce7468ad8a4ccc532cf2a676108a2af300460ae"
+        }
+      ]
+    },
+    {
+      "id": "accords",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/accords/fiche.md",
+          "sha256LF": "e1e29a445c4f867c25f9e88468a7ec25583c0abb23fe880493cbf703c0ad715d"
+        },
+        {
+          "chemin": "catalogue/accords/contenu.json",
+          "sha256LF": "ae3434f8d832d72b3967ed32896607decb7fcc399633da7ea0750df756ef5519"
+        }
+      ]
+    },
+    {
+      "id": "acides-et-bases",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/acides-et-bases/fiche.md",
+          "sha256LF": "0479897af7d18eeb451d2fc72c4b4f83d0218508b27dafe5e1c8654712c8e3b7"
+        },
+        {
+          "chemin": "catalogue/acides-et-bases/contenu.json",
+          "sha256LF": "a9d7f67944c6b368ec398f911289efd0d99d7b70210b2fc8cb636a039d13dc4a"
+        }
+      ]
+    },
+    {
+      "id": "adn-et-division-cellulaire",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/adn-et-division-cellulaire/fiche.md",
+          "sha256LF": "bb7c1582e8c7c4ae8e177d9292c5a5cc7e68237bab40eb29286dbaeb53792b28"
+        },
+        {
+          "chemin": "catalogue/adn-et-division-cellulaire/contenu.json",
+          "sha256LF": "bebaa84920480424c5892cac8f3c0a4db13b955d0ac59a870900dba79e27d671"
+        }
+      ]
+    },
+    {
+      "id": "afrique-australe",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/afrique-australe/fiche.md",
+          "sha256LF": "2d9308ddcee83fe1b740693d718a1b0d389e15e6fb55ba0409d0a11ab3c8c6d2"
+        },
+        {
+          "chemin": "catalogue/afrique-australe/contenu.json",
+          "sha256LF": "bfd1de9d96249db8160d00200affc06bfbc8b12b9f89e3fc15b38e1d5960e34e"
+        }
+      ]
+    },
+    {
+      "id": "agrosystemes-et-sols",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/agrosystemes-et-sols/fiche.md",
+          "sha256LF": "802d37007b5b03a57f3e9db7106e56bf7c33eef919c1acf55279bc0d7b6cb100"
+        },
+        {
+          "chemin": "catalogue/agrosystemes-et-sols/contenu.json",
+          "sha256LF": "5bea0b8d2e7fe8c8f9323cef24ab3077c75a1592e7c932ed4e320a1bae9b9172"
+        }
+      ]
+    },
+    {
+      "id": "analyse-texte",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/analyse-texte/fiche.md",
+          "sha256LF": "1533f74d63a0fa97c851df92e9fb9aefe5aa54d75f4aa40fe15035eca4df8d50"
+        },
+        {
+          "chemin": "catalogue/analyse-texte/contenu.json",
+          "sha256LF": "b6c97d51a65afd8e3c389d6867f55167efa2ec1133bc41f774eacb49625a881f"
+        }
+      ]
+    },
+    {
+      "id": "angles",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/angles/fiche.md",
+          "sha256LF": "d9378d69aed42828e99ae8a17e11f007ef608552fd5c8a74376d1a255ad2e4b0"
+        },
+        {
+          "chemin": "catalogue/angles/contenu.json",
+          "sha256LF": "027f8f72466abd7a078b0b5d1efd7eb5db4466ae28115f442d7a56a5f8c0d9a4"
+        }
+      ]
+    },
+    {
+      "id": "antiquite",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/antiquite/fiche.md",
+          "sha256LF": "6391387598c70cc3915a0a53a933e58caae8a8b4708316d7c8a43d4617351adb"
+        },
+        {
+          "chemin": "catalogue/antiquite/contenu.json",
+          "sha256LF": "632b53c75a279ee4cfd24e55b02c72d814e36ecf2230e6fb6bf84a5f79728920"
+        }
+      ]
+    },
+    {
+      "id": "argumentation",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/argumentation/fiche.md",
+          "sha256LF": "b603dabf7d74190775e0781e6a9d2c57acf3de6868394ee3c1722cf561c0f451"
+        },
+        {
+          "chemin": "catalogue/argumentation/contenu.json",
+          "sha256LF": "2b0896756d11d89507e71cd4d4a503ead566ca4aa59d44915c2f6a6e9ddbd16f"
+        }
+      ]
+    },
+    {
+      "id": "arithmetique",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/arithmetique/fiche.md",
+          "sha256LF": "4b36367b8efa29a5c03ec7b338a5e20b9b64d006e6764b07cd5115e761c863e1"
+        },
+        {
+          "chemin": "catalogue/arithmetique/contenu.json",
+          "sha256LF": "cd69e74e2a996c9617805c62f15b9c927af1ec5e0ee8433b62cd140fe41bbfb3"
+        }
+      ]
+    },
+    {
+      "id": "art",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/art/fiche.md",
+          "sha256LF": "44390c733f8d78d12215c4dd7cde1d357577e24ffbed442e151fa107b770428b"
+        },
+        {
+          "chemin": "catalogue/art/contenu.json",
+          "sha256LF": "102a65ef3f7c13a6b95ec1acedbde4bbf101fd3ff23f9ae7827d75e3d68542f4"
+        }
+      ]
+    },
+    {
+      "id": "atomes-et-molecules",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/atomes-et-molecules/fiche.md",
+          "sha256LF": "b20dbc968987006860ce7b2a0cc6eb3498240cb6277b98f49a95899d3e95d2c7"
+        },
+        {
+          "chemin": "catalogue/atomes-et-molecules/contenu.json",
+          "sha256LF": "6e38c31d4bbefe47d702063931a7490608850ffd9b95f8bb5447b52220f7e0fb"
+        }
+      ]
+    },
+    {
+      "id": "belote",
+      "famille": "jeux",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/belote/fiche.md",
+          "sha256LF": "184857364c17f94a668546d40d3f6ed1aaf4d2c38a30bc8bb867e5aa43c75912"
+        },
+        {
+          "chemin": "catalogue/belote/page.html",
+          "sha256LF": "000a8e6fff65b985cd2faf0cbbb392ecd110fb393119f6a0953223666f34c054"
+        }
+      ]
+    },
+    {
+      "id": "bonheur",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/bonheur/fiche.md",
+          "sha256LF": "8b170f761f5a1def76724493b84c31400163a8b7e91103a2a0632613d30e306b"
+        },
+        {
+          "chemin": "catalogue/bonheur/contenu.json",
+          "sha256LF": "c565904132470164efe0397562fa7ed00c6af1a343a7beae83210d26eef8a124"
+        }
+      ]
+    },
+    {
+      "id": "calcul-litteral",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/calcul-litteral/fiche.md",
+          "sha256LF": "70f8a3e382dcfa1d4c31b581c3028c95f066b83063a5be395e41240b7e971cc5"
+        },
+        {
+          "chemin": "catalogue/calcul-litteral/contenu.json",
+          "sha256LF": "f9d297f4ec9f344fccb20af8f339a2554177ebc1e423c1253ab440b5aecf9552"
+        }
+      ]
+    },
+    {
+      "id": "changement-climatique",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/changement-climatique/fiche.md",
+          "sha256LF": "b85bc8d7f207ba57428781d1624dacf00f1169e3faf409923e731a998e2f6819"
+        },
+        {
+          "chemin": "catalogue/changement-climatique/contenu.json",
+          "sha256LF": "ebeadc89465362550626241e34b1cf402dbf990fbaee866d8b643e4e8df18f41"
+        }
+      ]
+    },
+    {
+      "id": "chomage",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/chomage/fiche.md",
+          "sha256LF": "d388e91675a98e44395cbec2766f95983b368f732a806d0b0c9d91c36f95a058"
+        },
+        {
+          "chemin": "catalogue/chomage/contenu.json",
+          "sha256LF": "5816c1e049da0fafddf678ae1f9f5bf4f77c34c06d70c47036040538ec919805"
+        }
+      ]
+    },
+    {
+      "id": "cinetique-chimique",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/cinetique-chimique/fiche.md",
+          "sha256LF": "473a4455ab06d800d7a45432741cd9ffe7bfcb889efbfe73e7b05cf0314c18c4"
+        },
+        {
+          "chemin": "catalogue/cinetique-chimique/contenu.json",
+          "sha256LF": "23da071181cc6048eda99f9583701a0c68089e6c7bc3eabf21f3f05df76117a9"
+        }
+      ]
+    },
+    {
+      "id": "citoyennete",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/citoyennete/fiche.md",
+          "sha256LF": "65139b86bac107f0ef34b57e3aaa22a23332ed9ab8fd782bda8c38388c6491a1"
+        },
+        {
+          "chemin": "catalogue/citoyennete/contenu.json",
+          "sha256LF": "a24b4df257657fb8edc40b20ce4f36fc5432065d5f2ceab9ff590b4dbf4702e1"
+        }
+      ]
+    },
+    {
+      "id": "climat-et-effet-de-serre",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/climat-et-effet-de-serre/fiche.md",
+          "sha256LF": "843b9a88dcfed928da2cc337c52a5d9693d62cfd7066c539db3da9925b62d5f5"
+        },
+        {
+          "chemin": "catalogue/climat-et-effet-de-serre/contenu.json",
+          "sha256LF": "4a3d5665e1d095bdb7784822945a0ca32cb49775fd9b91b889f59353d378c69c"
+        }
+      ]
+    },
+    {
+      "id": "condensateur-et-circuit-rc",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/condensateur-et-circuit-rc/fiche.md",
+          "sha256LF": "a19fd07010b3f431bcb20464c53d9f7b7e2e79145c3fd3dbec09849e027d567f"
+        },
+        {
+          "chemin": "catalogue/condensateur-et-circuit-rc/contenu.json",
+          "sha256LF": "5c117b799d6958b4422810a59ff54809da9b0d05194476bf3aa6c7a9fedd2829"
+        }
+      ]
+    },
+    {
+      "id": "conjugaison-temps",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/conjugaison-temps/fiche.md",
+          "sha256LF": "f4b07e6539553d615787de588d7f6be6ec15bf30592d3650e9d502246a021e59"
+        },
+        {
+          "chemin": "catalogue/conjugaison-temps/contenu.json",
+          "sha256LF": "cffcd7acf245d1b1fb07b92ad4696295ac2269af3920500e97f76b12e39dd8e3"
+        }
+      ]
+    },
+    {
+      "id": "conscience",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/conscience/fiche.md",
+          "sha256LF": "ac16ab97d3dc4f79898b06ba557357f79f5878a39e030efdd3f976e5f1b49906"
+        },
+        {
+          "chemin": "catalogue/conscience/contenu.json",
+          "sha256LF": "804fac6ef6c748d519b0f8cd19a95172524d5c8c55abb4ae3cb2ce0b66c42997"
+        }
+      ]
+    },
+    {
+      "id": "construction-europeenne",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/construction-europeenne/fiche.md",
+          "sha256LF": "f8934b382731908cc874329383aa512027e6add6e8e4d2e6d6337d277d80e075"
+        },
+        {
+          "chemin": "catalogue/construction-europeenne/contenu.json",
+          "sha256LF": "61e9166a39d327756bf15fc516329b31d99ba794bf78b5d9d3b0fbb6483999a8"
+        }
+      ]
+    },
+    {
+      "id": "contraction-musculaire",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/contraction-musculaire/fiche.md",
+          "sha256LF": "0a95906f93023ad46fc34a5e09430ed3bada3055a40f5bf02ff46806f7b37137"
+        },
+        {
+          "chemin": "catalogue/contraction-musculaire/contenu.json",
+          "sha256LF": "7190ecccede2502036a0811904856da28d4f2991107cbe9e99ac5193c6ddc776"
+        }
+      ]
+    },
+    {
+      "id": "croissance-economique",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/croissance-economique/fiche.md",
+          "sha256LF": "87e5514608a8a66b0fffa9a35572e96afdf2c4a6b3ff872793dea472f7f36d7b"
+        },
+        {
+          "chemin": "catalogue/croissance-economique/contenu.json",
+          "sha256LF": "11a18ad28afba2ca0267e1b04ef20ad1c30a09b540baf29414380fc7e1c73593"
+        }
+      ]
+    },
+    {
+      "id": "decolonisation",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/decolonisation/fiche.md",
+          "sha256LF": "8cf57ed630bd02103bf0d29189bed3be5483d4d7547f68e8a40726403929cb86"
+        },
+        {
+          "chemin": "catalogue/decolonisation/contenu.json",
+          "sha256LF": "72023991549c8927dbf17b63f24a264968051fa6ec1a04a3ac95bab39e676522"
+        }
+      ]
+    },
+    {
+      "id": "demineur",
+      "famille": "jeux",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/demineur/fiche.md",
+          "sha256LF": "0b3ee84ec0f5f24d466afe2d21cead7558c6e6726c60d06970cdb180af359245"
+        },
+        {
+          "chemin": "catalogue/demineur/page.html",
+          "sha256LF": "867e05bc5f95e704b01572ebc42a9258534d2253298f3a09fd1310dca6ab6ba8"
+        }
+      ]
+    },
+    {
+      "id": "democratie",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/democratie/fiche.md",
+          "sha256LF": "be09e7b56791f47e1d5d7af72b25286555a6b51715a3410ee9ebc1b32649f7ae"
+        },
+        {
+          "chemin": "catalogue/democratie/contenu.json",
+          "sha256LF": "e9ed1a6da91e153c9ad05db95a8970ee59141fe6b0f94398a75b0848d09d92e4"
+        }
+      ]
+    },
+    {
+      "id": "denombrement",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/denombrement/fiche.md",
+          "sha256LF": "3ee38deee6d8f6d81967e912262e52c35c81bfb1f38d52a31024290c98267182"
+        },
+        {
+          "chemin": "catalogue/denombrement/contenu.json",
+          "sha256LF": "2823ef4723163b0e15881b6f63473776a4295836079135f96521d7fed7e8b9b0"
+        }
+      ]
+    },
+    {
+      "id": "derivation",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/derivation/fiche.md",
+          "sha256LF": "e9d4d448b52949ea3a4d6ba33ac5082dd8c3beb0e678a172d6f8f2511016a579"
+        },
+        {
+          "chemin": "catalogue/derivation/contenu.json",
+          "sha256LF": "c789a92cc1895712e9aacf4673e918b8e176483e54d1809a401804bc34356b20"
+        }
+      ]
+    },
+    {
+      "id": "devoir",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/devoir/fiche.md",
+          "sha256LF": "802e177867b8d70596b91fb3a6006ce0ad83f3f1f73b625fbf4e232ca7e49347"
+        },
+        {
+          "chemin": "catalogue/devoir/contenu.json",
+          "sha256LF": "e875f2c1950e04bddec7278db3ce8bef473599e432c62aa35098c91ada2f2eb6"
+        }
+      ]
+    },
+    {
+      "id": "diffraction-et-interferences",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/diffraction-et-interferences/fiche.md",
+          "sha256LF": "0debf215f7911734c53791784f9290089bf7291c3f49cd1bb938eec8e6b9a8f2"
+        },
+        {
+          "chemin": "catalogue/diffraction-et-interferences/contenu.json",
+          "sha256LF": "e37ad1821c1697d0d051f744d762ca5e409b3abf79864cbb5cee176bed8faf68"
+        }
+      ]
+    },
+    {
+      "id": "discrimination",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/discrimination/fiche.md",
+          "sha256LF": "6b06b15f8e58c7e4359674fe4536d3b604ea00014d341877a0addb68c6ba27fb"
+        },
+        {
+          "chemin": "catalogue/discrimination/contenu.json",
+          "sha256LF": "9f3b051b7fccf1c594204de0ceae7c8da1c84e45bc783620e20ec04d46aaffa6"
+        }
+      ]
+    },
+    {
+      "id": "droites-et-systemes",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/droites-et-systemes/fiche.md",
+          "sha256LF": "3338b44c141d819ef6c74601daadbce161829732253ab20bf14d6d52338435c6"
+        },
+        {
+          "chemin": "catalogue/droites-et-systemes/contenu.json",
+          "sha256LF": "28416db4034b45b50e5eafe5a19c144a935b4d02db8af30f1fc11da85beefe69"
+        }
+      ]
+    },
+    {
+      "id": "droits-de-lhomme",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/droits-de-lhomme/fiche.md",
+          "sha256LF": "8e170dcea9d0e4aabacca1be13331c40ccf20a311338081dde0110aa8cc6f460"
+        },
+        {
+          "chemin": "catalogue/droits-de-lhomme/contenu.json",
+          "sha256LF": "a3d2b9ebd0f4aa3a173689f48fc2d97d3b94ea527efcafdd0f4fdaa7d80b3e43"
+        }
+      ]
+    },
+    {
+      "id": "dynamiques-territoriales",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/dynamiques-territoriales/fiche.md",
+          "sha256LF": "ffdfd34af3b1b5341e14524a16af15928ee72ccee853d2cca243e61da4e15af5"
+        },
+        {
+          "chemin": "catalogue/dynamiques-territoriales/contenu.json",
+          "sha256LF": "85a39836dd55a5396b0906d54138adc8183ba398930307b92736b5d1e647e216"
+        }
+      ]
+    },
+    {
+      "id": "echecs",
+      "famille": "jeux",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/echecs/fiche.md",
+          "sha256LF": "55398d6ba0eba97f320a4b26826d4ca7f5e8afac09b9631bca27edf53e295c20"
+        },
+        {
+          "chemin": "catalogue/echecs/page.html",
+          "sha256LF": "45dcc3fd87183b8767b387fc6bb0010449e18f9c1c6705859eecdd98ff9d9d05"
+        }
+      ]
+    },
+    {
+      "id": "ecosystemes-et-biodiversite",
+      "famille": "svt",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/ecosystemes-et-biodiversite/fiche.md",
+          "sha256LF": "8815e0612fe2d165b451af6a03009e16af791fca311786c16f72d2536b245d4b"
+        },
+        {
+          "chemin": "catalogue/ecosystemes-et-biodiversite/contenu.json",
+          "sha256LF": "83088a148088b805a6e0e10faf4c4c55fd7be2bcb6385d21b8b935adbe066cd9"
+        }
+      ]
+    },
+    {
+      "id": "egalite",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/egalite/fiche.md",
+          "sha256LF": "bef22b62fa8745882b48359451b51854eca9a63b4b7a1b2a7fd339ac79df075c"
+        },
+        {
+          "chemin": "catalogue/egalite/contenu.json",
+          "sha256LF": "9c46c5ba4c7dfad48a021efd8e139dc94dd156b16fea2a7be17026c707c6a6f5"
+        }
+      ]
+    },
+    {
+      "id": "electricite",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/electricite/fiche.md",
+          "sha256LF": "643de635aeea1de07abd45d20b67b77ac737ecbd476abd7afa8ae8d8991bddd6"
+        },
+        {
+          "chemin": "catalogue/electricite/contenu.json",
+          "sha256LF": "ade08056e52b39f4d426761651505741420d47c514de36a144c8065fde4a72c6"
+        }
+      ]
+    },
+    {
+      "id": "energie",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/energie/fiche.md",
+          "sha256LF": "8c714d1d20437cf7b86aa4588decfd6d01ec227ab6cffeb010af2f1729932c93"
+        },
+        {
+          "chemin": "catalogue/energie/contenu.json",
+          "sha256LF": "532ef31bff5725fa665b41146920305c70df36cc7c3e81af5f4c7575eff376ac"
+        }
+      ]
+    },
+    {
+      "id": "energie-mecanique",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/energie-mecanique/fiche.md",
+          "sha256LF": "6a92922f2820c7e28ffeb1ac672ae12d98276b7b7e367b14eebbf8ad7b9c2952"
+        },
+        {
+          "chemin": "catalogue/energie-mecanique/contenu.json",
+          "sha256LF": "86870549ce451f949ecdda122c06271794eeb69224945caf3459ab29fd8aa4e4"
+        }
+      ]
+    },
+    {
+      "id": "engagement-civique",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/engagement-civique/fiche.md",
+          "sha256LF": "f9c9916ed84e07c8d994350adecf5ad05d0b5ad87685dd54c4ba61f3c4fb1cee"
+        },
+        {
+          "chemin": "catalogue/engagement-civique/contenu.json",
+          "sha256LF": "9c5380cc2f3d738cd0bfdee9ee83eb9165d33c2a08be0f8aa1c43e92bb51a457"
+        }
+      ]
+    },
+    {
+      "id": "equations",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/equations/fiche.md",
+          "sha256LF": "b03b3e8cb261150c12e1379a8b50bf1928075db9bb8283cc76bf2511ba51037e"
+        },
+        {
+          "chemin": "catalogue/equations/contenu.json",
+          "sha256LF": "190620f0ac72c96145f5b93ae67db288c071a85c927eae35d1ea93adf4f9895b"
+        }
+      ]
+    },
+    {
+      "id": "espaces-productifs",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/espaces-productifs/fiche.md",
+          "sha256LF": "9d0eebe04b90c8235683f576a15e73ea95e967fb044dde7399a2ba4fc728f2ac"
+        },
+        {
+          "chemin": "catalogue/espaces-productifs/contenu.json",
+          "sha256LF": "e7194b783a5335d88501e5e29727332acb0c3b0f45e8d778371624d335287afe"
+        }
+      ]
+    },
+    {
+      "id": "espaces-ruraux",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/espaces-ruraux/fiche.md",
+          "sha256LF": "5292e2f967cbecbe9c1a2b33234c6de7cee59bfc95d49cb0849bb7087ce736c3"
+        },
+        {
+          "chemin": "catalogue/espaces-ruraux/contenu.json",
+          "sha256LF": "4f9143ef4ccc9eeb64eb80caa48faca225c508f98ea657aa329115c5bdcf6692"
+        }
+      ]
+    },
+    {
+      "id": "etat",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/etat/fiche.md",
+          "sha256LF": "499d3cfee85bcd41d1df6d66389d151175cb5b7af333f0c63db181576c4570fd"
+        },
+        {
+          "chemin": "catalogue/etat/contenu.json",
+          "sha256LF": "512f1f5bbf6ee4d732b4e176bc80efbc3ccaccf05ac2244abc92f3177771a8ed"
+        }
+      ]
+    },
+    {
+      "id": "etat-de-droit",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/etat-de-droit/fiche.md",
+          "sha256LF": "7ed7c9dce94dc47b97914a898e3e3ffac76bd99499bdfd12abe021e913b9c7ff"
+        },
+        {
+          "chemin": "catalogue/etat-de-droit/contenu.json",
+          "sha256LF": "12792b6283db538f12a666085d5e147fec0cb7f3b01b8af04dff0e223f9992be"
+        }
+      ]
+    },
+    {
+      "id": "etats-de-la-matiere",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/etats-de-la-matiere/fiche.md",
+          "sha256LF": "b529f5b845c9175d56832c5587607d5e43e83f8838f7aa4d451d6be17c66b487"
+        },
+        {
+          "chemin": "catalogue/etats-de-la-matiere/contenu.json",
+          "sha256LF": "9d572b86b5b7effd4d296b8e72ce7e13c8a28568d9c1e3c1293c267a75e0531f"
+        }
+      ]
+    },
+    {
+      "id": "evolution",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/evolution/fiche.md",
+          "sha256LF": "f87517eef33f2e9c55c9e027a4668bb23bf0a6faed4382e301de33f0717ed9d6"
+        },
+        {
+          "chemin": "catalogue/evolution/contenu.json",
+          "sha256LF": "e03ba290895b225c4905a7ead59eb7179704b08ca1e409f147d7c2985b0a57d5"
+        }
+      ]
+    },
+    {
+      "id": "evolution-et-selection-naturelle",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/evolution-et-selection-naturelle/fiche.md",
+          "sha256LF": "9dcc9db4bc3c63f7755be5965d7a2a856d7f96377ed79b28a341fe39357c6c46"
+        },
+        {
+          "chemin": "catalogue/evolution-et-selection-naturelle/contenu.json",
+          "sha256LF": "df18cd65ec9f98e341c6cd040fc638c3cff7408dc7cd96c49c75ef32830c5213"
+        }
+      ]
+    },
+    {
+      "id": "exponentielle",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/exponentielle/fiche.md",
+          "sha256LF": "f79795632a74da7be3934204ebdff69f6b019b2f534c7e54c4962a337a4ed300"
+        },
+        {
+          "chemin": "catalogue/exponentielle/contenu.json",
+          "sha256LF": "5f4aa3aa9c92b2f3c868ef695f76fcee355aa54ffdaa2bf95fc9a19b8850fc4e"
+        }
+      ]
+    },
+    {
+      "id": "expression-genetique",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/expression-genetique/fiche.md",
+          "sha256LF": "f6e0dd64888fcc09707706876426966d1b03183f51bca42234094ab54a23c61d"
+        },
+        {
+          "chemin": "catalogue/expression-genetique/contenu.json",
+          "sha256LF": "731b38c0d2ada919b630feadbaeebec0f71fd562075403f7587da13a13408b35"
+        }
+      ]
+    },
+    {
+      "id": "figures-de-style",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/figures-de-style/fiche.md",
+          "sha256LF": "1d5a5e62c1f0633e18c455d261bb296e293913732d5e3cb17c88ebecedba54b4"
+        },
+        {
+          "chemin": "catalogue/figures-de-style/contenu.json",
+          "sha256LF": "cb24de55e0ef3d373be762a4a422bd109ce4bc9b3f6fc0d6a0776ae33c774c29"
+        }
+      ]
+    },
+    {
+      "id": "fonctions-affines",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/fonctions-affines/fiche.md",
+          "sha256LF": "496164f9a5a9bec2dc2b64160ea6e8482054d81230ce8b1d378575884ef01b3a"
+        },
+        {
+          "chemin": "catalogue/fonctions-affines/contenu.json",
+          "sha256LF": "62f2f8f548d56400e43b749c17c8386c1a032c4d6cd97a44df1dd19667c0289c"
+        }
+      ]
+    },
+    {
+      "id": "fonctions-de-reference",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/fonctions-de-reference/fiche.md",
+          "sha256LF": "c4e3cce6f7b36530d8492782f1798d257d01ca1c4c3e289d272734e0816ec089"
+        },
+        {
+          "chemin": "catalogue/fonctions-de-reference/contenu.json",
+          "sha256LF": "eb21c86118df61509e73e3c142398928d7f6a2a4c0d584e3fcea092909160011"
+        }
+      ]
+    },
+    {
+      "id": "forces-et-poids",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/forces-et-poids/fiche.md",
+          "sha256LF": "a810d4462b5d89905a20930c3ee23199511e1718031efff1b1e9c4d8cf570b20"
+        },
+        {
+          "chemin": "catalogue/forces-et-poids/contenu.json",
+          "sha256LF": "01f86ef4d9e696466072902c2f9481c968a003d0b18519df27439d19101101b9"
+        }
+      ]
+    },
+    {
+      "id": "fractions",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/fractions/fiche.md",
+          "sha256LF": "e16dd8fea84b3409d9adb4855940f08fed09eef2155b3ef2a16beefc279c2455"
+        },
+        {
+          "chemin": "catalogue/fractions/contenu.json",
+          "sha256LF": "0c287a5a59c2bfc5bdc52f5d51e96b13eca995dd0b4740dddd901aa868f1580f"
+        }
+      ]
+    },
+    {
+      "id": "france-regions",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/france-regions/fiche.md",
+          "sha256LF": "5015aedb6722af75ed33e34e76f9fd9afa4138533e5d35e09337fd18015613d4"
+        },
+        {
+          "chemin": "catalogue/france-regions/contenu.json",
+          "sha256LF": "ea4f3d55c9130390f18b150eab6ca53da964cd203c2d81ae897d98780aa699a7"
+        }
+      ]
+    },
+    {
+      "id": "france-territoires",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/france-territoires/fiche.md",
+          "sha256LF": "46872d93a81e635089740515d92cab8212515596a13e005dba647428d7bbcf4e"
+        },
+        {
+          "chemin": "catalogue/france-territoires/contenu.json",
+          "sha256LF": "93630e450b540d0acec52401f559dab624aaaec280f0d54e1c31e1349aadab1e"
+        }
+      ]
+    },
+    {
+      "id": "fraternite",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/fraternite/fiche.md",
+          "sha256LF": "65a2cee601f80e3dbf7f543278cf2cb802c29d8f323b1489849c37460a587e9b"
+        },
+        {
+          "chemin": "catalogue/fraternite/contenu.json",
+          "sha256LF": "c1a839fada3d565be9d8389bc202f30987c26acabf386952d4d1ed421a11a1aa"
+        }
+      ]
+    },
+    {
+      "id": "genetique-et-heredite",
+      "famille": "svt",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/genetique-et-heredite/fiche.md",
+          "sha256LF": "a397dbc487a0ac91e307f5e6541519a422e85b43c5bc62c7a9e7ca86e0251d48"
+        },
+        {
+          "chemin": "catalogue/genetique-et-heredite/contenu.json",
+          "sha256LF": "6dfc362245abfc164c97fc415a46aa41892cf6df8f0ef5571209913ebe904ffb"
+        }
+      ]
+    },
+    {
+      "id": "geometrie-dans-l-espace",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/geometrie-dans-l-espace/fiche.md",
+          "sha256LF": "704157766e54cbf9fab1048d7f8059bc1ee73176411dbe76b7846f232c663383"
+        },
+        {
+          "chemin": "catalogue/geometrie-dans-l-espace/contenu.json",
+          "sha256LF": "e967c656e88886b0113619b7eee0484146255bba6b7c0cfa5f5213e35b62d790"
+        }
+      ]
+    },
+    {
+      "id": "glycemie-et-diabete",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/glycemie-et-diabete/fiche.md",
+          "sha256LF": "e9843c9efcbd3a21a26dcf75860fd2c7bf332d2c8a50c48509db9561c533d94d"
+        },
+        {
+          "chemin": "catalogue/glycemie-et-diabete/contenu.json",
+          "sha256LF": "460c2b13dc2d2d659fb73f723e39afa670578fd84c32065e0058b335a14efcd9"
+        }
+      ]
+    },
+    {
+      "id": "grammaire-phrase-complexe",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/grammaire-phrase-complexe/fiche.md",
+          "sha256LF": "bf806a977c02f2b2828c44945b7e3ee035971814912ffaec0c27cbafb77335d6"
+        },
+        {
+          "chemin": "catalogue/grammaire-phrase-complexe/contenu.json",
+          "sha256LF": "8467b898a5b445e751554f7dad55dcda0f2d9e1b11dd2190f4e8d05f82309b41"
+        }
+      ]
+    },
+    {
+      "id": "gravitation-et-satellites",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/gravitation-et-satellites/fiche.md",
+          "sha256LF": "9ebd29ff84c2ec00ff006e9a6e682796c6472bb96999827c47d3792a441892bc"
+        },
+        {
+          "chemin": "catalogue/gravitation-et-satellites/contenu.json",
+          "sha256LF": "a2de526b7e6045d7643f8cacb8af93408912fa6cbcffc4a9113ae0a1d9817d12"
+        }
+      ]
+    },
+    {
+      "id": "guerre-froide",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/guerre-froide/fiche.md",
+          "sha256LF": "5d8d493094865789aab29f1ca6d5ccfef9abf4709468bfbf464d708db4e9bf68"
+        },
+        {
+          "chemin": "catalogue/guerre-froide/contenu.json",
+          "sha256LF": "e0a6a95778da825c03fa1f26791fc3950fa4fb3ff27edecebd235c7e1816d989"
+        }
+      ]
+    },
+    {
+      "id": "histoire-de-la-terre-et-datation",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/histoire-de-la-terre-et-datation/fiche.md",
+          "sha256LF": "d1248c5a9963a0917712425492136cc2708bfb4a9497dab50c61f981088a84a2"
+        },
+        {
+          "chemin": "catalogue/histoire-de-la-terre-et-datation/contenu.json",
+          "sha256LF": "1ce4c75fb7fbd3a1a53fb34f01c98350d4548a680c089b83eb7e707b1b9bf3de"
+        }
+      ]
+    },
+    {
+      "id": "immunite-adaptative",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/immunite-adaptative/fiche.md",
+          "sha256LF": "0d298a1fb4057c323d5223c50538c59bf8071c3c3b402f19e663f601bb029026"
+        },
+        {
+          "chemin": "catalogue/immunite-adaptative/contenu.json",
+          "sha256LF": "2d811aa83d1ac51cd3e53c34ed2e7c7e76ea9462873945aa4d419d580b725f5a"
+        }
+      ]
+    },
+    {
+      "id": "inconscient",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/inconscient/fiche.md",
+          "sha256LF": "6fd7e692edc8cb85a5d589cb6258bf3470fb8e995b1e50628a0a316ee9bb0668"
+        },
+        {
+          "chemin": "catalogue/inconscient/contenu.json",
+          "sha256LF": "c3387390f4b3250a8b61ad871a007bc35a703d841fd844d704cacda2b6f0c13c"
+        }
+      ]
+    },
+    {
+      "id": "inegalites",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/inegalites/fiche.md",
+          "sha256LF": "6abb80b7859677931492de750c995b1e1822d6d89df1355ebbacb65fb07b3488"
+        },
+        {
+          "chemin": "catalogue/inegalites/contenu.json",
+          "sha256LF": "8f1543bc1a65a9e9ab4edfc8008ab2cfb7e9d61788667b31f1f3816c26aeaaa1"
+        }
+      ]
+    },
+    {
+      "id": "integrales",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/integrales/fiche.md",
+          "sha256LF": "12cf4ac6df86ede891e8d07c1e2c95a2fdd39893fe34890b2e4f6b910754ab86"
+        },
+        {
+          "chemin": "catalogue/integrales/contenu.json",
+          "sha256LF": "b5451753ea50e619ad2371ee76a413d7c26d180ab4a1b01bc502fcdd8ce3301f"
+        }
+      ]
+    },
+    {
+      "id": "interet-general",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/interet-general/fiche.md",
+          "sha256LF": "59fb832fc74140888a897d25cae16417c1d5b8a76910da4c4cdf4a51fc602671"
+        },
+        {
+          "chemin": "catalogue/interet-general/contenu.json",
+          "sha256LF": "b57add461bcc99c1e9ca06def5c7cc2ceb302c0e66238622917e11eb2c57aa6f"
+        }
+      ]
+    },
+    {
+      "id": "justice",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/justice/fiche.md",
+          "sha256LF": "9bfb83611a27302f93e742ca8bc4f4be1c83fe8e14a22fe0f4e92c8ce0a6e699"
+        },
+        {
+          "chemin": "catalogue/justice/contenu.json",
+          "sha256LF": "29aec4b8f1d3e576dadbdf9ee2bd655f920ce0d0c1ead4c0cdc413cb17cf7c3d"
+        }
+      ]
+    },
+    {
+      "id": "justice-philosophie",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/justice-philosophie/fiche.md",
+          "sha256LF": "4ec7f409b6be2f94d87da025ddd844122d2bf896cf4cb861697d3d0cb7eb98f0"
+        },
+        {
+          "chemin": "catalogue/justice-philosophie/contenu.json",
+          "sha256LF": "2518356760eb8e5a5edf91989a948aa22b3d5e0d4482303fd54fa414ebc3fda7"
+        }
+      ]
+    },
+    {
+      "id": "justice-sociale",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/justice-sociale/fiche.md",
+          "sha256LF": "1cc311b27ed6e63b86fc9c35e7f9fc433dc0ee4eeac0cd7c5049f6cadf43cb82"
+        },
+        {
+          "chemin": "catalogue/justice-sociale/contenu.json",
+          "sha256LF": "8d2e4c573bc69cca5c07a22c91f5c467d81cc3c2541b33aa5fe0c1a53010d3e3"
+        }
+      ]
+    },
+    {
+      "id": "la-cellule",
+      "famille": "svt",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/la-cellule/fiche.md",
+          "sha256LF": "8e46b23ee8c6d3e9be7cb911f4b4759683c828d533ea290c4d90c1e2e238fc7c"
+        },
+        {
+          "chemin": "catalogue/la-cellule/contenu.json",
+          "sha256LF": "04d8e942fe29a4c52c8b7a56823cad4436cb310ca11f79980e223522319b1d6f"
+        }
+      ]
+    },
+    {
+      "id": "laicite",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/laicite/fiche.md",
+          "sha256LF": "9a9fb6f623287fea467faaedacfbad789dccc66c6b1bde6108abd4154bc00358"
+        },
+        {
+          "chemin": "catalogue/laicite/contenu.json",
+          "sha256LF": "3d302e5741816a0c9acb75f95024b6b2a489a512d63aba2f206b25d9d223dd58"
+        }
+      ]
+    },
+    {
+      "id": "langage",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/langage/fiche.md",
+          "sha256LF": "20dd23ed967430a6a57facf4139c6c803532316e26ba19a09725ab9c89969e77"
+        },
+        {
+          "chemin": "catalogue/langage/contenu.json",
+          "sha256LF": "41e78611db461b4b20735567828f6b42502988b1ebbb6b5114f5d8a5f92677b7"
+        }
+      ]
+    },
+    {
+      "id": "liberte",
+      "famille": "emc",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/liberte/fiche.md",
+          "sha256LF": "08ea02eb4e0487a614c026ed6fc6f76d6fe6dd566b8d21c85aa6654af4937cf2"
+        },
+        {
+          "chemin": "catalogue/liberte/contenu.json",
+          "sha256LF": "5bde078efbe2c6baf70a6b7e70018240a1bc3c8617e6e40769a53b1785a38fe1"
+        }
+      ]
+    },
+    {
+      "id": "liberte-philosophie",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/liberte-philosophie/fiche.md",
+          "sha256LF": "d0cc047f5765e4754b76ed2fe4b83440697964a87ac5a3caba253121f7529208"
+        },
+        {
+          "chemin": "catalogue/liberte-philosophie/contenu.json",
+          "sha256LF": "4870f4ef1b12819635aacfb9ca4e3f6b8f0f6a106724151cf2b6e9267433c967"
+        }
+      ]
+    },
+    {
+      "id": "limites-et-continuite",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/limites-et-continuite/fiche.md",
+          "sha256LF": "187e9cab06c27777583fd6ffe5a59ed7e8450e80bd4ff6440b7d46f785fc3350"
+        },
+        {
+          "chemin": "catalogue/limites-et-continuite/contenu.json",
+          "sha256LF": "7c4c92068822b18a9b7106506effcf94eca20444b72d57f0e79ffa867ee0beaa"
+        }
+      ]
+    },
+    {
+      "id": "litterature-didees",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/litterature-didees/fiche.md",
+          "sha256LF": "55f5c979b9928abf5e5f5cf697977df04eb922077510c40ef47d00e995815902"
+        },
+        {
+          "chemin": "catalogue/litterature-didees/contenu.json",
+          "sha256LF": "057262f219a240c877c05294883111a24c8422772c9985eef443c85e9d6f36dd"
+        }
+      ]
+    },
+    {
+      "id": "logarithme",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/logarithme/fiche.md",
+          "sha256LF": "205d5d47de5b84495f2b54fdf930407697a5e4dfe8f1b242e0e00641b52396e7"
+        },
+        {
+          "chemin": "catalogue/logarithme/contenu.json",
+          "sha256LF": "cd5e93a60f3650dc26aaf579c8f46f4b69897379f618d6f2eec54b47e7ad6019"
+        }
+      ]
+    },
+    {
+      "id": "loi-binomiale",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/loi-binomiale/fiche.md",
+          "sha256LF": "d96afe6b3a8f5080b2754b44c3faadebc7bb231772d5ff9b8364e919605abfe2"
+        },
+        {
+          "chemin": "catalogue/loi-binomiale/contenu.json",
+          "sha256LF": "41d9807d8384cf2c9b805ad8fdfab631b9fa9cbfdc13344c5bd97645a74793de"
+        }
+      ]
+    },
+    {
+      "id": "lois-de-newton",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/lois-de-newton/fiche.md",
+          "sha256LF": "39e49b916763b4b2557162d9dc6e999b9aa62feb2103f71eb63634813cc7896e"
+        },
+        {
+          "chemin": "catalogue/lois-de-newton/contenu.json",
+          "sha256LF": "aeb08e5619d51c1a1af76e05044d49f20e8264e9f9ea870c77ff2d1b3b24a3a6"
+        }
+      ]
+    },
+    {
+      "id": "lumieres",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/lumieres/fiche.md",
+          "sha256LF": "9b58d292fd8b597b15aa72f249e6bff67ae494581c7711e742ba35e909e39bb0"
+        },
+        {
+          "chemin": "catalogue/lumieres/contenu.json",
+          "sha256LF": "cb9e0693ed9be26854b3497afc99e540e4eaaf5ddb47b82c9fc33f8684ec14bc"
+        }
+      ]
+    },
+    {
+      "id": "marche-concurrentiel",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/marche-concurrentiel/fiche.md",
+          "sha256LF": "121495bbfcf9202d98fda967018fb81d304e512e9d26b8584ee58b8143dfe232"
+        },
+        {
+          "chemin": "catalogue/marche-concurrentiel/contenu.json",
+          "sha256LF": "d04edef4a3d8d3fbdc0955500a8867f0d1554e1e60e1c8213d7f8273a83576ad"
+        }
+      ]
+    },
+    {
+      "id": "masse-volumique-et-melanges",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/masse-volumique-et-melanges/fiche.md",
+          "sha256LF": "767c627b6d69f8834860958e9489e343c364c1740e1db45285cfc52393fa9e8f"
+        },
+        {
+          "chemin": "catalogue/masse-volumique-et-melanges/contenu.json",
+          "sha256LF": "df61cfb145f7846d7ab56435cb00187b7243813aca98c8317b96195fe29a5224"
+        }
+      ]
+    },
+    {
+      "id": "meiose-et-brassage-genetique",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/meiose-et-brassage-genetique/fiche.md",
+          "sha256LF": "6e848d74255acc6255eec03daaff18928393b30493bc3fd5493412461c38533a"
+        },
+        {
+          "chemin": "catalogue/meiose-et-brassage-genetique/contenu.json",
+          "sha256LF": "9440ec262b1be1e97253861d03d622a9bed3e808c31c91b5646978babf24af2e"
+        }
+      ]
+    },
+    {
+      "id": "mers-oceans",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mers-oceans/fiche.md",
+          "sha256LF": "710aab635d136aa149ff2fed5b87c0a2fa41dafc1422e3d291bcce0f6966a4cb"
+        },
+        {
+          "chemin": "catalogue/mers-oceans/contenu.json",
+          "sha256LF": "cd0530d633081639cf69652c0ef8cb184dbb224804bf6571c5d60efa8a91a53a"
+        }
+      ]
+    },
+    {
+      "id": "metabolisme-et-enzymes",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/metabolisme-et-enzymes/fiche.md",
+          "sha256LF": "dbfbcd20b1937f4d174d248e498a0cc9e9c3564fc2373e3dbcc7c8a63d0c96ce"
+        },
+        {
+          "chemin": "catalogue/metabolisme-et-enzymes/contenu.json",
+          "sha256LF": "7280ff167e93f0a2d9c5cb112a5b0a01a5c0fa0d377e7ca04e2a82d068e4c956"
+        }
+      ]
+    },
+    {
+      "id": "metropolisation",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/metropolisation/fiche.md",
+          "sha256LF": "32dca614783204fcb581849a246b21e2ef6b02784230e4eb508fba936bfa30fa"
+        },
+        {
+          "chemin": "catalogue/metropolisation/contenu.json",
+          "sha256LF": "bc562a7aad82f7b0dfb1569c466f13bfbce091947f090e041420c918b88ba085"
+        }
+      ]
+    },
+    {
+      "id": "migrations",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/migrations/fiche.md",
+          "sha256LF": "7b03862380e510741ec762f7d834b9f0cf25d941cb3420c4cc4340bf270ee4e9"
+        },
+        {
+          "chemin": "catalogue/migrations/contenu.json",
+          "sha256LF": "04f35ee7e904b6371682b383f7bad26ee17446bac43feab5fdda3eae741e07be"
+        }
+      ]
+    },
+    {
+      "id": "mobilite-sociale",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mobilite-sociale/fiche.md",
+          "sha256LF": "9b3c5b0d600d7cc21f230fff4d292f6970042615237c9b25b9124cf20ea5eb4a"
+        },
+        {
+          "chemin": "catalogue/mobilite-sociale/contenu.json",
+          "sha256LF": "a6aa14764f0049f3118bd21186f39ff4b8cd4034543e464c5fa36354f6f56b3a"
+        }
+      ]
+    },
+    {
+      "id": "mobilites",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mobilites/fiche.md",
+          "sha256LF": "0ef806d676efc55c458ee2925fd110733897bb75e9a2f6b695989b883e2e3bfb"
+        },
+        {
+          "chemin": "catalogue/mobilites/contenu.json",
+          "sha256LF": "49efd1812e0c58f995f04af1e792a2e97db7224569439b14adfebb58450d1f6d"
+        }
+      ]
+    },
+    {
+      "id": "monde-depuis-1990",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/monde-depuis-1990/fiche.md",
+          "sha256LF": "5d4a418f1b8e6e170e18e46394bc10a600f5d20b6b21796b7e0020723b1e45da"
+        },
+        {
+          "chemin": "catalogue/monde-depuis-1990/contenu.json",
+          "sha256LF": "c02e95ac674967fc370d3ead26e3e35af2d78e6dc312649dc388ae4434cbee40"
+        }
+      ]
+    },
+    {
+      "id": "mondialisation",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mondialisation/fiche.md",
+          "sha256LF": "8cb886d16f89598f414f0df0a3c1b3c79765ff2dcf1e28ef16c1aa3df86b6106"
+        },
+        {
+          "chemin": "catalogue/mondialisation/contenu.json",
+          "sha256LF": "dcb94dec47226e9e2e73c7c2493ef95e7f077b31acd4257c08344ac0d160156c"
+        }
+      ]
+    },
+    {
+      "id": "mondialisation-commerce",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mondialisation-commerce/fiche.md",
+          "sha256LF": "8e148716bc971543d29531b06b835a6d3a5f463053fae1ed4c3d07b54174f56c"
+        },
+        {
+          "chemin": "catalogue/mondialisation-commerce/contenu.json",
+          "sha256LF": "4c6e39b1a61c64a904c6822706c393ede7e73e266814f2e60f63c4dd3f13581a"
+        }
+      ]
+    },
+    {
+      "id": "monnaie",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/monnaie/fiche.md",
+          "sha256LF": "b7fedc8c430a78011dd77bf37277187f798a8afe2502d231341bb8a81fbb54f7"
+        },
+        {
+          "chemin": "catalogue/monnaie/contenu.json",
+          "sha256LF": "ace5444a73c3b7407326cb91db3d47142d50e3348ec02fd776a314d170cef3f7"
+        }
+      ]
+    },
+    {
+      "id": "mots-croises",
+      "famille": "jeux",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mots-croises/fiche.md",
+          "sha256LF": "225eebb1883e9f77d180c7be870f32a0308b3f2049e8e089314d29a8c53a3094"
+        },
+        {
+          "chemin": "catalogue/mots-croises/page.html",
+          "sha256LF": "25e8ebff0d2f393d1bee4be52ebfc3d57a7bbce918f1e536c0f0f75c8afab619"
+        }
+      ]
+    },
+    {
+      "id": "mots-fleches",
+      "famille": "jeux",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mots-fleches/fiche.md",
+          "sha256LF": "ce21eaccd3bd68183d158851c1968ca4a4d2c6e0053f979ae0273b8ac210032a"
+        },
+        {
+          "chemin": "catalogue/mots-fleches/page.html",
+          "sha256LF": "7ace6e56b6164fb136ce15b786d16f1a4595ea2918f1a3943333a33b3a63b198"
+        }
+      ]
+    },
+    {
+      "id": "mouvements",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mouvements/fiche.md",
+          "sha256LF": "68ad93910834916f014f872acea578bd5f8f554a970ba83e22e7245a15b3a41f"
+        },
+        {
+          "chemin": "catalogue/mouvements/contenu.json",
+          "sha256LF": "3360d04b157fd32f17af1da6a16d8b5ff54cb0ac8a9d559a10c6274143d15d8e"
+        }
+      ]
+    },
+    {
+      "id": "moyen-age",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/moyen-age/fiche.md",
+          "sha256LF": "0bec70863e42e48a1400f05ff353b8ce58e74f254d5c72bbfb7bee92971e43c3"
+        },
+        {
+          "chemin": "catalogue/moyen-age/contenu.json",
+          "sha256LF": "7733e0685eaaf7f0e45fb1e318282d727e25877848d05de997a2a9da9599da77"
+        }
+      ]
+    },
+    {
+      "id": "mutations-et-variabilite",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/mutations-et-variabilite/fiche.md",
+          "sha256LF": "1c19f1c4c36d5d47585442a51b0a19c850791f7009b958684a059c146fbe7525"
+        },
+        {
+          "chemin": "catalogue/mutations-et-variabilite/contenu.json",
+          "sha256LF": "a18a555a0b859fff137f0625123b16dc95bca68e3cb46f6419ef21ced7081399"
+        }
+      ]
+    },
+    {
+      "id": "napoleon",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/napoleon/fiche.md",
+          "sha256LF": "5f2ea6a27198294f860ef52414df837911d060564dc5dbd8c67dc11c39c8d07d"
+        },
+        {
+          "chemin": "catalogue/napoleon/contenu.json",
+          "sha256LF": "1e67dd0a1f4520867902c38a79cca064dc5427fb5085ae1b6755d8a76410a63c"
+        }
+      ]
+    },
+    {
+      "id": "nature",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/nature/fiche.md",
+          "sha256LF": "ef19d193a2f271121a51de89e7ee2354c946a38251490419c0fbfe005c511fba"
+        },
+        {
+          "chemin": "catalogue/nature/contenu.json",
+          "sha256LF": "729d4ff6e1be0425fc6ca1a77093ecd2a8faf8885dffae36aea278688c19353d"
+        }
+      ]
+    },
+    {
+      "id": "nombres-decimaux",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/nombres-decimaux/fiche.md",
+          "sha256LF": "c5c354b7184d97127020d8a5b5491805bf8a17418d825e44452c9c6b70cd359c"
+        },
+        {
+          "chemin": "catalogue/nombres-decimaux/contenu.json",
+          "sha256LF": "f7ee5c6e9d5ead3fa1cf11d4ee3365c6485400f9771cd3e3cabb69246d653ac0"
+        }
+      ]
+    },
+    {
+      "id": "nombres-relatifs",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/nombres-relatifs/fiche.md",
+          "sha256LF": "406dbb507289d54b5cabcd0d139f720ade97e568d6d64bca05b313153251f48d"
+        },
+        {
+          "chemin": "catalogue/nombres-relatifs/contenu.json",
+          "sha256LF": "b593857db3b55ae4fb81a01943669cc78946f4bfa287712e4fb0ca4bbbad1075"
+        }
+      ]
+    },
+    {
+      "id": "nutrition-et-digestion",
+      "famille": "svt",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/nutrition-et-digestion/fiche.md",
+          "sha256LF": "ab2b0a55369cef726027b18f2d4e4e811138b71bb10027e506a80f1edab07518"
+        },
+        {
+          "chemin": "catalogue/nutrition-et-digestion/contenu.json",
+          "sha256LF": "295b05945c7c9d2d60d79d35b6c51252006be83ede95e7bd1e55952603211793"
+        }
+      ]
+    },
+    {
+      "id": "ondes",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/ondes/fiche.md",
+          "sha256LF": "e0a16a29767df0d20acd4e89c789b5e224276a100ef1bbc1bbb3b677d59c531b"
+        },
+        {
+          "chemin": "catalogue/ondes/contenu.json",
+          "sha256LF": "caed45c4aa7352eec5817b9d6eae8d4f4a37f015ad630637136655239b5b4005"
+        }
+      ]
+    },
+    {
+      "id": "opinion-publique",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/opinion-publique/fiche.md",
+          "sha256LF": "851c61446250eae7405130b0af051e91c92c5a15cb1b7435adc667e329ab3d08"
+        },
+        {
+          "chemin": "catalogue/opinion-publique/contenu.json",
+          "sha256LF": "e212f408cdc1cc0100b821e0d8241b0f136c35e21143c3da29e4682348d542e1"
+        }
+      ]
+    },
+    {
+      "id": "oxydoreduction",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/oxydoreduction/fiche.md",
+          "sha256LF": "b2f70d4969e9a431cf7513e9e091c1d5e2c4626e850a8f512ea6e7ac9bd9b260"
+        },
+        {
+          "chemin": "catalogue/oxydoreduction/contenu.json",
+          "sha256LF": "565ead24d0ed3f2f1f4a17c33a204af2320c0798f4a95e987ae7a5f23375e854"
+        }
+      ]
+    },
+    {
+      "id": "pendu",
+      "famille": "jeux",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/pendu/fiche.md",
+          "sha256LF": "4fd22d245a7e3393cf61c701a2c8d2a93685466a895a3958fbc96ee4c483958f"
+        },
+        {
+          "chemin": "catalogue/pendu/page.html",
+          "sha256LF": "0178525e1742ef54f6a26eebbd581d6201c132fd478c64870c5a621dc384a6ee"
+        }
+      ]
+    },
+    {
+      "id": "perimetres-aires",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/perimetres-aires/fiche.md",
+          "sha256LF": "34a075aed641b5b2519bc963cd51bca6c44fdd1af284166f5cd49d52675c2343"
+        },
+        {
+          "chemin": "catalogue/perimetres-aires/contenu.json",
+          "sha256LF": "dbf5aec4b8c89df1fbd525dcc35c411ea58b2ee852a49e51be176b51cc6e8ea2"
+        }
+      ]
+    },
+    {
+      "id": "photosynthese",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/photosynthese/fiche.md",
+          "sha256LF": "11e37ac495624c5e2e6546536cf705d5968916a338996ac0a21bd2b09fd8fee3"
+        },
+        {
+          "chemin": "catalogue/photosynthese/contenu.json",
+          "sha256LF": "58c860e61267ba36992e22e803040d4f5d9d9440e1e3345ef678ac23b63fe875"
+        }
+      ]
+    },
+    {
+      "id": "poesie",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/poesie/fiche.md",
+          "sha256LF": "2d1dffecfce86d53f6b98bb4b4bcb60d447a7eeca0730384a7775a261ef52958"
+        },
+        {
+          "chemin": "catalogue/poesie/contenu.json",
+          "sha256LF": "f1583a00aa0af70118d1a1f32fdc2d508a7a80a6330fccfbfef8a12e5a7569b9"
+        }
+      ]
+    },
+    {
+      "id": "poker-texas-holdem",
+      "famille": "jeux",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/poker-texas-holdem/fiche.md",
+          "sha256LF": "29652c49ee9a0b2da6c451ddb3a0ff9b8ce31f470b979dcd4d5cf1a1154c7e21"
+        },
+        {
+          "chemin": "catalogue/poker-texas-holdem/page.html",
+          "sha256LF": "f6aa018c9d37d9680eafbcb3b288f0ca6bb32e0fd0bc739e080ff22932ebc67f"
+        }
+      ]
+    },
+    {
+      "id": "premiere-guerre-mondiale",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/premiere-guerre-mondiale/fiche.md",
+          "sha256LF": "0adf9c9e1ecbcfd0f2aa6fb582bed6c81060f93ddd8d28b007cf8238d7e6cc33"
+        },
+        {
+          "chemin": "catalogue/premiere-guerre-mondiale/contenu.json",
+          "sha256LF": "d1b01a15486ddc3d5fa8cf2b745c893fb63d289c0452809dd7e1b01953d8793c"
+        }
+      ]
+    },
+    {
+      "id": "priorites-operatoires",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/priorites-operatoires/fiche.md",
+          "sha256LF": "b4c0c3787a984f5612637ee9dbb415a0cf053b3069ffba69a06d494a107fafc5"
+        },
+        {
+          "chemin": "catalogue/priorites-operatoires/contenu.json",
+          "sha256LF": "d4f455ba8e57d07d7215dc2b31c19f99f78b4dea6dab1b458703e824ea2fb910"
+        }
+      ]
+    },
+    {
+      "id": "probabilites",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/probabilites/fiche.md",
+          "sha256LF": "730b1e9baa053ae9d748e0b33ac0d5f8940fcddd02b24f8d6d4dd7bf46d96a0b"
+        },
+        {
+          "chemin": "catalogue/probabilites/contenu.json",
+          "sha256LF": "f9bd3b44d138b40d33e87011488f6f4092c1a434c53a90d7220264fd3fb964ce"
+        }
+      ]
+    },
+    {
+      "id": "probabilites-conditionnelles",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/probabilites-conditionnelles/fiche.md",
+          "sha256LF": "92603495003cb199f8e55a393bbb2bd492cd3c6cef7160d0e428821dd73b8b2b"
+        },
+        {
+          "chemin": "catalogue/probabilites-conditionnelles/contenu.json",
+          "sha256LF": "9b600dcc1945bbe4578311d6a7a769023713aa8c6ce0e81109b9adb32fe9bce7"
+        }
+      ]
+    },
+    {
+      "id": "produit-scalaire",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/produit-scalaire/fiche.md",
+          "sha256LF": "0086e6b9588480190de52e3703e42a007e55f266da3e24ba18d9bb65e4d917c9"
+        },
+        {
+          "chemin": "catalogue/produit-scalaire/contenu.json",
+          "sha256LF": "a17d3826f672a8f8b742f89af500e8288a9ba1baf3d9c04e666de5527a8c0196"
+        }
+      ]
+    },
+    {
+      "id": "proportionnalite",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/proportionnalite/fiche.md",
+          "sha256LF": "791e3e489d3c671501826349f5321b3fed533725470e1bd4053dd6027ea72721"
+        },
+        {
+          "chemin": "catalogue/proportionnalite/contenu.json",
+          "sha256LF": "a57e5cfcfb3a07a7559a007de4c444786912556073a915c78932f63bb608994c"
+        }
+      ]
+    },
+    {
+      "id": "puissances",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/puissances/fiche.md",
+          "sha256LF": "d141dbff9f961ff992c0f71650128b718dbea7a573aea7f073824e80bff3c9cd"
+        },
+        {
+          "chemin": "catalogue/puissances/contenu.json",
+          "sha256LF": "2784fbe2e18ff54b2e6be44b9c72077f08b1e67de14129ff5cacd1fc1ef139d2"
+        }
+      ]
+    },
+    {
+      "id": "pythagore",
+      "famille": "mathematiques",
+      "version": "1.2.0",
+      "sources": [
+        {
+          "chemin": "catalogue/pythagore/fiche.md",
+          "sha256LF": "a8103b1567c7f56370a26fc8b3846ca02187c0c60e159e870683fe10b7386edc"
+        },
+        {
+          "chemin": "catalogue/pythagore/contenu.json",
+          "sha256LF": "58ccac1a9bacee1f9adc2f91d58267c7bb17c6fd6f82ba6587c11c8f826e4742"
+        }
+      ]
+    },
+    {
+      "id": "quantite-de-matiere",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/quantite-de-matiere/fiche.md",
+          "sha256LF": "126f95879ad5ca16513f0d4d8a8aefefa766da18a6ada6445500921b9f4c6df8"
+        },
+        {
+          "chemin": "catalogue/quantite-de-matiere/contenu.json",
+          "sha256LF": "0723287160390727d03b122461fe743dcd8dc267df5882219dcb198fbefe2cca"
+        }
+      ]
+    },
+    {
+      "id": "radioactivite",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/radioactivite/fiche.md",
+          "sha256LF": "33cc7c092b7565c72ed3c3b592180bd17398e74287a934145196ac452d3a440e"
+        },
+        {
+          "chemin": "catalogue/radioactivite/contenu.json",
+          "sha256LF": "9c38089c6659167160fd248afe8e3e39e27255bef1efd4cb09d387cbbd1e0129"
+        }
+      ]
+    },
+    {
+      "id": "raison",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/raison/fiche.md",
+          "sha256LF": "510e2e73f430a9625a2c801d69e665cc2e462b62cd005a6ef8cbd214af15335f"
+        },
+        {
+          "chemin": "catalogue/raison/contenu.json",
+          "sha256LF": "3b94cbb89252beba86893b30bc054d7ef1eff68eaec8d1f421757e1b5e9d111a"
+        }
+      ]
+    },
+    {
+      "id": "recurrence",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/recurrence/fiche.md",
+          "sha256LF": "92578ab2ca4734780b3eaf89bd0a5b2bb9a41fcd5cc91ba3badc36dc50c0c8bb"
+        },
+        {
+          "chemin": "catalogue/recurrence/contenu.json",
+          "sha256LF": "e82a9a7c32880251b8738fba908cf1956d78f346a6778f141e87c4f01241b121"
+        }
+      ]
+    },
+    {
+      "id": "refraction-et-lentilles",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/refraction-et-lentilles/fiche.md",
+          "sha256LF": "10b4db2feb7bf9f1d069b9472f511685ec1154bccacaf898c00d5dd3f3969e74"
+        },
+        {
+          "chemin": "catalogue/refraction-et-lentilles/contenu.json",
+          "sha256LF": "c64dd932faa6e3ff749ff58d5e643feb86236473c1e74dff29057e103506f6ff"
+        }
+      ]
+    },
+    {
+      "id": "religion",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/religion/fiche.md",
+          "sha256LF": "e1555f7a27358029b7238a47625c729214f4afdf90dd1a869d494e1d354e0842"
+        },
+        {
+          "chemin": "catalogue/religion/contenu.json",
+          "sha256LF": "4361d71a65a5d47fc89761b45f2fa372336e85e093a97a889d2a927d7dfc207c"
+        }
+      ]
+    },
+    {
+      "id": "renaissance",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/renaissance/fiche.md",
+          "sha256LF": "900198783fa7993c23e328ce33011aa879f5b7792ca90ae8ec3785ecc97bfcc9"
+        },
+        {
+          "chemin": "catalogue/renaissance/contenu.json",
+          "sha256LF": "7c07dd7dcfa4c71086d479ff69901823129303b2561ad2ff0e9518f646e7bf57"
+        }
+      ]
+    },
+    {
+      "id": "reproduction-humaine",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/reproduction-humaine/fiche.md",
+          "sha256LF": "3856fb4b665d8bcc0f2c3f65eeead49a63df72c76abf6c883382faf4e29856ee"
+        },
+        {
+          "chemin": "catalogue/reproduction-humaine/contenu.json",
+          "sha256LF": "687263386493ccecedca37304687235364f1696719ae607f1cc8e561e466e6b8"
+        }
+      ]
+    },
+    {
+      "id": "respiration-et-circulation",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/respiration-et-circulation/fiche.md",
+          "sha256LF": "b5d28f084d46e6ab1ff005856048dbbdfb9dc0a284614082c257b6e9555eb9be"
+        },
+        {
+          "chemin": "catalogue/respiration-et-circulation/contenu.json",
+          "sha256LF": "8188003678a3c3382b4c2976540c477cbee583209d0f66a8939555de0e5f979f"
+        }
+      ]
+    },
+    {
+      "id": "ressources",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/ressources/fiche.md",
+          "sha256LF": "ccae49900a78e13b10c62d92e2c74ba9fff2eafaf669d4c82b8ddcdf98b23a9e"
+        },
+        {
+          "chemin": "catalogue/ressources/contenu.json",
+          "sha256LF": "8720c727adb415cc064d84601fdb5c32a824dc787f65c22dd9dc9113cdd82505"
+        }
+      ]
+    },
+    {
+      "id": "revolution-francaise",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/revolution-francaise/fiche.md",
+          "sha256LF": "9e49207d6398051d3b12329b519422905812387a3116467e3bcc9deca33b7b99"
+        },
+        {
+          "chemin": "catalogue/revolution-francaise/contenu.json",
+          "sha256LF": "353ee8148dbec5426cc6dcbcd2af0df56676addcc7d81949df7727c6d046da21"
+        }
+      ]
+    },
+    {
+      "id": "revolution-industrielle",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/revolution-industrielle/fiche.md",
+          "sha256LF": "1817c7c9c0dec18cfb00b28aefdad476bfc4704a5a322b3c5163879f8c657c5d"
+        },
+        {
+          "chemin": "catalogue/revolution-industrielle/contenu.json",
+          "sha256LF": "3150d5bb09ff9f75b78b24a97dd5452662aee27c04d4ddfa02d03f8c79fe0fe4"
+        }
+      ]
+    },
+    {
+      "id": "risques-naturels",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/risques-naturels/fiche.md",
+          "sha256LF": "a5a631780bb6de6691370e15279f895ed1acb8b9ee8fe1613aec37b7ce216581"
+        },
+        {
+          "chemin": "catalogue/risques-naturels/contenu.json",
+          "sha256LF": "0eb6bc355a8ec9abda70e553dbb0ae0a0730bf44ce3cd74dceab2aaae963da40"
+        }
+      ]
+    },
+    {
+      "id": "roman",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/roman/fiche.md",
+          "sha256LF": "558f4a9925249f08da88ea878357a20fcca46b8c9ac2fa7c6b8241f21cc653e5"
+        },
+        {
+          "chemin": "catalogue/roman/contenu.json",
+          "sha256LF": "0a8fd62a6cdf3526a666a936321cfb3dcdb409cb821e120bdf68500081d681ea"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/science/fiche.md",
+          "sha256LF": "e6729c06b1a12df01efad995ec6410b166f5260e0559e4b1bb344996e24ac1c5"
+        },
+        {
+          "chemin": "catalogue/science/contenu.json",
+          "sha256LF": "239b5c6b41cd2035b25cdd38d4a56ef5455b6c3d0339e28ffb8b6cecf681db3e"
+        }
+      ]
+    },
+    {
+      "id": "second-degre",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/second-degre/fiche.md",
+          "sha256LF": "a31f8a9d477ab08227996af7ee365e455ddf40ddf69e554d53911a4fce5e14f1"
+        },
+        {
+          "chemin": "catalogue/second-degre/contenu.json",
+          "sha256LF": "70e637528a64db24c2dd9ded9001a8cd9f1b45e0713b32ec338b418422e79c33"
+        }
+      ]
+    },
+    {
+      "id": "seconde-guerre-mondiale",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/seconde-guerre-mondiale/fiche.md",
+          "sha256LF": "aabff44340e4da899e91c5cc9dbe93a5ac535511443a67d623451550ce7acd86"
+        },
+        {
+          "chemin": "catalogue/seconde-guerre-mondiale/contenu.json",
+          "sha256LF": "3260a78758f008b4ea92622dba6d7004704d5f07c58cbcb098f881edeb709806"
+        }
+      ]
+    },
+    {
+      "id": "seismes-et-volcans",
+      "famille": "svt",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/seismes-et-volcans/fiche.md",
+          "sha256LF": "6499287fbb3da5de525fa169bb6ba8c17647da45aa813b9cd9e3d27f75389ccc"
+        },
+        {
+          "chemin": "catalogue/seismes-et-volcans/contenu.json",
+          "sha256LF": "bbac36cf42da363d4c80fc84dc4fce8bd3cc142ae5de66ac68b84fab5819b50d"
+        }
+      ]
+    },
+    {
+      "id": "socialisation",
+      "famille": "ses",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/socialisation/fiche.md",
+          "sha256LF": "7c484f16fd3a617afa13d809bdc6f5937f1031240d5686f5dc887c0679d4a246"
+        },
+        {
+          "chemin": "catalogue/socialisation/contenu.json",
+          "sha256LF": "c1433ed3b2e6b60a67d884aa228d70c970a7ae9e0a73b27858c5925a1c977257"
+        }
+      ]
+    },
+    {
+      "id": "son-et-lumiere",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/son-et-lumiere/fiche.md",
+          "sha256LF": "f502f42d53309e3885c00e139fc32c80c7763fcc5ddcc4ef12eec37ff6b7807c"
+        },
+        {
+          "chemin": "catalogue/son-et-lumiere/contenu.json",
+          "sha256LF": "1e1e0e9909ba4b0d9aa4d14aaaa7dfd2499848795ad25f4eefcdc0d1a9036d23"
+        }
+      ]
+    },
+    {
+      "id": "statistiques",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/statistiques/fiche.md",
+          "sha256LF": "e06bd927c651b7c5ed96360f7384f11515a36139939a411b8006c84d51e4a12a"
+        },
+        {
+          "chemin": "catalogue/statistiques/contenu.json",
+          "sha256LF": "d447d54c6c68a81ea45789e5ab0cff5c20fc778e14ebed6a69d8658557dbe610"
+        }
+      ]
+    },
+    {
+      "id": "structure-de-la-terre",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/structure-de-la-terre/fiche.md",
+          "sha256LF": "303f7a078ab1bd4617a12ac56d5e5bf30e503c0b14a23c58a6797282ad1dfe90"
+        },
+        {
+          "chemin": "catalogue/structure-de-la-terre/contenu.json",
+          "sha256LF": "e503d0b391f431b77b1240f367deb5ab6908e4568fcb3fb703121a52be2acced"
+        }
+      ]
+    },
+    {
+      "id": "sudoku",
+      "famille": "jeux",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/sudoku/fiche.md",
+          "sha256LF": "1d889cb9af1441e5742ad77e78e7539c09919bcbe740c0f1a2b53d557c69cfb9"
+        },
+        {
+          "chemin": "catalogue/sudoku/page.html",
+          "sha256LF": "f0ad5a83f9c3fa02e16307d084ec570bbd26034da50be6bc0b1fa69f37d66569"
+        }
+      ]
+    },
+    {
+      "id": "suites",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/suites/fiche.md",
+          "sha256LF": "9c544aadefa2c15d9df00915c940c13e32487362bfcf6ef64c2463302e2faf0f"
+        },
+        {
+          "chemin": "catalogue/suites/contenu.json",
+          "sha256LF": "a24fbb1780b99788cc3c15348753421b605da122b1799f108d343c3169181317"
+        }
+      ]
+    },
+    {
+      "id": "systeme-immunitaire",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/systeme-immunitaire/fiche.md",
+          "sha256LF": "be8a06955de9a61115f508a299e08c0bae9b8d0cc3489eb7c855d8ce7c94a991"
+        },
+        {
+          "chemin": "catalogue/systeme-immunitaire/contenu.json",
+          "sha256LF": "9a45887135d60a6267f39f98d781646f91805aea5c72b46e97ac0bac33863215"
+        }
+      ]
+    },
+    {
+      "id": "systeme-nerveux",
+      "famille": "svt",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/systeme-nerveux/fiche.md",
+          "sha256LF": "8f15b047d9ae0096c83dbb490d3f3d37cb789528af2419116a46bbddbe8fbeed"
+        },
+        {
+          "chemin": "catalogue/systeme-nerveux/contenu.json",
+          "sha256LF": "a278869659f0b0a045035689774cfcab6d82dc11cbf4847c4718b93af60e1f49"
+        }
+      ]
+    },
+    {
+      "id": "tableau-periodique",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/tableau-periodique/fiche.md",
+          "sha256LF": "10d645bfd0733c30ae8f2297ccbd91c7cf548394e771cd5eb3fbc794f13411d4"
+        },
+        {
+          "chemin": "catalogue/tableau-periodique/contenu.json",
+          "sha256LF": "17988fa3764da5b9377e9a32db33acd7764112aaef447db34a74f98d8e9cfb0f"
+        }
+      ]
+    },
+    {
+      "id": "technique",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/technique/fiche.md",
+          "sha256LF": "0645ec14d7b27850592d1b6a8f7e0388d269aed2fa2f1e19f64fa11020b5e8bd"
+        },
+        {
+          "chemin": "catalogue/technique/contenu.json",
+          "sha256LF": "961fdacd87e2e1e5e2905b8d4350a3bfdaa20f4594b843fbd20dee95242fb6ce"
+        }
+      ]
+    },
+    {
+      "id": "temps",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/temps/fiche.md",
+          "sha256LF": "344e3df2d1575c7899ee48daf140444b4e069b4b1d6da6ab045a9e7255959cde"
+        },
+        {
+          "chemin": "catalogue/temps/contenu.json",
+          "sha256LF": "a770d8e61a248c6153a7d2e712fcc3308ea9e68e8e4c5374a1ea723871a82f8b"
+        }
+      ]
+    },
+    {
+      "id": "temps-modernes",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/temps-modernes/fiche.md",
+          "sha256LF": "f1bc96eaefff800c3b0a24aae89230c71ddbcd56878cb84ac148e9e14fdc0094"
+        },
+        {
+          "chemin": "catalogue/temps-modernes/contenu.json",
+          "sha256LF": "1d5899cb4ed09008f6e7b65a0cb936f8d586b92c956c08182296df0edb89f974"
+        }
+      ]
+    },
+    {
+      "id": "thales",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/thales/fiche.md",
+          "sha256LF": "67bb7c615e0ce81cb33aa2d2cb2bc6dc8a3f65254f7063703065546a8db40ac1"
+        },
+        {
+          "chemin": "catalogue/thales/contenu.json",
+          "sha256LF": "19390f43b669c71932e8377f120959e09fe15929738c0164d9c1b9eb3389c8ee"
+        }
+      ]
+    },
+    {
+      "id": "theatre",
+      "famille": "francais",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/theatre/fiche.md",
+          "sha256LF": "a1b9e28f2032b0087f2d813e8acabe673bd34162c3f0f36afa63c08c7ab200b1"
+        },
+        {
+          "chemin": "catalogue/theatre/contenu.json",
+          "sha256LF": "b97a3d8da67bd69df16f0b14397e42486bc2618d5d0df4da10361c28ba3b4fa7"
+        }
+      ]
+    },
+    {
+      "id": "thermodynamique",
+      "famille": "physique-chimie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/thermodynamique/fiche.md",
+          "sha256LF": "583deb518ea98093e1823ce30d3a82d75509d093bd08e6de7a628d7cfa45fc90"
+        },
+        {
+          "chemin": "catalogue/thermodynamique/contenu.json",
+          "sha256LF": "ac6367fbfbd8a0be8d3219a1b9a28018985b814ab99e16ee0a09fe0cda1f4d56"
+        }
+      ]
+    },
+    {
+      "id": "totalitarismes",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/totalitarismes/fiche.md",
+          "sha256LF": "5ebfb36206226e1152bd2a44706a9f15b961d94a3f68a3cae99399023b1b2158"
+        },
+        {
+          "chemin": "catalogue/totalitarismes/contenu.json",
+          "sha256LF": "a8c91031a9995647fcbdc32b4c50fb96a67f15fcb6650d7fe9d55fc8f630dcae"
+        }
+      ]
+    },
+    {
+      "id": "tourisme",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/tourisme/fiche.md",
+          "sha256LF": "af57564f623d29ee2e93ab5fe501df03ba8558c8fb0cba901da4556cc356e4ae"
+        },
+        {
+          "chemin": "catalogue/tourisme/contenu.json",
+          "sha256LF": "b81f8c3ee6a7184ce9c004fd863e1aeed796125cce1c472fb9c4c150a3821ad1"
+        }
+      ]
+    },
+    {
+      "id": "transformations",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/transformations/fiche.md",
+          "sha256LF": "deac7277c716acc2f277cb359482c37e52cbf12ef0ea9324e27255352415d4d7"
+        },
+        {
+          "chemin": "catalogue/transformations/contenu.json",
+          "sha256LF": "4cafe8e9ed036bac92f4e5e5b949451b46840c9a42b1d1ae55c30dc913121917"
+        }
+      ]
+    },
+    {
+      "id": "travail",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/travail/fiche.md",
+          "sha256LF": "0c4bf8f26fd5d74d2572ba39fa9671fea598a0eb07ea28c5c7cd326396bf9a9f"
+        },
+        {
+          "chemin": "catalogue/travail/contenu.json",
+          "sha256LF": "fac15174930b6b86e62dbcb7d33b98951fe9945fbc57d909bbe932dc3a2b30be"
+        }
+      ]
+    },
+    {
+      "id": "trigo-cercle",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/trigo-cercle/fiche.md",
+          "sha256LF": "78a353b7f351e0a26e910de33defec77ade64b731970e61b1376a55b9c609f99"
+        },
+        {
+          "chemin": "catalogue/trigo-cercle/page.html",
+          "sha256LF": "e90efea5ae29944709f789bdef3f1692476c8a5dee99ca447fa0a4bce7c4f2c8"
+        }
+      ]
+    },
+    {
+      "id": "union-europeenne",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/union-europeenne/fiche.md",
+          "sha256LF": "cdb9a73ea5332a144b96ee9b72846ced84cca70e9970bc12a8bf69e8c60d8c77"
+        },
+        {
+          "chemin": "catalogue/union-europeenne/contenu.json",
+          "sha256LF": "39e1638074b4608ebd11b21bb8caa0c8e9b35c9e2b99424c979fbad83752bb4e"
+        }
+      ]
+    },
+    {
+      "id": "urbanisation",
+      "famille": "geographie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/urbanisation/fiche.md",
+          "sha256LF": "04ffaa895bd4c71884b7488d105f44ab8b9d41369faf70a35f2c17ca6f6e0cda"
+        },
+        {
+          "chemin": "catalogue/urbanisation/contenu.json",
+          "sha256LF": "c8d7e484616825c43878d510e3116f58d79a23c5caee8d08259340fd0ebe10a6"
+        }
+      ]
+    },
+    {
+      "id": "ve-republique",
+      "famille": "histoire",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/ve-republique/fiche.md",
+          "sha256LF": "e6e8fe8f49d2539ce86f8e3352c047e440cad24c91dde97cf209d59f2ffb056b"
+        },
+        {
+          "chemin": "catalogue/ve-republique/contenu.json",
+          "sha256LF": "0ac00756e22341e4dd7b2bb7aa942a90e48f16fd89faecd3c0f36f17f5613a41"
+        }
+      ]
+    },
+    {
+      "id": "vecteurs",
+      "famille": "mathematiques",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/vecteurs/fiche.md",
+          "sha256LF": "1108c7db16b06314e0ee4808778edd7a35b267f2e474aaea1dc1da8c28b9e9ec"
+        },
+        {
+          "chemin": "catalogue/vecteurs/contenu.json",
+          "sha256LF": "ad57c5881b45a67bc21d36da831ac5c73c0a7d955b5a02550696bb3ba45a3116"
+        }
+      ]
+    },
+    {
+      "id": "verite",
+      "famille": "philosophie",
+      "version": "1.0.0",
+      "sources": [
+        {
+          "chemin": "catalogue/verite/fiche.md",
+          "sha256LF": "38ea4a5ccf118dfcb759da6d538327a313fa0eecb6a8d8a3d75507814d53c6d6"
+        },
+        {
+          "chemin": "catalogue/verite/contenu.json",
+          "sha256LF": "d7597c2be2532b608800d43dd08427999ec4ceefa6875e21345949e969d07f3d"
+        }
+      ]
+    },
+    {
+      "id": "vitesse",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/vitesse/fiche.md",
+          "sha256LF": "d983988642e8c59933a81ed9cb766f47f57d5aceef79e0ddae77ba34f601ce85"
+        },
+        {
+          "chemin": "catalogue/vitesse/contenu.json",
+          "sha256LF": "b6895fb8fa233c253420e9deca1bb8796839ef57e032184467b33a2e563d39dd"
+        }
+      ]
+    },
+    {
+      "id": "volumes",
+      "famille": "mathematiques",
+      "version": "1.1.0",
+      "sources": [
+        {
+          "chemin": "catalogue/volumes/fiche.md",
+          "sha256LF": "ca5d1ea149631b08574e55a1ec708d3bb843495076c1e5fa1f183c972462d86a"
+        },
+        {
+          "chemin": "catalogue/volumes/contenu.json",
+          "sha256LF": "0a5b929948f36902610e597e664c9f167e4daea7bfad4450fa060a3c8b750079"
+        }
+      ]
+    }
+  ],
+  "annexes": [
+    {
+      "chemin": "Sample/lab/systeme-solaire.html",
+      "sha256LF": "9055e6c74d888eec042eef2efaa2bf365bce7be3b9860e8e3a7e50746642414d"
+    },
+    {
+      "chemin": "Sample/lab/systeme-solaire.md",
+      "sha256LF": "28524e2e19b4f9a95abf12f6fbcfd54926bf69751d3534872d4953d30297b787"
+    },
+    {
+      "chemin": "src/pedagogy/lessons.js",
+      "sha256LF": "1faffb09cd845131665c17f0046b71683fbb52d2ea4b8cb539612f8a1f0fc288"
+    },
+    {
+      "chemin": "src/pedagogy/challenges.js",
+      "sha256LF": "f932efc6ba37227a12d7ee71dd5fa3a1860814339ef00ab8bab122555f86098a"
+    },
+    {
+      "chemin": "referentiel/projection-v0.json",
+      "sha256LF": "5f5e7f33e400beaee8d8ef1a121787050629832caef45bffbe37409d49fcdb20"
+    }
+  ]
+}

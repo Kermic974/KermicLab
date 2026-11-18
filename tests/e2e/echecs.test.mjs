@@ -212,7 +212,7 @@ test("académie : première leçon complète, XP, étoiles, badge, progression g
   await academie(page).locator('[data-choix="1"]').click();
   assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /Pas tout à fait/);
   await academie(page).locator('[data-choix="2"]').click();
-  assert.match(await academie(page).locator('[data-sortie="toast"]').textContent(), /\+10 XP/);
+  assert.match(await academie(page).locator('[data-sortie="toast"]').textContent(), /\+10 points de jeu/);
   await academie(page).locator('[data-action="suivant"]').click();
   await coupAcademie(page, "d4h4");
   assert.match(await academie(page).locator('[data-sortie="retour"]').textContent(), /la dame en vaut 9/, "piège expliqué");
@@ -328,7 +328,7 @@ test("académie : révisions espacées dues, défi du jour et emblème personnal
   assert.ok(!etat.badges.includes("perfectionniste"), "« Parer un échec » n'a que 2 étoiles");
   await academie(page).locator('[data-action="bilan-retour"]').click();
   assert.equal(await academie(page).locator('[data-action="reviser"]').isDisabled(), true);
-  assert.match(await academie(page).locator('[data-action="defi"]').textContent(), /Défi du jour \(\+15 XP\)/);
+  assert.match(await academie(page).locator('[data-action="defi"]').textContent(), /Défi de l'Académie \(\+15 points de jeu\)/);
   await contexte.close();
 });
 
@@ -360,7 +360,7 @@ test("académie : une victoire contre l'ordinateur rapporte de l'XP et un badge,
     await jouer(page, coup);
     if (k < blancs.length - 1) await page.waitForFunction((n) => window.kermiclab.echecs.etat().coups.length === n, 2 * (k + 1), { timeout: 5000 });
   }
-  assert.equal(await statut(page), "Échec et mat : bravo, tu as gagné ! 🏆 (+50 XP à l'Académie)");
+  assert.equal(await statut(page), "Échec et mat : bravo, tu as gagné ! 🏆 (+50 points de jeu à l'Académie)");
   let etat = await etatAcademie(page);
   assert.equal(etat.parties.facile.victoires, 1);
   assert.ok(etat.badges.includes("robot-facile"));

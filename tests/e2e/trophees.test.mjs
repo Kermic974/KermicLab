@@ -64,7 +64,7 @@ async function ouvrirModule(page, id) {
   return cadre;
 }
 
-test("trophées : étoiles d'une notion remontées, restaurées et isolées de l'XP d'exploration", async () => {
+test("trophées : étoiles d'une notion remontées, restaurées et qui rapportent l'XP d'apprentissage", async () => {
   const { page, contexte, erreurs } = await demarrer();
   try {
     const cadre = await ouvrirModule(page, "pythagore");
@@ -82,7 +82,7 @@ test("trophées : étoiles d'une notion remontées, restaurées et isolées de l
     await page.reload();
     const reprise = await ouvrirModule(page, "pythagore");
     await reprise.locator("#etoiles").filter({ hasText: "★ 1 / 10" }).waitFor();
-    assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 25);
+    assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem("kermiclab:progression")).xp), 20, "10 XP d'exploration + 10 XP pour un exercice réussi du premier coup (ADR 0032)");
     assert.equal(await page.evaluate(() => localStorage.getItem("kermiclab:trophees")), null);
     assert.deepEqual(erreurs, []);
   } finally { await contexte.close(); }
@@ -224,7 +224,7 @@ test("trophées : Académie, XP, leçon, succès et reprise dans une iframe opaq
     await cadre.locator("#onglet-academie").click();
     await cadre.locator("#onglet-academie[aria-selected=true]").waitFor();
     await academie.waitFor({ state: "visible" });
-    await academie.locator('[data-sortie="niveau"]').filter({ hasText: "70 XP" }).waitFor();
+    await academie.locator('[data-sortie="niveau"]').filter({ hasText: "70 points de jeu" }).waitFor();
     await academie.locator('[data-action="detail"]').click();
     await academie.locator('[data-action="effacer"]').click();
     await academie.locator('[data-action="effacer"]').click();
@@ -260,7 +260,7 @@ test("trophées poker : pratique et leçons remontées, restaurées puis effacé
     const etat = await cadre.locator("body").evaluate(() => window.kermiclab.academie.etat());
     const texteStats = await stats.textContent();
     assert.ok(etat.xp > 0);
-    assert.match(texteStats, new RegExp(`${etat.xp} XP`), "le bandeau Jouer reflète les XP restaurés avant interaction");
+    assert.match(texteStats, new RegExp(`${etat.xp} points de jeu`), "le bandeau Jouer reflète les XP restaurés avant interaction");
     assert.match(texteStats, new RegExp(`${etat.compteurs.manches} manches terminées`), "le bandeau reflète les manches restaurées");
     assert.match(texteStats, new RegExp(`${etat.parties.entrainement.victoires} victoires`), "le bandeau reflète les victoires restaurées");
     academie = cadre.locator("#panneau-academie");

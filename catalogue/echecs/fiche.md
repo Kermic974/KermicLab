@@ -3,8 +3,8 @@ id: echecs
 titre: Échecs
 resume: Joue contre l'ordinateur, résous des énigmes et progresse de Noob à Pro avec l'Académie.
 sujet: jeux/echecs
-version: 1.1.0
-date: 2026-11-04
+version: 1.1.1
+date: 2026-11-18
 langues: fr
 onglets: explication, application, academie, mise-en-situation
 mots-cles:
