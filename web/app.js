@@ -23,6 +23,7 @@ import * as experiences from "./experiences.js";
 import { creerMoteurTemps } from "./temps-actif.js";
 import * as charte from "./theme.js";
 import * as parcours from "./parcours.js";
+import * as navigation from "./navigation.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
@@ -1608,8 +1609,10 @@ function rafraichirProfNav() {
   const actif = profActif();
   for (const id of ["#nav-suivi", "#nav-classes", "#nav-eleves", "#nav-mobile-suivi"]) $(id).hidden = !actif;
   $("#profil-prof").hidden = !actif;
+  // Filtres de « Mon tableau de bord » : mêmes droits que les entrées de navigation, même si la configuration les retire.
   const contribVisible = !$("#nav-contributions").hidden;
-  document.querySelectorAll("[data-prof-contrib]").forEach((b) => { b.hidden = !contribVisible; });
+  document.querySelectorAll("[data-tdb-contrib]").forEach((b) => { b.hidden = !contribVisible; });
+  document.querySelectorAll("[data-tdb-prof]").forEach((b) => { b.hidden = !actif; });
   if (actif && etat.ecran === "profil") remplirProfilProf();
 }
 
@@ -4647,6 +4650,7 @@ async function demarrer() {
   $(".pied").before($("#profil"), $("#apropos"), $("#compte"), $("#connexion-en-cours"), $("#famille"), $("#espace-famille"), $("#contributions"), $("#suivi"), $("#classes"), $("#eleves"), $("#defi"), $("#progres"));
   capturerInvitationProf();
   etat.config = await chargerJson("config.json");
+  ordonnerNavigation();
   initialiserSession();
   etat.trophees = trophees.charger(stockage());
   etat.evenements = evenements.charger(stockage());
@@ -5095,14 +5099,20 @@ function rafraichirTheme() {
 
 /* ---------- Navigation ---------- */
 
-/** Les 6 destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
+/** Les destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
 const DESTINATIONS = ["accueil", "education", "labs", "jeux", "progression", "profil"];
-const ECRANS = [...DESTINATIONS, "defi", "compte", "apropos", "connexion-en-cours"];
-const PARENTS = { defi: "education", famille: "profil", "espace-famille": "profil", compte: "profil", apropos: "profil", "connexion-en-cours": "profil" };
+/** « tableau-de-bord » n'est pas un écran : il ouvre l'une de ses vues (web/navigation.js, vueTableauDeBord). */
+const ECRANS = [...DESTINATIONS, "tableau-de-bord", "defi", "compte", "apropos", "connexion-en-cours"];
+const PARENTS = {
+  defi: "education", apropos: "profil",
+  // Vues de « Mon tableau de bord » : l'entrée de navigation est marquée page courante quand l'une d'elles est affichée.
+  ...Object.fromEntries(navigation.VUES_TABLEAU_DE_BORD.map((vue) => [vue, "tableau-de-bord"])),
+};
 /** Anciennes adresses (#notions, #badges…) : redirigées vers la destination qui les contient. */
 const ALIAS_ECRANS = { catalogue: "education", notions: "education", cahiers: "education", badges: "progression" };
 const ANCRES_ALIAS = { badges: "#progres", cahiers: "#ecran-cahiers" };
-const sectionDe = (ecran) => PARENTS[ecran] ?? ecran;
+/** Destination d'un écran (À propos → Profil → Mon tableau de bord). */
+const sectionDe = (ecran) => { const parent = PARENTS[ecran] ?? ecran; return PARENTS[parent] ?? parent; };
 
 function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
@@ -5112,18 +5122,26 @@ function rafraichirEntete() {
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
 }
 
+/** Vue ouverte par « Mon tableau de bord » : la dernière consultée si elle est encore proposée dans ses filtres. */
+function resoudreTableauDeBord(cle) {
+  if (cle !== "tableau-de-bord") return cle;
+  const disponibles = [...document.querySelectorAll("#navigation-personnelle [data-nav]")].filter((b) => !b.hidden).map((b) => b.dataset.nav);
+  return navigation.vueTableauDeBord({ derniere: etat.vueTableauDeBord, disponibles, prof: profActif() });
+}
+
 function afficherEcran(cle, { focus = true } = {}) {
-  const demande = ALIAS_ECRANS[cle] ?? cle;
+  const demande = resoudreTableauDeBord(ALIAS_ECRANS[cle] ?? cle);
   const ecran = ECRANS.includes(demande) && (demande !== "contributions" || contributionsActives()) ? demande : "accueil";
   const changement = ecran !== etat.ecran;
   etat.ecran = ecran;
+  if (sectionDe(ecran) === "tableau-de-bord" && ecran !== "connexion-en-cours") etat.vueTableauDeBord = ecran;
   if (changement && $("#bulle-lab").open) $("#bulle-lab").close();
   document.querySelectorAll("[data-ecrans]").forEach((zone) => {
     zone.hidden = !zone.dataset.ecrans.split(" ").includes(etat.ecran);
   });
   marquerNavigation(sectionDe(etat.ecran));
   $("#ouvrir-connexion").hidden = !$("#navigation-personnelle").hidden;
-  for (const bouton of document.querySelectorAll("#navigation-personnelle [data-nav], .prof-onglets [data-nav]")) {
+  for (const bouton of document.querySelectorAll("#navigation-personnelle [data-nav]")) {
     if (bouton.dataset.nav === ecran) bouton.setAttribute("aria-current", "page");
     else bouton.removeAttribute("aria-current");
   }
@@ -5150,22 +5168,45 @@ function afficherEcran(cle, { focus = true } = {}) {
 }
 
 function naviguer(cle) {
+  cle = resoudreTableauDeBord(cle);
   if (location.hash !== `#${cle}`) history.pushState(null, "", `#${cle}`);
   afficherEcran(cle);
 }
 
-/** Une seule destination est marquée « page courante » ; un sous-écran marque sa destination. */
+/**
+ * Une seule entrée par barre est marquée « page courante » : l'entrée directe de l'écran si la configuration l'affiche
+ * (Contributions, Mes classes…), sinon sa destination (un sous-écran marque sa destination, une vue du tableau de bord
+ * marque « Mon tableau de bord »).
+ */
 function marquerNavigation(cle) {
-  // « Ma famille » mène à l'Espace famille (sous-écran du Profil) : il est la page courante quand cet écran est affiché.
+  // « Ma famille » mène à l'Espace famille : il est la page courante quand cet écran est affiché.
   const familles = [$("#nav-famille"), $("#nav-mobile-famille")];
-  const surFamille = !familles[0].hidden && etat.ecran === "espace-famille" && familles[0].dataset.nav === "espace-famille";
-  document.querySelectorAll(".nav-bouton[data-nav], .nav-mobile-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]").forEach((b) => {
-    const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cle;
-    if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
-  });
+  const groupes = [
+    [...document.querySelectorAll(".barre-laterale .nav-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]")],
+    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav]")],
+  ];
+  for (const boutons of groupes) {
+    const famille = boutons.find((b) => familles.includes(b));
+    const surFamille = !!famille && !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
+    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && (b.dataset.nav ?? b.dataset.action) === etat.ecran);
+    const cible = direct ? etat.ecran : cle;
+    for (const b of boutons) {
+      const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cible;
+      if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+    }
+  }
+  for (const b of document.querySelectorAll("#nav-reserve [aria-current]")) b.removeAttribute("aria-current");
   // « Plus » porte la page courante quand elle est l'une des entrées qu'il regroupe.
   const plus = $("#nav-mobile-plus");
   if ($("#nav-mobile-autres [aria-current]")) plus.setAttribute("aria-current", "page"); else plus.removeAttribute("aria-current");
+}
+
+/** Ordre des entrées (config.json, clé « navigation ») : barre latérale et barre du bas. */
+function ordonnerNavigation() {
+  const ordre = navigation.ordreNavigation(etat.config?.navigation);
+  const reserve = $("#nav-reserve");
+  navigation.appliquerOrdre($(".barre-laterale .nav"), reserve, ordre);
+  navigation.appliquerOrdre($(".nav-mobile"), reserve, ordre, { avant: $("#nav-mobile-plus") });
 }
 
 /* ---------- Barre du bas (mobile) : entrées liées au compte ou au rôle ---------- */
@@ -5178,7 +5219,8 @@ function agencerNavMobile() {
   const barre = $(".nav-mobile");
   const panneau = $("#nav-mobile-autres");
   const plus = $("#nav-mobile-plus");
-  const extras = NAV_MOBILE_EXTRAS.map((id) => $(id));
+  // Les entrées retirées par la configuration restent dans la réserve (web/navigation.js).
+  const extras = NAV_MOBILE_EXTRAS.map((id) => $(id)).filter((b) => !("navRetire" in b.dataset));
   const regrouper = extras.filter((b) => !b.hidden).length > 1;
   for (const b of extras) (regrouper ? panneau : barre).insertBefore(b, regrouper ? null : plus);
   plus.hidden = !regrouper;

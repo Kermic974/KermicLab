@@ -155,3 +155,16 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
   });
   return requetes;
 }
+
+/**
+ * Ordre de navigation « raccourcis » (web/config.json, clé navigation) : la disposition d'avant « Mon tableau de bord »,
+ * avec Profil et les entrées liées au rôle (Ma famille, Contributions, Professeur) directement dans les barres.
+ * Sert aux tests de ces raccourcis et prouve que l'ordre se règle par la configuration.
+ */
+export const NAVIGATION_RACCOURCIS = ["accueil", "education", "labs", "jeux", "progression", "profil", "famille", "contributions", "suivi", "classes", "eleves"];
+
+/** Sert config.json avec des clés surchargées (ex. { navigation: NAVIGATION_RACCOURCIS }). */
+export async function surchargerConfig(page, origine, surcharge) {
+  const base = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8"));
+  await page.route(`${origine}/config.json`, (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({ ...base, ...surcharge }) }));
+}

@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer, NAVIGATION_RACCOURCIS } from "./outils.mjs";
 
 // Contributions au contenu (ADR 0023) : profils contributeur et prof, scénario sans IA, en démonstration et avec le Worker simulé.
 let serveur, nav, htmlMaquette, api, config;
@@ -23,8 +23,9 @@ async function demarrer({ url = "/", connexion = false, role = null, viewport = 
   await simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette });
   page.on("request", (r) => { if (/\/(auth|api\/contributions)/.test(r.url())) appels.push(`${r.method()} ${new URL(r.url()).pathname}`); });
   const envoyees = [];
+  // Raccourcis Contributions et Professeur dans les barres (ordre réglé par config.json).
+  await page.route(`${serveur.url}/config.json`, (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({ ...config, navigation: NAVIGATION_RACCOURCIS, ...(connexion ? { connexionActive: true } : {}) }) }));
   if (connexion) {
-    await page.route(`${serveur.url}/config.json`, (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({ ...config, connexionActive: true }) }));
     await page.route(`${api}/auth/me`, (r) => r.fulfill({
       status: role ? 200 : 401, contentType: "application/json", headers: cors(),
       body: JSON.stringify(role ? { connecte: true, compte: { id: "compte-1", role } } : { connecte: false })
@@ -144,7 +145,7 @@ test("Worker simulé : un parent n'a pas accès, un contributeur envoie une prop
   await parent.contexte.close();
 
   const { page, contexte, erreurs, envoyees } = await demarrer({ connexion: true, role: "contributeur", viewport: { width: 390, height: 844 } });
-  await page.click(".nav-mobile [data-nav=profil], .barre-laterale .profil-carte[data-action=profil] >> visible=true");
+  await page.click(".profil-carte[data-action=profil] >> visible=true");
   await page.click("#entree-contributions");
   await page.locator("#contrib-espace").waitFor({ state: "visible" });
   await proposer(page);
@@ -284,7 +285,7 @@ test("édition ciblée sur mobile : panneau sous la page, menu Contributions dan
   const menuMobile = page.locator("#nav-mobile-contributions");
   await menuMobile.waitFor({ state: "visible" });
   await page.setViewportSize({ width: 320, height: 740 });
-  const boutons = await page.locator(".nav-mobile-bouton:not([hidden])").evaluateAll((l) => l.map((n) => n.getBoundingClientRect()).map((r) => ({ l: r.width, h: r.height, d: r.right })));
+  const boutons = await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").evaluateAll((l) => l.map((n) => n.getBoundingClientRect()).map((r) => ({ l: r.width, h: r.height, d: r.right })));
   assert.equal(boutons.length, 7, "six destinations + Contributions");
   assert.ok(boutons.every((b) => b.l >= 44 && b.h >= 44 && b.d <= 320), "sept entrées tactiles à 320 px");
   await page.setViewportSize({ width: 390, height: 844 });
