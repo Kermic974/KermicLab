@@ -190,6 +190,9 @@ export async function appelerClaude(env, { system, message: brut, schema, maxTok
   });
 }
 
+/** Module de télémétrie (et d'instructions complémentaires) de chaque alias AI Gateway. */
+const SKILL_DU_MODELE = Object.freeze({ MODELE_DEFI: "defi-express", MODELE_CAHIERS: "constructeur-cahier", MODELE_ASSISTANT: "assistant-utilisateurs" });
+
 /** Au-delà de ce budget de sortie, l'appel passe en streaming : l'API d'Anthropic refuse (400) un appel simple. */
 export const SEUIL_STREAMING = 16000;
 
@@ -225,7 +228,8 @@ export async function lireFluxGateway(flux) {
 }
 
 /**
- * Appel d'un alias de modèle AI Gateway (`MODELE_DEFI` par défaut, `MODELE_CAHIERS` pour les cahiers) via le binding,
+ * Appel d'un alias de modèle AI Gateway (`MODELE_DEFI` par défaut, `MODELE_CAHIERS` pour les cahiers, `MODELE_ASSISTANT`
+ * pour l'assistant du back-office, ADR 0035) via le binding,
  * format chat completions, sortie JSON structurée. Même pseudonymisation imposée. Pas d'en-tête `cf-aig-max-attempts` :
  * le repli entre les modèles de l'alias est géré par la gateway. Au-delà de `SEUIL_STREAMING` tokens de sortie,
  * la réponse est lue en streaming (exigence de l'API d'Anthropic pour les longues générations).
@@ -235,7 +239,7 @@ export async function appelerAliasGateway(env, { system, message: brut, schema, 
   const { texte: message, total: pseudonymisations } = pseudonymiser(brut);
   const flux = maxTokens > SEUIL_STREAMING;
   const modele = lireConfiguration(env)[cleModele];
-  const skill = cleModele === "MODELE_CAHIERS" ? "constructeur-cahier" : "defi-express";
+  const skill = SKILL_DU_MODELE[cleModele] ?? "defi-express";
   return mesurerAppel(env, { module: skill, fournisseur: "cloudflare-ai-gateway", modele }, async () => {
     const reponse = await env.AI.run(modele, {
       messages: [

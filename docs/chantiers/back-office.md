@@ -9,7 +9,7 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
 | Écran | Ce qu'il fait | Code |
 |---|---|---|
 | Vue d'ensemble | État du site, volumes sur 7 jours, profils à regarder | `web/admin/admin.js` |
-| Utilisateurs | Comptes famille et comptes locaux : rôle, niveau, état de sécurité, export des données (droit d'accès), suppression complète | `worker/src/backoffice.js` |
+| Utilisateurs | Comptes famille et comptes locaux : rôle, niveau, état de sécurité, export des données (droit d'accès), suppression complète ; assistant IA qui propose ces actions à partir d'une consigne, appliquées d'un clic — [ADR 0035](../decisions/0035-assistant-ia-utilisateurs.md) | `worker/src/backoffice.js`, `assistant-utilisateurs.js` |
 | Rôles et accès | Rôles système et personnalisés, permissions, stratégies par fonctionnalité, simulateur | `worker/src/roles.js` |
 | Sécurité | Signaux par catégorie, profils classés, décision par profil, banc d'essai de l'analyse | `worker/src/analyse-requete.js`, `comportement.js` |
 | Données personnelles | Contrôle de non-conservation, registre des traitements, purge | `worker/src/donnees.js` |
