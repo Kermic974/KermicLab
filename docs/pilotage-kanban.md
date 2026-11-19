@@ -2,7 +2,7 @@
 # Kanban de pilotage KermicLab
 
 > **Source de vérité :** issues et labels GitHub de [Kermic974/KermicLab](https://github.com/Kermic974/KermicLab/issues).
-> **Généré le :** 2026-11-18T11:04:07.444Z (UTC) · **Ouvertes :** 51 · **Fermées :** 82.
+> **Généré le :** 2026-11-19T06:05:12.449Z (UTC) · **Ouvertes :** 52 · **Fermées :** 82.
 > Les horizons sont des priorités, pas des statuts d'avancement. Le statut reste « à qualifier » tant qu'aucun label `statut:*` ou `status:*` n'est défini sur l'issue.
 
 ## Synthèse
@@ -13,8 +13,8 @@
 | À faire ensuite | 6 |
 | Sous condition | 17 |
 | Plus tard | 7 |
-| À classer | 5 |
-| **Total** | **51** |
+| À classer | 6 |
+| **Total** | **52** |
 
 ## Tableau Kanban
 
@@ -88,8 +88,9 @@ _Évolutions différées._
 - [#294 — [SEO] Développer l’autorité du domaine et les backlinks qualifiés](https://github.com/Kermic974/KermicLab/issues/294) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
 
 
-### À classer — 5
+### À classer — 6
 
+- [#396 — [idee] index.html 2026-11-19T06:04](https://github.com/Kermic974/KermicLab/issues/396) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#384 — S6 — livrer les expériences pédagogiques sur tout le corpus public](https://github.com/Kermic974/KermicLab/issues/384) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#382 — Action manuelle : relire les prérequis hors maths et les liens jeux → notions, compléter le catalogue privé](https://github.com/Kermic974/KermicLab/issues/382) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
 - [#381 — Action manuelle : valider l'ADR 0032 (gamification unifiée et synchronisation de la maîtrise)](https://github.com/Kermic974/KermicLab/issues/381) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
