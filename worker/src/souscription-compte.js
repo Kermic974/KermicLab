@@ -12,8 +12,8 @@ const TYPE = "compte-local";
 const FORMAT_NIVEAU = /^[a-z][a-z0-9-]{1,20}$/;
 
 /** Ce qu'un utilisateur voit d'une offre : jamais le coût de revient ni la marge. */
-function offrePublique(s, env, finances, roles) {
-  const d = decrireSouscription(s, env, finances);
+function offrePublique(s, env, finances, roles, souscriptions) {
+  const d = decrireSouscription(s, env, finances, souscriptions);
   const e = d.estimation;
   return {
     id: s.id, libelle: s.libelle, description: s.description, statut: s.statut,
@@ -42,8 +42,8 @@ export async function etatSouscriptionCompte(env, compteId) {
   } catch { historique = []; }
   return {
     niveau: actuelle.id,
-    actuelle: offrePublique(actuelle, envEffectif, reglages.finances, roles),
-    offres: proposables(reglages.souscriptions, libreChoix).map((s) => offrePublique(s, envEffectif, reglages.finances, roles)),
+    actuelle: offrePublique(actuelle, envEffectif, reglages.finances, roles, reglages.souscriptions),
+    offres: proposables(reglages.souscriptions, libreChoix).map((s) => offrePublique(s, envEffectif, reglages.finances, roles, reglages.souscriptions)),
     roles: attribution.roles.map((id) => ({ id, libelle: roles.find((r) => r.id === id)?.libelle ?? id })),
     paiement: libreChoix ? "dev" : "a-venir",
     historique
@@ -65,7 +65,7 @@ export async function changerSouscriptionCompte(env, compteId, corps) {
   if (!offre) return { statut: 404, corps: { erreur: "offre-indisponible" } };
   const attribution = await attributionDuCompte(env, TYPE, compteId, { reglages });
   if (attribution.niveau === niveau) return { statut: 200, corps: await etatSouscriptionCompte(env, compteId) };
-  const payante = decrireSouscription(offre, envEffectif, reglages.finances).estimation.prixMensuelHT > 0;
+  const payante = decrireSouscription(offre, envEffectif, reglages.finances, reglages.souscriptions).estimation.prixMensuelHT > 0;
   if (payante && !libreChoix) return { statut: 402, corps: { erreur: "paiement-requis" } };
   await ecrireAttribution(env, TYPE, compteId, { roles: attribution.manuels, niveau });
   await env.DB.prepare("INSERT INTO souscriptions_changements (type_compte, compte_id, de, vers, paiement) VALUES (?, ?, ?, ?, ?)")

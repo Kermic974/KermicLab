@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Back-office : coûts fixes répartis par souscription et Finance simplifiée** (ADR 0036) : chaque offre déclare ses **abonnés visés** ; les coûts fixes sont répartis entre les offres à leur prorata (même part pour chaque abonné), au lieu d'un nombre global d'utilisateurs. Nouveau bloc **Finance simplifiée** dans « Souscriptions » : chiffre d'affaires, coûts, résultat et point mort du portefeuille, et quatre graphiques (résultat par offre, coûts face au chiffre d'affaires, répartition des coûts fixes, résultat selon le nombre d'abonnés), chacun avec infobulle et vue tableau. Correctif : un module IA (défi, cahiers) n'est plus chiffré pour une offre qui n'inclut pas sa fonctionnalité (« Gratuit » était chiffré avec 2 cahiers IA par jour). / Fixed costs are now split across subscriptions by their target subscribers; new "simplified finance" block with charts.
+
 ## [0.1.0] — 2026-11-18
 
 - **Éducation : le collège découpé par classe** : la barre « Ma classe » propose 6e, 5e, 4e et 3e au lieu de « Collège ». Nouveau champ facultatif `classes` des fiches (6e à 3e, cohérent avec les cycles de `niveaux`, vérifié au build), renseigné pour les 92 notions de collège du catalogue public d'après les programmes ; une notion enseignée sur plusieurs années apparaît dans chacune, une notion sans classe reste sous « Collège ». Attributions à relire. / Middle-school topics now split by grade (6e–3e) in the Education screen.
