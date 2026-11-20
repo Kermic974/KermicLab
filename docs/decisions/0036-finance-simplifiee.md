@@ -1,4 +1,4 @@
-# ADR 0035 — Coûts fixes répartis par souscription et Finance simplifiée
+# ADR 0036 — Coûts fixes répartis par souscription et Finance simplifiée
 
 - Date : 2026-11-20 — Statut : **proposé** (à valider par le propriétaire)
 - Contexte : le sous-module financier (ADR 0031, affiné par l'ADR 0034) répartissait les coûts fixes sur un nombre

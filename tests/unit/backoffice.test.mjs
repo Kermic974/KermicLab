@@ -155,6 +155,67 @@ test("utilisateurs : réinitialisation du mot de passe d'un compte local, provis
   assert.match(exportation.donnees.note, /chiffrées dans le navigateur/);
 });
 
+test("assistant IA (ADR 0035) : propose des actions validées par le serveur, n'exécute rien, ne garde pas la consigne", async () => {
+  env.DB.sqlite.exec(`
+    INSERT INTO comptes (id, email_hash, role) VALUES ('${UUID(1)}', 'empreinte-email-1', 'parent');
+    INSERT INTO comptes_locaux (id, identifiant_hmac, mdp_sel, mdp_hash, mdp_iterations) VALUES ('${UUID(3)}', 'hmac', 'sel', 'hash', 1000);
+  `);
+  let plan = {
+    resume: "Je propose d'ajouter le rôle bêta-testeur et de surveiller le compte.",
+    actions: [
+      { action: "modifier-roles-niveau", roles: ["fantome"], niveau: "", etat: "", jours: 0, motif: "Inventé." },
+      { action: "modifier-roles-niveau", roles: ["visiteur", "beta-testeur"], niveau: "", etat: "", jours: 0, motif: "Accès aux nouveautés." },
+      { action: "definir-etat-securite", roles: [], niveau: "", etat: "surveille", jours: 400, motif: "Signalement." },
+      { action: "definir-etat-securite", roles: [], niveau: "", etat: "restreint", jours: 7, motif: "Doublon." },
+      { action: "reinitialiser-mot-de-passe", roles: [], niveau: "", etat: "", jours: 0, motif: "Oubli. https://piege.test" }
+    ]
+  };
+  env.AI.run = async (modele, parametres) => {
+    appelsIa.push({ modele, parametres });
+    return { choices: [{ message: { content: typeof plan === "string" ? plan : JSON.stringify(plan) }, finish_reason: "stop" }], usage: { prompt_tokens: 700, completion_tokens: 120 } };
+  };
+  const consigne = "Ajoute bêta-testeur et surveille-le, il s'appelle Zorglub (zorglub.secret@example.org)";
+  const r = await admin("POST", `/utilisateurs/compte-local/${UUID(3)}/assistant`, { consigne });
+  assert.equal(r.statut, 200);
+  assert.deepEqual(r.donnees.actions.map((a) => a.action), ["modifier-roles-niveau", "definir-etat-securite", "reinitialiser-mot-de-passe"]);
+  assert.deepEqual([r.donnees.actions[0].roles, r.donnees.actions[0].niveau], [["visiteur", "beta-testeur"], "gratuit"], "niveau actuel conservé");
+  assert.equal(r.donnees.actions[1].jours, 90, "durée bornée");
+  assert.equal(r.donnees.actions[2].destructive, true);
+  assert.equal(r.donnees.actions[2].motif, "", "aucun lien rendu");
+  assert.deepEqual(r.donnees.ecartees.map((e) => e.raison), ["role-inconnu", "doublon"]);
+  assert.equal(r.donnees.modele, "custom/haiku");
+
+  const [appel] = appelsIa;
+  assert.equal(appel.modele, "custom/haiku", "alias AI Gateway Haiku");
+  assert.equal(appel.parametres.max_tokens, 2000);
+  assert.equal(appel.parametres.response_format.json_schema.name, "actions_compte");
+  const [systeme, message] = appel.parametres.messages;
+  assert.doesNotMatch(systeme.content, new RegExp(UUID(3)), "aucun identifiant de compte envoyé au modèle");
+  assert.doesNotMatch(systeme.content, /reinitialiser-mot-de-passe.*compte famille/s);
+  assert.doesNotMatch(message.content, /zorglub\.secret@example\.org/, "consigne pseudonymisée");
+
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM attributions_roles").get().n, 0, "rien n'est exécuté");
+  assert.equal(env.DB.sqlite.prepare("SELECT count(*) AS n FROM profils_securite").get().n, 0);
+  assert.deepEqual(journal(), [`assistant.proposition compte-local:${UUID(3)}:modifier-roles-niveau+definir-etat-securite+reinitialiser-mot-de-passe`]);
+  for (const canari of ["Zorglub", "zorglub.secret", "bêta-testeur et surveille"]) {
+    assert.equal(env.DB.toutLeTexte().find(({ valeur }) => valeur.toLowerCase().includes(canari.toLowerCase())), undefined, `« ${canari} » conservé`);
+  }
+
+  // Compte famille : pas de réinitialisation de mot de passe, même si le modèle la propose.
+  plan = { resume: "", actions: [{ action: "reinitialiser-mot-de-passe", roles: [], niveau: "", etat: "", jours: 0, motif: "" }, { action: "exporter", roles: [], niveau: "", etat: "", jours: 0, motif: "" }] };
+  const famille = await admin("POST", `/utilisateurs/compte/${UUID(1)}/assistant`, { consigne: "exporte ses données" });
+  assert.deepEqual([famille.donnees.actions.map((a) => a.action), famille.donnees.ecartees.map((e) => e.raison)], [["exporter"], ["type-de-compte"]]);
+
+  plan = "pas du JSON";
+  assert.deepEqual(await admin("POST", `/utilisateurs/compte/${UUID(1)}/assistant`, { consigne: "exporte" }).then((x) => [x.statut, x.donnees.erreur]), [502, "assistant-reponse-invalide"]);
+  assert.equal((await admin("POST", `/utilisateurs/compte/${UUID(1)}/assistant`, { consigne: " " })).donnees.erreur, "consigne-invalide");
+  assert.equal((await admin("POST", `/utilisateurs/compte/${UUID(1)}/assistant`, { consigne: "x".repeat(501) })).donnees.erreur, "consigne-invalide");
+  assert.equal((await admin("POST", `/utilisateurs/compte/${UUID(9)}/assistant`, { consigne: "exporte" })).statut, 404);
+  assert.equal((await admin("GET", `/utilisateurs/compte/${UUID(1)}/assistant`)).statut, 405);
+  assert.equal((await admin("PUT", "/harness/parametres", { valeurs: { ASSISTANT_UTILISATEURS_ACTIF: "false" } })).statut, 200);
+  assert.deepEqual(await admin("POST", `/utilisateurs/compte/${UUID(1)}/assistant`, { consigne: "exporte" }).then((x) => [x.statut, x.donnees.erreur]), [503, "assistant-desactive"]);
+});
+
 // ---------- Rôles et stratégies ----------
 
 test("rôles et stratégies : préparés et administrables, sans effet tant que le contrôle est inactif", async () => {
@@ -417,7 +478,7 @@ test("parcours : listes ordonnées de contenus publiés, publiées à chaud et s
 
 test("harness : modèles, budgets et quotas modifiés à chaud, dans les bornes, tout ou rien", async () => {
   const harness = (await admin("GET", "/harness")).donnees;
-  assert.deepEqual(harness.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers", "acces", "securite"]);
+  assert.deepEqual(harness.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers", "acces", "securite", "assistant"]);
   assert.deepEqual(harness.surcharges, []);
   assert.deepEqual(harness.skills.map((s) => s.id), ["tuteur", "cadrage-idee", "defi-express", "constructeur-cahier"]);
 

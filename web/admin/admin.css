@@ -94,7 +94,7 @@
 /* Mot de passe provisoire d'un compte local (ADR 0024 §3 bis) : affiché une seule fois, sélectionnable. */
 .code-provisoire code { font-size: 1.3em; letter-spacing: .08em; user-select: all; overflow-wrap: anywhere; }
 
-/* Finance simplifiée (ADR 0035) : graphiques. Palette validée (clair sur #ffffff, sombre sur #161a30) : séries 1 à 3
+/* Finance simplifiée (ADR 0036) : graphiques. Palette validée (clair sur #ffffff, sombre sur #161a30) : séries 1 à 3
    catégorielles, bénéfice et perte en paire divergente bleu / rouge. Le texte garde les couleurs de texte. */
 .viz-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px; }
 .viz-figure {
@@ -147,3 +147,12 @@
 .viz-table summary { cursor: pointer; font-size: .85rem; color: var(--accent); font-weight: 600; min-height: 32px; display: flex; align-items: center; }
 @media (max-width: 520px) { .viz-courbe { padding-left: 64px; } .viz-barres { grid-template-columns: minmax(56px, max-content) minmax(0, 1fr) max-content; } }
 .viz-etiquette.dessus { transform: translate(-50%, calc(-100% - 10px)); }
+
+/* Assistant IA de l'écran Utilisateurs (ADR 0035) : propositions à appliquer une par une. */
+.zone-assistant { border: 1px solid var(--accent); }
+.zone-assistant > .admin-ligne > h2 { font-size: 18px; font-weight: 720; }
+.admin-assistant-resultat { display: flex; flex-direction: column; gap: 10px; }
+.admin-assistant-actions { display: flex; flex-direction: column; gap: 8px; padding-left: 20px; margin: 0; }
+.admin-assistant-actions li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 10px 0; border-bottom: 1px solid var(--bord); }
+.admin-assistant-actions li > div { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-width: 0; }
+.admin-assistant-actions li p { flex-basis: 100%; margin: 0; }

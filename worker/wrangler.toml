@@ -45,6 +45,9 @@ SEUIL_CONSO_ELEVEE = "100"            # 10 à 2000 requêtes par jour
 SEUIL_SURCONSOMMATION = "300"         # 20 à 5000 requêtes par jour
 CONSERVATION_SIGNAUX_JOURS = "30"     # 7 à 90
 CONSERVATION_TELEMETRIE_JOURS = "90"  # 7 à 365
+ASSISTANT_UTILISATEURS_ACTIF = "true" # assistant IA de l'écran Utilisateurs (ADR 0035) : propose, l'administrateur applique
+MODELE_ASSISTANT = "custom/haiku"     # alias de modèle AI Gateway de l'assistant
+MAX_TOKENS_ASSISTANT = "2000"         # 500 à 4000 tokens par proposition
 # INSTRUCTIONS_TUTEUR, INSTRUCTIONS_CADRAGE, INSTRUCTIONS_DEFI, INSTRUCTIONS_CAHIERS : instructions complémentaires
 # des harness (2000 caractères), vides par défaut, saisies dans le back-office.
 # Hors registre

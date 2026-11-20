@@ -114,7 +114,7 @@ export function validerSouscription(id, brut, { roles = [] } = {}) {
 
   const usage = {};
   for (const champ of ["joursActifsMois", "tauxUtilisation", "utilisateursCibles"]) {
-    // Abonnés visés (ADR 0035) : absents des offres enregistrées avant, repris des offres pressenties, sinon 0.
+    // Abonnés visés (ADR 0036) : absents des offres enregistrées avant, repris des offres pressenties, sinon 0.
     const brutChamp = champ === "utilisateursCibles" ? brut?.usage?.[champ] ?? SOUSCRIPTIONS_PAR_DEFAUT.find((x) => x.id === id)?.usage.utilisateursCibles ?? 0 : brut?.usage?.[champ];
     const v = nombre(brutChamp);
     if (!entierDans(v, BORNES_FINANCES[champ])) return { ok: false, code: `hors-bornes:${champ}` };
@@ -172,7 +172,7 @@ export function limitesEffectives(souscription, config) {
 
 /**
  * Souscription prête à afficher : limites effectives et estimation financière. `souscriptions` : toutes les offres,
- * entre lesquelles les coûts fixes sont répartis au prorata des abonnés visés (ADR 0035) ; le prix calculé en mode
+ * entre lesquelles les coûts fixes sont répartis au prorata des abonnés visés (ADR 0036) ; le prix calculé en mode
  * « marge » en dépend, il doit donc être le même dans le back-office et dans « Mon abonnement ».
  */
 export function decrireSouscription(souscription, env, finances, souscriptions = [souscription]) {

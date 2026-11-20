@@ -34,6 +34,8 @@ const LIBELLES = {
   statuts: { brouillon: "Brouillon", propose: "Proposé en revue", publie: "Publié", archive: "Archivé" },
   comptes: { compte: "Compte famille", "compte-local": "Compte local" },
   donnees: { aucune: "Aucune donnée personnelle", pseudonyme: "Pseudonyme", minimale: "Donnée personnelle minimale" },
+  actionsAssistant: { "modifier-roles-niveau": "Modifier les rôles et le niveau", "definir-etat-securite": "Définir l'état de sécurité", exporter: "Exporter les données", "reinitialiser-mot-de-passe": "Réinitialiser le mot de passe", supprimer: "Supprimer le compte" },
+  ecartees: { "action-inconnue": "action non autorisée", doublon: "proposée deux fois", "type-de-compte": "impossible pour ce type de compte", "trop-d-actions": "au-delà de quatre actions", "role-inconnu": "rôle inconnu", "niveau-inconnu": "niveau inconnu", "sans-effet": "ne change rien", "etat-invalide": "état inconnu", "profil-absent": "profil de sécurité absent" },
   raisons: { "controle-inactif": "contrôle inactif", "ouverte-a-tous": "ouverte à tous", "role-autorise": "rôle autorisé", "niveau-autorise": "niveau autorisé", "permission-absente": "le rôle n'a pas cette permission", strategie: "réservée à d'autres rôles", "hors-souscription": "non incluse dans la souscription", "fonctionnalite-fermee": "fonctionnalité fermée", "role-inconnu": "rôle inconnu" },
   erreurs: {
     "cle-invalide": "Clé d'accès refusée.", "trop-de-tentatives": "Trop d'essais. Attends une minute.", "back-office-non-configure": "Le back-office n'est pas configuré sur ce serveur (secret BACKOFFICE_JETON absent).",
@@ -45,7 +47,9 @@ const LIBELLES = {
     "donnees-personnelles": "Le texte contient une donnée personnelle (e-mail, téléphone, adresse, identité) : retire-la.", "contraire-au-socle": "Ce texte chercherait à lever le socle de sécurité : il est refusé.",
     "injection-indirecte": "Le texte contient une consigne dissimulée ou un balisage actif : il est refusé.", "couleur-invalide": "Couleur invalide : format #rrggbb attendu.", "titre-invalide": "Le titre est obligatoire (120 caractères au plus).",
     "corps-trop-long": "Le texte dépasse 20 000 caractères.", "etapes-invalides": "Les étapes doivent être des contenus du catalogue, sans doublon (30 au plus).", "publication-par-pr": "Ce contenu se publie par une PR fusionnée par le propriétaire : propose-le en revue.",
-    "parcours-sans-revue": "Un parcours se publie directement.", "github-non-configure": "GitHub n'est pas configuré sur ce serveur.", "github-indisponible": "GitHub n'a pas répondu. Réessaie plus tard.", "introuvable": "Élément introuvable.", "etat-invalide": "État invalide.", reseau: "Le serveur ne répond pas."
+    "parcours-sans-revue": "Un parcours se publie directement.", "github-non-configure": "GitHub n'est pas configuré sur ce serveur.", "github-indisponible": "GitHub n'a pas répondu. Réessaie plus tard.", "introuvable": "Élément introuvable.", "etat-invalide": "État invalide.", reseau: "Le serveur ne répond pas.",
+    "assistant-desactive": "L'assistant IA est désactivé (Harness → Assistant IA des utilisateurs, ou IA coupée sur le site).", "assistant-indisponible": "L'assistant IA ne répond pas (AI Gateway indisponible). Réessaie plus tard.",
+    "assistant-refus": "Le modèle a refusé de traiter cette consigne.", "assistant-reponse-invalide": "La réponse du modèle est inexploitable. Reformule la consigne.", "consigne-invalide": "Écris une consigne de 1 à 500 caractères."
   }
 };
 const lib = (famille, cle) => LIBELLES[famille]?.[cle] ?? cle;
@@ -201,11 +205,78 @@ async function reinitialiserMotDePasse(u, zone) {
   } catch (e) { annoncer(messageErreur(e), { erreur: true }); }
 }
 
+async function exporterUtilisateur(u, zoneExport) {
+  try {
+    zoneExport.textContent = JSON.stringify(await api("GET", `/utilisateurs/${u.type}/${u.id}/export`), null, 2);
+    zoneExport.hidden = false;
+    zoneExport.focus();
+    annoncer("Export affiché sous le tableau. L'export est noté au journal.");
+  } catch (e) { annoncer(messageErreur(e), { erreur: true }); }
+}
+
+function supprimerUtilisateur(u) {
+  if (confirm(`Supprimer définitivement ce ${lib("comptes", u.type).toLowerCase()} et toutes ses données ?`)) agir(() => api("DELETE", `/utilisateurs/${u.type}/${u.id}`), "Compte supprimé avec ses données.");
+}
+
+/**
+ * Assistant IA (ADR 0035) : l'administrateur décrit ce qu'il veut faire sur un compte ; le modèle propose des actions
+ * parmi celles de la ligne du tableau. Rien n'est exécuté sans un clic sur « Appliquer », qui passe par les mêmes
+ * routes (et les mêmes confirmations) que les boutons de la ligne.
+ */
+function ouvrirAssistant(u, zone, { roles, zoneExport, zoneMotDePasse }) {
+  const nomRole = (id) => roles.find((r) => r.id === id)?.libelle ?? id;
+  const consigne = h("textarea", { id: "assistant-consigne", maxlength: "500", rows: "3", placeholder: "Ex. : passe ce compte en premium et ajoute le rôle bêta-testeur.", "aria-describedby": "assistant-aide" });
+  const resultat = h("div", { class: "admin-assistant-resultat", "aria-live": "polite" });
+  const appliquer = (a) => {
+    if (a.action === "modifier-roles-niveau") return agir(() => api("PATCH", `/utilisateurs/${u.type}/${u.id}`, { roles: a.roles, niveau: a.niveau }), "Rôles et niveau enregistrés (proposition de l'assistant).");
+    if (a.action === "definir-etat-securite") return agir(() => api("PUT", `/securite/profils/${u.profil}`, { etat: a.etat, jours: a.jours }), `État de sécurité : ${lib("etats", a.etat)} pour ${a.jours} jour(s).`);
+    if (a.action === "exporter") return exporterUtilisateur(u, zoneExport);
+    if (a.action === "reinitialiser-mot-de-passe") return reinitialiserMotDePasse(u, zoneMotDePasse);
+    if (a.action === "supprimer") return supprimerUtilisateur(u);
+  };
+  const detail = (a) => {
+    if (a.action === "modifier-roles-niveau") return `Rôles : ${a.roles.map(nomRole).join(" + ")} · niveau : ${a.niveau}`;
+    if (a.action === "definir-etat-securite") return `${lib("etats", a.etat)} pendant ${a.jours} jour(s)`;
+    return "";
+  };
+  const proposer = async (bouton) => {
+    const texte = consigne.value.trim();
+    if (!texte) { annoncer("Écris d'abord une consigne.", { erreur: true }); consigne.focus(); return; }
+    bouton.disabled = true;
+    resultat.replaceChildren(h("p", { class: "doux", text: "L'assistant prépare une proposition…" }));
+    try {
+      const plan = await api("POST", `/utilisateurs/${u.type}/${u.id}/assistant`, { consigne: texte });
+      resultat.replaceChildren(
+        h("p", { text: plan.resume || (plan.actions.length ? "Actions proposées :" : "Aucune action proposée.") }),
+        plan.actions.length ? h("ol", { class: "admin-assistant-actions" }, plan.actions.map((a) => h("li", {},
+          h("div", {}, h("strong", { text: lib("actionsAssistant", a.action) }), a.destructive ? pastille("irréversible", "danger") : null,
+            detail(a) ? h("p", { class: "petit", text: detail(a) }) : null, a.motif ? h("p", { class: "doux petit", text: a.motif }) : null),
+          h("button", { type: "button", class: `${a.destructive ? "danger" : "secondaire"} petit-bouton`, onclick: () => appliquer(a) }, "Appliquer")))) : null,
+        plan.ecartees?.length ? h("p", { class: "doux petit", text: `Écarté par le serveur : ${plan.ecartees.map((e) => `${lib("actionsAssistant", e.action)} (${lib("ecartees", e.raison)})`).join(" ; ")}.` }) : null,
+        h("p", { class: "doux petit", text: `Modèle : ${plan.modele}. Proposition notée au journal (sans la consigne).` }));
+    } catch (e) {
+      resultat.replaceChildren();
+      annoncer(messageErreur(e), { erreur: true });
+    } finally { bouton.disabled = false; }
+  };
+  const boutonProposer = h("button", { type: "button", onclick: (ev) => proposer(ev.currentTarget) }, "Proposer des actions");
+  zone.replaceChildren(
+    h("div", { class: "admin-ligne" }, h("h2", { text: "Assistant IA" }), h("code", { text: `${lib("comptes", u.type)} ${u.id}` })),
+    h("label", { for: "assistant-consigne", class: "admin-champ" }, h("span", { text: "Que veux-tu faire sur ce compte ?" })), consigne,
+    h("p", { id: "assistant-aide", class: "doux petit", text: "L'assistant propose ; tu appliques chaque action d'un clic. Il ne connaît ni l'identifiant ni aucune donnée personnelle du compte : seulement son type, ses rôles, son niveau et son état de sécurité. N'écris jamais de donnée personnelle dans la consigne." }),
+    h("div", { class: "admin-ligne" }, boutonProposer,
+      h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { zone.replaceChildren(); zone.hidden = true; } }, "Fermer")),
+    resultat);
+  zone.hidden = false;
+  consigne.focus();
+}
+
 function rendreUtilisateurs(donnees) {
   instantaneUtilisateurs = JSON.stringify(donnees);
   const { utilisateurs, roles, niveaux } = donnees;
   const zoneExport = h("pre", { hidden: true, tabindex: "0", "aria-label": "Données exportées" });
   const zoneMotDePasse = h("div", { hidden: true, tabindex: "-1", class: "admin-bandeau zone-mot-de-passe", role: "status", "aria-label": "Mot de passe provisoire" });
+  const zoneAssistant = h("section", { hidden: true, class: "carte admin-bloc zone-assistant", "aria-label": "Assistant IA" });
   const ligneActions = (u) => {
     // Rôles cumulatifs (ADR 0034) : plusieurs rôles cochés ; le rôle apporté par la souscription s'y ajoute.
     const choisis = u.roles ?? [u.role];
@@ -228,6 +299,7 @@ function rendreUtilisateurs(donnees) {
     h("p", { class: "admin-bandeau ok", text: "Aucun e-mail, aucun nom, aucune adresse IP n'est affiché ici : la base n'en contient pas. Un compte est identifié par un identifiant aléatoire." }),
     rechercheParIdentifiant(),
     zoneMotDePasse,
+    zoneAssistant,
     bloc("Comptes", tableau(`${utilisateurs.length} compte(s)`, [
       { titre: "Type", cellule: (u) => lib("comptes", u.type) },
       { titre: "Identifiant", cellule: (u) => h("code", { text: rechercheUtilisateur ? u.id : u.id.slice(0, 8), title: u.id }) },
@@ -243,18 +315,10 @@ function rendreUtilisateurs(donnees) {
           if (!choisis.length) { annoncer("Coche au moins un rôle.", { erreur: true }); return; }
           agir(() => api("PATCH", `/utilisateurs/${u.type}/${u.id}`, { roles: choisis, niveau: u.champs.niveau.value }), "Rôles et niveau enregistrés.");
         } }, "Enregistrer"),
-        h("button", { type: "button", class: "secondaire petit-bouton", onclick: async () => {
-          try {
-            zoneExport.textContent = JSON.stringify(await api("GET", `/utilisateurs/${u.type}/${u.id}/export`), null, 2);
-            zoneExport.hidden = false;
-            zoneExport.focus();
-            annoncer("Export affiché sous le tableau. L'export est noté au journal.");
-          } catch (e) { annoncer(messageErreur(e), { erreur: true }); }
-        } }, "Exporter les données"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => exporterUtilisateur(u, zoneExport) }, "Exporter les données"),
         u.type === "compte-local" ? h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => reinitialiserMotDePasse(u, zoneMotDePasse) }, "Réinitialiser le mot de passe") : null,
-        h("button", { type: "button", class: "danger petit-bouton", onclick: () => {
-          if (confirm(`Supprimer définitivement ce ${lib("comptes", u.type).toLowerCase()} et toutes ses données ?`)) agir(() => api("DELETE", `/utilisateurs/${u.type}/${u.id}`), "Compte supprimé avec ses données.");
-        } }, "Supprimer")) }
+        h("button", { type: "button", class: "secondaire petit-bouton", "data-assistant": u.id, onclick: () => ouvrirAssistant(u, zoneAssistant, { roles, zoneExport, zoneMotDePasse }) }, "Assistant IA"),
+        h("button", { type: "button", class: "danger petit-bouton", onclick: () => supprimerUtilisateur(u) }, "Supprimer")) }
     ], lignes, rechercheUtilisateur ? "Aucun compte avec cet identifiant unique." : "Aucun compte pour le moment : les visiteurs utilisent un pseudo gardé dans leur navigateur."), zoneExport)
   ];
 }
@@ -695,7 +759,7 @@ const LIB_ERREURS_TARIFS = {
   "cloudflare-injoignable": "Cloudflare injoignable", "http-401": "jeton refusé", "http-403": "jeton sans la permission Workers AI Read"
 };
 
-// ---------- Graphiques (Finance simplifiée, ADR 0035) ----------
+// ---------- Graphiques (Finance simplifiée, ADR 0036) ----------
 // Construits par le DOM, sans bibliothèque (CSP du site). Barres en HTML (lisibles sur téléphone), courbe en SVG.
 // Chaque graphique a sa vue tableau ; l'infobulle (survol et focus clavier) n'est jamais le seul accès à une valeur.
 
@@ -867,7 +931,7 @@ async function ecranSouscriptions() {
   const mensuel = ["cahiersMois"];
   const structure = ["enfantsMax", "classesMax", "elevesMax"];
   const nombreSaisi = (valeur) => (valeur === "" ? NaN : Number(valeur));
-  // Abonnés visés par offre (ADR 0035) : ils pondèrent la répartition des coûts fixes et alimentent la finance
+  // Abonnés visés par offre (ADR 0036) : ils pondèrent la répartition des coûts fixes et alimentent la finance
   // simplifiée. Modifiables dans l'éditeur comme dans la finance simplifiée ; les deux restent synchronisés.
   const cibles = new Map(etat.souscriptions.map((x) => [x.id, x.usage.utilisateursCibles ?? 0]));
   const portefeuille = (remplacee) => {
@@ -1079,7 +1143,7 @@ async function ecranSouscriptions() {
       } }, "Enregistrer la souscription"),
       supprimer));
 
-  // Finance simplifiée (ADR 0035) : compte de résultat mensuel du portefeuille, à abonnés visés, en graphiques.
+  // Finance simplifiée (ADR 0036) : compte de résultat mensuel du portefeuille, à abonnés visés, en graphiques.
   const champsCibles = new Map(etat.souscriptions.map((x) => [x.id, h("input", { type: "number", value: cibles.get(x.id), min: 0, max: bornes.finances.utilisateursCibles[1], step: "1", "data-cible": x.id, "aria-label": `Abonnés visés : ${x.libelle}` })]));
   for (const [id, champ] of champsCibles) {
     champ.addEventListener("input", () => {
@@ -1312,7 +1376,7 @@ async function actualiserUtilisateurs() {
   const version = affichage;
   const disponible = () => affichage === version && ecranCourant === "utilisateurs" && !$("#application").hidden
     && !document.hidden && !zone.hasAttribute("aria-busy") && !zone.contains(document.activeElement)
-    && !zone.querySelector("pre:not([hidden])")
+    && !zone.querySelector("pre:not([hidden])") && !zone.querySelector(".zone-assistant:not([hidden])")
     && ![...zone.querySelectorAll("select[data-valeur-initiale]")].some((champ) => champ.value !== champ.dataset.valeurInitiale);
   if (miseAJourUtilisateurs || !disponible()) return;
   miseAJourUtilisateurs = true;

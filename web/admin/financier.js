@@ -5,7 +5,7 @@
 
 /**
  * Modules consommateurs de tokens, limite de souscription qui fixe leur volume quotidien et fonctionnalité qui les
- * ouvre : une offre qui n'inclut pas la fonctionnalité ne consomme rien sur ce module (ADR 0035).
+ * ouvre : une offre qui n'inclut pas la fonctionnalité ne consomme rien sur ce module (ADR 0036).
  */
 export const MODULES_COUT = Object.freeze({
   tuteur: Object.freeze({ libelle: "Tuteur IA", limite: "tokensSession", fonctionnalite: "ia.tuteur" }),
@@ -243,7 +243,7 @@ export function estimerSouscription(souscription, finances, tokensParGeneration,
 }
 
 /**
- * Finance simplifiée (ADR 0035) : compte de résultat mensuel du portefeuille d'offres, chaque offre comptée avec ses
+ * Finance simplifiée (ADR 0036) : compte de résultat mensuel du portefeuille d'offres, chaque offre comptée avec ses
  * abonnés visés. Par offre : chiffre d'affaires HT, coûts variables, coûts fixes alloués, frais de paiement, résultat.
  * Totaux, point mort (abonnés nécessaires, à la même répartition entre offres, pour couvrir les coûts fixes) et
  * projection du résultat quand le nombre d'abonnés varie, à répartition constante.

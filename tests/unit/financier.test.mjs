@@ -84,7 +84,7 @@ test("offres pressenties : Gratuit, Solo, Parent, Professeur, toutes valides et 
 
 test("offres pressenties payantes : rentables avec les hypothèses par défaut, au mois comme à l'année", () => {
   const generation = { defi: 1500, cahiers: 100000 };
-  // Coûts fixes répartis sur tout le portefeuille, au prorata des abonnés visés (ADR 0035).
+  // Coûts fixes répartis sur tout le portefeuille, au prorata des abonnés visés (ADR 0036).
   const repartition = repartitionFixes(SOUSCRIPTIONS_PAR_DEFAUT, FINANCES_PAR_DEFAUT);
   for (const s of SOUSCRIPTIONS_PAR_DEFAUT.filter((x) => x.id !== "gratuit")) {
     const e = estimerSouscription(s, FINANCES_PAR_DEFAUT, generation, repartition);
@@ -133,7 +133,7 @@ test("prix annuel saisi : remplace la remise, remise effective calculée", () =>
   assert.deepEqual([e.prixAnnuelHT, e.prixAnnuelSaisi, e.remiseEffective], [96, true, 20]);
 });
 
-// ---------- Répartition des coûts fixes et finance simplifiée (ADR 0035) ----------
+// ---------- Répartition des coûts fixes et finance simplifiée (ADR 0036) ----------
 
 const offreCible = (id, prix, abonnes) => ({ ...offre({ prixMensuelHT: prix }), id, libelle: id, usage: { joursActifsMois: 10, tauxUtilisation: 50, utilisateursCibles: abonnes } });
 

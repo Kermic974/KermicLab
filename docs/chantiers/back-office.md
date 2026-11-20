@@ -9,14 +9,14 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
 | Écran | Ce qu'il fait | Code |
 |---|---|---|
 | Vue d'ensemble | État du site, volumes sur 7 jours, profils à regarder | `web/admin/admin.js` |
-| Utilisateurs | Comptes famille et comptes locaux : rôle, niveau, état de sécurité, export des données (droit d'accès), suppression complète | `worker/src/backoffice.js` |
+| Utilisateurs | Comptes famille et comptes locaux : rôle, niveau, état de sécurité, export des données (droit d'accès), suppression complète ; assistant IA qui propose ces actions à partir d'une consigne, appliquées d'un clic — [ADR 0035](../decisions/0035-assistant-ia-utilisateurs.md) | `worker/src/backoffice.js`, `assistant-utilisateurs.js` |
 | Rôles et accès | Rôles système et personnalisés, permissions, stratégies par fonctionnalité, simulateur | `worker/src/roles.js` |
 | Sécurité | Signaux par catégorie, profils classés, décision par profil, banc d'essai de l'analyse | `worker/src/analyse-requete.js`, `comportement.js` |
 | Données personnelles | Contrôle de non-conservation, registre des traitements, purge | `worker/src/donnees.js` |
 | Télémétrie | Tokens entrants et sortants, modèles, durée, requêtes, refus | `worker/src/telemetrie.js` |
 | Charte graphique | Trois thèmes ou couleurs personnalisées, aperçu clair et sombre | `web/theme.js` |
 | Contenus | Inventaire, masquage et mise en avant à chaud, parcours, brouillons envoyés en revue | `worker/src/contenus.js` |
-| Souscriptions | Offres composées d'un rôle, de fonctionnalités et de limites ; sous-module financier (coût de revient, prix ↔ marge, seuil de rentabilité) — [ADR 0031](../decisions/0031-souscriptions-financier.md) ; coûts fixes répartis par abonnés visés et Finance simplifiée en graphiques — [ADR 0035](../decisions/0035-finance-simplifiee.md) | `worker/src/souscriptions.js`, `web/admin/financier.js` |
+| Souscriptions | Offres composées d'un rôle, de fonctionnalités et de limites ; sous-module financier (coût de revient, prix ↔ marge, seuil de rentabilité) — [ADR 0031](../decisions/0031-souscriptions-financier.md) ; coûts fixes répartis par abonnés visés et Finance simplifiée en graphiques — [ADR 0036](../decisions/0036-finance-simplifiee.md) | `worker/src/souscriptions.js`, `web/admin/financier.js` |
 | Harness | Modèles, budgets, quotas, skills, instructions complémentaires (limites de l'offre « Gratuit ») | `worker/src/reglages.js`, `configuration.js` |
 | Journal | Trace des actions (action et cible, jamais le contenu) | table `journal_admin` |
 
