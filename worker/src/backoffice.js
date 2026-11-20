@@ -387,7 +387,7 @@ async function etatSouscriptions(env, envEffectif, reglages) {
   return {
     controleActif: config.CONTROLE_ACCES_ACTIF,
     parDefaut: reglages.souscriptionsParDefaut,
-    souscriptions: reglages.souscriptions.map((s) => ({ ...decrireSouscription(s, envEffectif, reglages.finances), comptes: comptes.get(s.id) ?? 0 })),
+    souscriptions: reglages.souscriptions.map((s) => ({ ...decrireSouscription(s, envEffectif, reglages.finances, reglages.souscriptions), comptes: comptes.get(s.id) ?? 0 })),
     finances: reglages.finances,
     financesParDefaut: FINANCES_PAR_DEFAUT,
     roles: (await listerRoles(env)).map(({ id, libelle, permissions }) => ({ id, libelle, permissions: permissions.filter((p) => FONCTIONNALITES.includes(p)) })),

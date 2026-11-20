@@ -93,3 +93,57 @@
 
 /* Mot de passe provisoire d'un compte local (ADR 0024 §3 bis) : affiché une seule fois, sélectionnable. */
 .code-provisoire code { font-size: 1.3em; letter-spacing: .08em; user-select: all; overflow-wrap: anywhere; }
+
+/* Finance simplifiée (ADR 0035) : graphiques. Palette validée (clair sur #ffffff, sombre sur #161a30) : séries 1 à 3
+   catégorielles, bénéfice et perte en paire divergente bleu / rouge. Le texte garde les couleurs de texte. */
+.viz-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px; }
+.viz-figure {
+  --viz-1: #2a78d6; --viz-2: #eb6834; --viz-3: #1baf7a; --viz-positif: #2a78d6; --viz-negatif: #e34948;
+  position: relative; margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0;
+  padding: 16px; border-radius: var(--rayon-moyen); background: var(--surface); border: 1px solid var(--bord);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .viz-figure { --viz-1: #3987e5; --viz-2: #d95926; --viz-3: #199e70; --viz-positif: #3987e5; --viz-negatif: #e66767; }
+}
+:root[data-theme="dark"] .viz-figure { --viz-1: #3987e5; --viz-2: #d95926; --viz-3: #199e70; --viz-positif: #3987e5; --viz-negatif: #e66767; }
+.viz-figure figcaption { display: flex; flex-direction: column; gap: 2px; }
+.viz-1 { --c: var(--viz-1); } .viz-2 { --c: var(--viz-2); } .viz-3 { --c: var(--viz-3); }
+.viz-positif { --c: var(--viz-positif); } .viz-negatif { --c: var(--viz-negatif); }
+.viz-legende { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; font-size: .82rem; color: var(--texte-2); }
+.viz-legende li { display: inline-flex; align-items: center; gap: 6px; }
+.viz-cle { width: 12px; height: 12px; border-radius: 3px; background: var(--c); flex: none; }
+.viz-cle.viz-cle-repere { width: 2px; height: 14px; border-radius: 0; background: var(--texte); }
+.viz-barres { display: grid; grid-template-columns: minmax(64px, max-content) minmax(0, 1fr) max-content; gap: 10px 12px; align-items: center; }
+.viz-libelle { font-size: .85rem; color: var(--texte-2); overflow-wrap: anywhere; }
+.viz-valeur { font-size: .85rem; color: var(--texte); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.viz-piste { position: relative; height: 24px; }
+.viz-zero { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--bord-fort); }
+.viz-barre { position: absolute; top: 4px; height: 16px; min-width: 2px; background: var(--c); border-radius: 0 4px 4px 0; cursor: default; }
+.viz-barre.negatif { border-radius: 4px 0 0 4px; }
+.viz-pile { position: absolute; top: 4px; left: 0; height: 16px; display: flex; gap: 2px; }
+.viz-seg { background: var(--c); min-width: 2px; }
+.viz-seg:last-child { border-radius: 0 4px 4px 0; }
+.viz-repere { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--texte); }
+.viz-repere::after { content: ""; position: absolute; inset: 0 -8px; }
+.viz-barre:hover, .viz-seg:hover, .viz-barre:focus-visible, .viz-seg:focus-visible, .viz-repere:focus-visible { filter: brightness(1.1); outline: 2px solid var(--texte); outline-offset: 1px; }
+.viz-infobulle {
+  position: absolute; z-index: 5; pointer-events: none; display: flex; flex-direction: column; gap: 2px; padding: 6px 10px;
+  border-radius: 8px; background: var(--surface); border: 1px solid var(--bord-fort); box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+  font-size: .8rem; color: var(--texte-2); white-space: nowrap;
+}
+.viz-infobulle strong { color: var(--texte); font-size: .9rem; }
+.viz-courbe { display: flex; flex-direction: column; gap: 4px; padding-left: 76px; }
+.viz-zone { position: relative; height: 200px; outline-offset: 4px; touch-action: pan-y; }
+.viz-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.viz-grille-svg, .viz-svg .viz-grille { stroke: var(--bord); stroke-width: 1; }
+.viz-svg .viz-axe { stroke: var(--bord-fort); stroke-width: 1; }
+.viz-svg .viz-ligne { fill: none; stroke: var(--viz-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.viz-graduation { position: absolute; right: calc(100% + 8px); transform: translateY(-50%); font-size: .75rem; color: var(--doux); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.viz-reticule { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--bord-fort); pointer-events: none; }
+.viz-point { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--c, var(--viz-1)); box-shadow: 0 0 0 2px var(--surface); pointer-events: none; }
+.viz-point.viz-mort { background: var(--texte); }
+.viz-etiquette { position: absolute; transform: translate(-50%, 8px); font-size: .75rem; color: var(--texte-2); white-space: nowrap; pointer-events: none; }
+.viz-axe-x { display: flex; justify-content: space-between; font-size: .75rem; color: var(--doux); }
+.viz-table summary { cursor: pointer; font-size: .85rem; color: var(--accent); font-weight: 600; min-height: 32px; display: flex; align-items: center; }
+@media (max-width: 520px) { .viz-courbe { padding-left: 64px; } .viz-barres { grid-template-columns: minmax(56px, max-content) minmax(0, 1fr) max-content; } }
+.viz-etiquette.dessus { transform: translate(-50%, calc(-100% - 10px)); }

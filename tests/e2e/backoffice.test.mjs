@@ -214,13 +214,13 @@ test("souscriptions : composer une offre, prix calculé depuis la marge puis mar
   }
 
   // Hypothèses : un poste de coût fixe ajouté relève le coût de revient de toutes les offres, avant même d'enregistrer.
-  const coutAvant = await comparaison.locator("tbody tr", { hasText: "Gratuit" }).locator("td").nth(2).textContent();
+  const coutAvant = await comparaison.locator("tbody tr", { hasText: "Gratuit" }).locator("td").nth(4).textContent();
   await page.locator("#ecran button", { hasText: "Ajouter un poste" }).click();
   const poste = page.locator("[data-poste-fixe]").last();
   await poste.locator("[data-poste=libelle]").fill("Bureaux");
   await poste.locator("[data-poste=montant]").fill("2970");
   assert.match(await page.locator("#ecran").textContent(), /Total des coûts fixes : 3\s?000,00/);
-  assert.notEqual(await comparaison.locator("tbody tr", { hasText: "Gratuit" }).locator("td").nth(2).textContent(), coutAvant);
+  assert.notEqual(await comparaison.locator("tbody tr", { hasText: "Gratuit" }).locator("td").nth(4).textContent(), coutAvant);
   // Tarifs Cloudflare : indisponibles sans identifiant de compte ni jeton ; cache et frais de plateforme saisissables.
   assert.equal(await page.locator("#ecran button", { hasText: "Charger les tarifs Cloudflare" }).isDisabled(), true);
   await page.fill('[data-modele="cahiers.partCache"]', "50");
@@ -231,6 +231,48 @@ test("souscriptions : composer une offre, prix calculé depuis la marge puis mar
   assert.equal(finances.coutsFixes.at(-1).libelle, "Bureaux");
   assert.equal(finances.modeles.cahiers.partCache, 50);
   assert.deepEqual(erreurs.filter((e) => !/status of 400/.test(e)), []);
+  await contexte.close();
+});
+
+test("finance simplifiée : coûts fixes répartis par abonnés visés, graphiques, infobulle et vue tableau", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await brancherWorker(page);
+  await entrer(page);
+  await aller(page, "souscriptions");
+  const finance = page.locator(".admin-bloc", { hasText: "Finance simplifiée" });
+  const comparaison = page.locator(".admin-bloc", { hasText: "Vue comparée" });
+  for (const titre of ["Résultat mensuel par offre", "Coûts mensuels par offre", "Répartition des coûts fixes", "Résultat mensuel selon le nombre d'abonnés"]) {
+    assert.equal(await finance.locator("figure", { hasText: titre }).count(), 1, titre);
+  }
+  assert.match(await finance.textContent(), /200abonnés visés, toutes offres/);
+  // 30 de coûts fixes pour 200 abonnés visés : 0,15 par abonné.
+  assert.match(await comparaison.locator("tbody tr", { hasText: "Solo" }).locator("td").nth(3).textContent(), /0,15/);
+
+  // Plus d'abonnés visés pour Solo : la part de chacun baisse partout, avant même d'enregistrer.
+  await page.fill('[data-cible="solo"]', "225");
+  assert.match(await finance.textContent(), /400abonnés visés, toutes offres/);
+  assert.match(await comparaison.locator("tbody tr", { hasText: "Parent" }).locator("td").nth(3).textContent(), /0,08/);
+  assert.match(await finance.locator("figure", { hasText: "Répartition des coûts fixes" }).textContent(), /0,08\s?\$US par abonné/);
+
+  // Infobulle au survol et au clavier ; vue tableau.
+  const barre = finance.locator("figure", { hasText: "Résultat mensuel par offre" }).locator(".viz-barre").first();
+  await barre.hover();
+  await finance.locator(".viz-infobulle:visible").waitFor();
+  await page.keyboard.press("Tab");
+  const resultat = finance.locator("figure", { hasText: "Résultat mensuel par offre" });
+  await resultat.locator("summary", { hasText: "Voir les données en tableau" }).click();
+  assert.equal(await resultat.locator("details tbody tr").count(), 5, "quatre offres et le total");
+  const courbe = finance.locator(".viz-zone");
+  await courbe.hover({ position: { x: 40, y: 100 } });
+  await finance.locator("figure", { hasText: "selon le nombre" }).locator(".viz-infobulle:visible").waitFor();
+  await capturer(page, "backoffice-finance-simplifiee", { pleinePage: true });
+
+  await finance.locator("button", { hasText: "Enregistrer les abonnés visés" }).click();
+  await page.locator("#message", { hasText: "Abonnés visés enregistrés." }).waitFor();
+  const offres = JSON.parse(env.DB.sqlite.prepare("SELECT valeur FROM reglages WHERE cle = 'souscriptions'").get().valeur);
+  assert.equal(offres.find((x) => x.id === "solo").usage.utilisateursCibles, 225);
+  assert.equal(offres.find((x) => x.id === "parent").usage.utilisateursCibles, 20);
+  assert.deepEqual(erreurs, []);
   await contexte.close();
 });
 

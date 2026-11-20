@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import worker, { _reinitialiser, categoriesDeLaRequete } from "../../worker/src/index.js";
 import { profilDuCompte } from "../../worker/src/comportement.js";
 import { creerD1Complet } from "../helpers/d1-complet.mjs";
+import { etatSouscriptionCompte } from "../../worker/src/souscription-compte.js";
 
 // Back-office (ADR 0026) : API d'administration, signaux de sécurité, garde-fous et preuve de non-conservation.
 const CLE = "cle-de-test-du-back-office-de-plus-de-32-caracteres";
@@ -535,6 +536,24 @@ test("finances : hypothèses validées, enregistrées, rétablies ; estimation r
   assert.equal((await admin("PUT", "/finances", { reinitialiser: true })).statut, 200);
   assert.deepEqual((await admin("GET", "/souscriptions")).donnees.finances, etat.financesParDefaut);
   assert.ok(journal().includes("finances.enregistrement") && journal().includes("finances.reinitialisation"));
+});
+
+test("coûts fixes répartis entre les offres au prorata des abonnés visés ; même prix pour l'utilisateur", async () => {
+  const etat = (await admin("GET", "/souscriptions")).donnees;
+  const parId = (liste) => Object.fromEntries(liste.map((x) => [x.id, x]));
+  let offres = parId(etat.souscriptions);
+  // 30 de coûts fixes pour 150 + 25 + 20 + 5 = 200 abonnés visés : 0,15 par abonné, 22,50 portés par « Gratuit ».
+  assert.deepEqual(etat.souscriptions.map((x) => [x.id, x.usage.utilisateursCibles, x.estimation.partFixe, x.estimation.fixesAlloues]),
+    [["gratuit", 150, 0.15, 22.5], ["solo", 25, 0.15, 3.75], ["parent", 20, 0.15, 3], ["professeur", 5, 0.15, 0.75]]);
+  const { estimation, comptes, ...solo } = offres.solo;
+  assert.equal((await admin("PUT", "/souscriptions/solo", { ...solo, usage: { ...solo.usage, utilisateursCibles: 225 } })).statut, 200);
+  assert.equal((await admin("PUT", "/souscriptions/solo", { ...solo, usage: { ...solo.usage, utilisateursCibles: 2e7 } })).donnees.erreur, "hors-bornes:utilisateursCibles");
+  offres = parId((await admin("GET", "/souscriptions")).donnees.souscriptions);
+  assert.equal(offres.professeur.estimation.partFixe, 0.075, "400 abonnés visés : la part de chacun baisse, pour toutes les offres");
+  assert.ok(offres.professeur.estimation.prixMensuelHT < etat.souscriptions.find((x) => x.id === "professeur").estimation.prixMensuelHT, "le prix calculé pour la marge visée baisse avec");
+  // « Mon abonnement » affiche le même prix que le back-office (mode « marge » compris).
+  const vue = await etatSouscriptionCompte(env, UUID(77));
+  assert.equal(vue.offres.find((o) => o.id === "professeur").prix.mensuelHT, offres.professeur.estimation.prixMensuelHT);
 });
 
 test("tarifs Cloudflare : fermé sans configuration, aperçu sans enregistrement ; télémétrie mesurée exposée", async () => {

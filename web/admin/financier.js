@@ -3,11 +3,14 @@
 // Worker (validation, réponse de l'API) et par l'interface du back-office (recalcul immédiat pendant la saisie).
 // Ce sont des estimations sur hypothèses : elles ne facturent rien et ne remplacent pas un avis comptable.
 
-/** Modules consommateurs de tokens, et limite de souscription qui fixe leur volume quotidien. */
+/**
+ * Modules consommateurs de tokens, limite de souscription qui fixe leur volume quotidien et fonctionnalité qui les
+ * ouvre : une offre qui n'inclut pas la fonctionnalité ne consomme rien sur ce module (ADR 0035).
+ */
 export const MODULES_COUT = Object.freeze({
-  tuteur: Object.freeze({ libelle: "Tuteur IA", limite: "tokensSession" }),
-  defi: Object.freeze({ libelle: "Défi express généré", limite: "defisJour" }),
-  cahiers: Object.freeze({ libelle: "Cahiers enrichis", limite: "cahiersJour" })
+  tuteur: Object.freeze({ libelle: "Tuteur IA", limite: "tokensSession", fonctionnalite: "ia.tuteur" }),
+  defi: Object.freeze({ libelle: "Défi express généré", limite: "defisJour", fonctionnalite: "ia.defi" }),
+  cahiers: Object.freeze({ libelle: "Cahiers enrichis", limite: "cahiersJour", fonctionnalite: "ia.cahiers" })
 });
 
 /**
@@ -21,7 +24,9 @@ export const MODULES_COUT = Object.freeze({
  * - `partCache` : part des tokens d'entrée servie par le cache du fournisseur (%) ;
  * - `fraisPlateforme` : majoration sur le coût du modèle (%), par ex. 5 % de frais sur les crédits Unified Billing ;
  * - `tokensParAppel` : taille moyenne d'une génération (défi, cahier) ; 0 = taille maximale du registre (MAX_TOKENS_*).
- * Coûts fixes : postes mensuels détaillés ; `coutsFixesMensuels` en est la somme.
+ * Coûts fixes : postes mensuels détaillés ; `coutsFixesMensuels` en est la somme. Ils sont répartis entre les
+ * souscriptions au prorata de leurs abonnés visés (`usage.utilisateursCibles`, voir `repartitionFixes`) ;
+ * `utilisateursEstimes` ne sert plus que si aucune offre n'a d'abonnés visés (hypothèses antérieures).
  */
 export const FINANCES_PAR_DEFAUT = Object.freeze({
   devise: "USD",
@@ -47,7 +52,7 @@ export const FINANCES_PAR_DEFAUT = Object.freeze({
 export const BORNES_FINANCES = Object.freeze({
   tauxTva: [0, 30], prixMillion: [0, 200], ratio: [0, 50], coutsFixesMensuels: [0, 100000], utilisateursEstimes: [1, 10000000],
   fraisPaiementPourcent: [0, 15], fraisPaiementFixe: [0, 5], prixMensuelHT: [0, 1000], margeCible: [-100, 95], remiseAnnuelle: [0, 90],
-  prixAnnuelHT: [0, 12000], joursActifsMois: [0, 31], tauxUtilisation: [0, 100], partCache: [0, 100], fraisPlateforme: [0, 30],
+  prixAnnuelHT: [0, 12000], joursActifsMois: [0, 31], tauxUtilisation: [0, 100], utilisateursCibles: [0, 10000000], partCache: [0, 100], fraisPlateforme: [0, 30],
   tokensParAppel: [0, 200000], posteFixe: [0, 100000]
 });
 export const DEVISES = Object.freeze(["USD", "EUR"]);
@@ -142,7 +147,9 @@ export function taillesGeneration(finances, tokensParGeneration = {}) {
  * - « au plafond » : chaque jour actif consomme tout le quota ;
  * - « estimé » : le plafond multiplié par le taux d'utilisation.
  */
-export function coutVariable({ limites, usage }, finances, tokensParGenerationRegistre) {
+export function coutVariable({ limites, usage, fonctionnalites }, finances, tokensParGenerationRegistre) {
+  // Sans liste de fonctionnalités (estimation isolée), tous les modules sont comptés.
+  const inclus = (module) => !Array.isArray(fonctionnalites) || fonctionnalites.includes(MODULES_COUT[module].fonctionnalite);
   const tokensParGeneration = taillesGeneration(finances, tokensParGenerationRegistre);
   const jours = usage.joursActifsMois;
   // Cahiers : limite par jour, bornée par le plafond mensuel s'il existe (`cahiersMois`, 0 = sans plafond).
@@ -155,12 +162,24 @@ export function coutVariable({ limites, usage }, finances, tokensParGenerationRe
   const parModule = {};
   let plafond = 0;
   for (const module of Object.keys(MODULES_COUT)) {
-    const tokensMois = tokensParMois[module];
+    const tokensMois = inclus(module) ? tokensParMois[module] : 0;
     const cout = tokensMois * coutParToken(finances.modeles[module]);
     plafond += cout;
-    parModule[module] = { tokensMoisPlafond: tokensMois, coutMillion: arrondi(coutParToken(finances.modeles[module]) * 1e6, 4), plafond: arrondi(cout, 4), estime: arrondi(cout * usage.tauxUtilisation / 100, 4) };
+    parModule[module] = { inclus: inclus(module), tokensMoisPlafond: tokensMois, coutMillion: arrondi(coutParToken(finances.modeles[module]) * 1e6, 4), plafond: arrondi(cout, 4), estime: arrondi(cout * usage.tauxUtilisation / 100, 4) };
   }
   return { parModule, plafond: arrondi(plafond, 4), estime: arrondi(plafond * usage.tauxUtilisation / 100, 4) };
+}
+
+/**
+ * Répartition des coûts fixes entre les souscriptions, pondérée par leurs abonnés visés : une offre porte
+ * coûts fixes × abonnés visés / total des abonnés visés, soit la même part par abonné quelle que soit l'offre.
+ * Sans abonné visé nulle part (hypothèses antérieures), le nombre global `utilisateursEstimes` sert de diviseur.
+ * @returns {{ abonnesTotal: number, partParAbonne: number }}
+ */
+export function repartitionFixes(souscriptions, finances) {
+  const abonnesTotal = (souscriptions ?? []).reduce((t, s) => t + (Number(s?.usage?.utilisateursCibles) || 0), 0);
+  const diviseur = abonnesTotal > 0 ? abonnesTotal : Math.max(1, Number(finances.utilisateursEstimes) || 1);
+  return { abonnesTotal, partParAbonne: finances.coutsFixesMensuels / diviseur };
 }
 
 const fraisPaiement = (prix, finances) => (prix > 0 ? prix * finances.fraisPaiementPourcent / 100 + finances.fraisPaiementFixe : 0);
@@ -169,10 +188,13 @@ const fraisPaiement = (prix, finances) => (prix > 0 ? prix * finances.fraisPaiem
  * Estimation complète d'une souscription : coût de revient, prix, marge et seuil de rentabilité.
  * `prix.mode` : « prix » (prix de vente fourni → marge calculée) ou « marge » (marge visée → prix calculé).
  * Marge = prix HT − coût de revient − frais de paiement ; taux de marge = marge / prix HT.
+ * `repartition` : résultat de `repartitionFixes` sur toutes les souscriptions (part des coûts fixes par abonné) ; à
+ * défaut, la souscription est seule et porte les coûts fixes au prorata de ses propres abonnés visés.
  */
-export function estimerSouscription(souscription, finances, tokensParGeneration) {
+export function estimerSouscription(souscription, finances, tokensParGeneration, repartition = repartitionFixes([souscription], finances)) {
   const variable = coutVariable(souscription, finances, tokensParGeneration);
-  const partFixe = finances.coutsFixesMensuels / finances.utilisateursEstimes;
+  const partFixe = repartition.partParAbonne;
+  const abonnes = Number(souscription.usage?.utilisateursCibles) || 0;
   const coutRevient = variable.estime + partFixe;
   const { mode, margeCible, remiseAnnuelle } = souscription.prix;
   const pourcent = finances.fraisPaiementPourcent / 100;
@@ -197,6 +219,9 @@ export function estimerSouscription(souscription, finances, tokensParGeneration)
     devise: finances.devise,
     coutVariable: variable,
     partFixe: arrondi(partFixe, 4),
+    abonnesVises: abonnes,
+    // Coûts fixes portés par l'offre : part par abonné × abonnés visés.
+    fixesAlloues: arrondi(partFixe * abonnes, 2),
     coutRevient: arrondi(coutRevient, 4),
     coutRevientPlafond: arrondi(variable.plafond + partFixe, 4),
     prixMensuelHT: arrondi(prixHT),
@@ -215,4 +240,43 @@ export function estimerSouscription(souscription, finances, tokensParGeneration)
     seuilRentabilite: contribution > 0 ? Math.ceil(finances.coutsFixesMensuels / contribution) : null,
     atteignable
   };
+}
+
+/**
+ * Finance simplifiée (ADR 0035) : compte de résultat mensuel du portefeuille d'offres, chaque offre comptée avec ses
+ * abonnés visés. Par offre : chiffre d'affaires HT, coûts variables, coûts fixes alloués, frais de paiement, résultat.
+ * Totaux, point mort (abonnés nécessaires, à la même répartition entre offres, pour couvrir les coûts fixes) et
+ * projection du résultat quand le nombre d'abonnés varie, à répartition constante.
+ */
+export function bilanPortefeuille(souscriptions, finances, tokensParGeneration) {
+  const repartition = repartitionFixes(souscriptions, finances);
+  const offres = souscriptions.map((s) => {
+    const e = estimerSouscription(s, finances, tokensParGeneration, repartition);
+    const n = e.abonnesVises;
+    const revenus = n * e.prixMensuelHT;
+    const variables = n * e.coutVariable.estime;
+    const frais = n * e.fraisPaiement;
+    const fixes = n * e.partFixe;
+    return {
+      id: s.id, libelle: s.libelle, abonnes: n, prixMensuelHT: e.prixMensuelHT,
+      revenus: arrondi(revenus), variables: arrondi(variables), fixes: arrondi(fixes), frais: arrondi(frais),
+      resultat: arrondi(revenus - variables - fixes - frais),
+      // Contribution : ce qu'il reste pour couvrir les coûts fixes (avant leur répartition).
+      contribution: arrondi(revenus - variables - frais)
+    };
+  });
+  const somme = (cle) => arrondi(offres.reduce((t, o) => t + o[cle], 0));
+  const total = { abonnes: offres.reduce((t, o) => t + o.abonnes, 0), revenus: somme("revenus"), variables: somme("variables"), fixes: finances.coutsFixesMensuels, frais: somme("frais"), contribution: somme("contribution") };
+  total.couts = arrondi(total.variables + total.fixes + total.frais);
+  total.resultat = arrondi(total.contribution - total.fixes);
+  total.tauxMarge = total.revenus > 0 ? arrondi(total.resultat / total.revenus * 100, 1) : null;
+  // Le résultat est linéaire en nombre d'abonnés (répartition constante) : résultat(k) = k × contribution − fixes.
+  const pointMort = total.abonnes > 0 && total.contribution > 0
+    ? { facteur: arrondi(total.fixes / total.contribution, 4), abonnes: Math.ceil(total.abonnes * total.fixes / total.contribution) } : null;
+  const maxFacteur = Math.max(2, pointMort ? Math.min(10, pointMort.facteur * 1.25) : 2);
+  const projection = Array.from({ length: 21 }, (_, i) => {
+    const facteur = maxFacteur * i / 20;
+    return { abonnes: Math.round(total.abonnes * facteur), resultat: arrondi(facteur * total.contribution - total.fixes) };
+  });
+  return { devise: finances.devise, repartition, offres, total, pointMort, projection };
 }
