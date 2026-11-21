@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - anglais-bonjour-c2
 competences:
   - anglais-se-presenter-cm-comprendre
   - anglais-se-presenter-cm-appliquer

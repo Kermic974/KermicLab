@@ -8,6 +8,8 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - noms-et-determinants-c2
+  - verbe-sujet-adjectif-c2
 competences:
   - nature-des-mots-cm-comprendre
   - nature-des-mots-cm-appliquer

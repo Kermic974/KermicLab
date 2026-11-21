@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le dictionnaire range les mots par ordre alphabétique : de A à Z.",
+  "niveaux": [
+    {
+      "titre": "L'ordre alphabétique",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans le **dictionnaire**, les mots sont rangés de A à Z. Pour ranger deux mots qui commencent par la même lettre, on regarde la deuxième lettre : « chat » avant « chien » (a avant i). « Balle » avant « table »."
+      ],
+      "exemple": {
+        "titre": "Exemple : ranger lune, arbre, ballon",
+        "etapes": [
+          "arbre (a), ballon (b), lune (l).",
+          "Ordre : arbre, ballon, lune.",
+          "Je regarde la première lettre."
+        ]
+      },
+      "aRetenir": "De A à Z."
+    },
+    {
+      "titre": "Contraires et familles de mots",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Un **contraire** (ou antonyme) dit l'opposé : grand ↔ petit, chaud ↔ froid. Un **synonyme** a presque le même sens : content, heureux, joyeux. Une **famille de mots** regroupe des mots qui viennent du même mot : lait, laitier, laitage, allaiter.",
+        "Dans le dictionnaire, la définition explique le sens du mot."
+      ],
+      "exemple": {
+        "titre": "Exemple : la famille de « dent »",
+        "etapes": [
+          "dentiste.",
+          "dentifrice.",
+          "denture."
+        ]
+      },
+      "aRetenir": "Les mots d'une famille partagent le radical."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot vient en premier dans le dictionnaire ?",
+        "choix": [
+          "lune",
+          "table",
+          "arbre",
+          "ballon"
+        ],
+        "bonne": 2,
+        "explication": "A avant b, l, t."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le contraire de « grand » est…",
+        "choix": [
+          "petit",
+          "gros",
+          "haut",
+          "large"
+        ],
+        "bonne": 0,
+        "explication": "Petit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel mot est de la famille de « dent » ?",
+        "choix": [
+          "dire",
+          "dentiste",
+          "danse",
+          "demain"
+        ],
+        "bonne": 1,
+        "explication": "dent-iste."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bibliothèque",
+    "histoire": [
+      "Tu ranges des livres par ordre alphabétique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot se range en dernier ?",
+        "choix": [
+          "chat",
+          "lion",
+          "zèbre",
+          "âne"
+        ],
+        "bonne": 2,
+        "explication": "z est la dernière lettre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot est un synonyme de « content » ?",
+        "choix": [
+          "heureux",
+          "triste",
+          "fâché",
+          "fatigué"
+        ],
+        "bonne": 0,
+        "explication": "Heureux."
+      }
+    ],
+    "conclusion": "Bien rangé !"
+  }
+}

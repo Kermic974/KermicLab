@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - eau-air-et-matiere-c2
   - etats-et-changements-cm
 competences:
   - air-et-matiere-cm-comprendre

@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les animaux et les plantes sont des êtres vivants : ils naissent, grandissent et meurent.",
+  "niveaux": [
+    {
+      "titre": "Le vivant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **être vivant** naît, grandit, mange (ou se nourrit), se reproduit et meurt. Les animaux, les plantes et les humains sont vivants. Une pierre, un jouet, une table ne sont pas vivants.",
+        "Les animaux se déplacent : ils **marchent**, **nagent**, **volent**, **rampent**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un chien : vivant.",
+          "Une pierre : non vivant.",
+          "Un arbre : vivant."
+        ]
+      },
+      "aRetenir": "Vivant : naît, grandit, meurt."
+    },
+    {
+      "titre": "Classer et décrire",
+      "niveau": "CP / CE1",
+      "paragraphes": [
+        "On classe les animaux : les **mammifères** (poils, ils allaitent leurs petits : chat, vache), les **oiseaux** (plumes, ils pondent des œufs), les **poissons** (écailles, ils vivent dans l'eau), les **insectes** (6 pattes).",
+        "Une **plante** a des racines (elles boivent), une tige, des feuilles, des fleurs, des fruits."
+      ],
+      "exemple": {
+        "titre": "Exemple : la plante",
+        "etapes": [
+          "Les racines sont dans la terre.",
+          "La tige porte les feuilles.",
+          "La fleur donne le fruit."
+        ]
+      },
+      "aRetenir": "Mammifère : poils. Oiseau : plumes."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel animal est un mammifère ?",
+        "choix": [
+          "le saumon",
+          "la fourmi",
+          "le chat",
+          "le moineau"
+        ],
+        "bonne": 2,
+        "explication": "Il a des poils."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de pattes a un insecte ?",
+        "reponse": 6,
+        "indices": [
+          "Pense à une fourmi."
+        ],
+        "solution": "Les insectes ont 6 pattes.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que font les racines d'une plante ?",
+        "choix": [
+          "elles chantent",
+          "elles volent",
+          "elles boivent dans la terre",
+          "elles font des fleurs"
+        ],
+        "bonne": 2,
+        "explication": "Elles prennent l'eau."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jardin de la classe",
+    "histoire": [
+      "Tu observes ce qu'il y a dans le jardin."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel élément est vivant ?",
+        "choix": [
+          "le caillou",
+          "le seau",
+          "le banc",
+          "la coccinelle"
+        ],
+        "bonne": 3,
+        "explication": "C'est un animal."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un oiseau a…",
+        "choix": [
+          "des antennes seulement",
+          "des plumes",
+          "des poils",
+          "des écailles"
+        ],
+        "bonne": 1,
+        "explication": "Plumes."
+      }
+    ],
+    "conclusion": "Bon observateur !"
+  }
+}

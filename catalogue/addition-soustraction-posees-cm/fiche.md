@@ -8,6 +8,8 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - addition-c2
+  - soustraction-c2
   - grands-nombres-cm
 competences:
   - addition-soustraction-posees-cm-comprendre

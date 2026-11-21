@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - securite-ecrans-et-environnement-c2
 competences:
   - securite-et-prevention-cm-comprendre
   - securite-et-prevention-cm-appliquer

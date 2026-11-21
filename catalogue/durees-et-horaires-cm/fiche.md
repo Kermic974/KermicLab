@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - heure-et-calendrier-c2
   - addition-soustraction-posees-cm
 competences:
   - durees-et-horaires-cm-comprendre

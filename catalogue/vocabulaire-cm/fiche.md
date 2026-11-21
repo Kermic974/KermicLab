@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - vocabulaire-et-dictionnaire-c2
 competences:
   - vocabulaire-cm-comprendre
   - vocabulaire-cm-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - temps-des-verbes-c2
   - nature-des-mots-cm
 competences:
   - conjugaison-cm-comprendre

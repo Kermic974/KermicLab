@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - se-reperer-dans-l-espace-c2
 competences:
   - lire-une-carte-cm-comprendre
   - lire-une-carte-cm-appliquer

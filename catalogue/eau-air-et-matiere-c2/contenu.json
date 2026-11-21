@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'eau peut être solide, liquide ou gazeuse. L'air est partout, même si on ne le voit pas.",
+  "niveaux": [
+    {
+      "titre": "Les états de l'eau",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'eau peut être **liquide** (celle du robinet), **solide** (la glace) ou **gazeuse** (la vapeur). Si on chauffe de la glace, elle **fond** : elle devient de l'eau. Si on met de l'eau au congélateur, elle **gèle** : elle devient de la glace. Si on chauffe de l'eau, elle devient vapeur."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un glaçon sur la table : il fond.",
+          "De l'eau dans la casserole : elle chauffe, de la vapeur monte.",
+          "Une flaque l'hiver : elle gèle."
+        ]
+      },
+      "aRetenir": "Solide, liquide, gaz."
+    },
+    {
+      "titre": "L'air, flotter et couler",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "L'**air** est un gaz invisible qui nous entoure : le vent, c'est de l'air qui bouge ; un ballon gonflé contient de l'air. L'air occupe de la place et on le sent.",
+        "Dans l'eau, certains objets **flottent** (le bois, le liège) et d'autres **coulent** (la pierre, la clé). Cela dépend de la matière, pas seulement de la taille."
+      ],
+      "exemple": {
+        "titre": "Exemple : flotter ou couler",
+        "etapes": [
+          "Le morceau de bois flotte.",
+          "Le caillou coule.",
+          "Une grosse bûche flotte aussi : la matière compte."
+        ]
+      },
+      "aRetenir": "L'air est un gaz invisible."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La glace est de l'eau…",
+        "choix": [
+          "liquide",
+          "gazeuse",
+          "jamais de l'eau",
+          "solide"
+        ],
+        "bonne": 3,
+        "explication": "Solide."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que devient un glaçon au soleil ?",
+        "choix": [
+          "il devient du sucre",
+          "il fond",
+          "il gèle",
+          "il s'envole en sable"
+        ],
+        "bonne": 1,
+        "explication": "Il fond."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un caillou dans l'eau…",
+        "choix": [
+          "flotte",
+          "vole",
+          "fond",
+          "coule"
+        ],
+        "bonne": 3,
+        "explication": "Il coule."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les expériences de la classe",
+    "histoire": [
+      "Tu fais des expériences avec de l'eau."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que se passe-t-il si on chauffe de l'eau ?",
+        "choix": [
+          "de la vapeur monte",
+          "elle se transforme en glace",
+          "elle devient solide",
+          "rien ne change"
+        ],
+        "bonne": 0,
+        "explication": "Elle s'évapore."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un ballon gonflé contient…",
+        "choix": [
+          "du vide",
+          "de l'air",
+          "de l'eau",
+          "de la terre"
+        ],
+        "bonne": 1,
+        "explication": "De l'air."
+      }
+    ],
+    "conclusion": "Bon scientifique !"
+  }
+}

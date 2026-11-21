@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - perimetre-et-calcul-mental-c2
   - polygones-cm
   - multiplication-posee-cm
 competences:

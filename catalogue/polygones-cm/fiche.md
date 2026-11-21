@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - figures-planes-c2
   - droites-cm
 competences:
   - polygones-cm-comprendre

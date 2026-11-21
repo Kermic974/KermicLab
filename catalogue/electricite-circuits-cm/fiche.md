@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - objets-electriques-et-materiaux-c2
   - energie-et-sources-cm
 competences:
   - electricite-circuits-cm-comprendre

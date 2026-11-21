@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - tableaux-et-algorithmes-c2
 competences:
   - tableaux-graphiques-cm-comprendre
   - tableaux-graphiques-cm-appliquer

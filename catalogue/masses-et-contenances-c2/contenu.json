@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On pèse avec une balance (en grammes, kilogrammes) et on mesure un liquide en litres.",
+  "niveaux": [
+    {
+      "titre": "Peser et mesurer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Avec une **balance**, on mesure la **masse** : un paquet de sucre pèse 1 kilogramme (**1 kg**). Un bonbon pèse quelques **grammes** (g). 1 kg = 1 000 g.",
+        "Un récipient contient une certaine quantité de liquide : la **contenance**. On la mesure en **litres** (L). Une bouteille d'eau contient 1 L ; 1 L = 100 cL."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un kilo de pommes.",
+          "Une bouteille d'un litre.",
+          "Une cuillère contient quelques millilitres."
+        ]
+      },
+      "aRetenir": "1 kg = 1 000 g."
+    },
+    {
+      "titre": "Comparer",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Pour comparer, on utilise la même unité : 2 kg = 2 000 g, plus lourd que 1 500 g. Un litre de lait pèse environ 1 kg.",
+        "On choisit l'unité adaptée : une fourmi se pèse en grammes, un éléphant en tonnes."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Sac de 500 g et sac de 1 kg.",
+          "1 kg = 1 000 g.",
+          "Le sac de 1 kg est plus lourd."
+        ]
+      },
+      "aRetenir": "Même unité pour comparer."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de grammes dans 1 kg ?",
+        "reponse": 1000,
+        "unite": "g",
+        "indices": [
+          "Pense à un grand paquet."
+        ],
+        "solution": "1 kg = 1 000 g.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de grammes dans 2 kg ?",
+        "reponse": 2000,
+        "unite": "g",
+        "indices": [
+          "Double 1 000."
+        ],
+        "solution": "2 × 1 000 = 2 000.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "On mesure un liquide avec…",
+        "choix": [
+          "des grammes",
+          "des heures",
+          "des litres",
+          "des mètres"
+        ],
+        "bonne": 2,
+        "explication": "Contenance en litres."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le marché",
+    "histoire": [
+      "Tu achètes 2 kg de pommes et 500 g de raisin."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la masse totale en grammes ?",
+        "reponse": 2500,
+        "unite": "g",
+        "indices": [
+          "2 kg = 2 000 g."
+        ],
+        "solution": "2 000 + 500 = 2 500.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel fruit est le plus lourd ?",
+        "choix": [
+          "les pommes",
+          "le raisin",
+          "pareil",
+          "on ne sait pas"
+        ],
+        "bonne": 0,
+        "explication": "2 kg > 500 g."
+      }
+    ],
+    "conclusion": "Bonne pesée !"
+  }
+}

@@ -3,7 +3,7 @@
 // données, même proposition. Aucune IA, aucun appel réseau, rien n'est envoyé. La maîtrise est fournie par l'appelant
 // (`evenements.maitriseNotion`) : ce module n'importe rien, pour garder une seule copie versionnée de chaque module.
 
-const NIVEAUX_SCOLAIRES = ["cycle-3", "cycle-4", "seconde", "premiere", "terminale"];
+const NIVEAUX_SCOLAIRES = ["cycle-2", "cycle-3", "cycle-4", "seconde", "premiere", "terminale"];
 const acquise = (etat) => etat === "maitrisee" || etat === "a-revoir";
 const rangNiveau = (n) => {
   const i = NIVEAUX_SCOLAIRES.indexOf(n.niveaux?.[0]);

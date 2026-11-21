@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - planete-terre-et-cartes-c2
   - paysages-et-ressources-cm
   - lire-une-carte-cm
 competences:

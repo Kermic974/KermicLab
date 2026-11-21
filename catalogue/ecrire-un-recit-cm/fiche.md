@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - ecrire-et-comptines-c2
   - lecture-comprehension-cm
   - conjugaison-cm
 competences:

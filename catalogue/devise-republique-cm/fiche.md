@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - republique-et-citoyens-c2
 competences:
   - devise-republique-cm-comprendre
   - devise-republique-cm-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - corps-et-sante-c2
 competences:
   - alimentation-digestion-cm-comprendre
   - alimentation-digestion-cm-appliquer

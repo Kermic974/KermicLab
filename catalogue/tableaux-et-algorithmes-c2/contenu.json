@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un tableau range les informations, un programme donne des instructions dans l'ordre.",
+  "niveaux": [
+    {
+      "titre": "Lire un tableau",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans un tableau, on lit en ligne et en colonne. Si la classe a voté pour son fruit préféré : pommes 8, bananes 6, fraises 10. Un **diagramme en barres** dessine une barre plus haute pour un nombre plus grand.",
+        "On cherche le plus grand, le plus petit, le total."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Fraises : 10 (le plus grand).",
+          "Bananes : 6.",
+          "Total : 8 + 6 + 10 = 24 élèves."
+        ]
+      },
+      "aRetenir": "Lire le titre et les légendes."
+    },
+    {
+      "titre": "Instructions dans l'ordre",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Un **programme** est une liste d'instructions : « avancer de 3 cases, tourner à droite, avancer de 2 ». L'**ordre** compte : si on change l'ordre, on n'arrive pas au même endroit.",
+        "Une **boucle** répète : « répéter 4 fois : avancer de 2 » (le robot avance de 8 cases)."
+      ],
+      "exemple": {
+        "titre": "Exemple : un robot",
+        "etapes": [
+          "Avancer de 2.",
+          "Tourner à gauche.",
+          "Avancer de 3 : le robot a fait 5 cases."
+        ]
+      },
+      "aRetenir": "L'ordre des instructions est important."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Pommes 8, bananes 6, fraises 10 : combien d'élèves en tout ?",
+        "reponse": 24,
+        "indices": [
+          "Additionne."
+        ],
+        "solution": "8 + 6 + 10 = 24.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "« Répéter 4 fois : avancer de 2 » : combien de cases ?",
+        "reponse": 8,
+        "indices": [
+          "4 fois 2."
+        ],
+        "solution": "4 × 2 = 8.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans un programme, l'ordre des instructions…",
+        "choix": [
+          "est important",
+          "n'a pas d'importance",
+          "est au hasard",
+          "doit être inversé"
+        ],
+        "bonne": 0,
+        "explication": "Changer l'ordre change le résultat."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le robot de la classe",
+    "histoire": [
+      "Le robot doit aller chercher un trésor : avancer de 3, tourner à droite, avancer de 4."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de cases le robot avance-t-il en tout ?",
+        "reponse": 7,
+        "indices": [
+          "Additionne les deux avancées."
+        ],
+        "solution": "3 + 4 = 7.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que se passe-t-il si on inverse l'ordre ?",
+        "choix": [
+          "Rien ne change dans son trajet",
+          "Il va deux fois plus vite",
+          "Il ne va pas au même endroit",
+          "Il s'arrête sans bouger"
+        ],
+        "bonne": 2,
+        "explication": "L'ordre compte."
+      }
+    ],
+    "conclusion": "Programme réussi !"
+  }
+}

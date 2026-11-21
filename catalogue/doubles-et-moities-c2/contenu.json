@@ -1,0 +1,110 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le double, c'est deux fois le même nombre. La moitié, c'est partager en deux parts égales.",
+  "niveaux": [
+    {
+      "titre": "Double et moitié",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **double** de 4 est 4 + 4 = 8. La **moitié** de 8 est 4, car 4 + 4 = 8. Double et moitié vont ensemble : on passe de l'un à l'autre."
+      ],
+      "exemple": {
+        "titre": "Exemple : partager 10 bonbons",
+        "etapes": [
+          "Deux amis partagent 10 bonbons.",
+          "Chacun en a 5.",
+          "5 est la moitié de 10, et 10 est le double de 5."
+        ]
+      },
+      "aRetenir": "Double : fois 2. Moitié : partage en 2."
+    },
+    {
+      "titre": "Nombres pairs et impairs",
+      "niveau": "CP / CE1",
+      "paragraphes": [
+        "Un nombre **pair** se partage en deux parts égales sans reste : 2, 4, 6, 8… Il finit par 0, 2, 4, 6 ou 8. Un nombre **impair** a un reste de 1 : 1, 3, 5, 7, 9…",
+        "Le double d'un nombre est toujours pair : 2 × 7 = 14."
+      ],
+      "exemple": {
+        "titre": "Exemple : 13 est-il pair ?",
+        "etapes": [
+          "13 finit par 3.",
+          "13 = 6 + 6 + 1.",
+          "13 est impair."
+        ]
+      },
+      "aRetenir": "Pair : finit par 0, 2, 4, 6, 8."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Quel est le double de 6 ?",
+        "reponse": 12,
+        "indices": [
+          "Additionne 6 et 6."
+        ],
+        "solution": "6 + 6 = 12.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle est la moitié de 18 ?",
+        "reponse": 9,
+        "indices": [
+          "Cherche deux nombres égaux qui font 18."
+        ],
+        "solution": "9 + 9 = 18.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel nombre est impair ?",
+        "choix": [
+          "13",
+          "12",
+          "20",
+          "8"
+        ],
+        "bonne": 0,
+        "explication": "13 finit par 3 : il est impair."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le partage des gâteaux",
+    "histoire": [
+      "Deux enfants partagent 14 gâteaux à parts égales."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de gâteaux pour chaque enfant ?",
+        "reponse": 7,
+        "indices": [
+          "7 + 7 = 14."
+        ],
+        "solution": "La moitié de 14 est 7.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un troisième enfant arrive avec 6 gâteaux de plus. Combien en tout ?",
+        "reponse": 20,
+        "indices": [
+          "Additionne."
+        ],
+        "solution": "14 + 6 = 20.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien partagé !"
+  }
+}

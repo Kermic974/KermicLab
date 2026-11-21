@@ -8,6 +8,8 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - longueurs-et-mesures-c2
+  - masses-et-contenances-c2
   - multiplication-posee-cm
 competences:
   - longueurs-masses-contenances-cm-comprendre

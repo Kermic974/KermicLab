@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'histoire est découpée en grandes périodes, de la Préhistoire à aujourd'hui.",
+  "niveaux": [
+    {
+      "titre": "Les périodes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quatre grandes périodes : la **Préhistoire** (avant l'écriture), l'**Antiquité** (Gaulois, Grecs, Romains), le **Moyen Âge** (châteaux forts, chevaliers, cathédrales), les **Temps modernes** (Louis XIV, Renaissance) et l'**époque contemporaine** (la Révolution, aujourd'hui). L'**écriture** marque le début de l'histoire."
+      ],
+      "exemple": {
+        "titre": "Exemple : une frise",
+        "etapes": [
+          "Préhistoire : les hommes des cavernes.",
+          "Antiquité : les Romains.",
+          "Moyen Âge : les chevaliers."
+        ]
+      },
+      "aRetenir": "L'écriture marque le début de l'histoire."
+    },
+    {
+      "titre": "Quelques personnages",
+      "niveau": "CE2",
+      "paragraphes": [
+        "**Vercingétorix** : chef des Gaulois, vaincu par les Romains en 52 avant J.-C. **Clovis** : roi des Francs, baptisé vers 496. **Charlemagne** : empereur couronné en 800. **Louis XIV** : le Roi-Soleil, qui fait construire Versailles (XVIIe siècle). **Napoléon** : empereur au début du XIXe siècle.",
+        "Un **siècle** dure 100 ans : le XXe siècle va de 1901 à 2000."
+      ],
+      "exemple": {
+        "titre": "Exemple : un siècle",
+        "etapes": [
+          "Charlemagne : 800, soit le IXe siècle.",
+          "Louis XIV : le XVIIe siècle.",
+          "Aujourd'hui : le XXIe siècle."
+        ]
+      },
+      "aRetenir": "Un siècle = 100 ans."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien d'années dans un siècle ?",
+        "reponse": 100,
+        "unite": "ans",
+        "indices": [
+          "Pense à « cent »."
+        ],
+        "solution": "Un siècle = 100 ans.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui a fait construire Versailles ?",
+        "choix": [
+          "Vercingétorix",
+          "Napoléon",
+          "Louis XIV",
+          "Charlemagne"
+        ],
+        "bonne": 2,
+        "explication": "Le Roi-Soleil."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle période vient en premier ?",
+        "choix": [
+          "l'époque contemporaine",
+          "la Préhistoire",
+          "le Moyen Âge",
+          "l'Antiquité"
+        ],
+        "bonne": 1,
+        "explication": "La plus ancienne."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le musée de l'histoire",
+    "histoire": [
+      "Tu visites un musée avec des objets de plusieurs époques."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un château fort appartient à…",
+        "choix": [
+          "la Préhistoire",
+          "l'Antiquité",
+          "aujourd'hui",
+          "le Moyen Âge"
+        ],
+        "bonne": 3,
+        "explication": "Moyen Âge."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui conduit les Gaulois contre les Romains ?",
+        "choix": [
+          "Napoléon",
+          "Vercingétorix",
+          "Charlemagne",
+          "Louis XIV"
+        ],
+        "bonne": 1,
+        "explication": "Chef gaulois."
+      }
+    ],
+    "conclusion": "Bon voyage dans le temps !"
+  }
+}
