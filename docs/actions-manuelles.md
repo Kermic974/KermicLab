@@ -304,3 +304,12 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Contrôler la couverture avec les programmes officiels du lycée (tronc commun et spécialités) et décider des écarts | `docs/chantiers/catalogue-lycee.md` | Les spécialités sont traitées par notions transversales ; rapprochement interne seulement | Décision notée dans le chantier | à faire |
 | Qualifier par le processus S4 les liens depuis les notions V0 projetées (section « Lycée » des propositions) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Les prérequis des notions projetées sont générés depuis `referentiel/objets/` | Lot S4 relu et fusionné | à faire |
 | Ouvrir une PR dédiée au lycée après la fusion de la PR #401 (les commits du lycée sont sur la même branche) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Densification pédagogique du référentiel — PR #403
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire la pertinence des 584 MicroSkills et des 81 `requires` / 28 `relatedTo` (physique-chimie, SVT, histoire, géographie, français, EMC, SES, philosophie), puis passer les objets de `draft` à `review` puis `validated` | `referentiel/objets/v0.5/`, `docs/referentiel/densification-pedagogique.md` | Les liens sont des propositions pédagogiques, non attestées par des textes officiels | Statuts mis à jour, `npm run check:referentiel` vert | à faire |
+| Arbitrer les liens listés dans `relations-a-revoir.md` (créer, écarter ou traiter par le processus S4) | `docs/referentiel/relations-a-revoir.md` | Liens incertains ou bloqués par les garde-fous du build | Décision notée dans le fichier | à faire |
+| Qualifier par le processus S4 les liens des 312 notions ajoutées depuis la V0 (cycles 2 à 4, lycée) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Ces notions n'ont pas d'objets canoniques | Lot S4 relu et fusionné | à faire |
+| Revue du CODEOWNER et fusion de la PR #403 | https://github.com/Kermic974/KermicLab/pull/403 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
