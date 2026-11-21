@@ -36,8 +36,8 @@ const etat = {
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
   configurationServeur: null, skills: {}
 };
-const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
+const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale", "autres"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "technologie", "anglais", "arts-plastiques", "musique", "eps", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_CLASSE = "kermiclab:classe";
 const CLE_THEME = "kermiclab:theme";

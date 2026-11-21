@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le volume mesure la place occupée par un solide ; la contenance, ce qu'un récipient peut contenir.",
+  "niveaux": [
+    {
+      "titre": "Intuition : remplir avec des cubes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour remplir une boîte, on peut empiler des petits cubes de 1 cm d'arête. Le nombre de cubes est le **volume** en **cm³**.",
+        "Une boîte de 4 cm de long, 3 cm de large et 2 cm de haut contient 4 × 3 × 2 = 24 cubes : son volume est 24 cm³."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une rangée : 4 cubes.",
+          "Une couche : 4 × 3 = 12 cubes.",
+          "2 couches : 24 cubes."
+        ]
+      },
+      "aRetenir": "Volume du pavé droit = longueur × largeur × hauteur."
+    },
+    {
+      "titre": "Litres et décimètres cubes",
+      "niveau": "CM2",
+      "paragraphes": [
+        "1 **dm³** est le volume d'un cube de 10 cm d'arête : 1 dm³ = 1 000 cm³ = **1 litre**. Et 1 L = 1 000 mL = 1 000 cm³ (1 mL = 1 cm³).",
+        "Le volume d'un cube d'arête a est a × a × a. Un aquarium de 50 cm × 30 cm × 40 cm a un volume de 60 000 cm³ = 60 L."
+      ],
+      "exemple": {
+        "titre": "Exemple : un aquarium",
+        "etapes": [
+          "50 × 30 × 40 = 60 000 cm³.",
+          "60 000 cm³ = 60 dm³.",
+          "Contenance : 60 litres."
+        ]
+      },
+      "aRetenir": "1 dm³ = 1 L = 1 000 cm³."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Volume d'un pavé droit de 4 cm sur 3 cm sur 2 cm ?",
+        "reponse": 24,
+        "unite": "cm³",
+        "indices": [
+          "Longueur × largeur × hauteur."
+        ],
+        "solution": "4 × 3 × 2 = 24.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de litres dans un cube de 10 cm d'arête ?",
+        "reponse": 1,
+        "unite": "L",
+        "indices": [
+          "Calcule le volume en cm³."
+        ],
+        "solution": "10 × 10 × 10 = 1 000 cm³ = 1 L.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Volume d'un cube de 5 cm d'arête ?",
+        "reponse": 125,
+        "unite": "cm³",
+        "indices": [
+          "Trois fois l'arête."
+        ],
+        "solution": "5 × 5 × 5 = 125.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'aquarium",
+    "histoire": [
+      "Tu remplis un aquarium de 50 cm de long, 30 cm de large et 40 cm de haut."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel est son volume en cm³ ?",
+        "reponse": 60000,
+        "unite": "cm³",
+        "indices": [
+          "Calcule d'abord 50 × 30."
+        ],
+        "solution": "50 × 30 = 1 500 ; 1 500 × 40 = 60 000.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de litres d'eau contient-il quand il est plein ?",
+        "reponse": 60,
+        "unite": "L",
+        "indices": [
+          "1 000 cm³ = 1 L."
+        ],
+        "solution": "60 000 cm³ = 60 dm³ = 60 L.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Aquarium rempli !"
+  }
+}

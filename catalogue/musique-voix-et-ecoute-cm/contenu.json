@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Chanter ensemble et écouter des œuvres développent l'oreille et la culture musicale.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la voix, un instrument",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Chanter demande de bien respirer, de bien articuler et d'écouter les autres. On chante **à l'unisson** (tous la même mélodie) ou en **canon** (la même mélodie décalée : « Frère Jacques »). On échauffe sa voix avant de chanter."
+      ],
+      "exemple": {
+        "titre": "Exemple : un canon",
+        "etapes": [
+          "Un premier groupe commence.",
+          "Le second entre après quelques mesures.",
+          "Les voix se superposent."
+        ]
+      },
+      "aRetenir": "Canon : la même mélodie décalée."
+    },
+    {
+      "titre": "Écouter et connaître",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Pour écouter une œuvre, on se demande : quels instruments ? quel tempo ? quelle ambiance ? **Wolfgang Amadeus Mozart** (1756-1791), compositeur autrichien, a écrit des symphonies et des opéras (La Flûte enchantée). **Ludwig van Beethoven** (1770-1827) a composé neuf symphonies (la 9e contient l'« Ode à la joie », hymne de l'Union européenne). Il existe de nombreux styles : classique, jazz, rock, rap, musiques du monde."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'Ode à la joie",
+        "etapes": [
+          "Mélodie de Beethoven.",
+          "Hymne européen.",
+          "Texte de Schiller."
+        ]
+      },
+      "aRetenir": "Beethoven : 9e symphonie, hymne européen."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qu'est-ce qu'un canon ?",
+        "choix": [
+          "La même mélodie chantée en décalé",
+          "Un instrument",
+          "Un silence",
+          "Un tempo"
+        ],
+        "bonne": 0,
+        "explication": "Frère Jacques."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui a composé « La Flûte enchantée » ?",
+        "choix": [
+          "Mozart",
+          "Beethoven",
+          "Vivaldi",
+          "Debussy"
+        ],
+        "bonne": 0,
+        "explication": "Mozart."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'hymne européen est tiré de la symphonie de…",
+        "choix": [
+          "Beethoven",
+          "Mozart",
+          "Bach",
+          "Chopin"
+        ],
+        "bonne": 0,
+        "explication": "9e symphonie."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chorale",
+    "histoire": [
+      "Ta classe prépare un chant à plusieurs voix."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Avant de chanter, il faut…",
+        "choix": [
+          "échauffer sa voix et bien respirer",
+          "crier fort",
+          "chuchoter",
+          "sauter"
+        ],
+        "bonne": 0,
+        "explication": "Préparer la voix."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Chanter « à l'unisson » signifie…",
+        "choix": [
+          "tous la même mélodie",
+          "chacun la sienne",
+          "sans voix",
+          "en silence"
+        ],
+        "bonne": 0,
+        "explication": "Même mélodie."
+      }
+    ],
+    "conclusion": "Belle chorale !"
+  }
+}

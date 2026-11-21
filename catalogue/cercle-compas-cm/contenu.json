@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Tous les points d'un cercle sont à la même distance du centre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la roue",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une roue de vélo est un cercle : tous les points de la jante sont à la même distance du moyeu (le **centre**).",
+        "Le **rayon** est la distance du centre à un point du cercle. Le **diamètre** passe par le centre et relie deux points opposés : il vaut 2 rayons."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Rayon 3 cm : le diamètre mesure 6 cm.",
+          "Diamètre 10 cm : le rayon mesure 5 cm.",
+          "Le **disque** est la surface à l'intérieur du cercle."
+        ]
+      },
+      "aRetenir": "Diamètre = 2 × rayon."
+    },
+    {
+      "titre": "Utiliser le compas",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour tracer un cercle de rayon 4 cm : on écarte les branches du compas de 4 cm sur la règle, on pose la pointe au centre et on tourne la mine.",
+        "Le compas sert aussi à **reporter une longueur** et à trouver des points à égale distance de deux points (pour tracer un triangle de côtés donnés)."
+      ],
+      "exemple": {
+        "titre": "Exemple : triangle de côtés 5, 4 et 3 cm",
+        "etapes": [
+          "On trace le côté de 5 cm [AB].",
+          "Cercle de centre A et de rayon 4 cm, cercle de centre B et de rayon 3 cm.",
+          "Ils se coupent au sommet C du triangle."
+        ]
+      },
+      "aRetenir": "Les points d'un cercle sont tous à la même distance du centre."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Un cercle a un rayon de 3 cm. Quel est son diamètre ?",
+        "reponse": 6,
+        "unite": "cm",
+        "indices": [
+          "Le diamètre vaut deux rayons."
+        ],
+        "solution": "2 × 3 = 6.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un cercle a un diamètre de 10 cm. Quel est son rayon ?",
+        "reponse": 5,
+        "unite": "cm",
+        "indices": [
+          "Le rayon est la moitié du diamètre."
+        ],
+        "solution": "10 ÷ 2 = 5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour tracer un cercle, il faut connaître…",
+        "choix": [
+          "son centre et son rayon",
+          "seulement le centre",
+          "seulement le rayon",
+          "son périmètre"
+        ],
+        "bonne": 0,
+        "explication": "Le centre fixe la position, le rayon fixe la taille."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La cible",
+    "histoire": [
+      "Tu traces une cible de fléchettes : deux cercles de même centre, de rayons 3 cm et 6 cm."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel est le diamètre du grand cercle ?",
+        "reponse": 12,
+        "unite": "cm",
+        "indices": [
+          "Diamètre = 2 × rayon."
+        ],
+        "solution": "2 × 6 = 12.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "De combien de centimètres le grand rayon dépasse-t-il le petit ?",
+        "reponse": 3,
+        "unite": "cm",
+        "indices": [
+          "Soustrais les deux rayons."
+        ],
+        "solution": "6 − 3 = 3.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Dans le mille !"
+  }
+}

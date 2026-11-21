@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On exprime ses goûts avec « I like… » et ses habitudes avec le présent simple.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ce que j'aime",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**I like pizza.** (J'aime la pizza.) **I don't like fish.** (Je n'aime pas le poisson.) **Do you like apples ?** — **Yes, I do.** / **No, I don't.** Aliments : bread, milk, cheese, apple, banana, chicken, rice, water."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "I like cheese.",
+          "I don't like milk.",
+          "Do you like bananas ? — Yes, I do."
+        ]
+      },
+      "aRetenir": "Négation : don't + verbe."
+    },
+    {
+      "titre": "Le présent simple",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Pour parler des habitudes : **I get up at seven.** **I go to school.** **I play football.** À la 3e personne du singulier, on ajoute -s : **He plays football.** **She likes music.** La question : **Do you play ?** / **Does he play ?**"
+      ],
+      "exemple": {
+        "titre": "Exemple : ma journée",
+        "etapes": [
+          "I get up at 7.",
+          "I eat breakfast.",
+          "I go to school at 8."
+        ]
+      },
+      "aRetenir": "He / she / it : verbe + s."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment dit-on « Je n'aime pas le poisson » ?",
+        "choix": [
+          "I don't like fish.",
+          "I not like fish.",
+          "I like not fish.",
+          "Fish don't like me."
+        ],
+        "bonne": 0,
+        "explication": "Don't + verbe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « She ___ football. »",
+        "choix": [
+          "plays",
+          "play",
+          "playing",
+          "to play"
+        ],
+        "bonne": 0,
+        "explication": "3e personne : -s."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Do you like apples? » Réponse positive :",
+        "choix": [
+          "Yes, I do.",
+          "Yes, I am.",
+          "Yes, I like.",
+          "Yes, you do."
+        ],
+        "bonne": 0,
+        "explication": "Do/ do."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Au restaurant",
+    "histoire": [
+      "Au restaurant anglais, tu commandes ton repas."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« I like chicken » signifie…",
+        "choix": [
+          "J'aime le poulet",
+          "Je mange du poulet tous les jours",
+          "Je déteste le poulet",
+          "J'ai un poulet"
+        ],
+        "bonne": 0,
+        "explication": "Like = aimer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment demander de l'eau poliment ?",
+        "choix": [
+          "Water, please.",
+          "Water now.",
+          "Give water.",
+          "I water."
+        ],
+        "bonne": 0,
+        "explication": "Please."
+      }
+    ],
+    "conclusion": "Enjoy your meal!"
+  }
+}

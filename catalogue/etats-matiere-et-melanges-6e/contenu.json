@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 6e, on étudie les états de la matière, les mélanges et la conservation de la masse.",
+  "niveaux": [
+    {
+      "titre": "Intuition : trois états",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **solide** garde sa forme, un **liquide** épouse celle du récipient, un **gaz** occupe tout l'espace. L'eau est solide (glace), liquide, ou gazeuse (vapeur). Les changements d'état dépendent de la température."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Fusion : 0 °C pour l'eau.",
+          "Ébullition : 100 °C.",
+          "Condensation : buée."
+        ]
+      },
+      "aRetenir": "Les changements d'état sont réversibles."
+    },
+    {
+      "titre": "Mélanges et masse",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un mélange **homogène** (sirop) ne laisse voir qu'un seul aspect ; un mélange **hétérogène** (huile et eau, sable et eau) laisse voir plusieurs constituants. On sépare avec la **filtration**, la **décantation**, l'**évaporation**, le **tri**.",
+        "La **masse se conserve** lors d'un changement d'état ou d'une dissolution : la masse d'une solution est la somme des masses de ses constituants. En revanche, le **volume** peut changer (l'eau gelée occupe plus de volume)."
+      ],
+      "exemple": {
+        "titre": "Exemple : dissolution",
+        "etapes": [
+          "On dissout 20 g de sel dans 100 g d'eau.",
+          "On obtient 120 g de solution.",
+          "Rien n'a disparu."
+        ]
+      },
+      "aRetenir": "Masse conservée, volume pas toujours."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "On dissout 20 g de sel dans 100 g d'eau. Masse de la solution ?",
+        "reponse": 120,
+        "unite": "g",
+        "indices": [
+          "Somme des masses."
+        ],
+        "solution": "100 + 20 = 120.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'eau et l'huile forment un mélange…",
+        "choix": [
+          "hétérogène",
+          "homogène",
+          "solide",
+          "gazeux"
+        ],
+        "bonne": 0,
+        "explication": "On voit deux couches."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Comment séparer du sable de l'eau ?",
+        "choix": [
+          "Par filtration",
+          "Par évaporation d'un gaz",
+          "Par fusion",
+          "Par solidification"
+        ],
+        "bonne": 0,
+        "explication": "Filtre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'eau de la rivière",
+    "histoire": [
+      "Tu veux rendre l'eau d'une rivière claire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Premier geste pour enlever les grosses particules ?",
+        "choix": [
+          "Décanter puis filtrer",
+          "Congeler",
+          "Chauffer à 1000 °C",
+          "Ajouter du sable"
+        ],
+        "bonne": 0,
+        "explication": "Séparer les solides."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour obtenir l'eau pure à partir d'eau salée, on…",
+        "choix": [
+          "fait évaporer puis condenser",
+          "filtre simplement",
+          "tamise",
+          "décante"
+        ],
+        "bonne": 0,
+        "explication": "Distillation."
+      }
+    ],
+    "conclusion": "Eau purifiée !"
+  }
+}

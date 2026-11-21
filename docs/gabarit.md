@@ -14,14 +14,15 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
 `catalogue/<id>/` (ou `<id>/` dans le dépôt privé `maquettes-catalogue`) avec :
 
 - `fiche.md` : front matter habituel (`id`, `titre`, `sujet`, `version`, **`date`**, `langues: fr`, `onglets`, `mots-cles`, `questions`)
-  et **`niveau`** (`college`, `seconde`, `premiere` ou `terminale`) qui range la notion dans la barre de navigation du chat (sinon : « Autres notions »).
+  et **`niveau`** (`primaire`, `college`, `seconde`, `premiere` ou `terminale`) qui range la notion dans la barre de navigation du chat (sinon : « Autres notions »).
   - Chaque question d'exemple doit être routée vers la notion par les mots-clés (test de non-régression) : vérifie qu'un mot-clé n'est pas déjà utilisé par une autre notion.
   - Les questions servent aussi de **suggestions cliquables** dans le chat : écris-les comme un élève les poserait.
   - **Référentiel (facultatif, recommandé)** : champs vérifiés par `npm run build` quand ils sont présents (feuille de route,
     phase 1). Exemple : `catalogue/proportionnalite/fiche.md`.
     - `niveaux` : parmi `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
       avancé, d'après les niveaux réellement couverts par le contenu (`niveau` reste le rangement dans la navigation).
-    - `classes` (notions de niveau `college` seulement) : parmi `6e`, `5e`, `4e`, `3e`, sans doublon, de la 6e à la 3e.
+    - `classes` (notions de niveau `primaire` ou `college`) : `CM1`, `CM2` pour le primaire, `6e`, `5e`, `4e`, `3e` pour le collège, sans doublon, dans l'ordre. Les classes du primaire exigent `cycle-3` dans `niveaux`.
+      (Pour le collège : de la 6e à la 3e.)
       Elles découpent « Collège » dans l'écran Éducation (barre « Ma classe ») ; une notion apparaît dans chacune de ses
       classes. La 6e exige `cycle-3` dans `niveaux`, les 5e, 4e et 3e exigent `cycle-4`. Sans `classes`, la notion reste
       sous « Collège ». Métadonnée seulement : la version de la fiche ne change pas.

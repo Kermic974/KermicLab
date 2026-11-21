@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Mesurer, c'est comparer à une unité : le mètre, le gramme, le litre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les unités du quotidien",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un crayon mesure environ 15 cm, une table 1 m, la route de l'école 2 km. Un paquet de sucre pèse 1 kg, un bonbon quelques g. Une bouteille d'eau contient 1 L.",
+        "Les préfixes disent la taille : **kilo-** = 1 000, **centi-** = un centième, **milli-** = un millième."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1 m = 100 cm et 1 km = 1 000 m.",
+          "1 kg = 1 000 g et 1 L = 1 000 mL.",
+          "1 L = 100 cL = 10 dL."
+        ]
+      },
+      "aRetenir": "Kilo = mille, centi = centième, milli = millième."
+    },
+    {
+      "titre": "Convertir avec un tableau",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "On place un chiffre par colonne : km, hm, dam, m, dm, cm, mm. 2,5 km = 2 500 m, car 2,5 km = 2 km 5 hm = 2 500 m.",
+        "Pour les masses : t, q, kg, hg, dag, g. 3 kg 250 g = 3,250 kg = 3 250 g.",
+        "Pour additionner, convertis d'abord dans la même unité."
+      ],
+      "exemple": {
+        "titre": "Exemple : 4,3 m en cm",
+        "etapes": [
+          "1 m = 100 cm.",
+          "4,3 × 100 = 430.",
+          "4,3 m = 430 cm."
+        ]
+      },
+      "aRetenir": "Passer à une unité 100 fois plus petite : multiplier par 100."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Convertis 4,3 m en cm.",
+        "reponse": 430,
+        "unite": "cm",
+        "indices": [
+          "1 m = 100 cm."
+        ],
+        "solution": "4,3 × 100 = 430.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Convertis 2,5 km en m.",
+        "reponse": 2500,
+        "unite": "m",
+        "indices": [
+          "1 km = 1 000 m."
+        ],
+        "solution": "2,5 × 1 000 = 2 500.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Convertis 3 kg 250 g en grammes.",
+        "reponse": 3250,
+        "unite": "g",
+        "indices": [
+          "3 kg = 3 000 g."
+        ],
+        "solution": "3 × 1 000 + 250 = 3 250.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sac à dos",
+    "histoire": [
+      "Tu prépares ton sac de randonnée : une gourde de 75 cL, un pique-nique de 650 g, et 1,2 kg de matériel."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la masse totale en grammes (hors gourde) ?",
+        "reponse": 1850,
+        "unite": "g",
+        "indices": [
+          "1,2 kg = 1 200 g."
+        ],
+        "solution": "650 + 1 200 = 1 850.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Convertis 75 cL en mL.",
+        "reponse": 750,
+        "unite": "mL",
+        "indices": [
+          "1 cL = 10 mL."
+        ],
+        "solution": "1 cL = 10 mL : 75 × 10 = 750.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Prêt pour la randonnée !"
+  }
+}

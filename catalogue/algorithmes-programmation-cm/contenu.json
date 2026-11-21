@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un programme est une suite d'instructions précises, exécutées dans l'ordre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la recette et le robot",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une recette de cuisine est un algorithme : suite d'étapes à suivre dans l'ordre. Un robot fait exactement ce qu'on lui demande : si une instruction est fausse, il se trompe.",
+        "Programmer, c'est écrire ces instructions : « avancer de 3 », « tourner à droite »."
+      ],
+      "exemple": {
+        "titre": "Exemple : sortir d'un labyrinthe",
+        "etapes": [
+          "Avancer de 2.",
+          "Tourner à gauche.",
+          "Avancer de 3."
+        ]
+      },
+      "aRetenir": "L'ordre des instructions compte."
+    },
+    {
+      "titre": "Boucles et conditions",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Une **boucle** répète des instructions : « répéter 4 fois : avancer de 5, tourner de 90° » dessine un carré de côté 5.",
+        "Une **condition** décide : « si le chemin est libre alors avancer, sinon tourner ». Une **variable** garde une valeur (un score).",
+        "Pour trouver une erreur, on exécute le programme pas à pas : c'est le **débogage**."
+      ],
+      "exemple": {
+        "titre": "Exemple : le carré",
+        "etapes": [
+          "Répéter 4 fois.",
+          "Avancer de 5 puis tourner de 90°.",
+          "Le tracé est un carré de côté 5."
+        ]
+      },
+      "aRetenir": "Une boucle évite de recopier la même instruction."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "« Répéter 4 fois : avancer de 5, tourner de 90° » dessine un carré. Quel est son périmètre ?",
+        "reponse": 20,
+        "indices": [
+          "4 côtés de 5."
+        ],
+        "solution": "4 × 5 = 20.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une boucle sert à…",
+        "choix": [
+          "répéter des instructions",
+          "effacer l'écran",
+          "éteindre l'ordinateur",
+          "changer de langue"
+        ],
+        "bonne": 0,
+        "explication": "La boucle répète."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que fait « si le chemin est libre alors avancer » ?",
+        "choix": [
+          "Avance seulement si le chemin est libre",
+          "Avance toujours",
+          "Ne fait rien",
+          "Recule"
+        ],
+        "bonne": 0,
+        "explication": "C'est une condition."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le robot du labyrinthe",
+    "histoire": [
+      "Tu programmes un robot pour traverser une salle : avancer de 3, tourner à droite, avancer de 2."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de cases le robot parcourt-il en tout ?",
+        "reponse": 5,
+        "indices": [
+          "Additionne les deux « avancer »."
+        ],
+        "solution": "3 + 2 = 5.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Pour faire 3 fois « avancer de 2 », on écrit « répéter 3 fois ». Combien de cases ?",
+        "reponse": 6,
+        "indices": [
+          "3 fois 2."
+        ],
+        "solution": "3 × 2 = 6.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Programme validé !"
+  }
+}

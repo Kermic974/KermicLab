@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Il y a plus de 300 000 ans, Homo sapiens apparaît en Afrique et peuple peu à peu la Terre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des chasseurs-cueilleurs",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les premiers humains sont des **chasseurs-cueilleurs** nomades. **Homo sapiens**, notre espèce, apparaît en Afrique il y a environ 300 000 ans, puis se répand sur tous les continents.",
+        "Ils fabriquent des outils, maîtrisent le feu, vivent en petits groupes, peignent dans les grottes."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Outils en silex.",
+          "Habitat : abris, tentes.",
+          "Art : peintures de Chauvet, Lascaux."
+        ]
+      },
+      "aRetenir": "L'humanité naît en Afrique."
+    },
+    {
+      "titre": "La révolution néolithique",
+      "niveau": "6e",
+      "paragraphes": [
+        "Au **Néolithique** (à partir de 10 000 ans av. J.-C. au Proche-Orient), des groupes deviennent **agriculteurs et éleveurs** : ils se **sédentarisent**, bâtissent des villages, fabriquent de la poterie et des outils en pierre polie. La population augmente.",
+        "L'agriculture apparaît indépendamment en plusieurs régions (Proche-Orient, Chine, Amérique). Cette révolution transforme durablement les sociétés."
+      ],
+      "exemple": {
+        "titre": "Exemple : un village néolithique",
+        "etapes": [
+          "Des champs de blé, des troupeaux.",
+          "Des greniers pour stocker.",
+          "Des maisons durables."
+        ]
+      },
+      "aRetenir": "Agriculture + élevage = sédentarisation."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où apparaît Homo sapiens ?",
+        "choix": [
+          "En Afrique",
+          "En Europe",
+          "En Amérique",
+          "En Australie"
+        ],
+        "bonne": 0,
+        "explication": "Afrique, il y a environ 300 000 ans."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que change la révolution néolithique ?",
+        "choix": [
+          "Les hommes deviennent agriculteurs et éleveurs",
+          "Les hommes inventent l'imprimerie",
+          "Les hommes quittent la Terre",
+          "Les hommes cessent de se nourrir"
+        ],
+        "bonne": 0,
+        "explication": "Sédentarisation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les chasseurs-cueilleurs vivent…",
+        "choix": [
+          "en se déplaçant",
+          "dans de grandes villes",
+          "dans des châteaux",
+          "sur des bateaux uniquement"
+        ],
+        "bonne": 0,
+        "explication": "Nomadisme."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un village il y a 7 000 ans",
+    "histoire": [
+      "Tu visites un village néolithique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi les habitants restent-ils au même endroit ?",
+        "choix": [
+          "Ils cultivent et élèvent",
+          "Ils ont peur",
+          "Ils n'ont pas de jambes",
+          "Ils attendent le bus"
+        ],
+        "bonne": 0,
+        "explication": "L'agriculture oblige à rester."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "À quoi sert la poterie ?",
+        "choix": [
+          "Stocker et cuire",
+          "Voler",
+          "Écrire",
+          "Voyager"
+        ],
+        "bonne": 0,
+        "explication": "Conserver les récoltes."
+      }
+    ],
+    "conclusion": "Bien voyagé dans le temps !"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'échelle indique de combien on a réduit la réalité pour la dessiner.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une maquette de voiture",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une petite voiture jouet est une réduction de la vraie voiture. Une carte réduit un grand territoire à la taille d'une feuille.",
+        "L'**échelle** donne le rapport : « 1 cm sur le plan représente 100 cm dans la réalité » (échelle 1/100)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Échelle : 1 cm pour 10 m.",
+          "Sur le plan, la cour mesure 5 cm.",
+          "Dans la réalité : 5 × 10 = 50 m."
+        ]
+      },
+      "aRetenir": "On multiplie la longueur du plan par l'échelle."
+    },
+    {
+      "titre": "Calculer avec l'échelle",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Pour passer du plan à la réalité, on multiplie ; pour passer de la réalité au plan, on divise. C'est de la proportionnalité.",
+        "Pour **agrandir** une figure, on multiplie toutes ses longueurs par le même nombre (les angles ne changent pas)."
+      ],
+      "exemple": {
+        "titre": "Exemple : échelle 1/1 000",
+        "etapes": [
+          "1 cm sur la carte = 1 000 cm = 10 m.",
+          "Une rue de 6 cm : 60 m.",
+          "Une distance de 200 m : 20 cm sur le plan."
+        ]
+      },
+      "aRetenir": "Les longueurs sont proportionnelles, les angles sont conservés."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Échelle : 1 cm pour 10 m. Sur le plan, la cour mesure 5 cm. Longueur réelle ?",
+        "reponse": 50,
+        "unite": "m",
+        "indices": [
+          "1 cm représente 10 m."
+        ],
+        "solution": "5 × 10 = 50 m.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Échelle : 1 cm pour 20 m. Une rue de 100 m mesure combien sur le plan ?",
+        "reponse": 5,
+        "unite": "cm",
+        "indices": [
+          "Divise la réalité par l'échelle."
+        ],
+        "solution": "100 ÷ 20 = 5 cm.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Sur un agrandissement, que devient la mesure des angles ?",
+        "choix": [
+          "Elle ne change pas",
+          "Elle double",
+          "Elle diminue",
+          "Elle s'annule"
+        ],
+        "bonne": 0,
+        "explication": "Les angles sont conservés."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan de l'école",
+    "histoire": [
+      "Le plan de l'école est à l'échelle 1 cm pour 5 m."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Le gymnase mesure 6 cm sur le plan. Quelle est sa longueur réelle ?",
+        "reponse": 30,
+        "unite": "m",
+        "indices": [
+          "1 cm = 5 m."
+        ],
+        "solution": "6 × 5 = 30 m.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Le terrain réel mesure 40 m. Combien de cm sur le plan ?",
+        "reponse": 8,
+        "unite": "cm",
+        "indices": [
+          "Divise par 5."
+        ],
+        "solution": "40 ÷ 5 = 8 cm.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Plan maîtrisé !"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On n'habite pas de la même façon à Paris, dans une petite ville ou dans un hameau.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des manières d'habiter",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans une **ville**, il y a beaucoup d'habitants, d'immeubles, de commerces, de transports. À la **campagne**, les maisons sont éloignées, il y a des champs, des forêts et moins de services.",
+        "En France, environ 8 habitants sur 10 vivent en ville."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "En ville : immeuble, tramway, supermarché.",
+          "À la campagne : maison, voiture, champs.",
+          "Entre les deux : la banlieue."
+        ]
+      },
+      "aRetenir": "Un espace peut être urbain ou rural."
+    },
+    {
+      "titre": "Densité, services et choix",
+      "niveau": "CM1",
+      "paragraphes": [
+        "La **densité de population** est le nombre d'habitants par km² : elle est très forte à Paris (plus de 20 000 hab./km²) et faible dans les montagnes (moins de 30). Les services (école, médecin, poste) sont plus proches en ville.",
+        "Habiter à la campagne offre calme et espace mais peut obliger à de longs trajets. Chacun choisit en fonction de son travail, de sa famille, de son budget."
+      ],
+      "exemple": {
+        "titre": "Exemple : calculer une densité",
+        "etapes": [
+          "Une commune a 3 000 habitants sur 10 km².",
+          "3 000 ÷ 10 = 300 hab./km².",
+          "C'est une densité moyenne."
+        ]
+      },
+      "aRetenir": "Densité = nombre d'habitants ÷ surface."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Une commune a 3 000 habitants sur 10 km². Quelle est sa densité (hab./km²) ?",
+        "reponse": 300,
+        "unite": "hab./km²",
+        "indices": [
+          "Divise les habitants par la surface."
+        ],
+        "solution": "3 000 ÷ 10 = 300.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Où trouve-t-on généralement le plus de services (hôpitaux, universités) ?",
+        "choix": [
+          "En ville",
+          "À la campagne isolée",
+          "En montagne",
+          "Dans les champs"
+        ],
+        "bonne": 0,
+        "explication": "Les services se concentrent dans les villes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "À la campagne, les habitants se déplacent souvent…",
+        "choix": [
+          "en voiture",
+          "en métro",
+          "en tramway",
+          "en téléphérique"
+        ],
+        "bonne": 0,
+        "explication": "Les transports collectifs sont rares."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le choix d'un logement",
+    "histoire": [
+      "Une famille hésite entre un appartement en ville et une maison à la campagne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel avantage pour l'appartement en ville ?",
+        "choix": [
+          "Des commerces et des transports proches",
+          "Un grand jardin",
+          "Plus de silence",
+          "Plus de champs"
+        ],
+        "bonne": 0,
+        "explication": "La ville offre services et transports."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel avantage pour la maison à la campagne ?",
+        "choix": [
+          "Plus d'espace et de calme",
+          "Un métro à côté",
+          "Un hôpital voisin",
+          "Un cinéma à 100 m"
+        ],
+        "bonne": 0,
+        "explication": "Plus d'espace, moins de bruit."
+      }
+    ],
+    "conclusion": "Bien conseillé !"
+  }
+}

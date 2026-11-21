@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pendant l'effort, les organes travaillent ensemble pour apporter aux muscles ce dont ils ont besoin.",
+  "niveaux": [
+    {
+      "titre": "Intuition : courir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand tu cours, tes muscles consomment du **dioxygène** et des **nutriments** (comme le glucose). Ton cœur bat plus vite, tu respires plus fort pour apporter plus d'oxygène et rejeter le **dioxyde de carbone**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Au repos : 15 mouvements respiratoires par minute.",
+          "À l'effort : jusqu'à 40.",
+          "Le pouls passe de 70 à plus de 150."
+        ]
+      },
+      "aRetenir": "Plus d'effort = plus de besoins."
+    },
+    {
+      "titre": "Les fonctions en relation",
+      "niveau": "6e",
+      "paragraphes": [
+        "Quatre fonctions travaillent ensemble : la **digestion** (fournit les nutriments), la **respiration** (apporte le dioxygène), la **circulation** (le sang transporte tout), et l'**élimination** (déchets, CO₂). Les muscles en effort produisent aussi de la chaleur : on transpire pour se refroidir.",
+        "Une bonne alimentation, un bon sommeil et de l'eau permettent de mieux supporter l'effort."
+      ],
+      "exemple": {
+        "titre": "Exemple : le chemin de l'oxygène",
+        "etapes": [
+          "L'air entre dans les poumons.",
+          "Le dioxygène passe dans le sang.",
+          "Le cœur l'envoie aux muscles."
+        ]
+      },
+      "aRetenir": "Le sang relie tous les organes."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "À l'effort, les muscles consomment plus de…",
+        "choix": [
+          "dioxygène et de nutriments",
+          "sel seulement",
+          "lumière",
+          "sable"
+        ],
+        "bonne": 0,
+        "explication": "Pour produire de l'énergie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel organe fait circuler le sang ?",
+        "choix": [
+          "Le cœur",
+          "L'estomac",
+          "Le foie",
+          "Le poumon"
+        ],
+        "bonne": 0,
+        "explication": "Le cœur est une pompe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pourquoi transpire-t-on à l'effort ?",
+        "choix": [
+          "Pour évacuer la chaleur",
+          "Pour avoir soif",
+          "Pour grossir",
+          "Pour dormir"
+        ],
+        "bonne": 0,
+        "explication": "Refroidissement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course d'endurance",
+    "histoire": [
+      "Tu cours 10 minutes en cours d'EPS."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que remarques-tu pendant la course ?",
+        "choix": [
+          "Je respire plus vite et mon cœur accélère",
+          "Mon cœur s'arrête",
+          "Je ne respire plus",
+          "Je n'ai plus de sang"
+        ],
+        "bonne": 0,
+        "explication": "Réponse de l'organisme."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faire après la course ?",
+        "choix": [
+          "Boire de l'eau et récupérer",
+          "Courir encore",
+          "Ne rien boire",
+          "Dormir sans manger"
+        ],
+        "bonne": 0,
+        "explication": "Récupération."
+      }
+    ],
+    "conclusion": "Bravo pour l'effort !"
+  }
+}

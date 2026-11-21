@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Avec trois couleurs et du blanc, on peut presque tout peindre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le mélange",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les **couleurs primaires** sont le jaune, le rouge (magenta) et le bleu (cyan) : on ne peut pas les fabriquer. En les mélangeant deux à deux, on obtient les **couleurs secondaires** : jaune + bleu = vert, jaune + rouge = orange, rouge + bleu = violet."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Jaune + bleu → vert.",
+          "Rouge + jaune → orange.",
+          "Bleu + rouge → violet."
+        ]
+      },
+      "aRetenir": "Primaires : jaune, rouge, bleu."
+    },
+    {
+      "titre": "Chaud, froid et contrastes",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les couleurs **chaudes** (rouge, orange, jaune) évoquent le feu, le soleil ; les couleurs **froides** (bleu, vert, violet) l'eau, la glace. Une couleur **claire** s'obtient en ajoutant du blanc, une couleur **foncée** en ajoutant du noir. Les **couleurs complémentaires** (rouge/vert, bleu/orange, jaune/violet) se renforcent l'une l'autre."
+      ],
+      "exemple": {
+        "titre": "Exemple : un coucher de soleil",
+        "etapes": [
+          "Ciel orange et rouge : couleurs chaudes.",
+          "Mer bleue : couleurs froides.",
+          "Le contraste donne de l'intensité."
+        ]
+      },
+      "aRetenir": "Blanc éclaircit, noir fonce."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Jaune + bleu =",
+        "choix": [
+          "vert",
+          "orange",
+          "violet",
+          "marron"
+        ],
+        "bonne": 0,
+        "explication": "Couleur secondaire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle couleur est chaude ?",
+        "choix": [
+          "Le rouge",
+          "Le bleu",
+          "Le vert",
+          "Le violet"
+        ],
+        "bonne": 0,
+        "explication": "Évoque le feu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour éclaircir une couleur, on ajoute…",
+        "choix": [
+          "du blanc",
+          "du noir",
+          "du rouge",
+          "de l'eau seulement"
+        ],
+        "bonne": 0,
+        "explication": "Blanc."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier peinture",
+    "histoire": [
+      "Tu dois peindre un paysage avec seulement trois tubes de peinture : jaune, rouge, bleu."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment faire de l'herbe verte ?",
+        "choix": [
+          "Jaune + bleu",
+          "Rouge + bleu",
+          "Rouge + jaune",
+          "Blanc seul"
+        ],
+        "bonne": 0,
+        "explication": "Jaune + bleu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment faire un ciel de soir orangé ?",
+        "choix": [
+          "Rouge + jaune",
+          "Bleu + jaune",
+          "Bleu + rouge",
+          "Noir"
+        ],
+        "bonne": 0,
+        "explication": "Orange."
+      }
+    ],
+    "conclusion": "Beau tableau !"
+  }
+}

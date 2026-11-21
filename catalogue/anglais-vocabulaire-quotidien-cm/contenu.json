@@ -1,0 +1,118 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Quelques mots de base permettent de décrire le monde qui nous entoure.",
+  "niveaux": [
+    {
+      "titre": "Intuition : mots de tous les jours",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Couleurs : red, blue, green, yellow, black, white. Nombres : one, two, three, four, five, six, seven, eight, nine, ten. Famille : mother, father, brother, sister, grandmother, grandfather. Classe : book, pen, bag, table."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "a red book.",
+          "two sisters.",
+          "my father."
+        ]
+      },
+      "aRetenir": "Les adjectifs précèdent le nom : a red book."
+    },
+    {
+      "titre": "Jours, mois et nombres",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Jours : Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. Nombres de 11 à 20 : eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty. Pour dire ce qu'on possède : **I have a dog.** / **I've got two brothers.**"
+      ],
+      "exemple": {
+        "titre": "Exemple : parler de sa famille",
+        "etapes": [
+          "I have two sisters.",
+          "My mother is a teacher.",
+          "My brother is eleven."
+        ]
+      },
+      "aRetenir": "Les jours prennent une majuscule en anglais."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Red » signifie…",
+        "choix": [
+          "rouge",
+          "bleu",
+          "vert",
+          "jaune"
+        ],
+        "bonne": 0,
+        "explication": "Red = rouge."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dit-on « mercredi » ?",
+        "choix": [
+          "Wednesday",
+          "Tuesday",
+          "Thursday",
+          "Sunday"
+        ],
+        "bonne": 0,
+        "explication": "Wednesday."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien font « seven » + « three » (en chiffres) ?",
+        "reponse": 10,
+        "indices": [
+          "Seven = 7, three = 3."
+        ],
+        "solution": "7 + 3 = 10 (ten).",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La boîte à surprises",
+    "histoire": [
+      "Tu décris ce qu'il y a dans une boîte en anglais."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« A blue pen » désigne…",
+        "choix": [
+          "un stylo bleu",
+          "un livre rouge",
+          "un sac vert",
+          "une table jaune"
+        ],
+        "bonne": 0,
+        "explication": "Blue pen."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« My sister » =",
+        "choix": [
+          "ma sœur",
+          "mon frère",
+          "ma mère",
+          "mon père"
+        ],
+        "bonne": 0,
+        "explication": "Sister = sœur."
+      }
+    ],
+    "conclusion": "Well done!"
+  }
+}

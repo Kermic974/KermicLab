@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En français, certains mots s'accordent : ils changent selon le genre et le nombre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le chef d'orchestre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans un groupe nominal, le **nom** donne le genre et le nombre au déterminant et à l'adjectif : « des petites fleurs rouges ».",
+        "Le **verbe** s'accorde avec son **sujet** : « Les enfants chantent », « L'enfant chante »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« la petite fille » : féminin singulier.",
+          "« les petites filles » : féminin pluriel.",
+          "« Les filles jouent » : sujet pluriel, verbe en -ent."
+        ]
+      },
+      "aRetenir": "On repère d'abord le sujet, puis on accorde."
+    },
+    {
+      "titre": "Pluriels et participe passé",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pluriel des noms : en général -s ; les noms en -eau, -au, -eu prennent -x (des bateaux) ; les noms en -al font -aux (des chevaux) ; sept noms en -ou prennent -x (bijou, caillou, chou, genou, hibou, joujou, pou).",
+        "Le **participe passé avec être** s'accorde avec le sujet : « Elles sont **parties** ». Avec **avoir**, il ne s'accorde pas avec le sujet (« Elles ont **mangé** ») ; au CM2 on découvre l'accord avec un COD placé avant : « les pommes que j'ai **mangées** »."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Les filles sont (arriver) »",
+        "etapes": [
+          "Auxiliaire être : accord avec le sujet.",
+          "« Les filles » : féminin pluriel.",
+          "Les filles sont arrivées."
+        ]
+      },
+      "aRetenir": "Être : accord avec le sujet. Avoir : pas d'accord avec le sujet."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Les oiseaux ___ dans le ciel. »",
+        "choix": [
+          "volent",
+          "vole",
+          "voles",
+          "volons"
+        ],
+        "bonne": 0,
+        "explication": "Sujet pluriel : -ent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le pluriel de « cheval » ?",
+        "choix": [
+          "chevaux",
+          "chevals",
+          "chevaus",
+          "cheval"
+        ],
+        "bonne": 0,
+        "explication": "Les noms en -al font -aux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Complète : « Mes amies sont ___ hier. » (venir)",
+        "choix": [
+          "venues",
+          "venu",
+          "venus",
+          "venue"
+        ],
+        "bonne": 0,
+        "explication": "Auxiliaire être : accord avec « mes amies » (féminin pluriel)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La dictée du maître",
+    "histoire": [
+      "Tu corriges une dictée en cherchant les erreurs d'accord."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est correcte ?",
+        "choix": [
+          "Les grandes filles jouent au ballon.",
+          "Les grand fille joue au ballon.",
+          "Les grandes fille jouent au ballon.",
+          "Les grandes filles joue au ballon."
+        ],
+        "bonne": 0,
+        "explication": "Accord dans le GN et du verbe avec le sujet."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le pluriel de « gâteau » ?",
+        "choix": [
+          "gâteaux",
+          "gâteaus",
+          "gâteau",
+          "gâteauxs"
+        ],
+        "bonne": 0,
+        "explication": "Les noms en -eau prennent -x."
+      }
+    ],
+    "conclusion": "Dictée sans faute !"
+  }
+}

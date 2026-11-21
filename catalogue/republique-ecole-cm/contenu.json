@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "À la fin du XIXe siècle, la République s'installe et crée l'école pour tous.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une école pour tous",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **IIIe République** naît en 1870 et dure jusqu'en 1940. Elle s'appuie sur l'**école** pour former des citoyens. Les lois de **Jules Ferry** (1881-1882) rendent l'école **gratuite**, **obligatoire** (de 6 à 13 ans) et **laïque**.",
+        "Dans les écoles, on apprend à lire, écrire, compter, et on chante « La Marseillaise »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Avant : beaucoup d'enfants ne vont pas à l'école.",
+          "Après : tous apprennent à lire.",
+          "L'école publique accueille tous les enfants sans distinction de religion."
+        ]
+      },
+      "aRetenir": "Gratuite, obligatoire, laïque."
+    },
+    {
+      "titre": "Les libertés et le vote",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **loi de 1905** sépare les Églises et l'État : c'est la **laïcité**. L'État ne reconnaît aucune religion et garantit la liberté de croire ou de ne pas croire.",
+        "Le **suffrage universel masculin** existe depuis 1848. Les **femmes** votent pour la première fois en France en **1945** (ordonnance du 21 avril 1944). Aujourd'hui tout citoyen majeur peut voter."
+      ],
+      "exemple": {
+        "titre": "Exemple : le droit de vote",
+        "etapes": [
+          "1848 : suffrage masculin.",
+          "1944-1945 : droit de vote des femmes.",
+          "1974 : majorité à 18 ans."
+        ]
+      },
+      "aRetenir": "1905 : laïcité. 1944 : les femmes citoyennes à part entière."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelles sont les trois caractéristiques de l'école de Jules Ferry ?",
+        "choix": [
+          "Gratuite, obligatoire, laïque",
+          "Payante, facultative, religieuse",
+          "Seulement pour les garçons",
+          "Réservée aux riches"
+        ],
+        "bonne": 0,
+        "explication": "Lois de 1881-1882."
+      },
+      {
+        "type": "nombre",
+        "question": "En quelle année est votée la séparation des Églises et de l'État ?",
+        "reponse": 1905,
+        "indices": [
+          "Début du XXe siècle."
+        ],
+        "solution": "Loi du 9 décembre 1905.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "À quelle date les femmes françaises votent-elles pour la première fois ?",
+        "choix": [
+          "1945",
+          "1789",
+          "1881",
+          "1905"
+        ],
+        "bonne": 0,
+        "explication": "Droit acquis en 1944, exercé en 1945."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le premier jour d'école",
+    "histoire": [
+      "Tu es un enfant de 1882 qui entre à l'école publique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que change la gratuité de l'école ?",
+        "choix": [
+          "Tous les enfants peuvent apprendre",
+          "Seuls les riches y vont",
+          "Les enfants travaillent à l'usine",
+          "L'école ferme"
+        ],
+        "bonne": 0,
+        "explication": "L'école devient accessible."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que signifie « laïque » ?",
+        "choix": [
+          "L'école n'enseigne pas une religion",
+          "L'école est une église",
+          "L'école est privée",
+          "L'école est cachée"
+        ],
+        "bonne": 0,
+        "explication": "L'État est neutre en matière de religion."
+      }
+    ],
+    "conclusion": "Tu connais la République !"
+  }
+}

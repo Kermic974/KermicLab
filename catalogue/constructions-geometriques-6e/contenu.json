@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On construit avec précision : règle, équerre, compas et rapporteur.",
+  "niveaux": [
+    {
+      "titre": "Intuition : tracer avec précision",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour construire un triangle de côtés 5, 4 et 3 cm : on trace [AB] de 5 cm, puis on trace deux arcs de cercle (rayons 4 et 3 cm) centrés en A et en B. Ils se coupent en C.",
+        "On code les figures : les côtés de même longueur ont la même marque, l'angle droit un petit carré."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un côté de 5 cm.",
+          "Arc de rayon 4 cm depuis A, arc de rayon 3 cm depuis B.",
+          "Le point d'intersection est le sommet C."
+        ]
+      },
+      "aRetenir": "Un cercle est l'ensemble des points à égale distance d'un centre."
+    },
+    {
+      "titre": "Inégalité triangulaire et propriétés",
+      "niveau": "6e",
+      "paragraphes": [
+        "Dans un triangle, un côté est toujours **plus court que la somme des deux autres** : c'est l'**inégalité triangulaire**. On ne peut pas construire un triangle de côtés 2, 3 et 6 (2 + 3 < 6).",
+        "Deux droites perpendiculaires à une même troisième sont parallèles entre elles. La **médiatrice** d'un segment est la droite perpendiculaire passant par son milieu."
+      ],
+      "exemple": {
+        "titre": "Exemple : 3, 4, 5 cm",
+        "etapes": [
+          "3 + 4 = 7 > 5.",
+          "3 + 5 = 8 > 4 ; 4 + 5 = 9 > 3.",
+          "Le triangle existe (c'est même un triangle rectangle)."
+        ]
+      },
+      "aRetenir": "Un côté < somme des deux autres."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Peut-on construire un triangle de côtés 2 cm, 3 cm et 6 cm ?",
+        "choix": [
+          "Non, 2 + 3 < 6",
+          "Oui",
+          "Seulement avec un compas",
+          "Oui si c'est un triangle rectangle"
+        ],
+        "bonne": 0,
+        "explication": "Inégalité triangulaire non respectée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Peut-on construire un triangle de côtés 3, 4 et 5 cm ?",
+        "choix": [
+          "Oui",
+          "Non",
+          "Seulement si l'angle est droit",
+          "Seulement en 3D"
+        ],
+        "bonne": 0,
+        "explication": "3 + 4 > 5."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La médiatrice d'un segment passe par…",
+        "choix": [
+          "son milieu, perpendiculairement",
+          "une extrémité",
+          "n'importe où",
+          "son milieu, en étant parallèle"
+        ],
+        "bonne": 0,
+        "explication": "Droite perpendiculaire passant par le milieu."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan du jardin",
+    "histoire": [
+      "Tu traces le plan d'un jardin triangulaire de 6 m, 8 m et 10 m."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le jardin existe-t-il ?",
+        "choix": [
+          "Oui : 6 + 8 > 10",
+          "Non",
+          "Seulement si 6 + 8 < 10",
+          "On ne peut pas savoir"
+        ],
+        "bonne": 0,
+        "explication": "Inégalité triangulaire respectée."
+      },
+      {
+        "type": "nombre",
+        "question": "Quel est le périmètre ?",
+        "reponse": 24,
+        "unite": "m",
+        "indices": [
+          "Additionne les trois côtés."
+        ],
+        "solution": "6 + 8 + 10 = 24.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Plan tracé !"
+  }
+}

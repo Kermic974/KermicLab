@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On classe les êtres vivants selon les caractères qu'ils partagent : plus ils en partagent, plus ils sont apparentés.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des ressemblances",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le chat, le chien et l'être humain ont des poils (ou des cheveux), une colonne vertébrale et allaitent leurs petits : ce sont des **mammifères**. Les oiseaux ont des plumes et pondent des œufs. Les ressemblances montrent une **parenté**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Poisson, grenouille, serpent, oiseau, chat : vertébrés.",
+          "Chat, chien : mammifères.",
+          "Chat et chien sont plus proches entre eux que du poisson."
+        ]
+      },
+      "aRetenir": "Plus de caractères communs = plus de parenté."
+    },
+    {
+      "titre": "Arbre de parenté",
+      "niveau": "6e",
+      "paragraphes": [
+        "On regroupe les êtres vivants en ensembles emboîtés, comme des poupées russes : vertébrés ⊃ tétrapodes ⊃ amniotes ⊃ mammifères. Chaque groupe est défini par un **caractère** nouveau (colonne vertébrale, 4 membres, poils…).",
+        "La **biodiversité** est la diversité des espèces, des milieux et des gènes. On estime qu'il existe des millions d'espèces, dont beaucoup restent à découvrir."
+      ],
+      "exemple": {
+        "titre": "Exemple : un caractère partagé",
+        "etapes": [
+          "Les oiseaux et les crocodiles pondent des œufs à coquille.",
+          "Ils sont plus proches entre eux qu'avec les mammifères.",
+          "Ce caractère les regroupe."
+        ]
+      },
+      "aRetenir": "La classification traduit les liens de parenté."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel caractère définit les mammifères ?",
+        "choix": [
+          "Des mamelles pour allaiter, des poils",
+          "Des plumes",
+          "Des écailles",
+          "Des branchies"
+        ],
+        "bonne": 0,
+        "explication": "Poils et mamelles."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le plus proche parent du chat parmi ces animaux est…",
+        "choix": [
+          "le chien",
+          "le poisson",
+          "la grenouille",
+          "le lézard"
+        ],
+        "bonne": 0,
+        "explication": "Ils sont tous deux mammifères carnivores."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La biodiversité désigne…",
+        "choix": [
+          "la diversité du vivant",
+          "le nombre d'habitants",
+          "la taille d'une forêt",
+          "la météo"
+        ],
+        "bonne": 0,
+        "explication": "Variété des espèces."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'arbre du vivant",
+    "histoire": [
+      "Tu construis un arbre de parenté avec cinq animaux."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel animal est le plus éloigné de l'être humain ?",
+        "choix": [
+          "Le poisson",
+          "Le chat",
+          "Le chien",
+          "Le singe"
+        ],
+        "bonne": 0,
+        "explication": "Il partage le moins de caractères."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi regrouper chat et chien ?",
+        "choix": [
+          "Ils partagent beaucoup de caractères",
+          "Ils ont le même nom",
+          "Ils vivent ensemble",
+          "Ils ont la même couleur"
+        ],
+        "bonne": 0,
+        "explication": "Parenté."
+      }
+    ],
+    "conclusion": "Arbre complété !"
+  }
+}

@@ -33,7 +33,7 @@ export function charger(stockage) {
   try {
     const brut = JSON.parse(stockage?.getItem(CLE_STOCKAGE) ?? "{}");
     if (!objet(brut)) return {};
-    return Object.fromEntries(Object.entries(brut).slice(0, 200)
+    return Object.fromEntries(Object.entries(brut).slice(0, 600)
       .filter(([id]) => /^[a-z0-9][a-z0-9-]{0,79}$/.test(id))
       .map(([id, valeur]) => [id, normaliser(valeur)]).filter(([, valeur]) => valeur));
   } catch { return {}; }
@@ -44,7 +44,7 @@ export function sauver(stockage, modules) {
 }
 
 export function lireCollection(brut) {
-  if (!Array.isArray(brut?.modules) || brut.modules.length > 200) throw new Error("trophées : collection invalide");
+  if (!Array.isArray(brut?.modules) || brut.modules.length > 600) throw new Error("trophées : collection invalide");
   const collection = {};
   for (const m of brut.modules) {
     const p = normaliser(m?.progression);

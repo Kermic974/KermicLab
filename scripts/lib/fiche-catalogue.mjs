@@ -27,7 +27,9 @@ export const NIVEAUX_SCOLAIRES = ["cycle-3", "cycle-4", "seconde", "premiere", "
  * l'écran Éducation. La 6e appartient au cycle 3, les 5e, 4e et 3e au cycle 4 : une classe exige son cycle dans `niveaux`.
  */
 export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
-const CYCLE_DE_CLASSE = { "6e": "cycle-3", "5e": "cycle-4", "4e": "cycle-4", "3e": "cycle-4" };
+/** Classes du primaire (cycle 3, niveau « primaire ») : le CM1 et le CM2 précèdent la 6e. */
+export const CLASSES_PRIMAIRE = ["CM1", "CM2"];
+const CYCLE_DE_CLASSE = { CM1: "cycle-3", CM2: "cycle-3", "6e": "cycle-3", "5e": "cycle-4", "4e": "cycle-4", "3e": "cycle-4" };
 const IDENTIFIANT = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const DUREE_MAX = 240;
 
@@ -64,10 +66,11 @@ export function lireReferentiel(fiche) {
   if (fiche.classes !== undefined) {
     const classes = liste(fiche.classes);
     if (!classes.length) throw new Error("champ « classes » vide");
-    if (fiche.niveau !== "college") throw new Error("classes : réservé aux notions de niveau « college »");
-    for (const c of classes) if (!CLASSES_COLLEGE.includes(c)) throw new Error(`classes : « ${c} » inconnue (attendu : ${CLASSES_COLLEGE.join(", ")})`);
-    const rangs = classes.map((c) => CLASSES_COLLEGE.indexOf(c));
-    if (rangs.some((r, i) => i && r <= rangs[i - 1])) throw new Error("classes : sans doublon, de la 6e à la 3e");
+    const permises = fiche.niveau === "primaire" ? CLASSES_PRIMAIRE : fiche.niveau === "college" ? CLASSES_COLLEGE : null;
+    if (!permises) throw new Error("classes : réservé aux notions de niveau « primaire » ou « college »");
+    for (const c of classes) if (!permises.includes(c)) throw new Error(`classes : « ${c} » inconnue (attendu : ${permises.join(", ")})`);
+    const rangs = classes.map((c) => permises.indexOf(c));
+    if (rangs.some((r, i) => i && r <= rangs[i - 1])) throw new Error(fiche.niveau === "primaire" ? "classes : sans doublon, du CM1 au CM2" : "classes : sans doublon, de la 6e à la 3e");
     for (const c of classes) {
       if (ref.niveaux && !ref.niveaux.includes(CYCLE_DE_CLASSE[c])) throw new Error(`classes : « ${c} » demande « ${CYCLE_DE_CLASSE[c]} » dans niveaux`);
     }

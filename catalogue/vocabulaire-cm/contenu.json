@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Enrichir son vocabulaire aide à mieux comprendre et à mieux écrire.",
+  "niveaux": [
+    {
+      "titre": "Intuition : choisir le mot juste",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour ne pas répéter « beau », on peut dire « joli », « magnifique », « splendide » : ce sont des **synonymes**. Le contraire de « grand » est « petit » : ce sont des **antonymes**.",
+        "Un même mot peut avoir plusieurs sens : une « clé » ouvre une porte ou donne la clé d'un mystère."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Synonyme de « content » : heureux.",
+          "Contraire de « monter » : descendre.",
+          "« Il a un cœur d'or » : sens figuré (très généreux)."
+        ]
+      },
+      "aRetenir": "Synonyme : même sens. Antonyme : sens contraire."
+    },
+    {
+      "titre": "Dictionnaire, champs lexicaux, registres",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Dans le **dictionnaire**, les mots sont rangés par ordre alphabétique ; un mot de sens multiple a plusieurs définitions numérotées. Un **champ lexical** est l'ensemble des mots sur un même thème (mer : plage, vague, bateau, sable).",
+        "Il existe trois **niveaux de langue** : familier (« bagnole »), courant (« voiture »), soutenu (« automobile »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : le champ lexical de l'école",
+        "etapes": [
+          "cahier, stylo, élève, maître.",
+          "Tous ces mots parlent de l'école.",
+          "On les utilise pour décrire un lieu."
+        ]
+      },
+      "aRetenir": "Un champ lexical regroupe des mots d'un même thème."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est un synonyme de « content » ?",
+        "choix": [
+          "heureux",
+          "triste",
+          "fâché",
+          "fatigué"
+        ],
+        "bonne": 0,
+        "explication": "Heureux a un sens proche."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est l'antonyme de « monter » ?",
+        "choix": [
+          "descendre",
+          "grimper",
+          "avancer",
+          "sauter"
+        ],
+        "bonne": 0,
+        "explication": "Contraire : descendre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Il a un cœur d'or » est un exemple de…",
+        "choix": [
+          "sens figuré",
+          "sens propre",
+          "synonyme",
+          "antonyme"
+        ],
+        "bonne": 0,
+        "explication": "Le cœur n'est pas vraiment en or."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le chasseur de mots",
+    "histoire": [
+      "Tu dois remplacer des mots répétés dans un texte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Remplace « dit » dans « Il dit bonjour » pour plus de précision :",
+        "choix": [
+          "murmura",
+          "faire",
+          "dire",
+          "dit-il"
+        ],
+        "bonne": 0,
+        "explication": "« murmura » apporte une nuance."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot appartient au champ lexical de la mer ?",
+        "choix": [
+          "vague",
+          "forêt",
+          "stylo",
+          "table"
+        ],
+        "bonne": 0,
+        "explication": "La vague est liée à la mer."
+      }
+    ],
+    "conclusion": "Texte enrichi !"
+  }
+}

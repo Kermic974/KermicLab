@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une plante naît d'une graine, grandit, fleurit et produit de nouvelles graines.",
+  "niveaux": [
+    {
+      "titre": "Intuition : de la graine à la plante",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour **germer**, une graine a besoin d'eau, de chaleur et d'air. La racine sort, puis la tige avec les premières feuilles.",
+        "Pour **grandir**, la plante a besoin d'eau, de lumière, d'air (dioxyde de carbone) et de sels minéraux. Elle produit sa propre nourriture grâce à la lumière : c'est la **photosynthèse**."
+      ],
+      "exemple": {
+        "titre": "Exemple : le haricot",
+        "etapes": [
+          "On met un haricot dans du coton humide.",
+          "Après quelques jours : une racine apparaît.",
+          "Puis une tige et des feuilles."
+        ]
+      },
+      "aRetenir": "Germination : eau, chaleur, air."
+    },
+    {
+      "titre": "Fleur, fruit et graine",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "La fleur est l'organe de **reproduction**. Le pollen (étamines) doit rejoindre le pistil : c'est la **pollinisation**, faite par le vent ou des insectes (abeilles).",
+        "Après la fécondation, la fleur donne un **fruit** qui protège les **graines**. Les graines sont dispersées (vent, animaux, eau) et pourront germer : le cycle recommence."
+      ],
+      "exemple": {
+        "titre": "Exemple : la pomme",
+        "etapes": [
+          "Fleur de pommier pollinisée par les abeilles.",
+          "La fleur donne la pomme.",
+          "Les pépins sont les graines."
+        ]
+      },
+      "aRetenir": "Fleur → fruit → graine → nouvelle plante."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "De quoi une graine a-t-elle besoin pour germer ?",
+        "choix": [
+          "Eau, chaleur et air",
+          "Lumière seulement",
+          "Sel",
+          "Sucre"
+        ],
+        "bonne": 0,
+        "explication": "Pas forcément de lumière pour germer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui aide à la pollinisation ?",
+        "choix": [
+          "Les abeilles",
+          "Les poissons",
+          "Les pierres",
+          "Les nuages"
+        ],
+        "bonne": 0,
+        "explication": "Les insectes transportent le pollen."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que contient un fruit ?",
+        "choix": [
+          "Des graines",
+          "Des racines",
+          "Des feuilles",
+          "Des étamines seulement"
+        ],
+        "bonne": 0,
+        "explication": "Il protège les graines."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le potager de la classe",
+    "histoire": [
+      "Ta classe plante des haricots."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que faut-il donner aux plants pour qu'ils grandissent ?",
+        "choix": [
+          "De l'eau et de la lumière",
+          "Du sel",
+          "Du noir total",
+          "Du sucre"
+        ],
+        "bonne": 0,
+        "explication": "Eau, lumière, air et sels minéraux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment appelle-t-on la première étape du développement ?",
+        "choix": [
+          "La germination",
+          "La floraison",
+          "La fructification",
+          "La récolte"
+        ],
+        "bonne": 0,
+        "explication": "La graine germe."
+      }
+    ],
+    "conclusion": "Belle récolte !"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "À Athènes, au Ve siècle av. J.-C., les citoyens décident ensemble : c'est une démocratie.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des cités indépendantes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La Grèce est formée de nombreuses **cités** (polis) indépendantes : Athènes, Sparte, Corinthe… Chacune a son gouvernement et son territoire. Les Grecs partagent la langue, les dieux et les **Jeux olympiques** (à partir de 776 av. J.-C.)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Athènes : démocratie, commerce, théâtre.",
+          "Sparte : cité militaire.",
+          "Olympie : jeux sacrés."
+        ]
+      },
+      "aRetenir": "Cités autonomes, culture commune."
+    },
+    {
+      "titre": "La démocratie athénienne",
+      "niveau": "6e",
+      "paragraphes": [
+        "À Athènes, les citoyens se réunissent sur l'**agora** et votent les lois à l'**assemblée**. Mais seuls les hommes adultes nés de parents athéniens sont citoyens : les **femmes**, les **étrangers** et les **esclaves** en sont exclus (environ 10 à 15 % de la population).",
+        "**Périclès** (Ve siècle av. J.-C.) dirige Athènes et fait construire le **Parthénon** sur l'Acropole. La démocratie grecque a inspiré nos régimes d'aujourd'hui."
+      ],
+      "exemple": {
+        "titre": "Exemple : voter",
+        "etapes": [
+          "Les citoyens lèvent la main.",
+          "La majorité l'emporte.",
+          "On peut aussi exiler un homme dangereux (ostracisme)."
+        ]
+      },
+      "aRetenir": "Démocratie : le pouvoir au peuple (des citoyens)."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui est citoyen à Athènes ?",
+        "choix": [
+          "Les hommes adultes nés de parents athéniens",
+          "Tous les habitants",
+          "Les esclaves",
+          "Les femmes"
+        ],
+        "bonne": 0,
+        "explication": "Citoyenneté restreinte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que construit Périclès sur l'Acropole ?",
+        "choix": [
+          "Le Parthénon",
+          "Le Colisée",
+          "La tour Eiffel",
+          "Les pyramides"
+        ],
+        "bonne": 0,
+        "explication": "Temple d'Athéna."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Comment s'appelle une cité grecque ?",
+        "choix": [
+          "Une polis",
+          "Un empire",
+          "Une province",
+          "Un royaume"
+        ],
+        "bonne": 0,
+        "explication": "Polis = cité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un jour à l'assemblée",
+    "histoire": [
+      "Tu es citoyen athénien : il faut voter la construction d'un temple."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment décide-t-on ?",
+        "choix": [
+          "Par un vote à main levée",
+          "Par un tirage de dé",
+          "Par le roi seul",
+          "Par les dieux"
+        ],
+        "bonne": 0,
+        "explication": "Majorité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une femme peut-elle voter ?",
+        "choix": [
+          "Non, pas à Athènes",
+          "Oui",
+          "Seulement si riche",
+          "Seulement les mères"
+        ],
+        "bonne": 0,
+        "explication": "Exclue de la citoyenneté."
+      }
+    ],
+    "conclusion": "Tu es un bon citoyen !"
+  }
+}

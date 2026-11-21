@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour communiquer en anglais, on commence par saluer et se présenter.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les premiers mots",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Hello** et **Hi** veulent dire « bonjour » ; **Goodbye** et **Bye** « au revoir » ; **Good morning** « bonjour » le matin ; **Good night** « bonne nuit ». Pour te présenter : **My name is Léa.** ou **I'm Léa.**"
+      ],
+      "exemple": {
+        "titre": "Exemple : un dialogue",
+        "etapes": [
+          "— Hello! What's your name?",
+          "— My name is Tom. And you?",
+          "— I'm Léa. Nice to meet you!"
+        ]
+      },
+      "aRetenir": "What's your name? = Comment t'appelles-tu ?"
+    },
+    {
+      "titre": "Parler de soi",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**How are you ?** (Comment vas-tu ?) → **I'm fine, thank you.** (Je vais bien, merci.) **How old are you ?** → **I'm ten.** **Where are you from ?** → **I'm from France.** Le verbe **to be** : I am, you are, he/she is, we are, they are."
+      ],
+      "exemple": {
+        "titre": "Exemple : donner son âge",
+        "etapes": [
+          "How old are you ?",
+          "I'm ten (years old).",
+          "Attention : on dit « I am ten », pas « I have ten »."
+        ]
+      },
+      "aRetenir": "En anglais, l'âge se dit avec to be (I am)."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment dit-on « Je m'appelle Tom » ?",
+        "choix": [
+          "My name is Tom.",
+          "I have Tom.",
+          "Tom is me.",
+          "I call Tom."
+        ],
+        "bonne": 0,
+        "explication": "My name is…"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "How are you? Réponse courante :",
+        "choix": [
+          "I'm fine, thank you.",
+          "I am ten.",
+          "My name is Léa.",
+          "Goodbye."
+        ],
+        "bonne": 0,
+        "explication": "Je vais bien, merci."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Comment dire « J'ai dix ans » ?",
+        "choix": [
+          "I am ten.",
+          "I have ten.",
+          "I make ten.",
+          "I do ten."
+        ],
+        "bonne": 0,
+        "explication": "Avec to be."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le nouvel élève",
+    "histoire": [
+      "Un nouvel élève anglophone arrive dans ta classe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour lui demander son nom, tu dis…",
+        "choix": [
+          "What's your name?",
+          "How old are you?",
+          "Where is the school?",
+          "Good night."
+        ],
+        "bonne": 0,
+        "explication": "Comment t'appelles-tu ?"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Il répond « I'm from London ». Il vient…",
+        "choix": [
+          "de Londres",
+          "de Paris",
+          "de New York",
+          "d'Italie"
+        ],
+        "bonne": 0,
+        "explication": "From = de."
+      }
+    ],
+    "conclusion": "Welcome!"
+  }
+}

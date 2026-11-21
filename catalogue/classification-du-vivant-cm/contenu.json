@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Classer, c'est regrouper les êtres vivants selon leurs caractéristiques communes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : trier comme à la bibliothèque",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On reconnaît un être **vivant** parce qu'il naît, se nourrit, grandit, se reproduit et meurt. Pour s'y retrouver, on les classe : les animaux, les plantes, les champignons…",
+        "Chez les **animaux**, on distingue ceux qui ont un squelette interne avec une colonne vertébrale, les **vertébrés** (poissons, amphibiens, reptiles, oiseaux, mammifères), et ceux qui n'en ont pas, les **invertébrés** (insectes, escargots, araignées)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le chat a des poils et allaite ses petits : mammifère.",
+          "Le moineau a des plumes et pond des œufs : oiseau.",
+          "La fourmi a six pattes : insecte."
+        ]
+      },
+      "aRetenir": "Vertébrés : colonne vertébrale. Invertébrés : pas de colonne."
+    },
+    {
+      "titre": "Critères et clés de détermination",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Une **espèce** regroupe des individus qui se ressemblent et peuvent avoir des petits qui se reproduisent. On classe selon des **caractères communs** : peau (poils, plumes, écailles), mode de reproduction (œufs ou petits vivants), respiration (poumons, branchies).",
+        "Une **clé de détermination** est une suite de questions oui/non qui permet d'identifier un être vivant : « A-t-il des plumes ? — oui → oiseau ; non → question suivante »."
+      ],
+      "exemple": {
+        "titre": "Exemple : une clé simple",
+        "etapes": [
+          "A-t-il des poils ? Oui : mammifère.",
+          "A-t-il des plumes ? Oui : oiseau.",
+          "A-t-il des écailles et vit dans l'eau ? Oui : poisson."
+        ]
+      },
+      "aRetenir": "On classe par caractères communs observables."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel animal est un mammifère ?",
+        "choix": [
+          "Le chat",
+          "Le moineau",
+          "Le saumon",
+          "La salamandre"
+        ],
+        "bonne": 0,
+        "explication": "Il a des poils et allaite ses petits."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un insecte a…",
+        "choix": [
+          "6 pattes",
+          "8 pattes",
+          "4 pattes",
+          "2 pattes"
+        ],
+        "bonne": 0,
+        "explication": "Les insectes ont six pattes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un escargot est un…",
+        "choix": [
+          "invertébré",
+          "vertébré",
+          "mammifère",
+          "oiseau"
+        ],
+        "bonne": 0,
+        "explication": "Il n'a pas de colonne vertébrale."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le zoo de l'école",
+    "histoire": [
+      "Tu classes les animaux du petit zoo de l'école."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le serpent a des écailles et pond des œufs. C'est un…",
+        "choix": [
+          "reptile",
+          "mammifère",
+          "oiseau",
+          "poisson"
+        ],
+        "bonne": 0,
+        "explication": "Écailles et œufs : reptile."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une araignée a 8 pattes. C'est un…",
+        "choix": [
+          "invertébré (arachnide)",
+          "insecte",
+          "mammifère",
+          "reptile"
+        ],
+        "bonne": 0,
+        "explication": "Les araignées ne sont pas des insectes."
+      }
+    ],
+    "conclusion": "Animaux classés !"
+  }
+}

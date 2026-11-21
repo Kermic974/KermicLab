@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le calcul mental se prépare : on choisit une stratégie avant de calculer.",
+  "niveaux": [
+    {
+      "titre": "Intuition : choisir la bonne astuce",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour 98 + 37, on pense « 100 + 37 − 2 ». Pour 4 × 25, on pense à 4 pièces de 25 centimes = 1 euro.",
+        "Les compléments à 10, 100 et 1 000, le double et la moitié sont les outils de base."
+      ],
+      "exemple": {
+        "titre": "Exemple : 98 + 37",
+        "etapes": [
+          "98 est proche de 100.",
+          "100 + 37 = 137.",
+          "137 − 2 = 135."
+        ]
+      },
+      "aRetenir": "On cherche des nombres « ronds » pour simplifier le calcul."
+    },
+    {
+      "titre": "Stratégies",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**Multiplier par 5** : on multiplie par 10 puis on prend la moitié (36 × 5 = 360 ÷ 2 = 180).",
+        "**Multiplier par 25** : on divise par 4 puis on multiplie par 100 (48 × 25 = 12 × 100 = 1 200).",
+        "**Distributivité** : 7 × 14 = 7 × 10 + 7 × 4 = 70 + 28 = 98."
+      ],
+      "exemple": {
+        "titre": "Exemple : 36 × 5",
+        "etapes": [
+          "36 × 10 = 360.",
+          "La moitié de 360 est 180."
+        ]
+      },
+      "aRetenir": "Décomposer un nombre en dizaines et unités rend beaucoup de calculs faciles."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Calcule de tête 36 × 5.",
+        "reponse": 180,
+        "indices": [
+          "Multiplier par 5, c'est multiplier par 10 puis diviser par 2."
+        ],
+        "solution": "36 × 10 = 360, puis la moitié : 180.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Calcule de tête 98 + 37.",
+        "reponse": 135,
+        "indices": [
+          "98 = 100 − 2."
+        ],
+        "solution": "100 + 37 − 2 = 135.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel est le complément de 640 à 1 000 ?",
+        "choix": [
+          "360",
+          "460",
+          "350",
+          "340"
+        ],
+        "bonne": 0,
+        "explication": "640 + 360 = 1 000."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course aux courses",
+    "histoire": [
+      "Au marché, tu calcules de tête avant de payer."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "4 baguettes à 1,25 € : combien en tout ?",
+        "reponse": 5,
+        "unite": "€",
+        "indices": [
+          "4 × 1 + 4 × 0,25."
+        ],
+        "solution": "4 × 1,25 = 4 + 1 = 5 €.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Tu paies 20 € pour 13 € d'achats. Combien te rend-on ?",
+        "reponse": 7,
+        "unite": "€",
+        "indices": [
+          "Complète à 20 : 13 + 7 = 20."
+        ],
+        "solution": "20 − 13 = 7.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Rapide et juste !"
+  }
+}

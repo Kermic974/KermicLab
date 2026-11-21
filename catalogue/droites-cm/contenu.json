@@ -1,0 +1,124 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Deux droites parallèles ne se croisent jamais ; deux droites perpendiculaires se croisent en formant un angle droit.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les rails et les carrefours",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les deux rails d'une voie ferrée restent toujours à la même distance : ils sont **parallèles**. Deux rues qui se croisent en carrefour en T forment un angle droit : elles sont **perpendiculaires**.",
+        "Une **droite** n'a pas de fin ; une **demi-droite** commence en un point ; un **segment** a deux extrémités."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les lignes d'un cahier sont parallèles.",
+          "Les bords d'une feuille voisins sont perpendiculaires.",
+          "Un segment [AB] a une longueur ; une droite (AB) non."
+        ]
+      },
+      "aRetenir": "Parallèles : jamais sécantes. Perpendiculaires : sécantes à angle droit."
+    },
+    {
+      "titre": "Tracer avec les instruments",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour tracer une **perpendiculaire** : on place un côté de l'équerre sur la droite, et on trace le long de l'autre côté.",
+        "Pour tracer une **parallèle** : on trace une perpendiculaire à la première, puis une perpendiculaire à celle-là en un autre point ; ou on fait glisser l'équerre le long d'une règle.",
+        "Si deux droites sont parallèles à une même troisième, elles sont parallèles entre elles."
+      ],
+      "exemple": {
+        "titre": "Exemple : parallèle avec règle et équerre",
+        "etapes": [
+          "On place la règle sur la droite d.",
+          "On fait glisser l'équerre le long de la règle.",
+          "On trace à la hauteur voulue : la droite obtenue est parallèle à d."
+        ]
+      },
+      "aRetenir": "Une perpendiculaire se trace avec l'équerre."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Deux droites perpendiculaires forment un angle…",
+        "choix": [
+          "droit",
+          "aigu",
+          "obtus",
+          "plat"
+        ],
+        "bonne": 0,
+        "explication": "Perpendiculaires = angle droit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les lignes d'un cahier sont…",
+        "choix": [
+          "parallèles",
+          "perpendiculaires",
+          "obliques",
+          "sécantes"
+        ],
+        "bonne": 0,
+        "explication": "Elles gardent toujours le même écart."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel objet trace une perpendiculaire ?",
+        "choix": [
+          "L'équerre",
+          "Le compas",
+          "Le rapporteur seul",
+          "Le pistolet"
+        ],
+        "bonne": 0,
+        "explication": "L'équerre donne l'angle droit."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan de la ville",
+    "histoire": [
+      "Sur un plan, la rue A est parallèle à la rue B, et la rue C est perpendiculaire à A."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La rue C est aussi…",
+        "choix": [
+          "perpendiculaire à B",
+          "parallèle à B",
+          "confondue avec B",
+          "oblique à B"
+        ],
+        "bonne": 0,
+        "explication": "Si C est perpendiculaire à A et A // B, alors C est perpendiculaire à B."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les rues A et B se croiseront-elles ?",
+        "choix": [
+          "Jamais",
+          "Un jour",
+          "Au carrefour de C",
+          "Si on prolonge"
+        ],
+        "bonne": 0,
+        "explication": "Des droites parallèles ne se croisent jamais."
+      }
+    ],
+    "conclusion": "Tu te repères !"
+  }
+}

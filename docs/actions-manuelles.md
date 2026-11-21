@@ -286,3 +286,12 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 ## Vues Ma famille — 17 novembre 2026
 
 - À faire : revue du CODEOWNER et fusion de la PR après CI verte, puis déploiement automatique.
+
+## Catalogue du cycle 3 (CM1, CM2, 6e) — PR #398
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Faire relire les notions `*-cm` et `*-6e` selon la grille v1 (idéalement par un enseignant du premier degré), puis renseigner `relue`, `relue-version`, `relue-grille` dans chaque `fiche.md` | `catalogue/*-cm/`, `catalogue/*-6e/`, grille dans `docs/chantiers/validation-maquettes.md` | Public mineur : l'exactitude (dates, définitions, corrigés) n'a pas été relue par un humain | Cases de relecture cochées dans la PR #398 ; indicateur « Relecture » du build | à faire |
+| Contrôler la matrice de couverture avec le programme officiel de cycle 3 (BO 2020) et décider des écarts | `docs/chantiers/catalogue-primaire.md` | La matrice est un rapprochement interne, pas un contrôle officiel | Matrice validée ou corrigée dans la PR | à faire |
+| Décider du périmètre restant : autres langues vivantes que l'anglais, pratique motrice en EPS (hors page) | `docs/chantiers/catalogue-primaire.md` | Non couvert par les pages du gabarit | Décision notée dans la fiche chantier | à faire |
+| Revue du CODEOWNER et fusion de la PR #398 après CI verte | https://github.com/Kermic974/KermicLab/pull/398 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |

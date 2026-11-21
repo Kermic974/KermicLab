@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Contes, fables et mythes racontent des histoires qui enseignent et font rêver.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des histoires qui parlent à tous",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **conte** raconte une histoire merveilleuse avec un héros, une épreuve, des objets magiques. Une **fable** est un court récit en vers ou en prose avec des animaux qui parlent, et se termine par une **morale**. Un **mythe** raconte les exploits des dieux et des héros de l'Antiquité."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Le Corbeau et le Renard »",
+        "etapes": [
+          "Le renard flatte le corbeau.",
+          "Le corbeau ouvre le bec : le fromage tombe.",
+          "Morale : il faut se méfier des flatteurs."
+        ]
+      },
+      "aRetenir": "La fable se termine par une morale."
+    },
+    {
+      "titre": "Héros et symboles",
+      "niveau": "6e",
+      "paragraphes": [
+        "**Jean de La Fontaine** (XVIIe siècle) a écrit de nombreuses fables inspirées d'Ésope. Les animaux représentent des défauts humains (la ruse du renard, l'orgueil du corbeau).",
+        "**L'Odyssée**, attribuée à Homère, raconte le long voyage d'**Ulysse**, roi d'Ithaque, qui rentre chez lui après la guerre de Troie. Il utilise sa ruse (cheval de Troie, aventure avec le cyclope Polyphème)."
+      ],
+      "exemple": {
+        "titre": "Exemple : le héros rusé",
+        "etapes": [
+          "Ulysse se fait appeler « Personne ».",
+          "Polyphème crie « Personne m'a blessé ! ».",
+          "Les autres cyclopes ne viennent pas l'aider."
+        ]
+      },
+      "aRetenir": "La ruse de l'homme triomphe de la force."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui a écrit « Le Corbeau et le Renard » ?",
+        "choix": [
+          "La Fontaine",
+          "Molière",
+          "Victor Hugo",
+          "Homère"
+        ],
+        "bonne": 0,
+        "explication": "Jean de La Fontaine."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui est Ulysse ?",
+        "choix": [
+          "Un héros grec rusé",
+          "Un dieu romain",
+          "Un poète",
+          "Un empereur"
+        ],
+        "bonne": 0,
+        "explication": "Roi d'Ithaque."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une fable se termine par…",
+        "choix": [
+          "une morale",
+          "un mystère",
+          "une question",
+          "une énigme"
+        ],
+        "bonne": 0,
+        "explication": "Elle donne une leçon."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La morale de l'histoire",
+    "histoire": [
+      "Tu lis : « La cigale chante tout l'été et n'a rien à manger l'hiver, la fourmi a travaillé. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est la morale ?",
+        "choix": [
+          "Il faut prévoir l'avenir",
+          "Il faut chanter",
+          "Il faut dormir",
+          "Il faut voyager"
+        ],
+        "bonne": 0,
+        "explication": "Prévoyance."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que symbolise la fourmi ?",
+        "choix": [
+          "Le travail et la prévoyance",
+          "La paresse",
+          "La colère",
+          "La peur"
+        ],
+        "bonne": 0,
+        "explication": "Elle travaille et prévoit."
+      }
+    ],
+    "conclusion": "Tu as compris la morale !"
+  }
+}

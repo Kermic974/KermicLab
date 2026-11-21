@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un mélange réunit plusieurs substances ; on peut parfois les séparer.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le sucre dans l'eau",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand tu mets du sucre dans un verre d'eau, il **se dissout** : on ne le voit plus, mais le liquide est sucré. Le sucre est le **soluté**, l'eau le **solvant**, l'ensemble est une **solution**.",
+        "Si tu mélanges de l'huile et de l'eau, elles ne se mélangent pas : on voit deux couches."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Sucre + eau : mélange homogène (un seul aspect).",
+          "Sable + eau : mélange hétérogène (on voit les grains).",
+          "Huile + eau : deux couches."
+        ]
+      },
+      "aRetenir": "Dissoudre : le soluté disparaît dans le solvant."
+    },
+    {
+      "titre": "Séparer les constituants",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour séparer un mélange, on choisit une technique : le **tamisage** (grains de tailles différentes), la **filtration** (un solide non dissous dans un liquide), la **décantation** (on laisse déposer, puis on verse), l'**évaporation** (récupérer le sel d'une eau salée).",
+        "Quand on dissout, la masse totale se **conserve** : 100 g d'eau + 10 g de sucre = 110 g de solution. Mais on ne peut pas dissoudre à l'infini : la solution devient **saturée**."
+      ],
+      "exemple": {
+        "titre": "Exemple : eau salée",
+        "etapes": [
+          "On chauffe l'eau salée.",
+          "L'eau s'évapore.",
+          "Le sel reste dans le récipient."
+        ]
+      },
+      "aRetenir": "La masse se conserve dans une dissolution."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "On dissout 10 g de sucre dans 100 g d'eau. Quelle est la masse de la solution ?",
+        "reponse": 110,
+        "unite": "g",
+        "indices": [
+          "La masse se conserve."
+        ],
+        "solution": "100 + 10 = 110.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment séparer du sable et de l'eau ?",
+        "choix": [
+          "Par filtration",
+          "Par dissolution",
+          "Par fusion",
+          "Par solidification"
+        ],
+        "bonne": 0,
+        "explication": "Le filtre retient le sable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Comment récupérer le sel d'une eau salée ?",
+        "choix": [
+          "En faisant évaporer l'eau",
+          "En filtrant",
+          "En tamisant",
+          "En décantant"
+        ],
+        "bonne": 0,
+        "explication": "Le sel reste après évaporation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le laboratoire de cuisine",
+    "histoire": [
+      "Tu prépares un sirop et tu veux récupérer du sel marin."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le sucre dans l'eau forme…",
+        "choix": [
+          "un mélange homogène",
+          "un mélange hétérogène",
+          "un solide",
+          "un gaz"
+        ],
+        "bonne": 0,
+        "explication": "On ne voit plus le sucre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour retirer des feuilles de l'eau, on utilise…",
+        "choix": [
+          "un filtre",
+          "une loupe",
+          "un thermomètre",
+          "un aimant"
+        ],
+        "bonne": 0,
+        "explication": "La filtration."
+      }
+    ],
+    "conclusion": "Chimiste en herbe !"
+  }
+}
