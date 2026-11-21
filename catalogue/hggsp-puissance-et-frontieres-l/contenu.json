@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La spécialité HGGSP croise histoire, géographie, géopolitique et science politique pour comprendre les rapports de puissance.",
+  "niveaux": [
+    {
+      "titre": "Puissance et hard power",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "La **puissance** est la capacité d'un acteur à imposer sa volonté ou à influencer les autres. Elle comprend le **hard power** (forces armées, économie, contrainte) et le **soft power** (culture, modèle, influence). Le **traité de Westphalie** (1648) fonde la souveraineté des États ; au XXe siècle, l'ONU encadre les relations internationales."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les États-Unis : économie, armée, culture.",
+          "La Chine : économie, nouvelles routes de la soie.",
+          "L'UE : puissance normative."
+        ]
+      },
+      "aRetenir": "Puissance : hard power + soft power."
+    },
+    {
+      "titre": "Frontières et conflits",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Une **frontière** est une ligne qui sépare deux souverainetés ; elle peut être naturelle, tracée, contestée, ouverte (Schengen) ou fermée (murs). Les **conflits** (interétatiques, civils, asymétriques) se règlent par la **diplomatie**, les **organisations** et parfois la force ; la **justice internationale** (CPI) juge les crimes graves."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le mur de Berlin (1961) fermait une frontière.",
+          "Il tombe en 1989.",
+          "La frontière devient une ligne de passage."
+        ]
+      },
+      "aRetenir": "Frontière : souveraineté et contrôle."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le traité de Westphalie (1648) consacre…",
+        "choix": [
+          "la souveraineté des États",
+          "la domination de l'Église",
+          "l'Empire romain",
+          "l'ONU"
+        ],
+        "bonne": 0,
+        "explication": "Système d'États."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le soft power repose sur…",
+        "choix": [
+          "la violence organisée",
+          "l'attractivité culturelle et l'influence",
+          "la seule armée de terre",
+          "l'impôt prélevé à la frontière"
+        ],
+        "bonne": 1,
+        "explication": "Séduction."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La CPI juge…",
+        "choix": [
+          "les infractions des voyageurs",
+          "les crimes de guerre et de génocide",
+          "les petits délits de la route",
+          "les litiges de contrats privés"
+        ],
+        "bonne": 1,
+        "explication": "Justice internationale."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sommet",
+    "histoire": [
+      "Un sommet réunit des chefs d'État."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel outil privilégier pour résoudre un conflit ?",
+        "choix": [
+          "la fuite des négociateurs",
+          "la diplomatie et la négociation",
+          "la guerre à tout prix",
+          "le silence complet"
+        ],
+        "bonne": 1,
+        "explication": "Moyens pacifiques."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une frontière contestée peut devenir…",
+        "choix": [
+          "une zone sans loi",
+          "une plage",
+          "un musée",
+          "un foyer de tensions"
+        ],
+        "bonne": 3,
+        "explication": "Conflits."
+      }
+    ],
+    "conclusion": "Bon diplomate !"
+  }
+}

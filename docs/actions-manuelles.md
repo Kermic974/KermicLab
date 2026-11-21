@@ -295,3 +295,12 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Contrôler la matrice de couverture avec le programme officiel de cycle 3 (BO 2020) et décider des écarts | `docs/chantiers/catalogue-primaire.md` | La matrice est un rapprochement interne, pas un contrôle officiel | Matrice validée ou corrigée dans la PR | à faire |
 | Décider du périmètre restant : autres langues vivantes que l'anglais, pratique motrice en EPS (hors page) | `docs/chantiers/catalogue-primaire.md` | Non couvert par les pages du gabarit | Décision notée dans la fiche chantier | à faire |
 | Revue du CODEOWNER et fusion de la PR #398 après CI verte | https://github.com/Kermic974/KermicLab/pull/398 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Catalogue du lycée (seconde, première, terminale)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Faire relire les notions `*-l` selon la grille de relecture (idéalement par un enseignant de la discipline), puis renseigner `relue`, `relue-version`, `relue-grille` dans chaque `fiche.md` | `catalogue/*-l/`, `docs/chantiers/guide-relecture-lycee.md` | Public mineur : exactitude des cours, exercices et corrigés à valider par un humain | Champs `relue*` renseignés | à faire |
+| Contrôler la couverture avec les programmes officiels du lycée (tronc commun et spécialités) et décider des écarts | `docs/chantiers/catalogue-lycee.md` | Les spécialités sont traitées par notions transversales ; rapprochement interne seulement | Décision notée dans le chantier | à faire |
+| Qualifier par le processus S4 les liens depuis les notions V0 projetées (section « Lycée » des propositions) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Les prérequis des notions projetées sont générés depuis `referentiel/objets/` | Lot S4 relu et fusionné | à faire |
+| Ouvrir une PR dédiée au lycée après la fusion de la PR #401 (les commits du lycée sont sur la même branche) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |

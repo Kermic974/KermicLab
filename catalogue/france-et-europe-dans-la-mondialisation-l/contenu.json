@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La France et l'Union européenne sont des acteurs majeurs de la mondialisation, mais leurs territoires sont inégalement intégrés.",
+  "niveaux": [
+    {
+      "titre": "La France dans la mondialisation",
+      "niveau": "1re",
+      "paragraphes": [
+        "La France est une grande **puissance économique** (9e rang environ) : agriculture, industrie (aéronautique, luxe), services, tourisme (1re destination mondiale). Les **métropoles** (Paris, Lyon, Toulouse) et les **pôles de compétitivité** concentrent recherche et innovation, mais des territoires (anciennes régions industrielles, espaces ruraux isolés) sont fragilisés : **fractures territoriales**."
+      ],
+      "exemple": {
+        "titre": "Exemple : Toulouse",
+        "etapes": [
+          "Aéronautique (Airbus).",
+          "Universités et recherche.",
+          "Métropole attractive."
+        ]
+      },
+      "aRetenir": "Atouts et fractures."
+    },
+    {
+      "titre": "L'Union européenne",
+      "niveau": "1re",
+      "paragraphes": [
+        "L'**Union européenne** (27 États) est un marché unique, une zone de libre circulation (Schengen) et une monnaie commune (euro pour 20 États). Elle est une **puissance commerciale** et normative, mais divisée sur la politique extérieure et de défense. Elle finance des politiques de **cohésion** pour réduire les écarts entre régions. Ses **frontières** (Schengen, Frontex) sont à la fois ouvertes et contrôlées."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "La PAC soutient l'agriculture.",
+          "Fonds de cohésion pour les régions pauvres.",
+          "Erasmus favorise la mobilité."
+        ]
+      },
+      "aRetenir": "UE : marché unique, euro, Schengen."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un pôle de compétitivité associe…",
+        "choix": [
+          "des musées et des théâtres",
+          "entreprises, laboratoires et universités",
+          "uniquement des agriculteurs",
+          "des écoles de danse et de chant"
+        ],
+        "bonne": 1,
+        "explication": "Innovation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'espace Schengen permet…",
+        "choix": [
+          "la création de la monnaie euro",
+          "la fin de toute frontière extérieure",
+          "l'impôt européen unique",
+          "la libre circulation des personnes"
+        ],
+        "bonne": 3,
+        "explication": "Frontières intérieures ouvertes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La France est la première destination mondiale pour…",
+        "choix": [
+          "le cuivre",
+          "le tourisme",
+          "le pétrole",
+          "le blé seulement"
+        ],
+        "bonne": 1,
+        "explication": "Tourisme."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le territoire à l'écart",
+    "histoire": [
+      "Un territoire rural perd ses services."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle politique européenne aide ce territoire ?",
+        "choix": [
+          "la politique de cohésion",
+          "la politique de défense",
+          "la politique monétaire",
+          "aucune"
+        ],
+        "bonne": 0,
+        "explication": "Fonds européens."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une fracture territoriale désigne…",
+        "choix": [
+          "un écart durable entre territoires",
+          "un violent séisme local",
+          "une rupture de câble électrique",
+          "une frontière naturelle"
+        ],
+        "bonne": 0,
+        "explication": "Inégalités."
+      }
+    ],
+    "conclusion": "Bon diagnostic !"
+  }
+}

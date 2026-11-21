@@ -120,3 +120,21 @@ Pour que le parcours CP → CE1 → CE2 → CM1 → CM2 → 6e → 5e → 4e →
 3. Comparer la recommandation et le cahier de vacances avant/après, comme l'exige le guide.
 
 Tant que ce lot n'est pas traité, le garde-fou du build (un prérequis ne commence pas dans une classe plus avancée) s'applique aux liens existants, et la recommandation propose les notions existantes sans exiger celles du cycle précédent.
+
+## Lycée : propositions vers les notions `-l` et le cycle 4
+
+Les notions de lycée déjà présentes sont projetées depuis S4. Liens à qualifier (justification documentaire requise) :
+
+| Notion existante | Niveau | Prérequis proposés |
+|---|---|---|
+| `derivation` | première | `fonctions-de-reference-et-transformations-l` |
+| `second-degre` | première | `inequations-et-signe-l` |
+| `produit-scalaire` | première | `trigonometrie-radian-l`, `geometrie-repere-l` |
+| `probabilites-conditionnelles` | première | `statistiques-et-echantillonnage-l` |
+| `limites-et-continuite` | terminale | `limites-de-suites-l` |
+| `integrales` | terminale | `primitives-et-equations-differentielles-l` |
+| `loi-binomiale` | terminale | `variables-aleatoires-l` |
+| `geometrie-dans-l-espace` | terminale | `orthogonalite-et-espace-l` |
+| `democratie` | cycle 4 | — (côté lycée : `emc-democratie-et-institutions-l` en dépend déjà) |
+
+Ces liens sont à traiter dans le même lot S4 que les propositions des cycles précédents.

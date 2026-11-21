@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Étudier la limite d'une suite, c'est savoir ce que devient u_n quand n devient très grand.",
+  "niveaux": [
+    {
+      "titre": "Limites usuelles",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Une suite **converge** vers ℓ si u_n se rapproche de ℓ aussi près qu'on veut pour n grand ; sinon elle **diverge** (limite infinie ou pas de limite). Références : lim 1/n = 0, lim n² = +∞. **Suite géométrique** qⁿ : si |q| < 1, qⁿ → 0 ; si q > 1, qⁿ → +∞ ; si q ≤ −1, pas de limite.",
+        "On opère sur les limites (somme, produit, quotient) avec les règles usuelles, en faisant attention aux **formes indéterminées** (∞ − ∞, ∞/∞, 0 × ∞)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "u_n = (3n + 1)/(n + 2).",
+          "On factorise : n(3 + 1/n) / n(1 + 2/n).",
+          "La limite est 3."
+        ]
+      },
+      "aRetenir": "|q| < 1 : qⁿ → 0."
+    },
+    {
+      "titre": "Comparaison et monotonie",
+      "niveau": "Tle",
+      "paragraphes": [
+        "**Théorème des gendarmes** : si u_n ≤ v_n ≤ w_n et si u_n et w_n ont la même limite ℓ, alors v_n → ℓ. **Comparaison** : si u_n ≤ v_n et u_n → +∞, alors v_n → +∞. **Théorème de convergence monotone** : une suite croissante et majorée converge (une suite décroissante et minorée aussi).",
+        "Ces théorèmes servent quand on ne peut pas calculer directement la limite."
+      ],
+      "exemple": {
+        "titre": "Exemple : (−1)ⁿ / n",
+        "etapes": [
+          "−1/n ≤ (−1)ⁿ/n ≤ 1/n.",
+          "Les deux bornes tendent vers 0.",
+          "Par les gendarmes, (−1)ⁿ/n → 0."
+        ]
+      },
+      "aRetenir": "Gendarmes : encadrer par deux suites de même limite."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Si q = 0,8, la suite qⁿ…",
+        "choix": [
+          "converge vers 0",
+          "tend vers +∞",
+          "n'a pas de limite",
+          "vaut toujours 1"
+        ],
+        "bonne": 0,
+        "explication": "|q| < 1."
+      },
+      {
+        "type": "nombre",
+        "question": "Limite de (3n + 1)/(n + 2) quand n tend vers +∞ ?",
+        "reponse": 3,
+        "indices": [
+          "Factorise n."
+        ],
+        "solution": "Rapport des coefficients dominants.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une suite croissante et majorée…",
+        "choix": [
+          "converge",
+          "diverge vers +∞",
+          "n'a pas de limite",
+          "est constante"
+        ],
+        "bonne": 0,
+        "explication": "Convergence monotone."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le médicament dans le sang",
+    "histoire": [
+      "La quantité u_n de médicament baisse de 20 % chaque heure : u_{n+1} = 0,8 u_n."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Vers quelle quantité tend u_n ?",
+        "reponse": 0,
+        "indices": [
+          "|q| < 1."
+        ],
+        "solution": "q = 0,8 : u_n → 0.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La suite est…",
+        "choix": [
+          "géométrique décroissante",
+          "arithmétique",
+          "constante",
+          "croissante"
+        ],
+        "bonne": 0,
+        "explication": "Raison 0,8 < 1."
+      }
+    ],
+    "conclusion": "Limite trouvée !"
+  }
+}

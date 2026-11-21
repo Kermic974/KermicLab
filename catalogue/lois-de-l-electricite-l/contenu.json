@@ -1,0 +1,111 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les lois de l'électricité relient tension, intensité, résistance, puissance et énergie dans un circuit.",
+  "niveaux": [
+    {
+      "titre": "Ohm et lois des circuits",
+      "niveau": "2de",
+      "paragraphes": [
+        "**Loi d'Ohm** : U = R × I (U en volts, I en ampères, R en ohms). **Loi des nœuds** : la somme des intensités qui arrivent à un nœud est égale à celle qui repart. **Loi des mailles** : dans une maille, la somme des tensions est nulle. Résistances en **série** : R_eq = R₁ + R₂ ; en **dérivation** : 1/R_eq = 1/R₁ + 1/R₂."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "R = 100 Ω, U = 5 V.",
+          "I = U/R = 0,05 A.",
+          "50 mA."
+        ]
+      },
+      "aRetenir": "U = R I."
+    },
+    {
+      "titre": "Puissance et énergie",
+      "niveau": "1re",
+      "paragraphes": [
+        "La **puissance** électrique reçue par un dipôle est P = U × I (watts). L'**énergie** E = P × t (joules si t en secondes ; kWh si P en kW et t en heures). **Effet Joule** : un conducteur de résistance R parcouru par I dissipe P = R I² sous forme de chaleur. **Rendement** : η = énergie utile/énergie reçue."
+      ],
+      "exemple": {
+        "titre": "Exemple : un radiateur",
+        "etapes": [
+          "P = 2 000 W pendant 3 h.",
+          "E = 2 kW × 3 h = 6 kWh.",
+          "À 0,20 €/kWh : 1,20 €."
+        ]
+      },
+      "aRetenir": "E = P × t."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "R = 100 Ω, U = 5 V. Intensité (A) ?",
+        "reponse": 0.05,
+        "unite": "A",
+        "indices": [
+          "I = U/R."
+        ],
+        "solution": "5/100 = 0,05.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Résistance équivalente de 100 Ω et 200 Ω en série (Ω) ?",
+        "reponse": 300,
+        "unite": "Ω",
+        "indices": [
+          "Série : on additionne."
+        ],
+        "solution": "100 + 200.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Énergie d'un radiateur de 2 kW qui fonctionne 3 h (kWh) ?",
+        "reponse": 6,
+        "unite": "kWh",
+        "indices": [
+          "E = P × t."
+        ],
+        "solution": "2 × 3 = 6.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La facture",
+    "histoire": [
+      "Un four de 2 500 W fonctionne 2 h par jour pendant 30 jours."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Énergie consommée en un mois (kWh) ?",
+        "reponse": 150,
+        "unite": "kWh",
+        "indices": [
+          "P (kW) × t (h)."
+        ],
+        "solution": "2,5 × 2 × 30 = 150.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Coût à 0,20 €/kWh (€) ?",
+        "reponse": 30,
+        "unite": "€",
+        "indices": [
+          "Énergie × prix."
+        ],
+        "solution": "150 × 0,20 = 30.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien calculé !"
+  }
+}

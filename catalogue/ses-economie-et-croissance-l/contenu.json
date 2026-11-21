@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La croissance augmente la production, mais elle pose la question de sa soutenabilité écologique et de la répartition des richesses.",
+  "niveaux": [
+    {
+      "titre": "Mesurer et expliquer la croissance",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le **PIB** mesure la valeur de la production réalisée dans un pays en un an ; la **croissance** est son augmentation (en %). Ses sources : **travail** (quantité, qualité, formation), **capital** (investissement) et **progrès technique** (innovation, productivité). Le **PIB par habitant** compare les niveaux de vie, mais ne mesure ni les inégalités ni l'environnement."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "PIB : 2 000 puis 2 060 milliards.",
+          "Croissance : 3 %.",
+          "Si la population croît de 1 %, le PIB/hab croît d'environ 2 %."
+        ]
+      },
+      "aRetenir": "Croissance = variation du PIB."
+    },
+    {
+      "titre": "Croissance et soutenabilité",
+      "niveau": "1re",
+      "paragraphes": [
+        "La croissance dépend de ressources naturelles limitées et peut dégrader l'environnement : réchauffement, biodiversité. La **croissance soutenable** (ou développement durable) combine production, **bien-être** et préservation des ressources. Des indicateurs complémentaires existent : **IDH**, **empreinte carbone**, **indicateurs de bien-être**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une usine augmente le PIB.",
+          "Elle pollue une rivière.",
+          "Le PIB ne mesure pas la perte écologique."
+        ]
+      },
+      "aRetenir": "PIB : utile mais insuffisant."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le PIB mesure…",
+        "choix": [
+          "la dette publique",
+          "le taux de chômage",
+          "la production annuelle d'un pays",
+          "la population totale"
+        ],
+        "bonne": 2,
+        "explication": "Définition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le progrès technique augmente…",
+        "choix": [
+          "l'inflation seulement",
+          "la productivité",
+          "la dette",
+          "le chômage obligatoirement"
+        ],
+        "bonne": 1,
+        "explication": "Facteur de croissance."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un indicateur complémentaire du PIB est…",
+        "choix": [
+          "le nombre de lycées",
+          "l'IDH",
+          "l'inflation",
+          "le taux de change"
+        ],
+        "bonne": 1,
+        "explication": "Bien-être."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le pays qui croît",
+    "histoire": [
+      "Un pays voit son PIB augmenter de 4 %, sa population de 2 %."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est approximativement la croissance du PIB par habitant ?",
+        "choix": [
+          "environ 2 %",
+          "4 %",
+          "6 %",
+          "0 %"
+        ],
+        "bonne": 0,
+        "explication": "4 − 2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Cette croissance est-elle forcément soutenable ?",
+        "choix": [
+          "non, le PIB baisse",
+          "non, si elle dégrade les ressources",
+          "oui toujours",
+          "oui si la population baisse seulement"
+        ],
+        "bonne": 1,
+        "explication": "Soutenabilité."
+      }
+    ],
+    "conclusion": "Bon économiste !"
+  }
+}

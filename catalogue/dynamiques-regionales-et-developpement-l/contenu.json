@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les territoires du monde se développent à des rythmes différents ; on les compare avec des indicateurs.",
+  "niveaux": [
+    {
+      "titre": "Mesurer le développement",
+      "niveau": "Tle",
+      "paragraphes": [
+        "L'**IDH** (indice de développement humain) combine **santé** (espérance de vie), **éducation** et **revenu**. Les **pays émergents** (Chine, Inde, Brésil) connaissent une forte croissance mais de fortes inégalités internes ; les **pays les moins avancés** (PMA) restent vulnérables. L'urbanisation rapide du Sud crée des **mégapoles** et des bidonvilles."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un pays augmente le revenu mais pas l'éducation.",
+          "IDH progresse moins vite.",
+          "L'indicateur combine plusieurs dimensions."
+        ]
+      },
+      "aRetenir": "IDH : santé, éducation, revenu."
+    },
+    {
+      "titre": "Dynamiques régionales",
+      "niveau": "Tle",
+      "paragraphes": [
+        "L'**Asie** est le moteur de la croissance (Chine, Inde, Asean). L'**Afrique** connaît une forte croissance démographique, une urbanisation rapide et des disparités. L'**Amérique latine** combine ressources, inégalités et urbanisation. La **mondialisation** intègre ces espaces mais renforce parfois leur dépendance aux exportations de matières premières."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Shenzhen : ville créée en 40 ans.",
+          "Zones franches et industries.",
+          "Hausse des revenus et inégalités."
+        ]
+      },
+      "aRetenir": "Émergents : croissance et inégalités."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'IDH repose sur…",
+        "choix": [
+          "la population et la densité",
+          "la santé, l'éducation et le revenu",
+          "le seul PIB total du pays",
+          "la superficie du territoire"
+        ],
+        "bonne": 1,
+        "explication": "Trois dimensions."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un pays émergent connaît…",
+        "choix": [
+          "aucune ville de grande taille",
+          "une forte croissance économique",
+          "une absence totale d'économie",
+          "une population très faible"
+        ],
+        "bonne": 1,
+        "explication": "Chine, Inde."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un PMA est…",
+        "choix": [
+          "un pays très peu avancé et vulnérable",
+          "un grand pays riche et industriel",
+          "un pays émergent à forte croissance",
+          "une province de l'Union européenne"
+        ],
+        "bonne": 0,
+        "explication": "Catégorie de l'ONU."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Comparer deux pays",
+    "histoire": [
+      "Tu compares l'IDH de deux pays."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi ne pas utiliser seulement le PIB ?",
+        "choix": [
+          "il est beaucoup trop élevé",
+          "il n'existe plus depuis 1990",
+          "il ne mesure ni santé ni éducation",
+          "il est toujours faux ou truqué"
+        ],
+        "bonne": 2,
+        "explication": "Limites."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une mégapole est…",
+        "choix": [
+          "un petit village isolé",
+          "une île du Pacifique",
+          "une chaîne de montagnes",
+          "une très grande ville"
+        ],
+        "bonne": 3,
+        "explication": "Urbanisation."
+      }
+    ],
+    "conclusion": "Bon analyste !"
+  }
+}

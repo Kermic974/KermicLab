@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Savoirs et mémoires sont des enjeux de pouvoir : on étudie comment les États les produisent, les contrôlent et les transmettent.",
+  "niveaux": [
+    {
+      "titre": "Histoire et mémoire",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "L'**histoire** est une démarche scientifique qui établit des faits à partir de sources et les critique ; la **mémoire** est un souvenir collectif ou individuel, souvent sélectif et affectif. Les États mènent des **politiques mémorielles** (commémorations, lois) et protègent le **patrimoine** (UNESCO : patrimoine mondial). Les mémoires peuvent entrer en **conflit** (colonisation, guerres)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un monument commémore une guerre.",
+          "Des groupes en gardent des souvenirs différents.",
+          "L'historien confronte les sources."
+        ]
+      },
+      "aRetenir": "Histoire : sources et critique ; mémoire : souvenir."
+    },
+    {
+      "titre": "Savoirs, médias et pouvoir",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Les États financent la recherche, contrôlent l'éducation et l'information. La **liberté de la presse** est une condition de la démocratie ; la **désinformation** (fake news) et la **propagande** menacent le débat public. La **science** éclaire les décisions politiques (santé, climat) mais doit rester indépendante."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une fausse information circule.",
+          "Des journalistes vérifient et corrigent.",
+          "La vérification protège le débat."
+        ]
+      },
+      "aRetenir": "Presse libre : condition de la démocratie."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'histoire se distingue de la mémoire car elle…",
+        "choix": [
+          "est une fiction imaginée",
+          "s'appuie sur des sources critiquées",
+          "est toujours purement émotionnelle",
+          "ne cite jamais de preuve"
+        ],
+        "bonne": 1,
+        "explication": "Méthode."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le patrimoine mondial est protégé par…",
+        "choix": [
+          "la CPI de La Haye",
+          "le FMI de Washington",
+          "l'OTAN de Bruxelles",
+          "l'UNESCO"
+        ],
+        "bonne": 3,
+        "explication": "Liste du patrimoine."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La propagande vise à…",
+        "choix": [
+          "influencer l'opinion pour un pouvoir",
+          "informer de façon neutre",
+          "corriger les erreurs d'un texte",
+          "enseigner les mathématiques"
+        ],
+        "bonne": 0,
+        "explication": "Manipulation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le monument contesté",
+    "histoire": [
+      "Un monument divise les habitants."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fait l'historien ?",
+        "choix": [
+          "il invente des faits utiles",
+          "il confronte des sources et contextualise",
+          "il choisit son camp sans preuve",
+          "il efface les monuments gênants"
+        ],
+        "bonne": 1,
+        "explication": "Démarche."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi vérifier une information ?",
+        "choix": [
+          "pour éviter la désinformation",
+          "pour la rendre plus drôle",
+          "pour la cacher",
+          "pour la vendre"
+        ],
+        "bonne": 0,
+        "explication": "Esprit critique."
+      }
+    ],
+    "conclusion": "Bon débat !"
+  }
+}

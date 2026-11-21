@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans une démocratie, le pouvoir est partagé, contrôlé et exercé au nom des citoyens, qui peuvent aussi participer.",
+  "niveaux": [
+    {
+      "titre": "Institutions et séparation des pouvoirs",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **séparation des pouvoirs** (Montesquieu) distingue le **législatif** (Parlement : Assemblée nationale et Sénat votent les lois), l'**exécutif** (président et gouvernement) et le **judiciaire** (juges). La **Ve République** (1958) donne un rôle central au président élu au suffrage universel direct pour 5 ans. Le **Conseil constitutionnel** contrôle les lois."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le Parlement vote une loi.",
+          "Le gouvernement la met en œuvre.",
+          "Un juge l'applique dans un procès."
+        ]
+      },
+      "aRetenir": "Trois pouvoirs : législatif, exécutif, judiciaire."
+    },
+    {
+      "titre": "Participer",
+      "niveau": "1re",
+      "paragraphes": [
+        "La participation passe par le **vote**, l'**engagement associatif**, les **pétitions**, les **consultations** (référendum, conseils citoyens) et l'**action syndicale**. La démocratie est **représentative** (on élit des représentants) et de plus en plus **participative**. L'**abstention** et la défiance posent la question de la légitimité."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un référendum sur une question précise.",
+          "Les citoyens répondent par oui ou non.",
+          "Le résultat s'impose."
+        ]
+      },
+      "aRetenir": "Représentative + participative."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui vote la loi en France ?",
+        "choix": [
+          "le Parlement",
+          "les juges",
+          "les maires seulement",
+          "le préfet"
+        ],
+        "bonne": 0,
+        "explication": "Législatif."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le mandat du président de la République est de…",
+        "choix": [
+          "2 ans",
+          "5 ans",
+          "7 ans",
+          "10 ans"
+        ],
+        "bonne": 1,
+        "explication": "Quinquennat."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un référendum consiste à…",
+        "choix": [
+          "créer un impôt local",
+          "répondre par oui ou non à une question",
+          "élire un député pour cinq ans",
+          "juger un procès aux assises"
+        ],
+        "bonne": 1,
+        "explication": "Démocratie directe."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'élection du délégué",
+    "histoire": [
+      "Ta classe élit son délégué."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel pouvoir ce vote illustre-t-il ?",
+        "choix": [
+          "l'oligarchie des notables",
+          "la dictature militaire",
+          "la démocratie représentative",
+          "la monarchie héréditaire"
+        ],
+        "bonne": 2,
+        "explication": "Élection."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi voter ?",
+        "choix": [
+          "pour participer aux décisions collectives",
+          "pour gagner un prix en argent",
+          "pour échapper à tout lien civique",
+          "pour perdre un peu de temps"
+        ],
+        "bonne": 0,
+        "explication": "Citoyenneté."
+      }
+    ],
+    "conclusion": "Bonne participation !"
+  }
+}

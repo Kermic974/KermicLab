@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La science produit des modèles et des données avec des incertitudes ; décider, c'est évaluer des risques à partir d'informations incomplètes.",
+  "niveaux": [
+    {
+      "titre": "Modèles et données",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Un **modèle** est une représentation simplifiée d'un phénomène, qui permet de prévoir (climat, épidémies). Il est validé s'il **reproduit les observations** et réfuté s'il les contredit. Les données sont toujours entachées d'**incertitudes** (mesure, échantillon). Une **corrélation** (deux variables varient ensemble) ne prouve pas une **causalité** (l'une provoque l'autre) : une troisième cause peut jouer."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les ventes de glaces et les noyades augmentent ensemble en été.",
+          "Cause commune : la chaleur.",
+          "Corrélation sans causalité directe."
+        ]
+      },
+      "aRetenir": "Corrélation ≠ causalité."
+    },
+    {
+      "titre": "Risque et décision",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Un **risque** combine la **probabilité** d'un événement et sa **gravité**. Pour décider (vaccination, dépistage, mesure sanitaire), on compare **bénéfices et risques**. Une étude fiable : échantillon suffisant et représentatif, groupe témoin, évaluation par les pairs, financement transparent, résultats reproduits. Une décision publique doit être **proportionnée**, justifiée et révisée quand les connaissances évoluent."
+      ],
+      "exemple": {
+        "titre": "Exemple : un essai clinique",
+        "etapes": [
+          "Deux groupes tirés au sort.",
+          "Un reçoit le traitement, l'autre un placebo.",
+          "On compare les résultats avec des tests statistiques."
+        ]
+      },
+      "aRetenir": "Groupe témoin + échantillon représentatif."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une corrélation entre deux phénomènes prouve…",
+        "choix": [
+          "que l'un cause l'autre",
+          "qu'il n'y a aucun lien",
+          "que les données sont fausses",
+          "seulement qu'ils varient ensemble"
+        ],
+        "bonne": 3,
+        "explication": "Pas de causalité automatique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un modèle est réfuté si…",
+        "choix": [
+          "il est assez ancien",
+          "il est discuté en classe",
+          "il contredit des observations fiables",
+          "il est très simple"
+        ],
+        "bonne": 2,
+        "explication": "Confrontation aux faits."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le risque combine…",
+        "choix": [
+          "coût et durée",
+          "âge et taille",
+          "probabilité et gravité",
+          "date et lieu"
+        ],
+        "bonne": 2,
+        "explication": "Définition."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'étude sur le café",
+    "histoire": [
+      "Une étude lie la consommation de café à une meilleure santé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle question poses-tu d'abord ?",
+        "choix": [
+          "qui a écrit le titre ?",
+          "l'échantillon est-il représentatif ?",
+          "le café est-il bon ou non ?",
+          "l'étude est-elle très courte ?"
+        ],
+        "bonne": 1,
+        "explication": "Fiabilité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que peut-on conclure d'une simple corrélation ?",
+        "choix": [
+          "que le café soigne",
+          "que le café est dangereux",
+          "que l'étude est parfaite",
+          "pas de causalité certaine"
+        ],
+        "bonne": 3,
+        "explication": "Prudence."
+      }
+    ],
+    "conclusion": "Esprit critique activé !"
+  }
+}

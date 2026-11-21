@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La philosophie interroge les notions fondamentales par des concepts, des arguments et des auteurs.",
+  "niveaux": [
+    {
+      "titre": "Liberté, justice, État",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Peut-on **être libre** dans un monde déterminé (par le corps, la société, l'inconscient) ? Pour **Kant**, la liberté est autonomie : agir selon la loi qu'on se donne. Pour **Rousseau**, le **contrat social** fonde un État où chacun obéit à la loi qu'il a contribué à faire. La **justice** : égalité des droits, mais aussi équité (**Rawls**). L'**État** détient le monopole de la violence légitime (**Weber**)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Contrat social : chacun renonce à une liberté illimitée.",
+          "En échange : sécurité et droits.",
+          "La loi exprime la volonté générale."
+        ]
+      },
+      "aRetenir": "Liberté : autonomie ; justice : égalité et équité."
+    },
+    {
+      "titre": "Méthode de la dissertation",
+      "niveau": "Tle",
+      "paragraphes": [
+        "La **dissertation** : analyser les termes du sujet, formuler une **problématique**, construire un plan **dialectique** ou progressif, définir des **notions**, mobiliser **auteurs** et **exemples**, conclure en répondant à la problématique. On évite l'accumulation de citations sans analyse et le jugement sans arguments."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Sujet : « Peut-on désobéir à la loi ? »",
+          "Problématique : la justice autorise-t-elle parfois la désobéissance ?",
+          "Plan en trois temps : non, oui, dépasser."
+        ]
+      },
+      "aRetenir": "Définir, problématiser, argumenter."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour Rousseau, le contrat social fonde…",
+        "choix": [
+          "un désordre généralisé",
+          "l'obéissance à la loi qu'on se donne",
+          "la loi du plus fort",
+          "la monarchie absolue"
+        ],
+        "bonne": 1,
+        "explication": "Volonté générale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour Kant, la liberté est…",
+        "choix": [
+          "faire n'importe quoi à tout moment",
+          "obéir à tous ses désirs",
+          "être riche et indépendant",
+          "autonomie : se donner sa propre loi"
+        ],
+        "bonne": 3,
+        "explication": "Autonomie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une problématique est…",
+        "choix": [
+          "un simple résumé de cours",
+          "une question qui découle du sujet",
+          "une citation d'un auteur",
+          "une conclusion de devoir"
+        ],
+        "bonne": 1,
+        "explication": "Méthode."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sujet de dissertation",
+    "histoire": [
+      "Sujet : « La liberté est-elle une illusion ? »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Premier geste ?",
+        "choix": [
+          "citer sans aucun lien",
+          "recopier un cours entier",
+          "analyser les termes du sujet",
+          "écrire la conclusion d'abord"
+        ],
+        "bonne": 2,
+        "explication": "Analyse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un bon exemple est…",
+        "choix": [
+          "inventé",
+          "précis et analysé",
+          "sans lien avec le sujet",
+          "très long sans analyse"
+        ],
+        "bonne": 1,
+        "explication": "Argumentation."
+      }
+    ],
+    "conclusion": "Bon philosophe !"
+  }
+}

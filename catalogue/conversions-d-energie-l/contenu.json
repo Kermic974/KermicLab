@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'énergie ne se crée ni ne se perd : elle se convertit, avec des pertes qui limitent le rendement.",
+  "niveaux": [
+    {
+      "titre": "Formes et conversions",
+      "niveau": "1re",
+      "paragraphes": [
+        "Formes d'énergie : **cinétique** E_c = ½ m v², **potentielle de pesanteur** E_p = m g h, **thermique**, **électrique**, **chimique**, **nucléaire**, **rayonnante**. Une **chaîne énergétique** relie sources, convertisseurs et pertes. Exemple : une centrale hydroélectrique convertit l'énergie potentielle de l'eau en énergie cinétique, puis électrique."
+      ],
+      "exemple": {
+        "titre": "Exemple : une chute de 10 m",
+        "etapes": [
+          "m = 2 kg, g = 10 N/kg.",
+          "E_p = 2 × 10 × 10 = 200 J.",
+          "En bas : E_c ≈ 200 J (sans frottement)."
+        ]
+      },
+      "aRetenir": "E_c = ½ m v² ; E_p = m g h."
+    },
+    {
+      "titre": "Rendement et pertes",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le **rendement** η = énergie utile / énergie reçue (entre 0 et 1, souvent en %). Une ampoule à incandescence a un rendement d'environ 5 % (l'essentiel est perdu en chaleur) ; une LED, environ 40 %. Dans un système isolé, l'énergie totale se **conserve** : les pertes sont de l'énergie thermique dispersée, pas de l'énergie détruite."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Moteur qui reçoit 1 000 J et fournit 800 J utiles.",
+          "η = 800/1 000 = 0,8.",
+          "20 % sont perdus en chaleur."
+        ]
+      },
+      "aRetenir": "η = énergie utile / énergie reçue."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Énergie potentielle d'une masse de 2 kg à 10 m (g = 10 N/kg) en J ?",
+        "reponse": 200,
+        "unite": "J",
+        "indices": [
+          "m × g × h."
+        ],
+        "solution": "m g h = 200.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un moteur reçoit 1 000 J et fournit 800 J utiles. Rendement (en pourcentage) ?",
+        "reponse": 80,
+        "unite": "%",
+        "indices": [
+          "Utile/reçu."
+        ],
+        "solution": "800/1 000 = 0,8.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les pertes d'énergie dans un système sont…",
+        "choix": [
+          "de l'énergie thermique dispersée",
+          "de l'énergie réellement détruite",
+          "toujours rigoureusement nulles",
+          "de l'énergie créée ailleurs"
+        ],
+        "bonne": 0,
+        "explication": "Conservation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le vélo électrique",
+    "histoire": [
+      "Une batterie fournit 360 kJ ; le moteur en convertit 288 kJ en énergie de mouvement."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Rendement (en pourcentage) ?",
+        "reponse": 80,
+        "unite": "%",
+        "indices": [
+          "Utile/reçu."
+        ],
+        "solution": "288/360 = 0,8.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Où va le reste ?",
+        "choix": [
+          "dans l'air sous forme d'oxygène",
+          "il disparaît",
+          "il revient dans la batterie",
+          "en chaleur"
+        ],
+        "bonne": 3,
+        "explication": "Pertes thermiques."
+      }
+    ],
+    "conclusion": "Bilan établi !"
+  }
+}

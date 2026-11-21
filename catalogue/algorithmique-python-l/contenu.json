@@ -1,0 +1,116 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Python sert à calculer, simuler et vérifier des résultats mathématiques.",
+  "niveaux": [
+    {
+      "titre": "Briques de base en Python",
+      "niveau": "2de",
+      "paragraphes": [
+        "**Variables** : `x = 3`. **Fonctions** : `def f(x): return 2*x + 1`. **Test** : `if x > 0:`. **Boucle for** : `for i in range(5):` répète 5 fois (i de 0 à 4). **Boucle while** : `while condition:` répète tant que la condition est vraie. **Listes** : `L = [1, 2, 3]`, `L[0]`, `len(L)`. L'indentation structure le programme."
+      ],
+      "exemple": {
+        "titre": "Exemple : somme des entiers de 1 à n",
+        "etapes": [
+          "s = 0.",
+          "for i in range(1, n + 1): s = s + i.",
+          "À la fin, s = n(n + 1)/2."
+        ]
+      },
+      "aRetenir": "En Python, l'indentation fait partie de la syntaxe."
+    },
+    {
+      "titre": "Algorithmes classiques",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "**Seuil** : trouver le premier rang n tel que u_n dépasse une valeur (boucle while). **Dichotomie** : pour résoudre f(x) = 0 sur un intervalle où f est continue et change de signe, on coupe l'intervalle en deux à chaque étape (précision divisée par 2). **Simulation** : estimer une probabilité par de nombreux tirages aléatoires (`random`).",
+        "On teste toujours un programme sur un cas où l'on connaît la réponse."
+      ],
+      "exemple": {
+        "titre": "Exemple : seuil",
+        "etapes": [
+          "u₀ = 100, u_{n+1} = 0,9 u_n.",
+          "On cherche le premier n tel que u_n < 50.",
+          "Boucle : tant que u ≥ 50 : u = 0,9 u ; n = n + 1."
+        ]
+      },
+      "aRetenir": "While : on ne connaît pas le nombre d'étapes à l'avance."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "`for i in range(5):` répète…",
+        "choix": [
+          "5 fois (i de 1 à 6)",
+          "6 fois (i de 0 à 6)",
+          "4 fois (i de 1 à 4)",
+          "5 fois (i de 0 à 4)"
+        ],
+        "bonne": 3,
+        "explication": "range(5) : 0, 1, 2, 3, 4."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un algorithme de seuil utilise plutôt…",
+        "choix": [
+          "une fonction sans paramètre",
+          "une boucle while",
+          "une boucle for à nombre fixe",
+          "une liste vide"
+        ],
+        "bonne": 1,
+        "explication": "On ne sait pas combien d'itérations."
+      },
+      {
+        "type": "nombre",
+        "question": "La dichotomie divise la longueur de l'intervalle par 2 à chaque étape. Après 10 étapes, par quel nombre est divisée la longueur ?",
+        "reponse": 1024,
+        "indices": [
+          "2 multiplié 10 fois."
+        ],
+        "solution": "2¹⁰ = 1 024.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La population de bactéries",
+    "histoire": [
+      "Une population double toutes les heures. Au départ : 100 individus. On veut le premier rang n où elle dépasse 10 000."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle structure choisis-tu ?",
+        "choix": [
+          "une liste de 100 valeurs",
+          "while population <= 10000",
+          "for i in range(100)",
+          "if population"
+        ],
+        "bonne": 1,
+        "explication": "On ignore le nombre d'étapes."
+      },
+      {
+        "type": "nombre",
+        "question": "Au bout de combien d'heures dépasse-t-elle 10 000 (100 × 2ⁿ > 10 000) ?",
+        "reponse": 7,
+        "indices": [
+          "Double 100 fois jusqu'à dépasser 10 000."
+        ],
+        "solution": "2⁶ = 64 → 6 400 ; 2⁷ = 128 → 12 800.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Programme réussi !"
+  }
+}
