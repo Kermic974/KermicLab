@@ -8,6 +8,8 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - lecture-comprehension-cm
+  - conjugaison-cm
 competences:
   - ecrire-un-recit-cm-comprendre
   - ecrire-un-recit-cm-appliquer

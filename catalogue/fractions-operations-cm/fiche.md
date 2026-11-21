@@ -9,6 +9,7 @@ niveaux: cycle-3
 classes: CM2
 prerequis:
   - fractions-cm
+  - nombres-decimaux-cm
 competences:
   - fractions-operations-cm-comprendre
   - fractions-operations-cm-appliquer

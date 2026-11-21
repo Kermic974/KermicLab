@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - anglais-vocabulaire-quotidien-cm
 competences:
   - anglais-lieux-et-pays-cm-comprendre
   - anglais-lieux-et-pays-cm-appliquer

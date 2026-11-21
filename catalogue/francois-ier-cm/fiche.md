@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - louis-ix-cm
 competences:
   - francois-ier-cm-comprendre
   - francois-ier-cm-appliquer

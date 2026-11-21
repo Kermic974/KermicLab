@@ -8,6 +8,8 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - regles-et-justice-cm
+  - devise-republique-cm
 competences:
   - laicite-et-liberte-cm-comprendre
   - laicite-et-liberte-cm-appliquer

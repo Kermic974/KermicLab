@@ -8,7 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
-  - proportionnalite-cm
+  - durees-et-horaires-cm
 competences:
   - mouvement-et-vitesse-cm-comprendre
   - mouvement-et-vitesse-cm-appliquer

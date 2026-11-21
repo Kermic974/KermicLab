@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - musique-notes-et-rythme-cm
 competences:
   - musique-voix-et-ecoute-cm-comprendre
   - musique-voix-et-ecoute-cm-appliquer

@@ -1,6 +1,6 @@
 # Guide de relecture — notions du cycle 3 (CM1, CM2, 6e)
 
-Ce guide aide à **valider** les 125 notions ajoutées par la PR #398. Il **ne remplace pas la relecture humaine** : c'est un double contrôle. Les champs `relue`, `relue-version` et `relue-grille` des fiches ne doivent être renseignés qu'après une relecture réelle (grille v1 : [validation-maquettes.md](validation-maquettes.md)).
+Ce guide aide à **valider** les 152 notions ajoutées par la PR #398. Il **ne remplace pas la relecture humaine** : c'est un double contrôle. Les champs `relue`, `relue-version` et `relue-grille` des fiches ne doivent être renseignés qu'après une relecture réelle (grille v1 : [validation-maquettes.md](validation-maquettes.md)).
 
 ## 1. Double contrôle automatisé déjà réalisé
 
@@ -46,7 +46,7 @@ Ce guide aide à **valider** les 125 notions ajoutées par la PR #398. Il **ne r
 
 Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (entraînement + défi).
 
-### francais (22)
+### francais (26)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
@@ -54,6 +54,7 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `conjugaison-cm` | La conjugaison : temps simples et composés | CM1 / CM2 | 5 | ☐ |
 | `contes-fables-mythes-6e` | Contes, fables et récits mythologiques | 6e | 5 | ☐ |
 | `discours-rapporte-cm` | Le discours rapporté et le théâtre | CM2 | 5 | ☐ |
+| `ecrire-pour-raconter-et-decrire-6e` | Écrire pour raconter, décrire et exprimer en 6e | 6e | 5 | ☐ |
 | `ecrire-un-recit-cm` | Écrire un récit | CM1 / CM2 | 5 | ☐ |
 | `fonctions-dans-la-phrase-cm` | Les fonctions dans la phrase | CM1 / CM2 | 5 | ☐ |
 | `formation-des-mots-cm` | La formation des mots | CM1 / CM2 | 5 | ☐ |
@@ -63,17 +64,20 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `nature-des-mots-cm` | La nature des mots | CM1 / CM2 | 5 | ☐ |
 | `orthographe-grammaticale-6e` | Accords et orthographe grammaticale en 6e | 6e | 5 | ☐ |
 | `orthographe-lexicale-cm` | L'orthographe des mots | CM1 / CM2 | 5 | ☐ |
+| `poesie-6e` | Le monde poétique en 6e | 6e | 5 | ☐ |
 | `poesie-cm` | La poésie : vers, strophes et rimes | CM1 / CM2 | 5 | ☐ |
 | `ponctuation-et-dialogue-cm` | La ponctuation et le dialogue | CM1 / CM2 | 5 | ☐ |
 | `pronoms-et-reprises-cm` | Pronoms, reprises et cohérence d'un texte | CM2 | 5 | ☐ |
+| `recit-d-aventures-6e` | Lire un récit d'aventures | 6e | 5 | ☐ |
 | `resumer-et-expliquer-cm` | Résumer, expliquer et écrire un texte documentaire | CM1 / CM2 | 5 | ☐ |
 | `sujet-verbe-complements-6e` | Sujet, verbe et compléments en 6e | 6e | 5 | ☐ |
 | `temps-du-recit-6e` | Les temps du récit : passé simple et imparfait | 6e | 5 | ☐ |
 | `types-de-textes-cm` | Les types de textes | CM1 / CM2 | 5 | ☐ |
 | `types-et-formes-de-phrases-cm` | Types et formes de phrases | CM1 / CM2 | 5 | ☐ |
 | `vocabulaire-cm` | Le vocabulaire : sens des mots, synonymes, contraires | CM1 / CM2 | 5 | ☐ |
+| `vocabulaire-et-etymologie-6e` | Vocabulaire, étymologie et familles de mots en 6e | 6e | 5 | ☐ |
 
-### mathematiques (34)
+### mathematiques (36)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
@@ -93,6 +97,7 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `entiers-et-operations-6e` | Nombres entiers et opérations en 6e | 6e | 5 | ☐ |
 | `fractions-cm` | Les fractions au CM | CM1 / CM2 | 5 | ☐ |
 | `fractions-operations-cm` | Fractions : décimales, sommes et comparaisons | CM2 | 5 | ☐ |
+| `grandeurs-et-mesures-6e` | Grandeurs et mesures en 6e : longueurs, durées, masses | 6e | 5 | ☐ |
 | `grands-nombres-cm` | Les grands nombres (jusqu'au milliard) | CM1 / CM2 | 5 | ☐ |
 | `longueurs-masses-contenances-cm` | Longueurs, masses et contenances | CM1 / CM2 | 5 | ☐ |
 | `moyenne-et-proportions-cm` | Moyenne, pourcentages et comparaison de données | CM2 | 5 | ☐ |
@@ -110,14 +115,16 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `symetrie-axiale-6e` | Symétrie axiale en 6e | 6e | 5 | ☐ |
 | `symetrie-axiale-cm` | La symétrie axiale | CM1 / CM2 | 5 | ☐ |
 | `tableaux-graphiques-cm` | Tableaux et graphiques | CM1 / CM2 | 5 | ☐ |
+| `triangles-et-quadrilateres-6e` | Triangles et quadrilatères en 6e | 6e | 5 | ☐ |
 | `volumes-contenances-cm` | Volumes et contenances | CM2 | 5 | ☐ |
 
-### histoire (16)
+### histoire (19)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
 | `age-industriel-cm` | L'âge industriel en France | CM2 | 5 | ☐ |
 | `clovis-charlemagne-cm` | Clovis et Charlemagne | CM1 | 5 | ☐ |
+| `empire-romain-christianisme-6e` | L'Empire romain et la naissance du christianisme | 6e | 5 | ☐ |
 | `france-europe-depuis-1945-cm` | La France depuis 1945 et la construction européenne | CM2 | 5 | ☐ |
 | `francois-ier-cm` | François Ier et la Renaissance | CM1 | 5 | ☐ |
 | `gaulois-gallo-romains-cm` | Les Gaulois et les Gallo-Romains | CM1 | 5 | ☐ |
@@ -126,14 +133,16 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `henri-iv-cm` | Henri IV et l'édit de Nantes | CM1 | 5 | ☐ |
 | `louis-ix-cm` | Louis IX (Saint Louis) et le Moyen Âge chrétien | CM1 | 5 | ☐ |
 | `louis-xiv-cm` | Louis XIV, le Roi-Soleil | CM1 | 5 | ☐ |
+| `monotheisme-juif-6e` | Le monothéisme juif dans un monde polythéiste | 6e | 5 | ☐ |
 | `peuplement-neolithique-6e` | Les débuts de l'humanité et le Néolithique | 6e | 5 | ☐ |
 | `prehistoire-cm` | De la Préhistoire à l'Antiquité : les premières traces | CM1 | 5 | ☐ |
 | `premieres-civilisations-6e` | Mésopotamie et Égypte : les premiers États | 6e | 5 | ☐ |
 | `republique-ecole-cm` | La République, l'école et les libertés | CM2 | 5 | ☐ |
 | `revolution-empire-cm` | La Révolution française et l'Empire | CM2 | 5 | ☐ |
 | `rome-republique-empire-6e` | Rome : de la République à l'Empire | 6e | 5 | ☐ |
+| `voyages-d-ulysse-6e` | Récits fondateurs : les voyages d'Ulysse et la Méditerranée | 6e | 5 | ☐ |
 
-### physique-chimie (9)
+### physique-chimie (12)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
@@ -144,10 +153,13 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `etats-et-changements-cm` | Les états de la matière et leurs changements | CM1 / CM2 | 5 | ☐ |
 | `etats-matiere-et-melanges-6e` | États de la matière, mélanges et masse en 6e | 6e | 5 | ☐ |
 | `lumiere-et-ombres-cm` | Lumière, ombres et son | CM1 / CM2 | 5 | ☐ |
+| `lumiere-et-son-6e` | Signaux lumineux et sonores en 6e | 6e | 5 | ☐ |
+| `masse-et-volume-6e` | Masse, volume et mélanges en 6e | 6e | 5 | ☐ |
 | `melanges-et-solutions-cm` | Mélanges, dissolution et séparation | CM1 / CM2 | 5 | ☐ |
+| `mouvement-et-vitesse-6e` | Mouvement, vitesse et référentiel en 6e | 6e | 5 | ☐ |
 | `mouvement-et-vitesse-cm` | Mouvement et vitesse | CM2 | 5 | ☐ |
 
-### svt (12)
+### svt (14)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
@@ -157,36 +169,44 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `classification-du-vivant-cm` | Classer les êtres vivants | CM1 / CM2 | 5 | ☐ |
 | `developpement-vegetaux-cm` | Le développement des végétaux | CM1 / CM2 | 5 | ☐ |
 | `evolution-et-fossiles-cm` | Fossiles et évolution des espèces | CM2 | 5 | ☐ |
+| `nutrition-et-alimentation-6e` | Nutrition et alimentation en 6e | 6e | 5 | ☐ |
 | `organisme-et-effort-6e` | Fonctionnement de l'organisme à l'effort | 6e | 5 | ☐ |
+| `reproduction-et-cycles-de-vie-6e` | Reproduction et cycles de vie en 6e | 6e | 5 | ☐ |
 | `reproduction-et-puberte-cm` | Naissance, croissance et puberté | CM2 | 5 | ☐ |
 | `respiration-circulation-cm` | Respiration, cœur et circulation du sang | CM2 | 5 | ☐ |
 | `terre-dans-le-systeme-solaire-6e` | La Terre dans le système solaire en 6e | 6e | 5 | ☐ |
 | `terre-et-systeme-solaire-cm` | La Terre, la Lune et le système solaire | CM1 / CM2 | 5 | ☐ |
 | `volcans-et-seismes-cm` | Volcans, séismes et risques naturels | CM2 | 5 | ☐ |
 
-### anglais (4)
+### anglais (6)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
 | `anglais-gouts-et-actions-cm` | Anglais : goûts, nourriture et actions du quotidien | CM2 | 5 | ☐ |
 | `anglais-lieux-et-pays-cm` | Anglais : lieux, pays et directions | CM2 | 5 | ☐ |
+| `anglais-routine-et-habiletes-6e` | Anglais 6e : routine quotidienne, goûts et capacités | 6e | 5 | ☐ |
+| `anglais-se-presenter-6e` | Anglais 6e : se présenter, famille et école | 6e | 5 | ☐ |
 | `anglais-se-presenter-cm` | Anglais : se présenter et saluer | CM1 / CM2 | 5 | ☐ |
 | `anglais-vocabulaire-quotidien-cm` | Anglais : couleurs, nombres, famille et objets | CM1 / CM2 | 5 | ☐ |
 
-### arts-plastiques (2)
+### arts-plastiques (3)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
 | `arts-couleurs-cm` | Arts plastiques : couleurs et matières | CM1 / CM2 | 5 | ☐ |
 | `arts-formes-et-composition-cm` | Arts plastiques : lignes, formes, perspective et artistes | CM2 | 5 | ☐ |
+| `arts-representation-et-espace-6e` | Arts plastiques 6e : représenter l'espace, la matière et la couleur | 6e | 5 | ☐ |
 
-### emc (9)
+### emc (12)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
 | `citoyen-et-engagement-cm` | Être citoyen : voter, s'engager, participer | CM1 / CM2 | 5 | ☐ |
 | `devise-republique-cm` | La devise et les symboles de la République | CM1 / CM2 | 5 | ☐ |
+| `droit-et-regle-6e` | Le droit et la règle : lois, règlement, justice | 6e | 5 | ☐ |
 | `droits-de-l-enfant-cm` | Les droits de l'enfant | CM1 / CM2 | 5 | ☐ |
+| `engagement-et-solidarite-6e` | S'engager : solidarité, délégués et vie du collège | 6e | 5 | ☐ |
+| `esprit-critique-et-medias-6e` | Esprit critique : s'informer et vérifier | 6e | 5 | ☐ |
 | `laicite-et-liberte-cm` | La laïcité et la liberté d'expression | CM2 | 5 | ☐ |
 | `numerique-responsable-cm` | Un usage responsable d'Internet et des écrans | CM1 / CM2 | 5 | ☐ |
 | `regles-et-justice-cm` | Règles, lois et justice | CM1 / CM2 | 5 | ☐ |
@@ -194,7 +214,7 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `respect-et-egalite-cm` | Respect, égalité et lutte contre le harcèlement | CM1 / CM2 | 5 | ☐ |
 | `securite-et-prevention-cm` | Sécurité, prévention et premiers secours | CM1 / CM2 | 5 | ☐ |
 
-### geographie (10)
+### geographie (13)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
@@ -202,6 +222,9 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `france-europe-monde-cm` | La France, l'Europe et le monde | CM2 | 5 | ☐ |
 | `habiter-6e` | Habiter une métropole, un littoral, un désert | 6e | 5 | ☐ |
 | `habiter-la-terre-6e` | Habiter la Terre : répartition et inégalités | 6e | 5 | ☐ |
+| `habiter-le-littoral-6e` | Habiter le littoral | 6e | 5 | ☐ |
+| `habiter-un-espace-de-faible-densite-6e` | Habiter un espace de faible densité | 6e | 5 | ☐ |
+| `habiter-une-metropole-6e` | Habiter une métropole | 6e | 5 | ☐ |
 | `habiter-ville-campagne-cm` | Habiter en ville ou à la campagne | CM1 | 5 | ☐ |
 | `lire-une-carte-cm` | Lire une carte et se repérer | CM1 / CM2 | 5 | ☐ |
 | `mieux-habiter-cm` | Mieux habiter : ville durable et risques | CM2 | 5 | ☐ |
@@ -209,25 +232,29 @@ Cocher la dernière colonne après relecture. « Ex. » = nombre d'exercices (en
 | `paysages-et-ressources-cm` | Paysages de France et ressources | CM1 | 5 | ☐ |
 | `se-deplacer-transports-cm` | Se déplacer et transporter | CM2 | 5 | ☐ |
 
-### eps (2)
+### eps (3)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
+| `eps-endurance-et-sports-collectifs-6e` | EPS 6e : endurance, santé et sports collectifs | 6e | 5 | ☐ |
 | `eps-jeux-collectifs-et-athletisme-cm` | EPS : jeux collectifs, athlétisme et natation | CM1 / CM2 | 5 | ☐ |
 | `eps-sante-et-echauffement-cm` | EPS : échauffement, santé et effort | CM1 / CM2 | 5 | ☐ |
 
-### technologie (3)
+### technologie (5)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
+| `materiaux-et-environnement-6e` | Matériaux, impact environnemental et recyclage en 6e | 6e | 5 | ☐ |
 | `materiaux-et-recyclage-cm` | Matériaux, déchets et recyclage | CM1 / CM2 | 5 | ☐ |
 | `objets-techniques-6e` | Objets techniques, matériaux et programmation en 6e | 6e | 5 | ☐ |
 | `objets-techniques-cm` | Les objets techniques : besoin, fonction, matériaux | CM1 / CM2 | 5 | ☐ |
+| `programmation-et-robots-6e` | Programmer un objet : capteurs, algorithmes et robots | 6e | 5 | ☐ |
 
-### musique (2)
+### musique (3)
 
 | Notion | Titre | Classes | Ex. | Relue |
 |---|---|---|---|---|
+| `musique-lire-et-chanter-6e` | Musique 6e : rythme, mélodie et écoute | 6e | 5 | ☐ |
 | `musique-notes-et-rythme-cm` | Musique : notes, rythme et instruments | CM1 / CM2 | 5 | ☐ |
 | `musique-voix-et-ecoute-cm` | Musique : voix, chant et culture musicale | CM2 | 5 | ☐ |
 

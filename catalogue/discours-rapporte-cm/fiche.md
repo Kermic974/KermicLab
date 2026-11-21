@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - ponctuation-et-dialogue-cm
 competences:
   - discours-rapporte-cm-comprendre
   - discours-rapporte-cm-appliquer

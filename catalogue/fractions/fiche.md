@@ -5,15 +5,7 @@ sujet: mathematiques/fractions
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-3, cycle-4, seconde
 classes: 6e, 5e, 4e
-prerequis:
-competences:
-  - comprendre-une-fraction
-  - simplifier-une-fraction
-  - comparer-des-fractions
-  - additionner-des-fractions
-  - multiplier-des-fractions
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -34,6 +26,9 @@ questions:
   - comment additionner des fractions
   - je ne comprends pas le numérateur et le dénominateur
   - what is a fraction?
+prerequis:
+niveaux: cycle-3, cycle-4, seconde
+competences: comprendre-une-fraction, simplifier-une-fraction, comparer-des-fractions, additionner-des-fractions, multiplier-des-fractions
 ---
 
 # Les fractions

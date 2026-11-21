@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - lecture-comprehension-cm
 competences:
   - types-de-textes-cm-comprendre
   - types-de-textes-cm-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - polygones-cm
 competences:
   - solides-cm-comprendre
   - solides-cm-appliquer

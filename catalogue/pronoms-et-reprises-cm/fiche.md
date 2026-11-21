@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - nature-des-mots-cm
 competences:
   - pronoms-et-reprises-cm-comprendre
   - pronoms-et-reprises-cm-appliquer

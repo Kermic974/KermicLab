@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - revolution-empire-cm
 competences:
   - age-industriel-cm-comprendre
   - age-industriel-cm-appliquer

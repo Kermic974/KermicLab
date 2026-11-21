@@ -8,6 +8,9 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - multiplication-posee-cm
+  - division-euclidienne-cm
+  - calcul-mental-cm
 competences:
   - entiers-et-operations-6e-comprendre
   - entiers-et-operations-6e-appliquer

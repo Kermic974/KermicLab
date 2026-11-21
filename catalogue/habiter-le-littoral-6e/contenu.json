@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le littoral est une interface entre terre et mer : très attractif, mais fragile.",
+  "niveaux": [
+    {
+      "titre": "Un espace attractif",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le **littoral** est la zone de contact entre la terre et la mer. Il attire par ses **activités** : tourisme, pêche, ports et commerce maritime, énergies marines. Les littoraux sont très peuplés : en France, une grande part de la population vit près de la côte.",
+        "Un **port** relie la mer à l'intérieur des terres : Marseille, Le Havre, Rotterdam."
+      ],
+      "exemple": {
+        "titre": "Exemple : un port",
+        "etapes": [
+          "Les navires chargent et déchargent.",
+          "Les entrepôts stockent.",
+          "Les camions et trains repartent."
+        ]
+      },
+      "aRetenir": "Littoral : tourisme, pêche, commerce."
+    },
+    {
+      "titre": "Fragile et menacé",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le littoral est exposé à l'**érosion**, aux **tempêtes** et à la **montée du niveau de la mer** liée au réchauffement climatique. Le tourisme et l'urbanisation créent des pressions (pollution, destruction de milieux).",
+        "On le **protège** : digues, dunes restaurées, réserves naturelles, limitation de la construction près du rivage, gestion du tourisme."
+      ],
+      "exemple": {
+        "titre": "Exemple : protéger une dune",
+        "etapes": [
+          "On plante des oyats.",
+          "On limite la circulation.",
+          "La dune retient le sable."
+        ]
+      },
+      "aRetenir": "Aménager sans détruire."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une activité du littoral est…",
+        "choix": [
+          "le tourisme balnéaire",
+          "l'exploitation du désert",
+          "la montagne",
+          "la cueillette en forêt seulement"
+        ],
+        "bonne": 0,
+        "explication": "Au bord de la mer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qu'est-ce que l'érosion littorale ?",
+        "choix": [
+          "L'avancée de la forêt",
+          "Une marée haute",
+          "Un récif",
+          "Le recul de la côte rongée par la mer"
+        ],
+        "bonne": 3,
+        "explication": "La mer use la côte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que fait un port ?",
+        "choix": [
+          "Cultiver des céréales",
+          "Produire de l'électricité seulement",
+          "Garder le désert",
+          "Relier la mer à l'intérieur des terres"
+        ],
+        "bonne": 3,
+        "explication": "Chargement et déchargement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La plage menacée",
+    "histoire": [
+      "Une plage recule chaque année."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que peut-on faire pour protéger la dune ?",
+        "choix": [
+          "La raser",
+          "Y construire un hôtel",
+          "Y rouler en voiture",
+          "La végétaliser et limiter le piétinement"
+        ],
+        "bonne": 3,
+        "explication": "Fixer le sable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle cause aggrave le problème ?",
+        "choix": [
+          "Le vent faible",
+          "Une pleine lune",
+          "La montée du niveau de la mer",
+          "Le beau temps"
+        ],
+        "bonne": 2,
+        "explication": "Conséquence du réchauffement."
+      }
+    ],
+    "conclusion": "Tu as aidé le littoral !"
+  }
+}

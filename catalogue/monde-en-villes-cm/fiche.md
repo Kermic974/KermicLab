@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - france-europe-monde-cm
 competences:
   - monde-en-villes-cm-comprendre
   - monde-en-villes-cm-appliquer

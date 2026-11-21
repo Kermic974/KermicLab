@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - anglais-se-presenter-cm
 competences:
   - anglais-vocabulaire-quotidien-cm-comprendre
   - anglais-vocabulaire-quotidien-cm-appliquer

@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - monde-en-villes-cm
 competences:
   - habiter-la-terre-6e-comprendre
   - habiter-la-terre-6e-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - paysages-et-ressources-cm
   - lire-une-carte-cm
 competences:
   - france-europe-monde-cm-comprendre

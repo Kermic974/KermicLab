@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - addition-soustraction-posees-cm
 competences:
   - multiplication-posee-cm-comprendre
   - multiplication-posee-cm-appliquer

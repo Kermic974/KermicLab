@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - lire-une-carte-cm
 competences:
   - communiquer-numerique-cm-comprendre
   - communiquer-numerique-cm-appliquer

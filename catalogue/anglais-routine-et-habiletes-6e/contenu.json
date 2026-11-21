@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On parle de ses habitudes avec le présent simple et de ses capacités avec « can ».",
+  "niveaux": [
+    {
+      "titre": "Le présent simple",
+      "niveau": "6e",
+      "paragraphes": [
+        "On utilise le **présent simple** pour les habitudes : « I get up at seven. She goes to school by bus. » À la 3e personne du singulier : verbe + **s** (goes, plays, watches). Négation : **don't / doesn't** + verbe. Question : **Do you…? / Does she…?**",
+        "Adverbes de fréquence : **always, usually, often, sometimes, never** avant le verbe : « I always eat breakfast. »"
+      ],
+      "exemple": {
+        "titre": "Exemple : une journée",
+        "etapes": [
+          "I get up at 7 and have breakfast.",
+          "He doesn't go to school on Saturday.",
+          "Do you play football?"
+        ]
+      },
+      "aRetenir": "3e personne : s. Négation : doesn't."
+    },
+    {
+      "titre": "Can et goûts",
+      "niveau": "6e",
+      "paragraphes": [
+        "**Can** exprime la capacité : « I can swim. She can't dance. Can you play the guitar? » Après can, le verbe reste à l'infinitif sans s. Pour les goûts : **I love / like / don't like / hate** + nom ou verbe en -ing : « I like playing football. »"
+      ],
+      "exemple": {
+        "titre": "Exemple : parler de ses capacités",
+        "etapes": [
+          "« I can swim but I can't ski. »",
+          "« Can you ride a bike? »",
+          "« Yes, I can. »"
+        ]
+      },
+      "aRetenir": "Can + verbe sans s."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « He ___ football on Sunday. »",
+        "choix": [
+          "play",
+          "playing",
+          "to play",
+          "plays"
+        ],
+        "bonne": 3,
+        "explication": "3e personne : -s."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dit-on « Je ne sais pas nager » ?",
+        "choix": [
+          "I not can swimming.",
+          "I can't swim.",
+          "I don't can swim.",
+          "I no swim."
+        ],
+        "bonne": 1,
+        "explication": "Can't."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel adverbe signifie « jamais » ?",
+        "choix": [
+          "always",
+          "often",
+          "sometimes",
+          "never"
+        ],
+        "bonne": 3,
+        "explication": "Never."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Mon emploi du temps",
+    "histoire": [
+      "Tu décris ta routine à ton correspondant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« She doesn't ___ TV in the morning. »",
+        "choix": [
+          "watch",
+          "watches",
+          "watching",
+          "to watch"
+        ],
+        "bonne": 0,
+        "explication": "Après doesn't, verbe de base."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment demandes-tu « Sais-tu jouer du piano ? »",
+        "choix": [
+          "Play you the piano?",
+          "Can you play the piano?",
+          "Do you can play the piano?",
+          "You can play piano?"
+        ],
+        "bonne": 1,
+        "explication": "Can + sujet + verbe."
+      }
+    ],
+    "conclusion": "Great job!"
+  }
+}

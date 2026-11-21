@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans les espaces peu peuplés (montagnes, déserts, campagnes), les habitants s'adaptent à des contraintes fortes.",
+  "niveaux": [
+    {
+      "titre": "Peu d'habitants, beaucoup d'espace",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un espace de **faible densité** compte peu d'habitants au km² : montagne, désert, forêt, grandes campagnes. Les villes y sont rares, les services éloignés, les transports longs.",
+        "Les habitants s'adaptent : élevage en montagne, oasis dans le désert, agriculture de plein champ, tourisme (randonnée, ski, ecotourisme)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une oasis",
+        "etapes": [
+          "Une source d'eau permet de cultiver.",
+          "Un village s'organise autour.",
+          "Les dattiers donnent des fruits."
+        ]
+      },
+      "aRetenir": "Faible densité : peu d'habitants au km²."
+    },
+    {
+      "titre": "Atouts et contraintes",
+      "niveau": "6e",
+      "paragraphes": [
+        "Atouts : cadre naturel, calme, activités agricoles et touristiques. Contraintes : isolement, climat rude, accès difficile aux soins et aux écoles, déclin de la population. Des politiques d'**aménagement** (routes, haut débit, services mobiles) cherchent à maintenir la vie locale.",
+        "L'exode vers les villes a vidé certaines campagnes ; le télétravail peut réamorcer des installations."
+      ],
+      "exemple": {
+        "titre": "Exemple : une solution",
+        "etapes": [
+          "Une classe à plusieurs niveaux.",
+          "Un médecin itinérant.",
+          "Internet par fibre ou satellite."
+        ]
+      },
+      "aRetenir": "Aménager pour garder la vie sur place."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un espace de faible densité a…",
+        "choix": [
+          "peu d'habitants au km²",
+          "beaucoup d'immeubles",
+          "un métro",
+          "des gratte-ciel"
+        ],
+        "bonne": 0,
+        "explication": "Faible densité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle activité est courante en montagne ?",
+        "choix": [
+          "L'élevage et le tourisme",
+          "Le commerce maritime",
+          "L'industrie lourde",
+          "La pêche hauturière"
+        ],
+        "bonne": 0,
+        "explication": "Pâturages, randonnée, ski."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle difficulté touche ces espaces ?",
+        "choix": [
+          "L'éloignement des services",
+          "Un excès de transports",
+          "Un manque de silence",
+          "Un trop-plein d'habitants"
+        ],
+        "bonne": 0,
+        "explication": "Isolement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'école du village",
+    "histoire": [
+      "Une petite école de montagne risque de fermer."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle solution l'aide à rester ouverte ?",
+        "choix": [
+          "Accueillir de nouvelles familles et classes",
+          "Supprimer la route",
+          "Fermer la poste",
+          "Retirer Internet"
+        ],
+        "bonne": 0,
+        "explication": "Maintenir la population."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi une famille hésite à s'y installer ?",
+        "choix": [
+          "Il y a trop de monde",
+          "Les services sont loin",
+          "Il y a trop de bruit",
+          "Il y a trop de commerces"
+        ],
+        "bonne": 1,
+        "explication": "Isolement."
+      }
+    ],
+    "conclusion": "Tu as aidé le village !"
+  }
+}

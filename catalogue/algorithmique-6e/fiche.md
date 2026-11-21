@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - algorithmes-programmation-cm
 competences:
   - algorithmique-6e-comprendre
   - algorithmique-6e-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - habiter-ville-campagne-cm
 competences:
   - mieux-habiter-cm-comprendre
   - mieux-habiter-cm-appliquer

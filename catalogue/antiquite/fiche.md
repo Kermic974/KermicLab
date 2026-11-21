@@ -20,9 +20,9 @@ questions:
   - C'est quoi la démocratie athénienne ?
   - Comment Auguste dirige-t-il Rome ?
   - Pourquoi 476 est-il un repère de l'Antiquité ?
+classes: 6e
 prerequis:
 niveaux: cycle-3, seconde
-classes: 6e
 competences: his-antiquite-action-1, his-antiquite-action-2
 ---
 

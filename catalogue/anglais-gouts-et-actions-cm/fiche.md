@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - anglais-vocabulaire-quotidien-cm
 competences:
   - anglais-gouts-et-actions-cm-comprendre
   - anglais-gouts-et-actions-cm-appliquer

@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - etats-et-changements-cm
+  - melanges-et-solutions-cm
 competences:
   - etats-matiere-et-melanges-6e-comprendre
   - etats-matiere-et-melanges-6e-appliquer

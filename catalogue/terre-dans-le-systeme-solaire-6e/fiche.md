@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - terre-et-systeme-solaire-cm
 competences:
   - terre-dans-le-systeme-solaire-6e-comprendre
   - terre-dans-le-systeme-solaire-6e-appliquer

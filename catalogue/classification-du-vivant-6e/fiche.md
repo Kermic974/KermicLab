@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - classification-du-vivant-cm
 competences:
   - classification-du-vivant-6e-comprendre
   - classification-du-vivant-6e-appliquer

@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - energie-et-sources-cm
+  - lumiere-et-ombres-cm
 competences:
   - energie-et-signaux-6e-comprendre
   - energie-et-signaux-6e-appliquer

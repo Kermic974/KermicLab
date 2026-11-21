@@ -8,6 +8,8 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - nature-des-mots-cm
+  - conjugaison-cm
 competences:
   - homophones-cm-comprendre
   - homophones-cm-appliquer

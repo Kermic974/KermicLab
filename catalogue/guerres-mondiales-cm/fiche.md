@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - republique-ecole-cm
 competences:
   - guerres-mondiales-cm-comprendre
   - guerres-mondiales-cm-appliquer

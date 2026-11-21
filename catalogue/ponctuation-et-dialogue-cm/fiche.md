@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - types-et-formes-de-phrases-cm
 competences:
   - ponctuation-et-dialogue-cm-comprendre
   - ponctuation-et-dialogue-cm-appliquer

@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - conjugaison-cm
+  - ecrire-un-recit-cm
 competences:
   - temps-du-recit-6e-comprendre
   - temps-du-recit-6e-appliquer

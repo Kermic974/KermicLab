@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - fonctions-dans-la-phrase-cm
 competences:
   - sujet-verbe-complements-6e-comprendre
   - sujet-verbe-complements-6e-appliquer

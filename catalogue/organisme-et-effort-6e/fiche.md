@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - respiration-circulation-cm
+  - alimentation-digestion-cm
 competences:
   - organisme-et-effort-6e-comprendre
   - organisme-et-effort-6e-appliquer

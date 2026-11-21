@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - henri-iv-cm
 competences:
   - louis-xiv-cm-comprendre
   - louis-xiv-cm-appliquer

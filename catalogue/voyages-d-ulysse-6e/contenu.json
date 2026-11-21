@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les récits fondateurs expliquent comment les anciens voyaient le monde, les dieux et les héros.",
+  "niveaux": [
+    {
+      "titre": "Les dieux et les récits",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les Grecs sont **polythéistes** : ils croient en plusieurs dieux (Zeus, Athéna, Poséidon, Apollon) qui ressemblent aux humains. Les **mythes** racontent les exploits des dieux et des héros. Ils étaient récités et transmis oralement avant d'être écrits.",
+        "L'**Odyssée**, attribuée à **Homère**, raconte le retour d'**Ulysse** de la guerre de Troie vers Ithaque, après dix ans d'aventures en Méditerranée."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'épisode du cyclope",
+        "etapes": [
+          "Ulysse est prisonnier de Polyphème.",
+          "Il se dit « Personne » et l'aveugle.",
+          "Il s'échappe avec ses compagnons."
+        ]
+      },
+      "aRetenir": "Les mythes expliquent le monde et transmettent des valeurs."
+    },
+    {
+      "titre": "Sources et Méditerranée",
+      "niveau": "6e",
+      "paragraphes": [
+        "Pour l'historien, l'Odyssée est un **texte littéraire** et religieux, pas un récit exact : il révèle les croyances, la vie des Grecs et leur connaissance de la Méditerranée (îles, côtes, tempêtes). On la complète par l'archéologie (poteries, temples).",
+        "La Méditerranée relie les peuples : on y échange des marchandises, des idées, des dieux."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire un mythe en historien",
+        "etapes": [
+          "Qui l'a écrit ? Homère.",
+          "Pourquoi ? Transmettre une culture.",
+          "Que montre-t-il ? Le rôle des dieux."
+        ]
+      },
+      "aRetenir": "Un mythe n'est pas une preuve exacte, mais une source sur la culture."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Les Grecs anciens sont…",
+        "choix": [
+          "polythéistes",
+          "monothéistes",
+          "athées",
+          "chrétiens"
+        ],
+        "bonne": 0,
+        "explication": "Ils croient à plusieurs dieux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui est l'auteur traditionnel de l'Odyssée ?",
+        "choix": [
+          "Virgile",
+          "Homère",
+          "Platon",
+          "Périclès"
+        ],
+        "bonne": 1,
+        "explication": "Poète grec."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Vers où Ulysse veut-il rentrer ?",
+        "choix": [
+          "Athènes",
+          "Rome",
+          "Sparte",
+          "Ithaque"
+        ],
+        "bonne": 3,
+        "explication": "Son île."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le conteur du port",
+    "histoire": [
+      "Dans un port grec, un conteur raconte les aventures d'Ulysse."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi ce récit est-il utile à l'historien ?",
+        "choix": [
+          "Il donne la date exacte de la guerre",
+          "Il remplace l'archéologie",
+          "Il montre les croyances et la culture grecques",
+          "Il prouve que les cyclopes existent"
+        ],
+        "bonne": 2,
+        "explication": "C'est une source sur les croyances."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Sur quelle mer voyage Ulysse ?",
+        "choix": [
+          "La Méditerranée",
+          "La mer du Nord",
+          "L'océan Pacifique",
+          "La mer Baltique"
+        ],
+        "bonne": 0,
+        "explication": "Autour de la Méditerranée."
+      }
+    ],
+    "conclusion": "Tu connais ce récit !"
+  }
+}

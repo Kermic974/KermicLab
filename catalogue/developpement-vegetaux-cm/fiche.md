@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - classification-du-vivant-cm
 competences:
   - developpement-vegetaux-cm-comprendre
   - developpement-vegetaux-cm-appliquer

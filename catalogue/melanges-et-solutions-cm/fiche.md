@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - etats-et-changements-cm
 competences:
   - melanges-et-solutions-cm-comprendre
   - melanges-et-solutions-cm-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - objets-techniques-cm
 competences:
   - materiaux-et-recyclage-cm-comprendre
   - materiaux-et-recyclage-cm-appliquer

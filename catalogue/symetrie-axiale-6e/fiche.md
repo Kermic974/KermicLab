@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - symetrie-axiale-cm
 competences:
   - symetrie-axiale-6e-comprendre
   - symetrie-axiale-6e-appliquer

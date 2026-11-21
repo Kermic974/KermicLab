@@ -9,6 +9,7 @@ niveaux: cycle-3
 classes: CM2
 prerequis:
   - longueurs-masses-contenances-cm
+  - solides-cm
 competences:
   - volumes-contenances-cm-comprendre
   - volumes-contenances-cm-appliquer

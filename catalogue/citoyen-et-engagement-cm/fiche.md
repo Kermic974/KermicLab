@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - devise-republique-cm
 competences:
   - citoyen-et-engagement-cm-comprendre
   - citoyen-et-engagement-cm-appliquer

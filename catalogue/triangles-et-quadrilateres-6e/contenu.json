@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 6e, on justifie les propriétés des figures et on les construit avec précision.",
+  "niveaux": [
+    {
+      "titre": "Propriétés des triangles",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un triangle **isocèle** a deux côtés égaux et deux angles égaux à la base ; un triangle **équilatéral** a trois côtés égaux et trois angles de 60° ; un triangle **rectangle** a un angle droit. La somme des angles d'un triangle est **180°**.",
+        "Si un triangle a un angle de 50° et un autre de 60°, le troisième vaut 180 − 110 = 70°."
+      ],
+      "exemple": {
+        "titre": "Exemple : le troisième angle",
+        "etapes": [
+          "50° + 60° = 110°.",
+          "180° − 110° = 70°.",
+          "Le troisième angle mesure 70°."
+        ]
+      },
+      "aRetenir": "Somme des angles d'un triangle : 180°."
+    },
+    {
+      "titre": "Quadrilatères et codage",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le **rectangle** a quatre angles droits ; le **losange** a quatre côtés égaux ; le **carré** réunit les deux ; le **parallélogramme** a ses côtés opposés parallèles. Les diagonales du rectangle ont même longueur ; celles du losange sont perpendiculaires.",
+        "On **code** une figure : mêmes marques pour les côtés égaux, petit carré pour l'angle droit, flèches pour les parallèles."
+      ],
+      "exemple": {
+        "titre": "Exemple : construire un rectangle",
+        "etapes": [
+          "Trace un côté et une perpendiculaire.",
+          "Reporte la largeur au compas.",
+          "Complète avec deux parallèles."
+        ]
+      },
+      "aRetenir": "Carré = rectangle + losange."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Un triangle a des angles de 50° et 60°. Combien mesure le troisième ?",
+        "reponse": 70,
+        "unite": "°",
+        "indices": [
+          "La somme vaut 180°."
+        ],
+        "solution": "180 − 110 = 70.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien mesure chaque angle d'un triangle équilatéral ?",
+        "reponse": 60,
+        "unite": "°",
+        "indices": [
+          "Les trois angles sont égaux."
+        ],
+        "solution": "180 ÷ 3 = 60.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans un losange, les diagonales sont…",
+        "choix": [
+          "perpendiculaires",
+          "parallèles",
+          "de même longueur toujours",
+          "confondues"
+        ],
+        "bonne": 0,
+        "explication": "Propriété du losange."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le cerf-volant",
+    "histoire": [
+      "Tu construis un cerf-volant en forme de losange."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment sont les 4 côtés ?",
+        "choix": [
+          "égaux",
+          "tous différents",
+          "parallèles deux à deux seulement",
+          "perpendiculaires"
+        ],
+        "bonne": 0,
+        "explication": "Losange : quatre côtés égaux."
+      },
+      {
+        "type": "nombre",
+        "question": "Un angle du losange vaut 70°. Combien vaut l'angle opposé ?",
+        "reponse": 70,
+        "unite": "°",
+        "indices": [
+          "Les angles opposés d'un parallélogramme sont égaux."
+        ],
+        "solution": "Angles opposés égaux.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Cerf-volant réussi !"
+  }
+}

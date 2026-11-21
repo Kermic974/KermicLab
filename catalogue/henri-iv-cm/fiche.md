@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - francois-ier-cm
 competences:
   - henri-iv-cm-comprendre
   - henri-iv-cm-appliquer

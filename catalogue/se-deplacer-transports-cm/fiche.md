@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - habiter-ville-campagne-cm
 competences:
   - se-deplacer-transports-cm-comprendre
   - se-deplacer-transports-cm-appliquer

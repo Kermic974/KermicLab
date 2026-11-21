@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - objets-techniques-cm
 competences:
   - objets-techniques-6e-comprendre
   - objets-techniques-6e-appliquer

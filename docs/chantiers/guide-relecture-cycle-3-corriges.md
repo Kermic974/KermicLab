@@ -4,7 +4,7 @@ Compagnon de [guide-relecture-cycle-3.md](guide-relecture-cycle-3.md), **génér
 
 Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures et pourcentages repérés automatiquement dans l'explication (liste indicative, non exhaustive).
 
-## francais (22)
+## francais (26)
 
 ### Les accords : sujet-verbe, groupe nominal, participe passé — `accords-cm` (CM1 / CM2)
 
@@ -45,6 +45,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | Pour bien lire à voix haute, on… | **respecte la ponctuation** | Le rythme. |
 | D1 | Où note-t-on « (Il sort.) » ? | **Dans une didascalie** | Indication de jeu. |
 | D2 | Discours indirect : Léa dit : « Je pars ». | **Léa dit qu'elle part.** | Introduit par « que ». |
+
+### Écrire pour raconter, décrire et exprimer en 6e — `ecrire-pour-raconter-et-decrire-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quelle phrase décrit le mieux un personnage ? | **Un vieil homme maigre, aux yeux perçants, s'avançait lentement.** | Elle apporte des détails précis. |
+| E2 | Pour décrire le décor d'un récit au passé, on emploie… | **l'imparfait** | Imparfait pour le décor. |
+| E3 | Après un brouillon, que faut-il faire ? | **Relire et réécrire** | Améliorer le texte. |
+| D1 | Quel ordre de description choisis-tu pour un paysage ? | **De près à loin** | Un ordre clair guide le lecteur. |
+| D2 | Que faire pour éviter les répétitions ? | **Remplacer par des pronoms et des synonymes** | Reprises variées. |
 
 ### Écrire un récit — `ecrire-un-recit-cm` (CM1 / CM2)
 
@@ -136,6 +146,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Quel mot est bien écrit ? | **poisson** | Deux s pour [s] entre deux voyelles (poisson = animal). |
 | D2 | Quel mot est bien écrit ? | **lampe** | m devant p. |
 
+### Le monde poétique en 6e — `poesie-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de syllabes compte un alexandrin ? | **12** | L'alexandrin a 12 syllabes. |
+| E2 | « La mer est un miroir » est… | **une métaphore** | Sans « comme ». |
+| E3 | « Le vent murmure » est… | **une personnification** | Le vent fait comme un humain. |
+| D1 | Quelle phrase contient une allitération en [s] ? | **Les sept serpents sifflent sur les sables.** | Le son [s] est répété. |
+| D2 | Quelle phrase est une comparaison ? | **Il est rapide comme le vent.** | Le mot « comme ». |
+
 ### La poésie : vers, strophes et rimes — `poesie-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -165,6 +185,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | « Il le cherche » : « le » reprend… | **son livre** | COD pronominal. |
 | D1 | Quelle version évite les répétitions ? | **Tom a un chien. Il l'adore.** | Pronoms il et l'. |
 | D2 | Quel connecteur marque l'opposition ? | **mais** | Contraste. |
+
+### Lire un récit d'aventures — `recit-d-aventures-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans « Je m'éveillai sur une plage inconnue », le narrateur est… | **un personnage (1re personne)** | Le pronom « je ». |
+| E2 | L'élément perturbateur est… | **l'événement qui lance l'intrigue** | Il rompt l'équilibre initial. |
+| E3 | Qui a écrit *L'Île au trésor* ? | **Stevenson** | Robert Louis Stevenson. |
+| D1 | Quelle est la péripétie ? | **La tempête et le naufrage** | Un danger fait basculer l'histoire. |
+| D2 | Quel mot décrit l'objectif de Tom ? | **Survivre** | Il survit en attendant les secours. |
 
 ### Résumer, expliquer et écrire un texte documentaire — `resumer-et-expliquer-cm` (CM1 / CM2)
 
@@ -226,7 +256,17 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Remplace « dit » dans « Il dit bonjour » pour plus de précision : | **murmura** | « murmura » apporte une nuance. |
 | D2 | Quel mot appartient au champ lexical de la mer ? | **vague** | La vague est liée à la mer. |
 
-## mathematiques (34)
+### Vocabulaire, étymologie et familles de mots en 6e — `vocabulaire-et-etymologie-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Que signifie *aqua* (racine latine) ? | **eau** | Aquatique, aquarium. |
+| E2 | « Télé » dans « téléphone » signifie… | **loin** | Du grec *télé*. |
+| E3 | « Pizza » est un emprunt à… | **l'italien** | Mot venu d'Italie. |
+| D1 | « Chronomètre » mesure… | **le temps** | Chrono = temps. |
+| D2 | « Géographie » veut dire… | **écrire sur la Terre** | Géo + graphein. |
+
+## mathematiques (36)
 
 ### Additions et soustractions posées — `addition-soustraction-posees-cm` (CM1 / CM2)
 
@@ -395,6 +435,18 @@ Faits à recouper : `1 h`, `60 min`, `1 min`, `24 heures`, `30 min`, `15 min`, `
 | E3 | Écris 35/100 sous forme décimale. | **0,35** | 35 centièmes. |
 | D1 | Quelle fraction du gâteau a été mangée ? | **4/4 (le gâteau entier)** | 1/4 + 2/4 + 1/4 = 4/4. |
 | D2 | Écris 1/4 en décimal. | **0,25** | 1/4 = 25/100. |
+
+### Grandeurs et mesures en 6e : longueurs, durées, masses — `grandeurs-et-mesures-6e` (6e)
+
+Faits à recouper : `1 L`, `1 000 mL`, `1 kg`, `1 000 g`, `2,5 kg`, `2 500 g`, `2 h`, `45 min`, `1 h`, `30 min`, `4 h`, `15 min`, `1,2 km`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Convertis 3,7 m en cm. | **370 cm** | 3,7 × 100 = 370. |
+| E2 | Convertis 2 500 mL en L. | **2,5 L** | 2 500 ÷ 1 000 = 2,5. |
+| E3 | Périmètre d'un cercle de rayon 5 cm (π ≈ 3,14) ? | **31,4 cm** | 2 × 3,14 × 5 = 31,4. |
+| D1 | Convertis 1,2 km en mètres. | **1200 m** | 1,2 × 1 000 = 1 200. |
+| D2 | Tu pars à 14 h 15 et tu finis à 15 h 40. Durée en minutes ? | **85 min** | De 14 h 15 à 15 h 40 : 1 h 25 = 85 min. |
 
 ### Les grands nombres (jusqu'au milliard) — `grands-nombres-cm` (CM1 / CM2)
 
@@ -578,6 +630,18 @@ Faits à recouper : `12 h`, `18 °C`, `18 h`, `14 °C`, `4 °C`
 | D1 | Quel est l'effectif total ? | **25** | 10 + 7 + 5 + 3 = 25. |
 | D2 | Combien d'élèves n'ont pas choisi le foot ? | **15** | 25 − 10 = 15. |
 
+### Triangles et quadrilatères en 6e — `triangles-et-quadrilateres-6e` (6e)
+
+Faits à recouper : `60°`, `180°`, `50°`, `70°`, `110°`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un triangle a des angles de 50° et 60°. Combien mesure le troisième ? | **70 °** | 180 − 110 = 70. |
+| E2 | Combien mesure chaque angle d'un triangle équilatéral ? | **60 °** | 180 ÷ 3 = 60. |
+| E3 | Dans un losange, les diagonales sont… | **perpendiculaires** | Propriété du losange. |
+| D1 | Comment sont les 4 côtés ? | **égaux** | Losange : quatre côtés égaux. |
+| D2 | Un angle du losange vaut 70°. Combien vaut l'angle opposé ? | **70 °** | Angles opposés égaux. |
+
 ### Volumes et contenances — `volumes-contenances-cm` (CM2)
 
 Faits à recouper : `24 cm³`, `1 000 cm³`, `1 L`, `1 000 mL`, `1 mL`, `1 cm³`, `60 000 cm³`, `60 L`
@@ -590,7 +654,7 @@ Faits à recouper : `24 cm³`, `1 000 cm³`, `1 L`, `1 000 mL`, `1 mL`, `1 cm³`
 | D1 | Quel est son volume en cm³ ? | **60000 cm³** | 50 × 30 = 1 500 ; 1 500 × 40 = 60 000. |
 | D2 | Combien de litres d'eau contient-il quand il est plein ? | **60 L** | 60 000 cm³ = 60 dm³ = 60 L. |
 
-## histoire (16)
+## histoire (19)
 
 ### L'âge industriel en France — `age-industriel-cm` (CM2)
 
@@ -613,6 +677,16 @@ Faits à recouper : `1841`, `1881`, `1892`, `1884`, `1889`, `14 heures`
 | E3 | Quel est le rôle des missi dominici ? | **Contrôler les comtes** | Ce sont des inspecteurs envoyés par l'empereur. |
 | D1 | Que viens-tu d'apprendre à l'école ? | **À lire et à écrire en latin** | Charlemagne encourage les écoles et l'écriture. |
 | D2 | Qui a couronné Charlemagne empereur ? | **Le pape Léon III** | Le pape, à Rome, le 25 décembre 800. |
+
+### L'Empire romain et la naissance du christianisme — `empire-romain-christianisme-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | En quelle année Constantin accorde-t-il la liberté de culte aux chrétiens ? | **313** | Édit de Milan, 313. |
+| E2 | Qui fait du christianisme la religion officielle de l'Empire ? | **Théodose** | En 380. |
+| E3 | Qu'est-ce qui aide à diffuser le christianisme ? | **Les routes et l'unité de l'Empire** | Circulation facile. |
+| D1 | Qui dirige la communauté ? | **Un évêque** | L'évêque. |
+| D2 | En quelle année l'Empire romain d'Occident disparaît-il ? | **476** | 476 apr. J.-C. |
 
 ### La France depuis 1945 et la construction européenne — `france-europe-depuis-1945-cm` (CM2)
 
@@ -708,6 +782,16 @@ Faits à recouper : `1643`, `1661`, `1715`, `1682`, `1700`
 | D1 | Pourquoi les nobles vivent-ils à Versailles ? | **Le roi veut les surveiller près de lui** | Le roi contrôle la noblesse. |
 | D2 | Quel emblème Louis XIV a-t-il choisi ? | **Le soleil** | D'où « Roi-Soleil ». |
 
+### Le monothéisme juif dans un monde polythéiste — `monotheisme-juif-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Les Hébreux sont… | **monothéistes** | Un seul Dieu. |
+| E2 | Qui conduit le peuple hors d'Égypte selon la Bible ? | **Moïse** | Moïse. |
+| E3 | Quelle ville est sainte pour les juifs ? | **Jérusalem** | Jérusalem. |
+| D1 | Pourquoi copier ces textes ? | **Pour les transmettre** | Transmission. |
+| D2 | Comment étudier une religion en histoire ? | **Comme un fait culturel, avec respect** | Neutralité. |
+
 ### Les débuts de l'humanité et le Néolithique — `peuplement-neolithique-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -776,7 +860,17 @@ Faits à recouper : `753 av. J.-C.`, `509 av. J.-C.`
 | D1 | Quelle langue entends-tu dans les villes ? | **Le latin** | Latin. |
 | D2 | Pourquoi les routes sont-elles utiles ? | **Pour déplacer armée et marchandises** | Rapidité. |
 
-## physique-chimie (9)
+### Récits fondateurs : les voyages d'Ulysse et la Méditerranée — `voyages-d-ulysse-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Les Grecs anciens sont… | **polythéistes** | Ils croient à plusieurs dieux. |
+| E2 | Qui est l'auteur traditionnel de l'Odyssée ? | **Homère** | Poète grec. |
+| E3 | Vers où Ulysse veut-il rentrer ? | **Ithaque** | Son île. |
+| D1 | Pourquoi ce récit est-il utile à l'historien ? | **Il montre les croyances et la culture grecques** | C'est une source sur les croyances. |
+| D2 | Sur quelle mer voyage Ulysse ? | **La Méditerranée** | Autour de la Méditerranée. |
+
+## physique-chimie (12)
 
 ### L'air, un gaz qui occupe de la place — `air-et-matiere-cm` (CM1 / CM2)
 
@@ -856,6 +950,30 @@ Faits à recouper : `300 000 km`, `340 m/s`, `1 km`
 | D1 | Pour agrandir une ombre sur l'écran, on… | **rapproche l'objet de la lampe** | Plus l'objet est près de la source, plus l'ombre est grande. |
 | D2 | Quel élément produit un son ? | **Une corde qui vibre** | Un son vient d'une vibration. |
 
+### Signaux lumineux et sonores en 6e — `lumiere-et-son-6e` (6e)
+
+Faits à recouper : `300 000 km`, `340 m/s`, `1 km`, `2 km`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Le tonnerre arrive 6 s après l'éclair. Distance de l'orage (vitesse du son 340 m/s) ? | **2040 m** | 6 × 340 = 2 040. |
+| E2 | Un son se propage… | **dans l'air, l'eau et les solides** | Il lui faut un milieu. |
+| E3 | La Lune est… | **un corps qui diffuse la lumière du Soleil** | Elle n'émet pas sa lumière. |
+| D1 | Qu'est-ce qu'un écho ? | **Un son qui rebondit sur un obstacle** | Réflexion. |
+| D2 | L'écho arrive 2 s après ton cri. À quelle distance est la falaise (aller-retour = 680 m) ? | **340 m** | Le son fait un aller-retour de 680 m : 340 m aller. |
+
+### Masse, volume et mélanges en 6e — `masse-et-volume-6e` (6e)
+
+Faits à recouper : `1 mL`, `1 cm³`, `1 L`, `1 000 mL`, `45 mL`, `1 g`, `0,7 g`, `7,9 g`, `1 kg`, `0,92 g`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un volume de 2,5 L correspond à combien de mL ? | **2500 mL** | 2,5 × 1 000 = 2 500. |
+| E2 | On mesure un liquide avec… | **une éprouvette graduée** | Éprouvette. |
+| E3 | Un objet de 120 g occupe 40 cm³. Masse volumique en g/cm³ ? | **3 g/cm³** | 120 ÷ 40 = 3. |
+| D1 | Un objet de masse volumique 0,5 g/cm³ dans l'eau (1 g/cm³) : | **flotte** | Moins dense que l'eau. |
+| D2 | Un objet de masse volumique 3 g/cm³ dans l'eau : | **coule** | Plus dense que l'eau. |
+
 ### Mélanges, dissolution et séparation — `melanges-et-solutions-cm` (CM1 / CM2)
 
 Faits à recouper : `100 g`, `10 g`, `110 g`
@@ -867,6 +985,18 @@ Faits à recouper : `100 g`, `10 g`, `110 g`
 | E3 | Comment récupérer le sel d'une eau salée ? | **En faisant évaporer l'eau** | Le sel reste après évaporation. |
 | D1 | Le sucre dans l'eau forme… | **un mélange homogène** | On ne voit plus le sucre. |
 | D2 | Pour retirer des feuilles de l'eau, on utilise… | **un filtre** | La filtration. |
+
+### Mouvement, vitesse et référentiel en 6e — `mouvement-et-vitesse-6e` (6e)
+
+Faits à recouper : `300 km`, `2 h`, `150 km/h`, `10 m/s`, `36 km/h`, `60 km/h`, `3 h`, `180 km`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un train parcourt 300 km en 2 h. Vitesse moyenne ? | **150 km/h** | 300 ÷ 2 = 150. |
+| E2 | Convertis 10 m/s en km/h. | **36 km/h** | 10 × 3,6 = 36. |
+| E3 | On roule à 60 km/h pendant 3 h. Distance ? | **180 km** | 60 × 3 = 180. |
+| D1 | Quelle est sa vitesse moyenne en m/s ? | **5 m/s** | 100 ÷ 20 = 5. |
+| D2 | Et en km/h ? | **18 km/h** | 5 × 3,6 = 18. |
 
 ### Mouvement et vitesse — `mouvement-et-vitesse-cm` (CM2)
 
@@ -880,7 +1010,7 @@ Faits à recouper : `120 km`, `2 h`, `60 km/h`, `10 m/s`, `36 km/h`, `30 km`, `1
 | D1 | Quelle est ta vitesse moyenne ? | **6 km/h** | 6 ÷ 1 = 6 km/h. |
 | D2 | À cette vitesse, combien de km en 3 h ? | **18 km** | 6 × 3 = 18. |
 
-## svt (12)
+## svt (14)
 
 ### L'alimentation et la digestion — `alimentation-digestion-cm` (CM1 / CM2)
 
@@ -944,6 +1074,16 @@ Faits à recouper : `66 millions`
 | D1 | Que dois-tu faire ? | **Le dégager doucement et noter où tu l'as trouvé** | On note la position pour comprendre. |
 | D2 | Que peut-on déduire d'un os de très grande taille ? | **Que l'animal était très grand** | La taille de l'os renseigne sur l'animal. |
 
+### Nutrition et alimentation en 6e — `nutrition-et-alimentation-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel être vivant fabrique sa matière à partir de lumière, d'eau et de sels minéraux ? | **Un végétal** | Photosynthèse. |
+| E2 | Les protéines servent surtout à… | **construire et réparer le corps** | Rôle de construction. |
+| E3 | Un aliment d'origine animale est… | **le lait** | Produit par un animal. |
+| D1 | Quel menu est équilibré ? | **Poisson, riz, légumes verts, yaourt et fruit** | Variété des groupes. |
+| D2 | Quel groupe faut-il limiter ? | **Les produits très sucrés et salés** | Sucre et sel en excès. |
+
 ### Fonctionnement de l'organisme à l'effort — `organisme-et-effort-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -953,6 +1093,16 @@ Faits à recouper : `66 millions`
 | E3 | Pourquoi transpire-t-on à l'effort ? | **Pour évacuer la chaleur** | Refroidissement. |
 | D1 | Que remarques-tu pendant la course ? | **Je respire plus vite et mon cœur accélère** | Réponse de l'organisme. |
 | D2 | Que faire après la course ? | **Boire de l'eau et récupérer** | Récupération. |
+
+### Reproduction et cycles de vie en 6e — `reproduction-et-cycles-de-vie-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une bouture est un exemple de reproduction… | **asexuée** | Un fragment redonne une plante identique. |
+| E2 | La chrysalide devient… | **un papillon** | Métamorphose. |
+| E3 | Les graines d'un fruit permettent de… | **donner de nouvelles plantes** | Reproduction par graines. |
+| D1 | Comment multiplier le fraisier à l'identique ? | **Par ses stolons** | Reproduction asexuée. |
+| D2 | Quel élément permet la fécondation des fleurs ? | **Le pollen apporté par les insectes** | Pollinisation. |
 
 ### Naissance, croissance et puberté — `reproduction-et-puberte-cm` (CM2)
 
@@ -1008,7 +1158,7 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | Où te mets-tu ? | **Sous ma table, loin des vitres** | Protection contre les chutes. |
 | D2 | Après la secousse, que fais-tu ? | **J'évacue calmement avec la classe** | Calme et consignes. |
 
-## anglais (4)
+## anglais (6)
 
 ### Anglais : goûts, nourriture et actions du quotidien — `anglais-gouts-et-actions-cm` (CM2)
 
@@ -1030,6 +1180,26 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | On te répond : « Go straight on, then turn right. » Tu… | **avances puis tournes à droite** | Straight on = tout droit. |
 | D2 | « The station is near the park. » La gare est… | **près du parc** | Near = près de. |
 
+### Anglais 6e : routine quotidienne, goûts et capacités — `anglais-routine-et-habiletes-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Complète : « He ___ football on Sunday. » | **plays** | 3e personne : -s. |
+| E2 | Comment dit-on « Je ne sais pas nager » ? | **I can't swim.** | Can't. |
+| E3 | Quel adverbe signifie « jamais » ? | **never** | Never. |
+| D1 | « She doesn't ___ TV in the morning. » | **watch** | Après doesn't, verbe de base. |
+| D2 | Comment demandes-tu « Sais-tu jouer du piano ? » | **Can you play the piano?** | Can + sujet + verbe. |
+
+### Anglais 6e : se présenter, famille et école — `anglais-se-presenter-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Complète : « She ___ eleven. » | **is** | She is. |
+| E2 | Comment dit-on « J'ai deux frères » ? | **I've got two brothers.** | Have got. |
+| E3 | « This is Tom. ___ bag is blue. » (le sac de Tom) | **His** | Tom est un garçon : his. |
+| D1 | Comment dis-tu « Je suis français » ? | **I'm French.** | To be + nationalité. |
+| D2 | Comment dis-tu « Ma matière préférée est l'anglais » ? | **My favourite subject is English.** | Phrase complète. |
+
 ### Anglais : se présenter et saluer — `anglais-se-presenter-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1050,7 +1220,7 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | « A blue pen » désigne… | **un stylo bleu** | Blue pen. |
 | D2 | « My sister » = | **ma sœur** | Sister = sœur. |
 
-## arts-plastiques (2)
+## arts-plastiques (3)
 
 ### Arts plastiques : couleurs et matières — `arts-couleurs-cm` (CM1 / CM2)
 
@@ -1072,7 +1242,19 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | Que regardes-tu d'abord dans un tableau ? | **Le sujet, les couleurs et la composition** | Observation. |
 | D2 | Un tableau où les objets semblent s'enfoncer au loin utilise… | **la perspective** | Profondeur. |
 
-## emc (9)
+### Arts plastiques 6e : représenter l'espace, la matière et la couleur — `arts-representation-et-espace-6e` (6e)
+
+Faits à recouper : `1503`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Pour montrer la profondeur, un objet lointain est… | **plus petit et plus clair** | Effet de lointain. |
+| E2 | Le premier plan est… | **la partie la plus proche de l'observateur** | Au devant. |
+| E3 | Qui a peint « La Joconde » ? | **Léonard de Vinci** | Vers 1503. |
+| D1 | Que mets-tu au premier plan ? | **Un grand arbre foncé** | Éléments grands et contrastés. |
+| D2 | Comment colores-tu l'arrière-plan ? | **En teintes claires et bleutées** | Perspective atmosphérique. |
+
+## emc (12)
 
 ### Être citoyen : voter, s'engager, participer — `citoyen-et-engagement-cm` (CM1 / CM2)
 
@@ -1096,6 +1278,16 @@ Faits à recouper : `1789`, `1790`, `1792`
 | D1 | Quel événement célèbre-t-on ? | **Un anniversaire lié à la Révolution** | Le 14 juillet 1789 / 1790. |
 | D2 | Que signifie « fraternité » ? | **S'entraider** | Solidarité. |
 
+### Le droit et la règle : lois, règlement, justice — `droit-et-regle-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | La loi est votée par… | **le Parlement** | Assemblée nationale et Sénat. |
+| E2 | La présomption d'innocence signifie… | **on est innocent tant qu'on n'est pas jugé coupable** | Principe de justice. |
+| E3 | Une sanction doit être… | **proportionnée et expliquée** | Équité. |
+| D1 | Quelle sanction est la plus éducative ? | **Réparer ou remplacer et s'excuser** | Réparer. |
+| D2 | Que doit-on faire avant de décider ? | **Écouter l'élève** | Droit de s'exprimer. |
+
 ### Les droits de l'enfant — `droits-de-l-enfant-cm` (CM1 / CM2)
 
 Faits à recouper : `1989`, `1990`
@@ -1107,6 +1299,26 @@ Faits à recouper : `1989`, `1990`
 | E3 | Quel droit permet à tous d'apprendre ? | **Le droit à l'éducation** | Tous les enfants ont droit à l'école. |
 | D1 | Quel dessin illustre le droit à l'éducation ? | **Des enfants à l'école** | L'école. |
 | D2 | Quelle organisation défend les droits de l'enfant ? | **L'UNICEF** | L'UNICEF, agence de l'ONU. |
+
+### S'engager : solidarité, délégués et vie du collège — `engagement-et-solidarite-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Qui élit les délégués de classe ? | **Les élèves de la classe** | Élection par les camarades. |
+| E2 | La solidarité consiste à… | **aider ceux qui en ont besoin** | Entraide. |
+| E3 | Un bénévole… | **donne de son temps sans être payé** | Gratuit. |
+| D1 | Qui peut participer ? | **Tous les élèves volontaires** | Chacun peut s'engager. |
+| D2 | Que devient la collecte ? | **Elle est donnée à une association** | Solidarité. |
+
+### Esprit critique : s'informer et vérifier — `esprit-critique-et-medias-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quelle phrase est un fait ? | **La Seine traverse Paris.** | On peut le vérifier. |
+| E2 | Avant de partager une information, il faut… | **vérifier la source** | Réflexe de base. |
+| E3 | Une photo virale peut être… | **truquée ou sortie de son contexte** | À vérifier. |
+| D1 | Que fais-tu d'abord ? | **Je vérifie auprès de l'école ou d'un adulte** | Source officielle. |
+| D2 | Pourquoi le message est-il suspect ? | **Il n'a pas de source claire** | Pas de source = prudence. |
 
 ### La laïcité et la liberté d'expression — `laicite-et-liberte-cm` (CM2)
 
@@ -1174,7 +1386,7 @@ Faits à recouper : `3018`
 | D1 | Que fais-tu d'abord ? | **Je préviens un adulte immédiatement** | Alerter. |
 | D2 | Que dire au téléphone ? | **Où je suis et ce qui s'est passé** | Lieu et situation. |
 
-## geographie (10)
+## geographie (13)
 
 ### Communiquer d'un bout à l'autre du monde — `communiquer-numerique-cm` (CM2)
 
@@ -1217,6 +1429,38 @@ Faits à recouper : `8 milliards`
 | E3 | L'accès à l'eau potable est… | **un besoin vital** | Droit fondamental. |
 | D1 | Quelle conséquence si le puits est à 5 km ? | **Beaucoup de temps perdu pour aller chercher l'eau** | Corvée d'eau. |
 | D2 | Quelle solution aide ? | **Creuser un puits ou installer un réseau** | Accès à l'eau. |
+
+### Habiter le littoral — `habiter-le-littoral-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une activité du littoral est… | **le tourisme balnéaire** | Au bord de la mer. |
+| E2 | Qu'est-ce que l'érosion littorale ? | **Le recul de la côte rongée par la mer** | La mer use la côte. |
+| E3 | Que fait un port ? | **Relier la mer à l'intérieur des terres** | Chargement et déchargement. |
+| D1 | Que peut-on faire pour protéger la dune ? | **La végétaliser et limiter le piétinement** | Fixer le sable. |
+| D2 | Quelle cause aggrave le problème ? | **La montée du niveau de la mer** | Conséquence du réchauffement. |
+
+### Habiter un espace de faible densité — `habiter-un-espace-de-faible-densite-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un espace de faible densité a… | **peu d'habitants au km²** | Faible densité. |
+| E2 | Quelle activité est courante en montagne ? | **L'élevage et le tourisme** | Pâturages, randonnée, ski. |
+| E3 | Quelle difficulté touche ces espaces ? | **L'éloignement des services** | Isolement. |
+| D1 | Quelle solution l'aide à rester ouverte ? | **Accueillir de nouvelles familles et classes** | Maintenir la population. |
+| D2 | Pourquoi une famille hésite à s'y installer ? | **Les services sont loin** | Isolement. |
+
+### Habiter une métropole — `habiter-une-metropole-6e` (6e)
+
+Faits à recouper : `2 millions`, `12 millions`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une métropole se caractérise par… | **la concentration d'habitants, d'emplois et de pouvoirs** | Elle concentre les fonctions. |
+| E2 | Quel est un défi d'une métropole ? | **Les embouteillages et le logement cher** | Conséquences de la concentration. |
+| E3 | Un exemple de transport collectif est… | **le métro** | Collectif : plusieurs personnes. |
+| D1 | Où trouve-t-on les quartiers d'affaires ? | **Dans le centre** | Le centre concentre les affaires. |
+| D2 | Pour moins de pollution, on peut… | **développer les transports en commun** | Moins de voitures. |
 
 ### Habiter en ville ou à la campagne — `habiter-ville-campagne-cm` (CM1)
 
@@ -1284,7 +1528,17 @@ Faits à recouper : `1981`, `2 heures`, `3 km`
 | D1 | Comment aller à l'école à 1 km ? | **À pied ou à vélo** | Court trajet : mobilité douce. |
 | D2 | Quel avantage pour le bus scolaire ? | **Beaucoup d'élèves dans un seul véhicule** | Un seul véhicule pour beaucoup de passagers. |
 
-## eps (2)
+## eps (3)
+
+### EPS 6e : endurance, santé et sports collectifs — `eps-endurance-et-sports-collectifs-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Pendant l'effort, la fréquence cardiaque… | **augmente** | Le cœur accélère. |
+| E2 | En endurance, on cherche… | **une allure régulière** | Régularité. |
+| E3 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
+| D1 | Comment démarrer ? | **À allure modérée et régulière** | Gérer son effort. |
+| D2 | Après la course ? | **Boire et récupérer** | Récupération. |
 
 ### EPS : jeux collectifs, athlétisme et natation — `eps-jeux-collectifs-et-athletisme-cm` (CM1 / CM2)
 
@@ -1306,7 +1560,17 @@ Faits à recouper : `1981`, `2 heures`, `3 km`
 | D1 | Que fais-tu d'abord ? | **Je m'échauffe** | Échauffement. |
 | D2 | Tu as très soif pendant l'effort. Tu… | **bois de l'eau** | Hydratation. |
 
-## technologie (3)
+## technologie (5)
+
+### Matériaux, impact environnemental et recyclage en 6e — `materiaux-et-environnement-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel matériau est un bon conducteur d'électricité ? | **Le cuivre** | Métal. |
+| E2 | Réparer un objet permet de… | **prolonger sa durée de vie** | Moins de déchets. |
+| E3 | L'obsolescence programmée est… | **la conception d'un objet pour qu'il dure peu** | Interdite en France. |
+| D1 | Quelle gourde choisir ? | **Une gourde en inox réutilisable** | Durable. |
+| D2 | Que faire de la gourde cassée ? | **La réparer ou la recycler** | Fin de vie responsable. |
 
 ### Matériaux, déchets et recyclage — `materiaux-et-recyclage-cm` (CM1 / CM2)
 
@@ -1340,7 +1604,27 @@ Faits à recouper : `500 kg`
 | D1 | Quelle première question se poser ? | **Quel est le besoin ?** | On part toujours du besoin. |
 | D2 | Quel matériau est adapté (léger, rigide, facile à découper) ? | **Le carton épais** | Carton épais, plastique ou bois conviendraient. |
 
-## musique (2)
+### Programmer un objet : capteurs, algorithmes et robots — `programmation-et-robots-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans une chaîne d'information, l'actionneur… | **agit sur l'objet** | Moteur, lampe, haut-parleur. |
+| E2 | Un capteur de distance sert à… | **détecter un obstacle** | Il mesure une distance. |
+| E3 | « Si obstacle alors tourner » est… | **un test** | Condition. |
+| D1 | Quel capteur utilises-tu ? | **Un capteur de présence** | Détecter la voiture. |
+| D2 | Quelle instruction ajoutes-tu pour la sécurité ? | **Ne pas fermer tant qu'un obstacle est détecté** | Sécurité. |
+
+## musique (3)
+
+### Musique 6e : rythme, mélodie et écoute — `musique-lire-et-chanter-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une blanche vaut 2 temps. Combien de temps font une blanche et deux noires ? | **4 temps** | 2 + 1 + 1 = 4. |
+| E2 | L'harmonie est… | **des notes jouées en même temps** | Accords. |
+| E3 | Quel instrument est un vent ? | **La flûte** | On souffle. |
+| D1 | Que signifie « allegro » ? | **Rapide** | Allegro = joyeux et rapide. |
+| D2 | Comment s'appelle un chant à plusieurs voix qui se répondent en décalé ? | **Un canon** | Frère Jacques. |
 
 ### Musique : notes, rythme et instruments — `musique-notes-et-rythme-cm` (CM1 / CM2)
 

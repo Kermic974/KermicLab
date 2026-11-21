@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - respect-et-egalite-cm
 competences:
   - regles-vivre-ensemble-6e-comprendre
   - regles-vivre-ensemble-6e-appliquer

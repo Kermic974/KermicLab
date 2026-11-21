@@ -24,3 +24,7 @@ navigation ni classe dans le référentiel. Un élève de 9 à 11 ans ne trouvai
 - Aucune migration : les fiches existantes ne changent pas.
 - Le profil Professeur (6e à terminale) n'est pas modifié : il reste centré sur le collège et le lycée.
 - Les notions du primaire sont générées par le gabarit commun ; leur relecture humaine reste à faire (champs `relue*` vides).
+
+## Parcours et prérequis (ajout)
+
+Le cycle 3 est un parcours continu CM1 → CM2 → 6e : chaque notion déclare ses `prerequis`, les notions de 6e (nouvelles et déjà présentes) pointent vers leurs prolongements du primaire, et `verifierGraphePrerequis` refuse un prérequis qui commence dans une classe plus avancée (ordre CM1, CM2, 6e, 5e, 4e, 3e). Le fil détaillé est dans `docs/chantiers/catalogue-primaire.md`.

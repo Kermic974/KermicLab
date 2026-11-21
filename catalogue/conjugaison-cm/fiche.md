@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - nature-des-mots-cm
 competences:
   - conjugaison-cm-comprendre
   - conjugaison-cm-appliquer

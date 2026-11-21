@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - droites-cm
 competences:
   - symetrie-axiale-cm-comprendre
   - symetrie-axiale-cm-appliquer

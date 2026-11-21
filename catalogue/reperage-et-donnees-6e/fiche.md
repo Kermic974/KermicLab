@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - reperage-plan-cm
+  - tableaux-graphiques-cm
 competences:
   - reperage-et-donnees-6e-comprendre
   - reperage-et-donnees-6e-appliquer

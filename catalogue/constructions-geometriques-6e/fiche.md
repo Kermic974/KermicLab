@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - droites-cm
+  - cercle-compas-cm
 competences:
   - constructions-geometriques-6e-comprendre
   - constructions-geometriques-6e-appliquer

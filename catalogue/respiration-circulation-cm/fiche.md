@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - alimentation-digestion-cm
 competences:
   - respiration-circulation-cm-comprendre
   - respiration-circulation-cm-appliquer

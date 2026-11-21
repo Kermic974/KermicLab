@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - habiter-ville-campagne-cm
+  - lire-une-carte-cm
 competences:
   - habiter-6e-comprendre
   - habiter-6e-appliquer

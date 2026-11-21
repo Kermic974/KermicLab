@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - division-euclidienne-cm
 competences:
   - fractions-cm-comprendre
   - fractions-cm-appliquer

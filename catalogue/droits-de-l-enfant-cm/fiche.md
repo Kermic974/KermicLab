@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - respect-et-egalite-cm
 competences:
   - droits-de-l-enfant-cm-comprendre
   - droits-de-l-enfant-cm-appliquer

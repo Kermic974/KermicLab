@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - biodiversite-et-chaines-cm
 competences:
   - evolution-et-fossiles-cm-comprendre
   - evolution-et-fossiles-cm-appliquer

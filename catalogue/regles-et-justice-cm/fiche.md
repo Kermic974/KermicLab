@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - respect-et-egalite-cm
 competences:
   - regles-et-justice-cm-comprendre
   - regles-et-justice-cm-appliquer

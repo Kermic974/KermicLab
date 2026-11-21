@@ -9,6 +9,7 @@ niveaux: cycle-3
 classes: CM2
 prerequis:
   - nombres-decimaux-cm
+  - addition-soustraction-posees-cm
 competences:
   - calcul-avec-decimaux-cm-comprendre
   - calcul-avec-decimaux-cm-appliquer

@@ -36,3 +36,13 @@ test("graphe : le catalogue réel est valide (chargerCatalogue échoue sinon)", 
   const { index } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
   assert.deepEqual(verifierGraphePrerequis(index.maquettes), []);
 });
+
+test("graphe des prérequis : un prérequis ne commence pas dans une classe plus avancée (CM1, CM2, 6e)", () => {
+  const cm2 = { id: "fractions-cm", sujet: "mathematiques/fractions-cm", classes: ["CM2"] };
+  const sixieme = { id: "fractions", sujet: "mathematiques/fractions", classes: ["6e", "5e"], prerequis: ["fractions-cm"] };
+  assert.deepEqual(verifierGraphePrerequis([cm2, sixieme]), []);
+  const inverse = { ...cm2, prerequis: ["fractions"] };
+  const erreurs = verifierGraphePrerequis([inverse, { ...sixieme, prerequis: [] }]);
+  assert.equal(erreurs.length, 1);
+  assert.match(erreurs[0], /fractions-cm : prérequis « fractions » commence en 6e, après CM2/);
+});

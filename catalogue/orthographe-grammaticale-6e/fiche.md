@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - accords-cm
+  - homophones-cm
 competences:
   - orthographe-grammaticale-6e-comprendre
   - orthographe-grammaticale-6e-appliquer

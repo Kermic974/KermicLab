@@ -9,6 +9,7 @@ niveaux: cycle-3
 classes: 6e
 prerequis:
   - grece-et-citoyennete-6e
+  - gaulois-gallo-romains-cm
 competences:
   - rome-republique-empire-6e-comprendre
   - rome-republique-empire-6e-appliquer

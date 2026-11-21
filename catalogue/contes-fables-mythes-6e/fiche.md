@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - lecture-comprehension-cm
 competences:
   - contes-fables-mythes-6e-comprendre
   - contes-fables-mythes-6e-appliquer

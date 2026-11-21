@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Règle, règlement, loi : chacun a sa place, et la justice veille à leur respect.",
+  "niveaux": [
+    {
+      "titre": "Règle et loi",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une **règle** organise la vie d'un groupe (jeu, classe). Le **règlement intérieur** s'applique dans un établissement. La **loi** est votée par le Parlement et s'applique à tous. Les règles ne doivent pas contredire la loi.",
+        "Les **principes** de la justice : présomption d'innocence, droit à la défense, égalité devant la loi."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Règle : on ne court pas dans les couloirs.",
+          "Règlement : retards et sanctions.",
+          "Loi : il est interdit de harceler."
+        ]
+      },
+      "aRetenir": "La loi s'impose à tous."
+    },
+    {
+      "titre": "Justice et sanction",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une **sanction** doit être proportionnée, connue à l'avance, expliquée, et viser à **réparer** et à éduquer. En France, la justice est rendue par des juges indépendants (tribunaux), avec le droit de faire appel. Un élève peut s'exprimer avant une sanction.",
+        "Chacun est **responsable** de ses actes ; les mineurs bénéficient d'une justice adaptée (juge des enfants)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une sanction éducative",
+        "etapes": [
+          "Un élève dégrade du matériel.",
+          "Il le remplace ou le répare.",
+          "Il s'excuse et reprend sa place."
+        ]
+      },
+      "aRetenir": "Sanctionner pour réparer et éduquer."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La loi est votée par…",
+        "choix": [
+          "les élèves",
+          "le maire seul",
+          "le Parlement",
+          "le directeur du collège"
+        ],
+        "bonne": 2,
+        "explication": "Assemblée nationale et Sénat."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La présomption d'innocence signifie…",
+        "choix": [
+          "on est coupable d'abord",
+          "on n'a pas de défense",
+          "on ne peut pas être jugé",
+          "on est innocent tant qu'on n'est pas jugé coupable"
+        ],
+        "bonne": 3,
+        "explication": "Principe de justice."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une sanction doit être…",
+        "choix": [
+          "toujours très forte",
+          "proportionnée et expliquée",
+          "secrète",
+          "arbitraire"
+        ],
+        "bonne": 1,
+        "explication": "Équité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le conseil de discipline",
+    "histoire": [
+      "Un élève a abîmé du matériel."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle sanction est la plus éducative ?",
+        "choix": [
+          "Le punir sans explication",
+          "L'ignorer",
+          "Réparer ou remplacer et s'excuser",
+          "L'insulter publiquement"
+        ],
+        "bonne": 2,
+        "explication": "Réparer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que doit-on faire avant de décider ?",
+        "choix": [
+          "Décider sans l'entendre",
+          "Attendre un an",
+          "Cacher les faits",
+          "Écouter l'élève"
+        ],
+        "bonne": 3,
+        "explication": "Droit de s'exprimer."
+      }
+    ],
+    "conclusion": "Décision équitable !"
+  }
+}

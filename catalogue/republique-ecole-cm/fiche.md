@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - age-industriel-cm
 competences:
   - republique-ecole-cm-comprendre
   - republique-ecole-cm-appliquer

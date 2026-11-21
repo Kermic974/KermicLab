@@ -30,7 +30,7 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
       (la notion compte alors comme renseignée). Le **graphe des prérequis** est vérifié à chaque build, sur le catalogue
       public et privé : chaque prérequis existe et est une notion (pas un jeu), aucun cycle (le message donne le chemin,
       par exemple `fractions → proportionnalite → fractions`), et un prérequis ne commence pas à un niveau plus avancé que
-      la notion (vérifié quand les deux fiches renseignent `niveaux`).
+      la notion (vérifié quand les deux fiches renseignent `niveaux`), ni dans une classe plus avancée (`CM1` < `CM2` < `6e` < … < `3e`, vérifié quand les deux fiches renseignent `classes`).
     - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
     - `duree` : durée estimée en minutes, entier de 1 à 240.
   - **Relecture pédagogique** : après une relecture humaine selon la grille publiée, ajouter `relue` (date), `relue-version`

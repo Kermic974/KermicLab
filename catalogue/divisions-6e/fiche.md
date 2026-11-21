@@ -8,6 +8,8 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - entiers-et-operations-6e
+  - multiples-et-diviseurs-cm
 competences:
   - divisions-6e-comprendre
   - divisions-6e-appliquer

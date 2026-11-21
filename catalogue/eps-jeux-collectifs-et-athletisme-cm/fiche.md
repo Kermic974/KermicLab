@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - eps-sante-et-echauffement-cm
 competences:
   - eps-jeux-collectifs-et-athletisme-cm-comprendre
   - eps-jeux-collectifs-et-athletisme-cm-appliquer

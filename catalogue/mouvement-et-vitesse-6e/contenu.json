@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un mouvement se décrit par une trajectoire et une vitesse, par rapport à un point de référence.",
+  "niveaux": [
+    {
+      "titre": "Mouvement et référentiel",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un objet est **en mouvement** si sa position change par rapport à un **référentiel** (le sol, un train…). Un voyageur assis est immobile par rapport au train mais en mouvement par rapport au quai.",
+        "La **trajectoire** peut être rectiligne, circulaire, courbe. Le mouvement est **uniforme** si la vitesse ne change pas, **accéléré** ou **ralenti** sinon."
+      ],
+      "exemple": {
+        "titre": "Exemple : le manège",
+        "etapes": [
+          "Trajectoire circulaire.",
+          "Vitesse presque constante : mouvement circulaire uniforme.",
+          "Par rapport au sol, tu tournes."
+        ]
+      },
+      "aRetenir": "Le mouvement dépend du référentiel."
+    },
+    {
+      "titre": "Vitesse moyenne",
+      "niveau": "6e",
+      "paragraphes": [
+        "**v = d ÷ t**. Si un train parcourt 300 km en 2 h, sa vitesse moyenne est 150 km/h. Pour passer de m/s à km/h on multiplie par 3,6 : 10 m/s = 36 km/h.",
+        "La distance se calcule par **d = v × t** et la durée par **t = d ÷ v**. La vitesse maximale autorisée en ville est limitée pour des raisons de sécurité (distance d'arrêt)."
+      ],
+      "exemple": {
+        "titre": "Exemple : d = v × t",
+        "etapes": [
+          "v = 60 km/h pendant 3 h.",
+          "d = 60 × 3.",
+          "d = 180 km."
+        ]
+      },
+      "aRetenir": "v = d ÷ t ; d = v × t ; t = d ÷ v."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Un train parcourt 300 km en 2 h. Vitesse moyenne ?",
+        "reponse": 150,
+        "unite": "km/h",
+        "indices": [
+          "v = d ÷ t."
+        ],
+        "solution": "300 ÷ 2 = 150.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Convertis 10 m/s en km/h.",
+        "reponse": 36,
+        "unite": "km/h",
+        "indices": [
+          "Multiplie par 3,6."
+        ],
+        "solution": "10 × 3,6 = 36.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "On roule à 60 km/h pendant 3 h. Distance ?",
+        "reponse": 180,
+        "unite": "km",
+        "indices": [
+          "d = v × t."
+        ],
+        "solution": "60 × 3 = 180.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course de relais",
+    "histoire": [
+      "Un coureur parcourt 100 m en 20 s."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est sa vitesse moyenne en m/s ?",
+        "reponse": 5,
+        "unite": "m/s",
+        "indices": [
+          "Distance ÷ durée."
+        ],
+        "solution": "100 ÷ 20 = 5.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Et en km/h ?",
+        "reponse": 18,
+        "unite": "km/h",
+        "indices": [
+          "Multiplie par 3,6."
+        ],
+        "solution": "5 × 3,6 = 18.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bon chrono !"
+  }
+}

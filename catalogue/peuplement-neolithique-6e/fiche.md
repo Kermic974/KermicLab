@@ -8,6 +8,7 @@ niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - prehistoire-cm
 competences:
   - peuplement-neolithique-6e-comprendre
   - peuplement-neolithique-6e-appliquer

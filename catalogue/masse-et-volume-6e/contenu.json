@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La masse se mesure avec une balance, le volume avec une éprouvette : ce sont deux grandeurs différentes.",
+  "niveaux": [
+    {
+      "titre": "Masse et volume",
+      "niveau": "6e",
+      "paragraphes": [
+        "La **masse** (en g, kg) mesure la quantité de matière : on la mesure avec une balance. Le **volume** (en mL, L, cm³) mesure la place occupée : on mesure un liquide avec une éprouvette graduée. 1 mL = 1 cm³ ; 1 L = 1 000 mL.",
+        "Un kilogramme de plomb et un kilogramme de plumes ont la même masse, mais pas le même volume."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire une éprouvette",
+        "etapes": [
+          "On se place à hauteur des yeux.",
+          "On lit le bas du ménisque.",
+          "Le volume est 45 mL."
+        ]
+      },
+      "aRetenir": "Masse : balance. Volume : éprouvette."
+    },
+    {
+      "titre": "Flotter ou couler",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un objet de **grande masse pour son volume** coule dans l'eau ; un objet de **faible masse pour son volume** flotte. On compare avec la **masse volumique** : 1 g/cm³ pour l'eau. Le bois (≈ 0,7 g/cm³) flotte, le fer (≈ 7,9 g/cm³) coule.",
+        "Une bouteille d'eau de 1 L a une masse d'environ 1 kg."
+      ],
+      "exemple": {
+        "titre": "Exemple : le glaçon",
+        "etapes": [
+          "La glace a une masse volumique de 0,92 g/cm³.",
+          "Elle est plus petite que celle de l'eau.",
+          "Le glaçon flotte."
+        ]
+      },
+      "aRetenir": "Masse volumique = masse ÷ volume."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Un volume de 2,5 L correspond à combien de mL ?",
+        "reponse": 2500,
+        "unite": "mL",
+        "indices": [
+          "1 L = 1 000 mL."
+        ],
+        "solution": "2,5 × 1 000 = 2 500.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "On mesure un liquide avec…",
+        "choix": [
+          "un thermomètre",
+          "une règle",
+          "une éprouvette graduée",
+          "une balance"
+        ],
+        "bonne": 2,
+        "explication": "Éprouvette."
+      },
+      {
+        "type": "nombre",
+        "question": "Un objet de 120 g occupe 40 cm³. Masse volumique en g/cm³ ?",
+        "reponse": 3,
+        "unite": "g/cm³",
+        "indices": [
+          "Masse ÷ volume."
+        ],
+        "solution": "120 ÷ 40 = 3.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Flotte ou coule ?",
+    "histoire": [
+      "Tu testes plusieurs objets dans un aquarium."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un objet de masse volumique 0,5 g/cm³ dans l'eau (1 g/cm³) :",
+        "choix": [
+          "flotte",
+          "coule",
+          "se dissout",
+          "s'évapore"
+        ],
+        "bonne": 0,
+        "explication": "Moins dense que l'eau."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un objet de masse volumique 3 g/cm³ dans l'eau :",
+        "choix": [
+          "flotte",
+          "monte",
+          "fond",
+          "coule"
+        ],
+        "bonne": 3,
+        "explication": "Plus dense que l'eau."
+      }
+    ],
+    "conclusion": "Expérience réussie !"
+  }
+}

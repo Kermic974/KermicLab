@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - vocabulaire-cm
 competences:
   - formation-des-mots-cm-comprendre
   - formation-des-mots-cm-appliquer

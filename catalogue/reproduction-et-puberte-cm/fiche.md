@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - classification-du-vivant-cm
 competences:
   - reproduction-et-puberte-cm-comprendre
   - reproduction-et-puberte-cm-appliquer

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - terre-et-systeme-solaire-cm
 competences:
   - volcans-et-seismes-cm-comprendre
   - volcans-et-seismes-cm-appliquer
