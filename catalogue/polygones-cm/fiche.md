@@ -26,7 +26,7 @@ mots-cles:
   - reconnaitre un quadrilatere
 questions:
   - Quelle est la différence entre un carré et un losange ?
-  - C'est quoi un triangle isocèle ?
+  - C'est quoi un triangle isocèle ou équilatéral en CM1 ?
   - Comment reconnaître un rectangle ?
   - Quelles sont les propriétés d'un parallélogramme ?
 ---

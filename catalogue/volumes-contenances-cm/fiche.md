@@ -24,7 +24,7 @@ mots-cles:
   - unites de volume cm2
   - cube unite
 questions:
-  - Comment calculer le volume d'un pavé droit ?
+  - Comment calculer le volume d'un pavé droit en CM2 ?
   - Quel est le lien entre litre et dm³ ?
   - Comment convertir des cm³ en litres ?
 ---
