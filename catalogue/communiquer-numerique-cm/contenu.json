@@ -63,9 +63,9 @@
         "question": "Que désigne la « fracture numérique » ?",
         "choix": [
           "Les inégalités d'accès au numérique",
-          "Un téléphone cassé",
-          "Une panne d'électricité",
-          "Un virus"
+          "Une panne générale d'Internet",
+          "Un écran brisé après une chute",
+          "Un virus qui efface les données"
         ],
         "bonne": 0,
         "explication": "Tous n'ont pas accès à Internet ou ne savent pas l'utiliser."
@@ -109,10 +109,10 @@
         "titre": "Exercice 2",
         "question": "Que dois-tu protéger dans ce message ?",
         "choix": [
-          "La météo",
+          "La date d'envoi du courriel",
           "Tes informations personnelles",
-          "Ton dessin",
-          "Ton cartable"
+          "Le titre de ton message",
+          "La couleur de ton texte"
         ],
         "bonne": 1,
         "explication": "Ne pas communiquer d'adresse ni de numéro."

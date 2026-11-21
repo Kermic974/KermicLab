@@ -62,10 +62,10 @@
         "titre": "Exercice 2",
         "question": "À qui parler en cas de harcèlement ?",
         "choix": [
-          "À un inconnu en ligne",
+          "Seulement à un ami du même âge",
           "À un adulte du collège ou au 3018",
-          "À personne",
-          "Seulement à un ami"
+          "À un inconnu rencontré en ligne",
+          "À personne, pour ne pas aggraver"
         ],
         "bonne": 1,
         "explication": "Ne pas rester seul."
@@ -75,9 +75,9 @@
         "titre": "Exercice 3",
         "question": "Le règlement intérieur sert à…",
         "choix": [
-          "punir tout le monde",
-          "choisir les notes",
-          "décorer",
+          "punir tous les élèves",
+          "choisir les notes des élèves",
+          "décorer les salles de classe",
           "organiser la vie du collège"
         ],
         "bonne": 3,
@@ -96,10 +96,10 @@
         "titre": "Exercice 1",
         "question": "Un élève est moqué pour son accent. Que fais-tu ?",
         "choix": [
-          "Je filme",
           "Je m'éloigne sans rien dire",
+          "Je ris avec les autres élèves",
           "Je le soutiens et j'en parle à un adulte",
-          "Je ris"
+          "Je filme la scène pour la montrer"
         ],
         "bonne": 2,
         "explication": "Agir contre la discrimination."

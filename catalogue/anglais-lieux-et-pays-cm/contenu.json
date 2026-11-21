@@ -94,10 +94,10 @@
         "titre": "Exercice 1",
         "question": "On te répond : « Go straight on, then turn right. » Tu…",
         "choix": [
-          "restes ici",
+          "reviens sur tes pas puis tournes",
           "avances puis tournes à droite",
-          "tournes à gauche",
-          "reculez"
+          "avances puis tournes à gauche",
+          "tournes à droite puis avances"
         ],
         "bonne": 1,
         "explication": "Straight on = tout droit."

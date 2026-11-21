@@ -63,9 +63,9 @@
         "question": "Que se passe-t-il si un fil du circuit est débranché ?",
         "choix": [
           "Le circuit est ouvert : l'ampoule s'éteint",
-          "L'ampoule brille plus fort",
-          "La pile chauffe",
-          "Rien"
+          "Le circuit reste fermé : l'ampoule brille",
+          "L'ampoule brille plus fort qu'avant",
+          "La pile se recharge toute seule"
         ],
         "bonne": 0,
         "explication": "Circuit ouvert."
@@ -75,10 +75,10 @@
         "titre": "Exercice 3",
         "question": "Quelle règle de sécurité est vraie ?",
         "choix": [
-          "Toucher les fils dénudés",
-          "Brancher avec de l'eau",
+          "Brancher un appareil les pieds dans l'eau",
+          "Mettre un trombone dans la prise",
           "Ne pas toucher aux prises avec des mains mouillées",
-          "Mettre ses doigts dans la prise"
+          "Toucher les fils dénudés avec un tournevis"
         ],
         "bonne": 2,
         "explication": "L'eau conduit le courant."
@@ -96,10 +96,10 @@
         "titre": "Exercice 1",
         "question": "L'ampoule ne s'allume pas. Que vérifier ?",
         "choix": [
-          "La météo",
-          "Le nom de la pile",
+          "La marque de la pile seule",
+          "L'heure de la journée",
           "Le circuit est-il fermé ?",
-          "La couleur du fil"
+          "La couleur des fils utilisés"
         ],
         "bonne": 2,
         "explication": "Contacts et boucle fermée."
@@ -109,10 +109,10 @@
         "titre": "Exercice 2",
         "question": "Quel objet peut servir d'interrupteur ?",
         "choix": [
-          "Du papier",
-          "Du plastique",
+          "Un morceau de plastique rigide",
+          "Une réglette en bois sec",
           "Un trombone métallique qu'on déplace",
-          "Un morceau de bois"
+          "Une bande de papier épais"
         ],
         "bonne": 2,
         "explication": "Il doit conduire."

@@ -759,7 +759,7 @@ Faits à recouper : `1789`, `1792`, `1793`, `1799`, `1804`, `1815`
 | | Question | Réponse attendue | Explication / solution |
 |---|---|---|---|
 | E1 | En quelle année a lieu la prise de la Bastille ? | **1789** | Le 14 juillet 1789. |
-| E2 | Que proclame la Déclaration de 1789 ? | **Les hommes naissent libres et égaux en droits** | Article 1. |
+| E2 | Que proclame la Déclaration de 1789 ? | **Les hommes naissent libres et égaux** | Article 1. |
 | E3 | Que crée Napoléon en 1804 ? | **Le Code civil** | Le Code civil de 1804. |
 | D1 | Pourquoi la Bastille est-elle prise ? | **Elle symbolise l'arbitraire du roi** | C'est une prison royale. |
 | D2 | Quel groupe paie la plupart des impôts ? | **Le tiers état** | Le tiers état est le peuple. |
@@ -938,7 +938,7 @@ Faits à recouper : `66 millions`
 
 | | Question | Réponse attendue | Explication / solution |
 |---|---|---|---|
-| E1 | Un fossile est… | **une trace d'un être vivant conservée dans la roche** | Il est conservé dans les roches. |
+| E1 | Un fossile est… | **la trace d'un être vivant dans la roche** | Il est conservé dans les roches. |
 | E2 | Il y a combien de millions d'années les dinosaures non aviens ont-ils disparu ? | **66 millions d'années** | Environ 66 millions d'années. |
 | E3 | Qui étudie les fossiles ? | **Les paléontologues** | Les paléontologues. |
 | D1 | Que dois-tu faire ? | **Le dégager doucement et noter où tu l'as trouvé** | On note la position pour comprendre. |
@@ -1282,7 +1282,7 @@ Faits à recouper : `1981`, `2 heures`, `3 km`
 | E2 | Que transportent les cargos ? | **Des marchandises en grande quantité** | Ce sont les plus gros navires de marchandises. |
 | E3 | Qu'est-ce que le covoiturage ? | **Partager une voiture pour un même trajet** | Moins de voitures sur la route. |
 | D1 | Comment aller à l'école à 1 km ? | **À pied ou à vélo** | Court trajet : mobilité douce. |
-| D2 | Quel avantage pour le bus scolaire ? | **Beaucoup d'élèves partagent un seul véhicule** | Un seul véhicule pour beaucoup de passagers. |
+| D2 | Quel avantage pour le bus scolaire ? | **Beaucoup d'élèves dans un seul véhicule** | Un seul véhicule pour beaucoup de passagers. |
 
 ## eps (2)
 

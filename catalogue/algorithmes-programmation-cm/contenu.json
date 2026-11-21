@@ -73,9 +73,9 @@
         "titre": "Exercice 3",
         "question": "Que fait « si le chemin est libre alors avancer » ?",
         "choix": [
-          "Avance toujours",
-          "Ne fait rien",
-          "Recule",
+          "Avance toujours, même si c'est bloqué",
+          "S'arrête dès que le chemin est libre",
+          "Recule si le chemin est libre",
           "Avance seulement si le chemin est libre"
         ],
         "bonne": 3,

@@ -49,10 +49,10 @@
         "titre": "Exercice 1",
         "question": "Quel mot de passe est le plus solide ?",
         "choix": [
-          "azerty",
+          "La suite de chiffres 123456789",
           "Un long mélange de lettres, chiffres et signes",
-          "1234",
-          "Mon prénom"
+          "Sa date de naissance et son prénom",
+          "Le prénom de son animal préféré"
         ],
         "bonne": 1,
         "explication": "Long et imprévisible."
@@ -96,10 +96,10 @@
         "titre": "Exercice 1",
         "question": "Que fais-tu ?",
         "choix": [
-          "Je transfère à tout le monde",
-          "Je clique sur le lien",
+          "Je clique sur le lien pour vérifier",
+          "Je transfère le message à mes amis",
           "Je ne réponds pas et j'en parle à un adulte",
-          "Je donne mes informations"
+          "Je réponds et je donne mon adresse"
         ],
         "bonne": 2,
         "explication": "C'est probablement une arnaque."

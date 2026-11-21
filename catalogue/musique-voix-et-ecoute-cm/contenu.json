@@ -47,9 +47,9 @@
         "titre": "Exercice 1",
         "question": "Qu'est-ce qu'un canon ?",
         "choix": [
-          "Un instrument",
-          "Un silence",
-          "Un tempo",
+          "Un instrument à cordes très grave",
+          "Un long silence entre deux notes",
+          "Un tempo très rapide",
           "La même mélodie chantée en décalé"
         ],
         "bonne": 3,
@@ -95,9 +95,9 @@
         "question": "Avant de chanter, il faut…",
         "choix": [
           "échauffer sa voix et bien respirer",
-          "crier fort",
-          "chuchoter",
-          "sauter"
+          "crier le plus fort possible",
+          "chuchoter toute la chanson",
+          "courir pour prendre son souffle"
         ],
         "bonne": 0,
         "explication": "Préparer la voix."

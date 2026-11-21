@@ -47,10 +47,10 @@
         "titre": "Exercice 1",
         "question": "Qui a peint la Joconde ?",
         "choix": [
-          "Van Gogh",
+          "Pablo Picasso",
           "Léonard de Vinci",
-          "Monet",
-          "Picasso"
+          "Vincent van Gogh",
+          "Claude Monet"
         ],
         "bonne": 1,
         "explication": "Léonard de Vinci."
@@ -95,9 +95,9 @@
         "question": "Que regardes-tu d'abord dans un tableau ?",
         "choix": [
           "Le sujet, les couleurs et la composition",
-          "Le prix",
-          "Le cadre seulement",
-          "L'étiquette seule"
+          "Le prix et la signature seulement",
+          "Le cadre et les murs autour",
+          "Le nom du musée et l'étiquette"
         ],
         "bonne": 0,
         "explication": "Observation."

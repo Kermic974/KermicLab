@@ -48,10 +48,10 @@
         "titre": "Exercice 1",
         "question": "Quel caractère définit les mammifères ?",
         "choix": [
-          "Des écailles",
-          "Des branchies",
+          "Des plumes et un bec",
+          "Une carapace et des antennes",
           "Des mamelles pour allaiter, des poils",
-          "Des plumes"
+          "Des écailles et des branchies"
         ],
         "bonne": 2,
         "explication": "Poils et mamelles."
@@ -108,10 +108,10 @@
         "titre": "Exercice 2",
         "question": "Pourquoi regrouper chat et chien ?",
         "choix": [
-          "Ils ont la même couleur",
+          "Ils mangent la même nourriture",
           "Ils partagent beaucoup de caractères",
-          "Ils ont le même nom",
-          "Ils vivent ensemble"
+          "Ils vivent dans la même maison",
+          "Ils ont la même taille adulte"
         ],
         "bonne": 1,
         "explication": "Parenté."

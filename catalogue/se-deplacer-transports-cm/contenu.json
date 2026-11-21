@@ -63,9 +63,9 @@
         "question": "Que transportent les cargos ?",
         "choix": [
           "Des marchandises en grande quantité",
-          "Des voyageurs uniquement",
-          "Des cartes",
-          "Du courrier"
+          "Uniquement des voyageurs en vacances",
+          "Du courrier et des lettres",
+          "Des cartes et des plans"
         ],
         "bonne": 0,
         "explication": "Ce sont les plus gros navires de marchandises."
@@ -76,9 +76,9 @@
         "question": "Qu'est-ce que le covoiturage ?",
         "choix": [
           "Partager une voiture pour un même trajet",
-          "Louer un avion",
-          "Prendre le train",
-          "Marcher en groupe"
+          "Louer un avion pour plusieurs personnes",
+          "Prendre le train à plusieurs",
+          "Marcher en groupe vers l'école"
         ],
         "bonne": 0,
         "explication": "Moins de voitures sur la route."
@@ -109,10 +109,10 @@
         "titre": "Exercice 2",
         "question": "Quel avantage pour le bus scolaire ?",
         "choix": [
-          "Il est plus rapide qu'un avion",
-          "Il n'a pas de chauffeur",
-          "Il ne s'arrête jamais",
-          "Beaucoup d'élèves partagent un seul véhicule"
+          "Il va plus vite qu'un avion",
+          "Il roule sans conducteur",
+          "Il ne s'arrête jamais en route",
+          "Beaucoup d'élèves dans un seul véhicule"
         ],
         "bonne": 3,
         "explication": "Un seul véhicule pour beaucoup de passagers."

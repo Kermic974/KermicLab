@@ -94,9 +94,9 @@
         "titre": "Exercice 1",
         "question": "Quel avantage pour l'appartement en ville ?",
         "choix": [
-          "Un grand jardin",
-          "Plus de silence",
-          "Plus de champs",
+          "Un grand jardin pour jouer",
+          "Plus de silence qu'à la campagne",
+          "Des champs autour de l'immeuble",
           "Des commerces et des transports proches"
         ],
         "bonne": 3,
@@ -107,10 +107,10 @@
         "titre": "Exercice 2",
         "question": "Quel avantage pour la maison à la campagne ?",
         "choix": [
-          "Un cinéma à 100 m",
+          "Un hôpital dans la rue",
           "Plus d'espace et de calme",
-          "Un métro à côté",
-          "Un hôpital voisin"
+          "Un cinéma à deux pas",
+          "Un métro tous les cinq minutes"
         ],
         "bonne": 1,
         "explication": "Plus d'espace, moins de bruit."
