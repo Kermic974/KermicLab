@@ -1,6 +1,6 @@
 # Chantier : catalogue du primaire (cycle 3 — CM1 / CM2)
 
-**Niveau actuel : 93 notions CM1/CM2 et 14 notions de 6e rédigées (suffixe `-6e`), relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
+**Niveau actuel : 106 notions CM1/CM2 et 14 notions de 6e rédigées (suffixe `-6e`), relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
 
 Méthode : gabarit commun (`contenu.json`, trois onglets), niveau `primaire`, classes `CM1` / `CM2`, cycle `cycle-3`. Chaque notion a deux niveaux de
 lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, avec indices) et un défi en deux étapes.
@@ -17,7 +17,7 @@ lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, av
 ## Points d'attention
 
 - **Relecture humaine obligatoire** avant fusion (idéalement par un enseignant du premier degré) : exactitude des dates, des définitions et des corrections.
-- Les langues vivantes, les arts et l'EPS du cycle 3 ne sont pas couverts (le catalogue n'a pas ces matières).
+- Les matières anglais, arts plastiques, musique et EPS ont été ajoutées (libellés fr/en) ; autres langues vivantes que l'anglais non couvertes.
 - Les notions de collège équivalentes (`fractions`, `nombres-decimaux`…) restent la suite naturelle (6e) : pas de prérequis croisé automatique.
 
 ## 6e (fin du cycle 3)
@@ -39,4 +39,7 @@ Les notions `*-6e` (niveau `college`, classe `6e`, cycle 3) complètent les 12 n
 | Géographie (CM1, CM2, 6e) | `lire-une-carte-cm`, `habiter-ville-campagne-cm`, `paysages-et-ressources-cm`, `se-deplacer-transports-cm`, `communiquer-numerique-cm`, `mieux-habiter-cm`, `france-europe-monde-cm`, `monde-en-villes-cm`, `habiter-6e`, `habiter-la-terre-6e` | couvert |
 | EMC | `respect-et-egalite-cm`, `regles-et-justice-cm`, `laicite-et-liberte-cm`, `devise-republique-cm`, `citoyen-et-engagement-cm`, `droits-de-l-enfant-cm`, `numerique-responsable-cm`, `securite-et-prevention-cm`, `regles-vivre-ensemble-6e` | couvert |
 | Sciences et technologie | vivant (classification, végétaux, nutrition, respiration, reproduction, biodiversité, évolution), Terre (système solaire, risques), matière (états, mélanges, air), énergie, électricité, lumière et son, mouvement ; technologie (objets techniques, matériaux) | couvert |
-| Langues vivantes, arts plastiques, éducation musicale, EPS | — | hors périmètre : le catalogue n'a pas ces matières |
+| Anglais | `anglais-se-presenter-cm`, `anglais-vocabulaire-quotidien-cm`, `anglais-gouts-et-actions-cm`, `anglais-lieux-et-pays-cm` | couvert (matière `anglais`, notions rédigées en français avec le vocabulaire anglais) |
+| Arts plastiques | `arts-couleurs-cm`, `arts-formes-et-composition-cm` | couvert (matière `arts-plastiques`) |
+| Éducation musicale | `musique-notes-et-rythme-cm`, `musique-voix-et-ecoute-cm` | couvert (matière `musique`) |
+| EPS | `eps-sante-et-echauffement-cm`, `eps-jeux-collectifs-et-athletisme-cm` | couvert pour les savoirs (matière `eps`) ; la pratique motrice ne se fait pas sur une page |

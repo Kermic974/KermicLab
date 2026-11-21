@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Courir, sauter, lancer, nager et jouer en équipe : le sport s'apprend avec des règles et du respect.",
+  "niveaux": [
+    {
+      "titre": "Intuition : jouer ensemble",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans un jeu collectif (football, handball, basket, rugby), deux équipes s'affrontent. Pour réussir : coopérer, se passer le ballon, respecter les règles et l'arbitre. Le **fair-play** consiste à jouer loyalement, à féliciter l'adversaire et à accepter la défaite."
+      ],
+      "exemple": {
+        "titre": "Exemple : un match",
+        "etapes": [
+          "Chacun a un rôle (attaquant, défenseur).",
+          "L'arbitre applique les règles.",
+          "On serre la main à la fin."
+        ]
+      },
+      "aRetenir": "Gagner, c'est aussi bien jouer."
+    },
+    {
+      "titre": "Athlétisme et natation",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "L'**athlétisme** comprend trois familles d'épreuves : **courir** (vitesse, haies, endurance), **sauter** (longueur, hauteur) et **lancer** (poids, javelot, vortex). Chronomètre et mètre mesurent les performances.",
+        "En **natation**, on apprend à se déplacer dans l'eau : flotter, respirer, nager le crawl, le dos, la brasse. La sécurité est essentielle : on ne plonge pas dans un endroit inconnu, on ne nage jamais seul, on respecte les consignes du maître-nageur."
+      ],
+      "exemple": {
+        "titre": "Exemple : le saut en longueur",
+        "etapes": [
+          "Élan.",
+          "Appel sur la planche.",
+          "Réception dans le sable : on mesure."
+        ]
+      },
+      "aRetenir": "Athlétisme : courir, sauter, lancer."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le fair-play, c'est…",
+        "choix": [
+          "jouer loyalement",
+          "tricher discrètement",
+          "crier sur l'arbitre",
+          "refuser de perdre"
+        ],
+        "bonne": 0,
+        "explication": "Respect."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le saut en longueur est une épreuve…",
+        "choix": [
+          "de saut",
+          "de lancer",
+          "de course",
+          "de natation"
+        ],
+        "bonne": 0,
+        "explication": "Famille « sauter »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "À la piscine, on…",
+        "choix": [
+          "respecte les consignes du maître-nageur",
+          "plonge partout",
+          "nage seul au grand bassin",
+          "court au bord"
+        ],
+        "bonne": 0,
+        "explication": "Sécurité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La journée sportive",
+    "histoire": [
+      "Ta classe participe à une journée sportive."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Ton équipe perd. Tu…",
+        "choix": [
+          "félicites les gagnants",
+          "te fâches",
+          "tricheras la prochaine fois",
+          "quittes le terrain"
+        ],
+        "bonne": 0,
+        "explication": "Fair-play."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle épreuve de lancer connais-tu ?",
+        "choix": [
+          "Le lancer de poids",
+          "Le saut en hauteur",
+          "Le crawl",
+          "Le marathon"
+        ],
+        "bonne": 0,
+        "explication": "Poids, javelot, vortex."
+      }
+    ],
+    "conclusion": "Bravo, sportifs !"
+  }
+}

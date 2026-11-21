@@ -12,7 +12,7 @@ navigation ni classe dans le référentiel. Un élève de 9 à 11 ans ne trouvai
 - Nouveau niveau de navigation `primaire` (valeur du champ `niveau` des fiches), rangé avant `college`.
 - Le champ facultatif `classes` accepte `CM1` et `CM2` pour une notion de niveau `primaire` (cycle 3, déjà connu de `niveaux`) ;
   il exige `cycle-3` dans `niveaux`, comme la 6e. Une notion enseignée deux ans apparaît dans chacune de ses classes.
-- Nouvelle matière `technologie` (sujet `technologie/<id>`), libellés ajoutés dans les deux langues.
+- Nouvelles matières `technologie`, `anglais`, `arts-plastiques`, `musique` et `eps` (sujet `<matière>/<id>`), libellés ajoutés dans les deux langues, pour couvrir tout le programme du cycle 3.
 - Les notions du primaire portent le suffixe `-cm` quand elles ont un équivalent de collège (`fractions-cm`, `accords-cm`…), pour ne pas
   casser les liens existants. Leurs questions d'exemple sont distinctes de celles du collège (le routage donne la priorité à la
   question exacte).
