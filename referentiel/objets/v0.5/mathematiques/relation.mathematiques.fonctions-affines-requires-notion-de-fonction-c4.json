@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.fonctions-affines-requires-notion-de-fonction-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-affines/contenu.json"
+  },
+  "source": "notion.mathematiques.fonctions-affines",
+  "target": "notion.mathematiques.notion-de-fonction-c4",
+  "rationale": "« La notion de fonction » : Une fonction affine suppose la notion de fonction et la résolution d’équations."
+}

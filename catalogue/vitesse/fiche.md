@@ -5,15 +5,7 @@ sujet: mathematiques/vitesse
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 4e, 3e
-prerequis:
-  - proportionnalite
-competences:
-  - calculer-vitesse-distance-et-duree
-  - convertir-une-duree-en-heures-decimales
-  - convertir-une-vitesse
-  - calculer-une-vitesse-moyenne
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -35,6 +27,9 @@ questions:
   - je ne comprends pas comment convertir des km/h en m/s
   - comment calculer un temps de parcours
   - how do you calculate speed?
+prerequis: proportionnalite, mouvement-et-vitesse-6e
+niveaux: cycle-4, seconde
+competences: calculer-vitesse-distance-et-duree, convertir-une-duree-en-heures-decimales, convertir-une-vitesse, calculer-une-vitesse-moyenne
 ---
 
 # Vitesse et grandeurs composées

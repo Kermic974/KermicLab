@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.construction-europeenne-requires-france-europe-depuis-1945-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "notion.histoire.construction-europeenne",
+  "target": "notion.histoire.france-europe-depuis-1945-cm",
+  "rationale": "« La France depuis 1945 et la construction européenne » : La France depuis 1945 et les débuts de la construction européenne du cycle 3 sont approfondis."
+}

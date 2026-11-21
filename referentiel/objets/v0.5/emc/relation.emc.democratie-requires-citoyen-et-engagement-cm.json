@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.democratie-requires-citoyen-et-engagement-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "notion.emc.democratie",
+  "target": "notion.emc.citoyen-et-engagement-cm",
+  "rationale": "« Être citoyen : voter, s'engager, participer » : Voter et s’engager au cycle 3 préparent les élections, le pluralisme et la représentation."
+}

@@ -35,7 +35,7 @@ questions:
   - à quoi sert le placenta ?
   - what is fertilisation in human reproduction?
 classes: 4e
-prerequis:
+prerequis: reproduction-et-cycles-de-vie-6e, reproduction-et-puberte-cm
 niveaux: cycle-4
 competences: identifier-les-gametes-et-leur-origine, decrire-la-fecondation, expliquer-les-cycles-de-l-appareil-reproducteur, choisir-un-moyen-de-prevention-adapte
 ---

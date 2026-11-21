@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Référentiel : liens des notions de la V0 vers les cycles précédents** (processus S4, `docs/referentiel/propositions-liens-cycles-2-3-4.md`) : **102 `requires`** qualifiés (continuité thématique, justification propre à chaque lien) sur 86 notions ; prérequis déclarés de 550 à 652 ; 35 recommandations changent sur 477 scénarios, toutes expliquées par les nouveaux prérequis. Liens écartés ou incertains dans `relations-a-revoir.md`. Objets en `draft`.
+
 - **Référentiel : les notions ajoutées depuis la V0 rendues canoniques** : 259 notions (cycles 2 à 4 et lycée ; mathématiques, français, histoire, SVT, physique-chimie, géographie, EMC, SES, philosophie), 1 041 MicroSkills observables, 365 `requires` (repris des fiches, justification générée à enrichir) et 232 CurriculumMappings. Les compétences génériques de 214 fiches sont remplacées ; leurs niveaux, classes et prérequis restent identiques. Toutes les notions du catalogue (hors jeux) ont désormais des objets S4 ; les 45 notions de cycle 2 restent sans placement ni projection (pas de code d'étape `cycle-2`).
 
 - **Référentiel : anglais, arts plastiques, musique et EPS rendus canoniques** : 35 notions, 144 MicroSkills observables, 36 `requires` et 40 CurriculumMappings ; les compétences génériques `*-comprendre/-appliquer` de 30 fiches sont remplacées, leurs niveaux, classes et prérequis restent identiques. Les 5 notions de cycle 2 n'ont pas de placement ni de projection (pas de code d'étape `cycle-2`).

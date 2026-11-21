@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.risques-naturels-requires-volcans-et-seismes-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "notion.geographie.risques-naturels",
+  "target": "notion.svt.volcans-et-seismes-cm",
+  "rationale": "« Volcans, séismes et risques naturels » : Les volcans, séismes et gestes de prévention du cycle 3 sont repris dans la notion de risque."
+}

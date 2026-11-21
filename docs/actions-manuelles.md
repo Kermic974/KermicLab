@@ -328,6 +328,6 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
 | Relire les 1 041 MicroSkills et les 365 `requires` (justifications générées à enrichir), puis passer les objets de `draft` à `review` | `referentiel/objets/v0.5/` | Propositions pédagogiques non validées ; justifications des liens génériques | Statuts mis à jour, justifications enrichies | à faire |
-| Qualifier par le processus S4 les liens depuis les notions V0 vers les nouvelles notions | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Les prérequis des notions V0 ne se modifient pas dans la fiche | Lot S4 relu et fusionné | à faire |
+| Relire les 102 `requires` créés depuis les notions de la V0 vers les cycles précédents (PR dédiée) et arbitrer les liens écartés | `docs/referentiel/propositions-liens-cycles-2-3-4.md`, `relations-a-revoir.md` | Propositions pédagogiques en `draft` ; la recommandation change pour 35 scénarios | Statuts mis à jour | à faire |
 | Revue du CODEOWNER et fusion de la PR de ce lot | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
 

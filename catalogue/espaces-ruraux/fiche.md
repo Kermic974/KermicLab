@@ -17,7 +17,7 @@ questions:
   - Pourquoi la ruralité est-elle diverse ?
   - Que signifie la multifonctionnalité rurale ?
 classes: 6e
-prerequis:
+prerequis: habiter-ville-campagne-cm, paysages-et-ressources-cm
 niveaux: cycle-3, premiere
 competences: identifier-les-fonctions-d-un-espace-rural, analyser-les-liens-entre-un-espace-rural-et-ses-voisins, identifier-les-acteurs-d-un-conflit-d-usage-eau-terres, interpreter-les-politiques-territoriales-rurales
 ---

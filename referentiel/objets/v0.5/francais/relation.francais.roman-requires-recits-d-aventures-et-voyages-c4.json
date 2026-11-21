@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.roman-requires-recits-d-aventures-et-voyages-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "notion.francais.roman",
+  "target": "notion.francais.recits-d-aventures-et-voyages-c4",
+  "rationale": "« Récits d'aventures, voyages et héros » : Les récits d’aventures et le héros de 5e préparent les formes et le point de vue du roman."
+}

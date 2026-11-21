@@ -20,7 +20,7 @@ questions:
   - Comment repérer le point de vue narratif dans un récit ?
   - À quoi sert un champ lexical dans un texte ?
 classes: 5e, 4e, 3e
-prerequis: figures-de-style
+prerequis: figures-de-style, recit-d-aventures-6e
 niveaux: cycle-4
 competences: identifier-le-narrateur-et-le-point-de-vue-d-un-texte, relever-des-indices-pour-justifier-une-interpretation, relier-un-procede-d-ecriture-a-son-effet, rediger-une-reponse-argumentee-appuyee-sur-des-citations, situer-un-texte-dans-son-contexte
 ---

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.antiquite-requires-gaulois-gallo-romains-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "notion.histoire.gaulois-gallo-romains-cm",
+  "rationale": "« Les Gaulois et les Gallo-Romains » : La conquête romaine de la Gaule et la romanisation du CM préparent l’étude des citoyens, de la République et de l’Empire."
+}

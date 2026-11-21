@@ -18,7 +18,7 @@ questions:
   - Quels sont les acteurs de la Grande Guerre ?
   - Que commémore-t-on de la guerre de 14-18 ?
 classes: 3e
-prerequis: revolution-industrielle
+prerequis: revolution-industrielle, guerres-mondiales-cm, colonisations-c4
 niveaux: cycle-4, premiere
 competences: placer-les-grands-reperes-de-1914-a-1918, expliquer-le-passage-de-la-crise-de-sarajevo-a-la-guerre-europeenne, caracteriser-une-guerre-totale-a-partir-d-exemples, analyser-le-role-des-acteurs-et-des-alliances, evaluer-les-consequences-et-les-memoires-de-la-guerre
 ---

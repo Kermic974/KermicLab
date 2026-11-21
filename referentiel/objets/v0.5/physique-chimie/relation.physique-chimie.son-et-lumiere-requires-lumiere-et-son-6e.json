@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.son-et-lumiere-requires-lumiere-et-son-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/son-et-lumiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.son-et-lumiere",
+  "target": "notion.physique-chimie.lumiere-et-son-6e",
+  "rationale": "« Signaux lumineux et sonores en 6e » : Les signaux lumineux et sonores de 6e précèdent le son, la lumière et la mesure par signal."
+}

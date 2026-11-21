@@ -40,7 +40,7 @@ questions:
   - pourquoi les antibiotiques ne marchent pas contre la grippe ?
   - how does a vaccine work?
 classes: 3e
-prerequis:
+prerequis: microbes-et-sante-c4
 niveaux: cycle-4
 competences: identifier-les-barrieres-de-l-organisme-contre-les-microbes, distinguer-immunite-innee-et-immunite-adaptative, expliquer-le-role-des-anticorps, expliquer-le-principe-de-la-vaccination
 ---

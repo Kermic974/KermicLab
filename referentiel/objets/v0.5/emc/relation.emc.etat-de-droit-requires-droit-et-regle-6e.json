@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.etat-de-droit-requires-droit-et-regle-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "notion.emc.etat-de-droit",
+  "target": "notion.emc.droit-et-regle-6e",
+  "rationale": "« Le droit et la règle : lois, règlement, justice » : Règle, loi et justice de 6e préparent la hiérarchie des normes et les contrôles."
+}

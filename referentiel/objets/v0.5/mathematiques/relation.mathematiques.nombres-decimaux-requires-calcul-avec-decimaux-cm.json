@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-requires-calcul-avec-decimaux-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-decimaux/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-decimaux",
+  "target": "notion.mathematiques.calcul-avec-decimaux-cm",
+  "rationale": "« Calculer avec des nombres décimaux » : Les décimaux et leurs opérations du cycle 3 sont consolidés en 6e."
+}

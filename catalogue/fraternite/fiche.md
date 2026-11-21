@@ -15,7 +15,7 @@ questions:
   - Comment vivre la fraternité en classe ?
   - what is brotherhood?
 classes: 5e
-prerequis:
+prerequis: engagement-et-solidarite-6e
 niveaux: cycle-4
 competences: expliquer-la-fraternite-comme-principe-republicain, distinguer-solidarite-et-assistance-humiliante, choisir-une-forme-d-aide-respectueuse-de-la-dignite, identifier-les-recours-quand-une-difficulte-depasse-ses-capacites
 ---

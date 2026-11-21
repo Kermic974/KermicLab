@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.mers-oceans-requires-habiter-le-littoral-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "notion.geographie.mers-oceans",
+  "target": "notion.geographie.habiter-le-littoral-6e",
+  "rationale": "« Habiter le littoral » : Le littoral et les ports étudiés en 6e préparent les routes et passages maritimes."
+}

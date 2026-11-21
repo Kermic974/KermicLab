@@ -20,7 +20,7 @@ questions:
   - Pourquoi l'édit de Nantes est-il important ?
   - Quelles conséquences a le voyage de Christophe Colomb ?
 classes: 5e
-prerequis: renaissance
+prerequis: renaissance, louis-xiv-cm
 niveaux: cycle-4, seconde
 competences: situer-les-reperes-majeurs-de-1492-a-1789, expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones, caracteriser-la-monarchie-absolue-de-louis-xiv, analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes
 ---

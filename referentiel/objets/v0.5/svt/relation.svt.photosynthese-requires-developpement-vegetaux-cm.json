@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.photosynthese-requires-developpement-vegetaux-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "notion.svt.photosynthese",
+  "target": "notion.svt.developpement-vegetaux-cm",
+  "rationale": "« Le développement des végétaux » : Les besoins des plantes et leur nutrition précèdent l’étude de la photosynthèse."
+}

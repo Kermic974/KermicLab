@@ -30,7 +30,7 @@ questions:
   - je ne comprends pas la translation
   - c'est quoi une homothétie ?
   - what is a line of symmetry?
-prerequis: angles
+prerequis: angles, symetrie-axiale-cm, reproduire-et-agrandir-cm
 niveaux: cycle-3, cycle-4, seconde
 competences: construire-un-symetrique-par-symetrie-axiale, construire-un-symetrique-par-symetrie-centrale, reconnaitre-translations-et-rotations, utiliser-une-homothetie
 ---

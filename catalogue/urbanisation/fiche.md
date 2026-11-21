@@ -16,7 +16,7 @@ questions:
   - Pourquoi l'étalement urbain progresse ?
   - Comment comprendre la périurbanisation ?
 classes: 4e
-prerequis:
+prerequis: habiter-une-metropole-6e
 niveaux: cycle-4
 competences: interpreter-l-evolution-de-la-part-de-population-urbaine, distinguer-centre-banlieue-et-couronne-periurbaine, identifier-les-acteurs-de-l-usage-des-sols, analyser-une-mobilite-domicile-travail-a-plusieurs-echelles, discuter-un-amenagement-urbain
 ---

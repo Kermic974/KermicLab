@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.statistiques-requires-reperage-et-donnees-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques/contenu.json"
+  },
+  "source": "notion.mathematiques.statistiques",
+  "target": "notion.mathematiques.reperage-et-donnees-6e",
+  "rationale": "« Repérage, tableaux et graphiques en 6e » : Les diagrammes de 6e et la moyenne du cycle 3 sont étendus aux indicateurs statistiques."
+}

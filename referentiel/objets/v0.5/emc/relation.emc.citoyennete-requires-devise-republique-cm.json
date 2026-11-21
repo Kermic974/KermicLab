@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.citoyennete-requires-devise-republique-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyennete/contenu.json"
+  },
+  "source": "notion.emc.citoyennete",
+  "target": "notion.emc.devise-republique-cm",
+  "rationale": "« La devise et les symboles de la République » : La devise et les symboles de la République du cycle 3 précèdent la citoyenneté."
+}

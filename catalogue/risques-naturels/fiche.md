@@ -17,7 +17,7 @@ questions:
   - Comment distinguer un aléa naturel et un risque ?
   - Comment réduire la vulnérabilité aux risques ?
 classes: 5e
-prerequis:
+prerequis: volcans-et-seismes-cm
 niveaux: cycle-4
 competences: distinguer-alea-enjeu-et-risque, associer-un-risque-a-un-territoire, identifier-les-acteurs-de-la-prevention, concevoir-une-preparation-a-un-risque, discuter-des-choix-sociaux-et-territoriaux-face-a-un-risque
 ---

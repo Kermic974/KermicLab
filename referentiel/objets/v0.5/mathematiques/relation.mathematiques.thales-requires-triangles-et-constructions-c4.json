@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.thales-requires-triangles-et-constructions-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thales/contenu.json"
+  },
+  "source": "notion.mathematiques.thales",
+  "target": "notion.mathematiques.triangles-et-constructions-c4",
+  "rationale": "« Triangles : angles, droites remarquables et constructions » : Thalès mobilise les triangles et leurs constructions et la proportionnalité."
+}

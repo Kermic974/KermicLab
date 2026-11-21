@@ -17,7 +17,7 @@ questions:
   - Quelle différence entre migration interne et internationale ?
   - Pourquoi étudier les migrations internationales ?
 classes: 4e
-prerequis: mobilites
+prerequis: mobilites, question-demographique-c4
 niveaux: cycle-4
 competences: distinguer-migration-interne-internationale-et-mobilite-de-loisirs, identifier-les-droits-des-migrants-et-l-instance-d-asile, analyser-un-reseau-migratoire, discuter-une-politique-migratoire-et-ses-representations
 ---

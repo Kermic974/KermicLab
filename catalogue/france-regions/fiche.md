@@ -20,7 +20,7 @@ questions:
   - Comment les régions de France sont-elles reliées au monde ?
   - Quels défis rencontrent les régions d'outre-mer ?
 classes: 3e
-prerequis:
+prerequis: france-europe-monde-cm
 niveaux: cycle-4, seconde, premiere, terminale
 competences: localiser-les-regions-de-france-metropolitaine-et-d-outre-mer, calculer-un-total-a-partir-d-un-decoupage-administratif, distinguer-les-competences-d-une-region-et-d-autres-collectivites, situer-un-territoire-ultramarin-dans-son-espace-regional, analyser-les-liens-mondiaux-d-une-region
 ---

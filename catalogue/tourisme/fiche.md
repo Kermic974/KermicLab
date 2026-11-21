@@ -21,7 +21,7 @@ questions:
   - Quelle différence entre un touriste et un excursionniste ?
   - C'est quoi le surtourisme ?
 classes: 4e
-prerequis: mobilites
+prerequis: mobilites, habiter-le-littoral-6e
 niveaux: cycle-4, seconde, premiere, terminale
 competences: distinguer-touriste-et-excursionniste, calculer-un-nombre-de-nuitees, analyser-les-flux-et-les-acteurs-touristiques, evaluer-les-effets-du-tourisme-sur-un-territoire, proposer-une-transformation-touristique-durable
 ---

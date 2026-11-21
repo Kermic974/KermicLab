@@ -31,7 +31,7 @@ questions:
   - je ne comprends pas les dixièmes et les centièmes
   - comment comparer des nombres à virgule
   - what are decimals?
-prerequis:
+prerequis: nombres-decimaux-cm, calcul-avec-decimaux-cm
 niveaux: cycle-3, cycle-4, seconde
 competences: lire-un-nombre-decimal, comparer-des-decimaux, arrondir-un-decimal, calculer-avec-des-decimaux
 ---

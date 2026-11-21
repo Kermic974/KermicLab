@@ -5,15 +5,7 @@ sujet: mathematiques/puissances
 version: 1.0.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 4e
-prerequis:
-  - nombres-decimaux
-competences:
-  - calculer-une-puissance
-  - utiliser-les-puissances-de-10
-  - ecrire-en-notation-scientifique
-  - appliquer-les-regles-de-calcul-des-puissances
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -34,6 +26,9 @@ questions:
   - je ne comprends pas les puissances de 10
   - à quoi sert un exposant ?
   - what is an exponent?
+prerequis: nombres-decimaux, nombres-relatifs
+niveaux: cycle-4, seconde
+competences: calculer-une-puissance, utiliser-les-puissances-de-10, ecrire-en-notation-scientifique, appliquer-les-regles-de-calcul-des-puissances
 ---
 
 # Les puissances

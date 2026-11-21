@@ -19,7 +19,7 @@ questions:
   - Quelle différence entre l'Union européenne et la zone euro ?
   - Comment fonctionne la cohésion européenne ?
 classes: 3e
-prerequis:
+prerequis: france-europe-monde-cm
 niveaux: cycle-4, seconde, premiere, terminale
 competences: distinguer-ue-zone-euro-et-espace-schengen, interpreter-un-exemple-de-statut-a-geometrie-variable, calculer-la-part-d-un-financement-europeen-dans-un-projet, analyser-les-ecarts-entre-territoires-de-l-ue, identifier-les-echelles-de-decision-europeennes
 ---

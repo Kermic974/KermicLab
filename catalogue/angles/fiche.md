@@ -34,7 +34,7 @@ questions:
   - je ne comprends pas les angles alternes-internes
   - c'est quoi un triangle isocèle ?
   - what is an obtuse angle?
-prerequis:
+prerequis: angles-cm
 niveaux: cycle-3, cycle-4, seconde
 competences: nommer-et-mesurer-un-angle, utiliser-la-somme-des-angles-d-un-triangle, reconnaitre-les-angles-formes-par-des-paralleles, calculer-un-angle-manquant
 ---

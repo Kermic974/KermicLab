@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.loi-binomiale-requires-variables-aleatoires-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/loi-binomiale/contenu.json"
+  },
+  "source": "notion.mathematiques.loi-binomiale",
+  "target": "notion.mathematiques.variables-aleatoires-l",
+  "rationale": "« Variables aléatoires : espérance, variance et écart type » : Espérance et variance d’une variable aléatoire précèdent la loi binomiale."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-requires-trigonometrie-radian-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/produit-scalaire/contenu.json"
+  },
+  "source": "notion.mathematiques.produit-scalaire",
+  "target": "notion.mathematiques.trigonometrie-radian-l",
+  "rationale": "« Trigonométrie : radian, cosinus et sinus d'un réel » : Le produit scalaire mobilise cosinus, radian, distances et coordonnées."
+}

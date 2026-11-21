@@ -54,7 +54,7 @@ questions:
   - comment la lithosphère s'enfonce-t-elle lors d'une subduction ?
   - comment une faille transformante provoque-t-elle un séisme ?
 classes: 4e
-prerequis:
+prerequis: volcans-et-seismes-cm
 niveaux: cycle-4, seconde, premiere
 competences: localiser-l-epicentre-et-le-foyer-d-un-seisme, distinguer-eruption-effusive-et-eruption-explosive, calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse, associer-un-phenomene-geologique-a-un-contexte-tectonique, expliquer-le-volcanisme-de-point-chaud
 ---

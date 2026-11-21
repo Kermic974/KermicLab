@@ -15,7 +15,7 @@ questions:
   - Comment l'État de droit limite-t-il le pouvoir ?
   - what is the rule of law?
 classes: 4e
-prerequis: droits-de-lhomme
+prerequis: droits-de-lhomme, droit-et-regle-6e
 niveaux: cycle-4
 competences: expliquer-la-soumission-des-gouvernants-au-droit, identifier-la-hierarchie-des-normes, identifier-un-controle-contre-une-decision-publique-illegale, distinguer-abondance-de-lois-et-etat-de-droit
 ---

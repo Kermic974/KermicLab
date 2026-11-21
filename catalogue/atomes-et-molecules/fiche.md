@@ -33,7 +33,7 @@ questions:
   - comment équilibrer une équation de réaction
   - what is an atom?
 classes: 4e, 3e
-prerequis:
+prerequis: etats-de-la-matiere
 niveaux: cycle-4, seconde
 competences: lire-une-formule-chimique, distinguer-les-reactifs-des-produits, equilibrer-une-equation-de-reaction, decrire-la-structure-d-un-atome, interpreter-la-formation-d-un-ion
 ---

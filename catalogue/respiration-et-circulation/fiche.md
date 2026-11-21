@@ -31,7 +31,7 @@ questions:
   - pourquoi le cœur bat plus vite pendant un effort ?
   - how does blood circulation work?
 classes: 5e
-prerequis:
+prerequis: organisme-et-effort-6e, respiration-circulation-cm
 niveaux: cycle-4, seconde
 competences: decrire-les-echanges-gazeux-dans-les-poumons, decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux, expliquer-le-role-des-globules-rouges, calculer-un-debit-cardiaque, relier-l-effort-physique-aux-besoins-des-cellules
 ---

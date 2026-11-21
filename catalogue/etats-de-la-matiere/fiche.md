@@ -29,7 +29,7 @@ questions:
   - à quelle température l'eau entre en ébullition ?
   - what are the states of matter?
 classes: 5e
-prerequis:
+prerequis: etats-matiere-et-melanges-6e, etats-et-changements-cm
 niveaux: cycle-4, seconde
 competences: identifier-un-etat-a-partir-de-ses-proprietes, nommer-un-changement-d-etat, interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat, decrire-un-etat-avec-le-modele-particulaire, appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat
 ---

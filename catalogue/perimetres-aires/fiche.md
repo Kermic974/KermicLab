@@ -28,7 +28,7 @@ questions:
   - je ne comprends pas le périmètre d'un cercle
   - comment calculer l'aire d'un disque
   - how do you find the area of a rectangle?
-prerequis:
+prerequis: perimetre-aire-cm
 niveaux: cycle-3, cycle-4, seconde
 competences: calculer-le-perimetre-d-un-polygone, calculer-l-aire-d-un-polygone, calculer-perimetre-et-aire-d-un-disque, convertir-des-unites-d-aire, prevoir-l-effet-d-un-agrandissement-sur-une-aire
 ---

@@ -26,7 +26,7 @@ questions:
   - c'est quoi un pKa ?
   - what is an acid?
 classes: 3e
-prerequis:
+prerequis: atomes-et-molecules, transformations-chimiques-c4
 niveaux: cycle-4, seconde, premiere, terminale
 competences: classer-une-solution-sur-l-echelle-de-ph, identifier-les-especes-d-une-solution-acide-ou-basique, calculer-le-ph-depuis-la-concentration-en-ions-h3o, interpreter-l-effet-d-une-dilution-sur-le-ph, exploiter-un-couple-acide-base-et-son-pka
 ---

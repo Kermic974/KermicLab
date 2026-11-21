@@ -5,14 +5,7 @@ sujet: mathematiques/priorites-operatoires
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4
 classes: 5e
-prerequis:
-competences:
-  - appliquer-les-priorites-operatoires
-  - calculer-avec-des-parentheses
-  - calculer-une-expression-avec-des-puissances
-  - utiliser-la-calculatrice-correctement
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -33,6 +26,9 @@ questions:
   - je ne comprends pas les calculs avec parenthèses
   - comment appliquer les priorités de calcul
   - what is the order of operations?
+prerequis: entiers-et-operations-6e
+niveaux: cycle-4
+competences: appliquer-les-priorites-operatoires, calculer-avec-des-parentheses, calculer-une-expression-avec-des-puissances, utiliser-la-calculatrice-correctement
 ---
 
 # Les priorités opératoires

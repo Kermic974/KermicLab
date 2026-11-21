@@ -16,7 +16,7 @@ questions:
   - Comment préparer un projet d'engagement citoyen ?
   - what is civic engagement?
 classes: 3e
-prerequis: citoyennete, interet-general
+prerequis: citoyennete, interet-general, engagement-et-solidarite-6e
 niveaux: cycle-4
 competences: distinguer-les-formes-d-engagement-civique, definir-les-objectifs-d-un-projet-civique, verifier-la-legitimite-et-la-securite-d-une-action-collective, dresser-le-bilan-d-un-engagement
 ---

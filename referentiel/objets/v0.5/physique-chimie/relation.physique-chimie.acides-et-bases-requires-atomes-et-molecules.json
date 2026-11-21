@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.acides-et-bases-requires-atomes-et-molecules",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/acides-et-bases/contenu.json"
+  },
+  "source": "notion.physique-chimie.acides-et-bases",
+  "target": "notion.physique-chimie.atomes-et-molecules",
+  "rationale": "« Atomes, molécules et transformations chimiques » : Les ions, les réactifs et les produits précèdent l’étude des acides et des bases."
+}

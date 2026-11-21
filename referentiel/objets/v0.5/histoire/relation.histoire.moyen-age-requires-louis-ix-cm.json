@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.moyen-age-requires-louis-ix-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "notion.histoire.moyen-age",
+  "target": "notion.histoire.louis-ix-cm",
+  "rationale": "« Louis IX (Saint Louis) et le Moyen Âge chrétien » : Clovis, Charlemagne et Louis IX du cycle 3 préparent la société féodale et les pouvoirs médiévaux."
+}

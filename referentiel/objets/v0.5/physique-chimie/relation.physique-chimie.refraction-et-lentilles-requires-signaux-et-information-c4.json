@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.refraction-et-lentilles-requires-signaux-et-information-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/refraction-et-lentilles/contenu.json"
+  },
+  "source": "notion.physique-chimie.refraction-et-lentilles",
+  "target": "notion.physique-chimie.signaux-et-information-c4",
+  "rationale": "« Signaux, ondes et transmission de l'information » : Lumière, son et signaux du cycle 4 précèdent la réfraction et les lentilles."
+}

@@ -33,7 +33,7 @@ questions:
   - c'est quoi une année-lumière ?
   - how does sound travel?
 classes: 4e
-prerequis:
+prerequis: lumiere-et-son-6e
 niveaux: cycle-4, seconde
 competences: comparer-la-propagation-du-son-et-de-la-lumiere, determiner-une-distance-depuis-le-temps-de-propagation, calculer-la-frequence-d-un-signal-depuis-sa-periode, situer-un-son-sur-l-echelle-des-frequences
 ---

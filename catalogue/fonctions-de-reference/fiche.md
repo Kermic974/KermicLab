@@ -5,14 +5,6 @@ sujet: mathematiques/fonctions-de-reference
 version: 1.0.0
 date: 2026-11-01
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - fonctions-affines
-competences:
-  - etudier-la-fonction-carre
-  - etudier-la-fonction-inverse
-  - utiliser-racine-carree-et-cube
-  - resoudre-graphiquement-une-equation-ou-une-inequation
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -32,6 +24,9 @@ questions:
   - je ne comprends pas la fonction inverse
   - c'est quoi la fonction racine carrée ?
   - what is the reciprocal function?
+prerequis: fonctions-affines, notion-de-fonction-c4
+niveaux: seconde, premiere
+competences: etudier-la-fonction-carre, etudier-la-fonction-inverse, utiliser-racine-carree-et-cube, resoudre-graphiquement-une-equation-ou-une-inequation
 ---
 
 # Les fonctions de référence

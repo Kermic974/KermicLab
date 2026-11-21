@@ -1,6 +1,6 @@
 # Propositions de liens de prérequis — cycles 2, 3 et 4
 
-**Statut : proposition, à qualifier par le processus S4** ([README du référentiel](../../referentiel/README.md), [génération des lots](../../referentiel/generation-v0.5.md)).
+**Statut : traité (voir « Résultat de la qualification » ci-dessous) ; propositions conservées pour l'historique.** Initialement : proposition à qualifier par le processus S4 ([README du référentiel](../../referentiel/README.md), [génération des lots](../../referentiel/generation-v0.5.md)).
 
 ## Pourquoi ce document
 
@@ -138,3 +138,12 @@ Les notions de lycée déjà présentes sont projetées depuis S4. Liens à qual
 | `democratie` | cycle 4 | — (côté lycée : `emc-democratie-et-institutions-l` en dépend déjà) |
 
 Ces liens sont à traiter dans le même lot S4 que les propositions des cycles précédents.
+
+## Résultat de la qualification
+
+Les propositions ont été relues une à une à partir des sections des fiches : un lien n'est créé que si la notion cible traite explicitement un point que la notion source reprend ou prolonge (continuité thématique), pas par simple proximité de niveau ou chronologie. **102 `requires` ont été créés** (9 déjà présents) sur 86 notions de la V0, en `draft`, avec une justification propre à la source. Les prérequis déclarés passent de 550 à 652.
+
+**Comparaison de la recommandation** (477 scénarios : une notion maîtrisée à la fois, avant/après) : 35 recommandations changent, toutes explicables par les nouveaux prérequis. Exemple : maîtriser `angles` ne recommande plus `transformations` ; maîtriser `angles-cm` recommande désormais `angles`.
+
+**Liens non créés** (reportés dans [relations-a-revoir.md](relations-a-revoir.md)) : `la-cellule` ← notions de classification du vivant ; `afrique-australe`, `ressources` ← `question-demographique-c4` ; `theatre` ← `contes-fables-mythes-6e` ; `changement-climatique` ← `mieux-habiter-cm` ; `dynamiques-territoriales`, `espaces-productifs`, `evolution`, `forces-et-poids`, `genetique-et-heredite` ← liens faibles ou déjà traités autrement ; `antiquite` ← `prehistoire-cm` ; `moyen-age` ← `empire-romain-christianisme-6e` ; `renaissance` ← `moyen-age` (chronologie) ; `seismes-et-volcans` ← `terre-dans-le-systeme-solaire-6e` (remplacé par `volcans-et-seismes-cm`) ; `probabilites-conditionnelles` ← `statistiques-et-echantillonnage-l` ; `geometrie-dans-l-espace` ← `orthogonalite-et-espace-l` (lien inverse) ; `integrales` ← `primitives-et-equations-differentielles-l` (créerait un cycle : les primitives s'appuient déjà sur les intégrales).
+

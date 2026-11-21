@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.ecosystemes-et-biodiversite-requires-biodiversite-et-chaines-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "notion.svt.ecosystemes-et-biodiversite",
+  "target": "notion.svt.biodiversite-et-chaines-cm",
+  "rationale": "« Biodiversité et chaînes alimentaires » : Les chaînes alimentaires et la biodiversité du cycle 3 préparent les réseaux trophiques et les menaces sur la biodiversité."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.grammaire-phrase-complexe-requires-grammaire-de-la-phrase-5e-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "notion.francais.grammaire-phrase-complexe",
+  "target": "notion.francais.grammaire-de-la-phrase-5e-c4",
+  "rationale": "« Grammaire de la phrase en 5e : fonctions, expansions, propositions » : Les fonctions, expansions et propositions de 5e précèdent la phrase complexe."
+}

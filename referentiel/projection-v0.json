@@ -2480,7 +2480,8 @@
     "trigo-cercle": {
       "prerequis": [
         "pythagore",
-        "angles"
+        "angles",
+        "trigonometrie-triangle-rectangle-c4"
       ],
       "competences": [
         "relier-cosinus-et-sinus-au-cercle-unite",
@@ -2492,7 +2493,8 @@
     "pythagore": {
       "prerequis": [
         "perimetres-aires",
-        "puissances"
+        "puissances",
+        "triangles-et-constructions-c4"
       ],
       "competences": [
         "calculer-l-hypotenuse",
@@ -2501,7 +2503,10 @@
       ]
     },
     "fractions": {
-      "prerequis": [],
+      "prerequis": [
+        "fractions-cm",
+        "fractions-operations-cm"
+      ],
       "competences": [
         "comprendre-une-fraction",
         "simplifier-une-fraction",
@@ -2513,7 +2518,9 @@
     "proportionnalite": {
       "prerequis": [
         "fractions",
-        "nombres-decimaux"
+        "nombres-decimaux",
+        "proportionnalite-cm",
+        "moyenne-et-proportions-cm"
       ],
       "competences": [
         "reconnaitre-une-situation-de-proportionnalite",
@@ -2523,7 +2530,9 @@
       ]
     },
     "angles": {
-      "prerequis": [],
+      "prerequis": [
+        "angles-cm"
+      ],
       "competences": [
         "nommer-et-mesurer-un-angle",
         "utiliser-la-somme-des-angles-d-un-triangle",
@@ -2532,7 +2541,9 @@
       ]
     },
     "perimetres-aires": {
-      "prerequis": [],
+      "prerequis": [
+        "perimetre-aire-cm"
+      ],
       "competences": [
         "calculer-le-perimetre-d-un-polygone",
         "calculer-l-aire-d-un-polygone",
@@ -2543,7 +2554,8 @@
     },
     "puissances": {
       "prerequis": [
-        "nombres-decimaux"
+        "nombres-decimaux",
+        "nombres-relatifs"
       ],
       "competences": [
         "calculer-une-puissance",
@@ -2553,7 +2565,10 @@
       ]
     },
     "nombres-decimaux": {
-      "prerequis": [],
+      "prerequis": [
+        "nombres-decimaux-cm",
+        "calcul-avec-decimaux-cm"
+      ],
       "competences": [
         "lire-un-nombre-decimal",
         "comparer-des-decimaux",
@@ -2562,7 +2577,9 @@
       ]
     },
     "arithmetique": {
-      "prerequis": [],
+      "prerequis": [
+        "divisions-6e"
+      ],
       "competences": [
         "utiliser-les-criteres-de-divisibilite",
         "reconnaitre-un-nombre-premier",
@@ -2595,7 +2612,8 @@
     "derivation": {
       "prerequis": [
         "fonctions-de-reference",
-        "droites-et-systemes"
+        "droites-et-systemes",
+        "fonctions-de-reference-et-transformations-l"
       ],
       "competences": [
         "calculer-un-nombre-derive",
@@ -2618,7 +2636,8 @@
     },
     "equations": {
       "prerequis": [
-        "calcul-litteral"
+        "calcul-litteral",
+        "nombres-relatifs"
       ],
       "competences": [
         "resoudre-une-equation-du-premier-degre",
@@ -2642,7 +2661,9 @@
     "fonctions-affines": {
       "prerequis": [
         "proportionnalite",
-        "calcul-litteral"
+        "calcul-litteral",
+        "equations",
+        "notion-de-fonction-c4"
       ],
       "competences": [
         "calculer-une-image-et-un-antecedent",
@@ -2653,7 +2674,8 @@
     },
     "fonctions-de-reference": {
       "prerequis": [
-        "fonctions-affines"
+        "fonctions-affines",
+        "notion-de-fonction-c4"
       ],
       "competences": [
         "etudier-la-fonction-carre",
@@ -2688,7 +2710,8 @@
     "limites-et-continuite": {
       "prerequis": [
         "suites",
-        "fonctions-de-reference"
+        "fonctions-de-reference",
+        "limites-de-suites-l"
       ],
       "competences": [
         "calculer-une-limite-en-l-infini",
@@ -2711,7 +2734,8 @@
     "loi-binomiale": {
       "prerequis": [
         "probabilites-conditionnelles",
-        "denombrement"
+        "denombrement",
+        "variables-aleatoires-l"
       ],
       "competences": [
         "reconnaitre-un-schema-de-bernoulli",
@@ -2721,7 +2745,10 @@
       ]
     },
     "nombres-relatifs": {
-      "prerequis": [],
+      "prerequis": [
+        "entiers-et-operations-6e",
+        "nombres-decimaux"
+      ],
       "competences": [
         "reperer-et-comparer-des-relatifs",
         "additionner-et-soustraire-des-relatifs",
@@ -2730,7 +2757,9 @@
       ]
     },
     "priorites-operatoires": {
-      "prerequis": [],
+      "prerequis": [
+        "entiers-et-operations-6e"
+      ],
       "competences": [
         "appliquer-les-priorites-operatoires",
         "calculer-avec-des-parentheses",
@@ -2763,7 +2792,9 @@
     "produit-scalaire": {
       "prerequis": [
         "vecteurs",
-        "trigo-cercle"
+        "trigo-cercle",
+        "trigonometrie-radian-l",
+        "geometrie-repere-l"
       ],
       "competences": [
         "calculer-un-produit-scalaire",
@@ -2786,7 +2817,8 @@
     "second-degre": {
       "prerequis": [
         "fonctions-de-reference",
-        "equations"
+        "equations",
+        "inequations-et-signe-l"
       ],
       "competences": [
         "ecrire-la-forme-canonique",
@@ -2796,7 +2828,10 @@
       ]
     },
     "statistiques": {
-      "prerequis": [],
+      "prerequis": [
+        "reperage-et-donnees-6e",
+        "moyenne-et-proportions-cm"
+      ],
       "competences": [
         "calculer-une-moyenne-et-une-etendue",
         "determiner-une-mediane",
@@ -2817,7 +2852,8 @@
     },
     "thales": {
       "prerequis": [
-        "proportionnalite"
+        "proportionnalite",
+        "triangles-et-constructions-c4"
       ],
       "competences": [
         "calculer-une-longueur-avec-thales",
@@ -2828,7 +2864,9 @@
     },
     "transformations": {
       "prerequis": [
-        "angles"
+        "angles",
+        "symetrie-axiale-cm",
+        "reproduire-et-agrandir-cm"
       ],
       "competences": [
         "construire-un-symetrique-par-symetrie-axiale",
@@ -2838,7 +2876,9 @@
       ]
     },
     "vecteurs": {
-      "prerequis": [],
+      "prerequis": [
+        "transformations"
+      ],
       "competences": [
         "representer-un-vecteur",
         "utiliser-la-relation-de-chasles",
@@ -2848,7 +2888,8 @@
     },
     "vitesse": {
       "prerequis": [
-        "proportionnalite"
+        "proportionnalite",
+        "mouvement-et-vitesse-6e"
       ],
       "competences": [
         "calculer-vitesse-distance-et-duree",
@@ -2859,7 +2900,8 @@
     },
     "volumes": {
       "prerequis": [
-        "perimetres-aires"
+        "perimetres-aires",
+        "volumes-contenances-cm"
       ],
       "competences": [
         "calculer-le-volume-d-un-pave",
@@ -2880,7 +2922,10 @@
       ]
     },
     "acides-et-bases": {
-      "prerequis": [],
+      "prerequis": [
+        "atomes-et-molecules",
+        "transformations-chimiques-c4"
+      ],
       "competences": [
         "classer-une-solution-sur-l-echelle-de-ph",
         "identifier-les-especes-d-une-solution-acide-ou-basique",
@@ -2890,7 +2935,9 @@
       ]
     },
     "atomes-et-molecules": {
-      "prerequis": [],
+      "prerequis": [
+        "etats-de-la-matiere"
+      ],
       "competences": [
         "lire-une-formule-chimique",
         "distinguer-les-reactifs-des-produits",
@@ -2933,7 +2980,9 @@
       ]
     },
     "electricite": {
-      "prerequis": [],
+      "prerequis": [
+        "electricite-circuits-cm"
+      ],
       "competences": [
         "distinguer-un-montage-en-serie-d-un-montage-en-derivation",
         "mesurer-intensite-et-tension-dans-un-circuit",
@@ -2943,7 +2992,10 @@
       ]
     },
     "energie": {
-      "prerequis": [],
+      "prerequis": [
+        "energie-et-signaux-6e",
+        "energie-et-sources-cm"
+      ],
       "competences": [
         "identifier-les-formes-d-energie-dans-une-conversion",
         "calculer-le-rendement-d-une-conversion-d-energie",
@@ -2965,7 +3017,10 @@
       ]
     },
     "etats-de-la-matiere": {
-      "prerequis": [],
+      "prerequis": [
+        "etats-matiere-et-melanges-6e",
+        "etats-et-changements-cm"
+      ],
       "competences": [
         "identifier-un-etat-a-partir-de-ses-proprietes",
         "nommer-un-changement-d-etat",
@@ -3010,7 +3065,9 @@
     },
     "masse-volumique-et-melanges": {
       "prerequis": [
-        "etats-de-la-matiere"
+        "etats-de-la-matiere",
+        "masse-et-volume-6e",
+        "melanges-et-solutions-cm"
       ],
       "competences": [
         "calculer-une-masse-volumique",
@@ -3021,7 +3078,9 @@
       ]
     },
     "mouvements": {
-      "prerequis": [],
+      "prerequis": [
+        "mouvement-et-vitesse-6e"
+      ],
       "competences": [
         "identifier-la-trajectoire-dans-un-referentiel-donne",
         "determiner-une-vitesse-depuis-la-distance-et-la-duree",
@@ -3057,7 +3116,8 @@
     "quantite-de-matiere": {
       "prerequis": [
         "atomes-et-molecules",
-        "masse-volumique-et-melanges"
+        "masse-volumique-et-melanges",
+        "transformations-chimiques-c4"
       ],
       "competences": [
         "calculer-une-quantite-de-matiere-a-partir-de-la-masse",
@@ -3080,7 +3140,8 @@
     },
     "refraction-et-lentilles": {
       "prerequis": [
-        "son-et-lumiere"
+        "son-et-lumiere",
+        "signaux-et-information-c4"
       ],
       "competences": [
         "identifier-un-rayon-reflechi-ou-refracte",
@@ -3090,7 +3151,9 @@
       ]
     },
     "son-et-lumiere": {
-      "prerequis": [],
+      "prerequis": [
+        "lumiere-et-son-6e"
+      ],
       "competences": [
         "comparer-la-propagation-du-son-et-de-la-lumiere",
         "determiner-une-distance-depuis-le-temps-de-propagation",
@@ -3174,7 +3237,10 @@
       ]
     },
     "ecosystemes-et-biodiversite": {
-      "prerequis": [],
+      "prerequis": [
+        "biodiversite-et-chaines-cm",
+        "classification-du-vivant-6e"
+      ],
       "competences": [
         "construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations",
         "distinguer-producteurs-consommateurs-et-decomposeurs",
@@ -3312,7 +3378,10 @@
       ]
     },
     "nutrition-et-digestion": {
-      "prerequis": [],
+      "prerequis": [
+        "nutrition-et-alimentation-6e",
+        "alimentation-digestion-cm"
+      ],
       "competences": [
         "legender-les-organes-du-tube-digestif",
         "expliquer-la-digestion-chimique-par-les-enzymes",
@@ -3322,7 +3391,10 @@
       ]
     },
     "photosynthese": {
-      "prerequis": [],
+      "prerequis": [
+        "developpement-vegetaux-cm",
+        "nutrition-et-alimentation-6e"
+      ],
       "competences": [
         "identifier-les-besoins-des-vegetaux",
         "decrire-le-role-des-chloroplastes",
@@ -3332,7 +3404,10 @@
       ]
     },
     "reproduction-humaine": {
-      "prerequis": [],
+      "prerequis": [
+        "reproduction-et-cycles-de-vie-6e",
+        "reproduction-et-puberte-cm"
+      ],
       "competences": [
         "identifier-les-gametes-et-leur-origine",
         "decrire-la-fecondation",
@@ -3341,7 +3416,10 @@
       ]
     },
     "respiration-et-circulation": {
-      "prerequis": [],
+      "prerequis": [
+        "organisme-et-effort-6e",
+        "respiration-circulation-cm"
+      ],
       "competences": [
         "decrire-les-echanges-gazeux-dans-les-poumons",
         "decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux",
@@ -3351,7 +3429,9 @@
       ]
     },
     "seismes-et-volcans": {
-      "prerequis": [],
+      "prerequis": [
+        "volcans-et-seismes-cm"
+      ],
       "competences": [
         "localiser-l-epicentre-et-le-foyer-d-un-seisme",
         "distinguer-eruption-effusive-et-eruption-explosive",
@@ -3373,7 +3453,9 @@
       ]
     },
     "systeme-immunitaire": {
-      "prerequis": [],
+      "prerequis": [
+        "microbes-et-sante-c4"
+      ],
       "competences": [
         "identifier-les-barrieres-de-l-organisme-contre-les-microbes",
         "distinguer-immunite-innee-et-immunite-adaptative",
@@ -3394,7 +3476,9 @@
       ]
     },
     "antiquite": {
-      "prerequis": [],
+      "prerequis": [
+        "gaulois-gallo-romains-cm"
+      ],
       "competences": [
         "situer-les-reperes-chronologiques-de-la-grece-et-de-rome",
         "comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine",
@@ -3405,7 +3489,8 @@
     },
     "construction-europeenne": {
       "prerequis": [
-        "seconde-guerre-mondiale"
+        "seconde-guerre-mondiale",
+        "france-europe-depuis-1945-cm"
       ],
       "competences": [
         "expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945",
@@ -3417,7 +3502,8 @@
     },
     "decolonisation": {
       "prerequis": [
-        "seconde-guerre-mondiale"
+        "seconde-guerre-mondiale",
+        "colonisations-c4"
       ],
       "competences": [
         "expliquer-les-causes-de-l-acceleration-de-la-decolonisation-apres-1945",
@@ -3463,7 +3549,10 @@
       ]
     },
     "moyen-age": {
-      "prerequis": [],
+      "prerequis": [
+        "clovis-charlemagne-cm",
+        "louis-ix-cm"
+      ],
       "competences": [
         "situer-les-grandes-periodes-du-moyen-age",
         "decrire-l-organisation-d-une-seigneurie",
@@ -3485,7 +3574,9 @@
     },
     "premiere-guerre-mondiale": {
       "prerequis": [
-        "revolution-industrielle"
+        "revolution-industrielle",
+        "guerres-mondiales-cm",
+        "colonisations-c4"
       ],
       "competences": [
         "placer-les-grands-reperes-de-1914-a-1918",
@@ -3496,7 +3587,9 @@
       ]
     },
     "renaissance": {
-      "prerequis": [],
+      "prerequis": [
+        "francois-ier-cm"
+      ],
       "competences": [
         "situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte",
         "caracteriser-l-humanisme-et-ses-acteurs",
@@ -3507,7 +3600,8 @@
     "revolution-francaise": {
       "prerequis": [
         "lumieres",
-        "temps-modernes"
+        "temps-modernes",
+        "revolution-empire-cm"
       ],
       "competences": [
         "ordonner-les-evenements-de-1789",
@@ -3518,7 +3612,9 @@
       ]
     },
     "revolution-industrielle": {
-      "prerequis": [],
+      "prerequis": [
+        "age-industriel-cm"
+      ],
       "competences": [
         "situer-les-debuts-de-l-industrialisation",
         "expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer",
@@ -3542,7 +3638,8 @@
     },
     "temps-modernes": {
       "prerequis": [
-        "renaissance"
+        "renaissance",
+        "louis-xiv-cm"
       ],
       "competences": [
         "situer-les-reperes-majeurs-de-1492-a-1789",
@@ -3565,7 +3662,8 @@
     },
     "ve-republique": {
       "prerequis": [
-        "decolonisation"
+        "decolonisation",
+        "republique-ecole-cm"
       ],
       "competences": [
         "expliquer-les-circonstances-de-la-naissance-de-la-ve-republique",
@@ -3623,7 +3721,10 @@
       ]
     },
     "espaces-ruraux": {
-      "prerequis": [],
+      "prerequis": [
+        "habiter-ville-campagne-cm",
+        "paysages-et-ressources-cm"
+      ],
       "competences": [
         "identifier-les-fonctions-d-un-espace-rural",
         "analyser-les-liens-entre-un-espace-rural-et-ses-voisins",
@@ -3632,7 +3733,9 @@
       ]
     },
     "france-regions": {
-      "prerequis": [],
+      "prerequis": [
+        "france-europe-monde-cm"
+      ],
       "competences": [
         "localiser-les-regions-de-france-metropolitaine-et-d-outre-mer",
         "calculer-un-total-a-partir-d-un-decoupage-administratif",
@@ -3654,7 +3757,8 @@
     },
     "mers-oceans": {
       "prerequis": [
-        "mondialisation"
+        "mondialisation",
+        "habiter-le-littoral-6e"
       ],
       "competences": [
         "localiser-routes-ports-et-passages-strategiques",
@@ -3678,7 +3782,8 @@
     },
     "migrations": {
       "prerequis": [
-        "mobilites"
+        "mobilites",
+        "question-demographique-c4"
       ],
       "competences": [
         "distinguer-migration-interne-internationale-et-mobilite-de-loisirs",
@@ -3688,7 +3793,9 @@
       ]
     },
     "mobilites": {
-      "prerequis": [],
+      "prerequis": [
+        "se-deplacer-transports-cm"
+      ],
       "competences": [
         "distinguer-les-motifs-et-les-modes-de-deplacement",
         "analyser-l-acces-inegal-aux-transports",
@@ -3698,7 +3805,9 @@
       ]
     },
     "mondialisation": {
-      "prerequis": [],
+      "prerequis": [
+        "monde-en-villes-cm"
+      ],
       "competences": [
         "identifier-les-flux-de-marchandises-de-capitaux-et-d-informations",
         "caracteriser-les-acteurs-de-la-mondialisation",
@@ -3718,7 +3827,9 @@
       ]
     },
     "risques-naturels": {
-      "prerequis": [],
+      "prerequis": [
+        "volcans-et-seismes-cm"
+      ],
       "competences": [
         "distinguer-alea-enjeu-et-risque",
         "associer-un-risque-a-un-territoire",
@@ -3729,7 +3840,8 @@
     },
     "tourisme": {
       "prerequis": [
-        "mobilites"
+        "mobilites",
+        "habiter-le-littoral-6e"
       ],
       "competences": [
         "distinguer-touriste-et-excursionniste",
@@ -3740,7 +3852,9 @@
       ]
     },
     "union-europeenne": {
-      "prerequis": [],
+      "prerequis": [
+        "france-europe-monde-cm"
+      ],
       "competences": [
         "distinguer-ue-zone-euro-et-espace-schengen",
         "interpreter-un-exemple-de-statut-a-geometrie-variable",
@@ -3750,7 +3864,9 @@
       ]
     },
     "urbanisation": {
-      "prerequis": [],
+      "prerequis": [
+        "habiter-une-metropole-6e"
+      ],
       "competences": [
         "interpreter-l-evolution-de-la-part-de-population-urbaine",
         "distinguer-centre-banlieue-et-couronne-periurbaine",
@@ -3761,7 +3877,8 @@
     },
     "accords": {
       "prerequis": [
-        "conjugaison-temps"
+        "conjugaison-temps",
+        "orthographe-grammaticale-6e"
       ],
       "competences": [
         "accorder-un-nom-un-determinant-et-un-adjectif",
@@ -3773,7 +3890,8 @@
     },
     "analyse-texte": {
       "prerequis": [
-        "figures-de-style"
+        "figures-de-style",
+        "recit-d-aventures-6e"
       ],
       "competences": [
         "identifier-le-narrateur-et-le-point-de-vue-d-un-texte",
@@ -3785,7 +3903,8 @@
     },
     "argumentation": {
       "prerequis": [
-        "grammaire-phrase-complexe"
+        "grammaire-phrase-complexe",
+        "ecrire-et-reecrire-c4"
       ],
       "competences": [
         "identifier-la-these-d-un-texte-argumentatif",
@@ -3796,7 +3915,10 @@
       ]
     },
     "conjugaison-temps": {
-      "prerequis": [],
+      "prerequis": [
+        "conjugaison-cm",
+        "temps-du-recit-6e"
+      ],
       "competences": [
         "situer-une-action-dans-le-temps-avec-le-temps-adapte",
         "former-l-imparfait-et-le-passe-compose",
@@ -3806,7 +3928,9 @@
       ]
     },
     "figures-de-style": {
-      "prerequis": [],
+      "prerequis": [
+        "poesie-6e"
+      ],
       "competences": [
         "identifier-une-comparaison-et-une-metaphore",
         "identifier-une-personnification",
@@ -3816,7 +3940,9 @@
       ]
     },
     "grammaire-phrase-complexe": {
-      "prerequis": [],
+      "prerequis": [
+        "grammaire-de-la-phrase-5e-c4"
+      ],
       "competences": [
         "compter-les-propositions-d-une-phrase",
         "distinguer-juxtaposition-coordination-et-subordination",
@@ -3838,7 +3964,8 @@
     },
     "poesie": {
       "prerequis": [
-        "figures-de-style"
+        "figures-de-style",
+        "poesie-6e"
       ],
       "competences": [
         "compter-les-syllabes-d-un-vers-et-identifier-une-strophe",
@@ -3849,7 +3976,9 @@
       ]
     },
     "roman": {
-      "prerequis": [],
+      "prerequis": [
+        "recits-d-aventures-et-voyages-c4"
+      ],
       "competences": [
         "identifier-le-debut-d-un-roman-et-sa-situation-initiale",
         "distinguer-auteur-narrateur-et-personnage",
@@ -3871,7 +4000,8 @@
     "citoyennete": {
       "prerequis": [
         "democratie",
-        "droits-de-lhomme"
+        "droits-de-lhomme",
+        "devise-republique-cm"
       ],
       "competences": [
         "distinguer-citoyennete-juridique-et-participation-a-la-vie-collective",
@@ -3882,7 +4012,8 @@
     },
     "democratie": {
       "prerequis": [
-        "liberte"
+        "liberte",
+        "citoyen-et-engagement-cm"
       ],
       "competences": [
         "expliquer-le-pluralisme-politique",
@@ -3893,7 +4024,8 @@
     },
     "discrimination": {
       "prerequis": [
-        "egalite"
+        "egalite",
+        "regles-vivre-ensemble-6e"
       ],
       "competences": [
         "distinguer-stereotype-prejuge-et-discrimination",
@@ -3903,7 +4035,9 @@
       ]
     },
     "droits-de-lhomme": {
-      "prerequis": [],
+      "prerequis": [
+        "droit-et-regle-6e"
+      ],
       "competences": [
         "distinguer-les-familles-de-droits-humains",
         "identifier-la-portee-des-textes-ddhc-dudh-cedh",
@@ -3912,7 +4046,9 @@
       ]
     },
     "egalite": {
-      "prerequis": [],
+      "prerequis": [
+        "regles-vivre-ensemble-6e"
+      ],
       "competences": [
         "distinguer-egalite-de-droits-et-egalite-reelle",
         "justifier-un-amenagement-adapte-a-une-situation-de-handicap",
@@ -3923,7 +4059,8 @@
     "engagement-civique": {
       "prerequis": [
         "citoyennete",
-        "interet-general"
+        "interet-general",
+        "engagement-et-solidarite-6e"
       ],
       "competences": [
         "distinguer-les-formes-d-engagement-civique",
@@ -3934,7 +4071,8 @@
     },
     "etat-de-droit": {
       "prerequis": [
-        "droits-de-lhomme"
+        "droits-de-lhomme",
+        "droit-et-regle-6e"
       ],
       "competences": [
         "expliquer-la-soumission-des-gouvernants-au-droit",
@@ -3944,7 +4082,9 @@
       ]
     },
     "fraternite": {
-      "prerequis": [],
+      "prerequis": [
+        "engagement-et-solidarite-6e"
+      ],
       "competences": [
         "expliquer-la-fraternite-comme-principe-republicain",
         "distinguer-solidarite-et-assistance-humiliante",
@@ -3965,7 +4105,8 @@
     },
     "justice": {
       "prerequis": [
-        "etat-de-droit"
+        "etat-de-droit",
+        "droit-et-regle-6e"
       ],
       "competences": [
         "distinguer-justice-et-vengeance",
@@ -3976,7 +4117,8 @@
     },
     "laicite": {
       "prerequis": [
-        "liberte"
+        "liberte",
+        "laicite-et-liberte-cm"
       ],
       "competences": [
         "expliquer-la-liberte-de-conscience-protegee-par-la-laicite",
@@ -3986,7 +4128,9 @@
       ]
     },
     "liberte": {
-      "prerequis": [],
+      "prerequis": [
+        "droit-et-regle-6e"
+      ],
       "competences": [
         "distinguer-liberte-et-absence-de-limites",
         "identifier-les-libertes-protegees-par-les-textes",

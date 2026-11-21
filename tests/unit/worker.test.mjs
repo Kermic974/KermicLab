@@ -694,7 +694,7 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   assert.ok(notions.filter((n) => n.notionsLiees).every((n) => n.matiere === "jeux"));
   // Référentiel (issue #186) : prérequis et niveaux exposés quand la fiche les renseigne, pour la recommandation.
   const equations = notions.find((n) => n.id === "equations");
-  assert.deepEqual(equations.prerequis, ["calcul-litteral"]);
+  assert.deepEqual(equations.prerequis, ["calcul-litteral", "nombres-relatifs"]);
   assert.deepEqual(equations.niveaux, ["cycle-4", "seconde"]);
   // Résumé facultatif (écran Jeux) : présent seulement quand la fiche le déclare, jamais inventé.
   const jeux = notions.filter((n) => n.matiere === "jeux");

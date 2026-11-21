@@ -26,7 +26,7 @@ questions:
   - comment additionner des fractions
   - je ne comprends pas le numérateur et le dénominateur
   - what is a fraction?
-prerequis:
+prerequis: fractions-cm, fractions-operations-cm
 niveaux: cycle-3, cycle-4, seconde
 competences: comprendre-une-fraction, simplifier-une-fraction, comparer-des-fractions, additionner-des-fractions, multiplier-des-fractions
 ---

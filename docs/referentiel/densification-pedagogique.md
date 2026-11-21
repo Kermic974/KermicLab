@@ -67,3 +67,7 @@ Dernier lot : les **259 notions** du catalogue qui n'avaient pas d'objets canoni
 
 Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages`, lint et `npm test` (926 tests) passent.
 
+## Liens depuis les notions V0 vers les cycles précédents (processus S4)
+
+Qualification des propositions de `propositions-liens-cycles-2-3-4.md` : **102 `requires`** créés sur 86 notions de la V0 (en `draft`, justification propre à chaque source), les autres écartés et documentés dans `relations-a-revoir.md`. Les prérequis déclarés passent de **550 à 652**. Comparaison de la recommandation sur 477 scénarios (une notion maîtrisée à la fois) : **35 recommandations changent**, toutes expliquées par les nouveaux prérequis. `niveaux`, `classes` et compétences des fiches sont inchangés ; seuls les `prerequis` des 82 fiches concernées évoluent. Deux tests d'attendus ont été mis à jour (`proportionnalite` et `equations` ont de nouveaux prérequis).
+
