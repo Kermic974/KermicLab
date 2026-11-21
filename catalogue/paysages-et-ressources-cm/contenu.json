@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La France a des paysages variés : montagnes, plaines, littoraux, forêts, villes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une mosaïque de paysages",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La France compte des **plaines** (Bassin parisien, Aquitaine), des **montagnes** (Alpes, Pyrénées, Massif central, Vosges, Jura), des **fleuves** (Seine, Loire, Garonne, Rhône) et des **littoraux** sur la Manche, l'Atlantique et la Méditerranée.",
+        "Le **mont Blanc** (4 805 m) est le plus haut sommet des Alpes et d'Europe occidentale."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les Alpes : sports d'hiver, élevage.",
+          "La Beauce : céréales, grandes plaines.",
+          "La Côte d'Azur : tourisme."
+        ]
+      },
+      "aRetenir": "Relief : plaines, montagnes ; eau : fleuves, mers."
+    },
+    {
+      "titre": "Ressources et activités",
+      "niveau": "CM1",
+      "paragraphes": [
+        "Les **ressources** sont ce que la nature offre : eau, sol, forêts, énergie. L'**agriculture** produit des aliments ; l'**industrie** les transforme ; les **services** (commerce, transports, tourisme) emploient la majorité des actifs.",
+        "Ce que nous consommons vient d'ici et d'ailleurs : une partie est produite en France, une partie importée. Pour mieux consommer : produits locaux, de saison, moins de gaspillage."
+      ],
+      "exemple": {
+        "titre": "Exemple : une tablette de chocolat",
+        "etapes": [
+          "Cacao : cultivé en Afrique.",
+          "Sucre, lait : produits en France.",
+          "Fabrication et emballage : usine, puis transport."
+        ]
+      },
+      "aRetenir": "Importations et exportations relient les pays."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est le plus haut sommet des Alpes françaises ?",
+        "choix": [
+          "Le mont Blanc",
+          "Le Puy de Dôme",
+          "Le Ballon d'Alsace",
+          "Le Mont-Saint-Michel"
+        ],
+        "bonne": 0,
+        "explication": "4 805 m."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel fleuve traverse Paris ?",
+        "choix": [
+          "La Seine",
+          "La Loire",
+          "Le Rhône",
+          "La Garonne"
+        ],
+        "bonne": 0,
+        "explication": "La Seine."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un produit de saison est…",
+        "choix": [
+          "cultivé à la bonne période de l'année",
+          "toujours importé",
+          "cuit à l'avance",
+          "emballé en plastique"
+        ],
+        "bonne": 0,
+        "explication": "Il est récolté au bon moment."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le voyage des produits",
+    "histoire": [
+      "Tu suis le trajet d'un yaourt à la fraise, du champ au supermarché."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où est produit le lait ?",
+        "choix": [
+          "Dans une exploitation agricole",
+          "Dans une mine",
+          "Dans un port",
+          "Dans une usine d'automobiles"
+        ],
+        "bonne": 0,
+        "explication": "Chez un éleveur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que fait l'usine ?",
+        "choix": [
+          "Elle transforme le lait en yaourt",
+          "Elle cultive les fraises",
+          "Elle vend aux clients",
+          "Elle construit les routes"
+        ],
+        "bonne": 0,
+        "explication": "Transformation = industrie."
+      }
+    ],
+    "conclusion": "Tu comprends d'où viennent tes produits !"
+  }
+}

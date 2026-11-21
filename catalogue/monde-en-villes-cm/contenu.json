@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les hommes sont inégalement répartis sur Terre, de plus en plus dans de grandes villes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le globe",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La Terre compte **cinq océans** (Pacifique, Atlantique, Indien, Arctique, Austral) et **sept continents** (Afrique, Amérique du Nord, Amérique du Sud, Antarctique, Asie, Europe, Océanie).",
+        "Plus de **8 milliards d'habitants** vivent sur Terre. L'Asie est le continent le plus peuplé."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le Pacifique est le plus grand océan.",
+          "L'Asie compte plus de la moitié de la population mondiale.",
+          "L'Antarctique n'a pas d'habitants permanents."
+        ]
+      },
+      "aRetenir": "7 continents, 5 océans."
+    },
+    {
+      "titre": "Les mégalopoles",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Plus de la moitié des habitants vivent en ville. Les villes très grandes (plus de 10 millions d'habitants) sont des **mégalopoles** : Tokyo, Delhi, Shanghai, São Paulo, Mexico, Le Caire.",
+        "Elles concentrent emplois, universités, entreprises, mais aussi problèmes : pollution, embouteillages, quartiers pauvres."
+      ],
+      "exemple": {
+        "titre": "Exemple : Tokyo",
+        "etapes": [
+          "Plus de 37 millions d'habitants dans l'agglomération.",
+          "Métro, trains rapides, gratte-ciel.",
+          "Un exemple de ville mondiale."
+        ]
+      },
+      "aRetenir": "Une mégalopole dépasse 10 millions d'habitants."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de continents compte-t-on ?",
+        "reponse": 7,
+        "indices": [
+          "Compte-les en les nommant."
+        ],
+        "solution": "Afrique, Amérique du Nord, Amérique du Sud, Antarctique, Asie, Europe, Océanie.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel océan est le plus grand ?",
+        "choix": [
+          "Le Pacifique",
+          "L'Atlantique",
+          "L'Indien",
+          "L'Arctique"
+        ],
+        "bonne": 0,
+        "explication": "Le Pacifique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans quelle ville se trouve la plus grande population urbaine ?",
+        "choix": [
+          "Tokyo",
+          "Paris",
+          "Lyon",
+          "Londres"
+        ],
+        "bonne": 0,
+        "explication": "L'agglomération de Tokyo dépasse 35 millions d'habitants."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tour du monde",
+    "histoire": [
+      "Tu pars faire le tour du monde en pointant les villes sur une carte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Sur quel continent se trouve Tokyo ?",
+        "choix": [
+          "L'Asie",
+          "L'Europe",
+          "L'Afrique",
+          "L'Océanie"
+        ],
+        "bonne": 0,
+        "explication": "Tokyo est au Japon, en Asie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Sur quel continent se trouve São Paulo ?",
+        "choix": [
+          "L'Amérique du Sud",
+          "L'Amérique du Nord",
+          "L'Asie",
+          "L'Europe"
+        ],
+        "bonne": 0,
+        "explication": "São Paulo est au Brésil."
+      }
+    ],
+    "conclusion": "Tour du monde réussi !"
+  }
+}

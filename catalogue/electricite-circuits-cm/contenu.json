@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une pile, une ampoule et des fils : le courant circule seulement dans un circuit fermé.",
+  "niveaux": [
+    {
+      "titre": "Intuition : allumer une ampoule",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour allumer une ampoule avec une pile, il faut un **circuit fermé** : la pile, l'ampoule et les fils forment une boucle sans coupure. Un **interrupteur** ouvre ou ferme le circuit.",
+        "Si le circuit est **ouvert** (un fil débranché), le courant ne passe pas et l'ampoule reste éteinte."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Pile + fil + ampoule + fil : circuit fermé.",
+          "On débranche un fil : circuit ouvert.",
+          "L'ampoule s'éteint."
+        ]
+      },
+      "aRetenir": "Circuit fermé : le courant circule."
+    },
+    {
+      "titre": "Conducteurs, isolants et sécurité",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les **conducteurs** laissent passer le courant (métaux : cuivre, fer, aluminium). Les **isolants** ne le laissent pas passer (plastique, bois, verre, caoutchouc). Les fils sont en cuivre entourés de plastique.",
+        "L'**électricité du secteur** (230 V) est dangereuse : on ne touche jamais les prises avec les doigts ou des objets métalliques, on n'utilise pas d'appareil électrique avec les mains mouillées ou près de l'eau. Les piles de quelques volts sont sans danger."
+      ],
+      "exemple": {
+        "titre": "Exemple : tester un matériau",
+        "etapes": [
+          "On place un objet dans le circuit.",
+          "Si l'ampoule brille : conducteur.",
+          "Sinon : isolant."
+        ]
+      },
+      "aRetenir": "Jamais de prise de courant avec de l'eau."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel matériau est conducteur ?",
+        "choix": [
+          "Le cuivre",
+          "Le plastique",
+          "Le bois",
+          "Le verre"
+        ],
+        "bonne": 0,
+        "explication": "Les métaux conduisent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que se passe-t-il si un fil du circuit est débranché ?",
+        "choix": [
+          "Le circuit est ouvert : l'ampoule s'éteint",
+          "L'ampoule brille plus fort",
+          "La pile chauffe",
+          "Rien"
+        ],
+        "bonne": 0,
+        "explication": "Circuit ouvert."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle règle de sécurité est vraie ?",
+        "choix": [
+          "Ne pas toucher aux prises avec des mains mouillées",
+          "Mettre ses doigts dans la prise",
+          "Toucher les fils dénudés",
+          "Brancher avec de l'eau"
+        ],
+        "bonne": 0,
+        "explication": "L'eau conduit le courant."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La lampe de poche",
+    "histoire": [
+      "Tu fabriques une lampe de poche avec une pile et une ampoule."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'ampoule ne s'allume pas. Que vérifier ?",
+        "choix": [
+          "Le circuit est-il fermé ?",
+          "La couleur du fil",
+          "La météo",
+          "Le nom de la pile"
+        ],
+        "bonne": 0,
+        "explication": "Contacts et boucle fermée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel objet peut servir d'interrupteur ?",
+        "choix": [
+          "Un trombone métallique qu'on déplace",
+          "Un morceau de bois",
+          "Du papier",
+          "Du plastique"
+        ],
+        "bonne": 0,
+        "explication": "Il doit conduire."
+      }
+    ],
+    "conclusion": "Lampe allumée !"
+  }
+}

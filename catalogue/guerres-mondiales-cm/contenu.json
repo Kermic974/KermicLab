@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au XXe siècle, deux guerres mondiales bouleversent l'Europe : on apprend à ne pas les oublier.",
+  "niveaux": [
+    {
+      "titre": "Intuition : 1914-1918, la guerre des tranchées",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Première Guerre mondiale** commence en 1914 après l'assassinat de l'archiduc François-Ferdinand à Sarajevo. Les soldats français, les **poilus**, vivent dans des **tranchées**, dans la boue, le froid et le danger. La bataille de **Verdun** (1916) est l'une des plus meurtrières.",
+        "La guerre se termine par l'**armistice du 11 novembre 1918**. On compte près de 1,4 million de soldats français morts."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le 11 novembre est férié en mémoire de l'armistice.",
+          "Les monuments aux morts nomment les victimes.",
+          "Les femmes travaillent à l'usine pendant que les hommes combattent."
+        ]
+      },
+      "aRetenir": "11 novembre 1918 : armistice."
+    },
+    {
+      "titre": "1939-1945 : la Seconde Guerre mondiale",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **Seconde Guerre mondiale** éclate en 1939. En 1940, la France est vaincue ; le maréchal Pétain dirige le régime de **Vichy** qui collabore. Le général **de Gaulle** lance de Londres l'**appel du 18 juin 1940** pour continuer le combat. La **Résistance** s'organise.",
+        "Les nazis organisent la **Shoah** : le génocide de 6 millions de Juifs d'Europe, ainsi que l'extermination d'autres populations. Le **6 juin 1944**, les Alliés débarquent en Normandie ; la France est libérée en 1944 ; la guerre en Europe s'achève le **8 mai 1945**."
+      ],
+      "exemple": {
+        "titre": "Exemple : la Résistance",
+        "etapes": [
+          "Des hommes et des femmes refusent la défaite.",
+          "Ils sabotent, renseignent, cachent des persécutés.",
+          "Beaucoup sont arrêtés, certains exécutés."
+        ]
+      },
+      "aRetenir": "18 juin 1940 : appel de De Gaulle. 8 mai 1945 : fin de la guerre en Europe."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année l'armistice de la Première Guerre mondiale est-il signé ?",
+        "reponse": 1918,
+        "indices": [
+          "Fin de la guerre de 14."
+        ],
+        "solution": "Le 11 novembre 1918.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment appelle-t-on les soldats français de 14-18 ?",
+        "choix": [
+          "Les poilus",
+          "Les chevaliers",
+          "Les gladiateurs",
+          "Les mousquetaires"
+        ],
+        "bonne": 0,
+        "explication": "Les poilus vivaient dans les tranchées."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que lance de Gaulle le 18 juin 1940 ?",
+        "choix": [
+          "Un appel à continuer le combat",
+          "Un appel à la capitulation",
+          "Un nouveau traité",
+          "Une fête nationale"
+        ],
+        "bonne": 0,
+        "explication": "L'appel du 18 juin."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le devoir de mémoire",
+    "histoire": [
+      "Dans ton village, tu lis les noms gravés sur le monument aux morts."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi commémore-t-on le 11 novembre ?",
+        "choix": [
+          "C'est l'armistice de 1918",
+          "C'est la fin de la Révolution",
+          "C'est la fête de l'école",
+          "C'est un jour de marché"
+        ],
+        "bonne": 0,
+        "explication": "La guerre 14-18 s'arrête."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot désigne le génocide des Juifs d'Europe ?",
+        "choix": [
+          "La Shoah",
+          "La Résistance",
+          "La Révolution",
+          "La Réforme"
+        ],
+        "bonne": 0,
+        "explication": "Il faut s'en souvenir pour que cela ne se reproduise pas."
+      }
+    ],
+    "conclusion": "Tu connais ces deux guerres !"
+  }
+}

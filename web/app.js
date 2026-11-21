@@ -37,7 +37,7 @@ const etat = {
   configurationServeur: null, skills: {}
 };
 const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "technologie", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_CLASSE = "kermiclab:classe";
 const CLE_THEME = "kermiclab:theme";

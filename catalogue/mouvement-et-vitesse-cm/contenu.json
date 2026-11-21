@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Décrire un mouvement, c'est dire par où passe un objet et à quelle vitesse.",
+  "niveaux": [
+    {
+      "titre": "Intuition : bouger, mais par rapport à quoi ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un passager assis dans un train est immobile **par rapport au train** mais en mouvement **par rapport au quai**. Le mouvement dépend du point de vue : le **référentiel**.",
+        "La **trajectoire** est la ligne que suit un objet : droite (rectiligne), courbe, ou cercle."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un ballon qu'on lance : trajectoire courbe.",
+          "Une aiguille de montre : trajectoire circulaire.",
+          "Un train sur une voie droite : trajectoire rectiligne."
+        ]
+      },
+      "aRetenir": "Un mouvement se décrit par sa trajectoire et sa vitesse."
+    },
+    {
+      "titre": "La vitesse",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **vitesse moyenne** est la distance parcourue divisée par la durée : **v = d ÷ t**. Si une voiture parcourt 120 km en 2 h, sa vitesse moyenne est 120 ÷ 2 = 60 km/h.",
+        "On exprime la vitesse en km/h ou m/s. Pour passer de m/s à km/h, on multiplie par 3,6 (10 m/s = 36 km/h). Plus la vitesse est élevée, plus la distance de freinage est longue : c'est pourquoi on respecte les limitations."
+      ],
+      "exemple": {
+        "titre": "Exemple : un cycliste",
+        "etapes": [
+          "Il parcourt 30 km en 2 h.",
+          "30 ÷ 2 = 15.",
+          "Sa vitesse moyenne est 15 km/h."
+        ]
+      },
+      "aRetenir": "v = d ÷ t."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Une voiture parcourt 120 km en 2 h. Quelle est sa vitesse moyenne ?",
+        "reponse": 60,
+        "unite": "km/h",
+        "indices": [
+          "Vitesse = distance ÷ durée."
+        ],
+        "solution": "120 ÷ 2 = 60 km/h.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un cycliste roule à 15 km/h pendant 2 h. Quelle distance ?",
+        "reponse": 30,
+        "unite": "km",
+        "indices": [
+          "Distance = vitesse × durée."
+        ],
+        "solution": "15 × 2 = 30 km.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La trajectoire d'un ballon lancé est…",
+        "choix": [
+          "une courbe",
+          "toujours une droite",
+          "toujours un cercle",
+          "un point"
+        ],
+        "bonne": 0,
+        "explication": "Il décrit une courbe."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course d'orientation",
+    "histoire": [
+      "Tu cours 6 km en 1 h pour la course d'orientation."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est ta vitesse moyenne ?",
+        "reponse": 6,
+        "unite": "km/h",
+        "indices": [
+          "Distance ÷ durée."
+        ],
+        "solution": "6 ÷ 1 = 6 km/h.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "À cette vitesse, combien de km en 3 h ?",
+        "reponse": 18,
+        "unite": "km",
+        "indices": [
+          "Multiplie la vitesse par la durée."
+        ],
+        "solution": "6 × 3 = 18.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Course réussie !"
+  }
+}

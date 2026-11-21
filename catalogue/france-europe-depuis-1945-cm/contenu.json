@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Après 1945, les pays d'Europe choisissent de coopérer plutôt que de se faire la guerre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : plus jamais ça",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Après deux guerres terribles, des pays d'Europe décident de s'unir pour garantir la **paix**. En 1957, six pays (dont la France, l'Allemagne, l'Italie) signent le **traité de Rome** qui crée la **Communauté économique européenne**.",
+        "Peu à peu, d'autres pays les rejoignent."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1957 : traité de Rome.",
+          "1992 : traité de Maastricht, qui crée l'Union européenne.",
+          "2002 : l'euro devient la monnaie de nombreux pays."
+        ]
+      },
+      "aRetenir": "Union européenne : paix, échanges, libre circulation."
+    },
+    {
+      "titre": "La Ve République",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **Ve République** est instaurée en **1958** par le général de Gaulle. Le **président de la République** a de grands pouvoirs ; depuis 1962, il est élu au suffrage universel direct. Il nomme un Premier ministre ; le Parlement vote les lois.",
+        "L'Union européenne compte aujourd'hui **27 États** membres. Ses citoyens peuvent voyager, étudier et travailler dans les autres pays membres."
+      ],
+      "exemple": {
+        "titre": "Exemple : le drapeau européen",
+        "etapes": [
+          "Fond bleu, 12 étoiles dorées en cercle.",
+          "Les étoiles symbolisent l'union et l'harmonie.",
+          "Les étoiles ne correspondent pas au nombre d'États."
+        ]
+      },
+      "aRetenir": "1958 : Ve République. 1992 : UE. 2002 : euro."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année est instaurée la Ve République ?",
+        "reponse": 1958,
+        "indices": [
+          "Fin des années 1950."
+        ],
+        "solution": "Constitution du 4 octobre 1958.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est l'objectif principal de la construction européenne à ses débuts ?",
+        "choix": [
+          "Garantir la paix",
+          "Préparer une guerre",
+          "Supprimer la France",
+          "Inventer l'euro"
+        ],
+        "bonne": 0,
+        "explication": "Après deux guerres mondiales."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'euro est…",
+        "choix": [
+          "la monnaie commune de nombreux pays de l'UE",
+          "un pays",
+          "un traité",
+          "un parti"
+        ],
+        "bonne": 0,
+        "explication": "Il remplace les monnaies nationales depuis 2002."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un voyage en Europe",
+    "histoire": [
+      "Tu voyages de Paris à Rome pour les vacances."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que remarques-tu en payant ?",
+        "choix": [
+          "On utilise la même monnaie : l'euro",
+          "On paie en francs",
+          "On paie en livres",
+          "On ne paie pas"
+        ],
+        "bonne": 0,
+        "explication": "L'euro est utilisé dans la zone euro."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Combien d'États compte l'UE aujourd'hui ?",
+        "choix": [
+          "27",
+          "6",
+          "50",
+          "12"
+        ],
+        "bonne": 0,
+        "explication": "27 États membres."
+      }
+    ],
+    "conclusion": "Bon voyage en Europe !"
+  }
+}

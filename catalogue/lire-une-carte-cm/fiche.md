@@ -1,0 +1,35 @@
+---
+id: lire-une-carte-cm
+titre: Lire une carte et se repérer
+sujet: geographie/lire-une-carte-cm
+version: 1.0.0
+date: 2026-11-21
+niveau: primaire
+niveaux: cycle-3
+classes: CM1, CM2
+prerequis:
+competences:
+  - lire-une-carte-cm-comprendre
+  - lire-une-carte-cm-appliquer
+duree: 15
+langues: fr
+onglets: explication, application, mise-en-situation
+mots-cles:
+  - lire une carte
+  - legende d'une carte
+  - points cardinaux
+  - echelle d'une carte cm
+  - plan et carte
+  - orientation nord sud est ouest
+  - latitude et longitude cm
+  - planisphere cm
+questions:
+  - Comment lire une carte ?
+  - C'est quoi la légende d'une carte ?
+  - Comment s'orienter avec les points cardinaux ?
+  - Quelle différence entre un plan et une carte ?
+---
+
+# Lire une carte et se repérer
+
+Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`). Notion du cycle 3 (CM1 / CM2).

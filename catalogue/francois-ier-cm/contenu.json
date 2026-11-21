@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au XVIe siècle, François Ier fait de la France un pays de la Renaissance.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une renaissance des arts",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Renaissance** (XVe-XVIe siècles) est une période où les artistes et les savants s'inspirent de l'Antiquité. **François Ier**, roi de 1515 à 1547, invite des artistes italiens, dont **Léonard de Vinci**, et fait construire des châteaux comme **Chambord**.",
+        "L'**imprimerie** (Gutenberg, vers 1450) permet de diffuser les livres plus vite et à moindre coût."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "En 1515, François Ier gagne la bataille de Marignan.",
+          "Léonard de Vinci s'installe à Amboise.",
+          "Chambord est un château de la Renaissance."
+        ]
+      },
+      "aRetenir": "1515 : début du règne de François Ier."
+    },
+    {
+      "titre": "Le roi et la langue française",
+      "niveau": "CM1",
+      "paragraphes": [
+        "En 1539, l'**ordonnance de Villers-Cotterêts** impose le **français** pour les actes de justice et de l'administration (à la place du latin) et oblige les paroisses à tenir des registres de baptêmes.",
+        "Les **humanistes** (Érasme, Rabelais) pensent que l'homme doit s'instruire et user de sa raison. François Ier fonde le futur Collège de France (1530)."
+      ],
+      "exemple": {
+        "titre": "Exemple : la langue du roi",
+        "etapes": [
+          "Avant : le latin pour la justice.",
+          "Après 1539 : le français.",
+          "Chacun peut mieux comprendre les actes."
+        ]
+      },
+      "aRetenir": "1539 : le français devient langue officielle de la justice."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année François Ier devient-il roi ?",
+        "reponse": 1515,
+        "indices": [
+          "Début du XVIe siècle."
+        ],
+        "solution": "Il règne de 1515 à 1547.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle langue l'ordonnance de Villers-Cotterêts impose-t-elle ?",
+        "choix": [
+          "Le français",
+          "Le latin",
+          "L'italien",
+          "L'anglais"
+        ],
+        "bonne": 0,
+        "explication": "Pour les actes administratifs et judiciaires."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel château a été construit sous François Ier ?",
+        "choix": [
+          "Chambord",
+          "Versailles",
+          "Vincennes",
+          "Carcassonne"
+        ],
+        "bonne": 0,
+        "explication": "Chambord est un château de la Renaissance."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La visite du château de Chambord",
+    "histoire": [
+      "Tu visites Chambord et tu croises un artiste italien de la cour."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel grand artiste italien vit en France sous François Ier ?",
+        "choix": [
+          "Léonard de Vinci",
+          "Michel-Ange",
+          "Mozart",
+          "Picasso"
+        ],
+        "bonne": 0,
+        "explication": "Il s'installe au Clos Lucé, près d'Amboise."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle invention aide à diffuser les idées ?",
+        "choix": [
+          "L'imprimerie",
+          "L'automobile",
+          "L'avion",
+          "La radio"
+        ],
+        "bonne": 0,
+        "explication": "Gutenberg, vers 1450."
+      }
+    ],
+    "conclusion": "Tu es un as de la Renaissance !"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'eau existe sous trois états : solide, liquide et gazeux. Elle change d'état avec la température.",
+  "niveaux": [
+    {
+      "titre": "Intuition : glace, eau, vapeur",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La glace est de l'eau **solide**, l'eau du robinet est **liquide**, la vapeur d'eau est **gazeuse**. Un solide garde sa forme, un liquide prend la forme du récipient, un gaz occupe tout l'espace disponible.",
+        "Si on chauffe de la glace, elle **fond** à 0 °C. Si on chauffe l'eau, elle **bout** à 100 °C et devient vapeur."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un glaçon posé sur la table fond.",
+          "L'eau de la casserole bout et fait de la vapeur.",
+          "La buée sur un miroir : la vapeur redevient eau."
+        ]
+      },
+      "aRetenir": "Fusion à 0 °C, ébullition à 100 °C (au niveau de la mer)."
+    },
+    {
+      "titre": "Changements d'état et masse",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les changements d'état ont des noms : **fusion** (solide → liquide), **solidification** (liquide → solide), **vaporisation** (liquide → gaz), **condensation** (gaz → liquide). L'**évaporation** est une vaporisation lente à la surface d'un liquide.",
+        "Dans le **cycle de l'eau**, l'eau des océans s'évapore, forme des nuages (condensation), puis retombe en pluie ou en neige. Pendant un changement d'état, la **masse se conserve** : 100 g de glace donnent 100 g d'eau liquide."
+      ],
+      "exemple": {
+        "titre": "Exemple : la masse se conserve",
+        "etapes": [
+          "On pèse 200 g de glace.",
+          "La glace fond.",
+          "L'eau obtenue pèse toujours 200 g."
+        ]
+      },
+      "aRetenir": "Le volume peut changer mais la masse se conserve."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "À quelle température l'eau bout-elle (au niveau de la mer) ?",
+        "reponse": 100,
+        "unite": "°C",
+        "indices": [
+          "C'est la température de la vapeur."
+        ],
+        "solution": "À 100 °C.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment s'appelle le passage de l'état liquide à l'état solide ?",
+        "choix": [
+          "La solidification",
+          "La fusion",
+          "La condensation",
+          "L'évaporation"
+        ],
+        "bonne": 0,
+        "explication": "Liquide → solide."
+      },
+      {
+        "type": "nombre",
+        "question": "On fait fondre 200 g de glace. Quelle masse d'eau obtient-on ?",
+        "reponse": 200,
+        "unite": "g",
+        "indices": [
+          "Rien ne disparaît."
+        ],
+        "solution": "La masse se conserve.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La casserole d'eau",
+    "histoire": [
+      "Tu fais chauffer une casserole d'eau et tu observes."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que forme la vapeur qui touche le couvercle froid ?",
+        "choix": [
+          "Des gouttes d'eau (condensation)",
+          "De la glace",
+          "De l'air",
+          "Du sel"
+        ],
+        "bonne": 0,
+        "explication": "La vapeur se condense."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel changement d'état se produit dans la casserole ?",
+        "choix": [
+          "La vaporisation",
+          "La solidification",
+          "La fusion",
+          "Rien"
+        ],
+        "bonne": 0,
+        "explication": "L'eau liquide devient gaz."
+      }
+    ],
+    "conclusion": "Bien observé !"
+  }
+}

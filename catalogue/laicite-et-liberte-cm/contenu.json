@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La laïcité permet à chacun de croire ou de ne pas croire, et protège la liberté de tous.",
+  "niveaux": [
+    {
+      "titre": "Intuition : vivre ensemble malgré nos différences",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans ta classe, certains élèves croient en un dieu, d'autres non. La **laïcité** garantit que chacun puisse croire ou ne pas croire, sans pression. L'État n'impose ni ne favorise aucune religion.",
+        "À l'école, les élèves apprennent tous les mêmes choses, quelles que soient leurs croyances."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un élève prie chez lui, un autre non.",
+          "L'école ne favorise ni l'un ni l'autre.",
+          "Tous sont respectés."
+        ]
+      },
+      "aRetenir": "Laïcité : liberté de croire et neutralité de l'État."
+    },
+    {
+      "titre": "Liberté d'expression et limites",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **liberté d'expression** est le droit de dire ce qu'on pense, dans le respect de la loi : on ne peut pas insulter, diffamer ou appeler à la haine. La **liberté de conscience** est le droit de choisir ses idées et sa religion.",
+        "La **Charte de la laïcité à l'école** rappelle ces principes. Dans les écoles publiques, les élèves n'affichent pas leur appartenance religieuse par des signes ostensibles (loi de 2004)."
+      ],
+      "exemple": {
+        "titre": "Exemple : débattre",
+        "etapes": [
+          "Je peux dire que je ne suis pas d'accord.",
+          "Je ne peux pas insulter la personne.",
+          "J'écoute les autres avec respect."
+        ]
+      },
+      "aRetenir": "On peut critiquer des idées, pas des personnes."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La laïcité garantit…",
+        "choix": [
+          "la liberté de croire ou de ne pas croire",
+          "une seule religion",
+          "l'interdiction de toute religion",
+          "l'obligation de croire"
+        ],
+        "bonne": 0,
+        "explication": "Liberté de conscience."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La liberté d'expression permet…",
+        "choix": [
+          "de dire ce qu'on pense dans le respect de la loi",
+          "d'insulter",
+          "de harceler",
+          "de mentir pour nuire"
+        ],
+        "bonne": 0,
+        "explication": "Avec des limites."
+      },
+      {
+        "type": "nombre",
+        "question": "En quelle année est votée la loi de séparation des Églises et de l'État ?",
+        "reponse": 1905,
+        "indices": [
+          "Début du XXe siècle."
+        ],
+        "solution": "Loi du 9 décembre 1905.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le débat en classe",
+    "histoire": [
+      "Ta classe débat de la meilleure façon de recycler."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle attitude est correcte ?",
+        "choix": [
+          "Écouter et répondre calmement",
+          "Couper la parole",
+          "Insulter",
+          "Se moquer"
+        ],
+        "bonne": 0,
+        "explication": "Respect de l'autre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Peut-on être en désaccord ?",
+        "choix": [
+          "Oui, avec respect",
+          "Non jamais",
+          "Seulement avec le maître",
+          "Seulement en secret"
+        ],
+        "bonne": 0,
+        "explication": "La liberté d'expression le permet."
+      }
+    ],
+    "conclusion": "Débat respectueux !"
+  }
+}

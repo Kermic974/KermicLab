@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans un milieu, les êtres vivants dépendent les uns des autres pour se nourrir.",
+  "niveaux": [
+    {
+      "titre": "Intuition : qui mange qui ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans une prairie, l'herbe est mangée par un lapin, qui est mangé par un renard. C'est une **chaîne alimentaire** : herbe → lapin → renard.",
+        "Les plantes sont les **producteurs** (elles fabriquent leur matière avec la lumière). Les animaux qui mangent des plantes sont des **herbivores** ; ceux qui mangent d'autres animaux, des **carnivores**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Salade → escargot → hérisson.",
+          "Phytoplancton → crevette → poisson.",
+          "La flèche signifie « est mangé par »."
+        ]
+      },
+      "aRetenir": "Chaîne alimentaire : producteur → consommateurs."
+    },
+    {
+      "titre": "Biodiversité et protection",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "La **biodiversité** est la variété des êtres vivants (espèces) dans un milieu. Quand une espèce disparaît, toute la chaîne peut être perturbée. Les **décomposeurs** (champignons, vers de terre, bactéries) transforment les déchets en matière réutilisable par les plantes.",
+        "L'être humain peut protéger la biodiversité : respecter la nature, éviter les pollutions, créer des réserves, ne pas gaspiller l'eau."
+      ],
+      "exemple": {
+        "titre": "Exemple : chaîne perturbée",
+        "etapes": [
+          "Si les abeilles disparaissent…",
+          "Moins de fleurs pollinisées, moins de fruits.",
+          "Les animaux qui s'en nourrissent sont menacés."
+        ]
+      },
+      "aRetenir": "Tout est lié dans un milieu de vie."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « herbe → lapin → renard », qui est le producteur ?",
+        "choix": [
+          "L'herbe",
+          "Le lapin",
+          "Le renard",
+          "Le loup"
+        ],
+        "bonne": 0,
+        "explication": "Les plantes sont les producteurs."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que signifie la flèche dans une chaîne alimentaire ?",
+        "choix": [
+          "« est mangé par »",
+          "« est ami avec »",
+          "« vit loin de »",
+          "« est plus grand que »"
+        ],
+        "bonne": 0,
+        "explication": "Elle indique qui est mangé par qui."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que font les décomposeurs ?",
+        "choix": [
+          "Ils transforment les déchets organiques",
+          "Ils chassent",
+          "Ils produisent de la lumière",
+          "Ils construisent des nids"
+        ],
+        "bonne": 0,
+        "explication": "Ils recyclent la matière."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La mare de l'école",
+    "histoire": [
+      "Tu observes les habitants de la mare : algues, têtards, libellules, grenouilles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle chaîne est correcte ?",
+        "choix": [
+          "algue → têtard → grenouille",
+          "grenouille → têtard → algue",
+          "têtard → algue → grenouille",
+          "libellule → algue → têtard"
+        ],
+        "bonne": 0,
+        "explication": "La flèche va de ce qui est mangé vers le mangeur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que se passe-t-il si les algues disparaissent ?",
+        "choix": [
+          "Les têtards manquent de nourriture",
+          "Rien",
+          "Les grenouilles volent",
+          "L'eau se vide"
+        ],
+        "bonne": 0,
+        "explication": "La chaîne est perturbée."
+      }
+    ],
+    "conclusion": "Tu comprends les chaînes !"
+  }
+}

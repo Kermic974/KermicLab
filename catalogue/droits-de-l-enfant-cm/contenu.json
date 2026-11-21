@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Tous les enfants du monde ont des droits : être protégés, soignés, éduqués et écoutés.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des droits pour grandir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un enfant a le droit d'avoir un **nom** et une **nationalité**, d'être **soigné**, d'**aller à l'école**, d'avoir une famille ou d'être protégé, de jouer et de s'exprimer.",
+        "Ces droits sont écrits dans la **Convention internationale des droits de l'enfant** (CIDE), adoptée par l'ONU le **20 novembre 1989**. La France l'a ratifiée en 1990."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Droit à l'éducation : aller à l'école.",
+          "Droit à la santé : être soigné.",
+          "Droit d'être protégé de la violence."
+        ]
+      },
+      "aRetenir": "20 novembre : journée des droits de l'enfant."
+    },
+    {
+      "titre": "Droits et réalité",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "La Convention reconnaît aussi le droit à l'**identité**, à l'**expression**, à la **protection** contre le travail et l'exploitation. Pourtant, dans certains pays, des enfants ne vont pas à l'école, travaillent ou vivent la guerre.",
+        "L'UNICEF, une organisation de l'ONU, défend les droits des enfants. En France, le Défenseur des droits et le numéro **119** (enfance en danger) protègent les enfants."
+      ],
+      "exemple": {
+        "titre": "Exemple : agir pour les droits",
+        "etapes": [
+          "Participer à une collecte de fournitures.",
+          "Parler à un adulte en cas de danger.",
+          "S'informer sur la situation d'autres enfants."
+        ]
+      },
+      "aRetenir": "Numéro 119 : enfance en danger."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année la Convention internationale des droits de l'enfant est-elle adoptée ?",
+        "reponse": 1989,
+        "indices": [
+          "Fin des années 1980."
+        ],
+        "solution": "Le 20 novembre 1989.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel numéro appeler si un enfant est en danger ?",
+        "choix": [
+          "119",
+          "15",
+          "18",
+          "112 uniquement pour les adultes"
+        ],
+        "bonne": 0,
+        "explication": "Le 119 est le numéro de l'enfance en danger."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel droit permet à tous d'apprendre ?",
+        "choix": [
+          "Le droit à l'éducation",
+          "Le droit de vote",
+          "Le droit de conduire",
+          "Le droit de voyager seul"
+        ],
+        "bonne": 0,
+        "explication": "Tous les enfants ont droit à l'école."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message de l'UNICEF",
+    "histoire": [
+      "Pour le 20 novembre, ta classe prépare une exposition sur les droits de l'enfant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel dessin illustre le droit à l'éducation ?",
+        "choix": [
+          "Des enfants à l'école",
+          "Des enfants au travail",
+          "Un enfant seul",
+          "Un enfant sans nom"
+        ],
+        "bonne": 0,
+        "explication": "L'école."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle organisation défend les droits de l'enfant ?",
+        "choix": [
+          "L'UNICEF",
+          "La SNCF",
+          "La FIFA",
+          "La BCE"
+        ],
+        "bonne": 0,
+        "explication": "L'UNICEF, agence de l'ONU."
+      }
+    ],
+    "conclusion": "Exposition réussie !"
+  }
+}

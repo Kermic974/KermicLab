@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Avant l'écriture, des humains vivaient déjà sur le territoire qui deviendra la France.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des traces dans les grottes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Préhistoire** commence avec les premiers humains et se termine avec l'invention de l'écriture. Les hommes de la Préhistoire laissent des traces : outils en pierre, ossements, peintures dans les grottes (Lascaux, Chauvet).",
+        "À la grotte Chauvet, les peintures ont plus de 30 000 ans ; à Lascaux, environ 17 000 ans."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les peintures de Lascaux représentent des chevaux, des bisons, des cerfs.",
+          "Les archéologues étudient ces traces pour comprendre la vie d'autrefois.",
+          "Sans écriture, on ne connaît pas leurs noms."
+        ]
+      },
+      "aRetenir": "L'histoire commence avec l'écriture ; avant, c'est la Préhistoire."
+    },
+    {
+      "titre": "Chasseurs-cueilleurs, puis agriculteurs",
+      "niveau": "CM1",
+      "paragraphes": [
+        "Pendant le **Paléolithique**, les hommes sont des chasseurs-cueilleurs nomades : ils suivent le gibier, vivent dans des abris et des grottes, fabriquent des outils en pierre taillée, maîtrisent le feu.",
+        "Au **Néolithique** (en France, il y a environ 7 000 ans), ils deviennent agriculteurs et éleveurs : ils se **sédentarisent**, construisent des villages, fabriquent de la poterie et des outils en pierre polie, dressent des mégalithes (Carnac)."
+      ],
+      "exemple": {
+        "titre": "Exemple : le village néolithique",
+        "etapes": [
+          "Des maisons en bois et en terre.",
+          "Des champs de blé et des animaux domestiques.",
+          "De la poterie pour stocker les récoltes."
+        ]
+      },
+      "aRetenir": "Néolithique : agriculture, élevage, villages."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment vivaient les chasseurs-cueilleurs du Paléolithique ?",
+        "choix": [
+          "Ils se déplaçaient pour chasser et cueillir",
+          "Ils cultivaient des champs",
+          "Ils construisaient des villes",
+          "Ils écrivaient des livres"
+        ],
+        "bonne": 0,
+        "explication": "Ils étaient nomades."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle découverte marque le Néolithique ?",
+        "choix": [
+          "L'agriculture et l'élevage",
+          "L'imprimerie",
+          "La machine à vapeur",
+          "Le téléphone"
+        ],
+        "bonne": 0,
+        "explication": "Les hommes deviennent agriculteurs et se sédentarisent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel site français est célèbre pour ses peintures préhistoriques ?",
+        "choix": [
+          "Lascaux",
+          "Versailles",
+          "Chambord",
+          "Notre-Dame"
+        ],
+        "bonne": 0,
+        "explication": "Lascaux, en Dordogne."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeune archéologue",
+    "histoire": [
+      "Tu fouilles un site : tu trouves des outils en pierre, des restes de poterie et des graines de blé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Ces traces montrent que les habitants étaient…",
+        "choix": [
+          "des agriculteurs sédentaires",
+          "des chasseurs nomades",
+          "des Gaulois",
+          "des Romains"
+        ],
+        "bonne": 0,
+        "explication": "Poterie et blé : agriculture et village."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "À quelle période appartient ce site ?",
+        "choix": [
+          "Au Néolithique",
+          "Au Moyen Âge",
+          "À la Révolution",
+          "Au XIXe siècle"
+        ],
+        "bonne": 0,
+        "explication": "Agriculture + poterie = Néolithique."
+      }
+    ],
+    "conclusion": "Mystère éclairci !"
+  }
+}

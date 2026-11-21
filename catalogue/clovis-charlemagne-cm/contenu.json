@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Deux rois des Francs construisent un royaume puis un empire : Clovis et Charlemagne.",
+  "niveaux": [
+    {
+      "titre": "Intuition : de la Gaule au royaume des Francs",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Après la chute de l'Empire romain d'Occident (476), les peuples « barbares » s'installent. Les **Francs** s'installent dans le nord de la Gaule. **Clovis**, leur roi, bat ses rivaux et unifie la Gaule au nord.",
+        "Vers 496, Clovis se fait **baptiser** à Reims : il devient chrétien, ce qui l'allie à l'Église et aux Gallo-Romains."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Clovis est le premier grand roi des Francs.",
+          "Il se convertit au christianisme.",
+          "Après sa mort (511), le royaume est partagé entre ses fils."
+        ]
+      },
+      "aRetenir": "Clovis : roi des Francs, baptisé vers 496."
+    },
+    {
+      "titre": "Charlemagne, empereur",
+      "niveau": "CM1",
+      "paragraphes": [
+        "**Charlemagne**, roi des Francs en 768, conquiert un vaste territoire (Italie du nord, Saxe, Bavière). Le **25 décembre 800**, il est couronné **empereur** à Rome par le pape Léon III.",
+        "Pour gouverner, il envoie des inspecteurs (**missi dominici**), crée des écoles autour des monastères, encourage l'écriture (minuscule caroline). Il meurt en 814 à Aix-la-Chapelle."
+      ],
+      "exemple": {
+        "titre": "Exemple : le gouvernement de l'empire",
+        "etapes": [
+          "Les comtes administrent les régions.",
+          "Les missi dominici contrôlent les comtes.",
+          "Les écoles forment des clercs qui savent lire et écrire."
+        ]
+      },
+      "aRetenir": "800 : couronnement de Charlemagne comme empereur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où Clovis se fait-il baptiser ?",
+        "choix": [
+          "À Reims",
+          "À Paris",
+          "À Rome",
+          "À Lyon"
+        ],
+        "bonne": 0,
+        "explication": "Le baptême a lieu à Reims."
+      },
+      {
+        "type": "nombre",
+        "question": "En quelle année Charlemagne est-il couronné empereur ?",
+        "reponse": 800,
+        "indices": [
+          "Fin du VIIIe siècle, début du IXe."
+        ],
+        "solution": "Le 25 décembre 800, à Rome.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel est le rôle des missi dominici ?",
+        "choix": [
+          "Contrôler les comtes",
+          "Construire des écoles",
+          "Commander l'armée",
+          "Chanter à la messe"
+        ],
+        "bonne": 0,
+        "explication": "Ce sont des inspecteurs envoyés par l'empereur."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un jour à la cour de Charlemagne",
+    "histoire": [
+      "Tu es élève dans une école de Charlemagne, en 800."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que viens-tu d'apprendre à l'école ?",
+        "choix": [
+          "À lire et à écrire en latin",
+          "À utiliser un ordinateur",
+          "À conduire",
+          "À imprimer"
+        ],
+        "bonne": 0,
+        "explication": "Charlemagne encourage les écoles et l'écriture."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui a couronné Charlemagne empereur ?",
+        "choix": [
+          "Le pape Léon III",
+          "Clovis",
+          "Vercingétorix",
+          "Louis XIV"
+        ],
+        "bonne": 0,
+        "explication": "Le pape, à Rome, le 25 décembre 800."
+      }
+    ],
+    "conclusion": "Bravo, tu connais Charlemagne !"
+  }
+}
