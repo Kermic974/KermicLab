@@ -21,15 +21,15 @@ export const liste = (v) => (Array.isArray(v) ? v : String(v ?? "").split(",").m
  * Référentiel des notions (feuille de route, phase 1 ; issue #179) : champs facultatifs de fiche.md, validés quand ils sont
  * présents. `niveaux` suit les cycles et classes du programme, plus fin que `niveau` (barre de navigation).
  */
-export const NIVEAUX_SCOLAIRES = ["cycle-3", "cycle-4", "seconde", "premiere", "terminale"];
+export const NIVEAUX_SCOLAIRES = ["cycle-2", "cycle-3", "cycle-4", "seconde", "premiere", "terminale"];
 /**
  * Classes du collège (champ facultatif `classes`), du plus jeune au plus avancé : elles découpent « Collège » dans
  * l'écran Éducation. La 6e appartient au cycle 3, les 5e, 4e et 3e au cycle 4 : une classe exige son cycle dans `niveaux`.
  */
 export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
-/** Classes du primaire (cycle 3, niveau « primaire ») : le CM1 et le CM2 précèdent la 6e. */
-export const CLASSES_PRIMAIRE = ["CM1", "CM2"];
-const CYCLE_DE_CLASSE = { CM1: "cycle-3", CM2: "cycle-3", "6e": "cycle-3", "5e": "cycle-4", "4e": "cycle-4", "3e": "cycle-4" };
+/** Classes du primaire (niveau « primaire ») : CP, CE1 et CE2 (cycle 2), CM1 et CM2 (cycle 3), avant la 6e. */
+export const CLASSES_PRIMAIRE = ["CP", "CE1", "CE2", "CM1", "CM2"];
+const CYCLE_DE_CLASSE = { CP: "cycle-2", CE1: "cycle-2", CE2: "cycle-2", CM1: "cycle-3", CM2: "cycle-3", "6e": "cycle-3", "5e": "cycle-4", "4e": "cycle-4", "3e": "cycle-4" };
 const IDENTIFIANT = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const DUREE_MAX = 240;
 
@@ -70,7 +70,7 @@ export function lireReferentiel(fiche) {
     if (!permises) throw new Error("classes : réservé aux notions de niveau « primaire » ou « college »");
     for (const c of classes) if (!permises.includes(c)) throw new Error(`classes : « ${c} » inconnue (attendu : ${permises.join(", ")})`);
     const rangs = classes.map((c) => permises.indexOf(c));
-    if (rangs.some((r, i) => i && r <= rangs[i - 1])) throw new Error(fiche.niveau === "primaire" ? "classes : sans doublon, du CM1 au CM2" : "classes : sans doublon, de la 6e à la 3e");
+    if (rangs.some((r, i) => i && r <= rangs[i - 1])) throw new Error(fiche.niveau === "primaire" ? "classes : sans doublon, du CP au CM2" : "classes : sans doublon, de la 6e à la 3e");
     for (const c of classes) {
       if (ref.niveaux && !ref.niveaux.includes(CYCLE_DE_CLASSE[c])) throw new Error(`classes : « ${c} » demande « ${CYCLE_DE_CLASSE[c]} » dans niveaux`);
     }

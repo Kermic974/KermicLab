@@ -9,7 +9,7 @@ import { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, liste } from "./fi
 export { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, DUREE_MAX } from "./fiche-catalogue.mjs";
 
 /** Classes connues, de la plus jeune à la plus avancée (primaire puis collège). */
-const ORDRE_CLASSES = ["CM1", "CM2", "6e", "5e", "4e", "3e"];
+const ORDRE_CLASSES = ["CP", "CE1", "CE2", "CM1", "CM2", "6e", "5e", "4e", "3e"];
 
 /** Niveaux scolaires connus, dans l’ordre de navigation du chat. */
 export const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale"];

@@ -19,9 +19,9 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
   - Les questions servent aussi de **suggestions cliquables** dans le chat : écris-les comme un élève les poserait.
   - **Référentiel (facultatif, recommandé)** : champs vérifiés par `npm run build` quand ils sont présents (feuille de route,
     phase 1). Exemple : `catalogue/proportionnalite/fiche.md`.
-    - `niveaux` : parmi `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
+    - `niveaux` : parmi `cycle-2`, `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
       avancé, d'après les niveaux réellement couverts par le contenu (`niveau` reste le rangement dans la navigation).
-    - `classes` (notions de niveau `primaire` ou `college`) : `CM1`, `CM2` pour le primaire, `6e`, `5e`, `4e`, `3e` pour le collège, sans doublon, dans l'ordre. Les classes du primaire exigent `cycle-3` dans `niveaux`.
+    - `classes` (notions de niveau `primaire` ou `college`) : `CP`, `CE1`, `CE2` (cycle 2) et `CM1`, `CM2` (cycle 3) pour le primaire, `6e`, `5e`, `4e`, `3e` pour le collège, sans doublon, dans l'ordre. Les classes du primaire exigent leur cycle dans `niveaux` (`cycle-2` pour CP, CE1, CE2 ; `cycle-3` pour CM1, CM2).
       (Pour le collège : de la 6e à la 3e.)
       Elles découpent « Collège » dans l'écran Éducation (barre « Ma classe ») ; une notion apparaît dans chacune de ses
       classes. La 6e exige `cycle-3` dans `niveaux`, les 5e, 4e et 3e exigent `cycle-4`. Sans `classes`, la notion reste
@@ -30,7 +30,7 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
       (la notion compte alors comme renseignée). Le **graphe des prérequis** est vérifié à chaque build, sur le catalogue
       public et privé : chaque prérequis existe et est une notion (pas un jeu), aucun cycle (le message donne le chemin,
       par exemple `fractions → proportionnalite → fractions`), et un prérequis ne commence pas à un niveau plus avancé que
-      la notion (vérifié quand les deux fiches renseignent `niveaux`), ni dans une classe plus avancée (`CM1` < `CM2` < `6e` < … < `3e`, vérifié quand les deux fiches renseignent `classes`).
+      la notion (vérifié quand les deux fiches renseignent `niveaux`), ni dans une classe plus avancée (`CP` < `CE1` < `CE2` < `CM1` < `CM2` < `6e` < … < `3e`, vérifié quand les deux fiches renseignent `classes`).
     - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
     - `duree` : durée estimée en minutes, entier de 1 à 240.
   - **Relecture pédagogique** : après une relecture humaine selon la grille publiée, ajouter `relue` (date), `relue-version`
