@@ -17,10 +17,10 @@ questions:
   - Pourquoi commence la construction européenne ?
   - Que change le traité de Maastricht ?
   - Quelles étapes ont mené au traité de Maastricht ?
-prerequis:
-niveaux: cycle-4, terminale
 classes: 3e
-competences: his-construction-europeenne-action-1, his-construction-europeenne-action-2
+prerequis: seconde-guerre-mondiale
+niveaux: cycle-4, terminale
+competences: expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945, situer-les-etapes-de-la-ceca-a-l-union-europeenne, distinguer-les-etats-fondateurs-des-elargissements, analyser-un-traite-europeen-rome-maastricht, discuter-la-souverainete-nationale-et-les-institutions-europeennes
 ---
 
 # La construction européenne

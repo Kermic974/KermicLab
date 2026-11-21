@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.analyser-les-conditions-d-un-vote-libre-et-sincere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "microskill.emc.analyser-les-conditions-d-un-vote-libre-et-sincere",
+  "target": "skill.emc.democratie"
+}

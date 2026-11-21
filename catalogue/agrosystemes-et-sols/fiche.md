@@ -30,9 +30,9 @@ questions:
   - je ne comprends pas pourquoi on utilise des engrais
   - c'est quoi l'agroécologie ?
   - how is soil formed?
-prerequis:
+prerequis: ecosystemes-et-biodiversite, photosynthese
 niveaux: seconde
-competences: svt-agrosystemes-et-sols-action-1, svt-agrosystemes-et-sols-action-2
+competences: expliquer-la-formation-d-un-sol-et-le-role-de-l-humus, comparer-un-agrosysteme-et-un-ecosysteme-naturel, evaluer-l-effet-d-une-pratique-agricole-sur-l-erosion-et-la-fertilite, justifier-une-rotation-de-cultures-avec-legumineuses, calculer-une-production-agricole-a-partir-d-un-rendement
 ---
 
 # Agrosystèmes et sols

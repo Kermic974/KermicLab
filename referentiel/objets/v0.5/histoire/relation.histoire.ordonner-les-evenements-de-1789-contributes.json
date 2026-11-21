@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.ordonner-les-evenements-de-1789-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "microskill.histoire.ordonner-les-evenements-de-1789",
+  "target": "skill.histoire.revolution-francaise"
+}

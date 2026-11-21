@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.temps-modernes-requires-renaissance",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "notion.histoire.temps-modernes",
+  "target": "notion.histoire.renaissance",
+  "rationale": "Les tensions religieuses nées de la Réforme éclairent la monarchie absolue et la révocation de l’édit de Nantes."
+}

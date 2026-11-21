@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.argumentation-requires-grammaire-phrase-complexe",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "notion.francais.argumentation",
+  "target": "notion.francais.grammaire-phrase-complexe",
+  "rationale": "Les connecteurs logiques et les subordonnées de cause et d’opposition organisent l’argumentation."
+}

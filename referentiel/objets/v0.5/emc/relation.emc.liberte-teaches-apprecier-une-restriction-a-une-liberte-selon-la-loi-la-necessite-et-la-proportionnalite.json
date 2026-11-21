@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.liberte-teaches-apprecier-une-restriction-a-une-liberte-selon-la-loi-la-necessite-et-la-proportionnalite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "notion.emc.liberte",
+  "target": "microskill.emc.apprecier-une-restriction-a-une-liberte-selon-la-loi-la-necessite-et-la-proportionnalite"
+}

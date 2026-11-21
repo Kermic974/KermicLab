@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-arguments-et-exemples-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-arguments-et-exemples",
+  "target": "skill.francais.argumentation"
+}

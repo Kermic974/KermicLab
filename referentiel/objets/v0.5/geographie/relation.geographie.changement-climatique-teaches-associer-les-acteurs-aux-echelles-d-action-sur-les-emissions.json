@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.changement-climatique-teaches-associer-les-acteurs-aux-echelles-d-action-sur-les-emissions",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "notion.geographie.changement-climatique",
+  "target": "microskill.geographie.associer-les-acteurs-aux-echelles-d-action-sur-les-emissions"
+}

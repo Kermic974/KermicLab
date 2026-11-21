@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-un-arbitrage-d-amenagement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-un-arbitrage-d-amenagement",
+  "target": "skill.geographie.dynamiques-territoriales"
+}

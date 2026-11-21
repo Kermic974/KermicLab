@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-le-trajet-des-ondes-sismiques-pour-deduire-une-structure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-le-trajet-des-ondes-sismiques-pour-deduire-une-structure",
+  "target": "skill.svt.structure-de-la-terre"
+}

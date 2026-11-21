@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-la-localisation-d-une-activite-par-ses-reseaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-la-localisation-d-une-activite-par-ses-reseaux",
+  "target": "skill.geographie.espaces-productifs"
+}

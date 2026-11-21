@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-migration-interne-internationale-et-mobilite-de-loisirs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-migration-interne-internationale-et-mobilite-de-loisirs",
+  "target": "skill.geographie.migrations"
+}

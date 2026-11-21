@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.construction-europeenne-requires-seconde-guerre-mondiale",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "notion.histoire.construction-europeenne",
+  "target": "notion.histoire.seconde-guerre-mondiale",
+  "rationale": "La coopération européenne vise à éviter un nouveau conflit après 1945."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.glycemie-et-diabete-teaches-interpreter-une-courbe-de-glycemie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "notion.svt.glycemie-et-diabete",
+  "target": "microskill.svt.interpreter-une-courbe-de-glycemie"
+}

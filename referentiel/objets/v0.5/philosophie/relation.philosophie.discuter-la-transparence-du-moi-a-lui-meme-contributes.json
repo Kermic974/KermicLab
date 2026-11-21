@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.discuter-la-transparence-du-moi-a-lui-meme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "microskill.philosophie.discuter-la-transparence-du-moi-a-lui-meme",
+  "target": "skill.philosophie.conscience"
+}

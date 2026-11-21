@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-le-transfert-d-energie-entre-niveaux-trophiques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "microskill.svt.calculer-le-transfert-d-energie-entre-niveaux-trophiques",
+  "target": "skill.svt.ecosystemes-et-biodiversite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.verite-teaches-expliquer-le-role-du-doute-methodique-chez-descartes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verite/contenu.json"
+  },
+  "source": "notion.philosophie.verite",
+  "target": "microskill.philosophie.expliquer-le-role-du-doute-methodique-chez-descartes"
+}

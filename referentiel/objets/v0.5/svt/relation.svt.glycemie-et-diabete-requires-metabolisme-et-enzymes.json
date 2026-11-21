@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.glycemie-et-diabete-requires-metabolisme-et-enzymes",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "notion.svt.glycemie-et-diabete",
+  "target": "notion.svt.metabolisme-et-enzymes",
+  "rationale": "La régulation de la glycémie suppose l’utilisation du glucose par le métabolisme cellulaire."
+}

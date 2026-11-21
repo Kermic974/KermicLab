@@ -22,7 +22,7 @@ questions:
   - what is the unconscious?
 prerequis:
 niveaux: terminale
-competences: philosophie-inconscient-action-1, philosophie-inconscient-action-2
+competences: distinguer-l-inconscient-psychique-et-l-automatisme, expliquer-le-refoulement-et-les-instances-ca-moi-surmoi-chez-freud, interpreter-un-lapsus-ou-un-reve-sans-conclure-trop-vite, expliquer-les-petites-perceptions-chez-leibniz
 ---
 
 # L'inconscient

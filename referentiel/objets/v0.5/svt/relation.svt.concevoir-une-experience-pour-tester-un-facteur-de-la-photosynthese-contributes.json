@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "microskill.svt.concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese",
+  "target": "skill.svt.photosynthese"
+}

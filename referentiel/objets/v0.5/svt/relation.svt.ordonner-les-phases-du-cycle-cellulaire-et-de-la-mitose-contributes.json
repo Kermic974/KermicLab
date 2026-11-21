@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.ordonner-les-phases-du-cycle-cellulaire-et-de-la-mitose-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "microskill.svt.ordonner-les-phases-du-cycle-cellulaire-et-de-la-mitose",
+  "target": "skill.svt.adn-et-division-cellulaire"
+}

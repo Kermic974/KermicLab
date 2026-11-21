@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.bonheur-teaches-distinguer-plaisir-bonheur-et-satisfaction",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "source": "notion.philosophie.bonheur",
+  "target": "microskill.philosophie.distinguer-plaisir-bonheur-et-satisfaction"
+}

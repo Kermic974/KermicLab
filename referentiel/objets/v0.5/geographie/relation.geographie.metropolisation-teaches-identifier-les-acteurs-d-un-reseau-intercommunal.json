@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.metropolisation-teaches-identifier-les-acteurs-d-un-reseau-intercommunal",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "notion.geographie.metropolisation",
+  "target": "microskill.geographie.identifier-les-acteurs-d-un-reseau-intercommunal"
+}

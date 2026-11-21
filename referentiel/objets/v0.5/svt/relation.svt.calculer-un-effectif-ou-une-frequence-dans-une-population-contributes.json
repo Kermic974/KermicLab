@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-un-effectif-ou-une-frequence-dans-une-population-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "microskill.svt.calculer-un-effectif-ou-une-frequence-dans-une-population",
+  "target": "skill.svt.evolution-et-selection-naturelle"
+}

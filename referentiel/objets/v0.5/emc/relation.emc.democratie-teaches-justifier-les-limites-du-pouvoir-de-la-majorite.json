@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.democratie-teaches-justifier-les-limites-du-pouvoir-de-la-majorite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "notion.emc.democratie",
+  "target": "microskill.emc.justifier-les-limites-du-pouvoir-de-la-majorite"
+}

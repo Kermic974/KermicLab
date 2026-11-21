@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.analyser-une-difference-de-traitement-legitime-ou-illegitime-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "microskill.emc.analyser-une-difference-de-traitement-legitime-ou-illegitime",
+  "target": "skill.emc.egalite"
+}

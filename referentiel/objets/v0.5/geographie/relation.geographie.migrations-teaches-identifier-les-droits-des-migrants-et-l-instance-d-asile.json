@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.migrations-teaches-identifier-les-droits-des-migrants-et-l-instance-d-asile",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "notion.geographie.migrations",
+  "target": "microskill.geographie.identifier-les-droits-des-migrants-et-l-instance-d-asile"
+}

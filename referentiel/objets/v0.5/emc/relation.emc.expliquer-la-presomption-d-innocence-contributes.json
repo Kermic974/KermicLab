@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-la-presomption-d-innocence-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-la-presomption-d-innocence",
+  "target": "skill.emc.justice"
+}

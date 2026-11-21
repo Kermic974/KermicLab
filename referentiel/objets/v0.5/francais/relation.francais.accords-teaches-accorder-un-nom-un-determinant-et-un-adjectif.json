@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accords-teaches-accorder-un-nom-un-determinant-et-un-adjectif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "source": "notion.francais.accords",
+  "target": "microskill.francais.accorder-un-nom-un-determinant-et-un-adjectif"
+}

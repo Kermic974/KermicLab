@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.theatre-teaches-distinguer-monologue-dialogue-et-aparte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "source": "notion.francais.theatre",
+  "target": "microskill.francais.distinguer-monologue-dialogue-et-aparte"
+}

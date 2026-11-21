@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.afrique-australe-teaches-interpreter-les-contrastes-et-les-heritages-d-un-territoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "source": "notion.geographie.afrique-australe",
+  "target": "microskill.geographie.interpreter-les-contrastes-et-les-heritages-d-un-territoire"
+}

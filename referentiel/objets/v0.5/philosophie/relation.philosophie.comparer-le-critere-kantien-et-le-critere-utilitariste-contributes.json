@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.comparer-le-critere-kantien-et-le-critere-utilitariste-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devoir/contenu.json"
+  },
+  "source": "microskill.philosophie.comparer-le-critere-kantien-et-le-critere-utilitariste",
+  "target": "skill.philosophie.devoir"
+}

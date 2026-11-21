@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.meiose-et-brassage-genetique-requires-reproduction-humaine",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meiose-et-brassage-genetique/contenu.json"
+  },
+  "source": "notion.svt.meiose-et-brassage-genetique",
+  "target": "notion.svt.reproduction-humaine",
+  "rationale": "La méiose produit les gamètes dont la fécondation est étudiée dans la reproduction humaine."
+}

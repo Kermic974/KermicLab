@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-les-liens-mondiaux-d-une-region-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-les-liens-mondiaux-d-une-region",
+  "target": "skill.geographie.france-regions"
+}

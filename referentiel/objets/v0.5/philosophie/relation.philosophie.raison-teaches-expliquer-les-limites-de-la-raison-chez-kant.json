@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.raison-teaches-expliquer-les-limites-de-la-raison-chez-kant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "notion.philosophie.raison",
+  "target": "microskill.philosophie.expliquer-les-limites-de-la-raison-chez-kant"
+}

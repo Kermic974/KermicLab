@@ -18,10 +18,10 @@ questions:
   - Pourquoi la Ve République est-elle créée ?
   - Comment fonctionne la Cinquième République ?
   - Que signifie la cohabitation ?
-prerequis:
-niveaux: cycle-4, terminale
 classes: 3e
-competences: his-ve-republique-action-1, his-ve-republique-action-2
+prerequis: decolonisation
+niveaux: cycle-4, terminale
+competences: expliquer-les-circonstances-de-la-naissance-de-la-ve-republique, distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement, expliquer-l-election-du-president-au-suffrage-universel-direct, analyser-une-cohabitation, evaluer-une-reforme-institutionnelle
 ---
 
 # La Ve République

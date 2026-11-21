@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-la-reconstruction-et-la-justice-d-apres-guerre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seconde-guerre-mondiale/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-la-reconstruction-et-la-justice-d-apres-guerre",
+  "target": "skill.histoire.seconde-guerre-mondiale"
+}

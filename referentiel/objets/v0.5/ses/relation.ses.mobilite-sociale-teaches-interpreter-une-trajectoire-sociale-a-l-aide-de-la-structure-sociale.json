@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mobilite-sociale-teaches-interpreter-une-trajectoire-sociale-a-l-aide-de-la-structure-sociale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilite-sociale/contenu.json"
+  },
+  "source": "notion.ses.mobilite-sociale",
+  "target": "microskill.ses.interpreter-une-trajectoire-sociale-a-l-aide-de-la-structure-sociale"
+}

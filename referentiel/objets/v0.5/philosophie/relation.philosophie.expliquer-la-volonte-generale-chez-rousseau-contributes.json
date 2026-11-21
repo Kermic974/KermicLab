@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-la-volonte-generale-chez-rousseau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-la-volonte-generale-chez-rousseau",
+  "target": "skill.philosophie.etat"
+}

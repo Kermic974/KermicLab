@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.interpreter-une-fable-ou-un-conte-philosophique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "microskill.francais.interpreter-une-fable-ou-un-conte-philosophique",
+  "target": "skill.francais.litterature-didees"
+}

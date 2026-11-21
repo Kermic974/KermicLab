@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.classer-des-activites-par-secteur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "microskill.geographie.classer-des-activites-par-secteur",
+  "target": "skill.geographie.espaces-productifs"
+}

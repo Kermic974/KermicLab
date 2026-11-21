@@ -18,10 +18,10 @@ questions:
   - Pourquoi Gutenberg change-t-il la diffusion des livres ?
   - Qui est Léonard de Vinci ?
   - Que défend l'humanisme ?
+classes: 5e
 prerequis:
 niveaux: cycle-4, seconde
-classes: 5e
-competences: his-renaissance-action-1, his-renaissance-action-2
+competences: situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte, caracteriser-l-humanisme-et-ses-acteurs, analyser-le-role-des-mecenes-et-des-artistes, expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees
 ---
 
 # La Renaissance

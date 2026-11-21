@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.democratie-requires-liberte",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "notion.emc.democratie",
+  "target": "notion.emc.liberte",
+  "rationale": "Un vote libre et le pluralisme supposent des libertés d’opinion et d’expression."
+}

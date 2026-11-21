@@ -16,10 +16,10 @@ questions:
   - c'est quoi les droits de l'homme ?
   - Que protège la DUDH ?
   - what are human rights?
+classes: 4e
 prerequis:
 niveaux: cycle-4
-classes: 4e
-competences: emc-droits-de-lhomme-action-1, emc-droits-de-lhomme-action-2
+competences: distinguer-les-familles-de-droits-humains, identifier-la-portee-des-textes-ddhc-dudh-cedh, associer-un-droit-a-une-situation-concrete, expliquer-les-garanties-juridiques-des-droits
 ---
 
 # Les droits de l'homme

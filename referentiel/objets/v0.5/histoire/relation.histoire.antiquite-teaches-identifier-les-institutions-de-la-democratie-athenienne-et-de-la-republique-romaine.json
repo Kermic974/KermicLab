@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-teaches-identifier-les-institutions-de-la-democratie-athenienne-et-de-la-republique-romaine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "microskill.histoire.identifier-les-institutions-de-la-democratie-athenienne-et-de-la-republique-romaine"
+}

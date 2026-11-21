@@ -18,10 +18,10 @@ questions:
   - C'est quoi la mondialisation ?
   - Comment fonctionne une chaîne de valeur mondiale ?
   - Quel est le rôle des firmes transnationales ?
+classes: 4e
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
-classes: 4e
-competences: geographie-mondialisation-action-1, geographie-mondialisation-action-2
+competences: identifier-les-flux-de-marchandises-de-capitaux-et-d-informations, caracteriser-les-acteurs-de-la-mondialisation, calculer-la-part-d-un-flux-dans-un-reseau, analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial, discuter-une-integration-inegale-entre-territoires
 ---
 
 # La mondialisation

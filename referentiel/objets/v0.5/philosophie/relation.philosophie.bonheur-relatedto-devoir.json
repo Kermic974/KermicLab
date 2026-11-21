@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.bonheur-relatedto-devoir",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "source": "notion.philosophie.bonheur",
+  "target": "notion.philosophie.devoir",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : Plaisir, vertu et devoir sont confrontés dans la réflexion morale."
+}

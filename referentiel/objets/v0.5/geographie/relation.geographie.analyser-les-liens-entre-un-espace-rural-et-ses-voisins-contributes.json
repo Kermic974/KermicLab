@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-les-liens-entre-un-espace-rural-et-ses-voisins-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-ruraux/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-les-liens-entre-un-espace-rural-et-ses-voisins",
+  "target": "skill.geographie.espaces-ruraux"
+}

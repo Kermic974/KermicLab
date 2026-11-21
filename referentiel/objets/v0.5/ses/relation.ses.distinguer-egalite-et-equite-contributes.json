@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-egalite-et-equite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-egalite-et-equite",
+  "target": "skill.ses.justice-sociale"
+}

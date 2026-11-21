@@ -22,7 +22,7 @@ questions:
   - qui crée la monnaie ?
 prerequis:
 niveaux: seconde, premiere
-competences: ses-monnaie-action-1, ses-monnaie-action-2
+competences: identifier-les-fonctions-de-la-monnaie, distinguer-les-formes-de-monnaie, expliquer-la-creation-monetaire-par-le-credit-bancaire, analyser-un-paiement-entre-agents-economiques
 ---
 
 # La monnaie

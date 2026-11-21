@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-limites-et-les-contradictions-des-ideaux-des-lumieres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-limites-et-les-contradictions-des-ideaux-des-lumieres",
+  "target": "skill.histoire.lumieres"
+}

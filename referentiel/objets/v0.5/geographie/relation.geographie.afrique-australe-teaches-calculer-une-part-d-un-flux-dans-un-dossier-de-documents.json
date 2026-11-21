@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.afrique-australe-teaches-calculer-une-part-d-un-flux-dans-un-dossier-de-documents",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "source": "notion.geographie.afrique-australe",
+  "target": "microskill.geographie.calculer-une-part-d-un-flux-dans-un-dossier-de-documents"
+}

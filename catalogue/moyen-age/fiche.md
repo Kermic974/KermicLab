@@ -19,10 +19,10 @@ questions:
   - C'est quoi une seigneurie ?
   - Pourquoi Charlemagne est-il couronné en 800 ?
   - Le Moyen Âge est-il une période sans inventions ?
+classes: 5e
 prerequis:
 niveaux: cycle-4, seconde
-classes: 5e
-competences: his-moyen-age-action-1, his-moyen-age-action-2
+competences: situer-les-grandes-periodes-du-moyen-age, decrire-l-organisation-d-une-seigneurie, expliquer-la-croissance-des-villes-a-partir-du-xie-siecle, caracteriser-les-pouvoirs-medievaux-eglise-roi-seigneurs, analyser-les-contacts-en-mediterranee-medievale
 ---
 
 # Le Moyen Âge

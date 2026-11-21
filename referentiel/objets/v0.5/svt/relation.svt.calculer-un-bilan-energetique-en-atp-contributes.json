@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-un-bilan-energetique-en-atp-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "microskill.svt.calculer-un-bilan-energetique-en-atp",
+  "target": "skill.svt.metabolisme-et-enzymes"
+}

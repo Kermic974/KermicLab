@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-teaches-caracteriser-les-acteurs-d-un-territoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-territoriales",
+  "target": "microskill.geographie.caracteriser-les-acteurs-d-un-territoire"
+}

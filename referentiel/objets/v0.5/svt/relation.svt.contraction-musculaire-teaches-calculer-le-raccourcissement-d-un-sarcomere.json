@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.contraction-musculaire-teaches-calculer-le-raccourcissement-d-un-sarcomere",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "notion.svt.contraction-musculaire",
+  "target": "microskill.svt.calculer-le-raccourcissement-d-un-sarcomere"
+}

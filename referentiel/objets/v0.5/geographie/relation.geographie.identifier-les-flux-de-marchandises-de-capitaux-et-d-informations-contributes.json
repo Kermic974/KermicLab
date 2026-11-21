@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-flux-de-marchandises-de-capitaux-et-d-informations-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-flux-de-marchandises-de-capitaux-et-d-informations",
+  "target": "skill.geographie.mondialisation"
+}

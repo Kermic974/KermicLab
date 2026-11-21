@@ -45,3 +45,20 @@ Audit en lecture seule du corpus canonique `referentiel/objets/**/*.json` (les 1
 
 - **Branche et PR** : la branche de session porte déjà la PR #402 (catalogue du lycée). Pour ne pas mélanger deux chantiers, je recommande de créer une branche dédiée à la densification (et sa propre PR), ou d'attendre la fusion de #402.
 - **Périmètre du premier lot** : valider l'ordre ci-dessus ou choisir une discipline pilote.
+
+## Résultat après densification (même script d'audit)
+
+| Discipline | Notions | MicroSkills | MicroSkills/notion | Génériques | `requires` | Sans prérequis | Isolées | Profondeur max | Composantes |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| mathématiques (référence) | 36 | 146 | 4,1 | 0 | 39 | 10 | 2 | 6 | 3 |
+| physique-chimie | 23 | 103 | 4,5 | 0 | 21 | 8 | 1 | 3 | 4 |
+| SVT | 24 | 116 | 4,8 | 0 | 21 | 10 | 2 | 5 | 5 |
+| histoire | 16 | 76 | 4,8 | 0 | 14 | 4 | 2 | 5 | 4 |
+| géographie | 17 | 82 | 4,8 | 0 | 9 | 9 | 5 | 1 | 8 |
+| français | 10 | 49 | 4,9 | 0 | 5 | 5 | 2 | 2 | 5 |
+| EMC | 12 | 48 | 4,0 | 0 | 10 | 4 | 1 | 3 | 3 |
+| SES | 10 | 41 | 4,1 | 0 | 8 | 5 | 1 | 2 | 3 |
+| philosophie | 17 | 69 | 4,1 | 0 | 0 | 17 | 17 | 0 | 17 |
+
+Philosophie reste volontairement sans `requires` (14 `relatedTo` à la place : le script d'audit ne compte que `requires`). Géographie et français restent peu connectées par prudence : les liens incertains sont dans [relations-a-revoir.md](relations-a-revoir.md). Aucune cycle `requires`, aucune relation vers un objet inexistant ; 0 MicroSkill générique restante dans les huit disciplines.
+

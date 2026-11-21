@@ -18,10 +18,10 @@ questions:
   - Quels sont les traits des régimes totalitaires ?
   - Quelles différences entre nazisme et stalinisme ?
   - Comment fonctionne la propagande du fascisme ?
-prerequis:
-niveaux: cycle-4, terminale
 classes: 3e
-competences: his-totalitarismes-action-1, his-totalitarismes-action-2
+prerequis: premiere-guerre-mondiale
+niveaux: cycle-4, terminale
+competences: caracteriser-un-regime-totalitaire, comparer-les-regimes-fasciste-nazi-et-stalinien, expliquer-l-arrivee-au-pouvoir-d-un-regime-a-partir-de-ses-causes, analyser-les-moyens-de-controle-propagande-censure-terreur, discuter-l-usage-historique-de-la-notion-de-totalitarisme
 ---
 
 # Les totalitarismes

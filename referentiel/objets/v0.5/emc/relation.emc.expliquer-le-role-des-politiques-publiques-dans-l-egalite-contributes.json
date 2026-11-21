@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-role-des-politiques-publiques-dans-l-egalite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-role-des-politiques-publiques-dans-l-egalite",
+  "target": "skill.emc.egalite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-les-etapes-du-consulat-a-l-empire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "microskill.histoire.situer-les-etapes-du-consulat-a-l-empire",
+  "target": "skill.histoire.napoleon"
+}

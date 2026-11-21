@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-regions-teaches-analyser-les-liens-mondiaux-d-une-region",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "notion.geographie.france-regions",
+  "target": "microskill.geographie.analyser-les-liens-mondiaux-d-une-region"
+}

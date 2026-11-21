@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-teaches-expliquer-le-passage-de-la-republique-a-l-empire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "microskill.histoire.expliquer-le-passage-de-la-republique-a-l-empire"
+}

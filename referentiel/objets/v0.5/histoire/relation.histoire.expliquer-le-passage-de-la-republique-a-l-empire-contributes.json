@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-passage-de-la-republique-a-l-empire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-passage-de-la-republique-a-l-empire",
+  "target": "skill.histoire.antiquite"
+}

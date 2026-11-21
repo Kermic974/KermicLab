@@ -21,7 +21,7 @@ questions:
   - what is human work in philosophy?
 prerequis:
 niveaux: terminale
-competences: philosophie-travail-action-1, philosophie-travail-action-2
+competences: distinguer-travail-loisir-et-activite-non-remuneree, expliquer-la-division-du-travail, expliquer-le-role-formateur-du-travail-chez-hegel, expliquer-l-alienation-du-travail-chez-marx, distinguer-travail-et-uvre-chez-arendt
 ---
 
 # Le travail

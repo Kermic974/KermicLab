@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.determiner-le-prix-d-equilibre-dans-le-modele-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/marche-concurrentiel/contenu.json"
+  },
+  "source": "microskill.ses.determiner-le-prix-d-equilibre-dans-le-modele",
+  "target": "skill.ses.marche-concurrentiel"
+}

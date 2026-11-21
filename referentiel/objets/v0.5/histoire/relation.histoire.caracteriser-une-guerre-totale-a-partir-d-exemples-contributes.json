@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-une-guerre-totale-a-partir-d-exemples-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premiere-guerre-mondiale/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-une-guerre-totale-a-partir-d-exemples",
+  "target": "skill.histoire.premiere-guerre-mondiale"
+}

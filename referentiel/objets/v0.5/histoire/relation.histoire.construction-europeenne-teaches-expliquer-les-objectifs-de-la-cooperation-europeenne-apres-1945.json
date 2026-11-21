@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.construction-europeenne-teaches-expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "notion.histoire.construction-europeenne",
+  "target": "microskill.histoire.expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945"
+}

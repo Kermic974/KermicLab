@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.egalite-teaches-justifier-un-amenagement-adapte-a-une-situation-de-handicap",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "notion.emc.egalite",
+  "target": "microskill.emc.justifier-un-amenagement-adapte-a-une-situation-de-handicap"
+}

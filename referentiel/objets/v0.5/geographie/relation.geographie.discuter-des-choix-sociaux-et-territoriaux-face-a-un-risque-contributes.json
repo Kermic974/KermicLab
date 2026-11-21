@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-des-choix-sociaux-et-territoriaux-face-a-un-risque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-des-choix-sociaux-et-territoriaux-face-a-un-risque",
+  "target": "skill.geographie.risques-naturels"
+}

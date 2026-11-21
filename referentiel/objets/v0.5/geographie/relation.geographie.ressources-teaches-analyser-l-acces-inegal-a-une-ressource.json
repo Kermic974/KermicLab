@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.ressources-teaches-analyser-l-acces-inegal-a-une-ressource",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ressources/contenu.json"
+  },
+  "source": "notion.geographie.ressources",
+  "target": "microskill.geographie.analyser-l-acces-inegal-a-une-ressource"
+}

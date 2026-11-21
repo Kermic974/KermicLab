@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.associer-un-risque-a-un-territoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "microskill.geographie.associer-un-risque-a-un-territoire",
+  "target": "skill.geographie.risques-naturels"
+}

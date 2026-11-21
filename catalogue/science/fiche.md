@@ -17,7 +17,7 @@ questions:
   - Qu'est-ce qu'un paradigme scientifique ?
 prerequis:
 niveaux: terminale
-competences: philosophie-science-action-1, philosophie-science-action-2
+competences: distinguer-confirmation-et-refutation-falsifiabilite-chez-popper, evaluer-la-falsifiabilite-d-une-hypothese, expliquer-la-notion-de-paradigme-chez-kuhn, expliquer-la-rupture-avec-le-sens-commun-chez-bachelard
 ---
 
 # La science

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-la-portee-des-textes-ddhc-dudh-cedh-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "microskill.emc.identifier-la-portee-des-textes-ddhc-dudh-cedh",
+  "target": "skill.emc.droits-de-lhomme"
+}

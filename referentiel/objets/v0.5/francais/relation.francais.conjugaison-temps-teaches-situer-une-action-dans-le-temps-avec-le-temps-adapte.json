@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.conjugaison-temps-teaches-situer-une-action-dans-le-temps-avec-le-temps-adapte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-temps/contenu.json"
+  },
+  "source": "notion.francais.conjugaison-temps",
+  "target": "microskill.francais.situer-une-action-dans-le-temps-avec-le-temps-adapte"
+}

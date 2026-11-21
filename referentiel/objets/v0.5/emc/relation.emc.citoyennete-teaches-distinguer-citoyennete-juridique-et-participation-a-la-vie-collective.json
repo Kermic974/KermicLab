@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.citoyennete-teaches-distinguer-citoyennete-juridique-et-participation-a-la-vie-collective",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyennete/contenu.json"
+  },
+  "source": "notion.emc.citoyennete",
+  "target": "microskill.emc.distinguer-citoyennete-juridique-et-participation-a-la-vie-collective"
+}

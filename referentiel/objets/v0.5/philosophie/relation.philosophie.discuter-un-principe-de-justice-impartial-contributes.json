@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.discuter-un-principe-de-justice-impartial-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.discuter-un-principe-de-justice-impartial",
+  "target": "skill.philosophie.justice-philosophie"
+}

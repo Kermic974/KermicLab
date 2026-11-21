@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.laicite-teaches-expliquer-la-separation-des-eglises-et-de-l-etat",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "notion.emc.laicite",
+  "target": "microskill.emc.expliquer-la-separation-des-eglises-et-de-l-etat"
+}

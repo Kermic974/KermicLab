@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-gene-et-allele-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/genetique-et-heredite/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-gene-et-allele",
+  "target": "skill.svt.genetique-et-heredite"
+}

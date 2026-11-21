@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.citoyennete-requires-democratie",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyennete/contenu.json"
+  },
+  "source": "notion.emc.citoyennete",
+  "target": "notion.emc.democratie",
+  "rationale": "La participation politique du citoyen s’exerce dans le cadre démocratique."
+}

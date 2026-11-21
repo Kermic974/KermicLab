@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.premiere-guerre-mondiale-teaches-analyser-le-role-des-acteurs-et-des-alliances",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premiere-guerre-mondiale/contenu.json"
+  },
+  "source": "notion.histoire.premiere-guerre-mondiale",
+  "target": "microskill.histoire.analyser-le-role-des-acteurs-et-des-alliances"
+}

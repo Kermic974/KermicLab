@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.raison-relatedto-science",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "notion.philosophie.raison",
+  "target": "notion.philosophie.science",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : La démarche scientifique est une mise en œuvre de la raison, avec ses limites."
+}

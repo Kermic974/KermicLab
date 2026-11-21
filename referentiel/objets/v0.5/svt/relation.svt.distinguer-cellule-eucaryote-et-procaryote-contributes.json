@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-cellule-eucaryote-et-procaryote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-cellule-eucaryote-et-procaryote",
+  "target": "skill.svt.la-cellule"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.poesie-requires-figures-de-style",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "notion.francais.poesie",
+  "target": "notion.francais.figures-de-style",
+  "rationale": "Faire entendre une image mobilise comparaison, métaphore et personnification."
+}

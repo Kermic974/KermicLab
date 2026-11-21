@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.calculer-la-part-d-un-port-dans-un-trafic-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "microskill.geographie.calculer-la-part-d-un-port-dans-un-trafic",
+  "target": "skill.geographie.mers-oceans"
+}

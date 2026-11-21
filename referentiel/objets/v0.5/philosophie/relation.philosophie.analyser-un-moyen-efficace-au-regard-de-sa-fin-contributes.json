@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.analyser-un-moyen-efficace-au-regard-de-sa-fin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/technique/contenu.json"
+  },
+  "source": "microskill.philosophie.analyser-un-moyen-efficace-au-regard-de-sa-fin",
+  "target": "skill.philosophie.technique"
+}

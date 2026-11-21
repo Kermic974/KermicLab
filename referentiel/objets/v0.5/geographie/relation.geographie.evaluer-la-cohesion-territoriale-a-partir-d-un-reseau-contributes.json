@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.evaluer-la-cohesion-territoriale-a-partir-d-un-reseau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-territoires/contenu.json"
+  },
+  "source": "microskill.geographie.evaluer-la-cohesion-territoriale-a-partir-d-un-reseau",
+  "target": "skill.geographie.france-territoires"
+}

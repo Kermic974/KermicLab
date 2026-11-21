@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.compter-les-syllabes-d-un-vers-et-identifier-une-strophe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "microskill.francais.compter-les-syllabes-d-un-vers-et-identifier-une-strophe",
+  "target": "skill.francais.poesie"
+}

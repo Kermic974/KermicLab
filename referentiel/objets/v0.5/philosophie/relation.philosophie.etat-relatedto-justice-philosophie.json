@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.etat-relatedto-justice-philosophie",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "notion.philosophie.etat",
+  "target": "notion.philosophie.justice-philosophie",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : Les principes de justice orientent l’institution du pouvoir commun."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.justice-sociale-teaches-evaluer-les-effets-d-une-politique-de-justice-sociale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "notion.ses.justice-sociale",
+  "target": "microskill.ses.evaluer-les-effets-d-une-politique-de-justice-sociale"
+}

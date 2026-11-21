@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decolonisation-teaches-comparer-des-voies-vers-l-independance-negociee-conflictuelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "notion.histoire.decolonisation",
+  "target": "microskill.histoire.comparer-des-voies-vers-l-independance-negociee-conflictuelle"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyse-texte-teaches-relier-un-procede-d-ecriture-a-son-effet",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "microskill.francais.relier-un-procede-d-ecriture-a-son-effet"
+}

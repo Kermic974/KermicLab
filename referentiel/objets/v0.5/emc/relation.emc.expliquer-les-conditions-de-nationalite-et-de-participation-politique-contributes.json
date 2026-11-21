@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-les-conditions-de-nationalite-et-de-participation-politique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyennete/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-les-conditions-de-nationalite-et-de-participation-politique",
+  "target": "skill.emc.citoyennete"
+}

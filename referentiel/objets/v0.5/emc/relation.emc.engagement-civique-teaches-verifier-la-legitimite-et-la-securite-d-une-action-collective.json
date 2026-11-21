@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.engagement-civique-teaches-verifier-la-legitimite-et-la-securite-d-une-action-collective",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "microskill.emc.verifier-la-legitimite-et-la-securite-d-une-action-collective"
+}

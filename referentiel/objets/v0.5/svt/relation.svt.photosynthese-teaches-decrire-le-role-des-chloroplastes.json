@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.photosynthese-teaches-decrire-le-role-des-chloroplastes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "notion.svt.photosynthese",
+  "target": "microskill.svt.decrire-le-role-des-chloroplastes"
+}

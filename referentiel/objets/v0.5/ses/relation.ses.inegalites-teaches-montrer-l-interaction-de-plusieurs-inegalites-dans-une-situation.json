@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.inegalites-teaches-montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "notion.ses.inegalites",
+  "target": "microskill.ses.montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation"
+}

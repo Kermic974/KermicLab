@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-interet-general-et-interet-particulier-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-interet-general-et-interet-particulier",
+  "target": "skill.emc.interet-general"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolution-francaise-teaches-ordonner-les-evenements-de-1789",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "notion.histoire.revolution-francaise",
+  "target": "microskill.histoire.ordonner-les-evenements-de-1789"
+}

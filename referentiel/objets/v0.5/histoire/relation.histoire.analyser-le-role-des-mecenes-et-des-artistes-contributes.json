@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-le-role-des-mecenes-et-des-artistes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-le-role-des-mecenes-et-des-artistes",
+  "target": "skill.histoire.renaissance"
+}

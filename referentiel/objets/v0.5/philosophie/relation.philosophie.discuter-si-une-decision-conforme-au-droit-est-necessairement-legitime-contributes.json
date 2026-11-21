@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "microskill.philosophie.discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime",
+  "target": "skill.philosophie.etat"
+}

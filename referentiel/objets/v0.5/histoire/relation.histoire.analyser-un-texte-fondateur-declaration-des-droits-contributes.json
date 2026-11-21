@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-un-texte-fondateur-declaration-des-droits-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-un-texte-fondateur-declaration-des-droits",
+  "target": "skill.histoire.revolution-francaise"
+}

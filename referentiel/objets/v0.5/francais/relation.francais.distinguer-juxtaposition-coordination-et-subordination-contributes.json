@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-juxtaposition-coordination-et-subordination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-juxtaposition-coordination-et-subordination",
+  "target": "skill.francais.grammaire-phrase-complexe"
+}

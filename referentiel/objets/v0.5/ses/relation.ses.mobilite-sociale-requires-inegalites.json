@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.mobilite-sociale-requires-inegalites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilite-sociale/contenu.json"
+  },
+  "source": "notion.ses.mobilite-sociale",
+  "target": "notion.ses.inegalites",
+  "rationale": "La mobilité se mesure par rapport à des positions inégales de revenu, de diplôme et de profession."
+}

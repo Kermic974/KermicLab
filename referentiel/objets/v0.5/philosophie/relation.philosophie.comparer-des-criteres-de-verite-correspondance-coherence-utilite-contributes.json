@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.comparer-des-criteres-de-verite-correspondance-coherence-utilite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verite/contenu.json"
+  },
+  "source": "microskill.philosophie.comparer-des-criteres-de-verite-correspondance-coherence-utilite",
+  "target": "skill.philosophie.verite"
+}

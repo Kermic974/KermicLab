@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.monnaie-teaches-analyser-un-paiement-entre-agents-economiques",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "notion.ses.monnaie",
+  "target": "microskill.ses.analyser-un-paiement-entre-agents-economiques"
+}

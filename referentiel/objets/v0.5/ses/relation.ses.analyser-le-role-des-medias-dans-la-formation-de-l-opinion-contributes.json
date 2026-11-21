@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.analyser-le-role-des-medias-dans-la-formation-de-l-opinion-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "microskill.ses.analyser-le-role-des-medias-dans-la-formation-de-l-opinion",
+  "target": "skill.ses.opinion-publique"
+}

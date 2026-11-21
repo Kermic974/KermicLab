@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.evaluer-la-falsifiabilite-d-une-hypothese-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science/contenu.json"
+  },
+  "source": "microskill.philosophie.evaluer-la-falsifiabilite-d-une-hypothese",
+  "target": "skill.philosophie.science"
+}

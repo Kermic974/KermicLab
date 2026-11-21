@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.egalite-teaches-distinguer-egalite-de-droits-et-egalite-reelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "notion.emc.egalite",
+  "target": "microskill.emc.distinguer-egalite-de-droits-et-egalite-reelle"
+}

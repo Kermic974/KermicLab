@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.la-cellule-teaches-situer-l-adn-dans-la-cellule",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "notion.svt.la-cellule",
+  "target": "microskill.svt.situer-l-adn-dans-la-cellule"
+}

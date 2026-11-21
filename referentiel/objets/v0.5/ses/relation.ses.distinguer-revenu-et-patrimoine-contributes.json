@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-revenu-et-patrimoine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-revenu-et-patrimoine",
+  "target": "skill.ses.inegalites"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-pluralisme-politique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-pluralisme-politique",
+  "target": "skill.emc.democratie"
+}

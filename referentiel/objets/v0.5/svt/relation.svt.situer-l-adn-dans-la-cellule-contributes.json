@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.situer-l-adn-dans-la-cellule-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "microskill.svt.situer-l-adn-dans-la-cellule",
+  "target": "skill.svt.la-cellule"
+}

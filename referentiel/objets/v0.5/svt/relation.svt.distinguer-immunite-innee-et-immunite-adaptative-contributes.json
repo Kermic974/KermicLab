@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-immunite-innee-et-immunite-adaptative-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-immunitaire/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-immunite-innee-et-immunite-adaptative",
+  "target": "skill.svt.systeme-immunitaire"
+}

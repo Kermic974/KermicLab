@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-temps-vecu-et-temps-mesure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-temps-vecu-et-temps-mesure",
+  "target": "skill.philosophie.temps"
+}

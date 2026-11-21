@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.democratie-relatedto-etat-de-droit",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "notion.emc.democratie",
+  "target": "notion.emc.etat-de-droit",
+  "rationale": "La démocratie est contrôlée par le droit ; lien conceptuel, sans ordre d’apprentissage établi."
+}

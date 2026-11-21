@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-la-fraternite-comme-principe-republicain-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-la-fraternite-comme-principe-republicain",
+  "target": "skill.emc.fraternite"
+}

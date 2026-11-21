@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.analyse-texte-relatedto-roman",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "notion.francais.roman",
+  "rationale": "La méthode d’analyse s’applique au récit ; lien d’application."
+}

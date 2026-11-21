@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.classer-une-mutation-selon-ses-consequences-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "microskill.svt.classer-une-mutation-selon-ses-consequences",
+  "target": "skill.svt.mutations-et-variabilite"
+}

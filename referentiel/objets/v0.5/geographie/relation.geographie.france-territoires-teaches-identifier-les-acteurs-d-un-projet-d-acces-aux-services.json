@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-territoires-teaches-identifier-les-acteurs-d-un-projet-d-acces-aux-services",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-territoires/contenu.json"
+  },
+  "source": "notion.geographie.france-territoires",
+  "target": "microskill.geographie.identifier-les-acteurs-d-un-projet-d-acces-aux-services"
+}

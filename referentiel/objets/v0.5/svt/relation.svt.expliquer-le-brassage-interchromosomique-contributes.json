@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-brassage-interchromosomique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meiose-et-brassage-genetique/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-brassage-interchromosomique",
+  "target": "skill.svt.meiose-et-brassage-genetique"
+}

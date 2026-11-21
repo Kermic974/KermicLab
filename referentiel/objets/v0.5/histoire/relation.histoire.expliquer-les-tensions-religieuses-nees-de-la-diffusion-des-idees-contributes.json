@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees",
+  "target": "skill.histoire.renaissance"
+}

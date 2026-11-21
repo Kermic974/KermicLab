@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.urbanisation-teaches-interpreter-l-evolution-de-la-part-de-population-urbaine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "notion.geographie.urbanisation",
+  "target": "microskill.geographie.interpreter-l-evolution-de-la-part-de-population-urbaine"
+}

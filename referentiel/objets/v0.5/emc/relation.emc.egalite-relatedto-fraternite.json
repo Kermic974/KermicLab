@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.egalite-relatedto-fraternite",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "notion.emc.egalite",
+  "target": "notion.emc.fraternite",
+  "rationale": "Les trois principes de la devise républicaine sont étudiés ensemble."
+}

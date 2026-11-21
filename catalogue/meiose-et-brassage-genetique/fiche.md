@@ -24,9 +24,9 @@ questions:
   - je ne comprends pas le brassage interchromosomique
   - c'est quoi un crossing-over ?
   - what is meiosis?
-prerequis: genetique-et-heredite
+prerequis: genetique-et-heredite, adn-et-division-cellulaire, reproduction-humaine
 niveaux: terminale
-competences: svt-meiose-et-brassage-genetique-action-1, svt-meiose-et-brassage-genetique-action-2
+competences: decrire-les-etapes-de-la-meiose, expliquer-le-brassage-interchromosomique, expliquer-le-brassage-intrachromosomique-crossing-over, calculer-le-nombre-de-combinaisons-possibles-de-gametes, comparer-meiose-et-mitose
 ---
 
 # Méiose et brassage génétique

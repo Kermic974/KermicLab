@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer",
+  "target": "skill.histoire.revolution-industrielle"
+}

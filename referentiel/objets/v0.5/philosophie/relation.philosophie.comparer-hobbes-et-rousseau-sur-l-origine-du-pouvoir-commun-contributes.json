@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.comparer-hobbes-et-rousseau-sur-l-origine-du-pouvoir-commun-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "microskill.philosophie.comparer-hobbes-et-rousseau-sur-l-origine-du-pouvoir-commun",
+  "target": "skill.philosophie.etat"
+}

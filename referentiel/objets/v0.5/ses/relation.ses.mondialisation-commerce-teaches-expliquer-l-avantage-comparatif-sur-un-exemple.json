@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mondialisation-commerce-teaches-expliquer-l-avantage-comparatif-sur-un-exemple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "notion.ses.mondialisation-commerce",
+  "target": "microskill.ses.expliquer-l-avantage-comparatif-sur-un-exemple"
+}

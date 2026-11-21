@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement",
+  "target": "skill.histoire.ve-republique"
+}

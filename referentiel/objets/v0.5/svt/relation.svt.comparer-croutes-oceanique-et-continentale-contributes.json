@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.comparer-croutes-oceanique-et-continentale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "microskill.svt.comparer-croutes-oceanique-et-continentale",
+  "target": "skill.svt.structure-de-la-terre"
+}

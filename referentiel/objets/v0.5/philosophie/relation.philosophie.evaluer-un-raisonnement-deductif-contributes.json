@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.evaluer-un-raisonnement-deductif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "microskill.philosophie.evaluer-un-raisonnement-deductif",
+  "target": "skill.philosophie.raison"
+}

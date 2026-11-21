@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.mobilite-sociale-requires-socialisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilite-sociale/contenu.json"
+  },
+  "source": "notion.ses.mobilite-sociale",
+  "target": "notion.ses.socialisation",
+  "rationale": "Les trajectoires sociales se comprennent en partie par la transmission des normes, des dispositions et des ressources par les agents de socialisation."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.premiere-guerre-mondiale-teaches-placer-les-grands-reperes-de-1914-a-1918",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premiere-guerre-mondiale/contenu.json"
+  },
+  "source": "notion.histoire.premiere-guerre-mondiale",
+  "target": "microskill.histoire.placer-les-grands-reperes-de-1914-a-1918"
+}

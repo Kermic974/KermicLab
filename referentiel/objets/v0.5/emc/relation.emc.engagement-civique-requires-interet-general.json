@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.engagement-civique-requires-interet-general",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "notion.emc.interet-general",
+  "rationale": "Les objectifs d’un projet civique se justifient par l’intérêt général."
+}

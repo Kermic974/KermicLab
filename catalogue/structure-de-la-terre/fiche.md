@@ -28,9 +28,9 @@ questions:
   - je ne comprends pas la différence entre croûte continentale et océanique
   - c'est quoi la lithosphère ?
   - what is inside the earth?
-prerequis:
+prerequis: seismes-et-volcans
 niveaux: premiere
-competences: svt-structure-de-la-terre-action-1, svt-structure-de-la-terre-action-2
+competences: interpreter-le-trajet-des-ondes-sismiques-pour-deduire-une-structure, decrire-les-enveloppes-de-la-terre-et-leurs-limites, distinguer-lithosphere-et-asthenosphere, comparer-croutes-oceanique-et-continentale, calculer-une-profondeur-a-partir-de-la-vitesse-d-une-onde
 ---
 
 # La structure interne de la Terre

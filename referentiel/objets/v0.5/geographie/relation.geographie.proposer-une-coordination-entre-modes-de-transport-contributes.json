@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.proposer-une-coordination-entre-modes-de-transport-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "microskill.geographie.proposer-une-coordination-entre-modes-de-transport",
+  "target": "skill.geographie.mobilites"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.analyser-une-situation-de-liberte-politique-et-ses-limites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.analyser-une-situation-de-liberte-politique-et-ses-limites",
+  "target": "skill.philosophie.liberte-philosophie"
+}

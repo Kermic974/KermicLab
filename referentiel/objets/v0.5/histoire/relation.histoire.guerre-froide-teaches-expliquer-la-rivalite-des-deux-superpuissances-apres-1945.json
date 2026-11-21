@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerre-froide-teaches-expliquer-la-rivalite-des-deux-superpuissances-apres-1945",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide",
+  "target": "microskill.histoire.expliquer-la-rivalite-des-deux-superpuissances-apres-1945"
+}

@@ -21,10 +21,10 @@ questions:
   - Quel rôle jouent les mers et océans dans la mondialisation ?
   - C'est quoi une zone économique exclusive ?
   - Pourquoi les routes maritimes sont-elles importantes ?
-prerequis:
-niveaux: cycle-4, seconde, premiere, terminale
 classes: 4e
-competences: geographie-mers-oceans-action-1, geographie-mers-oceans-action-2
+prerequis: mondialisation
+niveaux: cycle-4, seconde, premiere, terminale
+competences: localiser-routes-ports-et-passages-strategiques, calculer-la-part-d-un-port-dans-un-trafic, distinguer-les-reseaux-de-transport-et-de-communication-maritimes, identifier-les-acteurs-et-les-ressources-d-un-espace-maritime, analyser-un-enjeu-de-droit-maritime-ou-d-environnement
 ---
 
 # Mers et océans dans la mondialisation

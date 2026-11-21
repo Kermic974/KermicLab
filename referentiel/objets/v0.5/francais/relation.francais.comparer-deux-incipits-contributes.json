@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.comparer-deux-incipits-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "microskill.francais.comparer-deux-incipits",
+  "target": "skill.francais.roman"
+}

@@ -17,7 +17,7 @@ questions:
   - Comment comprendre l'impératif catégorique ?
 prerequis:
 niveaux: terminale
-competences: philosophie-devoir-action-1, philosophie-devoir-action-2
+competences: distinguer-obligation-morale-et-contrainte-physique, distinguer-agir-conformement-au-devoir-et-agir-par-devoir-chez-kant, comparer-le-critere-kantien-et-le-critere-utilitariste, tester-la-validite-d-une-regle-d-action-par-l-universalisation
 ---
 
 # Le devoir

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-teaches-identifier-un-processus-de-metropolisation-ou-de-periurbanisation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-territoriales",
+  "target": "microskill.geographie.identifier-un-processus-de-metropolisation-ou-de-periurbanisation"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-selection-naturelle-sur-un-exemple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-selection-naturelle-sur-un-exemple",
+  "target": "skill.svt.evolution"
+}

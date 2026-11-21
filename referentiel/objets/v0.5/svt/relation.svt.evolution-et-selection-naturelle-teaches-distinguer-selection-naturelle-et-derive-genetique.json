@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-et-selection-naturelle-teaches-distinguer-selection-naturelle-et-derive-genetique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "notion.svt.evolution-et-selection-naturelle",
+  "target": "microskill.svt.distinguer-selection-naturelle-et-derive-genetique"
+}

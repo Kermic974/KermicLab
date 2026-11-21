@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.inconscient-teaches-distinguer-l-inconscient-psychique-et-l-automatisme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inconscient/contenu.json"
+  },
+  "source": "notion.philosophie.inconscient",
+  "target": "microskill.philosophie.distinguer-l-inconscient-psychique-et-l-automatisme"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-difference-de-traitement-et-discrimination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-difference-de-traitement-et-discrimination",
+  "target": "skill.emc.discrimination"
+}

@@ -18,10 +18,10 @@ questions:
   - C'est quoi l'Union européenne ?
   - Quelle différence entre l'Union européenne et la zone euro ?
   - Comment fonctionne la cohésion européenne ?
+classes: 3e
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
-classes: 3e
-competences: geographie-union-europeenne-action-1, geographie-union-europeenne-action-2
+competences: distinguer-ue-zone-euro-et-espace-schengen, interpreter-un-exemple-de-statut-a-geometrie-variable, calculer-la-part-d-un-financement-europeen-dans-un-projet, analyser-les-ecarts-entre-territoires-de-l-ue, identifier-les-echelles-de-decision-europeennes
 ---
 
 # L'Union européenne et ses territoires

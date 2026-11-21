@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-abondance-de-lois-et-etat-de-droit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-abondance-de-lois-et-etat-de-droit",
+  "target": "skill.emc.etat-de-droit"
+}
