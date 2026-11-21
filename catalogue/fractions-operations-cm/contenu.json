@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au CM2, on additionne des fractions simples et on relie fractions et nombres décimaux.",
+  "niveaux": [
+    {
+      "titre": "Intuition : réunir des parts",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une pizza coupée en 8 parts : tu manges 3/8, ton ami 2/8. Ensemble : 3/8 + 2/8 = 5/8. Quand le dénominateur est le même, on additionne les numérateurs et on garde le dénominateur."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "3/8 + 2/8.",
+          "3 + 2 = 5.",
+          "Résultat : 5/8."
+        ]
+      },
+      "aRetenir": "Même dénominateur : on additionne les numérateurs."
+    },
+    {
+      "titre": "Fractions décimales",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Une **fraction décimale** a pour dénominateur 10, 100, 1 000… : 7/10 = 0,7 ; 35/100 = 0,35 ; 3/2 = 1,5 (3/2 = 15/10). 1/2 = 0,5 ; 1/4 = 0,25 ; 3/4 = 0,75.",
+        "**Fractions égales** : on multiplie numérateur et dénominateur par le même nombre : 1/2 = 2/4 = 5/10. Une fraction supérieure à 1 s'écrit aussi en nombre entier + fraction : 7/4 = 1 + 3/4."
+      ],
+      "exemple": {
+        "titre": "Exemple : 3/4 en décimal",
+        "etapes": [
+          "3/4 = 75/100.",
+          "75/100 = 0,75.",
+          "3/4 = 0,75."
+        ]
+      },
+      "aRetenir": "Fractions égales : on multiplie haut et bas par le même nombre."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "3/8 + 2/8 =",
+        "choix": [
+          "5/8",
+          "5/16",
+          "6/8",
+          "1/8"
+        ],
+        "bonne": 0,
+        "explication": "On additionne les numérateurs."
+      },
+      {
+        "type": "nombre",
+        "question": "Écris 3/4 sous forme décimale.",
+        "reponse": 0.75,
+        "indices": [
+          "3/4 = 75/100."
+        ],
+        "solution": "3/4 = 75/100.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Écris 35/100 sous forme décimale.",
+        "reponse": 0.35,
+        "indices": [
+          "Centièmes : deux chiffres après la virgule."
+        ],
+        "solution": "35 centièmes.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le partage des gâteaux",
+    "histoire": [
+      "Trois enfants mangent 1/4, 2/4 et 1/4 d'un gâteau."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle fraction du gâteau a été mangée ?",
+        "choix": [
+          "4/4 (le gâteau entier)",
+          "3/12",
+          "4/12",
+          "2/4"
+        ],
+        "bonne": 0,
+        "explication": "1/4 + 2/4 + 1/4 = 4/4."
+      },
+      {
+        "type": "nombre",
+        "question": "Écris 1/4 en décimal.",
+        "reponse": 0.25,
+        "indices": [
+          "Un quart = 25 centièmes."
+        ],
+        "solution": "1/4 = 25/100.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien partagé !"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Résumer ou expliquer, c'est aller à l'essentiel et le dire clairement.",
+  "niveaux": [
+    {
+      "titre": "Intuition : garder l'essentiel",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour résumer, on lit, on souligne les mots-clés, on barre les détails, puis on réécrit avec ses propres mots, en moins de phrases. Un résumé répond à : de quoi parle le texte ? que dit-il d'important ?"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Texte de 10 lignes sur les abeilles.",
+          "Idées : elles font du miel, elles pollinisent.",
+          "Résumé : 2 phrases."
+        ]
+      },
+      "aRetenir": "Résumer = garder l'essentiel, avec ses mots."
+    },
+    {
+      "titre": "Expliquer par écrit",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Un **texte explicatif** présente un phénomène : introduction (le sujet), développement (les étapes, les causes), conclusion. On emploie le présent, des connecteurs de cause (car, parce que), du vocabulaire précis, éventuellement un schéma.",
+        "Pour **prendre des notes** : mots-clés, abréviations, flèches, plan."
+      ],
+      "exemple": {
+        "titre": "Exemple : le cycle de l'eau",
+        "etapes": [
+          "Introduction : l'eau voyage.",
+          "Étapes : évaporation, nuages, pluie.",
+          "Conclusion : le cycle recommence."
+        ]
+      },
+      "aRetenir": "Plan : introduction, développement, conclusion."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un résumé doit…",
+        "choix": [
+          "garder l'essentiel avec ses mots",
+          "recopier le texte",
+          "ajouter son avis",
+          "être plus long"
+        ],
+        "bonne": 0,
+        "explication": "Condensé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel temps utilise-t-on dans un texte explicatif ?",
+        "choix": [
+          "Le présent",
+          "Le passé simple",
+          "Le futur antérieur",
+          "L'imparfait"
+        ],
+        "bonne": 0,
+        "explication": "Vérité générale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel connecteur exprime la cause ?",
+        "choix": [
+          "car",
+          "puis",
+          "enfin",
+          "ainsi"
+        ],
+        "bonne": 0,
+        "explication": "Car introduit la cause."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'exposé",
+    "histoire": [
+      "Tu prépares un exposé sur les volcans."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "Je repère les idées importantes",
+          "Je recopie tout",
+          "Je dessine un volcan seulement",
+          "Je ferme le livre"
+        ],
+        "bonne": 0,
+        "explication": "Mots-clés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel plan choisis-tu ?",
+        "choix": [
+          "Introduction, développement, conclusion",
+          "Conclusion seulement",
+          "Développement seulement",
+          "Aucun"
+        ],
+        "bonne": 0,
+        "explication": "Plan classique."
+      }
+    ],
+    "conclusion": "Exposé prêt !"
+  }
+}
