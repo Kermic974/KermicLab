@@ -5,12 +5,6 @@ sujet: mathematiques/algorithmique-python-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere, terminale
-prerequis:
-  - algorithmique-et-scratch-c4
-competences:
-  - algorithmique-python-l-comprendre
-  - algorithmique-python-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quelle différence entre boucle for et while ?
   - Comment fonctionne une recherche par dichotomie ?
   - Comment programmer un algorithme de seuil ?
+prerequis: algorithmique-et-scratch-c4
+niveaux: seconde, premiere, terminale
+competences: ecrire-une-boucle-for-en-python, ecrire-un-algorithme-de-seuil-avec-while, appliquer-la-dichotomie, ecrire-une-fonction-en-python
 ---
 
 # Algorithmique et programmation en Python

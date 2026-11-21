@@ -5,13 +5,7 @@ sujet: mathematiques/masses-et-contenances-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - longueurs-et-mesures-c2
-competences:
-  - masses-et-contenances-c2-comprendre
-  - masses-et-contenances-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment peser avec une balance ?
   - Combien de grammes dans un kilogramme ?
   - Qu'est-ce qu'un litre ?
+prerequis: longueurs-et-mesures-c2
+niveaux: cycle-2
+competences: comparer-des-masses, convertir-kilogrammes-et-grammes, choisir-l-instrument-de-mesure-d-un-liquide, comparer-des-contenances
 ---
 
 # Masses et contenances

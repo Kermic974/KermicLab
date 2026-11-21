@@ -5,13 +5,7 @@ sujet: francais/vocabulaire-et-dictionnaire-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - la-phrase-c2
-competences:
-  - vocabulaire-et-dictionnaire-c2-comprendre
-  - vocabulaire-et-dictionnaire-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment ranger des mots dans l'ordre alphabétique ?
   - Comment chercher un mot dans le dictionnaire au CE1 ?
   - C'est quoi un contraire et un mot de la même famille ?
+prerequis: la-phrase-c2
+niveaux: cycle-2
+competences: ranger-des-mots-dans-l-ordre-alphabetique, trouver-le-contraire-d-un-mot, identifier-un-mot-de-la-meme-famille, chercher-un-mot-dans-un-dictionnaire
 ---
 
 # Vocabulaire, ordre alphabétique et dictionnaire

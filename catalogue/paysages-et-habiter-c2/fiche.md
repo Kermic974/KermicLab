@@ -5,13 +5,7 @@ sujet: geographie/paysages-et-habiter-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - se-reperer-dans-l-espace-c2
-competences:
-  - paysages-et-habiter-c2-comprendre
-  - paysages-et-habiter-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quels sont les différents paysages ?
   - Quelle différence entre la ville et la campagne ?
   - Comment habite-t-on à la montagne ou au bord de la mer ?
+prerequis: se-reperer-dans-l-espace-c2
+niveaux: cycle-2
+competences: decrire-un-paysage-urbain-ou-rural, reperer-les-plans-d-un-paysage-premier-plan-arriere-plan, associer-une-activite-a-un-paysage, comparer-deux-manieres-d-habiter
 ---
 
 # Les paysages et la façon d'habiter

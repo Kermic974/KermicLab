@@ -5,13 +5,7 @@ sujet: francais/noms-et-determinants-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1
-prerequis:
-  - la-phrase-c2
-competences:
-  - noms-et-determinants-c2-comprendre
-  - noms-et-determinants-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - C'est quoi un nom et un déterminant ?
   - Quelle différence entre nom commun et nom propre ?
   - Comment utiliser le, la, les, un, une, des ?
+prerequis: la-phrase-c2
+niveaux: cycle-2
+competences: identifier-un-nom-commun-et-un-nom-propre, choisir-le-determinant-adapte, marquer-le-genre-d-un-nom, marquer-le-pluriel-d-un-nom
 ---
 
 # Le nom et le déterminant

@@ -5,13 +5,7 @@ sujet: mathematiques/soustraction-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - addition-c2
-competences:
-  - soustraction-c2-comprendre
-  - soustraction-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment faire une soustraction ?
   - À quoi sert le signe moins ?
   - Comment poser une soustraction au CE1 ?
+prerequis: addition-c2
+niveaux: cycle-2
+competences: soustraire-de-tete, poser-une-soustraction, utiliser-la-soustraction-pour-comparer, resoudre-un-probleme-de-soustraction
 ---
 
 # La soustraction

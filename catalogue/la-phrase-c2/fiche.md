@@ -5,13 +5,7 @@ sujet: francais/la-phrase-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1
-prerequis:
-  - syllabes-et-mots-c2
-competences:
-  - la-phrase-c2-comprendre
-  - la-phrase-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - C'est quoi une phrase ?
   - Pourquoi mettre une majuscule et un point ?
   - Comment remettre des mots dans l'ordre pour faire une phrase ?
+prerequis: syllabes-et-mots-c2
+niveaux: cycle-2
+competences: reconnaitre-une-phrase-ecrite-correctement, poser-une-question-avec-le-signe-adapte, ecrire-une-phrase-avec-majuscule-et-point, distinguer-phrase-declarative-interrogative-et-exclamative
 ---
 
 # La phrase : majuscule, point et sens

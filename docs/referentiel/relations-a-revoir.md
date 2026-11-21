@@ -68,7 +68,7 @@ Aucun `requires` n'est créé : les notions sont en rapport conceptuel sans ordr
 | Lien envisagé | Raison de l'écart |
 |---|---|
 | Nouveaux `requires` entre notions de technologie | Aucun ajouté : le graphe déjà déclaré dans les fiches (objets, matériaux, programmation, réseaux, NSI, sciences de l'ingénieur) couvre les dépendances justifiées par les sections. |
-| `objets-electriques-et-materiaux-c2` projeté vers la fiche | Les niveaux de cycle 2 ne sont pas projetables : l'énumération des codes d'étape du schéma `stage` s'arrête à `cycle-3`. Les objets existent, sans CurriculumMapping ; l'ajout de `cycle-2` au contrat est une décision de schéma à prendre (ADR). |
+| `objets-electriques-et-materiaux-c2` projeté vers la fiche | Résolu par l'[ADR 0038](../decisions/0038-etape-cycle-2-referentiel.md) : le code d'étape `cycle-2` est ajouté au schéma `stage`. |
 
 ## Anglais, arts plastiques, musique, EPS
 

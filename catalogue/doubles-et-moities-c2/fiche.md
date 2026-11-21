@@ -5,13 +5,7 @@ sujet: mathematiques/doubles-et-moities-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1
-prerequis:
-  - addition-c2
-competences:
-  - doubles-et-moities-c2-comprendre
-  - doubles-et-moities-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - C'est quoi le double d'un nombre ?
   - Comment trouver la moitié d'un nombre ?
   - C'est quoi un nombre pair ?
+prerequis: addition-c2
+niveaux: cycle-2
+competences: calculer-le-double-d-un-nombre, calculer-la-moitie-d-un-nombre-pair, distinguer-nombres-pairs-et-impairs, utiliser-doubles-et-moities-pour-calculer
 ---
 
 # Les doubles et les moitiés

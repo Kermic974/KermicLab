@@ -7360,6 +7360,584 @@
         "expliquer-le-financement-de-la-protection-sociale",
         "evaluer-une-politique-de-l-emploi"
       ]
+    },
+    "algorithmes-programmation-cm": {
+      "prerequis": [
+        "tableaux-et-algorithmes-c2"
+      ],
+      "competences": [
+        "decrire-les-etapes-d-un-algorithme",
+        "ecrire-un-programme-avec-une-boucle-pour-tracer-une-figure",
+        "ecrire-une-instruction-conditionnelle",
+        "prevoir-le-resultat-d-un-programme-simple"
+      ]
+    },
+    "algorithmique-et-scratch-c4": {
+      "prerequis": [
+        "algorithmique-6e"
+      ],
+      "competences": [
+        "suivre-l-evolution-d-une-variable-dans-un-programme",
+        "ecrire-une-boucle-pour-et-tant-que",
+        "ecrire-un-programme-de-calcul-avec-une-fonction",
+        "tester-et-corriger-un-programme-de-calcul"
+      ]
+    },
+    "algorithmique-python-l": {
+      "prerequis": [
+        "algorithmique-et-scratch-c4"
+      ],
+      "competences": [
+        "ecrire-une-boucle-for-en-python",
+        "ecrire-un-algorithme-de-seuil-avec-while",
+        "appliquer-la-dichotomie",
+        "ecrire-une-fonction-en-python"
+      ]
+    },
+    "numerique-et-donnees-c4": {
+      "prerequis": [
+        "esprit-critique-et-medias-c4"
+      ],
+      "competences": [
+        "distinguer-donnees-personnelles-et-autres-donnees",
+        "decrire-le-role-de-la-cnil",
+        "identifier-le-cyberharcelement-et-reagir",
+        "proteger-ses-traces-numeriques"
+      ]
+    },
+    "objets-electriques-et-materiaux-c2": {
+      "prerequis": [],
+      "competences": [
+        "identifier-des-materiaux-usuels-a-partir-de-leurs-proprietes",
+        "distinguer-un-materiau-conducteur-d-un-materiau-isolant",
+        "realiser-un-circuit-electrique-simple-ferme",
+        "appliquer-les-regles-de-securite-avec-l-electricite"
+      ]
+    },
+    "anglais-bonjour-c2": {
+      "prerequis": [],
+      "competences": [
+        "saluer-et-prendre-conge-en-anglais",
+        "compter-de-1-a-10-en-anglais",
+        "nommer-les-couleurs-en-anglais",
+        "comprendre-des-consignes-orales-tres-simples"
+      ]
+    },
+    "anglais-famille-et-animaux-c2": {
+      "prerequis": [
+        "anglais-bonjour-c2"
+      ],
+      "competences": [
+        "nommer-les-membres-de-la-famille-en-anglais",
+        "nommer-des-animaux-et-des-objets-usuels-en-anglais",
+        "dire-ce-que-l-on-possede-avec-i-have",
+        "associer-un-mot-anglais-a-son-image"
+      ]
+    },
+    "arts-couleurs-et-formes-c2": {
+      "prerequis": [],
+      "competences": [
+        "melanger-deux-couleurs-primaires-pour-obtenir-une-couleur-secondaire",
+        "distinguer-couleurs-primaires-et-secondaires",
+        "dessiner-et-assembler-des-formes-par-collage",
+        "decrire-une-uvre-connue-avec-ses-mots"
+      ]
+    },
+    "musique-sons-et-chansons-c2": {
+      "prerequis": [],
+      "competences": [
+        "distinguer-des-sons-selon-leur-origine-et-leur-hauteur",
+        "reperer-la-pulsation-d-un-morceau",
+        "reproduire-un-rythme-simple",
+        "chanter-en-groupe-avec-justesse"
+      ]
+    },
+    "eps-bouger-et-jouer-c2": {
+      "prerequis": [],
+      "competences": [
+        "appliquer-des-regles-de-securite-lors-d-un-jeu",
+        "respecter-les-regles-et-les-partenaires-fair-play",
+        "se-deplacer-de-differentes-facons",
+        "adopter-une-conduite-adaptee-a-la-piscine"
+      ]
+    },
+    "ecrire-et-comptines-c2": {
+      "prerequis": [
+        "la-phrase-c2"
+      ],
+      "competences": [
+        "ecrire-une-phrase-correcte",
+        "identifier-des-mots-qui-riment",
+        "relire-un-texte-pour-le-corriger",
+        "ecrire-une-courte-histoire"
+      ]
+    },
+    "homophones-et-orthographe-c2": {
+      "prerequis": [
+        "temps-des-verbes-c2"
+      ],
+      "competences": [
+        "choisir-entre-a-et-a-au-cycle-2",
+        "choisir-entre-et-et-est",
+        "choisir-entre-ont-et-on-au-cycle-2",
+        "utiliser-le-test-de-remplacement"
+      ]
+    },
+    "la-phrase-c2": {
+      "prerequis": [
+        "syllabes-et-mots-c2"
+      ],
+      "competences": [
+        "reconnaitre-une-phrase-ecrite-correctement",
+        "poser-une-question-avec-le-signe-adapte",
+        "ecrire-une-phrase-avec-majuscule-et-point",
+        "distinguer-phrase-declarative-interrogative-et-exclamative"
+      ]
+    },
+    "lettres-et-sons-c2": {
+      "prerequis": [],
+      "competences": [
+        "nommer-les-lettres-et-distinguer-voyelles-et-consonnes",
+        "identifier-un-son-dans-un-mot",
+        "associer-plusieurs-lettres-a-un-meme-son",
+        "ordonner-les-lettres-de-l-alphabet"
+      ]
+    },
+    "lire-et-comprendre-c2": {
+      "prerequis": [
+        "syllabes-et-mots-c2"
+      ],
+      "competences": [
+        "repondre-a-qui-ou-quand-a-partir-d-un-texte",
+        "identifier-un-sentiment-d-un-personnage",
+        "expliquer-ce-que-l-on-a-compris",
+        "retrouver-une-information-dans-un-texte"
+      ]
+    },
+    "noms-et-determinants-c2": {
+      "prerequis": [
+        "la-phrase-c2"
+      ],
+      "competences": [
+        "identifier-un-nom-commun-et-un-nom-propre",
+        "choisir-le-determinant-adapte",
+        "marquer-le-genre-d-un-nom",
+        "marquer-le-pluriel-d-un-nom"
+      ]
+    },
+    "singulier-pluriel-masculin-feminin-c2": {
+      "prerequis": [
+        "noms-et-determinants-c2"
+      ],
+      "competences": [
+        "former-le-pluriel-d-un-nom",
+        "former-le-feminin-d-un-adjectif",
+        "accorder-le-verbe-avec-le-sujet-pluriel",
+        "reperer-un-accord-a-faire"
+      ]
+    },
+    "syllabes-et-mots-c2": {
+      "prerequis": [
+        "lettres-et-sons-c2"
+      ],
+      "competences": [
+        "decouper-un-mot-en-syllabes",
+        "compter-les-syllabes-d-un-mot",
+        "reconnaitre-un-mot-outil",
+        "lire-des-mots-courants"
+      ]
+    },
+    "temps-des-verbes-c2": {
+      "prerequis": [
+        "verbe-sujet-adjectif-c2"
+      ],
+      "competences": [
+        "conjuguer-un-verbe-au-present",
+        "conjuguer-etre-et-avoir",
+        "reconnaitre-une-phrase-au-futur",
+        "situer-une-action-dans-le-passe-le-present-ou-le-futur"
+      ]
+    },
+    "verbe-sujet-adjectif-c2": {
+      "prerequis": [
+        "noms-et-determinants-c2"
+      ],
+      "competences": [
+        "identifier-le-verbe-d-une-phrase",
+        "identifier-le-sujet-d-une-phrase",
+        "reconnaitre-un-adjectif-et-son-nom",
+        "accorder-l-adjectif-avec-le-nom"
+      ]
+    },
+    "vocabulaire-et-dictionnaire-c2": {
+      "prerequis": [
+        "la-phrase-c2"
+      ],
+      "competences": [
+        "ranger-des-mots-dans-l-ordre-alphabetique",
+        "trouver-le-contraire-d-un-mot",
+        "identifier-un-mot-de-la-meme-famille",
+        "chercher-un-mot-dans-un-dictionnaire"
+      ]
+    },
+    "eau-air-et-matiere-c2": {
+      "prerequis": [],
+      "competences": [
+        "reconnaitre-les-trois-etats-de-l-eau",
+        "prevoir-la-fonte-d-un-glacon-au-soleil",
+        "prevoir-si-un-objet-flotte-ou-coule",
+        "montrer-que-l-air-existe"
+      ]
+    },
+    "addition-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-100-c2"
+      ],
+      "competences": [
+        "additionner-deux-nombres-de-tete-jusqu-a-20",
+        "poser-une-addition-avec-retenue",
+        "utiliser-l-addition-pour-resoudre-un-probleme",
+        "calculer-une-somme-de-deux-nombres-de-deux-chiffres"
+      ]
+    },
+    "comparer-et-ranger-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-100-c2"
+      ],
+      "competences": [
+        "comparer-deux-nombres-avec-les-signes-et",
+        "ranger-des-nombres-dans-l-ordre-croissant",
+        "encadrer-un-nombre-entre-deux-dizaines",
+        "trouver-le-plus-grand-d-une-liste"
+      ]
+    },
+    "division-et-partage-c2": {
+      "prerequis": [
+        "tables-de-multiplication-c2"
+      ],
+      "competences": [
+        "partager-equitablement-une-quantite",
+        "regrouper-en-paquets-egaux",
+        "determiner-un-reste",
+        "resoudre-un-partage-avec-reste"
+      ]
+    },
+    "doubles-et-moities-c2": {
+      "prerequis": [
+        "addition-c2"
+      ],
+      "competences": [
+        "calculer-le-double-d-un-nombre",
+        "calculer-la-moitie-d-un-nombre-pair",
+        "distinguer-nombres-pairs-et-impairs",
+        "utiliser-doubles-et-moities-pour-calculer"
+      ]
+    },
+    "figures-planes-c2": {
+      "prerequis": [],
+      "competences": [
+        "reconnaitre-les-formes-de-base",
+        "compter-les-cotes-et-les-sommets-d-une-figure",
+        "reconnaitre-un-angle-droit-avec-l-equerre",
+        "reconnaitre-un-carre-et-un-rectangle"
+      ]
+    },
+    "fractions-simples-c2": {
+      "prerequis": [
+        "doubles-et-moities-c2"
+      ],
+      "competences": [
+        "reconnaitre-la-moitie-le-tiers-et-le-quart",
+        "ecrire-une-fraction-a-partir-d-un-partage",
+        "comparer-des-parts-egales",
+        "resoudre-un-partage-en-fractions"
+      ]
+    },
+    "heure-et-calendrier-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-100-c2"
+      ],
+      "competences": [
+        "lire-l-heure-sur-une-horloge",
+        "utiliser-le-calendrier",
+        "convertir-heures-et-minutes",
+        "situer-un-jour-dans-la-semaine"
+      ]
+    },
+    "longueurs-et-mesures-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-1000-c2"
+      ],
+      "competences": [
+        "mesurer-avec-la-regle",
+        "convertir-metres-et-centimetres",
+        "choisir-l-unite-de-longueur-adaptee",
+        "comparer-des-longueurs"
+      ]
+    },
+    "masses-et-contenances-c2": {
+      "prerequis": [
+        "longueurs-et-mesures-c2"
+      ],
+      "competences": [
+        "comparer-des-masses",
+        "convertir-kilogrammes-et-grammes",
+        "choisir-l-instrument-de-mesure-d-un-liquide",
+        "comparer-des-contenances"
+      ]
+    },
+    "monnaie-et-euro-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-100-c2",
+        "addition-c2"
+      ],
+      "competences": [
+        "convertir-euros-et-centimes",
+        "rendre-la-monnaie",
+        "composer-une-somme-avec-des-pieces",
+        "calculer-le-prix-total"
+      ]
+    },
+    "multiplication-posee-ce2-c2": {
+      "prerequis": [
+        "tables-de-multiplication-c2"
+      ],
+      "competences": [
+        "multiplier-un-nombre-par-10",
+        "poser-une-multiplication",
+        "multiplier-par-un-nombre-a-un-chiffre",
+        "calculer-un-produit-avec-des-dizaines"
+      ]
+    },
+    "nombres-jusqu-a-100-c2": {
+      "prerequis": [],
+      "competences": [
+        "compter-et-regrouper-par-dizaines",
+        "lire-et-ecrire-un-nombre-jusqu-a-100",
+        "decomposer-en-dizaines-et-unites",
+        "dire-le-nombre-qui-suit"
+      ]
+    },
+    "nombres-jusqu-a-1000-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-100-c2"
+      ],
+      "competences": [
+        "lire-et-ecrire-un-nombre-jusqu-a-1-000",
+        "decomposer-en-centaines-dizaines-unites",
+        "comparer-des-nombres-de-trois-chiffres",
+        "compter-par-centaines"
+      ]
+    },
+    "nombres-jusqu-a-10000-c2": {
+      "prerequis": [
+        "nombres-jusqu-a-1000-c2"
+      ],
+      "competences": [
+        "lire-et-ecrire-un-nombre-jusqu-a-10-000",
+        "decomposer-en-milliers-centaines-dizaines-unites",
+        "comparer-des-nombres-de-quatre-chiffres",
+        "ranger-des-nombres"
+      ]
+    },
+    "perimetre-et-calcul-mental-c2": {
+      "prerequis": [
+        "figures-planes-c2",
+        "addition-c2"
+      ],
+      "competences": [
+        "calculer-le-perimetre-d-un-rectangle-au-cycle-2",
+        "soustraire-mentalement-un-nombre-a-100",
+        "ajouter-mentalement-9",
+        "mesurer-le-tour-d-une-figure"
+      ]
+    },
+    "problemes-c2": {
+      "prerequis": [
+        "addition-c2",
+        "soustraction-c2"
+      ],
+      "competences": [
+        "lire-et-comprendre-un-probleme",
+        "choisir-l-operation-adaptee",
+        "resoudre-un-probleme-d-addition-ou-de-soustraction",
+        "resoudre-un-probleme-de-partage"
+      ]
+    },
+    "solides-c2": {
+      "prerequis": [
+        "figures-planes-c2"
+      ],
+      "competences": [
+        "reconnaitre-un-cube-une-boule-et-un-pave",
+        "compter-les-faces-d-un-solide",
+        "compter-les-sommets-et-les-aretes",
+        "decrire-un-solide-de-la-vie-courante"
+      ]
+    },
+    "soustraction-c2": {
+      "prerequis": [
+        "addition-c2"
+      ],
+      "competences": [
+        "soustraire-de-tete",
+        "poser-une-soustraction",
+        "utiliser-la-soustraction-pour-comparer",
+        "resoudre-un-probleme-de-soustraction"
+      ]
+    },
+    "symetrie-et-reperage-c2": {
+      "prerequis": [
+        "figures-planes-c2"
+      ],
+      "competences": [
+        "reconnaitre-une-figure-symetrique",
+        "trouver-le-symetrique-d-un-point-sur-quadrillage",
+        "reperer-une-case-par-ses-coordonnees",
+        "completer-une-figure-par-symetrie"
+      ]
+    },
+    "tableaux-et-algorithmes-c2": {
+      "prerequis": [
+        "comparer-et-ranger-c2"
+      ],
+      "competences": [
+        "lire-un-tableau-de-donnees-au-cycle-2",
+        "calculer-un-total-a-partir-d-un-tableau",
+        "ordonner-les-instructions-d-un-programme",
+        "prevoir-le-resultat-d-une-boucle-simple"
+      ]
+    },
+    "tables-de-multiplication-c2": {
+      "prerequis": [
+        "addition-c2"
+      ],
+      "competences": [
+        "utiliser-la-multiplication-comme-addition-repetee",
+        "retrouver-les-tables-de-multiplication",
+        "multiplier-par-10",
+        "resoudre-un-probleme-de-multiplication"
+      ]
+    },
+    "grandes-periodes-c2": {
+      "prerequis": [
+        "se-reperer-dans-le-temps-c2"
+      ],
+      "competences": [
+        "ordonner-les-grandes-periodes-de-l-histoire",
+        "convertir-siecles-et-annees",
+        "situer-un-personnage-celebre-dans-sa-periode",
+        "placer-des-personnages-celebres-sur-une-frise"
+      ]
+    },
+    "se-reperer-dans-le-temps-c2": {
+      "prerequis": [],
+      "competences": [
+        "ordonner-les-jours-de-la-semaine",
+        "compter-les-mois-d-une-annee",
+        "comparer-des-ages-et-des-generations",
+        "placer-des-evenements-sur-une-frise"
+      ]
+    },
+    "animaux-et-plantes-c2": {
+      "prerequis": [],
+      "competences": [
+        "classer-un-animal-mammifere-oiseau-insecte",
+        "decrire-les-parties-d-une-plante-et-leur-role",
+        "compter-les-pattes-et-reconnaitre-un-insecte",
+        "observer-et-decrire-un-etre-vivant"
+      ]
+    },
+    "besoins-et-vie-c2": {
+      "prerequis": [
+        "animaux-et-plantes-c2"
+      ],
+      "competences": [
+        "distinguer-herbivore-carnivore-et-omnivore",
+        "identifier-les-besoins-d-une-graine-pour-germer",
+        "decrire-les-etapes-de-la-croissance-d-un-etre-vivant",
+        "distinguer-animaux-qui-pondent-et-animaux-qui-mettent-bas"
+      ]
+    },
+    "corps-et-sante-c2": {
+      "prerequis": [],
+      "competences": [
+        "nommer-les-cinq-sens-et-leur-organe",
+        "identifier-les-moments-ou-se-laver-les-mains",
+        "decrire-les-gestes-d-hygiene-du-quotidien",
+        "nommer-les-parties-du-corps"
+      ]
+    },
+    "milieux-et-saisons-c2": {
+      "prerequis": [
+        "besoins-et-vie-c2"
+      ],
+      "competences": [
+        "identifier-un-milieu-de-vie-et-ses-etres-vivants",
+        "nommer-les-quatre-saisons",
+        "decrire-l-effet-des-saisons-sur-les-arbres",
+        "identifier-qui-mange-qui-dans-une-chaine-simple"
+      ]
+    },
+    "republique-et-citoyens-c2": {
+      "prerequis": [
+        "vivre-ensemble-c2"
+      ],
+      "competences": [
+        "identifier-le-drapeau-et-ses-couleurs",
+        "citer-la-devise-de-la-republique-au-cycle-2",
+        "associer-un-droit-de-l-enfant-a-une-situation-au-cycle-2",
+        "nommer-des-symboles-de-la-republique"
+      ]
+    },
+    "securite-ecrans-et-environnement-c2": {
+      "prerequis": [],
+      "competences": [
+        "composer-le-numero-d-urgence-adapte",
+        "proteger-ses-informations-personnelles-sur-internet",
+        "trier-un-dechet-selon-sa-matiere",
+        "limiter-le-temps-passe-devant-les-ecrans"
+      ]
+    },
+    "vivre-ensemble-c2": {
+      "prerequis": [],
+      "competences": [
+        "respecter-les-regles-de-la-classe",
+        "ecouter-la-parole-de-l-autre",
+        "nommer-une-emotion",
+        "resoudre-un-conflit-sans-violence"
+      ]
+    },
+    "paysages-et-habiter-c2": {
+      "prerequis": [
+        "se-reperer-dans-l-espace-c2"
+      ],
+      "competences": [
+        "decrire-un-paysage-urbain-ou-rural",
+        "reperer-les-plans-d-un-paysage-premier-plan-arriere-plan",
+        "associer-une-activite-a-un-paysage",
+        "comparer-deux-manieres-d-habiter"
+      ]
+    },
+    "planete-terre-et-cartes-c2": {
+      "prerequis": [
+        "se-reperer-dans-l-espace-c2"
+      ],
+      "competences": [
+        "nommer-les-continents-et-les-oceans-au-cycle-2",
+        "situer-la-france-et-l-europe",
+        "nommer-la-capitale-de-la-france",
+        "lire-un-planisphere"
+      ]
+    },
+    "se-reperer-dans-l-espace-c2": {
+      "prerequis": [],
+      "competences": [
+        "situer-un-objet-par-rapport-a-un-autre-gauche-droite-devant-derriere",
+        "lire-un-plan-avec-sa-legende",
+        "utiliser-les-points-cardinaux",
+        "decrire-un-itineraire"
+      ]
     }
   }
 }

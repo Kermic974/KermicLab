@@ -5,13 +5,7 @@ sujet: mathematiques/division-et-partage-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE2
-prerequis:
-  - tables-de-multiplication-c2
-competences:
-  - division-et-partage-c2-comprendre
-  - division-et-partage-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment partager en parts égales ?
   - Qu'est-ce qu'un reste dans un partage ?
   - C'est quoi diviser au CE2 ?
+prerequis: tables-de-multiplication-c2
+niveaux: cycle-2
+competences: partager-equitablement-une-quantite, regrouper-en-paquets-egaux, determiner-un-reste, resoudre-un-partage-avec-reste
 ---
 
 # Partager et regrouper

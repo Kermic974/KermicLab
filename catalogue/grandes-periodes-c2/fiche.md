@@ -5,13 +5,7 @@ sujet: histoire/grandes-periodes-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE2
-prerequis:
-  - se-reperer-dans-le-temps-c2
-competences:
-  - grandes-periodes-c2-comprendre
-  - grandes-periodes-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quelles sont les grandes périodes de l'histoire ?
   - Qui était Vercingétorix, Charlemagne, Louis XIV ?
   - Comment placer des événements sur une frise de l'histoire ?
+prerequis: se-reperer-dans-le-temps-c2
+niveaux: cycle-2
+competences: ordonner-les-grandes-periodes-de-l-histoire, convertir-siecles-et-annees, situer-un-personnage-celebre-dans-sa-periode, placer-des-personnages-celebres-sur-une-frise
 ---
 
 # Les grandes périodes de l'histoire

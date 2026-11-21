@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.se-reperer-dans-le-temps-c2-cycle-2",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-le-temps-c2/contenu.json"
+  },
+  "object": "notion.histoire.se-reperer-dans-le-temps-c2",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-2",
+  "role": "introduced"
+}

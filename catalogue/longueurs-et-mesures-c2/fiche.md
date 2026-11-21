@@ -5,13 +5,7 @@ sujet: mathematiques/longueurs-et-mesures-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - nombres-jusqu-a-1000-c2
-competences:
-  - longueurs-et-mesures-c2-comprendre
-  - longueurs-et-mesures-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment mesurer avec une règle ?
   - Quelle est la différence entre un mètre et un centimètre ?
   - Comment comparer des longueurs ?
+prerequis: nombres-jusqu-a-1000-c2
+niveaux: cycle-2
+competences: mesurer-avec-la-regle, convertir-metres-et-centimetres, choisir-l-unite-de-longueur-adaptee, comparer-des-longueurs
 ---
 
 # Mesurer des longueurs

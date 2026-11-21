@@ -5,13 +5,7 @@ sujet: emc/republique-et-citoyens-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - vivre-ensemble-c2
-competences:
-  - republique-et-citoyens-c2-comprendre
-  - republique-et-citoyens-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quels sont les symboles de la France au CE1 ?
   - Quelle est la devise de la République au CE1 ?
   - Quels sont les droits des enfants ?
+prerequis: vivre-ensemble-c2
+niveaux: cycle-2
+competences: identifier-le-drapeau-et-ses-couleurs, citer-la-devise-de-la-republique-au-cycle-2, associer-un-droit-de-l-enfant-a-une-situation-au-cycle-2, nommer-des-symboles-de-la-republique
 ---
 
 # La République, ses symboles et les droits

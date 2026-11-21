@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.nombres-jusqu-a-1000-c2-cycle-2",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-jusqu-a-1000-c2/contenu.json"
+  },
+  "object": "notion.mathematiques.nombres-jusqu-a-1000-c2",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-2",
+  "role": "introduced"
+}

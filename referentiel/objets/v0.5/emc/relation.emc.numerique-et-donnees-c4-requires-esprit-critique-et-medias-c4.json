@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.numerique-et-donnees-c4-requires-esprit-critique-et-medias-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-et-donnees-c4/contenu.json"
+  },
+  "source": "notion.emc.numerique-et-donnees-c4",
+  "target": "notion.emc.esprit-critique-et-medias-c4",
+  "rationale": "Prérequis déclaré dans la fiche : « Esprit critique, médias et information » précède « Le numérique : données personnelles, réseaux et droits » dans la progression du programme (lien à relire)."
+}

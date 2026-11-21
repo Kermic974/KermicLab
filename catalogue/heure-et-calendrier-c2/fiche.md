@@ -5,13 +5,7 @@ sujet: mathematiques/heure-et-calendrier-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - nombres-jusqu-a-100-c2
-competences:
-  - heure-et-calendrier-c2-comprendre
-  - heure-et-calendrier-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment lire l'heure sur une horloge ?
   - Quels sont les jours de la semaine et les mois ?
   - Combien de minutes dans une heure ?
+prerequis: nombres-jusqu-a-100-c2
+niveaux: cycle-2
+competences: lire-l-heure-sur-une-horloge, utiliser-le-calendrier, convertir-heures-et-minutes, situer-un-jour-dans-la-semaine
 ---
 
 # L'heure, les jours et le calendrier

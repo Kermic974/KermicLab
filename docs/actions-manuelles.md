@@ -318,7 +318,7 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
-| Décider d'ajouter le code d'étape `cycle-2` au schéma `stage` (et à ses tests et fixtures) | `referentiel/schemas/stage.schema.json`, nouvel ADR | Les notions du cycle 2 (toutes les matières) ne peuvent pas recevoir de CurriculumMapping ni être projetées | ADR accepté, schéma et tests mis à jour | à faire |
+| Valider l'[ADR 0038](decisions/0038-etape-cycle-2-referentiel.md) (code d'étape `cycle-2`) : schéma, tests et projection des 51 notions de cycle 2 faits dans la PR dédiée | `docs/decisions/0038-etape-cycle-2-referentiel.md` | Le contrat `stage` est une décision normative | ADR accepté et PR fusionnée | à faire |
 | Relire les MicroSkills et les prérequis de la technologie, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/technologie/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
 | Relire les MicroSkills et les prérequis de l'anglais, des arts plastiques, de la musique et de l'EPS, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/anglais/`, `arts-plastiques/`, `musique/`, `eps/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
 | Revue du CODEOWNER et fusion de la PR du référentiel canonique (technologie, anglais, arts plastiques, musique, EPS) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |

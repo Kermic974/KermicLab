@@ -5,13 +5,7 @@ sujet: francais/lire-et-comprendre-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - syllabes-et-mots-c2
-competences:
-  - lire-et-comprendre-c2-comprendre
-  - lire-et-comprendre-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment bien comprendre une histoire ?
   - Comment répondre aux questions sur un texte ?
   - Comment lire à voix haute ?
+prerequis: syllabes-et-mots-c2
+niveaux: cycle-2
+competences: repondre-a-qui-ou-quand-a-partir-d-un-texte, identifier-un-sentiment-d-un-personnage, expliquer-ce-que-l-on-a-compris, retrouver-une-information-dans-un-texte
 ---
 
 # Lire et comprendre un texte
