@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La justice protège les droits en jugeant selon la loi ; chacun bénéficie de garanties, y compris les personnes poursuivies.",
+  "niveaux": [
+    {
+      "titre": "Organisation de la justice",
+      "niveau": "1re",
+      "paragraphes": [
+        "La justice est **indépendante** du pouvoir politique. L'ordre **judiciaire** distingue la **justice civile** (litiges entre particuliers) et la **justice pénale** (infractions : contraventions, délits, crimes ; tribunal de police, tribunal correctionnel, cour d'assises). L'ordre **administratif** juge les litiges avec l'administration. Le **procès** est **public** et **contradictoire**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un vol : tribunal correctionnel.",
+          "Un meurtre : cour d'assises.",
+          "Un litige de voisinage : tribunal civil."
+        ]
+      },
+      "aRetenir": "Civil : litiges ; pénal : infractions."
+    },
+    {
+      "titre": "Droits des personnes poursuivies",
+      "niveau": "1re",
+      "paragraphes": [
+        "La **présomption d'innocence** : toute personne est innocente tant que sa culpabilité n'est pas établie. La personne a droit à un **avocat**, à un **procès équitable**, à l'**appel**. La **peine** est **individualisée** et vise la sanction, la réinsertion et la protection de la société. La **police** enquête et la **justice** juge : séparation des fonctions."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une personne est mise en examen.",
+          "Elle reste présumée innocente.",
+          "Elle peut se défendre avec un avocat."
+        ]
+      },
+      "aRetenir": "Présomption d'innocence."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La présomption d'innocence signifie…",
+        "choix": [
+          "qu'on est coupable par défaut",
+          "que le juge décide sans preuve",
+          "que l'avocat est interdit",
+          "innocent tant que non prouvé coupable"
+        ],
+        "bonne": 3,
+        "explication": "Principe fondamental."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un crime est jugé par…",
+        "choix": [
+          "la cour d'assises",
+          "le tribunal de police",
+          "le tribunal de commerce",
+          "le maire"
+        ],
+        "bonne": 0,
+        "explication": "Gravité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'indépendance de la justice signifie…",
+        "choix": [
+          "qu'elle supprime les juges",
+          "qu'elle ne dépend pas du pouvoir politique",
+          "qu'elle vote elle-même les lois",
+          "qu'elle est gérée par des entreprises"
+        ],
+        "bonne": 1,
+        "explication": "Séparation des pouvoirs."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le procès",
+    "histoire": [
+      "Tu assistes à une audience publique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi l'audience est-elle publique ?",
+        "choix": [
+          "pour supprimer le droit d'appel",
+          "pour garantir la transparence",
+          "pour divertir les spectateurs",
+          "pour cacher les preuves aux juges"
+        ],
+        "bonne": 1,
+        "explication": "Transparence."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La défense a le droit…",
+        "choix": [
+          "de rendre elle-même le jugement",
+          "de voter la loi appliquée",
+          "de répondre aux accusations",
+          "d'effacer toutes les preuves"
+        ],
+        "bonne": 2,
+        "explication": "Contradictoire."
+      }
+    ],
+    "conclusion": "Bon observateur !"
+  }
+}

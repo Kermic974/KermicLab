@@ -1,0 +1,116 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La convexité décrit la façon dont une courbe se « courbe » : vers le haut (convexe) ou vers le bas (concave).",
+  "niveaux": [
+    {
+      "titre": "Convexe ou concave",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Une fonction est **convexe** sur un intervalle si sa courbe est située **au-dessus de ses tangentes** (elle « tourne vers le haut » : comme x²). Elle est **concave** si la courbe est **au-dessous** de ses tangentes (comme −x²). Une fonction dérivable est convexe si et seulement si sa dérivée f' est **croissante**."
+      ],
+      "exemple": {
+        "titre": "Exemple : f(x) = x²",
+        "etapes": [
+          "f'(x) = 2x est croissante.",
+          "f est convexe.",
+          "La parabole est au-dessus de ses tangentes."
+        ]
+      },
+      "aRetenir": "Convexe : f' croissante."
+    },
+    {
+      "titre": "Dérivée seconde et inflexion",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Si f est deux fois dérivable : **f'' ≥ 0** sur I ⇔ f convexe sur I ; **f'' ≤ 0** ⇔ f concave. Un **point d'inflexion** est un point où la courbe traverse sa tangente : f'' s'annule en changeant de signe. Exemple : f(x) = x³ : f'' = 6x, signe changeant en 0 : inflexion en x = 0.",
+        "La convexité sert à démontrer des inégalités (eˣ ≥ 1 + x, ln x ≤ x − 1)."
+      ],
+      "exemple": {
+        "titre": "Exemple : f(x) = x³ − 3x",
+        "etapes": [
+          "f'(x) = 3x² − 3 ; f''(x) = 6x.",
+          "f'' < 0 pour x < 0 (concave), > 0 pour x > 0 (convexe).",
+          "Inflexion en x = 0."
+        ]
+      },
+      "aRetenir": "f'' change de signe : point d'inflexion."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Si f'' ≥ 0 sur un intervalle, f est…",
+        "choix": [
+          "concave",
+          "constante",
+          "décroissante",
+          "convexe"
+        ],
+        "bonne": 3,
+        "explication": "Convexe."
+      },
+      {
+        "type": "nombre",
+        "question": "f(x) = x³ − 3x. Pour quelle valeur de x f'' s'annule-t-elle ?",
+        "reponse": 0,
+        "indices": [
+          "Dérive deux fois."
+        ],
+        "solution": "f'' = 6x.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La courbe d'une fonction convexe est située…",
+        "choix": [
+          "au-dessus de ses tangentes",
+          "au-dessous de ses tangentes",
+          "sur ses tangentes",
+          "n'importe où"
+        ],
+        "bonne": 0,
+        "explication": "Définition."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le courbe de croissance",
+    "histoire": [
+      "Le chiffre d'affaires f(x) = −x³ + 6x² croît puis ralentit."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est f''(x) en x = 3 ?",
+        "reponse": -6,
+        "indices": [
+          "f' = −3x² + 12x."
+        ],
+        "solution": "f'' = −6x + 12 = −6.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "En x = 2, f'' change de signe : c'est…",
+        "choix": [
+          "un minimum local de la courbe",
+          "une asymptote verticale de la courbe",
+          "un point d'inflexion",
+          "un maximum local de la courbe"
+        ],
+        "bonne": 2,
+        "explication": "f''(2) = 0."
+      }
+    ],
+    "conclusion": "Étude réussie !"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Sur un marché, l'offre et la demande déterminent un prix d'équilibre ; mais le marché a des défaillances que l'État peut corriger.",
+  "niveaux": [
+    {
+      "titre": "Offre, demande et prix",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **demande** diminue quand le prix augmente ; l'**offre** augmente quand le prix augmente. Le **prix d'équilibre** égalise offre et demande. Si le prix est trop haut, il y a **excès d'offre** ; trop bas, **excès de demande**. La **concurrence** pousse à baisser les prix et à innover ; un **monopole** peut imposer ses prix."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Prix 10 € : offre 80, demande 120.",
+          "Excès de demande : le prix monte.",
+          "À 12 € : offre = demande = 100."
+        ]
+      },
+      "aRetenir": "Équilibre : offre = demande."
+    },
+    {
+      "titre": "Défaillances et régulation",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le marché peut échouer : **externalités** (effets non pris en compte dans le prix : pollution = externalité négative), **biens publics** (non rivaux, non exclusifs), **asymétries d'information**, **monopoles**. L'État peut **réguler** : taxes (pigouviennes), normes, subventions, droit de la concurrence."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une usine pollue.",
+          "Taxe carbone : coût internalisé.",
+          "Le prix reflète mieux le coût collectif."
+        ]
+      },
+      "aRetenir": "Externalité : coût ou bénéfice non payé."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quand le prix augmente, la demande…",
+        "choix": [
+          "augmente toujours",
+          "ne change jamais",
+          "disparaît",
+          "diminue en général"
+        ],
+        "bonne": 3,
+        "explication": "Loi de la demande."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une pollution est…",
+        "choix": [
+          "un monopole",
+          "une externalité négative",
+          "une externalité positive",
+          "un bien public"
+        ],
+        "bonne": 1,
+        "explication": "Coût non payé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une taxe sur le carbone vise à…",
+        "choix": [
+          "créer un monopole d'État",
+          "faire payer le coût de la pollution",
+          "augmenter les émissions",
+          "supprimer tous les prix"
+        ],
+        "bonne": 1,
+        "explication": "Régulation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La baguette",
+    "histoire": [
+      "Le prix de la farine monte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fait l'offre de baguettes ?",
+        "choix": [
+          "elle explose sans limite",
+          "elle devient gratuite",
+          "elle est supprimée d'office",
+          "elle diminue ou le prix monte"
+        ],
+        "bonne": 3,
+        "explication": "Coût de production."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un seul vendeur sur un marché est…",
+        "choix": [
+          "une concurrence parfaite",
+          "un monopole",
+          "un oligopole",
+          "un duopole"
+        ],
+        "bonne": 1,
+        "explication": "Définition."
+      }
+    ],
+    "conclusion": "Bon marché !"
+  }
+}

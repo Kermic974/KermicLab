@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'égalité est un principe républicain ; la loi sanctionne les discriminations et protège les victimes.",
+  "niveaux": [
+    {
+      "titre": "Égalité et discriminations",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le **principe d'égalité** interdit les distinctions injustifiées. Une **discrimination** est un traitement défavorable fondé sur un critère prohibé (origine, sexe, handicap, orientation sexuelle, religion…). Le droit sanctionne les discriminations (travail, logement) ; le **Défenseur des droits** accompagne les victimes. L'**égalité femmes-hommes** reste à réaliser (salaires, responsabilités)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Refuser un logement à cause du nom.",
+          "Discrimination punie par la loi.",
+          "La victime peut saisir le Défenseur des droits."
+        ]
+      },
+      "aRetenir": "Discrimination : critère prohibé."
+    },
+    {
+      "titre": "Prévenir et agir",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les **préjugés** sont des jugements préconçus ; les **stéréotypes** en sont des généralisations. Le **harcèlement** (moral, scolaire, en ligne) est un délit : on peut alerter (3018, adulte référent). L'**inclusion** garantit l'accès aux droits, notamment pour les personnes en situation de handicap. Tous peuvent agir : refuser, signaler, soutenir."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un élève est moqué en ligne.",
+          "Un témoin alerte un adulte.",
+          "Le harcèlement cesse grâce à l'action collective."
+        ]
+      },
+      "aRetenir": "Harcèlement : un délit."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le numéro national contre le harcèlement scolaire est…",
+        "choix": [
+          "le 17 uniquement",
+          "le 112 seulement",
+          "le 15 seulement",
+          "le 3018"
+        ],
+        "bonne": 3,
+        "explication": "Numéro dédié."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une discrimination est…",
+        "choix": [
+          "un impôt sur le revenu",
+          "un diplôme de l'enseignement",
+          "un traitement défavorable interdit",
+          "une simple faute d'orthographe"
+        ],
+        "bonne": 2,
+        "explication": "Droit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un stéréotype est…",
+        "choix": [
+          "un diplôme de fin d'étude",
+          "une preuve scientifique établie",
+          "une généralisation simplifiée sur un groupe",
+          "une loi votée par le Parlement"
+        ],
+        "bonne": 2,
+        "explication": "Définition."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le groupe de discussion",
+    "histoire": [
+      "Un message moqueur circule dans un groupe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu ?",
+        "choix": [
+          "je ris et je transmets",
+          "j'ignore tout sans rien dire",
+          "je ne relaie pas et j'alerte un adulte",
+          "je partage le message à tous"
+        ],
+        "bonne": 2,
+        "explication": "Réagir."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui peut aider une victime ?",
+        "choix": [
+          "personne en dehors d'elle",
+          "ses seuls amis proches",
+          "les services de météo",
+          "l'école, la police, le Défenseur"
+        ],
+        "bonne": 3,
+        "explication": "Aides."
+      }
+    ],
+    "conclusion": "Bon réflexe !"
+  }
+}

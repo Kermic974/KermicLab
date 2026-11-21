@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les guerres mondiales produisent des violences de masse et des génocides ; leur mémoire et leur jugement construisent l'après-guerre.",
+  "niveaux": [
+    {
+      "titre": "Génocides et violences de masse",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Le génocide des **Arméniens** (1915) puis la **Shoah** (extermination des Juifs d'Europe par le régime nazi, environ 6 millions de morts) et le génocide des **Tsiganes** sont des crimes de masse planifiés. Les **camps de concentration et d'extermination** (Auschwitz-Birkenau, Treblinka) en sont les lieux. Le mot **génocide** est défini par Raphaël Lemkin (1944)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1942 : conférence de Wannsee.",
+          "Déportation par train.",
+          "Plus de 1 million de morts à Auschwitz."
+        ]
+      },
+      "aRetenir": "Shoah : environ 6 millions de Juifs assassinés."
+    },
+    {
+      "titre": "Vichy, Résistance, justice et mémoire",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Après la défaite de 1940, le régime de **Vichy** (Pétain) collabore avec l'Allemagne et mène une politique antisémite ; la **Résistance** (de Gaulle, Jean Moulin) organise la lutte. Le **procès de Nuremberg** (1945–1946) juge les dirigeants nazis pour **crimes contre l'humanité** et crée une justice internationale. La **mémoire** (commémorations, musées, témoignages) et l'enseignement de l'histoire entretiennent la vigilance."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1940 : appel du 18 juin.",
+          "1944 : Libération.",
+          "1945–1946 : Nuremberg."
+        ]
+      },
+      "aRetenir": "Nuremberg : crimes contre l'humanité."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le procès de Nuremberg juge…",
+        "choix": [
+          "les dirigeants nazis",
+          "les résistants français",
+          "les rois d'Europe",
+          "les marchands du port"
+        ],
+        "bonne": 0,
+        "explication": "1945–1946."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La Shoah désigne…",
+        "choix": [
+          "une loi sur la presse",
+          "un régime républicain",
+          "l'extermination des Juifs d'Europe",
+          "une grande bataille navale"
+        ],
+        "bonne": 2,
+        "explication": "Génocide."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui lance l'appel du 18 juin 1940 ?",
+        "choix": [
+          "Pétain",
+          "Hitler",
+          "Clemenceau",
+          "de Gaulle"
+        ],
+        "bonne": 3,
+        "explication": "Londres."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le devoir de mémoire",
+    "histoire": [
+      "Tu prépares une visite d'un lieu de mémoire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi enseigner la Shoah ?",
+        "choix": [
+          "pour divertir les élèves",
+          "pour classer les élèves",
+          "pour prévenir les crimes de masse",
+          "pour effacer les faits du passé"
+        ],
+        "bonne": 2,
+        "explication": "Vigilance."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un témoignage est…",
+        "choix": [
+          "un document totalement inutile",
+          "un roman écrit après coup",
+          "une source à confronter aux autres",
+          "une preuve unique et infaillible"
+        ],
+        "bonne": 2,
+        "explication": "Esprit critique."
+      }
+    ],
+    "conclusion": "Mémoire entretenue !"
+  }
+}

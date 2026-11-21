@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une fréquence observée sur un échantillon fluctue autour de la probabilité : plus l'échantillon est grand, plus elle se stabilise.",
+  "niveaux": [
+    {
+      "titre": "Fluctuation et loi des grands nombres",
+      "niveau": "2de",
+      "paragraphes": [
+        "Quand on répète une expérience aléatoire n fois, la **fréquence** d'un événement **fluctue** autour de sa probabilité p. Plus n est grand, plus la fluctuation est faible (**loi des grands nombres**). Pour n ≥ 25 et p entre 0,2 et 0,8, la fréquence observée se trouve dans l'**intervalle de fluctuation** [p − 1/√n ; p + 1/√n] avec une probabilité d'environ 95 %.",
+        "Si la fréquence observée sort de cet intervalle, on peut douter que la probabilité vaille p."
+      ],
+      "exemple": {
+        "titre": "Exemple : un dé truqué ?",
+        "etapes": [
+          "On lance 100 fois un dé : 30 fois « 6 » (p = 1/6 ≈ 0,167).",
+          "Intervalle : [0,167 − 0,1 ; 0,167 + 0,1] = [0,067 ; 0,267].",
+          "0,30 est hors de l'intervalle : le dé est suspect."
+        ]
+      },
+      "aRetenir": "Fluctuation : 1/√n."
+    },
+    {
+      "titre": "Résumer une série",
+      "niveau": "2de",
+      "paragraphes": [
+        "Pour résumer une série : **moyenne**, **médiane**, **quartiles** Q₁ et Q₃, **écart interquartile** Q₃ − Q₁, et les paramètres de dispersion (variance, **écart type**). Un **diagramme en boîte** montre le minimum, Q₁, la médiane, Q₃ et le maximum ; il permet de comparer des séries.",
+        "On peut estimer une probabilité par **simulation** informatique (algorithme + tirages aléatoires)."
+      ],
+      "exemple": {
+        "titre": "Exemple : série 2, 4, 6, 8, 10",
+        "etapes": [
+          "Médiane 6 ; moyenne 6.",
+          "Les quartiles Q₁ et Q₃ se lisent sur la série ordonnée (définition du programme : plus petite valeur telle qu'au moins 25 % des données lui sont inférieures ou égales).",
+          "Écart interquartile : Q₃ − Q₁."
+        ]
+      },
+      "aRetenir": "Comparer deux séries : centre et dispersion."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Pour n = 100 lancers et p = 0,5, la demi-largeur de l'intervalle de fluctuation vaut…",
+        "reponse": 0.1,
+        "indices": [
+          "1/√n."
+        ],
+        "solution": "1/√100 = 0,1.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quand la taille de l'échantillon augmente, la fluctuation…",
+        "choix": [
+          "reste constante",
+          "disparaît complètement",
+          "diminue",
+          "augmente"
+        ],
+        "bonne": 2,
+        "explication": "Loi des grands nombres."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'écart interquartile mesure…",
+        "choix": [
+          "la moyenne des valeurs",
+          "la valeur maximale",
+          "le nombre de données",
+          "la dispersion autour de la médiane"
+        ],
+        "bonne": 3,
+        "explication": "Q₃ − Q₁."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sondage de la classe",
+    "histoire": [
+      "Sur 100 élèves, 62 ont répondu qu'ils préfèrent la cantine bio. On suppose p = 0,5."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La fréquence 0,62 est-elle dans l'intervalle de fluctuation [0,4 ; 0,6] ?",
+        "choix": [
+          "elle est exactement à la borne",
+          "non, elle en sort",
+          "oui",
+          "on ne peut pas savoir"
+        ],
+        "bonne": 1,
+        "explication": "0,62 > 0,6."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "On peut donc penser que…",
+        "choix": [
+          "p ≠ 0,5 (préférence réelle)",
+          "p = 0,5 est confirmé",
+          "l'échantillon est faux",
+          "il faut recommencer à zéro"
+        ],
+        "bonne": 0,
+        "explication": "Fréquence hors intervalle : doute sur p = 0,5."
+      }
+    ],
+    "conclusion": "Sondage analysé !"
+  }
+}

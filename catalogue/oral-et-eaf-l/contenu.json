@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'oral de français associe lecture, explication linéaire et entretien sur une œuvre du programme.",
+  "niveaux": [
+    {
+      "titre": "Explication linéaire",
+      "niveau": "1re",
+      "paragraphes": [
+        "L'**explication linéaire** suit le texte dans l'ordre : **introduction** (auteur, œuvre, situation, enjeu, **projet de lecture**, mouvements), **analyse** en suivant les mouvements (citations, procédés, effets), **conclusion** (bilan, ouverture). On commence par une **lecture expressive** qui respecte la ponctuation et met en valeur le sens. On cite et on commente : le procédé seul ne suffit pas."
+      ],
+      "exemple": {
+        "titre": "Exemple : un projet de lecture",
+        "etapes": [
+          "Texte : une scène d'amour de théâtre.",
+          "Projet : comment la passion s'exprime-t-elle par la langue ?",
+          "Mouvement 1 : l'aveu ; mouvement 2 : le trouble."
+        ]
+      },
+      "aRetenir": "Lecture + explication + entretien."
+    },
+    {
+      "titre": "Entretien",
+      "niveau": "1re",
+      "paragraphes": [
+        "L'**entretien** porte sur une œuvre au choix de l'élève : il faut la présenter, expliquer son **choix**, ses lectures, les liens avec le **parcours associé** et exprimer un avis argumenté. Préparer : fiches (résumé, thèmes, citations), exemples précis, lien avec d'autres œuvres. Rester clair, calme, précis, et assumer une réponse personnelle."
+      ],
+      "exemple": {
+        "titre": "Exemple : une question",
+        "etapes": [
+          "« Pourquoi avoir choisi cette œuvre ? »",
+          "Réponse : thème et émotion, exemple précis.",
+          "Lien avec un autre texte lu."
+        ]
+      },
+      "aRetenir": "Préparer : œuvre, thèmes, citations."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'explication linéaire suit…",
+        "choix": [
+          "uniquement l'auteur",
+          "uniquement la fin",
+          "le texte dans l'ordre",
+          "un plan thématique sans lien avec le texte"
+        ],
+        "bonne": 2,
+        "explication": "Ordre du texte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un projet de lecture est…",
+        "choix": [
+          "une conclusion de dissertation",
+          "la problématique qui guide l'explication",
+          "un résumé de l'œuvre",
+          "une biographie de l'auteur"
+        ],
+        "bonne": 1,
+        "explication": "Enjeu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pendant l'entretien, il faut…",
+        "choix": [
+          "lire ses notes sans regarder",
+          "argumenter avec des exemples précis",
+          "répéter le cours",
+          "éviter l'œuvre choisie"
+        ],
+        "bonne": 1,
+        "explication": "Précision."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jour J",
+    "histoire": [
+      "Tu passes l'oral du bac de français."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La lecture expressive doit…",
+        "choix": [
+          "ignorer le sens du texte",
+          "rester volontairement monotone",
+          "respecter la ponctuation et le sens",
+          "être la plus rapide possible"
+        ],
+        "bonne": 2,
+        "explication": "Interprétation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Si tu bloques sur une question, tu…",
+        "choix": [
+          "changes brutalement de sujet",
+          "abandonnes l'entretien",
+          "reformules et donnes un exemple",
+          "te tais jusqu'à la fin"
+        ],
+        "bonne": 2,
+        "explication": "Gestion du stress."
+      }
+    ],
+    "conclusion": "Prêt pour l'oral !"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le pH mesure l'acidité d'une solution ; une réaction acide-base est un échange de proton H⁺.",
+  "niveaux": [
+    {
+      "titre": "Couples et pH",
+      "niveau": "1re",
+      "paragraphes": [
+        "Un **acide** (selon Brønsted) cède un proton H⁺, une **base** en capte un. Un **couple acide/base** AH/A⁻. Le **pH** = −log [H₃O⁺] (concentration en mol/L) : une solution à 10⁻³ mol/L en H₃O⁺ a pH = 3. À 25 °C : pH < 7 acide, pH = 7 neutre, pH > 7 basique. Une variation de 1 unité de pH correspond à un facteur 10 sur [H₃O⁺]."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "[H₃O⁺] = 10⁻³ mol/L.",
+          "pH = 3.",
+          "Si [H₃O⁺] est divisée par 10, pH = 4."
+        ]
+      },
+      "aRetenir": "pH = −log[H₃O⁺]."
+    },
+    {
+      "titre": "Acide fort, faible et dosage",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Un **acide fort** réagit totalement avec l'eau (HCl : [H₃O⁺] = c) ; un **acide faible** réagit partiellement (acide éthanoïque). Pour une solution d'acide fort de concentration c : pH = −log c. Un **dosage acido-basique** détermine la concentration inconnue d'une solution par réaction totale avec un réactif de concentration connue : à l'**équivalence**, n_acide = n_base. On la repère avec un indicateur coloré ou un pH-mètre."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "10 mL d'acide à c_a dosés par NaOH à 0,10 mol/L.",
+          "Équivalence à V_E = 20 mL.",
+          "c_a = 0,10 × 20/10 = 0,20 mol/L."
+        ]
+      },
+      "aRetenir": "À l'équivalence : n(acide) = n(base)."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Une solution a [H₃O⁺] = 10⁻⁴ mol/L. Son pH ?",
+        "reponse": 4,
+        "indices": [
+          "pH = −log[H₃O⁺]."
+        ],
+        "solution": "−log 10⁻⁴ = 4.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "À 25 °C, une solution de pH = 9 est…",
+        "choix": [
+          "impossible",
+          "basique",
+          "acide",
+          "neutre"
+        ],
+        "bonne": 1,
+        "explication": "pH > 7."
+      },
+      {
+        "type": "nombre",
+        "question": "10 mL d'acide dosés par NaOH à 0,10 mol/L, V_E = 20 mL. Concentration de l'acide (mol/L) ?",
+        "reponse": 0.2,
+        "unite": "mol/L",
+        "indices": [
+          "c_a V_a = c_b V_E."
+        ],
+        "solution": "0,10 × 20/10 = 0,20.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jus de citron",
+    "histoire": [
+      "Le jus de citron a un pH voisin de 2."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est environ [H₃O⁺] (mol/L) ?",
+        "reponse": 0.01,
+        "unite": "mol/L",
+        "indices": [
+          "[H₃O⁺] = 10^(−pH)."
+        ],
+        "solution": "10⁻² = 0,01.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour obtenir un pH de 3, il faut…",
+        "choix": [
+          "ajouter une base forte en excès",
+          "ajouter du sucre",
+          "diluer par 10",
+          "concentrer par 10"
+        ],
+        "bonne": 2,
+        "explication": "Dilution : pH + 1."
+      }
+    ],
+    "conclusion": "Bien dosé !"
+  }
+}

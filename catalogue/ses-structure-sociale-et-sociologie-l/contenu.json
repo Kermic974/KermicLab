@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La sociologie étudie comment la société se structure, se transmet et produit des inégalités.",
+  "niveaux": [
+    {
+      "titre": "Structure et inégalités",
+      "niveau": "1re",
+      "paragraphes": [
+        "La société est **stratifiée** : groupes selon les revenus, le diplôme, la profession (**PCS**). Pour Bourdieu, les individus disposent de **capitaux** : **économique** (revenus, patrimoine), **culturel** (diplômes, pratiques) et **social** (relations). Leur transmission explique la **reproduction sociale**, que l'école peut freiner ou renforcer."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Enfants de cadres : accès facilité aux études longues.",
+          "Capital culturel transmis par la famille.",
+          "Reproduction partielle des positions."
+        ]
+      },
+      "aRetenir": "Capitaux : économique, culturel, social."
+    },
+    {
+      "titre": "Mobilité et normes",
+      "niveau": "Tle",
+      "paragraphes": [
+        "La **mobilité sociale** est le changement de position sociale (**intergénérationnelle** : par rapport aux parents ; **ascendante** ou **descendante**). La **table de mobilité** la mesure. Les **normes** encadrent les comportements ; la **déviance** s'en écarte et est définie par la société (étiquetage, Becker). La **socialisation** (famille, école, pairs) transmet normes et valeurs."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Fils d'ouvrier devenu enseignant : mobilité ascendante.",
+          "Mobilité = positions comparées.",
+          "Table de mobilité : proportions."
+        ]
+      },
+      "aRetenir": "Mobilité : comparer les positions."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le capital culturel comprend…",
+        "choix": [
+          "diplômes, savoirs et pratiques",
+          "uniquement l'argent possédé",
+          "la taille de la maison",
+          "le nombre d'amis"
+        ],
+        "bonne": 0,
+        "explication": "Bourdieu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La mobilité sociale ascendante signifie…",
+        "choix": [
+          "un simple déménagement",
+          "une position plus élevée que les parents",
+          "une position identique à eux",
+          "une position plus basse"
+        ],
+        "bonne": 1,
+        "explication": "Définition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La reproduction sociale est…",
+        "choix": [
+          "la transmission des positions sociales",
+          "la naissance d'un enfant",
+          "un changement de pays",
+          "une loi sur la famille"
+        ],
+        "bonne": 0,
+        "explication": "Sociologie."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La table de mobilité",
+    "histoire": [
+      "Tu lis une table de mobilité."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une case sur la diagonale indique…",
+        "choix": [
+          "un déménagement lointain",
+          "une même position que les parents",
+          "une mobilité ascendante forte",
+          "un échec scolaire certain"
+        ],
+        "bonne": 1,
+        "explication": "Immobilité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel facteur favorise la mobilité ascendante ?",
+        "choix": [
+          "l'accès aux études",
+          "aucun",
+          "la chance seule",
+          "le nom de famille"
+        ],
+        "bonne": 0,
+        "explication": "Éducation."
+      }
+    ],
+    "conclusion": "Bon sociologue !"
+  }
+}

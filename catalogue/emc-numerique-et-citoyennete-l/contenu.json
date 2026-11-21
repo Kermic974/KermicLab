@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Être citoyen à l'ère du numérique, c'est s'informer avec esprit critique, protéger ses données et respecter les autres en ligne.",
+  "niveaux": [
+    {
+      "titre": "S'informer avec esprit critique",
+      "niveau": "2de",
+      "paragraphes": [
+        "Pour vérifier une information : identifier la **source** (qui ? quand ?), la **recouper** avec d'autres sources fiables, chercher l'**image d'origine** (recherche inversée), repérer les signes de **manipulation** (titre choc, absence de date). Les **algorithmes** orientent ce que nous voyons ; diversifier ses sources évite les bulles. Le **fact-checking** vérifie les affirmations."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une photo virale.",
+          "Recherche inversée : elle date de 2012.",
+          "L'info est donc fausse dans son contexte."
+        ]
+      },
+      "aRetenir": "Source + recoupement."
+    },
+    {
+      "titre": "Droits et devoirs en ligne",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le **RGPD** protège les données personnelles : consentement, accès, rectification, effacement. L'**identité numérique** (traces, profils) est durable : on soigne sa **e-réputation**. La loi s'applique en ligne : **diffamation**, harcèlement, atteinte à la vie privée et au droit à l'image sont sanctionnés. Le **droit d'auteur** protège les créations."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Publier une photo d'un camarade sans son accord.",
+          "Atteinte au droit à l'image.",
+          "Retrait possible et sanctions."
+        ]
+      },
+      "aRetenir": "En ligne comme ailleurs : la loi s'applique."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour vérifier une photo virale, on peut…",
+        "choix": [
+          "la partager au plus vite",
+          "regarder seulement les likes",
+          "la supprimer sans réfléchir",
+          "faire une recherche d'image inversée"
+        ],
+        "bonne": 3,
+        "explication": "Vérification."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le RGPD donne notamment le droit…",
+        "choix": [
+          "de pirater",
+          "à l'effacement de ses données",
+          "d'accéder aux données d'autrui",
+          "de supprimer les lois"
+        ],
+        "bonne": 1,
+        "explication": "Données."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Publier la photo d'un camarade sans son accord…",
+        "choix": [
+          "est obligatoire en classe",
+          "relève du règlement du self",
+          "porte atteinte à son droit à l'image",
+          "est toujours autorisé par la loi"
+        ],
+        "bonne": 2,
+        "explication": "Respect."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message viral",
+    "histoire": [
+      "Un message alarmiste circule sur ton réseau."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu avant de partager ?",
+        "choix": [
+          "je l'ignore sans réfléchir",
+          "je vérifie la source et recoupe",
+          "je partage tout de suite",
+          "j'ajoute des mensonges"
+        ],
+        "bonne": 1,
+        "explication": "Esprit critique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qu'est-ce que l'e-réputation ?",
+        "choix": [
+          "un diplôme du numérique",
+          "l'image de soi sur Internet",
+          "un jeu en ligne gratuit",
+          "une banque en ligne"
+        ],
+        "bonne": 1,
+        "explication": "Identité numérique."
+      }
+    ],
+    "conclusion": "Bon réflexe !"
+  }
+}

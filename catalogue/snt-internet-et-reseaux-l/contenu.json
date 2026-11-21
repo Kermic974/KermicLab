@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Internet est un réseau de réseaux dont le fonctionnement repose sur des protocoles standardisés.",
+  "niveaux": [
+    {
+      "titre": "Un réseau de réseaux",
+      "niveau": "2de",
+      "paragraphes": [
+        "Internet relie des milliards d'appareils par des câbles (fibre, cuivre) et des ondes (wifi, 4G/5G). Chaque appareil a une **adresse IP** (v4 : quatre nombres de 0 à 255 ; v6 : plus longue). Le **DNS** traduit un nom (www.exemple.fr) en adresse IP. Les données sont découpées en **paquets** qui peuvent suivre des chemins différents (**routage**) et sont réassemblés à l'arrivée."
+      ],
+      "exemple": {
+        "titre": "Exemple : charger une page",
+        "etapes": [
+          "Le navigateur demande l'adresse du site au DNS.",
+          "Il envoie une requête au serveur.",
+          "La page revient en paquets."
+        ]
+      },
+      "aRetenir": "IP : adresse ; DNS : annuaire des noms."
+    },
+    {
+      "titre": "Protocoles et sécurité",
+      "niveau": "2de",
+      "paragraphes": [
+        "Un **protocole** est un ensemble de règles de communication : **IP** (adressage et routage), **TCP** (fiabilise l'échange : réception, ordre, retransmission), **HTTP/HTTPS** (web, HTTPS chiffre), **SMTP** (courriel). Le **chiffrement** protège les échanges ; les **pare-feux**, les **mots de passe solides** et les mises à jour réduisent les risques. La **neutralité du net** impose de traiter les données sans discrimination. L'empreinte énergétique du numérique est importante."
+      ],
+      "exemple": {
+        "titre": "Exemple : HTTPS",
+        "etapes": [
+          "Le cadenas indique un échange chiffré.",
+          "Les données ne sont pas lisibles par un tiers.",
+          "Le serveur est authentifié."
+        ]
+      },
+      "aRetenir": "HTTPS = HTTP chiffré."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le DNS sert à…",
+        "choix": [
+          "chiffrer tous les messages",
+          "stocker les pages web",
+          "compresser des vidéos",
+          "traduire un nom en adresse IP"
+        ],
+        "bonne": 3,
+        "explication": "Annuaire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les données sur Internet voyagent…",
+        "choix": [
+          "d'un seul bloc",
+          "par courrier",
+          "par onde unique",
+          "en paquets"
+        ],
+        "bonne": 3,
+        "explication": "Paquets routés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le protocole HTTPS…",
+        "choix": [
+          "accélère toujours",
+          "ne sert qu'aux courriels",
+          "chiffre les échanges web",
+          "supprime les virus"
+        ],
+        "bonne": 2,
+        "explication": "Sécurité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le réseau du lycée",
+    "histoire": [
+      "Tu étudies le réseau du lycée."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une adresse IP identifie…",
+        "choix": [
+          "un site web seul",
+          "un simple câble",
+          "un appareil sur le réseau",
+          "un mot de passe"
+        ],
+        "bonne": 2,
+        "explication": "Adresse d'un appareil."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour sécuriser le wifi, on…",
+        "choix": [
+          "le laisse ouvert à tous",
+          "affiche le mot de passe",
+          "débranche la box",
+          "chiffre et protège par mot de passe"
+        ],
+        "bonne": 3,
+        "explication": "Bonnes pratiques."
+      }
+    ],
+    "conclusion": "Bon réseau !"
+  }
+}
