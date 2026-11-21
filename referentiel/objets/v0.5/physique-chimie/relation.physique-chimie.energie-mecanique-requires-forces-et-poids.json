@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.energie-mecanique-requires-forces-et-poids",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-mecanique/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-mecanique",
+  "target": "notion.physique-chimie.forces-et-poids",
+  "rationale": "Le travail d’une force et l’énergie potentielle de pesanteur supposent la notion de force et de poids."
+}

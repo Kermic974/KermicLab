@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.son-et-lumiere-teaches-determiner-une-distance-depuis-le-temps-de-propagation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/son-et-lumiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.son-et-lumiere",
+  "target": "microskill.physique-chimie.determiner-une-distance-depuis-le-temps-de-propagation"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.energie-mecanique-requires-energie",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-mecanique/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-mecanique",
+  "target": "notion.physique-chimie.energie",
+  "rationale": "L’énergie cinétique et les conversions sont réinvesties dans le théorème de l’énergie cinétique et la conservation."
+}

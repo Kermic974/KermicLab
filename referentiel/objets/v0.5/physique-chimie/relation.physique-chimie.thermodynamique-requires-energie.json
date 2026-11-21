@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.thermodynamique-requires-energie",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thermodynamique/contenu.json"
+  },
+  "source": "notion.physique-chimie.thermodynamique",
+  "target": "notion.physique-chimie.energie",
+  "rationale": "Le premier principe étend les conversions d’énergie et la conservation vues en cycle 4."
+}

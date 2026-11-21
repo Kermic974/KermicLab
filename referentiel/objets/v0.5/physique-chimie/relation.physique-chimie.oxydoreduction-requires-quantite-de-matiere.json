@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.oxydoreduction-requires-quantite-de-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oxydoreduction/contenu.json"
+  },
+  "source": "notion.physique-chimie.oxydoreduction",
+  "target": "notion.physique-chimie.quantite-de-matiere",
+  "rationale": "Les piles et les bilans de matière mobilisent les quantités de matière et les rapports stœchiométriques."
+}

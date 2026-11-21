@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-mecanique-teaches-appliquer-le-theoreme-de-l-energie-cinetique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-mecanique/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-mecanique",
+  "target": "microskill.physique-chimie.appliquer-le-theoreme-de-l-energie-cinetique"
+}

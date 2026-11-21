@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.absorbance-et-dosages-requires-quantite-de-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/absorbance-et-dosages/contenu.json"
+  },
+  "source": "notion.physique-chimie.absorbance-et-dosages",
+  "target": "notion.physique-chimie.quantite-de-matiere",
+  "rationale": "La loi de Beer-Lambert et le titrage manipulent concentrations et quantités de matière."
+}

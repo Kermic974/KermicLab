@@ -32,10 +32,10 @@ questions:
   - je ne comprends pas la fréquence d'un son
   - c'est quoi une année-lumière ?
   - how does sound travel?
+classes: 4e
 prerequis:
 niveaux: cycle-4, seconde
-classes: 4e
-competences: pc-son-et-lumiere-action-1, pc-son-et-lumiere-action-2
+competences: comparer-la-propagation-du-son-et-de-la-lumiere, determiner-une-distance-depuis-le-temps-de-propagation, calculer-la-frequence-d-un-signal-depuis-sa-periode, situer-un-son-sur-l-echelle-des-frequences
 ---
 
 # Signaux sonores et lumineux

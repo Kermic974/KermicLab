@@ -26,10 +26,10 @@ questions:
   - je ne comprends pas les conversions d'énergie
   - quelles sont les énergies renouvelables ?
   - what is kinetic energy?
+classes: 5e, 3e
 prerequis:
 niveaux: cycle-4, seconde
-classes: 5e, 3e
-competences: pc-energie-action-1, pc-energie-action-2
+competences: identifier-les-formes-d-energie-dans-une-conversion, calculer-le-rendement-d-une-conversion-d-energie, calculer-une-energie-cinetique, convertir-une-energie-entre-joule-et-kilowattheure
 ---
 
 # L'énergie et ses conversions

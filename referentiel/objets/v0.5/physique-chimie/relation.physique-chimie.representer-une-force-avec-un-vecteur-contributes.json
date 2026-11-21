@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.representer-une-force-avec-un-vecteur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/forces-et-poids/contenu.json"
+  },
+  "source": "microskill.physique-chimie.representer-une-force-avec-un-vecteur",
+  "target": "skill.physique-chimie.forces-et-poids"
+}

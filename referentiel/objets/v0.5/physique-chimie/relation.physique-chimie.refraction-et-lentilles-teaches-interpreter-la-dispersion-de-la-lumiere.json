@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.refraction-et-lentilles-teaches-interpreter-la-dispersion-de-la-lumiere",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/refraction-et-lentilles/contenu.json"
+  },
+  "source": "notion.physique-chimie.refraction-et-lentilles",
+  "target": "microskill.physique-chimie.interpreter-la-dispersion-de-la-lumiere"
+}

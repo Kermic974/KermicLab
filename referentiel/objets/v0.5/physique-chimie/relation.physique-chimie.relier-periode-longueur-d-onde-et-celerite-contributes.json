@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.relier-periode-longueur-d-onde-et-celerite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ondes/contenu.json"
+  },
+  "source": "microskill.physique-chimie.relier-periode-longueur-d-onde-et-celerite",
+  "target": "skill.physique-chimie.ondes"
+}

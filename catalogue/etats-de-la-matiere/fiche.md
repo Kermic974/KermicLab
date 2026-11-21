@@ -28,10 +28,10 @@ questions:
   - je ne comprends pas les changements d'état
   - à quelle température l'eau entre en ébullition ?
   - what are the states of matter?
+classes: 5e
 prerequis:
 niveaux: cycle-4, seconde
-classes: 5e
-competences: pc-etats-de-la-matiere-action-1, pc-etats-de-la-matiere-action-2
+competences: identifier-un-etat-a-partir-de-ses-proprietes, nommer-un-changement-d-etat, interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat, decrire-un-etat-avec-le-modele-particulaire, appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat
 ---
 
 # Les états de la matière

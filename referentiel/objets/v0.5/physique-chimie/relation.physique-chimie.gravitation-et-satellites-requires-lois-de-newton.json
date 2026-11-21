@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.gravitation-et-satellites-requires-lois-de-newton",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gravitation-et-satellites/contenu.json"
+  },
+  "source": "notion.physique-chimie.gravitation-et-satellites",
+  "target": "notion.physique-chimie.lois-de-newton",
+  "rationale": "L’étude des orbites circulaires applique la deuxième loi de Newton à la force de gravitation."
+}

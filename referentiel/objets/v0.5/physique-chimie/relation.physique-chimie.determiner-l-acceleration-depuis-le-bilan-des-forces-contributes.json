@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.determiner-l-acceleration-depuis-le-bilan-des-forces-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-newton/contenu.json"
+  },
+  "source": "microskill.physique-chimie.determiner-l-acceleration-depuis-le-bilan-des-forces",
+  "target": "skill.physique-chimie.lois-de-newton"
+}

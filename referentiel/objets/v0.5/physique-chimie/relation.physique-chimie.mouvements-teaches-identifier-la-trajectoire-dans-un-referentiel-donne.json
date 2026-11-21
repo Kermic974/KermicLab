@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.mouvements-teaches-identifier-la-trajectoire-dans-un-referentiel-donne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvements/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvements",
+  "target": "microskill.physique-chimie.identifier-la-trajectoire-dans-un-referentiel-donne"
+}

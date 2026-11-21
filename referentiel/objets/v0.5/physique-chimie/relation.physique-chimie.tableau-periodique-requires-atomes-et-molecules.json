@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.tableau-periodique-requires-atomes-et-molecules",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableau-periodique/contenu.json"
+  },
+  "source": "notion.physique-chimie.tableau-periodique",
+  "target": "notion.physique-chimie.atomes-et-molecules",
+  "rationale": "La configuration électronique et les ions reprennent la structure de l’atome (protons, neutrons, électrons) étudiée au préalable."
+}

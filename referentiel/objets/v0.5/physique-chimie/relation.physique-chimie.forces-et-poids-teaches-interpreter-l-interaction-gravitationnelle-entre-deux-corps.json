@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.forces-et-poids-teaches-interpreter-l-interaction-gravitationnelle-entre-deux-corps",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/forces-et-poids/contenu.json"
+  },
+  "source": "notion.physique-chimie.forces-et-poids",
+  "target": "microskill.physique-chimie.interpreter-l-interaction-gravitationnelle-entre-deux-corps"
+}

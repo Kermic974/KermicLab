@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.lois-de-newton-teaches-analyser-le-mouvement-d-un-projectile",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-newton/contenu.json"
+  },
+  "source": "notion.physique-chimie.lois-de-newton",
+  "target": "microskill.physique-chimie.analyser-le-mouvement-d-un-projectile"
+}

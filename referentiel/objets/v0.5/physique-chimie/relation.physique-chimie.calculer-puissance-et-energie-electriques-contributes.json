@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-puissance-et-energie-electriques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-puissance-et-energie-electriques",
+  "target": "skill.physique-chimie.electricite"
+}

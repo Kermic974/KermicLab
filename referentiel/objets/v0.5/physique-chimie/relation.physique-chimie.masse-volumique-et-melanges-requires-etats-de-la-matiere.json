@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.masse-volumique-et-melanges-requires-etats-de-la-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-volumique-et-melanges/contenu.json"
+  },
+  "source": "notion.physique-chimie.masse-volumique-et-melanges",
+  "target": "notion.physique-chimie.etats-de-la-matiere",
+  "rationale": "La masse volumique relie masse et volume d’un échantillon dans un état donné."
+}

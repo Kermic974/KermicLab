@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.diffraction-et-interferences-teaches-identifier-une-interference-constructive-ou-destructive",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/diffraction-et-interferences/contenu.json"
+  },
+  "source": "notion.physique-chimie.diffraction-et-interferences",
+  "target": "microskill.physique-chimie.identifier-une-interference-constructive-ou-destructive"
+}

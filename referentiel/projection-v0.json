@@ -314,52 +314,6 @@
     "microskill.mathematiques.utiliser-une-suite-arithmetique": "utiliser-une-suite-arithmetique",
     "microskill.mathematiques.utiliser-une-suite-geometrique": "utiliser-une-suite-geometrique",
     "microskill.mathematiques.verifier-l-initialisation-et-l-heredite": "verifier-l-initialisation-et-l-heredite",
-    "microskill.physique-chimie.absorbance-et-dosages-action-1": "pc-absorbance-et-dosages-action-1",
-    "microskill.physique-chimie.absorbance-et-dosages-action-2": "pc-absorbance-et-dosages-action-2",
-    "microskill.physique-chimie.acides-et-bases-action-1": "pc-acides-et-bases-action-1",
-    "microskill.physique-chimie.acides-et-bases-action-2": "pc-acides-et-bases-action-2",
-    "microskill.physique-chimie.atomes-et-molecules-action-1": "pc-atomes-et-molecules-action-1",
-    "microskill.physique-chimie.atomes-et-molecules-action-2": "pc-atomes-et-molecules-action-2",
-    "microskill.physique-chimie.cinetique-chimique-action-1": "pc-cinetique-chimique-action-1",
-    "microskill.physique-chimie.cinetique-chimique-action-2": "pc-cinetique-chimique-action-2",
-    "microskill.physique-chimie.condensateur-et-circuit-rc-action-1": "pc-condensateur-et-circuit-rc-action-1",
-    "microskill.physique-chimie.condensateur-et-circuit-rc-action-2": "pc-condensateur-et-circuit-rc-action-2",
-    "microskill.physique-chimie.diffraction-et-interferences-action-1": "pc-diffraction-et-interferences-action-1",
-    "microskill.physique-chimie.diffraction-et-interferences-action-2": "pc-diffraction-et-interferences-action-2",
-    "microskill.physique-chimie.electricite-action-1": "pc-electricite-action-1",
-    "microskill.physique-chimie.electricite-action-2": "pc-electricite-action-2",
-    "microskill.physique-chimie.energie-action-1": "pc-energie-action-1",
-    "microskill.physique-chimie.energie-action-2": "pc-energie-action-2",
-    "microskill.physique-chimie.energie-mecanique-action-1": "pc-energie-mecanique-action-1",
-    "microskill.physique-chimie.energie-mecanique-action-2": "pc-energie-mecanique-action-2",
-    "microskill.physique-chimie.etats-de-la-matiere-action-1": "pc-etats-de-la-matiere-action-1",
-    "microskill.physique-chimie.etats-de-la-matiere-action-2": "pc-etats-de-la-matiere-action-2",
-    "microskill.physique-chimie.forces-et-poids-action-1": "pc-forces-et-poids-action-1",
-    "microskill.physique-chimie.forces-et-poids-action-2": "pc-forces-et-poids-action-2",
-    "microskill.physique-chimie.gravitation-et-satellites-action-1": "pc-gravitation-et-satellites-action-1",
-    "microskill.physique-chimie.gravitation-et-satellites-action-2": "pc-gravitation-et-satellites-action-2",
-    "microskill.physique-chimie.lois-de-newton-action-1": "pc-lois-de-newton-action-1",
-    "microskill.physique-chimie.lois-de-newton-action-2": "pc-lois-de-newton-action-2",
-    "microskill.physique-chimie.masse-volumique-et-melanges-action-1": "pc-masse-volumique-et-melanges-action-1",
-    "microskill.physique-chimie.masse-volumique-et-melanges-action-2": "pc-masse-volumique-et-melanges-action-2",
-    "microskill.physique-chimie.mouvements-action-1": "pc-mouvements-action-1",
-    "microskill.physique-chimie.mouvements-action-2": "pc-mouvements-action-2",
-    "microskill.physique-chimie.ondes-action-1": "pc-ondes-action-1",
-    "microskill.physique-chimie.ondes-action-2": "pc-ondes-action-2",
-    "microskill.physique-chimie.oxydoreduction-action-1": "pc-oxydoreduction-action-1",
-    "microskill.physique-chimie.oxydoreduction-action-2": "pc-oxydoreduction-action-2",
-    "microskill.physique-chimie.quantite-de-matiere-action-1": "pc-quantite-de-matiere-action-1",
-    "microskill.physique-chimie.quantite-de-matiere-action-2": "pc-quantite-de-matiere-action-2",
-    "microskill.physique-chimie.radioactivite-action-1": "pc-radioactivite-action-1",
-    "microskill.physique-chimie.radioactivite-action-2": "pc-radioactivite-action-2",
-    "microskill.physique-chimie.refraction-et-lentilles-action-1": "pc-refraction-et-lentilles-action-1",
-    "microskill.physique-chimie.refraction-et-lentilles-action-2": "pc-refraction-et-lentilles-action-2",
-    "microskill.physique-chimie.son-et-lumiere-action-1": "pc-son-et-lumiere-action-1",
-    "microskill.physique-chimie.son-et-lumiere-action-2": "pc-son-et-lumiere-action-2",
-    "microskill.physique-chimie.tableau-periodique-action-1": "pc-tableau-periodique-action-1",
-    "microskill.physique-chimie.tableau-periodique-action-2": "pc-tableau-periodique-action-2",
-    "microskill.physique-chimie.thermodynamique-action-1": "pc-thermodynamique-action-1",
-    "microskill.physique-chimie.thermodynamique-action-2": "pc-thermodynamique-action-2",
     "microskill.svt.adn-et-division-cellulaire-action-1": "svt-adn-et-division-cellulaire-action-1",
     "microskill.svt.adn-et-division-cellulaire-action-2": "svt-adn-et-division-cellulaire-action-2",
     "microskill.svt.agrosystemes-et-sols-action-1": "svt-agrosystemes-et-sols-action-1",
@@ -571,7 +525,110 @@
     "microskill.philosophie.travail-action-1": "philosophie-travail-action-1",
     "microskill.philosophie.travail-action-2": "philosophie-travail-action-2",
     "microskill.philosophie.verite-action-1": "philosophie-verite-action-1",
-    "microskill.philosophie.verite-action-2": "philosophie-verite-action-2"
+    "microskill.philosophie.verite-action-2": "philosophie-verite-action-2",
+    "microskill.physique-chimie.relier-couleur-et-absorbance": "relier-couleur-et-absorbance",
+    "microskill.physique-chimie.determiner-une-concentration-avec-la-loi-de-beer-lambert": "determiner-une-concentration-avec-la-loi-de-beer-lambert",
+    "microskill.physique-chimie.exploiter-une-courbe-d-etalonnage": "exploiter-une-courbe-d-etalonnage",
+    "microskill.physique-chimie.exploiter-un-titrage-a-l-equivalence": "exploiter-un-titrage-a-l-equivalence",
+    "microskill.physique-chimie.classer-une-solution-sur-l-echelle-de-ph": "classer-une-solution-sur-l-echelle-de-ph",
+    "microskill.physique-chimie.identifier-les-especes-d-une-solution-acide-ou-basique": "identifier-les-especes-d-une-solution-acide-ou-basique",
+    "microskill.physique-chimie.calculer-le-ph-depuis-la-concentration-en-ions-h3o": "calculer-le-ph-depuis-la-concentration-en-ions-h3o",
+    "microskill.physique-chimie.interpreter-l-effet-d-une-dilution-sur-le-ph": "interpreter-l-effet-d-une-dilution-sur-le-ph",
+    "microskill.physique-chimie.exploiter-un-couple-acide-base-et-son-pka": "exploiter-un-couple-acide-base-et-son-pka",
+    "microskill.physique-chimie.lire-une-formule-chimique": "lire-une-formule-chimique",
+    "microskill.physique-chimie.distinguer-les-reactifs-des-produits": "distinguer-les-reactifs-des-produits",
+    "microskill.physique-chimie.equilibrer-une-equation-de-reaction": "equilibrer-une-equation-de-reaction",
+    "microskill.physique-chimie.decrire-la-structure-d-un-atome": "decrire-la-structure-d-un-atome",
+    "microskill.physique-chimie.interpreter-la-formation-d-un-ion": "interpreter-la-formation-d-un-ion",
+    "microskill.physique-chimie.identifier-un-facteur-cinetique": "identifier-un-facteur-cinetique",
+    "microskill.physique-chimie.determiner-le-temps-de-demi-reaction": "determiner-le-temps-de-demi-reaction",
+    "microskill.physique-chimie.exploiter-la-loi-de-vitesse-d-ordre-1": "exploiter-la-loi-de-vitesse-d-ordre-1",
+    "microskill.physique-chimie.interpreter-le-role-d-un-catalyseur": "interpreter-le-role-d-un-catalyseur",
+    "microskill.physique-chimie.relier-la-charge-du-condensateur-a-sa-tension": "relier-la-charge-du-condensateur-a-sa-tension",
+    "microskill.physique-chimie.calculer-la-constante-de-temps-d-un-circuit-rc": "calculer-la-constante-de-temps-d-un-circuit-rc",
+    "microskill.physique-chimie.interpreter-l-evolution-temporelle-d-un-circuit-rc": "interpreter-l-evolution-temporelle-d-un-circuit-rc",
+    "microskill.physique-chimie.calculer-l-energie-stockee-dans-un-condensateur": "calculer-l-energie-stockee-dans-un-condensateur",
+    "microskill.physique-chimie.relier-la-diffraction-a-la-largeur-de-l-ouverture": "relier-la-diffraction-a-la-largeur-de-l-ouverture",
+    "microskill.physique-chimie.calculer-la-largeur-de-la-tache-centrale": "calculer-la-largeur-de-la-tache-centrale",
+    "microskill.physique-chimie.identifier-une-interference-constructive-ou-destructive": "identifier-une-interference-constructive-ou-destructive",
+    "microskill.physique-chimie.exploiter-l-interfrange-des-fentes-d-young": "exploiter-l-interfrange-des-fentes-d-young",
+    "microskill.physique-chimie.distinguer-un-montage-en-serie-d-un-montage-en-derivation": "distinguer-un-montage-en-serie-d-un-montage-en-derivation",
+    "microskill.physique-chimie.mesurer-intensite-et-tension-dans-un-circuit": "mesurer-intensite-et-tension-dans-un-circuit",
+    "microskill.physique-chimie.calculer-une-grandeur-electrique-avec-la-loi-d-ohm": "calculer-une-grandeur-electrique-avec-la-loi-d-ohm",
+    "microskill.physique-chimie.appliquer-l-additivite-des-tensions-et-des-intensites": "appliquer-l-additivite-des-tensions-et-des-intensites",
+    "microskill.physique-chimie.calculer-puissance-et-energie-electriques": "calculer-puissance-et-energie-electriques",
+    "microskill.physique-chimie.identifier-les-formes-d-energie-dans-une-conversion": "identifier-les-formes-d-energie-dans-une-conversion",
+    "microskill.physique-chimie.calculer-le-rendement-d-une-conversion-d-energie": "calculer-le-rendement-d-une-conversion-d-energie",
+    "microskill.physique-chimie.calculer-une-energie-cinetique": "calculer-une-energie-cinetique",
+    "microskill.physique-chimie.convertir-une-energie-entre-joule-et-kilowattheure": "convertir-une-energie-entre-joule-et-kilowattheure",
+    "microskill.physique-chimie.calculer-le-travail-d-une-force": "calculer-le-travail-d-une-force",
+    "microskill.physique-chimie.appliquer-le-theoreme-de-l-energie-cinetique": "appliquer-le-theoreme-de-l-energie-cinetique",
+    "microskill.physique-chimie.calculer-une-energie-potentielle-de-pesanteur": "calculer-une-energie-potentielle-de-pesanteur",
+    "microskill.physique-chimie.exploiter-la-conservation-de-l-energie-mecanique": "exploiter-la-conservation-de-l-energie-mecanique",
+    "microskill.physique-chimie.interpreter-l-effet-des-frottements-sur-l-energie-mecanique": "interpreter-l-effet-des-frottements-sur-l-energie-mecanique",
+    "microskill.physique-chimie.identifier-un-etat-a-partir-de-ses-proprietes": "identifier-un-etat-a-partir-de-ses-proprietes",
+    "microskill.physique-chimie.nommer-un-changement-d-etat": "nommer-un-changement-d-etat",
+    "microskill.physique-chimie.interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat": "interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat",
+    "microskill.physique-chimie.decrire-un-etat-avec-le-modele-particulaire": "decrire-un-etat-avec-le-modele-particulaire",
+    "microskill.physique-chimie.appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat": "appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat",
+    "microskill.physique-chimie.representer-une-force-avec-un-vecteur": "representer-une-force-avec-un-vecteur",
+    "microskill.physique-chimie.calculer-le-poids-a-partir-de-la-masse": "calculer-le-poids-a-partir-de-la-masse",
+    "microskill.physique-chimie.distinguer-masse-et-poids": "distinguer-masse-et-poids",
+    "microskill.physique-chimie.interpreter-l-interaction-gravitationnelle-entre-deux-corps": "interpreter-l-interaction-gravitationnelle-entre-deux-corps",
+    "microskill.physique-chimie.faire-le-bilan-des-forces-sur-un-objet": "faire-le-bilan-des-forces-sur-un-objet",
+    "microskill.physique-chimie.relier-l-orbite-circulaire-a-la-force-de-gravitation": "relier-l-orbite-circulaire-a-la-force-de-gravitation",
+    "microskill.physique-chimie.interpreter-les-relations-de-kepler": "interpreter-les-relations-de-kepler",
+    "microskill.physique-chimie.calculer-la-force-de-gravitation-entre-deux-astres": "calculer-la-force-de-gravitation-entre-deux-astres",
+    "microskill.physique-chimie.caracteriser-un-satellite-geostationnaire": "caracteriser-un-satellite-geostationnaire",
+    "microskill.physique-chimie.determiner-l-acceleration-depuis-le-bilan-des-forces": "determiner-l-acceleration-depuis-le-bilan-des-forces",
+    "microskill.physique-chimie.exploiter-le-vecteur-acceleration-d-un-mouvement": "exploiter-le-vecteur-acceleration-d-un-mouvement",
+    "microskill.physique-chimie.analyser-une-chute-libre": "analyser-une-chute-libre",
+    "microskill.physique-chimie.analyser-le-mouvement-d-un-projectile": "analyser-le-mouvement-d-un-projectile",
+    "microskill.physique-chimie.calculer-une-masse-volumique": "calculer-une-masse-volumique",
+    "microskill.physique-chimie.calculer-une-concentration-en-masse": "calculer-une-concentration-en-masse",
+    "microskill.physique-chimie.distinguer-un-melange-homogene-d-un-melange-heterogene": "distinguer-un-melange-homogene-d-un-melange-heterogene",
+    "microskill.physique-chimie.choisir-une-technique-de-separation-d-un-melange": "choisir-une-technique-de-separation-d-un-melange",
+    "microskill.physique-chimie.calculer-la-masse-d-une-solution": "calculer-la-masse-d-une-solution",
+    "microskill.physique-chimie.identifier-la-trajectoire-dans-un-referentiel-donne": "identifier-la-trajectoire-dans-un-referentiel-donne",
+    "microskill.physique-chimie.determiner-une-vitesse-depuis-la-distance-et-la-duree": "determiner-une-vitesse-depuis-la-distance-et-la-duree",
+    "microskill.physique-chimie.caracteriser-un-mouvement-par-chronophotographie": "caracteriser-un-mouvement-par-chronophotographie",
+    "microskill.physique-chimie.convertir-une-vitesse-entre-m-s-et-km-h": "convertir-une-vitesse-entre-m-s-et-km-h",
+    "microskill.physique-chimie.appliquer-le-principe-d-inertie": "appliquer-le-principe-d-inertie",
+    "microskill.physique-chimie.calculer-la-celerite-d-une-onde": "calculer-la-celerite-d-une-onde",
+    "microskill.physique-chimie.relier-periode-longueur-d-onde-et-celerite": "relier-periode-longueur-d-onde-et-celerite",
+    "microskill.physique-chimie.distinguer-transport-d-energie-et-transport-de-matiere": "distinguer-transport-d-energie-et-transport-de-matiere",
+    "microskill.physique-chimie.identifier-un-phenomene-ondulatoire": "identifier-un-phenomene-ondulatoire",
+    "microskill.physique-chimie.identifier-l-oxydant-et-le-reducteur": "identifier-l-oxydant-et-le-reducteur",
+    "microskill.physique-chimie.equilibrer-une-demi-equation-avec-des-electrons": "equilibrer-une-demi-equation-avec-des-electrons",
+    "microskill.physique-chimie.ecrire-l-equation-d-une-reaction-d-oxydoreduction": "ecrire-l-equation-d-une-reaction-d-oxydoreduction",
+    "microskill.physique-chimie.prevoir-une-reaction-entre-un-metal-et-un-ion-metallique": "prevoir-une-reaction-entre-un-metal-et-un-ion-metallique",
+    "microskill.physique-chimie.interpreter-le-fonctionnement-d-une-pile": "interpreter-le-fonctionnement-d-une-pile",
+    "microskill.physique-chimie.calculer-une-quantite-de-matiere-a-partir-de-la-masse": "calculer-une-quantite-de-matiere-a-partir-de-la-masse",
+    "microskill.physique-chimie.calculer-une-masse-molaire": "calculer-une-masse-molaire",
+    "microskill.physique-chimie.relier-nombre-d-entites-et-quantite-de-matiere": "relier-nombre-d-entites-et-quantite-de-matiere",
+    "microskill.physique-chimie.calculer-une-concentration-molaire": "calculer-une-concentration-molaire",
+    "microskill.physique-chimie.calculer-une-concentration-apres-dilution": "calculer-une-concentration-apres-dilution",
+    "microskill.physique-chimie.identifier-le-type-de-desintegration-d-un-noyau": "identifier-le-type-de-desintegration-d-un-noyau",
+    "microskill.physique-chimie.ecrire-l-equation-d-une-desintegration": "ecrire-l-equation-d-une-desintegration",
+    "microskill.physique-chimie.exploiter-une-demi-vie-pour-estimer-une-duree": "exploiter-une-demi-vie-pour-estimer-une-duree",
+    "microskill.physique-chimie.appliquer-la-loi-de-decroissance-radioactive": "appliquer-la-loi-de-decroissance-radioactive",
+    "microskill.physique-chimie.identifier-un-rayon-reflechi-ou-refracte": "identifier-un-rayon-reflechi-ou-refracte",
+    "microskill.physique-chimie.appliquer-la-loi-de-la-refraction": "appliquer-la-loi-de-la-refraction",
+    "microskill.physique-chimie.interpreter-la-dispersion-de-la-lumiere": "interpreter-la-dispersion-de-la-lumiere",
+    "microskill.physique-chimie.determiner-la-position-d-une-image-formee-par-une-lentille": "determiner-la-position-d-une-image-formee-par-une-lentille",
+    "microskill.physique-chimie.comparer-la-propagation-du-son-et-de-la-lumiere": "comparer-la-propagation-du-son-et-de-la-lumiere",
+    "microskill.physique-chimie.determiner-une-distance-depuis-le-temps-de-propagation": "determiner-une-distance-depuis-le-temps-de-propagation",
+    "microskill.physique-chimie.calculer-la-frequence-d-un-signal-depuis-sa-periode": "calculer-la-frequence-d-un-signal-depuis-sa-periode",
+    "microskill.physique-chimie.situer-un-son-sur-l-echelle-des-frequences": "situer-un-son-sur-l-echelle-des-frequences",
+    "microskill.physique-chimie.determiner-la-composition-du-noyau-depuis-son-symbole": "determiner-la-composition-du-noyau-depuis-son-symbole",
+    "microskill.physique-chimie.utiliser-la-configuration-electronique-pour-situer-un-element": "utiliser-la-configuration-electronique-pour-situer-un-element",
+    "microskill.physique-chimie.identifier-les-isotopes-d-un-element": "identifier-les-isotopes-d-un-element",
+    "microskill.physique-chimie.prevoir-l-ion-forme-par-un-element": "prevoir-l-ion-forme-par-un-element",
+    "microskill.physique-chimie.prevoir-le-nombre-de-liaisons-covalentes-d-un-atome": "prevoir-le-nombre-de-liaisons-covalentes-d-un-atome",
+    "microskill.physique-chimie.identifier-le-mode-de-transfert-thermique": "identifier-le-mode-de-transfert-thermique",
+    "microskill.physique-chimie.calculer-le-transfert-associe-a-une-variation-de-temperature": "calculer-le-transfert-associe-a-une-variation-de-temperature",
+    "microskill.physique-chimie.appliquer-le-premier-principe": "appliquer-le-premier-principe",
+    "microskill.physique-chimie.exploiter-la-loi-du-gaz-parfait": "exploiter-la-loi-du-gaz-parfait"
   },
   "fiches": {
     "trigo-cercle": {
@@ -966,24 +1023,34 @@
       ]
     },
     "absorbance-et-dosages": {
-      "prerequis": [],
+      "prerequis": [
+        "quantite-de-matiere"
+      ],
       "competences": [
-        "pc-absorbance-et-dosages-action-1",
-        "pc-absorbance-et-dosages-action-2"
+        "relier-couleur-et-absorbance",
+        "determiner-une-concentration-avec-la-loi-de-beer-lambert",
+        "exploiter-une-courbe-d-etalonnage",
+        "exploiter-un-titrage-a-l-equivalence"
       ]
     },
     "acides-et-bases": {
       "prerequis": [],
       "competences": [
-        "pc-acides-et-bases-action-1",
-        "pc-acides-et-bases-action-2"
+        "classer-une-solution-sur-l-echelle-de-ph",
+        "identifier-les-especes-d-une-solution-acide-ou-basique",
+        "calculer-le-ph-depuis-la-concentration-en-ions-h3o",
+        "interpreter-l-effet-d-une-dilution-sur-le-ph",
+        "exploiter-un-couple-acide-base-et-son-pka"
       ]
     },
     "atomes-et-molecules": {
       "prerequis": [],
       "competences": [
-        "pc-atomes-et-molecules-action-1",
-        "pc-atomes-et-molecules-action-2"
+        "lire-une-formule-chimique",
+        "distinguer-les-reactifs-des-produits",
+        "equilibrer-une-equation-de-reaction",
+        "decrire-la-structure-d-un-atome",
+        "interpreter-la-formation-d-un-ion"
       ]
     },
     "cinetique-chimique": {
@@ -991,8 +1058,10 @@
         "quantite-de-matiere"
       ],
       "competences": [
-        "pc-cinetique-chimique-action-1",
-        "pc-cinetique-chimique-action-2"
+        "identifier-un-facteur-cinetique",
+        "determiner-le-temps-de-demi-reaction",
+        "exploiter-la-loi-de-vitesse-d-ordre-1",
+        "interpreter-le-role-d-un-catalyseur"
       ]
     },
     "condensateur-et-circuit-rc": {
@@ -1000,138 +1069,211 @@
         "electricite"
       ],
       "competences": [
-        "pc-condensateur-et-circuit-rc-action-1",
-        "pc-condensateur-et-circuit-rc-action-2"
+        "relier-la-charge-du-condensateur-a-sa-tension",
+        "calculer-la-constante-de-temps-d-un-circuit-rc",
+        "interpreter-l-evolution-temporelle-d-un-circuit-rc",
+        "calculer-l-energie-stockee-dans-un-condensateur"
       ]
     },
     "diffraction-et-interferences": {
-      "prerequis": [],
+      "prerequis": [
+        "ondes"
+      ],
       "competences": [
-        "pc-diffraction-et-interferences-action-1",
-        "pc-diffraction-et-interferences-action-2"
+        "relier-la-diffraction-a-la-largeur-de-l-ouverture",
+        "calculer-la-largeur-de-la-tache-centrale",
+        "identifier-une-interference-constructive-ou-destructive",
+        "exploiter-l-interfrange-des-fentes-d-young"
       ]
     },
     "electricite": {
       "prerequis": [],
       "competences": [
-        "pc-electricite-action-1",
-        "pc-electricite-action-2"
+        "distinguer-un-montage-en-serie-d-un-montage-en-derivation",
+        "mesurer-intensite-et-tension-dans-un-circuit",
+        "calculer-une-grandeur-electrique-avec-la-loi-d-ohm",
+        "appliquer-l-additivite-des-tensions-et-des-intensites",
+        "calculer-puissance-et-energie-electriques"
       ]
     },
     "energie": {
       "prerequis": [],
       "competences": [
-        "pc-energie-action-1",
-        "pc-energie-action-2"
+        "identifier-les-formes-d-energie-dans-une-conversion",
+        "calculer-le-rendement-d-une-conversion-d-energie",
+        "calculer-une-energie-cinetique",
+        "convertir-une-energie-entre-joule-et-kilowattheure"
       ]
     },
     "energie-mecanique": {
-      "prerequis": [],
+      "prerequis": [
+        "energie",
+        "forces-et-poids"
+      ],
       "competences": [
-        "pc-energie-mecanique-action-1",
-        "pc-energie-mecanique-action-2"
+        "calculer-le-travail-d-une-force",
+        "appliquer-le-theoreme-de-l-energie-cinetique",
+        "calculer-une-energie-potentielle-de-pesanteur",
+        "exploiter-la-conservation-de-l-energie-mecanique",
+        "interpreter-l-effet-des-frottements-sur-l-energie-mecanique"
       ]
     },
     "etats-de-la-matiere": {
       "prerequis": [],
       "competences": [
-        "pc-etats-de-la-matiere-action-1",
-        "pc-etats-de-la-matiere-action-2"
+        "identifier-un-etat-a-partir-de-ses-proprietes",
+        "nommer-un-changement-d-etat",
+        "interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat",
+        "decrire-un-etat-avec-le-modele-particulaire",
+        "appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat"
       ]
     },
     "forces-et-poids": {
       "prerequis": [],
       "competences": [
-        "pc-forces-et-poids-action-1",
-        "pc-forces-et-poids-action-2"
+        "representer-une-force-avec-un-vecteur",
+        "calculer-le-poids-a-partir-de-la-masse",
+        "distinguer-masse-et-poids",
+        "interpreter-l-interaction-gravitationnelle-entre-deux-corps",
+        "faire-le-bilan-des-forces-sur-un-objet"
       ]
     },
     "gravitation-et-satellites": {
       "prerequis": [
-        "forces-et-poids"
+        "forces-et-poids",
+        "lois-de-newton"
       ],
       "competences": [
-        "pc-gravitation-et-satellites-action-1",
-        "pc-gravitation-et-satellites-action-2"
+        "relier-l-orbite-circulaire-a-la-force-de-gravitation",
+        "interpreter-les-relations-de-kepler",
+        "calculer-la-force-de-gravitation-entre-deux-astres",
+        "caracteriser-un-satellite-geostationnaire"
       ]
     },
     "lois-de-newton": {
       "prerequis": [
-        "forces-et-poids"
+        "forces-et-poids",
+        "mouvements"
       ],
       "competences": [
-        "pc-lois-de-newton-action-1",
-        "pc-lois-de-newton-action-2"
+        "determiner-l-acceleration-depuis-le-bilan-des-forces",
+        "exploiter-le-vecteur-acceleration-d-un-mouvement",
+        "analyser-une-chute-libre",
+        "analyser-le-mouvement-d-un-projectile"
       ]
     },
     "masse-volumique-et-melanges": {
-      "prerequis": [],
+      "prerequis": [
+        "etats-de-la-matiere"
+      ],
       "competences": [
-        "pc-masse-volumique-et-melanges-action-1",
-        "pc-masse-volumique-et-melanges-action-2"
+        "calculer-une-masse-volumique",
+        "calculer-une-concentration-en-masse",
+        "distinguer-un-melange-homogene-d-un-melange-heterogene",
+        "choisir-une-technique-de-separation-d-un-melange",
+        "calculer-la-masse-d-une-solution"
       ]
     },
     "mouvements": {
       "prerequis": [],
       "competences": [
-        "pc-mouvements-action-1",
-        "pc-mouvements-action-2"
+        "identifier-la-trajectoire-dans-un-referentiel-donne",
+        "determiner-une-vitesse-depuis-la-distance-et-la-duree",
+        "caracteriser-un-mouvement-par-chronophotographie",
+        "convertir-une-vitesse-entre-m-s-et-km-h",
+        "appliquer-le-principe-d-inertie"
       ]
     },
     "ondes": {
-      "prerequis": [],
+      "prerequis": [
+        "son-et-lumiere"
+      ],
       "competences": [
-        "pc-ondes-action-1",
-        "pc-ondes-action-2"
+        "calculer-la-celerite-d-une-onde",
+        "relier-periode-longueur-d-onde-et-celerite",
+        "distinguer-transport-d-energie-et-transport-de-matiere",
+        "identifier-un-phenomene-ondulatoire"
       ]
     },
     "oxydoreduction": {
-      "prerequis": [],
+      "prerequis": [
+        "tableau-periodique",
+        "quantite-de-matiere"
+      ],
       "competences": [
-        "pc-oxydoreduction-action-1",
-        "pc-oxydoreduction-action-2"
+        "identifier-l-oxydant-et-le-reducteur",
+        "equilibrer-une-demi-equation-avec-des-electrons",
+        "ecrire-l-equation-d-une-reaction-d-oxydoreduction",
+        "prevoir-une-reaction-entre-un-metal-et-un-ion-metallique",
+        "interpreter-le-fonctionnement-d-une-pile"
       ]
     },
     "quantite-de-matiere": {
-      "prerequis": [],
+      "prerequis": [
+        "atomes-et-molecules",
+        "masse-volumique-et-melanges"
+      ],
       "competences": [
-        "pc-quantite-de-matiere-action-1",
-        "pc-quantite-de-matiere-action-2"
+        "calculer-une-quantite-de-matiere-a-partir-de-la-masse",
+        "calculer-une-masse-molaire",
+        "relier-nombre-d-entites-et-quantite-de-matiere",
+        "calculer-une-concentration-molaire",
+        "calculer-une-concentration-apres-dilution"
       ]
     },
     "radioactivite": {
-      "prerequis": [],
+      "prerequis": [
+        "tableau-periodique"
+      ],
       "competences": [
-        "pc-radioactivite-action-1",
-        "pc-radioactivite-action-2"
+        "identifier-le-type-de-desintegration-d-un-noyau",
+        "ecrire-l-equation-d-une-desintegration",
+        "exploiter-une-demi-vie-pour-estimer-une-duree",
+        "appliquer-la-loi-de-decroissance-radioactive"
       ]
     },
     "refraction-et-lentilles": {
-      "prerequis": [],
+      "prerequis": [
+        "son-et-lumiere"
+      ],
       "competences": [
-        "pc-refraction-et-lentilles-action-1",
-        "pc-refraction-et-lentilles-action-2"
+        "identifier-un-rayon-reflechi-ou-refracte",
+        "appliquer-la-loi-de-la-refraction",
+        "interpreter-la-dispersion-de-la-lumiere",
+        "determiner-la-position-d-une-image-formee-par-une-lentille"
       ]
     },
     "son-et-lumiere": {
       "prerequis": [],
       "competences": [
-        "pc-son-et-lumiere-action-1",
-        "pc-son-et-lumiere-action-2"
+        "comparer-la-propagation-du-son-et-de-la-lumiere",
+        "determiner-une-distance-depuis-le-temps-de-propagation",
+        "calculer-la-frequence-d-un-signal-depuis-sa-periode",
+        "situer-un-son-sur-l-echelle-des-frequences"
       ]
     },
     "tableau-periodique": {
-      "prerequis": [],
+      "prerequis": [
+        "atomes-et-molecules"
+      ],
       "competences": [
-        "pc-tableau-periodique-action-1",
-        "pc-tableau-periodique-action-2"
+        "determiner-la-composition-du-noyau-depuis-son-symbole",
+        "utiliser-la-configuration-electronique-pour-situer-un-element",
+        "identifier-les-isotopes-d-un-element",
+        "prevoir-l-ion-forme-par-un-element",
+        "prevoir-le-nombre-de-liaisons-covalentes-d-un-atome"
       ]
     },
     "thermodynamique": {
-      "prerequis": [],
+      "prerequis": [
+        "energie",
+        "etats-de-la-matiere"
+      ],
       "competences": [
-        "pc-thermodynamique-action-1",
-        "pc-thermodynamique-action-2"
+        "identifier-le-mode-de-transfert-thermique",
+        "calculer-le-transfert-associe-a-une-variation-de-temperature",
+        "appliquer-le-premier-principe",
+        "exploiter-la-loi-du-gaz-parfait"
       ]
     },
     "adn-et-division-cellulaire": {

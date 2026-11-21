@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.comparer-la-propagation-du-son-et-de-la-lumiere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/son-et-lumiere/contenu.json"
+  },
+  "source": "microskill.physique-chimie.comparer-la-propagation-du-son-et-de-la-lumiere",
+  "target": "skill.physique-chimie.son-et-lumiere"
+}

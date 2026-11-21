@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.prevoir-une-reaction-entre-un-metal-et-un-ion-metallique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oxydoreduction/contenu.json"
+  },
+  "source": "microskill.physique-chimie.prevoir-une-reaction-entre-un-metal-et-un-ion-metallique",
+  "target": "skill.physique-chimie.oxydoreduction"
+}
