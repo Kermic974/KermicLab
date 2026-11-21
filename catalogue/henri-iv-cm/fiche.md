@@ -5,13 +5,7 @@ sujet: histoire/henri-iv-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - francois-ier-cm
-competences:
-  - henri-iv-cm-comprendre
-  - henri-iv-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qui était Henri IV ?
   - C'est quoi l'édit de Nantes ?
   - Pourquoi y a-t-il eu des guerres de religion ?
+prerequis: francois-ier-cm
+niveaux: cycle-3
+competences: situer-l-edit-de-nantes, expliquer-ce-qu-autorise-l-edit-de-nantes, decrire-la-mort-d-henri-iv, expliquer-la-division-des-francais-avant-1598
 ---
 
 # Henri IV et l'édit de Nantes

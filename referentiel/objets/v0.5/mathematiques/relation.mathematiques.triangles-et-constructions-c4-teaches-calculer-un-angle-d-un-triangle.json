@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.triangles-et-constructions-c4-teaches-calculer-un-angle-d-un-triangle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/triangles-et-constructions-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.triangles-et-constructions-c4",
+  "target": "microskill.mathematiques.calculer-un-angle-d-un-triangle"
+}

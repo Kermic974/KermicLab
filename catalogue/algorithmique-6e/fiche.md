@@ -5,13 +5,7 @@ sujet: mathematiques/algorithmique-6e
 version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - algorithmes-programmation-cm
-competences:
-  - algorithmique-6e-comprendre
-  - algorithmique-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment écrire un programme avec une boucle en 6e ?
   - À quoi sert une variable dans un programme ?
   - Comment déboguer un programme ?
+prerequis: algorithmes-programmation-cm
+niveaux: cycle-3
+competences: prevoir-la-distance-d-un-programme-avec-une-boucle, expliquer-le-role-d-une-variable, ecrire-une-instruction-conditionnelle-en-6e, reagir-a-un-evenement-dans-un-programme
 ---
 
 # Algorithmes et programmation en 6e

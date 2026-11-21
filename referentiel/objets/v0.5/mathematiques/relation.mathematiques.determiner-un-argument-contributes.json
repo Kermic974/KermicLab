@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-un-argument-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-complexes-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-un-argument",
+  "target": "skill.mathematiques.nombres-complexes-l"
+}

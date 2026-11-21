@@ -5,12 +5,6 @@ sujet: philosophie/hlp-humanites-litterature-et-philosophie-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - argumentation-et-litterature-d-idees-l
-competences:
-  - hlp-humanites-litterature-et-philosophie-l-comprendre
-  - hlp-humanites-litterature-et-philosophie-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Qu'est-ce que la spécialité HLP ?
   - Qu'est-ce que le pouvoir de la parole ?
   - Comment lire un texte philosophique et littéraire ?
+prerequis: argumentation-et-litterature-d-idees-l
+niveaux: premiere, terminale
+competences: distinguer-dialogue-socratique-et-monologue-argumentatif, analyser-un-procede-de-rhetorique-dans-un-discours, confronter-deux-textes-sur-une-meme-question, citer-un-passage-et-l-analyser-avec-precision
 ---
 
 # HLP : humanités, littérature et philosophie

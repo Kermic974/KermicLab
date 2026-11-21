@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-un-carre-un-rectangle-et-un-losange-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/polygones-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-un-carre-un-rectangle-et-un-losange",
+  "target": "skill.mathematiques.polygones-cm"
+}

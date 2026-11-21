@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.voyages-d-ulysse-6e-teaches-distinguer-recit-mythologique-et-source-historique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/voyages-d-ulysse-6e/contenu.json"
+  },
+  "source": "notion.histoire.voyages-d-ulysse-6e",
+  "target": "microskill.histoire.distinguer-recit-mythologique-et-source-historique"
+}

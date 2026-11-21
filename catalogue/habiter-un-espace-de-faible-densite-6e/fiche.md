@@ -5,13 +5,7 @@ sujet: geographie/habiter-un-espace-de-faible-densite-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - habiter-ville-campagne-cm
-competences:
-  - habiter-un-espace-de-faible-densite-6e-comprendre
-  - habiter-un-espace-de-faible-densite-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment vit-on dans un espace de faible densité ?
   - Comment habiter la montagne ?
   - Comment habite-t-on dans un désert ?
+prerequis: habiter-ville-campagne-cm
+niveaux: cycle-3
+competences: definir-un-espace-de-faible-densite, identifier-les-activites-de-montagne, analyser-les-difficultes-d-un-espace-peu-peuple, citer-des-atouts-d-un-espace-a-faible-densite
 ---
 
 # Habiter un espace de faible densité

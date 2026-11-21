@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-contrat-social-chez-rousseau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-contrat-social-chez-rousseau",
+  "target": "skill.philosophie.philosophie-liberte-et-justice-l"
+}

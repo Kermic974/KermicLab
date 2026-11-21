@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evaluer-la-fiabilite-d-une-etude-echantillon-groupe-temoin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science-donnees-et-decision-l/contenu.json"
+  },
+  "source": "microskill.svt.evaluer-la-fiabilite-d-une-etude-echantillon-groupe-temoin",
+  "target": "skill.svt.science-donnees-et-decision-l"
+}

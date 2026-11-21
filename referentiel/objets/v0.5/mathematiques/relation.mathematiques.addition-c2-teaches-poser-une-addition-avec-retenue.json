@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.addition-c2-teaches-poser-une-addition-avec-retenue",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.addition-c2",
+  "target": "microskill.mathematiques.poser-une-addition-avec-retenue"
+}

@@ -5,13 +5,6 @@ sujet: histoire/guerre-froide-et-decolonisation-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - guerre-froide
-  - decolonisation
-competences:
-  - guerre-froide-et-decolonisation-l-comprendre
-  - guerre-froide-et-decolonisation-l-appliquer
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Pourquoi la Guerre froide a-t-elle pris fin ?
   - Que s'est-il passé en 1989 ?
   - Qu'est-ce que le conflit israélo-arabe ?
+prerequis: guerre-froide, decolonisation
+niveaux: terminale
+competences: situer-la-chute-du-mur-de-berlin, situer-la-disparition-de-l-urss, caracteriser-un-monde-bipolaire, expliquer-l-equilibre-de-la-terreur
 ---
 
 # Guerre froide, décolonisation et nouveaux conflits

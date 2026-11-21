@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-le-principe-d-inertie-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-interactions-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-le-principe-d-inertie-au-lycee",
+  "target": "skill.physique-chimie.mouvement-et-interactions-l"
+}

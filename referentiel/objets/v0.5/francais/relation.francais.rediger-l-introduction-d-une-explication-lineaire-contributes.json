@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.rediger-l-introduction-d-une-explication-lineaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "microskill.francais.rediger-l-introduction-d-une-explication-lineaire",
+  "target": "skill.francais.oral-et-eaf-l"
+}

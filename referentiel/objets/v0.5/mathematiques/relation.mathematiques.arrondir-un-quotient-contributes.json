@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.arrondir-un-quotient-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/divisions-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.arrondir-un-quotient",
+  "target": "skill.mathematiques.divisions-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.argumentation-et-litterature-d-idees-l-teaches-construire-l-introduction-d-une-dissertation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation-et-litterature-d-idees-l/contenu.json"
+  },
+  "source": "notion.francais.argumentation-et-litterature-d-idees-l",
+  "target": "microskill.francais.construire-l-introduction-d-une-dissertation"
+}

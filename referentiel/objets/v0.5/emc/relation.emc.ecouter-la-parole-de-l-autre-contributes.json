@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.ecouter-la-parole-de-l-autre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vivre-ensemble-c2/contenu.json"
+  },
+  "source": "microskill.emc.ecouter-la-parole-de-l-autre",
+  "target": "skill.emc.vivre-ensemble-c2"
+}

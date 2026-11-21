@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.recits-d-aventures-et-voyages-c4-requires-recit-d-aventures-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recits-d-aventures-et-voyages-c4/contenu.json"
+  },
+  "source": "notion.francais.recits-d-aventures-et-voyages-c4",
+  "target": "notion.francais.recit-d-aventures-6e",
+  "rationale": "Prérequis déclaré dans la fiche : « Lire un récit d'aventures » précède « Récits d'aventures, voyages et héros » dans la progression du programme (lien à relire)."
+}

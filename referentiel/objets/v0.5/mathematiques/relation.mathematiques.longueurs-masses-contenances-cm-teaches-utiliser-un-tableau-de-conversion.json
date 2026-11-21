@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.longueurs-masses-contenances-cm-teaches-utiliser-un-tableau-de-conversion",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/longueurs-masses-contenances-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.longueurs-masses-contenances-cm",
+  "target": "microskill.mathematiques.utiliser-un-tableau-de-conversion"
+}

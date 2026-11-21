@@ -5,15 +5,7 @@ sujet: mathematiques/triangles-et-constructions-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e
-prerequis:
-  - angles
-  - constructions-geometriques-6e
-  - triangles-et-quadrilateres-6e
-competences:
-  - triangles-et-constructions-c4-comprendre
-  - triangles-et-constructions-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +21,9 @@ questions:
   - Qu'est-ce que la médiatrice et la bissectrice ?
   - Comment construire un triangle connaissant trois côtés ?
   - Qu'est-ce que le cercle circonscrit à un triangle ?
+prerequis: angles, constructions-geometriques-6e, triangles-et-quadrilateres-6e
+niveaux: cycle-4
+competences: calculer-un-angle-d-un-triangle, appliquer-l-inegalite-triangulaire-au-cycle-4, construire-un-triangle-a-partir-de-trois-cotes, utiliser-les-mediatrices-d-un-triangle
 ---
 
 # Triangles : angles, droites remarquables et constructions

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.situer-la-disparition-des-dinosaures-non-aviens-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-fossiles-cm/contenu.json"
+  },
+  "source": "microskill.svt.situer-la-disparition-des-dinosaures-non-aviens",
+  "target": "skill.svt.evolution-et-fossiles-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.calculer-une-distance-reelle-avec-l-echelle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "microskill.geographie.calculer-une-distance-reelle-avec-l-echelle",
+  "target": "skill.geographie.croquis-et-cartes-c4"
+}

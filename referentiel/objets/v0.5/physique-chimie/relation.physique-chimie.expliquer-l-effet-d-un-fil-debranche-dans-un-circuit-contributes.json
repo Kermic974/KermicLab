@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.expliquer-l-effet-d-un-fil-debranche-dans-un-circuit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite-circuits-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.expliquer-l-effet-d-un-fil-debranche-dans-un-circuit",
+  "target": "skill.physique-chimie.electricite-circuits-cm"
+}

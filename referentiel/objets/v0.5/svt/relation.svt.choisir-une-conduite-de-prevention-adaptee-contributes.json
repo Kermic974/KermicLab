@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.choisir-une-conduite-de-prevention-adaptee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sante-et-prevention-c4/contenu.json"
+  },
+  "source": "microskill.svt.choisir-une-conduite-de-prevention-adaptee",
+  "target": "skill.svt.sante-et-prevention-c4"
+}

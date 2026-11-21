@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.moyenne-et-proportions-cm-requires-tableaux-graphiques-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyenne-et-proportions-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.moyenne-et-proportions-cm",
+  "target": "notion.mathematiques.tableaux-graphiques-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Tableaux et graphiques » précède « Moyenne, pourcentages et comparaison de données » dans la progression du programme (lien à relire)."
+}

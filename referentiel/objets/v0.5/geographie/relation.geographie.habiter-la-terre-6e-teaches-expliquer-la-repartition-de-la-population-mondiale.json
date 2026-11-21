@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.habiter-la-terre-6e-teaches-expliquer-la-repartition-de-la-population-mondiale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-la-terre-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-la-terre-6e",
+  "target": "microskill.geographie.expliquer-la-repartition-de-la-population-mondiale"
+}

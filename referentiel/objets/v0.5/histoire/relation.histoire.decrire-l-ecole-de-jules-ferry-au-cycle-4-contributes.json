@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-l-ecole-de-jules-ferry-au-cycle-4-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societe-et-culture-au-xixe-c4/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-l-ecole-de-jules-ferry-au-cycle-4",
+  "target": "skill.histoire.societe-et-culture-au-xixe-c4"
+}

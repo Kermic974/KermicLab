@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.lire-une-carte-ou-un-releve-meteorologique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meteo-et-climat-c4/contenu.json"
+  },
+  "source": "microskill.svt.lire-une-carte-ou-un-releve-meteorologique",
+  "target": "skill.svt.meteo-et-climat-c4"
+}

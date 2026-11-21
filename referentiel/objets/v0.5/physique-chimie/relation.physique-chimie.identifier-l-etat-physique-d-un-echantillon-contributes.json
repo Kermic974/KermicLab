@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.identifier-l-etat-physique-d-un-echantillon-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-matiere-et-melanges-6e/contenu.json"
+  },
+  "source": "microskill.physique-chimie.identifier-l-etat-physique-d-un-echantillon",
+  "target": "skill.physique-chimie.etats-matiere-et-melanges-6e"
+}

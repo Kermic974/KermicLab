@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-et-signaux-6e-teaches-associer-un-signal-lumineux-ou-sonore-a-l-information-transmise",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-signaux-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-et-signaux-6e",
+  "target": "microskill.physique-chimie.associer-un-signal-lumineux-ou-sonore-a-l-information-transmise"
+}

@@ -5,13 +5,7 @@ sujet: geographie/lire-une-carte-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - se-reperer-dans-l-espace-c2
-competences:
-  - lire-une-carte-cm-comprendre
-  - lire-une-carte-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - C'est quoi la légende d'une carte ?
   - Comment s'orienter avec les points cardinaux ?
   - Quelle différence entre un plan et une carte ?
+prerequis: se-reperer-dans-l-espace-c2
+niveaux: cycle-3
+competences: lire-la-legende-d-une-carte, se-reperer-avec-les-points-cardinaux, situer-l-equateur-et-les-hemispheres, utiliser-l-echelle-d-une-carte
 ---
 
 # Lire une carte et se repérer

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.durees-et-horaires-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/durees-et-horaires-cm/contenu.json"
+  },
+  "object": "notion.mathematiques.durees-et-horaires-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

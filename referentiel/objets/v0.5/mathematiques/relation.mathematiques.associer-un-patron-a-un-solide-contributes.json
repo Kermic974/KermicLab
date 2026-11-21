@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.associer-un-patron-a-un-solide-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.associer-un-patron-a-un-solide",
+  "target": "skill.mathematiques.solides-cm"
+}

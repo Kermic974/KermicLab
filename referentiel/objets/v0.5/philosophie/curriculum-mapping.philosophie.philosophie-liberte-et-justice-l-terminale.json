@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.philosophie-liberte-et-justice-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "object": "notion.philosophie.philosophie-liberte-et-justice-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

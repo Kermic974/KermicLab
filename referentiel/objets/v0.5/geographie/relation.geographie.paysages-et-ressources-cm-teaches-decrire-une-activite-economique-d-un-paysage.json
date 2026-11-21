@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.paysages-et-ressources-cm-teaches-decrire-une-activite-economique-d-un-paysage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-ressources-cm/contenu.json"
+  },
+  "source": "notion.geographie.paysages-et-ressources-cm",
+  "target": "microskill.geographie.decrire-une-activite-economique-d-un-paysage"
+}

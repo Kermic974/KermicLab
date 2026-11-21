@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-aliment-d-origine-animale-et-vegetale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-alimentation-6e/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-aliment-d-origine-animale-et-vegetale",
+  "target": "skill.svt.nutrition-et-alimentation-6e"
+}

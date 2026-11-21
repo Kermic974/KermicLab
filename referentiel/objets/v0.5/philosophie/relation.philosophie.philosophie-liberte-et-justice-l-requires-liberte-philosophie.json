@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.philosophie-liberte-et-justice-l-requires-liberte-philosophie",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "notion.philosophie.philosophie-liberte-et-justice-l",
+  "target": "notion.philosophie.liberte-philosophie",
+  "rationale": "Prérequis déclaré dans la fiche : « La liberté en philosophie » précède « Philosophie : liberté, justice et État » dans la progression du programme (lien à relire)."
+}

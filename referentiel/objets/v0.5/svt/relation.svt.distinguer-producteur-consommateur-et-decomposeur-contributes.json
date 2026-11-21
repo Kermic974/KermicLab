@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-producteur-consommateur-et-decomposeur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-producteur-consommateur-et-decomposeur",
+  "target": "skill.svt.biodiversite-et-chaines-cm"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.multiplication-posee-cm-requires-multiplication-posee-ce2-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.multiplication-posee-cm",
+  "target": "notion.mathematiques.multiplication-posee-ce2-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Multiplier un grand nombre (CE2) » précède « La multiplication posée et les tables » dans la progression du programme (lien à relire)."
+}

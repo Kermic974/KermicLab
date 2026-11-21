@@ -5,14 +5,7 @@ sujet: physique-chimie/energie-et-signaux-6e
 version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - energie-et-sources-cm
-  - lumiere-et-ombres-cm
-competences:
-  - energie-et-signaux-6e-comprendre
-  - energie-et-signaux-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce qu'une chaîne d'énergie ?
   - Comment transmettre une information avec un signal ?
   - Quelles énergies sont renouvelables en 6e ?
+prerequis: energie-et-sources-cm, lumiere-et-ombres-cm
+niveaux: cycle-3
+competences: identifier-la-conversion-d-energie-d-un-objet, distinguer-energie-renouvelable-et-non-renouvelable, decrire-une-chaine-d-energie-elementaire, associer-un-signal-lumineux-ou-sonore-a-l-information-transmise
 ---
 
 # Énergie, signaux lumineux et sonores en 6e

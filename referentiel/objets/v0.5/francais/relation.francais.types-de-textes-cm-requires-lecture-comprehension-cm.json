@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.types-de-textes-cm-requires-lecture-comprehension-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-de-textes-cm/contenu.json"
+  },
+  "source": "notion.francais.types-de-textes-cm",
+  "target": "notion.francais.lecture-comprehension-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Comprendre un texte » précède « Les types de textes » dans la progression du programme (lien à relire)."
+}

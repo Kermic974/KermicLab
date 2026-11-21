@@ -5,13 +5,6 @@ sujet: emc/emc-justice-et-securite-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - justice
-  - etat-de-droit
-competences:
-  - emc-justice-et-securite-l-comprendre
-  - emc-justice-et-securite-l-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Comment fonctionne la justice en France ?
   - Qu'est-ce que la présomption d'innocence ?
   - Quelle différence entre justice civile et pénale ?
+prerequis: justice, etat-de-droit
+niveaux: premiere
+competences: distinguer-justice-civile-et-justice-penale, associer-une-infraction-a-la-juridiction-competente, expliquer-les-droits-de-la-defense-et-la-presomption-d-innocence, expliquer-l-independance-de-la-justice
 ---
 
 # Justice, sécurité et état de droit

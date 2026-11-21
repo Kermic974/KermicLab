@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reperage-plan-cm-teaches-utiliser-un-plan",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-plan-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.reperage-plan-cm",
+  "target": "microskill.mathematiques.utiliser-un-plan"
+}

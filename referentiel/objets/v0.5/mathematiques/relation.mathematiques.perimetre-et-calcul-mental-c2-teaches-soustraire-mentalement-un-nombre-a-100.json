@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.perimetre-et-calcul-mental-c2-teaches-soustraire-mentalement-un-nombre-a-100",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetre-et-calcul-mental-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.perimetre-et-calcul-mental-c2",
+  "target": "microskill.mathematiques.soustraire-mentalement-un-nombre-a-100"
+}

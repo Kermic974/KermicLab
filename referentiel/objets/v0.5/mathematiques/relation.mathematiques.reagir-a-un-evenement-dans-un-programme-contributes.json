@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reagir-a-un-evenement-dans-un-programme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.reagir-a-un-evenement-dans-un-programme",
+  "target": "skill.mathematiques.algorithmique-6e"
+}

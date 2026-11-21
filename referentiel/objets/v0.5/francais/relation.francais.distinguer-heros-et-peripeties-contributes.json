@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-heros-et-peripeties-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recit-d-aventures-6e/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-heros-et-peripeties",
+  "target": "skill.francais.recit-d-aventures-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reecrire-un-brouillon-pour-l-ameliorer-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-pour-raconter-et-decrire-6e/contenu.json"
+  },
+  "source": "microskill.francais.reecrire-un-brouillon-pour-l-ameliorer",
+  "target": "skill.francais.ecrire-pour-raconter-et-decrire-6e"
+}

@@ -5,13 +5,7 @@ sujet: histoire/gaulois-gallo-romains-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - prehistoire-cm
-competences:
-  - gaulois-gallo-romains-cm-comprendre
-  - gaulois-gallo-romains-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Qu'est-ce que la romanisation de la Gaule ?
   - Qui était Vercingétorix ?
   - Comment vivaient les Gallo-Romains ?
+prerequis: prehistoire-cm
+niveaux: cycle-3
+competences: situer-la-defaite-de-vercingetorix-a-alesia, decrire-ce-que-les-romains-apportent-en-gaule, distinguer-gaulois-et-gallo-romains, identifier-l-ancien-nom-d-une-ville-gallo-romaine
 ---
 
 # Les Gaulois et les Gallo-Romains

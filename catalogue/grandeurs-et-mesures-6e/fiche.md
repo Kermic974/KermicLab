@@ -5,14 +5,7 @@ sujet: mathematiques/grandeurs-et-mesures-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - longueurs-masses-contenances-cm
-  - durees-et-horaires-cm
-competences:
-  - grandeurs-et-mesures-6e-comprendre
-  - grandeurs-et-mesures-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment convertir des unités de longueur en 6e ?
   - Comment calculer une durée en 6e ?
   - Comment passer des mL aux L en 6e ?
+prerequis: longueurs-masses-contenances-cm, durees-et-horaires-cm
+niveaux: cycle-3
+competences: convertir-des-longueurs-et-des-contenances, calculer-le-perimetre-d-un-cercle, calculer-une-duree, choisir-l-unite-adaptee-a-une-mesure
 ---
 
 # Grandeurs et mesures en 6e : longueurs, durées, masses

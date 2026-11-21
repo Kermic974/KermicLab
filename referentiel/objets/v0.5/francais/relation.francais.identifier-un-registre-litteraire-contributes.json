@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-registre-litteraire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langue-et-style-l/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-registre-litteraire",
+  "target": "skill.francais.langue-et-style-l"
+}

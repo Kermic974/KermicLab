@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.former-le-passe-compose-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-cm/contenu.json"
+  },
+  "source": "microskill.francais.former-le-passe-compose",
+  "target": "skill.francais.conjugaison-cm"
+}

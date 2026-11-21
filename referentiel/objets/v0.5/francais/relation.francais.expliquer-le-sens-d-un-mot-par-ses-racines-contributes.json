@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.expliquer-le-sens-d-un-mot-par-ses-racines-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-etymologie-6e/contenu.json"
+  },
+  "source": "microskill.francais.expliquer-le-sens-d-un-mot-par-ses-racines",
+  "target": "skill.francais.vocabulaire-et-etymologie-6e"
+}

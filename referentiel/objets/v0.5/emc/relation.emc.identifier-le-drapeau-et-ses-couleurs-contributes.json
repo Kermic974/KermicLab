@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-le-drapeau-et-ses-couleurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-et-citoyens-c2/contenu.json"
+  },
+  "source": "microskill.emc.identifier-le-drapeau-et-ses-couleurs",
+  "target": "skill.emc.republique-et-citoyens-c2"
+}

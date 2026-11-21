@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.trouver-le-plus-grand-d-une-liste-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/comparer-et-ranger-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.trouver-le-plus-grand-d-une-liste",
+  "target": "skill.mathematiques.comparer-et-ranger-c2"
+}

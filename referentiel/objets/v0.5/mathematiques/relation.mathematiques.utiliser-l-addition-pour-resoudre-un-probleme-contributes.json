@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-l-addition-pour-resoudre-un-probleme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-l-addition-pour-resoudre-un-probleme",
+  "target": "skill.mathematiques.addition-c2"
+}

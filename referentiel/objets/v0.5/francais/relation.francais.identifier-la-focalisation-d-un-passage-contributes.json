@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-la-focalisation-d-un-passage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman-et-recit-l/contenu.json"
+  },
+  "source": "microskill.francais.identifier-la-focalisation-d-un-passage",
+  "target": "skill.francais.roman-et-recit-l"
+}

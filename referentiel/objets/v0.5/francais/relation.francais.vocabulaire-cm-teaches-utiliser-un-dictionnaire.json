@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.vocabulaire-cm-teaches-utiliser-un-dictionnaire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-cm/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-cm",
+  "target": "microskill.francais.utiliser-un-dictionnaire"
+}

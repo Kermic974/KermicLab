@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.reperage-et-donnees-6e-requires-reperage-plan-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-et-donnees-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.reperage-et-donnees-6e",
+  "target": "notion.mathematiques.reperage-plan-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Se repérer : quadrillage, plan et coordonnées » précède « Repérage, tableaux et graphiques en 6e » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.compter-les-mois-d-une-annee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-le-temps-c2/contenu.json"
+  },
+  "source": "microskill.histoire.compter-les-mois-d-une-annee",
+  "target": "skill.histoire.se-reperer-dans-le-temps-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.sujet-verbe-complements-6e-teaches-identifier-l-attribut-du-sujet-en-6e",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sujet-verbe-complements-6e/contenu.json"
+  },
+  "source": "notion.francais.sujet-verbe-complements-6e",
+  "target": "microskill.francais.identifier-l-attribut-du-sujet-en-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.choisir-le-graphique-adapte-a-des-donnees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-graphiques-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.choisir-le-graphique-adapte-a-des-donnees",
+  "target": "skill.mathematiques.tableaux-graphiques-cm"
+}

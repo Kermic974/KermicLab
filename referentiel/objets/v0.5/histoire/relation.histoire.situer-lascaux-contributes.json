@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-lascaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-lascaux",
+  "target": "skill.histoire.prehistoire-cm"
+}

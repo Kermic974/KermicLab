@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.se-deplacer-sur-un-quadrillage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-plan-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.se-deplacer-sur-un-quadrillage",
+  "target": "skill.mathematiques.reperage-plan-cm"
+}

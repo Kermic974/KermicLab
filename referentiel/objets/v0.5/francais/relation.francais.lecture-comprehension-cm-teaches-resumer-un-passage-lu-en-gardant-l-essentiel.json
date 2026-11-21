@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lecture-comprehension-cm-teaches-resumer-un-passage-lu-en-gardant-l-essentiel",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lecture-comprehension-cm/contenu.json"
+  },
+  "source": "notion.francais.lecture-comprehension-cm",
+  "target": "microskill.francais.resumer-un-passage-lu-en-gardant-l-essentiel"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.vocabulaire-et-etymologie-6e-teaches-reconnaitre-l-origine-d-un-emprunt",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-etymologie-6e/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-etymologie-6e",
+  "target": "microskill.francais.reconnaitre-l-origine-d-un-emprunt"
+}

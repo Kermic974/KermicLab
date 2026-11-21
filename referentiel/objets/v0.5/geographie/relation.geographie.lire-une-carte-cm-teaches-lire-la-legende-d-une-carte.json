@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.lire-une-carte-cm-teaches-lire-la-legende-d-une-carte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-une-carte-cm/contenu.json"
+  },
+  "source": "notion.geographie.lire-une-carte-cm",
+  "target": "microskill.geographie.lire-la-legende-d-une-carte"
+}

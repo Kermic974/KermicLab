@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-bacteries-virus-et-champignons-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbes-et-sante-c4/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-bacteries-virus-et-champignons",
+  "target": "skill.svt.microbes-et-sante-c4"
+}

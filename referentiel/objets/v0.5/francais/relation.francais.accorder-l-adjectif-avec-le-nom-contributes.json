@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accorder-l-adjectif-avec-le-nom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verbe-sujet-adjectif-c2/contenu.json"
+  },
+  "source": "microskill.francais.accorder-l-adjectif-avec-le-nom",
+  "target": "skill.francais.verbe-sujet-adjectif-c2"
+}

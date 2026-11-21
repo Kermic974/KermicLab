@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.limiter-le-temps-passe-devant-les-ecrans-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-ecrans-et-environnement-c2/contenu.json"
+  },
+  "source": "microskill.emc.limiter-le-temps-passe-devant-les-ecrans",
+  "target": "skill.emc.securite-ecrans-et-environnement-c2"
+}

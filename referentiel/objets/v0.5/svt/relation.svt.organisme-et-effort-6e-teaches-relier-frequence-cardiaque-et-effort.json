@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.organisme-et-effort-6e-teaches-relier-frequence-cardiaque-et-effort",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/organisme-et-effort-6e/contenu.json"
+  },
+  "source": "notion.svt.organisme-et-effort-6e",
+  "target": "microskill.svt.relier-frequence-cardiaque-et-effort"
+}

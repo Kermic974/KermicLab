@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-entre-est-et-et-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-cm/contenu.json"
+  },
+  "source": "microskill.francais.choisir-entre-est-et-et",
+  "target": "skill.francais.homophones-cm"
+}

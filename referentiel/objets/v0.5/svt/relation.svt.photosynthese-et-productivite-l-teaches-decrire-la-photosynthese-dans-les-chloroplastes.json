@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.photosynthese-et-productivite-l-teaches-decrire-la-photosynthese-dans-les-chloroplastes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese-et-productivite-l/contenu.json"
+  },
+  "source": "notion.svt.photosynthese-et-productivite-l",
+  "target": "microskill.svt.decrire-la-photosynthese-dans-les-chloroplastes"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.classification-du-vivant-cm-teaches-reconnaitre-un-insecte-et-un-mollusque",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-cm/contenu.json"
+  },
+  "source": "notion.svt.classification-du-vivant-cm",
+  "target": "microskill.svt.reconnaitre-un-insecte-et-un-mollusque"
+}

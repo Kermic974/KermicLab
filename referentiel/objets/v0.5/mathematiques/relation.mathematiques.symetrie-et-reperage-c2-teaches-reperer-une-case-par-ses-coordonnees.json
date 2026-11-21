@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.symetrie-et-reperage-c2-teaches-reperer-une-case-par-ses-coordonnees",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-et-reperage-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.symetrie-et-reperage-c2",
+  "target": "microskill.mathematiques.reperer-une-case-par-ses-coordonnees"
+}

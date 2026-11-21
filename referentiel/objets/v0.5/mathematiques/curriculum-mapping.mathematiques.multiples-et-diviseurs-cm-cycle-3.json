@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.multiples-et-diviseurs-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiples-et-diviseurs-cm/contenu.json"
+  },
+  "object": "notion.mathematiques.multiples-et-diviseurs-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

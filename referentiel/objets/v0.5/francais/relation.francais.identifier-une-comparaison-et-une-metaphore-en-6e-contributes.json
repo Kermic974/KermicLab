@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-une-comparaison-et-une-metaphore-en-6e-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-6e/contenu.json"
+  },
+  "source": "microskill.francais.identifier-une-comparaison-et-une-metaphore-en-6e",
+  "target": "skill.francais.poesie-6e"
+}

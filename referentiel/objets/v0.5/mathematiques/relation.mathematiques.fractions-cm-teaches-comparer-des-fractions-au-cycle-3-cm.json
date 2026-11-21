@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fractions-cm-teaches-comparer-des-fractions-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.fractions-cm",
+  "target": "microskill.mathematiques.comparer-des-fractions-au-cycle-3-cm"
+}

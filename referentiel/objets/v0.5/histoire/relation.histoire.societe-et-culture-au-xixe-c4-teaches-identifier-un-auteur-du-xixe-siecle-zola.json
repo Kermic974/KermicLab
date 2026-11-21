@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.societe-et-culture-au-xixe-c4-teaches-identifier-un-auteur-du-xixe-siecle-zola",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societe-et-culture-au-xixe-c4/contenu.json"
+  },
+  "source": "notion.histoire.societe-et-culture-au-xixe-c4",
+  "target": "microskill.histoire.identifier-un-auteur-du-xixe-siecle-zola"
+}

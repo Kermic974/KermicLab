@@ -5,13 +5,7 @@ sujet: geographie/paysages-et-ressources-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - lire-une-carte-cm
-competences:
-  - paysages-et-ressources-cm-comprendre
-  - paysages-et-ressources-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Quels sont les grands fleuves de France ?
   - D'où viennent les produits que nous consommons ?
   - Où sont les montagnes en France ?
+prerequis: lire-une-carte-cm
+niveaux: cycle-3
+competences: localiser-des-sommets-et-des-fleuves-de-france, associer-un-paysage-a-ses-ressources, distinguer-produits-de-saison-et-produits-importes, decrire-une-activite-economique-d-un-paysage
 ---
 
 # Paysages de France et ressources

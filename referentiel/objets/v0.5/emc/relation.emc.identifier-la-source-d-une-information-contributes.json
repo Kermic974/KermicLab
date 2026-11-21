@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-la-source-d-une-information-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-6e/contenu.json"
+  },
+  "source": "microskill.emc.identifier-la-source-d-une-information",
+  "target": "skill.emc.esprit-critique-et-medias-6e"
+}

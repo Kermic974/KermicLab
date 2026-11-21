@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-le-cercle-pour-reporter-une-longueur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cercle-compas-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-le-cercle-pour-reporter-une-longueur",
+  "target": "skill.mathematiques.cercle-compas-cm"
+}

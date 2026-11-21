@@ -5,13 +5,7 @@ sujet: geographie/croquis-et-cartes-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - lire-une-carte-cm
-competences:
-  - croquis-et-cartes-c4-comprendre
-  - croquis-et-cartes-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment construire une légende ?
   - Comment lire une carte thématique ?
   - Que sont les cartes numériques et le SIG ?
+prerequis: lire-une-carte-cm
+niveaux: cycle-4
+competences: lire-une-legende-et-un-figure, calculer-une-distance-reelle-avec-l-echelle, construire-un-croquis-avec-titre-et-legende-organisee, choisir-un-figure-adapte-a-un-phenomene
 ---
 
 # Lire des cartes, réaliser un croquis

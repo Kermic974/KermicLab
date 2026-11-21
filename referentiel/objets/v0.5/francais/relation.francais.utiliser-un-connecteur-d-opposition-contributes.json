@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.utiliser-un-connecteur-d-opposition-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-reecrire-c4/contenu.json"
+  },
+  "source": "microskill.francais.utiliser-un-connecteur-d-opposition",
+  "target": "skill.francais.ecrire-et-reecrire-c4"
+}

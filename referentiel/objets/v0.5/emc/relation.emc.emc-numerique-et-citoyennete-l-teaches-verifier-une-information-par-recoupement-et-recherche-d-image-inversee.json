@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-numerique-et-citoyennete-l-teaches-verifier-une-information-par-recoupement-et-recherche-d-image-inversee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-numerique-et-citoyennete-l/contenu.json"
+  },
+  "source": "notion.emc.emc-numerique-et-citoyennete-l",
+  "target": "microskill.emc.verifier-une-information-par-recoupement-et-recherche-d-image-inversee"
+}

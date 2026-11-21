@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Référentiel : les notions ajoutées depuis la V0 rendues canoniques** : 259 notions (cycles 2 à 4 et lycée ; mathématiques, français, histoire, SVT, physique-chimie, géographie, EMC, SES, philosophie), 1 041 MicroSkills observables, 365 `requires` (repris des fiches, justification générée à enrichir) et 232 CurriculumMappings. Les compétences génériques de 214 fiches sont remplacées ; leurs niveaux, classes et prérequis restent identiques. Toutes les notions du catalogue (hors jeux) ont désormais des objets S4 ; les 45 notions de cycle 2 restent sans placement ni projection (pas de code d'étape `cycle-2`).
+
 - **Référentiel : anglais, arts plastiques, musique et EPS rendus canoniques** : 35 notions, 144 MicroSkills observables, 36 `requires` et 40 CurriculumMappings ; les compétences génériques `*-comprendre/-appliquer` de 30 fiches sont remplacées, leurs niveaux, classes et prérequis restent identiques. Les 5 notions de cycle 2 n'ont pas de placement ni de projection (pas de code d'étape `cycle-2`).
 
 - **Référentiel : technologie rendue canonique** (`docs/referentiel/densification-pedagogique.md`) : première matière sans objets S4. 18 notions (14 de technologie et 4 cibles de prérequis en mathématiques et EMC), 80 MicroSkills observables, 18 `requires` et 22 CurriculumMappings ; les compétences génériques `*-comprendre/-appliquer` de 13 fiches sont remplacées, leurs niveaux et prérequis restent identiques. Le cycle 2 n'est pas projetable (pas de code d'étape `cycle-2` dans le schéma `stage`).

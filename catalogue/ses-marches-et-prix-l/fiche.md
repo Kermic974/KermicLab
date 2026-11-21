@@ -5,12 +5,6 @@ sujet: ses/ses-marches-et-prix-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - marche-concurrentiel
-competences:
-  - ses-marches-et-prix-l-comprendre
-  - ses-marches-et-prix-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Comment se forme un prix ?
   - Qu'est-ce qu'une externalité ?
   - Pourquoi réguler le marché ?
+prerequis: marche-concurrentiel
+niveaux: seconde, premiere
+competences: determiner-un-prix-d-equilibre-a-partir-de-l-offre-et-de-la-demande, prevoir-l-effet-d-un-changement-de-prix-sur-la-demande, distinguer-concurrence-et-monopole, identifier-une-externalite-negative-ou-positive, justifier-un-outil-de-regulation-taxe-norme-subvention
 ---
 
 # Marché, prix et défaillances

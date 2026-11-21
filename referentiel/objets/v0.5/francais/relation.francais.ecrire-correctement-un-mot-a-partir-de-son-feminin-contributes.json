@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-correctement-un-mot-a-partir-de-son-feminin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-lexicale-cm/contenu.json"
+  },
+  "source": "microskill.francais.ecrire-correctement-un-mot-a-partir-de-son-feminin",
+  "target": "skill.francais.orthographe-lexicale-cm"
+}

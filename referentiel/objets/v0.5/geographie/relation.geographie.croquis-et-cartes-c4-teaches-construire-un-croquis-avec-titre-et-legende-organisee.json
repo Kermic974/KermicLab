@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.croquis-et-cartes-c4-teaches-construire-un-croquis-avec-titre-et-legende-organisee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "notion.geographie.croquis-et-cartes-c4",
+  "target": "microskill.geographie.construire-un-croquis-avec-titre-et-legende-organisee"
+}

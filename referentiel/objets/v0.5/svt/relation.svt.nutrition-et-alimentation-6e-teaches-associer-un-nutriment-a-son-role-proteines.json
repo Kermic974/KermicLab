@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.nutrition-et-alimentation-6e-teaches-associer-un-nutriment-a-son-role-proteines",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-alimentation-6e/contenu.json"
+  },
+  "source": "notion.svt.nutrition-et-alimentation-6e",
+  "target": "microskill.svt.associer-un-nutriment-a-son-role-proteines"
+}

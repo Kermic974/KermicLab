@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.lumiere-et-son-6e-teaches-decrire-la-propagation-de-la-lumiere-dans-un-milieu-transparent",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumiere-et-son-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.lumiere-et-son-6e",
+  "target": "microskill.physique-chimie.decrire-la-propagation-de-la-lumiere-dans-un-milieu-transparent"
+}

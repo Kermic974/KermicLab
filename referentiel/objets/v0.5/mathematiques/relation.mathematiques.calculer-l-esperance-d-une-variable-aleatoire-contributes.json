@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-l-esperance-d-une-variable-aleatoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/variables-aleatoires-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-l-esperance-d-une-variable-aleatoire",
+  "target": "skill.mathematiques.variables-aleatoires-l"
+}

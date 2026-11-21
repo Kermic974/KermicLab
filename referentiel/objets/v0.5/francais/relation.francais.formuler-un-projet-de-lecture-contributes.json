@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.formuler-un-projet-de-lecture-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "microskill.francais.formuler-un-projet-de-lecture",
+  "target": "skill.francais.oral-et-eaf-l"
+}

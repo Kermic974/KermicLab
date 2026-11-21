@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.nommer-une-cite-grecque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grece-et-citoyennete-6e/contenu.json"
+  },
+  "source": "microskill.histoire.nommer-une-cite-grecque",
+  "target": "skill.histoire.grece-et-citoyennete-6e"
+}

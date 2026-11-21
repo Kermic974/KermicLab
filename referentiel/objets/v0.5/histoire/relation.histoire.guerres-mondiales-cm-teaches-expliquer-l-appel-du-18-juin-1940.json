@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerres-mondiales-cm-teaches-expliquer-l-appel-du-18-juin-1940",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-cm/contenu.json"
+  },
+  "source": "notion.histoire.guerres-mondiales-cm",
+  "target": "microskill.histoire.expliquer-l-appel-du-18-juin-1940"
+}

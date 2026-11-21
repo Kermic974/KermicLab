@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-un-service-ecosystemique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-ecosystemes-l/contenu.json"
+  },
+  "source": "microskill.svt.identifier-un-service-ecosystemique",
+  "target": "skill.svt.biodiversite-et-ecosystemes-l"
+}

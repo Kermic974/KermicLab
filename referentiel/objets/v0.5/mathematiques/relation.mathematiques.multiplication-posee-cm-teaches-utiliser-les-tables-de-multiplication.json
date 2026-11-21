@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiplication-posee-cm-teaches-utiliser-les-tables-de-multiplication",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.multiplication-posee-cm",
+  "target": "microskill.mathematiques.utiliser-les-tables-de-multiplication"
+}

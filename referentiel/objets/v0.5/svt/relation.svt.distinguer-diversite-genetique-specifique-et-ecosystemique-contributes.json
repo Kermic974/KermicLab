@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-diversite-genetique-specifique-et-ecosystemique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-ecosystemes-l/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-diversite-genetique-specifique-et-ecosystemique",
+  "target": "skill.svt.biodiversite-et-ecosystemes-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.conversions-d-energie-l-teaches-interpreter-la-conservation-de-l-energie-dans-un-systeme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conversions-d-energie-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.conversions-d-energie-l",
+  "target": "microskill.physique-chimie.interpreter-la-conservation-de-l-energie-dans-un-systeme"
+}

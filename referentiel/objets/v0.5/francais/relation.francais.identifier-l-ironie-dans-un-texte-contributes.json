@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-l-ironie-dans-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/denoncer-les-travers-de-la-societe-c4/contenu.json"
+  },
+  "source": "microskill.francais.identifier-l-ironie-dans-un-texte",
+  "target": "skill.francais.denoncer-les-travers-de-la-societe-c4"
+}

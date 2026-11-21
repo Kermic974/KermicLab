@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-marches-et-prix-l-teaches-justifier-un-outil-de-regulation-taxe-norme-subvention",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "notion.ses.ses-marches-et-prix-l",
+  "target": "microskill.ses.justifier-un-outil-de-regulation-taxe-norme-subvention"
+}

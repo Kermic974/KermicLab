@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.habiter-la-terre-6e-teaches-interpreter-une-carte-de-densite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-la-terre-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-la-terre-6e",
+  "target": "microskill.geographie.interpreter-une-carte-de-densite"
+}

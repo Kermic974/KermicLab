@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-conditions-de-germination-d-une-graine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-conditions-de-germination-d-une-graine",
+  "target": "skill.svt.developpement-vegetaux-cm"
+}

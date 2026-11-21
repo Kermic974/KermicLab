@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.additionner-des-durees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/durees-et-horaires-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.additionner-des-durees",
+  "target": "skill.mathematiques.durees-et-horaires-cm"
+}

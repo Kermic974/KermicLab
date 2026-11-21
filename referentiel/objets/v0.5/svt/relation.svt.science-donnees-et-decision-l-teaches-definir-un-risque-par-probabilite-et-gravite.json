@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.science-donnees-et-decision-l-teaches-definir-un-risque-par-probabilite-et-gravite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science-donnees-et-decision-l/contenu.json"
+  },
+  "source": "notion.svt.science-donnees-et-decision-l",
+  "target": "microskill.svt.definir-un-risque-par-probabilite-et-gravite"
+}

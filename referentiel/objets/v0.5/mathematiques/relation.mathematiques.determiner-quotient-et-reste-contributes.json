@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-quotient-et-reste-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-euclidienne-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-quotient-et-reste",
+  "target": "skill.mathematiques.division-euclidienne-cm"
+}

@@ -5,14 +5,7 @@ sujet: svt/biodiversite-et-chaines-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - milieux-et-saisons-c2
-  - classification-du-vivant-cm
-competences:
-  - biodiversite-et-chaines-cm-comprendre
-  - biodiversite-et-chaines-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -30,6 +23,9 @@ questions:
   - Qu'est-ce que la biodiversité ?
   - Pourquoi protéger les espèces en danger ?
   - Quel est le rôle des décomposeurs ?
+prerequis: milieux-et-saisons-c2, classification-du-vivant-cm
+niveaux: cycle-3
+competences: construire-une-chaine-alimentaire, interpreter-le-sens-de-la-fleche-qui-mange-qui, distinguer-producteur-consommateur-et-decomposeur, proposer-un-geste-de-protection-de-la-biodiversite
 ---
 
 # Biodiversité et chaînes alimentaires

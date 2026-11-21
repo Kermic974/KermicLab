@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-nom-commun-et-un-nom-propre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/noms-et-determinants-c2/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-nom-commun-et-un-nom-propre",
+  "target": "skill.francais.noms-et-determinants-c2"
+}

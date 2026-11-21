@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.comparer-le-developpement-de-deux-regions-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-regionales-et-developpement-l/contenu.json"
+  },
+  "source": "microskill.geographie.comparer-le-developpement-de-deux-regions",
+  "target": "skill.geographie.dynamiques-regionales-et-developpement-l"
+}

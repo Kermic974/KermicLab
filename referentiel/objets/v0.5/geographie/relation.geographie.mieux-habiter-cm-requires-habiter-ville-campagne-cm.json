@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.mieux-habiter-cm-requires-habiter-ville-campagne-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mieux-habiter-cm/contenu.json"
+  },
+  "source": "notion.geographie.mieux-habiter-cm",
+  "target": "notion.geographie.habiter-ville-campagne-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Habiter en ville ou à la campagne » précède « Mieux habiter : ville durable et risques » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fractions-cm-teaches-placer-une-fraction-sur-une-droite-graduee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.fractions-cm",
+  "target": "microskill.mathematiques.placer-une-fraction-sur-une-droite-graduee"
+}

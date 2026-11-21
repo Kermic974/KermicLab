@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.droites-cm-teaches-reconnaitre-des-droites-perpendiculaires",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droites-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.droites-cm",
+  "target": "microskill.mathematiques.reconnaitre-des-droites-perpendiculaires"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.evaluer-une-mesure-de-transition-energetique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societes-et-environnement-l/contenu.json"
+  },
+  "source": "microskill.geographie.evaluer-une-mesure-de-transition-energetique",
+  "target": "skill.geographie.societes-et-environnement-l"
+}

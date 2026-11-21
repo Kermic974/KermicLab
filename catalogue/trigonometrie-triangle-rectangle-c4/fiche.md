@@ -5,14 +5,7 @@ sujet: mathematiques/trigonometrie-triangle-rectangle-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e, 3e
-prerequis:
-  - pythagore
-  - triangles-et-constructions-c4
-competences:
-  - trigonometrie-triangle-rectangle-c4-comprendre
-  - trigonometrie-triangle-rectangle-c4-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - À quoi servent sinus, cosinus et tangente en 3e ?
   - Comment trouver un angle avec la calculatrice ?
   - Comment calculer une longueur avec le sinus ?
+prerequis: pythagore, triangles-et-constructions-c4
+niveaux: cycle-4
+competences: definir-cosinus-sinus-et-tangente, calculer-une-longueur-avec-la-trigonometrie, calculer-un-angle-avec-la-trigonometrie, choisir-le-rapport-trigonometrique-adapte
 ---
 
 # Trigonométrie dans le triangle rectangle

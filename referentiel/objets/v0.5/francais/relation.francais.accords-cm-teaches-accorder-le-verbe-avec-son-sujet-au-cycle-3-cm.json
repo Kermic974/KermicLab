@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accords-cm-teaches-accorder-le-verbe-avec-son-sujet-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords-cm/contenu.json"
+  },
+  "source": "notion.francais.accords-cm",
+  "target": "microskill.francais.accorder-le-verbe-avec-son-sujet-au-cycle-3-cm"
+}

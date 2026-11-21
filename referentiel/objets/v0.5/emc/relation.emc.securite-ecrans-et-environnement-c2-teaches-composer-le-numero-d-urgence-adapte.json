@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.securite-ecrans-et-environnement-c2-teaches-composer-le-numero-d-urgence-adapte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-ecrans-et-environnement-c2/contenu.json"
+  },
+  "source": "notion.emc.securite-ecrans-et-environnement-c2",
+  "target": "microskill.emc.composer-le-numero-d-urgence-adapte"
+}

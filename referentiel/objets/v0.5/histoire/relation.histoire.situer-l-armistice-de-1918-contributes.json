@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-armistice-de-1918-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-armistice-de-1918",
+  "target": "skill.histoire.guerres-mondiales-cm"
+}

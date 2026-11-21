@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.utiliser-la-virgule-dans-une-liste-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "source": "microskill.francais.utiliser-la-virgule-dans-une-liste",
+  "target": "skill.francais.ponctuation-et-dialogue-cm"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.convexite-l-requires-limites-et-continuite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/convexite-l/contenu.json"
+  },
+  "source": "notion.mathematiques.convexite-l",
+  "target": "notion.mathematiques.limites-et-continuite",
+  "rationale": "Prérequis déclaré dans la fiche : « Limites et continuité » précède « Convexité, dérivée seconde et points d'inflexion » dans la progression du programme (lien à relire)."
+}

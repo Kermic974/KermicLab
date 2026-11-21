@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-probleme-de-multiples-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiples-et-diviseurs-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-probleme-de-multiples",
+  "target": "skill.mathematiques.multiples-et-diviseurs-cm"
+}

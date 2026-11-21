@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-l-angle-d-un-secteur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-et-donnees-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-l-angle-d-un-secteur",
+  "target": "skill.mathematiques.reperage-et-donnees-6e"
+}

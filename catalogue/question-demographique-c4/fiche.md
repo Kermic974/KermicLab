@@ -5,13 +5,7 @@ sujet: geographie/question-demographique-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e
-prerequis:
-  - habiter-la-terre-6e
-competences:
-  - question-demographique-c4-comprendre
-  - question-demographique-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Combien d'habitants sur Terre et pourquoi ça change ?
   - Qu'est-ce que la transition démographique ?
   - Comment nourrir une population qui augmente ?
+prerequis: habiter-la-terre-6e
+niveaux: cycle-4
+competences: interpreter-la-croissance-de-la-population-mondiale, expliquer-la-baisse-de-la-mortalite, decrire-la-transition-demographique, analyser-un-inegal-acces-aux-ressources
 ---
 
 # La question démographique et l'inégal accès aux ressources

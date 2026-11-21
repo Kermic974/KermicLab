@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.gaulois-gallo-romains-cm-requires-prehistoire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gaulois-gallo-romains-cm/contenu.json"
+  },
+  "source": "notion.histoire.gaulois-gallo-romains-cm",
+  "target": "notion.histoire.prehistoire-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « De la Préhistoire à l'Antiquité : les premières traces » précède « Les Gaulois et les Gallo-Romains » dans la progression du programme (lien à relire)."
+}

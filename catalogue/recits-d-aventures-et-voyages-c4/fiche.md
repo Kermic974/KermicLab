@@ -5,13 +5,7 @@ sujet: francais/recits-d-aventures-et-voyages-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e
-prerequis:
-  - recit-d-aventures-6e
-competences:
-  - recits-d-aventures-et-voyages-c4-comprendre
-  - recits-d-aventures-et-voyages-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment étudier un roman d'aventures en 5e ?
   - Qu'est-ce qu'un héros ou une héroïne ?
   - Comment écrire un récit de voyage ?
+prerequis: recit-d-aventures-6e
+niveaux: cycle-4
+competences: identifier-l-element-declencheur, reconnaitre-l-epreuve-du-heros, distinguer-narration-et-description, analyser-le-temps-verbal-d-un-passage-narratif
 ---
 
 # Récits d'aventures, voyages et héros

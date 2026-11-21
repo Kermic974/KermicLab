@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-qui-elit-les-delegues-de-classe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-et-solidarite-6e/contenu.json"
+  },
+  "source": "microskill.emc.identifier-qui-elit-les-delegues-de-classe",
+  "target": "skill.emc.engagement-et-solidarite-6e"
+}

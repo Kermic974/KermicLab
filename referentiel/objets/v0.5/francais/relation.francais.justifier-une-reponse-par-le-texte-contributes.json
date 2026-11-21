@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.justifier-une-reponse-par-le-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lecture-comprehension-cm/contenu.json"
+  },
+  "source": "microskill.francais.justifier-une-reponse-par-le-texte",
+  "target": "skill.francais.lecture-comprehension-cm"
+}

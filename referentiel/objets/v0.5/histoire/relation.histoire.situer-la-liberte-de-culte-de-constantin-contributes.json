@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-la-liberte-de-culte-de-constantin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/empire-romain-christianisme-6e/contenu.json"
+  },
+  "source": "microskill.histoire.situer-la-liberte-de-culte-de-constantin",
+  "target": "skill.histoire.empire-romain-christianisme-6e"
+}

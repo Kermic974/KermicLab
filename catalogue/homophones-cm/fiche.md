@@ -5,15 +5,7 @@ sujet: francais/homophones-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - homophones-et-orthographe-c2
-  - nature-des-mots-cm
-  - conjugaison-cm
-competences:
-  - homophones-cm-comprendre
-  - homophones-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -32,6 +24,9 @@ questions:
   - Comment distinguer « et » et « est » ?
   - Comment distinguer « son » et « sont » ?
   - Comment distinguer « ces » et « ses » ?
+prerequis: homophones-et-orthographe-c2, nature-des-mots-cm, conjugaison-cm
+niveaux: cycle-3
+competences: choisir-entre-a-et-a-au-cycle-3-cm, choisir-entre-est-et-et, choisir-entre-ont-et-on-au-cycle-3-cm, choisir-entre-son-et-sont
 ---
 
 # Les homophones grammaticaux

@@ -5,13 +5,7 @@ sujet: emc/numerique-responsable-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - securite-ecrans-et-environnement-c2
-competences:
-  - numerique-responsable-cm-comprendre
-  - numerique-responsable-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Comment reconnaître une fausse information ?
   - Comment créer un mot de passe solide ?
   - Combien de temps passer devant les écrans ?
+prerequis: securite-ecrans-et-environnement-c2
+niveaux: cycle-3
+competences: choisir-un-mot-de-passe-solide, decider-si-une-information-peut-etre-partagee, respecter-le-droit-a-l-image-d-un-camarade, limiter-son-temps-d-ecran
 ---
 
 # Un usage responsable d'Internet et des écrans

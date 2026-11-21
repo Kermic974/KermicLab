@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.appliquer-le-retour-a-l-unite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/proportionnalite-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.appliquer-le-retour-a-l-unite",
+  "target": "skill.mathematiques.proportionnalite-cm"
+}

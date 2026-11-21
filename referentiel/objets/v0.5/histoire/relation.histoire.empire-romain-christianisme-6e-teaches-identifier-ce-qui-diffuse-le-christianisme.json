@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.empire-romain-christianisme-6e-teaches-identifier-ce-qui-diffuse-le-christianisme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/empire-romain-christianisme-6e/contenu.json"
+  },
+  "source": "notion.histoire.empire-romain-christianisme-6e",
+  "target": "microskill.histoire.identifier-ce-qui-diffuse-le-christianisme"
+}

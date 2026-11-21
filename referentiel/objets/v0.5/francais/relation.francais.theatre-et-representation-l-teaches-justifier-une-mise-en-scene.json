@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.theatre-et-representation-l-teaches-justifier-une-mise-en-scene",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre-et-representation-l/contenu.json"
+  },
+  "source": "notion.francais.theatre-et-representation-l",
+  "target": "microskill.francais.justifier-une-mise-en-scene"
+}

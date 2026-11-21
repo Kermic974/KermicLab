@@ -5,14 +5,7 @@ sujet: mathematiques/racines-carrees-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 3e
-prerequis:
-  - pythagore
-  - puissances
-competences:
-  - racines-carrees-c4-comprendre
-  - racines-carrees-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Comment simplifier √50 en 3e ?
   - Pourquoi √2 est-il irrationnel ?
   - Comment calculer √ à la calculatrice ?
+prerequis: pythagore, puissances
+niveaux: cycle-4
+competences: calculer-une-racine-carree-d-un-carre-parfait, simplifier-une-racine-carree, appliquer-les-regles-de-calcul-avec-les-racines, encadrer-une-racine-carree
 ---
 
 # Les racines carrées

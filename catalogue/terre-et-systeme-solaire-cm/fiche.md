@@ -5,13 +5,7 @@ sujet: svt/terre-et-systeme-solaire-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - planete-terre-et-cartes-c2
-competences:
-  - terre-et-systeme-solaire-cm-comprendre
-  - terre-et-systeme-solaire-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Pourquoi y a-t-il des saisons ?
   - Pourquoi la Lune change-t-elle de forme ?
   - Quelles sont les planètes du système solaire ?
+prerequis: planete-terre-et-cartes-c2
+niveaux: cycle-3
+competences: expliquer-l-alternance-du-jour-et-de-la-nuit, expliquer-les-saisons-par-l-inclinaison-de-la-terre, decrire-les-phases-de-la-lune, nommer-les-planetes-du-systeme-solaire
 ---
 
 # La Terre, la Lune et le système solaire

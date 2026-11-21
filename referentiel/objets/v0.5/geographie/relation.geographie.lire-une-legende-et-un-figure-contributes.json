@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.lire-une-legende-et-un-figure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "microskill.geographie.lire-une-legende-et-un-figure",
+  "target": "skill.geographie.croquis-et-cartes-c4"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.polygones-cm-teaches-nommer-un-polygone-selon-son-nombre-de-cotes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/polygones-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.polygones-cm",
+  "target": "microskill.mathematiques.nommer-un-polygone-selon-son-nombre-de-cotes"
+}

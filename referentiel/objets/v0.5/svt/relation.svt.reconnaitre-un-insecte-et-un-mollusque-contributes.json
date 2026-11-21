@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reconnaitre-un-insecte-et-un-mollusque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-cm/contenu.json"
+  },
+  "source": "microskill.svt.reconnaitre-un-insecte-et-un-mollusque",
+  "target": "skill.svt.classification-du-vivant-cm"
+}

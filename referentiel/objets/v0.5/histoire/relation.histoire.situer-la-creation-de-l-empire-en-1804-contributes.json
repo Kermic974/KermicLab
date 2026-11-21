@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-la-creation-de-l-empire-en-1804-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-la-creation-de-l-empire-en-1804",
+  "target": "skill.histoire.revolution-empire-cm"
+}

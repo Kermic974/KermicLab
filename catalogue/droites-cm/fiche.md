@@ -5,13 +5,7 @@ sujet: mathematiques/droites-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - figures-planes-c2
-competences:
-  - droites-cm-comprendre
-  - droites-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Comment tracer une droite perpendiculaire ?
   - Comment tracer une parallèle avec une équerre ?
   - Quelle différence entre droite, demi-droite et segment ?
+prerequis: figures-planes-c2
+niveaux: cycle-3
+competences: reconnaitre-des-droites-perpendiculaires, reconnaitre-des-droites-paralleles-au-cycle-3-cm, tracer-une-perpendiculaire-a-l-equerre, tracer-une-parallele-avec-regle-et-equerre
 ---
 
 # Droites parallèles et perpendiculaires

@@ -5,13 +5,6 @@ sujet: francais/poesie-et-lyrisme-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - poesie
-  - figures-de-style
-competences:
-  - poesie-et-lyrisme-l-comprendre
-  - poesie-et-lyrisme-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Quelles sont les caractéristiques du romantisme ?
   - Qu'est-ce que le surréalisme ?
   - Comment analyser un poème ?
+prerequis: poesie, figures-de-style
+niveaux: seconde, premiere
+competences: compter-les-syllabes-d-un-vers-et-nommer-sa-forme, identifier-un-sonnet, reconnaitre-un-mouvement-poetique, analyser-l-effet-d-un-procede-poetique
 ---
 
 # La poésie du Moyen Âge au XXIe siècle

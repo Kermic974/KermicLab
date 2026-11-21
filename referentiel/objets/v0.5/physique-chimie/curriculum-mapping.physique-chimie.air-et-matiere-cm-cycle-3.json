@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.air-et-matiere-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/air-et-matiere-cm/contenu.json"
+  },
+  "object": "notion.physique-chimie.air-et-matiere-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

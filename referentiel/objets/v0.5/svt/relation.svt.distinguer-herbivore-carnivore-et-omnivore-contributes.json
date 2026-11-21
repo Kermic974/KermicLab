@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-herbivore-carnivore-et-omnivore-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/besoins-et-vie-c2/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-herbivore-carnivore-et-omnivore",
+  "target": "skill.svt.besoins-et-vie-c2"
+}

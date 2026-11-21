@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.hlp-humanites-litterature-et-philosophie-l-requires-argumentation-et-litterature-d-idees-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hlp-humanites-litterature-et-philosophie-l/contenu.json"
+  },
+  "source": "notion.philosophie.hlp-humanites-litterature-et-philosophie-l",
+  "target": "notion.francais.argumentation-et-litterature-d-idees-l",
+  "rationale": "Prérequis déclaré dans la fiche : « Littérature d'idées, argumentation et dissertation » précède « HLP : humanités, littérature et philosophie » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.guerre-froide-et-decolonisation-l-requires-guerre-froide",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide-et-decolonisation-l/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide-et-decolonisation-l",
+  "target": "notion.histoire.guerre-froide",
+  "rationale": "Prérequis déclaré dans la fiche : « La guerre froide » précède « Guerre froide, décolonisation et nouveaux conflits » dans la progression du programme (lien à relire)."
+}

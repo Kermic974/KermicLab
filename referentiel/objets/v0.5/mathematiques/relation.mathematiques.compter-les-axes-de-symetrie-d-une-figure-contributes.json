@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.compter-les-axes-de-symetrie-d-une-figure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-axiale-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.compter-les-axes-de-symetrie-d-une-figure",
+  "target": "skill.mathematiques.symetrie-axiale-cm"
+}

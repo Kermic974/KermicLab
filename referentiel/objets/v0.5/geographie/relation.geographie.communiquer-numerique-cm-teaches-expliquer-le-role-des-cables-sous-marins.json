@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.communiquer-numerique-cm-teaches-expliquer-le-role-des-cables-sous-marins",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "notion.geographie.communiquer-numerique-cm",
+  "target": "microskill.geographie.expliquer-le-role-des-cables-sous-marins"
+}

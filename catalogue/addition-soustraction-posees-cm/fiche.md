@@ -5,15 +5,7 @@ sujet: mathematiques/addition-soustraction-posees-cm
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - addition-c2
-  - soustraction-c2
-  - grands-nombres-cm
-competences:
-  - addition-soustraction-posees-cm-comprendre
-  - addition-soustraction-posees-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +21,9 @@ questions:
   - Comment poser une addition avec retenue ?
   - Comment poser une soustraction avec retenue ?
   - Comment aligner les chiffres dans une opération posée ?
+prerequis: addition-c2, soustraction-c2, grands-nombres-cm
+niveaux: cycle-3
+competences: poser-et-calculer-une-addition-de-grands-nombres, poser-et-calculer-une-soustraction-avec-retenue, verifier-une-soustraction-par-une-addition, estimer-un-resultat-avant-de-calculer
 ---
 
 # Additions et soustractions posées

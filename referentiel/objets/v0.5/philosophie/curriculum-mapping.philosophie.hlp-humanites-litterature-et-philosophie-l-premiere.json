@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.philosophie.hlp-humanites-litterature-et-philosophie-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hlp-humanites-litterature-et-philosophie-l/contenu.json"
+  },
+  "object": "notion.philosophie.hlp-humanites-litterature-et-philosophie-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

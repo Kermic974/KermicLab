@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.problemes-c2-teaches-resoudre-un-probleme-de-partage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.problemes-c2",
+  "target": "microskill.mathematiques.resoudre-un-probleme-de-partage"
+}

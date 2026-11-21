@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-le-bapteme-de-clovis-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/clovis-charlemagne-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-le-bapteme-de-clovis",
+  "target": "skill.histoire.clovis-charlemagne-cm"
+}

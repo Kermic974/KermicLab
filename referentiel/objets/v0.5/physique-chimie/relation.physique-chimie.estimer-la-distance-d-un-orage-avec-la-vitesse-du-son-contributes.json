@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.estimer-la-distance-d-un-orage-avec-la-vitesse-du-son-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumiere-et-ombres-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.estimer-la-distance-d-un-orage-avec-la-vitesse-du-son",
+  "target": "skill.physique-chimie.lumiere-et-ombres-cm"
+}

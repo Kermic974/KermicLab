@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.singulier-pluriel-masculin-feminin-c2-teaches-reperer-un-accord-a-faire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/singulier-pluriel-masculin-feminin-c2/contenu.json"
+  },
+  "source": "notion.francais.singulier-pluriel-masculin-feminin-c2",
+  "target": "microskill.francais.reperer-un-accord-a-faire"
+}

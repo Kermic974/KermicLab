@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.monnaie-et-euro-c2-teaches-rendre-la-monnaie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie-et-euro-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.monnaie-et-euro-c2",
+  "target": "microskill.mathematiques.rendre-la-monnaie"
+}

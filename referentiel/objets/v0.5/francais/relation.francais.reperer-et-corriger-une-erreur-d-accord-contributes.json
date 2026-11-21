@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reperer-et-corriger-une-erreur-d-accord-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords-cm/contenu.json"
+  },
+  "source": "microskill.francais.reperer-et-corriger-une-erreur-d-accord",
+  "target": "skill.francais.accords-cm"
+}

@@ -5,12 +5,6 @@ sujet: ses/ses-economie-et-croissance-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - croissance-economique
-competences:
-  - ses-economie-et-croissance-l-comprendre
-  - ses-economie-et-croissance-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Qu'est-ce que le PIB ?
   - Qu'est-ce qu'une croissance soutenable ?
   - Quels sont les facteurs de la croissance ?
+prerequis: croissance-economique
+niveaux: premiere
+competences: calculer-un-taux-de-croissance-a-partir-du-pib, distinguer-croissance-du-pib-et-croissance-du-pib-par-habitant, identifier-les-sources-de-la-croissance-travail-capital-progres-technique, discuter-la-soutenabilite-de-la-croissance-avec-des-indicateurs-complementaires
 ---
 
 # Croissance, cycles et soutenabilité

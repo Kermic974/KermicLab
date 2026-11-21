@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.definir-vassal-et-seigneur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/feodalite-eglise-et-pouvoirs-c4/contenu.json"
+  },
+  "source": "microskill.histoire.definir-vassal-et-seigneur",
+  "target": "skill.histoire.feodalite-eglise-et-pouvoirs-c4"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.poesie-et-lyrisme-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-et-lyrisme-l/contenu.json"
+  },
+  "object": "notion.francais.poesie-et-lyrisme-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

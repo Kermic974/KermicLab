@@ -5,12 +5,6 @@ sujet: svt/photosynthese-et-productivite-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - photosynthese
-competences:
-  - photosynthese-et-productivite-l-comprendre
-  - photosynthese-et-productivite-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Comment la photosynthèse transforme-t-elle l'énergie lumineuse ?
   - Qu'est-ce que le cycle du carbone ?
   - Comment les plantes stockent-elles le carbone ?
+prerequis: photosynthese
+niveaux: premiere
+competences: decrire-la-photosynthese-dans-les-chloroplastes, expliquer-la-fixation-du-carbone-en-matiere-organique, distinguer-puits-et-sources-de-carbone, relier-combustion-des-fossiles-et-co-atmospherique
 ---
 
 # Photosynthèse, production végétale et cycle du carbone

@@ -5,13 +5,7 @@ sujet: geographie/habiter-le-littoral-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - paysages-et-ressources-cm
-competences:
-  - habiter-le-littoral-6e-comprendre
-  - habiter-le-littoral-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Pourquoi les littoraux sont-ils attractifs ?
   - Quels risques menacent le littoral ?
   - Comment protéger le littoral ?
+prerequis: paysages-et-ressources-cm
+niveaux: cycle-3
+competences: identifier-les-activites-du-littoral, expliquer-l-erosion-littorale, decrire-le-role-d-un-port, evaluer-les-menaces-sur-un-littoral
 ---
 
 # Habiter le littoral

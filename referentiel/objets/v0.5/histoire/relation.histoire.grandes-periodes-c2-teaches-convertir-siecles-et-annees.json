@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.grandes-periodes-c2-teaches-convertir-siecles-et-annees",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandes-periodes-c2/contenu.json"
+  },
+  "source": "notion.histoire.grandes-periodes-c2",
+  "target": "microskill.histoire.convertir-siecles-et-annees"
+}

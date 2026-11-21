@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.vocabulaire-et-orthographe-c4-requires-vocabulaire-et-etymologie-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-orthographe-c4/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-orthographe-c4",
+  "target": "notion.francais.vocabulaire-et-etymologie-6e",
+  "rationale": "Prérequis déclaré dans la fiche : « Vocabulaire, étymologie et familles de mots en 6e » précède « Vocabulaire, orthographe et accords au collège » dans la progression du programme (lien à relire)."
+}

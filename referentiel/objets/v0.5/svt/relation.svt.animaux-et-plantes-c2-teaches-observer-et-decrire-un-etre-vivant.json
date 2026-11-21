@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.animaux-et-plantes-c2-teaches-observer-et-decrire-un-etre-vivant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/animaux-et-plantes-c2/contenu.json"
+  },
+  "source": "notion.svt.animaux-et-plantes-c2",
+  "target": "microskill.svt.observer-et-decrire-un-etre-vivant"
+}

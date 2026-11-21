@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.entiers-et-operations-6e-teaches-calculer-un-produit-de-grands-entiers",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/entiers-et-operations-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.entiers-et-operations-6e",
+  "target": "microskill.mathematiques.calculer-un-produit-de-grands-entiers"
+}

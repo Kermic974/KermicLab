@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.choisir-l-instrument-de-mesure-d-un-liquide-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masses-et-contenances-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.choisir-l-instrument-de-mesure-d-un-liquide",
+  "target": "skill.mathematiques.masses-et-contenances-c2"
+}

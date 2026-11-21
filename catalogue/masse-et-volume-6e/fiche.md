@@ -5,14 +5,7 @@ sujet: physique-chimie/masse-et-volume-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - air-et-matiere-cm
-  - melanges-et-solutions-cm
-competences:
-  - masse-et-volume-6e-comprendre
-  - masse-et-volume-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Quelle différence entre masse et volume en 6e ?
   - Pourquoi un objet flotte-t-il ou coule-t-il ?
   - Comment mesurer le volume d'un liquide ?
+prerequis: air-et-matiere-cm, melanges-et-solutions-cm
+niveaux: cycle-3
+competences: convertir-des-unites-de-volume, choisir-un-instrument-de-mesure-d-un-liquide, calculer-une-masse-volumique-en-6e, prevoir-si-un-objet-flotte
 ---
 
 # Masse, volume et mélanges en 6e

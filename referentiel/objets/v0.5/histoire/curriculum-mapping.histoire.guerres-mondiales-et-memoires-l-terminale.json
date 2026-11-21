@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.guerres-mondiales-et-memoires-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-et-memoires-l/contenu.json"
+  },
+  "object": "notion.histoire.guerres-mondiales-et-memoires-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

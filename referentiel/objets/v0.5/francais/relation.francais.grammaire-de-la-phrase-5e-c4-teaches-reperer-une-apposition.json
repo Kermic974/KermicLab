@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.grammaire-de-la-phrase-5e-c4-teaches-reperer-une-apposition",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-de-la-phrase-5e-c4/contenu.json"
+  },
+  "source": "notion.francais.grammaire-de-la-phrase-5e-c4",
+  "target": "microskill.francais.reperer-une-apposition"
+}

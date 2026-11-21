@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerres-mondiales-cm-teaches-distinguer-les-deux-guerres-mondiales",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-cm/contenu.json"
+  },
+  "source": "notion.histoire.guerres-mondiales-cm",
+  "target": "microskill.histoire.distinguer-les-deux-guerres-mondiales"
+}

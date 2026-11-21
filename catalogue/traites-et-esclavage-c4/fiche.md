@@ -5,13 +5,7 @@ sujet: histoire/traites-et-esclavage-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e
-prerequis:
-  - temps-modernes
-competences:
-  - traites-et-esclavage-c4-comprendre
-  - traites-et-esclavage-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qu'est-ce que le Code noir ?
   - Quand l'esclavage a-t-il été aboli en France ?
   - Qui était Toussaint Louverture ?
+prerequis: temps-modernes
+niveaux: cycle-4
+competences: decrire-le-commerce-triangulaire, situer-l-abolition-definitive-de-l-esclavage-en-france, expliquer-la-revolte-de-saint-domingue, decrire-les-formes-de-resistance-a-l-esclavage
 ---
 
 # Les traites négrières et l'esclavage

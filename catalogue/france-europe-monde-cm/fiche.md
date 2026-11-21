@@ -5,15 +5,7 @@ sujet: geographie/france-europe-monde-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - planete-terre-et-cartes-c2
-  - paysages-et-ressources-cm
-  - lire-une-carte-cm
-competences:
-  - france-europe-monde-cm-comprendre
-  - france-europe-monde-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -31,6 +23,9 @@ questions:
   - C'est quoi l'outre-mer ?
   - Quels sont les pays voisins de la France ?
   - Combien de régions compte la France ?
+prerequis: planete-terre-et-cartes-c2, paysages-et-ressources-cm, lire-une-carte-cm
+niveaux: cycle-3
+competences: compter-les-regions-de-la-france-metropolitaine, localiser-un-territoire-d-outre-mer, nommer-la-capitale-de-la-france-et-ses-voisins, distinguer-france-europe-et-union-europeenne
 ---
 
 # La France, l'Europe et le monde

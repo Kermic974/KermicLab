@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-prehistoire-et-antiquite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-prehistoire-et-antiquite",
+  "target": "skill.histoire.prehistoire-cm"
+}

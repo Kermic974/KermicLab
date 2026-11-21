@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.reperer-un-biais-ou-une-theorie-du-complot-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-c4/contenu.json"
+  },
+  "source": "microskill.emc.reperer-un-biais-ou-une-theorie-du-complot",
+  "target": "skill.emc.esprit-critique-et-medias-c4"
+}

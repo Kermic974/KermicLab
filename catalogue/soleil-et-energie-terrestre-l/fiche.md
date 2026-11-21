@@ -5,12 +5,6 @@ sujet: physique-chimie/soleil-et-energie-terrestre-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - conversions-d-energie-l
-competences:
-  - soleil-et-energie-terrestre-l-comprendre
-  - soleil-et-energie-terrestre-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Qu'est-ce que l'albédo ?
   - Comment fonctionne l'effet de serre ?
   - Quelle énergie la Terre reçoit-elle du Soleil ?
+prerequis: conversions-d-energie-l
+niveaux: premiere
+competences: definir-l-albedo, interpreter-l-equilibre-entre-energie-recue-et-energie-emise-par-la-terre, expliquer-l-effet-de-serre, prevoir-l-effet-d-une-hausse-des-gaz-a-effet-de-serre
 ---
 
 # Le Soleil, la Terre et le climat : bilan radiatif

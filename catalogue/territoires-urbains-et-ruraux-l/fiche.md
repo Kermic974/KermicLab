@@ -5,13 +5,6 @@ sujet: geographie/territoires-urbains-et-ruraux-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - urbanisation
-  - espaces-ruraux
-competences:
-  - territoires-urbains-et-ruraux-l-comprendre
-  - territoires-urbains-et-ruraux-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce que le périurbain en seconde ?
   - Comment les espaces ruraux évoluent-ils ?
   - Qu'est-ce qu'une métropole en seconde ?
+prerequis: urbanisation, espaces-ruraux
+niveaux: seconde
+competences: expliquer-l-etalement-urbain, caracteriser-la-metropolisation, identifier-une-zone-blanche-et-ses-consequences, comparer-villes-et-campagnes
 ---
 
 # Territoires urbains et ruraux : villes, périphéries et réseaux

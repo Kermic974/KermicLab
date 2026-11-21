@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.composer-le-numero-d-urgence-adapte-a-une-situation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-et-prevention-cm/contenu.json"
+  },
+  "source": "microskill.emc.composer-le-numero-d-urgence-adapte-a-une-situation",
+  "target": "skill.emc.securite-et-prevention-cm"
+}

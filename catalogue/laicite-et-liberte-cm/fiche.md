@@ -5,14 +5,7 @@ sujet: emc/laicite-et-liberte-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - regles-et-justice-cm
-  - devise-republique-cm
-competences:
-  - laicite-et-liberte-cm-comprendre
-  - laicite-et-liberte-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - C'est quoi la laïcité à l'école ?
   - Qu'est-ce que la liberté d'expression ?
   - Pourquoi l'école est-elle laïque ?
+prerequis: regles-et-justice-cm, devise-republique-cm
+niveaux: cycle-3
+competences: expliquer-ce-que-garantit-la-laicite, distinguer-liberte-d-expression-et-limites-legales, situer-la-loi-de-1905-de-separation-des-eglises-et-de-l-etat, respecter-les-croyances-de-chacun-dans-la-classe
 ---
 
 # La laïcité et la liberté d'expression

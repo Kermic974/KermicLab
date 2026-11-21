@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reproduction-et-puberte-cm-teaches-situer-la-duree-de-la-grossesse-humaine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-et-puberte-cm/contenu.json"
+  },
+  "source": "notion.svt.reproduction-et-puberte-cm",
+  "target": "microskill.svt.situer-la-duree-de-la-grossesse-humaine"
+}

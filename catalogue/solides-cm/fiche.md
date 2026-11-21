@@ -5,14 +5,7 @@ sujet: mathematiques/solides-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - solides-c2
-  - polygones-cm
-competences:
-  - solides-cm-comprendre
-  - solides-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -30,6 +23,9 @@ questions:
   - Comment reconnaître un prisme ?
   - C'est quoi un patron de solide ?
   - Combien de faces a un pavé droit ?
+prerequis: solides-c2, polygones-cm
+niveaux: cycle-3
+competences: compter-faces-aretes-et-sommets, reconnaitre-un-prisme-et-une-pyramide, associer-un-patron-a-un-solide, decrire-un-pave-droit
 ---
 
 # Les solides

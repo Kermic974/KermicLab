@@ -5,13 +5,7 @@ sujet: emc/esprit-critique-et-medias-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e
-prerequis:
-  - esprit-critique-et-medias-6e
-competences:
-  - esprit-critique-et-medias-c4-comprendre
-  - esprit-critique-et-medias-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qu'est-ce que la liberté de la presse ?
   - Comment repérer une fausse information ?
   - Qu'est-ce qu'une théorie du complot ?
+prerequis: esprit-critique-et-medias-6e
+niveaux: cycle-4
+competences: verifier-une-information-en-recoupant-des-sources, identifier-un-deepfake-et-un-montage, reperer-un-biais-ou-une-theorie-du-complot, expliquer-le-role-de-la-liberte-de-la-presse
 ---
 
 # Esprit critique, médias et information

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-interactions-l-requires-forces-et-poids",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-interactions-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-interactions-l",
+  "target": "notion.physique-chimie.forces-et-poids",
+  "rationale": "Prérequis déclaré dans la fiche : « Forces, poids et gravitation » précède « Mouvement et interactions : vecteur vitesse, inertie et forces » dans la progression du programme (lien à relire)."
+}

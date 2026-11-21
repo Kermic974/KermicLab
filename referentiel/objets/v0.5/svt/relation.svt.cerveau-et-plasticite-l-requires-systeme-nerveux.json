@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.cerveau-et-plasticite-l-requires-systeme-nerveux",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cerveau-et-plasticite-l/contenu.json"
+  },
+  "source": "notion.svt.cerveau-et-plasticite-l",
+  "target": "notion.svt.systeme-nerveux",
+  "rationale": "Prérequis déclaré dans la fiche : « Le système nerveux et les réflexes » précède « Le cerveau, la plasticité et l'apprentissage » dans la progression du programme (lien à relire)."
+}

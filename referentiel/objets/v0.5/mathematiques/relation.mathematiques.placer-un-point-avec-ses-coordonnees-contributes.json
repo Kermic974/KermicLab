@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.placer-un-point-avec-ses-coordonnees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-plan-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.placer-un-point-avec-ses-coordonnees",
+  "target": "skill.mathematiques.reperage-plan-cm"
+}

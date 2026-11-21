@@ -5,13 +5,7 @@ sujet: svt/volcans-et-seismes-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - terre-et-systeme-solaire-cm
-competences:
-  - volcans-et-seismes-cm-comprendre
-  - volcans-et-seismes-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Qu'est-ce qu'un séisme ?
   - Comment se protéger lors d'un tremblement de terre ?
   - Quels sont les risques naturels à connaître en CM2 ?
+prerequis: terre-et-systeme-solaire-cm
+niveaux: cycle-3
+competences: nommer-la-roche-fondue-magma-et-la-lave, decrire-les-types-d-eruption, appliquer-la-conduite-a-tenir-pendant-un-seisme, distinguer-volcan-actif-et-volcan-eteint
 ---
 
 # Volcans, séismes et risques naturels

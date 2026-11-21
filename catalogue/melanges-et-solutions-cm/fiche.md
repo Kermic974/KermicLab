@@ -5,13 +5,7 @@ sujet: physique-chimie/melanges-et-solutions-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - etats-et-changements-cm
-competences:
-  - melanges-et-solutions-cm-comprendre
-  - melanges-et-solutions-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - C'est quoi une dissolution ?
   - Que se passe-t-il quand on met du sucre dans l'eau ?
   - Quelle différence entre un mélange homogène et hétérogène ?
+prerequis: etats-et-changements-cm
+niveaux: cycle-3
+competences: calculer-la-masse-d-une-solution-au-cycle-3-cm, distinguer-dissoudre-et-melanger, choisir-une-technique-de-separation-filtration-evaporation, recuperer-le-sel-d-une-eau-salee
 ---
 
 # Mélanges, dissolution et séparation

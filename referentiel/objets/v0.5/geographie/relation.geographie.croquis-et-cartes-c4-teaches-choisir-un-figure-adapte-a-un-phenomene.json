@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.croquis-et-cartes-c4-teaches-choisir-un-figure-adapte-a-un-phenomene",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "notion.geographie.croquis-et-cartes-c4",
+  "target": "microskill.geographie.choisir-un-figure-adapte-a-un-phenomene"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.divisions-6e-requires-multiples-et-diviseurs-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/divisions-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.divisions-6e",
+  "target": "notion.mathematiques.multiples-et-diviseurs-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Multiples, diviseurs et critères de divisibilité » précède « Divisions et multiples en 6e » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.premieres-civilisations-6e-teaches-identifier-le-fleuve-d-une-civilisation-nil-tigre-euphrate",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premieres-civilisations-6e/contenu.json"
+  },
+  "source": "notion.histoire.premieres-civilisations-6e",
+  "target": "microskill.histoire.identifier-le-fleuve-d-une-civilisation-nil-tigre-euphrate"
+}

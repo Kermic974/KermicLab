@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-l-exode-rural-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/age-industriel-cm/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-l-exode-rural",
+  "target": "skill.histoire.age-industriel-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.age-industriel-cm-teaches-identifier-l-energie-de-la-machine-a-vapeur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/age-industriel-cm/contenu.json"
+  },
+  "source": "notion.histoire.age-industriel-cm",
+  "target": "microskill.histoire.identifier-l-energie-de-la-machine-a-vapeur"
+}

@@ -5,14 +5,7 @@ sujet: mathematiques/fractions-operations-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - fractions-cm
-  - nombres-decimaux-cm
-competences:
-  - fractions-operations-cm-comprendre
-  - fractions-operations-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment additionner des fractions de même dénominateur ?
   - Comment écrire une fraction décimale en nombre à virgule ?
   - Comment trouver des fractions égales ?
+prerequis: fractions-cm, nombres-decimaux-cm
+niveaux: cycle-3
+competences: additionner-des-fractions-de-meme-denominateur, passer-d-une-fraction-decimale-a-l-ecriture-decimale, comparer-une-fraction-a-1, ecrire-une-fraction-decimale
 ---
 
 # Fractions : décimales, sommes et comparaisons

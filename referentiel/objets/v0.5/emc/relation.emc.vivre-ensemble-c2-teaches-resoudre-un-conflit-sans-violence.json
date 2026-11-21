@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.vivre-ensemble-c2-teaches-resoudre-un-conflit-sans-violence",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vivre-ensemble-c2/contenu.json"
+  },
+  "source": "notion.emc.vivre-ensemble-c2",
+  "target": "microskill.emc.resoudre-un-conflit-sans-violence"
+}

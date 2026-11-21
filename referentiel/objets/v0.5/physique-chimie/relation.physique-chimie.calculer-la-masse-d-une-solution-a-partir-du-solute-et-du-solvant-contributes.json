@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-la-masse-d-une-solution-a-partir-du-solute-et-du-solvant-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-matiere-et-melanges-6e/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-la-masse-d-une-solution-a-partir-du-solute-et-du-solvant",
+  "target": "skill.physique-chimie.etats-matiere-et-melanges-6e"
+}

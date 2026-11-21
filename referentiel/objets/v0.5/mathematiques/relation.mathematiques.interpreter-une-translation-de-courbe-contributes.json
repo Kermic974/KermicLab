@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.interpreter-une-translation-de-courbe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-de-reference-et-transformations-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.interpreter-une-translation-de-courbe",
+  "target": "skill.mathematiques.fonctions-de-reference-et-transformations-l"
+}

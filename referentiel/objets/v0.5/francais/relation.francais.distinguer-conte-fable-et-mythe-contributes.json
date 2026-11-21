@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-conte-fable-et-mythe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contes-fables-mythes-6e/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-conte-fable-et-mythe",
+  "target": "skill.francais.contes-fables-mythes-6e"
+}

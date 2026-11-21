@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.additionner-et-soustraire-des-nombres-decimaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-avec-decimaux-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.additionner-et-soustraire-des-nombres-decimaux",
+  "target": "skill.mathematiques.calcul-avec-decimaux-cm"
+}

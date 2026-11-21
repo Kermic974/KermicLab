@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.montrer-l-alignement-de-trois-points-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/geometrie-repere-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.montrer-l-alignement-de-trois-points",
+  "target": "skill.mathematiques.geometrie-repere-l"
+}

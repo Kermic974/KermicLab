@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.encadrer-un-nombre-entre-deux-dizaines-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/comparer-et-ranger-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.encadrer-un-nombre-entre-deux-dizaines",
+  "target": "skill.mathematiques.comparer-et-ranger-c2"
+}

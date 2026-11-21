@@ -77,3 +77,7 @@ Aucun `requires` n'est créé : les notions sont en rapport conceptuel sans ordr
 | Liens entre matières (anglais ↔ français, musique ↔ arts, EPS ↔ SVT) | Aucune dépendance cognitive établie dans les fiches ; relations thématiques seulement. À exprimer en `relatedTo` si la relecture le juge utile. |
 | Prérequis supplémentaires à l'intérieur d'une matière | Aucun : les chaînes déclarées dans les fiches sont déjà continues du cycle 2 (ou 3) au lycée. |
 
+## Notions ajoutées depuis la V0
+
+Aucun lien nouveau n'a été créé ni écarté dans ce lot : les `requires` reprennent les prérequis déjà déclarés dans les fiches. Les liens depuis les notions V0 vers ces notions (cycle précédent) restent proposés dans `propositions-liens-cycles-2-3-4.md`, à qualifier par le processus S4. Les justifications générées des 365 liens sont à enrichir à la relecture.
+

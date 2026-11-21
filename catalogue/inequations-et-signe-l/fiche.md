@@ -5,13 +5,6 @@ sujet: mathematiques/inequations-et-signe-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - ensembles-et-logique-l
-  - equations
-competences:
-  - inequations-et-signe-l-comprendre
-  - inequations-et-signe-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment construire un tableau de signes ?
   - Que représente la valeur absolue ?
   - Pourquoi change-t-on le sens de l'inégalité quand on multiplie par un négatif ?
+prerequis: ensembles-et-logique-l, equations
+niveaux: seconde
+competences: resoudre-une-inequation-du-premier-degre, dresser-un-tableau-de-signes-d-un-produit, resoudre-une-inequation-produit, interpreter-une-valeur-absolue
 ---
 
 # Inéquations, tableaux de signes et valeur absolue

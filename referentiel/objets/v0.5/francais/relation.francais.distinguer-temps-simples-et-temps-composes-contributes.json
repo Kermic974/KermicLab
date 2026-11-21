@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-temps-simples-et-temps-composes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-cm/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-temps-simples-et-temps-composes",
+  "target": "skill.francais.conjugaison-cm"
+}

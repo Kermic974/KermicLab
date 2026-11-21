@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.compter-les-sommets-et-les-aretes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.compter-les-sommets-et-les-aretes",
+  "target": "skill.mathematiques.solides-c2"
+}

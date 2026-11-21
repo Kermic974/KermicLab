@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.decrire-la-prevention-d-un-risque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mieux-habiter-cm/contenu.json"
+  },
+  "source": "microskill.geographie.decrire-la-prevention-d-un-risque",
+  "target": "skill.geographie.mieux-habiter-cm"
+}

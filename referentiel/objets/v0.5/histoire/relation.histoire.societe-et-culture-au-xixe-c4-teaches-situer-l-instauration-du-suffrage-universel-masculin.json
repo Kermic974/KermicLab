@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.societe-et-culture-au-xixe-c4-teaches-situer-l-instauration-du-suffrage-universel-masculin",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societe-et-culture-au-xixe-c4/contenu.json"
+  },
+  "source": "notion.histoire.societe-et-culture-au-xixe-c4",
+  "target": "microskill.histoire.situer-l-instauration-du-suffrage-universel-masculin"
+}

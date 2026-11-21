@@ -5,13 +5,7 @@ sujet: francais/ponctuation-et-dialogue-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - types-et-formes-de-phrases-cm
-competences:
-  - ponctuation-et-dialogue-cm-comprendre
-  - ponctuation-et-dialogue-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - À quoi sert la virgule ?
   - Comment ponctuer un dialogue ?
   - Quand utiliser les deux-points ?
+prerequis: types-et-formes-de-phrases-cm
+niveaux: cycle-3
+competences: choisir-la-ponctuation-d-un-dialogue, ponctuer-un-dialogue, utiliser-la-virgule-dans-une-liste, ecrire-un-dialogue-lisible
 ---
 
 # La ponctuation et le dialogue

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.voyages-d-ulysse-6e-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/voyages-d-ulysse-6e/contenu.json"
+  },
+  "object": "notion.histoire.voyages-d-ulysse-6e",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

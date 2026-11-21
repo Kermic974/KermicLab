@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.limites-de-suites-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/limites-de-suites-l/contenu.json"
+  },
+  "object": "notion.mathematiques.limites-de-suites-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

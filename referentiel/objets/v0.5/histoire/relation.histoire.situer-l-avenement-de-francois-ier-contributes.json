@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-avenement-de-francois-ier-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/francois-ier-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-avenement-de-francois-ier",
+  "target": "skill.histoire.francois-ier-cm"
+}

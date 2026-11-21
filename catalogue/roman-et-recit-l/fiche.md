@@ -5,13 +5,6 @@ sujet: francais/roman-et-recit-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - roman
-  - analyse-texte
-competences:
-  - roman-et-recit-l-comprendre
-  - roman-et-recit-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment analyser un point de vue narratif ?
   - Qu'est-ce qu'un roman d'apprentissage ?
   - Qu'est-ce que le naturalisme ?
+prerequis: roman, analyse-texte
+niveaux: seconde, premiere
+competences: distinguer-realisme-et-naturalisme, identifier-la-focalisation-d-un-passage, reconnaitre-un-roman-d-apprentissage, analyser-le-discours-indirect-libre
 ---
 
 # Le roman et le récit du XVIIIe au XXIe siècle

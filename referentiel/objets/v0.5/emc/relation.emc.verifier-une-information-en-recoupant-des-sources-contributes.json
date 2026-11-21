@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.verifier-une-information-en-recoupant-des-sources-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-c4/contenu.json"
+  },
+  "source": "microskill.emc.verifier-une-information-en-recoupant-des-sources",
+  "target": "skill.emc.esprit-critique-et-medias-c4"
+}

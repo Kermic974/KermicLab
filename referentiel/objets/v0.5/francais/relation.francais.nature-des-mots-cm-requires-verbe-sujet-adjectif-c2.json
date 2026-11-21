@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.nature-des-mots-cm-requires-verbe-sujet-adjectif-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature-des-mots-cm/contenu.json"
+  },
+  "source": "notion.francais.nature-des-mots-cm",
+  "target": "notion.francais.verbe-sujet-adjectif-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Le verbe, le sujet et l'adjectif » précède « La nature des mots » dans la progression du programme (lien à relire)."
+}

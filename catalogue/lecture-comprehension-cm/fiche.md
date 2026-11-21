@@ -5,13 +5,7 @@ sujet: francais/lecture-comprehension-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - lire-et-comprendre-c2
-competences:
-  - lecture-comprehension-cm-comprendre
-  - lecture-comprehension-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment bien comprendre un texte ?
   - C'est quoi une inférence ?
   - Comment répondre à une question de compréhension ?
+prerequis: lire-et-comprendre-c2
+niveaux: cycle-3
+competences: deduire-une-information-implicite, identifier-ce-que-designe-un-pronom, resumer-un-passage-lu-en-gardant-l-essentiel, justifier-une-reponse-par-le-texte
 ---
 
 # Comprendre un texte

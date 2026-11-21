@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evaluer-l-effet-de-la-selection-sur-la-diversite-genetique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "source": "microskill.svt.evaluer-l-effet-de-la-selection-sur-la-diversite-genetique",
+  "target": "skill.svt.domestication-et-selection-l"
+}

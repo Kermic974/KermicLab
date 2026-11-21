@@ -5,13 +5,6 @@ sujet: francais/oral-et-eaf-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - analyse-texte
-  - roman-et-recit-l
-competences:
-  - oral-et-eaf-l-comprendre
-  - oral-et-eaf-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce qu'une explication linéaire ?
   - Comment faire une lecture expressive ?
   - Comment préparer l'entretien ?
+prerequis: analyse-texte, roman-et-recit-l
+niveaux: premiere
+competences: rediger-l-introduction-d-une-explication-lineaire, faire-une-lecture-expressive, formuler-un-projet-de-lecture, soutenir-un-entretien-sur-une-uvre
 ---
 
 # L'oral du baccalauréat de français : lecture et entretien

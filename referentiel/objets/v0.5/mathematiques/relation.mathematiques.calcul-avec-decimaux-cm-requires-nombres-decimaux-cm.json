@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.calcul-avec-decimaux-cm-requires-nombres-decimaux-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-avec-decimaux-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.calcul-avec-decimaux-cm",
+  "target": "notion.mathematiques.nombres-decimaux-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Les nombres décimaux au CM » précède « Calculer avec des nombres décimaux » dans la progression du programme (lien à relire)."
+}

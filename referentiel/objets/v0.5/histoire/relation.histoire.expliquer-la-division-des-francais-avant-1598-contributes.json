@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-la-division-des-francais-avant-1598-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/henri-iv-cm/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-la-division-des-francais-avant-1598",
+  "target": "skill.histoire.henri-iv-cm"
+}

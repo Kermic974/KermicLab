@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.respiration-circulation-cm-teaches-expliquer-l-acceleration-du-c-ur-a-l-effort",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-circulation-cm/contenu.json"
+  },
+  "source": "notion.svt.respiration-circulation-cm",
+  "target": "microskill.svt.expliquer-l-acceleration-du-c-ur-a-l-effort"
+}

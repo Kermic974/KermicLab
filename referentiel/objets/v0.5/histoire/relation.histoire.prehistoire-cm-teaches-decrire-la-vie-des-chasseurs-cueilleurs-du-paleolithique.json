@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.prehistoire-cm-teaches-decrire-la-vie-des-chasseurs-cueilleurs-du-paleolithique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "notion.histoire.prehistoire-cm",
+  "target": "microskill.histoire.decrire-la-vie-des-chasseurs-cueilleurs-du-paleolithique"
+}

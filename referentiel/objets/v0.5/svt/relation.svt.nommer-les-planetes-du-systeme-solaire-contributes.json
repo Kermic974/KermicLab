@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.nommer-les-planetes-du-systeme-solaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-et-systeme-solaire-cm/contenu.json"
+  },
+  "source": "microskill.svt.nommer-les-planetes-du-systeme-solaire",
+  "target": "skill.svt.terre-et-systeme-solaire-cm"
+}

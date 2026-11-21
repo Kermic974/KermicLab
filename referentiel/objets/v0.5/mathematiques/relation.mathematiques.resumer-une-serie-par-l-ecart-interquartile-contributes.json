@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resumer-une-serie-par-l-ecart-interquartile-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques-et-echantillonnage-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.resumer-une-serie-par-l-ecart-interquartile",
+  "target": "skill.mathematiques.statistiques-et-echantillonnage-l"
+}

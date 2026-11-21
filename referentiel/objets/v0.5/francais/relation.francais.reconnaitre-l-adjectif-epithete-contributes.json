@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-l-adjectif-epithete-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/groupe-nominal-cm/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-l-adjectif-epithete",
+  "target": "skill.francais.groupe-nominal-cm"
+}

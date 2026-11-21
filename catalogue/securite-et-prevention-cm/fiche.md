@@ -5,13 +5,7 @@ sujet: emc/securite-et-prevention-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - securite-ecrans-et-environnement-c2
-competences:
-  - securite-et-prevention-cm-comprendre
-  - securite-et-prevention-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Quels sont les numéros d'urgence ?
   - Comment alerter les secours ?
   - Quelles règles suivre à vélo et à pied ?
+prerequis: securite-ecrans-et-environnement-c2
+niveaux: cycle-3
+competences: composer-le-numero-d-urgence-adapte-a-une-situation, adopter-l-equipement-de-securite-a-velo, appliquer-des-gestes-de-prevention-a-la-maison, alerter-correctement-les-secours
 ---
 
 # Sécurité, prévention et premiers secours

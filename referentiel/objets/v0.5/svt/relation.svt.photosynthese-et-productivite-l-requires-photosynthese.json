@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.photosynthese-et-productivite-l-requires-photosynthese",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese-et-productivite-l/contenu.json"
+  },
+  "source": "notion.svt.photosynthese-et-productivite-l",
+  "target": "notion.svt.photosynthese",
+  "rationale": "Prérequis déclaré dans la fiche : « La photosynthèse et les besoins des plantes » précède « Photosynthèse, production végétale et cycle du carbone » dans la progression du programme (lien à relire)."
+}

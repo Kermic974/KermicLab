@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.biodiversite-et-chaines-cm-requires-milieux-et-saisons-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "notion.svt.biodiversite-et-chaines-cm",
+  "target": "notion.svt.milieux-et-saisons-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Les milieux de vie et les saisons » précède « Biodiversité et chaînes alimentaires » dans la progression du programme (lien à relire)."
+}

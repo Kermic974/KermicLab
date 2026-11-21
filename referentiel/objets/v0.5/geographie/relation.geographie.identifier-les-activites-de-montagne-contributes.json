@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-activites-de-montagne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-un-espace-de-faible-densite-6e/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-activites-de-montagne",
+  "target": "skill.geographie.habiter-un-espace-de-faible-densite-6e"
+}

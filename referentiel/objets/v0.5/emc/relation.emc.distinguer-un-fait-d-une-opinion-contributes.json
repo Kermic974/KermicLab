@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-un-fait-d-une-opinion-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-6e/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-un-fait-d-une-opinion",
+  "target": "skill.emc.esprit-critique-et-medias-6e"
+}

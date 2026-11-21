@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-chasseurs-cueilleurs-et-agriculteurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/peuplement-neolithique-6e/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-chasseurs-cueilleurs-et-agriculteurs",
+  "target": "skill.histoire.peuplement-neolithique-6e"
+}

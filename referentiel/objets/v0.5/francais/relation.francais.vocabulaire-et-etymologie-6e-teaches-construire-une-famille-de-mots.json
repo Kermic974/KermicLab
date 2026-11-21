@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.vocabulaire-et-etymologie-6e-teaches-construire-une-famille-de-mots",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-etymologie-6e/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-etymologie-6e",
+  "target": "microskill.francais.construire-une-famille-de-mots"
+}

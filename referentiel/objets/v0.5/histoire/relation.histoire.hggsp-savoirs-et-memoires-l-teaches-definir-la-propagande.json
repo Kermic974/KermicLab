@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.hggsp-savoirs-et-memoires-l-teaches-definir-la-propagande",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-savoirs-et-memoires-l/contenu.json"
+  },
+  "source": "notion.histoire.hggsp-savoirs-et-memoires-l",
+  "target": "microskill.histoire.definir-la-propagande"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.types-et-formes-de-phrases-cm-teaches-choisir-le-signe-final-adapte-au-type-de-phrase",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-et-formes-de-phrases-cm/contenu.json"
+  },
+  "source": "notion.francais.types-et-formes-de-phrases-cm",
+  "target": "microskill.francais.choisir-le-signe-final-adapte-au-type-de-phrase"
+}

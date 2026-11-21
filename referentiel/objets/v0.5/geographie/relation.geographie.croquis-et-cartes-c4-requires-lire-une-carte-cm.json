@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.croquis-et-cartes-c4-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "notion.geographie.croquis-et-cartes-c4",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Lire une carte et se repérer » précède « Lire des cartes, réaliser un croquis » dans la progression du programme (lien à relire)."
+}

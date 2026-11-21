@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.definir-la-biodiversite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-6e/contenu.json"
+  },
+  "source": "microskill.svt.definir-la-biodiversite",
+  "target": "skill.svt.classification-du-vivant-6e"
+}

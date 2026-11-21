@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.orthographe-lexicale-cm-teaches-retenir-les-regularites-orthographiques",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-lexicale-cm/contenu.json"
+  },
+  "source": "notion.francais.orthographe-lexicale-cm",
+  "target": "microskill.francais.retenir-les-regularites-orthographiques"
+}

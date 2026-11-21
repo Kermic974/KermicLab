@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.organisme-et-effort-6e-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/organisme-et-effort-6e/contenu.json"
+  },
+  "object": "notion.svt.organisme-et-effort-6e",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

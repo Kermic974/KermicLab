@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-vitesse-moyenne-et-la-convertir-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-interactions-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-vitesse-moyenne-et-la-convertir",
+  "target": "skill.physique-chimie.mouvement-et-interactions-l"
+}

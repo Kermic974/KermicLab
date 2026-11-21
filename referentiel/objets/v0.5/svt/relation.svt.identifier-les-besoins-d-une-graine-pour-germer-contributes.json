@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-besoins-d-une-graine-pour-germer-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/besoins-et-vie-c2/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-besoins-d-une-graine-pour-germer",
+  "target": "skill.svt.besoins-et-vie-c2"
+}

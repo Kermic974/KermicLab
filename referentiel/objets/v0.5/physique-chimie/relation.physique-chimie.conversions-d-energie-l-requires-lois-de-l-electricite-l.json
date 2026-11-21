@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.conversions-d-energie-l-requires-lois-de-l-electricite-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conversions-d-energie-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.conversions-d-energie-l",
+  "target": "notion.physique-chimie.lois-de-l-electricite-l",
+  "rationale": "Prérequis déclaré dans la fiche : « Circuits électriques : loi d'Ohm, puissance et énergie » précède « Conversions d'énergie, rendement et bilan » dans la progression du programme (lien à relire)."
+}

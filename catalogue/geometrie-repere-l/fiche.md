@@ -5,13 +5,6 @@ sujet: mathematiques/geometrie-repere-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - racines-carrees-c4
-  - ensembles-et-logique-l
-competences:
-  - geometrie-repere-l-comprendre
-  - geometrie-repere-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment trouver les coordonnées du milieu d'un segment ?
   - Comment montrer que trois points sont alignés ?
   - Comment déterminer l'équation d'une droite ?
+prerequis: racines-carrees-c4, ensembles-et-logique-l
+niveaux: seconde
+competences: calculer-la-distance-entre-deux-points-dans-un-repere, calculer-les-coordonnees-d-un-milieu, calculer-le-coefficient-directeur-d-une-droite, montrer-l-alignement-de-trois-points
 ---
 
 # Géométrie repérée : distances, milieux et équations de droites

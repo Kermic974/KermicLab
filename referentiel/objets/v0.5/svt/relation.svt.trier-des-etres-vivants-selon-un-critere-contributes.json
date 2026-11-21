@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.trier-des-etres-vivants-selon-un-critere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-cm/contenu.json"
+  },
+  "source": "microskill.svt.trier-des-etres-vivants-selon-un-critere",
+  "target": "skill.svt.classification-du-vivant-cm"
+}

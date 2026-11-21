@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.sante-et-prevention-c4-teaches-identifier-un-comportement-de-dependance-jeux-ecrans",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sante-et-prevention-c4/contenu.json"
+  },
+  "source": "notion.svt.sante-et-prevention-c4",
+  "target": "microskill.svt.identifier-un-comportement-de-dependance-jeux-ecrans"
+}

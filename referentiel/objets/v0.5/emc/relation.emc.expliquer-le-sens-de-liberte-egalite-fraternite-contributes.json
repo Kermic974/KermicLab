@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-sens-de-liberte-egalite-fraternite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devise-republique-cm/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-sens-de-liberte-egalite-fraternite",
+  "target": "skill.emc.devise-republique-cm"
+}

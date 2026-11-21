@@ -5,13 +5,6 @@ sujet: geographie/espaces-et-puissances-mondiales-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - mondialisation
-  - mers-oceans
-competences:
-  - espaces-et-puissances-mondiales-l-comprendre
-  - espaces-et-puissances-mondiales-l-appliquer
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce que la géopolitique ?
   - Quelles sont les grandes puissances du monde ?
   - Pourquoi les mers sont-elles stratégiques ?
+prerequis: mondialisation, mers-oceans
+niveaux: terminale
+competences: caracteriser-une-puissance-hard-power-soft-power, delimiter-une-zone-economique-exclusive, analyser-un-passage-strategique, analyser-un-enjeu-de-cyberespace-ou-d-espace-extra-atmospherique
 ---
 
 # Espaces, puissances et conflits dans le monde

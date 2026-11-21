@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.oral-et-eaf-l-teaches-soutenir-un-entretien-sur-une-uvre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "notion.francais.oral-et-eaf-l",
+  "target": "microskill.francais.soutenir-un-entretien-sur-une-uvre"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.age-industriel-cm-teaches-situer-l-exposition-universelle-et-la-tour-eiffel",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/age-industriel-cm/contenu.json"
+  },
+  "source": "notion.histoire.age-industriel-cm",
+  "target": "microskill.histoire.situer-l-exposition-universelle-et-la-tour-eiffel"
+}

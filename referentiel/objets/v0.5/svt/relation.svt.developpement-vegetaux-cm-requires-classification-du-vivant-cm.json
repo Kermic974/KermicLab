@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.developpement-vegetaux-cm-requires-classification-du-vivant-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "notion.svt.developpement-vegetaux-cm",
+  "target": "notion.svt.classification-du-vivant-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Classer les êtres vivants » précède « Le développement des végétaux » dans la progression du programme (lien à relire)."
+}

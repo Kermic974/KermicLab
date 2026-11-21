@@ -5,13 +5,7 @@ sujet: svt/alimentation-digestion-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - corps-et-sante-c2
-competences:
-  - alimentation-digestion-cm-comprendre
-  - alimentation-digestion-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Comment fonctionne la digestion ?
   - À quoi servent les aliments ?
   - Pourquoi faut-il bien mâcher ?
+prerequis: corps-et-sante-c2
+niveaux: cycle-3
+competences: decrire-le-trajet-des-aliments-dans-le-tube-digestif, expliquer-le-passage-des-nutriments-dans-le-sang, associer-un-groupe-d-aliments-a-son-role-pour-le-corps, composer-un-repas-equilibre
 ---
 
 # L'alimentation et la digestion

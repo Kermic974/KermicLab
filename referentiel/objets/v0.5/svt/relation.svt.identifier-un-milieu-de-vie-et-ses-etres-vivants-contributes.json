@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-un-milieu-de-vie-et-ses-etres-vivants-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/milieux-et-saisons-c2/contenu.json"
+  },
+  "source": "microskill.svt.identifier-un-milieu-de-vie-et-ses-etres-vivants",
+  "target": "skill.svt.milieux-et-saisons-c2"
+}

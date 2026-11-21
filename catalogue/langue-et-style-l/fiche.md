@@ -5,13 +5,6 @@ sujet: francais/langue-et-style-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - grammaire-phrase-complexe
-  - accords
-competences:
-  - langue-et-style-l-comprendre
-  - langue-et-style-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce que l'énonciation ?
   - Comment analyser une phrase complexe ?
   - Qu'est-ce que la modalisation ?
+prerequis: grammaire-phrase-complexe, accords
+niveaux: seconde, premiere
+competences: distinguer-juxtaposition-coordination-et-subordination-au-lycee, identifier-un-deictique-et-la-situation-d-enonciation, identifier-un-registre-litteraire, analyser-l-effet-d-une-phrase-longue-ou-d-une-parataxe
 ---
 
 # Étude de la langue : syntaxe, énonciation et registres

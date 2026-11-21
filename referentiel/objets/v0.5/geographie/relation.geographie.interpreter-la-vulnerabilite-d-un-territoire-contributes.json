@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.interpreter-la-vulnerabilite-d-un-territoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societes-et-environnement-l/contenu.json"
+  },
+  "source": "microskill.geographie.interpreter-la-vulnerabilite-d-un-territoire",
+  "target": "skill.geographie.societes-et-environnement-l"
+}

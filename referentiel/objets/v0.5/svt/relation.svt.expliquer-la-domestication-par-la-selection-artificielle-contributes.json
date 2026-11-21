@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-domestication-par-la-selection-artificielle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-domestication-par-la-selection-artificielle",
+  "target": "skill.svt.domestication-et-selection-l"
+}

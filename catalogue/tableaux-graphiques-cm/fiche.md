@@ -5,13 +5,7 @@ sujet: mathematiques/tableaux-graphiques-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - tableaux-et-algorithmes-c2
-competences:
-  - tableaux-graphiques-cm-comprendre
-  - tableaux-graphiques-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment lire un diagramme en barres ?
   - Comment construire un tableau de données ?
   - Comment lire une courbe ?
+prerequis: tableaux-et-algorithmes-c2
+niveaux: cycle-3
+competences: lire-un-tableau-de-donnees-au-cycle-3-cm, lire-un-diagramme-en-barres, choisir-le-graphique-adapte-a-des-donnees, comparer-des-donnees-d-un-graphique
 ---
 
 # Tableaux et graphiques

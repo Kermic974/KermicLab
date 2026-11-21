@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.adopter-un-bon-usage-d-internet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "microskill.geographie.adopter-un-bon-usage-d-internet",
+  "target": "skill.geographie.communiquer-numerique-cm"
+}

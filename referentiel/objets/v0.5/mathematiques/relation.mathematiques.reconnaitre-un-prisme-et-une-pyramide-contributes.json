@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-un-prisme-et-une-pyramide-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-un-prisme-et-une-pyramide",
+  "target": "skill.mathematiques.solides-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.definir-un-amenagement-durable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mieux-habiter-cm/contenu.json"
+  },
+  "source": "microskill.geographie.definir-un-amenagement-durable",
+  "target": "skill.geographie.mieux-habiter-cm"
+}

@@ -5,14 +5,7 @@ sujet: svt/reproduction-et-cycles-de-vie-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - reproduction-et-puberte-cm
-  - developpement-vegetaux-cm
-competences:
-  - reproduction-et-cycles-de-vie-6e-comprendre
-  - reproduction-et-cycles-de-vie-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment les êtres vivants se reproduisent-ils en 6e ?
   - Qu'est-ce qu'un cycle de vie ?
   - Qu'est-ce que la métamorphose ?
+prerequis: reproduction-et-puberte-cm, developpement-vegetaux-cm
+niveaux: cycle-3
+competences: distinguer-reproduction-sexuee-et-asexuee, decrire-le-cycle-de-vie-d-un-animal-a-metamorphose, expliquer-la-dissemination-des-graines, identifier-une-reproduction-par-bouturage
 ---
 
 # Reproduction et cycles de vie en 6e

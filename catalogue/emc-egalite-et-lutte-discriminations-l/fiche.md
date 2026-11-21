@@ -5,13 +5,6 @@ sujet: emc/emc-egalite-et-lutte-discriminations-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - egalite
-  - discrimination
-competences:
-  - emc-egalite-et-lutte-discriminations-l-comprendre
-  - emc-egalite-et-lutte-discriminations-l-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce qu'une discrimination ?
   - Comment lutter contre le harcèlement ?
   - Qu'est-ce que le Défenseur des droits ?
+prerequis: egalite, discrimination
+niveaux: seconde
+competences: definir-une-discrimination-par-un-critere-prohibe, distinguer-stereotype-prejuge-et-discrimination-au-lycee, identifier-les-recours-contre-le-harcelement-et-la-discrimination, justifier-un-amenagement-pour-l-inclusion
 ---
 
 # Égalité, discriminations et lutte contre les préjugés

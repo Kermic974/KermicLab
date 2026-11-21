@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiplication-posee-cm-teaches-decomposer-pour-multiplier",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.multiplication-posee-cm",
+  "target": "microskill.mathematiques.decomposer-pour-multiplier"
+}

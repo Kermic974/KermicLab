@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.guerre-froide-et-decolonisation-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide-et-decolonisation-l/contenu.json"
+  },
+  "object": "notion.histoire.guerre-froide-et-decolonisation-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

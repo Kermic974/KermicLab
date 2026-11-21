@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.former-le-pluriel-d-un-nom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/singulier-pluriel-masculin-feminin-c2/contenu.json"
+  },
+  "source": "microskill.francais.former-le-pluriel-d-un-nom",
+  "target": "skill.francais.singulier-pluriel-masculin-feminin-c2"
+}

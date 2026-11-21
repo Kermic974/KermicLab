@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.discours-rapporte-cm-teaches-lire-un-texte-a-voix-haute-avec-expressivite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "notion.francais.discours-rapporte-cm",
+  "target": "microskill.francais.lire-un-texte-a-voix-haute-avec-expressivite"
+}

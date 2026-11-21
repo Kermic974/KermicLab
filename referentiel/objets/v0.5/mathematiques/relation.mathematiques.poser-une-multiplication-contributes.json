@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.poser-une-multiplication-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-ce2-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.poser-une-multiplication",
+  "target": "skill.mathematiques.multiplication-posee-ce2-c2"
+}

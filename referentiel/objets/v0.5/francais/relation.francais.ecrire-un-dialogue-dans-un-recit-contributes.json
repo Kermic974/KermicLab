@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-un-dialogue-dans-un-recit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-un-recit-cm/contenu.json"
+  },
+  "source": "microskill.francais.ecrire-un-dialogue-dans-un-recit",
+  "target": "skill.francais.ecrire-un-recit-cm"
+}

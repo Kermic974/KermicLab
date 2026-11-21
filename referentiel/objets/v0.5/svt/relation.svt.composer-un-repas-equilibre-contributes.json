@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.composer-un-repas-equilibre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/alimentation-digestion-cm/contenu.json"
+  },
+  "source": "microskill.svt.composer-un-repas-equilibre",
+  "target": "skill.svt.alimentation-digestion-cm"
+}

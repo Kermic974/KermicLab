@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-une-longueur-avec-la-trigonometrie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-triangle-rectangle-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-une-longueur-avec-la-trigonometrie",
+  "target": "skill.mathematiques.trigonometrie-triangle-rectangle-c4"
+}

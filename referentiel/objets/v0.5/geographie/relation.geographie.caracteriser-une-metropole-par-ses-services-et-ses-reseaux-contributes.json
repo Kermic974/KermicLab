@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.caracteriser-une-metropole-par-ses-services-et-ses-reseaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-une-metropole-6e/contenu.json"
+  },
+  "source": "microskill.geographie.caracteriser-une-metropole-par-ses-services-et-ses-reseaux",
+  "target": "skill.geographie.habiter-une-metropole-6e"
+}

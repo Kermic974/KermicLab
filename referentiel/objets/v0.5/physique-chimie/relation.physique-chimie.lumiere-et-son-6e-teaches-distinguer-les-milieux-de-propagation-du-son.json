@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.lumiere-et-son-6e-teaches-distinguer-les-milieux-de-propagation-du-son",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumiere-et-son-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.lumiere-et-son-6e",
+  "target": "microskill.physique-chimie.distinguer-les-milieux-de-propagation-du-son"
+}

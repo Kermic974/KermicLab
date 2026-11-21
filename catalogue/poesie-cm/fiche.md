@@ -5,13 +5,7 @@ sujet: francais/poesie-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - ecrire-et-comptines-c2
-competences:
-  - poesie-cm-comprendre
-  - poesie-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Comment reconnaître des rimes ?
   - C'est quoi une comparaison ?
   - Comment écrire un poème ?
+prerequis: ecrire-et-comptines-c2
+niveaux: cycle-3
+competences: identifier-les-mots-qui-riment, distinguer-vers-et-strophe, reconnaitre-une-comparaison, faire-entendre-un-poeme-a-voix-haute
 ---
 
 # La poésie : vers, strophes et rimes

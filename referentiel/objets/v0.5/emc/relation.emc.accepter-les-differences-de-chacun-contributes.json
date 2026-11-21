@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.accepter-les-differences-de-chacun-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respect-et-egalite-cm/contenu.json"
+  },
+  "source": "microskill.emc.accepter-les-differences-de-chacun",
+  "target": "skill.emc.respect-et-egalite-cm"
+}

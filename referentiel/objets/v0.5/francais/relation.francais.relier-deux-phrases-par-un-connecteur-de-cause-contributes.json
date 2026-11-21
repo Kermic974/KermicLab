@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.relier-deux-phrases-par-un-connecteur-de-cause-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pronoms-et-reprises-cm/contenu.json"
+  },
+  "source": "microskill.francais.relier-deux-phrases-par-un-connecteur-de-cause",
+  "target": "skill.francais.pronoms-et-reprises-cm"
+}

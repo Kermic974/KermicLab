@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.placer-des-evenements-sur-une-frise-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-le-temps-c2/contenu.json"
+  },
+  "source": "microskill.histoire.placer-des-evenements-sur-une-frise",
+  "target": "skill.histoire.se-reperer-dans-le-temps-c2"
+}

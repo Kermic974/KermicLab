@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-la-bonne-ecriture-d-un-mot-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-lexicale-cm/contenu.json"
+  },
+  "source": "microskill.francais.choisir-la-bonne-ecriture-d-un-mot",
+  "target": "skill.francais.orthographe-lexicale-cm"
+}

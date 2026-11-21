@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.philosophie-liberte-et-justice-l-teaches-distinguer-pouvoir-droit-et-legitimite-au-lycee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "notion.philosophie.philosophie-liberte-et-justice-l",
+  "target": "microskill.philosophie.distinguer-pouvoir-droit-et-legitimite-au-lycee"
+}

@@ -5,13 +5,6 @@ sujet: ses/ses-travail-chomage-et-protection-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - chomage
-  - inegalites
-competences:
-  - ses-travail-chomage-et-protection-l-comprendre
-  - ses-travail-chomage-et-protection-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Quelles sont les causes du chômage ?
   - Qu'est-ce que la protection sociale en SES ?
   - Qu'est-ce que la précarité de l'emploi ?
+prerequis: chomage, inegalites
+niveaux: premiere, terminale
+competences: calculer-un-taux-de-chomage-au-lycee, distinguer-chomage-conjoncturel-structurel-et-frictionnel, analyser-les-effets-de-la-flexibilite-de-l-emploi, expliquer-le-financement-de-la-protection-sociale, evaluer-une-politique-de-l-emploi
 ---
 
 # Travail, emploi, chômage et protection sociale

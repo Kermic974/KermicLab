@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-la-position-relative-d-une-droite-et-d-un-plan-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthogonalite-et-espace-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-la-position-relative-d-une-droite-et-d-un-plan",
+  "target": "skill.mathematiques.orthogonalite-et-espace-l"
+}

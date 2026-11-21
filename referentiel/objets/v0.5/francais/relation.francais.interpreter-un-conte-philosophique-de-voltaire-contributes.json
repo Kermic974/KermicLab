@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.interpreter-un-conte-philosophique-de-voltaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/denoncer-les-travers-de-la-societe-c4/contenu.json"
+  },
+  "source": "microskill.francais.interpreter-un-conte-philosophique-de-voltaire",
+  "target": "skill.francais.denoncer-les-travers-de-la-societe-c4"
+}

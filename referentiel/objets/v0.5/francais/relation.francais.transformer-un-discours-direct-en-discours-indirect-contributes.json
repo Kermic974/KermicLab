@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.transformer-un-discours-direct-en-discours-indirect-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "microskill.francais.transformer-un-discours-direct-en-discours-indirect",
+  "target": "skill.francais.discours-rapporte-cm"
+}

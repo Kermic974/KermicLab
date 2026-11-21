@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.nommer-les-sources-d-energie-renouvelables-et-non-renouvelables-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-sources-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.nommer-les-sources-d-energie-renouvelables-et-non-renouvelables",
+  "target": "skill.physique-chimie.energie-et-sources-cm"
+}

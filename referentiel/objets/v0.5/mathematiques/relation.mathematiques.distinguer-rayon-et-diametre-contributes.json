@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.distinguer-rayon-et-diametre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cercle-compas-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.distinguer-rayon-et-diametre",
+  "target": "skill.mathematiques.cercle-compas-cm"
+}

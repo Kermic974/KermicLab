@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.volumes-contenances-cm-teaches-calculer-le-volume-d-un-pave-droit",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volumes-contenances-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.volumes-contenances-cm",
+  "target": "microskill.mathematiques.calculer-le-volume-d-un-pave-droit"
+}

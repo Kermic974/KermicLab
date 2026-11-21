@@ -5,13 +5,7 @@ sujet: histoire/monotheisme-juif-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - premieres-civilisations-6e
-competences:
-  - monotheisme-juif-6e-comprendre
-  - monotheisme-juif-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Que croient les Hébreux et le judaïsme ancien ?
   - Qu'est-ce que la Bible hébraïque ?
   - Pourquoi parle-t-on de monothéisme ?
+prerequis: premieres-civilisations-6e
+niveaux: cycle-3
+competences: definir-les-hebreux-et-leur-monotheisme, identifier-moise-et-la-sortie-d-egypte, situer-jerusalem, distinguer-sources-et-traces-d-un-recit-fondateur
 ---
 
 # Le monothéisme juif dans un monde polythéiste

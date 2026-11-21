@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.univers-et-atome-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/univers-et-atome-l/contenu.json"
+  },
+  "object": "notion.physique-chimie.univers-et-atome-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

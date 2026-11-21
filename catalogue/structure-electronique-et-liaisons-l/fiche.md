@@ -5,13 +5,6 @@ sujet: physique-chimie/structure-electronique-et-liaisons-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - atomes-et-molecules
-  - tableau-periodique
-competences:
-  - structure-electronique-et-liaisons-l-comprendre
-  - structure-electronique-et-liaisons-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce que la règle de l'octet ?
   - Comment représenter une molécule avec Lewis ?
   - Comment se forme un ion ?
+prerequis: atomes-et-molecules, tableau-periodique
+niveaux: seconde, premiere
+competences: ecrire-la-configuration-electronique-d-un-atome, appliquer-la-regle-de-l-octet, representer-une-molecule-en-schema-de-lewis, prevoir-la-geometrie-d-une-molecule-simple
 ---
 
 # Structure électronique, ions et liaisons covalentes

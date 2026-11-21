@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-le-role-des-cites-marchandes-italiennes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mediterranee-medievale-l/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-le-role-des-cites-marchandes-italiennes",
+  "target": "skill.histoire.mediterranee-medievale-l"
+}

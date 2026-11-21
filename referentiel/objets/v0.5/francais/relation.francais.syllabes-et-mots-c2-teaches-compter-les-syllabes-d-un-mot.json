@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.syllabes-et-mots-c2-teaches-compter-les-syllabes-d-un-mot",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "notion.francais.syllabes-et-mots-c2",
+  "target": "microskill.francais.compter-les-syllabes-d-un-mot"
+}

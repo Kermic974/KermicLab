@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.esprit-critique-et-medias-c4-teaches-verifier-une-information-en-recoupant-des-sources",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-c4/contenu.json"
+  },
+  "source": "notion.emc.esprit-critique-et-medias-c4",
+  "target": "microskill.emc.verifier-une-information-en-recoupant-des-sources"
+}

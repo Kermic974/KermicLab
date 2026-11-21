@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-deroulement-d-un-vote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyen-et-engagement-cm/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-deroulement-d-un-vote",
+  "target": "skill.emc.citoyen-et-engagement-cm"
+}

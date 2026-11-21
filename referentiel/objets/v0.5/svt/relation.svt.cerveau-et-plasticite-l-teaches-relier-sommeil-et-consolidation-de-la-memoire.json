@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.cerveau-et-plasticite-l-teaches-relier-sommeil-et-consolidation-de-la-memoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cerveau-et-plasticite-l/contenu.json"
+  },
+  "source": "notion.svt.cerveau-et-plasticite-l",
+  "target": "microskill.svt.relier-sommeil-et-consolidation-de-la-memoire"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.droit-et-regle-6e-requires-regles-et-justice-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droit-et-regle-6e/contenu.json"
+  },
+  "source": "notion.emc.droit-et-regle-6e",
+  "target": "notion.emc.regles-et-justice-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Règles, lois et justice » précède « Le droit et la règle : lois, règlement, justice » dans la progression du programme (lien à relire)."
+}

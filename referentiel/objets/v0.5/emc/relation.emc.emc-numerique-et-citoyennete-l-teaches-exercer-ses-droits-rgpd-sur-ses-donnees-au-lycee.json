@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-numerique-et-citoyennete-l-teaches-exercer-ses-droits-rgpd-sur-ses-donnees-au-lycee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-numerique-et-citoyennete-l/contenu.json"
+  },
+  "source": "notion.emc.emc-numerique-et-citoyennete-l",
+  "target": "microskill.emc.exercer-ses-droits-rgpd-sur-ses-donnees-au-lycee"
+}

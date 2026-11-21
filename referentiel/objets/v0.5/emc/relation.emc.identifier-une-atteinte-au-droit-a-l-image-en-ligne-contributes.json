@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-une-atteinte-au-droit-a-l-image-en-ligne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-numerique-et-citoyennete-l/contenu.json"
+  },
+  "source": "microskill.emc.identifier-une-atteinte-au-droit-a-l-image-en-ligne",
+  "target": "skill.emc.emc-numerique-et-citoyennete-l"
+}

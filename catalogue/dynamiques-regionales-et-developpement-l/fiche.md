@@ -5,13 +5,6 @@ sujet: geographie/dynamiques-regionales-et-developpement-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - mondialisation
-  - dynamiques-territoriales
-competences:
-  - dynamiques-regionales-et-developpement-l-comprendre
-  - dynamiques-regionales-et-developpement-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce que l'IDH ?
   - Pourquoi l'Asie est-elle émergente ?
   - Quelles mutations en Afrique ?
+prerequis: mondialisation, dynamiques-territoriales
+niveaux: terminale
+competences: lire-l-idh-et-ses-trois-composantes, caracteriser-un-pays-emergent, distinguer-pma-et-pays-emergent, comparer-le-developpement-de-deux-regions
 ---
 
 # Régions du monde : inégalités de développement et mutations

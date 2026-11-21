@@ -5,13 +5,6 @@ sujet: francais/theatre-et-representation-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - theatre
-  - figures-de-style
-competences:
-  - theatre-et-representation-l-comprendre
-  - theatre-et-representation-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce que la double énonciation ?
   - Qu'est-ce que le théâtre de l'absurde ?
   - Qu'est-ce qu'une mise en scène ?
+prerequis: theatre, figures-de-style
+niveaux: seconde, premiere
+competences: expliquer-la-regle-des-trois-unites, distinguer-repliques-et-didascalies-au-lycee, interpreter-le-theatre-de-l-absurde, justifier-une-mise-en-scene
 ---
 
 # Le théâtre : tragédie, comédie et mise en scène

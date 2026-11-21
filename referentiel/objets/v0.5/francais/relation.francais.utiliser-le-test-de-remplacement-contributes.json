@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.utiliser-le-test-de-remplacement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-et-orthographe-c2/contenu.json"
+  },
+  "source": "microskill.francais.utiliser-le-test-de-remplacement",
+  "target": "skill.francais.homophones-et-orthographe-c2"
+}

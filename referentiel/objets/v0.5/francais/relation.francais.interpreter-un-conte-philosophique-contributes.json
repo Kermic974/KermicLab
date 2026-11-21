@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.interpreter-un-conte-philosophique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation-et-litterature-d-idees-l/contenu.json"
+  },
+  "source": "microskill.francais.interpreter-un-conte-philosophique",
+  "target": "skill.francais.argumentation-et-litterature-d-idees-l"
+}

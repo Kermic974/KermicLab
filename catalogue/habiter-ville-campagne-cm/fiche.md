@@ -5,14 +5,7 @@ sujet: geographie/habiter-ville-campagne-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - paysages-et-habiter-c2
-  - lire-une-carte-cm
-competences:
-  - habiter-ville-campagne-cm-comprendre
-  - habiter-ville-campagne-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -30,6 +23,9 @@ questions:
   - Comment les gens se logent-ils ?
   - C'est quoi la densité de population ?
   - Pourquoi les gens habitent-ils en ville ?
+prerequis: paysages-et-habiter-c2, lire-une-carte-cm
+niveaux: cycle-3
+competences: calculer-une-densite-de-population, comparer-les-services-en-ville-et-a-la-campagne, decrire-les-deplacements-a-la-campagne, justifier-un-choix-d-habitat
 ---
 
 # Habiter en ville ou à la campagne

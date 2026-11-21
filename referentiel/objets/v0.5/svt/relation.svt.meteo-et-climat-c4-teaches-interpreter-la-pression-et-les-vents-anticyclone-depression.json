@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.meteo-et-climat-c4-teaches-interpreter-la-pression-et-les-vents-anticyclone-depression",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meteo-et-climat-c4/contenu.json"
+  },
+  "source": "notion.svt.meteo-et-climat-c4",
+  "target": "microskill.svt.interpreter-la-pression-et-les-vents-anticyclone-depression"
+}

@@ -5,15 +5,7 @@ sujet: mathematiques/problemes-a-etapes-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - problemes-c2
-  - addition-soustraction-posees-cm
-  - multiplication-posee-cm
-competences:
-  - problemes-a-etapes-cm-comprendre
-  - problemes-a-etapes-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +20,9 @@ questions:
   - Comment résoudre un problème à plusieurs étapes ?
   - Comment choisir la bonne opération dans un problème ?
   - Comment bien lire un énoncé de maths ?
+prerequis: problemes-c2, addition-soustraction-posees-cm, multiplication-posee-cm
+niveaux: cycle-3
+competences: schematiser-un-probleme, choisir-les-operations-d-un-probleme, resoudre-un-probleme-a-plusieurs-etapes, verifier-la-vraisemblance-d-un-resultat
 ---
 
 # Résoudre des problèmes à plusieurs étapes

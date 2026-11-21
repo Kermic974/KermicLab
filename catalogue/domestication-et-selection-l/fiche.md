@@ -5,13 +5,6 @@ sujet: svt/domestication-et-selection-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - evolution-et-selection-naturelle
-  - genetique-et-heredite
-competences:
-  - domestication-et-selection-l-comprendre
-  - domestication-et-selection-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Comment les plantes ont-elles été domestiquées ?
   - Qu'est-ce que la sélection artificielle ?
   - Quelle différence entre croisement et OGM ?
+prerequis: evolution-et-selection-naturelle, genetique-et-heredite
+niveaux: terminale
+competences: expliquer-la-domestication-par-la-selection-artificielle, comparer-une-plante-cultivee-et-son-ancetre-sauvage, evaluer-l-effet-de-la-selection-sur-la-diversite-genetique, distinguer-croisement-et-organisme-genetiquement-modifie
 ---
 
 # Domestication, sélection et agriculture

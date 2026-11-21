@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerres-mondiales-et-memoires-l-teaches-expliquer-le-proces-de-nuremberg",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-et-memoires-l/contenu.json"
+  },
+  "source": "notion.histoire.guerres-mondiales-et-memoires-l",
+  "target": "microskill.histoire.expliquer-le-proces-de-nuremberg"
+}

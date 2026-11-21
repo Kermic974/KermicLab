@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.prevoir-la-fonte-d-un-glacon-au-soleil-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eau-air-et-matiere-c2/contenu.json"
+  },
+  "source": "microskill.physique-chimie.prevoir-la-fonte-d-un-glacon-au-soleil",
+  "target": "skill.physique-chimie.eau-air-et-matiere-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-la-presence-d-une-oasis-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-6e/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-la-presence-d-une-oasis",
+  "target": "skill.geographie.habiter-6e"
+}

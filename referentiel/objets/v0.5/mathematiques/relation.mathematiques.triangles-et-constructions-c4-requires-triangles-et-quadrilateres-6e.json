@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.triangles-et-constructions-c4-requires-triangles-et-quadrilateres-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/triangles-et-constructions-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.triangles-et-constructions-c4",
+  "target": "notion.mathematiques.triangles-et-quadrilateres-6e",
+  "rationale": "Prérequis déclaré dans la fiche : « Triangles et quadrilatères en 6e » précède « Triangles : angles, droites remarquables et constructions » dans la progression du programme (lien à relire)."
+}

@@ -5,13 +5,6 @@ sujet: emc/emc-democratie-et-institutions-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - democratie
-  - etat-de-droit
-competences:
-  - emc-democratie-et-institutions-l-comprendre
-  - emc-democratie-et-institutions-l-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Quelles sont les institutions de la Ve République ?
   - Qu'est-ce que la séparation des pouvoirs ?
   - Comment participer à la vie démocratique ?
+prerequis: democratie, etat-de-droit
+niveaux: seconde, premiere
+competences: distinguer-les-pouvoirs-legislatif-executif-et-judiciaire, identifier-qui-vote-la-loi-et-qui-l-applique, expliquer-le-fonctionnement-d-un-referendum, distinguer-democratie-representative-et-democratie-participative-au-lycee
 ---
 
 # Démocratie, institutions et participation

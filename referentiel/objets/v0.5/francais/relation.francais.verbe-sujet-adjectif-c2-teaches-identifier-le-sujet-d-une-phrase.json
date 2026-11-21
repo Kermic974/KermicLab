@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.verbe-sujet-adjectif-c2-teaches-identifier-le-sujet-d-une-phrase",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verbe-sujet-adjectif-c2/contenu.json"
+  },
+  "source": "notion.francais.verbe-sujet-adjectif-c2",
+  "target": "microskill.francais.identifier-le-sujet-d-une-phrase"
+}

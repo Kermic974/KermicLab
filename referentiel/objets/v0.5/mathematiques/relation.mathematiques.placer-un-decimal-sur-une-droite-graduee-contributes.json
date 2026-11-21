@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.placer-un-decimal-sur-une-droite-graduee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-decimaux-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.placer-un-decimal-sur-une-droite-graduee",
+  "target": "skill.mathematiques.nombres-decimaux-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.estimer-le-resultat-d-une-operation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/entiers-et-operations-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.estimer-le-resultat-d-une-operation",
+  "target": "skill.mathematiques.entiers-et-operations-6e"
+}

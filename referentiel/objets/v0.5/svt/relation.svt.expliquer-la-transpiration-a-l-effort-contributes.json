@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-transpiration-a-l-effort-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/organisme-et-effort-6e/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-transpiration-a-l-effort",
+  "target": "skill.svt.organisme-et-effort-6e"
+}

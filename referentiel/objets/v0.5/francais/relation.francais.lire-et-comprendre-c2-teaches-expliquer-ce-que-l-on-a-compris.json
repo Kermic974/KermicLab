@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lire-et-comprendre-c2-teaches-expliquer-ce-que-l-on-a-compris",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-et-comprendre-c2/contenu.json"
+  },
+  "source": "notion.francais.lire-et-comprendre-c2",
+  "target": "microskill.francais.expliquer-ce-que-l-on-a-compris"
+}

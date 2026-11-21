@@ -5,13 +5,7 @@ sujet: mathematiques/pourcentages-et-evolutions-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e
-prerequis:
-  - proportionnalite
-competences:
-  - pourcentages-et-evolutions-c4-comprendre
-  - pourcentages-et-evolutions-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment calculer un prix après une réduction ?
   - Qu'est-ce qu'un coefficient multiplicateur ?
   - Comment calculer une augmentation en pourcentage ?
+prerequis: proportionnalite
+niveaux: cycle-4
+competences: calculer-un-pourcentage, calculer-un-prix-apres-reduction, calculer-une-evolution-en-pourcentage, interpreter-des-evolutions-successives
 ---
 
 # Pourcentages, évolutions et taux

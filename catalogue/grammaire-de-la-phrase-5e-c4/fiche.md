@@ -5,13 +5,7 @@ sujet: francais/grammaire-de-la-phrase-5e-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e
-prerequis:
-  - sujet-verbe-complements-6e
-competences:
-  - grammaire-de-la-phrase-5e-c4-comprendre
-  - grammaire-de-la-phrase-5e-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qu'est-ce qu'une proposition subordonnée relative ?
   - Quelle différence entre juxtaposition, coordination et subordination ?
   - Qu'est-ce qu'une apposition ?
+prerequis: sujet-verbe-complements-6e
+niveaux: cycle-4
+competences: identifier-une-expansion-du-nom, reconnaitre-une-proposition-relative-au-cycle-4, reperer-une-apposition, compter-les-propositions-d-une-phrase-au-cycle-4
 ---
 
 # Grammaire de la phrase en 5e : fonctions, expansions, propositions

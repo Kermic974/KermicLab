@@ -5,14 +5,7 @@ sujet: mathematiques/durees-et-horaires-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - heure-et-calendrier-c2
-  - addition-soustraction-posees-cm
-competences:
-  - durees-et-horaires-cm-comprendre
-  - durees-et-horaires-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Comment calculer une durée entre deux heures ?
   - Combien de minutes dans une heure et demie ?
   - Comment additionner des durées ?
+prerequis: heure-et-calendrier-c2, addition-soustraction-posees-cm
+niveaux: cycle-3
+competences: convertir-des-heures-en-minutes, calculer-une-duree-entre-deux-horaires, additionner-des-durees, lire-et-exprimer-un-horaire
 ---
 
 # Durées et horaires

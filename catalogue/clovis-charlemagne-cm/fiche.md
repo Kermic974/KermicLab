@@ -5,13 +5,7 @@ sujet: histoire/clovis-charlemagne-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - gaulois-gallo-romains-cm
-competences:
-  - clovis-charlemagne-cm-comprendre
-  - clovis-charlemagne-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Pourquoi Charlemagne est-il célèbre ?
   - Quand Charlemagne est-il devenu empereur ?
   - Pourquoi Clovis s'est-il fait baptiser ?
+prerequis: gaulois-gallo-romains-cm
+niveaux: cycle-3
+competences: situer-le-bapteme-de-clovis, situer-le-couronnement-de-charlemagne, expliquer-le-role-des-missi-dominici, decrire-le-passage-de-la-gaule-au-royaume-des-francs
 ---
 
 # Clovis et Charlemagne

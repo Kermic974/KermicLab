@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.construire-une-famille-de-mots-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-etymologie-6e/contenu.json"
+  },
+  "source": "microskill.francais.construire-une-famille-de-mots",
+  "target": "skill.francais.vocabulaire-et-etymologie-6e"
+}

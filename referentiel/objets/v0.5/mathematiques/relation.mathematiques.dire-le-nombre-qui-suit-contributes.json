@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.dire-le-nombre-qui-suit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-jusqu-a-100-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.dire-le-nombre-qui-suit",
+  "target": "skill.mathematiques.nombres-jusqu-a-100-c2"
+}

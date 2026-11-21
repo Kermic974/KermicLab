@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.respect-et-egalite-cm-teaches-reagir-face-a-un-camarade-harcele",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respect-et-egalite-cm/contenu.json"
+  },
+  "source": "notion.emc.respect-et-egalite-cm",
+  "target": "microskill.emc.reagir-face-a-un-camarade-harcele"
+}

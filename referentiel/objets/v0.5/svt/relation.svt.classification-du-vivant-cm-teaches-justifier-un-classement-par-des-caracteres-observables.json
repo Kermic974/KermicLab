@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.classification-du-vivant-cm-teaches-justifier-un-classement-par-des-caracteres-observables",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-cm/contenu.json"
+  },
+  "source": "notion.svt.classification-du-vivant-cm",
+  "target": "microskill.svt.justifier-un-classement-par-des-caracteres-observables"
+}

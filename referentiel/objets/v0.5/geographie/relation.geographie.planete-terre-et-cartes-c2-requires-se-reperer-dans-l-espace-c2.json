@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.planete-terre-et-cartes-c2-requires-se-reperer-dans-l-espace-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/planete-terre-et-cartes-c2/contenu.json"
+  },
+  "source": "notion.geographie.planete-terre-et-cartes-c2",
+  "target": "notion.geographie.se-reperer-dans-l-espace-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Se repérer dans l'espace, lire un plan » précède « La planète Terre : continents et océans » dans la progression du programme (lien à relire)."
+}

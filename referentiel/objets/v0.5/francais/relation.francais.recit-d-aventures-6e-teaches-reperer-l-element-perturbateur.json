@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.recit-d-aventures-6e-teaches-reperer-l-element-perturbateur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recit-d-aventures-6e/contenu.json"
+  },
+  "source": "notion.francais.recit-d-aventures-6e",
+  "target": "microskill.francais.reperer-l-element-perturbateur"
+}

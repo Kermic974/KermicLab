@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reperer-les-marques-d-une-parole-rapportee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "microskill.francais.reperer-les-marques-d-une-parole-rapportee",
+  "target": "skill.francais.discours-rapporte-cm"
+}

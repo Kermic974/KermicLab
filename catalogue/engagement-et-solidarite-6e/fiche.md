@@ -5,13 +5,7 @@ sujet: emc/engagement-et-solidarite-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - citoyen-et-engagement-cm
-competences:
-  - engagement-et-solidarite-6e-comprendre
-  - engagement-et-solidarite-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment s'engager au collège en 6e ?
   - Que fait un délégué de classe au collège ?
   - Qu'est-ce que la solidarité ?
+prerequis: citoyen-et-engagement-cm
+niveaux: cycle-3
+competences: identifier-qui-elit-les-delegues-de-classe, decrire-le-role-d-un-delegue-au-college, expliquer-la-solidarite-par-des-actions-concretes, distinguer-benevolat-et-travail-remunere
 ---
 
 # S'engager : solidarité, délégués et vie du collège

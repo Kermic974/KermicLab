@@ -5,13 +5,7 @@ sujet: francais/ecrire-et-reecrire-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - ecrire-pour-raconter-et-decrire-6e
-competences:
-  - ecrire-et-reecrire-c4-comprendre
-  - ecrire-et-reecrire-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment écrire un texte argumentatif au collège ?
   - Comment structurer un paragraphe ?
   - Comment réécrire pour améliorer un texte ?
+prerequis: ecrire-pour-raconter-et-decrire-6e
+niveaux: cycle-4
+competences: identifier-la-these-d-un-texte-argumentatif-au-cycle-4, utiliser-un-connecteur-d-opposition, planifier-un-texte-argumentatif, reecrire-un-texte-pour-l-ameliorer
 ---
 
 # Écrire, argumenter et réécrire au collège

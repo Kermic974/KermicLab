@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-les-coordonnees-d-un-point-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-plan-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-les-coordonnees-d-un-point",
+  "target": "skill.mathematiques.reperage-plan-cm"
+}

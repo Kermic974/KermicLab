@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-democratie-representative-et-democratie-participative-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-democratie-et-institutions-l/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-democratie-representative-et-democratie-participative-au-lycee",
+  "target": "skill.emc.emc-democratie-et-institutions-l"
+}
