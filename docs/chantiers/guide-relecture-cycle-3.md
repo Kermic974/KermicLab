@@ -13,6 +13,8 @@ Ce guide aide à **valider** les 125 notions ajoutées par la PR #398. Il **ne r
 | Exercices « nombre » : indices présents, réponse cohérente avec la solution | indices présents ; 12 solutions décrivent le raisonnement sans écrire le résultat (à relire, pas d'erreur détectée) |
 | Faits vérifiables repris au programme (dates d'histoire, chiffres) | recoupés un à un lors de la rédaction, **mais non validés par une source officielle** |
 
+**Double lecture des corrigés** : le fichier [guide-relecture-cycle-3-corriges.md](guide-relecture-cycle-3-corriges.md) liste, pour chaque notion, la réponse attendue de chaque exercice et les dates et chiffres cités. Sa relecture a fait corriger cinq points : (1) « court » proposé comme verbe, alors qu'il peut être adjectif ; (2) un choix de QCM de proportionnalité mal formulé ; (3) un pourcentage de citoyens athéniens trop précis (désormais « de l'ordre de 10 à 20 % ») ; (4) « ville la plus peuplée du monde », classement variable selon la source (question reformulée sur les mégalopoles de plus de 10 millions d'habitants) ; (5) une explication d'anglais bâclée. Un relecteur humain trouvera probablement d'autres points du même ordre.
+
 **Limites connues** : (a) dans environ 47 % des QCM, la bonne réponse est aussi le choix le plus long, ce qui peut aider à deviner ; (b) la matrice de couverture de [catalogue-primaire.md](catalogue-primaire.md) est un rapprochement interne, pas un contrôle du programme officiel ; (c) l'EPS ne traite que les savoirs ; seul l'anglais est couvert en langues vivantes.
 
 ## 2. Comment relire (30 minutes par matière environ)

@@ -70,14 +70,14 @@
       {
         "type": "qcm",
         "titre": "Exercice 3",
-        "question": "Dans quelle ville se trouve la plus grande population urbaine ?",
+        "question": "Laquelle de ces villes est une mégalopole de plus de 10 millions d'habitants ?",
         "choix": [
-          "Lyon",
-          "Londres",
           "Tokyo",
-          "Paris"
+          "Lyon",
+          "Bordeaux",
+          "Nantes"
         ],
-        "bonne": 2,
+        "bonne": 0,
         "explication": "L'agglomération de Tokyo dépasse 35 millions d'habitants."
       }
     ]

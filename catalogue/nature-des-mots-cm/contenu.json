@@ -73,15 +73,15 @@
       {
         "type": "qcm",
         "titre": "Exercice 3",
-        "question": "Quel mot est un verbe ?",
+        "question": "Dans « Les enfants mangent vite », quel mot est le verbe ?",
         "choix": [
-          "court",
-          "rapide",
-          "demain",
-          "bleu"
+          "Les",
+          "mangent",
+          "enfants",
+          "vite"
         ],
-        "bonne": 0,
-        "explication": "« court » vient de courir (il court)."
+        "bonne": 1,
+        "explication": "« mangent » est le verbe : on peut changer le temps (ils mangeaient)."
       }
     ]
   },
