@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.systeme-immunitaire-requires-microbes-et-sante-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-immunitaire/contenu.json"
+  },
+  "source": "notion.svt.systeme-immunitaire",
+  "target": "notion.svt.microbes-et-sante-c4",
+  "rationale": "« Micro-organismes, hygiène et santé » : Les micro-organismes et l’hygiène précèdent les défenses de l’organisme."
+}

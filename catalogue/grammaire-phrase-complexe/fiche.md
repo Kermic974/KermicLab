@@ -20,7 +20,7 @@ questions:
   - Quelle est la différence entre juxtaposition et coordination ?
   - À quoi sert une proposition subordonnée ?
 classes: 4e, 3e
-prerequis:
+prerequis: grammaire-de-la-phrase-5e-c4
 niveaux: cycle-4
 competences: compter-les-propositions-d-une-phrase, distinguer-juxtaposition-coordination-et-subordination, identifier-une-proposition-subordonnee, relier-deux-propositions-par-un-connecteur-adapte, transformer-une-phrase-simple-en-phrase-complexe
 ---

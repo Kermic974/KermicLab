@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.masse-volumique-et-melanges-requires-melanges-et-solutions-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-volumique-et-melanges/contenu.json"
+  },
+  "source": "notion.physique-chimie.masse-volumique-et-melanges",
+  "target": "notion.physique-chimie.melanges-et-solutions-cm",
+  "rationale": "« Mélanges, dissolution et séparation » : La masse, le volume et les mélanges du cycle 3 précèdent la masse volumique et les solutions."
+}

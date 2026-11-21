@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.fractions-requires-fractions-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions/contenu.json"
+  },
+  "source": "notion.mathematiques.fractions",
+  "target": "notion.mathematiques.fractions-cm",
+  "rationale": "« Les fractions au CM » : Les fractions du cycle 3 (partage, fraction d’une quantité, sommes) sont étendues au collège."
+}

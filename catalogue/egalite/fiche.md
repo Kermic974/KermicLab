@@ -15,7 +15,7 @@ questions:
   - Pourquoi l'égalité n'est-elle pas toujours un traitement identique ?
   - what is equality?
 classes: 5e
-prerequis:
+prerequis: regles-vivre-ensemble-6e
 niveaux: cycle-4
 competences: distinguer-egalite-de-droits-et-egalite-reelle, justifier-un-amenagement-adapte-a-une-situation-de-handicap, analyser-une-difference-de-traitement-legitime-ou-illegitime, expliquer-le-role-des-politiques-publiques-dans-l-egalite
 ---

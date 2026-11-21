@@ -77,7 +77,7 @@ test("référentiel : notions pilotes renseignées et indicateur des prérequis"
     assert.ok(Array.isArray(m.prerequis) && m.competences.length && m.niveaux.length && m.duree, `${id} incomplète`);
     for (const p of m.prerequis) assert.ok(parId[p], `${id} : prérequis inconnu ${p}`);
   }
-  assert.deepEqual(parId.proportionnalite.prerequis, ["fractions", "nombres-decimaux"]);
+  assert.deepEqual(parId.proportionnalite.prerequis, ["fractions", "nombres-decimaux", "proportionnalite-cm", "moyenne-et-proportions-cm"]);
   assert.equal(parId.echecs.prerequis, undefined, "les champs restent facultatifs");
   const indicateur = indicateurReferentiel(index.maquettes);
   assert.ok(indicateur.avecPrerequis >= 4 && indicateur.avecPrerequis <= indicateur.notions);

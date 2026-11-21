@@ -18,7 +18,7 @@ questions:
   - Que change le traité de Maastricht ?
   - Quelles étapes ont mené au traité de Maastricht ?
 classes: 3e
-prerequis: seconde-guerre-mondiale
+prerequis: seconde-guerre-mondiale, france-europe-depuis-1945-cm
 niveaux: cycle-4, terminale
 competences: expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945, situer-les-etapes-de-la-ceca-a-l-union-europeenne, distinguer-les-etats-fondateurs-des-elargissements, analyser-un-traite-europeen-rome-maastricht, discuter-la-souverainete-nationale-et-les-institutions-europeennes
 ---

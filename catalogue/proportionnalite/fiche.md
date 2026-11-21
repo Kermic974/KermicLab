@@ -31,7 +31,7 @@ questions:
   - comment marche le produit en croix
   - je ne comprends pas la règle de trois
   - how do percentages work?
-prerequis: fractions, nombres-decimaux
+prerequis: fractions, nombres-decimaux, proportionnalite-cm, moyenne-et-proportions-cm
 niveaux: cycle-3, cycle-4, seconde
 competences: reconnaitre-une-situation-de-proportionnalite, utiliser-un-coefficient-de-proportionnalite, calculer-une-quatrieme-proportionnelle, appliquer-un-pourcentage
 ---

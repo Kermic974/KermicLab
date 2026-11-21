@@ -16,7 +16,7 @@ questions:
   - Quelles sont les limites de la liberté d'expression ?
   - what is freedom?
 classes: 4e
-prerequis:
+prerequis: droit-et-regle-6e
 niveaux: cycle-4
 competences: distinguer-liberte-et-absence-de-limites, identifier-les-libertes-protegees-par-les-textes, apprecier-une-restriction-a-une-liberte-selon-la-loi-la-necessite-et-la-proportionnalite, distinguer-liberte-d-expression-et-harcelement
 ---

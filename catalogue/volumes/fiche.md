@@ -30,7 +30,7 @@ questions:
   - je ne comprends pas la différence entre litre et cm3
   - comment calculer le volume d'un cylindre
   - how do you find the volume of a cube?
-prerequis: perimetres-aires
+prerequis: perimetres-aires, volumes-contenances-cm
 niveaux: cycle-3, cycle-4
 competences: calculer-le-volume-d-un-pave, convertir-volumes-et-contenances, calculer-le-volume-d-un-prisme-et-d-un-cylindre, calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule
 ---

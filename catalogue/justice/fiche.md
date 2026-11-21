@@ -15,7 +15,7 @@ questions:
   - Que signifie la présomption d'innocence ?
   - what is justice?
 classes: 4e
-prerequis: etat-de-droit
+prerequis: etat-de-droit, droit-et-regle-6e
 niveaux: cycle-4
 competences: distinguer-justice-et-vengeance, expliquer-le-principe-du-contradictoire, expliquer-la-presomption-d-innocence, identifier-les-garanties-d-independance-de-la-justice
 ---

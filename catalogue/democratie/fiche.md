@@ -16,7 +16,7 @@ questions:
   - Pourquoi la démocratie protège-t-elle les minorités ?
   - what is democracy?
 classes: 3e
-prerequis: liberte
+prerequis: liberte, citoyen-et-engagement-cm
 niveaux: cycle-4
 competences: expliquer-le-pluralisme-politique, distinguer-democratie-representative-et-democratie-participative, justifier-les-limites-du-pouvoir-de-la-majorite, analyser-les-conditions-d-un-vote-libre-et-sincere
 ---

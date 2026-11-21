@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.produit-scalaire-requires-geometrie-repere-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/produit-scalaire/contenu.json"
+  },
+  "source": "notion.mathematiques.produit-scalaire",
+  "target": "notion.mathematiques.geometrie-repere-l",
+  "rationale": "« Géométrie repérée : distances, milieux et équations de droites » : Le produit scalaire mobilise cosinus, radian, distances et coordonnées."
+}

@@ -45,7 +45,7 @@ questions:
   - pourquoi les pollinisateurs sont-ils importants ?
   - comment protéger la biodiversité près de chez moi ?
 classes: 6e, 5e
-prerequis:
+prerequis: biodiversite-et-chaines-cm, classification-du-vivant-6e
 niveaux: cycle-3, cycle-4, seconde
 competences: construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations, distinguer-producteurs-consommateurs-et-decomposeurs, calculer-le-transfert-d-energie-entre-niveaux-trophiques, identifier-les-causes-de-perte-de-biodiversite, proposer-une-action-de-protection-d-un-milieu
 ---

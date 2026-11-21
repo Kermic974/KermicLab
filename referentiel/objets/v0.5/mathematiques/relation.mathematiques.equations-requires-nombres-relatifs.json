@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.equations-requires-nombres-relatifs",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/equations/contenu.json"
+  },
+  "source": "notion.mathematiques.equations",
+  "target": "notion.mathematiques.nombres-relatifs",
+  "rationale": "« Les nombres relatifs » : Résoudre une équation suppose le calcul littéral et le calcul avec les relatifs."
+}

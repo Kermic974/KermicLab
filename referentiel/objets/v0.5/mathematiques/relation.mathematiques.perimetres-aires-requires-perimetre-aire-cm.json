@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.perimetres-aires-requires-perimetre-aire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetres-aires/contenu.json"
+  },
+  "source": "notion.mathematiques.perimetres-aires",
+  "target": "notion.mathematiques.perimetre-aire-cm",
+  "rationale": "« Périmètre et aire » : Le périmètre et l’aire du cycle 3 sont étendus à de nouvelles figures et unités."
+}

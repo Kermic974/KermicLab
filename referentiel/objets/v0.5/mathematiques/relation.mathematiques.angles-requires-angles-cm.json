@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.angles-requires-angles-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/angles/contenu.json"
+  },
+  "source": "notion.mathematiques.angles",
+  "target": "notion.mathematiques.angles-cm",
+  "rationale": "« Les angles » : Les angles mesurés et tracés au cycle 3 sont repris dans les triangles et les droites parallèles."
+}

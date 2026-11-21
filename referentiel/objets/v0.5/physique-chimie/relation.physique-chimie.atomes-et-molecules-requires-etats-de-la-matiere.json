@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.atomes-et-molecules-requires-etats-de-la-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/atomes-et-molecules/contenu.json"
+  },
+  "source": "notion.physique-chimie.atomes-et-molecules",
+  "target": "notion.physique-chimie.etats-de-la-matiere",
+  "rationale": "« Les états de la matière » : Le modèle particulaire des états de la matière prépare les atomes et les molécules."
+}

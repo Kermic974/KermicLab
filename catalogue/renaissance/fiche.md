@@ -19,7 +19,7 @@ questions:
   - Qui est Léonard de Vinci ?
   - Que défend l'humanisme ?
 classes: 5e
-prerequis:
+prerequis: francois-ier-cm
 niveaux: cycle-4, seconde
 competences: situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte, caracteriser-l-humanisme-et-ses-acteurs, analyser-le-role-des-mecenes-et-des-artistes, expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees
 ---

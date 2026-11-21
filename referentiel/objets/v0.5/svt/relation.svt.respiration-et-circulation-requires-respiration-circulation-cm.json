@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.respiration-et-circulation-requires-respiration-circulation-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-et-circulation/contenu.json"
+  },
+  "source": "notion.svt.respiration-et-circulation",
+  "target": "notion.svt.respiration-circulation-cm",
+  "rationale": "« Respiration, cœur et circulation du sang » : Le cœur, la circulation et l’effort étudiés aux cycles précédents précèdent les échanges gazeux et le débit cardiaque."
+}

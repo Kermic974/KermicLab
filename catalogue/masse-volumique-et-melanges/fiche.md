@@ -34,7 +34,7 @@ questions:
   - comment séparer un mélange par filtration
   - what is density?
 classes: 5e, 4e
-prerequis: etats-de-la-matiere
+prerequis: etats-de-la-matiere, masse-et-volume-6e, melanges-et-solutions-cm
 niveaux: cycle-4, seconde
 competences: calculer-une-masse-volumique, calculer-une-concentration-en-masse, distinguer-un-melange-homogene-d-un-melange-heterogene, choisir-une-technique-de-separation-d-un-melange, calculer-la-masse-d-une-solution
 ---

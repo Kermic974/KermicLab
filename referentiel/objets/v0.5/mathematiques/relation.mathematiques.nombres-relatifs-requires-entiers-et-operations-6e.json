@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.nombres-relatifs-requires-entiers-et-operations-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-relatifs/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-relatifs",
+  "target": "notion.mathematiques.entiers-et-operations-6e",
+  "rationale": "« Nombres entiers et opérations en 6e » : Les relatifs étendent les entiers et les décimaux et leurs opérations."
+}

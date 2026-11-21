@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.mouvements-requires-mouvement-et-vitesse-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvements/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvements",
+  "target": "notion.physique-chimie.mouvement-et-vitesse-6e",
+  "rationale": "« Mouvement, vitesse et référentiel en 6e » : Les mouvements, la vitesse et le référentiel de 6e précèdent la trajectoire et le principe d’inertie."
+}

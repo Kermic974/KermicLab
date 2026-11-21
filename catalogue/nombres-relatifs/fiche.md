@@ -5,14 +5,7 @@ sujet: mathematiques/nombres-relatifs
 version: 1.0.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 5e, 4e
-prerequis:
-competences:
-  - reperer-et-comparer-des-relatifs
-  - additionner-et-soustraire-des-relatifs
-  - multiplier-et-diviser-des-relatifs
-  - utiliser-la-valeur-absolue
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -32,6 +25,9 @@ questions:
   - comment additionner des nombres négatifs
   - je ne comprends pas la règle des signes
   - what are negative numbers?
+prerequis: entiers-et-operations-6e, nombres-decimaux
+niveaux: cycle-4, seconde
+competences: reperer-et-comparer-des-relatifs, additionner-et-soustraire-des-relatifs, multiplier-et-diviser-des-relatifs, utiliser-la-valeur-absolue
 ---
 
 # Les nombres relatifs

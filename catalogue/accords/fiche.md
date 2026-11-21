@@ -20,7 +20,7 @@ questions:
   - Comment appliquer l'accord du participe passé avec être ?
   - Comment retrouver le sujet pour l'accord sujet-verbe ?
 classes: 5e, 4e
-prerequis: conjugaison-temps
+prerequis: conjugaison-temps, orthographe-grammaticale-6e
 niveaux: cycle-4
 competences: accorder-un-nom-un-determinant-et-un-adjectif, accorder-le-verbe-avec-son-sujet, accorder-le-participe-passe-employe-avec-etre, accorder-le-participe-passe-employe-avec-avoir, reperer-une-erreur-d-accord-dans-un-texte
 ---

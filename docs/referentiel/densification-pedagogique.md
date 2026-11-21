@@ -67,6 +67,9 @@ Dernier lot : les **259 notions** du catalogue qui n'avaient pas d'objets canoni
 
 Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages`, lint et `npm test` (926 tests) passent.
 
+## Liens depuis les notions V0 vers les cycles précédents (processus S4)
+
+Qualification des propositions de `propositions-liens-cycles-2-3-4.md` : **102 `requires`** créés sur 86 notions de la V0 (en `draft`, justification propre à chaque source), les autres écartés et documentés dans `relations-a-revoir.md`. Les prérequis déclarés passent de **550 à 652**. Comparaison de la recommandation sur 477 scénarios (une notion maîtrisée à la fois) : **35 recommandations changent**, toutes expliquées par les nouveaux prérequis. `niveaux`, `classes` et compétences des fiches sont inchangés ; seuls les `prerequis` des 82 fiches concernées évoluent. Deux tests d'attendus ont été mis à jour (`proportionnalite` et `equations` ont de nouveaux prérequis).
 ## Cycle 2 et dernières projections (ADR 0038)
 
 Le schéma `stage` admet désormais `cycle-2` ([ADR 0038](../decisions/0038-etape-cycle-2-referentiel.md)). Le Stage `stage.mathematiques.cycle-2` est créé, **51 CurriculumMappings** sont ajoutés pour les notions de cycle 2, et **55 fiches** supplémentaires sont projetées : les 51 notions de cycle 2 et les 4 notions cibles d'autres matières créées avec la technologie (leurs 4 prérequis manquants sont ajoutés). **Toutes les fiches du catalogue hors jeux sont maintenant projetées depuis le corpus canonique** ; aucune compétence générique ne subsiste. Les valeurs de `prerequis`, `niveaux` et `classes` restent identiques (vérifié fiche par fiche).

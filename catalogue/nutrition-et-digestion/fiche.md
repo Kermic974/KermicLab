@@ -37,7 +37,7 @@ questions:
   - où les nutriments passent-ils dans le sang ?
   - à quoi sert une alimentation variée ?
 classes: 5e
-prerequis:
+prerequis: nutrition-et-alimentation-6e, alimentation-digestion-cm
 niveaux: cycle-4, seconde
 competences: legender-les-organes-du-tube-digestif, expliquer-la-digestion-chimique-par-les-enzymes, expliquer-l-absorption-des-nutriments, associer-aliments-nutriments-et-besoins, evaluer-l-equilibre-d-une-alimentation
 ---

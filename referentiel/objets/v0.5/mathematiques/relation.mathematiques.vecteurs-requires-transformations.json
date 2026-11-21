@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.vecteurs-requires-transformations",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vecteurs/contenu.json"
+  },
+  "source": "notion.mathematiques.vecteurs",
+  "target": "notion.mathematiques.transformations",
+  "rationale": "« Les transformations » : Les translations préparent la notion de vecteur."
+}

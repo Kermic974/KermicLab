@@ -17,7 +17,7 @@ questions:
   - Comment organiser les déplacements quotidiens ?
   - À quoi sert l'intermodalité ?
 classes: 4e
-prerequis:
+prerequis: se-deplacer-transports-cm
 niveaux: cycle-4
 competences: distinguer-les-motifs-et-les-modes-de-deplacement, analyser-l-acces-inegal-aux-transports, identifier-les-autorites-organisatrices-des-transports, proposer-une-coordination-entre-modes-de-transport, evaluer-une-transition-des-deplacements
 ---

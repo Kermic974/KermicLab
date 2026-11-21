@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.laicite-requires-laicite-et-liberte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "notion.emc.laicite",
+  "target": "notion.emc.laicite-et-liberte-cm",
+  "rationale": "« La laïcité et la liberté d'expression » : La laïcité et la liberté d’expression du cycle 3 sont approfondies."
+}

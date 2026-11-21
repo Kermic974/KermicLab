@@ -27,7 +27,7 @@ questions:
   - quelles sont les énergies renouvelables ?
   - what is kinetic energy?
 classes: 5e, 3e
-prerequis:
+prerequis: energie-et-signaux-6e, energie-et-sources-cm
 niveaux: cycle-4, seconde
 competences: identifier-les-formes-d-energie-dans-une-conversion, calculer-le-rendement-d-une-conversion-d-energie, calculer-une-energie-cinetique, convertir-une-energie-entre-joule-et-kilowattheure
 ---

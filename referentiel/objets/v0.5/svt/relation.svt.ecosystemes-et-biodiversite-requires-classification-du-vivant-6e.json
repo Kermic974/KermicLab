@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.ecosystemes-et-biodiversite-requires-classification-du-vivant-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "notion.svt.ecosystemes-et-biodiversite",
+  "target": "notion.svt.classification-du-vivant-6e",
+  "rationale": "« Classer le vivant et la biodiversité en 6e » : Les chaînes alimentaires et la biodiversité du cycle 3 préparent les réseaux trophiques et les menaces sur la biodiversité."
+}

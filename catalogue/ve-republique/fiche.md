@@ -19,7 +19,7 @@ questions:
   - Comment fonctionne la Cinquième République ?
   - Que signifie la cohabitation ?
 classes: 3e
-prerequis: decolonisation
+prerequis: decolonisation, republique-ecole-cm
 niveaux: cycle-4, terminale
 competences: expliquer-les-circonstances-de-la-naissance-de-la-ve-republique, distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement, expliquer-l-election-du-president-au-suffrage-universel-direct, analyser-une-cohabitation, evaluer-une-reforme-institutionnelle
 ---

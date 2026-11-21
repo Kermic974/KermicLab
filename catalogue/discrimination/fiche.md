@@ -16,7 +16,7 @@ questions:
   - Comment réagir à une discrimination ?
   - what is discrimination?
 classes: 5e
-prerequis: egalite
+prerequis: egalite, regles-vivre-ensemble-6e
 niveaux: cycle-4
 competences: distinguer-stereotype-prejuge-et-discrimination, identifier-une-discrimination-juridique-a-partir-d-un-critere-prohibe, distinguer-difference-de-traitement-et-discrimination, choisir-un-recours-adapte-face-a-une-discrimination
 ---

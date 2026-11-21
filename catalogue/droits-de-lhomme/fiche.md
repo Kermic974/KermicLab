@@ -17,7 +17,7 @@ questions:
   - Que protège la DUDH ?
   - what are human rights?
 classes: 4e
-prerequis:
+prerequis: droit-et-regle-6e
 niveaux: cycle-4
 competences: distinguer-les-familles-de-droits-humains, identifier-la-portee-des-textes-ddhc-dudh-cedh, associer-un-droit-a-une-situation-concrete, expliquer-les-garanties-juridiques-des-droits
 ---

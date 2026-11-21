@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.justice-requires-droit-et-regle-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "notion.emc.justice",
+  "target": "notion.emc.droit-et-regle-6e",
+  "rationale": "« Le droit et la règle : lois, règlement, justice » : La procédure et la sanction étudiées en 6e précèdent l’indépendance et les garanties de la justice."
+}

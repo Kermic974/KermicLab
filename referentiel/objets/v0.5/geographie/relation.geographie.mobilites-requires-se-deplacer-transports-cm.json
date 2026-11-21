@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.mobilites-requires-se-deplacer-transports-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "notion.geographie.mobilites",
+  "target": "notion.geographie.se-deplacer-transports-cm",
+  "rationale": "« Se déplacer et transporter » : Les modes de transport et leur impact du cycle 3 sont repris avec les réseaux et l’accès inégal."
+}

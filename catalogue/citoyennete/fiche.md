@@ -17,7 +17,7 @@ questions:
   - Comment exercer sa citoyenneté avant 18 ans ?
   - what is citizenship?
 classes: 3e
-prerequis: democratie, droits-de-lhomme
+prerequis: democratie, droits-de-lhomme, devise-republique-cm
 niveaux: cycle-4
 competences: distinguer-citoyennete-juridique-et-participation-a-la-vie-collective, identifier-les-droits-et-les-devoirs-du-citoyen, expliquer-les-conditions-de-nationalite-et-de-participation-politique, choisir-une-forme-de-participation-adaptee-a-une-situation
 ---

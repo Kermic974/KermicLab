@@ -30,7 +30,7 @@ questions:
   - je ne comprends pas la distance focale d'une lentille
   - pourquoi y a-t-il un arc-en-ciel ?
   - how does a lens work?
-prerequis: son-et-lumiere
+prerequis: son-et-lumiere, signaux-et-information-c4
 niveaux: seconde, premiere
 competences: identifier-un-rayon-reflechi-ou-refracte, appliquer-la-loi-de-la-refraction, interpreter-la-dispersion-de-la-lumiere, determiner-la-position-d-une-image-formee-par-une-lentille
 ---

@@ -20,7 +20,7 @@ questions:
   - Comment utiliser un exemple argumentatif ?
   - À quoi sert un connecteur logique dans une argumentation ?
 classes: 4e, 3e
-prerequis: grammaire-phrase-complexe
+prerequis: grammaire-phrase-complexe, ecrire-et-reecrire-c4
 niveaux: cycle-4
 competences: identifier-la-these-d-un-texte-argumentatif, distinguer-arguments-et-exemples, utiliser-des-connecteurs-logiques-d-opposition-et-de-cause, organiser-un-paragraphe-argumentatif, nuancer-une-opinion-en-tenant-compte-d-une-objection
 ---

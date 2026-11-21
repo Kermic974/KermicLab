@@ -21,7 +21,7 @@ questions:
   - Comment Auguste dirige-t-il Rome ?
   - Pourquoi 476 est-il un repère de l'Antiquité ?
 classes: 6e
-prerequis:
+prerequis: gaulois-gallo-romains-cm
 niveaux: cycle-3, seconde
 competences: situer-les-reperes-chronologiques-de-la-grece-et-de-rome, comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine, identifier-les-institutions-de-la-democratie-athenienne-et-de-la-republique-romaine, expliquer-le-passage-de-la-republique-a-l-empire, analyser-les-heritages-et-les-transformations-de-l-antiquite
 ---

@@ -20,7 +20,7 @@ questions:
   - Qui raconte l'histoire d'un roman : l'auteur ou une voix du récit ?
   - Comment présenter un personnage de roman ?
 classes: 4e, 3e
-prerequis:
+prerequis: recits-d-aventures-et-voyages-c4
 niveaux: cycle-4
 competences: identifier-le-debut-d-un-roman-et-sa-situation-initiale, distinguer-auteur-narrateur-et-personnage, reperer-les-etapes-d-une-intrigue, analyser-la-construction-d-un-personnage, comparer-deux-incipits
 ---

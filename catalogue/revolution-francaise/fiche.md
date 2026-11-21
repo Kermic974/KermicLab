@@ -21,7 +21,7 @@ questions:
   - Qui compose le tiers état ?
   - Que réclame Olympe de Gouges pour les femmes ?
 classes: 4e
-prerequis: lumieres, temps-modernes
+prerequis: lumieres, temps-modernes, revolution-empire-cm
 niveaux: cycle-4, seconde
 competences: ordonner-les-evenements-de-1789, expliquer-les-causes-de-la-revolution, analyser-un-texte-fondateur-declaration-des-droits, expliquer-le-changement-de-regime-de-1792, discuter-l-incertitude-des-issues-de-la-revolution
 ---

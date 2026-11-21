@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.quantite-de-matiere-requires-transformations-chimiques-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/quantite-de-matiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.quantite-de-matiere",
+  "target": "notion.physique-chimie.transformations-chimiques-c4",
+  "rationale": "« Transformations chimiques et réactions » : Les bilans de matière d’une transformation chimique précèdent la quantité de matière."
+}

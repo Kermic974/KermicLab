@@ -29,7 +29,7 @@ questions:
   - comment mettre en évidence l'amidon dans une feuille
   - what is photosynthesis?
 classes: 6e, 5e
-prerequis:
+prerequis: developpement-vegetaux-cm, nutrition-et-alimentation-6e
 niveaux: cycle-3, cycle-4, seconde, premiere
 competences: identifier-les-besoins-des-vegetaux, decrire-le-role-des-chloroplastes, mettre-en-evidence-la-production-d-amidon, ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese, concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese
 ---

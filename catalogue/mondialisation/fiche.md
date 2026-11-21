@@ -19,7 +19,7 @@ questions:
   - Comment fonctionne une chaîne de valeur mondiale ?
   - Quel est le rôle des firmes transnationales ?
 classes: 4e
-prerequis:
+prerequis: monde-en-villes-cm
 niveaux: cycle-4, seconde, premiere, terminale
 competences: identifier-les-flux-de-marchandises-de-capitaux-et-d-informations, caracteriser-les-acteurs-de-la-mondialisation, calculer-la-part-d-un-flux-dans-un-reseau, analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial, discuter-une-integration-inegale-entre-territoires
 ---

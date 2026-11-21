@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.migrations-requires-question-demographique-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "notion.geographie.migrations",
+  "target": "notion.geographie.question-demographique-c4",
+  "rationale": "« La question démographique et l'inégal accès aux ressources » : La croissance et la répartition de la population précèdent l’étude des migrations."
+}

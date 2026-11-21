@@ -16,7 +16,7 @@ questions:
   - Que garantit la laïcité à l'école publique ?
   - what is laicism?
 classes: 4e
-prerequis: liberte
+prerequis: liberte, laicite-et-liberte-cm
 niveaux: cycle-4
 competences: expliquer-la-liberte-de-conscience-protegee-par-la-laicite, expliquer-la-separation-des-eglises-et-de-l-etat, identifier-les-obligations-de-neutralite-des-agents-publics-a-l-ecole, analyser-une-situation-relative-aux-signes-religieux
 ---

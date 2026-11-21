@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.union-europeenne-requires-france-europe-monde-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/union-europeenne/contenu.json"
+  },
+  "source": "notion.geographie.union-europeenne",
+  "target": "notion.geographie.france-europe-monde-cm",
+  "rationale": "« La France, l'Europe et le monde » : La France, l’Europe et le monde du cycle 3 précèdent les trois ensembles européens."
+}
