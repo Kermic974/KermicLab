@@ -2,7 +2,7 @@
 id: arts-formes-et-composition-cm
 titre: Arts plastiques : lignes, formes, perspective et artistes
 sujet: arts-plastiques/arts-formes-et-composition-cm
-version: 1.0.1
+version: 1.0.2
 date: 2026-11-21
 niveau: primaire
 classes: CM2
