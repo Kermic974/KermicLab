@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - eps-bouger-et-jouer-c2
 competences:
   - eps-sante-et-echauffement-cm-comprendre
   - eps-sante-et-echauffement-cm-appliquer

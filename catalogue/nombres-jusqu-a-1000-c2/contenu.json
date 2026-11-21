@@ -1,0 +1,111 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dix dizaines font une centaine. Avec les centaines, on compte jusqu'à 1 000.",
+  "niveaux": [
+    {
+      "titre": "Les centaines",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dix paquets de 10, c'est **une centaine** : 100. Dans un nombre à trois chiffres, le premier chiffre compte les centaines, puis les dizaines, puis les unités.",
+        "Dans 342 : 3 centaines, 4 dizaines, 2 unités → 300 + 40 + 2."
+      ],
+      "exemple": {
+        "titre": "Exemple : 523",
+        "etapes": [
+          "5 centaines = 500.",
+          "2 dizaines = 20.",
+          "3 unités = 3 : 500 + 20 + 3 = 523."
+        ]
+      },
+      "aRetenir": "100 = 10 dizaines."
+    },
+    {
+      "titre": "Lire, écrire, comparer",
+      "niveau": "CE1",
+      "paragraphes": [
+        "On lit 342 « trois cent quarante-deux ». Pour ranger, on regarde d'abord les centaines : 410 est plus grand que 399 car 4 centaines > 3 centaines.",
+        "10 centaines font **1 000** : mille."
+      ],
+      "exemple": {
+        "titre": "Exemple : 705",
+        "etapes": [
+          "7 centaines, 0 dizaine, 5 unités.",
+          "Le 0 garde la place des dizaines.",
+          "On lit : sept cent cinq."
+        ]
+      },
+      "aRetenir": "Le 0 tient la place d'un rang vide."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il de centaines dans 342 ?",
+        "reponse": 3,
+        "indices": [
+          "Regarde le chiffre de gauche."
+        ],
+        "solution": "342 = 3 centaines, 4 dizaines, 2 unités.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "4 centaines, 5 dizaines et 1 unité, c'est quel nombre ?",
+        "reponse": 451,
+        "indices": [
+          "Écris 400, 50 et 1."
+        ],
+        "solution": "400 + 50 + 1 = 451.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel nombre est le plus grand ?",
+        "choix": [
+          "290",
+          "410",
+          "399",
+          "309"
+        ],
+        "bonne": 1,
+        "explication": "On compare les centaines : 4 est le plus grand."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le magasin de timbres",
+    "histoire": [
+      "Un magasin vend des timbres par paquets de 100."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "3 paquets de 100 timbres, combien de timbres ?",
+        "reponse": 300,
+        "indices": [
+          "3 centaines."
+        ],
+        "solution": "3 × 100 = 300.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Avec 6 paquets de plus, combien de paquets en tout ?",
+        "reponse": 9,
+        "indices": [
+          "Additionne les paquets."
+        ],
+        "solution": "3 + 6 = 9 paquets de 100, soit 900 timbres.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu maîtrises les centaines !"
+  }
+}

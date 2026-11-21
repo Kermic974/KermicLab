@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - milieux-et-saisons-c2
   - classification-du-vivant-cm
 competences:
   - biodiversite-et-chaines-cm-comprendre

@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - lire-et-comprendre-c2
 competences:
   - lecture-comprehension-cm-comprendre
   - lecture-comprehension-cm-appliquer

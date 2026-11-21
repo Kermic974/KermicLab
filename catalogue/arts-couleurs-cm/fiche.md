@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - arts-couleurs-et-formes-c2
 competences:
   - arts-couleurs-cm-comprendre
   - arts-couleurs-cm-appliquer

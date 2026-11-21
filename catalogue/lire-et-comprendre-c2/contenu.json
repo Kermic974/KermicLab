@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Comprendre un texte, c'est savoir qui, où, quand et ce qui se passe.",
+  "niveaux": [
+    {
+      "titre": "Qui ? Où ? Quand ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand je lis une histoire, je me pose des questions : **Qui** sont les personnages ? **Où** se passe l'histoire ? **Quand** ? **Que se passe-t-il** ? Je cherche les réponses dans le texte.",
+        "Je fais des images dans ma tête, je me souviens de ce que je viens de lire."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Léa part à la plage avec son chien. »",
+          "Qui ? Léa et son chien.",
+          "Où ? À la plage."
+        ]
+      },
+      "aRetenir": "Les réponses sont dans le texte."
+    },
+    {
+      "titre": "Répondre et expliquer",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Pour répondre à une question, je relis la phrase qui donne la réponse, puis j'écris une phrase complète en reprenant la question. Parfois, la réponse n'est pas écrite : il faut **deviner** avec des indices.",
+        "Pour lire à voix haute, je respecte les points, je fais des pauses, je mets le ton."
+      ],
+      "exemple": {
+        "titre": "Exemple : deviner",
+        "etapes": [
+          "« Tom claque la porte et pleure. »",
+          "On ne dit pas qu'il est triste ou fâché.",
+          "Je devine : il est en colère ou triste."
+        ]
+      },
+      "aRetenir": "Chercher la réponse, puis écrire une phrase."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Léa part à la plage avec son chien. » Où va Léa ?",
+        "choix": [
+          "à la plage",
+          "à l'école",
+          "au cinéma",
+          "au parc"
+        ],
+        "bonne": 0,
+        "explication": "Réponse dans la phrase."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui part à la plage ?",
+        "choix": [
+          "Son chien seul",
+          "Tom",
+          "Léa et son chien",
+          "Léa seule"
+        ],
+        "bonne": 2,
+        "explication": "Dans la phrase."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Tom claque la porte et pleure. » Comment se sent Tom ?",
+        "choix": [
+          "il s'est endormi tranquillement",
+          "il est triste ou en colère",
+          "il est très joyeux aujourd'hui",
+          "il a faim et veut manger"
+        ],
+        "bonne": 1,
+        "explication": "On le devine."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'histoire de Mila",
+    "histoire": [
+      "Texte : « Mila trouve un chaton sous la pluie. Elle le met dans son manteau et le ramène chez elle. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que trouve Mila ?",
+        "choix": [
+          "un chiot",
+          "un oiseau",
+          "un livre",
+          "un chaton"
+        ],
+        "bonne": 3,
+        "explication": "Un chaton."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi le met-elle dans son manteau ?",
+        "choix": [
+          "pour le promener",
+          "pour le protéger de la pluie",
+          "pour le cacher à ses parents",
+          "pour jouer"
+        ],
+        "bonne": 1,
+        "explication": "Il pleut : elle le protège."
+      }
+    ],
+    "conclusion": "Tu as bien compris !"
+  }
+}

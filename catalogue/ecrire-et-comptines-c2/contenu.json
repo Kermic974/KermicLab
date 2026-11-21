@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Écrire, c'est choisir ses mots, les mettre dans l'ordre et se relire.",
+  "niveaux": [
+    {
+      "titre": "Écrire une phrase et une histoire",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour écrire une phrase : j'y pense d'abord, je l'écris avec une majuscule et un point, et je me relis. Pour une histoire courte : un début (qui, où), un problème, une fin.",
+        "Je pense à bien former les lettres et à laisser des espaces entre les mots."
+      ],
+      "exemple": {
+        "titre": "Exemple : un début",
+        "etapes": [
+          "Il était une fois un petit lapin.",
+          "Il vivait dans un grand jardin.",
+          "Un jour, il trouva une carte."
+        ]
+      },
+      "aRetenir": "Début, problème, fin."
+    },
+    {
+      "titre": "Rimes et comptines",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Dans un poème ou une comptine, des mots **riment** quand ils finissent par le même son : chat / rat ; loup / chou. Les lignes s'appellent des **vers** ; les groupes de vers, des **strophes**.",
+        "Pour relire mon texte, je vérifie : majuscules, points, mots bien écrits, accords. Je peux le montrer à un camarade."
+      ],
+      "exemple": {
+        "titre": "Exemple : une rime",
+        "etapes": [
+          "Le chat mange un rat.",
+          "Chat et rat riment.",
+          "Même son final : [a]."
+        ]
+      },
+      "aRetenir": "Rime : même son à la fin."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quels mots riment ?",
+        "choix": [
+          "chat et rat",
+          "chat et lune",
+          "pomme et table",
+          "chien et nuage"
+        ],
+        "bonne": 0,
+        "explication": "Même son final."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour relire mon texte, je vérifie…",
+        "choix": [
+          "seulement les dessins",
+          "rien",
+          "la couleur du stylo",
+          "les majuscules et les points"
+        ],
+        "bonne": 3,
+        "explication": "Relecture."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une histoire courte a…",
+        "choix": [
+          "seulement des chiffres",
+          "un début, un problème, une fin",
+          "seulement une fin",
+          "pas de personnage"
+        ],
+        "bonne": 1,
+        "explication": "Structure simple."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le poème de l'école",
+    "histoire": [
+      "Ta classe écrit une comptine sur l'automne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot rime avec « feuille » ?",
+        "choix": [
+          "arbre",
+          "pluie",
+          "vent",
+          "cueille"
+        ],
+        "bonne": 3,
+        "explication": "Même son final."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment s'appelle une ligne d'un poème ?",
+        "choix": [
+          "un titre",
+          "une page",
+          "un vers",
+          "une strophe"
+        ],
+        "bonne": 2,
+        "explication": "Un vers."
+      }
+    ],
+    "conclusion": "Belle comptine !"
+  }
+}

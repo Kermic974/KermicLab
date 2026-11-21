@@ -28,3 +28,7 @@ navigation ni classe dans le référentiel. Un élève de 9 à 11 ans ne trouvai
 ## Parcours et prérequis (ajout)
 
 Le cycle 3 est un parcours continu CM1 → CM2 → 6e : chaque notion déclare ses `prerequis`, les notions de 6e (nouvelles et déjà présentes) pointent vers leurs prolongements du primaire, et `verifierGraphePrerequis` refuse un prérequis qui commence dans une classe plus avancée (ordre CM1, CM2, 6e, 5e, 4e, 3e). Le fil détaillé est dans `docs/chantiers/catalogue-primaire.md`.
+
+## Cycle 2 (ajout)
+
+Le niveau `primaire` couvre aussi les classes `CP`, `CE1` et `CE2` (cycle `cycle-2`). `NIVEAUX_SCOLAIRES` et l'ordre des classes (CP, CE1, CE2, CM1, CM2, 6e…) sont étendus ; la recommandation, le cahier de vacances et l'écran Éducation reconnaissent le cycle 2. Les schémas du référentiel canonique (`referentiel/schemas`) ne sont pas modifiés : ils décrivent un autre périmètre (objets canoniques S4/S6).

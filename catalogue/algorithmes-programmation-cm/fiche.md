@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - tableaux-et-algorithmes-c2
 competences:
   - algorithmes-programmation-cm-comprendre
   - algorithmes-programmation-cm-appliquer

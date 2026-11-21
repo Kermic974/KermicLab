@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - monnaie-et-euro-c2
   - fractions-cm
 competences:
   - nombres-decimaux-cm-comprendre

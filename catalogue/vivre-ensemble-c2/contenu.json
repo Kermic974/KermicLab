@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "À l'école, on apprend à vivre ensemble, avec des règles, du respect et de la gentillesse.",
+  "niveaux": [
+    {
+      "titre": "Les règles et le respect",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans la classe, il y a des **règles** : on lève la main pour parler, on écoute les autres, on range ses affaires, on ne se moque pas. Elles servent à ce que chacun se sente bien.",
+        "On dit **bonjour**, **merci**, **s'il te plaît**, **pardon** : ce sont des marques de politesse."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Je lève la main pour répondre.",
+          "J'écoute mon camarade.",
+          "Je dis merci quand on m'aide."
+        ]
+      },
+      "aRetenir": "Les règles protègent tout le monde."
+    },
+    {
+      "titre": "Les émotions et les conflits",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Tout le monde ressent des **émotions** : joie, colère, peur, tristesse. Je peux dire ce que je ressens avec des mots. Si je suis en colère, je respire, je m'éloigne un moment, je parle sans insulter.",
+        "Quand on se dispute, on s'explique, on s'excuse et on cherche une solution. Si ça continue, on demande à un adulte."
+      ],
+      "exemple": {
+        "titre": "Exemple : une dispute",
+        "etapes": [
+          "Léo et Inès veulent le même jeu.",
+          "Ils se parlent calmement.",
+          "Ils jouent chacun leur tour."
+        ]
+      },
+      "aRetenir": "On parle, on écoute, on s'excuse."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour parler en classe, je…",
+        "choix": [
+          "me lève sans demander",
+          "coupe la parole",
+          "lève la main",
+          "crie"
+        ],
+        "bonne": 2,
+        "explication": "Règle de la classe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un camarade est triste. Que fais-tu ?",
+        "choix": [
+          "je rigole avec les autres",
+          "je lui dis que ce n'est pas grave et je pars",
+          "je lui demande ce qui ne va pas",
+          "je fais comme si je n'avais rien vu"
+        ],
+        "bonne": 2,
+        "explication": "Gentillesse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quand on est en colère, il faut…",
+        "choix": [
+          "taper dans un objet",
+          "dire des gros mots",
+          "respirer et parler calmement",
+          "crier plus fort que les autres"
+        ],
+        "bonne": 2,
+        "explication": "Calmer la colère."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La cour de récréation",
+    "histoire": [
+      "Deux enfants se disputent pour un ballon."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle bonne solution proposes-tu ?",
+        "choix": [
+          "cacher le ballon",
+          "crier fort",
+          "jouer chacun son tour",
+          "se battre"
+        ],
+        "bonne": 2,
+        "explication": "Partager."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot de politesse dis-tu pour t'excuser ?",
+        "choix": [
+          "pardon",
+          "merci",
+          "au revoir",
+          "bonjour"
+        ],
+        "bonne": 0,
+        "explication": "Pardon."
+      }
+    ],
+    "conclusion": "Vive la paix !"
+  }
+}

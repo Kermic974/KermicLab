@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - nombres-jusqu-a-10000-c2
 competences:
   - grands-nombres-cm-comprendre
   - grands-nombres-cm-appliquer

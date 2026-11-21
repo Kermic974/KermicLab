@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - animaux-et-plantes-c2
 competences:
   - classification-du-vivant-cm-comprendre
   - classification-du-vivant-cm-appliquer

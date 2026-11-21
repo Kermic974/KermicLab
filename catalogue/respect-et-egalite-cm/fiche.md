@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - vivre-ensemble-c2
 competences:
   - respect-et-egalite-cm-comprendre
   - respect-et-egalite-cm-appliquer

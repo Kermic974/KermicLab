@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En français, les mots s'accordent : on ajoute souvent un s au pluriel, un e au féminin.",
+  "niveaux": [
+    {
+      "titre": "Singulier et pluriel",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour parler de plusieurs, on met le nom au **pluriel**, souvent avec un **s** : un chat → des chats. Les noms en -eau, -eu prennent un **x** : un bateau → des bateaux ; les noms en -al font -aux : un cheval → des chevaux.",
+        "Le déterminant et l'adjectif changent aussi : « les grands chats »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "un livre → des livres.",
+          "un bateau → des bateaux.",
+          "un cheval → des chevaux."
+        ]
+      },
+      "aRetenir": "Pluriel : s (ou x, aux)."
+    },
+    {
+      "titre": "Féminin et accord du verbe",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Pour le féminin, on ajoute souvent un **e** : un ami → une amie ; grand → grande. Certains changent : un chat → une chatte, un acteur → une actrice.",
+        "Le verbe s'accorde avec son sujet : « L'enfant joue » (singulier) ; « Les enfants jouent » (pluriel, terminaison -ent)."
+      ],
+      "exemple": {
+        "titre": "Exemple : accord",
+        "etapes": [
+          "Le garçon chante.",
+          "Les garçons chantent.",
+          "Le sujet pluriel donne -ent."
+        ]
+      },
+      "aRetenir": "Sujet pluriel : verbe en -ent."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est le pluriel de « bateau » ?",
+        "choix": [
+          "bateau",
+          "bateauxs",
+          "bateaux",
+          "bateaus"
+        ],
+        "bonne": 2,
+        "explication": "Les noms en -eau prennent un x."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le féminin de « grand » ?",
+        "choix": [
+          "grandes",
+          "grande",
+          "grand",
+          "grands"
+        ],
+        "bonne": 1,
+        "explication": "On ajoute un e."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Complète : « Les enfants ___ dans la cour. »",
+        "choix": [
+          "jouons",
+          "jouent",
+          "joue",
+          "joues"
+        ],
+        "bonne": 1,
+        "explication": "Sujet pluriel : -ent."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Dictée de la classe",
+    "histoire": [
+      "Tu corriges des phrases avec des accords."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est correcte ?",
+        "choix": [
+          "Les petits chat dormes.",
+          "Le petits chats dorment.",
+          "Les petits chats dorment.",
+          "Les petit chats dorment."
+        ],
+        "bonne": 2,
+        "explication": "Accords partout."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le pluriel de « cheval » ?",
+        "choix": [
+          "chevals",
+          "chevaus",
+          "chevaux's",
+          "chevaux"
+        ],
+        "bonne": 3,
+        "explication": "Les noms en -al font -aux."
+      }
+    ],
+    "conclusion": "Dictée corrigée !"
+  }
+}

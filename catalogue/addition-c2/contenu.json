@@ -1,0 +1,108 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Additionner, c'est ajouter des quantités pour trouver le total.",
+  "niveaux": [
+    {
+      "titre": "Ajouter",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "J'ai 4 billes et j'en gagne 3 : j'ai 4 + 3 = 7 billes. Le signe **+** veut dire « plus ». Le résultat s'appelle la **somme**.",
+        "On peut compter sur ses doigts, sur une droite graduée, ou compléter à 10 : 8 + 5 = 8 + 2 + 3 = 13."
+      ],
+      "exemple": {
+        "titre": "Exemple : 8 + 5",
+        "etapes": [
+          "8 + 2 = 10.",
+          "5 = 2 + 3.",
+          "10 + 3 = 13."
+        ]
+      },
+      "aRetenir": "Additionner : ajouter pour trouver le total."
+    },
+    {
+      "titre": "L'addition posée",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "On écrit les nombres l'un sous l'autre : unités sous unités, dizaines sous dizaines. On additionne de droite à gauche. Si on dépasse 9, on garde l'unité et on **retient** la dizaine.",
+        "Pour 38 + 27 : 8 + 7 = 15, je pose 5 et je retiens 1 ; 3 + 2 + 1 = 6 : le résultat est 65."
+      ],
+      "exemple": {
+        "titre": "Exemple : 38 + 27",
+        "etapes": [
+          "Unités : 8 + 7 = 15 → 5, retenue 1.",
+          "Dizaines : 3 + 2 + 1 = 6.",
+          "Résultat : 65."
+        ]
+      },
+      "aRetenir": "On commence par les unités."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "4 + 3 = ?",
+        "reponse": 7,
+        "indices": [
+          "Compte à partir de 4."
+        ],
+        "solution": "4 + 3 = 7.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "8 + 5 = ?",
+        "reponse": 13,
+        "indices": [
+          "Complète à 10."
+        ],
+        "solution": "8 + 2 = 10 puis 10 + 3 = 13.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "38 + 27 = ?",
+        "reponse": 65,
+        "indices": [
+          "Commence par les unités."
+        ],
+        "solution": "8 + 7 = 15, je pose 5 et retiens 1 ; 3 + 2 + 1 = 6 : 65.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les cartes à collectionner",
+    "histoire": [
+      "Tu as 46 cartes. Ton ami t'en donne 18."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de cartes as-tu maintenant ?",
+        "reponse": 64,
+        "indices": [
+          "6 + 8 = 14, je retiens 1."
+        ],
+        "solution": "46 + 18 = 64.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Tu en gagnes encore 6. Combien en as-tu ?",
+        "reponse": 70,
+        "indices": [
+          "64 + 6 complète la dizaine."
+        ],
+        "solution": "64 + 6 = 70.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien additionné !"
+  }
+}

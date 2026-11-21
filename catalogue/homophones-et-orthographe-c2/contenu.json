@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Certains mots se prononcent pareil mais s'écrivent différemment : on les distingue en remplaçant.",
+  "niveaux": [
+    {
+      "titre": "Remplacer pour choisir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "« a » ou « à » ? Je remplace par « avait » : « Il a faim » → « Il avait faim » : c'est le verbe avoir, sans accent. « Il va à Paris » : on ne peut pas dire « avait Paris » : c'est « à ».",
+        "« et » ou « est » ? « Léa est contente » → « Léa était contente » : c'est « est ». « Léa et Tom jouent » → « Léa et puis Tom » : c'est « et »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Elle a un chat : elle avait un chat.",
+          "Elle est à l'école : elle était à l'école.",
+          "Pain et fromage : pain et puis fromage."
+        ]
+      },
+      "aRetenir": "Remplacer par avait, était, et puis."
+    },
+    {
+      "titre": "Autres paires",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "« on » ou « ont » ? « Ils ont des jeux » → « avaient » : « ont ». « On joue » → « il joue » : « on ». « son » ou « sont » ? « Ils sont partis » → « étaient » : « sont ». « Son cahier » → « mon cahier » : « son ».",
+        "Mots à connaître par cœur : mais, donc, parce que, souvent, toujours, beaucoup, avec, dans, sous, sur, très."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Ils sont contents : ils étaient contents.",
+          "Son chat est noir : mon chat est noir.",
+          "On mange : il mange."
+        ]
+      },
+      "aRetenir": "ont = avaient ; sont = étaient."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Elle ___ faim. »",
+        "choix": [
+          "ah",
+          "a",
+          "à",
+          "as"
+        ],
+        "bonne": 1,
+        "explication": "Elle avait faim : a."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « Léa ___ Tom jouent. »",
+        "choix": [
+          "est",
+          "es",
+          "ai",
+          "et"
+        ],
+        "bonne": 3,
+        "explication": "Léa et puis Tom."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Complète : « Ils ___ des vélos. »",
+        "choix": [
+          "on",
+          "sont",
+          "son",
+          "ont"
+        ],
+        "bonne": 3,
+        "explication": "Ils avaient des vélos : ont."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chasse aux erreurs",
+    "histoire": [
+      "Tu corriges un petit texte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Tom (a/à) mal (a/à) la tête. »",
+        "choix": [
+          "Tom à mal a la tête.",
+          "Tom a mal a la tête.",
+          "Tom à mal à la tête.",
+          "Tom a mal à la tête."
+        ],
+        "bonne": 3,
+        "explication": "Premier : avoir. Second : préposition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Ils (sont/son) en classe. »",
+        "choix": [
+          "ont",
+          "sont",
+          "son",
+          "on"
+        ],
+        "bonne": 1,
+        "explication": "Ils étaient en classe."
+      }
+    ],
+    "conclusion": "Texte corrigé !"
+  }
+}

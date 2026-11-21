@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - la-phrase-c2
 competences:
   - types-et-formes-de-phrases-cm-comprendre
   - types-et-formes-de-phrases-cm-appliquer

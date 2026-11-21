@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - singulier-pluriel-masculin-feminin-c2
   - nature-des-mots-cm
 competences:
   - accords-cm-comprendre

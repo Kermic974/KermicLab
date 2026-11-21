@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - homophones-et-orthographe-c2
 competences:
   - orthographe-lexicale-cm-comprendre
   - orthographe-lexicale-cm-appliquer

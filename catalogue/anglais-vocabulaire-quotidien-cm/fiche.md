@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - anglais-famille-et-animaux-c2
   - anglais-se-presenter-cm
 competences:
   - anglais-vocabulaire-quotidien-cm-comprendre

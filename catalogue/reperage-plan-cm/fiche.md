@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - symetrie-et-reperage-c2
 competences:
   - reperage-plan-cm-comprendre
   - reperage-plan-cm-appliquer

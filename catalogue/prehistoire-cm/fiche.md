@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - grandes-periodes-c2
 competences:
   - prehistoire-cm-comprendre
   - prehistoire-cm-appliquer

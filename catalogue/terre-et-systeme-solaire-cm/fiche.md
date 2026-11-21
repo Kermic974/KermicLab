@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - planete-terre-et-cartes-c2
 competences:
   - terre-et-systeme-solaire-cm-comprendre
   - terre-et-systeme-solaire-cm-appliquer

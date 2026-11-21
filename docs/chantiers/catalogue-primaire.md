@@ -1,6 +1,6 @@
-# Chantier : catalogue du primaire (cycle 3 — CM1 / CM2)
+# Chantier : catalogue du primaire (cycle 2 — CP, CE1, CE2 ; cycle 3 — CM1, CM2, 6e)
 
-**Niveau actuel : 102 notions CM1/CM2 et 50 notions de 6e rédigées (suffixe `-6e`), 12 matières, relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
+**Niveau actuel : 51 notions de cycle 2 (suffixe `-c2`), 102 notions CM1/CM2 et 50 notions de 6e rédigées, 12 matières, relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
 
 Méthode : gabarit commun (`contenu.json`, trois onglets), niveau `primaire`, classes `CM1` / `CM2`, cycle `cycle-3`. Chaque notion a deux niveaux de
 lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, avec indices) et un défi en deux étapes.
@@ -45,6 +45,19 @@ Chaque notion du cycle 3 déclare ses **prérequis** (champ `prerequis` de la fi
 3. **Jamais à rebours** : un prérequis ne commence pas dans une classe plus avancée que la notion (vérifié au build, `scripts/lib/catalogue.mjs`, avec un test). Le graphe est aussi vérifié sans cycle.
 
 La modification des prérequis des notions de 6e déjà présentes ne change que leurs métadonnées (pas leur version).
+
+## Cycle 2 (CP, CE1, CE2)
+
+Les notions `*-c2` (niveau `primaire`, classes `CP` / `CE1` / `CE2`, cycle `cycle-2`) suivent le programme du cycle 2, avec un vocabulaire volontairement simple (enfants de 6 à 8 ans). Une notion enseignée sur plusieurs années déclare toutes ses classes (par exemple `addition-c2` : CP, CE1, CE2).
+
+| Matière | Notions du cycle 2 |
+|---|---|
+| Mathématiques (21) | nombres jusqu'à 100, 1 000 et 10 000, comparer et ranger, addition, soustraction, doubles et moitiés, tables de multiplication, multiplication posée, partage, monnaie, longueurs, masses et contenances, heure et calendrier, problèmes, fractions simples, figures planes, solides, symétrie et repérage, tableaux et algorithmes, périmètre et calcul mental |
+| Français (11) | lettres et sons, syllabes, la phrase, nom et déterminant, verbe-sujet-adjectif, pluriel et féminin, temps des verbes, homophones, vocabulaire et dictionnaire, lire et comprendre, écrire et comptines |
+| Questionner le monde (12) | animaux et plantes, besoins et vie, corps et santé, milieux et saisons, eau-air-matière, objets électriques et matériaux, se repérer dans le temps, grandes périodes, se repérer dans l'espace, paysages et habiter, planète Terre |
+| EMC (3), Anglais (2), Arts (1), Musique (1), EPS (1) | vivre ensemble, République et citoyens, sécurité-écrans-environnement ; bonjour, famille et animaux ; couleurs et formes ; sons et chansons ; bouger et jouer |
+
+Le parcours est continu **CP → CE1 → CE2 → CM1 → CM2 → 6e** : les notions du cycle 3 déclarent des prérequis vers le cycle 2 (par exemple `grands-nombres-cm` ← `nombres-jusqu-a-10000-c2`, `conjugaison-cm` ← `temps-des-verbes-c2`), et le build vérifie qu'un prérequis ne commence jamais dans une classe plus avancée.
 
 ## Matrice de couverture du programme de cycle 3 (BO 2020)
 

@@ -4,7 +4,7 @@ Compagnon de [guide-relecture-cycle-3.md](guide-relecture-cycle-3.md), **génér
 
 Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures et pourcentages repérés automatiquement dans l'explication (liste indicative, non exhaustive).
 
-## francais (26)
+## francais (37)
 
 ### Les accords : sujet-verbe, groupe nominal, participe passé — `accords-cm` (CM1 / CM2)
 
@@ -45,6 +45,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | Pour bien lire à voix haute, on… | **respecte la ponctuation** | Le rythme. |
 | D1 | Où note-t-on « (Il sort.) » ? | **Dans une didascalie** | Indication de jeu. |
 | D2 | Discours indirect : Léa dit : « Je pars ». | **Léa dit qu'elle part.** | Introduit par « que ». |
+
+### Écrire une phrase, un texte, un poème — `ecrire-et-comptines-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quels mots riment ? | **chat et rat** | Même son final. |
+| E2 | Pour relire mon texte, je vérifie… | **les majuscules et les points** | Relecture. |
+| E3 | Une histoire courte a… | **un début, un problème, une fin** | Structure simple. |
+| D1 | Quel mot rime avec « feuille » ? | **cueille** | Même son final. |
+| D2 | Comment s'appelle une ligne d'un poème ? | **un vers** | Un vers. |
 
 ### Écrire pour raconter, décrire et exprimer en 6e — `ecrire-pour-raconter-et-decrire-6e` (6e)
 
@@ -106,6 +116,26 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | « Il (a/à) mal (a/à) la tête. » La bonne écriture : | **Il a mal à la tête.** | Premier : verbe avoir ; second : préposition. |
 | D2 | « Marie ___ Paul jouent. » | **et** | On peut dire « et puis ». |
 
+### Homophones et mots à connaître — `homophones-et-orthographe-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Complète : « Elle ___ faim. » | **a** | Elle avait faim : a. |
+| E2 | Complète : « Léa ___ Tom jouent. » | **et** | Léa et puis Tom. |
+| E3 | Complète : « Ils ___ des vélos. » | **ont** | Ils avaient des vélos : ont. |
+| D1 | « Tom (a/à) mal (a/à) la tête. » | **Tom a mal à la tête.** | Premier : avoir. Second : préposition. |
+| D2 | « Ils (sont/son) en classe. » | **sont** | Ils étaient en classe. |
+
+### La phrase : majuscule, point et sens — `la-phrase-c2` (CP / CE1)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel signe termine une question ? | **?** | Le point d'interrogation. |
+| E2 | Quelle phrase est bien écrite ? | **Le chat dort.** | Majuscule, mots dans l'ordre, point. |
+| E3 | Avec quelle lettre commence une phrase ? | **une majuscule** | Majuscule. |
+| D1 | Quelle phrase pose une question ? | **Où est mon cahier ?** | Point d'interrogation. |
+| D2 | Quel message est le mieux écrit ? | **J'ai fini mon travail.** | Majuscule au début, point à la fin. |
+
 ### Comprendre un texte — `lecture-comprehension-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -116,6 +146,26 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Que peut-on penser ? | **Quelqu'un est entré ou sorti pendant la nuit** | Boue, barrière ouverte : quelqu'un est passé. |
 | D2 | Quel indice appuie cette réponse ? | **la barrière est ouverte** | Une barrière ouverte indique un passage. |
 
+### Les lettres et les sons — `lettres-et-sons-c2` (CP)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de voyelles y a-t-il dans l'alphabet ? | **6** | a, e, i, o, u, y. |
+| E2 | Quel son entends-tu dans « loup » ? | **ou** | On entend [ou]. |
+| E3 | Dans « chat », quelles lettres font le même son ? | **c et h** | ch fait le son [ch]. |
+| D1 | Dans « mouton », quel son entends-tu à la fin ? | **on** | mou-ton : [on]. |
+| D2 | Quelle lettre est une voyelle ? | **o** | o est une voyelle. |
+
+### Lire et comprendre un texte — `lire-et-comprendre-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | « Léa part à la plage avec son chien. » Où va Léa ? | **à la plage** | Réponse dans la phrase. |
+| E2 | Qui part à la plage ? | **Léa et son chien** | Dans la phrase. |
+| E3 | « Tom claque la porte et pleure. » Comment se sent Tom ? | **il est triste ou en colère** | On le devine. |
+| D1 | Que trouve Mila ? | **un chaton** | Un chaton. |
+| D2 | Pourquoi le met-elle dans son manteau ? | **pour le protéger de la pluie** | Il pleut : elle le protège. |
+
 ### La nature des mots — `nature-des-mots-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -125,6 +175,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | Dans « Les enfants mangent vite », quel mot est le verbe ? | **mangent** | « mangent » est le verbe : on peut changer le temps (ils mangeaient). |
 | D1 | Quelle est la nature de « doucement » ? | **adverbe** | Il est invariable et précise comment elle mange. |
 | D2 | Quelle est la nature de « rouge » ? | **adjectif** | Il précise le nom « pomme ». |
+
+### Le nom et le déterminant — `noms-et-determinants-c2` (CE1)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans « le chat », « le » est… | **un déterminant** | Il précède le nom. |
+| E2 | Quel mot est un nom propre ? | **Paris** | Il commence par une majuscule. |
+| E3 | Quel déterminant va avec « maisons » ? | **les** | Pluriel : les. |
+| D1 | Dans « la fleur », quel mot est le nom ? | **fleur** | Fleur est le nom. |
+| D2 | Quel nom est féminin ? | **la fleur** | On dit « la » fleur. |
 
 ### Accords et orthographe grammaticale en 6e — `orthographe-grammaticale-6e` (6e)
 
@@ -206,6 +266,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Que fais-tu d'abord ? | **Je repère les idées importantes** | Mots-clés. |
 | D2 | Quel plan choisis-tu ? | **Introduction, développement, conclusion** | Plan classique. |
 
+### Pluriel, féminin et accords — `singulier-pluriel-masculin-feminin-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel est le pluriel de « bateau » ? | **bateaux** | Les noms en -eau prennent un x. |
+| E2 | Quel est le féminin de « grand » ? | **grande** | On ajoute un e. |
+| E3 | Complète : « Les enfants ___ dans la cour. » | **jouent** | Sujet pluriel : -ent. |
+| D1 | Quelle phrase est correcte ? | **Les petits chats dorment.** | Accords partout. |
+| D2 | Quel est le pluriel de « cheval » ? | **chevaux** | Les noms en -al font -aux. |
+
 ### Sujet, verbe et compléments en 6e — `sujet-verbe-complements-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -215,6 +285,26 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | Dans « Il mange une pomme dans le jardin », « dans le jardin » est… | **un complément circonstanciel de lieu** | Où ? |
 | D1 | Quel est le sujet ? | **les élèves** | Qui lit ? |
 | D2 | Quel est le COD ? | **un livre** | Lisent quoi ? |
+
+### Les syllabes et la lecture de mots — `syllabes-et-mots-c2` (CP)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de syllabes dans « banane » ? | **3** | ba-na-ne. |
+| E2 | Combien de syllabes dans « chapeau » ? | **2** | cha-peau. |
+| E3 | Quel mot est un mot-outil ? | **dans** | Dans est un petit mot très fréquent. |
+| D1 | Avec « ba » et « teau », quel mot obtiens-tu ? | **bateau** | ba-teau. |
+| D2 | Combien de syllabes dans « éléphant » ? | **3** | é-lé-phant. |
+
+### Passé, présent, futur : conjuguer les verbes — `temps-des-verbes-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Complète : « Je ___ une glace. » (manger, présent) | **mange** | Je mange. |
+| E2 | Complète : « Nous ___ contents. » (être) | **sommes** | Nous sommes. |
+| E3 | Quelle phrase est au futur ? | **Demain, je jouerai.** | Demain : futur. |
+| D1 | Complète : « Demain, nous ___ au zoo. » (aller, futur) | **irons** | Nous irons. |
+| D2 | Complète : « Ils ___ un chien. » (avoir, présent) | **ont** | Ils ont. |
 
 ### Les temps du récit : passé simple et imparfait — `temps-du-recit-6e` (6e)
 
@@ -246,6 +336,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Quelle phrase est interrogative ? | **Veux-tu venir ?** | Elle pose une question. |
 | D2 | Mets à la forme négative : « Je comprends. » | **Je ne comprends pas.** | ne … pas encadre le verbe. |
 
+### Le verbe, le sujet et l'adjectif — `verbe-sujet-adjectif-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans « Le chat boit du lait », le verbe est… | **boit** | Il dit l'action. |
+| E2 | Dans « Les enfants chantent », le sujet est… | **les enfants** | Qui chante ? |
+| E3 | Dans « une petite fille », « petite » est… | **un adjectif** | Il dit comment est la fille. |
+| D1 | Dans « Le facteur distribue le courrier », qui distribue ? | **Le facteur** | Le facteur est le sujet. |
+| D2 | Quel mot est l'adjectif dans « un joli gâteau » ? | **joli** | Il dit comment est le gâteau. |
+
 ### Le vocabulaire : sens des mots, synonymes, contraires — `vocabulaire-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -255,6 +355,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | « Il a un cœur d'or » est un exemple de… | **sens figuré** | Le cœur n'est pas vraiment en or. |
 | D1 | Remplace « dit » dans « Il dit bonjour » pour plus de précision : | **murmura** | « murmura » apporte une nuance. |
 | D2 | Quel mot appartient au champ lexical de la mer ? | **vague** | La vague est liée à la mer. |
+
+### Vocabulaire, ordre alphabétique et dictionnaire — `vocabulaire-et-dictionnaire-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel mot vient en premier dans le dictionnaire ? | **arbre** | A avant b, l, t. |
+| E2 | Le contraire de « grand » est… | **petit** | Petit. |
+| E3 | Quel mot est de la famille de « dent » ? | **dentiste** | dent-iste. |
+| D1 | Quel mot se range en dernier ? | **zèbre** | z est la dernière lettre. |
+| D2 | Quel mot est un synonyme de « content » ? | **heureux** | Heureux. |
 
 ### Vocabulaire, étymologie et familles de mots en 6e — `vocabulaire-et-etymologie-6e` (6e)
 
@@ -266,7 +376,17 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | « Chronomètre » mesure… | **le temps** | Chrono = temps. |
 | D2 | « Géographie » veut dire… | **écrire sur la Terre** | Géo + graphein. |
 
-## mathematiques (36)
+## mathematiques (57)
+
+### L'addition — `addition-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 4 + 3 = ? | **7** | 4 + 3 = 7. |
+| E2 | 8 + 5 = ? | **13** | 8 + 2 = 10 puis 10 + 3 = 13. |
+| E3 | 38 + 27 = ? | **65** | 8 + 7 = 15, je pose 5 et retiens 1 ; 3 + 2 + 1 = 6 : 65. |
+| D1 | Combien de cartes as-tu maintenant ? | **64** | 46 + 18 = 64. |
+| D2 | Tu en gagnes encore 6. Combien en as-tu ? | **70** | 64 + 6 = 70. |
 
 ### Additions et soustractions posées — `addition-soustraction-posees-cm` (CM1 / CM2)
 
@@ -344,6 +464,16 @@ Faits à recouper : `90°`, `180°`, `0°`, `50°`
 | D1 | Quel est le diamètre du grand cercle ? | **12 cm** | 2 × 6 = 12. |
 | D2 | De combien de centimètres le grand rayon dépasse-t-il le petit ? | **3 cm** | 6 − 3 = 3. |
 
+### Comparer et ranger des nombres — `comparer-et-ranger-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel signe complète 25 ___ 52 ? | **<** | 25 est plus petit que 52. |
+| E2 | Quel est le plus grand nombre : 63, 36 ou 60 ? | **63** | 6 dizaines et 3 unités > 6 dizaines > 3 dizaines. |
+| E3 | Dans quel ordre sont ces nombres : 5, 12, 31, 90 ? | **croissant (du plus petit au plus grand)** | Ils vont du plus petit au plus grand. |
+| D1 | Quel pion est le plus avancé (nombre de cases) ? | **25** | 25 est le plus grand nombre. |
+| D2 | Combien de cases a fait le pion le moins avancé ? | **7** | 7 est le plus petit nombre. |
+
 ### Droites, cercles et constructions en 6e — `constructions-geometriques-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -353,6 +483,16 @@ Faits à recouper : `90°`, `180°`, `0°`, `50°`
 | E3 | La médiatrice d'un segment passe par… | **son milieu, perpendiculairement** | Droite perpendiculaire passant par le milieu. |
 | D1 | Le jardin existe-t-il ? | **Oui : 6 + 8 > 10** | Inégalité triangulaire respectée. |
 | D2 | Quel est le périmètre ? | **24 m** | 6 + 8 + 10 = 24. |
+
+### Partager et regrouper — `division-et-partage-c2` (CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 12 bonbons partagés entre 4 enfants : combien chacun ? | **3** | 4 × 3 = 12. |
+| E2 | On range 20 crayons par paquets de 5. Combien de paquets ? | **4** | 5 × 4 = 20. |
+| E3 | 14 crayons entre 4 enfants : combien en reste-t-il ? | **2** | 4 × 3 = 12, 14 − 12 = 2. |
+| D1 | Combien de minibus pleins ? | **4** | 6 × 4 = 24. |
+| D2 | Combien d'élèves restent pour un dernier minibus ? | **3** | 27 − 24 = 3. |
 
 ### La division euclidienne — `division-euclidienne-cm` (CM1 / CM2)
 
@@ -373,6 +513,18 @@ Faits à recouper : `90°`, `180°`, `0°`, `50°`
 | E3 | Arrondis 10 ÷ 3 au centième. | **3,33** | 10 ÷ 3 = 3,333… ≈ 3,33. |
 | D1 | Quelle part de pizza chacun reçoit-il (en décimal) ? | **0,375** | 3 ÷ 8 = 0,375. |
 | D2 | Combien de parts de 1/8 de pizza chacun reçoit-il ? | **3** | Chacun reçoit 3/8. |
+
+### Les doubles et les moitiés — `doubles-et-moities-c2` (CP / CE1)
+
+Faits à recouper : `14 g`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel est le double de 6 ? | **12** | 6 + 6 = 12. |
+| E2 | Quelle est la moitié de 18 ? | **9** | 9 + 9 = 18. |
+| E3 | Quel nombre est impair ? | **13** | 13 finit par 3 : il est impair. |
+| D1 | Combien de gâteaux pour chaque enfant ? | **7** | La moitié de 14 est 7. |
+| D2 | Un troisième enfant arrive avec 6 gâteaux de plus. Combien en tout ? | **20** | 14 + 6 = 20. |
 
 ### Droites parallèles et perpendiculaires — `droites-cm` (CM1 / CM2)
 
@@ -416,6 +568,16 @@ Faits à recouper : `1 h`, `60 min`, `1 min`, `24 heures`, `30 min`, `15 min`, `
 | D1 | Quel est le reste ? | **1975 €** | 4 987 − 3 012 = 1 975. |
 | D2 | Arrondi à la centaine, le reste vaut environ… | **2000 €** | 1 975 → 2 000. |
 
+### Les figures planes — `figures-planes-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de côtés a un triangle ? | **3** | Tri = trois. |
+| E2 | Combien de sommets a un rectangle ? | **4** | 4 coins. |
+| E3 | Quelle figure a 4 côtés égaux et 4 angles droits ? | **le carré** | Le carré. |
+| D1 | Cette forme a 3 côtés. C'est… | **un triangle** | Triangle. |
+| D2 | Cette forme n'a aucun coin et est toute ronde. C'est… | **un cercle** | Cercle. |
+
 ### Les fractions au CM — `fractions-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -435,6 +597,16 @@ Faits à recouper : `1 h`, `60 min`, `1 min`, `24 heures`, `30 min`, `15 min`, `
 | E3 | Écris 35/100 sous forme décimale. | **0,35** | 35 centièmes. |
 | D1 | Quelle fraction du gâteau a été mangée ? | **4/4 (le gâteau entier)** | 1/4 + 2/4 + 1/4 = 4/4. |
 | D2 | Écris 1/4 en décimal. | **0,25** | 1/4 = 25/100. |
+
+### Les fractions simples : moitié, tiers, quart — `fractions-simples-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une pizza est coupée en 4 parts égales. Une part, c'est… | **un quart** | 1/4. |
+| E2 | Pizza coupée en 8 parts, je mange 3 parts. Combien de parts reste-t-il ? | **5** | 8 − 3 = 5. |
+| E3 | Deux quarts, c'est… | **une moitié** | 2/4 = 1/2. |
+| D1 | Si on mange 4 parts, quelle fraction du gâteau a-t-on mangée ? | **la moitié** | 4/8 = 1/2. |
+| D2 | Il reste combien de parts ? | **4** | 8 − 4 = 4. |
 
 ### Grandeurs et mesures en 6e : longueurs, durées, masses — `grandeurs-et-mesures-6e` (6e)
 
@@ -458,6 +630,30 @@ Faits à recouper : `1 L`, `1 000 mL`, `1 kg`, `1 000 g`, `2,5 kg`, `2 500 g`, `
 | D1 | Comment lit-on 38 500 ? | **trente-huit mille cinq cents** | 38 \| 500 : trente-huit mille cinq cents. |
 | D2 | Le stade a 38 500 places. Combien de dizaines de milliers entières contient ce nombre ? | **3** | 38 500 = 3 × 10 000 + 8 500 : 3 dizaines de milliers. |
 
+### L'heure, les jours et le calendrier — `heure-et-calendrier-c2` (CP / CE1 / CE2)
+
+Faits à recouper : `1 heure`, `24 heures`, `3 h`, `1 h`, `14 h`, `16 h`, `2 h`, `8 h`, `10 h`, `30 min`, `24 h`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de minutes dans une heure ? | **60 min** | 1 h = 60 min. |
+| E2 | Combien de jours dans une semaine ? | **7** | Lundi à dimanche. |
+| E3 | Quand la grande aiguille est sur 6, il est… | **et demie** | 30 minutes = une demi-heure. |
+| D1 | Combien d'heures dure l'école (de 8 h 30 à 16 h 30) ? | **8 h** | 16 h 30 − 8 h 30 = 8 h. |
+| D2 | À quelle heure commence l'école ? | **8 h 30** | Huit heures et demie. |
+
+### Mesurer des longueurs — `longueurs-et-mesures-c2` (CE1 / CE2)
+
+Faits à recouper : `1 km`, `2 km`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 1 m = ... cm ? | **100 cm** | 1 mètre = 100 centimètres. |
+| E2 | 3 m = ... cm ? | **300 cm** | 3 × 100 = 300. |
+| E3 | Quelle unité pour mesurer la distance entre deux villes ? | **le kilomètre** | Pour les longues distances : le km. |
+| D1 | Combien mesure le saut de Léa en centimètres ? | **240 cm** | 2 m 40 cm = 240 cm. |
+| D2 | Quelle est la différence entre les deux sauts (en cm) ? | **5 cm** | 240 − 235 = 5. |
+
 ### Longueurs, masses et contenances — `longueurs-masses-contenances-cm` (CM1 / CM2)
 
 Faits à recouper : `2 km`, `1 kg`, `1 L`, `1 km`, `1 000 g`, `1 000 mL`, `100 cL`, `2,5 km`, `3 kg`, `250 g`, `3,250 kg`, `3 250 g`, `75 cL`, `650 g`
@@ -469,6 +665,28 @@ Faits à recouper : `2 km`, `1 kg`, `1 L`, `1 km`, `1 000 g`, `1 000 mL`, `100 c
 | E3 | Convertis 3 kg 250 g en grammes. | **3250 g** | 3 × 1 000 + 250 = 3 250. |
 | D1 | Quelle est la masse totale en grammes (hors gourde) ? | **1850 g** | 650 + 1 200 = 1 850. |
 | D2 | Convertis 75 cL en mL. | **750 mL** | 1 cL = 10 mL : 75 × 10 = 750. |
+
+### Masses et contenances — `masses-et-contenances-c2` (CE1 / CE2)
+
+Faits à recouper : `1 kg`, `1 000 g`, `1 L`, `100 cL`, `2 kg`, `2 000 g`, `1 500 g`, `500 g`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de grammes dans 1 kg ? | **1000 g** | 1 kg = 1 000 g. |
+| E2 | Combien de grammes dans 2 kg ? | **2000 g** | 2 × 1 000 = 2 000. |
+| E3 | On mesure un liquide avec… | **des litres** | Contenance en litres. |
+| D1 | Quelle est la masse totale en grammes ? | **2500 g** | 2 000 + 500 = 2 500. |
+| D2 | Quel fruit est le plus lourd ? | **les pommes** | 2 kg > 500 g. |
+
+### La monnaie : euros et centimes — `monnaie-et-euro-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de centimes dans 1 euro ? | **100 c** | 1 € = 100 centimes. |
+| E2 | Un livre coûte 7 €. Je donne 10 €. Combien me rend-on ? | **3 €** | 10 − 7 = 3. |
+| E3 | Combien font 2 pièces de 50 centimes (en centimes) ? | **100 c** | 50 + 50 = 100 c = 1 €. |
+| D1 | Combien coûtent le pain et la brioche (en euros) ? | **3,7 €** | 1,20 + 2,50 = 3,70. |
+| D2 | Je paie avec 5 €. Combien me rend-on (en euros) ? | **1,3 €** | 5 − 3,70 = 1,30. |
 
 ### Moyenne, pourcentages et comparaison de données — `moyenne-et-proportions-cm` (CM2)
 
@@ -492,6 +710,16 @@ Faits à recouper : `75 %`, `20 %`, `25 %`
 | D1 | Combien de paquets égaux différents peux-tu faire (en comptant 1 paquet de 24) ? | **8** | Diviseurs de 24 : 1, 2, 3, 4, 6, 8, 12, 24 : 8 façons. |
 | D2 | Peux-tu faire des paquets de 5 sans reste ? | **Non, 24 ne se termine pas par 0 ou 5** | 24 n'est pas un multiple de 5. |
 
+### Multiplier un grand nombre (CE2) — `multiplication-posee-ce2-c2` (CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 24 × 3 = ? | **72** | 4 × 3 = 12 ; 20 × 3 = 60 ; 72. |
+| E2 | 35 × 10 = ? | **350** | On ajoute un zéro. |
+| E3 | 36 × 4 = ? | **144** | 6 × 4 = 24, 30 × 4 = 120, 144. |
+| D1 | Combien coûtent 5 billets ? | **60 €** | 12 × 5 = 60. |
+| D2 | Combien coûtent 10 billets ? | **120 €** | 12 × 10 = 120. |
+
 ### La multiplication posée et les tables — `multiplication-posee-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -512,6 +740,36 @@ Faits à recouper : `75 %`, `20 %`, `25 %`
 | D1 | Qui a gagné ? | **Celui qui a sauté 3,5 m** | 3,5 = 3,50 m est la plus grande longueur. |
 | D2 | Quelle est la différence entre 3,5 m et 3,09 m, en mètres ? | **0,41 m** | 3,50 − 3,09 = 0,41. |
 
+### Les nombres jusqu'à 100 — `nombres-jusqu-a-100-c2` (CP)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien y a-t-il d'unités dans 34 ? | **4** | 34 = 3 dizaines et 4 unités. |
+| E2 | 3 dizaines et 5 unités, c'est quel nombre ? | **35** | 30 + 5 = 35. |
+| E3 | Quel nombre vient juste après 99 ? | **100** | Après 99, on écrit 100 (cent). |
+| D1 | Combien de billes a Léo ? | **46** | 4 dizaines = 40 ; 40 + 6 = 46. |
+| D2 | Il en gagne 4. Combien a-t-il de billes ? | **50** | 46 + 4 = 50. |
+
+### Les nombres jusqu'à 1 000 — `nombres-jusqu-a-1000-c2` (CE1)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien y a-t-il de centaines dans 342 ? | **3** | 342 = 3 centaines, 4 dizaines, 2 unités. |
+| E2 | 4 centaines, 5 dizaines et 1 unité, c'est quel nombre ? | **451** | 400 + 50 + 1 = 451. |
+| E3 | Quel nombre est le plus grand ? | **410** | On compare les centaines : 4 est le plus grand. |
+| D1 | 3 paquets de 100 timbres, combien de timbres ? | **300** | 3 × 100 = 300. |
+| D2 | Avec 6 paquets de plus, combien de paquets en tout ? | **9** | 3 + 6 = 9 paquets de 100, soit 900 timbres. |
+
+### Les nombres jusqu'à 10 000 — `nombres-jusqu-a-10000-c2` (CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien y a-t-il de milliers dans 3 482 ? | **3** | 3 milliers, 4 centaines, 8 dizaines, 2 unités. |
+| E2 | 3 000 + 400 + 80 + 2 = ? | **3482** | On écrit chaque rang : 3 482. |
+| E3 | Quel nombre est le plus grand ? | **6 100** | 6 milliers > 5 milliers. |
+| D1 | Combien de places en tout ? | **6800** | 4 500 + 2 300 = 6 800. |
+| D2 | Combien de places assises en plus que debout ? | **2200** | 4 500 − 2 300 = 2 200. |
+
 ### Périmètre et aire — `perimetre-aire-cm` (CM1 / CM2)
 
 Faits à recouper : `24 m²`, `1 m²`, `10 000 cm²`, `12 cm²`
@@ -523,6 +781,16 @@ Faits à recouper : `24 m²`, `1 m²`, `10 000 cm²`, `12 cm²`
 | E3 | Aire d'un triangle rectangle de côtés 6 cm et 4 cm ? | **12 cm²** | 6 × 4 ÷ 2 = 12. |
 | D1 | Quelle longueur de grillage pour clôturer le potager ? | **26 m** | 2 × (8 + 5) = 26. |
 | D2 | Quelle est l'aire à bêcher ? | **40 m²** | 8 × 5 = 40. |
+
+### Périmètre et calcul mental — `perimetre-et-calcul-mental-c2` (CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Périmètre d'un rectangle de 5 cm sur 3 cm ? | **16 cm** | 5 + 3 + 5 + 3 = 16. |
+| E2 | 100 − 65 = ? | **35** | 65 + 35 = 100. |
+| E3 | 47 + 9 = ? | **56** | 47 + 10 − 1 = 56. |
+| D1 | Quelle longueur de clôture faut-il ? | **30 m** | 9 + 6 + 9 + 6 = 30. |
+| D2 | On ajoute 9 m de plus de grillage à acheter. Quel total ? | **39 m** | 30 + 9 = 39. |
 
 ### Triangles et quadrilatères — `polygones-cm` (CM1 / CM2)
 
@@ -543,6 +811,16 @@ Faits à recouper : `24 m²`, `1 m²`, `10 000 cm²`, `12 cm²`
 | E3 | Un livre de 120 pages. Tu lis 15 pages par jour pendant 5 jours. Combien de pages restent ? | **45** | 15 × 5 = 75 ; 120 − 75 = 45. |
 | D1 | Quel est le coût par élève (train + logement) ? | **73 €** | 28 + 45 = 73. |
 | D2 | Quel est le coût pour 12 élèves ? | **876 €** | 73 × 12 = 730 + 146 = 876. |
+
+### Résoudre des petits problèmes — `problemes-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Tom a 5 billes, Léa en a 3 de plus. Combien a Léa de billes ? | **8** | 5 + 3 = 8. |
+| E2 | 3 boîtes de 6 œufs : combien d'œufs ? | **18** | 3 × 6 = 18. |
+| E3 | 12 bonbons à partager entre 4 enfants : combien chacun ? | **3** | 12 ÷ 4 = 3. |
+| D1 | Combien de chaises en tout ? | **40** | 5 × 8 = 40. |
+| D2 | On en enlève 6. Combien reste-t-il de chaises ? | **34** | 40 − 6 = 34. |
 
 ### La proportionnalité — `proportionnalite-cm` (CM2)
 
@@ -588,6 +866,16 @@ Faits à recouper : `360°`, `90°`
 | D1 | Quelle consigne est la plus précise ? | **Trace un cercle de centre O et de rayon 3 cm** | Centre et rayon. |
 | D2 | Pour agrandir, on commence par… | **multiplier toutes les longueurs** | Même coefficient. |
 
+### Les solides — `solides-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de faces a un cube ? | **6** | 6 carrés. |
+| E2 | Un ballon de foot est… | **une boule** | Boule. |
+| E3 | Combien de sommets a un cube ? | **8** | 4 en haut, 4 en bas. |
+| D1 | Le dé est… | **un cube** | Cube. |
+| D2 | La boîte de conserve est… | **un cylindre** | Cylindre. |
+
 ### Les solides — `solides-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -597,6 +885,16 @@ Faits à recouper : `360°`, `90°`
 | E3 | Combien de faces a une pyramide à base carrée ? | **5** | 1 base + 4 faces triangulaires = 5 faces. |
 | D1 | Combien de rectangles dans le patron ? | **6** | Un pavé droit a 6 faces. |
 | D2 | Combien de sommets a la boîte ? | **8** | 8 coins. |
+
+### La soustraction — `soustraction-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 9 − 4 = ? | **5** | 9 − 4 = 5. |
+| E2 | 15 − 8 = ? | **7** | 15 − 5 = 10 puis 10 − 3 = 7. |
+| E3 | 52 − 27 = ? | **25** | 12 − 7 = 5 ; 5 − 1 − 2 = 2 : 25. |
+| D1 | Combien de biscuits te reste-t-il ? | **15** | 24 − 9 = 15. |
+| D2 | Il t'en manque combien pour avoir 20 biscuits ? | **5** | 20 − 15 = 5. |
 
 ### Symétrie axiale en 6e — `symetrie-axiale-6e` (6e)
 
@@ -618,6 +916,26 @@ Faits à recouper : `360°`, `90°`
 | D1 | Un sommet est à 4 carreaux de l'axe. À combien de carreaux de l'axe est son symétrique ? | **4** | Même distance : 4 carreaux. |
 | D2 | Quelle distance sépare ces deux points ? | **8** | 4 + 4 = 8 carreaux (de part et d'autre). |
 
+### Symétrie et repérage sur quadrillage — `symetrie-et-reperage-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une figure est symétrique si… | **les deux côtés de l'axe se superposent** | Pliage. |
+| E2 | Un point est à 4 carreaux de l'axe. À combien de carreaux est son symétrique ? | **4** | Même distance de l'autre côté. |
+| E3 | Dans « B3 », la lettre B donne… | **la colonne** | Lettre : colonne. |
+| D1 | Où chercher C4 ? | **colonne C, ligne 4** | Lettre = colonne. |
+| D2 | Le bateau occupe 3 cases : C4, C5 et une autre. Quelle ligne pour la dernière (C6) ? | **6** | C4, C5, C6. |
+
+### Tableaux, graphiques et petits programmes — `tableaux-et-algorithmes-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Pommes 8, bananes 6, fraises 10 : combien d'élèves en tout ? | **24** | 8 + 6 + 10 = 24. |
+| E2 | « Répéter 4 fois : avancer de 2 » : combien de cases ? | **8** | 4 × 2 = 8. |
+| E3 | Dans un programme, l'ordre des instructions… | **est important** | Changer l'ordre change le résultat. |
+| D1 | Combien de cases le robot avance-t-il en tout ? | **7** | 3 + 4 = 7. |
+| D2 | Que se passe-t-il si on inverse l'ordre ? | **Il ne va pas au même endroit** | L'ordre compte. |
+
 ### Tableaux et graphiques — `tableaux-graphiques-cm` (CM1 / CM2)
 
 Faits à recouper : `12 h`, `18 °C`, `18 h`, `14 °C`, `4 °C`
@@ -629,6 +947,16 @@ Faits à recouper : `12 h`, `18 °C`, `18 h`, `14 °C`, `4 °C`
 | E3 | Quel graphique montre le mieux l'évolution d'une température ? | **Une courbe** | Une courbe montre comment une valeur change au cours du temps. |
 | D1 | Quel est l'effectif total ? | **25** | 10 + 7 + 5 + 3 = 25. |
 | D2 | Combien d'élèves n'ont pas choisi le foot ? | **15** | 25 − 10 = 15. |
+
+### Multiplier : sens et tables — `tables-de-multiplication-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 4 × 3 = ? | **12** | 3 + 3 + 3 + 3 = 12. |
+| E2 | 5 × 6 = ? | **30** | 6 × 5 = 30. |
+| E3 | 7 × 10 = ? | **70** | On ajoute un zéro : 70. |
+| D1 | Combien d'œufs en tout ? | **24** | 4 × 6 = 24. |
+| D2 | Avec 10 boîtes, combien d'œufs ? | **60** | 10 × 6 = 60. |
 
 ### Triangles et quadrilatères en 6e — `triangles-et-quadrilateres-6e` (6e)
 
@@ -654,7 +982,7 @@ Faits à recouper : `24 cm³`, `1 000 cm³`, `1 L`, `1 000 mL`, `1 mL`, `1 cm³`
 | D1 | Quel est son volume en cm³ ? | **60000 cm³** | 50 × 30 = 1 500 ; 1 500 × 40 = 60 000. |
 | D2 | Combien de litres d'eau contient-il quand il est plein ? | **60 L** | 60 000 cm³ = 60 dm³ = 60 L. |
 
-## histoire (19)
+## histoire (21)
 
 ### L'âge industriel en France — `age-industriel-cm` (CM2)
 
@@ -721,6 +1049,18 @@ Faits à recouper : `1515`, `1547`, `1450`, `1539`, `1530`
 | E3 | Lyon s'appelait à l'époque romaine… | **Lugdunum** | Lugdunum, capitale des Gaules. |
 | D1 | Que vois-tu dans la ville ? | **Des thermes, un théâtre et un forum** | Ce sont les bâtiments romains. |
 | D2 | Quelle langue parle-t-on dans les villes ? | **Le latin** | Le latin se répand en Gaule. |
+
+### Les grandes périodes de l'histoire — `grandes-periodes-c2` (CE2)
+
+Faits à recouper : `1901`, `2000`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien d'années dans un siècle ? | **100 ans** | Un siècle = 100 ans. |
+| E2 | Qui a fait construire Versailles ? | **Louis XIV** | Le Roi-Soleil. |
+| E3 | Quelle période vient en premier ? | **la Préhistoire** | La plus ancienne. |
+| D1 | Un château fort appartient à… | **le Moyen Âge** | Moyen Âge. |
+| D2 | Qui conduit les Gaulois contre les Romains ? | **Vercingétorix** | Chef gaulois. |
 
 ### La Grèce antique : citoyens et démocratie — `grece-et-citoyennete-6e` (6e)
 
@@ -860,6 +1200,16 @@ Faits à recouper : `753 av. J.-C.`, `509 av. J.-C.`
 | D1 | Quelle langue entends-tu dans les villes ? | **Le latin** | Latin. |
 | D2 | Pourquoi les routes sont-elles utiles ? | **Pour déplacer armée et marchandises** | Rapidité. |
 
+### Se repérer dans le temps : jours, mois, générations — `se-reperer-dans-le-temps-c2` (CP / CE1)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel jour vient après lundi ? | **mardi** | Mardi. |
+| E2 | Qui est le plus âgé ? | **le grand-père** | Plus ancienne génération. |
+| E3 | Combien de mois y a-t-il dans une année ? | **12** | Janvier à décembre. |
+| D1 | Que mets-tu en premier sur la frise ? | **ma naissance** | Le plus ancien d'abord. |
+| D2 | Quel mot veut dire « après » ? | **ensuite** | Ensuite. |
+
 ### Récits fondateurs : les voyages d'Ulysse et la Méditerranée — `voyages-d-ulysse-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -870,7 +1220,7 @@ Faits à recouper : `753 av. J.-C.`, `509 av. J.-C.`
 | D1 | Pourquoi ce récit est-il utile à l'historien ? | **Il montre les croyances et la culture grecques** | C'est une source sur les croyances. |
 | D2 | Sur quelle mer voyage Ulysse ? | **La Méditerranée** | Autour de la Méditerranée. |
 
-## physique-chimie (12)
+## physique-chimie (13)
 
 ### L'air, un gaz qui occupe de la place — `air-et-matiere-cm` (CM1 / CM2)
 
@@ -883,6 +1233,16 @@ Faits à recouper : `1,2 g`, `5 g`, `6 g`
 | E3 | Que fait une pompe à vélo ? | **Elle comprime l'air** | Réduit son volume. |
 | D1 | Que montre la balance ? | **Le ballon gonflé est plus lourd** | L'air a une masse. |
 | D2 | Pourquoi le ballon gonfle-t-il ? | **L'air occupe de la place** | Gaz. |
+
+### L'eau, l'air et les matières — `eau-air-et-matiere-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | La glace est de l'eau… | **solide** | Solide. |
+| E2 | Que devient un glaçon au soleil ? | **il fond** | Il fond. |
+| E3 | Un caillou dans l'eau… | **coule** | Il coule. |
+| D1 | Que se passe-t-il si on chauffe de l'eau ? | **de la vapeur monte** | Elle s'évapore. |
+| D2 | Un ballon gonflé contient… | **de l'air** | De l'air. |
 
 ### Électricité : circuits, conducteurs et sécurité — `electricite-circuits-cm` (CM1 / CM2)
 
@@ -1010,7 +1370,7 @@ Faits à recouper : `120 km`, `2 h`, `60 km/h`, `10 m/s`, `36 km/h`, `30 km`, `1
 | D1 | Quelle est ta vitesse moyenne ? | **6 km/h** | 6 ÷ 1 = 6 km/h. |
 | D2 | À cette vitesse, combien de km en 3 h ? | **18 km** | 6 × 3 = 18. |
 
-## svt (14)
+## svt (18)
 
 ### L'alimentation et la digestion — `alimentation-digestion-cm` (CM1 / CM2)
 
@@ -1021,6 +1381,26 @@ Faits à recouper : `120 km`, `2 h`, `60 km/h`, `10 m/s`, `36 km/h`, `30 km`, `1
 | E3 | Quel organe brasse les aliments avec un suc acide ? | **L'estomac** | L'estomac. |
 | D1 | Quel menu est le plus équilibré ? | **Poisson, riz, légumes, yaourt, fruit** | Il contient plusieurs groupes d'aliments. |
 | D2 | Que doit-on faire avant de manger ? | **Se laver les mains** | Hygiène. |
+
+### Les animaux et les plantes — `animaux-et-plantes-c2` (CP / CE1)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel animal est un mammifère ? | **le chat** | Il a des poils. |
+| E2 | Combien de pattes a un insecte ? | **6** | Les insectes ont 6 pattes. |
+| E3 | Que font les racines d'une plante ? | **elles boivent dans la terre** | Elles prennent l'eau. |
+| D1 | Quel élément est vivant ? | **la coccinelle** | C'est un animal. |
+| D2 | Un oiseau a… | **des plumes** | Plumes. |
+
+### Se nourrir, grandir, se reproduire — `besoins-et-vie-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un animal qui mange des plantes est… | **un herbivore** | Herbivore. |
+| E2 | De quoi une graine a-t-elle besoin pour germer ? | **d'eau et de chaleur** | Eau et chaleur. |
+| E3 | Un chat est… | **un carnivore** | Il mange de la viande. |
+| D1 | Que faut-il donner au haricot ? | **de l'eau et de la chaleur** | Pour germer. |
+| D2 | Ce qui sort en premier d'une graine, c'est… | **la racine** | La racine sort d'abord. |
 
 ### Biodiversité et chaînes alimentaires — `biodiversite-et-chaines-cm` (CM1 / CM2)
 
@@ -1052,6 +1432,18 @@ Faits à recouper : `120 km`, `2 h`, `60 km/h`, `10 m/s`, `36 km/h`, `30 km`, `1
 | D1 | Le serpent a des écailles et pond des œufs. C'est un… | **reptile** | Écailles et œufs : reptile. |
 | D2 | Une araignée a 8 pattes. C'est un… | **invertébré (arachnide)** | Les araignées ne sont pas des insectes. |
 
+### Mon corps et ma santé — `corps-et-sante-c2` (CP / CE1 / CE2)
+
+Faits à recouper : `11 heures`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien y a-t-il de sens ? | **5** | Vue, ouïe, odorat, goût, toucher. |
+| E2 | Quand faut-il se laver les mains ? | **avant de manger** | Avant de manger. |
+| E3 | Quel organe sert à sentir une fleur ? | **le nez** | L'odorat. |
+| D1 | Que fais-tu après le repas ? | **je me brosse les dents** | Hygiène. |
+| D2 | Quelle boisson est la meilleure pour la santé ? | **l'eau** | L'eau. |
+
 ### Le développement des végétaux — `developpement-vegetaux-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1073,6 +1465,16 @@ Faits à recouper : `66 millions`
 | E3 | Qui étudie les fossiles ? | **Les paléontologues** | Les paléontologues. |
 | D1 | Que dois-tu faire ? | **Le dégager doucement et noter où tu l'as trouvé** | On note la position pour comprendre. |
 | D2 | Que peut-on déduire d'un os de très grande taille ? | **Que l'animal était très grand** | La taille de l'os renseigne sur l'animal. |
+
+### Les milieux de vie et les saisons — `milieux-et-saisons-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien y a-t-il de saisons ? | **4** | Printemps, été, automne, hiver. |
+| E2 | En automne, les feuilles des arbres… | **tombent** | Elles tombent. |
+| E3 | Dans « herbe → lapin → renard », qui mange le lapin ? | **le renard** | Le renard. |
+| D1 | Que vois-tu sur le sol ? | **des feuilles mortes** | Automne. |
+| D2 | Quel animal hiberne l'hiver ? | **le hérisson** | Il dort tout l'hiver. |
 
 ### Nutrition et alimentation en 6e — `nutrition-et-alimentation-6e` (6e)
 
@@ -1158,7 +1560,27 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | Où te mets-tu ? | **Sous ma table, loin des vitres** | Protection contre les chutes. |
 | D2 | Après la secousse, que fais-tu ? | **J'évacue calmement avec la classe** | Calme et consignes. |
 
-## anglais (6)
+## anglais (8)
+
+### Anglais : dire bonjour, compter, les couleurs — `anglais-bonjour-c2` (CP / CE1)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | « Hello » veut dire… | **bonjour** | Bonjour. |
+| E2 | « Seven » = ? (en chiffres) | **7** | Seven = 7. |
+| E3 | « Red » veut dire… | **rouge** | Rouge. |
+| D1 | Pour savoir son nom, tu demandes… | **What's your name ?** | What's your name ? |
+| D2 | Il dit « thank you ». Il te dit… | **merci** | Merci. |
+
+### Anglais : la famille, les animaux, les objets — `anglais-famille-et-animaux-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | « Dog » veut dire… | **chien** | Chien. |
+| E2 | Comment dit-on « Ma mère » ? | **My mother** | Mother. |
+| E3 | « I have a cat » veut dire… | **j'ai un chat** | Have = avoir. |
+| D1 | Comment présentes-tu ton frère ? | **This is my brother.** | Brother. |
+| D2 | Comment dis-tu « j'aime les chiens » ? | **I like dogs.** | I like. |
 
 ### Anglais : goûts, nourriture et actions du quotidien — `anglais-gouts-et-actions-cm` (CM2)
 
@@ -1220,7 +1642,7 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | « A blue pen » désigne… | **un stylo bleu** | Blue pen. |
 | D2 | « My sister » = | **ma sœur** | Sister = sœur. |
 
-## arts-plastiques (3)
+## arts-plastiques (4)
 
 ### Arts plastiques : couleurs et matières — `arts-couleurs-cm` (CM1 / CM2)
 
@@ -1231,6 +1653,16 @@ Faits à recouper : `24 heures`, `24 h`
 | E3 | Pour éclaircir une couleur, on ajoute… | **du blanc** | Blanc. |
 | D1 | Comment faire de l'herbe verte ? | **Jaune + bleu** | Jaune + bleu. |
 | D2 | Comment faire un ciel de soir orangé ? | **Rouge + jaune** | Orange. |
+
+### Arts plastiques : couleurs, formes et œuvres — `arts-couleurs-et-formes-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Jaune + bleu = | **vert** | Vert. |
+| E2 | Quelle couleur est primaire ? | **le rouge** | Rouge, jaune, bleu. |
+| E3 | Qui a peint la Joconde ? | **Léonard de Vinci** | Léonard de Vinci. |
+| D1 | Pour l'orange du soleil, tu mélanges… | **rouge et jaune** | Orange. |
+| D2 | Pour éclaircir une couleur, tu ajoutes… | **du blanc** | Blanc. |
 
 ### Arts plastiques : lignes, formes, perspective et artistes — `arts-formes-et-composition-cm` (CM2)
 
@@ -1254,7 +1686,7 @@ Faits à recouper : `1503`
 | D1 | Que mets-tu au premier plan ? | **Un grand arbre foncé** | Éléments grands et contrastés. |
 | D2 | Comment colores-tu l'arrière-plan ? | **En teintes claires et bleutées** | Perspective atmosphérique. |
 
-## emc (12)
+## emc (15)
 
 ### Être citoyen : voter, s'engager, participer — `citoyen-et-engagement-cm` (CM1 / CM2)
 
@@ -1364,6 +1796,16 @@ Faits à recouper : `3018`
 | D1 | Un élève est moqué pour son accent. Que fais-tu ? | **Je le soutiens et j'en parle à un adulte** | Agir contre la discrimination. |
 | D2 | Pourquoi respecter le règlement ? | **Pour bien vivre ensemble** | Bien-être collectif. |
 
+### La République, ses symboles et les droits — `republique-et-citoyens-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quelle est la devise de la République au CE1 ? | **Liberté, Égalité, Fraternité** | La devise officielle. |
+| E2 | De quelles couleurs est le drapeau français ? | **bleu, blanc, rouge** | Tricolore. |
+| E3 | Un droit de l'enfant est… | **aller à l'école** | Éducation. |
+| D1 | Quel chant entend-on ? | **La Marseillaise** | L'hymne national. |
+| D2 | Que signifie « fraternité » ? | **s'entraider** | Entraide. |
+
 ### Respect, égalité et lutte contre le harcèlement — `respect-et-egalite-cm` (CM1 / CM2)
 
 Faits à recouper : `3018`
@@ -1376,6 +1818,16 @@ Faits à recouper : `3018`
 | D1 | Que fais-tu ? | **Je vais le voir et j'en parle à un adulte** | Soutenir et prévenir. |
 | D2 | Quel numéro peut aider en cas de harcèlement ? | **Le 3018** | Le 3018 est dédié au harcèlement et au cyberharcèlement. |
 
+### Sécurité, écrans et protection de la planète — `securite-ecrans-et-environnement-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel numéro appeler pour les pompiers ? | **18** | Pompiers : 18. |
+| E2 | Sur Internet, je ne donne jamais… | **mon mot de passe** | Secret. |
+| E3 | Où jette-t-on une bouteille en verre ? | **dans la colonne à verre** | Recyclage du verre. |
+| D1 | Où jette-t-on un papier ? | **dans le bac de tri** | Recyclage. |
+| D2 | Un adulte inconnu te demande ton adresse en ligne. Tu… | **ne réponds pas et préviens un adulte** | Prudence. |
+
 ### Sécurité, prévention et premiers secours — `securite-et-prevention-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1386,7 +1838,17 @@ Faits à recouper : `3018`
 | D1 | Que fais-tu d'abord ? | **Je préviens un adulte immédiatement** | Alerter. |
 | D2 | Que dire au téléphone ? | **Où je suis et ce qui s'est passé** | Lieu et situation. |
 
-## geographie (13)
+### Vivre ensemble : respect, règles et émotions — `vivre-ensemble-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Pour parler en classe, je… | **lève la main** | Règle de la classe. |
+| E2 | Un camarade est triste. Que fais-tu ? | **je lui demande ce qui ne va pas** | Gentillesse. |
+| E3 | Quand on est en colère, il faut… | **respirer et parler calmement** | Calmer la colère. |
+| D1 | Quelle bonne solution proposes-tu ? | **jouer chacun son tour** | Partager. |
+| D2 | Quel mot de politesse dis-tu pour t'excuser ? | **pardon** | Pardon. |
+
+## geographie (16)
 
 ### Communiquer d'un bout à l'autre du monde — `communiquer-numerique-cm` (CM2)
 
@@ -1506,6 +1968,16 @@ Faits à recouper : `8 milliards`, `10 millions`, `37 millions`
 | D1 | Sur quel continent se trouve Tokyo ? | **L'Asie** | Tokyo est au Japon, en Asie. |
 | D2 | Sur quel continent se trouve São Paulo ? | **L'Amérique du Sud** | São Paulo est au Brésil. |
 
+### Les paysages et la façon d'habiter — `paysages-et-habiter-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quel paysage a des immeubles et beaucoup de voitures ? | **la ville** | Ville. |
+| E2 | Un tracteur se voit plutôt… | **à la campagne** | Agriculture. |
+| E3 | Le premier plan est… | **ce qui est le plus près** | Le plus proche. |
+| D1 | Au premier plan, tu vois… | **des fleurs devant toi** | Ce qui est près. |
+| D2 | Qu'est-ce qui est construit par l'homme ? | **un chalet** | Le chalet. |
+
 ### Paysages de France et ressources — `paysages-et-ressources-cm` (CM1)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1515,6 +1987,16 @@ Faits à recouper : `8 milliards`, `10 millions`, `37 millions`
 | E3 | Un produit de saison est… | **cultivé à la bonne période de l'année** | Il est récolté au bon moment. |
 | D1 | Où est produit le lait ? | **Dans une exploitation agricole** | Chez un éleveur. |
 | D2 | Que fait l'usine ? | **Elle transforme le lait en yaourt** | Transformation = industrie. |
+
+### La planète Terre : continents et océans — `planete-terre-et-cartes-c2` (CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien de continents y a-t-il ? | **7** | Afrique, Amériques (2), Antarctique, Asie, Europe, Océanie. |
+| E2 | La capitale de la France est… | **Paris** | Paris. |
+| E3 | Notre planète s'appelle… | **la Terre** | La Terre. |
+| D1 | Sur quel continent se trouve la France ? | **en Europe** | Europe. |
+| D2 | Le plus grand océan est… | **le Pacifique** | Pacifique. |
 
 ### Se déplacer et transporter — `se-deplacer-transports-cm` (CM2)
 
@@ -1528,7 +2010,27 @@ Faits à recouper : `1981`, `2 heures`, `3 km`
 | D1 | Comment aller à l'école à 1 km ? | **À pied ou à vélo** | Court trajet : mobilité douce. |
 | D2 | Quel avantage pour le bus scolaire ? | **Beaucoup d'élèves dans un seul véhicule** | Un seul véhicule pour beaucoup de passagers. |
 
-## eps (3)
+### Se repérer dans l'espace, lire un plan — `se-reperer-dans-l-espace-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Où se lève le soleil ? | **à l'est** | Est. |
+| E2 | Le livre est sur la table. Où est-il ? | **dessus** | Sur = dessus. |
+| E3 | Que contient la légende d'un plan ? | **l'explication des signes** | Elle explique. |
+| D1 | Un plan est vu… | **de dessus** | Vu du ciel. |
+| D2 | Pour trouver la sortie, tu regardes… | **la légende et le plan** | Lire un plan. |
+
+## eps (4)
+
+### EPS : bouger, jouer et rester en sécurité — `eps-bouger-et-jouer-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Avant de courir, il faut… | **s'échauffer** | Échauffement. |
+| E2 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
+| E3 | À la piscine, on… | **écoute le maître-nageur** | Sécurité. |
+| D1 | Ton équipe perd. Tu… | **félicites les gagnants** | Fair-play. |
+| D2 | Après l'effort, que fais-tu ? | **je bois de l'eau** | Récupération. |
 
 ### EPS 6e : endurance, santé et sports collectifs — `eps-endurance-et-sports-collectifs-6e` (6e)
 
@@ -1560,7 +2062,7 @@ Faits à recouper : `1981`, `2 heures`, `3 km`
 | D1 | Que fais-tu d'abord ? | **Je m'échauffe** | Échauffement. |
 | D2 | Tu as très soif pendant l'effort. Tu… | **bois de l'eau** | Hydratation. |
 
-## technologie (5)
+## technologie (6)
 
 ### Matériaux, impact environnemental et recyclage en 6e — `materiaux-et-environnement-6e` (6e)
 
@@ -1583,6 +2085,16 @@ Faits à recouper : `500 kg`
 | E3 | Que devient le compost ? | **Du terreau** | Il enrichit le sol. |
 | D1 | Quelle idée est la meilleure ? | **Apporter un goûter sans emballage jetable** | Éviter les déchets. |
 | D2 | Que devient une bouteille en verre triée ? | **Une nouvelle bouteille** | Le verre se recycle. |
+
+### Les objets : matériaux, électricité et mouvement — `objets-electriques-et-materiaux-c2` (CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un circuit fermé permet… | **d'allumer l'ampoule** | Le courant passe. |
+| E2 | Quel matériau conduit l'électricité ? | **le métal** | Les métaux. |
+| E3 | Que faut-il faire avec une prise électrique ? | **ne jamais y mettre les doigts** | Danger. |
+| D1 | L'ampoule ne s'allume pas. Que vérifier ? | **que le circuit est bien fermé** | Contacts. |
+| D2 | Quel objet sert d'interrupteur ? | **un trombone métallique qui touche les fils** | Il doit conduire. |
 
 ### Objets techniques, matériaux et programmation en 6e — `objets-techniques-6e` (6e)
 
@@ -1614,7 +2126,7 @@ Faits à recouper : `500 kg`
 | D1 | Quel capteur utilises-tu ? | **Un capteur de présence** | Détecter la voiture. |
 | D2 | Quelle instruction ajoutes-tu pour la sécurité ? | **Ne pas fermer tant qu'un obstacle est détecté** | Sécurité. |
 
-## musique (3)
+## musique (4)
 
 ### Musique 6e : rythme, mélodie et écoute — `musique-lire-et-chanter-6e` (6e)
 
@@ -1635,6 +2147,16 @@ Faits à recouper : `500 kg`
 | E3 | Une note aiguë est… | **un son haut** | Aigu = haut. |
 | D1 | Deux blanches et une noire : combien de temps en tout ? | **5 temps** | 2 + 2 + 1 = 5. |
 | D2 | Quel instrument fait partie des percussions ? | **Le tambour** | On le frappe. |
+
+### Musique : les sons, le rythme et les chansons — `musique-sons-et-chansons-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un tambour fait un son… | **grave** | Grave. |
+| E2 | La flûte est un instrument… | **à vent** | On souffle dedans. |
+| E3 | La pulsation, c'est… | **le battement régulier de la musique** | Comme le cœur. |
+| D1 | Pour bien chanter ensemble, on… | **écoute les autres** | Écoute. |
+| D2 | Le piano est un instrument… | **à clavier** | Clavier. |
 
 ### Musique : voix, chant et culture musicale — `musique-voix-et-ecoute-cm` (CM2)
 

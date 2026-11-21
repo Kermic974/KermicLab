@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour payer, on utilise des pièces et des billets : l'euro et le centime.",
+  "niveaux": [
+    {
+      "titre": "Pièces et billets",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Il y a des pièces de 1, 2, 5, 10, 20, 50 centimes, de 1 € et 2 €, et des billets de 5, 10, 20, 50 € et plus. 1 € = 100 centimes.",
+        "Pour payer, on additionne les pièces : 2 € + 1 € + 50 c = 3 € 50."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un bonbon coûte 20 c.",
+          "Je donne 2 pièces de 10 c.",
+          "10 + 10 = 20 : c'est juste."
+        ]
+      },
+      "aRetenir": "1 € = 100 centimes."
+    },
+    {
+      "titre": "Rendre la monnaie",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Pour **rendre la monnaie**, on complète le prix jusqu'à la somme donnée. Je paie un livre de 7 € avec un billet de 10 € : on me rend 3 €, car 7 + 3 = 10.",
+        "On peut aussi calculer 10 − 7 = 3."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Prix : 6 €.",
+          "Je donne 10 €.",
+          "On me rend 4 €."
+        ]
+      },
+      "aRetenir": "Complète jusqu'à la somme donnée."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de centimes dans 1 euro ?",
+        "reponse": 100,
+        "unite": "c",
+        "indices": [
+          "Pense à la pièce de 1 €."
+        ],
+        "solution": "1 € = 100 centimes.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un livre coûte 7 €. Je donne 10 €. Combien me rend-on ?",
+        "reponse": 3,
+        "unite": "€",
+        "indices": [
+          "Complète jusqu'à 10."
+        ],
+        "solution": "10 − 7 = 3.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien font 2 pièces de 50 centimes (en centimes) ?",
+        "reponse": 100,
+        "unite": "c",
+        "indices": [
+          "Additionne."
+        ],
+        "solution": "50 + 50 = 100 c = 1 €.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "À la boulangerie",
+    "histoire": [
+      "Un pain coûte 1 € 20 et une brioche 2 € 50."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien coûtent le pain et la brioche (en euros) ?",
+        "reponse": 3.7,
+        "unite": "€",
+        "indices": [
+          "Additionne euros et centimes."
+        ],
+        "solution": "1,20 + 2,50 = 3,70.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Je paie avec 5 €. Combien me rend-on (en euros) ?",
+        "reponse": 1.3,
+        "unite": "€",
+        "indices": [
+          "Complète jusqu'à 5."
+        ],
+        "solution": "5 − 3,70 = 1,30.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bon compte !"
+  }
+}

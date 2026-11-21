@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans une phrase, le verbe dit l'action, le sujet dit qui la fait, l'adjectif dit comment est quelqu'un ou quelque chose.",
+  "niveaux": [
+    {
+      "titre": "Le verbe et le sujet",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **verbe** dit ce qu'on fait ou ce qu'on est : manger, courir, être. Pour le trouver, je change le moment : « Hier, il mangeait ». Le **sujet** dit qui fait l'action : je pose « Qui est-ce qui … ? »",
+        "Dans « Le chat boit du lait », le verbe est « boit », le sujet « le chat »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Les enfants chantent. »",
+          "Qui chante ? Les enfants : sujet.",
+          "Verbe : chantent."
+        ]
+      },
+      "aRetenir": "Qui est-ce qui + verbe ?"
+    },
+    {
+      "titre": "L'adjectif",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "L'**adjectif** dit comment est quelqu'un ou quelque chose : un **grand** chien, une **petite** fille, des fleurs **rouges**. Il s'accorde avec le nom.",
+        "On peut enlever l'adjectif : la phrase reste correcte, mais moins précise."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un chat noir.",
+          "Noir dit comment est le chat.",
+          "Des chats noirs : l'adjectif prend un s."
+        ]
+      },
+      "aRetenir": "L'adjectif s'accorde avec le nom."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « Le chat boit du lait », le verbe est…",
+        "choix": [
+          "lait",
+          "le",
+          "boit",
+          "chat"
+        ],
+        "bonne": 2,
+        "explication": "Il dit l'action."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans « Les enfants chantent », le sujet est…",
+        "choix": [
+          "chantent",
+          "chant",
+          "les",
+          "les enfants"
+        ],
+        "bonne": 3,
+        "explication": "Qui chante ?"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « une petite fille », « petite » est…",
+        "choix": [
+          "un sujet",
+          "un adjectif",
+          "un verbe",
+          "un nom propre"
+        ],
+        "bonne": 1,
+        "explication": "Il dit comment est la fille."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le détective des phrases",
+    "histoire": [
+      "Tu cherches le verbe et le sujet dans une phrase."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « Le facteur distribue le courrier », qui distribue ?",
+        "choix": [
+          "distribue",
+          "rien",
+          "Le facteur",
+          "le courrier"
+        ],
+        "bonne": 2,
+        "explication": "Le facteur est le sujet."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot est l'adjectif dans « un joli gâteau » ?",
+        "choix": [
+          "aucun",
+          "joli",
+          "gâteau",
+          "un"
+        ],
+        "bonne": 1,
+        "explication": "Il dit comment est le gâteau."
+      }
+    ],
+    "conclusion": "Détective confirmé !"
+  }
+}

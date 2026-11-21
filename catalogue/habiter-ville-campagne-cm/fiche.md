@@ -8,6 +8,7 @@ niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - paysages-et-habiter-c2
   - lire-une-carte-cm
 competences:
   - habiter-ville-campagne-cm-comprendre
