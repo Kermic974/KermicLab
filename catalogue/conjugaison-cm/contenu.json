@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un verbe se conjugue : il change de forme selon la personne et le temps.",
+  "niveaux": [
+    {
+      "titre": "Intuition : parler du présent, du passé, du futur",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **présent** parle de ce qui se passe maintenant : je joue. Le **futur** annonce : je jouerai. L'**imparfait** décrit le passé : je jouais. Le **passé composé** raconte un fait terminé : j'ai joué.",
+        "Les verbes sont classés en trois groupes : 1er (-er : chanter), 2e (-ir, -issons : finir) et 3e (autres : prendre, aller, être, avoir)."
+      ],
+      "exemple": {
+        "titre": "Exemple : chanter",
+        "etapes": [
+          "Présent : je chante.",
+          "Imparfait : je chantais.",
+          "Futur : je chanterai ; passé composé : j'ai chanté."
+        ]
+      },
+      "aRetenir": "Je chante / je chantais / je chanterai / j'ai chanté."
+    },
+    {
+      "titre": "Temps simples et temps composés",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**Imparfait** : radical de « nous » + -ais, -ais, -ait, -ions, -iez, -aient. **Futur** : infinitif + -ai, -as, -a, -ons, -ez, -ont. **Passé composé** : auxiliaire avoir ou être au présent + participe passé (j'ai mangé, elle est partie).",
+        "L'imparfait décrit un fait qui dure ou qui se répète ; le passé composé raconte un fait ponctuel. Le **plus-que-parfait** (j'avais mangé) exprime un fait antérieur. À l'**impératif**, on ordonne : « Mange ! ». Au **passé simple** (CM2), on raconte à l'écrit : il chanta, ils chantèrent."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Il pleuvait quand je suis sorti. »",
+        "etapes": [
+          "« Il pleuvait » : imparfait, décor qui dure.",
+          "« je suis sorti » : passé composé, fait précis.",
+          "L'imparfait plante le décor, le passé composé fait avancer l'action."
+        ]
+      },
+      "aRetenir": "Imparfait = décor ; passé composé = action ponctuelle."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Conjugue « chanter » au futur, 1re personne du singulier.",
+        "choix": [
+          "je chanterai",
+          "je chantais",
+          "je chante",
+          "j'ai chanté"
+        ],
+        "bonne": 0,
+        "explication": "Infinitif + -ai : je chanterai."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel temps est « nous finissions » ?",
+        "choix": [
+          "imparfait",
+          "futur",
+          "présent",
+          "passé simple"
+        ],
+        "bonne": 0,
+        "explication": "-ions = imparfait."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle phrase est au passé composé ?",
+        "choix": [
+          "Elle est partie hier.",
+          "Elle part demain.",
+          "Elle partait souvent.",
+          "Elle partira."
+        ],
+        "bonne": 0,
+        "explication": "Auxiliaire « est » + participe « partie »."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le récit de vacances",
+    "histoire": [
+      "Tu racontes tes vacances en choisissant les bons temps."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Hier, nous ___ au parc. » (aller)",
+        "choix": [
+          "sommes allés",
+          "allions",
+          "irons",
+          "allons"
+        ],
+        "bonne": 0,
+        "explication": "Fait précis passé : passé composé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Quand j'étais petit, je ___ à la plage. » (jouer)",
+        "choix": [
+          "jouais",
+          "jouerai",
+          "ai joué",
+          "joue"
+        ],
+        "bonne": 0,
+        "explication": "Habitude passée : imparfait."
+      }
+    ],
+    "conclusion": "Récit bien conjugué !"
+  }
+}

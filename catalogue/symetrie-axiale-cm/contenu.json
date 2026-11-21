@@ -1,0 +1,112 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une figure symétrique se superpose à elle-même quand on la plie le long de son axe.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le papillon",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les ailes d'un papillon sont symétriques : si on plie le dessin le long de l'axe, les deux moitiés se superposent exactement.",
+        "L'**axe de symétrie** est la droite le long de laquelle on plie."
+      ],
+      "exemple": {
+        "titre": "Exemple : la lettre A",
+        "etapes": [
+          "Un axe vertical la partage en deux moitiés identiques.",
+          "La lettre F n'a pas d'axe de symétrie.",
+          "Le carré en a 4, le rectangle 2."
+        ]
+      },
+      "aRetenir": "Plier sur l'axe : les deux moitiés se superposent."
+    },
+    {
+      "titre": "Tracer le symétrique",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Le **symétrique d'un point A** est le point A' tel que l'axe est perpendiculaire à [AA'] et passe par son milieu : A et A' sont à la même distance de l'axe, de part et d'autre.",
+        "Pour tracer une figure symétrique sur un quadrillage, on compte les carreaux entre chaque sommet et l'axe, puis on reporte du côté opposé.",
+        "Un point de l'axe est son propre symétrique."
+      ],
+      "exemple": {
+        "titre": "Exemple : sur quadrillage",
+        "etapes": [
+          "A est à 3 carreaux de l'axe, à gauche.",
+          "A' est à 3 carreaux de l'axe, à droite, sur la même ligne.",
+          "On fait de même pour tous les sommets, puis on relie."
+        ]
+      },
+      "aRetenir": "Un point et son symétrique sont à égale distance de l'axe."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien d'axes de symétrie possède un carré ?",
+        "reponse": 4,
+        "indices": [
+          "Pense aux deux diagonales et aux deux médiatrices."
+        ],
+        "solution": "2 axes passant par les milieux des côtés et 2 diagonales : 4.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien d'axes de symétrie possède un rectangle (non carré) ?",
+        "reponse": 2,
+        "indices": [
+          "Les diagonales ne sont pas des axes."
+        ],
+        "solution": "Un axe horizontal et un vertical.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le point A est à 3 cm de l'axe. Son symétrique A' est…",
+        "choix": [
+          "à 3 cm de l'axe, de l'autre côté",
+          "sur l'axe",
+          "à 6 cm de l'axe, du même côté",
+          "à 3 cm, du même côté"
+        ],
+        "bonne": 0,
+        "explication": "Le symétrique est de l'autre côté de l'axe, à la même distance."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le drapeau symétrique",
+    "histoire": [
+      "Tu dessines un drapeau avec une moitié colorée ; tu dois dessiner l'autre moitié par symétrie."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Un sommet est à 4 carreaux de l'axe. À combien de carreaux de l'axe est son symétrique ?",
+        "reponse": 4,
+        "indices": [
+          "La symétrie conserve les distances à l'axe."
+        ],
+        "solution": "Même distance : 4 carreaux.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle distance sépare ces deux points ?",
+        "reponse": 8,
+        "indices": [
+          "Additionne les deux distances."
+        ],
+        "solution": "4 + 4 = 8 carreaux (de part et d'autre).",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Symétrie réussie !"
+  }
+}
