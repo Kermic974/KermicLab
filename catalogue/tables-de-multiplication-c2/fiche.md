@@ -5,13 +5,7 @@ sujet: mathematiques/tables-de-multiplication-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - addition-c2
-competences:
-  - tables-de-multiplication-c2-comprendre
-  - tables-de-multiplication-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment apprendre les tables de multiplication ?
   - Que veut dire multiplier ?
   - Comment utiliser la table de 5 ?
+prerequis: addition-c2
+niveaux: cycle-2
+competences: utiliser-la-multiplication-comme-addition-repetee, retrouver-les-tables-de-multiplication, multiplier-par-10, resoudre-un-probleme-de-multiplication
 ---
 
 # Multiplier : sens et tables

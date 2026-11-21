@@ -5,12 +5,7 @@ sujet: mathematiques/nombres-jusqu-a-100-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP
-prerequis:
-competences:
-  - nombres-jusqu-a-100-c2-comprendre
-  - nombres-jusqu-a-100-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment compter jusqu'à 100 au CP ?
   - C'est quoi une dizaine et une unité ?
   - Comment lire et écrire un nombre à deux chiffres ?
+prerequis:
+niveaux: cycle-2
+competences: compter-et-regrouper-par-dizaines, lire-et-ecrire-un-nombre-jusqu-a-100, decomposer-en-dizaines-et-unites, dire-le-nombre-qui-suit
 ---
 
 # Les nombres jusqu'à 100

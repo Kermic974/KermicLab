@@ -5,13 +5,7 @@ sujet: mathematiques/addition-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - nombres-jusqu-a-100-c2
-competences:
-  - addition-c2-comprendre
-  - addition-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment faire une addition ?
   - C'est quoi une retenue ?
   - Comment poser une addition au CE1 ?
+prerequis: nombres-jusqu-a-100-c2
+niveaux: cycle-2
+competences: additionner-deux-nombres-de-tete-jusqu-a-20, poser-une-addition-avec-retenue, utiliser-l-addition-pour-resoudre-un-probleme, calculer-une-somme-de-deux-nombres-de-deux-chiffres
 ---
 
 # L'addition

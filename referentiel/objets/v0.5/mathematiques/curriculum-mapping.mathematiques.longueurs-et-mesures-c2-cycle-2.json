@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.longueurs-et-mesures-c2-cycle-2",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/longueurs-et-mesures-c2/contenu.json"
+  },
+  "object": "notion.mathematiques.longueurs-et-mesures-c2",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-2",
+  "role": "introduced"
+}

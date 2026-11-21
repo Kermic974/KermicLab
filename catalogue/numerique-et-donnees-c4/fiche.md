@@ -5,13 +5,7 @@ sujet: emc/numerique-et-donnees-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e, 3e
-prerequis:
-  - esprit-critique-et-medias-c4
-competences:
-  - numerique-et-donnees-c4-comprendre
-  - numerique-et-donnees-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qu'est-ce que le RGPD et la CNIL ?
   - Comment lutter contre le cyberharcèlement ?
   - Qu'est-ce que l'identité numérique ?
+prerequis: esprit-critique-et-medias-c4
+niveaux: cycle-4
+competences: distinguer-donnees-personnelles-et-autres-donnees, decrire-le-role-de-la-cnil, identifier-le-cyberharcelement-et-reagir, proteger-ses-traces-numeriques
 ---
 
 # Le numérique : données personnelles, réseaux et droits

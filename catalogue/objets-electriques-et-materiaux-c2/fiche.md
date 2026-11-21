@@ -5,12 +5,7 @@ sujet: technologie/objets-electriques-et-materiaux-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-competences:
-  - objets-electriques-et-materiaux-c2-comprendre
-  - objets-electriques-et-materiaux-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Dans quels matériaux sont faits les objets ?
   - Comment allumer une ampoule avec une pile ?
   - Pourquoi faut-il faire attention à l'électricité ?
+prerequis:
+niveaux: cycle-2
+competences: identifier-des-materiaux-usuels-a-partir-de-leurs-proprietes, distinguer-un-materiau-conducteur-d-un-materiau-isolant, realiser-un-circuit-electrique-simple-ferme, appliquer-les-regles-de-securite-avec-l-electricite
 ---
 
 # Les objets : matériaux, électricité et mouvement

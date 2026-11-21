@@ -5,13 +5,7 @@ sujet: mathematiques/multiplication-posee-ce2-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE2
-prerequis:
-  - tables-de-multiplication-c2
-competences:
-  - multiplication-posee-ce2-c2-comprendre
-  - multiplication-posee-ce2-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Comment poser une multiplication au CE2 ?
   - Comment multiplier par 10 et par 100 au CE2 ?
   - Comment calculer 24 × 3 ?
+prerequis: tables-de-multiplication-c2
+niveaux: cycle-2
+competences: multiplier-un-nombre-par-10, poser-une-multiplication, multiplier-par-un-nombre-a-un-chiffre, calculer-un-produit-avec-des-dizaines
 ---
 
 # Multiplier un grand nombre (CE2)

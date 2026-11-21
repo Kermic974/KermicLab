@@ -5,13 +5,7 @@ sujet: francais/temps-des-verbes-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - verbe-sujet-adjectif-c2
-competences:
-  - temps-des-verbes-c2-comprendre
-  - temps-des-verbes-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment conjuguer un verbe au présent ?
   - Quelle différence entre passé, présent et futur ?
   - Comment conjuguer être et avoir ?
+prerequis: verbe-sujet-adjectif-c2
+niveaux: cycle-2
+competences: conjuguer-un-verbe-au-present, conjuguer-etre-et-avoir, reconnaitre-une-phrase-au-futur, situer-une-action-dans-le-passe-le-present-ou-le-futur
 ---
 
 # Passé, présent, futur : conjuguer les verbes

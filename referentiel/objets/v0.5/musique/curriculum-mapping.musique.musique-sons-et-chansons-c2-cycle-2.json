@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.musique.musique-sons-et-chansons-c2-cycle-2",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-sons-et-chansons-c2/contenu.json"
+  },
+  "object": "notion.musique.musique-sons-et-chansons-c2",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-2",
+  "role": "introduced"
+}

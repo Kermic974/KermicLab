@@ -5,12 +5,7 @@ sujet: anglais/anglais-bonjour-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1
-prerequis:
-competences:
-  - anglais-bonjour-c2-comprendre
-  - anglais-bonjour-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment dire bonjour et au revoir en anglais ?
   - Comment compter jusqu'à dix en anglais ?
   - Comment dire les couleurs en anglais ?
+prerequis:
+niveaux: cycle-2
+competences: saluer-et-prendre-conge-en-anglais, compter-de-1-a-10-en-anglais, nommer-les-couleurs-en-anglais, comprendre-des-consignes-orales-tres-simples
 ---
 
 # Anglais : dire bonjour, compter, les couleurs

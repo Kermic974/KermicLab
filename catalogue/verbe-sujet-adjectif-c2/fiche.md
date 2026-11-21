@@ -5,13 +5,7 @@ sujet: francais/verbe-sujet-adjectif-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - noms-et-determinants-c2
-competences:
-  - verbe-sujet-adjectif-c2-comprendre
-  - verbe-sujet-adjectif-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment trouver le verbe d'une phrase ?
   - Comment trouver le sujet du verbe ?
   - C'est quoi un adjectif ?
+prerequis: noms-et-determinants-c2
+niveaux: cycle-2
+competences: identifier-le-verbe-d-une-phrase, identifier-le-sujet-d-une-phrase, reconnaitre-un-adjectif-et-son-nom, accorder-l-adjectif-avec-le-nom
 ---
 
 # Le verbe, le sujet et l'adjectif

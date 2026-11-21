@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.algorithmes-programmation-cm-requires-tableaux-et-algorithmes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmes-programmation-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.algorithmes-programmation-cm",
+  "target": "notion.mathematiques.tableaux-et-algorithmes-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Tableaux, graphiques et petits programmes » précède « Algorithmes et programmation » dans la progression du programme (lien à relire)."
+}
