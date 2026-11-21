@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Lors d'une transformation chimique, des substances disparaissent (réactifs) et d'autres apparaissent (produits).",
+  "niveaux": [
+    {
+      "titre": "Réactifs et produits",
+      "niveau": "4e",
+      "paragraphes": [
+        "Dans une **transformation chimique**, des **réactifs** se transforment en **produits** : de nouvelles substances apparaissent. Signes : changement de couleur, dégagement gazeux, chaleur, précipité. Exemple : la **combustion** du méthane produit du dioxyde de carbone et de l'eau. Une transformation **physique** (fusion, évaporation) ne crée pas de nouvelle substance.",
+        "On l'écrit : réactifs → produits."
+      ],
+      "exemple": {
+        "titre": "Exemple : le fer rouille",
+        "etapes": [
+          "Réactifs : fer et dioxygène.",
+          "Produit : la rouille.",
+          "Une nouvelle substance est formée."
+        ]
+      },
+      "aRetenir": "Chimique : nouvelles substances ; physique : même substance."
+    },
+    {
+      "titre": "Conservation de la masse et équation",
+      "niveau": "3e",
+      "paragraphes": [
+        "**Rien ne se perd, rien ne se crée** (Lavoisier) : la **masse totale** et le **nombre d'atomes** de chaque élément se conservent. Une **équation de réaction** doit être équilibrée : CH₄ + 2 O₂ → CO₂ + 2 H₂O (1 C, 4 H, 4 O de chaque côté).",
+        "On peut utiliser les masses : si 10 g de A réagissent avec 6 g de B, on obtient 16 g de produits."
+      ],
+      "exemple": {
+        "titre": "Exemple : équilibrer",
+        "etapes": [
+          "Hydrogène + dioxygène → eau.",
+          "2 H₂ + O₂ → 2 H₂O.",
+          "4 H et 2 O de chaque côté."
+        ]
+      },
+      "aRetenir": "Atomes conservés : équation équilibrée."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "10 g de A réagissent avec 6 g de B sans perte. Masse totale des produits ?",
+        "reponse": 16,
+        "unite": "g",
+        "indices": [
+          "La masse se conserve."
+        ],
+        "solution": "10 + 6 = 16.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Lequel est une transformation chimique ?",
+        "choix": [
+          "la combustion du bois",
+          "la fusion de la glace",
+          "l'évaporation de l'eau",
+          "la dissolution du sucre"
+        ],
+        "bonne": 0,
+        "explication": "Nouvelles substances."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans une équation équilibrée…",
+        "choix": [
+          "le nombre d'atomes de chaque élément est le même des deux côtés",
+          "il n'y a toujours qu'un seul réactif",
+          "les masses des deux côtés sont différentes",
+          "le produit est toujours un gaz"
+        ],
+        "bonne": 0,
+        "explication": "Conservation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bougie",
+    "histoire": [
+      "Une bougie brûle dans un bocal fermé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi la flamme s'éteint-elle ?",
+        "choix": [
+          "la lumière manque",
+          "le dioxygène est consommé",
+          "la cire disparaît",
+          "le bocal devient chaud"
+        ],
+        "bonne": 1,
+        "explication": "Réactif épuisé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que forme la combustion ?",
+        "choix": [
+          "du dioxyde de carbone et de l'eau",
+          "uniquement de l'eau liquide",
+          "du diazote à la place de l'air",
+          "du sable et de la cendre seulement"
+        ],
+        "bonne": 0,
+        "explication": "Produits."
+      }
+    ],
+    "conclusion": "Bien observé !"
+  }
+}

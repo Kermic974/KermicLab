@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un projet technique suit des étapes : besoin, cahier des charges, solutions, prototype, test.",
+  "niveaux": [
+    {
+      "titre": "Du besoin à la solution",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "On part d'un **besoin** (se protéger de la pluie à vélo), on rédige un **cahier des charges** (fonctions, contraintes de coût, de taille, de sécurité), on cherche plusieurs **solutions**, on les compare avec des critères et on choisit. On dessine avec un **croquis** puis un logiciel de **modélisation 3D**."
+      ],
+      "exemple": {
+        "titre": "Exemple : un porte-vélo",
+        "etapes": [
+          "Besoin : ranger son vélo.",
+          "Contraintes : peu cher, solide, léger.",
+          "Solution : cadre en acier recyclé."
+        ]
+      },
+      "aRetenir": "Besoin → cahier des charges → solution."
+    },
+    {
+      "titre": "Prototype et test",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Un **prototype** est une première version, parfois réduite, pour vérifier la solution : maquette en carton, impression 3D, programme. On le **teste** (essais, mesures), on compare avec le cahier des charges et on **améliore**. Les performances peuvent être mesurées (solidité, durée, consommation).",
+        "Le travail d'équipe, la répartition des tâches et la communication (schémas, fiches, présentations) font partie du projet."
+      ],
+      "exemple": {
+        "titre": "Exemple : tester un pont",
+        "etapes": [
+          "On charge la maquette de poids.",
+          "On note la charge maximale.",
+          "On renforce l'endroit fragile."
+        ]
+      },
+      "aRetenir": "Tester, mesurer, améliorer."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La première étape d'un projet technique est…",
+        "choix": [
+          "vendre l'objet",
+          "identifier le besoin",
+          "fabriquer le produit final",
+          "peindre la maquette"
+        ],
+        "bonne": 1,
+        "explication": "On part du besoin."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un prototype sert à…",
+        "choix": [
+          "vérifier la solution avant de la produire",
+          "décorer",
+          "remplacer le cahier des charges",
+          "éviter tout test"
+        ],
+        "bonne": 0,
+        "explication": "Validation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que fait-on après un test insuffisant ?",
+        "choix": [
+          "on améliore la solution",
+          "on abandonne toujours",
+          "on masque le résultat",
+          "on change de besoin"
+        ],
+        "bonne": 0,
+        "explication": "Itération."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le projet du collège",
+    "histoire": [
+      "Ta classe conçoit un composteur pour le collège."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle contrainte écris-tu ?",
+        "choix": [
+          "Il doit être vert",
+          "Il doit être célèbre",
+          "Il doit être doré",
+          "Il doit résister à la pluie"
+        ],
+        "bonne": 3,
+        "explication": "Contrainte réaliste."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment le tester ?",
+        "choix": [
+          "On le brûle",
+          "On le remplit de déchets et on observe",
+          "On le range",
+          "On le montre sans l'utiliser"
+        ],
+        "bonne": 1,
+        "explication": "Test en situation."
+      }
+    ],
+    "conclusion": "Projet bien mené !"
+  }
+}

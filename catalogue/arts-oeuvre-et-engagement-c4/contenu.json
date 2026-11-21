@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Beaucoup d'artistes utilisent leurs œuvres pour témoigner, dénoncer ou faire réfléchir.",
+  "niveaux": [
+    {
+      "titre": "Témoigner et dénoncer",
+      "niveau": "3e",
+      "paragraphes": [
+        "**Guernica** (1937) de **Pablo Picasso** dénonce les horreurs de la guerre : en noir, blanc et gris, des corps déformés, un cheval qui hurle, une mère en pleurs. Au XXe siècle, des artistes s'engagent : photographes de guerre, caricaturistes, affichistes. L'art peut attirer l'attention sur l'injustice, la guerre, l'environnement."
+      ],
+      "exemple": {
+        "titre": "Exemple : analyser Guernica",
+        "etapes": [
+          "Couleurs : noir, blanc, gris.",
+          "Formes déformées, cris.",
+          "Message : dénoncer la violence."
+        ]
+      },
+      "aRetenir": "L'art peut témoigner et dénoncer."
+    },
+    {
+      "titre": "L'art contemporain et l'espace public",
+      "niveau": "3e",
+      "paragraphes": [
+        "L'**art contemporain** (depuis les années 1960) utilise des formes variées : installation, performance, vidéo, land art, street art. Les œuvres peuvent être éphémères, interactives ou installées dans l'espace public. Le spectateur participe parfois. Questions : où est l'œuvre ? qui la voit ? que veut-elle dire ?",
+        "On pratique : projet collectif, installation, affiche, détournement."
+      ],
+      "exemple": {
+        "titre": "Exemple : le street art",
+        "etapes": [
+          "Une fresque sur un mur d'immeuble.",
+          "Elle transforme le quartier.",
+          "Elle parle de l'histoire locale."
+        ]
+      },
+      "aRetenir": "L'œuvre dialogue avec son lieu et son public."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui a peint Guernica ?",
+        "choix": [
+          "Léonard de Vinci",
+          "Vincent van Gogh",
+          "Pablo Picasso",
+          "Claude Monet"
+        ],
+        "bonne": 2,
+        "explication": "1937."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Guernica dénonce…",
+        "choix": [
+          "le sport",
+          "les horreurs de la guerre",
+          "la beauté des paysages",
+          "la richesse des rois"
+        ],
+        "bonne": 1,
+        "explication": "Bombardement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'art contemporain peut être…",
+        "choix": [
+          "toujours un portrait",
+          "une installation ou une performance",
+          "uniquement un tableau à l'huile",
+          "une peinture sur bois"
+        ],
+        "bonne": 1,
+        "explication": "Formes variées."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La fresque du collège",
+    "histoire": [
+      "Ta classe imagine une fresque sur l'environnement."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que veux-tu exprimer ?",
+        "choix": [
+          "le prix du cartable",
+          "la météo",
+          "le nom de la classe",
+          "la protection de la nature"
+        ],
+        "bonne": 3,
+        "explication": "Sujet engagé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Où l'installer ?",
+        "choix": [
+          "au fond d'un sac à dos",
+          "sur un mur visible par tous",
+          "dans un tiroir fermé à clé",
+          "sous un meuble de la salle"
+        ],
+        "bonne": 1,
+        "explication": "Espace public."
+      }
+    ],
+    "conclusion": "Belle fresque !"
+  }
+}

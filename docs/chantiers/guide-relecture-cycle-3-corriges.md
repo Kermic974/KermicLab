@@ -4,7 +4,7 @@ Compagnon de [guide-relecture-cycle-3.md](guide-relecture-cycle-3.md), **génér
 
 Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures et pourcentages repérés automatiquement dans l'explication (liste indicative, non exhaustive).
 
-## francais (37)
+## francais (42)
 
 ### Les accords : sujet-verbe, groupe nominal, participe passé — `accords-cm` (CM1 / CM2)
 
@@ -36,6 +36,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Quelle est la morale ? | **Il faut prévoir l'avenir** | Prévoyance. |
 | D2 | Que symbolise la fourmi ? | **Le travail et la prévoyance** | Elle travaille et prévoit. |
 
+### Dénoncer les travers de la société : satire et fables — `denoncer-les-travers-de-la-societe-c4` (3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Qui a écrit « Candide » ? | **Voltaire** | Voltaire. |
+| E2 | L'ironie consiste à… | **dire le contraire de ce qu'on pense** | Pour critiquer. |
+| E3 | Une fable met souvent en scène… | **des animaux qui parlent** | Animaux symboliques. |
+| D1 | Quel procédé fait rire en critiquant ? | **l'exagération humoristique** | Hyperbole + humour. |
+| D2 | Quel but vises-tu ? | **faire réfléchir en amusant** | Critiquer pour faire réfléchir. |
+
 ### Le discours rapporté et le théâtre — `discours-rapporte-cm` (CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -55,6 +65,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | Une histoire courte a… | **un début, un problème, une fin** | Structure simple. |
 | D1 | Quel mot rime avec « feuille » ? | **cueille** | Même son final. |
 | D2 | Comment s'appelle une ligne d'un poème ? | **un vers** | Un vers. |
+
+### Écrire, argumenter et réécrire au collège — `ecrire-et-reecrire-c4` (5e / 4e / 3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans un texte argumentatif, la thèse est… | **l'idée qu'on défend** | Idée défendue. |
+| E2 | Quel connecteur introduit une opposition ? | **mais** | Mais. |
+| E3 | Pour améliorer un texte, on peut… | **supprimer les répétitions** | Réécriture. |
+| D1 | Quel argument est le plus solide ? | **Les jeunes n'ont pas d'endroit pour faire du sport en sécurité** | Argument précis. |
+| D2 | Pour finir ta lettre, tu écris… | **une formule de politesse** | Politesse. |
 
 ### Écrire pour raconter, décrire et exprimer en 6e — `ecrire-pour-raconter-et-decrire-6e` (6e)
 
@@ -95,6 +115,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | E3 | « Un tire-bouchon » est… | **un mot composé** | Deux mots assemblés. |
 | D1 | Quel est le contraire de « possible » avec un préfixe ? | **impossible** | Devant p : im-. |
 | D2 | Que signifie « relire » ? | **lire de nouveau** | re- signifie de nouveau. |
+
+### Grammaire de la phrase en 5e : fonctions, expansions, propositions — `grammaire-de-la-phrase-5e-c4` (5e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans « la maison que je préfère », « que je préfère » est… | **une proposition subordonnée relative** | Elle complète le nom « maison ». |
+| E2 | Dans « Paris, capitale de la France », « capitale de la France » est… | **une apposition** | Apposition. |
+| E3 | Combien de verbes conjugués dans « Je sais qu'il viendra » ? | **2** | sais et viendra. |
+| D1 | « qui avait faim » est… | **une subordonnée relative** | Relative qui complète « héros ». |
+| D2 | « dans la forêt » est… | **un complément circonstanciel de lieu** | Où ? |
 
 ### Le groupe nominal et ses expansions — `groupe-nominal-cm` (CM1 / CM2)
 
@@ -256,6 +286,16 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | Quelle est la péripétie ? | **La tempête et le naufrage** | Un danger fait basculer l'histoire. |
 | D2 | Quel mot décrit l'objectif de Tom ? | **Survivre** | Il survit en attendant les secours. |
 
+### Récits d'aventures, voyages et héros — `recits-d-aventures-et-voyages-c4` (5e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | L'élément déclencheur d'un récit est… | **l'événement qui lance l'intrigue** | Il rompt l'équilibre initial. |
+| E2 | Qui a écrit « Le Tour du monde en quatre-vingts jours » ? | **Jules Verne** | Jules Verne. |
+| E3 | « Il faisait nuit quand il aperçut un feu. » « Il aperçut » est au… | **passé simple** | Action ponctuelle. |
+| D1 | Pour décrire le décor, tu utilises… | **l'imparfait** | Décor : imparfait. |
+| D2 | Quel narrateur choisis-tu pour un journal ? | **la 1re personne (« je »)** | Journal = je. |
+
 ### Résumer, expliquer et écrire un texte documentaire — `resumer-et-expliquer-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -376,7 +416,17 @@ Légende : **E** = entraînement, **D** = défi. « Faits » = années, mesures 
 | D1 | « Chronomètre » mesure… | **le temps** | Chrono = temps. |
 | D2 | « Géographie » veut dire… | **écrire sur la Terre** | Géo + graphein. |
 
-## mathematiques (57)
+### Vocabulaire, orthographe et accords au collège — `vocabulaire-et-orthographe-c4` (5e / 4e / 3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Les lettres que j'ai (écrire) : | **écrites** | COD « que » (lettres) placé avant : féminin pluriel. |
+| E2 | « Un boulot » est un mot du registre… | **familier** | Familier. |
+| E3 | « Chrono » dans « chronologie » signifie… | **le temps** | Du grec khrónos. |
+| D1 | « Elles se sont (laver) » : | **lavées** | Accord avec le sujet (COD = se, féminin pluriel). |
+| D2 | « Les cadeaux qu'il a (offrir) » : | **offerts** | COD avant : masculin pluriel. |
+
+## mathematiques (64)
 
 ### L'addition — `addition-c2` (CP / CE1 / CE2)
 
@@ -421,6 +471,16 @@ Faits à recouper : `90°`
 | E3 | « Si le lutin touche le mur alors rebondir » est… | **une condition** | Instruction conditionnelle. |
 | D1 | La souris gagne 2 points par fromage. Après 7 fromages, quel score ? | **14** | 7 × 2 = 14. |
 | D2 | Pour commencer le jeu quand on clique sur le drapeau, on utilise… | **un événement** | « Quand le drapeau est cliqué ». |
+
+### Algorithmique et programmation — `algorithmique-et-scratch-c4` (5e / 4e / 3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Que vaut la variable somme à la fin : somme = 0 ; pour i de 1 à 4, somme = somme + i ? | **10** | 1 + 2 + 3 + 4 = 10. |
+| E2 | Une boucle « tant que » s'arrête quand… | **la condition devient fausse** | Condition fausse. |
+| E3 | Programme : choisir x, multiplier par 3, ajouter 2. Quel résultat pour x = 4 ? | **14** | 3 × 4 + 2 = 14. |
+| D1 | Quelle structure répète les propositions jusqu'à la bonne réponse ? | **Une boucle tant que** | Répéter jusqu'à trouver. |
+| D2 | Pour dire « trop grand », on utilise… | **une condition si… alors** | Test si proposition > nombre. |
 
 ### Les angles — `angles-cm` (CM1 / CM2)
 
@@ -770,6 +830,26 @@ Faits à recouper : `75 %`, `20 %`, `25 %`
 | D1 | Combien de places en tout ? | **6800** | 4 500 + 2 300 = 6 800. |
 | D2 | Combien de places assises en plus que debout ? | **2200** | 4 500 − 2 300 = 2 200. |
 
+### La notion de fonction — `notion-de-fonction-c4` (3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | f(x) = 3x + 2. Quelle est l'image de 4 ? | **14** | 3 × 4 + 2 = 14. |
+| E2 | f(x) = 3x + 2. Quel est l'antécédent de 11 ? | **3** | 3x + 2 = 11 donc x = 3. |
+| E3 | Peut-on avoir f(2) = 5 et f(2) = 7 pour la même fonction ? | **Non, un nombre a une seule image** | Chaque x a une seule image. |
+| D1 | Combien coûtent 6 séances ? | **40 €** | f(6) = 5 × 6 + 10 = 40. |
+| D2 | Avec 60 €, combien de séances peux-tu faire ? | **10** | 5x + 10 = 60 donc x = 10. |
+
+### Parallélogrammes et symétrie centrale — `parallelogrammes-et-symetrie-centrale-c4` (5e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans un parallélogramme, les diagonales… | **se coupent en leur milieu** | Propriété caractéristique. |
+| E2 | A' est le symétrique de A par rapport à O. OA = 4 cm. Quelle est la longueur AA' ? | **8 cm** | AA' = 2 × OA = 8. |
+| E3 | Quelle figure a un centre de symétrie ? | **Le parallélogramme** | Le centre est l'intersection des diagonales. |
+| D1 | AC = 10 cm. Quelle est la longueur AO ? | **5 cm** | O est le milieu de [AC]. |
+| D2 | Le symétrique de A par rapport à O est… | **C** | O est le milieu de [AC]. |
+
 ### Périmètre et aire — `perimetre-aire-cm` (CM1 / CM2)
 
 Faits à recouper : `24 m²`, `1 m²`, `10 000 cm²`, `12 cm²`
@@ -802,6 +882,18 @@ Faits à recouper : `24 m²`, `1 m²`, `10 000 cm²`, `12 cm²`
 | D1 | Une pièce a 4 côtés égaux mais pas d'angle droit. C'est un… | **losange** | 4 côtés égaux sans angle droit : un losange. |
 | D2 | Une pièce a 4 angles droits et des côtés de longueurs 8 cm et 3 cm. C'est un… | **rectangle** | 4 angles droits, côtés inégaux : un rectangle. |
 
+### Pourcentages, évolutions et taux — `pourcentages-et-evolutions-c4` (5e / 4e)
+
+Faits à recouper : `20 %`, `60 %`, `10 %`, `50 %`, `25 %`, `40 %`, `30 %`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien font 20 % de 60 ? | **12** | 60 × 20 ÷ 100 = 12. |
+| E2 | Un article à 80 € est soldé à −25 %. Prix final ? | **60 €** | 80 × 0,75 = 60. |
+| E3 | Une hausse de 10 % puis une baisse de 10 % donnent… | **une valeur un peu inférieure à celle de départ** | 1,1 × 0,9 = 0,99. |
+| D1 | Quel est le prix soldé ? | **84 €** | 120 × 0,7 = 84. |
+| D2 | Quel est le prix final après la remise de 10 € ? | **74 €** | 84 − 10 = 74. |
+
 ### Résoudre des problèmes à plusieurs étapes — `problemes-a-etapes-cm` (CM1 / CM2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -833,6 +925,16 @@ Faits à recouper : `50 %`, `25 %`, `10 %`, `100 %`, `200 g`
 | E3 | Laquelle de ces situations est proportionnelle ? | **Le prix de 4 baguettes de pain identiques** | Avec un prix à l'unité constant, doubler le nombre d'objets double le prix. |
 | D1 | Combien d'œufs pour 12 personnes ? | **6** | 12 = 4 × 3 donc 2 × 3 = 6. |
 | D2 | Combien de grammes de farine ? | **600 g** | 200 × 3 = 600. |
+
+### Les racines carrées — `racines-carrees-c4` (3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien vaut √49 ? | **7** | 7² = 49. |
+| E2 | √50 s'écrit aussi… | **5√2** | √50 = √25 × √2. |
+| E3 | √9 + √16 est égal à… | **7** | 3 + 4 = 7 (et pas √25 = 5). |
+| D1 | Quelle est la longueur de sa diagonale (Pythagore) ? | **√2 m** | d² = 1 + 1 = 2. |
+| D2 | Cette valeur est environ… | **1,41 m** | √2 ≈ 1,414. |
 
 ### Repérage, tableaux et graphiques en 6e — `reperage-et-donnees-6e` (6e)
 
@@ -958,6 +1060,18 @@ Faits à recouper : `12 h`, `18 °C`, `18 h`, `14 °C`, `4 °C`
 | D1 | Combien d'œufs en tout ? | **24** | 4 × 6 = 24. |
 | D2 | Avec 10 boîtes, combien d'œufs ? | **60** | 10 × 6 = 60. |
 
+### Triangles : angles, droites remarquables et constructions — `triangles-et-constructions-c4` (5e / 4e)
+
+Faits à recouper : `180°`, `60°`, `52°`, `68°`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un triangle a deux angles de 52° et 68°. Combien mesure le troisième ? | **60 °** | 180 − (52 + 68) = 60. |
+| E2 | Peut-on construire un triangle de côtés 4 cm, 5 cm et 10 cm ? | **Non, car 4 + 5 < 10** | Inégalité triangulaire non respectée. |
+| E3 | Les trois médiatrices d'un triangle se coupent… | **au centre du cercle circonscrit** | Propriété du cercle circonscrit. |
+| D1 | Quel point doit-il choisir ? | **Le centre du cercle circonscrit** | Il est équidistant des trois sommets. |
+| D2 | Quelles droites doit-il tracer ? | **Deux médiatrices** | Leur intersection est le centre. |
+
 ### Triangles et quadrilatères en 6e — `triangles-et-quadrilateres-6e` (6e)
 
 Faits à recouper : `60°`, `180°`, `50°`, `70°`, `110°`
@@ -969,6 +1083,18 @@ Faits à recouper : `60°`, `180°`, `50°`, `70°`, `110°`
 | E3 | Dans un losange, les diagonales sont… | **perpendiculaires** | Propriété du losange. |
 | D1 | Comment sont les 4 côtés ? | **égaux** | Losange : quatre côtés égaux. |
 | D2 | Un angle du losange vaut 70°. Combien vaut l'angle opposé ? | **70 °** | Angles opposés égaux. |
+
+### Trigonométrie dans le triangle rectangle — `trigonometrie-triangle-rectangle-c4` (4e / 3e)
+
+Faits à recouper : `60°`, `30°`, `36,9°`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans un triangle rectangle, le cosinus d'un angle aigu est… | **côté adjacent ÷ hypoténuse** | CAH. |
+| E2 | Hypoténuse 10 cm, angle de 30°. Longueur du côté opposé ? | **5 cm** | 10 × sin 30° = 10 × 0,5 = 5. |
+| E3 | cos A = 0,5. Quelle est la mesure de A (en degrés) ? | **60 °** | cos⁻¹(0,5) = 60°. |
+| D1 | À quelle distance du mur est le pied de l'échelle (4 × cos 60°) ? | **2 m** | 4 × 0,5 = 2. |
+| D2 | Quelle hauteur atteint-elle environ ? | **3,5 m** | 4 × sin 60° ≈ 3,46 m. |
 
 ### Volumes et contenances — `volumes-contenances-cm` (CM2)
 
@@ -982,7 +1108,7 @@ Faits à recouper : `24 cm³`, `1 000 cm³`, `1 L`, `1 000 mL`, `1 mL`, `1 cm³`
 | D1 | Quel est son volume en cm³ ? | **60000 cm³** | 50 × 30 = 1 500 ; 1 500 × 40 = 60 000. |
 | D2 | Combien de litres d'eau contient-il quand il est plein ? | **60 L** | 60 000 cm³ = 60 dm³ = 60 L. |
 
-## histoire (21)
+## histoire (26)
 
 ### L'âge industriel en France — `age-industriel-cm` (CM2)
 
@@ -996,6 +1122,18 @@ Faits à recouper : `1841`, `1881`, `1892`, `1884`, `1889`, `14 heures`
 | D1 | Pourquoi les ouvriers créent-ils des syndicats ? | **Pour défendre leurs droits** | Les syndicats défendent les salaires et les conditions de travail. |
 | D2 | Quel moyen de transport se développe ? | **Le train** | Le chemin de fer. |
 
+### Chrétientés et islam (VIe-XIIIe siècles) — `chretientes-et-islam-c4` (5e)
+
+Faits à recouper : `1096`, `1291`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | En quelle année commence l'hégire ? | **622** | Départ de Mahomet vers Médine, 622. |
+| E2 | Quelle ville est la capitale de l'Empire byzantin ? | **Constantinople** | Constantinople. |
+| E3 | Que transmettent les savants du monde musulman ? | **des savoirs scientifiques et des textes** | Échanges de savoirs. |
+| D1 | Pourquoi traduit-on ces livres ? | **Pour transmettre des savoirs** | Transmission. |
+| D2 | Que montre cette scène ? | **Que les mondes échangent aussi** | Échanges. |
+
 ### Clovis et Charlemagne — `clovis-charlemagne-cm` (CM1)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1006,6 +1144,18 @@ Faits à recouper : `1841`, `1881`, `1892`, `1884`, `1889`, `14 heures`
 | D1 | Que viens-tu d'apprendre à l'école ? | **À lire et à écrire en latin** | Charlemagne encourage les écoles et l'écriture. |
 | D2 | Qui a couronné Charlemagne empereur ? | **Le pape Léon III** | Le pape, à Rome, le 25 décembre 800. |
 
+### Les colonisations au XIXe siècle — `colonisations-c4` (4e)
+
+Faits à recouper : `1884`, `1885`, `1830`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | En quelle année la France commence-t-elle la conquête de l'Algérie ? | **1830** | Prise d'Alger en 1830. |
+| E2 | La conférence de Berlin (1884-1885) organise… | **le partage de l'Afrique entre puissances européennes** | Partage. |
+| E3 | Qui a résisté à la conquête française de l'Algérie ? | **l'émir Abd el-Kader** | Abd el-Kader. |
+| D1 | Pourquoi faut-il être prudent avec ce témoignage ? | **Il donne le point de vue du colonisateur** | Croiser les points de vue. |
+| D2 | Que faut-il chercher pour compléter ? | **Le témoignage des populations colonisées** | Croiser les sources. |
+
 ### L'Empire romain et la naissance du christianisme — `empire-romain-christianisme-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1015,6 +1165,16 @@ Faits à recouper : `1841`, `1881`, `1892`, `1884`, `1889`, `14 heures`
 | E3 | Qu'est-ce qui aide à diffuser le christianisme ? | **Les routes et l'unité de l'Empire** | Circulation facile. |
 | D1 | Qui dirige la communauté ? | **Un évêque** | L'évêque. |
 | D2 | En quelle année l'Empire romain d'Occident disparaît-il ? | **476** | 476 apr. J.-C. |
+
+### Seigneurs, paysans, Église et pouvoir royal — `feodalite-eglise-et-pouvoirs-c4` (5e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Dans la société féodale, ceux qui travaillent sont… | **les paysans** | Troisième ordre. |
+| E2 | Un vassal est… | **un homme qui promet fidélité à un seigneur** | Lien féodal. |
+| E3 | Les cathédrales gothiques symbolisent… | **la foi et la richesse des villes** | Expression religieuse et urbaine. |
+| D1 | Qui protège les paysans ? | **Le seigneur** | En échange de redevances. |
+| D2 | Qui garde les registres de naissance et de baptême ? | **Le curé de la paroisse** | L'Église. |
 
 ### La France depuis 1945 et la construction européenne — `france-europe-depuis-1945-cm` (CM2)
 
@@ -1210,6 +1370,30 @@ Faits à recouper : `753 av. J.-C.`, `509 av. J.-C.`
 | D1 | Que mets-tu en premier sur la frise ? | **ma naissance** | Le plus ancien d'abord. |
 | D2 | Quel mot veut dire « après » ? | **ensuite** | Ensuite. |
 
+### Société, droits et culture au XIXe siècle — `societe-et-culture-au-xixe-c4` (4e)
+
+Faits à recouper : `1848`, `1944`, `1881`, `1882`, `1884`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | En quelle année est instauré le suffrage universel masculin ? | **1848** | Deuxième République. |
+| E2 | Qui a écrit Germinal ? | **Émile Zola** | Naturalisme. |
+| E3 | Les lois de Jules Ferry rendent l'école… | **gratuite, obligatoire et laïque** | 1881-1882. |
+| D1 | Qui peut aller à l'école ? | **Tous les enfants de 6 à 13 ans** | Obligatoire. |
+| D2 | Pourquoi l'école est-elle laïque ? | **Pour accueillir tous les enfants sans distinction de religion** | Neutralité. |
+
+### Les traites négrières et l'esclavage — `traites-et-esclavage-c4` (4e)
+
+Faits à recouper : `1685`, `1804`, `1794`, `1802`, `1848`, `12 millions`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | En quelle année l'esclavage est-il définitivement aboli en France ? | **1848** | Décret de 1848. |
+| E2 | Le commerce triangulaire relie… | **l'Europe, l'Afrique et les Amériques** | Trois continents. |
+| E3 | Quel pays naît de la révolte conduite par Toussaint Louverture ? | **Haïti** | Indépendance en 1804. |
+| D1 | Que montre cette histoire pour un historien ? | **Une traite qui a enrichi des ports et brisé des vies** | Faits historiques, sans minimiser. |
+| D2 | Que commémore-t-on le 10 mai ? | **La mémoire de l'esclavage et son abolition** | Journée de la mémoire. |
+
 ### Récits fondateurs : les voyages d'Ulysse et la Méditerranée — `voyages-d-ulysse-6e` (6e)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1220,7 +1404,7 @@ Faits à recouper : `753 av. J.-C.`, `509 av. J.-C.`
 | D1 | Pourquoi ce récit est-il utile à l'historien ? | **Il montre les croyances et la culture grecques** | C'est une source sur les croyances. |
 | D2 | Sur quelle mer voyage Ulysse ? | **La Méditerranée** | Autour de la Méditerranée. |
 
-## physique-chimie (13)
+## physique-chimie (15)
 
 ### L'air, un gaz qui occupe de la place — `air-et-matiere-cm` (CM1 / CM2)
 
@@ -1370,7 +1554,31 @@ Faits à recouper : `120 km`, `2 h`, `60 km/h`, `10 m/s`, `36 km/h`, `30 km`, `1
 | D1 | Quelle est ta vitesse moyenne ? | **6 km/h** | 6 ÷ 1 = 6 km/h. |
 | D2 | À cette vitesse, combien de km en 3 h ? | **18 km** | 6 × 3 = 18. |
 
-## svt (18)
+### Signaux, ondes et transmission de l'information — `signaux-et-information-c4` (4e / 3e)
+
+Faits à recouper : `300 000 km`, `340 m/s`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Plus la fréquence d'un son est élevée… | **plus le son est aigu** | Hauteur. |
+| E2 | La lumière dans le vide va à… | **300 000 km/s** | Vitesse de la lumière. |
+| E3 | Un signal numérique est… | **une suite de 0 et de 1** | Binaire. |
+| D1 | Le signal voyage surtout… | **dans des fibres optiques et par ondes** | Réseau. |
+| D2 | Le son voyage-t-il dans le vide ? | **non** | Il lui faut un milieu. |
+
+### Transformations chimiques et réactions — `transformations-chimiques-c4` (4e / 3e)
+
+Faits à recouper : `10 g`, `6 g`, `16 g`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | 10 g de A réagissent avec 6 g de B sans perte. Masse totale des produits ? | **16 g** | 10 + 6 = 16. |
+| E2 | Lequel est une transformation chimique ? | **la combustion du bois** | Nouvelles substances. |
+| E3 | Dans une équation équilibrée… | **le nombre d'atomes de chaque élément est le même des deux côtés** | Conservation. |
+| D1 | Pourquoi la flamme s'éteint-elle ? | **le dioxygène est consommé** | Réactif épuisé. |
+| D2 | Que forme la combustion ? | **du dioxyde de carbone et de l'eau** | Produits. |
+
+## svt (21)
 
 ### L'alimentation et la digestion — `alimentation-digestion-cm` (CM1 / CM2)
 
@@ -1466,6 +1674,26 @@ Faits à recouper : `66 millions`
 | D1 | Que dois-tu faire ? | **Le dégager doucement et noter où tu l'as trouvé** | On note la position pour comprendre. |
 | D2 | Que peut-on déduire d'un os de très grande taille ? | **Que l'animal était très grand** | La taille de l'os renseigne sur l'animal. |
 
+### Météorologie et climat — `meteo-et-climat-c4` (4e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un anticyclone apporte… | **du beau temps** | Hautes pressions. |
+| E2 | Le climat se mesure sur… | **au moins 30 ans** | Moyenne longue. |
+| E3 | Les nuages se forment par… | **condensation de la vapeur d'eau** | Refroidissement. |
+| D1 | Quel instrument mesure la pression ? | **Le baromètre** | Baromètre. |
+| D2 | Un froid vif un jour d'hiver prouve-t-il que le climat ne se réchauffe pas ? | **Non, météo et climat sont différents** | Échelles de temps. |
+
+### Micro-organismes, hygiène et santé — `microbes-et-sante-c4` (4e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Les antibiotiques agissent contre… | **les bactéries** | Pas contre les virus. |
+| E2 | Un vaccin sert à… | **préparer le système immunitaire** | Prévention. |
+| E3 | Quel geste limite le plus les microbes ? | **se laver les mains** | Hygiène. |
+| D1 | Quel geste limite la contagion ? | **se laver les mains et aérer les salles** | Hygiène. |
+| D2 | La grippe est causée par… | **un virus** | Virus. |
+
 ### Les milieux de vie et les saisons — `milieux-et-saisons-c2` (CE1 / CE2)
 
 | | Question | Réponse attendue | Explication / solution |
@@ -1526,6 +1754,18 @@ Faits à recouper : `66 millions`
 | D1 | Que remarques-tu après la course ? | **Le pouls est plus rapide** | Le cœur accélère. |
 | D2 | Au repos, 70 battements par minute. Combien en 2 minutes ? | **140** | 70 × 2 = 140. |
 
+### Santé : sommeil, addictions et prévention — `sante-et-prevention-c4` (3e)
+
+Faits à recouper : `10 heures`, `1 heure`, `9 heures`, `10 h`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Combien d'heures de sommeil recommande-t-on à un adolescent ? | **8 à 10** | Besoin élevé. |
+| E2 | Le tabac provoque… | **une dépendance et des maladies graves** | Nicotine. |
+| E3 | Que faire si on se sent dépendant d'un jeu ? | **en parler à un adulte ou à un professionnel** | Demander de l'aide. |
+| D1 | Quel bénéfice attends-tu ? | **un meilleur sommeil** | Sommeil. |
+| D2 | Quel autre geste aide la santé ? | **une activité physique quotidienne** | 60 minutes par jour. |
+
 ### La Terre dans le système solaire en 6e — `terre-dans-le-systeme-solaire-6e` (6e)
 
 Faits à recouper : `24 h`
@@ -1560,7 +1800,41 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | Où te mets-tu ? | **Sous ma table, loin des vitres** | Protection contre les chutes. |
 | D2 | Après la secousse, que fais-tu ? | **J'évacue calmement avec la classe** | Calme et consignes. |
 
-## anglais (8)
+## anglais (11)
+
+### Anglais 3e : conditionnel, passif et expression de l'opinion — `anglais-3e-c4` (3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | « If I ___ rich, I would travel. » | **were** | Irréel : prétérit. |
+| E2 | Quelle phrase est au passif ? | **The film was directed by X.** | be + participe passé. |
+| E3 | « I am tired », he said → He said that he… | **was tired** | Recul des temps. |
+| D1 | Comment donnes-tu ton avis ? | **In my opinion, we should recycle more.** | Phrase correcte. |
+| D2 | Comment exprimes-tu une hypothèse irréelle ? | **If we had more time, we would visit the museum.** | If + prétérit, would + base. |
+
+### Anglais 4e : present perfect, futur et modaux — `anglais-4e-c4` (4e)
+
+Faits à recouper : `2020`, `2021`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | « I have lived here ___ five years. » | **for** | Durée : for. |
+| E2 | Complète : « You ___ wear a helmet. » (obligation) | **must** | Obligation. |
+| E3 | Quelle phrase exprime un projet ? | **I'm going to visit my cousin.** | be going to. |
+| D1 | Comment dis-tu « Je vis ici depuis 2020 » ? | **I have lived here since 2020.** | Present perfect + since. |
+| D2 | Comment conseilles-tu à un ami de dormir plus ? | **You should sleep more.** | Should + base verbale. |
+
+### Anglais 5e : passé, comparaison et vie quotidienne — `anglais-5e-c4` (5e)
+
+Faits à recouper : `2020`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Complète : « Yesterday, I ___ to the cinema. » | **went** | Prétérit irrégulier de go. |
+| E2 | Comment dit-on « Je n'ai pas vu le film » (hier) ? | **I didn't see the film.** | didn't + base verbale. |
+| E3 | « This book is ___ than that one. » (interesting) | **more interesting** | Adjectif long : more … than. |
+| D1 | Comment dis-tu « J'ai visité Londres l'été dernier » ? | **I visited London last summer.** | Prétérit + last summer. |
+| D2 | Comment dis-tu « C'était le meilleur voyage » ? | **It was the best trip.** | Superlatif irrégulier. |
 
 ### Anglais : dire bonjour, compter, les couleurs — `anglais-bonjour-c2` (CP / CE1)
 
@@ -1642,7 +1916,7 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | « A blue pen » désigne… | **un stylo bleu** | Blue pen. |
 | D2 | « My sister » = | **ma sœur** | Sister = sœur. |
 
-## arts-plastiques (4)
+## arts-plastiques (6)
 
 ### Arts plastiques : couleurs et matières — `arts-couleurs-cm` (CM1 / CM2)
 
@@ -1674,6 +1948,28 @@ Faits à recouper : `24 heures`, `24 h`
 | D1 | Que regardes-tu d'abord dans un tableau ? | **Le sujet, les couleurs et la composition** | Observation. |
 | D2 | Un tableau où les objets semblent s'enfoncer au loin utilise… | **la perspective** | Profondeur. |
 
+### Arts plastiques : l'image, la représentation et les dispositifs — `arts-image-et-representation-c4` (5e / 4e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Le cadrage consiste à… | **choisir ce qu'on montre** | Choix de l'artiste. |
+| E2 | Un gros plan montre surtout… | **un détail ou une émotion** | Effet. |
+| E3 | Un détournement d'image consiste à… | **modifier une image pour changer son sens** | Création. |
+| D1 | Que changes-tu pour modifier le sens ? | **le cadrage et l'assemblage des images** | Composition. |
+| D2 | Quel point de vue donne une impression de puissance ? | **la contre-plongée** | Vue d'en bas. |
+
+### Arts plastiques : art, société et engagement — `arts-oeuvre-et-engagement-c4` (3e)
+
+Faits à recouper : `1937`, `1960`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Qui a peint Guernica ? | **Pablo Picasso** | 1937. |
+| E2 | Guernica dénonce… | **les horreurs de la guerre** | Bombardement. |
+| E3 | L'art contemporain peut être… | **une installation ou une performance** | Formes variées. |
+| D1 | Que veux-tu exprimer ? | **la protection de la nature** | Sujet engagé. |
+| D2 | Où l'installer ? | **sur un mur visible par tous** | Espace public. |
+
 ### Arts plastiques 6e : représenter l'espace, la matière et la couleur — `arts-representation-et-espace-6e` (6e)
 
 Faits à recouper : `1503`
@@ -1686,7 +1982,7 @@ Faits à recouper : `1503`
 | D1 | Que mets-tu au premier plan ? | **Un grand arbre foncé** | Éléments grands et contrastés. |
 | D2 | Comment colores-tu l'arrière-plan ? | **En teintes claires et bleutées** | Perspective atmosphérique. |
 
-## emc (15)
+## emc (18)
 
 ### Être citoyen : voter, s'engager, participer — `citoyen-et-engagement-cm` (CM1 / CM2)
 
@@ -1697,6 +1993,18 @@ Faits à recouper : `1503`
 | E3 | Que fait un délégué de classe ? | **Il représente ses camarades** | Il porte la parole de la classe. |
 | D1 | Comment voter correctement ? | **Chacun vote en secret** | Le vote est secret. |
 | D2 | Un candidat obtient 14 voix, l'autre 11. Combien d'élèves ont voté ? | **25** | 14 + 11 = 25 votants. |
+
+### Défense, paix et sécurité collective — `defense-et-paix-c4` (3e)
+
+Faits à recouper : `1945`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Qui est le chef des armées en France ? | **le président de la République** | Constitution. |
+| E2 | Que signifie « Casques bleus » ? | **des soldats de l'ONU pour la paix** | Missions de paix. |
+| E3 | Que protègent les conventions de Genève ? | **les civils et les prisonniers en temps de guerre** | Droit de la guerre. |
+| D1 | À quoi sert cette journée ? | **Informer les jeunes sur la défense et leurs droits** | Sensibilisation. |
+| D2 | Comment peut-on s'engager ? | **Service civique ou réserve** | Engagement volontaire. |
 
 ### La devise et les symboles de la République — `devise-republique-cm` (CM1 / CM2)
 
@@ -1752,6 +2060,16 @@ Faits à recouper : `1989`, `1990`
 | D1 | Que fais-tu d'abord ? | **Je vérifie auprès de l'école ou d'un adulte** | Source officielle. |
 | D2 | Pourquoi le message est-il suspect ? | **Il n'a pas de source claire** | Pas de source = prudence. |
 
+### Esprit critique, médias et information — `esprit-critique-et-medias-c4` (5e / 4e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Avant de partager une information, il faut… | **vérifier la source** | Croiser les sources. |
+| E2 | Un deepfake est… | **une image ou vidéo truquée par ordinateur** | Manipulation numérique. |
+| E3 | La liberté de la presse permet… | **à des médias indépendants d'informer** | Avec des limites légales. |
+| D1 | Que fais-tu ? | **Je vérifie auprès de l'établissement** | Source officielle. |
+| D2 | Quel indice est suspect ? | **Aucune source n'est indiquée** | Pas de source. |
+
 ### La laïcité et la liberté d'expression — `laicite-et-liberte-cm` (CM2)
 
 Faits à recouper : `2004`
@@ -1763,6 +2081,18 @@ Faits à recouper : `2004`
 | E3 | En quelle année est votée la loi de séparation des Églises et de l'État ? | **1905** | Loi du 9 décembre 1905. |
 | D1 | Quelle attitude est correcte ? | **Écouter et répondre calmement** | Respect de l'autre. |
 | D2 | Peut-on être en désaccord ? | **Oui, avec respect** | La liberté d'expression le permet. |
+
+### Le numérique : données personnelles, réseaux et droits — `numerique-et-donnees-c4` (4e / 3e)
+
+Faits à recouper : `3018`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Quelle donnée est personnelle ? | **mon adresse** | Elle permet de m'identifier. |
+| E2 | Que fait la CNIL ? | **elle veille à la protection des données** | Autorité de protection. |
+| E3 | Le cyberharcèlement est… | **un délit puni par la loi** | Poursuivi. |
+| D1 | Que fais-tu ? | **Je signale, je soutiens la victime et j'en parle à un adulte** | Agir. |
+| D2 | Quel numéro peut aider ? | **Le 3018** | Numéro national. |
 
 ### Un usage responsable d'Internet et des écrans — `numerique-responsable-cm` (CM1 / CM2)
 
@@ -1848,7 +2178,7 @@ Faits à recouper : `3018`
 | D1 | Quelle bonne solution proposes-tu ? | **jouer chacun son tour** | Partager. |
 | D2 | Quel mot de politesse dis-tu pour t'excuser ? | **pardon** | Pardon. |
 
-## geographie (16)
+## geographie (18)
 
 ### Communiquer d'un bout à l'autre du monde — `communiquer-numerique-cm` (CM2)
 
@@ -1859,6 +2189,18 @@ Faits à recouper : `3018`
 | E3 | Quelle précaution prendre sur Internet ? | **Ne pas donner son mot de passe** | Les mots de passe sont personnels. |
 | D1 | Comment le message arrive-t-il rapidement ? | **Par Internet** | Par câbles et satellites. |
 | D2 | Que dois-tu protéger dans ce message ? | **Tes informations personnelles** | Ne pas communiquer d'adresse ni de numéro. |
+
+### Lire des cartes, réaliser un croquis — `croquis-et-cartes-c4` (5e / 4e / 3e)
+
+Faits à recouper : `1 km`, `2 km`, `10 km`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Une route est représentée par un figuré… | **linéaire** | Une ligne. |
+| E2 | Échelle : 1 cm pour 2 km. Sur la carte, 5 cm. Distance réelle ? | **10 km** | 5 × 2 = 10. |
+| E3 | Que doit contenir un croquis ? | **un titre, une légende organisée et une échelle** | Éléments obligatoires. |
+| D1 | Comment représentes-tu une ville ? | **par un point (figuré ponctuel)** | Ponctuel. |
+| D2 | Que fais-tu à la fin ? | **Je rédige la légende et le titre** | Finalisation. |
 
 ### La France, l'Europe et le monde — `france-europe-monde-cm` (CM2)
 
@@ -1998,6 +2340,18 @@ Faits à recouper : `8 milliards`, `10 millions`, `37 millions`
 | D1 | Sur quel continent se trouve la France ? | **en Europe** | Europe. |
 | D2 | Le plus grand océan est… | **le Pacifique** | Pacifique. |
 
+### La question démographique et l'inégal accès aux ressources — `question-demographique-c4` (5e)
+
+Faits à recouper : `1800`, `1950`, `2024`, `8 milliards`, `1 milliard`, `2,5 milliards`, `2 milliards`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | La population mondiale dépasse aujourd'hui… | **8 milliards** | Plus de 8 milliards. |
+| E2 | La baisse de la mortalité s'explique surtout par… | **les progrès de la médecine et de l'hygiène** | Santé et hygiène. |
+| E3 | Qu'est-ce que la transition démographique ? | **le passage d'une forte natalité et mortalité à une faible natalité et mortalité** | Évolution sur plusieurs décennies. |
+| D1 | Quelle solution réduit la faim ? | **Réduire le gaspillage alimentaire** | Gaspillage. |
+| D2 | Quel pays est le plus peuplé aujourd'hui ? | **L'Inde** | Inde (plus de 1,4 milliard). |
+
 ### Se déplacer et transporter — `se-deplacer-transports-cm` (CM2)
 
 Faits à recouper : `1981`, `2 heures`, `3 km`
@@ -2020,49 +2374,27 @@ Faits à recouper : `1981`, `2 heures`, `3 km`
 | D1 | Un plan est vu… | **de dessus** | Vu du ciel. |
 | D2 | Pour trouver la sortie, tu regardes… | **la légende et le plan** | Lire un plan. |
 
-## eps (4)
+## technologie (9)
 
-### EPS : bouger, jouer et rester en sécurité — `eps-bouger-et-jouer-c2` (CP / CE1 / CE2)
-
-| | Question | Réponse attendue | Explication / solution |
-|---|---|---|---|
-| E1 | Avant de courir, il faut… | **s'échauffer** | Échauffement. |
-| E2 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
-| E3 | À la piscine, on… | **écoute le maître-nageur** | Sécurité. |
-| D1 | Ton équipe perd. Tu… | **félicites les gagnants** | Fair-play. |
-| D2 | Après l'effort, que fais-tu ? | **je bois de l'eau** | Récupération. |
-
-### EPS 6e : endurance, santé et sports collectifs — `eps-endurance-et-sports-collectifs-6e` (6e)
+### Technologie : concevoir, prototyper, tester — `conception-et-prototypage-c4` (5e / 4e / 3e)
 
 | | Question | Réponse attendue | Explication / solution |
 |---|---|---|---|
-| E1 | Pendant l'effort, la fréquence cardiaque… | **augmente** | Le cœur accélère. |
-| E2 | En endurance, on cherche… | **une allure régulière** | Régularité. |
-| E3 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
-| D1 | Comment démarrer ? | **À allure modérée et régulière** | Gérer son effort. |
-| D2 | Après la course ? | **Boire et récupérer** | Récupération. |
+| E1 | La première étape d'un projet technique est… | **identifier le besoin** | On part du besoin. |
+| E2 | Un prototype sert à… | **vérifier la solution avant de la produire** | Validation. |
+| E3 | Que fait-on après un test insuffisant ? | **on améliore la solution** | Itération. |
+| D1 | Quelle contrainte écris-tu ? | **Il doit résister à la pluie** | Contrainte réaliste. |
+| D2 | Comment le tester ? | **On le remplit de déchets et on observe** | Test en situation. |
 
-### EPS : jeux collectifs, athlétisme et natation — `eps-jeux-collectifs-et-athletisme-cm` (CM1 / CM2)
-
-| | Question | Réponse attendue | Explication / solution |
-|---|---|---|---|
-| E1 | Le fair-play, c'est… | **jouer loyalement** | Respect. |
-| E2 | Le saut en longueur est une épreuve… | **de saut** | Famille « sauter ». |
-| E3 | À la piscine, on… | **respecte les consignes du maître-nageur** | Sécurité. |
-| D1 | Ton équipe perd. Tu… | **félicites les gagnants** | Fair-play. |
-| D2 | Quelle épreuve de lancer connais-tu ? | **Le lancer de poids** | Poids, javelot, vortex. |
-
-### EPS : échauffement, santé et effort — `eps-sante-et-echauffement-cm` (CM1 / CM2)
+### Énergie, matériaux et développement durable — `energie-et-materiaux-c4` (5e / 4e / 3e)
 
 | | Question | Réponse attendue | Explication / solution |
 |---|---|---|---|
-| E1 | Pourquoi s'échauffer ? | **Pour préparer le corps et éviter les blessures** | Prévention. |
-| E2 | Combien de minutes d'activité par jour pour un enfant ? | **60 min** | Recommandation de l'OMS. |
-| E3 | Après l'effort, il faut… | **boire et récupérer** | Récupération. |
-| D1 | Que fais-tu d'abord ? | **Je m'échauffe** | Échauffement. |
-| D2 | Tu as très soif pendant l'effort. Tu… | **bois de l'eau** | Hydratation. |
-
-## technologie (6)
+| E1 | Une énergie renouvelable est… | **le vent** | Éolien. |
+| E2 | Le rendement d'une conversion est… | **énergie utile ÷ énergie fournie** | Il est inférieur à 1. |
+| E3 | L'économie circulaire cherche à… | **garder la matière en circulation** | Réparer, réutiliser, recycler. |
+| D1 | Quel matériau privilégies-tu ? | **un tissu recyclé résistant** | Recyclé et durable. |
+| D2 | Quel autre critère compte ? | **la facilité de réparation** | Réparer prolonge la vie. |
 
 ### Matériaux, impact environnemental et recyclage en 6e — `materiaux-et-environnement-6e` (6e)
 
@@ -2085,6 +2417,16 @@ Faits à recouper : `500 kg`
 | E3 | Que devient le compost ? | **Du terreau** | Il enrichit le sol. |
 | D1 | Quelle idée est la meilleure ? | **Apporter un goûter sans emballage jetable** | Éviter les déchets. |
 | D2 | Que devient une bouteille en verre triée ? | **Une nouvelle bouteille** | Le verre se recycle. |
+
+### Objets connectés, capteurs et programmation — `objets-connectes-et-programmation-c4` (4e / 3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Un capteur… | **recueille une information** | Mesure. |
+| E2 | Dans un programme « si humidité faible alors arroser », arroser est… | **l'action** | Actionneur déclenché. |
+| E3 | Pour protéger un objet connecté, il faut… | **changer le mot de passe par défaut** | Sécurité. |
+| D1 | Quel capteur utilises-tu ? | **un capteur d'humidité du sol** | Humidité. |
+| D2 | Quelle instruction écris-tu ? | **Si le sol est sec alors lancer la pompe** | Condition. |
 
 ### Les objets : matériaux, électricité et mouvement — `objets-electriques-et-materiaux-c2` (CE1 / CE2)
 
@@ -2126,7 +2468,91 @@ Faits à recouper : `500 kg`
 | D1 | Quel capteur utilises-tu ? | **Un capteur de présence** | Détecter la voiture. |
 | D2 | Quelle instruction ajoutes-tu pour la sécurité ? | **Ne pas fermer tant qu'un obstacle est détecté** | Sécurité. |
 
-## musique (4)
+## eps (6)
+
+### EPS : bouger, jouer et rester en sécurité — `eps-bouger-et-jouer-c2` (CP / CE1 / CE2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Avant de courir, il faut… | **s'échauffer** | Échauffement. |
+| E2 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
+| E3 | À la piscine, on… | **écoute le maître-nageur** | Sécurité. |
+| D1 | Ton équipe perd. Tu… | **félicites les gagnants** | Fair-play. |
+| D2 | Après l'effort, que fais-tu ? | **je bois de l'eau** | Récupération. |
+
+### EPS : endurance, force et santé au collège — `eps-endurance-et-sante-c4` (5e / 4e / 3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Fréquence cardiaque maximale approximative à 14 ans (220 − âge) ? | **206 bpm** | 220 − 14 = 206. |
+| E2 | Après un effort, on fait… | **un retour au calme** | Récupération. |
+| E3 | Un projet d'entraînement comprend… | **un objectif, une fréquence, une progression** | Progressivité. |
+| D1 | Comment progresses-tu ? | **en augmentant doucement la durée** | Progression. |
+| D2 | Quel signe indique qu'il faut ralentir ? | **essoufflement important et douleur** | Écouter son corps. |
+
+### EPS 6e : endurance, santé et sports collectifs — `eps-endurance-et-sports-collectifs-6e` (6e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Pendant l'effort, la fréquence cardiaque… | **augmente** | Le cœur accélère. |
+| E2 | En endurance, on cherche… | **une allure régulière** | Régularité. |
+| E3 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
+| D1 | Comment démarrer ? | **À allure modérée et régulière** | Gérer son effort. |
+| D2 | Après la course ? | **Boire et récupérer** | Récupération. |
+
+### EPS : jeux collectifs, athlétisme et natation — `eps-jeux-collectifs-et-athletisme-cm` (CM1 / CM2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Le fair-play, c'est… | **jouer loyalement** | Respect. |
+| E2 | Le saut en longueur est une épreuve… | **de saut** | Famille « sauter ». |
+| E3 | À la piscine, on… | **respecte les consignes du maître-nageur** | Sécurité. |
+| D1 | Ton équipe perd. Tu… | **félicites les gagnants** | Fair-play. |
+| D2 | Quelle épreuve de lancer connais-tu ? | **Le lancer de poids** | Poids, javelot, vortex. |
+
+### EPS : échauffement, santé et effort — `eps-sante-et-echauffement-cm` (CM1 / CM2)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Pourquoi s'échauffer ? | **Pour préparer le corps et éviter les blessures** | Prévention. |
+| E2 | Combien de minutes d'activité par jour pour un enfant ? | **60 min** | Recommandation de l'OMS. |
+| E3 | Après l'effort, il faut… | **boire et récupérer** | Récupération. |
+| D1 | Que fais-tu d'abord ? | **Je m'échauffe** | Échauffement. |
+| D2 | Tu as très soif pendant l'effort. Tu… | **bois de l'eau** | Hydratation. |
+
+### EPS : sports collectifs, tactique et arbitrage — `eps-sports-collectifs-et-arbitrage-c4` (5e / 4e / 3e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Créer un surnombre, c'est… | **avoir plus d'attaquants que de défenseurs dans une zone** | Avantage numérique. |
+| E2 | L'arbitre… | **applique les règles** | Équité. |
+| E3 | Le fair-play, c'est… | **respecter les règles et les autres** | Esprit sportif. |
+| D1 | Ton équipe perd. Tu… | **félicites les gagnants** | Fair-play. |
+| D2 | Quel rôle peut tenir un élève non joueur ? | **arbitre ou chronométreur** | Rôles sociaux. |
+
+## musique (6)
+
+### Musique : création, engagement et culture — `musique-creation-et-engagement-c4` (3e)
+
+Faits à recouper : `1792`
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Qu'est-ce que l'harmonie ? | **des notes jouées en même temps** | Accords. |
+| E2 | La Marseillaise est… | **l'hymne national français** | 1792. |
+| E3 | Arranger un morceau, c'est… | **le réécrire pour d'autres instruments** | Réinterpréter. |
+| D1 | Que veux-tu exprimer ? | **un message de paix** | Chant engagé. |
+| D2 | Que dois-tu respecter ? | **le droit d'auteur des œuvres que tu cites** | Citer ses sources. |
+
+### Musique : genres, formes et écoute — `musique-genres-et-formes-c4` (5e / 4e)
+
+| | Question | Réponse attendue | Explication / solution |
+|---|---|---|---|
+| E1 | Qui a composé « Les Quatre Saisons » ? | **Vivaldi** | Baroque. |
+| E2 | Un refrain est… | **une partie qui revient identique** | Retour. |
+| E3 | « Forte » signifie… | **fort** | Nuance. |
+| D1 | Quel mot décrit la vitesse ? | **le tempo** | Tempo. |
+| D2 | Quelle forme choisis-tu pour une chanson à reprendre ? | **couplet-refrain** | Facile à mémoriser. |
 
 ### Musique 6e : rythme, mélodie et écoute — `musique-lire-et-chanter-6e` (6e)
 

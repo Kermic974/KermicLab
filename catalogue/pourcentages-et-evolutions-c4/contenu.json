@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un pourcentage exprime une proportion sur 100 ; il sert à décrire une part ou une évolution.",
+  "niveaux": [
+    {
+      "titre": "Calculer un pourcentage",
+      "niveau": "5e",
+      "paragraphes": [
+        "Prendre **t %** d'une quantité, c'est multiplier par t/100 : 20 % de 60 = 60 × 20 ÷ 100 = 12. Pour exprimer une proportion en pourcentage : 15 filles sur 25 élèves = 15 ÷ 25 = 0,6 = 60 %.",
+        "10 %, c'est un dixième ; 50 %, la moitié ; 25 %, le quart."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Classe de 30 élèves, 40 % demi-pensionnaires.",
+          "30 × 40 ÷ 100 = 12.",
+          "12 élèves sont demi-pensionnaires."
+        ]
+      },
+      "aRetenir": "t % de A = A × t ÷ 100."
+    },
+    {
+      "titre": "Augmentation et réduction",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Augmenter de **t %**, c'est multiplier par **1 + t/100** (coefficient multiplicateur) : +20 % → × 1,2. Réduire de t %, c'est multiplier par **1 − t/100** : −30 % → × 0,7. Un article à 80 € soldé à −25 % coûte 80 × 0,75 = 60 €.",
+        "Attention : deux évolutions successives ne s'additionnent pas : +10 % puis −10 % ne ramène pas à la valeur de départ (1,1 × 0,9 = 0,99)."
+      ],
+      "exemple": {
+        "titre": "Exemple : soldes",
+        "etapes": [
+          "Prix : 80 €.",
+          "Réduction de 25 % → coefficient 0,75.",
+          "80 × 0,75 = 60 €."
+        ]
+      },
+      "aRetenir": "Coefficient multiplicateur : 1 ± t/100."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien font 20 % de 60 ?",
+        "reponse": 12,
+        "indices": [
+          "20 % = 1/5."
+        ],
+        "solution": "60 × 20 ÷ 100 = 12.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un article à 80 € est soldé à −25 %. Prix final ?",
+        "reponse": 60,
+        "unite": "€",
+        "indices": [
+          "Coefficient 0,75."
+        ],
+        "solution": "80 × 0,75 = 60.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une hausse de 10 % puis une baisse de 10 % donnent…",
+        "choix": [
+          "une valeur un peu inférieure à celle de départ",
+          "exactement la valeur de départ",
+          "une valeur supérieure à celle de départ",
+          "toujours un résultat égal à 0"
+        ],
+        "bonne": 0,
+        "explication": "1,1 × 0,9 = 0,99."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les soldes",
+    "histoire": [
+      "Un manteau coûte 120 €. Il est soldé à −30 %, puis une remise de 10 € est faite en caisse."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel est le prix soldé ?",
+        "reponse": 84,
+        "unite": "€",
+        "indices": [
+          "Coefficient 0,7."
+        ],
+        "solution": "120 × 0,7 = 84.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quel est le prix final après la remise de 10 € ?",
+        "reponse": 74,
+        "unite": "€",
+        "indices": [
+          "Soustrais."
+        ],
+        "solution": "84 − 10 = 74.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bonne affaire !"
+  }
+}

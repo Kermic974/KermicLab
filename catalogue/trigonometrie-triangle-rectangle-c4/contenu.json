@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La trigonométrie relie les angles aigus d'un triangle rectangle aux rapports de ses côtés.",
+  "niveaux": [
+    {
+      "titre": "Cosinus, sinus, tangente",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Dans un triangle rectangle, pour un angle aigu : **cosinus = côté adjacent ÷ hypoténuse**, **sinus = côté opposé ÷ hypoténuse**, **tangente = côté opposé ÷ côté adjacent**. Moyen mnémotechnique : « CAH SOH TOA ». L'hypoténuse est le côté opposé à l'angle droit, c'est le plus long.",
+        "Ces rapports ne dépendent que de l'angle, pas de la taille du triangle."
+      ],
+      "exemple": {
+        "titre": "Exemple : cos 60°",
+        "etapes": [
+          "Triangle rectangle avec un angle de 60°.",
+          "Adjacent 3, hypoténuse 6.",
+          "cos 60° = 3 ÷ 6 = 0,5."
+        ]
+      },
+      "aRetenir": "CAH : cosinus = adjacent ÷ hypoténuse."
+    },
+    {
+      "titre": "Calculer une longueur ou un angle",
+      "niveau": "3e",
+      "paragraphes": [
+        "Pour une **longueur** : on écrit la relation, puis on résout. Si l'hypoténuse mesure 10 cm et l'angle 30° : côté opposé = 10 × sin 30° = 5 cm. Pour un **angle** : on calcule le rapport puis on utilise les touches **cos⁻¹, sin⁻¹, tan⁻¹** : si cos A = 0,8 alors A ≈ 36,9°.",
+        "On vérifie : l'hypoténuse est toujours le plus grand côté ; sin et cos sont entre 0 et 1."
+      ],
+      "exemple": {
+        "titre": "Exemple : trouver l'angle",
+        "etapes": [
+          "Adjacent 4 cm, hypoténuse 5 cm.",
+          "cos A = 4 ÷ 5 = 0,8.",
+          "A = cos⁻¹(0,8) ≈ 36,9°."
+        ]
+      },
+      "aRetenir": "Rapport → touche cos⁻¹ (ou sin⁻¹, tan⁻¹)."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans un triangle rectangle, le cosinus d'un angle aigu est…",
+        "choix": [
+          "côté opposé ÷ hypoténuse",
+          "côté opposé ÷ côté adjacent",
+          "hypoténuse ÷ côté adjacent",
+          "côté adjacent ÷ hypoténuse"
+        ],
+        "bonne": 3,
+        "explication": "CAH."
+      },
+      {
+        "type": "nombre",
+        "question": "Hypoténuse 10 cm, angle de 30°. Longueur du côté opposé ?",
+        "reponse": 5,
+        "unite": "cm",
+        "indices": [
+          "Sinus : opposé ÷ hypoténuse."
+        ],
+        "solution": "10 × sin 30° = 10 × 0,5 = 5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "cos A = 0,5. Quelle est la mesure de A (en degrés) ?",
+        "reponse": 60,
+        "unite": "°",
+        "indices": [
+          "Utilise cos⁻¹."
+        ],
+        "solution": "cos⁻¹(0,5) = 60°.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'échelle contre le mur",
+    "histoire": [
+      "Une échelle de 4 m est appuyée contre un mur et fait un angle de 60° avec le sol."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "À quelle distance du mur est le pied de l'échelle (4 × cos 60°) ?",
+        "reponse": 2,
+        "unite": "m",
+        "indices": [
+          "Le pied est le côté adjacent à l'angle."
+        ],
+        "solution": "4 × 0,5 = 2.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle hauteur atteint-elle environ ?",
+        "choix": [
+          "1 m",
+          "3,5 m",
+          "2 m",
+          "4 m"
+        ],
+        "bonne": 1,
+        "explication": "4 × sin 60° ≈ 3,46 m."
+      }
+    ],
+    "conclusion": "Calcul réussi !"
+  }
+}

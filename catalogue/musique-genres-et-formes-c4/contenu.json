@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La musique se classe par genres et par formes ; on apprend à l'écouter et à la décrire.",
+  "niveaux": [
+    {
+      "titre": "Genres et époques",
+      "niveau": "5e",
+      "paragraphes": [
+        "Quelques grands repères : **musique baroque** (Bach, Vivaldi, XVIIe-XVIIIe), **classique** (Mozart, Haydn), **romantique** (Chopin, Berlioz, XIXe), puis **jazz** (début du XXe), **rock**, **pop**, **rap**, **musiques électroniques**. Chaque genre a ses instruments, ses rythmes et son public."
+      ],
+      "exemple": {
+        "titre": "Exemple : les Quatre Saisons",
+        "etapes": [
+          "Compositeur : Antonio Vivaldi.",
+          "Époque : baroque.",
+          "Instruments : cordes."
+        ]
+      },
+      "aRetenir": "Baroque, classique, romantique, jazz, rock…"
+    },
+    {
+      "titre": "Formes et écoute",
+      "niveau": "4e",
+      "paragraphes": [
+        "Une **forme** organise la musique : **couplet-refrain** (chanson), **rondo** (A B A C A), **thème et variations**, **fugue**, **symphonie**. Pour **décrire** : instruments, tempo, nuances (piano, forte), timbre, mélodie, rythme, structure, caractère. On compare les interprétations et les effets recherchés."
+      ],
+      "exemple": {
+        "titre": "Exemple : couplet-refrain",
+        "etapes": [
+          "Couplet : paroles différentes.",
+          "Refrain : paroles identiques.",
+          "L'alternance rend la chanson mémorisable."
+        ]
+      },
+      "aRetenir": "Décrire : timbre, tempo, nuance, forme."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui a composé « Les Quatre Saisons » ?",
+        "choix": [
+          "Beethoven",
+          "Debussy",
+          "Vivaldi",
+          "Mozart"
+        ],
+        "bonne": 2,
+        "explication": "Baroque."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un refrain est…",
+        "choix": [
+          "un silence entre deux strophes",
+          "une partie qui revient identique",
+          "un accord de trois notes",
+          "un solo d'instrument improvisé"
+        ],
+        "bonne": 1,
+        "explication": "Retour."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Forte » signifie…",
+        "choix": [
+          "rapide",
+          "fort",
+          "doux",
+          "lent"
+        ],
+        "bonne": 1,
+        "explication": "Nuance."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chorale du collège",
+    "histoire": [
+      "Ta classe prépare un concert."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot décrit la vitesse ?",
+        "choix": [
+          "la nuance",
+          "la mélodie",
+          "le tempo",
+          "le timbre"
+        ],
+        "bonne": 2,
+        "explication": "Tempo."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle forme choisis-tu pour une chanson à reprendre ?",
+        "choix": [
+          "couplet-refrain",
+          "fugue",
+          "symphonie",
+          "concerto"
+        ],
+        "bonne": 0,
+        "explication": "Facile à mémoriser."
+      }
+    ],
+    "conclusion": "Bien joué !"
+  }
+}

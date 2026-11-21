@@ -1,0 +1,118 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un parallélogramme est symétrique par rapport au milieu de ses diagonales : c'est une symétrie centrale.",
+  "niveaux": [
+    {
+      "titre": "Le parallélogramme",
+      "niveau": "5e",
+      "paragraphes": [
+        "Un **parallélogramme** est un quadrilatère dont les côtés opposés sont parallèles deux à deux. Propriétés : côtés opposés de même longueur, angles opposés égaux, diagonales qui se coupent en leur milieu. Le rectangle, le losange et le carré sont des parallélogrammes particuliers."
+      ],
+      "exemple": {
+        "titre": "Exemple : trouver le 4e sommet",
+        "etapes": [
+          "ABC est un triangle.",
+          "On veut ABCD parallélogramme.",
+          "D est tel que le milieu de [AC] est aussi celui de [BD]."
+        ]
+      },
+      "aRetenir": "Diagonales : même milieu."
+    },
+    {
+      "titre": "La symétrie centrale",
+      "niveau": "5e",
+      "paragraphes": [
+        "Le **symétrique d'un point A par rapport à un point O** est le point A' tel que O soit le milieu de [AA']. La symétrie centrale conserve les longueurs, les angles, le parallélisme. Une figure a un **centre de symétrie** si elle est identique à son symétrique : le parallélogramme (intersection des diagonales), le cercle (son centre).",
+        "Pour construire A', on prolonge (AO) et on reporte la longueur OA de l'autre côté de O."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "O est le milieu de [AA'].",
+          "OA = 3 cm donc OA' = 3 cm.",
+          "A, O et A' sont alignés."
+        ]
+      },
+      "aRetenir": "Symétrie centrale : demi-tour autour d'un point."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans un parallélogramme, les diagonales…",
+        "choix": [
+          "sont égales toujours",
+          "sont parallèles",
+          "se coupent en leur milieu",
+          "sont perpendiculaires toujours"
+        ],
+        "bonne": 2,
+        "explication": "Propriété caractéristique."
+      },
+      {
+        "type": "nombre",
+        "question": "A' est le symétrique de A par rapport à O. OA = 4 cm. Quelle est la longueur AA' ?",
+        "reponse": 8,
+        "unite": "cm",
+        "indices": [
+          "O est le milieu de [AA']."
+        ],
+        "solution": "AA' = 2 × OA = 8.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle figure a un centre de symétrie ?",
+        "choix": [
+          "Le trapèze quelconque",
+          "Le triangle isocèle",
+          "Le parallélogramme",
+          "Le triangle quelconque"
+        ],
+        "bonne": 2,
+        "explication": "Le centre est l'intersection des diagonales."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le cerf-volant",
+    "histoire": [
+      "Tu dessines un cerf-volant : ABCD est un parallélogramme, ses diagonales se croisent en O."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "AC = 10 cm. Quelle est la longueur AO ?",
+        "reponse": 5,
+        "unite": "cm",
+        "indices": [
+          "Les diagonales se coupent en leur milieu."
+        ],
+        "solution": "O est le milieu de [AC].",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le symétrique de A par rapport à O est…",
+        "choix": [
+          "C",
+          "B",
+          "D",
+          "A"
+        ],
+        "bonne": 0,
+        "explication": "O est le milieu de [AC]."
+      }
+    ],
+    "conclusion": "Figure construite !"
+  }
+}

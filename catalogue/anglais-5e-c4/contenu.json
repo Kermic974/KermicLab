@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 5e, on apprend à raconter au passé et à comparer : « I visited London », « This film is better than that one ».",
+  "niveaux": [
+    {
+      "titre": "Le prétérit",
+      "niveau": "5e",
+      "paragraphes": [
+        "Le **prétérit** (past simple) exprime un fait passé terminé. Les verbes **réguliers** ajoutent **-ed** : visit → visited, play → played. Les verbes **irréguliers** changent : go → went, see → saw, have → had, be → was/were. Forme négative : **didn't + base verbale** (« I didn't go »). Question : **Did you…?** (« Did you see him? »).",
+        "On l'emploie avec des repères : yesterday, last week, in 2020, ago."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "I visited London last year.",
+          "We went to the museum.",
+          "Did you like it ? — Yes, I did."
+        ]
+      },
+      "aRetenir": "-ed pour les réguliers, didn't pour la négation."
+    },
+    {
+      "titre": "Comparer",
+      "niveau": "5e",
+      "paragraphes": [
+        "Le **comparatif** : adjectif court + **-er than** (taller than), adjectif long : **more … than** (more interesting than). Le **superlatif** : **the …-est** (the tallest), **the most …** (the most interesting). Irréguliers : good → better → the best ; bad → worse → the worst.",
+        "Exemple : « London is bigger than Paris. » « This is the best film of the year. »"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "small → smaller → the smallest.",
+          "beautiful → more beautiful → the most beautiful.",
+          "good → better → the best."
+        ]
+      },
+      "aRetenir": "Comparatif : -er than / more… than."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Yesterday, I ___ to the cinema. »",
+        "choix": [
+          "goed",
+          "gone",
+          "went",
+          "go"
+        ],
+        "bonne": 2,
+        "explication": "Prétérit irrégulier de go."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dit-on « Je n'ai pas vu le film » (hier) ?",
+        "choix": [
+          "I don't saw the film.",
+          "I didn't see the film.",
+          "I didn't saw the film.",
+          "I not see the film."
+        ],
+        "bonne": 1,
+        "explication": "didn't + base verbale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« This book is ___ than that one. » (interesting)",
+        "choix": [
+          "more interesting",
+          "interestinger",
+          "most interesting",
+          "the interesting"
+        ],
+        "bonne": 0,
+        "explication": "Adjectif long : more … than."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "My holidays",
+    "histoire": [
+      "Tu racontes tes vacances à ton correspondant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment dis-tu « J'ai visité Londres l'été dernier » ?",
+        "choix": [
+          "I have visited London last summer yesterday.",
+          "I visited London last summer.",
+          "I visit London last summer.",
+          "I am visiting London last summer."
+        ],
+        "bonne": 1,
+        "explication": "Prétérit + last summer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dis-tu « C'était le meilleur voyage » ?",
+        "choix": [
+          "It is the better trip.",
+          "It was the best trip.",
+          "It was the goodest trip.",
+          "It was more good trip."
+        ],
+        "bonne": 1,
+        "explication": "Superlatif irrégulier."
+      }
+    ],
+    "conclusion": "Well done!"
+  }
+}

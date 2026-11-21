@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La défense protège le pays et ses valeurs ; la paix repose aussi sur la coopération internationale.",
+  "niveaux": [
+    {
+      "titre": "La défense nationale",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **défense nationale** protège le territoire, la population et les intérêts du pays. Elle repose sur les **armées** (terre, air, mer), la **gendarmerie** et la **sécurité civile**. Le **président de la République** est le chef des armées. Le **service national** universel n'existe plus comme service militaire obligatoire : tous les jeunes passent la **Journée défense et citoyenneté** (JDC).",
+        "On peut s'engager dans la **réserve** ou le **service civique**."
+      ],
+      "exemple": {
+        "titre": "Exemple : la JDC",
+        "etapes": [
+          "Elle a lieu vers 16-18 ans.",
+          "On y apprend le rôle de la défense.",
+          "Chaque jeune y participe."
+        ]
+      },
+      "aRetenir": "La défense est l'affaire de tous."
+    },
+    {
+      "titre": "Paix et sécurité collective",
+      "niveau": "3e",
+      "paragraphes": [
+        "Les États coopèrent pour la paix : l'**ONU** (1945) réunit les pays et son **Conseil de sécurité** peut décider de sanctions ou d'opérations de maintien de la paix (les Casques bleus). L'**OTAN** est une alliance militaire de défense collective ; l'**Union européenne** a été créée pour garantir la paix entre ses membres.",
+        "Le droit international (conventions de Genève) protège les civils et les prisonniers en temps de guerre."
+      ],
+      "exemple": {
+        "titre": "Exemple : Casques bleus",
+        "etapes": [
+          "Des soldats de plusieurs pays.",
+          "Mission décidée par l'ONU.",
+          "But : protéger les civils et surveiller les accords."
+        ]
+      },
+      "aRetenir": "ONU : paix et sécurité collective."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui est le chef des armées en France ?",
+        "choix": [
+          "le directeur du collège",
+          "le président de la République",
+          "le maire",
+          "le Premier ministre seul"
+        ],
+        "bonne": 1,
+        "explication": "Constitution."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que signifie « Casques bleus » ?",
+        "choix": [
+          "des pompiers volontaires",
+          "des soldats de l'ONU pour la paix",
+          "des gendarmes de l'armée française",
+          "des policiers de la ville locale"
+        ],
+        "bonne": 1,
+        "explication": "Missions de paix."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que protègent les conventions de Genève ?",
+        "choix": [
+          "les civils et les prisonniers en temps de guerre",
+          "les armes et les munitions des armées",
+          "les frontières entre les pays voisins",
+          "les monnaies de chaque État"
+        ],
+        "bonne": 0,
+        "explication": "Droit de la guerre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La Journée défense et citoyenneté",
+    "histoire": [
+      "Tu participes à une JDC."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "À quoi sert cette journée ?",
+        "choix": [
+          "Verser un salaire aux participants",
+          "Informer les jeunes sur la défense et leurs droits",
+          "Faire passer le diplôme du brevet",
+          "Choisir un métier à vie obligatoire"
+        ],
+        "bonne": 1,
+        "explication": "Sensibilisation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment peut-on s'engager ?",
+        "choix": [
+          "Service civique ou réserve",
+          "Jamais",
+          "Seulement à 40 ans",
+          "Uniquement dans un parti"
+        ],
+        "bonne": 0,
+        "explication": "Engagement volontaire."
+      }
+    ],
+    "conclusion": "Engagement compris !"
+  }
+}

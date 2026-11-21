@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Par l'humour, la fable ou le conte, les auteurs critiquent les injustices et les défauts de leur époque.",
+  "niveaux": [
+    {
+      "titre": "Satire et ironie",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **satire** critique les défauts d'une société en les rendant ridicules. L'**ironie** consiste à dire le contraire de ce qu'on pense pour critiquer (« Quel beau temps ! » sous la pluie). L'**humour**, la **caricature**, l'**exagération** (hyperbole) rendent le message plus marquant.",
+        "Les **fables** de La Fontaine critiquent les puissants avec des animaux : « Les animaux malades de la peste » montre que la justice change selon la puissance de chacun."
+      ],
+      "exemple": {
+        "titre": "Exemple : une fable",
+        "etapes": [
+          "« Selon que vous serez puissant ou misérable… »",
+          "Les jugements de la cour sont injustes.",
+          "La Fontaine critique la société de son temps."
+        ]
+      },
+      "aRetenir": "Ironie : dire le contraire de ce qu'on pense."
+    },
+    {
+      "titre": "Voltaire et le conte philosophique",
+      "niveau": "3e",
+      "paragraphes": [
+        "**Voltaire** (XVIIIe siècle) écrit des **contes philosophiques** (*Candide*, *Zadig*) : une histoire amusante qui critique l'intolérance, la guerre, l'esclavage et défend la raison, la liberté et la tolérance. Dans *Candide*, le héros croit que « tout est pour le mieux » ; les épreuves lui montrent le contraire.",
+        "Pour analyser un passage : qui est critiqué ? par quels procédés (ironie, exagération) ? dans quel but ?"
+      ],
+      "exemple": {
+        "titre": "Exemple : le procédé",
+        "etapes": [
+          "Voltaire décrit la guerre comme une « boucherie héroïque ».",
+          "Association de deux mots opposés : ironie.",
+          "But : dénoncer la violence."
+        ]
+      },
+      "aRetenir": "Question clé : qui, comment, pourquoi ?"
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui a écrit « Candide » ?",
+        "choix": [
+          "Jules Verne",
+          "Voltaire",
+          "La Fontaine",
+          "Molière"
+        ],
+        "bonne": 1,
+        "explication": "Voltaire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'ironie consiste à…",
+        "choix": [
+          "dire le contraire de ce qu'on pense",
+          "dire la vérité simplement",
+          "se taire",
+          "raconter une histoire vraie"
+        ],
+        "bonne": 0,
+        "explication": "Pour critiquer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une fable met souvent en scène…",
+        "choix": [
+          "des savants",
+          "des animaux qui parlent",
+          "des héros réels",
+          "des dieux romains"
+        ],
+        "bonne": 1,
+        "explication": "Animaux symboliques."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier de satire",
+    "histoire": [
+      "Tu écris un court texte qui critique le gaspillage de la cantine, avec humour."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel procédé fait rire en critiquant ?",
+        "choix": [
+          "l'exagération humoristique",
+          "une liste de chiffres",
+          "une définition",
+          "un résumé"
+        ],
+        "bonne": 0,
+        "explication": "Hyperbole + humour."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel but vises-tu ?",
+        "choix": [
+          "faire réfléchir en amusant",
+          "insulter celui qu'on critique",
+          "mentir pour tromper le lecteur",
+          "ennuyer le lecteur volontairement"
+        ],
+        "bonne": 0,
+        "explication": "Critiquer pour faire réfléchir."
+      }
+    ],
+    "conclusion": "Bonne satire !"
+  }
+}

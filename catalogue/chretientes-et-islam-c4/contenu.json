@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Du VIe au XIIIe siècle, trois mondes voisins se rencontrent, se font la guerre et échangent : chrétienté latine, Byzance et monde musulman.",
+  "niveaux": [
+    {
+      "titre": "Trois mondes",
+      "niveau": "5e",
+      "paragraphes": [
+        "Après la chute de l'Empire romain d'Occident (476), l'**Empire byzantin** (Constantinople, chrétien orthodoxe) continue en Orient. En Occident, les royaumes francs, puis l'Empire carolingien, forment la **chrétienté latine**. Au VIIe siècle, **Mahomet** prêche à La Mecque : c'est la naissance de l'**islam**. Les califes étendent un vaste empire.",
+        "L'**hégire** (622, départ pour Médine) marque le début du calendrier musulman."
+      ],
+      "exemple": {
+        "titre": "Exemple : les échanges",
+        "etapes": [
+          "Les marchands relient les trois mondes.",
+          "Les savants musulmans traduisent des textes grecs.",
+          "L'Espagne musulmane (al-Andalus) transmet des savoirs."
+        ]
+      },
+      "aRetenir": "Chrétienté latine, Byzance, monde musulman."
+    },
+    {
+      "titre": "Guerre et échanges",
+      "niveau": "5e",
+      "paragraphes": [
+        "Entre 1096 et 1291, les **croisades** : des chrétiens d'Occident partent vers Jérusalem, mêlant ferveur religieuse, ambitions et violences. Elles laissent des traces durables. En même temps, les échanges commerciaux et culturels se développent : mathématiques, médecine, astronomie, techniques (papier, chiffres arabes).",
+        "L'historien étudie ces rencontres sans parti pris."
+      ],
+      "exemple": {
+        "titre": "Exemple : les chiffres",
+        "etapes": [
+          "Les chiffres 0 à 9 viennent d'Inde.",
+          "Les savants arabes les diffusent.",
+          "Ils arrivent en Europe au Moyen Âge."
+        ]
+      },
+      "aRetenir": "Les croisades : 1096-1291."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année commence l'hégire ?",
+        "reponse": 622,
+        "indices": [
+          "Début du VIIe siècle."
+        ],
+        "solution": "Départ de Mahomet vers Médine, 622.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle ville est la capitale de l'Empire byzantin ?",
+        "choix": [
+          "Rome",
+          "Paris",
+          "Jérusalem",
+          "Constantinople"
+        ],
+        "bonne": 3,
+        "explication": "Constantinople."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que transmettent les savants du monde musulman ?",
+        "choix": [
+          "des savoirs scientifiques et des textes",
+          "seulement des armes",
+          "l'imprimerie",
+          "la poudre à canon uniquement"
+        ],
+        "bonne": 0,
+        "explication": "Échanges de savoirs."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le marchand de Tolède",
+    "histoire": [
+      "Tu voyages au XIIe siècle à Tolède, où l'on traduit des livres arabes en latin."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi traduit-on ces livres ?",
+        "choix": [
+          "Pour les vendre aux pirates",
+          "Pour transmettre des savoirs",
+          "Pour les détruire",
+          "Pour les cacher"
+        ],
+        "bonne": 1,
+        "explication": "Transmission."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que montre cette scène ?",
+        "choix": [
+          "Qu'ils sont toujours en guerre",
+          "Qu'ils n'ont aucun savant",
+          "Que les mondes échangent aussi",
+          "Qu'ils s'ignorent"
+        ],
+        "bonne": 2,
+        "explication": "Échanges."
+      }
+    ],
+    "conclusion": "Voyage réussi !"
+  }
+}
