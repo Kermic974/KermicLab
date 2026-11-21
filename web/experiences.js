@@ -9,11 +9,13 @@
 export const CATEGORIE_JEUX = "jeux";
 /** Classes du collège, qui découpent « Collège » dans l'écran Éducation quand la fiche les renseigne. */
 export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
+/** Classes du primaire (cycle 3) : elles découpent « Primaire » dans l'écran Éducation. */
+export const CLASSES_PRIMAIRE = ["CM1", "CM2"];
 /**
  * Ordre d'affichage des niveaux scolaires ; un niveau inconnu est rangé à la fin, jamais perdu. « college » ne garde
  * que les notions sans classe renseignée (catalogue privé non classé, par exemple).
  */
-export const ORDRE_NIVEAUX = [...CLASSES_COLLEGE, "college", "seconde", "premiere", "terminale", "autres"];
+export const ORDRE_NIVEAUX = [...CLASSES_PRIMAIRE, "primaire", ...CLASSES_COLLEGE, "college", "seconde", "premiere", "terminale", "autres"];
 
 export const typeDeCatalogue = (entree) => (entree?.matiere === CATEGORIE_JEUX ? "jeu" : "notion");
 
@@ -27,8 +29,9 @@ export function creerRegistre(catalogue) {
       niveau: typeof n.niveau === "string" && n.niveau ? n.niveau : "autres",
       matiere: typeof n.matiere === "string" && n.matiere ? n.matiere : "autres",
       ...(typeof n.resume === "string" && n.resume ? { resume: n.resume } : {}),
-      ...(n.niveau === "college" && Array.isArray(n.classes) && n.classes.some((c) => CLASSES_COLLEGE.includes(c))
-        ? { classes: CLASSES_COLLEGE.filter((c) => n.classes.includes(c)) } : {}),
+      ...(["college", "primaire"].includes(n.niveau) && Array.isArray(n.classes)
+        && n.classes.some((c) => (n.niveau === "college" ? CLASSES_COLLEGE : CLASSES_PRIMAIRE).includes(c))
+        ? { classes: (n.niveau === "college" ? CLASSES_COLLEGE : CLASSES_PRIMAIRE).filter((c) => n.classes.includes(c)) } : {}),
       // Jeux : notions qu'ils font travailler (identifiants du catalogue, bornés).
       ...(Array.isArray(n.notionsLiees) && n.notionsLiees.length
         ? { notionsLiees: n.notionsLiees.filter((id) => typeof id === "string" && id).slice(0, 6) } : {})

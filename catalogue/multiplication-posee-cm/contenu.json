@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Multiplier, c'est additionner plusieurs fois le même nombre, mais en plus rapide.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une addition répétée",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "4 × 6, c'est 6 + 6 + 6 + 6 = 24. Les **tables** donnent ces résultats à connaître par cœur, de 2 à 9.",
+        "Multiplier par 10, 100, 1 000 : chaque chiffre se décale de 1, 2, 3 rangs vers la gauche. 45 × 100 = 4 500."
+      ],
+      "exemple": {
+        "titre": "Exemple : 7 × 8",
+        "etapes": [
+          "7 × 8 = 56.",
+          "Astuce : 7 × 8 = 7 × 4 × 2 = 28 × 2 = 56."
+        ]
+      },
+      "aRetenir": "Multiplier par 10 ajoute un zéro à droite d'un nombre entier."
+    },
+    {
+      "titre": "Multiplier avec deux chiffres",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour **23 × 14** : on calcule 23 × 4, puis 23 × 10, et on additionne les deux produits.",
+        "23 × 4 = 92 ; 23 × 10 = 230 ; 92 + 230 = 322.",
+        "On peut estimer avant : 23 × 14 est proche de 20 × 15 = 300, donc 322 est plausible."
+      ],
+      "exemple": {
+        "titre": "Exemple : 35 × 12",
+        "etapes": [
+          "35 × 2 = 70.",
+          "35 × 10 = 350.",
+          "70 + 350 = 420."
+        ]
+      },
+      "aRetenir": "On multiplie par les unités, puis par les dizaines (en décalant), puis on additionne."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Calcule 23 × 14.",
+        "reponse": 322,
+        "indices": [
+          "Calcule 23 × 4.",
+          "Puis 23 × 10 et additionne."
+        ],
+        "solution": "23 × 4 = 92, 23 × 10 = 230, 92 + 230 = 322.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Calcule 45 × 100.",
+        "reponse": 4500,
+        "indices": [
+          "100 = 10 × 10."
+        ],
+        "solution": "Multiplier par 100 décale de 2 rangs : 4 500.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel calcul donne le même résultat que 6 × 8 ?",
+        "choix": [
+          "8 × 6",
+          "6 + 8",
+          "6 × 6 + 8",
+          "8 × 8 − 6"
+        ],
+        "bonne": 0,
+        "explication": "La multiplication est commutative : 6 × 8 = 8 × 6 = 48."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les billets de cinéma",
+    "histoire": [
+      "Ta classe organise une sortie ciné. Il y a 28 élèves et la place coûte 7 €."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien coûtent toutes les places ?",
+        "reponse": 196,
+        "unite": "€",
+        "indices": [
+          "28 × 7 = 20 × 7 + 8 × 7.",
+          "140 + 56."
+        ],
+        "solution": "28 × 7 = 140 + 56 = 196.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Pour 12 classes comme la tienne (28 élèves chacune), combien d'élèves en tout ?",
+        "reponse": 336,
+        "indices": [
+          "28 × 10 puis 28 × 2.",
+          "280 + 56."
+        ],
+        "solution": "28 × 12 = 280 + 56 = 336.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu maîtrises la multiplication !"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le périmètre est la longueur du tour ; l'aire est la place occupée à l'intérieur.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la clôture et la pelouse",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour clôturer un jardin, tu mesures **le tour** : c'est le **périmètre**. Pour semer du gazon, tu calcules **la surface** : c'est l'**aire**.",
+        "Un rectangle de 6 m sur 4 m a un périmètre de 6 + 4 + 6 + 4 = 20 m et une aire de 6 × 4 = 24 m²."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Périmètre = 2 × (longueur + largeur) = 2 × 10 = 20 m.",
+          "Aire = longueur × largeur = 24 m².",
+          "Le périmètre se mesure en m, l'aire en m²."
+        ]
+      },
+      "aRetenir": "Périmètre : en unités de longueur. Aire : en unités d'aire (cm², m²…)."
+    },
+    {
+      "titre": "Formules et unités d'aire",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**Carré** de côté c : périmètre 4 × c, aire c × c. **Rectangle** : aire L × l. **Triangle rectangle** : aire = (côtés de l'angle droit multipliés) ÷ 2.",
+        "1 m² = 10 000 cm² (un carré de 1 m de côté contient 100 × 100 petits carrés de 1 cm)."
+      ],
+      "exemple": {
+        "titre": "Exemple : triangle rectangle de côtés 6 cm et 4 cm",
+        "etapes": [
+          "On multiplie : 6 × 4 = 24.",
+          "On divise par 2 : 12.",
+          "Aire = 12 cm²."
+        ]
+      },
+      "aRetenir": "Un triangle rectangle, c'est la moitié d'un rectangle."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Périmètre d'un rectangle de 6 m sur 4 m ?",
+        "reponse": 20,
+        "unite": "m",
+        "indices": [
+          "Additionne longueur et largeur, puis double."
+        ],
+        "solution": "2 × (6 + 4) = 20.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Aire d'un carré de côté 7 cm ?",
+        "reponse": 49,
+        "unite": "cm²",
+        "indices": [
+          "Aire du carré : côté × côté."
+        ],
+        "solution": "7 × 7 = 49.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Aire d'un triangle rectangle de côtés 6 cm et 4 cm ?",
+        "reponse": 12,
+        "unite": "cm²",
+        "indices": [
+          "Calcule l'aire du rectangle, puis la moitié."
+        ],
+        "solution": "6 × 4 ÷ 2 = 12.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le potager de l'école",
+    "histoire": [
+      "Le potager est un rectangle de 8 m sur 5 m."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle longueur de grillage pour clôturer le potager ?",
+        "reponse": 26,
+        "unite": "m",
+        "indices": [
+          "Périmètre."
+        ],
+        "solution": "2 × (8 + 5) = 26.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle est l'aire à bêcher ?",
+        "reponse": 40,
+        "unite": "m²",
+        "indices": [
+          "Aire du rectangle."
+        ],
+        "solution": "8 × 5 = 40.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bravo !"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un grand nombre se lit par paquets de trois chiffres : on les appelle les classes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les paquets de trois chiffres",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans un stade de 45 000 places, on ne compte pas les places une par une : on regroupe. Les grands nombres s'écrivent en **tranches de trois chiffres**, en partant de la droite : les unités, puis les milliers, puis les millions, puis les milliards.",
+        "On laisse un petit espace entre les tranches pour mieux les lire : 345 678 912."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire 345 678 912",
+        "etapes": [
+          "On coupe en tranches : 345 | 678 | 912.",
+          "On lit chaque tranche avec le nom de sa classe : trois cent quarante-cinq millions, six cent soixante-dix-huit mille, neuf cent douze."
+        ]
+      },
+      "aRetenir": "Une classe contient 3 chiffres : unités simples, milliers, millions, milliards."
+    },
+    {
+      "titre": "Valeur des chiffres, comparer, ranger",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Dans 345 678 912, le chiffre 5 est le chiffre des **dizaines de millions** : il vaut 5 × 10 000 000 = 50 000 000.",
+        "Pour **comparer** deux nombres, on compare d'abord le nombre de chiffres : le plus long est le plus grand. S'ils ont autant de chiffres, on compare chiffre par chiffre en partant de la gauche.",
+        "Pour **décomposer** : 4 305 020 = 4 × 1 000 000 + 3 × 100 000 + 5 × 1 000 + 2 × 10."
+      ],
+      "exemple": {
+        "titre": "Exemple : comparer 8 450 000 et 8 405 000",
+        "etapes": [
+          "Même nombre de chiffres, même premier chiffre 8, puis 4 et 4.",
+          "Au rang suivant : 5 contre 0. Donc 8 450 000 > 8 405 000."
+        ]
+      },
+      "aRetenir": "Un chiffre ne vaut pas la même chose selon sa place : le zéro sert à tenir la place."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est le chiffre des centaines de mille dans 7 862 541 ?",
+        "choix": [
+          "7",
+          "8",
+          "6",
+          "2"
+        ],
+        "bonne": 1,
+        "explication": "7 862 541 se découpe en 7 | 862 | 541. Les centaines de mille sont les centaines de la classe des milliers (862) : c'est le 8.",
+        "indices": [
+          "Découpe en tranches de 3 chiffres.",
+          "La classe des milliers est 862 : ses centaines sont les centaines de mille."
+        ]
+      },
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il de milliers dans 52 000 (nombre de milliers entiers) ?",
+        "reponse": 52,
+        "indices": [
+          "Un millier, c'est 1 000.",
+          "Divise 52 000 par 1 000."
+        ],
+        "solution": "52 000 = 52 × 1 000.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel nombre est le plus grand ?",
+        "choix": [
+          "9 870 000",
+          "9 807 000",
+          "987 000",
+          "9 780 000"
+        ],
+        "bonne": 0,
+        "explication": "Les trois premiers chiffres comptent : 9 870 000 est le plus grand des nombres à 7 chiffres.",
+        "indices": [
+          "Compte d'abord les chiffres.",
+          "Compare ensuite chiffre par chiffre depuis la gauche."
+        ]
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le grand match",
+    "histoire": [
+      "Le stade de la ville accueille 38 500 spectateurs. Pour le journal de l'école, tu dois écrire les nombres correctement."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment lit-on 38 500 ?",
+        "choix": [
+          "trente-huit mille cinq cents",
+          "trois cent quatre-vingt-cinq mille",
+          "trente-huit cinq cents",
+          "trois mille huit cent cinq"
+        ],
+        "bonne": 0,
+        "explication": "38 | 500 : trente-huit mille cinq cents."
+      },
+      {
+        "type": "nombre",
+        "question": "Le stade a 38 500 places. Combien de dizaines de milliers entières contient ce nombre ?",
+        "reponse": 3,
+        "indices": [
+          "Une dizaine de mille, c'est 10 000.",
+          "Combien de fois 10 000 dans 38 500 ?"
+        ],
+        "solution": "38 500 = 3 × 10 000 + 8 500 : 3 dizaines de milliers.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bravo : tu lis et tu compares les grands nombres sans te tromper de tranche !"
+  }
+}

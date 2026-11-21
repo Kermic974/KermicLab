@@ -9,7 +9,7 @@ import { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, liste } from "./fi
 export { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, DUREE_MAX } from "./fiche-catalogue.mjs";
 
 /** Niveaux scolaires connus, dans l’ordre de navigation du chat. */
-export const NIVEAUX = ["college", "seconde", "premiere", "terminale"];
+export const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale"];
 
 /**
  * Relecture pédagogique (feuille de route, phase 0 ; issue #176) : trace d'une relecture humaine selon la grille publiée

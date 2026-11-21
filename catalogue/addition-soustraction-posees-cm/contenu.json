@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour calculer avec de grands nombres, on pose l'opération en alignant les chiffres colonne par colonne.",
+  "niveaux": [
+    {
+      "titre": "Intuition : colonne par colonne",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On écrit les nombres l'un sous l'autre : unités sous unités, dizaines sous dizaines, centaines sous centaines. Puis on calcule de droite à gauche.",
+        "Quand une colonne dépasse 9, on garde l'unité et on **retient** la dizaine pour la colonne suivante."
+      ],
+      "exemple": {
+        "titre": "Exemple : 478 + 256",
+        "etapes": [
+          "Unités : 8 + 6 = 14, j'écris 4 et je retiens 1.",
+          "Dizaines : 7 + 5 + 1 = 13, j'écris 3 et je retiens 1.",
+          "Centaines : 4 + 2 + 1 = 7. Résultat : 734."
+        ]
+      },
+      "aRetenir": "On aligne toujours les chiffres de même rang."
+    },
+    {
+      "titre": "La soustraction posée",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour **soustraire**, on pose le plus grand nombre en haut. Si le chiffre du haut est trop petit, on le complète de 10 et on ajoute 1 au chiffre du bas dans la colonne de gauche : on garde le même écart.",
+        "On vérifie une soustraction avec une addition : si 734 − 256 = 478, alors 478 + 256 = 734.",
+        "La soustraction calcule un **écart** ou ce qui **reste**."
+      ],
+      "exemple": {
+        "titre": "Exemple : 734 − 256",
+        "etapes": [
+          "Unités : 4 − 6 impossible, on calcule 14 − 6 = 8 et on retient 1.",
+          "Dizaines : 3 − (5 + 1) impossible, on calcule 13 − 6 = 7 et on retient 1.",
+          "Centaines : 7 − (2 + 1) = 4.",
+          "Résultat : 478. Preuve : 478 + 256 = 734."
+        ]
+      },
+      "aRetenir": "On vérifie une soustraction en additionnant le résultat et le nombre retiré."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Calcule 478 + 256.",
+        "reponse": 734,
+        "indices": [
+          "Commence par les unités.",
+          "N'oublie pas les retenues."
+        ],
+        "solution": "8 + 6 = 14, 7 + 5 + 1 = 13, 4 + 2 + 1 = 7 : 734.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Calcule 1 000 − 457.",
+        "reponse": 543,
+        "indices": [
+          "Pense à compléter à 1 000.",
+          "457 + ? = 1 000."
+        ],
+        "solution": "1 000 − 457 = 543 ; vérification : 543 + 457 = 1 000.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle opération permet de vérifier 905 − 368 = 537 ?",
+        "choix": [
+          "537 + 368",
+          "905 + 368",
+          "537 − 368",
+          "905 + 537"
+        ],
+        "bonne": 0,
+        "explication": "Pour vérifier une soustraction, on additionne le résultat et le nombre soustrait : 537 + 368 = 905."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La caisse du vide-grenier",
+    "histoire": [
+      "Au vide-grenier de l'école, tu tiens la caisse. Le matin il y avait 1 250 €, tu as encaissé 478 € puis 256 €."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il d'argent après les deux encaissements ?",
+        "reponse": 1984,
+        "unite": "€",
+        "indices": [
+          "Ajoute d'abord 478 à 1 250.",
+          "1 728 + 256."
+        ],
+        "solution": "1 250 + 478 + 256 = 1 984.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Tu rends 543 € à la mairie sur 1 984 €. Combien reste-t-il ?",
+        "reponse": 1441,
+        "unite": "€",
+        "indices": [
+          "Soustrais centaines, dizaines, unités.",
+          "1 984 − 500 − 43."
+        ],
+        "solution": "1 984 − 543 = 1 441.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "La caisse est juste !"
+  }
+}

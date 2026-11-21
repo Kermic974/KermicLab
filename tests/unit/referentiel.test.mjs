@@ -23,6 +23,17 @@ test("référentiel : champs valides normalisés (listes YAML ou séparées par 
   assert.deepEqual(NIVEAUX_SCOLAIRES, ["cycle-3", "cycle-4", "seconde", "premiere", "terminale"]);
 });
 
+test("référentiel : classes du primaire (CM1, CM2), cycle 3", () => {
+  assert.deepEqual(valider({ niveau: "primaire", niveaux: "cycle-3", classes: "CM1, CM2" }), { niveaux: ["cycle-3"], classes: ["CM1", "CM2"] });
+  assert.deepEqual(valider({ niveau: "primaire", classes: ["CM2"] }), { classes: ["CM2"] });
+  for (const [fiche, attendu] of [
+    [{ niveau: "primaire", classes: "6e" }, /inconnue/],
+    [{ niveau: "primaire", classes: "CM2, CM1" }, /du CM1 au CM2/],
+    [{ niveau: "primaire", niveaux: "cycle-4", classes: "CM1" }, /cycle-3/],
+    [{ niveau: "college", classes: "CM2" }, /inconnue/]
+  ]) assert.throws(() => valider(fiche), attendu);
+});
+
 test("référentiel : classes du collège (6e à 3e), cohérentes avec le niveau et les cycles", () => {
   assert.deepEqual(valider({ niveau: "college", niveaux: "cycle-3, cycle-4", classes: "6e, 5e" }), { niveaux: ["cycle-3", "cycle-4"], classes: ["6e", "5e"] });
   assert.deepEqual(valider({ niveau: "college", classes: ["4e"] }), { classes: ["4e"] }, "sans niveaux : seule la liste est contrôlée");

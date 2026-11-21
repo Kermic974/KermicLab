@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le temps ne se compte pas en base 10 : 1 h = 60 min, 1 min = 60 s.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une horloge",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une heure dure 60 minutes, une minute 60 secondes, un jour 24 heures. Une demi-heure = 30 min, un quart d'heure = 15 min.",
+        "Un film de 1 h 45 min dure 60 + 45 = 105 minutes."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1 h 30 min = 60 + 30 = 90 min.",
+          "2 h = 120 min.",
+          "3 h 15 min = 195 min."
+        ]
+      },
+      "aRetenir": "1 h = 60 min ; 1 min = 60 s."
+    },
+    {
+      "titre": "Calculer une durée, additionner",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour la durée entre 14 h 35 et 17 h 10 : de 14 h 35 à 15 h il y a 25 min, de 15 h à 17 h il y a 2 h, puis 10 min : 2 h 35 min.",
+        "Pour additionner 1 h 45 min + 2 h 30 min : 3 h 75 min = 4 h 15 min (on convertit les 60 minutes en heure)."
+      ],
+      "exemple": {
+        "titre": "Exemple : 1 h 45 + 2 h 30",
+        "etapes": [
+          "Heures : 1 + 2 = 3 h. Minutes : 45 + 30 = 75 min.",
+          "75 min = 1 h 15 min.",
+          "Total : 4 h 15 min."
+        ]
+      },
+      "aRetenir": "On convertit dès que les minutes dépassent 59."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de minutes dans 1 h 45 min ?",
+        "reponse": 105,
+        "unite": "min",
+        "indices": [
+          "1 h = 60 min."
+        ],
+        "solution": "60 + 45 = 105.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Un train part à 14 h 35 et arrive à 17 h 10. Quelle durée en minutes ?",
+        "reponse": 155,
+        "unite": "min",
+        "indices": [
+          "Passe par 15 h puis 17 h."
+        ],
+        "solution": "2 h 35 min = 120 + 35 = 155 min.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "1 h 45 + 2 h 30 =",
+        "choix": [
+          "4 h 15",
+          "3 h 75",
+          "4 h 75",
+          "3 h 15"
+        ],
+        "bonne": 0,
+        "explication": "45 + 30 = 75 min = 1 h 15 ; 1 + 2 + 1 = 4 h 15."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'emploi du temps",
+    "histoire": [
+      "La récréation dure 15 min, la classe du matin commence à 8 h 30 et se termine à 11 h 45."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la durée totale de la matinée en minutes ?",
+        "reponse": 195,
+        "unite": "min",
+        "indices": [
+          "Calcule en heures et minutes d'abord."
+        ],
+        "solution": "De 8 h 30 à 11 h 45 : 3 h 15 = 195 min.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de minutes de classe reste-t-il sans la récréation ?",
+        "reponse": 180,
+        "unite": "min",
+        "indices": [
+          "Soustrais la récréation."
+        ],
+        "solution": "195 − 15 = 180.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu gères le temps !"
+  }
+}

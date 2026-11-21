@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un multiple se trouve dans une table de multiplication ; un diviseur divise sans reste.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les tables et les partages",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les multiples de 4 sont : 0, 4, 8, 12, 16, 20… (la table de 4). 12 est un multiple de 4 car 12 = 4 × 3.",
+        "On dit aussi que 4 est un **diviseur** de 12 : 12 ÷ 4 = 3, sans reste. Les diviseurs de 12 sont 1, 2, 3, 4, 6, 12."
+      ],
+      "exemple": {
+        "titre": "Exemple : diviseurs de 18",
+        "etapes": [
+          "18 = 1 × 18 = 2 × 9 = 3 × 6.",
+          "Diviseurs : 1, 2, 3, 6, 9, 18."
+        ]
+      },
+      "aRetenir": "Si b × k = a, alors a est un multiple de b et b est un diviseur de a."
+    },
+    {
+      "titre": "Critères de divisibilité",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Un nombre est divisible par **2** s'il se termine par 0, 2, 4, 6, 8 ; par **5** s'il finit par 0 ou 5 ; par **10** s'il finit par 0.",
+        "Par **3** : la somme de ses chiffres est dans la table de 3 (1 245 : 1 + 2 + 4 + 5 = 12, donc divisible par 3). Par **9** : la somme est dans la table de 9."
+      ],
+      "exemple": {
+        "titre": "Exemple : 4 536",
+        "etapes": [
+          "Termine par 6 : divisible par 2.",
+          "4 + 5 + 3 + 6 = 18 : divisible par 3 et par 9.",
+          "Ne finit pas par 0 ou 5 : pas divisible par 5."
+        ]
+      },
+      "aRetenir": "Pour 3 et 9, on additionne les chiffres."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel nombre est divisible par 3 ?",
+        "choix": [
+          "2 451",
+          "2 453",
+          "2 455",
+          "2 459"
+        ],
+        "bonne": 0,
+        "explication": "2 + 4 + 5 + 1 = 12, et 12 est dans la table de 3. Les sommes des autres nombres sont 14, 16 et 20 : aucune n'est un multiple de 3.",
+        "indices": [
+          "Additionne les chiffres de chaque nombre.",
+          "La somme doit être dans la table de 3."
+        ]
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de diviseurs a le nombre 12 ?",
+        "reponse": 6,
+        "indices": [
+          "Cherche les produits égaux à 12.",
+          "1 × 12, 2 × 6, 3 × 4."
+        ],
+        "solution": "1, 2, 3, 4, 6, 12 : six diviseurs.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un nombre qui se termine par 5 est toujours…",
+        "choix": [
+          "divisible par 5",
+          "divisible par 10",
+          "divisible par 2",
+          "divisible par 3"
+        ],
+        "bonne": 0,
+        "explication": "Il est divisible par 5, mais pas forcément par 10 (il faut finir par 0)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les cartes à partager",
+    "histoire": [
+      "Tu as 24 cartes et tu veux les ranger en paquets égaux."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de paquets égaux différents peux-tu faire (en comptant 1 paquet de 24) ?",
+        "reponse": 8,
+        "indices": [
+          "Liste les produits égaux à 24.",
+          "1×24, 2×12, 3×8, 4×6."
+        ],
+        "solution": "Diviseurs de 24 : 1, 2, 3, 4, 6, 8, 12, 24 : 8 façons.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Peux-tu faire des paquets de 5 sans reste ?",
+        "choix": [
+          "Non, 24 ne se termine pas par 0 ou 5",
+          "Oui",
+          "Oui, 24 est pair",
+          "Oui, si on ajoute 2"
+        ],
+        "bonne": 0,
+        "explication": "24 n'est pas un multiple de 5."
+      }
+    ],
+    "conclusion": "Tu connais tes diviseurs !"
+  }
+}

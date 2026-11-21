@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un angle mesure l'écart entre deux demi-droites qui partent du même point.",
+  "niveaux": [
+    {
+      "titre": "Intuition : l'angle de la porte",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand tu ouvres une porte, l'écart entre la porte et le mur est un **angle**. À moitié ouverte, l'angle est **droit** (comme le coin d'une feuille).",
+        "Un angle plus petit que l'angle droit est **aigu** ; plus grand mais inférieur à l'angle plat, il est **obtus**. L'angle plat est une ligne droite."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Coin d'une feuille : angle droit (90°).",
+          "Pointe d'un toit : angle aigu.",
+          "Bras très écartés : angle obtus."
+        ]
+      },
+      "aRetenir": "Aigu < droit (90°) < obtus < plat (180°)."
+    },
+    {
+      "titre": "Mesurer et tracer",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "L'unité d'angle est le **degré** (°). On le mesure avec un **rapporteur** : on place le centre sur le sommet, un côté sur 0°, et on lit la graduation.",
+        "On vérifie un angle droit avec l'**équerre**. Un angle de 90° est droit ; de 180°, plat.",
+        "Pour tracer 50° : trace un côté, place le rapporteur, marque 50°, relie au sommet."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire un rapporteur",
+        "etapes": [
+          "On aligne le 0° avec un côté.",
+          "On lit sur la bonne graduation (celle qui part de 0°).",
+          "L'angle mesure par exemple 50° : il est aigu."
+        ]
+      },
+      "aRetenir": "Droit = 90°, plat = 180°."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un angle de 120° est…",
+        "choix": [
+          "obtus",
+          "aigu",
+          "droit",
+          "plat"
+        ],
+        "bonne": 0,
+        "explication": "Plus grand que 90° et plus petit que 180° : obtus."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel instrument vérifie un angle droit ?",
+        "choix": [
+          "L'équerre",
+          "Le compas",
+          "La règle seule",
+          "Le chronomètre"
+        ],
+        "bonne": 0,
+        "explication": "L'équerre a un coin droit."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de degrés mesure un angle plat ?",
+        "reponse": 180,
+        "unite": "°",
+        "indices": [
+          "C'est le double de l'angle droit."
+        ],
+        "solution": "Un angle plat mesure 180°.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeu du phare",
+    "histoire": [
+      "Un phare tourne et éclaire la mer sous différents angles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le faisceau fait un quart de tour. L'angle est…",
+        "choix": [
+          "droit",
+          "aigu",
+          "obtus",
+          "plat"
+        ],
+        "bonne": 0,
+        "explication": "Un quart de tour = 90° = angle droit."
+      },
+      {
+        "type": "nombre",
+        "question": "Le faisceau fait un demi-tour. Combien de degrés ?",
+        "reponse": 180,
+        "unite": "°",
+        "indices": [
+          "Un tour complet fait 360°."
+        ],
+        "solution": "Un demi-tour = 180°.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu maîtrises les angles !"
+  }
+}
