@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une orthographe sûre et un vocabulaire riche rendent les écrits plus clairs et plus précis.",
+  "niveaux": [
+    {
+      "titre": "Accords et homophones",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Le **participe passé avec avoir** s'accorde avec le COD s'il est placé **avant** le verbe : « les lettres que j'ai **écrites** ». Avec **être**, il s'accorde avec le sujet. Les homophones : a/à, on/ont, ce/se, c'est/s'est, ses/ces, quand/quant/qu'en, leur/leurs (déterminant ou pronom).",
+        "On vérifie en remplaçant le mot (par « avait », « était », « mon »…)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Les fleurs qu'il a (cueillir) » : COD « que » = les fleurs, avant.",
+          "Féminin pluriel.",
+          "Les fleurs qu'il a cueillies."
+        ]
+      },
+      "aRetenir": "COD avant : accord avec avoir."
+    },
+    {
+      "titre": "Lexique et registres",
+      "niveau": "5e / 4e / 3e",
+      "paragraphes": [
+        "Les **registres de langue** : familier, courant, soutenu. Les **champs lexicaux** regroupent des mots autour d'un thème. L'**étymologie** (latin, grec) aide à comprendre les mots (« aquatique », « chronologie »). Le **sens** d'un mot dépend du contexte (polysémie) ; **connotation** et **dénotation** s'opposent (le mot « chien » ou « cabot »).",
+        "On enrichit son vocabulaire en lisant, en cherchant les synonymes et en utilisant un dictionnaire."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Familier : un boulot.",
+          "Courant : un travail.",
+          "Soutenu : une profession."
+        ]
+      },
+      "aRetenir": "Trois registres : familier, courant, soutenu."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Les lettres que j'ai (écrire) :",
+        "choix": [
+          "écrits",
+          "écrites",
+          "écrit",
+          "écrite"
+        ],
+        "bonne": 1,
+        "explication": "COD « que » (lettres) placé avant : féminin pluriel."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Un boulot » est un mot du registre…",
+        "choix": [
+          "familier",
+          "courant",
+          "soutenu",
+          "littéraire"
+        ],
+        "bonne": 0,
+        "explication": "Familier."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Chrono » dans « chronologie » signifie…",
+        "choix": [
+          "la terre",
+          "l'eau",
+          "la voix",
+          "le temps"
+        ],
+        "bonne": 3,
+        "explication": "Du grec khrónos."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La dictée du collège",
+    "histoire": [
+      "Tu corriges une dictée avec des accords piégeux."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Elles se sont (laver) » :",
+        "choix": [
+          "lavé",
+          "lavée",
+          "laver",
+          "lavées"
+        ],
+        "bonne": 3,
+        "explication": "Accord avec le sujet (COD = se, féminin pluriel)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Les cadeaux qu'il a (offrir) » :",
+        "choix": [
+          "offerts",
+          "offert",
+          "offerte",
+          "offrir"
+        ],
+        "bonne": 0,
+        "explication": "COD avant : masculin pluriel."
+      }
+    ],
+    "conclusion": "Dictée corrigée !"
+  }
+}

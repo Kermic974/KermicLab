@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une image n'est pas la réalité : elle résulte de choix de cadrage, de couleurs, de matières et d'un dispositif.",
+  "niveaux": [
+    {
+      "titre": "Représenter le réel",
+      "niveau": "5e",
+      "paragraphes": [
+        "Une **représentation** transforme le réel : dessin, peinture, photographie, sculpture. Le **cadrage** décide de ce qu'on montre, le **point de vue** (plongée, contre-plongée, face) change le sens, les **couleurs** et la **lumière** créent l'ambiance. En 5e, on étudie la **ressemblance** : plus ou moins fidèle, réaliste ou stylisée.",
+        "Exemple : un même visage en gros plan ou en plan large n'a pas le même effet."
+      ],
+      "exemple": {
+        "titre": "Exemple : le cadrage",
+        "etapes": [
+          "Gros plan : on voit l'émotion.",
+          "Plan large : on voit le lieu.",
+          "Chaque choix oriente le regard."
+        ]
+      },
+      "aRetenir": "Cadrer, c'est choisir."
+    },
+    {
+      "titre": "Image, dispositif et œuvre",
+      "niveau": "4e",
+      "paragraphes": [
+        "Une œuvre peut jouer avec un **dispositif** : support, format, lieu, installation, projection, interaction. En 4e, on étudie comment une image est **fabriquée, diffusée et reçue** (affiche, bande dessinée, cinéma, réseaux). On analyse : auteur, date, technique, sujet, composition, intention, effet.",
+        "On pratique : collage, photomontage, détournement, dessin d'observation."
+      ],
+      "exemple": {
+        "titre": "Exemple : le détournement",
+        "etapes": [
+          "On modifie une image connue.",
+          "Le sens change.",
+          "L'artiste fait réfléchir."
+        ]
+      },
+      "aRetenir": "Analyser : technique, composition, intention."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le cadrage consiste à…",
+        "choix": [
+          "agrandir un tableau",
+          "choisir ce qu'on montre",
+          "colorier une image",
+          "effacer le fond"
+        ],
+        "bonne": 1,
+        "explication": "Choix de l'artiste."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un gros plan montre surtout…",
+        "choix": [
+          "l'ensemble du paysage environnant",
+          "la foule vue de loin",
+          "le lieu dans son entier",
+          "un détail ou une émotion"
+        ],
+        "bonne": 3,
+        "explication": "Effet."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un détournement d'image consiste à…",
+        "choix": [
+          "modifier une image pour changer son sens",
+          "copier une image exactement à l'identique",
+          "détruire une image pour la cacher",
+          "encadrer une image sans la changer"
+        ],
+        "bonne": 0,
+        "explication": "Création."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le photomontage",
+    "histoire": [
+      "Ta classe réalise un photomontage."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que changes-tu pour modifier le sens ?",
+        "choix": [
+          "le titre écrit au dos seulement",
+          "le cadrage et l'assemblage des images",
+          "rien du tout dans les images",
+          "la taille du cahier de dessin"
+        ],
+        "bonne": 1,
+        "explication": "Composition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel point de vue donne une impression de puissance ?",
+        "choix": [
+          "le flou",
+          "la contre-plongée",
+          "la plongée",
+          "le plan neutre"
+        ],
+        "bonne": 1,
+        "explication": "Vue d'en bas."
+      }
+    ],
+    "conclusion": "Beau travail !"
+  }
+}

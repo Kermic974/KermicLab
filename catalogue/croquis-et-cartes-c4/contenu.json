@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un croquis résume un espace de façon simple : titre, figurés, légende et échelle.",
+  "niveaux": [
+    {
+      "titre": "Lire une carte",
+      "niveau": "5e",
+      "paragraphes": [
+        "Une **carte thématique** montre un phénomène (population, risques, flux). On lit : le **titre**, la **légende**, l'**échelle**, l'**orientation**. Les **figurés** sont de trois types : **ponctuels** (un point pour une ville), **linéaires** (une ligne pour une route, une flèche pour un flux), **de surface** (une couleur pour une zone).",
+        "L'échelle exprime la réduction : 1/100 000 signifie 1 cm sur la carte pour 1 km."
+      ],
+      "exemple": {
+        "titre": "Exemple : échelle",
+        "etapes": [
+          "1 cm sur la carte = 2 km.",
+          "Distance sur la carte : 5 cm.",
+          "Distance réelle : 10 km."
+        ]
+      },
+      "aRetenir": "Titre, légende, échelle, orientation."
+    },
+    {
+      "titre": "Construire un croquis",
+      "niveau": "5e / 4e / 3e",
+      "paragraphes": [
+        "Pour réaliser un **croquis** : 1) lire le sujet, 2) choisir les informations à représenter, 3) tracer le fond de carte, 4) placer les figurés (couleurs sobres, du plus important au moins important), 5) rédiger la **légende** organisée en parties, 6) donner un **titre**.",
+        "Les **cartes numériques** et les **systèmes d'information géographique** (SIG) superposent des couches de données."
+      ],
+      "exemple": {
+        "titre": "Exemple : une légende organisée",
+        "etapes": [
+          "I. Les espaces très peuplés (couleur foncée).",
+          "II. Les grandes villes (points).",
+          "III. Les flux principaux (flèches)."
+        ]
+      },
+      "aRetenir": "Légende organisée en parties, titre, échelle."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une route est représentée par un figuré…",
+        "choix": [
+          "de surface",
+          "aucun",
+          "linéaire",
+          "ponctuel"
+        ],
+        "bonne": 2,
+        "explication": "Une ligne."
+      },
+      {
+        "type": "nombre",
+        "question": "Échelle : 1 cm pour 2 km. Sur la carte, 5 cm. Distance réelle ?",
+        "reponse": 10,
+        "unite": "km",
+        "indices": [
+          "Multiplie par l'échelle."
+        ],
+        "solution": "5 × 2 = 10.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que doit contenir un croquis ?",
+        "choix": [
+          "des photographies collées ensemble",
+          "un dessin sans aucune légende",
+          "un titre, une légende organisée et une échelle",
+          "un long texte explicatif seulement"
+        ],
+        "bonne": 2,
+        "explication": "Éléments obligatoires."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le croquis du territoire",
+    "histoire": [
+      "Tu réalises un croquis sur les grandes villes de France."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment représentes-tu une ville ?",
+        "choix": [
+          "par un texte seulement",
+          "par un point (figuré ponctuel)",
+          "par une ligne",
+          "par une zone colorée"
+        ],
+        "bonne": 1,
+        "explication": "Ponctuel."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que fais-tu à la fin ?",
+        "choix": [
+          "Je rédige la légende et le titre",
+          "Je gomme tout le fond de carte",
+          "Je recopie la carte du manuel",
+          "Je colorie au hasard les zones"
+        ],
+        "bonne": 0,
+        "explication": "Finalisation."
+      }
+    ],
+    "conclusion": "Croquis réussi !"
+  }
+}

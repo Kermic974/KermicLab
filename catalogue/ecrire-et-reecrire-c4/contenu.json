@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On apprend à planifier, rédiger, argumenter et améliorer un texte en le réécrivant.",
+  "niveaux": [
+    {
+      "titre": "Planifier et argumenter",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Un texte **argumentatif** défend une idée (la **thèse**) avec des **arguments** appuyés par des **exemples**, et utilise des **connecteurs logiques** : d'abord, de plus, en effet, mais, donc, enfin. Un paragraphe = une idée : argument + exemple.",
+        "Avant d'écrire : on fait un **plan** (introduction, développement en 2 ou 3 paragraphes, conclusion)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Thèse : le sport est utile à la santé.",
+          "Argument : il renforce le cœur.",
+          "Exemple : courir 30 minutes améliore l'endurance."
+        ]
+      },
+      "aRetenir": "Thèse, arguments, exemples."
+    },
+    {
+      "titre": "Réécrire pour améliorer",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "On réécrit un texte pour le rendre plus clair : supprimer les répétitions (pronoms, synonymes), enrichir (adjectifs précis, compléments), varier les phrases (longues et courtes), corriger l'orthographe et la ponctuation. On se relit à voix haute et on peut échanger avec un camarade.",
+        "En 3e, on rédige des textes plus longs (récit, argumentation, lettre), parfois en réponse à une question de brevet."
+      ],
+      "exemple": {
+        "titre": "Exemple : améliorer une phrase",
+        "etapes": [
+          "Avant : « Il a un chien. Il est gentil. »",
+          "Après : « Il possède un chien très gentil. »",
+          "On a supprimé la répétition."
+        ]
+      },
+      "aRetenir": "Relire, supprimer, enrichir, corriger."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans un texte argumentatif, la thèse est…",
+        "choix": [
+          "l'idée qu'on défend",
+          "la conclusion seulement",
+          "un exemple",
+          "le titre"
+        ],
+        "bonne": 0,
+        "explication": "Idée défendue."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel connecteur introduit une opposition ?",
+        "choix": [
+          "donc",
+          "d'abord",
+          "en effet",
+          "mais"
+        ],
+        "bonne": 3,
+        "explication": "Mais."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour améliorer un texte, on peut…",
+        "choix": [
+          "changer de sujet",
+          "supprimer les répétitions",
+          "ajouter des fautes",
+          "le raccourcir sans lire"
+        ],
+        "bonne": 1,
+        "explication": "Réécriture."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La lettre au maire",
+    "histoire": [
+      "Tu écris une lettre au maire pour demander un terrain de sport."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel argument est le plus solide ?",
+        "choix": [
+          "Je veux un terrain de sport maintenant",
+          "C'est vraiment moche sans terrain de sport",
+          "Tout le monde dit qu'il en faut un",
+          "Les jeunes n'ont pas d'endroit pour faire du sport en sécurité"
+        ],
+        "bonne": 3,
+        "explication": "Argument précis."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour finir ta lettre, tu écris…",
+        "choix": [
+          "un grand blanc sans signature",
+          "une formule de politesse",
+          "une insulte contre le destinataire",
+          "ton mot de passe de messagerie"
+        ],
+        "bonne": 1,
+        "explication": "Politesse."
+      }
+    ],
+    "conclusion": "Lettre convaincante !"
+  }
+}

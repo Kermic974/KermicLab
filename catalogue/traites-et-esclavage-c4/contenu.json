@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Du XVIe au XIXe siècle, des millions d'Africains sont déportés et réduits en esclavage : l'histoire de cette traite et de sa fin est essentielle.",
+  "niveaux": [
+    {
+      "titre": "Un commerce d'êtres humains",
+      "niveau": "4e",
+      "paragraphes": [
+        "La **traite négrière** déporte environ 12 millions d'Africains vers les Amériques du XVIe au XIXe siècle. Le **commerce triangulaire** relie l'Europe (navires), l'Afrique (captifs) et les Amériques (plantations de sucre, café, coton). Les captifs voyagent dans des conditions atroces ; beaucoup meurent pendant la traversée.",
+        "Les ports français (Nantes, Bordeaux, La Rochelle) en ont tiré des profits."
+      ],
+      "exemple": {
+        "titre": "Exemple : le triangle",
+        "etapes": [
+          "Europe → Afrique : armes, objets.",
+          "Afrique → Amériques : captifs.",
+          "Amériques → Europe : sucre, café."
+        ]
+      },
+      "aRetenir": "Commerce triangulaire : Europe, Afrique, Amériques."
+    },
+    {
+      "titre": "Résistance et abolition",
+      "niveau": "4e",
+      "paragraphes": [
+        "Le **Code noir** (1685) encadre l'esclavage dans les colonies françaises. Les esclaves résistent (fuites, révoltes, marronnage). À Saint-Domingue, la révolte conduite par **Toussaint Louverture** mène à l'indépendance d'**Haïti** en 1804. L'esclavage est aboli en France en 1794, rétabli par Napoléon en 1802, puis définitivement aboli en **1848** (Victor Schœlcher).",
+        "La mémoire de l'esclavage est commémorée chaque 10 mai en France."
+      ],
+      "exemple": {
+        "titre": "Exemple : 1848",
+        "etapes": [
+          "Victor Schœlcher fait voter l'abolition.",
+          "Des milliers de personnes retrouvent la liberté.",
+          "Les anciens maîtres sont indemnisés, pas les esclaves."
+        ]
+      },
+      "aRetenir": "Abolition définitive : 1848 ; mémoire : 10 mai."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année l'esclavage est-il définitivement aboli en France ?",
+        "reponse": 1848,
+        "indices": [
+          "Milieu du XIXe siècle."
+        ],
+        "solution": "Décret de 1848.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le commerce triangulaire relie…",
+        "choix": [
+          "l'Asie, l'Europe et l'Océanie",
+          "l'Afrique, l'Asie et l'Australie",
+          "l'Amérique du Nord, le Groenland et l'Islande",
+          "l'Europe, l'Afrique et les Amériques"
+        ],
+        "bonne": 3,
+        "explication": "Trois continents."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel pays naît de la révolte conduite par Toussaint Louverture ?",
+        "choix": [
+          "Le Sénégal",
+          "Haïti",
+          "Cuba",
+          "Le Brésil"
+        ],
+        "bonne": 1,
+        "explication": "Indépendance en 1804."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le port de Nantes",
+    "histoire": [
+      "Tu visites le port de Nantes, au XVIIIe siècle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que montre cette histoire pour un historien ?",
+        "choix": [
+          "Une traite qui a enrichi des ports et brisé des vies",
+          "Un commerce ordinaire comme les autres",
+          "Une fête organisée dans les ports",
+          "Un voyage touristique à travers l'Atlantique"
+        ],
+        "bonne": 0,
+        "explication": "Faits historiques, sans minimiser."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que commémore-t-on le 10 mai ?",
+        "choix": [
+          "La fête nationale de la France",
+          "L'armistice de la Première Guerre mondiale",
+          "La fête du travail en France",
+          "La mémoire de l'esclavage et son abolition"
+        ],
+        "bonne": 3,
+        "explication": "Journée de la mémoire."
+      }
+    ],
+    "conclusion": "Tu mesures l'histoire !"
+  }
+}

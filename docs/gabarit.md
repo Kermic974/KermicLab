@@ -31,6 +31,7 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
       public et privé : chaque prérequis existe et est une notion (pas un jeu), aucun cycle (le message donne le chemin,
       par exemple `fractions → proportionnalite → fractions`), et un prérequis ne commence pas à un niveau plus avancé que
       la notion (vérifié quand les deux fiches renseignent `niveaux`), ni dans une classe plus avancée (`CP` < `CE1` < `CE2` < `CM1` < `CM2` < `6e` < … < `3e`, vérifié quand les deux fiches renseignent `classes`).
+    - **Fiches projetées depuis le référentiel S4** : les fiches listées dans `referentiel/projection-v0.json` (les 165 notions de la V0) ont leurs champs `prerequis`, `niveaux` et `competences` **générés** par `npm run build` à partir de `referentiel/objets/`. Ne pas les modifier dans la fiche : le build les réécrit. Pour ajouter un prérequis à une telle notion, passer par le processus S4 ([génération des lots](../referentiel/generation-v0.5.md)). Les notions ajoutées depuis (suffixes `-c2`, `-cm`, `-6e`, `-c4`) ne sont pas projetées : leurs champs se renseignent dans la fiche.
     - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
     - `duree` : durée estimée en minutes, entier de 1 à 240.
   - **Relecture pédagogique** : après une relecture humaine selon la grille publiée, ajouter `relue` (date), `relue-version`

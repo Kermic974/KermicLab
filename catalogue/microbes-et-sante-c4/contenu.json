@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les micro-organismes sont partout : certains sont utiles, d'autres provoquent des maladies, que l'hygiène et les vaccins permettent de prévenir.",
+  "niveaux": [
+    {
+      "titre": "Des êtres microscopiques",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les **micro-organismes** sont des êtres vivants trop petits pour être vus à l'œil nu : **bactéries**, **champignons microscopiques**, **virus** (le virus n'est pas une cellule et a besoin d'une cellule hôte pour se multiplier). Beaucoup sont utiles : bactéries du yaourt et de l'intestin, levures du pain. Certains sont **pathogènes** : ils provoquent des maladies (grippe, angine, rougeole).",
+        "On les observe au microscope."
+      ],
+      "exemple": {
+        "titre": "Exemple : le yaourt",
+        "etapes": [
+          "Des bactéries transforment le lait.",
+          "Le lait devient du yaourt.",
+          "Ces bactéries sont utiles."
+        ]
+      },
+      "aRetenir": "Utiles ou pathogènes selon l'espèce."
+    },
+    {
+      "titre": "Se protéger",
+      "niveau": "4e",
+      "paragraphes": [
+        "L'**hygiène** (se laver les mains, cuire les aliments, nettoyer les plaies) limite la contamination. Le corps se défend : la peau, les cellules du système immunitaire. Les **antibiotiques** soignent les maladies **bactériennes** (pas celles des virus). Un **vaccin** apprend au système immunitaire à reconnaître un microbe sans provoquer la maladie : il protège la personne vaccinée et les autres.",
+        "La vaccination a fait disparaître la variole."
+      ],
+      "exemple": {
+        "titre": "Exemple : le lavage des mains",
+        "etapes": [
+          "Il élimine des microbes.",
+          "Il évite de les transmettre.",
+          "Il protège la santé de tous."
+        ]
+      },
+      "aRetenir": "Antibiotiques : bactéries. Vaccin : prévention."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Les antibiotiques agissent contre…",
+        "choix": [
+          "les allergies",
+          "les bactéries",
+          "les virus",
+          "tous les microbes"
+        ],
+        "bonne": 1,
+        "explication": "Pas contre les virus."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un vaccin sert à…",
+        "choix": [
+          "soigner la grippe déjà installée",
+          "remplacer le repas",
+          "préparer le système immunitaire",
+          "tuer toutes les bactéries du corps"
+        ],
+        "bonne": 2,
+        "explication": "Prévention."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel geste limite le plus les microbes ?",
+        "choix": [
+          "boire du soda",
+          "dormir peu",
+          "se laver les mains",
+          "porter des gants en laine"
+        ],
+        "bonne": 2,
+        "explication": "Hygiène."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Hiver, grippe et collège",
+    "histoire": [
+      "Beaucoup d'élèves sont malades."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel geste limite la contagion ?",
+        "choix": [
+          "partager les mouchoirs entre amis",
+          "éviter de dormir la nuit",
+          "se laver les mains et aérer les salles",
+          "tousser directement dans sa main"
+        ],
+        "bonne": 2,
+        "explication": "Hygiène."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La grippe est causée par…",
+        "choix": [
+          "un champignon",
+          "un parasite",
+          "un virus",
+          "une bactérie"
+        ],
+        "bonne": 2,
+        "explication": "Virus."
+      }
+    ],
+    "conclusion": "Bonne prévention !"
+  }
+}

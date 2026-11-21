@@ -41,10 +41,10 @@ Les notions `*-6e` (niveau `college`, classe `6e`, cycle 3) complètent les noti
 Chaque notion du cycle 3 déclare ses **prérequis** (champ `prerequis` de la fiche). Le parcours suit trois règles :
 
 1. **Dans une matière, un fil logique** : par exemple `grands-nombres-cm` → `addition-soustraction-posees-cm` → `multiplication-posee-cm` → `division-euclidienne-cm` → `fractions-cm` → `nombres-decimaux-cm` ; en histoire, la frise de `prehistoire-cm` à `france-europe-depuis-1945-cm`.
-2. **Du primaire vers la 6e** : chaque notion de 6e (nouvelle ou déjà présente) pointe vers la ou les notions de CM1/CM2 qu'elle prolonge, par exemple `fractions` ← `fractions-cm`, `fractions-operations-cm` ; `grece-et-citoyennete-6e` ← `premieres-civilisations-6e` ← `peuplement-neolithique-6e` ← `prehistoire-cm`.
+2. **Du primaire vers la 6e** : chaque **nouvelle** notion de 6e pointe vers la ou les notions de CM1/CM2 qu'elle prolonge, par exemple `grece-et-citoyennete-6e` ← `premieres-civilisations-6e` ← `peuplement-neolithique-6e` ← `prehistoire-cm`. **Limite** : les 13 notions de 6e déjà présentes avant le cycle 3 (`fractions`, `nombres-decimaux`, `angles`…) font partie du référentiel canonique S4 : leurs prérequis sont générés au build à partir de `referentiel/objets/` et **ne peuvent pas être modifiés dans la fiche**. Leurs liens vers CM1/CM2 (par exemple `fractions` ← `fractions-cm`) sont donc **proposés** dans [propositions-liens-cycles-2-3-4.md](../referentiel/propositions-liens-cycles-2-3-4.md), à qualifier par le processus S4.
 3. **Jamais à rebours** : un prérequis ne commence pas dans une classe plus avancée que la notion (vérifié au build, `scripts/lib/catalogue.mjs`, avec un test). Le graphe est aussi vérifié sans cycle.
 
-La modification des prérequis des notions de 6e déjà présentes ne change que leurs métadonnées (pas leur version).
+Rectificatif : une version antérieure de cette fiche affirmait que les 13 notions de 6e déjà présentes étaient reliées à CM1/CM2. Ce n'était pas le cas, car le build réécrit leurs prérequis à partir du référentiel S4 ; voir ci-dessus.
 
 ## Cycle 2 (CP, CE1, CE2)
 

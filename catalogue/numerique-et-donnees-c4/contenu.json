@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Chaque connexion laisse des traces : il faut comprendre ses droits et protéger sa vie privée.",
+  "niveaux": [
+    {
+      "titre": "Mes traces et mes données",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Une **donnée personnelle** permet d'identifier quelqu'un : nom, adresse, photo, voix, numéro de téléphone, localisation. Sur Internet, on laisse des **traces numériques** (historique, publications, cookies) qui forment l'**identité numérique**. Ce qu'on publie peut rester longtemps et être vu par beaucoup.",
+        "Le **RGPD** (règlement européen) protège les données ; la **CNIL** contrôle son application."
+      ],
+      "exemple": {
+        "titre": "Exemple : les paramètres",
+        "etapes": [
+          "Je rends mon compte privé.",
+          "Je limite qui voit mes photos.",
+          "Je ne publie pas ma localisation."
+        ]
+      },
+      "aRetenir": "Données personnelles : protéger et maîtriser."
+    },
+    {
+      "titre": "Droits et responsabilités",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Chacun a un **droit à l'image** : on ne publie pas la photo de quelqu'un sans son accord. Le **cyberharcèlement** (moqueries, menaces, diffusion d'images en ligne) est un délit puni par la loi, même derrière un écran. En cas de problème : conserver des preuves, signaler, en parler à un adulte, appeler le **3018**.",
+        "Les mineurs sont protégés mais aussi responsables de leurs actes en ligne."
+      ],
+      "exemple": {
+        "titre": "Exemple : réagir",
+        "etapes": [
+          "Je reçois des messages insultants.",
+          "Je fais des captures d'écran.",
+          "J'en parle à un adulte et j'appelle le 3018."
+        ]
+      },
+      "aRetenir": "Preuves, signalement, 3018."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle donnée est personnelle ?",
+        "choix": [
+          "la date du jour",
+          "un nombre au hasard",
+          "mon adresse",
+          "la météo"
+        ],
+        "bonne": 2,
+        "explication": "Elle permet de m'identifier."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que fait la CNIL ?",
+        "choix": [
+          "elle veille à la protection des données",
+          "elle vend des données",
+          "elle fabrique des téléphones",
+          "elle juge les élèves"
+        ],
+        "bonne": 0,
+        "explication": "Autorité de protection."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le cyberharcèlement est…",
+        "choix": [
+          "un délit puni par la loi",
+          "un simple jeu",
+          "autorisé entre amis",
+          "sans conséquence"
+        ],
+        "bonne": 0,
+        "explication": "Poursuivi."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le groupe de messagerie",
+    "histoire": [
+      "Dans un groupe de classe, quelqu'un publie une photo humiliante d'un camarade."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu ?",
+        "choix": [
+          "Je quitte le groupe sans rien dire",
+          "Je partage la photo à d'autres amis",
+          "Je signale, je soutiens la victime et j'en parle à un adulte",
+          "Je me moque avec les autres du groupe"
+        ],
+        "bonne": 2,
+        "explication": "Agir."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel numéro peut aider ?",
+        "choix": [
+          "Le 18",
+          "Le 17 uniquement",
+          "Le 3018",
+          "Le 15"
+        ],
+        "bonne": 2,
+        "explication": "Numéro national."
+      }
+    ],
+    "conclusion": "Bien réagi !"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au XIXe siècle, les puissances européennes conquièrent de vastes territoires en Afrique et en Asie.",
+  "niveaux": [
+    {
+      "titre": "Pourquoi coloniser ?",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les raisons : **économiques** (matières premières, marchés), **politiques** (prestige, rivalité entre puissances), **idéologiques** (la « mission civilisatrice », théories racistes). En 1884-1885, la **conférence de Berlin** organise le partage de l'Afrique entre puissances européennes, sans consulter les populations.",
+        "La France conquiert l'**Algérie** (1830), puis l'Afrique de l'Ouest, l'Indochine, Madagascar."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le Royaume-Uni et la France se partagent l'Afrique.",
+          "Des frontières sont tracées sur la carte.",
+          "Elles ignorent les peuples sur place."
+        ]
+      },
+      "aRetenir": "Berlin 1884-1885 : partage de l'Afrique."
+    },
+    {
+      "titre": "Vivre sous la colonisation",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les peuples colonisés subissent des **travaux forcés**, des impôts, des lois inégales (le « code de l'indigénat »), la perte de leurs terres. Des **résistances** (Abd el-Kader en Algérie) et des révoltes existent. La colonisation transforme les sociétés (routes, écoles, mais aussi violences et exploitation).",
+        "Les colonisés revendiqueront ensuite leur indépendance (voir « décolonisation »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : le travail forcé",
+        "etapes": [
+          "Des hommes doivent construire une voie ferrée.",
+          "Ils sont peu ou pas payés.",
+          "Beaucoup meurent de fatigue et de maladie."
+        ]
+      },
+      "aRetenir": "Colonisation : exploitation et inégalités."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année la France commence-t-elle la conquête de l'Algérie ?",
+        "reponse": 1830,
+        "indices": [
+          "Début du XIXe siècle."
+        ],
+        "solution": "Prise d'Alger en 1830.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La conférence de Berlin (1884-1885) organise…",
+        "choix": [
+          "le partage de l'Afrique entre puissances européennes",
+          "la fin de la colonisation en Afrique",
+          "l'indépendance de l'Algérie française",
+          "la paix définitive entre les puissances"
+        ],
+        "bonne": 0,
+        "explication": "Partage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui a résisté à la conquête française de l'Algérie ?",
+        "choix": [
+          "l'émir Abd el-Kader",
+          "Toussaint Louverture",
+          "Mahomet",
+          "Napoléon"
+        ],
+        "bonne": 0,
+        "explication": "Abd el-Kader."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un carnet de voyage colonial",
+    "histoire": [
+      "Tu étudies un carnet de voyage d'un officier français en Afrique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi faut-il être prudent avec ce témoignage ?",
+        "choix": [
+          "Il est trop court pour être cité",
+          "Il a été écrit par un officier",
+          "Il donne le point de vue du colonisateur",
+          "Il est écrit à la main et ancien"
+        ],
+        "bonne": 2,
+        "explication": "Croiser les points de vue."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faut-il chercher pour compléter ?",
+        "choix": [
+          "Le témoignage des populations colonisées",
+          "Un autre carnet d'officier seulement",
+          "Une carte routière",
+          "Un manuel de cuisine"
+        ],
+        "bonne": 0,
+        "explication": "Croiser les sources."
+      }
+    ],
+    "conclusion": "Sens critique activé !"
+  }
+}

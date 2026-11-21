@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La musique exprime des émotions, porte des messages et fait partie du patrimoine d'un peuple.",
+  "niveaux": [
+    {
+      "titre": "Créer et arranger",
+      "niveau": "3e",
+      "paragraphes": [
+        "On crée une musique en choisissant une **mélodie**, un **rythme**, une **harmonie** (accords), des **instruments** et une **structure**. On peut **arranger** un morceau existant, **improviser** sur une grille d'accords ou composer à l'aide d'un logiciel. Le **droit d'auteur** protège les créations : on cite ses sources."
+      ],
+      "exemple": {
+        "titre": "Exemple : composer",
+        "etapes": [
+          "Je choisis 4 accords.",
+          "J'écris une mélodie.",
+          "J'ajoute une basse et un rythme."
+        ]
+      },
+      "aRetenir": "Mélodie, rythme, harmonie."
+    },
+    {
+      "titre": "Chansons et engagement",
+      "niveau": "3e",
+      "paragraphes": [
+        "La musique accompagne l'histoire : la **Marseillaise** (1792), hymne national français ; chants de la Résistance (« Le Chant des partisans ») ; chansons contre la guerre ou pour les droits (Bob Dylan, Jacques Brel, Nina Simone). Les **musiques du monde** (afro-cubaine, indienne, maghrébine…) racontent des cultures.",
+        "Écouter, c'est aussi comprendre un contexte."
+      ],
+      "exemple": {
+        "titre": "Exemple : un chant de lutte",
+        "etapes": [
+          "Texte : appel à la liberté.",
+          "Mélodie : simple pour être chantée par tous.",
+          "Effet : rassembler."
+        ]
+      },
+      "aRetenir": "La musique rassemble et porte des idées."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qu'est-ce que l'harmonie ?",
+        "choix": [
+          "une suite de notes l'une après l'autre",
+          "la vitesse",
+          "la hauteur uniquement",
+          "des notes jouées en même temps"
+        ],
+        "bonne": 3,
+        "explication": "Accords."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La Marseillaise est…",
+        "choix": [
+          "une comptine",
+          "l'hymne national français",
+          "une chanson de Noël",
+          "un chant de marin"
+        ],
+        "bonne": 1,
+        "explication": "1792."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Arranger un morceau, c'est…",
+        "choix": [
+          "le chanter volontairement faux",
+          "le copier exactement note pour note",
+          "le réécrire pour d'autres instruments",
+          "l'effacer pour en composer un autre"
+        ],
+        "bonne": 2,
+        "explication": "Réinterpréter."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le projet musical",
+    "histoire": [
+      "Ta classe compose un chant sur la paix."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que veux-tu exprimer ?",
+        "choix": [
+          "le prix d'un billet",
+          "une recette de cuisine",
+          "un score de sport",
+          "un message de paix"
+        ],
+        "bonne": 3,
+        "explication": "Chant engagé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que dois-tu respecter ?",
+        "choix": [
+          "uniquement ton avis personnel",
+          "le droit d'auteur des œuvres que tu cites",
+          "le silence absolu pendant la création",
+          "aucune règle de création particulière"
+        ],
+        "bonne": 1,
+        "explication": "Citer ses sources."
+      }
+    ],
+    "conclusion": "Belle création !"
+  }
+}
