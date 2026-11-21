@@ -48,10 +48,10 @@
         "titre": "Exercice 1",
         "question": "Quelle phrase décrit le mieux un personnage ?",
         "choix": [
-          "Un vieil homme maigre, aux yeux perçants, s'avançait lentement.",
-          "Il y avait un homme.",
-          "Un homme était là.",
-          "L'homme était homme."
+          "Un vieil homme maigre aux yeux perçants s'avançait lentement.",
+          "Il y avait un homme qui marchait dans la rue.",
+          "Un homme était là et il faisait quelque chose.",
+          "L'homme était un homme comme tous les autres."
         ],
         "bonne": 0,
         "explication": "Elle apporte des détails précis."
@@ -108,9 +108,9 @@
         "titre": "Exercice 2",
         "question": "Que faire pour éviter les répétitions ?",
         "choix": [
-          "Répéter le même mot",
-          "Supprimer les verbes",
-          "Écrire plus court",
+          "Répéter volontairement le même mot partout",
+          "Supprimer tous les verbes de la phrase",
+          "Écrire des phrases beaucoup plus courtes",
           "Remplacer par des pronoms et des synonymes"
         ],
         "bonne": 3,

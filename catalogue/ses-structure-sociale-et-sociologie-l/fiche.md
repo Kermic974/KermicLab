@@ -2,7 +2,7 @@
 id: ses-structure-sociale-et-sociologie-l
 titre: Structure sociale, socialisation et inégalités
 sujet: ses/ses-structure-sociale-et-sociologie-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: premiere
 duree: 30

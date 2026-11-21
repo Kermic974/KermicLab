@@ -2,7 +2,7 @@
 id: nutrition-et-alimentation-6e
 titre: Nutrition et alimentation en 6e
 sujet: svt/nutrition-et-alimentation-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

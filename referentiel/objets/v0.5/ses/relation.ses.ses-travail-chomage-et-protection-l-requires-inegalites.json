@@ -2,12 +2,12 @@
   "id": "relation.ses.ses-travail-chomage-et-protection-l-requires-inegalites",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
   },
   "source": "notion.ses.ses-travail-chomage-et-protection-l",
   "target": "notion.ses.inegalites",
-  "rationale": "Prérequis déclaré dans la fiche : « Les inégalités économiques et sociales » précède « Travail, emploi, chômage et protection sociale » dans la progression du programme (lien à relire)."
+  "rationale": "« Les inégalités économiques et sociales » : Le travail et la protection sociale reprennent le chômage et les inégalités."
 }

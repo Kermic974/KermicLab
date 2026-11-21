@@ -2,7 +2,7 @@
 id: esprit-critique-et-medias-6e
 titre: Esprit critique : s'informer et vérifier
 sujet: emc/esprit-critique-et-medias-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

@@ -2,7 +2,7 @@
 id: musique-ecoute-creation-et-histoire-l
 titre: Musique : écoute, création et histoire des styles
 sujet: musique/musique-ecoute-creation-et-histoire-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 20

@@ -2,7 +2,7 @@
 id: monotheisme-juif-6e
 titre: Le monothéisme juif dans un monde polythéiste
 sujet: histoire/monotheisme-juif-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

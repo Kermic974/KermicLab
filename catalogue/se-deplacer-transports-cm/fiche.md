@@ -2,7 +2,7 @@
 id: se-deplacer-transports-cm
 titre: Se déplacer et transporter
 sujet: geographie/se-deplacer-transports-cm
-version: 1.0.1
+version: 1.0.2
 date: 2026-11-21
 niveau: primaire
 classes: CM2

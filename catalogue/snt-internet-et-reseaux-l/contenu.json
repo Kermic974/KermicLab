@@ -94,10 +94,10 @@
         "titre": "Exercice 1",
         "question": "Une adresse IP identifie…",
         "choix": [
-          "un site web seul",
-          "un simple câble",
+          "un site web et rien d'autre",
+          "un simple câble de connexion",
           "un appareil sur le réseau",
-          "un mot de passe"
+          "un mot de passe de session"
         ],
         "bonne": 2,
         "explication": "Adresse d'un appareil."
@@ -107,9 +107,9 @@
         "titre": "Exercice 2",
         "question": "Pour sécuriser le wifi, on…",
         "choix": [
-          "le laisse ouvert à tous",
-          "affiche le mot de passe",
-          "débranche la box",
+          "le laisse ouvert à tous les passants",
+          "affiche le mot de passe dans l'entrée",
+          "débranche la box une fois par mois",
           "chiffre et protège par mot de passe"
         ],
         "bonne": 3,

@@ -2,12 +2,12 @@
   "id": "relation.francais.nature-des-mots-cm-requires-noms-et-determinants-c2",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/nature-des-mots-cm/contenu.json"
   },
   "source": "notion.francais.nature-des-mots-cm",
   "target": "notion.francais.noms-et-determinants-c2",
-  "rationale": "Prérequis déclaré dans la fiche : « Le nom et le déterminant » précède « La nature des mots » dans la progression du programme (lien à relire)."
+  "rationale": "« Le nom et le déterminant » : Distinguer les classes de mots prolonge le nom, le déterminant, le verbe et l’adjectif du cycle 2."
 }

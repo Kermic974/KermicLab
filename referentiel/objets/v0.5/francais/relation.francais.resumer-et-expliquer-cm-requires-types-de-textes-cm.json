@@ -2,12 +2,12 @@
   "id": "relation.francais.resumer-et-expliquer-cm-requires-types-de-textes-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
   },
   "source": "notion.francais.resumer-et-expliquer-cm",
   "target": "notion.francais.types-de-textes-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Les types de textes » précède « Résumer, expliquer et écrire un texte documentaire » dans la progression du programme (lien à relire)."
+  "rationale": "« Les types de textes » : Résumer et expliquer reposent sur la compréhension de texte et la connaissance des types de textes."
 }

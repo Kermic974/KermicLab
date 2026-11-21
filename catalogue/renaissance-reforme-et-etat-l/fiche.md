@@ -2,7 +2,7 @@
 id: renaissance-reforme-et-etat-l
 titre: Renaissance, Réforme et construction de l'État moderne
 sujet: histoire/renaissance-reforme-et-etat-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

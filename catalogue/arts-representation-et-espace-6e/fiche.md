@@ -2,7 +2,7 @@
 id: arts-representation-et-espace-6e
 titre: Arts plastiques 6e : représenter l'espace, la matière et la couleur
 sujet: arts-plastiques/arts-representation-et-espace-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

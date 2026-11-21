@@ -61,9 +61,9 @@
         "titre": "Exercice 2",
         "question": "Le premier plan est…",
         "choix": [
-          "la partie la plus lointaine",
-          "le fond",
-          "le ciel seulement",
+          "la partie la plus éloignée de l'observateur",
+          "le fond du paysage au loin",
+          "la ligne d'horizon seulement",
           "la partie la plus proche de l'observateur"
         ],
         "bonne": 3,
@@ -109,9 +109,9 @@
         "question": "Comment colores-tu l'arrière-plan ?",
         "choix": [
           "En teintes claires et bleutées",
-          "En rouge vif",
-          "En noir intense",
-          "En très foncé"
+          "En rouge vif et saturé en chaud",
+          "En noir intense et très foncé",
+          "En ocre sombre et très contrasté"
         ],
         "bonne": 0,
         "explication": "Perspective atmosphérique."

@@ -2,7 +2,7 @@
 id: se-reperer-dans-l-espace-c2
 titre: Se repérer dans l'espace, lire un plan
 sujet: geographie/se-reperer-dans-l-espace-c2
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 classes: CP, CE1, CE2

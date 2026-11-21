@@ -2,12 +2,12 @@
   "id": "relation.francais.syllabes-et-mots-c2-requires-lettres-et-sons-c2",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
   },
   "source": "notion.francais.syllabes-et-mots-c2",
   "target": "notion.francais.lettres-et-sons-c2",
-  "rationale": "Prérequis déclaré dans la fiche : « Les lettres et les sons » précède « Les syllabes et la lecture de mots » dans la progression du programme (lien à relire)."
+  "rationale": "« Les lettres et les sons » : Découper en syllabes s’appuie sur la connaissance des lettres et des sons."
 }

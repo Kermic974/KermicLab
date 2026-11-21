@@ -2,10 +2,10 @@
   "id": "skill.francais.types-de-textes-cm",
   "type": "skill",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/types-de-textes-cm/contenu.json"
   },
-  "label": "Mobiliser les acquis de « Les types de textes »"
+  "label": "Identifier le type d’un texte à partir d’indices"
 }

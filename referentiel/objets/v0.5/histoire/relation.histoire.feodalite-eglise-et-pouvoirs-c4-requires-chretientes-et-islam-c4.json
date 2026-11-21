@@ -2,12 +2,12 @@
   "id": "relation.histoire.feodalite-eglise-et-pouvoirs-c4-requires-chretientes-et-islam-c4",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/feodalite-eglise-et-pouvoirs-c4/contenu.json"
   },
   "source": "notion.histoire.feodalite-eglise-et-pouvoirs-c4",
   "target": "notion.histoire.chretientes-et-islam-c4",
-  "rationale": "Prérequis déclaré dans la fiche : « Chrétientés et islam (VIe-XIIIe siècles) » précède « Seigneurs, paysans, Église et pouvoir royal » dans la progression du programme (lien à relire)."
+  "rationale": "« Chrétientés et islam (VIe-XIIIe siècles) » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : la féodalité prolonge Louis IX et les mondes chrétien et musulman."
 }

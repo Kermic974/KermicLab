@@ -2,7 +2,7 @@
 id: hlp-humanites-litterature-et-philosophie-l
 titre: HLP : humanités, littérature et philosophie
 sujet: philosophie/hlp-humanites-litterature-et-philosophie-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: premiere
 duree: 30

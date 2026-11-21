@@ -2,12 +2,12 @@
   "id": "relation.emc.laicite-et-liberte-cm-requires-regles-et-justice-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
   },
   "source": "notion.emc.laicite-et-liberte-cm",
   "target": "notion.emc.regles-et-justice-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Règles, lois et justice » précède « La laïcité et la liberté d'expression » dans la progression du programme (lien à relire)."
+  "rationale": "« Règles, lois et justice » : La laïcité s’appuie sur les règles de justice et sur les symboles de la République."
 }

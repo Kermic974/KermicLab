@@ -2,7 +2,7 @@
 id: territoires-urbains-et-ruraux-l
 titre: Territoires urbains et ruraux : villes, périphéries et réseaux
 sujet: geographie/territoires-urbains-et-ruraux-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

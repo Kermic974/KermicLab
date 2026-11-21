@@ -2,12 +2,12 @@
   "id": "relation.physique-chimie.acides-bases-et-ph-l-requires-solutions-et-concentration-l",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/acides-bases-et-ph-l/contenu.json"
   },
   "source": "notion.physique-chimie.acides-bases-et-ph-l",
   "target": "notion.physique-chimie.solutions-et-concentration-l",
-  "rationale": "Prérequis déclaré dans la fiche : « Solutions, concentration et dilution » précède « Acides, bases et pH » dans la progression du programme (lien à relire)."
+  "rationale": "« Solutions, concentration et dilution » : Les acides et bases du lycée reprennent le pH du collège et la concentration."
 }

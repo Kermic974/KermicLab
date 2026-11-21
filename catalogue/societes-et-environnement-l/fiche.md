@@ -2,7 +2,7 @@
 id: societes-et-environnement-l
 titre: Sociétés et environnement : risques, ressources et développement durable
 sujet: geographie/societes-et-environnement-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

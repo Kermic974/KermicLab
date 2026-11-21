@@ -2,12 +2,12 @@
   "id": "relation.francais.conjugaison-cm-requires-nature-des-mots-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/conjugaison-cm/contenu.json"
   },
   "source": "notion.francais.conjugaison-cm",
   "target": "notion.francais.nature-des-mots-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « La nature des mots » précède « La conjugaison : temps simples et composés » dans la progression du programme (lien à relire)."
+  "rationale": "« La nature des mots » : Les temps simples et composés prolongent la conjugaison du cycle 2 et exigent de reconnaître le verbe."
 }

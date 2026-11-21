@@ -2,7 +2,7 @@
 id: philosophie-liberte-et-justice-l
 titre: Philosophie : liberté, justice et État
 sujet: philosophie/philosophie-liberte-et-justice-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: terminale
 duree: 35

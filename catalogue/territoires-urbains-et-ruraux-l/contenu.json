@@ -47,10 +47,10 @@
         "titre": "Exercice 1",
         "question": "L'étalement urbain désigne…",
         "choix": [
-          "l'arrivée du TGV",
+          "l'arrivée du TGV dans la gare centrale",
           "l'extension de la ville en périphérie",
-          "la hausse des loyers",
-          "le recul de la mer"
+          "la hausse générale des loyers",
+          "le recul du trait de côte"
         ],
         "bonne": 1,
         "explication": "Périurbanisation."
@@ -60,10 +60,10 @@
         "titre": "Exercice 2",
         "question": "La métropolisation correspond à…",
         "choix": [
-          "l'abandon des transports",
-          "la fin du commerce",
+          "l'abandon progressif des transports",
+          "la fin du commerce international",
           "la concentration des pouvoirs dans les grandes villes",
-          "la fermeture des villes"
+          "la fermeture générale des villes"
         ],
         "bonne": 2,
         "explication": "Concentration."
@@ -74,9 +74,9 @@
         "question": "Une zone blanche est…",
         "choix": [
           "un territoire sans couverture réseau",
-          "une zone enneigée",
-          "un parc national",
-          "un quartier historique"
+          "une zone enneigée toute l'année",
+          "un parc national protégé",
+          "un quartier historique classé"
         ],
         "bonne": 0,
         "explication": "Fracture numérique."
@@ -94,9 +94,9 @@
         "titre": "Exercice 1",
         "question": "Quel équipement est décisif ?",
         "choix": [
-          "un cinéma",
-          "une usine",
-          "un aéroport",
+          "un cinéma de quartier",
+          "une grande usine",
+          "un aéroport régional",
           "la fibre optique"
         ],
         "bonne": 3,
@@ -107,10 +107,10 @@
         "titre": "Exercice 2",
         "question": "Le périurbain dépend souvent…",
         "choix": [
-          "de la montagne",
+          "de la montagne et de ses sommets",
           "de la voiture et des trajets vers la ville",
-          "de l'absence de routes",
-          "de la mer"
+          "de l'absence totale de routes",
+          "de la mer et de ses ports"
         ],
         "bonne": 1,
         "explication": "Mobilités."

@@ -2,7 +2,7 @@
 id: photosynthese-et-productivite-l
 titre: Photosynthèse, production végétale et cycle du carbone
 sujet: svt/photosynthese-et-productivite-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: premiere
 duree: 30

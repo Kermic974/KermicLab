@@ -2,7 +2,7 @@
 id: ses-marches-et-prix-l
 titre: Marché, prix et défaillances
 sujet: ses/ses-marches-et-prix-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

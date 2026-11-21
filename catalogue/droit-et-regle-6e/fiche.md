@@ -2,7 +2,7 @@
 id: droit-et-regle-6e
 titre: Le droit et la règle : lois, règlement, justice
 sujet: emc/droit-et-regle-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

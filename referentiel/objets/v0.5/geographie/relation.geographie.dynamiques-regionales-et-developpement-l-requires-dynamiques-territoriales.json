@@ -2,12 +2,12 @@
   "id": "relation.geographie.dynamiques-regionales-et-developpement-l-requires-dynamiques-territoriales",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/dynamiques-regionales-et-developpement-l/contenu.json"
   },
   "source": "notion.geographie.dynamiques-regionales-et-developpement-l",
   "target": "notion.geographie.dynamiques-territoriales",
-  "rationale": "Prérequis déclaré dans la fiche : « Les dynamiques territoriales » précède « Régions du monde : inégalités de développement et mutations » dans la progression du programme (lien à relire)."
+  "rationale": "« Les dynamiques territoriales » : Les inégalités de développement s’appuient sur la mondialisation et les dynamiques territoriales."
 }

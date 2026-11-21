@@ -2,12 +2,12 @@
   "id": "relation.francais.poesie-et-lyrisme-l-requires-poesie",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/poesie-et-lyrisme-l/contenu.json"
   },
   "source": "notion.francais.poesie-et-lyrisme-l",
   "target": "notion.francais.poesie",
-  "rationale": "Prérequis déclaré dans la fiche : « La poésie » précède « La poésie du Moyen Âge au XXIe siècle » dans la progression du programme (lien à relire)."
+  "rationale": "« La poésie » : L’étude du poème reprend les formes poétiques du collège et les figures de style."
 }

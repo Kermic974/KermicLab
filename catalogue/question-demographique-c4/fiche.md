@@ -2,7 +2,7 @@
 id: question-demographique-c4
 titre: La question démographique et l'inégal accès aux ressources
 sujet: geographie/question-demographique-c4
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 5e

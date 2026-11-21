@@ -2,12 +2,12 @@
   "id": "relation.histoire.guerres-mondiales-cm-requires-republique-ecole-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/guerres-mondiales-cm/contenu.json"
   },
   "source": "notion.histoire.guerres-mondiales-cm",
   "target": "notion.histoire.republique-ecole-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « La République, l'école et les libertés » précède « Les deux guerres mondiales » dans la progression du programme (lien à relire)."
+  "rationale": "« La République, l'école et les libertés » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : les guerres mondiales suivent la République et l’école."
 }

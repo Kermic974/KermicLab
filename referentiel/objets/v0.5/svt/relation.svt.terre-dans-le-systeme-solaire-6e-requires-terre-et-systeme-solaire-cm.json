@@ -2,12 +2,12 @@
   "id": "relation.svt.terre-dans-le-systeme-solaire-6e-requires-terre-et-systeme-solaire-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/terre-dans-le-systeme-solaire-6e/contenu.json"
   },
   "source": "notion.svt.terre-dans-le-systeme-solaire-6e",
   "target": "notion.svt.terre-et-systeme-solaire-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « La Terre, la Lune et le système solaire » précède « La Terre dans le système solaire en 6e » dans la progression du programme (lien à relire)."
+  "rationale": "« La Terre, la Lune et le système solaire » : Les mouvements de la Terre de 6e approfondissent ceux du CM."
 }

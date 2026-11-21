@@ -2,7 +2,7 @@
 id: solutions-et-concentration-l
 titre: Solutions, concentration et dilution
 sujet: physique-chimie/solutions-et-concentration-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

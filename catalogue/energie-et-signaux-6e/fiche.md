@@ -2,7 +2,7 @@
 id: energie-et-signaux-6e
 titre: Énergie, signaux lumineux et sonores en 6e
 sujet: physique-chimie/energie-et-signaux-6e
-version: 1.0.1
+version: 1.0.2
 date: 2026-11-21
 niveau: college
 classes: 6e

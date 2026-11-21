@@ -2,12 +2,12 @@
   "id": "relation.geographie.france-europe-monde-cm-requires-paysages-et-ressources-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/france-europe-monde-cm/contenu.json"
   },
   "source": "notion.geographie.france-europe-monde-cm",
   "target": "notion.geographie.paysages-et-ressources-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Paysages de France et ressources » précède « La France, l'Europe et le monde » dans la progression du programme (lien à relire)."
+  "rationale": "« Paysages de France et ressources » : La France dans le monde suppose de se repérer sur la planète et sur des cartes."
 }

@@ -96,10 +96,10 @@
         "titre": "Exercice 1",
         "question": "Quel capteur utilises-tu ?",
         "choix": [
-          "Une pile",
+          "Une pile électrique de 9 volts",
           "Un capteur de présence",
-          "Un haut-parleur",
-          "Un moteur"
+          "Un haut-parleur très puissant",
+          "Un moteur à courant continu"
         ],
         "bonne": 1,
         "explication": "Détecter la voiture."
@@ -110,9 +110,9 @@
         "question": "Quelle instruction ajoutes-tu pour la sécurité ?",
         "choix": [
           "Ne pas fermer tant qu'un obstacle est détecté",
-          "Fermer toujours à 10 h",
-          "Ouvrir sans arrêt",
-          "Ne jamais s'arrêter"
+          "Fermer toujours à la même heure, à 10 h",
+          "Ouvrir sans arrêt, de jour comme de nuit",
+          "Ne jamais s'arrêter, quoi qu'il arrive"
         ],
         "bonne": 0,
         "explication": "Sécurité."

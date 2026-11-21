@@ -60,10 +60,10 @@
         "titre": "Exercice 2",
         "question": "Un son se propage…",
         "choix": [
-          "seulement dans l'eau",
-          "seulement dans l'air",
+          "seulement dans l'eau et nulle part ailleurs",
+          "seulement dans l'air et jamais dans l'eau",
           "dans l'air, l'eau et les solides",
-          "dans le vide"
+          "dans le vide aussi bien que dans l'air"
         ],
         "bonne": 2,
         "explication": "Il lui faut un milieu."
@@ -74,9 +74,9 @@
         "question": "La Lune est…",
         "choix": [
           "un corps qui diffuse la lumière du Soleil",
-          "une source de lumière",
-          "une étoile",
-          "un trou noir"
+          "une source qui produit sa propre lumière",
+          "une étoile semblable au Soleil",
+          "un trou noir qui absorbe la lumière"
         ],
         "bonne": 0,
         "explication": "Elle n'émet pas sa lumière."
@@ -94,9 +94,9 @@
         "titre": "Exercice 1",
         "question": "Qu'est-ce qu'un écho ?",
         "choix": [
-          "Un son plus fort",
-          "Un son plus grave",
-          "Un son sans air",
+          "Un son beaucoup plus fort que le premier",
+          "Un son plus grave que le son initial",
+          "Un son qui se propage sans air",
           "Un son qui rebondit sur un obstacle"
         ],
         "bonne": 3,

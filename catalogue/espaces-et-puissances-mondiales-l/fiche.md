@@ -2,7 +2,7 @@
 id: espaces-et-puissances-mondiales-l
 titre: Espaces, puissances et conflits dans le monde
 sujet: geographie/espaces-et-puissances-mondiales-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: terminale
 duree: 35

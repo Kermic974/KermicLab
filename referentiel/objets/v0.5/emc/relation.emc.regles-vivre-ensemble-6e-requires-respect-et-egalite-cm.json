@@ -2,12 +2,12 @@
   "id": "relation.emc.regles-vivre-ensemble-6e-requires-respect-et-egalite-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/regles-vivre-ensemble-6e/contenu.json"
   },
   "source": "notion.emc.regles-vivre-ensemble-6e",
   "target": "notion.emc.respect-et-egalite-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Respect, égalité et lutte contre le harcèlement » précède « Vivre ensemble : règles, égalité et lutte contre les discriminations » dans la progression du programme (lien à relire)."
+  "rationale": "« Respect, égalité et lutte contre le harcèlement » : Vivre ensemble en 6e prolonge le respect et l’égalité du CM."
 }

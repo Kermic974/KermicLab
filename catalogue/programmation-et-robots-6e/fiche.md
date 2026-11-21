@@ -2,7 +2,7 @@
 id: programmation-et-robots-6e
 titre: Programmer un objet : capteurs, algorithmes et robots
 sujet: technologie/programmation-et-robots-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

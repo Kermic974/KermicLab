@@ -2,7 +2,7 @@
 id: habiter-un-espace-de-faible-densite-6e
 titre: Habiter un espace de faible densité
 sujet: geographie/habiter-un-espace-de-faible-densite-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

@@ -2,7 +2,7 @@
 id: ses-economie-et-croissance-l
 titre: Croissance, cycles et soutenabilité
 sujet: ses/ses-economie-et-croissance-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: premiere
 duree: 30

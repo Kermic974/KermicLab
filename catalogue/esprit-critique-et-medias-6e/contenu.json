@@ -74,10 +74,10 @@
         "titre": "Exercice 3",
         "question": "Une photo virale peut être…",
         "choix": [
-          "interdite",
+          "interdite par la loi dans tous les cas",
           "truquée ou sortie de son contexte",
-          "toujours exacte",
-          "toujours fausse"
+          "toujours exacte puisqu'elle est une photo",
+          "toujours fausse puisqu'elle est virale"
         ],
         "bonne": 1,
         "explication": "À vérifier."
@@ -95,9 +95,9 @@
         "titre": "Exercice 1",
         "question": "Que fais-tu d'abord ?",
         "choix": [
-          "Je partage à tous mes amis",
-          "Je réponds à l'inconnu",
-          "J'ignore sans rien vérifier",
+          "Je partage tout de suite à tous mes amis",
+          "Je réponds immédiatement à l'inconnu",
+          "J'ignore le message sans rien vérifier",
           "Je vérifie auprès de l'école ou d'un adulte"
         ],
         "bonne": 3,

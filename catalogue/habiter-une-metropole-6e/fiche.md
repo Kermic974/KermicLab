@@ -2,7 +2,7 @@
 id: habiter-une-metropole-6e
 titre: Habiter une métropole
 sujet: geographie/habiter-une-metropole-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

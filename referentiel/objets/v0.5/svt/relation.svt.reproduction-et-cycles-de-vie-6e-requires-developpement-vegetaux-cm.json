@@ -2,12 +2,12 @@
   "id": "relation.svt.reproduction-et-cycles-de-vie-6e-requires-developpement-vegetaux-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/reproduction-et-cycles-de-vie-6e/contenu.json"
   },
   "source": "notion.svt.reproduction-et-cycles-de-vie-6e",
   "target": "notion.svt.developpement-vegetaux-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Le développement des végétaux » précède « Reproduction et cycles de vie en 6e » dans la progression du programme (lien à relire)."
+  "rationale": "« Le développement des végétaux » : La reproduction de 6e reprend le cycle de vie et le développement des végétaux."
 }

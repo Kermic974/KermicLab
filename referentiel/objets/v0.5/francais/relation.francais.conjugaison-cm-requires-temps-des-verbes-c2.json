@@ -2,12 +2,12 @@
   "id": "relation.francais.conjugaison-cm-requires-temps-des-verbes-c2",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/conjugaison-cm/contenu.json"
   },
   "source": "notion.francais.conjugaison-cm",
   "target": "notion.francais.temps-des-verbes-c2",
-  "rationale": "Prérequis déclaré dans la fiche : « Passé, présent, futur : conjuguer les verbes » précède « La conjugaison : temps simples et composés » dans la progression du programme (lien à relire)."
+  "rationale": "« Passé, présent, futur : conjuguer les verbes » : Les temps simples et composés prolongent la conjugaison du cycle 2 et exigent de reconnaître le verbe."
 }
