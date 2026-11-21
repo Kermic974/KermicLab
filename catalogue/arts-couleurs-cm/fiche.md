@@ -5,13 +5,7 @@ sujet: arts-plastiques/arts-couleurs-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - arts-couleurs-et-formes-c2
-competences:
-  - arts-couleurs-cm-comprendre
-  - arts-couleurs-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quelles sont les couleurs primaires ?
   - Comment obtenir du vert en mélangeant ?
   - C'est quoi les couleurs chaudes et froides ?
+prerequis: arts-couleurs-et-formes-c2
+niveaux: cycle-3
+competences: obtenir-une-couleur-par-melange, distinguer-couleurs-chaudes-et-couleurs-froides, eclaircir-ou-foncer-une-couleur, produire-un-contraste-de-couleurs-ou-de-matieres
 ---
 
 # Arts plastiques : couleurs et matières

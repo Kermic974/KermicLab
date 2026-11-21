@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-genres-et-formes-c4-teaches-situer-un-genre-musical-dans-son-epoque",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-genres-et-formes-c4/contenu.json"
+  },
+  "source": "notion.musique.musique-genres-et-formes-c4",
+  "target": "microskill.musique.situer-un-genre-musical-dans-son-epoque"
+}

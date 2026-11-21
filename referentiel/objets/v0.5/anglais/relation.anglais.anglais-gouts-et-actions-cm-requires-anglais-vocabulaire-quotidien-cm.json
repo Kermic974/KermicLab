@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-gouts-et-actions-cm-requires-anglais-vocabulaire-quotidien-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-gouts-et-actions-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-gouts-et-actions-cm",
+  "target": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "rationale": "Les mots du quotidien sont réemployés pour exprimer goûts et actions."
+}

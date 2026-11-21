@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.nommer-les-jours-de-la-semaine-et-les-mois-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "source": "microskill.anglais.nommer-les-jours-de-la-semaine-et-les-mois",
+  "target": "skill.anglais.anglais-vocabulaire-quotidien-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.utiliser-les-adjectifs-possessifs-my-his-her-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-6e/contenu.json"
+  },
+  "source": "microskill.anglais.utiliser-les-adjectifs-possessifs-my-his-her",
+  "target": "skill.anglais.anglais-se-presenter-6e"
+}

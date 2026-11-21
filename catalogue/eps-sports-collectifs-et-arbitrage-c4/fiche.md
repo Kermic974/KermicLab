@@ -5,13 +5,7 @@ sujet: eps/eps-sports-collectifs-et-arbitrage-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - eps-endurance-et-sports-collectifs-6e
-competences:
-  - eps-sports-collectifs-et-arbitrage-c4-comprendre
-  - eps-sports-collectifs-et-arbitrage-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment construire une tactique en sport collectif ?
   - Quel est le rôle de l'arbitre ?
   - Comment coopérer dans une équipe ?
+prerequis: eps-endurance-et-sports-collectifs-6e
+niveaux: cycle-4
+competences: creer-un-surnombre-en-attaque, adapter-son-role-aux-situations-de-jeu, appliquer-les-regles-en-tant-qu-arbitre, analyser-une-rencontre-avec-des-criteres-tactiques
 ---
 
 # EPS : sports collectifs, tactique et arbitrage

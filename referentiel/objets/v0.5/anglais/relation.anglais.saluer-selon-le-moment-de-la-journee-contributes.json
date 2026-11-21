@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.saluer-selon-le-moment-de-la-journee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "microskill.anglais.saluer-selon-le-moment-de-la-journee",
+  "target": "skill.anglais.anglais-se-presenter-cm"
+}

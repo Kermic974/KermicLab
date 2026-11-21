@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.classer-des-instruments-par-famille-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-notes-et-rythme-cm/contenu.json"
+  },
+  "source": "microskill.musique.classer-des-instruments-par-famille",
+  "target": "skill.musique.musique-notes-et-rythme-cm"
+}

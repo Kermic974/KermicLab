@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-5e-c4-requires-anglais-routine-et-habiletes-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-5e-c4/contenu.json"
+  },
+  "source": "notion.anglais.anglais-5e-c4",
+  "target": "notion.anglais.anglais-routine-et-habiletes-6e",
+  "rationale": "Le présent simple de la 6e sert de base pour apprendre le prétérit."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-se-presenter-6e-requires-anglais-vocabulaire-quotidien-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-6e/contenu.json"
+  },
+  "source": "notion.anglais.anglais-se-presenter-6e",
+  "target": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "rationale": "Le vocabulaire de la famille et des objets est repris pour décrire sa famille et sa classe."
+}

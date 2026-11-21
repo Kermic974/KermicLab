@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-4e-c4-requires-anglais-5e-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-4e-c4/contenu.json"
+  },
+  "source": "notion.anglais.anglais-4e-c4",
+  "target": "notion.anglais.anglais-5e-c4",
+  "rationale": "Le prétérit étudié en 5e est nécessaire pour distinguer prétérit et present perfect."
+}

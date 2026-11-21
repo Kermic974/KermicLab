@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.calculer-la-duree-de-notes-dans-une-mesure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-lire-et-chanter-6e/contenu.json"
+  },
+  "source": "microskill.musique.calculer-la-duree-de-notes-dans-une-mesure",
+  "target": "skill.musique.musique-lire-et-chanter-6e"
+}

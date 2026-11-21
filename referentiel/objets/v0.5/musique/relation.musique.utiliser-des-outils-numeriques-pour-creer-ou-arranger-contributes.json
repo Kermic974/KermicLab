@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.utiliser-des-outils-numeriques-pour-creer-ou-arranger-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-ecoute-creation-et-histoire-l/contenu.json"
+  },
+  "source": "microskill.musique.utiliser-des-outils-numeriques-pour-creer-ou-arranger",
+  "target": "skill.musique.musique-ecoute-creation-et-histoire-l"
+}

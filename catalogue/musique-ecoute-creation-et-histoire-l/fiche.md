@@ -5,12 +5,6 @@ sujet: musique/musique-ecoute-creation-et-histoire-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere, terminale
-prerequis:
-  - musique-genres-et-formes-c4
-competences:
-  - musique-ecoute-creation-et-histoire-l-comprendre
-  - musique-ecoute-creation-et-histoire-l-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Comment analyser une œuvre musicale ?
   - Quelles grandes périodes en musique ?
   - Qu'est-ce que le jazz ?
+prerequis: musique-genres-et-formes-c4
+niveaux: seconde, premiere, terminale
+competences: analyser-une-uvre-par-ses-parametres-rythme-melodie-harmonie-timbre, identifier-une-forme-musicale, situer-un-style-dans-sa-periode, distinguer-improvisation-et-musique-ecrite, utiliser-des-outils-numeriques-pour-creer-ou-arranger
 ---
 
 # Musique : écoute, création et histoire des styles

@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.exprimer-ses-preferences-a-l-ecole-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-6e/contenu.json"
+  },
+  "source": "microskill.anglais.exprimer-ses-preferences-a-l-ecole",
+  "target": "skill.anglais.anglais-se-presenter-6e"
+}

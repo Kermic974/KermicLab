@@ -5,13 +5,7 @@ sujet: anglais/anglais-5e-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e
-prerequis:
-  - anglais-routine-et-habiletes-6e
-competences:
-  - anglais-5e-c4-comprendre
-  - anglais-5e-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment comparer en anglais ?
   - Comment former le prétérit ?
   - Quelle est la différence entre was et were ?
+prerequis: anglais-routine-et-habiletes-6e
+niveaux: cycle-4
+competences: former-le-preterit-des-verbes-reguliers-et-irreguliers, poser-une-question-et-nier-au-preterit, comparer-avec-le-comparatif-de-superiorite, raconter-un-evenement-passe-simple
 ---
 
 # Anglais 5e : passé, comparaison et vie quotidienne

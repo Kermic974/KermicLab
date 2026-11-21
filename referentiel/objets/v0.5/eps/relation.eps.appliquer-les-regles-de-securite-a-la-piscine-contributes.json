@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.appliquer-les-regles-de-securite-a-la-piscine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-jeux-collectifs-et-athletisme-cm/contenu.json"
+  },
+  "source": "microskill.eps.appliquer-les-regles-de-securite-a-la-piscine",
+  "target": "skill.eps.eps-jeux-collectifs-et-athletisme-cm"
+}

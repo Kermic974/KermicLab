@@ -5,13 +5,7 @@ sujet: anglais/anglais-lieux-et-pays-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - anglais-vocabulaire-quotidien-cm
-competences:
-  - anglais-lieux-et-pays-cm-comprendre
-  - anglais-lieux-et-pays-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment demander son chemin en anglais ?
   - Comment dire les pays en anglais ?
   - Comment dire où se trouve un lieu en anglais ?
+prerequis: anglais-vocabulaire-quotidien-cm
+niveaux: cycle-3
+competences: nommer-des-lieux-de-la-ville, comprendre-et-donner-une-direction-turn-left, nommer-des-pays-des-capitales-et-des-langues, dire-sa-nationalite-i-m-french
 ---
 
 # Anglais : lieux, pays et directions

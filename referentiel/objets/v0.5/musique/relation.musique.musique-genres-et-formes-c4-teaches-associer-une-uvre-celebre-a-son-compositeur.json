@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-genres-et-formes-c4-teaches-associer-une-uvre-celebre-a-son-compositeur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-genres-et-formes-c4/contenu.json"
+  },
+  "source": "notion.musique.musique-genres-et-formes-c4",
+  "target": "microskill.musique.associer-une-uvre-celebre-a-son-compositeur"
+}

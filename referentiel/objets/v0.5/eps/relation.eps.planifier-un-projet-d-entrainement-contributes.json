@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.planifier-un-projet-d-entrainement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sante-c4/contenu.json"
+  },
+  "source": "microskill.eps.planifier-un-projet-d-entrainement",
+  "target": "skill.eps.eps-endurance-et-sante-c4"
+}

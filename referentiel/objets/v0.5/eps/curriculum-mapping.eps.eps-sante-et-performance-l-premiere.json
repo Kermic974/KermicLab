@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.eps.eps-sante-et-performance-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-performance-l/contenu.json"
+  },
+  "object": "notion.eps.eps-sante-et-performance-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced"
+}

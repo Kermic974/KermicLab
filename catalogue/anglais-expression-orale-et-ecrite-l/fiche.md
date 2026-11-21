@@ -5,12 +5,6 @@ sujet: anglais/anglais-expression-orale-et-ecrite-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - anglais-grammaire-et-temps-l
-competences:
-  - anglais-expression-orale-et-ecrite-l-comprendre
-  - anglais-expression-orale-et-ecrite-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Comment écrire un essai en anglais ?
   - Quels connecteurs utiliser en anglais ?
   - Comment préparer une prise de parole ?
+prerequis: anglais-grammaire-et-temps-l
+niveaux: premiere, terminale
+competences: structurer-un-essai-introduction-developpement-conclusion, utiliser-des-connecteurs-d-addition-de-cause-de-consequence-et-d-opposition, preparer-et-presenter-une-prise-de-parole, nuancer-un-avis-avec-concession, reperer-le-contexte-et-les-mots-cles-d-un-document-oral
 ---
 
 # Anglais : s'exprimer, argumenter et écrire

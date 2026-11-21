@@ -5,13 +5,7 @@ sujet: musique/musique-voix-et-ecoute-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - musique-notes-et-rythme-cm
-competences:
-  - musique-voix-et-ecoute-cm-comprendre
-  - musique-voix-et-ecoute-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment bien chanter en chœur ?
   - Qu'est-ce qu'un canon ?
   - Qui étaient Mozart et Beethoven ?
+prerequis: musique-notes-et-rythme-cm
+niveaux: cycle-3
+competences: chanter-en-canon, reconnaitre-une-uvre-et-son-compositeur, situer-une-uvre-dans-son-epoque, ecouter-et-decrire-un-extrait-musical
 ---
 
 # Musique : voix, chant et culture musicale

@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.distinguer-sons-graves-et-aigus-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-notes-et-rythme-cm/contenu.json"
+  },
+  "source": "microskill.musique.distinguer-sons-graves-et-aigus",
+  "target": "skill.musique.musique-notes-et-rythme-cm"
+}

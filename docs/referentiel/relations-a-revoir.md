@@ -70,3 +70,10 @@ Aucun `requires` n'est créé : les notions sont en rapport conceptuel sans ordr
 | Nouveaux `requires` entre notions de technologie | Aucun ajouté : le graphe déjà déclaré dans les fiches (objets, matériaux, programmation, réseaux, NSI, sciences de l'ingénieur) couvre les dépendances justifiées par les sections. |
 | `objets-electriques-et-materiaux-c2` projeté vers la fiche | Les niveaux de cycle 2 ne sont pas projetables : l'énumération des codes d'étape du schéma `stage` s'arrête à `cycle-3`. Les objets existent, sans CurriculumMapping ; l'ajout de `cycle-2` au contrat est une décision de schéma à prendre (ADR). |
 
+## Anglais, arts plastiques, musique, EPS
+
+| Lien envisagé | Raison de l'écart |
+|---|---|
+| Liens entre matières (anglais ↔ français, musique ↔ arts, EPS ↔ SVT) | Aucune dépendance cognitive établie dans les fiches ; relations thématiques seulement. À exprimer en `relatedTo` si la relecture le juge utile. |
+| Prérequis supplémentaires à l'intérieur d'une matière | Aucun : les chaînes déclarées dans les fiches sont déjà continues du cycle 2 (ou 3) au lycée. |
+

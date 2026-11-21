@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.suivre-une-melodie-a-l-ecoute-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-lire-et-chanter-6e/contenu.json"
+  },
+  "source": "microskill.musique.suivre-une-melodie-a-l-ecoute",
+  "target": "skill.musique.musique-lire-et-chanter-6e"
+}

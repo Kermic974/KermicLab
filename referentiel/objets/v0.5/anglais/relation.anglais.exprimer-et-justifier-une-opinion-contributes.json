@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.exprimer-et-justifier-une-opinion-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-3e-c4/contenu.json"
+  },
+  "source": "microskill.anglais.exprimer-et-justifier-une-opinion",
+  "target": "skill.anglais.anglais-3e-c4"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-creation-et-engagement-c4-teaches-arranger-un-morceau",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-creation-et-engagement-c4/contenu.json"
+  },
+  "source": "notion.musique.musique-creation-et-engagement-c4",
+  "target": "microskill.musique.arranger-un-morceau"
+}

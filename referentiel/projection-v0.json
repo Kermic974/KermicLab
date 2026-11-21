@@ -183,7 +183,42 @@
     "snt-donnees-et-web-l": "notion.technologie.snt-donnees-et-web-l",
     "nsi-algorithmes-et-donnees-l": "notion.technologie.nsi-algorithmes-et-donnees-l",
     "nsi-bases-de-donnees-et-systemes-l": "notion.technologie.nsi-bases-de-donnees-et-systemes-l",
-    "si-conception-et-modelisation-l": "notion.technologie.si-conception-et-modelisation-l"
+    "si-conception-et-modelisation-l": "notion.technologie.si-conception-et-modelisation-l",
+    "anglais-bonjour-c2": "notion.anglais.anglais-bonjour-c2",
+    "anglais-famille-et-animaux-c2": "notion.anglais.anglais-famille-et-animaux-c2",
+    "anglais-se-presenter-cm": "notion.anglais.anglais-se-presenter-cm",
+    "anglais-vocabulaire-quotidien-cm": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+    "anglais-gouts-et-actions-cm": "notion.anglais.anglais-gouts-et-actions-cm",
+    "anglais-lieux-et-pays-cm": "notion.anglais.anglais-lieux-et-pays-cm",
+    "anglais-se-presenter-6e": "notion.anglais.anglais-se-presenter-6e",
+    "anglais-routine-et-habiletes-6e": "notion.anglais.anglais-routine-et-habiletes-6e",
+    "anglais-5e-c4": "notion.anglais.anglais-5e-c4",
+    "anglais-4e-c4": "notion.anglais.anglais-4e-c4",
+    "anglais-3e-c4": "notion.anglais.anglais-3e-c4",
+    "anglais-grammaire-et-temps-l": "notion.anglais.anglais-grammaire-et-temps-l",
+    "anglais-culture-et-civilisation-l": "notion.anglais.anglais-culture-et-civilisation-l",
+    "anglais-expression-orale-et-ecrite-l": "notion.anglais.anglais-expression-orale-et-ecrite-l",
+    "arts-couleurs-et-formes-c2": "notion.arts-plastiques.arts-couleurs-et-formes-c2",
+    "arts-couleurs-cm": "notion.arts-plastiques.arts-couleurs-cm",
+    "arts-formes-et-composition-cm": "notion.arts-plastiques.arts-formes-et-composition-cm",
+    "arts-representation-et-espace-6e": "notion.arts-plastiques.arts-representation-et-espace-6e",
+    "arts-image-et-representation-c4": "notion.arts-plastiques.arts-image-et-representation-c4",
+    "arts-oeuvre-et-engagement-c4": "notion.arts-plastiques.arts-oeuvre-et-engagement-c4",
+    "arts-plastiques-creation-et-engagement-l": "notion.arts-plastiques.arts-plastiques-creation-et-engagement-l",
+    "musique-sons-et-chansons-c2": "notion.musique.musique-sons-et-chansons-c2",
+    "musique-notes-et-rythme-cm": "notion.musique.musique-notes-et-rythme-cm",
+    "musique-voix-et-ecoute-cm": "notion.musique.musique-voix-et-ecoute-cm",
+    "musique-lire-et-chanter-6e": "notion.musique.musique-lire-et-chanter-6e",
+    "musique-genres-et-formes-c4": "notion.musique.musique-genres-et-formes-c4",
+    "musique-creation-et-engagement-c4": "notion.musique.musique-creation-et-engagement-c4",
+    "musique-ecoute-creation-et-histoire-l": "notion.musique.musique-ecoute-creation-et-histoire-l",
+    "eps-bouger-et-jouer-c2": "notion.eps.eps-bouger-et-jouer-c2",
+    "eps-sante-et-echauffement-cm": "notion.eps.eps-sante-et-echauffement-cm",
+    "eps-jeux-collectifs-et-athletisme-cm": "notion.eps.eps-jeux-collectifs-et-athletisme-cm",
+    "eps-endurance-et-sports-collectifs-6e": "notion.eps.eps-endurance-et-sports-collectifs-6e",
+    "eps-endurance-et-sante-c4": "notion.eps.eps-endurance-et-sante-c4",
+    "eps-sports-collectifs-et-arbitrage-c4": "notion.eps.eps-sports-collectifs-et-arbitrage-c4",
+    "eps-sante-et-performance-l": "notion.eps.eps-sante-et-performance-l"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -995,7 +1030,151 @@
     "microskill.technologie.decrire-un-systeme-par-ses-chaines-d-information-et-d-energie": "decrire-un-systeme-par-ses-chaines-d-information-et-d-energie",
     "microskill.technologie.modeliser-un-comportement-pour-le-simuler": "modeliser-un-comportement-pour-le-simuler",
     "microskill.technologie.comparer-performances-attendues-simulees-et-mesurees": "comparer-performances-attendues-simulees-et-mesurees",
-    "microskill.technologie.evaluer-l-impact-environnemental-d-une-solution": "evaluer-l-impact-environnemental-d-une-solution"
+    "microskill.technologie.evaluer-l-impact-environnemental-d-une-solution": "evaluer-l-impact-environnemental-d-une-solution",
+    "microskill.anglais.saluer-et-prendre-conge-en-anglais": "saluer-et-prendre-conge-en-anglais",
+    "microskill.anglais.compter-de-1-a-10-en-anglais": "compter-de-1-a-10-en-anglais",
+    "microskill.anglais.nommer-les-couleurs-en-anglais": "nommer-les-couleurs-en-anglais",
+    "microskill.anglais.comprendre-des-consignes-orales-tres-simples": "comprendre-des-consignes-orales-tres-simples",
+    "microskill.anglais.nommer-les-membres-de-la-famille-en-anglais": "nommer-les-membres-de-la-famille-en-anglais",
+    "microskill.anglais.nommer-des-animaux-et-des-objets-usuels-en-anglais": "nommer-des-animaux-et-des-objets-usuels-en-anglais",
+    "microskill.anglais.dire-ce-que-l-on-possede-avec-i-have": "dire-ce-que-l-on-possede-avec-i-have",
+    "microskill.anglais.associer-un-mot-anglais-a-son-image": "associer-un-mot-anglais-a-son-image",
+    "microskill.anglais.se-presenter-en-donnant-son-prenom": "se-presenter-en-donnant-son-prenom",
+    "microskill.anglais.dire-son-age-en-anglais": "dire-son-age-en-anglais",
+    "microskill.anglais.demander-et-dire-comment-on-va-how-are-you": "demander-et-dire-comment-on-va-how-are-you",
+    "microskill.anglais.saluer-selon-le-moment-de-la-journee": "saluer-selon-le-moment-de-la-journee",
+    "microskill.anglais.nommer-les-jours-de-la-semaine-et-les-mois": "nommer-les-jours-de-la-semaine-et-les-mois",
+    "microskill.anglais.compter-et-calculer-simplement-en-anglais": "compter-et-calculer-simplement-en-anglais",
+    "microskill.anglais.nommer-les-membres-de-la-famille-et-les-objets-de-la-classe": "nommer-les-membres-de-la-famille-et-les-objets-de-la-classe",
+    "microskill.anglais.decrire-un-objet-par-sa-couleur": "decrire-un-objet-par-sa-couleur",
+    "microskill.anglais.dire-ce-que-l-on-aime-et-ce-que-l-on-n-aime-pas": "dire-ce-que-l-on-aime-et-ce-que-l-on-n-aime-pas",
+    "microskill.anglais.poser-une-question-avec-do-you-et-y-repondre": "poser-une-question-avec-do-you-et-y-repondre",
+    "microskill.anglais.employer-le-present-simple-a-la-3e-personne": "employer-le-present-simple-a-la-3e-personne",
+    "microskill.anglais.nommer-des-aliments-et-des-activites": "nommer-des-aliments-et-des-activites",
+    "microskill.anglais.nommer-des-lieux-de-la-ville": "nommer-des-lieux-de-la-ville",
+    "microskill.anglais.comprendre-et-donner-une-direction-turn-left": "comprendre-et-donner-une-direction-turn-left",
+    "microskill.anglais.nommer-des-pays-des-capitales-et-des-langues": "nommer-des-pays-des-capitales-et-des-langues",
+    "microskill.anglais.dire-sa-nationalite-i-m-french": "dire-sa-nationalite-i-m-french",
+    "microskill.anglais.employer-to-be-et-have-got-dans-une-presentation": "employer-to-be-et-have-got-dans-une-presentation",
+    "microskill.anglais.utiliser-les-adjectifs-possessifs-my-his-her": "utiliser-les-adjectifs-possessifs-my-his-her",
+    "microskill.anglais.parler-de-sa-famille-et-de-l-ecole": "parler-de-sa-famille-et-de-l-ecole",
+    "microskill.anglais.exprimer-ses-preferences-a-l-ecole": "exprimer-ses-preferences-a-l-ecole",
+    "microskill.anglais.decrire-une-routine-avec-le-present-simple": "decrire-une-routine-avec-le-present-simple",
+    "microskill.anglais.utiliser-les-adverbes-de-frequence-never-always": "utiliser-les-adverbes-de-frequence-never-always",
+    "microskill.anglais.exprimer-une-capacite-avec-can-et-can-t": "exprimer-une-capacite-avec-can-et-can-t",
+    "microskill.anglais.exprimer-ses-gouts-avec-like-verbe-en-ing": "exprimer-ses-gouts-avec-like-verbe-en-ing",
+    "microskill.anglais.former-le-preterit-des-verbes-reguliers-et-irreguliers": "former-le-preterit-des-verbes-reguliers-et-irreguliers",
+    "microskill.anglais.poser-une-question-et-nier-au-preterit": "poser-une-question-et-nier-au-preterit",
+    "microskill.anglais.comparer-avec-le-comparatif-de-superiorite": "comparer-avec-le-comparatif-de-superiorite",
+    "microskill.anglais.raconter-un-evenement-passe-simple": "raconter-un-evenement-passe-simple",
+    "microskill.anglais.employer-le-present-perfect-avec-for-et-since": "employer-le-present-perfect-avec-for-et-since",
+    "microskill.anglais.distinguer-present-perfect-et-preterit": "distinguer-present-perfect-et-preterit",
+    "microskill.anglais.exprimer-le-futur-will-be-going-to": "exprimer-le-futur-will-be-going-to",
+    "microskill.anglais.exprimer-obligation-et-conseil-avec-les-modaux": "exprimer-obligation-et-conseil-avec-les-modaux",
+    "microskill.anglais.exprimer-une-hypothese-irreelle-avec-if-preterit": "exprimer-une-hypothese-irreelle-avec-if-preterit",
+    "microskill.anglais.reconnaitre-et-former-le-passif": "reconnaitre-et-former-le-passif",
+    "microskill.anglais.rapporter-des-paroles-au-discours-indirect": "rapporter-des-paroles-au-discours-indirect",
+    "microskill.anglais.exprimer-et-justifier-une-opinion": "exprimer-et-justifier-une-opinion",
+    "microskill.anglais.choisir-entre-present-perfect-et-preterit-selon-la-situation": "choisir-entre-present-perfect-et-preterit-selon-la-situation",
+    "microskill.anglais.employer-les-modaux-de-probabilite-et-d-obligation": "employer-les-modaux-de-probabilite-et-d-obligation",
+    "microskill.anglais.former-le-passif-a-differents-temps": "former-le-passif-a-differents-temps",
+    "microskill.anglais.employer-if-preterit-past-perfect-pour-l-hypothese": "employer-if-preterit-past-perfect-pour-l-hypothese",
+    "microskill.anglais.rapporter-un-discours-en-adaptant-temps-et-pronoms": "rapporter-un-discours-en-adaptant-temps-et-pronoms",
+    "microskill.anglais.identifier-nature-auteur-date-et-source-d-un-document": "identifier-nature-auteur-date-et-source-d-un-document",
+    "microskill.anglais.degager-le-message-et-les-procedes-d-un-document": "degager-le-message-et-les-procedes-d-un-document",
+    "microskill.anglais.mettre-un-document-en-perspective-avec-son-contexte": "mettre-un-document-en-perspective-avec-son-contexte",
+    "microskill.anglais.utiliser-le-vocabulaire-de-l-identite-des-droits-et-de-la-citoyennete": "utiliser-le-vocabulaire-de-l-identite-des-droits-et-de-la-citoyennete",
+    "microskill.anglais.argumenter-avec-des-connecteurs-d-opposition": "argumenter-avec-des-connecteurs-d-opposition",
+    "microskill.anglais.structurer-un-essai-introduction-developpement-conclusion": "structurer-un-essai-introduction-developpement-conclusion",
+    "microskill.anglais.utiliser-des-connecteurs-d-addition-de-cause-de-consequence-et-d-opposition": "utiliser-des-connecteurs-d-addition-de-cause-de-consequence-et-d-opposition",
+    "microskill.anglais.preparer-et-presenter-une-prise-de-parole": "preparer-et-presenter-une-prise-de-parole",
+    "microskill.anglais.nuancer-un-avis-avec-concession": "nuancer-un-avis-avec-concession",
+    "microskill.anglais.reperer-le-contexte-et-les-mots-cles-d-un-document-oral": "reperer-le-contexte-et-les-mots-cles-d-un-document-oral",
+    "microskill.arts-plastiques.melanger-deux-couleurs-primaires-pour-obtenir-une-couleur-secondaire": "melanger-deux-couleurs-primaires-pour-obtenir-une-couleur-secondaire",
+    "microskill.arts-plastiques.distinguer-couleurs-primaires-et-secondaires": "distinguer-couleurs-primaires-et-secondaires",
+    "microskill.arts-plastiques.dessiner-et-assembler-des-formes-par-collage": "dessiner-et-assembler-des-formes-par-collage",
+    "microskill.arts-plastiques.decrire-une-uvre-connue-avec-ses-mots": "decrire-une-uvre-connue-avec-ses-mots",
+    "microskill.arts-plastiques.obtenir-une-couleur-par-melange": "obtenir-une-couleur-par-melange",
+    "microskill.arts-plastiques.distinguer-couleurs-chaudes-et-couleurs-froides": "distinguer-couleurs-chaudes-et-couleurs-froides",
+    "microskill.arts-plastiques.eclaircir-ou-foncer-une-couleur": "eclaircir-ou-foncer-une-couleur",
+    "microskill.arts-plastiques.produire-un-contraste-de-couleurs-ou-de-matieres": "produire-un-contraste-de-couleurs-ou-de-matieres",
+    "microskill.arts-plastiques.utiliser-les-lignes-et-les-formes-dans-une-composition": "utiliser-les-lignes-et-les-formes-dans-une-composition",
+    "microskill.arts-plastiques.representer-la-profondeur-par-la-perspective": "representer-la-profondeur-par-la-perspective",
+    "microskill.arts-plastiques.identifier-une-uvre-celebre-et-son-auteur": "identifier-une-uvre-celebre-et-son-auteur",
+    "microskill.arts-plastiques.comparer-deux-uvres-d-artistes": "comparer-deux-uvres-d-artistes",
+    "microskill.arts-plastiques.suggerer-la-profondeur-premier-plan-arriere-plan-taille": "suggerer-la-profondeur-premier-plan-arriere-plan-taille",
+    "microskill.arts-plastiques.representer-la-matiere-par-la-touche-et-la-texture": "representer-la-matiere-par-la-touche-et-la-texture",
+    "microskill.arts-plastiques.utiliser-la-couleur-pour-exprimer-une-ambiance": "utiliser-la-couleur-pour-exprimer-une-ambiance",
+    "microskill.arts-plastiques.analyser-une-uvre-celebre": "analyser-une-uvre-celebre",
+    "microskill.arts-plastiques.choisir-un-cadrage-et-un-point-de-vue": "choisir-un-cadrage-et-un-point-de-vue",
+    "microskill.arts-plastiques.distinguer-plan-large-et-gros-plan": "distinguer-plan-large-et-gros-plan",
+    "microskill.arts-plastiques.detourner-une-image-en-modifiant-son-sens": "detourner-une-image-en-modifiant-son-sens",
+    "microskill.arts-plastiques.analyser-un-dispositif-de-presentation-d-une-uvre": "analyser-un-dispositif-de-presentation-d-une-uvre",
+    "microskill.arts-plastiques.identifier-le-propos-d-une-uvre-engagee-guernica": "identifier-le-propos-d-une-uvre-engagee-guernica",
+    "microskill.arts-plastiques.mettre-une-uvre-en-relation-avec-son-contexte-historique": "mettre-une-uvre-en-relation-avec-son-contexte-historique",
+    "microskill.arts-plastiques.comparer-des-formes-d-art-dans-l-espace-public": "comparer-des-formes-d-art-dans-l-espace-public",
+    "microskill.arts-plastiques.defendre-un-point-de-vue-sur-une-uvre-contemporaine": "defendre-un-point-de-vue-sur-une-uvre-contemporaine",
+    "microskill.arts-plastiques.identifier-et-decrire-une-uvre-auteur-technique-composition": "identifier-et-decrire-une-uvre-auteur-technique-composition",
+    "microskill.arts-plastiques.interpreter-une-uvre-en-la-situant-dans-un-courant": "interpreter-une-uvre-en-la-situant-dans-un-courant",
+    "microskill.arts-plastiques.distinguer-installation-performance-et-autres-pratiques-contemporaines": "distinguer-installation-performance-et-autres-pratiques-contemporaines",
+    "microskill.arts-plastiques.conduire-une-demarche-de-creation-avec-carnet-de-travail": "conduire-une-demarche-de-creation-avec-carnet-de-travail",
+    "microskill.musique.distinguer-des-sons-selon-leur-origine-et-leur-hauteur": "distinguer-des-sons-selon-leur-origine-et-leur-hauteur",
+    "microskill.musique.reperer-la-pulsation-d-un-morceau": "reperer-la-pulsation-d-un-morceau",
+    "microskill.musique.reproduire-un-rythme-simple": "reproduire-un-rythme-simple",
+    "microskill.musique.chanter-en-groupe-avec-justesse": "chanter-en-groupe-avec-justesse",
+    "microskill.musique.distinguer-sons-graves-et-aigus": "distinguer-sons-graves-et-aigus",
+    "microskill.musique.lire-la-duree-de-la-ronde-de-la-blanche-et-de-la-noire": "lire-la-duree-de-la-ronde-de-la-blanche-et-de-la-noire",
+    "microskill.musique.classer-des-instruments-par-famille": "classer-des-instruments-par-famille",
+    "microskill.musique.maintenir-un-tempo": "maintenir-un-tempo",
+    "microskill.musique.chanter-en-canon": "chanter-en-canon",
+    "microskill.musique.reconnaitre-une-uvre-et-son-compositeur": "reconnaitre-une-uvre-et-son-compositeur",
+    "microskill.musique.situer-une-uvre-dans-son-epoque": "situer-une-uvre-dans-son-epoque",
+    "microskill.musique.ecouter-et-decrire-un-extrait-musical": "ecouter-et-decrire-un-extrait-musical",
+    "microskill.musique.calculer-la-duree-de-notes-dans-une-mesure": "calculer-la-duree-de-notes-dans-une-mesure",
+    "microskill.musique.suivre-une-melodie-a-l-ecoute": "suivre-une-melodie-a-l-ecoute",
+    "microskill.musique.distinguer-melodie-et-harmonie": "distinguer-melodie-et-harmonie",
+    "microskill.musique.classer-voix-et-instruments-par-familles": "classer-voix-et-instruments-par-familles",
+    "microskill.musique.situer-un-genre-musical-dans-son-epoque": "situer-un-genre-musical-dans-son-epoque",
+    "microskill.musique.identifier-une-forme-refrain-couplet-rondo": "identifier-une-forme-refrain-couplet-rondo",
+    "microskill.musique.interpreter-des-nuances-forte-piano": "interpreter-des-nuances-forte-piano",
+    "microskill.musique.associer-une-uvre-celebre-a-son-compositeur": "associer-une-uvre-celebre-a-son-compositeur",
+    "microskill.musique.expliquer-le-role-de-l-harmonie-dans-un-morceau": "expliquer-le-role-de-l-harmonie-dans-un-morceau",
+    "microskill.musique.arranger-un-morceau": "arranger-un-morceau",
+    "microskill.musique.analyser-un-hymne-ou-une-chanson-engagee": "analyser-un-hymne-ou-une-chanson-engagee",
+    "microskill.musique.creer-une-courte-production-musicale": "creer-une-courte-production-musicale",
+    "microskill.musique.analyser-une-uvre-par-ses-parametres-rythme-melodie-harmonie-timbre": "analyser-une-uvre-par-ses-parametres-rythme-melodie-harmonie-timbre",
+    "microskill.musique.identifier-une-forme-musicale": "identifier-une-forme-musicale",
+    "microskill.musique.situer-un-style-dans-sa-periode": "situer-un-style-dans-sa-periode",
+    "microskill.musique.distinguer-improvisation-et-musique-ecrite": "distinguer-improvisation-et-musique-ecrite",
+    "microskill.musique.utiliser-des-outils-numeriques-pour-creer-ou-arranger": "utiliser-des-outils-numeriques-pour-creer-ou-arranger",
+    "microskill.eps.appliquer-des-regles-de-securite-lors-d-un-jeu": "appliquer-des-regles-de-securite-lors-d-un-jeu",
+    "microskill.eps.respecter-les-regles-et-les-partenaires-fair-play": "respecter-les-regles-et-les-partenaires-fair-play",
+    "microskill.eps.se-deplacer-de-differentes-facons": "se-deplacer-de-differentes-facons",
+    "microskill.eps.adopter-une-conduite-adaptee-a-la-piscine": "adopter-une-conduite-adaptee-a-la-piscine",
+    "microskill.eps.expliquer-le-role-de-l-echauffement": "expliquer-le-role-de-l-echauffement",
+    "microskill.eps.realiser-un-echauffement-progressif": "realiser-un-echauffement-progressif",
+    "microskill.eps.evaluer-la-duree-d-activite-physique-quotidienne-recommandee": "evaluer-la-duree-d-activite-physique-quotidienne-recommandee",
+    "microskill.eps.recuperer-apres-l-effort-retour-au-calme-hydratation": "recuperer-apres-l-effort-retour-au-calme-hydratation",
+    "microskill.eps.respecter-les-regles-d-un-jeu-collectif": "respecter-les-regles-d-un-jeu-collectif",
+    "microskill.eps.realiser-un-saut-en-longueur-ou-une-course": "realiser-un-saut-en-longueur-ou-une-course",
+    "microskill.eps.appliquer-les-regles-de-securite-a-la-piscine": "appliquer-les-regles-de-securite-a-la-piscine",
+    "microskill.eps.cooperer-avec-ses-partenaires": "cooperer-avec-ses-partenaires",
+    "microskill.eps.gerer-son-allure-en-course-d-endurance": "gerer-son-allure-en-course-d-endurance",
+    "microskill.eps.interpreter-l-evolution-de-la-frequence-cardiaque-pendant-l-effort": "interpreter-l-evolution-de-la-frequence-cardiaque-pendant-l-effort",
+    "microskill.eps.jouer-un-role-dans-une-equipe": "jouer-un-role-dans-une-equipe",
+    "microskill.eps.respecter-l-adversaire-et-l-arbitre-fair-play": "respecter-l-adversaire-et-l-arbitre-fair-play",
+    "microskill.eps.estimer-sa-frequence-cardiaque-maximale": "estimer-sa-frequence-cardiaque-maximale",
+    "microskill.eps.choisir-une-charge-adaptee-a-ses-limites": "choisir-une-charge-adaptee-a-ses-limites",
+    "microskill.eps.planifier-un-projet-d-entrainement": "planifier-un-projet-d-entrainement",
+    "microskill.eps.mettre-en-uvre-une-recuperation-apres-l-effort": "mettre-en-uvre-une-recuperation-apres-l-effort",
+    "microskill.eps.creer-un-surnombre-en-attaque": "creer-un-surnombre-en-attaque",
+    "microskill.eps.adapter-son-role-aux-situations-de-jeu": "adapter-son-role-aux-situations-de-jeu",
+    "microskill.eps.appliquer-les-regles-en-tant-qu-arbitre": "appliquer-les-regles-en-tant-qu-arbitre",
+    "microskill.eps.analyser-une-rencontre-avec-des-criteres-tactiques": "analyser-une-rencontre-avec-des-criteres-tactiques",
+    "microskill.eps.concevoir-une-seance-echauffement-travail-principal-retour-au-calme": "concevoir-une-seance-echauffement-travail-principal-retour-au-calme",
+    "microskill.eps.appliquer-la-progressivite-a-une-charge-d-entrainement": "appliquer-la-progressivite-a-une-charge-d-entrainement",
+    "microskill.eps.expliquer-les-benefices-de-l-activite-physique-reguliere": "expliquer-les-benefices-de-l-activite-physique-reguliere",
+    "microskill.eps.elaborer-un-projet-de-pratique-objectif-moyens-evaluation": "elaborer-un-projet-de-pratique-objectif-moyens-evaluation"
   },
   "fiches": {
     "trigo-cercle": {
@@ -2927,6 +3106,345 @@
         "modeliser-un-comportement-pour-le-simuler",
         "comparer-performances-attendues-simulees-et-mesurees",
         "evaluer-l-impact-environnemental-d-une-solution"
+      ]
+    },
+    "anglais-se-presenter-cm": {
+      "prerequis": [
+        "anglais-bonjour-c2"
+      ],
+      "competences": [
+        "se-presenter-en-donnant-son-prenom",
+        "dire-son-age-en-anglais",
+        "demander-et-dire-comment-on-va-how-are-you",
+        "saluer-selon-le-moment-de-la-journee"
+      ]
+    },
+    "anglais-vocabulaire-quotidien-cm": {
+      "prerequis": [
+        "anglais-famille-et-animaux-c2",
+        "anglais-se-presenter-cm"
+      ],
+      "competences": [
+        "nommer-les-jours-de-la-semaine-et-les-mois",
+        "compter-et-calculer-simplement-en-anglais",
+        "nommer-les-membres-de-la-famille-et-les-objets-de-la-classe",
+        "decrire-un-objet-par-sa-couleur"
+      ]
+    },
+    "anglais-gouts-et-actions-cm": {
+      "prerequis": [
+        "anglais-vocabulaire-quotidien-cm"
+      ],
+      "competences": [
+        "dire-ce-que-l-on-aime-et-ce-que-l-on-n-aime-pas",
+        "poser-une-question-avec-do-you-et-y-repondre",
+        "employer-le-present-simple-a-la-3e-personne",
+        "nommer-des-aliments-et-des-activites"
+      ]
+    },
+    "anglais-lieux-et-pays-cm": {
+      "prerequis": [
+        "anglais-vocabulaire-quotidien-cm"
+      ],
+      "competences": [
+        "nommer-des-lieux-de-la-ville",
+        "comprendre-et-donner-une-direction-turn-left",
+        "nommer-des-pays-des-capitales-et-des-langues",
+        "dire-sa-nationalite-i-m-french"
+      ]
+    },
+    "anglais-se-presenter-6e": {
+      "prerequis": [
+        "anglais-se-presenter-cm",
+        "anglais-vocabulaire-quotidien-cm"
+      ],
+      "competences": [
+        "employer-to-be-et-have-got-dans-une-presentation",
+        "utiliser-les-adjectifs-possessifs-my-his-her",
+        "parler-de-sa-famille-et-de-l-ecole",
+        "exprimer-ses-preferences-a-l-ecole"
+      ]
+    },
+    "anglais-routine-et-habiletes-6e": {
+      "prerequis": [
+        "anglais-gouts-et-actions-cm",
+        "anglais-se-presenter-6e"
+      ],
+      "competences": [
+        "decrire-une-routine-avec-le-present-simple",
+        "utiliser-les-adverbes-de-frequence-never-always",
+        "exprimer-une-capacite-avec-can-et-can-t",
+        "exprimer-ses-gouts-avec-like-verbe-en-ing"
+      ]
+    },
+    "anglais-5e-c4": {
+      "prerequis": [
+        "anglais-routine-et-habiletes-6e"
+      ],
+      "competences": [
+        "former-le-preterit-des-verbes-reguliers-et-irreguliers",
+        "poser-une-question-et-nier-au-preterit",
+        "comparer-avec-le-comparatif-de-superiorite",
+        "raconter-un-evenement-passe-simple"
+      ]
+    },
+    "anglais-4e-c4": {
+      "prerequis": [
+        "anglais-5e-c4"
+      ],
+      "competences": [
+        "employer-le-present-perfect-avec-for-et-since",
+        "distinguer-present-perfect-et-preterit",
+        "exprimer-le-futur-will-be-going-to",
+        "exprimer-obligation-et-conseil-avec-les-modaux"
+      ]
+    },
+    "anglais-3e-c4": {
+      "prerequis": [
+        "anglais-4e-c4"
+      ],
+      "competences": [
+        "exprimer-une-hypothese-irreelle-avec-if-preterit",
+        "reconnaitre-et-former-le-passif",
+        "rapporter-des-paroles-au-discours-indirect",
+        "exprimer-et-justifier-une-opinion"
+      ]
+    },
+    "anglais-grammaire-et-temps-l": {
+      "prerequis": [
+        "anglais-3e-c4"
+      ],
+      "competences": [
+        "choisir-entre-present-perfect-et-preterit-selon-la-situation",
+        "employer-les-modaux-de-probabilite-et-d-obligation",
+        "former-le-passif-a-differents-temps",
+        "employer-if-preterit-past-perfect-pour-l-hypothese",
+        "rapporter-un-discours-en-adaptant-temps-et-pronoms"
+      ]
+    },
+    "anglais-culture-et-civilisation-l": {
+      "prerequis": [
+        "anglais-grammaire-et-temps-l"
+      ],
+      "competences": [
+        "identifier-nature-auteur-date-et-source-d-un-document",
+        "degager-le-message-et-les-procedes-d-un-document",
+        "mettre-un-document-en-perspective-avec-son-contexte",
+        "utiliser-le-vocabulaire-de-l-identite-des-droits-et-de-la-citoyennete",
+        "argumenter-avec-des-connecteurs-d-opposition"
+      ]
+    },
+    "anglais-expression-orale-et-ecrite-l": {
+      "prerequis": [
+        "anglais-grammaire-et-temps-l"
+      ],
+      "competences": [
+        "structurer-un-essai-introduction-developpement-conclusion",
+        "utiliser-des-connecteurs-d-addition-de-cause-de-consequence-et-d-opposition",
+        "preparer-et-presenter-une-prise-de-parole",
+        "nuancer-un-avis-avec-concession",
+        "reperer-le-contexte-et-les-mots-cles-d-un-document-oral"
+      ]
+    },
+    "arts-couleurs-cm": {
+      "prerequis": [
+        "arts-couleurs-et-formes-c2"
+      ],
+      "competences": [
+        "obtenir-une-couleur-par-melange",
+        "distinguer-couleurs-chaudes-et-couleurs-froides",
+        "eclaircir-ou-foncer-une-couleur",
+        "produire-un-contraste-de-couleurs-ou-de-matieres"
+      ]
+    },
+    "arts-formes-et-composition-cm": {
+      "prerequis": [
+        "arts-couleurs-cm"
+      ],
+      "competences": [
+        "utiliser-les-lignes-et-les-formes-dans-une-composition",
+        "representer-la-profondeur-par-la-perspective",
+        "identifier-une-uvre-celebre-et-son-auteur",
+        "comparer-deux-uvres-d-artistes"
+      ]
+    },
+    "arts-representation-et-espace-6e": {
+      "prerequis": [
+        "arts-formes-et-composition-cm"
+      ],
+      "competences": [
+        "suggerer-la-profondeur-premier-plan-arriere-plan-taille",
+        "representer-la-matiere-par-la-touche-et-la-texture",
+        "utiliser-la-couleur-pour-exprimer-une-ambiance",
+        "analyser-une-uvre-celebre"
+      ]
+    },
+    "arts-image-et-representation-c4": {
+      "prerequis": [
+        "arts-representation-et-espace-6e"
+      ],
+      "competences": [
+        "choisir-un-cadrage-et-un-point-de-vue",
+        "distinguer-plan-large-et-gros-plan",
+        "detourner-une-image-en-modifiant-son-sens",
+        "analyser-un-dispositif-de-presentation-d-une-uvre"
+      ]
+    },
+    "arts-oeuvre-et-engagement-c4": {
+      "prerequis": [
+        "arts-image-et-representation-c4"
+      ],
+      "competences": [
+        "identifier-le-propos-d-une-uvre-engagee-guernica",
+        "mettre-une-uvre-en-relation-avec-son-contexte-historique",
+        "comparer-des-formes-d-art-dans-l-espace-public",
+        "defendre-un-point-de-vue-sur-une-uvre-contemporaine"
+      ]
+    },
+    "arts-plastiques-creation-et-engagement-l": {
+      "prerequis": [
+        "arts-oeuvre-et-engagement-c4"
+      ],
+      "competences": [
+        "identifier-et-decrire-une-uvre-auteur-technique-composition",
+        "interpreter-une-uvre-en-la-situant-dans-un-courant",
+        "distinguer-installation-performance-et-autres-pratiques-contemporaines",
+        "conduire-une-demarche-de-creation-avec-carnet-de-travail"
+      ]
+    },
+    "musique-notes-et-rythme-cm": {
+      "prerequis": [
+        "musique-sons-et-chansons-c2"
+      ],
+      "competences": [
+        "distinguer-sons-graves-et-aigus",
+        "lire-la-duree-de-la-ronde-de-la-blanche-et-de-la-noire",
+        "classer-des-instruments-par-famille",
+        "maintenir-un-tempo"
+      ]
+    },
+    "musique-voix-et-ecoute-cm": {
+      "prerequis": [
+        "musique-notes-et-rythme-cm"
+      ],
+      "competences": [
+        "chanter-en-canon",
+        "reconnaitre-une-uvre-et-son-compositeur",
+        "situer-une-uvre-dans-son-epoque",
+        "ecouter-et-decrire-un-extrait-musical"
+      ]
+    },
+    "musique-lire-et-chanter-6e": {
+      "prerequis": [
+        "musique-notes-et-rythme-cm",
+        "musique-voix-et-ecoute-cm"
+      ],
+      "competences": [
+        "calculer-la-duree-de-notes-dans-une-mesure",
+        "suivre-une-melodie-a-l-ecoute",
+        "distinguer-melodie-et-harmonie",
+        "classer-voix-et-instruments-par-familles"
+      ]
+    },
+    "musique-genres-et-formes-c4": {
+      "prerequis": [
+        "musique-lire-et-chanter-6e"
+      ],
+      "competences": [
+        "situer-un-genre-musical-dans-son-epoque",
+        "identifier-une-forme-refrain-couplet-rondo",
+        "interpreter-des-nuances-forte-piano",
+        "associer-une-uvre-celebre-a-son-compositeur"
+      ]
+    },
+    "musique-creation-et-engagement-c4": {
+      "prerequis": [
+        "musique-genres-et-formes-c4"
+      ],
+      "competences": [
+        "expliquer-le-role-de-l-harmonie-dans-un-morceau",
+        "arranger-un-morceau",
+        "analyser-un-hymne-ou-une-chanson-engagee",
+        "creer-une-courte-production-musicale"
+      ]
+    },
+    "musique-ecoute-creation-et-histoire-l": {
+      "prerequis": [
+        "musique-genres-et-formes-c4"
+      ],
+      "competences": [
+        "analyser-une-uvre-par-ses-parametres-rythme-melodie-harmonie-timbre",
+        "identifier-une-forme-musicale",
+        "situer-un-style-dans-sa-periode",
+        "distinguer-improvisation-et-musique-ecrite",
+        "utiliser-des-outils-numeriques-pour-creer-ou-arranger"
+      ]
+    },
+    "eps-sante-et-echauffement-cm": {
+      "prerequis": [
+        "eps-bouger-et-jouer-c2"
+      ],
+      "competences": [
+        "expliquer-le-role-de-l-echauffement",
+        "realiser-un-echauffement-progressif",
+        "evaluer-la-duree-d-activite-physique-quotidienne-recommandee",
+        "recuperer-apres-l-effort-retour-au-calme-hydratation"
+      ]
+    },
+    "eps-jeux-collectifs-et-athletisme-cm": {
+      "prerequis": [
+        "eps-sante-et-echauffement-cm"
+      ],
+      "competences": [
+        "respecter-les-regles-d-un-jeu-collectif",
+        "realiser-un-saut-en-longueur-ou-une-course",
+        "appliquer-les-regles-de-securite-a-la-piscine",
+        "cooperer-avec-ses-partenaires"
+      ]
+    },
+    "eps-endurance-et-sports-collectifs-6e": {
+      "prerequis": [
+        "eps-sante-et-echauffement-cm",
+        "eps-jeux-collectifs-et-athletisme-cm"
+      ],
+      "competences": [
+        "gerer-son-allure-en-course-d-endurance",
+        "interpreter-l-evolution-de-la-frequence-cardiaque-pendant-l-effort",
+        "jouer-un-role-dans-une-equipe",
+        "respecter-l-adversaire-et-l-arbitre-fair-play"
+      ]
+    },
+    "eps-endurance-et-sante-c4": {
+      "prerequis": [
+        "eps-endurance-et-sports-collectifs-6e"
+      ],
+      "competences": [
+        "estimer-sa-frequence-cardiaque-maximale",
+        "choisir-une-charge-adaptee-a-ses-limites",
+        "planifier-un-projet-d-entrainement",
+        "mettre-en-uvre-une-recuperation-apres-l-effort"
+      ]
+    },
+    "eps-sports-collectifs-et-arbitrage-c4": {
+      "prerequis": [
+        "eps-endurance-et-sports-collectifs-6e"
+      ],
+      "competences": [
+        "creer-un-surnombre-en-attaque",
+        "adapter-son-role-aux-situations-de-jeu",
+        "appliquer-les-regles-en-tant-qu-arbitre",
+        "analyser-une-rencontre-avec-des-criteres-tactiques"
+      ]
+    },
+    "eps-sante-et-performance-l": {
+      "prerequis": [
+        "eps-endurance-et-sante-c4"
+      ],
+      "competences": [
+        "concevoir-une-seance-echauffement-travail-principal-retour-au-calme",
+        "appliquer-la-progressivite-a-une-charge-d-entrainement",
+        "expliquer-les-benefices-de-l-activite-physique-reguliere",
+        "elaborer-un-projet-de-pratique-objectif-moyens-evaluation"
       ]
     }
   }

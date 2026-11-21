@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-expression-orale-et-ecrite-l-requires-anglais-grammaire-et-temps-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-expression-orale-et-ecrite-l/contenu.json"
+  },
+  "source": "notion.anglais.anglais-expression-orale-et-ecrite-l",
+  "target": "notion.anglais.anglais-grammaire-et-temps-l",
+  "rationale": "L’argumentation écrite et orale mobilise les temps, modaux et structures du lycée."
+}

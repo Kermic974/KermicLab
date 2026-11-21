@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.suggerer-la-profondeur-premier-plan-arriere-plan-taille-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-representation-et-espace-6e/contenu.json"
+  },
+  "source": "microskill.arts-plastiques.suggerer-la-profondeur-premier-plan-arriere-plan-taille",
+  "target": "skill.arts-plastiques.arts-representation-et-espace-6e"
+}

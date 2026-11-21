@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.expliquer-le-role-de-l-harmonie-dans-un-morceau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-creation-et-engagement-c4/contenu.json"
+  },
+  "source": "microskill.musique.expliquer-le-role-de-l-harmonie-dans-un-morceau",
+  "target": "skill.musique.musique-creation-et-engagement-c4"
+}

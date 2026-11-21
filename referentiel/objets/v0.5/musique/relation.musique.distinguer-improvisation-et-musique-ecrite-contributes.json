@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.distinguer-improvisation-et-musique-ecrite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-ecoute-creation-et-histoire-l/contenu.json"
+  },
+  "source": "microskill.musique.distinguer-improvisation-et-musique-ecrite",
+  "target": "skill.musique.musique-ecoute-creation-et-histoire-l"
+}

@@ -5,13 +5,7 @@ sujet: anglais/anglais-4e-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e
-prerequis:
-  - anglais-5e-c4
-competences:
-  - anglais-4e-c4-comprendre
-  - anglais-4e-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Quelle différence entre will et going to ?
   - Comment utiliser must, should, can ?
   - Quand utiliser since et for ?
+prerequis: anglais-5e-c4
+niveaux: cycle-4
+competences: employer-le-present-perfect-avec-for-et-since, distinguer-present-perfect-et-preterit, exprimer-le-futur-will-be-going-to, exprimer-obligation-et-conseil-avec-les-modaux
 ---
 
 # Anglais 4e : present perfect, futur et modaux

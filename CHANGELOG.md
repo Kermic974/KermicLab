@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Référentiel : anglais, arts plastiques, musique et EPS rendus canoniques** : 35 notions, 144 MicroSkills observables, 36 `requires` et 40 CurriculumMappings ; les compétences génériques `*-comprendre/-appliquer` de 30 fiches sont remplacées, leurs niveaux, classes et prérequis restent identiques. Les 5 notions de cycle 2 n'ont pas de placement ni de projection (pas de code d'étape `cycle-2`).
+
 - **Référentiel : technologie rendue canonique** (`docs/referentiel/densification-pedagogique.md`) : première matière sans objets S4. 18 notions (14 de technologie et 4 cibles de prérequis en mathématiques et EMC), 80 MicroSkills observables, 18 `requires` et 22 CurriculumMappings ; les compétences génériques `*-comprendre/-appliquer` de 13 fiches sont remplacées, leurs niveaux et prérequis restent identiques. Le cycle 2 n'est pas projetable (pas de code d'étape `cycle-2` dans le schéma `stage`).
 
 - **Référentiel : densification pédagogique de 8 disciplines** (`docs/referentiel/densification-pedagogique.md`) : les 258 MicroSkills génériques `*-action-N` de physique-chimie, SVT, histoire, géographie, français, EMC, SES et philosophie sont remplacées par **584 MicroSkills** observables (3 à 6 par notion), avec **81 relations `requires`** justifiées et **28 `relatedTo`** (philosophie : aucun `requires`). Liens incertains dans `docs/referentiel/relations-a-revoir.md`. Objets en `draft`, à relire.

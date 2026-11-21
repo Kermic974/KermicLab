@@ -5,13 +5,7 @@ sujet: musique/musique-notes-et-rythme-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - musique-sons-et-chansons-c2
-competences:
-  - musique-notes-et-rythme-cm-comprendre
-  - musique-notes-et-rythme-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Quelles sont les notes de musique ?
   - C'est quoi le rythme et le tempo ?
   - Quelles sont les familles d'instruments ?
+prerequis: musique-sons-et-chansons-c2
+niveaux: cycle-3
+competences: distinguer-sons-graves-et-aigus, lire-la-duree-de-la-ronde-de-la-blanche-et-de-la-noire, classer-des-instruments-par-famille, maintenir-un-tempo
 ---
 
 # Musique : notes, rythme et instruments

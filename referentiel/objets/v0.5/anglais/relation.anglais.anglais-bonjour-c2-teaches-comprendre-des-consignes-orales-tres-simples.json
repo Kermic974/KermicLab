@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-bonjour-c2-teaches-comprendre-des-consignes-orales-tres-simples",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-bonjour-c2/contenu.json"
+  },
+  "source": "notion.anglais.anglais-bonjour-c2",
+  "target": "microskill.anglais.comprendre-des-consignes-orales-tres-simples"
+}

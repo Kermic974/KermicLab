@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-lieux-et-pays-cm-teaches-comprendre-et-donner-une-direction-turn-left",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-lieux-et-pays-cm",
+  "target": "microskill.anglais.comprendre-et-donner-une-direction-turn-left"
+}

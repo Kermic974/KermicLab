@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.eps-bouger-et-jouer-c2-teaches-adopter-une-conduite-adaptee-a-la-piscine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-bouger-et-jouer-c2/contenu.json"
+  },
+  "source": "notion.eps.eps-bouger-et-jouer-c2",
+  "target": "microskill.eps.adopter-une-conduite-adaptee-a-la-piscine"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-lieux-et-pays-cm-teaches-dire-sa-nationalite-i-m-french",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-lieux-et-pays-cm",
+  "target": "microskill.anglais.dire-sa-nationalite-i-m-french"
+}

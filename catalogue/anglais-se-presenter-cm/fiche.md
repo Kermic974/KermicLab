@@ -5,13 +5,7 @@ sujet: anglais/anglais-se-presenter-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - anglais-bonjour-c2
-competences:
-  - anglais-se-presenter-cm-comprendre
-  - anglais-se-presenter-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment dire bonjour en anglais ?
   - Comment se présenter en anglais ?
   - Comment demander « comment vas-tu ? » en anglais ?
+prerequis: anglais-bonjour-c2
+niveaux: cycle-3
+competences: se-presenter-en-donnant-son-prenom, dire-son-age-en-anglais, demander-et-dire-comment-on-va-how-are-you, saluer-selon-le-moment-de-la-journee
 ---
 
 # Anglais : se présenter et saluer

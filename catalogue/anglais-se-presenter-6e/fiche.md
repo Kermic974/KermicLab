@@ -5,14 +5,7 @@ sujet: anglais/anglais-se-presenter-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - anglais-se-presenter-cm
-  - anglais-vocabulaire-quotidien-cm
-competences:
-  - anglais-se-presenter-6e-comprendre
-  - anglais-se-presenter-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment se présenter en anglais en 6e ?
   - Comment parler de sa famille en anglais en 6e ?
   - Comment conjuguer to be et have got ?
+prerequis: anglais-se-presenter-cm, anglais-vocabulaire-quotidien-cm
+niveaux: cycle-3
+competences: employer-to-be-et-have-got-dans-une-presentation, utiliser-les-adjectifs-possessifs-my-his-her, parler-de-sa-famille-et-de-l-ecole, exprimer-ses-preferences-a-l-ecole
 ---
 
 # Anglais 6e : se présenter, famille et école

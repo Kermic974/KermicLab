@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.identifier-le-propos-d-une-uvre-engagee-guernica-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-oeuvre-et-engagement-c4/contenu.json"
+  },
+  "source": "microskill.arts-plastiques.identifier-le-propos-d-une-uvre-engagee-guernica",
+  "target": "skill.arts-plastiques.arts-oeuvre-et-engagement-c4"
+}

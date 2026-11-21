@@ -5,12 +5,6 @@ sujet: anglais/anglais-culture-et-civilisation-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere, terminale
-prerequis:
-  - anglais-grammaire-et-temps-l
-competences:
-  - anglais-culture-et-civilisation-l-comprendre
-  - anglais-culture-et-civilisation-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Quels thèmes étudie-t-on en LLCE ?
   - Comment parler d'identité en anglais ?
   - Comment analyser un document en anglais ?
+prerequis: anglais-grammaire-et-temps-l
+niveaux: seconde, premiere, terminale
+competences: identifier-nature-auteur-date-et-source-d-un-document, degager-le-message-et-les-procedes-d-un-document, mettre-un-document-en-perspective-avec-son-contexte, utiliser-le-vocabulaire-de-l-identite-des-droits-et-de-la-citoyennete, argumenter-avec-des-connecteurs-d-opposition
 ---
 
 # Anglais : cultures, sociétés et mondes anglophones

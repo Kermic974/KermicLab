@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-vocabulaire-quotidien-cm-requires-anglais-se-presenter-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "target": "notion.anglais.anglais-se-presenter-cm",
+  "rationale": "Se présenter donne le cadre des échanges où ce vocabulaire est utilisé."
+}

@@ -320,4 +320,6 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 |---|---|---|---|---|
 | Décider d'ajouter le code d'étape `cycle-2` au schéma `stage` (et à ses tests et fixtures) | `referentiel/schemas/stage.schema.json`, nouvel ADR | Les notions du cycle 2 (toutes les matières) ne peuvent pas recevoir de CurriculumMapping ni être projetées | ADR accepté, schéma et tests mis à jour | à faire |
 | Relire les MicroSkills et les prérequis de la technologie, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/technologie/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+| Relire les MicroSkills et les prérequis de l'anglais, des arts plastiques, de la musique et de l'EPS, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/anglais/`, `arts-plastiques/`, `musique/`, `eps/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+| Revue du CODEOWNER et fusion de la PR du référentiel canonique (technologie, anglais, arts plastiques, musique, EPS) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
 

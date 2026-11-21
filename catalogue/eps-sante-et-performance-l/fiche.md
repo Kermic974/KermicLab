@@ -5,12 +5,6 @@ sujet: eps/eps-sante-et-performance-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere, terminale
-prerequis:
-  - eps-endurance-et-sante-c4
-competences:
-  - eps-sante-et-performance-l-comprendre
-  - eps-sante-et-performance-l-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Comment construire un entraînement au lycée ?
   - Pourquoi s'échauffer ?
   - Quels sont les bénéfices de l'activité physique ?
+prerequis: eps-endurance-et-sante-c4
+niveaux: seconde, premiere, terminale
+competences: concevoir-une-seance-echauffement-travail-principal-retour-au-calme, appliquer-la-progressivite-a-une-charge-d-entrainement, expliquer-les-benefices-de-l-activite-physique-reguliere, elaborer-un-projet-de-pratique-objectif-moyens-evaluation
 ---
 
 # EPS : santé, entraînement et projet de pratique

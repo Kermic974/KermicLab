@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.appliquer-la-progressivite-a-une-charge-d-entrainement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-performance-l/contenu.json"
+  },
+  "source": "microskill.eps.appliquer-la-progressivite-a-une-charge-d-entrainement",
+  "target": "skill.eps.eps-sante-et-performance-l"
+}
