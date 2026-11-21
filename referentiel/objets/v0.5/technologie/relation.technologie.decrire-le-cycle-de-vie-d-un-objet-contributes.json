@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.decrire-le-cycle-de-vie-d-un-objet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-recyclage-cm/contenu.json"
+  },
+  "source": "microskill.technologie.decrire-le-cycle-de-vie-d-un-objet",
+  "target": "skill.technologie.materiaux-et-recyclage-cm"
+}

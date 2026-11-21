@@ -5,12 +5,6 @@ sujet: technologie/nsi-algorithmes-et-donnees-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - algorithmique-python-l
-competences:
-  - nsi-algorithmes-et-donnees-l-comprendre
-  - nsi-algorithmes-et-donnees-l-appliquer
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment fonctionne un tri par insertion ?
   - Qu'est-ce que la complexité ?
   - Qu'est-ce qu'un arbre binaire de recherche ?
+prerequis: algorithmique-python-l
+niveaux: premiere, terminale
+competences: choisir-la-structure-de-donnees-adaptee-pile-file-dictionnaire, derouler-un-tri-par-insertion-ou-par-selection, appliquer-la-recherche-par-dichotomie, comparer-la-complexite-de-deux-algorithmes, manipuler-un-arbre-binaire-de-recherche
 ---
 
 # NSI : structures de données et algorithmes

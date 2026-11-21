@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.programmation-et-robots-6e-requires-objets-techniques-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/programmation-et-robots-6e/contenu.json"
+  },
+  "source": "notion.technologie.programmation-et-robots-6e",
+  "target": "notion.technologie.objets-techniques-6e",
+  "rationale": "La chaîne d’information (capteur, traitement, actionneur) est un préalable à la programmation d’un robot."
+}

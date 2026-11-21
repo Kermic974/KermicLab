@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.choisir-un-capteur-adapte-a-une-tache-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/programmation-et-robots-6e/contenu.json"
+  },
+  "source": "microskill.technologie.choisir-un-capteur-adapte-a-une-tache",
+  "target": "skill.technologie.programmation-et-robots-6e"
+}

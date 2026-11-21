@@ -5,13 +5,6 @@ sujet: technologie/si-conception-et-modelisation-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - conception-et-prototypage-c4
-  - energie-et-materiaux-c4
-competences:
-  - si-conception-et-modelisation-l-comprendre
-  - si-conception-et-modelisation-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce qu'un système en ingénierie ?
   - Comment valider les performances d'un produit ?
   - À quoi sert la simulation numérique ?
+prerequis: conception-et-prototypage-c4, energie-et-materiaux-c4
+niveaux: premiere, terminale
+competences: rediger-un-cahier-des-charges-fonctionnel, decrire-un-systeme-par-ses-chaines-d-information-et-d-energie, modeliser-un-comportement-pour-le-simuler, comparer-performances-attendues-simulees-et-mesurees, evaluer-l-impact-environnemental-d-une-solution
 ---
 
 # Sciences de l'ingénieur : conception, performances et simulation

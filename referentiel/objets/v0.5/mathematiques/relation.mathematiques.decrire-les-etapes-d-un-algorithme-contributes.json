@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decrire-les-etapes-d-un-algorithme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmes-programmation-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.decrire-les-etapes-d-un-algorithme",
+  "target": "skill.mathematiques.algorithmes-programmation-cm"
+}

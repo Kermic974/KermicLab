@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.technologie.si-conception-et-modelisation-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/si-conception-et-modelisation-l/contenu.json"
+  },
+  "object": "notion.technologie.si-conception-et-modelisation-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

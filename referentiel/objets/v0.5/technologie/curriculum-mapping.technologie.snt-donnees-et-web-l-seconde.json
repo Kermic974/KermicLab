@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.technologie.snt-donnees-et-web-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-donnees-et-web-l/contenu.json"
+  },
+  "object": "notion.technologie.snt-donnees-et-web-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

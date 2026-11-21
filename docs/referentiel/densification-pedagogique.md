@@ -34,3 +34,12 @@ Les guardes existants du build (un prérequis ne commence pas dans une classe pl
 
 - Les 312 notions ajoutées depuis la V0 (cycles 2 à 4 et lycée) n'ont pas d'objets canoniques ; leurs liens restent à qualifier par le processus S4.
 - Relecture humaine de la pertinence des compétences et des prérequis avant de passer les objets de `draft` à `review` puis `validated`.
+
+## Technologie (matière sans objets canoniques)
+
+Première matière dont **aucun** objet canonique n'existait. 14 notions (cycles 2 à lycée) reçoivent notion, Skill, **80 MicroSkills** observables (4 à 5 par notion avec les 4 notions externes), **18 relations `requires`** (celles déjà déclarées dans les fiches, désormais canoniques et justifiées) et **22 CurriculumMappings** (niveaux inchangés). 13 fiches sont projetées : leurs `prerequis` et `niveaux` restent identiques, leurs `competences` génériques `*-comprendre/-appliquer` sont remplacées par les MicroSkills explicites.
+
+Pour que les prérequis existants restent exprimables, quatre notions **cibles d'autres matières** reçoivent des objets (sans projection de leur fiche, leurs prérequis restant déclarés dans la fiche en attendant leur matière) : `algorithmes-programmation-cm`, `algorithmique-et-scratch-c4`, `algorithmique-python-l` (mathématiques) et `numerique-et-donnees-c4` (EMC). La notion de cycle 2 `objets-electriques-et-materiaux-c2` a ses objets mais n'est pas projetée (pas de code d'étape `cycle-2` dans le schéma).
+
+Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages` et `npm test` passent.
+

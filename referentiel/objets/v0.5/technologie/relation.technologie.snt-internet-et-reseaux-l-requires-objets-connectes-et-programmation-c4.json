@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.snt-internet-et-reseaux-l-requires-objets-connectes-et-programmation-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-internet-et-reseaux-l/contenu.json"
+  },
+  "source": "notion.technologie.snt-internet-et-reseaux-l",
+  "target": "notion.technologie.objets-connectes-et-programmation-c4",
+  "rationale": "La communication en réseau et la protection d’un objet connecté préparent l’étude d’Internet."
+}

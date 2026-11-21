@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.snt-donnees-et-web-l-requires-snt-internet-et-reseaux-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-donnees-et-web-l/contenu.json"
+  },
+  "source": "notion.technologie.snt-donnees-et-web-l",
+  "target": "notion.technologie.snt-internet-et-reseaux-l",
+  "rationale": "Le web repose sur les protocoles d’Internet."
+}

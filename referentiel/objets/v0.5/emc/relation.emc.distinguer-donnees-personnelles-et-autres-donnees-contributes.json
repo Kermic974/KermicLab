@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-donnees-personnelles-et-autres-donnees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-et-donnees-c4/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-donnees-personnelles-et-autres-donnees",
+  "target": "skill.emc.numerique-et-donnees-c4"
+}

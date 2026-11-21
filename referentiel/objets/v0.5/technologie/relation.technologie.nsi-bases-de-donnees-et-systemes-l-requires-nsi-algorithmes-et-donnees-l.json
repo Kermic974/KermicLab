@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.nsi-bases-de-donnees-et-systemes-l-requires-nsi-algorithmes-et-donnees-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-bases-de-donnees-et-systemes-l/contenu.json"
+  },
+  "source": "notion.technologie.nsi-bases-de-donnees-et-systemes-l",
+  "target": "notion.technologie.nsi-algorithmes-et-donnees-l",
+  "rationale": "Les structures de données et le tri préparent la modélisation des tables."
+}

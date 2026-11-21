@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.objets-techniques-cm-requires-objets-electriques-et-materiaux-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-cm/contenu.json"
+  },
+  "source": "notion.technologie.objets-techniques-cm",
+  "target": "notion.technologie.objets-electriques-et-materiaux-c2",
+  "rationale": "Les matériaux et le circuit simple vus au cycle 2 servent à analyser besoin, fonction et matériaux d’un objet technique."
+}

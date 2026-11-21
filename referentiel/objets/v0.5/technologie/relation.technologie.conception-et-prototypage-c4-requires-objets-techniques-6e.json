@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.conception-et-prototypage-c4-requires-objets-techniques-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conception-et-prototypage-c4/contenu.json"
+  },
+  "source": "notion.technologie.conception-et-prototypage-c4",
+  "target": "notion.technologie.objets-techniques-6e",
+  "rationale": "Le cahier des charges et l’analyse besoin-fonction de la 6e fondent la démarche de projet."
+}

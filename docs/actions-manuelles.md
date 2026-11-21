@@ -313,3 +313,11 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Arbitrer les liens listés dans `relations-a-revoir.md` (créer, écarter ou traiter par le processus S4) | `docs/referentiel/relations-a-revoir.md` | Liens incertains ou bloqués par les garde-fous du build | Décision notée dans le fichier | à faire |
 | Qualifier par le processus S4 les liens des 312 notions ajoutées depuis la V0 (cycles 2 à 4, lycée) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Ces notions n'ont pas d'objets canoniques | Lot S4 relu et fusionné | à faire |
 | Revue du CODEOWNER et fusion de la PR #403 | https://github.com/Kermic974/KermicLab/pull/403 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel canonique : technologie
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Décider d'ajouter le code d'étape `cycle-2` au schéma `stage` (et à ses tests et fixtures) | `referentiel/schemas/stage.schema.json`, nouvel ADR | Les notions du cycle 2 (toutes les matières) ne peuvent pas recevoir de CurriculumMapping ni être projetées | ADR accepté, schéma et tests mis à jour | à faire |
+| Relire les MicroSkills et les prérequis de la technologie, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/technologie/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+

@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.distinguer-ip-tcp-http-et-https-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-internet-et-reseaux-l/contenu.json"
+  },
+  "source": "microskill.technologie.distinguer-ip-tcp-http-et-https",
+  "target": "skill.technologie.snt-internet-et-reseaux-l"
+}

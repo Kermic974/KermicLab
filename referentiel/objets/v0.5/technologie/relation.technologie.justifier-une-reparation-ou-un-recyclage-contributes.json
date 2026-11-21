@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.justifier-une-reparation-ou-un-recyclage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "microskill.technologie.justifier-une-reparation-ou-un-recyclage",
+  "target": "skill.technologie.materiaux-et-environnement-6e"
+}

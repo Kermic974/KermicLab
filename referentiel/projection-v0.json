@@ -165,7 +165,25 @@
     "technique": "notion.philosophie.technique",
     "temps": "notion.philosophie.temps",
     "travail": "notion.philosophie.travail",
-    "verite": "notion.philosophie.verite"
+    "verite": "notion.philosophie.verite",
+    "algorithmes-programmation-cm": "notion.mathematiques.algorithmes-programmation-cm",
+    "algorithmique-et-scratch-c4": "notion.mathematiques.algorithmique-et-scratch-c4",
+    "algorithmique-python-l": "notion.mathematiques.algorithmique-python-l",
+    "numerique-et-donnees-c4": "notion.emc.numerique-et-donnees-c4",
+    "objets-electriques-et-materiaux-c2": "notion.technologie.objets-electriques-et-materiaux-c2",
+    "objets-techniques-cm": "notion.technologie.objets-techniques-cm",
+    "materiaux-et-recyclage-cm": "notion.technologie.materiaux-et-recyclage-cm",
+    "objets-techniques-6e": "notion.technologie.objets-techniques-6e",
+    "materiaux-et-environnement-6e": "notion.technologie.materiaux-et-environnement-6e",
+    "programmation-et-robots-6e": "notion.technologie.programmation-et-robots-6e",
+    "conception-et-prototypage-c4": "notion.technologie.conception-et-prototypage-c4",
+    "energie-et-materiaux-c4": "notion.technologie.energie-et-materiaux-c4",
+    "objets-connectes-et-programmation-c4": "notion.technologie.objets-connectes-et-programmation-c4",
+    "snt-internet-et-reseaux-l": "notion.technologie.snt-internet-et-reseaux-l",
+    "snt-donnees-et-web-l": "notion.technologie.snt-donnees-et-web-l",
+    "nsi-algorithmes-et-donnees-l": "notion.technologie.nsi-algorithmes-et-donnees-l",
+    "nsi-bases-de-donnees-et-systemes-l": "notion.technologie.nsi-bases-de-donnees-et-systemes-l",
+    "si-conception-et-modelisation-l": "notion.technologie.si-conception-et-modelisation-l"
   },
   "competences": {
     "microskill.mathematiques.relier-cosinus-et-sinus-au-cercle-unite": "relier-cosinus-et-sinus-au-cercle-unite",
@@ -897,7 +915,87 @@
     "microskill.philosophie.distinguer-croire-savoir-et-justifier": "distinguer-croire-savoir-et-justifier",
     "microskill.philosophie.expliquer-le-role-du-doute-methodique-chez-descartes": "expliquer-le-role-du-doute-methodique-chez-descartes",
     "microskill.philosophie.distinguer-sincerite-et-verite": "distinguer-sincerite-et-verite",
-    "microskill.philosophie.comparer-des-criteres-de-verite-correspondance-coherence-utilite": "comparer-des-criteres-de-verite-correspondance-coherence-utilite"
+    "microskill.philosophie.comparer-des-criteres-de-verite-correspondance-coherence-utilite": "comparer-des-criteres-de-verite-correspondance-coherence-utilite",
+    "microskill.mathematiques.decrire-les-etapes-d-un-algorithme": "decrire-les-etapes-d-un-algorithme",
+    "microskill.mathematiques.ecrire-un-programme-avec-une-boucle-pour-tracer-une-figure": "ecrire-un-programme-avec-une-boucle-pour-tracer-une-figure",
+    "microskill.mathematiques.ecrire-une-instruction-conditionnelle": "ecrire-une-instruction-conditionnelle",
+    "microskill.mathematiques.prevoir-le-resultat-d-un-programme-simple": "prevoir-le-resultat-d-un-programme-simple",
+    "microskill.mathematiques.suivre-l-evolution-d-une-variable-dans-un-programme": "suivre-l-evolution-d-une-variable-dans-un-programme",
+    "microskill.mathematiques.ecrire-une-boucle-pour-et-tant-que": "ecrire-une-boucle-pour-et-tant-que",
+    "microskill.mathematiques.ecrire-un-programme-de-calcul-avec-une-fonction": "ecrire-un-programme-de-calcul-avec-une-fonction",
+    "microskill.mathematiques.tester-et-corriger-un-programme-de-calcul": "tester-et-corriger-un-programme-de-calcul",
+    "microskill.mathematiques.ecrire-une-boucle-for-en-python": "ecrire-une-boucle-for-en-python",
+    "microskill.mathematiques.ecrire-un-algorithme-de-seuil-avec-while": "ecrire-un-algorithme-de-seuil-avec-while",
+    "microskill.mathematiques.appliquer-la-dichotomie": "appliquer-la-dichotomie",
+    "microskill.mathematiques.ecrire-une-fonction-en-python": "ecrire-une-fonction-en-python",
+    "microskill.emc.distinguer-donnees-personnelles-et-autres-donnees": "distinguer-donnees-personnelles-et-autres-donnees",
+    "microskill.emc.decrire-le-role-de-la-cnil": "decrire-le-role-de-la-cnil",
+    "microskill.emc.identifier-le-cyberharcelement-et-reagir": "identifier-le-cyberharcelement-et-reagir",
+    "microskill.emc.proteger-ses-traces-numeriques": "proteger-ses-traces-numeriques",
+    "microskill.technologie.identifier-des-materiaux-usuels-a-partir-de-leurs-proprietes": "identifier-des-materiaux-usuels-a-partir-de-leurs-proprietes",
+    "microskill.technologie.distinguer-un-materiau-conducteur-d-un-materiau-isolant": "distinguer-un-materiau-conducteur-d-un-materiau-isolant",
+    "microskill.technologie.realiser-un-circuit-electrique-simple-ferme": "realiser-un-circuit-electrique-simple-ferme",
+    "microskill.technologie.appliquer-les-regles-de-securite-avec-l-electricite": "appliquer-les-regles-de-securite-avec-l-electricite",
+    "microskill.technologie.identifier-le-besoin-satisfait-par-un-objet-technique": "identifier-le-besoin-satisfait-par-un-objet-technique",
+    "microskill.technologie.decrire-la-fonction-d-un-objet-technique": "decrire-la-fonction-d-un-objet-technique",
+    "microskill.technologie.choisir-un-materiau-adapte-a-une-fonction": "choisir-un-materiau-adapte-a-une-fonction",
+    "microskill.technologie.situer-l-evolution-d-un-objet-technique-dans-le-temps": "situer-l-evolution-d-un-objet-technique-dans-le-temps",
+    "microskill.technologie.trier-des-dechets-selon-les-consignes-de-recyclage": "trier-des-dechets-selon-les-consignes-de-recyclage",
+    "microskill.technologie.appliquer-la-regle-des-3-r-reduire-reutiliser-recycler": "appliquer-la-regle-des-3-r-reduire-reutiliser-recycler",
+    "microskill.technologie.decrire-le-cycle-de-vie-d-un-objet": "decrire-le-cycle-de-vie-d-un-objet",
+    "microskill.technologie.expliquer-le-devenir-des-dechets-organiques-par-le-compostage": "expliquer-le-devenir-des-dechets-organiques-par-le-compostage",
+    "microskill.technologie.distinguer-capteur-traitement-et-actionneur-dans-une-chaine-d-information": "distinguer-capteur-traitement-et-actionneur-dans-une-chaine-d-information",
+    "microskill.technologie.rediger-les-elements-d-un-cahier-des-charges-simple": "rediger-les-elements-d-un-cahier-des-charges-simple",
+    "microskill.technologie.choisir-un-materiau-selon-ses-proprietes": "choisir-un-materiau-selon-ses-proprietes",
+    "microskill.technologie.relier-un-besoin-une-fonction-et-une-solution-technique": "relier-un-besoin-une-fonction-et-une-solution-technique",
+    "microskill.technologie.classer-des-materiaux-par-famille": "classer-des-materiaux-par-famille",
+    "microskill.technologie.associer-un-materiau-a-une-propriete-conduction-biodegradabilite": "associer-un-materiau-a-une-propriete-conduction-biodegradabilite",
+    "microskill.technologie.comparer-l-impact-environnemental-de-deux-materiaux": "comparer-l-impact-environnemental-de-deux-materiaux",
+    "microskill.technologie.justifier-une-reparation-ou-un-recyclage": "justifier-une-reparation-ou-un-recyclage",
+    "microskill.technologie.expliquer-l-obsolescence-programmee": "expliquer-l-obsolescence-programmee",
+    "microskill.technologie.distinguer-capteur-et-actionneur-dans-un-robot": "distinguer-capteur-et-actionneur-dans-un-robot",
+    "microskill.technologie.choisir-un-capteur-adapte-a-une-tache": "choisir-un-capteur-adapte-a-une-tache",
+    "microskill.technologie.ecrire-un-programme-avec-une-instruction-conditionnelle": "ecrire-un-programme-avec-une-instruction-conditionnelle",
+    "microskill.technologie.ecrire-un-programme-avec-une-boucle-pour-commander-un-robot": "ecrire-un-programme-avec-une-boucle-pour-commander-un-robot",
+    "microskill.technologie.tester-et-corriger-un-programme": "tester-et-corriger-un-programme",
+    "microskill.technologie.formuler-un-besoin-et-un-cahier-des-charges": "formuler-un-besoin-et-un-cahier-des-charges",
+    "microskill.technologie.proposer-plusieurs-solutions-et-justifier-un-choix": "proposer-plusieurs-solutions-et-justifier-un-choix",
+    "microskill.technologie.realiser-un-prototype": "realiser-un-prototype",
+    "microskill.technologie.planifier-un-test-et-interpreter-ses-resultats": "planifier-un-test-et-interpreter-ses-resultats",
+    "microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant": "ameliorer-un-prototype-apres-un-test-insuffisant",
+    "microskill.technologie.decrire-une-chaine-d-energie": "decrire-une-chaine-d-energie",
+    "microskill.technologie.distinguer-energie-renouvelable-et-energie-non-renouvelable": "distinguer-energie-renouvelable-et-energie-non-renouvelable",
+    "microskill.technologie.calculer-le-rendement-d-une-conversion": "calculer-le-rendement-d-une-conversion",
+    "microskill.technologie.decrire-le-cycle-de-vie-d-un-produit": "decrire-le-cycle-de-vie-d-un-produit",
+    "microskill.technologie.expliquer-l-economie-circulaire": "expliquer-l-economie-circulaire",
+    "microskill.technologie.distinguer-capteur-programme-et-actionneur-dans-un-objet-connecte": "distinguer-capteur-programme-et-actionneur-dans-un-objet-connecte",
+    "microskill.technologie.ecrire-un-programme-conditionnel-a-partir-d-un-capteur": "ecrire-un-programme-conditionnel-a-partir-d-un-capteur",
+    "microskill.technologie.decrire-la-communication-d-un-objet-connecte-en-reseau": "decrire-la-communication-d-un-objet-connecte-en-reseau",
+    "microskill.technologie.identifier-les-risques-d-un-objet-connecte-et-les-protections-adaptees": "identifier-les-risques-d-un-objet-connecte-et-les-protections-adaptees",
+    "microskill.technologie.expliquer-le-role-du-dns": "expliquer-le-role-du-dns",
+    "microskill.technologie.decrire-le-routage-des-donnees-par-paquets": "decrire-le-routage-des-donnees-par-paquets",
+    "microskill.technologie.distinguer-ip-tcp-http-et-https": "distinguer-ip-tcp-http-et-https",
+    "microskill.technologie.evaluer-la-securite-d-un-reseau-mot-de-passe-chiffrement": "evaluer-la-securite-d-un-reseau-mot-de-passe-chiffrement",
+    "microskill.technologie.discuter-la-neutralite-du-net": "discuter-la-neutralite-du-net",
+    "microskill.technologie.decrire-la-structure-d-une-page-web-en-html": "decrire-la-structure-d-une-page-web-en-html",
+    "microskill.technologie.exploiter-une-table-de-donnees-tri-et-filtre": "exploiter-une-table-de-donnees-tri-et-filtre",
+    "microskill.technologie.analyser-un-algorithme-de-recommandation": "analyser-un-algorithme-de-recommandation",
+    "microskill.technologie.exercer-ses-droits-rgpd-sur-ses-donnees": "exercer-ses-droits-rgpd-sur-ses-donnees",
+    "microskill.technologie.choisir-la-structure-de-donnees-adaptee-pile-file-dictionnaire": "choisir-la-structure-de-donnees-adaptee-pile-file-dictionnaire",
+    "microskill.technologie.derouler-un-tri-par-insertion-ou-par-selection": "derouler-un-tri-par-insertion-ou-par-selection",
+    "microskill.technologie.appliquer-la-recherche-par-dichotomie": "appliquer-la-recherche-par-dichotomie",
+    "microskill.technologie.comparer-la-complexite-de-deux-algorithmes": "comparer-la-complexite-de-deux-algorithmes",
+    "microskill.technologie.manipuler-un-arbre-binaire-de-recherche": "manipuler-un-arbre-binaire-de-recherche",
+    "microskill.technologie.modeliser-des-donnees-avec-des-tables-et-des-cles": "modeliser-des-donnees-avec-des-tables-et-des-cles",
+    "microskill.technologie.ecrire-une-requete-sql-de-selection": "ecrire-une-requete-sql-de-selection",
+    "microskill.technologie.relier-deux-tables-par-une-cle-etrangere": "relier-deux-tables-par-une-cle-etrangere",
+    "microskill.technologie.decrire-les-roles-d-un-systeme-d-exploitation-processus-memoire-fichiers": "decrire-les-roles-d-un-systeme-d-exploitation-processus-memoire-fichiers",
+    "microskill.technologie.decrire-l-architecture-de-von-neumann": "decrire-l-architecture-de-von-neumann",
+    "microskill.technologie.rediger-un-cahier-des-charges-fonctionnel": "rediger-un-cahier-des-charges-fonctionnel",
+    "microskill.technologie.decrire-un-systeme-par-ses-chaines-d-information-et-d-energie": "decrire-un-systeme-par-ses-chaines-d-information-et-d-energie",
+    "microskill.technologie.modeliser-un-comportement-pour-le-simuler": "modeliser-un-comportement-pour-le-simuler",
+    "microskill.technologie.comparer-performances-attendues-simulees-et-mesurees": "comparer-performances-attendues-simulees-et-mesurees",
+    "microskill.technologie.evaluer-l-impact-environnemental-d-une-solution": "evaluer-l-impact-environnemental-d-une-solution"
   },
   "fiches": {
     "trigo-cercle": {
@@ -2673,6 +2771,162 @@
         "expliquer-le-role-du-doute-methodique-chez-descartes",
         "distinguer-sincerite-et-verite",
         "comparer-des-criteres-de-verite-correspondance-coherence-utilite"
+      ]
+    },
+    "objets-techniques-cm": {
+      "prerequis": [
+        "objets-electriques-et-materiaux-c2"
+      ],
+      "competences": [
+        "identifier-le-besoin-satisfait-par-un-objet-technique",
+        "decrire-la-fonction-d-un-objet-technique",
+        "choisir-un-materiau-adapte-a-une-fonction",
+        "situer-l-evolution-d-un-objet-technique-dans-le-temps"
+      ]
+    },
+    "materiaux-et-recyclage-cm": {
+      "prerequis": [
+        "objets-techniques-cm"
+      ],
+      "competences": [
+        "trier-des-dechets-selon-les-consignes-de-recyclage",
+        "appliquer-la-regle-des-3-r-reduire-reutiliser-recycler",
+        "decrire-le-cycle-de-vie-d-un-objet",
+        "expliquer-le-devenir-des-dechets-organiques-par-le-compostage"
+      ]
+    },
+    "objets-techniques-6e": {
+      "prerequis": [
+        "objets-techniques-cm"
+      ],
+      "competences": [
+        "distinguer-capteur-traitement-et-actionneur-dans-une-chaine-d-information",
+        "rediger-les-elements-d-un-cahier-des-charges-simple",
+        "choisir-un-materiau-selon-ses-proprietes",
+        "relier-un-besoin-une-fonction-et-une-solution-technique"
+      ]
+    },
+    "materiaux-et-environnement-6e": {
+      "prerequis": [
+        "materiaux-et-recyclage-cm"
+      ],
+      "competences": [
+        "classer-des-materiaux-par-famille",
+        "associer-un-materiau-a-une-propriete-conduction-biodegradabilite",
+        "comparer-l-impact-environnemental-de-deux-materiaux",
+        "justifier-une-reparation-ou-un-recyclage",
+        "expliquer-l-obsolescence-programmee"
+      ]
+    },
+    "programmation-et-robots-6e": {
+      "prerequis": [
+        "algorithmes-programmation-cm",
+        "objets-techniques-6e"
+      ],
+      "competences": [
+        "distinguer-capteur-et-actionneur-dans-un-robot",
+        "choisir-un-capteur-adapte-a-une-tache",
+        "ecrire-un-programme-avec-une-instruction-conditionnelle",
+        "ecrire-un-programme-avec-une-boucle-pour-commander-un-robot",
+        "tester-et-corriger-un-programme"
+      ]
+    },
+    "conception-et-prototypage-c4": {
+      "prerequis": [
+        "objets-techniques-6e"
+      ],
+      "competences": [
+        "formuler-un-besoin-et-un-cahier-des-charges",
+        "proposer-plusieurs-solutions-et-justifier-un-choix",
+        "realiser-un-prototype",
+        "planifier-un-test-et-interpreter-ses-resultats",
+        "ameliorer-un-prototype-apres-un-test-insuffisant"
+      ]
+    },
+    "energie-et-materiaux-c4": {
+      "prerequis": [
+        "materiaux-et-environnement-6e"
+      ],
+      "competences": [
+        "decrire-une-chaine-d-energie",
+        "distinguer-energie-renouvelable-et-energie-non-renouvelable",
+        "calculer-le-rendement-d-une-conversion",
+        "decrire-le-cycle-de-vie-d-un-produit",
+        "expliquer-l-economie-circulaire"
+      ]
+    },
+    "objets-connectes-et-programmation-c4": {
+      "prerequis": [
+        "programmation-et-robots-6e",
+        "algorithmique-et-scratch-c4"
+      ],
+      "competences": [
+        "distinguer-capteur-programme-et-actionneur-dans-un-objet-connecte",
+        "ecrire-un-programme-conditionnel-a-partir-d-un-capteur",
+        "decrire-la-communication-d-un-objet-connecte-en-reseau",
+        "identifier-les-risques-d-un-objet-connecte-et-les-protections-adaptees"
+      ]
+    },
+    "snt-internet-et-reseaux-l": {
+      "prerequis": [
+        "objets-connectes-et-programmation-c4"
+      ],
+      "competences": [
+        "expliquer-le-role-du-dns",
+        "decrire-le-routage-des-donnees-par-paquets",
+        "distinguer-ip-tcp-http-et-https",
+        "evaluer-la-securite-d-un-reseau-mot-de-passe-chiffrement",
+        "discuter-la-neutralite-du-net"
+      ]
+    },
+    "snt-donnees-et-web-l": {
+      "prerequis": [
+        "snt-internet-et-reseaux-l",
+        "numerique-et-donnees-c4"
+      ],
+      "competences": [
+        "decrire-la-structure-d-une-page-web-en-html",
+        "exploiter-une-table-de-donnees-tri-et-filtre",
+        "analyser-un-algorithme-de-recommandation",
+        "exercer-ses-droits-rgpd-sur-ses-donnees"
+      ]
+    },
+    "nsi-algorithmes-et-donnees-l": {
+      "prerequis": [
+        "algorithmique-python-l"
+      ],
+      "competences": [
+        "choisir-la-structure-de-donnees-adaptee-pile-file-dictionnaire",
+        "derouler-un-tri-par-insertion-ou-par-selection",
+        "appliquer-la-recherche-par-dichotomie",
+        "comparer-la-complexite-de-deux-algorithmes",
+        "manipuler-un-arbre-binaire-de-recherche"
+      ]
+    },
+    "nsi-bases-de-donnees-et-systemes-l": {
+      "prerequis": [
+        "nsi-algorithmes-et-donnees-l",
+        "snt-donnees-et-web-l"
+      ],
+      "competences": [
+        "modeliser-des-donnees-avec-des-tables-et-des-cles",
+        "ecrire-une-requete-sql-de-selection",
+        "relier-deux-tables-par-une-cle-etrangere",
+        "decrire-les-roles-d-un-systeme-d-exploitation-processus-memoire-fichiers",
+        "decrire-l-architecture-de-von-neumann"
+      ]
+    },
+    "si-conception-et-modelisation-l": {
+      "prerequis": [
+        "conception-et-prototypage-c4",
+        "energie-et-materiaux-c4"
+      ],
+      "competences": [
+        "rediger-un-cahier-des-charges-fonctionnel",
+        "decrire-un-systeme-par-ses-chaines-d-information-et-d-energie",
+        "modeliser-un-comportement-pour-le-simuler",
+        "comparer-performances-attendues-simulees-et-mesurees",
+        "evaluer-l-impact-environnemental-d-une-solution"
       ]
     }
   }

@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.associer-un-materiau-a-une-propriete-conduction-biodegradabilite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "microskill.technologie.associer-un-materiau-a-une-propriete-conduction-biodegradabilite",
+  "target": "skill.technologie.materiaux-et-environnement-6e"
+}

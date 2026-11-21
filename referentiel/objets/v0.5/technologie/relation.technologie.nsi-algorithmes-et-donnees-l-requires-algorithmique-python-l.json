@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.nsi-algorithmes-et-donnees-l-requires-algorithmique-python-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-algorithmes-et-donnees-l/contenu.json"
+  },
+  "source": "notion.technologie.nsi-algorithmes-et-donnees-l",
+  "target": "notion.mathematiques.algorithmique-python-l",
+  "rationale": "Boucles, fonctions et dichotomie en Python sont des préalables aux structures de données et à la complexité."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.snt-internet-et-reseaux-l-teaches-expliquer-le-role-du-dns",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-internet-et-reseaux-l/contenu.json"
+  },
+  "source": "notion.technologie.snt-internet-et-reseaux-l",
+  "target": "microskill.technologie.expliquer-le-role-du-dns"
+}

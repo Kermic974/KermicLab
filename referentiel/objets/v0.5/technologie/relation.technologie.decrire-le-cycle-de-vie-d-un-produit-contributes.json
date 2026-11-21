@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.decrire-le-cycle-de-vie-d-un-produit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-materiaux-c4/contenu.json"
+  },
+  "source": "microskill.technologie.decrire-le-cycle-de-vie-d-un-produit",
+  "target": "skill.technologie.energie-et-materiaux-c4"
+}

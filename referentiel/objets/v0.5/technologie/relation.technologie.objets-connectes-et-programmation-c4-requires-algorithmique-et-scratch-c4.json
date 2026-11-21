@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.objets-connectes-et-programmation-c4-requires-algorithmique-et-scratch-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-connectes-et-programmation-c4/contenu.json"
+  },
+  "source": "notion.technologie.objets-connectes-et-programmation-c4",
+  "target": "notion.mathematiques.algorithmique-et-scratch-c4",
+  "rationale": "Variables, boucles et conditions sont nécessaires pour écrire le programme de l’objet."
+}

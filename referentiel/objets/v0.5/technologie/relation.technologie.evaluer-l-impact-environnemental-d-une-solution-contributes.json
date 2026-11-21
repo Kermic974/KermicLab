@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.evaluer-l-impact-environnemental-d-une-solution-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/si-conception-et-modelisation-l/contenu.json"
+  },
+  "source": "microskill.technologie.evaluer-l-impact-environnemental-d-une-solution",
+  "target": "skill.technologie.si-conception-et-modelisation-l"
+}

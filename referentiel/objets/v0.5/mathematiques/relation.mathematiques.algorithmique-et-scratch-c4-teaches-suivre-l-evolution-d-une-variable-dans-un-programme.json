@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.algorithmique-et-scratch-c4-teaches-suivre-l-evolution-d-une-variable-dans-un-programme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-et-scratch-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.algorithmique-et-scratch-c4",
+  "target": "microskill.mathematiques.suivre-l-evolution-d-une-variable-dans-un-programme"
+}
