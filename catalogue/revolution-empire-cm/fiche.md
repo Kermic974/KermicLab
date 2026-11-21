@@ -2,7 +2,7 @@
 id: revolution-empire-cm
 titre: La Révolution française et l'Empire
 sujet: histoire/revolution-empire-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

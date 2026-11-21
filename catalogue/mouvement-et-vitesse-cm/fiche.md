@@ -2,7 +2,7 @@
 id: mouvement-et-vitesse-cm
 titre: Mouvement et vitesse
 sujet: physique-chimie/mouvement-et-vitesse-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

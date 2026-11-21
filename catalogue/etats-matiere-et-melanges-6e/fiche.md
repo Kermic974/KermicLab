@@ -2,7 +2,7 @@
 id: etats-matiere-et-melanges-6e
 titre: États de la matière, mélanges et masse en 6e
 sujet: physique-chimie/etats-matiere-et-melanges-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

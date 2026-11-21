@@ -2,7 +2,7 @@
 id: premieres-civilisations-6e
 titre: Mésopotamie et Égypte : les premiers États
 sujet: histoire/premieres-civilisations-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

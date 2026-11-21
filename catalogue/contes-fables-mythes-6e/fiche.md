@@ -2,7 +2,7 @@
 id: contes-fables-mythes-6e
 titre: Contes, fables et récits mythologiques
 sujet: francais/contes-fables-mythes-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

@@ -2,7 +2,7 @@
 id: mieux-habiter-cm
 titre: Mieux habiter : ville durable et risques
 sujet: geographie/mieux-habiter-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

@@ -2,7 +2,7 @@
 id: reperage-et-donnees-6e
 titre: Repérage, tableaux et graphiques en 6e
 sujet: mathematiques/reperage-et-donnees-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

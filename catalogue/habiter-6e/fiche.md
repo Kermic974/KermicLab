@@ -2,7 +2,7 @@
 id: habiter-6e
 titre: Habiter une métropole, un littoral, un désert
 sujet: geographie/habiter-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

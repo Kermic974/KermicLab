@@ -2,7 +2,7 @@
 id: formation-des-mots-cm
 titre: La formation des mots
 sujet: francais/formation-des-mots-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

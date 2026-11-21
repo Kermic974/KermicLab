@@ -2,7 +2,7 @@
 id: numerique-responsable-cm
 titre: Un usage responsable d'Internet et des écrans
 sujet: emc/numerique-responsable-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

@@ -2,7 +2,7 @@
 id: prehistoire-cm
 titre: De la Préhistoire à l'Antiquité : les premières traces
 sujet: histoire/prehistoire-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

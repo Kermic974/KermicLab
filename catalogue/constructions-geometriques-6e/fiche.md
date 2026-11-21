@@ -2,7 +2,7 @@
 id: constructions-geometriques-6e
 titre: Droites, cercles et constructions en 6e
 sujet: mathematiques/constructions-geometriques-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

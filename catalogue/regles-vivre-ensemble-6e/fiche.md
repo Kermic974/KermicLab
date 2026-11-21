@@ -2,7 +2,7 @@
 id: regles-vivre-ensemble-6e
 titre: Vivre ensemble : règles, égalité et lutte contre les discriminations
 sujet: emc/regles-vivre-ensemble-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

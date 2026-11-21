@@ -2,7 +2,7 @@
 id: eps-jeux-collectifs-et-athletisme-cm
 titre: EPS : jeux collectifs, athlétisme et natation
 sujet: eps/eps-jeux-collectifs-et-athletisme-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

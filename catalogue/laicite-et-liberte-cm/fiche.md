@@ -2,7 +2,7 @@
 id: laicite-et-liberte-cm
 titre: La laïcité et la liberté d'expression
 sujet: emc/laicite-et-liberte-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

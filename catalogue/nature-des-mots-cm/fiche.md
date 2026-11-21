@@ -2,7 +2,7 @@
 id: nature-des-mots-cm
 titre: La nature des mots
 sujet: francais/nature-des-mots-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

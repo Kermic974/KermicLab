@@ -2,7 +2,7 @@
 id: evolution-et-fossiles-cm
 titre: Fossiles et évolution des espèces
 sujet: svt/evolution-et-fossiles-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

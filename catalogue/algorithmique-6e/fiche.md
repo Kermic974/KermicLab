@@ -2,7 +2,7 @@
 id: algorithmique-6e
 titre: Algorithmes et programmation en 6e
 sujet: mathematiques/algorithmique-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

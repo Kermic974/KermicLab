@@ -2,7 +2,7 @@
 id: france-europe-monde-cm
 titre: La France, l'Europe et le monde
 sujet: geographie/france-europe-monde-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

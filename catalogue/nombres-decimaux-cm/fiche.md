@@ -2,7 +2,7 @@
 id: nombres-decimaux-cm
 titre: Les nombres décimaux au CM
 sujet: mathematiques/nombres-decimaux-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

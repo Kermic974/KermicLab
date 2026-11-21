@@ -2,7 +2,7 @@
 id: grece-et-citoyennete-6e
 titre: La Grèce antique : citoyens et démocratie
 sujet: histoire/grece-et-citoyennete-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3

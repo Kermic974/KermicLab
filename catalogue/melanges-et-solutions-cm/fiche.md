@@ -2,7 +2,7 @@
 id: melanges-et-solutions-cm
 titre: Mélanges, dissolution et séparation
 sujet: physique-chimie/melanges-et-solutions-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

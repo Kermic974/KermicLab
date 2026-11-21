@@ -2,7 +2,7 @@
 id: ecrire-un-recit-cm
 titre: Écrire un récit
 sujet: francais/ecrire-un-recit-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
