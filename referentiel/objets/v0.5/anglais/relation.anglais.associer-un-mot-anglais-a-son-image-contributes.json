@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.associer-un-mot-anglais-a-son-image-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-famille-et-animaux-c2/contenu.json"
+  },
+  "source": "microskill.anglais.associer-un-mot-anglais-a-son-image",
+  "target": "skill.anglais.anglais-famille-et-animaux-c2"
+}

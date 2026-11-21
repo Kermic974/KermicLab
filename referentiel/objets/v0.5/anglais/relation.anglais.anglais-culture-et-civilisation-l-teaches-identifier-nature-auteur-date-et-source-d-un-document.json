@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-culture-et-civilisation-l-teaches-identifier-nature-auteur-date-et-source-d-un-document",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-culture-et-civilisation-l/contenu.json"
+  },
+  "source": "notion.anglais.anglais-culture-et-civilisation-l",
+  "target": "microskill.anglais.identifier-nature-auteur-date-et-source-d-un-document"
+}

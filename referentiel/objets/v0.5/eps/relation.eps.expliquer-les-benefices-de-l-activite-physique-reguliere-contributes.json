@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.expliquer-les-benefices-de-l-activite-physique-reguliere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-performance-l/contenu.json"
+  },
+  "source": "microskill.eps.expliquer-les-benefices-de-l-activite-physique-reguliere",
+  "target": "skill.eps.eps-sante-et-performance-l"
+}

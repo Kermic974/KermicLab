@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.rapporter-des-paroles-au-discours-indirect-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-3e-c4/contenu.json"
+  },
+  "source": "microskill.anglais.rapporter-des-paroles-au-discours-indirect",
+  "target": "skill.anglais.anglais-3e-c4"
+}

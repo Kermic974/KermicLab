@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.eps-endurance-et-sports-collectifs-6e-teaches-jouer-un-role-dans-une-equipe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sports-collectifs-6e/contenu.json"
+  },
+  "source": "notion.eps.eps-endurance-et-sports-collectifs-6e",
+  "target": "microskill.eps.jouer-un-role-dans-une-equipe"
+}

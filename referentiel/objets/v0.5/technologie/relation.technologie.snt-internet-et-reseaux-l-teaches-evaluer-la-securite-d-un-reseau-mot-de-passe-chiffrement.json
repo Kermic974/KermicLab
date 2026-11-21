@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.snt-internet-et-reseaux-l-teaches-evaluer-la-securite-d-un-reseau-mot-de-passe-chiffrement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-internet-et-reseaux-l/contenu.json"
+  },
+  "source": "notion.technologie.snt-internet-et-reseaux-l",
+  "target": "microskill.technologie.evaluer-la-securite-d-un-reseau-mot-de-passe-chiffrement"
+}

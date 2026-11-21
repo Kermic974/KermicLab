@@ -5,13 +5,7 @@ sujet: arts-plastiques/arts-oeuvre-et-engagement-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 3e
-prerequis:
-  - arts-image-et-representation-c4
-competences:
-  - arts-oeuvre-et-engagement-c4-comprendre
-  - arts-oeuvre-et-engagement-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment l'art peut-il dénoncer ou témoigner ?
   - Qu'est-ce que Guernica ?
   - Qu'est-ce que l'art contemporain ?
+prerequis: arts-image-et-representation-c4
+niveaux: cycle-4
+competences: identifier-le-propos-d-une-uvre-engagee-guernica, mettre-une-uvre-en-relation-avec-son-contexte-historique, comparer-des-formes-d-art-dans-l-espace-public, defendre-un-point-de-vue-sur-une-uvre-contemporaine
 ---
 
 # Arts plastiques : art, société et engagement

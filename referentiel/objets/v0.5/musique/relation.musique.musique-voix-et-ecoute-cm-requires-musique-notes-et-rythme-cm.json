@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-voix-et-ecoute-cm-requires-musique-notes-et-rythme-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-voix-et-ecoute-cm/contenu.json"
+  },
+  "source": "notion.musique.musique-voix-et-ecoute-cm",
+  "target": "notion.musique.musique-notes-et-rythme-cm",
+  "rationale": "Les notions de hauteur, de durée et de tempo servent à chanter en canon et à décrire une œuvre."
+}

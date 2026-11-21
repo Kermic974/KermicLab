@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.anglais.anglais-vocabulaire-quotidien-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "object": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

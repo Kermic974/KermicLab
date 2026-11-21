@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-endurance-et-sports-collectifs-6e-requires-eps-sante-et-echauffement-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sports-collectifs-6e/contenu.json"
+  },
+  "source": "notion.eps.eps-endurance-et-sports-collectifs-6e",
+  "target": "notion.eps.eps-sante-et-echauffement-cm",
+  "rationale": "Échauffement et récupération sont repris pour gérer l’endurance."
+}

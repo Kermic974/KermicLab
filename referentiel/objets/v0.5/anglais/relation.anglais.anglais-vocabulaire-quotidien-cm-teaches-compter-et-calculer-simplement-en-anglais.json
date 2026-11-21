@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-vocabulaire-quotidien-cm-teaches-compter-et-calculer-simplement-en-anglais",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "target": "microskill.anglais.compter-et-calculer-simplement-en-anglais"
+}

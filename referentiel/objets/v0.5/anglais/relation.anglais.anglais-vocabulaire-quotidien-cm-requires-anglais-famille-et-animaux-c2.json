@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-vocabulaire-quotidien-cm-requires-anglais-famille-et-animaux-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "target": "notion.anglais.anglais-famille-et-animaux-c2",
+  "rationale": "Le vocabulaire de la famille et des objets est étendu aux jours, mois et nombres."
+}

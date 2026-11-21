@@ -5,13 +5,7 @@ sujet: arts-plastiques/arts-formes-et-composition-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - arts-couleurs-cm
-competences:
-  - arts-formes-et-composition-cm-comprendre
-  - arts-formes-et-composition-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment dessiner en perspective ?
   - Comment composer une image ?
   - Qui étaient Monet, Picasso et Léonard de Vinci ?
+prerequis: arts-couleurs-cm
+niveaux: cycle-3
+competences: utiliser-les-lignes-et-les-formes-dans-une-composition, representer-la-profondeur-par-la-perspective, identifier-une-uvre-celebre-et-son-auteur, comparer-deux-uvres-d-artistes
 ---
 
 # Arts plastiques : lignes, formes, perspective et artistes

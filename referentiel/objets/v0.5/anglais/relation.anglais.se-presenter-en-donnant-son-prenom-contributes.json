@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.se-presenter-en-donnant-son-prenom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "microskill.anglais.se-presenter-en-donnant-son-prenom",
+  "target": "skill.anglais.anglais-se-presenter-cm"
+}

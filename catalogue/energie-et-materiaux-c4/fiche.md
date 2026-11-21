@@ -5,13 +5,7 @@ sujet: technologie/energie-et-materiaux-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - materiaux-et-environnement-6e
-competences:
-  - energie-et-materiaux-c4-comprendre
-  - energie-et-materiaux-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment choisir un matériau durable ?
   - Qu'est-ce que l'économie circulaire ?
   - Comment réduire l'impact d'un objet ?
+prerequis: materiaux-et-environnement-6e
+niveaux: cycle-4
+competences: decrire-une-chaine-d-energie, distinguer-energie-renouvelable-et-energie-non-renouvelable, calculer-le-rendement-d-une-conversion, decrire-le-cycle-de-vie-d-un-produit, expliquer-l-economie-circulaire
 ---
 
 # Énergie, matériaux et développement durable

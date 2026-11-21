@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-lire-et-chanter-6e-teaches-distinguer-melodie-et-harmonie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-lire-et-chanter-6e/contenu.json"
+  },
+  "source": "notion.musique.musique-lire-et-chanter-6e",
+  "target": "microskill.musique.distinguer-melodie-et-harmonie"
+}

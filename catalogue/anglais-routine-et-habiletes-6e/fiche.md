@@ -5,14 +5,7 @@ sujet: anglais/anglais-routine-et-habiletes-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - anglais-gouts-et-actions-cm
-  - anglais-se-presenter-6e
-competences:
-  - anglais-routine-et-habiletes-6e-comprendre
-  - anglais-routine-et-habiletes-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment parler de sa routine en anglais en 6e ?
   - Comment utiliser can en anglais ?
   - Comment utiliser always, usually, never ?
+prerequis: anglais-gouts-et-actions-cm, anglais-se-presenter-6e
+niveaux: cycle-3
+competences: decrire-une-routine-avec-le-present-simple, utiliser-les-adverbes-de-frequence-never-always, exprimer-une-capacite-avec-can-et-can-t, exprimer-ses-gouts-avec-like-verbe-en-ing
 ---
 
 # Anglais 6e : routine quotidienne, goûts et capacités

@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.programmation-et-robots-6e-teaches-ecrire-un-programme-avec-une-boucle-pour-commander-un-robot",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/programmation-et-robots-6e/contenu.json"
+  },
+  "source": "notion.technologie.programmation-et-robots-6e",
+  "target": "microskill.technologie.ecrire-un-programme-avec-une-boucle-pour-commander-un-robot"
+}

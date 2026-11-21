@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.employer-if-preterit-past-perfect-pour-l-hypothese-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-grammaire-et-temps-l/contenu.json"
+  },
+  "source": "microskill.anglais.employer-if-preterit-past-perfect-pour-l-hypothese",
+  "target": "skill.anglais.anglais-grammaire-et-temps-l"
+}

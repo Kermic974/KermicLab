@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.materiaux-et-environnement-6e-teaches-comparer-l-impact-environnemental-de-deux-materiaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "notion.technologie.materiaux-et-environnement-6e",
+  "target": "microskill.technologie.comparer-l-impact-environnemental-de-deux-materiaux"
+}

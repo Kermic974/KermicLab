@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-lieux-et-pays-cm-teaches-nommer-des-lieux-de-la-ville",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-lieux-et-pays-cm",
+  "target": "microskill.anglais.nommer-des-lieux-de-la-ville"
+}

@@ -5,13 +5,7 @@ sujet: technologie/conception-et-prototypage-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - objets-techniques-6e
-competences:
-  - conception-et-prototypage-c4-comprendre
-  - conception-et-prototypage-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qu'est-ce qu'un prototype ?
   - Comment rédiger un cahier des charges ?
   - Comment tester une solution ?
+prerequis: objets-techniques-6e
+niveaux: cycle-4
+competences: formuler-un-besoin-et-un-cahier-des-charges, proposer-plusieurs-solutions-et-justifier-un-choix, realiser-un-prototype, planifier-un-test-et-interpreter-ses-resultats, ameliorer-un-prototype-apres-un-test-insuffisant
 ---
 
 # Technologie : concevoir, prototyper, tester

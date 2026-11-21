@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.choisir-un-materiau-adapte-a-une-fonction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-cm/contenu.json"
+  },
+  "source": "microskill.technologie.choisir-un-materiau-adapte-a-une-fonction",
+  "target": "skill.technologie.objets-techniques-cm"
+}

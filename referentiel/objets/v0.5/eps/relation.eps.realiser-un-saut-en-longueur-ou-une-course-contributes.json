@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.realiser-un-saut-en-longueur-ou-une-course-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-jeux-collectifs-et-athletisme-cm/contenu.json"
+  },
+  "source": "microskill.eps.realiser-un-saut-en-longueur-ou-une-course",
+  "target": "skill.eps.eps-jeux-collectifs-et-athletisme-cm"
+}

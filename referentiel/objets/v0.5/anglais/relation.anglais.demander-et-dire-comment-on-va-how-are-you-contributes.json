@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.demander-et-dire-comment-on-va-how-are-you-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "microskill.anglais.demander-et-dire-comment-on-va-how-are-you",
+  "target": "skill.anglais.anglais-se-presenter-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.comparer-performances-attendues-simulees-et-mesurees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/si-conception-et-modelisation-l/contenu.json"
+  },
+  "source": "microskill.technologie.comparer-performances-attendues-simulees-et-mesurees",
+  "target": "skill.technologie.si-conception-et-modelisation-l"
+}

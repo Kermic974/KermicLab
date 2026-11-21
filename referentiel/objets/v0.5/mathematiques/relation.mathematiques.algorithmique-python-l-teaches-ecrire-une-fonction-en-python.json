@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.algorithmique-python-l-teaches-ecrire-une-fonction-en-python",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-python-l/contenu.json"
+  },
+  "source": "notion.mathematiques.algorithmique-python-l",
+  "target": "microskill.mathematiques.ecrire-une-fonction-en-python"
+}

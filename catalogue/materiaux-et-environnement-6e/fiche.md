@@ -5,13 +5,7 @@ sujet: technologie/materiaux-et-environnement-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - materiaux-et-recyclage-cm
-competences:
-  - materiaux-et-environnement-6e-comprendre
-  - materiaux-et-environnement-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment choisir un matériau pour un objet en 6e ?
   - Qu'est-ce que le cycle de vie d'un objet ?
   - Qu'est-ce que l'obsolescence ?
+prerequis: materiaux-et-recyclage-cm
+niveaux: cycle-3
+competences: classer-des-materiaux-par-famille, associer-un-materiau-a-une-propriete-conduction-biodegradabilite, comparer-l-impact-environnemental-de-deux-materiaux, justifier-une-reparation-ou-un-recyclage, expliquer-l-obsolescence-programmee
 ---
 
 # Matériaux, impact environnemental et recyclage en 6e

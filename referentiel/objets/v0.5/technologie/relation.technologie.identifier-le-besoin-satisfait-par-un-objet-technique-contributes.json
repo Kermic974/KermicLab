@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.identifier-le-besoin-satisfait-par-un-objet-technique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-cm/contenu.json"
+  },
+  "source": "microskill.technologie.identifier-le-besoin-satisfait-par-un-objet-technique",
+  "target": "skill.technologie.objets-techniques-cm"
+}

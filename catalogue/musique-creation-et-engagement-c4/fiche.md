@@ -5,13 +5,7 @@ sujet: musique/musique-creation-et-engagement-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 3e
-prerequis:
-  - musique-genres-et-formes-c4
-competences:
-  - musique-creation-et-engagement-c4-comprendre
-  - musique-creation-et-engagement-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment créer une musique ?
   - Comment la musique peut-elle s'engager ?
   - Qu'est-ce que la Marseillaise ?
+prerequis: musique-genres-et-formes-c4
+niveaux: cycle-4
+competences: expliquer-le-role-de-l-harmonie-dans-un-morceau, arranger-un-morceau, analyser-un-hymne-ou-une-chanson-engagee, creer-une-courte-production-musicale
 ---
 
 # Musique : création, engagement et culture

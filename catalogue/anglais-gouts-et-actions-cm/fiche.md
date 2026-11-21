@@ -5,13 +5,7 @@ sujet: anglais/anglais-gouts-et-actions-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - anglais-vocabulaire-quotidien-cm
-competences:
-  - anglais-gouts-et-actions-cm-comprendre
-  - anglais-gouts-et-actions-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment dire ce que j'aime en anglais ?
   - Comment parler de ma journée en anglais ?
   - Comment dire la nourriture en anglais ?
+prerequis: anglais-vocabulaire-quotidien-cm
+niveaux: cycle-3
+competences: dire-ce-que-l-on-aime-et-ce-que-l-on-n-aime-pas, poser-une-question-avec-do-you-et-y-repondre, employer-le-present-simple-a-la-3e-personne, nommer-des-aliments-et-des-activites
 ---
 
 # Anglais : goûts, nourriture et actions du quotidien

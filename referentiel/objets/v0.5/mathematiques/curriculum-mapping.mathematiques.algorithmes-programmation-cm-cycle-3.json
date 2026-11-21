@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.algorithmes-programmation-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmes-programmation-cm/contenu.json"
+  },
+  "object": "notion.mathematiques.algorithmes-programmation-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

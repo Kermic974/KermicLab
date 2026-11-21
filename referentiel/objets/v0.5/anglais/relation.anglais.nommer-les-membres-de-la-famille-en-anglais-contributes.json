@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.nommer-les-membres-de-la-famille-en-anglais-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-famille-et-animaux-c2/contenu.json"
+  },
+  "source": "microskill.anglais.nommer-les-membres-de-la-famille-en-anglais",
+  "target": "skill.anglais.anglais-famille-et-animaux-c2"
+}

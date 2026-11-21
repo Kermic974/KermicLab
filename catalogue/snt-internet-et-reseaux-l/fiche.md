@@ -5,12 +5,6 @@ sujet: technologie/snt-internet-et-reseaux-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - objets-connectes-et-programmation-c4
-competences:
-  - snt-internet-et-reseaux-l-comprendre
-  - snt-internet-et-reseaux-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Qu'est-ce qu'une adresse IP ?
   - À quoi sert le DNS ?
   - Comment les données voyagent-elles ?
+prerequis: objets-connectes-et-programmation-c4
+niveaux: seconde
+competences: expliquer-le-role-du-dns, decrire-le-routage-des-donnees-par-paquets, distinguer-ip-tcp-http-et-https, evaluer-la-securite-d-un-reseau-mot-de-passe-chiffrement, discuter-la-neutralite-du-net
 ---
 
 # Internet, réseaux et protocoles

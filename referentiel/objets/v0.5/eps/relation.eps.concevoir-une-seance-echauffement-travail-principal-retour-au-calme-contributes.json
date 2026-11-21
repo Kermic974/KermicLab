@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.concevoir-une-seance-echauffement-travail-principal-retour-au-calme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-performance-l/contenu.json"
+  },
+  "source": "microskill.eps.concevoir-une-seance-echauffement-travail-principal-retour-au-calme",
+  "target": "skill.eps.eps-sante-et-performance-l"
+}

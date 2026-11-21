@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.decrire-l-architecture-de-von-neumann-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-bases-de-donnees-et-systemes-l/contenu.json"
+  },
+  "source": "microskill.technologie.decrire-l-architecture-de-von-neumann",
+  "target": "skill.technologie.nsi-bases-de-donnees-et-systemes-l"
+}

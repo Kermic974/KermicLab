@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.poser-une-question-et-nier-au-preterit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-5e-c4/contenu.json"
+  },
+  "source": "microskill.anglais.poser-une-question-et-nier-au-preterit",
+  "target": "skill.anglais.anglais-5e-c4"
+}

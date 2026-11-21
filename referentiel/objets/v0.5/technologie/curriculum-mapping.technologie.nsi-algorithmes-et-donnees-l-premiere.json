@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.technologie.nsi-algorithmes-et-donnees-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-algorithmes-et-donnees-l/contenu.json"
+  },
+  "object": "notion.technologie.nsi-algorithmes-et-donnees-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.eps-sante-et-echauffement-cm-teaches-evaluer-la-duree-d-activite-physique-quotidienne-recommandee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-echauffement-cm/contenu.json"
+  },
+  "source": "notion.eps.eps-sante-et-echauffement-cm",
+  "target": "microskill.eps.evaluer-la-duree-d-activite-physique-quotidienne-recommandee"
+}

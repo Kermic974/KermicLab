@@ -34,3 +34,24 @@ Les guardes existants du build (un prérequis ne commence pas dans une classe pl
 
 - Les 312 notions ajoutées depuis la V0 (cycles 2 à 4 et lycée) n'ont pas d'objets canoniques ; leurs liens restent à qualifier par le processus S4.
 - Relecture humaine de la pertinence des compétences et des prérequis avant de passer les objets de `draft` à `review` puis `validated`.
+
+## Technologie (matière sans objets canoniques)
+
+Première matière dont **aucun** objet canonique n'existait. 14 notions (cycles 2 à lycée) reçoivent notion, Skill, **80 MicroSkills** observables (4 à 5 par notion avec les 4 notions externes), **18 relations `requires`** (celles déjà déclarées dans les fiches, désormais canoniques et justifiées) et **22 CurriculumMappings** (niveaux inchangés). 13 fiches sont projetées : leurs `prerequis` et `niveaux` restent identiques, leurs `competences` génériques `*-comprendre/-appliquer` sont remplacées par les MicroSkills explicites.
+
+Pour que les prérequis existants restent exprimables, quatre notions **cibles d'autres matières** reçoivent des objets (sans projection de leur fiche, leurs prérequis restant déclarés dans la fiche en attendant leur matière) : `algorithmes-programmation-cm`, `algorithmique-et-scratch-c4`, `algorithmique-python-l` (mathématiques) et `numerique-et-donnees-c4` (EMC). La notion de cycle 2 `objets-electriques-et-materiaux-c2` a ses objets mais n'est pas projetée (pas de code d'étape `cycle-2` dans le schéma).
+
+Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages` et `npm test` passent.
+
+## Anglais, arts plastiques, musique et EPS (matières sans objets canoniques)
+
+Même méthode que la technologie. **35 notions** (anglais 14, arts plastiques 7, musique 7, EPS 7) reçoivent notion, Skill, **144 MicroSkills** observables (4 à 5 par notion), **36 `requires`** (ceux déjà déclarés dans les fiches, désormais canoniques et justifiés) et **40 CurriculumMappings**. 30 fiches sont projetées : leurs `prerequis`, `niveaux` et `classes` sont **identiques** (vérifié fiche par fiche), seules leurs compétences génériques `*-comprendre/-appliquer` sont remplacées. Les 5 notions de cycle 2 (`anglais-bonjour-c2`, `anglais-famille-et-animaux-c2`, `arts-couleurs-et-formes-c2`, `musique-sons-et-chansons-c2`, `eps-bouger-et-jouer-c2`) ont leurs objets sans placement ni projection (pas de code d'étape `cycle-2`).
+
+Chaque matière forme une chaîne continue du cycle 2 (ou 3) au lycée : par exemple `anglais-bonjour-c2` → `anglais-se-presenter-cm` → `anglais-se-presenter-6e` → `anglais-routine-et-habiletes-6e` → `anglais-5e-c4` → `anglais-4e-c4` → `anglais-3e-c4` → `anglais-grammaire-et-temps-l`. Aucun nouveau lien n'a été inventé : les chaînes déclarées dans les fiches étaient déjà continues.
+
+Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages`, lint et `npm test` (926 tests) passent.
+
+## Bilan des matières désormais canoniques
+
+Avec la technologie, les 14 matières hors mathématiques de référence ont des objets S4. Total des MicroSkills ajoutées sur la branche : 80 (technologie et cibles) + 144 = 224.
+

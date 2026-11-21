@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.elaborer-un-projet-de-pratique-objectif-moyens-evaluation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-performance-l/contenu.json"
+  },
+  "source": "microskill.eps.elaborer-un-projet-de-pratique-objectif-moyens-evaluation",
+  "target": "skill.eps.eps-sante-et-performance-l"
+}

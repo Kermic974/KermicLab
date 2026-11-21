@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-bonjour-c2-teaches-saluer-et-prendre-conge-en-anglais",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-bonjour-c2/contenu.json"
+  },
+  "source": "notion.anglais.anglais-bonjour-c2",
+  "target": "microskill.anglais.saluer-et-prendre-conge-en-anglais"
+}

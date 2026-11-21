@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.energie-et-materiaux-c4-teaches-expliquer-l-economie-circulaire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-materiaux-c4/contenu.json"
+  },
+  "source": "notion.technologie.energie-et-materiaux-c4",
+  "target": "microskill.technologie.expliquer-l-economie-circulaire"
+}

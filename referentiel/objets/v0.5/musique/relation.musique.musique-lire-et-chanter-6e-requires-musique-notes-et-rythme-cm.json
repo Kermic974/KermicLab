@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-lire-et-chanter-6e-requires-musique-notes-et-rythme-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-lire-et-chanter-6e/contenu.json"
+  },
+  "source": "notion.musique.musique-lire-et-chanter-6e",
+  "target": "notion.musique.musique-notes-et-rythme-cm",
+  "rationale": "Les durées et familles d’instruments du CM sont réutilisées."
+}

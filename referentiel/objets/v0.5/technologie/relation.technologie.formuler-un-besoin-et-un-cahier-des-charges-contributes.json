@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.formuler-un-besoin-et-un-cahier-des-charges-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conception-et-prototypage-c4/contenu.json"
+  },
+  "source": "microskill.technologie.formuler-un-besoin-et-un-cahier-des-charges",
+  "target": "skill.technologie.conception-et-prototypage-c4"
+}

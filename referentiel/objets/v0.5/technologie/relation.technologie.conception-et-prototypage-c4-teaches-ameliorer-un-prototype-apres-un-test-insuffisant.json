@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.conception-et-prototypage-c4-teaches-ameliorer-un-prototype-apres-un-test-insuffisant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conception-et-prototypage-c4/contenu.json"
+  },
+  "source": "notion.technologie.conception-et-prototypage-c4",
+  "target": "microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant"
+}

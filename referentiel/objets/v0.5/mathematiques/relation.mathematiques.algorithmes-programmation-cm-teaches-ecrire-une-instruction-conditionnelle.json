@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.algorithmes-programmation-cm-teaches-ecrire-une-instruction-conditionnelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmes-programmation-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.algorithmes-programmation-cm",
+  "target": "microskill.mathematiques.ecrire-une-instruction-conditionnelle"
+}

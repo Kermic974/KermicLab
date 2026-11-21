@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-routine-et-habiletes-6e-requires-anglais-se-presenter-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-routine-et-habiletes-6e/contenu.json"
+  },
+  "source": "notion.anglais.anglais-routine-et-habiletes-6e",
+  "target": "notion.anglais.anglais-se-presenter-6e",
+  "rationale": "Se présenter avec to be et have got précède la description de la routine et des capacités."
+}

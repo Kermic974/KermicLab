@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.musique.musique-ecoute-creation-et-histoire-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-ecoute-creation-et-histoire-l/contenu.json"
+  },
+  "object": "notion.musique.musique-ecoute-creation-et-histoire-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

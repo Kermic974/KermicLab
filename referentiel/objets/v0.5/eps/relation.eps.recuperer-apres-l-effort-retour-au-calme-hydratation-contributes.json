@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.recuperer-apres-l-effort-retour-au-calme-hydratation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-echauffement-cm/contenu.json"
+  },
+  "source": "microskill.eps.recuperer-apres-l-effort-retour-au-calme-hydratation",
+  "target": "skill.eps.eps-sante-et-echauffement-cm"
+}

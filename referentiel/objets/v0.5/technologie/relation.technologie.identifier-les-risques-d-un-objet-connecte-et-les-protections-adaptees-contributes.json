@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.identifier-les-risques-d-un-objet-connecte-et-les-protections-adaptees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-connectes-et-programmation-c4/contenu.json"
+  },
+  "source": "microskill.technologie.identifier-les-risques-d-un-objet-connecte-et-les-protections-adaptees",
+  "target": "skill.technologie.objets-connectes-et-programmation-c4"
+}

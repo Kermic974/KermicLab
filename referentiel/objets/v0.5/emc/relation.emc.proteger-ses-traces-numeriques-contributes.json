@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.proteger-ses-traces-numeriques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-et-donnees-c4/contenu.json"
+  },
+  "source": "microskill.emc.proteger-ses-traces-numeriques",
+  "target": "skill.emc.numerique-et-donnees-c4"
+}

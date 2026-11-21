@@ -5,13 +5,7 @@ sujet: arts-plastiques/arts-image-et-representation-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e
-prerequis:
-  - arts-representation-et-espace-6e
-competences:
-  - arts-image-et-representation-c4-comprendre
-  - arts-image-et-representation-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment une image représente-t-elle le réel ?
   - Qu'est-ce que le cadrage et le point de vue ?
   - Comment lire une œuvre au collège ?
+prerequis: arts-representation-et-espace-6e
+niveaux: cycle-4
+competences: choisir-un-cadrage-et-un-point-de-vue, distinguer-plan-large-et-gros-plan, detourner-une-image-en-modifiant-son-sens, analyser-un-dispositif-de-presentation-d-une-uvre
 ---
 
 # Arts plastiques : l'image, la représentation et les dispositifs

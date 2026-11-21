@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.se-deplacer-de-differentes-facons-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-bouger-et-jouer-c2/contenu.json"
+  },
+  "source": "microskill.eps.se-deplacer-de-differentes-facons",
+  "target": "skill.eps.eps-bouger-et-jouer-c2"
+}

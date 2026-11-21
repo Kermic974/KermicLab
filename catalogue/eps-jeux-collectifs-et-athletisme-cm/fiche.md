@@ -5,13 +5,7 @@ sujet: eps/eps-jeux-collectifs-et-athletisme-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - eps-sante-et-echauffement-cm
-competences:
-  - eps-jeux-collectifs-et-athletisme-cm-comprendre
-  - eps-jeux-collectifs-et-athletisme-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Quelles sont les épreuves d'athlétisme ?
   - Comment rester en sécurité à la piscine ?
   - Que veut dire fair-play ?
+prerequis: eps-sante-et-echauffement-cm
+niveaux: cycle-3
+competences: respecter-les-regles-d-un-jeu-collectif, realiser-un-saut-en-longueur-ou-une-course, appliquer-les-regles-de-securite-a-la-piscine, cooperer-avec-ses-partenaires
 ---
 
 # EPS : jeux collectifs, athlétisme et natation

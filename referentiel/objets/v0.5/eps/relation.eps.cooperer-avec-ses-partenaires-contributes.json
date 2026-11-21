@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.cooperer-avec-ses-partenaires-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-jeux-collectifs-et-athletisme-cm/contenu.json"
+  },
+  "source": "microskill.eps.cooperer-avec-ses-partenaires",
+  "target": "skill.eps.eps-jeux-collectifs-et-athletisme-cm"
+}

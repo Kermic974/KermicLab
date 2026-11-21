@@ -19,7 +19,7 @@ Liens envisagés mais **non créés** : incertains, bloqués par une règle ou p
 | `genetique-et-heredite` ← `reproduction-humaine` | Les gamètes sont un préalable plausible à la transmission des chromosomes, mais le lien inverse (méiose ← reproduction) est retenu et les deux notions sont du même niveau : pas de sens d'apprentissage établi. |
 | `respiration-et-circulation` ← `nutrition-et-digestion` | Les nutriments passent dans le sang, mais chaque notion reste autonome au collège. |
 | `ecosystemes-et-biodiversite` ← `photosynthese` | Les producteurs primaires relèvent des deux notions ; dépendance réciproque, aucune n'est préalable. |
-| `histoire-de-la-terre-et-datation` ← physique-chimie (`radioactivite`) | La datation absolue utilise la décroissance radioactive, mais un `requires` entre disciplines est refusé par le modèle (namespace). À décrire par une décision de périmètre. |
+| `histoire-de-la-terre-et-datation` ← physique-chimie (`radioactivite`) | La datation absolue utilise la décroissance radioactive. Correction : le validateur n'interdit pas un `requires` entre disciplines (il vérifie seulement le type de la cible) ; le lien n'est pas créé parce que la notion de physique-chimie est terminale et que la dépendance dans la fiche reste partielle. À arbitrer. |
 | `histoire-de-la-terre-et-datation` ← `evolution` | Les fossiles stratigraphiques supposent une idée d'évolution ; lien faible. |
 
 ## SES
@@ -62,4 +62,18 @@ Liens envisagés mais **non créés** : incertains, bloqués par une règle ou p
 ## Philosophie
 
 Aucun `requires` n'est créé : les notions sont en rapport conceptuel sans ordre d'apprentissage strict. 14 relations `relatedTo` justifient les voisinages utiles (ex. `raison`–`science`, `etat`–`liberte-philosophie`). D'autres rapprochements possibles (`langage`–`verite`, `justice-philosophie`–`devoir`) n'ont pas été retenus faute d'ancrage dans les sections des fiches.
+
+## Technologie
+
+| Lien envisagé | Raison de l'écart |
+|---|---|
+| Nouveaux `requires` entre notions de technologie | Aucun ajouté : le graphe déjà déclaré dans les fiches (objets, matériaux, programmation, réseaux, NSI, sciences de l'ingénieur) couvre les dépendances justifiées par les sections. |
+| `objets-electriques-et-materiaux-c2` projeté vers la fiche | Les niveaux de cycle 2 ne sont pas projetables : l'énumération des codes d'étape du schéma `stage` s'arrête à `cycle-3`. Les objets existent, sans CurriculumMapping ; l'ajout de `cycle-2` au contrat est une décision de schéma à prendre (ADR). |
+
+## Anglais, arts plastiques, musique, EPS
+
+| Lien envisagé | Raison de l'écart |
+|---|---|
+| Liens entre matières (anglais ↔ français, musique ↔ arts, EPS ↔ SVT) | Aucune dépendance cognitive établie dans les fiches ; relations thématiques seulement. À exprimer en `relatedTo` si la relecture le juge utile. |
+| Prérequis supplémentaires à l'intérieur d'une matière | Aucun : les chaînes déclarées dans les fiches sont déjà continues du cycle 2 (ou 3) au lycée. |
 

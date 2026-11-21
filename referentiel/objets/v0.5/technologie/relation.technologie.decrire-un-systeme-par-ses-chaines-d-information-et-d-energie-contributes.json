@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.decrire-un-systeme-par-ses-chaines-d-information-et-d-energie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/si-conception-et-modelisation-l/contenu.json"
+  },
+  "source": "microskill.technologie.decrire-un-systeme-par-ses-chaines-d-information-et-d-energie",
+  "target": "skill.technologie.si-conception-et-modelisation-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.arts-oeuvre-et-engagement-c4-teaches-comparer-des-formes-d-art-dans-l-espace-public",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-oeuvre-et-engagement-c4/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-oeuvre-et-engagement-c4",
+  "target": "microskill.arts-plastiques.comparer-des-formes-d-art-dans-l-espace-public"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-sons-et-chansons-c2-teaches-chanter-en-groupe-avec-justesse",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-sons-et-chansons-c2/contenu.json"
+  },
+  "source": "notion.musique.musique-sons-et-chansons-c2",
+  "target": "microskill.musique.chanter-en-groupe-avec-justesse"
+}

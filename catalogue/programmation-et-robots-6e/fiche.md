@@ -5,14 +5,7 @@ sujet: technologie/programmation-et-robots-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - algorithmes-programmation-cm
-  - objets-techniques-6e
-competences:
-  - programmation-et-robots-6e-comprendre
-  - programmation-et-robots-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment programmer un robot en 6e ?
   - Qu'est-ce qu'un capteur et un actionneur ?
   - Comment fonctionne une barrière automatique ?
+prerequis: algorithmes-programmation-cm, objets-techniques-6e
+niveaux: cycle-3
+competences: distinguer-capteur-et-actionneur-dans-un-robot, choisir-un-capteur-adapte-a-une-tache, ecrire-un-programme-avec-une-instruction-conditionnelle, ecrire-un-programme-avec-une-boucle-pour-commander-un-robot, tester-et-corriger-un-programme
 ---
 
 # Programmer un objet : capteurs, algorithmes et robots

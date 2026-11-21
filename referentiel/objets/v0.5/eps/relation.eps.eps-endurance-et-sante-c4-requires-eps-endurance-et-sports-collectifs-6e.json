@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-endurance-et-sante-c4-requires-eps-endurance-et-sports-collectifs-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sante-c4/contenu.json"
+  },
+  "source": "notion.eps.eps-endurance-et-sante-c4",
+  "target": "notion.eps.eps-endurance-et-sports-collectifs-6e",
+  "rationale": "La gestion de l’effort et de l’endurance de la 6e conduit à connaître ses limites et planifier."
+}

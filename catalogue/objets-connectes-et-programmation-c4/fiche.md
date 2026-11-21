@@ -5,14 +5,7 @@ sujet: technologie/objets-connectes-et-programmation-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e, 3e
-prerequis:
-  - programmation-et-robots-6e
-  - algorithmique-et-scratch-c4
-competences:
-  - objets-connectes-et-programmation-c4-comprendre
-  - objets-connectes-et-programmation-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Comment programmer une carte programmable ?
   - Comment fonctionne un réseau informatique ?
   - Qu'est-ce que l'Internet des objets ?
+prerequis: programmation-et-robots-6e, algorithmique-et-scratch-c4
+niveaux: cycle-4
+competences: distinguer-capteur-programme-et-actionneur-dans-un-objet-connecte, ecrire-un-programme-conditionnel-a-partir-d-un-capteur, decrire-la-communication-d-un-objet-connecte-en-reseau, identifier-les-risques-d-un-objet-connecte-et-les-protections-adaptees
 ---
 
 # Objets connectés, capteurs et programmation
