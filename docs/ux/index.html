@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.76.0 · 2026-11-21</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/f8ea902014a8853f1e91414276f75461565f3d0d" target="_blank" rel="noopener noreferrer" data-lien-actif>f8ea902</a>.
+  <strong>Squelette v1.77.0 · 2026-11-21</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/2eb5eb142ef1737ddcb7fdfb38ed97a905317a69" target="_blank" rel="noopener noreferrer" data-lien-actif>2eb5eb1</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -80,7 +80,7 @@
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, onze écrans (ADR 0026, 0031)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>93ca09d1ef0bf4010d7a8990c75f647ed21600ce2c86dafe28cf1f1aae25c5f8</code><br>Empreinte du squelette hors cartouche : <code>97d5a4a9dc2ed5cc550b9a8d56ec512c69c29e769247a718310c2d5aa967ae78</code></p>
+    <p>Empreinte des sources : <code>2d01349313555d53a5c29935c22cf0e045e00de62c372bf36b26aeba4fb6edfa</code><br>Empreinte du squelette hors cartouche : <code>fa7250be51f2d7539a6f86a60291bd6d2e2da8fc9e2dfd78c1ae3d77ea1a5c3c</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -156,6 +156,7 @@
       </section>
       <section class="ecran" id="accueil" data-ecran="accueil" data-vue-active="accueil" data-source="web/index.html:accueil">
         <span class="repere">S02 · Accueil : point de départ court</span><h2>Bonjour Explorateur 👋</h2><p>Prêt à comprendre quelque chose de nouveau ?</p>
+        <p class="note">Titre et accroche forment un bandeau en dégradé à la couleur de l'espace courant (ADR 0038) : Accueil et vues personnelles suivent la charte, Éducation bleu, Labs violet, Jeux ambre, Progression vert, Famille sarcelle, Professeur indigo, Contributions orange ; texte blanc au contraste AA en clair comme en sombre.</p>
         <div class="actions"><a class="bouton" href="#progression">🔥 3 j · Niv. 2 · Ma progression</a><button disabled>Activer le mode sombre</button><label>Langue<select disabled><option>Français</option><option>English</option></select></label></div>
         <p>Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</p>
         <article class="carte" data-source="web/index.html:question-accueil"><h3>Qu'est-ce que tu veux comprendre aujourd'hui ?</h3><label>Ex. : c'est quoi le sinus ?<input disabled></label><a class="bouton" href="#conversation">Envoyer</a><p>C'est quoi le sinus ? · autres questions d'exemple du catalogue</p><p class="note">La question, saisie ou choisie parmi les exemples, obtient sa réponse sous le champ, incrustée dans l'accueil (même fil que le chat, dont le panneau flottant reste fermé). Mêmes exemples que le message d'accueil du fil.</p></article>
