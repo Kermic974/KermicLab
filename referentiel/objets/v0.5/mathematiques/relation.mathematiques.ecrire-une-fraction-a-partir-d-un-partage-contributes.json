@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ecrire-une-fraction-a-partir-d-un-partage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-simples-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.ecrire-une-fraction-a-partir-d-un-partage",
+  "target": "skill.mathematiques.fractions-simples-c2"
+}

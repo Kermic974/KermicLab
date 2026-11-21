@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tableaux-graphiques-cm-teaches-lire-un-diagramme-en-barres",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-graphiques-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.tableaux-graphiques-cm",
+  "target": "microskill.mathematiques.lire-un-diagramme-en-barres"
+}

@@ -5,14 +5,7 @@ sujet: geographie/habiter-une-metropole-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - mieux-habiter-cm
-  - habiter-ville-campagne-cm
-competences:
-  - habiter-une-metropole-6e-comprendre
-  - habiter-une-metropole-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce qu'une métropole ?
   - Quels problèmes rencontre-t-on dans une grande métropole ?
   - Comment aménager une métropole ?
+prerequis: mieux-habiter-cm, habiter-ville-campagne-cm
+niveaux: cycle-3
+competences: caracteriser-une-metropole-par-ses-services-et-ses-reseaux, identifier-un-defi-de-la-metropole-transport-logement, distinguer-des-transports-collectifs, comparer-centre-et-peripherie-d-une-metropole
 ---
 
 # Habiter une métropole

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tableaux-et-algorithmes-c2-teaches-prevoir-le-resultat-d-une-boucle-simple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-et-algorithmes-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.tableaux-et-algorithmes-c2",
+  "target": "microskill.mathematiques.prevoir-le-resultat-d-une-boucle-simple"
+}

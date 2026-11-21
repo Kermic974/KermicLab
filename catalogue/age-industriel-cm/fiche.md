@@ -5,13 +5,7 @@ sujet: histoire/age-industriel-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - revolution-empire-cm
-competences:
-  - age-industriel-cm-comprendre
-  - age-industriel-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Comment vivaient les ouvriers au XIXe siècle ?
   - Pourquoi construit-on des chemins de fer ?
   - Pourquoi la tour Eiffel a-t-elle été construite ?
+prerequis: revolution-empire-cm
+niveaux: cycle-3
+competences: identifier-l-energie-de-la-machine-a-vapeur, expliquer-l-exode-rural, situer-l-exposition-universelle-et-la-tour-eiffel, decrire-la-condition-des-ouvriers-et-des-enfants-au-travail
 ---
 
 # L'âge industriel en France

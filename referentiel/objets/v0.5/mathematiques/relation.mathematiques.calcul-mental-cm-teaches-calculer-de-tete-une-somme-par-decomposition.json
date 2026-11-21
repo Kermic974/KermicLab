@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-mental-cm-teaches-calculer-de-tete-une-somme-par-decomposition",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-mental-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.calcul-mental-cm",
+  "target": "microskill.mathematiques.calculer-de-tete-une-somme-par-decomposition"
+}

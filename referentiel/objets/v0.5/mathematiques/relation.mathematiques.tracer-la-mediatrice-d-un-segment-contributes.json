@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tracer-la-mediatrice-d-un-segment-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/constructions-geometriques-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.tracer-la-mediatrice-d-un-segment",
+  "target": "skill.mathematiques.constructions-geometriques-6e"
+}

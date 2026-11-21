@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.addition-soustraction-posees-cm-teaches-verifier-une-soustraction-par-une-addition",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-soustraction-posees-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.addition-soustraction-posees-cm",
+  "target": "microskill.mathematiques.verifier-une-soustraction-par-une-addition"
+}

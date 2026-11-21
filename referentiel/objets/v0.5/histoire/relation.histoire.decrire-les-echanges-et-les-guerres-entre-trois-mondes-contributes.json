@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-les-echanges-et-les-guerres-entre-trois-mondes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chretientes-et-islam-c4/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-les-echanges-et-les-guerres-entre-trois-mondes",
+  "target": "skill.histoire.chretientes-et-islam-c4"
+}

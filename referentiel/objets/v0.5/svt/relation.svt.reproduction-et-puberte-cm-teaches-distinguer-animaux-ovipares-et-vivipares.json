@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reproduction-et-puberte-cm-teaches-distinguer-animaux-ovipares-et-vivipares",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-et-puberte-cm/contenu.json"
+  },
+  "source": "notion.svt.reproduction-et-puberte-cm",
+  "target": "microskill.svt.distinguer-animaux-ovipares-et-vivipares"
+}

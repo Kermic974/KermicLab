@@ -5,13 +5,6 @@ sujet: mathematiques/nombres-complexes-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - second-degre
-  - trigonometrie-radian-l
-competences:
-  - nombres-complexes-l-comprendre
-  - nombres-complexes-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment calculer le module d'un complexe ?
   - À quoi sert le conjugué ?
   - Comment passer à la forme trigonométrique ?
+prerequis: second-degre, trigonometrie-radian-l
+niveaux: terminale
+competences: calculer-avec-i, effectuer-un-produit-de-nombres-complexes, calculer-le-module-d-un-nombre-complexe, determiner-un-argument
 ---
 
 # Nombres complexes : forme algébrique et module

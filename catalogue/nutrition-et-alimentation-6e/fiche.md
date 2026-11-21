@@ -5,14 +5,7 @@ sujet: svt/nutrition-et-alimentation-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - alimentation-digestion-cm
-  - developpement-vegetaux-cm
-competences:
-  - nutrition-et-alimentation-6e-comprendre
-  - nutrition-et-alimentation-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - De quoi un organisme a-t-il besoin pour se nourrir en 6e ?
   - D'où viennent les aliments que nous mangeons ?
   - Comment choisir une alimentation équilibrée en 6e ?
+prerequis: alimentation-digestion-cm, developpement-vegetaux-cm
+niveaux: cycle-3
+competences: distinguer-aliment-d-origine-animale-et-vegetale, expliquer-comment-un-vegetal-fabrique-sa-matiere, associer-un-nutriment-a-son-role-proteines, equilibrer-une-journee-alimentaire
 ---
 
 # Nutrition et alimentation en 6e

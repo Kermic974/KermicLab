@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.compter-faces-aretes-et-sommets-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.compter-faces-aretes-et-sommets",
+  "target": "skill.mathematiques.solides-cm"
+}

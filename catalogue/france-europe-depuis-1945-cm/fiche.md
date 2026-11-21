@@ -5,13 +5,7 @@ sujet: histoire/france-europe-depuis-1945-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - guerres-mondiales-cm
-competences:
-  - france-europe-depuis-1945-cm-comprendre
-  - france-europe-depuis-1945-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Qu'est-ce que la Ve République ?
   - Pourquoi l'Europe s'est-elle unie après 1945 ?
   - Depuis quand utilise-t-on l'euro ?
+prerequis: guerres-mondiales-cm
+niveaux: cycle-3
+competences: situer-la-naissance-de-la-ve-republique, expliquer-l-objectif-de-la-construction-europeenne, definir-l-euro, decrire-la-france-d-apres-guerre
 ---
 
 # La France depuis 1945 et la construction européenne

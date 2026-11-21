@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerre-froide-et-decolonisation-l-teaches-situer-la-disparition-de-l-urss",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide-et-decolonisation-l/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide-et-decolonisation-l",
+  "target": "microskill.histoire.situer-la-disparition-de-l-urss"
+}

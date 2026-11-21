@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accords-cm-teaches-reperer-et-corriger-une-erreur-d-accord",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords-cm/contenu.json"
+  },
+  "source": "notion.francais.accords-cm",
+  "target": "microskill.francais.reperer-et-corriger-une-erreur-d-accord"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-probleme-d-addition-ou-de-soustraction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-probleme-d-addition-ou-de-soustraction",
+  "target": "skill.mathematiques.problemes-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-sujet-et-verbe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sujet-verbe-complements-6e/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-sujet-et-verbe",
+  "target": "skill.francais.sujet-verbe-complements-6e"
+}

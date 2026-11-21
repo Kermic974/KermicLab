@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.definir-le-microbiote-intestinal-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "source": "microskill.svt.definir-le-microbiote-intestinal",
+  "target": "skill.svt.microbiote-et-sante-l"
+}

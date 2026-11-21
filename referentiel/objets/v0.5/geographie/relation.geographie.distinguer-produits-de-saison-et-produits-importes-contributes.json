@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-produits-de-saison-et-produits-importes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-ressources-cm/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-produits-de-saison-et-produits-importes",
+  "target": "skill.geographie.paysages-et-ressources-cm"
+}

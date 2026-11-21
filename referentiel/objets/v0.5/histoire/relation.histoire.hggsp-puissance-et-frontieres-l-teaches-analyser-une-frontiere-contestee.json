@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.hggsp-puissance-et-frontieres-l-teaches-analyser-une-frontiere-contestee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-puissance-et-frontieres-l/contenu.json"
+  },
+  "source": "notion.histoire.hggsp-puissance-et-frontieres-l",
+  "target": "microskill.histoire.analyser-une-frontiere-contestee"
+}

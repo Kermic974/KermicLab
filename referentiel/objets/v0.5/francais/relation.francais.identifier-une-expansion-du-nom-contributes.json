@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-une-expansion-du-nom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-de-la-phrase-5e-c4/contenu.json"
+  },
+  "source": "microskill.francais.identifier-une-expansion-du-nom",
+  "target": "skill.francais.grammaire-de-la-phrase-5e-c4"
+}

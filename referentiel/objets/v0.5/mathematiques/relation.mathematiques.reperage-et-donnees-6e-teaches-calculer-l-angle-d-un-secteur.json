@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reperage-et-donnees-6e-teaches-calculer-l-angle-d-un-secteur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-et-donnees-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.reperage-et-donnees-6e",
+  "target": "microskill.mathematiques.calculer-l-angle-d-un-secteur"
+}

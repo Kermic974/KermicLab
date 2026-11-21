@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.geometrie-repere-l-requires-racines-carrees-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/geometrie-repere-l/contenu.json"
+  },
+  "source": "notion.mathematiques.geometrie-repere-l",
+  "target": "notion.mathematiques.racines-carrees-c4",
+  "rationale": "Prérequis déclaré dans la fiche : « Les racines carrées » précède « Géométrie repérée : distances, milieux et équations de droites » dans la progression du programme (lien à relire)."
+}

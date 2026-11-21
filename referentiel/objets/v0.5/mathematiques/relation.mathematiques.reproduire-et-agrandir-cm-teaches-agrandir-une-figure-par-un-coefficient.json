@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reproduire-et-agrandir-cm-teaches-agrandir-une-figure-par-un-coefficient",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduire-et-agrandir-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.reproduire-et-agrandir-cm",
+  "target": "microskill.mathematiques.agrandir-une-figure-par-un-coefficient"
+}

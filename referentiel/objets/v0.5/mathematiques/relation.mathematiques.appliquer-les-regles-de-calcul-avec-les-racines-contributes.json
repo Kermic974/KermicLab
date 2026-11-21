@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.appliquer-les-regles-de-calcul-avec-les-racines-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/racines-carrees-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.appliquer-les-regles-de-calcul-avec-les-racines",
+  "target": "skill.mathematiques.racines-carrees-c4"
+}

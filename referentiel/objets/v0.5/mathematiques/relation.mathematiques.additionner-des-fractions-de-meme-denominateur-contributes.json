@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.additionner-des-fractions-de-meme-denominateur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-operations-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.additionner-des-fractions-de-meme-denominateur",
+  "target": "skill.mathematiques.fractions-operations-cm"
+}

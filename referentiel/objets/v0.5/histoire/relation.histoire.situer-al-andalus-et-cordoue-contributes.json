@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-al-andalus-et-cordoue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mediterranee-medievale-l/contenu.json"
+  },
+  "source": "microskill.histoire.situer-al-andalus-et-cordoue",
+  "target": "skill.histoire.mediterranee-medievale-l"
+}

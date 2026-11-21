@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-les-exclus-de-la-citoyennete-athenienne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite-democratie-et-empire-l/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-les-exclus-de-la-citoyennete-athenienne",
+  "target": "skill.histoire.antiquite-democratie-et-empire-l"
+}

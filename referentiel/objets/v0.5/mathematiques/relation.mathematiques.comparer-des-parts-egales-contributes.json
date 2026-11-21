@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-des-parts-egales-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-simples-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.comparer-des-parts-egales",
+  "target": "skill.mathematiques.fractions-simples-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.soleil-et-energie-terrestre-l-teaches-prevoir-l-effet-d-une-hausse-des-gaz-a-effet-de-serre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soleil-et-energie-terrestre-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.soleil-et-energie-terrestre-l",
+  "target": "microskill.physique-chimie.prevoir-l-effet-d-une-hausse-des-gaz-a-effet-de-serre"
+}

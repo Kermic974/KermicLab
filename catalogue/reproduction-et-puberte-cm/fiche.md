@@ -5,13 +5,7 @@ sujet: svt/reproduction-et-puberte-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - classification-du-vivant-cm
-competences:
-  - reproduction-et-puberte-cm-comprendre
-  - reproduction-et-puberte-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment naît un bébé ?
   - Qu'est-ce que la puberté ?
   - Comment les animaux se reproduisent-ils ?
+prerequis: classification-du-vivant-cm
+niveaux: cycle-3
+competences: distinguer-animaux-ovipares-et-vivipares, decrire-les-changements-de-la-puberte, situer-la-duree-de-la-grossesse-humaine, decrire-le-cycle-de-vie-humain
 ---
 
 # Naissance, croissance et puberté

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-la-moitie-le-tiers-et-le-quart-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-simples-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-la-moitie-le-tiers-et-le-quart",
+  "target": "skill.mathematiques.fractions-simples-c2"
+}

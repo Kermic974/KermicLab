@@ -5,13 +5,6 @@ sujet: mathematiques/convexite-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - derivation
-  - limites-et-continuite
-competences:
-  - convexite-l-comprendre
-  - convexite-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - À quoi sert la dérivée seconde ?
   - Qu'est-ce qu'un point d'inflexion ?
   - Où se situe la courbe par rapport à ses tangentes ?
+prerequis: derivation, limites-et-continuite
+niveaux: terminale
+competences: reconnaitre-une-fonction-convexe-ou-concave, etudier-la-convexite-avec-le-signe-de-la-derivee-seconde, determiner-un-point-d-inflexion, interpreter-la-position-d-une-courbe-par-rapport-a-ses-tangentes
 ---
 
 # Convexité, dérivée seconde et points d'inflexion

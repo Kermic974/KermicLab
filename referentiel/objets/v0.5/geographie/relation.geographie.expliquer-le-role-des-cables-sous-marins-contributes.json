@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-le-role-des-cables-sous-marins-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-le-role-des-cables-sous-marins",
+  "target": "skill.geographie.communiquer-numerique-cm"
+}

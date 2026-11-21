@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.notion-de-fonction-c4-requires-calcul-litteral",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/notion-de-fonction-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.notion-de-fonction-c4",
+  "target": "notion.mathematiques.calcul-litteral",
+  "rationale": "Prérequis déclaré dans la fiche : « Le calcul littéral » précède « La notion de fonction » dans la progression du programme (lien à relire)."
+}

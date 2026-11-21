@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.philosophie-liberte-et-justice-l-teaches-expliquer-l-autonomie-morale-chez-kant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "notion.philosophie.philosophie-liberte-et-justice-l",
+  "target": "microskill.philosophie.expliquer-l-autonomie-morale-chez-kant"
+}

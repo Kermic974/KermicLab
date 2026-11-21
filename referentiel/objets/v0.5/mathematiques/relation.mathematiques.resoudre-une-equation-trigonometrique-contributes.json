@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-une-equation-trigonometrique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-radian-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-une-equation-trigonometrique",
+  "target": "skill.mathematiques.trigonometrie-radian-l"
+}

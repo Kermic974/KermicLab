@@ -5,13 +5,7 @@ sujet: physique-chimie/mouvement-et-vitesse-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - mouvement-et-vitesse-cm
-competences:
-  - mouvement-et-vitesse-6e-comprendre
-  - mouvement-et-vitesse-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment décrire un mouvement en 6e ?
   - Comment calculer une vitesse moyenne en 6e ?
   - Qu'est-ce qu'un référentiel ?
+prerequis: mouvement-et-vitesse-cm
+niveaux: cycle-3
+competences: calculer-une-vitesse-moyenne-en-6e, convertir-une-vitesse-entre-m-s-et-km-h-en-6e, calculer-une-distance-a-partir-d-une-vitesse-et-d-une-duree, decrire-un-mouvement-dans-un-referentiel-en-6e
 ---
 
 # Mouvement, vitesse et référentiel en 6e

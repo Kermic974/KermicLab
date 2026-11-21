@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.transformations-chimiques-c4-teaches-distinguer-reactifs-et-produits",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/transformations-chimiques-c4/contenu.json"
+  },
+  "source": "notion.physique-chimie.transformations-chimiques-c4",
+  "target": "microskill.physique-chimie.distinguer-reactifs-et-produits"
+}

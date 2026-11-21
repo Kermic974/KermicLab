@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.statistiques-et-echantillonnage-l-requires-statistiques",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques-et-echantillonnage-l/contenu.json"
+  },
+  "source": "notion.mathematiques.statistiques-et-echantillonnage-l",
+  "target": "notion.mathematiques.statistiques",
+  "rationale": "Prérequis déclaré dans la fiche : « Les statistiques » précède « Statistiques, probabilités et échantillonnage en seconde » dans la progression du programme (lien à relire)."
+}

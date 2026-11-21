@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.proposer-un-geste-de-protection-de-la-biodiversite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "microskill.svt.proposer-un-geste-de-protection-de-la-biodiversite",
+  "target": "skill.svt.biodiversite-et-chaines-cm"
+}

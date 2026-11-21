@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.division-euclidienne-cm-teaches-expliquer-pourquoi-un-reste-est-inferieur-au-diviseur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-euclidienne-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.division-euclidienne-cm",
+  "target": "microskill.mathematiques.expliquer-pourquoi-un-reste-est-inferieur-au-diviseur"
+}

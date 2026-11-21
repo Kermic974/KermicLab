@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-la-societe-du-xiiie-siecle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-ix-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-la-societe-du-xiiie-siecle",
+  "target": "skill.histoire.louis-ix-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-l-inegalite-de-concentration-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-et-concentration-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-l-inegalite-de-concentration",
+  "target": "skill.mathematiques.lois-et-concentration-l"
+}

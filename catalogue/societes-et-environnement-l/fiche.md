@@ -5,13 +5,6 @@ sujet: geographie/societes-et-environnement-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - risques-naturels
-  - ressources
-competences:
-  - societes-et-environnement-l-comprendre
-  - societes-et-environnement-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce que le développement durable ?
   - Qu'est-ce que la vulnérabilité d'un territoire ?
   - Qu'est-ce que l'empreinte écologique ?
+prerequis: risques-naturels, ressources
+niveaux: seconde
+competences: distinguer-alea-enjeu-et-risque-au-lycee, interpreter-la-vulnerabilite-d-un-territoire, expliquer-les-trois-piliers-du-developpement-durable, evaluer-une-mesure-de-transition-energetique
 ---
 
 # Sociétés et environnement : risques, ressources et développement durable

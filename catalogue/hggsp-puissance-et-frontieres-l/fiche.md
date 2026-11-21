@@ -5,12 +5,6 @@ sujet: histoire/hggsp-puissance-et-frontieres-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - guerre-froide
-competences:
-  - hggsp-puissance-et-frontieres-l-comprendre
-  - hggsp-puissance-et-frontieres-l-appliquer
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Qu'est-ce que la spécialité HGGSP ?
   - Comment analyser la puissance d'un État ?
   - Qu'est-ce qu'une frontière ?
+prerequis: guerre-froide
+niveaux: premiere, terminale
+competences: definir-la-souverainete-traite-de-westphalie, distinguer-hard-power-et-soft-power, expliquer-le-role-de-la-justice-penale-internationale, analyser-une-frontiere-contestee
 ---
 
 # HGGSP : puissance, frontières et conflits

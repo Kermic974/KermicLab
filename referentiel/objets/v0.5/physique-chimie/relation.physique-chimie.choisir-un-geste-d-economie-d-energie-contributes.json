@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.choisir-un-geste-d-economie-d-energie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-sources-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.choisir-un-geste-d-economie-d-energie",
+  "target": "skill.physique-chimie.energie-et-sources-cm"
+}

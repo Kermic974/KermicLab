@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.division-et-partage-c2-requires-tables-de-multiplication-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-et-partage-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.division-et-partage-c2",
+  "target": "notion.mathematiques.tables-de-multiplication-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Multiplier : sens et tables » précède « Partager et regrouper » dans la progression du programme (lien à relire)."
+}

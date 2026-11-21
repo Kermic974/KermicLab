@@ -323,3 +323,11 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Relire les MicroSkills et les prérequis de l'anglais, des arts plastiques, de la musique et de l'EPS, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/anglais/`, `arts-plastiques/`, `musique/`, `eps/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
 | Revue du CODEOWNER et fusion de la PR du référentiel canonique (technologie, anglais, arts plastiques, musique, EPS) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
 
+## Référentiel canonique : notions ajoutées depuis la V0
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire les 1 041 MicroSkills et les 365 `requires` (justifications générées à enrichir), puis passer les objets de `draft` à `review` | `referentiel/objets/v0.5/` | Propositions pédagogiques non validées ; justifications des liens génériques | Statuts mis à jour, justifications enrichies | à faire |
+| Qualifier par le processus S4 les liens depuis les notions V0 vers les nouvelles notions | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Les prérequis des notions V0 ne se modifient pas dans la fiche | Lot S4 relu et fusionné | à faire |
+| Revue du CODEOWNER et fusion de la PR de ce lot | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+

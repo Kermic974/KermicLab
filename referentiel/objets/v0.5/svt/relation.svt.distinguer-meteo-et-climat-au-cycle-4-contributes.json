@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-meteo-et-climat-au-cycle-4-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meteo-et-climat-c4/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-meteo-et-climat-au-cycle-4",
+  "target": "skill.svt.meteo-et-climat-c4"
+}

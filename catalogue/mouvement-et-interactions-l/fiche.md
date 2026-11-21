@@ -5,13 +5,6 @@ sujet: physique-chimie/mouvement-et-interactions-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - mouvements
-  - forces-et-poids
-competences:
-  - mouvement-et-interactions-l-comprendre
-  - mouvement-et-interactions-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Que dit le principe d'inertie ?
   - Comment représenter une force ?
   - Qu'est-ce que la gravitation ?
+prerequis: mouvements, forces-et-poids
+niveaux: seconde
+competences: calculer-une-vitesse-moyenne-et-la-convertir, decrire-un-mouvement-dans-un-referentiel-au-lycee, appliquer-le-principe-d-inertie-au-lycee, representer-une-force-sur-un-schema
 ---
 
 # Mouvement et interactions : vecteur vitesse, inertie et forces

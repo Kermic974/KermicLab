@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-pma-et-pays-emergent-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-regionales-et-developpement-l/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-pma-et-pays-emergent",
+  "target": "skill.geographie.dynamiques-regionales-et-developpement-l"
+}

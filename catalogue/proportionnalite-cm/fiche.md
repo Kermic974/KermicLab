@@ -5,13 +5,7 @@ sujet: mathematiques/proportionnalite-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - multiplication-posee-cm
-competences:
-  - proportionnalite-cm-comprendre
-  - proportionnalite-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Comment faire un tableau de proportionnalité ?
   - C'est quoi le retour à l'unité ?
   - Comment calculer 25 % ou 50 % d'une quantité ?
+prerequis: multiplication-posee-cm
+niveaux: cycle-3
+competences: reconnaitre-une-situation-de-proportionnalite-au-cycle-3-cm, appliquer-le-retour-a-l-unite, completer-un-tableau-de-proportionnalite, calculer-25-ou-50-d-une-quantite
 ---
 
 # La proportionnalité

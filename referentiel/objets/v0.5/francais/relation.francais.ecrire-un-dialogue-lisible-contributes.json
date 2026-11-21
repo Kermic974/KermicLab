@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-un-dialogue-lisible-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "source": "microskill.francais.ecrire-un-dialogue-lisible",
+  "target": "skill.francais.ponctuation-et-dialogue-cm"
+}

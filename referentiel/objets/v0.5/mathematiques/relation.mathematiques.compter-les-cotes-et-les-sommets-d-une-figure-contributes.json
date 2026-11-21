@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.compter-les-cotes-et-les-sommets-d-une-figure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-planes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.compter-les-cotes-et-les-sommets-d-une-figure",
+  "target": "skill.mathematiques.figures-planes-c2"
+}

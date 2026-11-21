@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.regles-vivre-ensemble-6e-teaches-reagir-face-a-une-discrimination",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-vivre-ensemble-6e/contenu.json"
+  },
+  "source": "notion.emc.regles-vivre-ensemble-6e",
+  "target": "microskill.emc.reagir-face-a-une-discrimination"
+}

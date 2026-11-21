@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.pronoms-et-reprises-cm-teaches-eviter-les-repetitions-avec-un-pronom",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pronoms-et-reprises-cm/contenu.json"
+  },
+  "source": "notion.francais.pronoms-et-reprises-cm",
+  "target": "microskill.francais.eviter-les-repetitions-avec-un-pronom"
+}

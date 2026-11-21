@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.choisir-l-unite-de-longueur-adaptee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/longueurs-et-mesures-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.choisir-l-unite-de-longueur-adaptee",
+  "target": "skill.mathematiques.longueurs-et-mesures-c2"
+}

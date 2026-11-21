@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-les-croisades-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mediterranee-medievale-l/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-les-croisades",
+  "target": "skill.histoire.mediterranee-medievale-l"
+}

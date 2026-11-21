@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.vocabulaire-et-orthographe-c4-teaches-expliquer-un-mot-par-sa-racine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-orthographe-c4/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-orthographe-c4",
+  "target": "microskill.francais.expliquer-un-mot-par-sa-racine"
+}

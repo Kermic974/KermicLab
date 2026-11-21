@@ -5,13 +5,7 @@ sujet: histoire/societe-et-culture-au-xixe-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e
-prerequis:
-  - revolution-francaise
-competences:
-  - societe-et-culture-au-xixe-c4-comprendre
-  - societe-et-culture-au-xixe-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment la société change-t-elle au XIXe siècle ?
   - Qu'est-ce que le suffrage universel masculin ?
   - Quels sont les grands écrivains du XIXe siècle ?
+prerequis: revolution-francaise
+niveaux: cycle-4
+competences: situer-l-instauration-du-suffrage-universel-masculin, identifier-un-auteur-du-xixe-siecle-zola, decrire-l-ecole-de-jules-ferry-au-cycle-4, distinguer-les-regimes-politiques-du-xixe-siecle
 ---
 
 # Société, droits et culture au XIXe siècle

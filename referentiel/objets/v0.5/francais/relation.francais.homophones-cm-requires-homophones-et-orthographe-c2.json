@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.homophones-cm-requires-homophones-et-orthographe-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-cm/contenu.json"
+  },
+  "source": "notion.francais.homophones-cm",
+  "target": "notion.francais.homophones-et-orthographe-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Homophones et mots à connaître » précède « Les homophones grammaticaux » dans la progression du programme (lien à relire)."
+}

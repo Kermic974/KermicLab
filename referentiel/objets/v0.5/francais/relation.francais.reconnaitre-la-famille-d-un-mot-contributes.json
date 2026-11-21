@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-la-famille-d-un-mot-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-la-famille-d-un-mot",
+  "target": "skill.francais.formation-des-mots-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.problemes-a-etapes-cm-teaches-resoudre-un-probleme-a-plusieurs-etapes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-a-etapes-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.problemes-a-etapes-cm",
+  "target": "microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes"
+}

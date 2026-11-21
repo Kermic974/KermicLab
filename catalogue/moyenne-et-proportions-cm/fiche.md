@@ -5,13 +5,7 @@ sujet: mathematiques/moyenne-et-proportions-cm
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - tableaux-graphiques-cm
-competences:
-  - moyenne-et-proportions-cm-comprendre
-  - moyenne-et-proportions-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment calculer une moyenne au CM2 ?
   - Comment passer d'une proportion à un pourcentage ?
   - Comment comparer deux séries de notes ?
+prerequis: tableaux-graphiques-cm
+niveaux: cycle-3
+competences: calculer-une-moyenne, calculer-un-pourcentage-d-une-quantite, exprimer-une-proportion-en-pourcentage, interpreter-une-moyenne-dans-un-contexte
 ---
 
 # Moyenne, pourcentages et comparaison de données

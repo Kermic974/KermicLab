@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.distinguer-dissoudre-et-melanger-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/melanges-et-solutions-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.distinguer-dissoudre-et-melanger",
+  "target": "skill.physique-chimie.melanges-et-solutions-cm"
+}

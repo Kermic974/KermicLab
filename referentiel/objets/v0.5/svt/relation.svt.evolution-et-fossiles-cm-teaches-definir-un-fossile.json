@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-et-fossiles-cm-teaches-definir-un-fossile",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-fossiles-cm/contenu.json"
+  },
+  "source": "notion.svt.evolution-et-fossiles-cm",
+  "target": "microskill.svt.definir-un-fossile"
+}

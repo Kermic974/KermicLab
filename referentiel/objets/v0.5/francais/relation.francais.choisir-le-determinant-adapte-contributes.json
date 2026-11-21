@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-le-determinant-adapte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/noms-et-determinants-c2/contenu.json"
+  },
+  "source": "microskill.francais.choisir-le-determinant-adapte",
+  "target": "skill.francais.noms-et-determinants-c2"
+}

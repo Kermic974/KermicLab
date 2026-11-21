@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-un-losange-et-ses-diagonales-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/triangles-et-quadrilateres-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-un-losange-et-ses-diagonales",
+  "target": "skill.mathematiques.triangles-et-quadrilateres-6e"
+}

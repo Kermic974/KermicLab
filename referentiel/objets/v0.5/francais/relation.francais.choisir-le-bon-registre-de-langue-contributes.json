@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-le-bon-registre-de-langue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-orthographe-c4/contenu.json"
+  },
+  "source": "microskill.francais.choisir-le-bon-registre-de-langue",
+  "target": "skill.francais.vocabulaire-et-orthographe-c4"
+}

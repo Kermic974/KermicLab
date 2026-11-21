@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-travail-chomage-et-protection-l-teaches-expliquer-le-financement-de-la-protection-sociale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
+  },
+  "source": "notion.ses.ses-travail-chomage-et-protection-l",
+  "target": "microskill.ses.expliquer-le-financement-de-la-protection-sociale"
+}

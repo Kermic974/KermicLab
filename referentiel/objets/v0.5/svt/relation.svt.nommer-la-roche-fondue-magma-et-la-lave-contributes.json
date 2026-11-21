@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.nommer-la-roche-fondue-magma-et-la-lave-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volcans-et-seismes-cm/contenu.json"
+  },
+  "source": "microskill.svt.nommer-la-roche-fondue-magma-et-la-lave",
+  "target": "skill.svt.volcans-et-seismes-cm"
+}

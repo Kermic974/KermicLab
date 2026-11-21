@@ -5,13 +5,7 @@ sujet: svt/evolution-et-fossiles-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - biodiversite-et-chaines-cm
-competences:
-  - evolution-et-fossiles-cm-comprendre
-  - evolution-et-fossiles-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - C'est quoi un fossile ?
   - Pourquoi les dinosaures ont-ils disparu ?
   - Les espèces changent-elles avec le temps ?
+prerequis: biodiversite-et-chaines-cm
+niveaux: cycle-3
+competences: definir-un-fossile, situer-la-disparition-des-dinosaures-non-aviens, expliquer-l-apparition-et-la-disparition-d-especes, interpreter-un-fossile-comme-trace-du-passe
 ---
 
 # Fossiles et évolution des espèces

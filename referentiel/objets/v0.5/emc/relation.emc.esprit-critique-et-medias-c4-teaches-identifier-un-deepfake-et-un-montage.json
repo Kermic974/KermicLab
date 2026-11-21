@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.esprit-critique-et-medias-c4-teaches-identifier-un-deepfake-et-un-montage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-c4/contenu.json"
+  },
+  "source": "notion.emc.esprit-critique-et-medias-c4",
+  "target": "microskill.emc.identifier-un-deepfake-et-un-montage"
+}

@@ -5,14 +5,7 @@ sujet: physique-chimie/transformations-chimiques-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e, 3e
-prerequis:
-  - atomes-et-molecules
-  - etats-matiere-et-melanges-6e
-competences:
-  - transformations-chimiques-c4-comprendre
-  - transformations-chimiques-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Qu'est-ce que la conservation de la masse ?
   - Comment écrire une équation de réaction ?
   - Qu'est-ce qu'une combustion ?
+prerequis: atomes-et-molecules, etats-matiere-et-melanges-6e
+niveaux: cycle-4
+competences: distinguer-reactifs-et-produits, appliquer-la-conservation-de-la-masse, reconnaitre-une-transformation-chimique, ecrire-une-equation-de-reaction-equilibree
 ---
 
 # Transformations chimiques et réactions

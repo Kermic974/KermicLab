@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-probleme-d-argent-avec-des-decimaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-avec-decimaux-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-probleme-d-argent-avec-des-decimaux",
+  "target": "skill.mathematiques.calcul-avec-decimaux-cm"
+}

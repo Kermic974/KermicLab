@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-la-regle-de-l-octet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-electronique-et-liaisons-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-la-regle-de-l-octet",
+  "target": "skill.physique-chimie.structure-electronique-et-liaisons-l"
+}

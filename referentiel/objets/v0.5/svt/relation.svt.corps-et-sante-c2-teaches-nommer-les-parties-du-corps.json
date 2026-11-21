@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.corps-et-sante-c2-teaches-nommer-les-parties-du-corps",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/corps-et-sante-c2/contenu.json"
+  },
+  "source": "notion.svt.corps-et-sante-c2",
+  "target": "microskill.svt.nommer-les-parties-du-corps"
+}

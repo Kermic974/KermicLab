@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-un-recit-cm-teaches-choisir-un-verbe-de-parole-adapte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-un-recit-cm/contenu.json"
+  },
+  "source": "notion.francais.ecrire-un-recit-cm",
+  "target": "microskill.francais.choisir-un-verbe-de-parole-adapte"
+}

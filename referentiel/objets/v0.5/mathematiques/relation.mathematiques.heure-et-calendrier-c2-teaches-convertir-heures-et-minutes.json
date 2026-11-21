@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.heure-et-calendrier-c2-teaches-convertir-heures-et-minutes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/heure-et-calendrier-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.heure-et-calendrier-c2",
+  "target": "microskill.mathematiques.convertir-heures-et-minutes"
+}

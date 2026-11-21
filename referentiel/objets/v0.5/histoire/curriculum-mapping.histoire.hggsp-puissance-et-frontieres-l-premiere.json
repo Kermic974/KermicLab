@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.hggsp-puissance-et-frontieres-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-puissance-et-frontieres-l/contenu.json"
+  },
+  "object": "notion.histoire.hggsp-puissance-et-frontieres-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

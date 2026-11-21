@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.question-demographique-c4-teaches-interpreter-la-croissance-de-la-population-mondiale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/question-demographique-c4/contenu.json"
+  },
+  "source": "notion.geographie.question-demographique-c4",
+  "target": "microskill.geographie.interpreter-la-croissance-de-la-population-mondiale"
+}

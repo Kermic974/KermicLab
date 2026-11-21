@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.durees-et-horaires-cm-teaches-calculer-une-duree-entre-deux-horaires",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/durees-et-horaires-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.durees-et-horaires-cm",
+  "target": "microskill.mathematiques.calculer-une-duree-entre-deux-horaires"
+}

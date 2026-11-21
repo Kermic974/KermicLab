@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-le-role-des-aqueducs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/rome-republique-empire-6e/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-le-role-des-aqueducs",
+  "target": "skill.histoire.rome-republique-empire-6e"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.lire-une-carte-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-une-carte-cm/contenu.json"
+  },
+  "object": "notion.geographie.lire-une-carte-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

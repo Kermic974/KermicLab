@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.encadrer-une-racine-carree-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/racines-carrees-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.encadrer-une-racine-carree",
+  "target": "skill.mathematiques.racines-carrees-c4"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decomposer-en-dizaines-et-unites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-jusqu-a-100-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.decomposer-en-dizaines-et-unites",
+  "target": "skill.mathematiques.nombres-jusqu-a-100-c2"
+}

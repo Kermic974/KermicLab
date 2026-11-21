@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.trigonometrie-radian-l-requires-trigonometrie-triangle-rectangle-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-radian-l/contenu.json"
+  },
+  "source": "notion.mathematiques.trigonometrie-radian-l",
+  "target": "notion.mathematiques.trigonometrie-triangle-rectangle-c4",
+  "rationale": "Prérequis déclaré dans la fiche : « Trigonométrie dans le triangle rectangle » précède « Trigonométrie : radian, cosinus et sinus d'un réel » dans la progression du programme (lien à relire)."
+}

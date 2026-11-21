@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.expliquer-le-role-d-une-variable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.expliquer-le-role-d-une-variable",
+  "target": "skill.mathematiques.algorithmique-6e"
+}

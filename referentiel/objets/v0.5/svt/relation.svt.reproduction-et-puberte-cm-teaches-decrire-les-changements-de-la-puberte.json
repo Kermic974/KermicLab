@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reproduction-et-puberte-cm-teaches-decrire-les-changements-de-la-puberte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-et-puberte-cm/contenu.json"
+  },
+  "source": "notion.svt.reproduction-et-puberte-cm",
+  "target": "microskill.svt.decrire-les-changements-de-la-puberte"
+}

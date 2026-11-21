@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-distance-a-partir-d-une-vitesse-et-d-une-duree-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-vitesse-6e/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-distance-a-partir-d-une-vitesse-et-d-une-duree",
+  "target": "skill.physique-chimie.mouvement-et-vitesse-6e"
+}

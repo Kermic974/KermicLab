@@ -5,13 +5,7 @@ sujet: emc/devise-republique-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - republique-et-citoyens-c2
-competences:
-  - devise-republique-cm-comprendre
-  - devise-republique-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Quels sont les symboles de la France ?
   - Pourquoi chante-t-on La Marseillaise ?
   - Qui est Marianne ?
+prerequis: republique-et-citoyens-c2
+niveaux: cycle-3
+competences: citer-la-devise-de-la-republique-au-cycle-3-cm, identifier-les-symboles-de-la-republique-drapeau-marianne-hymne, expliquer-le-sens-de-liberte-egalite-fraternite, associer-un-symbole-a-la-valeur-qu-il-represente
 ---
 
 # La devise et les symboles de la République

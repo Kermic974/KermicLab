@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.respiration-circulation-cm-teaches-expliquer-les-echanges-de-gaz-dans-les-poumons",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-circulation-cm/contenu.json"
+  },
+  "source": "notion.svt.respiration-circulation-cm",
+  "target": "microskill.svt.expliquer-les-echanges-de-gaz-dans-les-poumons"
+}

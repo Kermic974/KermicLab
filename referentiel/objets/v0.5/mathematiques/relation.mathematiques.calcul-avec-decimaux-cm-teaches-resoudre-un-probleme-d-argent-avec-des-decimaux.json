@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-avec-decimaux-cm-teaches-resoudre-un-probleme-d-argent-avec-des-decimaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-avec-decimaux-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.calcul-avec-decimaux-cm",
+  "target": "microskill.mathematiques.resoudre-un-probleme-d-argent-avec-des-decimaux"
+}

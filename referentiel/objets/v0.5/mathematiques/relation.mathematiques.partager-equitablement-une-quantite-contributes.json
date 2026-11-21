@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.partager-equitablement-une-quantite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-et-partage-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.partager-equitablement-une-quantite",
+  "target": "skill.mathematiques.division-et-partage-c2"
+}

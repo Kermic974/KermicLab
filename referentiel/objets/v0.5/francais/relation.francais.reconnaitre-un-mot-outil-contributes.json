@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-un-mot-outil-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-un-mot-outil",
+  "target": "skill.francais.syllabes-et-mots-c2"
+}

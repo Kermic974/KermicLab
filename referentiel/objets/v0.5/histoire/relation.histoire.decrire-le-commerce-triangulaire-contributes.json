@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-le-commerce-triangulaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/traites-et-esclavage-c4/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-le-commerce-triangulaire",
+  "target": "skill.histoire.traites-et-esclavage-c4"
+}

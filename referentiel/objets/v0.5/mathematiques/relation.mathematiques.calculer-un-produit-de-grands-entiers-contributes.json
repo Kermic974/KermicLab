@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-produit-de-grands-entiers-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/entiers-et-operations-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-produit-de-grands-entiers",
+  "target": "skill.mathematiques.entiers-et-operations-6e"
+}

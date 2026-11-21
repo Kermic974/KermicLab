@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-l-esperance-d-une-loi-binomiale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-et-concentration-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-l-esperance-d-une-loi-binomiale",
+  "target": "skill.mathematiques.lois-et-concentration-l"
+}

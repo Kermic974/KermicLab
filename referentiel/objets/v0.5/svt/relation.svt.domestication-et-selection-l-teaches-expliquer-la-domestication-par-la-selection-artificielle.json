@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.domestication-et-selection-l-teaches-expliquer-la-domestication-par-la-selection-artificielle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "source": "notion.svt.domestication-et-selection-l",
+  "target": "microskill.svt.expliquer-la-domestication-par-la-selection-artificielle"
+}

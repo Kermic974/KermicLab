@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-une-metropole-6e-requires-habiter-ville-campagne-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-une-metropole-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-une-metropole-6e",
+  "target": "notion.geographie.habiter-ville-campagne-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Habiter en ville ou à la campagne » précède « Habiter une métropole » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-complement-d-objet-indirect-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sujet-verbe-complements-6e/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-complement-d-objet-indirect",
+  "target": "skill.francais.sujet-verbe-complements-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-les-symboles-de-la-republique-drapeau-marianne-hymne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devise-republique-cm/contenu.json"
+  },
+  "source": "microskill.emc.identifier-les-symboles-de-la-republique-drapeau-marianne-hymne",
+  "target": "skill.emc.devise-republique-cm"
+}

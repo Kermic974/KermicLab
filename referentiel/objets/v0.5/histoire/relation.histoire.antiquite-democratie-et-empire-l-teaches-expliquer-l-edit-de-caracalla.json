@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-democratie-et-empire-l-teaches-expliquer-l-edit-de-caracalla",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite-democratie-et-empire-l/contenu.json"
+  },
+  "source": "notion.histoire.antiquite-democratie-et-empire-l",
+  "target": "microskill.histoire.expliquer-l-edit-de-caracalla"
+}

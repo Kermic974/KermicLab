@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-et-sources-cm-teaches-choisir-un-geste-d-economie-d-energie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-sources-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-et-sources-cm",
+  "target": "microskill.physique-chimie.choisir-un-geste-d-economie-d-energie"
+}

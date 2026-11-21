@@ -5,13 +5,6 @@ sujet: mathematiques/ensembles-et-logique-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - nombres-relatifs
-  - equations
-competences:
-  - ensembles-et-logique-l-comprendre
-  - ensembles-et-logique-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Quelle différence entre réunion et intersection ?
   - Qu'est-ce qu'un contre-exemple ?
   - Que signifient implication et équivalence ?
+prerequis: nombres-relatifs, equations
+niveaux: seconde
+competences: determiner-l-intersection-ou-la-reunion-d-intervalles, decrire-un-intervalle-par-une-inegalite, refuter-une-proposition-par-un-contre-exemple, distinguer-condition-necessaire-et-suffisante
 ---
 
 # Ensembles, intervalles et raisonnement logique

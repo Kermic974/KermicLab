@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.situer-une-action-dans-le-passe-le-present-ou-le-futur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-des-verbes-c2/contenu.json"
+  },
+  "source": "microskill.francais.situer-une-action-dans-le-passe-le-present-ou-le-futur",
+  "target": "skill.francais.temps-des-verbes-c2"
+}

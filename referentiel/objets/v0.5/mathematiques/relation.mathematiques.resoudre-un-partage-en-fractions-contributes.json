@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-partage-en-fractions-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-simples-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-partage-en-fractions",
+  "target": "skill.mathematiques.fractions-simples-c2"
+}

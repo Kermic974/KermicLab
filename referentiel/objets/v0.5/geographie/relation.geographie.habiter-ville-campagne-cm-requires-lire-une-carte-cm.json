@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-ville-campagne-cm-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-ville-campagne-cm/contenu.json"
+  },
+  "source": "notion.geographie.habiter-ville-campagne-cm",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Lire une carte et se repérer » précède « Habiter en ville ou à la campagne » dans la progression du programme (lien à relire)."
+}

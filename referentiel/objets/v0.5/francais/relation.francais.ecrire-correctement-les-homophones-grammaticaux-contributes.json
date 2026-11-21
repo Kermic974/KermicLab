@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-correctement-les-homophones-grammaticaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-grammaticale-6e/contenu.json"
+  },
+  "source": "microskill.francais.ecrire-correctement-les-homophones-grammaticaux",
+  "target": "skill.francais.orthographe-grammaticale-6e"
+}

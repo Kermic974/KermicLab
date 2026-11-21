@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-jusqu-a-1000-c2-teaches-comparer-des-nombres-de-trois-chiffres",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-jusqu-a-1000-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-jusqu-a-1000-c2",
+  "target": "microskill.mathematiques.comparer-des-nombres-de-trois-chiffres"
+}

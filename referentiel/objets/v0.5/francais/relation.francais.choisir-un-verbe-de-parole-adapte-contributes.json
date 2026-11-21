@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-un-verbe-de-parole-adapte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-un-recit-cm/contenu.json"
+  },
+  "source": "microskill.francais.choisir-un-verbe-de-parole-adapte",
+  "target": "skill.francais.ecrire-un-recit-cm"
+}

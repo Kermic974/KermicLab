@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-des-grands-nombres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grands-nombres-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.comparer-des-grands-nombres",
+  "target": "skill.mathematiques.grands-nombres-cm"
+}

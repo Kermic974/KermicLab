@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-fonctionnement-de-la-democratie-athenienne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grece-et-citoyennete-6e/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-fonctionnement-de-la-democratie-athenienne",
+  "target": "skill.histoire.grece-et-citoyennete-6e"
+}

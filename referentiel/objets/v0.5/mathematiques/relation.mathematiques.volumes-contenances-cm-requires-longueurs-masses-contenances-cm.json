@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.volumes-contenances-cm-requires-longueurs-masses-contenances-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volumes-contenances-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.volumes-contenances-cm",
+  "target": "notion.mathematiques.longueurs-masses-contenances-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Longueurs, masses et contenances » précède « Volumes et contenances » dans la progression du programme (lien à relire)."
+}

@@ -5,13 +5,7 @@ sujet: histoire/louis-xiv-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - henri-iv-cm
-competences:
-  - louis-xiv-cm-comprendre
-  - louis-xiv-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Pourquoi appelle-t-on Louis XIV le Roi-Soleil ?
   - Qu'est-ce que la monarchie absolue ?
   - Pourquoi Louis XIV a-t-il construit Versailles ?
+prerequis: henri-iv-cm
+niveaux: cycle-3
+competences: situer-le-gouvernement-personnel-de-louis-xiv, identifier-le-chateau-de-versailles, definir-la-monarchie-absolue, decrire-la-cour-du-roi-soleil
 ---
 
 # Louis XIV, le Roi-Soleil

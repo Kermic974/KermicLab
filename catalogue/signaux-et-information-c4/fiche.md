@@ -5,13 +5,7 @@ sujet: physique-chimie/signaux-et-information-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e, 3e
-prerequis:
-  - lumiere-et-son-6e
-competences:
-  - signaux-et-information-c4-comprendre
-  - signaux-et-information-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment la lumière et le son transportent-ils l'information ?
   - Qu'est-ce qu'une onde ?
   - Comment fonctionne la fibre optique ?
+prerequis: lumiere-et-son-6e
+niveaux: cycle-4
+competences: relier-la-frequence-d-un-son-a-sa-hauteur, situer-la-vitesse-de-la-lumiere-dans-le-vide, distinguer-signal-analogique-et-signal-numerique, decrire-la-transmission-d-une-information
 ---
 
 # Signaux, ondes et transmission de l'information

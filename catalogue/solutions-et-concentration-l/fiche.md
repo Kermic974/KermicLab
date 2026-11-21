@@ -5,13 +5,6 @@ sujet: physique-chimie/solutions-et-concentration-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - quantite-de-matiere
-  - masse-et-volume-6e
-competences:
-  - solutions-et-concentration-l-comprendre
-  - solutions-et-concentration-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment diluer une solution ?
   - Quelle différence entre concentration massique et molaire ?
   - Comment préparer une solution de concentration donnée ?
+prerequis: quantite-de-matiere, masse-et-volume-6e
+niveaux: seconde
+competences: calculer-une-concentration-molaire-d-une-solution-preparee, calculer-une-concentration-massique, appliquer-la-conservation-du-solute-lors-d-une-dilution, choisir-le-materiel-pour-preparer-une-dilution
 ---
 
 # Solutions, concentration et dilution

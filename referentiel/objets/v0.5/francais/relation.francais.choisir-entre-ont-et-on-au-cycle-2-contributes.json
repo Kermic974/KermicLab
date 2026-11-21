@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-entre-ont-et-on-au-cycle-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-et-orthographe-c2/contenu.json"
+  },
+  "source": "microskill.francais.choisir-entre-ont-et-on-au-cycle-2",
+  "target": "skill.francais.homophones-et-orthographe-c2"
+}

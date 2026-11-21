@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiples-et-diviseurs-cm-teaches-determiner-les-diviseurs-d-un-nombre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiples-et-diviseurs-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.multiples-et-diviseurs-cm",
+  "target": "microskill.mathematiques.determiner-les-diviseurs-d-un-nombre"
+}

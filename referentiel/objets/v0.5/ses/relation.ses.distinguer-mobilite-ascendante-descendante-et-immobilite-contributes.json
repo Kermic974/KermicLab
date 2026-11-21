@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-mobilite-ascendante-descendante-et-immobilite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-structure-sociale-et-sociologie-l/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-mobilite-ascendante-descendante-et-immobilite",
+  "target": "skill.ses.ses-structure-sociale-et-sociologie-l"
+}

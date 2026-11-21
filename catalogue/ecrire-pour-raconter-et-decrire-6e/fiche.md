@@ -5,14 +5,7 @@ sujet: francais/ecrire-pour-raconter-et-decrire-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - ecrire-un-recit-cm
-  - resumer-et-expliquer-cm
-competences:
-  - ecrire-pour-raconter-et-decrire-6e-comprendre
-  - ecrire-pour-raconter-et-decrire-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment écrire un portrait ou une description en 6e ?
   - Comment améliorer son texte en le réécrivant ?
   - Comment relire un brouillon en 6e ?
+prerequis: ecrire-un-recit-cm, resumer-et-expliquer-cm
+niveaux: cycle-3
+competences: decrire-un-personnage-ou-un-decor, employer-l-imparfait-pour-decrire-au-passe, raconter-une-suite-d-actions, reecrire-un-brouillon-pour-l-ameliorer
 ---
 
 # Écrire pour raconter, décrire et exprimer en 6e

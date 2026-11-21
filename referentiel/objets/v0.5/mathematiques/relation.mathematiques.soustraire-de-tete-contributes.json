@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.soustraire-de-tete-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soustraction-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.soustraire-de-tete",
+  "target": "skill.mathematiques.soustraction-c2"
+}

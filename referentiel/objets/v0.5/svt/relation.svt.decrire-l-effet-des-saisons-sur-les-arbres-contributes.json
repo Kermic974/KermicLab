@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-l-effet-des-saisons-sur-les-arbres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/milieux-et-saisons-c2/contenu.json"
+  },
+  "source": "microskill.svt.decrire-l-effet-des-saisons-sur-les-arbres",
+  "target": "skill.svt.milieux-et-saisons-c2"
+}

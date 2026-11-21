@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.poser-une-multiplication-a-deux-chiffres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.poser-une-multiplication-a-deux-chiffres",
+  "target": "skill.mathematiques.multiplication-posee-cm"
+}

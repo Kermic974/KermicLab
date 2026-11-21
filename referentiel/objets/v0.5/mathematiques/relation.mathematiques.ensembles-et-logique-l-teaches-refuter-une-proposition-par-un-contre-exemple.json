@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ensembles-et-logique-l-teaches-refuter-une-proposition-par-un-contre-exemple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ensembles-et-logique-l/contenu.json"
+  },
+  "source": "notion.mathematiques.ensembles-et-logique-l",
+  "target": "microskill.mathematiques.refuter-une-proposition-par-un-contre-exemple"
+}

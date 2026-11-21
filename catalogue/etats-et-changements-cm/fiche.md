@@ -5,13 +5,7 @@ sujet: physique-chimie/etats-et-changements-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - eau-air-et-matiere-c2
-competences:
-  - etats-et-changements-cm-comprendre
-  - etats-et-changements-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Comment fonctionne le cycle de l'eau ?
   - Qu'est-ce que l'évaporation ?
   - La masse change-t-elle quand la glace fond ?
+prerequis: eau-air-et-matiere-c2
+niveaux: cycle-3
+competences: nommer-les-changements-d-etat-de-l-eau, situer-les-temperatures-de-fusion-et-d-ebullition-de-l-eau, appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat-au-cycle-3-cm, distinguer-solide-liquide-et-gaz
 ---
 
 # Les états de la matière et leurs changements

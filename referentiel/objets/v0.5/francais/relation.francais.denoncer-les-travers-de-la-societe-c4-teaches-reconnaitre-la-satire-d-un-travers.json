@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.denoncer-les-travers-de-la-societe-c4-teaches-reconnaitre-la-satire-d-un-travers",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/denoncer-les-travers-de-la-societe-c4/contenu.json"
+  },
+  "source": "notion.francais.denoncer-les-travers-de-la-societe-c4",
+  "target": "microskill.francais.reconnaitre-la-satire-d-un-travers"
+}

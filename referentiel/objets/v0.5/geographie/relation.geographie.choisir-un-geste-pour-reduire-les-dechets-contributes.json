@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.choisir-un-geste-pour-reduire-les-dechets-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mieux-habiter-cm/contenu.json"
+  },
+  "source": "microskill.geographie.choisir-un-geste-pour-reduire-les-dechets",
+  "target": "skill.geographie.mieux-habiter-cm"
+}

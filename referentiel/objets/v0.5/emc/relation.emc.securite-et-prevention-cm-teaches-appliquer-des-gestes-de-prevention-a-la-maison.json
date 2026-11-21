@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.securite-et-prevention-cm-teaches-appliquer-des-gestes-de-prevention-a-la-maison",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-et-prevention-cm/contenu.json"
+  },
+  "source": "notion.emc.securite-et-prevention-cm",
+  "target": "microskill.emc.appliquer-des-gestes-de-prevention-a-la-maison"
+}

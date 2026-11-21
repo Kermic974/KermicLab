@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-et-reecrire-c4-teaches-utiliser-un-connecteur-d-opposition",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-reecrire-c4/contenu.json"
+  },
+  "source": "notion.francais.ecrire-et-reecrire-c4",
+  "target": "microskill.francais.utiliser-un-connecteur-d-opposition"
+}

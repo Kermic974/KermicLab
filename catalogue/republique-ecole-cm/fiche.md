@@ -5,13 +5,7 @@ sujet: histoire/republique-ecole-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - age-industriel-cm
-competences:
-  - republique-ecole-cm-comprendre
-  - republique-ecole-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Qu'est-ce que la loi de 1905 ?
   - Quand les femmes ont-elles pu voter en France ?
   - Qu'est-ce que la IIIe République ?
+prerequis: age-industriel-cm
+niveaux: cycle-3
+competences: decrire-l-ecole-de-jules-ferry-au-cycle-3-cm, situer-la-loi-de-1905, situer-le-vote-des-femmes-en-france, decrire-les-libertes-republicaines
 ---
 
 # La République, l'école et les libertés

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-un-reste-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-et-partage-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-un-reste",
+  "target": "skill.mathematiques.division-et-partage-c2"
+}

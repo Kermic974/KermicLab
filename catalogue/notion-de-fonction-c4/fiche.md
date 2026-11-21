@@ -5,14 +5,7 @@ sujet: mathematiques/notion-de-fonction-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 3e
-prerequis:
-  - calcul-litteral
-  - algorithmique-et-scratch-c4
-competences:
-  - notion-de-fonction-c4-comprendre
-  - notion-de-fonction-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Quelle différence entre image et antécédent ?
   - Comment lire sur le graphique d'une fonction ?
   - Comment calculer f(x) ?
+prerequis: calcul-litteral, algorithmique-et-scratch-c4
+niveaux: cycle-4
+competences: calculer-l-image-d-un-nombre-par-une-fonction, determiner-un-antecedent, lire-une-image-sur-un-graphique, distinguer-une-fonction-d-une-relation
 ---
 
 # La notion de fonction

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.securite-et-prevention-cm-teaches-composer-le-numero-d-urgence-adapte-a-une-situation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-et-prevention-cm/contenu.json"
+  },
+  "source": "notion.emc.securite-et-prevention-cm",
+  "target": "microskill.emc.composer-le-numero-d-urgence-adapte-a-une-situation"
+}

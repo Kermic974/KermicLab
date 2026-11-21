@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-marches-et-prix-l-teaches-determiner-un-prix-d-equilibre-a-partir-de-l-offre-et-de-la-demande",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "notion.ses.ses-marches-et-prix-l",
+  "target": "microskill.ses.determiner-un-prix-d-equilibre-a-partir-de-l-offre-et-de-la-demande"
+}

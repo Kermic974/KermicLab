@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolutions-et-nations-xix-l-teaches-decrire-les-lois-ferry-de-1881-1882",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolutions-et-nations-xix-l/contenu.json"
+  },
+  "source": "notion.histoire.revolutions-et-nations-xix-l",
+  "target": "microskill.histoire.decrire-les-lois-ferry-de-1881-1882"
+}

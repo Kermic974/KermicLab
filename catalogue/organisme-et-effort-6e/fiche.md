@@ -5,14 +5,7 @@ sujet: svt/organisme-et-effort-6e
 version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - respiration-circulation-cm
-  - alimentation-digestion-cm
-competences:
-  - organisme-et-effort-6e-comprendre
-  - organisme-et-effort-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Que se passe-t-il dans le corps à l'effort ?
   - De quoi les muscles ont-ils besoin ?
   - Comment l'organisme transporte-t-il l'oxygène ?
+prerequis: respiration-circulation-cm, alimentation-digestion-cm
+niveaux: cycle-3
+competences: expliquer-la-consommation-de-dioxygene-des-muscles-a-l-effort, identifier-le-role-du-c-ur-dans-la-circulation, expliquer-la-transpiration-a-l-effort, relier-frequence-cardiaque-et-effort
 ---
 
 # Fonctionnement de l'organisme à l'effort

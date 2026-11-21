@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tracer-un-cercle-au-compas-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cercle-compas-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.tracer-un-cercle-au-compas",
+  "target": "skill.mathematiques.cercle-compas-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-jusqu-a-100-c2-teaches-lire-et-ecrire-un-nombre-jusqu-a-100",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-jusqu-a-100-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-jusqu-a-100-c2",
+  "target": "microskill.mathematiques.lire-et-ecrire-un-nombre-jusqu-a-100"
+}

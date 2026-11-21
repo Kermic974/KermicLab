@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.verifier-une-division-par-a-b-q-r-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-euclidienne-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.verifier-une-division-par-a-b-q-r",
+  "target": "skill.mathematiques.division-euclidienne-cm"
+}

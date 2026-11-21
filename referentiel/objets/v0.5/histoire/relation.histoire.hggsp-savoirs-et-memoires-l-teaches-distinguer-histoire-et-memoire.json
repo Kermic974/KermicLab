@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.hggsp-savoirs-et-memoires-l-teaches-distinguer-histoire-et-memoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-savoirs-et-memoires-l/contenu.json"
+  },
+  "source": "notion.histoire.hggsp-savoirs-et-memoires-l",
+  "target": "microskill.histoire.distinguer-histoire-et-memoire"
+}

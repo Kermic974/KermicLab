@@ -5,13 +5,7 @@ sujet: emc/esprit-critique-et-medias-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - numerique-responsable-cm
-competences:
-  - esprit-critique-et-medias-6e-comprendre
-  - esprit-critique-et-medias-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment vérifier une information en 6e ?
   - Comment distinguer un fait d'une opinion ?
   - Comment reconnaître une fausse nouvelle ?
+prerequis: numerique-responsable-cm
+niveaux: cycle-3
+competences: distinguer-un-fait-d-une-opinion, verifier-une-information-avant-de-la-partager, reperer-une-rumeur-ou-une-photo-detournee, identifier-la-source-d-une-information
 ---
 
 # Esprit critique : s'informer et vérifier

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.mesurer-un-angle-au-rapporteur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/angles-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.mesurer-un-angle-au-rapporteur",
+  "target": "skill.mathematiques.angles-cm"
+}

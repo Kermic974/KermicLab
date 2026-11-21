@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.choisir-entre-a-et-a-au-cycle-3-cm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-cm/contenu.json"
+  },
+  "source": "microskill.francais.choisir-entre-a-et-a-au-cycle-3-cm",
+  "target": "skill.francais.homophones-cm"
+}

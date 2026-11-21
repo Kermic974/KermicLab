@@ -5,14 +5,7 @@ sujet: histoire/empire-romain-christianisme-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - rome-republique-empire-6e
-  - monotheisme-juif-6e
-competences:
-  - empire-romain-christianisme-6e-comprendre
-  - empire-romain-christianisme-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment le christianisme est-il né dans l'Empire romain ?
   - Qui était l'empereur Constantin ?
   - Comment la Gaule est-elle devenue chrétienne ?
+prerequis: rome-republique-empire-6e, monotheisme-juif-6e
+niveaux: cycle-3
+competences: situer-la-liberte-de-culte-de-constantin, expliquer-le-christianisme-religion-officielle, identifier-ce-qui-diffuse-le-christianisme, decrire-la-naissance-du-christianisme
 ---
 
 # L'Empire romain et la naissance du christianisme

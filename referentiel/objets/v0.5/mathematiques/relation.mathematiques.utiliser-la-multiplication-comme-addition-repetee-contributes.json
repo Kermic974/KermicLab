@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-la-multiplication-comme-addition-repetee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tables-de-multiplication-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-la-multiplication-comme-addition-repetee",
+  "target": "skill.mathematiques.tables-de-multiplication-c2"
+}

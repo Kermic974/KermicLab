@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.respiration-circulation-cm-teaches-decrire-le-role-du-c-ur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-circulation-cm/contenu.json"
+  },
+  "source": "notion.svt.respiration-circulation-cm",
+  "target": "microskill.svt.decrire-le-role-du-c-ur"
+}

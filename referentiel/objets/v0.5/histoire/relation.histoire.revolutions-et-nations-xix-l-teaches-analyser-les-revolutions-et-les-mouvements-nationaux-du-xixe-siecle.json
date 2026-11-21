@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolutions-et-nations-xix-l-teaches-analyser-les-revolutions-et-les-mouvements-nationaux-du-xixe-siecle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolutions-et-nations-xix-l/contenu.json"
+  },
+  "source": "notion.histoire.revolutions-et-nations-xix-l",
+  "target": "microskill.histoire.analyser-les-revolutions-et-les-mouvements-nationaux-du-xixe-siecle"
+}

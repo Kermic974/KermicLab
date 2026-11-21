@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.numerique-responsable-cm-teaches-limiter-son-temps-d-ecran",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-responsable-cm/contenu.json"
+  },
+  "source": "notion.emc.numerique-responsable-cm",
+  "target": "microskill.emc.limiter-son-temps-d-ecran"
+}

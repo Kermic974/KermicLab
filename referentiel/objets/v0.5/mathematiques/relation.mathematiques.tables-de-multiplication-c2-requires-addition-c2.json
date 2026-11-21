@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.tables-de-multiplication-c2-requires-addition-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tables-de-multiplication-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.tables-de-multiplication-c2",
+  "target": "notion.mathematiques.addition-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « L'addition » précède « Multiplier : sens et tables » dans la progression du programme (lien à relire)."
+}

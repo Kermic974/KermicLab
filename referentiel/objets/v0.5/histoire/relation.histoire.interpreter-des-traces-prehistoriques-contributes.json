@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.interpreter-des-traces-prehistoriques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/peuplement-neolithique-6e/contenu.json"
+  },
+  "source": "microskill.histoire.interpreter-des-traces-prehistoriques",
+  "target": "skill.histoire.peuplement-neolithique-6e"
+}

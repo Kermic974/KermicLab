@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-un-deepfake-et-un-montage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-c4/contenu.json"
+  },
+  "source": "microskill.emc.identifier-un-deepfake-et-un-montage",
+  "target": "skill.emc.esprit-critique-et-medias-c4"
+}

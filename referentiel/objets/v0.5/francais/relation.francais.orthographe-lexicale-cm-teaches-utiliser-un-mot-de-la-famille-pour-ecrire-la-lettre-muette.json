@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.orthographe-lexicale-cm-teaches-utiliser-un-mot-de-la-famille-pour-ecrire-la-lettre-muette",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-lexicale-cm/contenu.json"
+  },
+  "source": "notion.francais.orthographe-lexicale-cm",
+  "target": "microskill.francais.utiliser-un-mot-de-la-famille-pour-ecrire-la-lettre-muette"
+}

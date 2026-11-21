@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-un-texte-documentaire-structure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
+  },
+  "source": "microskill.francais.ecrire-un-texte-documentaire-structure",
+  "target": "skill.francais.resumer-et-expliquer-cm"
+}

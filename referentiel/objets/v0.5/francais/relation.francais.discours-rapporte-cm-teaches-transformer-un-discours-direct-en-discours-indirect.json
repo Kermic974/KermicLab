@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.discours-rapporte-cm-teaches-transformer-un-discours-direct-en-discours-indirect",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "notion.francais.discours-rapporte-cm",
+  "target": "microskill.francais.transformer-un-discours-direct-en-discours-indirect"
+}

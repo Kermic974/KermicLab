@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.notion-de-fonction-c4-teaches-determiner-un-antecedent",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/notion-de-fonction-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.notion-de-fonction-c4",
+  "target": "microskill.mathematiques.determiner-un-antecedent"
+}

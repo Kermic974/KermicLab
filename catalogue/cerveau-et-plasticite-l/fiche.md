@@ -5,13 +5,6 @@ sujet: svt/cerveau-et-plasticite-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - systeme-nerveux
-  - expression-genetique
-competences:
-  - cerveau-et-plasticite-l-comprendre
-  - cerveau-et-plasticite-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce que la plasticité du cerveau ?
   - Comment le cerveau apprend-il ?
   - Comment fonctionne une synapse ?
+prerequis: systeme-nerveux, expression-genetique
+niveaux: terminale
+competences: decrire-le-role-de-la-synapse, expliquer-la-plasticite-cerebrale, relier-sommeil-et-consolidation-de-la-memoire, choisir-une-strategie-de-revision-fondee-sur-la-repetition-espacee
 ---
 
 # Le cerveau, la plasticité et l'apprentissage

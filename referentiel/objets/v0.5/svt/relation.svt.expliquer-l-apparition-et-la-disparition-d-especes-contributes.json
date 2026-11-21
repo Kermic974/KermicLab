@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-l-apparition-et-la-disparition-d-especes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-fossiles-cm/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-l-apparition-et-la-disparition-d-especes",
+  "target": "skill.svt.evolution-et-fossiles-cm"
+}

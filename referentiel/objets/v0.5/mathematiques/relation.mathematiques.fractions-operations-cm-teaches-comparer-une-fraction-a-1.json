@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.fractions-operations-cm-teaches-comparer-une-fraction-a-1",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-operations-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.fractions-operations-cm",
+  "target": "microskill.mathematiques.comparer-une-fraction-a-1"
+}

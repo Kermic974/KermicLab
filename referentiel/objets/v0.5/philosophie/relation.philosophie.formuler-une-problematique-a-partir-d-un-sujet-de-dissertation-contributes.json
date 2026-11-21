@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.formuler-une-problematique-a-partir-d-un-sujet-de-dissertation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "microskill.philosophie.formuler-une-problematique-a-partir-d-un-sujet-de-dissertation",
+  "target": "skill.philosophie.philosophie-liberte-et-justice-l"
+}

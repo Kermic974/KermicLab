@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-une-racine-carree-d-un-carre-parfait-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/racines-carrees-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-une-racine-carree-d-un-carre-parfait",
+  "target": "skill.mathematiques.racines-carrees-c4"
+}

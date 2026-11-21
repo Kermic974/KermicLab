@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.habiter-la-terre-6e-teaches-comparer-l-acces-a-l-eau-potable-selon-les-regions",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-la-terre-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-la-terre-6e",
+  "target": "microskill.geographie.comparer-l-acces-a-l-eau-potable-selon-les-regions"
+}

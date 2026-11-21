@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.observer-et-decrire-un-etre-vivant-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/animaux-et-plantes-c2/contenu.json"
+  },
+  "source": "microskill.svt.observer-et-decrire-un-etre-vivant",
+  "target": "skill.svt.animaux-et-plantes-c2"
+}

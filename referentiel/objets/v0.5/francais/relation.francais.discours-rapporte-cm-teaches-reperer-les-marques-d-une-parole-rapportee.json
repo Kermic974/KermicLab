@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.discours-rapporte-cm-teaches-reperer-les-marques-d-une-parole-rapportee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "notion.francais.discours-rapporte-cm",
+  "target": "microskill.francais.reperer-les-marques-d-une-parole-rapportee"
+}

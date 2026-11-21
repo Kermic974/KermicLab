@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.conjuguer-un-verbe-au-futur-et-a-l-imparfait-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-cm/contenu.json"
+  },
+  "source": "microskill.francais.conjuguer-un-verbe-au-futur-et-a-l-imparfait",
+  "target": "skill.francais.conjugaison-cm"
+}

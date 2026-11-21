@@ -5,13 +5,7 @@ sujet: histoire/guerres-mondiales-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - republique-ecole-cm
-competences:
-  - guerres-mondiales-cm-comprendre
-  - guerres-mondiales-cm-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Qui étaient les poilus ?
   - Qu'est-ce que la Résistance ?
   - Qu'est-ce que la Shoah ?
+prerequis: republique-ecole-cm
+niveaux: cycle-3
+competences: situer-l-armistice-de-1918, nommer-les-soldats-de-14-18-poilus, expliquer-l-appel-du-18-juin-1940, distinguer-les-deux-guerres-mondiales
 ---
 
 # Les deux guerres mondiales

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.primitives-et-equations-differentielles-l-teaches-interpreter-une-equation-differentielle-simple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/primitives-et-equations-differentielles-l/contenu.json"
+  },
+  "source": "notion.mathematiques.primitives-et-equations-differentielles-l",
+  "target": "microskill.mathematiques.interpreter-une-equation-differentielle-simple"
+}

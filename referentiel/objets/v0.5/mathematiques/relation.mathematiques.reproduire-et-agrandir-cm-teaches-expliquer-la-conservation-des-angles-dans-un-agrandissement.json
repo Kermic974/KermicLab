@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reproduire-et-agrandir-cm-teaches-expliquer-la-conservation-des-angles-dans-un-agrandissement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduire-et-agrandir-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.reproduire-et-agrandir-cm",
+  "target": "microskill.mathematiques.expliquer-la-conservation-des-angles-dans-un-agrandissement"
+}

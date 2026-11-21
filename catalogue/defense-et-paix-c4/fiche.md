@@ -5,13 +5,7 @@ sujet: emc/defense-et-paix-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 3e
-prerequis:
-  - guerres-mondiales-cm
-competences:
-  - defense-et-paix-c4-comprendre
-  - defense-et-paix-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - À quoi sert la défense nationale ?
   - Qu'est-ce que la Journée défense et citoyenneté ?
   - Comment l'ONU cherche-t-elle à maintenir la paix ?
+prerequis: guerres-mondiales-cm
+niveaux: cycle-4
+competences: identifier-les-acteurs-de-la-defense-nationale, expliquer-le-role-des-casques-bleus, expliquer-la-protection-des-civils-par-les-conventions-de-geneve, distinguer-defense-nationale-et-securite-collective
 ---
 
 # Défense, paix et sécurité collective

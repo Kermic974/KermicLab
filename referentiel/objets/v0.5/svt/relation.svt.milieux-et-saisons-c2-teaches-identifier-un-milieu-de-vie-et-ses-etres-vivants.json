@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.milieux-et-saisons-c2-teaches-identifier-un-milieu-de-vie-et-ses-etres-vivants",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/milieux-et-saisons-c2/contenu.json"
+  },
+  "source": "notion.svt.milieux-et-saisons-c2",
+  "target": "microskill.svt.identifier-un-milieu-de-vie-et-ses-etres-vivants"
+}

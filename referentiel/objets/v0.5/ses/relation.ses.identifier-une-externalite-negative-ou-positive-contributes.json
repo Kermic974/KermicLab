@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.identifier-une-externalite-negative-ou-positive-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "microskill.ses.identifier-une-externalite-negative-ou-positive",
+  "target": "skill.ses.ses-marches-et-prix-l"
+}

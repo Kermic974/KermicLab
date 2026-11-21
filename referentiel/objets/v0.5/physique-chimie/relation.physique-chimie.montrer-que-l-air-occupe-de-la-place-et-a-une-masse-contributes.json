@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.montrer-que-l-air-occupe-de-la-place-et-a-une-masse-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/air-et-matiere-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.montrer-que-l-air-occupe-de-la-place-et-a-une-masse",
+  "target": "skill.physique-chimie.air-et-matiere-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.developpement-vegetaux-cm-teaches-expliquer-le-role-des-pollinisateurs",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "notion.svt.developpement-vegetaux-cm",
+  "target": "microskill.svt.expliquer-le-role-des-pollinisateurs"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ecrire-une-instruction-conditionnelle-en-6e-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.ecrire-une-instruction-conditionnelle-en-6e",
+  "target": "skill.mathematiques.algorithmique-6e"
+}

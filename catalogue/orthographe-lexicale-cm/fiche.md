@@ -5,13 +5,7 @@ sujet: francais/orthographe-lexicale-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - homophones-et-orthographe-c2
-competences:
-  - orthographe-lexicale-cm-comprendre
-  - orthographe-lexicale-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Quand double-t-on les consonnes ?
   - Comment utiliser les accents ?
   - À quoi servent les lettres muettes ?
+prerequis: homophones-et-orthographe-c2
+niveaux: cycle-3
+competences: utiliser-un-mot-de-la-famille-pour-ecrire-la-lettre-muette, ecrire-correctement-un-mot-a-partir-de-son-feminin, retenir-les-regularites-orthographiques, choisir-la-bonne-ecriture-d-un-mot
 ---
 
 # L'orthographe des mots

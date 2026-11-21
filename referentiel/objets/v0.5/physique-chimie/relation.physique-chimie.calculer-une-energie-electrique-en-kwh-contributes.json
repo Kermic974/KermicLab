@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-energie-electrique-en-kwh-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-l-electricite-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-energie-electrique-en-kwh",
+  "target": "skill.physique-chimie.lois-de-l-electricite-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.etats-matiere-et-melanges-6e-teaches-distinguer-melange-homogene-et-heterogene",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-matiere-et-melanges-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.etats-matiere-et-melanges-6e",
+  "target": "microskill.physique-chimie.distinguer-melange-homogene-et-heterogene"
+}

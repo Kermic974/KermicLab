@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poesie-cm-teaches-faire-entendre-un-poeme-a-voix-haute",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "notion.francais.poesie-cm",
+  "target": "microskill.francais.faire-entendre-un-poeme-a-voix-haute"
+}

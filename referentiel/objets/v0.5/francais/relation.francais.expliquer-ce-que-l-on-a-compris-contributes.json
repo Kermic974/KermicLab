@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.expliquer-ce-que-l-on-a-compris-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-et-comprendre-c2/contenu.json"
+  },
+  "source": "microskill.francais.expliquer-ce-que-l-on-a-compris",
+  "target": "skill.francais.lire-et-comprendre-c2"
+}

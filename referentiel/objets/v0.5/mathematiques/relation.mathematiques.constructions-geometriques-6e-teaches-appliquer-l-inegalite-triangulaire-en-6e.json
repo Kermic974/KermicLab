@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.constructions-geometriques-6e-teaches-appliquer-l-inegalite-triangulaire-en-6e",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/constructions-geometriques-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.constructions-geometriques-6e",
+  "target": "microskill.mathematiques.appliquer-l-inegalite-triangulaire-en-6e"
+}

@@ -5,13 +5,7 @@ sujet: svt/meteo-et-climat-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e
-prerequis:
-  - terre-dans-le-systeme-solaire-6e
-competences:
-  - meteo-et-climat-c4-comprendre
-  - meteo-et-climat-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Pourquoi y a-t-il du vent ?
   - Comment fait-on les prévisions météo ?
   - Qu'est-ce qu'une dépression et un anticyclone ?
+prerequis: terre-dans-le-systeme-solaire-6e
+niveaux: cycle-4
+competences: interpreter-la-pression-et-les-vents-anticyclone-depression, distinguer-meteo-et-climat-au-cycle-4, expliquer-la-formation-des-nuages, lire-une-carte-ou-un-releve-meteorologique
 ---
 
 # Météorologie et climat

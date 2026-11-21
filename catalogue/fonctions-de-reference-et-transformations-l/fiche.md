@@ -5,13 +5,6 @@ sujet: mathematiques/fonctions-de-reference-et-transformations-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-  - fonctions-de-reference
-  - notion-de-fonction-c4
-competences:
-  - fonctions-de-reference-et-transformations-l-comprendre
-  - fonctions-de-reference-et-transformations-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment passer de f(x) à f(x + a) ?
   - Qu'est-ce qu'une fonction paire ou impaire ?
   - Comment trouver un extremum ?
+prerequis: fonctions-de-reference, notion-de-fonction-c4
+niveaux: seconde, premiere
+competences: reconnaitre-le-sens-de-variation-d-une-fonction-de-reference, determiner-l-extremum-d-une-fonction-x-a-b, interpreter-une-translation-de-courbe, comparer-deux-fonctions-de-reference
 ---
 
 # Fonctions : transformations de courbes et variations

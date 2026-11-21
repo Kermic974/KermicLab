@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-a-qui-s-adresser-en-cas-de-harcelement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-vivre-ensemble-6e/contenu.json"
+  },
+  "source": "microskill.emc.identifier-a-qui-s-adresser-en-cas-de-harcelement",
+  "target": "skill.emc.regles-vivre-ensemble-6e"
+}

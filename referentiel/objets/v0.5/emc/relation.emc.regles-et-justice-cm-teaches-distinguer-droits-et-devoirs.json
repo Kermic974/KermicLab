@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.regles-et-justice-cm-teaches-distinguer-droits-et-devoirs",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-et-justice-cm/contenu.json"
+  },
+  "source": "notion.emc.regles-et-justice-cm",
+  "target": "microskill.emc.distinguer-droits-et-devoirs"
+}

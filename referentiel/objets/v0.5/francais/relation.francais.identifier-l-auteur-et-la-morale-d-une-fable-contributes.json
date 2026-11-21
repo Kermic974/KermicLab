@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-l-auteur-et-la-morale-d-une-fable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contes-fables-mythes-6e/contenu.json"
+  },
+  "source": "microskill.francais.identifier-l-auteur-et-la-morale-d-une-fable",
+  "target": "skill.francais.contes-fables-mythes-6e"
+}

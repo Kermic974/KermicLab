@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.ensembles-et-logique-l-requires-equations",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ensembles-et-logique-l/contenu.json"
+  },
+  "source": "notion.mathematiques.ensembles-et-logique-l",
+  "target": "notion.mathematiques.equations",
+  "rationale": "Prérequis déclaré dans la fiche : « Les équations et inéquations » précède « Ensembles, intervalles et raisonnement logique » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.chercher-un-mot-dans-un-dictionnaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-dictionnaire-c2/contenu.json"
+  },
+  "source": "microskill.francais.chercher-un-mot-dans-un-dictionnaire",
+  "target": "skill.francais.vocabulaire-et-dictionnaire-c2"
+}

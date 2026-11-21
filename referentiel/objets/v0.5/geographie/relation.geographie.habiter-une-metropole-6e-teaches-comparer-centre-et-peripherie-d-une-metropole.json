@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.habiter-une-metropole-6e-teaches-comparer-centre-et-peripherie-d-une-metropole",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-une-metropole-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-une-metropole-6e",
+  "target": "microskill.geographie.comparer-centre-et-peripherie-d-une-metropole"
+}

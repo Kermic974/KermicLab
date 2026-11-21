@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.noms-et-determinants-c2-teaches-identifier-un-nom-commun-et-un-nom-propre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/noms-et-determinants-c2/contenu.json"
+  },
+  "source": "notion.francais.noms-et-determinants-c2",
+  "target": "microskill.francais.identifier-un-nom-commun-et-un-nom-propre"
+}

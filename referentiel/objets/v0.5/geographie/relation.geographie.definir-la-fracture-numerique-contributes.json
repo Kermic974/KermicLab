@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.definir-la-fracture-numerique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "microskill.geographie.definir-la-fracture-numerique",
+  "target": "skill.geographie.communiquer-numerique-cm"
+}

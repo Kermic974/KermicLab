@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-justice-et-securite-l-teaches-distinguer-justice-civile-et-justice-penale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "notion.emc.emc-justice-et-securite-l",
+  "target": "microskill.emc.distinguer-justice-civile-et-justice-penale"
+}

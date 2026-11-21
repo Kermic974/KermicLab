@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.expliquer-l-effet-d-un-agrandissement-sur-les-angles-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/echelle-et-plans-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.expliquer-l-effet-d-un-agrandissement-sur-les-angles",
+  "target": "skill.mathematiques.echelle-et-plans-cm"
+}

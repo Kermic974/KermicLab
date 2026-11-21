@@ -5,13 +5,7 @@ sujet: francais/discours-rapporte-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - ponctuation-et-dialogue-cm
-competences:
-  - discours-rapporte-cm-comprendre
-  - discours-rapporte-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment passer du discours direct au discours indirect ?
   - Qu'est-ce que les didascalies au théâtre ?
   - Comment bien lire un texte à voix haute ?
+prerequis: ponctuation-et-dialogue-cm
+niveaux: cycle-3
+competences: transformer-un-discours-direct-en-discours-indirect, distinguer-didascalie-et-replique, lire-un-texte-a-voix-haute-avec-expressivite, reperer-les-marques-d-une-parole-rapportee
 ---
 
 # Le discours rapporté et le théâtre

@@ -5,13 +5,7 @@ sujet: histoire/voyages-d-ulysse-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - grece-et-citoyennete-6e
-competences:
-  - voyages-d-ulysse-6e-comprendre
-  - voyages-d-ulysse-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Que raconte l'Odyssée d'Homère ?
   - Pourquoi les Grecs avaient-ils beaucoup de dieux ?
   - Que sont les récits fondateurs ?
+prerequis: grece-et-citoyennete-6e
+niveaux: cycle-3
+competences: identifier-l-auteur-traditionnel-de-l-odyssee, decrire-le-voyage-d-ulysse-et-son-but, distinguer-recit-mythologique-et-source-historique, associer-un-dieu-grec-a-un-recit
 ---
 
 # Récits fondateurs : les voyages d'Ulysse et la Méditerranée

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.identifier-une-figure-ayant-un-centre-de-symetrie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/parallelogrammes-et-symetrie-centrale-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.identifier-une-figure-ayant-un-centre-de-symetrie",
+  "target": "skill.mathematiques.parallelogrammes-et-symetrie-centrale-c4"
+}

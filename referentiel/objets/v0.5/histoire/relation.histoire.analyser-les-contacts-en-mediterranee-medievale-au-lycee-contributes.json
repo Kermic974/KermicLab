@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-contacts-en-mediterranee-medievale-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mediterranee-medievale-l/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-contacts-en-mediterranee-medievale-au-lycee",
+  "target": "skill.histoire.mediterranee-medievale-l"
+}

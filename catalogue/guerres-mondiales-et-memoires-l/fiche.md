@@ -5,13 +5,6 @@ sujet: histoire/guerres-mondiales-et-memoires-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - premiere-guerre-mondiale
-  - seconde-guerre-mondiale
-competences:
-  - guerres-mondiales-et-memoires-l-comprendre
-  - guerres-mondiales-et-memoires-l-appliquer
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Que désigne la Shoah en terminale ?
   - Que fut le régime de Vichy ?
   - Qu'est-ce que le procès de Nuremberg ?
+prerequis: premiere-guerre-mondiale, seconde-guerre-mondiale
+niveaux: terminale
+competences: definir-un-genocide-et-situer-la-shoah, expliquer-le-proces-de-nuremberg, situer-l-appel-du-18-juin-1940, distinguer-histoire-et-memoire-de-la-guerre
 ---
 
 # Guerres mondiales, génocides et mémoires

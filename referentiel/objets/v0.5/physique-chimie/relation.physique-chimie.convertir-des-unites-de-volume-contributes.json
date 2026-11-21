@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.convertir-des-unites-de-volume-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-et-volume-6e/contenu.json"
+  },
+  "source": "microskill.physique-chimie.convertir-des-unites-de-volume",
+  "target": "skill.physique-chimie.masse-et-volume-6e"
+}

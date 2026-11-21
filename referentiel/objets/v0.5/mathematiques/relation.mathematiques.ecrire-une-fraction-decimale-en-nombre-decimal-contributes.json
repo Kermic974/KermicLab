@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ecrire-une-fraction-decimale-en-nombre-decimal-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-decimaux-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.ecrire-une-fraction-decimale-en-nombre-decimal",
+  "target": "skill.mathematiques.nombres-decimaux-cm"
+}

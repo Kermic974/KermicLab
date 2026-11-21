@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.philosophie-liberte-et-justice-l-teaches-construire-un-plan-de-dissertation-dialectique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "notion.philosophie.philosophie-liberte-et-justice-l",
+  "target": "microskill.philosophie.construire-un-plan-de-dissertation-dialectique"
+}

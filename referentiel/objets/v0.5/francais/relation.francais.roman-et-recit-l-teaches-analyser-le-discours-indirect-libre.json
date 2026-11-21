@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.roman-et-recit-l-teaches-analyser-le-discours-indirect-libre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman-et-recit-l/contenu.json"
+  },
+  "source": "notion.francais.roman-et-recit-l",
+  "target": "microskill.francais.analyser-le-discours-indirect-libre"
+}

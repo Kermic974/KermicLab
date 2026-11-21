@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-un-desequilibre-du-microbiote-dysbiose-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-un-desequilibre-du-microbiote-dysbiose",
+  "target": "skill.svt.microbiote-et-sante-l"
+}

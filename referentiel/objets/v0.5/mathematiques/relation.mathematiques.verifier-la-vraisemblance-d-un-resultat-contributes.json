@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.verifier-la-vraisemblance-d-un-resultat-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-a-etapes-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.verifier-la-vraisemblance-d-un-resultat",
+  "target": "skill.mathematiques.problemes-a-etapes-cm"
+}

@@ -5,13 +5,6 @@ sujet: philosophie/philosophie-liberte-et-justice-l
 version: 1.0.0
 date: 2026-11-21
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - liberte-philosophie
-  - justice-philosophie
-competences:
-  - philosophie-liberte-et-justice-l-comprendre
-  - philosophie-liberte-et-justice-l-appliquer
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Sommes-nous libres ?
   - Qu'est-ce que le contrat social ?
   - Comment faire une dissertation de philosophie ?
+prerequis: liberte-philosophie, justice-philosophie
+niveaux: terminale
+competences: expliquer-l-autonomie-morale-chez-kant, expliquer-le-contrat-social-chez-rousseau, distinguer-pouvoir-droit-et-legitimite-au-lycee, formuler-une-problematique-a-partir-d-un-sujet-de-dissertation, construire-un-plan-de-dissertation-dialectique
 ---
 
 # Philosophie : liberté, justice et État

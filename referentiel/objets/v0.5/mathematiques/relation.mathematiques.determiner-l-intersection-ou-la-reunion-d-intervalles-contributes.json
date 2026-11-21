@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-l-intersection-ou-la-reunion-d-intervalles-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ensembles-et-logique-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-l-intersection-ou-la-reunion-d-intervalles",
+  "target": "skill.mathematiques.ensembles-et-logique-l"
+}

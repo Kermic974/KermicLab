@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.proteger-ses-informations-personnelles-sur-internet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-ecrans-et-environnement-c2/contenu.json"
+  },
+  "source": "microskill.emc.proteger-ses-informations-personnelles-sur-internet",
+  "target": "skill.emc.securite-ecrans-et-environnement-c2"
+}

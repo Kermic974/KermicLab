@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.perimetre-et-calcul-mental-c2-requires-figures-planes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetre-et-calcul-mental-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.perimetre-et-calcul-mental-c2",
+  "target": "notion.mathematiques.figures-planes-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Les figures planes » précède « Périmètre et calcul mental » dans la progression du programme (lien à relire)."
+}

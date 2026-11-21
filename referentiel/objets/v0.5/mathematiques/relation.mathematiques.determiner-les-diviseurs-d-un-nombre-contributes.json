@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-les-diviseurs-d-un-nombre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiples-et-diviseurs-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-les-diviseurs-d-un-nombre",
+  "target": "skill.mathematiques.multiples-et-diviseurs-cm"
+}

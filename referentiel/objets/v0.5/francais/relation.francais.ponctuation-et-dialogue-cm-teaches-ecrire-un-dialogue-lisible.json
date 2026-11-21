@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ponctuation-et-dialogue-cm-teaches-ecrire-un-dialogue-lisible",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "source": "notion.francais.ponctuation-et-dialogue-cm",
+  "target": "microskill.francais.ecrire-un-dialogue-lisible"
+}

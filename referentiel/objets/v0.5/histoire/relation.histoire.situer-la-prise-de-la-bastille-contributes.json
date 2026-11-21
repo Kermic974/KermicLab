@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-la-prise-de-la-bastille-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-la-prise-de-la-bastille",
+  "target": "skill.histoire.revolution-empire-cm"
+}

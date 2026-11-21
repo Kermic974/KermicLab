@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-des-transports-collectifs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-une-metropole-6e/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-des-transports-collectifs",
+  "target": "skill.geographie.habiter-une-metropole-6e"
+}

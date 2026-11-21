@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.orthogonalite-et-espace-l-requires-geometrie-dans-l-espace",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthogonalite-et-espace-l/contenu.json"
+  },
+  "source": "notion.mathematiques.orthogonalite-et-espace-l",
+  "target": "notion.mathematiques.geometrie-dans-l-espace",
+  "rationale": "Prérequis déclaré dans la fiche : « Géométrie dans l'espace » précède « Géométrie dans l'espace : orthogonalité, droites et plans » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.acides-bases-et-ph-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/acides-bases-et-ph-l/contenu.json"
+  },
+  "object": "notion.physique-chimie.acides-bases-et-ph-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reecrire-un-texte-pour-l-ameliorer-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-reecrire-c4/contenu.json"
+  },
+  "source": "microskill.francais.reecrire-un-texte-pour-l-ameliorer",
+  "target": "skill.francais.ecrire-et-reecrire-c4"
+}

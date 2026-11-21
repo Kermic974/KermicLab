@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.masse-et-volume-6e-teaches-prevoir-si-un-objet-flotte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-et-volume-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.masse-et-volume-6e",
+  "target": "microskill.physique-chimie.prevoir-si-un-objet-flotte"
+}

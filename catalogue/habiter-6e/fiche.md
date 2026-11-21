@@ -5,14 +5,7 @@ sujet: geographie/habiter-6e
 version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - habiter-ville-campagne-cm
-  - lire-une-carte-cm
-competences:
-  - habiter-6e-comprendre
-  - habiter-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Comment habite-t-on dans une métropole ?
   - Pourquoi les littoraux sont-ils très peuplés ?
   - Comment vit-on dans un désert ?
+prerequis: habiter-ville-campagne-cm, lire-une-carte-cm
+niveaux: cycle-3
+competences: definir-une-metropole, identifier-les-atouts-et-les-contraintes-d-un-littoral, expliquer-la-presence-d-une-oasis, comparer-trois-manieres-d-habiter
 ---
 
 # Habiter une métropole, un littoral, un désert

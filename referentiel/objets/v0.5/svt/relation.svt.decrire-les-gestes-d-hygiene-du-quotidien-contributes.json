@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-les-gestes-d-hygiene-du-quotidien-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/corps-et-sante-c2/contenu.json"
+  },
+  "source": "microskill.svt.decrire-les-gestes-d-hygiene-du-quotidien",
+  "target": "skill.svt.corps-et-sante-c2"
+}

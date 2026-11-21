@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-l-effet-d-un-antibiotique-sur-le-microbiote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-l-effet-d-un-antibiotique-sur-le-microbiote",
+  "target": "skill.svt.microbiote-et-sante-l"
+}

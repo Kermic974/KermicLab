@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-le-chateau-de-versailles-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-xiv-cm/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-le-chateau-de-versailles",
+  "target": "skill.histoire.louis-xiv-cm"
+}

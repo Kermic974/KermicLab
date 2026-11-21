@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.estimer-un-resultat-avant-de-calculer-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-soustraction-posees-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.estimer-un-resultat-avant-de-calculer",
+  "target": "skill.mathematiques.addition-soustraction-posees-cm"
+}

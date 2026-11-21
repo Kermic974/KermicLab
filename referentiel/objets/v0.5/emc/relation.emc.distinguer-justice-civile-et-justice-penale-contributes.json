@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-justice-civile-et-justice-penale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-justice-civile-et-justice-penale",
+  "target": "skill.emc.emc-justice-et-securite-l"
+}

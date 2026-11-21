@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.convertir-siecles-et-annees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandes-periodes-c2/contenu.json"
+  },
+  "source": "microskill.histoire.convertir-siecles-et-annees",
+  "target": "skill.histoire.grandes-periodes-c2"
+}

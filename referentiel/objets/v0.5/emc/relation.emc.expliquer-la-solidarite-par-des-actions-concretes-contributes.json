@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-la-solidarite-par-des-actions-concretes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-et-solidarite-6e/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-la-solidarite-par-des-actions-concretes",
+  "target": "skill.emc.engagement-et-solidarite-6e"
+}

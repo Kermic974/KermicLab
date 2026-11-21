@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.employer-l-imparfait-pour-decrire-au-passe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-pour-raconter-et-decrire-6e/contenu.json"
+  },
+  "source": "microskill.francais.employer-l-imparfait-pour-decrire-au-passe",
+  "target": "skill.francais.ecrire-pour-raconter-et-decrire-6e"
+}

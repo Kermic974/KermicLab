@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.trier-un-dechet-selon-sa-matiere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-ecrans-et-environnement-c2/contenu.json"
+  },
+  "source": "microskill.emc.trier-un-dechet-selon-sa-matiere",
+  "target": "skill.emc.securite-ecrans-et-environnement-c2"
+}

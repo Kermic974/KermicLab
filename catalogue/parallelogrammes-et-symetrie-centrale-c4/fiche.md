@@ -5,14 +5,7 @@ sujet: mathematiques/parallelogrammes-et-symetrie-centrale-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e
-prerequis:
-  - triangles-et-constructions-c4
-  - symetrie-axiale-6e
-competences:
-  - parallelogrammes-et-symetrie-centrale-c4-comprendre
-  - parallelogrammes-et-symetrie-centrale-c4-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Quelles sont les propriétés du parallélogramme ?
   - Qu'est-ce que la symétrie centrale ?
   - Comment construire le symétrique d'un point par rapport à un point ?
+prerequis: triangles-et-constructions-c4, symetrie-axiale-6e
+niveaux: cycle-4
+competences: utiliser-les-proprietes-des-diagonales-d-un-parallelogramme, construire-le-symetrique-d-un-point-par-symetrie-centrale, identifier-une-figure-ayant-un-centre-de-symetrie, justifier-qu-un-quadrilatere-est-un-parallelogramme
 ---
 
 # Parallélogrammes et symétrie centrale

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.justifier-qu-un-quadrilatere-est-un-parallelogramme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/parallelogrammes-et-symetrie-centrale-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.justifier-qu-un-quadrilatere-est-un-parallelogramme",
+  "target": "skill.mathematiques.parallelogrammes-et-symetrie-centrale-c4"
+}

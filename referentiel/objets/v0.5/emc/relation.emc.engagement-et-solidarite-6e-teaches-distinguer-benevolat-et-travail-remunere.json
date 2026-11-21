@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.engagement-et-solidarite-6e-teaches-distinguer-benevolat-et-travail-remunere",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-et-solidarite-6e/contenu.json"
+  },
+  "source": "notion.emc.engagement-et-solidarite-6e",
+  "target": "microskill.emc.distinguer-benevolat-et-travail-remunere"
+}

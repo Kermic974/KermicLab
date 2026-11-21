@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.air-et-matiere-cm-teaches-interpreter-la-pression-de-l-air",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/air-et-matiere-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.air-et-matiere-cm",
+  "target": "microskill.physique-chimie.interpreter-la-pression-de-l-air"
+}

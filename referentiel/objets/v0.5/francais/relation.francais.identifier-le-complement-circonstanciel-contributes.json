@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-complement-circonstanciel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-dans-la-phrase-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-complement-circonstanciel",
+  "target": "skill.francais.fonctions-dans-la-phrase-cm"
+}

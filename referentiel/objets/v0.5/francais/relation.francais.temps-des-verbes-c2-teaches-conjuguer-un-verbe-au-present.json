@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.temps-des-verbes-c2-teaches-conjuguer-un-verbe-au-present",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-des-verbes-c2/contenu.json"
+  },
+  "source": "notion.francais.temps-des-verbes-c2",
+  "target": "microskill.francais.conjuguer-un-verbe-au-present"
+}

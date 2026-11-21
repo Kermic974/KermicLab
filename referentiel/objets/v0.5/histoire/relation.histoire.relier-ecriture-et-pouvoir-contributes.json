@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.relier-ecriture-et-pouvoir-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premieres-civilisations-6e/contenu.json"
+  },
+  "source": "microskill.histoire.relier-ecriture-et-pouvoir",
+  "target": "skill.histoire.premieres-civilisations-6e"
+}

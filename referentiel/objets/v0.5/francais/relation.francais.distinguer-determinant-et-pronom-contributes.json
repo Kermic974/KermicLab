@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-determinant-et-pronom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-determinant-et-pronom",
+  "target": "skill.francais.nature-des-mots-cm"
+}

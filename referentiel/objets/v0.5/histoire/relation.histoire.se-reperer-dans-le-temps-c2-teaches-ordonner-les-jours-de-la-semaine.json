@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.se-reperer-dans-le-temps-c2-teaches-ordonner-les-jours-de-la-semaine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-le-temps-c2/contenu.json"
+  },
+  "source": "notion.histoire.se-reperer-dans-le-temps-c2",
+  "target": "microskill.histoire.ordonner-les-jours-de-la-semaine"
+}

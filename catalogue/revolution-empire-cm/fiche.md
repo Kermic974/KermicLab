@@ -5,13 +5,7 @@ sujet: histoire/revolution-empire-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - louis-xiv-cm
-competences:
-  - revolution-empire-cm-comprendre
-  - revolution-empire-cm-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Qu'est-ce que la Déclaration des droits de l'homme et du citoyen ?
   - Qui était Napoléon Bonaparte ?
   - Pourquoi appelle-t-on 1789 le début de la Révolution ?
+prerequis: louis-xiv-cm
+niveaux: cycle-3
+competences: situer-la-prise-de-la-bastille, decrire-la-declaration-des-droits-de-l-homme-de-1789, situer-la-creation-de-l-empire-en-1804, distinguer-republique-et-empire
 ---
 
 # La Révolution française et l'Empire

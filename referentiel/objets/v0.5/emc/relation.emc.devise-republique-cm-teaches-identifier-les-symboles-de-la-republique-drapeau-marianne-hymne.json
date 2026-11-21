@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.devise-republique-cm-teaches-identifier-les-symboles-de-la-republique-drapeau-marianne-hymne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devise-republique-cm/contenu.json"
+  },
+  "source": "notion.emc.devise-republique-cm",
+  "target": "microskill.emc.identifier-les-symboles-de-la-republique-drapeau-marianne-hymne"
+}

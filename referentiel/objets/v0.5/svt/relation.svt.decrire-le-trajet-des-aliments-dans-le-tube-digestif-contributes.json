@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-le-trajet-des-aliments-dans-le-tube-digestif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/alimentation-digestion-cm/contenu.json"
+  },
+  "source": "microskill.svt.decrire-le-trajet-des-aliments-dans-le-tube-digestif",
+  "target": "skill.svt.alimentation-digestion-cm"
+}

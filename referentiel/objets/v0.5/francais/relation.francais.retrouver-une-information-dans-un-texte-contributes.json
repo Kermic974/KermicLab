@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.retrouver-une-information-dans-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-et-comprendre-c2/contenu.json"
+  },
+  "source": "microskill.francais.retrouver-une-information-dans-un-texte",
+  "target": "skill.francais.lire-et-comprendre-c2"
+}

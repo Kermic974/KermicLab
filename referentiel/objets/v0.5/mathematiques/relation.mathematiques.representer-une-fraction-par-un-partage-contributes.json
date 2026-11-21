@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.representer-une-fraction-par-un-partage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.representer-une-fraction-par-un-partage",
+  "target": "skill.mathematiques.fractions-cm"
+}

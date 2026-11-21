@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.monde-en-villes-cm-teaches-comparer-deux-villes-du-monde",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-en-villes-cm/contenu.json"
+  },
+  "source": "notion.geographie.monde-en-villes-cm",
+  "target": "microskill.geographie.comparer-deux-villes-du-monde"
+}

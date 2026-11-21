@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-edit-de-nantes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/henri-iv-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-edit-de-nantes",
+  "target": "skill.histoire.henri-iv-cm"
+}

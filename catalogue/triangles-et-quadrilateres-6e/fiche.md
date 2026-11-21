@@ -5,14 +5,7 @@ sujet: mathematiques/triangles-et-quadrilateres-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - polygones-cm
-  - angles
-competences:
-  - triangles-et-quadrilateres-6e-comprendre
-  - triangles-et-quadrilateres-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Quelle est la somme des angles d'un triangle ?
   - Comment construire un rectangle ou un losange en 6e ?
   - Comment coder une figure en 6e ?
+prerequis: polygones-cm, angles
+niveaux: cycle-3
+competences: calculer-le-troisieme-angle-d-un-triangle, reconnaitre-les-proprietes-d-un-triangle-particulier, reconnaitre-un-losange-et-ses-diagonales, coder-une-figure
 ---
 
 # Triangles et quadrilatères en 6e

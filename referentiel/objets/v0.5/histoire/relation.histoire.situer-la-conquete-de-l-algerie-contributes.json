@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-la-conquete-de-l-algerie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/colonisations-c4/contenu.json"
+  },
+  "source": "microskill.histoire.situer-la-conquete-de-l-algerie",
+  "target": "skill.histoire.colonisations-c4"
+}

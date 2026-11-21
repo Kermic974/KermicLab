@@ -5,15 +5,7 @@ sujet: mathematiques/perimetre-aire-cm
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - perimetre-et-calcul-mental-c2
-  - polygones-cm
-  - multiplication-posee-cm
-competences:
-  - perimetre-aire-cm-comprendre
-  - perimetre-aire-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -30,6 +22,9 @@ questions:
   - Comment calculer le périmètre d'un rectangle ?
   - Comment calculer l'aire d'un carré ?
   - Comment calculer l'aire d'un triangle rectangle ?
+prerequis: perimetre-et-calcul-mental-c2, polygones-cm, multiplication-posee-cm
+niveaux: cycle-3
+competences: calculer-le-perimetre-d-un-rectangle-au-cycle-3-cm, calculer-l-aire-d-un-carre-ou-d-un-rectangle, calculer-l-aire-d-un-triangle-rectangle, convertir-des-unites-d-aire-au-cycle-3-cm
 ---
 
 # Périmètre et aire

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiplication-posee-cm-teaches-multiplier-par-10-100-et-1-000",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.multiplication-posee-cm",
+  "target": "microskill.mathematiques.multiplier-par-10-100-et-1-000"
+}

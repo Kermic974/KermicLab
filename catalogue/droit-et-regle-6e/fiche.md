@@ -5,13 +5,7 @@ sujet: emc/droit-et-regle-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - regles-et-justice-cm
-competences:
-  - droit-et-regle-6e-comprendre
-  - droit-et-regle-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quelle différence entre une règle et une loi en 6e ?
   - Comment fonctionne la justice ?
   - Pourquoi une sanction doit-elle être juste ?
+prerequis: regles-et-justice-cm
+niveaux: cycle-3
+competences: distinguer-regle-reglement-et-loi, identifier-qui-vote-la-loi, expliquer-la-presomption-d-innocence-en-6e, justifier-qu-une-sanction-soit-proportionnee-et-educative
 ---
 
 # Le droit et la règle : lois, règlement, justice

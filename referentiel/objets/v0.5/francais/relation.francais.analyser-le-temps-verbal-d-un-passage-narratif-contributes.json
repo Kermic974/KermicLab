@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyser-le-temps-verbal-d-un-passage-narratif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recits-d-aventures-et-voyages-c4/contenu.json"
+  },
+  "source": "microskill.francais.analyser-le-temps-verbal-d-un-passage-narratif",
+  "target": "skill.francais.recits-d-aventures-et-voyages-c4"
+}

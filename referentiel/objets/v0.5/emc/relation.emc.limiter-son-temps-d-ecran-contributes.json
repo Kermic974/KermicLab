@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.limiter-son-temps-d-ecran-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-responsable-cm/contenu.json"
+  },
+  "source": "microskill.emc.limiter-son-temps-d-ecran",
+  "target": "skill.emc.numerique-responsable-cm"
+}

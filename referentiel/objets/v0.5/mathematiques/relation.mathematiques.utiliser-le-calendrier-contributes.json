@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-le-calendrier-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/heure-et-calendrier-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-le-calendrier",
+  "target": "skill.mathematiques.heure-et-calendrier-c2"
+}

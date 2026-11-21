@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-intervalle-de-fluctuation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques-et-echantillonnage-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-intervalle-de-fluctuation",
+  "target": "skill.mathematiques.statistiques-et-echantillonnage-l"
+}

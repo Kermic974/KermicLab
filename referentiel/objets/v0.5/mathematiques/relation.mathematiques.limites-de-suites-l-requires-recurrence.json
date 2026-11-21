@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.limites-de-suites-l-requires-recurrence",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/limites-de-suites-l/contenu.json"
+  },
+  "source": "notion.mathematiques.limites-de-suites-l",
+  "target": "notion.mathematiques.recurrence",
+  "rationale": "Prérequis déclaré dans la fiche : « Le raisonnement par récurrence » précède « Limites de suites et théorèmes de comparaison » dans la progression du programme (lien à relire)."
+}

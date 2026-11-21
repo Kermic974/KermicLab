@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-une-image-sur-un-graphique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/notion-de-fonction-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-une-image-sur-un-graphique",
+  "target": "skill.mathematiques.notion-de-fonction-c4"
+}

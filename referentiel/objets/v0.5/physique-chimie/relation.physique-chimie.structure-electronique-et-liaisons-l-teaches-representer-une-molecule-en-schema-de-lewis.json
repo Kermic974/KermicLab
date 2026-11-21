@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.structure-electronique-et-liaisons-l-teaches-representer-une-molecule-en-schema-de-lewis",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-electronique-et-liaisons-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.structure-electronique-et-liaisons-l",
+  "target": "microskill.physique-chimie.representer-une-molecule-en-schema-de-lewis"
+}

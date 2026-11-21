@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-les-regles-de-securite-avec-l-electricite-au-cycle-3-cm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite-circuits-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-les-regles-de-securite-avec-l-electricite-au-cycle-3-cm",
+  "target": "skill.physique-chimie.electricite-circuits-cm"
+}

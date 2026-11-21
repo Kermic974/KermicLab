@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.lois-de-l-electricite-l-teaches-calculer-la-puissance-electrique-recue-par-un-dipole",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-l-electricite-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.lois-de-l-electricite-l",
+  "target": "microskill.physique-chimie.calculer-la-puissance-electrique-recue-par-un-dipole"
+}

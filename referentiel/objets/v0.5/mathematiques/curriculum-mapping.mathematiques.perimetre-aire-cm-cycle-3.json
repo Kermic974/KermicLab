@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.perimetre-aire-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetre-aire-cm/contenu.json"
+  },
+  "object": "notion.mathematiques.perimetre-aire-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

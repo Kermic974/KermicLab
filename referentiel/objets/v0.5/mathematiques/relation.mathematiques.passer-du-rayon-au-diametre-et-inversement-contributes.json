@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.passer-du-rayon-au-diametre-et-inversement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cercle-compas-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.passer-du-rayon-au-diametre-et-inversement",
+  "target": "skill.mathematiques.cercle-compas-cm"
+}

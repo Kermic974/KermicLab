@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.interpreter-la-croissance-de-la-population-mondiale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/question-demographique-c4/contenu.json"
+  },
+  "source": "microskill.geographie.interpreter-la-croissance-de-la-population-mondiale",
+  "target": "skill.geographie.question-demographique-c4"
+}

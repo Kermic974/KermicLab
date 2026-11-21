@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.republique-ecole-cm-teaches-decrire-l-ecole-de-jules-ferry-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-ecole-cm/contenu.json"
+  },
+  "source": "notion.histoire.republique-ecole-cm",
+  "target": "microskill.histoire.decrire-l-ecole-de-jules-ferry-au-cycle-3-cm"
+}

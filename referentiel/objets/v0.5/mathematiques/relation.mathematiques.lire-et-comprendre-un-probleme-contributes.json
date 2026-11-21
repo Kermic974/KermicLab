@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-et-comprendre-un-probleme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-et-comprendre-un-probleme",
+  "target": "skill.mathematiques.problemes-c2"
+}

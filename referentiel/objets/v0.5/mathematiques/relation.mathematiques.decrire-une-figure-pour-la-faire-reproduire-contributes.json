@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decrire-une-figure-pour-la-faire-reproduire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduire-et-agrandir-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.decrire-une-figure-pour-la-faire-reproduire",
+  "target": "skill.mathematiques.reproduire-et-agrandir-cm"
+}

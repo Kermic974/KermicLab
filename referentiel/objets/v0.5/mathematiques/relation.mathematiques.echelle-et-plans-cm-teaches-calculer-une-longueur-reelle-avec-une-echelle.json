@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.echelle-et-plans-cm-teaches-calculer-une-longueur-reelle-avec-une-echelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/echelle-et-plans-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.echelle-et-plans-cm",
+  "target": "microskill.mathematiques.calculer-une-longueur-reelle-avec-une-echelle"
+}

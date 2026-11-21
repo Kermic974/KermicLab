@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-et-ecrire-un-nombre-jusqu-a-10-000-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-jusqu-a-10000-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-et-ecrire-un-nombre-jusqu-a-10-000",
+  "target": "skill.mathematiques.nombres-jusqu-a-10000-c2"
+}

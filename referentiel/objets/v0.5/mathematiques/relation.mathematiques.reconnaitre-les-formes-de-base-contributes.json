@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-les-formes-de-base-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-planes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-les-formes-de-base",
+  "target": "skill.mathematiques.figures-planes-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-l-epreuve-du-heros-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recits-d-aventures-et-voyages-c4/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-l-epreuve-du-heros",
+  "target": "skill.francais.recits-d-aventures-et-voyages-c4"
+}

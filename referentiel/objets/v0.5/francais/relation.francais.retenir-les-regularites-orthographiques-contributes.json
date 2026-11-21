@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.retenir-les-regularites-orthographiques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-lexicale-cm/contenu.json"
+  },
+  "source": "microskill.francais.retenir-les-regularites-orthographiques",
+  "target": "skill.francais.orthographe-lexicale-cm"
+}

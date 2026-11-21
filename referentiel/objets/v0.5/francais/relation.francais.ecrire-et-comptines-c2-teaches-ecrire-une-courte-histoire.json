@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-et-comptines-c2-teaches-ecrire-une-courte-histoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-comptines-c2/contenu.json"
+  },
+  "source": "notion.francais.ecrire-et-comptines-c2",
+  "target": "microskill.francais.ecrire-une-courte-histoire"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.resumer-et-expliquer-cm-teaches-resumer-un-texte-en-gardant-l-essentiel",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
+  },
+  "source": "notion.francais.resumer-et-expliquer-cm",
+  "target": "microskill.francais.resumer-un-texte-en-gardant-l-essentiel"
+}

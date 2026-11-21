@@ -5,12 +5,6 @@ sujet: histoire/mediterranee-medievale-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - moyen-age
-competences:
-  - mediterranee-medievale-l-comprendre
-  - mediterranee-medievale-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Que sont les croisades ?
   - Comment l'islam s'étend-il au Moyen Âge ?
   - Quels échanges ont lieu en Méditerranée au Moyen Âge ?
+prerequis: moyen-age
+niveaux: seconde
+competences: situer-al-andalus-et-cordoue, expliquer-les-croisades, decrire-le-role-des-cites-marchandes-italiennes, analyser-les-contacts-en-mediterranee-medievale-au-lycee
 ---
 
 # La Méditerranée médiévale : échanges et affrontements

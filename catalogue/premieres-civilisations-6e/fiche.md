@@ -5,13 +5,7 @@ sujet: histoire/premieres-civilisations-6e
 version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - peuplement-neolithique-6e
-competences:
-  - premieres-civilisations-6e-comprendre
-  - premieres-civilisations-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Qui était le pharaon ?
   - Pourquoi le Nil est-il important pour l'Égypte ?
   - À quoi servait l'écriture ?
+prerequis: peuplement-neolithique-6e
+niveaux: cycle-3
+competences: identifier-le-fleuve-d-une-civilisation-nil-tigre-euphrate, decrire-l-ecriture-cuneiforme, expliquer-le-role-des-pyramides, relier-ecriture-et-pouvoir
 ---
 
 # Mésopotamie et Égypte : les premiers États

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.defense-et-paix-c4-teaches-expliquer-la-protection-des-civils-par-les-conventions-de-geneve",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/defense-et-paix-c4/contenu.json"
+  },
+  "source": "notion.emc.defense-et-paix-c4",
+  "target": "microskill.emc.expliquer-la-protection-des-civils-par-les-conventions-de-geneve"
+}

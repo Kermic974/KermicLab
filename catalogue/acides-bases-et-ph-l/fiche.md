@@ -5,13 +5,6 @@ sujet: physique-chimie/acides-bases-et-ph-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere, terminale
-prerequis:
-  - acides-et-bases
-  - solutions-et-concentration-l
-competences:
-  - acides-bases-et-ph-l-comprendre
-  - acides-bases-et-ph-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce qu'un couple acide-base ?
   - Quelle différence entre acide fort et faible ?
   - Comment faire un dosage acido-basique ?
+prerequis: acides-et-bases, solutions-et-concentration-l
+niveaux: premiere, terminale
+competences: calculer-le-ph-d-une-solution-a-partir-de-h-o, classer-une-solution-acide-neutre-ou-basique-selon-son-ph, distinguer-acide-fort-et-acide-faible, exploiter-un-dosage-acido-basique-a-l-equivalence
 ---
 
 # Acides, bases et pH

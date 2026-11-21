@@ -5,13 +5,6 @@ sujet: svt/microbiote-et-sante-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - microbes-et-sante-c4
-  - nutrition-et-digestion
-competences:
-  - microbiote-et-sante-l-comprendre
-  - microbiote-et-sante-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Qu'est-ce que le microbiote intestinal ?
   - À quoi servent les bactéries de l'intestin ?
   - Comment l'alimentation influence-t-elle le microbiote ?
+prerequis: microbes-et-sante-c4, nutrition-et-digestion
+niveaux: seconde
+competences: definir-le-microbiote-intestinal, relier-alimentation-et-diversite-du-microbiote, expliquer-l-effet-d-un-antibiotique-sur-le-microbiote, interpreter-un-desequilibre-du-microbiote-dysbiose
 ---
 
 # Microbiote, santé et alimentation

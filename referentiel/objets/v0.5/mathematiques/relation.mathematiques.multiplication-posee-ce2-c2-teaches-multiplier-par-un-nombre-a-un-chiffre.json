@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiplication-posee-ce2-c2-teaches-multiplier-par-un-nombre-a-un-chiffre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-ce2-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.multiplication-posee-ce2-c2",
+  "target": "microskill.mathematiques.multiplier-par-un-nombre-a-un-chiffre"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-l-etalement-urbain-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/territoires-urbains-et-ruraux-l/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-l-etalement-urbain",
+  "target": "skill.geographie.territoires-urbains-et-ruraux-l"
+}

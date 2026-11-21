@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-masse-volumique-en-6e-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-et-volume-6e/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-masse-volumique-en-6e",
+  "target": "skill.physique-chimie.masse-et-volume-6e"
+}

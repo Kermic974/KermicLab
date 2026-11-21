@@ -5,13 +5,7 @@ sujet: geographie/se-deplacer-transports-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - habiter-ville-campagne-cm
-competences:
-  - se-deplacer-transports-cm-comprendre
-  - se-deplacer-transports-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Quels sont les différents moyens de transport ?
   - Comment se déplace-t-on le plus écologiquement ?
   - Comment les marchandises voyagent-elles ?
+prerequis: habiter-ville-campagne-cm
+niveaux: cycle-3
+competences: comparer-l-impact-de-modes-de-transport, decrire-le-transport-de-marchandises, expliquer-le-covoiturage, choisir-un-mode-de-transport-adapte-a-une-distance
 ---
 
 # Se déplacer et transporter

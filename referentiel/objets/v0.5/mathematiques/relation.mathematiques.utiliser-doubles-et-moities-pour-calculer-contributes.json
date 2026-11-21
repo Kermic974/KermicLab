@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-doubles-et-moities-pour-calculer-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/doubles-et-moities-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-doubles-et-moities-pour-calculer",
+  "target": "skill.mathematiques.doubles-et-moities-c2"
+}

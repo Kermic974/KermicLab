@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decrire-un-intervalle-par-une-inegalite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ensembles-et-logique-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.decrire-un-intervalle-par-une-inegalite",
+  "target": "skill.mathematiques.ensembles-et-logique-l"
+}

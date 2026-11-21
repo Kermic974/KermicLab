@@ -5,13 +5,6 @@ sujet: geographie/france-et-europe-dans-la-mondialisation-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - union-europeenne
-  - mondialisation
-competences:
-  - france-et-europe-dans-la-mondialisation-l-comprendre
-  - france-et-europe-dans-la-mondialisation-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +19,9 @@ questions:
   - Comment la France s'insère-t-elle dans la mondialisation ?
   - Qu'est-ce qu'un pôle de compétitivité ?
   - L'Union européenne est-elle une puissance ?
+prerequis: union-europeenne, mondialisation
+niveaux: premiere
+competences: caracteriser-un-pole-de-competitivite, expliquer-l-espace-schengen-et-l-euro, identifier-les-atouts-touristiques-et-industriels-de-la-france, analyser-une-fracture-territoriale-en-france
 ---
 
 # La France et l'Europe dans la mondialisation

@@ -5,13 +5,7 @@ sujet: francais/poesie-6e
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - poesie-cm
-competences:
-  - poesie-6e-comprendre
-  - poesie-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment analyser un poème en 6e ?
   - Qu'est-ce qu'une allitération ?
   - Qu'est-ce qu'un alexandrin ?
+prerequis: poesie-cm
+niveaux: cycle-3
+competences: compter-les-syllabes-d-un-alexandrin, identifier-une-comparaison-et-une-metaphore-en-6e, identifier-une-personnification-en-6e, reperer-rimes-et-sonorites
 ---
 
 # Le monde poétique en 6e

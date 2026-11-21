@@ -5,13 +5,6 @@ sujet: mathematiques/statistiques-et-echantillonnage-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - statistiques
-  - probabilites
-competences:
-  - statistiques-et-echantillonnage-l-comprendre
-  - statistiques-et-echantillonnage-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Qu'est-ce que la fluctuation d'échantillonnage ?
   - Comment lire un diagramme en boîte ?
   - Comment estimer une probabilité par simulation ?
+prerequis: statistiques, probabilites
+niveaux: seconde
+competences: interpreter-la-fluctuation-d-echantillonnage, calculer-un-intervalle-de-fluctuation, calculer-la-mediane-et-les-quartiles, resumer-une-serie-par-l-ecart-interquartile
 ---
 
 # Statistiques, probabilités et échantillonnage en seconde

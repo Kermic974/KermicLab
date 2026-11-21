@@ -55,3 +55,15 @@ Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `che
 
 Avec la technologie, les 14 matières hors mathématiques de référence ont des objets S4. Total des MicroSkills ajoutées sur la branche : 80 (technologie et cibles) + 144 = 224.
 
+## Notions ajoutées depuis la V0 (cycles 2 à 4 et lycée)
+
+Dernier lot : les **259 notions** du catalogue qui n'avaient pas d'objets canoniques (hors jeux), dans les matières déjà traitées : mathématiques 75, français 48, histoire 34, SVT 27, physique-chimie 23, géographie 23, EMC 23, SES 4, philosophie 2. Elles reçoivent notion, Skill, **1 041 MicroSkills** observables (3 à 5 par notion), **365 `requires`** et **232 CurriculumMappings**. Avec les lots précédents, **toutes les notions des matières du catalogue (hors jeux) sont canoniques**.
+
+- **Projection** : 214 fiches sont projetées ; leurs `prerequis`, `niveaux` et `classes` sont **identiques** (vérifié fiche par fiche), seules leurs compétences génériques sont remplacées. Les 45 notions de cycle 2 ont leurs objets sans placement ni projection (pas de code d'étape `cycle-2` dans le schéma `stage`).
+- **Prérequis** : les 365 `requires` reprennent exactement les prérequis déjà déclarés dans les fiches. Leur justification (`rationale`) est **générée** (« Prérequis déclaré dans la fiche : A précède B dans la progression du programme (lien à relire) ») : elle atteste l'origine du lien, pas une analyse pédagogique propre ; elle est à enrichir à la relecture.
+- **Skills** : le libellé de chaque Skill est générique (« Mobiliser les acquis de « titre » ») ; les MicroSkills portent la granularité utile.
+- **Compétences par niveau** : quand une compétence existait déjà (au même libellé) pour une autre notion, elle est qualifiée par le niveau (« au cycle 3 (CM) », « en 6e », « au cycle 2 », « au cycle 4 », « au lycée ») pour garder des identifiants uniques.
+- **Statuts** : objets en `draft` (version 1), à relire avant `review`.
+
+Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages`, lint et `npm test` (926 tests) passent.
+

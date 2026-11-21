@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-ville-campagne-cm-requires-paysages-et-habiter-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-ville-campagne-cm/contenu.json"
+  },
+  "source": "notion.geographie.habiter-ville-campagne-cm",
+  "target": "notion.geographie.paysages-et-habiter-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Les paysages et la façon d'habiter » précède « Habiter en ville ou à la campagne » dans la progression du programme (lien à relire)."
+}

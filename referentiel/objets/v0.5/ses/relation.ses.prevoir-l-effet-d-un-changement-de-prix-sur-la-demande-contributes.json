@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.prevoir-l-effet-d-un-changement-de-prix-sur-la-demande-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "microskill.ses.prevoir-l-effet-d-un-changement-de-prix-sur-la-demande",
+  "target": "skill.ses.ses-marches-et-prix-l"
+}

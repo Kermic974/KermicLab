@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.eau-air-et-matiere-c2-teaches-prevoir-si-un-objet-flotte-ou-coule",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eau-air-et-matiere-c2/contenu.json"
+  },
+  "source": "notion.physique-chimie.eau-air-et-matiere-c2",
+  "target": "microskill.physique-chimie.prevoir-si-un-objet-flotte-ou-coule"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.volumes-contenances-cm-teaches-convertir-volume-et-contenance",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volumes-contenances-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.volumes-contenances-cm",
+  "target": "microskill.mathematiques.convertir-volume-et-contenance"
+}

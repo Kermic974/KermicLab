@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-resistance-equivalente-en-serie-ou-en-derivation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-l-electricite-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-resistance-equivalente-en-serie-ou-en-derivation",
+  "target": "skill.physique-chimie.lois-de-l-electricite-l"
+}

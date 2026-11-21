@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-libertes-et-droits-l-requires-liberte",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "notion.emc.emc-libertes-et-droits-l",
+  "target": "notion.emc.liberte",
+  "rationale": "Prérequis déclaré dans la fiche : « La liberté » précède « Libertés fondamentales, droits et limites » dans la progression du programme (lien à relire)."
+}

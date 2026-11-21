@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-et-ecrire-un-nombre-jusqu-au-milliard-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grands-nombres-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-et-ecrire-un-nombre-jusqu-au-milliard",
+  "target": "skill.mathematiques.grands-nombres-cm"
+}

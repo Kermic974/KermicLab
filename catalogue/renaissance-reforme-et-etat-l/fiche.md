@@ -5,12 +5,6 @@ sujet: histoire/renaissance-reforme-et-etat-l
 version: 1.0.0
 date: 2026-11-21
 niveau: seconde
-niveaux: seconde
-prerequis:
-  - renaissance
-competences:
-  - renaissance-reforme-et-etat-l-comprendre
-  - renaissance-reforme-et-etat-l-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - Qu'est-ce que la Réforme protestante ?
   - Pourquoi les guerres de religion en France ?
   - Qu'a changé l'imprimerie ?
+prerequis: renaissance
+niveaux: seconde
+competences: situer-l-invention-de-l-imprimerie, expliquer-l-humanisme, situer-la-reforme-de-1517, expliquer-l-edit-de-nantes-de-1598
 ---
 
 # Renaissance, Réforme et construction de l'État moderne

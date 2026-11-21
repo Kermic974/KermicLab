@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.besoins-et-vie-c2-requires-animaux-et-plantes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/besoins-et-vie-c2/contenu.json"
+  },
+  "source": "notion.svt.besoins-et-vie-c2",
+  "target": "notion.svt.animaux-et-plantes-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Les animaux et les plantes » précède « Se nourrir, grandir, se reproduire » dans la progression du programme (lien à relire)."
+}

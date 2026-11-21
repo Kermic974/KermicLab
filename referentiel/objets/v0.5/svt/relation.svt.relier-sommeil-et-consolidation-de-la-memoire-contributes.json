@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.relier-sommeil-et-consolidation-de-la-memoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cerveau-et-plasticite-l/contenu.json"
+  },
+  "source": "microskill.svt.relier-sommeil-et-consolidation-de-la-memoire",
+  "target": "skill.svt.cerveau-et-plasticite-l"
+}

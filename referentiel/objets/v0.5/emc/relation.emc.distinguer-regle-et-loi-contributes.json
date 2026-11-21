@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-regle-et-loi-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-et-justice-cm/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-regle-et-loi",
+  "target": "skill.emc.regles-et-justice-cm"
+}

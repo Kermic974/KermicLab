@@ -5,14 +5,7 @@ sujet: svt/microbes-et-sante-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 4e
-prerequis:
-  - nutrition-et-alimentation-6e
-  - corps-et-sante-c2
-competences:
-  - microbes-et-sante-c4-comprendre
-  - microbes-et-sante-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Quelle différence entre une bactérie et un virus ?
   - Comment un vaccin prépare-t-il l'organisme en 4e ?
   - Comment limiter la contamination ?
+prerequis: nutrition-et-alimentation-6e, corps-et-sante-c2
+niveaux: cycle-4
+competences: distinguer-bacteries-virus-et-champignons, expliquer-l-action-d-un-antibiotique-et-d-un-vaccin, appliquer-les-gestes-d-hygiene-limitant-les-microbes, expliquer-le-role-d-une-barriere-naturelle
 ---
 
 # Micro-organismes, hygiène et santé

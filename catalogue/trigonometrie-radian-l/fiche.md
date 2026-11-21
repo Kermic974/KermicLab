@@ -5,13 +5,6 @@ sujet: mathematiques/trigonometrie-radian-l
 version: 1.0.0
 date: 2026-11-21
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - trigo-cercle
-  - trigonometrie-triangle-rectangle-c4
-competences:
-  - trigonometrie-radian-l-comprendre
-  - trigonometrie-radian-l-appliquer
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment résoudre cos x = 1/2 ?
   - Quelles sont les propriétés de cos et sin ?
   - Comment convertir degrés et radians ?
+prerequis: trigo-cercle, trigonometrie-triangle-rectangle-c4
+niveaux: premiere
+competences: convertir-degres-et-radians-au-lycee, placer-un-angle-sur-le-cercle-trigonometrique, utiliser-les-valeurs-remarquables-de-cosinus-et-sinus, resoudre-une-equation-trigonometrique
 ---
 
 # Trigonométrie : radian, cosinus et sinus d'un réel

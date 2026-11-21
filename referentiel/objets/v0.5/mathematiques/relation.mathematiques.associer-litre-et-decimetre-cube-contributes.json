@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.associer-litre-et-decimetre-cube-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volumes-contenances-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.associer-litre-et-decimetre-cube",
+  "target": "skill.mathematiques.volumes-contenances-cm"
+}

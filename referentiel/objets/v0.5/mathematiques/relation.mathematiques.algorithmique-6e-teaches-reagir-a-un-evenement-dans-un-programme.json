@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.algorithmique-6e-teaches-reagir-a-un-evenement-dans-un-programme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.algorithmique-6e",
+  "target": "microskill.mathematiques.reagir-a-un-evenement-dans-un-programme"
+}

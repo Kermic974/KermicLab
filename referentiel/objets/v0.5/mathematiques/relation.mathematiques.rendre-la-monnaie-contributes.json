@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.rendre-la-monnaie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie-et-euro-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.rendre-la-monnaie",
+  "target": "skill.mathematiques.monnaie-et-euro-c2"
+}

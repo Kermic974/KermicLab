@@ -5,14 +5,7 @@ sujet: francais/vocabulaire-et-orthographe-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - vocabulaire-et-etymologie-6e
-  - orthographe-grammaticale-6e
-competences:
-  - vocabulaire-et-orthographe-c4-comprendre
-  - vocabulaire-et-orthographe-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +21,9 @@ questions:
   - Comment accorder le participe passé avec avoir ?
   - Quels sont les registres de langue ?
   - Comment enrichir son vocabulaire ?
+prerequis: vocabulaire-et-etymologie-6e, orthographe-grammaticale-6e
+niveaux: cycle-4
+competences: accorder-le-participe-passe-employe-avec-avoir-au-cycle-4, choisir-le-bon-registre-de-langue, expliquer-un-mot-par-sa-racine, corriger-les-homophones-d-un-texte
 ---
 
 # Vocabulaire, orthographe et accords au collège

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.decrire-la-transition-demographique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/question-demographique-c4/contenu.json"
+  },
+  "source": "microskill.geographie.decrire-la-transition-demographique",
+  "target": "skill.geographie.question-demographique-c4"
+}

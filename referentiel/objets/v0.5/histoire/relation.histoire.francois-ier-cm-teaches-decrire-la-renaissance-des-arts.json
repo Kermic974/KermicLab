@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.francois-ier-cm-teaches-decrire-la-renaissance-des-arts",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/francois-ier-cm/contenu.json"
+  },
+  "source": "notion.histoire.francois-ier-cm",
+  "target": "microskill.histoire.decrire-la-renaissance-des-arts"
+}

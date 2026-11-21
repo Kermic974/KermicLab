@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-un-carre-et-un-rectangle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-planes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-un-carre-et-un-rectangle",
+  "target": "skill.mathematiques.figures-planes-c2"
+}

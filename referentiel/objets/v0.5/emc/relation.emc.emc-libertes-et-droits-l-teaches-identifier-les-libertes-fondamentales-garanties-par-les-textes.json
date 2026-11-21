@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-libertes-et-droits-l-teaches-identifier-les-libertes-fondamentales-garanties-par-les-textes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "notion.emc.emc-libertes-et-droits-l",
+  "target": "microskill.emc.identifier-les-libertes-fondamentales-garanties-par-les-textes"
+}

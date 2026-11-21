@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-texte-injonctif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-de-textes-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-texte-injonctif",
+  "target": "skill.francais.types-de-textes-cm"
+}

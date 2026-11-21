@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.republique-et-citoyens-c2-teaches-citer-la-devise-de-la-republique-au-cycle-2",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-et-citoyens-c2/contenu.json"
+  },
+  "source": "notion.emc.republique-et-citoyens-c2",
+  "target": "microskill.emc.citer-la-devise-de-la-republique-au-cycle-2"
+}

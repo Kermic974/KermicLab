@@ -5,13 +5,7 @@ sujet: histoire/francois-ier-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - louis-ix-cm
-competences:
-  - francois-ier-cm-comprendre
-  - francois-ier-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qui était François Ier ?
   - C'est quoi la Renaissance au temps de François Ier ?
   - Pourquoi l'ordonnance de Villers-Cotterêts est-elle importante ?
+prerequis: louis-ix-cm
+niveaux: cycle-3
+competences: situer-l-avenement-de-francois-ier, expliquer-l-ordonnance-de-villers-cotterets, identifier-un-chateau-de-la-renaissance, decrire-la-renaissance-des-arts
 ---
 
 # François Ier et la Renaissance

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-la-moitie-d-un-nombre-pair-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/doubles-et-moities-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-la-moitie-d-un-nombre-pair",
+  "target": "skill.mathematiques.doubles-et-moities-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.pourcentages-et-evolutions-c4-teaches-calculer-un-pourcentage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pourcentages-et-evolutions-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.pourcentages-et-evolutions-c4",
+  "target": "microskill.mathematiques.calculer-un-pourcentage"
+}

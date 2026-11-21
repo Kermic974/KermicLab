@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.geometrie-repere-l-teaches-calculer-le-coefficient-directeur-d-une-droite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/geometrie-repere-l/contenu.json"
+  },
+  "source": "notion.mathematiques.geometrie-repere-l",
+  "target": "microskill.mathematiques.calculer-le-coefficient-directeur-d-une-droite"
+}

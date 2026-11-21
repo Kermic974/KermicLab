@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.soleil-et-energie-terrestre-l-teaches-interpreter-l-equilibre-entre-energie-recue-et-energie-emise-par-la-terre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soleil-et-energie-terrestre-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.soleil-et-energie-terrestre-l",
+  "target": "microskill.physique-chimie.interpreter-l-equilibre-entre-energie-recue-et-energie-emise-par-la-terre"
+}

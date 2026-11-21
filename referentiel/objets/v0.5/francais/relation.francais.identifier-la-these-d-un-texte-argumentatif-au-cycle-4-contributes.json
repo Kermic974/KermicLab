@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-la-these-d-un-texte-argumentatif-au-cycle-4-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-reecrire-c4/contenu.json"
+  },
+  "source": "microskill.francais.identifier-la-these-d-un-texte-argumentatif-au-cycle-4",
+  "target": "skill.francais.ecrire-et-reecrire-c4"
+}

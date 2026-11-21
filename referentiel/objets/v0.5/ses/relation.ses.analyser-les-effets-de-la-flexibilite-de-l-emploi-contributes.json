@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.analyser-les-effets-de-la-flexibilite-de-l-emploi-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
+  },
+  "source": "microskill.ses.analyser-les-effets-de-la-flexibilite-de-l-emploi",
+  "target": "skill.ses.ses-travail-chomage-et-protection-l"
+}

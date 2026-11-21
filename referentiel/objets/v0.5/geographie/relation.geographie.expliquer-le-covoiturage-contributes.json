@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-le-covoiturage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-deplacer-transports-cm/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-le-covoiturage",
+  "target": "skill.geographie.se-deplacer-transports-cm"
+}

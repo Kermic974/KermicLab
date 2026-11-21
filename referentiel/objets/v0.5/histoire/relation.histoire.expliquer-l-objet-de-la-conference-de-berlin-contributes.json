@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-l-objet-de-la-conference-de-berlin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/colonisations-c4/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-l-objet-de-la-conference-de-berlin",
+  "target": "skill.histoire.colonisations-c4"
+}

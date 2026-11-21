@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.traites-et-esclavage-c4-teaches-expliquer-la-revolte-de-saint-domingue",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/traites-et-esclavage-c4/contenu.json"
+  },
+  "source": "notion.histoire.traites-et-esclavage-c4",
+  "target": "microskill.histoire.expliquer-la-revolte-de-saint-domingue"
+}

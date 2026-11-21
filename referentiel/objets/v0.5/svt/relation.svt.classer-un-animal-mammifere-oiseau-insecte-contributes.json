@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.classer-un-animal-mammifere-oiseau-insecte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/animaux-et-plantes-c2/contenu.json"
+  },
+  "source": "microskill.svt.classer-un-animal-mammifere-oiseau-insecte",
+  "target": "skill.svt.animaux-et-plantes-c2"
+}

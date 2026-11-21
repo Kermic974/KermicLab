@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.encadrer-un-nombre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/entiers-et-operations-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.encadrer-un-nombre",
+  "target": "skill.mathematiques.entiers-et-operations-6e"
+}

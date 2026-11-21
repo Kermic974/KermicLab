@@ -5,13 +5,7 @@ sujet: svt/classification-du-vivant-cm
 version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - animaux-et-plantes-c2
-competences:
-  - classification-du-vivant-cm-comprendre
-  - classification-du-vivant-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - Quelle différence entre vertébrés et invertébrés ?
   - Comment reconnaître un mammifère ?
   - C'est quoi une espèce ?
+prerequis: animaux-et-plantes-c2
+niveaux: cycle-3
+competences: trier-des-etres-vivants-selon-un-critere, utiliser-une-cle-de-determination, reconnaitre-un-insecte-et-un-mollusque, justifier-un-classement-par-des-caracteres-observables
 ---
 
 # Classer les êtres vivants
