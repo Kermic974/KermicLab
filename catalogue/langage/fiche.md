@@ -17,7 +17,7 @@ questions:
   - Qu'est-ce qu'un acte de parole ?
 prerequis:
 niveaux: terminale
-competences: philosophie-langage-action-1, philosophie-langage-action-2
+competences: distinguer-signifiant-signifie-et-referent-chez-saussure, expliquer-le-caractere-arbitraire-du-signe, analyser-le-role-du-contexte-dans-le-sens-d-un-enonce, analyser-un-acte-de-langage-performatif-chez-austin
 ---
 
 # Le langage

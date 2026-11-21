@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.situer-un-territoire-ultramarin-dans-son-espace-regional-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "microskill.geographie.situer-un-territoire-ultramarin-dans-son-espace-regional",
+  "target": "skill.geographie.france-regions"
+}

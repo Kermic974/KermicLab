@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.faire-entendre-une-image-par-la-lecture-a-voix-haute-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "microskill.francais.faire-entendre-une-image-par-la-lecture-a-voix-haute",
+  "target": "skill.francais.poesie"
+}

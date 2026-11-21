@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.metropolisation-teaches-discuter-une-hierarchie-ou-une-cooperation-entre-villes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "notion.geographie.metropolisation",
+  "target": "microskill.geographie.discuter-une-hierarchie-ou-une-cooperation-entre-villes"
+}

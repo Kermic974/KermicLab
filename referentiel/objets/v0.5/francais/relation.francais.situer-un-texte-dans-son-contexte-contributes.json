@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.situer-un-texte-dans-son-contexte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "microskill.francais.situer-un-texte-dans-son-contexte",
+  "target": "skill.francais.analyse-texte"
+}

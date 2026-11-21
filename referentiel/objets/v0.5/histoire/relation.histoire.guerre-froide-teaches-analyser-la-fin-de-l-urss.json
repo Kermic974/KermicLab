@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerre-froide-teaches-analyser-la-fin-de-l-urss",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide",
+  "target": "microskill.histoire.analyser-la-fin-de-l-urss"
+}

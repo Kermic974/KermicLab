@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-un-enregistrement-de-potentiel-d-action-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-un-enregistrement-de-potentiel-d-action",
+  "target": "skill.svt.systeme-nerveux"
+}

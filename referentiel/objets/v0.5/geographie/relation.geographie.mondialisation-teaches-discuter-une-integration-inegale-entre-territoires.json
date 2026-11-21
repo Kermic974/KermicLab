@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-teaches-discuter-une-integration-inegale-entre-territoires",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "notion.geographie.mondialisation",
+  "target": "microskill.geographie.discuter-une-integration-inegale-entre-territoires"
+}

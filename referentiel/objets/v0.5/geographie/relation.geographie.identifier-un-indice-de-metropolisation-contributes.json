@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-un-indice-de-metropolisation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-un-indice-de-metropolisation",
+  "target": "skill.geographie.metropolisation"
+}

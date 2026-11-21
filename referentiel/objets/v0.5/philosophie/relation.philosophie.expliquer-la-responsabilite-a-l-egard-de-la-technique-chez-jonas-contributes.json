@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-la-responsabilite-a-l-egard-de-la-technique-chez-jonas-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/technique/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-la-responsabilite-a-l-egard-de-la-technique-chez-jonas",
+  "target": "skill.philosophie.technique"
+}

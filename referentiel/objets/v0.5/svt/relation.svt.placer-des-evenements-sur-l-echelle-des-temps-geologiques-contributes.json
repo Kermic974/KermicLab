@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.placer-des-evenements-sur-l-echelle-des-temps-geologiques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "source": "microskill.svt.placer-des-evenements-sur-l-echelle-des-temps-geologiques",
+  "target": "skill.svt.histoire-de-la-terre-et-datation"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.caracteriser-l-inegal-acces-des-habitants-aux-reseaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "microskill.geographie.caracteriser-l-inegal-acces-des-habitants-aux-reseaux",
+  "target": "skill.geographie.metropolisation"
+}

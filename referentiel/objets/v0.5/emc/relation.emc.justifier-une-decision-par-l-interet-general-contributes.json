@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.justifier-une-decision-par-l-interet-general-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "microskill.emc.justifier-une-decision-par-l-interet-general",
+  "target": "skill.emc.interet-general"
+}

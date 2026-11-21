@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.engagement-civique-teaches-dresser-le-bilan-d-un-engagement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "microskill.emc.dresser-le-bilan-d-un-engagement"
+}

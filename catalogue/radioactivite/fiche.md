@@ -26,9 +26,9 @@ questions:
   - je ne comprends pas la demi-vie
   - c'est quoi une désintégration alpha ?
   - what is radioactivity?
-prerequis:
+prerequis: tableau-periodique
 niveaux: terminale
-competences: pc-radioactivite-action-1, pc-radioactivite-action-2
+competences: identifier-le-type-de-desintegration-d-un-noyau, ecrire-l-equation-d-une-desintegration, exploiter-une-demi-vie-pour-estimer-une-duree, appliquer-la-loi-de-decroissance-radioactive
 ---
 
 # La radioactivité

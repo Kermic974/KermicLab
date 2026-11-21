@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.lumieres-teaches-associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "notion.histoire.lumieres",
+  "target": "microskill.histoire.associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau"
+}

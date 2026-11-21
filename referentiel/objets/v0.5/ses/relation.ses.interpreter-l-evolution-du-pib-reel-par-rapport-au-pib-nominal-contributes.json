@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.interpreter-l-evolution-du-pib-reel-par-rapport-au-pib-nominal-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croissance-economique/contenu.json"
+  },
+  "source": "microskill.ses.interpreter-l-evolution-du-pib-reel-par-rapport-au-pib-nominal",
+  "target": "skill.ses.croissance-economique"
+}

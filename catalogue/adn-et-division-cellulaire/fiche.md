@@ -26,9 +26,9 @@ questions:
   - je ne comprends pas la mitose
   - c'est quoi le cycle cellulaire ?
   - what is mitosis?
-prerequis:
+prerequis: la-cellule, genetique-et-heredite
 niveaux: premiere
-competences: svt-adn-et-division-cellulaire-action-1, svt-adn-et-division-cellulaire-action-2
+competences: decrire-la-structure-de-la-molecule-d-adn, deduire-le-brin-complementaire-d-une-sequence-d-adn, expliquer-le-caractere-semi-conservatif-de-la-replication, ordonner-les-phases-du-cycle-cellulaire-et-de-la-mitose, prevoir-le-nombre-de-cellules-obtenues-apres-des-mitoses-successives
 ---
 
 # L'ADN, sa réplication et la mitose

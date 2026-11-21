@@ -19,10 +19,10 @@ questions:
   - Que change le Code civil ?
   - C'est quoi le Consulat ?
   - Pourquoi Waterloo marque-t-il la fin du Premier Empire ?
-prerequis:
-niveaux: cycle-4, seconde
 classes: 4e
-competences: his-napoleon-action-1, his-napoleon-action-2
+prerequis: revolution-francaise
+niveaux: cycle-4, seconde
+competences: situer-les-etapes-du-consulat-a-l-empire, expliquer-les-reformes-de-l-etat-sous-napoleon-code-civil-administration, analyser-les-conquetes-et-les-resistances, evaluer-l-heritage-napoleonien
 ---
 
 # Napoléon : du Consulat à l'Empire

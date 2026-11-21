@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-monologue-dialogue-et-aparte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-monologue-dialogue-et-aparte",
+  "target": "skill.francais.theatre"
+}

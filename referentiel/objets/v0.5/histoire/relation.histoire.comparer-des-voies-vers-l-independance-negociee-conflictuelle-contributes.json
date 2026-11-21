@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.comparer-des-voies-vers-l-independance-negociee-conflictuelle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "microskill.histoire.comparer-des-voies-vers-l-independance-negociee-conflictuelle",
+  "target": "skill.histoire.decolonisation"
+}

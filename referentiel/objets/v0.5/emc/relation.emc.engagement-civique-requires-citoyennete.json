@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.engagement-civique-requires-citoyennete",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "notion.emc.citoyennete",
+  "rationale": "L’engagement civique est une forme d’exercice de la citoyenneté."
+}

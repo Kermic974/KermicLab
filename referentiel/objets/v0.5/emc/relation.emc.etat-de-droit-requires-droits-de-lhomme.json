@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.etat-de-droit-requires-droits-de-lhomme",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "notion.emc.etat-de-droit",
+  "target": "notion.emc.droits-de-lhomme",
+  "rationale": "Les garanties de l’État de droit protègent les droits proclamés par les textes."
+}

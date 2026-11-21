@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-mutation-somatique-et-mutation-germinale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-mutation-somatique-et-mutation-germinale",
+  "target": "skill.svt.mutations-et-variabilite"
+}

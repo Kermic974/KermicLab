@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.lumieres-teaches-expliquer-la-circulation-des-idees-et-des-livres",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "notion.histoire.lumieres",
+  "target": "microskill.histoire.expliquer-la-circulation-des-idees-et-des-livres"
+}

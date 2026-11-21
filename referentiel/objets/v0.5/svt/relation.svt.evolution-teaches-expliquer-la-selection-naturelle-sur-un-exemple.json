@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-teaches-expliquer-la-selection-naturelle-sur-un-exemple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "notion.svt.evolution",
+  "target": "microskill.svt.expliquer-la-selection-naturelle-sur-un-exemple"
+}

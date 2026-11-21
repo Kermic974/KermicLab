@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-solidarite-et-assistance-humiliante-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-solidarite-et-assistance-humiliante",
+  "target": "skill.emc.fraternite"
+}

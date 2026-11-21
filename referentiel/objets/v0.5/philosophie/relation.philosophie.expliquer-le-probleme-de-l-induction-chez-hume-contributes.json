@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-probleme-de-l-induction-chez-hume-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-probleme-de-l-induction-chez-hume",
+  "target": "skill.philosophie.raison"
+}

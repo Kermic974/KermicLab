@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.mouvements-teaches-convertir-une-vitesse-entre-m-s-et-km-h",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvements/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvements",
+  "target": "microskill.physique-chimie.convertir-une-vitesse-entre-m-s-et-km-h"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyser-l-effet-d-une-figure-de-style-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-de-style/contenu.json"
+  },
+  "source": "microskill.francais.analyser-l-effet-d-une-figure-de-style",
+  "target": "skill.francais.figures-de-style"
+}

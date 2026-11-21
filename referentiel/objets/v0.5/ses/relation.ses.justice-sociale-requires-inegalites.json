@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.justice-sociale-requires-inegalites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "notion.ses.justice-sociale",
+  "target": "notion.ses.inegalites",
+  "rationale": "Évaluer une politique de justice sociale suppose de mesurer les inégalités qu’elle vise."
+}

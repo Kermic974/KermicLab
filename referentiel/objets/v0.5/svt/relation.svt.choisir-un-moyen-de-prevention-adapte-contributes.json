@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.choisir-un-moyen-de-prevention-adapte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "microskill.svt.choisir-un-moyen-de-prevention-adapte",
+  "target": "skill.svt.reproduction-humaine"
+}

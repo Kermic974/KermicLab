@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-les-competences-d-une-region-et-d-autres-collectivites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-les-competences-d-une-region-et-d-autres-collectivites",
+  "target": "skill.geographie.france-regions"
+}

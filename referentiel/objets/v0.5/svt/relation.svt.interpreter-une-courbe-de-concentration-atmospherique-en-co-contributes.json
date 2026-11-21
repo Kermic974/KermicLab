@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-une-courbe-de-concentration-atmospherique-en-co-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-une-courbe-de-concentration-atmospherique-en-co",
+  "target": "skill.svt.climat-et-effet-de-serre"
+}

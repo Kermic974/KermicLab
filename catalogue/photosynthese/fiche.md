@@ -31,7 +31,7 @@ questions:
 classes: 6e, 5e
 prerequis:
 niveaux: cycle-3, cycle-4, seconde, premiere
-competences: svt-photosynthese-action-1, svt-photosynthese-action-2
+competences: identifier-les-besoins-des-vegetaux, decrire-le-role-des-chloroplastes, mettre-en-evidence-la-production-d-amidon, ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese, concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese
 ---
 
 # La photosynthèse et les besoins des plantes

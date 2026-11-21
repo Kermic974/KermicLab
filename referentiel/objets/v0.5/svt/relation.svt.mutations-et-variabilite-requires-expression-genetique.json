@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.mutations-et-variabilite-requires-expression-genetique",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "notion.svt.mutations-et-variabilite",
+  "target": "notion.svt.expression-genetique",
+  "rationale": "L’effet d’une mutation se lit à travers le code génétique et la synthèse des protéines (mutations silencieuses, décalage du cadre de lecture)."
+}

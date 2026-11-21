@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.lumieres-requires-temps-modernes",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "notion.histoire.lumieres",
+  "target": "notion.histoire.temps-modernes",
+  "rationale": "Les Lumières critiquent l’absolutisme et la concentration des pouvoirs étudiés dans les Temps modernes."
+}

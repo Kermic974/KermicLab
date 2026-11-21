@@ -47,7 +47,7 @@ questions:
 classes: 6e, 5e
 prerequis:
 niveaux: cycle-3, cycle-4, seconde
-competences: svt-ecosystemes-et-biodiversite-action-1, svt-ecosystemes-et-biodiversite-action-2
+competences: construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations, distinguer-producteurs-consommateurs-et-decomposeurs, calculer-le-transfert-d-energie-entre-niveaux-trophiques, identifier-les-causes-de-perte-de-biodiversite, proposer-une-action-de-protection-d-un-milieu
 ---
 
 # Écosystèmes et biodiversité

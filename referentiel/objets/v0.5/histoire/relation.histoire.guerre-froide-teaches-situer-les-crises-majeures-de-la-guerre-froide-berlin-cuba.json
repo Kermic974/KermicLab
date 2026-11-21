@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerre-froide-teaches-situer-les-crises-majeures-de-la-guerre-froide-berlin-cuba",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide",
+  "target": "microskill.histoire.situer-les-crises-majeures-de-la-guerre-froide-berlin-cuba"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-la-traduction-de-l-arn-messager-en-proteine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/expression-genetique/contenu.json"
+  },
+  "source": "microskill.svt.decrire-la-traduction-de-l-arn-messager-en-proteine",
+  "target": "skill.svt.expression-genetique"
+}

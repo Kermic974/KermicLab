@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.proposer-une-transformation-touristique-durable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "microskill.geographie.proposer-une-transformation-touristique-durable",
+  "target": "skill.geographie.tourisme"
+}

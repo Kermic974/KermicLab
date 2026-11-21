@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.proposer-une-action-de-protection-d-un-milieu-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "microskill.svt.proposer-une-action-de-protection-d-un-milieu",
+  "target": "skill.svt.ecosystemes-et-biodiversite"
+}

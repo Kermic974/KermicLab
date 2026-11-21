@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mondialisation-commerce-teaches-debattre-des-effets-des-echanges-sur-les-acteurs",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "notion.ses.mondialisation-commerce",
+  "target": "microskill.ses.debattre-des-effets-des-echanges-sur-les-acteurs"
+}

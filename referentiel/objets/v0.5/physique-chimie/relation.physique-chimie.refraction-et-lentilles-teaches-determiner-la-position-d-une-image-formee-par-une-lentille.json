@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.refraction-et-lentilles-teaches-determiner-la-position-d-une-image-formee-par-une-lentille",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/refraction-et-lentilles/contenu.json"
+  },
+  "source": "notion.physique-chimie.refraction-et-lentilles",
+  "target": "microskill.physique-chimie.determiner-la-position-d-une-image-formee-par-une-lentille"
+}

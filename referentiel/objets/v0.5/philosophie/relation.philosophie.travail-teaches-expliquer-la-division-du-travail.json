@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.travail-teaches-expliquer-la-division-du-travail",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/travail/contenu.json"
+  },
+  "source": "notion.philosophie.travail",
+  "target": "microskill.philosophie.expliquer-la-division-du-travail"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decolonisation-teaches-analyser-les-consequences-d-une-independance-partition-developpement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "notion.histoire.decolonisation",
+  "target": "microskill.histoire.analyser-les-consequences-d-une-independance-partition-developpement"
+}

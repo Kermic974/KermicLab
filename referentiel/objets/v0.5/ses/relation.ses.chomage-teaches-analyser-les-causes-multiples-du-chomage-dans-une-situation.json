@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.chomage-teaches-analyser-les-causes-multiples-du-chomage-dans-une-situation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "notion.ses.chomage",
+  "target": "microskill.ses.analyser-les-causes-multiples-du-chomage-dans-une-situation"
+}

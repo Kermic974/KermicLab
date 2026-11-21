@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.chomage-requires-marche-concurrentiel",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "notion.ses.chomage",
+  "target": "notion.ses.marche-concurrentiel",
+  "rationale": "Le marché du travail se lit avec le modèle d’offre et de demande vu pour un marché de biens."
+}

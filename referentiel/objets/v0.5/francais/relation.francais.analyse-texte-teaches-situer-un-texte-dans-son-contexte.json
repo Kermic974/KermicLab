@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyse-texte-teaches-situer-un-texte-dans-son-contexte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "microskill.francais.situer-un-texte-dans-son-contexte"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "microskill.ses.distinguer-chomeur-actif-occupe-et-inactif-selon-le-bit",
+  "type": "microskill",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "label": "Distinguer chômeur, actif occupé et inactif selon le BIT"
+}

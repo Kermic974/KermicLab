@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.calculer-un-total-a-partir-d-un-decoupage-administratif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "microskill.geographie.calculer-un-total-a-partir-d-un-decoupage-administratif",
+  "target": "skill.geographie.france-regions"
+}

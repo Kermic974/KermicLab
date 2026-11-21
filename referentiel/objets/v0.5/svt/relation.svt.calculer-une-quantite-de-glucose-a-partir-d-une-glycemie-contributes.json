@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-une-quantite-de-glucose-a-partir-d-une-glycemie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "microskill.svt.calculer-une-quantite-de-glucose-a-partir-d-une-glycemie",
+  "target": "skill.svt.glycemie-et-diabete"
+}

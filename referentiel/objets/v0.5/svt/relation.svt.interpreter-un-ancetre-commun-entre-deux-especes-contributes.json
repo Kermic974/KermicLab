@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-un-ancetre-commun-entre-deux-especes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-un-ancetre-commun-entre-deux-especes",
+  "target": "skill.svt.evolution"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-conscience-spontanee-et-conscience-reflechie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-conscience-spontanee-et-conscience-reflechie",
+  "target": "skill.philosophie.conscience"
+}

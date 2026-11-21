@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-acteurs-et-les-ressources-d-un-espace-maritime-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-acteurs-et-les-ressources-d-un-espace-maritime",
+  "target": "skill.geographie.mers-oceans"
+}

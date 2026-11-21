@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.etat-relatedto-liberte-philosophie",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "notion.philosophie.etat",
+  "target": "notion.philosophie.liberte-philosophie",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : La liberté politique est étudiée dans le cadre de l’État."
+}

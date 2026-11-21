@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.condensateur-et-circuit-rc-teaches-relier-la-charge-du-condensateur-a-sa-tension",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/condensateur-et-circuit-rc/contenu.json"
+  },
+  "source": "notion.physique-chimie.condensateur-et-circuit-rc",
+  "target": "microskill.physique-chimie.relier-la-charge-du-condensateur-a-sa-tension"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-nature-et-artifice-dans-un-exemple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-nature-et-artifice-dans-un-exemple",
+  "target": "skill.philosophie.nature"
+}

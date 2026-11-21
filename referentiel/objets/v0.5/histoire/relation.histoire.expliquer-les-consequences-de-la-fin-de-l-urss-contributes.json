@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-les-consequences-de-la-fin-de-l-urss-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-depuis-1990/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-les-consequences-de-la-fin-de-l-urss",
+  "target": "skill.histoire.monde-depuis-1990"
+}

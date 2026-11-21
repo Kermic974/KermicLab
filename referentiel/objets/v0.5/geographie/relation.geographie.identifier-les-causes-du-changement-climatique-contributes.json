@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-causes-du-changement-climatique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-causes-du-changement-climatique",
+  "target": "skill.geographie.changement-climatique"
+}

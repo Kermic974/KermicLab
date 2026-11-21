@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.changement-climatique-teaches-distinguer-attenuation-et-adaptation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "notion.geographie.changement-climatique",
+  "target": "microskill.geographie.distinguer-attenuation-et-adaptation"
+}

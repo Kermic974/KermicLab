@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-lithosphere-et-asthenosphere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-lithosphere-et-asthenosphere",
+  "target": "skill.svt.structure-de-la-terre"
+}

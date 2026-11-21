@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.discrimination-requires-egalite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "notion.emc.discrimination",
+  "target": "notion.emc.egalite",
+  "rationale": "Une discrimination se définit comme une atteinte au principe d’égalité de traitement."
+}

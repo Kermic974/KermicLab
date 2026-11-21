@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-les-lumieres-dans-leur-chronologie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "microskill.histoire.situer-les-lumieres-dans-leur-chronologie",
+  "target": "skill.histoire.lumieres"
+}

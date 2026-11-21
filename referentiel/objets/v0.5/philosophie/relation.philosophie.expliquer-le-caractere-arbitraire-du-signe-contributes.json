@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-caractere-arbitraire-du-signe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langage/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-caractere-arbitraire-du-signe",
+  "target": "skill.philosophie.langage"
+}

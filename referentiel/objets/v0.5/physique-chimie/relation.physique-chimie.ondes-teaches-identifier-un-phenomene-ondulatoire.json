@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.ondes-teaches-identifier-un-phenomene-ondulatoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ondes/contenu.json"
+  },
+  "source": "notion.physique-chimie.ondes",
+  "target": "microskill.physique-chimie.identifier-un-phenomene-ondulatoire"
+}

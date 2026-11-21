@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.systeme-nerveux-teaches-calculer-une-duree-de-conduction-a-partir-d-une-vitesse",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "notion.svt.systeme-nerveux",
+  "target": "microskill.svt.calculer-une-duree-de-conduction-a-partir-d-une-vitesse"
+}

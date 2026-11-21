@@ -19,7 +19,7 @@ questions:
 classes: 6e
 prerequis:
 niveaux: cycle-3, premiere
-competences: geographie-espaces-ruraux-action-1, geographie-espaces-ruraux-action-2
+competences: identifier-les-fonctions-d-un-espace-rural, analyser-les-liens-entre-un-espace-rural-et-ses-voisins, identifier-les-acteurs-d-un-conflit-d-usage-eau-terres, interpreter-les-politiques-territoriales-rurales
 ---
 
 # Les espaces ruraux

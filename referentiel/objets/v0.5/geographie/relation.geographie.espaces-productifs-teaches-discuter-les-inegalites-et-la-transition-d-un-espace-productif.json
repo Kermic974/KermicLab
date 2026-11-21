@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.espaces-productifs-teaches-discuter-les-inegalites-et-la-transition-d-un-espace-productif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "notion.geographie.espaces-productifs",
+  "target": "microskill.geographie.discuter-les-inegalites-et-la-transition-d-un-espace-productif"
+}

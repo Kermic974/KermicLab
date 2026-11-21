@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-mecanisme-de-l-effet-de-serre-naturel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-mecanisme-de-l-effet-de-serre-naturel",
+  "target": "skill.svt.climat-et-effet-de-serre"
+}

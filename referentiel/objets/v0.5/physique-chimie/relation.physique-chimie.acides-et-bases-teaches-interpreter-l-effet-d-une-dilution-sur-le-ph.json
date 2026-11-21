@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.acides-et-bases-teaches-interpreter-l-effet-d-une-dilution-sur-le-ph",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/acides-et-bases/contenu.json"
+  },
+  "source": "notion.physique-chimie.acides-et-bases",
+  "target": "microskill.physique-chimie.interpreter-l-effet-d-une-dilution-sur-le-ph"
+}

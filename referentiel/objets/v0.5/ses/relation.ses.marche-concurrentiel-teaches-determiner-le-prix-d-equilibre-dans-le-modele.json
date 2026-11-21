@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.marche-concurrentiel-teaches-determiner-le-prix-d-equilibre-dans-le-modele",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/marche-concurrentiel/contenu.json"
+  },
+  "source": "notion.ses.marche-concurrentiel",
+  "target": "microskill.ses.determiner-le-prix-d-equilibre-dans-le-modele"
+}

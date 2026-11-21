@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.analyser-le-risque-et-l-interet-d-une-uvre-qui-derange-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/art/contenu.json"
+  },
+  "source": "microskill.philosophie.analyser-le-risque-et-l-interet-d-une-uvre-qui-derange",
+  "target": "skill.philosophie.art"
+}

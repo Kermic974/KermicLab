@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.systeme-nerveux-teaches-decrire-l-arc-reflexe-myotatique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "notion.svt.systeme-nerveux",
+  "target": "microskill.svt.decrire-l-arc-reflexe-myotatique"
+}

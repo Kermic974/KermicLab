@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-formation-d-un-sol-et-le-role-de-l-humus-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-formation-d-un-sol-et-le-role-de-l-humus",
+  "target": "skill.svt.agrosystemes-et-sols"
+}

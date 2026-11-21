@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.comparer-des-inegalites-economiques-a-l-aide-d-indicateurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "microskill.ses.comparer-des-inegalites-economiques-a-l-aide-d-indicateurs",
+  "target": "skill.ses.inegalites"
+}

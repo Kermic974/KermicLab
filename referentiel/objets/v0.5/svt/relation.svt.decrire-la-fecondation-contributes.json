@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-la-fecondation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "microskill.svt.decrire-la-fecondation",
+  "target": "skill.svt.reproduction-humaine"
+}

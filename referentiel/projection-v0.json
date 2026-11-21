@@ -314,264 +314,590 @@
     "microskill.mathematiques.utiliser-une-suite-arithmetique": "utiliser-une-suite-arithmetique",
     "microskill.mathematiques.utiliser-une-suite-geometrique": "utiliser-une-suite-geometrique",
     "microskill.mathematiques.verifier-l-initialisation-et-l-heredite": "verifier-l-initialisation-et-l-heredite",
-    "microskill.physique-chimie.absorbance-et-dosages-action-1": "pc-absorbance-et-dosages-action-1",
-    "microskill.physique-chimie.absorbance-et-dosages-action-2": "pc-absorbance-et-dosages-action-2",
-    "microskill.physique-chimie.acides-et-bases-action-1": "pc-acides-et-bases-action-1",
-    "microskill.physique-chimie.acides-et-bases-action-2": "pc-acides-et-bases-action-2",
-    "microskill.physique-chimie.atomes-et-molecules-action-1": "pc-atomes-et-molecules-action-1",
-    "microskill.physique-chimie.atomes-et-molecules-action-2": "pc-atomes-et-molecules-action-2",
-    "microskill.physique-chimie.cinetique-chimique-action-1": "pc-cinetique-chimique-action-1",
-    "microskill.physique-chimie.cinetique-chimique-action-2": "pc-cinetique-chimique-action-2",
-    "microskill.physique-chimie.condensateur-et-circuit-rc-action-1": "pc-condensateur-et-circuit-rc-action-1",
-    "microskill.physique-chimie.condensateur-et-circuit-rc-action-2": "pc-condensateur-et-circuit-rc-action-2",
-    "microskill.physique-chimie.diffraction-et-interferences-action-1": "pc-diffraction-et-interferences-action-1",
-    "microskill.physique-chimie.diffraction-et-interferences-action-2": "pc-diffraction-et-interferences-action-2",
-    "microskill.physique-chimie.electricite-action-1": "pc-electricite-action-1",
-    "microskill.physique-chimie.electricite-action-2": "pc-electricite-action-2",
-    "microskill.physique-chimie.energie-action-1": "pc-energie-action-1",
-    "microskill.physique-chimie.energie-action-2": "pc-energie-action-2",
-    "microskill.physique-chimie.energie-mecanique-action-1": "pc-energie-mecanique-action-1",
-    "microskill.physique-chimie.energie-mecanique-action-2": "pc-energie-mecanique-action-2",
-    "microskill.physique-chimie.etats-de-la-matiere-action-1": "pc-etats-de-la-matiere-action-1",
-    "microskill.physique-chimie.etats-de-la-matiere-action-2": "pc-etats-de-la-matiere-action-2",
-    "microskill.physique-chimie.forces-et-poids-action-1": "pc-forces-et-poids-action-1",
-    "microskill.physique-chimie.forces-et-poids-action-2": "pc-forces-et-poids-action-2",
-    "microskill.physique-chimie.gravitation-et-satellites-action-1": "pc-gravitation-et-satellites-action-1",
-    "microskill.physique-chimie.gravitation-et-satellites-action-2": "pc-gravitation-et-satellites-action-2",
-    "microskill.physique-chimie.lois-de-newton-action-1": "pc-lois-de-newton-action-1",
-    "microskill.physique-chimie.lois-de-newton-action-2": "pc-lois-de-newton-action-2",
-    "microskill.physique-chimie.masse-volumique-et-melanges-action-1": "pc-masse-volumique-et-melanges-action-1",
-    "microskill.physique-chimie.masse-volumique-et-melanges-action-2": "pc-masse-volumique-et-melanges-action-2",
-    "microskill.physique-chimie.mouvements-action-1": "pc-mouvements-action-1",
-    "microskill.physique-chimie.mouvements-action-2": "pc-mouvements-action-2",
-    "microskill.physique-chimie.ondes-action-1": "pc-ondes-action-1",
-    "microskill.physique-chimie.ondes-action-2": "pc-ondes-action-2",
-    "microskill.physique-chimie.oxydoreduction-action-1": "pc-oxydoreduction-action-1",
-    "microskill.physique-chimie.oxydoreduction-action-2": "pc-oxydoreduction-action-2",
-    "microskill.physique-chimie.quantite-de-matiere-action-1": "pc-quantite-de-matiere-action-1",
-    "microskill.physique-chimie.quantite-de-matiere-action-2": "pc-quantite-de-matiere-action-2",
-    "microskill.physique-chimie.radioactivite-action-1": "pc-radioactivite-action-1",
-    "microskill.physique-chimie.radioactivite-action-2": "pc-radioactivite-action-2",
-    "microskill.physique-chimie.refraction-et-lentilles-action-1": "pc-refraction-et-lentilles-action-1",
-    "microskill.physique-chimie.refraction-et-lentilles-action-2": "pc-refraction-et-lentilles-action-2",
-    "microskill.physique-chimie.son-et-lumiere-action-1": "pc-son-et-lumiere-action-1",
-    "microskill.physique-chimie.son-et-lumiere-action-2": "pc-son-et-lumiere-action-2",
-    "microskill.physique-chimie.tableau-periodique-action-1": "pc-tableau-periodique-action-1",
-    "microskill.physique-chimie.tableau-periodique-action-2": "pc-tableau-periodique-action-2",
-    "microskill.physique-chimie.thermodynamique-action-1": "pc-thermodynamique-action-1",
-    "microskill.physique-chimie.thermodynamique-action-2": "pc-thermodynamique-action-2",
-    "microskill.svt.adn-et-division-cellulaire-action-1": "svt-adn-et-division-cellulaire-action-1",
-    "microskill.svt.adn-et-division-cellulaire-action-2": "svt-adn-et-division-cellulaire-action-2",
-    "microskill.svt.agrosystemes-et-sols-action-1": "svt-agrosystemes-et-sols-action-1",
-    "microskill.svt.agrosystemes-et-sols-action-2": "svt-agrosystemes-et-sols-action-2",
-    "microskill.svt.climat-et-effet-de-serre-action-1": "svt-climat-et-effet-de-serre-action-1",
-    "microskill.svt.climat-et-effet-de-serre-action-2": "svt-climat-et-effet-de-serre-action-2",
-    "microskill.svt.contraction-musculaire-action-1": "svt-contraction-musculaire-action-1",
-    "microskill.svt.contraction-musculaire-action-2": "svt-contraction-musculaire-action-2",
-    "microskill.svt.ecosystemes-et-biodiversite-action-1": "svt-ecosystemes-et-biodiversite-action-1",
-    "microskill.svt.ecosystemes-et-biodiversite-action-2": "svt-ecosystemes-et-biodiversite-action-2",
-    "microskill.svt.evolution-action-1": "svt-evolution-action-1",
-    "microskill.svt.evolution-action-2": "svt-evolution-action-2",
-    "microskill.svt.evolution-et-selection-naturelle-action-1": "svt-evolution-et-selection-naturelle-action-1",
-    "microskill.svt.evolution-et-selection-naturelle-action-2": "svt-evolution-et-selection-naturelle-action-2",
-    "microskill.svt.expression-genetique-action-1": "svt-expression-genetique-action-1",
-    "microskill.svt.expression-genetique-action-2": "svt-expression-genetique-action-2",
-    "microskill.svt.genetique-et-heredite-action-1": "svt-genetique-et-heredite-action-1",
-    "microskill.svt.genetique-et-heredite-action-2": "svt-genetique-et-heredite-action-2",
-    "microskill.svt.glycemie-et-diabete-action-1": "svt-glycemie-et-diabete-action-1",
-    "microskill.svt.glycemie-et-diabete-action-2": "svt-glycemie-et-diabete-action-2",
-    "microskill.svt.histoire-de-la-terre-et-datation-action-1": "svt-histoire-de-la-terre-et-datation-action-1",
-    "microskill.svt.histoire-de-la-terre-et-datation-action-2": "svt-histoire-de-la-terre-et-datation-action-2",
-    "microskill.svt.immunite-adaptative-action-1": "svt-immunite-adaptative-action-1",
-    "microskill.svt.immunite-adaptative-action-2": "svt-immunite-adaptative-action-2",
-    "microskill.svt.la-cellule-action-1": "svt-la-cellule-action-1",
-    "microskill.svt.la-cellule-action-2": "svt-la-cellule-action-2",
-    "microskill.svt.meiose-et-brassage-genetique-action-1": "svt-meiose-et-brassage-genetique-action-1",
-    "microskill.svt.meiose-et-brassage-genetique-action-2": "svt-meiose-et-brassage-genetique-action-2",
-    "microskill.svt.metabolisme-et-enzymes-action-1": "svt-metabolisme-et-enzymes-action-1",
-    "microskill.svt.metabolisme-et-enzymes-action-2": "svt-metabolisme-et-enzymes-action-2",
-    "microskill.svt.mutations-et-variabilite-action-1": "svt-mutations-et-variabilite-action-1",
-    "microskill.svt.mutations-et-variabilite-action-2": "svt-mutations-et-variabilite-action-2",
-    "microskill.svt.nutrition-et-digestion-action-1": "svt-nutrition-et-digestion-action-1",
-    "microskill.svt.nutrition-et-digestion-action-2": "svt-nutrition-et-digestion-action-2",
-    "microskill.svt.photosynthese-action-1": "svt-photosynthese-action-1",
-    "microskill.svt.photosynthese-action-2": "svt-photosynthese-action-2",
-    "microskill.svt.reproduction-humaine-action-1": "svt-reproduction-humaine-action-1",
-    "microskill.svt.reproduction-humaine-action-2": "svt-reproduction-humaine-action-2",
-    "microskill.svt.respiration-et-circulation-action-1": "svt-respiration-et-circulation-action-1",
-    "microskill.svt.respiration-et-circulation-action-2": "svt-respiration-et-circulation-action-2",
-    "microskill.svt.seismes-et-volcans-action-1": "svt-seismes-et-volcans-action-1",
-    "microskill.svt.seismes-et-volcans-action-2": "svt-seismes-et-volcans-action-2",
-    "microskill.svt.structure-de-la-terre-action-1": "svt-structure-de-la-terre-action-1",
-    "microskill.svt.structure-de-la-terre-action-2": "svt-structure-de-la-terre-action-2",
-    "microskill.svt.systeme-immunitaire-action-1": "svt-systeme-immunitaire-action-1",
-    "microskill.svt.systeme-immunitaire-action-2": "svt-systeme-immunitaire-action-2",
-    "microskill.svt.systeme-nerveux-action-1": "svt-systeme-nerveux-action-1",
-    "microskill.svt.systeme-nerveux-action-2": "svt-systeme-nerveux-action-2",
-    "microskill.histoire.antiquite-action-1": "his-antiquite-action-1",
-    "microskill.histoire.antiquite-action-2": "his-antiquite-action-2",
-    "microskill.histoire.construction-europeenne-action-1": "his-construction-europeenne-action-1",
-    "microskill.histoire.construction-europeenne-action-2": "his-construction-europeenne-action-2",
-    "microskill.histoire.decolonisation-action-1": "his-decolonisation-action-1",
-    "microskill.histoire.decolonisation-action-2": "his-decolonisation-action-2",
-    "microskill.histoire.guerre-froide-action-1": "his-guerre-froide-action-1",
-    "microskill.histoire.guerre-froide-action-2": "his-guerre-froide-action-2",
-    "microskill.histoire.lumieres-action-1": "his-lumieres-action-1",
-    "microskill.histoire.lumieres-action-2": "his-lumieres-action-2",
-    "microskill.histoire.monde-depuis-1990-action-1": "his-monde-depuis-1990-action-1",
-    "microskill.histoire.monde-depuis-1990-action-2": "his-monde-depuis-1990-action-2",
-    "microskill.histoire.moyen-age-action-1": "his-moyen-age-action-1",
-    "microskill.histoire.moyen-age-action-2": "his-moyen-age-action-2",
-    "microskill.histoire.napoleon-action-1": "his-napoleon-action-1",
-    "microskill.histoire.napoleon-action-2": "his-napoleon-action-2",
-    "microskill.histoire.premiere-guerre-mondiale-action-1": "his-premiere-guerre-mondiale-action-1",
-    "microskill.histoire.premiere-guerre-mondiale-action-2": "his-premiere-guerre-mondiale-action-2",
-    "microskill.histoire.renaissance-action-1": "his-renaissance-action-1",
-    "microskill.histoire.renaissance-action-2": "his-renaissance-action-2",
-    "microskill.histoire.revolution-francaise-action-1": "his-revolution-francaise-action-1",
-    "microskill.histoire.revolution-francaise-action-2": "his-revolution-francaise-action-2",
-    "microskill.histoire.revolution-industrielle-action-1": "his-revolution-industrielle-action-1",
-    "microskill.histoire.revolution-industrielle-action-2": "his-revolution-industrielle-action-2",
-    "microskill.histoire.seconde-guerre-mondiale-action-1": "his-seconde-guerre-mondiale-action-1",
-    "microskill.histoire.seconde-guerre-mondiale-action-2": "his-seconde-guerre-mondiale-action-2",
-    "microskill.histoire.temps-modernes-action-1": "his-temps-modernes-action-1",
-    "microskill.histoire.temps-modernes-action-2": "his-temps-modernes-action-2",
-    "microskill.histoire.totalitarismes-action-1": "his-totalitarismes-action-1",
-    "microskill.histoire.totalitarismes-action-2": "his-totalitarismes-action-2",
-    "microskill.histoire.ve-republique-action-1": "his-ve-republique-action-1",
-    "microskill.histoire.ve-republique-action-2": "his-ve-republique-action-2",
-    "microskill.geographie.afrique-australe-action-1": "geographie-afrique-australe-action-1",
-    "microskill.geographie.afrique-australe-action-2": "geographie-afrique-australe-action-2",
-    "microskill.geographie.changement-climatique-action-1": "geographie-changement-climatique-action-1",
-    "microskill.geographie.changement-climatique-action-2": "geographie-changement-climatique-action-2",
-    "microskill.geographie.dynamiques-territoriales-action-1": "geographie-dynamiques-territoriales-action-1",
-    "microskill.geographie.dynamiques-territoriales-action-2": "geographie-dynamiques-territoriales-action-2",
-    "microskill.geographie.espaces-productifs-action-1": "geographie-espaces-productifs-action-1",
-    "microskill.geographie.espaces-productifs-action-2": "geographie-espaces-productifs-action-2",
-    "microskill.geographie.espaces-ruraux-action-1": "geographie-espaces-ruraux-action-1",
-    "microskill.geographie.espaces-ruraux-action-2": "geographie-espaces-ruraux-action-2",
-    "microskill.geographie.france-regions-action-1": "geographie-france-regions-action-1",
-    "microskill.geographie.france-regions-action-2": "geographie-france-regions-action-2",
-    "microskill.geographie.france-territoires-action-1": "geographie-france-territoires-action-1",
-    "microskill.geographie.france-territoires-action-2": "geographie-france-territoires-action-2",
-    "microskill.geographie.mers-oceans-action-1": "geographie-mers-oceans-action-1",
-    "microskill.geographie.mers-oceans-action-2": "geographie-mers-oceans-action-2",
-    "microskill.geographie.metropolisation-action-1": "geographie-metropolisation-action-1",
-    "microskill.geographie.metropolisation-action-2": "geographie-metropolisation-action-2",
-    "microskill.geographie.migrations-action-1": "geographie-migrations-action-1",
-    "microskill.geographie.migrations-action-2": "geographie-migrations-action-2",
-    "microskill.geographie.mobilites-action-1": "geographie-mobilites-action-1",
-    "microskill.geographie.mobilites-action-2": "geographie-mobilites-action-2",
-    "microskill.geographie.mondialisation-action-1": "geographie-mondialisation-action-1",
-    "microskill.geographie.mondialisation-action-2": "geographie-mondialisation-action-2",
-    "microskill.geographie.ressources-action-1": "geographie-ressources-action-1",
-    "microskill.geographie.ressources-action-2": "geographie-ressources-action-2",
-    "microskill.geographie.risques-naturels-action-1": "geographie-risques-naturels-action-1",
-    "microskill.geographie.risques-naturels-action-2": "geographie-risques-naturels-action-2",
-    "microskill.geographie.tourisme-action-1": "geographie-tourisme-action-1",
-    "microskill.geographie.tourisme-action-2": "geographie-tourisme-action-2",
-    "microskill.geographie.union-europeenne-action-1": "geographie-union-europeenne-action-1",
-    "microskill.geographie.union-europeenne-action-2": "geographie-union-europeenne-action-2",
-    "microskill.geographie.urbanisation-action-1": "geographie-urbanisation-action-1",
-    "microskill.geographie.urbanisation-action-2": "geographie-urbanisation-action-2",
-    "microskill.francais.accords-action-1": "francais-accords-action-1",
-    "microskill.francais.accords-action-2": "francais-accords-action-2",
-    "microskill.francais.analyse-texte-action-1": "francais-analyse-texte-action-1",
-    "microskill.francais.analyse-texte-action-2": "francais-analyse-texte-action-2",
-    "microskill.francais.argumentation-action-1": "francais-argumentation-action-1",
-    "microskill.francais.argumentation-action-2": "francais-argumentation-action-2",
-    "microskill.francais.conjugaison-temps-action-1": "francais-conjugaison-temps-action-1",
-    "microskill.francais.conjugaison-temps-action-2": "francais-conjugaison-temps-action-2",
-    "microskill.francais.figures-de-style-action-1": "francais-figures-de-style-action-1",
-    "microskill.francais.figures-de-style-action-2": "francais-figures-de-style-action-2",
-    "microskill.francais.grammaire-phrase-complexe-action-1": "francais-grammaire-phrase-complexe-action-1",
-    "microskill.francais.grammaire-phrase-complexe-action-2": "francais-grammaire-phrase-complexe-action-2",
-    "microskill.francais.litterature-didees-action-1": "francais-litterature-didees-action-1",
-    "microskill.francais.litterature-didees-action-2": "francais-litterature-didees-action-2",
-    "microskill.francais.poesie-action-1": "francais-poesie-action-1",
-    "microskill.francais.poesie-action-2": "francais-poesie-action-2",
-    "microskill.francais.roman-action-1": "francais-roman-action-1",
-    "microskill.francais.roman-action-2": "francais-roman-action-2",
-    "microskill.francais.theatre-action-1": "francais-theatre-action-1",
-    "microskill.francais.theatre-action-2": "francais-theatre-action-2",
-    "microskill.emc.citoyennete-action-1": "emc-citoyennete-action-1",
-    "microskill.emc.citoyennete-action-2": "emc-citoyennete-action-2",
-    "microskill.emc.democratie-action-1": "emc-democratie-action-1",
-    "microskill.emc.democratie-action-2": "emc-democratie-action-2",
-    "microskill.emc.discrimination-action-1": "emc-discrimination-action-1",
-    "microskill.emc.discrimination-action-2": "emc-discrimination-action-2",
-    "microskill.emc.droits-de-lhomme-action-1": "emc-droits-de-lhomme-action-1",
-    "microskill.emc.droits-de-lhomme-action-2": "emc-droits-de-lhomme-action-2",
-    "microskill.emc.egalite-action-1": "emc-egalite-action-1",
-    "microskill.emc.egalite-action-2": "emc-egalite-action-2",
-    "microskill.emc.engagement-civique-action-1": "emc-engagement-civique-action-1",
-    "microskill.emc.engagement-civique-action-2": "emc-engagement-civique-action-2",
-    "microskill.emc.etat-de-droit-action-1": "emc-etat-de-droit-action-1",
-    "microskill.emc.etat-de-droit-action-2": "emc-etat-de-droit-action-2",
-    "microskill.emc.fraternite-action-1": "emc-fraternite-action-1",
-    "microskill.emc.fraternite-action-2": "emc-fraternite-action-2",
-    "microskill.emc.interet-general-action-1": "emc-interet-general-action-1",
-    "microskill.emc.interet-general-action-2": "emc-interet-general-action-2",
-    "microskill.emc.justice-action-1": "emc-justice-action-1",
-    "microskill.emc.justice-action-2": "emc-justice-action-2",
-    "microskill.emc.laicite-action-1": "emc-laicite-action-1",
-    "microskill.emc.laicite-action-2": "emc-laicite-action-2",
-    "microskill.emc.liberte-action-1": "emc-liberte-action-1",
-    "microskill.emc.liberte-action-2": "emc-liberte-action-2",
-    "microskill.ses.chomage-action-1": "ses-chomage-action-1",
-    "microskill.ses.chomage-action-2": "ses-chomage-action-2",
-    "microskill.ses.croissance-economique-action-1": "ses-croissance-economique-action-1",
-    "microskill.ses.croissance-economique-action-2": "ses-croissance-economique-action-2",
-    "microskill.ses.inegalites-action-1": "ses-inegalites-action-1",
-    "microskill.ses.inegalites-action-2": "ses-inegalites-action-2",
-    "microskill.ses.justice-sociale-action-1": "ses-justice-sociale-action-1",
-    "microskill.ses.justice-sociale-action-2": "ses-justice-sociale-action-2",
-    "microskill.ses.marche-concurrentiel-action-1": "ses-marche-concurrentiel-action-1",
-    "microskill.ses.marche-concurrentiel-action-2": "ses-marche-concurrentiel-action-2",
-    "microskill.ses.mobilite-sociale-action-1": "ses-mobilite-sociale-action-1",
-    "microskill.ses.mobilite-sociale-action-2": "ses-mobilite-sociale-action-2",
-    "microskill.ses.mondialisation-commerce-action-1": "ses-mondialisation-commerce-action-1",
-    "microskill.ses.mondialisation-commerce-action-2": "ses-mondialisation-commerce-action-2",
-    "microskill.ses.monnaie-action-1": "ses-monnaie-action-1",
-    "microskill.ses.monnaie-action-2": "ses-monnaie-action-2",
-    "microskill.ses.opinion-publique-action-1": "ses-opinion-publique-action-1",
-    "microskill.ses.opinion-publique-action-2": "ses-opinion-publique-action-2",
-    "microskill.ses.socialisation-action-1": "ses-socialisation-action-1",
-    "microskill.ses.socialisation-action-2": "ses-socialisation-action-2",
-    "microskill.philosophie.art-action-1": "philosophie-art-action-1",
-    "microskill.philosophie.art-action-2": "philosophie-art-action-2",
-    "microskill.philosophie.bonheur-action-1": "philosophie-bonheur-action-1",
-    "microskill.philosophie.bonheur-action-2": "philosophie-bonheur-action-2",
-    "microskill.philosophie.conscience-action-1": "philosophie-conscience-action-1",
-    "microskill.philosophie.conscience-action-2": "philosophie-conscience-action-2",
-    "microskill.philosophie.devoir-action-1": "philosophie-devoir-action-1",
-    "microskill.philosophie.devoir-action-2": "philosophie-devoir-action-2",
-    "microskill.philosophie.etat-action-1": "philosophie-etat-action-1",
-    "microskill.philosophie.etat-action-2": "philosophie-etat-action-2",
-    "microskill.philosophie.inconscient-action-1": "philosophie-inconscient-action-1",
-    "microskill.philosophie.inconscient-action-2": "philosophie-inconscient-action-2",
-    "microskill.philosophie.justice-philosophie-action-1": "philosophie-justice-philosophie-action-1",
-    "microskill.philosophie.justice-philosophie-action-2": "philosophie-justice-philosophie-action-2",
-    "microskill.philosophie.langage-action-1": "philosophie-langage-action-1",
-    "microskill.philosophie.langage-action-2": "philosophie-langage-action-2",
-    "microskill.philosophie.liberte-philosophie-action-1": "philosophie-liberte-philosophie-action-1",
-    "microskill.philosophie.liberte-philosophie-action-2": "philosophie-liberte-philosophie-action-2",
-    "microskill.philosophie.nature-action-1": "philosophie-nature-action-1",
-    "microskill.philosophie.nature-action-2": "philosophie-nature-action-2",
-    "microskill.philosophie.raison-action-1": "philosophie-raison-action-1",
-    "microskill.philosophie.raison-action-2": "philosophie-raison-action-2",
-    "microskill.philosophie.religion-action-1": "philosophie-religion-action-1",
-    "microskill.philosophie.religion-action-2": "philosophie-religion-action-2",
-    "microskill.philosophie.science-action-1": "philosophie-science-action-1",
-    "microskill.philosophie.science-action-2": "philosophie-science-action-2",
-    "microskill.philosophie.technique-action-1": "philosophie-technique-action-1",
-    "microskill.philosophie.technique-action-2": "philosophie-technique-action-2",
-    "microskill.philosophie.temps-action-1": "philosophie-temps-action-1",
-    "microskill.philosophie.temps-action-2": "philosophie-temps-action-2",
-    "microskill.philosophie.travail-action-1": "philosophie-travail-action-1",
-    "microskill.philosophie.travail-action-2": "philosophie-travail-action-2",
-    "microskill.philosophie.verite-action-1": "philosophie-verite-action-1",
-    "microskill.philosophie.verite-action-2": "philosophie-verite-action-2"
+    "microskill.physique-chimie.relier-couleur-et-absorbance": "relier-couleur-et-absorbance",
+    "microskill.physique-chimie.determiner-une-concentration-avec-la-loi-de-beer-lambert": "determiner-une-concentration-avec-la-loi-de-beer-lambert",
+    "microskill.physique-chimie.exploiter-une-courbe-d-etalonnage": "exploiter-une-courbe-d-etalonnage",
+    "microskill.physique-chimie.exploiter-un-titrage-a-l-equivalence": "exploiter-un-titrage-a-l-equivalence",
+    "microskill.physique-chimie.classer-une-solution-sur-l-echelle-de-ph": "classer-une-solution-sur-l-echelle-de-ph",
+    "microskill.physique-chimie.identifier-les-especes-d-une-solution-acide-ou-basique": "identifier-les-especes-d-une-solution-acide-ou-basique",
+    "microskill.physique-chimie.calculer-le-ph-depuis-la-concentration-en-ions-h3o": "calculer-le-ph-depuis-la-concentration-en-ions-h3o",
+    "microskill.physique-chimie.interpreter-l-effet-d-une-dilution-sur-le-ph": "interpreter-l-effet-d-une-dilution-sur-le-ph",
+    "microskill.physique-chimie.exploiter-un-couple-acide-base-et-son-pka": "exploiter-un-couple-acide-base-et-son-pka",
+    "microskill.physique-chimie.lire-une-formule-chimique": "lire-une-formule-chimique",
+    "microskill.physique-chimie.distinguer-les-reactifs-des-produits": "distinguer-les-reactifs-des-produits",
+    "microskill.physique-chimie.equilibrer-une-equation-de-reaction": "equilibrer-une-equation-de-reaction",
+    "microskill.physique-chimie.decrire-la-structure-d-un-atome": "decrire-la-structure-d-un-atome",
+    "microskill.physique-chimie.interpreter-la-formation-d-un-ion": "interpreter-la-formation-d-un-ion",
+    "microskill.physique-chimie.identifier-un-facteur-cinetique": "identifier-un-facteur-cinetique",
+    "microskill.physique-chimie.determiner-le-temps-de-demi-reaction": "determiner-le-temps-de-demi-reaction",
+    "microskill.physique-chimie.exploiter-la-loi-de-vitesse-d-ordre-1": "exploiter-la-loi-de-vitesse-d-ordre-1",
+    "microskill.physique-chimie.interpreter-le-role-d-un-catalyseur": "interpreter-le-role-d-un-catalyseur",
+    "microskill.physique-chimie.relier-la-charge-du-condensateur-a-sa-tension": "relier-la-charge-du-condensateur-a-sa-tension",
+    "microskill.physique-chimie.calculer-la-constante-de-temps-d-un-circuit-rc": "calculer-la-constante-de-temps-d-un-circuit-rc",
+    "microskill.physique-chimie.interpreter-l-evolution-temporelle-d-un-circuit-rc": "interpreter-l-evolution-temporelle-d-un-circuit-rc",
+    "microskill.physique-chimie.calculer-l-energie-stockee-dans-un-condensateur": "calculer-l-energie-stockee-dans-un-condensateur",
+    "microskill.physique-chimie.relier-la-diffraction-a-la-largeur-de-l-ouverture": "relier-la-diffraction-a-la-largeur-de-l-ouverture",
+    "microskill.physique-chimie.calculer-la-largeur-de-la-tache-centrale": "calculer-la-largeur-de-la-tache-centrale",
+    "microskill.physique-chimie.identifier-une-interference-constructive-ou-destructive": "identifier-une-interference-constructive-ou-destructive",
+    "microskill.physique-chimie.exploiter-l-interfrange-des-fentes-d-young": "exploiter-l-interfrange-des-fentes-d-young",
+    "microskill.physique-chimie.distinguer-un-montage-en-serie-d-un-montage-en-derivation": "distinguer-un-montage-en-serie-d-un-montage-en-derivation",
+    "microskill.physique-chimie.mesurer-intensite-et-tension-dans-un-circuit": "mesurer-intensite-et-tension-dans-un-circuit",
+    "microskill.physique-chimie.calculer-une-grandeur-electrique-avec-la-loi-d-ohm": "calculer-une-grandeur-electrique-avec-la-loi-d-ohm",
+    "microskill.physique-chimie.appliquer-l-additivite-des-tensions-et-des-intensites": "appliquer-l-additivite-des-tensions-et-des-intensites",
+    "microskill.physique-chimie.calculer-puissance-et-energie-electriques": "calculer-puissance-et-energie-electriques",
+    "microskill.physique-chimie.identifier-les-formes-d-energie-dans-une-conversion": "identifier-les-formes-d-energie-dans-une-conversion",
+    "microskill.physique-chimie.calculer-le-rendement-d-une-conversion-d-energie": "calculer-le-rendement-d-une-conversion-d-energie",
+    "microskill.physique-chimie.calculer-une-energie-cinetique": "calculer-une-energie-cinetique",
+    "microskill.physique-chimie.convertir-une-energie-entre-joule-et-kilowattheure": "convertir-une-energie-entre-joule-et-kilowattheure",
+    "microskill.physique-chimie.calculer-le-travail-d-une-force": "calculer-le-travail-d-une-force",
+    "microskill.physique-chimie.appliquer-le-theoreme-de-l-energie-cinetique": "appliquer-le-theoreme-de-l-energie-cinetique",
+    "microskill.physique-chimie.calculer-une-energie-potentielle-de-pesanteur": "calculer-une-energie-potentielle-de-pesanteur",
+    "microskill.physique-chimie.exploiter-la-conservation-de-l-energie-mecanique": "exploiter-la-conservation-de-l-energie-mecanique",
+    "microskill.physique-chimie.interpreter-l-effet-des-frottements-sur-l-energie-mecanique": "interpreter-l-effet-des-frottements-sur-l-energie-mecanique",
+    "microskill.physique-chimie.identifier-un-etat-a-partir-de-ses-proprietes": "identifier-un-etat-a-partir-de-ses-proprietes",
+    "microskill.physique-chimie.nommer-un-changement-d-etat": "nommer-un-changement-d-etat",
+    "microskill.physique-chimie.interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat": "interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat",
+    "microskill.physique-chimie.decrire-un-etat-avec-le-modele-particulaire": "decrire-un-etat-avec-le-modele-particulaire",
+    "microskill.physique-chimie.appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat": "appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat",
+    "microskill.physique-chimie.representer-une-force-avec-un-vecteur": "representer-une-force-avec-un-vecteur",
+    "microskill.physique-chimie.calculer-le-poids-a-partir-de-la-masse": "calculer-le-poids-a-partir-de-la-masse",
+    "microskill.physique-chimie.distinguer-masse-et-poids": "distinguer-masse-et-poids",
+    "microskill.physique-chimie.interpreter-l-interaction-gravitationnelle-entre-deux-corps": "interpreter-l-interaction-gravitationnelle-entre-deux-corps",
+    "microskill.physique-chimie.faire-le-bilan-des-forces-sur-un-objet": "faire-le-bilan-des-forces-sur-un-objet",
+    "microskill.physique-chimie.relier-l-orbite-circulaire-a-la-force-de-gravitation": "relier-l-orbite-circulaire-a-la-force-de-gravitation",
+    "microskill.physique-chimie.interpreter-les-relations-de-kepler": "interpreter-les-relations-de-kepler",
+    "microskill.physique-chimie.calculer-la-force-de-gravitation-entre-deux-astres": "calculer-la-force-de-gravitation-entre-deux-astres",
+    "microskill.physique-chimie.caracteriser-un-satellite-geostationnaire": "caracteriser-un-satellite-geostationnaire",
+    "microskill.physique-chimie.determiner-l-acceleration-depuis-le-bilan-des-forces": "determiner-l-acceleration-depuis-le-bilan-des-forces",
+    "microskill.physique-chimie.exploiter-le-vecteur-acceleration-d-un-mouvement": "exploiter-le-vecteur-acceleration-d-un-mouvement",
+    "microskill.physique-chimie.analyser-une-chute-libre": "analyser-une-chute-libre",
+    "microskill.physique-chimie.analyser-le-mouvement-d-un-projectile": "analyser-le-mouvement-d-un-projectile",
+    "microskill.physique-chimie.calculer-une-masse-volumique": "calculer-une-masse-volumique",
+    "microskill.physique-chimie.calculer-une-concentration-en-masse": "calculer-une-concentration-en-masse",
+    "microskill.physique-chimie.distinguer-un-melange-homogene-d-un-melange-heterogene": "distinguer-un-melange-homogene-d-un-melange-heterogene",
+    "microskill.physique-chimie.choisir-une-technique-de-separation-d-un-melange": "choisir-une-technique-de-separation-d-un-melange",
+    "microskill.physique-chimie.calculer-la-masse-d-une-solution": "calculer-la-masse-d-une-solution",
+    "microskill.physique-chimie.identifier-la-trajectoire-dans-un-referentiel-donne": "identifier-la-trajectoire-dans-un-referentiel-donne",
+    "microskill.physique-chimie.determiner-une-vitesse-depuis-la-distance-et-la-duree": "determiner-une-vitesse-depuis-la-distance-et-la-duree",
+    "microskill.physique-chimie.caracteriser-un-mouvement-par-chronophotographie": "caracteriser-un-mouvement-par-chronophotographie",
+    "microskill.physique-chimie.convertir-une-vitesse-entre-m-s-et-km-h": "convertir-une-vitesse-entre-m-s-et-km-h",
+    "microskill.physique-chimie.appliquer-le-principe-d-inertie": "appliquer-le-principe-d-inertie",
+    "microskill.physique-chimie.calculer-la-celerite-d-une-onde": "calculer-la-celerite-d-une-onde",
+    "microskill.physique-chimie.relier-periode-longueur-d-onde-et-celerite": "relier-periode-longueur-d-onde-et-celerite",
+    "microskill.physique-chimie.distinguer-transport-d-energie-et-transport-de-matiere": "distinguer-transport-d-energie-et-transport-de-matiere",
+    "microskill.physique-chimie.identifier-un-phenomene-ondulatoire": "identifier-un-phenomene-ondulatoire",
+    "microskill.physique-chimie.identifier-l-oxydant-et-le-reducteur": "identifier-l-oxydant-et-le-reducteur",
+    "microskill.physique-chimie.equilibrer-une-demi-equation-avec-des-electrons": "equilibrer-une-demi-equation-avec-des-electrons",
+    "microskill.physique-chimie.ecrire-l-equation-d-une-reaction-d-oxydoreduction": "ecrire-l-equation-d-une-reaction-d-oxydoreduction",
+    "microskill.physique-chimie.prevoir-une-reaction-entre-un-metal-et-un-ion-metallique": "prevoir-une-reaction-entre-un-metal-et-un-ion-metallique",
+    "microskill.physique-chimie.interpreter-le-fonctionnement-d-une-pile": "interpreter-le-fonctionnement-d-une-pile",
+    "microskill.physique-chimie.calculer-une-quantite-de-matiere-a-partir-de-la-masse": "calculer-une-quantite-de-matiere-a-partir-de-la-masse",
+    "microskill.physique-chimie.calculer-une-masse-molaire": "calculer-une-masse-molaire",
+    "microskill.physique-chimie.relier-nombre-d-entites-et-quantite-de-matiere": "relier-nombre-d-entites-et-quantite-de-matiere",
+    "microskill.physique-chimie.calculer-une-concentration-molaire": "calculer-une-concentration-molaire",
+    "microskill.physique-chimie.calculer-une-concentration-apres-dilution": "calculer-une-concentration-apres-dilution",
+    "microskill.physique-chimie.identifier-le-type-de-desintegration-d-un-noyau": "identifier-le-type-de-desintegration-d-un-noyau",
+    "microskill.physique-chimie.ecrire-l-equation-d-une-desintegration": "ecrire-l-equation-d-une-desintegration",
+    "microskill.physique-chimie.exploiter-une-demi-vie-pour-estimer-une-duree": "exploiter-une-demi-vie-pour-estimer-une-duree",
+    "microskill.physique-chimie.appliquer-la-loi-de-decroissance-radioactive": "appliquer-la-loi-de-decroissance-radioactive",
+    "microskill.physique-chimie.identifier-un-rayon-reflechi-ou-refracte": "identifier-un-rayon-reflechi-ou-refracte",
+    "microskill.physique-chimie.appliquer-la-loi-de-la-refraction": "appliquer-la-loi-de-la-refraction",
+    "microskill.physique-chimie.interpreter-la-dispersion-de-la-lumiere": "interpreter-la-dispersion-de-la-lumiere",
+    "microskill.physique-chimie.determiner-la-position-d-une-image-formee-par-une-lentille": "determiner-la-position-d-une-image-formee-par-une-lentille",
+    "microskill.physique-chimie.comparer-la-propagation-du-son-et-de-la-lumiere": "comparer-la-propagation-du-son-et-de-la-lumiere",
+    "microskill.physique-chimie.determiner-une-distance-depuis-le-temps-de-propagation": "determiner-une-distance-depuis-le-temps-de-propagation",
+    "microskill.physique-chimie.calculer-la-frequence-d-un-signal-depuis-sa-periode": "calculer-la-frequence-d-un-signal-depuis-sa-periode",
+    "microskill.physique-chimie.situer-un-son-sur-l-echelle-des-frequences": "situer-un-son-sur-l-echelle-des-frequences",
+    "microskill.physique-chimie.determiner-la-composition-du-noyau-depuis-son-symbole": "determiner-la-composition-du-noyau-depuis-son-symbole",
+    "microskill.physique-chimie.utiliser-la-configuration-electronique-pour-situer-un-element": "utiliser-la-configuration-electronique-pour-situer-un-element",
+    "microskill.physique-chimie.identifier-les-isotopes-d-un-element": "identifier-les-isotopes-d-un-element",
+    "microskill.physique-chimie.prevoir-l-ion-forme-par-un-element": "prevoir-l-ion-forme-par-un-element",
+    "microskill.physique-chimie.prevoir-le-nombre-de-liaisons-covalentes-d-un-atome": "prevoir-le-nombre-de-liaisons-covalentes-d-un-atome",
+    "microskill.physique-chimie.identifier-le-mode-de-transfert-thermique": "identifier-le-mode-de-transfert-thermique",
+    "microskill.physique-chimie.calculer-le-transfert-associe-a-une-variation-de-temperature": "calculer-le-transfert-associe-a-une-variation-de-temperature",
+    "microskill.physique-chimie.appliquer-le-premier-principe": "appliquer-le-premier-principe",
+    "microskill.physique-chimie.exploiter-la-loi-du-gaz-parfait": "exploiter-la-loi-du-gaz-parfait",
+    "microskill.svt.decrire-la-structure-de-la-molecule-d-adn": "decrire-la-structure-de-la-molecule-d-adn",
+    "microskill.svt.deduire-le-brin-complementaire-d-une-sequence-d-adn": "deduire-le-brin-complementaire-d-une-sequence-d-adn",
+    "microskill.svt.expliquer-le-caractere-semi-conservatif-de-la-replication": "expliquer-le-caractere-semi-conservatif-de-la-replication",
+    "microskill.svt.ordonner-les-phases-du-cycle-cellulaire-et-de-la-mitose": "ordonner-les-phases-du-cycle-cellulaire-et-de-la-mitose",
+    "microskill.svt.prevoir-le-nombre-de-cellules-obtenues-apres-des-mitoses-successives": "prevoir-le-nombre-de-cellules-obtenues-apres-des-mitoses-successives",
+    "microskill.svt.expliquer-la-formation-d-un-sol-et-le-role-de-l-humus": "expliquer-la-formation-d-un-sol-et-le-role-de-l-humus",
+    "microskill.svt.comparer-un-agrosysteme-et-un-ecosysteme-naturel": "comparer-un-agrosysteme-et-un-ecosysteme-naturel",
+    "microskill.svt.evaluer-l-effet-d-une-pratique-agricole-sur-l-erosion-et-la-fertilite": "evaluer-l-effet-d-une-pratique-agricole-sur-l-erosion-et-la-fertilite",
+    "microskill.svt.justifier-une-rotation-de-cultures-avec-legumineuses": "justifier-une-rotation-de-cultures-avec-legumineuses",
+    "microskill.svt.calculer-une-production-agricole-a-partir-d-un-rendement": "calculer-une-production-agricole-a-partir-d-un-rendement",
+    "microskill.svt.expliquer-le-mecanisme-de-l-effet-de-serre-naturel": "expliquer-le-mecanisme-de-l-effet-de-serre-naturel",
+    "microskill.svt.identifier-les-gaz-a-effet-de-serre-et-leurs-sources": "identifier-les-gaz-a-effet-de-serre-et-leurs-sources",
+    "microskill.svt.interpreter-une-courbe-de-concentration-atmospherique-en-co": "interpreter-une-courbe-de-concentration-atmospherique-en-co",
+    "microskill.svt.utiliser-des-archives-climatiques-pour-reconstituer-un-climat-du-passe": "utiliser-des-archives-climatiques-pour-reconstituer-un-climat-du-passe",
+    "microskill.svt.relier-le-rechauffement-actuel-aux-emissions-humaines": "relier-le-rechauffement-actuel-aux-emissions-humaines",
+    "microskill.svt.decrire-l-organisation-d-un-muscle-de-la-fibre-au-sarcomere": "decrire-l-organisation-d-un-muscle-de-la-fibre-au-sarcomere",
+    "microskill.svt.expliquer-le-glissement-des-filaments-d-actine-et-de-myosine": "expliquer-le-glissement-des-filaments-d-actine-et-de-myosine",
+    "microskill.svt.relier-la-contraction-a-l-utilisation-d-atp": "relier-la-contraction-a-l-utilisation-d-atp",
+    "microskill.svt.calculer-le-raccourcissement-d-un-sarcomere": "calculer-le-raccourcissement-d-un-sarcomere",
+    "microskill.svt.identifier-les-muscles-antagonistes-lors-d-un-mouvement": "identifier-les-muscles-antagonistes-lors-d-un-mouvement",
+    "microskill.svt.construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations": "construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations",
+    "microskill.svt.distinguer-producteurs-consommateurs-et-decomposeurs": "distinguer-producteurs-consommateurs-et-decomposeurs",
+    "microskill.svt.calculer-le-transfert-d-energie-entre-niveaux-trophiques": "calculer-le-transfert-d-energie-entre-niveaux-trophiques",
+    "microskill.svt.identifier-les-causes-de-perte-de-biodiversite": "identifier-les-causes-de-perte-de-biodiversite",
+    "microskill.svt.proposer-une-action-de-protection-d-un-milieu": "proposer-une-action-de-protection-d-un-milieu",
+    "microskill.svt.definir-l-evolution-biologique-a-l-echelle-d-une-population": "definir-l-evolution-biologique-a-l-echelle-d-une-population",
+    "microskill.svt.expliquer-la-selection-naturelle-sur-un-exemple": "expliquer-la-selection-naturelle-sur-un-exemple",
+    "microskill.svt.interpreter-un-ancetre-commun-entre-deux-especes": "interpreter-un-ancetre-commun-entre-deux-especes",
+    "microskill.svt.expliquer-comment-la-selection-naturelle-modifie-les-frequences-des-alleles": "expliquer-comment-la-selection-naturelle-modifie-les-frequences-des-alleles",
+    "microskill.svt.distinguer-selection-naturelle-et-derive-genetique": "distinguer-selection-naturelle-et-derive-genetique",
+    "microskill.svt.predire-l-effet-de-la-taille-d-une-population-sur-la-derive-genetique": "predire-l-effet-de-la-taille-d-une-population-sur-la-derive-genetique",
+    "microskill.svt.construire-une-parente-entre-especes-a-partir-de-caracteres-partages": "construire-une-parente-entre-especes-a-partir-de-caracteres-partages",
+    "microskill.svt.calculer-un-effectif-ou-une-frequence-dans-une-population": "calculer-un-effectif-ou-une-frequence-dans-une-population",
+    "microskill.svt.decrire-la-transcription-d-un-gene-en-arn-messager": "decrire-la-transcription-d-un-gene-en-arn-messager",
+    "microskill.svt.utiliser-le-code-genetique-pour-determiner-une-sequence-d-acides-amines": "utiliser-le-code-genetique-pour-determiner-une-sequence-d-acides-amines",
+    "microskill.svt.decrire-la-traduction-de-l-arn-messager-en-proteine": "decrire-la-traduction-de-l-arn-messager-en-proteine",
+    "microskill.svt.relier-la-longueur-d-une-sequence-codante-au-nombre-d-acides-amines": "relier-la-longueur-d-une-sequence-codante-au-nombre-d-acides-amines",
+    "microskill.svt.localiser-transcription-et-traduction-dans-la-cellule": "localiser-transcription-et-traduction-dans-la-cellule",
+    "microskill.svt.lire-un-caryotype": "lire-un-caryotype",
+    "microskill.svt.distinguer-gene-et-allele": "distinguer-gene-et-allele",
+    "microskill.svt.prevoir-les-genotypes-possibles-d-un-enfant-a-partir-de-ceux-des-parents": "prevoir-les-genotypes-possibles-d-un-enfant-a-partir-de-ceux-des-parents",
+    "microskill.svt.expliquer-la-determination-chromosomique-du-sexe": "expliquer-la-determination-chromosomique-du-sexe",
+    "microskill.svt.interpreter-l-effet-d-une-anomalie-chromosomique-ou-d-une-mutation": "interpreter-l-effet-d-une-anomalie-chromosomique-ou-d-une-mutation",
+    "microskill.svt.interpreter-une-courbe-de-glycemie": "interpreter-une-courbe-de-glycemie",
+    "microskill.svt.expliquer-le-role-de-l-insuline-et-du-glucagon": "expliquer-le-role-de-l-insuline-et-du-glucagon",
+    "microskill.svt.expliquer-la-regulation-de-la-glycemie-par-retrocontrole": "expliquer-la-regulation-de-la-glycemie-par-retrocontrole",
+    "microskill.svt.distinguer-diabete-de-type-1-et-diabete-de-type-2": "distinguer-diabete-de-type-1-et-diabete-de-type-2",
+    "microskill.svt.calculer-une-quantite-de-glucose-a-partir-d-une-glycemie": "calculer-une-quantite-de-glucose-a-partir-d-une-glycemie",
+    "microskill.svt.appliquer-le-principe-de-superposition-a-une-serie-de-couches": "appliquer-le-principe-de-superposition-a-une-serie-de-couches",
+    "microskill.svt.dater-relativement-des-evenements-geologiques-avec-les-failles-et-les-discordances": "dater-relativement-des-evenements-geologiques-avec-les-failles-et-les-discordances",
+    "microskill.svt.utiliser-un-fossile-stratigraphique-pour-dater-une-couche": "utiliser-un-fossile-stratigraphique-pour-dater-une-couche",
+    "microskill.svt.placer-des-evenements-sur-l-echelle-des-temps-geologiques": "placer-des-evenements-sur-l-echelle-des-temps-geologiques",
+    "microskill.svt.interpreter-une-datation-absolue-par-desintegration-d-un-element": "interpreter-une-datation-absolue-par-desintegration-d-un-element",
+    "microskill.svt.expliquer-la-selection-clonale-des-lymphocytes": "expliquer-la-selection-clonale-des-lymphocytes",
+    "microskill.svt.distinguer-le-role-des-lymphocytes-b-et-t": "distinguer-le-role-des-lymphocytes-b-et-t",
+    "microskill.svt.comparer-reponse-immunitaire-primaire-et-secondaire": "comparer-reponse-immunitaire-primaire-et-secondaire",
+    "microskill.svt.expliquer-l-effet-du-vih-sur-les-lymphocytes-t4": "expliquer-l-effet-du-vih-sur-les-lymphocytes-t4",
+    "microskill.svt.interpreter-un-resultat-de-serologie": "interpreter-un-resultat-de-serologie",
+    "microskill.svt.calculer-le-grossissement-d-un-microscope": "calculer-le-grossissement-d-un-microscope",
+    "microskill.svt.convertir-des-unites-de-longueur-en-microscopie": "convertir-des-unites-de-longueur-en-microscopie",
+    "microskill.svt.identifier-les-organites-d-une-cellule-animale-ou-vegetale": "identifier-les-organites-d-une-cellule-animale-ou-vegetale",
+    "microskill.svt.distinguer-cellule-eucaryote-et-procaryote": "distinguer-cellule-eucaryote-et-procaryote",
+    "microskill.svt.situer-l-adn-dans-la-cellule": "situer-l-adn-dans-la-cellule",
+    "microskill.svt.decrire-les-etapes-de-la-meiose": "decrire-les-etapes-de-la-meiose",
+    "microskill.svt.expliquer-le-brassage-interchromosomique": "expliquer-le-brassage-interchromosomique",
+    "microskill.svt.expliquer-le-brassage-intrachromosomique-crossing-over": "expliquer-le-brassage-intrachromosomique-crossing-over",
+    "microskill.svt.calculer-le-nombre-de-combinaisons-possibles-de-gametes": "calculer-le-nombre-de-combinaisons-possibles-de-gametes",
+    "microskill.svt.comparer-meiose-et-mitose": "comparer-meiose-et-mitose",
+    "microskill.svt.distinguer-autotrophes-et-heterotrophes": "distinguer-autotrophes-et-heterotrophes",
+    "microskill.svt.expliquer-la-specificite-d-une-enzyme": "expliquer-la-specificite-d-une-enzyme",
+    "microskill.svt.interpreter-l-effet-de-la-temperature-et-du-ph-sur-l-activite-enzymatique": "interpreter-l-effet-de-la-temperature-et-du-ph-sur-l-activite-enzymatique",
+    "microskill.svt.comparer-respiration-et-fermentation": "comparer-respiration-et-fermentation",
+    "microskill.svt.calculer-un-bilan-energetique-en-atp": "calculer-un-bilan-energetique-en-atp",
+    "microskill.svt.identifier-un-agent-mutagene": "identifier-un-agent-mutagene",
+    "microskill.svt.classer-une-mutation-selon-ses-consequences": "classer-une-mutation-selon-ses-consequences",
+    "microskill.svt.prevoir-l-effet-d-une-substitution-ou-d-un-decalage-du-cadre-de-lecture": "prevoir-l-effet-d-une-substitution-ou-d-un-decalage-du-cadre-de-lecture",
+    "microskill.svt.distinguer-mutation-somatique-et-mutation-germinale": "distinguer-mutation-somatique-et-mutation-germinale",
+    "microskill.svt.relier-mutations-et-diversite-des-alleles": "relier-mutations-et-diversite-des-alleles",
+    "microskill.svt.legender-les-organes-du-tube-digestif": "legender-les-organes-du-tube-digestif",
+    "microskill.svt.expliquer-la-digestion-chimique-par-les-enzymes": "expliquer-la-digestion-chimique-par-les-enzymes",
+    "microskill.svt.expliquer-l-absorption-des-nutriments": "expliquer-l-absorption-des-nutriments",
+    "microskill.svt.associer-aliments-nutriments-et-besoins": "associer-aliments-nutriments-et-besoins",
+    "microskill.svt.evaluer-l-equilibre-d-une-alimentation": "evaluer-l-equilibre-d-une-alimentation",
+    "microskill.svt.identifier-les-besoins-des-vegetaux": "identifier-les-besoins-des-vegetaux",
+    "microskill.svt.decrire-le-role-des-chloroplastes": "decrire-le-role-des-chloroplastes",
+    "microskill.svt.mettre-en-evidence-la-production-d-amidon": "mettre-en-evidence-la-production-d-amidon",
+    "microskill.svt.ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese": "ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese",
+    "microskill.svt.concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese": "concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese",
+    "microskill.svt.identifier-les-gametes-et-leur-origine": "identifier-les-gametes-et-leur-origine",
+    "microskill.svt.decrire-la-fecondation": "decrire-la-fecondation",
+    "microskill.svt.expliquer-les-cycles-de-l-appareil-reproducteur": "expliquer-les-cycles-de-l-appareil-reproducteur",
+    "microskill.svt.choisir-un-moyen-de-prevention-adapte": "choisir-un-moyen-de-prevention-adapte",
+    "microskill.svt.decrire-les-echanges-gazeux-dans-les-poumons": "decrire-les-echanges-gazeux-dans-les-poumons",
+    "microskill.svt.decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux": "decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux",
+    "microskill.svt.expliquer-le-role-des-globules-rouges": "expliquer-le-role-des-globules-rouges",
+    "microskill.svt.calculer-un-debit-cardiaque": "calculer-un-debit-cardiaque",
+    "microskill.svt.relier-l-effort-physique-aux-besoins-des-cellules": "relier-l-effort-physique-aux-besoins-des-cellules",
+    "microskill.svt.localiser-l-epicentre-et-le-foyer-d-un-seisme": "localiser-l-epicentre-et-le-foyer-d-un-seisme",
+    "microskill.svt.distinguer-eruption-effusive-et-eruption-explosive": "distinguer-eruption-effusive-et-eruption-explosive",
+    "microskill.svt.calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse": "calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse",
+    "microskill.svt.associer-un-phenomene-geologique-a-un-contexte-tectonique": "associer-un-phenomene-geologique-a-un-contexte-tectonique",
+    "microskill.svt.expliquer-le-volcanisme-de-point-chaud": "expliquer-le-volcanisme-de-point-chaud",
+    "microskill.svt.interpreter-le-trajet-des-ondes-sismiques-pour-deduire-une-structure": "interpreter-le-trajet-des-ondes-sismiques-pour-deduire-une-structure",
+    "microskill.svt.decrire-les-enveloppes-de-la-terre-et-leurs-limites": "decrire-les-enveloppes-de-la-terre-et-leurs-limites",
+    "microskill.svt.distinguer-lithosphere-et-asthenosphere": "distinguer-lithosphere-et-asthenosphere",
+    "microskill.svt.comparer-croutes-oceanique-et-continentale": "comparer-croutes-oceanique-et-continentale",
+    "microskill.svt.calculer-une-profondeur-a-partir-de-la-vitesse-d-une-onde": "calculer-une-profondeur-a-partir-de-la-vitesse-d-une-onde",
+    "microskill.svt.identifier-les-barrieres-de-l-organisme-contre-les-microbes": "identifier-les-barrieres-de-l-organisme-contre-les-microbes",
+    "microskill.svt.distinguer-immunite-innee-et-immunite-adaptative": "distinguer-immunite-innee-et-immunite-adaptative",
+    "microskill.svt.expliquer-le-role-des-anticorps": "expliquer-le-role-des-anticorps",
+    "microskill.svt.expliquer-le-principe-de-la-vaccination": "expliquer-le-principe-de-la-vaccination",
+    "microskill.svt.decrire-le-trajet-d-un-message-nerveux-dans-un-neurone": "decrire-le-trajet-d-un-message-nerveux-dans-un-neurone",
+    "microskill.svt.expliquer-la-transmission-synaptique": "expliquer-la-transmission-synaptique",
+    "microskill.svt.interpreter-un-enregistrement-de-potentiel-d-action": "interpreter-un-enregistrement-de-potentiel-d-action",
+    "microskill.svt.decrire-l-arc-reflexe-myotatique": "decrire-l-arc-reflexe-myotatique",
+    "microskill.svt.calculer-une-duree-de-conduction-a-partir-d-une-vitesse": "calculer-une-duree-de-conduction-a-partir-d-une-vitesse",
+    "microskill.ses.distinguer-chomeur-actif-occupe-et-inactif-selon-le-bit": "distinguer-chomeur-actif-occupe-et-inactif-selon-le-bit",
+    "microskill.ses.calculer-un-taux-de-chomage": "calculer-un-taux-de-chomage",
+    "microskill.ses.distinguer-chomage-conjoncturel-et-chomage-structurel": "distinguer-chomage-conjoncturel-et-chomage-structurel",
+    "microskill.ses.analyser-les-causes-multiples-du-chomage-dans-une-situation": "analyser-les-causes-multiples-du-chomage-dans-une-situation",
+    "microskill.ses.interpreter-une-evolution-du-taux-de-chomage": "interpreter-une-evolution-du-taux-de-chomage",
+    "microskill.ses.definir-la-croissance-economique-a-partir-du-pib": "definir-la-croissance-economique-a-partir-du-pib",
+    "microskill.ses.interpreter-l-evolution-du-pib-reel-par-rapport-au-pib-nominal": "interpreter-l-evolution-du-pib-reel-par-rapport-au-pib-nominal",
+    "microskill.ses.identifier-les-sources-de-la-croissance-travail-capital-productivite": "identifier-les-sources-de-la-croissance-travail-capital-productivite",
+    "microskill.ses.discuter-les-limites-du-pib-comme-indicateur-de-bien-etre": "discuter-les-limites-du-pib-comme-indicateur-de-bien-etre",
+    "microskill.ses.distinguer-revenu-et-patrimoine": "distinguer-revenu-et-patrimoine",
+    "microskill.ses.choisir-un-indicateur-adapte-a-une-inegalite-precise": "choisir-un-indicateur-adapte-a-une-inegalite-precise",
+    "microskill.ses.comparer-des-inegalites-economiques-a-l-aide-d-indicateurs": "comparer-des-inegalites-economiques-a-l-aide-d-indicateurs",
+    "microskill.ses.montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation": "montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation",
+    "microskill.ses.distinguer-egalite-et-equite": "distinguer-egalite-et-equite",
+    "microskill.ses.identifier-un-mecanisme-de-redistribution": "identifier-un-mecanisme-de-redistribution",
+    "microskill.ses.expliquer-l-objectif-de-la-protection-sociale": "expliquer-l-objectif-de-la-protection-sociale",
+    "microskill.ses.evaluer-les-effets-d-une-politique-de-justice-sociale": "evaluer-les-effets-d-une-politique-de-justice-sociale",
+    "microskill.ses.identifier-l-offre-et-la-demande-sur-un-marche": "identifier-l-offre-et-la-demande-sur-un-marche",
+    "microskill.ses.determiner-le-prix-d-equilibre-dans-le-modele": "determiner-le-prix-d-equilibre-dans-le-modele",
+    "microskill.ses.prevoir-l-effet-d-un-deplacement-de-l-offre-ou-de-la-demande-sur-le-prix": "prevoir-l-effet-d-un-deplacement-de-l-offre-ou-de-la-demande-sur-le-prix",
+    "microskill.ses.identifier-les-limites-du-modele-de-concurrence": "identifier-les-limites-du-modele-de-concurrence",
+    "microskill.ses.distinguer-mobilite-intergenerationnelle-et-intragenerationnelle": "distinguer-mobilite-intergenerationnelle-et-intragenerationnelle",
+    "microskill.ses.lire-une-table-de-mobilite": "lire-une-table-de-mobilite",
+    "microskill.ses.interpreter-une-trajectoire-sociale-a-l-aide-de-la-structure-sociale": "interpreter-une-trajectoire-sociale-a-l-aide-de-la-structure-sociale",
+    "microskill.ses.discuter-les-limites-de-la-mesure-de-la-mobilite-sociale": "discuter-les-limites-de-la-mesure-de-la-mobilite-sociale",
+    "microskill.ses.distinguer-commerce-international-et-chaine-de-valeur-mondiale": "distinguer-commerce-international-et-chaine-de-valeur-mondiale",
+    "microskill.ses.expliquer-l-avantage-comparatif-sur-un-exemple": "expliquer-l-avantage-comparatif-sur-un-exemple",
+    "microskill.ses.analyser-une-chaine-de-valeur-mondiale": "analyser-une-chaine-de-valeur-mondiale",
+    "microskill.ses.debattre-des-effets-des-echanges-sur-les-acteurs": "debattre-des-effets-des-echanges-sur-les-acteurs",
+    "microskill.ses.identifier-les-fonctions-de-la-monnaie": "identifier-les-fonctions-de-la-monnaie",
+    "microskill.ses.distinguer-les-formes-de-monnaie": "distinguer-les-formes-de-monnaie",
+    "microskill.ses.expliquer-la-creation-monetaire-par-le-credit-bancaire": "expliquer-la-creation-monetaire-par-le-credit-bancaire",
+    "microskill.ses.analyser-un-paiement-entre-agents-economiques": "analyser-un-paiement-entre-agents-economiques",
+    "microskill.ses.expliquer-le-role-de-l-echantillon-dans-un-sondage": "expliquer-le-role-de-l-echantillon-dans-un-sondage",
+    "microskill.ses.reperer-l-effet-d-une-question-orientee": "reperer-l-effet-d-une-question-orientee",
+    "microskill.ses.interpreter-une-marge-d-incertitude": "interpreter-une-marge-d-incertitude",
+    "microskill.ses.analyser-le-role-des-medias-dans-la-formation-de-l-opinion": "analyser-le-role-des-medias-dans-la-formation-de-l-opinion",
+    "microskill.ses.distinguer-normes-valeurs-et-roles-sociaux": "distinguer-normes-valeurs-et-roles-sociaux",
+    "microskill.ses.identifier-les-agents-de-socialisation-dans-une-situation": "identifier-les-agents-de-socialisation-dans-une-situation",
+    "microskill.ses.expliquer-la-socialisation-primaire-et-secondaire": "expliquer-la-socialisation-primaire-et-secondaire",
+    "microskill.ses.analyser-des-socialisations-plurielles-dans-un-parcours": "analyser-des-socialisations-plurielles-dans-un-parcours",
+    "microskill.emc.distinguer-citoyennete-juridique-et-participation-a-la-vie-collective": "distinguer-citoyennete-juridique-et-participation-a-la-vie-collective",
+    "microskill.emc.identifier-les-droits-et-les-devoirs-du-citoyen": "identifier-les-droits-et-les-devoirs-du-citoyen",
+    "microskill.emc.expliquer-les-conditions-de-nationalite-et-de-participation-politique": "expliquer-les-conditions-de-nationalite-et-de-participation-politique",
+    "microskill.emc.choisir-une-forme-de-participation-adaptee-a-une-situation": "choisir-une-forme-de-participation-adaptee-a-une-situation",
+    "microskill.emc.expliquer-le-pluralisme-politique": "expliquer-le-pluralisme-politique",
+    "microskill.emc.distinguer-democratie-representative-et-democratie-participative": "distinguer-democratie-representative-et-democratie-participative",
+    "microskill.emc.justifier-les-limites-du-pouvoir-de-la-majorite": "justifier-les-limites-du-pouvoir-de-la-majorite",
+    "microskill.emc.analyser-les-conditions-d-un-vote-libre-et-sincere": "analyser-les-conditions-d-un-vote-libre-et-sincere",
+    "microskill.emc.distinguer-stereotype-prejuge-et-discrimination": "distinguer-stereotype-prejuge-et-discrimination",
+    "microskill.emc.identifier-une-discrimination-juridique-a-partir-d-un-critere-prohibe": "identifier-une-discrimination-juridique-a-partir-d-un-critere-prohibe",
+    "microskill.emc.distinguer-difference-de-traitement-et-discrimination": "distinguer-difference-de-traitement-et-discrimination",
+    "microskill.emc.choisir-un-recours-adapte-face-a-une-discrimination": "choisir-un-recours-adapte-face-a-une-discrimination",
+    "microskill.emc.distinguer-les-familles-de-droits-humains": "distinguer-les-familles-de-droits-humains",
+    "microskill.emc.identifier-la-portee-des-textes-ddhc-dudh-cedh": "identifier-la-portee-des-textes-ddhc-dudh-cedh",
+    "microskill.emc.associer-un-droit-a-une-situation-concrete": "associer-un-droit-a-une-situation-concrete",
+    "microskill.emc.expliquer-les-garanties-juridiques-des-droits": "expliquer-les-garanties-juridiques-des-droits",
+    "microskill.emc.distinguer-egalite-de-droits-et-egalite-reelle": "distinguer-egalite-de-droits-et-egalite-reelle",
+    "microskill.emc.justifier-un-amenagement-adapte-a-une-situation-de-handicap": "justifier-un-amenagement-adapte-a-une-situation-de-handicap",
+    "microskill.emc.analyser-une-difference-de-traitement-legitime-ou-illegitime": "analyser-une-difference-de-traitement-legitime-ou-illegitime",
+    "microskill.emc.expliquer-le-role-des-politiques-publiques-dans-l-egalite": "expliquer-le-role-des-politiques-publiques-dans-l-egalite",
+    "microskill.emc.distinguer-les-formes-d-engagement-civique": "distinguer-les-formes-d-engagement-civique",
+    "microskill.emc.definir-les-objectifs-d-un-projet-civique": "definir-les-objectifs-d-un-projet-civique",
+    "microskill.emc.verifier-la-legitimite-et-la-securite-d-une-action-collective": "verifier-la-legitimite-et-la-securite-d-une-action-collective",
+    "microskill.emc.dresser-le-bilan-d-un-engagement": "dresser-le-bilan-d-un-engagement",
+    "microskill.emc.expliquer-la-soumission-des-gouvernants-au-droit": "expliquer-la-soumission-des-gouvernants-au-droit",
+    "microskill.emc.identifier-la-hierarchie-des-normes": "identifier-la-hierarchie-des-normes",
+    "microskill.emc.identifier-un-controle-contre-une-decision-publique-illegale": "identifier-un-controle-contre-une-decision-publique-illegale",
+    "microskill.emc.distinguer-abondance-de-lois-et-etat-de-droit": "distinguer-abondance-de-lois-et-etat-de-droit",
+    "microskill.emc.expliquer-la-fraternite-comme-principe-republicain": "expliquer-la-fraternite-comme-principe-republicain",
+    "microskill.emc.distinguer-solidarite-et-assistance-humiliante": "distinguer-solidarite-et-assistance-humiliante",
+    "microskill.emc.choisir-une-forme-d-aide-respectueuse-de-la-dignite": "choisir-une-forme-d-aide-respectueuse-de-la-dignite",
+    "microskill.emc.identifier-les-recours-quand-une-difficulte-depasse-ses-capacites": "identifier-les-recours-quand-une-difficulte-depasse-ses-capacites",
+    "microskill.emc.distinguer-interet-general-et-interet-particulier": "distinguer-interet-general-et-interet-particulier",
+    "microskill.emc.justifier-une-decision-par-l-interet-general": "justifier-une-decision-par-l-interet-general",
+    "microskill.emc.analyser-un-debat-sur-un-amenagement-collectif": "analyser-un-debat-sur-un-amenagement-collectif",
+    "microskill.emc.reperer-l-usage-abusif-de-l-argument-de-l-interet-general": "reperer-l-usage-abusif-de-l-argument-de-l-interet-general",
+    "microskill.emc.distinguer-justice-et-vengeance": "distinguer-justice-et-vengeance",
+    "microskill.emc.expliquer-le-principe-du-contradictoire": "expliquer-le-principe-du-contradictoire",
+    "microskill.emc.expliquer-la-presomption-d-innocence": "expliquer-la-presomption-d-innocence",
+    "microskill.emc.identifier-les-garanties-d-independance-de-la-justice": "identifier-les-garanties-d-independance-de-la-justice",
+    "microskill.emc.expliquer-la-liberte-de-conscience-protegee-par-la-laicite": "expliquer-la-liberte-de-conscience-protegee-par-la-laicite",
+    "microskill.emc.expliquer-la-separation-des-eglises-et-de-l-etat": "expliquer-la-separation-des-eglises-et-de-l-etat",
+    "microskill.emc.identifier-les-obligations-de-neutralite-des-agents-publics-a-l-ecole": "identifier-les-obligations-de-neutralite-des-agents-publics-a-l-ecole",
+    "microskill.emc.analyser-une-situation-relative-aux-signes-religieux": "analyser-une-situation-relative-aux-signes-religieux",
+    "microskill.emc.distinguer-liberte-et-absence-de-limites": "distinguer-liberte-et-absence-de-limites",
+    "microskill.emc.identifier-les-libertes-protegees-par-les-textes": "identifier-les-libertes-protegees-par-les-textes",
+    "microskill.emc.apprecier-une-restriction-a-une-liberte-selon-la-loi-la-necessite-et-la-proportionnalite": "apprecier-une-restriction-a-une-liberte-selon-la-loi-la-necessite-et-la-proportionnalite",
+    "microskill.emc.distinguer-liberte-d-expression-et-harcelement": "distinguer-liberte-d-expression-et-harcelement",
+    "microskill.geographie.localiser-les-etats-et-les-ports-d-afrique-australe": "localiser-les-etats-et-les-ports-d-afrique-australe",
+    "microskill.geographie.analyser-un-corridor-de-transport-regional": "analyser-un-corridor-de-transport-regional",
+    "microskill.geographie.calculer-une-part-d-un-flux-dans-un-dossier-de-documents": "calculer-une-part-d-un-flux-dans-un-dossier-de-documents",
+    "microskill.geographie.caracteriser-les-acteurs-de-l-integration-regionale": "caracteriser-les-acteurs-de-l-integration-regionale",
+    "microskill.geographie.interpreter-les-contrastes-et-les-heritages-d-un-territoire": "interpreter-les-contrastes-et-les-heritages-d-un-territoire",
+    "microskill.geographie.distinguer-meteo-et-climat": "distinguer-meteo-et-climat",
+    "microskill.geographie.identifier-les-causes-du-changement-climatique": "identifier-les-causes-du-changement-climatique",
+    "microskill.geographie.analyser-les-effets-du-changement-climatique-sur-un-territoire": "analyser-les-effets-du-changement-climatique-sur-un-territoire",
+    "microskill.geographie.distinguer-attenuation-et-adaptation": "distinguer-attenuation-et-adaptation",
+    "microskill.geographie.associer-les-acteurs-aux-echelles-d-action-sur-les-emissions": "associer-les-acteurs-aux-echelles-d-action-sur-les-emissions",
+    "microskill.geographie.interpreter-l-evolution-d-un-territoire-entre-deux-dates": "interpreter-l-evolution-d-un-territoire-entre-deux-dates",
+    "microskill.geographie.calculer-et-interpreter-un-taux-de-variation-de-population": "calculer-et-interpreter-un-taux-de-variation-de-population",
+    "microskill.geographie.identifier-un-processus-de-metropolisation-ou-de-periurbanisation": "identifier-un-processus-de-metropolisation-ou-de-periurbanisation",
+    "microskill.geographie.caracteriser-les-acteurs-d-un-territoire": "caracteriser-les-acteurs-d-un-territoire",
+    "microskill.geographie.discuter-un-arbitrage-d-amenagement": "discuter-un-arbitrage-d-amenagement",
+    "microskill.geographie.classer-des-activites-par-secteur": "classer-des-activites-par-secteur",
+    "microskill.geographie.expliquer-la-localisation-d-une-activite-par-ses-reseaux": "expliquer-la-localisation-d-une-activite-par-ses-reseaux",
+    "microskill.geographie.calculer-une-part-d-une-production-dans-un-dossier": "calculer-une-part-d-une-production-dans-un-dossier",
+    "microskill.geographie.analyser-la-recomposition-d-un-espace-productif": "analyser-la-recomposition-d-un-espace-productif",
+    "microskill.geographie.discuter-les-inegalites-et-la-transition-d-un-espace-productif": "discuter-les-inegalites-et-la-transition-d-un-espace-productif",
+    "microskill.geographie.identifier-les-fonctions-d-un-espace-rural": "identifier-les-fonctions-d-un-espace-rural",
+    "microskill.geographie.analyser-les-liens-entre-un-espace-rural-et-ses-voisins": "analyser-les-liens-entre-un-espace-rural-et-ses-voisins",
+    "microskill.geographie.identifier-les-acteurs-d-un-conflit-d-usage-eau-terres": "identifier-les-acteurs-d-un-conflit-d-usage-eau-terres",
+    "microskill.geographie.interpreter-les-politiques-territoriales-rurales": "interpreter-les-politiques-territoriales-rurales",
+    "microskill.geographie.localiser-les-regions-de-france-metropolitaine-et-d-outre-mer": "localiser-les-regions-de-france-metropolitaine-et-d-outre-mer",
+    "microskill.geographie.calculer-un-total-a-partir-d-un-decoupage-administratif": "calculer-un-total-a-partir-d-un-decoupage-administratif",
+    "microskill.geographie.distinguer-les-competences-d-une-region-et-d-autres-collectivites": "distinguer-les-competences-d-une-region-et-d-autres-collectivites",
+    "microskill.geographie.situer-un-territoire-ultramarin-dans-son-espace-regional": "situer-un-territoire-ultramarin-dans-son-espace-regional",
+    "microskill.geographie.analyser-les-liens-mondiaux-d-une-region": "analyser-les-liens-mondiaux-d-une-region",
+    "microskill.geographie.distinguer-les-statuts-des-territoires-francais": "distinguer-les-statuts-des-territoires-francais",
+    "microskill.geographie.identifier-les-acteurs-d-un-projet-d-acces-aux-services": "identifier-les-acteurs-d-un-projet-d-acces-aux-services",
+    "microskill.geographie.etudier-la-liaison-d-un-territoire-ultramarin-avec-ses-voisins": "etudier-la-liaison-d-un-territoire-ultramarin-avec-ses-voisins",
+    "microskill.geographie.evaluer-la-cohesion-territoriale-a-partir-d-un-reseau": "evaluer-la-cohesion-territoriale-a-partir-d-un-reseau",
+    "microskill.geographie.localiser-routes-ports-et-passages-strategiques": "localiser-routes-ports-et-passages-strategiques",
+    "microskill.geographie.calculer-la-part-d-un-port-dans-un-trafic": "calculer-la-part-d-un-port-dans-un-trafic",
+    "microskill.geographie.distinguer-les-reseaux-de-transport-et-de-communication-maritimes": "distinguer-les-reseaux-de-transport-et-de-communication-maritimes",
+    "microskill.geographie.identifier-les-acteurs-et-les-ressources-d-un-espace-maritime": "identifier-les-acteurs-et-les-ressources-d-un-espace-maritime",
+    "microskill.geographie.analyser-un-enjeu-de-droit-maritime-ou-d-environnement": "analyser-un-enjeu-de-droit-maritime-ou-d-environnement",
+    "microskill.geographie.identifier-un-indice-de-metropolisation": "identifier-un-indice-de-metropolisation",
+    "microskill.geographie.analyser-les-liens-d-une-metropole-avec-d-autres-echelles": "analyser-les-liens-d-une-metropole-avec-d-autres-echelles",
+    "microskill.geographie.caracteriser-l-inegal-acces-des-habitants-aux-reseaux": "caracteriser-l-inegal-acces-des-habitants-aux-reseaux",
+    "microskill.geographie.identifier-les-acteurs-d-un-reseau-intercommunal": "identifier-les-acteurs-d-un-reseau-intercommunal",
+    "microskill.geographie.discuter-une-hierarchie-ou-une-cooperation-entre-villes": "discuter-une-hierarchie-ou-une-cooperation-entre-villes",
+    "microskill.geographie.distinguer-migration-interne-internationale-et-mobilite-de-loisirs": "distinguer-migration-interne-internationale-et-mobilite-de-loisirs",
+    "microskill.geographie.identifier-les-droits-des-migrants-et-l-instance-d-asile": "identifier-les-droits-des-migrants-et-l-instance-d-asile",
+    "microskill.geographie.analyser-un-reseau-migratoire": "analyser-un-reseau-migratoire",
+    "microskill.geographie.discuter-une-politique-migratoire-et-ses-representations": "discuter-une-politique-migratoire-et-ses-representations",
+    "microskill.geographie.distinguer-les-motifs-et-les-modes-de-deplacement": "distinguer-les-motifs-et-les-modes-de-deplacement",
+    "microskill.geographie.analyser-l-acces-inegal-aux-transports": "analyser-l-acces-inegal-aux-transports",
+    "microskill.geographie.identifier-les-autorites-organisatrices-des-transports": "identifier-les-autorites-organisatrices-des-transports",
+    "microskill.geographie.proposer-une-coordination-entre-modes-de-transport": "proposer-une-coordination-entre-modes-de-transport",
+    "microskill.geographie.evaluer-une-transition-des-deplacements": "evaluer-une-transition-des-deplacements",
+    "microskill.geographie.identifier-les-flux-de-marchandises-de-capitaux-et-d-informations": "identifier-les-flux-de-marchandises-de-capitaux-et-d-informations",
+    "microskill.geographie.caracteriser-les-acteurs-de-la-mondialisation": "caracteriser-les-acteurs-de-la-mondialisation",
+    "microskill.geographie.calculer-la-part-d-un-flux-dans-un-reseau": "calculer-la-part-d-un-flux-dans-un-reseau",
+    "microskill.geographie.analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial": "analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial",
+    "microskill.geographie.discuter-une-integration-inegale-entre-territoires": "discuter-une-integration-inegale-entre-territoires",
+    "microskill.geographie.distinguer-ressource-renouvelable-et-non-renouvelable": "distinguer-ressource-renouvelable-et-non-renouvelable",
+    "microskill.geographie.analyser-l-acces-inegal-a-une-ressource": "analyser-l-acces-inegal-a-une-ressource",
+    "microskill.geographie.identifier-les-acteurs-de-la-gestion-d-une-ressource": "identifier-les-acteurs-de-la-gestion-d-une-ressource",
+    "microskill.geographie.analyser-une-interdependance-de-ressources-entre-territoires": "analyser-une-interdependance-de-ressources-entre-territoires",
+    "microskill.geographie.evaluer-une-mesure-de-sobriete": "evaluer-une-mesure-de-sobriete",
+    "microskill.geographie.distinguer-alea-enjeu-et-risque": "distinguer-alea-enjeu-et-risque",
+    "microskill.geographie.associer-un-risque-a-un-territoire": "associer-un-risque-a-un-territoire",
+    "microskill.geographie.identifier-les-acteurs-de-la-prevention": "identifier-les-acteurs-de-la-prevention",
+    "microskill.geographie.concevoir-une-preparation-a-un-risque": "concevoir-une-preparation-a-un-risque",
+    "microskill.geographie.discuter-des-choix-sociaux-et-territoriaux-face-a-un-risque": "discuter-des-choix-sociaux-et-territoriaux-face-a-un-risque",
+    "microskill.geographie.distinguer-touriste-et-excursionniste": "distinguer-touriste-et-excursionniste",
+    "microskill.geographie.calculer-un-nombre-de-nuitees": "calculer-un-nombre-de-nuitees",
+    "microskill.geographie.analyser-les-flux-et-les-acteurs-touristiques": "analyser-les-flux-et-les-acteurs-touristiques",
+    "microskill.geographie.evaluer-les-effets-du-tourisme-sur-un-territoire": "evaluer-les-effets-du-tourisme-sur-un-territoire",
+    "microskill.geographie.proposer-une-transformation-touristique-durable": "proposer-une-transformation-touristique-durable",
+    "microskill.geographie.distinguer-ue-zone-euro-et-espace-schengen": "distinguer-ue-zone-euro-et-espace-schengen",
+    "microskill.geographie.interpreter-un-exemple-de-statut-a-geometrie-variable": "interpreter-un-exemple-de-statut-a-geometrie-variable",
+    "microskill.geographie.calculer-la-part-d-un-financement-europeen-dans-un-projet": "calculer-la-part-d-un-financement-europeen-dans-un-projet",
+    "microskill.geographie.analyser-les-ecarts-entre-territoires-de-l-ue": "analyser-les-ecarts-entre-territoires-de-l-ue",
+    "microskill.geographie.identifier-les-echelles-de-decision-europeennes": "identifier-les-echelles-de-decision-europeennes",
+    "microskill.geographie.interpreter-l-evolution-de-la-part-de-population-urbaine": "interpreter-l-evolution-de-la-part-de-population-urbaine",
+    "microskill.geographie.distinguer-centre-banlieue-et-couronne-periurbaine": "distinguer-centre-banlieue-et-couronne-periurbaine",
+    "microskill.geographie.identifier-les-acteurs-de-l-usage-des-sols": "identifier-les-acteurs-de-l-usage-des-sols",
+    "microskill.geographie.analyser-une-mobilite-domicile-travail-a-plusieurs-echelles": "analyser-une-mobilite-domicile-travail-a-plusieurs-echelles",
+    "microskill.geographie.discuter-un-amenagement-urbain": "discuter-un-amenagement-urbain",
+    "microskill.francais.accorder-un-nom-un-determinant-et-un-adjectif": "accorder-un-nom-un-determinant-et-un-adjectif",
+    "microskill.francais.accorder-le-verbe-avec-son-sujet": "accorder-le-verbe-avec-son-sujet",
+    "microskill.francais.accorder-le-participe-passe-employe-avec-etre": "accorder-le-participe-passe-employe-avec-etre",
+    "microskill.francais.accorder-le-participe-passe-employe-avec-avoir": "accorder-le-participe-passe-employe-avec-avoir",
+    "microskill.francais.reperer-une-erreur-d-accord-dans-un-texte": "reperer-une-erreur-d-accord-dans-un-texte",
+    "microskill.francais.identifier-le-narrateur-et-le-point-de-vue-d-un-texte": "identifier-le-narrateur-et-le-point-de-vue-d-un-texte",
+    "microskill.francais.relever-des-indices-pour-justifier-une-interpretation": "relever-des-indices-pour-justifier-une-interpretation",
+    "microskill.francais.relier-un-procede-d-ecriture-a-son-effet": "relier-un-procede-d-ecriture-a-son-effet",
+    "microskill.francais.rediger-une-reponse-argumentee-appuyee-sur-des-citations": "rediger-une-reponse-argumentee-appuyee-sur-des-citations",
+    "microskill.francais.situer-un-texte-dans-son-contexte": "situer-un-texte-dans-son-contexte",
+    "microskill.francais.identifier-la-these-d-un-texte-argumentatif": "identifier-la-these-d-un-texte-argumentatif",
+    "microskill.francais.distinguer-arguments-et-exemples": "distinguer-arguments-et-exemples",
+    "microskill.francais.utiliser-des-connecteurs-logiques-d-opposition-et-de-cause": "utiliser-des-connecteurs-logiques-d-opposition-et-de-cause",
+    "microskill.francais.organiser-un-paragraphe-argumentatif": "organiser-un-paragraphe-argumentatif",
+    "microskill.francais.nuancer-une-opinion-en-tenant-compte-d-une-objection": "nuancer-une-opinion-en-tenant-compte-d-une-objection",
+    "microskill.francais.situer-une-action-dans-le-temps-avec-le-temps-adapte": "situer-une-action-dans-le-temps-avec-le-temps-adapte",
+    "microskill.francais.former-l-imparfait-et-le-passe-compose": "former-l-imparfait-et-le-passe-compose",
+    "microskill.francais.former-le-futur-simple-et-le-conditionnel-present": "former-le-futur-simple-et-le-conditionnel-present",
+    "microskill.francais.choisir-entre-passe-simple-et-imparfait-dans-un-recit": "choisir-entre-passe-simple-et-imparfait-dans-un-recit",
+    "microskill.francais.identifier-le-groupe-et-le-radical-d-un-verbe": "identifier-le-groupe-et-le-radical-d-un-verbe",
+    "microskill.francais.identifier-une-comparaison-et-une-metaphore": "identifier-une-comparaison-et-une-metaphore",
+    "microskill.francais.identifier-une-personnification": "identifier-une-personnification",
+    "microskill.francais.identifier-une-repetition-et-une-anaphore": "identifier-une-repetition-et-une-anaphore",
+    "microskill.francais.analyser-l-effet-d-une-figure-de-style": "analyser-l-effet-d-une-figure-de-style",
+    "microskill.francais.creer-une-image-originale": "creer-une-image-originale",
+    "microskill.francais.compter-les-propositions-d-une-phrase": "compter-les-propositions-d-une-phrase",
+    "microskill.francais.distinguer-juxtaposition-coordination-et-subordination": "distinguer-juxtaposition-coordination-et-subordination",
+    "microskill.francais.identifier-une-proposition-subordonnee": "identifier-une-proposition-subordonnee",
+    "microskill.francais.relier-deux-propositions-par-un-connecteur-adapte": "relier-deux-propositions-par-un-connecteur-adapte",
+    "microskill.francais.transformer-une-phrase-simple-en-phrase-complexe": "transformer-une-phrase-simple-en-phrase-complexe",
+    "microskill.francais.identifier-la-these-d-un-texte-de-la-litterature-d-idees": "identifier-la-these-d-un-texte-de-la-litterature-d-idees",
+    "microskill.francais.interpreter-une-fable-ou-un-conte-philosophique": "interpreter-une-fable-ou-un-conte-philosophique",
+    "microskill.francais.reperer-les-procedes-d-un-texte-engage-ironie-satire": "reperer-les-procedes-d-un-texte-engage-ironie-satire",
+    "microskill.francais.mettre-en-relation-un-texte-et-son-contexte-historique": "mettre-en-relation-un-texte-et-son-contexte-historique",
+    "microskill.francais.compter-les-syllabes-d-un-vers-et-identifier-une-strophe": "compter-les-syllabes-d-un-vers-et-identifier-une-strophe",
+    "microskill.francais.identifier-les-rimes-et-leur-disposition": "identifier-les-rimes-et-leur-disposition",
+    "microskill.francais.reperer-un-enjambement-ou-un-rejet": "reperer-un-enjambement-ou-un-rejet",
+    "microskill.francais.faire-entendre-une-image-par-la-lecture-a-voix-haute": "faire-entendre-une-image-par-la-lecture-a-voix-haute",
+    "microskill.francais.commenter-l-effet-des-sonorites": "commenter-l-effet-des-sonorites",
+    "microskill.francais.identifier-le-debut-d-un-roman-et-sa-situation-initiale": "identifier-le-debut-d-un-roman-et-sa-situation-initiale",
+    "microskill.francais.distinguer-auteur-narrateur-et-personnage": "distinguer-auteur-narrateur-et-personnage",
+    "microskill.francais.reperer-les-etapes-d-une-intrigue": "reperer-les-etapes-d-une-intrigue",
+    "microskill.francais.analyser-la-construction-d-un-personnage": "analyser-la-construction-d-un-personnage",
+    "microskill.francais.comparer-deux-incipits": "comparer-deux-incipits",
+    "microskill.francais.distinguer-repliques-et-didascalies": "distinguer-repliques-et-didascalies",
+    "microskill.francais.distinguer-monologue-dialogue-et-aparte": "distinguer-monologue-dialogue-et-aparte",
+    "microskill.francais.interpreter-la-double-enonciation": "interpreter-la-double-enonciation",
+    "microskill.francais.lire-une-scene-a-voix-haute": "lire-une-scene-a-voix-haute",
+    "microskill.francais.imaginer-une-mise-en-scene-justifiee-par-le-texte": "imaginer-une-mise-en-scene-justifiee-par-le-texte",
+    "microskill.histoire.situer-les-reperes-chronologiques-de-la-grece-et-de-rome": "situer-les-reperes-chronologiques-de-la-grece-et-de-rome",
+    "microskill.histoire.comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine": "comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine",
+    "microskill.histoire.identifier-les-institutions-de-la-democratie-athenienne-et-de-la-republique-romaine": "identifier-les-institutions-de-la-democratie-athenienne-et-de-la-republique-romaine",
+    "microskill.histoire.expliquer-le-passage-de-la-republique-a-l-empire": "expliquer-le-passage-de-la-republique-a-l-empire",
+    "microskill.histoire.analyser-les-heritages-et-les-transformations-de-l-antiquite": "analyser-les-heritages-et-les-transformations-de-l-antiquite",
+    "microskill.histoire.expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945": "expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945",
+    "microskill.histoire.situer-les-etapes-de-la-ceca-a-l-union-europeenne": "situer-les-etapes-de-la-ceca-a-l-union-europeenne",
+    "microskill.histoire.distinguer-les-etats-fondateurs-des-elargissements": "distinguer-les-etats-fondateurs-des-elargissements",
+    "microskill.histoire.analyser-un-traite-europeen-rome-maastricht": "analyser-un-traite-europeen-rome-maastricht",
+    "microskill.histoire.discuter-la-souverainete-nationale-et-les-institutions-europeennes": "discuter-la-souverainete-nationale-et-les-institutions-europeennes",
+    "microskill.histoire.expliquer-les-causes-de-l-acceleration-de-la-decolonisation-apres-1945": "expliquer-les-causes-de-l-acceleration-de-la-decolonisation-apres-1945",
+    "microskill.histoire.comparer-des-voies-vers-l-independance-negociee-conflictuelle": "comparer-des-voies-vers-l-independance-negociee-conflictuelle",
+    "microskill.histoire.caracteriser-le-role-d-un-acteur-de-la-decolonisation-gandhi-nasser": "caracteriser-le-role-d-un-acteur-de-la-decolonisation-gandhi-nasser",
+    "microskill.histoire.analyser-les-consequences-d-une-independance-partition-developpement": "analyser-les-consequences-d-une-independance-partition-developpement",
+    "microskill.histoire.discuter-les-memoires-de-la-decolonisation": "discuter-les-memoires-de-la-decolonisation",
+    "microskill.histoire.expliquer-la-rivalite-des-deux-superpuissances-apres-1945": "expliquer-la-rivalite-des-deux-superpuissances-apres-1945",
+    "microskill.histoire.situer-les-crises-majeures-de-la-guerre-froide-berlin-cuba": "situer-les-crises-majeures-de-la-guerre-froide-berlin-cuba",
+    "microskill.histoire.caracteriser-les-blocs-et-leurs-acteurs": "caracteriser-les-blocs-et-leurs-acteurs",
+    "microskill.histoire.expliquer-la-detente-et-la-fin-de-la-bipolarite": "expliquer-la-detente-et-la-fin-de-la-bipolarite",
+    "microskill.histoire.analyser-la-fin-de-l-urss": "analyser-la-fin-de-l-urss",
+    "microskill.histoire.situer-les-lumieres-dans-leur-chronologie": "situer-les-lumieres-dans-leur-chronologie",
+    "microskill.histoire.associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau": "associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau",
+    "microskill.histoire.expliquer-la-circulation-des-idees-et-des-livres": "expliquer-la-circulation-des-idees-et-des-livres",
+    "microskill.histoire.analyser-les-limites-et-les-contradictions-des-ideaux-des-lumieres": "analyser-les-limites-et-les-contradictions-des-ideaux-des-lumieres",
+    "microskill.histoire.expliquer-les-consequences-de-la-fin-de-l-urss": "expliquer-les-consequences-de-la-fin-de-l-urss",
+    "microskill.histoire.caracteriser-un-monde-multipolaire": "caracteriser-un-monde-multipolaire",
+    "microskill.histoire.analyser-un-conflit-contemporain-et-ses-acteurs": "analyser-un-conflit-contemporain-et-ses-acteurs",
+    "microskill.histoire.expliquer-la-propagation-d-une-crise-financiere-mondiale": "expliquer-la-propagation-d-une-crise-financiere-mondiale",
+    "microskill.histoire.evaluer-un-accord-international-sur-un-defi-commun-climat": "evaluer-un-accord-international-sur-un-defi-commun-climat",
+    "microskill.histoire.situer-les-grandes-periodes-du-moyen-age": "situer-les-grandes-periodes-du-moyen-age",
+    "microskill.histoire.decrire-l-organisation-d-une-seigneurie": "decrire-l-organisation-d-une-seigneurie",
+    "microskill.histoire.expliquer-la-croissance-des-villes-a-partir-du-xie-siecle": "expliquer-la-croissance-des-villes-a-partir-du-xie-siecle",
+    "microskill.histoire.caracteriser-les-pouvoirs-medievaux-eglise-roi-seigneurs": "caracteriser-les-pouvoirs-medievaux-eglise-roi-seigneurs",
+    "microskill.histoire.analyser-les-contacts-en-mediterranee-medievale": "analyser-les-contacts-en-mediterranee-medievale",
+    "microskill.histoire.situer-les-etapes-du-consulat-a-l-empire": "situer-les-etapes-du-consulat-a-l-empire",
+    "microskill.histoire.expliquer-les-reformes-de-l-etat-sous-napoleon-code-civil-administration": "expliquer-les-reformes-de-l-etat-sous-napoleon-code-civil-administration",
+    "microskill.histoire.analyser-les-conquetes-et-les-resistances": "analyser-les-conquetes-et-les-resistances",
+    "microskill.histoire.evaluer-l-heritage-napoleonien": "evaluer-l-heritage-napoleonien",
+    "microskill.histoire.placer-les-grands-reperes-de-1914-a-1918": "placer-les-grands-reperes-de-1914-a-1918",
+    "microskill.histoire.expliquer-le-passage-de-la-crise-de-sarajevo-a-la-guerre-europeenne": "expliquer-le-passage-de-la-crise-de-sarajevo-a-la-guerre-europeenne",
+    "microskill.histoire.caracteriser-une-guerre-totale-a-partir-d-exemples": "caracteriser-une-guerre-totale-a-partir-d-exemples",
+    "microskill.histoire.analyser-le-role-des-acteurs-et-des-alliances": "analyser-le-role-des-acteurs-et-des-alliances",
+    "microskill.histoire.evaluer-les-consequences-et-les-memoires-de-la-guerre": "evaluer-les-consequences-et-les-memoires-de-la-guerre",
+    "microskill.histoire.situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte": "situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte",
+    "microskill.histoire.caracteriser-l-humanisme-et-ses-acteurs": "caracteriser-l-humanisme-et-ses-acteurs",
+    "microskill.histoire.analyser-le-role-des-mecenes-et-des-artistes": "analyser-le-role-des-mecenes-et-des-artistes",
+    "microskill.histoire.expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees": "expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees",
+    "microskill.histoire.ordonner-les-evenements-de-1789": "ordonner-les-evenements-de-1789",
+    "microskill.histoire.expliquer-les-causes-de-la-revolution": "expliquer-les-causes-de-la-revolution",
+    "microskill.histoire.analyser-un-texte-fondateur-declaration-des-droits": "analyser-un-texte-fondateur-declaration-des-droits",
+    "microskill.histoire.expliquer-le-changement-de-regime-de-1792": "expliquer-le-changement-de-regime-de-1792",
+    "microskill.histoire.discuter-l-incertitude-des-issues-de-la-revolution": "discuter-l-incertitude-des-issues-de-la-revolution",
+    "microskill.histoire.situer-les-debuts-de-l-industrialisation": "situer-les-debuts-de-l-industrialisation",
+    "microskill.histoire.expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer": "expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer",
+    "microskill.histoire.analyser-les-effets-sur-les-villes-et-le-monde-du-travail": "analyser-les-effets-sur-les-villes-et-le-monde-du-travail",
+    "microskill.histoire.expliquer-l-exode-rural-et-l-urbanisation": "expliquer-l-exode-rural-et-l-urbanisation",
+    "microskill.histoire.analyser-une-loi-sociale-du-xixe-siecle": "analyser-une-loi-sociale-du-xixe-siecle",
+    "microskill.histoire.identifier-les-facteurs-de-declenchement-de-la-guerre": "identifier-les-facteurs-de-declenchement-de-la-guerre",
+    "microskill.histoire.situer-les-grandes-phases-de-la-guerre-sur-plusieurs-theatres": "situer-les-grandes-phases-de-la-guerre-sur-plusieurs-theatres",
+    "microskill.histoire.distinguer-les-regimes-d-occupation-dont-vichy": "distinguer-les-regimes-d-occupation-dont-vichy",
+    "microskill.histoire.analyser-les-violences-de-masse-et-la-shoah": "analyser-les-violences-de-masse-et-la-shoah",
+    "microskill.histoire.expliquer-la-reconstruction-et-la-justice-d-apres-guerre": "expliquer-la-reconstruction-et-la-justice-d-apres-guerre",
+    "microskill.histoire.situer-les-reperes-majeurs-de-1492-a-1789": "situer-les-reperes-majeurs-de-1492-a-1789",
+    "microskill.histoire.expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones": "expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones",
+    "microskill.histoire.caracteriser-la-monarchie-absolue-de-louis-xiv": "caracteriser-la-monarchie-absolue-de-louis-xiv",
+    "microskill.histoire.analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes": "analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes",
+    "microskill.histoire.caracteriser-un-regime-totalitaire": "caracteriser-un-regime-totalitaire",
+    "microskill.histoire.comparer-les-regimes-fasciste-nazi-et-stalinien": "comparer-les-regimes-fasciste-nazi-et-stalinien",
+    "microskill.histoire.expliquer-l-arrivee-au-pouvoir-d-un-regime-a-partir-de-ses-causes": "expliquer-l-arrivee-au-pouvoir-d-un-regime-a-partir-de-ses-causes",
+    "microskill.histoire.analyser-les-moyens-de-controle-propagande-censure-terreur": "analyser-les-moyens-de-controle-propagande-censure-terreur",
+    "microskill.histoire.discuter-l-usage-historique-de-la-notion-de-totalitarisme": "discuter-l-usage-historique-de-la-notion-de-totalitarisme",
+    "microskill.histoire.expliquer-les-circonstances-de-la-naissance-de-la-ve-republique": "expliquer-les-circonstances-de-la-naissance-de-la-ve-republique",
+    "microskill.histoire.distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement": "distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement",
+    "microskill.histoire.expliquer-l-election-du-president-au-suffrage-universel-direct": "expliquer-l-election-du-president-au-suffrage-universel-direct",
+    "microskill.histoire.analyser-une-cohabitation": "analyser-une-cohabitation",
+    "microskill.histoire.evaluer-une-reforme-institutionnelle": "evaluer-une-reforme-institutionnelle",
+    "microskill.philosophie.distinguer-imitation-et-creation-dans-une-uvre": "distinguer-imitation-et-creation-dans-une-uvre",
+    "microskill.philosophie.expliquer-la-mimesis-chez-platon-et-aristote": "expliquer-la-mimesis-chez-platon-et-aristote",
+    "microskill.philosophie.discuter-le-jugement-de-gout-en-distinguant-plaisir-et-jugement-esthetique": "discuter-le-jugement-de-gout-en-distinguant-plaisir-et-jugement-esthetique",
+    "microskill.philosophie.analyser-le-risque-et-l-interet-d-une-uvre-qui-derange": "analyser-le-risque-et-l-interet-d-une-uvre-qui-derange",
+    "microskill.philosophie.distinguer-plaisir-bonheur-et-satisfaction": "distinguer-plaisir-bonheur-et-satisfaction",
+    "microskill.philosophie.expliquer-la-classification-des-desirs-chez-epicure": "expliquer-la-classification-des-desirs-chez-epicure",
+    "microskill.philosophie.relier-le-bonheur-a-la-vertu-chez-aristote": "relier-le-bonheur-a-la-vertu-chez-aristote",
+    "microskill.philosophie.discuter-si-la-satisfaction-d-un-desir-prouve-le-bonheur": "discuter-si-la-satisfaction-d-un-desir-prouve-le-bonheur",
+    "microskill.philosophie.distinguer-conscience-spontanee-et-conscience-reflechie": "distinguer-conscience-spontanee-et-conscience-reflechie",
+    "microskill.philosophie.distinguer-conscience-psychologique-et-conscience-morale": "distinguer-conscience-psychologique-et-conscience-morale",
+    "microskill.philosophie.expliquer-le-cogito-comme-premiere-certitude-chez-descartes": "expliquer-le-cogito-comme-premiere-certitude-chez-descartes",
+    "microskill.philosophie.discuter-la-transparence-du-moi-a-lui-meme": "discuter-la-transparence-du-moi-a-lui-meme",
+    "microskill.philosophie.distinguer-obligation-morale-et-contrainte-physique": "distinguer-obligation-morale-et-contrainte-physique",
+    "microskill.philosophie.distinguer-agir-conformement-au-devoir-et-agir-par-devoir-chez-kant": "distinguer-agir-conformement-au-devoir-et-agir-par-devoir-chez-kant",
+    "microskill.philosophie.comparer-le-critere-kantien-et-le-critere-utilitariste": "comparer-le-critere-kantien-et-le-critere-utilitariste",
+    "microskill.philosophie.tester-la-validite-d-une-regle-d-action-par-l-universalisation": "tester-la-validite-d-une-regle-d-action-par-l-universalisation",
+    "microskill.philosophie.distinguer-pouvoir-droit-et-legitimite": "distinguer-pouvoir-droit-et-legitimite",
+    "microskill.philosophie.comparer-hobbes-et-rousseau-sur-l-origine-du-pouvoir-commun": "comparer-hobbes-et-rousseau-sur-l-origine-du-pouvoir-commun",
+    "microskill.philosophie.expliquer-la-volonte-generale-chez-rousseau": "expliquer-la-volonte-generale-chez-rousseau",
+    "microskill.philosophie.discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime": "discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime",
+    "microskill.philosophie.distinguer-l-inconscient-psychique-et-l-automatisme": "distinguer-l-inconscient-psychique-et-l-automatisme",
+    "microskill.philosophie.expliquer-le-refoulement-et-les-instances-ca-moi-surmoi-chez-freud": "expliquer-le-refoulement-et-les-instances-ca-moi-surmoi-chez-freud",
+    "microskill.philosophie.interpreter-un-lapsus-ou-un-reve-sans-conclure-trop-vite": "interpreter-un-lapsus-ou-un-reve-sans-conclure-trop-vite",
+    "microskill.philosophie.expliquer-les-petites-perceptions-chez-leibniz": "expliquer-les-petites-perceptions-chez-leibniz",
+    "microskill.philosophie.distinguer-justice-distributive-reparatrice-et-legale-chez-aristote": "distinguer-justice-distributive-reparatrice-et-legale-chez-aristote",
+    "microskill.philosophie.expliquer-le-voile-d-ignorance-de-rawls": "expliquer-le-voile-d-ignorance-de-rawls",
+    "microskill.philosophie.distinguer-egalite-et-equite-dans-une-situation": "distinguer-egalite-et-equite-dans-une-situation",
+    "microskill.philosophie.discuter-un-principe-de-justice-impartial": "discuter-un-principe-de-justice-impartial",
+    "microskill.philosophie.distinguer-signifiant-signifie-et-referent-chez-saussure": "distinguer-signifiant-signifie-et-referent-chez-saussure",
+    "microskill.philosophie.expliquer-le-caractere-arbitraire-du-signe": "expliquer-le-caractere-arbitraire-du-signe",
+    "microskill.philosophie.analyser-le-role-du-contexte-dans-le-sens-d-un-enonce": "analyser-le-role-du-contexte-dans-le-sens-d-un-enonce",
+    "microskill.philosophie.analyser-un-acte-de-langage-performatif-chez-austin": "analyser-un-acte-de-langage-performatif-chez-austin",
+    "microskill.philosophie.distinguer-liberte-autonomie-et-libre-arbitre": "distinguer-liberte-autonomie-et-libre-arbitre",
+    "microskill.philosophie.comparer-autonomie-morale-kant-et-determinisme-spinoza": "comparer-autonomie-morale-kant-et-determinisme-spinoza",
+    "microskill.philosophie.analyser-une-situation-de-liberte-politique-et-ses-limites": "analyser-une-situation-de-liberte-politique-et-ses-limites",
+    "microskill.philosophie.discuter-si-la-liberte-est-compatible-avec-le-determinisme": "discuter-si-la-liberte-est-compatible-avec-le-determinisme",
+    "microskill.philosophie.distinguer-plusieurs-sens-du-mot-nature": "distinguer-plusieurs-sens-du-mot-nature",
+    "microskill.philosophie.distinguer-nature-et-artifice-dans-un-exemple": "distinguer-nature-et-artifice-dans-un-exemple",
+    "microskill.philosophie.expliquer-le-principe-interne-de-croissance-chez-aristote": "expliquer-le-principe-interne-de-croissance-chez-aristote",
+    "microskill.philosophie.discuter-l-argument-selon-lequel-ce-qui-est-naturel-est-inoffensif": "discuter-l-argument-selon-lequel-ce-qui-est-naturel-est-inoffensif",
+    "microskill.philosophie.distinguer-validite-d-un-raisonnement-et-verite-de-ses-premisses": "distinguer-validite-d-un-raisonnement-et-verite-de-ses-premisses",
+    "microskill.philosophie.evaluer-un-raisonnement-deductif": "evaluer-un-raisonnement-deductif",
+    "microskill.philosophie.expliquer-le-probleme-de-l-induction-chez-hume": "expliquer-le-probleme-de-l-induction-chez-hume",
+    "microskill.philosophie.expliquer-les-limites-de-la-raison-chez-kant": "expliquer-les-limites-de-la-raison-chez-kant",
+    "microskill.philosophie.distinguer-croyance-foi-et-savoir": "distinguer-croyance-foi-et-savoir",
+    "microskill.philosophie.distinguer-sacre-et-profane": "distinguer-sacre-et-profane",
+    "microskill.philosophie.analyser-le-role-social-de-la-religion-chez-durkheim": "analyser-le-role-social-de-la-religion-chez-durkheim",
+    "microskill.philosophie.discuter-si-une-conviction-sincere-constitue-une-preuve": "discuter-si-une-conviction-sincere-constitue-une-preuve",
+    "microskill.philosophie.distinguer-confirmation-et-refutation-falsifiabilite-chez-popper": "distinguer-confirmation-et-refutation-falsifiabilite-chez-popper",
+    "microskill.philosophie.evaluer-la-falsifiabilite-d-une-hypothese": "evaluer-la-falsifiabilite-d-une-hypothese",
+    "microskill.philosophie.expliquer-la-notion-de-paradigme-chez-kuhn": "expliquer-la-notion-de-paradigme-chez-kuhn",
+    "microskill.philosophie.expliquer-la-rupture-avec-le-sens-commun-chez-bachelard": "expliquer-la-rupture-avec-le-sens-commun-chez-bachelard",
+    "microskill.philosophie.distinguer-technique-science-et-action": "distinguer-technique-science-et-action",
+    "microskill.philosophie.analyser-un-moyen-efficace-au-regard-de-sa-fin": "analyser-un-moyen-efficace-au-regard-de-sa-fin",
+    "microskill.philosophie.expliquer-la-responsabilite-a-l-egard-de-la-technique-chez-jonas": "expliquer-la-responsabilite-a-l-egard-de-la-technique-chez-jonas",
+    "microskill.philosophie.discuter-la-technique-comme-devoilement-chez-heidegger": "discuter-la-technique-comme-devoilement-chez-heidegger",
+    "microskill.philosophie.distinguer-temps-vecu-et-temps-mesure": "distinguer-temps-vecu-et-temps-mesure",
+    "microskill.philosophie.expliquer-le-rapport-au-passe-au-present-et-au-futur-chez-augustin": "expliquer-le-rapport-au-passe-au-present-et-au-futur-chez-augustin",
+    "microskill.philosophie.expliquer-la-duree-chez-bergson": "expliquer-la-duree-chez-bergson",
+    "microskill.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue": "analyser-l-influence-de-l-attention-sur-la-duree-percue",
+    "microskill.philosophie.distinguer-travail-loisir-et-activite-non-remuneree": "distinguer-travail-loisir-et-activite-non-remuneree",
+    "microskill.philosophie.expliquer-la-division-du-travail": "expliquer-la-division-du-travail",
+    "microskill.philosophie.expliquer-le-role-formateur-du-travail-chez-hegel": "expliquer-le-role-formateur-du-travail-chez-hegel",
+    "microskill.philosophie.expliquer-l-alienation-du-travail-chez-marx": "expliquer-l-alienation-du-travail-chez-marx",
+    "microskill.philosophie.distinguer-travail-et-uvre-chez-arendt": "distinguer-travail-et-uvre-chez-arendt",
+    "microskill.philosophie.distinguer-croire-savoir-et-justifier": "distinguer-croire-savoir-et-justifier",
+    "microskill.philosophie.expliquer-le-role-du-doute-methodique-chez-descartes": "expliquer-le-role-du-doute-methodique-chez-descartes",
+    "microskill.philosophie.distinguer-sincerite-et-verite": "distinguer-sincerite-et-verite",
+    "microskill.philosophie.comparer-des-criteres-de-verite-correspondance-coherence-utilite": "comparer-des-criteres-de-verite-correspondance-coherence-utilite"
   },
   "fiches": {
     "trigo-cercle": {
@@ -966,24 +1292,34 @@
       ]
     },
     "absorbance-et-dosages": {
-      "prerequis": [],
+      "prerequis": [
+        "quantite-de-matiere"
+      ],
       "competences": [
-        "pc-absorbance-et-dosages-action-1",
-        "pc-absorbance-et-dosages-action-2"
+        "relier-couleur-et-absorbance",
+        "determiner-une-concentration-avec-la-loi-de-beer-lambert",
+        "exploiter-une-courbe-d-etalonnage",
+        "exploiter-un-titrage-a-l-equivalence"
       ]
     },
     "acides-et-bases": {
       "prerequis": [],
       "competences": [
-        "pc-acides-et-bases-action-1",
-        "pc-acides-et-bases-action-2"
+        "classer-une-solution-sur-l-echelle-de-ph",
+        "identifier-les-especes-d-une-solution-acide-ou-basique",
+        "calculer-le-ph-depuis-la-concentration-en-ions-h3o",
+        "interpreter-l-effet-d-une-dilution-sur-le-ph",
+        "exploiter-un-couple-acide-base-et-son-pka"
       ]
     },
     "atomes-et-molecules": {
       "prerequis": [],
       "competences": [
-        "pc-atomes-et-molecules-action-1",
-        "pc-atomes-et-molecules-action-2"
+        "lire-une-formule-chimique",
+        "distinguer-les-reactifs-des-produits",
+        "equilibrer-une-equation-de-reaction",
+        "decrire-la-structure-d-un-atome",
+        "interpreter-la-formation-d-un-ion"
       ]
     },
     "cinetique-chimique": {
@@ -991,8 +1327,10 @@
         "quantite-de-matiere"
       ],
       "competences": [
-        "pc-cinetique-chimique-action-1",
-        "pc-cinetique-chimique-action-2"
+        "identifier-un-facteur-cinetique",
+        "determiner-le-temps-de-demi-reaction",
+        "exploiter-la-loi-de-vitesse-d-ordre-1",
+        "interpreter-le-role-d-un-catalyseur"
       ]
     },
     "condensateur-et-circuit-rc": {
@@ -1000,187 +1338,293 @@
         "electricite"
       ],
       "competences": [
-        "pc-condensateur-et-circuit-rc-action-1",
-        "pc-condensateur-et-circuit-rc-action-2"
+        "relier-la-charge-du-condensateur-a-sa-tension",
+        "calculer-la-constante-de-temps-d-un-circuit-rc",
+        "interpreter-l-evolution-temporelle-d-un-circuit-rc",
+        "calculer-l-energie-stockee-dans-un-condensateur"
       ]
     },
     "diffraction-et-interferences": {
-      "prerequis": [],
+      "prerequis": [
+        "ondes"
+      ],
       "competences": [
-        "pc-diffraction-et-interferences-action-1",
-        "pc-diffraction-et-interferences-action-2"
+        "relier-la-diffraction-a-la-largeur-de-l-ouverture",
+        "calculer-la-largeur-de-la-tache-centrale",
+        "identifier-une-interference-constructive-ou-destructive",
+        "exploiter-l-interfrange-des-fentes-d-young"
       ]
     },
     "electricite": {
       "prerequis": [],
       "competences": [
-        "pc-electricite-action-1",
-        "pc-electricite-action-2"
+        "distinguer-un-montage-en-serie-d-un-montage-en-derivation",
+        "mesurer-intensite-et-tension-dans-un-circuit",
+        "calculer-une-grandeur-electrique-avec-la-loi-d-ohm",
+        "appliquer-l-additivite-des-tensions-et-des-intensites",
+        "calculer-puissance-et-energie-electriques"
       ]
     },
     "energie": {
       "prerequis": [],
       "competences": [
-        "pc-energie-action-1",
-        "pc-energie-action-2"
+        "identifier-les-formes-d-energie-dans-une-conversion",
+        "calculer-le-rendement-d-une-conversion-d-energie",
+        "calculer-une-energie-cinetique",
+        "convertir-une-energie-entre-joule-et-kilowattheure"
       ]
     },
     "energie-mecanique": {
-      "prerequis": [],
+      "prerequis": [
+        "energie",
+        "forces-et-poids"
+      ],
       "competences": [
-        "pc-energie-mecanique-action-1",
-        "pc-energie-mecanique-action-2"
+        "calculer-le-travail-d-une-force",
+        "appliquer-le-theoreme-de-l-energie-cinetique",
+        "calculer-une-energie-potentielle-de-pesanteur",
+        "exploiter-la-conservation-de-l-energie-mecanique",
+        "interpreter-l-effet-des-frottements-sur-l-energie-mecanique"
       ]
     },
     "etats-de-la-matiere": {
       "prerequis": [],
       "competences": [
-        "pc-etats-de-la-matiere-action-1",
-        "pc-etats-de-la-matiere-action-2"
+        "identifier-un-etat-a-partir-de-ses-proprietes",
+        "nommer-un-changement-d-etat",
+        "interpreter-un-palier-de-temperature-lors-d-un-changement-d-etat",
+        "decrire-un-etat-avec-le-modele-particulaire",
+        "appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat"
       ]
     },
     "forces-et-poids": {
       "prerequis": [],
       "competences": [
-        "pc-forces-et-poids-action-1",
-        "pc-forces-et-poids-action-2"
+        "representer-une-force-avec-un-vecteur",
+        "calculer-le-poids-a-partir-de-la-masse",
+        "distinguer-masse-et-poids",
+        "interpreter-l-interaction-gravitationnelle-entre-deux-corps",
+        "faire-le-bilan-des-forces-sur-un-objet"
       ]
     },
     "gravitation-et-satellites": {
       "prerequis": [
-        "forces-et-poids"
+        "forces-et-poids",
+        "lois-de-newton"
       ],
       "competences": [
-        "pc-gravitation-et-satellites-action-1",
-        "pc-gravitation-et-satellites-action-2"
+        "relier-l-orbite-circulaire-a-la-force-de-gravitation",
+        "interpreter-les-relations-de-kepler",
+        "calculer-la-force-de-gravitation-entre-deux-astres",
+        "caracteriser-un-satellite-geostationnaire"
       ]
     },
     "lois-de-newton": {
       "prerequis": [
-        "forces-et-poids"
+        "forces-et-poids",
+        "mouvements"
       ],
       "competences": [
-        "pc-lois-de-newton-action-1",
-        "pc-lois-de-newton-action-2"
+        "determiner-l-acceleration-depuis-le-bilan-des-forces",
+        "exploiter-le-vecteur-acceleration-d-un-mouvement",
+        "analyser-une-chute-libre",
+        "analyser-le-mouvement-d-un-projectile"
       ]
     },
     "masse-volumique-et-melanges": {
-      "prerequis": [],
+      "prerequis": [
+        "etats-de-la-matiere"
+      ],
       "competences": [
-        "pc-masse-volumique-et-melanges-action-1",
-        "pc-masse-volumique-et-melanges-action-2"
+        "calculer-une-masse-volumique",
+        "calculer-une-concentration-en-masse",
+        "distinguer-un-melange-homogene-d-un-melange-heterogene",
+        "choisir-une-technique-de-separation-d-un-melange",
+        "calculer-la-masse-d-une-solution"
       ]
     },
     "mouvements": {
       "prerequis": [],
       "competences": [
-        "pc-mouvements-action-1",
-        "pc-mouvements-action-2"
+        "identifier-la-trajectoire-dans-un-referentiel-donne",
+        "determiner-une-vitesse-depuis-la-distance-et-la-duree",
+        "caracteriser-un-mouvement-par-chronophotographie",
+        "convertir-une-vitesse-entre-m-s-et-km-h",
+        "appliquer-le-principe-d-inertie"
       ]
     },
     "ondes": {
-      "prerequis": [],
+      "prerequis": [
+        "son-et-lumiere"
+      ],
       "competences": [
-        "pc-ondes-action-1",
-        "pc-ondes-action-2"
+        "calculer-la-celerite-d-une-onde",
+        "relier-periode-longueur-d-onde-et-celerite",
+        "distinguer-transport-d-energie-et-transport-de-matiere",
+        "identifier-un-phenomene-ondulatoire"
       ]
     },
     "oxydoreduction": {
-      "prerequis": [],
+      "prerequis": [
+        "tableau-periodique",
+        "quantite-de-matiere"
+      ],
       "competences": [
-        "pc-oxydoreduction-action-1",
-        "pc-oxydoreduction-action-2"
+        "identifier-l-oxydant-et-le-reducteur",
+        "equilibrer-une-demi-equation-avec-des-electrons",
+        "ecrire-l-equation-d-une-reaction-d-oxydoreduction",
+        "prevoir-une-reaction-entre-un-metal-et-un-ion-metallique",
+        "interpreter-le-fonctionnement-d-une-pile"
       ]
     },
     "quantite-de-matiere": {
-      "prerequis": [],
+      "prerequis": [
+        "atomes-et-molecules",
+        "masse-volumique-et-melanges"
+      ],
       "competences": [
-        "pc-quantite-de-matiere-action-1",
-        "pc-quantite-de-matiere-action-2"
+        "calculer-une-quantite-de-matiere-a-partir-de-la-masse",
+        "calculer-une-masse-molaire",
+        "relier-nombre-d-entites-et-quantite-de-matiere",
+        "calculer-une-concentration-molaire",
+        "calculer-une-concentration-apres-dilution"
       ]
     },
     "radioactivite": {
-      "prerequis": [],
+      "prerequis": [
+        "tableau-periodique"
+      ],
       "competences": [
-        "pc-radioactivite-action-1",
-        "pc-radioactivite-action-2"
+        "identifier-le-type-de-desintegration-d-un-noyau",
+        "ecrire-l-equation-d-une-desintegration",
+        "exploiter-une-demi-vie-pour-estimer-une-duree",
+        "appliquer-la-loi-de-decroissance-radioactive"
       ]
     },
     "refraction-et-lentilles": {
-      "prerequis": [],
+      "prerequis": [
+        "son-et-lumiere"
+      ],
       "competences": [
-        "pc-refraction-et-lentilles-action-1",
-        "pc-refraction-et-lentilles-action-2"
+        "identifier-un-rayon-reflechi-ou-refracte",
+        "appliquer-la-loi-de-la-refraction",
+        "interpreter-la-dispersion-de-la-lumiere",
+        "determiner-la-position-d-une-image-formee-par-une-lentille"
       ]
     },
     "son-et-lumiere": {
       "prerequis": [],
       "competences": [
-        "pc-son-et-lumiere-action-1",
-        "pc-son-et-lumiere-action-2"
+        "comparer-la-propagation-du-son-et-de-la-lumiere",
+        "determiner-une-distance-depuis-le-temps-de-propagation",
+        "calculer-la-frequence-d-un-signal-depuis-sa-periode",
+        "situer-un-son-sur-l-echelle-des-frequences"
       ]
     },
     "tableau-periodique": {
-      "prerequis": [],
+      "prerequis": [
+        "atomes-et-molecules"
+      ],
       "competences": [
-        "pc-tableau-periodique-action-1",
-        "pc-tableau-periodique-action-2"
+        "determiner-la-composition-du-noyau-depuis-son-symbole",
+        "utiliser-la-configuration-electronique-pour-situer-un-element",
+        "identifier-les-isotopes-d-un-element",
+        "prevoir-l-ion-forme-par-un-element",
+        "prevoir-le-nombre-de-liaisons-covalentes-d-un-atome"
       ]
     },
     "thermodynamique": {
-      "prerequis": [],
+      "prerequis": [
+        "energie",
+        "etats-de-la-matiere"
+      ],
       "competences": [
-        "pc-thermodynamique-action-1",
-        "pc-thermodynamique-action-2"
+        "identifier-le-mode-de-transfert-thermique",
+        "calculer-le-transfert-associe-a-une-variation-de-temperature",
+        "appliquer-le-premier-principe",
+        "exploiter-la-loi-du-gaz-parfait"
       ]
     },
     "adn-et-division-cellulaire": {
-      "prerequis": [],
+      "prerequis": [
+        "la-cellule",
+        "genetique-et-heredite"
+      ],
       "competences": [
-        "svt-adn-et-division-cellulaire-action-1",
-        "svt-adn-et-division-cellulaire-action-2"
+        "decrire-la-structure-de-la-molecule-d-adn",
+        "deduire-le-brin-complementaire-d-une-sequence-d-adn",
+        "expliquer-le-caractere-semi-conservatif-de-la-replication",
+        "ordonner-les-phases-du-cycle-cellulaire-et-de-la-mitose",
+        "prevoir-le-nombre-de-cellules-obtenues-apres-des-mitoses-successives"
       ]
     },
     "agrosystemes-et-sols": {
-      "prerequis": [],
+      "prerequis": [
+        "ecosystemes-et-biodiversite",
+        "photosynthese"
+      ],
       "competences": [
-        "svt-agrosystemes-et-sols-action-1",
-        "svt-agrosystemes-et-sols-action-2"
+        "expliquer-la-formation-d-un-sol-et-le-role-de-l-humus",
+        "comparer-un-agrosysteme-et-un-ecosysteme-naturel",
+        "evaluer-l-effet-d-une-pratique-agricole-sur-l-erosion-et-la-fertilite",
+        "justifier-une-rotation-de-cultures-avec-legumineuses",
+        "calculer-une-production-agricole-a-partir-d-un-rendement"
       ]
     },
     "climat-et-effet-de-serre": {
-      "prerequis": [],
+      "prerequis": [
+        "photosynthese"
+      ],
       "competences": [
-        "svt-climat-et-effet-de-serre-action-1",
-        "svt-climat-et-effet-de-serre-action-2"
+        "expliquer-le-mecanisme-de-l-effet-de-serre-naturel",
+        "identifier-les-gaz-a-effet-de-serre-et-leurs-sources",
+        "interpreter-une-courbe-de-concentration-atmospherique-en-co",
+        "utiliser-des-archives-climatiques-pour-reconstituer-un-climat-du-passe",
+        "relier-le-rechauffement-actuel-aux-emissions-humaines"
       ]
     },
     "contraction-musculaire": {
-      "prerequis": [],
+      "prerequis": [
+        "systeme-nerveux",
+        "metabolisme-et-enzymes"
+      ],
       "competences": [
-        "svt-contraction-musculaire-action-1",
-        "svt-contraction-musculaire-action-2"
+        "decrire-l-organisation-d-un-muscle-de-la-fibre-au-sarcomere",
+        "expliquer-le-glissement-des-filaments-d-actine-et-de-myosine",
+        "relier-la-contraction-a-l-utilisation-d-atp",
+        "calculer-le-raccourcissement-d-un-sarcomere",
+        "identifier-les-muscles-antagonistes-lors-d-un-mouvement"
       ]
     },
     "ecosystemes-et-biodiversite": {
       "prerequis": [],
       "competences": [
-        "svt-ecosystemes-et-biodiversite-action-1",
-        "svt-ecosystemes-et-biodiversite-action-2"
+        "construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations",
+        "distinguer-producteurs-consommateurs-et-decomposeurs",
+        "calculer-le-transfert-d-energie-entre-niveaux-trophiques",
+        "identifier-les-causes-de-perte-de-biodiversite",
+        "proposer-une-action-de-protection-d-un-milieu"
       ]
     },
     "evolution": {
       "prerequis": [],
       "competences": [
-        "svt-evolution-action-1",
-        "svt-evolution-action-2"
+        "definir-l-evolution-biologique-a-l-echelle-d-une-population",
+        "expliquer-la-selection-naturelle-sur-un-exemple",
+        "interpreter-un-ancetre-commun-entre-deux-especes"
       ]
     },
     "evolution-et-selection-naturelle": {
-      "prerequis": [],
+      "prerequis": [
+        "evolution",
+        "mutations-et-variabilite"
+      ],
       "competences": [
-        "svt-evolution-et-selection-naturelle-action-1",
-        "svt-evolution-et-selection-naturelle-action-2"
+        "expliquer-comment-la-selection-naturelle-modifie-les-frequences-des-alleles",
+        "distinguer-selection-naturelle-et-derive-genetique",
+        "predire-l-effet-de-la-taille-d-une-population-sur-la-derive-genetique",
+        "construire-une-parente-entre-especes-a-partir-de-caracteres-partages",
+        "calculer-un-effectif-ou-une-frequence-dans-une-population"
       ]
     },
     "expression-genetique": {
@@ -1188,29 +1632,45 @@
         "adn-et-division-cellulaire"
       ],
       "competences": [
-        "svt-expression-genetique-action-1",
-        "svt-expression-genetique-action-2"
+        "decrire-la-transcription-d-un-gene-en-arn-messager",
+        "utiliser-le-code-genetique-pour-determiner-une-sequence-d-acides-amines",
+        "decrire-la-traduction-de-l-arn-messager-en-proteine",
+        "relier-la-longueur-d-une-sequence-codante-au-nombre-d-acides-amines",
+        "localiser-transcription-et-traduction-dans-la-cellule"
       ]
     },
     "genetique-et-heredite": {
-      "prerequis": [],
+      "prerequis": [
+        "la-cellule"
+      ],
       "competences": [
-        "svt-genetique-et-heredite-action-1",
-        "svt-genetique-et-heredite-action-2"
+        "lire-un-caryotype",
+        "distinguer-gene-et-allele",
+        "prevoir-les-genotypes-possibles-d-un-enfant-a-partir-de-ceux-des-parents",
+        "expliquer-la-determination-chromosomique-du-sexe",
+        "interpreter-l-effet-d-une-anomalie-chromosomique-ou-d-une-mutation"
       ]
     },
     "glycemie-et-diabete": {
-      "prerequis": [],
+      "prerequis": [
+        "metabolisme-et-enzymes"
+      ],
       "competences": [
-        "svt-glycemie-et-diabete-action-1",
-        "svt-glycemie-et-diabete-action-2"
+        "interpreter-une-courbe-de-glycemie",
+        "expliquer-le-role-de-l-insuline-et-du-glucagon",
+        "expliquer-la-regulation-de-la-glycemie-par-retrocontrole",
+        "distinguer-diabete-de-type-1-et-diabete-de-type-2",
+        "calculer-une-quantite-de-glucose-a-partir-d-une-glycemie"
       ]
     },
     "histoire-de-la-terre-et-datation": {
       "prerequis": [],
       "competences": [
-        "svt-histoire-de-la-terre-et-datation-action-1",
-        "svt-histoire-de-la-terre-et-datation-action-2"
+        "appliquer-le-principe-de-superposition-a-une-serie-de-couches",
+        "dater-relativement-des-evenements-geologiques-avec-les-failles-et-les-discordances",
+        "utiliser-un-fossile-stratigraphique-pour-dater-une-couche",
+        "placer-des-evenements-sur-l-echelle-des-temps-geologiques",
+        "interpreter-une-datation-absolue-par-desintegration-d-un-element"
       ]
     },
     "immunite-adaptative": {
@@ -1218,668 +1678,1001 @@
         "systeme-immunitaire"
       ],
       "competences": [
-        "svt-immunite-adaptative-action-1",
-        "svt-immunite-adaptative-action-2"
+        "expliquer-la-selection-clonale-des-lymphocytes",
+        "distinguer-le-role-des-lymphocytes-b-et-t",
+        "comparer-reponse-immunitaire-primaire-et-secondaire",
+        "expliquer-l-effet-du-vih-sur-les-lymphocytes-t4",
+        "interpreter-un-resultat-de-serologie"
       ]
     },
     "la-cellule": {
       "prerequis": [],
       "competences": [
-        "svt-la-cellule-action-1",
-        "svt-la-cellule-action-2"
+        "calculer-le-grossissement-d-un-microscope",
+        "convertir-des-unites-de-longueur-en-microscopie",
+        "identifier-les-organites-d-une-cellule-animale-ou-vegetale",
+        "distinguer-cellule-eucaryote-et-procaryote",
+        "situer-l-adn-dans-la-cellule"
       ]
     },
     "meiose-et-brassage-genetique": {
       "prerequis": [
-        "genetique-et-heredite"
+        "genetique-et-heredite",
+        "adn-et-division-cellulaire",
+        "reproduction-humaine"
       ],
       "competences": [
-        "svt-meiose-et-brassage-genetique-action-1",
-        "svt-meiose-et-brassage-genetique-action-2"
+        "decrire-les-etapes-de-la-meiose",
+        "expliquer-le-brassage-interchromosomique",
+        "expliquer-le-brassage-intrachromosomique-crossing-over",
+        "calculer-le-nombre-de-combinaisons-possibles-de-gametes",
+        "comparer-meiose-et-mitose"
       ]
     },
     "metabolisme-et-enzymes": {
-      "prerequis": [],
+      "prerequis": [
+        "nutrition-et-digestion",
+        "photosynthese"
+      ],
       "competences": [
-        "svt-metabolisme-et-enzymes-action-1",
-        "svt-metabolisme-et-enzymes-action-2"
+        "distinguer-autotrophes-et-heterotrophes",
+        "expliquer-la-specificite-d-une-enzyme",
+        "interpreter-l-effet-de-la-temperature-et-du-ph-sur-l-activite-enzymatique",
+        "comparer-respiration-et-fermentation",
+        "calculer-un-bilan-energetique-en-atp"
       ]
     },
     "mutations-et-variabilite": {
-      "prerequis": [],
+      "prerequis": [
+        "expression-genetique"
+      ],
       "competences": [
-        "svt-mutations-et-variabilite-action-1",
-        "svt-mutations-et-variabilite-action-2"
+        "identifier-un-agent-mutagene",
+        "classer-une-mutation-selon-ses-consequences",
+        "prevoir-l-effet-d-une-substitution-ou-d-un-decalage-du-cadre-de-lecture",
+        "distinguer-mutation-somatique-et-mutation-germinale",
+        "relier-mutations-et-diversite-des-alleles"
       ]
     },
     "nutrition-et-digestion": {
       "prerequis": [],
       "competences": [
-        "svt-nutrition-et-digestion-action-1",
-        "svt-nutrition-et-digestion-action-2"
+        "legender-les-organes-du-tube-digestif",
+        "expliquer-la-digestion-chimique-par-les-enzymes",
+        "expliquer-l-absorption-des-nutriments",
+        "associer-aliments-nutriments-et-besoins",
+        "evaluer-l-equilibre-d-une-alimentation"
       ]
     },
     "photosynthese": {
       "prerequis": [],
       "competences": [
-        "svt-photosynthese-action-1",
-        "svt-photosynthese-action-2"
+        "identifier-les-besoins-des-vegetaux",
+        "decrire-le-role-des-chloroplastes",
+        "mettre-en-evidence-la-production-d-amidon",
+        "ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese",
+        "concevoir-une-experience-pour-tester-un-facteur-de-la-photosynthese"
       ]
     },
     "reproduction-humaine": {
       "prerequis": [],
       "competences": [
-        "svt-reproduction-humaine-action-1",
-        "svt-reproduction-humaine-action-2"
+        "identifier-les-gametes-et-leur-origine",
+        "decrire-la-fecondation",
+        "expliquer-les-cycles-de-l-appareil-reproducteur",
+        "choisir-un-moyen-de-prevention-adapte"
       ]
     },
     "respiration-et-circulation": {
       "prerequis": [],
       "competences": [
-        "svt-respiration-et-circulation-action-1",
-        "svt-respiration-et-circulation-action-2"
+        "decrire-les-echanges-gazeux-dans-les-poumons",
+        "decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux",
+        "expliquer-le-role-des-globules-rouges",
+        "calculer-un-debit-cardiaque",
+        "relier-l-effort-physique-aux-besoins-des-cellules"
       ]
     },
     "seismes-et-volcans": {
       "prerequis": [],
       "competences": [
-        "svt-seismes-et-volcans-action-1",
-        "svt-seismes-et-volcans-action-2"
+        "localiser-l-epicentre-et-le-foyer-d-un-seisme",
+        "distinguer-eruption-effusive-et-eruption-explosive",
+        "calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse",
+        "associer-un-phenomene-geologique-a-un-contexte-tectonique",
+        "expliquer-le-volcanisme-de-point-chaud"
       ]
     },
     "structure-de-la-terre": {
-      "prerequis": [],
+      "prerequis": [
+        "seismes-et-volcans"
+      ],
       "competences": [
-        "svt-structure-de-la-terre-action-1",
-        "svt-structure-de-la-terre-action-2"
+        "interpreter-le-trajet-des-ondes-sismiques-pour-deduire-une-structure",
+        "decrire-les-enveloppes-de-la-terre-et-leurs-limites",
+        "distinguer-lithosphere-et-asthenosphere",
+        "comparer-croutes-oceanique-et-continentale",
+        "calculer-une-profondeur-a-partir-de-la-vitesse-d-une-onde"
       ]
     },
     "systeme-immunitaire": {
       "prerequis": [],
       "competences": [
-        "svt-systeme-immunitaire-action-1",
-        "svt-systeme-immunitaire-action-2"
+        "identifier-les-barrieres-de-l-organisme-contre-les-microbes",
+        "distinguer-immunite-innee-et-immunite-adaptative",
+        "expliquer-le-role-des-anticorps",
+        "expliquer-le-principe-de-la-vaccination"
       ]
     },
     "systeme-nerveux": {
-      "prerequis": [],
+      "prerequis": [
+        "la-cellule"
+      ],
       "competences": [
-        "svt-systeme-nerveux-action-1",
-        "svt-systeme-nerveux-action-2"
+        "decrire-le-trajet-d-un-message-nerveux-dans-un-neurone",
+        "expliquer-la-transmission-synaptique",
+        "interpreter-un-enregistrement-de-potentiel-d-action",
+        "decrire-l-arc-reflexe-myotatique",
+        "calculer-une-duree-de-conduction-a-partir-d-une-vitesse"
       ]
     },
     "antiquite": {
       "prerequis": [],
       "competences": [
-        "his-antiquite-action-1",
-        "his-antiquite-action-2"
+        "situer-les-reperes-chronologiques-de-la-grece-et-de-rome",
+        "comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine",
+        "identifier-les-institutions-de-la-democratie-athenienne-et-de-la-republique-romaine",
+        "expliquer-le-passage-de-la-republique-a-l-empire",
+        "analyser-les-heritages-et-les-transformations-de-l-antiquite"
       ]
     },
     "construction-europeenne": {
-      "prerequis": [],
+      "prerequis": [
+        "seconde-guerre-mondiale"
+      ],
       "competences": [
-        "his-construction-europeenne-action-1",
-        "his-construction-europeenne-action-2"
+        "expliquer-les-objectifs-de-la-cooperation-europeenne-apres-1945",
+        "situer-les-etapes-de-la-ceca-a-l-union-europeenne",
+        "distinguer-les-etats-fondateurs-des-elargissements",
+        "analyser-un-traite-europeen-rome-maastricht",
+        "discuter-la-souverainete-nationale-et-les-institutions-europeennes"
       ]
     },
     "decolonisation": {
-      "prerequis": [],
+      "prerequis": [
+        "seconde-guerre-mondiale"
+      ],
       "competences": [
-        "his-decolonisation-action-1",
-        "his-decolonisation-action-2"
+        "expliquer-les-causes-de-l-acceleration-de-la-decolonisation-apres-1945",
+        "comparer-des-voies-vers-l-independance-negociee-conflictuelle",
+        "caracteriser-le-role-d-un-acteur-de-la-decolonisation-gandhi-nasser",
+        "analyser-les-consequences-d-une-independance-partition-developpement",
+        "discuter-les-memoires-de-la-decolonisation"
       ]
     },
     "guerre-froide": {
-      "prerequis": [],
+      "prerequis": [
+        "seconde-guerre-mondiale"
+      ],
       "competences": [
-        "his-guerre-froide-action-1",
-        "his-guerre-froide-action-2"
+        "expliquer-la-rivalite-des-deux-superpuissances-apres-1945",
+        "situer-les-crises-majeures-de-la-guerre-froide-berlin-cuba",
+        "caracteriser-les-blocs-et-leurs-acteurs",
+        "expliquer-la-detente-et-la-fin-de-la-bipolarite",
+        "analyser-la-fin-de-l-urss"
       ]
     },
     "lumieres": {
-      "prerequis": [],
+      "prerequis": [
+        "temps-modernes"
+      ],
       "competences": [
-        "his-lumieres-action-1",
-        "his-lumieres-action-2"
+        "situer-les-lumieres-dans-leur-chronologie",
+        "associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau",
+        "expliquer-la-circulation-des-idees-et-des-livres",
+        "analyser-les-limites-et-les-contradictions-des-ideaux-des-lumieres"
       ]
     },
     "monde-depuis-1990": {
-      "prerequis": [],
+      "prerequis": [
+        "guerre-froide"
+      ],
       "competences": [
-        "his-monde-depuis-1990-action-1",
-        "his-monde-depuis-1990-action-2"
+        "expliquer-les-consequences-de-la-fin-de-l-urss",
+        "caracteriser-un-monde-multipolaire",
+        "analyser-un-conflit-contemporain-et-ses-acteurs",
+        "expliquer-la-propagation-d-une-crise-financiere-mondiale",
+        "evaluer-un-accord-international-sur-un-defi-commun-climat"
       ]
     },
     "moyen-age": {
       "prerequis": [],
       "competences": [
-        "his-moyen-age-action-1",
-        "his-moyen-age-action-2"
+        "situer-les-grandes-periodes-du-moyen-age",
+        "decrire-l-organisation-d-une-seigneurie",
+        "expliquer-la-croissance-des-villes-a-partir-du-xie-siecle",
+        "caracteriser-les-pouvoirs-medievaux-eglise-roi-seigneurs",
+        "analyser-les-contacts-en-mediterranee-medievale"
       ]
     },
     "napoleon": {
-      "prerequis": [],
+      "prerequis": [
+        "revolution-francaise"
+      ],
       "competences": [
-        "his-napoleon-action-1",
-        "his-napoleon-action-2"
+        "situer-les-etapes-du-consulat-a-l-empire",
+        "expliquer-les-reformes-de-l-etat-sous-napoleon-code-civil-administration",
+        "analyser-les-conquetes-et-les-resistances",
+        "evaluer-l-heritage-napoleonien"
       ]
     },
     "premiere-guerre-mondiale": {
-      "prerequis": [],
+      "prerequis": [
+        "revolution-industrielle"
+      ],
       "competences": [
-        "his-premiere-guerre-mondiale-action-1",
-        "his-premiere-guerre-mondiale-action-2"
+        "placer-les-grands-reperes-de-1914-a-1918",
+        "expliquer-le-passage-de-la-crise-de-sarajevo-a-la-guerre-europeenne",
+        "caracteriser-une-guerre-totale-a-partir-d-exemples",
+        "analyser-le-role-des-acteurs-et-des-alliances",
+        "evaluer-les-consequences-et-les-memoires-de-la-guerre"
       ]
     },
     "renaissance": {
       "prerequis": [],
       "competences": [
-        "his-renaissance-action-1",
-        "his-renaissance-action-2"
+        "situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte",
+        "caracteriser-l-humanisme-et-ses-acteurs",
+        "analyser-le-role-des-mecenes-et-des-artistes",
+        "expliquer-les-tensions-religieuses-nees-de-la-diffusion-des-idees"
       ]
     },
     "revolution-francaise": {
-      "prerequis": [],
+      "prerequis": [
+        "lumieres",
+        "temps-modernes"
+      ],
       "competences": [
-        "his-revolution-francaise-action-1",
-        "his-revolution-francaise-action-2"
+        "ordonner-les-evenements-de-1789",
+        "expliquer-les-causes-de-la-revolution",
+        "analyser-un-texte-fondateur-declaration-des-droits",
+        "expliquer-le-changement-de-regime-de-1792",
+        "discuter-l-incertitude-des-issues-de-la-revolution"
       ]
     },
     "revolution-industrielle": {
       "prerequis": [],
       "competences": [
-        "his-revolution-industrielle-action-1",
-        "his-revolution-industrielle-action-2"
+        "situer-les-debuts-de-l-industrialisation",
+        "expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer",
+        "analyser-les-effets-sur-les-villes-et-le-monde-du-travail",
+        "expliquer-l-exode-rural-et-l-urbanisation",
+        "analyser-une-loi-sociale-du-xixe-siecle"
       ]
     },
     "seconde-guerre-mondiale": {
-      "prerequis": [],
+      "prerequis": [
+        "totalitarismes",
+        "premiere-guerre-mondiale"
+      ],
       "competences": [
-        "his-seconde-guerre-mondiale-action-1",
-        "his-seconde-guerre-mondiale-action-2"
+        "identifier-les-facteurs-de-declenchement-de-la-guerre",
+        "situer-les-grandes-phases-de-la-guerre-sur-plusieurs-theatres",
+        "distinguer-les-regimes-d-occupation-dont-vichy",
+        "analyser-les-violences-de-masse-et-la-shoah",
+        "expliquer-la-reconstruction-et-la-justice-d-apres-guerre"
       ]
     },
     "temps-modernes": {
-      "prerequis": [],
+      "prerequis": [
+        "renaissance"
+      ],
       "competences": [
-        "his-temps-modernes-action-1",
-        "his-temps-modernes-action-2"
+        "situer-les-reperes-majeurs-de-1492-a-1789",
+        "expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones",
+        "caracteriser-la-monarchie-absolue-de-louis-xiv",
+        "analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes"
       ]
     },
     "totalitarismes": {
-      "prerequis": [],
+      "prerequis": [
+        "premiere-guerre-mondiale"
+      ],
       "competences": [
-        "his-totalitarismes-action-1",
-        "his-totalitarismes-action-2"
+        "caracteriser-un-regime-totalitaire",
+        "comparer-les-regimes-fasciste-nazi-et-stalinien",
+        "expliquer-l-arrivee-au-pouvoir-d-un-regime-a-partir-de-ses-causes",
+        "analyser-les-moyens-de-controle-propagande-censure-terreur",
+        "discuter-l-usage-historique-de-la-notion-de-totalitarisme"
       ]
     },
     "ve-republique": {
-      "prerequis": [],
+      "prerequis": [
+        "decolonisation"
+      ],
       "competences": [
-        "his-ve-republique-action-1",
-        "his-ve-republique-action-2"
+        "expliquer-les-circonstances-de-la-naissance-de-la-ve-republique",
+        "distinguer-les-pouvoirs-du-president-du-parlement-et-du-gouvernement",
+        "expliquer-l-election-du-president-au-suffrage-universel-direct",
+        "analyser-une-cohabitation",
+        "evaluer-une-reforme-institutionnelle"
       ]
     },
     "afrique-australe": {
-      "prerequis": [],
+      "prerequis": [
+        "mondialisation"
+      ],
       "competences": [
-        "geographie-afrique-australe-action-1",
-        "geographie-afrique-australe-action-2"
+        "localiser-les-etats-et-les-ports-d-afrique-australe",
+        "analyser-un-corridor-de-transport-regional",
+        "calculer-une-part-d-un-flux-dans-un-dossier-de-documents",
+        "caracteriser-les-acteurs-de-l-integration-regionale",
+        "interpreter-les-contrastes-et-les-heritages-d-un-territoire"
       ]
     },
     "changement-climatique": {
       "prerequis": [],
       "competences": [
-        "geographie-changement-climatique-action-1",
-        "geographie-changement-climatique-action-2"
+        "distinguer-meteo-et-climat",
+        "identifier-les-causes-du-changement-climatique",
+        "analyser-les-effets-du-changement-climatique-sur-un-territoire",
+        "distinguer-attenuation-et-adaptation",
+        "associer-les-acteurs-aux-echelles-d-action-sur-les-emissions"
       ]
     },
     "dynamiques-territoriales": {
-      "prerequis": [],
+      "prerequis": [
+        "urbanisation",
+        "mobilites"
+      ],
       "competences": [
-        "geographie-dynamiques-territoriales-action-1",
-        "geographie-dynamiques-territoriales-action-2"
+        "interpreter-l-evolution-d-un-territoire-entre-deux-dates",
+        "calculer-et-interpreter-un-taux-de-variation-de-population",
+        "identifier-un-processus-de-metropolisation-ou-de-periurbanisation",
+        "caracteriser-les-acteurs-d-un-territoire",
+        "discuter-un-arbitrage-d-amenagement"
       ]
     },
     "espaces-productifs": {
-      "prerequis": [],
+      "prerequis": [
+        "mondialisation"
+      ],
       "competences": [
-        "geographie-espaces-productifs-action-1",
-        "geographie-espaces-productifs-action-2"
+        "classer-des-activites-par-secteur",
+        "expliquer-la-localisation-d-une-activite-par-ses-reseaux",
+        "calculer-une-part-d-une-production-dans-un-dossier",
+        "analyser-la-recomposition-d-un-espace-productif",
+        "discuter-les-inegalites-et-la-transition-d-un-espace-productif"
       ]
     },
     "espaces-ruraux": {
       "prerequis": [],
       "competences": [
-        "geographie-espaces-ruraux-action-1",
-        "geographie-espaces-ruraux-action-2"
+        "identifier-les-fonctions-d-un-espace-rural",
+        "analyser-les-liens-entre-un-espace-rural-et-ses-voisins",
+        "identifier-les-acteurs-d-un-conflit-d-usage-eau-terres",
+        "interpreter-les-politiques-territoriales-rurales"
       ]
     },
     "france-regions": {
       "prerequis": [],
       "competences": [
-        "geographie-france-regions-action-1",
-        "geographie-france-regions-action-2"
+        "localiser-les-regions-de-france-metropolitaine-et-d-outre-mer",
+        "calculer-un-total-a-partir-d-un-decoupage-administratif",
+        "distinguer-les-competences-d-une-region-et-d-autres-collectivites",
+        "situer-un-territoire-ultramarin-dans-son-espace-regional",
+        "analyser-les-liens-mondiaux-d-une-region"
       ]
     },
     "france-territoires": {
-      "prerequis": [],
+      "prerequis": [
+        "france-regions"
+      ],
       "competences": [
-        "geographie-france-territoires-action-1",
-        "geographie-france-territoires-action-2"
+        "distinguer-les-statuts-des-territoires-francais",
+        "identifier-les-acteurs-d-un-projet-d-acces-aux-services",
+        "etudier-la-liaison-d-un-territoire-ultramarin-avec-ses-voisins",
+        "evaluer-la-cohesion-territoriale-a-partir-d-un-reseau"
       ]
     },
     "mers-oceans": {
-      "prerequis": [],
+      "prerequis": [
+        "mondialisation"
+      ],
       "competences": [
-        "geographie-mers-oceans-action-1",
-        "geographie-mers-oceans-action-2"
+        "localiser-routes-ports-et-passages-strategiques",
+        "calculer-la-part-d-un-port-dans-un-trafic",
+        "distinguer-les-reseaux-de-transport-et-de-communication-maritimes",
+        "identifier-les-acteurs-et-les-ressources-d-un-espace-maritime",
+        "analyser-un-enjeu-de-droit-maritime-ou-d-environnement"
       ]
     },
     "metropolisation": {
-      "prerequis": [],
+      "prerequis": [
+        "urbanisation"
+      ],
       "competences": [
-        "geographie-metropolisation-action-1",
-        "geographie-metropolisation-action-2"
+        "identifier-un-indice-de-metropolisation",
+        "analyser-les-liens-d-une-metropole-avec-d-autres-echelles",
+        "caracteriser-l-inegal-acces-des-habitants-aux-reseaux",
+        "identifier-les-acteurs-d-un-reseau-intercommunal",
+        "discuter-une-hierarchie-ou-une-cooperation-entre-villes"
       ]
     },
     "migrations": {
-      "prerequis": [],
+      "prerequis": [
+        "mobilites"
+      ],
       "competences": [
-        "geographie-migrations-action-1",
-        "geographie-migrations-action-2"
+        "distinguer-migration-interne-internationale-et-mobilite-de-loisirs",
+        "identifier-les-droits-des-migrants-et-l-instance-d-asile",
+        "analyser-un-reseau-migratoire",
+        "discuter-une-politique-migratoire-et-ses-representations"
       ]
     },
     "mobilites": {
       "prerequis": [],
       "competences": [
-        "geographie-mobilites-action-1",
-        "geographie-mobilites-action-2"
+        "distinguer-les-motifs-et-les-modes-de-deplacement",
+        "analyser-l-acces-inegal-aux-transports",
+        "identifier-les-autorites-organisatrices-des-transports",
+        "proposer-une-coordination-entre-modes-de-transport",
+        "evaluer-une-transition-des-deplacements"
       ]
     },
     "mondialisation": {
       "prerequis": [],
       "competences": [
-        "geographie-mondialisation-action-1",
-        "geographie-mondialisation-action-2"
+        "identifier-les-flux-de-marchandises-de-capitaux-et-d-informations",
+        "caracteriser-les-acteurs-de-la-mondialisation",
+        "calculer-la-part-d-un-flux-dans-un-reseau",
+        "analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial",
+        "discuter-une-integration-inegale-entre-territoires"
       ]
     },
     "ressources": {
       "prerequis": [],
       "competences": [
-        "geographie-ressources-action-1",
-        "geographie-ressources-action-2"
+        "distinguer-ressource-renouvelable-et-non-renouvelable",
+        "analyser-l-acces-inegal-a-une-ressource",
+        "identifier-les-acteurs-de-la-gestion-d-une-ressource",
+        "analyser-une-interdependance-de-ressources-entre-territoires",
+        "evaluer-une-mesure-de-sobriete"
       ]
     },
     "risques-naturels": {
       "prerequis": [],
       "competences": [
-        "geographie-risques-naturels-action-1",
-        "geographie-risques-naturels-action-2"
+        "distinguer-alea-enjeu-et-risque",
+        "associer-un-risque-a-un-territoire",
+        "identifier-les-acteurs-de-la-prevention",
+        "concevoir-une-preparation-a-un-risque",
+        "discuter-des-choix-sociaux-et-territoriaux-face-a-un-risque"
       ]
     },
     "tourisme": {
-      "prerequis": [],
+      "prerequis": [
+        "mobilites"
+      ],
       "competences": [
-        "geographie-tourisme-action-1",
-        "geographie-tourisme-action-2"
+        "distinguer-touriste-et-excursionniste",
+        "calculer-un-nombre-de-nuitees",
+        "analyser-les-flux-et-les-acteurs-touristiques",
+        "evaluer-les-effets-du-tourisme-sur-un-territoire",
+        "proposer-une-transformation-touristique-durable"
       ]
     },
     "union-europeenne": {
       "prerequis": [],
       "competences": [
-        "geographie-union-europeenne-action-1",
-        "geographie-union-europeenne-action-2"
+        "distinguer-ue-zone-euro-et-espace-schengen",
+        "interpreter-un-exemple-de-statut-a-geometrie-variable",
+        "calculer-la-part-d-un-financement-europeen-dans-un-projet",
+        "analyser-les-ecarts-entre-territoires-de-l-ue",
+        "identifier-les-echelles-de-decision-europeennes"
       ]
     },
     "urbanisation": {
       "prerequis": [],
       "competences": [
-        "geographie-urbanisation-action-1",
-        "geographie-urbanisation-action-2"
+        "interpreter-l-evolution-de-la-part-de-population-urbaine",
+        "distinguer-centre-banlieue-et-couronne-periurbaine",
+        "identifier-les-acteurs-de-l-usage-des-sols",
+        "analyser-une-mobilite-domicile-travail-a-plusieurs-echelles",
+        "discuter-un-amenagement-urbain"
       ]
     },
     "accords": {
-      "prerequis": [],
+      "prerequis": [
+        "conjugaison-temps"
+      ],
       "competences": [
-        "francais-accords-action-1",
-        "francais-accords-action-2"
+        "accorder-un-nom-un-determinant-et-un-adjectif",
+        "accorder-le-verbe-avec-son-sujet",
+        "accorder-le-participe-passe-employe-avec-etre",
+        "accorder-le-participe-passe-employe-avec-avoir",
+        "reperer-une-erreur-d-accord-dans-un-texte"
       ]
     },
     "analyse-texte": {
-      "prerequis": [],
+      "prerequis": [
+        "figures-de-style"
+      ],
       "competences": [
-        "francais-analyse-texte-action-1",
-        "francais-analyse-texte-action-2"
+        "identifier-le-narrateur-et-le-point-de-vue-d-un-texte",
+        "relever-des-indices-pour-justifier-une-interpretation",
+        "relier-un-procede-d-ecriture-a-son-effet",
+        "rediger-une-reponse-argumentee-appuyee-sur-des-citations",
+        "situer-un-texte-dans-son-contexte"
       ]
     },
     "argumentation": {
-      "prerequis": [],
+      "prerequis": [
+        "grammaire-phrase-complexe"
+      ],
       "competences": [
-        "francais-argumentation-action-1",
-        "francais-argumentation-action-2"
+        "identifier-la-these-d-un-texte-argumentatif",
+        "distinguer-arguments-et-exemples",
+        "utiliser-des-connecteurs-logiques-d-opposition-et-de-cause",
+        "organiser-un-paragraphe-argumentatif",
+        "nuancer-une-opinion-en-tenant-compte-d-une-objection"
       ]
     },
     "conjugaison-temps": {
       "prerequis": [],
       "competences": [
-        "francais-conjugaison-temps-action-1",
-        "francais-conjugaison-temps-action-2"
+        "situer-une-action-dans-le-temps-avec-le-temps-adapte",
+        "former-l-imparfait-et-le-passe-compose",
+        "former-le-futur-simple-et-le-conditionnel-present",
+        "choisir-entre-passe-simple-et-imparfait-dans-un-recit",
+        "identifier-le-groupe-et-le-radical-d-un-verbe"
       ]
     },
     "figures-de-style": {
       "prerequis": [],
       "competences": [
-        "francais-figures-de-style-action-1",
-        "francais-figures-de-style-action-2"
+        "identifier-une-comparaison-et-une-metaphore",
+        "identifier-une-personnification",
+        "identifier-une-repetition-et-une-anaphore",
+        "analyser-l-effet-d-une-figure-de-style",
+        "creer-une-image-originale"
       ]
     },
     "grammaire-phrase-complexe": {
       "prerequis": [],
       "competences": [
-        "francais-grammaire-phrase-complexe-action-1",
-        "francais-grammaire-phrase-complexe-action-2"
+        "compter-les-propositions-d-une-phrase",
+        "distinguer-juxtaposition-coordination-et-subordination",
+        "identifier-une-proposition-subordonnee",
+        "relier-deux-propositions-par-un-connecteur-adapte",
+        "transformer-une-phrase-simple-en-phrase-complexe"
       ]
     },
     "litterature-didees": {
-      "prerequis": [],
+      "prerequis": [
+        "argumentation"
+      ],
       "competences": [
-        "francais-litterature-didees-action-1",
-        "francais-litterature-didees-action-2"
+        "identifier-la-these-d-un-texte-de-la-litterature-d-idees",
+        "interpreter-une-fable-ou-un-conte-philosophique",
+        "reperer-les-procedes-d-un-texte-engage-ironie-satire",
+        "mettre-en-relation-un-texte-et-son-contexte-historique"
       ]
     },
     "poesie": {
-      "prerequis": [],
+      "prerequis": [
+        "figures-de-style"
+      ],
       "competences": [
-        "francais-poesie-action-1",
-        "francais-poesie-action-2"
+        "compter-les-syllabes-d-un-vers-et-identifier-une-strophe",
+        "identifier-les-rimes-et-leur-disposition",
+        "reperer-un-enjambement-ou-un-rejet",
+        "faire-entendre-une-image-par-la-lecture-a-voix-haute",
+        "commenter-l-effet-des-sonorites"
       ]
     },
     "roman": {
       "prerequis": [],
       "competences": [
-        "francais-roman-action-1",
-        "francais-roman-action-2"
+        "identifier-le-debut-d-un-roman-et-sa-situation-initiale",
+        "distinguer-auteur-narrateur-et-personnage",
+        "reperer-les-etapes-d-une-intrigue",
+        "analyser-la-construction-d-un-personnage",
+        "comparer-deux-incipits"
       ]
     },
     "theatre": {
       "prerequis": [],
       "competences": [
-        "francais-theatre-action-1",
-        "francais-theatre-action-2"
+        "distinguer-repliques-et-didascalies",
+        "distinguer-monologue-dialogue-et-aparte",
+        "interpreter-la-double-enonciation",
+        "lire-une-scene-a-voix-haute",
+        "imaginer-une-mise-en-scene-justifiee-par-le-texte"
       ]
     },
     "citoyennete": {
-      "prerequis": [],
+      "prerequis": [
+        "democratie",
+        "droits-de-lhomme"
+      ],
       "competences": [
-        "emc-citoyennete-action-1",
-        "emc-citoyennete-action-2"
+        "distinguer-citoyennete-juridique-et-participation-a-la-vie-collective",
+        "identifier-les-droits-et-les-devoirs-du-citoyen",
+        "expliquer-les-conditions-de-nationalite-et-de-participation-politique",
+        "choisir-une-forme-de-participation-adaptee-a-une-situation"
       ]
     },
     "democratie": {
-      "prerequis": [],
+      "prerequis": [
+        "liberte"
+      ],
       "competences": [
-        "emc-democratie-action-1",
-        "emc-democratie-action-2"
+        "expliquer-le-pluralisme-politique",
+        "distinguer-democratie-representative-et-democratie-participative",
+        "justifier-les-limites-du-pouvoir-de-la-majorite",
+        "analyser-les-conditions-d-un-vote-libre-et-sincere"
       ]
     },
     "discrimination": {
-      "prerequis": [],
+      "prerequis": [
+        "egalite"
+      ],
       "competences": [
-        "emc-discrimination-action-1",
-        "emc-discrimination-action-2"
+        "distinguer-stereotype-prejuge-et-discrimination",
+        "identifier-une-discrimination-juridique-a-partir-d-un-critere-prohibe",
+        "distinguer-difference-de-traitement-et-discrimination",
+        "choisir-un-recours-adapte-face-a-une-discrimination"
       ]
     },
     "droits-de-lhomme": {
       "prerequis": [],
       "competences": [
-        "emc-droits-de-lhomme-action-1",
-        "emc-droits-de-lhomme-action-2"
+        "distinguer-les-familles-de-droits-humains",
+        "identifier-la-portee-des-textes-ddhc-dudh-cedh",
+        "associer-un-droit-a-une-situation-concrete",
+        "expliquer-les-garanties-juridiques-des-droits"
       ]
     },
     "egalite": {
       "prerequis": [],
       "competences": [
-        "emc-egalite-action-1",
-        "emc-egalite-action-2"
+        "distinguer-egalite-de-droits-et-egalite-reelle",
+        "justifier-un-amenagement-adapte-a-une-situation-de-handicap",
+        "analyser-une-difference-de-traitement-legitime-ou-illegitime",
+        "expliquer-le-role-des-politiques-publiques-dans-l-egalite"
       ]
     },
     "engagement-civique": {
-      "prerequis": [],
+      "prerequis": [
+        "citoyennete",
+        "interet-general"
+      ],
       "competences": [
-        "emc-engagement-civique-action-1",
-        "emc-engagement-civique-action-2"
+        "distinguer-les-formes-d-engagement-civique",
+        "definir-les-objectifs-d-un-projet-civique",
+        "verifier-la-legitimite-et-la-securite-d-une-action-collective",
+        "dresser-le-bilan-d-un-engagement"
       ]
     },
     "etat-de-droit": {
-      "prerequis": [],
+      "prerequis": [
+        "droits-de-lhomme"
+      ],
       "competences": [
-        "emc-etat-de-droit-action-1",
-        "emc-etat-de-droit-action-2"
+        "expliquer-la-soumission-des-gouvernants-au-droit",
+        "identifier-la-hierarchie-des-normes",
+        "identifier-un-controle-contre-une-decision-publique-illegale",
+        "distinguer-abondance-de-lois-et-etat-de-droit"
       ]
     },
     "fraternite": {
       "prerequis": [],
       "competences": [
-        "emc-fraternite-action-1",
-        "emc-fraternite-action-2"
+        "expliquer-la-fraternite-comme-principe-republicain",
+        "distinguer-solidarite-et-assistance-humiliante",
+        "choisir-une-forme-d-aide-respectueuse-de-la-dignite",
+        "identifier-les-recours-quand-une-difficulte-depasse-ses-capacites"
       ]
     },
     "interet-general": {
-      "prerequis": [],
+      "prerequis": [
+        "democratie"
+      ],
       "competences": [
-        "emc-interet-general-action-1",
-        "emc-interet-general-action-2"
+        "distinguer-interet-general-et-interet-particulier",
+        "justifier-une-decision-par-l-interet-general",
+        "analyser-un-debat-sur-un-amenagement-collectif",
+        "reperer-l-usage-abusif-de-l-argument-de-l-interet-general"
       ]
     },
     "justice": {
-      "prerequis": [],
+      "prerequis": [
+        "etat-de-droit"
+      ],
       "competences": [
-        "emc-justice-action-1",
-        "emc-justice-action-2"
+        "distinguer-justice-et-vengeance",
+        "expliquer-le-principe-du-contradictoire",
+        "expliquer-la-presomption-d-innocence",
+        "identifier-les-garanties-d-independance-de-la-justice"
       ]
     },
     "laicite": {
-      "prerequis": [],
+      "prerequis": [
+        "liberte"
+      ],
       "competences": [
-        "emc-laicite-action-1",
-        "emc-laicite-action-2"
+        "expliquer-la-liberte-de-conscience-protegee-par-la-laicite",
+        "expliquer-la-separation-des-eglises-et-de-l-etat",
+        "identifier-les-obligations-de-neutralite-des-agents-publics-a-l-ecole",
+        "analyser-une-situation-relative-aux-signes-religieux"
       ]
     },
     "liberte": {
       "prerequis": [],
       "competences": [
-        "emc-liberte-action-1",
-        "emc-liberte-action-2"
+        "distinguer-liberte-et-absence-de-limites",
+        "identifier-les-libertes-protegees-par-les-textes",
+        "apprecier-une-restriction-a-une-liberte-selon-la-loi-la-necessite-et-la-proportionnalite",
+        "distinguer-liberte-d-expression-et-harcelement"
       ]
     },
     "chomage": {
-      "prerequis": [],
+      "prerequis": [
+        "croissance-economique",
+        "marche-concurrentiel"
+      ],
       "competences": [
-        "ses-chomage-action-1",
-        "ses-chomage-action-2"
+        "distinguer-chomeur-actif-occupe-et-inactif-selon-le-bit",
+        "calculer-un-taux-de-chomage",
+        "distinguer-chomage-conjoncturel-et-chomage-structurel",
+        "analyser-les-causes-multiples-du-chomage-dans-une-situation",
+        "interpreter-une-evolution-du-taux-de-chomage"
       ]
     },
     "croissance-economique": {
       "prerequis": [],
       "competences": [
-        "ses-croissance-economique-action-1",
-        "ses-croissance-economique-action-2"
+        "definir-la-croissance-economique-a-partir-du-pib",
+        "interpreter-l-evolution-du-pib-reel-par-rapport-au-pib-nominal",
+        "identifier-les-sources-de-la-croissance-travail-capital-productivite",
+        "discuter-les-limites-du-pib-comme-indicateur-de-bien-etre"
       ]
     },
     "inegalites": {
       "prerequis": [],
       "competences": [
-        "ses-inegalites-action-1",
-        "ses-inegalites-action-2"
+        "distinguer-revenu-et-patrimoine",
+        "choisir-un-indicateur-adapte-a-une-inegalite-precise",
+        "comparer-des-inegalites-economiques-a-l-aide-d-indicateurs",
+        "montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation"
       ]
     },
     "justice-sociale": {
-      "prerequis": [],
+      "prerequis": [
+        "inegalites",
+        "mobilite-sociale"
+      ],
       "competences": [
-        "ses-justice-sociale-action-1",
-        "ses-justice-sociale-action-2"
+        "distinguer-egalite-et-equite",
+        "identifier-un-mecanisme-de-redistribution",
+        "expliquer-l-objectif-de-la-protection-sociale",
+        "evaluer-les-effets-d-une-politique-de-justice-sociale"
       ]
     },
     "marche-concurrentiel": {
       "prerequis": [],
       "competences": [
-        "ses-marche-concurrentiel-action-1",
-        "ses-marche-concurrentiel-action-2"
+        "identifier-l-offre-et-la-demande-sur-un-marche",
+        "determiner-le-prix-d-equilibre-dans-le-modele",
+        "prevoir-l-effet-d-un-deplacement-de-l-offre-ou-de-la-demande-sur-le-prix",
+        "identifier-les-limites-du-modele-de-concurrence"
       ]
     },
     "mobilite-sociale": {
-      "prerequis": [],
+      "prerequis": [
+        "socialisation",
+        "inegalites"
+      ],
       "competences": [
-        "ses-mobilite-sociale-action-1",
-        "ses-mobilite-sociale-action-2"
+        "distinguer-mobilite-intergenerationnelle-et-intragenerationnelle",
+        "lire-une-table-de-mobilite",
+        "interpreter-une-trajectoire-sociale-a-l-aide-de-la-structure-sociale",
+        "discuter-les-limites-de-la-mesure-de-la-mobilite-sociale"
       ]
     },
     "mondialisation-commerce": {
-      "prerequis": [],
+      "prerequis": [
+        "marche-concurrentiel"
+      ],
       "competences": [
-        "ses-mondialisation-commerce-action-1",
-        "ses-mondialisation-commerce-action-2"
+        "distinguer-commerce-international-et-chaine-de-valeur-mondiale",
+        "expliquer-l-avantage-comparatif-sur-un-exemple",
+        "analyser-une-chaine-de-valeur-mondiale",
+        "debattre-des-effets-des-echanges-sur-les-acteurs"
       ]
     },
     "monnaie": {
       "prerequis": [],
       "competences": [
-        "ses-monnaie-action-1",
-        "ses-monnaie-action-2"
+        "identifier-les-fonctions-de-la-monnaie",
+        "distinguer-les-formes-de-monnaie",
+        "expliquer-la-creation-monetaire-par-le-credit-bancaire",
+        "analyser-un-paiement-entre-agents-economiques"
       ]
     },
     "opinion-publique": {
-      "prerequis": [],
+      "prerequis": [
+        "socialisation"
+      ],
       "competences": [
-        "ses-opinion-publique-action-1",
-        "ses-opinion-publique-action-2"
+        "expliquer-le-role-de-l-echantillon-dans-un-sondage",
+        "reperer-l-effet-d-une-question-orientee",
+        "interpreter-une-marge-d-incertitude",
+        "analyser-le-role-des-medias-dans-la-formation-de-l-opinion"
       ]
     },
     "socialisation": {
       "prerequis": [],
       "competences": [
-        "ses-socialisation-action-1",
-        "ses-socialisation-action-2"
+        "distinguer-normes-valeurs-et-roles-sociaux",
+        "identifier-les-agents-de-socialisation-dans-une-situation",
+        "expliquer-la-socialisation-primaire-et-secondaire",
+        "analyser-des-socialisations-plurielles-dans-un-parcours"
       ]
     },
     "art": {
       "prerequis": [],
       "competences": [
-        "philosophie-art-action-1",
-        "philosophie-art-action-2"
+        "distinguer-imitation-et-creation-dans-une-uvre",
+        "expliquer-la-mimesis-chez-platon-et-aristote",
+        "discuter-le-jugement-de-gout-en-distinguant-plaisir-et-jugement-esthetique",
+        "analyser-le-risque-et-l-interet-d-une-uvre-qui-derange"
       ]
     },
     "bonheur": {
       "prerequis": [],
       "competences": [
-        "philosophie-bonheur-action-1",
-        "philosophie-bonheur-action-2"
+        "distinguer-plaisir-bonheur-et-satisfaction",
+        "expliquer-la-classification-des-desirs-chez-epicure",
+        "relier-le-bonheur-a-la-vertu-chez-aristote",
+        "discuter-si-la-satisfaction-d-un-desir-prouve-le-bonheur"
       ]
     },
     "conscience": {
       "prerequis": [],
       "competences": [
-        "philosophie-conscience-action-1",
-        "philosophie-conscience-action-2"
+        "distinguer-conscience-spontanee-et-conscience-reflechie",
+        "distinguer-conscience-psychologique-et-conscience-morale",
+        "expliquer-le-cogito-comme-premiere-certitude-chez-descartes",
+        "discuter-la-transparence-du-moi-a-lui-meme"
       ]
     },
     "devoir": {
       "prerequis": [],
       "competences": [
-        "philosophie-devoir-action-1",
-        "philosophie-devoir-action-2"
+        "distinguer-obligation-morale-et-contrainte-physique",
+        "distinguer-agir-conformement-au-devoir-et-agir-par-devoir-chez-kant",
+        "comparer-le-critere-kantien-et-le-critere-utilitariste",
+        "tester-la-validite-d-une-regle-d-action-par-l-universalisation"
       ]
     },
     "etat": {
       "prerequis": [],
       "competences": [
-        "philosophie-etat-action-1",
-        "philosophie-etat-action-2"
+        "distinguer-pouvoir-droit-et-legitimite",
+        "comparer-hobbes-et-rousseau-sur-l-origine-du-pouvoir-commun",
+        "expliquer-la-volonte-generale-chez-rousseau",
+        "discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime"
       ]
     },
     "inconscient": {
       "prerequis": [],
       "competences": [
-        "philosophie-inconscient-action-1",
-        "philosophie-inconscient-action-2"
+        "distinguer-l-inconscient-psychique-et-l-automatisme",
+        "expliquer-le-refoulement-et-les-instances-ca-moi-surmoi-chez-freud",
+        "interpreter-un-lapsus-ou-un-reve-sans-conclure-trop-vite",
+        "expliquer-les-petites-perceptions-chez-leibniz"
       ]
     },
     "justice-philosophie": {
       "prerequis": [],
       "competences": [
-        "philosophie-justice-philosophie-action-1",
-        "philosophie-justice-philosophie-action-2"
+        "distinguer-justice-distributive-reparatrice-et-legale-chez-aristote",
+        "expliquer-le-voile-d-ignorance-de-rawls",
+        "distinguer-egalite-et-equite-dans-une-situation",
+        "discuter-un-principe-de-justice-impartial"
       ]
     },
     "langage": {
       "prerequis": [],
       "competences": [
-        "philosophie-langage-action-1",
-        "philosophie-langage-action-2"
+        "distinguer-signifiant-signifie-et-referent-chez-saussure",
+        "expliquer-le-caractere-arbitraire-du-signe",
+        "analyser-le-role-du-contexte-dans-le-sens-d-un-enonce",
+        "analyser-un-acte-de-langage-performatif-chez-austin"
       ]
     },
     "liberte-philosophie": {
       "prerequis": [],
       "competences": [
-        "philosophie-liberte-philosophie-action-1",
-        "philosophie-liberte-philosophie-action-2"
+        "distinguer-liberte-autonomie-et-libre-arbitre",
+        "comparer-autonomie-morale-kant-et-determinisme-spinoza",
+        "analyser-une-situation-de-liberte-politique-et-ses-limites",
+        "discuter-si-la-liberte-est-compatible-avec-le-determinisme"
       ]
     },
     "nature": {
       "prerequis": [],
       "competences": [
-        "philosophie-nature-action-1",
-        "philosophie-nature-action-2"
+        "distinguer-plusieurs-sens-du-mot-nature",
+        "distinguer-nature-et-artifice-dans-un-exemple",
+        "expliquer-le-principe-interne-de-croissance-chez-aristote",
+        "discuter-l-argument-selon-lequel-ce-qui-est-naturel-est-inoffensif"
       ]
     },
     "raison": {
       "prerequis": [],
       "competences": [
-        "philosophie-raison-action-1",
-        "philosophie-raison-action-2"
+        "distinguer-validite-d-un-raisonnement-et-verite-de-ses-premisses",
+        "evaluer-un-raisonnement-deductif",
+        "expliquer-le-probleme-de-l-induction-chez-hume",
+        "expliquer-les-limites-de-la-raison-chez-kant"
       ]
     },
     "religion": {
       "prerequis": [],
       "competences": [
-        "philosophie-religion-action-1",
-        "philosophie-religion-action-2"
+        "distinguer-croyance-foi-et-savoir",
+        "distinguer-sacre-et-profane",
+        "analyser-le-role-social-de-la-religion-chez-durkheim",
+        "discuter-si-une-conviction-sincere-constitue-une-preuve"
       ]
     },
     "science": {
       "prerequis": [],
       "competences": [
-        "philosophie-science-action-1",
-        "philosophie-science-action-2"
+        "distinguer-confirmation-et-refutation-falsifiabilite-chez-popper",
+        "evaluer-la-falsifiabilite-d-une-hypothese",
+        "expliquer-la-notion-de-paradigme-chez-kuhn",
+        "expliquer-la-rupture-avec-le-sens-commun-chez-bachelard"
       ]
     },
     "technique": {
       "prerequis": [],
       "competences": [
-        "philosophie-technique-action-1",
-        "philosophie-technique-action-2"
+        "distinguer-technique-science-et-action",
+        "analyser-un-moyen-efficace-au-regard-de-sa-fin",
+        "expliquer-la-responsabilite-a-l-egard-de-la-technique-chez-jonas",
+        "discuter-la-technique-comme-devoilement-chez-heidegger"
       ]
     },
     "temps": {
       "prerequis": [],
       "competences": [
-        "philosophie-temps-action-1",
-        "philosophie-temps-action-2"
+        "distinguer-temps-vecu-et-temps-mesure",
+        "expliquer-le-rapport-au-passe-au-present-et-au-futur-chez-augustin",
+        "expliquer-la-duree-chez-bergson",
+        "analyser-l-influence-de-l-attention-sur-la-duree-percue"
       ]
     },
     "travail": {
       "prerequis": [],
       "competences": [
-        "philosophie-travail-action-1",
-        "philosophie-travail-action-2"
+        "distinguer-travail-loisir-et-activite-non-remuneree",
+        "expliquer-la-division-du-travail",
+        "expliquer-le-role-formateur-du-travail-chez-hegel",
+        "expliquer-l-alienation-du-travail-chez-marx",
+        "distinguer-travail-et-uvre-chez-arendt"
       ]
     },
     "verite": {
       "prerequis": [],
       "competences": [
-        "philosophie-verite-action-1",
-        "philosophie-verite-action-2"
+        "distinguer-croire-savoir-et-justifier",
+        "expliquer-le-role-du-doute-methodique-chez-descartes",
+        "distinguer-sincerite-et-verite",
+        "comparer-des-criteres-de-verite-correspondance-coherence-utilite"
       ]
     }
   }

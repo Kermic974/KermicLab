@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-determination-chromosomique-du-sexe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/genetique-et-heredite/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-determination-chromosomique-du-sexe",
+  "target": "skill.svt.genetique-et-heredite"
+}

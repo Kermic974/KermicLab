@@ -25,9 +25,9 @@ questions:
   - je ne comprends pas la quantité de matière
   - comment faire une dilution
   - what is a mole in chemistry?
-prerequis:
+prerequis: atomes-et-molecules, masse-volumique-et-melanges
 niveaux: seconde
-competences: pc-quantite-de-matiere-action-1, pc-quantite-de-matiere-action-2
+competences: calculer-une-quantite-de-matiere-a-partir-de-la-masse, calculer-une-masse-molaire, relier-nombre-d-entites-et-quantite-de-matiere, calculer-une-concentration-molaire, calculer-une-concentration-apres-dilution
 ---
 
 # La quantité de matière (la mole)

@@ -19,9 +19,9 @@ questions:
   - Comment repérer la thèse défendue dans un texte d'idées ?
   - Pourquoi une fable peut-elle être une argumentation indirecte ?
   - Quelle différence entre un essai littéraire et un récit ?
-prerequis:
+prerequis: argumentation
 niveaux: premiere
-competences: francais-litterature-didees-action-1, francais-litterature-didees-action-2
+competences: identifier-la-these-d-un-texte-de-la-litterature-d-idees, interpreter-une-fable-ou-un-conte-philosophique, reperer-les-procedes-d-un-texte-engage-ironie-satire, mettre-en-relation-un-texte-et-son-contexte-historique
 ---
 
 # La littérature d'idées

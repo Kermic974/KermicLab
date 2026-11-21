@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.premiere-guerre-mondiale-requires-revolution-industrielle",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premiere-guerre-mondiale/contenu.json"
+  },
+  "source": "notion.histoire.premiere-guerre-mondiale",
+  "target": "notion.histoire.revolution-industrielle",
+  "rationale": "La guerre totale mobilise l’économie industrielle, les techniques et les transports."
+}

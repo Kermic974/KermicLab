@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-la-loi-de-la-refraction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/refraction-et-lentilles/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-la-loi-de-la-refraction",
+  "target": "skill.physique-chimie.refraction-et-lentilles"
+}

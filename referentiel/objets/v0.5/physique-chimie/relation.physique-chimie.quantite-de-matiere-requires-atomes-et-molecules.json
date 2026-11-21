@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.quantite-de-matiere-requires-atomes-et-molecules",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/quantite-de-matiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.quantite-de-matiere",
+  "target": "notion.physique-chimie.atomes-et-molecules",
+  "rationale": "Calculer une masse molaire suppose de lire une formule chimique et de compter les atomes de la molécule (sections « Symboles et formules », « La masse molaire »)."
+}

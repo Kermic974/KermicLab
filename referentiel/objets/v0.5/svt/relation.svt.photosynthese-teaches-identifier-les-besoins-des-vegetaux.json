@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.photosynthese-teaches-identifier-les-besoins-des-vegetaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "notion.svt.photosynthese",
+  "target": "microskill.svt.identifier-les-besoins-des-vegetaux"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.laicite-requires-liberte",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "notion.emc.laicite",
+  "target": "notion.emc.liberte",
+  "rationale": "La laïcité protège la liberté de conscience et de culte."
+}

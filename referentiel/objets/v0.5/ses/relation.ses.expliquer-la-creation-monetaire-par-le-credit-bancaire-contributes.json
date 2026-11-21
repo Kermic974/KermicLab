@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.expliquer-la-creation-monetaire-par-le-credit-bancaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "microskill.ses.expliquer-la-creation-monetaire-par-le-credit-bancaire",
+  "target": "skill.ses.monnaie"
+}

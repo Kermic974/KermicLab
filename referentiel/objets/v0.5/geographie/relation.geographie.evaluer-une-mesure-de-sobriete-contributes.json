@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.evaluer-une-mesure-de-sobriete-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ressources/contenu.json"
+  },
+  "source": "microskill.geographie.evaluer-une-mesure-de-sobriete",
+  "target": "skill.geographie.ressources"
+}

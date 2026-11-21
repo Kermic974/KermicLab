@@ -15,10 +15,10 @@ questions:
   - c'est quoi la démocratie ?
   - Pourquoi la démocratie protège-t-elle les minorités ?
   - what is democracy?
-prerequis:
-niveaux: cycle-4
 classes: 3e
-competences: emc-democratie-action-1, emc-democratie-action-2
+prerequis: liberte
+niveaux: cycle-4
+competences: expliquer-le-pluralisme-politique, distinguer-democratie-representative-et-democratie-participative, justifier-les-limites-du-pouvoir-de-la-majorite, analyser-les-conditions-d-un-vote-libre-et-sincere
 ---
 
 # La démocratie

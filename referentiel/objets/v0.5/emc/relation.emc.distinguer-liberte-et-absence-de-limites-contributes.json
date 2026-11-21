@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-liberte-et-absence-de-limites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-liberte-et-absence-de-limites",
+  "target": "skill.emc.liberte"
+}

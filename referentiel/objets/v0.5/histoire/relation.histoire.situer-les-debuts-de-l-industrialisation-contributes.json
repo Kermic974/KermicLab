@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-les-debuts-de-l-industrialisation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "source": "microskill.histoire.situer-les-debuts-de-l-industrialisation",
+  "target": "skill.histoire.revolution-industrielle"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.expliquer-l-objectif-de-la-protection-sociale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "microskill.ses.expliquer-l-objectif-de-la-protection-sociale",
+  "target": "skill.ses.justice-sociale"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "source": "microskill.svt.calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse",
+  "target": "skill.svt.seismes-et-volcans"
+}

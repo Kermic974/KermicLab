@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.evolution-et-selection-naturelle-requires-evolution",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "notion.svt.evolution-et-selection-naturelle",
+  "target": "notion.svt.evolution",
+  "rationale": "La notion reprend et formalise la sélection naturelle et l’ancêtre commun introduits au collège."
+}

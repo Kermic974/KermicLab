@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-les-obligations-de-neutralite-des-agents-publics-a-l-ecole-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "microskill.emc.identifier-les-obligations-de-neutralite-des-agents-publics-a-l-ecole",
+  "target": "skill.emc.laicite"
+}

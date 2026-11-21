@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-acteurs-d-un-conflit-d-usage-eau-terres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-ruraux/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-acteurs-d-un-conflit-d-usage-eau-terres",
+  "target": "skill.geographie.espaces-ruraux"
+}

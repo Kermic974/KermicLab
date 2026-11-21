@@ -27,9 +27,9 @@ questions:
   - je ne comprends pas comment on connaît les climats du passé
   - quels sont les gaz à effet de serre ?
   - what is climate change?
-prerequis:
+prerequis: photosynthese
 niveaux: terminale
-competences: svt-climat-et-effet-de-serre-action-1, svt-climat-et-effet-de-serre-action-2
+competences: expliquer-le-mecanisme-de-l-effet-de-serre-naturel, identifier-les-gaz-a-effet-de-serre-et-leurs-sources, interpreter-une-courbe-de-concentration-atmospherique-en-co, utiliser-des-archives-climatiques-pour-reconstituer-un-climat-du-passe, relier-le-rechauffement-actuel-aux-emissions-humaines
 ---
 
 # Climat et effet de serre

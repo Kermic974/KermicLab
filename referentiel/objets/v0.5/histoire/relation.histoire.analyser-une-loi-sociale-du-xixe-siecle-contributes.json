@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-une-loi-sociale-du-xixe-siecle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-une-loi-sociale-du-xixe-siecle",
+  "target": "skill.histoire.revolution-industrielle"
+}

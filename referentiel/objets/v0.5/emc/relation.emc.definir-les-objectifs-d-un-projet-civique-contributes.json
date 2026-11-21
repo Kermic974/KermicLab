@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.definir-les-objectifs-d-un-projet-civique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "microskill.emc.definir-les-objectifs-d-un-projet-civique",
+  "target": "skill.emc.engagement-civique"
+}

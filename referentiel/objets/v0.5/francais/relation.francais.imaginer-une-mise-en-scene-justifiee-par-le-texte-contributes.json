@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.imaginer-une-mise-en-scene-justifiee-par-le-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "source": "microskill.francais.imaginer-une-mise-en-scene-justifiee-par-le-texte",
+  "target": "skill.francais.theatre"
+}

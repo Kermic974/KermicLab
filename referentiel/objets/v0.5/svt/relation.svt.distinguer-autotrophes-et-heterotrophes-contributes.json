@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-autotrophes-et-heterotrophes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-autotrophes-et-heterotrophes",
+  "target": "skill.svt.metabolisme-et-enzymes"
+}

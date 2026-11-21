@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.discrimination-teaches-choisir-un-recours-adapte-face-a-une-discrimination",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "notion.emc.discrimination",
+  "target": "microskill.emc.choisir-un-recours-adapte-face-a-une-discrimination"
+}

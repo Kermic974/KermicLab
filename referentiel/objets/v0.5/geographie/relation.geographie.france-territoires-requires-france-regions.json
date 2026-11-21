@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.france-territoires-requires-france-regions",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-territoires/contenu.json"
+  },
+  "source": "notion.geographie.france-territoires",
+  "target": "notion.geographie.france-regions",
+  "rationale": "Les statuts et les acteurs des territoires prolongent le découpage et les collectivités étudiés à propos des régions."
+}

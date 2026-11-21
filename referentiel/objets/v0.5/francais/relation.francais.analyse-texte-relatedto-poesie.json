@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.analyse-texte-relatedto-poesie",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "notion.francais.poesie",
+  "rationale": "La méthode d’analyse s’applique aux poèmes ; elle n’en est pas un préalable de genre."
+}

@@ -22,7 +22,7 @@ questions:
   - comment la socialisation évolue-t-elle au cours de la vie ?
 prerequis:
 niveaux: seconde, premiere
-competences: ses-socialisation-action-1, ses-socialisation-action-2
+competences: distinguer-normes-valeurs-et-roles-sociaux, identifier-les-agents-de-socialisation-dans-une-situation, expliquer-la-socialisation-primaire-et-secondaire, analyser-des-socialisations-plurielles-dans-un-parcours
 ---
 
 # La socialisation

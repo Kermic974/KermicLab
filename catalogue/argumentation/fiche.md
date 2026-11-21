@@ -19,10 +19,10 @@ questions:
   - Quelle est la différence entre une thèse et un argument ?
   - Comment utiliser un exemple argumentatif ?
   - À quoi sert un connecteur logique dans une argumentation ?
-prerequis:
-niveaux: cycle-4
 classes: 4e, 3e
-competences: francais-argumentation-action-1, francais-argumentation-action-2
+prerequis: grammaire-phrase-complexe
+niveaux: cycle-4
+competences: identifier-la-these-d-un-texte-argumentatif, distinguer-arguments-et-exemples, utiliser-des-connecteurs-logiques-d-opposition-et-de-cause, organiser-un-paragraphe-argumentatif, nuancer-une-opinion-en-tenant-compte-d-une-objection
 ---
 
 # L'argumentation

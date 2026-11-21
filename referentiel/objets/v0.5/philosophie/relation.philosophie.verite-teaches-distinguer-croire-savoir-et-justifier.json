@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.verite-teaches-distinguer-croire-savoir-et-justifier",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verite/contenu.json"
+  },
+  "source": "notion.philosophie.verite",
+  "target": "microskill.philosophie.distinguer-croire-savoir-et-justifier"
+}

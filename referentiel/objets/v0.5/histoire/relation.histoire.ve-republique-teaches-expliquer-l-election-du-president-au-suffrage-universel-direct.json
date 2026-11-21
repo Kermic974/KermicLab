@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.ve-republique-teaches-expliquer-l-election-du-president-au-suffrage-universel-direct",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "notion.histoire.ve-republique",
+  "target": "microskill.histoire.expliquer-l-election-du-president-au-suffrage-universel-direct"
+}

@@ -25,9 +25,9 @@ questions:
   - je ne comprends pas les muscles antagonistes
   - d'où vient l'énergie de la contraction musculaire ?
   - how do muscles contract?
-prerequis:
+prerequis: systeme-nerveux, metabolisme-et-enzymes
 niveaux: terminale
-competences: svt-contraction-musculaire-action-1, svt-contraction-musculaire-action-2
+competences: decrire-l-organisation-d-un-muscle-de-la-fibre-au-sarcomere, expliquer-le-glissement-des-filaments-d-actine-et-de-myosine, relier-la-contraction-a-l-utilisation-d-atp, calculer-le-raccourcissement-d-un-sarcomere, identifier-les-muscles-antagonistes-lors-d-un-mouvement
 ---
 
 # La contraction musculaire

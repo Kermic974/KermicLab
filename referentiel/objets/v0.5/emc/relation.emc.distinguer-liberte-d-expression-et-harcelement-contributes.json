@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-liberte-d-expression-et-harcelement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-liberte-d-expression-et-harcelement",
+  "target": "skill.emc.liberte"
+}

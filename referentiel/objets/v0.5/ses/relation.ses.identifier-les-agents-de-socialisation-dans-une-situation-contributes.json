@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.identifier-les-agents-de-socialisation-dans-une-situation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "source": "microskill.ses.identifier-les-agents-de-socialisation-dans-une-situation",
+  "target": "skill.ses.socialisation"
+}

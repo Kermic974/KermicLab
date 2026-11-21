@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-les-garanties-juridiques-des-droits-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-les-garanties-juridiques-des-droits",
+  "target": "skill.emc.droits-de-lhomme"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-acteurs-de-la-gestion-d-une-ressource-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ressources/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-acteurs-de-la-gestion-d-une-ressource",
+  "target": "skill.geographie.ressources"
+}

@@ -15,10 +15,10 @@ questions:
   - C'est quoi l'urbanisation ?
   - Pourquoi l'étalement urbain progresse ?
   - Comment comprendre la périurbanisation ?
+classes: 4e
 prerequis:
 niveaux: cycle-4
-classes: 4e
-competences: geographie-urbanisation-action-1, geographie-urbanisation-action-2
+competences: interpreter-l-evolution-de-la-part-de-population-urbaine, distinguer-centre-banlieue-et-couronne-periurbaine, identifier-les-acteurs-de-l-usage-des-sols, analyser-une-mobilite-domicile-travail-a-plusieurs-echelles, discuter-un-amenagement-urbain
 ---
 
 # L'urbanisation

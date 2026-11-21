@@ -39,10 +39,10 @@ questions:
   - je ne comprends pas la différence entre bactérie et virus
   - pourquoi les antibiotiques ne marchent pas contre la grippe ?
   - how does a vaccine work?
+classes: 3e
 prerequis:
 niveaux: cycle-4
-classes: 3e
-competences: svt-systeme-immunitaire-action-1, svt-systeme-immunitaire-action-2
+competences: identifier-les-barrieres-de-l-organisme-contre-les-microbes, distinguer-immunite-innee-et-immunite-adaptative, expliquer-le-role-des-anticorps, expliquer-le-principe-de-la-vaccination
 ---
 
 # Le système immunitaire

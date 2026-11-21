@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-une-personnification-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-de-style/contenu.json"
+  },
+  "source": "microskill.francais.identifier-une-personnification",
+  "target": "skill.francais.figures-de-style"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-les-statuts-des-territoires-francais-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-territoires/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-les-statuts-des-territoires-francais",
+  "target": "skill.geographie.france-territoires"
+}

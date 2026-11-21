@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.napoleon-requires-revolution-francaise",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "notion.histoire.napoleon",
+  "target": "notion.histoire.revolution-francaise",
+  "rationale": "Le Consulat et l’Empire se comprennent comme une issue de la Révolution (coup d’État de Brumaire, Code civil)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lire-une-scene-a-voix-haute-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "source": "microskill.francais.lire-une-scene-a-voix-haute",
+  "target": "skill.francais.theatre"
+}

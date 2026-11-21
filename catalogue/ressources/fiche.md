@@ -16,10 +16,10 @@ questions:
   - C'est quoi les ressources naturelles ?
   - Les ressources renouvelables sont-elles illimitées ?
   - Comment organiser la gestion de l'eau ?
+classes: 5e
 prerequis:
 niveaux: cycle-4
-classes: 5e
-competences: geographie-ressources-action-1, geographie-ressources-action-2
+competences: distinguer-ressource-renouvelable-et-non-renouvelable, analyser-l-acces-inegal-a-une-ressource, identifier-les-acteurs-de-la-gestion-d-une-ressource, analyser-une-interdependance-de-ressources-entre-territoires, evaluer-une-mesure-de-sobriete
 ---
 
 # Les ressources et leur gestion

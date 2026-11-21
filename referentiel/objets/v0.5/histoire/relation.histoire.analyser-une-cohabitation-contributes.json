@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-une-cohabitation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-une-cohabitation",
+  "target": "skill.histoire.ve-republique"
+}

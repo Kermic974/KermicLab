@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-la-circulation-des-idees-et-des-livres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-la-circulation-des-idees-et-des-livres",
+  "target": "skill.histoire.lumieres"
+}

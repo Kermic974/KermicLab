@@ -22,7 +22,7 @@ questions:
 classes: 6e, 5e
 prerequis:
 niveaux: cycle-3, cycle-4
-competences: francais-conjugaison-temps-action-1, francais-conjugaison-temps-action-2
+competences: situer-une-action-dans-le-temps-avec-le-temps-adapte, former-l-imparfait-et-le-passe-compose, former-le-futur-simple-et-le-conditionnel-present, choisir-entre-passe-simple-et-imparfait-dans-un-recit, identifier-le-groupe-et-le-radical-d-un-verbe
 ---
 
 # Les temps de la conjugaison

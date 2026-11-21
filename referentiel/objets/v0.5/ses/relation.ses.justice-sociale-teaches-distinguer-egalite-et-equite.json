@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.justice-sociale-teaches-distinguer-egalite-et-equite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "notion.ses.justice-sociale",
+  "target": "microskill.ses.distinguer-egalite-et-equite"
+}

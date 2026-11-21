@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-une-politique-migratoire-et-ses-representations-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-une-politique-migratoire-et-ses-representations",
+  "target": "skill.geographie.migrations"
+}

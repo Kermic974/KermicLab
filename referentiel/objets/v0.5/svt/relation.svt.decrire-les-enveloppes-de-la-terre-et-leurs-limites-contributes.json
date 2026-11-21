@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-les-enveloppes-de-la-terre-et-leurs-limites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "microskill.svt.decrire-les-enveloppes-de-la-terre-et-leurs-limites",
+  "target": "skill.svt.structure-de-la-terre"
+}

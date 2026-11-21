@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.comparer-reponse-immunitaire-primaire-et-secondaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/immunite-adaptative/contenu.json"
+  },
+  "source": "microskill.svt.comparer-reponse-immunitaire-primaire-et-secondaire",
+  "target": "skill.svt.immunite-adaptative"
+}

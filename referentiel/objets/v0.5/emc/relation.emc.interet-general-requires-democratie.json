@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.interet-general-requires-democratie",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "notion.emc.interet-general",
+  "target": "notion.emc.democratie",
+  "rationale": "Débattre et décider de l’intérêt général est une pratique démocratique."
+}

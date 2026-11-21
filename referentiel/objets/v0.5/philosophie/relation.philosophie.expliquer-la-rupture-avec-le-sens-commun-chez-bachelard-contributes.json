@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-la-rupture-avec-le-sens-commun-chez-bachelard-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-la-rupture-avec-le-sens-commun-chez-bachelard",
+  "target": "skill.philosophie.science"
+}

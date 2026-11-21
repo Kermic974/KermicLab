@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.relier-un-procede-d-ecriture-a-son-effet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "microskill.francais.relier-un-procede-d-ecriture-a-son-effet",
+  "target": "skill.francais.analyse-texte"
+}

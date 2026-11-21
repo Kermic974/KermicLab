@@ -25,9 +25,9 @@ questions:
   - je ne comprends pas le vecteur accélération
   - comment calculer la trajectoire d'un projectile
   - what are newton's laws?
-prerequis: forces-et-poids
+prerequis: forces-et-poids, mouvements
 niveaux: terminale
-competences: pc-lois-de-newton-action-1, pc-lois-de-newton-action-2
+competences: determiner-l-acceleration-depuis-le-bilan-des-forces, exploiter-le-vecteur-acceleration-d-un-mouvement, analyser-une-chute-libre, analyser-le-mouvement-d-un-projectile
 ---
 
 # Les lois de Newton

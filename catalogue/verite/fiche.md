@@ -17,7 +17,7 @@ questions:
   - À quoi sert le doute méthodique ?
 prerequis:
 niveaux: terminale
-competences: philosophie-verite-action-1, philosophie-verite-action-2
+competences: distinguer-croire-savoir-et-justifier, expliquer-le-role-du-doute-methodique-chez-descartes, distinguer-sincerite-et-verite, comparer-des-criteres-de-verite-correspondance-coherence-utilite
 ---
 
 # La vérité

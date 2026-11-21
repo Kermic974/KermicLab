@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-le-trajet-d-un-message-nerveux-dans-un-neurone-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "microskill.svt.decrire-le-trajet-d-un-message-nerveux-dans-un-neurone",
+  "target": "skill.svt.systeme-nerveux"
+}

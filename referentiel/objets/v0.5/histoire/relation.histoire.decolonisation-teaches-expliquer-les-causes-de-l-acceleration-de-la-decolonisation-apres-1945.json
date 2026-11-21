@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decolonisation-teaches-expliquer-les-causes-de-l-acceleration-de-la-decolonisation-apres-1945",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "notion.histoire.decolonisation",
+  "target": "microskill.histoire.expliquer-les-causes-de-l-acceleration-de-la-decolonisation-apres-1945"
+}

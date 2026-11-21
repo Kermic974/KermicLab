@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-les-rimes-et-leur-disposition-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "microskill.francais.identifier-les-rimes-et-leur-disposition",
+  "target": "skill.francais.poesie"
+}

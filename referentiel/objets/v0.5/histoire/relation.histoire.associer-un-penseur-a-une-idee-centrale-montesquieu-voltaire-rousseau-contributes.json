@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "microskill.histoire.associer-un-penseur-a-une-idee-centrale-montesquieu-voltaire-rousseau",
+  "target": "skill.histoire.lumieres"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.evaluer-un-accord-international-sur-un-defi-commun-climat-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-depuis-1990/contenu.json"
+  },
+  "source": "microskill.histoire.evaluer-un-accord-international-sur-un-defi-commun-climat",
+  "target": "skill.histoire.monde-depuis-1990"
+}

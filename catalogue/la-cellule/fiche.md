@@ -37,7 +37,7 @@ questions:
 classes: 6e, 5e
 prerequis:
 niveaux: cycle-3, cycle-4, seconde
-competences: svt-la-cellule-action-1, svt-la-cellule-action-2
+competences: calculer-le-grossissement-d-un-microscope, convertir-des-unites-de-longueur-en-microscopie, identifier-les-organites-d-une-cellule-animale-ou-vegetale, distinguer-cellule-eucaryote-et-procaryote, situer-l-adn-dans-la-cellule
 ---
 
 # La cellule, unité du vivant

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-les-effets-du-changement-climatique-sur-un-territoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-les-effets-du-changement-climatique-sur-un-territoire",
+  "target": "skill.geographie.changement-climatique"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.expliquer-la-socialisation-primaire-et-secondaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "source": "microskill.ses.expliquer-la-socialisation-primaire-et-secondaire",
+  "target": "skill.ses.socialisation"
+}

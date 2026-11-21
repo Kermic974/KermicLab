@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.engagement-civique-teaches-distinguer-les-formes-d-engagement-civique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "microskill.emc.distinguer-les-formes-d-engagement-civique"
+}

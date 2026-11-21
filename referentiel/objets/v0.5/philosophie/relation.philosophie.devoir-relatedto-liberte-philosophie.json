@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.devoir-relatedto-liberte-philosophie",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devoir/contenu.json"
+  },
+  "source": "notion.philosophie.devoir",
+  "target": "notion.philosophie.liberte-philosophie",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : L’autonomie morale kantienne relie l’obligation à la liberté."
+}

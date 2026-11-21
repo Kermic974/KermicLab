@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.justice-requires-etat-de-droit",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "notion.emc.justice",
+  "target": "notion.emc.etat-de-droit",
+  "rationale": "L’indépendance et les garanties de procédure de la justice relèvent de l’État de droit."
+}

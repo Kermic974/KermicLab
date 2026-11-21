@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.verifier-la-legitimite-et-la-securite-d-une-action-collective-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "microskill.emc.verifier-la-legitimite-et-la-securite-d-une-action-collective",
+  "target": "skill.emc.engagement-civique"
+}

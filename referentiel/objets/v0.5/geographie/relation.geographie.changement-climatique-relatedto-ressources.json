@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.changement-climatique-relatedto-ressources",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "notion.geographie.changement-climatique",
+  "target": "notion.geographie.ressources",
+  "rationale": "Atténuation et sobriété mobilisent la gestion des ressources ; notions complémentaires."
+}

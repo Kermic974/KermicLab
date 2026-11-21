@@ -31,9 +31,9 @@ questions:
   - je ne comprends pas le rôle des synapses
   - comment le cerveau commande-t-il les muscles ?
   - how do neurons work?
-prerequis:
+prerequis: la-cellule
 niveaux: premiere, terminale
-competences: svt-systeme-nerveux-action-1, svt-systeme-nerveux-action-2
+competences: decrire-le-trajet-d-un-message-nerveux-dans-un-neurone, expliquer-la-transmission-synaptique, interpreter-un-enregistrement-de-potentiel-d-action, decrire-l-arc-reflexe-myotatique, calculer-une-duree-de-conduction-a-partir-d-une-vitesse
 ---
 
 # Le système nerveux et les réflexes

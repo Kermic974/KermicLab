@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.agrosystemes-et-sols-requires-ecosystemes-et-biodiversite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "notion.svt.agrosystemes-et-sols",
+  "target": "notion.svt.ecosystemes-et-biodiversite",
+  "rationale": "Un agrosystème est un écosystème aménagé : chaînes alimentaires, flux de matière et biodiversité s’y appliquent."
+}

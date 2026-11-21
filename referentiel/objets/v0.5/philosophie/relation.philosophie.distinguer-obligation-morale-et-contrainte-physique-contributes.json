@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-obligation-morale-et-contrainte-physique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devoir/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-obligation-morale-et-contrainte-physique",
+  "target": "skill.philosophie.devoir"
+}

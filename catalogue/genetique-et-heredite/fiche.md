@@ -42,10 +42,10 @@ questions:
   - quelle est la différence entre un gène et un chromosome ?
   - comment les caractères se transmettent-ils ?
   - est-ce que l'ADN détermine tout chez une personne ?
-prerequis:
-niveaux: cycle-4, seconde
 classes: 3e
-competences: svt-genetique-et-heredite-action-1, svt-genetique-et-heredite-action-2
+prerequis: la-cellule
+niveaux: cycle-4, seconde
+competences: lire-un-caryotype, distinguer-gene-et-allele, prevoir-les-genotypes-possibles-d-un-enfant-a-partir-de-ceux-des-parents, expliquer-la-determination-chromosomique-du-sexe, interpreter-l-effet-d-une-anomalie-chromosomique-ou-d-une-mutation
 ---
 
 # Génétique et hérédité

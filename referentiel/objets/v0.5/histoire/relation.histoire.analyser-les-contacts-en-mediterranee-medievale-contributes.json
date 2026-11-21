@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-contacts-en-mediterranee-medievale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-contacts-en-mediterranee-medievale",
+  "target": "skill.histoire.moyen-age"
+}

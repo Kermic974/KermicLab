@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.associer-aliments-nutriments-et-besoins-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-digestion/contenu.json"
+  },
+  "source": "microskill.svt.associer-aliments-nutriments-et-besoins",
+  "target": "skill.svt.nutrition-et-digestion"
+}

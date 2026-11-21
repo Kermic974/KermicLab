@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.seismes-et-volcans-teaches-localiser-l-epicentre-et-le-foyer-d-un-seisme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "source": "notion.svt.seismes-et-volcans",
+  "target": "microskill.svt.localiser-l-epicentre-et-le-foyer-d-un-seisme"
+}

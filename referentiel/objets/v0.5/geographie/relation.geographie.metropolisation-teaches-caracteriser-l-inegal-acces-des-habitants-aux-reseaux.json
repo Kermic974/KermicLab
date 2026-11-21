@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.metropolisation-teaches-caracteriser-l-inegal-acces-des-habitants-aux-reseaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "notion.geographie.metropolisation",
+  "target": "microskill.geographie.caracteriser-l-inegal-acces-des-habitants-aux-reseaux"
+}

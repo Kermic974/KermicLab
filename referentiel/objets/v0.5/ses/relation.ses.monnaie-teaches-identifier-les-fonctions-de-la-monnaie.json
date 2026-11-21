@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.monnaie-teaches-identifier-les-fonctions-de-la-monnaie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "notion.ses.monnaie",
+  "target": "microskill.ses.identifier-les-fonctions-de-la-monnaie"
+}

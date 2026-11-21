@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.electricite-teaches-appliquer-l-additivite-des-tensions-et-des-intensites",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite/contenu.json"
+  },
+  "source": "notion.physique-chimie.electricite",
+  "target": "microskill.physique-chimie.appliquer-l-additivite-des-tensions-et-des-intensites"
+}

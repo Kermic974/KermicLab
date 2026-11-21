@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.decolonisation-requires-seconde-guerre-mondiale",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "notion.histoire.decolonisation",
+  "target": "notion.histoire.seconde-guerre-mondiale",
+  "rationale": "L’accélération de la décolonisation après 1945 s’explique par les effets de la guerre."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-egalite-de-droits-et-egalite-reelle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/egalite/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-egalite-de-droits-et-egalite-reelle",
+  "target": "skill.emc.egalite"
+}

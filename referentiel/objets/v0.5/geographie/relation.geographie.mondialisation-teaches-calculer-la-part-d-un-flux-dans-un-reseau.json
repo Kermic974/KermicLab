@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-teaches-calculer-la-part-d-un-flux-dans-un-reseau",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "notion.geographie.mondialisation",
+  "target": "microskill.geographie.calculer-la-part-d-un-flux-dans-un-reseau"
+}

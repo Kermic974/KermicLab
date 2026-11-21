@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.mers-oceans-requires-mondialisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "notion.geographie.mers-oceans",
+  "target": "notion.geographie.mondialisation",
+  "rationale": "Routes maritimes, ports et passages stratégiques sont des supports des flux de la mondialisation."
+}

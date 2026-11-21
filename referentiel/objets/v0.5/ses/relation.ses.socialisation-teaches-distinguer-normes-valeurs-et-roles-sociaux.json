@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.socialisation-teaches-distinguer-normes-valeurs-et-roles-sociaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "source": "notion.ses.socialisation",
+  "target": "microskill.ses.distinguer-normes-valeurs-et-roles-sociaux"
+}

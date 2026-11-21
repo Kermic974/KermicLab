@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.analyse-texte-requires-figures-de-style",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "notion.francais.figures-de-style",
+  "rationale": "Relier un procédé à son effet exige d’identifier d’abord les figures de style."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.espaces-productifs-requires-mondialisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "notion.geographie.espaces-productifs",
+  "target": "notion.geographie.mondialisation",
+  "rationale": "La localisation et la recomposition des activités productives s’expliquent par les flux et les chaînes de valeur."
+}

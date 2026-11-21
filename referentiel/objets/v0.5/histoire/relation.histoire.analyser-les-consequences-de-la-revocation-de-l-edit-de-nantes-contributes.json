@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes",
+  "target": "skill.histoire.temps-modernes"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-regions-teaches-localiser-les-regions-de-france-metropolitaine-et-d-outre-mer",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "notion.geographie.france-regions",
+  "target": "microskill.geographie.localiser-les-regions-de-france-metropolitaine-et-d-outre-mer"
+}

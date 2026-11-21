@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "source": "microskill.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue",
+  "target": "skill.philosophie.temps"
+}

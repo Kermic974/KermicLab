@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.analyser-un-paiement-entre-agents-economiques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "microskill.ses.analyser-un-paiement-entre-agents-economiques",
+  "target": "skill.ses.monnaie"
+}

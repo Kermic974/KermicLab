@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.contraction-musculaire-teaches-identifier-les-muscles-antagonistes-lors-d-un-mouvement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "notion.svt.contraction-musculaire",
+  "target": "microskill.svt.identifier-les-muscles-antagonistes-lors-d-un-mouvement"
+}

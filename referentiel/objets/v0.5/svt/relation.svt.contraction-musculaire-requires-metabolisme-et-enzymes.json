@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.contraction-musculaire-requires-metabolisme-et-enzymes",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "notion.svt.contraction-musculaire",
+  "target": "notion.svt.metabolisme-et-enzymes",
+  "rationale": "La contraction consomme de l’ATP produit par la respiration ou la fermentation."
+}

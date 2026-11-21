@@ -19,10 +19,10 @@ questions:
   - Quelles sont les régions françaises ?
   - Comment les régions de France sont-elles reliées au monde ?
   - Quels défis rencontrent les régions d'outre-mer ?
+classes: 3e
 prerequis:
 niveaux: cycle-4, seconde, premiere, terminale
-classes: 3e
-competences: geographie-france-regions-action-1, geographie-france-regions-action-2
+competences: localiser-les-regions-de-france-metropolitaine-et-d-outre-mer, calculer-un-total-a-partir-d-un-decoupage-administratif, distinguer-les-competences-d-une-region-et-d-autres-collectivites, situer-un-territoire-ultramarin-dans-son-espace-regional, analyser-les-liens-mondiaux-d-une-region
 ---
 
 # La France et ses régions

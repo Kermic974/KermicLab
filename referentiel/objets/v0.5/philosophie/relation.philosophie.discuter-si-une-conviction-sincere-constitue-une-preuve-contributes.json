@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.discuter-si-une-conviction-sincere-constitue-une-preuve-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/religion/contenu.json"
+  },
+  "source": "microskill.philosophie.discuter-si-une-conviction-sincere-constitue-une-preuve",
+  "target": "skill.philosophie.religion"
+}

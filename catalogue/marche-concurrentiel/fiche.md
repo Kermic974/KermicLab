@@ -22,7 +22,7 @@ questions:
   - comment se forme le prix d'équilibre sur un marché concurrentiel ?
 prerequis:
 niveaux: seconde, premiere
-competences: ses-marche-concurrentiel-action-1, ses-marche-concurrentiel-action-2
+competences: identifier-l-offre-et-la-demande-sur-un-marche, determiner-le-prix-d-equilibre-dans-le-modele, prevoir-l-effet-d-un-deplacement-de-l-offre-ou-de-la-demande-sur-le-prix, identifier-les-limites-du-modele-de-concurrence
 ---
 
 # Le marché concurrentiel

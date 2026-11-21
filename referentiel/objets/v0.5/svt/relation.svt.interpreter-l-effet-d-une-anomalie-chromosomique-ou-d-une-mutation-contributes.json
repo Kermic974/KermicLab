@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-l-effet-d-une-anomalie-chromosomique-ou-d-une-mutation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/genetique-et-heredite/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-l-effet-d-une-anomalie-chromosomique-ou-d-une-mutation",
+  "target": "skill.svt.genetique-et-heredite"
+}

@@ -17,7 +17,7 @@ questions:
   - Quelle place l'empirisme donne-t-il à l'expérience ?
 prerequis:
 niveaux: terminale
-competences: philosophie-raison-action-1, philosophie-raison-action-2
+competences: distinguer-validite-d-un-raisonnement-et-verite-de-ses-premisses, evaluer-un-raisonnement-deductif, expliquer-le-probleme-de-l-induction-chez-hume, expliquer-les-limites-de-la-raison-chez-kant
 ---
 
 # La raison

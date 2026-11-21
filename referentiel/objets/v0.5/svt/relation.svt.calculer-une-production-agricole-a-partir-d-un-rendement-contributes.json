@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-une-production-agricole-a-partir-d-un-rendement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "microskill.svt.calculer-une-production-agricole-a-partir-d-un-rendement",
+  "target": "skill.svt.agrosystemes-et-sols"
+}

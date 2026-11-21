@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.prevoir-l-effet-d-un-deplacement-de-l-offre-ou-de-la-demande-sur-le-prix-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/marche-concurrentiel/contenu.json"
+  },
+  "source": "microskill.ses.prevoir-l-effet-d-un-deplacement-de-l-offre-ou-de-la-demande-sur-le-prix",
+  "target": "skill.ses.marche-concurrentiel"
+}

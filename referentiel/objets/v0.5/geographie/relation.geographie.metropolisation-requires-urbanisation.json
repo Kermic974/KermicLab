@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.metropolisation-requires-urbanisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "notion.geographie.metropolisation",
+  "target": "notion.geographie.urbanisation",
+  "rationale": "La métropolisation est une forme d’urbanisation différenciée : centres, couronnes et liens inégaux."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poesie-teaches-commenter-l-effet-des-sonorites",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "notion.francais.poesie",
+  "target": "microskill.francais.commenter-l-effet-des-sonorites"
+}

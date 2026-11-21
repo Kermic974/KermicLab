@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-muscles-antagonistes-lors-d-un-mouvement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-muscles-antagonistes-lors-d-un-mouvement",
+  "target": "skill.svt.contraction-musculaire"
+}

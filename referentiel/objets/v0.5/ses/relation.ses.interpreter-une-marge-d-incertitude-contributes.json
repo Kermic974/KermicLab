@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.interpreter-une-marge-d-incertitude-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "microskill.ses.interpreter-une-marge-d-incertitude",
+  "target": "skill.ses.opinion-publique"
+}

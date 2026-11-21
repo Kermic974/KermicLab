@@ -53,10 +53,10 @@ questions:
   - quel rôle joue la lithosphère dans le déplacement des plaques tectoniques ?
   - comment la lithosphère s'enfonce-t-elle lors d'une subduction ?
   - comment une faille transformante provoque-t-elle un séisme ?
+classes: 4e
 prerequis:
 niveaux: cycle-4, seconde, premiere
-classes: 4e
-competences: svt-seismes-et-volcans-action-1, svt-seismes-et-volcans-action-2
+competences: localiser-l-epicentre-et-le-foyer-d-un-seisme, distinguer-eruption-effusive-et-eruption-explosive, calculer-un-deplacement-de-plaque-a-partir-d-une-vitesse, associer-un-phenomene-geologique-a-un-contexte-tectonique, expliquer-le-volcanisme-de-point-chaud
 ---
 
 # Séismes, volcans et tectonique des plaques

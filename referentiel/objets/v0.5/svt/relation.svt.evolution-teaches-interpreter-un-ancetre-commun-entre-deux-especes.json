@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-teaches-interpreter-un-ancetre-commun-entre-deux-especes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "notion.svt.evolution",
+  "target": "microskill.svt.interpreter-un-ancetre-commun-entre-deux-especes"
+}

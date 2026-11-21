@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.agrosystemes-et-sols-requires-photosynthese",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "notion.svt.agrosystemes-et-sols",
+  "target": "notion.svt.photosynthese",
+  "rationale": "La production végétale d’un agrosystème repose sur les besoins des plantes et la photosynthèse."
+}

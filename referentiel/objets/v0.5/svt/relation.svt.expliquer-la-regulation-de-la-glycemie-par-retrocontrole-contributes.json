@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-regulation-de-la-glycemie-par-retrocontrole-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-regulation-de-la-glycemie-par-retrocontrole",
+  "target": "skill.svt.glycemie-et-diabete"
+}

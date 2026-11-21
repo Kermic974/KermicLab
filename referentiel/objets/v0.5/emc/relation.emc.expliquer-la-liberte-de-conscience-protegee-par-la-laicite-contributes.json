@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-la-liberte-de-conscience-protegee-par-la-laicite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-la-liberte-de-conscience-protegee-par-la-laicite",
+  "target": "skill.emc.laicite"
+}

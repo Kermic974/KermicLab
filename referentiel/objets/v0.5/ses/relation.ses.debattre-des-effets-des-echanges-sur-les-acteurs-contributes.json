@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.debattre-des-effets-des-echanges-sur-les-acteurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "microskill.ses.debattre-des-effets-des-echanges-sur-les-acteurs",
+  "target": "skill.ses.mondialisation-commerce"
+}

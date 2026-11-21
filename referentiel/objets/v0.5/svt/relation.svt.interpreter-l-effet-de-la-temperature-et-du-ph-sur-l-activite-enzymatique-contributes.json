@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-l-effet-de-la-temperature-et-du-ph-sur-l-activite-enzymatique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-l-effet-de-la-temperature-et-du-ph-sur-l-activite-enzymatique",
+  "target": "skill.svt.metabolisme-et-enzymes"
+}

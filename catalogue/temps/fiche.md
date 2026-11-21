@@ -21,7 +21,7 @@ questions:
   - what is time in philosophy?
 prerequis:
 niveaux: terminale
-competences: philosophie-temps-action-1, philosophie-temps-action-2
+competences: distinguer-temps-vecu-et-temps-mesure, expliquer-le-rapport-au-passe-au-present-et-au-futur-chez-augustin, expliquer-la-duree-chez-bergson, analyser-l-influence-de-l-attention-sur-la-duree-percue
 ---
 
 # Le temps

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.argumentation-teaches-nuancer-une-opinion-en-tenant-compte-d-une-objection",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "notion.francais.argumentation",
+  "target": "microskill.francais.nuancer-une-opinion-en-tenant-compte-d-une-objection"
+}

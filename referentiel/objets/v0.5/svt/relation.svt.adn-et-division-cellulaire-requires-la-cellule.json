@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.adn-et-division-cellulaire-requires-la-cellule",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "notion.svt.adn-et-division-cellulaire",
+  "target": "notion.svt.la-cellule",
+  "rationale": "La mitose et la réplication se déroulent dans la cellule et reposent sur le noyau."
+}

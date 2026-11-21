@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.discrimination-relatedto-justice",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "notion.emc.discrimination",
+  "target": "notion.emc.justice",
+  "rationale": "Les recours contre la discrimination passent par la justice."
+}

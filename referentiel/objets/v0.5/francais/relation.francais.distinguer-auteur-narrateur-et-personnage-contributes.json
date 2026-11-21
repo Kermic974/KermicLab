@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-auteur-narrateur-et-personnage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-auteur-narrateur-et-personnage",
+  "target": "skill.francais.roman"
+}

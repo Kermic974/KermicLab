@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.roman-teaches-identifier-le-debut-d-un-roman-et-sa-situation-initiale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "notion.francais.roman",
+  "target": "microskill.francais.identifier-le-debut-d-un-roman-et-sa-situation-initiale"
+}

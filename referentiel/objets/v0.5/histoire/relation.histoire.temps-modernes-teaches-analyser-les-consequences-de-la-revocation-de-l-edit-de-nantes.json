@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.temps-modernes-teaches-analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "notion.histoire.temps-modernes",
+  "target": "microskill.histoire.analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes"
+}

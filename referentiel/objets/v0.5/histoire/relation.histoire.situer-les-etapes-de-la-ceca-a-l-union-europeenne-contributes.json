@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-les-etapes-de-la-ceca-a-l-union-europeenne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "microskill.histoire.situer-les-etapes-de-la-ceca-a-l-union-europeenne",
+  "target": "skill.histoire.construction-europeenne"
+}

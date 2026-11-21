@@ -34,7 +34,7 @@ questions:
   - how does protein synthesis work?
 prerequis: adn-et-division-cellulaire
 niveaux: premiere
-competences: svt-expression-genetique-action-1, svt-expression-genetique-action-2
+competences: decrire-la-transcription-d-un-gene-en-arn-messager, utiliser-le-code-genetique-pour-determiner-une-sequence-d-acides-amines, decrire-la-traduction-de-l-arn-messager-en-proteine, relier-la-longueur-d-une-sequence-codante-au-nombre-d-acides-amines, localiser-transcription-et-traduction-dans-la-cellule
 ---
 
 # L'expression des gènes

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.marche-concurrentiel-teaches-identifier-les-limites-du-modele-de-concurrence",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/marche-concurrentiel/contenu.json"
+  },
+  "source": "notion.ses.marche-concurrentiel",
+  "target": "microskill.ses.identifier-les-limites-du-modele-de-concurrence"
+}

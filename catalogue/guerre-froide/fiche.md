@@ -17,10 +17,10 @@ questions:
   - Pourquoi parle-t-on de guerre froide ?
   - Pourquoi le mur de Berlin est-il construit ?
   - Quels sont les enjeux de la crise de Cuba ?
-prerequis:
-niveaux: cycle-4, terminale
 classes: 3e
-competences: his-guerre-froide-action-1, his-guerre-froide-action-2
+prerequis: seconde-guerre-mondiale
+niveaux: cycle-4, terminale
+competences: expliquer-la-rivalite-des-deux-superpuissances-apres-1945, situer-les-crises-majeures-de-la-guerre-froide-berlin-cuba, caracteriser-les-blocs-et-leurs-acteurs, expliquer-la-detente-et-la-fin-de-la-bipolarite, analyser-la-fin-de-l-urss
 ---
 
 # La guerre froide

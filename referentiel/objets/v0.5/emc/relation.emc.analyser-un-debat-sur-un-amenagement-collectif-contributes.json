@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.analyser-un-debat-sur-un-amenagement-collectif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "microskill.emc.analyser-un-debat-sur-un-amenagement-collectif",
+  "target": "skill.emc.interet-general"
+}

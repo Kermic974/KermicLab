@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-fonctions-d-un-espace-rural-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-ruraux/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-fonctions-d-un-espace-rural",
+  "target": "skill.geographie.espaces-ruraux"
+}

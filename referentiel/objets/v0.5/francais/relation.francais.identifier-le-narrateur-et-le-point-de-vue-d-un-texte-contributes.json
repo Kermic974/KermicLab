@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-narrateur-et-le-point-de-vue-d-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-narrateur-et-le-point-de-vue-d-un-texte",
+  "target": "skill.francais.analyse-texte"
+}

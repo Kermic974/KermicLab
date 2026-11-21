@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.dresser-le-bilan-d-un-engagement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "microskill.emc.dresser-le-bilan-d-un-engagement",
+  "target": "skill.emc.engagement-civique"
+}

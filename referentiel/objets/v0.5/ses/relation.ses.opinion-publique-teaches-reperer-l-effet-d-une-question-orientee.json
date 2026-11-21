@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.opinion-publique-teaches-reperer-l-effet-d-une-question-orientee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "notion.ses.opinion-publique",
+  "target": "microskill.ses.reperer-l-effet-d-une-question-orientee"
+}

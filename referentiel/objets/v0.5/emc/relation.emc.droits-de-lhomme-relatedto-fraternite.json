@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.droits-de-lhomme-relatedto-fraternite",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "notion.emc.droits-de-lhomme",
+  "target": "notion.emc.fraternite",
+  "rationale": "La solidarité sans humiliation s’appuie sur la dignité reconnue à chacun ; même contrainte de niveau (fraternité en 5e)."
+}

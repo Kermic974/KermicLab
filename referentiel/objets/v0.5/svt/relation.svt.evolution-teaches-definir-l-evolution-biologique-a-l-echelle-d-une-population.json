@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evolution-teaches-definir-l-evolution-biologique-a-l-echelle-d-une-population",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution/contenu.json"
+  },
+  "source": "notion.svt.evolution",
+  "target": "microskill.svt.definir-l-evolution-biologique-a-l-echelle-d-une-population"
+}
