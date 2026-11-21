@@ -5,13 +5,7 @@ sujet: mathematiques/comparer-et-ranger-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - nombres-jusqu-a-100-c2
-competences:
-  - comparer-et-ranger-c2-comprendre
-  - comparer-et-ranger-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment comparer deux nombres ?
   - Qu'est-ce que < et > ?
   - Comment ranger des nombres du plus petit au plus grand ?
+prerequis: nombres-jusqu-a-100-c2
+niveaux: cycle-2
+competences: comparer-deux-nombres-avec-les-signes-et, ranger-des-nombres-dans-l-ordre-croissant, encadrer-un-nombre-entre-deux-dizaines, trouver-le-plus-grand-d-une-liste
 ---
 
 # Comparer et ranger des nombres

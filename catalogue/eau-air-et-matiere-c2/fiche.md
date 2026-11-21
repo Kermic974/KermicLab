@@ -5,12 +5,7 @@ sujet: physique-chimie/eau-air-et-matiere-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-competences:
-  - eau-air-et-matiere-c2-comprendre
-  - eau-air-et-matiere-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Quels sont les états de l'eau au CE1 ?
   - Pourquoi la glace fond-elle ?
   - Pourquoi un objet flotte-t-il ou coule-t-il dans l'eau au CE2 ?
+prerequis:
+niveaux: cycle-2
+competences: reconnaitre-les-trois-etats-de-l-eau, prevoir-la-fonte-d-un-glacon-au-soleil, prevoir-si-un-objet-flotte-ou-coule, montrer-que-l-air-existe
 ---
 
 # L'eau, l'air et les matières

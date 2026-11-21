@@ -5,13 +5,7 @@ sujet: mathematiques/algorithmique-et-scratch-c4
 version: 1.0.0
 date: 2026-11-21
 niveau: college
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-prerequis:
-  - algorithmique-6e
-competences:
-  - algorithmique-et-scratch-c4-comprendre
-  - algorithmique-et-scratch-c4-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - À quoi servent variables, boucles et conditions ?
   - Comment programmer dans Scratch en 5e ?
   - Comment tester et corriger un programme ?
+prerequis: algorithmique-6e
+niveaux: cycle-4
+competences: suivre-l-evolution-d-une-variable-dans-un-programme, ecrire-une-boucle-pour-et-tant-que, ecrire-un-programme-de-calcul-avec-une-fonction, tester-et-corriger-un-programme-de-calcul
 ---
 
 # Algorithmique et programmation

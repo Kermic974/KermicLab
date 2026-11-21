@@ -5,12 +5,7 @@ sujet: geographie/se-reperer-dans-l-espace-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-competences:
-  - se-reperer-dans-l-espace-c2-comprendre
-  - se-reperer-dans-l-espace-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment se repérer dans l'espace ?
   - Comment lire un plan au CE1 ?
   - Quels sont les points cardinaux ?
+prerequis:
+niveaux: cycle-2
+competences: situer-un-objet-par-rapport-a-un-autre-gauche-droite-devant-derriere, lire-un-plan-avec-sa-legende, utiliser-les-points-cardinaux, decrire-un-itineraire
 ---
 
 # Se repérer dans l'espace, lire un plan

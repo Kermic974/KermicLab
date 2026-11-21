@@ -5,12 +5,7 @@ sujet: emc/vivre-ensemble-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-competences:
-  - vivre-ensemble-c2-comprendre
-  - vivre-ensemble-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Pourquoi faut-il respecter les autres à l'école ?
   - Pourquoi y a-t-il des règles dans la classe ?
   - Que faire quand on est en colère ?
+prerequis:
+niveaux: cycle-2
+competences: respecter-les-regles-de-la-classe, ecouter-la-parole-de-l-autre, nommer-une-emotion, resoudre-un-conflit-sans-violence
 ---
 
 # Vivre ensemble : respect, règles et émotions

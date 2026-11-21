@@ -5,13 +5,7 @@ sujet: geographie/planete-terre-et-cartes-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE2
-prerequis:
-  - se-reperer-dans-l-espace-c2
-competences:
-  - planete-terre-et-cartes-c2-comprendre
-  - planete-terre-et-cartes-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment s'appelle notre planète ?
   - Quels sont les continents et les océans au CE2 ?
   - Où se trouve la France sur la carte ?
+prerequis: se-reperer-dans-l-espace-c2
+niveaux: cycle-2
+competences: nommer-les-continents-et-les-oceans-au-cycle-2, situer-la-france-et-l-europe, nommer-la-capitale-de-la-france, lire-un-planisphere
 ---
 
 # La planète Terre : continents et océans

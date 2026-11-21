@@ -5,13 +5,7 @@ sujet: francais/homophones-et-orthographe-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - temps-des-verbes-c2
-competences:
-  - homophones-et-orthographe-c2-comprendre
-  - homophones-et-orthographe-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment ne pas confondre a et à ?
   - Comment ne pas confondre et et est ?
   - Comment ne pas confondre on et ont ?
+prerequis: temps-des-verbes-c2
+niveaux: cycle-2
+competences: choisir-entre-a-et-a-au-cycle-2, choisir-entre-et-et-est, choisir-entre-ont-et-on-au-cycle-2, utiliser-le-test-de-remplacement
 ---
 
 # Homophones et mots à connaître

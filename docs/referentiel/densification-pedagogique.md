@@ -67,3 +67,7 @@ Dernier lot : les **259 notions** du catalogue qui n'avaient pas d'objets canoni
 
 Contrôles : `check:referentiel` PASS (0 erreur, 0 avertissement), `build`, `check:pages`, lint et `npm test` (926 tests) passent.
 
+## Cycle 2 et dernières projections (ADR 0038)
+
+Le schéma `stage` admet désormais `cycle-2` ([ADR 0038](../decisions/0038-etape-cycle-2-referentiel.md)). Le Stage `stage.mathematiques.cycle-2` est créé, **51 CurriculumMappings** sont ajoutés pour les notions de cycle 2, et **55 fiches** supplémentaires sont projetées : les 51 notions de cycle 2 et les 4 notions cibles d'autres matières créées avec la technologie (leurs 4 prérequis manquants sont ajoutés). **Toutes les fiches du catalogue hors jeux sont maintenant projetées depuis le corpus canonique** ; aucune compétence générique ne subsiste. Les valeurs de `prerequis`, `niveaux` et `classes` restent identiques (vérifié fiche par fiche).
+

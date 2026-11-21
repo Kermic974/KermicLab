@@ -5,12 +5,7 @@ sujet: emc/securite-ecrans-et-environnement-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-competences:
-  - securite-ecrans-et-environnement-c2-comprendre
-  - securite-ecrans-et-environnement-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Quels sont les numéros pour appeler les secours ?
   - Comment utiliser les écrans sans danger ?
   - Comment protéger l'environnement ?
+prerequis:
+niveaux: cycle-2
+competences: composer-le-numero-d-urgence-adapte, proteger-ses-informations-personnelles-sur-internet, trier-un-dechet-selon-sa-matiere, limiter-le-temps-passe-devant-les-ecrans
 ---
 
 # Sécurité, écrans et protection de la planète

@@ -212,6 +212,48 @@
     "rule": null
   },
   {
+    "name": "stage-cycle-2-valide",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-2",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "cycle",
+      "code": "cycle-2",
+      "label": "Cycle 2"
+    },
+    "rule": null
+  },
+  {
+    "name": "stage-cycle-2-incoherent",
+    "contrat": "stage",
+    "objet": {
+      "id": "stage.mathematiques.cycle-2",
+      "type": "stage",
+      "status": "draft",
+      "version": 1,
+      "curriculum": "curriculum.mathematiques.fr",
+      "stageType": "grade",
+      "code": "cycle-2",
+      "label": "Cycle 2"
+    },
+    "rule": "S4-STAGE-CODE"
+  },
+  {
+    "name": "notion-id-niveau-cycle-2",
+    "contrat": "notion",
+    "objet": {
+      "id": "notion.mathematiques.fractions.cycle-2",
+      "type": "notion",
+      "status": "draft",
+      "version": 1,
+      "label": "Fractions"
+    },
+    "rule": "S4-ID"
+  },
+  {
     "name": "stage-champ-inconnu",
     "contrat": "stage",
     "objet": {
