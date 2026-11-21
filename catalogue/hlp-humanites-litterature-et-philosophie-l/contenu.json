@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La spécialité HLP croise lectures philosophiques et littéraires autour de grandes questions : parole, savoir, représentation du monde.",
+  "niveaux": [
+    {
+      "titre": "Lire les humanités",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "La spécialité **HLP** (humanités, littérature et philosophie) étudie des textes de toutes époques : **les pouvoirs de la parole** (rhétorique antique, éloquence), **l'art de la conversation** (dialogue, salon), **les révolutions du savoir** (humanisme, Lumières, science), **les représentations du monde** (voyage, utopie). L'objectif : **comprendre** et **argumenter**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Platon : dialogues de Socrate.",
+          "Rhétorique : convaincre ou séduire ?",
+          "Lire, comparer, discuter."
+        ]
+      },
+      "aRetenir": "Lire pour comprendre et débattre."
+    },
+    {
+      "titre": "Écrire et argumenter",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "On pratique la **synthèse**, le **commentaire** et l'**essai** : confronter deux textes, dégager des thèses, construire un propos personnel. On apprend à **reformuler**, à **citer** et à **nuancer**. La culture (histoire des idées, arts) nourrit l'argumentation."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Comparer Montaigne et Rousseau sur l'éducation.",
+          "Identifier points communs et différences.",
+          "Formuler une thèse personnelle."
+        ]
+      },
+      "aRetenir": "Confronter, nuancer, citer."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le dialogue socratique est…",
+        "choix": [
+          "un poème en alexandrins",
+          "un roman d'aventure",
+          "un échange de questions et de réponses",
+          "un long monologue sans fin"
+        ],
+        "bonne": 2,
+        "explication": "Platon."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La rhétorique est…",
+        "choix": [
+          "l'art de persuader par le discours",
+          "l'art de peindre les portraits",
+          "la science des étoiles",
+          "l'art de composer des chansons"
+        ],
+        "bonne": 0,
+        "explication": "Éloquence."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Citer, c'est…",
+        "choix": [
+          "reproduire exactement un passage",
+          "résumer librement une idée",
+          "copier sans indiquer la source",
+          "inventer une phrase plausible"
+        ],
+        "bonne": 0,
+        "explication": "Méthode."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le club de débat",
+    "histoire": [
+      "Tu lis deux textes sur l'éducation."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "je choisis une réponse au hasard",
+          "je les ignore tous les deux",
+          "je résume seulement les titres",
+          "je dégage la thèse de chaque texte"
+        ],
+        "bonne": 3,
+        "explication": "Compréhension."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour nuancer, tu peux…",
+        "choix": [
+          "l'ignorer complètement",
+          "la recopier sans la discuter",
+          "reconnaître la force de l'autre thèse",
+          "l'insulter pour gagner"
+        ],
+        "bonne": 2,
+        "explication": "Argumentation."
+      }
+    ],
+    "conclusion": "Bon débatteur !"
+  }
+}

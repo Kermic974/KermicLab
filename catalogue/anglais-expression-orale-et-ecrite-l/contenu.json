@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "S'exprimer en anglais demande de structurer ses idées, d'employer des connecteurs et de nuancer son point de vue.",
+  "niveaux": [
+    {
+      "titre": "Structurer",
+      "niveau": "1re",
+      "paragraphes": [
+        "Un **essai** : **introduction** (sujet, problématique), **développement** (arguments + exemples), **conclusion**. Connecteurs : **addition** (moreover, besides), **cause** (because, since, as), **conséquence** (therefore, so), **opposition** (however, whereas, although), **concession** (even though, nevertheless), **exemple** (for instance). Une **phrase de transition** relie les paragraphes."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Social media connect people. However, they can also isolate them. »",
+          "Thèse + nuance.",
+          "Exemple : cyberharcèlement."
+        ]
+      },
+      "aRetenir": "Connecteurs : structurer la pensée."
+    },
+    {
+      "titre": "Parler et comprendre",
+      "niveau": "Tle",
+      "paragraphes": [
+        "En **expression orale** : préparer un plan court, parler sans lire, regarder l'examinateur, utiliser le vocabulaire du thème, reformuler si on bloque. En **compréhension orale** : repérer le contexte (qui parle, de quoi), les mots-clés et les indices (ton, hésitations) sans comprendre chaque mot. Le **lexique du jugement** : I think, in my opinion, it seems to me that…"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Question : « Is technology a threat ? »",
+          "Plan : avantages, risques, conclusion nuancée.",
+          "Un exemple précis dans chaque partie."
+        ]
+      },
+      "aRetenir": "Parler : plan + exemples + nuance."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« However » introduit…",
+        "choix": [
+          "une conclusion",
+          "une opposition",
+          "une addition",
+          "une cause"
+        ],
+        "bonne": 1,
+        "explication": "Contraste."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Therefore » marque…",
+        "choix": [
+          "une date",
+          "une question",
+          "une conséquence",
+          "une opposition"
+        ],
+        "bonne": 2,
+        "explication": "Donc."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour une prise de parole, on…",
+        "choix": [
+          "parle le plus vite possible",
+          "prépare un plan et des exemples",
+          "lit toute sa feuille d'un trait",
+          "improvise sans aucun repère"
+        ],
+        "bonne": 1,
+        "explication": "Préparation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le débat",
+    "histoire": [
+      "Tu participes à un débat en classe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour nuancer ton avis :",
+        "choix": [
+          "It is only good, and that is all.",
+          "It is bad because it is bad.",
+          "No comment, I never give an opinion.",
+          "Although it has advantages, it also has risks."
+        ],
+        "bonne": 3,
+        "explication": "Concession."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quand tu ne connais pas un mot, tu…",
+        "choix": [
+          "abandonnes tout l'exposé",
+          "reformules avec des mots simples",
+          "te tais jusqu'à la fin",
+          "passes au français sans rien dire"
+        ],
+        "bonne": 1,
+        "explication": "Stratégie."
+      }
+    ],
+    "conclusion": "Well argued!"
+  }
+}

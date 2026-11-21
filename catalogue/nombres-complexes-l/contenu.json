@@ -1,0 +1,116 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les nombres complexes prolongent les réels : on introduit un nombre i tel que i² = −1.",
+  "niveaux": [
+    {
+      "titre": "Forme algébrique",
+      "niveau": "Tle",
+      "paragraphes": [
+        "On définit **i** tel que **i² = −1**. Un complexe s'écrit **z = a + ib** (a partie réelle, b partie imaginaire). Opérations : (a + ib) + (c + id) = (a + c) + i(b + d) ; (a + ib)(c + id) = (ac − bd) + i(ad + bc). Le **conjugué** de z est z̄ = a − ib ; z z̄ = a² + b² (réel positif)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "(2 + 3i)(1 − i) = 2 − 2i + 3i − 3i².",
+          "i² = −1 : = 2 + i + 3.",
+          "= 5 + i."
+        ]
+      },
+      "aRetenir": "i² = −1 ; z z̄ = a² + b²."
+    },
+    {
+      "titre": "Module et argument",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Le **module** de z = a + ib est |z| = √(a² + b²) : distance de l'origine au point M(a ; b). L'**argument** est une mesure de l'angle (Ox, OM) : z = |z|(cos θ + i sin θ) (forme trigonométrique) = |z| e^(iθ) (forme exponentielle). Multiplier deux complexes : on multiplie les modules et on additionne les arguments.",
+        "Un complexe peut représenter un point du plan ou une rotation."
+      ],
+      "exemple": {
+        "titre": "Exemple : z = 1 + i",
+        "etapes": [
+          "|z| = √2.",
+          "θ = π/4.",
+          "z = √2 e^(iπ/4)."
+        ]
+      },
+      "aRetenir": "Produit : modules multipliés, arguments ajoutés."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "i² = ?",
+        "reponse": -1,
+        "indices": [
+          "Nombre imaginaire pur."
+        ],
+        "solution": "Définition de i.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "(2 + 3i)(1 − i) =",
+        "choix": [
+          "2 − 3i",
+          "−1 + 5i",
+          "5 − i",
+          "5 + i"
+        ],
+        "bonne": 3,
+        "explication": "2 − 2i + 3i + 3 = 5 + i."
+      },
+      {
+        "type": "nombre",
+        "question": "Module de 3 + 4i ?",
+        "reponse": 5,
+        "indices": [
+          "Pythagore."
+        ],
+        "solution": "√(9 + 16) = 5.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan complexe",
+    "histoire": [
+      "Tu places le point M d'affixe z = 1 + i dans le plan."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est son argument principal ?",
+        "choix": [
+          "π/4",
+          "π/2",
+          "π/3",
+          "0"
+        ],
+        "bonne": 0,
+        "explication": "Partie réelle = partie imaginaire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le module de z²= (1 + i)² ?",
+        "choix": [
+          "4",
+          "1",
+          "2",
+          "√2"
+        ],
+        "bonne": 2,
+        "explication": "|z²| = |z|² = 2."
+      }
+    ],
+    "conclusion": "Bien placé !"
+  }
+}

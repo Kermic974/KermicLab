@@ -36,3 +36,7 @@ Le niveau `primaire` couvre aussi les classes `CP`, `CE1` et `CE2` (cycle `cycle
 ## Cycle 4 (ajout)
 
 Les 39 notions `-c4` couvrent les matières absentes ou maigres du collège (technologie, anglais, arts, musique, EPS, trigonométrie, algorithmique…). Aucune évolution des classes : `5e`, `4e` et `3e` existaient déjà. Les fiches des notions de la V0 sont projetées depuis le référentiel S4 ; l'ajout de prérequis entre cycles pour ces notions passe par le processus S4 (voir `docs/referentiel/propositions-liens-cycles-2-3-4.md`).
+
+## Lycée (ajout)
+
+Les 70 notions `-l` couvrent seconde, première et terminale (tronc commun et spécialités). Aucune évolution du schéma : `niveau` vaut `seconde`, `premiere` ou `terminale` (niveau le plus jeune couvert), `niveaux` liste les niveaux de lycée et le champ `classes` est absent. Le garde-fou de prérequis (pas de prérequis plus avancé) s'applique aux niveaux de lycée. Les liens depuis les notions V0 projetées restent à qualifier par le processus S4.

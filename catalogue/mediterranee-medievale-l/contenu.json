@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Du VIIe au XIIIe siècle, la Méditerranée est un espace d'échanges, de conflits et de rencontres entre chrétiens, musulmans et juifs.",
+  "niveaux": [
+    {
+      "titre": "Trois mondes",
+      "niveau": "2de",
+      "paragraphes": [
+        "Autour de la Méditerranée coexistent le monde **byzantin** (empire grec chrétien, Constantinople), le monde **musulman** (expansion arabe dès le VIIe siècle, califats de Damas, Bagdad, Cordoue) et l'**Occident latin**. Les villes commerçantes (Venise, Gênes, Alexandrie) échangent épices, soie, blé et idées. Al-Andalus (Espagne musulmane) est un foyer scientifique."
+      ],
+      "exemple": {
+        "titre": "Exemple : Cordoue",
+        "etapes": [
+          "Grande ville du califat omeyyade.",
+          "Bibliothèques, savants, traductions.",
+          "Les connaissances grecques et arabes passent en Occident."
+        ]
+      },
+      "aRetenir": "Méditerranée : échanges et conflits."
+    },
+    {
+      "titre": "Croisades et Reconquista",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les **croisades** (1096–1291) sont des expéditions militaires chrétiennes appelées par la papauté pour reprendre Jérusalem ; elles créent des États latins en Orient mais se terminent par leur perte. La **Reconquista** est la reconquête progressive de la péninsule ibérique par les royaumes chrétiens (jusqu'en 1492). Ces affrontements s'accompagnent de commerce et de transferts culturels."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1099 : prise de Jérusalem.",
+          "1187 : Saladin reprend Jérusalem.",
+          "1291 : chute de Saint-Jean-d'Acre."
+        ]
+      },
+      "aRetenir": "Croisades : 1096–1291."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle ville est un grand foyer savant d'Al-Andalus ?",
+        "choix": [
+          "Cordoue",
+          "Londres",
+          "Paris",
+          "Moscou"
+        ],
+        "bonne": 0,
+        "explication": "Califat de Cordoue."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les croisades sont des expéditions…",
+        "choix": [
+          "vikings vers l'Amérique",
+          "mongoles vers la Chine",
+          "chrétiennes visant Jérusalem",
+          "musulmanes contre la ville de Rome"
+        ],
+        "bonne": 2,
+        "explication": "Terre sainte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les cités marchandes italiennes comme Venise…",
+        "choix": [
+          "commercent avec l'Orient",
+          "sont fermées au commerce",
+          "sont musulmanes",
+          "sont détruites par Rome"
+        ],
+        "bonne": 0,
+        "explication": "Marchands."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le marchand vénitien",
+    "histoire": [
+      "Tu suis un marchand de Venise."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Il rapporte d'Orient…",
+        "choix": [
+          "du pétrole et du gaz",
+          "des ordinateurs portables",
+          "des armes à feu modernes",
+          "des épices et de la soie"
+        ],
+        "bonne": 3,
+        "explication": "Produits de luxe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les échanges favorisent…",
+        "choix": [
+          "la fin de tout commerce",
+          "la disparition des langues",
+          "la circulation des idées et des techniques",
+          "l'isolement complet des peuples"
+        ],
+        "bonne": 2,
+        "explication": "Rencontres."
+      }
+    ],
+    "conclusion": "Bon voyage !"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La lumière des étoiles porte la trace de leur composition ; les éléments ont été forgés dans les étoiles.",
+  "niveaux": [
+    {
+      "titre": "Lire la lumière",
+      "niveau": "1re",
+      "paragraphes": [
+        "Un **spectre** est la décomposition de la lumière. Un **spectre de raies d'émission** est propre à chaque élément ; un **spectre d'absorption** montre des raies sombres sur un fond continu. En comparant ces raies avec celles des éléments connus, on identifie la composition d'une étoile (hydrogène, hélium…). Le **décalage vers le rouge** des galaxies lointaines montre que l'Univers est en expansion."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Spectre d'une étoile : raies d'absorption.",
+          "Mêmes raies que celles de l'hydrogène.",
+          "L'étoile contient de l'hydrogène."
+        ]
+      },
+      "aRetenir": "Chaque élément a ses raies."
+    },
+    {
+      "titre": "Origine des éléments",
+      "niveau": "1re",
+      "paragraphes": [
+        "L'Univers est né il y a environ **13,8 milliards d'années** (**Big Bang**) : après quelques minutes, il est surtout fait d'hydrogène et d'hélium. Dans les étoiles, la **fusion nucléaire** forme des noyaux plus lourds (carbone, oxygène, jusqu'au fer) ; les éléments plus lourds sont formés lors d'explosions (supernovæ, fusions d'étoiles à neutrons). Notre corps contient des atomes formés dans des étoiles : nous sommes de la « poussière d'étoiles »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Hydrogène + hydrogène → hélium (fusion).",
+          "Dans les étoiles massives, jusqu'au fer.",
+          "Supernova : éléments plus lourds dispersés."
+        ]
+      },
+      "aRetenir": "L'Univers : 13,8 milliards d'années."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Âge de l'Univers en milliards d'années (valeur du programme) ?",
+        "reponse": 13.8,
+        "indices": [
+          "Big Bang."
+        ],
+        "solution": "≈ 13,8 milliards d'années.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un spectre d'absorption est caractérisé par…",
+        "choix": [
+          "aucune raie",
+          "des raies sombres sur un fond continu",
+          "des raies brillantes sur fond noir",
+          "une seule couleur"
+        ],
+        "bonne": 1,
+        "explication": "Absorption."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les éléments plus lourds que l'hélium ont été formés surtout…",
+        "choix": [
+          "dans les étoiles",
+          "pendant le Big Bang",
+          "sur Terre",
+          "dans les nuages"
+        ],
+        "bonne": 0,
+        "explication": "Nucléosynthèse stellaire."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le télescope du club d'astronomie",
+    "histoire": [
+      "Un club d'astronomie analyse la lumière de Véga."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que révèlent les raies du spectre ?",
+        "choix": [
+          "les éléments présents dans l'étoile",
+          "sa distance exacte seulement",
+          "son âge exact",
+          "la température de la Terre"
+        ],
+        "bonne": 0,
+        "explication": "Chaque élément a ses raies."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un décalage vers le rouge d'une galaxie indique…",
+        "choix": [
+          "qu'elle s'éloigne de nous",
+          "qu'elle s'approche",
+          "qu'elle est immobile",
+          "qu'elle est chaude uniquement"
+        ],
+        "bonne": 0,
+        "explication": "Expansion."
+      }
+    ],
+    "conclusion": "Bon astronome !"
+  }
+}

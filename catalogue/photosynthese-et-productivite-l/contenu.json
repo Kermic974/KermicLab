@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La photosynthèse convertit l'énergie lumineuse en énergie chimique : elle est à la base de presque toutes les chaînes alimentaires et du cycle du carbone.",
+  "niveaux": [
+    {
+      "titre": "La photosynthèse",
+      "niveau": "1re",
+      "paragraphes": [
+        "Dans les **chloroplastes**, la chlorophylle capte l'énergie lumineuse pour transformer le dioxyde de carbone (CO₂) et l'eau en **matière organique** (glucose) et en dioxygène : 6 CO₂ + 6 H₂O + lumière → C₆H₁₂O₆ + 6 O₂. Elle comprend une phase **photochimique** (lumière) et une phase de **fixation du carbone** (cycle de Calvin). La production de matière organique par les végétaux est la **production primaire**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un arbre absorbe du CO₂.",
+          "Il produit des sucres.",
+          "Il libère du dioxygène."
+        ]
+      },
+      "aRetenir": "Lumière + CO₂ + eau → matière organique + O₂."
+    },
+    {
+      "titre": "Cycle du carbone",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le **cycle du carbone** relie l'atmosphère (CO₂), les êtres vivants (matière organique), les océans et les roches. Les végétaux fixent le carbone par photosynthèse ; **respiration**, **fermentation**, **décomposition** et **combustion** le rendent à l'atmosphère. La combustion des **combustibles fossiles** libère en quelques décennies du carbone stocké pendant des millions d'années, ce qui augmente le CO₂ atmosphérique et l'effet de serre. Les forêts, les sols et les océans sont des **puits de carbone**."
+      ],
+      "exemple": {
+        "titre": "Exemple : une forêt",
+        "etapes": [
+          "Elle stocke du carbone dans le bois.",
+          "Elle respire aussi et rejette du CO₂.",
+          "Bilan : puits tant qu'elle grandit."
+        ]
+      },
+      "aRetenir": "Les fossiles libèrent du carbone ancien."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La photosynthèse a lieu dans…",
+        "choix": [
+          "les chloroplastes",
+          "les mitochondries",
+          "le noyau",
+          "les vacuoles"
+        ],
+        "bonne": 0,
+        "explication": "Chlorophylle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les végétaux fixent le carbone sous forme de…",
+        "choix": [
+          "dioxygène gazeux",
+          "eau liquide",
+          "azote gazeux",
+          "matière organique"
+        ],
+        "bonne": 3,
+        "explication": "Sucres."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La combustion des énergies fossiles…",
+        "choix": [
+          "supprime l'effet de serre",
+          "augmente le CO₂ atmosphérique",
+          "diminue le CO₂",
+          "n'a aucun effet"
+        ],
+        "bonne": 1,
+        "explication": "Carbone ancien libéré."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La forêt du lycée",
+    "histoire": [
+      "Le lycée plante une forêt pour compenser ses émissions."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi une jeune forêt est-elle un puits ?",
+        "choix": [
+          "elle rejette tout son carbone",
+          "elle fixe plus de carbone qu'elle n'en rejette",
+          "elle ne respire jamais",
+          "elle ne contient aucun carbone"
+        ],
+        "bonne": 1,
+        "explication": "Croissance = stockage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faut-il aussi réduire ?",
+        "choix": [
+          "les émissions humaines de CO₂",
+          "le nombre total d'arbres",
+          "la quantité de lumière reçue",
+          "la teneur de l'air en oxygène"
+        ],
+        "bonne": 0,
+        "explication": "Compenser ne suffit pas."
+      }
+    ],
+    "conclusion": "Bilan carbone analysé !"
+  }
+}

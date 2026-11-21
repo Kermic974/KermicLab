@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Notre corps abrite des milliards de micro-organismes qui participent à la digestion, à l'immunité et à la santé.",
+  "niveaux": [
+    {
+      "titre": "Un écosystème intestinal",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le **microbiote** est l'ensemble des micro-organismes (bactéries surtout) qui vivent dans et sur le corps ; celui de l'intestin compte des centaines d'espèces et à peu près autant de cellules que le corps. Il participe à la **digestion** (fibres), produit des vitamines, protège contre les agents pathogènes et **éduque le système immunitaire**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Des bactéries dégradent des fibres.",
+          "Elles produisent des acides gras.",
+          "Ceux-ci nourrissent les cellules de l'intestin."
+        ]
+      },
+      "aRetenir": "Le microbiote est un partenaire du corps."
+    },
+    {
+      "titre": "Alimentation et déséquilibres",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le microbiote dépend de l'alimentation : les **fibres** et les aliments fermentés favorisent la diversité. Un déséquilibre (**dysbiose**) peut être lié à des maladies (inflammations, obésité, allergies). Les **antibiotiques** perturbent le microbiote. Les **probiotiques** (microorganismes vivants) peuvent avoir des effets bénéfiques dans certaines situations."
+      ],
+      "exemple": {
+        "titre": "Exemple : après un antibiotique",
+        "etapes": [
+          "Le traitement tue des bactéries utiles.",
+          "Le microbiote perd en diversité.",
+          "Une alimentation riche en fibres aide à le rétablir."
+        ]
+      },
+      "aRetenir": "Diversité du microbiote : fibres, aliments variés."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le microbiote est…",
+        "choix": [
+          "un organe du cerveau",
+          "une maladie infectieuse",
+          "une vitamine de synthèse",
+          "l'ensemble des micro-organismes du corps"
+        ],
+        "bonne": 3,
+        "explication": "Définition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel aliment favorise la diversité du microbiote ?",
+        "choix": [
+          "les graisses saturées",
+          "l'alcool",
+          "les fibres",
+          "le sucre raffiné"
+        ],
+        "bonne": 2,
+        "explication": "Fibres."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les antibiotiques peuvent…",
+        "choix": [
+          "n'avoir aucun effet",
+          "perturber le microbiote",
+          "toujours le renforcer",
+          "le supprimer définitivement"
+        ],
+        "bonne": 1,
+        "explication": "Ils tuent aussi des bactéries utiles."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le yaourt",
+    "histoire": [
+      "Un yaourt contient des bactéries vivantes."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Ces bactéries sont…",
+        "choix": [
+          "des micro-organismes vivants",
+          "des virus inactivés",
+          "des minéraux du lait",
+          "des protéines mortes"
+        ],
+        "bonne": 0,
+        "explication": "Ferments lactiques."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Après un antibiotique, que recommande-t-on pour aider le microbiote ?",
+        "choix": [
+          "ne plus rien manger",
+          "boire beaucoup de soda",
+          "éviter tous les légumes",
+          "une alimentation variée riche en fibres"
+        ],
+        "bonne": 3,
+        "explication": "Soutien du microbiote."
+      }
+    ],
+    "conclusion": "Bonne digestion !"
+  }
+}

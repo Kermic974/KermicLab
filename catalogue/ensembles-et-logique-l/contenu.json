@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au lycée, on précise le langage : ensembles de nombres, intervalles et règles du raisonnement.",
+  "niveaux": [
+    {
+      "titre": "Ensembles et intervalles",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les ensembles de nombres s'emboîtent : **ℕ** (entiers naturels) ⊂ **ℤ** (entiers relatifs) ⊂ **ℚ** (rationnels, fractions) ⊂ **ℝ** (réels). Un **intervalle** est un ensemble de réels compris entre deux bornes : [2 ; 5] contient 2 et 5 (crochets fermés), ]2 ; 5[ ne les contient pas, [2 ; +∞[ est ouvert vers l'infini (le crochet est toujours ouvert en ∞).",
+        "La **réunion** A ∪ B regroupe les éléments de A ou de B ; l'**intersection** A ∩ B les éléments communs."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "[1 ; 4] ∩ [3 ; 7] = [3 ; 4].",
+          "[1 ; 4] ∪ [3 ; 7] = [1 ; 7].",
+          "−2 appartient à ]−∞ ; 0[."
+        ]
+      },
+      "aRetenir": "Crochet fermé : borne comprise ; ouvert : borne exclue."
+    },
+    {
+      "titre": "Raisonner",
+      "niveau": "2de",
+      "paragraphes": [
+        "Une **implication** P ⇒ Q est vraie si, chaque fois que P est vraie, Q l'est aussi. Une **équivalence** P ⇔ Q signifie P ⇒ Q et Q ⇒ P. La **réciproque** de P ⇒ Q est Q ⇒ P (elle peut être fausse).",
+        "Pour montrer qu'une affirmation « pour tout x… » est fausse, un seul **contre-exemple** suffit ; pour montrer qu'elle est vraie, il faut une démonstration générale."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Si n est multiple de 4 alors n est pair » : vraie.",
+          "Réciproque : « si n est pair alors n est multiple de 4 » : fausse.",
+          "Contre-exemple : n = 2."
+        ]
+      },
+      "aRetenir": "Un contre-exemple réfute une affirmation générale."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "[1 ; 4] ∩ [3 ; 7] =",
+        "choix": [
+          "]3 ; 4[",
+          "[1 ; 3]",
+          "[3 ; 4]",
+          "[1 ; 7]"
+        ],
+        "bonne": 2,
+        "explication": "Éléments communs aux deux intervalles."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'intervalle ]2 ; 5] contient…",
+        "choix": [
+          "2 et 5",
+          "ni 2 ni 5",
+          "5 mais pas 2",
+          "2 mais pas 5"
+        ],
+        "bonne": 2,
+        "explication": "Crochet ouvert en 2, fermé en 5."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour réfuter « tout nombre pair est multiple de 4 », il suffit de…",
+        "choix": [
+          "donner plusieurs exemples vérifiés",
+          "prouver la réciproque",
+          "donner un exemple, comme 8",
+          "donner un contre-exemple, comme 2"
+        ],
+        "bonne": 3,
+        "explication": "Un contre-exemple suffit."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La recette de la qualité",
+    "histoire": [
+      "Un fabricant accepte les pièces dont le diamètre appartient à l'intervalle [9,8 ; 10,2] (en mm)."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La pièce de 10,2 mm est…",
+        "choix": [
+          "impossible",
+          "acceptée",
+          "refusée",
+          "à vérifier"
+        ],
+        "bonne": 1,
+        "explication": "Le crochet est fermé en 10,2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La pièce de 9,75 mm est…",
+        "choix": [
+          "idéale",
+          "refusée",
+          "acceptée",
+          "acceptée si arrondie"
+        ],
+        "bonne": 1,
+        "explication": "9,75 < 9,8 : hors intervalle."
+      }
+    ],
+    "conclusion": "Raisonnement clair !"
+  }
+}

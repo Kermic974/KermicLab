@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le web repose sur des pages en HTML, des données structurées et des algorithmes qui trient l'information.",
+  "niveaux": [
+    {
+      "titre": "Pages et données",
+      "niveau": "2de",
+      "paragraphes": [
+        "Une page web est écrite en **HTML** (structure) avec du **CSS** (mise en forme) et éventuellement du **JavaScript** (interactions). Les **données** sont souvent organisées en **tables** (fichiers CSV, bases de données) : chaque ligne est un enregistrement, chaque colonne un descripteur. On peut les **trier**, **filtrer** et **croiser**. Un **moteur de recherche** explore le web, indexe les pages et les classe selon la pertinence."
+      ],
+      "exemple": {
+        "titre": "Exemple : un CSV",
+        "etapes": [
+          "Nom;Âge;Ville.",
+          "Léa;16;Lyon.",
+          "On peut trier par âge ou filtrer la ville."
+        ]
+      },
+      "aRetenir": "HTML : structure ; CSS : style."
+    },
+    {
+      "titre": "Algorithmes et données personnelles",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les **réseaux sociaux** utilisent des **algorithmes de recommandation** qui choisissent les contenus montrés selon vos données (clics, durée, abonnements), ce qui peut créer des **bulles de filtre**. Chaque service collecte des **données personnelles** (cookies, localisation). Le **RGPD** impose consentement, droit d'accès, de rectification et d'effacement. Il faut vérifier les sources et se protéger du **cyberharcèlement**."
+      ],
+      "exemple": {
+        "titre": "Exemple : une bulle de filtre",
+        "etapes": [
+          "L'algorithme montre des contenus semblables à ceux que vous aimez.",
+          "Vous voyez moins d'avis différents.",
+          "Votre vision peut se rétrécir."
+        ]
+      },
+      "aRetenir": "Droits RGPD : accès, rectification, effacement."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le HTML sert à…",
+        "choix": [
+          "compresser une image",
+          "structurer une page web",
+          "stocker des mots de passe",
+          "chiffrer des messages"
+        ],
+        "bonne": 1,
+        "explication": "Structure."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un algorithme de recommandation…",
+        "choix": [
+          "choisit des contenus selon vos données",
+          "efface les profils inactifs",
+          "répare le réseau en panne",
+          "supprime les publicités"
+        ],
+        "bonne": 0,
+        "explication": "Personnalisation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Selon le RGPD, on a le droit…",
+        "choix": [
+          "d'accéder aux données des autres",
+          "de modifier les lois",
+          "d'exiger des abonnés",
+          "de demander l'effacement de ses données"
+        ],
+        "bonne": 3,
+        "explication": "Droit à l'effacement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le profil en ligne",
+    "histoire": [
+      "Tu règles les paramètres d'un réseau social."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu pour limiter la collecte ?",
+        "choix": [
+          "je publie ma localisation",
+          "je partage mon mot de passe",
+          "je règle la confidentialité",
+          "j'accepte tous les cookies"
+        ],
+        "bonne": 2,
+        "explication": "Maîtriser ses données."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour éviter la bulle de filtre, tu…",
+        "choix": [
+          "ne lis que le fil recommandé",
+          "ne cherches jamais",
+          "supprimes ton compte à chaque fois",
+          "consultes des sources variées"
+        ],
+        "bonne": 3,
+        "explication": "Diversifier."
+      }
+    ],
+    "conclusion": "Données protégées !"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Maîtriser les temps et les structures permet de raconter, d'argumenter et de nuancer en anglais.",
+  "niveaux": [
+    {
+      "titre": "Temps et modaux",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le **present perfect** (have/has + participe passé) relie passé et présent : « I have lived here for 5 years ». Le **prétérit** raconte un fait daté : « I lived there in 2020 ». Les **modaux** : can, could, may, might, must, should, would (capacité, probabilité, obligation, conseil). Le **futur** : will (décision), be going to (intention)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« She has visited London three times. »",
+          "Expérience sans date : present perfect.",
+          "« She visited London in 2019. » : prétérit daté."
+        ]
+      },
+      "aRetenir": "Present perfect : lien avec le présent."
+    },
+    {
+      "titre": "Passif, conditionnel et discours rapporté",
+      "niveau": "1re",
+      "paragraphes": [
+        "La **voix passive** : be + participe passé (« The book was written by Orwell »). Le **conditionnel** : « If I had time, I would travel » (irréel du présent : if + prétérit, would + base verbale) ; « If I had known, I would have come » (irréel du passé). Le **discours rapporté** : changement de temps et de pronoms (« He said he was tired »)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« If I were rich, I would travel. »",
+          "Hypothèse irréelle.",
+          "« were » à toutes les personnes (soutenu)."
+        ]
+      },
+      "aRetenir": "If + prétérit, would + base verbale."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est correcte ?",
+        "choix": [
+          "I am living here since five years.",
+          "I lived here for five years now.",
+          "I have lived here for five years.",
+          "I live here since five years."
+        ],
+        "bonne": 2,
+        "explication": "Present perfect + for."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« If I had time, I … travel. »",
+        "choix": [
+          "have",
+          "am",
+          "would",
+          "will"
+        ],
+        "bonne": 2,
+        "explication": "Irréel du présent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le passif se forme avec…",
+        "choix": [
+          "be + participe passé",
+          "have + infinitif",
+          "will + base",
+          "do + participe présent"
+        ],
+        "bonne": 0,
+        "explication": "Passif."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le courrier",
+    "histoire": [
+      "Tu écris à un correspondant britannique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour dire que tu habites à Paris depuis 2020 :",
+        "choix": [
+          "I lived in Paris since 2020.",
+          "I am living in Paris since 2020 years.",
+          "I have lived in Paris since 2020.",
+          "I live in Paris since 2020."
+        ],
+        "bonne": 2,
+        "explication": "since + date."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Il a dit qu'il était fatigué » :",
+        "choix": [
+          "He said I am tired.",
+          "He told that he is tired.",
+          "He said he was tired.",
+          "He says he is tired."
+        ],
+        "bonne": 2,
+        "explication": "Concordance."
+      }
+    ],
+    "conclusion": "Well done!"
+  }
+}

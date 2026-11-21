@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "De 1947 à 1991, le monde est dominé par l'affrontement des deux blocs ; leur disparition ouvre un monde plus instable.",
+  "niveaux": [
+    {
+      "titre": "Un monde bipolaire",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Après 1945, **États-Unis** (capitalisme, démocratie libérale) et **URSS** (communisme) s'opposent sans guerre directe : la **Guerre froide**. Elle se manifeste par la course aux armements, la **crise de Cuba** (1962), les guerres de Corée et du Vietnam, le blocus de Berlin et le **Mur** (1961). La **décolonisation** voit naître des États (Inde 1947, Algérie 1962) qui se partagent entre alignement et **non-alignement** (Bandung 1955)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1961 : construction du mur de Berlin.",
+          "1962 : crise des missiles de Cuba.",
+          "Équilibre de la terreur nucléaire."
+        ]
+      },
+      "aRetenir": "Deux blocs, sans guerre directe."
+    },
+    {
+      "titre": "Fin des blocs et monde instable",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Le mur de Berlin tombe le **9 novembre 1989**, l'Allemagne est réunifiée (1990), l'**URSS disparaît** (1991). Les États-Unis apparaissent comme la seule superpuissance mais font face à de nouveaux défis : conflits régionaux (Yougoslavie), **terrorisme** (11 septembre 2001), guerres d'Irak et d'Afghanistan, montée de la Chine. Le **conflit israélo-arabe** reste un foyer de crises."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1989 : chute du Mur.",
+          "1991 : dissolution de l'URSS.",
+          "2001 : attentats du 11 septembre."
+        ]
+      },
+      "aRetenir": "1989–1991 : fin du bloc de l'Est."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le mur de Berlin tombe en…",
+        "choix": [
+          "2001",
+          "1989",
+          "1961",
+          "1945"
+        ],
+        "bonne": 1,
+        "explication": "9 novembre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'URSS disparaît en…",
+        "choix": [
+          "1991",
+          "1945",
+          "1962",
+          "1975"
+        ],
+        "bonne": 0,
+        "explication": "Fin de la Guerre froide."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La Guerre froide oppose principalement…",
+        "choix": [
+          "la Chine et le Japon",
+          "l'Inde et le Pakistan",
+          "les États-Unis et l'URSS",
+          "la France et l'Allemagne"
+        ],
+        "bonne": 2,
+        "explication": "Deux superpuissances."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Cuba, 1962",
+    "histoire": [
+      "Tu analyses la crise des missiles."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment la crise se résout-elle ?",
+        "choix": [
+          "par une guerre mondiale ouverte",
+          "par un nouveau traité de Versailles",
+          "par une révolution américaine",
+          "par une négociation sans guerre"
+        ],
+        "bonne": 3,
+        "explication": "Compromis."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'équilibre de la terreur signifie…",
+        "choix": [
+          "qu'une alliance unit les deux blocs",
+          "qu'un traité de commerce est signé",
+          "que tous les arsenaux sont détruits",
+          "que chaque camp peut détruire l'autre"
+        ],
+        "bonne": 3,
+        "explication": "Dissuasion."
+      }
+    ],
+    "conclusion": "Crise analysée !"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En arts plastiques, on crée, on analyse des œuvres et on met en relation formes, matériaux et sens.",
+  "niveaux": [
+    {
+      "titre": "Analyser une œuvre",
+      "niveau": "2de",
+      "paragraphes": [
+        "Pour **analyser** une œuvre : **identifier** (auteur, date, technique, dimensions), **décrire** (composition, couleurs, lumière), **interpréter** (intentions, symboles) et **situer** (contexte, courant : impressionnisme, cubisme, surréalisme, pop art). Les **moyens plastiques** : forme, couleur, espace, matière, geste, temps."
+      ],
+      "exemple": {
+        "titre": "Exemple : Guernica",
+        "etapes": [
+          "Picasso, 1937, huile sur toile.",
+          "Noir et blanc, formes déformées.",
+          "Dénonce le bombardement de la ville."
+        ]
+      },
+      "aRetenir": "Description puis interprétation."
+    },
+    {
+      "titre": "Création et art contemporain",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "L'**art contemporain** (depuis les années 1960) élargit les pratiques : **installation**, **performance**, vidéo, art numérique, land art. La **démarche artistique** va de l'idée à la réalisation : recherche, essais, choix, présentation, **carnet de travail**. L'œuvre peut engager le spectateur et poser des questions sociales ou politiques."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une installation occupe l'espace.",
+          "Le spectateur circule.",
+          "L'expérience fait partie de l'œuvre."
+        ]
+      },
+      "aRetenir": "Démarche : idée, essais, réalisation."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Guernica est une œuvre de…",
+        "choix": [
+          "Van Gogh",
+          "Picasso",
+          "Monet",
+          "Dalí"
+        ],
+        "bonne": 1,
+        "explication": "1937."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une installation est…",
+        "choix": [
+          "un tableau accroché au mur",
+          "une photographie de famille",
+          "une partition de musique",
+          "une œuvre qui investit un espace"
+        ],
+        "bonne": 3,
+        "explication": "Art contemporain."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le carnet de travail sert à…",
+        "choix": [
+          "remplacer l'œuvre finale",
+          "cacher l'œuvre au public",
+          "noter les prix de vente",
+          "garder les recherches et essais"
+        ],
+        "bonne": 3,
+        "explication": "Démarche."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'exposition",
+    "histoire": [
+      "Tu visites une exposition d'art contemporain."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Premier temps de l'analyse ?",
+        "choix": [
+          "observer et décrire",
+          "juger immédiatement",
+          "chercher le prix",
+          "partir"
+        ],
+        "bonne": 0,
+        "explication": "Méthode."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une performance est…",
+        "choix": [
+          "un très grand tableau mural",
+          "une sculpture figée en bronze",
+          "la copie d'un chef-d'œuvre",
+          "une action artistique devant un public"
+        ],
+        "bonne": 3,
+        "explication": "Art vivant."
+      }
+    ],
+    "conclusion": "Bon regard !"
+  }
+}

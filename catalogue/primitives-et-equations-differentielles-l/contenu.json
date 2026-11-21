@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une primitive est l'opération inverse de la dérivée ; elle sert à résoudre des équations différentielles qui modélisent l'évolution de systèmes.",
+  "niveaux": [
+    {
+      "titre": "Primitives",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Une **primitive** de f est une fonction F telle que F' = f. Deux primitives diffèrent d'une constante. Primitives usuelles : xⁿ → xⁿ⁺¹/(n + 1) (n ≠ −1), 1/x → ln x sur ]0 ; +∞[, eˣ → eˣ, cos → sin, sin → −cos. Si u est dérivable : u'eᵘ a pour primitive eᵘ ; u'/u a pour primitive ln|u|.",
+        "L'intégrale ∫ₐᵇ f(x) dx = F(b) − F(a)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "f(x) = 3x² + 2.",
+          "F(x) = x³ + 2x + C.",
+          "∫₀¹ f = (1 + 2) − 0 = 3."
+        ]
+      },
+      "aRetenir": "F' = f ; primitives à une constante près."
+    },
+    {
+      "titre": "Équations différentielles",
+      "niveau": "Tle",
+      "paragraphes": [
+        "L'équation **y' = ay** (a réel) a pour solutions y = C eᵃˣ (C constante). Avec une **condition initiale** y(0) = y₀, la solution est unique : y = y₀ eᵃˣ. **y' = ay + b** : solutions y = C eᵃˣ − b/a. Ces équations modélisent la décroissance radioactive, le refroidissement, la croissance d'une population.",
+        "On vérifie en dérivant et en remplaçant."
+      ],
+      "exemple": {
+        "titre": "Exemple : y' = 2y, y(0) = 3",
+        "etapes": [
+          "Solutions : y = C e²ˣ.",
+          "y(0) = C = 3.",
+          "y = 3 e²ˣ."
+        ]
+      },
+      "aRetenir": "y' = ay ⇒ y = C eᵃˣ."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une primitive de f(x) = 3x² + 2 est…",
+        "choix": [
+          "6x",
+          "3x³ + 2x",
+          "x³ + 2",
+          "x³ + 2x"
+        ],
+        "bonne": 3,
+        "explication": "On dérive x³ + 2x : 3x² + 2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les solutions de y' = 2y sont…",
+        "choix": [
+          "y = C e²ˣ",
+          "y = C x²",
+          "y = e²ˣ + C",
+          "y = 2 + C"
+        ],
+        "bonne": 0,
+        "explication": "Forme C eᵃˣ."
+      },
+      {
+        "type": "nombre",
+        "question": "y' = 2y avec y(0) = 3. Valeur de y(0) ? (donne C)",
+        "reponse": 3,
+        "indices": [
+          "e⁰ = 1."
+        ],
+        "solution": "y(0) = C = 3.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le café qui refroidit",
+    "histoire": [
+      "La température T(t) d'un café vérifie T' = −0,1 (T − 20), avec T(0) = 80 °C. On pose y = T − 20 ; y' = −0,1 y."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "y(t) vaut…",
+        "choix": [
+          "60 e^(0,1t)",
+          "20 e^(−0,1t)",
+          "80 e^(−0,1t)",
+          "60 e^(−0,1t)"
+        ],
+        "bonne": 3,
+        "explication": "y(0) = 80 − 20 = 60."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La température tend vers…",
+        "choix": [
+          "100 °C",
+          "20 °C (la pièce)",
+          "0 °C",
+          "80 °C"
+        ],
+        "bonne": 1,
+        "explication": "e^(−0,1t) → 0."
+      }
+    ],
+    "conclusion": "Modèle résolu !"
+  }
+}

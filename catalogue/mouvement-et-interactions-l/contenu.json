@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Décrire un mouvement, c'est choisir un référentiel et caractériser la vitesse ; l'expliquer, c'est analyser les forces.",
+  "niveaux": [
+    {
+      "titre": "Décrire un mouvement",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le mouvement d'un objet dépend du **référentiel** choisi (le sol, un train…). Le **vecteur vitesse** a une direction (la tangente à la trajectoire), un sens (celui du mouvement) et une valeur (la vitesse en m/s). La vitesse moyenne vaut v = d/Δt ; pour convertir : 1 m/s = 3,6 km/h."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un coureur parcourt 100 m en 12,5 s.",
+          "v = 100/12,5 = 8 m/s.",
+          "8 × 3,6 = 28,8 km/h."
+        ]
+      },
+      "aRetenir": "Le mouvement est relatif au référentiel."
+    },
+    {
+      "titre": "Forces et inertie",
+      "niveau": "2de",
+      "paragraphes": [
+        "Une **force** est modélisée par un vecteur (point d'application, direction, sens, valeur en newtons). **Principe d'inertie** : dans un référentiel galiléen, un système soumis à des forces qui se compensent est soit au repos, soit en mouvement rectiligne uniforme ; réciproquement, un mouvement rectiligne uniforme ou le repos impliquent des forces qui se compensent. L'**interaction gravitationnelle** : F = G m_A m_B / d² (attractive, entre deux masses)."
+      ],
+      "exemple": {
+        "titre": "Exemple : parachutiste à vitesse constante",
+        "etapes": [
+          "Poids vers le bas.",
+          "Frottement de l'air vers le haut.",
+          "Forces opposées de même valeur : mouvement rectiligne uniforme."
+        ]
+      },
+      "aRetenir": "Forces compensées ⇒ vitesse constante."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Un coureur parcourt 100 m en 12,5 s. Vitesse (m/s) ?",
+        "reponse": 8,
+        "unite": "m/s",
+        "indices": [
+          "d/Δt."
+        ],
+        "solution": "100/12,5 = 8.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Convertis 20 m/s en km/h.",
+        "reponse": 72,
+        "unite": "km/h",
+        "indices": [
+          "× 3,6."
+        ],
+        "solution": "20 × 3,6 = 72.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un objet à vitesse constante en ligne droite est soumis à des forces qui…",
+        "choix": [
+          "se compensent",
+          "sont nulles uniquement",
+          "s'additionnent toujours",
+          "sont dirigées vers le bas"
+        ],
+        "bonne": 0,
+        "explication": "Principe d'inertie."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le train en gare",
+    "histoire": [
+      "Un train roule à vitesse constante sur une voie rectiligne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Les forces qui s'exercent sur lui…",
+        "choix": [
+          "se compensent",
+          "ne se compensent pas",
+          "n'existent pas",
+          "sont toutes horizontales"
+        ],
+        "bonne": 0,
+        "explication": "Rectiligne uniforme."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour un voyageur assis dans le train, un autre voyageur assis est…",
+        "choix": [
+          "dans le vide",
+          "immobile dans le référentiel du train",
+          "en mouvement dans le référentiel du train",
+          "toujours en mouvement"
+        ],
+        "bonne": 1,
+        "explication": "Dépend du référentiel."
+      }
+    ],
+    "conclusion": "Mouvement analysé !"
+  }
+}

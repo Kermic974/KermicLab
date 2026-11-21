@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans l'espace muni d'un repère orthonormé, le produit scalaire permet de caractériser l'orthogonalité et de décrire droites et plans.",
+  "niveaux": [
+    {
+      "titre": "Droites et plans",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Une **droite** passant par A(x_A ; y_A ; z_A) et de vecteur directeur u⃗(a ; b ; c) a pour **représentation paramétrique** : x = x_A + ta, y = y_A + tb, z = z_A + tc (t ∈ ℝ). Un **plan** de vecteur normal n⃗(a ; b ; c) a une **équation cartésienne** ax + by + cz + d = 0.",
+        "Deux vecteurs u⃗ et v⃗ sont **orthogonaux** si u⃗·v⃗ = 0 (u⃗·v⃗ = xx' + yy' + zz')."
+      ],
+      "exemple": {
+        "titre": "Exemple : plan",
+        "etapes": [
+          "Normal n⃗(1 ; 2 ; −1), passant par A(0 ; 0 ; 1).",
+          "x + 2y − z + d = 0 ; en A : −1 + d = 0 donc d = 1.",
+          "x + 2y − z + 1 = 0."
+        ]
+      },
+      "aRetenir": "Normal : u⃗·v⃗ = 0 pour tout vecteur du plan."
+    },
+    {
+      "titre": "Positions et distances",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Une droite de vecteur directeur u⃗ est **parallèle** à un plan de normal n⃗ si u⃗·n⃗ = 0 ; elle est **orthogonale** au plan si u⃗ et n⃗ sont colinéaires. La **distance** d'un point M(x₀ ; y₀ ; z₀) au plan ax + by + cz + d = 0 est |ax₀ + by₀ + cz₀ + d| / √(a² + b² + c²).",
+        "On étudie l'intersection en résolvant un système."
+      ],
+      "exemple": {
+        "titre": "Exemple : distance de O au plan x + 2y − z + 1 = 0",
+        "etapes": [
+          "|0 + 0 − 0 + 1| = 1.",
+          "Dénominateur : √(1 + 4 + 1) = √6.",
+          "d = 1/√6 ≈ 0,41."
+        ]
+      },
+      "aRetenir": "Distance : |ax₀ + by₀ + cz₀ + d| / norme du normal."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Produit scalaire de u⃗(1 ; 2 ; 3) et v⃗(2 ; −1 ; 0) ?",
+        "reponse": 0,
+        "indices": [
+          "xx' + yy' + zz'."
+        ],
+        "solution": "2 − 2 + 0 = 0 : orthogonaux.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un vecteur normal au plan 2x − y + 3z + 5 = 0 est…",
+        "choix": [
+          "(5 ; 0 ; 0)",
+          "(1 ; 1 ; 1)",
+          "(2 ; −1 ; 3)",
+          "(2 ; 1 ; 3)"
+        ],
+        "bonne": 2,
+        "explication": "Coefficients de x, y, z."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une droite de vecteur directeur u⃗ est parallèle à un plan de normal n⃗ si…",
+        "choix": [
+          "u⃗ et n⃗ sont colinéaires",
+          "u⃗·n⃗ = 1",
+          "u⃗·n⃗ = 0",
+          "u⃗ = n⃗"
+        ],
+        "bonne": 2,
+        "explication": "Orthogonaux."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le toit incliné",
+    "histoire": [
+      "Un toit plan a pour équation x + y + z = 6 (en m)."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un vecteur normal au toit est…",
+        "choix": [
+          "(0 ; 0 ; 1)",
+          "(1 ; 1 ; 1)",
+          "(1 ; 1 ; 6)",
+          "(6 ; 0 ; 0)"
+        ],
+        "bonne": 1,
+        "explication": "Coefficients de x, y, z."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le point (2 ; 2 ; 2) est-il sur le toit ?",
+        "choix": [
+          "en dessous",
+          "oui",
+          "non",
+          "au-dessus"
+        ],
+        "bonne": 1,
+        "explication": "2 + 2 + 2 = 6."
+      }
+    ],
+    "conclusion": "Espace maîtrisé !"
+  }
+}

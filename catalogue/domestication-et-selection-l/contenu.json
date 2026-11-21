@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Depuis le Néolithique, l'être humain sélectionne les plantes et les animaux : la domestication a transformé le génome de nos cultures.",
+  "niveaux": [
+    {
+      "titre": "De la plante sauvage à la plante cultivée",
+      "niveau": "Tle",
+      "paragraphes": [
+        "La **domestication** est un processus de **sélection artificielle** : l'être humain choisit et reproduit les individus aux caractères utiles (gros grains, grains qui restent sur l'épi, fruits sucrés). Exemples : blé à partir de blés sauvages (Proche-Orient, ~10 000 ans), maïs issu de la téosinte (Mexique), choux et brocolis issus d'une même espèce. La sélection a **réduit la diversité génétique** des variétés cultivées."
+      ],
+      "exemple": {
+        "titre": "Exemple : le maïs",
+        "etapes": [
+          "La téosinte a de petits épis durs.",
+          "La sélection a favorisé de gros épis.",
+          "Le maïs est très différent de son ancêtre."
+        ]
+      },
+      "aRetenir": "Sélection artificielle : on choisit les reproducteurs."
+    },
+    {
+      "titre": "Techniques modernes et enjeux",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Aujourd'hui on combine **croisements**, **sélection assistée par marqueurs** et **génie génétique** (OGM : transfert d'un gène ; édition du génome type CRISPR). Les enjeux : rendement, résistance aux maladies et au climat, mais aussi **perte de diversité**, dépendance aux semences, risques pour les écosystèmes, questions éthiques et réglementaires. La conservation de **variétés anciennes** et de plantes sauvages apparentées préserve un réservoir de gènes."
+      ],
+      "exemple": {
+        "titre": "Exemple : la résistance",
+        "etapes": [
+          "Une variété de blé résiste à un champignon.",
+          "On croise avec une variété sauvage porteuse du gène.",
+          "On sélectionne les descendants résistants."
+        ]
+      },
+      "aRetenir": "Diversité génétique = capacité d'adaptation."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La domestication repose sur…",
+        "choix": [
+          "la sélection naturelle seule",
+          "la sélection artificielle des plantes",
+          "la mutation spontanée seule",
+          "la photosynthèse des plantes"
+        ],
+        "bonne": 1,
+        "explication": "Choix humain."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le maïs descend…",
+        "choix": [
+          "de la téosinte",
+          "du blé",
+          "du riz",
+          "de la tomate"
+        ],
+        "bonne": 0,
+        "explication": "Origine mexicaine."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un effet de la sélection est…",
+        "choix": [
+          "la réduction de la diversité génétique",
+          "l'augmentation automatique de la diversité",
+          "la disparition du génome",
+          "la suppression des mutations"
+        ],
+        "bonne": 0,
+        "explication": "Variétés homogènes."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le conservatoire de semences",
+    "histoire": [
+      "Un conservatoire protège des variétés anciennes de blé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi les conserver ?",
+        "choix": [
+          "elles sont plus belles à regarder",
+          "elles produisent toujours plus",
+          "elles sont sans aucun intérêt",
+          "elles portent des gènes utiles pour s'adapter"
+        ],
+        "bonne": 3,
+        "explication": "Réservoir génétique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un OGM est…",
+        "choix": [
+          "un fruit de très gros calibre",
+          "un produit issu de l'agriculture bio",
+          "une plante sauvage non cultivée",
+          "un organisme au génome modifié"
+        ],
+        "bonne": 3,
+        "explication": "Transfert ou édition de gène."
+      }
+    ],
+    "conclusion": "Bon conservateur !"
+  }
+}
