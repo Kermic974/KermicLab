@@ -5,13 +5,7 @@ sujet: mathematiques/fractions-simples-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - doubles-et-moities-c2
-competences:
-  - fractions-simples-c2-comprendre
-  - fractions-simples-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - C'est quoi la moitié, le tiers et le quart ?
   - Comment écrire une fraction ?
   - Comment partager un gâteau en parts égales ?
+prerequis: doubles-et-moities-c2
+niveaux: cycle-2
+competences: reconnaitre-la-moitie-le-tiers-et-le-quart, ecrire-une-fraction-a-partir-d-un-partage, comparer-des-parts-egales, resoudre-un-partage-en-fractions
 ---
 
 # Les fractions simples : moitié, tiers, quart

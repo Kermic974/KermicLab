@@ -5,13 +5,7 @@ sujet: mathematiques/solides-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - figures-planes-c2
-competences:
-  - solides-c2-comprendre
-  - solides-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Quels sont les solides : cube, pavé, boule ?
   - C'est quoi une face, une arête, un sommet ?
   - Comment reconnaître un cube ?
+prerequis: figures-planes-c2
+niveaux: cycle-2
+competences: reconnaitre-un-cube-une-boule-et-un-pave, compter-les-faces-d-un-solide, compter-les-sommets-et-les-aretes, decrire-un-solide-de-la-vie-courante
 ---
 
 # Les solides

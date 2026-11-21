@@ -5,13 +5,7 @@ sujet: francais/syllabes-et-mots-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP
-prerequis:
-  - lettres-et-sons-c2
-competences:
-  - syllabes-et-mots-c2-comprendre
-  - syllabes-et-mots-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment découper un mot en syllabes ?
   - Comment lire un mot que je ne connais pas ?
   - C'est quoi un mot-outil ?
+prerequis: lettres-et-sons-c2
+niveaux: cycle-2
+competences: decouper-un-mot-en-syllabes, compter-les-syllabes-d-un-mot, reconnaitre-un-mot-outil, lire-des-mots-courants
 ---
 
 # Les syllabes et la lecture de mots

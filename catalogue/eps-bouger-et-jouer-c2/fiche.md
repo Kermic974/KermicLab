@@ -5,12 +5,7 @@ sujet: eps/eps-bouger-et-jouer-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-competences:
-  - eps-bouger-et-jouer-c2-comprendre
-  - eps-bouger-et-jouer-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Pourquoi faut-il bouger tous les jours ?
   - Quelles sont les règles d'un jeu collectif ?
   - Comment rester en sécurité en EPS ?
+prerequis:
+niveaux: cycle-2
+competences: appliquer-des-regles-de-securite-lors-d-un-jeu, respecter-les-regles-et-les-partenaires-fair-play, se-deplacer-de-differentes-facons, adopter-une-conduite-adaptee-a-la-piscine
 ---
 
 # EPS : bouger, jouer et rester en sécurité

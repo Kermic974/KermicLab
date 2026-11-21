@@ -5,12 +5,7 @@ sujet: svt/animaux-et-plantes-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1
-prerequis:
-competences:
-  - animaux-et-plantes-c2-comprendre
-  - animaux-et-plantes-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Qu'est-ce qui est vivant ?
   - Comment classer les animaux ?
   - Quelles sont les parties d'une plante ?
+prerequis:
+niveaux: cycle-2
+competences: classer-un-animal-mammifere-oiseau-insecte, decrire-les-parties-d-une-plante-et-leur-role, compter-les-pattes-et-reconnaitre-un-insecte, observer-et-decrire-un-etre-vivant
 ---
 
 # Les animaux et les plantes

@@ -5,13 +5,7 @@ sujet: francais/singulier-pluriel-masculin-feminin-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - noms-et-determinants-c2
-competences:
-  - singulier-pluriel-masculin-feminin-c2-comprendre
-  - singulier-pluriel-masculin-feminin-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment former le pluriel des noms ?
   - Comment passer du masculin au féminin ?
   - Comment accorder le verbe avec le sujet au CE1 ?
+prerequis: noms-et-determinants-c2
+niveaux: cycle-2
+competences: former-le-pluriel-d-un-nom, former-le-feminin-d-un-adjectif, accorder-le-verbe-avec-le-sujet-pluriel, reperer-un-accord-a-faire
 ---
 
 # Pluriel, féminin et accords

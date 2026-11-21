@@ -5,12 +5,7 @@ sujet: histoire/se-reperer-dans-le-temps-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1
-prerequis:
-competences:
-  - se-reperer-dans-le-temps-c2-comprendre
-  - se-reperer-dans-le-temps-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment se repérer dans le temps ?
   - C'est quoi une génération ?
   - C'est quoi une frise chronologique ?
+prerequis:
+niveaux: cycle-2
+competences: ordonner-les-jours-de-la-semaine, compter-les-mois-d-une-annee, comparer-des-ages-et-des-generations, placer-des-evenements-sur-une-frise
 ---
 
 # Se repérer dans le temps : jours, mois, générations

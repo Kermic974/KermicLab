@@ -5,13 +5,7 @@ sujet: mathematiques/nombres-jusqu-a-1000-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1
-prerequis:
-  - nombres-jusqu-a-100-c2
-competences:
-  - nombres-jusqu-a-1000-c2-comprendre
-  - nombres-jusqu-a-1000-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +19,9 @@ questions:
   - C'est quoi une centaine ?
   - Comment lire un nombre à trois chiffres ?
   - Comment compter jusqu'à 1 000 au CE1 ?
+prerequis: nombres-jusqu-a-100-c2
+niveaux: cycle-2
+competences: lire-et-ecrire-un-nombre-jusqu-a-1-000, decomposer-en-centaines-dizaines-unites, comparer-des-nombres-de-trois-chiffres, compter-par-centaines
 ---
 
 # Les nombres jusqu'à 1 000

@@ -5,13 +5,7 @@ sujet: francais/ecrire-et-comptines-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - la-phrase-c2
-competences:
-  - ecrire-et-comptines-c2-comprendre
-  - ecrire-et-comptines-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - Comment écrire une histoire courte ?
   - C'est quoi une rime ?
   - Comment relire son texte ?
+prerequis: la-phrase-c2
+niveaux: cycle-2
+competences: ecrire-une-phrase-correcte, identifier-des-mots-qui-riment, relire-un-texte-pour-le-corriger, ecrire-une-courte-histoire
 ---
 
 # Écrire une phrase, un texte, un poème

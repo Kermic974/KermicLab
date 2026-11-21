@@ -5,12 +5,7 @@ sujet: musique/musique-sons-et-chansons-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-competences:
-  - musique-sons-et-chansons-c2-comprendre
-  - musique-sons-et-chansons-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Qu'est-ce qu'un son grave et aigu ?
   - Comment taper le rythme d'une chanson ?
   - Quels sont les instruments de musique ?
+prerequis:
+niveaux: cycle-2
+competences: distinguer-des-sons-selon-leur-origine-et-leur-hauteur, reperer-la-pulsation-d-un-morceau, reproduire-un-rythme-simple, chanter-en-groupe-avec-justesse
 ---
 
 # Musique : les sons, le rythme et les chansons

@@ -36,7 +36,7 @@ Ces décisions ont été validées le 17 novembre 2026. Elles fixent les valeurs
 
 - `provenance` est un objet fermé avec les champs obligatoires `type` et `ref`. Les types admis sont `official`, `editorial` et `legacy-v0`. `ref` est une chaîne non vide qui identifie la source documentaire.
 - `evidence`, si présent, est un tableau d’au moins un objet fermé. Chaque objet exige `ref` et `excerpt`, deux chaînes non vides. La référence localise la source et l’extrait justifie l’assertion. Les données apprenant sont exclues.
-- Le champ `code` du Stage précise le niveau. `cycle-3` et `cycle-4` correspondent à `cycle`. `seconde`, `premiere` et `terminale` correspondent à `grade`.
+- Le champ `code` du Stage précise le niveau. `cycle-2` (ajouté par l’[ADR 0038](0038-etape-cycle-2-referentiel.md)), `cycle-3` et `cycle-4` correspondent à `cycle`. `seconde`, `premiere` et `terminale` correspondent à `grade`.
 - Les segments `discipline` et `slug-stable` respectent les primitives de S4.1. Le slug est attribué à la création puis conservé entre révisions. L’unicité métier d’une Relation ou d’un placement est contrôlée séparément.
 
 Exemples destinés aux fixtures :

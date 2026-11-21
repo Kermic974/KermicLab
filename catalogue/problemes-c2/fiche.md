@@ -5,14 +5,7 @@ sujet: mathematiques/problemes-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-  - addition-c2
-  - soustraction-c2
-competences:
-  - problemes-c2-comprendre
-  - problemes-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +20,9 @@ questions:
   - Comment résoudre un problème de maths ?
   - Comment choisir entre plus, moins, fois ?
   - Comment bien lire un énoncé ?
+prerequis: addition-c2, soustraction-c2
+niveaux: cycle-2
+competences: lire-et-comprendre-un-probleme, choisir-l-operation-adaptee, resoudre-un-probleme-d-addition-ou-de-soustraction, resoudre-un-probleme-de-partage
 ---
 
 # Résoudre des petits problèmes

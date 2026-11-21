@@ -5,12 +5,7 @@ sujet: arts-plastiques/arts-couleurs-et-formes-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP, CE1, CE2
-prerequis:
-competences:
-  - arts-couleurs-et-formes-c2-comprendre
-  - arts-couleurs-et-formes-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Quelles sont les couleurs primaires au CP ?
   - Comment obtenir du vert en mélangeant au CP ?
   - Comment regarder un tableau ?
+prerequis:
+niveaux: cycle-2
+competences: melanger-deux-couleurs-primaires-pour-obtenir-une-couleur-secondaire, distinguer-couleurs-primaires-et-secondaires, dessiner-et-assembler-des-formes-par-collage, decrire-une-uvre-connue-avec-ses-mots
 ---
 
 # Arts plastiques : couleurs, formes et œuvres

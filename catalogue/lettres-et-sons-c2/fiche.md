@@ -5,12 +5,7 @@ sujet: francais/lettres-et-sons-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CP
-prerequis:
-competences:
-  - lettres-et-sons-c2-comprendre
-  - lettres-et-sons-c2-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Quelles sont les voyelles et les consonnes ?
   - Comment les lettres font-elles des sons ?
   - Comment lire les sons ou, on, an ?
+prerequis:
+niveaux: cycle-2
+competences: nommer-les-lettres-et-distinguer-voyelles-et-consonnes, identifier-un-son-dans-un-mot, associer-plusieurs-lettres-a-un-meme-son, ordonner-les-lettres-de-l-alphabet
 ---
 
 # Les lettres et les sons

@@ -5,13 +5,7 @@ sujet: mathematiques/symetrie-et-reperage-c2
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-2
 classes: CE1, CE2
-prerequis:
-  - figures-planes-c2
-competences:
-  - symetrie-et-reperage-c2-comprendre
-  - symetrie-et-reperage-c2-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - C'est quoi un axe de symétrie au CE1 ?
   - Comment se repérer sur un quadrillage ?
   - Comment compléter une figure symétrique ?
+prerequis: figures-planes-c2
+niveaux: cycle-2
+competences: reconnaitre-une-figure-symetrique, trouver-le-symetrique-d-un-point-sur-quadrillage, reperer-une-case-par-ses-coordonnees, completer-une-figure-par-symetrie
 ---
 
 # Symétrie et repérage sur quadrillage

@@ -71,21 +71,21 @@
       "type": "string",
       "pattern": "^notion\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])",
       "not": {
-        "pattern": "\\.(?:cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
+        "pattern": "\\.(?:cycle-2|cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
       }
     },
     "microskill": {
       "type": "string",
       "pattern": "^microskill\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])",
       "not": {
-        "pattern": "\\.(?:cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
+        "pattern": "\\.(?:cycle-2|cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
       }
     },
     "skill": {
       "type": "string",
       "pattern": "^skill\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*(?![\\s\\S])",
       "not": {
-        "pattern": "\\.(?:cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
+        "pattern": "\\.(?:cycle-2|cycle-3|cycle-4|seconde|premiere|terminale)(?=\\.|(?![\\s\\S]))"
       }
     },
     "relation": {
