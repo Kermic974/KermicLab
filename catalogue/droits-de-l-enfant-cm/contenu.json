@@ -45,14 +45,17 @@
     "intro": "Réponds à chaque question, puis lis la correction.",
     "exercices": [
       {
-        "type": "nombre",
+        "type": "qcm",
+        "titre": "Exercice 1",
         "question": "En quelle année la Convention internationale des droits de l'enfant est-elle adoptée ?",
-        "reponse": 1989,
-        "indices": [
-          "Fin des années 1980."
+        "choix": [
+          "1989",
+          "1789",
+          "1945",
+          "2000"
         ],
-        "solution": "Le 20 novembre 1989.",
-        "titre": "Exercice 1"
+        "bonne": 0,
+        "explication": "Le 20 novembre 1989."
       },
       {
         "type": "qcm",

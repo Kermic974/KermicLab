@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour bien accorder, on cherche d'abord le sujet, puis on teste en remplaçant.",
+  "niveaux": [
+    {
+      "titre": "Intuition : -er ou -é ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour choisir entre l'infinitif (-er) et le participe passé (-é), on remplace par « vendre » ou « vendu » : « Il va manger (vendre) » → -er ; « Il a mangé (vendu) » → -é."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Elle veut chanter » : vendre → chanter.",
+          "« Elle a chanté » : vendu → chanté.",
+          "On teste avec un verbe du 3e groupe."
+        ]
+      },
+      "aRetenir": "Test : vendre / vendu."
+    },
+    {
+      "titre": "Accords du participe passé",
+      "niveau": "6e",
+      "paragraphes": [
+        "Avec **être**, le participe passé s'accorde avec le **sujet** : « Elles sont arrivées ». Avec **avoir**, il ne s'accorde pas avec le sujet ; il s'accorde avec le COD **placé avant** : « Les lettres qu'elle a écrites ».",
+        "Le verbe s'accorde avec son sujet même éloigné : « Les enfants de mon voisin jouent »."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Les pommes que j'ai (manger) »",
+        "etapes": [
+          "COD : « que » = les pommes, placé avant.",
+          "Féminin pluriel : mangées.",
+          "Les pommes que j'ai mangées."
+        ]
+      },
+      "aRetenir": "COD placé avant : accord avec avoir."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Il faut ___ la table. » (nettoyer)",
+        "choix": [
+          "nettoyer",
+          "nettoyé",
+          "nettoyée",
+          "nettoyez"
+        ],
+        "bonne": 0,
+        "explication": "On peut dire « vendre »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « Elles sont ___ hier. » (partir)",
+        "choix": [
+          "parties",
+          "partis",
+          "parti",
+          "partie"
+        ],
+        "bonne": 0,
+        "explication": "Accord avec « elles »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Complète : « Les photos que j'ai ___ » (prendre)",
+        "choix": [
+          "prises",
+          "pris",
+          "prise",
+          "prendre"
+        ],
+        "bonne": 0,
+        "explication": "COD placé avant, féminin pluriel."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La dictée corrigée",
+    "histoire": [
+      "Tu corriges une dictée."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Les enfants ont (jouer) dehors. » La forme correcte :",
+        "choix": [
+          "joué",
+          "jouer",
+          "jouée",
+          "jouées"
+        ],
+        "bonne": 0,
+        "explication": "Avec avoir, pas d'accord (COD absent) : joué."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Mes sœurs sont (arriver) en retard. »",
+        "choix": [
+          "arrivées",
+          "arrivé",
+          "arriver",
+          "arrivés"
+        ],
+        "bonne": 0,
+        "explication": "Accord avec le sujet féminin pluriel."
+      }
+    ],
+    "conclusion": "Dictée corrigée !"
+  }
+}

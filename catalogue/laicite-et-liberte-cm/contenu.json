@@ -71,14 +71,17 @@
         "explication": "Avec des limites."
       },
       {
-        "type": "nombre",
+        "type": "qcm",
+        "titre": "Exercice 3",
         "question": "En quelle année est votée la loi de séparation des Églises et de l'État ?",
-        "reponse": 1905,
-        "indices": [
-          "Début du XXe siècle."
+        "choix": [
+          "1905",
+          "1789",
+          "1958",
+          "1881"
         ],
-        "solution": "Loi du 9 décembre 1905.",
-        "titre": "Exercice 3"
+        "bonne": 0,
+        "explication": "Loi du 9 décembre 1905."
       }
     ]
   },

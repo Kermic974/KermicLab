@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On se repère sur une droite graduée et on présente des données par des graphiques.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les graduations",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Sur une droite graduée, un point est repéré par un nombre : son **abscisse**. Si deux graduations valent 1 unité, une graduation intermédiaire vaut 0,5.",
+        "Un tableau range des données ; un graphique les rend visibles d'un coup d'œil."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "A est entre 2 et 3, à mi-chemin : abscisse 2,5.",
+          "B est à gauche de 0 : on étudiera les négatifs plus tard.",
+          "Chaque graduation doit être lue avec son pas."
+        ]
+      },
+      "aRetenir": "Toujours regarder le pas de la graduation."
+    },
+    {
+      "titre": "Diagrammes",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un **diagramme en bâtons** : la hauteur est proportionnelle à l'effectif. Un **diagramme circulaire** : chaque secteur a un angle proportionnel à l'effectif (360° pour le total).",
+        "Pour tracer un secteur : angle = effectif ÷ total × 360°. 10 élèves sur 40 : 10 ÷ 40 × 360 = 90°."
+      ],
+      "exemple": {
+        "titre": "Exemple : angle d'un secteur",
+        "etapes": [
+          "40 élèves en tout, 10 aiment le foot.",
+          "10 ÷ 40 = 1/4.",
+          "1/4 de 360° = 90°."
+        ]
+      },
+      "aRetenir": "Angle du secteur = fraction × 360°."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "10 élèves sur 40 aiment le foot. Quel est l'angle du secteur (en degrés) ?",
+        "reponse": 90,
+        "unite": "°",
+        "indices": [
+          "Calcule la fraction d'abord."
+        ],
+        "solution": "10/40 × 360 = 90.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "20 élèves sur 40 : quel angle ?",
+        "reponse": 180,
+        "unite": "°",
+        "indices": [
+          "20/40 = 1/2."
+        ],
+        "solution": "La moitié de 360°.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un diagramme circulaire représente…",
+        "choix": [
+          "des proportions d'un total",
+          "une évolution dans le temps",
+          "des positions",
+          "des angles seulement"
+        ],
+        "bonne": 0,
+        "explication": "Chaque secteur est proportionnel."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sondage de la classe",
+    "histoire": [
+      "Sur 30 élèves, 15 aiment la musique, 9 le sport, 6 la lecture."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel angle pour la musique ?",
+        "reponse": 180,
+        "unite": "°",
+        "indices": [
+          "La moitié de 360°."
+        ],
+        "solution": "15/30 = 1/2 → 180°.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quel angle pour la lecture ?",
+        "reponse": 72,
+        "unite": "°",
+        "indices": [
+          "6/30 = 1/5."
+        ],
+        "solution": "6/30 × 360 = 72.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Sondage réussi !"
+  }
+}

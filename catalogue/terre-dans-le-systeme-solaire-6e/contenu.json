@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La Terre est une planète du système solaire : elle tourne sur elle-même et autour du Soleil.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une planète en mouvement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La Terre tourne sur elle-même en 24 h (**rotation**) et autour du Soleil en environ 365,25 jours (**révolution**). La Lune tourne autour de la Terre en 27 jours environ."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Rotation → jour et nuit.",
+          "Révolution → année.",
+          "Inclinaison de l'axe → saisons."
+        ]
+      },
+      "aRetenir": "Rotation : 24 h. Révolution : 1 an."
+    },
+    {
+      "titre": "Éclipses et gravitation",
+      "niveau": "6e",
+      "paragraphes": [
+        "Lors d'une **éclipse de Soleil**, la Lune passe entre la Terre et le Soleil et cache le Soleil. Lors d'une **éclipse de Lune**, la Terre est entre le Soleil et la Lune et projette son ombre sur elle.",
+        "La **gravitation** est l'attraction entre les astres : elle retient la Terre autour du Soleil et la Lune autour de la Terre. Le Soleil est une **étoile** ; la Terre est la 3e planète en partant du Soleil."
+      ],
+      "exemple": {
+        "titre": "Exemple : éclipse de Soleil",
+        "etapes": [
+          "Les trois astres sont alignés.",
+          "La Lune est au milieu.",
+          "On voit un disque noir devant le Soleil."
+        ]
+      },
+      "aRetenir": "Ne jamais regarder le Soleil sans lunettes spéciales."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une éclipse de Soleil a lieu quand…",
+        "choix": [
+          "la Lune passe entre la Terre et le Soleil",
+          "la Terre passe entre la Lune et le Soleil",
+          "il pleut",
+          "la Lune est pleine seulement"
+        ],
+        "bonne": 0,
+        "explication": "Alignement Soleil-Lune-Terre."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de planètes autour du Soleil ?",
+        "reponse": 8,
+        "indices": [
+          "De Mercure à Neptune."
+        ],
+        "solution": "Huit planètes.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qu'est-ce que la gravitation ?",
+        "choix": [
+          "Une attraction entre les astres",
+          "Un nuage",
+          "Un vent solaire",
+          "Une planète"
+        ],
+        "bonne": 0,
+        "explication": "Elle les maintient en orbite."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'éclipse du siècle",
+    "histoire": [
+      "Tu observes une éclipse avec la classe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle protection pour observer ?",
+        "choix": [
+          "Des lunettes spéciales éclipse",
+          "Rien",
+          "Des lunettes de soleil classiques",
+          "Une loupe"
+        ],
+        "bonne": 0,
+        "explication": "Jamais à l'œil nu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel astre cache le Soleil ?",
+        "choix": [
+          "La Lune",
+          "Mars",
+          "La Terre",
+          "Vénus"
+        ],
+        "bonne": 0,
+        "explication": "La Lune passe devant."
+      }
+    ],
+    "conclusion": "Astronome confirmé !"
+  }
+}

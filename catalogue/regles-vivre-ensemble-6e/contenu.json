@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au collège, vivre ensemble suppose des règles, de l'égalité et du respect.",
+  "niveaux": [
+    {
+      "titre": "Intuition : entrer au collège",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "En entrant en 6e, tu découvres un **règlement intérieur** : horaires, comportement, respect du matériel. Ces règles servent à protéger tout le monde et à faciliter le travail.",
+        "Chacun doit être traité avec respect, quelles que soient son origine, sa religion, son genre ou sa santé."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Arriver à l'heure.",
+          "Respecter ses camarades et les adultes.",
+          "Prendre soin du matériel."
+        ]
+      },
+      "aRetenir": "Les règles protègent et organisent."
+    },
+    {
+      "titre": "Lois et discriminations",
+      "niveau": "6e",
+      "paragraphes": [
+        "La **discrimination** est un traitement injuste fondé sur l'origine, le sexe, la religion, un handicap, l'orientation… Elle est interdite et punie par la loi, comme le **racisme**, le **sexisme** ou le **harcèlement**.",
+        "En cas de problème : en parler à un adulte (professeur, CPE, infirmière, 3018). Le principe d'égalité signifie que la loi est la même pour tous."
+      ],
+      "exemple": {
+        "titre": "Exemple : agir",
+        "etapes": [
+          "Tu es témoin d'une moquerie raciste.",
+          "Tu ne ris pas et tu soutiens la victime.",
+          "Tu préviens un adulte."
+        ]
+      },
+      "aRetenir": "La discrimination est un délit."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La discrimination est…",
+        "choix": [
+          "interdite par la loi",
+          "autorisée entre amis",
+          "une plaisanterie sans danger",
+          "obligatoire"
+        ],
+        "bonne": 0,
+        "explication": "Elle est punie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "À qui parler en cas de harcèlement ?",
+        "choix": [
+          "À un adulte du collège ou au 3018",
+          "À personne",
+          "Seulement à un ami",
+          "À un inconnu en ligne"
+        ],
+        "bonne": 0,
+        "explication": "Ne pas rester seul."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le règlement intérieur sert à…",
+        "choix": [
+          "organiser la vie du collège",
+          "punir tout le monde",
+          "choisir les notes",
+          "décorer"
+        ],
+        "bonne": 0,
+        "explication": "Il fixe les règles communes."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La première semaine de 6e",
+    "histoire": [
+      "Tu arrives dans un nouveau collège."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un élève est moqué pour son accent. Que fais-tu ?",
+        "choix": [
+          "Je le soutiens et j'en parle à un adulte",
+          "Je ris",
+          "Je filme",
+          "Je m'éloigne sans rien dire"
+        ],
+        "bonne": 0,
+        "explication": "Agir contre la discrimination."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi respecter le règlement ?",
+        "choix": [
+          "Pour bien vivre ensemble",
+          "Pour avoir des cadeaux",
+          "Pour faire plaisir à la télévision",
+          "Par habitude seulement"
+        ],
+        "bonne": 0,
+        "explication": "Bien-être collectif."
+      }
+    ],
+    "conclusion": "Bienvenue au collège !"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Habiter, c'est vivre, travailler et se déplacer dans un espace qu'on aménage.",
+  "niveaux": [
+    {
+      "titre": "Intuition : trois façons d'habiter",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **métropole** est une très grande ville qui concentre habitants, emplois et pouvoirs (Paris, Lyon, Marseille). Un **littoral** est la frange de terre au bord de la mer, très attractive. Un **désert** est un espace très peu peuplé (chaud ou froid)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Métropole : tramway, gratte-ciel, université.",
+          "Littoral : ports, tourisme, pêche.",
+          "Désert : oasis, élevage nomade."
+        ]
+      },
+      "aRetenir": "Les modes d'habiter varient selon les espaces."
+    },
+    {
+      "titre": "Atouts et contraintes",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les **métropoles** offrent emplois et services mais posent des problèmes (pollution, logement cher, transports saturés). Les **littoraux** attirent mais sont menacés (érosion, montée du niveau de la mer, tempêtes). Dans les **espaces faiblement peuplés**, il y a de la place mais peu de services.",
+        "L'être humain s'adapte : oasis dans le désert, digues sur le littoral, transports en commun en ville."
+      ],
+      "exemple": {
+        "titre": "Exemple : une oasis",
+        "etapes": [
+          "Une source d'eau dans le désert.",
+          "Des palmiers et des cultures.",
+          "Un village s'y installe."
+        ]
+      },
+      "aRetenir": "Chaque espace a ses atouts et ses contraintes."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une métropole est…",
+        "choix": [
+          "une très grande ville",
+          "un petit village",
+          "un désert",
+          "une île"
+        ],
+        "bonne": 0,
+        "explication": "Elle concentre habitants et activités."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une menace pour les littoraux est…",
+        "choix": [
+          "la montée du niveau de la mer",
+          "la neige",
+          "la sécheresse seule",
+          "les volcans"
+        ],
+        "bonne": 0,
+        "explication": "Érosion et submersion."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une oasis est…",
+        "choix": [
+          "un point d'eau dans le désert",
+          "un volcan",
+          "un port",
+          "un glacier"
+        ],
+        "bonne": 0,
+        "explication": "Elle permet de vivre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Choisir où habiter",
+    "histoire": [
+      "Une famille hésite entre la ville, la côte et la campagne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel avantage pour la métropole ?",
+        "choix": [
+          "Beaucoup d'emplois et de services",
+          "Le silence absolu",
+          "Une grande plage",
+          "Aucun trafic"
+        ],
+        "bonne": 0,
+        "explication": "Concentration d'activités."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel inconvénient pour le littoral ?",
+        "choix": [
+          "Risques de submersion",
+          "Pas d'eau",
+          "Trop de montagnes",
+          "Trop de désert"
+        ],
+        "bonne": 0,
+        "explication": "Érosion, tempêtes."
+      }
+    ],
+    "conclusion": "Tu as aidé la famille !"
+  }
+}

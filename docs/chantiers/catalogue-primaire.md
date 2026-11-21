@@ -1,6 +1,6 @@
 # Chantier : catalogue du primaire (cycle 3 — CM1 / CM2)
 
-**Niveau actuel : 80 notions rédigées, relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
+**Niveau actuel : 83 notions CM1/CM2 et 14 notions de 6e rédigées (suffixe `-6e`), relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
 
 Méthode : gabarit commun (`contenu.json`, trois onglets), niveau `primaire`, classes `CM1` / `CM2`, cycle `cycle-3`. Chaque notion a deux niveaux de
 lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, avec indices) et un défi en deux étapes.
@@ -19,3 +19,7 @@ lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, av
 - **Relecture humaine obligatoire** avant fusion (idéalement par un enseignant du premier degré) : exactitude des dates, des définitions et des corrections.
 - Les langues vivantes, les arts et l'EPS du cycle 3 ne sont pas couverts (le catalogue n'a pas ces matières).
 - Les notions de collège équivalentes (`fractions`, `nombres-decimaux`…) restent la suite naturelle (6e) : pas de prérequis croisé automatique.
+
+## 6e (fin du cycle 3)
+
+Les notions `*-6e` (niveau `college`, classe `6e`, cycle 3) complètent les 12 notions de 6e déjà présentes : entiers et divisions, constructions, repérage et données, algorithmique, symétrie ; temps du récit, contes et fables, fonctions, accords ; Néolithique, premières civilisations, Grèce, Rome ; habiter ; vivre ensemble ; sciences et technologie.

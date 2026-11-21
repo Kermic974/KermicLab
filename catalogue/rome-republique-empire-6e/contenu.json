@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Rome, d'abord petite cité, devient la capitale d'un immense empire.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la légende et la ville",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Selon la légende, **Romulus** fonde Rome en 753 av. J.-C. À l'origine, Rome est une monarchie ; en **509 av. J.-C.**, elle devient une **République** dirigée par des magistrats (consuls) et le Sénat.",
+        "Les **légions** romaines conquièrent l'Italie, puis tout le bassin méditerranéen."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le Sénat vote les lois.",
+          "Deux consuls dirigent Rome pour un an.",
+          "L'armée conquiert de nouveaux territoires."
+        ]
+      },
+      "aRetenir": "République = pouvoir partagé."
+    },
+    {
+      "titre": "De l'Empire à la romanisation",
+      "niveau": "6e",
+      "paragraphes": [
+        "Après la guerre civile, **Auguste** devient le premier **empereur** (27 av. J.-C.) : le pouvoir est concentré dans les mains d'un seul homme. L'Empire s'étend de l'Angleterre à l'Égypte. La paix romaine (**pax romana**) favorise le commerce.",
+        "Les Romains construisent routes, aqueducs, thermes, amphithéâtres. Ils étendent leur langue (le latin) : c'est la **romanisation**."
+      ],
+      "exemple": {
+        "titre": "Exemple : les routes",
+        "etapes": [
+          "Elles relient les provinces.",
+          "Les légions se déplacent vite.",
+          "Le commerce se développe."
+        ]
+      },
+      "aRetenir": "Empire romain : un seul empereur, de nombreuses provinces."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année av. J.-C. Rome devient-elle une République ?",
+        "reponse": 509,
+        "indices": [
+          "Fin du VIe siècle av. J.-C."
+        ],
+        "solution": "509 av. J.-C.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui est le premier empereur romain ?",
+        "choix": [
+          "Auguste",
+          "Jules César",
+          "Néron",
+          "Romulus"
+        ],
+        "bonne": 0,
+        "explication": "Il règne à partir de 27 av. J.-C."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "À quoi servent les aqueducs ?",
+        "choix": [
+          "À amener l'eau",
+          "À stocker les armes",
+          "À faire du commerce",
+          "À écrire"
+        ],
+        "bonne": 0,
+        "explication": "Approvisionnement en eau."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Voyage sur une voie romaine",
+    "histoire": [
+      "Tu voyages à travers l'Empire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle langue entends-tu dans les villes ?",
+        "choix": [
+          "Le latin",
+          "L'anglais",
+          "Le français",
+          "Le japonais"
+        ],
+        "bonne": 0,
+        "explication": "Latin."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi les routes sont-elles utiles ?",
+        "choix": [
+          "Pour déplacer armée et marchandises",
+          "Pour jouer",
+          "Pour décorer",
+          "Pour se cacher"
+        ],
+        "bonne": 0,
+        "explication": "Rapidité."
+      }
+    ],
+    "conclusion": "Tu connais Rome !"
+  }
+}
