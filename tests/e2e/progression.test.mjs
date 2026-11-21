@@ -56,7 +56,8 @@ test("temps actif : compté seulement pendant l'activité, en pause après une m
   const { page, contexte, erreurs } = await demarrer({ horloge: true });
   // 5 interactions espacées de 30 s : 2 min entre la première et la dernière, puis 1 min de fenêtre d'activité.
   for (let i = 0; i < 5; i++) {
-    await page.mouse.click(640, 860);
+    // Clic sur un texte neutre (l'accroche de l'en-tête) : un point fixe de l'écran peut tomber sur un lien selon la mise en page.
+    await page.locator("#accroche").click();
     await page.clock.runFor(30_000);
   }
   // Dix minutes sans aucune interaction : le compteur ne bouge plus.

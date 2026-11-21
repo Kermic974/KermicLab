@@ -1233,6 +1233,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (max-width: 380px) { .nav-mobile-bouton { font-size: 10px; letter-spacing: -.01em; } }
 
 /* Changer d'appareil : export et import de la progression (issue #189). */
+.fichier-progression { display: flex; flex-direction: column; gap: 10px; padding: 22px; }
 .fichier-progression h2 { margin: 0 0 4px; }
 .fichier-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
 .fichier-actions label.bouton { cursor: pointer; }
