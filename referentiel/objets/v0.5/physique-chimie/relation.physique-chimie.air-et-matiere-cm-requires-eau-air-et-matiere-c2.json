@@ -2,12 +2,12 @@
   "id": "relation.physique-chimie.air-et-matiere-cm-requires-eau-air-et-matiere-c2",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/air-et-matiere-cm/contenu.json"
   },
   "source": "notion.physique-chimie.air-et-matiere-cm",
   "target": "notion.physique-chimie.eau-air-et-matiere-c2",
-  "rationale": "Prérequis déclaré dans la fiche : « L'eau, l'air et les matières » précède « L'air, un gaz qui occupe de la place » dans la progression du programme (lien à relire)."
+  "rationale": "« L'eau, l'air et les matières » : L’air illustre les états de la matière et leurs changements."
 }

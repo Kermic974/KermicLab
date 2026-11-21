@@ -48,9 +48,9 @@
         "titre": "Exercice 1",
         "question": "Qui élit les délégués de classe ?",
         "choix": [
-          "Le préfet",
-          "Le maire",
-          "Le ministre",
+          "Le préfet du département",
+          "Le maire de la commune",
+          "Le ministre de l'Éducation",
           "Les élèves de la classe"
         ],
         "bonne": 3,
@@ -62,9 +62,9 @@
         "question": "La solidarité consiste à…",
         "choix": [
           "aider ceux qui en ont besoin",
-          "ne penser qu'à soi",
-          "être en compétition",
-          "ignorer les autres"
+          "ne penser qu'à ses propres besoins",
+          "être en compétition avec les autres",
+          "ignorer les personnes en difficulté"
         ],
         "bonne": 0,
         "explication": "Entraide."

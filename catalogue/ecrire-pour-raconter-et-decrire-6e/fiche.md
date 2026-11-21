@@ -2,7 +2,7 @@
 id: ecrire-pour-raconter-et-decrire-6e
 titre: Écrire pour raconter, décrire et exprimer en 6e
 sujet: francais/ecrire-pour-raconter-et-decrire-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

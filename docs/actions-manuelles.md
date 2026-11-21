@@ -331,3 +331,11 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Relire les 102 `requires` créés depuis les notions de la V0 vers les cycles précédents (PR dédiée) et arbitrer les liens écartés | `docs/referentiel/propositions-liens-cycles-2-3-4.md`, `relations-a-revoir.md` | Propositions pédagogiques en `draft` ; la recommandation change pour 35 scénarios | Statuts mis à jour | à faire |
 | Revue du CODEOWNER et fusion de la PR de ce lot | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
 
+## Référentiel : audit de qualité
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Décider du sort des liens de continuité chronologique de l'histoire (supprimer, convertir en `relatedTo` ou conserver) | `docs/referentiel/audit-competences.md` | La règle « chronologie ≠ prérequis » de la densification ; ces liens nourrissent la recommandation | Décision notée dans le rapport | à faire |
+| Décider de partager les MicroSkills identiques entre niveaux (une seule compétence enseignée par plusieurs notions) | `docs/referentiel/audit-competences.md` | 37 libellés en double qualifiés par niveau | Décision notée dans le rapport | à faire |
+| Faire relire par un enseignant les 78 QCM réécrits | `catalogue/*/contenu.json` | Les distracteurs et bonnes réponses ont été modifiés | Champs `relue*` renseignés | à faire |
+

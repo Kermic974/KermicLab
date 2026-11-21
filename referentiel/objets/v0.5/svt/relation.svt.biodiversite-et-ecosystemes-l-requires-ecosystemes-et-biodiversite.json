@@ -2,12 +2,12 @@
   "id": "relation.svt.biodiversite-et-ecosystemes-l-requires-ecosystemes-et-biodiversite",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/biodiversite-et-ecosystemes-l/contenu.json"
   },
   "source": "notion.svt.biodiversite-et-ecosystemes-l",
   "target": "notion.svt.ecosystemes-et-biodiversite",
-  "rationale": "Prérequis déclaré dans la fiche : « Écosystèmes et biodiversité » précède « Biodiversité et écosystèmes » dans la progression du programme (lien à relire)."
+  "rationale": "« Écosystèmes et biodiversité » : Le lycée reprend les écosystèmes et l’évolution étudiés au collège."
 }

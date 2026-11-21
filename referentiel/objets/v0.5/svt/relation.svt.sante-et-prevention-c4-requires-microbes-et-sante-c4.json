@@ -2,12 +2,12 @@
   "id": "relation.svt.sante-et-prevention-c4-requires-microbes-et-sante-c4",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/sante-et-prevention-c4/contenu.json"
   },
   "source": "notion.svt.sante-et-prevention-c4",
   "target": "notion.svt.microbes-et-sante-c4",
-  "rationale": "Prérequis déclaré dans la fiche : « Micro-organismes, hygiène et santé » précède « Santé : sommeil, addictions et prévention » dans la progression du programme (lien à relire)."
+  "rationale": "« Micro-organismes, hygiène et santé » : La prévention s’appuie sur les micro-organismes et l’hygiène."
 }

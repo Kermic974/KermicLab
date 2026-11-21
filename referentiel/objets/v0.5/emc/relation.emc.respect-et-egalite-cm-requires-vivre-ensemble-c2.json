@@ -2,12 +2,12 @@
   "id": "relation.emc.respect-et-egalite-cm-requires-vivre-ensemble-c2",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/respect-et-egalite-cm/contenu.json"
   },
   "source": "notion.emc.respect-et-egalite-cm",
   "target": "notion.emc.vivre-ensemble-c2",
-  "rationale": "Prérequis déclaré dans la fiche : « Vivre ensemble : respect, règles et émotions » précède « Respect, égalité et lutte contre le harcèlement » dans la progression du programme (lien à relire)."
+  "rationale": "« Vivre ensemble : respect, règles et émotions » : Le respect du CM prolonge le vivre-ensemble du cycle 2."
 }

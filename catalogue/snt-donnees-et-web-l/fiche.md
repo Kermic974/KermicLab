@@ -2,7 +2,7 @@
 id: snt-donnees-et-web-l
 titre: Web, données et réseaux sociaux
 sujet: technologie/snt-donnees-et-web-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

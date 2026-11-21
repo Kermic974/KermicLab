@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Référentiel : audit de qualité** (`docs/referentiel/audit-competences.md`) : 259 libellés de Skill et 365 justifications de liens propres à chaque notion (au lieu de textes génériques) ; 113 libellés de compétences mathématiques V0 remis en majuscule et avec accents ; 4 verbes interdits remplacés ; 78 QCM réécrits (écarts nets de longueur de 100 à 24, bonne réponse la plus longue dans 39 % des cas au lieu de 43 %). Constats à arbitrer (liens chronologiques en histoire, compétences en double entre niveaux) dans le rapport.
+
 - **Référentiel : liens des notions de la V0 vers les cycles précédents** (processus S4, `docs/referentiel/propositions-liens-cycles-2-3-4.md`) : **102 `requires`** qualifiés (continuité thématique, justification propre à chaque lien) sur 86 notions ; prérequis déclarés de 550 à 652 ; 35 recommandations changent sur 477 scénarios, toutes expliquées par les nouveaux prérequis. Liens écartés ou incertains dans `relations-a-revoir.md`. Objets en `draft`.
 - **Référentiel : étape `cycle-2` et projection complète** (ADR 0038) : le contrat `stage` admet `cycle-2` ; 51 placements de niveau et 4 prérequis ajoutés ; **55 fiches** supplémentaires projetées (51 notions de cycle 2 et 4 notions cibles). Toutes les fiches du catalogue hors jeux sont désormais projetées depuis le corpus canonique ; niveaux, classes et prérequis inchangés. Fixtures de contrat ajoutées.
 

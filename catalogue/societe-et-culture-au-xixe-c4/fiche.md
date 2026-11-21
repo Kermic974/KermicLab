@@ -2,7 +2,7 @@
 id: societe-et-culture-au-xixe-c4
 titre: Société, droits et culture au XIXe siècle
 sujet: histoire/societe-et-culture-au-xixe-c4
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 4e

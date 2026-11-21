@@ -2,7 +2,7 @@
 id: ses-travail-chomage-et-protection-l
 titre: Travail, emploi, chômage et protection sociale
 sujet: ses/ses-travail-chomage-et-protection-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: premiere
 duree: 30

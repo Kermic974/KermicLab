@@ -2,12 +2,12 @@
   "id": "relation.emc.devise-republique-cm-requires-republique-et-citoyens-c2",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/devise-republique-cm/contenu.json"
   },
   "source": "notion.emc.devise-republique-cm",
   "target": "notion.emc.republique-et-citoyens-c2",
-  "rationale": "Prérequis déclaré dans la fiche : « La République, ses symboles et les droits » précède « La devise et les symboles de la République » dans la progression du programme (lien à relire)."
+  "rationale": "« La République, ses symboles et les droits » : La devise du CM reprend les symboles de la République du cycle 2."
 }

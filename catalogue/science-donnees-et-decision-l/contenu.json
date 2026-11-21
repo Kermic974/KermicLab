@@ -60,10 +60,10 @@
         "titre": "Exercice 2",
         "question": "Un modèle est réfuté si…",
         "choix": [
-          "il est assez ancien",
-          "il est discuté en classe",
+          "il est assez ancien dans la discipline",
+          "il est beaucoup discuté en classe",
           "il contredit des observations fiables",
-          "il est très simple"
+          "il est très simple à formuler"
         ],
         "bonne": 2,
         "explication": "Confrontation aux faits."
@@ -73,10 +73,10 @@
         "titre": "Exercice 3",
         "question": "Le risque combine…",
         "choix": [
-          "coût et durée",
-          "âge et taille",
+          "coût et durée de l'événement",
+          "âge et taille des personnes",
           "probabilité et gravité",
-          "date et lieu"
+          "date et lieu de l'incident"
         ],
         "bonne": 2,
         "explication": "Définition."

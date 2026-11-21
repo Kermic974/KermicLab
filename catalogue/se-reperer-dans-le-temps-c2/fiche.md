@@ -2,7 +2,7 @@
 id: se-reperer-dans-le-temps-c2
 titre: Se repérer dans le temps : jours, mois, générations
 sujet: histoire/se-reperer-dans-le-temps-c2
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 classes: CP, CE1

@@ -2,7 +2,7 @@
 id: science-donnees-et-decision-l
 titre: Science, données et décision : modèles, risques et incertitudes
 sujet: svt/science-donnees-et-decision-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: terminale
 duree: 25

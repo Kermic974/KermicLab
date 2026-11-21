@@ -2,12 +2,12 @@
   "id": "relation.geographie.se-deplacer-transports-cm-requires-habiter-ville-campagne-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/se-deplacer-transports-cm/contenu.json"
   },
   "source": "notion.geographie.se-deplacer-transports-cm",
   "target": "notion.geographie.habiter-ville-campagne-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Habiter en ville ou à la campagne » précède « Se déplacer et transporter » dans la progression du programme (lien à relire)."
+  "rationale": "« Habiter en ville ou à la campagne » : Les déplacements s’appuient sur ville et campagne."
 }

@@ -2,7 +2,7 @@
 id: defense-et-paix-c4
 titre: Défense, paix et sécurité collective
 sujet: emc/defense-et-paix-c4
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 3e

@@ -2,7 +2,7 @@
 id: habiter-le-littoral-6e
 titre: Habiter le littoral
 sujet: geographie/habiter-le-littoral-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

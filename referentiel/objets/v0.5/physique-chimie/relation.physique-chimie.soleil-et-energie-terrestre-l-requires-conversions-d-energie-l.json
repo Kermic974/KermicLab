@@ -2,12 +2,12 @@
   "id": "relation.physique-chimie.soleil-et-energie-terrestre-l-requires-conversions-d-energie-l",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/soleil-et-energie-terrestre-l/contenu.json"
   },
   "source": "notion.physique-chimie.soleil-et-energie-terrestre-l",
   "target": "notion.physique-chimie.conversions-d-energie-l",
-  "rationale": "Prérequis déclaré dans la fiche : « Conversions d'énergie, rendement et bilan » précède « Le Soleil, la Terre et le climat : bilan radiatif » dans la progression du programme (lien à relire)."
+  "rationale": "« Conversions d'énergie, rendement et bilan » : Le bilan radiatif s’appuie sur les conversions d’énergie."
 }

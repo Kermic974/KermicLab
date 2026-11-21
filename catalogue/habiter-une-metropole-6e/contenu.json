@@ -49,10 +49,10 @@
         "titre": "Exercice 1",
         "question": "Une métropole se caractérise par…",
         "choix": [
-          "l'agriculture dominante",
+          "l'agriculture comme activité dominante partout",
           "la concentration d'habitants, d'emplois et de pouvoirs",
-          "une faible densité",
-          "l'absence de transports"
+          "une très faible densité de population",
+          "l'absence de tout transport collectif"
         ],
         "bonne": 1,
         "explication": "Elle concentre les fonctions."
@@ -63,9 +63,9 @@
         "question": "Quel est un défi d'une métropole ?",
         "choix": [
           "Les embouteillages et le logement cher",
-          "Le manque d'écoles",
-          "L'absence de services",
-          "Le silence permanent"
+          "Le manque total d'écoles et de collèges",
+          "L'absence de commerces et de services",
+          "Le silence permanent toute la journée"
         ],
         "bonne": 0,
         "explication": "Conséquences de la concentration."

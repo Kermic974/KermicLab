@@ -2,7 +2,7 @@
 id: poesie-6e
 titre: Le monde poétique en 6e
 sujet: francais/poesie-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

@@ -2,12 +2,12 @@
   "id": "relation.histoire.clovis-charlemagne-cm-requires-gaulois-gallo-romains-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/clovis-charlemagne-cm/contenu.json"
   },
   "source": "notion.histoire.clovis-charlemagne-cm",
   "target": "notion.histoire.gaulois-gallo-romains-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Les Gaulois et les Gallo-Romains » précède « Clovis et Charlemagne » dans la progression du programme (lien à relire)."
+  "rationale": "« Les Gaulois et les Gallo-Romains » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : le royaume des Francs succède à la Gaule romaine."
 }

@@ -2,12 +2,12 @@
   "id": "relation.histoire.feodalite-eglise-et-pouvoirs-c4-requires-louis-ix-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/feodalite-eglise-et-pouvoirs-c4/contenu.json"
   },
   "source": "notion.histoire.feodalite-eglise-et-pouvoirs-c4",
   "target": "notion.histoire.louis-ix-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « Louis IX (Saint Louis) et le Moyen Âge chrétien » précède « Seigneurs, paysans, Église et pouvoir royal » dans la progression du programme (lien à relire)."
+  "rationale": "« Louis IX (Saint Louis) et le Moyen Âge chrétien » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : la féodalité prolonge Louis IX et les mondes chrétien et musulman."
 }

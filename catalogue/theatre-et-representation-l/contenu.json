@@ -48,9 +48,9 @@
         "question": "La règle des trois unités concerne…",
         "choix": [
           "le temps, le lieu et l'action",
-          "le nombre d'actes",
-          "les personnages",
-          "les vers"
+          "le nombre d'actes de la pièce",
+          "les personnages principaux",
+          "la longueur des vers"
         ],
         "bonne": 0,
         "explication": "Théâtre classique."
@@ -60,10 +60,10 @@
         "titre": "Exercice 2",
         "question": "Les didascalies sont…",
         "choix": [
-          "les rimes",
+          "les rimes de la tirade",
           "les indications de jeu et de décor",
-          "les répliques",
-          "les titres"
+          "les répliques des personnages",
+          "les titres des actes"
         ],
         "bonne": 1,
         "explication": "Texte non dit."
@@ -74,9 +74,9 @@
         "question": "Le théâtre de l'absurde met en cause…",
         "choix": [
           "le langage et le sens de l'existence",
-          "les trois unités",
-          "le public seulement",
-          "la comédie classique"
+          "les trois unités du théâtre classique",
+          "le public seulement et sa place",
+          "la comédie classique de Molière"
         ],
         "bonne": 0,
         "explication": "Ionesco, Beckett."
@@ -108,8 +108,8 @@
         "question": "Pourquoi une pièce du XVIIe siècle reste-t-elle jouée ?",
         "choix": [
           "elle parle de passions et de conflits universels",
-          "elle est très courte",
-          "elle est facile à jouer",
+          "elle est très courte à jouer",
+          "elle est facile à mettre en scène",
           "elle n'a aucun personnage"
         ],
         "bonne": 0,

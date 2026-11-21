@@ -2,7 +2,7 @@
 id: theatre-et-representation-l
 titre: Le théâtre : tragédie, comédie et mise en scène
 sujet: francais/theatre-et-representation-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 30

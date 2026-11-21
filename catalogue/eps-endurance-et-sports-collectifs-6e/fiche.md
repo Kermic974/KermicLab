@@ -2,7 +2,7 @@
 id: eps-endurance-et-sports-collectifs-6e
 titre: EPS 6e : endurance, santé et sports collectifs
 sujet: eps/eps-endurance-et-sports-collectifs-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

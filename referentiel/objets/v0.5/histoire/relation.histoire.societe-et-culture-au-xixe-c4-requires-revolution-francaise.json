@@ -2,12 +2,12 @@
   "id": "relation.histoire.societe-et-culture-au-xixe-c4-requires-revolution-francaise",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/societe-et-culture-au-xixe-c4/contenu.json"
   },
   "source": "notion.histoire.societe-et-culture-au-xixe-c4",
   "target": "notion.histoire.revolution-francaise",
-  "rationale": "Prérequis déclaré dans la fiche : « La Révolution française » précède « Société, droits et culture au XIXe siècle » dans la progression du programme (lien à relire)."
+  "rationale": "« La Révolution française » : Le XIXe siècle prolonge les droits proclamés par la Révolution."
 }

@@ -2,7 +2,7 @@
 id: revolutions-et-nations-xix-l
 titre: Révolutions, nations et libertés au XIXe siècle
 sujet: histoire/revolutions-et-nations-xix-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: premiere
 duree: 30

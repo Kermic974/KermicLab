@@ -2,12 +2,12 @@
   "id": "relation.francais.homophones-cm-requires-conjugaison-cm",
   "type": "requires",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "provenance": {
     "type": "editorial",
     "ref": "catalogue/homophones-cm/contenu.json"
   },
   "source": "notion.francais.homophones-cm",
   "target": "notion.francais.conjugaison-cm",
-  "rationale": "Prérequis déclaré dans la fiche : « La conjugaison : temps simples et composés » précède « Les homophones grammaticaux » dans la progression du programme (lien à relire)."
+  "rationale": "« La conjugaison : temps simples et composés » : Les homophones reprennent le test de remplacement du cycle 2 et exigent de reconnaître nature des mots et verbe conjugué."
 }

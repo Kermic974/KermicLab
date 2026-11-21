@@ -2,7 +2,7 @@
 id: ecrire-et-reecrire-c4
 titre: Écrire, argumenter et réécrire au collège
 sujet: francais/ecrire-et-reecrire-c4
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 5e, 4e, 3e

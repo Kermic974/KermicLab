@@ -2,7 +2,7 @@
 id: statistiques-et-echantillonnage-l
 titre: Statistiques, probabilités et échantillonnage en seconde
 sujet: mathematiques/statistiques-et-echantillonnage-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 30

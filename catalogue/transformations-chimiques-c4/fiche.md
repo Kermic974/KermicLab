@@ -2,7 +2,7 @@
 id: transformations-chimiques-c4
 titre: Transformations chimiques et réactions
 sujet: physique-chimie/transformations-chimiques-c4
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 4e, 3e

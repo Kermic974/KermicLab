@@ -2,7 +2,7 @@
 id: masse-et-volume-6e
 titre: Masse, volume et mélanges en 6e
 sujet: physique-chimie/masse-et-volume-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 6e

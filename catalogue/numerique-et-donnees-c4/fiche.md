@@ -2,7 +2,7 @@
 id: numerique-et-donnees-c4
 titre: Le numérique : données personnelles, réseaux et droits
 sujet: emc/numerique-et-donnees-c4
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 classes: 4e, 3e

@@ -2,7 +2,7 @@
 id: snt-internet-et-reseaux-l
 titre: Internet, réseaux et protocoles
 sujet: technologie/snt-internet-et-reseaux-l
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: seconde
 duree: 25

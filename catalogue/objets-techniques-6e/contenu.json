@@ -96,10 +96,10 @@
         "titre": "Exercice 1",
         "question": "Quel capteur utiliser ?",
         "choix": [
-          "Une pile",
-          "Une roue",
+          "Une pile électrique plate",
+          "Une roue d'entraînement",
           "Un capteur de distance",
-          "Un haut-parleur"
+          "Un haut-parleur de petite taille"
         ],
         "bonne": 2,
         "explication": "Il détecte l'obstacle."
