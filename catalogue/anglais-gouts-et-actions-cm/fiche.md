@@ -2,12 +2,13 @@
 id: anglais-gouts-et-actions-cm
 titre: Anglais : goûts, nourriture et actions du quotidien
 sujet: anglais/anglais-gouts-et-actions-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - anglais-vocabulaire-quotidien-cm
 competences:
   - anglais-gouts-et-actions-cm-comprendre
   - anglais-gouts-et-actions-cm-appliquer

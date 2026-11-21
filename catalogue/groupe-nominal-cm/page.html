@@ -11,7 +11,7 @@
   "id": "groupe-nominal-cm",
   "titre": "Le groupe nominal et ses expansions",
   "sujet": "francais/groupe-nominal-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -75,12 +75,12 @@
         "titre": "Exercice 1",
         "question": "Dans « la maison de mon oncle », « de mon oncle » est…",
         "choix": [
+          "un complément circonstanciel",
           "un complément du nom",
-          "un adjectif",
-          "un verbe",
-          "un COD"
+          "un complément d'objet direct",
+          "un adjectif épithète"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il précise le nom « maison »."
       },
       {
@@ -88,12 +88,12 @@
         "titre": "Exercice 2",
         "question": "Dans « une belle fleur », « belle » est…",
         "choix": [
+          "un adverbe",
           "un adjectif épithète",
           "un complément du nom",
-          "une relative",
-          "un adverbe"
+          "une relative"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il est collé au nom."
       },
       {
@@ -101,12 +101,12 @@
         "titre": "Exercice 3",
         "question": "Quelle expansion est une proposition relative ?",
         "choix": [
+          "rapidement",
           "que j'aime",
           "très grand",
-          "de bois",
-          "rapidement"
+          "de bois"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Elle commence par « que »."
       }
     ]
@@ -122,12 +122,12 @@
         "titre": "Exercice 1",
         "question": "Quel GN est le plus précis ?",
         "choix": [
+          "le château de la vallée",
           "un vieux château de pierre qui domine la vallée",
-          "un château",
-          "un château vieux",
-          "le château"
+          "un château de pierre",
+          "un vieux château fort"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il cumule adjectif, complément et relative."
       },
       {
@@ -136,9 +136,9 @@
         "question": "Dans ce GN, « de pierre » est…",
         "choix": [
           "un complément du nom",
-          "un adjectif",
-          "un verbe",
-          "un adverbe"
+          "un adjectif épithète",
+          "une proposition relative",
+          "un complément circonstanciel"
         ],
         "bonne": 0,
         "explication": "Préposition « de » + nom."
@@ -401,7 +401,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Le groupe nominal et ses expansions</h1>
-    <div class="meta">groupe-nominal-cm · v1.0.0</div>
+    <div class="meta">groupe-nominal-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

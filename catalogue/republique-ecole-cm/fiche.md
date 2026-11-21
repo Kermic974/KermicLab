@@ -2,12 +2,13 @@
 id: republique-ecole-cm
 titre: La République, l'école et les libertés
 sujet: histoire/republique-ecole-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - age-industriel-cm
 competences:
   - republique-ecole-cm-comprendre
   - republique-ecole-cm-appliquer

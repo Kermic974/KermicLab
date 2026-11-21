@@ -72,12 +72,12 @@
         "titre": "Exercice 3",
         "question": "Une note aiguë est…",
         "choix": [
-          "un son haut",
-          "un son bas",
           "un silence",
-          "un bruit"
+          "un bruit",
+          "un son haut",
+          "un son bas"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Aigu = haut."
       }
     ]
@@ -104,12 +104,12 @@
         "titre": "Exercice 2",
         "question": "Quel instrument fait partie des percussions ?",
         "choix": [
+          "Le piano",
           "Le tambour",
           "La flûte",
-          "Le violon",
-          "Le piano"
+          "Le violon"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "On le frappe."
       }
     ],

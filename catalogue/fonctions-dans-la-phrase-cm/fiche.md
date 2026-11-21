@@ -2,7 +2,7 @@
 id: fonctions-dans-la-phrase-cm
 titre: Les fonctions dans la phrase
 sujet: francais/fonctions-dans-la-phrase-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

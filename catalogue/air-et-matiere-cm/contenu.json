@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Un ballon gonflé pèse…",
         "choix": [
-          "plus qu'un ballon dégonflé",
-          "moins",
-          "pareil",
-          "rien"
+          "moins qu'un ballon dégonflé",
+          "exactement pareil qu'avant",
+          "aucune masse mesurable",
+          "plus qu'un ballon dégonflé"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "L'air a une masse."
       },
       {
@@ -74,12 +74,12 @@
         "titre": "Exercice 3",
         "question": "Que fait une pompe à vélo ?",
         "choix": [
-          "Elle comprime l'air",
-          "Elle fabrique de l'eau",
           "Elle chauffe l'air seulement",
-          "Elle supprime l'air"
+          "Elle supprime l'air",
+          "Elle comprime l'air",
+          "Elle fabrique de l'eau"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Réduit son volume."
       }
     ]
@@ -95,12 +95,12 @@
         "titre": "Exercice 1",
         "question": "Que montre la balance ?",
         "choix": [
-          "Le ballon gonflé est plus lourd",
           "Rien ne change",
           "Le ballon gonflé est plus léger",
-          "La balance est cassée"
+          "La balance est cassée",
+          "Le ballon gonflé est plus lourd"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "L'air a une masse."
       },
       {
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Pourquoi le ballon gonfle-t-il ?",
         "choix": [
+          "Il pousse tout seul",
           "L'air occupe de la place",
           "Il se remplit de vide",
-          "Il chauffe",
-          "Il pousse tout seul"
+          "Il chauffe"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Gaz."
       }
     ],

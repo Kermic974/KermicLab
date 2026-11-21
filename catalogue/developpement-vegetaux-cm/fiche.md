@@ -2,12 +2,13 @@
 id: developpement-vegetaux-cm
 titre: Le développement des végétaux
 sujet: svt/developpement-vegetaux-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - classification-du-vivant-cm
 competences:
   - developpement-vegetaux-cm-comprendre
   - developpement-vegetaux-cm-appliquer

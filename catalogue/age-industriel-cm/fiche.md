@@ -2,12 +2,13 @@
 id: age-industriel-cm
 titre: L'âge industriel en France
 sujet: histoire/age-industriel-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - revolution-empire-cm
 competences:
   - age-industriel-cm-comprendre
   - age-industriel-cm-appliquer

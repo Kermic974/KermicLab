@@ -2,13 +2,14 @@
 id: fractions-operations-cm
 titre: Fractions : décimales, sommes et comparaisons
 sujet: mathematiques/fractions-operations-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
   - fractions-cm
+  - nombres-decimaux-cm
 competences:
   - fractions-operations-cm-comprendre
   - fractions-operations-cm-appliquer

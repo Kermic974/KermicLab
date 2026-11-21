@@ -11,7 +11,7 @@
   "id": "habiter-ville-campagne-cm",
   "titre": "Habiter en ville ou à la campagne",
   "sujet": "geographie/habiter-ville-campagne-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -86,12 +86,12 @@
         "titre": "Exercice 2",
         "question": "Où trouve-t-on généralement le plus de services (hôpitaux, universités) ?",
         "choix": [
-          "En ville",
-          "À la campagne isolée",
           "En montagne",
-          "Dans les champs"
+          "Dans les champs",
+          "En ville",
+          "À la campagne isolée"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Les services se concentrent dans les villes."
       },
       {
@@ -99,12 +99,12 @@
         "titre": "Exercice 3",
         "question": "À la campagne, les habitants se déplacent souvent…",
         "choix": [
-          "en voiture",
-          "en métro",
           "en tramway",
-          "en téléphérique"
+          "en téléphérique",
+          "en voiture",
+          "en métro"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Les transports collectifs sont rares."
       }
     ]
@@ -120,12 +120,12 @@
         "titre": "Exercice 1",
         "question": "Quel avantage pour l'appartement en ville ?",
         "choix": [
-          "Des commerces et des transports proches",
-          "Un grand jardin",
-          "Plus de silence",
-          "Plus de champs"
+          "Un grand jardin pour jouer",
+          "Plus de silence qu'à la campagne",
+          "Des champs autour de l'immeuble",
+          "Des commerces et des transports proches"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "La ville offre services et transports."
       },
       {
@@ -133,12 +133,12 @@
         "titre": "Exercice 2",
         "question": "Quel avantage pour la maison à la campagne ?",
         "choix": [
+          "Un hôpital dans la rue",
           "Plus d'espace et de calme",
-          "Un métro à côté",
-          "Un hôpital voisin",
-          "Un cinéma à 100 m"
+          "Un cinéma à deux pas",
+          "Un métro tous les cinq minutes"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Plus d'espace, moins de bruit."
       }
     ],
@@ -399,7 +399,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Habiter en ville ou à la campagne</h1>
-    <div class="meta">habiter-ville-campagne-cm · v1.0.0</div>
+    <div class="meta">habiter-ville-campagne-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

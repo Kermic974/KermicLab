@@ -2,12 +2,13 @@
 id: ponctuation-et-dialogue-cm
 titre: La ponctuation et le dialogue
 sujet: francais/ponctuation-et-dialogue-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - types-et-formes-de-phrases-cm
 competences:
   - ponctuation-et-dialogue-cm-comprendre
   - ponctuation-et-dialogue-cm-appliquer

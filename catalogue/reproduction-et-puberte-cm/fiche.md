@@ -2,12 +2,13 @@
 id: reproduction-et-puberte-cm
 titre: Naissance, croissance et puberté
 sujet: svt/reproduction-et-puberte-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - classification-du-vivant-cm
 competences:
   - reproduction-et-puberte-cm-comprendre
   - reproduction-et-puberte-cm-appliquer

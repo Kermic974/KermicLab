@@ -2,12 +2,13 @@
 id: droits-de-l-enfant-cm
 titre: Les droits de l'enfant
 sujet: emc/droits-de-l-enfant-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - respect-et-egalite-cm
 competences:
   - droits-de-l-enfant-cm-comprendre
   - droits-de-l-enfant-cm-appliquer

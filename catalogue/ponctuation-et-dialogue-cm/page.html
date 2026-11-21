@@ -11,7 +11,7 @@
   "id": "ponctuation-et-dialogue-cm",
   "titre": "La ponctuation et le dialogue",
   "sujet": "francais/ponctuation-et-dialogue-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -74,12 +74,12 @@
         "titre": "Exercice 1",
         "question": "Quel signe termine une question ?",
         "choix": [
-          "?",
           ".",
           "!",
-          ","
+          ",",
+          "?"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Le point d'interrogation."
       },
       {
@@ -87,12 +87,12 @@
         "titre": "Exercice 2",
         "question": "Pour une liste, on sépare les éléments avec…",
         "choix": [
-          "des virgules",
           "des points",
           "des guillemets",
-          "des tirets longs"
+          "des tirets longs",
+          "des virgules"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Virgule dans une liste."
       },
       {
@@ -134,12 +134,12 @@
         "titre": "Exercice 2",
         "question": "« Où vas-tu ? » se termine par…",
         "choix": [
+          "un point d'exclamation",
           "un point d'interrogation",
           "un point",
-          "une virgule",
-          "un point d'exclamation"
+          "une virgule"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "C'est une question."
       }
     ],
@@ -400,7 +400,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>La ponctuation et le dialogue</h1>
-    <div class="meta">ponctuation-et-dialogue-cm · v1.0.0</div>
+    <div class="meta">ponctuation-et-dialogue-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

@@ -2,12 +2,13 @@
 id: sujet-verbe-complements-6e
 titre: Sujet, verbe et compléments en 6e
 sujet: francais/sujet-verbe-complements-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - fonctions-dans-la-phrase-cm
 competences:
   - sujet-verbe-complements-6e-comprendre
   - sujet-verbe-complements-6e-appliquer

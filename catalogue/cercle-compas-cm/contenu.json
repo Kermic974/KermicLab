@@ -71,12 +71,12 @@
         "titre": "Exercice 3",
         "question": "Pour tracer un cercle, il faut connaître…",
         "choix": [
-          "son centre et son rayon",
-          "seulement le centre",
           "seulement le rayon",
-          "son périmètre"
+          "son périmètre",
+          "son centre et son rayon",
+          "seulement le centre"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Le centre fixe la position, le rayon fixe la taille."
       }
     ]

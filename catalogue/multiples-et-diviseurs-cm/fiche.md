@@ -2,7 +2,7 @@
 id: multiples-et-diviseurs-cm
 titre: Multiples, diviseurs et critères de divisibilité
 sujet: mathematiques/multiples-et-diviseurs-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

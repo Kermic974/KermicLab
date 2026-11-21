@@ -2,12 +2,13 @@
 id: musique-voix-et-ecoute-cm
 titre: Musique : voix, chant et culture musicale
 sujet: musique/musique-voix-et-ecoute-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - musique-notes-et-rythme-cm
 competences:
   - musique-voix-et-ecoute-cm-comprendre
   - musique-voix-et-ecoute-cm-appliquer

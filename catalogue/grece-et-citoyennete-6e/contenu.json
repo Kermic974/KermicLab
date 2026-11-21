@@ -26,7 +26,7 @@
       "titre": "La démocratie athénienne",
       "niveau": "6e",
       "paragraphes": [
-        "À Athènes, les citoyens se réunissent sur l'**agora** et votent les lois à l'**assemblée**. Mais seuls les hommes adultes nés de parents athéniens sont citoyens : les **femmes**, les **étrangers** et les **esclaves** en sont exclus (environ 10 à 15 % de la population).",
+        "À Athènes, les citoyens se réunissent sur l'**agora** et votent les lois à l'**assemblée**. Mais seuls les hommes adultes nés de parents athéniens sont citoyens : les **femmes**, les **étrangers** et les **esclaves** en sont exclus (une minorité de la population, de l'ordre de 10 à 20 %).",
         "**Périclès** (Ve siècle av. J.-C.) dirige Athènes et fait construire le **Parthénon** sur l'Acropole. La démocratie grecque a inspiré nos régimes d'aujourd'hui."
       ],
       "exemple": {
@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Qui est citoyen à Athènes ?",
         "choix": [
+          "Les esclaves libérés et les étrangers",
           "Les hommes adultes nés de parents athéniens",
-          "Tous les habitants",
-          "Les esclaves",
-          "Les femmes"
+          "Toutes les femmes mariées",
+          "Tous les habitants de la cité"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Citoyenneté restreinte."
       },
       {
@@ -74,12 +74,12 @@
         "titre": "Exercice 3",
         "question": "Comment s'appelle une cité grecque ?",
         "choix": [
+          "Un royaume",
           "Une polis",
           "Un empire",
-          "Une province",
-          "Un royaume"
+          "Une province"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Polis = cité."
       }
     ]
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Une femme peut-elle voter ?",
         "choix": [
-          "Non, pas à Athènes",
           "Oui",
           "Seulement si riche",
-          "Seulement les mères"
+          "Seulement les mères",
+          "Non, pas à Athènes"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Exclue de la citoyenneté."
       }
     ],

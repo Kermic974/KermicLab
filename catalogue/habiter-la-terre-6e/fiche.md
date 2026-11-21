@@ -2,12 +2,13 @@
 id: habiter-la-terre-6e
 titre: Habiter la Terre : répartition et inégalités
 sujet: geographie/habiter-la-terre-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - monde-en-villes-cm
 competences:
   - habiter-la-terre-6e-comprendre
   - habiter-la-terre-6e-appliquer

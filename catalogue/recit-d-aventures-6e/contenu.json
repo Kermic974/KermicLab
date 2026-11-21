@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un récit d'aventures embarque le lecteur avec un héros, des obstacles et un dénouement.",
+  "niveaux": [
+    {
+      "titre": "Héros et péripéties",
+      "niveau": "6e",
+      "paragraphes": [
+        "Dans un récit d'aventures, un **héros** poursuit un but (retrouver un trésor, survivre sur une île) et rencontre des **péripéties** : dangers, rencontres, rebondissements. Le récit suit un **schéma narratif** : situation initiale, élément perturbateur, péripéties, dénouement, situation finale.",
+        "Exemples célèbres : *Robinson Crusoé* (Defoe), *L'Île au trésor* (Stevenson), *Vingt mille lieues sous les mers* (Jules Verne)."
+      ],
+      "exemple": {
+        "titre": "Exemple : repérer le schéma",
+        "etapes": [
+          "Situation initiale : un jeune garçon vit près d'un port.",
+          "Élément perturbateur : il trouve une carte.",
+          "Dénouement : il retrouve le trésor."
+        ]
+      },
+      "aRetenir": "Un récit d'aventures enchaîne des péripéties."
+    },
+    {
+      "titre": "Narrateur et point de vue",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le **narrateur** raconte l'histoire : s'il dit « je », il est un personnage (récit à la 1re personne) ; s'il dit « il », il est extérieur (3e personne). Le **point de vue** peut être celui du héros ou celui d'un narrateur qui sait tout.",
+        "Pour comprendre un passage : qui parle ? où ? quand ? quel est le danger ? quelle émotion ?"
+      ],
+      "exemple": {
+        "titre": "Exemple : « Je m'éveillai sur une plage inconnue. »",
+        "etapes": [
+          "Pronom « je » : narrateur-personnage.",
+          "Passé simple : événement précis.",
+          "Émotion : surprise, inquiétude."
+        ]
+      },
+      "aRetenir": "Je = narrateur personnage ; il = narrateur extérieur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « Je m'éveillai sur une plage inconnue », le narrateur est…",
+        "choix": [
+          "un dieu grec",
+          "l'auteur obligatoirement",
+          "un personnage (1re personne)",
+          "extérieur à l'histoire"
+        ],
+        "bonne": 2,
+        "explication": "Le pronom « je »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'élément perturbateur est…",
+        "choix": [
+          "le titre du livre",
+          "l'événement qui lance l'intrigue",
+          "la fin de l'histoire",
+          "la présentation du lieu"
+        ],
+        "bonne": 1,
+        "explication": "Il rompt l'équilibre initial."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui a écrit *L'Île au trésor* ?",
+        "choix": [
+          "Molière",
+          "La Fontaine",
+          "Stevenson",
+          "Victor Hugo"
+        ],
+        "bonne": 2,
+        "explication": "Robert Louis Stevenson."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Naufragé sur l'île",
+    "histoire": [
+      "Texte : « La tempête jeta le navire sur les rochers. Seul Tom survécut. Il construisit un abri et attendit les secours. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est la péripétie ?",
+        "choix": [
+          "Le retour à la maison",
+          "Le repas du soir",
+          "La tempête et le naufrage",
+          "La fin de la guerre"
+        ],
+        "bonne": 2,
+        "explication": "Un danger fait basculer l'histoire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot décrit l'objectif de Tom ?",
+        "choix": [
+          "Chanter",
+          "Dormir",
+          "Survivre",
+          "Voyager"
+        ],
+        "bonne": 2,
+        "explication": "Il survit en attendant les secours."
+      }
+    ],
+    "conclusion": "Bien lu !"
+  }
+}

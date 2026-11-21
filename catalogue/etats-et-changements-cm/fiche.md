@@ -2,7 +2,7 @@
 id: etats-et-changements-cm
 titre: Les états de la matière et leurs changements
 sujet: physique-chimie/etats-et-changements-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

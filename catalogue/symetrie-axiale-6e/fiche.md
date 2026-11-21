@@ -2,12 +2,13 @@
 id: symetrie-axiale-6e
 titre: Symétrie axiale en 6e
 sujet: mathematiques/symetrie-axiale-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - symetrie-axiale-cm
 competences:
   - symetrie-axiale-6e-comprendre
   - symetrie-axiale-6e-appliquer

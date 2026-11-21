@@ -2,7 +2,7 @@
 id: groupe-nominal-cm
 titre: Le groupe nominal et ses expansions
 sujet: francais/groupe-nominal-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

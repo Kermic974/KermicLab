@@ -2,12 +2,14 @@
 id: temps-du-recit-6e
 titre: Les temps du récit : passé simple et imparfait
 sujet: francais/temps-du-recit-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - conjugaison-cm
+  - ecrire-un-recit-cm
 competences:
   - temps-du-recit-6e-comprendre
   - temps-du-recit-6e-appliquer

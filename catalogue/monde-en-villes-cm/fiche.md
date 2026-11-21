@@ -2,12 +2,13 @@
 id: monde-en-villes-cm
 titre: La Terre : continents, océans et villes du monde
 sujet: geographie/monde-en-villes-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - france-europe-monde-cm
 competences:
   - monde-en-villes-cm-comprendre
   - monde-en-villes-cm-appliquer

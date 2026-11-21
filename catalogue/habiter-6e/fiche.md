@@ -2,12 +2,14 @@
 id: habiter-6e
 titre: Habiter une métropole, un littoral, un désert
 sujet: geographie/habiter-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - habiter-ville-campagne-cm
+  - lire-une-carte-cm
 competences:
   - habiter-6e-comprendre
   - habiter-6e-appliquer

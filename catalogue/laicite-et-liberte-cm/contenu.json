@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "La laïcité garantit…",
         "choix": [
+          "l'obligation de croire",
           "la liberté de croire ou de ne pas croire",
           "une seule religion",
-          "l'interdiction de toute religion",
-          "l'obligation de croire"
+          "l'interdiction de toute religion"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Liberté de conscience."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "La liberté d'expression permet…",
         "choix": [
-          "de dire ce qu'on pense dans le respect de la loi",
-          "d'insulter",
-          "de harceler",
-          "de mentir pour nuire"
+          "d'insulter ceux qui ne sont pas d'accord",
+          "de menacer un camarade en ligne",
+          "de tout dire sans aucune limite",
+          "de dire ce qu'on pense dans le respect de la loi"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Avec des limites."
       },
       {
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Quelle attitude est correcte ?",
         "choix": [
+          "Hausser le ton pour avoir raison",
           "Écouter et répondre calmement",
-          "Couper la parole",
-          "Insulter",
-          "Se moquer"
+          "Couper la parole à ceux qui parlent",
+          "Se moquer des idées des autres"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Respect de l'autre."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Peut-on être en désaccord ?",
         "choix": [
-          "Oui, avec respect",
-          "Non jamais",
           "Seulement avec le maître",
-          "Seulement en secret"
+          "Seulement en secret",
+          "Oui, avec respect",
+          "Non jamais"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "La liberté d'expression le permet."
       }
     ],

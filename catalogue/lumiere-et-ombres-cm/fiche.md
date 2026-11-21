@@ -2,7 +2,7 @@
 id: lumiere-et-ombres-cm
 titre: Lumière, ombres et son
 sujet: physique-chimie/lumiere-et-ombres-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

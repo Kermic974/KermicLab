@@ -2,12 +2,13 @@
 id: electricite-circuits-cm
 titre: Électricité : circuits, conducteurs et sécurité
 sujet: physique-chimie/electricite-circuits-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - energie-et-sources-cm
 competences:
   - electricite-circuits-cm-comprendre
   - electricite-circuits-cm-appliquer

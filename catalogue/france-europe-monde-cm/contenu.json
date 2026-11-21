@@ -59,12 +59,12 @@
         "titre": "Exercice 2",
         "question": "Quel territoire d'outre-mer est en Amérique du Sud ?",
         "choix": [
-          "La Guyane",
-          "La Réunion",
           "Mayotte",
-          "La Polynésie"
+          "La Polynésie",
+          "La Guyane",
+          "La Réunion"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "La Guyane est en Amérique du Sud."
       },
       {
@@ -72,12 +72,12 @@
         "titre": "Exercice 3",
         "question": "Quelle ville est la capitale de la France ?",
         "choix": [
-          "Paris",
           "Lyon",
           "Marseille",
-          "Bordeaux"
+          "Bordeaux",
+          "Paris"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Paris."
       }
     ]
@@ -93,12 +93,12 @@
         "titre": "Exercice 1",
         "question": "Quelle mer borde le sud de la France ?",
         "choix": [
-          "La Méditerranée",
-          "La mer du Nord",
           "La Baltique",
-          "La mer Noire"
+          "La mer Noire",
+          "La Méditerranée",
+          "La mer du Nord"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "La Méditerranée."
       },
       {
@@ -106,12 +106,12 @@
         "titre": "Exercice 2",
         "question": "Quel pays est voisin de la France ?",
         "choix": [
+          "La Grèce",
           "L'Espagne",
           "Le Portugal",
-          "La Pologne",
-          "La Grèce"
+          "La Pologne"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "L'Espagne borde les Pyrénées."
       }
     ],

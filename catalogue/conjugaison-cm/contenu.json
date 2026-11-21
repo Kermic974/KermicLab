@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Conjugue « chanter » au futur, 1re personne du singulier.",
         "choix": [
+          "j'ai chanté",
           "je chanterai",
           "je chantais",
-          "je chante",
-          "j'ai chanté"
+          "je chante"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Infinitif + -ai : je chanterai."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Quel temps est « nous finissions » ?",
         "choix": [
-          "imparfait",
-          "futur",
           "présent",
-          "passé simple"
+          "passé simple",
+          "imparfait",
+          "futur"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "-ions = imparfait."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Quelle phrase est au passé composé ?",
         "choix": [
+          "Elle partira.",
           "Elle est partie hier.",
           "Elle part demain.",
-          "Elle partait souvent.",
-          "Elle partira."
+          "Elle partait souvent."
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Auxiliaire « est » + participe « partie »."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "« Hier, nous ___ au parc. » (aller)",
         "choix": [
-          "sommes allés",
-          "allions",
           "irons",
-          "allons"
+          "allons",
+          "sommes allés",
+          "allions"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Fait précis passé : passé composé."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "« Quand j'étais petit, je ___ à la plage. » (jouer)",
         "choix": [
-          "jouais",
           "jouerai",
           "ai joué",
-          "joue"
+          "joue",
+          "jouais"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Habitude passée : imparfait."
       }
     ],

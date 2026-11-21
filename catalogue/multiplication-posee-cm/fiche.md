@@ -2,12 +2,13 @@
 id: multiplication-posee-cm
 titre: La multiplication posée et les tables
 sujet: mathematiques/multiplication-posee-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - addition-soustraction-posees-cm
 competences:
   - multiplication-posee-cm-comprendre
   - multiplication-posee-cm-appliquer

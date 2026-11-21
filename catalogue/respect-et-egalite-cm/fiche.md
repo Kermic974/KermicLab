@@ -2,7 +2,7 @@
 id: respect-et-egalite-cm
 titre: Respect, égalité et lutte contre le harcèlement
 sujet: emc/respect-et-egalite-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

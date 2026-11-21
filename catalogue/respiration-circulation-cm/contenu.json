@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Que fait le cœur ?",
         "choix": [
-          "Il fait circuler le sang",
           "Il digère les aliments",
           "Il fabrique l'air",
-          "Il fait penser"
+          "Il fait penser",
+          "Il fait circuler le sang"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Le cœur est une pompe."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Que prend le sang dans les poumons ?",
         "choix": [
-          "De l'oxygène",
           "Du sucre",
           "De l'eau",
-          "Du fer"
+          "Du fer",
+          "De l'oxygène"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "L'oxygène de l'air."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Pourquoi le cœur bat-il plus vite à l'effort ?",
         "choix": [
+          "Le cœur est fatigué par l'effort",
+          "Le cœur s'ennuie quand on court",
           "Les muscles ont besoin de plus d'oxygène",
-          "Il s'ennuie",
-          "Il fait chaud",
-          "Il est fatigué"
+          "Il fait plus chaud dans la salle"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Les muscles consomment plus."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Que remarques-tu après la course ?",
         "choix": [
-          "Le pouls est plus rapide",
-          "Le pouls est plus lent",
           "Il n'y a plus de pouls",
-          "Le pouls est identique"
+          "Le pouls est identique",
+          "Le pouls est plus rapide",
+          "Le pouls est plus lent"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Le cœur accélère."
       },
       {

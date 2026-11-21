@@ -5,15 +5,7 @@ sujet: mathematiques/perimetres-aires
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-3, cycle-4, seconde
 classes: 6e, 5e
-prerequis:
-competences:
-  - calculer-le-perimetre-d-un-polygone
-  - calculer-l-aire-d-un-polygone
-  - calculer-perimetre-et-aire-d-un-disque
-  - convertir-des-unites-d-aire
-  - prevoir-l-effet-d-un-agrandissement-sur-une-aire
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -36,6 +28,9 @@ questions:
   - je ne comprends pas le périmètre d'un cercle
   - comment calculer l'aire d'un disque
   - how do you find the area of a rectangle?
+prerequis:
+niveaux: cycle-3, cycle-4, seconde
+competences: calculer-le-perimetre-d-un-polygone, calculer-l-aire-d-un-polygone, calculer-perimetre-et-aire-d-un-disque, convertir-des-unites-d-aire, prevoir-l-effet-d-un-agrandissement-sur-une-aire
 ---
 
 # Périmètres et aires

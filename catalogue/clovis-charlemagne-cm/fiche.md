@@ -2,7 +2,7 @@
 id: clovis-charlemagne-cm
 titre: Clovis et Charlemagne
 sujet: histoire/clovis-charlemagne-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

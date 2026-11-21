@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Penser par soi-même, c'est vérifier ce qu'on lit et ce qu'on voit.",
+  "niveaux": [
+    {
+      "titre": "Fait ou opinion ?",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un **fait** est vérifiable : « Paris est la capitale de la France ». Une **opinion** exprime un avis : « Paris est la plus belle ville ». Pour s'informer, on regarde : qui parle ? Quelle est la **source** ? À quelle date ? D'autres sources disent-elles la même chose ?"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Il pleut à Lyon » : fait (on peut vérifier).",
+          "« La pluie, c'est triste » : opinion.",
+          "On vérifie sur plusieurs sites sérieux."
+        ]
+      },
+      "aRetenir": "Fait : vérifiable. Opinion : un point de vue."
+    },
+    {
+      "titre": "Médias, images et rumeurs",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les **médias** (presse, radio, télévision, Internet) informent, mais certains diffusent de fausses informations (rumeurs, « infox »). Une **image** peut être truquée, sortie de son contexte ou générée par ordinateur.",
+        "Réflexes : chercher la source originale, comparer, attendre avant de partager, demander à un adulte. Le droit protège la liberté de la presse mais punit la diffamation et la haine."
+      ],
+      "exemple": {
+        "titre": "Exemple : une photo virale",
+        "etapes": [
+          "Qui l'a publiée en premier ?",
+          "À quelle date ?",
+          "Une recherche d'image inversée peut le dire."
+        ]
+      },
+      "aRetenir": "Vérifier avant de partager."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est un fait ?",
+        "choix": [
+          "La Seine traverse Paris.",
+          "La Seine est la plus belle rivière.",
+          "J'adore la Seine.",
+          "Il faut aimer Paris."
+        ],
+        "bonne": 0,
+        "explication": "On peut le vérifier."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Avant de partager une information, il faut…",
+        "choix": [
+          "la partager vite",
+          "l'effacer",
+          "ne rien lire",
+          "vérifier la source"
+        ],
+        "bonne": 3,
+        "explication": "Réflexe de base."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une photo virale peut être…",
+        "choix": [
+          "interdite",
+          "truquée ou sortie de son contexte",
+          "toujours exacte",
+          "toujours fausse"
+        ],
+        "bonne": 1,
+        "explication": "À vérifier."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'article qui circule",
+    "histoire": [
+      "Un message affirme : « Ce soir, l'école est fermée ! »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "Je partage à tous mes amis",
+          "Je réponds à l'inconnu",
+          "J'ignore sans rien vérifier",
+          "Je vérifie auprès de l'école ou d'un adulte"
+        ],
+        "bonne": 3,
+        "explication": "Source officielle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi le message est-il suspect ?",
+        "choix": [
+          "Il est envoyé le soir",
+          "Il n'a pas de source claire",
+          "Il est écrit en rouge",
+          "Il est court"
+        ],
+        "bonne": 1,
+        "explication": "Pas de source = prudence."
+      }
+    ],
+    "conclusion": "Esprit critique activé !"
+  }
+}

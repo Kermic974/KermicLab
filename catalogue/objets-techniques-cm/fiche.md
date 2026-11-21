@@ -2,7 +2,7 @@
 id: objets-techniques-cm
 titre: Les objets techniques : besoin, fonction, matériaux
 sujet: technologie/objets-techniques-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

@@ -2,12 +2,13 @@
 id: louis-xiv-cm
 titre: Louis XIV, le Roi-Soleil
 sujet: histoire/louis-xiv-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - henri-iv-cm
 competences:
   - louis-xiv-cm-comprendre
   - louis-xiv-cm-appliquer

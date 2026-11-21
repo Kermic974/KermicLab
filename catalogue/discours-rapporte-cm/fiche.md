@@ -2,12 +2,13 @@
 id: discours-rapporte-cm
 titre: Le discours rapporté et le théâtre
 sujet: francais/discours-rapporte-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - ponctuation-et-dialogue-cm
 competences:
   - discours-rapporte-cm-comprendre
   - discours-rapporte-cm-appliquer

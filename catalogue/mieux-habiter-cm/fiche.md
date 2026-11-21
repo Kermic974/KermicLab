@@ -2,12 +2,13 @@
 id: mieux-habiter-cm
 titre: Mieux habiter : ville durable et risques
 sujet: geographie/mieux-habiter-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - habiter-ville-campagne-cm
 competences:
   - mieux-habiter-cm-comprendre
   - mieux-habiter-cm-appliquer

@@ -2,12 +2,13 @@
 id: respiration-circulation-cm
 titre: Respiration, cœur et circulation du sang
 sujet: svt/respiration-circulation-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - alimentation-digestion-cm
 competences:
   - respiration-circulation-cm-comprendre
   - respiration-circulation-cm-appliquer

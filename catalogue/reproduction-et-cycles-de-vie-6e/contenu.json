@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Tout être vivant naît, grandit, se reproduit puis meurt : c'est son cycle de vie.",
+  "niveaux": [
+    {
+      "titre": "Cycles de vie",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le **cycle de vie** d'un être vivant comprend : naissance (ou germination), croissance, reproduction, vieillissement, mort. Il dure quelques jours pour une mouche, des centaines d'années pour certains arbres.",
+        "Certains animaux se **métamorphosent** : la chenille devient chrysalide puis papillon ; le têtard devient grenouille."
+      ],
+      "exemple": {
+        "titre": "Exemple : le papillon",
+        "etapes": [
+          "Œuf → chenille.",
+          "Chenille → chrysalide.",
+          "Chrysalide → papillon adulte."
+        ]
+      },
+      "aRetenir": "Métamorphose : changement de forme."
+    },
+    {
+      "titre": "Reproduction",
+      "niveau": "6e",
+      "paragraphes": [
+        "La reproduction **sexuée** (rencontre de deux cellules sexuelles de deux individus) donne des descendants différents de leurs parents. La reproduction **asexuée** (bouture, bulbe, stolon) donne des individus identiques à leur parent.",
+        "Chez les plantes à fleurs : pollinisation, fécondation, fruit, graines, dispersion, germination."
+      ],
+      "exemple": {
+        "titre": "Exemple : le fraisier",
+        "etapes": [
+          "Il fait des fleurs et des fruits (reproduction sexuée).",
+          "Il forme aussi des stolons.",
+          "Chaque stolon donne un nouveau plant identique."
+        ]
+      },
+      "aRetenir": "Asexuée : descendants identiques ; sexuée : descendants différents."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une bouture est un exemple de reproduction…",
+        "choix": [
+          "sexuée",
+          "impossible",
+          "par métamorphose",
+          "asexuée"
+        ],
+        "bonne": 3,
+        "explication": "Un fragment redonne une plante identique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La chrysalide devient…",
+        "choix": [
+          "un têtard",
+          "une graine",
+          "un œuf",
+          "un papillon"
+        ],
+        "bonne": 3,
+        "explication": "Métamorphose."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les graines d'un fruit permettent de…",
+        "choix": [
+          "nourrir le sol seulement",
+          "faire pousser des feuilles mortes",
+          "attirer la pluie",
+          "donner de nouvelles plantes"
+        ],
+        "bonne": 3,
+        "explication": "Reproduction par graines."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jardin de l'école",
+    "histoire": [
+      "Tu observes un plant de fraisier."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment multiplier le fraisier à l'identique ?",
+        "choix": [
+          "Par ses graines",
+          "Par le vent",
+          "Par l'eau",
+          "Par ses stolons"
+        ],
+        "bonne": 3,
+        "explication": "Reproduction asexuée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel élément permet la fécondation des fleurs ?",
+        "choix": [
+          "Le pollen apporté par les insectes",
+          "La pluie",
+          "La nuit",
+          "Le froid"
+        ],
+        "bonne": 0,
+        "explication": "Pollinisation."
+      }
+    ],
+    "conclusion": "Observation réussie !"
+  }
+}

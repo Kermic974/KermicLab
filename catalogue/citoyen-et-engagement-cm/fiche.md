@@ -2,12 +2,13 @@
 id: citoyen-et-engagement-cm
 titre: Être citoyen : voter, s'engager, participer
 sujet: emc/citoyen-et-engagement-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - devise-republique-cm
 competences:
   - citoyen-et-engagement-cm-comprendre
   - citoyen-et-engagement-cm-appliquer

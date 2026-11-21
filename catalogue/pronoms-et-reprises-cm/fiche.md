@@ -2,12 +2,13 @@
 id: pronoms-et-reprises-cm
 titre: Pronoms, reprises et cohérence d'un texte
 sujet: francais/pronoms-et-reprises-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - nature-des-mots-cm
 competences:
   - pronoms-et-reprises-cm-comprendre
   - pronoms-et-reprises-cm-appliquer

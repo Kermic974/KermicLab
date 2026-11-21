@@ -2,12 +2,14 @@
 id: energie-et-signaux-6e
 titre: Énergie, signaux lumineux et sonores en 6e
 sujet: physique-chimie/energie-et-signaux-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - energie-et-sources-cm
+  - lumiere-et-ombres-cm
 competences:
   - energie-et-signaux-6e-comprendre
   - energie-et-signaux-6e-appliquer

@@ -2,12 +2,13 @@
 id: objets-techniques-6e
 titre: Objets techniques, matériaux et programmation en 6e
 sujet: technologie/objets-techniques-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - objets-techniques-cm
 competences:
   - objets-techniques-6e-comprendre
   - objets-techniques-6e-appliquer

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On apprend à lire, chanter et écouter la musique avec méthode.",
+  "niveaux": [
+    {
+      "titre": "Rythme, mesure et mélodie",
+      "niveau": "6e",
+      "paragraphes": [
+        "La **mesure** regroupe les temps : à 4 temps (4/4), la ronde vaut 4 temps, la blanche 2, la noire 1, la croche 1/2. Le **tempo** (battements par minute) donne la vitesse : lento (lent), andante (modéré), allegro (rapide).",
+        "La **mélodie** est la suite de notes ; l'**harmonie** est l'ensemble des notes jouées en même temps (accords). La clé de sol place le sol sur la deuxième ligne."
+      ],
+      "exemple": {
+        "titre": "Exemple : compter une mesure à 4 temps",
+        "etapes": [
+          "Une blanche + deux noires = 2 + 1 + 1 = 4.",
+          "Une ronde = 4.",
+          "Quatre noires = 4."
+        ]
+      },
+      "aRetenir": "Mesure à 4 temps : total 4."
+    },
+    {
+      "titre": "Voix, instruments et écoute",
+      "niveau": "6e",
+      "paragraphes": [
+        "La **voix** change de registre (aigu, grave) et de timbre. Les instruments se classent par modes de production du son : cordes, vents, percussions, claviers. Dans un **orchestre symphonique**, les instruments sont regroupés par familles.",
+        "Pour **écouter** : instruments ? tempo ? caractère (joyeux, calme) ? structure (couplet, refrain) ?"
+      ],
+      "exemple": {
+        "titre": "Exemple : « L'Ode à la joie »",
+        "etapes": [
+          "Mélodie simple et chantante.",
+          "Tempo allegro, caractère joyeux.",
+          "Interprétée par un chœur et un orchestre."
+        ]
+      },
+      "aRetenir": "Écouter : qui, quoi, comment, quel effet ?"
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Une blanche vaut 2 temps. Combien de temps font une blanche et deux noires ?",
+        "reponse": 4,
+        "unite": "temps",
+        "indices": [
+          "Noire = 1 temps."
+        ],
+        "solution": "2 + 1 + 1 = 4.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'harmonie est…",
+        "choix": [
+          "une suite de notes l'une après l'autre",
+          "la vitesse",
+          "un silence",
+          "des notes jouées en même temps"
+        ],
+        "bonne": 3,
+        "explication": "Accords."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel instrument est un vent ?",
+        "choix": [
+          "Le piano",
+          "Le tambour",
+          "La flûte",
+          "Le violon"
+        ],
+        "bonne": 2,
+        "explication": "On souffle."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chorale du collège",
+    "histoire": [
+      "Tu chantes dans la chorale du collège."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que signifie « allegro » ?",
+        "choix": [
+          "Doux",
+          "Rapide",
+          "Lent",
+          "Fort"
+        ],
+        "bonne": 1,
+        "explication": "Allegro = joyeux et rapide."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment s'appelle un chant à plusieurs voix qui se répondent en décalé ?",
+        "choix": [
+          "Un canon",
+          "Un solo",
+          "Un silence",
+          "Un tempo"
+        ],
+        "bonne": 0,
+        "explication": "Frère Jacques."
+      }
+    ],
+    "conclusion": "Bien chanté !"
+  }
+}

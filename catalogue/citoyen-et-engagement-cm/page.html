@@ -11,7 +11,7 @@
   "id": "citoyen-et-engagement-cm",
   "titre": "Être citoyen : voter, s'engager, participer",
   "sujet": "emc/citoyen-et-engagement-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -76,9 +76,9 @@
         "question": "Qui élit le maire ?",
         "choix": [
           "Les conseillers municipaux élus par les habitants",
-          "Le président uniquement",
-          "Le roi",
-          "Les enfants"
+          "Le président de la République seul",
+          "Les députés de l'Assemblée nationale",
+          "Les élèves de la commune"
         ],
         "bonne": 0,
         "explication": "Élection municipale."
@@ -88,12 +88,12 @@
         "titre": "Exercice 2",
         "question": "Le vote est…",
         "choix": [
-          "secret et libre",
-          "obligatoire pour les enfants",
           "public",
-          "réservé aux riches"
+          "réservé aux riches",
+          "secret et libre",
+          "obligatoire pour les enfants"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Pour protéger la liberté de choix."
       },
       {
@@ -101,12 +101,12 @@
         "titre": "Exercice 3",
         "question": "Que fait un délégué de classe ?",
         "choix": [
+          "Il dirige tout l'établissement",
           "Il représente ses camarades",
-          "Il punit les élèves",
-          "Il note les copies",
-          "Il dirige l'école"
+          "Il choisit les notes de la classe",
+          "Il remplace le professeur absent"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il porte la parole de la classe."
       }
     ]
@@ -135,12 +135,12 @@
         "titre": "Exercice 2",
         "question": "Un candidat obtient 14 voix, l'autre 11. Combien d'élèves ont voté ?",
         "choix": [
-          "25",
           "3",
           "14",
-          "11"
+          "11",
+          "25"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "14 + 11 = 25 votants."
       }
     ],
@@ -401,7 +401,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Être citoyen : voter, s'engager, participer</h1>
-    <div class="meta">citoyen-et-engagement-cm · v1.0.0</div>
+    <div class="meta">citoyen-et-engagement-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

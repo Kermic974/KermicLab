@@ -2,12 +2,13 @@
 id: volcans-et-seismes-cm
 titre: Volcans, séismes et risques naturels
 sujet: svt/volcans-et-seismes-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - terre-et-systeme-solaire-cm
 competences:
   - volcans-et-seismes-cm-comprendre
   - volcans-et-seismes-cm-appliquer

@@ -2,12 +2,14 @@
 id: orthographe-grammaticale-6e
 titre: Accords et orthographe grammaticale en 6e
 sujet: francais/orthographe-grammaticale-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - accords-cm
+  - homophones-cm
 competences:
   - orthographe-grammaticale-6e-comprendre
   - orthographe-grammaticale-6e-appliquer

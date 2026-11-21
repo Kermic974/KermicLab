@@ -5,14 +5,7 @@ sujet: mathematiques/nombres-decimaux
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-3, cycle-4, seconde
 classes: 6e
-prerequis:
-competences:
-  - lire-un-nombre-decimal
-  - comparer-des-decimaux
-  - arrondir-un-decimal
-  - calculer-avec-des-decimaux
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -38,6 +31,9 @@ questions:
   - je ne comprends pas les dixièmes et les centièmes
   - comment comparer des nombres à virgule
   - what are decimals?
+prerequis:
+niveaux: cycle-3, cycle-4, seconde
+competences: lire-un-nombre-decimal, comparer-des-decimaux, arrondir-un-decimal, calculer-avec-des-decimaux
 ---
 
 # Les nombres décimaux

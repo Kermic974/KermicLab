@@ -2,12 +2,13 @@
 id: guerres-mondiales-cm
 titre: Les deux guerres mondiales
 sujet: histoire/guerres-mondiales-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - republique-ecole-cm
 competences:
   - guerres-mondiales-cm-comprendre
   - guerres-mondiales-cm-appliquer

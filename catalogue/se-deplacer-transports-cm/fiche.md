@@ -2,12 +2,13 @@
 id: se-deplacer-transports-cm
 titre: Se déplacer et transporter
 sujet: geographie/se-deplacer-transports-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - habiter-ville-campagne-cm
 competences:
   - se-deplacer-transports-cm-comprendre
   - se-deplacer-transports-cm-appliquer

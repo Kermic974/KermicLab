@@ -2,7 +2,7 @@
 id: gaulois-gallo-romains-cm
 titre: Les Gaulois et les Gallo-Romains
 sujet: histoire/gaulois-gallo-romains-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

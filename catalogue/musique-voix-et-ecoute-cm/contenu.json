@@ -47,12 +47,12 @@
         "titre": "Exercice 1",
         "question": "Qu'est-ce qu'un canon ?",
         "choix": [
-          "La même mélodie chantée en décalé",
-          "Un instrument",
-          "Un silence",
-          "Un tempo"
+          "Un instrument à cordes très grave",
+          "Un long silence entre deux notes",
+          "Un tempo très rapide",
+          "La même mélodie chantée en décalé"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Frère Jacques."
       },
       {
@@ -60,12 +60,12 @@
         "titre": "Exercice 2",
         "question": "Qui a composé « La Flûte enchantée » ?",
         "choix": [
-          "Mozart",
-          "Beethoven",
           "Vivaldi",
-          "Debussy"
+          "Debussy",
+          "Mozart",
+          "Beethoven"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Mozart."
       },
       {
@@ -73,12 +73,12 @@
         "titre": "Exercice 3",
         "question": "L'hymne européen est tiré de la symphonie de…",
         "choix": [
-          "Beethoven",
           "Mozart",
           "Bach",
-          "Chopin"
+          "Chopin",
+          "Beethoven"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "9e symphonie."
       }
     ]
@@ -95,9 +95,9 @@
         "question": "Avant de chanter, il faut…",
         "choix": [
           "échauffer sa voix et bien respirer",
-          "crier fort",
-          "chuchoter",
-          "sauter"
+          "crier le plus fort possible",
+          "chuchoter toute la chanson",
+          "courir pour prendre son souffle"
         ],
         "bonne": 0,
         "explication": "Préparer la voix."
@@ -107,12 +107,12 @@
         "titre": "Exercice 2",
         "question": "Chanter « à l'unisson » signifie…",
         "choix": [
-          "tous la même mélodie",
-          "chacun la sienne",
           "sans voix",
-          "en silence"
+          "en silence",
+          "tous la même mélodie",
+          "chacun la sienne"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Même mélodie."
       }
     ],

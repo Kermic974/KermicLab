@@ -2,12 +2,14 @@
 id: ecrire-un-recit-cm
 titre: Écrire un récit
 sujet: francais/ecrire-un-recit-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - lecture-comprehension-cm
+  - conjugaison-cm
 competences:
   - ecrire-un-recit-cm-comprendre
   - ecrire-un-recit-cm-appliquer

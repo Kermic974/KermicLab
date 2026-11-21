@@ -2,12 +2,13 @@
 id: durees-et-horaires-cm
 titre: Durées et horaires
 sujet: mathematiques/durees-et-horaires-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - addition-soustraction-posees-cm
 competences:
   - durees-et-horaires-cm-comprendre
   - durees-et-horaires-cm-appliquer

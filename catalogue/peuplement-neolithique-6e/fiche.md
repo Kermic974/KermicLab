@@ -2,12 +2,13 @@
 id: peuplement-neolithique-6e
 titre: Les débuts de l'humanité et le Néolithique
 sujet: histoire/peuplement-neolithique-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - prehistoire-cm
 competences:
   - peuplement-neolithique-6e-comprendre
   - peuplement-neolithique-6e-appliquer

@@ -2,12 +2,14 @@
 id: organisme-et-effort-6e
 titre: Fonctionnement de l'organisme à l'effort
 sujet: svt/organisme-et-effort-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - respiration-circulation-cm
+  - alimentation-digestion-cm
 competences:
   - organisme-et-effort-6e-comprendre
   - organisme-et-effort-6e-appliquer

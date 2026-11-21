@@ -2,12 +2,15 @@
 id: entiers-et-operations-6e
 titre: Nombres entiers et opérations en 6e
 sujet: mathematiques/entiers-et-operations-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - multiplication-posee-cm
+  - division-euclidienne-cm
+  - calcul-mental-cm
 competences:
   - entiers-et-operations-6e-comprendre
   - entiers-et-operations-6e-appliquer

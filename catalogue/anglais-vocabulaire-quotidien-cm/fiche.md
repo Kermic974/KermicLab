@@ -2,12 +2,13 @@
 id: anglais-vocabulaire-quotidien-cm
 titre: Anglais : couleurs, nombres, famille et objets
 sujet: anglais/anglais-vocabulaire-quotidien-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1, CM2
 prerequis:
+  - anglais-se-presenter-cm
 competences:
   - anglais-vocabulaire-quotidien-cm-comprendre
   - anglais-vocabulaire-quotidien-cm-appliquer

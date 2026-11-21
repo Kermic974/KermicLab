@@ -2,12 +2,13 @@
 id: henri-iv-cm
 titre: Henri IV et l'édit de Nantes
 sujet: histoire/henri-iv-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM1
 prerequis:
+  - francois-ier-cm
 competences:
   - henri-iv-cm-comprendre
   - henri-iv-cm-appliquer

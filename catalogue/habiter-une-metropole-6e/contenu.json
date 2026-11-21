@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une métropole rassemble beaucoup d'habitants, d'emplois et de pouvoirs : ses atouts s'accompagnent de défis.",
+  "niveaux": [
+    {
+      "titre": "Une ville qui concentre",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une **métropole** est une très grande ville qui concentre population, emplois, universités, transports, pouvoirs et exerce une influence sur un vaste territoire. Exemples : Paris, Londres, Tokyo, Le Caire.",
+        "On y trouve un **centre** (affaires, monuments), des quartiers résidentiels et une **périphérie** (zones d'activité, banlieues)."
+      ],
+      "exemple": {
+        "titre": "Exemple : Paris",
+        "etapes": [
+          "Plus de 2 millions d'habitants dans la ville.",
+          "Plus de 12 millions dans l'agglomération.",
+          "Capitale politique, économique et culturelle."
+        ]
+      },
+      "aRetenir": "Métropole : concentration et influence."
+    },
+    {
+      "titre": "Atouts et défis",
+      "niveau": "6e",
+      "paragraphes": [
+        "Atouts : emplois, services, culture, transports. Défis : logement cher, pollution, embouteillages, inégalités entre quartiers. Les habitants se déplacent beaucoup (métro, tramway, RER), et les urbanistes cherchent à rendre la ville plus durable : transports collectifs, espaces verts, rénovation.",
+        "Pour lire une métropole : plan, photographies aériennes, données (densité)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une solution",
+        "etapes": [
+          "Créer des pistes cyclables.",
+          "Étendre le métro.",
+          "Ajouter des parcs."
+        ]
+      },
+      "aRetenir": "Durable : économiser les ressources, protéger l'environnement."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une métropole se caractérise par…",
+        "choix": [
+          "l'agriculture dominante",
+          "la concentration d'habitants, d'emplois et de pouvoirs",
+          "une faible densité",
+          "l'absence de transports"
+        ],
+        "bonne": 1,
+        "explication": "Elle concentre les fonctions."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est un défi d'une métropole ?",
+        "choix": [
+          "Les embouteillages et le logement cher",
+          "Le manque d'écoles",
+          "L'absence de services",
+          "Le silence permanent"
+        ],
+        "bonne": 0,
+        "explication": "Conséquences de la concentration."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un exemple de transport collectif est…",
+        "choix": [
+          "l'avion privé",
+          "le métro",
+          "la voiture seule",
+          "le vélo seul"
+        ],
+        "bonne": 1,
+        "explication": "Collectif : plusieurs personnes."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan de la ville",
+    "histoire": [
+      "Tu étudies le plan d'une grande métropole."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où trouve-t-on les quartiers d'affaires ?",
+        "choix": [
+          "Dans le centre",
+          "Au milieu d'un champ",
+          "En pleine mer",
+          "Sur une montagne"
+        ],
+        "bonne": 0,
+        "explication": "Le centre concentre les affaires."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour moins de pollution, on peut…",
+        "choix": [
+          "ouvrir plus d'autoroutes",
+          "développer les transports en commun",
+          "construire plus de parkings seulement",
+          "supprimer les parcs"
+        ],
+        "bonne": 1,
+        "explication": "Moins de voitures."
+      }
+    ],
+    "conclusion": "Bon urbaniste !"
+  }
+}

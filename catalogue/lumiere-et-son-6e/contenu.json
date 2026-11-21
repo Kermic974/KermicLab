@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La lumière et le son transportent de l'information, avec des vitesses très différentes.",
+  "niveaux": [
+    {
+      "titre": "La lumière",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une **source** de lumière (Soleil, lampe) émet de la lumière qui se propage en **ligne droite**, dans le vide et dans l'air, à environ **300 000 km/s**. Un objet est vu quand la lumière qu'il émet ou diffuse entre dans l'œil. Un objet opaque arrête la lumière et forme une **ombre**.",
+        "La Lune n'est pas une source : elle **diffuse** la lumière du Soleil."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'ombre",
+        "etapes": [
+          "Une lampe éclaire un objet.",
+          "L'ombre se forme derrière.",
+          "Plus l'objet est près de la lampe, plus l'ombre est grande."
+        ]
+      },
+      "aRetenir": "La lumière se propage en ligne droite."
+    },
+    {
+      "titre": "Le son",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un **son** est produit par une **vibration** et se propage dans un milieu (air, eau, solide) à environ **340 m/s** dans l'air ; il ne se propage pas dans le vide. L'**écho** est un son réfléchi par un obstacle.",
+        "La distance d'un orage : on compte les secondes entre l'éclair et le tonnerre, on multiplie par 340 m : 3 s → environ 1 km."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'orage",
+        "etapes": [
+          "L'éclair est vu presque instantanément.",
+          "Le tonnerre arrive 6 s plus tard.",
+          "L'orage est à environ 2 km."
+        ]
+      },
+      "aRetenir": "Le son est plus lent que la lumière."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Le tonnerre arrive 6 s après l'éclair. Distance de l'orage (vitesse du son 340 m/s) ?",
+        "reponse": 2040,
+        "unite": "m",
+        "indices": [
+          "d = v × t."
+        ],
+        "solution": "6 × 340 = 2 040.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un son se propage…",
+        "choix": [
+          "seulement dans l'eau",
+          "seulement dans l'air",
+          "dans l'air, l'eau et les solides",
+          "dans le vide"
+        ],
+        "bonne": 2,
+        "explication": "Il lui faut un milieu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La Lune est…",
+        "choix": [
+          "un corps qui diffuse la lumière du Soleil",
+          "une source de lumière",
+          "une étoile",
+          "un trou noir"
+        ],
+        "bonne": 0,
+        "explication": "Elle n'émet pas sa lumière."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Dans la montagne",
+    "histoire": [
+      "Tu cries devant une falaise et tu entends ton écho."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qu'est-ce qu'un écho ?",
+        "choix": [
+          "Un son plus fort",
+          "Un son plus grave",
+          "Un son sans air",
+          "Un son qui rebondit sur un obstacle"
+        ],
+        "bonne": 3,
+        "explication": "Réflexion."
+      },
+      {
+        "type": "nombre",
+        "question": "L'écho arrive 2 s après ton cri. À quelle distance est la falaise (aller-retour = 680 m) ?",
+        "reponse": 340,
+        "unite": "m",
+        "indices": [
+          "Distance aller = moitié."
+        ],
+        "solution": "Le son fait un aller-retour de 680 m : 340 m aller.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien écouté !"
+  }
+}

@@ -47,12 +47,12 @@
         "titre": "Exercice 1",
         "question": "Pourquoi s'échauffer ?",
         "choix": [
-          "Pour préparer le corps et éviter les blessures",
-          "Pour perdre du temps",
-          "Pour dormir",
-          "Pour manger"
+          "Pour se fatiguer avant le match",
+          "Pour gagner du temps sur le terrain",
+          "Pour avoir moins soif ensuite",
+          "Pour préparer le corps et éviter les blessures"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Prévention."
       },
       {
@@ -71,12 +71,12 @@
         "titre": "Exercice 3",
         "question": "Après l'effort, il faut…",
         "choix": [
-          "boire et récupérer",
           "s'arrêter de boire",
           "courir encore",
-          "ne pas dormir"
+          "ne pas dormir",
+          "boire et récupérer"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Récupération."
       }
     ]
@@ -92,12 +92,12 @@
         "titre": "Exercice 1",
         "question": "Que fais-tu d'abord ?",
         "choix": [
-          "Je m'échauffe",
           "Je m'assois",
           "Je mange",
-          "Je dors"
+          "Je dors",
+          "Je m'échauffe"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Échauffement."
       },
       {
@@ -105,12 +105,12 @@
         "titre": "Exercice 2",
         "question": "Tu as très soif pendant l'effort. Tu…",
         "choix": [
-          "bois de l'eau",
-          "attends la fin du cours",
           "ne bois pas",
-          "bois une boisson sucrée"
+          "bois une boisson sucrée",
+          "bois de l'eau",
+          "attends la fin du cours"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Hydratation."
       }
     ],

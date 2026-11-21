@@ -2,7 +2,7 @@
 id: france-europe-depuis-1945-cm
 titre: La France depuis 1945 et la construction européenne
 sujet: histoire/france-europe-depuis-1945-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

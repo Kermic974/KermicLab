@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "La discrimination est…",
         "choix": [
+          "obligatoire",
           "interdite par la loi",
           "autorisée entre amis",
-          "une plaisanterie sans danger",
-          "obligatoire"
+          "une plaisanterie sans danger"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Elle est punie."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "À qui parler en cas de harcèlement ?",
         "choix": [
+          "Seulement à un ami du même âge",
           "À un adulte du collège ou au 3018",
-          "À personne",
-          "Seulement à un ami",
-          "À un inconnu en ligne"
+          "À un inconnu rencontré en ligne",
+          "À personne, pour ne pas aggraver"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Ne pas rester seul."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Le règlement intérieur sert à…",
         "choix": [
-          "organiser la vie du collège",
-          "punir tout le monde",
-          "choisir les notes",
-          "décorer"
+          "punir tous les élèves",
+          "choisir les notes des élèves",
+          "décorer les salles de classe",
+          "organiser la vie du collège"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Il fixe les règles communes."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Un élève est moqué pour son accent. Que fais-tu ?",
         "choix": [
+          "Je m'éloigne sans rien dire",
+          "Je ris avec les autres élèves",
           "Je le soutiens et j'en parle à un adulte",
-          "Je ris",
-          "Je filme",
-          "Je m'éloigne sans rien dire"
+          "Je filme la scène pour la montrer"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Agir contre la discrimination."
       },
       {

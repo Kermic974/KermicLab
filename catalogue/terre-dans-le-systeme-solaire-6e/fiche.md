@@ -2,12 +2,13 @@
 id: terre-dans-le-systeme-solaire-6e
 titre: La Terre dans le système solaire en 6e
 sujet: svt/terre-dans-le-systeme-solaire-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - terre-et-systeme-solaire-cm
 competences:
   - terre-dans-le-systeme-solaire-6e-comprendre
   - terre-dans-le-systeme-solaire-6e-appliquer

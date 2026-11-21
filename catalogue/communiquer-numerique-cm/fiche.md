@@ -2,12 +2,13 @@
 id: communiquer-numerique-cm
 titre: Communiquer d'un bout à l'autre du monde
 sujet: geographie/communiquer-numerique-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
+  - lire-une-carte-cm
 competences:
   - communiquer-numerique-cm-comprendre
   - communiquer-numerique-cm-appliquer

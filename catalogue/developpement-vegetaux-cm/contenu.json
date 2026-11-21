@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Que contient un fruit ?",
         "choix": [
-          "Des graines",
-          "Des racines",
           "Des feuilles",
-          "Des étamines seulement"
+          "Des étamines seulement",
+          "Des graines",
+          "Des racines"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Il protège les graines."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Que faut-il donner aux plants pour qu'ils grandissent ?",
         "choix": [
+          "Du sel et de la chaleur seule",
+          "De l'air sec et du sable",
           "De l'eau et de la lumière",
-          "Du sel",
-          "Du noir total",
-          "Du sucre"
+          "Du sucre et de l'obscurité"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Eau, lumière, air et sels minéraux."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Comment appelle-t-on la première étape du développement ?",
         "choix": [
-          "La germination",
-          "La floraison",
           "La fructification",
-          "La récolte"
+          "La récolte",
+          "La germination",
+          "La floraison"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "La graine germe."
       }
     ],

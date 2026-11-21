@@ -2,13 +2,14 @@
 id: calcul-avec-decimaux-cm
 titre: Calculer avec des nombres décimaux
 sujet: mathematiques/calcul-avec-decimaux-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3
 classes: CM2
 prerequis:
   - nombres-decimaux-cm
+  - addition-soustraction-posees-cm
 competences:
   - calcul-avec-decimaux-cm-comprendre
   - calcul-avec-decimaux-cm-appliquer

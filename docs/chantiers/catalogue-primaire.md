@@ -1,6 +1,6 @@
 # Chantier : catalogue du primaire (cycle 3 — CM1 / CM2)
 
-**Niveau actuel : 106 notions CM1/CM2 et 14 notions de 6e rédigées (suffixe `-6e`), relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
+**Niveau actuel : 102 notions CM1/CM2 et 50 notions de 6e rédigées (suffixe `-6e`), 12 matières, relecture humaine à faire** — décision : [ADR 0037](../decisions/0037-niveau-primaire-cm1-cm2.md).
 
 Méthode : gabarit commun (`contenu.json`, trois onglets), niveau `primaire`, classes `CM1` / `CM2`, cycle `cycle-3`. Chaque notion a deux niveaux de
 lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, avec indices) et un défi en deux étapes.
@@ -22,7 +22,29 @@ lecture (intuition, puis CM), trois exercices d'entraînement (QCM ou nombre, av
 
 ## 6e (fin du cycle 3)
 
-Les notions `*-6e` (niveau `college`, classe `6e`, cycle 3) complètent les 12 notions de 6e déjà présentes : entiers et divisions, constructions, repérage et données, algorithmique, symétrie ; temps du récit, contes et fables, fonctions, accords ; Néolithique, premières civilisations, Grèce, Rome ; habiter ; vivre ensemble ; sciences et technologie.
+Les notions `*-6e` (niveau `college`, classe `6e`, cycle 3) complètent les notions de 6e déjà présentes (`fractions`, `nombres-decimaux`, `perimetres-aires`, `proportionnalite`, `angles`, `volumes`, `transformations`, `antiquite`, `conjugaison-temps`, `espaces-ruraux`, `ecosystemes-et-biodiversite`, `la-cellule`, `photosynthese`). La 6e couvre désormais **les 12 matières** :
+
+| Matière | Notions de 6e |
+|---|---|
+| Mathématiques (15) | entiers et opérations, divisions, grandeurs et mesures, triangles et quadrilatères, constructions, symétrie, repérage et données, algorithmique + les notions existantes |
+| Français (9) | temps du récit, sujet-verbe-compléments, orthographe grammaticale, récit d'aventures, contes-fables-mythes, poésie, vocabulaire et étymologie, écrire pour raconter et décrire + `conjugaison-temps` |
+| Histoire (8) | Néolithique, premières civilisations, Grèce, Rome, voyages d'Ulysse, monothéisme juif, empire romain et christianisme + `antiquite` |
+| Géographie (6) | habiter en général, la Terre, une métropole, le littoral, un espace de faible densité + `espaces-ruraux` |
+| EMC (4) | vivre ensemble, esprit critique et médias, droit et règle, engagement et solidarité |
+| SVT (8) | classification, organisme et effort, nutrition, reproduction, Terre dans le système solaire + existantes |
+| Physique-chimie (5) | états et mélanges, énergie et signaux, mouvement et vitesse, lumière et son, masse et volume |
+| Technologie (3) | objets techniques, matériaux et environnement, programmation et robots |
+| Anglais (2), Arts plastiques (1), Musique (1), EPS (1) | une notion au moins par matière |
+
+## Parcours CM1 → CM2 → 6e
+
+Chaque notion du cycle 3 déclare ses **prérequis** (champ `prerequis` de la fiche). Le parcours suit trois règles :
+
+1. **Dans une matière, un fil logique** : par exemple `grands-nombres-cm` → `addition-soustraction-posees-cm` → `multiplication-posee-cm` → `division-euclidienne-cm` → `fractions-cm` → `nombres-decimaux-cm` ; en histoire, la frise de `prehistoire-cm` à `france-europe-depuis-1945-cm`.
+2. **Du primaire vers la 6e** : chaque notion de 6e (nouvelle ou déjà présente) pointe vers la ou les notions de CM1/CM2 qu'elle prolonge, par exemple `fractions` ← `fractions-cm`, `fractions-operations-cm` ; `grece-et-citoyennete-6e` ← `premieres-civilisations-6e` ← `peuplement-neolithique-6e` ← `prehistoire-cm`.
+3. **Jamais à rebours** : un prérequis ne commence pas dans une classe plus avancée que la notion (vérifié au build, `scripts/lib/catalogue.mjs`, avec un test). Le graphe est aussi vérifié sans cycle.
+
+La modification des prérequis des notions de 6e déjà présentes ne change que leurs métadonnées (pas leur version).
 
 ## Matrice de couverture du programme de cycle 3 (BO 2020)
 
@@ -43,3 +65,5 @@ Les notions `*-6e` (niveau `college`, classe `6e`, cycle 3) complètent les 12 n
 | Arts plastiques | `arts-couleurs-cm`, `arts-formes-et-composition-cm` | couvert (matière `arts-plastiques`) |
 | Éducation musicale | `musique-notes-et-rythme-cm`, `musique-voix-et-ecoute-cm` | couvert (matière `musique`) |
 | EPS | `eps-sante-et-echauffement-cm`, `eps-jeux-collectifs-et-athletisme-cm` | couvert pour les savoirs (matière `eps`) ; la pratique motrice ne se fait pas sur une page |
+
+Guide de double contrôle et liste de relecture : [guide-relecture-cycle-3.md](guide-relecture-cycle-3.md).

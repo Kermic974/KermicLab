@@ -2,12 +2,13 @@
 id: classification-du-vivant-6e
 titre: Classer le vivant et la biodiversité en 6e
 sujet: svt/classification-du-vivant-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
 niveaux: cycle-3
 classes: 6e
 prerequis:
+  - classification-du-vivant-cm
 competences:
   - classification-du-vivant-6e-comprendre
   - classification-du-vivant-6e-appliquer

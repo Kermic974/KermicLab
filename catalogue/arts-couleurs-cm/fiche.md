@@ -2,7 +2,7 @@
 id: arts-couleurs-cm
 titre: Arts plastiques : couleurs et matières
 sujet: arts-plastiques/arts-couleurs-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 niveaux: cycle-3

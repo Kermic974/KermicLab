@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Une métropole est…",
         "choix": [
-          "une très grande ville",
-          "un petit village",
           "un désert",
-          "une île"
+          "une île",
+          "une très grande ville",
+          "un petit village"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Elle concentre habitants et activités."
       },
       {
@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Une menace pour les littoraux est…",
         "choix": [
+          "les éruptions volcaniques",
+          "les chutes de neige abondantes",
           "la montée du niveau de la mer",
-          "la neige",
-          "la sécheresse seule",
-          "les volcans"
+          "la sécheresse en montagne"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Érosion et submersion."
       },
       {
@@ -75,9 +75,9 @@
         "question": "Une oasis est…",
         "choix": [
           "un point d'eau dans le désert",
-          "un volcan",
-          "un port",
-          "un glacier"
+          "une dune de sable fin",
+          "un village au sommet d'un volcan",
+          "un glacier au pied des montagnes"
         ],
         "bonne": 0,
         "explication": "Elle permet de vivre."
@@ -96,9 +96,9 @@
         "question": "Quel avantage pour la métropole ?",
         "choix": [
           "Beaucoup d'emplois et de services",
-          "Le silence absolu",
-          "Une grande plage",
-          "Aucun trafic"
+          "Un silence permanent la nuit",
+          "Des loyers très bas partout",
+          "Un accès direct à la plage"
         ],
         "bonne": 0,
         "explication": "Concentration d'activités."
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Quel inconvénient pour le littoral ?",
         "choix": [
-          "Risques de submersion",
           "Pas d'eau",
           "Trop de montagnes",
-          "Trop de désert"
+          "Trop de désert",
+          "Risques de submersion"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Érosion, tempêtes."
       }
     ],
