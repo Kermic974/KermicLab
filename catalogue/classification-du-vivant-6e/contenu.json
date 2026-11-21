@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Quel caractère définit les mammifères ?",
         "choix": [
-          "Des mamelles pour allaiter, des poils",
-          "Des plumes",
           "Des écailles",
-          "Des branchies"
+          "Des branchies",
+          "Des mamelles pour allaiter, des poils",
+          "Des plumes"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Poils et mamelles."
       },
       {
@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Le plus proche parent du chat parmi ces animaux est…",
         "choix": [
-          "le chien",
           "le poisson",
           "la grenouille",
-          "le lézard"
+          "le lézard",
+          "le chien"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Ils sont tous deux mammifères carnivores."
       },
       {
@@ -74,12 +74,12 @@
         "titre": "Exercice 3",
         "question": "La biodiversité désigne…",
         "choix": [
-          "la diversité du vivant",
-          "le nombre d'habitants",
           "la taille d'une forêt",
-          "la météo"
+          "la météo",
+          "la diversité du vivant",
+          "le nombre d'habitants"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Variété des espèces."
       }
     ]
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Pourquoi regrouper chat et chien ?",
         "choix": [
+          "Ils ont la même couleur",
           "Ils partagent beaucoup de caractères",
           "Ils ont le même nom",
-          "Ils vivent ensemble",
-          "Ils ont la même couleur"
+          "Ils vivent ensemble"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Parenté."
       }
     ],

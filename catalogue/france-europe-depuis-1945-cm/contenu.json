@@ -59,12 +59,12 @@
         "titre": "Exercice 2",
         "question": "Quel est l'objectif principal de la construction européenne à ses débuts ?",
         "choix": [
-          "Garantir la paix",
           "Préparer une guerre",
           "Supprimer la France",
-          "Inventer l'euro"
+          "Inventer l'euro",
+          "Garantir la paix"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Après deux guerres mondiales."
       },
       {
@@ -72,12 +72,12 @@
         "titre": "Exercice 3",
         "question": "L'euro est…",
         "choix": [
+          "un parti",
           "la monnaie commune de nombreux pays de l'UE",
           "un pays",
-          "un traité",
-          "un parti"
+          "un traité"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il remplace les monnaies nationales depuis 2002."
       }
     ]
@@ -106,12 +106,12 @@
         "titre": "Exercice 2",
         "question": "Combien d'États compte l'UE aujourd'hui ?",
         "choix": [
+          "12",
           "27",
           "6",
-          "50",
-          "12"
+          "50"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "27 États membres."
       }
     ],

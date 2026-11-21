@@ -70,12 +70,12 @@
         "titre": "Exercice 3",
         "question": "Un reste de division par 7 peut-il être égal à 7 ?",
         "choix": [
-          "Non, il doit être inférieur à 7",
           "Oui toujours",
           "Oui si le nombre est grand",
-          "Seulement pour 49"
+          "Seulement pour 49",
+          "Non, il doit être inférieur à 7"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Le reste est toujours strictement inférieur au diviseur."
       }
     ]

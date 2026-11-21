@@ -47,12 +47,12 @@
         "titre": "Exercice 1",
         "question": "Comment dit-on « Je m'appelle Tom » ?",
         "choix": [
-          "My name is Tom.",
-          "I have Tom.",
           "Tom is me.",
-          "I call Tom."
+          "I call Tom.",
+          "My name is Tom.",
+          "I have Tom."
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "My name is…"
       },
       {
@@ -73,12 +73,12 @@
         "titre": "Exercice 3",
         "question": "Comment dire « J'ai dix ans » ?",
         "choix": [
+          "I do ten.",
           "I am ten.",
           "I have ten.",
-          "I make ten.",
-          "I do ten."
+          "I make ten."
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Avec to be."
       }
     ]

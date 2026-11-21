@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Quelle énergie fait fonctionner la machine à vapeur ?",
         "choix": [
-          "Le charbon",
           "Le soleil",
           "Le vent",
-          "Le nucléaire"
+          "Le nucléaire",
+          "Le charbon"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Le charbon chauffe l'eau."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Qu'appelle-t-on l'exode rural ?",
         "choix": [
-          "Le départ des campagnes vers les villes",
           "Un voyage en bateau",
           "Une guerre",
-          "Une fête"
+          "Une fête",
+          "Le départ des campagnes vers les villes"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Les paysans deviennent ouvriers."
       },
       {
@@ -93,12 +93,12 @@
         "titre": "Exercice 1",
         "question": "Pourquoi les ouvriers créent-ils des syndicats ?",
         "choix": [
-          "Pour défendre leurs droits",
           "Pour construire des châteaux",
           "Pour jouer",
-          "Pour aller à l'école"
+          "Pour aller à l'école",
+          "Pour défendre leurs droits"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Les syndicats défendent les salaires et les conditions de travail."
       },
       {
@@ -106,12 +106,12 @@
         "titre": "Exercice 2",
         "question": "Quel moyen de transport se développe ?",
         "choix": [
-          "Le train",
           "L'avion",
           "Le métro autonome",
-          "La fusée"
+          "La fusée",
+          "Le train"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Le chemin de fer."
       }
     ],

@@ -63,12 +63,12 @@
         "titre": "Exercice 2",
         "question": "Qu'apportent les Romains en Gaule ?",
         "choix": [
-          "Routes, aqueducs, villes et latin",
-          "L'imprimerie",
           "Les châteaux forts",
-          "Le téléphone"
+          "Le téléphone",
+          "Routes, aqueducs, villes et latin",
+          "L'imprimerie"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "C'est la romanisation."
       },
       {
@@ -97,12 +97,12 @@
         "titre": "Exercice 1",
         "question": "Que vois-tu dans la ville ?",
         "choix": [
+          "Une cathédrale gothique",
           "Des thermes, un théâtre et un forum",
           "Des gratte-ciel",
-          "Un château fort",
-          "Une cathédrale gothique"
+          "Un château fort"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Ce sont les bâtiments romains."
       },
       {

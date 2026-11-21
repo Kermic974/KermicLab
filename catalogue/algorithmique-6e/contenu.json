@@ -59,12 +59,12 @@
         "titre": "Exercice 2",
         "question": "Une variable sert à…",
         "choix": [
+          "arrêter l'ordinateur",
           "mémoriser une valeur",
           "effacer le programme",
-          "changer la couleur",
-          "arrêter l'ordinateur"
+          "changer la couleur"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Ex : le score."
       },
       {
@@ -72,12 +72,12 @@
         "titre": "Exercice 3",
         "question": "« Si le lutin touche le mur alors rebondir » est…",
         "choix": [
-          "une condition",
           "une boucle",
           "une variable",
-          "un événement"
+          "un événement",
+          "une condition"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Instruction conditionnelle."
       }
     ]
@@ -103,12 +103,12 @@
         "titre": "Exercice 2",
         "question": "Pour commencer le jeu quand on clique sur le drapeau, on utilise…",
         "choix": [
-          "un événement",
           "une boucle",
           "une variable",
-          "un commentaire"
+          "un commentaire",
+          "un événement"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "« Quand le drapeau est cliqué »."
       }
     ],

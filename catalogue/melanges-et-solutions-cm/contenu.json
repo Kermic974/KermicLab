@@ -60,12 +60,12 @@
         "titre": "Exercice 2",
         "question": "Comment séparer du sable et de l'eau ?",
         "choix": [
+          "Par solidification",
           "Par filtration",
           "Par dissolution",
-          "Par fusion",
-          "Par solidification"
+          "Par fusion"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Le filtre retient le sable."
       },
       {
@@ -73,12 +73,12 @@
         "titre": "Exercice 3",
         "question": "Comment récupérer le sel d'une eau salée ?",
         "choix": [
+          "En décantant",
           "En faisant évaporer l'eau",
           "En filtrant",
-          "En tamisant",
-          "En décantant"
+          "En tamisant"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Le sel reste après évaporation."
       }
     ]
@@ -94,12 +94,12 @@
         "titre": "Exercice 1",
         "question": "Le sucre dans l'eau forme…",
         "choix": [
+          "un gaz",
           "un mélange homogène",
           "un mélange hétérogène",
-          "un solide",
-          "un gaz"
+          "un solide"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "On ne voit plus le sucre."
       },
       {

@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Comment vivaient les chasseurs-cueilleurs du Paléolithique ?",
         "choix": [
+          "Ils écrivaient des livres",
           "Ils se déplaçaient pour chasser et cueillir",
           "Ils cultivaient des champs",
-          "Ils construisaient des villes",
-          "Ils écrivaient des livres"
+          "Ils construisaient des villes"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Ils étaient nomades."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Quelle découverte marque le Néolithique ?",
         "choix": [
-          "L'agriculture et l'élevage",
           "L'imprimerie",
           "La machine à vapeur",
-          "Le téléphone"
+          "Le téléphone",
+          "L'agriculture et l'élevage"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Les hommes deviennent agriculteurs et se sédentarisent."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Quel site français est célèbre pour ses peintures préhistoriques ?",
         "choix": [
+          "Notre-Dame",
           "Lascaux",
           "Versailles",
-          "Chambord",
-          "Notre-Dame"
+          "Chambord"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Lascaux, en Dordogne."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Ces traces montrent que les habitants étaient…",
         "choix": [
-          "des agriculteurs sédentaires",
-          "des chasseurs nomades",
           "des Gaulois",
-          "des Romains"
+          "des Romains",
+          "des agriculteurs sédentaires",
+          "des chasseurs nomades"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Poterie et blé : agriculture et village."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "À quelle période appartient ce site ?",
         "choix": [
+          "Au XIXe siècle",
           "Au Néolithique",
           "Au Moyen Âge",
-          "À la Révolution",
-          "Au XIXe siècle"
+          "À la Révolution"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Agriculture + poterie = Néolithique."
       }
     ],

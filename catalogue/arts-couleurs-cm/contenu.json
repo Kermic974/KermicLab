@@ -47,12 +47,12 @@
         "titre": "Exercice 1",
         "question": "Jaune + bleu =",
         "choix": [
-          "vert",
-          "orange",
           "violet",
-          "marron"
+          "marron",
+          "vert",
+          "orange"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Couleur secondaire."
       },
       {
@@ -60,12 +60,12 @@
         "titre": "Exercice 2",
         "question": "Quelle couleur est chaude ?",
         "choix": [
+          "Le violet",
           "Le rouge",
           "Le bleu",
-          "Le vert",
-          "Le violet"
+          "Le vert"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Évoque le feu."
       },
       {
@@ -73,12 +73,12 @@
         "titre": "Exercice 3",
         "question": "Pour éclaircir une couleur, on ajoute…",
         "choix": [
-          "du blanc",
           "du noir",
           "du rouge",
-          "de l'eau seulement"
+          "de l'eau seulement",
+          "du blanc"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Blanc."
       }
     ]

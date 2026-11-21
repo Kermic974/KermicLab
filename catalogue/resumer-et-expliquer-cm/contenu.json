@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Un résumé doit…",
         "choix": [
+          "être plus long",
           "garder l'essentiel avec ses mots",
           "recopier le texte",
-          "ajouter son avis",
-          "être plus long"
+          "ajouter son avis"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Condensé."
       },
       {
@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Quel temps utilise-t-on dans un texte explicatif ?",
         "choix": [
-          "Le présent",
-          "Le passé simple",
           "Le futur antérieur",
-          "L'imparfait"
+          "L'imparfait",
+          "Le présent",
+          "Le passé simple"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Vérité générale."
       },
       {
@@ -74,12 +74,12 @@
         "titre": "Exercice 3",
         "question": "Quel connecteur exprime la cause ?",
         "choix": [
-          "car",
           "puis",
           "enfin",
-          "ainsi"
+          "ainsi",
+          "car"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Car introduit la cause."
       }
     ]
@@ -95,12 +95,12 @@
         "titre": "Exercice 1",
         "question": "Que fais-tu d'abord ?",
         "choix": [
-          "Je repère les idées importantes",
           "Je recopie tout",
           "Je dessine un volcan seulement",
-          "Je ferme le livre"
+          "Je ferme le livre",
+          "Je repère les idées importantes"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Mots-clés."
       },
       {

@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Dans « Le petit chat dort », « petit » est…",
         "choix": [
-          "un adjectif",
           "un nom",
           "un verbe",
-          "un adverbe"
+          "un adverbe",
+          "un adjectif"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "« petit » précise le nom « chat » : adjectif."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "« Mais » est…",
         "choix": [
-          "une conjonction de coordination",
           "un adverbe",
           "un nom",
-          "un pronom"
+          "un pronom",
+          "une conjonction de coordination"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Mais, ou, et, donc, or, ni, car."
       },
       {
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Quelle est la nature de « doucement » ?",
         "choix": [
+          "verbe",
           "adverbe",
           "adjectif",
-          "nom",
-          "verbe"
+          "nom"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il est invariable et précise comment elle mange."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Quelle est la nature de « rouge » ?",
         "choix": [
+          "pronom",
           "adjectif",
           "adverbe",
-          "verbe",
-          "pronom"
+          "verbe"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il précise le nom « pomme »."
       }
     ],

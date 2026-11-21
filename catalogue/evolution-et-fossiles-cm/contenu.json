@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Un fossile est…",
         "choix": [
-          "une trace d'un être vivant conservée dans la roche",
           "un animal vivant",
           "une plante en pot",
-          "un objet moderne"
+          "un objet moderne",
+          "une trace d'un être vivant conservée dans la roche"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Il est conservé dans les roches."
       },
       {
@@ -73,12 +73,12 @@
         "titre": "Exercice 3",
         "question": "Qui étudie les fossiles ?",
         "choix": [
-          "Les paléontologues",
           "Les boulangers",
           "Les pilotes",
-          "Les pompiers"
+          "Les pompiers",
+          "Les paléontologues"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Les paléontologues."
       }
     ]
@@ -94,12 +94,12 @@
         "titre": "Exercice 1",
         "question": "Que dois-tu faire ?",
         "choix": [
-          "Le dégager doucement et noter où tu l'as trouvé",
           "Le jeter",
           "Le casser",
-          "Le cacher"
+          "Le cacher",
+          "Le dégager doucement et noter où tu l'as trouvé"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "On note la position pour comprendre."
       },
       {
@@ -107,12 +107,12 @@
         "titre": "Exercice 2",
         "question": "Que peut-on déduire d'un os de très grande taille ?",
         "choix": [
-          "Que l'animal était très grand",
           "Qu'il vivait au ciel",
           "Qu'il n'a jamais existé",
-          "Qu'il vivait dans l'espace"
+          "Qu'il vivait dans l'espace",
+          "Que l'animal était très grand"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "La taille de l'os renseigne sur l'animal."
       }
     ],

@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Quel monument Louis IX a-t-il fait construire ?",
         "choix": [
+          "Le Louvre moderne",
           "La Sainte-Chapelle",
           "Le château de Versailles",
-          "La tour Eiffel",
-          "Le Louvre moderne"
+          "La tour Eiffel"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Elle abrite des reliques de la Passion."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Qui travaille dans la société médiévale ?",
         "choix": [
-          "Les paysans",
-          "Les chevaliers",
           "Les évêques",
-          "Les rois"
+          "Les rois",
+          "Les paysans",
+          "Les chevaliers"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Ceux qui travaillent sont les paysans."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Que sont les cathédrales gothiques ?",
         "choix": [
-          "De grandes églises aux vitraux et aux voûtes hautes",
-          "Des châteaux forts",
           "Des marchés",
-          "Des prisons"
+          "Des prisons",
+          "De grandes églises aux vitraux et aux voûtes hautes",
+          "Des châteaux forts"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Style gothique : Notre-Dame, Chartres."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Tu rencontres un paysan. Que fait-il ?",
         "choix": [
-          "Il cultive la terre du seigneur",
-          "Il commande l'armée",
           "Il écrit des lois",
-          "Il dirige le pays"
+          "Il dirige le pays",
+          "Il cultive la terre du seigneur",
+          "Il commande l'armée"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Il travaille et verse des redevances."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Quel roi gouverne alors la France ?",
         "choix": [
+          "Clovis",
           "Louis IX",
           "Louis XIV",
-          "Napoléon",
-          "Clovis"
+          "Napoléon"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Louis IX règne de 1226 à 1270."
       }
     ],

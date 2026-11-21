@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Qui a écrit « Le Corbeau et le Renard » ?",
         "choix": [
-          "La Fontaine",
           "Molière",
           "Victor Hugo",
-          "Homère"
+          "Homère",
+          "La Fontaine"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Jean de La Fontaine."
       },
       {
@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Qui est Ulysse ?",
         "choix": [
-          "Un héros grec rusé",
-          "Un dieu romain",
           "Un poète",
-          "Un empereur"
+          "Un empereur",
+          "Un héros grec rusé",
+          "Un dieu romain"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Roi d'Ithaque."
       },
       {
@@ -95,12 +95,12 @@
         "titre": "Exercice 1",
         "question": "Quelle est la morale ?",
         "choix": [
+          "Il faut voyager",
           "Il faut prévoir l'avenir",
           "Il faut chanter",
-          "Il faut dormir",
-          "Il faut voyager"
+          "Il faut dormir"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Prévoyance."
       },
       {
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Que symbolise la fourmi ?",
         "choix": [
+          "La peur",
           "Le travail et la prévoyance",
           "La paresse",
-          "La colère",
-          "La peur"
+          "La colère"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Elle travaille et prévoit."
       }
     ],

@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Le vote est…",
         "choix": [
-          "secret et libre",
-          "obligatoire pour les enfants",
           "public",
-          "réservé aux riches"
+          "réservé aux riches",
+          "secret et libre",
+          "obligatoire pour les enfants"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Pour protéger la liberté de choix."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Que fait un délégué de classe ?",
         "choix": [
+          "Il dirige l'école",
           "Il représente ses camarades",
           "Il punit les élèves",
-          "Il note les copies",
-          "Il dirige l'école"
+          "Il note les copies"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il porte la parole de la classe."
       }
     ]
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Un candidat obtient 14 voix, l'autre 11. Combien d'élèves ont voté ?",
         "choix": [
-          "25",
           "3",
           "14",
-          "11"
+          "11",
+          "25"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "14 + 11 = 25 votants."
       }
     ],

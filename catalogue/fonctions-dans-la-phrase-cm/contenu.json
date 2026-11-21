@@ -50,12 +50,12 @@
         "titre": "Exercice 1",
         "question": "Dans « Le chien mange sa pâtée », le COD est…",
         "choix": [
-          "sa pâtée",
-          "le chien",
           "mange",
-          "chien mange"
+          "chien mange",
+          "sa pâtée",
+          "le chien"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Mange quoi ? Sa pâtée."
       },
       {
@@ -76,12 +76,12 @@
         "titre": "Exercice 3",
         "question": "Dans « Elle est contente », « contente » est…",
         "choix": [
-          "l'attribut du sujet",
           "le COD",
           "le sujet",
-          "un complément du nom"
+          "un complément du nom",
+          "l'attribut du sujet"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Verbe d'état « est » + qualité du sujet."
       }
     ]
@@ -97,12 +97,12 @@
         "titre": "Exercice 1",
         "question": "Quel est le sujet ?",
         "choix": [
-          "Le facteur",
           "le courrier",
           "la voisine",
-          "tous les matins"
+          "tous les matins",
+          "Le facteur"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Qui apporte ? Le facteur."
       },
       {

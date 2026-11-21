@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Quel est le plus haut sommet des Alpes françaises ?",
         "choix": [
+          "Le Mont-Saint-Michel",
           "Le mont Blanc",
           "Le Puy de Dôme",
-          "Le Ballon d'Alsace",
-          "Le Mont-Saint-Michel"
+          "Le Ballon d'Alsace"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "4 805 m."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Quel fleuve traverse Paris ?",
         "choix": [
+          "La Garonne",
           "La Seine",
           "La Loire",
-          "Le Rhône",
-          "La Garonne"
+          "Le Rhône"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "La Seine."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Un produit de saison est…",
         "choix": [
+          "emballé en plastique",
           "cultivé à la bonne période de l'année",
           "toujours importé",
-          "cuit à l'avance",
-          "emballé en plastique"
+          "cuit à l'avance"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il est récolté au bon moment."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Où est produit le lait ?",
         "choix": [
-          "Dans une exploitation agricole",
-          "Dans une mine",
           "Dans un port",
-          "Dans une usine d'automobiles"
+          "Dans une usine d'automobiles",
+          "Dans une exploitation agricole",
+          "Dans une mine"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Chez un éleveur."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Que fait l'usine ?",
         "choix": [
-          "Elle transforme le lait en yaourt",
-          "Elle cultive les fraises",
           "Elle vend aux clients",
-          "Elle construit les routes"
+          "Elle construit les routes",
+          "Elle transforme le lait en yaourt",
+          "Elle cultive les fraises"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Transformation = industrie."
       }
     ],

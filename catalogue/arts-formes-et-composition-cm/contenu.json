@@ -47,12 +47,12 @@
         "titre": "Exercice 1",
         "question": "Qui a peint la Joconde ?",
         "choix": [
+          "Van Gogh",
           "Léonard de Vinci",
           "Monet",
-          "Picasso",
-          "Van Gogh"
+          "Picasso"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Léonard de Vinci."
       },
       {
@@ -60,12 +60,12 @@
         "titre": "Exercice 2",
         "question": "Dans une perspective, les objets lointains sont…",
         "choix": [
+          "invisibles",
           "plus petits",
           "plus grands",
-          "identiques",
-          "invisibles"
+          "identiques"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Effet de profondeur."
       },
       {

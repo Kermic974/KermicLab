@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Une métropole est…",
         "choix": [
-          "une très grande ville",
-          "un petit village",
           "un désert",
-          "une île"
+          "une île",
+          "une très grande ville",
+          "un petit village"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Elle concentre habitants et activités."
       },
       {
@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Une menace pour les littoraux est…",
         "choix": [
-          "la montée du niveau de la mer",
-          "la neige",
           "la sécheresse seule",
-          "les volcans"
+          "les volcans",
+          "la montée du niveau de la mer",
+          "la neige"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Érosion et submersion."
       },
       {
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Quel inconvénient pour le littoral ?",
         "choix": [
-          "Risques de submersion",
           "Pas d'eau",
           "Trop de montagnes",
-          "Trop de désert"
+          "Trop de désert",
+          "Risques de submersion"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Érosion, tempêtes."
       }
     ],

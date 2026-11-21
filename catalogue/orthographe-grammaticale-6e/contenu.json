@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Complète : « Il faut ___ la table. » (nettoyer)",
         "choix": [
-          "nettoyer",
           "nettoyé",
           "nettoyée",
-          "nettoyez"
+          "nettoyez",
+          "nettoyer"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "On peut dire « vendre »."
       },
       {
@@ -95,12 +95,12 @@
         "titre": "Exercice 1",
         "question": "« Les enfants ont (jouer) dehors. » La forme correcte :",
         "choix": [
-          "joué",
           "jouer",
           "jouée",
-          "jouées"
+          "jouées",
+          "joué"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Avec avoir, pas d'accord (COD absent) : joué."
       },
       {
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "« Mes sœurs sont (arriver) en retard. »",
         "choix": [
+          "arrivés",
           "arrivées",
           "arrivé",
-          "arriver",
-          "arrivés"
+          "arriver"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Accord avec le sujet féminin pluriel."
       }
     ],

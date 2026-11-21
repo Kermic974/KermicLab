@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Un quadrilatère a 4 côtés égaux et 4 angles droits. C'est un…",
         "choix": [
+          "trapèze",
           "carré",
           "rectangle seulement",
-          "losange seulement",
-          "trapèze"
+          "losange seulement"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "4 côtés égaux et 4 angles droits : un carré."
       },
       {
@@ -93,12 +93,12 @@
         "titre": "Exercice 1",
         "question": "Une pièce a 4 côtés égaux mais pas d'angle droit. C'est un…",
         "choix": [
-          "losange",
           "carré",
           "rectangle",
-          "triangle"
+          "triangle",
+          "losange"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "4 côtés égaux sans angle droit : un losange."
       },
       {
@@ -106,12 +106,12 @@
         "titre": "Exercice 2",
         "question": "Une pièce a 4 angles droits et des côtés de longueurs 8 cm et 3 cm. C'est un…",
         "choix": [
-          "rectangle",
-          "carré",
           "losange",
-          "triangle"
+          "triangle",
+          "rectangle",
+          "carré"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "4 angles droits, côtés inégaux : un rectangle."
       }
     ],

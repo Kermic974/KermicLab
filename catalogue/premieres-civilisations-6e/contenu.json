@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Quel fleuve est essentiel à l'Égypte ?",
         "choix": [
+          "Le Rhin",
           "Le Nil",
           "Le Tigre",
-          "La Seine",
-          "Le Rhin"
+          "La Seine"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Le Nil."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "L'écriture cunéiforme est…",
         "choix": [
-          "en forme de clous, sur l'argile",
-          "faite d'images sur le papyrus uniquement",
           "inventée par les Romains",
-          "écrite à l'encre sur du papier"
+          "écrite à l'encre sur du papier",
+          "en forme de clous, sur l'argile",
+          "faite d'images sur le papyrus uniquement"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Mésopotamie."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Les pyramides servent de…",
         "choix": [
-          "tombeaux de pharaons",
           "marchés",
           "écoles",
-          "phares"
+          "phares",
+          "tombeaux de pharaons"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Tombeaux."
       }
     ]
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Pourquoi la crue du Nil est-elle attendue ?",
         "choix": [
+          "Elle sèche les champs",
           "Elle fertilise les terres",
           "Elle détruit les villes",
-          "Elle apporte des pharaons",
-          "Elle sèche les champs"
+          "Elle apporte des pharaons"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Limon fertile."
       }
     ],

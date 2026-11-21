@@ -58,12 +58,12 @@
         "titre": "Exercice 2",
         "question": "Dans un agrandissement, les angles…",
         "choix": [
-          "ne changent pas",
           "doublent",
           "diminuent",
-          "disparaissent"
+          "disparaissent",
+          "ne changent pas"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Ils sont conservés."
       },
       {
@@ -103,12 +103,12 @@
         "titre": "Exercice 2",
         "question": "Pour agrandir, on commence par…",
         "choix": [
-          "multiplier toutes les longueurs",
-          "changer les angles",
           "effacer le dessin",
-          "ajouter un cercle"
+          "ajouter un cercle",
+          "multiplier toutes les longueurs",
+          "changer les angles"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Même coefficient."
       }
     ],

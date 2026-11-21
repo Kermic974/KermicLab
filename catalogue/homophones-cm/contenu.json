@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Complète : « Elle ___ un chien. »",
         "choix": [
-          "a",
-          "à",
           "as",
-          "ah"
+          "ah",
+          "a",
+          "à"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "On peut dire « avait » : verbe avoir."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Complète : « Ils ___ partis. »",
         "choix": [
-          "sont",
           "son",
           "ont",
-          "on"
+          "on",
+          "sont"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "« étaient partis » : sont."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Complète : « ___ ton vélo ? »",
         "choix": [
-          "Où est",
-          "Ou est",
           "Ou et",
-          "Où et"
+          "Où et",
+          "Où est",
+          "Ou est"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "« Où » indique le lieu ; « est » = était."
       }
     ]
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "« Marie ___ Paul jouent. »",
         "choix": [
+          "es",
           "et",
           "est",
-          "ai",
-          "es"
+          "ai"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "On peut dire « et puis »."
       }
     ],

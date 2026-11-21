@@ -70,12 +70,12 @@
         "titre": "Exercice 3",
         "question": "Le point A est à 3 cm de l'axe. Son symétrique A' est…",
         "choix": [
-          "à 3 cm de l'axe, de l'autre côté",
-          "sur l'axe",
           "à 6 cm de l'axe, du même côté",
-          "à 3 cm, du même côté"
+          "à 3 cm, du même côté",
+          "à 3 cm de l'axe, de l'autre côté",
+          "sur l'axe"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Le symétrique est de l'autre côté de l'axe, à la même distance."
       }
     ]
