@@ -240,7 +240,8 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .compteurs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 10px; margin: 0; }
 .compteur { display: flex; flex-direction: column; padding: 14px; border-radius: var(--rayon-moyen); background: var(--surface); border: 1px solid var(--bord); min-width: 0; }
 .compteur dd { margin: 0; font-size: 22px; font-weight: 760; letter-spacing: -.02em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.compteur dt { order: 2; color: var(--doux); font-size: 12.5px; }
+.compteur dt { order: -1; color: var(--doux); font-size: 11.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
+.compteur, .chiffres div { border-top: 3px solid var(--espace); }
 #bloc-matieres, #decouvertes { display: flex; flex-direction: column; gap: 12px; padding: 22px; }
 #bloc-matieres[hidden], #decouvertes[hidden], .semaine[hidden] { display: none; }
 .progression-matieres { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -264,6 +265,27 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .entete { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .salut h1 { font-size: 28px; font-weight: 760; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .salut p { color: var(--doux); margin-top: 2px; }
+
+/* ---------- Espaces colorés (ADR 0038 § 4) ----------
+   L'espace de l'écran courant est porté par <html data-espace>. Le titre de page devient un bandeau en dégradé ; le
+   texte blanc garde un contraste d'au moins 4,5:1 sur les deux teintes, en thème clair comme en sombre. L'Accueil
+   suit la couleur d'accent de la charte (ADR 0026), dont le contraste avec --accent-texte est déjà garanti. */
+:root { --espace-fort: var(--accent-fort); --espace: var(--accent); --espace-texte: var(--accent-texte); }
+:root[data-espace="education"] { --espace-fort: #1e3a8a; --espace: #1d4ed8; --espace-texte: #ffffff; }
+:root[data-espace="labs"] { --espace-fort: #4c1d95; --espace: #6d28d9; --espace-texte: #ffffff; }
+:root[data-espace="jeux"] { --espace-fort: #7c2d12; --espace: #b45309; --espace-texte: #ffffff; }
+:root[data-espace="progression"] { --espace-fort: #064e3b; --espace: #047857; --espace-texte: #ffffff; }
+:root[data-espace="famille"] { --espace-fort: #134e4a; --espace: #0f766e; --espace-texte: #ffffff; }
+:root[data-espace="professeur"] { --espace-fort: #312e81; --espace: #4338ca; --espace-texte: #ffffff; }
+:root[data-espace="contributions"] { --espace-fort: #7c2d12; --espace: #c2410c; --espace-texte: #ffffff; }
+.entete .salut {
+  flex: 1 1 320px; min-width: 0; padding: 18px 22px; border-radius: var(--rayon);
+  background: linear-gradient(135deg, var(--espace-fort), var(--espace)); color: var(--espace-texte); box-shadow: var(--ombre);
+}
+.entete .salut p { color: inherit; }
+/* Le titre reçoit le focus par programme à chaque changement d'écran (lecteurs d'écran) : ce n'est pas une commande,
+   un contour n'aurait pas de sens. */
+#salut:focus { outline: none; }
 .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .pastille-progres {
   position: relative; display: inline-flex; align-items: center; gap: 12px; height: 40px; padding: 0 14px;
@@ -557,7 +579,7 @@ dialog.lecture-cahier[open] { display: flex; animation-name: lecture-entre; }
 .chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 18px; }
 .chiffres div { padding: 14px; border-radius: var(--rayon-moyen); background: var(--surface-2); border: 1px solid var(--bord); min-width: 0; }
 .chiffres dd { margin: 0; font-size: 24px; font-weight: 760; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1.1; }
-.chiffres dt { font-size: 12.5px; color: var(--doux); order: 2; }
+.chiffres dt { order: -1; color: var(--doux); font-size: 11.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
 .chiffres div { display: flex; flex-direction: column; }
 .chiffres .xp-chiffre dd { color: var(--succes); }
 .graphique-tete { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }

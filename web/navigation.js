@@ -63,3 +63,15 @@ export function vueTableauDeBord({ derniere = null, disponibles = [], prof = fal
   if (prof && disponibles.includes("suivi")) return "suivi";
   return "profil";
 }
+
+/**
+ * Espaces colorés (ADR 0038 § 4) : chaque écran appartient à un espace dont la couleur habille le bandeau d'en-tête.
+ * Les vues de « Mon tableau de bord » prennent la couleur de leur rôle ; un écran inconnu reste dans l'espace Accueil.
+ */
+export const ESPACES = Object.freeze(["accueil", "education", "labs", "jeux", "progression", "famille", "professeur", "contributions"]);
+const ESPACE_DES_ECRANS = Object.freeze({
+  education: "education", defi: "education", labs: "labs", jeux: "jeux", progression: "progression",
+  famille: "famille", "espace-famille": "famille", suivi: "professeur", classes: "professeur", eleves: "professeur",
+  contributions: "contributions",
+});
+export const espaceDe = (ecran) => ESPACE_DES_ECRANS[ecran] ?? "accueil";

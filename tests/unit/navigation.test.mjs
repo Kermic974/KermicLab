@@ -40,3 +40,14 @@ test("navigation : vue ouverte par « Mon tableau de bord »", () => {
   assert.equal(navigation.vueTableauDeBord({ derniere: "classes", disponibles: tout, prof: true }), "classes");
   assert.equal(navigation.vueTableauDeBord({ derniere: "espace-famille", disponibles: ["profil", "compte"] }), "profil", "vue plus proposée : défaut");
 });
+
+test("espaces colorés : chaque écran a son espace, les vues du tableau de bord prennent celui de leur rôle", () => {
+  assert.equal(navigation.espaceDe("education"), "education");
+  assert.equal(navigation.espaceDe("defi"), "education", "le défi est un sous-écran d'Éducation");
+  assert.equal(navigation.espaceDe("espace-famille"), "famille");
+  for (const vue of ["suivi", "classes", "eleves"]) assert.equal(navigation.espaceDe(vue), "professeur");
+  assert.equal(navigation.espaceDe("contributions"), "contributions");
+  for (const ecran of ["accueil", "profil", "compte", "apropos", "inconnu", undefined]) assert.equal(navigation.espaceDe(ecran), "accueil");
+  const ecrans = ["accueil", "education", "defi", "labs", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
+  assert.deepEqual([...new Set(ecrans.map(navigation.espaceDe))].sort(), [...navigation.ESPACES].sort(), "tous les espaces sont atteints");
+});
