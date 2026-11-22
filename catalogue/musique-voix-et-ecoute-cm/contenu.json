@@ -80,6 +80,19 @@
         ],
         "bonne": 3,
         "explication": "9e symphonie."
+      },
+      {
+        "type": "qcm",
+        "question": "Pour écouter une œuvre, que se demande-t-on ?",
+        "choix": [
+          "quels instruments, quel tempo, quelle ambiance",
+          "combien elle coûte",
+          "qui est assis à côté",
+          "quelle heure il est"
+        ],
+        "bonne": 0,
+        "explication": "On repère les instruments, le tempo et l'ambiance.",
+        "titre": "Exercice 4"
       }
     ]
   },

@@ -11,7 +11,7 @@
   "id": "arts-formes-et-composition-cm",
   "titre": "Arts plastiques : lignes, formes, perspective et artistes",
   "sujet": "arts-plastiques/arts-formes-et-composition-cm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -36,7 +36,8 @@
       "titre": "Intuition : regarder une œuvre",
       "niveau": "pour démarrer",
       "paragraphes": [
-        "Pour regarder un tableau, on observe : le sujet, les couleurs, les formes, la composition (ce qui est au premier plan, au second plan, à l'arrière-plan), la technique (peinture, dessin, collage, sculpture). Une **composition** peut être symétrique, en diagonale, centrée."
+        "Pour regarder un tableau, on observe : le sujet, les couleurs, les formes, la composition (ce qui est au premier plan, au second plan, à l'arrière-plan), la technique (peinture, dessin, collage, sculpture). Une **composition** peut être symétrique, en diagonale, centrée.",
+        "Les **lignes** structurent l'image : droites, courbes, brisées. Une ligne horizontale donne une impression de calme, une ligne verticale de stabilité, une ligne oblique de mouvement. Les **formes** sont **géométriques** (carré, cercle, triangle) ou **organiques** (feuille, nuage, flamme)."
       ],
       "exemple": {
         "titre": "Exemple : lire un tableau",
@@ -46,7 +47,7 @@
           "Couleurs : bleus et gris."
         ]
       },
-      "aRetenir": "Une œuvre se lit par plans."
+      "aRetenir": "Une œuvre se lit par plans, lignes et formes."
     },
     {
       "titre": "Perspective et grands artistes",
@@ -70,16 +71,16 @@
     "exercices": [
       {
         "type": "qcm",
-        "titre": "Exercice 1",
-        "question": "Qui a peint la Joconde ?",
+        "question": "Une ligne oblique donne plutôt une impression de…",
         "choix": [
-          "Pablo Picasso",
-          "Léonard de Vinci",
-          "Vincent van Gogh",
-          "Claude Monet"
+          "calme",
+          "mouvement",
+          "stabilité",
+          "silence"
         ],
         "bonne": 1,
-        "explication": "Léonard de Vinci."
+        "explication": "L'oblique suggère le mouvement.",
+        "titre": "Exercice 1"
       },
       {
         "type": "qcm",
@@ -106,6 +107,19 @@
         ],
         "bonne": 0,
         "explication": "Impressionnisme."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle forme est géométrique ?",
+        "choix": [
+          "un nuage",
+          "une feuille",
+          "un cercle",
+          "une flamme"
+        ],
+        "bonne": 2,
+        "explication": "Le cercle est une forme géométrique ; les autres sont organiques.",
+        "titre": "Exercice 4"
       }
     ]
   },
@@ -399,7 +413,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Arts plastiques : lignes, formes, perspective et artistes</h1>
-    <div class="meta">arts-formes-et-composition-cm · v1.0.1</div>
+    <div class="meta">arts-formes-et-composition-cm · v1.0.2</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

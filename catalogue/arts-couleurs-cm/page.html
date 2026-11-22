@@ -11,7 +11,7 @@
   "id": "arts-couleurs-cm",
   "titre": "Arts plastiques : couleurs et matières",
   "sujet": "arts-plastiques/arts-couleurs-cm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -36,7 +36,7 @@
       "titre": "Intuition : le mélange",
       "niveau": "pour démarrer",
       "paragraphes": [
-        "Les **couleurs primaires** sont le jaune, le rouge (magenta) et le bleu (cyan) : on ne peut pas les fabriquer. En les mélangeant deux à deux, on obtient les **couleurs secondaires** : jaune + bleu = vert, jaune + rouge = orange, rouge + bleu = violet."
+        "Les **couleurs primaires** sont le jaune, le rouge et le bleu : on ne peut pas les fabriquer en mélangeant d'autres couleurs. (En imprimerie, on utilise plutôt le jaune, le magenta et le cyan.) En les mélangeant deux à deux, on obtient les **couleurs secondaires** : jaune + bleu = vert, jaune + rouge = orange, rouge + bleu = violet."
       ],
       "exemple": {
         "titre": "Exemple",
@@ -63,6 +63,23 @@
         ]
       },
       "aRetenir": "Blanc éclaircit, noir fonce."
+    },
+    {
+      "titre": "Matières, outils et gestes",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Un artiste choisit une **matière** (gouache, encre, craie, papier collé, argile) et un **outil** (pinceau fin, gros pinceau, éponge, rouleau, doigts). Chaque choix laisse une **trace** différente : fine ou épaisse, lisse ou rugueuse, transparente ou opaque.",
+        "Le **geste** compte aussi : tamponner, tirer un trait, étaler, gratter. Une même couleur n'a pas le même effet sur un papier lisse et sur un support rugueux."
+      ],
+      "exemple": {
+        "titre": "Exemple : trois traces",
+        "etapes": [
+          "Un pinceau fin : un trait précis.",
+          "Une éponge : une surface tamponnée, irrégulière.",
+          "Les doigts : une matière épaisse et rugueuse."
+        ]
+      },
+      "aRetenir": "Matière, outil et geste changent la trace."
     }
   ],
   "application": {
@@ -70,16 +87,16 @@
     "exercices": [
       {
         "type": "qcm",
-        "titre": "Exercice 1",
-        "question": "Jaune + bleu =",
+        "question": "Quelle est la couleur complémentaire du rouge ?",
         "choix": [
-          "violet",
-          "marron",
-          "vert",
-          "orange"
+          "le bleu",
+          "le jaune",
+          "le vert",
+          "le violet"
         ],
         "bonne": 2,
-        "explication": "Couleur secondaire."
+        "explication": "Rouge et vert se renforcent l'un l'autre.",
+        "titre": "Exercice 1"
       },
       {
         "type": "qcm",
@@ -106,13 +123,26 @@
         ],
         "bonne": 3,
         "explication": "Blanc."
+      },
+      {
+        "type": "qcm",
+        "question": "Quel outil laisse la trace la plus fine et précise ?",
+        "choix": [
+          "une éponge",
+          "un pinceau fin",
+          "un rouleau",
+          "les doigts"
+        ],
+        "bonne": 1,
+        "explication": "Un pinceau fin trace un trait précis.",
+        "titre": "Exercice 4"
       }
     ]
   },
   "situation": {
     "titre": "L'atelier peinture",
     "histoire": [
-      "Tu dois peindre un paysage avec seulement trois tubes de peinture : jaune, rouge, bleu."
+      "Tu dois peindre un paysage avec trois tubes de peinture — jaune, rouge, bleu — et un tube de blanc."
     ],
     "etapes": [
       {
@@ -399,7 +429,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Arts plastiques : couleurs et matières</h1>
-    <div class="meta">arts-couleurs-cm · v1.0.1</div>
+    <div class="meta">arts-couleurs-cm · v1.0.2</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>
