@@ -2,7 +2,7 @@
 id: doubles-et-moities-c2
 titre: Les doubles et les moitiés
 sujet: mathematiques/doubles-et-moities-c2
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 classes: CP, CE1
