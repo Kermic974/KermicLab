@@ -6,6 +6,12 @@ Kermiclab is a conversational learning agent for ages 7 to 77. Ask a question ("
 it serves a **self-contained, versioned HTML page** with tabs: explanation (from intuition to formal),
 playful application, and an engaging challenge.
 
+## Functional documentation
+
+The functional documentation is being consolidated into a maintained project reference. See the [v1.3.0 functional documentation roadmap](docs/roadmap-pack-fonctionnel-v1.3.0.md).
+
+The roadmap treats the repository as the source of truth for implemented behaviour and explicitly separates current behaviour from planned evolution.
+
 - **Deterministic**: questions covered by the catalogue always return the same page file (zero generation tokens).
 - **Backlog learning**: uncovered questions open (or comment on) a `maquette-manquante` GitHub issue; once a human validates a new page, the same question returns it.
 - **Agent-agnostic**: all project instructions live in [AGENTS.md](AGENTS.md).
@@ -14,63 +20,9 @@ playful application, and an engaging challenge.
 
 ## Architecture
 
-```
-Browser ──▶ www.kermiclab.online (Cloudflare Pages « kermiclab », built from dist/)
-            ├─ /         chat (web/)
-            └─ /cercle/  standalone unit-circle app (index.html, offline-capable)
-        ──POST /api/chat──▶ Cloudflare Worker « kermiclab-api » (worker/wrangler.toml)
-                            ├─ keyword router (deterministic, catalogue index)
-                            ├─ Claude Haiku 5.5 router (structured JSON) if no match
-                            ├─ GET /maquettes/:id → catalogue HTML served as-is
-                            ├─ GitHub Issues (maquette-manquante, traduction-manquante, support)
-                            ├─ Cloudflare D1 (anonymous KPIs) + daily R2 backup
-```
+See [ARCHITECTURE.md](ARCHITECTURE.md), [SPEC.md](SPEC.md), [PLAN.md](PLAN.md), [AGENTS.md](AGENTS.md), [SECURITY.md](SECURITY.md) and [CONTRIBUTING.md](CONTRIBUTING.md) for the maintained project references.
 
-The standalone trigonometry-circle learning app (`index.html`, generated from `src/`) is published at
-`/cercle/`, next to the chat (ADR 0008).
-
-The smiling robot avatar in the dashboard's bottom-right corner opens **Ask your question** in a
-floating right-hand panel, available on every dashboard screen. Close it with the avatar, the close
-button or Escape; the conversation and draft remain intact. On mobile, it sits above the navigation.
-
-**Configuration** (the existing `/#profil` route) contains only the **Use AI** switch and its availability
-status. Nickname, storage and data deletion controls remain in a separate profile dialog, opened from
-the sidebar profile card or the mobile header avatar.
-
-The **Idea box** is available on every published view (pages, tabs and dialogs, including embedded
-catalogue pages and games). It opens a draft GitHub feature issue in a new tab, with the page, version,
-language and active view, plus need, acceptance criteria and agent preparation sections. Users complete
-and publish it on GitHub (an account is required); nothing is created automatically. Nicknames, chats,
-exercise results, URL parameters and local storage are never included. Do not add personal data to public issues.
-The build embeds `web/boite-idees.{js,css}` and translations from `web/i18n/*.json` in the catalogue pages
-served by the Worker without changing catalogue sources. `python3 scripts/build-standalone.py` embeds
-them in the standalone app. Preparing the link works offline, without secrets or network calls;
-publishing requires a connection to GitHub.
-
-Navigation provides distinct **Home**, **Labs**, **Games**, **Challenge**, **Progress**, **Trophies** and
-**Configuration** screens in the main area, with direct links (`/#labs`, `/#jeux`, `/#defi`, `/#progression`,
-`/#badges`, `/#profil`) and browser back support. Labs list dedicated
-apps (currently the unit circle at `/cercle/`), not catalogue lessons. **Topics** retains the existing
-catalogue, subject tabs, school levels, search and counters. Games have their own searchable cards;
-opening a game still uses the isolated overlay and local progress. Mobile navigation uses two rows.
-
-Additional pages can live in a separate **private** repository (`maquettes-catalogue`), fetched by CI with a
-read-only token. This repository ships the unit-circle page and public template-based examples in mathematics,
-physics-chemistry, geography and philosophy.
-
-The geography catalogue covers **metropolisation, urbanisation, rural spaces, natural hazards,
-climate change, resources, mobility, migration and French territories**, plus eight globalisation topics
-(`mondialisation`, `mers-oceans`, `union-europeenne`, `dynamiques-territoriales`, `france-regions`,
-`espaces-productifs`, `tourisme` and `afrique-australe`). Each French-language page progresses from
-intuition or middle school through high school, with case studies, corrected exercises and an everyday
-challenge. The globalisation topics use five self-marking practice exercises and a four-step challenge;
-numerical scenario data are fictional and review references are in each `fiche.md`. Pages are generated
-from `catalogue/<id>/contenu.json`; see [the template guide](docs/gabarit.md). Human review of geographical
-accuracy is required before merging.
-
-The nine philosophy pages cover duty, the state, justice, freedom, language, reason, science, technology
-and truth. They use the common template, with progressive explanations, authors, self-correcting quizzes
-and everyday challenges.
+The existing architecture, deployment, contribution, UX workshop and licence sections remain governed by their dedicated repository documents. This README entry makes the v1.3.0 functional-documentation roadmap discoverable from the project root.
 
 ## Quick start
 
@@ -78,78 +30,24 @@ Requirements: Node.js 22+ and a Cloudflare account with Workers AI available. An
 
 ```bash
 npm ci
-npm run ci                          # lint, build, page security checks, unit + browser tests
-cp .env.example worker/.dev.vars    # set LLM_SESSION_SECRET (32+ random characters), ANTHROPIC_API_KEY (optional fallback), GITHUB_TOKEN
-cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev   # API on :8787
-# in another terminal
-KERMICLAB_API_URL=http://localhost:8787 npm run build && npx wrangler pages dev dist           # chat on :8788
+npm run ci
+cp .env.example worker/.dev.vars
+cd worker && npx wrangler d1 execute kermiclab-kpi --local --file=schema.sql && npx wrangler dev
 ```
 
-Workers AI uses Cloudflare's `AI` binding (no API key). `LLM_ACTIF=false` is the global kill switch, controlled in Cloudflare; the site also offers individual opt-in, off by default and remembered for the browser session. Calls require both switches, the signing secret and the updated D1 schema. Other questions open a catalogue page or are declined without a model call.
-The server enforces **1,000 generated tokens per browser session** (default; `LIMITE_TOKENS_SESSION`, see the centralised configuration, ADR 0019), with an absolute 24-hour expiry, shared with optional Anthropic fallback. Input tokens remain billable; new anonymous sessions are not a per-person spending cap. Trusted source links/descriptions and actual model/harness metadata appear after replies. Access is temporarily free; subscription gating is on the backlog. `LLM_ACTIF=false` disables all model calls without blocking the catalogue.
-See [ADR 0016](docs/decisions/0016-workers-ai-principal-anthropic-repli.md) and [ADR 0006](docs/decisions/0006-mode-zero-budget.md) for the history of zero-budget mode.
-Without `GITHUB_TOKEN`, the Worker creates no issues automatically; the Idea box still works through GitHub.
+In another terminal:
 
-## Deploy
+```bash
+KERMICLAB_API_URL=http://<scrubbed-url-domain> npm run build && npx wrangler pages dev dist
+```
 
-Pushing to `main` runs `.github/workflows/ci.yml`: the `verifier` job (lint, build, page security, unit and browser
-tests) must pass before the **Déploiement Cloudflare** job applies the D1 schema, deploys the Worker `kermiclab-api`,
-sets its secrets when defined, and publishes `dist/` to the Cloudflare Pages project `kermiclab`
-(`www.kermiclab.online`, `kermiclab.online`). Pull requests get a Cloudflare Pages preview.
+## Documentation maintenance
 
-| Kind | Name | Purpose |
-|---|---|---|
-| Secret | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | Deploy Worker, Pages, D1 |
-| Secret | `KERMICLAB_GITHUB_TOKEN` | Fine-grained token (Issues read/write on this repo), pushed to the Worker as `GITHUB_TOKEN` |
-| Binding | Cloudflare Workers AI (`AI`) | Primary chat/router model; no API key |
-| Secret | `LLM_SESSION_SECRET` | 32+ random characters; signs the technical quota session cookie |
-| Secret | `ANTHROPIC_API_KEY` | Optional fallback if Workers AI fails; also used by the AI security review |
-| Secret | `CATALOGUE_TOKEN` | Read-only token on the private catalogue repo (optional) |
-| Variable | `KERMICLAB_API_URL` | API URL baked into the chat (default `https://kermiclab-api.kermic.workers.dev`) |
-
-See [docs/actions-manuelles.md](docs/actions-manuelles.md) for the full checklist.
+Functional changes should keep implementation, tests and applicable documentation aligned. Architectural decisions remain in ADRs, while operational and security requirements remain in their dedicated documents.
 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) and [SECURITY.md](SECURITY.md).
-
-## HTML base for UX workshops
-
-Open [docs/ux/index.html](docs/ux/index.html) in a browser or copy its contents into Canvas.
-Six self-contained HTML files cover the current dashboard (v3 welcome journey, Labs/Games navigation,
-chat, catalogue, challenge, trophies, profile and dialogs), the [learning-page variants](docs/ux/notion.html),
-the [unit-circle app](docs/ux/cercle.html), [all nine games and their Academies](docs/ux/jeux.html),
-the [editorial pages](docs/ux/editorial.html) and a [source-derived inventory](docs/ux/inventaire.html).
-Download all six into the same directory to retain navigation; each works offline with embedded styles.
-
-These are French structural wireframes, not a redesign or a pixel-perfect export.
-The inventory lists every public catalogue page (181 at this snapshot), actual tabs, versions, figures
-and trophy compatibility. Shared layouts are represented once, with game-specific screens and state variants.
-Private catalogue contents and the live deployment are not verified. Hidden account screens remain labeled inactive.
-Screens and dialogs are expanded, identified by `data-ecran` and traced with `data-source`, with fictional examples.
-Only links and native disclosure panels work: no submissions, calculations, storage or external services.
-Copy is frozen for this workshop, separate from the translated `web/i18n/` interface.
-The build does not publish these files and the current site is unchanged.
-Return the edited HTML or screen-by-screen instructions after the Canvas workshop to prepare the redesign.
-Each file includes a version panel linking to its active views, current sources and immutable reference commit.
-Every inventory row also links to the live page and its source. External links open only on click; no resources
-are loaded automatically. Dialogs without direct URLs link to their entry page with opening instructions.
-The deployment version is not inferred from the source snapshot.
-
-After source or wireframe changes, review the manual wireframes, then run
-`node scripts/ux-suivi.mjs --version=X.Y.Z` with a strictly increasing SemVer version.
-This regenerates the inventory and the six version panels, versions only affected files and appends the changed
-views, source commits and SHA-256 fingerprints to `docs/ux/suivi.json`. Use a major version for restructuring,
-minor for new screens, patch for corrections. Commit the wireframes and registry together; Git preserves previous snapshots.
-`node scripts/ux-suivi.mjs --check` detects source or wireframe drift without rewriting files.
-`node --test tests/e2e/ux.test.mjs` additionally checks catalogue/dialog/navigation/game-tab coverage,
-local and active-view links and offline layouts at 360, 768 and 1440 pixels.
-Pull request CI checks sources merged with `main`: when a new view lands there in the meantime, integrate `main`,
-update the affected wireframes and publish a new version; do not regenerate fingerprints in CI.
-Commit sources before versioning: modified or untracked sources are rejected before any file is written.
-Checks also verify that the reference commit contains the fingerprinted sources.
-Only the factual `roadmap:auto` block is normalized to avoid blocking automated roadmap PRs:
-the rest of the page and its generator remain tracked, so structural changes require a new UX version.
 
 ## License
 
