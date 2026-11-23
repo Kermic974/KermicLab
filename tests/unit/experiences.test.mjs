@@ -137,3 +137,16 @@ test("progression par matière : filtre par groupe de niveaux (primaire, collèg
   assert.deepEqual(E.progressionParMatiere(p, reg, ["mathematiques", "svt"], { groupe: "lycee" }).map((m) => [m.matiere, m.explorees, m.total]), [["svt", 1, 1]], "matière sans notion explorée dans le groupe : absente");
   assert.deepEqual(E.groupesExplores({}, reg), []);
 });
+
+test("catégories des jeux : gardées pour les jeux connus, ordre d'affichage, notions jamais classées", () => {
+  const reg = E.creerRegistre([
+    { id: "pendu", titre: "Le pendu", matiere: "jeux", categorie: "mots" },
+    { id: "sudoku", titre: "Sudoku", matiere: "jeux", categorie: "calcul" },
+    { id: "inconnu", titre: "Jeu", matiere: "jeux", categorie: "sport" },
+    { id: "pythagore", titre: "Pythagore", niveau: "college", matiere: "mathematiques", categorie: "calcul" },
+  ]);
+  assert.equal(reg.trouver("pendu").categorie, "mots");
+  assert.equal("categorie" in reg.trouver("inconnu"), false, "catégorie inconnue écartée");
+  assert.equal("categorie" in reg.trouver("pythagore"), false, "une notion n'a pas de catégorie de jeu");
+  assert.deepEqual(E.categoriesDesJeux(reg), ["calcul", "mots"], "ordre de CATEGORIES_JEUX, seulement les catégories présentes");
+});

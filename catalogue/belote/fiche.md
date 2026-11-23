@@ -3,6 +3,7 @@ id: belote
 titre: Belote
 resume: La belote à quatre, en équipe avec l'ordinateur : enchères, atout, belote-rebelote et points.
 sujet: jeux/belote
+categorie: strategie
 notions-liees:
   - probabilites
   - denombrement

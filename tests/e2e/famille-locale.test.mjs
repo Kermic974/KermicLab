@@ -169,6 +169,8 @@ test("famille : invitation d'un compte solo, cahier assigné avec calibrage, bil
   assert.match(await parent.page.locator("#ef-comparatif").textContent(), /Noé/);
   assert.match(await parent.page.locator("#ef-performance").textContent(), /\d+ %/);
   await capturer(parent.page, "espace-famille-tableau-de-bord", { pleinePage: true });
+  // Lot 6 (ADR 0039) : pastille à l'initiale de l'enfant sur sa carte.
+  assert.equal(await parent.page.locator('#espace-famille .ef-enfant .pastille-initiale').first().textContent(), "N");
 
   // Progression (ADR 0039, lot 3) : le parent passe de sa progression à celle de Noé, en lecture seule.
   await parent.page.evaluate(() => { location.hash = "progression"; });

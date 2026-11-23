@@ -42,6 +42,8 @@ Par lots, une PR chacun, dans l'ordre de [docs/chantiers/refonte-ux.md § 8](../
 bandeaux (lot 1), écran d'arrivée (2), Progression (3), Éducation et Labs (4), Jeux (5), Professeur, Famille et
 Contributions (6), navigation grand écran (7), passe accessibilité (8).
 
+Les huit lots sont livrés (2026-11-24) ; le détail par lot est dans [docs/chantiers/refonte-ux.md](../chantiers/refonte-ux.md).
+
 ## Conséquences
 
 - Chaque lot met à jour les squelettes `docs/ux/` et le suivi UX.
