@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.103.0 · 2026-11-23</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/abae157280854097bf388ac1ae80824869a597dd" target="_blank" rel="noopener noreferrer" data-lien-actif>abae157</a>.
+  <strong>Squelette v1.103.1 · 2026-11-23</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/95e98e956cc46a9a50b53d31f4b52274b9252ef9" target="_blank" rel="noopener noreferrer" data-lien-actif>95e98e9</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -78,9 +78,9 @@
 <li><a href="#rejoindre">Squelette</a> ↔ <a href="https://kermiclab.online/" target="_blank" rel="noopener noreferrer" data-lien-actif>Rejoindre un professeur : lien ou code d&#39;invitation ouvert par un élève connecté</a></li>
 <li><a href="#contributions">Squelette</a> ↔ <a href="https://kermiclab.online/#contributions" target="_blank" rel="noopener noreferrer" data-lien-actif>Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions</a></li>
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
-<li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, onze écrans (ADR 0026, 0031)</a></li></ul>
+<li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, douze écrans dont le graphe du référentiel (ADR 0026, 0031, 0040)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>ddecdc39a3899f31bab4fa523aeb312a4deca90eb59471f8db829a76b9262854</code><br>Empreinte du squelette hors cartouche : <code>a95e4de6a944ff0bb6cf47ac12086e7d00582b63af157501da87007adc63a0c0</code></p>
+    <p>Empreinte des sources : <code>f14235284b228e4252bdcc6dbdab7fbc2ee07336a892a8f2fc23bcf091b422d7</code><br>Empreinte du squelette hors cartouche : <code>805216070a3ca93ef73b1a4e2f78d84cdc540afd4a9a5849bab3b666cfff0c5a</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -314,7 +314,7 @@
         <p>Espace réservé à l'équipe pendant la phase de test. Saisis la clé d'accès du back-office.</p>
         <label>Clé d'accès<input type="password" disabled></label><button disabled>Ouvrir le back-office</button>
         <p class="note">Sans clé valide, rien n'est affiché. La clé reste dans l'onglet et s'efface à sa fermeture. Interface en français seulement. Aucun lien ne mène au back-office depuis le site.</p>
-        <nav aria-label="Sections du back-office"><a href="#backoffice">Vue d'ensemble</a> · <a href="#backoffice">Utilisateurs</a> · <a href="#backoffice">Rôles et accès</a> · <a href="#backoffice">Sécurité</a> · <a href="#backoffice">Données personnelles</a> · <a href="#backoffice">Télémétrie</a> · <a href="#backoffice">Charte graphique</a> · <a href="#backoffice">Contenus</a> · <a href="#backoffice">Harness</a> · <a href="#backoffice">Journal</a></nav>
+        <nav aria-label="Sections du back-office"><a href="#backoffice">Vue d'ensemble</a> · <a href="#backoffice">Utilisateurs</a> · <a href="#backoffice">Rôles et accès</a> · <a href="#backoffice">Sécurité</a> · <a href="#backoffice">Données personnelles</a> · <a href="#backoffice">Télémétrie</a> · <a href="#backoffice">Charte graphique</a> · <a href="#backoffice">Contenus</a> · <a href="#backoffice">Graphe du référentiel</a> · <a href="#backoffice">Harness</a> · <a href="#backoffice">Journal</a></nav>
         <details><summary>Les dix écrans</summary>
           <p>En-tête permanent : « Bêta : accès pour tous » (contrôle d'accès inactif) et « Garde-fous en observation », puis « Fermer la session ».</p>
           <p>Vue d'ensemble : comptes, contenus, questions, appels aux modèles, tokens et signaux sur 7 jours ; état du site ; profils à regarder.</p>
@@ -326,6 +326,7 @@
           <p>Télémétrie : période de 7, 30 ou 90 jours ; appels, tokens entrants et sortants, durée moyenne ; par modèle, par module, par jour ; requêtes, routages et refus.</p>
           <p>Charte graphique : Indigo, Lagon, Bougainvillier ou couleurs personnalisées ; aperçu clair et sombre ; « Appliquer au site ».</p>
           <p>Contenus : catalogue en ligne (recherche, type, « En ligne », « Mis en avant »), brouillons et parcours (modifier, proposer en revue, publier un parcours, archiver), articles de blog publiés.</p>
+          <p>Graphe du référentiel (ADR 0040) : tuiles (notions, MicroSkills, prérequis, MicroSkills transdisciplinaires) et bandeau si aucune n'est transdisciplinaire ; graphe 3D sur canvas (glisser, molette ou pincement, flèches et +/−) ; discipline, recherche avec résultats cliquables, cases MicroSkills, Prérequis, Transdisciplinaires seules, Rotation, « Centrer », « Réinitialiser » ; légende cliquable par discipline ; détails d'un nœud (voisins cliquables, « Isoler le voisinage », « Départ du chemin », « Arrivée du chemin », « Centrer ici ») et plus court chemin ; tableau par discipline.</p>
           <p>Harness : par module, paramètres dans leurs bornes, skills, instructions complémentaires ; « Réglé ici » et retour à la valeur du déploiement ; niveaux de souscription.</p>
           <p>Journal : date, acteur, action, cible.</p>
         </details>

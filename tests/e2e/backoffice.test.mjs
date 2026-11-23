@@ -68,7 +68,7 @@ const aller = async (page, ecran) => {
   await page.locator("#ecran[aria-busy]").waitFor({ state: "detached" });
 };
 
-test("back-office : clé refusée puis acceptée, onze écrans sans erreur ni violation de la CSP", async () => {
+test("back-office : clé refusée puis acceptée, douze écrans sans erreur ni violation de la CSP", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   await brancherWorker(page);
   await page.goto(`${serveur.url}/admin/`);
@@ -87,7 +87,7 @@ test("back-office : clé refusée puis acceptée, onze écrans sans erreur ni vi
   const attendus = {
     utilisateurs: /Aucun e-mail, aucun nom, aucune adresse IP/, roles: /Contrôle d'accès inactif/, securite: /Garde-fous en observation/,
     donnees: /aucune donnée personnelle détectée/, telemetrie: /Télémétrie anonyme/, theme: /Trois thèmes au choix/,
-    contenus: /Catalogue en ligne/, souscriptions: /Offres pressenties/, harness: /socle de sécurité/, journal: /Journal des actions/, apercu: /État du site/
+    contenus: /Catalogue en ligne/, graphe: /Explorer le graphe/, souscriptions: /Offres pressenties/, harness: /socle de sécurité/, journal: /Journal des actions/, apercu: /État du site/
   };
   for (const [ecran, texte] of Object.entries(attendus)) {
     await aller(page, ecran);
@@ -100,6 +100,70 @@ test("back-office : clé refusée puis acceptée, onze écrans sans erreur ni vi
   await page.click("#deconnexion");
   await page.locator("#connexion").waitFor({ state: "visible" });
   assert.equal(await page.evaluate(() => sessionStorage.getItem("kermiclab:admin:cle")), null);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("back-office : graphe du référentiel, filtres, détails d'un nœud et plus court chemin", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await brancherWorker(page);
+  await entrer(page);
+  await aller(page, "graphe");
+  const etat = page.locator("#graphe-etat");
+  assert.match(await etat.textContent(), /Affichés : 477 notion\(s\), 1[\u202f\s]?995 MicroSkill\(s\)/);
+  assert.ok(await page.locator("#graphe-canvas").evaluate((c) => c.width > 0 && c.height > 0), "le canvas est dimensionné");
+  // Le canvas a bien été dessiné (au moins un pixel non transparent).
+  assert.ok(await page.locator("#graphe-canvas").evaluate((c) => c.getContext("2d").getImageData(0, 0, c.width, c.height).data.some((v, i) => i % 4 === 3 && v > 0)));
+
+  await page.uncheck("#graphe-microskills");
+  assert.match(await etat.textContent(), /Affichés : 477 notion\(s\), 0 MicroSkill/);
+  await page.selectOption("#graphe-discipline", "mathematiques");
+  assert.doesNotMatch(await etat.textContent(), /Affichés : 477 notion/);
+  await page.locator(".graphe-legende [data-discipline=mathematiques]").click();
+  assert.match(await etat.textContent(), /Affichés : 0 notion/, "masquer la discipline choisie vide le graphe");
+  await page.locator(".graphe-legende [data-discipline=mathematiques]").click();
+
+  // Recherche → résultat cliquable au clavier → détails → chemin.
+  await page.fill("#graphe-recherche", "pythagore");
+  await page.locator("#graphe-resultats button").first().click();
+  await page.locator("#graphe-details:not([hidden]) h3").waitFor();
+  assert.match(await page.locator("#graphe-details").textContent(), /notion\.mathematiques\./);
+  await page.locator("#graphe-details button", { hasText: "Arrivée du chemin" }).click();
+  await page.locator("#graphe-details .graphe-voisins button").first().click();
+  await page.locator("#graphe-details button", { hasText: "Départ du chemin" }).click();
+  assert.match(await page.locator("#graphe-chemin").textContent(), /Chemin en 1 relation\(s\)/);
+  await capturer(page, "backoffice-graphe-chemin");
+
+  await page.locator("#graphe-details button", { hasText: "Isoler le voisinage" }).click();
+  await page.locator("#graphe-details button", { hasText: "Tout afficher" }).waitFor();
+  await page.locator("#ecran button", { hasText: "Réinitialiser" }).click();
+  await page.locator("#message", { hasText: "Vue du graphe réinitialisée." }).waitFor();
+  assert.match(await page.locator("#graphe-etat").textContent(), /Affichés : 477 notion/);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("back-office : un chargement lent du graphe ne remplace pas la vue d'une visite plus récente", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await brancherWorker(page);
+  let premier = true;
+  await page.route("**/admin/referentiel-graphe.json*", async (route) => {
+    if (premier) { premier = false; await new Promise((r) => setTimeout(r, 1500)); }
+    await route.continue();
+  });
+  await entrer(page);
+  // Première visite lente, abandonnée pour un autre écran, puis seconde visite.
+  await page.click('#navigation [data-ecran="graphe"]');
+  await page.click('#navigation [data-ecran="journal"]');
+  await page.locator("#ecran[aria-busy]").waitFor({ state: "detached" });
+  await aller(page, "graphe");
+  await page.waitForTimeout(2000);
+  const image = () => page.locator("#graphe-canvas").evaluate((c) => c.toDataURL());
+  const avant = await image();
+  // Un filtre redessine par la vue courante : elle doit être celle du canvas affiché.
+  await page.uncheck("#graphe-microskills");
+  await page.waitForTimeout(300);
+  assert.notEqual(await image(), avant, "le canvas affiché suit les filtres");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
