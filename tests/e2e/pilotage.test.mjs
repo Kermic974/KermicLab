@@ -82,6 +82,13 @@ test("Éducation : « Ma classe » propose les classes du collège, ouvre le niv
   assert.equal(await page.locator(".education-colonnes").evaluate((n) => getComputedStyle(n).gridTemplateColumns.split(" ").length), 2);
   assert.equal(await page.locator(".recherche-education .ico").count(), 1);
   assert.equal(await page.locator('.outils-education [data-espace-carte="labs"] h3').textContent(), "À manipuler dans les Labs");
+  // « Mes cahiers » (colonne de droite) : le panneau s'ouvre sous la liste des notions et défile pour être visible.
+  // Liste longue (le catalogue réel compte des centaines de notions) : simulée par une hauteur minimale.
+  await page.evaluate(() => { document.querySelector("#catalogue-liste").style.minHeight = "2000px"; window.scrollTo(0, 0); });
+  await page.click('.outils-education [aria-controls="ecran-cahiers"]');
+  await page.waitForFunction(() => { const r = document.querySelector("#ecran-cahiers").getBoundingClientRect(); return r.top >= 0 && r.top < window.innerHeight - 40; }, null, { timeout: 3000 });
+  await page.click('.outils-education [aria-controls="ecran-cahiers"]');
+  await page.evaluate(() => { document.querySelector("#catalogue-liste").style.minHeight = ""; window.scrollTo(0, 0); });
   assert.deepEqual(await page.locator("#ma-classe [data-classe]").allTextContents(), ["6e", "5e", "4e", "Seconde", "Première"]);
   assert.deepEqual([await ouvert("4e"), await ouvert("seconde")], ["false", "false"], "rien d'ouvert sans choix");
 

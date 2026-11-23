@@ -6080,7 +6080,17 @@ function basculerAccordeonFixe(bouton, visible = bouton.getAttribute("aria-expan
 
 function brancherAccordeonsFixes() {
   document.querySelectorAll("button[data-accordeon-fixe][aria-controls]").forEach((bouton) => {
-    bouton.addEventListener("click", () => basculerAccordeonFixe(bouton));
+    bouton.addEventListener("click", () => {
+      basculerAccordeonFixe(bouton);
+      // Lot 4 (ADR 0039) : sur grand écran, « Mes cahiers » est dans la colonne de droite mais son panneau s'ouvre sous
+      // la liste des notions ; un panneau ouvert hors de l'écran y est amené.
+      const panneau = $(`#${bouton.getAttribute("aria-controls")}`);
+      if (bouton.getAttribute("aria-expanded") !== "true" || !panneau) return;
+      const r = panneau.getBoundingClientRect();
+      if (r.top < 0 || r.top > window.innerHeight - 80) {
+        panneau.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+    });
   });
 }
 
@@ -7208,7 +7218,8 @@ function rendreProgression() {
     return b;
   }));
   const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES, { groupe: etat.niveauMatieres === "tous" ? null : etat.niveauMatieres });
-  $("#bloc-matieres").hidden = !groupes.length;
+  // Le bloc suit les matières explorées, quel que soit leur niveau (« autres » compris) ; le filtre ne fait que choisir.
+  $("#bloc-matieres").hidden = !experiences.progressionParMatiere(p, etat.registre, MATIERES).length;
   $("#progression-matieres").replaceChildren(...matieres.map(({ matiere, explorees, total }) => {
     const li = element("li", { classe: "progression-matiere" });
     const nom = t(`matiere_${matiere}`);

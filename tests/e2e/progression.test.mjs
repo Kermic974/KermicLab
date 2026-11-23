@@ -258,3 +258,23 @@ test("écran d'arrivée unifié : rien avant la première activité, puis chiffr
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("progression par matière : affichée aussi pour des notions hors primaire, collège et lycée (niveau « autres »)", async () => {
+  const { page, contexte, erreurs } = await demarrer({ progression: {
+    version: 1, questions: 1, xp: 30, notions: ["culture-g"], serie: 1, serieMax: 1, dernierJour: "2026-11-06",
+    badges: [], jours: {}, derniereNotion: "culture-g", defiJour: null,
+    decouvertes: { notion: { "culture-g": { premiere: "2026-11-06", ouvertures: 1 } } },
+  } });
+  await page.route(`${api}/api/catalogue`, (r) => r.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ notions: [...CATALOGUE_TEST, { id: "culture-g", titre: "Culture générale", version: "1.0.0", niveau: "autres", matiere: "philosophie" }] })
+  }));
+  await page.reload();
+  await page.locator("#entree-education", { hasText: "notions" }).waitFor();
+  await page.click(".barre-laterale [data-nav=progression]");
+  await page.locator("#bloc-matieres").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#progression-matieres li").count(), 1);
+  assert.equal(await page.locator("#filtre-niveau-matieres").isHidden(), true, "aucun groupe de niveaux à filtrer");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
