@@ -373,3 +373,60 @@ test("mon abonnement : niveau et rôles affichés, changement de niveau à la de
     await contexte.close();
   }
 });
+
+test("nouvel appareil : un compte en ligne existant se retrouve avec son identifiant et son mot de passe", async () => {
+  const identifiant = "noe.appareils";
+  const a = await appareil("Noé");
+  try {
+    await a.page.click("#ouvrir-connexion");
+    await a.page.fill("#compte-identifiant", identifiant);
+    await a.page.fill("#compte-mdp", MDP);
+    await a.page.fill("#compte-mdp2", MDP);
+    await a.page.check("#liaison-creer-d1");
+    await a.page.click("#formulaire-compte-creer button[type=submit]");
+    await a.page.getByText(`Connecté au compte en ligne : ${identifiant}.`, { exact: true }).waitFor();
+  } finally {
+    await a.contexte.close();
+  }
+  const b = await appareil("Noé");
+  try {
+    await b.page.click("#ouvrir-connexion");
+    await capturer(b.page, "nouvel-appareil-avant");
+    await b.page.fill("#compte-identifiant", identifiant);
+    await b.page.fill("#compte-mdp", MDP);
+    await b.page.fill("#compte-mdp2", MDP);
+    await b.page.check("#liaison-creer-d1");
+    await b.page.click("#formulaire-compte-creer button[type=submit]");
+    await b.page.getByText(`Connecté au compte en ligne : ${identifiant}.`, { exact: true }).waitFor({ timeout: 5000 });
+  } finally {
+    await capturer(b.page, "nouvel-appareil-apres").catch(() => {});
+    await b.contexte.close();
+  }
+});
+
+test("catalogue lent : « Se connecter » et la navigation répondent avant la fin du chargement", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  try {
+    await simulerApiKermiclab(page, { origine: serveur.url, api, htmlMaquette });
+    let liberer;
+    const catalogueRetenu = new Promise((resolve) => { liberer = resolve; });
+    // Route ajoutée en dernier : prioritaire sur celle de simulerApiKermiclab, qui répond une fois libérée.
+    await page.route(`${api}/api/catalogue`, async (route) => { await catalogueRetenu; await route.fallback(); });
+    await page.goto(serveur.url);
+    await page.locator("#dialogue-pseudo[open]").waitFor();
+    await page.fill("#pseudo", "Lou");
+    await page.click("#formulaire-pseudo button[type=submit]");
+    await page.locator("#dialogue-pseudo").waitFor({ state: "hidden" });
+    await page.click("#ouvrir-connexion");
+    await page.locator("#compte-creation").waitFor({ timeout: 3000 });
+    assert.equal(new URL(page.url()).hash, "#compte");
+    const catalogue = page.waitForResponse((r) => r.url().endsWith("/api/catalogue"));
+    liberer();
+    await catalogue;
+    await page.waitForTimeout(300);
+    assert.equal(await page.locator("#compte-creation").isVisible(), true, "l'écran demandé reste affiché une fois le catalogue chargé");
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await contexte.close();
+  }
+});
