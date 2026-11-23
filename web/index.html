@@ -1296,6 +1296,11 @@
         <label for="contrib-texte" class="etiquette-champ" data-i18n="contribTexteLabel"></label>
         <textarea id="contrib-texte" rows="5" maxlength="2000" aria-describedby="contrib-texte-aide contrib-texte-erreur"></textarea>
         <p id="contrib-texte-aide" class="doux petit" data-i18n="contribTexteAide"></p>
+        <!-- Aperçu Avant / Après (lot 6, ADR 0039) : mis à jour pendant la saisie. -->
+        <div class="contrib-avant-apres" id="contrib-avant-apres" hidden>
+          <div class="contrib-avant"><p class="etiquette-champ" data-i18n="contribAvant"></p><p id="contrib-apercu-avant"></p></div>
+          <div class="contrib-apres"><p class="etiquette-champ" data-i18n="contribApres"></p><p id="contrib-apercu-apres"></p></div>
+        </div>
         <p id="contrib-texte-erreur" class="erreur-champ" aria-live="assertive"></p>
         <label for="contrib-motif" class="etiquette-champ" data-i18n="contribMotifLabel"></label>
         <textarea id="contrib-motif" rows="2" maxlength="500" aria-describedby="contrib-motif-erreur"></textarea>

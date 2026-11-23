@@ -1778,12 +1778,15 @@ function barresSemaine(bilan, jour) {
   return conteneur;
 }
 
+/** Pastille décorative à l'initiale d'un enfant ou d'un élève (lot 6, ADR 0039), aux couleurs de l'espace. */
+const pastilleInitiale = (nom) => element("span", { classe: "pastille-initiale", texte: profil.initiale(String(nom ?? "")), attributs: { "aria-hidden": "true" } });
+
 function carteEnfant(e) {
   const carte = element("article", { classe: "carte ef-enfant", attributs: { "data-enfant": e.id } });
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
   nom.append(element("h4", { texte: e.prenom }), element("span", { classe: "doux petit", texte: `${t(`tranche_${e.trancheAge}`)} · ${t(e.origine === "invitation" ? "efOrigineInvitation" : "efOrigineCreation")}` }));
-  tete.append(nom);
+  tete.append(pastilleInitiale(e.prenom), nom);
   const b = e.bilan;
   const jour = progression.jourLocal();
   if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
@@ -2442,7 +2445,7 @@ function carteEleve(e) {
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
   nom.append(element("h4", { texte: e.pseudo }), element("span", { classe: "doux petit", texte: `${nomClasse(e.classeId)} · ${t("profDepuis", { date: dateCourte(e.rejointLe) })}` }));
-  tete.append(nom);
+  tete.append(pastilleInitiale(e.pseudo), nom);
   const b = e.bilan;
   const jour = progression.jourLocal();
   if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
@@ -3749,6 +3752,21 @@ function afficherTexteActuel() {
   $("#contrib-nature-ajout").disabled = !ajout;
   if (!ajout) document.querySelector("input[name=contrib-nature][value=modification]").checked = true;
   if (typeof valeur === "string" && !$("#contrib-texte").value) $("#contrib-texte").value = valeur;
+  rendreAvantApres();
+}
+
+/**
+ * Aperçu Avant / Après (lot 6, ADR 0039) : le passage actuel et le texte proposé, côte à côte. Pour un ajout, le texte
+ * proposé suit le passage visé. Masqué tant que la proposition ne change rien.
+ */
+function rendreAvantApres() {
+  const avant = $("#contrib-actuel-bloc").hidden ? "" : $("#contrib-actuel").textContent;
+  const texte = $("#contrib-texte").value.trim();
+  const ajout = document.querySelector("input[name=contrib-nature][value=ajout]")?.checked;
+  const apres = ajout ? [avant, texte].filter(Boolean).join("\n\n") : texte;
+  $("#contrib-avant-apres").hidden = !texte || apres === avant;
+  $("#contrib-apercu-avant").textContent = avant || t("contribAvantVide");
+  $("#contrib-apercu-apres").textContent = apres;
 }
 
 function erreursContrib(erreurs = {}) {
@@ -4367,6 +4385,8 @@ function brancherContributions() {
   $("#contrib-notion").addEventListener("change", () => { $("#contrib-texte").value = ""; void choisirNotion(); });
   $("#contrib-champ").addEventListener("change", () => { $("#contrib-texte").value = ""; afficherTexteActuel(); });
   $("#formulaire-contribution").addEventListener("submit", envoyerContribution);
+  $("#contrib-texte").addEventListener("input", rendreAvantApres);
+  document.querySelectorAll("input[name=contrib-nature]").forEach((r) => r.addEventListener("change", rendreAvantApres));
   $("#contrib-annuler-edition").addEventListener("click", finirEdition);
   $("#contrib-filtre-statut").addEventListener("change", (e) => { contrib.filtre.statut = e.currentTarget.value; rafraichirContributions(); });
   $("#contrib-filtre-notion").addEventListener("change", (e) => { contrib.filtre.notion = e.currentTarget.value; rafraichirContributions(); });

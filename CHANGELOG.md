@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Refonte UX, lot 6 — Famille, Professeur, Contributions** (ADR 0039) : les cartes d'enfants et d'élèves portent un liseré et une pastille à l'initiale aux couleurs de leur espace ; les tableaux de la famille et du suivi de classe sont plus lisibles (en-têtes en petites capitales, chiffres alignés, ligne survolée) ; le formulaire de contribution montre un aperçu Avant / Après, mis à jour pendant la saisie. Le test des contributions des comptes locaux simule aussi `/api/relectures` (route ajoutée par la relecture humaine), qui partait sur le réseau. / Redesign batch 6: colour-coded child and student cards, compact tables, before/after preview for contributions.
+
 - **Refonte UX, lot 5 — Jeux** (ADR 0039, D7) : chaque jeu déclare une catégorie (calcul et logique, stratégie et cartes, lettres et mots ; champ `categorie` des fiches, validé au build) ; l'écran Jeux propose un filtre par catégorie, combiné à la recherche, et chaque carte affiche sa catégorie. / Redesign batch 5: game categories and filter.
 
 - **Refonte UX, lot 4 — Éducation et Labs** (ADR 0039) : sur grand écran, Éducation passe en deux colonnes (notions à gauche, « Pour s'entraîner » à droite, qui reste visible au défilement) ; la recherche des notions est mise en avant avec une loupe ; les cartes « Pour s'entraîner » prennent la couleur de leur espace et la carte des Labs présente le cercle trigonométrique et le système solaire ; dans l'écran Labs, chaque carte indique ses niveaux. / Redesign batch 4: two-column Education screen, prominent search, colour-coded cards, levels on Lab cards.
