@@ -192,6 +192,20 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .entree-ico.labs { background: var(--lab-doux); color: var(--lab); }
 .entree-ico.defi { background: var(--chaud-doux); color: var(--chaud); }
 /* Écran d'arrivée unifié (ADR 0039 § 3) : chiffres clés, cartes de rôle, journal des découvertes. */
+/* Progression d'un compte suivi (ADR 0039, lot 3) : la vue personnelle est masquée, la vue du bilan la remplace. */
+.progression-compte { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.progression-compte label { font-size: 12px; font-weight: 750; text-transform: uppercase; letter-spacing: .06em; color: var(--doux); }
+.progression-compte select { min-height: 44px; max-width: 100%; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--bord-fort); background: var(--surface); font-weight: 650; }
+:root[data-progression-suivie] #ecran-progression > :not(#progression-compte):not(#progression-suivie),
+:root[data-progression-suivie] #progres { display: none !important; }
+.progression-suivie { display: flex; flex-direction: column; gap: 16px; }
+.cadre-suivi { padding: 10px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--bord); color: var(--texte-2); font-size: 14px; }
+.progression-suivie .compteur .petit { order: 3; margin-top: 2px; }
+.progression-suivie-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; align-items: start; }
+.progression-suivie-grille .carte { padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.progression-suivie-grille h3 { font-size: 17px; }
+.progression-suivie-grille h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--doux); margin: 6px 0 0; }
+.liste-a-revoir { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
 .chiffres-accueil .compteurs { grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
 .chiffres-accueil .compteur .petit { order: 3; margin-top: 2px; }
 .carte-role { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 22px; border-top: 4px solid var(--accent); }

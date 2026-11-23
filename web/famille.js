@@ -211,3 +211,28 @@ export function resumerConsommations(lignes, membres) {
   }
   return { parMembre, total };
 }
+
+/**
+ * Comptes dont la progression peut être consultée depuis l'écran Progression (ADR 0039, lot 3) : soi-même, puis les
+ * enfants d'un parent et les élèves d'un professeur, groupés par famille et par classe. Rien de nouveau n'est lu : ce
+ * sont les bilans bornés déjà reçus par l'Espace famille (§4) et le suivi du professeur (ADR 0030 §6).
+ * @param {{ enfants?: object[], eleves?: { classes: object[], eleves: object[] } | null, libelles: { famille: string, particuliers: string } }} source
+ * @returns {{ groupe: string, comptes: { cle: string, nom: string, origine: "famille" | "eleve", bilan: object | null }[] }[]}
+ */
+export function comptesSuivis({ enfants = [], eleves = null, libelles } = {}) {
+  const groupes = [];
+  const famille = (Array.isArray(enfants) ? enfants : []).filter((e) => e && typeof e.id === "string")
+    .map((e) => ({ cle: `famille:${e.id}`, nom: String(e.prenom ?? ""), origine: "famille", bilan: e.bilan ?? null }));
+  if (famille.length) groupes.push({ groupe: libelles.famille, comptes: famille });
+  const liste = Array.isArray(eleves?.eleves) ? eleves.eleves.filter((e) => e && typeof e.id === "string") : [];
+  const versCompte = (e) => ({ cle: `eleve:${e.id}`, nom: String(e.pseudo ?? ""), origine: "eleve", bilan: e.bilan ?? null });
+  const parNom = (a, b) => a.nom.localeCompare(b.nom);
+  for (const c of Array.isArray(eleves?.classes) ? eleves.classes : []) {
+    const comptes = liste.filter((e) => e.classeId === c.id).map(versCompte).sort(parNom);
+    if (comptes.length) groupes.push({ groupe: String(c.nom ?? ""), comptes });
+  }
+  const connues = new Set((eleves?.classes ?? []).map((c) => c.id));
+  const particuliers = liste.filter((e) => !connues.has(e.classeId)).map(versCompte).sort(parNom);
+  if (particuliers.length) groupes.push({ groupe: libelles.particuliers, comptes: particuliers });
+  return groupes;
+}

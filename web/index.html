@@ -354,6 +354,29 @@
       </section>
 
       <section id="ecran-progression" class="ecran" data-ecrans="progression" aria-labelledby="ensemble-titre" hidden>
+        <!-- Parent ou professeur : passer de sa progression à celle d'un compte suivi, en lecture seule (ADR 0039, lot 3). -->
+        <div class="progression-compte" id="progression-compte" hidden>
+          <label for="progression-compte-choix" data-i18n="progressionDe"></label>
+          <select id="progression-compte-choix"></select>
+        </div>
+        <section id="progression-suivie" class="progression-suivie" aria-labelledby="progression-suivie-titre" hidden>
+          <h2 id="progression-suivie-titre" class="visuellement-cache"></h2>
+          <p class="cadre-suivi" id="progression-suivie-cadre"></p>
+          <p class="doux" id="progression-suivie-vide" data-i18n="progressionSuiviSansBilan" hidden></p>
+          <dl class="compteurs" id="progression-suivie-chiffres"></dl>
+          <div class="progression-suivie-grille" id="progression-suivie-grille">
+            <section class="carte" aria-labelledby="progression-suivie-jours-titre"><h3 id="progression-suivie-jours-titre" data-i18n="progressionSuiviJours"></h3><div id="progression-suivie-jours"></div></section>
+            <section class="carte" aria-labelledby="progression-suivie-notions-titre"><h3 id="progression-suivie-notions-titre" data-i18n="progressionSuiviNotions"></h3>
+              <p id="progression-suivie-repartition"></p>
+              <h4 id="progression-suivie-a-revoir-titre" data-i18n="progressionSuiviARevoir" hidden></h4>
+              <ul id="progression-suivie-a-revoir" class="liste-a-revoir" aria-labelledby="progression-suivie-a-revoir-titre"></ul>
+            </section>
+          </div>
+          <div class="actions">
+            <button type="button" class="secondaire" id="progression-revenir" data-i18n="progressionRevenir"></button>
+            <button type="button" class="secondaire" id="progression-ouvrir-suivi"></button>
+          </div>
+        </section>
         <div class="carte progression-vide" id="progression-vide" hidden>
           <p data-i18n="progressionVide"></p>
           <div class="actions">

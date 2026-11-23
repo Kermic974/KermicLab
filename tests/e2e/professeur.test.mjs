@@ -244,6 +244,44 @@ test("Mon tableau de bord (ordre par défaut) : sous l'Accueil, vues du professe
   await session.contexte.close();
 });
 
+test("Progression : le professeur passe de sa progression à celle d'un élève, en lecture seule (ADR 0039, lot 3)", async () => {
+  const session = await appareil(null, { raccourcis: false });
+  const { page, erreurs, appelsProf } = session;
+  await page.goto(`${serveur.url}/?demo=contributions#contributions`);
+  await page.locator("#dialogue-pseudo[open]").waitFor();
+  await page.fill("#pseudo", "Démo");
+  await page.click("#formulaire-pseudo button[type=submit]");
+  await page.click("#contrib-demo-prof");
+  await page.locator("#contrib-tableau").waitFor({ state: "visible" });
+  await page.click('.barre-laterale [data-nav="progression"]');
+  const choix = page.locator("#progression-compte-choix");
+  await page.locator("#progression-compte").waitFor({ state: "visible" });
+  // « Moi », puis les élèves par classe (4e B) et les cours particuliers, triés par pseudo.
+  assert.deepEqual(await choix.locator("optgroup").evaluateAll((g) => g.map((x) => x.label)), ["4e B", "Cours particuliers"]);
+  assert.deepEqual(await choix.locator("option").allTextContents(), ["Moi (ma progression)", "Inès", "Lucas", "Maëlys", "Noah"]);
+  assert.equal(await choix.inputValue(), "moi");
+  assert.equal(await page.locator("#progression-suivie").isHidden(), true);
+
+  await choix.selectOption({ label: "Lucas" });
+  await page.locator("#progression-suivie").waitFor();
+  assert.equal(await page.locator("#salut").textContent(), "Progression de Lucas");
+  assert.match(await page.locator("#accroche").textContent(), /^Lecture seule, d'après son dernier bilan du /);
+  assert.match(await page.locator("#progression-suivie-cadre").textContent(), /Seulement les notions de ta matière/);
+  assert.deepEqual(await page.locator("#progression-suivie-chiffres dt").allTextContents(), ["XP", "Série", "Temps actif", "Questions"], "pas de badges pour un professeur");
+  assert.equal(await page.locator("#progression-suivie-chiffres dd").first().textContent(), "345");
+  assert.equal(await page.locator("#fichier-progression").isHidden(), true, "la vue personnelle est masquée");
+  assert.equal(await page.locator("#progression-ouvrir-suivi").getAttribute("data-nav"), "eleves");
+  await capturer(page, "progression-compte-suivi");
+
+  await page.click("#progression-revenir");
+  assert.equal(await choix.inputValue(), "moi");
+  assert.equal(await page.locator("#progression-suivie").isHidden(), true);
+  assert.equal(await page.locator("#salut").textContent(), "Progression");
+  assert.deepEqual(appelsProf, [], "la démonstration n'appelle pas le Worker");
+  assert.deepEqual(erreurs, []);
+  await session.contexte.close();
+});
+
 // ---------- Activités et tableau de bord (ADR 0030 §9) ----------
 
 test("activités : le professeur donne une évaluation à la classe, l'élève la passe, le tableau de bord affiche le score", async () => {

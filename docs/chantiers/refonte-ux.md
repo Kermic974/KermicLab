@@ -4,7 +4,9 @@ Maturité : **lots 1 et 2 livrés**. Décisions D1 à D7 validées le 2026-11-21
 Lot 1 (jetons et bandeaux) : bandeau d'en-tête coloré par espace (`data-espace`, `espaceDe` de `web/navigation.js`),
 cartes de chiffres avec libellé au-dessus et liseré de l'espace. Lot 2 (écran d'arrivée unifié) : chiffres clés,
 journal des découvertes (`journalRecent` de `web/experiences.js`), cartes de rôle, quatre accès rapides ; « Mon tableau
-de bord » retiré de l'ordre par défaut, l'avatar devient « Mon espace ». Prochain : lot 3, Progression.
+de bord » retiré de l'ordre par défaut, l'avatar devient « Mon espace ». Lot 3 en cours : progression des comptes suivis
+(D8, sélecteur « Progression de » pour un parent ou un professeur) livrée ; reste l'anneau d'XP, le filtre par niveau et
+les trophées « à portée ».
 
 ## 1. Objet et sources
 
@@ -99,7 +101,7 @@ dans 13 fichiers de tests e2e) : elle doit partir d'un ADR et d'une maquette cor
    seulement, aucune structure changée.
 2. ✅ **Écran d'arrivée unifié** (D3) : bandeau, 3 cartes de chiffres, Reprendre et Suggestion, journal depuis les
    Découvertes, accès rapides. Redirection de `#accueil` et `#tableau-de-bord`.
-3. **Progression** : anneau d'XP, filtre par niveau des matières, trophées « à portée ».
+3. **Progression** : ✅ progression des comptes suivis (D8) ; anneau d'XP, filtre par niveau des matières, trophées « à portée ».
 4. **Éducation et Labs** : recherche dans le bandeau, colonne de droite (défi, cahiers, aperçu du labo qui renvoie
    vers Labs).
 5. **Jeux** : champ `categorie` des fiches, filtres, bandeau.

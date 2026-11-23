@@ -26,6 +26,13 @@
 7. **D7 — Catégories de jeux** : nouveau champ de fiche `categorie` (calcul, stratégie, mots), qui alimente des filtres
    dans l'écran Jeux.
 
+8. **D8 — Progression des comptes suivis** (demande du propriétaire du 2026-11-23) : dans l'écran Progression, un
+   parent ou un professeur choisit « Moi » ou l'un des comptes qu'il est autorisé à suivre (ses enfants ; ses élèves,
+   groupés par classe puis cours particuliers). La progression d'un compte suivi s'affiche **en lecture seule**, à partir
+   des bilans bornés déjà reçus (ADR 0029 §4, ADR 0030 §6) : aucune donnée nouvelle n'est demandée ni transmise. Le
+   professeur ne voit que les notions de sa matière et pas les badges, comme dans « Mes élèves ». Liste construite par
+   `comptesSuivis` (`web/famille.js`).
+
 Hors décision, et écarté : carte de suivi d'audience visible des élèves, connexion Google ou Microsoft des parents,
 phrase secrète de synchronisation, sélecteur de profils fictifs hors mode démo, gestionnaires `onclick` dans le HTML.
 

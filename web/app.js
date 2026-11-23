@@ -31,6 +31,8 @@ const etat = {
   notionCourante: null, compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {},
   ecran: "accueil", registre: experiences.creerRegistre([]), ouverts: new Set(), moteur: null, llmActif: false, llmDisponible: false,
+  // Progression consultée : null pour la sienne, sinon la clé d'un compte suivi (« famille:<id> » ou « eleve:<id> »).
+  compteSuivi: null,
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
   cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
@@ -5231,6 +5233,7 @@ async function demarrer() {
   brancherFamille();
   brancherContributions();
   brancherProfesseur();
+  brancherComptesSuivis();
   brancherTestRoles();
   void verifierConnexion().then(rafraichirContributions);
 
@@ -5655,6 +5658,11 @@ function rafraichirEntete() {
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
     : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
+  const suivi = etat.ecran === "progression" ? compteSuiviCourant() : null;
+  if (suivi) {
+    $("#salut").textContent = t("progressionTitreSuivi", { nom: suivi.nom });
+    $("#accroche").textContent = suivi.bilan ? t("progressionAccrocheSuivi", { date: dateCourte(suivi.bilan.jour) }) : t("progressionAccrocheSansBilan");
+  }
 }
 
 /** Vue ouverte par « Mon tableau de bord » : la dernière consultée si elle est encore proposée dans ses filtres. */
@@ -5684,7 +5692,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
   decouvrirEnSilence("section", sectionDe(etat.ecran));
   if (etat.ecran === "defi" && changement) ouvrirDefi();
-  if (etat.ecran === "progression") rendreProgression();
+  if (etat.ecran === "progression") { rendreProgression(); if (changement) void preparerComptesSuivis(); }
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   if (etat.ecran === "compte") rafraichirCompte();
   if (etat.ecran === "espace-famille" && changement) void ouvrirEspaceFamille();
@@ -6752,6 +6760,93 @@ function rendreEntrees() {
   $("#entree-jeux").textContent = jeux ? t("entreeJeux", { n: jeux }) : "";
 }
 
+/* ---------- Progression des comptes suivis (ADR 0039, lot 3) ----------
+   Un parent ou un professeur passe de sa progression à celle d'un enfant ou d'un élève, en lecture seule, à partir des
+   bilans bornés déjà reçus par l'Espace famille et le suivi de classe : aucune donnée nouvelle n'est demandée. */
+function groupesComptesSuivis() {
+  return familleModule.comptesSuivis({
+    enfants: familleEtat.moi?.parent ? familleEtat.tableau?.enfants ?? [] : [],
+    eleves: profActif() ? profEtat.eleves : null,
+    libelles: { famille: t("progressionGroupeFamille"), particuliers: t("profParticuliers") },
+  });
+}
+
+function compteSuiviCourant() {
+  if (!etat.compteSuivi) return null;
+  return groupesComptesSuivis().flatMap((g) => g.comptes).find((c) => c.cle === etat.compteSuivi) ?? null;
+}
+
+/** Charge, si besoin, la famille du parent et les élèves du professeur, puis propose le choix du compte. */
+async function preparerComptesSuivis() {
+  const attentes = [];
+  if (familleEtat.moi?.parent && !familleEtat.tableau) attentes.push(chargerTableauFamille());
+  if (profActif() && !profEtat.eleves) attentes.push(ouvrirEleves());
+  if (attentes.length) await Promise.allSettled(attentes);
+  rendreChoixCompte();
+  if (etat.ecran === "progression") { rendreProgressionSuivie(); rafraichirEntete(); }
+}
+
+function rendreChoixCompte() {
+  const groupes = groupesComptesSuivis();
+  $("#progression-compte").hidden = !groupes.length;
+  if (etat.compteSuivi && !compteSuiviCourant()) etat.compteSuivi = null;
+  const choix = $("#progression-compte-choix");
+  choix.replaceChildren(option("moi", t("progressionMoi")), ...groupes.map((g) => {
+    const groupe = element("optgroup", { attributs: { label: g.groupe } });
+    groupe.append(...g.comptes.map((c) => option(c.cle, c.nom)));
+    return groupe;
+  }));
+  choix.value = etat.compteSuivi ?? "moi";
+}
+
+function rendreProgressionSuivie() {
+  const c = compteSuiviCourant();
+  document.documentElement.toggleAttribute("data-progression-suivie", !!c);
+  $("#progression-suivie").hidden = !c;
+  if (!c) return;
+  const b = c.bilan;
+  $("#progression-suivie-titre").textContent = t("progressionTitreSuivi", { nom: c.nom });
+  $("#progression-suivie-cadre").textContent = t(c.origine === "famille" ? "progressionCadreFamille" : "progressionCadreProf");
+  $("#progression-suivie-vide").hidden = !!b;
+  $("#progression-suivie-chiffres").hidden = !b;
+  $("#progression-suivie-grille").hidden = !b;
+  const ouvrir = $("#progression-ouvrir-suivi");
+  ouvrir.textContent = t(c.origine === "famille" ? "progressionOuvrirFamille" : "progressionOuvrirEleves");
+  ouvrir.dataset.nav = c.origine === "famille" ? "espace-famille" : "eleves";
+  if (!b) return;
+  const tuile = (cle, valeur, aide) => {
+    const d = element("div", { classe: "compteur" });
+    d.append(element("dt", { cle }), element("dd", { texte: String(valeur) }));
+    if (aide) d.append(element("span", { classe: "doux petit", texte: aide }));
+    return d;
+  };
+  $("#progression-suivie-chiffres").replaceChildren(
+    tuile("accueilXp", b.xp, t("progressionSuiviXpAide", { n: b.niveau })),
+    tuile("accueilSerie", t("accueilSerieValeur", { n: b.serie }), t("accueilSerieAide", { n: b.serieMax })),
+    tuile("progressionSuiviTemps", formatMinutes(b.tempsMin)),
+    tuile("progressionSuiviQuestions", b.questions),
+    ...(c.origine === "famille" ? [tuile("progressionSuiviBadges", b.badges.length)] : [])
+  );
+  $("#progression-suivie-jours").replaceChildren(barresSemaine(b, progression.jourLocal()));
+  const rep = familleModule.repartitionNotions(b);
+  $("#progression-suivie-repartition").textContent = t("efNotionsResume", { maitrisees: rep.maitrisee, encours: rep["en-cours"], arevoir: rep["a-revoir"], decouvertes: rep.decouverte });
+  const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id);
+  $("#progression-suivie-a-revoir-titre").hidden = !aRevoir.length;
+  $("#progression-suivie-a-revoir").replaceChildren(...aRevoir.map((titre) => element("li", { texte: titre })));
+}
+
+function choisirCompteSuivi(cle) {
+  etat.compteSuivi = cle && cle !== "moi" ? cle : null;
+  $("#progression-compte-choix").value = etat.compteSuivi ?? "moi";
+  rendreProgression();
+  rafraichirEntete();
+}
+
+function brancherComptesSuivis() {
+  $("#progression-compte-choix").addEventListener("change", (e) => choisirCompteSuivi(e.target.value));
+  $("#progression-revenir").addEventListener("click", () => { choisirCompteSuivi(null); $("#progression-compte-choix").focus(); });
+}
+
 /** Aperçu compact : n'apparaît qu'une fois qu'il y a quelque chose de réel à montrer. */
 function rendreApercu() {
   if (!etat.progres || !etat.textes.titre) return;
@@ -6814,6 +6909,7 @@ function jourRelatif(jour) {
 function rendreProgression() {
   const p = etat.progres;
   if (!p || !etat.textes.titre) return;
+  rendreProgressionSuivie();
   const c = experiences.compteurs(p, etat.registre);
   const serie = progression.serieCourante(p);
   const tuiles = [
