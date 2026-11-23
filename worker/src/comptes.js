@@ -3,6 +3,7 @@
 import { validerPseudo } from "../../web/profil.js";
 import { MAX_ENFANTS, TRANCHES_AGE, VERSION_CONSENTEMENT } from "../../web/comptes.js";
 import { cookieSessionVide } from "./auth/session.js";
+import { effacementRelectures } from "./relectures.js";
 
 export const MAX_NOTIONS_PROGRES = 500;
 const TAILLE_MAX_CORPS = 64 * 1024;
@@ -33,6 +34,7 @@ export async function supprimerCompte(env, compteId) {
     // Contributions (ADR 0023) : celles du compte sont effacées ; ses décisions de relecture restent, sans relecteur.
     db.prepare("DELETE FROM contributions WHERE auteur_id = ?").bind(compteId),
     db.prepare("UPDATE contributions SET relecteur_id = NULL WHERE relecteur_id = ?").bind(compteId),
+    ...(await effacementRelectures(env, compteId, "oauth")),
     db.prepare("DELETE FROM sessions WHERE compte_id = ?").bind(compteId),
     db.prepare("DELETE FROM auth_providers WHERE compte_id = ?").bind(compteId),
     db.prepare("DELETE FROM comptes WHERE id = ?").bind(compteId)

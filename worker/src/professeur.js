@@ -21,6 +21,7 @@ import {
 import { compteDeSession } from "./compte-local.js";
 import { attributionDuCompte } from "./attributions.js";
 import { roleContributionCompteLocal } from "./contributions.js";
+import { roleRelecteurDuCompte } from "./relectures.js";
 import { lireConfiguration } from "./configuration.js";
 import { appelerAliasGateway } from "./llm.js";
 import { SCHEMA_CAHIER, lireDemandeCahier, messageCahier, normaliserCahier, promptCahier } from "./cahier-llm.js";
@@ -473,10 +474,13 @@ export async function gererApiProfesseur(requete, env, { catalogue, iaCahier = f
     const attribution = await roleDuCompte(env, moi);
     const professeur = rolePermetProfesseur(env, attribution);
     const role = attribution.roles[0];
+    const roleRelecture = await roleRelecteurDuCompte(env, moi, "local");
     return json({
       // `id` : identifiant du compte (le sien), pour reconnaître ses propres contributions ; `contribution` : rôle de
       // contribution déduit des permissions (ADR 0023 §6 ter), null sans permission de proposer.
+      // `relectureHumaine` : rôle de relecteur attribué à la main (ADR 0039), indépendant de la souscription.
       id: moi, role, roles: attribution.roles, professeur, contribution: await roleContributionCompteLocal(env, moi),
+      relectureHumaine: !!roleRelecture, roleRelecture,
       profil: professeur ? await profilDe(env, moi) : null,
       professeurs: await compter(env, "SELECT count(*) AS n FROM professeurs_eleves WHERE eleve_id = ?", moi)
     });

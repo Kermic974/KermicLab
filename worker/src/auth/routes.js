@@ -1,5 +1,6 @@
 import { demarrerOAuth, terminerOAuth } from "./oauth.js";
 import { roleAccedeAuBackOffice } from "../roles.js";
+import { roleRelecteurDuCompte } from "../relectures.js";
 import { creerSession, lireSession, supprimerSession, cookieSession, cookieSessionVide } from "./session.js";
 
 async function hashEmail(email) {
@@ -93,7 +94,11 @@ export async function gererAuth(request, env) {
     ).bind(compteId).first();
 
     // `backOffice` : le rôle a une permission d'administration (lien du profil). N'ouvre aucun droit côté serveur.
-    return Response.json({ connecte: true, compte: compte && { ...compte, backOffice: await roleAccedeAuBackOffice(env, compte.role) } });
+    // `relectureHumaine` : rôle de relecteur attribué à la main (ADR 0039), y compris un rôle personnalisé.
+    const roleRelecture = compte ? await roleRelecteurDuCompte(env, compte.id, "oauth") : null;
+    return Response.json({ connecte: true, compte: compte && {
+      ...compte, backOffice: await roleAccedeAuBackOffice(env, compte.role), relectureHumaine: !!roleRelecture, roleRelecture
+    } });
   }
 
   if (path === "/auth/logout" && request.method === "POST") {

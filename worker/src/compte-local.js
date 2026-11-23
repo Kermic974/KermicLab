@@ -7,6 +7,7 @@
 import { effacementFamille } from "./famille-donnees.js";
 import { effacementProfesseur } from "./professeur-donnees.js";
 import { effacementContributionsLocales } from "./contributions.js";
+import { effacementRelectures } from "./relectures.js";
 import { donneesCompteLocal } from "./compte-local-acces.js";
 import { changerSouscriptionCompte, etatSouscriptionCompte } from "./souscription-compte.js";
 import {
@@ -195,6 +196,7 @@ export async function effacerCompteLocal(env, compteId) {
     ...(await effacementFamille(env, compteId)),
     ...(await effacementProfesseur(env, compteId)),
     ...(await effacementContributionsLocales(env, compteId)),
+    ...(await effacementRelectures(env, compteId, "local")),
     env.DB.prepare("DELETE FROM sessions_locales WHERE compte_id = ?").bind(compteId),
     env.DB.prepare("DELETE FROM appairages WHERE compte_id = ?").bind(compteId),
     env.DB.prepare("DELETE FROM comptes_locaux WHERE id = ?").bind(compteId)

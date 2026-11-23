@@ -123,6 +123,11 @@ export async function simulerApiKermiclab(page, { origine, api, htmlMaquette, je
       body: JSON.stringify(reponse)
     });
   });
+  await page.route(`${api}/api/relectures/statut**`, (route) => route.fulfill({
+    contentType: "application/json",
+    headers: { "access-control-allow-origin": origine },
+    body: JSON.stringify({ notion_id: "pythagore", statut: "non-relue", grille: "v1", date: null, code: null, decision: null, version: null })
+  }));
   await page.route(`${api}/api/suggestions**`, (route) => route.fulfill({
     contentType: "application/json", headers: { "access-control-allow-origin": "*" },
     body: JSON.stringify({ suggestions: ["C'est quoi le sinus ?", "Je ne comprends pas les radians"] })

@@ -1272,7 +1272,15 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .contrib-frise .etape-arrete .contrib-frise-point { border-color: #6b7280; background: #6b7280; }
 .contrib-frise .etape-a_venir { font-weight: 400; color: var(--doux); opacity: .75; }
 .contrib-frise .etape-action, .contrib-frise .etape-courant { font-weight: 700; }
-#bulle-editer .ico { width: 16px; height: 16px; vertical-align: -3px; margin-right: 4px; }
+.relecture-badge { margin: 4px 0 0; font-size: .85rem; font-weight: 700; overflow-wrap: anywhere; }
+.relecture-badge[hidden] { display: none; }
+.relecture-badge[data-statut="relue"] { color: #166534; }
+.relecture-badge[data-statut="a-revoir"], .relecture-badge[data-statut="a-corriger"] { color: #9a3412; }
+.relecture-badge[data-statut="non-relue"], .relecture-badge[data-statut="indisponible"] { color: var(--doux); font-weight: 600; }
+.relecture-criteres { border: 0; margin: 8px 0; padding: 0; display: grid; gap: 6px; }
+.relecture-criteres label { display: flex; gap: 8px; align-items: flex-start; }
+
+#bulle-editer .ico, #bulle-relecture-ouvrir .ico { width: 16px; height: 16px; vertical-align: -3px; margin-right: 4px; }
 #edition-vers-contributions { margin-top: 12px; }
 .contrib-matieres { margin-bottom: 12px; }
 .contrib-matieres-liste { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
@@ -1284,8 +1292,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .bulle-corps { flex-direction: column; }
   .bulle-edition { flex: 0 0 55%; border-left: 0; border-top: 1px solid var(--bord); }
   /* En-tête de la bulle étroit : le bouton d'édition n'affiche que son icône ; son libellé reste lu. */
-  #bulle-editer span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  #bulle-editer .ico { margin-right: 0; }
+  #bulle-editer span, #bulle-relecture-ouvrir span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  #bulle-editer .ico, #bulle-relecture-ouvrir .ico { margin-right: 0; }
   .nav-mobile { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
 }
 /* Six destinations (sept avec Contributions) : libellés resserrés sur les écrans les plus étroits. */
