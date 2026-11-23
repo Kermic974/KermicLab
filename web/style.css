@@ -4,9 +4,10 @@
   --fond: #f4f5fb; --surface: #ffffff; --surface-2: #f8f9fd; --texte: #141833; --texte-2: #3d4363; --doux: #5f6585;
   --bord: #e3e6f1; --bord-fort: #d3d7e8;
   --accent: #3d4fd6; --accent-texte: #ffffff; --accent-fort: #3141bd; --accent-doux: #eceefe; --accent-doux-texte: #2f3fb8;
-  --succes: #0b8f78; --succes-doux: #e2f6f1;
-  --chaud: #b8650f; --chaud-barre: #e48a2c; --chaud-doux: #fdf0e1;
-  --danger: #c2462b; --danger-doux: #fdebe5;
+  /* Lot 8 (ADR 0039) : succès, chaud et danger foncés pour un contraste ≥ 4,5:1 sur blanc et sur leur fond doux. */
+  --succes: #08775f; --succes-doux: #e2f6f1;
+  --chaud: #9a520a; --chaud-barre: #e48a2c; --chaud-doux: #fdf0e1;
+  --danger: #a8361c; --danger-doux: #fdebe5;
   --lab: #6c43d0; --lab-doux: #f2edfd; --lab-bord: #e1d6fa;
   --or: #b8860b;
   --alerte: #8a4a10; --alerte-fond: #fff7ec; --alerte-bord: #f6d9b0;
@@ -142,7 +143,7 @@ progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
 .profil-mobile { display: none; }
 .avatar-profil {
   width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; font-weight: 750; color: #fff;
-  background: #0b8f78; box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--succes);
+  background: #08775f; box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--succes);
 }
 .profil-textes { display: flex; flex-direction: column; min-width: 0; }
 .profil-nom { font-weight: 650; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -282,7 +283,7 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .outil { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; min-width: 0; }
 .outil h3 { font-size: 17px; font-weight: 720; }
 .outil .bouton { width: auto; border-radius: 12px; text-decoration: none; }
-.lien-mode { font-size: 14px; font-weight: 600; }
+.lien-mode { font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; min-height: 32px; padding: 4px 2px; }
 .minilab { width: 100%; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 .minilab[hidden], .cahiers[hidden] { display: none; }
 .minilab .cercle-hote { max-width: 300px; }
@@ -703,7 +704,7 @@ input[type="range"]:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px var(
 .minilab .bouton { align-self: flex-start; }
 
 .pied { display: flex; gap: 6px 18px; flex-wrap: wrap; justify-content: center; font-size: .8rem; color: var(--doux); padding-top: 4px; }
-.pied a, .pied button.lien { color: var(--doux); }
+.pied a, .pied button.lien { color: var(--doux); display: inline-flex; align-items: center; min-height: 28px; padding: 4px 2px; }
 .pied a:hover, .pied button.lien:hover { color: var(--accent); background: none; }
 
 /* ---------- Notifications ---------- */
