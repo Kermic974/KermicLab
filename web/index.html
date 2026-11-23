@@ -28,6 +28,7 @@
   <symbol id="i-horloge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-coche" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-croix" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-loupe" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
   <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-fiole" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.4 9.4A2 2 0 0 0 6.3 21.5h11.4a2 2 0 0 0 1.7-3.1L14 9V3"/><path d="M7.2 15h9.6"/></symbol>
   <symbol id="i-etincelle" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
@@ -223,35 +224,42 @@
       </section>
 
       <section id="catalogue" class="ecran education" data-ecrans="education" aria-labelledby="catalogue-titre" hidden>
+        <!-- Lot 4 (ADR 0039) : grand écran en deux colonnes, notions à gauche, « Pour s'entraîner » à droite. -->
+        <div class="education-colonnes">
+        <div class="education-principal">
         <div class="tete-section">
           <h2 id="catalogue-titre" data-i18n="educationNotions"></h2>
           <p class="catalogue-compteur" id="catalogue-compteur" role="status"></p>
         </div>
-        <label class="visuellement-cache" for="recherche-notion" data-i18n="rechercherNotion"></label>
-        <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
+        <div class="recherche-education">
+          <svg class="ico" aria-hidden="true"><use href="#i-loupe"/></svg>
+          <label class="visuellement-cache" for="recherche-notion" data-i18n="rechercherNotion"></label>
+          <input id="recherche-notion" type="search" autocomplete="off" data-i18n-placeholder="rechercherNotion">
+        </div>
         <!-- Ma classe : le niveau choisi s'ouvre directement, ici et aux visites suivantes. -->
         <div class="ma-classe" id="ma-classe" role="group" data-i18n-aria="maClasseTitre" hidden></div>
         <div id="catalogue-liste" class="arbre"></div>
         <p id="catalogue-vide" class="doux" data-i18n="aucuneNotion" hidden></p>
         <p id="catalogue-indisponible" class="doux" data-i18n="catalogueIndisponible" hidden></p>
+        </div>
 
         <section class="outils-education" aria-labelledby="outils-titre">
           <h2 id="outils-titre" data-i18n="educationOutils"></h2>
           <div class="liste-outils">
-            <article class="carte outil">
+            <article class="carte outil" data-espace-carte="education">
               <h3 data-i18n="activiteDefi"></h3>
               <p class="doux" data-i18n="activiteDefiTexte"></p>
               <p class="meta"><span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-horloge"/></svg><span data-i18n="activiteDefiDuree"></span></span><span class="xp" id="meta-defi"></span></p>
               <button type="button" class="bouton" data-nav="defi" id="lancer-defi"><svg class="ico" aria-hidden="true"><use href="#i-eclair"/></svg><span data-i18n="activiteDefiBouton"></span></button>
             </article>
-            <article class="carte outil">
-              <h3 data-i18n="labCercleTitre"></h3>
-              <p class="doux" data-i18n="labCercleDescription"></p>
+            <article class="carte outil" data-espace-carte="labs">
+              <h3 data-i18n="educationLabsTitre"></h3>
+              <p class="doux" data-i18n="educationLabsTexte"></p>
               <div class="outil-actions">
                 <button type="button" class="bouton lab" data-nav="labs" id="rebond-labs"><span data-i18n="labsRebond"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
               </div>
             </article>
-            <article class="carte outil">
+            <article class="carte outil" data-espace-carte="cahiers">
               <h3 data-i18n="navCahiers"></h3>
               <p class="doux" data-i18n="cahiersIntro"></p>
               <div class="outil-actions">
@@ -259,6 +267,8 @@
               </div>
             </article>
           </div>
+        </section>
+        </div>
           <section id="ecran-cahiers" class="cahiers" aria-labelledby="cahiers-titre" hidden>
             <h3 id="cahiers-titre" data-i18n="cahiersDisponibles"></h3>
             <div class="grille-types-cahier">
@@ -294,7 +304,6 @@
               <div id="liste-cahiers" class="grille-cahiers" aria-live="polite"></div>
             </section>
           </section>
-        </section>
       </section>
 
       <section id="ecran-labs" class="ecran" data-ecrans="labs" aria-labelledby="labs-titre" hidden>
@@ -304,8 +313,9 @@
         </div>
         <p class="doux" data-i18n="labsSeparation"></p>
         <div class="liste-outils">
-        <article class="carte outil" id="lab-cercle">
+        <article class="carte outil" id="lab-cercle" data-espace-carte="labs">
           <h3 data-i18n="labCercleTitre"></h3>
+          <span class="etiquette-niveau" data-i18n="labCercleNiveaux"></span>
           <p class="doux" data-i18n="labCercleDescription"></p>
           <div class="outil-actions">
             <a class="bouton lab" href="cercle/?mode=explore" data-i18n="parcoursV3Action"></a>
@@ -332,8 +342,9 @@
             <button type="button" class="bouton secondaire-bouton" id="minilab-page"><span data-i18n="minilabPage"></span><svg class="ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
           </section>
         </article>
-        <article class="carte outil" id="lab-systeme-solaire">
+        <article class="carte outil" id="lab-systeme-solaire" data-espace-carte="labs">
           <h3 data-i18n="labSolaireTitre"></h3>
+          <span class="etiquette-niveau" data-i18n="labSolaireNiveaux"></span>
           <p class="doux" data-i18n="labSolaireDescription"></p>
           <div class="outil-actions">
             <a class="bouton lab" href="labs/systeme-solaire/" data-i18n="labSolaireAction"></a>

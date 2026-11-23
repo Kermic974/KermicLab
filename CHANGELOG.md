@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Refonte UX, lot 4 — Éducation et Labs** (ADR 0039) : sur grand écran, Éducation passe en deux colonnes (notions à gauche, « Pour s'entraîner » à droite, qui reste visible au défilement) ; la recherche des notions est mise en avant avec une loupe ; les cartes « Pour s'entraîner » prennent la couleur de leur espace et la carte des Labs présente le cercle trigonométrique et le système solaire ; dans l'écran Labs, chaque carte indique ses niveaux. / Redesign batch 4: two-column Education screen, prominent search, colour-coded cards, levels on Lab cards.
+
 - **Refonte UX, lot 3 — Progression** (ADR 0039) : le niveau s'affiche dans un anneau d'XP (part du niveau en cours) ; la progression par matière se filtre par niveau (Tout, Primaire, Collège, Lycée), seulement parmi les niveaux où une notion a été explorée. / Redesign batch 3: XP ring and level filter on per-subject progress.
 
 - **Progression des comptes suivis** (ADR 0039, D8) : dans l'écran Progression, un parent ou un professeur choisit « Moi » ou l'un de ses enfants ou élèves (groupés par classe) et voit sa progression en lecture seule : XP, série et record, temps actif, questions, 7 derniers jours, maîtrise des notions et notions à revoir (badges pour la famille seulement). Ce sont les bilans déjà reçus par l'Espace famille et le suivi de classe ; le professeur ne voit que les notions de sa matière. / Parents and teachers can switch the Progress screen to a child's or student's read-only progress.

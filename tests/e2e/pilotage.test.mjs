@@ -78,6 +78,10 @@ test("Éducation : « Ma classe » propose les classes du collège, ouvre le niv
   const ouvert = (niveau) => page.locator(`[aria-controls="edu-${niveau}"]`).getAttribute("aria-expanded");
   // Espace coloré (ADR 0039) : le bandeau d'en-tête prend la couleur d'Éducation, puis de l'Accueil.
   assert.equal(await page.evaluate(() => document.documentElement.dataset.espace), "education");
+  // Lot 4 (ADR 0039) : deux colonnes sur grand écran (notions, puis « Pour s'entraîner »), recherche avec loupe.
+  assert.equal(await page.locator(".education-colonnes").evaluate((n) => getComputedStyle(n).gridTemplateColumns.split(" ").length), 2);
+  assert.equal(await page.locator(".recherche-education .ico").count(), 1);
+  assert.equal(await page.locator('.outils-education [data-espace-carte="labs"] h3').textContent(), "À manipuler dans les Labs");
   assert.deepEqual(await page.locator("#ma-classe [data-classe]").allTextContents(), ["6e", "5e", "4e", "Seconde", "Première"]);
   assert.deepEqual([await ouvert("4e"), await ouvert("seconde")], ["false", "false"], "rien d'ouvert sans choix");
 

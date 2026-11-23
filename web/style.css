@@ -260,6 +260,22 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 
 /* ---------- Éducation : outils ---------- */
 .outils-education { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+/* Lot 4 (ADR 0039) : Éducation en deux colonnes sur grand écran, recherche mise en avant, cartes à la couleur de leur espace. */
+.education-colonnes { display: grid; gap: 22px; }
+.education-principal { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+@media (min-width: 1200px) {
+  .education-colonnes { grid-template-columns: minmax(0, 1fr) minmax(260px, 320px); align-items: start; }
+  .education-colonnes .outils-education { position: sticky; top: 16px; margin-top: 0; }
+  .education-colonnes .liste-outils { grid-template-columns: 1fr; }
+}
+.recherche-education { position: relative; display: flex; align-items: center; }
+.recherche-education > .ico { position: absolute; left: 14px; color: var(--doux); pointer-events: none; }
+.recherche-education input { width: 100%; min-height: 50px; padding: 10px 14px 10px 44px; font-size: 16px; border-radius: 14px; border: 2px solid var(--bord-fort); background: var(--surface); }
+.recherche-education input:focus { border-color: var(--espace); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--espace) 25%, transparent); }
+.outil[data-espace-carte] { border-top: 4px solid var(--accent); }
+.outil[data-espace-carte="education"] { border-top-color: #1d4ed8; }
+.outil[data-espace-carte="labs"] { border-top-color: #6d28d9; }
+.etiquette-niveau { font-size: 12px; font-weight: 750; letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; background: var(--lab-doux); color: var(--lab); }
 .outils-education > h2 { font-size: 19px; font-weight: 720; }
 .liste-outils { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; align-items: start; }
 .outil { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; min-width: 0; }
@@ -841,7 +857,7 @@ dialog.bulle-lab[open] { display: flex; }
 .matiere { flex: 1 1 auto; padding: 6px 8px; border-radius: 9px; background: none; color: var(--doux); font-size: .85rem; font-weight: 600; }
 .matiere:hover { background: var(--surface); color: var(--texte); }
 .matiere[aria-selected="true"] { background: var(--surface); color: var(--accent); box-shadow: var(--ombre); }
-#recherche-notion { padding: 10px 14px; font-size: .95rem; background: var(--surface); }
+/* La recherche des notions est stylée par .recherche-education (lot 4, loupe à gauche). */
 .notion { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; text-align: left; background: none; color: var(--texte); border-radius: 10px; padding: 7px 10px; font-weight: 500; font-size: .92rem; }
 .notion:hover { background: var(--accent-doux); color: var(--accent-doux-texte); }
 .notion .coche { color: var(--succes); font-weight: 800; }
